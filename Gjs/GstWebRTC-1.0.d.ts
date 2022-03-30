@@ -470,28 +470,29 @@ class WebRTCDTLSTransport {
     certificate: string
     client: boolean
     readonly remote_certificate: string
+    readonly session_id: number
     readonly state: WebRTCDTLSTransportState
     readonly transport: WebRTCICETransport
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Object */
     /**
      * Attach the #GstControlBinding to the object. If there already was a
@@ -499,6 +500,7 @@ class WebRTCDTLSTransport {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -506,11 +508,14 @@ class WebRTCDTLSTransport {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -533,6 +538,10 @@ class WebRTCDTLSTransport {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -558,6 +567,8 @@ class WebRTCDTLSTransport {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -567,16 +578,19 @@ class WebRTCDTLSTransport {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -592,17 +606,21 @@ class WebRTCDTLSTransport {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -613,6 +631,7 @@ class WebRTCDTLSTransport {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -620,11 +639,13 @@ class WebRTCDTLSTransport {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -638,6 +659,7 @@ class WebRTCDTLSTransport {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -691,6 +713,10 @@ class WebRTCDTLSTransport {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -701,6 +727,12 @@ class WebRTCDTLSTransport {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -724,6 +756,7 @@ class WebRTCDTLSTransport {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -743,11 +776,14 @@ class WebRTCDTLSTransport {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -755,6 +791,8 @@ class WebRTCDTLSTransport {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -772,6 +810,7 @@ class WebRTCDTLSTransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -817,6 +856,7 @@ class WebRTCDTLSTransport {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -860,15 +900,20 @@ class WebRTCDTLSTransport {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -909,6 +954,7 @@ class WebRTCDTLSTransport {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -933,6 +979,7 @@ class WebRTCDTLSTransport {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gst-1.0.Gst.Object */
@@ -954,6 +1001,7 @@ class WebRTCDTLSTransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -962,6 +1010,8 @@ class WebRTCDTLSTransport {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: WebRTCDTLSTransport, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: WebRTCDTLSTransport, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -995,6 +1045,7 @@ class WebRTCDTLSTransport {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
@@ -1005,6 +1056,8 @@ class WebRTCDTLSTransport {
     connect_after(sigName: "notify::client", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::remote-certificate", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::remote-certificate", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::session-id", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session-id", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::state", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::state", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::transport", callback: (($obj: WebRTCDTLSTransport, pspec: GObject.ParamSpec) => void)): number
@@ -1034,9 +1087,17 @@ class WebRTCDataChannel {
     /* Properties of GstWebRTC-1.0.GstWebRTC.WebRTCDataChannel */
     readonly buffered_amount: number
     buffered_amount_low_threshold: number
+    readonly id: number
+    readonly label: string
+    readonly max_packet_lifetime: number
+    readonly max_retransmits: number
+    readonly negotiated: boolean
+    readonly ordered: boolean
+    readonly priority: WebRTCPriorityType
+    readonly protocol: string
     readonly ready_state: WebRTCDataChannelState
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstWebRTC-1.0.GstWebRTC.WebRTCDataChannel */
     /**
      * Close the `channel`.
@@ -1044,10 +1105,12 @@ class WebRTCDataChannel {
     close(): void
     /**
      * Send `data` as a data message over `channel`.
+     * @param data a #GBytes or %NULL
      */
     send_data(data?: GLib.Bytes | null): void
     /**
      * Send `str` as a string message over `channel`.
+     * @param str a string or %NULL
      */
     send_string(str?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1085,6 +1148,10 @@ class WebRTCDataChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1095,6 +1162,12 @@ class WebRTCDataChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1118,6 +1191,7 @@ class WebRTCDataChannel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1137,11 +1211,14 @@ class WebRTCDataChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1149,6 +1226,8 @@ class WebRTCDataChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1166,6 +1245,7 @@ class WebRTCDataChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1211,6 +1291,7 @@ class WebRTCDataChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1254,15 +1335,20 @@ class WebRTCDataChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1303,6 +1389,7 @@ class WebRTCDataChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1337,6 +1424,7 @@ class WebRTCDataChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1356,6 +1444,7 @@ class WebRTCDataChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1419,6 +1508,7 @@ class WebRTCDataChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
@@ -1427,6 +1517,22 @@ class WebRTCDataChannel {
     connect_after(sigName: "notify::buffered-amount", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::buffered-amount-low-threshold", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::buffered-amount-low-threshold", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::id", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::label", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::max-packet-lifetime", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-packet-lifetime", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::max-retransmits", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-retransmits", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::negotiated", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::negotiated", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::ordered", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::ordered", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::priority", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::priority", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::protocol", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::protocol", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ready-state", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ready-state", callback: (($obj: WebRTCDataChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -1444,28 +1550,29 @@ interface WebRTCICETransport_ConstructProps extends Gst.Object_ConstructProps {
 }
 class WebRTCICETransport {
     /* Properties of GstWebRTC-1.0.GstWebRTC.WebRTCICETransport */
+    readonly component: WebRTCICEComponent
     readonly gathering_state: WebRTCICEGatheringState
     readonly state: WebRTCICEConnectionState
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Object */
     /**
      * Attach the #GstControlBinding to the object. If there already was a
@@ -1473,6 +1580,7 @@ class WebRTCICETransport {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -1480,11 +1588,14 @@ class WebRTCICETransport {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -1507,6 +1618,10 @@ class WebRTCICETransport {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1532,6 +1647,8 @@ class WebRTCICETransport {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1541,16 +1658,19 @@ class WebRTCICETransport {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -1566,17 +1686,21 @@ class WebRTCICETransport {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -1587,6 +1711,7 @@ class WebRTCICETransport {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -1594,11 +1719,13 @@ class WebRTCICETransport {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -1612,6 +1739,7 @@ class WebRTCICETransport {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -1665,6 +1793,10 @@ class WebRTCICETransport {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1675,6 +1807,12 @@ class WebRTCICETransport {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1698,6 +1836,7 @@ class WebRTCICETransport {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1717,11 +1856,14 @@ class WebRTCICETransport {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1729,6 +1871,8 @@ class WebRTCICETransport {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1746,6 +1890,7 @@ class WebRTCICETransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1791,6 +1936,7 @@ class WebRTCICETransport {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1834,15 +1980,20 @@ class WebRTCICETransport {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1883,6 +2034,7 @@ class WebRTCICETransport {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1907,6 +2059,7 @@ class WebRTCICETransport {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gst-1.0.Gst.Object */
@@ -1928,6 +2081,7 @@ class WebRTCICETransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1943,6 +2097,8 @@ class WebRTCICETransport {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: WebRTCICETransport, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: WebRTCICETransport, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -1976,10 +2132,13 @@ class WebRTCICETransport {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::component", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::component", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::gathering-state", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::gathering-state", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::state", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
@@ -2002,25 +2161,25 @@ class WebRTCRTPReceiver {
      */
     readonly transport: WebRTCDTLSTransport
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Object */
     /**
      * Attach the #GstControlBinding to the object. If there already was a
@@ -2028,6 +2187,7 @@ class WebRTCRTPReceiver {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -2035,11 +2195,14 @@ class WebRTCRTPReceiver {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -2062,6 +2225,10 @@ class WebRTCRTPReceiver {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -2087,6 +2254,8 @@ class WebRTCRTPReceiver {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -2096,16 +2265,19 @@ class WebRTCRTPReceiver {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -2121,17 +2293,21 @@ class WebRTCRTPReceiver {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -2142,6 +2318,7 @@ class WebRTCRTPReceiver {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -2149,11 +2326,13 @@ class WebRTCRTPReceiver {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -2167,6 +2346,7 @@ class WebRTCRTPReceiver {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -2220,6 +2400,10 @@ class WebRTCRTPReceiver {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2230,6 +2414,12 @@ class WebRTCRTPReceiver {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2253,6 +2443,7 @@ class WebRTCRTPReceiver {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2272,11 +2463,14 @@ class WebRTCRTPReceiver {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2284,6 +2478,8 @@ class WebRTCRTPReceiver {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2301,6 +2497,7 @@ class WebRTCRTPReceiver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2346,6 +2543,7 @@ class WebRTCRTPReceiver {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2389,15 +2587,20 @@ class WebRTCRTPReceiver {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2438,6 +2641,7 @@ class WebRTCRTPReceiver {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2462,6 +2666,7 @@ class WebRTCRTPReceiver {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gst-1.0.Gst.Object */
@@ -2483,6 +2688,7 @@ class WebRTCRTPReceiver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2491,6 +2697,8 @@ class WebRTCRTPReceiver {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: WebRTCRTPReceiver, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: WebRTCRTPReceiver, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -2524,6 +2732,7 @@ class WebRTCRTPReceiver {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebRTCRTPReceiver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebRTCRTPReceiver, pspec: GObject.ParamSpec) => void)): number
@@ -2557,30 +2766,31 @@ class WebRTCRTPSender {
      */
     readonly transport: WebRTCDTLSTransport
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstWebRTC-1.0.GstWebRTC.WebRTCRTPSender */
     /**
      * Sets the content of the IPv4 Type of Service (ToS), also known as DSCP
      * (Differentiated Services Code Point).
      * This also sets the Traffic Class field of IPv6.
+     * @param priority The priority of this sender
      */
     set_priority(priority: WebRTCPriorityType): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -2590,6 +2800,7 @@ class WebRTCRTPSender {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -2597,11 +2808,14 @@ class WebRTCRTPSender {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -2624,6 +2838,10 @@ class WebRTCRTPSender {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -2649,6 +2867,8 @@ class WebRTCRTPSender {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -2658,16 +2878,19 @@ class WebRTCRTPSender {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -2683,17 +2906,21 @@ class WebRTCRTPSender {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -2704,6 +2931,7 @@ class WebRTCRTPSender {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -2711,11 +2939,13 @@ class WebRTCRTPSender {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -2729,6 +2959,7 @@ class WebRTCRTPSender {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -2782,6 +3013,10 @@ class WebRTCRTPSender {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2792,6 +3027,12 @@ class WebRTCRTPSender {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2815,6 +3056,7 @@ class WebRTCRTPSender {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2834,11 +3076,14 @@ class WebRTCRTPSender {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2846,6 +3091,8 @@ class WebRTCRTPSender {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2863,6 +3110,7 @@ class WebRTCRTPSender {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2908,6 +3156,7 @@ class WebRTCRTPSender {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2951,15 +3200,20 @@ class WebRTCRTPSender {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3000,6 +3254,7 @@ class WebRTCRTPSender {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3024,6 +3279,7 @@ class WebRTCRTPSender {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gst-1.0.Gst.Object */
@@ -3045,6 +3301,7 @@ class WebRTCRTPSender {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3053,6 +3310,8 @@ class WebRTCRTPSender {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: WebRTCRTPSender, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: WebRTCRTPSender, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -3086,6 +3345,7 @@ class WebRTCRTPSender {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebRTCRTPSender, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebRTCRTPSender, pspec: GObject.ParamSpec) => void)): number
@@ -3147,26 +3407,29 @@ class WebRTCRTPTransceiver {
      * answer.
      */
     readonly mid: string
+    readonly mlineindex: number
+    readonly receiver: WebRTCRTPReceiver
+    readonly sender: WebRTCRTPSender
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Object */
     /**
      * Attach the #GstControlBinding to the object. If there already was a
@@ -3174,6 +3437,7 @@ class WebRTCRTPTransceiver {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -3181,11 +3445,14 @@ class WebRTCRTPTransceiver {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -3208,6 +3475,10 @@ class WebRTCRTPTransceiver {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3233,6 +3504,8 @@ class WebRTCRTPTransceiver {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -3242,16 +3515,19 @@ class WebRTCRTPTransceiver {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -3267,17 +3543,21 @@ class WebRTCRTPTransceiver {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -3288,6 +3568,7 @@ class WebRTCRTPTransceiver {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -3295,11 +3576,13 @@ class WebRTCRTPTransceiver {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -3313,6 +3596,7 @@ class WebRTCRTPTransceiver {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -3366,6 +3650,10 @@ class WebRTCRTPTransceiver {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3376,6 +3664,12 @@ class WebRTCRTPTransceiver {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3399,6 +3693,7 @@ class WebRTCRTPTransceiver {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3418,11 +3713,14 @@ class WebRTCRTPTransceiver {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3430,6 +3728,8 @@ class WebRTCRTPTransceiver {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3447,6 +3747,7 @@ class WebRTCRTPTransceiver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3492,6 +3793,7 @@ class WebRTCRTPTransceiver {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3535,15 +3837,20 @@ class WebRTCRTPTransceiver {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3584,6 +3891,7 @@ class WebRTCRTPTransceiver {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3608,6 +3916,7 @@ class WebRTCRTPTransceiver {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gst-1.0.Gst.Object */
@@ -3629,6 +3938,7 @@ class WebRTCRTPTransceiver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3637,6 +3947,8 @@ class WebRTCRTPTransceiver {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: WebRTCRTPTransceiver, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: WebRTCRTPTransceiver, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -3670,6 +3982,7 @@ class WebRTCRTPTransceiver {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
@@ -3684,6 +3997,12 @@ class WebRTCRTPTransceiver {
     connect_after(sigName: "notify::kind", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::mid", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mid", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::mlineindex", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::mlineindex", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::receiver", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receiver", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sender", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sender", callback: (($obj: WebRTCRTPTransceiver, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3702,25 +4021,25 @@ class WebRTCSCTPTransport {
     readonly state: WebRTCSCTPTransportState
     readonly transport: WebRTCDTLSTransport
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Object */
     /**
      * Attach the #GstControlBinding to the object. If there already was a
@@ -3728,6 +4047,7 @@ class WebRTCSCTPTransport {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -3735,11 +4055,14 @@ class WebRTCSCTPTransport {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -3762,6 +4085,10 @@ class WebRTCSCTPTransport {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3787,6 +4114,8 @@ class WebRTCSCTPTransport {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -3796,16 +4125,19 @@ class WebRTCSCTPTransport {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -3821,17 +4153,21 @@ class WebRTCSCTPTransport {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -3842,6 +4178,7 @@ class WebRTCSCTPTransport {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -3849,11 +4186,13 @@ class WebRTCSCTPTransport {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -3867,6 +4206,7 @@ class WebRTCSCTPTransport {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -3920,6 +4260,10 @@ class WebRTCSCTPTransport {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3930,6 +4274,12 @@ class WebRTCSCTPTransport {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3953,6 +4303,7 @@ class WebRTCSCTPTransport {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3972,11 +4323,14 @@ class WebRTCSCTPTransport {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3984,6 +4338,8 @@ class WebRTCSCTPTransport {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4001,6 +4357,7 @@ class WebRTCSCTPTransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4046,6 +4403,7 @@ class WebRTCSCTPTransport {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4089,15 +4447,20 @@ class WebRTCSCTPTransport {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4138,6 +4501,7 @@ class WebRTCSCTPTransport {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4162,6 +4526,7 @@ class WebRTCSCTPTransport {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gst-1.0.Gst.Object */
@@ -4183,6 +4548,7 @@ class WebRTCSCTPTransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4191,6 +4557,8 @@ class WebRTCSCTPTransport {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: WebRTCSCTPTransport, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: WebRTCSCTPTransport, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -4224,6 +4592,7 @@ class WebRTCSCTPTransport {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebRTCSCTPTransport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebRTCSCTPTransport, pspec: GObject.ParamSpec) => void)): number
@@ -4271,11 +4640,11 @@ class WebRTCSessionDescription {
     /**
      * the #GstWebRTCSDPType of the description
      */
-    readonly type: WebRTCSDPType
+    type: WebRTCSDPType
     /**
      * the #GstSDPMessage of the description
      */
-    readonly sdp: GstSdp.SDPMessage
+    sdp: GstSdp.SDPMessage
     /* Methods of GstWebRTC-1.0.GstWebRTC.WebRTCSessionDescription */
     copy(): WebRTCSessionDescription
     /**

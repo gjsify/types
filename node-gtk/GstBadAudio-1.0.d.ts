@@ -67,119 +67,120 @@ class NonstreamAudioDecoder {
     currentSubsong: number
     numLoops: number
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBadAudio-1.0.GstBadAudio.NonstreamAudioDecoder */
     /**
      * Allocates an output buffer with the internally configured buffer pool.
      * 
      * This function may only be called from within `load_from_buffer,`
      * `load_from_custom,` and `decode`.
+     * @param size Size of the output buffer, in bytes
      */
     allocateOutputBuffer(size: number): Gst.Buffer
     /**
@@ -208,6 +209,9 @@ class NonstreamAudioDecoder {
      * 
      * Decoder lock is not held by this function, so it can be called from within
      * any of the class vfuncs.
+     * @param format #GstAudioFormat value to fill with a sample format
+     * @param sampleRate Integer to fill with a sample rate
+     * @param numChannels Integer to fill with a channel count
      */
     getDownstreamInfo(format: GstAudio.AudioFormat, sampleRate: number, numChannels: number): void
     /**
@@ -232,6 +236,7 @@ class NonstreamAudioDecoder {
      * This function must be called with the decoder mutex lock held, since it
      * is typically called from within `decode` (which in turn are called with
      * the lock already held).
+     * @param newPosition 
      */
     handleLoop(newPosition: Gst.ClockTime): void
     /**
@@ -244,6 +249,7 @@ class NonstreamAudioDecoder {
      * This function must be called with the decoder mutex lock held, since it
      * is typically called from within the aforementioned vfuncs (which in turn
      * are called with the lock already held).
+     * @param audioInfo Valid audio info structure containing the output format
      */
     setOutputFormat(audioInfo: GstAudio.AudioInfo): boolean
     /**
@@ -251,6 +257,9 @@ class NonstreamAudioDecoder {
      * 
      * Internally, this fills a GstAudioInfo structure and calls
      * gst_nonstream_audio_decoder_set_output_format().
+     * @param sampleRate Output sample rate to use, in Hz
+     * @param sampleFormat Output sample format to use
+     * @param numChannels Number of output channels to use
      */
     setOutputFormatSimple(sampleRate: number, sampleFormat: GstAudio.AudioFormat, numChannels: number): boolean
     /* Methods of Gst-1.0.Gst.Element */
@@ -274,6 +283,7 @@ class NonstreamAudioDecoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -289,6 +299,7 @@ class NonstreamAudioDecoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -296,6 +307,7 @@ class NonstreamAudioDecoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -312,6 +324,7 @@ class NonstreamAudioDecoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -327,6 +340,7 @@ class NonstreamAudioDecoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -336,6 +350,7 @@ class NonstreamAudioDecoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -345,6 +360,7 @@ class NonstreamAudioDecoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -375,21 +391,26 @@ class NonstreamAudioDecoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -415,10 +436,12 @@ class NonstreamAudioDecoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -430,6 +453,7 @@ class NonstreamAudioDecoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -463,11 +487,13 @@ class NonstreamAudioDecoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -512,6 +538,7 @@ class NonstreamAudioDecoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -523,6 +550,8 @@ class NonstreamAudioDecoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -530,6 +559,9 @@ class NonstreamAudioDecoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -537,6 +569,10 @@ class NonstreamAudioDecoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -550,6 +586,10 @@ class NonstreamAudioDecoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -578,6 +618,14 @@ class NonstreamAudioDecoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -585,6 +633,15 @@ class NonstreamAudioDecoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -603,6 +660,7 @@ class NonstreamAudioDecoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -619,10 +677,14 @@ class NonstreamAudioDecoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -634,6 +696,7 @@ class NonstreamAudioDecoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -646,6 +709,7 @@ class NonstreamAudioDecoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -657,6 +721,7 @@ class NonstreamAudioDecoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -676,6 +741,7 @@ class NonstreamAudioDecoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -685,6 +751,9 @@ class NonstreamAudioDecoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -700,6 +769,7 @@ class NonstreamAudioDecoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -708,6 +778,13 @@ class NonstreamAudioDecoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -725,6 +802,9 @@ class NonstreamAudioDecoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -736,12 +816,14 @@ class NonstreamAudioDecoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -749,18 +831,21 @@ class NonstreamAudioDecoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -772,6 +857,7 @@ class NonstreamAudioDecoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -787,6 +873,7 @@ class NonstreamAudioDecoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -803,6 +890,7 @@ class NonstreamAudioDecoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -816,12 +904,16 @@ class NonstreamAudioDecoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -831,6 +923,7 @@ class NonstreamAudioDecoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -838,11 +931,14 @@ class NonstreamAudioDecoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -865,6 +961,10 @@ class NonstreamAudioDecoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -890,6 +990,8 @@ class NonstreamAudioDecoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -899,16 +1001,19 @@ class NonstreamAudioDecoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -924,17 +1029,21 @@ class NonstreamAudioDecoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -945,6 +1054,7 @@ class NonstreamAudioDecoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -952,11 +1062,13 @@ class NonstreamAudioDecoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -970,6 +1082,7 @@ class NonstreamAudioDecoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1023,6 +1136,10 @@ class NonstreamAudioDecoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1033,6 +1150,12 @@ class NonstreamAudioDecoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1056,6 +1179,7 @@ class NonstreamAudioDecoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1075,11 +1199,14 @@ class NonstreamAudioDecoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1087,6 +1214,8 @@ class NonstreamAudioDecoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1104,6 +1233,7 @@ class NonstreamAudioDecoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1149,6 +1279,7 @@ class NonstreamAudioDecoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1192,15 +1323,20 @@ class NonstreamAudioDecoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1241,6 +1377,7 @@ class NonstreamAudioDecoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1265,6 +1402,7 @@ class NonstreamAudioDecoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -1284,6 +1422,7 @@ class NonstreamAudioDecoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -1292,6 +1431,7 @@ class NonstreamAudioDecoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -1303,6 +1443,8 @@ class NonstreamAudioDecoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1338,6 +1480,7 @@ class NonstreamAudioDecoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1370,7 +1513,7 @@ interface PlanarAudioAdapter_ConstructProps extends GObject.Object_ConstructProp
 }
 class PlanarAudioAdapter {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBadAudio-1.0.GstBadAudio.PlanarAudioAdapter */
     /**
      * Gets the maximum amount of samples available, that is it returns the maximum
@@ -1385,6 +1528,7 @@ class PlanarAudioAdapter {
     /**
      * Sets up the `adapter` to handle audio data of the specified audio format.
      * Note that this will internally clear the adapter and re-initialize it.
+     * @param info a #GstAudioInfo describing the format of the audio data
      */
     configure(info: GstAudio.AudioInfo): void
     distanceFromDiscont(): number
@@ -1396,6 +1540,7 @@ class PlanarAudioAdapter {
     /**
      * Flushes the first `to_flush` samples in the `adapter`. The caller must ensure
      * that at least this many samples are available.
+     * @param toFlush the number of samples to flush
      */
     flush(toFlush: number): void
     /**
@@ -1411,6 +1556,8 @@ class PlanarAudioAdapter {
      * usage.
      * 
      * Free-function: gst_buffer_unref
+     * @param nsamples the number of samples to get
+     * @param flags hint the intended use of the returned buffer
      */
     getBuffer(nsamples: number, flags: Gst.MapFlags): Gst.Buffer | null
     /**
@@ -1459,6 +1606,7 @@ class PlanarAudioAdapter {
     /**
      * Adds the data from `buf` to the data stored inside `adapter` and takes
      * ownership of the buffer.
+     * @param buf a #GstBuffer to queue in the adapter
      */
     push(buf: Gst.Buffer): void
     /**
@@ -1471,6 +1619,8 @@ class PlanarAudioAdapter {
      * usage.
      * 
      * Free-function: gst_buffer_unref
+     * @param nsamples the number of samples to take
+     * @param flags hint the intended use of the returned buffer
      */
     takeBuffer(nsamples: number, flags: Gst.MapFlags): Gst.Buffer | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -1508,6 +1658,10 @@ class PlanarAudioAdapter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1518,6 +1672,12 @@ class PlanarAudioAdapter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1541,6 +1701,7 @@ class PlanarAudioAdapter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1560,11 +1721,14 @@ class PlanarAudioAdapter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1572,6 +1736,8 @@ class PlanarAudioAdapter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1589,6 +1755,7 @@ class PlanarAudioAdapter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1634,6 +1801,7 @@ class PlanarAudioAdapter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1677,15 +1845,20 @@ class PlanarAudioAdapter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1726,6 +1899,7 @@ class PlanarAudioAdapter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1760,6 +1934,7 @@ class PlanarAudioAdapter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1791,6 +1966,7 @@ class PlanarAudioAdapter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1816,27 +1992,27 @@ abstract class NonstreamAudioDecoderClass {
     /**
      * The parent class structure
      */
-    readonly elementClass: Gst.ElementClass
-    readonly loadsFromSinkpad: boolean
-    readonly seek: (dec: NonstreamAudioDecoder, newPosition: Gst.ClockTime) => boolean
-    readonly tell: (dec: NonstreamAudioDecoder) => Gst.ClockTime
-    readonly loadFromBuffer: (dec: NonstreamAudioDecoder, sourceData: Gst.Buffer, initialSubsong: number, initialSubsongMode: NonstreamAudioSubsongMode, initialPosition: Gst.ClockTime, initialOutputMode: NonstreamAudioOutputMode, initialNumLoops: number) => boolean
-    readonly loadFromCustom: (dec: NonstreamAudioDecoder, initialSubsong: number, initialSubsongMode: NonstreamAudioSubsongMode, initialPosition: Gst.ClockTime, initialOutputMode: NonstreamAudioOutputMode, initialNumLoops: number) => boolean
-    readonly getMainTags: (dec: NonstreamAudioDecoder) => Gst.TagList
-    readonly setCurrentSubsong: (dec: NonstreamAudioDecoder, subsong: number, initialPosition: Gst.ClockTime) => boolean
-    readonly getCurrentSubsong: (dec: NonstreamAudioDecoder) => number
-    readonly getNumSubsongs: (dec: NonstreamAudioDecoder) => number
-    readonly getSubsongDuration: (dec: NonstreamAudioDecoder, subsong: number) => Gst.ClockTime
-    readonly getSubsongTags: (dec: NonstreamAudioDecoder, subsong: number) => Gst.TagList
-    readonly setSubsongMode: (dec: NonstreamAudioDecoder, mode: NonstreamAudioSubsongMode, initialPosition: Gst.ClockTime) => boolean
-    readonly setNumLoops: (dec: NonstreamAudioDecoder, numLoops: number) => boolean
-    readonly getNumLoops: (dec: NonstreamAudioDecoder) => number
-    readonly getSupportedOutputModes: (dec: NonstreamAudioDecoder) => number
-    readonly setOutputMode: (dec: NonstreamAudioDecoder, mode: NonstreamAudioOutputMode, currentPosition: Gst.ClockTime) => boolean
-    readonly decode: (dec: NonstreamAudioDecoder, buffer: Gst.Buffer, numSamples: number) => boolean
-    readonly negotiate: (dec: NonstreamAudioDecoder) => boolean
-    readonly decideAllocation: (dec: NonstreamAudioDecoder, query: Gst.Query) => boolean
-    readonly proposeAllocation: (dec: NonstreamAudioDecoder, query: Gst.Query) => boolean
+    elementClass: Gst.ElementClass
+    loadsFromSinkpad: boolean
+    seek: (dec: NonstreamAudioDecoder, newPosition: Gst.ClockTime) => boolean
+    tell: (dec: NonstreamAudioDecoder) => Gst.ClockTime
+    loadFromBuffer: (dec: NonstreamAudioDecoder, sourceData: Gst.Buffer, initialSubsong: number, initialSubsongMode: NonstreamAudioSubsongMode, initialPosition: Gst.ClockTime, initialOutputMode: NonstreamAudioOutputMode, initialNumLoops: number) => boolean
+    loadFromCustom: (dec: NonstreamAudioDecoder, initialSubsong: number, initialSubsongMode: NonstreamAudioSubsongMode, initialPosition: Gst.ClockTime, initialOutputMode: NonstreamAudioOutputMode, initialNumLoops: number) => boolean
+    getMainTags: (dec: NonstreamAudioDecoder) => Gst.TagList
+    setCurrentSubsong: (dec: NonstreamAudioDecoder, subsong: number, initialPosition: Gst.ClockTime) => boolean
+    getCurrentSubsong: (dec: NonstreamAudioDecoder) => number
+    getNumSubsongs: (dec: NonstreamAudioDecoder) => number
+    getSubsongDuration: (dec: NonstreamAudioDecoder, subsong: number) => Gst.ClockTime
+    getSubsongTags: (dec: NonstreamAudioDecoder, subsong: number) => Gst.TagList
+    setSubsongMode: (dec: NonstreamAudioDecoder, mode: NonstreamAudioSubsongMode, initialPosition: Gst.ClockTime) => boolean
+    setNumLoops: (dec: NonstreamAudioDecoder, numLoops: number) => boolean
+    getNumLoops: (dec: NonstreamAudioDecoder) => number
+    getSupportedOutputModes: (dec: NonstreamAudioDecoder) => number
+    setOutputMode: (dec: NonstreamAudioDecoder, mode: NonstreamAudioOutputMode, currentPosition: Gst.ClockTime) => boolean
+    decode: (dec: NonstreamAudioDecoder, buffer: Gst.Buffer, numSamples: number) => boolean
+    negotiate: (dec: NonstreamAudioDecoder) => boolean
+    decideAllocation: (dec: NonstreamAudioDecoder, query: Gst.Query) => boolean
+    proposeAllocation: (dec: NonstreamAudioDecoder, query: Gst.Query) => boolean
     static name: string
 }
 abstract class PlanarAudioAdapterClass {

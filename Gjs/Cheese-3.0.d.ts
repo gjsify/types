@@ -107,15 +107,18 @@ class Camera {
      */
     video_texture: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cheese-3.0.Cheese.Camera */
     /**
      * Connect the supplied `texture` to the `camera,` using `effect`.
+     * @param effect a #CheeseEffect
+     * @param texture a #ClutterActor
      */
     connect_effect_texture(effect: Effect, texture: Clutter.Actor): void
     /**
      * Get the minimum, maximum and default values for the requested `property` of
      * the `camera`.
+     * @param property name of the balance property
      */
     get_balance_property_range(property: string): [ /* returnType */ boolean, /* min */ number, /* max */ number, /* def */ number ]
     /**
@@ -148,27 +151,34 @@ class Camera {
     play(): void
     /**
      * Set the requested `property` on the `camera` to `value`.
+     * @param property name of the balance property
+     * @param value value to be set
      */
     set_balance_property(property: string, value: number): void
     /**
      * Set the active video capture device of the `camera`.
+     * @param device the device object
      */
     set_device(device: CameraDevice): void
     /**
      * Set the `effect` on the `camera`.
+     * @param effect a #CheeseEffect
      */
     set_effect(effect: Effect): void
     /**
      * Sets a #CheeseVideoFormat on a #CheeseCamera, restarting the video stream if
      * necessary.
+     * @param format a #CheeseVideoFormat
      */
     set_video_format(format: VideoFormat): void
     /**
      * Setup a video capture device.
+     * @param device the video capture device, or %NULL
      */
     setup(device?: CameraDevice | null): void
     /**
      * Start a video recording with the `camera` and save it to `filename`.
+     * @param filename the name of the video file to where the recording will be saved
      */
     start_video_recording(filename: string): void
     /**
@@ -186,6 +196,7 @@ class Camera {
     switch_camera_device(): void
     /**
      * Save a photo taken with the `camera` to a new file at `filename`.
+     * @param filename name of the file to save a photo to
      */
     take_photo(filename: string): boolean
     /**
@@ -195,6 +206,7 @@ class Camera {
     take_photo_pixbuf(): boolean
     /**
      * Control whether the effects pipeline is enabled for `camera`.
+     * @param active %TRUE if effects pipeline is active, %FALSE otherwise
      */
     toggle_effects_pipeline(active: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -232,6 +244,10 @@ class Camera {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -242,6 +258,12 @@ class Camera {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -265,6 +287,7 @@ class Camera {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -284,11 +307,14 @@ class Camera {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -296,6 +322,8 @@ class Camera {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -313,6 +341,7 @@ class Camera {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -358,6 +387,7 @@ class Camera {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -401,15 +431,20 @@ class Camera {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -450,6 +485,7 @@ class Camera {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -484,6 +520,7 @@ class Camera {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Cheese-3.0.Cheese.Camera */
@@ -508,6 +545,7 @@ class Camera {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -520,12 +558,14 @@ class Camera {
     emit(sigName: "photo-saved"): void
     /**
      * Emitted when a photo was taken.
+     * @param pixbuf a #GdkPixbuf of the photo which was taken
      */
     connect(sigName: "photo-taken", callback: (($obj: Camera, pixbuf: GdkPixbuf.Pixbuf) => void)): number
     connect_after(sigName: "photo-taken", callback: (($obj: Camera, pixbuf: GdkPixbuf.Pixbuf) => void)): number
     emit(sigName: "photo-taken", pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Emitted when the state of the `camera` #GstElement changed.
+     * @param state the #GstState which `camera` changed to
      */
     connect(sigName: "state-flags-changed", callback: (($obj: Camera, state: number) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: Camera, state: number) => void)): number
@@ -565,6 +605,7 @@ class Camera {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Camera, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Camera, pspec: GObject.ParamSpec) => void)): number
@@ -604,8 +645,21 @@ interface CameraDevice_ConstructProps extends GObject.Object_ConstructProps {
     path?: string
 }
 class CameraDevice {
+    /* Properties of Cheese-3.0.Cheese.CameraDevice */
+    /**
+     * GStreamer device object of the video capture device.
+     */
+    readonly device: Gst.Device
+    /**
+     * Human-readable name of the video capture device, for display to the user.
+     */
+    readonly name: string
+    /**
+     * Path of the video capture device.
+     */
+    readonly path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cheese-3.0.Cheese.CameraDevice */
     /**
      * Get the #CheeseVideoFormat with the highest resolution with a width greater
@@ -615,6 +669,7 @@ class CameraDevice {
     get_best_format(): VideoFormat
     /**
      * Get the #GstCaps for the given `format` on the `device`.
+     * @param format a #CheeseVideoFormat
      */
     get_caps_for_format(format: VideoFormat): Gst.Caps
     /**
@@ -669,6 +724,10 @@ class CameraDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -679,6 +738,12 @@ class CameraDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -702,6 +767,7 @@ class CameraDevice {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -721,11 +787,14 @@ class CameraDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -733,6 +802,8 @@ class CameraDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -750,6 +821,7 @@ class CameraDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -795,6 +867,7 @@ class CameraDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -838,15 +911,20 @@ class CameraDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -887,6 +965,7 @@ class CameraDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -921,6 +1000,7 @@ class CameraDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -963,6 +1043,7 @@ class CameraDevice {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Cheese-3.0.Cheese.CameraDevice */
@@ -1005,6 +1086,7 @@ class CameraDevice {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1024,6 +1106,7 @@ class CameraDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1056,10 +1139,17 @@ class CameraDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CameraDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CameraDevice, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::device", callback: (($obj: CameraDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device", callback: (($obj: CameraDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: CameraDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: CameraDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::path", callback: (($obj: CameraDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::path", callback: (($obj: CameraDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1077,6 +1167,9 @@ class CameraDevice {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1085,7 +1178,7 @@ interface CameraDeviceMonitor_ConstructProps extends GObject.Object_ConstructPro
 }
 class CameraDeviceMonitor {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cheese-3.0.Cheese.CameraDeviceMonitor */
     /**
      * Enumerate plugged in cameras and emit ::added for those which already exist.
@@ -1128,6 +1221,10 @@ class CameraDeviceMonitor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1138,6 +1235,12 @@ class CameraDeviceMonitor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1161,6 +1264,7 @@ class CameraDeviceMonitor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1180,11 +1284,14 @@ class CameraDeviceMonitor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1192,6 +1299,8 @@ class CameraDeviceMonitor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1209,6 +1318,7 @@ class CameraDeviceMonitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1254,6 +1364,7 @@ class CameraDeviceMonitor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1297,15 +1408,20 @@ class CameraDeviceMonitor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1346,6 +1462,7 @@ class CameraDeviceMonitor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1380,6 +1497,7 @@ class CameraDeviceMonitor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -1420,16 +1538,21 @@ class CameraDeviceMonitor {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1472,6 +1595,7 @@ class CameraDeviceMonitor {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Cheese-3.0.Cheese.CameraDeviceMonitor */
@@ -1514,11 +1638,15 @@ class CameraDeviceMonitor {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1560,6 +1688,7 @@ class CameraDeviceMonitor {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1579,6 +1708,7 @@ class CameraDeviceMonitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1586,6 +1716,7 @@ class CameraDeviceMonitor {
     /**
      * The ::added signal is emitted when a camera is added, or on start-up
      * after cheese_camera_device_monitor_coldplug() is called.
+     * @param device a new #CheeseCameraDevice representing the video capture device
      */
     connect(sigName: "added", callback: (($obj: CameraDeviceMonitor, device: CameraDevice) => void)): number
     connect_after(sigName: "added", callback: (($obj: CameraDeviceMonitor, device: CameraDevice) => void)): number
@@ -1593,6 +1724,7 @@ class CameraDeviceMonitor {
     /**
      * The ::removed signal is emitted when a camera is unplugged, or disabled on
      * the system.
+     * @param device the #CheeseCameraDevice that was removed
      */
     connect(sigName: "removed", callback: (($obj: CameraDeviceMonitor, device: CameraDevice) => void)): number
     connect_after(sigName: "removed", callback: (($obj: CameraDeviceMonitor, device: CameraDevice) => void)): number
@@ -1626,6 +1758,7 @@ class CameraDeviceMonitor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CameraDeviceMonitor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CameraDeviceMonitor, pspec: GObject.ParamSpec) => void)): number
@@ -1646,6 +1779,8 @@ class CameraDeviceMonitor {
      * to get the result.
      * 
      * See cheese_camera_device_monitor_new() for the synchronous version.
+     * @param cancellable a #GCancellable or NULL
+     * @param callback a GAsyncReadyCallback to call when the initialization is finished
      */
     static new_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1655,12 +1790,21 @@ class CameraDeviceMonitor {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1688,8 +1832,16 @@ class Effect {
      * a video stream, for previews.
      */
     control_valve: Gst.Element
+    /**
+     * Name of the effect, for display in a UI.
+     */
+    readonly name: string
+    /**
+     * Description of the GStreamer pipeline associated with the effect.
+     */
+    readonly pipeline_desc: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cheese-3.0.Cheese.Effect */
     /**
      * Disable the preview of a #CheeseEffect.
@@ -1746,6 +1898,10 @@ class Effect {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1756,6 +1912,12 @@ class Effect {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1779,6 +1941,7 @@ class Effect {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1798,11 +1961,14 @@ class Effect {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1810,6 +1976,8 @@ class Effect {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1827,6 +1995,7 @@ class Effect {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1872,6 +2041,7 @@ class Effect {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1915,15 +2085,20 @@ class Effect {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1964,6 +2139,7 @@ class Effect {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1998,6 +2174,7 @@ class Effect {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2017,6 +2194,7 @@ class Effect {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2049,12 +2227,17 @@ class Effect {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Effect, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Effect, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::control-valve", callback: (($obj: Effect, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::control-valve", callback: (($obj: Effect, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: Effect, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: Effect, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::pipeline-desc", callback: (($obj: Effect, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pipeline-desc", callback: (($obj: Effect, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2070,6 +2253,7 @@ class Effect {
     static load_effects(): Effect[]
     /**
      * Load effect from file.
+     * @param filename name of the file containing the effect specification
      */
     static load_from_file(filename: string): Effect
     static $gtype: GObject.Type
@@ -2078,13 +2262,14 @@ interface FileUtil_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FileUtil {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cheese-3.0.Cheese.FileUtil */
     /**
      * Creates a filename for one of the three media types: photo, photo burst or
      * video. If a filename for a photo burst image was previously created, this
      * function increments the burst count automatically. To start a new burst,
      * first call cheese_fileutil_reset_burst().
+     * @param mode the type of media to create a filename for
      */
     get_new_media_filename(mode: MediaMode): string
     /**
@@ -2136,6 +2321,10 @@ class FileUtil {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2146,6 +2335,12 @@ class FileUtil {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2169,6 +2364,7 @@ class FileUtil {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2188,11 +2384,14 @@ class FileUtil {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2200,6 +2399,8 @@ class FileUtil {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2217,6 +2418,7 @@ class FileUtil {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2262,6 +2464,7 @@ class FileUtil {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2305,15 +2508,20 @@ class FileUtil {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2354,6 +2562,7 @@ class FileUtil {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2388,6 +2597,7 @@ class FileUtil {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2407,6 +2617,7 @@ class FileUtil {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2439,6 +2650,7 @@ class FileUtil {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FileUtil, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FileUtil, pspec: GObject.ParamSpec) => void)): number
@@ -2456,21 +2668,21 @@ class FileUtil {
 }
 abstract class CameraClass {
     /* Fields of Cheese-3.0.Cheese.CameraClass */
-    readonly photo_saved: (camera: Camera) => void
-    readonly photo_taken: (camera: Camera, pixbuf: GdkPixbuf.Pixbuf) => void
-    readonly video_saved: (camera: Camera) => void
-    readonly state_flags_changed: (camera: Camera, new_state: Gst.State) => void
+    photo_saved: (camera: Camera) => void
+    photo_taken: (camera: Camera, pixbuf: GdkPixbuf.Pixbuf) => void
+    video_saved: (camera: Camera) => void
+    state_flags_changed: (camera: Camera, new_state: Gst.State) => void
     static name: string
 }
 abstract class CameraDeviceClass {
     /* Fields of Cheese-3.0.Cheese.CameraDeviceClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CameraDeviceMonitorClass {
     /* Fields of Cheese-3.0.Cheese.CameraDeviceMonitorClass */
-    readonly added: (monitor: CameraDeviceMonitor, device: CameraDevice) => void
-    readonly removed: (monitor: CameraDeviceMonitor, device: CameraDevice) => void
+    added: (monitor: CameraDeviceMonitor, device: CameraDevice) => void
+    removed: (monitor: CameraDeviceMonitor, device: CameraDevice) => void
     static name: string
 }
 class CameraDeviceMonitorPrivate {
@@ -2481,12 +2693,12 @@ class CameraPrivate {
 }
 abstract class EffectClass {
     /* Fields of Cheese-3.0.Cheese.EffectClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class FileUtilClass {
     /* Fields of Cheese-3.0.Cheese.FileUtilClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class VideoFormat {
@@ -2494,11 +2706,11 @@ class VideoFormat {
     /**
      * the width of of the video, in pixels
      */
-    readonly width: number
+    width: number
     /**
      * the height of the video, in pixels
      */
-    readonly height: number
+    height: number
     static name: string
 }
 }

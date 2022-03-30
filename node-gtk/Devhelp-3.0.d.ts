@@ -8,12 +8,12 @@
  * Devhelp-3.0
  */
 
-import type WebKit2 from './WebKit2-4.0';
-import type Soup from './Soup-2.4';
+import type WebKit2 from './WebKit2-4.1';
+import type Soup from './Soup-3.0';
 import type Gio from './Gio-2.0';
 import type GObject from './GObject-2.0';
 import type GLib from './GLib-2.0';
-import type JavaScriptCore from './JavaScriptCore-4.0';
+import type JavaScriptCore from './JavaScriptCore-4.1';
 import type Gtk from './Gtk-3.0';
 import type xlib from './xlib-2.0';
 import type Gdk from './Gdk-3.0';
@@ -88,7 +88,14 @@ function linkTypeToString(linkType: LinkType): string
 interface AssistantView_ConstructProps extends WebKit2.WebView_ConstructProps {
 }
 class AssistantView {
-    /* Properties of WebKit2-4.0.WebKit2.WebView */
+    /* Properties of WebKit2-4.1.WebKit2.WebView */
+    /**
+     * The #WebKitAutomationBrowsingContextPresentation of #WebKitWebView. This should only be used when
+     * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
+     * signal request. If the new WebView was added to a new tab of current browsing context window
+     * %WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB should be used.
+     */
+    readonly automationPresentationType: WebKit2.AutomationBrowsingContextPresentation
     /**
      * Capture state of the camera device. Whenever the user grants a media-request sent by the web
      * page, requesting video capture capabilities (`navigator.mediaDevices.getUserMedia({video:
@@ -138,6 +145,27 @@ class AssistantView {
      */
     readonly favicon: object
     /**
+     * Whether the #WebKitWebView is controlled by automation. This should only be used when
+     * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
+     * signal request.
+     */
+    readonly isControlledByAutomation: boolean
+    /**
+     * Whether the #WebKitWebView is ephemeral. An ephemeral web view never writes
+     * website data to the client storage, no matter what #WebKitWebsiteDataManager
+     * its context is using. This is normally used to implement private browsing mode.
+     * This is a %G_PARAM_CONSTRUCT_ONLY property, so you have to create an ephemeral
+     * #WebKitWebView and it can't be changed. The ephemeral #WebKitWebsiteDataManager
+     * created for the #WebKitWebView will inherit the network settings from the
+     * #WebKitWebContext<!-- -->'s #WebKitWebsiteDataManager. To use different settings
+     * you can get the #WebKitWebsiteDataManager with webkit_web_view_get_website_data_manager()
+     * and set the new ones.
+     * Note that all #WebKitWebView<!-- -->s created with an ephemeral #WebKitWebContext
+     * will be ephemeral automatically.
+     * See also webkit_web_context_new_ephemeral().
+     */
+    readonly isEphemeral: boolean
+    /**
      * Whether the #WebKitWebView is currently loading a page. This property becomes
      * %TRUE as soon as a new load operation is requested and before the
      * #WebKitWebView::load-changed signal is emitted with %WEBKIT_LOAD_STARTED and
@@ -181,6 +209,12 @@ class AssistantView {
      */
     readonly pageId: number
     /**
+     * The related #WebKitWebView used when creating the view to share the
+     * same web process. This property is not readable because the related
+     * web view is only valid during the object construction.
+     */
+    readonly relatedView: WebKit2.WebView
+    /**
      * The #WebKitSettings of the view.
      */
     settings: WebKit2.Settings
@@ -194,6 +228,18 @@ class AssistantView {
      * See webkit_web_view_get_uri() for more details.
      */
     readonly uri: string
+    /**
+     * The #WebKitUserContentManager of the view.
+     */
+    readonly userContentManager: WebKit2.UserContentManager
+    /**
+     * The #WebKitWebContext of the view.
+     */
+    readonly webContext: WebKit2.WebContext
+    /**
+     * The #WebKitWebsitePolicies for the view.
+     */
+    readonly websitePolicies: WebKit2.WebsitePolicies
     /**
      * The zoom level of the #WebKitWebView content.
      * See webkit_web_view_set_zoom_level() for more details.
@@ -375,33 +421,39 @@ class AssistantView {
      * The widget's window if it is realized, %NULL otherwise.
      */
     readonly window: Gdk.Window
-    /* Fields of WebKit2-4.0.WebKit2.WebView */
-    readonly parent: WebKit2.WebViewBase
-    /* Fields of WebKit2-4.0.WebKit2.WebViewBase */
-    readonly parentInstance: Gtk.Container
+    /* Fields of WebKit2-4.1.WebKit2.WebView */
+    parent: WebKit2.WebViewBase
+    /* Fields of WebKit2-4.1.WebKit2.WebViewBase */
+    parentInstance: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.AssistantView */
     /**
      * Search for `str` in the current assistant view.
+     * @param str the search query.
      */
     search(str: string): boolean
     /**
      * Open `link` in the assistant view, if %NULL the view will be blanked.
+     * @param link a #DhLink to set or %NULL.
      */
     setLink(link?: Link | null): boolean
-    /* Methods of WebKit2-4.0.WebKit2.WebView */
+    /* Methods of WebKit2-4.1.WebKit2.WebView */
     /**
      * Asynchronously check if it is possible to execute the given editing command.
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_can_execute_editing_command_finish() to get the result of the operation.
+     * @param command the command to check
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     canExecuteEditingCommand(command: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_can_execute_editing_command().
+     * @param result a #GAsyncResult
      */
     canExecuteEditingCommandFinish(result: Gio.AsyncResult): boolean
     /**
@@ -414,22 +466,27 @@ class AssistantView {
     canGoForward(): boolean
     /**
      * Whether or not a MIME type can be displayed in `web_view`.
+     * @param mimeType a MIME type
      */
     canShowMimeType(mimeType: string): boolean
     /**
      * Requests downloading of the specified URI string for `web_view`.
+     * @param uri the URI to download
      */
     downloadUri(uri: string): WebKit2.Download
     /**
      * Request to execute the given `command` for `web_view`. You can use
      * webkit_web_view_can_execute_editing_command() to check whether
      * it's possible to execute the command.
+     * @param command the command to execute
      */
     executeEditingCommand(command: string): void
     /**
      * Request to execute the given `command` with `argument` for `web_view`. You can use
      * webkit_web_view_can_execute_editing_command() to check whether
      * it's possible to execute the command.
+     * @param command the command to execute
+     * @param argument the command argument
      */
     executeEditingCommandWithArgument(command: string, argument: string): void
     /**
@@ -537,10 +594,15 @@ class AssistantView {
      * When the operation is finished, `callback` will be called. You must
      * call webkit_web_view_get_snapshot_finish() to get the result of the
      * operation.
+     * @param region the #WebKitSnapshotRegion for this snapshot
+     * @param options #WebKitSnapshotOptions for the snapshot
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback
      */
     getSnapshot(region: WebKit2.SnapshotRegion, options: WebKit2.SnapshotOptions, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with webkit_web_view_get_snapshot().
+     * @param result a #GAsyncResult
      */
     getSnapshotFinish(result: Gio.AsyncResult): cairo.Surface
     /**
@@ -663,29 +725,19 @@ class AssistantView {
      * Loads the specific history item `list_item`.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param listItem a #WebKitBackForwardListItem
      */
     goToBackForwardListItem(listItem: WebKit2.BackForwardListItem): void
-    /**
-     * Get whether a #WebKitWebView was created with #WebKitWebView:is-controlled-by-automation
-     * property enabled. Only #WebKitWebView<!-- -->s controlled by automation can be used in an
-     * automation session.
-     */
-    isControlledByAutomation(): boolean
     isEditable(): boolean
-    /**
-     * Get whether a #WebKitWebView is ephemeral. To create an ephemeral #WebKitWebView you need to
-     * use g_object_new() and pass is-ephemeral property with %TRUE value. See
-     * #WebKitWebView:is-ephemeral for more details.
-     * If `web_view` was created with a ephemeral #WebKitWebView:related-view or an
-     * ephemeral #WebKitWebView:web-context it will also be ephemeral.
-     */
-    isEphemeral(): boolean
     /**
      * Load the given `content` string for the URI `content_uri`.
      * This allows clients to display page-loading errors in the #WebKitWebView itself.
      * When this method is called from #WebKitWebView::load-failed signal to show an
      * error page, then the back-forward list is maintained appropriately.
      * For everything else this method works the same way as webkit_web_view_load_html().
+     * @param content the new content to display as the main page of the `web_view`
+     * @param contentUri the URI for the alternate page content
+     * @param baseUri the base URI for relative locations or %NULL
      */
     loadAlternateHtml(content: string, contentUri: string, baseUri?: string | null): void
     /**
@@ -694,6 +746,10 @@ class AssistantView {
      * When `encoding` is %NULL, it defaults to "UTF-8".
      * When `base_uri` is %NULL, it defaults to "about:blank".
      * You can monitor the load operation by connecting to #WebKitWebView::load-changed signal.
+     * @param bytes input data to load
+     * @param mimeType the MIME type of `bytes,` or %NULL
+     * @param encoding the character encoding of `bytes,` or %NULL
+     * @param baseUri the base URI for relative locations or %NULL
      */
     loadBytes(bytes: any, mimeType?: string | null, encoding?: string | null, baseUri?: string | null): void
     /**
@@ -706,24 +762,29 @@ class AssistantView {
      * directory than `base_uri` you can build a data URI for them. When `base_uri` is %NULL,
      * it defaults to "about:blank". The mime type of the document will be "text/html".
      * You can monitor the load operation by connecting to #WebKitWebView::load-changed signal.
+     * @param content The HTML string to load
+     * @param baseUri The base URI for relative locations or %NULL
      */
     loadHtml(content: string, baseUri?: string | null): void
     /**
      * Load the specified `plain_text` string into `web_view`. The mime type of
      * document will be "text/plain". You can monitor the load
      * operation by connecting to #WebKitWebView::load-changed signal.
+     * @param plainText The plain text to load
      */
     loadPlainText(plainText: string): void
     /**
      * Requests loading of the specified #WebKitURIRequest.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param request a #WebKitURIRequest to load
      */
     loadRequest(request: WebKit2.URIRequest): void
     /**
      * Requests loading of the specified URI string.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param uri an URI string
      */
     loadUri(uri: string): void
     /**
@@ -738,6 +799,7 @@ class AssistantView {
     reloadBypassCache(): void
     /**
      * Restore the `web_view` session state from `state`
+     * @param state a #WebKitWebViewSessionState
      */
     restoreSessionState(state: WebKit2.WebViewSessionState): void
     /**
@@ -746,6 +808,9 @@ class AssistantView {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_run_javascript_finish() to get the result of the operation.
+     * @param script the script to run
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     runJavascript(script: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -800,6 +865,7 @@ class AssistantView {
      *     g_free (script);
      * }
      * </programlisting></informalexample>
+     * @param result a #GAsyncResult
      */
     runJavascriptFinish(result: Gio.AsyncResult): WebKit2.JavascriptResult
     /**
@@ -809,12 +875,16 @@ class AssistantView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_run_javascript_from_gresource_finish() to get the result
      * of the operation.
+     * @param resource the location of the resource to load
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     runJavascriptFromGresource(resource: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript_from_gresource().
      * 
      * Check webkit_web_view_run_javascript_finish() for a usage example.
+     * @param result a #GAsyncResult
      */
     runJavascriptFromGresourceFinish(result: Gio.AsyncResult): WebKit2.JavascriptResult
     /**
@@ -823,10 +893,15 @@ class AssistantView {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_run_javascript_in_world_finish() to get the result of the operation.
+     * @param script the script to run
+     * @param worldName the name of a #WebKitScriptWorld
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     runJavascriptInWorld(script: string, worldName: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript_in_world().
+     * @param result a #GAsyncResult
      */
     runJavascriptInWorldFinish(result: Gio.AsyncResult): WebKit2.JavascriptResult
     /**
@@ -837,10 +912,14 @@ class AssistantView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_save_finish() to get the result of the
      * operation.
+     * @param saveMode the #WebKitSaveMode specifying how the web page should be saved.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     save(saveMode: WebKit2.SaveMode, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_save().
+     * @param result a #GAsyncResult
      */
     saveFinish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -851,10 +930,15 @@ class AssistantView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_save_to_file_finish() to get the result of the
      * operation.
+     * @param file the #GFile where the current web page should be saved to.
+     * @param saveMode the #WebKitSaveMode specifying how the web page should be saved.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     saveToFile(file: Gio.File, saveMode: WebKit2.SaveMode, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_save_to_file().
+     * @param result a #GAsyncResult
      */
     saveToFileFinish(result: Gio.AsyncResult): boolean
     /**
@@ -863,10 +947,14 @@ class AssistantView {
      * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_send_message_to_page_finish() to get the message reply.
+     * @param message a #WebKitUserMessage
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
      */
     sendMessageToPage(message: WebKit2.UserMessage, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_send_message_to_page().
+     * @param result a #GAsyncResult
      */
     sendMessageToPageFinish(result: Gio.AsyncResult): WebKit2.UserMessage
     /**
@@ -895,6 +983,7 @@ class AssistantView {
      *     webkit_web_view_set_background_color (web_view, rgba);
      * }
      * </programlisting></informalexample>
+     * @param rgba a #GdkRGBA
      */
     setBackgroundColor(rgba: Gdk.RGBA): void
     /**
@@ -903,6 +992,7 @@ class AssistantView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     setCameraCaptureState(state: WebKit2.MediaCaptureState): void
     /**
@@ -920,6 +1010,7 @@ class AssistantView {
      * 
      * If this function is called multiple times, only the allowlist set by
      * the most recent call will be effective.
+     * @param allowlist an allowlist of URI patterns, or %NULL
      */
     setCorsAllowlist(allowlist?: string[] | null): void
     /**
@@ -928,6 +1019,7 @@ class AssistantView {
      * META tags. Calling this method will stop any current load operation and reload the
      * current page. Setting the custom character encoding to %NULL removes the character
      * encoding override.
+     * @param charset a character encoding name or %NULL
      */
     setCustomCharset(charset?: string | null): void
     /**
@@ -936,6 +1028,7 @@ class AssistantView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     setDisplayCaptureState(state: WebKit2.MediaCaptureState): void
     /**
@@ -949,15 +1042,18 @@ class AssistantView {
      * Normally, a HTML document is not editable unless the elements within the
      * document are editable. This function provides a way to make the contents
      * of a #WebKitWebView editable without altering the document or DOM structure.
+     * @param editable a #gboolean indicating the editable state
      */
     setEditable(editable: boolean): void
     /**
      * Set the #WebKitInputMethodContext to be used by `web_view,` or %NULL to not use any input method.
      * Note that the same #WebKitInputMethodContext can't be set on more than one #WebKitWebView at the same time.
+     * @param context the #WebKitInputMethodContext to set, or %NULL
      */
     setInputMethodContext(context?: WebKit2.InputMethodContext | null): void
     /**
      * Sets the mute state of `web_view`.
+     * @param muted mute flag
      */
     setIsMuted(muted: boolean): void
     /**
@@ -966,6 +1062,7 @@ class AssistantView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     setMicrophoneCaptureState(state: WebKit2.MediaCaptureState): void
     /**
@@ -974,11 +1071,13 @@ class AssistantView {
      * `settings`. New settings are applied immediately on `web_view`.
      * The same #WebKitSettings object can be shared
      * by multiple #WebKitWebView<!-- -->s.
+     * @param settings a #WebKitSettings
      */
     setSettings(settings: WebKit2.Settings): void
     /**
      * Set the zoom level of `web_view,` i.e. the factor by which the
      * view contents are scaled with respect to their original size.
+     * @param zoomLevel the zoom level
      */
     setZoomLevel(zoomLevel: number): void
     /**
@@ -1016,11 +1115,15 @@ class AssistantView {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -1031,6 +1134,8 @@ class AssistantView {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -1039,10 +1144,15 @@ class AssistantView {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -1062,6 +1172,7 @@ class AssistantView {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -1076,6 +1187,7 @@ class AssistantView {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -1115,6 +1227,7 @@ class AssistantView {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -1138,6 +1251,8 @@ class AssistantView {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -1150,6 +1265,7 @@ class AssistantView {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -1163,6 +1279,7 @@ class AssistantView {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -1173,6 +1290,7 @@ class AssistantView {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -1184,6 +1302,7 @@ class AssistantView {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -1196,6 +1315,7 @@ class AssistantView {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -1208,6 +1328,7 @@ class AssistantView {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -1215,6 +1336,7 @@ class AssistantView {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -1223,6 +1345,7 @@ class AssistantView {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -1246,17 +1369,25 @@ class AssistantView {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -1266,6 +1397,7 @@ class AssistantView {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -1289,6 +1421,7 @@ class AssistantView {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -1299,6 +1432,7 @@ class AssistantView {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -1321,6 +1455,7 @@ class AssistantView {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -1331,6 +1466,7 @@ class AssistantView {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -1350,6 +1486,7 @@ class AssistantView {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -1367,6 +1504,7 @@ class AssistantView {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -1411,6 +1549,7 @@ class AssistantView {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -1419,11 +1558,16 @@ class AssistantView {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -1452,12 +1596,22 @@ class AssistantView {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -1492,6 +1646,8 @@ class AssistantView {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -1546,16 +1702,23 @@ class AssistantView {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -1565,6 +1728,7 @@ class AssistantView {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -1582,6 +1746,9 @@ class AssistantView {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -1622,33 +1789,41 @@ class AssistantView {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -1678,6 +1853,7 @@ class AssistantView {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -1707,6 +1883,7 @@ class AssistantView {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -1738,6 +1915,7 @@ class AssistantView {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -1800,6 +1978,7 @@ class AssistantView {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -1864,6 +2043,7 @@ class AssistantView {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -1873,11 +2053,13 @@ class AssistantView {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -2031,6 +2213,7 @@ class AssistantView {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -2118,6 +2301,7 @@ class AssistantView {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -2129,6 +2313,7 @@ class AssistantView {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -2170,6 +2355,7 @@ class AssistantView {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -2300,6 +2486,8 @@ class AssistantView {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -2518,6 +2706,7 @@ class AssistantView {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -2528,6 +2717,8 @@ class AssistantView {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -2535,11 +2726,13 @@ class AssistantView {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -2607,6 +2800,7 @@ class AssistantView {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -2643,6 +2837,7 @@ class AssistantView {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -2661,6 +2856,8 @@ class AssistantView {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -2678,6 +2875,8 @@ class AssistantView {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -2687,6 +2886,8 @@ class AssistantView {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -2694,6 +2895,8 @@ class AssistantView {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -2701,6 +2904,7 @@ class AssistantView {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -2722,6 +2926,7 @@ class AssistantView {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -2732,6 +2937,8 @@ class AssistantView {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -2739,6 +2946,8 @@ class AssistantView {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -2767,6 +2976,8 @@ class AssistantView {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -2777,11 +2988,14 @@ class AssistantView {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -2790,6 +3004,8 @@ class AssistantView {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -2843,6 +3059,10 @@ class AssistantView {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -2856,6 +3076,7 @@ class AssistantView {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -2901,6 +3122,7 @@ class AssistantView {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -2912,11 +3134,15 @@ class AssistantView {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -2924,11 +3150,13 @@ class AssistantView {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -2943,6 +3171,9 @@ class AssistantView {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -2955,11 +3186,14 @@ class AssistantView {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -2988,6 +3222,7 @@ class AssistantView {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -3016,6 +3251,7 @@ class AssistantView {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -3040,6 +3276,8 @@ class AssistantView {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -3052,6 +3290,7 @@ class AssistantView {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -3066,18 +3305,21 @@ class AssistantView {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -3098,6 +3340,7 @@ class AssistantView {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -3111,11 +3354,13 @@ class AssistantView {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -3125,6 +3370,8 @@ class AssistantView {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -3139,6 +3386,8 @@ class AssistantView {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -3154,6 +3403,7 @@ class AssistantView {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -3182,6 +3432,7 @@ class AssistantView {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -3196,6 +3447,7 @@ class AssistantView {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -3203,26 +3455,31 @@ class AssistantView {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -3236,6 +3493,7 @@ class AssistantView {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -3264,6 +3522,7 @@ class AssistantView {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -3282,6 +3541,7 @@ class AssistantView {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -3289,36 +3549,43 @@ class AssistantView {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -3331,6 +3598,7 @@ class AssistantView {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -3339,6 +3607,7 @@ class AssistantView {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -3356,6 +3625,7 @@ class AssistantView {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -3365,6 +3635,7 @@ class AssistantView {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -3376,6 +3647,7 @@ class AssistantView {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -3385,6 +3657,7 @@ class AssistantView {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -3394,6 +3667,7 @@ class AssistantView {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -3412,6 +3686,7 @@ class AssistantView {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -3419,6 +3694,7 @@ class AssistantView {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -3452,12 +3728,15 @@ class AssistantView {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -3474,11 +3753,14 @@ class AssistantView {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -3486,6 +3768,7 @@ class AssistantView {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -3497,6 +3780,7 @@ class AssistantView {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -3505,6 +3789,7 @@ class AssistantView {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -3513,11 +3798,13 @@ class AssistantView {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -3525,6 +3812,7 @@ class AssistantView {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -3532,6 +3820,7 @@ class AssistantView {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -3542,6 +3831,7 @@ class AssistantView {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -3552,6 +3842,7 @@ class AssistantView {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -3566,12 +3857,14 @@ class AssistantView {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -3613,6 +3906,7 @@ class AssistantView {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -3629,6 +3923,8 @@ class AssistantView {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -3663,6 +3959,8 @@ class AssistantView {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -3676,6 +3974,9 @@ class AssistantView {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -3705,12 +4006,14 @@ class AssistantView {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3748,6 +4051,10 @@ class AssistantView {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3758,6 +4065,12 @@ class AssistantView {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3781,6 +4094,7 @@ class AssistantView {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3800,11 +4114,14 @@ class AssistantView {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3812,6 +4129,8 @@ class AssistantView {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3829,6 +4148,7 @@ class AssistantView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3874,6 +4194,7 @@ class AssistantView {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3917,15 +4238,20 @@ class AssistantView {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3966,6 +4292,7 @@ class AssistantView {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4000,12 +4327,16 @@ class AssistantView {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -4013,24 +4344,39 @@ class AssistantView {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -4039,14 +4385,19 @@ class AssistantView {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Signals of Devhelp-3.0.Devhelp.AssistantView */
@@ -4055,7 +4406,7 @@ class AssistantView {
     once(sigName: "open-uri", callback: (uri: string) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "open-uri", callback: (uri: string) => void): NodeJS.EventEmitter
     emit(sigName: "open-uri", uri: string): void
-    /* Signals of WebKit2-4.0.WebKit2.WebView */
+    /* Signals of WebKit2-4.1.WebKit2.WebView */
     /**
      * This signal is emitted when the user is challenged with HTTP
      * authentication. To let the  application access or supply
@@ -4069,6 +4420,7 @@ class AssistantView {
      * 
      * The default signal handler will run a default authentication
      * dialog asynchronously for the user to interact with.
+     * @param request a #WebKitAuthenticationRequest
      */
     connect(sigName: "authenticate", callback: ((request: WebKit2.AuthenticationRequest) => boolean)): number
     on(sigName: "authenticate", callback: (request: WebKit2.AuthenticationRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -4137,6 +4489,9 @@ class AssistantView {
      * 
      * The proposed #WebKitContextMenu passed in `context_menu` argument is only valid
      * during the signal emission.
+     * @param contextMenu the proposed #WebKitContextMenu
+     * @param event the #GdkEvent that triggered the context menu
+     * @param hitTestResult a #WebKitHitTestResult
      */
     connect(sigName: "context-menu", callback: ((contextMenu: WebKit2.ContextMenu, event: Gdk.Event, hitTestResult: WebKit2.HitTestResult) => boolean)): number
     on(sigName: "context-menu", callback: (contextMenu: WebKit2.ContextMenu, event: Gdk.Event, hitTestResult: WebKit2.HitTestResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -4165,6 +4520,7 @@ class AssistantView {
      * 
      * The new #WebKitWebView should not be displayed to the user
      * until the #WebKitWebView::ready-to-show signal is emitted.
+     * @param navigationAction a #WebKitNavigationAction
      */
     connect(sigName: "create", callback: ((navigationAction: WebKit2.NavigationAction) => Gtk.Widget)): number
     on(sigName: "create", callback: (navigationAction: WebKit2.NavigationAction) => void, after?: boolean): NodeJS.EventEmitter
@@ -4213,6 +4569,8 @@ class AssistantView {
      * made explicitly, webkit_policy_decision_use() will be the default policy decision. The
      * default signal handler will simply call webkit_policy_decision_use(). Only the first
      * policy decision chosen for a given #WebKitPolicyDecision will have any affect.
+     * @param decision the #WebKitPolicyDecision
+     * @param decisionType a #WebKitPolicyDecisionType denoting the type of `decision`
      */
     connect(sigName: "decide-policy", callback: ((decision: WebKit2.PolicyDecision, decisionType: WebKit2.PolicyDecisionType) => boolean)): number
     on(sigName: "decide-policy", callback: (decision: WebKit2.PolicyDecision, decisionType: WebKit2.PolicyDecisionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -4243,6 +4601,7 @@ class AssistantView {
      * 
      * You can check the `event` parameter to know exactly which kind
      * of event has been detected (see #WebKitInsecureContentEvent).
+     * @param event the #WebKitInsecureContentEvent
      */
     connect(sigName: "insecure-content-detected", callback: ((event: WebKit2.InsecureContentEvent) => void)): number
     on(sigName: "insecure-content-detected", callback: (event: WebKit2.InsecureContentEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4305,6 +4664,7 @@ class AssistantView {
      *     }
      * }
      * </programlisting></informalexample>
+     * @param loadEvent the #WebKitLoadEvent
      */
     connect(sigName: "load-changed", callback: ((loadEvent: WebKit2.LoadEvent) => void)): number
     on(sigName: "load-changed", callback: (loadEvent: WebKit2.LoadEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4322,6 +4682,9 @@ class AssistantView {
      * 
      * By default, if the signal is not handled, a stock error page will be displayed.
      * You need to handle the signal if you want to provide your own error page.
+     * @param loadEvent the #WebKitLoadEvent of the load operation
+     * @param failingUri the URI that failed to load
+     * @param error the #GError that was triggered
      */
     connect(sigName: "load-failed", callback: ((loadEvent: WebKit2.LoadEvent, failingUri: string, error: GLib.Error) => boolean)): number
     on(sigName: "load-failed", callback: (loadEvent: WebKit2.LoadEvent, failingUri: string, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -4338,6 +4701,9 @@ class AssistantView {
      * 
      * If %FALSE is returned, #WebKitWebView::load-failed will be emitted. The load
      * will finish regardless of the returned value.
+     * @param failingUri the URI that failed to load
+     * @param certificate a #GTlsCertificate
+     * @param errors a #GTlsCertificateFlags with the verification status of `certificate`
      */
     connect(sigName: "load-failed-with-tls-errors", callback: ((failingUri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean)): number
     on(sigName: "load-failed-with-tls-errors", callback: (failingUri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -4353,6 +4719,8 @@ class AssistantView {
      * #GdkModifierType flags indicating the state of modifier keys.
      * The signal is emitted again when the mouse is moved out of the
      * current element with a new `hit_test_result`.
+     * @param hitTestResult a #WebKitHitTestResult
+     * @param modifiers a bitmask of #GdkModifierType
      */
     connect(sigName: "mouse-target-changed", callback: ((hitTestResult: WebKit2.HitTestResult, modifiers: number) => void)): number
     on(sigName: "mouse-target-changed", callback: (hitTestResult: WebKit2.HitTestResult, modifiers: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4406,6 +4774,7 @@ class AssistantView {
      * by the specific #WebKitPermissionRequest that could allow or deny it. Check the
      * documentation of classes implementing #WebKitPermissionRequest interface to know
      * their default action.
+     * @param request the #WebKitPermissionRequest
      */
     connect(sigName: "permission-request", callback: ((request: WebKit2.PermissionRequest) => boolean)): number
     on(sigName: "permission-request", callback: (request: WebKit2.PermissionRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -4422,6 +4791,7 @@ class AssistantView {
      * 
      * You can connect to this signal and return %TRUE to cancel the print operation
      * or implement your own print dialog.
+     * @param printOperation the #WebKitPrintOperation that will handle the print request
      */
     connect(sigName: "print", callback: ((printOperation: WebKit2.PrintOperation) => boolean)): number
     on(sigName: "print", callback: (printOperation: WebKit2.PrintOperation) => void, after?: boolean): NodeJS.EventEmitter
@@ -4446,6 +4816,8 @@ class AssistantView {
      * contains the #WebKitURIRequest that will be sent to the server.
      * You can monitor the load operation by connecting to the different signals
      * of `resource`.
+     * @param resource a #WebKitWebResource
+     * @param request a #WebKitURIRequest
      */
     connect(sigName: "resource-load-started", callback: ((resource: WebKit2.WebResource, request: WebKit2.URIRequest) => void)): number
     on(sigName: "resource-load-started", callback: (resource: WebKit2.WebResource, request: WebKit2.URIRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -4480,6 +4852,7 @@ class AssistantView {
      * 
      * The default signal handler will asynchronously run a regular
      * #GtkColorChooser for the user to interact with.
+     * @param request a #WebKitColorChooserRequest
      */
     connect(sigName: "run-color-chooser", callback: ((request: WebKit2.ColorChooserRequest) => boolean)): number
     on(sigName: "run-color-chooser", callback: (request: WebKit2.ColorChooserRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -4498,6 +4871,7 @@ class AssistantView {
      * 
      * The default signal handler will asynchronously run a regular
      * #GtkFileChooserDialog for the user to interact with.
+     * @param request a #WebKitFileChooserRequest
      */
     connect(sigName: "run-file-chooser", callback: ((request: WebKit2.FileChooserRequest) => boolean)): number
     on(sigName: "run-file-chooser", callback: (request: WebKit2.FileChooserRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -4532,6 +4906,7 @@ class AssistantView {
      * webkit_script_dialog_close() when done.
      * If the last reference is removed on a #WebKitScriptDialog and the dialog has not been
      * closed, webkit_script_dialog_close() will be called.
+     * @param dialog the #WebKitScriptDialog to show
      */
     connect(sigName: "script-dialog", callback: ((dialog: WebKit2.ScriptDialog) => boolean)): number
     on(sigName: "script-dialog", callback: (dialog: WebKit2.ScriptDialog) => void, after?: boolean): NodeJS.EventEmitter
@@ -4545,6 +4920,7 @@ class AssistantView {
      * 
      * The default handler will emit a notification using libnotify, if built with
      * support for it.
+     * @param notification a #WebKitNotification
      */
     connect(sigName: "show-notification", callback: ((notification: WebKit2.Notification) => boolean)): number
     on(sigName: "show-notification", callback: (notification: WebKit2.Notification) => void, after?: boolean): NodeJS.EventEmitter
@@ -4561,6 +4937,9 @@ class AssistantView {
      * To handle this signal asynchronously you should keep a ref of the `menu`.
      * 
      * The default signal handler will pop up a #GtkMenu.
+     * @param menu the #WebKitOptionMenu
+     * @param event the #GdkEvent that triggered the menu, or %NULL
+     * @param rectangle the option element area
      */
     connect(sigName: "show-option-menu", callback: ((menu: WebKit2.OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean)): number
     on(sigName: "show-option-menu", callback: (menu: WebKit2.OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -4579,6 +4958,7 @@ class AssistantView {
      * webkit_form_submission_request_submit() when done to continue with the form submission.
      * If the last reference is removed on a #WebKitFormSubmissionRequest and the
      * form has not been submitted, webkit_form_submission_request_submit() will be called.
+     * @param request a #WebKitFormSubmissionRequest
      */
     connect(sigName: "submit-form", callback: ((request: WebKit2.FormSubmissionRequest) => void)): number
     on(sigName: "submit-form", callback: (request: WebKit2.FormSubmissionRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -4594,6 +4974,7 @@ class AssistantView {
      * `message` and returning %TRUE. If the last reference of `message` is removed
      * and the message has not been replied to, the operation in the #WebKitWebPage will
      * finish with error %WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE.
+     * @param message the #WebKitUserMessage received
      */
     connect(sigName: "user-message-received", callback: ((message: WebKit2.UserMessage) => boolean)): number
     on(sigName: "user-message-received", callback: (message: WebKit2.UserMessage) => void, after?: boolean): NodeJS.EventEmitter
@@ -4611,6 +4992,7 @@ class AssistantView {
     /**
      * This signal is emitted when the web process terminates abnormally due
      * to `reason`.
+     * @param reason the a #WebKitWebProcessTerminationReason
      */
     connect(sigName: "web-process-terminated", callback: ((reason: WebKit2.WebProcessTerminationReason) => void)): number
     on(sigName: "web-process-terminated", callback: (reason: WebKit2.WebProcessTerminationReason) => void, after?: boolean): NodeJS.EventEmitter
@@ -4652,6 +5034,7 @@ class AssistantView {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -4666,6 +5049,7 @@ class AssistantView {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -4678,6 +5062,7 @@ class AssistantView {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4688,6 +5073,7 @@ class AssistantView {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4711,6 +5097,7 @@ class AssistantView {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -4721,6 +5108,7 @@ class AssistantView {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -4733,6 +5121,7 @@ class AssistantView {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -4760,6 +5149,7 @@ class AssistantView {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -4769,6 +5159,7 @@ class AssistantView {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -4783,6 +5174,7 @@ class AssistantView {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -4794,6 +5186,7 @@ class AssistantView {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -4806,6 +5199,10 @@ class AssistantView {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4875,6 +5272,12 @@ class AssistantView {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4892,6 +5295,10 @@ class AssistantView {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4902,6 +5309,7 @@ class AssistantView {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -4914,6 +5322,8 @@ class AssistantView {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -4930,6 +5340,8 @@ class AssistantView {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5025,6 +5437,10 @@ class AssistantView {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5049,6 +5465,7 @@ class AssistantView {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -5063,6 +5480,7 @@ class AssistantView {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -5075,6 +5493,7 @@ class AssistantView {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -5085,6 +5504,7 @@ class AssistantView {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -5102,6 +5522,7 @@ class AssistantView {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -5114,6 +5535,7 @@ class AssistantView {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -5127,6 +5549,7 @@ class AssistantView {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -5147,6 +5570,7 @@ class AssistantView {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -5168,6 +5592,7 @@ class AssistantView {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -5182,6 +5607,7 @@ class AssistantView {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -5195,6 +5621,7 @@ class AssistantView {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -5204,6 +5631,7 @@ class AssistantView {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -5218,6 +5646,7 @@ class AssistantView {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -5247,6 +5676,7 @@ class AssistantView {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -5256,6 +5686,7 @@ class AssistantView {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -5270,6 +5701,7 @@ class AssistantView {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -5284,6 +5716,7 @@ class AssistantView {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -5310,6 +5743,7 @@ class AssistantView {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -5321,6 +5755,7 @@ class AssistantView {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -5332,6 +5767,7 @@ class AssistantView {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -5351,6 +5787,10 @@ class AssistantView {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -5370,6 +5810,7 @@ class AssistantView {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -5385,6 +5826,7 @@ class AssistantView {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -5394,6 +5836,7 @@ class AssistantView {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -5419,6 +5862,7 @@ class AssistantView {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -5447,6 +5891,7 @@ class AssistantView {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -5456,6 +5901,7 @@ class AssistantView {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -5470,6 +5916,7 @@ class AssistantView {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -5514,6 +5961,7 @@ class AssistantView {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -5537,6 +5985,7 @@ class AssistantView {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -5550,6 +5999,7 @@ class AssistantView {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -5585,12 +6035,18 @@ class AssistantView {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::automation-presentation-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::automation-presentation-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::automation-presentation-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::automation-presentation-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::automation-presentation-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::camera-capture-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::camera-capture-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::camera-capture-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5616,6 +6072,16 @@ class AssistantView {
     on(sigName: "notify::favicon", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::favicon", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::favicon", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-controlled-by-automation", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-controlled-by-automation", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-controlled-by-automation", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-controlled-by-automation", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-controlled-by-automation", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-ephemeral", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-ephemeral", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-ephemeral", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-ephemeral", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-ephemeral", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::is-loading", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-loading", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::is-loading", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5646,6 +6112,11 @@ class AssistantView {
     on(sigName: "notify::page-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::page-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::page-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::related-view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::related-view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::related-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::related-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::related-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::settings", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::settings", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::settings", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5661,6 +6132,21 @@ class AssistantView {
     on(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::user-content-manager", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::user-content-manager", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::user-content-manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::user-content-manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::user-content-manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::web-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::web-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::web-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::web-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::web-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::website-policies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::website-policies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::website-policies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::website-policies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::website-policies", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::zoom-level", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::zoom-level", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::zoom-level", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5889,14 +6375,16 @@ interface Book_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Book {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.Book */
     /**
      * Compares the #DhBook's by their IDs, with g_ascii_strcasecmp().
+     * @param b a #DhBook.
      */
     cmpById(b: Book): number
     /**
      * Compares the #DhBook's by their title.
+     * @param b a #DhBook.
      */
     cmpByTitle(b: Book): number
     getCompletion(): Completion
@@ -5953,6 +6441,10 @@ class Book {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5963,6 +6455,12 @@ class Book {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5986,6 +6484,7 @@ class Book {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6005,11 +6504,14 @@ class Book {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6017,6 +6519,8 @@ class Book {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6034,6 +6538,7 @@ class Book {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6079,6 +6584,7 @@ class Book {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6122,15 +6628,20 @@ class Book {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6171,6 +6682,7 @@ class Book {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6205,6 +6717,7 @@ class Book {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Devhelp-3.0.Devhelp.Book */
@@ -6255,6 +6768,7 @@ class Book {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6279,13 +6793,14 @@ interface BookList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class BookList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.BookList */
     /**
      * Emits the #DhBookList::add-book signal.
      * 
      * It is a programmer error to call this function if `book` is already inserted
      * in `book_list`.
+     * @param book a #DhBook.
      */
     addBook(book: Book): void
     /**
@@ -6298,6 +6813,7 @@ class BookList {
      * 
      * It is a programmer error to call this function if `book` is not present in
      * `book_list`.
+     * @param book a #DhBook.
      */
     removeBook(book: Book): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6335,6 +6851,10 @@ class BookList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6345,6 +6865,12 @@ class BookList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6368,6 +6894,7 @@ class BookList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6387,11 +6914,14 @@ class BookList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6399,6 +6929,8 @@ class BookList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6416,6 +6948,7 @@ class BookList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6461,6 +6994,7 @@ class BookList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6504,15 +7038,20 @@ class BookList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6553,6 +7092,7 @@ class BookList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6587,6 +7127,7 @@ class BookList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Devhelp-3.0.Devhelp.BookList */
@@ -6597,6 +7138,7 @@ class BookList {
      * The default object method handler adds `book` to the internal #GList
      * of `book_list` after verifying that `book` is not already present in
      * the list.
+     * @param book the #DhBook being added.
      */
     connect(sigName: "add-book", callback: ((book: Book) => void)): number
     on(sigName: "add-book", callback: (book: Book) => void, after?: boolean): NodeJS.EventEmitter
@@ -6610,6 +7152,7 @@ class BookList {
      * The default object method handler removes `book` from the internal
      * #GList of `book_list,` and verifies that `book` was present in the list
      * and that `book` was not inserted several times.
+     * @param book the #DhBook being removed.
      */
     connect(sigName: "remove-book", callback: ((book: Book) => void)): number
     on(sigName: "remove-book", callback: (book: Book) => void, after?: boolean): NodeJS.EventEmitter
@@ -6645,6 +7188,7 @@ class BookList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6676,7 +7220,7 @@ interface BookListBuilder_ConstructProps extends GObject.Object_ConstructProps {
 }
 class BookListBuilder {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.BookListBuilder */
     /**
      * Creates the default #DhBookListDirectory's and adds them to `builder` with
@@ -6714,6 +7258,7 @@ class BookListBuilder {
      * sub-#DhBookList's must be added in order of decreasing priority (the first
      * sub-#DhBookList added has the highest priority). The priority is used in case
      * of book ID conflicts (see dh_book_get_id()).
+     * @param subBookList a #DhBookList.
      */
     addSubBookList(subBookList: BookList): void
     /**
@@ -6732,6 +7277,7 @@ class BookListBuilder {
      * settings from several #DhSettings objects and combine them. Only the last
      * call to this function is taken into account when creating the #DhBookList
      * with dh_book_list_builder_create_object().
+     * @param settings a #DhSettings, or %NULL.
      */
     readBooksDisabledSetting(settings?: Settings | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6769,6 +7315,10 @@ class BookListBuilder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6779,6 +7329,12 @@ class BookListBuilder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6802,6 +7358,7 @@ class BookListBuilder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6821,11 +7378,14 @@ class BookListBuilder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6833,6 +7393,8 @@ class BookListBuilder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6850,6 +7412,7 @@ class BookListBuilder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6895,6 +7458,7 @@ class BookListBuilder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6938,15 +7502,20 @@ class BookListBuilder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6987,6 +7556,7 @@ class BookListBuilder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7021,6 +7591,7 @@ class BookListBuilder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7052,6 +7623,7 @@ class BookListBuilder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7080,11 +7652,16 @@ interface BookListDirectory_ConstructProps extends BookList_ConstructProps {
     directory?: Gio.File
 }
 class BookListDirectory {
+    /* Properties of Devhelp-3.0.Devhelp.BookListDirectory */
+    /**
+     * The directory, as a #GFile, containing a set of Devhelp books.
+     */
+    readonly directory: Gio.File
     /* Fields of Devhelp-3.0.Devhelp.BookList */
-    readonly parent: GObject.Object
-    readonly priv: BookListPrivate
+    parent: GObject.Object
+    priv: BookListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.BookListDirectory */
     getDirectory(): Gio.File
     /* Methods of Devhelp-3.0.Devhelp.BookList */
@@ -7093,6 +7670,7 @@ class BookListDirectory {
      * 
      * It is a programmer error to call this function if `book` is already inserted
      * in `book_list`.
+     * @param book a #DhBook.
      */
     addBook(book: Book): void
     /**
@@ -7105,6 +7683,7 @@ class BookListDirectory {
      * 
      * It is a programmer error to call this function if `book` is not present in
      * `book_list`.
+     * @param book a #DhBook.
      */
     removeBook(book: Book): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7142,6 +7721,10 @@ class BookListDirectory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7152,6 +7735,12 @@ class BookListDirectory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7175,6 +7764,7 @@ class BookListDirectory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7194,11 +7784,14 @@ class BookListDirectory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7206,6 +7799,8 @@ class BookListDirectory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7223,6 +7818,7 @@ class BookListDirectory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7268,6 +7864,7 @@ class BookListDirectory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7311,15 +7908,20 @@ class BookListDirectory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7360,6 +7962,7 @@ class BookListDirectory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7394,6 +7997,7 @@ class BookListDirectory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Devhelp-3.0.Devhelp.BookList */
@@ -7404,6 +8008,7 @@ class BookListDirectory {
      * The default object method handler adds `book` to the internal #GList
      * of `book_list` after verifying that `book` is not already present in
      * the list.
+     * @param book the #DhBook being added.
      */
     connect(sigName: "add-book", callback: ((book: Book) => void)): number
     on(sigName: "add-book", callback: (book: Book) => void, after?: boolean): NodeJS.EventEmitter
@@ -7417,6 +8022,7 @@ class BookListDirectory {
      * The default object method handler removes `book` from the internal
      * #GList of `book_list,` and verifies that `book` was present in the list
      * and that `book` was not inserted several times.
+     * @param book the #DhBook being removed.
      */
     connect(sigName: "remove-book", callback: ((book: Book) => void)): number
     on(sigName: "remove-book", callback: (book: Book) => void, after?: boolean): NodeJS.EventEmitter
@@ -7452,12 +8058,18 @@ class BookListDirectory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::directory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::directory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::directory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::directory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::directory", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7478,7 +8090,7 @@ interface BookManager_ConstructProps extends GObject.Object_ConstructProps {
 }
 class BookManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.BookManager */
     populate(): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7516,6 +8128,10 @@ class BookManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7526,6 +8142,12 @@ class BookManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7549,6 +8171,7 @@ class BookManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7568,11 +8191,14 @@ class BookManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7580,6 +8206,8 @@ class BookManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7597,6 +8225,7 @@ class BookManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7642,6 +8271,7 @@ class BookManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7685,15 +8315,20 @@ class BookManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7734,6 +8369,7 @@ class BookManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7768,6 +8404,7 @@ class BookManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7799,6 +8436,7 @@ class BookManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7849,6 +8487,12 @@ interface BookTree_ConstructProps extends Gtk.TreeView_ConstructProps {
     vscrollPolicy?: Gtk.ScrollablePolicy
 }
 class BookTree {
+    /* Properties of Devhelp-3.0.Devhelp.BookTree */
+    /**
+     * The #DhProfile. If set to %NULL, the default profile as returned by
+     * dh_profile_get_default() is used.
+     */
+    readonly profile: Profile
     /* Properties of Gtk-3.0.Gtk.TreeView */
     /**
      * The activate-on-single-click property specifies whether the "row-activated" signal
@@ -8103,13 +8747,13 @@ class BookTree {
      */
     vscrollPolicy: Gtk.ScrollablePolicy
     /* Fields of Gtk-3.0.Gtk.TreeView */
-    readonly parent: Gtk.Container
+    parent: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.BookTree */
     getProfile(): Profile
     getSelectedLink(): Link | null
@@ -8117,6 +8761,7 @@ class BookTree {
      * Selects the row corresponding to `uri`. It searches in the tree a #DhLink
      * being at `uri` (if it's an exact match), or containing `uri` (if `uri` contains
      * an anchor).
+     * @param uri the URI to select.
      */
     selectUri(uri: string): void
     /* Methods of Gtk-3.0.Gtk.TreeView */
@@ -8124,6 +8769,7 @@ class BookTree {
      * Appends `column` to the list of columns. If `tree_view` has “fixed_height”
      * mode enabled, then `column` must have its “sizing” property set to be
      * GTK_TREE_VIEW_COLUMN_FIXED.
+     * @param column The #GtkTreeViewColumn to add.
      */
     appendColumn(column: Gtk.TreeViewColumn): number
     /**
@@ -8132,6 +8778,7 @@ class BookTree {
     collapseAll(): void
     /**
      * Collapses a row (hides its child rows, if they exist).
+     * @param path path to a row in the `tree_view`
      */
     collapseRow(path: Gtk.TreePath): boolean
     /**
@@ -8142,46 +8789,64 @@ class BookTree {
     /**
      * Converts bin_window coordinates to coordinates for the
      * tree (the full scrollable area of the tree).
+     * @param bx X coordinate relative to bin_window
+     * @param by Y coordinate relative to bin_window
      */
     convertBinWindowToTreeCoords(bx: number, by: number): [ /* tx */ number, /* ty */ number ]
     /**
      * Converts bin_window coordinates (see gtk_tree_view_get_bin_window())
      * to widget relative coordinates.
+     * @param bx bin_window X coordinate
+     * @param by bin_window Y coordinate
      */
     convertBinWindowToWidgetCoords(bx: number, by: number): [ /* wx */ number, /* wy */ number ]
     /**
      * Converts tree coordinates (coordinates in full scrollable area of the tree)
      * to bin_window coordinates.
+     * @param tx tree X coordinate
+     * @param ty tree Y coordinate
      */
     convertTreeToBinWindowCoords(tx: number, ty: number): [ /* bx */ number, /* by */ number ]
     /**
      * Converts tree coordinates (coordinates in full scrollable area of the tree)
      * to widget coordinates.
+     * @param tx X coordinate relative to the tree
+     * @param ty Y coordinate relative to the tree
      */
     convertTreeToWidgetCoords(tx: number, ty: number): [ /* wx */ number, /* wy */ number ]
     /**
      * Converts widget coordinates to coordinates for the bin_window
      * (see gtk_tree_view_get_bin_window()).
+     * @param wx X coordinate relative to the widget
+     * @param wy Y coordinate relative to the widget
      */
     convertWidgetToBinWindowCoords(wx: number, wy: number): [ /* bx */ number, /* by */ number ]
     /**
      * Converts widget coordinates to coordinates for the
      * tree (the full scrollable area of the tree).
+     * @param wx X coordinate relative to the widget
+     * @param wy Y coordinate relative to the widget
      */
     convertWidgetToTreeCoords(wx: number, wy: number): [ /* tx */ number, /* ty */ number ]
     /**
      * Creates a #cairo_surface_t representation of the row at `path`.
      * This image is used for a drag icon.
+     * @param path a #GtkTreePath in `tree_view`
      */
     createRowDragIcon(path: Gtk.TreePath): cairo.Surface
     /**
      * Turns `tree_view` into a drop destination for automatic DND. Calling
      * this method sets #GtkTreeView:reorderable to %FALSE.
+     * @param targets the table of targets that           the drag will support
+     * @param actions the bitmask of possible actions for a drag from this    widget
      */
     enableModelDragDest(targets: Gtk.TargetEntry[], actions: Gdk.DragAction): void
     /**
      * Turns `tree_view` into a drag source for automatic DND. Calling this
      * method sets #GtkTreeView:reorderable to %FALSE.
+     * @param startButtonMask Mask of allowed buttons to start drag
+     * @param targets the table of targets that the drag will support
+     * @param actions the bitmask of possible actions for a drag from this    widget
      */
     enableModelDragSource(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[], actions: Gdk.DragAction): void
     /**
@@ -8190,11 +8855,14 @@ class BookTree {
     expandAll(): void
     /**
      * Opens the row so its children are visible.
+     * @param path path to a row
+     * @param openAll whether to recursively expand, or just expand immediate children
      */
     expandRow(path: Gtk.TreePath, openAll: boolean): boolean
     /**
      * Expands the row at `path`. This will also expand all parent rows of
      * `path` as necessary.
+     * @param path path to a row.
      */
     expandToPath(path: Gtk.TreePath): void
     /**
@@ -8211,6 +8879,8 @@ class BookTree {
      * areas tile to cover the entire bin window.  Contrast with the `cell_area,`
      * returned by gtk_tree_view_get_cell_area(), which returns only the cell
      * itself, excluding surrounding borders and the tree expander area.
+     * @param path a #GtkTreePath for the row, or %NULL to get only horizontal coordinates
+     * @param column a #GtkTreeViewColumn for the column, or %NULL to get only vertical coordiantes
      */
     getBackgroundArea(path?: Gtk.TreePath | null, column?: Gtk.TreeViewColumn | null): /* rect */ Gdk.Rectangle
     /**
@@ -8229,10 +8899,13 @@ class BookTree {
      * returned rectangle is equivalent to the `cell_area` passed to
      * gtk_cell_renderer_render().  This function is only valid if `tree_view` is
      * realized.
+     * @param path a #GtkTreePath for the row, or %NULL to get only horizontal coordinates
+     * @param column a #GtkTreeViewColumn for the column, or %NULL to get only vertical coordinates
      */
     getCellArea(path?: Gtk.TreePath | null, column?: Gtk.TreeViewColumn | null): /* rect */ Gdk.Rectangle
     /**
      * Gets the #GtkTreeViewColumn at the given position in the #tree_view.
+     * @param n The position of the column, counting from 0.
      */
     getColumn(n: number): Gtk.TreeViewColumn | null
     /**
@@ -8254,6 +8927,8 @@ class BookTree {
      * `drag_y` are expected to be in widget coordinates.  This function is only
      * meaningful if `tree_view` is realized.  Therefore this function will always
      * return %FALSE if `tree_view` is not realized or does not have a model.
+     * @param dragX the position to determine the destination row for
+     * @param dragY the position to determine the destination row for
      */
     getDestRowAtPos(dragX: number, dragY: number): [ /* returnType */ boolean, /* path */ Gtk.TreePath | null, /* pos */ Gtk.TreeViewDropPosition | null ]
     /**
@@ -8334,6 +9009,8 @@ class BookTree {
      * For converting widget coordinates (eg. the ones you get from
      * GtkWidget::query-tooltip), please see
      * gtk_tree_view_convert_widget_to_bin_window_coords().
+     * @param x The x position to be identified (relative to bin_window).
+     * @param y The y position to be identified (relative to bin_window).
      */
     getPathAtPos(x: number, y: number): [ /* returnType */ boolean, /* path */ Gtk.TreePath | null, /* column */ Gtk.TreeViewColumn | null, /* cellX */ number | null, /* cellY */ number | null ]
     /**
@@ -8386,6 +9063,9 @@ class BookTree {
      * `model,` `path` and `iter` which have been provided will be set to point to
      * that row and the corresponding model.  `x` and `y` will always be converted
      * to be relative to `tree_view’`s bin_window if `keyboard_tooltip` is %FALSE.
+     * @param x the x coordinate (relative to widget coordinates)
+     * @param y the y coordinate (relative to widget coordinates)
+     * @param keyboardTip whether this is a keyboard tooltip or not
      */
     getTooltipContext(x: number, y: number, keyboardTip: boolean): [ /* returnType */ boolean, /* x */ number, /* y */ number, /* model */ Gtk.TreeModel | null, /* path */ Gtk.TreePath | null, /* iter */ Gtk.TreeIter | null ]
     /**
@@ -8412,6 +9092,8 @@ class BookTree {
      * -1, then the column is inserted at the end. If `tree_view` has
      * “fixed_height” mode enabled, then `column` must have its “sizing” property
      * set to be GTK_TREE_VIEW_COLUMN_FIXED.
+     * @param column The #GtkTreeViewColumn to be inserted.
+     * @param position The position to insert `column` in.
      */
     insertColumn(column: Gtk.TreeViewColumn, position: number): number
     /**
@@ -8421,6 +9103,10 @@ class BookTree {
      * gtk_tree_view_column_set_cell_data_func(), gtk_tree_view_column_pack_start().
      * If `tree_view` has “fixed_height” mode enabled, then the new column will have its
      * “sizing” property set to be GTK_TREE_VIEW_COLUMN_FIXED.
+     * @param position Position to insert, -1 for append
+     * @param title column title
+     * @param cell cell renderer for column
+     * @param func function to set attributes of cell renderer
      */
     insertColumnWithDataFunc(position: number, title: string, cell: Gtk.CellRenderer, func: Gtk.TreeCellDataFunc): number
     /**
@@ -8441,6 +9127,8 @@ class BookTree {
      * The `path,` `column,` `cell_x` and `cell_y` arguments will be filled in
      * likewise as for gtk_tree_view_get_path_at_pos().  Please see
      * gtk_tree_view_get_path_at_pos() for more information.
+     * @param x The x position to be identified (relative to bin_window)
+     * @param y The y position to be identified (relative to bin_window)
      */
     isBlankAtPos(x: number, y: number): [ /* returnType */ boolean, /* path */ Gtk.TreePath | null, /* column */ Gtk.TreeViewColumn | null, /* cellX */ number | null, /* cellY */ number | null ]
     /**
@@ -8450,23 +9138,30 @@ class BookTree {
     isRubberBandingActive(): boolean
     /**
      * Calls `func` on all expanded rows.
+     * @param func A function to be called
      */
     mapExpandedRows(func: Gtk.TreeViewMappingFunc): void
     /**
      * Moves `column` to be after to `base_column`.  If `base_column` is %NULL, then
      * `column` is placed in the first position.
+     * @param column The #GtkTreeViewColumn to be moved.
+     * @param baseColumn The #GtkTreeViewColumn to be moved relative to, or %NULL.
      */
     moveColumnAfter(column: Gtk.TreeViewColumn, baseColumn?: Gtk.TreeViewColumn | null): void
     /**
      * Removes `column` from `tree_view`.
+     * @param column The #GtkTreeViewColumn to remove.
      */
     removeColumn(column: Gtk.TreeViewColumn): number
     /**
      * Activates the cell determined by `path` and `column`.
+     * @param path The #GtkTreePath to be activated.
+     * @param column The #GtkTreeViewColumn to be activated.
      */
     rowActivated(path: Gtk.TreePath, column: Gtk.TreeViewColumn): void
     /**
      * Returns %TRUE if the node pointed to by `path` is expanded in `tree_view`.
+     * @param path A #GtkTreePath to test expansion state.
      */
     rowExpanded(path: Gtk.TreePath): boolean
     /**
@@ -8486,6 +9181,11 @@ class BookTree {
      * This function only works if the model is set, and `path` is a valid row on the
      * model.  If the model changes before the `tree_view` is realized, the centered
      * path will be modified to reflect this change.
+     * @param path The path of the row to move to, or %NULL.
+     * @param column The #GtkTreeViewColumn to move horizontally to, or %NULL.
+     * @param useAlign whether to use alignment arguments, or %FALSE.
+     * @param rowAlign The vertical alignment of the row specified by `path`.
+     * @param colAlign The horizontal alignment of the column specified by `column`.
      */
     scrollToCell(path: Gtk.TreePath | null, column: Gtk.TreeViewColumn | null, useAlign: boolean, rowAlign: number, colAlign: number): void
     /**
@@ -8496,11 +9196,14 @@ class BookTree {
      * using gtk_tree_view_scroll_to_cell().
      * 
      * If either `tree_x` or `tree_y` are -1, then that direction isn’t scrolled.
+     * @param treeX X coordinate of new top-left pixel of visible area, or -1
+     * @param treeY Y coordinate of new top-left pixel of visible area, or -1
      */
     scrollToPoint(treeX: number, treeY: number): void
     /**
      * Cause the #GtkTreeView::row-activated signal to be emitted
      * on a single click instead of a double click.
+     * @param single %TRUE to emit row-activated on a single click
      */
     setActivateOnSingleClick(single: boolean): void
     /**
@@ -8513,6 +9216,7 @@ class BookTree {
      * are %NULL, then they indicate an edge.  If `func` is set to be %NULL, then
      * `tree_view` reverts to the default behavior of allowing all columns to be
      * dropped everywhere.
+     * @param func A function to determine which columns are reorderable, or %NULL.
      */
     setColumnDragFunction(func?: Gtk.TreeViewColumnDropFunc | null): void
     /**
@@ -8527,6 +9231,9 @@ class BookTree {
      * 
      * If `path` is invalid for `model,` the current cursor (if any) will be unset
      * and the function will return without failing.
+     * @param path A #GtkTreePath
+     * @param focusColumn A #GtkTreeViewColumn, or %NULL
+     * @param startEditing %TRUE if the specified cell should start being edited.
      */
     setCursor(path: Gtk.TreePath, focusColumn: Gtk.TreeViewColumn | null, startEditing: boolean): void
     /**
@@ -8544,17 +9251,24 @@ class BookTree {
      * 
      * If `path` is invalid for `model,` the current cursor (if any) will be unset
      * and the function will return without failing.
+     * @param path A #GtkTreePath
+     * @param focusColumn A #GtkTreeViewColumn, or %NULL
+     * @param focusCell A #GtkCellRenderer, or %NULL
+     * @param startEditing %TRUE if the specified cell should start being edited.
      */
     setCursorOnCell(path: Gtk.TreePath, focusColumn: Gtk.TreeViewColumn | null, focusCell: Gtk.CellRenderer | null, startEditing: boolean): void
     /**
      * This function should almost never be used.  It is meant for private use by
      * ATK for determining the number of visible children that are removed when the
      * user collapses a row, or a row is deleted.
+     * @param func Function to be called when a view row is destroyed, or %NULL
      */
     setDestroyCountFunc(func?: Gtk.TreeDestroyCountFunc | null): void
     /**
      * Sets the row that is highlighted for feedback.
      * If `path` is %NULL, an existing highlight is removed.
+     * @param path The path of the row to highlight, or %NULL
+     * @param pos Specifies whether to drop before, after or into the row
      */
     setDragDestRow(path: Gtk.TreePath | null, pos: Gtk.TreeViewDropPosition): void
     /**
@@ -8563,11 +9277,13 @@ class BookTree {
      * 
      * Note that even if this is %FALSE, the user can still initiate a search
      * using the “start-interactive-search” key binding.
+     * @param enableSearch %TRUE, if the user can search interactively
      */
     setEnableSearch(enableSearch: boolean): void
     /**
      * Sets whether to draw lines interconnecting the expanders in `tree_view`.
      * This does not have any visible effects for lists.
+     * @param enabled %TRUE to enable tree line drawing, %FALSE otherwise.
      */
     setEnableTreeLines(enabled: boolean): void
     /**
@@ -8577,6 +9293,7 @@ class BookTree {
      * 
      * If you do not want expander arrow to appear in your tree, set the
      * expander column to a hidden column.
+     * @param column %NULL, or the column to draw the expander arrow at.
      */
     setExpanderColumn(column?: Gtk.TreeViewColumn | null): void
     /**
@@ -8585,28 +9302,34 @@ class BookTree {
      * rows have the same height.
      * Only enable this option if all rows are the same height and all
      * columns are of type %GTK_TREE_VIEW_COLUMN_FIXED.
+     * @param enable %TRUE to enable fixed height mode
      */
     setFixedHeightMode(enable: boolean): void
     /**
      * Sets which grid lines to draw in `tree_view`.
+     * @param gridLines a #GtkTreeViewGridLines value indicating which grid lines to enable.
      */
     setGridLines(gridLines: Gtk.TreeViewGridLines): void
     /**
      * Sets the #GtkAdjustment for the current horizontal aspect.
+     * @param adjustment The #GtkAdjustment to set, or %NULL
      */
     setHadjustment(adjustment?: Gtk.Adjustment | null): void
     /**
      * Allow the column title buttons to be clicked.
+     * @param setting %TRUE if the columns are clickable.
      */
     setHeadersClickable(setting: boolean): void
     /**
      * Sets the visibility state of the headers.
+     * @param headersVisible %TRUE if the headers are visible
      */
     setHeadersVisible(headersVisible: boolean): void
     /**
      * Enables or disables the hover expansion mode of `tree_view`.
      * Hover expansion makes rows expand or collapse if the pointer
      * moves over them.
+     * @param expand %TRUE to enable hover selection mode
      */
     setHoverExpand(expand: boolean): void
     /**
@@ -8614,6 +9337,7 @@ class BookTree {
      * Hover selection makes the selected row follow the pointer.
      * Currently, this works only for the selection modes
      * %GTK_SELECTION_SINGLE and %GTK_SELECTION_BROWSE.
+     * @param hover %TRUE to enable hover selection mode
      */
     setHoverSelection(hover: boolean): void
     /**
@@ -8622,12 +9346,14 @@ class BookTree {
      * pixels, a value of 0 disables this feature and in this case only the default
      * indentation will be used.
      * This does not have any visible effects for lists.
+     * @param indentation the amount, in pixels, of extra indentation in `tree_view`.
      */
     setLevelIndentation(indentation: number): void
     /**
      * Sets the model for a #GtkTreeView.  If the `tree_view` already has a model
      * set, it will remove it before setting the new model.  If `model` is %NULL,
      * then it will unset the old model.
+     * @param model The model.
      */
     setModel(model?: Gtk.TreeModel | null): void
     /**
@@ -8645,18 +9371,21 @@ class BookTree {
      * This function does not give you any degree of control over the order -- any
      * reordering is allowed.  If more control is needed, you should probably
      * handle drag and drop manually.
+     * @param reorderable %TRUE, if the tree can be reordered.
      */
     setReorderable(reorderable: boolean): void
     /**
      * Sets the row separator function, which is used to determine
      * whether a row should be drawn as a separator. If the row separator
      * function is %NULL, no separators are drawn. This is the default value.
+     * @param func a #GtkTreeViewRowSeparatorFunc
      */
     setRowSeparatorFunc(func?: Gtk.TreeViewRowSeparatorFunc | null): void
     /**
      * Enables or disables rubber banding in `tree_view`.  If the selection mode
      * is #GTK_SELECTION_MULTIPLE, rubber banding will allow the user to select
      * multiple rows by dragging the mouse.
+     * @param enable %TRUE to enable rubber banding
      */
     setRubberBanding(enable: boolean): void
     /**
@@ -8675,6 +9404,7 @@ class BookTree {
      * the theme engine that your tree makes alternating colors useful
      * from a functional standpoint (since it has lots of columns,
      * generally).
+     * @param setting %TRUE if the tree requires reading across rows
      */
     setRulesHint(setting: boolean): void
     /**
@@ -8687,6 +9417,7 @@ class BookTree {
      * 
      * Note that `column` refers to a column of the current model. The search
      * column is reset to -1 when the model is changed.
+     * @param column the column of the model to search in, or -1 to disable searching
      */
     setSearchColumn(column: number): void
     /**
@@ -8695,16 +9426,19 @@ class BookTree {
      * in our interface at all time at a fixed position.  Passing %NULL for
      * `entry` will make the interactive search code use the built-in popup
      * entry again.
+     * @param entry the entry the interactive search code of `tree_view` should use or %NULL
      */
     setSearchEntry(entry?: Gtk.Entry | null): void
     /**
      * Sets the compare function for the interactive search capabilities; note
      * that somewhat like strcmp() returning 0 for equality
      * #GtkTreeViewSearchEqualFunc returns %FALSE on matches.
+     * @param searchEqualFunc the compare function to use during the search
      */
     setSearchEqualFunc(searchEqualFunc: Gtk.TreeViewSearchEqualFunc): void
     /**
      * Sets the function to use when positioning the search dialog.
+     * @param func the function to use to position the search dialog, or %NULL    to use the default search position function
      */
     setSearchPositionFunc(func?: Gtk.TreeViewSearchPositionFunc | null): void
     /**
@@ -8715,6 +9449,7 @@ class BookTree {
      * can set a custom indentation in this case using
      * gtk_tree_view_set_level_indentation().
      * This does not have any visible effects for lists.
+     * @param enabled %TRUE to enable expander drawing, %FALSE otherwise.
      */
     setShowExpanders(enabled: boolean): void
     /**
@@ -8729,6 +9464,10 @@ class BookTree {
      * mouse cursor for this function to operate correctly.
      * 
      * See also gtk_tree_view_set_tooltip_column() for a simpler alternative.
+     * @param tooltip a #GtkTooltip
+     * @param path a #GtkTreePath or %NULL
+     * @param column a #GtkTreeViewColumn or %NULL
+     * @param cell a #GtkCellRenderer or %NULL
      */
     setTooltipCell(tooltip: Gtk.Tooltip, path?: Gtk.TreePath | null, column?: Gtk.TreeViewColumn | null, cell?: Gtk.CellRenderer | null): void
     /**
@@ -8742,16 +9481,20 @@ class BookTree {
      * 
      * Note that the signal handler sets the text with gtk_tooltip_set_markup(),
      * so &, <, etc have to be escaped in the text.
+     * @param column an integer, which is a valid column number for `tree_view’`s model
      */
     setTooltipColumn(column: number): void
     /**
      * Sets the tip area of `tooltip` to be the area covered by the row at `path`.
      * See also gtk_tree_view_set_tooltip_column() for a simpler alternative.
      * See also gtk_tooltip_set_tip_area().
+     * @param tooltip a #GtkTooltip
+     * @param path a #GtkTreePath
      */
     setTooltipRow(tooltip: Gtk.Tooltip, path: Gtk.TreePath): void
     /**
      * Sets the #GtkAdjustment for the current vertical aspect.
+     * @param adjustment The #GtkAdjustment to set, or %NULL
      */
     setVadjustment(adjustment?: Gtk.Adjustment | null): void
     /**
@@ -8780,11 +9523,15 @@ class BookTree {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -8795,6 +9542,8 @@ class BookTree {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -8803,10 +9552,15 @@ class BookTree {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -8826,6 +9580,7 @@ class BookTree {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -8840,6 +9595,7 @@ class BookTree {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -8879,6 +9635,7 @@ class BookTree {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -8902,6 +9659,8 @@ class BookTree {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -8914,6 +9673,7 @@ class BookTree {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -8927,6 +9687,7 @@ class BookTree {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -8937,6 +9698,7 @@ class BookTree {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -8948,6 +9710,7 @@ class BookTree {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -8960,6 +9723,7 @@ class BookTree {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -8972,6 +9736,7 @@ class BookTree {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -8979,6 +9744,7 @@ class BookTree {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -8987,6 +9753,7 @@ class BookTree {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -9010,17 +9777,25 @@ class BookTree {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -9030,6 +9805,7 @@ class BookTree {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -9053,6 +9829,7 @@ class BookTree {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -9063,6 +9840,7 @@ class BookTree {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -9085,6 +9863,7 @@ class BookTree {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -9095,6 +9874,7 @@ class BookTree {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -9114,6 +9894,7 @@ class BookTree {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -9131,6 +9912,7 @@ class BookTree {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -9175,6 +9957,7 @@ class BookTree {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -9183,11 +9966,16 @@ class BookTree {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -9216,12 +10004,22 @@ class BookTree {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -9256,6 +10054,8 @@ class BookTree {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -9310,16 +10110,23 @@ class BookTree {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -9329,6 +10136,7 @@ class BookTree {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -9346,6 +10154,9 @@ class BookTree {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -9386,33 +10197,41 @@ class BookTree {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -9442,6 +10261,7 @@ class BookTree {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -9471,6 +10291,7 @@ class BookTree {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -9502,6 +10323,7 @@ class BookTree {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -9564,6 +10386,7 @@ class BookTree {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -9628,6 +10451,7 @@ class BookTree {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -9637,11 +10461,13 @@ class BookTree {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -9795,6 +10621,7 @@ class BookTree {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -9882,6 +10709,7 @@ class BookTree {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -9893,6 +10721,7 @@ class BookTree {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -9934,6 +10763,7 @@ class BookTree {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -10064,6 +10894,8 @@ class BookTree {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -10282,6 +11114,7 @@ class BookTree {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -10292,6 +11125,8 @@ class BookTree {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -10299,11 +11134,13 @@ class BookTree {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -10371,6 +11208,7 @@ class BookTree {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -10407,6 +11245,7 @@ class BookTree {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -10425,6 +11264,8 @@ class BookTree {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -10442,6 +11283,8 @@ class BookTree {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -10451,6 +11294,8 @@ class BookTree {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -10458,6 +11303,8 @@ class BookTree {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -10465,6 +11312,7 @@ class BookTree {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -10486,6 +11334,7 @@ class BookTree {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -10496,6 +11345,8 @@ class BookTree {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -10503,6 +11354,8 @@ class BookTree {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -10531,6 +11384,8 @@ class BookTree {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -10541,11 +11396,14 @@ class BookTree {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -10554,6 +11412,8 @@ class BookTree {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -10607,6 +11467,10 @@ class BookTree {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -10620,6 +11484,7 @@ class BookTree {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -10665,6 +11530,7 @@ class BookTree {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -10676,11 +11542,15 @@ class BookTree {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -10688,11 +11558,13 @@ class BookTree {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -10707,6 +11579,9 @@ class BookTree {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -10719,11 +11594,14 @@ class BookTree {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -10752,6 +11630,7 @@ class BookTree {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -10780,6 +11659,7 @@ class BookTree {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -10804,6 +11684,8 @@ class BookTree {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -10816,6 +11698,7 @@ class BookTree {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -10830,18 +11713,21 @@ class BookTree {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -10862,6 +11748,7 @@ class BookTree {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -10875,11 +11762,13 @@ class BookTree {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -10889,6 +11778,8 @@ class BookTree {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -10903,6 +11794,8 @@ class BookTree {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -10918,6 +11811,7 @@ class BookTree {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -10946,6 +11840,7 @@ class BookTree {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -10960,6 +11855,7 @@ class BookTree {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -10967,26 +11863,31 @@ class BookTree {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -11000,6 +11901,7 @@ class BookTree {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -11028,6 +11930,7 @@ class BookTree {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -11046,6 +11949,7 @@ class BookTree {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -11053,36 +11957,43 @@ class BookTree {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -11095,6 +12006,7 @@ class BookTree {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -11103,6 +12015,7 @@ class BookTree {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -11120,6 +12033,7 @@ class BookTree {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -11129,6 +12043,7 @@ class BookTree {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -11140,6 +12055,7 @@ class BookTree {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -11149,6 +12065,7 @@ class BookTree {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -11158,6 +12075,7 @@ class BookTree {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -11176,6 +12094,7 @@ class BookTree {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -11183,6 +12102,7 @@ class BookTree {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -11216,12 +12136,15 @@ class BookTree {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -11238,11 +12161,14 @@ class BookTree {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -11250,6 +12176,7 @@ class BookTree {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -11261,6 +12188,7 @@ class BookTree {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -11269,6 +12197,7 @@ class BookTree {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -11277,11 +12206,13 @@ class BookTree {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -11289,6 +12220,7 @@ class BookTree {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -11296,6 +12228,7 @@ class BookTree {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -11306,6 +12239,7 @@ class BookTree {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -11316,6 +12250,7 @@ class BookTree {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -11330,12 +12265,14 @@ class BookTree {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -11377,6 +12314,7 @@ class BookTree {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -11393,6 +12331,8 @@ class BookTree {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -11427,6 +12367,8 @@ class BookTree {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -11440,6 +12382,9 @@ class BookTree {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -11469,12 +12414,14 @@ class BookTree {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11512,6 +12459,10 @@ class BookTree {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11522,6 +12473,12 @@ class BookTree {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11545,6 +12502,7 @@ class BookTree {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11564,11 +12522,14 @@ class BookTree {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11576,6 +12537,8 @@ class BookTree {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11593,6 +12556,7 @@ class BookTree {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11638,6 +12602,7 @@ class BookTree {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11681,15 +12646,20 @@ class BookTree {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11730,6 +12700,7 @@ class BookTree {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11764,12 +12735,16 @@ class BookTree {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -11777,24 +12752,39 @@ class BookTree {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -11803,14 +12793,19 @@ class BookTree {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Methods of Gtk-3.0.Gtk.Scrollable */
@@ -11832,22 +12827,26 @@ class BookTree {
     getVscrollPolicy(): Gtk.ScrollablePolicy
     /**
      * Sets the horizontal adjustment of the #GtkScrollable.
+     * @param hadjustment a #GtkAdjustment
      */
     setHadjustment(hadjustment?: Gtk.Adjustment | null): void
     /**
      * Sets the #GtkScrollablePolicy to determine whether
      * horizontal scrolling should start below the minimum width or
      * below the natural width.
+     * @param policy the horizontal #GtkScrollablePolicy
      */
     setHscrollPolicy(policy: Gtk.ScrollablePolicy): void
     /**
      * Sets the vertical adjustment of the #GtkScrollable.
+     * @param vadjustment a #GtkAdjustment
      */
     setVadjustment(vadjustment?: Gtk.Adjustment | null): void
     /**
      * Sets the #GtkScrollablePolicy to determine whether
      * vertical scrolling should start below the minimum height or
      * below the natural height.
+     * @param policy the vertical #GtkScrollablePolicy
      */
     setVscrollPolicy(policy: Gtk.ScrollablePolicy): void
     /* Signals of Devhelp-3.0.Devhelp.BookTree */
@@ -11888,6 +12887,8 @@ class BookTree {
      * programmatically. In contrast to gtk_tree_view_set_cursor() and
      * gtk_tree_view_set_cursor_on_cell() when moving horizontally
      * #GtkTreeView::move-cursor does not reset the current selection.
+     * @param step the granularity of the move, as a #GtkMovementStep. %GTK_MOVEMENT_LOGICAL_POSITIONS, %GTK_MOVEMENT_VISUAL_POSITIONS, %GTK_MOVEMENT_DISPLAY_LINES, %GTK_MOVEMENT_PAGES and %GTK_MOVEMENT_BUFFER_ENDS are supported. %GTK_MOVEMENT_LOGICAL_POSITIONS and %GTK_MOVEMENT_VISUAL_POSITIONS are treated identically.
+     * @param direction the direction to move: +1 to move forwards; -1 to move backwards. The resulting movement is undefined for all other values.
      */
     connect(sigName: "move-cursor", callback: ((step: Gtk.MovementStep, direction: number) => boolean)): number
     on(sigName: "move-cursor", callback: (step: Gtk.MovementStep, direction: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -11906,6 +12907,8 @@ class BookTree {
      * For selection handling refer to the
      * [tree widget conceptual overview][TreeWidget]
      * as well as #GtkTreeSelection.
+     * @param path the #GtkTreePath for the activated row
+     * @param column the #GtkTreeViewColumn in which the activation occurred
      */
     connect(sigName: "row-activated", callback: ((path: Gtk.TreePath, column: Gtk.TreeViewColumn) => void)): number
     on(sigName: "row-activated", callback: (path: Gtk.TreePath, column: Gtk.TreeViewColumn) => void, after?: boolean): NodeJS.EventEmitter
@@ -11914,6 +12917,8 @@ class BookTree {
     emit(sigName: "row-activated", path: Gtk.TreePath, column: Gtk.TreeViewColumn): void
     /**
      * The given row has been collapsed (child nodes are hidden).
+     * @param iter the tree iter of the collapsed row
+     * @param path a tree path that points to the row
      */
     connect(sigName: "row-collapsed", callback: ((iter: Gtk.TreeIter, path: Gtk.TreePath) => void)): number
     on(sigName: "row-collapsed", callback: (iter: Gtk.TreeIter, path: Gtk.TreePath) => void, after?: boolean): NodeJS.EventEmitter
@@ -11922,6 +12927,8 @@ class BookTree {
     emit(sigName: "row-collapsed", iter: Gtk.TreeIter, path: Gtk.TreePath): void
     /**
      * The given row has been expanded (child nodes are shown).
+     * @param iter the tree iter of the expanded row
+     * @param path a tree path that points to the row
      */
     connect(sigName: "row-expanded", callback: ((iter: Gtk.TreeIter, path: Gtk.TreePath) => void)): number
     on(sigName: "row-expanded", callback: (iter: Gtk.TreeIter, path: Gtk.TreePath) => void, after?: boolean): NodeJS.EventEmitter
@@ -11951,6 +12958,8 @@ class BookTree {
     /**
      * The given row is about to be collapsed (hide its children nodes). Use this
      * signal if you need to control the collapsibility of individual rows.
+     * @param iter the tree iter of the row to collapse
+     * @param path a tree path that points to the row
      */
     connect(sigName: "test-collapse-row", callback: ((iter: Gtk.TreeIter, path: Gtk.TreePath) => boolean)): number
     on(sigName: "test-collapse-row", callback: (iter: Gtk.TreeIter, path: Gtk.TreePath) => void, after?: boolean): NodeJS.EventEmitter
@@ -11960,6 +12969,8 @@ class BookTree {
     /**
      * The given row is about to be expanded (show its children nodes). Use this
      * signal if you need to control the expandability of individual rows.
+     * @param iter the tree iter of the row to expand
+     * @param path a tree path that points to the row
      */
     connect(sigName: "test-expand-row", callback: ((iter: Gtk.TreeIter, path: Gtk.TreePath) => boolean)): number
     on(sigName: "test-expand-row", callback: (iter: Gtk.TreeIter, path: Gtk.TreePath) => void, after?: boolean): NodeJS.EventEmitter
@@ -12011,6 +13022,7 @@ class BookTree {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -12025,6 +13037,7 @@ class BookTree {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -12037,6 +13050,7 @@ class BookTree {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12047,6 +13061,7 @@ class BookTree {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12070,6 +13085,7 @@ class BookTree {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -12080,6 +13096,7 @@ class BookTree {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -12092,6 +13109,7 @@ class BookTree {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -12119,6 +13137,7 @@ class BookTree {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -12128,6 +13147,7 @@ class BookTree {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -12142,6 +13162,7 @@ class BookTree {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -12153,6 +13174,7 @@ class BookTree {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -12165,6 +13187,10 @@ class BookTree {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12234,6 +13260,12 @@ class BookTree {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12251,6 +13283,10 @@ class BookTree {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12261,6 +13297,7 @@ class BookTree {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -12273,6 +13310,8 @@ class BookTree {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -12289,6 +13328,8 @@ class BookTree {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12384,6 +13425,10 @@ class BookTree {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12408,6 +13453,7 @@ class BookTree {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -12422,6 +13468,7 @@ class BookTree {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -12434,6 +13481,7 @@ class BookTree {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -12444,6 +13492,7 @@ class BookTree {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -12461,6 +13510,7 @@ class BookTree {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -12473,6 +13523,7 @@ class BookTree {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -12486,6 +13537,7 @@ class BookTree {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -12506,6 +13558,7 @@ class BookTree {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -12527,6 +13580,7 @@ class BookTree {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -12541,6 +13595,7 @@ class BookTree {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -12554,6 +13609,7 @@ class BookTree {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -12563,6 +13619,7 @@ class BookTree {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -12577,6 +13634,7 @@ class BookTree {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -12606,6 +13664,7 @@ class BookTree {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -12615,6 +13674,7 @@ class BookTree {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -12629,6 +13689,7 @@ class BookTree {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -12643,6 +13704,7 @@ class BookTree {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -12669,6 +13731,7 @@ class BookTree {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -12680,6 +13743,7 @@ class BookTree {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -12691,6 +13755,7 @@ class BookTree {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -12710,6 +13775,10 @@ class BookTree {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -12729,6 +13798,7 @@ class BookTree {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -12744,6 +13814,7 @@ class BookTree {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -12753,6 +13824,7 @@ class BookTree {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -12778,6 +13850,7 @@ class BookTree {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -12806,6 +13879,7 @@ class BookTree {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -12815,6 +13889,7 @@ class BookTree {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -12829,6 +13904,7 @@ class BookTree {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -12873,6 +13949,7 @@ class BookTree {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -12896,6 +13973,7 @@ class BookTree {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -12909,6 +13987,7 @@ class BookTree {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -12944,12 +14023,18 @@ class BookTree {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::activate-on-single-click", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::activate-on-single-click", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::activate-on-single-click", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -13285,12 +14370,13 @@ interface Completion_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Completion {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.Completion */
     /**
      * Adds a string to the `completion` object.
      * 
      * After adding all the strings you need to call dh_completion_sort().
+     * @param str a string.
      */
     addString(str: string): void
     /**
@@ -13303,6 +14389,7 @@ class Completion {
      * This function assumes that `prefix` and the strings contained in `completion`
      * are in UTF-8. If all the strings are valid UTF-8, then the return value will
      * also be valid UTF-8 (it won't return a partial multi-byte character).
+     * @param prefix the string to complete.
      */
     complete(prefix: string): string | null
     /**
@@ -13345,6 +14432,10 @@ class Completion {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13355,6 +14446,12 @@ class Completion {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13378,6 +14475,7 @@ class Completion {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13397,11 +14495,14 @@ class Completion {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13409,6 +14510,8 @@ class Completion {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13426,6 +14529,7 @@ class Completion {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13471,6 +14575,7 @@ class Completion {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13514,15 +14619,20 @@ class Completion {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13563,6 +14673,7 @@ class Completion {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13597,6 +14708,7 @@ class Completion {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -13628,6 +14740,7 @@ class Completion {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13649,6 +14762,8 @@ class Completion {
     /**
      * The same as dh_completion_complete(), but aggregated for several
      * #DhCompletion objects.
+     * @param completionObjects a #GList of   #DhCompletion objects.
+     * @param prefix the string to complete.
      */
     static aggregateComplete(completionObjects: Completion[] | null, prefix: string): string | null
     static $gtype: GObject.Type
@@ -13657,7 +14772,7 @@ interface KeywordModel_ConstructProps extends GObject.Object_ConstructProps {
 }
 class KeywordModel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.KeywordModel */
     /**
      * Searches in the #DhBookList of `profile` the list of #DhLink's that correspond
@@ -13675,6 +14790,9 @@ class KeywordModel {
      * (since this function runs synchronously) if the `search_string` contains for
      * example only one character. (And it is anyway not very useful to show to the
      * user tens of thousands search results).
+     * @param searchString a search query.
+     * @param currentBookId the ID of the book currently shown, or %NULL.
+     * @param profile a #DhProfile, or %NULL for the default profile.
      */
     filter(searchString: string, currentBookId?: string | null, profile?: Profile | null): Link | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -13712,6 +14830,10 @@ class KeywordModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13722,6 +14844,12 @@ class KeywordModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13745,6 +14873,7 @@ class KeywordModel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13764,11 +14893,14 @@ class KeywordModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13776,6 +14908,8 @@ class KeywordModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13793,6 +14927,7 @@ class KeywordModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13838,6 +14973,7 @@ class KeywordModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13881,15 +15017,20 @@ class KeywordModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13930,6 +15071,7 @@ class KeywordModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13964,12 +15106,14 @@ class KeywordModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.TreeModel */
     /**
      * Creates a new #GtkTreeModel, with `child_model` as the child_model
      * and `root` as the virtual root.
+     * @param root A #GtkTreePath or %NULL.
      */
     filterNew(root?: Gtk.TreePath | null): Gtk.TreeModel
     /**
@@ -13977,10 +15121,12 @@ class KeywordModel {
      * 
      * If `func` returns %TRUE, then the tree ceases to be walked,
      * and gtk_tree_model_foreach() returns.
+     * @param func a function to be called on each row
      */
     foreach(func: Gtk.TreeModelForeachFunc): void
     /**
      * Returns the type of the column.
+     * @param index the column index
      */
     getColumnType(index: number): GObject.Type
     /**
@@ -13994,6 +15140,7 @@ class KeywordModel {
     /**
      * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
      * not exist, `iter` is set to an invalid iterator and %FALSE is returned.
+     * @param path the #GtkTreePath-struct
      */
     getIter(path: Gtk.TreePath): [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
     /**
@@ -14005,6 +15152,7 @@ class KeywordModel {
     /**
      * Sets `iter` to a valid iterator pointing to `path_string,` if it
      * exists. Otherwise, `iter` is left invalid and %FALSE is returned.
+     * @param pathString a string representation of a #GtkTreePath-struct
      */
     getIterFromString(pathString: string): [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
     /**
@@ -14015,6 +15163,7 @@ class KeywordModel {
      * Returns a newly-created #GtkTreePath-struct referenced by `iter`.
      * 
      * This path should be freed with gtk_tree_path_free().
+     * @param iter the #GtkTreeIter-struct
      */
     getPath(iter: Gtk.TreeIter): Gtk.TreePath
     /**
@@ -14023,6 +15172,7 @@ class KeywordModel {
      * This string is a “:” separated list of numbers.
      * For example, “4:10:0:3” would be an acceptable
      * return value for this string.
+     * @param iter a #GtkTreeIter-struct
      */
     getStringFromIter(iter: Gtk.TreeIter): string
     /**
@@ -14030,6 +15180,8 @@ class KeywordModel {
      * 
      * When done with `value,` g_value_unset() needs to be called
      * to free any allocated memory.
+     * @param iter the #GtkTreeIter-struct
+     * @param column the column to lookup the value at
      */
     getValue(iter: Gtk.TreeIter, column: number): /* value */ any
     /**
@@ -14041,10 +15193,12 @@ class KeywordModel {
      * 
      * If `parent` is %NULL returns the first node, equivalent to
      * `gtk_tree_model_get_iter_first (tree_model, iter);`
+     * @param parent the #GtkTreeIter-struct, or %NULL
      */
     iterChildren(parent?: Gtk.TreeIter | null): [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
     /**
      * Returns %TRUE if `iter` has children, %FALSE otherwise.
+     * @param iter the #GtkTreeIter-struct to test for children
      */
     iterHasChild(iter: Gtk.TreeIter): boolean
     /**
@@ -14052,6 +15206,7 @@ class KeywordModel {
      * 
      * As a special case, if `iter` is %NULL, then the number
      * of toplevel nodes is returned.
+     * @param iter the #GtkTreeIter-struct, or %NULL
      */
     iterNChildren(iter?: Gtk.TreeIter | null): number
     /**
@@ -14059,6 +15214,7 @@ class KeywordModel {
      * 
      * If there is no next `iter,` %FALSE is returned and `iter` is set
      * to be invalid.
+     * @param iter the #GtkTreeIter-struct
      */
     iterNext(iter: Gtk.TreeIter): boolean
     /**
@@ -14069,6 +15225,8 @@ class KeywordModel {
      * will remain a valid node after this function has been called. As a
      * special case, if `parent` is %NULL, then the `n-th` root node
      * is set.
+     * @param parent the #GtkTreeIter-struct to get the child from, or %NULL.
+     * @param n the index of the desired child
      */
     iterNthChild(parent: Gtk.TreeIter | null, n: number): [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
     /**
@@ -14081,6 +15239,7 @@ class KeywordModel {
      * 
      * `iter` will be initialized before the lookup is performed, so `child`
      * and `iter` cannot point to the same memory location.
+     * @param child the #GtkTreeIter-struct
      */
     iterParent(child: Gtk.TreeIter): [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
     /**
@@ -14088,6 +15247,7 @@ class KeywordModel {
      * 
      * If there is no previous `iter,` %FALSE is returned and `iter` is
      * set to be invalid.
+     * @param iter the #GtkTreeIter-struct
      */
     iterPrevious(iter: Gtk.TreeIter): boolean
     /**
@@ -14108,10 +15268,13 @@ class KeywordModel {
      * 
      * A model should be expected to be able to get an iter independent
      * of its reffed state.
+     * @param iter the #GtkTreeIter-struct
      */
     refNode(iter: Gtk.TreeIter): void
     /**
      * Emits the #GtkTreeModel::row-changed signal on `tree_model`.
+     * @param path a #GtkTreePath-struct pointing to the changed row
+     * @param iter a valid #GtkTreeIter-struct pointing to the changed row
      */
     rowChanged(path: Gtk.TreePath, iter: Gtk.TreeIter): void
     /**
@@ -14123,16 +15286,21 @@ class KeywordModel {
      * 
      * Nodes that are deleted are not unreffed, this means that any
      * outstanding references on the deleted node should not be released.
+     * @param path a #GtkTreePath-struct pointing to the previous location of     the deleted row
      */
     rowDeleted(path: Gtk.TreePath): void
     /**
      * Emits the #GtkTreeModel::row-has-child-toggled signal on
      * `tree_model`. This should be called by models after the child
      * state of a node changes.
+     * @param path a #GtkTreePath-struct pointing to the changed row
+     * @param iter a valid #GtkTreeIter-struct pointing to the changed row
      */
     rowHasChildToggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void
     /**
      * Emits the #GtkTreeModel::row-inserted signal on `tree_model`.
+     * @param path a #GtkTreePath-struct pointing to the inserted row
+     * @param iter a valid #GtkTreeIter-struct pointing to the inserted row
      */
     rowInserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void
     /**
@@ -14140,6 +15308,9 @@ class KeywordModel {
      * 
      * This should be called by models when their rows have been
      * reordered.
+     * @param path a #GtkTreePath-struct pointing to the tree node whose children     have been reordered
+     * @param iter a valid #GtkTreeIter-struct pointing to the node     whose children have been reordered, or %NULL if the depth     of `path` is 0
+     * @param newOrder an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
      */
     rowsReordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, newOrder: number[]): void
     /**
@@ -14151,6 +15322,7 @@ class KeywordModel {
      * this means, see gtk_tree_model_ref_node().
      * 
      * Please note that nodes that are deleted are not unreffed.
+     * @param iter the #GtkTreeIter-struct
      */
     unrefNode(iter: Gtk.TreeIter): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -14182,6 +15354,7 @@ class KeywordModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14191,6 +15364,8 @@ class KeywordModel {
     /* Signals of Gtk-3.0.Gtk.TreeModel */
     /**
      * This signal is emitted when a row in the model has changed.
+     * @param path a #GtkTreePath-struct identifying the changed row
+     * @param iter a valid #GtkTreeIter-struct pointing to the changed row
      */
     connect(sigName: "row-changed", callback: ((path: Gtk.TreePath, iter: Gtk.TreeIter) => void)): number
     on(sigName: "row-changed", callback: (path: Gtk.TreePath, iter: Gtk.TreeIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -14206,6 +15381,7 @@ class KeywordModel {
      * This should be called by models after a row has been removed.
      * The location pointed to by `path` should be the location that
      * the row previously was at. It may not be a valid location anymore.
+     * @param path a #GtkTreePath-struct identifying the row
      */
     connect(sigName: "row-deleted", callback: ((path: Gtk.TreePath) => void)): number
     on(sigName: "row-deleted", callback: (path: Gtk.TreePath) => void, after?: boolean): NodeJS.EventEmitter
@@ -14215,6 +15391,8 @@ class KeywordModel {
     /**
      * This signal is emitted when a row has gotten the first child
      * row or lost its last child row.
+     * @param path a #GtkTreePath-struct identifying the row
+     * @param iter a valid #GtkTreeIter-struct pointing to the row
      */
     connect(sigName: "row-has-child-toggled", callback: ((path: Gtk.TreePath, iter: Gtk.TreeIter) => void)): number
     on(sigName: "row-has-child-toggled", callback: (path: Gtk.TreePath, iter: Gtk.TreeIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -14228,6 +15406,8 @@ class KeywordModel {
      * Note that the row may still be empty at this point, since
      * it is a common pattern to first insert an empty row, and
      * then fill it with the desired values.
+     * @param path a #GtkTreePath-struct identifying the new row
+     * @param iter a valid #GtkTreeIter-struct pointing to the new row
      */
     connect(sigName: "row-inserted", callback: ((path: Gtk.TreePath, iter: Gtk.TreeIter) => void)): number
     on(sigName: "row-inserted", callback: (path: Gtk.TreePath, iter: Gtk.TreeIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -14241,6 +15421,9 @@ class KeywordModel {
      * Note that this signal is not emitted
      * when rows are reordered by DND, since this is implemented
      * by removing and then reinserting the row.
+     * @param path a #GtkTreePath-struct identifying the tree node whose children     have been reordered
+     * @param iter a valid #GtkTreeIter-struct pointing to the node whose children     have been reordered, or %NULL if the depth of `path` is 0
+     * @param newOrder an array of integers mapping the current position     of each child to its old position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
      */
     connect(sigName: "rows-reordered", callback: ((path: Gtk.TreePath, iter: Gtk.TreeIter, newOrder?: object | null) => void)): number
     on(sigName: "rows-reordered", callback: (path: Gtk.TreePath, iter: Gtk.TreeIter, newOrder?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -14270,6 +15453,12 @@ interface Notebook_ConstructProps extends Gtk.Notebook_ConstructProps {
     profile?: Profile
 }
 class Notebook {
+    /* Properties of Devhelp-3.0.Devhelp.Notebook */
+    /**
+     * The #DhProfile. If set to %NULL, the default profile as returned by
+     * dh_profile_get_default() is used.
+     */
+    readonly profile: Profile
     /* Properties of Gtk-3.0.Gtk.Notebook */
     enablePopup: boolean
     /**
@@ -14459,11 +15648,11 @@ class Notebook {
      */
     readonly window: Gdk.Window
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.Notebook */
     getActiveTab(): Tab | null
     getActiveWebView(): WebView | null
@@ -14473,16 +15662,23 @@ class Notebook {
      * Creates a new #DhTab and #DhTabLabel and appends them to the #GtkNotebook.
      * 
      * The #DhWebView will have the same #DhProfile as `notebook`.
+     * @param uri the URI to open, or %NULL for a blank page.
+     * @param switchFocus whether to call gtk_notebook_set_current_page() on the new   tab.
      */
     openNewTab(uri: string | null, switchFocus: boolean): void
     /* Methods of Gtk-3.0.Gtk.Notebook */
     /**
      * Appends a page to `notebook`.
+     * @param child the #GtkWidget to use as the contents of the page
+     * @param tabLabel the #GtkWidget to be used as the label     for the page, or %NULL to use the default label, “page N”
      */
     appendPage(child: Gtk.Widget, tabLabel?: Gtk.Widget | null): number
     /**
      * Appends a page to `notebook,` specifying the widget to use as the
      * label in the popup menu.
+     * @param child the #GtkWidget to use as the contents of the page
+     * @param tabLabel the #GtkWidget to be used as the label     for the page, or %NULL to use the default label, “page N”
+     * @param menuLabel the widget to use as a label for the     page-switch menu, if that is enabled. If %NULL, and `tab_label`     is a #GtkLabel or %NULL, then the menu label will be a newly     created label with the same text as `tab_label;` if `tab_label`     is not a #GtkLabel, `menu_label` must be specified if the     page-switch menu is to be used.
      */
     appendPageMenu(child: Gtk.Widget, tabLabel?: Gtk.Widget | null, menuLabel?: Gtk.Widget | null): number
     /**
@@ -14492,10 +15688,12 @@ class Notebook {
      * but additionally informs the notebook that the removal
      * is happening as part of a tab DND operation, which should
      * not be cancelled.
+     * @param child a child
      */
     detachTab(child: Gtk.Widget): void
     /**
      * Gets one of the action widgets. See gtk_notebook_set_action_widget().
+     * @param packType pack type of the action widget to receive
      */
     getActionWidget(packType: Gtk.PackType): Gtk.Widget | null
     /**
@@ -14508,11 +15706,13 @@ class Notebook {
     getGroupName(): string | null
     /**
      * Retrieves the menu label widget of the page containing `child`.
+     * @param child a widget contained in a page of `notebook`
      */
     getMenuLabel(child: Gtk.Widget): Gtk.Widget | null
     /**
      * Retrieves the text of the menu label for the page containing
      * `child`.
+     * @param child the child widget of a page of the notebook.
      */
     getMenuLabelText(child: Gtk.Widget): string | null
     /**
@@ -14521,6 +15721,7 @@ class Notebook {
     getNPages(): number
     /**
      * Returns the child widget contained in page number `page_num`.
+     * @param pageNum the index of a page in the notebook, or -1     to get the last page
      */
     getNthPage(pageNum: number): Gtk.Widget | null
     /**
@@ -14540,6 +15741,7 @@ class Notebook {
     getShowTabs(): boolean
     /**
      * Returns whether the tab contents can be detached from `notebook`.
+     * @param child a child #GtkWidget
      */
     getTabDetachable(child: Gtk.Widget): boolean
     /**
@@ -14550,11 +15752,13 @@ class Notebook {
      * Returns the tab label widget for the page `child`.
      * %NULL is returned if `child` is not in `notebook` or
      * if no tab label has specifically been set for `child`.
+     * @param child the page
      */
     getTabLabel(child: Gtk.Widget): Gtk.Widget | null
     /**
      * Retrieves the text of the tab label for the page containing
      * `child`.
+     * @param child a widget contained in a page of `notebook`
      */
     getTabLabelText(child: Gtk.Widget): string | null
     /**
@@ -14564,6 +15768,7 @@ class Notebook {
     getTabPos(): Gtk.PositionType
     /**
      * Gets whether the tab can be reordered via drag and drop or not.
+     * @param child a child #GtkWidget
      */
     getTabReorderable(child: Gtk.Widget): boolean
     /**
@@ -14572,11 +15777,18 @@ class Notebook {
     getTabVborder(): number
     /**
      * Insert a page into `notebook` at the given position.
+     * @param child the #GtkWidget to use as the contents of the page
+     * @param tabLabel the #GtkWidget to be used as the label     for the page, or %NULL to use the default label, “page N”
+     * @param position the index (starting at 0) at which to insert the page,     or -1 to append the page after all other pages
      */
     insertPage(child: Gtk.Widget, tabLabel: Gtk.Widget | null, position: number): number
     /**
      * Insert a page into `notebook` at the given position, specifying
      * the widget to use as the label in the popup menu.
+     * @param child the #GtkWidget to use as the contents of the page
+     * @param tabLabel the #GtkWidget to be used as the label     for the page, or %NULL to use the default label, “page N”
+     * @param menuLabel the widget to use as a label for the     page-switch menu, if that is enabled. If %NULL, and `tab_label`     is a #GtkLabel or %NULL, then the menu label will be a newly     created label with the same text as `tab_label;` if `tab_label`     is not a #GtkLabel, `menu_label` must be specified if the     page-switch menu is to be used.
+     * @param position the index (starting at 0) at which to insert the page,     or -1 to append the page after all other pages.
      */
     insertPageMenu(child: Gtk.Widget, tabLabel: Gtk.Widget | null, menuLabel: Gtk.Widget | null, position: number): number
     /**
@@ -14587,6 +15799,7 @@ class Notebook {
     /**
      * Finds the index of the page which contains the given child
      * widget.
+     * @param child a #GtkWidget
      */
     pageNum(child: Gtk.Widget): number
     /**
@@ -14601,11 +15814,16 @@ class Notebook {
     popupEnable(): void
     /**
      * Prepends a page to `notebook`.
+     * @param child the #GtkWidget to use as the contents of the page
+     * @param tabLabel the #GtkWidget to be used as the label     for the page, or %NULL to use the default label, “page N”
      */
     prependPage(child: Gtk.Widget, tabLabel?: Gtk.Widget | null): number
     /**
      * Prepends a page to `notebook,` specifying the widget to use as the
      * label in the popup menu.
+     * @param child the #GtkWidget to use as the contents of the page
+     * @param tabLabel the #GtkWidget to be used as the label     for the page, or %NULL to use the default label, “page N”
+     * @param menuLabel the widget to use as a label for the     page-switch menu, if that is enabled. If %NULL, and `tab_label`     is a #GtkLabel or %NULL, then the menu label will be a newly     created label with the same text as `tab_label;` if `tab_label`     is not a #GtkLabel, `menu_label` must be specified if the     page-switch menu is to be used.
      */
     prependPageMenu(child: Gtk.Widget, tabLabel?: Gtk.Widget | null, menuLabel?: Gtk.Widget | null): number
     /**
@@ -14616,6 +15834,7 @@ class Notebook {
     /**
      * Removes a page from the notebook given its index
      * in the notebook.
+     * @param pageNum the index of a notebook page, starting     from 0. If -1, the last page will be removed.
      */
     removePage(pageNum: number): void
     /**
@@ -14623,6 +15842,8 @@ class Notebook {
      * `position`. If `position` is greater than or equal to the number of
      * children in the list or negative, `child` will be moved to the end
      * of the list.
+     * @param child the child to move
+     * @param position the new position, or -1 to move to the end
      */
     reorderChild(child: Gtk.Widget, position: number): void
     /**
@@ -14632,6 +15853,8 @@ class Notebook {
      * 
      * Note that action widgets are “internal” children of the notebook and thus
      * not included in the list returned from gtk_container_foreach().
+     * @param widget a #GtkWidget
+     * @param packType pack type of the action widget
      */
     setActionWidget(widget: Gtk.Widget, packType: Gtk.PackType): void
     /**
@@ -14641,6 +15864,7 @@ class Notebook {
      * to switch to a page unless the child widget is visible.
      * Therefore, it is recommended to show child widgets before
      * adding them to a notebook.
+     * @param pageNum index of the page to switch to, starting from 0.     If negative, the last page will be used. If greater     than the number of pages in the notebook, nothing     will be done.
      */
     setCurrentPage(pageNum: number): void
     /**
@@ -14649,29 +15873,37 @@ class Notebook {
      * Notebooks with the same name will be able to exchange tabs
      * via drag and drop. A notebook with a %NULL group name will
      * not be able to exchange tabs with any other notebook.
+     * @param groupName the name of the notebook group,     or %NULL to unset it
      */
     setGroupName(groupName?: string | null): void
     /**
      * Changes the menu label for the page containing `child`.
+     * @param child the child widget
+     * @param menuLabel the menu label, or %NULL for default
      */
     setMenuLabel(child: Gtk.Widget, menuLabel?: Gtk.Widget | null): void
     /**
      * Creates a new label and sets it as the menu label of `child`.
+     * @param child the child widget
+     * @param menuText the label text
      */
     setMenuLabelText(child: Gtk.Widget, menuText: string): void
     /**
      * Sets whether the tab label area will have arrows for
      * scrolling if there are too many tabs to fit in the area.
+     * @param scrollable %TRUE if scroll arrows should be added
      */
     setScrollable(scrollable: boolean): void
     /**
      * Sets whether a bevel will be drawn around the notebook pages.
      * This only has a visual effect when the tabs are not shown.
      * See gtk_notebook_set_show_tabs().
+     * @param showBorder %TRUE if a bevel should be drawn around the notebook
      */
     setShowBorder(showBorder: boolean): void
     /**
      * Sets whether to show the tabs for the notebook or not.
+     * @param showTabs %TRUE if the tabs should be shown
      */
     setShowTabs(showTabs: boolean): void
     /**
@@ -14722,27 +15954,36 @@ class Notebook {
      * 
      * If you want a notebook to accept drags from other widgets,
      * you will have to set your own DnD code to do it.
+     * @param child a child #GtkWidget
+     * @param detachable whether the tab is detachable or not
      */
     setTabDetachable(child: Gtk.Widget, detachable: boolean): void
     /**
      * Changes the tab label for `child`.
      * If %NULL is specified for `tab_label,` then the page will
      * have the label “page N”.
+     * @param child the page
+     * @param tabLabel the tab label widget to use, or %NULL     for default tab label
      */
     setTabLabel(child: Gtk.Widget, tabLabel?: Gtk.Widget | null): void
     /**
      * Creates a new label and sets it as the tab label for the page
      * containing `child`.
+     * @param child the page
+     * @param tabText the label text
      */
     setTabLabelText(child: Gtk.Widget, tabText: string): void
     /**
      * Sets the edge at which the tabs for switching pages in the
      * notebook are drawn.
+     * @param pos the edge to draw the tabs at
      */
     setTabPos(pos: Gtk.PositionType): void
     /**
      * Sets whether the notebook tab can be reordered
      * via drag and drop or not.
+     * @param child a child #GtkWidget
+     * @param reorderable whether the tab is reorderable or not
      */
     setTabReorderable(child: Gtk.Widget, reorderable: boolean): void
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -14759,11 +16000,15 @@ class Notebook {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -14774,6 +16019,8 @@ class Notebook {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -14782,10 +16029,15 @@ class Notebook {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -14805,6 +16057,7 @@ class Notebook {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -14819,6 +16072,7 @@ class Notebook {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -14858,6 +16112,7 @@ class Notebook {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -14881,6 +16136,8 @@ class Notebook {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -14893,6 +16150,7 @@ class Notebook {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -14906,6 +16164,7 @@ class Notebook {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -14916,6 +16175,7 @@ class Notebook {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -14927,6 +16187,7 @@ class Notebook {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -14939,6 +16200,7 @@ class Notebook {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -14951,6 +16213,7 @@ class Notebook {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -14958,6 +16221,7 @@ class Notebook {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -14966,6 +16230,7 @@ class Notebook {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -14989,17 +16254,25 @@ class Notebook {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -15009,6 +16282,7 @@ class Notebook {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -15032,6 +16306,7 @@ class Notebook {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -15042,6 +16317,7 @@ class Notebook {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -15064,6 +16340,7 @@ class Notebook {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -15074,6 +16351,7 @@ class Notebook {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -15093,6 +16371,7 @@ class Notebook {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -15110,6 +16389,7 @@ class Notebook {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -15154,6 +16434,7 @@ class Notebook {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -15162,11 +16443,16 @@ class Notebook {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -15195,12 +16481,22 @@ class Notebook {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -15235,6 +16531,8 @@ class Notebook {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -15289,16 +16587,23 @@ class Notebook {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -15308,6 +16613,7 @@ class Notebook {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -15325,6 +16631,9 @@ class Notebook {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -15365,33 +16674,41 @@ class Notebook {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -15421,6 +16738,7 @@ class Notebook {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -15450,6 +16768,7 @@ class Notebook {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -15481,6 +16800,7 @@ class Notebook {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -15543,6 +16863,7 @@ class Notebook {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -15607,6 +16928,7 @@ class Notebook {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -15616,11 +16938,13 @@ class Notebook {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -15774,6 +17098,7 @@ class Notebook {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -15861,6 +17186,7 @@ class Notebook {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -15872,6 +17198,7 @@ class Notebook {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -15913,6 +17240,7 @@ class Notebook {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -16043,6 +17371,8 @@ class Notebook {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -16261,6 +17591,7 @@ class Notebook {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -16271,6 +17602,8 @@ class Notebook {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -16278,11 +17611,13 @@ class Notebook {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -16350,6 +17685,7 @@ class Notebook {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -16386,6 +17722,7 @@ class Notebook {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -16404,6 +17741,8 @@ class Notebook {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -16421,6 +17760,8 @@ class Notebook {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -16430,6 +17771,8 @@ class Notebook {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -16437,6 +17780,8 @@ class Notebook {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -16444,6 +17789,7 @@ class Notebook {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -16465,6 +17811,7 @@ class Notebook {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -16475,6 +17822,8 @@ class Notebook {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -16482,6 +17831,8 @@ class Notebook {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -16510,6 +17861,8 @@ class Notebook {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -16520,11 +17873,14 @@ class Notebook {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -16533,6 +17889,8 @@ class Notebook {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -16586,6 +17944,10 @@ class Notebook {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -16599,6 +17961,7 @@ class Notebook {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -16644,6 +18007,7 @@ class Notebook {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -16655,11 +18019,15 @@ class Notebook {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -16667,11 +18035,13 @@ class Notebook {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -16686,6 +18056,9 @@ class Notebook {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -16698,11 +18071,14 @@ class Notebook {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -16731,6 +18107,7 @@ class Notebook {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -16759,6 +18136,7 @@ class Notebook {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -16783,6 +18161,8 @@ class Notebook {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -16795,6 +18175,7 @@ class Notebook {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -16809,18 +18190,21 @@ class Notebook {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -16841,6 +18225,7 @@ class Notebook {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -16854,11 +18239,13 @@ class Notebook {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -16868,6 +18255,8 @@ class Notebook {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -16882,6 +18271,8 @@ class Notebook {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -16897,6 +18288,7 @@ class Notebook {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -16925,6 +18317,7 @@ class Notebook {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -16939,6 +18332,7 @@ class Notebook {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -16946,26 +18340,31 @@ class Notebook {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -16979,6 +18378,7 @@ class Notebook {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -17007,6 +18407,7 @@ class Notebook {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -17025,6 +18426,7 @@ class Notebook {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -17032,36 +18434,43 @@ class Notebook {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -17074,6 +18483,7 @@ class Notebook {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -17082,6 +18492,7 @@ class Notebook {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -17099,6 +18510,7 @@ class Notebook {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -17108,6 +18520,7 @@ class Notebook {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -17119,6 +18532,7 @@ class Notebook {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -17128,6 +18542,7 @@ class Notebook {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -17137,6 +18552,7 @@ class Notebook {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -17155,6 +18571,7 @@ class Notebook {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -17162,6 +18579,7 @@ class Notebook {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -17195,12 +18613,15 @@ class Notebook {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -17217,11 +18638,14 @@ class Notebook {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -17229,6 +18653,7 @@ class Notebook {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -17240,6 +18665,7 @@ class Notebook {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -17248,6 +18674,7 @@ class Notebook {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -17256,11 +18683,13 @@ class Notebook {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -17268,6 +18697,7 @@ class Notebook {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -17275,6 +18705,7 @@ class Notebook {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -17285,6 +18716,7 @@ class Notebook {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -17295,6 +18727,7 @@ class Notebook {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -17309,12 +18742,14 @@ class Notebook {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -17356,6 +18791,7 @@ class Notebook {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -17372,6 +18808,8 @@ class Notebook {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -17406,6 +18844,8 @@ class Notebook {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -17419,6 +18859,9 @@ class Notebook {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -17448,12 +18891,14 @@ class Notebook {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -17491,6 +18936,10 @@ class Notebook {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17501,6 +18950,12 @@ class Notebook {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17524,6 +18979,7 @@ class Notebook {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17543,11 +18999,14 @@ class Notebook {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17555,6 +19014,8 @@ class Notebook {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17572,6 +19033,7 @@ class Notebook {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17617,6 +19079,7 @@ class Notebook {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17660,15 +19123,20 @@ class Notebook {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17709,6 +19177,7 @@ class Notebook {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17743,12 +19212,16 @@ class Notebook {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -17756,24 +19229,39 @@ class Notebook {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -17782,14 +19270,19 @@ class Notebook {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Signals of Gtk-3.0.Gtk.Notebook */
@@ -17807,6 +19300,9 @@ class Notebook {
      * responsible for moving/resizing the window and adding the
      * necessary properties to the notebook (e.g. the
      * #GtkNotebook:group-name ).
+     * @param page the tab of `notebook` that is being detached
+     * @param x the X coordinate where the drop happens
+     * @param y the Y coordinate where the drop happens
      */
     connect(sigName: "create-window", callback: ((page: Gtk.Widget, x: number, y: number) => Gtk.Notebook)): number
     on(sigName: "create-window", callback: (page: Gtk.Widget, x: number, y: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17826,6 +19322,8 @@ class Notebook {
     /**
      * the ::page-added signal is emitted in the notebook
      * right after a page is added to the notebook.
+     * @param child the child #GtkWidget affected
+     * @param pageNum the new page number for `child`
      */
     connect(sigName: "page-added", callback: ((child: Gtk.Widget, pageNum: number) => void)): number
     on(sigName: "page-added", callback: (child: Gtk.Widget, pageNum: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17835,6 +19333,8 @@ class Notebook {
     /**
      * the ::page-removed signal is emitted in the notebook
      * right after a page is removed from the notebook.
+     * @param child the child #GtkWidget affected
+     * @param pageNum the `child` page number
      */
     connect(sigName: "page-removed", callback: ((child: Gtk.Widget, pageNum: number) => void)): number
     on(sigName: "page-removed", callback: (child: Gtk.Widget, pageNum: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17844,6 +19344,8 @@ class Notebook {
     /**
      * the ::page-reordered signal is emitted in the notebook
      * right after a page has been reordered.
+     * @param child the child #GtkWidget affected
+     * @param pageNum the new page number for `child`
      */
     connect(sigName: "page-reordered", callback: ((child: Gtk.Widget, pageNum: number) => void)): number
     on(sigName: "page-reordered", callback: (child: Gtk.Widget, pageNum: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17862,6 +19364,8 @@ class Notebook {
     emit(sigName: "select-page", object: boolean): void
     /**
      * Emitted when the user or a function changes the current page.
+     * @param page the new current page
+     * @param pageNum the index of the page
      */
     connect(sigName: "switch-page", callback: ((page: Gtk.Widget, pageNum: number) => void)): number
     on(sigName: "switch-page", callback: (page: Gtk.Widget, pageNum: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17903,6 +19407,7 @@ class Notebook {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -17917,6 +19422,7 @@ class Notebook {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -17929,6 +19435,7 @@ class Notebook {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17939,6 +19446,7 @@ class Notebook {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17962,6 +19470,7 @@ class Notebook {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -17972,6 +19481,7 @@ class Notebook {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -17984,6 +19494,7 @@ class Notebook {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -18011,6 +19522,7 @@ class Notebook {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -18020,6 +19532,7 @@ class Notebook {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -18034,6 +19547,7 @@ class Notebook {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -18045,6 +19559,7 @@ class Notebook {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -18057,6 +19572,10 @@ class Notebook {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -18126,6 +19645,12 @@ class Notebook {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -18143,6 +19668,10 @@ class Notebook {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -18153,6 +19682,7 @@ class Notebook {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -18165,6 +19695,8 @@ class Notebook {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -18181,6 +19713,8 @@ class Notebook {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -18276,6 +19810,10 @@ class Notebook {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -18300,6 +19838,7 @@ class Notebook {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -18314,6 +19853,7 @@ class Notebook {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -18326,6 +19866,7 @@ class Notebook {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -18336,6 +19877,7 @@ class Notebook {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -18353,6 +19895,7 @@ class Notebook {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -18365,6 +19908,7 @@ class Notebook {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -18378,6 +19922,7 @@ class Notebook {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -18398,6 +19943,7 @@ class Notebook {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -18419,6 +19965,7 @@ class Notebook {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18433,6 +19980,7 @@ class Notebook {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -18446,6 +19994,7 @@ class Notebook {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -18455,6 +20004,7 @@ class Notebook {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -18469,6 +20019,7 @@ class Notebook {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -18498,6 +20049,7 @@ class Notebook {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -18507,6 +20059,7 @@ class Notebook {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -18521,6 +20074,7 @@ class Notebook {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -18535,6 +20089,7 @@ class Notebook {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18561,6 +20116,7 @@ class Notebook {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -18572,6 +20128,7 @@ class Notebook {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -18583,6 +20140,7 @@ class Notebook {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -18602,6 +20160,10 @@ class Notebook {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -18621,6 +20183,7 @@ class Notebook {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18636,6 +20199,7 @@ class Notebook {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -18645,6 +20209,7 @@ class Notebook {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -18670,6 +20235,7 @@ class Notebook {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -18698,6 +20264,7 @@ class Notebook {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -18707,6 +20274,7 @@ class Notebook {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -18721,6 +20289,7 @@ class Notebook {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18765,6 +20334,7 @@ class Notebook {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -18788,6 +20358,7 @@ class Notebook {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -18801,6 +20372,7 @@ class Notebook {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -18836,12 +20408,18 @@ class Notebook {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::enable-popup", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enable-popup", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::enable-popup", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -19107,7 +20685,7 @@ interface Profile_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Profile {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.Profile */
     /**
      * Gets the #DhBookList object of `profile`. The returned object is guaranteed to
@@ -19154,6 +20732,10 @@ class Profile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19164,6 +20746,12 @@ class Profile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19187,6 +20775,7 @@ class Profile {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19206,11 +20795,14 @@ class Profile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19218,6 +20810,8 @@ class Profile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19235,6 +20829,7 @@ class Profile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19280,6 +20875,7 @@ class Profile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19323,15 +20919,20 @@ class Profile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19372,6 +20973,7 @@ class Profile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19406,6 +21008,7 @@ class Profile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -19437,6 +21040,7 @@ class Profile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19466,7 +21070,7 @@ interface ProfileBuilder_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ProfileBuilder {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.ProfileBuilder */
     createObject(): Profile
     /**
@@ -19474,6 +21078,7 @@ class ProfileBuilder {
      * 
      * If you don't call this function, the default #DhBookList object as returned
      * by dh_book_list_get_default() will be used.
+     * @param bookList a #DhBookList.
      */
     setBookList(bookList: BookList): void
     /**
@@ -19481,6 +21086,7 @@ class ProfileBuilder {
      * 
      * If you don't call this function, the default #DhSettings object as returned
      * by dh_settings_get_default() will be used.
+     * @param settings a #DhSettings.
      */
     setSettings(settings: Settings): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -19518,6 +21124,10 @@ class ProfileBuilder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19528,6 +21138,12 @@ class ProfileBuilder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19551,6 +21167,7 @@ class ProfileBuilder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19570,11 +21187,14 @@ class ProfileBuilder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19582,6 +21202,8 @@ class ProfileBuilder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19599,6 +21221,7 @@ class ProfileBuilder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19644,6 +21267,7 @@ class ProfileBuilder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19687,15 +21311,20 @@ class ProfileBuilder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19736,6 +21365,7 @@ class ProfileBuilder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19770,6 +21400,7 @@ class ProfileBuilder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -19801,6 +21432,7 @@ class ProfileBuilder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19830,6 +21462,12 @@ interface SearchBar_ConstructProps extends Gtk.SearchBar_ConstructProps {
     notebook?: Notebook
 }
 class SearchBar {
+    /* Properties of Devhelp-3.0.Devhelp.SearchBar */
+    /**
+     * The associated #DhNotebook. #DhSearchBar has a strong reference to
+     * the #DhNotebook.
+     */
+    readonly notebook: Notebook
     /* Properties of Gtk-3.0.Gtk.SearchBar */
     searchModeEnabled: boolean
     showCloseButton: boolean
@@ -20011,13 +21649,13 @@ class SearchBar {
      */
     readonly window: Gdk.Window
     /* Fields of Gtk-3.0.Gtk.Bin */
-    readonly container: Gtk.Container
+    container: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.SearchBar */
     getNotebook(): Notebook
     /**
@@ -20030,6 +21668,7 @@ class SearchBar {
      * this search bar. The entry should be a descendant of the search bar.
      * This is only required if the entry isn’t the direct child of the
      * search bar (as in our main example).
+     * @param entry a #GtkEntry
      */
     connectEntry(entry: Gtk.Entry): void
     /**
@@ -20081,10 +21720,12 @@ class SearchBar {
      * }
      * ```
      * 
+     * @param event a #GdkEvent containing key press events
      */
     handleEvent(event: Gdk.Event): boolean
     /**
      * Switches the search mode on or off.
+     * @param searchMode the new state of the search mode
      */
     setSearchMode(searchMode: boolean): void
     /**
@@ -20092,6 +21733,7 @@ class SearchBar {
      * already have a “search” toggle button should not show a close
      * button in their search bar, as it duplicates the role of the
      * toggle button.
+     * @param visible whether the close button will be shown or not
      */
     setShowCloseButton(visible: boolean): void
     /* Methods of Gtk-3.0.Gtk.Bin */
@@ -20115,11 +21757,15 @@ class SearchBar {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -20130,6 +21776,8 @@ class SearchBar {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -20138,10 +21786,15 @@ class SearchBar {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -20161,6 +21814,7 @@ class SearchBar {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -20175,6 +21829,7 @@ class SearchBar {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -20214,6 +21869,7 @@ class SearchBar {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -20237,6 +21893,8 @@ class SearchBar {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -20249,6 +21907,7 @@ class SearchBar {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -20262,6 +21921,7 @@ class SearchBar {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -20272,6 +21932,7 @@ class SearchBar {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -20283,6 +21944,7 @@ class SearchBar {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -20295,6 +21957,7 @@ class SearchBar {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -20307,6 +21970,7 @@ class SearchBar {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -20314,6 +21978,7 @@ class SearchBar {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -20322,6 +21987,7 @@ class SearchBar {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -20345,17 +22011,25 @@ class SearchBar {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -20365,6 +22039,7 @@ class SearchBar {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -20388,6 +22063,7 @@ class SearchBar {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -20398,6 +22074,7 @@ class SearchBar {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -20420,6 +22097,7 @@ class SearchBar {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -20430,6 +22108,7 @@ class SearchBar {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -20449,6 +22128,7 @@ class SearchBar {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -20466,6 +22146,7 @@ class SearchBar {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -20510,6 +22191,7 @@ class SearchBar {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -20518,11 +22200,16 @@ class SearchBar {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -20551,12 +22238,22 @@ class SearchBar {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -20591,6 +22288,8 @@ class SearchBar {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -20645,16 +22344,23 @@ class SearchBar {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -20664,6 +22370,7 @@ class SearchBar {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -20681,6 +22388,9 @@ class SearchBar {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -20721,33 +22431,41 @@ class SearchBar {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -20777,6 +22495,7 @@ class SearchBar {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -20806,6 +22525,7 @@ class SearchBar {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -20837,6 +22557,7 @@ class SearchBar {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -20899,6 +22620,7 @@ class SearchBar {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -20963,6 +22685,7 @@ class SearchBar {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -20972,11 +22695,13 @@ class SearchBar {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -21130,6 +22855,7 @@ class SearchBar {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -21217,6 +22943,7 @@ class SearchBar {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -21228,6 +22955,7 @@ class SearchBar {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -21269,6 +22997,7 @@ class SearchBar {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -21399,6 +23128,8 @@ class SearchBar {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -21617,6 +23348,7 @@ class SearchBar {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -21627,6 +23359,8 @@ class SearchBar {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -21634,11 +23368,13 @@ class SearchBar {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -21706,6 +23442,7 @@ class SearchBar {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -21742,6 +23479,7 @@ class SearchBar {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -21760,6 +23498,8 @@ class SearchBar {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -21777,6 +23517,8 @@ class SearchBar {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -21786,6 +23528,8 @@ class SearchBar {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -21793,6 +23537,8 @@ class SearchBar {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -21800,6 +23546,7 @@ class SearchBar {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -21821,6 +23568,7 @@ class SearchBar {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -21831,6 +23579,8 @@ class SearchBar {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -21838,6 +23588,8 @@ class SearchBar {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -21866,6 +23618,8 @@ class SearchBar {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -21876,11 +23630,14 @@ class SearchBar {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -21889,6 +23646,8 @@ class SearchBar {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -21942,6 +23701,10 @@ class SearchBar {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -21955,6 +23718,7 @@ class SearchBar {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -22000,6 +23764,7 @@ class SearchBar {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -22011,11 +23776,15 @@ class SearchBar {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -22023,11 +23792,13 @@ class SearchBar {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -22042,6 +23813,9 @@ class SearchBar {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -22054,11 +23828,14 @@ class SearchBar {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -22087,6 +23864,7 @@ class SearchBar {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -22115,6 +23893,7 @@ class SearchBar {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -22139,6 +23918,8 @@ class SearchBar {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -22151,6 +23932,7 @@ class SearchBar {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -22165,18 +23947,21 @@ class SearchBar {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -22197,6 +23982,7 @@ class SearchBar {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -22210,11 +23996,13 @@ class SearchBar {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -22224,6 +24012,8 @@ class SearchBar {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -22238,6 +24028,8 @@ class SearchBar {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -22253,6 +24045,7 @@ class SearchBar {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -22281,6 +24074,7 @@ class SearchBar {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -22295,6 +24089,7 @@ class SearchBar {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -22302,26 +24097,31 @@ class SearchBar {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -22335,6 +24135,7 @@ class SearchBar {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -22363,6 +24164,7 @@ class SearchBar {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -22381,6 +24183,7 @@ class SearchBar {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -22388,36 +24191,43 @@ class SearchBar {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -22430,6 +24240,7 @@ class SearchBar {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -22438,6 +24249,7 @@ class SearchBar {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -22455,6 +24267,7 @@ class SearchBar {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -22464,6 +24277,7 @@ class SearchBar {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -22475,6 +24289,7 @@ class SearchBar {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -22484,6 +24299,7 @@ class SearchBar {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -22493,6 +24309,7 @@ class SearchBar {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -22511,6 +24328,7 @@ class SearchBar {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -22518,6 +24336,7 @@ class SearchBar {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -22551,12 +24370,15 @@ class SearchBar {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -22573,11 +24395,14 @@ class SearchBar {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -22585,6 +24410,7 @@ class SearchBar {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -22596,6 +24422,7 @@ class SearchBar {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -22604,6 +24431,7 @@ class SearchBar {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -22612,11 +24440,13 @@ class SearchBar {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -22624,6 +24454,7 @@ class SearchBar {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -22631,6 +24462,7 @@ class SearchBar {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -22641,6 +24473,7 @@ class SearchBar {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -22651,6 +24484,7 @@ class SearchBar {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -22665,12 +24499,14 @@ class SearchBar {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -22712,6 +24548,7 @@ class SearchBar {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -22728,6 +24565,8 @@ class SearchBar {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -22762,6 +24601,8 @@ class SearchBar {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -22775,6 +24616,9 @@ class SearchBar {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -22804,12 +24648,14 @@ class SearchBar {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -22847,6 +24693,10 @@ class SearchBar {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22857,6 +24707,12 @@ class SearchBar {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -22880,6 +24736,7 @@ class SearchBar {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -22899,11 +24756,14 @@ class SearchBar {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -22911,6 +24771,8 @@ class SearchBar {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22928,6 +24790,7 @@ class SearchBar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -22973,6 +24836,7 @@ class SearchBar {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -23016,15 +24880,20 @@ class SearchBar {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -23065,6 +24934,7 @@ class SearchBar {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -23099,12 +24969,16 @@ class SearchBar {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -23112,24 +24986,39 @@ class SearchBar {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -23138,14 +25027,19 @@ class SearchBar {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Signals of Gtk-3.0.Gtk.Container */
@@ -23183,6 +25077,7 @@ class SearchBar {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -23197,6 +25092,7 @@ class SearchBar {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -23209,6 +25105,7 @@ class SearchBar {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -23219,6 +25116,7 @@ class SearchBar {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -23242,6 +25140,7 @@ class SearchBar {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -23252,6 +25151,7 @@ class SearchBar {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -23264,6 +25164,7 @@ class SearchBar {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -23291,6 +25192,7 @@ class SearchBar {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -23300,6 +25202,7 @@ class SearchBar {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -23314,6 +25217,7 @@ class SearchBar {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -23325,6 +25229,7 @@ class SearchBar {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -23337,6 +25242,10 @@ class SearchBar {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -23406,6 +25315,12 @@ class SearchBar {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -23423,6 +25338,10 @@ class SearchBar {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -23433,6 +25352,7 @@ class SearchBar {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -23445,6 +25365,8 @@ class SearchBar {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -23461,6 +25383,8 @@ class SearchBar {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -23556,6 +25480,10 @@ class SearchBar {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -23580,6 +25508,7 @@ class SearchBar {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -23594,6 +25523,7 @@ class SearchBar {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -23606,6 +25536,7 @@ class SearchBar {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -23616,6 +25547,7 @@ class SearchBar {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -23633,6 +25565,7 @@ class SearchBar {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -23645,6 +25578,7 @@ class SearchBar {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -23658,6 +25592,7 @@ class SearchBar {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -23678,6 +25613,7 @@ class SearchBar {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -23699,6 +25635,7 @@ class SearchBar {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -23713,6 +25650,7 @@ class SearchBar {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -23726,6 +25664,7 @@ class SearchBar {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -23735,6 +25674,7 @@ class SearchBar {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -23749,6 +25689,7 @@ class SearchBar {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -23778,6 +25719,7 @@ class SearchBar {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -23787,6 +25729,7 @@ class SearchBar {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -23801,6 +25744,7 @@ class SearchBar {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -23815,6 +25759,7 @@ class SearchBar {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -23841,6 +25786,7 @@ class SearchBar {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -23852,6 +25798,7 @@ class SearchBar {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -23863,6 +25810,7 @@ class SearchBar {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -23882,6 +25830,10 @@ class SearchBar {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -23901,6 +25853,7 @@ class SearchBar {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -23916,6 +25869,7 @@ class SearchBar {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -23925,6 +25879,7 @@ class SearchBar {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -23950,6 +25905,7 @@ class SearchBar {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -23978,6 +25934,7 @@ class SearchBar {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -23987,6 +25944,7 @@ class SearchBar {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -24001,6 +25959,7 @@ class SearchBar {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -24045,6 +26004,7 @@ class SearchBar {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -24068,6 +26028,7 @@ class SearchBar {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -24081,6 +26042,7 @@ class SearchBar {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -24116,12 +26078,18 @@ class SearchBar {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::notebook", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::notebook", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::notebook", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::notebook", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::notebook", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::search-mode-enabled", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::search-mode-enabled", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::search-mode-enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -24404,7 +26372,7 @@ class Settings {
      */
     variableFont: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.Settings */
     /**
      * Binds all the #DhSettings properties to their corresponding #GSettings keys.
@@ -24454,27 +26422,34 @@ class Settings {
      * Returns whether `book` is enabled according to the "books-disabled" #GSettings
      * key. If the `book` ID is present in "books-disabled", this function returns
      * %FALSE, otherwise %TRUE is returned.
+     * @param book a #DhBook.
      */
     isBookEnabled(book: Book): boolean
     /**
      * Modifies the "books-disabled" #GSettings key. It adds or removes the `book` ID
      * from "books-disabled".
+     * @param book a #DhBook.
+     * @param enabled the new value.
      */
     setBookEnabled(book: Book, enabled: boolean): void
     /**
      * Sets the #DhSettings:fixed-font property.
+     * @param fixedFont the new value.
      */
     setFixedFont(fixedFont: string): void
     /**
      * Sets the #DhSettings:group-books-by-language property.
+     * @param groupBooksByLanguage the new value.
      */
     setGroupBooksByLanguage(groupBooksByLanguage: boolean): void
     /**
      * Sets the #DhSettings:use-system-fonts property.
+     * @param useSystemFonts the new value.
      */
     setUseSystemFonts(useSystemFonts: boolean): void
     /**
      * Sets the #DhSettings:variable-font property.
+     * @param variableFont the new value.
      */
     setVariableFont(variableFont: string): void
     /**
@@ -24519,6 +26494,10 @@ class Settings {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24529,6 +26508,12 @@ class Settings {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -24552,6 +26537,7 @@ class Settings {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -24571,11 +26557,14 @@ class Settings {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -24583,6 +26572,8 @@ class Settings {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24600,6 +26591,7 @@ class Settings {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -24645,6 +26637,7 @@ class Settings {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -24688,15 +26681,20 @@ class Settings {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -24737,6 +26735,7 @@ class Settings {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -24771,6 +26770,7 @@ class Settings {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Devhelp-3.0.Devhelp.Settings */
@@ -24821,6 +26821,7 @@ class Settings {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -24869,7 +26870,7 @@ interface SettingsBuilder_ConstructProps extends GObject.Object_ConstructProps {
 }
 class SettingsBuilder {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.SettingsBuilder */
     createObject(): Settings
     /**
@@ -24877,6 +26878,7 @@ class SettingsBuilder {
      * 
      * If you don't call this function, the default path for this schema will be
      * used.
+     * @param contentsPath the path for the "contents" schema.
      */
     setContentsPath(contentsPath: string): void
     /**
@@ -24884,6 +26886,7 @@ class SettingsBuilder {
      * 
      * If you don't call this function, the default path for this schema will be
      * used.
+     * @param fontsPath the path for the "fonts" schema.
      */
     setFontsPath(fontsPath: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -24921,6 +26924,10 @@ class SettingsBuilder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24931,6 +26938,12 @@ class SettingsBuilder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -24954,6 +26967,7 @@ class SettingsBuilder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -24973,11 +26987,14 @@ class SettingsBuilder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -24985,6 +27002,8 @@ class SettingsBuilder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25002,6 +27021,7 @@ class SettingsBuilder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -25047,6 +27067,7 @@ class SettingsBuilder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -25090,15 +27111,20 @@ class SettingsBuilder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -25139,6 +27165,7 @@ class SettingsBuilder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -25173,6 +27200,7 @@ class SettingsBuilder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -25204,6 +27232,7 @@ class SettingsBuilder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -25238,6 +27267,12 @@ interface Sidebar_ConstructProps extends Gtk.Grid_ConstructProps {
     orientation?: Gtk.Orientation
 }
 class Sidebar {
+    /* Properties of Devhelp-3.0.Devhelp.Sidebar */
+    /**
+     * The #DhProfile. If set to %NULL, the default profile as returned by
+     * dh_profile_get_default() is used.
+     */
+    readonly profile: Profile
     /* Properties of Gtk-3.0.Gtk.Grid */
     baselineRow: number
     columnHomogeneous: boolean
@@ -25427,11 +27462,11 @@ class Sidebar {
      */
     orientation: Gtk.Orientation
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.Sidebar */
     getProfile(): Profile
     /**
@@ -25442,6 +27477,7 @@ class Sidebar {
     getSelectedLink(): Link | null
     /**
      * Calls dh_book_tree_select_uri().
+     * @param uri the URI to select.
      */
     selectUri(uri: string): void
     /**
@@ -25456,6 +27492,11 @@ class Sidebar {
      * The position of `child` is determined by `left` and `top`. The
      * number of “cells” that `child` will occupy is determined by
      * `width` and `height`.
+     * @param child the widget to add
+     * @param left the column number to attach the left side of `child` to
+     * @param top the row number to attach the top side of `child` to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attach(child: Gtk.Widget, left: number, top: number, width: number, height: number): void
     /**
@@ -25468,6 +27509,11 @@ class Sidebar {
      * 
      * Attaching widgets labeled [1], [2], [3] with `sibling` == %NULL and
      * `side` == %GTK_POS_LEFT yields a layout of [3][2][1].
+     * @param child the widget to add
+     * @param sibling the child of `grid` that `child` will be placed     next to, or %NULL to place `child` at the beginning or end
+     * @param side the side of `sibling` that `child` is positioned next to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attachNextTo(child: Gtk.Widget, sibling: Gtk.Widget | null, side: Gtk.PositionType, width: number, height: number): void
     /**
@@ -25477,6 +27523,8 @@ class Sidebar {
     /**
      * Gets the child of `grid` whose area covers the grid
      * cell whose upper left corner is at `left,` `top`.
+     * @param left the left edge of the cell
+     * @param top the top edge of the cell
      */
     getChildAt(left: number, top: number): Gtk.Widget | null
     /**
@@ -25491,6 +27539,7 @@ class Sidebar {
      * Returns the baseline position of `row` as set
      * by gtk_grid_set_row_baseline_position() or the default value
      * %GTK_BASELINE_POSITION_CENTER.
+     * @param row a row index
      */
     getRowBaselinePosition(row: number): Gtk.BaselinePosition
     /**
@@ -25507,6 +27556,7 @@ class Sidebar {
      * Children which are attached at or to the right of this position
      * are moved one column to the right. Children which span across this
      * position are grown to span the new column.
+     * @param position the position to insert the column at
      */
     insertColumn(position: number): void
     /**
@@ -25516,6 +27566,8 @@ class Sidebar {
      * determined by `side`. If `side` is %GTK_POS_TOP or %GTK_POS_BOTTOM,
      * a row is inserted. If `side` is %GTK_POS_LEFT of %GTK_POS_RIGHT,
      * a column is inserted.
+     * @param sibling the child of `grid` that the new row or column will be     placed next to
+     * @param side the side of `sibling` that `child` is positioned next to
      */
     insertNextTo(sibling: Gtk.Widget, side: Gtk.PositionType): void
     /**
@@ -25524,6 +27576,7 @@ class Sidebar {
      * Children which are attached at or below this position
      * are moved one row down. Children which span across this
      * position are grown to span the new row.
+     * @param position the position to insert the row at
      */
     insertRow(position: number): void
     /**
@@ -25533,6 +27586,7 @@ class Sidebar {
      * spanning children that overlap this column have their
      * width reduced by one, and children after the column
      * are moved to the left.
+     * @param position the position of the column to remove
      */
     removeColumn(position: number): void
     /**
@@ -25542,6 +27596,7 @@ class Sidebar {
      * spanning children that overlap this row have their
      * height reduced by one, and children below the row
      * are moved up.
+     * @param position the position of the row to remove
      */
     removeRow(position: number): void
     /**
@@ -25549,27 +27604,34 @@ class Sidebar {
      * Each row in the grid can have its own local baseline, but only
      * one of those is global, meaning it will be the baseline in the
      * parent of the `grid`.
+     * @param row the row index
      */
     setBaselineRow(row: number): void
     /**
      * Sets whether all columns of `grid` will have the same width.
+     * @param homogeneous %TRUE to make columns homogeneous
      */
     setColumnHomogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between columns of `grid`.
+     * @param spacing the amount of space to insert between columns
      */
     setColumnSpacing(spacing: number): void
     /**
      * Sets how the baseline should be positioned on `row` of the
      * grid, in case that row is assigned more space than is requested.
+     * @param row a row index
+     * @param pos a #GtkBaselinePosition
      */
     setRowBaselinePosition(row: number, pos: Gtk.BaselinePosition): void
     /**
      * Sets whether all rows of `grid` will have the same height.
+     * @param homogeneous %TRUE to make rows homogeneous
      */
     setRowHomogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between rows of `grid`.
+     * @param spacing the amount of space to insert between rows
      */
     setRowSpacing(spacing: number): void
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -25586,11 +27648,15 @@ class Sidebar {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -25601,6 +27667,8 @@ class Sidebar {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -25609,10 +27677,15 @@ class Sidebar {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -25632,6 +27705,7 @@ class Sidebar {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -25646,6 +27720,7 @@ class Sidebar {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -25685,6 +27760,7 @@ class Sidebar {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -25708,6 +27784,8 @@ class Sidebar {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -25720,6 +27798,7 @@ class Sidebar {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -25733,6 +27812,7 @@ class Sidebar {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -25743,6 +27823,7 @@ class Sidebar {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -25754,6 +27835,7 @@ class Sidebar {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -25766,6 +27848,7 @@ class Sidebar {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -25778,6 +27861,7 @@ class Sidebar {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -25785,6 +27869,7 @@ class Sidebar {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -25793,6 +27878,7 @@ class Sidebar {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -25816,17 +27902,25 @@ class Sidebar {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -25836,6 +27930,7 @@ class Sidebar {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -25859,6 +27954,7 @@ class Sidebar {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -25869,6 +27965,7 @@ class Sidebar {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -25891,6 +27988,7 @@ class Sidebar {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -25901,6 +27999,7 @@ class Sidebar {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -25920,6 +28019,7 @@ class Sidebar {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -25937,6 +28037,7 @@ class Sidebar {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -25981,6 +28082,7 @@ class Sidebar {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -25989,11 +28091,16 @@ class Sidebar {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -26022,12 +28129,22 @@ class Sidebar {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -26062,6 +28179,8 @@ class Sidebar {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -26116,16 +28235,23 @@ class Sidebar {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -26135,6 +28261,7 @@ class Sidebar {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -26152,6 +28279,9 @@ class Sidebar {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -26192,33 +28322,41 @@ class Sidebar {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -26248,6 +28386,7 @@ class Sidebar {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -26277,6 +28416,7 @@ class Sidebar {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -26308,6 +28448,7 @@ class Sidebar {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -26370,6 +28511,7 @@ class Sidebar {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -26434,6 +28576,7 @@ class Sidebar {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -26443,11 +28586,13 @@ class Sidebar {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -26601,6 +28746,7 @@ class Sidebar {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -26688,6 +28834,7 @@ class Sidebar {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -26699,6 +28846,7 @@ class Sidebar {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -26740,6 +28888,7 @@ class Sidebar {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -26870,6 +29019,8 @@ class Sidebar {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -27088,6 +29239,7 @@ class Sidebar {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -27098,6 +29250,8 @@ class Sidebar {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -27105,11 +29259,13 @@ class Sidebar {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -27177,6 +29333,7 @@ class Sidebar {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -27213,6 +29370,7 @@ class Sidebar {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -27231,6 +29389,8 @@ class Sidebar {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -27248,6 +29408,8 @@ class Sidebar {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -27257,6 +29419,8 @@ class Sidebar {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -27264,6 +29428,8 @@ class Sidebar {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -27271,6 +29437,7 @@ class Sidebar {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -27292,6 +29459,7 @@ class Sidebar {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -27302,6 +29470,8 @@ class Sidebar {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -27309,6 +29479,8 @@ class Sidebar {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -27337,6 +29509,8 @@ class Sidebar {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -27347,11 +29521,14 @@ class Sidebar {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -27360,6 +29537,8 @@ class Sidebar {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -27413,6 +29592,10 @@ class Sidebar {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -27426,6 +29609,7 @@ class Sidebar {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -27471,6 +29655,7 @@ class Sidebar {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -27482,11 +29667,15 @@ class Sidebar {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -27494,11 +29683,13 @@ class Sidebar {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -27513,6 +29704,9 @@ class Sidebar {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -27525,11 +29719,14 @@ class Sidebar {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -27558,6 +29755,7 @@ class Sidebar {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -27586,6 +29784,7 @@ class Sidebar {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -27610,6 +29809,8 @@ class Sidebar {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -27622,6 +29823,7 @@ class Sidebar {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -27636,18 +29838,21 @@ class Sidebar {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -27668,6 +29873,7 @@ class Sidebar {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -27681,11 +29887,13 @@ class Sidebar {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -27695,6 +29903,8 @@ class Sidebar {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -27709,6 +29919,8 @@ class Sidebar {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -27724,6 +29936,7 @@ class Sidebar {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -27752,6 +29965,7 @@ class Sidebar {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -27766,6 +29980,7 @@ class Sidebar {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -27773,26 +29988,31 @@ class Sidebar {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -27806,6 +30026,7 @@ class Sidebar {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -27834,6 +30055,7 @@ class Sidebar {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -27852,6 +30074,7 @@ class Sidebar {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -27859,36 +30082,43 @@ class Sidebar {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -27901,6 +30131,7 @@ class Sidebar {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -27909,6 +30140,7 @@ class Sidebar {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -27926,6 +30158,7 @@ class Sidebar {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -27935,6 +30168,7 @@ class Sidebar {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -27946,6 +30180,7 @@ class Sidebar {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -27955,6 +30190,7 @@ class Sidebar {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -27964,6 +30200,7 @@ class Sidebar {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -27982,6 +30219,7 @@ class Sidebar {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -27989,6 +30227,7 @@ class Sidebar {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -28022,12 +30261,15 @@ class Sidebar {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -28044,11 +30286,14 @@ class Sidebar {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -28056,6 +30301,7 @@ class Sidebar {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -28067,6 +30313,7 @@ class Sidebar {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -28075,6 +30322,7 @@ class Sidebar {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -28083,11 +30331,13 @@ class Sidebar {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -28095,6 +30345,7 @@ class Sidebar {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -28102,6 +30353,7 @@ class Sidebar {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -28112,6 +30364,7 @@ class Sidebar {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -28122,6 +30375,7 @@ class Sidebar {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -28136,12 +30390,14 @@ class Sidebar {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -28183,6 +30439,7 @@ class Sidebar {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -28199,6 +30456,8 @@ class Sidebar {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -28233,6 +30492,8 @@ class Sidebar {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -28246,6 +30507,9 @@ class Sidebar {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -28275,12 +30539,14 @@ class Sidebar {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -28318,6 +30584,10 @@ class Sidebar {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28328,6 +30598,12 @@ class Sidebar {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -28351,6 +30627,7 @@ class Sidebar {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -28370,11 +30647,14 @@ class Sidebar {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -28382,6 +30662,8 @@ class Sidebar {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28399,6 +30681,7 @@ class Sidebar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -28444,6 +30727,7 @@ class Sidebar {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -28487,15 +30771,20 @@ class Sidebar {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -28536,6 +30825,7 @@ class Sidebar {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -28570,12 +30860,16 @@ class Sidebar {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -28583,24 +30877,39 @@ class Sidebar {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -28609,14 +30918,19 @@ class Sidebar {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Methods of Gtk-3.0.Gtk.Orientable */
@@ -28626,6 +30940,7 @@ class Sidebar {
     getOrientation(): Gtk.Orientation
     /**
      * Sets the orientation of the `orientable`.
+     * @param orientation the orientable’s new orientation.
      */
     setOrientation(orientation: Gtk.Orientation): void
     /* Signals of Devhelp-3.0.Devhelp.Sidebar */
@@ -28640,6 +30955,7 @@ class Sidebar {
      * former, not the latter. So the last `link` emitted with this signal is
      * not necessarily the same as the current return value of
      * dh_sidebar_get_selected_link().
+     * @param link the selected #DhLink.
      */
     connect(sigName: "link-selected", callback: ((link: Link) => void)): number
     on(sigName: "link-selected", callback: (link: Link) => void, after?: boolean): NodeJS.EventEmitter
@@ -28681,6 +30997,7 @@ class Sidebar {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -28695,6 +31012,7 @@ class Sidebar {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -28707,6 +31025,7 @@ class Sidebar {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -28717,6 +31036,7 @@ class Sidebar {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -28740,6 +31060,7 @@ class Sidebar {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -28750,6 +31071,7 @@ class Sidebar {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -28762,6 +31084,7 @@ class Sidebar {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -28789,6 +31112,7 @@ class Sidebar {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -28798,6 +31122,7 @@ class Sidebar {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -28812,6 +31137,7 @@ class Sidebar {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -28823,6 +31149,7 @@ class Sidebar {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -28835,6 +31162,10 @@ class Sidebar {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -28904,6 +31235,12 @@ class Sidebar {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -28921,6 +31258,10 @@ class Sidebar {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -28931,6 +31272,7 @@ class Sidebar {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -28943,6 +31285,8 @@ class Sidebar {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -28959,6 +31303,8 @@ class Sidebar {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -29054,6 +31400,10 @@ class Sidebar {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -29078,6 +31428,7 @@ class Sidebar {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -29092,6 +31443,7 @@ class Sidebar {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -29104,6 +31456,7 @@ class Sidebar {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -29114,6 +31467,7 @@ class Sidebar {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -29131,6 +31485,7 @@ class Sidebar {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -29143,6 +31498,7 @@ class Sidebar {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -29156,6 +31512,7 @@ class Sidebar {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -29176,6 +31533,7 @@ class Sidebar {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -29197,6 +31555,7 @@ class Sidebar {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -29211,6 +31570,7 @@ class Sidebar {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -29224,6 +31584,7 @@ class Sidebar {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -29233,6 +31594,7 @@ class Sidebar {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -29247,6 +31609,7 @@ class Sidebar {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -29276,6 +31639,7 @@ class Sidebar {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -29285,6 +31649,7 @@ class Sidebar {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -29299,6 +31664,7 @@ class Sidebar {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -29313,6 +31679,7 @@ class Sidebar {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -29339,6 +31706,7 @@ class Sidebar {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -29350,6 +31718,7 @@ class Sidebar {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -29361,6 +31730,7 @@ class Sidebar {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -29380,6 +31750,10 @@ class Sidebar {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -29399,6 +31773,7 @@ class Sidebar {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -29414,6 +31789,7 @@ class Sidebar {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -29423,6 +31799,7 @@ class Sidebar {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -29448,6 +31825,7 @@ class Sidebar {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -29476,6 +31854,7 @@ class Sidebar {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -29485,6 +31864,7 @@ class Sidebar {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -29499,6 +31879,7 @@ class Sidebar {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -29543,6 +31924,7 @@ class Sidebar {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -29566,6 +31948,7 @@ class Sidebar {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -29579,6 +31962,7 @@ class Sidebar {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -29614,12 +31998,18 @@ class Sidebar {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::baseline-row", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-row", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::baseline-row", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -29891,6 +32281,12 @@ interface Tab_ConstructProps extends Gtk.Grid_ConstructProps {
     orientation?: Gtk.Orientation
 }
 class Tab {
+    /* Properties of Devhelp-3.0.Devhelp.Tab */
+    /**
+     * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
+     * with the default #DhProfile.
+     */
+    readonly webView: WebView
     /* Properties of Gtk-3.0.Gtk.Grid */
     baselineRow: number
     columnHomogeneous: boolean
@@ -30080,11 +32476,11 @@ class Tab {
      */
     orientation: Gtk.Orientation
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.Tab */
     getWebView(): WebView
     /* Methods of Gtk-3.0.Gtk.Grid */
@@ -30094,6 +32490,11 @@ class Tab {
      * The position of `child` is determined by `left` and `top`. The
      * number of “cells” that `child` will occupy is determined by
      * `width` and `height`.
+     * @param child the widget to add
+     * @param left the column number to attach the left side of `child` to
+     * @param top the row number to attach the top side of `child` to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attach(child: Gtk.Widget, left: number, top: number, width: number, height: number): void
     /**
@@ -30106,6 +32507,11 @@ class Tab {
      * 
      * Attaching widgets labeled [1], [2], [3] with `sibling` == %NULL and
      * `side` == %GTK_POS_LEFT yields a layout of [3][2][1].
+     * @param child the widget to add
+     * @param sibling the child of `grid` that `child` will be placed     next to, or %NULL to place `child` at the beginning or end
+     * @param side the side of `sibling` that `child` is positioned next to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attachNextTo(child: Gtk.Widget, sibling: Gtk.Widget | null, side: Gtk.PositionType, width: number, height: number): void
     /**
@@ -30115,6 +32521,8 @@ class Tab {
     /**
      * Gets the child of `grid` whose area covers the grid
      * cell whose upper left corner is at `left,` `top`.
+     * @param left the left edge of the cell
+     * @param top the top edge of the cell
      */
     getChildAt(left: number, top: number): Gtk.Widget | null
     /**
@@ -30129,6 +32537,7 @@ class Tab {
      * Returns the baseline position of `row` as set
      * by gtk_grid_set_row_baseline_position() or the default value
      * %GTK_BASELINE_POSITION_CENTER.
+     * @param row a row index
      */
     getRowBaselinePosition(row: number): Gtk.BaselinePosition
     /**
@@ -30145,6 +32554,7 @@ class Tab {
      * Children which are attached at or to the right of this position
      * are moved one column to the right. Children which span across this
      * position are grown to span the new column.
+     * @param position the position to insert the column at
      */
     insertColumn(position: number): void
     /**
@@ -30154,6 +32564,8 @@ class Tab {
      * determined by `side`. If `side` is %GTK_POS_TOP or %GTK_POS_BOTTOM,
      * a row is inserted. If `side` is %GTK_POS_LEFT of %GTK_POS_RIGHT,
      * a column is inserted.
+     * @param sibling the child of `grid` that the new row or column will be     placed next to
+     * @param side the side of `sibling` that `child` is positioned next to
      */
     insertNextTo(sibling: Gtk.Widget, side: Gtk.PositionType): void
     /**
@@ -30162,6 +32574,7 @@ class Tab {
      * Children which are attached at or below this position
      * are moved one row down. Children which span across this
      * position are grown to span the new row.
+     * @param position the position to insert the row at
      */
     insertRow(position: number): void
     /**
@@ -30171,6 +32584,7 @@ class Tab {
      * spanning children that overlap this column have their
      * width reduced by one, and children after the column
      * are moved to the left.
+     * @param position the position of the column to remove
      */
     removeColumn(position: number): void
     /**
@@ -30180,6 +32594,7 @@ class Tab {
      * spanning children that overlap this row have their
      * height reduced by one, and children below the row
      * are moved up.
+     * @param position the position of the row to remove
      */
     removeRow(position: number): void
     /**
@@ -30187,27 +32602,34 @@ class Tab {
      * Each row in the grid can have its own local baseline, but only
      * one of those is global, meaning it will be the baseline in the
      * parent of the `grid`.
+     * @param row the row index
      */
     setBaselineRow(row: number): void
     /**
      * Sets whether all columns of `grid` will have the same width.
+     * @param homogeneous %TRUE to make columns homogeneous
      */
     setColumnHomogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between columns of `grid`.
+     * @param spacing the amount of space to insert between columns
      */
     setColumnSpacing(spacing: number): void
     /**
      * Sets how the baseline should be positioned on `row` of the
      * grid, in case that row is assigned more space than is requested.
+     * @param row a row index
+     * @param pos a #GtkBaselinePosition
      */
     setRowBaselinePosition(row: number, pos: Gtk.BaselinePosition): void
     /**
      * Sets whether all rows of `grid` will have the same height.
+     * @param homogeneous %TRUE to make rows homogeneous
      */
     setRowHomogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between rows of `grid`.
+     * @param spacing the amount of space to insert between rows
      */
     setRowSpacing(spacing: number): void
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -30224,11 +32646,15 @@ class Tab {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -30239,6 +32665,8 @@ class Tab {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -30247,10 +32675,15 @@ class Tab {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -30270,6 +32703,7 @@ class Tab {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -30284,6 +32718,7 @@ class Tab {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -30323,6 +32758,7 @@ class Tab {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -30346,6 +32782,8 @@ class Tab {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -30358,6 +32796,7 @@ class Tab {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -30371,6 +32810,7 @@ class Tab {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -30381,6 +32821,7 @@ class Tab {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -30392,6 +32833,7 @@ class Tab {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -30404,6 +32846,7 @@ class Tab {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -30416,6 +32859,7 @@ class Tab {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -30423,6 +32867,7 @@ class Tab {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -30431,6 +32876,7 @@ class Tab {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -30454,17 +32900,25 @@ class Tab {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -30474,6 +32928,7 @@ class Tab {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -30497,6 +32952,7 @@ class Tab {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -30507,6 +32963,7 @@ class Tab {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -30529,6 +32986,7 @@ class Tab {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -30539,6 +32997,7 @@ class Tab {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -30558,6 +33017,7 @@ class Tab {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -30575,6 +33035,7 @@ class Tab {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -30619,6 +33080,7 @@ class Tab {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -30627,11 +33089,16 @@ class Tab {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -30660,12 +33127,22 @@ class Tab {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -30700,6 +33177,8 @@ class Tab {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -30754,16 +33233,23 @@ class Tab {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -30773,6 +33259,7 @@ class Tab {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -30790,6 +33277,9 @@ class Tab {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -30830,33 +33320,41 @@ class Tab {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -30886,6 +33384,7 @@ class Tab {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -30915,6 +33414,7 @@ class Tab {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -30946,6 +33446,7 @@ class Tab {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -31008,6 +33509,7 @@ class Tab {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -31072,6 +33574,7 @@ class Tab {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -31081,11 +33584,13 @@ class Tab {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -31239,6 +33744,7 @@ class Tab {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -31326,6 +33832,7 @@ class Tab {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -31337,6 +33844,7 @@ class Tab {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -31378,6 +33886,7 @@ class Tab {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -31508,6 +34017,8 @@ class Tab {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -31726,6 +34237,7 @@ class Tab {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -31736,6 +34248,8 @@ class Tab {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -31743,11 +34257,13 @@ class Tab {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -31815,6 +34331,7 @@ class Tab {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -31851,6 +34368,7 @@ class Tab {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -31869,6 +34387,8 @@ class Tab {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -31886,6 +34406,8 @@ class Tab {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -31895,6 +34417,8 @@ class Tab {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -31902,6 +34426,8 @@ class Tab {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -31909,6 +34435,7 @@ class Tab {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -31930,6 +34457,7 @@ class Tab {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -31940,6 +34468,8 @@ class Tab {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -31947,6 +34477,8 @@ class Tab {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -31975,6 +34507,8 @@ class Tab {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -31985,11 +34519,14 @@ class Tab {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -31998,6 +34535,8 @@ class Tab {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -32051,6 +34590,10 @@ class Tab {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -32064,6 +34607,7 @@ class Tab {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -32109,6 +34653,7 @@ class Tab {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -32120,11 +34665,15 @@ class Tab {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -32132,11 +34681,13 @@ class Tab {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -32151,6 +34702,9 @@ class Tab {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -32163,11 +34717,14 @@ class Tab {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -32196,6 +34753,7 @@ class Tab {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -32224,6 +34782,7 @@ class Tab {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -32248,6 +34807,8 @@ class Tab {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -32260,6 +34821,7 @@ class Tab {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -32274,18 +34836,21 @@ class Tab {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -32306,6 +34871,7 @@ class Tab {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -32319,11 +34885,13 @@ class Tab {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -32333,6 +34901,8 @@ class Tab {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -32347,6 +34917,8 @@ class Tab {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -32362,6 +34934,7 @@ class Tab {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -32390,6 +34963,7 @@ class Tab {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -32404,6 +34978,7 @@ class Tab {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -32411,26 +34986,31 @@ class Tab {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -32444,6 +35024,7 @@ class Tab {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -32472,6 +35053,7 @@ class Tab {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -32490,6 +35072,7 @@ class Tab {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -32497,36 +35080,43 @@ class Tab {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -32539,6 +35129,7 @@ class Tab {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -32547,6 +35138,7 @@ class Tab {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -32564,6 +35156,7 @@ class Tab {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -32573,6 +35166,7 @@ class Tab {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -32584,6 +35178,7 @@ class Tab {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -32593,6 +35188,7 @@ class Tab {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -32602,6 +35198,7 @@ class Tab {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -32620,6 +35217,7 @@ class Tab {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -32627,6 +35225,7 @@ class Tab {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -32660,12 +35259,15 @@ class Tab {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -32682,11 +35284,14 @@ class Tab {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -32694,6 +35299,7 @@ class Tab {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -32705,6 +35311,7 @@ class Tab {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -32713,6 +35320,7 @@ class Tab {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -32721,11 +35329,13 @@ class Tab {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -32733,6 +35343,7 @@ class Tab {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -32740,6 +35351,7 @@ class Tab {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -32750,6 +35362,7 @@ class Tab {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -32760,6 +35373,7 @@ class Tab {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -32774,12 +35388,14 @@ class Tab {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -32821,6 +35437,7 @@ class Tab {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -32837,6 +35454,8 @@ class Tab {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -32871,6 +35490,8 @@ class Tab {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -32884,6 +35505,9 @@ class Tab {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -32913,12 +35537,14 @@ class Tab {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -32956,6 +35582,10 @@ class Tab {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -32966,6 +35596,12 @@ class Tab {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -32989,6 +35625,7 @@ class Tab {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -33008,11 +35645,14 @@ class Tab {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -33020,6 +35660,8 @@ class Tab {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -33037,6 +35679,7 @@ class Tab {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -33082,6 +35725,7 @@ class Tab {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -33125,15 +35769,20 @@ class Tab {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -33174,6 +35823,7 @@ class Tab {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -33208,12 +35858,16 @@ class Tab {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -33221,24 +35875,39 @@ class Tab {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -33247,14 +35916,19 @@ class Tab {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Methods of Gtk-3.0.Gtk.Orientable */
@@ -33264,6 +35938,7 @@ class Tab {
     getOrientation(): Gtk.Orientation
     /**
      * Sets the orientation of the `orientable`.
+     * @param orientation the orientable’s new orientation.
      */
     setOrientation(orientation: Gtk.Orientation): void
     /* Signals of Gtk-3.0.Gtk.Container */
@@ -33301,6 +35976,7 @@ class Tab {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -33315,6 +35991,7 @@ class Tab {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -33327,6 +36004,7 @@ class Tab {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -33337,6 +36015,7 @@ class Tab {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -33360,6 +36039,7 @@ class Tab {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -33370,6 +36050,7 @@ class Tab {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -33382,6 +36063,7 @@ class Tab {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -33409,6 +36091,7 @@ class Tab {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -33418,6 +36101,7 @@ class Tab {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -33432,6 +36116,7 @@ class Tab {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -33443,6 +36128,7 @@ class Tab {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -33455,6 +36141,10 @@ class Tab {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -33524,6 +36214,12 @@ class Tab {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -33541,6 +36237,10 @@ class Tab {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -33551,6 +36251,7 @@ class Tab {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -33563,6 +36264,8 @@ class Tab {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -33579,6 +36282,8 @@ class Tab {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -33674,6 +36379,10 @@ class Tab {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -33698,6 +36407,7 @@ class Tab {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -33712,6 +36422,7 @@ class Tab {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -33724,6 +36435,7 @@ class Tab {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -33734,6 +36446,7 @@ class Tab {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -33751,6 +36464,7 @@ class Tab {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -33763,6 +36477,7 @@ class Tab {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -33776,6 +36491,7 @@ class Tab {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -33796,6 +36512,7 @@ class Tab {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -33817,6 +36534,7 @@ class Tab {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -33831,6 +36549,7 @@ class Tab {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -33844,6 +36563,7 @@ class Tab {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -33853,6 +36573,7 @@ class Tab {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -33867,6 +36588,7 @@ class Tab {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -33896,6 +36618,7 @@ class Tab {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -33905,6 +36628,7 @@ class Tab {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -33919,6 +36643,7 @@ class Tab {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -33933,6 +36658,7 @@ class Tab {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -33959,6 +36685,7 @@ class Tab {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -33970,6 +36697,7 @@ class Tab {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -33981,6 +36709,7 @@ class Tab {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -34000,6 +36729,10 @@ class Tab {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -34019,6 +36752,7 @@ class Tab {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -34034,6 +36768,7 @@ class Tab {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -34043,6 +36778,7 @@ class Tab {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -34068,6 +36804,7 @@ class Tab {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -34096,6 +36833,7 @@ class Tab {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -34105,6 +36843,7 @@ class Tab {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -34119,6 +36858,7 @@ class Tab {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -34163,6 +36903,7 @@ class Tab {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -34186,6 +36927,7 @@ class Tab {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -34199,6 +36941,7 @@ class Tab {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -34234,12 +36977,18 @@ class Tab {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::web-view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::web-view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::web-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::web-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::web-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::baseline-row", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-row", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::baseline-row", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -34510,6 +37259,12 @@ interface TabLabel_ConstructProps extends Gtk.Grid_ConstructProps {
     orientation?: Gtk.Orientation
 }
 class TabLabel {
+    /* Properties of Devhelp-3.0.Devhelp.TabLabel */
+    /**
+     * The associated #DhTab. #DhTabLabel has a weak reference to the
+     * #DhTab.
+     */
+    readonly tab: Tab
     /* Properties of Gtk-3.0.Gtk.Grid */
     baselineRow: number
     columnHomogeneous: boolean
@@ -34699,11 +37454,11 @@ class TabLabel {
      */
     orientation: Gtk.Orientation
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.TabLabel */
     getTab(): Tab | null
     /* Methods of Gtk-3.0.Gtk.Grid */
@@ -34713,6 +37468,11 @@ class TabLabel {
      * The position of `child` is determined by `left` and `top`. The
      * number of “cells” that `child` will occupy is determined by
      * `width` and `height`.
+     * @param child the widget to add
+     * @param left the column number to attach the left side of `child` to
+     * @param top the row number to attach the top side of `child` to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attach(child: Gtk.Widget, left: number, top: number, width: number, height: number): void
     /**
@@ -34725,6 +37485,11 @@ class TabLabel {
      * 
      * Attaching widgets labeled [1], [2], [3] with `sibling` == %NULL and
      * `side` == %GTK_POS_LEFT yields a layout of [3][2][1].
+     * @param child the widget to add
+     * @param sibling the child of `grid` that `child` will be placed     next to, or %NULL to place `child` at the beginning or end
+     * @param side the side of `sibling` that `child` is positioned next to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attachNextTo(child: Gtk.Widget, sibling: Gtk.Widget | null, side: Gtk.PositionType, width: number, height: number): void
     /**
@@ -34734,6 +37499,8 @@ class TabLabel {
     /**
      * Gets the child of `grid` whose area covers the grid
      * cell whose upper left corner is at `left,` `top`.
+     * @param left the left edge of the cell
+     * @param top the top edge of the cell
      */
     getChildAt(left: number, top: number): Gtk.Widget | null
     /**
@@ -34748,6 +37515,7 @@ class TabLabel {
      * Returns the baseline position of `row` as set
      * by gtk_grid_set_row_baseline_position() or the default value
      * %GTK_BASELINE_POSITION_CENTER.
+     * @param row a row index
      */
     getRowBaselinePosition(row: number): Gtk.BaselinePosition
     /**
@@ -34764,6 +37532,7 @@ class TabLabel {
      * Children which are attached at or to the right of this position
      * are moved one column to the right. Children which span across this
      * position are grown to span the new column.
+     * @param position the position to insert the column at
      */
     insertColumn(position: number): void
     /**
@@ -34773,6 +37542,8 @@ class TabLabel {
      * determined by `side`. If `side` is %GTK_POS_TOP or %GTK_POS_BOTTOM,
      * a row is inserted. If `side` is %GTK_POS_LEFT of %GTK_POS_RIGHT,
      * a column is inserted.
+     * @param sibling the child of `grid` that the new row or column will be     placed next to
+     * @param side the side of `sibling` that `child` is positioned next to
      */
     insertNextTo(sibling: Gtk.Widget, side: Gtk.PositionType): void
     /**
@@ -34781,6 +37552,7 @@ class TabLabel {
      * Children which are attached at or below this position
      * are moved one row down. Children which span across this
      * position are grown to span the new row.
+     * @param position the position to insert the row at
      */
     insertRow(position: number): void
     /**
@@ -34790,6 +37562,7 @@ class TabLabel {
      * spanning children that overlap this column have their
      * width reduced by one, and children after the column
      * are moved to the left.
+     * @param position the position of the column to remove
      */
     removeColumn(position: number): void
     /**
@@ -34799,6 +37572,7 @@ class TabLabel {
      * spanning children that overlap this row have their
      * height reduced by one, and children below the row
      * are moved up.
+     * @param position the position of the row to remove
      */
     removeRow(position: number): void
     /**
@@ -34806,27 +37580,34 @@ class TabLabel {
      * Each row in the grid can have its own local baseline, but only
      * one of those is global, meaning it will be the baseline in the
      * parent of the `grid`.
+     * @param row the row index
      */
     setBaselineRow(row: number): void
     /**
      * Sets whether all columns of `grid` will have the same width.
+     * @param homogeneous %TRUE to make columns homogeneous
      */
     setColumnHomogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between columns of `grid`.
+     * @param spacing the amount of space to insert between columns
      */
     setColumnSpacing(spacing: number): void
     /**
      * Sets how the baseline should be positioned on `row` of the
      * grid, in case that row is assigned more space than is requested.
+     * @param row a row index
+     * @param pos a #GtkBaselinePosition
      */
     setRowBaselinePosition(row: number, pos: Gtk.BaselinePosition): void
     /**
      * Sets whether all rows of `grid` will have the same height.
+     * @param homogeneous %TRUE to make rows homogeneous
      */
     setRowHomogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between rows of `grid`.
+     * @param spacing the amount of space to insert between rows
      */
     setRowSpacing(spacing: number): void
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -34843,11 +37624,15 @@ class TabLabel {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -34858,6 +37643,8 @@ class TabLabel {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -34866,10 +37653,15 @@ class TabLabel {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -34889,6 +37681,7 @@ class TabLabel {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -34903,6 +37696,7 @@ class TabLabel {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -34942,6 +37736,7 @@ class TabLabel {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -34965,6 +37760,8 @@ class TabLabel {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -34977,6 +37774,7 @@ class TabLabel {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -34990,6 +37788,7 @@ class TabLabel {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -35000,6 +37799,7 @@ class TabLabel {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -35011,6 +37811,7 @@ class TabLabel {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -35023,6 +37824,7 @@ class TabLabel {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -35035,6 +37837,7 @@ class TabLabel {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -35042,6 +37845,7 @@ class TabLabel {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -35050,6 +37854,7 @@ class TabLabel {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -35073,17 +37878,25 @@ class TabLabel {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -35093,6 +37906,7 @@ class TabLabel {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -35116,6 +37930,7 @@ class TabLabel {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -35126,6 +37941,7 @@ class TabLabel {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -35148,6 +37964,7 @@ class TabLabel {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -35158,6 +37975,7 @@ class TabLabel {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -35177,6 +37995,7 @@ class TabLabel {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -35194,6 +38013,7 @@ class TabLabel {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -35238,6 +38058,7 @@ class TabLabel {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -35246,11 +38067,16 @@ class TabLabel {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -35279,12 +38105,22 @@ class TabLabel {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -35319,6 +38155,8 @@ class TabLabel {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -35373,16 +38211,23 @@ class TabLabel {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -35392,6 +38237,7 @@ class TabLabel {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -35409,6 +38255,9 @@ class TabLabel {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -35449,33 +38298,41 @@ class TabLabel {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -35505,6 +38362,7 @@ class TabLabel {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -35534,6 +38392,7 @@ class TabLabel {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -35565,6 +38424,7 @@ class TabLabel {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -35627,6 +38487,7 @@ class TabLabel {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -35691,6 +38552,7 @@ class TabLabel {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -35700,11 +38562,13 @@ class TabLabel {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -35858,6 +38722,7 @@ class TabLabel {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -35945,6 +38810,7 @@ class TabLabel {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -35956,6 +38822,7 @@ class TabLabel {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -35997,6 +38864,7 @@ class TabLabel {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -36127,6 +38995,8 @@ class TabLabel {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -36345,6 +39215,7 @@ class TabLabel {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -36355,6 +39226,8 @@ class TabLabel {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -36362,11 +39235,13 @@ class TabLabel {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -36434,6 +39309,7 @@ class TabLabel {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -36470,6 +39346,7 @@ class TabLabel {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -36488,6 +39365,8 @@ class TabLabel {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -36505,6 +39384,8 @@ class TabLabel {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -36514,6 +39395,8 @@ class TabLabel {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -36521,6 +39404,8 @@ class TabLabel {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -36528,6 +39413,7 @@ class TabLabel {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -36549,6 +39435,7 @@ class TabLabel {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -36559,6 +39446,8 @@ class TabLabel {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -36566,6 +39455,8 @@ class TabLabel {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -36594,6 +39485,8 @@ class TabLabel {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -36604,11 +39497,14 @@ class TabLabel {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -36617,6 +39513,8 @@ class TabLabel {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -36670,6 +39568,10 @@ class TabLabel {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -36683,6 +39585,7 @@ class TabLabel {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -36728,6 +39631,7 @@ class TabLabel {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -36739,11 +39643,15 @@ class TabLabel {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -36751,11 +39659,13 @@ class TabLabel {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -36770,6 +39680,9 @@ class TabLabel {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -36782,11 +39695,14 @@ class TabLabel {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -36815,6 +39731,7 @@ class TabLabel {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -36843,6 +39760,7 @@ class TabLabel {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -36867,6 +39785,8 @@ class TabLabel {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -36879,6 +39799,7 @@ class TabLabel {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -36893,18 +39814,21 @@ class TabLabel {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -36925,6 +39849,7 @@ class TabLabel {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -36938,11 +39863,13 @@ class TabLabel {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -36952,6 +39879,8 @@ class TabLabel {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -36966,6 +39895,8 @@ class TabLabel {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -36981,6 +39912,7 @@ class TabLabel {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -37009,6 +39941,7 @@ class TabLabel {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -37023,6 +39956,7 @@ class TabLabel {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -37030,26 +39964,31 @@ class TabLabel {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -37063,6 +40002,7 @@ class TabLabel {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -37091,6 +40031,7 @@ class TabLabel {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -37109,6 +40050,7 @@ class TabLabel {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -37116,36 +40058,43 @@ class TabLabel {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -37158,6 +40107,7 @@ class TabLabel {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -37166,6 +40116,7 @@ class TabLabel {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -37183,6 +40134,7 @@ class TabLabel {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -37192,6 +40144,7 @@ class TabLabel {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -37203,6 +40156,7 @@ class TabLabel {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -37212,6 +40166,7 @@ class TabLabel {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -37221,6 +40176,7 @@ class TabLabel {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -37239,6 +40195,7 @@ class TabLabel {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -37246,6 +40203,7 @@ class TabLabel {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -37279,12 +40237,15 @@ class TabLabel {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -37301,11 +40262,14 @@ class TabLabel {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -37313,6 +40277,7 @@ class TabLabel {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -37324,6 +40289,7 @@ class TabLabel {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -37332,6 +40298,7 @@ class TabLabel {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -37340,11 +40307,13 @@ class TabLabel {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -37352,6 +40321,7 @@ class TabLabel {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -37359,6 +40329,7 @@ class TabLabel {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -37369,6 +40340,7 @@ class TabLabel {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -37379,6 +40351,7 @@ class TabLabel {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -37393,12 +40366,14 @@ class TabLabel {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -37440,6 +40415,7 @@ class TabLabel {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -37456,6 +40432,8 @@ class TabLabel {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -37490,6 +40468,8 @@ class TabLabel {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -37503,6 +40483,9 @@ class TabLabel {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -37532,12 +40515,14 @@ class TabLabel {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -37575,6 +40560,10 @@ class TabLabel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -37585,6 +40574,12 @@ class TabLabel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -37608,6 +40603,7 @@ class TabLabel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -37627,11 +40623,14 @@ class TabLabel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -37639,6 +40638,8 @@ class TabLabel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -37656,6 +40657,7 @@ class TabLabel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -37701,6 +40703,7 @@ class TabLabel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -37744,15 +40747,20 @@ class TabLabel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -37793,6 +40801,7 @@ class TabLabel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -37827,12 +40836,16 @@ class TabLabel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -37840,24 +40853,39 @@ class TabLabel {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -37866,14 +40894,19 @@ class TabLabel {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Methods of Gtk-3.0.Gtk.Orientable */
@@ -37883,6 +40916,7 @@ class TabLabel {
     getOrientation(): Gtk.Orientation
     /**
      * Sets the orientation of the `orientable`.
+     * @param orientation the orientable’s new orientation.
      */
     setOrientation(orientation: Gtk.Orientation): void
     /* Signals of Gtk-3.0.Gtk.Container */
@@ -37920,6 +40954,7 @@ class TabLabel {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -37934,6 +40969,7 @@ class TabLabel {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -37946,6 +40982,7 @@ class TabLabel {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -37956,6 +40993,7 @@ class TabLabel {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -37979,6 +41017,7 @@ class TabLabel {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -37989,6 +41028,7 @@ class TabLabel {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -38001,6 +41041,7 @@ class TabLabel {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -38028,6 +41069,7 @@ class TabLabel {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -38037,6 +41079,7 @@ class TabLabel {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -38051,6 +41094,7 @@ class TabLabel {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -38062,6 +41106,7 @@ class TabLabel {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -38074,6 +41119,10 @@ class TabLabel {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -38143,6 +41192,12 @@ class TabLabel {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -38160,6 +41215,10 @@ class TabLabel {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -38170,6 +41229,7 @@ class TabLabel {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -38182,6 +41242,8 @@ class TabLabel {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -38198,6 +41260,8 @@ class TabLabel {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -38293,6 +41357,10 @@ class TabLabel {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -38317,6 +41385,7 @@ class TabLabel {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -38331,6 +41400,7 @@ class TabLabel {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -38343,6 +41413,7 @@ class TabLabel {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -38353,6 +41424,7 @@ class TabLabel {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -38370,6 +41442,7 @@ class TabLabel {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -38382,6 +41455,7 @@ class TabLabel {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -38395,6 +41469,7 @@ class TabLabel {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -38415,6 +41490,7 @@ class TabLabel {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -38436,6 +41512,7 @@ class TabLabel {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -38450,6 +41527,7 @@ class TabLabel {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -38463,6 +41541,7 @@ class TabLabel {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -38472,6 +41551,7 @@ class TabLabel {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -38486,6 +41566,7 @@ class TabLabel {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -38515,6 +41596,7 @@ class TabLabel {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -38524,6 +41606,7 @@ class TabLabel {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -38538,6 +41621,7 @@ class TabLabel {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -38552,6 +41636,7 @@ class TabLabel {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -38578,6 +41663,7 @@ class TabLabel {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -38589,6 +41675,7 @@ class TabLabel {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -38600,6 +41687,7 @@ class TabLabel {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -38619,6 +41707,10 @@ class TabLabel {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -38638,6 +41730,7 @@ class TabLabel {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -38653,6 +41746,7 @@ class TabLabel {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -38662,6 +41756,7 @@ class TabLabel {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -38687,6 +41782,7 @@ class TabLabel {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -38715,6 +41811,7 @@ class TabLabel {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -38724,6 +41821,7 @@ class TabLabel {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -38738,6 +41836,7 @@ class TabLabel {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -38782,6 +41881,7 @@ class TabLabel {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -38805,6 +41905,7 @@ class TabLabel {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -38818,6 +41919,7 @@ class TabLabel {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -38853,12 +41955,18 @@ class TabLabel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::tab", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tab", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::tab", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::tab", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::tab", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::baseline-row", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-row", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::baseline-row", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -39124,7 +42232,20 @@ interface WebView_ConstructProps extends WebKit2.WebView_ConstructProps {
     profile?: Profile
 }
 class WebView {
-    /* Properties of WebKit2-4.0.WebKit2.WebView */
+    /* Properties of Devhelp-3.0.Devhelp.WebView */
+    /**
+     * The #DhProfile. If set to %NULL, the default profile as returned by
+     * dh_profile_get_default() is used.
+     */
+    readonly profile: Profile
+    /* Properties of WebKit2-4.1.WebKit2.WebView */
+    /**
+     * The #WebKitAutomationBrowsingContextPresentation of #WebKitWebView. This should only be used when
+     * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
+     * signal request. If the new WebView was added to a new tab of current browsing context window
+     * %WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB should be used.
+     */
+    readonly automationPresentationType: WebKit2.AutomationBrowsingContextPresentation
     /**
      * Capture state of the camera device. Whenever the user grants a media-request sent by the web
      * page, requesting video capture capabilities (`navigator.mediaDevices.getUserMedia({video:
@@ -39174,6 +42295,27 @@ class WebView {
      */
     readonly favicon: object
     /**
+     * Whether the #WebKitWebView is controlled by automation. This should only be used when
+     * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
+     * signal request.
+     */
+    readonly isControlledByAutomation: boolean
+    /**
+     * Whether the #WebKitWebView is ephemeral. An ephemeral web view never writes
+     * website data to the client storage, no matter what #WebKitWebsiteDataManager
+     * its context is using. This is normally used to implement private browsing mode.
+     * This is a %G_PARAM_CONSTRUCT_ONLY property, so you have to create an ephemeral
+     * #WebKitWebView and it can't be changed. The ephemeral #WebKitWebsiteDataManager
+     * created for the #WebKitWebView will inherit the network settings from the
+     * #WebKitWebContext<!-- -->'s #WebKitWebsiteDataManager. To use different settings
+     * you can get the #WebKitWebsiteDataManager with webkit_web_view_get_website_data_manager()
+     * and set the new ones.
+     * Note that all #WebKitWebView<!-- -->s created with an ephemeral #WebKitWebContext
+     * will be ephemeral automatically.
+     * See also webkit_web_context_new_ephemeral().
+     */
+    readonly isEphemeral: boolean
+    /**
      * Whether the #WebKitWebView is currently loading a page. This property becomes
      * %TRUE as soon as a new load operation is requested and before the
      * #WebKitWebView::load-changed signal is emitted with %WEBKIT_LOAD_STARTED and
@@ -39217,6 +42359,12 @@ class WebView {
      */
     readonly pageId: number
     /**
+     * The related #WebKitWebView used when creating the view to share the
+     * same web process. This property is not readable because the related
+     * web view is only valid during the object construction.
+     */
+    readonly relatedView: WebKit2.WebView
+    /**
      * The #WebKitSettings of the view.
      */
     settings: WebKit2.Settings
@@ -39230,6 +42378,18 @@ class WebView {
      * See webkit_web_view_get_uri() for more details.
      */
     readonly uri: string
+    /**
+     * The #WebKitUserContentManager of the view.
+     */
+    readonly userContentManager: WebKit2.UserContentManager
+    /**
+     * The #WebKitWebContext of the view.
+     */
+    readonly webContext: WebKit2.WebContext
+    /**
+     * The #WebKitWebsitePolicies for the view.
+     */
+    readonly websitePolicies: WebKit2.WebsitePolicies
     /**
      * The zoom level of the #WebKitWebView content.
      * See webkit_web_view_set_zoom_level() for more details.
@@ -39411,14 +42571,14 @@ class WebView {
      * The widget's window if it is realized, %NULL otherwise.
      */
     readonly window: Gdk.Window
-    /* Fields of WebKit2-4.0.WebKit2.WebView */
-    readonly parent: WebKit2.WebViewBase
-    /* Fields of WebKit2-4.0.WebKit2.WebViewBase */
-    readonly parentInstance: Gtk.Container
+    /* Fields of WebKit2-4.1.WebKit2.WebView */
+    parent: WebKit2.WebViewBase
+    /* Fields of WebKit2-4.1.WebKit2.WebViewBase */
+    parentInstance: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Devhelp-3.0.Devhelp.WebView */
     canResetZoom(): boolean
     canZoomIn(): boolean
@@ -39449,6 +42609,7 @@ class WebView {
      * `search_text` is not empty, it calls webkit_find_controller_search() if not
      * already done. If `search_text` is empty or %NULL, it calls
      * webkit_find_controller_search_finish().
+     * @param searchText the search string, or %NULL.
      */
     setSearchText(searchText?: string | null): void
     /**
@@ -39459,16 +42620,20 @@ class WebView {
      * Makes the text smaller.
      */
     zoomOut(): void
-    /* Methods of WebKit2-4.0.WebKit2.WebView */
+    /* Methods of WebKit2-4.1.WebKit2.WebView */
     /**
      * Asynchronously check if it is possible to execute the given editing command.
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_can_execute_editing_command_finish() to get the result of the operation.
+     * @param command the command to check
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     canExecuteEditingCommand(command: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_can_execute_editing_command().
+     * @param result a #GAsyncResult
      */
     canExecuteEditingCommandFinish(result: Gio.AsyncResult): boolean
     /**
@@ -39481,22 +42646,27 @@ class WebView {
     canGoForward(): boolean
     /**
      * Whether or not a MIME type can be displayed in `web_view`.
+     * @param mimeType a MIME type
      */
     canShowMimeType(mimeType: string): boolean
     /**
      * Requests downloading of the specified URI string for `web_view`.
+     * @param uri the URI to download
      */
     downloadUri(uri: string): WebKit2.Download
     /**
      * Request to execute the given `command` for `web_view`. You can use
      * webkit_web_view_can_execute_editing_command() to check whether
      * it's possible to execute the command.
+     * @param command the command to execute
      */
     executeEditingCommand(command: string): void
     /**
      * Request to execute the given `command` with `argument` for `web_view`. You can use
      * webkit_web_view_can_execute_editing_command() to check whether
      * it's possible to execute the command.
+     * @param command the command to execute
+     * @param argument the command argument
      */
     executeEditingCommandWithArgument(command: string, argument: string): void
     /**
@@ -39604,10 +42774,15 @@ class WebView {
      * When the operation is finished, `callback` will be called. You must
      * call webkit_web_view_get_snapshot_finish() to get the result of the
      * operation.
+     * @param region the #WebKitSnapshotRegion for this snapshot
+     * @param options #WebKitSnapshotOptions for the snapshot
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback
      */
     getSnapshot(region: WebKit2.SnapshotRegion, options: WebKit2.SnapshotOptions, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with webkit_web_view_get_snapshot().
+     * @param result a #GAsyncResult
      */
     getSnapshotFinish(result: Gio.AsyncResult): cairo.Surface
     /**
@@ -39730,29 +42905,19 @@ class WebView {
      * Loads the specific history item `list_item`.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param listItem a #WebKitBackForwardListItem
      */
     goToBackForwardListItem(listItem: WebKit2.BackForwardListItem): void
-    /**
-     * Get whether a #WebKitWebView was created with #WebKitWebView:is-controlled-by-automation
-     * property enabled. Only #WebKitWebView<!-- -->s controlled by automation can be used in an
-     * automation session.
-     */
-    isControlledByAutomation(): boolean
     isEditable(): boolean
-    /**
-     * Get whether a #WebKitWebView is ephemeral. To create an ephemeral #WebKitWebView you need to
-     * use g_object_new() and pass is-ephemeral property with %TRUE value. See
-     * #WebKitWebView:is-ephemeral for more details.
-     * If `web_view` was created with a ephemeral #WebKitWebView:related-view or an
-     * ephemeral #WebKitWebView:web-context it will also be ephemeral.
-     */
-    isEphemeral(): boolean
     /**
      * Load the given `content` string for the URI `content_uri`.
      * This allows clients to display page-loading errors in the #WebKitWebView itself.
      * When this method is called from #WebKitWebView::load-failed signal to show an
      * error page, then the back-forward list is maintained appropriately.
      * For everything else this method works the same way as webkit_web_view_load_html().
+     * @param content the new content to display as the main page of the `web_view`
+     * @param contentUri the URI for the alternate page content
+     * @param baseUri the base URI for relative locations or %NULL
      */
     loadAlternateHtml(content: string, contentUri: string, baseUri?: string | null): void
     /**
@@ -39761,6 +42926,10 @@ class WebView {
      * When `encoding` is %NULL, it defaults to "UTF-8".
      * When `base_uri` is %NULL, it defaults to "about:blank".
      * You can monitor the load operation by connecting to #WebKitWebView::load-changed signal.
+     * @param bytes input data to load
+     * @param mimeType the MIME type of `bytes,` or %NULL
+     * @param encoding the character encoding of `bytes,` or %NULL
+     * @param baseUri the base URI for relative locations or %NULL
      */
     loadBytes(bytes: any, mimeType?: string | null, encoding?: string | null, baseUri?: string | null): void
     /**
@@ -39773,24 +42942,29 @@ class WebView {
      * directory than `base_uri` you can build a data URI for them. When `base_uri` is %NULL,
      * it defaults to "about:blank". The mime type of the document will be "text/html".
      * You can monitor the load operation by connecting to #WebKitWebView::load-changed signal.
+     * @param content The HTML string to load
+     * @param baseUri The base URI for relative locations or %NULL
      */
     loadHtml(content: string, baseUri?: string | null): void
     /**
      * Load the specified `plain_text` string into `web_view`. The mime type of
      * document will be "text/plain". You can monitor the load
      * operation by connecting to #WebKitWebView::load-changed signal.
+     * @param plainText The plain text to load
      */
     loadPlainText(plainText: string): void
     /**
      * Requests loading of the specified #WebKitURIRequest.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param request a #WebKitURIRequest to load
      */
     loadRequest(request: WebKit2.URIRequest): void
     /**
      * Requests loading of the specified URI string.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param uri an URI string
      */
     loadUri(uri: string): void
     /**
@@ -39805,6 +42979,7 @@ class WebView {
     reloadBypassCache(): void
     /**
      * Restore the `web_view` session state from `state`
+     * @param state a #WebKitWebViewSessionState
      */
     restoreSessionState(state: WebKit2.WebViewSessionState): void
     /**
@@ -39813,6 +42988,9 @@ class WebView {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_run_javascript_finish() to get the result of the operation.
+     * @param script the script to run
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     runJavascript(script: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -39867,6 +43045,7 @@ class WebView {
      *     g_free (script);
      * }
      * </programlisting></informalexample>
+     * @param result a #GAsyncResult
      */
     runJavascriptFinish(result: Gio.AsyncResult): WebKit2.JavascriptResult
     /**
@@ -39876,12 +43055,16 @@ class WebView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_run_javascript_from_gresource_finish() to get the result
      * of the operation.
+     * @param resource the location of the resource to load
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     runJavascriptFromGresource(resource: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript_from_gresource().
      * 
      * Check webkit_web_view_run_javascript_finish() for a usage example.
+     * @param result a #GAsyncResult
      */
     runJavascriptFromGresourceFinish(result: Gio.AsyncResult): WebKit2.JavascriptResult
     /**
@@ -39890,10 +43073,15 @@ class WebView {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_run_javascript_in_world_finish() to get the result of the operation.
+     * @param script the script to run
+     * @param worldName the name of a #WebKitScriptWorld
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     runJavascriptInWorld(script: string, worldName: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript_in_world().
+     * @param result a #GAsyncResult
      */
     runJavascriptInWorldFinish(result: Gio.AsyncResult): WebKit2.JavascriptResult
     /**
@@ -39904,10 +43092,14 @@ class WebView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_save_finish() to get the result of the
      * operation.
+     * @param saveMode the #WebKitSaveMode specifying how the web page should be saved.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     save(saveMode: WebKit2.SaveMode, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_save().
+     * @param result a #GAsyncResult
      */
     saveFinish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -39918,10 +43110,15 @@ class WebView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_save_to_file_finish() to get the result of the
      * operation.
+     * @param file the #GFile where the current web page should be saved to.
+     * @param saveMode the #WebKitSaveMode specifying how the web page should be saved.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     saveToFile(file: Gio.File, saveMode: WebKit2.SaveMode, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_save_to_file().
+     * @param result a #GAsyncResult
      */
     saveToFileFinish(result: Gio.AsyncResult): boolean
     /**
@@ -39930,10 +43127,14 @@ class WebView {
      * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_send_message_to_page_finish() to get the message reply.
+     * @param message a #WebKitUserMessage
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
      */
     sendMessageToPage(message: WebKit2.UserMessage, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_send_message_to_page().
+     * @param result a #GAsyncResult
      */
     sendMessageToPageFinish(result: Gio.AsyncResult): WebKit2.UserMessage
     /**
@@ -39962,6 +43163,7 @@ class WebView {
      *     webkit_web_view_set_background_color (web_view, rgba);
      * }
      * </programlisting></informalexample>
+     * @param rgba a #GdkRGBA
      */
     setBackgroundColor(rgba: Gdk.RGBA): void
     /**
@@ -39970,6 +43172,7 @@ class WebView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     setCameraCaptureState(state: WebKit2.MediaCaptureState): void
     /**
@@ -39987,6 +43190,7 @@ class WebView {
      * 
      * If this function is called multiple times, only the allowlist set by
      * the most recent call will be effective.
+     * @param allowlist an allowlist of URI patterns, or %NULL
      */
     setCorsAllowlist(allowlist?: string[] | null): void
     /**
@@ -39995,6 +43199,7 @@ class WebView {
      * META tags. Calling this method will stop any current load operation and reload the
      * current page. Setting the custom character encoding to %NULL removes the character
      * encoding override.
+     * @param charset a character encoding name or %NULL
      */
     setCustomCharset(charset?: string | null): void
     /**
@@ -40003,6 +43208,7 @@ class WebView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     setDisplayCaptureState(state: WebKit2.MediaCaptureState): void
     /**
@@ -40016,15 +43222,18 @@ class WebView {
      * Normally, a HTML document is not editable unless the elements within the
      * document are editable. This function provides a way to make the contents
      * of a #WebKitWebView editable without altering the document or DOM structure.
+     * @param editable a #gboolean indicating the editable state
      */
     setEditable(editable: boolean): void
     /**
      * Set the #WebKitInputMethodContext to be used by `web_view,` or %NULL to not use any input method.
      * Note that the same #WebKitInputMethodContext can't be set on more than one #WebKitWebView at the same time.
+     * @param context the #WebKitInputMethodContext to set, or %NULL
      */
     setInputMethodContext(context?: WebKit2.InputMethodContext | null): void
     /**
      * Sets the mute state of `web_view`.
+     * @param muted mute flag
      */
     setIsMuted(muted: boolean): void
     /**
@@ -40033,6 +43242,7 @@ class WebView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     setMicrophoneCaptureState(state: WebKit2.MediaCaptureState): void
     /**
@@ -40041,11 +43251,13 @@ class WebView {
      * `settings`. New settings are applied immediately on `web_view`.
      * The same #WebKitSettings object can be shared
      * by multiple #WebKitWebView<!-- -->s.
+     * @param settings a #WebKitSettings
      */
     setSettings(settings: WebKit2.Settings): void
     /**
      * Set the zoom level of `web_view,` i.e. the factor by which the
      * view contents are scaled with respect to their original size.
+     * @param zoomLevel the zoom level
      */
     setZoomLevel(zoomLevel: number): void
     /**
@@ -40083,11 +43295,15 @@ class WebView {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -40098,6 +43314,8 @@ class WebView {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -40106,10 +43324,15 @@ class WebView {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -40129,6 +43352,7 @@ class WebView {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -40143,6 +43367,7 @@ class WebView {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -40182,6 +43407,7 @@ class WebView {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -40205,6 +43431,8 @@ class WebView {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -40217,6 +43445,7 @@ class WebView {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -40230,6 +43459,7 @@ class WebView {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -40240,6 +43470,7 @@ class WebView {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -40251,6 +43482,7 @@ class WebView {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -40263,6 +43495,7 @@ class WebView {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -40275,6 +43508,7 @@ class WebView {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -40282,6 +43516,7 @@ class WebView {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -40290,6 +43525,7 @@ class WebView {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -40313,17 +43549,25 @@ class WebView {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -40333,6 +43577,7 @@ class WebView {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -40356,6 +43601,7 @@ class WebView {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -40366,6 +43612,7 @@ class WebView {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -40388,6 +43635,7 @@ class WebView {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -40398,6 +43646,7 @@ class WebView {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -40417,6 +43666,7 @@ class WebView {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -40434,6 +43684,7 @@ class WebView {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -40478,6 +43729,7 @@ class WebView {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -40486,11 +43738,16 @@ class WebView {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -40519,12 +43776,22 @@ class WebView {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -40559,6 +43826,8 @@ class WebView {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -40613,16 +43882,23 @@ class WebView {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -40632,6 +43908,7 @@ class WebView {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -40649,6 +43926,9 @@ class WebView {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -40689,33 +43969,41 @@ class WebView {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -40745,6 +44033,7 @@ class WebView {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -40774,6 +44063,7 @@ class WebView {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -40805,6 +44095,7 @@ class WebView {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -40867,6 +44158,7 @@ class WebView {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -40931,6 +44223,7 @@ class WebView {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -40940,11 +44233,13 @@ class WebView {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -41098,6 +44393,7 @@ class WebView {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -41185,6 +44481,7 @@ class WebView {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -41196,6 +44493,7 @@ class WebView {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -41237,6 +44535,7 @@ class WebView {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -41367,6 +44666,8 @@ class WebView {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -41585,6 +44886,7 @@ class WebView {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -41595,6 +44897,8 @@ class WebView {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -41602,11 +44906,13 @@ class WebView {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -41674,6 +44980,7 @@ class WebView {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -41710,6 +45017,7 @@ class WebView {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -41728,6 +45036,8 @@ class WebView {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -41745,6 +45055,8 @@ class WebView {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -41754,6 +45066,8 @@ class WebView {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -41761,6 +45075,8 @@ class WebView {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -41768,6 +45084,7 @@ class WebView {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -41789,6 +45106,7 @@ class WebView {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -41799,6 +45117,8 @@ class WebView {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -41806,6 +45126,8 @@ class WebView {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -41834,6 +45156,8 @@ class WebView {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -41844,11 +45168,14 @@ class WebView {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -41857,6 +45184,8 @@ class WebView {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -41910,6 +45239,10 @@ class WebView {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -41923,6 +45256,7 @@ class WebView {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -41968,6 +45302,7 @@ class WebView {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -41979,11 +45314,15 @@ class WebView {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -41991,11 +45330,13 @@ class WebView {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -42010,6 +45351,9 @@ class WebView {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -42022,11 +45366,14 @@ class WebView {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -42055,6 +45402,7 @@ class WebView {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -42083,6 +45431,7 @@ class WebView {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -42107,6 +45456,8 @@ class WebView {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -42119,6 +45470,7 @@ class WebView {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -42133,18 +45485,21 @@ class WebView {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -42165,6 +45520,7 @@ class WebView {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -42178,11 +45534,13 @@ class WebView {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -42192,6 +45550,8 @@ class WebView {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -42206,6 +45566,8 @@ class WebView {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -42221,6 +45583,7 @@ class WebView {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -42249,6 +45612,7 @@ class WebView {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -42263,6 +45627,7 @@ class WebView {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -42270,26 +45635,31 @@ class WebView {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -42303,6 +45673,7 @@ class WebView {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -42331,6 +45702,7 @@ class WebView {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -42349,6 +45721,7 @@ class WebView {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -42356,36 +45729,43 @@ class WebView {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -42398,6 +45778,7 @@ class WebView {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -42406,6 +45787,7 @@ class WebView {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -42423,6 +45805,7 @@ class WebView {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -42432,6 +45815,7 @@ class WebView {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -42443,6 +45827,7 @@ class WebView {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -42452,6 +45837,7 @@ class WebView {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -42461,6 +45847,7 @@ class WebView {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -42479,6 +45866,7 @@ class WebView {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -42486,6 +45874,7 @@ class WebView {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -42519,12 +45908,15 @@ class WebView {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -42541,11 +45933,14 @@ class WebView {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -42553,6 +45948,7 @@ class WebView {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -42564,6 +45960,7 @@ class WebView {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -42572,6 +45969,7 @@ class WebView {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -42580,11 +45978,13 @@ class WebView {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -42592,6 +45992,7 @@ class WebView {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -42599,6 +46000,7 @@ class WebView {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -42609,6 +46011,7 @@ class WebView {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -42619,6 +46022,7 @@ class WebView {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -42633,12 +46037,14 @@ class WebView {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -42680,6 +46086,7 @@ class WebView {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -42696,6 +46103,8 @@ class WebView {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -42730,6 +46139,8 @@ class WebView {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -42743,6 +46154,9 @@ class WebView {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -42772,12 +46186,14 @@ class WebView {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -42815,6 +46231,10 @@ class WebView {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -42825,6 +46245,12 @@ class WebView {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -42848,6 +46274,7 @@ class WebView {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -42867,11 +46294,14 @@ class WebView {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -42879,6 +46309,8 @@ class WebView {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -42896,6 +46328,7 @@ class WebView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -42941,6 +46374,7 @@ class WebView {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -42984,15 +46418,20 @@ class WebView {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -43033,6 +46472,7 @@ class WebView {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -43067,12 +46507,16 @@ class WebView {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -43080,24 +46524,39 @@ class WebView {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -43106,14 +46565,19 @@ class WebView {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Signals of Devhelp-3.0.Devhelp.WebView */
@@ -43121,13 +46585,14 @@ class WebView {
      * The ::open-new-tab signal is emitted when a URI needs to be opened in
      * a new #DhWebView. This happens when doing Ctrl+click or middle click
      * on a link.
+     * @param uri the URI to open.
      */
     connect(sigName: "open-new-tab", callback: ((uri: string) => void)): number
     on(sigName: "open-new-tab", callback: (uri: string) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "open-new-tab", callback: (uri: string) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "open-new-tab", callback: (uri: string) => void): NodeJS.EventEmitter
     emit(sigName: "open-new-tab", uri: string): void
-    /* Signals of WebKit2-4.0.WebKit2.WebView */
+    /* Signals of WebKit2-4.1.WebKit2.WebView */
     /**
      * This signal is emitted when the user is challenged with HTTP
      * authentication. To let the  application access or supply
@@ -43141,6 +46606,7 @@ class WebView {
      * 
      * The default signal handler will run a default authentication
      * dialog asynchronously for the user to interact with.
+     * @param request a #WebKitAuthenticationRequest
      */
     connect(sigName: "authenticate", callback: ((request: WebKit2.AuthenticationRequest) => boolean)): number
     on(sigName: "authenticate", callback: (request: WebKit2.AuthenticationRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -43209,6 +46675,9 @@ class WebView {
      * 
      * The proposed #WebKitContextMenu passed in `context_menu` argument is only valid
      * during the signal emission.
+     * @param contextMenu the proposed #WebKitContextMenu
+     * @param event the #GdkEvent that triggered the context menu
+     * @param hitTestResult a #WebKitHitTestResult
      */
     connect(sigName: "context-menu", callback: ((contextMenu: WebKit2.ContextMenu, event: Gdk.Event, hitTestResult: WebKit2.HitTestResult) => boolean)): number
     on(sigName: "context-menu", callback: (contextMenu: WebKit2.ContextMenu, event: Gdk.Event, hitTestResult: WebKit2.HitTestResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -43237,6 +46706,7 @@ class WebView {
      * 
      * The new #WebKitWebView should not be displayed to the user
      * until the #WebKitWebView::ready-to-show signal is emitted.
+     * @param navigationAction a #WebKitNavigationAction
      */
     connect(sigName: "create", callback: ((navigationAction: WebKit2.NavigationAction) => Gtk.Widget)): number
     on(sigName: "create", callback: (navigationAction: WebKit2.NavigationAction) => void, after?: boolean): NodeJS.EventEmitter
@@ -43285,6 +46755,8 @@ class WebView {
      * made explicitly, webkit_policy_decision_use() will be the default policy decision. The
      * default signal handler will simply call webkit_policy_decision_use(). Only the first
      * policy decision chosen for a given #WebKitPolicyDecision will have any affect.
+     * @param decision the #WebKitPolicyDecision
+     * @param decisionType a #WebKitPolicyDecisionType denoting the type of `decision`
      */
     connect(sigName: "decide-policy", callback: ((decision: WebKit2.PolicyDecision, decisionType: WebKit2.PolicyDecisionType) => boolean)): number
     on(sigName: "decide-policy", callback: (decision: WebKit2.PolicyDecision, decisionType: WebKit2.PolicyDecisionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -43315,6 +46787,7 @@ class WebView {
      * 
      * You can check the `event` parameter to know exactly which kind
      * of event has been detected (see #WebKitInsecureContentEvent).
+     * @param event the #WebKitInsecureContentEvent
      */
     connect(sigName: "insecure-content-detected", callback: ((event: WebKit2.InsecureContentEvent) => void)): number
     on(sigName: "insecure-content-detected", callback: (event: WebKit2.InsecureContentEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -43377,6 +46850,7 @@ class WebView {
      *     }
      * }
      * </programlisting></informalexample>
+     * @param loadEvent the #WebKitLoadEvent
      */
     connect(sigName: "load-changed", callback: ((loadEvent: WebKit2.LoadEvent) => void)): number
     on(sigName: "load-changed", callback: (loadEvent: WebKit2.LoadEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -43394,6 +46868,9 @@ class WebView {
      * 
      * By default, if the signal is not handled, a stock error page will be displayed.
      * You need to handle the signal if you want to provide your own error page.
+     * @param loadEvent the #WebKitLoadEvent of the load operation
+     * @param failingUri the URI that failed to load
+     * @param error the #GError that was triggered
      */
     connect(sigName: "load-failed", callback: ((loadEvent: WebKit2.LoadEvent, failingUri: string, error: GLib.Error) => boolean)): number
     on(sigName: "load-failed", callback: (loadEvent: WebKit2.LoadEvent, failingUri: string, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -43410,6 +46887,9 @@ class WebView {
      * 
      * If %FALSE is returned, #WebKitWebView::load-failed will be emitted. The load
      * will finish regardless of the returned value.
+     * @param failingUri the URI that failed to load
+     * @param certificate a #GTlsCertificate
+     * @param errors a #GTlsCertificateFlags with the verification status of `certificate`
      */
     connect(sigName: "load-failed-with-tls-errors", callback: ((failingUri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean)): number
     on(sigName: "load-failed-with-tls-errors", callback: (failingUri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -43425,6 +46905,8 @@ class WebView {
      * #GdkModifierType flags indicating the state of modifier keys.
      * The signal is emitted again when the mouse is moved out of the
      * current element with a new `hit_test_result`.
+     * @param hitTestResult a #WebKitHitTestResult
+     * @param modifiers a bitmask of #GdkModifierType
      */
     connect(sigName: "mouse-target-changed", callback: ((hitTestResult: WebKit2.HitTestResult, modifiers: number) => void)): number
     on(sigName: "mouse-target-changed", callback: (hitTestResult: WebKit2.HitTestResult, modifiers: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -43478,6 +46960,7 @@ class WebView {
      * by the specific #WebKitPermissionRequest that could allow or deny it. Check the
      * documentation of classes implementing #WebKitPermissionRequest interface to know
      * their default action.
+     * @param request the #WebKitPermissionRequest
      */
     connect(sigName: "permission-request", callback: ((request: WebKit2.PermissionRequest) => boolean)): number
     on(sigName: "permission-request", callback: (request: WebKit2.PermissionRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -43494,6 +46977,7 @@ class WebView {
      * 
      * You can connect to this signal and return %TRUE to cancel the print operation
      * or implement your own print dialog.
+     * @param printOperation the #WebKitPrintOperation that will handle the print request
      */
     connect(sigName: "print", callback: ((printOperation: WebKit2.PrintOperation) => boolean)): number
     on(sigName: "print", callback: (printOperation: WebKit2.PrintOperation) => void, after?: boolean): NodeJS.EventEmitter
@@ -43518,6 +47002,8 @@ class WebView {
      * contains the #WebKitURIRequest that will be sent to the server.
      * You can monitor the load operation by connecting to the different signals
      * of `resource`.
+     * @param resource a #WebKitWebResource
+     * @param request a #WebKitURIRequest
      */
     connect(sigName: "resource-load-started", callback: ((resource: WebKit2.WebResource, request: WebKit2.URIRequest) => void)): number
     on(sigName: "resource-load-started", callback: (resource: WebKit2.WebResource, request: WebKit2.URIRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -43552,6 +47038,7 @@ class WebView {
      * 
      * The default signal handler will asynchronously run a regular
      * #GtkColorChooser for the user to interact with.
+     * @param request a #WebKitColorChooserRequest
      */
     connect(sigName: "run-color-chooser", callback: ((request: WebKit2.ColorChooserRequest) => boolean)): number
     on(sigName: "run-color-chooser", callback: (request: WebKit2.ColorChooserRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -43570,6 +47057,7 @@ class WebView {
      * 
      * The default signal handler will asynchronously run a regular
      * #GtkFileChooserDialog for the user to interact with.
+     * @param request a #WebKitFileChooserRequest
      */
     connect(sigName: "run-file-chooser", callback: ((request: WebKit2.FileChooserRequest) => boolean)): number
     on(sigName: "run-file-chooser", callback: (request: WebKit2.FileChooserRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -43604,6 +47092,7 @@ class WebView {
      * webkit_script_dialog_close() when done.
      * If the last reference is removed on a #WebKitScriptDialog and the dialog has not been
      * closed, webkit_script_dialog_close() will be called.
+     * @param dialog the #WebKitScriptDialog to show
      */
     connect(sigName: "script-dialog", callback: ((dialog: WebKit2.ScriptDialog) => boolean)): number
     on(sigName: "script-dialog", callback: (dialog: WebKit2.ScriptDialog) => void, after?: boolean): NodeJS.EventEmitter
@@ -43617,6 +47106,7 @@ class WebView {
      * 
      * The default handler will emit a notification using libnotify, if built with
      * support for it.
+     * @param notification a #WebKitNotification
      */
     connect(sigName: "show-notification", callback: ((notification: WebKit2.Notification) => boolean)): number
     on(sigName: "show-notification", callback: (notification: WebKit2.Notification) => void, after?: boolean): NodeJS.EventEmitter
@@ -43633,6 +47123,9 @@ class WebView {
      * To handle this signal asynchronously you should keep a ref of the `menu`.
      * 
      * The default signal handler will pop up a #GtkMenu.
+     * @param menu the #WebKitOptionMenu
+     * @param event the #GdkEvent that triggered the menu, or %NULL
+     * @param rectangle the option element area
      */
     connect(sigName: "show-option-menu", callback: ((menu: WebKit2.OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean)): number
     on(sigName: "show-option-menu", callback: (menu: WebKit2.OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -43651,6 +47144,7 @@ class WebView {
      * webkit_form_submission_request_submit() when done to continue with the form submission.
      * If the last reference is removed on a #WebKitFormSubmissionRequest and the
      * form has not been submitted, webkit_form_submission_request_submit() will be called.
+     * @param request a #WebKitFormSubmissionRequest
      */
     connect(sigName: "submit-form", callback: ((request: WebKit2.FormSubmissionRequest) => void)): number
     on(sigName: "submit-form", callback: (request: WebKit2.FormSubmissionRequest) => void, after?: boolean): NodeJS.EventEmitter
@@ -43666,6 +47160,7 @@ class WebView {
      * `message` and returning %TRUE. If the last reference of `message` is removed
      * and the message has not been replied to, the operation in the #WebKitWebPage will
      * finish with error %WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE.
+     * @param message the #WebKitUserMessage received
      */
     connect(sigName: "user-message-received", callback: ((message: WebKit2.UserMessage) => boolean)): number
     on(sigName: "user-message-received", callback: (message: WebKit2.UserMessage) => void, after?: boolean): NodeJS.EventEmitter
@@ -43683,6 +47178,7 @@ class WebView {
     /**
      * This signal is emitted when the web process terminates abnormally due
      * to `reason`.
+     * @param reason the a #WebKitWebProcessTerminationReason
      */
     connect(sigName: "web-process-terminated", callback: ((reason: WebKit2.WebProcessTerminationReason) => void)): number
     on(sigName: "web-process-terminated", callback: (reason: WebKit2.WebProcessTerminationReason) => void, after?: boolean): NodeJS.EventEmitter
@@ -43724,6 +47220,7 @@ class WebView {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -43738,6 +47235,7 @@ class WebView {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -43750,6 +47248,7 @@ class WebView {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -43760,6 +47259,7 @@ class WebView {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -43783,6 +47283,7 @@ class WebView {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -43793,6 +47294,7 @@ class WebView {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -43805,6 +47307,7 @@ class WebView {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -43832,6 +47335,7 @@ class WebView {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -43841,6 +47345,7 @@ class WebView {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -43855,6 +47360,7 @@ class WebView {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -43866,6 +47372,7 @@ class WebView {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -43878,6 +47385,10 @@ class WebView {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -43947,6 +47458,12 @@ class WebView {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -43964,6 +47481,10 @@ class WebView {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -43974,6 +47495,7 @@ class WebView {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -43986,6 +47508,8 @@ class WebView {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -44002,6 +47526,8 @@ class WebView {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -44097,6 +47623,10 @@ class WebView {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -44121,6 +47651,7 @@ class WebView {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -44135,6 +47666,7 @@ class WebView {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -44147,6 +47679,7 @@ class WebView {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -44157,6 +47690,7 @@ class WebView {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -44174,6 +47708,7 @@ class WebView {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -44186,6 +47721,7 @@ class WebView {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -44199,6 +47735,7 @@ class WebView {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -44219,6 +47756,7 @@ class WebView {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -44240,6 +47778,7 @@ class WebView {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -44254,6 +47793,7 @@ class WebView {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -44267,6 +47807,7 @@ class WebView {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -44276,6 +47817,7 @@ class WebView {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -44290,6 +47832,7 @@ class WebView {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -44319,6 +47862,7 @@ class WebView {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -44328,6 +47872,7 @@ class WebView {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -44342,6 +47887,7 @@ class WebView {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -44356,6 +47902,7 @@ class WebView {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -44382,6 +47929,7 @@ class WebView {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -44393,6 +47941,7 @@ class WebView {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -44404,6 +47953,7 @@ class WebView {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -44423,6 +47973,10 @@ class WebView {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -44442,6 +47996,7 @@ class WebView {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -44457,6 +48012,7 @@ class WebView {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -44466,6 +48022,7 @@ class WebView {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -44491,6 +48048,7 @@ class WebView {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -44519,6 +48077,7 @@ class WebView {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -44528,6 +48087,7 @@ class WebView {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -44542,6 +48102,7 @@ class WebView {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -44586,6 +48147,7 @@ class WebView {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -44609,6 +48171,7 @@ class WebView {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -44622,6 +48185,7 @@ class WebView {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -44657,12 +48221,23 @@ class WebView {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::automation-presentation-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::automation-presentation-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::automation-presentation-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::automation-presentation-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::automation-presentation-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::camera-capture-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::camera-capture-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::camera-capture-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -44688,6 +48263,16 @@ class WebView {
     on(sigName: "notify::favicon", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::favicon", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::favicon", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-controlled-by-automation", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-controlled-by-automation", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-controlled-by-automation", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-controlled-by-automation", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-controlled-by-automation", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-ephemeral", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-ephemeral", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-ephemeral", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-ephemeral", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-ephemeral", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::is-loading", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-loading", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::is-loading", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -44718,6 +48303,11 @@ class WebView {
     on(sigName: "notify::page-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::page-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::page-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::related-view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::related-view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::related-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::related-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::related-view", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::settings", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::settings", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::settings", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -44733,6 +48323,21 @@ class WebView {
     on(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::user-content-manager", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::user-content-manager", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::user-content-manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::user-content-manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::user-content-manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::web-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::web-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::web-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::web-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::web-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::website-policies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::website-policies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::website-policies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::website-policies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::website-policies", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::zoom-level", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::zoom-level", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::zoom-level", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -44961,20 +48566,20 @@ class WebView {
 }
 abstract class AssistantViewClass {
     /* Fields of Devhelp-3.0.Devhelp.AssistantViewClass */
-    readonly parentClass: WebKit2.WebViewClass
-    readonly padding: object[]
+    parentClass: WebKit2.WebViewClass
+    padding: object[]
     static name: string
 }
 abstract class BookClass {
     /* Fields of Devhelp-3.0.Devhelp.BookClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 abstract class BookListBuilderClass {
     /* Fields of Devhelp-3.0.Devhelp.BookListBuilderClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class BookListBuilderPrivate {
@@ -44985,16 +48590,16 @@ abstract class BookListClass {
     /**
      * The parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly addBook: (bookList: BookList, book: Book) => void
-    readonly removeBook: (bookList: BookList, book: Book) => void
-    readonly getBooks: (bookList: BookList) => Book[]
+    parentClass: GObject.ObjectClass
+    addBook: (bookList: BookList, book: Book) => void
+    removeBook: (bookList: BookList, book: Book) => void
+    getBooks: (bookList: BookList) => Book[]
     static name: string
 }
 abstract class BookListDirectoryClass {
     /* Fields of Devhelp-3.0.Devhelp.BookListDirectoryClass */
-    readonly parentClass: BookListClass
-    readonly padding: object[]
+    parentClass: BookListClass
+    padding: object[]
     static name: string
 }
 class BookListDirectoryPrivate {
@@ -45005,20 +48610,20 @@ class BookListPrivate {
 }
 abstract class BookManagerClass {
     /* Fields of Devhelp-3.0.Devhelp.BookManagerClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 abstract class BookTreeClass {
     /* Fields of Devhelp-3.0.Devhelp.BookTreeClass */
-    readonly parentClass: Gtk.TreeViewClass
-    readonly padding: object[]
+    parentClass: Gtk.TreeViewClass
+    padding: object[]
     static name: string
 }
 abstract class CompletionClass {
     /* Fields of Devhelp-3.0.Devhelp.CompletionClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class CompletionPrivate {
@@ -45026,8 +48631,8 @@ class CompletionPrivate {
 }
 abstract class KeywordModelClass {
     /* Fields of Devhelp-3.0.Devhelp.KeywordModelClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class Link {
@@ -45041,11 +48646,13 @@ class Link {
      * 
      * For example if `link` has the relative URL `"DhLink.html#dh-link-ref"`, then
      * this function will return %TRUE if the `page_id` is `"DhLink"`.
+     * @param pageId a page ID, i.e. the filename without its extension.
      */
     belongsToPage(pageId: string): boolean
     /**
      * Compares the links `a` and `b`. This function is used to determine in which
      * order the links should be displayed.
+     * @param b a #DhLink.
      */
     compare(b: Link): number
     getBookId(): string
@@ -45067,6 +48674,7 @@ class Link {
     ref(): Link
     /**
      * Sets the flags of the link.
+     * @param flags the new flags of the link.
      */
     setFlags(flags: LinkFlags): void
     /**
@@ -45084,8 +48692,8 @@ class Link {
 }
 abstract class NotebookClass {
     /* Fields of Devhelp-3.0.Devhelp.NotebookClass */
-    readonly parentClass: Gtk.NotebookClass
-    readonly padding: object[]
+    parentClass: Gtk.NotebookClass
+    padding: object[]
     static name: string
 }
 class NotebookPrivate {
@@ -45093,8 +48701,8 @@ class NotebookPrivate {
 }
 abstract class ProfileBuilderClass {
     /* Fields of Devhelp-3.0.Devhelp.ProfileBuilderClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class ProfileBuilderPrivate {
@@ -45102,8 +48710,8 @@ class ProfileBuilderPrivate {
 }
 abstract class ProfileClass {
     /* Fields of Devhelp-3.0.Devhelp.ProfileClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class ProfilePrivate {
@@ -45111,8 +48719,8 @@ class ProfilePrivate {
 }
 abstract class SearchBarClass {
     /* Fields of Devhelp-3.0.Devhelp.SearchBarClass */
-    readonly parentClass: Gtk.SearchBarClass
-    readonly padding: object[]
+    parentClass: Gtk.SearchBarClass
+    padding: object[]
     static name: string
 }
 class SearchBarPrivate {
@@ -45120,8 +48728,8 @@ class SearchBarPrivate {
 }
 abstract class SettingsBuilderClass {
     /* Fields of Devhelp-3.0.Devhelp.SettingsBuilderClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class SettingsBuilderPrivate {
@@ -45129,10 +48737,10 @@ class SettingsBuilderPrivate {
 }
 abstract class SettingsClass {
     /* Fields of Devhelp-3.0.Devhelp.SettingsClass */
-    readonly parent: GObject.ObjectClass
-    readonly booksDisabledChanged: (settings: Settings) => void
-    readonly fontsChanged: (settings: Settings) => void
-    readonly padding: object[]
+    parent: GObject.ObjectClass
+    booksDisabledChanged: (settings: Settings) => void
+    fontsChanged: (settings: Settings) => void
+    padding: object[]
     static name: string
 }
 class SettingsPrivate {
@@ -45140,21 +48748,21 @@ class SettingsPrivate {
 }
 abstract class SidebarClass {
     /* Fields of Devhelp-3.0.Devhelp.SidebarClass */
-    readonly parentClass: Gtk.GridClass
-    readonly linkSelected: (sidebar: Sidebar, link: Link) => void
-    readonly padding: object[]
+    parentClass: Gtk.GridClass
+    linkSelected: (sidebar: Sidebar, link: Link) => void
+    padding: object[]
     static name: string
 }
 abstract class TabClass {
     /* Fields of Devhelp-3.0.Devhelp.TabClass */
-    readonly parentClass: Gtk.GridClass
-    readonly padding: object[]
+    parentClass: Gtk.GridClass
+    padding: object[]
     static name: string
 }
 abstract class TabLabelClass {
     /* Fields of Devhelp-3.0.Devhelp.TabLabelClass */
-    readonly parentClass: Gtk.GridClass
-    readonly padding: object[]
+    parentClass: Gtk.GridClass
+    padding: object[]
     static name: string
 }
 class TabLabelPrivate {
@@ -45165,9 +48773,9 @@ class TabPrivate {
 }
 abstract class WebViewClass {
     /* Fields of Devhelp-3.0.Devhelp.WebViewClass */
-    readonly parentClass: WebKit2.WebViewClass
-    readonly openNewTab: (view: WebView, uri: string) => void
-    readonly padding: object[]
+    parentClass: WebKit2.WebViewClass
+    openNewTab: (view: WebView, uri: string) => void
+    padding: object[]
     static name: string
 }
 class WebViewPrivate {

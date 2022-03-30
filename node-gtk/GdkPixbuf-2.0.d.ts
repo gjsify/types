@@ -329,8 +329,52 @@ interface Pixbuf_ConstructProps extends GObject.Object_ConstructProps {
     width?: number
 }
 class Pixbuf {
+    /* Properties of GdkPixbuf-2.0.GdkPixbuf.Pixbuf */
+    /**
+     * The number of bits per sample.
+     * 
+     * Currently only 8 bit per sample are supported.
+     */
+    readonly bitsPerSample: number
+    /**
+     * The color space of the pixbuf.
+     * 
+     * Currently, only `GDK_COLORSPACE_RGB` is supported.
+     */
+    readonly colorspace: Colorspace
+    /**
+     * Whether the pixbuf has an alpha channel.
+     */
+    readonly hasAlpha: boolean
+    /**
+     * The number of rows of the pixbuf.
+     */
+    readonly height: number
+    /**
+     * The number of samples per pixel.
+     * 
+     * Currently, only 3 or 4 samples per pixel are supported.
+     */
+    readonly nChannels: number
+    readonly pixelBytes: any
+    /**
+     * A pointer to the pixel data of the pixbuf.
+     */
+    readonly pixels: object
+    /**
+     * The number of bytes between the start of a row and
+     * the start of the next row.
+     * 
+     * This number must (obviously) be at least as large as the
+     * width of the pixbuf.
+     */
+    readonly rowstride: number
+    /**
+     * The number of columns of the pixbuf.
+     */
+    readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.Pixbuf */
     /**
      * Takes an existing pixbuf and adds an alpha channel to it.
@@ -346,6 +390,10 @@ class Pixbuf {
      * 
      * If `substitute_color` is `FALSE`, then the (`r`, `g`, `b`) arguments
      * will be ignored.
+     * @param substituteColor Whether to set a color to zero opacity.
+     * @param r Red value to substitute.
+     * @param g Green value to substitute.
+     * @param b Blue value to substitute.
      */
     addAlpha(substituteColor: boolean, r: number, g: number, b: number): Pixbuf
     /**
@@ -375,6 +423,17 @@ class Pixbuf {
      * to infinity.
      * 
      * ![](composite.png)
+     * @param dest the #GdkPixbuf into which to render the results
+     * @param destX the left coordinate for region to render
+     * @param destY the top coordinate for region to render
+     * @param destWidth the width of the region to render
+     * @param destHeight the height of the region to render
+     * @param offsetX the offset in the X direction (currently rounded to an integer)
+     * @param offsetY the offset in the Y direction (currently rounded to an integer)
+     * @param scaleX the scale factor in the X direction
+     * @param scaleY the scale factor in the Y direction
+     * @param interpType the interpolation type for the transformation.
+     * @param overallAlpha overall alpha for source image (0..255)
      */
     composite(dest: Pixbuf, destX: number, destY: number, destWidth: number, destHeight: number, offsetX: number, offsetY: number, scaleX: number, scaleY: number, interpType: InterpType, overallAlpha: number): void
     /**
@@ -390,12 +449,35 @@ class Pixbuf {
      * 
      * See gdk_pixbuf_composite_color_simple() for a simpler variant of this
      * function suitable for many tasks.
+     * @param dest the #GdkPixbuf into which to render the results
+     * @param destX the left coordinate for region to render
+     * @param destY the top coordinate for region to render
+     * @param destWidth the width of the region to render
+     * @param destHeight the height of the region to render
+     * @param offsetX the offset in the X direction (currently rounded to an integer)
+     * @param offsetY the offset in the Y direction (currently rounded to an integer)
+     * @param scaleX the scale factor in the X direction
+     * @param scaleY the scale factor in the Y direction
+     * @param interpType the interpolation type for the transformation.
+     * @param overallAlpha overall alpha for source image (0..255)
+     * @param checkX the X offset for the checkboard (origin of checkboard is at -`check_x,` -`check_y)`
+     * @param checkY the Y offset for the checkboard
+     * @param checkSize the size of checks in the checkboard (must be a power of two)
+     * @param color1 the color of check at upper left
+     * @param color2 the color of the other check
      */
     compositeColor(dest: Pixbuf, destX: number, destY: number, destWidth: number, destHeight: number, offsetX: number, offsetY: number, scaleX: number, scaleY: number, interpType: InterpType, overallAlpha: number, checkX: number, checkY: number, checkSize: number, color1: number, color2: number): void
     /**
      * Creates a new pixbuf by scaling `src` to `dest_width` x `dest_height`
      * and alpha blending the result with a checkboard of colors `color1`
      * and `color2`.
+     * @param destWidth the width of destination image
+     * @param destHeight the height of destination image
+     * @param interpType the interpolation type for the transformation.
+     * @param overallAlpha overall alpha for source image (0..255)
+     * @param checkSize the size of checks in the checkboard (must be a power of two)
+     * @param color1 the color of check at upper left
+     * @param color2 the color of the other check
      */
     compositeColorSimple(destWidth: number, destHeight: number, interpType: InterpType, overallAlpha: number, checkSize: number, color1: number, color2: number): Pixbuf | null
     /**
@@ -414,6 +496,13 @@ class Pixbuf {
      * If the source rectangle overlaps the destination rectangle on the
      * same pixbuf, it will be overwritten during the copy operation.
      * Therefore, you can not use this function to scroll a pixbuf.
+     * @param srcX Source X coordinate within `src_pixbuf`.
+     * @param srcY Source Y coordinate within `src_pixbuf`.
+     * @param width Width of the area to copy.
+     * @param height Height of the area to copy.
+     * @param destPixbuf Destination pixbuf.
+     * @param destX X coordinate within `dest_pixbuf`.
+     * @param destY Y coordinate within `dest_pixbuf`.
      */
     copyArea(srcX: number, srcY: number, width: number, height: number, destPixbuf: Pixbuf, destX: number, destY: number): void
     /**
@@ -423,6 +512,7 @@ class Pixbuf {
      * This is useful to keep original metadata after having manipulated
      * a file. However be careful to remove metadata which you've already
      * applied, such as the "orientation" option after rotating the image.
+     * @param destPixbuf the destination pixbuf
      */
     copyOptions(destPixbuf: Pixbuf): boolean
     /**
@@ -431,11 +521,13 @@ class Pixbuf {
      * 
      * The alpha component will be ignored if the pixbuf doesn't have an alpha
      * channel.
+     * @param pixel RGBA pixel to used to clear (`0xffffffff` is opaque white,   `0x00000000` transparent black)
      */
     fill(pixel: number): void
     /**
      * Flips a pixbuf horizontally or vertically and returns the
      * result in a new pixbuf.
+     * @param horizontal `TRUE` to flip horizontally, `FALSE` to flip vertically
      */
     flip(horizontal: boolean): Pixbuf | null
     /**
@@ -478,6 +570,7 @@ class Pixbuf {
      * contains image density information in dots per inch.
      * Since 2.36.6, the JPEG loader sets the "comment" option with the comment
      * EXIF tag.
+     * @param key a nul-terminated string.
      */
     getOption(key: string): string | null
     /**
@@ -515,6 +608,10 @@ class Pixbuf {
      * 
      * Note that if `src_pixbuf` is read-only, this function will force it
      * to be mutable.
+     * @param srcX X coord in `src_pixbuf`
+     * @param srcY Y coord in `src_pixbuf`
+     * @param width width of region in `src_pixbuf`
+     * @param height height of region in `src_pixbuf`
      */
     newSubpixbuf(srcX: number, srcY: number, width: number, height: number): Pixbuf
     /**
@@ -534,6 +631,7 @@ class Pixbuf {
     readPixels(): number
     /**
      * Removes the key/value pair option attached to a `GdkPixbuf`.
+     * @param key a nul-terminated string representing the key to remove.
      */
     removeOption(key: string): boolean
     /**
@@ -541,6 +639,7 @@ class Pixbuf {
      * result in a new pixbuf.
      * 
      * If `angle` is 0, this function will return a copy of `src`.
+     * @param angle the angle to rotate by
      */
     rotateSimple(angle: PixbufRotation): Pixbuf | null
     /**
@@ -558,6 +657,9 @@ class Pixbuf {
      * 
      * If `pixelate` is `TRUE`, then pixels are faded in a checkerboard pattern to
      * create a pixelated image.
+     * @param dest place to write modified version of `src`
+     * @param saturation saturation factor
+     * @param pixelate whether to pixelate
      */
     saturateAndPixelate(dest: Pixbuf, saturation: number, pixelate: boolean): void
     /**
@@ -567,6 +669,9 @@ class Pixbuf {
      * "tiff", "png", "ico" or "bmp".
      * 
      * See [method`GdkPixbuf`.Pixbuf.save_to_buffer] for more details.
+     * @param type name of file format.
+     * @param optionKeys name of options to set
+     * @param optionValues values for named options
      */
     saveToBufferv(type: string, optionKeys?: string[] | null, optionValues?: string[] | null): [ /* returnType */ boolean, /* buffer */ Uint8Array ]
     /**
@@ -578,6 +683,10 @@ class Pixbuf {
      * If `error` is set, `FALSE` will be returned.
      * 
      * See [method`GdkPixbuf`.Pixbuf.save_to_callback] for more details.
+     * @param saveFunc a function that is called to save each block of data that   the save routine generates.
+     * @param type name of file format.
+     * @param optionKeys name of options to set
+     * @param optionValues values for named options
      */
     saveToCallbackv(saveFunc: PixbufSaveFunc, type: string, optionKeys?: string[] | null, optionValues?: string[] | null): boolean
     /**
@@ -587,6 +696,11 @@ class Pixbuf {
      * "bmp".
      * 
      * See [method`GdkPixbuf`.Pixbuf.save_to_stream] for more details.
+     * @param stream a `GOutputStream` to save the pixbuf to
+     * @param type name of file format
+     * @param optionKeys name of options to set
+     * @param optionValues values for named options
+     * @param cancellable optional `GCancellable` object, `NULL` to ignore
      */
     saveToStreamv(stream: Gio.OutputStream, type: string, optionKeys?: string[] | null, optionValues?: string[] | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -599,6 +713,12 @@ class Pixbuf {
      * 
      * You can then call gdk_pixbuf_save_to_stream_finish() to get the result of
      * the operation.
+     * @param stream a `GOutputStream` to which to save the pixbuf
+     * @param type name of file format
+     * @param optionKeys name of options to set
+     * @param optionValues values for named options
+     * @param cancellable optional `GCancellable` object, `NULL` to ignore
+     * @param callback a `GAsyncReadyCallback` to call when the pixbuf is saved
      */
     saveToStreamvAsync(stream: Gio.OutputStream, type: string, optionKeys?: string[] | null, optionValues?: string[] | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -609,6 +729,10 @@ class Pixbuf {
      * If `error` is set, `FALSE` will be returned.
      * 
      * See [method`GdkPixbuf`.Pixbuf.save] for more details.
+     * @param filename name of file to save.
+     * @param type name of file format.
+     * @param optionKeys name of options to set
+     * @param optionValues values for named options
      */
     savev(filename: string, type: string, optionKeys?: string[] | null, optionValues?: string[] | null): boolean
     /**
@@ -625,6 +749,16 @@ class Pixbuf {
      * If the source rectangle overlaps the destination rectangle on the
      * same pixbuf, it will be overwritten during the scaling which
      * results in rendering artifacts.
+     * @param dest the #GdkPixbuf into which to render the results
+     * @param destX the left coordinate for region to render
+     * @param destY the top coordinate for region to render
+     * @param destWidth the width of the region to render
+     * @param destHeight the height of the region to render
+     * @param offsetX the offset in the X direction (currently rounded to an integer)
+     * @param offsetY the offset in the Y direction (currently rounded to an integer)
+     * @param scaleX the scale factor in the X direction
+     * @param scaleY the scale factor in the Y direction
+     * @param interpType the interpolation type for the transformation.
      */
     scale(dest: Pixbuf, destX: number, destY: number, destWidth: number, destHeight: number, offsetX: number, offsetY: number, scaleX: number, scaleY: number, interpType: InterpType): void
     /**
@@ -646,6 +780,9 @@ class Pixbuf {
      * 
      * For more complicated scaling/alpha blending see [method`GdkPixbuf`.Pixbuf.scale]
      * and [method`GdkPixbuf`.Pixbuf.composite].
+     * @param destWidth the width of destination image
+     * @param destHeight the height of destination image
+     * @param interpType the interpolation type for the transformation.
      */
     scaleSimple(destWidth: number, destHeight: number, interpType: InterpType): Pixbuf | null
     /**
@@ -653,6 +790,8 @@ class Pixbuf {
      * 
      * If `key` already exists in the list of options attached to the `pixbuf`,
      * the new value is ignored and `FALSE` is returned.
+     * @param key a nul-terminated string.
+     * @param value a nul-terminated string.
      */
     setOption(key: string, value: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -690,6 +829,10 @@ class Pixbuf {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -700,6 +843,12 @@ class Pixbuf {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -723,6 +872,7 @@ class Pixbuf {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -742,11 +892,14 @@ class Pixbuf {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -754,6 +907,8 @@ class Pixbuf {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -771,6 +926,7 @@ class Pixbuf {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -816,6 +972,7 @@ class Pixbuf {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -859,15 +1016,20 @@ class Pixbuf {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -908,6 +1070,7 @@ class Pixbuf {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -942,11 +1105,13 @@ class Pixbuf {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Icon */
     /**
      * Checks if two icons are equal.
+     * @param icon2 pointer to the second #GIcon.
      */
     equal(icon2?: Gio.Icon | null): boolean
     /**
@@ -980,16 +1145,22 @@ class Pixbuf {
     /**
      * Loads a loadable icon. For the asynchronous version of this function,
      * see g_loadable_icon_load_async().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     load(size: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ Gio.InputStream, /* type */ string | null ]
     /**
      * Loads an icon asynchronously. To finish this function, see
      * g_loadable_icon_load_finish(). For the synchronous, blocking
      * version of this function, see g_loadable_icon_load().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
      */
     loadAsync(size: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
+     * @param res a #GAsyncResult.
      */
     loadFinish(res: Gio.AsyncResult): [ /* returnType */ Gio.InputStream, /* type */ string | null ]
     /* Signals of GObject-2.0.GObject.Object */
@@ -1021,12 +1192,58 @@ class Pixbuf {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bits-per-sample", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bits-per-sample", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::bits-per-sample", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::bits-per-sample", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::bits-per-sample", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::colorspace", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::colorspace", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::colorspace", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::colorspace", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::colorspace", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::has-alpha", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-alpha", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::has-alpha", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::has-alpha", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::has-alpha", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::n-channels", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::n-channels", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::n-channels", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::n-channels", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::n-channels", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::pixel-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pixel-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::pixel-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::pixel-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::pixel-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::pixels", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pixels", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::pixels", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::pixels", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::pixels", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::rowstride", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::rowstride", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1057,10 +1274,16 @@ class Pixbuf {
      * 
      * This function is useful for front-ends and backends that want to check
      * image values without needing to create a `GdkPixbuf`.
+     * @param colorspace Color space for image
+     * @param hasAlpha Whether the image should have transparency information
+     * @param bitsPerSample Number of bits per color sample
+     * @param width Width of image in pixels, must be > 0
+     * @param height Height of image in pixels, must be > 0
      */
     static calculateRowstride(colorspace: Colorspace, hasAlpha: boolean, bitsPerSample: number, width: number, height: number): number
     /**
      * Parses an image file far enough to determine its format and size.
+     * @param filename The name of the file to identify.
      */
     static getFileInfo(filename: string): [ /* returnType */ PixbufFormat | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -1073,11 +1296,15 @@ class Pixbuf {
      * When the operation is finished, `callback` will be called in the
      * main thread. You can then call gdk_pixbuf_get_file_info_finish() to
      * get the result of the operation.
+     * @param filename The name of the file to identify
+     * @param cancellable optional `GCancellable` object, `NULL` to ignore
+     * @param callback a `GAsyncReadyCallback` to call when the file info is available
      */
     static getFileInfoAsync(filename: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous pixbuf parsing operation started with
      * gdk_pixbuf_get_file_info_async().
+     * @param asyncResult a `GAsyncResult`
      */
     static getFileInfoFinish(asyncResult: Gio.AsyncResult): [ /* returnType */ PixbufFormat | null, /* width */ number, /* height */ number ]
     /**
@@ -1099,6 +1326,7 @@ class Pixbuf {
      * expected to ship the gdk-pixbuf modules in a separate location, bundled
      * with the application in a separate directory from the OS or runtime-
      * provided modules.
+     * @param path Path to directory where the `loaders.cache` is installed
      */
     static initModules(path: string): boolean
     /**
@@ -1110,6 +1338,9 @@ class Pixbuf {
      * When the operation is finished, `callback` will be called in the main thread.
      * You can then call gdk_pixbuf_new_from_stream_finish() to get the result of
      * the operation.
+     * @param stream a `GInputStream` from which to load the pixbuf
+     * @param cancellable optional `GCancellable` object, `NULL` to ignore
+     * @param callback a `GAsyncReadyCallback` to call when the pixbuf is loaded
      */
     static newFromStreamAsync(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1120,19 +1351,28 @@ class Pixbuf {
      * 
      * When the operation is finished, `callback` will be called in the main thread.
      * You can then call gdk_pixbuf_new_from_stream_finish() to get the result of the operation.
+     * @param stream a `GInputStream` from which to load the pixbuf
+     * @param width the width the image should have or -1 to not constrain the width
+     * @param height the height the image should have or -1 to not constrain the height
+     * @param preserveAspectRatio `TRUE` to preserve the image's aspect ratio
+     * @param cancellable optional `GCancellable` object, `NULL` to ignore
+     * @param callback a `GAsyncReadyCallback` to call when the pixbuf is loaded
      */
     static newFromStreamAtScaleAsync(stream: Gio.InputStream, width: number, height: number, preserveAspectRatio: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous pixbuf save operation started with
      * gdk_pixbuf_save_to_stream_async().
+     * @param asyncResult a `GAsyncResult`
      */
     static saveToStreamFinish(asyncResult: Gio.AsyncResult): boolean
     /**
      * Deserializes a #GIcon previously serialized using g_icon_serialize().
+     * @param value a #GVariant created with g_icon_serialize()
      */
     static deserialize(value: GLib.Variant): Gio.Icon | null
     /**
      * Gets a hash for an icon.
+     * @param icon #gconstpointer to an icon object.
      */
     static hash(icon: object): number
     /**
@@ -1142,6 +1382,7 @@ class Pixbuf {
      * If your application or library provides one or more #GIcon
      * implementations you need to ensure that each #GType is registered
      * with the type system prior to calling g_icon_new_for_string().
+     * @param str A string obtained via g_icon_to_string().
      */
     static newForString(str: string): Gio.Icon
     static $gtype: GObject.Type
@@ -1150,7 +1391,7 @@ interface PixbufAnimation_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PixbufAnimation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.PixbufAnimation */
     /**
      * Queries the height of the bounding box of a pixbuf animation.
@@ -1191,6 +1432,7 @@ class PixbufAnimation {
      * area_updated signal.
      * 
      * A delay time of -1 is possible, indicating "infinite".
+     * @param startTime time when the animation starts playing
      */
     getIter(startTime?: GLib.TimeVal | null): PixbufAnimationIter
     /**
@@ -1255,6 +1497,10 @@ class PixbufAnimation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1265,6 +1511,12 @@ class PixbufAnimation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1288,6 +1540,7 @@ class PixbufAnimation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1307,11 +1560,14 @@ class PixbufAnimation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1319,6 +1575,8 @@ class PixbufAnimation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1336,6 +1594,7 @@ class PixbufAnimation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1381,6 +1640,7 @@ class PixbufAnimation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1424,15 +1684,20 @@ class PixbufAnimation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1473,6 +1738,7 @@ class PixbufAnimation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1507,6 +1773,7 @@ class PixbufAnimation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1538,6 +1805,7 @@ class PixbufAnimation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1568,6 +1836,9 @@ class PixbufAnimation {
      * When the operation is finished, `callback` will be called in the main thread.
      * You can then call gdk_pixbuf_animation_new_from_stream_finish() to get the
      * result of the operation.
+     * @param stream a #GInputStream from which to load the animation
+     * @param cancellable optional #GCancellable object
+     * @param callback a `GAsyncReadyCallback` to call when the pixbuf is loaded
      */
     static newFromStreamAsync(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     static $gtype: GObject.Type
@@ -1576,7 +1847,7 @@ interface PixbufAnimationIter_ConstructProps extends GObject.Object_ConstructPro
 }
 class PixbufAnimationIter {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.PixbufAnimationIter */
     /**
      * Possibly advances an animation to a new frame.
@@ -1600,6 +1871,7 @@ class PixbufAnimationIter {
      * display, assuming the display had been rendered prior to advancing;
      * if `TRUE`, you need to call gdk_pixbuf_animation_iter_get_pixbuf()
      * and update the display with the new pixbuf.
+     * @param currentTime current time
      */
     advance(currentTime?: GLib.TimeVal | null): boolean
     /**
@@ -1676,6 +1948,10 @@ class PixbufAnimationIter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1686,6 +1962,12 @@ class PixbufAnimationIter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1709,6 +1991,7 @@ class PixbufAnimationIter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1728,11 +2011,14 @@ class PixbufAnimationIter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1740,6 +2026,8 @@ class PixbufAnimationIter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1757,6 +2045,7 @@ class PixbufAnimationIter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1802,6 +2091,7 @@ class PixbufAnimationIter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1845,15 +2135,20 @@ class PixbufAnimationIter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1894,6 +2189,7 @@ class PixbufAnimationIter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1928,6 +2224,7 @@ class PixbufAnimationIter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1959,6 +2256,7 @@ class PixbufAnimationIter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1981,7 +2279,7 @@ interface PixbufLoader_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PixbufLoader {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.PixbufLoader */
     /**
      * Informs a pixbuf loader that no further writes with
@@ -2044,14 +2342,18 @@ class PixbufLoader {
      * 
      * Attempts to set the desired image size  are ignored after the
      * emission of the ::size-prepared signal.
+     * @param width The desired width of the image being loaded.
+     * @param height The desired height of the image being loaded.
      */
     setSize(width: number, height: number): void
     /**
      * Parses the next `count` bytes in the given image buffer.
+     * @param buf Pointer to image data.
      */
     write(buf: Uint8Array): boolean
     /**
      * Parses the next contents of the given image buffer.
+     * @param buffer The image data as a `GBytes` buffer.
      */
     writeBytes(buffer: any): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -2089,6 +2391,10 @@ class PixbufLoader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2099,6 +2405,12 @@ class PixbufLoader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2122,6 +2434,7 @@ class PixbufLoader {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2141,11 +2454,14 @@ class PixbufLoader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2153,6 +2469,8 @@ class PixbufLoader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2170,6 +2488,7 @@ class PixbufLoader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2215,6 +2534,7 @@ class PixbufLoader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2258,15 +2578,20 @@ class PixbufLoader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2307,6 +2632,7 @@ class PixbufLoader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2341,6 +2667,7 @@ class PixbufLoader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GdkPixbuf-2.0.GdkPixbuf.PixbufLoader */
@@ -2366,6 +2693,10 @@ class PixbufLoader {
      * 
      * Applications can use this signal to know when to repaint
      * areas of an image that is being loaded.
+     * @param x X offset of upper-left corner of the updated area.
+     * @param y Y offset of upper-left corner of the updated area.
+     * @param width Width of updated area.
+     * @param height Height of updated area.
      */
     connect(sigName: "area-updated", callback: ((x: number, y: number, width: number, height: number) => void)): number
     on(sigName: "area-updated", callback: (x: number, y: number, width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2392,6 +2723,8 @@ class PixbufLoader {
      * Applications can call gdk_pixbuf_loader_set_size() in response
      * to this signal to set the desired size to which the image
      * should be scaled.
+     * @param width the original width of the image
+     * @param height the original height of the image
      */
     connect(sigName: "size-prepared", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-prepared", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2427,6 +2760,7 @@ class PixbufLoader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2453,9 +2787,9 @@ interface PixbufNonAnim_ConstructProps extends PixbufAnimation_ConstructProps {
 }
 class PixbufNonAnim {
     /* Fields of GdkPixbuf-2.0.GdkPixbuf.PixbufAnimation */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.PixbufAnimation */
     /**
      * Queries the height of the bounding box of a pixbuf animation.
@@ -2496,6 +2830,7 @@ class PixbufNonAnim {
      * area_updated signal.
      * 
      * A delay time of -1 is possible, indicating "infinite".
+     * @param startTime time when the animation starts playing
      */
     getIter(startTime?: GLib.TimeVal | null): PixbufAnimationIter
     /**
@@ -2560,6 +2895,10 @@ class PixbufNonAnim {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2570,6 +2909,12 @@ class PixbufNonAnim {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2593,6 +2938,7 @@ class PixbufNonAnim {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2612,11 +2958,14 @@ class PixbufNonAnim {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2624,6 +2973,8 @@ class PixbufNonAnim {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2641,6 +2992,7 @@ class PixbufNonAnim {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2686,6 +3038,7 @@ class PixbufNonAnim {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2729,15 +3082,20 @@ class PixbufNonAnim {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2778,6 +3136,7 @@ class PixbufNonAnim {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2812,6 +3171,7 @@ class PixbufNonAnim {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2843,6 +3203,7 @@ class PixbufNonAnim {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2877,14 +3238,15 @@ class PixbufSimpleAnim {
      */
     loop: boolean
     /* Fields of GdkPixbuf-2.0.GdkPixbuf.PixbufAnimation */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.PixbufSimpleAnim */
     /**
      * Adds a new frame to `animation`. The `pixbuf` must
      * have the dimensions specified when the animation
      * was constructed.
+     * @param pixbuf the pixbuf to add
      */
     addFrame(pixbuf: Pixbuf): void
     /**
@@ -2893,6 +3255,7 @@ class PixbufSimpleAnim {
     getLoop(): boolean
     /**
      * Sets whether `animation` should loop indefinitely when it reaches the end.
+     * @param loop whether to loop the animation
      */
     setLoop(loop: boolean): void
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.PixbufAnimation */
@@ -2935,6 +3298,7 @@ class PixbufSimpleAnim {
      * area_updated signal.
      * 
      * A delay time of -1 is possible, indicating "infinite".
+     * @param startTime time when the animation starts playing
      */
     getIter(startTime?: GLib.TimeVal | null): PixbufAnimationIter
     /**
@@ -2999,6 +3363,10 @@ class PixbufSimpleAnim {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3009,6 +3377,12 @@ class PixbufSimpleAnim {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3032,6 +3406,7 @@ class PixbufSimpleAnim {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3051,11 +3426,14 @@ class PixbufSimpleAnim {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3063,6 +3441,8 @@ class PixbufSimpleAnim {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3080,6 +3460,7 @@ class PixbufSimpleAnim {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3125,6 +3506,7 @@ class PixbufSimpleAnim {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3168,15 +3550,20 @@ class PixbufSimpleAnim {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3217,6 +3604,7 @@ class PixbufSimpleAnim {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3251,6 +3639,7 @@ class PixbufSimpleAnim {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3282,6 +3671,7 @@ class PixbufSimpleAnim {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3311,9 +3701,9 @@ interface PixbufSimpleAnimIter_ConstructProps extends PixbufAnimationIter_Constr
 }
 class PixbufSimpleAnimIter {
     /* Fields of GdkPixbuf-2.0.GdkPixbuf.PixbufAnimationIter */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.PixbufAnimationIter */
     /**
      * Possibly advances an animation to a new frame.
@@ -3337,6 +3727,7 @@ class PixbufSimpleAnimIter {
      * display, assuming the display had been rendered prior to advancing;
      * if `TRUE`, you need to call gdk_pixbuf_animation_iter_get_pixbuf()
      * and update the display with the new pixbuf.
+     * @param currentTime current time
      */
     advance(currentTime?: GLib.TimeVal | null): boolean
     /**
@@ -3413,6 +3804,10 @@ class PixbufSimpleAnimIter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3423,6 +3818,12 @@ class PixbufSimpleAnimIter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3446,6 +3847,7 @@ class PixbufSimpleAnimIter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3465,11 +3867,14 @@ class PixbufSimpleAnimIter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3477,6 +3882,8 @@ class PixbufSimpleAnimIter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3494,6 +3901,7 @@ class PixbufSimpleAnimIter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3539,6 +3947,7 @@ class PixbufSimpleAnimIter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3582,15 +3991,20 @@ class PixbufSimpleAnimIter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3631,6 +4045,7 @@ class PixbufSimpleAnimIter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3665,6 +4080,7 @@ class PixbufSimpleAnimIter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3696,6 +4112,7 @@ class PixbufSimpleAnimIter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3719,11 +4136,11 @@ abstract class PixbufAnimationClass {
     /**
      * the parent class
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly isStaticImage: (animation: PixbufAnimation) => boolean
-    readonly getStaticImage: (animation: PixbufAnimation) => Pixbuf
-    readonly getSize: (animation: PixbufAnimation, width: number, height: number) => void
-    readonly getIter: (animation: PixbufAnimation, startTime?: GLib.TimeVal | null) => PixbufAnimationIter
+    parentClass: GObject.ObjectClass
+    isStaticImage: (animation: PixbufAnimation) => boolean
+    getStaticImage: (animation: PixbufAnimation) => Pixbuf
+    getSize: (animation: PixbufAnimation, width: number, height: number) => void
+    getIter: (animation: PixbufAnimation, startTime?: GLib.TimeVal | null) => PixbufAnimationIter
     static name: string
 }
 abstract class PixbufAnimationIterClass {
@@ -3731,11 +4148,11 @@ abstract class PixbufAnimationIterClass {
     /**
      * the parent class
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly getDelayTime: (iter: PixbufAnimationIter) => number
-    readonly getPixbuf: (iter: PixbufAnimationIter) => Pixbuf
-    readonly onCurrentlyLoadingFrame: (iter: PixbufAnimationIter) => boolean
-    readonly advance: (iter: PixbufAnimationIter, currentTime?: GLib.TimeVal | null) => boolean
+    parentClass: GObject.ObjectClass
+    getDelayTime: (iter: PixbufAnimationIter) => number
+    getPixbuf: (iter: PixbufAnimationIter) => Pixbuf
+    onCurrentlyLoadingFrame: (iter: PixbufAnimationIter) => boolean
+    advance: (iter: PixbufAnimationIter, currentTime?: GLib.TimeVal | null) => boolean
     static name: string
 }
 class PixbufFormat {
@@ -3743,41 +4160,41 @@ class PixbufFormat {
     /**
      * the name of the image format
      */
-    readonly name: string
+    name: string
     /**
      * the signature of the module
      */
-    readonly signature: PixbufModulePattern
+    signature: PixbufModulePattern
     /**
      * the message domain for the `description`
      */
-    readonly domain: string
+    domain: string
     /**
      * a description of the image format
      */
-    readonly description: string
+    description: string
     /**
      * the MIME types for the image format
      */
-    readonly mimeTypes: string[]
+    mimeTypes: string[]
     /**
      * typical filename extensions for the
      *   image format
      */
-    readonly extensions: string[]
+    extensions: string[]
     /**
      * a combination of `GdkPixbufFormatFlags`
      */
-    readonly flags: number
+    flags: number
     /**
      * a boolean determining whether the loader is disabled`
      */
-    readonly disabled: boolean
+    disabled: boolean
     /**
      * a string containing license information, typically set to
      *   shorthands like "GPL", "LGPL", etc.
      */
-    readonly license: string
+    license: string
     /* Methods of GdkPixbuf-2.0.GdkPixbuf.PixbufFormat */
     /**
      * Creates a copy of `format`.
@@ -3823,6 +4240,7 @@ class PixbufFormat {
      * saving a pixbuf using the module implementing `format`.
      * 
      * See gdk_pixbuf_save() for more information about option keys.
+     * @param optionKey the name of an option
      */
     isSaveOptionSupported(optionKey: string): boolean
     /**
@@ -3845,17 +4263,18 @@ class PixbufFormat {
      * 
      * Applications can use this to avoid using image loaders with an
      * inappropriate license, see gdk_pixbuf_format_get_license().
+     * @param disabled `TRUE` to disable the format `format`
      */
     setDisabled(disabled: boolean): void
     static name: string
 }
 abstract class PixbufLoaderClass {
     /* Fields of GdkPixbuf-2.0.GdkPixbuf.PixbufLoaderClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly sizePrepared: (loader: PixbufLoader, width: number, height: number) => void
-    readonly areaPrepared: (loader: PixbufLoader) => void
-    readonly areaUpdated: (loader: PixbufLoader, x: number, y: number, width: number, height: number) => void
-    readonly closed: (loader: PixbufLoader) => void
+    parentClass: GObject.ObjectClass
+    sizePrepared: (loader: PixbufLoader, width: number, height: number) => void
+    areaPrepared: (loader: PixbufLoader) => void
+    areaUpdated: (loader: PixbufLoader, x: number, y: number, width: number, height: number) => void
+    closed: (loader: PixbufLoader) => void
     static name: string
 }
 class PixbufModule {
@@ -3864,23 +4283,23 @@ class PixbufModule {
      * the name of the module, usually the same as the
      *  usual file extension for images of this type, eg. "xpm", "jpeg" or "png".
      */
-    readonly moduleName: string
+    moduleName: string
     /**
      * the path from which the module is loaded.
      */
-    readonly modulePath: string
+    modulePath: string
     /**
      * the loaded `GModule`.
      */
-    readonly module: GModule.Module
+    module: GModule.Module
     /**
      * a `GdkPixbufFormat` holding information about the module.
      */
-    readonly info: PixbufFormat
-    readonly stopLoad: (context: object) => boolean
-    readonly loadIncrement: (context: object, buf: number, size: number) => boolean
-    readonly save: (f: object, pixbuf: Pixbuf, paramKeys: string, paramValues: string) => boolean
-    readonly isSaveOptionSupported: (optionKey: string) => boolean
+    info: PixbufFormat
+    stopLoad: (context: object) => boolean
+    loadIncrement: (context: object, buf: number, size: number) => boolean
+    save: (f: object, pixbuf: Pixbuf, paramKeys: string, paramValues: string) => boolean
+    isSaveOptionSupported: (optionKey: string) => boolean
     static name: string
 }
 class PixbufModulePattern {
@@ -3888,16 +4307,16 @@ class PixbufModulePattern {
     /**
      * the prefix for this pattern
      */
-    readonly prefix: string
+    prefix: string
     /**
      * mask containing bytes which modify how the prefix is matched against
      *  test data
      */
-    readonly mask: string
+    mask: string
     /**
      * relevance of this pattern
      */
-    readonly relevance: number
+    relevance: number
     static name: string
 }
 abstract class PixbufSimpleAnimClass {

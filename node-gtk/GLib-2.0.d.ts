@@ -199,8 +199,8 @@ enum DateMonth {
     DECEMBER,
 }
 /**
- * Enumeration representing a day of the week; #G_DATE_MONDAY,
- * #G_DATE_TUESDAY, etc. #G_DATE_BAD_WEEKDAY is an invalid weekday.
+ * Enumeration representing a day of the week; %G_DATE_MONDAY,
+ * %G_DATE_TUESDAY, etc. %G_DATE_BAD_WEEKDAY is an invalid weekday.
  */
 enum DateWeekday {
     /**
@@ -3055,8 +3055,8 @@ enum RegexCompileFlags {
      *     newlines). The "start of line" metacharacter ("^") matches only
      *     at the start of the string, while the "end of line" metacharacter
      *     ("$") matches only at the end of the string, or before a terminating
-     *     newline (unless #G_REGEX_DOLLAR_ENDONLY is set). When
-     *     #G_REGEX_MULTILINE is set, the "start of line" and "end of line"
+     *     newline (unless %G_REGEX_DOLLAR_ENDONLY is set). When
+     *     %G_REGEX_MULTILINE is set, the "start of line" and "end of line"
      *     constructs match immediately following or immediately before any
      *     newline in the string, respectively, as well as at the very start
      *     and end. This can be changed within a pattern by a "(?m)" option
@@ -3091,7 +3091,7 @@ enum RegexCompileFlags {
      *     matches only at the end of the string. Without this option, a
      *     dollar also matches immediately before the final character if
      *     it is a newline (but not before any other newlines). This option
-     *     is ignored if #G_REGEX_MULTILINE is set.
+     *     is ignored if %G_REGEX_MULTILINE is set.
      */
     DOLLAR_ENDONLY,
     /**
@@ -3182,7 +3182,7 @@ enum RegexMatchFlags {
     /**
      * Specifies that first character of the string is
      *     not the beginning of a line, so the circumflex metacharacter should
-     *     not match before it. Setting this without #G_REGEX_MULTILINE (at
+     *     not match before it. Setting this without %G_REGEX_MULTILINE (at
      *     compile time) causes circumflex never to match. This option affects
      *     only the behaviour of the circumflex metacharacter, it does not
      *     affect "\A".
@@ -3192,7 +3192,7 @@ enum RegexMatchFlags {
      * Specifies that the end of the subject string is
      *     not the end of a line, so the dollar metacharacter should not match
      *     it nor (except in multiline mode) a newline immediately before it.
-     *     Setting this without #G_REGEX_MULTILINE (at compile time) causes
+     *     Setting this without %G_REGEX_MULTILINE (at compile time) causes
      *     dollar never to match. This option affects only the behaviour of
      *     the dollar metacharacter, it does not affect "\Z" or "\z".
      */
@@ -3259,18 +3259,18 @@ enum RegexMatchFlags {
      */
     BSR_ANY,
     /**
-     * An alias for #G_REGEX_MATCH_PARTIAL. Since: 2.34
+     * An alias for %G_REGEX_MATCH_PARTIAL. Since: 2.34
      */
     PARTIAL_SOFT,
     /**
      * Turns on the partial matching feature. In contrast to
-     *     to #G_REGEX_MATCH_PARTIAL_SOFT, this stops matching as soon as a partial match
+     *     to %G_REGEX_MATCH_PARTIAL_SOFT, this stops matching as soon as a partial match
      *     is found, without continuing to search for a possible complete match. See
      *     g_match_info_is_partial_match() for more information. Since: 2.34
      */
     PARTIAL_HARD,
     /**
-     * Like #G_REGEX_MATCH_NOTEMPTY, but only applied to
+     * Like %G_REGEX_MATCH_NOTEMPTY, but only applied to
      *     the start of the matched string. For anchored
      *     patterns this can only happen for pattern containing "\K". Since: 2.34
      */
@@ -3564,7 +3564,7 @@ const ANALYZER_ANALYZING: number
 const ASCII_DTOSTR_BUF_SIZE: number
 /**
  * Specifies one of the possible types of byte order.
- * See #G_BYTE_ORDER.
+ * See %G_BYTE_ORDER.
  */
 const BIG_ENDIAN: number
 /**
@@ -3652,18 +3652,18 @@ const GINT16_FORMAT: string
 const GINT16_MODIFIER: string
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #gint32. See also #G_GINT16_FORMAT.
+ * and printing values of type #gint32. See also %G_GINT16_FORMAT.
  */
 const GINT32_FORMAT: string
 /**
  * The platform dependent length modifier for conversion specifiers
  * for scanning and printing values of type #gint32 or #guint32. It
- * is a string literal. See also #G_GINT16_MODIFIER.
+ * is a string literal. See also %G_GINT16_MODIFIER.
  */
 const GINT32_MODIFIER: string
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #gint64. See also #G_GINT16_FORMAT.
+ * and printing values of type #gint64. See also %G_GINT16_FORMAT.
  * 
  * Some platforms do not support scanning and printing 64-bit integers,
  * even though the types are supported. On such platforms %G_GINT64_FORMAT
@@ -3706,7 +3706,7 @@ const GNUC_FUNCTION: string
 const GNUC_PRETTY_FUNCTION: string
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #gsize. See also #G_GINT16_FORMAT.
+ * and printing values of type #gsize. See also %G_GINT16_FORMAT.
  */
 const GSIZE_FORMAT: string
 /**
@@ -3717,7 +3717,7 @@ const GSIZE_FORMAT: string
 const GSIZE_MODIFIER: string
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #gssize. See also #G_GINT16_FORMAT.
+ * and printing values of type #gssize. See also %G_GINT16_FORMAT.
  */
 const GSSIZE_FORMAT: string
 /**
@@ -3728,17 +3728,17 @@ const GSSIZE_FORMAT: string
 const GSSIZE_MODIFIER: string
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #guint16. See also #G_GINT16_FORMAT
+ * and printing values of type #guint16. See also %G_GINT16_FORMAT
  */
 const GUINT16_FORMAT: string
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #guint32. See also #G_GINT16_FORMAT.
+ * and printing values of type #guint32. See also %G_GINT16_FORMAT.
  */
 const GUINT32_FORMAT: string
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #guint64. See also #G_GINT16_FORMAT.
+ * and printing values of type #guint64. See also %G_GINT16_FORMAT.
  * 
  * Some platforms do not support scanning and printing 64-bit integers,
  * even though the types are supported. On such platforms %G_GUINT64_FORMAT
@@ -3924,7 +3924,7 @@ const KEY_FILE_DESKTOP_TYPE_DIRECTORY: string
 const KEY_FILE_DESKTOP_TYPE_LINK: string
 /**
  * Specifies one of the possible types of byte order.
- * See #G_BYTE_ORDER.
+ * See %G_BYTE_ORDER.
  */
 const LITTLE_ENDIAN: number
 /**
@@ -4059,14 +4059,14 @@ const MODULE_SUFFIX: string
  * or %G_OPTION_ARG_FILENAME_ARRAY.
  * 
  * 
- * Using #G_OPTION_REMAINING instead of simply scanning `argv`
+ * Using %G_OPTION_REMAINING instead of simply scanning `argv`
  * for leftover arguments has the advantage that GOption takes care of
  * necessary encoding conversions for strings or filenames.
  */
 const OPTION_REMAINING: string
 /**
  * Specifies one of the possible types of byte order
- * (currently unused). See #G_BYTE_ORDER.
+ * (currently unused). See %G_BYTE_ORDER.
  */
 const PDP_ENDIAN: number
 /**
@@ -4115,8 +4115,8 @@ const PRIORITY_HIGH: number
 /**
  * Use this for high priority idle functions.
  * 
- * GTK+ uses #G_PRIORITY_HIGH_IDLE + 10 for resizing operations,
- * and #G_PRIORITY_HIGH_IDLE + 20 for redrawing operations. (This is
+ * GTK+ uses %G_PRIORITY_HIGH_IDLE + 10 for resizing operations,
+ * and %G_PRIORITY_HIGH_IDLE + 20 for redrawing operations. (This is
  * done to ensure that any pending resizes are processed before any
  * pending redraws, so that widgets are not redrawn twice unnecessarily.)
  */
@@ -5301,12 +5301,12 @@ class Array {
      * a pointer to the element data. The data may be moved as
      *     elements are added to the #GArray.
      */
-    readonly data: string
+    data: string
     /**
      * the number of elements in the #GArray not including the
      *     possible terminating zero element.
      */
-    readonly len: number
+    len: number
     static name: string
 }
 class AsyncQueue {
@@ -5361,6 +5361,7 @@ class AsyncQueue {
     popUnlocked(): object | null
     /**
      * Pushes the `data` into the `queue`. `data` must not be %NULL.
+     * @param data `data` to push into the `queue`
      */
     push(data?: object | null): void
     /**
@@ -5368,6 +5369,7 @@ class AsyncQueue {
      * In contrast to g_async_queue_push(), this function
      * pushes the new item ahead of the items already in the queue,
      * so that it will be the next one to be popped off the queue.
+     * @param item data to push into the `queue`
      */
     pushFront(item?: object | null): void
     /**
@@ -5377,12 +5379,14 @@ class AsyncQueue {
      * so that it will be the next one to be popped off the queue.
      * 
      * This function must be called while holding the `queue'`s lock.
+     * @param item data to push into the `queue`
      */
     pushFrontUnlocked(item?: object | null): void
     /**
      * Pushes the `data` into the `queue`. `data` must not be %NULL.
      * 
      * This function must be called while holding the `queue'`s lock.
+     * @param data `data` to push into the `queue`
      */
     pushUnlocked(data?: object | null): void
     /**
@@ -5391,12 +5395,14 @@ class AsyncQueue {
     refUnlocked(): void
     /**
      * Remove an item from the queue.
+     * @param item the data to remove from the `queue`
      */
     remove(item?: object | null): boolean
     /**
      * Remove an item from the queue.
      * 
      * This function must be called while holding the `queue'`s lock.
+     * @param item the data to remove from the `queue`
      */
     removeUnlocked(item?: object | null): boolean
     /**
@@ -5407,6 +5413,7 @@ class AsyncQueue {
      * 
      * To easily calculate `end_time,` a combination of g_get_real_time()
      * and g_time_val_add() can be used.
+     * @param endTime a #GTimeVal, determining the final time
      */
     timedPop(endTime: TimeVal): object | null
     /**
@@ -5419,6 +5426,7 @@ class AsyncQueue {
      * and g_time_val_add() can be used.
      * 
      * This function must be called while holding the `queue'`s lock.
+     * @param endTime a #GTimeVal, determining the final time
      */
     timedPopUnlocked(endTime: TimeVal): object | null
     /**
@@ -5426,6 +5434,7 @@ class AsyncQueue {
      * `timeout` microseconds, or until data becomes available.
      * 
      * If no data is received before the timeout, %NULL is returned.
+     * @param timeout the number of microseconds to wait
      */
     timeoutPop(timeout: number): object | null
     /**
@@ -5435,6 +5444,7 @@ class AsyncQueue {
      * If no data is received before the timeout, %NULL is returned.
      * 
      * This function must be called while holding the `queue'`s lock.
+     * @param timeout the number of microseconds to wait
      */
     timeoutPopUnlocked(timeout: number): object | null
     /**
@@ -5500,6 +5510,9 @@ class BookmarkFile {
      * `uri` inside `bookmark`.
      * 
      * If no bookmark for `uri` is found, one is created.
+     * @param uri a valid URI
+     * @param name the name of the application registering the bookmark   or %NULL
+     * @param exec command line to be used to launch the bookmark or %NULL
      */
     addApplication(uri: string, name?: string | null, exec?: string | null): void
     /**
@@ -5507,6 +5520,8 @@ class BookmarkFile {
      * belongs to.
      * 
      * If no bookmark for `uri` is found then it is created.
+     * @param uri a valid URI
+     * @param group the group name to be added
      */
     addGroup(uri: string, group: string): void
     /**
@@ -5517,14 +5532,16 @@ class BookmarkFile {
      * Gets the time the bookmark for `uri` was added to `bookmark`
      * 
      * In the event the URI cannot be found, -1 is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getAdded(uri: string): number
     /**
      * Gets the time the bookmark for `uri` was added to `bookmark`
      * 
      * In the event the URI cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getAddedDateTime(uri: string): DateTime
     /**
@@ -5535,12 +5552,14 @@ class BookmarkFile {
      * The string returned in `app_exec` must be freed.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
      * event that no application with name `app_name` has registered a bookmark
      * for `uri,`  %FALSE is returned and error is set to
-     * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED. In the event that unquoting
-     * the command line fails, an error of the #G_SHELL_ERROR domain is
+     * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED. In the event that unquoting
+     * the command line fails, an error of the %G_SHELL_ERROR domain is
      * set and %FALSE is returned.
+     * @param uri a valid URI
+     * @param name an application's name
      */
     getAppInfo(uri: string, name: string): [ /* returnType */ boolean, /* exec */ string | null, /* count */ number | null, /* stamp */ number | null ]
     /**
@@ -5551,12 +5570,14 @@ class BookmarkFile {
      * The string returned in `app_exec` must be freed.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
      * event that no application with name `app_name` has registered a bookmark
      * for `uri,`  %FALSE is returned and error is set to
-     * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED. In the event that unquoting
-     * the command line fails, an error of the #G_SHELL_ERROR domain is
+     * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED. In the event that unquoting
+     * the command line fails, an error of the %G_SHELL_ERROR domain is
      * set and %FALSE is returned.
+     * @param uri a valid URI
+     * @param name an application's name
      */
     getApplicationInfo(uri: string, name: string): [ /* returnType */ boolean, /* exec */ string | null, /* count */ number | null, /* stamp */ DateTime | null ]
     /**
@@ -5564,63 +5585,71 @@ class BookmarkFile {
      * bookmark for `uri`.
      * 
      * In the event the URI cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getApplications(uri: string): string[]
     /**
      * Retrieves the description of the bookmark for `uri`.
      * 
      * In the event the URI cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getDescription(uri: string): string
     /**
      * Retrieves the list of group names of the bookmark for `uri`.
      * 
      * In the event the URI cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
      * 
      * The returned array is %NULL terminated, so `length` may optionally
      * be %NULL.
+     * @param uri a valid URI
      */
     getGroups(uri: string): string[]
     /**
      * Gets the icon of the bookmark for `uri`.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getIcon(uri: string): [ /* returnType */ boolean, /* href */ string | null, /* mimeType */ string | null ]
     /**
      * Gets whether the private flag of the bookmark for `uri` is set.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
      * event that the private flag cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+     * @param uri a valid URI
      */
     getIsPrivate(uri: string): boolean
     /**
      * Retrieves the MIME type of the resource pointed by `uri`.
      * 
      * In the event the URI cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
      * event that the MIME type cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+     * @param uri a valid URI
      */
     getMimeType(uri: string): string
     /**
      * Gets the time when the bookmark for `uri` was last modified.
      * 
      * In the event the URI cannot be found, -1 is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getModified(uri: string): number
     /**
      * Gets the time when the bookmark for `uri` was last modified.
      * 
      * In the event the URI cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getModifiedDateTime(uri: string): DateTime
     /**
@@ -5633,7 +5662,8 @@ class BookmarkFile {
      * If `uri` is %NULL, the title of `bookmark` is returned.
      * 
      * In the event the URI cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI or %NULL
      */
     getTitle(uri?: string | null): string
     /**
@@ -5646,14 +5676,16 @@ class BookmarkFile {
      * Gets the time the bookmark for `uri` was last visited.
      * 
      * In the event the URI cannot be found, -1 is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getVisited(uri: string): number
     /**
      * Gets the time the bookmark for `uri` was last visited.
      * 
      * In the event the URI cannot be found, %NULL is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
      */
     getVisitedDateTime(uri: string): DateTime
     /**
@@ -5661,7 +5693,9 @@ class BookmarkFile {
      * registered by application `name`.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
+     * @param name the name of the application
      */
     hasApplication(uri: string, name: string): boolean
     /**
@@ -5669,17 +5703,21 @@ class BookmarkFile {
      * the bookmark for `uri` belongs to.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param uri a valid URI
+     * @param group the group name to be searched
      */
     hasGroup(uri: string, group: string): boolean
     /**
      * Looks whether the desktop bookmark has an item with its URI set to `uri`.
+     * @param uri a valid URI
      */
     hasItem(uri: string): boolean
     /**
      * Loads a bookmark file from memory into an empty #GBookmarkFile
      * structure.  If the object cannot be created then `error` is set to a
      * #GBookmarkFileError.
+     * @param data desktop bookmarks    loaded in memory
      */
     loadFromData(data: Uint8Array): boolean
     /**
@@ -5688,12 +5726,14 @@ class BookmarkFile {
      * loads the file into `bookmark` and returns the file's full path in
      * `full_path`.  If the file could not be loaded then `error` is
      * set to either a #GFileError or #GBookmarkFileError.
+     * @param file a relative path to a filename to open and parse
      */
     loadFromDataDirs(file: string): [ /* returnType */ boolean, /* fullPath */ string | null ]
     /**
      * Loads a desktop bookmark file into an empty #GBookmarkFile structure.
      * If the file could not be loaded then `error` is set to either a #GFileError
      * or #GBookmarkFileError.
+     * @param filename the path of a filename to load, in the     GLib file name encoding
      */
     loadFromFile(filename: string): boolean
     /**
@@ -5702,7 +5742,9 @@ class BookmarkFile {
      * %NULL, then the bookmark is removed.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * @param oldUri a valid URI
+     * @param newUri a valid URI, or %NULL
      */
     moveItem(oldUri: string, newUri?: string | null): boolean
     /**
@@ -5710,10 +5752,12 @@ class BookmarkFile {
      * that have registered a bookmark for `uri` inside `bookmark`.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
      * In the event that no application with name `app_name` has registered
      * a bookmark for `uri,`  %FALSE is returned and error is set to
-     * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.
+     * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.
+     * @param uri a valid URI
+     * @param name the name of the application
      */
     removeApplication(uri: string, name: string): boolean
     /**
@@ -5721,25 +5765,32 @@ class BookmarkFile {
      * for `uri` belongs to.
      * 
      * In the event the URI cannot be found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
      * In the event no group was defined, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+     * @param uri a valid URI
+     * @param group the group name to be removed
      */
     removeGroup(uri: string, group: string): boolean
     /**
      * Removes the bookmark for `uri` from the bookmark file `bookmark`.
+     * @param uri a valid URI
      */
     removeItem(uri: string): boolean
     /**
      * Sets the time the bookmark for `uri` was added into `bookmark`.
      * 
      * If no bookmark for `uri` is found then it is created.
+     * @param uri a valid URI
+     * @param added a timestamp or -1 to use the current time
      */
     setAdded(uri: string, added: number): void
     /**
      * Sets the time the bookmark for `uri` was added into `bookmark`.
      * 
      * If no bookmark for `uri` is found then it is created.
+     * @param uri a valid URI
+     * @param added a #GDateTime
      */
     setAddedDateTime(uri: string, added: DateTime): void
     /**
@@ -5766,11 +5817,16 @@ class BookmarkFile {
      * 
      * If you try to remove an application by setting its registration count to
      * zero, and no bookmark for `uri` is found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND; similarly,
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND; similarly,
      * in the event that no application `name` has registered a bookmark
      * for `uri,`  %FALSE is returned and error is set to
-     * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.  Otherwise, if no bookmark
+     * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.  Otherwise, if no bookmark
      * for `uri` is found, one is created.
+     * @param uri a valid URI
+     * @param name an application's name
+     * @param exec an application's command line
+     * @param count the number of registrations done for this application
+     * @param stamp the time of the last registration for this application
      */
     setAppInfo(uri: string, name: string, exec: string, count: number, stamp: number): boolean
     /**
@@ -5796,11 +5852,16 @@ class BookmarkFile {
      * 
      * If you try to remove an application by setting its registration count to
      * zero, and no bookmark for `uri` is found, %FALSE is returned and
-     * `error` is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND; similarly,
+     * `error` is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND; similarly,
      * in the event that no application `name` has registered a bookmark
      * for `uri,`  %FALSE is returned and error is set to
-     * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.  Otherwise, if no bookmark
+     * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.  Otherwise, if no bookmark
      * for `uri` is found, one is created.
+     * @param uri a valid URI
+     * @param name an application's name
+     * @param exec an application's command line
+     * @param count the number of registrations done for this application
+     * @param stamp the time of the last registration for this application,    which may be %NULL if `count` is 0
      */
     setApplicationInfo(uri: string, name: string, exec: string, count: number, stamp?: DateTime | null): boolean
     /**
@@ -5809,6 +5870,8 @@ class BookmarkFile {
      * If `uri` is %NULL, the description of `bookmark` is set.
      * 
      * If a bookmark for `uri` cannot be found then it is created.
+     * @param uri a valid URI or %NULL
+     * @param description a string
      */
     setDescription(uri: string | null, description: string): void
     /**
@@ -5816,6 +5879,8 @@ class BookmarkFile {
      * set group name list is removed.
      * 
      * If `uri` cannot be found then an item for it is created.
+     * @param uri an item's URI
+     * @param groups an array of    group names, or %NULL to remove all groups
      */
     setGroups(uri: string, groups: string[] | null): void
     /**
@@ -5824,18 +5889,25 @@ class BookmarkFile {
      * file or the icon name following the Icon Naming specification.
      * 
      * If no bookmark for `uri` is found one is created.
+     * @param uri a valid URI
+     * @param href the URI of the icon for the bookmark, or %NULL
+     * @param mimeType the MIME type of the icon for the bookmark
      */
     setIcon(uri: string, href: string | null, mimeType: string): void
     /**
      * Sets the private flag of the bookmark for `uri`.
      * 
      * If a bookmark for `uri` cannot be found then it is created.
+     * @param uri a valid URI
+     * @param isPrivate %TRUE if the bookmark should be marked as private
      */
     setIsPrivate(uri: string, isPrivate: boolean): void
     /**
      * Sets `mime_type` as the MIME type of the bookmark for `uri`.
      * 
      * If a bookmark for `uri` cannot be found then it is created.
+     * @param uri a valid URI
+     * @param mimeType a MIME type
      */
     setMimeType(uri: string, mimeType: string): void
     /**
@@ -5847,6 +5919,8 @@ class BookmarkFile {
      * was actually changed.  Every function of #GBookmarkFile that
      * modifies a bookmark also changes the modification time, except for
      * g_bookmark_file_set_visited_date_time().
+     * @param uri a valid URI
+     * @param modified a timestamp or -1 to use the current time
      */
     setModified(uri: string, modified: number): void
     /**
@@ -5858,6 +5932,8 @@ class BookmarkFile {
      * was actually changed.  Every function of #GBookmarkFile that
      * modifies a bookmark also changes the modification time, except for
      * g_bookmark_file_set_visited_date_time().
+     * @param uri a valid URI
+     * @param modified a #GDateTime
      */
     setModifiedDateTime(uri: string, modified: DateTime): void
     /**
@@ -5867,6 +5943,8 @@ class BookmarkFile {
      * If `uri` is %NULL, the title of `bookmark` is set.
      * 
      * If a bookmark for `uri` cannot be found then it is created.
+     * @param uri a valid URI or %NULL
+     * @param title a UTF-8 encoded string
      */
     setTitle(uri: string | null, title: string): void
     /**
@@ -5879,6 +5957,8 @@ class BookmarkFile {
      * or by the default application for the bookmark's MIME type, retrieved
      * using g_bookmark_file_get_mime_type().  Changing the "visited" time
      * does not affect the "modified" time.
+     * @param uri a valid URI
+     * @param visited a timestamp or -1 to use the current time
      */
     setVisited(uri: string, visited: number): void
     /**
@@ -5891,6 +5971,8 @@ class BookmarkFile {
      * or by the default application for the bookmark's MIME type, retrieved
      * using g_bookmark_file_get_mime_type().  Changing the "visited" time
      * does not affect the "modified" time.
+     * @param uri a valid URI
+     * @param visited a #GDateTime
      */
     setVisitedDateTime(uri: string, visited: DateTime): void
     /**
@@ -5900,6 +5982,7 @@ class BookmarkFile {
     /**
      * This function outputs `bookmark` into a file.  The write process is
      * guaranteed to be atomic by using g_file_set_contents() internally.
+     * @param filename path of the output file
      */
     toFile(filename: string): boolean
     static name: string
@@ -5912,11 +5995,11 @@ class ByteArray {
      * a pointer to the element data. The data may be moved as
      *     elements are added to the #GByteArray
      */
-    readonly data: number
+    data: number
     /**
      * the number of elements in the #GByteArray
      */
-    readonly len: number
+    len: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -5924,6 +6007,8 @@ class ByteArray {
      * %TRUE it frees the actual byte data. If the reference count of
      * `array` is greater than one, the #GByteArray wrapper is preserved but
      * the size of `array` will be set to zero.
+     * @param array a #GByteArray
+     * @param freeSegment if %TRUE the actual byte data is freed as well
      */
     static free(array: Uint8Array, freeSegment: boolean): number
     /**
@@ -5935,6 +6020,7 @@ class ByteArray {
      * 
      * This is identical to using g_bytes_new_take() and g_byte_array_free()
      * together.
+     * @param array a #GByteArray
      */
     static freeToBytes(array: Uint8Array): any
     /**
@@ -5944,12 +6030,14 @@ class ByteArray {
      * Do not use it if `len` is greater than %G_MAXUINT. #GByteArray
      * stores the length of its data in #guint, which may be shorter than
      * #gsize.
+     * @param data byte data for the array
      */
     static newTake(data: Uint8Array): Uint8Array
     /**
      * Frees the data in the array and resets the size to zero, while
      * the underlying array is preserved for use elsewhere and returned
      * to the caller.
+     * @param array a #GByteArray.
      */
     static steal(array: Uint8Array): [ /* returnType */ number, /* len */ number | null ]
     /**
@@ -5957,6 +6045,7 @@ class ByteArray {
      * reference count drops to 0, all memory allocated by the array is
      * released. This function is thread-safe and may be called from any
      * thread.
+     * @param array A #GByteArray
      */
     static unref(array: Uint8Array): void
 }
@@ -5972,6 +6061,7 @@ class Bytes {
      * the longer one. Otherwise the first byte where both differ is used for
      * comparison. If `bytes1` has a smaller value at that position it is
      * considered less, otherwise greater than `bytes2`.
+     * @param bytes2 a pointer to a #GBytes to compare with `bytes1`
      */
     compare(bytes2: any): number
     /**
@@ -5980,6 +6070,7 @@ class Bytes {
      * 
      * This function can be passed to g_hash_table_new() as the `key_equal_func`
      * parameter, when using non-%NULL #GBytes pointers as keys in a #GHashTable.
+     * @param bytes2 a pointer to a #GBytes to compare with `bytes1`
      */
     equal(bytes2: any): boolean
     /**
@@ -6013,6 +6104,9 @@ class Bytes {
      * where `bytes` itself was a zero-sized region.  Since it is unlikely
      * that you will be using this function to check for a zero-sized region
      * in a zero-sized `bytes,` %NULL effectively always means "error".
+     * @param elementSize a non-zero element size
+     * @param offset an offset to the start of the region within the `bytes`
+     * @param nElements the number of elements in the region
      */
     getRegion(elementSize: number, offset: number, nElements: number): object | null
     /**
@@ -6040,6 +6134,8 @@ class Bytes {
      * is a slice of another #GBytes, then the resulting #GBytes will reference
      * the same #GBytes instead of `bytes`. This allows consumers to simplify the
      * usage of #GBytes when asynchronously writing to streams.
+     * @param offset offset which subsection starts at
+     * @param length length of subsection
      */
     newFromBytes(offset: number, length: number): any
     /**
@@ -6111,6 +6207,7 @@ class Checksum {
      * Feeds `data` into an existing #GChecksum. The checksum must still be
      * open, that is g_checksum_get_string() or g_checksum_get_digest() must
      * not have been called on `checksum`.
+     * @param data buffer used to compute the checksum
      */
     update(data: Uint8Array): void
     static name: string
@@ -6120,6 +6217,7 @@ class Checksum {
     static new(checksumType: ChecksumType): Checksum
     /**
      * Gets the length in bytes of digests of type `checksum_type`
+     * @param checksumType a #GChecksumType
      */
     static typeGetLength(checksumType: ChecksumType): number
 }
@@ -6178,6 +6276,7 @@ class Cond {
      * 
      * For this reason, g_cond_wait() must always be used in a loop.  See
      * the documentation for #GCond for a complete example.
+     * @param mutex a #GMutex that is currently locked
      */
     wait(mutex: Mutex): void
     /**
@@ -6231,6 +6330,8 @@ class Cond {
      * directly to the call and a spurious wakeup occurred, the program would
      * have to start over waiting again (which would lead to a total wait
      * time of more than 5 seconds).
+     * @param mutex a #GMutex that is currently locked
+     * @param endTime the monotonic time to wait until
      */
     waitUntil(mutex: Mutex, endTime: number): boolean
     static name: string
@@ -6243,34 +6344,35 @@ class Date {
     /**
      * the Julian representation of the date
      */
-    readonly julianDays: number
+    julianDays: number
     /**
      * this bit is set if `julian_days` is valid
      */
-    readonly julian: number
+    julian: number
     /**
      * this is set if `day,` `month` and `year` are valid
      */
-    readonly dmy: number
+    dmy: number
     /**
      * the day of the day-month-year representation of the date,
      *   as a number between 1 and 31
      */
-    readonly day: number
+    day: number
     /**
      * the day of the day-month-year representation of the date,
      *   as a number between 1 and 12
      */
-    readonly month: number
+    month: number
     /**
      * the day of the day-month-year representation of the date
      */
-    readonly year: number
+    year: number
     /* Methods of GLib-2.0.GLib.Date */
     /**
      * Increments a date some number of days.
      * To move forward by weeks, add weeks*7 days.
      * The date must be valid.
+     * @param nDays number of days to move the date forward
      */
     addDays(nDays: number): void
     /**
@@ -6279,6 +6381,7 @@ class Date {
      * this routine may change the day of the month
      * (because the destination month may not have
      * the current day in it). The date must be valid.
+     * @param nMonths number of months to move forward
      */
     addMonths(nMonths: number): void
     /**
@@ -6286,6 +6389,7 @@ class Date {
      * If the date is February 29, and the destination
      * year is not a leap year, the date will be changed
      * to February 28. The date must be valid.
+     * @param nYears number of years to move forward
      */
     addYears(nYears: number): void
     /**
@@ -6294,6 +6398,8 @@ class Date {
      * Otherwise, `date` is unchanged.
      * Either of `min_date` and `max_date` may be %NULL.
      * All non-%NULL dates must be valid.
+     * @param minDate minimum accepted value for `date`
+     * @param maxDate maximum accepted value for `date`
      */
     clamp(minDate: Date, maxDate: Date): void
     /**
@@ -6301,11 +6407,13 @@ class Date {
      * state. The cleared dates will not represent an existing date, but will
      * not contain garbage. Useful to init a date declared on the stack.
      * Validity can be tested with g_date_valid().
+     * @param nDates number of dates to clear
      */
     clear(nDates: number): void
     /**
      * qsort()-style comparison function for dates.
      * Both dates must be valid.
+     * @param rhs second date to compare
      */
     compare(rhs: Date): number
     /**
@@ -6318,6 +6426,7 @@ class Date {
      * Computes the number of days between two dates.
      * If `date2` is prior to `date1`, the returned value is negative.
      * Both dates must be valid.
+     * @param date2 the second date
      */
     daysBetween(date2: Date): number
     /**
@@ -6382,11 +6491,13 @@ class Date {
     /**
      * Checks if `date1` is less than or equal to `date2`,
      * and swap the values if this is not the case.
+     * @param date2 the second date
      */
     order(date2: Date): void
     /**
      * Sets the day of the month for a #GDate. If the resulting
      * day-month-year triplet is invalid, the date will be invalid.
+     * @param day day to set
      */
     setDay(day: DateDay): void
     /**
@@ -6394,15 +6505,20 @@ class Date {
      * The day-month-year triplet must be valid; if you aren't
      * sure it is, call g_date_valid_dmy() to check before you
      * set it.
+     * @param day day
+     * @param month month
+     * @param y year
      */
     setDmy(day: DateDay, month: DateMonth, y: DateYear): void
     /**
      * Sets the value of a #GDate from a Julian day number.
+     * @param julianDate Julian day number (days since January 1, Year 1)
      */
     setJulian(julianDate: number): void
     /**
      * Sets the month of the year for a #GDate.  If the resulting
      * day-month-year triplet is invalid, the date will be invalid.
+     * @param month month to set
      */
     setMonth(month: DateMonth): void
     /**
@@ -6417,11 +6533,13 @@ class Date {
      * It's intended to be a heuristic routine that guesses what the user
      * means by a given string (and it does work pretty well in that
      * capacity).
+     * @param str string to parse
      */
     setParse(str: string): void
     /**
      * Sets the value of a date from a #GTime value.
      * The time to date conversion is done using the user's current timezone.
+     * @param time #GTime value to set.
      */
     setTime(time: Time): void
     /**
@@ -6438,6 +6556,7 @@ class Date {
      *  g_date_set_time_t (date, now);
      * ```
      * 
+     * @param timet time_t value to set
      */
     setTimeT(timet: number): void
     /**
@@ -6446,17 +6565,20 @@ class Date {
      * additional precision.
      * 
      * The time to date conversion is done using the user's current timezone.
+     * @param timeval #GTimeVal value to set
      */
     setTimeVal(timeval: TimeVal): void
     /**
      * Sets the year for a #GDate. If the resulting day-month-year
      * triplet is invalid, the date will be invalid.
+     * @param year year to set
      */
     setYear(year: DateYear): void
     /**
      * Moves a date some number of days into the past.
      * To move by weeks, just move by weeks*7 days.
      * The date must be valid.
+     * @param nDays number of days to move
      */
     subtractDays(nDays: number): void
     /**
@@ -6464,6 +6586,7 @@ class Date {
      * If the current day of the month doesn't exist in
      * the destination month, the day of the month
      * may change. The date must be valid.
+     * @param nMonths number of months to move
      */
     subtractMonths(nMonths: number): void
     /**
@@ -6472,11 +6595,13 @@ class Date {
      * year (i.e. it's February 29 and you move to a non-leap-year)
      * then the day is changed to February 29. The date
      * must be valid.
+     * @param nYears number of years to move
      */
     subtractYears(nYears: number): void
     /**
      * Fills in the date-related bits of a struct tm using the `date` value.
      * Initializes the non-date parts with something safe but meaningless.
+     * @param tm struct tm to fill
      */
     toStructTm(tm: object): void
     /**
@@ -6495,6 +6620,8 @@ class Date {
     /**
      * Returns the number of days in a month, taking leap
      * years into account.
+     * @param month month
+     * @param year year
      */
     static getDaysInMonth(month: DateMonth, year: DateYear): number
     /**
@@ -6505,6 +6632,7 @@ class Date {
      * year. This function is basically telling you how many
      * Mondays are in the year, i.e. there are 53 Mondays if
      * one of the extra days happens to be a Monday.)
+     * @param year a year
      */
     static getMondayWeeksInYear(year: DateYear): number
     /**
@@ -6515,6 +6643,7 @@ class Date {
      * year. This function is basically telling you how many
      * Sundays are in the year, i.e. there are 53 Sundays if
      * one of the extra days happens to be a Sunday.)
+     * @param year year to count weeks in
      */
     static getSundayWeeksInYear(year: DateYear): number
     /**
@@ -6524,6 +6653,7 @@ class Date {
      * divisible by 4 unless that year is divisible by 100. If it
      * is divisible by 100 it would be a leap year only if that year
      * is also divisible by 400.
+     * @param year year to check
      */
     static isLeapYear(year: DateYear): boolean
     /**
@@ -6540,37 +6670,49 @@ class Date {
      * For example, don't expect that using g_date_strftime() would
      * make the \%F provided by the C99 strftime() work on Windows
      * where the C library only complies to C89.
+     * @param s destination buffer
+     * @param slen buffer size
+     * @param format format string
+     * @param date valid #GDate
      */
     static strftime(s: string, slen: number, format: string, date: Date): number
     /**
      * Returns %TRUE if the day of the month is valid (a day is valid if it's
      * between 1 and 31 inclusive).
+     * @param day day to check
      */
     static validDay(day: DateDay): boolean
     /**
      * Returns %TRUE if the day-month-year triplet forms a valid, existing day
      * in the range of days #GDate understands (Year 1 or later, no more than
      * a few thousand years in the future).
+     * @param day day
+     * @param month month
+     * @param year year
      */
     static validDmy(day: DateDay, month: DateMonth, year: DateYear): boolean
     /**
      * Returns %TRUE if the Julian day is valid. Anything greater than zero
      * is basically a valid Julian, though there is a 32-bit limit.
+     * @param julianDate Julian day to check
      */
     static validJulian(julianDate: number): boolean
     /**
      * Returns %TRUE if the month value is valid. The 12 #GDateMonth
      * enumeration values are the only valid months.
+     * @param month month
      */
     static validMonth(month: DateMonth): boolean
     /**
      * Returns %TRUE if the weekday is valid. The seven #GDateWeekday enumeration
      * values are the only valid weekdays.
+     * @param weekday weekday
      */
     static validWeekday(weekday: DateWeekday): boolean
     /**
      * Returns %TRUE if the year is valid. Any year greater than 0 is valid,
      * though there is a 16-bit limit to what #GDate will understand.
+     * @param year year
      */
     static validYear(year: DateYear): boolean
 }
@@ -6578,26 +6720,36 @@ class DateTime {
     /* Methods of GLib-2.0.GLib.DateTime */
     /**
      * Creates a copy of `datetime` and adds the specified timespan to the copy.
+     * @param timespan a #GTimeSpan
      */
     add(timespan: TimeSpan): DateTime | null
     /**
      * Creates a copy of `datetime` and adds the specified number of days to the
      * copy. Add negative values to subtract days.
+     * @param days the number of days
      */
     addDays(days: number): DateTime | null
     /**
      * Creates a new #GDateTime adding the specified values to the current date and
      * time in `datetime`. Add negative values to subtract.
+     * @param years the number of years to add
+     * @param months the number of months to add
+     * @param days the number of days to add
+     * @param hours the number of hours to add
+     * @param minutes the number of minutes to add
+     * @param seconds the number of seconds to add
      */
     addFull(years: number, months: number, days: number, hours: number, minutes: number, seconds: number): DateTime | null
     /**
      * Creates a copy of `datetime` and adds the specified number of hours.
      * Add negative values to subtract hours.
+     * @param hours the number of hours to add
      */
     addHours(hours: number): DateTime | null
     /**
      * Creates a copy of `datetime` adding the specified number of minutes.
      * Add negative values to subtract minutes.
+     * @param minutes the number of minutes to add
      */
     addMinutes(minutes: number): DateTime | null
     /**
@@ -6608,16 +6760,19 @@ class DateTime {
      * of days in the updated calendar month. For example, if adding 1 month to
      * 31st January 2018, the result would be 28th February 2018. In 2020 (a leap
      * year), the result would be 29th February.
+     * @param months the number of months
      */
     addMonths(months: number): DateTime | null
     /**
      * Creates a copy of `datetime` and adds the specified number of seconds.
      * Add negative values to subtract seconds.
+     * @param seconds the number of seconds to add
      */
     addSeconds(seconds: number): DateTime | null
     /**
      * Creates a copy of `datetime` and adds the specified number of weeks to the
      * copy. Add negative values to subtract weeks.
+     * @param weeks the number of weeks
      */
     addWeeks(weeks: number): DateTime | null
     /**
@@ -6626,17 +6781,20 @@ class DateTime {
      * 
      * As with g_date_time_add_months(), if the resulting date would be 29th
      * February on a non-leap year, the day will be clamped to 28th February.
+     * @param years the number of years
      */
     addYears(years: number): DateTime | null
     /**
      * A comparison function for #GDateTimes that is suitable
      * as a #GCompareFunc. Both #GDateTimes must be non-%NULL.
+     * @param dt2 second #GDateTime to compare
      */
     compare(dt2: DateTime): number
     /**
      * Calculates the difference in time between `end` and `begin`.  The
      * #GTimeSpan that is returned is effectively `end` - `begin` (ie:
      * positive if the first parameter is larger).
+     * @param begin a #GDateTime
      */
     difference(begin: DateTime): TimeSpan
     /**
@@ -6644,6 +6802,7 @@ class DateTime {
      * 
      * Equal here means that they represent the same moment after converting
      * them to the same time zone.
+     * @param dt2 a #GDateTime
      */
     equal(dt2: DateTime): boolean
     /**
@@ -6746,6 +6905,7 @@ class DateTime {
      * rules. For other languages there is no difference. \%OB is a GNU and BSD
      * strftime() extension expected to be added to the future POSIX specification,
      * \%Ob and \%Oh are GNU strftime() extensions. Since: 2.56
+     * @param format a valid UTF-8 string, containing the format for the          #GDateTime
      */
     format(format: string): string | null
     /**
@@ -6916,6 +7076,7 @@ class DateTime {
      * out of range.
      * 
      * On systems where 'long' is 64bit, this function never fails.
+     * @param tv a #GTimeVal to modify
      */
     toTimeval(tv: TimeVal): boolean
     /**
@@ -6925,6 +7086,7 @@ class DateTime {
      * This call can fail in the case that the time goes out of bounds.  For
      * example, converting 0001-01-01 00:00:00 UTC to a time zone west of
      * Greenwich will fail (due to the year 0 being out of range).
+     * @param tz the new #GTimeZone
      */
     toTimezone(tz: TimeZone): DateTime | null
     /**
@@ -6971,11 +7133,11 @@ class DebugKey {
     /**
      * the string
      */
-    readonly key: string
+    key: string
     /**
      * the flag
      */
-    readonly value: number
+    value: number
     static name: string
 }
 class Dir {
@@ -7019,23 +7181,24 @@ class Dir {
      * 
      * Note that in contrast to g_mkdtemp() (and mkdtemp()) `tmpl` is not
      * modified, and might thus be a read-only literal string.
+     * @param tmpl Template for directory name,     as in g_mkdtemp(), basename only, or %NULL for a default template
      */
     static makeTmp(tmpl?: string | null): string
 }
 class Error {
     /* Fields of GLib-2.0.GLib.Error */
     /**
-     * error domain, e.g. #G_FILE_ERROR
+     * error domain, e.g. %G_FILE_ERROR
      */
-    readonly domain: Quark
+    domain: Quark
     /**
      * error code, e.g. %G_FILE_ERROR_NOENT
      */
-    readonly code: number
+    code: number
     /**
      * human-readable informative error message
      */
-    readonly message: string
+    message: string
     /* Methods of GLib-2.0.GLib.Error */
     /**
      * Makes a copy of `error`.
@@ -7056,6 +7219,8 @@ class Error {
      * equivalent to the `FAILED` code. This way, if the domain is
      * extended in the future to provide a more specific error code for
      * a certain case, your code will still work.
+     * @param domain an error domain
+     * @param code an error code
      */
     matches(domain: Quark, code: number): boolean
     static name: string
@@ -7081,10 +7246,14 @@ class HashTable {
      * Starting from GLib 2.40, this function returns a boolean value to
      * indicate whether the newly added value was already in the hash table
      * or not.
+     * @param hashTable a #GHashTable
+     * @param key a key to insert
      */
     static add(hashTable: HashTable, key?: object | null): boolean
     /**
      * Checks if `key` is in `hash_table`.
+     * @param hashTable a #GHashTable
+     * @param key a key to check
      */
     static contains(hashTable: HashTable, key?: object | null): boolean
     /**
@@ -7094,6 +7263,7 @@ class HashTable {
      * notifiers using g_hash_table_new_full(). In the latter case the destroy
      * functions you supplied will be called on all keys and values during the
      * destruction phase.
+     * @param hashTable a #GHashTable
      */
     static destroy(hashTable: HashTable): void
     /**
@@ -7109,6 +7279,9 @@ class HashTable {
      * Starting from GLib 2.40, this function returns a boolean value to
      * indicate whether the newly added value was already in the hash table
      * or not.
+     * @param hashTable a #GHashTable
+     * @param key a key to insert
+     * @param value the value to associate with the key
      */
     static insert(hashTable: HashTable, key?: object | null, value?: object | null): boolean
     /**
@@ -7116,6 +7289,8 @@ class HashTable {
      * distinguish between a key that is not present and one which is present
      * and has the value %NULL. If you need this distinction, use
      * g_hash_table_lookup_extended().
+     * @param hashTable a #GHashTable
+     * @param key the key to look up
      */
     static lookup(hashTable: HashTable, key?: object | null): object | null
     /**
@@ -7127,6 +7302,8 @@ class HashTable {
      * You can actually pass %NULL for `lookup_key` to test
      * whether the %NULL key exists, provided the hash and equal functions
      * of `hash_table` are %NULL-safe.
+     * @param hashTable a #GHashTable
+     * @param lookupKey the key to look up
      */
     static lookupExtended(hashTable: HashTable, lookupKey?: object | null): [ /* returnType */ boolean, /* origKey */ object | null, /* value */ object | null ]
     /**
@@ -7138,6 +7315,7 @@ class HashTable {
      * 
      * The returned hash table will be empty; it will not contain the keys
      * or values from `other_hash_table`.
+     * @param otherHashTable Another #GHashTable
      */
     static newSimilar(otherHashTable: HashTable): HashTable
     /**
@@ -7147,6 +7325,8 @@ class HashTable {
      * key and value are freed using the supplied destroy functions, otherwise
      * you have to make sure that any dynamically allocated values are freed
      * yourself.
+     * @param hashTable a #GHashTable
+     * @param key the key to remove
      */
     static remove(hashTable: HashTable, key?: object | null): boolean
     /**
@@ -7156,6 +7336,7 @@ class HashTable {
      * the keys and values are freed using the supplied destroy functions,
      * otherwise you have to make sure that any dynamically allocated
      * values are freed yourself.
+     * @param hashTable a #GHashTable
      */
     static removeAll(hashTable: HashTable): void
     /**
@@ -7170,20 +7351,27 @@ class HashTable {
      * Starting from GLib 2.40, this function returns a boolean value to
      * indicate whether the newly added value was already in the hash table
      * or not.
+     * @param hashTable a #GHashTable
+     * @param key a key to insert
+     * @param value the value to associate with the key
      */
     static replace(hashTable: HashTable, key?: object | null, value?: object | null): boolean
     /**
      * Returns the number of elements contained in the #GHashTable.
+     * @param hashTable a #GHashTable
      */
     static size(hashTable: HashTable): number
     /**
      * Removes a key and its associated value from a #GHashTable without
      * calling the key and value destroy functions.
+     * @param hashTable a #GHashTable
+     * @param key the key to remove
      */
     static steal(hashTable: HashTable, key?: object | null): boolean
     /**
      * Removes all keys and their associated values from a #GHashTable
      * without calling the key and value destroy functions.
+     * @param hashTable a #GHashTable
      */
     static stealAll(hashTable: HashTable): void
     /**
@@ -7197,6 +7385,8 @@ class HashTable {
      * 
      * You can pass %NULL for `lookup_key,` provided the hash and equal functions
      * of `hash_table` are %NULL-safe.
+     * @param hashTable a #GHashTable
+     * @param lookupKey the key to look up
      */
     static stealExtended(hashTable: HashTable, lookupKey?: object | null): [ /* returnType */ boolean, /* stolenKey */ object | null, /* stolenValue */ object | null ]
     /**
@@ -7204,6 +7394,7 @@ class HashTable {
      * If the reference count drops to 0, all keys and values will be
      * destroyed, and all memory allocated by the hash table is released.
      * This function is MT-safe and may be called from any thread.
+     * @param hashTable a valid #GHashTable
      */
     static unref(hashTable: HashTable): void
 }
@@ -7229,6 +7420,7 @@ class HashTableIter {
      *   }
      * ```
      * 
+     * @param hashTable a #GHashTable
      */
     init(hashTable: HashTable): void
     /**
@@ -7267,6 +7459,7 @@ class HashTableIter {
      * 
      * If you supplied a `value_destroy_func` when creating the
      * #GHashTable, the old value is freed using that function.
+     * @param value the value to replace with
      */
     replace(value?: object | null): void
     /**
@@ -7287,6 +7480,7 @@ class Hmac {
      * 
      * Once this function has been called, the #GHmac is closed and can
      * no longer be updated with g_checksum_update().
+     * @param buffer output buffer
      */
     getDigest(buffer: Uint8Array): void
     /**
@@ -7312,6 +7506,7 @@ class Hmac {
      * 
      * The HMAC must still be open, that is g_hmac_get_string() or
      * g_hmac_get_digest() must not have been called on `hmac`.
+     * @param data buffer used to compute the checksum
      */
     update(data: Uint8Array): void
     static name: string
@@ -7321,72 +7516,86 @@ class Hook {
     /**
      * data which is passed to func when this hook is invoked
      */
-    readonly data: object
+    data: object
     /**
      * pointer to the next hook in the list
      */
-    readonly next: Hook
+    next: Hook
     /**
      * pointer to the previous hook in the list
      */
-    readonly prev: Hook
+    prev: Hook
     /**
      * the reference count of this hook
      */
-    readonly refCount: number
+    refCount: number
     /**
      * the id of this hook, which is unique within its list
      */
-    readonly hookId: number
+    hookId: number
     /**
      * flags which are set for this hook. See #GHookFlagMask for
      *     predefined flags
      */
-    readonly flags: number
+    flags: number
     /**
      * the function to call when this hook is invoked. The possible
      *     signatures for this function are #GHookFunc and #GHookCheckFunc
      */
-    readonly func: object
+    func: object
     /**
      * the default `finalize_hook` function of a #GHookList calls
      *     this member of the hook that is being finalized
      */
-    readonly destroy: DestroyNotify
+    destroy: DestroyNotify
     /* Methods of GLib-2.0.GLib.Hook */
     /**
      * Compares the ids of two #GHook elements, returning a negative value
      * if the second id is greater than the first.
+     * @param sibling a #GHook to compare with `new_hook`
      */
     compareIds(sibling: Hook): number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Destroys a #GHook, given its ID.
+     * @param hookList a #GHookList
+     * @param hookId a hook ID
      */
     static destroy(hookList: HookList, hookId: number): boolean
     /**
      * Removes one #GHook from a #GHookList, marking it
      * inactive and calling g_hook_unref() on it.
+     * @param hookList a #GHookList
+     * @param hook the #GHook to remove
      */
     static destroyLink(hookList: HookList, hook: Hook): void
     /**
      * Calls the #GHookList `finalize_hook` function if it exists,
      * and frees the memory allocated for the #GHook.
+     * @param hookList a #GHookList
+     * @param hook the #GHook to free
      */
     static free(hookList: HookList, hook: Hook): void
     /**
      * Inserts a #GHook into a #GHookList, before a given #GHook.
+     * @param hookList a #GHookList
+     * @param sibling the #GHook to insert the new #GHook before
+     * @param hook the #GHook to insert
      */
     static insertBefore(hookList: HookList, sibling: Hook | null, hook: Hook): void
     /**
      * Prepends a #GHook on the start of a #GHookList.
+     * @param hookList a #GHookList
+     * @param hook the #GHook to add to the start of `hook_list`
      */
     static prepend(hookList: HookList, hook: Hook): void
     /**
      * Decrements the reference count of a #GHook.
      * If the reference count falls to 0, the #GHook is removed
      * from the #GHookList and g_hook_free() is called to free it.
+     * @param hookList a #GHookList
+     * @param hook the #GHook to unref
      */
     static unref(hookList: HookList, hook: Hook): void
 }
@@ -7395,32 +7604,32 @@ class HookList {
     /**
      * the next free #GHook id
      */
-    readonly seqId: number
+    seqId: number
     /**
      * the size of the #GHookList elements, in bytes
      */
-    readonly hookSize: number
+    hookSize: number
     /**
      * 1 if the #GHookList has been initialized
      */
-    readonly isSetup: number
+    isSetup: number
     /**
      * the first #GHook element in the list
      */
-    readonly hooks: Hook
+    hooks: Hook
     /**
      * unused
      */
-    readonly dummy3: object
+    dummy3: object
     /**
      * the function to call to finalize a #GHook element.
      *     The default behaviour is to call the hooks `destroy` function
      */
-    readonly finalizeHook: HookFinalizeFunc
+    finalizeHook: HookFinalizeFunc
     /**
      * unused
      */
-    readonly dummy: object[]
+    dummy: object[]
     /* Methods of GLib-2.0.GLib.HookList */
     /**
      * Removes all the #GHook elements from a #GHookList.
@@ -7429,15 +7638,18 @@ class HookList {
     /**
      * Initializes a #GHookList.
      * This must be called before the #GHookList is used.
+     * @param hookSize the size of each element in the #GHookList,     typically `sizeof (GHook)`.
      */
     init(hookSize: number): void
     /**
      * Calls all of the #GHook functions in a #GHookList.
+     * @param mayRecurse %TRUE if functions which are already running     (e.g. in another thread) can be called. If set to %FALSE,     these are skipped
      */
     invoke(mayRecurse: boolean): void
     /**
      * Calls all of the #GHook functions in a #GHookList.
      * Any function which returns %FALSE is removed from the #GHookList.
+     * @param mayRecurse %TRUE if functions which are already running     (e.g. in another thread) can be called. If set to %FALSE,     these are skipped
      */
     invokeCheck(mayRecurse: boolean): void
     static name: string
@@ -7500,6 +7712,7 @@ class IOChannel {
      * This returns the string that #GIOChannel uses to determine
      * where in the file a line break occurs. A value of %NULL
      * indicates autodetection.
+     * @param length a location to return the length of the line terminator
      */
     getLineTerm(length: number): string
     /**
@@ -7512,6 +7725,9 @@ class IOChannel {
     init(): void
     /**
      * Reads data from a #GIOChannel.
+     * @param buf a buffer to read the data into (which should be at least       count bytes long)
+     * @param count the number of bytes to read from the #GIOChannel
+     * @param bytesRead returns the number of bytes actually read
      */
     read(buf: string, count: number, bytesRead: number): IOError
     /**
@@ -7527,6 +7743,8 @@ class IOChannel {
     readLine(): [ /* returnType */ IOStatus, /* strReturn */ string, /* length */ number | null, /* terminatorPos */ number | null ]
     /**
      * Reads a line from a #GIOChannel, using a #GString as a buffer.
+     * @param buffer a #GString into which the line will be written.          If `buffer` already contains data, the old data will          be overwritten.
+     * @param terminatorPos location to store position of line terminator, or %NULL
      */
     readLineString(buffer: String, terminatorPos?: number | null): IOStatus
     /**
@@ -7545,14 +7763,19 @@ class IOChannel {
     /**
      * Sets the current position in the #GIOChannel, similar to the standard
      * library function fseek().
+     * @param offset an offset, in bytes, which is added to the position specified          by `type`
+     * @param type the position in the file, which can be %G_SEEK_CUR (the current        position), %G_SEEK_SET (the start of the file), or %G_SEEK_END        (the end of the file)
      */
     seek(offset: number, type: SeekType): IOError
     /**
      * Replacement for g_io_channel_seek() with the new API.
+     * @param offset The offset in bytes from the position specified by `type`
+     * @param type a #GSeekType. The type %G_SEEK_CUR is only allowed in those                      cases where a call to g_io_channel_set_encoding ()                      is allowed. See the documentation for                      g_io_channel_set_encoding () for details.
      */
     seekPosition(offset: number, type: SeekType): IOStatus
     /**
      * Sets the buffer size.
+     * @param size the size of the buffer, or 0 to let GLib pick a good size
      */
     setBufferSize(size: number): void
     /**
@@ -7575,6 +7798,7 @@ class IOChannel {
      * maintaining old code.
      * 
      * The default state of the channel is buffered.
+     * @param buffered whether to set the channel buffered or unbuffered
      */
     setBuffered(buffered: boolean): void
     /**
@@ -7584,6 +7808,7 @@ class IOChannel {
      * 
      * Setting this flag to %TRUE for a channel you have already closed
      * can cause problems when the final reference to the #GIOChannel is dropped.
+     * @param doClose Whether to close the channel on the final unref of            the GIOChannel data structure.
      */
     setCloseOnUnref(doClose: boolean): void
     /**
@@ -7621,21 +7846,26 @@ class IOChannel {
      * g_io_channel_seek_position() with an offset of %G_SEEK_CUR, and, if
      * they are "seekable", cannot call g_io_channel_write_chars() after
      * calling one of the API "read" functions.
+     * @param encoding the encoding type
      */
     setEncoding(encoding?: string | null): IOStatus
     /**
      * Sets the (writeable) flags in `channel` to (`flags` & %G_IO_FLAG_SET_MASK).
+     * @param flags the flags to set on the IO channel
      */
     setFlags(flags: IOFlags): IOStatus
     /**
      * This sets the string that #GIOChannel uses to determine
      * where in the file a line break occurs.
+     * @param lineTerm The line termination string. Use %NULL for             autodetect.  Autodetection breaks on "\n", "\r\n", "\r", "\0",             and the Unicode paragraph separator. Autodetection should not be             used for anything other than file-based channels.
+     * @param length The length of the termination string. If -1 is passed, the          string is assumed to be nul-terminated. This option allows          termination strings with embedded nuls.
      */
     setLineTerm(lineTerm: string | null, length: number): void
     /**
      * Close an IO channel. Any pending data to be written will be
      * flushed if `flush` is %TRUE. The channel will not be freed until the
      * last reference is dropped using g_io_channel_unref().
+     * @param flush if %TRUE, flush pending
      */
     shutdown(flush: boolean): IOStatus
     /**
@@ -7651,6 +7881,9 @@ class IOChannel {
     unref(): void
     /**
      * Writes data to a #GIOChannel.
+     * @param buf the buffer containing the data to write
+     * @param count the number of bytes to write
+     * @param bytesWritten the number of bytes actually written
      */
     write(buf: string, count: number, bytesWritten: number): IOError
     /**
@@ -7660,11 +7893,14 @@ class IOChannel {
      * mixing of reading and writing is not allowed. A call to g_io_channel_write_chars ()
      * may only be made on a channel from which data has been read in the
      * cases described in the documentation for g_io_channel_set_encoding ().
+     * @param buf a buffer to write data from
+     * @param count the size of the buffer. If -1, the buffer         is taken to be a nul-terminated string.
      */
     writeChars(buf: Uint8Array, count: number): [ /* returnType */ IOStatus, /* bytesWritten */ number ]
     /**
      * Writes a Unicode character to `channel`.
      * This function cannot be called on a channel with %NULL encoding.
+     * @param thechar a character
      */
     writeUnichar(thechar: number): IOStatus
     static name: string
@@ -7673,20 +7909,21 @@ class IOChannel {
     static unixNew(fd: number): IOChannel
     /**
      * Converts an `errno` error number to a #GIOChannelError.
+     * @param en an `errno` error number, e.g. `EINVAL`
      */
     static errorFromErrno(en: number): IOChannelError
     static errorQuark(): Quark
 }
 class IOFuncs {
     /* Fields of GLib-2.0.GLib.IOFuncs */
-    readonly ioRead: (channel: IOChannel, buf: string, count: number, bytesRead: number) => IOStatus
-    readonly ioWrite: (channel: IOChannel, buf: string, count: number, bytesWritten: number) => IOStatus
-    readonly ioSeek: (channel: IOChannel, offset: number, type: SeekType) => IOStatus
-    readonly ioClose: (channel: IOChannel) => IOStatus
-    readonly ioCreateWatch: (channel: IOChannel, condition: IOCondition) => Source
-    readonly ioFree: (channel: IOChannel) => void
-    readonly ioSetFlags: (channel: IOChannel, flags: IOFlags) => IOStatus
-    readonly ioGetFlags: (channel: IOChannel) => IOFlags
+    ioRead: (channel: IOChannel, buf: string, count: number, bytesRead: number) => IOStatus
+    ioWrite: (channel: IOChannel, buf: string, count: number, bytesWritten: number) => IOStatus
+    ioSeek: (channel: IOChannel, offset: number, type: SeekType) => IOStatus
+    ioClose: (channel: IOChannel) => IOStatus
+    ioCreateWatch: (channel: IOChannel, condition: IOCondition) => Source
+    ioFree: (channel: IOChannel) => void
+    ioSetFlags: (channel: IOChannel, flags: IOFlags) => IOStatus
+    ioGetFlags: (channel: IOChannel) => IOFlags
     static name: string
 }
 class KeyFile {
@@ -7696,9 +7933,11 @@ class KeyFile {
      * boolean.
      * 
      * If `key` cannot be found then %FALSE is returned and `error` is set
-     * to #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value
+     * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value
      * associated with `key` cannot be interpreted as a boolean then %FALSE
-     * is returned and `error` is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+     * is returned and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+     * @param groupName a group name
+     * @param key a key
      */
     getBoolean(groupName: string, key: string): boolean
     /**
@@ -7706,9 +7945,11 @@ class KeyFile {
      * booleans.
      * 
      * If `key` cannot be found then %NULL is returned and `error` is set to
-     * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
+     * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
      * with `key` cannot be interpreted as booleans then %NULL is returned
-     * and `error` is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+     * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+     * @param groupName a group name
+     * @param key a key
      */
     getBooleanList(groupName: string, key: string): boolean[]
     /**
@@ -7720,6 +7961,8 @@ class KeyFile {
      * Note that the returned string does not include the '#' comment markers,
      * but does include any whitespace after them (on each line). It includes
      * the line breaks between lines, but does not include the final line break.
+     * @param groupName a group name, or %NULL
+     * @param key a key
      */
     getComment(groupName?: string | null, key?: string | null): string
     /**
@@ -7727,9 +7970,11 @@ class KeyFile {
      * double. If `group_name` is %NULL, the start_group is used.
      * 
      * If `key` cannot be found then 0.0 is returned and `error` is set to
-     * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
+     * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
      * with `key` cannot be interpreted as a double then 0.0 is returned
-     * and `error` is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+     * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+     * @param groupName a group name
+     * @param key a key
      */
     getDouble(groupName: string, key: string): number
     /**
@@ -7737,9 +7982,11 @@ class KeyFile {
      * doubles.
      * 
      * If `key` cannot be found then %NULL is returned and `error` is set to
-     * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
+     * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
      * with `key` cannot be interpreted as doubles then %NULL is returned
-     * and `error` is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+     * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+     * @param groupName a group name
+     * @param key a key
      */
     getDoubleList(groupName: string, key: string): number[]
     /**
@@ -7752,6 +7999,8 @@ class KeyFile {
      * Returns the value associated with `key` under `group_name` as a signed
      * 64-bit integer. This is similar to g_key_file_get_integer() but can return
      * 64-bit results without truncation.
+     * @param groupName a non-%NULL group name
+     * @param key a non-%NULL key
      */
     getInt64(groupName: string, key: string): number
     /**
@@ -7759,10 +8008,12 @@ class KeyFile {
      * integer.
      * 
      * If `key` cannot be found then 0 is returned and `error` is set to
-     * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
+     * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
      * with `key` cannot be interpreted as an integer, or is out of range
      * for a #gint, then 0 is returned
-     * and `error` is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+     * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+     * @param groupName a group name
+     * @param key a key
      */
     getInteger(groupName: string, key: string): number
     /**
@@ -7770,10 +8021,12 @@ class KeyFile {
      * integers.
      * 
      * If `key` cannot be found then %NULL is returned and `error` is set to
-     * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
+     * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
      * with `key` cannot be interpreted as integers, or are out of range for
      * #gint, then %NULL is returned
-     * and `error` is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+     * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+     * @param groupName a group name
+     * @param key a key
      */
     getIntegerList(groupName: string, key: string): number[]
     /**
@@ -7781,7 +8034,8 @@ class KeyFile {
      * returned keys will be %NULL-terminated, so `length` may
      * optionally be %NULL. In the event that the `group_name` cannot
      * be found, %NULL is returned and `error` is set to
-     * #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+     * %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+     * @param groupName a group name
      */
     getKeys(groupName: string): [ /* returnType */ string[], /* length */ number | null ]
     /**
@@ -7794,6 +8048,9 @@ class KeyFile {
      * `group_name,` `key` and `locale,` the result of those functions will
      * have originally been tagged with the locale that is the result of
      * this function.
+     * @param groupName a group name
+     * @param key a key
+     * @param locale a locale identifier or %NULL
      */
     getLocaleForKey(groupName: string, key: string, locale?: string | null): string | null
     /**
@@ -7806,9 +8063,12 @@ class KeyFile {
      * %G_KEY_FILE_KEEP_TRANSLATIONS in order to load strings for all locales.
      * 
      * If `key` cannot be found then %NULL is returned and `error` is set
-     * to #G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the value associated
+     * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the value associated
      * with `key` cannot be interpreted or no suitable translation can
      * be found then the untranslated value is returned.
+     * @param groupName a group name
+     * @param key a key
+     * @param locale a locale identifier or %NULL
      */
     getLocaleString(groupName: string, key: string, locale?: string | null): string
     /**
@@ -7821,11 +8081,14 @@ class KeyFile {
      * %G_KEY_FILE_KEEP_TRANSLATIONS in order to load strings for all locales.
      * 
      * If `key` cannot be found then %NULL is returned and `error` is set
-     * to #G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the values associated
+     * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the values associated
      * with `key` cannot be interpreted or no suitable translations
      * can be found then the untranslated values are returned. The
      * returned array is %NULL-terminated, so `length` may optionally
      * be %NULL.
+     * @param groupName a group name
+     * @param key a key
+     * @param locale a locale identifier or %NULL
      */
     getLocaleStringList(groupName: string, key: string, locale?: string | null): string[]
     /**
@@ -7838,24 +8101,30 @@ class KeyFile {
      * like \s.
      * 
      * In the event the key cannot be found, %NULL is returned and
-     * `error` is set to #G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
+     * `error` is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
      * event that the `group_name` cannot be found, %NULL is returned
-     * and `error` is set to #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+     * and `error` is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+     * @param groupName a group name
+     * @param key a key
      */
     getString(groupName: string, key: string): string
     /**
      * Returns the values associated with `key` under `group_name`.
      * 
      * In the event the key cannot be found, %NULL is returned and
-     * `error` is set to #G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
+     * `error` is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
      * event that the `group_name` cannot be found, %NULL is returned
-     * and `error` is set to #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+     * and `error` is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+     * @param groupName a group name
+     * @param key a key
      */
     getStringList(groupName: string, key: string): string[]
     /**
      * Returns the value associated with `key` under `group_name` as an unsigned
      * 64-bit integer. This is similar to g_key_file_get_integer() but can return
      * large positive results without truncation.
+     * @param groupName a non-%NULL group name
+     * @param key a non-%NULL key
      */
     getUint64(groupName: string, key: string): number
     /**
@@ -7863,23 +8132,31 @@ class KeyFile {
      * Use g_key_file_get_string() to retrieve an unescaped UTF-8 string.
      * 
      * In the event the key cannot be found, %NULL is returned and
-     * `error` is set to #G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
+     * `error` is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
      * event that the `group_name` cannot be found, %NULL is returned
-     * and `error` is set to #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+     * and `error` is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+     * @param groupName a group name
+     * @param key a key
      */
     getValue(groupName: string, key: string): string
     /**
      * Looks whether the key file has the group `group_name`.
+     * @param groupName a group name
      */
     hasGroup(groupName: string): boolean
     /**
      * Loads a key file from the data in `bytes` into an empty #GKeyFile structure.
      * If the object cannot be created then %error is set to a #GKeyFileError.
+     * @param bytes a #GBytes
+     * @param flags flags from #GKeyFileFlags
      */
     loadFromBytes(bytes: any, flags: KeyFileFlags): boolean
     /**
      * Loads a key file from memory into an empty #GKeyFile structure.
      * If the object cannot be created then %error is set to a #GKeyFileError.
+     * @param data key file loaded in memory
+     * @param length the length of `data` in bytes (or (gsize)-1 if data is nul-terminated)
+     * @param flags flags from #GKeyFileFlags
      */
     loadFromData(data: string, length: number, flags: KeyFileFlags): boolean
     /**
@@ -7888,6 +8165,8 @@ class KeyFile {
      * loads the file into `key_file` and returns the file's full path in
      * `full_path`.  If the file could not be loaded then an %error is
      * set to either a #GFileError or #GKeyFileError.
+     * @param file a relative path to a filename to open and parse
+     * @param flags flags from #GKeyFileFlags
      */
     loadFromDataDirs(file: string, flags: KeyFileFlags): [ /* returnType */ boolean, /* fullPath */ string | null ]
     /**
@@ -7900,6 +8179,9 @@ class KeyFile {
      * the file is found but the OS returns an error when opening or reading the
      * file, a %G_FILE_ERROR is returned. If there is a problem parsing the file, a
      * %G_KEY_FILE_ERROR is returned.
+     * @param file a relative path to a filename to open and parse
+     * @param searchDirs %NULL-terminated array of directories to search
+     * @param flags flags from #GKeyFileFlags
      */
     loadFromDirs(file: string, searchDirs: string[], flags: KeyFileFlags): [ /* returnType */ boolean, /* fullPath */ string | null ]
     /**
@@ -7911,6 +8193,8 @@ class KeyFile {
      * 
      * This function will never return a %G_KEY_FILE_ERROR_NOT_FOUND error. If the
      * `file` is not found, %G_FILE_ERROR_NOENT is returned.
+     * @param file the path of a filename to load, in the GLib filename encoding
+     * @param flags flags from #GKeyFileFlags
      */
     loadFromFile(file: string, flags: KeyFileFlags): boolean
     /**
@@ -7918,15 +8202,20 @@ class KeyFile {
      * If `key` is %NULL then `comment` will be removed above `group_name`.
      * If both `key` and `group_name` are %NULL, then `comment` will
      * be removed above the first group in the file.
+     * @param groupName a group name, or %NULL
+     * @param key a key
      */
     removeComment(groupName?: string | null, key?: string | null): boolean
     /**
      * Removes the specified group, `group_name,`
      * from the key file.
+     * @param groupName a group name
      */
     removeGroup(groupName: string): boolean
     /**
      * Removes `key` in `group_name` from the key file.
+     * @param groupName a group name
+     * @param key a key name to remove
      */
     removeKey(groupName: string, key: string): boolean
     /**
@@ -7937,17 +8226,24 @@ class KeyFile {
      * 
      * This function can fail for any of the reasons that
      * g_file_set_contents() may fail.
+     * @param filename the name of the file to write to
      */
     saveToFile(filename: string): boolean
     /**
      * Associates a new boolean value with `key` under `group_name`.
      * If `key` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param value %TRUE or %FALSE
      */
     setBoolean(groupName: string, key: string, value: boolean): void
     /**
      * Associates a list of boolean values with `key` under `group_name`.
      * If `key` cannot be found then it is created.
      * If `group_name` is %NULL, the start_group is used.
+     * @param groupName a group name
+     * @param key a key
+     * @param list an array of boolean values
      */
     setBooleanList(groupName: string, key: string, list: boolean[]): void
     /**
@@ -7959,48 +8255,75 @@ class KeyFile {
      * 
      * Note that this function prepends a '#' comment marker to
      * each line of `comment`.
+     * @param groupName a group name, or %NULL
+     * @param key a key
+     * @param comment a comment
      */
     setComment(groupName: string | null, key: string | null, comment: string): boolean
     /**
      * Associates a new double value with `key` under `group_name`.
      * If `key` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param value a double value
      */
     setDouble(groupName: string, key: string, value: number): void
     /**
      * Associates a list of double values with `key` under
      * `group_name`.  If `key` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param list an array of double values
      */
     setDoubleList(groupName: string, key: string, list: number[]): void
     /**
      * Associates a new integer value with `key` under `group_name`.
      * If `key` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param value an integer value
      */
     setInt64(groupName: string, key: string, value: number): void
     /**
      * Associates a new integer value with `key` under `group_name`.
      * If `key` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param value an integer value
      */
     setInteger(groupName: string, key: string, value: number): void
     /**
      * Associates a list of integer values with `key` under `group_name`.
      * If `key` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param list an array of integer values
      */
     setIntegerList(groupName: string, key: string, list: number[]): void
     /**
      * Sets the character which is used to separate
      * values in lists. Typically ';' or ',' are used
      * as separators. The default list separator is ';'.
+     * @param separator the separator
      */
     setListSeparator(separator: number): void
     /**
      * Associates a string value for `key` and `locale` under `group_name`.
      * If the translation for `key` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param locale a locale identifier
+     * @param string a string
      */
     setLocaleString(groupName: string, key: string, locale: string, string: string): void
     /**
      * Associates a list of string values for `key` and `locale` under
      * `group_name`.  If the translation for `key` cannot be found then
      * it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param locale a locale identifier
+     * @param list a %NULL-terminated array of locale string values
      */
     setLocaleStringList(groupName: string, key: string, locale: string, list: string[]): void
     /**
@@ -8009,17 +8332,26 @@ class KeyFile {
      * If `group_name` cannot be found then it is created.
      * Unlike g_key_file_set_value(), this function handles characters
      * that need escaping, such as newlines.
+     * @param groupName a group name
+     * @param key a key
+     * @param string a string
      */
     setString(groupName: string, key: string, string: string): void
     /**
      * Associates a list of string values for `key` under `group_name`.
      * If `key` cannot be found then it is created.
      * If `group_name` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param list an array of string values
      */
     setStringList(groupName: string, key: string, list: string[]): void
     /**
      * Associates a new integer value with `key` under `group_name`.
      * If `key` cannot be found then it is created.
+     * @param groupName a group name
+     * @param key a key
+     * @param value an integer value
      */
     setUint64(groupName: string, key: string, value: number): void
     /**
@@ -8029,6 +8361,9 @@ class KeyFile {
      * be found then it is created. To set an UTF-8 string which may contain
      * characters that need escaping (such as newlines or spaces), use
      * g_key_file_set_string().
+     * @param groupName a group name
+     * @param key a key
+     * @param value a string
      */
     setValue(groupName: string, key: string, value: string): void
     /**
@@ -8057,15 +8392,15 @@ class List {
      *        of data, or any integer value using the
      *        [Type Conversion Macros][glib-Type-Conversion-Macros]
      */
-    readonly data: object
+    data: object
     /**
      * contains the link to the next element in the list
      */
-    readonly next: object[]
+    next: object[]
     /**
      * contains the link to the previous element in the list
      */
-    readonly prev: object[]
+    prev: object[]
     static name: string
 }
 class LogField {
@@ -8073,15 +8408,15 @@ class LogField {
     /**
      * field name (UTF-8 string)
      */
-    readonly key: string
+    key: string
     /**
      * field value (arbitrary bytes)
      */
-    readonly value: object
+    value: object
     /**
      * length of `value,` in bytes, or -1 if it is nul-terminated
      */
-    readonly length: number
+    length: number
     static name: string
 }
 class MainContext {
@@ -8103,6 +8438,8 @@ class MainContext {
      * Adds a file descriptor to the set of file descriptors polled for
      * this context. This will very seldom be used directly. Instead
      * a typical event source will use g_source_add_unix_fd() instead.
+     * @param fd a #GPollFD structure holding information about a file      descriptor to watch.
+     * @param priority the priority for this file descriptor which should be      the same as the priority used for g_source_attach() to ensure that the      file descriptor is polled whenever the results may be needed.
      */
     addPoll(fd: PollFD, priority: number): void
     /**
@@ -8113,6 +8450,8 @@ class MainContext {
      * 
      * You must have successfully acquired the context with
      * g_main_context_acquire() before you may call this function.
+     * @param maxPriority the maximum numerical priority of sources to check
+     * @param fds array of #GPollFD's that was passed to       the last call to g_main_context_query()
      */
     check(maxPriority: number, fds: PollFD[]): boolean
     /**
@@ -8126,6 +8465,8 @@ class MainContext {
      * Finds a source with the given source functions and user data.  If
      * multiple sources exist with the same source function and user data,
      * the first one found will be returned.
+     * @param funcs the `source_funcs` passed to g_source_new().
+     * @param userData the user data from the callback.
      */
     findSourceByFuncsUserData(funcs: SourceFuncs, userData?: object | null): Source
     /**
@@ -8141,12 +8482,14 @@ class MainContext {
      * is called on its (now invalid) source ID.  This source ID may have
      * been reissued, leading to the operation being performed against the
      * wrong source.
+     * @param sourceId the source ID, as returned by g_source_get_id().
      */
     findSourceById(sourceId: number): Source
     /**
      * Finds a source with the given user data for the callback.  If
      * multiple sources exist with the same user data, the first
      * one found will be returned.
+     * @param userData the user_data for the callback.
      */
     findSourceByUserData(userData?: object | null): Source
     /**
@@ -8159,6 +8502,8 @@ class MainContext {
      * 
      * `notify` should not assume that it is called from any particular
      * thread or with any particular context acquired.
+     * @param priority the priority at which to run `function`
+     * @param function_ function to call
      */
     invokeFull(priority: number, function_: SourceFunc): void
     /**
@@ -8181,6 +8526,7 @@ class MainContext {
      * Note that even when `may_block` is %TRUE, it is still possible for
      * g_main_context_iteration() to return %FALSE, since the wait may
      * be interrupted for other reasons than an event source becoming ready.
+     * @param mayBlock whether the call may block.
      */
     iteration(mayBlock: boolean): boolean
     /**
@@ -8249,6 +8595,7 @@ class MainContext {
      * 
      * You must have successfully acquired the context with
      * g_main_context_acquire() before you may call this function.
+     * @param maxPriority maximum priority source to check
      */
     query(maxPriority: number): [ /* returnType */ number, /* timeout */ number, /* fds */ PollFD[] ]
     /**
@@ -8265,6 +8612,7 @@ class MainContext {
     /**
      * Removes file descriptor from the set of file descriptors to be
      * polled for a particular context.
+     * @param fd a #GPollFD descriptor previously added with g_main_context_add_poll()
      */
     removePoll(fd: PollFD): void
     /**
@@ -8278,6 +8626,8 @@ class MainContext {
      * is the owner, atomically drop `mutex` and wait on `cond` until
      * that owner releases ownership or until `cond` is signaled, then
      * try again (once) to become the owner.
+     * @param cond a condition variable
+     * @param mutex a mutex, currently held
      */
     wait(cond: Cond, mutex: Mutex): boolean
     /**
@@ -8490,6 +8840,8 @@ class MarkupParseContext {
      * function, aborting the process if an error occurs. Once an error
      * is reported, no further data may be fed to the #GMarkupParseContext;
      * all errors are fatal.
+     * @param text chunk of text to parse
+     * @param textLen length of `text` in bytes
      */
     parse(text: string, textLen: number): boolean
     /**
@@ -8629,6 +8981,8 @@ class MarkupParseContext {
      * }
      * ```
      * 
+     * @param parser a #GMarkupParser
+     * @param userData user data to pass to #GMarkupParser functions
      */
     push(parser: MarkupParser, userData?: object | null): void
     /**
@@ -8648,11 +9002,11 @@ class MarkupParseContext {
 }
 class MarkupParser {
     /* Fields of GLib-2.0.GLib.MarkupParser */
-    readonly startElement: (context: MarkupParseContext, elementName: string, attributeNames: string, attributeValues: string) => void
-    readonly endElement: (context: MarkupParseContext, elementName: string) => void
-    readonly text: (context: MarkupParseContext, text: string, textLen: number) => void
-    readonly passthrough: (context: MarkupParseContext, passthroughText: string, textLen: number) => void
-    readonly error: (context: MarkupParseContext, error: Error) => void
+    startElement: (context: MarkupParseContext, elementName: string, attributeNames: string, attributeValues: string) => void
+    endElement: (context: MarkupParseContext, elementName: string) => void
+    text: (context: MarkupParseContext, text: string, textLen: number) => void
+    passthrough: (context: MarkupParseContext, passthroughText: string, textLen: number) => void
+    error: (context: MarkupParseContext, error: Error) => void
     static name: string
 }
 class MatchInfo {
@@ -8663,7 +9017,7 @@ class MatchInfo {
      * match done with `string` against `regex` and have the same syntax used by
      * g_regex_replace().
      * 
-     * The `string_to_expand` must be UTF-8 encoded even if #G_REGEX_RAW was
+     * The `string_to_expand` must be UTF-8 encoded even if %G_REGEX_RAW was
      * passed to g_regex_new().
      * 
      * The backreferences are extracted from the string passed to the match
@@ -8675,6 +9029,7 @@ class MatchInfo {
      * while to expand "\0" (whole match) one needs the result of a match.
      * Use g_regex_check_replacement() to find out whether `string_to_expand`
      * contains references.
+     * @param stringToExpand the string to expand
      */
     expandReferences(stringToExpand: string): string | null
     /**
@@ -8694,6 +9049,7 @@ class MatchInfo {
      * 
      * The string is fetched from the string passed to the match function,
      * so you cannot call this function after freeing the string.
+     * @param matchNum number of the sub expression
      */
     fetch(matchNum: number): string | null
     /**
@@ -8724,6 +9080,7 @@ class MatchInfo {
      * 
      * The string is fetched from the string passed to the match function,
      * so you cannot call this function after freeing the string.
+     * @param name name of the subexpression
      */
     fetchNamed(name: string): string | null
     /**
@@ -8732,6 +9089,7 @@ class MatchInfo {
      * If `name` is a valid sub pattern name but it didn't match anything
      * (e.g. sub pattern "X", matching "b" against "(?P<X>a)?b")
      * then `start_pos` and `end_pos` are set to -1 and %TRUE is returned.
+     * @param name name of the subexpression
      */
     fetchNamedPos(name: string): [ /* returnType */ boolean, /* startPos */ number | null, /* endPos */ number | null ]
     /**
@@ -8748,6 +9106,7 @@ class MatchInfo {
      * position is not that of a set of parentheses but that of a matched
      * substring. Substrings are matched in reverse order of length, so
      * 0 is the longest match.
+     * @param matchNum number of the sub expression
      */
     fetchPos(matchNum: number): [ /* returnType */ boolean, /* startPos */ number | null, /* endPos */ number | null ]
     /**
@@ -8793,19 +9152,19 @@ class MatchInfo {
      * able to raise an error as soon as a mistake is made.
      * 
      * GRegex supports the concept of partial matching by means of the
-     * #G_REGEX_MATCH_PARTIAL_SOFT and #G_REGEX_MATCH_PARTIAL_HARD flags.
+     * %G_REGEX_MATCH_PARTIAL_SOFT and %G_REGEX_MATCH_PARTIAL_HARD flags.
      * When they are used, the return code for
      * g_regex_match() or g_regex_match_full() is, as usual, %TRUE
      * for a complete match, %FALSE otherwise. But, when these functions
      * return %FALSE, you can check if the match was partial calling
      * g_match_info_is_partial_match().
      * 
-     * The difference between #G_REGEX_MATCH_PARTIAL_SOFT and
-     * #G_REGEX_MATCH_PARTIAL_HARD is that when a partial match is encountered
-     * with #G_REGEX_MATCH_PARTIAL_SOFT, matching continues to search for a
-     * possible complete match, while with #G_REGEX_MATCH_PARTIAL_HARD matching
+     * The difference between %G_REGEX_MATCH_PARTIAL_SOFT and
+     * %G_REGEX_MATCH_PARTIAL_HARD is that when a partial match is encountered
+     * with %G_REGEX_MATCH_PARTIAL_SOFT, matching continues to search for a
+     * possible complete match, while with %G_REGEX_MATCH_PARTIAL_HARD matching
      * stops at the partial match.
-     * When both #G_REGEX_MATCH_PARTIAL_SOFT and #G_REGEX_MATCH_PARTIAL_HARD
+     * When both %G_REGEX_MATCH_PARTIAL_SOFT and %G_REGEX_MATCH_PARTIAL_HARD
      * are set, the latter takes precedence.
      * 
      * There were formerly some restrictions on the pattern for partial matching.
@@ -8840,12 +9199,12 @@ class MatchInfo {
 }
 class MemVTable {
     /* Fields of GLib-2.0.GLib.MemVTable */
-    readonly malloc: (nBytes: number) => object
-    readonly realloc: (mem: object, nBytes: number) => object
-    readonly free: (mem: object) => void
-    readonly calloc: (nBlocks: number, nBlockBytes: number) => object
-    readonly tryMalloc: (nBytes: number) => object
-    readonly tryRealloc: (mem: object, nBytes: number) => object
+    malloc: (nBytes: number) => object
+    realloc: (mem: object, nBytes: number) => object
+    free: (mem: object) => void
+    calloc: (nBlocks: number, nBlockBytes: number) => object
+    tryMalloc: (nBytes: number) => object
+    tryRealloc: (mem: object, nBytes: number) => object
     static name: string
 }
 class Node {
@@ -8853,37 +9212,39 @@ class Node {
     /**
      * contains the actual data of the node.
      */
-    readonly data: object
+    data: object
     /**
      * points to the node's next sibling (a sibling is another
      *        #GNode with the same parent).
      */
-    readonly next: Node
+    next: Node
     /**
      * points to the node's previous sibling.
      */
-    readonly prev: Node
+    prev: Node
     /**
      * points to the parent of the #GNode, or is %NULL if the
      *          #GNode is the root of the tree.
      */
-    readonly parent: Node
+    parent: Node
     /**
      * points to the first child of the #GNode.  The other
      *            children are accessed by using the `next` pointer of each
      *            child.
      */
-    readonly children: Node
+    children: Node
     /* Methods of GLib-2.0.GLib.Node */
     /**
      * Gets the position of the first child of a #GNode
      * which contains the given data.
+     * @param data the data to find
      */
     childIndex(data?: object | null): number
     /**
      * Gets the position of a #GNode with respect to its siblings.
      * `child` must be a child of `node`. The first child is numbered 0,
      * the second 1, and so on.
+     * @param child a child of `node`
      */
     childPosition(child: Node): number
     /**
@@ -8902,6 +9263,7 @@ class Node {
      * Returns %TRUE if `node` is an ancestor of `descendant`.
      * This is true if node is the parent of `descendant,`
      * or if node is the grandparent of `descendant` etc.
+     * @param descendant a #GNode
      */
     isAncestor(descendant: Node): boolean
     /**
@@ -8918,6 +9280,7 @@ class Node {
     nChildren(): number
     /**
      * Gets the number of nodes in a tree.
+     * @param flags which types of children are to be counted, one of     %G_TRAVERSE_ALL, %G_TRAVERSE_LEAVES and %G_TRAVERSE_NON_LEAVES
      */
     nNodes(flags: TraverseFlags): number
     /**
@@ -8936,12 +9299,12 @@ class Once {
     /**
      * the status of the #GOnce
      */
-    readonly status: OnceStatus
+    status: OnceStatus
     /**
      * the value returned by the call to the function, if `status`
      *          is %G_ONCE_STATUS_READY
      */
-    readonly retval: object
+    retval: object
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -8972,6 +9335,7 @@ class Once {
      * 
      * While `location` has a `volatile` qualifier, this is a historical artifact and
      * the pointer passed to it should not be `volatile`.
+     * @param location location of a static initializable variable    containing 0
      */
     static initEnter(location: object): boolean
     /**
@@ -8983,6 +9347,8 @@ class Once {
      * 
      * While `location` has a `volatile` qualifier, this is a historical artifact and
      * the pointer passed to it should not be `volatile`.
+     * @param location location of a static initializable variable    containing 0
+     * @param result new non-0 value for *`value_location`
      */
     static initLeave(location: object, result: number): void
 }
@@ -8992,11 +9358,14 @@ class OptionContext {
      * Adds a #GOptionGroup to the `context,` so that parsing with `context`
      * will recognize the options in the group. Note that this will take
      * ownership of the `group` and thus the `group` should not be freed.
+     * @param group the group to add
      */
     addGroup(group: OptionGroup): void
     /**
      * A convenience function which creates a main group if it doesn't
      * exist, adds the `entries` to it and sets the translation domain.
+     * @param entries a %NULL-terminated array of #GOptionEntrys
+     * @param translationDomain a translation domain to use for translating    the `--help` output for the options in `entries`    with gettext(), or %NULL
      */
     addMainEntries(entries: OptionEntry[], translationDomain?: string | null): void
     /**
@@ -9019,6 +9388,8 @@ class OptionContext {
      * `g_option_context_get_help (context, FALSE, NULL)`.
      * To obtain the help text for an option group, call
      * `g_option_context_get_help (context, FALSE, group)`.
+     * @param mainHelp if %TRUE, only include the main group
+     * @param group the #GOptionGroup to create help for, or %NULL
      */
     getHelp(mainHelp: boolean, group?: OptionGroup | null): string
     /**
@@ -9067,6 +9438,7 @@ class OptionContext {
      * Note that function depends on the [current locale][setlocale] for
      * automatic character set conversion of string and filename
      * arguments.
+     * @param argv a pointer to the array of command line arguments
      */
     parse(argv?: string[] | null): [ /* returnType */ boolean, /* argv */ string[] | null ]
     /**
@@ -9086,6 +9458,7 @@ class OptionContext {
      * 
      * This function is useful if you are trying to use #GOptionContext with
      * #GApplication.
+     * @param arguments_ a pointer    to the command line arguments (which must be in UTF-8 on Windows).    Starting with GLib 2.62, `arguments` can be %NULL, which matches    g_option_context_parse().
      */
     parseStrv(arguments_?: string[] | null): [ /* returnType */ boolean, /* arguments_ */ string[] | null ]
     /**
@@ -9094,6 +9467,7 @@ class OptionContext {
      * 
      * Note that the summary is translated (see
      * g_option_context_set_translate_func()).
+     * @param description a string to be shown in `--help` output   after the list of options, or %NULL
      */
     setDescription(description?: string | null): void
     /**
@@ -9101,6 +9475,7 @@ class OptionContext {
      * By default, g_option_context_parse() recognizes `--help`, `-h`,
      * `-?`, `--help-all` and `--help-groupname` and creates suitable
      * output to stdout.
+     * @param helpEnabled %TRUE to enable `--help`, %FALSE to disable it
      */
     setHelpEnabled(helpEnabled: boolean): void
     /**
@@ -9111,6 +9486,7 @@ class OptionContext {
      * This setting does not affect non-option arguments (i.e. arguments
      * which don't start with a dash). But note that GOption cannot reliably
      * determine whether a non-option belongs to a preceding unknown option.
+     * @param ignoreUnknown %TRUE to ignore unknown options, %FALSE to produce    an error when unknown options are met
      */
     setIgnoreUnknownOptions(ignoreUnknown: boolean): void
     /**
@@ -9118,6 +9494,7 @@ class OptionContext {
      * This has the same effect as calling g_option_context_add_group(),
      * the only difference is that the options in the main group are
      * treated differently when generating `--help` output.
+     * @param group the group to set as main group
      */
     setMainGroup(group: OptionGroup): void
     /**
@@ -9145,6 +9522,7 @@ class OptionContext {
      * parsed by the relevant subcommand (which can be determined by
      * examining the verb name, which should be present in argv[1] after
      * parsing).
+     * @param strictPosix the new value
      */
     setStrictPosix(strictPosix: boolean): void
     /**
@@ -9154,6 +9532,7 @@ class OptionContext {
      * Note that the summary is translated (see
      * g_option_context_set_translate_func() and
      * g_option_context_set_translation_domain()).
+     * @param summary a string to be shown in `--help` output  before the list of options, or %NULL
      */
     setSummary(summary?: string | null): void
     /**
@@ -9168,11 +9547,13 @@ class OptionContext {
      * 
      * If you are using gettext(), you only need to set the translation
      * domain, see g_option_context_set_translation_domain().
+     * @param func the #GTranslateFunc, or %NULL
      */
     setTranslateFunc(func?: TranslateFunc | null): void
     /**
      * A convenience function to use gettext() for translating
      * user-visible strings.
+     * @param domain the domain to use
      */
     setTranslationDomain(domain: string): void
     static name: string
@@ -9186,22 +9567,22 @@ class OptionEntry {
      *     the same long name, it is also possible to specify the option as
      *     `--groupname-long_name`.
      */
-    readonly longName: string
+    longName: string
     /**
      * If an option has a short name, it can be specified
      *     `-short_name` in a commandline. `short_name` must be  a printable
      *     ASCII character different from '-', or zero if the option has no
      *     short name.
      */
-    readonly shortName: number
+    shortName: number
     /**
      * Flags from #GOptionFlags
      */
-    readonly flags: number
+    flags: number
     /**
      * The type of the option, as a #GOptionArg
      */
-    readonly arg: OptionArg
+    arg: OptionArg
     /**
      * If the `arg` type is %G_OPTION_ARG_CALLBACK, then `arg_data`
      *     must point to a #GOptionArgFunc callback function, which will be
@@ -9221,26 +9602,27 @@ class OptionEntry {
      *     Likewise if `arg` type is %G_OPTION_ARG_STRING_ARRAY or
      *     %G_OPTION_ARG_FILENAME_ARRAY, the data should be freed using g_strfreev().
      */
-    readonly argData: object
+    argData: object
     /**
      * the description for the option in `--help`
      *     output. The `description` is translated using the `translate_func`
      *     of the group, see g_option_group_set_translation_domain().
      */
-    readonly description: string
+    description: string
     /**
      * The placeholder to use for the extra argument parsed
      *     by the option in `--help` output. The `arg_description` is translated
      *     using the `translate_func` of the group, see
      *     g_option_group_set_translation_domain().
      */
-    readonly argDescription: string
+    argDescription: string
     static name: string
 }
 class OptionGroup {
     /* Methods of GLib-2.0.GLib.OptionGroup */
     /**
      * Adds the options specified in `entries` to `group`.
+     * @param entries a %NULL-terminated array of #GOptionEntrys
      */
     addEntries(entries: OptionEntry[]): void
     /**
@@ -9259,11 +9641,13 @@ class OptionGroup {
      * 
      * If you are using gettext(), you only need to set the translation
      * domain, see g_option_group_set_translation_domain().
+     * @param func the #GTranslateFunc, or %NULL
      */
     setTranslateFunc(func?: TranslateFunc | null): void
     /**
      * A convenience function to use gettext() for translating
      * user-visible strings.
+     * @param domain the domain to use
      */
     setTranslationDomain(domain: string): void
     /**
@@ -9287,6 +9671,7 @@ class PatternSpec {
     /**
      * Compares two compiled pattern specs and returns whether they will
      * match the same set of strings.
+     * @param pspec2 another #GPatternSpec
      */
     equal(pspec2: PatternSpec): boolean
     /**
@@ -9311,12 +9696,16 @@ class PatternSpec {
      * not be obtained by g_strreverse(). This works only if the string
      * does not contain any multibyte characters. GLib offers the
      * g_utf8_strreverse() function to reverse UTF-8 encoded strings.
+     * @param stringLength the length of `string` (in bytes, i.e. strlen(),     not g_utf8_strlen())
+     * @param string the UTF-8 encoded string to match
+     * @param stringReversed the reverse of `string` or %NULL
      */
     match(stringLength: number, string: string, stringReversed?: string | null): boolean
     /**
      * Matches a string against a compiled pattern. If the string is to be
      * matched against more than one pattern, consider using
      * g_pattern_match() instead while supplying the reversed string.
+     * @param string the UTF-8 encoded string to match
      */
     matchString(string: string): boolean
     static name: string
@@ -9330,19 +9719,19 @@ class PollFD {
     /**
      * the file descriptor to poll (or a HANDLE on Win32)
      */
-    readonly fd: number
+    fd: number
     /**
      * a bitwise combination from #GIOCondition, specifying which
      *     events should be polled for. Typically for reading from a file
      *     descriptor you would use %G_IO_IN | %G_IO_HUP | %G_IO_ERR, and
      *     for writing you would use %G_IO_OUT | %G_IO_ERR.
      */
-    readonly events: number
+    events: number
     /**
      * a bitwise combination of flags from #GIOCondition, returned
      *     from the poll() function to indicate which events occurred.
      */
-    readonly revents: number
+    revents: number
     static name: string
 }
 class Private {
@@ -9362,6 +9751,7 @@ class Private {
      * This function differs from g_private_set() in the following way: if
      * the previous value was non-%NULL then the #GDestroyNotify handler for
      * `key` is run on it.
+     * @param value the new value
      */
     replace(value?: object | null): void
     /**
@@ -9370,6 +9760,7 @@ class Private {
      * 
      * This function differs from g_private_replace() in the following way:
      * the #GDestroyNotify for `key` is not called on the old value.
+     * @param value the new value
      */
     set(value?: object | null): void
     static name: string
@@ -9380,11 +9771,11 @@ class PtrArray {
      * points to the array of pointers, which may be moved when the
      *     array grows
      */
-    readonly pdata: object
+    pdata: object
     /**
      * number of pointers in the array
      */
-    readonly len: number
+    len: number
     static name: string
 }
 class Queue {
@@ -9392,15 +9783,15 @@ class Queue {
     /**
      * a pointer to the first element of the queue
      */
-    readonly head: object[]
+    head: object[]
     /**
      * a pointer to the last element of the queue
      */
-    readonly tail: object[]
+    tail: object[]
     /**
      * the number of elements in the queue
      */
-    readonly length: number
+    length: number
     /* Methods of GLib-2.0.GLib.Queue */
     /**
      * Removes all the elements in `queue`. If queue elements contain
@@ -9410,6 +9801,7 @@ class Queue {
     /**
      * Convenience method, which frees all the memory used by a #GQueue,
      * and calls the provided `free_func` on each item in the #GQueue.
+     * @param freeFunc the function to be called to free memory allocated
      */
     clearFull(freeFunc?: DestroyNotify | null): void
     /**
@@ -9427,6 +9819,7 @@ class Queue {
      * 
      * `free_func` should not modify the queue (eg, by removing the freed
      * element from it).
+     * @param freeFunc the function to be called to free each element's data
      */
     freeFull(freeFunc: DestroyNotify): void
     /**
@@ -9435,12 +9828,13 @@ class Queue {
     getLength(): number
     /**
      * Returns the position of the first element in `queue` which contains `data`.
+     * @param data the data to find
      */
     index(data?: object | null): number
     /**
      * A statically-allocated #GQueue must be initialized with this function
      * before it can be used. Alternatively you can initialize it with
-     * #G_QUEUE_INIT. It is not necessary to initialize queues created with
+     * %G_QUEUE_INIT. It is not necessary to initialize queues created with
      * g_queue_new().
      */
     init(): void
@@ -9454,6 +9848,7 @@ class Queue {
     peekHead(): object | null
     /**
      * Returns the `n'`th element of `queue`.
+     * @param n the position of the element
      */
     peekNth(n: number): object | null
     /**
@@ -9466,6 +9861,7 @@ class Queue {
     popHead(): object | null
     /**
      * Removes the `n'`th element of `queue` and returns its data.
+     * @param n the position of the element
      */
     popNth(n: number): object | null
     /**
@@ -9474,22 +9870,28 @@ class Queue {
     popTail(): object | null
     /**
      * Adds a new element at the head of the queue.
+     * @param data the data for the new element.
      */
     pushHead(data?: object | null): void
     /**
      * Inserts a new element into `queue` at the given position.
+     * @param data the data for the new element
+     * @param n the position to insert the new element. If `n` is negative or     larger than the number of elements in the `queue,` the element is     added to the end of the queue.
      */
     pushNth(data: object | null, n: number): void
     /**
      * Adds a new element at the tail of the queue.
+     * @param data the data for the new element
      */
     pushTail(data?: object | null): void
     /**
      * Removes the first element in `queue` that contains `data`.
+     * @param data the data to remove
      */
     remove(data?: object | null): boolean
     /**
      * Remove all elements whose data equals `data` from `queue`.
+     * @param data the data to remove
      */
     removeAll(data?: object | null): number
     /**
@@ -9607,6 +10009,8 @@ class Rand {
     /**
      * Returns the next random #gdouble from `rand_` equally distributed over
      * the range [`begin`..`end)`.
+     * @param begin lower closed bound of the interval
+     * @param end upper open bound of the interval
      */
     doubleRange(begin: number, end: number): number
     /**
@@ -9621,10 +10025,13 @@ class Rand {
     /**
      * Returns the next random #gint32 from `rand_` equally distributed over
      * the range [`begin`..`end-1`].
+     * @param begin lower closed bound of the interval
+     * @param end upper open bound of the interval
      */
     intRange(begin: number, end: number): number
     /**
      * Sets the seed for the random number generator #GRand to `seed`.
+     * @param seed a value to reinitialize the random number generator
      */
     setSeed(seed: number): void
     /**
@@ -9633,6 +10040,8 @@ class Rand {
      * are taken.  This function is useful if you have many low entropy
      * seeds, or if you require more then 32 bits of actual entropy for
      * your application.
+     * @param seed array to initialize with
+     * @param seedLength length of array
      */
     setSeedArray(seed: number, seedLength: number): void
     static name: string
@@ -9750,6 +10159,7 @@ class Regex {
     getPattern(): string
     /**
      * Retrieves the number of the subexpression named `name`.
+     * @param name name of the subexpression
      */
     getStringNumber(name: string): number
     /**
@@ -9795,6 +10205,8 @@ class Regex {
      * `string` is not copied and is used in #GMatchInfo internally. If
      * you use any #GMatchInfo method (except g_match_info_free()) after
      * freeing or modifying `string` then the behaviour is undefined.
+     * @param string the string to scan for matches
+     * @param matchOptions match options
      */
     match(string: string, matchOptions: RegexMatchFlags): [ /* returnType */ boolean, /* matchInfo */ MatchInfo | null ]
     /**
@@ -9812,6 +10224,8 @@ class Regex {
      * `string` is not copied and is used in #GMatchInfo internally. If
      * you use any #GMatchInfo method (except g_match_info_free()) after
      * freeing or modifying `string` then the behaviour is undefined.
+     * @param string the string to scan for matches
+     * @param matchOptions match options
      */
     matchAll(string: string, matchOptions: RegexMatchFlags): [ /* returnType */ boolean, /* matchInfo */ MatchInfo | null ]
     /**
@@ -9839,7 +10253,7 @@ class Regex {
      * is not able to capture substrings, so backreferences do not work.
      * 
      * Setting `start_position` differs from just passing over a shortened
-     * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern
+     * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern
      * that begins with any kind of lookbehind assertion, such as "\b".
      * 
      * Unless %G_REGEX_RAW is specified in the options, `string` must be valid UTF-8.
@@ -9853,6 +10267,9 @@ class Regex {
      * `string` is not copied and is used in #GMatchInfo internally. If
      * you use any #GMatchInfo method (except g_match_info_free()) after
      * freeing or modifying `string` then the behaviour is undefined.
+     * @param string the string to scan for matches
+     * @param startPosition starting index of the string to match, in bytes
+     * @param matchOptions match options
      */
     matchAllFull(string: string[], startPosition: number, matchOptions: RegexMatchFlags): [ /* returnType */ boolean, /* matchInfo */ MatchInfo | null ]
     /**
@@ -9862,7 +10279,7 @@ class Regex {
      * flexibility in reusing #GRegex structures.
      * 
      * Setting `start_position` differs from just passing over a shortened
-     * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern
+     * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern
      * that begins with any kind of lookbehind assertion, such as "\b".
      * 
      * Unless %G_REGEX_RAW is specified in the options, `string` must be valid UTF-8.
@@ -9909,6 +10326,9 @@ class Regex {
      * }
      * ```
      * 
+     * @param string the string to scan for matches
+     * @param startPosition starting index of the string to match, in bytes
+     * @param matchOptions match options
      */
     matchFull(string: string[], startPosition: number, matchOptions: RegexMatchFlags): [ /* returnType */ boolean, /* matchInfo */ MatchInfo | null ]
     /**
@@ -9935,13 +10355,17 @@ class Regex {
      * 
      * If you do not need to use backreferences use g_regex_replace_literal().
      * 
-     * The `replacement` string must be UTF-8 encoded even if #G_REGEX_RAW was
+     * The `replacement` string must be UTF-8 encoded even if %G_REGEX_RAW was
      * passed to g_regex_new(). If you want to use not UTF-8 encoded strings
      * you can use g_regex_replace_literal().
      * 
      * Setting `start_position` differs from just passing over a shortened
-     * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern that
+     * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern that
      * begins with any kind of lookbehind assertion, such as "\b".
+     * @param string the string to perform matches against
+     * @param startPosition starting index of the string to match, in bytes
+     * @param replacement text to replace each match with
+     * @param matchOptions options for the match
      */
     replace(string: string[], startPosition: number, replacement: string, matchOptions: RegexMatchFlags): string
     /**
@@ -9950,9 +10374,13 @@ class Regex {
      * include backreferences use g_regex_replace().
      * 
      * Setting `start_position` differs from just passing over a
-     * shortened string and setting #G_REGEX_MATCH_NOTBOL in the
+     * shortened string and setting %G_REGEX_MATCH_NOTBOL in the
      * case of a pattern that begins with any kind of lookbehind
      * assertion, such as "\b".
+     * @param string the string to perform matches against
+     * @param startPosition starting index of the string to match, in bytes
+     * @param replacement text to replace each match with
+     * @param matchOptions options for the match
      */
     replaceLiteral(string: string[], startPosition: number, replacement: string, matchOptions: RegexMatchFlags): string
     /**
@@ -9973,6 +10401,8 @@ class Regex {
      * characters wherever it matches the empty string between characters.
      * For example splitting "ab c" using as a separator "\s*", you will get
      * "a", "b" and "c".
+     * @param string the string to split with the pattern
+     * @param matchOptions match time option flags
      */
     split(string: string, matchOptions: RegexMatchFlags): string[]
     /**
@@ -9995,8 +10425,12 @@ class Regex {
      * "a", "b" and "c".
      * 
      * Setting `start_position` differs from just passing over a shortened
-     * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern
+     * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern
      * that begins with any kind of lookbehind assertion, such as "\b".
+     * @param string the string to split with the pattern
+     * @param startPosition starting index of the string to match, in bytes
+     * @param matchOptions match time option flags
+     * @param maxTokens the maximum number of tokens to split `string` into.   If this is less than 1, the string is split completely
      */
     splitFull(string: string[], startPosition: number, matchOptions: RegexMatchFlags, maxTokens: number): string[]
     /**
@@ -10019,6 +10453,7 @@ class Regex {
      * does not contain references and may be evaluated without information
      * about actual match, but '\0\1' (whole match followed by first
      * subpattern) requires valid #GMatchInfo object.
+     * @param replacement the replacement string
      */
     static checkReplacement(replacement: string): [ /* returnType */ boolean, /* hasReferences */ boolean | null ]
     static errorQuark(): Quark
@@ -10028,6 +10463,8 @@ class Regex {
      * 
      * For completeness, `length` can be -1 for a nul-terminated string.
      * In this case the output string will be of course equal to `string`.
+     * @param string the string to escape
+     * @param length the length of `string`
      */
     static escapeNul(string: string, length: number): string
     /**
@@ -10038,6 +10475,7 @@ class Regex {
      * `string` can contain nul characters that are replaced with "\0",
      * in this case remember to specify the correct length of `string`
      * in `length`.
+     * @param string the string to escape
      */
     static escapeString(string: string[]): string
     /**
@@ -10051,6 +10489,10 @@ class Regex {
      * If this function is to be called on the same `pattern` more than
      * once, it's more efficient to compile the pattern once with
      * g_regex_new() and then use g_regex_match().
+     * @param pattern the regular expression
+     * @param string the string to scan for matches
+     * @param compileOptions compile options for the regular expression, or 0
+     * @param matchOptions match options, or 0
      */
     static matchSimple(pattern: string, string: string, compileOptions: RegexCompileFlags, matchOptions: RegexMatchFlags): boolean
     /**
@@ -10081,6 +10523,10 @@ class Regex {
      * separate characters wherever it matches the empty string between
      * characters. For example splitting "ab c" using as a separator
      * "\s*", you will get "a", "b" and "c".
+     * @param pattern the regular expression
+     * @param string the string to scan for matches
+     * @param compileOptions compile options for the regular expression, or 0
+     * @param matchOptions match options, or 0
      */
     static splitSimple(pattern: string, string: string, compileOptions: RegexCompileFlags, matchOptions: RegexMatchFlags): string[]
 }
@@ -10091,11 +10537,11 @@ class SList {
      *        of data, or any integer value using the
      *        [Type Conversion Macros][glib-Type-Conversion-Macros]
      */
-    readonly data: object
+    data: object
     /**
      * contains the link to the next element in the list.
      */
-    readonly next: object[]
+    next: object[]
     static name: string
 }
 class Scanner {
@@ -10103,63 +10549,63 @@ class Scanner {
     /**
      * unused
      */
-    readonly userData: object
+    userData: object
     /**
      * unused
      */
-    readonly maxParseErrors: number
+    maxParseErrors: number
     /**
      * g_scanner_error() increments this field
      */
-    readonly parseErrors: number
+    parseErrors: number
     /**
      * name of input stream, featured by the default message handler
      */
-    readonly inputName: string
+    inputName: string
     /**
      * quarked data
      */
-    readonly qdata: Data
+    qdata: Data
     /**
      * link into the scanner configuration
      */
-    readonly config: ScannerConfig
+    config: ScannerConfig
     /**
      * token parsed by the last g_scanner_get_next_token()
      */
-    readonly token: TokenType
+    token: TokenType
     /**
      * value of the last token from g_scanner_get_next_token()
      */
-    readonly value: TokenValue
+    value: TokenValue
     /**
      * line number of the last token from g_scanner_get_next_token()
      */
-    readonly line: number
+    line: number
     /**
      * char number of the last token from g_scanner_get_next_token()
      */
-    readonly position: number
+    position: number
     /**
      * token parsed by the last g_scanner_peek_next_token()
      */
-    readonly nextToken: TokenType
+    nextToken: TokenType
     /**
      * value of the last token from g_scanner_peek_next_token()
      */
-    readonly nextValue: TokenValue
+    nextValue: TokenValue
     /**
      * line number of the last token from g_scanner_peek_next_token()
      */
-    readonly nextLine: number
+    nextLine: number
     /**
      * char number of the last token from g_scanner_peek_next_token()
      */
-    readonly nextPosition: number
+    nextPosition: number
     /**
      * handler function for _warn and _error
      */
-    readonly msgHandler: ScannerMsgFunc
+    msgHandler: ScannerMsgFunc
     /* Methods of GLib-2.0.GLib.Scanner */
     /**
      * Returns the current line in the input stream (counting
@@ -10196,16 +10642,20 @@ class Scanner {
     getNextToken(): TokenType
     /**
      * Prepares to scan a file.
+     * @param inputFd a file descriptor
      */
     inputFile(inputFd: number): void
     /**
      * Prepares to scan a text buffer.
+     * @param text the text buffer to scan
+     * @param textLen the length of the text buffer
      */
     inputText(text: string, textLen: number): void
     /**
      * Looks up a symbol in the current scope and return its value.
      * If the symbol is not bound in the current scope, %NULL is
      * returned.
+     * @param symbol the symbol to look up
      */
     lookupSymbol(symbol: string): object | null
     /**
@@ -10224,19 +10674,27 @@ class Scanner {
     peekNextToken(): TokenType
     /**
      * Adds a symbol to the given scope.
+     * @param scopeId the scope id
+     * @param symbol the symbol to add
+     * @param value the value of the symbol
      */
     scopeAddSymbol(scopeId: number, symbol: string, value?: object | null): void
     /**
      * Looks up a symbol in a scope and return its value. If the
      * symbol is not bound in the scope, %NULL is returned.
+     * @param scopeId the scope id
+     * @param symbol the symbol to look up
      */
     scopeLookupSymbol(scopeId: number, symbol: string): object | null
     /**
      * Removes a symbol from a scope.
+     * @param scopeId the scope id
+     * @param symbol the symbol to remove
      */
     scopeRemoveSymbol(scopeId: number, symbol: string): void
     /**
      * Sets the current scope.
+     * @param scopeId the new scope id
      */
     setScope(scopeId: number): number
     /**
@@ -10254,6 +10712,12 @@ class Scanner {
      * call to g_scanner_get_next_token(), as g_scanner_unexp_token()
      * evaluates the scanner's current token (not the peeked token)
      * to construct part of the message.
+     * @param expectedToken the expected token
+     * @param identifierSpec a string describing how the scanner's user     refers to identifiers (%NULL defaults to "identifier").     This is used if `expected_token` is %G_TOKEN_IDENTIFIER or     %G_TOKEN_IDENTIFIER_NULL.
+     * @param symbolSpec a string describing how the scanner's user refers     to symbols (%NULL defaults to "symbol"). This is used if     `expected_token` is %G_TOKEN_SYMBOL or any token value greater     than %G_TOKEN_LAST.
+     * @param symbolName the name of the symbol, if the scanner's current     token is a symbol.
+     * @param message a message string to output at the end of the     warning/error, or %NULL.
+     * @param isError if %TRUE it is output as an error. If %FALSE it is     output as a warning.
      */
     unexpToken(expectedToken: TokenType, identifierSpec: string, symbolSpec: string, symbolName: string, message: string, isError: number): void
     static name: string
@@ -10265,141 +10729,142 @@ class ScannerConfig {
      *     by the scanner (the default is the whitespace characters: space,
      *     tab, carriage-return and line-feed).
      */
-    readonly csetSkipCharacters: string
+    csetSkipCharacters: string
     /**
      * specifies the characters which can start
-     *     identifiers (the default is #G_CSET_a_2_z, "_", and #G_CSET_A_2_Z).
+     *     identifiers (the default is %G_CSET_a_2_z, "_", and %G_CSET_A_2_Z).
      */
-    readonly csetIdentifierFirst: string
+    csetIdentifierFirst: string
     /**
      * specifies the characters which can be used
      *     in identifiers, after the first character (the default is
-     *     #G_CSET_a_2_z, "_0123456789", #G_CSET_A_2_Z, #G_CSET_LATINS,
-     *     #G_CSET_LATINC).
+     *     %G_CSET_a_2_z, "_0123456789", %G_CSET_A_2_Z, %G_CSET_LATINS,
+     *     %G_CSET_LATINC).
      */
-    readonly csetIdentifierNth: string
+    csetIdentifierNth: string
     /**
      * specifies the characters at the start and
      *     end of single-line comments. The default is "#\n" which means
      *     that single-line comments start with a '#' and continue until
      *     a '\n' (end of line).
      */
-    readonly cpairCommentSingle: string
+    cpairCommentSingle: string
     /**
      * specifies if symbols are case sensitive (the
      *     default is %FALSE).
      */
-    readonly caseSensitive: number
+    caseSensitive: number
     /**
      * specifies if multi-line comments are skipped
      *     and not returned as tokens (the default is %TRUE).
      */
-    readonly skipCommentMulti: number
+    skipCommentMulti: number
     /**
      * specifies if single-line comments are skipped
      *     and not returned as tokens (the default is %TRUE).
      */
-    readonly skipCommentSingle: number
+    skipCommentSingle: number
     /**
      * specifies if multi-line comments are recognized
      *     (the default is %TRUE).
      */
-    readonly scanCommentMulti: number
+    scanCommentMulti: number
     /**
      * specifies if identifiers are recognized (the
      *     default is %TRUE).
      */
-    readonly scanIdentifier: number
+    scanIdentifier: number
     /**
      * specifies if single-character
      *     identifiers are recognized (the default is %FALSE).
      */
-    readonly scanIdentifier1char: number
+    scanIdentifier1char: number
     /**
      * specifies if %NULL is reported as
      *     %G_TOKEN_IDENTIFIER_NULL (the default is %FALSE).
      */
-    readonly scanIdentifierNULL: number
+    scanIdentifierNULL: number
     /**
      * specifies if symbols are recognized (the default
      *     is %TRUE).
      */
-    readonly scanSymbols: number
+    scanSymbols: number
     /**
      * specifies if binary numbers are recognized (the
      *     default is %FALSE).
      */
-    readonly scanBinary: number
+    scanBinary: number
     /**
      * specifies if octal numbers are recognized (the
      *     default is %TRUE).
      */
-    readonly scanOctal: number
+    scanOctal: number
     /**
      * specifies if floating point numbers are recognized
      *     (the default is %TRUE).
      */
-    readonly scanFloat: number
+    scanFloat: number
     /**
      * specifies if hexadecimal numbers are recognized (the
      *     default is %TRUE).
      */
-    readonly scanHex: number
+    scanHex: number
     /**
      * specifies if '$' is recognized as a prefix for
      *     hexadecimal numbers (the default is %FALSE).
      */
-    readonly scanHexDollar: number
+    scanHexDollar: number
     /**
      * specifies if strings can be enclosed in single
      *     quotes (the default is %TRUE).
      */
-    readonly scanStringSq: number
+    scanStringSq: number
     /**
      * specifies if strings can be enclosed in double
      *     quotes (the default is %TRUE).
      */
-    readonly scanStringDq: number
+    scanStringDq: number
     /**
      * specifies if binary, octal and hexadecimal numbers
-     *     are reported as #G_TOKEN_INT (the default is %TRUE).
+     *     are reported as %G_TOKEN_INT (the default is %TRUE).
      */
-    readonly numbers2Int: number
+    numbers2Int: number
     /**
      * specifies if all numbers are reported as %G_TOKEN_FLOAT
      *     (the default is %FALSE).
      */
-    readonly int2Float: number
+    int2Float: number
     /**
      * specifies if identifiers are reported as strings
      *     (the default is %FALSE).
      */
-    readonly identifier2String: number
+    identifier2String: number
     /**
      * specifies if characters are reported by setting
      *     `token = ch` or as %G_TOKEN_CHAR (the default is %TRUE).
      */
-    readonly char2Token: number
+    char2Token: number
     /**
      * specifies if symbols are reported by setting
      *     `token = v_symbol` or as %G_TOKEN_SYMBOL (the default is %FALSE).
      */
-    readonly symbol2Token: number
+    symbol2Token: number
     /**
      * specifies if a symbol is searched for in the
      *     default scope in addition to the current scope (the default is %FALSE).
      */
-    readonly scope0Fallback: number
+    scope0Fallback: number
     /**
      * use value.v_int64 rather than v_int
      */
-    readonly storeInt64: number
+    storeInt64: number
     static name: string
 }
 class Sequence {
     /* Methods of GLib-2.0.GLib.Sequence */
     /**
      * Adds a new item to the end of `seq`.
+     * @param data the data for the new item
      */
     append(data?: object | null): SequenceIter
     /**
@@ -10419,6 +10884,7 @@ class Sequence {
     /**
      * Returns the iterator at position `pos`. If `pos` is negative or larger
      * than the number of items in `seq,` the end iterator is returned.
+     * @param pos a position in `seq,` or -1 for the end
      */
     getIterAtPos(pos: number): SequenceIter
     /**
@@ -10437,16 +10903,20 @@ class Sequence {
     isEmpty(): boolean
     /**
      * Adds a new item to the front of `seq`
+     * @param data the data for the new item
      */
     prepend(data?: object | null): SequenceIter
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Returns the data that `iter` points to.
+     * @param iter a #GSequenceIter
      */
     static get(iter: SequenceIter): object | null
     /**
      * Inserts a new item just before the item pointed to by `iter`.
+     * @param iter a #GSequenceIter
+     * @param data the data for the new item
      */
     static insertBefore(iter: SequenceIter, data?: object | null): SequenceIter
     /**
@@ -10454,6 +10924,8 @@ class Sequence {
      * After calling this function `dest` will point to the position immediately
      * after `src`. It is allowed for `src` and `dest` to point into different
      * sequences.
+     * @param src a #GSequenceIter pointing to the item to move
+     * @param dest a #GSequenceIter pointing to the position to which     the item is moved
      */
     static move(src: SequenceIter, dest: SequenceIter): void
     /**
@@ -10465,6 +10937,9 @@ class Sequence {
      * If `dest` is %NULL, the range indicated by `begin` and `end` is
      * removed from the sequence. If `dest` points to a place within
      * the (`begin,` `end)` range, the range does not move.
+     * @param dest a #GSequenceIter
+     * @param begin a #GSequenceIter
+     * @param end a #GSequenceIter
      */
     static moveRange(dest: SequenceIter, begin: SequenceIter, end: SequenceIter): void
     /**
@@ -10474,6 +10949,8 @@ class Sequence {
      * 
      * The `begin` and `end` iterators must both point to the same sequence
      * and `begin` must come before or be equal to `end` in the sequence.
+     * @param begin a #GSequenceIter
+     * @param end a #GSequenceIter
      */
     static rangeGetMidpoint(begin: SequenceIter, end: SequenceIter): SequenceIter
     /**
@@ -10482,6 +10959,7 @@ class Sequence {
      * 
      * If the sequence has a data destroy function associated with it, this
      * function is called on the data for the removed item.
+     * @param iter a #GSequenceIter
      */
     static remove(iter: SequenceIter): void
     /**
@@ -10489,17 +10967,23 @@ class Sequence {
      * 
      * If the sequence has a data destroy function associated with it, this
      * function is called on the data for the removed items.
+     * @param begin a #GSequenceIter
+     * @param end a #GSequenceIter
      */
     static removeRange(begin: SequenceIter, end: SequenceIter): void
     /**
      * Changes the data for the item pointed to by `iter` to be `data`. If
      * the sequence has a data destroy function associated with it, that
      * function is called on the existing data that `iter` pointed to.
+     * @param iter a #GSequenceIter
+     * @param data new data for the item
      */
     static set(iter: SequenceIter, data?: object | null): void
     /**
      * Swaps the items pointed to by `a` and `b`. It is allowed for `a` and `b`
      * to point into difference sequences.
+     * @param a a #GSequenceIter
+     * @param b a #GSequenceIter
      */
     static swap(a: SequenceIter, b: SequenceIter): void
 }
@@ -10510,6 +10994,7 @@ class SequenceIter {
      * and a positive number if `a` comes after `b`.
      * 
      * The `a` and `b` iterators must point into the same sequence.
+     * @param b a #GSequenceIter
      */
     compare(b: SequenceIter): number
     /**
@@ -10533,6 +11018,7 @@ class SequenceIter {
      * If `iter` is closer than -`delta` positions to the beginning of the sequence,
      * the begin iterator is returned. If `iter` is closer than `delta` positions
      * to the end of the sequence, the end iterator is returned.
+     * @param delta A positive or negative number indicating how many positions away    from `iter` the returned #GSequenceIter will be
      */
     move(delta: number): SequenceIter
     /**
@@ -10567,6 +11053,7 @@ class Source {
      * 
      * This API is only intended to be used by implementations of #GSource.
      * Do not call this API on a #GSource that you did not create.
+     * @param childSource a second #GSource that `source` should "poll"
      */
     addChildSource(childSource: Source): void
     /**
@@ -10582,6 +11069,7 @@ class Source {
      * Using this API forces the linear scanning of event sources on each
      * main loop iteration.  Newly-written event sources should try to use
      * g_source_add_unix_fd() instead of this API.
+     * @param fd a #GPollFD structure holding information about a file      descriptor to watch.
      */
     addPoll(fd: PollFD): void
     /**
@@ -10598,6 +11086,8 @@ class Source {
      * Do not call this API on a #GSource that you did not create.
      * 
      * As the name suggests, this function is not available on Windows.
+     * @param fd the fd to monitor
+     * @param events an event mask
      */
     addUnixFd(fd: number, events: IOCondition): object
     /**
@@ -10606,6 +11096,7 @@ class Source {
      * 
      * This function is safe to call from any thread, regardless of which thread
      * the `context` is running in.
+     * @param context a #GMainContext (if %NULL, the default context will be used)
      */
     attach(context?: MainContext | null): number
     /**
@@ -10644,6 +11135,7 @@ class Source {
     /**
      * This function ignores `source` and is otherwise the same as
      * g_get_current_time().
+     * @param timeval #GTimeVal structure in which to store current time.
      */
     getCurrentTime(timeval: TimeVal): void
     /**
@@ -10782,6 +11274,8 @@ class Source {
      * Do not call this API on a #GSource that you did not create.
      * 
      * As the name suggests, this function is not available on Windows.
+     * @param tag the tag from g_source_add_unix_fd()
+     * @param newEvents the new event mask to watch
      */
     modifyUnixFd(tag: object, newEvents: IOCondition): void
     /**
@@ -10795,6 +11289,7 @@ class Source {
      * Do not call this API on a #GSource that you did not create.
      * 
      * As the name suggests, this function is not available on Windows.
+     * @param tag the tag from g_source_add_unix_fd()
      */
     queryUnixFd(tag: object): IOCondition
     /**
@@ -10806,6 +11301,7 @@ class Source {
      * 
      * This API is only intended to be used by implementations of #GSource.
      * Do not call this API on a #GSource that you did not create.
+     * @param childSource a #GSource previously passed to     g_source_add_child_source().
      */
     removeChildSource(childSource: Source): void
     /**
@@ -10814,6 +11310,7 @@ class Source {
      * 
      * This API is only intended to be used by implementations of #GSource.
      * Do not call this API on a #GSource that you did not create.
+     * @param fd a #GPollFD structure previously passed to g_source_add_poll().
      */
     removePoll(fd: PollFD): void
     /**
@@ -10827,6 +11324,7 @@ class Source {
      * Do not call this API on a #GSource that you did not create.
      * 
      * As the name suggests, this function is not available on Windows.
+     * @param tag the tag from g_source_add_unix_fd()
      */
     removeUnixFd(tag: object): void
     /**
@@ -10850,6 +11348,7 @@ class Source {
      * 
      * Note that g_source_destroy() for a currently attached source has the effect
      * of also unsetting the callback.
+     * @param func a callback function
      */
     setCallback(func: SourceFunc): void
     /**
@@ -10863,6 +11362,8 @@ class Source {
      * It is safe to call this function multiple times on a source which has already
      * been attached to a context. The changes will take effect for the next time
      * the source is dispatched after this call returns.
+     * @param callbackData pointer to callback data "object"
+     * @param callbackFuncs functions for reference counting `callback_data`                  and getting the callback and data
      */
     setCallbackIndirect(callbackData: object | null, callbackFuncs: SourceCallbackFuncs): void
     /**
@@ -10870,11 +11371,13 @@ class Source {
      * %TRUE, then while the source is being dispatched then this source
      * will be processed normally. Otherwise, all processing of this
      * source is blocked until the dispatch function returns.
+     * @param canRecurse whether recursion is allowed for this source
      */
     setCanRecurse(canRecurse: boolean): void
     /**
      * Sets the source functions (can be used to override
      * default implementations) of an unattached source.
+     * @param funcs the new #GSourceFuncs
      */
     setFuncs(funcs: SourceFuncs): void
     /**
@@ -10896,6 +11399,7 @@ class Source {
      * may be attempting to use it.
      * 
      * Also see g_source_set_static_name().
+     * @param name debug name for the source
      */
     setName(name: string): void
     /**
@@ -10907,6 +11411,7 @@ class Source {
      * A child source always has the same priority as its parent.  It is not
      * permitted to change the priority of a source once it has been added
      * as a child of another source.
+     * @param priority the new priority.
      */
     setPriority(priority: number): void
     /**
@@ -10932,12 +11437,14 @@ class Source {
      * 
      * This API is only intended to be used by implementations of #GSource.
      * Do not call this API on a #GSource that you did not create.
+     * @param readyTime the monotonic time at which the source will be ready,              0 for "immediately", -1 for "never"
      */
     setReadyTime(readyTime: number): void
     /**
      * A variant of g_source_set_name() that does not
      * duplicate the `name,` and can only be used with
      * string literals.
+     * @param name debug name for the source
      */
     setStaticName(name: string): void
     /**
@@ -10971,18 +11478,22 @@ class Source {
      * is called on its (now invalid) source ID.  This source ID may have
      * been reissued, leading to the operation being performed against the
      * wrong source.
+     * @param tag the ID of the source to remove.
      */
     static remove(tag: number): boolean
     /**
      * Removes a source from the default main loop context given the
      * source functions and user data. If multiple sources exist with the
      * same source functions and user data, only one will be destroyed.
+     * @param funcs The `source_funcs` passed to g_source_new()
+     * @param userData the user data for the callback
      */
     static removeByFuncsUserData(funcs: SourceFuncs, userData?: object | null): boolean
     /**
      * Removes a source from the default main loop context given the user
      * data for the callback. If multiple sources exist with the same user
      * data, only one will be destroyed.
+     * @param userData the user_data for the callback.
      */
     static removeByUserData(userData?: object | null): boolean
     /**
@@ -11002,20 +11513,22 @@ class Source {
      * is called on its (now invalid) source ID.  This source ID may have
      * been reissued, leading to the operation being performed against the
      * wrong source.
+     * @param tag a #GSource ID
+     * @param name debug name for the source
      */
     static setNameById(tag: number, name: string): void
 }
 class SourceCallbackFuncs {
     /* Fields of GLib-2.0.GLib.SourceCallbackFuncs */
-    readonly ref: (cbData: object) => void
-    readonly unref: (cbData: object) => void
+    ref: (cbData: object) => void
+    unref: (cbData: object) => void
     static name: string
 }
 class SourceFuncs {
     /* Fields of GLib-2.0.GLib.SourceFuncs */
-    readonly prepare: (source: Source, timeout: number) => boolean
-    readonly check: (source: Source) => boolean
-    readonly finalize: (source: Source) => void
+    prepare: (source: Source, timeout: number) => boolean
+    check: (source: Source) => boolean
+    finalize: (source: Source) => void
     static name: string
 }
 class SourcePrivate {
@@ -11031,26 +11544,28 @@ class String {
      *   The `str` field is null-terminated and so
      *   can be used as an ordinary C string.
      */
-    readonly str: string
+    str: string
     /**
      * contains the length of the string, not including the
      *   terminating nul byte.
      */
-    readonly len: number
+    len: number
     /**
      * the number of bytes that can be stored in the
      *   string before it needs to be reallocated. May be larger than `len`.
      */
-    readonly allocatedLen: number
+    allocatedLen: number
     /* Methods of GLib-2.0.GLib.String */
     /**
      * Adds a string onto the end of a #GString, expanding
      * it if necessary.
+     * @param val the string to append onto the end of `string`
      */
     append(val: string): String
     /**
      * Adds a byte onto the end of a #GString, expanding
      * it if necessary.
+     * @param c the byte to append onto the end of `string`
      */
     appendC(c: number): String
     /**
@@ -11063,16 +11578,22 @@ class String {
      * If `len` is negative, `val` must be nul-terminated and `len`
      * is considered to request the entire string length. This
      * makes g_string_append_len() equivalent to g_string_append().
+     * @param val bytes to append
+     * @param len number of bytes of `val` to use, or -1 for all of `val`
      */
     appendLen(val: string, len: number): String
     /**
      * Converts a Unicode character into UTF-8, and appends it
      * to the string.
+     * @param wc a Unicode character
      */
     appendUnichar(wc: number): String
     /**
      * Appends `unescaped` to `string,` escaping any characters that
      * are reserved in URIs using URI-style escape sequences.
+     * @param unescaped a string
+     * @param reservedCharsAllowed a string of reserved characters allowed     to be used, or %NULL
+     * @param allowUtf8 set %TRUE if the escaped string may include UTF8 characters
      */
     appendUriEscaped(unescaped: string, reservedCharsAllowed: string, allowUtf8: boolean): String
     /**
@@ -11088,6 +11609,7 @@ class String {
      * destroying any previous contents. It is rather like
      * the standard strcpy() function, except that you do not
      * have to worry about having enough space to copy the string.
+     * @param rval the string to copy into `string`
      */
     assign(rval: string): String
     /**
@@ -11097,11 +11619,14 @@ class String {
     /**
      * Compares two strings for equality, returning %TRUE if they are equal.
      * For use with #GHashTable.
+     * @param v2 another #GString
      */
     equal(v2: String): boolean
     /**
      * Removes `len` bytes from a #GString, starting at position `pos`.
      * The rest of the #GString is shifted down to fill the gap.
+     * @param pos the position of the content to remove
+     * @param len the number of bytes to remove, or -1 to remove all       following bytes
      */
     erase(pos: number, len: number): String
     /**
@@ -11109,6 +11634,7 @@ class String {
      * If `free_segment` is %TRUE it also frees the character data.  If
      * it's %FALSE, the caller gains ownership of the buffer and must
      * free it after use with g_free().
+     * @param freeSegment if %TRUE, the actual character data is freed as well
      */
     free(freeSegment: boolean): string | null
     /**
@@ -11129,10 +11655,14 @@ class String {
     /**
      * Inserts a copy of a string into a #GString,
      * expanding it if necessary.
+     * @param pos the position to insert the copy of the string
+     * @param val the string to insert
      */
     insert(pos: number, val: string): String
     /**
      * Inserts a byte into a #GString, expanding it if necessary.
+     * @param pos the position to insert the byte
+     * @param c the byte to insert
      */
     insertC(pos: number, c: number): String
     /**
@@ -11146,30 +11676,42 @@ class String {
      * is considered to request the entire string length.
      * 
      * If `pos` is -1, bytes are inserted at the end of the string.
+     * @param pos position in `string` where insertion should       happen, or -1 for at the end
+     * @param val bytes to insert
+     * @param len number of bytes of `val` to insert, or -1 for all of `val`
      */
     insertLen(pos: number, val: string, len: number): String
     /**
      * Converts a Unicode character into UTF-8, and insert it
      * into the string at the given position.
+     * @param pos the position at which to insert character, or -1     to append at the end of the string
+     * @param wc a Unicode character
      */
     insertUnichar(pos: number, wc: number): String
     /**
      * Overwrites part of a string, lengthening it if necessary.
+     * @param pos the position at which to start overwriting
+     * @param val the string that will overwrite the `string` starting at `pos`
      */
     overwrite(pos: number, val: string): String
     /**
      * Overwrites part of a string, lengthening it if necessary.
      * This function will work with embedded nuls.
+     * @param pos the position at which to start overwriting
+     * @param val the string that will overwrite the `string` starting at `pos`
+     * @param len the number of bytes to write from `val`
      */
     overwriteLen(pos: number, val: string, len: number): String
     /**
      * Adds a string on to the start of a #GString,
      * expanding it if necessary.
+     * @param val the string to prepend on the start of `string`
      */
     prepend(val: string): String
     /**
      * Adds a byte onto the start of a #GString,
      * expanding it if necessary.
+     * @param c the byte to prepend on the start of the #GString
      */
     prependC(c: number): String
     /**
@@ -11182,11 +11724,14 @@ class String {
      * If `len` is negative, `val` must be nul-terminated and `len`
      * is considered to request the entire string length. This
      * makes g_string_prepend_len() equivalent to g_string_prepend().
+     * @param val bytes to prepend
+     * @param len number of bytes in `val` to prepend, or -1 for all of `val`
      */
     prependLen(val: string, len: number): String
     /**
      * Converts a Unicode character into UTF-8, and prepends it
      * to the string.
+     * @param wc a Unicode character
      */
     prependUnichar(wc: number): String
     /**
@@ -11199,6 +11744,9 @@ class String {
      * replacement will be inserted no more than once per possible position
      * (beginning of string, end of string and between characters). This did
      * not work correctly in earlier versions.
+     * @param find the string to find in `string`
+     * @param replace the string to insert in place of `find`
+     * @param limit the maximum instances of `find` to replace with `replace,` or `0` for no limit
      */
     replace(find: string, replace: string, limit: number): number
     /**
@@ -11207,10 +11755,12 @@ class String {
      * length is greater than the current length, the contents
      * of the newly added area are undefined. (However, as
      * always, string->str[string->len] will be a nul byte.)
+     * @param len the new length
      */
     setSize(len: number): String
     /**
      * Cuts off the end of the GString, leaving the first `len` bytes.
+     * @param len the new size of `string`
      */
     truncate(len: number): String
     /**
@@ -11251,6 +11801,7 @@ class StringChunk {
      * with g_string_chunk_insert() will not be searched
      * by g_string_chunk_insert_const() when looking for
      * duplicates.
+     * @param string the string to add
      */
     insert(string: string): string
     /**
@@ -11267,6 +11818,7 @@ class StringChunk {
      * Note that g_string_chunk_insert_const() will not return a
      * pointer to a string added with g_string_chunk_insert(), even
      * if they do match.
+     * @param string the string to add
      */
     insertConst(string: string): string
     /**
@@ -11279,6 +11831,8 @@ class StringChunk {
      * 
      * The characters in the returned string can be changed, if necessary,
      * though you should not change anything after the end of the string.
+     * @param string bytes to insert
+     * @param len number of bytes of `string` to insert, or -1 to insert a     nul-terminated string
      */
     insertLen(string: string, len: number): string
     static name: string
@@ -11289,12 +11843,14 @@ class StrvBuilder {
      * Add a string to the end of the array.
      * 
      * Since 2.68
+     * @param value a string.
      */
     add(value: string): void
     /**
      * Appends all the strings in the given vector to the builder.
      * 
      * Since 2.70
+     * @param value the vector of strings to add
      */
     addv(value: string[]): void
     /**
@@ -11322,12 +11878,12 @@ class TestCase {
 }
 class TestConfig {
     /* Fields of GLib-2.0.GLib.TestConfig */
-    readonly testInitialized: boolean
-    readonly testQuick: boolean
-    readonly testPerf: boolean
-    readonly testVerbose: boolean
-    readonly testQuiet: boolean
-    readonly testUndefined: boolean
+    testInitialized: boolean
+    testQuick: boolean
+    testPerf: boolean
+    testVerbose: boolean
+    testQuiet: boolean
+    testUndefined: boolean
     static name: string
 }
 class TestLogBuffer {
@@ -11338,16 +11894,18 @@ class TestLogBuffer {
     free(): void
     /**
      * Internal function for gtester to decode test log messages, no ABI guarantees provided.
+     * @param nBytes 
+     * @param bytes 
      */
     push(nBytes: number, bytes: number): void
     static name: string
 }
 class TestLogMsg {
     /* Fields of GLib-2.0.GLib.TestLogMsg */
-    readonly logType: TestLogType
-    readonly nStrings: number
-    readonly strings: string
-    readonly nNums: number
+    logType: TestLogType
+    nStrings: number
+    strings: string
+    nNums: number
     /* Methods of GLib-2.0.GLib.TestLogMsg */
     /**
      * Internal function for gtester to free test log messages, no ABI guarantees provided.
@@ -11359,10 +11917,12 @@ class TestSuite {
     /* Methods of GLib-2.0.GLib.TestSuite */
     /**
      * Adds `test_case` to `suite`.
+     * @param testCase a #GTestCase
      */
     add(testCase: TestCase): void
     /**
      * Adds `nestedsuite` to `suite`.
+     * @param nestedsuite another #GTestSuite
      */
     addSuite(nestedsuite: TestSuite): void
     /**
@@ -11426,6 +11986,7 @@ class Thread {
      * yourself with g_thread_new() or related APIs. You must not call
      * this function from a thread created with another threading library
      * or or from within a #GThreadPool.
+     * @param retval the return value of this thread
      */
     static exit(retval?: object | null): void
     /**
@@ -11453,15 +12014,15 @@ class ThreadPool {
     /**
      * the function to execute in the threads of this pool
      */
-    readonly func: Func
+    func: Func
     /**
      * the user data for the threads of this pool
      */
-    readonly userData: object
+    userData: object
     /**
      * are all threads exclusive to this pool
      */
-    readonly exclusive: boolean
+    exclusive: boolean
     /* Methods of GLib-2.0.GLib.ThreadPool */
     /**
      * Frees all resources allocated for `pool`.
@@ -11478,6 +12039,8 @@ class ThreadPool {
      * Otherwise this function returns immediately.
      * 
      * After calling this function `pool` must not be used anymore.
+     * @param immediate should `pool` shut down immediately?
+     * @param wait should the function wait for all tasks to be finished?
      */
     free(immediate: boolean, wait: boolean): void
     /**
@@ -11491,6 +12054,7 @@ class ThreadPool {
     /**
      * Moves the item to the front of the queue of unprocessed
      * items, so that it will be processed next.
+     * @param data an unprocessed item in the pool
      */
     moveToFront(data?: object | null): boolean
     /**
@@ -11508,6 +12072,7 @@ class ThreadPool {
      * work to do.
      * 
      * Before version 2.32, this function did not return a success status.
+     * @param data a new task for `pool`
      */
     push(data?: object | null): boolean
     /**
@@ -11531,6 +12096,7 @@ class ThreadPool {
      * created.
      * 
      * Before version 2.32, this function did not return a success status.
+     * @param maxThreads a new maximal number of threads for `pool,`     or -1 for unlimited
      */
     setMaxThreads(maxThreads: number): boolean
     /**
@@ -11566,6 +12132,7 @@ class ThreadPool {
      * By setting `interval` to 0, idle threads will not be stopped.
      * 
      * The default value is 15000 (15 seconds).
+     * @param interval the maximum `interval` (in milliseconds)     a thread can be idle
      */
     static setMaxIdleTime(interval: number): void
     /**
@@ -11574,6 +12141,7 @@ class ThreadPool {
      * of unused threads.
      * 
      * The default value is 2.
+     * @param maxThreads maximal number of unused threads
      */
     static setMaxUnusedThreads(maxThreads: number): void
     /**
@@ -11588,15 +12156,16 @@ class TimeVal {
     /**
      * seconds
      */
-    readonly tvSec: number
+    tvSec: number
     /**
      * microseconds
      */
-    readonly tvUsec: number
+    tvUsec: number
     /* Methods of GLib-2.0.GLib.TimeVal */
     /**
      * Adds the given number of microseconds to `time_`. `microseconds` can
      * also be negative to decrease the value of `time_`.
+     * @param microseconds number of microseconds to add to `time`
      */
     add(microseconds: number): void
     /**
@@ -11658,6 +12227,7 @@ class TimeVal {
      * g_date_time_unref (dt);
      * ```
      * 
+     * @param isoDate an ISO 8601 encoded date string
      */
     static fromIso8601(isoDate: string): [ /* returnType */ boolean, /* time */ TimeVal ]
 }
@@ -11680,6 +12250,8 @@ class TimeZone {
      * requested on March 14th 2010 in Toronto then this function would
      * adjust `time_` to be 03:00 and return the interval containing the
      * adjusted time.
+     * @param type the #GTimeType of `time_`
+     * @param time a pointer to a number of seconds since January 1, 1970
      */
     adjustTime(type: TimeType, time: number): number
     /**
@@ -11701,6 +12273,8 @@ class TimeZone {
      * example, 02:00 on March 14th 2010 does not exist (due to the leap
      * forward to begin daylight savings time).  -1 is returned in that
      * case.
+     * @param type the #GTimeType of `time_`
+     * @param time a number of seconds since January 1, 1970
      */
     findInterval(type: TimeType, time: number): number
     /**
@@ -11710,6 +12284,7 @@ class TimeZone {
      * For example, in Toronto this is currently "EST" during the winter
      * months and "EDT" during the summer months when daylight savings time
      * is in effect.
+     * @param interval an interval within the timezone
      */
     getAbbreviation(interval: number): string
     /**
@@ -11730,11 +12305,13 @@ class TimeZone {
      * The offset is the number of seconds that you add to UTC time to
      * arrive at local time for `tz` (ie: negative numbers for time zones
      * west of GMT, positive numbers for east).
+     * @param interval an interval within the timezone
      */
     getOffset(interval: number): number
     /**
      * Determines if daylight savings time is in effect during a particular
      * `interval` of time in the time zone `tz`.
+     * @param interval an interval within the timezone
      */
     isDst(interval: number): boolean
     /**
@@ -11774,6 +12351,7 @@ class Timer {
      * stopped. The return value is the number of seconds elapsed,
      * including any fractional part. The `microseconds` out parameter is
      * essentially useless.
+     * @param microseconds return location for the fractional part of seconds                elapsed, in microseconds (that is, the total number                of microseconds elapsed, modulo 1000000), or %NULL
      */
     elapsed(microseconds: number): number
     /**
@@ -11807,7 +12385,7 @@ class TrashStack {
      *     gets stored in the first `sizeof (gpointer)`
      *     bytes of the element
      */
-    readonly next: TrashStack
+    next: TrashStack
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -11815,19 +12393,24 @@ class TrashStack {
      * 
      * Note that execution of this function is of O(N) complexity
      * where N denotes the number of items on the stack.
+     * @param stackP a #GTrashStack
      */
     static height(stackP: TrashStack): number
     /**
      * Returns the element at the top of a #GTrashStack
      * which may be %NULL.
+     * @param stackP a #GTrashStack
      */
     static peek(stackP: TrashStack): object | null
     /**
      * Pops a piece of memory off a #GTrashStack.
+     * @param stackP a #GTrashStack
      */
     static pop(stackP: TrashStack): object | null
     /**
      * Pushes a piece of memory onto a #GTrashStack.
+     * @param stackP a #GTrashStack
+     * @param dataP the piece of memory to push on the stack
      */
     static push(stackP: TrashStack, dataP: object): void
 }
@@ -11855,6 +12438,8 @@ class Tree {
      * 
      * Inserts a new key and value into a #GTree as g_tree_insert_node() does,
      * only this function does not return the inserted or set node.
+     * @param key the key to insert
+     * @param value the value corresponding to the key
      */
     insert(key?: object | null, value?: object | null): void
     /**
@@ -11871,12 +12456,15 @@ class Tree {
      * The cost of maintaining a balanced tree while inserting new key/value
      * result in a O(n log(n)) operation where most of the other operations
      * are O(log(n)).
+     * @param key the key to insert
+     * @param value the value corresponding to the key
      */
     insertNode(key?: object | null, value?: object | null): TreeNode
     /**
      * Gets the value corresponding to the given key. Since a #GTree is
      * automatically balanced as key/value pairs are added, key lookup
      * is O(log n) (where n is the number of key/value pairs in the tree).
+     * @param key the key to look up
      */
     lookup(key?: object | null): object | null
     /**
@@ -11884,12 +12472,14 @@ class Tree {
      * associated value. This is useful if you need to free the memory
      * allocated for the original key, for example before calling
      * g_tree_remove().
+     * @param lookupKey the key to look up
      */
     lookupExtended(lookupKey?: object | null): [ /* returnType */ boolean, /* origKey */ object | null, /* value */ object | null ]
     /**
      * Gets the tree node corresponding to the given key. Since a #GTree is
      * automatically balanced as key/value pairs are added, key lookup
      * is O(log n) (where n is the number of key/value pairs in the tree).
+     * @param key the key to look up
      */
     lookupNode(key?: object | null): TreeNode | null
     /**
@@ -11899,6 +12489,7 @@ class Tree {
      * 
      * The lower bound is the first node that has its key greater
      * than or equal to the searched key.
+     * @param key the key to calculate the lower bound for
      */
     lowerBound(key?: object | null): TreeNode | null
     /**
@@ -11932,6 +12523,7 @@ class Tree {
      * The cost of maintaining a balanced tree while removing a key/value
      * result in a O(n log(n)) operation where most of the other operations
      * are O(log(n)).
+     * @param key the key to remove
      */
     remove(key?: object | null): boolean
     /**
@@ -11942,6 +12534,8 @@ class Tree {
     /**
      * Inserts a new key and value into a #GTree as g_tree_replace_node() does,
      * only this function does not return the inserted or set node.
+     * @param key the key to insert
+     * @param value the value corresponding to the key
      */
     replace(key?: object | null, value?: object | null): void
     /**
@@ -11954,6 +12548,8 @@ class Tree {
      * 
      * The tree is automatically 'balanced' as new key/value pairs are added,
      * so that the distance from the root to every leaf is as small as possible.
+     * @param key the key to insert
+     * @param value the value corresponding to the key
      */
     replaceNode(key?: object | null, value?: object | null): TreeNode
     /**
@@ -11961,6 +12557,7 @@ class Tree {
      * the key and value destroy functions.
      * 
      * If the key does not exist in the #GTree, the function does nothing.
+     * @param key the key to remove
      */
     steal(key?: object | null): boolean
     /**
@@ -11979,6 +12576,7 @@ class Tree {
      * 
      * The upper bound is the first node that has its key strictly greater
      * than the searched key.
+     * @param key the key to calculate the upper bound for
      */
     upperBound(key?: object | null): TreeNode | null
     static name: string
@@ -12085,6 +12683,8 @@ class Uri {
      * [relative URI][relative-absolute-uris], resolves it relative to `base_uri`.
      * If the result is not a valid absolute URI, it will be discarded, and an error
      * returned.
+     * @param uriRef a string representing a relative or absolute URI
+     * @param flags flags describing how to parse `uri_ref`
      */
     parseRelative(uriRef: string, flags: UriFlags): Uri
     /**
@@ -12105,6 +12705,7 @@ class Uri {
     /**
      * Returns a string representing `uri,` subject to the options in
      * `flags`. See g_uri_to_string() and #GUriHideFlags for more details.
+     * @param flags flags describing what parts of `uri` to hide
      */
     toStringPartial(flags: UriHideFlags): string
     static name: string
@@ -12114,6 +12715,14 @@ class Uri {
      * 
      * See also g_uri_build_with_user(), which allows specifying the
      * components of the "userinfo" separately.
+     * @param flags flags describing how to build the #GUri
+     * @param scheme the URI scheme
+     * @param userinfo the userinfo component, or %NULL
+     * @param host the host component, or %NULL
+     * @param port the port, or `-1`
+     * @param path the path component
+     * @param query the query component, or %NULL
+     * @param fragment the fragment, or %NULL
      */
     static build(flags: UriFlags, scheme: string, userinfo: string | null, host: string | null, port: number, path: string, query?: string | null, fragment?: string | null): Uri
     /**
@@ -12125,6 +12734,16 @@ class Uri {
      * In contrast to g_uri_build(), this allows specifying the components
      * of the ‘userinfo’ field separately. Note that `user` must be non-%NULL
      * if either `password` or `auth_params` is non-%NULL.
+     * @param flags flags describing how to build the #GUri
+     * @param scheme the URI scheme
+     * @param user the user component of the userinfo, or %NULL
+     * @param password the password component of the userinfo, or %NULL
+     * @param authParams the auth params of the userinfo, or %NULL
+     * @param host the host component, or %NULL
+     * @param port the port, or `-1`
+     * @param path the path component
+     * @param query the query component, or %NULL
+     * @param fragment the fragment, or %NULL
      */
     static buildWithUser(flags: UriFlags, scheme: string, user: string | null, password: string | null, authParams: string | null, host: string | null, port: number, path: string, query?: string | null, fragment?: string | null): Uri
     static errorQuark(): Quark
@@ -12140,6 +12759,8 @@ class Uri {
      * 
      * Though technically incorrect, this will also allow escaping nul
      * bytes as `%``00`.
+     * @param unescaped the unescaped input data.
+     * @param reservedCharsAllowed a string of reserved   characters that are allowed to be used, or %NULL.
      */
     static escapeBytes(unescaped: Uint8Array, reservedCharsAllowed?: string | null): string
     /**
@@ -12151,6 +12772,9 @@ class Uri {
      * they are not escaped. This is useful for the "reserved" characters
      * in the URI specification, since those are allowed unescaped in some
      * portions of a URI.
+     * @param unescaped the unescaped input string.
+     * @param reservedCharsAllowed a string of reserved   characters that are allowed to be used, or %NULL.
+     * @param allowUtf8 %TRUE if the result can include UTF-8 characters.
      */
     static escapeString(unescaped: string, reservedCharsAllowed: string | null, allowUtf8: boolean): string
     /**
@@ -12162,6 +12786,8 @@ class Uri {
      * 
      * See g_uri_split(), and the definition of #GUriFlags, for more
      * information on the effect of `flags`.
+     * @param uriString a string containing an absolute URI
+     * @param flags flags for parsing `uri_string`
      */
     static isValid(uriString: string, flags: UriFlags): boolean
     /**
@@ -12179,6 +12805,14 @@ class Uri {
      * 
      * %G_URI_FLAGS_HAS_PASSWORD and %G_URI_FLAGS_HAS_AUTH_PARAMS are ignored if set
      * in `flags`.
+     * @param flags flags describing how to build the URI string
+     * @param scheme the URI scheme, or %NULL
+     * @param userinfo the userinfo component, or %NULL
+     * @param host the host component, or %NULL
+     * @param port the port, or `-1`
+     * @param path the path component
+     * @param query the query component, or %NULL
+     * @param fragment the fragment, or %NULL
      */
     static join(flags: UriFlags, scheme: string | null, userinfo: string | null, host: string | null, port: number, path: string, query?: string | null, fragment?: string | null): string
     /**
@@ -12191,18 +12825,31 @@ class Uri {
      * 
      * %G_URI_FLAGS_HAS_PASSWORD and %G_URI_FLAGS_HAS_AUTH_PARAMS are ignored if set
      * in `flags`.
+     * @param flags flags describing how to build the URI string
+     * @param scheme the URI scheme, or %NULL
+     * @param user the user component of the userinfo, or %NULL
+     * @param password the password component of the userinfo, or   %NULL
+     * @param authParams the auth params of the userinfo, or   %NULL
+     * @param host the host component, or %NULL
+     * @param port the port, or `-1`
+     * @param path the path component
+     * @param query the query component, or %NULL
+     * @param fragment the fragment, or %NULL
      */
     static joinWithUser(flags: UriFlags, scheme: string | null, user: string | null, password: string | null, authParams: string | null, host: string | null, port: number, path: string, query?: string | null, fragment?: string | null): string
     /**
      * Splits an URI list conforming to the text/uri-list
      * mime type defined in RFC 2483 into individual URIs,
      * discarding any comments. The URIs are not validated.
+     * @param uriList an URI list
      */
     static listExtractUris(uriList: string): string[]
     /**
      * Parses `uri_string` according to `flags`. If the result is not a
      * valid [absolute URI][relative-absolute-uris], it will be discarded, and an
      * error returned.
+     * @param uriString a string representing an absolute URI
+     * @param flags flags describing how to parse `uri_string`
      */
     static parse(uriString: string, flags: UriFlags): Uri
     /**
@@ -12230,6 +12877,10 @@ class Uri {
      * 
      * If `params` cannot be parsed (for example, it contains two `separators`
      * characters in a row), then `error` is set and %NULL is returned.
+     * @param params a `%`-encoded string containing `attribute=value`   parameters
+     * @param length the length of `params,` or `-1` if it is nul-terminated
+     * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
+     * @param flags flags to modify the way the parameters are handled.
      */
     static parseParams(params: string, length: number, separators: string, flags: UriParamsFlags): HashTable
     /**
@@ -12241,6 +12892,7 @@ class Uri {
      * ```
      * 
      * Common schemes include `file`, `https`, `svn+ssh`, etc.
+     * @param uri a valid URI.
      */
     static parseScheme(uri: string): string | null
     /**
@@ -12255,6 +12907,7 @@ class Uri {
      * 
      * Unlike g_uri_parse_scheme(), the returned scheme is normalized to
      * all-lowercase and does not need to be freed.
+     * @param uri a valid URI.
      */
     static peekScheme(uri: string): string | null
     /**
@@ -12265,6 +12918,9 @@ class Uri {
      * 
      * (If `base_uri_string` is %NULL, this just returns `uri_ref,` or
      * %NULL if `uri_ref` is invalid or not absolute.)
+     * @param baseUriString a string representing a base URI
+     * @param uriRef a string representing a relative or absolute URI
+     * @param flags flags describing how to parse `uri_ref`
      */
     static resolveRelative(baseUriString: string | null, uriRef: string, flags: UriFlags): string
     /**
@@ -12284,6 +12940,8 @@ class Uri {
      * %G_URI_FLAGS_HAS_AUTH_PARAMS `flags` are ignored by g_uri_split(),
      * since it always returns only the full userinfo; use
      * g_uri_split_with_user() if you want it split up.
+     * @param uriRef a string containing a relative or absolute URI
+     * @param flags flags for parsing `uri_ref`
      */
     static split(uriRef: string, flags: UriFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ number | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
     /**
@@ -12293,6 +12951,8 @@ class Uri {
      * mostly a wrapper around that function with simpler arguments.
      * However, it will return an error if `uri_string` is a relative URI,
      * or does not contain a hostname component.
+     * @param uriString a string containing an absolute URI
+     * @param flags flags for parsing `uri_string`
      */
     static splitNetwork(uriString: string, flags: UriFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number | null ]
     /**
@@ -12307,6 +12967,8 @@ class Uri {
      * be parsed out if `flags` contains %G_URI_FLAGS_HAS_PASSWORD, and
      * `auth_params` will only be parsed out if `flags` contains
      * %G_URI_FLAGS_HAS_AUTH_PARAMS.
+     * @param uriRef a string containing a relative or absolute URI
+     * @param flags flags for parsing `uri_ref`
      */
     static splitWithUser(uriRef: string, flags: UriFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* user */ string | null, /* password */ string | null, /* authParams */ string | null, /* host */ string | null, /* port */ number | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
     /**
@@ -12320,6 +12982,9 @@ class Uri {
      * returned. This is useful if you want to avoid for instance having a slash
      * being expanded in an escaped path element, which might confuse pathname
      * handling.
+     * @param escapedString A URI-escaped string
+     * @param length the length (in bytes) of `escaped_string` to escape, or `-1` if it   is nul-terminated.
+     * @param illegalCharacters a string of illegal characters   not to be allowed, or %NULL.
      */
     static unescapeBytes(escapedString: string, length: number, illegalCharacters?: string | null): any
     /**
@@ -12333,6 +12998,9 @@ class Uri {
      * 
      * Note: `NUL` byte is not accepted in the output, in contrast to
      * g_uri_unescape_bytes().
+     * @param escapedString A string, may be %NULL
+     * @param escapedStringEnd Pointer to end of `escaped_string,`   may be %NULL
+     * @param illegalCharacters An optional string of illegal   characters not to be allowed, may be %NULL
      */
     static unescapeSegment(escapedString?: string | null, escapedStringEnd?: string | null, illegalCharacters?: string | null): string | null
     /**
@@ -12343,6 +13011,8 @@ class Uri {
      * that is an error and %NULL will be returned. This is useful if you
      * want to avoid for instance having a slash being expanded in an
      * escaped path element, which might confuse pathname handling.
+     * @param escapedString an escaped string to be unescaped.
+     * @param illegalCharacters a string of illegal characters   not to be allowed, or %NULL.
      */
     static unescapeString(escapedString: string, illegalCharacters?: string | null): string | null
 }
@@ -12384,6 +13054,10 @@ class UriParamsIter {
      *   // handle parsing error
      * ```
      * 
+     * @param params a `%`-encoded string containing `attribute=value`   parameters
+     * @param length the length of `params,` or `-1` if it is nul-terminated
+     * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
+     * @param flags flags to modify the way the parameters are handled.
      */
     init(params: string, length: number, separators: string, flags: UriParamsFlags): void
     /**
@@ -12431,6 +13105,8 @@ class Variant {
      * This function is meant to be used by functions that wish to provide
      * varargs accessors to #GVariant values of uncertain values (eg:
      * g_variant_lookup() or g_menu_model_get_item_attribute()).
+     * @param formatString a valid #GVariant format string
+     * @param copyOnly %TRUE to ensure the format string makes deep copies
      */
     checkFormatString(formatString: string, copyOnly: boolean): boolean
     /**
@@ -12457,6 +13133,7 @@ class Variant {
      * 
      * If you only require an equality comparison, g_variant_equal() is more
      * general.
+     * @param two a #GVariant instance of the same type
      */
     compare(two: Variant): number
     /**
@@ -12519,6 +13196,7 @@ class Variant {
      * 
      * The types of `one` and `two` are #gconstpointer only to allow use of
      * this function with #GHashTable.  They must each be a #GVariant.
+     * @param two a #GVariant instance
      */
     equal(two: Variant): boolean
     /**
@@ -12593,6 +13271,7 @@ class Variant {
      * nesting up to at least 64 levels.
      * 
      * This function is O(1).
+     * @param index the index of the child to fetch
      */
     getChildValue(index: number): Variant
     /**
@@ -12846,6 +13525,7 @@ class Variant {
     isNormalForm(): boolean
     /**
      * Checks if a value has a type matching the provided type.
+     * @param type a #GVariantType
      */
     isOfType(type: VariantType): boolean
     /**
@@ -12870,6 +13550,8 @@ class Variant {
      * 
      * This function is currently implemented with a linear scan.  If you
      * plan to do many lookups then #GVariantDict may be more efficient.
+     * @param key the key to look up in the dictionary
+     * @param expectedType a #GVariantType, or %NULL
      */
     lookupValue(key: string, expectedType?: VariantType | null): Variant
     /**
@@ -12893,6 +13575,7 @@ class Variant {
      * 
      * If `type_annotate` is %TRUE, then type information is included in
      * the output.
+     * @param typeAnnotate %TRUE if type information should be included in                 the output
      */
     print(typeAnnotate: boolean): string
     /**
@@ -12937,6 +13620,7 @@ class Variant {
      * machine might be different) its endianness must also be available.
      * 
      * This function is approximately O(n) in the size of `data`.
+     * @param data the location to store the serialized data at
      */
     store(data: object): void
     /**
@@ -13015,6 +13699,7 @@ class Variant {
      * sequences of characters separated by `/` characters.  Each sequence
      * must contain only the characters `[A-Z][a-z][0-9]_`.  No sequence
      * (including the one following the final `/` character) may be empty.
+     * @param string a normal C nul-terminated string
      */
     static isObjectPath(string: string): boolean
     /**
@@ -13024,6 +13709,7 @@ class Variant {
      * 
      * D-Bus type signatures consist of zero or more definite #GVariantType
      * strings in sequence.
+     * @param string a normal C nul-terminated string
      */
     static isSignature(string: string): boolean
     /**
@@ -13062,6 +13748,10 @@ class Variant {
      * There may be implementation specific restrictions on deeply nested values,
      * which would result in a %G_VARIANT_PARSE_ERROR_RECURSION error. #GVariant is
      * guaranteed to handle nesting up to at least 64 levels.
+     * @param type a #GVariantType, or %NULL
+     * @param text a string containing a GVariant in text form
+     * @param limit a pointer to the end of `text,` or %NULL
+     * @param endptr a location to store the end pointer, or %NULL
      */
     static parse(type: VariantType | null, text: string, limit?: string | null, endptr?: string | null): Variant
     /**
@@ -13096,6 +13786,8 @@ class Variant {
      * If `source_str` was not nul-terminated when you passed it to
      * g_variant_parse() then you must add nul termination before using this
      * function.
+     * @param error a #GError from the #GVariantParseError domain
+     * @param sourceStr the string that was given to the parser
      */
     static parseErrorPrintContext(error: Error, sourceStr: string): string
     static parseErrorQuark(): Quark
@@ -13117,6 +13809,7 @@ class VariantBuilder {
      * 
      * If `value` is a floating reference (see g_variant_ref_sink()),
      * the `builder` instance takes ownership of `value`.
+     * @param value a #GVariant
      */
     addValue(value: Variant): void
     /**
@@ -13187,6 +13880,7 @@ class VariantBuilder {
      * output = g_variant_builder_end (&builder);
      * ```
      * 
+     * @param type the #GVariantType of the container
      */
     open(type: VariantType): void
     /**
@@ -13233,6 +13927,7 @@ class VariantDict {
     clear(): void
     /**
      * Checks if `key` exists in `dict`.
+     * @param key the key to look up in the dictionary
      */
     contains(key: string): boolean
     /**
@@ -13249,6 +13944,8 @@ class VariantDict {
      * Inserts (or replaces) a key in a #GVariantDict.
      * 
      * `value` is consumed if it is floating.
+     * @param key the key to insert a value for
+     * @param value the value to insert
      */
     insertValue(key: string, value: Variant): void
     /**
@@ -13263,6 +13960,8 @@ class VariantDict {
      * If the key is found and the value has the correct type, it is
      * returned.  If `expected_type` was specified then any non-%NULL return
      * value will have this type.
+     * @param key the key to look up in the dictionary
+     * @param expectedType a #GVariantType, or %NULL
      */
     lookupValue(key: string, expectedType?: VariantType | null): Variant
     /**
@@ -13274,6 +13973,7 @@ class VariantDict {
     ref(): VariantDict
     /**
      * Removes a key and its associated value from a #GVariantDict.
+     * @param key the key to remove
      */
     remove(key: string): boolean
     /**
@@ -13372,6 +14072,7 @@ class VariantType {
      * The argument types of `type1` and `type2` are only #gconstpointer to
      * allow use with #GHashTable without function pointer casting.  For
      * both arguments, a valid #GVariantType must be provided.
+     * @param type2 a #GVariantType
      */
     equal(type2: VariantType): boolean
     /**
@@ -13484,6 +14185,7 @@ class VariantType {
      * This function returns %TRUE if `type` is a subtype of `supertype`.  All
      * types are considered to be subtypes of themselves.  Aside from that,
      * only indefinite types can have subtypes.
+     * @param supertype a #GVariantType
      */
     isSubtypeOf(supertype: VariantType): boolean
     /**
@@ -13555,6 +14257,7 @@ class VariantType {
      * Checks if `type_string` is a valid GVariant type string.  This call is
      * equivalent to calling g_variant_type_string_scan() and confirming
      * that the following character is a nul terminator.
+     * @param typeString a pointer to any string
      */
     static stringIsValid(typeString: string): boolean
     /**
@@ -13571,6 +14274,8 @@ class VariantType {
      * 
      * For the simple case of checking if a string is a valid type string,
      * see g_variant_type_string_is_valid().
+     * @param string a pointer to any string
+     * @param limit the end of `string,` or %NULL
      */
     static stringScan(string: string, limit?: string | null): [ /* returnType */ boolean, /* endptr */ string | null ]
 }

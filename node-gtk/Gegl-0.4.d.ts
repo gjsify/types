@@ -290,16 +290,22 @@ class Metadata {
      * by the image file writer.  If resolution is not supported by the application
      * or if the operation fails %FALSE is returned and the resolution values are
      * not updated.
+     * @param unit #GeglResolutionUnit return location
+     * @param x X resolution return location
+     * @param y Y resolution return location
      */
     getResolution(unit: ResolutionUnit, x: number, y: number): boolean
     /**
      * Retrieve image file metadata from the application.  Intended for use by the
      * image file writer. If the operation fails it returns %FALSE and `value` is
      * not updated.
+     * @param iter #GeglMetadataIter referencing the value to get
+     * @param value Value to set in the interface
      */
     iterGetValue(iter: MetadataIter, value: any): boolean
     /**
      * Initialise an iterator to find all supported metadata keys.
+     * @param iter #GeglMetadataIter to be initialised
      */
     iterInit(iter: MetadataIter): void
     /**
@@ -307,28 +313,39 @@ class Metadata {
      * associated metadata. The iterator is used in conjunction with
      * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
      * iterator is not valid for gegl_metadata_iter_next().
+     * @param iter #GeglMetadataIter to be initialised
+     * @param key Name of the value look up
      */
     iterLookup(iter: MetadataIter, key: string): boolean
     /**
      * Move the iterator to the next metadata item
+     * @param iter #GeglMetadataIter to be updated
      */
     iterNext(iter: MetadataIter): string
     /**
      * Set application data retrieved from image file's metadata.  Intended for use
      * by the image file reader.  If the operation fails it returns %FALSE and
      * `value` is ignored.
+     * @param iter #GeglMetadataIter referencing the value to set
+     * @param value Value to set in the interface
      */
     iterSetValue(iter: MetadataIter, value: any): boolean
     /**
      * Set the name of the file module and pass an array of mappings from
      * file-format specific metadata names to those used by Gegl. A GValue
      * transformation function may be supplied, e.g. to parse or format timestamps.
+     * @param fileModule String identifying the file module, e.g, `"gegl:png-save"`
+     * @param flags Flags specifying capabilities of underlying file format
+     * @param map Array of mappings from file module metadata              names to Gegl well-known names.
      */
     registerMap(fileModule: string, flags: number, map: MetadataMap[]): void
     /**
      * Set resolution retrieved from image file's metadata.  Intended for use by
      * the image file reader.  If resolution is not supported by the application or
      * if the operation fails %FALSE is returned and the values are ignored.
+     * @param unit Specify #GeglResolutionUnit
+     * @param x X resolution
+     * @param y Y resolution
      */
     setResolution(unit: ResolutionUnit, x: number, y: number): boolean
     /**
@@ -347,7 +364,7 @@ class AudioFragment {
     /* Properties of Gegl-0.4.Gegl.AudioFragment */
     string: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.AudioFragment */
     getChannelLayout(): number
     getChannels(): number
@@ -396,6 +413,10 @@ class AudioFragment {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -406,6 +427,12 @@ class AudioFragment {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -429,6 +456,7 @@ class AudioFragment {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -448,11 +476,14 @@ class AudioFragment {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -460,6 +491,8 @@ class AudioFragment {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -477,6 +510,7 @@ class AudioFragment {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -522,6 +556,7 @@ class AudioFragment {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -565,15 +600,20 @@ class AudioFragment {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -614,6 +654,7 @@ class AudioFragment {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -648,6 +689,7 @@ class AudioFragment {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -679,6 +721,7 @@ class AudioFragment {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -725,30 +768,43 @@ interface Buffer_ConstructProps extends TileHandler_ConstructProps {
 }
 class Buffer {
     /* Properties of Gegl-0.4.Gegl.Buffer */
+    readonly abyssHeight: number
+    readonly abyssWidth: number
+    readonly abyssX: number
+    readonly abyssY: number
+    readonly backend: TileBackend
     format: object
     height: number
+    readonly initialized: boolean
+    readonly path: string
     readonly pixels: number
     readonly pxSize: number
+    readonly shiftX: number
+    readonly shiftY: number
+    readonly tileHeight: number
+    readonly tileWidth: number
     width: number
     x: number
     y: number
     /* Fields of Gegl-0.4.Gegl.TileHandler */
-    readonly parentInstance: TileSource
-    readonly source: TileSource
-    readonly priv: TileHandlerPrivate
+    parentInstance: TileSource
+    source: TileSource
+    priv: TileHandlerPrivate
     /* Fields of Gegl-0.4.Gegl.TileSource */
-    readonly command: TileSourceCommand
-    readonly padding: object[]
+    command: TileSourceCommand
+    padding: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.Buffer */
     /**
      * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
+     * @param handler a #GeglTileHandler
      */
     addHandler(handler?: object | null): void
     /**
      * Clears the provided rectangular region by setting all the associated memory
      * to 0.
+     * @param roi a rectangular region
      */
     clear(roi: Rectangle): void
     /**
@@ -759,10 +815,15 @@ class Buffer {
      * 
      * This function never does any scaling. When src_rect and dst_rect do not have
      * the same width and height, the size of src_rect is used.
+     * @param srcRect source rectangle (or NULL to copy entire source buffer)
+     * @param repeatMode the abyss policy to be using if src_rect is outside src's extent.
+     * @param dst destination buffer.
+     * @param dstRect position of upper left destination pixel (or NULL to match `src_rect)`
      */
     copy(srcRect: Rectangle, repeatMode: AbyssPolicy, dst: Buffer, dstRect: Rectangle): void
     /**
      * Create a new sub GeglBuffer, that is a view on a larger buffer.
+     * @param extent coordinates of new buffer.
      */
     createSubBuffer(extent: Rectangle): Buffer
     /**
@@ -781,6 +842,7 @@ class Buffer {
      * externally to be synchronized with the buffer. Multi threaded code should
      * call such a synchronization before branching out to avoid each of the
      * threads having an implicit synchronization of its own.
+     * @param rect rectangle
      */
     flushExt(rect: Rectangle): void
     /**
@@ -803,10 +865,17 @@ class Buffer {
     getExtent(): Rectangle
     /**
      * Fetch a rectangular linear buffer of pixel data from the GeglBuffer.
+     * @param rect the coordinates we want to retrieve data from.
+     * @param scale sampling scale, 1.0 = pixel for pixel 2.0 = magnify, 0.5 scale down.
+     * @param formatName the format to store data in, if NULL the format of the buffer is used.
+     * @param repeatMode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
      */
     get(rect: Rectangle, scale: number, formatName: string | null, repeatMode: AbyssPolicy): Uint8Array
     /**
      * Store a linear raster buffer into the GeglBuffer.
+     * @param rect the rectangle to write.
+     * @param formatName the format of the input data.
+     * @param src pixel data to write to `buffer`.
      */
     set(rect: Rectangle, formatName: string, src: Uint8Array): void
     /**
@@ -814,10 +883,12 @@ class Buffer {
      * being made to the linear buffer. If the request was not a compatible one
      * it is written back to the buffer. Multiple concurrent users can be handed
      * the same buffer (both raw access and converted).
+     * @param linear a previously returned buffer.
      */
     linearClose(linear?: object | null): void
     /**
      * Remove the provided tile handler in the existing chain of tile handler of a GeglBuffer.
+     * @param handler a #GeglTileHandler
      */
     removeHandler(handler?: object | null): void
     /**
@@ -826,20 +897,28 @@ class Buffer {
     sampleCleanup(): void
     /**
      * Write a GeglBuffer to a file.
+     * @param path the path where the gegl buffer will be saved, any writable GIO uri is valid.
+     * @param roi the region of interest to write, this is the tiles that will be collected and written to disk.
      */
     save(path: string, roi: Rectangle): void
     /**
      * Changes the size and position of the abyss rectangle of a buffer.
      * 
      * Returns TRUE if the change of abyss was successful.
+     * @param abyss new abyss.
      */
     setAbyss(abyss: Rectangle): boolean
     /**
      * Sets the region covered by rect to the specified color.
+     * @param rect a rectangular region to fill with a color.
+     * @param color the GeglColor to fill with.
      */
     setColor(rect: Rectangle, color: Color): void
     /**
      * Sets the region covered by rect to the the provided pixel.
+     * @param rect a rectangular region to fill with a color.
+     * @param pixel pointer to the data of a single pixel
+     * @param pixelFormat the babl format of the pixel, if missing - the soft format of dst.
      */
     setColorFromPixel(rect: Rectangle, pixel: object | null, pixelFormat: Babl.Object): void
     /**
@@ -848,18 +927,24 @@ class Buffer {
      * buffer's extent are at the moment undefined.
      * 
      * Returns TRUE if the change of extent was successful.
+     * @param extent new extent.
      */
     setExtent(extent: Rectangle): boolean
     /**
      * Fill a region with a repeating pattern. Offsets parameters are
      * relative to the origin (0, 0) and not to the rectangle. So be carefull
      * about the origin of `pattern` and `buffer` extents.
+     * @param rect the region of `buffer` to fill
+     * @param pattern a #GeglBuffer to be repeated as a pattern
+     * @param xOffset where the pattern starts horizontally
+     * @param yOffset where the pattern starts vertical
      */
     setPattern(rect: Rectangle, pattern: Buffer, xOffset: number, yOffset: number): void
     /**
      * Checks if a pair of buffers share the same underlying tile storage.
      * 
      * Returns TRUE if `buffer1` and `buffer2` share the same storage.
+     * @param buffer2 a #GeglBuffer.
      */
     shareStorage(buffer2: Buffer): boolean
     /**
@@ -868,6 +953,8 @@ class Buffer {
      * machinery to avoid the overhead of changes when no signal handler have been
      * connected, if regular g_signal_connect is used; then no signals will be
      * emitted.
+     * @param detailedSignal only "changed" expected for now
+     * @param cHandler c function callback
      */
     signalConnect(detailedSignal: string, cHandler: GObject.Callback): number
     /**
@@ -918,6 +1005,10 @@ class Buffer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -928,6 +1019,12 @@ class Buffer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -951,6 +1048,7 @@ class Buffer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -970,11 +1068,14 @@ class Buffer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -982,6 +1083,8 @@ class Buffer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -999,6 +1102,7 @@ class Buffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1044,6 +1148,7 @@ class Buffer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1087,15 +1192,20 @@ class Buffer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1136,6 +1246,7 @@ class Buffer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1170,6 +1281,7 @@ class Buffer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gegl-0.4.Gegl.Buffer */
@@ -1207,12 +1319,38 @@ class Buffer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::abyss-height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::abyss-height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::abyss-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::abyss-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::abyss-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::abyss-width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::abyss-width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::abyss-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::abyss-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::abyss-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::abyss-x", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::abyss-x", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::abyss-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::abyss-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::abyss-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::abyss-y", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::abyss-y", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::abyss-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::abyss-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::abyss-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::backend", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::backend", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::backend", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::backend", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::backend", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::format", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::format", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::format", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1223,6 +1361,16 @@ class Buffer {
     on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::initialized", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::initialized", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::initialized", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::initialized", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::initialized", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::pixels", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pixels", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::pixels", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1233,6 +1381,26 @@ class Buffer {
     on(sigName: "notify::px-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::px-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::px-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::shift-x", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shift-x", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::shift-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::shift-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::shift-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::shift-y", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shift-y", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::shift-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::shift-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::shift-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::tile-height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tile-height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::tile-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::tile-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::tile-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::tile-width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tile-width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::tile-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::tile-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::tile-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1265,12 +1433,14 @@ class Buffer {
      * Loads an existing GeglBuffer from disk, if it has previously been saved with
      * gegl_buffer_save it should be possible to open through any GIO transport, buffers
      * that have been used as swap needs random access to be opened.
+     * @param path the path to a gegl buffer on disk.
      */
     static load(path: string): Buffer
     /**
      * Open an existing on-disk GeglBuffer, this buffer is opened in a monitored
      * state so multiple instances of gegl can share the same buffer. Sets on
      * one buffer are reflected in the other.
+     * @param path the path to a gegl buffer on disk.
      */
     static open(path: string): Buffer
     /**
@@ -1278,17 +1448,20 @@ class Buffer {
      * using as swap space.  When the file is no longer needed, it may be
      * removed with gegl_buffer_swap_remove_file(); otherwise, it will be
      * removed when gegl_exit() is called.
+     * @param suffix a string to suffix the filename with, for          identification purposes, or %NULL.
      */
     static swapCreateFile(suffix?: string | null): string | null
     /**
      * Tests if `path` is a swap file, that is, if it has been created
      * with gegl_buffer_swap_create_file(), and hasn't been removed
      * yet.
+     * @param path a filename
      */
     static swapHasFile(path: string): boolean
     /**
      * Removes a swap file, generated using gegl_buffer_swap_create_file(),
      * unlinking the file, if exists.
+     * @param path the swap file to remove, as returned by        gegl_buffer_swap_create_file()
      */
     static swapRemoveFile(path: string): void
     static $gtype: GObject.Type
@@ -1301,7 +1474,7 @@ class Color {
     /* Properties of Gegl-0.4.Gegl.Color */
     string: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.Color */
     /**
      * Creates a copy of `color`.
@@ -1309,6 +1482,7 @@ class Color {
     duplicate(): Color
     /**
      * Get the component values of the color in `format`.
+     * @param format A Babl pointer
      */
     getComponents(format: any): number[]
     getFormat(): Babl.Object
@@ -1319,10 +1493,16 @@ class Color {
     getRgba(): [ /* red */ number, /* green */ number, /* blue */ number, /* alpha */ number ]
     /**
      * Set the color using the component values as `format`.
+     * @param format A Babl pointer
+     * @param components The color components.
      */
     setComponents(format: any, components: number[]): void
     /**
      * Set color as linear light non premultipled RGBA data
+     * @param red red value
+     * @param green green value
+     * @param blue blue value
+     * @param alpha alpha value
      */
     setRgba(red: number, green: number, blue: number, alpha: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1360,6 +1540,10 @@ class Color {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1370,6 +1554,12 @@ class Color {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1393,6 +1583,7 @@ class Color {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1412,11 +1603,14 @@ class Color {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1424,6 +1618,8 @@ class Color {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1441,6 +1637,7 @@ class Color {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1486,6 +1683,7 @@ class Color {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1529,15 +1727,20 @@ class Color {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1578,6 +1781,7 @@ class Color {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1612,6 +1816,7 @@ class Color {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1643,6 +1848,7 @@ class Color {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1698,7 +1904,7 @@ class Config {
     tileWidth: number
     useOpencl: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -1734,6 +1940,10 @@ class Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1744,6 +1954,12 @@ class Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1767,6 +1983,7 @@ class Config {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1786,11 +2003,14 @@ class Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1798,6 +2018,8 @@ class Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1815,6 +2037,7 @@ class Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1860,6 +2083,7 @@ class Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1903,15 +2127,20 @@ class Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1952,6 +2181,7 @@ class Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1986,6 +2216,7 @@ class Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2017,6 +2248,7 @@ class Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2099,17 +2331,20 @@ interface Curve_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Curve {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.Curve */
     /**
      * Add a point to the curve at `x` `y` (replacing the value exactly for `x` if it
      * already exists.
+     * @param x x coordinate
+     * @param y y coordinate
      */
     addPoint(x: number, y: number): number
     /**
      * Retrieve the number of points in the curve.
      * 
      * Returns the number of points for the coordinates in the curve.
+     * @param x 
      */
     calcValue(x: number): number
     /**
@@ -2118,6 +2353,7 @@ class Curve {
     duplicate(): Curve
     /**
      * Retrive the coordinates for an index.
+     * @param index the position of the value number to retrieve.
      */
     getPoint(index: number): [ /* x */ number, /* y */ number ]
     /**
@@ -2133,6 +2369,9 @@ class Curve {
     numPoints(): number
     /**
      * Replace an existing point in a curve.
+     * @param index the position of the value number to retrieve.
+     * @param x x coordinate
+     * @param y y coordinate
      */
     setPoint(index: number, x: number, y: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2170,6 +2409,10 @@ class Curve {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2180,6 +2423,12 @@ class Curve {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2203,6 +2452,7 @@ class Curve {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2222,11 +2472,14 @@ class Curve {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2234,6 +2487,8 @@ class Curve {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2251,6 +2506,7 @@ class Curve {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2296,6 +2552,7 @@ class Curve {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2339,15 +2596,20 @@ class Curve {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2388,6 +2650,7 @@ class Curve {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2422,6 +2685,7 @@ class Curve {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2453,6 +2717,7 @@ class Curve {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2537,12 +2802,13 @@ class MetadataHash {
      */
     warning: string
     /* Fields of Gegl-0.4.Gegl.MetadataStore */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.MetadataStore */
     /**
      * Declare a metadata value using a #GParamSpec.
+     * @param pspec A #GParamSpec
      */
     declare(pspec: GObject.ParamSpec): void
     /**
@@ -2593,6 +2859,7 @@ class MetadataHash {
      * A slightly more efficient version of gegl_metadata_store_get_value()
      * for string values avoiding a duplication. Otherwise it behaves the same
      * gegl_metadata_store_get_value().
+     * @param name Metadata name
      */
     getString(name: string): string
     /**
@@ -2607,6 +2874,8 @@ class MetadataHash {
      * Retrieve the metadata value. `value` must be initialised with a compatible
      * type. If the value is unset or has not been previously declared `value` is
      * unchanged and an error message is logged.
+     * @param name Metadata name
+     * @param value An initialised #GValue.
      */
     getValue(name: string, value: any): /* value */ any
     /**
@@ -2615,6 +2884,7 @@ class MetadataHash {
     getWarning(): string
     /**
      * Test whether the #GeglMetadataStore contains a value for the specified name.
+     * @param name Metadata name
      */
     hasValue(name: string): boolean
     /**
@@ -2623,61 +2893,77 @@ class MetadataHash {
      * name as the detail parameter.  Set `shadow` = %TRUE if variable is shadowed
      * by a property so that a notify signal is emitted with the property name as
      * the detail parameter.
+     * @param pspec The #GParamSpec used to declare the variable.
+     * @param shadow The metadata variable shadows a property.
      */
     notify(pspec: GObject.ParamSpec, shadow: boolean): void
     register(localName: string, name: string, transform: GObject.ValueTransform): void
     /**
      * Set name of image creator.
+     * @param artist Artist string
      */
     setArtist(artist: string): void
     /**
      * Set the miscellaneous comment; conversion from GIF comment.
+     * @param comment Comment string
      */
     setComment(comment: string): void
     /**
      * Set the copyright notice.
+     * @param copyright Copyright string
      */
     setCopyright(copyright: string): void
     /**
      * Set description of image.
+     * @param description Description string
      */
     setDescription(description: string): void
     /**
      * Set the legal disclaimer.
+     * @param disclaimer Disclaimer string
      */
     setDisclaimer(disclaimer: string): void
     /**
      * Set the units used for the resolution (density) values.
+     * @param unit Units as a #GeglResolutionUnit
      */
     setResolutionUnit(unit: ResolutionUnit): void
     /**
      * Set the X resolution or density in dots per unit.
+     * @param resolutionX X resolution or density
      */
     setResolutionX(resolutionX: number): void
     /**
      * Set the Y resolution or density in dots per unit.
+     * @param resolutionY Y resolution or density
      */
     setResolutionY(resolutionY: number): void
     /**
      * Set software used to create the image.
+     * @param software Software string
      */
     setSoftware(software: string): void
     /**
      * Set device used to create the image.
+     * @param source Source string
      */
     setSource(source: string): void
     /**
      * A slightly more efficient version of gegl_metadata_store_set_value()
      * for string values avoiding a duplication. Otherwise it behaves the same
      * gegl_metadata_store_set_value().
+     * @param name Metadata name
+     * @param string String value to set
      */
     setString(name: string, string: string): void
     /**
      * Set time of original image creation.
+     * @param timestamp A #GDateTime
      */
     setTimestamp(timestamp: GLib.DateTime): void
     /**
      * Set title or caption for image.
+     * @param title Title string
      */
     setTitle(title: string): void
     /**
@@ -2686,14 +2972,18 @@ class MetadataHash {
      * has not been previously declared.  A `changed::name` signal is emitted when
      * the value is set. If the value is shadowed by a property a `notify::name`
      * signal is also emitted.
+     * @param name Metadata name
+     * @param value (nullable): A valid #GValue or %NULL
      */
     setValue(name: string, value: any): void
     /**
      * Set the warning of nature of content.
+     * @param warning Warning string
      */
     setWarning(warning: string): void
     /**
      * Get the declared type of the value in the #GeglMetadataStore.
+     * @param name Metadata name
      */
     typeofValue(name: string): GObject.Type
     /* Methods of GObject-2.0.GObject.Object */
@@ -2731,6 +3021,10 @@ class MetadataHash {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2741,6 +3035,12 @@ class MetadataHash {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2764,6 +3064,7 @@ class MetadataHash {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2783,11 +3084,14 @@ class MetadataHash {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2795,6 +3099,8 @@ class MetadataHash {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2812,6 +3118,7 @@ class MetadataHash {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2857,6 +3164,7 @@ class MetadataHash {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2900,15 +3208,20 @@ class MetadataHash {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2949,6 +3262,7 @@ class MetadataHash {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2983,6 +3297,7 @@ class MetadataHash {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gegl-0.4.Gegl.Metadata */
@@ -2991,16 +3306,22 @@ class MetadataHash {
      * by the image file writer.  If resolution is not supported by the application
      * or if the operation fails %FALSE is returned and the resolution values are
      * not updated.
+     * @param unit #GeglResolutionUnit return location
+     * @param x X resolution return location
+     * @param y Y resolution return location
      */
     getResolution(unit: ResolutionUnit, x: number, y: number): boolean
     /**
      * Retrieve image file metadata from the application.  Intended for use by the
      * image file writer. If the operation fails it returns %FALSE and `value` is
      * not updated.
+     * @param iter #GeglMetadataIter referencing the value to get
+     * @param value Value to set in the interface
      */
     iterGetValue(iter: MetadataIter, value: any): boolean
     /**
      * Initialise an iterator to find all supported metadata keys.
+     * @param iter #GeglMetadataIter to be initialised
      */
     iterInit(iter: MetadataIter): void
     /**
@@ -3008,28 +3329,39 @@ class MetadataHash {
      * associated metadata. The iterator is used in conjunction with
      * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
      * iterator is not valid for gegl_metadata_iter_next().
+     * @param iter #GeglMetadataIter to be initialised
+     * @param key Name of the value look up
      */
     iterLookup(iter: MetadataIter, key: string): boolean
     /**
      * Move the iterator to the next metadata item
+     * @param iter #GeglMetadataIter to be updated
      */
     iterNext(iter: MetadataIter): string
     /**
      * Set application data retrieved from image file's metadata.  Intended for use
      * by the image file reader.  If the operation fails it returns %FALSE and
      * `value` is ignored.
+     * @param iter #GeglMetadataIter referencing the value to set
+     * @param value Value to set in the interface
      */
     iterSetValue(iter: MetadataIter, value: any): boolean
     /**
      * Set the name of the file module and pass an array of mappings from
      * file-format specific metadata names to those used by Gegl. A GValue
      * transformation function may be supplied, e.g. to parse or format timestamps.
+     * @param fileModule String identifying the file module, e.g, `"gegl:png-save"`
+     * @param flags Flags specifying capabilities of underlying file format
+     * @param map Array of mappings from file module metadata              names to Gegl well-known names.
      */
     registerMap(fileModule: string, flags: number, map: MetadataMap[]): void
     /**
      * Set resolution retrieved from image file's metadata.  Intended for use by
      * the image file reader.  If resolution is not supported by the application or
      * if the operation fails %FALSE is returned and the values are ignored.
+     * @param unit Specify #GeglResolutionUnit
+     * @param x X resolution
+     * @param y Y resolution
      */
     setResolution(unit: ResolutionUnit, x: number, y: number): boolean
     /**
@@ -3042,6 +3374,7 @@ class MetadataHash {
     /**
      * `::changed` is emitted when a metadata value is changed. This is analogous
      * to the `GObject::notify` signal.
+     * @param pspec A #GParamSpec declaring the metadata value
      */
     connect(sigName: "changed", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "changed", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3056,6 +3389,8 @@ class MetadataHash {
      * operation.
      * 
      * If no handler is connected the mapped metadata value is accessed normally,
+     * @param pspec A #GParamSpec declaring the metadata value
+     * @param value An initialised #GValue.
      */
     connect(sigName: "generate-value", callback: ((pspec: GObject.ParamSpec, value: any) => boolean)): number
     on(sigName: "generate-value", callback: (pspec: GObject.ParamSpec, value: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -3068,6 +3403,8 @@ class MetadataHash {
      * registering additional mappings or overriding existing values, for example
      * it might override the TIFF ImageDescription tag to format multiple metadata
      * values into the description.
+     * @param fileModule The file module name
+     * @param excludeUnmapped %TRUE if the file module cannot handle unmapped values
      */
     connect(sigName: "mapped", callback: ((fileModule: string, excludeUnmapped: boolean) => void)): number
     on(sigName: "mapped", callback: (fileModule: string, excludeUnmapped: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -3081,6 +3418,8 @@ class MetadataHash {
      * any number of metadata values using gegl_metadata_store_set_value().
      * 
      * If no handler is connected the mapped metadata value is set normally,
+     * @param pspec A #GParamSpec declaring the metadata value
+     * @param value A #GValue containing the value to parse.
      */
     connect(sigName: "parse-value", callback: ((pspec: GObject.ParamSpec, value: any) => boolean)): number
     on(sigName: "parse-value", callback: (pspec: GObject.ParamSpec, value: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -3091,6 +3430,8 @@ class MetadataHash {
      * `::unmapped` is emitted when a file module tries to look up an unmapped
      * metadata name. When the handler returns a second attempt is made to look
      * up the metadata.
+     * @param fileModule The file module name
+     * @param localName The unmapped metadata name as used by the file module
      */
     connect(sigName: "unmapped", callback: ((fileModule: string, localName: string) => void)): number
     on(sigName: "unmapped", callback: (fileModule: string, localName: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3126,6 +3467,7 @@ class MetadataHash {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3332,10 +3674,11 @@ class MetadataStore {
      */
     warning: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.MetadataStore */
     /**
      * Declare a metadata value using a #GParamSpec.
+     * @param pspec A #GParamSpec
      */
     declare(pspec: GObject.ParamSpec): void
     /**
@@ -3386,6 +3729,7 @@ class MetadataStore {
      * A slightly more efficient version of gegl_metadata_store_get_value()
      * for string values avoiding a duplication. Otherwise it behaves the same
      * gegl_metadata_store_get_value().
+     * @param name Metadata name
      */
     getString(name: string): string
     /**
@@ -3400,6 +3744,8 @@ class MetadataStore {
      * Retrieve the metadata value. `value` must be initialised with a compatible
      * type. If the value is unset or has not been previously declared `value` is
      * unchanged and an error message is logged.
+     * @param name Metadata name
+     * @param value An initialised #GValue.
      */
     getValue(name: string, value: any): /* value */ any
     /**
@@ -3408,6 +3754,7 @@ class MetadataStore {
     getWarning(): string
     /**
      * Test whether the #GeglMetadataStore contains a value for the specified name.
+     * @param name Metadata name
      */
     hasValue(name: string): boolean
     /**
@@ -3416,61 +3763,77 @@ class MetadataStore {
      * name as the detail parameter.  Set `shadow` = %TRUE if variable is shadowed
      * by a property so that a notify signal is emitted with the property name as
      * the detail parameter.
+     * @param pspec The #GParamSpec used to declare the variable.
+     * @param shadow The metadata variable shadows a property.
      */
     notify(pspec: GObject.ParamSpec, shadow: boolean): void
     register(localName: string, name: string, transform: GObject.ValueTransform): void
     /**
      * Set name of image creator.
+     * @param artist Artist string
      */
     setArtist(artist: string): void
     /**
      * Set the miscellaneous comment; conversion from GIF comment.
+     * @param comment Comment string
      */
     setComment(comment: string): void
     /**
      * Set the copyright notice.
+     * @param copyright Copyright string
      */
     setCopyright(copyright: string): void
     /**
      * Set description of image.
+     * @param description Description string
      */
     setDescription(description: string): void
     /**
      * Set the legal disclaimer.
+     * @param disclaimer Disclaimer string
      */
     setDisclaimer(disclaimer: string): void
     /**
      * Set the units used for the resolution (density) values.
+     * @param unit Units as a #GeglResolutionUnit
      */
     setResolutionUnit(unit: ResolutionUnit): void
     /**
      * Set the X resolution or density in dots per unit.
+     * @param resolutionX X resolution or density
      */
     setResolutionX(resolutionX: number): void
     /**
      * Set the Y resolution or density in dots per unit.
+     * @param resolutionY Y resolution or density
      */
     setResolutionY(resolutionY: number): void
     /**
      * Set software used to create the image.
+     * @param software Software string
      */
     setSoftware(software: string): void
     /**
      * Set device used to create the image.
+     * @param source Source string
      */
     setSource(source: string): void
     /**
      * A slightly more efficient version of gegl_metadata_store_set_value()
      * for string values avoiding a duplication. Otherwise it behaves the same
      * gegl_metadata_store_set_value().
+     * @param name Metadata name
+     * @param string String value to set
      */
     setString(name: string, string: string): void
     /**
      * Set time of original image creation.
+     * @param timestamp A #GDateTime
      */
     setTimestamp(timestamp: GLib.DateTime): void
     /**
      * Set title or caption for image.
+     * @param title Title string
      */
     setTitle(title: string): void
     /**
@@ -3479,14 +3842,18 @@ class MetadataStore {
      * has not been previously declared.  A `changed::name` signal is emitted when
      * the value is set. If the value is shadowed by a property a `notify::name`
      * signal is also emitted.
+     * @param name Metadata name
+     * @param value (nullable): A valid #GValue or %NULL
      */
     setValue(name: string, value: any): void
     /**
      * Set the warning of nature of content.
+     * @param warning Warning string
      */
     setWarning(warning: string): void
     /**
      * Get the declared type of the value in the #GeglMetadataStore.
+     * @param name Metadata name
      */
     typeofValue(name: string): GObject.Type
     /* Methods of GObject-2.0.GObject.Object */
@@ -3524,6 +3891,10 @@ class MetadataStore {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3534,6 +3905,12 @@ class MetadataStore {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3557,6 +3934,7 @@ class MetadataStore {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3576,11 +3954,14 @@ class MetadataStore {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3588,6 +3969,8 @@ class MetadataStore {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3605,6 +3988,7 @@ class MetadataStore {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3650,6 +4034,7 @@ class MetadataStore {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3693,15 +4078,20 @@ class MetadataStore {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3742,6 +4132,7 @@ class MetadataStore {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3776,6 +4167,7 @@ class MetadataStore {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gegl-0.4.Gegl.Metadata */
@@ -3784,16 +4176,22 @@ class MetadataStore {
      * by the image file writer.  If resolution is not supported by the application
      * or if the operation fails %FALSE is returned and the resolution values are
      * not updated.
+     * @param unit #GeglResolutionUnit return location
+     * @param x X resolution return location
+     * @param y Y resolution return location
      */
     getResolution(unit: ResolutionUnit, x: number, y: number): boolean
     /**
      * Retrieve image file metadata from the application.  Intended for use by the
      * image file writer. If the operation fails it returns %FALSE and `value` is
      * not updated.
+     * @param iter #GeglMetadataIter referencing the value to get
+     * @param value Value to set in the interface
      */
     iterGetValue(iter: MetadataIter, value: any): boolean
     /**
      * Initialise an iterator to find all supported metadata keys.
+     * @param iter #GeglMetadataIter to be initialised
      */
     iterInit(iter: MetadataIter): void
     /**
@@ -3801,28 +4199,39 @@ class MetadataStore {
      * associated metadata. The iterator is used in conjunction with
      * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
      * iterator is not valid for gegl_metadata_iter_next().
+     * @param iter #GeglMetadataIter to be initialised
+     * @param key Name of the value look up
      */
     iterLookup(iter: MetadataIter, key: string): boolean
     /**
      * Move the iterator to the next metadata item
+     * @param iter #GeglMetadataIter to be updated
      */
     iterNext(iter: MetadataIter): string
     /**
      * Set application data retrieved from image file's metadata.  Intended for use
      * by the image file reader.  If the operation fails it returns %FALSE and
      * `value` is ignored.
+     * @param iter #GeglMetadataIter referencing the value to set
+     * @param value Value to set in the interface
      */
     iterSetValue(iter: MetadataIter, value: any): boolean
     /**
      * Set the name of the file module and pass an array of mappings from
      * file-format specific metadata names to those used by Gegl. A GValue
      * transformation function may be supplied, e.g. to parse or format timestamps.
+     * @param fileModule String identifying the file module, e.g, `"gegl:png-save"`
+     * @param flags Flags specifying capabilities of underlying file format
+     * @param map Array of mappings from file module metadata              names to Gegl well-known names.
      */
     registerMap(fileModule: string, flags: number, map: MetadataMap[]): void
     /**
      * Set resolution retrieved from image file's metadata.  Intended for use by
      * the image file reader.  If resolution is not supported by the application or
      * if the operation fails %FALSE is returned and the values are ignored.
+     * @param unit Specify #GeglResolutionUnit
+     * @param x X resolution
+     * @param y Y resolution
      */
     setResolution(unit: ResolutionUnit, x: number, y: number): boolean
     /**
@@ -3835,6 +4244,7 @@ class MetadataStore {
     /**
      * `::changed` is emitted when a metadata value is changed. This is analogous
      * to the `GObject::notify` signal.
+     * @param pspec A #GParamSpec declaring the metadata value
      */
     connect(sigName: "changed", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "changed", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3849,6 +4259,8 @@ class MetadataStore {
      * operation.
      * 
      * If no handler is connected the mapped metadata value is accessed normally,
+     * @param pspec A #GParamSpec declaring the metadata value
+     * @param value An initialised #GValue.
      */
     connect(sigName: "generate-value", callback: ((pspec: GObject.ParamSpec, value: any) => boolean)): number
     on(sigName: "generate-value", callback: (pspec: GObject.ParamSpec, value: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -3861,6 +4273,8 @@ class MetadataStore {
      * registering additional mappings or overriding existing values, for example
      * it might override the TIFF ImageDescription tag to format multiple metadata
      * values into the description.
+     * @param fileModule The file module name
+     * @param excludeUnmapped %TRUE if the file module cannot handle unmapped values
      */
     connect(sigName: "mapped", callback: ((fileModule: string, excludeUnmapped: boolean) => void)): number
     on(sigName: "mapped", callback: (fileModule: string, excludeUnmapped: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -3874,6 +4288,8 @@ class MetadataStore {
      * any number of metadata values using gegl_metadata_store_set_value().
      * 
      * If no handler is connected the mapped metadata value is set normally,
+     * @param pspec A #GParamSpec declaring the metadata value
+     * @param value A #GValue containing the value to parse.
      */
     connect(sigName: "parse-value", callback: ((pspec: GObject.ParamSpec, value: any) => boolean)): number
     on(sigName: "parse-value", callback: (pspec: GObject.ParamSpec, value: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -3884,6 +4300,8 @@ class MetadataStore {
      * `::unmapped` is emitted when a file module tries to look up an unmapped
      * metadata name. When the handler returns a second attempt is made to look
      * up the metadata.
+     * @param fileModule The file module name
+     * @param localName The unmapped metadata name as used by the file module
      */
     connect(sigName: "unmapped", callback: ((fileModule: string, localName: string) => void)): number
     on(sigName: "unmapped", callback: (fileModule: string, localName: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3919,6 +4337,7 @@ class MetadataStore {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4027,27 +4446,38 @@ class Node {
     passthrough: boolean
     useOpencl: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.Node */
     /**
      * Make the GeglNode `graph,` take a reference on child. This reference
      * will be dropped when the reference count on the graph reaches zero.
+     * @param child a GeglNode.
      */
     addChild(child: Node): Node
     /**
      * Render a rectangular region from a node to the given buffer.
+     * @param buffer the #GeglBuffer to render to.
+     * @param roi the rectangle to render.
+     * @param level mipmap level to render (0 for all)
+     * @param abyssPolicy 
      */
     blitBuffer(buffer: Buffer | null, roi: Rectangle | null, level: number, abyssPolicy: AbyssPolicy): void
     /**
      * Makes a connection between the pads of two nodes.
      * 
      * Returns TRUE if the connection was successfully made.
+     * @param inputPadName the name of the input pad we are connecting to
+     * @param source the node producing data we want to connect.
+     * @param outputPadName the output pad we want to use on the source.
      */
     connectFrom(inputPadName: string, source: Node, outputPadName: string): boolean
     /**
      * Makes a connection between the pads of two nodes.
      * 
      * Returns TRUE if the connection was successfully made.
+     * @param outputPadName the output pad we want to use on the source.
+     * @param sink the node we're connecting an input to
+     * @param inputPadName the name of the input pad we are connecting to
      */
     connectTo(outputPadName: string, sink: Node, inputPadName: string): boolean
     /**
@@ -4056,18 +4486,22 @@ class Node {
      * is included as an addition to #gegl_node_new_child in the public API to have
      * a non varargs entry point for bindings as well as sometimes simpler more
      * readable code.
+     * @param operation the type of node to create.
      */
     createChild(operation: string): Node
     /**
      * Performs hit detection by returning the node providing data at a given
      * coordinate pair. Currently operates only on bounding boxes and not
      * pixel data.
+     * @param x x coordinate
+     * @param y y coordinate
      */
     detect(x: number, y: number): Node
     /**
      * Disconnects node connected to `input_pad` of `node` (if any).
      * 
      * Returns TRUE if a connection was broken.
+     * @param inputPad the input pad to disconnect.
      */
     disconnect(inputPad: string): boolean
     findProperty(propertyName: string): GObject.ParamSpec
@@ -4079,18 +4513,21 @@ class Node {
      * both should be freed with g_free. The arrays are NULL terminated.
      * 
      * Returns the number of consumers connected to this output_pad.
+     * @param outputPad the output pad we want to know who uses.
      */
     getConsumers(outputPad: string): [ /* returnType */ number, /* nodes */ Node[] | null, /* pads */ string[] | null ]
     getGeglOperation(): Operation | null
     /**
      * Proxies are used to route between nodes of a subgraph contained within
      * a node.
+     * @param padName the name of the pad.
      */
     getInputProxy(padName: string): Node
     getOperation(): string
     /**
      * Proxies are used to route between nodes of a subgraph contained within
      * a node.
+     * @param padName the name of the pad.
      */
     getOutputProxy(padName: string): Node
     /**
@@ -4101,6 +4538,7 @@ class Node {
     getProducer(inputPadName: string, outputPadName?: string | null): Node
     /**
      * Returns TRUE if the node has a pad with the specified name
+     * @param padName the pad name we are looking for
      */
     hasPad(padName: string): boolean
     /**
@@ -4113,6 +4551,7 @@ class Node {
     /**
      * Synthetic sugar for linking the "output" pad of `source` to the "input"
      * pad of `sink`.
+     * @param sink the consumer of data.
      */
     link(sink: Node): void
     /**
@@ -4168,17 +4607,21 @@ class Node {
      * Removes a child from a GeglNode. The reference previously held will be
      * dropped so increase the reference count before removing when reparenting
      * a child between two graphs.
+     * @param child a GeglNode.
      */
     removeChild(child: Node): Node
     setPassthrough(passthrough: boolean): void
     /**
      * This is mainly included for language bindings. Using #gegl_node_set is
      * more convenient when programming in C.
+     * @param propertyName the name of the property to set
+     * @param value a GValue containing the value to be set in the property.
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Sets the right value in animated properties of this node and all its
      * dependendcies to be the specified time position.
+     * @param time the time to set the properties which have keyfraes attached to
      */
     setTime(time: number): void
     /**
@@ -4188,12 +4631,15 @@ class Node {
      * gegl graph, connect the internal output node to an output proxy (see
      * #gegl_node_get_output_proxy.) and use the proxy node as the basis
      * for the serialization.
+     * @param pathRoot filesystem path to construct relative paths from.
      */
     toXml(pathRoot: string): string
     /**
      * Returns a freshly allocated \0 terminated string containing a XML
      * serialization of a segment of a graph from `head` to `tail` nodes.
      * If `tail` is %NULL then this behaves just like #gegl_node_to_xml.
+     * @param tail a #GeglNode
+     * @param pathRoot filesystem path to construct relative paths from.
      */
     toXmlFull(tail: Node | null, pathRoot: string): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -4231,6 +4677,10 @@ class Node {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4241,6 +4691,12 @@ class Node {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4264,6 +4720,7 @@ class Node {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4283,11 +4740,14 @@ class Node {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4295,6 +4755,8 @@ class Node {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4312,6 +4774,7 @@ class Node {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4357,6 +4820,7 @@ class Node {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4400,15 +4864,20 @@ class Node {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4449,6 +4918,7 @@ class Node {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4483,6 +4953,7 @@ class Node {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gegl-0.4.Gegl.Node */
@@ -4530,6 +5001,7 @@ class Node {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4592,7 +5064,7 @@ interface Operation_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Operation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4628,6 +5100,10 @@ class Operation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4638,6 +5114,12 @@ class Operation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4661,6 +5143,7 @@ class Operation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4680,11 +5163,14 @@ class Operation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4692,6 +5178,8 @@ class Operation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4709,6 +5197,7 @@ class Operation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4754,6 +5243,7 @@ class Operation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4797,15 +5287,20 @@ class Operation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4846,6 +5341,7 @@ class Operation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4880,6 +5376,7 @@ class Operation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4911,6 +5408,7 @@ class Operation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4942,23 +5440,23 @@ class ParamAudioFragment {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -4987,6 +5485,7 @@ class ParamAudioFragment {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5006,6 +5505,8 @@ class ParamAudioFragment {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5023,6 +5524,7 @@ class ParamAudioFragment {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5032,23 +5534,23 @@ class ParamColor {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5077,6 +5579,7 @@ class ParamColor {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5096,6 +5599,8 @@ class ParamColor {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5113,6 +5618,7 @@ class ParamColor {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5122,23 +5628,23 @@ class ParamCurve {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5167,6 +5673,7 @@ class ParamCurve {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5186,6 +5693,8 @@ class ParamCurve {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5203,6 +5712,7 @@ class ParamCurve {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5212,45 +5722,45 @@ class ParamDouble {
     /**
      * private #GParamSpec portion
      */
-    readonly parentInstance: GObject.ParamSpec
+    parentInstance: GObject.ParamSpec
     /**
      * minimum value for the property specified
      */
-    readonly minimum: number
+    minimum: number
     /**
      * maximum value for the property specified
      */
-    readonly maximum: number
+    maximum: number
     /**
      * default value for the property specified
      */
-    readonly defaultValue: number
+    defaultValue: number
     /**
      * values closer than `epsilon` will be considered identical
      *  by g_param_values_cmp(); the default value is 1e-90.
      */
-    readonly epsilon: number
+    epsilon: number
     /* Fields of GObject-2.0.GObject.ParamSpec */
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5279,6 +5789,7 @@ class ParamDouble {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5298,6 +5809,8 @@ class ParamDouble {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5315,6 +5828,7 @@ class ParamDouble {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5324,36 +5838,36 @@ class ParamEnum {
     /**
      * private #GParamSpec portion
      */
-    readonly parentInstance: GObject.ParamSpec
+    parentInstance: GObject.ParamSpec
     /**
      * the #GEnumClass for the enum
      */
-    readonly enumClass: GObject.EnumClass
+    enumClass: GObject.EnumClass
     /**
      * default value for the property specified
      */
-    readonly defaultValue: number
+    defaultValue: number
     /* Fields of GObject-2.0.GObject.ParamSpec */
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5382,6 +5896,7 @@ class ParamEnum {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5401,6 +5916,8 @@ class ParamEnum {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5418,6 +5935,7 @@ class ParamEnum {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5427,52 +5945,52 @@ class ParamFilePath {
     /**
      * private #GParamSpec portion
      */
-    readonly parentInstance: GObject.ParamSpec
+    parentInstance: GObject.ParamSpec
     /**
      * default value for the property specified
      */
-    readonly defaultValue: string
+    defaultValue: string
     /**
      * a string containing the allowed values for the first byte
      */
-    readonly csetFirst: string
+    csetFirst: string
     /**
      * a string containing the allowed values for the subsequent bytes
      */
-    readonly csetNth: string
+    csetNth: string
     /**
      * the replacement byte for bytes which don't match `cset_first` or `cset_nth`.
      */
-    readonly substitutor: number
+    substitutor: number
     /**
      * replace empty string by %NULL
      */
-    readonly nullFoldIfEmpty: number
+    nullFoldIfEmpty: number
     /**
      * replace %NULL strings by an empty string
      */
-    readonly ensureNonNull: number
+    ensureNonNull: number
     /* Fields of GObject-2.0.GObject.ParamSpec */
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5501,6 +6019,7 @@ class ParamFilePath {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5520,6 +6039,8 @@ class ParamFilePath {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5537,6 +6058,7 @@ class ParamFilePath {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5546,28 +6068,28 @@ class ParamFormat {
     /**
      * private #GParamSpec portion
      */
-    readonly parentInstance: GObject.ParamSpec
+    parentInstance: GObject.ParamSpec
     /* Fields of GObject-2.0.GObject.ParamSpec */
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5596,6 +6118,7 @@ class ParamFormat {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5615,6 +6138,8 @@ class ParamFormat {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5632,6 +6157,7 @@ class ParamFormat {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5641,40 +6167,40 @@ class ParamInt {
     /**
      * private #GParamSpec portion
      */
-    readonly parentInstance: GObject.ParamSpec
+    parentInstance: GObject.ParamSpec
     /**
      * minimum value for the property specified
      */
-    readonly minimum: number
+    minimum: number
     /**
      * maximum value for the property specified
      */
-    readonly maximum: number
+    maximum: number
     /**
      * default value for the property specified
      */
-    readonly defaultValue: number
+    defaultValue: number
     /* Fields of GObject-2.0.GObject.ParamSpec */
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5703,6 +6229,7 @@ class ParamInt {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5722,6 +6249,8 @@ class ParamInt {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5739,6 +6268,7 @@ class ParamInt {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5748,23 +6278,23 @@ class ParamPath {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5793,6 +6323,7 @@ class ParamPath {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5812,6 +6343,8 @@ class ParamPath {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5829,6 +6362,7 @@ class ParamPath {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5838,40 +6372,40 @@ class ParamSeed {
     /**
      * private #GParamSpec portion
      */
-    readonly parentInstance: GObject.ParamSpec
+    parentInstance: GObject.ParamSpec
     /**
      * minimum value for the property specified
      */
-    readonly minimum: number
+    minimum: number
     /**
      * maximum value for the property specified
      */
-    readonly maximum: number
+    maximum: number
     /**
      * default value for the property specified
      */
-    readonly defaultValue: number
+    defaultValue: number
     /* Fields of GObject-2.0.GObject.ParamSpec */
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -5900,6 +6434,7 @@ class ParamSeed {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5919,6 +6454,8 @@ class ParamSeed {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -5936,6 +6473,7 @@ class ParamSeed {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -5945,52 +6483,52 @@ class ParamString {
     /**
      * private #GParamSpec portion
      */
-    readonly parentInstance: GObject.ParamSpec
+    parentInstance: GObject.ParamSpec
     /**
      * default value for the property specified
      */
-    readonly defaultValue: string
+    defaultValue: string
     /**
      * a string containing the allowed values for the first byte
      */
-    readonly csetFirst: string
+    csetFirst: string
     /**
      * a string containing the allowed values for the subsequent bytes
      */
-    readonly csetNth: string
+    csetNth: string
     /**
      * the replacement byte for bytes which don't match `cset_first` or `cset_nth`.
      */
-    readonly substitutor: number
+    substitutor: number
     /**
      * replace empty string by %NULL
      */
-    readonly nullFoldIfEmpty: number
+    nullFoldIfEmpty: number
     /**
      * replace %NULL strings by an empty string
      */
-    readonly ensureNonNull: number
+    ensureNonNull: number
     /* Fields of GObject-2.0.GObject.ParamSpec */
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -6019,6 +6557,7 @@ class ParamString {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6038,6 +6577,8 @@ class ParamString {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -6055,6 +6596,7 @@ class ParamString {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -6064,52 +6606,52 @@ class ParamUri {
     /**
      * private #GParamSpec portion
      */
-    readonly parentInstance: GObject.ParamSpec
+    parentInstance: GObject.ParamSpec
     /**
      * default value for the property specified
      */
-    readonly defaultValue: string
+    defaultValue: string
     /**
      * a string containing the allowed values for the first byte
      */
-    readonly csetFirst: string
+    csetFirst: string
     /**
      * a string containing the allowed values for the subsequent bytes
      */
-    readonly csetNth: string
+    csetNth: string
     /**
      * the replacement byte for bytes which don't match `cset_first` or `cset_nth`.
      */
-    readonly substitutor: number
+    substitutor: number
     /**
      * replace empty string by %NULL
      */
-    readonly nullFoldIfEmpty: number
+    nullFoldIfEmpty: number
     /**
      * replace %NULL strings by an empty string
      */
-    readonly ensureNonNull: number
+    ensureNonNull: number
     /* Fields of GObject-2.0.GObject.ParamSpec */
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: GObject.ParamFlags
+    flags: GObject.ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: GObject.Type
+    valueType: GObject.Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: GObject.Type
+    ownerType: GObject.Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -6138,6 +6680,7 @@ class ParamUri {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6157,6 +6700,8 @@ class ParamUri {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -6174,6 +6719,7 @@ class ParamUri {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -6182,17 +6728,19 @@ interface Path_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Path {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.Path */
     /**
      * Compute the coordinates of the path at the `position` (length measured from
      * start of path, not including discontinuities).
+     * @param pos how far along the path.
      */
     calc(pos: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
      * Compute a corresponding y coordinate for a given x input coordinate,
      * returns 0 if computed correctly and -1 if the path doesn't exist for the
      * specified x coordinate.
+     * @param x x coordinate to compute for
      */
     calcYForX(x: number): [ /* returnType */ number, /* y */ number ]
     /**
@@ -6203,6 +6751,8 @@ class Path {
      * Figure out what and where on a path is closest to arbitrary coordinates.
      * 
      * Returns the length along the path where the closest point was encountered.
+     * @param x x coordinate.
+     * @param y y coordinate
      */
     closestPoint(x: number, y: number): [ /* returnType */ number, /* onPathX */ number, /* onPathY */ number, /* nodePosBefore */ number ]
     /**
@@ -6213,11 +6763,13 @@ class Path {
     /**
      * Execute a provided function for every node in the path (useful for
      * drawing and otherwise traversing a path.)
+     * @param eachItem a function to call for each node in the path.
      */
     foreach(eachItem: NodeFunction): void
     /**
      * Execute a provided function for the segments of a poly line approximating
      * the path.
+     * @param eachItem a function to call for each node in the path.
      */
     foreachFlat(eachItem: NodeFunction): void
     /**
@@ -6245,11 +6797,14 @@ class Path {
      * Retrieve the node of the path at position `pos`.
      * 
      * Returns TRUE if the node was successfully retrieved.
+     * @param index the node number to retrieve
      */
     getNode(index: number): [ /* returnType */ boolean, /* node */ PathItem ]
     /**
      * Insert the new node `node` at position `pos` in `path`.
      * if `pos` = -1, the node is added in the last position.
+     * @param pos the position we want the new node to have.
+     * @param node pointer to a structure describing the GeglPathItem we want to store
      */
     insertNode(pos: number, node: PathItem): void
     /**
@@ -6261,14 +6816,18 @@ class Path {
     /**
      * Parses `instructions` and appends corresponding nodes to path (call
      * gegl_path_clean() first if you want to replace the existing path.
+     * @param instructions a string describing a path.
      */
     parseString(instructions: string): void
     /**
      * Removes the node number `pos` in `path`.
+     * @param pos a node in the path.
      */
     removeNode(pos: number): void
     /**
      * Replaces the exiting node at position `pos` in `path`.
+     * @param pos the position we want the new node to have.
+     * @param node pointer to a structure describing the GeglPathItem we want to store.
      */
     replaceNode(pos: number, node: PathItem): void
     /**
@@ -6276,6 +6835,7 @@ class Path {
      * 
      * The path is transformed through this matrix when being evaluated,
      * causing the calculated positions and length to be changed by the transform.
+     * @param matrix a #GeglMatrix3 to copy the matrix from
      */
     setMatrix(matrix: Matrix3): void
     /**
@@ -6321,6 +6881,10 @@ class Path {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6331,6 +6895,12 @@ class Path {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6354,6 +6924,7 @@ class Path {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6373,11 +6944,14 @@ class Path {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6385,6 +6959,8 @@ class Path {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6402,6 +6978,7 @@ class Path {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6447,6 +7024,7 @@ class Path {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6490,15 +7068,20 @@ class Path {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6539,6 +7122,7 @@ class Path {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6573,6 +7157,7 @@ class Path {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gegl-0.4.Gegl.Path */
@@ -6610,6 +7195,7 @@ class Path {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6633,6 +7219,9 @@ class Path {
      * Adds a new type to the path system, FIXME this should probably
      * return something on registration conflicts, for now it expects
      * all registered paths to be aware of each other.
+     * @param type a gchar to recognize in path descriptions.
+     * @param items the number of floating point data items the instruction takes
+     * @param description a human readable description of this entry
      */
     static addType(type: number, items: number, description: string): void
     static $gtype: GObject.Type
@@ -6646,11 +7235,12 @@ interface Processor_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Processor {
     /* Properties of Gegl-0.4.Gegl.Processor */
+    readonly chunksize: number
     node: Node
     progress: number
     rectangle: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.Processor */
     /**
      * Returns the (cache) buffer the processor is rendering into, another way of
@@ -6661,6 +7251,7 @@ class Processor {
     setLevel(level: number): void
     /**
      * Change the rectangle a #GeglProcessor is working on.
+     * @param rectangle the new #GeglRectangle the processor shold work on or NULL to make it work on all data in the buffer.
      */
     setRectangle(rectangle: Rectangle): void
     setScale(scale: number): void
@@ -6713,6 +7304,10 @@ class Processor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6723,6 +7318,12 @@ class Processor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6746,6 +7347,7 @@ class Processor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6765,11 +7367,14 @@ class Processor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6777,6 +7382,8 @@ class Processor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6794,6 +7401,7 @@ class Processor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6839,6 +7447,7 @@ class Processor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6882,15 +7491,20 @@ class Processor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6931,6 +7545,7 @@ class Processor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6965,6 +7580,7 @@ class Processor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6996,12 +7612,18 @@ class Processor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::chunksize", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::chunksize", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::chunksize", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::chunksize", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::chunksize", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::node", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::node", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::node", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -7055,7 +7677,7 @@ class Stats {
     readonly tileCacheTotalUncompressed: number
     readonly zoomTotal: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -7091,6 +7713,10 @@ class Stats {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7101,6 +7727,12 @@ class Stats {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7124,6 +7756,7 @@ class Stats {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7143,11 +7776,14 @@ class Stats {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7155,6 +7791,8 @@ class Stats {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7172,6 +7810,7 @@ class Stats {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7217,6 +7856,7 @@ class Stats {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7260,15 +7900,20 @@ class Stats {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7309,6 +7954,7 @@ class Stats {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7343,6 +7989,7 @@ class Stats {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7374,6 +8021,7 @@ class Stats {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7507,17 +8155,25 @@ interface TileBackend_ConstructProps extends TileSource_ConstructProps {
 class TileBackend {
     /* Properties of Gegl-0.4.Gegl.TileBackend */
     flushOnDestroy: boolean
+    readonly format: object
     readonly pxSize: number
+    readonly tileHeight: number
     readonly tileSize: number
+    readonly tileWidth: number
     /* Fields of Gegl-0.4.Gegl.TileSource */
-    readonly parentInstance: GObject.Object
-    readonly padding: object[]
+    parentInstance: GObject.Object
+    padding: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.TileBackend */
     /**
      * The default tile-backend command handler.  Tile backends should forward
      * commands they don't handle themselves to this function.
+     * @param command the tile command
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z tile zoom level
+     * @param data user data
      */
     command(command: TileCommand, x: number, y: number, z: number, data?: object | null): object | null
     getFlushOnDestroy(): boolean
@@ -7532,11 +8188,13 @@ class TileBackend {
      * Specify the extent of the backend, can be used to pre-prime the
      * backend with the width/height information when constructing proxy
      * GeglBuffers to interact with other systems
+     * @param rectangle the new extent
      */
     setExtent(rectangle: Rectangle): void
     /**
      * Control whether cached data will be written to the backend before it
      * is destroyed. If false unwritten data will be discarded.
+     * @param flushOnDestroy true if the backend needs to be flushed
      */
     setFlushOnDestroy(flushOnDestroy: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7574,6 +8232,10 @@ class TileBackend {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7584,6 +8246,12 @@ class TileBackend {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7607,6 +8275,7 @@ class TileBackend {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7626,11 +8295,14 @@ class TileBackend {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7638,6 +8310,8 @@ class TileBackend {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7655,6 +8329,7 @@ class TileBackend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7700,6 +8375,7 @@ class TileBackend {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7743,15 +8419,20 @@ class TileBackend {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7792,6 +8473,7 @@ class TileBackend {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7826,6 +8508,7 @@ class TileBackend {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7857,6 +8540,7 @@ class TileBackend {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7868,16 +8552,31 @@ class TileBackend {
     on(sigName: "notify::flush-on-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::flush-on-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::flush-on-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::format", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::format", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::format", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::px-size", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::px-size", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::px-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::px-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::px-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::tile-height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tile-height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::tile-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::tile-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::tile-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::tile-size", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tile-size", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::tile-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::tile-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::tile-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::tile-width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tile-width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::tile-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::tile-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::tile-width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7895,6 +8594,7 @@ class TileBackend {
      * 
      * For safety, this function will check that the swap file is in the swap
      * directory before deletion but it won't perform any other check.
+     * @param path the path where the gegl tile backend has swapped.
      */
     static unlinkSwap(path: string): void
     static $gtype: GObject.Type
@@ -7907,11 +8607,11 @@ class TileHandler {
     /* Properties of Gegl-0.4.Gegl.TileHandler */
     source: GObject.Object
     /* Fields of Gegl-0.4.Gegl.TileSource */
-    readonly parentInstance: GObject.Object
-    readonly command: TileSourceCommand
-    readonly padding: object[]
+    parentInstance: GObject.Object
+    command: TileSourceCommand
+    padding: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gegl-0.4.Gegl.TileHandler */
     damageRect(rect: Rectangle): void
     damageTile(x: number, y: number, z: number, damage: number): void
@@ -7953,6 +8653,10 @@ class TileHandler {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7963,6 +8667,12 @@ class TileHandler {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7986,6 +8696,7 @@ class TileHandler {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8005,11 +8716,14 @@ class TileHandler {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8017,6 +8731,8 @@ class TileHandler {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8034,6 +8750,7 @@ class TileHandler {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8079,6 +8796,7 @@ class TileHandler {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8122,15 +8840,20 @@ class TileHandler {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8171,6 +8894,7 @@ class TileHandler {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8205,6 +8929,7 @@ class TileHandler {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8236,6 +8961,7 @@ class TileHandler {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8263,7 +8989,7 @@ interface TileSource_ConstructProps extends GObject.Object_ConstructProps {
 }
 class TileSource {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -8299,6 +9025,10 @@ class TileSource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8309,6 +9039,12 @@ class TileSource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8332,6 +9068,7 @@ class TileSource {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8351,11 +9088,14 @@ class TileSource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8363,6 +9103,8 @@ class TileSource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8380,6 +9122,7 @@ class TileSource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8425,6 +9168,7 @@ class TileSource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8468,15 +9212,20 @@ class TileSource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8517,6 +9266,7 @@ class TileSource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8551,6 +9301,7 @@ class TileSource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8582,6 +9333,7 @@ class TileSource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8602,7 +9354,7 @@ class TileSource {
 }
 abstract class AudioFragmentClass {
     /* Fields of Gegl-0.4.Gegl.AudioFragmentClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class AudioFragmentPrivate {
@@ -8610,15 +9362,15 @@ class AudioFragmentPrivate {
 }
 class BufferIterator {
     /* Fields of Gegl-0.4.Gegl.BufferIterator */
-    readonly length: number
-    readonly priv: BufferIteratorPriv
-    readonly items: BufferIteratorItem[]
+    length: number
+    priv: BufferIteratorPriv
+    items: BufferIteratorItem[]
     static name: string
 }
 class BufferIteratorItem {
     /* Fields of Gegl-0.4.Gegl.BufferIteratorItem */
-    readonly data: object
-    readonly roi: Rectangle
+    data: object
+    roi: Rectangle
     static name: string
 }
 class BufferIteratorPriv {
@@ -8626,7 +9378,7 @@ class BufferIteratorPriv {
 }
 class BufferMatrix2 {
     /* Fields of Gegl-0.4.Gegl.BufferMatrix2 */
-    readonly coeff: number[]
+    coeff: number[]
     /* Methods of Gegl-0.4.Gegl.BufferMatrix2 */
     determinant(): number
     isIdentity(): boolean
@@ -8635,7 +9387,7 @@ class BufferMatrix2 {
 }
 abstract class ColorClass {
     /* Fields of Gegl-0.4.Gegl.ColorClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ColorPrivate {
@@ -8643,25 +9395,25 @@ class ColorPrivate {
 }
 abstract class CurveClass {
     /* Fields of Gegl-0.4.Gegl.CurveClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class Lookup {
     /* Fields of Gegl-0.4.Gegl.Lookup */
-    readonly function_: LookupFunction
-    readonly data: object
-    readonly shift: number
-    readonly positiveMin: number
-    readonly positiveMax: number
-    readonly negativeMin: number
-    readonly negativeMax: number
-    readonly bitmask: number[]
-    readonly table: number[]
+    function_: LookupFunction
+    data: object
+    shift: number
+    positiveMin: number
+    positiveMax: number
+    negativeMin: number
+    negativeMax: number
+    bitmask: number[]
+    table: number[]
     static name: string
 }
 class Matrix3 {
     /* Fields of Gegl-0.4.Gegl.Matrix3 */
-    readonly coeff: number[]
+    coeff: number[]
     /* Methods of Gegl-0.4.Gegl.Matrix3 */
     /**
      * Returns a copy of `src`.
@@ -8669,6 +9421,7 @@ class Matrix3 {
     copy(): Matrix3
     /**
      * Copies the matrix in `src` into `dst`.
+     * @param src a #GeglMatrix3
      */
     copyInto(src: Matrix3): void
     /**
@@ -8679,6 +9432,7 @@ class Matrix3 {
      * Check if two matrices are equal.
      * 
      * Returns TRUE if the matrices are equal.
+     * @param matrix2 a #GeglMatrix3
      */
     equal(matrix2: Matrix3): boolean
     /**
@@ -8715,6 +9469,8 @@ class Matrix3 {
     isTranslate(): boolean
     /**
      * Multiples `product` = `left` · `right`
+     * @param right a #GeglMatrix3
+     * @param product a #GeglMatrix3 to store the result in.
      */
     multiply(right: Matrix3, product: Matrix3): void
     /**
@@ -8726,10 +9482,13 @@ class Matrix3 {
      * 2. Transforms the result using the original `matrix`.
      * 
      * 3. Translates the result by (`x,` `y)`.
+     * @param x x coordinate of new origin
+     * @param y y coordinate of new origin.
      */
     originate(x: number, y: number): void
     /**
      * Parse a transofmation matrix from a string.
+     * @param string a string describing the matrix (right now a small subset of the transform strings allowed by SVG)
      */
     parseString(string: string): void
     /**
@@ -8746,6 +9505,8 @@ class Matrix3 {
     /**
      * transforms the coordinates provided in `x` and `y` and changes to the
      * coordinates gotten when the transformed with the matrix.
+     * @param x pointer to an x coordinate
+     * @param y pointer to an y coordinate
      */
     transformPoint(x: number, y: number): void
     static name: string
@@ -8756,19 +9517,19 @@ class Matrix3 {
 }
 abstract class MetadataHashClass {
     /* Fields of Gegl-0.4.Gegl.MetadataHashClass */
-    readonly parentClass: MetadataStoreClass
+    parentClass: MetadataStoreClass
     static name: string
 }
 abstract class MetadataInterface {
     /* Fields of Gegl-0.4.Gegl.MetadataInterface */
-    readonly registerMap: (metadata: Metadata, fileModule: string, flags: number, map: MetadataMap[]) => void
-    readonly setResolution: (metadata: Metadata, unit: ResolutionUnit, x: number, y: number) => boolean
-    readonly getResolution: (metadata: Metadata, unit: ResolutionUnit, x: number, y: number) => boolean
-    readonly iterLookup: (metadata: Metadata, iter: MetadataIter, key: string) => boolean
-    readonly iterInit: (metadata: Metadata, iter: MetadataIter) => void
-    readonly iterNext: (metadata: Metadata, iter: MetadataIter) => string
-    readonly iterSetValue: (metadata: Metadata, iter: MetadataIter, value: any) => boolean
-    readonly iterGetValue: (metadata: Metadata, iter: MetadataIter, value: any) => boolean
+    registerMap: (metadata: Metadata, fileModule: string, flags: number, map: MetadataMap[]) => void
+    setResolution: (metadata: Metadata, unit: ResolutionUnit, x: number, y: number) => boolean
+    getResolution: (metadata: Metadata, unit: ResolutionUnit, x: number, y: number) => boolean
+    iterLookup: (metadata: Metadata, iter: MetadataIter, key: string) => boolean
+    iterInit: (metadata: Metadata, iter: MetadataIter) => void
+    iterNext: (metadata: Metadata, iter: MetadataIter) => string
+    iterSetValue: (metadata: Metadata, iter: MetadataIter, value: any) => boolean
+    iterGetValue: (metadata: Metadata, iter: MetadataIter, value: any) => boolean
     static name: string
 }
 class MetadataIter {
@@ -8779,22 +9540,22 @@ class MetadataMap {
     /**
      * Name of metadata variable used in the file module.
      */
-    readonly localName: string
+    localName: string
     /**
      * Standard metadata variable name used by Gegl.
      */
-    readonly name: string
+    name: string
     /**
      * Optional #GValue transform function.
      */
-    readonly transform: GObject.ValueTransform
+    transform: GObject.ValueTransform
     static name: string
 }
 abstract class MetadataStoreClass {
     /* Fields of Gegl-0.4.Gegl.MetadataStoreClass */
-    readonly setValue: (self: MetadataStore, name: string, value: any) => void
-    readonly hasValue: (self: MetadataStore, name: string) => boolean
-    readonly registerHook: (self: MetadataStore, fileModuleName: string, flags: number) => void
+    setValue: (self: MetadataStore, name: string, value: any) => void
+    hasValue: (self: MetadataStore, name: string) => boolean
+    registerHook: (self: MetadataStore, fileModuleName: string, flags: number) => void
     static name: string
 }
 class OperationContext {
@@ -8802,13 +9563,13 @@ class OperationContext {
 }
 class ParamSpecDouble {
     /* Fields of Gegl-0.4.Gegl.ParamSpecDouble */
-    readonly parentInstance: GObject.ParamSpecDouble
-    readonly uiMinimum: number
-    readonly uiMaximum: number
-    readonly uiGamma: number
-    readonly uiStepSmall: number
-    readonly uiStepBig: number
-    readonly uiDigits: number
+    parentInstance: GObject.ParamSpecDouble
+    uiMinimum: number
+    uiMaximum: number
+    uiGamma: number
+    uiStepSmall: number
+    uiStepBig: number
+    uiDigits: number
     /* Methods of Gegl-0.4.Gegl.ParamSpecDouble */
     setDigits(digits: number): void
     setSteps(smallStep: number, bigStep: number): void
@@ -8816,55 +9577,55 @@ class ParamSpecDouble {
 }
 class ParamSpecEnum {
     /* Fields of Gegl-0.4.Gegl.ParamSpecEnum */
-    readonly parentInstance: GObject.ParamSpecEnum
-    readonly excludedValues: object[]
+    parentInstance: GObject.ParamSpecEnum
+    excludedValues: object[]
     /* Methods of Gegl-0.4.Gegl.ParamSpecEnum */
     excludeValue(value: number): void
     static name: string
 }
 class ParamSpecFilePath {
     /* Fields of Gegl-0.4.Gegl.ParamSpecFilePath */
-    readonly parentInstance: GObject.ParamSpecString
-    readonly noValidate: number
-    readonly nullOk: number
+    parentInstance: GObject.ParamSpecString
+    noValidate: number
+    nullOk: number
     static name: string
 }
 class ParamSpecFormat {
     /* Fields of Gegl-0.4.Gegl.ParamSpecFormat */
-    readonly parentInstance: GObject.ParamSpecPointer
+    parentInstance: GObject.ParamSpecPointer
     static name: string
 }
 class ParamSpecInt {
     /* Fields of Gegl-0.4.Gegl.ParamSpecInt */
-    readonly parentInstance: GObject.ParamSpecInt
-    readonly uiMinimum: number
-    readonly uiMaximum: number
-    readonly uiGamma: number
-    readonly uiStepSmall: number
-    readonly uiStepBig: number
+    parentInstance: GObject.ParamSpecInt
+    uiMinimum: number
+    uiMaximum: number
+    uiGamma: number
+    uiStepSmall: number
+    uiStepBig: number
     /* Methods of Gegl-0.4.Gegl.ParamSpecInt */
     setSteps(smallStep: number, bigStep: number): void
     static name: string
 }
 class ParamSpecSeed {
     /* Fields of Gegl-0.4.Gegl.ParamSpecSeed */
-    readonly parentInstance: GObject.ParamSpecUInt
-    readonly uiMinimum: number
-    readonly uiMaximum: number
+    parentInstance: GObject.ParamSpecUInt
+    uiMinimum: number
+    uiMaximum: number
     static name: string
 }
 class ParamSpecString {
     /* Fields of Gegl-0.4.Gegl.ParamSpecString */
-    readonly parentInstance: GObject.ParamSpecString
-    readonly noValidate: number
-    readonly nullOk: number
+    parentInstance: GObject.ParamSpecString
+    noValidate: number
+    nullOk: number
     static name: string
 }
 class ParamSpecUri {
     /* Fields of Gegl-0.4.Gegl.ParamSpecUri */
-    readonly parentInstance: GObject.ParamSpecString
-    readonly noValidate: number
-    readonly nullOk: number
+    parentInstance: GObject.ParamSpecString
+    noValidate: number
+    nullOk: number
     static name: string
 }
 abstract class PathClass {
@@ -8872,20 +9633,20 @@ abstract class PathClass {
 }
 class PathItem {
     /* Fields of Gegl-0.4.Gegl.PathItem */
-    readonly type: number
-    readonly point: PathPoint[]
+    type: number
+    point: PathPoint[]
     static name: string
 }
 class PathList {
     /* Fields of Gegl-0.4.Gegl.PathList */
-    readonly next: object
-    readonly d: PathItem
+    next: object
+    d: PathItem
     static name: string
 }
 class PathPoint {
     /* Fields of Gegl-0.4.Gegl.PathPoint */
-    readonly x: number
-    readonly y: number
+    x: number
+    y: number
     static name: string
 }
 class Random {
@@ -8896,12 +9657,22 @@ class Random {
     duplicate(): Random
     /**
      * Return a random floating point number in range 0.0 .. 1.0.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate (mipmap level)
+     * @param n number no (each x,y coordinate provides its own sequence of numbers
      */
     float(x: number, y: number, z: number, n: number): number
     /**
      * Return a random floating point number in the range specified,
      * for the given x,y coordinates and GeglRandom provided, if multiple different
      * numbers are needed pass in incrementing n's.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate (mipmap level)
+     * @param n number no (each x,y coordinate provides its own sequence of numbers
+     * @param min minimum value
+     * @param max maximum value
      */
     floatRange(x: number, y: number, z: number, n: number, min: number, max: number): number
     /**
@@ -8911,16 +9682,27 @@ class Random {
     free(): void
     /**
      * Return a random integer number in range 0 .. MAX_UINT
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate (mipmap level)
+     * @param n number no (each x,y coordinate provides its own sequence of numbers
      */
     int(x: number, y: number, z: number, n: number): number
     /**
      * Return a random integer point number in the range specified,
      * for the given x,y coordinates and GeglRandom provided, if multiple different
      * numbers are needed pass in incrementing n's.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate (mipmap level)
+     * @param n number no (each x,y coordinate provides its own sequence of numbers
+     * @param min minimum value
+     * @param max maximum value+1
      */
     intRange(x: number, y: number, z: number, n: number, min: number, max: number): number
     /**
      * Change the seed of an existing GeglRandom.
+     * @param seed an integer seed, change for different permutation.
      */
     setSeed(seed: number): void
     static name: string
@@ -8932,10 +9714,10 @@ class Random {
 }
 class Rectangle {
     /* Fields of Gegl-0.4.Gegl.Rectangle */
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
+    x: number
+    y: number
+    width: number
+    height: number
     /* Methods of Gegl-0.4.Gegl.Rectangle */
     /**
      * Aligns `rectangle` to a regular tile grid, of which `tile` is a representative
@@ -8955,6 +9737,9 @@ class Rectangle {
      * `destination` may point to the same object as `rectangle` or `tile`.
      * 
      * Returns TRUE if the result is not empty.
+     * @param rectangle a #GeglRectangle
+     * @param tile a #GeglRectangle
+     * @param alignment a #GeglRectangleAlignment value
      */
     align(rectangle: Rectangle, tile: Rectangle, alignment: RectangleAlignment): boolean
     /**
@@ -8966,6 +9751,9 @@ class Rectangle {
      * `destination` may point to the same object as `rectangle`.
      * 
      * Returns TRUE if the result is not empty.
+     * @param rectangle a #GeglRectangle
+     * @param buffer a #GeglBuffer
+     * @param alignment a #GeglRectangleAlignment value
      */
     alignToBuffer(rectangle: Rectangle, buffer: Buffer, alignment: RectangleAlignment): boolean
     /**
@@ -8973,12 +9761,15 @@ class Rectangle {
      * resulting bounding box in `destination`.
      * 
      * `destination` may point to the same object as `source1` or `source2`.
+     * @param source1 a #GeglRectangle
+     * @param source2 a #GeglRectangle
      */
     boundingBox(source1: Rectangle, source2: Rectangle): void
     /**
      * Checks if the #GeglRectangle `child` is fully contained within `parent`.
      * 
      * Returns TRUE if the `child` is fully contained in `parent`.
+     * @param child a #GeglRectangle
      */
     contains(child: Rectangle): boolean
     /**
@@ -8986,6 +9777,7 @@ class Rectangle {
      * `destination`.
      * 
      * `destination` may point to the same object as `source`.
+     * @param source a #GeglRectangle
      */
     copy(source: Rectangle): void
     /**
@@ -9000,12 +9792,17 @@ class Rectangle {
      * Check if two #GeglRectangles are equal.
      * 
      * Returns TRUE if `rectangle` and `rectangle2` are equal.
+     * @param rectangle2 a #GeglRectangle
      */
     equal(rectangle2: Rectangle): boolean
     /**
      * Check if a rectangle is equal to a set of parameters.
      * 
      * Returns TRUE if `rectangle` and `x,``y` `width` x `height` are equal.
+     * @param x X coordinate
+     * @param y Y coordinate
+     * @param width width of rectangle
+     * @param height height of rectangle
      */
     equalCoords(x: number, y: number, width: number, height: number): boolean
     /**
@@ -9016,6 +9813,8 @@ class Rectangle {
      * `dest` may point to the same object as `src1` or `src2`.
      * 
      * Returns TRUE if the rectangles intersect.
+     * @param src1 a #GeglRectangle
+     * @param src2 a #GeglRectangle
      */
     intersect(src1: Rectangle, src2: Rectangle): boolean
     /**
@@ -9031,6 +9830,10 @@ class Rectangle {
     isInfinitePlane(): boolean
     /**
      * Sets the `x,` `y,` `width` and `height` on `rectangle`.
+     * @param x upper left x coordinate
+     * @param y upper left y coordinate
+     * @param width width in pixels.
+     * @param height height in pixels.
      */
     set(x: number, y: number, width: number, height: number): void
     /**
@@ -9040,6 +9843,8 @@ class Rectangle {
      * `destination` may contain `minuend` or `subtrahend`.
      * 
      * Returns the number of resulting rectangles.
+     * @param minuend a #GeglRectangle
+     * @param subtrahend a #GeglRectangle
      */
     subtract(minuend: Rectangle, subtrahend: Rectangle): number
     /**
@@ -9049,6 +9854,8 @@ class Rectangle {
      * `destination` may point to the same object as `minuend` or `subtrahend`.
      * 
      * Returns TRUE if the result is not empty.
+     * @param minuend a #GeglRectangle
+     * @param subtrahend a #GeglRectangle
      */
     subtractBoundingBox(minuend: Rectangle, subtrahend: Rectangle): boolean
     /**
@@ -9059,6 +9866,8 @@ class Rectangle {
      * `destination` may contain `rectangle1` or `rectangle2`.
      * 
      * Returns the number of resulting rectangles.
+     * @param source1 a #GeglRectangle
+     * @param source2 a #GeglRectangle
      */
     xor(source1: Rectangle, source2: Rectangle): number
     static name: string
@@ -9075,6 +9884,11 @@ class Sampler {
     /* Methods of Gegl-0.4.Gegl.Sampler */
     /**
      * Perform a sampling with the provided `sampler`.
+     * @param x x coordinate to sample
+     * @param y y coordinate to sample
+     * @param scale matrix representing extent of sampling area in source buffer.
+     * @param output memory location for output data.
+     * @param repeatMode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
      */
     get(x: number, y: number, scale: BufferMatrix2, output: object | null, repeatMode: AbyssPolicy): void
     getContextRect(): Rectangle
@@ -9085,8 +9899,8 @@ class Tile {
 }
 abstract class TileBackendClass {
     /* Fields of Gegl-0.4.Gegl.TileBackendClass */
-    readonly parentClass: TileSourceClass
-    readonly padding: object[]
+    parentClass: TileSourceClass
+    padding: object[]
     static name: string
 }
 class TileBackendPrivate {
@@ -9094,15 +9908,15 @@ class TileBackendPrivate {
 }
 class TileCopyParams {
     /* Fields of Gegl-0.4.Gegl.TileCopyParams */
-    readonly dstBuffer: Buffer
-    readonly dstX: number
-    readonly dstY: number
-    readonly dstZ: number
+    dstBuffer: Buffer
+    dstX: number
+    dstY: number
+    dstZ: number
     static name: string
 }
 abstract class TileHandlerClass {
     /* Fields of Gegl-0.4.Gegl.TileHandlerClass */
-    readonly parentClass: TileSourceClass
+    parentClass: TileSourceClass
     static name: string
 }
 class TileHandlerPrivate {
@@ -9110,8 +9924,8 @@ class TileHandlerPrivate {
 }
 abstract class TileSourceClass {
     /* Fields of Gegl-0.4.Gegl.TileSourceClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 }

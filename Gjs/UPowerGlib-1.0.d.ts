@@ -116,16 +116,20 @@ class ClientGlue {
      * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_enumerate_devices(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_enumerate_devices().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
      */
     call_enumerate_devices_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_devices */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_enumerate_devices() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_enumerate_devices_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_devices */ string ]
     /**
@@ -134,16 +138,20 @@ class ClientGlue {
      * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_critical_action(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_get_critical_action().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
      */
     call_get_critical_action_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_action */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_get_critical_action() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_critical_action_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_action */ string ]
     /**
@@ -152,42 +160,54 @@ class ClientGlue {
      * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_display_device(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_get_display_device().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
      */
     call_get_display_device_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_device */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_get_display_device() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_display_device_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_device */ string ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param devices Parameter to return.
      */
     complete_enumerate_devices(invocation: Gio.DBusMethodInvocation, devices: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param action Parameter to return.
      */
     complete_get_critical_action(invocation: Gio.DBusMethodInvocation, action: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param device Parameter to return.
      */
     complete_get_display_device(invocation: Gio.DBusMethodInvocation, device: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceAdded">"DeviceAdded"</link> D-Bus signal.
+     * @param arg_device Argument to pass with the signal.
      */
     emit_device_added(arg_device: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceRemoved">"DeviceRemoved"</link> D-Bus signal.
+     * @param arg_device Argument to pass with the signal.
      */
     emit_device_removed(arg_device: string): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.ClientGlue */
@@ -201,6 +221,7 @@ class ClientGlue {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceAdded">"DeviceAdded"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_device Argument.
      */
     connect(sigName: "device-added", callback: (($obj: ClientGlue, arg_device: string) => void)): number
     connect_after(sigName: "device-added", callback: (($obj: ClientGlue, arg_device: string) => void)): number
@@ -209,6 +230,7 @@ class ClientGlue {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceRemoved">"DeviceRemoved"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_device Argument.
      */
     connect(sigName: "device-removed", callback: (($obj: ClientGlue, arg_device: string) => void)): number
     connect_after(sigName: "device-removed", callback: (($obj: ClientGlue, arg_device: string) => void)): number
@@ -217,6 +239,7 @@ class ClientGlue {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_enumerate_devices() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-enumerate-devices", callback: (($obj: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-enumerate-devices", callback: (($obj: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -225,6 +248,7 @@ class ClientGlue {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_get_critical_action() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-critical-action", callback: (($obj: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-critical-action", callback: (($obj: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -233,6 +257,7 @@ class ClientGlue {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_get_display_device() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-display-device", callback: (($obj: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-display-device", callback: (($obj: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -246,6 +271,8 @@ class ClientGlue {
     /**
      * Overrides all #GObject properties in the #UpClientGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
 }
@@ -426,16 +453,26 @@ class DeviceGlue {
      * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param arg_timespan Argument to pass with the method invocation.
+     * @param arg_resolution Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_history(arg_type: string, arg_timespan: number, arg_resolution: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_get_history().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
      */
     call_get_history_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_get_history() for the asynchronous version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param arg_timespan Argument to pass with the method invocation.
+     * @param arg_resolution Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_history_sync(arg_type: string, arg_timespan: number, arg_resolution: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -444,16 +481,22 @@ class DeviceGlue {
      * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_statistics(arg_type: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_get_statistics().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
      */
     call_get_statistics_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_get_statistics() for the asynchronous version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_statistics_sync(arg_type: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -462,34 +505,43 @@ class DeviceGlue {
      * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_refresh().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
      */
     call_refresh_finish(res: Gio.AsyncResult): boolean
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_refresh() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_history(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_statistics(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
      */
     complete_refresh(invocation: Gio.DBusMethodInvocation): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.DeviceGlue */
@@ -501,6 +553,10 @@ class DeviceGlue {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_get_history() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param arg_type Argument passed by remote caller.
+     * @param arg_timespan Argument passed by remote caller.
+     * @param arg_resolution Argument passed by remote caller.
      */
     connect(sigName: "handle-get-history", callback: (($obj: DeviceGlue, invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number) => boolean)): number
     connect_after(sigName: "handle-get-history", callback: (($obj: DeviceGlue, invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number) => boolean)): number
@@ -509,6 +565,8 @@ class DeviceGlue {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_get_statistics() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param arg_type Argument passed by remote caller.
      */
     connect(sigName: "handle-get-statistics", callback: (($obj: DeviceGlue, invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean)): number
     connect_after(sigName: "handle-get-statistics", callback: (($obj: DeviceGlue, invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean)): number
@@ -517,6 +575,7 @@ class DeviceGlue {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_refresh() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-refresh", callback: (($obj: DeviceGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-refresh", callback: (($obj: DeviceGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -530,6 +589,8 @@ class DeviceGlue {
     /**
      * Overrides all #GObject properties in the #UpDeviceGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
 }
@@ -548,16 +609,20 @@ class WakeupsGlue {
      * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
      * 
      * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_data(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_wakeups_glue_call_get_data().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
      */
     call_get_data_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_wakeups_glue_call_get_data() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_data_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -566,28 +631,36 @@ class WakeupsGlue {
      * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
      * 
      * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_total(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_wakeups_glue_call_get_total().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().
      */
     call_get_total_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_value */ number ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_wakeups_glue_call_get_total() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_total_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_value */ number ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_data(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param value Parameter to return.
      */
     complete_get_total(invocation: Gio.DBusMethodInvocation, value: number): void
     /**
@@ -596,6 +669,7 @@ class WakeupsGlue {
     emit_data_changed(): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower-Wakeups.TotalChanged">"TotalChanged"</link> D-Bus signal.
+     * @param arg_value Argument to pass with the signal.
      */
     emit_total_changed(arg_value: number): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.WakeupsGlue */
@@ -616,6 +690,7 @@ class WakeupsGlue {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_wakeups_glue_complete_get_data() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-data", callback: (($obj: WakeupsGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-data", callback: (($obj: WakeupsGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -624,6 +699,7 @@ class WakeupsGlue {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_wakeups_glue_complete_get_total() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-total", callback: (($obj: WakeupsGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-total", callback: (($obj: WakeupsGlue, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -632,6 +708,7 @@ class WakeupsGlue {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower-Wakeups.TotalChanged">"TotalChanged"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_value Argument.
      */
     connect(sigName: "total-changed", callback: (($obj: WakeupsGlue, arg_value: number) => void)): number
     connect_after(sigName: "total-changed", callback: (($obj: WakeupsGlue, arg_value: number) => void)): number
@@ -645,6 +722,8 @@ class WakeupsGlue {
     /**
      * Overrides all #GObject properties in the #UpWakeupsGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
 }
@@ -669,7 +748,7 @@ class Client {
      */
     readonly on_battery: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of UPowerGlib-1.0.UPowerGlib.Client */
     /**
      * Gets a string representing the configured critical action,
@@ -735,6 +814,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -745,6 +828,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -768,6 +857,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -787,11 +877,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -799,6 +892,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -816,6 +911,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -861,6 +957,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -904,15 +1001,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -953,6 +1055,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -987,6 +1090,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.Client */
@@ -1009,18 +1113,21 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of UPowerGlib-1.0.UPowerGlib.Client */
     /**
      * The ::device-added signal is emitted when a power device is added.
+     * @param device the #UpDevice that was added.
      */
     connect(sigName: "device-added", callback: (($obj: Client, device: Device) => void)): number
     connect_after(sigName: "device-added", callback: (($obj: Client, device: Device) => void)): number
     emit(sigName: "device-added", device: Device): void
     /**
      * The ::device-removed signal is emitted when a power device is removed.
+     * @param object_path the object path of the #UpDevice that was removed.
      */
     connect(sigName: "device-removed", callback: (($obj: Client, object_path: string) => void)): number
     connect_after(sigName: "device-removed", callback: (($obj: Client, object_path: string) => void)): number
@@ -1054,6 +1161,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
@@ -1107,6 +1215,17 @@ interface ClientGlueProxy_ConstructProps extends Gio.DBusProxy_ConstructProps {
 class ClientGlueProxy {
     /* Properties of Gio-2.0.Gio.DBusProxy */
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
+    /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
      * g_dbus_proxy_call_sync() functions.
@@ -1117,6 +1236,10 @@ class ClientGlueProxy {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -1145,11 +1268,23 @@ class ClientGlueProxy {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Properties of UPowerGlib-1.0.UPowerGlib.ClientGlue */
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
@@ -1176,7 +1311,7 @@ class ClientGlueProxy {
      */
     on_battery: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gio-2.0.Gio.DBusProxy */
     /**
      * Asynchronously invokes the `method_name` method on `proxy`.
@@ -1223,10 +1358,17 @@ class ClientGlueProxy {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -1266,22 +1408,41 @@ class ClientGlueProxy {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -1291,6 +1452,7 @@ class ClientGlueProxy {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -1378,6 +1540,8 @@ class ClientGlueProxy {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -1386,12 +1550,14 @@ class ClientGlueProxy {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1429,6 +1595,10 @@ class ClientGlueProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1439,6 +1609,12 @@ class ClientGlueProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1462,6 +1638,7 @@ class ClientGlueProxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1481,11 +1658,14 @@ class ClientGlueProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1493,6 +1673,8 @@ class ClientGlueProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1510,6 +1692,7 @@ class ClientGlueProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1555,6 +1738,7 @@ class ClientGlueProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1598,15 +1782,20 @@ class ClientGlueProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1647,6 +1836,7 @@ class ClientGlueProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1681,6 +1871,7 @@ class ClientGlueProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -1721,16 +1912,21 @@ class ClientGlueProxy {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -1747,6 +1943,7 @@ class ClientGlueProxy {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1789,6 +1986,7 @@ class ClientGlueProxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of UPowerGlib-1.0.UPowerGlib.ClientGlue */
@@ -1798,16 +1996,20 @@ class ClientGlueProxy {
      * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_enumerate_devices(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_enumerate_devices().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
      */
     call_enumerate_devices_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_devices */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_enumerate_devices() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_enumerate_devices_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_devices */ string ]
     /**
@@ -1816,16 +2018,20 @@ class ClientGlueProxy {
      * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_critical_action(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_get_critical_action().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
      */
     call_get_critical_action_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_action */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_get_critical_action() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_critical_action_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_action */ string ]
     /**
@@ -1834,42 +2040,54 @@ class ClientGlueProxy {
      * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_display_device(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_get_display_device().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
      */
     call_get_display_device_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_device */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_get_display_device() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_display_device_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_device */ string ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param devices Parameter to return.
      */
     complete_enumerate_devices(invocation: Gio.DBusMethodInvocation, devices: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param action Parameter to return.
      */
     complete_get_critical_action(invocation: Gio.DBusMethodInvocation, action: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param device Parameter to return.
      */
     complete_get_display_device(invocation: Gio.DBusMethodInvocation, device: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceAdded">"DeviceAdded"</link> D-Bus signal.
+     * @param arg_device Argument to pass with the signal.
      */
     emit_device_added(arg_device: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceRemoved">"DeviceRemoved"</link> D-Bus signal.
+     * @param arg_device Argument to pass with the signal.
      */
     emit_device_removed(arg_device: string): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.ClientGlueProxy */
@@ -1910,11 +2128,15 @@ class ClientGlueProxy {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1930,6 +2152,7 @@ class ClientGlueProxy {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -1971,6 +2194,7 @@ class ClientGlueProxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     vfunc_device_added(arg_device: string): void
@@ -1998,6 +2222,7 @@ class ClientGlueProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2015,6 +2240,8 @@ class ClientGlueProxy {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: ClientGlueProxy, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: ClientGlueProxy, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -2025,6 +2252,9 @@ class ClientGlueProxy {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: ClientGlueProxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: ClientGlueProxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -2058,6 +2288,7 @@ class ClientGlueProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
@@ -2067,6 +2298,7 @@ class ClientGlueProxy {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceAdded">"DeviceAdded"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_device Argument.
      */
     connect(sigName: "device-added", callback: (($obj: ClientGlueProxy, arg_device: string) => void)): number
     connect_after(sigName: "device-added", callback: (($obj: ClientGlueProxy, arg_device: string) => void)): number
@@ -2075,6 +2307,7 @@ class ClientGlueProxy {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceRemoved">"DeviceRemoved"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_device Argument.
      */
     connect(sigName: "device-removed", callback: (($obj: ClientGlueProxy, arg_device: string) => void)): number
     connect_after(sigName: "device-removed", callback: (($obj: ClientGlueProxy, arg_device: string) => void)): number
@@ -2083,6 +2316,7 @@ class ClientGlueProxy {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_enumerate_devices() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-enumerate-devices", callback: (($obj: ClientGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-enumerate-devices", callback: (($obj: ClientGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -2091,6 +2325,7 @@ class ClientGlueProxy {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_get_critical_action() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-critical-action", callback: (($obj: ClientGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-critical-action", callback: (($obj: ClientGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -2099,16 +2334,29 @@ class ClientGlueProxy {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_get_display_device() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-display-device", callback: (($obj: ClientGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-display-device", callback: (($obj: ClientGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
     emit(sigName: "handle-get-display-device", invocation: Gio.DBusMethodInvocation): void
+    connect(sigName: "notify::g-bus-type", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::daemon-version", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::daemon-version", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::lid-is-closed", callback: (($obj: ClientGlueProxy, pspec: GObject.ParamSpec) => void)): number
@@ -2144,6 +2392,12 @@ class ClientGlueProxy {
      * You can then call up_client_glue_proxy_new_for_bus_finish() to get the result of the operation.
      * 
      * See up_client_glue_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
+     * @param bus_type A #GBusType.
+     * @param flags Flags from the #GDBusProxyFlags enumeration.
+     * @param name A bus name (well-known or unique).
+     * @param object_path An object path.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
     static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /* Function overloads */
@@ -2151,6 +2405,14 @@ class ClientGlueProxy {
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
      * #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
+     * @param bus_type A #GBusType.
+     * @param flags Flags used when constructing the proxy.
+     * @param info A #GDBusInterfaceInfo specifying the minimal interface that `proxy` conforms to or %NULL.
+     * @param name A bus name (well-known or unique).
+     * @param object_path An object path.
+     * @param interface_name A D-Bus interface name.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback Callback function to invoke when the proxy is ready.
      */
     static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, object_path: string, interface_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2160,12 +2422,21 @@ class ClientGlueProxy {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     /**
@@ -2175,6 +2446,8 @@ class ClientGlueProxy {
     /**
      * Overrides all #GObject properties in the #UpClientGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
     static $gtype: GObject.Type
@@ -2238,7 +2511,7 @@ class ClientGlueSkeleton {
      */
     on_battery: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gio-2.0.Gio.DBusInterfaceSkeleton */
     /**
      * Exports `interface_` at `object_path` on `connection`.
@@ -2248,6 +2521,8 @@ class ClientGlueSkeleton {
      * the same for all connections.
      * 
      * Use g_dbus_interface_skeleton_unexport() to unexport the object.
+     * @param connection A #GDBusConnection to export `interface_` on.
+     * @param object_path The path to export the interface at.
      */
     export(connection: Gio.DBusConnection, object_path: string): boolean
     /**
@@ -2289,10 +2564,12 @@ class ClientGlueSkeleton {
     get_properties(): GLib.Variant
     /**
      * Checks if `interface_` is exported on `connection`.
+     * @param connection A #GDBusConnection.
      */
     has_connection(connection: Gio.DBusConnection): boolean
     /**
      * Sets flags describing what the behavior of `skeleton` should be.
+     * @param flags Flags from the #GDBusInterfaceSkeletonFlags enumeration.
      */
     set_flags(flags: Gio.DBusInterfaceSkeletonFlags): void
     /**
@@ -2307,6 +2584,7 @@ class ClientGlueSkeleton {
      * 
      * To stop exporting on all connections the interface is exported on,
      * use g_dbus_interface_skeleton_unexport().
+     * @param connection A #GDBusConnection.
      */
     unexport_from_connection(connection: Gio.DBusConnection): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2344,6 +2622,10 @@ class ClientGlueSkeleton {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2354,6 +2636,12 @@ class ClientGlueSkeleton {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2377,6 +2665,7 @@ class ClientGlueSkeleton {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2396,11 +2685,14 @@ class ClientGlueSkeleton {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2408,6 +2700,8 @@ class ClientGlueSkeleton {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2425,6 +2719,7 @@ class ClientGlueSkeleton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2470,6 +2765,7 @@ class ClientGlueSkeleton {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2513,15 +2809,20 @@ class ClientGlueSkeleton {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2562,6 +2863,7 @@ class ClientGlueSkeleton {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2596,6 +2898,7 @@ class ClientGlueSkeleton {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -2607,6 +2910,7 @@ class ClientGlueSkeleton {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of UPowerGlib-1.0.UPowerGlib.ClientGlue */
@@ -2616,16 +2920,20 @@ class ClientGlueSkeleton {
      * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_enumerate_devices(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_enumerate_devices().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
      */
     call_enumerate_devices_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_devices */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_enumerate_devices() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_enumerate_devices_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_devices */ string ]
     /**
@@ -2634,16 +2942,20 @@ class ClientGlueSkeleton {
      * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_critical_action(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_get_critical_action().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
      */
     call_get_critical_action_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_action */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_get_critical_action() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_critical_action_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_action */ string ]
     /**
@@ -2652,42 +2964,54 @@ class ClientGlueSkeleton {
      * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
      * 
      * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_display_device(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_client_glue_call_get_display_device().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
      */
     call_get_display_device_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_device */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_client_glue_call_get_display_device() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_display_device_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_device */ string ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param devices Parameter to return.
      */
     complete_enumerate_devices(invocation: Gio.DBusMethodInvocation, devices: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param action Parameter to return.
      */
     complete_get_critical_action(invocation: Gio.DBusMethodInvocation, action: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param device Parameter to return.
      */
     complete_get_display_device(invocation: Gio.DBusMethodInvocation, device: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceAdded">"DeviceAdded"</link> D-Bus signal.
+     * @param arg_device Argument to pass with the signal.
      */
     emit_device_added(arg_device: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceRemoved">"DeviceRemoved"</link> D-Bus signal.
+     * @param arg_device Argument to pass with the signal.
      */
     emit_device_removed(arg_device: string): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.ClientGlueSkeleton */
@@ -2704,6 +3028,7 @@ class ClientGlueSkeleton {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     vfunc_device_added(arg_device: string): void
@@ -2750,6 +3075,7 @@ class ClientGlueSkeleton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2788,6 +3114,7 @@ class ClientGlueSkeleton {
      * flags set, no dedicated thread is ever used and the call will be
      * handled in the same thread as the object that `interface` belongs
      * to was exported in.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "g-authorize-method", callback: (($obj: ClientGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "g-authorize-method", callback: (($obj: ClientGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -2821,6 +3148,7 @@ class ClientGlueSkeleton {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ClientGlueSkeleton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ClientGlueSkeleton, pspec: GObject.ParamSpec) => void)): number
@@ -2830,6 +3158,7 @@ class ClientGlueSkeleton {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceAdded">"DeviceAdded"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_device Argument.
      */
     connect(sigName: "device-added", callback: (($obj: ClientGlueSkeleton, arg_device: string) => void)): number
     connect_after(sigName: "device-added", callback: (($obj: ClientGlueSkeleton, arg_device: string) => void)): number
@@ -2838,6 +3167,7 @@ class ClientGlueSkeleton {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceRemoved">"DeviceRemoved"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_device Argument.
      */
     connect(sigName: "device-removed", callback: (($obj: ClientGlueSkeleton, arg_device: string) => void)): number
     connect_after(sigName: "device-removed", callback: (($obj: ClientGlueSkeleton, arg_device: string) => void)): number
@@ -2846,6 +3176,7 @@ class ClientGlueSkeleton {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_enumerate_devices() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-enumerate-devices", callback: (($obj: ClientGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-enumerate-devices", callback: (($obj: ClientGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -2854,6 +3185,7 @@ class ClientGlueSkeleton {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_get_critical_action() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-critical-action", callback: (($obj: ClientGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-critical-action", callback: (($obj: ClientGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -2862,6 +3194,7 @@ class ClientGlueSkeleton {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_client_glue_complete_get_display_device() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-display-device", callback: (($obj: ClientGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-display-device", callback: (($obj: ClientGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -2892,6 +3225,8 @@ class ClientGlueSkeleton {
     /**
      * Overrides all #GObject properties in the #UpClientGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
     static $gtype: GObject.Type
@@ -3134,10 +3469,14 @@ class Device {
      */
     warning_level: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of UPowerGlib-1.0.UPowerGlib.Device */
     /**
      * Gets the device history.
+     * @param type The type of history, known values are "rate" and "charge".
+     * @param timespec the amount of time to look back into time.
+     * @param resolution the resolution of data.
+     * @param cancellable a #GCancellable or %NULL
      */
     get_history_sync(type: string, timespec: number, resolution: number, cancellable?: Gio.Cancellable | null): HistoryItem[]
     /**
@@ -3146,15 +3485,20 @@ class Device {
     get_object_path(): string
     /**
      * Gets the device current statistics.
+     * @param type the type of statistics.
+     * @param cancellable a #GCancellable or %NULL
      */
     get_statistics_sync(type: string, cancellable?: Gio.Cancellable | null): StatsItem[]
     /**
      * Refreshes properties on the device.
      * This function is normally not required.
+     * @param cancellable a #GCancellable or %NULL
      */
     refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the object path of the object and fills up initial properties.
+     * @param object_path The UPower object path.
+     * @param cancellable a #GCancellable or %NULL
      */
     set_object_path_sync(object_path: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3196,6 +3540,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3206,6 +3554,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3229,6 +3583,7 @@ class Device {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3248,11 +3603,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3260,6 +3618,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3277,6 +3637,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3322,6 +3683,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3365,15 +3727,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3414,6 +3781,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3448,6 +3816,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3467,6 +3836,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3499,6 +3869,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
@@ -3570,34 +3941,42 @@ class Device {
     static new(): Device
     /**
      * Converts a string to a #UpDeviceKind.
+     * @param type 
      */
     static kind_from_string(type: string): DeviceKind
     /**
      * Converts a #UpDeviceKind to a string.
+     * @param type_enum 
      */
     static kind_to_string(type_enum: DeviceKind): string
     /**
      * Converts a string to a #UpDeviceLevel.
+     * @param level 
      */
     static level_from_string(level: string): DeviceLevel
     /**
      * Converts a #UpDeviceLevel to a string.
+     * @param level_enum 
      */
     static level_to_string(level_enum: DeviceLevel): string
     /**
      * Converts a string to a #UpDeviceState.
+     * @param state 
      */
     static state_from_string(state: string): DeviceState
     /**
      * Converts a #UpDeviceState to a string.
+     * @param state_enum 
      */
     static state_to_string(state_enum: DeviceState): string
     /**
      * Converts a string to a #UpDeviceTechnology.
+     * @param technology 
      */
     static technology_from_string(technology: string): DeviceTechnology
     /**
      * Converts a #UpDeviceTechnology to a string.
+     * @param technology_enum 
      */
     static technology_to_string(technology_enum: DeviceTechnology): string
     static $gtype: GObject.Type
@@ -3776,6 +4155,17 @@ interface DeviceGlueProxy_ConstructProps extends Gio.DBusProxy_ConstructProps {
 class DeviceGlueProxy {
     /* Properties of Gio-2.0.Gio.DBusProxy */
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
+    /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
      * g_dbus_proxy_call_sync() functions.
@@ -3786,6 +4176,10 @@ class DeviceGlueProxy {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -3814,11 +4208,23 @@ class DeviceGlueProxy {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Properties of UPowerGlib-1.0.UPowerGlib.DeviceGlue */
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Capacity">"Capacity"</link>.
@@ -3989,7 +4395,7 @@ class DeviceGlueProxy {
      */
     warning_level: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gio-2.0.Gio.DBusProxy */
     /**
      * Asynchronously invokes the `method_name` method on `proxy`.
@@ -4036,10 +4442,17 @@ class DeviceGlueProxy {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -4079,22 +4492,41 @@ class DeviceGlueProxy {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -4104,6 +4536,7 @@ class DeviceGlueProxy {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -4191,6 +4624,8 @@ class DeviceGlueProxy {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -4199,12 +4634,14 @@ class DeviceGlueProxy {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4242,6 +4679,10 @@ class DeviceGlueProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4252,6 +4693,12 @@ class DeviceGlueProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4275,6 +4722,7 @@ class DeviceGlueProxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4294,11 +4742,14 @@ class DeviceGlueProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4306,6 +4757,8 @@ class DeviceGlueProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4323,6 +4776,7 @@ class DeviceGlueProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4368,6 +4822,7 @@ class DeviceGlueProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4411,15 +4866,20 @@ class DeviceGlueProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4460,6 +4920,7 @@ class DeviceGlueProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4494,6 +4955,7 @@ class DeviceGlueProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -4534,16 +4996,21 @@ class DeviceGlueProxy {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -4560,6 +5027,7 @@ class DeviceGlueProxy {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -4602,6 +5070,7 @@ class DeviceGlueProxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of UPowerGlib-1.0.UPowerGlib.DeviceGlue */
@@ -4611,16 +5080,26 @@ class DeviceGlueProxy {
      * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param arg_timespan Argument to pass with the method invocation.
+     * @param arg_resolution Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_history(arg_type: string, arg_timespan: number, arg_resolution: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_get_history().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
      */
     call_get_history_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_get_history() for the asynchronous version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param arg_timespan Argument to pass with the method invocation.
+     * @param arg_resolution Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_history_sync(arg_type: string, arg_timespan: number, arg_resolution: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -4629,16 +5108,22 @@ class DeviceGlueProxy {
      * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_statistics(arg_type: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_get_statistics().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
      */
     call_get_statistics_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_get_statistics() for the asynchronous version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_statistics_sync(arg_type: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -4647,34 +5132,43 @@ class DeviceGlueProxy {
      * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_refresh().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
      */
     call_refresh_finish(res: Gio.AsyncResult): boolean
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_refresh() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_history(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_statistics(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
      */
     complete_refresh(invocation: Gio.DBusMethodInvocation): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.DeviceGlueProxy */
@@ -4715,11 +5209,15 @@ class DeviceGlueProxy {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -4735,6 +5233,7 @@ class DeviceGlueProxy {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -4776,6 +5275,7 @@ class DeviceGlueProxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     vfunc_handle_get_history(invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number): boolean
@@ -4801,6 +5301,7 @@ class DeviceGlueProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4818,6 +5319,8 @@ class DeviceGlueProxy {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: DeviceGlueProxy, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: DeviceGlueProxy, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -4828,6 +5331,9 @@ class DeviceGlueProxy {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: DeviceGlueProxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: DeviceGlueProxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -4861,6 +5367,7 @@ class DeviceGlueProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
@@ -4870,6 +5377,10 @@ class DeviceGlueProxy {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_get_history() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param arg_type Argument passed by remote caller.
+     * @param arg_timespan Argument passed by remote caller.
+     * @param arg_resolution Argument passed by remote caller.
      */
     connect(sigName: "handle-get-history", callback: (($obj: DeviceGlueProxy, invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number) => boolean)): number
     connect_after(sigName: "handle-get-history", callback: (($obj: DeviceGlueProxy, invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number) => boolean)): number
@@ -4878,6 +5389,8 @@ class DeviceGlueProxy {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_get_statistics() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param arg_type Argument passed by remote caller.
      */
     connect(sigName: "handle-get-statistics", callback: (($obj: DeviceGlueProxy, invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean)): number
     connect_after(sigName: "handle-get-statistics", callback: (($obj: DeviceGlueProxy, invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean)): number
@@ -4886,16 +5399,29 @@ class DeviceGlueProxy {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_refresh() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-refresh", callback: (($obj: DeviceGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-refresh", callback: (($obj: DeviceGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
     emit(sigName: "handle-refresh", invocation: Gio.DBusMethodInvocation): void
+    connect(sigName: "notify::g-bus-type", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::capacity", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::capacity", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::energy", callback: (($obj: DeviceGlueProxy, pspec: GObject.ParamSpec) => void)): number
@@ -4979,6 +5505,12 @@ class DeviceGlueProxy {
      * You can then call up_device_glue_proxy_new_for_bus_finish() to get the result of the operation.
      * 
      * See up_device_glue_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
+     * @param bus_type A #GBusType.
+     * @param flags Flags from the #GDBusProxyFlags enumeration.
+     * @param name A bus name (well-known or unique).
+     * @param object_path An object path.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
     static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /* Function overloads */
@@ -4986,6 +5518,14 @@ class DeviceGlueProxy {
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
      * #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
+     * @param bus_type A #GBusType.
+     * @param flags Flags used when constructing the proxy.
+     * @param info A #GDBusInterfaceInfo specifying the minimal interface that `proxy` conforms to or %NULL.
+     * @param name A bus name (well-known or unique).
+     * @param object_path An object path.
+     * @param interface_name A D-Bus interface name.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback Callback function to invoke when the proxy is ready.
      */
     static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, object_path: string, interface_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -4995,12 +5535,21 @@ class DeviceGlueProxy {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     /**
@@ -5010,6 +5559,8 @@ class DeviceGlueProxy {
     /**
      * Overrides all #GObject properties in the #UpDeviceGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
     static $gtype: GObject.Type
@@ -5361,7 +5912,7 @@ class DeviceGlueSkeleton {
      */
     warning_level: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gio-2.0.Gio.DBusInterfaceSkeleton */
     /**
      * Exports `interface_` at `object_path` on `connection`.
@@ -5371,6 +5922,8 @@ class DeviceGlueSkeleton {
      * the same for all connections.
      * 
      * Use g_dbus_interface_skeleton_unexport() to unexport the object.
+     * @param connection A #GDBusConnection to export `interface_` on.
+     * @param object_path The path to export the interface at.
      */
     export(connection: Gio.DBusConnection, object_path: string): boolean
     /**
@@ -5412,10 +5965,12 @@ class DeviceGlueSkeleton {
     get_properties(): GLib.Variant
     /**
      * Checks if `interface_` is exported on `connection`.
+     * @param connection A #GDBusConnection.
      */
     has_connection(connection: Gio.DBusConnection): boolean
     /**
      * Sets flags describing what the behavior of `skeleton` should be.
+     * @param flags Flags from the #GDBusInterfaceSkeletonFlags enumeration.
      */
     set_flags(flags: Gio.DBusInterfaceSkeletonFlags): void
     /**
@@ -5430,6 +5985,7 @@ class DeviceGlueSkeleton {
      * 
      * To stop exporting on all connections the interface is exported on,
      * use g_dbus_interface_skeleton_unexport().
+     * @param connection A #GDBusConnection.
      */
     unexport_from_connection(connection: Gio.DBusConnection): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5467,6 +6023,10 @@ class DeviceGlueSkeleton {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5477,6 +6037,12 @@ class DeviceGlueSkeleton {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5500,6 +6066,7 @@ class DeviceGlueSkeleton {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5519,11 +6086,14 @@ class DeviceGlueSkeleton {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5531,6 +6101,8 @@ class DeviceGlueSkeleton {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5548,6 +6120,7 @@ class DeviceGlueSkeleton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5593,6 +6166,7 @@ class DeviceGlueSkeleton {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5636,15 +6210,20 @@ class DeviceGlueSkeleton {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5685,6 +6264,7 @@ class DeviceGlueSkeleton {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5719,6 +6299,7 @@ class DeviceGlueSkeleton {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -5730,6 +6311,7 @@ class DeviceGlueSkeleton {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of UPowerGlib-1.0.UPowerGlib.DeviceGlue */
@@ -5739,16 +6321,26 @@ class DeviceGlueSkeleton {
      * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param arg_timespan Argument to pass with the method invocation.
+     * @param arg_resolution Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_history(arg_type: string, arg_timespan: number, arg_resolution: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_get_history().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
      */
     call_get_history_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_get_history() for the asynchronous version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param arg_timespan Argument to pass with the method invocation.
+     * @param arg_resolution Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_history_sync(arg_type: string, arg_timespan: number, arg_resolution: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -5757,16 +6349,22 @@ class DeviceGlueSkeleton {
      * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_statistics(arg_type: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_get_statistics().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
      */
     call_get_statistics_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_get_statistics() for the asynchronous version of this method.
+     * @param arg_type Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_statistics_sync(arg_type: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -5775,34 +6373,43 @@ class DeviceGlueSkeleton {
      * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
      * 
      * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_refresh().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
      */
     call_refresh_finish(res: Gio.AsyncResult): boolean
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_device_glue_call_refresh() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_history(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_statistics(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
      */
     complete_refresh(invocation: Gio.DBusMethodInvocation): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.DeviceGlueSkeleton */
@@ -5819,6 +6426,7 @@ class DeviceGlueSkeleton {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     vfunc_handle_get_history(invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number): boolean
@@ -5863,6 +6471,7 @@ class DeviceGlueSkeleton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5901,6 +6510,7 @@ class DeviceGlueSkeleton {
      * flags set, no dedicated thread is ever used and the call will be
      * handled in the same thread as the object that `interface` belongs
      * to was exported in.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "g-authorize-method", callback: (($obj: DeviceGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "g-authorize-method", callback: (($obj: DeviceGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -5934,6 +6544,7 @@ class DeviceGlueSkeleton {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceGlueSkeleton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceGlueSkeleton, pspec: GObject.ParamSpec) => void)): number
@@ -5943,6 +6554,10 @@ class DeviceGlueSkeleton {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_get_history() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param arg_type Argument passed by remote caller.
+     * @param arg_timespan Argument passed by remote caller.
+     * @param arg_resolution Argument passed by remote caller.
      */
     connect(sigName: "handle-get-history", callback: (($obj: DeviceGlueSkeleton, invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number) => boolean)): number
     connect_after(sigName: "handle-get-history", callback: (($obj: DeviceGlueSkeleton, invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number) => boolean)): number
@@ -5951,6 +6566,8 @@ class DeviceGlueSkeleton {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_get_statistics() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param arg_type Argument passed by remote caller.
      */
     connect(sigName: "handle-get-statistics", callback: (($obj: DeviceGlueSkeleton, invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean)): number
     connect_after(sigName: "handle-get-statistics", callback: (($obj: DeviceGlueSkeleton, invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean)): number
@@ -5959,6 +6576,7 @@ class DeviceGlueSkeleton {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_device_glue_complete_refresh() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-refresh", callback: (($obj: DeviceGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-refresh", callback: (($obj: DeviceGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -6037,6 +6655,8 @@ class DeviceGlueSkeleton {
     /**
      * Overrides all #GObject properties in the #UpDeviceGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
     static $gtype: GObject.Type
@@ -6053,7 +6673,7 @@ class HistoryItem {
     time: number
     value: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of UPowerGlib-1.0.UPowerGlib.HistoryItem */
     /**
      * Gets the item state.
@@ -6069,14 +6689,17 @@ class HistoryItem {
     get_value(): number
     /**
      * Converts the history item to a string representation.
+     * @param text 
      */
     set_from_string(text: string): boolean
     /**
      * Sets the item state.
+     * @param state the new value
      */
     set_state(state: DeviceState): void
     /**
      * Sets the item time.
+     * @param time the new value
      */
     set_time(time: number): void
     /**
@@ -6085,6 +6708,7 @@ class HistoryItem {
     set_time_to_present(): void
     /**
      * Sets the item value.
+     * @param value the new value
      */
     set_value(value: number): void
     /**
@@ -6126,6 +6750,10 @@ class HistoryItem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6136,6 +6764,12 @@ class HistoryItem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6159,6 +6793,7 @@ class HistoryItem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6178,11 +6813,14 @@ class HistoryItem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6190,6 +6828,8 @@ class HistoryItem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6207,6 +6847,7 @@ class HistoryItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6252,6 +6893,7 @@ class HistoryItem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6295,15 +6937,20 @@ class HistoryItem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6344,6 +6991,7 @@ class HistoryItem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6378,6 +7026,7 @@ class HistoryItem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6397,6 +7046,7 @@ class HistoryItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6429,6 +7079,7 @@ class HistoryItem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HistoryItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HistoryItem, pspec: GObject.ParamSpec) => void)): number
@@ -6460,7 +7111,7 @@ class StatsItem {
     accuracy: number
     value: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of UPowerGlib-1.0.UPowerGlib.StatsItem */
     /**
      * Gets the item accuracy.
@@ -6472,10 +7123,12 @@ class StatsItem {
     get_value(): number
     /**
      * Sets the item accuracy.
+     * @param accuracy 
      */
     set_accuracy(accuracy: number): void
     /**
      * Sets the item value.
+     * @param value 
      */
     set_value(value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6513,6 +7166,10 @@ class StatsItem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6523,6 +7180,12 @@ class StatsItem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6546,6 +7209,7 @@ class StatsItem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6565,11 +7229,14 @@ class StatsItem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6577,6 +7244,8 @@ class StatsItem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6594,6 +7263,7 @@ class StatsItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6639,6 +7309,7 @@ class StatsItem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6682,15 +7353,20 @@ class StatsItem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6731,6 +7407,7 @@ class StatsItem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6765,6 +7442,7 @@ class StatsItem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6784,6 +7462,7 @@ class StatsItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6816,6 +7495,7 @@ class StatsItem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StatsItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StatsItem, pspec: GObject.ParamSpec) => void)): number
@@ -6853,7 +7533,7 @@ class WakeupItem {
     old: number
     value: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of UPowerGlib-1.0.UPowerGlib.WakeupItem */
     /**
      * Gets the item cmdline.
@@ -6881,26 +7561,32 @@ class WakeupItem {
     get_value(): number
     /**
      * Sets the item cmdline.
+     * @param cmdline the new value
      */
     set_cmdline(cmdline: string): void
     /**
      * Sets the item details.
+     * @param details the new value
      */
     set_details(details: string): void
     /**
      * Sets the item id.
+     * @param id the new value
      */
     set_id(id: number): void
     /**
      * Sets if the item is userspace.
+     * @param is_userspace the new value
      */
     set_is_userspace(is_userspace: boolean): void
     /**
      * Sets the item old.
+     * @param old the new value
      */
     set_old(old: number): void
     /**
      * Sets the item value.
+     * @param value the new value
      */
     set_value(value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6938,6 +7624,10 @@ class WakeupItem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6948,6 +7638,12 @@ class WakeupItem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6971,6 +7667,7 @@ class WakeupItem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6990,11 +7687,14 @@ class WakeupItem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7002,6 +7702,8 @@ class WakeupItem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7019,6 +7721,7 @@ class WakeupItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7064,6 +7767,7 @@ class WakeupItem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7107,15 +7811,20 @@ class WakeupItem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7156,6 +7865,7 @@ class WakeupItem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7190,6 +7900,7 @@ class WakeupItem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7209,6 +7920,7 @@ class WakeupItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7241,6 +7953,7 @@ class WakeupItem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WakeupItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WakeupItem, pspec: GObject.ParamSpec) => void)): number
@@ -7272,10 +7985,11 @@ interface Wakeups_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Wakeups {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of UPowerGlib-1.0.UPowerGlib.Wakeups */
     /**
      * Gets the wakeups data from the daemon.
+     * @param cancellable a #GCancellable or %NULL
      */
     get_data_sync(cancellable?: Gio.Cancellable | null): WakeupItem[]
     /**
@@ -7284,10 +7998,12 @@ class Wakeups {
     get_has_capability(): boolean
     /**
      * Gets properties from the daemon about wakeup data.
+     * @param cancellable a #GCancellable or %NULL
      */
     get_properties_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Gets the the total number of wakeups per second from the daemon.
+     * @param cancellable a #GCancellable or %NULL
      */
     get_total_sync(cancellable?: Gio.Cancellable | null): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -7325,6 +8041,10 @@ class Wakeups {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7335,6 +8055,12 @@ class Wakeups {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7358,6 +8084,7 @@ class Wakeups {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7377,11 +8104,14 @@ class Wakeups {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7389,6 +8119,8 @@ class Wakeups {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7406,6 +8138,7 @@ class Wakeups {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7451,6 +8184,7 @@ class Wakeups {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7494,15 +8228,20 @@ class Wakeups {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7543,6 +8282,7 @@ class Wakeups {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7577,6 +8317,7 @@ class Wakeups {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.Wakeups */
@@ -7599,6 +8340,7 @@ class Wakeups {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7638,6 +8380,7 @@ class Wakeups {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Wakeups, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Wakeups, pspec: GObject.ParamSpec) => void)): number
@@ -7665,6 +8408,17 @@ interface WakeupsGlueProxy_ConstructProps extends Gio.DBusProxy_ConstructProps {
 class WakeupsGlueProxy {
     /* Properties of Gio-2.0.Gio.DBusProxy */
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
+    /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
      * g_dbus_proxy_call_sync() functions.
@@ -7675,6 +8429,10 @@ class WakeupsGlueProxy {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -7703,11 +8461,23 @@ class WakeupsGlueProxy {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Properties of UPowerGlib-1.0.UPowerGlib.WakeupsGlue */
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
@@ -7716,7 +8486,7 @@ class WakeupsGlueProxy {
      */
     has_capability: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gio-2.0.Gio.DBusProxy */
     /**
      * Asynchronously invokes the `method_name` method on `proxy`.
@@ -7763,10 +8533,17 @@ class WakeupsGlueProxy {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -7806,22 +8583,41 @@ class WakeupsGlueProxy {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -7831,6 +8627,7 @@ class WakeupsGlueProxy {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -7918,6 +8715,8 @@ class WakeupsGlueProxy {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -7926,12 +8725,14 @@ class WakeupsGlueProxy {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7969,6 +8770,10 @@ class WakeupsGlueProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7979,6 +8784,12 @@ class WakeupsGlueProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8002,6 +8813,7 @@ class WakeupsGlueProxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8021,11 +8833,14 @@ class WakeupsGlueProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8033,6 +8848,8 @@ class WakeupsGlueProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8050,6 +8867,7 @@ class WakeupsGlueProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8095,6 +8913,7 @@ class WakeupsGlueProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8138,15 +8957,20 @@ class WakeupsGlueProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8187,6 +9011,7 @@ class WakeupsGlueProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8221,6 +9046,7 @@ class WakeupsGlueProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -8261,16 +9087,21 @@ class WakeupsGlueProxy {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -8287,6 +9118,7 @@ class WakeupsGlueProxy {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -8329,6 +9161,7 @@ class WakeupsGlueProxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of UPowerGlib-1.0.UPowerGlib.WakeupsGlue */
@@ -8338,16 +9171,20 @@ class WakeupsGlueProxy {
      * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
      * 
      * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_data(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_wakeups_glue_call_get_data().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
      */
     call_get_data_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_wakeups_glue_call_get_data() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_data_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -8356,28 +9193,36 @@ class WakeupsGlueProxy {
      * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
      * 
      * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_total(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_wakeups_glue_call_get_total().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().
      */
     call_get_total_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_value */ number ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_wakeups_glue_call_get_total() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_total_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_value */ number ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_data(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param value Parameter to return.
      */
     complete_get_total(invocation: Gio.DBusMethodInvocation, value: number): void
     /**
@@ -8386,6 +9231,7 @@ class WakeupsGlueProxy {
     emit_data_changed(): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower-Wakeups.TotalChanged">"TotalChanged"</link> D-Bus signal.
+     * @param arg_value Argument to pass with the signal.
      */
     emit_total_changed(arg_value: number): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.WakeupsGlueProxy */
@@ -8426,11 +9272,15 @@ class WakeupsGlueProxy {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -8446,6 +9296,7 @@ class WakeupsGlueProxy {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -8487,6 +9338,7 @@ class WakeupsGlueProxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     vfunc_data_changed(): void
@@ -8513,6 +9365,7 @@ class WakeupsGlueProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8530,6 +9383,8 @@ class WakeupsGlueProxy {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: WakeupsGlueProxy, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: WakeupsGlueProxy, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -8540,6 +9395,9 @@ class WakeupsGlueProxy {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: WakeupsGlueProxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: WakeupsGlueProxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -8573,6 +9431,7 @@ class WakeupsGlueProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
@@ -8590,6 +9449,7 @@ class WakeupsGlueProxy {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_wakeups_glue_complete_get_data() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-data", callback: (($obj: WakeupsGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-data", callback: (($obj: WakeupsGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -8598,6 +9458,7 @@ class WakeupsGlueProxy {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_wakeups_glue_complete_get_total() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-total", callback: (($obj: WakeupsGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-total", callback: (($obj: WakeupsGlueProxy, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -8606,16 +9467,29 @@ class WakeupsGlueProxy {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower-Wakeups.TotalChanged">"TotalChanged"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_value Argument.
      */
     connect(sigName: "total-changed", callback: (($obj: WakeupsGlueProxy, arg_value: number) => void)): number
     connect_after(sigName: "total-changed", callback: (($obj: WakeupsGlueProxy, arg_value: number) => void)): number
     emit(sigName: "total-changed", arg_value: number): void
+    connect(sigName: "notify::g-bus-type", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::has-capability", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-capability", callback: (($obj: WakeupsGlueProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -8645,6 +9519,12 @@ class WakeupsGlueProxy {
      * You can then call up_wakeups_glue_proxy_new_for_bus_finish() to get the result of the operation.
      * 
      * See up_wakeups_glue_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
+     * @param bus_type A #GBusType.
+     * @param flags Flags from the #GDBusProxyFlags enumeration.
+     * @param name A bus name (well-known or unique).
+     * @param object_path An object path.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
     static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /* Function overloads */
@@ -8652,6 +9532,14 @@ class WakeupsGlueProxy {
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
      * #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
+     * @param bus_type A #GBusType.
+     * @param flags Flags used when constructing the proxy.
+     * @param info A #GDBusInterfaceInfo specifying the minimal interface that `proxy` conforms to or %NULL.
+     * @param name A bus name (well-known or unique).
+     * @param object_path An object path.
+     * @param interface_name A D-Bus interface name.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback Callback function to invoke when the proxy is ready.
      */
     static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, object_path: string, interface_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -8661,12 +9549,21 @@ class WakeupsGlueProxy {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     /**
@@ -8676,6 +9573,8 @@ class WakeupsGlueProxy {
     /**
      * Overrides all #GObject properties in the #UpWakeupsGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
     static $gtype: GObject.Type
@@ -8703,7 +9602,7 @@ class WakeupsGlueSkeleton {
      */
     has_capability: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gio-2.0.Gio.DBusInterfaceSkeleton */
     /**
      * Exports `interface_` at `object_path` on `connection`.
@@ -8713,6 +9612,8 @@ class WakeupsGlueSkeleton {
      * the same for all connections.
      * 
      * Use g_dbus_interface_skeleton_unexport() to unexport the object.
+     * @param connection A #GDBusConnection to export `interface_` on.
+     * @param object_path The path to export the interface at.
      */
     export(connection: Gio.DBusConnection, object_path: string): boolean
     /**
@@ -8754,10 +9655,12 @@ class WakeupsGlueSkeleton {
     get_properties(): GLib.Variant
     /**
      * Checks if `interface_` is exported on `connection`.
+     * @param connection A #GDBusConnection.
      */
     has_connection(connection: Gio.DBusConnection): boolean
     /**
      * Sets flags describing what the behavior of `skeleton` should be.
+     * @param flags Flags from the #GDBusInterfaceSkeletonFlags enumeration.
      */
     set_flags(flags: Gio.DBusInterfaceSkeletonFlags): void
     /**
@@ -8772,6 +9675,7 @@ class WakeupsGlueSkeleton {
      * 
      * To stop exporting on all connections the interface is exported on,
      * use g_dbus_interface_skeleton_unexport().
+     * @param connection A #GDBusConnection.
      */
     unexport_from_connection(connection: Gio.DBusConnection): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8809,6 +9713,10 @@ class WakeupsGlueSkeleton {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8819,6 +9727,12 @@ class WakeupsGlueSkeleton {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8842,6 +9756,7 @@ class WakeupsGlueSkeleton {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8861,11 +9776,14 @@ class WakeupsGlueSkeleton {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8873,6 +9791,8 @@ class WakeupsGlueSkeleton {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8890,6 +9810,7 @@ class WakeupsGlueSkeleton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8935,6 +9856,7 @@ class WakeupsGlueSkeleton {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8978,15 +9900,20 @@ class WakeupsGlueSkeleton {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9027,6 +9954,7 @@ class WakeupsGlueSkeleton {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9061,6 +9989,7 @@ class WakeupsGlueSkeleton {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -9072,6 +10001,7 @@ class WakeupsGlueSkeleton {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of UPowerGlib-1.0.UPowerGlib.WakeupsGlue */
@@ -9081,16 +10011,20 @@ class WakeupsGlueSkeleton {
      * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
      * 
      * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_data(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_wakeups_glue_call_get_data().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
      */
     call_get_data_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_wakeups_glue_call_get_data() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_data_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ GLib.Variant ]
     /**
@@ -9099,28 +10033,36 @@ class WakeupsGlueSkeleton {
      * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
      * 
      * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
     call_get_total(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_wakeups_glue_call_get_total().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().
      */
     call_get_total_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* out_value */ number ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
      * See up_wakeups_glue_call_get_total() for the asynchronous version of this method.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_get_total_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_value */ number ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param data Parameter to return.
      */
     complete_get_data(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     * @param value Parameter to return.
      */
     complete_get_total(invocation: Gio.DBusMethodInvocation, value: number): void
     /**
@@ -9129,6 +10071,7 @@ class WakeupsGlueSkeleton {
     emit_data_changed(): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower-Wakeups.TotalChanged">"TotalChanged"</link> D-Bus signal.
+     * @param arg_value Argument to pass with the signal.
      */
     emit_total_changed(arg_value: number): void
     /* Virtual methods of UPowerGlib-1.0.UPowerGlib.WakeupsGlueSkeleton */
@@ -9145,6 +10088,7 @@ class WakeupsGlueSkeleton {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     vfunc_data_changed(): void
@@ -9190,6 +10134,7 @@ class WakeupsGlueSkeleton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9228,6 +10173,7 @@ class WakeupsGlueSkeleton {
      * flags set, no dedicated thread is ever used and the call will be
      * handled in the same thread as the object that `interface` belongs
      * to was exported in.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "g-authorize-method", callback: (($obj: WakeupsGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "g-authorize-method", callback: (($obj: WakeupsGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -9261,6 +10207,7 @@ class WakeupsGlueSkeleton {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WakeupsGlueSkeleton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WakeupsGlueSkeleton, pspec: GObject.ParamSpec) => void)): number
@@ -9278,6 +10225,7 @@ class WakeupsGlueSkeleton {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_wakeups_glue_complete_get_data() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-data", callback: (($obj: WakeupsGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-data", callback: (($obj: WakeupsGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -9286,6 +10234,7 @@ class WakeupsGlueSkeleton {
      * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method.
      * 
      * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call up_wakeups_glue_complete_get_total() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+     * @param invocation A #GDBusMethodInvocation.
      */
     connect(sigName: "handle-get-total", callback: (($obj: WakeupsGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
     connect_after(sigName: "handle-get-total", callback: (($obj: WakeupsGlueSkeleton, invocation: Gio.DBusMethodInvocation) => boolean)): number
@@ -9294,6 +10243,7 @@ class WakeupsGlueSkeleton {
      * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UPower-Wakeups.TotalChanged">"TotalChanged"</link> is received.
      * 
      * On the service-side, this signal can be used with e.g. g_signal_emit_by_name() to make the object emit the D-Bus signal.
+     * @param arg_value Argument.
      */
     connect(sigName: "total-changed", callback: (($obj: WakeupsGlueSkeleton, arg_value: number) => void)): number
     connect_after(sigName: "total-changed", callback: (($obj: WakeupsGlueSkeleton, arg_value: number) => void)): number
@@ -9318,15 +10268,17 @@ class WakeupsGlueSkeleton {
     /**
      * Overrides all #GObject properties in the #UpWakeupsGlue interface for a concrete class.
      * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
      */
     static override_properties(klass: GObject.ObjectClass, property_id_begin: number): number
     static $gtype: GObject.Type
 }
 abstract class ClientClass {
     /* Fields of UPowerGlib-1.0.UPowerGlib.ClientClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly device_added: (client: Client, device: Device) => void
-    readonly device_removed: (client: Client, object_path: string) => void
+    parent_class: GObject.ObjectClass
+    device_added: (client: Client, device: Device) => void
+    device_removed: (client: Client, object_path: string) => void
     static name: string
 }
 abstract class ClientGlueIface {
@@ -9334,16 +10286,16 @@ abstract class ClientGlueIface {
     /**
      * The parent interface.
      */
-    readonly parent_iface: GObject.TypeInterface
-    readonly handle_enumerate_devices: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
-    readonly handle_get_critical_action: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
-    readonly handle_get_display_device: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
-    readonly get_daemon_version: (object: ClientGlue) => string
-    readonly get_lid_is_closed: (object: ClientGlue) => boolean
-    readonly get_lid_is_present: (object: ClientGlue) => boolean
-    readonly get_on_battery: (object: ClientGlue) => boolean
-    readonly device_added: (object: ClientGlue, arg_device: string) => void
-    readonly device_removed: (object: ClientGlue, arg_device: string) => void
+    parent_iface: GObject.TypeInterface
+    handle_enumerate_devices: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
+    handle_get_critical_action: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
+    handle_get_display_device: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
+    get_daemon_version: (object: ClientGlue) => string
+    get_lid_is_closed: (object: ClientGlue) => boolean
+    get_lid_is_present: (object: ClientGlue) => boolean
+    get_on_battery: (object: ClientGlue) => boolean
+    device_added: (object: ClientGlue, arg_device: string) => void
+    device_removed: (object: ClientGlue, arg_device: string) => void
     static name: string
 }
 abstract class ClientGlueProxyClass {
@@ -9351,7 +10303,7 @@ abstract class ClientGlueProxyClass {
     /**
      * The parent class.
      */
-    readonly parent_class: Gio.DBusProxyClass
+    parent_class: Gio.DBusProxyClass
     static name: string
 }
 class ClientGlueProxyPrivate {
@@ -9362,7 +10314,7 @@ abstract class ClientGlueSkeletonClass {
     /**
      * The parent class.
      */
-    readonly parent_class: Gio.DBusInterfaceSkeletonClass
+    parent_class: Gio.DBusInterfaceSkeletonClass
     static name: string
 }
 class ClientGlueSkeletonPrivate {
@@ -9373,7 +10325,7 @@ class ClientPrivate {
 }
 abstract class DeviceClass {
     /* Fields of UPowerGlib-1.0.UPowerGlib.DeviceClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class DeviceGlueIface {
@@ -9381,38 +10333,38 @@ abstract class DeviceGlueIface {
     /**
      * The parent interface.
      */
-    readonly parent_iface: GObject.TypeInterface
-    readonly handle_get_history: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number) => boolean
-    readonly handle_get_statistics: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean
-    readonly handle_refresh: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation) => boolean
-    readonly get_capacity: (object: DeviceGlue) => number
-    readonly get_energy: (object: DeviceGlue) => number
-    readonly get_energy_empty: (object: DeviceGlue) => number
-    readonly get_energy_full: (object: DeviceGlue) => number
-    readonly get_energy_full_design: (object: DeviceGlue) => number
-    readonly get_energy_rate: (object: DeviceGlue) => number
-    readonly get_has_history: (object: DeviceGlue) => boolean
-    readonly get_has_statistics: (object: DeviceGlue) => boolean
-    readonly get_icon_name: (object: DeviceGlue) => string
-    readonly get_is_present: (object: DeviceGlue) => boolean
-    readonly get_is_rechargeable: (object: DeviceGlue) => boolean
-    readonly get_luminosity: (object: DeviceGlue) => number
-    readonly get_model: (object: DeviceGlue) => string
-    readonly get_native_path: (object: DeviceGlue) => string
-    readonly get_online: (object: DeviceGlue) => boolean
-    readonly get_percentage: (object: DeviceGlue) => number
-    readonly get_power_supply: (object: DeviceGlue) => boolean
-    readonly get_serial: (object: DeviceGlue) => string
-    readonly get_state: (object: DeviceGlue) => number
-    readonly get_technology: (object: DeviceGlue) => number
-    readonly get_temperature: (object: DeviceGlue) => number
-    readonly get_time_to_empty: (object: DeviceGlue) => number
-    readonly get_time_to_full: (object: DeviceGlue) => number
-    readonly get_type_: (object: DeviceGlue) => number
-    readonly get_update_time: (object: DeviceGlue) => number
-    readonly get_vendor: (object: DeviceGlue) => string
-    readonly get_voltage: (object: DeviceGlue) => number
-    readonly get_warning_level: (object: DeviceGlue) => number
+    parent_iface: GObject.TypeInterface
+    handle_get_history: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation, arg_type: string, arg_timespan: number, arg_resolution: number) => boolean
+    handle_get_statistics: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean
+    handle_refresh: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation) => boolean
+    get_capacity: (object: DeviceGlue) => number
+    get_energy: (object: DeviceGlue) => number
+    get_energy_empty: (object: DeviceGlue) => number
+    get_energy_full: (object: DeviceGlue) => number
+    get_energy_full_design: (object: DeviceGlue) => number
+    get_energy_rate: (object: DeviceGlue) => number
+    get_has_history: (object: DeviceGlue) => boolean
+    get_has_statistics: (object: DeviceGlue) => boolean
+    get_icon_name: (object: DeviceGlue) => string
+    get_is_present: (object: DeviceGlue) => boolean
+    get_is_rechargeable: (object: DeviceGlue) => boolean
+    get_luminosity: (object: DeviceGlue) => number
+    get_model: (object: DeviceGlue) => string
+    get_native_path: (object: DeviceGlue) => string
+    get_online: (object: DeviceGlue) => boolean
+    get_percentage: (object: DeviceGlue) => number
+    get_power_supply: (object: DeviceGlue) => boolean
+    get_serial: (object: DeviceGlue) => string
+    get_state: (object: DeviceGlue) => number
+    get_technology: (object: DeviceGlue) => number
+    get_temperature: (object: DeviceGlue) => number
+    get_time_to_empty: (object: DeviceGlue) => number
+    get_time_to_full: (object: DeviceGlue) => number
+    get_type_: (object: DeviceGlue) => number
+    get_update_time: (object: DeviceGlue) => number
+    get_vendor: (object: DeviceGlue) => string
+    get_voltage: (object: DeviceGlue) => number
+    get_warning_level: (object: DeviceGlue) => number
     static name: string
 }
 abstract class DeviceGlueProxyClass {
@@ -9420,7 +10372,7 @@ abstract class DeviceGlueProxyClass {
     /**
      * The parent class.
      */
-    readonly parent_class: Gio.DBusProxyClass
+    parent_class: Gio.DBusProxyClass
     static name: string
 }
 class DeviceGlueProxyPrivate {
@@ -9431,7 +10383,7 @@ abstract class DeviceGlueSkeletonClass {
     /**
      * The parent class.
      */
-    readonly parent_class: Gio.DBusInterfaceSkeletonClass
+    parent_class: Gio.DBusInterfaceSkeletonClass
     static name: string
 }
 class DeviceGlueSkeletonPrivate {
@@ -9442,7 +10394,7 @@ class DevicePrivate {
 }
 abstract class HistoryItemClass {
     /* Fields of UPowerGlib-1.0.UPowerGlib.HistoryItemClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class HistoryItemPrivate {
@@ -9450,7 +10402,7 @@ class HistoryItemPrivate {
 }
 abstract class StatsItemClass {
     /* Fields of UPowerGlib-1.0.UPowerGlib.StatsItemClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class StatsItemPrivate {
@@ -9458,7 +10410,7 @@ class StatsItemPrivate {
 }
 abstract class WakeupItemClass {
     /* Fields of UPowerGlib-1.0.UPowerGlib.WakeupItemClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class WakeupItemPrivate {
@@ -9466,9 +10418,9 @@ class WakeupItemPrivate {
 }
 abstract class WakeupsClass {
     /* Fields of UPowerGlib-1.0.UPowerGlib.WakeupsClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly data_changed: (wakeups: Wakeups) => void
-    readonly total_changed: (wakeups: Wakeups, value: number) => void
+    parent_class: GObject.ObjectClass
+    data_changed: (wakeups: Wakeups) => void
+    total_changed: (wakeups: Wakeups, value: number) => void
     static name: string
 }
 abstract class WakeupsGlueIface {
@@ -9476,12 +10428,12 @@ abstract class WakeupsGlueIface {
     /**
      * The parent interface.
      */
-    readonly parent_iface: GObject.TypeInterface
-    readonly handle_get_data: (object: WakeupsGlue, invocation: Gio.DBusMethodInvocation) => boolean
-    readonly handle_get_total: (object: WakeupsGlue, invocation: Gio.DBusMethodInvocation) => boolean
-    readonly get_has_capability: (object: WakeupsGlue) => boolean
-    readonly data_changed: (object: WakeupsGlue) => void
-    readonly total_changed: (object: WakeupsGlue, arg_value: number) => void
+    parent_iface: GObject.TypeInterface
+    handle_get_data: (object: WakeupsGlue, invocation: Gio.DBusMethodInvocation) => boolean
+    handle_get_total: (object: WakeupsGlue, invocation: Gio.DBusMethodInvocation) => boolean
+    get_has_capability: (object: WakeupsGlue) => boolean
+    data_changed: (object: WakeupsGlue) => void
+    total_changed: (object: WakeupsGlue, arg_value: number) => void
     static name: string
 }
 abstract class WakeupsGlueProxyClass {
@@ -9489,7 +10441,7 @@ abstract class WakeupsGlueProxyClass {
     /**
      * The parent class.
      */
-    readonly parent_class: Gio.DBusProxyClass
+    parent_class: Gio.DBusProxyClass
     static name: string
 }
 class WakeupsGlueProxyPrivate {
@@ -9500,7 +10452,7 @@ abstract class WakeupsGlueSkeletonClass {
     /**
      * The parent class.
      */
-    readonly parent_class: Gio.DBusInterfaceSkeletonClass
+    parent_class: Gio.DBusInterfaceSkeletonClass
     static name: string
 }
 class WakeupsGlueSkeletonPrivate {

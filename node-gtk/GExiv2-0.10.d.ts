@@ -177,7 +177,7 @@ interface Metadata_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Metadata {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GExiv2-0.10.GExiv2.Metadata */
     /**
      * Removes all tags for all domains (EXIF, IPTC, and XMP).
@@ -200,6 +200,7 @@ class Metadata {
      * Removes the Exiv2 tag from the metadata object.
      * 
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag
      */
     clearTag(tag: string): boolean
     /**
@@ -220,14 +221,18 @@ class Metadata {
     free(): void
     /**
      * Load only an EXIF buffer, typically stored in a JPEG's APP1 segment.
+     * @param data A buffer containing the data to be read
      */
     fromApp1Segment(data: Uint8Array): boolean
     /**
      * This function does not work and will be removed in a future release.
+     * @param stream 
      */
     fromStream(stream: Gio.InputStream): boolean
     /**
      * Encode the XMP packet as a %NULL-terminated string.
+     * @param xmpFormatFlags One of #GExiv2XmpFormatFlags
+     * @param padding The padding (FIXME: Add documentation)
      */
     generateXmpPacket(xmpFormatFlags: XmpFormatFlags, padding: number): string | null
     /**
@@ -258,6 +263,7 @@ class Metadata {
     /**
      * Fetch EXIF `tag` represented by a fraction. `nom` will contain the numerator,
      * `den` the denominator of the fraction on successful return.
+     * @param tag The tag you want the rational value for
      */
     getExifTagRational(tag: string): [ /* returnType */ boolean, /* nom */ number, /* den */ number ]
     /**
@@ -366,10 +372,12 @@ class Metadata {
      * Tags that support multiple values are returned as a single string, with elements separated by ", ".
      * 
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
      */
     getTagInterpretedString(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
      */
     getTagLong(tag: string): number
     /**
@@ -378,6 +386,7 @@ class Metadata {
      * In case of error, a GLib warning will be logged. Use instead
      * gexiv2_metadata_try_get_tag_multiple() if you want to avoid this and
      * control if and how the error is outputted.
+     * @param tag Exiv2 tag name
      */
     getTagMultiple(tag: string): string[] | null
     /**
@@ -385,6 +394,7 @@ class Metadata {
      * 
      * Tags that support multiple values may bereturned as a single byte array, with records separated
      * by 4x INFORMATION SEPARATOR FOUR (ASCII 0x1c)
+     * @param tag Exiv2 tag name
      */
     getTagRaw(tag: string): any | null
     /**
@@ -395,6 +405,7 @@ class Metadata {
      * In case of error, a GLib warning will be logged. Use instead
      * gexiv2_metadata_try_get_tag_string() if you want to avoid this and
      * control if and how the error is outputted.
+     * @param tag Exiv2 tag name
      */
     getTagString(tag: string): string | null
     getXmpPacket(): string | null
@@ -403,61 +414,79 @@ class Metadata {
     hasIptc(): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag
      */
     hasTag(tag: string): boolean
     hasXmp(): boolean
     /**
      * The buffer must be an image format supported by Exiv2.
+     * @param data A buffer containing the data to be read
      */
     openBuf(data: Uint8Array): boolean
     /**
      * The file must be an image format supported by Exiv2.
+     * @param path Path to the file you want to open
      */
     openPath(path: string): boolean
     /**
      * Saves the metadata to the specified using an XMP sidecar file.
+     * @param path Path to the file you want to save to.
      */
     saveExternal(path: string): boolean
     /**
      * Saves the metadata to the specified file by reading the file into memory,copying this object's
      * metadata into the image, then writing the image back out.
+     * @param path Path to the file you want to save to.
      */
     saveFile(path: string): boolean
     /**
      * This is a composite setter that will set a number of fields to the supplied value.  See
      * #gexiv2_metadata_get_comment for more information.
+     * @param comment Comment string to set. Must not be %NULL
      */
     setComment(comment: string): void
     /**
      * Set EXIF `tag` represented by a fraction, with `nom` being the numerator,
      * `den` the denominator of the fraction.
+     * @param tag The Exiv2 tag
+     * @param nom Rational numerator
+     * @param den Rational denominator
      */
     setExifTagRational(tag: string, nom: number, den: number): boolean
     setExifThumbnailFromBuffer(buffer: Uint8Array): void
     /**
      * Sets or replaces the EXIF thumbnail with the image in the file
+     * @param path Path of image file
      */
     setExifThumbnailFromFile(path: string): boolean
     /**
      * Convenience function to create a new set of simple GPS data. Warning: Will remove any other
      * GPS information that is currently set. See gexiv2_metadata_update_gps_info() for
      * just modifying the GPS data.
+     * @param longitude Longitude value to set or replace current value
+     * @param latitude Latitude value to set or replace current value
+     * @param altitude Altitude value to set or replace current value
      */
     setGpsInfo(longitude: number, latitude: number, altitude: number): boolean
     /**
      * Update the image's metadata with `height`
+     * @param height The width of the image as it should be put into the metadata.
      */
     setMetadataPixelHeight(height: number): void
     /**
      * Composite setter to update the image's metadata with `width`
+     * @param width The width of the image as it should be put into the metadata
      */
     setMetadataPixelWidth(width: number): void
     /**
      * The orientation must be valid and cannot be #GEXIV2_ORIENTATION_UNSPECIFIED.
+     * @param orientation The new #GExiv2Orientation for the image.
      */
     setOrientation(orientation: Orientation): void
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
+     * @param value The value to set or replace the existing value
      */
     setTagLong(tag: string, value: number): boolean
     /**
@@ -470,6 +499,8 @@ class Metadata {
      * In case of error, a GLib warning will be logged. Use instead
      * gexiv2_metadata_try_set_tag_multiple() if you want to avoid this and
      * control if and how the error is outputted.
+     * @param tag Exiv2 tag name
+     * @param values An array of values to set or replace the existing value(s)
      */
     setTagMultiple(tag: string, values: string[]): boolean
     /**
@@ -481,16 +512,21 @@ class Metadata {
      * In case of error, a GLib warning will be logged. Use instead
      * gexiv2_metadata_try_set_tag_string() if you want to avoid this and
      * control if and how the error is outputted.
+     * @param tag Exiv2 tag name
+     * @param value The value to set or replace the existing value
      */
     setTagString(tag: string, value: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
+     * @param type The GExiv2StructureType specifying the type of structure
      */
     setXmpTagStruct(tag: string, type: StructureType): boolean
     /**
      * Removes the Exiv2 tag from the metadata object.
      * 
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag
      */
     tryClearTag(tag: string): boolean
     /**
@@ -503,6 +539,8 @@ class Metadata {
     tryEraseExifThumbnail(): void
     /**
      * Encode the XMP packet as a %NULL-terminated string.
+     * @param xmpFormatFlags One of #GExiv2XmpFormatFlags
+     * @param padding The padding (FIXME: Add documentation)
      */
     tryGenerateXmpPacket(xmpFormatFlags: XmpFormatFlags, padding: number): string | null
     /**
@@ -532,6 +570,7 @@ class Metadata {
     /**
      * Fetch EXIF `tag` represented by a fraction. `nom` will contain the numerator,
      * `den` the denominator of the fraction on successful return.
+     * @param tag The tag you want the rational value for
      */
     tryGetExifTagRational(tag: string): [ /* returnType */ boolean, /* nom */ number, /* den */ number ]
     /**
@@ -594,14 +633,17 @@ class Metadata {
      * Tags that support multiple values are returned as a single string, with elements separated by ", ".
      * 
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
      */
     tryGetTagInterpretedString(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
      */
     tryGetTagLong(tag: string): number
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
      */
     tryGetTagMultiple(tag: string): string[] | null
     /**
@@ -609,27 +651,34 @@ class Metadata {
      * 
      * Tags that support multiple values may be returned as a single byte array, with records separated
      * by 4x INFORMATION SEPARATOR FOUR (ASCII 0x1c)
+     * @param tag Exiv2 tag name
      */
     tryGetTagRaw(tag: string): any | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
      * Tags that support multiple values are returned as a single string, with elements separated by ", ".
+     * @param tag Exiv2 tag name
      */
     tryGetTagString(tag: string): string | null
     tryGetXmpPacket(): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag
      */
     tryHasTag(tag: string): boolean
     /**
      * This is a composite setter that will set a number of fields to the supplied value.  See
      * #gexiv2_metadata_get_comment for more information.
+     * @param comment Comment string to set. Must not be %NULL
      */
     trySetComment(comment: string): void
     /**
      * Set EXIF `tag` represented by a fraction, with `nom` being the numerator,
      * `den` the denominator of the fraction.
+     * @param tag The Exiv2 tag
+     * @param nom Rational numerator
+     * @param den Rational denominator
      */
     trySetExifTagRational(tag: string, nom: number, den: number): boolean
     trySetExifThumbnailFromBuffer(buffer: Uint8Array): void
@@ -637,22 +686,30 @@ class Metadata {
      * Convenience function to create a new set of simple GPS data. Warning: Will remove any other
      * GPS information that is currently set. See gexiv2_metadata_update_gps_info() for
      * just modifying the GPS data.
+     * @param longitude Longitude value to set or replace current value
+     * @param latitude Latitude value to set or replace current value
+     * @param altitude Altitude value to set or replace current value
      */
     trySetGpsInfo(longitude: number, latitude: number, altitude: number): boolean
     /**
      * Update the image's metadata with `height`
+     * @param height The width of the image as it should be put into the metadata.
      */
     trySetMetadataPixelHeight(height: number): void
     /**
      * Composite setter to update the image's metadata with `width`
+     * @param width The width of the image as it should be put into the metadata
      */
     trySetMetadataPixelWidth(width: number): void
     /**
      * The orientation must be valid and cannot be #GEXIV2_ORIENTATION_UNSPECIFIED.
+     * @param orientation The new #GExiv2Orientation for the image.
      */
     trySetOrientation(orientation: Orientation): void
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
+     * @param value The value to set or replace the existing value
      */
     trySetTagLong(tag: string, value: number): boolean
     /**
@@ -661,6 +718,8 @@ class Metadata {
      * All previous `tag` values are erased. For multiple value tags, each of the non %NULL
      * entries in `values` is stored. For single value tags, only the last non %NULL value
      * is assigned.
+     * @param tag Exiv2 tag name
+     * @param values An array of values to set or replace the existing value(s)
      */
     trySetTagMultiple(tag: string, values: string[]): boolean
     /**
@@ -668,10 +727,14 @@ class Metadata {
      * tags, `value` replaces the value.
      * 
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
+     * @param value The value to set or replace the existing value
      */
     trySetTagString(tag: string, value: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag Exiv2 tag name
+     * @param type The GExiv2StructureType specifying the type of structure
      */
     trySetXmpTagStruct(tag: string, type: StructureType): boolean
     /**
@@ -680,14 +743,21 @@ class Metadata {
      * Multiple value tags are Xmp tags of type "XmpAlt", "XmpBag", "XmpSeq" or "LangAlt", or Iptc
      * tags marked as Repeatable (which can be of any Iptc type). There are no multiple value Exif
      * tags.
+     * @param tag An Exiv2 tag
      */
     tryTagSupportsMultipleValues(tag: string): boolean
     /**
      * Convenience function to update longitude, latitude and altitude at once.
+     * @param longitude Longitude value to set or replace current value
+     * @param latitude Latitude value to set or replace current value
+     * @param altitude Altitude value to set or replace current value
      */
     tryUpdateGpsInfo(longitude: number, latitude: number, altitude: number): boolean
     /**
      * Convenience function to update longitude, latitude and altitude at once.
+     * @param longitude Longitude value to set or replace current value
+     * @param latitude Latitude value to set or replace current value
+     * @param altitude Altitude value to set or replace current value
      */
     updateGpsInfo(longitude: number, latitude: number, altitude: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -725,6 +795,10 @@ class Metadata {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -735,6 +809,12 @@ class Metadata {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -758,6 +838,7 @@ class Metadata {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -777,11 +858,14 @@ class Metadata {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -789,6 +873,8 @@ class Metadata {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -806,6 +892,7 @@ class Metadata {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -851,6 +938,7 @@ class Metadata {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -894,15 +982,20 @@ class Metadata {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -943,6 +1036,7 @@ class Metadata {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -977,6 +1071,7 @@ class Metadata {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1008,6 +1103,7 @@ class Metadata {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1028,10 +1124,12 @@ class Metadata {
     static new(): Metadata
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static getTagDescription(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static getTagLabel(tag: string): string | null
     /**
@@ -1039,28 +1137,34 @@ class Metadata {
      * <ulink url="http://exiv2.org/doc/namespaceExiv2.html#a5153319711f35fe81cbc13f4b852450c"></ulink>
      * 
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static getTagType(tag: string): string | null
     static getXmpNamespaceForTag(tag: string): string
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static isExifTag(tag: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static isIptcTag(tag: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static isXmpTag(tag: string): boolean
     static registerXmpNamespace(name: string, prefix: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static tryGetTagDescription(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static tryGetTagLabel(tag: string): string | null
     /**
@@ -1068,6 +1172,7 @@ class Metadata {
      * <ulink url="http://exiv2.org/doc/namespaceExiv2.html#a5153319711f35fe81cbc13f4b852450c"></ulink>
      * 
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
+     * @param tag An Exiv2 tag
      */
     static tryGetTagType(tag: string): string | null
     static tryGetXmpNamespaceForTag(tag: string): string
@@ -1082,7 +1187,7 @@ interface PreviewImage_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PreviewImage {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GExiv2-0.10.GExiv2.PreviewImage */
     /**
      * Releases the preview image and all associated memory.
@@ -1130,6 +1235,10 @@ class PreviewImage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1140,6 +1249,12 @@ class PreviewImage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1163,6 +1278,7 @@ class PreviewImage {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1182,11 +1298,14 @@ class PreviewImage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1194,6 +1313,8 @@ class PreviewImage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1211,6 +1332,7 @@ class PreviewImage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1256,6 +1378,7 @@ class PreviewImage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1299,15 +1422,20 @@ class PreviewImage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1348,6 +1476,7 @@ class PreviewImage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1382,6 +1511,7 @@ class PreviewImage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1413,6 +1543,7 @@ class PreviewImage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1435,7 +1566,7 @@ interface PreviewProperties_ConstructProps extends GObject.Object_ConstructProps
 }
 class PreviewProperties {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GExiv2-0.10.GExiv2.PreviewProperties */
     getExtension(): string
     getHeight(): number
@@ -1477,6 +1608,10 @@ class PreviewProperties {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1487,6 +1622,12 @@ class PreviewProperties {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1510,6 +1651,7 @@ class PreviewProperties {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1529,11 +1671,14 @@ class PreviewProperties {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1541,6 +1686,8 @@ class PreviewProperties {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1558,6 +1705,7 @@ class PreviewProperties {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1603,6 +1751,7 @@ class PreviewProperties {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1646,15 +1795,20 @@ class PreviewProperties {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1695,6 +1849,7 @@ class PreviewProperties {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1729,6 +1884,7 @@ class PreviewProperties {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1760,6 +1916,7 @@ class PreviewProperties {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1780,7 +1937,7 @@ class PreviewProperties {
 }
 abstract class MetadataClass {
     /* Fields of GExiv2-0.10.GExiv2.MetadataClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class MetadataPrivate {
@@ -1788,7 +1945,7 @@ class MetadataPrivate {
 }
 abstract class PreviewImageClass {
     /* Fields of GExiv2-0.10.GExiv2.PreviewImageClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class PreviewImagePrivate {
@@ -1796,7 +1953,7 @@ class PreviewImagePrivate {
 }
 abstract class PreviewPropertiesClass {
     /* Fields of GExiv2-0.10.GExiv2.PreviewPropertiesClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class PreviewPropertiesPrivate {

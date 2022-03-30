@@ -85,13 +85,21 @@ class BookClient {
      * Whether this client's backing data is readonly.
      */
     readonly readonly: boolean
+    /**
+     * The #ESource for which this client was created.
+     */
+    readonly source: EDataServer.Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EBook-1.2.EBook.BookClient */
     /**
      * Adds `contact` to `client`.
      * The call is finished by e_book_client_add_contact_finish()
      * from the `callback`.
+     * @param contact an #EContact
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     add_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -100,6 +108,7 @@ class BookClient {
      * This string should be freed with g_free().
      * 
      * Note: This is not modifying original #EContact.
+     * @param result a #GAsyncResult
      */
     add_contact_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_added_uid */ string | null ]
     /**
@@ -109,12 +118,19 @@ class BookClient {
      * 
      * Note: This is not modifying original `contact,` thus if it's needed,
      * then use e_contact_set (contact, E_CONTACT_UID, new_uid).
+     * @param contact an #EContact
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
      */
     add_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_added_uid */ string | null ]
     /**
      * Adds `contacts` to `client`.
      * The call is finished by e_book_client_add_contacts_finish()
      * from the `callback`.
+     * @param contacts a #GSList of #EContact objects to add
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     add_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -126,6 +142,7 @@ class BookClient {
      * reverted and this method will return %FALSE.
      * 
      * Note: This is not modifying original #EContact objects.
+     * @param result a #GAsyncResult
      */
     add_contacts_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_added_uids */ string[] | null ]
     /**
@@ -138,6 +155,9 @@ class BookClient {
      * 
      * Note: This is not modifying original `contacts,` thus if it's needed,
      * then use e_contact_set (contact, E_CONTACT_UID, new_uid).
+     * @param contacts a #GSList of #EContact objects to add
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
      */
     add_contacts_sync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_added_uids */ string[] | null ]
     /**
@@ -148,10 +168,14 @@ class BookClient {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_book_client_contains_email_finish() to get the result of the
      * operation.
+     * @param email_address an email address
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     contains_email(email_address: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_contains_email().
+     * @param result a #GAsyncResult
      */
     contains_email_finish(result: Gio.AsyncResult): boolean
     contains_email_sync(email_address: string, cancellable?: Gio.Cancellable | null): boolean
@@ -159,18 +183,24 @@ class BookClient {
      * Receive #EContact from the `client` for the gived `uid`.
      * The call is finished by e_book_client_get_contact_finish()
      * from the `callback`.
+     * @param uid a unique string ID specifying the contact
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_contact(uid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contact().
      * If successful, then the `out_contact` is set to newly allocated
      * #EContact, which should be freed with g_object_unref().
+     * @param result a #GAsyncResult
      */
     get_contact_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_contact */ EBookContacts.Contact | null ]
     /**
      * Receive #EContact from the `client` for the gived `uid`.
      * If successful, then the `out_contact` is set to newly allocated
      * #EContact, which should be freed with g_object_unref().
+     * @param uid a unique string ID specifying the contact
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_contact_sync(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_contact */ EBookContacts.Contact ]
     /**
@@ -180,12 +210,16 @@ class BookClient {
      * 
      * Note: `sexp` can be obtained through #EBookQuery, by converting it
      * to a string with e_book_query_to_string().
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_contacts(sexp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contacts().
      * If successful, then the `out_contacts` is set to newly allocated list of
      * #EContact(s), which should be freed with e_client_util_free_object_slist().
+     * @param result a #GAsyncResult
      */
     get_contacts_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_contacts */ EBookContacts.Contact[] ]
     /**
@@ -195,6 +229,8 @@ class BookClient {
      * 
      * Note: `sexp` can be obtained through #EBookQuery, by converting it
      * to a string with e_book_query_to_string().
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_contacts_sync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_contacts */ EBookContacts.Contact[] ]
     /**
@@ -204,12 +240,16 @@ class BookClient {
      * 
      * Note: `sexp` can be obtained through #EBookQuery, by converting it
      * to a string with e_book_query_to_string().
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_contacts_uids(sexp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contacts_uids().
      * If successful, then the `out_contact_uids` is set to newly allocated list
      * of UID strings, which should be freed with e_client_util_free_string_slist().
+     * @param result a #GAsyncResult
      */
     get_contacts_uids_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_contact_uids */ string[] ]
     /**
@@ -219,6 +259,8 @@ class BookClient {
      * 
      * Note: `sexp` can be obtained through #EBookQuery, by converting it
      * to a string with e_book_query_to_string().
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_contacts_uids_sync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_contact_uids */ string[] ]
     /**
@@ -228,6 +270,12 @@ class BookClient {
      * 
      * Note: `sexp` can be obtained through #EBookQuery, by converting it
      * to a string with e_book_query_to_string().
+     * @param sexp an S-expression representing the query
+     * @param sort_fields an array of #EContactFields to sort the cursor with
+     * @param sort_types an array of #EBookCursorSortTypes to complement `sort_fields`
+     * @param n_fields the length of the input `sort_fields` and `sort_types` arrays
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_cursor(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -235,6 +283,7 @@ class BookClient {
      * If successful, then the `out_cursor` is set to newly create
      * #EBookClientCursor, the cursor should be freed with g_object_unref()
      * when no longer needed.
+     * @param result a #GAsyncResult
      */
     get_cursor_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_cursor */ BookClientCursor ]
     /**
@@ -244,6 +293,11 @@ class BookClient {
      * 
      * Note: `sexp` can be obtained through #EBookQuery, by converting it
      * to a string with e_book_query_to_string().
+     * @param sexp an S-expression representing the query
+     * @param sort_fields an array of #EContactFields to sort the cursor with
+     * @param sort_types an array of #EBookCursorSortTypes to complement `sort_fields`
+     * @param n_fields the length of the input `sort_fields` and `sort_types` arrays
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_cursor_sync(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_cursor */ BookClientCursor ]
     /**
@@ -264,12 +318,16 @@ class BookClient {
      * 
      * Note: `sexp` can be obtained through #EBookQuery, by converting it
      * to a string with e_book_query_to_string().
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_view(sexp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_view().
      * If successful, then the `out_view` is set to newly allocated
      * #EBookClientView, which should be freed with g_object_unref().
+     * @param result a #GAsyncResult
      */
     get_view_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_view */ BookClientView ]
     /**
@@ -279,62 +337,96 @@ class BookClient {
      * 
      * Note: `sexp` can be obtained through #EBookQuery, by converting it
      * to a string with e_book_query_to_string().
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_view_sync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_view */ BookClientView ]
     /**
      * Applies the changes made to `contact` to the stored version in `client`.
      * The call is finished by e_book_client_modify_contact_finish()
      * from the `callback`.
+     * @param contact an #EContact
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     modify_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_modify_contact().
+     * @param result a #GAsyncResult
      */
     modify_contact_finish(result: Gio.AsyncResult): boolean
     /**
      * Applies the changes made to `contact` to the stored version in `client`.
+     * @param contact an #EContact
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
      */
     modify_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Applies the changes made to `contacts` to the stored versions in `client`.
      * The call is finished by e_book_client_modify_contacts_finish()
      * from the `callback`.
+     * @param contacts a #GSList of #EContact objects
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     modify_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_modify_contacts().
+     * @param result a #GAsyncResult
      */
     modify_contacts_finish(result: Gio.AsyncResult): boolean
     /**
      * Applies the changes made to `contacts` to the stored versions in `client`.
+     * @param contacts a #GSList of #EContact objects
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
      */
     modify_contacts_sync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes `contact` from the `client`.
      * The call is finished by e_book_client_remove_contact_finish()
      * from the `callback`.
+     * @param contact an #EContact
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     remove_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Removes contact with `uid` from the `client`.
      * The call is finished by e_book_client_remove_contact_by_uid_finish()
      * from the `callback`.
+     * @param uid a UID of a contact to remove
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     remove_contact_by_uid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_remove_contact_by_uid().
+     * @param result a #GAsyncResult
      */
     remove_contact_by_uid_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes contact with `uid` from the `client`.
+     * @param uid a UID of a contact to remove
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
      */
     remove_contact_by_uid_sync(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Finishes previous call of e_book_client_remove_contact().
+     * @param result a #GAsyncResult
      */
     remove_contact_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes `contact` from the `client`.
+     * @param contact an #EContact
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
      */
     remove_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -344,10 +436,15 @@ class BookClient {
      * as a batch request.
      * The call is finished by e_book_client_remove_contacts_finish()
      * from the `callback`.
+     * @param uids a #GSList of UIDs to remove
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     remove_contacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_remove_contacts().
+     * @param result a #GAsyncResult
      */
     remove_contacts_finish(result: Gio.AsyncResult): boolean
     /**
@@ -355,11 +452,15 @@ class BookClient {
      * always more efficient than calling e_book_client_remove_contact() if you
      * have more than one uid to remove, as some backends can implement it
      * as a batch request.
+     * @param uids a #GSList of UIDs to remove
+     * @param opflags bit-or of #EBookOperationFlags
+     * @param cancellable a #GCancellable; can be %NULL
      */
     remove_contacts_sync(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Specify that `contact` residing in `client` is the #EContact that
      * refers to the user of the address book.
+     * @param contact an #EContact
      */
     set_self(contact: EBookContacts.Contact): boolean
     /* Methods of EDataServer-1.2.EDataServer.Client */
@@ -370,6 +471,7 @@ class BookClient {
     /**
      * Check if backend supports particular capability.
      * To get all capabilities use e_client_get_capabilities().
+     * @param capability a capability
      */
     check_capability(capability: string): boolean
     /**
@@ -386,14 +488,20 @@ class BookClient {
      * Queries `client'`s backend for a property of name `prop_name`.
      * The call is finished by e_client_get_backend_property_finish()
      * from the `callback`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_get_backend_property().
+     * @param result a #GAsyncResult
      */
     get_backend_property_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Queries `client'`s backend for a property of name `prop_name`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_backend_property_sync(prop_name: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
@@ -425,14 +533,20 @@ class BookClient {
     /**
      * Opens the `client,` making it ready for queries and other operations.
      * The call is finished by e_client_open_finish() from the `callback`.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_open().
+     * @param result a #GAsyncResult
      */
     open_finish(result: Gio.AsyncResult): boolean
     /**
      * Opens the `client,` making it ready for queries and other operations.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
      */
     open_sync(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -449,10 +563,13 @@ class BookClient {
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
      * The call is finished by e_client_refresh_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_refresh().
+     * @param result a #GAsyncResult
      */
     refresh_finish(result: Gio.AsyncResult): boolean
     /**
@@ -460,21 +577,26 @@ class BookClient {
      * that the refresh is done, backend only notifies whether it started
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
      * The call is finished by e_client_remove_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_remove().
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
+     * @param cancellable a #GCancellable; can be %NULL
      */
     remove_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -484,12 +606,15 @@ class BookClient {
      * e_client_check_capability() is using the cached value.
      * The call is finished by e_client_retrieve_capabilities_finish()
      * from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     retrieve_capabilities(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_retrieve_capabilities().
      * Returned value of `capabilities` should be freed with g_free(),
      * when no longer needed.
+     * @param result a #GAsyncResult
      */
     retrieve_capabilities_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -498,6 +623,7 @@ class BookClient {
      * is cached and any subsequent call of e_client_get_capabilities() and
      * e_client_check_capability() is using the cached value. Returned value
      * of `capabilities` should be freed with g_free(), when no longer needed.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     retrieve_capabilities_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -506,12 +632,15 @@ class BookClient {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_client_retrieve_properties_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     retrieve_properties(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_client_retrieve_properties().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     retrieve_properties_finish(result: Gio.AsyncResult): boolean
     /**
@@ -519,31 +648,42 @@ class BookClient {
      * for the D-Bus property change notifications delivery.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     retrieve_properties_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`. The call is finished
      * by e_client_set_backend_property_finish() from the `callback`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     set_backend_property(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_set_backend_property().
+     * @param result a #GAsyncResult
      */
     set_backend_property_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     set_backend_property_sync(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets a D-Bus bus name that will be used to connect the client
      * to the backend subprocess.
+     * @param bus_name a string representing a D-Bus bus name
      */
     set_bus_name(bus_name: string): void
     /**
      * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
      * `dbus_erorr` and `out_error` can point to the same variable.
+     * @param dbus_error a #GError returned bu D-Bus
      */
     unwrap_dbus_error(dbus_error: GLib.Error): void
     /**
@@ -552,10 +692,14 @@ class BookClient {
      * 
      * The call is finished by e_client_wait_for_connected_finish() from
      * the `callback`.
+     * @param timeout_seconds a timeout for the wait, in seconds
+     * @param cancellable a #GCancellable; or %NULL
+     * @param callback callback to call when a result is ready
      */
     wait_for_connected(timeout_seconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_wait_for_connected().
+     * @param result a #GAsyncResult
      */
     wait_for_connected_finish(result: Gio.AsyncResult): boolean
     /**
@@ -565,6 +709,8 @@ class BookClient {
      * Note: This also calls e_client_retrieve_properties_sync() on success, to have
      *   up-to-date property values on the client side, without a delay due
      *   to property change notifcations delivery through D-Bus.
+     * @param timeout_seconds a timeout for the wait, in seconds
+     * @param cancellable a #GCancellable; or %NULL
      */
     wait_for_connected_sync(timeout_seconds: number, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -602,6 +748,10 @@ class BookClient {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -612,6 +762,12 @@ class BookClient {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -635,6 +791,7 @@ class BookClient {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -654,11 +811,14 @@ class BookClient {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -666,6 +826,8 @@ class BookClient {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -683,6 +845,7 @@ class BookClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -728,6 +891,7 @@ class BookClient {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -771,15 +935,20 @@ class BookClient {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -820,6 +989,7 @@ class BookClient {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -854,6 +1024,7 @@ class BookClient {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -894,16 +1065,21 @@ class BookClient {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -946,6 +1122,7 @@ class BookClient {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EBook-1.2.EBook.BookClient */
@@ -986,11 +1163,15 @@ class BookClient {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1032,6 +1213,7 @@ class BookClient {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EDataServer-1.2.EDataServer.Client */
@@ -1042,27 +1224,39 @@ class BookClient {
      * Queries `client'`s backend for a property of name `prop_name`.
      * The call is finished by e_client_get_backend_property_finish()
      * from the `callback`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_get_backend_property().
+     * @param result a #GAsyncResult
      */
     vfunc_get_backend_property_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Queries `client'`s backend for a property of name `prop_name`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_get_backend_property_sync(prop_name: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Opens the `client,` making it ready for queries and other operations.
      * The call is finished by e_client_open_finish() from the `callback`.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_open().
+     * @param result a #GAsyncResult
      */
     vfunc_open_finish(result: Gio.AsyncResult): boolean
     /**
      * Opens the `client,` making it ready for queries and other operations.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_open_sync(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): boolean
     vfunc_opened(error: GLib.Error): void
@@ -1072,10 +1266,13 @@ class BookClient {
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
      * The call is finished by e_client_refresh_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_refresh().
+     * @param result a #GAsyncResult
      */
     vfunc_refresh_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1083,21 +1280,26 @@ class BookClient {
      * that the refresh is done, backend only notifies whether it started
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
      * The call is finished by e_client_remove_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_remove().
+     * @param result a #GAsyncResult
      */
     vfunc_remove_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_remove_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1107,12 +1309,15 @@ class BookClient {
      * e_client_check_capability() is using the cached value.
      * The call is finished by e_client_retrieve_capabilities_finish()
      * from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_retrieve_capabilities(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_retrieve_capabilities().
      * Returned value of `capabilities` should be freed with g_free(),
      * when no longer needed.
+     * @param result a #GAsyncResult
      */
     vfunc_retrieve_capabilities_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1121,6 +1326,7 @@ class BookClient {
      * is cached and any subsequent call of e_client_get_capabilities() and
      * e_client_check_capability() is using the cached value. Returned value
      * of `capabilities` should be freed with g_free(), when no longer needed.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_retrieve_capabilities_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1128,26 +1334,36 @@ class BookClient {
      * for the D-Bus property change notifications delivery.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_retrieve_properties_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`. The call is finished
      * by e_client_set_backend_property_finish() from the `callback`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_set_backend_property(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_set_backend_property().
+     * @param result a #GAsyncResult
      */
     vfunc_set_backend_property_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_set_backend_property_sync(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
      * `dbus_erorr` and `out_error` can point to the same variable.
+     * @param dbus_error a #GError returned bu D-Bus
      */
     vfunc_unwrap_dbus_error(dbus_error: GLib.Error): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1167,6 +1383,7 @@ class BookClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1212,6 +1429,7 @@ class BookClient {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BookClient, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BookClient, pspec: GObject.ParamSpec) => void)): number
@@ -1228,6 +1446,8 @@ class BookClient {
     connect_after(sigName: "notify::opened", callback: (($obj: BookClient, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::readonly", callback: (($obj: BookClient, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::readonly", callback: (($obj: BookClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: BookClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: BookClient, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1254,6 +1474,10 @@ class BookClient {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_book_client_connect_finish() to get the result of the operation.
+     * @param source an #ESource
+     * @param wait_for_connected_seconds timeout, in seconds, to wait for the backend to be fully connected
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     static connect(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1262,6 +1486,10 @@ class BookClient {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_book_client_connect_direct_finish() to get the result of the operation.
+     * @param source an #ESource
+     * @param wait_for_connected_seconds timeout, in seconds, to wait for the backend to be fully connected
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     static connect_direct(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1272,11 +1500,16 @@ class BookClient {
      * For error handling convenience, any error message returned by this
      * function will have a descriptive prefix that includes the display
      * name of the #ESource passed to e_book_client_connect_direct().
+     * @param result a #GAsyncResult
      */
     static connect_direct_finish(result: Gio.AsyncResult): BookClient
     /**
      * Like e_book_client_connect_sync(), except creates the book client for
      * direct read access to the underlying addressbook.
+     * @param registry an #ESourceRegistry
+     * @param source an #ESource
+     * @param wait_for_connected_seconds timeout, in seconds, to wait for the backend to be fully connected
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     static connect_direct_sync(registry: EDataServer.SourceRegistry, source: EDataServer.Source, wait_for_connected_seconds: number, cancellable?: Gio.Cancellable | null): BookClient
     /**
@@ -1287,6 +1520,7 @@ class BookClient {
      * For error handling convenience, any error message returned by this
      * function will have a descriptive prefix that includes the display
      * name of the #ESource passed to e_book_client_connect().
+     * @param result a #GAsyncResult
      */
     static connect_finish(result: Gio.AsyncResult): BookClient
     /**
@@ -1308,15 +1542,20 @@ class BookClient {
      * For error handling convenience, any error message returned by this
      * function will have a descriptive prefix that includes the display
      * name of `source`.
+     * @param source an #ESource
+     * @param wait_for_connected_seconds timeout, in seconds, to wait for the backend to be fully connected
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     static connect_sync(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable?: Gio.Cancellable | null): BookClient
     /**
      * Get the #EContact referring to the user of the address book
      * and set it in `out_contact` and `out_client`.
+     * @param registry an #ESourceRegistry
      */
     static get_self(registry: EDataServer.SourceRegistry): [ /* returnType */ boolean, /* out_contact */ EBookContacts.Contact, /* out_client */ BookClient ]
     /**
      * Check if `contact` is the user of the address book.
+     * @param contact an #EContact
      */
     static is_self(contact: EBookContacts.Contact): boolean
     /**
@@ -1326,12 +1565,21 @@ class BookClient {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1396,6 +1644,34 @@ class BookClientCursor {
      */
     readonly alphabet: string[]
     /**
+     * The #EBookClient which this cursor was created for
+     */
+    readonly client: BookClient
+    /**
+     * The #GDBusConnection to the addressbook server.
+     * 
+     * <note><para>This is an internal parameter for constructing the
+     * cursor, to construct the cursor use e_book_client_get_cursor().
+     * </para></note>
+     */
+    readonly connection: Gio.DBusConnection
+    /**
+     * The #GMainContext in which the #EBookClient created this cursor.
+     * 
+     * <note><para>This is an internal parameter for constructing the
+     * cursor, to construct the cursor use e_book_client_get_cursor().
+     * </para></note>
+     */
+    readonly context: GLib.MainContext
+    /**
+     * The D-Bus object path to find the server side cursor object.
+     * 
+     * <note><para>This is an internal parameter for constructing the
+     * cursor, to construct the cursor use e_book_client_get_cursor().
+     * </para></note>
+     */
+    readonly object_path: string
+    /**
      * The current cursor position in the cursor's result list.
      * 
      * More specifically, the cursor position is defined as
@@ -1416,6 +1692,14 @@ class BookClientCursor {
      */
     readonly position: number
     /**
+     * The #EContactField names to sort this cursor with
+     * 
+     * <note><para>This is an internal parameter for constructing the
+     * cursor, to construct the cursor use e_book_client_get_cursor().
+     * </para></note>
+     */
+    readonly sort_fields: string[]
+    /**
      * The total number of contacts which satisfy the cursor's query.
      * 
      * Property change notifications are guaranteed to be
@@ -1424,7 +1708,7 @@ class BookClientCursor {
      */
     readonly total: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EBook-1.2.EBook.BookClientCursor */
     /**
      * Fetches the array of displayable labels for the <link linkend="cursor-alphabet">active alphabet</link>.
@@ -1459,6 +1743,7 @@ class BookClientCursor {
      * If the index returned by this function is needed for
      * any extended period of time, it should be recalculated
      * whenever the #EBookClientCursor:alphabet changes.
+     * @param contact the #EContact to check
      */
     get_contact_alphabetic_index(contact: EBookContacts.Contact): number
     /**
@@ -1495,10 +1780,14 @@ class BookClientCursor {
      * 
      * This asynchronous call is completed with a call to
      * e_book_client_cursor_set_alphabetic_index_finish() from the specified `callback`.
+     * @param index the alphabetic index
+     * @param cancellable a #GCancellable to optionally cancel this operation while in progress
+     * @param callback callback to call when a result is ready
      */
     set_alphabetic_index(index: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call initiated by e_book_client_cursor_set_alphabetic_index().
+     * @param result a #GAsyncResult
      */
     set_alphabetic_index_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1525,6 +1814,8 @@ class BookClientCursor {
      * error from this method, then you should wait until an #EBookClientCursor:alphabet
      * property change notification is delivered and then proceed to load the new
      * alphabet before trying to set any alphabetic index.
+     * @param index the alphabetic index
+     * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      */
     set_alphabetic_index_sync(index: number, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1534,11 +1825,15 @@ class BookClientCursor {
      * 
      * This asynchronous call is completed with a call to
      * e_book_client_cursor_set_sexp_finish() from the specified `callback`.
+     * @param sexp the new search expression for `cursor`
+     * @param cancellable a #GCancellable to optionally cancel this operation while in progress
+     * @param callback callback to call when a result is ready
      */
     set_sexp(sexp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call initiated by e_book_client_cursor_set_sexp(), reporting
      * whether the new search expression was accepted.
+     * @param result a #GAsyncResult
      */
     set_sexp_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1557,6 +1852,8 @@ class BookClientCursor {
      * 
      * If the backend does not support the given search expression,
      * an %E_CLIENT_ERROR_INVALID_QUERY error will be set.
+     * @param sexp the new search expression for `cursor`
+     * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      */
     set_sexp_sync(sexp: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1567,11 +1864,17 @@ class BookClientCursor {
      * 
      * This asynchronous call is completed with a call to
      * e_book_client_cursor_step_finish() from the specified `callback`.
+     * @param flags The #EBookCursorStepFlags for this step
+     * @param origin The #EBookCursorOrigin from whence to step
+     * @param count a positive or negative amount of contacts to try and fetch
+     * @param cancellable a #GCancellable to optionally cancel this operation while in progress
+     * @param callback callback to call when a result is ready
      */
     step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call initiated by e_book_client_cursor_step(), fetching
      * any contacts which might have been returned by the call.
+     * @param result a #GAsyncResult
      */
     step_finish(result: Gio.AsyncResult): [ /* returnType */ number, /* out_contacts */ EBookContacts.Contact[] | null ]
     /**
@@ -1605,6 +1908,10 @@ class BookClientCursor {
      * move the cursor at this time. Any %E_CLIENT_ERROR_OUT_OF_SYNC error is guaranteed
      * to be followed by an #EBookClientCursor::refresh signal at which point any content
      * should be reloaded.
+     * @param flags The #EBookCursorStepFlags for this step
+     * @param origin The #EBookCursorOrigin from whence to step
+     * @param count a positive or negative amount of contacts to try and fetch
+     * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      */
     step_sync(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* out_contacts */ EBookContacts.Contact[] | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -1642,6 +1949,10 @@ class BookClientCursor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1652,6 +1963,12 @@ class BookClientCursor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1675,6 +1992,7 @@ class BookClientCursor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1694,11 +2012,14 @@ class BookClientCursor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1706,6 +2027,8 @@ class BookClientCursor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1723,6 +2046,7 @@ class BookClientCursor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1768,6 +2092,7 @@ class BookClientCursor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1811,15 +2136,20 @@ class BookClientCursor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1860,6 +2190,7 @@ class BookClientCursor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1894,6 +2225,7 @@ class BookClientCursor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1936,6 +2268,7 @@ class BookClientCursor {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EBook-1.2.EBook.BookClientCursor */
@@ -1979,6 +2312,7 @@ class BookClientCursor {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1998,6 +2332,7 @@ class BookClientCursor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2042,14 +2377,25 @@ class BookClientCursor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::alphabet", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::alphabet", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::context", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sort-fields", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sort-fields", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::total", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total", callback: (($obj: BookClientCursor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -2064,6 +2410,9 @@ class BookClientCursor {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -2075,8 +2424,12 @@ interface BookClientView_ConstructProps extends GObject.Object_ConstructProps {
     object_path?: string
 }
 class BookClientView {
+    /* Properties of EBook-1.2.EBook.BookClientView */
+    readonly client: BookClient
+    readonly connection: Gio.DBusConnection
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EBook-1.2.EBook.BookClientView */
     /**
      * Returns the #EBookClientView:client associated with `client_view`.
@@ -2109,10 +2462,12 @@ class BookClientView {
      * Some backends can use summary information of its cache to create artifical
      * objects, which will omit stored object parsing. If this cannot be done then
      * it will simply return object as is stored in the cache.
+     * @param fields_of_interest List of field names in which                      the client is interested
      */
     set_fields_of_interest(fields_of_interest: string[]): void
     /**
      * Sets the `flags` which control the behaviour of `client_view`.
+     * @param flags the #EBookClientViewFlags for `client_view`
      */
     set_flags(flags: EBookContacts.BookClientViewFlags): void
     /**
@@ -2158,6 +2513,10 @@ class BookClientView {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2168,6 +2527,12 @@ class BookClientView {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2191,6 +2556,7 @@ class BookClientView {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2210,11 +2576,14 @@ class BookClientView {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2222,6 +2591,8 @@ class BookClientView {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2239,6 +2610,7 @@ class BookClientView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2284,6 +2656,7 @@ class BookClientView {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2327,15 +2700,20 @@ class BookClientView {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2376,6 +2754,7 @@ class BookClientView {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2410,6 +2789,7 @@ class BookClientView {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -2452,6 +2832,7 @@ class BookClientView {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EBook-1.2.EBook.BookClientView */
@@ -2496,6 +2877,7 @@ class BookClientView {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2515,6 +2897,7 @@ class BookClientView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2563,10 +2946,17 @@ class BookClientView {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::client", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2579,6 +2969,9 @@ class BookClientView {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -2587,7 +2980,7 @@ interface Destination_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Destination {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EBook-1.2.EBook.Destination */
     /**
      * Creates a new #EDestination identical to `dest`.
@@ -2599,6 +2992,7 @@ class Destination {
     empty(): boolean
     /**
      * Checks if `a` and `b` are equal.
+     * @param b an #EDestination
      */
     equal(b: Destination): boolean
     /**
@@ -2608,6 +3002,7 @@ class Destination {
     /**
      * Exports the contact information from `dest` to parameters
      * and values in `attr,` suitable for an address book.
+     * @param attr an #EVCardAttribute
      */
     export_to_vcard_attribute(attr: EBookContacts.VCardAttribute): void
     /**
@@ -2652,6 +3047,7 @@ class Destination {
      * Generates a textual representation of `dest,` suitable for referring
      * to the destination during user interaction. The name can be encoded
      * in quoted printable.
+     * @param include_email whether to include the e-mail address
      */
     get_textrep(include_email: boolean): string
     /**
@@ -2689,42 +3085,53 @@ class Destination {
      * Sets the flag indicating if `dest` is an automatic recipient, meaning
      * it was not explicitly specified by the user. This can be used
      * to hide it from some UI elements.
+     * @param value the auto recipient flag
      */
     set_auto_recipient(value: boolean): void
     /**
      * Specify the source `dest'`s contact comes from. This is useful
      * if you need to update the contact later.
+     * @param client an #EBookClient
      */
     set_client(client: BookClient): void
     /**
      * Sets `dest` to point to one of `contact'`s e-mail addresses
      * indicated by `email_num`.
+     * @param contact an #EContact
+     * @param email_num an email index
      */
     set_contact(contact: EBookContacts.Contact, email_num: number): void
     /**
      * Sets `dest` to point to one of the contact specified by `uid'`s e-mail
      * addresses indicated by `email_num`.
+     * @param uid a unique contact ID
+     * @param email_num an email index
      */
     set_contact_uid(uid: string, email_num: number): void
     /**
      * Sets the e-mail address of `dest'`s addressee.
+     * @param email the destination's e-mail address
      */
     set_email(email: string): void
     /**
      * Specifies whether `dest` wants to get mail formatted as HTML.
+     * @param flag whether the destination wants HTML mail
      */
     set_html_mail_pref(flag: boolean): void
     /**
      * Set the ignore flag on an #EDestination.
+     * @param ignored %TRUE if this #EDestination should be ignored.
      */
     set_ignored(ignored: boolean): void
     /**
      * Sets the full name of `dest'`s addressee.
+     * @param name the destination's full name
      */
     set_name(name: string): void
     /**
      * Sets `dest` to point to the name and e-mail address resulting from
      * parsing the supplied string. Useful for user input.
+     * @param raw an unparsed string
      */
     set_raw(raw: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2762,6 +3169,10 @@ class Destination {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2772,6 +3183,12 @@ class Destination {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2795,6 +3212,7 @@ class Destination {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2814,11 +3232,14 @@ class Destination {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2826,6 +3247,8 @@ class Destination {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2843,6 +3266,7 @@ class Destination {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2888,6 +3312,7 @@ class Destination {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2931,15 +3356,20 @@ class Destination {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2980,6 +3410,7 @@ class Destination {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3014,6 +3445,7 @@ class Destination {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EBook-1.2.EBook.Destination */
@@ -3035,6 +3467,7 @@ class Destination {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3071,6 +3504,7 @@ class Destination {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Destination, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Destination, pspec: GObject.ParamSpec) => void)): number
@@ -3086,24 +3520,29 @@ class Destination {
     static new(): Destination
     /**
      * Exports multiple #EDestination elements to a single XML document.
+     * @param destv a %NULL-terminated array of pointers to #EDestination
      */
     static exportv(destv: Destination[]): string
     /**
      * Unrefs the elements of `destv` and frees `destv` itself.
+     * @param destv a %NULL-terminated array of pointers to #EDestination
      */
     static freev(destv: Destination[]): void
     /**
      * Generates a joint text representation of all the #EDestination
      * elements in `destv`.
+     * @param destv %NULL-terminated array of pointers to #EDestination
      */
     static get_textrepv(destv: Destination[]): string
     /**
      * Creates an #EDestination from an XML document.
+     * @param str an XML string
      */
     static import(str: string): Destination | null
     /**
      * Creates an array of pointers to #EDestination elements
      * from an XML document.
+     * @param str an XML string
      */
     static importv(str: string): Destination[]
     static $gtype: GObject.Type
@@ -3113,7 +3552,7 @@ abstract class BookClientClass {
 }
 abstract class BookClientCursorClass {
     /* Fields of EBook-1.2.EBook.BookClientCursorClass */
-    readonly refresh: (cursor: BookClientCursor) => void
+    refresh: (cursor: BookClientCursor) => void
     static name: string
 }
 class BookClientCursorPrivate {
@@ -3124,8 +3563,8 @@ class BookClientPrivate {
 }
 abstract class BookClientViewClass {
     /* Fields of EBook-1.2.EBook.BookClientViewClass */
-    readonly progress: (client_view: BookClientView, percent: number, message: string) => void
-    readonly complete: (client_view: BookClientView, error: GLib.Error) => void
+    progress: (client_view: BookClientView, percent: number, message: string) => void
+    complete: (client_view: BookClientView, error: GLib.Error) => void
     static name: string
 }
 class BookClientViewPrivate {
@@ -3133,8 +3572,8 @@ class BookClientViewPrivate {
 }
 abstract class DestinationClass {
     /* Fields of EBook-1.2.EBook.DestinationClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly changed: (destination: Destination) => void
+    parent_class: GObject.ObjectClass
+    changed: (destination: Destination) => void
     static name: string
 }
 class DestinationPrivate {

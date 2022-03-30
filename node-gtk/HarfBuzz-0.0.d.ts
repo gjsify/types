@@ -2367,21 +2367,21 @@ class feature_t {
     /**
      * a feature tag
      */
-    readonly tag: tag_t
+    tag: tag_t
     /**
      * 0 disables the feature, non-zero (usually 1) enables the feature.
      * For features implemented as lookup type 3 (like 'salt') the `value` is a one
      * based index into the alternates.
      */
-    readonly value: number
+    value: number
     /**
      * the cluster to start applying this feature setting (inclusive).
      */
-    readonly start: number
+    start: number
     /**
      * the cluster to end applying this feature setting (exclusive).
      */
-    readonly end: number
+    end: number
     /* Methods of HarfBuzz-0.0.HarfBuzz.feature_t */
     /**
      * Converts a #hb_feature_t into a %NULL-terminated string in the format
@@ -2393,9 +2393,9 @@ class feature_t {
 }
 class font_extents_t {
     /* Fields of HarfBuzz-0.0.HarfBuzz.font_extents_t */
-    readonly ascender: position_t
-    readonly descender: position_t
-    readonly lineGap: position_t
+    ascender: position_t
+    descender: position_t
+    lineGap: position_t
     static name: string
 }
 class font_funcs_t {
@@ -2406,10 +2406,10 @@ class font_t {
 }
 class glyph_extents_t {
     /* Fields of HarfBuzz-0.0.HarfBuzz.glyph_extents_t */
-    readonly xBearing: position_t
-    readonly yBearing: position_t
-    readonly width: position_t
-    readonly height: position_t
+    xBearing: position_t
+    yBearing: position_t
+    width: position_t
+    height: position_t
     static name: string
 }
 class glyph_info_t {
@@ -2418,7 +2418,7 @@ class glyph_info_t {
      * either a Unicode code point (before shaping) or a glyph index
      *             (after shaping).
      */
-    readonly codepoint: codepoint_t
+    codepoint: codepoint_t
     /**
      * the index of the character in the original text that corresponds
      *           to this #hb_glyph_info_t, or whatever the client passes to
@@ -2432,7 +2432,7 @@ class glyph_info_t {
      *           even if they are separate glyphs, hb_buffer_set_cluster_level()
      *           allow selecting more fine-grained cluster handling.
      */
-    readonly cluster: number
+    cluster: number
     static name: string
 }
 class glyph_position_t {
@@ -2441,22 +2441,22 @@ class glyph_position_t {
      * how much the line advances after drawing this glyph when setting
      *             text in horizontal direction.
      */
-    readonly xAdvance: position_t
+    xAdvance: position_t
     /**
      * how much the line advances after drawing this glyph when setting
      *             text in vertical direction.
      */
-    readonly yAdvance: position_t
+    yAdvance: position_t
     /**
      * how much the glyph moves on the X-axis before drawing it, this
      *            should not affect how much the line advances.
      */
-    readonly xOffset: position_t
+    xOffset: position_t
     /**
      * how much the glyph moves on the Y-axis before drawing it, this
      *            should not affect how much the line advances.
      */
-    readonly yOffset: position_t
+    yOffset: position_t
     static name: string
 }
 class language_t {
@@ -2472,8 +2472,8 @@ class map_t {
 }
 class ot_color_layer_t {
     /* Fields of HarfBuzz-0.0.HarfBuzz.ot_color_layer_t */
-    readonly glyph: codepoint_t
-    readonly colorIndex: number
+    glyph: codepoint_t
+    colorIndex: number
     static name: string
 }
 class ot_math_glyph_part_t {
@@ -2481,23 +2481,23 @@ class ot_math_glyph_part_t {
     /**
      * The glyph index of the variant part
      */
-    readonly glyph: codepoint_t
+    glyph: codepoint_t
     /**
      * The length of the connector on the starting side of the variant part
      */
-    readonly startConnectorLength: position_t
+    startConnectorLength: position_t
     /**
      * The length of the connector on the ending side of the variant part
      */
-    readonly endConnectorLength: position_t
+    endConnectorLength: position_t
     /**
      * The total advance of the part
      */
-    readonly fullAdvance: position_t
+    fullAdvance: position_t
     /**
      * #hb_ot_math_glyph_part_flags_t flags for the part
      */
-    readonly flags: ot_math_glyph_part_flags_t
+    flags: ot_math_glyph_part_flags_t
     static name: string
 }
 class ot_math_glyph_variant_t {
@@ -2505,11 +2505,11 @@ class ot_math_glyph_variant_t {
     /**
      * The glyph index of the variant
      */
-    readonly glyph: codepoint_t
+    glyph: codepoint_t
     /**
      * The advance width of the variant
      */
-    readonly advance: position_t
+    advance: position_t
     static name: string
 }
 class ot_name_entry_t {
@@ -2517,11 +2517,11 @@ class ot_name_entry_t {
     /**
      * name ID
      */
-    readonly nameId: ot_name_id_t
+    nameId: ot_name_id_t
     /**
      * language
      */
-    readonly language: language_t
+    language: language_t
     static name: string
 }
 class ot_var_axis_info_t {
@@ -2529,40 +2529,40 @@ class ot_var_axis_info_t {
     /**
      * Index of the axis in the variation-axis array
      */
-    readonly axisIndex: number
+    axisIndex: number
     /**
      * The #hb_tag_t tag identifying the design variation of the axis
      */
-    readonly tag: tag_t
+    tag: tag_t
     /**
      * The `name` table Name ID that provides display names for the axis
      */
-    readonly nameId: ot_name_id_t
+    nameId: ot_name_id_t
     /**
      * The #hb_ot_var_axis_flags_t flags for the axis
      */
-    readonly flags: ot_var_axis_flags_t
+    flags: ot_var_axis_flags_t
     /**
      * The mininum value on the variation axis that the font covers
      */
-    readonly minValue: number
+    minValue: number
     /**
      * The position on the variation axis corresponding to the font's defaults
      */
-    readonly defaultValue: number
+    defaultValue: number
     /**
      * The maximum value on the variation axis that the font covers
      */
-    readonly maxValue: number
+    maxValue: number
     static name: string
 }
 class ot_var_axis_t {
     /* Fields of HarfBuzz-0.0.HarfBuzz.ot_var_axis_t */
-    readonly tag: tag_t
-    readonly nameId: ot_name_id_t
-    readonly minValue: number
-    readonly defaultValue: number
-    readonly maxValue: number
+    tag: tag_t
+    nameId: ot_name_id_t
+    minValue: number
+    defaultValue: number
+    maxValue: number
     static name: string
 }
 class segment_properties_t {
@@ -2570,15 +2570,15 @@ class segment_properties_t {
     /**
      * the #hb_direction_t of the buffer, see hb_buffer_set_direction().
      */
-    readonly direction: direction_t
+    direction: direction_t
     /**
      * the #hb_script_t of the buffer, see hb_buffer_set_script().
      */
-    readonly script: script_t
+    script: script_t
     /**
      * the #hb_language_t of the buffer, see hb_buffer_set_language().
      */
-    readonly language: language_t
+    language: language_t
     static name: string
 }
 class set_t {
@@ -2595,8 +2595,8 @@ class user_data_key_t {
 }
 class variation_t {
     /* Fields of HarfBuzz-0.0.HarfBuzz.variation_t */
-    readonly tag: tag_t
-    readonly value: number
+    tag: tag_t
+    value: number
     /* Methods of HarfBuzz-0.0.HarfBuzz.variation_t */
     string(buf: string, size: number): void
     static name: string

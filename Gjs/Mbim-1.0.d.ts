@@ -3289,10 +3289,11 @@ interface Device_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Device {
     /* Properties of Mbim-1.0.Mbim.Device */
+    readonly device_file: Gio.File
     device_in_session: boolean
     device_transaction_id: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Mbim-1.0.Mbim.Device */
     /**
      * Asynchronously creates a new virtual network device node on top of
@@ -3311,10 +3312,17 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * mbim_device_add_link_finish() to get the result of the operation.
+     * @param session_id the session id for the link, in the   [#MBIM_DEVICE_SESSION_ID_MIN,#MBIM_DEVICE_SESSION_ID_MAX] range, or   #MBIM_DEVICE_SESSION_ID_AUTOMATIC to find the first available session id.
+     * @param base_ifname the interface which the new link will be created on.
+     * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_add_link().
+     * @param res a #GAsyncResult.
+     * @param session_id the session ID for the link created.
      */
     add_link_finish(res: Gio.AsyncResult, session_id: number): string
     /**
@@ -3324,6 +3332,8 @@ class Device {
     /**
      * Checks the version number of the MS MBIMEx support in the device instance
      * against the one given as input.
+     * @param ms_mbimex_version_major major version number of the MS MBIMEx support.
+     * @param ms_mbimex_version_minor minor version number of the MS MBIMEx support.
      */
     check_ms_mbimex_version(ms_mbimex_version_major: number, ms_mbimex_version_minor: number): boolean
     /**
@@ -3331,10 +3341,14 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * mbim_device_close_finish() to get the result of the operation.
+     * @param timeout maximum time, in seconds, to wait for the device to be closed.
+     * @param cancellable optional #GCancellable object, #NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     close(timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous close operation started with mbim_device_close().
+     * @param res a #GAsyncResult.
      */
     close_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3346,10 +3360,15 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * mbim_device_command_finish() to get the result of the operation.
+     * @param message the message to send.
+     * @param timeout maximum time, in seconds, to wait for the response.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     command(message: Message, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_command().
+     * @param res a #GAsyncResult.
      */
     command_finish(res: Gio.AsyncResult): Message
     /**
@@ -3365,10 +3384,14 @@ class Device {
      * where only one single process is expected to do MBIM network interface link
      * management.
      * </para></note>
+     * @param base_ifname the interface where all links are available.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     delete_all_links(base_ifname: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_delete_all_links().
+     * @param res a #GAsyncResult.
      */
     delete_all_links_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3380,10 +3403,14 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * mbim_device_delete_link_finish() to get the result of the operation.
+     * @param ifname the name of the link to remove.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     delete_link(ifname: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_delete_link().
+     * @param res a #GAsyncResult.
      */
     delete_link_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3393,6 +3420,7 @@ class Device {
      * which version to use hasn't been run (e.g. with mbim_device_open_full() and
      * the explicit %MBIM_DEVICE_OPEN_FLAGS_MS_MBIMEX_V2 or
      * %MBIM_DEVICE_OPEN_FLAGS_MS_MBIMEX_V3 flag).
+     * @param out_ms_mbimex_version_minor output location for the minor version number of  the MS MBIMEx support, or %NULL if not needed.
      */
     get_ms_mbimex_version(out_ms_mbimex_version_minor: number): number
     /**
@@ -3420,6 +3448,7 @@ class Device {
     /**
      * Synchronously lists all virtual network interfaces that have been previously
      * created with mbim_device_add_link() in `base_ifname`.
+     * @param base_ifname the base interface.
      */
     list_links(base_ifname: string): [ /* returnType */ boolean, /* out_links */ string[] ]
     /**
@@ -3427,10 +3456,14 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * mbim_device_open_finish() to get the result of the operation.
+     * @param timeout maximum time, in seconds, to wait for the device to be opened.
+     * @param cancellable optional #GCancellable object, #NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     open(timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous open operation started with mbim_device_open().
+     * @param res a #GAsyncResult.
      */
     open_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3441,10 +3474,15 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * mbim_device_open_full_finish() to get the result of the operation.
+     * @param flags a set of #MbimDeviceOpenFlags.
+     * @param timeout maximum time, in seconds, to wait for the device to be opened.
+     * @param cancellable optional #GCancellable object, #NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     open_full(flags: DeviceOpenFlags, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous open operation started with mbim_device_open_full().
+     * @param res a #GAsyncResult.
      */
     open_full_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3459,6 +3497,8 @@ class Device {
      * the only way to do that is with mbim_device_open_full() and the explicit
      * %MBIM_DEVICE_OPEN_FLAGS_MS_MBIMEX_V2 or %MBIM_DEVICE_OPEN_FLAGS_MS_MBIMEX_V3
      * flag.
+     * @param ms_mbimex_version_major major version number of the MS MBIMEx support.
+     * @param ms_mbimex_version_minor minor version number of the MS MBIMEx support.
      */
     set_ms_mbimex_version(ms_mbimex_version_major: number, ms_mbimex_version_minor: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3496,6 +3536,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3506,6 +3550,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3529,6 +3579,7 @@ class Device {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3548,11 +3599,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3560,6 +3614,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3577,6 +3633,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3622,6 +3679,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3665,15 +3723,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3714,6 +3777,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3748,6 +3812,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -3788,16 +3853,21 @@ class Device {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Virtual methods of Mbim-1.0.Mbim.Device */
@@ -3838,11 +3908,15 @@ class Device {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3862,6 +3936,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3904,10 +3979,13 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::device-file", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-file", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::device-in-session", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::device-in-session", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::device-transaction-id", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
@@ -3928,6 +4006,12 @@ class Device {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     static $gtype: GObject.Type
@@ -3939,7 +4023,7 @@ class Proxy {
     readonly mbim_proxy_n_clients: number
     readonly mbim_proxy_n_devices: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3975,6 +4059,10 @@ class Proxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3985,6 +4073,12 @@ class Proxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4008,6 +4102,7 @@ class Proxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4027,11 +4122,14 @@ class Proxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4039,6 +4137,8 @@ class Proxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4056,6 +4156,7 @@ class Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4101,6 +4202,7 @@ class Proxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4144,15 +4246,20 @@ class Proxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4193,6 +4300,7 @@ class Proxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4227,6 +4335,7 @@ class Proxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4246,6 +4355,7 @@ class Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4278,6 +4388,7 @@ class Proxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
@@ -4302,31 +4413,32 @@ class AtdsProvider {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #MbimProviderState given as a #guint32.
      */
-    readonly provider_state: number
+    provider_state: number
     /**
      * a string.
      */
-    readonly provider_name: string
+    provider_name: string
     /**
      * a #MbimAtdsProviderPlmnMode given as a #guint32.
      */
-    readonly plmn_mode: number
+    plmn_mode: number
     /**
      * a #guint32.
      */
-    readonly rssi: number
+    rssi: number
     /**
      * a #guint32.
      */
-    readonly error_rate: number
+    error_rate: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimAtdsProvider structs.
+     * @param array a #NULL terminated array of #MbimAtdsProvider structs.
      */
     static array_free(array: AtdsProviderArray): void
 }
@@ -4335,43 +4447,44 @@ class CellInfoCdma {
     /**
      * a #guint32.
      */
-    readonly serving_cell_flag: number
+    serving_cell_flag: number
     /**
      * a #guint32.
      */
-    readonly nid: number
+    nid: number
     /**
      * a #guint32.
      */
-    readonly sid: number
+    sid: number
     /**
      * a #guint32.
      */
-    readonly base_station_id: number
+    base_station_id: number
     /**
      * a #guint32.
      */
-    readonly base_latitude: number
+    base_latitude: number
     /**
      * a #guint32.
      */
-    readonly base_longitude: number
+    base_longitude: number
     /**
      * a #guint32.
      */
-    readonly ref_pn: number
+    ref_pn: number
     /**
      * a #guint32.
      */
-    readonly gps_seconds: number
+    gps_seconds: number
     /**
      * a #guint32.
      */
-    readonly pilot_strength: number
+    pilot_strength: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
+     * @param array a #NULL terminated array of #MbimCellInfoCdma structs.
      */
     static array_free(array: CellInfoCdmaArray): void
 }
@@ -4380,31 +4493,32 @@ class CellInfoNeighboringGsm {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint32.
      */
-    readonly location_area_code: number
+    location_area_code: number
     /**
      * a #guint32.
      */
-    readonly cell_id: number
+    cell_id: number
     /**
      * a #guint32.
      */
-    readonly arfcn: number
+    arfcn: number
     /**
      * a #guint32.
      */
-    readonly base_station_id: number
+    base_station_id: number
     /**
      * a #guint32.
      */
-    readonly rx_level: number
+    rx_level: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringGsm structs.
+     * @param array a #NULL terminated array of #MbimCellInfoNeighboringGsm structs.
      */
     static array_free(array: CellInfoNeighboringGsmArray): void
 }
@@ -4413,35 +4527,36 @@ class CellInfoNeighboringLte {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint32.
      */
-    readonly cell_id: number
+    cell_id: number
     /**
      * a #guint32.
      */
-    readonly earfcn: number
+    earfcn: number
     /**
      * a #guint32.
      */
-    readonly physical_cell_id: number
+    physical_cell_id: number
     /**
      * a #guint32.
      */
-    readonly tac: number
+    tac: number
     /**
      * a #gint32.
      */
-    readonly rsrp: number
+    rsrp: number
     /**
      * a #gint32.
      */
-    readonly rsrq: number
+    rsrq: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringLte structs.
+     * @param array a #NULL terminated array of #MbimCellInfoNeighboringLte structs.
      */
     static array_free(array: CellInfoNeighboringLteArray): void
 }
@@ -4450,39 +4565,40 @@ class CellInfoNeighboringNr {
     /**
      * a #MbimDataSubclass given as a #guint32.
      */
-    readonly system_sub_type: number
+    system_sub_type: number
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a string.
      */
-    readonly cell_id: string
+    cell_id: string
     /**
      * a #guint32.
      */
-    readonly physical_cell_id: number
+    physical_cell_id: number
     /**
      * a #guint32.
      */
-    readonly tac: number
+    tac: number
     /**
      * a #guint32.
      */
-    readonly rsrp: number
+    rsrp: number
     /**
      * a #guint32.
      */
-    readonly rsrq: number
+    rsrq: number
     /**
      * a #guint32.
      */
-    readonly sinr: number
+    sinr: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringNr structs.
+     * @param array a #NULL terminated array of #MbimCellInfoNeighboringNr structs.
      */
     static array_free(array: CellInfoNeighboringNrArray): void
 }
@@ -4491,39 +4607,40 @@ class CellInfoNeighboringTdscdma {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint32.
      */
-    readonly location_area_code: number
+    location_area_code: number
     /**
      * a #guint32.
      */
-    readonly cell_id: number
+    cell_id: number
     /**
      * a #guint32.
      */
-    readonly uarfcn: number
+    uarfcn: number
     /**
      * a #guint32.
      */
-    readonly cell_parameter_id: number
+    cell_parameter_id: number
     /**
      * a #guint32.
      */
-    readonly timing_advance: number
+    timing_advance: number
     /**
      * a #gint32.
      */
-    readonly rscp: number
+    rscp: number
     /**
      * a #guint32.
      */
-    readonly path_loss: number
+    path_loss: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringTdscdma structs.
+     * @param array a #NULL terminated array of #MbimCellInfoNeighboringTdscdma structs.
      */
     static array_free(array: CellInfoNeighboringTdscdmaArray): void
 }
@@ -4532,39 +4649,40 @@ class CellInfoNeighboringUmts {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint32.
      */
-    readonly location_area_code: number
+    location_area_code: number
     /**
      * a #guint32.
      */
-    readonly cell_id: number
+    cell_id: number
     /**
      * a #guint32.
      */
-    readonly uarfcn: number
+    uarfcn: number
     /**
      * a #guint32.
      */
-    readonly primary_scrambling_code: number
+    primary_scrambling_code: number
     /**
      * a #gint32.
      */
-    readonly rscp: number
+    rscp: number
     /**
      * a #gint32.
      */
-    readonly ecno: number
+    ecno: number
     /**
      * a #guint32.
      */
-    readonly path_loss: number
+    path_loss: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringUmts structs.
+     * @param array a #NULL terminated array of #MbimCellInfoNeighboringUmts structs.
      */
     static array_free(array: CellInfoNeighboringUmtsArray): void
 }
@@ -4573,31 +4691,31 @@ class CellInfoServingGsm {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint32.
      */
-    readonly location_area_code: number
+    location_area_code: number
     /**
      * a #guint32.
      */
-    readonly cell_id: number
+    cell_id: number
     /**
      * a #guint32.
      */
-    readonly timing_advance: number
+    timing_advance: number
     /**
      * a #guint32.
      */
-    readonly arfcn: number
+    arfcn: number
     /**
      * a #guint32.
      */
-    readonly base_station_id: number
+    base_station_id: number
     /**
      * a #guint32.
      */
-    readonly rx_level: number
+    rx_level: number
     /* Methods of Mbim-1.0.Mbim.CellInfoServingGsm */
     /**
      * Frees the memory allocated for the #MbimCellInfoServingGsm.
@@ -4610,35 +4728,35 @@ class CellInfoServingLte {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint32.
      */
-    readonly cell_id: number
+    cell_id: number
     /**
      * a #guint32.
      */
-    readonly earfcn: number
+    earfcn: number
     /**
      * a #guint32.
      */
-    readonly physical_cell_id: number
+    physical_cell_id: number
     /**
      * a #guint32.
      */
-    readonly tac: number
+    tac: number
     /**
      * a #gint32.
      */
-    readonly rsrp: number
+    rsrp: number
     /**
      * a #gint32.
      */
-    readonly rsrq: number
+    rsrq: number
     /**
      * a #guint32.
      */
-    readonly timing_advance: number
+    timing_advance: number
     /* Methods of Mbim-1.0.Mbim.CellInfoServingLte */
     /**
      * Frees the memory allocated for the #MbimCellInfoServingLte.
@@ -4651,43 +4769,44 @@ class CellInfoServingNr {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint64.
      */
-    readonly nci: number
+    nci: number
     /**
      * a #guint32.
      */
-    readonly physical_cell_id: number
+    physical_cell_id: number
     /**
      * a #guint32.
      */
-    readonly nrarfcn: number
+    nrarfcn: number
     /**
      * a #guint32.
      */
-    readonly tac: number
+    tac: number
     /**
      * a #guint32.
      */
-    readonly rsrp: number
+    rsrp: number
     /**
      * a #guint32.
      */
-    readonly rsrq: number
+    rsrq: number
     /**
      * a #guint32.
      */
-    readonly sinr: number
+    sinr: number
     /**
      * a #guint64.
      */
-    readonly timing_advance: number
+    timing_advance: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimCellInfoServingNr structs.
+     * @param array a #NULL terminated array of #MbimCellInfoServingNr structs.
      */
     static array_free(array: CellInfoServingNrArray): void
 }
@@ -4696,35 +4815,35 @@ class CellInfoServingTdscdma {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint32.
      */
-    readonly location_area_code: number
+    location_area_code: number
     /**
      * a #guint32.
      */
-    readonly cell_id: number
+    cell_id: number
     /**
      * a #guint32.
      */
-    readonly uarfcn: number
+    uarfcn: number
     /**
      * a #guint32.
      */
-    readonly cell_parameter_id: number
+    cell_parameter_id: number
     /**
      * a #guint32.
      */
-    readonly timing_advance: number
+    timing_advance: number
     /**
      * a #gint32.
      */
-    readonly rscp: number
+    rscp: number
     /**
      * a #guint32.
      */
-    readonly path_loss: number
+    path_loss: number
     /* Methods of Mbim-1.0.Mbim.CellInfoServingTdscdma */
     /**
      * Frees the memory allocated for the #MbimCellInfoServingTdscdma.
@@ -4737,47 +4856,47 @@ class CellInfoServingUmts {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #guint32.
      */
-    readonly location_area_code: number
+    location_area_code: number
     /**
      * a #guint32.
      */
-    readonly cell_id: number
+    cell_id: number
     /**
      * a #guint32.
      */
-    readonly frequency_info_ul: number
+    frequency_info_ul: number
     /**
      * a #guint32.
      */
-    readonly frequency_info_dl: number
+    frequency_info_dl: number
     /**
      * a #guint32.
      */
-    readonly frequency_info_nt: number
+    frequency_info_nt: number
     /**
      * a #guint32.
      */
-    readonly uarfcn: number
+    uarfcn: number
     /**
      * a #guint32.
      */
-    readonly primary_scrambling_code: number
+    primary_scrambling_code: number
     /**
      * a #gint32.
      */
-    readonly rscp: number
+    rscp: number
     /**
      * a #gint32.
      */
-    readonly ecno: number
+    ecno: number
     /**
      * a #guint32.
      */
-    readonly path_loss: number
+    path_loss: number
     /* Methods of Mbim-1.0.Mbim.CellInfoServingUmts */
     /**
      * Frees the memory allocated for the #MbimCellInfoServingUmts.
@@ -4787,13 +4906,13 @@ class CellInfoServingUmts {
 }
 class DeprecatedLteAttachStatus {
     /* Fields of Mbim-1.0.Mbim.DeprecatedLteAttachStatus */
-    readonly lte_attach_state: number
-    readonly ip_type: number
-    readonly access_string: string
-    readonly user_name: string
-    readonly password: string
-    readonly compression: number
-    readonly auth_protocol: number
+    lte_attach_state: number
+    ip_type: number
+    access_string: string
+    user_name: string
+    password: string
+    compression: number
+    auth_protocol: number
     static name: string
 }
 abstract class DeviceClass {
@@ -4807,27 +4926,28 @@ class DeviceServiceElement {
     /**
      * a #MbimUuid.
      */
-    readonly device_service_id: Uuid
+    device_service_id: Uuid
     /**
      * a #guint32.
      */
-    readonly dss_payload: number
+    dss_payload: number
     /**
      * a #guint32.
      */
-    readonly max_dss_instances: number
+    max_dss_instances: number
     /**
      * a #guint32.
      */
-    readonly cids_count: number
+    cids_count: number
     /**
      * an array of #guint32 values.
      */
-    readonly cids: number
+    cids: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimDeviceServiceElement structs.
+     * @param array a #NULL terminated array of #MbimDeviceServiceElement structs.
      */
     static array_free(array: DeviceServiceElementArray): void
 }
@@ -4836,19 +4956,20 @@ class EventEntry {
     /**
      * a #MbimUuid.
      */
-    readonly device_service_id: Uuid
+    device_service_id: Uuid
     /**
      * a #guint32.
      */
-    readonly cids_count: number
+    cids_count: number
     /**
      * an array of #guint32 values.
      */
-    readonly cids: number
+    cids: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimEventEntry structs.
+     * @param array a #NULL terminated array of #MbimEventEntry structs.
      */
     static array_free(array: EventEntryArray): void
 }
@@ -4857,7 +4978,7 @@ class IPv4 {
     /**
      * 4 bytes specifying the IPv4 address.
      */
-    readonly addr: Uint8Array
+    addr: Uint8Array
     static name: string
 }
 class IPv4Element {
@@ -4865,15 +4986,16 @@ class IPv4Element {
     /**
      * a #guint32.
      */
-    readonly on_link_prefix_length: number
+    on_link_prefix_length: number
     /**
      * a #MbimIPv4.
      */
-    readonly ipv4_address: IPv4
+    ipv4_address: IPv4
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimIPv4Element structs.
+     * @param array a #NULL terminated array of #MbimIPv4Element structs.
      */
     static array_free(array: IPv4ElementArray): void
 }
@@ -4882,7 +5004,7 @@ class IPv6 {
     /**
      * 16 bytes specifying the IPv6 address.
      */
-    readonly addr: Uint8Array
+    addr: Uint8Array
     static name: string
 }
 class IPv6Element {
@@ -4890,15 +5012,16 @@ class IPv6Element {
     /**
      * a #guint32.
      */
-    readonly on_link_prefix_length: number
+    on_link_prefix_length: number
     /**
      * a #MbimIPv6
      */
-    readonly ipv6_address: IPv6
+    ipv6_address: IPv6
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimIPv6Element structs.
+     * @param array a #NULL terminated array of #MbimIPv6Element structs.
      */
     static array_free(array: IPv6ElementArray): void
 }
@@ -4907,39 +5030,40 @@ class LteAttachConfiguration {
     /**
      * a #MbimContextIpType given as a #guint32.
      */
-    readonly ip_type: number
+    ip_type: number
     /**
      * a #MbimLteAttachContextRoamingControl given as a #guint32.
      */
-    readonly roaming: number
+    roaming: number
     /**
      * a #MbimContextSource given as a #guint32.
      */
-    readonly source: number
+    source: number
     /**
      * a string.
      */
-    readonly access_string: string
+    access_string: string
     /**
      * a string.
      */
-    readonly user_name: string
+    user_name: string
     /**
      * a string.
      */
-    readonly password: string
+    password: string
     /**
      * a #MbimCompression given as a #guint32.
      */
-    readonly compression: number
+    compression: number
     /**
      * a #MbimAuthProtocol given as a #guint32.
      */
-    readonly auth_protocol: number
+    auth_protocol: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimLteAttachConfiguration structs.
+     * @param array a #NULL terminated array of #MbimLteAttachConfiguration structs.
      */
     static array_free(array: LteAttachConfigurationArray): void
 }
@@ -4987,6 +5111,8 @@ class Message {
     close_done_get_status_code(): StatusError
     /**
      * Appends the contents of `buffer` to `self`.
+     * @param buffer raw buffer to append to the message.
+     * @param buffer_size length of the data in `buffer`.
      */
     command_append(buffer: number, buffer_size: number): void
     /**
@@ -5051,6 +5177,8 @@ class Message {
     device_service_subscribe_list_response_parse(): [ /* returnType */ boolean, /* out_events_count */ number | null, /* out_events */ EventEntry[] | null ]
     /**
      * Create a new request for the 'Events' response command in the 'Basic Connect' service.
+     * @param events_count return location for a #guint32, or %NULL if the 'EventsCount' field is not needed.
+     * @param events return location for a newly allocated array of #MbimEventEntrys, or %NULL if the 'Events' field is not needed. Free the returned value with mbim_event_entry_array_free().
      */
     device_service_subscriber_list_response_parse(events_count: number, events: EventEntry): boolean
     /**
@@ -5097,6 +5225,8 @@ class Message {
      * This method will not fail if the parsing of the message contents fails,
      * a fallback text with the error will be included in the generated printable
      * information instead.
+     * @param line_prefix prefix string to use in each new generated line.
+     * @param headers_only %TRUE if only basic headers should be printed.
      */
     get_printable(line_prefix: string, headers_only: boolean): string
     /**
@@ -5115,6 +5245,10 @@ class Message {
      * This method will not fail if the parsing of the message contents fails,
      * a fallback text with the error will be included in the generated printable
      * information instead.
+     * @param mbimex_version_major major version of the agreed MBIMEx support.
+     * @param mbimex_version_minor minor version of the agreed MBIMEx support.
+     * @param line_prefix prefix string to use in each new generated line.
+     * @param headers_only %TRUE if only basic headers should be printed.
      */
     get_printable_full(mbimex_version_major: number, mbimex_version_minor: number, line_prefix: string, headers_only: boolean): string
     /**
@@ -5502,6 +5636,7 @@ class Message {
      * Gets the result of the operation from the response message, which
      * can be either a %MBIM_MESSAGE_TYPE_FUNCTION_ERROR message or a message of the
      * specified `expected` type.
+     * @param expected expected #MbimMessageType if there isn't any error in the operation.
      */
     response_get_result(expected: MessageType): boolean
     /**
@@ -5510,6 +5645,7 @@ class Message {
     service_activation_response_parse(): [ /* returnType */ boolean, /* out_nw_error */ NwError | null, /* out_buffer */ Uint8Array | null ]
     /**
      * Sets the transaction ID of the message.
+     * @param transaction_id the transaction id.
      */
     set_transaction_id(transaction_id: number): void
     /**
@@ -5719,19 +5855,20 @@ class PacketFilter {
     /**
      * a #guint32.
      */
-    readonly filter_size: number
+    filter_size: number
     /**
      * an array of #guint8 values.
      */
-    readonly packet_filter: number
+    packet_filter: number
     /**
      * an array of #guint8 values.
      */
-    readonly packet_mask: number
+    packet_mask: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimPacketFilter structs.
+     * @param array a #NULL terminated array of #MbimPacketFilter structs.
      */
     static array_free(array: PacketFilterArray): void
 }
@@ -5740,23 +5877,24 @@ class PacketFilterV3 {
     /**
      * a #guint32.
      */
-    readonly filter_size: number
+    filter_size: number
     /**
      * an array of #guint8 values.
      */
-    readonly packet_filter: number
+    packet_filter: number
     /**
      * an array of #guint8 values.
      */
-    readonly packet_mask: number
+    packet_mask: number
     /**
      * a #guint32.
      */
-    readonly filter_id: number
+    filter_id: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimPacketFilterV3 structs.
+     * @param array a #NULL terminated array of #MbimPacketFilterV3 structs.
      */
     static array_free(array: PacketFilterV3Array): void
 }
@@ -5765,19 +5903,19 @@ class PcoValue {
     /**
      * a #guint32.
      */
-    readonly session_id: number
+    session_id: number
     /**
      * a #guint32.
      */
-    readonly pco_data_size: number
+    pco_data_size: number
     /**
      * a #MbimPcoType given as a #guint32.
      */
-    readonly pco_data_type: number
+    pco_data_type: number
     /**
      * an array of #guint8 values.
      */
-    readonly pco_data_buffer: number
+    pco_data_buffer: number
     /* Methods of Mbim-1.0.Mbim.PcoValue */
     /**
      * Frees the memory allocated for the #MbimPcoValue.
@@ -5790,19 +5928,20 @@ class PhonebookEntry {
     /**
      * a #guint32.
      */
-    readonly entry_index: number
+    entry_index: number
     /**
      * a string.
      */
-    readonly number: string
+    number: string
     /**
      * a string.
      */
-    readonly name: string
+    name: string
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimPhonebookEntry structs.
+     * @param array a #NULL terminated array of #MbimPhonebookEntry structs.
      */
     static array_free(array: PhonebookEntryArray): void
 }
@@ -5811,19 +5950,19 @@ class PinDesc {
     /**
      * a #MbimPinMode given as a #guint32.
      */
-    readonly pin_mode: number
+    pin_mode: number
     /**
      * a #MbimPinFormat given as a #guint32.
      */
-    readonly pin_format: number
+    pin_format: number
     /**
      * a #guint32.
      */
-    readonly pin_length_min: number
+    pin_length_min: number
     /**
      * a #guint32.
      */
-    readonly pin_length_max: number
+    pin_length_max: number
     /* Methods of Mbim-1.0.Mbim.PinDesc */
     /**
      * Frees the memory allocated for the #MbimPinDesc.
@@ -5836,27 +5975,27 @@ class Provider {
     /**
      * a string.
      */
-    readonly provider_id: string
+    provider_id: string
     /**
      * a #MbimProviderState given as a #guint32.
      */
-    readonly provider_state: number
+    provider_state: number
     /**
      * a string.
      */
-    readonly provider_name: string
+    provider_name: string
     /**
      * a #MbimCellularClass given as a #guint32.
      */
-    readonly cellular_class: number
+    cellular_class: number
     /**
      * a #guint32.
      */
-    readonly rssi: number
+    rssi: number
     /**
      * a #guint32.
      */
-    readonly error_rate: number
+    error_rate: number
     /* Methods of Mbim-1.0.Mbim.Provider */
     /**
      * Frees the memory allocated for the #MbimProvider.
@@ -5866,6 +6005,7 @@ class Provider {
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimProvider structs.
+     * @param array a #NULL terminated array of #MbimProvider structs.
      */
     static array_free(array: ProviderArray): void
 }
@@ -5874,35 +6014,36 @@ class ProvisionedContextElement {
     /**
      * a #guint32.
      */
-    readonly context_id: number
+    context_id: number
     /**
      * a #MbimUuid.
      */
-    readonly context_type: Uuid
+    context_type: Uuid
     /**
      * a string.
      */
-    readonly access_string: string
+    access_string: string
     /**
      * a string.
      */
-    readonly user_name: string
+    user_name: string
     /**
      * a string.
      */
-    readonly password: string
+    password: string
     /**
      * a #MbimCompression given as a #guint32.
      */
-    readonly compression: number
+    compression: number
     /**
      * a #MbimAuthProtocol given as a #guint32.
      */
-    readonly auth_protocol: number
+    auth_protocol: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimProvisionedContextElement structs.
+     * @param array a #NULL terminated array of #MbimProvisionedContextElement structs.
      */
     static array_free(array: ProvisionedContextElementArray): void
 }
@@ -5911,61 +6052,62 @@ class ProvisionedContextElementV2 {
     /**
      * a #guint32.
      */
-    readonly context_id: number
+    context_id: number
     /**
      * a #MbimUuid.
      */
-    readonly context_type: Uuid
+    context_type: Uuid
     /**
      * a #MbimContextIpType given as a #guint32.
      */
-    readonly ip_type: number
+    ip_type: number
     /**
      * a #MbimContextState given as a #guint32.
      */
-    readonly state: number
+    state: number
     /**
      * a #MbimContextRoamingControl given as a #guint32.
      */
-    readonly roaming: number
+    roaming: number
     /**
      * a #MbimContextMediaType given as a #guint32.
      */
-    readonly media_type: number
+    media_type: number
     /**
      * a #MbimContextSource given as a #guint32.
      */
-    readonly source: number
+    source: number
     /**
      * a string.
      */
-    readonly access_string: string
+    access_string: string
     /**
      * a string.
      */
-    readonly user_name: string
+    user_name: string
     /**
      * a string.
      */
-    readonly password: string
+    password: string
     /**
      * a #MbimCompression given as a #guint32.
      */
-    readonly compression: number
+    compression: number
     /**
      * a #MbimAuthProtocol given as a #guint32.
      */
-    readonly auth_protocol: number
+    auth_protocol: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimProvisionedContextElementV2 structs.
+     * @param array a #NULL terminated array of #MbimProvisionedContextElementV2 structs.
      */
     static array_free(array: ProvisionedContextElementV2Array): void
 }
 abstract class ProxyClass {
     /* Fields of Mbim-1.0.Mbim.ProxyClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class ProxyPrivate {
@@ -5976,27 +6118,28 @@ class RsrpSnrInfo {
     /**
      * a #guint32.
      */
-    readonly rsrp: number
+    rsrp: number
     /**
      * a #guint32.
      */
-    readonly snr: number
+    snr: number
     /**
      * a #guint32.
      */
-    readonly rsrp_threshold: number
+    rsrp_threshold: number
     /**
      * a #guint32.
      */
-    readonly snr_threshold: number
+    snr_threshold: number
     /**
      * a #MbimDataClass given as a #guint32.
      */
-    readonly system_type: number
+    system_type: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimRsrpSnrInfo structs.
+     * @param array a #NULL terminated array of #MbimRsrpSnrInfo structs.
      */
     static array_free(array: RsrpSnrInfoArray): void
 }
@@ -6005,15 +6148,16 @@ class SarConfigState {
     /**
      * a #guint32.
      */
-    readonly antenna_index: number
+    antenna_index: number
     /**
      * a #guint32.
      */
-    readonly backoff_index: number
+    backoff_index: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimSarConfigState structs.
+     * @param array a #NULL terminated array of #MbimSarConfigState structs.
      */
     static array_free(array: SarConfigStateArray): void
 }
@@ -6022,11 +6166,12 @@ class Slot {
     /**
      * a #guint32.
      */
-    readonly slot: number
+    slot: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimSlot structs.
+     * @param array a #NULL terminated array of #MbimSlot structs.
      */
     static array_free(array: SlotArray): void
 }
@@ -6035,43 +6180,44 @@ class SmsCdmaReadRecord {
     /**
      * a #guint32.
      */
-    readonly message_index: number
+    message_index: number
     /**
      * a #MbimSmsStatus given as a #guint32.
      */
-    readonly message_status: number
+    message_status: number
     /**
      * a string.
      */
-    readonly address: string
+    address: string
     /**
      * a string.
      */
-    readonly timestamp: string
+    timestamp: string
     /**
      * a #MbimSmsCdmaEncoding given as a #guint32.
      */
-    readonly encoding: number
+    encoding: number
     /**
      * a #MbimSmsCdmaLang given as a #guint32.
      */
-    readonly language: number
+    language: number
     /**
      * size of the encoded_message array.
      */
-    readonly encoded_message_size: number
+    encoded_message_size: number
     /**
      * an array of #guint8 values.
      */
-    readonly encoded_message: number
+    encoded_message: number
     /**
      * a #guint32.
      */
-    readonly encoded_message_size_in_characters: number
+    encoded_message_size_in_characters: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimSmsCdmaReadRecord structs.
+     * @param array a #NULL terminated array of #MbimSmsCdmaReadRecord structs.
      */
     static array_free(array: SmsCdmaReadRecordArray): void
 }
@@ -6080,27 +6226,27 @@ class SmsCdmaSendRecord {
     /**
      * a #MbimSmsCdmaEncoding given as a #guint32.
      */
-    readonly encoding: number
+    encoding: number
     /**
      * a #MbimSmsCdmaLang given as a #guint32.
      */
-    readonly language: number
+    language: number
     /**
      * a string.
      */
-    readonly address: string
+    address: string
     /**
      * size of the encoded_message array.
      */
-    readonly encoded_message_size: number
+    encoded_message_size: number
     /**
      * an array of #guint8 values.
      */
-    readonly encoded_message: number
+    encoded_message: number
     /**
      * a #guint32.
      */
-    readonly encoded_message_size_in_characters: number
+    encoded_message_size_in_characters: number
     /* Methods of Mbim-1.0.Mbim.SmsCdmaSendRecord */
     /**
      * Frees the memory allocated for the #MbimSmsCdmaSendRecord.
@@ -6113,23 +6259,24 @@ class SmsPduReadRecord {
     /**
      * a #guint32.
      */
-    readonly message_index: number
+    message_index: number
     /**
      * a #MbimSmsStatus given as a #guint32.
      */
-    readonly message_status: number
+    message_status: number
     /**
      * size of the pdu_data array.
      */
-    readonly pdu_data_size: number
+    pdu_data_size: number
     /**
      * an array of #guint8 values.
      */
-    readonly pdu_data: number
+    pdu_data: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimSmsPduReadRecord structs.
+     * @param array a #NULL terminated array of #MbimSmsPduReadRecord structs.
      */
     static array_free(array: SmsPduReadRecordArray): void
 }
@@ -6138,11 +6285,11 @@ class SmsPduSendRecord {
     /**
      * size of the pdu_data array.
      */
-    readonly pdu_data_size: number
+    pdu_data_size: number
     /**
      * an array of #guint8 values.
      */
-    readonly pdu_data: number
+    pdu_data: number
     /* Methods of Mbim-1.0.Mbim.SmsPduSendRecord */
     /**
      * Frees the memory allocated for the #MbimSmsPduSendRecord.
@@ -6155,15 +6302,15 @@ class Tai {
     /**
      * a #guint16.
      */
-    readonly plmn_mcc: number
+    plmn_mcc: number
     /**
      * a #guint16.
      */
-    readonly plmn_mnc: number
+    plmn_mnc: number
     /**
      * a #guint32.
      */
-    readonly tac: number
+    tac: number
     /* Methods of Mbim-1.0.Mbim.Tai */
     /**
      * Frees the memory allocated for the #MbimTai.
@@ -6176,15 +6323,16 @@ class TerminalCapabilityInfo {
     /**
      * size of the terminal_capability_data array.
      */
-    readonly terminal_capability_data_size: number
+    terminal_capability_data_size: number
     /**
      * an array of #guint8 values.
      */
-    readonly terminal_capability_data: number
+    terminal_capability_data: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory allocated for the array of #MbimTerminalCapabilityInfo structs.
+     * @param array a #NULL terminated array of #MbimTerminalCapabilityInfo structs.
      */
     static array_free(array: TerminalCapabilityInfoArray): void
 }
@@ -6246,14 +6394,15 @@ class Tlv {
 }
 class Uuid {
     /* Fields of Mbim-1.0.Mbim.Uuid */
-    readonly a: Uint8Array
-    readonly b: Uint8Array
-    readonly c: Uint8Array
-    readonly d: Uint8Array
-    readonly e: Uint8Array
+    a: Uint8Array
+    b: Uint8Array
+    c: Uint8Array
+    d: Uint8Array
+    e: Uint8Array
     /* Methods of Mbim-1.0.Mbim.Uuid */
     /**
      * Compare two %MbimUuid values.
+     * @param b a #MbimUuid.
      */
     cmp(b: Uuid): boolean
     /**
@@ -6272,6 +6421,7 @@ class Uuid {
     /* Static methods and pseudo-constructors */
     /**
      * Get the UUID corresponding to `context_type`.
+     * @param context_type a #MbimContextType.
      */
     static from_context_type(context_type: ContextType): Uuid
     /**
@@ -6279,6 +6429,8 @@ class Uuid {
      * 
      * Only ccepts `str` written with dashes separating items, e.g.:
      *  a289cc33-bcbb-8b4f-b6b0-133ec2aae6df
+     * @param str a MBIM UUID.
+     * @param uuid pointer to the target #MbimUuid.
      */
     static from_printable(str: string, uuid: Uuid): boolean
     /**
@@ -6286,6 +6438,7 @@ class Uuid {
      * 
      * The `service` needs to be either a generic one (including #MBIM_SERVICE_INVALID)
      * or a custom registered one.
+     * @param service a #MbimService.
      */
     static from_service(service: Service): Uuid
 }

@@ -240,8 +240,14 @@ interface Audio_ConstructProps extends GObject.Object_ConstructProps {
     session?: Session
 }
 class Audio {
+    /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Audio */
+    readonly mainContext: GLib.MainContext
+    /**
+     * #SpiceSession this #SpiceAudio is associated with
+     */
+    readonly session: Session
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -277,6 +283,10 @@ class Audio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -287,6 +297,12 @@ class Audio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -310,6 +326,7 @@ class Audio {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -329,11 +346,14 @@ class Audio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -341,6 +361,8 @@ class Audio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -358,6 +380,7 @@ class Audio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -403,6 +426,7 @@ class Audio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -446,15 +470,20 @@ class Audio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -495,6 +524,7 @@ class Audio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -529,6 +559,7 @@ class Audio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -560,12 +591,23 @@ class Audio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::main-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::main-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -585,6 +627,8 @@ class Audio {
      * 
      * Note that this function returns a weak reference, which should not be used
      * after the #SpiceSession itself has been unref-ed by the caller.
+     * @param session the #SpiceSession to connect to
+     * @param context a #GMainContext to attach to (or %NULL for default).
      */
     static get(session: Session, context?: GLib.MainContext | null): Audio
     static $gtype: GObject.Type
@@ -597,6 +641,8 @@ interface Channel_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Channel {
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -604,9 +650,10 @@ class Channel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
     /**
      * Connect the channel, using #SpiceSession connection informations
@@ -620,6 +667,7 @@ class Channel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -629,10 +677,13 @@ class Channel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -645,18 +696,22 @@ class Channel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -694,6 +749,10 @@ class Channel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -704,6 +763,12 @@ class Channel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -727,6 +792,7 @@ class Channel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -746,11 +812,14 @@ class Channel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -758,6 +827,8 @@ class Channel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -775,6 +846,7 @@ class Channel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -820,6 +892,7 @@ class Channel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -863,15 +936,20 @@ class Channel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -912,6 +990,7 @@ class Channel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -946,6 +1025,7 @@ class Channel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -954,6 +1034,7 @@ class Channel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -964,6 +1045,7 @@ class Channel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -999,17 +1081,33 @@ class Channel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1029,10 +1127,12 @@ class Channel {
     static new(s: Session, type: number, id: number): Channel
     /**
      * Convert a channel-type property value to a string.
+     * @param str a string representation of the channel-type property
      */
     static stringToType(str: string): number
     /**
      * Convert a channel-type property value to a string.
+     * @param type a channel-type property value
      */
     static typeToString(type: number): string
     static $gtype: GObject.Type
@@ -1046,6 +1146,8 @@ class CursorChannel {
      */
     readonly cursor: CursorShape
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -1053,12 +1155,13 @@ class CursorChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
     /**
      * Connect the channel, using #SpiceSession connection informations
@@ -1072,6 +1175,7 @@ class CursorChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -1081,10 +1185,13 @@ class CursorChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -1097,18 +1204,22 @@ class CursorChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1146,6 +1257,10 @@ class CursorChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1156,6 +1271,12 @@ class CursorChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1179,6 +1300,7 @@ class CursorChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1198,11 +1320,14 @@ class CursorChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1210,6 +1335,8 @@ class CursorChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1227,6 +1354,7 @@ class CursorChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1272,6 +1400,7 @@ class CursorChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1315,15 +1444,20 @@ class CursorChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1364,6 +1498,7 @@ class CursorChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1398,6 +1533,7 @@ class CursorChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.CursorChannel */
@@ -1413,6 +1549,8 @@ class CursorChannel {
     /**
      * The #SpiceCursorChannel::cursor-move signal is emitted to update
      * the cursor position on the display area.
+     * @param x x position
+     * @param y y position
      */
     connect(sigName: "cursor-move", callback: ((x: number, y: number) => void)): number
     on(sigName: "cursor-move", callback: (x: number, y: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1431,6 +1569,11 @@ class CursorChannel {
     /**
      * The #SpiceCursorChannel::cursor-set signal is emitted to modify
      * cursor aspect and position on the display area.
+     * @param width width of the shape
+     * @param height height of the shape
+     * @param hotX horizontal offset of the 'hotspot' of the cursor
+     * @param hotY vertical offset of the 'hotspot' of the cursor
+     * @param rgba 32bits shape data, or %NULL if default cursor. It might be freed after the signal is emitted, so make sure to copy it if you need it later!
      */
     connect(sigName: "cursor-set", callback: ((width: number, height: number, hotX: number, hotY: number, rgba?: object | null) => void)): number
     on(sigName: "cursor-set", callback: (width: number, height: number, hotX: number, hotY: number, rgba?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -1443,6 +1586,7 @@ class CursorChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -1453,6 +1597,7 @@ class CursorChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1488,6 +1633,7 @@ class CursorChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1499,11 +1645,26 @@ class CursorChannel {
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1542,6 +1703,8 @@ class DisplayChannel {
     readonly monitorsMax: number
     readonly width: number
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -1549,12 +1712,13 @@ class DisplayChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.DisplayChannel */
     /**
      * Retrieves the GL scanout if available
@@ -1580,6 +1744,7 @@ class DisplayChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -1589,10 +1754,13 @@ class DisplayChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -1605,18 +1773,22 @@ class DisplayChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1654,6 +1826,10 @@ class DisplayChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1664,6 +1840,12 @@ class DisplayChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1687,6 +1869,7 @@ class DisplayChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1706,11 +1889,14 @@ class DisplayChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1718,6 +1904,8 @@ class DisplayChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1735,6 +1923,7 @@ class DisplayChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1780,6 +1969,7 @@ class DisplayChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1823,15 +2013,20 @@ class DisplayChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1872,6 +2067,7 @@ class DisplayChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1906,6 +2102,7 @@ class DisplayChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.DisplayChannel */
@@ -1913,6 +2110,10 @@ class DisplayChannel {
      * The #SpiceDisplayChannel::display-invalidate signal is emitted
      * when the rectangular region x/y/w/h of the primary buffer is
      * updated.
+     * @param x x position
+     * @param y y position
+     * @param width width
+     * @param height height
      */
     connect(sigName: "display-invalidate", callback: ((x: number, y: number, width: number, height: number) => void)): number
     on(sigName: "display-invalidate", callback: (x: number, y: number, width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1923,6 +2124,7 @@ class DisplayChannel {
      * The #SpiceDisplayChannel::display-mark signal is emitted when
      * the %RED_DISPLAY_MARK command is received, and the display
      * should be exposed.
+     * @param mark %TRUE when the display mark has been received
      */
     connect(sigName: "display-mark", callback: ((mark: number) => void)): number
     on(sigName: "display-mark", callback: (mark: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1932,6 +2134,12 @@ class DisplayChannel {
     /**
      * The #SpiceDisplayChannel::display-primary-create signal
      * provides main display buffer data.
+     * @param format %SPICE_SURFACE_FMT_32_xRGB or %SPICE_SURFACE_FMT_16_555;
+     * @param width width resolution
+     * @param height height resolution
+     * @param stride the buffer stride ("width" padding)
+     * @param shmid identifier of the shared memory segment associated with the `imgdata,` or -1 if not shm
+     * @param imgdata pointer to surface buffer
      */
     connect(sigName: "display-primary-create", callback: ((format: number, width: number, height: number, stride: number, shmid: number, imgdata?: object | null) => void)): number
     on(sigName: "display-primary-create", callback: (format: number, width: number, height: number, stride: number, shmid: number, imgdata?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -1954,6 +2162,10 @@ class DisplayChannel {
      * must be drawn. When the draw is finished, you must call
      * spice_display_gl_draw_done() in order to release the GL
      * resources.
+     * @param x x position
+     * @param y y position
+     * @param width width
+     * @param height height
      */
     connect(sigName: "gl-draw", callback: ((x: number, y: number, width: number, height: number) => void)): number
     on(sigName: "gl-draw", callback: (x: number, y: number, width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1964,6 +2176,7 @@ class DisplayChannel {
      * The #SpiceDisplayChannel::gst-video-overlay signal is emitted when
      * pipeline is ready and can be passed to widget to register GStreamer
      * overlay interface and other GStreamer callbacks.
+     * @param pipeline pointer to GStreamer's pipeline
      */
     connect(sigName: "gst-video-overlay", callback: ((pipeline: Gst.Pipeline) => boolean)): number
     on(sigName: "gst-video-overlay", callback: (pipeline: Gst.Pipeline) => void, after?: boolean): NodeJS.EventEmitter
@@ -1981,6 +2194,7 @@ class DisplayChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -1991,6 +2205,7 @@ class DisplayChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2026,6 +2241,7 @@ class DisplayChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2057,11 +2273,26 @@ class DisplayChannel {
     on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2081,16 +2312,23 @@ class DisplayChannel {
     /**
      * Tells the spice server to change the preferred image compression
      * for the `channel`.
+     * @param channel a #SpiceDisplayChannel
+     * @param compression a #SpiceImageCompression
      */
     static changePreferredCompression(channel: Channel, compression: number): void
     /**
      * Tells the spice server to change the preferred video codec type for
      * streaming in `channel`. Application can set only one preferred video codec per
      * display channel.
+     * @param channel a #SpiceDisplayChannel
+     * @param codecType a #SpiceVideoCodecType
      */
     static changePreferredVideoCodecType(channel: Channel, codecType: number): void
     /**
      * Retrieve primary display surface `surface_id`.
+     * @param channel a #SpiceDisplayChannel
+     * @param surfaceId a surface id
+     * @param primary a #SpiceDisplayPrimary
      */
     static getPrimary(channel: Channel, surfaceId: number, primary: DisplayPrimary): boolean
     static $gtype: GObject.Type
@@ -2104,11 +2342,15 @@ interface FileTransferTask_ConstructProps extends GObject.Object_ConstructProps 
 }
 class FileTransferTask {
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.FileTransferTask */
+    readonly cancellable: Gio.Cancellable
+    readonly channel: MainChannel
+    readonly file: Gio.File
+    readonly id: number
     readonly progress: number
     readonly totalBytes: number
     readonly transferredBytes: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.FileTransferTask */
     cancel(): void
     getFilename(): string
@@ -2150,6 +2392,10 @@ class FileTransferTask {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2160,6 +2406,12 @@ class FileTransferTask {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2183,6 +2435,7 @@ class FileTransferTask {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2202,11 +2455,14 @@ class FileTransferTask {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2214,6 +2470,8 @@ class FileTransferTask {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2231,6 +2489,7 @@ class FileTransferTask {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2276,6 +2535,7 @@ class FileTransferTask {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2319,15 +2579,20 @@ class FileTransferTask {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2368,6 +2633,7 @@ class FileTransferTask {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2402,6 +2668,7 @@ class FileTransferTask {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.FileTransferTask */
@@ -2439,12 +2706,33 @@ class FileTransferTask {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::cancellable", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cancellable", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::cancellable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::cancellable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::cancellable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::progress", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::progress", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::progress", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2478,6 +2766,8 @@ class InputsChannel {
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.InputsChannel */
     readonly keyModifiers: number
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -2485,43 +2775,59 @@ class InputsChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.InputsChannel */
     /**
      * Press a mouse button.
+     * @param button a SPICE_MOUSE_BUTTON
+     * @param buttonState SPICE_MOUSE_BUTTON_MASK flags
      */
     buttonPress(button: number, buttonState: number): void
     /**
      * Release a button.
+     * @param button a SPICE_MOUSE_BUTTON
+     * @param buttonState SPICE_MOUSE_BUTTON_MASK flags
      */
     buttonRelease(button: number, buttonState: number): void
     /**
      * Press a key.
+     * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
      */
     keyPress(scancode: number): void
     /**
      * Press and release a key event atomically (in the same message).
+     * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
      */
     keyPressAndRelease(scancode: number): void
     /**
      * Release a key.
+     * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
      */
     keyRelease(scancode: number): void
     /**
      * Change mouse position (used in SPICE_MOUSE_MODE_SERVER).
+     * @param dx delta X mouse coordinates
+     * @param dy delta Y mouse coordinates
+     * @param buttonState SPICE_MOUSE_BUTTON_MASK flags
      */
     motion(dx: number, dy: number, buttonState: number): void
     /**
      * Change mouse position (used in SPICE_MOUSE_MODE_CLIENT).
+     * @param x X mouse coordinates
+     * @param y Y mouse coordinates
+     * @param display display channel id
+     * @param buttonState SPICE_MOUSE_BUTTON_MASK flags
      */
     position(x: number, y: number, display: number, buttonState: number): void
     /**
      * Set the keyboard locks on the guest (Caps, Num, Scroll..)
+     * @param locks #SpiceInputsLock modifiers flags
      */
     setKeyLocks(locks: number): void
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -2537,6 +2843,7 @@ class InputsChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -2546,10 +2853,13 @@ class InputsChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -2562,18 +2872,22 @@ class InputsChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -2611,6 +2925,10 @@ class InputsChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2621,6 +2939,12 @@ class InputsChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2644,6 +2968,7 @@ class InputsChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2663,11 +2988,14 @@ class InputsChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2675,6 +3003,8 @@ class InputsChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2692,6 +3022,7 @@ class InputsChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2737,6 +3068,7 @@ class InputsChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2780,15 +3112,20 @@ class InputsChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2829,6 +3166,7 @@ class InputsChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2863,6 +3201,7 @@ class InputsChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.InputsChannel */
@@ -2882,6 +3221,7 @@ class InputsChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -2892,6 +3232,7 @@ class InputsChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2927,6 +3268,7 @@ class InputsChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2938,11 +3280,26 @@ class InputsChannel {
     on(sigName: "notify::key-modifiers", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::key-modifiers", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::key-modifiers", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -3006,6 +3363,8 @@ class MainChannel {
      */
     readonly mouseMode: number
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -3013,33 +3372,45 @@ class MainChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.MainChannel */
     /**
      * Test capability of a remote agent.
+     * @param cap an agent capability identifier
      */
     agentTestCapability(cap: number): boolean
     /**
      * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
+     * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
+     * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
+     * @param ntypes the number of `types`
      */
     clipboardSelectionGrab(selection: number, types: number, ntypes: number): void
     /**
      * Send the clipboard data to the guest.
+     * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
+     * @param type a #VD_AGENT_CLIPBOARD type
+     * @param data clipboard data
+     * @param size data length in bytes
      */
     clipboardSelectionNotify(selection: number, type: number, data: number, size: number): void
     /**
      * Release the clipboard (for example, when the client loses the
      * clipboard grab): Inform the guest no clipboard data is available.
+     * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
      */
     clipboardSelectionRelease(selection: number): void
     /**
      * Request clipboard data of `type` from the guest. The reply is sent
      * through the #SpiceMainChannel::main-clipboard-selection signal.
+     * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
+     * @param type a #VD_AGENT_CLIPBOARD type
      */
     clipboardSelectionRequest(selection: number, type: number): void
     /**
@@ -3066,17 +3437,24 @@ class MainChannel {
      * transfer. This behavior was changed for the same reason as the
      * progress_callback (above). If you need to monitor the ending of individual
      * files, you can connect to "finished" signal from each SpiceFileTransferTask.
+     * @param sources a %NULL-terminated array of #GFile objects to be transferred
+     * @param flags set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param progressCallback function to callback with     progress information, or %NULL if progress information is not needed
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     fileCopyAsync(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable?: Gio.Cancellable | null, progressCallback?: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes copying the file started with
      * spice_main_file_copy_async().
+     * @param result a #GAsyncResult.
      */
     fileCopyFinish(result: Gio.AsyncResult): boolean
     /**
      * Request a mouse mode to the server. The server may not be able to
      * change the mouse mode, but spice-gtk will try to request it
      * when possible.
+     * @param mode a SPICE_MOUSE_MODE
      */
     requestMouseMode(mode: number): void
     /**
@@ -3091,6 +3469,12 @@ class MainChannel {
      * after 1 second without further changes. You can send when you want
      * without delay the new configuration to the remote with
      * spice_main_send_monitor_config()
+     * @param id display ID
+     * @param x x position
+     * @param y y position
+     * @param width display width
+     * @param height display height
+     * @param update if %TRUE, update guest resolution after 1sec.
      */
     updateDisplay(id: number, x: number, y: number, width: number, height: number, update: boolean): void
     /**
@@ -3102,6 +3486,9 @@ class MainChannel {
      * 
      * If `update` is %FALSE, no server update will be triggered by this call, but
      * the value will be saved and used in the next configuration update.
+     * @param id display ID (if -1: set all displays)
+     * @param enabled wether display `id` is enabled
+     * @param update if %TRUE, update guest display state after 1sec.
      */
     updateDisplayEnabled(id: number, enabled: boolean, update: boolean): void
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -3117,6 +3504,7 @@ class MainChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -3126,10 +3514,13 @@ class MainChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -3142,18 +3533,22 @@ class MainChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3191,6 +3586,10 @@ class MainChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3201,6 +3600,12 @@ class MainChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3224,6 +3629,7 @@ class MainChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3243,11 +3649,14 @@ class MainChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3255,6 +3664,8 @@ class MainChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3272,6 +3683,7 @@ class MainChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3317,6 +3729,7 @@ class MainChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3360,15 +3773,20 @@ class MainChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3409,6 +3827,7 @@ class MainChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3443,6 +3862,7 @@ class MainChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.MainChannel */
@@ -3457,6 +3877,9 @@ class MainChannel {
     emit(sigName: "main-agent-update"): void
     /**
      * Provides guest clipboard data requested by spice_main_clipboard_request().
+     * @param type the VD_AGENT_CLIPBOARD data type
+     * @param data clipboard data
+     * @param size size of `data` in bytes
      */
     connect(sigName: "main-clipboard", callback: ((type: number, data: object | null, size: number) => void)): number
     on(sigName: "main-clipboard", callback: (type: number, data: object | null, size: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3466,6 +3889,8 @@ class MainChannel {
     /**
      * Inform when clipboard data is available from the guest, and for
      * which `types`.
+     * @param types the VD_AGENT_CLIPBOARD data types
+     * @param ntypes the number of `types`
      */
     connect(sigName: "main-clipboard-grab", callback: ((types: object | null, ntypes: number) => boolean)): number
     on(sigName: "main-clipboard-grab", callback: (types: object | null, ntypes: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3483,6 +3908,7 @@ class MainChannel {
     emit(sigName: "main-clipboard-release"): void
     /**
      * Request clipboard data from the client.
+     * @param types the VD_AGENT_CLIPBOARD request type
      */
     connect(sigName: "main-clipboard-request", callback: ((types: number) => boolean)): number
     on(sigName: "main-clipboard-request", callback: (types: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3491,6 +3917,10 @@ class MainChannel {
     emit(sigName: "main-clipboard-request", types: number): void
     /**
      * Informs that clipboard selection data are available.
+     * @param selection a VD_AGENT_CLIPBOARD_SELECTION clipboard
+     * @param type the VD_AGENT_CLIPBOARD data type
+     * @param data clipboard data
+     * @param size size of `data` in bytes
      */
     connect(sigName: "main-clipboard-selection", callback: ((selection: number, type: number, data: object | null, size: number) => void)): number
     on(sigName: "main-clipboard-selection", callback: (selection: number, type: number, data: object | null, size: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3500,6 +3930,9 @@ class MainChannel {
     /**
      * Inform when clipboard data is available from the guest, and for
      * which `types`.
+     * @param selection a VD_AGENT_CLIPBOARD_SELECTION clipboard
+     * @param types the VD_AGENT_CLIPBOARD data types
+     * @param ntypes the number of `types`
      */
     connect(sigName: "main-clipboard-selection-grab", callback: ((selection: number, types: object | null, ntypes: number) => boolean)): number
     on(sigName: "main-clipboard-selection-grab", callback: (selection: number, types: object | null, ntypes: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3509,6 +3942,7 @@ class MainChannel {
     /**
      * Inform when the clipboard is released from the guest, when no
      * clipboard data is available from the guest.
+     * @param selection a VD_AGENT_CLIPBOARD_SELECTION clipboard
      */
     connect(sigName: "main-clipboard-selection-release", callback: ((selection: number) => void)): number
     on(sigName: "main-clipboard-selection-release", callback: (selection: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3517,6 +3951,8 @@ class MainChannel {
     emit(sigName: "main-clipboard-selection-release", selection: number): void
     /**
      * Request clipboard data from the client.
+     * @param selection a VD_AGENT_CLIPBOARD_SELECTION clipboard
+     * @param types the VD_AGENT_CLIPBOARD request type
      */
     connect(sigName: "main-clipboard-selection-request", callback: ((selection: number, types: number) => boolean)): number
     on(sigName: "main-clipboard-selection-request", callback: (selection: number, types: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3536,6 +3972,7 @@ class MainChannel {
      * connections themself can set the #SpiceSession:client-sockets
      * to `TRUE,` then follow #SpiceSession::channel-new creation, and
      * use spice_channel_open_fd() once the socket is created.
+     * @param session a migration #SpiceSession
      */
     connect(sigName: "migration-started", callback: ((session: GObject.Object) => void)): number
     on(sigName: "migration-started", callback: (session: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3546,6 +3983,7 @@ class MainChannel {
      * This signal is emitted when a new file transfer task has been initiated
      * on this channel. Client applications may take a reference on the `task`
      * object and use it to monitor the status of the file transfer task.
+     * @param task a #SpiceFileTransferTask
      */
     connect(sigName: "new-file-transfer", callback: ((task: GObject.Object) => void)): number
     on(sigName: "new-file-transfer", callback: (task: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3558,6 +3996,7 @@ class MainChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3568,6 +4007,7 @@ class MainChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3603,6 +4043,7 @@ class MainChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3659,11 +4100,26 @@ class MainChannel {
     on(sigName: "notify::mouse-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::mouse-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::mouse-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -3695,6 +4151,8 @@ class PlaybackChannel {
     nchannels: number
     volume: object
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -3702,15 +4160,17 @@ class PlaybackChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.PlaybackChannel */
     /**
      * Adjust the multimedia time according to the delay.
+     * @param delayMs the delay in ms
      */
     setDelay(delayMs: number): void
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -3726,6 +4186,7 @@ class PlaybackChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -3735,10 +4196,13 @@ class PlaybackChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -3751,18 +4215,22 @@ class PlaybackChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3800,6 +4268,10 @@ class PlaybackChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3810,6 +4282,12 @@ class PlaybackChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3833,6 +4311,7 @@ class PlaybackChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3852,11 +4331,14 @@ class PlaybackChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3864,6 +4346,8 @@ class PlaybackChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3881,6 +4365,7 @@ class PlaybackChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3926,6 +4411,7 @@ class PlaybackChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3969,15 +4455,20 @@ class PlaybackChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4018,6 +4509,7 @@ class PlaybackChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4052,11 +4544,14 @@ class PlaybackChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.PlaybackChannel */
     /**
      * Provide audio data to be played.
+     * @param data pointer to audio data
+     * @param dataSize size in byte of `data`
      */
     connect(sigName: "playback-data", callback: ((data: object | null, dataSize: number) => void)): number
     on(sigName: "playback-data", callback: (data: object | null, dataSize: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4074,6 +4569,9 @@ class PlaybackChannel {
     /**
      * Notify when the playback should start, and provide audio format
      * characteristics.
+     * @param format a #SPICE_AUDIO_FMT
+     * @param channels number of channels
+     * @param rate audio rate
      */
     connect(sigName: "playback-start", callback: ((format: number, channels: number, rate: number) => void)): number
     on(sigName: "playback-start", callback: (format: number, channels: number, rate: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4094,6 +4592,7 @@ class PlaybackChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4104,6 +4603,7 @@ class PlaybackChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4139,6 +4639,7 @@ class PlaybackChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4165,11 +4666,26 @@ class PlaybackChannel {
     on(sigName: "notify::volume", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::volume", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::volume", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4194,6 +4710,8 @@ class PortChannel {
     readonly portName: string
     readonly portOpened: boolean
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -4201,12 +4719,13 @@ class PortChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.PortChannel */
     /**
      * Send an event to the port.
@@ -4214,6 +4733,7 @@ class PortChannel {
      * Note: The values SPICE_PORT_EVENT_CLOSED and
      * SPICE_PORT_EVENT_OPENED are managed by the channel connection
      * state.
+     * @param event a SPICE_PORT_EVENT value
      */
     event(event: number): void
     /**
@@ -4221,10 +4741,14 @@ class PortChannel {
      * `port`. When the operation is finished `callback` will be called. You
      * can then call spice_port_write_finish() to get the result of
      * the operation.
+     * @param buffer the buffer containing the data to write
+     * @param cancellable optional GCancellable object, NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     writeAsync(buffer: Uint8Array, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a port write operation.
+     * @param result a #GAsyncResult
      */
     writeFinish(result: Gio.AsyncResult): number
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -4240,6 +4764,7 @@ class PortChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -4249,10 +4774,13 @@ class PortChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -4265,18 +4793,22 @@ class PortChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -4314,6 +4846,10 @@ class PortChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4324,6 +4860,12 @@ class PortChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4347,6 +4889,7 @@ class PortChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4366,11 +4909,14 @@ class PortChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4378,6 +4924,8 @@ class PortChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4395,6 +4943,7 @@ class PortChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4440,6 +4989,7 @@ class PortChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4483,15 +5033,20 @@ class PortChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4532,6 +5087,7 @@ class PortChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4566,12 +5122,15 @@ class PortChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.PortChannel */
     /**
      * The #SpicePortChannel::port-data signal is emitted when new
      * port data is received.
+     * @param data the data received
+     * @param size number of bytes read
      */
     connect(sigName: "port-data", callback: ((data: object | null, size: number) => void)): number
     on(sigName: "port-data", callback: (data: object | null, size: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4581,6 +5140,7 @@ class PortChannel {
     /**
      * The #SpicePortChannel::port-event signal is emitted when new
      * port event is received.
+     * @param event the event received
      */
     connect(sigName: "port-event", callback: ((event: number) => void)): number
     on(sigName: "port-event", callback: (event: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4593,6 +5153,7 @@ class PortChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4603,6 +5164,7 @@ class PortChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4638,6 +5200,7 @@ class PortChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4654,11 +5217,26 @@ class PortChannel {
     on(sigName: "notify::port-opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::port-opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::port-opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4682,24 +5260,32 @@ interface QmpPort_ConstructProps extends GObject.Object_ConstructProps {
 }
 class QmpPort {
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.QmpPort */
+    readonly channel: PortChannel
     readonly ready: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.QmpPort */
     /**
      * Query the run status of all VCPUs.
+     * @param cancellable A #GCancellable
+     * @param callback The async callback.
      */
     queryStatusAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish the asynchronous status query.
+     * @param result The async #GAsyncResult result
      */
     queryStatusFinish(result: Gio.AsyncResult): QmpStatus
     /**
      * Request the VM to perform an action.
+     * @param action a VM action
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to call when the action is complete
      */
     vmActionAsync(action: QmpPortVmAction, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous VM action and returns the result.
+     * @param result The async #GAsyncResult result
      */
     vmActionFinish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -4737,6 +5323,10 @@ class QmpPort {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4747,6 +5337,12 @@ class QmpPort {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4770,6 +5366,7 @@ class QmpPort {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4789,11 +5386,14 @@ class QmpPort {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4801,6 +5401,8 @@ class QmpPort {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4818,6 +5420,7 @@ class QmpPort {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4863,6 +5466,7 @@ class QmpPort {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4906,15 +5510,20 @@ class QmpPort {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4955,6 +5564,7 @@ class QmpPort {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4989,11 +5599,14 @@ class QmpPort {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.QmpPort */
     /**
      * Event emitted whenever a QMP event is received.
+     * @param name the QMP event name
+     * @param node the event data json-node, or NULL
      */
     connect(sigName: "event", callback: ((name: string, node?: object | null) => void)): number
     on(sigName: "event", callback: (name: string, node?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -5029,12 +5642,18 @@ class QmpPort {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::channel", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::ready", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ready", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::ready", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5054,6 +5673,7 @@ class QmpPort {
     /**
      * Associate a QMP port helper to the given port channel.  If there is
      * already a helper associated with the channel, it is simply returned.
+     * @param channel the QMP port channel
      */
     static get(channel: PortChannel): QmpPort
     static $gtype: GObject.Type
@@ -5070,6 +5690,8 @@ class RecordChannel {
     nchannels: number
     volume: object
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -5077,15 +5699,19 @@ class RecordChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.RecordChannel */
     /**
      * Send recorded PCM data to the guest.
+     * @param data PCM data
+     * @param bytes size of `data`
+     * @param time stream timestamp
      */
     sendData(data: object | null, bytes: number, time: number): void
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -5101,6 +5727,7 @@ class RecordChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -5110,10 +5737,13 @@ class RecordChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5126,18 +5756,22 @@ class RecordChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -5175,6 +5809,10 @@ class RecordChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5185,6 +5823,12 @@ class RecordChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5208,6 +5852,7 @@ class RecordChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5227,11 +5872,14 @@ class RecordChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5239,6 +5887,8 @@ class RecordChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5256,6 +5906,7 @@ class RecordChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5301,6 +5952,7 @@ class RecordChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5344,15 +5996,20 @@ class RecordChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5393,6 +6050,7 @@ class RecordChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5427,12 +6085,16 @@ class RecordChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.RecordChannel */
     /**
      * Notify when the recording should start, and provide audio format
      * characteristics.
+     * @param format a #SPICE_AUDIO_FMT
+     * @param channels number of channels
+     * @param rate audio rate
      */
     connect(sigName: "record-start", callback: ((format: number, channels: number, rate: number) => void)): number
     on(sigName: "record-start", callback: (format: number, channels: number, rate: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5453,6 +6115,7 @@ class RecordChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -5463,6 +6126,7 @@ class RecordChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5498,6 +6162,7 @@ class RecordChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5519,11 +6184,26 @@ class RecordChannel {
     on(sigName: "notify::volume", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::volume", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::volume", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5822,7 +6502,7 @@ class Session {
      */
     verify: SessionVerify
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Session */
     /**
      * Open the session using the #SpiceSession:host and
@@ -5848,6 +6528,7 @@ class Session {
     /**
      * See if there is a `type` channel in the channels associated with this
      * `session`.
+     * @param type a #SpiceChannel:channel-type
      */
     hasChannelType(type: number): boolean
     /**
@@ -5872,6 +6553,7 @@ class Session {
      * SpiceChannel::open-fd signal. Typically, you would want to just pass -1 as
      * `fd` this call since you will have to hook to SpiceChannel::open-fd signal
      * anyway.
+     * @param fd a file descriptor (socket) or -1
      */
     openFd(fd: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -5909,6 +6591,10 @@ class Session {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5919,6 +6605,12 @@ class Session {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5942,6 +6634,7 @@ class Session {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5961,11 +6654,14 @@ class Session {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5973,6 +6669,8 @@ class Session {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5990,6 +6688,7 @@ class Session {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6035,6 +6734,7 @@ class Session {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6078,15 +6778,20 @@ class Session {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6127,6 +6832,7 @@ class Session {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6161,11 +6867,13 @@ class Session {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.Session */
     /**
      * The #SpiceSession::channel-destroy signal is emitted each time a #SpiceChannel is destroyed.
+     * @param channel the destroyed #SpiceChannel
      */
     connect(sigName: "channel-destroy", callback: ((channel: Channel) => void)): number
     on(sigName: "channel-destroy", callback: (channel: Channel) => void, after?: boolean): NodeJS.EventEmitter
@@ -6174,6 +6882,7 @@ class Session {
     emit(sigName: "channel-destroy", channel: Channel): void
     /**
      * The #SpiceSession::channel-new signal is emitted each time a #SpiceChannel is created.
+     * @param channel the new #SpiceChannel
      */
     connect(sigName: "channel-new", callback: ((channel: Channel) => void)): number
     on(sigName: "channel-new", callback: (channel: Channel) => void, after?: boolean): NodeJS.EventEmitter
@@ -6227,6 +6936,7 @@ class Session {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6421,6 +7131,8 @@ interface SmartcardChannel_ConstructProps extends Channel_ConstructProps {
 }
 class SmartcardChannel {
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -6428,12 +7140,13 @@ class SmartcardChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
     /**
      * Connect the channel, using #SpiceSession connection informations
@@ -6447,6 +7160,7 @@ class SmartcardChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -6456,10 +7170,13 @@ class SmartcardChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -6472,18 +7189,22 @@ class SmartcardChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6521,6 +7242,10 @@ class SmartcardChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6531,6 +7256,12 @@ class SmartcardChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6554,6 +7285,7 @@ class SmartcardChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6573,11 +7305,14 @@ class SmartcardChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6585,6 +7320,8 @@ class SmartcardChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6602,6 +7339,7 @@ class SmartcardChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6647,6 +7385,7 @@ class SmartcardChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6690,15 +7429,20 @@ class SmartcardChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6739,6 +7483,7 @@ class SmartcardChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6773,6 +7518,7 @@ class SmartcardChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -6781,6 +7527,7 @@ class SmartcardChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6791,6 +7538,7 @@ class SmartcardChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -6826,17 +7574,33 @@ class SmartcardChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -6858,7 +7622,7 @@ interface SmartcardManager_ConstructProps extends GObject.Object_ConstructProps 
 }
 class SmartcardManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.SmartcardManager */
     /**
      * Gets the list of smartcard readers that are currently available, they
@@ -6914,6 +7678,10 @@ class SmartcardManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6924,6 +7692,12 @@ class SmartcardManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6947,6 +7721,7 @@ class SmartcardManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6966,11 +7741,14 @@ class SmartcardManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6978,6 +7756,8 @@ class SmartcardManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6995,6 +7775,7 @@ class SmartcardManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7040,6 +7821,7 @@ class SmartcardManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7083,15 +7865,20 @@ class SmartcardManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7132,6 +7919,7 @@ class SmartcardManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7166,12 +7954,14 @@ class SmartcardManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.SmartcardManager */
     /**
      * The #SpiceSmartcardManager::card-inserted signal is emitted whenever
      * a smartcard is inserted in a reader
+     * @param vreader #VReader boxed object corresponding to the reader a new card was inserted in
      */
     connect(sigName: "card-inserted", callback: ((vreader: any) => void)): number
     on(sigName: "card-inserted", callback: (vreader: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -7181,6 +7971,7 @@ class SmartcardManager {
     /**
      * The #SpiceSmartcardManager::card-removed signal is emitted whenever
      * a smartcard was removed from a reader.
+     * @param vreader #VReader boxed object corresponding to the reader a card was removed from
      */
     connect(sigName: "card-removed", callback: ((vreader: any) => void)): number
     on(sigName: "card-removed", callback: (vreader: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -7190,6 +7981,7 @@ class SmartcardManager {
     /**
      * The #SpiceSmartcardManager::reader-added signal is emitted whenever
      * a new smartcard reader (software or hardware) has been plugged in.
+     * @param vreader #VReader boxed object corresponding to the added reader
      */
     connect(sigName: "reader-added", callback: ((vreader: any) => void)): number
     on(sigName: "reader-added", callback: (vreader: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -7199,6 +7991,7 @@ class SmartcardManager {
     /**
      * The #SpiceSmartcardManager::reader-removed signal is emitted whenever
      * a smartcard reader (software or hardware) has been removed.
+     * @param vreader #VReader boxed object corresponding to the removed reader
      */
     connect(sigName: "reader-removed", callback: ((vreader: any) => void)): number
     on(sigName: "reader-removed", callback: (vreader: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -7234,6 +8027,7 @@ class SmartcardManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7275,7 +8069,7 @@ class URI {
     scheme: string
     user: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.URI */
     getHostname(): string
     getPassword(): string
@@ -7323,6 +8117,10 @@ class URI {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7333,6 +8131,12 @@ class URI {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7356,6 +8160,7 @@ class URI {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7375,11 +8180,14 @@ class URI {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7387,6 +8195,8 @@ class URI {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7404,6 +8214,7 @@ class URI {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7449,6 +8260,7 @@ class URI {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7492,15 +8304,20 @@ class URI {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7541,6 +8358,7 @@ class URI {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7575,6 +8393,7 @@ class URI {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7606,6 +8425,7 @@ class URI {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7736,35 +8556,49 @@ class UsbDeviceManager {
      * format.
      */
     redirectOnConnect: string
+    /**
+     * #SpiceSession this #SpiceUsbDeviceManager is associated with
+     */
+    readonly session: Session
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.UsbDeviceManager */
     /**
      * Checks whether it is possible to redirect the `device`.
+     * @param device a #SpiceUsbDevice to disconnect
      */
     canRedirectDevice(device: UsbDevice): boolean
     /**
      * Asynchronously connects the `device`. When completed, `callback` will be called.
      * Then it is possible to call spice_usb_device_manager_connect_device_finish()
      * to get the result of the operation.
+     * @param device a #SpiceUsbDevice to redirect
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     connectDeviceAsync(device: UsbDevice, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation. See spice_usb_device_manager_connect_device_async().
+     * @param res a #GAsyncResult
      */
     connectDeviceFinish(res: Gio.AsyncResult): boolean
     /**
      * Disconnects the `device`.
+     * @param device a #SpiceUsbDevice to disconnect
      */
     disconnectDevice(device: UsbDevice): void
     /**
      * Asynchronously disconnects the `device`. When completed, `callback` will be called.
      * Then it is possible to call spice_usb_device_manager_disconnect_device_finish()
      * to get the result of the operation.
+     * @param device a connected #SpiceUsbDevice to disconnect.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     disconnectDeviceAsync(device: UsbDevice, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation. See spice_usb_device_manager_disconnect_device_async().
+     * @param res a #GAsyncResult
      */
     disconnectDeviceFinish(res: Gio.AsyncResult): boolean
     /**
@@ -7773,10 +8607,12 @@ class UsbDeviceManager {
     getDevices(): UsbDevice[]
     /**
      * Finds devices associated with the `manager` complying with the `filter`
+     * @param filter filter string for selecting which devices to return,      see #SpiceUsbDeviceManager:auto-connect-filter for the filter      string format
      */
     getDevicesWithFilter(filter?: string | null): UsbDevice[]
     /**
      * Finds if the `device` is connected.
+     * @param device a #SpiceUsbDevice
      */
     isDeviceConnected(device: UsbDevice): boolean
     /**
@@ -7818,6 +8654,10 @@ class UsbDeviceManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7828,6 +8668,12 @@ class UsbDeviceManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7851,6 +8697,7 @@ class UsbDeviceManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7870,11 +8717,14 @@ class UsbDeviceManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7882,6 +8732,8 @@ class UsbDeviceManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7899,6 +8751,7 @@ class UsbDeviceManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7944,6 +8797,7 @@ class UsbDeviceManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7987,15 +8841,20 @@ class UsbDeviceManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8036,6 +8895,7 @@ class UsbDeviceManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8070,6 +8930,7 @@ class UsbDeviceManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -8112,6 +8973,7 @@ class UsbDeviceManager {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.UsbDeviceManager */
@@ -8119,6 +8981,8 @@ class UsbDeviceManager {
      * The #SpiceUsbDeviceManager::auto-connect-failed signal is emitted
      * whenever the auto-connect property is true, and a newly plugged in
      * device could not be auto-connected.
+     * @param device #SpiceUsbDevice boxed object corresponding to the device which failed to auto connect
+     * @param error #GError describing the reason why the autoconnect failed
      */
     connect(sigName: "auto-connect-failed", callback: ((device: UsbDevice, error: GLib.Error) => void)): number
     on(sigName: "auto-connect-failed", callback: (device: UsbDevice, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -8128,6 +8992,7 @@ class UsbDeviceManager {
     /**
      * The #SpiceUsbDeviceManager::device-added signal is emitted whenever
      * a new USB device has been plugged in.
+     * @param device #SpiceUsbDevice boxed object corresponding to the added device
      */
     connect(sigName: "device-added", callback: ((device: UsbDevice) => void)): number
     on(sigName: "device-added", callback: (device: UsbDevice) => void, after?: boolean): NodeJS.EventEmitter
@@ -8138,6 +9003,8 @@ class UsbDeviceManager {
      * The #SpiceUsbDeviceManager::device-error signal is emitted whenever an
      * error happens which causes a device to no longer be available to the
      * guest.
+     * @param device #SpiceUsbDevice boxed object corresponding to the device which has an error
+     * @param error #GError describing the error
      */
     connect(sigName: "device-error", callback: ((device: UsbDevice, error: GLib.Error) => void)): number
     on(sigName: "device-error", callback: (device: UsbDevice, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -8147,6 +9014,7 @@ class UsbDeviceManager {
     /**
      * The #SpiceUsbDeviceManager::device-removed signal is emitted whenever
      * an USB device has been removed.
+     * @param device #SpiceUsbDevice boxed object corresponding to the removed device
      */
     connect(sigName: "device-removed", callback: ((device: UsbDevice) => void)): number
     on(sigName: "device-removed", callback: (device: UsbDevice) => void, after?: boolean): NodeJS.EventEmitter
@@ -8182,6 +9050,7 @@ class UsbDeviceManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8208,6 +9077,11 @@ class UsbDeviceManager {
     on(sigName: "notify::redirect-on-connect", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::redirect-on-connect", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::redirect-on-connect", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8226,12 +9100,16 @@ class UsbDeviceManager {
      * 
      * Note that this function returns a weak reference, which should not be used
      * after the #SpiceSession itself has been unref-ed by the caller.
+     * @param session #SpiceSession for which to get the #SpiceUsbDeviceManager
      */
     static get(session: Session): UsbDeviceManager
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -8240,6 +9118,8 @@ interface UsbredirChannel_ConstructProps extends Channel_ConstructProps {
 }
 class UsbredirChannel {
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -8247,12 +9127,13 @@ class UsbredirChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly parent: GObject.Object
-    readonly priv: ChannelPrivate
+    parent: GObject.Object
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
     /**
      * Connect the channel, using #SpiceSession connection informations
@@ -8266,6 +9147,7 @@ class UsbredirChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -8275,10 +9157,13 @@ class UsbredirChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -8291,18 +9176,22 @@ class UsbredirChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8340,6 +9229,10 @@ class UsbredirChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8350,6 +9243,12 @@ class UsbredirChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8373,6 +9272,7 @@ class UsbredirChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8392,11 +9292,14 @@ class UsbredirChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8404,6 +9307,8 @@ class UsbredirChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8421,6 +9326,7 @@ class UsbredirChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8466,6 +9372,7 @@ class UsbredirChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8509,15 +9416,20 @@ class UsbredirChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8558,6 +9470,7 @@ class UsbredirChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8592,6 +9505,7 @@ class UsbredirChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -8600,6 +9514,7 @@ class UsbredirChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8610,6 +9525,7 @@ class UsbredirChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -8645,17 +9561,33 @@ class UsbredirChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -8680,6 +9612,8 @@ class WebdavChannel {
     readonly portName: string
     readonly portOpened: boolean
     /* Properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
+    readonly channelId: number
+    readonly channelType: number
     /**
      * Get the underlying #GSocket. Note that you should not read or
      * write any data to it directly since this will likely corrupt
@@ -8687,13 +9621,14 @@ class WebdavChannel {
      * connections details.
      */
     readonly socket: Gio.Socket
+    readonly spiceSession: Session
     readonly totalReadBytes: number
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.PortChannel */
-    readonly parent: Channel
+    parent: Channel
     /* Fields of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
-    readonly priv: ChannelPrivate
+    priv: ChannelPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.PortChannel */
     /**
      * Send an event to the port.
@@ -8701,6 +9636,7 @@ class WebdavChannel {
      * Note: The values SPICE_PORT_EVENT_CLOSED and
      * SPICE_PORT_EVENT_OPENED are managed by the channel connection
      * state.
+     * @param event a SPICE_PORT_EVENT value
      */
     event(event: number): void
     /**
@@ -8708,10 +9644,14 @@ class WebdavChannel {
      * `port`. When the operation is finished `callback` will be called. You
      * can then call spice_port_write_finish() to get the result of
      * the operation.
+     * @param buffer the buffer containing the data to write
+     * @param cancellable optional GCancellable object, NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     writeAsync(buffer: Uint8Array, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a port write operation.
+     * @param result a #GAsyncResult
      */
     writeFinish(result: Gio.AsyncResult): number
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.Channel */
@@ -8727,6 +9667,7 @@ class WebdavChannel {
      * Close the socket and reset connection specific data. Finally, emit
      * `reason` #SpiceChannel::channel-event on main context if not
      * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
      */
     disconnect(reason: ChannelEvent): void
     /**
@@ -8736,10 +9677,13 @@ class WebdavChannel {
      * When the operation is finished callback will be called. You can
      * then call spice_channel_flush_finish() to get the result of the
      * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     flushAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing a channel.
+     * @param result a #GAsyncResult
      */
     flushFinish(result: Gio.AsyncResult): boolean
     /**
@@ -8752,18 +9696,22 @@ class WebdavChannel {
      * 
      * If `fd` is -1, a valid fd will be requested later via the
      * SpiceChannel::open-fd signal.
+     * @param fd a file descriptor (socket) or -1. request mechanism
      */
     openFd(fd: number): boolean
     /**
      * Enable specific channel-kind capability.
+     * @param cap a capability
      */
     setCapability(cap: number): void
     /**
      * Test availability of remote "channel kind capability".
+     * @param cap a capability
      */
     testCapability(cap: number): boolean
     /**
      * Test availability of remote "common channel capability".
+     * @param cap a capability
      */
     testCommonCapability(cap: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8801,6 +9749,10 @@ class WebdavChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8811,6 +9763,12 @@ class WebdavChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8834,6 +9792,7 @@ class WebdavChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8853,11 +9812,14 @@ class WebdavChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8865,6 +9827,8 @@ class WebdavChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8882,6 +9846,7 @@ class WebdavChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8927,6 +9892,7 @@ class WebdavChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8970,15 +9936,20 @@ class WebdavChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9019,6 +9990,7 @@ class WebdavChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9053,12 +10025,15 @@ class WebdavChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of SpiceClientGLib-2.0.SpiceClientGLib.PortChannel */
     /**
      * The #SpicePortChannel::port-data signal is emitted when new
      * port data is received.
+     * @param data the data received
+     * @param size number of bytes read
      */
     connect(sigName: "port-data", callback: ((data: object | null, size: number) => void)): number
     on(sigName: "port-data", callback: (data: object | null, size: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -9068,6 +10043,7 @@ class WebdavChannel {
     /**
      * The #SpicePortChannel::port-event signal is emitted when new
      * port event is received.
+     * @param event the event received
      */
     connect(sigName: "port-event", callback: ((event: number) => void)): number
     on(sigName: "port-event", callback: (event: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -9080,6 +10056,7 @@ class WebdavChannel {
      * state of the connection is changed. In case of errors,
      * spice_channel_get_error() may provide additional informations
      * on the source of the error.
+     * @param event a #SpiceChannelEvent
      */
     connect(sigName: "channel-event", callback: ((event: ChannelEvent) => void)): number
     on(sigName: "channel-event", callback: (event: ChannelEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -9090,6 +10067,7 @@ class WebdavChannel {
      * The #SpiceChannel::open-fd signal is emitted when a new
      * connection is requested. This signal is emitted when the
      * connection is made with spice_session_open_fd().
+     * @param withTls wether TLS connection is requested
      */
     connect(sigName: "open-fd", callback: ((withTls: number) => void)): number
     on(sigName: "open-fd", callback: (withTls: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -9125,6 +10103,7 @@ class WebdavChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9141,11 +10120,26 @@ class WebdavChannel {
     on(sigName: "notify::port-opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::port-opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::port-opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socket", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::socket", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spice-session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spice-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-read-bytes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::total-read-bytes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -9168,12 +10162,12 @@ abstract class AudioClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly connectChannel: (audio: Audio, channel: Channel) => boolean
-    readonly getPlaybackVolumeInfoAsync: (audio: Audio, cancellable: Gio.Cancellable | null, mainChannel: MainChannel, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly getPlaybackVolumeInfoFinish: (audio: Audio, res: Gio.AsyncResult, mute: boolean, nchannels: number, volume: number) => boolean
-    readonly getRecordVolumeInfoAsync: (audio: Audio, cancellable: Gio.Cancellable | null, mainChannel: MainChannel, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly getRecordVolumeInfoFinish: (audio: Audio, res: Gio.AsyncResult, mute: boolean, nchannels: number, volume: number) => boolean
+    parentClass: GObject.ObjectClass
+    connectChannel: (audio: Audio, channel: Channel) => boolean
+    getPlaybackVolumeInfoAsync: (audio: Audio, cancellable: Gio.Cancellable | null, mainChannel: MainChannel, callback?: Gio.AsyncReadyCallback | null) => void
+    getPlaybackVolumeInfoFinish: (audio: Audio, res: Gio.AsyncResult, mute: boolean, nchannels: number, volume: number) => boolean
+    getRecordVolumeInfoAsync: (audio: Audio, cancellable: Gio.Cancellable | null, mainChannel: MainChannel, callback?: Gio.AsyncReadyCallback | null) => void
+    getRecordVolumeInfoFinish: (audio: Audio, res: Gio.AsyncResult, mute: boolean, nchannels: number, volume: number) => boolean
     static name: string
 }
 class AudioPrivate {
@@ -9184,15 +10178,15 @@ abstract class ChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly channelEvent: (channel: Channel, event: ChannelEvent) => void
-    readonly openFd: (channel: Channel, withTls: number) => void
-    readonly handleMsg: (channel: Channel, msg: MsgIn) => void
-    readonly channelUp: (channel: Channel) => void
-    readonly iterateWrite: (channel: Channel) => void
-    readonly iterateRead: (channel: Channel) => void
-    readonly channelReset: (channel: Channel, migrating: boolean) => void
-    readonly channelSendMigrationHandshake: (channel: Channel) => void
+    parentClass: GObject.ObjectClass
+    channelEvent: (channel: Channel, event: ChannelEvent) => void
+    openFd: (channel: Channel, withTls: number) => void
+    handleMsg: (channel: Channel, msg: MsgIn) => void
+    channelUp: (channel: Channel) => void
+    iterateWrite: (channel: Channel) => void
+    iterateRead: (channel: Channel) => void
+    channelReset: (channel: Channel, migrating: boolean) => void
+    channelSendMigrationHandshake: (channel: Channel) => void
     static name: string
 }
 class ChannelClassPrivate {
@@ -9206,11 +10200,11 @@ abstract class CursorChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
-    readonly cursorSet: (channel: CursorChannel, width: number, height: number, hotX: number, hotY: number, rgba?: object | null) => void
-    readonly cursorMove: (channel: CursorChannel, x: number, y: number) => void
-    readonly cursorHide: (channel: CursorChannel) => void
-    readonly cursorReset: (channel: CursorChannel) => void
+    parentClass: ChannelClass
+    cursorSet: (channel: CursorChannel, width: number, height: number, hotX: number, hotY: number, rgba?: object | null) => void
+    cursorMove: (channel: CursorChannel, x: number, y: number) => void
+    cursorHide: (channel: CursorChannel) => void
+    cursorReset: (channel: CursorChannel) => void
     static name: string
 }
 class CursorChannelPrivate {
@@ -9221,23 +10215,23 @@ class CursorShape {
     /**
      * a width of the remote cursor
      */
-    readonly width: number
+    width: number
     /**
      * a height of the remote cursor
      */
-    readonly height: number
+    height: number
     /**
      * a 'x' coordinate of the remote cursor
      */
-    readonly hotSpotX: number
+    hotSpotX: number
     /**
      * a 'y' coordinate of the remote cursor
      */
-    readonly hotSpotY: number
+    hotSpotY: number
     /**
      * image data of the remote cursor
      */
-    readonly data: object
+    data: object
     static name: string
 }
 abstract class DisplayChannelClass {
@@ -9245,11 +10239,11 @@ abstract class DisplayChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
-    readonly displayPrimaryCreate: (channel: Channel, format: number, width: number, height: number, stride: number, shmid: number, data: object) => void
-    readonly displayPrimaryDestroy: (channel: Channel) => void
-    readonly displayInvalidate: (channel: Channel, x: number, y: number, w: number, h: number) => void
-    readonly displayMark: (channel: Channel, mark: boolean) => void
+    parentClass: ChannelClass
+    displayPrimaryCreate: (channel: Channel, format: number, width: number, height: number, stride: number, shmid: number, data: object) => void
+    displayPrimaryDestroy: (channel: Channel) => void
+    displayInvalidate: (channel: Channel, x: number, y: number, w: number, h: number) => void
+    displayMark: (channel: Channel, mark: boolean) => void
     static name: string
 }
 class DisplayChannelPrivate {
@@ -9260,27 +10254,27 @@ class DisplayMonitorConfig {
     /**
      * monitor id
      */
-    readonly id: number
+    id: number
     /**
      * monitor surface id
      */
-    readonly surfaceId: number
+    surfaceId: number
     /**
      * x position of the monitor
      */
-    readonly x: number
+    x: number
     /**
      * y position of the monitor
      */
-    readonly y: number
+    y: number
     /**
      * width of the monitor
      */
-    readonly width: number
+    width: number
     /**
      * height of the monitor
      */
-    readonly height: number
+    height: number
     static name: string
 }
 class DisplayPrimary {
@@ -9288,32 +10282,32 @@ class DisplayPrimary {
     /**
      * primary buffer format
      */
-    readonly format: object
+    format: object
     /**
      * width of the primary
      */
-    readonly width: number
+    width: number
     /**
      * height of the primary
      */
-    readonly height: number
+    height: number
     /**
      * stride of the primary
      */
-    readonly stride: number
+    stride: number
     /**
      * identifier of the shared memory segment associated with
      * the `data,` or -1 if not shm
      */
-    readonly shmid: number
+    shmid: number
     /**
      * pointer to primary buffer
      */
-    readonly data: number
+    data: number
     /**
      * whether the display is marked ready
      */
-    readonly marked: boolean
+    marked: boolean
     static name: string
 }
 abstract class FileTransferTaskClass {
@@ -9324,27 +10318,27 @@ class GlScanout {
     /**
      * a drm DMABUF file that can be imported with eglCreateImageKHR
      */
-    readonly fd: number
+    fd: number
     /**
      * width of the scanout
      */
-    readonly width: number
+    width: number
     /**
      * height of the scanout
      */
-    readonly height: number
+    height: number
     /**
      * stride of the scanout
      */
-    readonly stride: number
+    stride: number
     /**
      * the drm fourcc format
      */
-    readonly format: number
+    format: number
     /**
      * orientation of the scanout
      */
-    readonly y0top: boolean
+    y0top: boolean
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.GlScanout */
     /**
      * Frees the `scanout`.
@@ -9357,8 +10351,8 @@ abstract class InputsChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
-    readonly inputsModifiers: (channel: Channel) => void
+    parentClass: ChannelClass
+    inputsModifiers: (channel: Channel) => void
     static name: string
 }
 class InputsChannelPrivate {
@@ -9369,9 +10363,9 @@ abstract class MainChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
-    readonly mouseUpdate: (channel: Channel) => void
-    readonly agentUpdate: (channel: Channel) => void
+    parentClass: ChannelClass
+    mouseUpdate: (channel: Channel) => void
+    agentUpdate: (channel: Channel) => void
     static name: string
 }
 class MainChannelPrivate {
@@ -9388,10 +10382,10 @@ abstract class PlaybackChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
-    readonly playbackStart: (channel: PlaybackChannel, format: number, channels: number, freq: number) => void
-    readonly playbackData: (channel: PlaybackChannel, data: object | null, size: number) => void
-    readonly playbackStop: (channel: PlaybackChannel) => void
+    parentClass: ChannelClass
+    playbackStart: (channel: PlaybackChannel, format: number, channels: number, freq: number) => void
+    playbackData: (channel: PlaybackChannel, data: object | null, size: number) => void
+    playbackStop: (channel: PlaybackChannel) => void
     static name: string
 }
 class PlaybackChannelPrivate {
@@ -9402,7 +10396,7 @@ abstract class PortChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
+    parentClass: ChannelClass
     static name: string
 }
 class PortChannelPrivate {
@@ -9416,19 +10410,19 @@ class QmpStatus {
     /**
      * the structure version
      */
-    readonly version: number
+    version: number
     /**
      * true if all VCPUs are runnable, false if not runnable
      */
-    readonly running: boolean
+    running: boolean
     /**
      * true if VCPUs are in single-step mode
      */
-    readonly singlestep: boolean
+    singlestep: boolean
     /**
      * the virtual machine run state
      */
-    readonly status: string
+    status: string
     /* Methods of SpiceClientGLib-2.0.SpiceClientGLib.QmpStatus */
     /**
      * References a `status`.
@@ -9445,10 +10439,10 @@ abstract class RecordChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
-    readonly recordStart: (channel: RecordChannel, format: number, channels: number, freq: number) => void
-    readonly recordData: (channel: RecordChannel, data: object | null, size: number) => void
-    readonly recordStop: (channel: RecordChannel) => void
+    parentClass: ChannelClass
+    recordStart: (channel: RecordChannel, format: number, channels: number, freq: number) => void
+    recordData: (channel: RecordChannel, data: object | null, size: number) => void
+    recordStop: (channel: RecordChannel) => void
     static name: string
 }
 class RecordChannelPrivate {
@@ -9459,9 +10453,9 @@ abstract class SessionClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly channelNew: (session: Session, channel: Channel) => void
-    readonly channelDestroy: (session: Session, channel: Channel) => void
+    parentClass: GObject.ObjectClass
+    channelNew: (session: Session, channel: Channel) => void
+    channelDestroy: (session: Session, channel: Channel) => void
     static name: string
 }
 class SessionPrivate {
@@ -9472,7 +10466,7 @@ abstract class SmartcardChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
+    parentClass: ChannelClass
     static name: string
 }
 class SmartcardChannelPrivate {
@@ -9483,11 +10477,11 @@ abstract class SmartcardManagerClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly readerAdded: (manager: SmartcardManager, reader: SmartcardReader) => void
-    readonly readerRemoved: (manager: SmartcardManager, reader: SmartcardReader) => void
-    readonly cardInserted: (manager: SmartcardManager, reader: SmartcardReader) => void
-    readonly cardRemoved: (manager: SmartcardManager, reader: SmartcardReader) => void
+    parentClass: GObject.ObjectClass
+    readerAdded: (manager: SmartcardManager, reader: SmartcardReader) => void
+    readerRemoved: (manager: SmartcardManager, reader: SmartcardReader) => void
+    cardInserted: (manager: SmartcardManager, reader: SmartcardReader) => void
+    cardRemoved: (manager: SmartcardManager, reader: SmartcardReader) => void
     static name: string
 }
 class SmartcardManagerPrivate {
@@ -9534,6 +10528,7 @@ class UsbDevice {
      * 5. \%d address
      * 
      * (the default format string is "\%s \%s \%s at \%d-\%d")
+     * @param format an optional printf() format string with positional parameters
      */
     getDescription(format?: string | null): string
     /**
@@ -9547,11 +10542,11 @@ abstract class UsbDeviceManagerClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly deviceAdded: (manager: UsbDeviceManager, device: UsbDevice) => void
-    readonly deviceRemoved: (manager: UsbDeviceManager, device: UsbDevice) => void
-    readonly autoConnectFailed: (manager: UsbDeviceManager, device: UsbDevice, error: GLib.Error) => void
-    readonly deviceError: (manager: UsbDeviceManager, device: UsbDevice, error: GLib.Error) => void
+    parentClass: GObject.ObjectClass
+    deviceAdded: (manager: UsbDeviceManager, device: UsbDevice) => void
+    deviceRemoved: (manager: UsbDeviceManager, device: UsbDevice) => void
+    autoConnectFailed: (manager: UsbDeviceManager, device: UsbDevice, error: GLib.Error) => void
+    deviceError: (manager: UsbDeviceManager, device: UsbDevice, error: GLib.Error) => void
     static name: string
 }
 class UsbDeviceManagerPrivate {
@@ -9562,7 +10557,7 @@ abstract class UsbredirChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: ChannelClass
+    parentClass: ChannelClass
     static name: string
 }
 class UsbredirChannelPrivate {
@@ -9573,7 +10568,7 @@ abstract class WebdavChannelClass {
     /**
      * Parent class.
      */
-    readonly parentClass: PortChannelClass
+    parentClass: PortChannelClass
     static name: string
 }
 class WebdavChannelPrivate {

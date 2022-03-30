@@ -237,16 +237,21 @@ class Object {
     readonly isRemote: boolean
     resourceBasePath: string
     /* Fields of Gtk-3.0.Gtk.Application */
-    readonly parent: Gio.Application
+    parent: Gio.Application
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Totem-1.0.Totem.Object */
     /**
      * Add `uri` to the playlist and play it immediately.
+     * @param uri the URI to add to the playlist
+     * @param displayName the display name of the URI
+     * @param play whether to play the added item
      */
     addToPlaylist(uri: string, displayName: string, play: boolean): void
     /**
      * Adds a local media file to the main view.
+     * @param file a #GFile representing a media
+     * @param title a title for the media, or %NULL
      */
     addToView(file: Gio.File, title: string): void
     /**
@@ -265,6 +270,7 @@ class Object {
      * Empty the GMenu section pointed to by `id,` and remove any
      * related actions. Note that menu items with specific target
      * will not have the associated action removed.
+     * @param id the ID for the menu section to empty
      */
     emptyMenuSection(id: string): void
     /**
@@ -286,6 +292,7 @@ class Object {
     getMainWindow(): Gtk.Window
     /**
      * Get the #GMenu of the given `id` from the main Totem #GtkBuilder file.
+     * @param id the ID for the menu section to look up
      */
     getMenuSection(id: string): Gio.Menu | null
     /**
@@ -307,6 +314,7 @@ class Object {
     getShortTitle(): string
     /**
      * Gets the title of the playlist entry at `index`.
+     * @param playlistIndex the <code class="literal">0</code>-based entry index
      */
     getTitleAtPlaylistPos(playlistIndex: number): string
     /**
@@ -360,14 +368,19 @@ class Object {
      * 
      * If Totem's fullscreened and the operation is executed correctly,
      * the controls will appear as if the user had moved the mouse.
+     * @param cmd a #TotemRemoteCommand
+     * @param url an MRL to play, or %NULL
      */
     remoteCommand(cmd: RemoteCommand, url: string): void
     /**
      * Returns the value of `setting` for this instance of Totem.
+     * @param setting a #TotemRemoteSetting
      */
     remoteGetSetting(setting: RemoteSetting): boolean
     /**
      * Sets `setting` to `value` on this instance of Totem.
+     * @param setting a #TotemRemoteSetting
+     * @param value the new value for the setting
      */
     remoteSetSetting(setting: RemoteSetting, value: boolean): void
     /**
@@ -384,29 +397,38 @@ class Object {
     /**
      * Seeks to an `offset` from the current position in the stream,
      * or displays an error dialog if that's not possible.
+     * @param offset the time offset to seek to
+     * @param accurate whether to use accurate seek, an accurate seek might be slower for some formats (see GStreamer docs)
      */
     seekRelative(offset: number, accurate: boolean): void
     /**
      * Seeks to an absolute time in the stream, or displays an
      * error dialog if that's not possible.
+     * @param msec the time to seek to
+     * @param accurate whether to use accurate seek, an accurate seek might be slower for some formats (see GStreamer docs)
      */
     seekTime(msec: number, accurate: boolean): void
     /**
      * Add the `subtitle_uri` subtitle file to the playlist, setting it as the subtitle for the current
      * playlist entry.
+     * @param subtitleUri the URI of the subtitle file to add
      */
     setCurrentSubtitle(subtitleUri: string): void
     /**
      * Sets the playback rate, with `1.0` being the normal playback rate.
+     * @param rate the new absolute playback rate
      */
     setRate(rate: number): boolean
     /**
      * Sets the volume, with <code class="literal">1.0</code> being the maximum, and <code class="literal">0.0</code> being the minimum level.
+     * @param volume the new absolute volume value
      */
     setVolume(volume: number): void
     /**
      * Displays a non-blocking error dialog with the
      * given `title` and `reason`.
+     * @param title the error dialog title
+     * @param reason the error dialog text
      */
     showError(title: string, reason: string): void
     /**
@@ -431,6 +453,9 @@ class Object {
      * in the #GMenuModels passed to gtk_application_set_app_menu() and
      * gtk_application_set_menubar(), which is usually more convenient
      * than calling this function for each accelerator.
+     * @param accelerator accelerator string
+     * @param actionName the name of the action to activate
+     * @param parameter parameter to pass when activating the action,   or %NULL if the action does not accept an activation parameter
      */
     addAccelerator(accelerator: string, actionName: string, parameter?: GLib.Variant | null): void
     /**
@@ -449,11 +474,13 @@ class Object {
      * 
      * GTK+ will keep the `application` running as long as it has
      * any windows.
+     * @param window a #GtkWindow
      */
     addWindow(window: Gtk.Window): void
     /**
      * Gets the accelerators that are currently associated with
      * the given action.
+     * @param detailedActionName a detailed action name, specifying an action     and target to obtain accelerators for
      */
     getAccelsForAction(detailedActionName: string): string[]
     /**
@@ -472,6 +499,7 @@ class Object {
      * 
      * It is a programmer error to pass an invalid accelerator string.
      * If you are unsure, check it with gtk_accelerator_parse() first.
+     * @param accel an accelerator that can be parsed by gtk_accelerator_parse()
      */
     getActionsForAccel(accel: string): string[]
     /**
@@ -492,6 +520,7 @@ class Object {
      * Gets a menu from automatically loaded resources.
      * See [Automatic resources][automatic-resources]
      * for more information.
+     * @param id the id of the menu to look up
      */
     getMenuById(id: string): Gio.Menu
     /**
@@ -504,6 +533,7 @@ class Object {
      * 
      * The ID of a #GtkApplicationWindow can be retrieved with
      * gtk_application_window_get_id().
+     * @param id an identifier number
      */
     getWindowById(id: number): Gtk.Window | null
     /**
@@ -540,6 +570,9 @@ class Object {
      * 
      * If `window` is given, the session manager may point the user to
      * this window to find out more about why the action is inhibited.
+     * @param window a #GtkWindow, or %NULL
+     * @param flags what types of actions should be inhibited
+     * @param reason a short, human-readable string that explains     why these operations are inhibited
      */
     inhibit(window: Gtk.Window | null, flags: Gtk.ApplicationInhibitFlags, reason?: string | null): number
     /**
@@ -548,6 +581,7 @@ class Object {
      * 
      * Note that this information may not be available (for example
      * when the application is running in a sandbox).
+     * @param flags what types of actions should be queried
      */
     isInhibited(flags: Gtk.ApplicationInhibitFlags): boolean
     /**
@@ -595,6 +629,8 @@ class Object {
     /**
      * Removes an accelerator that has been previously added
      * with gtk_application_add_accelerator().
+     * @param actionName the name of the action to activate
+     * @param parameter parameter to pass when activating the action,   or %NULL if the action does not accept an activation parameter
      */
     removeAccelerator(actionName: string, parameter?: GLib.Variant | null): void
     /**
@@ -606,6 +642,7 @@ class Object {
      * 
      * The application may stop running as a result of a call to this
      * function.
+     * @param window a #GtkWindow
      */
     removeWindow(window: Gtk.Window): void
     /**
@@ -618,6 +655,8 @@ class Object {
      * 
      * For the `detailed_action_name,` see g_action_parse_detailed_name() and
      * g_action_print_detailed_name().
+     * @param detailedActionName a detailed action name, specifying an action     and target to associate accelerators with
+     * @param accels a list of accelerators in the format     understood by gtk_accelerator_parse()
      */
     setAccelsForAction(detailedActionName: string, accels: string[]): void
     /**
@@ -638,6 +677,7 @@ class Object {
      * 
      * Use the base #GActionMap interface to add actions, to respond to the user
      * selecting these menu items.
+     * @param appMenu a #GMenuModel, or %NULL
      */
     setAppMenu(appMenu?: Gio.MenuModel | null): void
     /**
@@ -659,11 +699,13 @@ class Object {
      * 
      * Use the base #GActionMap interface to add actions, to respond to the
      * user selecting these menu items.
+     * @param menubar a #GMenuModel, or %NULL
      */
     setMenubar(menubar?: Gio.MenuModel | null): void
     /**
      * Removes an inhibitor that has been established with gtk_application_inhibit().
      * Inhibitors are also cleared when the application exits.
+     * @param cookie a cookie that was returned by gtk_application_inhibit()
      */
     uninhibit(cookie: number): void
     /* Methods of Gio-2.0.Gio.Application */
@@ -690,6 +732,12 @@ class Object {
      * g_application_add_main_option_entries() for more details.
      * 
      * See #GOptionEntry for more documentation of the arguments.
+     * @param longName the long name of an option used to specify it in a commandline
+     * @param shortName the short name of an option
+     * @param flags flags from #GOptionFlags
+     * @param arg the type of the option, as a #GOptionArg
+     * @param description the description for the option in `--help` output
+     * @param argDescription the placeholder to use for the extra argument    parsed by the option in `--help` output
      */
     addMainOption(longName: string, shortName: number, flags: GLib.OptionFlags, arg: GLib.OptionArg, description: string, argDescription?: string | null): void
     /**
@@ -737,10 +785,6 @@ class Object {
      * consumed, they will no longer be visible to the default handling
      * (which treats them as filenames to be opened).
      * 
-     * The dict includes options that have been explicitly specified on the parsed
-     * commandline, as well as zero values for numeric options that were not
-     * necessarily specified.
-     * 
      * It is important to use the proper GVariant format when retrieving
      * the options with g_variant_dict_lookup():
      * - for %G_OPTION_ARG_NONE, use `b`
@@ -751,6 +795,7 @@ class Object {
      * - for %G_OPTION_ARG_FILENAME, use `^&ay`
      * - for %G_OPTION_ARG_STRING_ARRAY, use `^a&s`
      * - for %G_OPTION_ARG_FILENAME_ARRAY, use `^a&ay`
+     * @param entries a           %NULL-terminated list of #GOptionEntrys
      */
     addMainOptionEntries(entries: GLib.OptionEntry[]): void
     /**
@@ -779,6 +824,7 @@ class Object {
      * group to be parsed, but it does not cause you to be "opted in" to the
      * new functionality whereby unrecognised options are rejected even if
      * %G_APPLICATION_HANDLES_COMMAND_LINE was given.
+     * @param group a #GOptionGroup
      */
     addOptionGroup(group: GLib.OptionGroup): void
     /**
@@ -788,6 +834,8 @@ class Object {
      * The binding holds a reference to `application` while it is active, but
      * not to `object`. Instead, the binding is destroyed when `object` is
      * finalized.
+     * @param object a #GObject
+     * @param property the name of a boolean property of `object`
      */
     bindBusyProperty(object: GObject.Object, property: string): void
     /**
@@ -911,6 +959,8 @@ class Object {
      * 
      * The application must be registered before calling this function
      * and it must have the %G_APPLICATION_HANDLES_OPEN flag set.
+     * @param files an array of #GFiles to open
+     * @param hint a hint (or ""), but never %NULL
      */
     open(files: Gio.File[], hint: string): void
     /**
@@ -960,6 +1010,7 @@ class Object {
      * Note: the return value of this function is not an indicator that this
      * instance is or is not the primary instance of the application.  See
      * g_application_get_is_remote() for that.
+     * @param cancellable a #GCancellable, or %NULL
      */
     register(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1047,6 +1098,7 @@ class Object {
      * should not be used from applications like editors that need precise
      * control over when processes invoked via the commandline will exit and
      * what their exit status will be.
+     * @param argv      the argv from main(), or %NULL
      */
     run(argv?: string[] | null): number
     /**
@@ -1076,11 +1128,14 @@ class Object {
      * 
      * If `notification` is no longer relevant, it can be withdrawn with
      * g_application_withdraw_notification().
+     * @param id id of the notification, or %NULL
+     * @param notification the #GNotification to send
      */
     sendNotification(id: string | null, notification: Gio.Notification): void
     /**
      * This used to be how actions were associated with a #GApplication.
      * Now there is #GActionMap for that.
+     * @param actionGroup a #GActionGroup, or %NULL
      */
     setActionGroup(actionGroup?: Gio.ActionGroup | null): void
     /**
@@ -1091,6 +1146,7 @@ class Object {
      * 
      * If non-%NULL, the application id must be valid.  See
      * g_application_id_is_valid().
+     * @param applicationId the identifier for `application`
      */
     setApplicationId(applicationId?: string | null): void
     /**
@@ -1109,6 +1165,7 @@ class Object {
      * registered.
      * 
      * See #GApplicationFlags.
+     * @param flags the flags for `application`
      */
     setFlags(flags: Gio.ApplicationFlags): void
     /**
@@ -1120,12 +1177,14 @@ class Object {
      * This call has no side effects of its own.  The value set here is only
      * used for next time g_application_release() drops the use count to
      * zero.  Any timeouts currently in progress are not impacted.
+     * @param inactivityTimeout the timeout, in milliseconds
      */
     setInactivityTimeout(inactivityTimeout: number): void
     /**
      * Adds a description to the `application` option context.
      * 
      * See g_option_context_set_description() for more information.
+     * @param description a string to be shown in `--help` output  after the list of options, or %NULL
      */
     setOptionContextDescription(description?: string | null): void
     /**
@@ -1135,12 +1194,14 @@ class Object {
      * when the internal #GOptionContext of `application` is created.
      * 
      * See g_option_context_new() for more information about `parameter_string`.
+     * @param parameterString a string which is displayed   in the first line of `--help` output, after the usage summary `programname [OPTION...]`.
      */
     setOptionContextParameterString(parameterString?: string | null): void
     /**
      * Adds a summary to the `application` option context.
      * 
      * See g_option_context_set_summary() for more information.
+     * @param summary a string to be shown in `--help` output  before the list of options, or %NULL
      */
     setOptionContextSummary(summary?: string | null): void
     /**
@@ -1177,12 +1238,15 @@ class Object {
      * this function during the instance initialization. Alternatively, you
      * can call this function in the #GApplicationClass.startup virtual function,
      * before chaining up to the parent implementation.
+     * @param resourcePath the resource path to use
      */
     setResourceBasePath(resourcePath?: string | null): void
     /**
      * Destroys a binding between `property` and the busy state of
      * `application` that was previously created with
      * g_application_bind_busy_property().
+     * @param object a #GObject
+     * @param property the name of a boolean property of `object`
      */
     unbindBusyProperty(object: GObject.Object, property: string): void
     /**
@@ -1209,6 +1273,7 @@ class Object {
      * Note that notifications are dismissed when the user clicks on one
      * of the buttons in a notification or triggers its default action, so
      * there is no need to explicitly withdraw the notification in that case.
+     * @param id id of a previously sent notification
      */
     withdrawNotification(id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1246,6 +1311,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1256,6 +1325,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1279,6 +1354,7 @@ class Object {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1298,11 +1374,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1310,6 +1389,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1327,6 +1408,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1372,6 +1454,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1415,15 +1498,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1464,6 +1552,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1498,6 +1587,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.ActionGroup */
@@ -1505,24 +1595,30 @@ class Object {
      * Emits the #GActionGroup::action-added signal on `action_group`.
      * 
      * This function should only be called by #GActionGroup implementations.
+     * @param actionName the name of an action in the group
      */
     actionAdded(actionName: string): void
     /**
      * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
      * 
      * This function should only be called by #GActionGroup implementations.
+     * @param actionName the name of an action in the group
+     * @param enabled whether or not the action is now enabled
      */
     actionEnabledChanged(actionName: string, enabled: boolean): void
     /**
      * Emits the #GActionGroup::action-removed signal on `action_group`.
      * 
      * This function should only be called by #GActionGroup implementations.
+     * @param actionName the name of an action in the group
      */
     actionRemoved(actionName: string): void
     /**
      * Emits the #GActionGroup::action-state-changed signal on `action_group`.
      * 
      * This function should only be called by #GActionGroup implementations.
+     * @param actionName the name of an action in the group
+     * @param state the new state of the named action
      */
     actionStateChanged(actionName: string, state: GLib.Variant): void
     /**
@@ -1561,6 +1657,8 @@ class Object {
      * exit (0);
      * ```
      * 
+     * @param actionName the name of the action to activate
+     * @param parameter parameters to the activation
      */
     activateAction(actionName: string, parameter?: GLib.Variant | null): void
     /**
@@ -1575,6 +1673,8 @@ class Object {
      * See g_action_group_get_action_state_hint().
      * 
      * If the `value` GVariant is floating, it is consumed.
+     * @param actionName the name of the action to request the change on
+     * @param value the new state
      */
     changeActionState(actionName: string, value: GLib.Variant): void
     /**
@@ -1582,6 +1682,7 @@ class Object {
      * 
      * An action must be enabled in order to be activated or in order to
      * have its state changed from outside callers.
+     * @param actionName the name of the action to query
      */
     getActionEnabled(actionName: string): boolean
     /**
@@ -1598,6 +1699,7 @@ class Object {
      * The parameter type of a particular action will never change but it is
      * possible for an action to be removed and for a new action to be added
      * with the same name but a different parameter type.
+     * @param actionName the name of the action to query
      */
     getActionParameterType(actionName: string): GLib.VariantType | null
     /**
@@ -1609,6 +1711,7 @@ class Object {
      * 
      * The return value (if non-%NULL) should be freed with
      * g_variant_unref() when it is no longer required.
+     * @param actionName the name of the action to query
      */
     getActionState(actionName: string): GLib.Variant | null
     /**
@@ -1630,6 +1733,7 @@ class Object {
      * 
      * The return value (if non-%NULL) should be freed with
      * g_variant_unref() when it is no longer required.
+     * @param actionName the name of the action to query
      */
     getActionStateHint(actionName: string): GLib.Variant | null
     /**
@@ -1649,10 +1753,12 @@ class Object {
      * The state type of a particular action will never change but it is
      * possible for an action to be removed and for a new action to be added
      * with the same name but a different state type.
+     * @param actionName the name of the action to query
      */
     getActionStateType(actionName: string): GLib.VariantType | null
     /**
      * Checks if the named action exists within `action_group`.
+     * @param actionName the name of the action to check for
      */
     hasAction(actionName: string): boolean
     /**
@@ -1690,6 +1796,7 @@ class Object {
      * fields (as indicated by having a non-%NULL reference passed in) are
      * filled.  If the action doesn't exist, %FALSE is returned and the
      * fields may or may not have been modified.
+     * @param actionName the name of an action in the group
      */
     queryAction(actionName: string): [ /* returnType */ boolean, /* enabled */ boolean, /* parameterType */ GLib.VariantType | null, /* stateType */ GLib.VariantType | null, /* stateHint */ GLib.Variant | null, /* state */ GLib.Variant | null ]
     /* Methods of Gio-2.0.Gio.ActionMap */
@@ -1700,6 +1807,7 @@ class Object {
      * as `action` then the old action is dropped from the action map.
      * 
      * The action map takes its own reference on `action`.
+     * @param action a #GAction
      */
     addAction(action: Gio.Action): void
     /**
@@ -1742,18 +1850,22 @@ class Object {
      * }
      * ```
      * 
+     * @param entries a pointer to           the first item in an array of #GActionEntry structs
+     * @param userData the user data for signal connections
      */
     addActionEntries(entries: Gio.ActionEntry[], userData?: object | null): void
     /**
      * Looks up the action with the name `action_name` in `action_map`.
      * 
      * If no such action exists, returns %NULL.
+     * @param actionName the name of an action
      */
     lookupAction(actionName: string): Gio.Action | null
     /**
      * Removes the named action from the action map.
      * 
      * If no action of this name is in the map then nothing happens.
+     * @param actionName the name of the action
      */
     removeAction(actionName: string): void
     /* Signals of Totem-1.0.Totem.Object */
@@ -1767,6 +1879,7 @@ class Object {
     emit(sigName: "file-closed"): void
     /**
      * The #TotemObject::file-has-played signal is emitted when a new stream has started playing in Totem.
+     * @param mrl the MRL of the opened stream
      */
     connect(sigName: "file-has-played", callback: ((mrl: string) => void)): number
     on(sigName: "file-has-played", callback: (mrl: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1775,6 +1888,7 @@ class Object {
     emit(sigName: "file-has-played", mrl: string): void
     /**
      * The #TotemObject::file-opened signal is emitted when a new stream is opened by Totem.
+     * @param mrl the MRL of the opened stream
      */
     connect(sigName: "file-opened", callback: ((mrl: string) => void)): number
     on(sigName: "file-opened", callback: (mrl: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1784,6 +1898,7 @@ class Object {
     /**
      * The #TotemObject::get-text-subtitle signal is emitted before opening a stream, so that plugins
      * have the opportunity to detect or download text subtitles for the stream if necessary.
+     * @param mrl the MRL of the opened stream
      */
     connect(sigName: "get-text-subtitle", callback: ((mrl: string) => string)): number
     on(sigName: "get-text-subtitle", callback: (mrl: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1793,6 +1908,7 @@ class Object {
     /**
      * The #TotemObject::get-user-agent signal is emitted before opening a stream, so that plugins
      * have the opportunity to return the user-agent to be set.
+     * @param mrl the MRL of the opened stream
      */
     connect(sigName: "get-user-agent", callback: ((mrl: string) => string)): number
     on(sigName: "get-user-agent", callback: (mrl: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1802,6 +1918,10 @@ class Object {
     /**
      * The #TotemObject::metadata-updated signal is emitted when the metadata of a stream is updated, typically
      * when it's being loaded.
+     * @param artist the name of the artist, or %NULL
+     * @param title the stream title, or %NULL
+     * @param album the name of the stream's album, or %NULL
+     * @param trackNumber the stream's track number
      */
     connect(sigName: "metadata-updated", callback: ((artist: string, title: string, album: string, trackNumber: number) => void)): number
     on(sigName: "metadata-updated", callback: (artist: string, title: string, album: string, trackNumber: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1824,6 +1944,7 @@ class Object {
     /**
      * Emitted when a #GtkWindow is added to `application` through
      * gtk_application_add_window().
+     * @param window the newly-added #GtkWindow
      */
     connect(sigName: "window-added", callback: ((window: Gtk.Window) => void)): number
     on(sigName: "window-added", callback: (window: Gtk.Window) => void, after?: boolean): NodeJS.EventEmitter
@@ -1834,6 +1955,7 @@ class Object {
      * Emitted when a #GtkWindow is removed from `application,`
      * either as a side-effect of being destroyed or explicitly
      * through gtk_application_remove_window().
+     * @param window the #GtkWindow that is being removed
      */
     connect(sigName: "window-removed", callback: ((window: Gtk.Window) => void)): number
     on(sigName: "window-removed", callback: (window: Gtk.Window) => void, after?: boolean): NodeJS.EventEmitter
@@ -1854,6 +1976,7 @@ class Object {
      * The ::command-line signal is emitted on the primary instance when
      * a commandline is not handled locally. See g_application_run() and
      * the #GApplicationCommandLine documentation for more information.
+     * @param commandLine a #GApplicationCommandLine representing the     passed commandline
      */
     connect(sigName: "command-line", callback: ((commandLine: Gio.ApplicationCommandLine) => number)): number
     on(sigName: "command-line", callback: (commandLine: Gio.ApplicationCommandLine) => void, after?: boolean): NodeJS.EventEmitter
@@ -1902,6 +2025,7 @@ class Object {
      * You can override local_command_line() if you need more powerful
      * capabilities than what is provided here, but this should not
      * normally be required.
+     * @param options the options dictionary
      */
     connect(sigName: "handle-local-options", callback: ((options: GLib.VariantDict) => number)): number
     on(sigName: "handle-local-options", callback: (options: GLib.VariantDict) => void, after?: boolean): NodeJS.EventEmitter
@@ -1923,6 +2047,8 @@ class Object {
     /**
      * The ::open signal is emitted on the primary instance when there are
      * files to open. See g_application_open() for more information.
+     * @param files an array of #GFiles
+     * @param hint a hint provided by the calling instance
      */
     connect(sigName: "open", callback: ((files: Gio.File[], hint: string) => void)): number
     on(sigName: "open", callback: (files: Gio.File[], hint: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1976,6 +2102,7 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1987,6 +2114,7 @@ class Object {
      * Signals that a new action was just added to the group.
      * This signal is emitted after the action has been added
      * and is now visible.
+     * @param actionName the name of the action in `action_group`
      */
     connect(sigName: "action-added", callback: ((actionName: string) => void)): number
     on(sigName: "action-added", callback: (actionName: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1995,6 +2123,8 @@ class Object {
     emit(sigName: "action-added", actionName: string): void
     /**
      * Signals that the enabled status of the named action has changed.
+     * @param actionName the name of the action in `action_group`
+     * @param enabled whether the action is enabled or not
      */
     connect(sigName: "action-enabled-changed", callback: ((actionName: string, enabled: boolean) => void)): number
     on(sigName: "action-enabled-changed", callback: (actionName: string, enabled: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -2005,6 +2135,7 @@ class Object {
      * Signals that an action is just about to be removed from the group.
      * This signal is emitted before the action is removed, so the action
      * is still visible and can be queried from the signal handler.
+     * @param actionName the name of the action in `action_group`
      */
     connect(sigName: "action-removed", callback: ((actionName: string) => void)): number
     on(sigName: "action-removed", callback: (actionName: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2013,6 +2144,8 @@ class Object {
     emit(sigName: "action-removed", actionName: string): void
     /**
      * Signals that the state of the named action has changed.
+     * @param actionName the name of the action in `action_group`
+     * @param value the new value of the state
      */
     connect(sigName: "action-state-changed", callback: ((actionName: string, value: GLib.Variant) => void)): number
     on(sigName: "action-state-changed", callback: (actionName: string, value: GLib.Variant) => void, after?: boolean): NodeJS.EventEmitter
@@ -2155,13 +2288,13 @@ class Object {
 }
 abstract class ObjectClass {
     /* Fields of Totem-1.0.Totem.ObjectClass */
-    readonly parentClass: Gtk.ApplicationClass
-    readonly fileOpened: (totem: Object, mrl: string) => void
-    readonly fileClosed: (totem: Object) => void
-    readonly fileHasPlayed: (totem: Object, mrl: string) => void
-    readonly metadataUpdated: (totem: Object, artist: string, title: string, album: string, trackNum: number) => void
-    readonly getUserAgent: (totem: Object, mrl: string) => string
-    readonly getTextSubtitle: (totem: Object, mrl: string) => string
+    parentClass: Gtk.ApplicationClass
+    fileOpened: (totem: Object, mrl: string) => void
+    fileClosed: (totem: Object) => void
+    fileHasPlayed: (totem: Object, mrl: string) => void
+    metadataUpdated: (totem: Object, artist: string, title: string, album: string, trackNum: number) => void
+    getUserAgent: (totem: Object, mrl: string) => string
+    getTextSubtitle: (totem: Object, mrl: string) => string
     static name: string
 }
 }

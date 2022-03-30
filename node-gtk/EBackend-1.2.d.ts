@@ -281,6 +281,9 @@ class OAuth2Support {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_oauth2_support_get_access_token_finish() to get the result of the
      * operation.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     getAccessToken(source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -288,6 +291,7 @@ class OAuth2Support {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     getAccessTokenFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     /**
@@ -296,6 +300,8 @@ class OAuth2Support {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getAccessTokenSync(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     static name: string
@@ -311,9 +317,10 @@ class Backend {
     connectable: Gio.SocketConnectable
     readonly mainContext: GLib.MainContext
     online: boolean
+    readonly source: EDataServer.Source
     readonly userPrompter: UserPrompter
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.Backend */
     /**
      * Asynchronously calls the e_backend_credentials_required_sync() on the `backend,`
@@ -321,12 +328,19 @@ class Backend {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_backend_credentials_required_finish() to get the result of the operation.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     credentialsRequired(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_backend_credentials_required().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     credentialsRequiredFinish(result: Gio.AsyncResult): boolean
     /**
@@ -338,12 +352,18 @@ class Backend {
      * method asynchronously.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     credentialsRequiredSync(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Makes sure that the "online" property is updated, that is, if there
      * is any destination reachability test pending, it'll be done immediately
      * and the only state will be updated as well.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     ensureOnlineStateUpdated(cancellable?: Gio.Cancellable | null): void
     /**
@@ -391,6 +411,7 @@ class Backend {
      * returns %TRUE, meaning the destination is always reachable.
      * This uses #GNetworkMonitor<!-- -->'s g_network_monitor_can_reach()
      * for reachability tests.
+     * @param cancellable a #GCancellable instance, or %NULL
      */
     isDestinationReachable(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -424,6 +445,7 @@ class Backend {
      * This is usually done automatically, when an 'authenticate' signal is
      * received for the associated #ESource. With %NULL `credentials` an attempt
      * without it is run.
+     * @param credentials a credentials to use to authenticate, or %NULL
      */
     scheduleAuthenticate(credentials?: EDataServer.NamedParameters | null): void
     /**
@@ -432,6 +454,12 @@ class Backend {
      * the call fails. The `who_calls` is a prefix of the console message.
      * This is useful when the caller just wants to start the operation
      * without having actual place where to show the operation result.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param whoCalls an identification who calls this
      */
     scheduleCredentialsRequired(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null, whoCalls?: string | null): void
     /**
@@ -441,6 +469,7 @@ class Backend {
      * The initial value of the #EBackend:connectable property is derived from
      * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
      * property, if the extension is present.
+     * @param connectable a #GSocketConnectable, or %NULL
      */
     setConnectable(connectable: Gio.SocketConnectable): void
     /**
@@ -451,6 +480,7 @@ class Backend {
      * automatically determine whether the network service should be reachable,
      * and hence whether the `backend` is #EBackend:online.  But subclasses may
      * override the online state if, for example, a connection attempt fails.
+     * @param online the online state
      */
     setOnline(online: boolean): void
     /**
@@ -458,17 +488,23 @@ class Backend {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_backend_trust_prompt_finish() to get the result of the operation.
+     * @param parameters an #ENamedParameters with values for the trust prompt
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     trustPrompt(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_backend_trust_prompt().
      * If an error occurred, the function will set `error` and return
      * %E_TRUST_PROMPT_RESPONSE_UNKNOWN.
+     * @param result a #GAsyncResult
      */
     trustPromptFinish(result: Gio.AsyncResult): EDataServer.TrustPromptResponse
     /**
      * Asks a user a trust prompt with given `parameters,` and returns what
      * user responded. This blocks until the response is delivered.
+     * @param parameters an #ENamedParameters with values for the trust prompt
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     trustPromptSync(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null): EDataServer.TrustPromptResponse
     /* Methods of GObject-2.0.GObject.Object */
@@ -506,6 +542,10 @@ class Backend {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -516,6 +556,12 @@ class Backend {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -539,6 +585,7 @@ class Backend {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -558,11 +605,14 @@ class Backend {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -570,6 +620,8 @@ class Backend {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -587,6 +639,7 @@ class Backend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -632,6 +685,7 @@ class Backend {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -675,15 +729,20 @@ class Backend {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -724,6 +783,7 @@ class Backend {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -758,6 +818,7 @@ class Backend {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -789,6 +850,7 @@ class Backend {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -810,6 +872,11 @@ class Backend {
     on(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::user-prompter", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-prompter", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::user-prompter", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -830,8 +897,10 @@ class Backend {
 interface BackendFactory_ConstructProps extends EDataServer.Extension_ConstructProps {
 }
 class BackendFactory {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: EDataServer.Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.BackendFactory */
     /**
      * Returns a hash key which uniquely identifies `factory`.
@@ -848,6 +917,7 @@ class BackendFactory {
     getModuleFilename(): string
     /**
      * Returns a new #EBackend instance for `source`.
+     * @param source an #ESource
      */
     newBackend(source: EDataServer.Source): Backend
     /**
@@ -895,6 +965,10 @@ class BackendFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -905,6 +979,12 @@ class BackendFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -928,6 +1008,7 @@ class BackendFactory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -947,11 +1028,14 @@ class BackendFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -959,6 +1043,8 @@ class BackendFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -976,6 +1062,7 @@ class BackendFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1021,6 +1108,7 @@ class BackendFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1064,15 +1152,20 @@ class BackendFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1113,6 +1206,7 @@ class BackendFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1147,6 +1241,7 @@ class BackendFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1178,12 +1273,18 @@ class BackendFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1200,7 +1301,7 @@ interface Cache_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Cache {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.Cache */
     /**
      * Instructs the `cache` to change its revision. In case the revision
@@ -1211,11 +1312,14 @@ class Cache {
     /**
      * Marks all objects as being fully synchronized with the server and
      * removes those which are marked as locally deleted.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     clearOfflineChanges(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Checkes whether the `cache` contains an object with
      * the given `uid`.
+     * @param uid a unique identifier of an object
+     * @param deletedFlag one of #ECacheDeletedFlag enum
      */
     contains(uid: string, deletedFlag: CacheDeletedFlag): boolean
     /**
@@ -1224,6 +1328,9 @@ class Cache {
      * and E_CACHE_COLUMN_STATE columns.
      * 
      * This can be used within the callback of e_cache_foreach_update().
+     * @param columnNames column names
+     * @param columnValues column values
+     * @param otherColumns an #ECacheColumnValues to fill
      */
     copyMissingToColumnValues(columnNames: string[], columnValues: string[], otherColumns: CacheColumnValues): /* otherColumns */ CacheColumnValues
     dupKey(key: string): string
@@ -1239,6 +1346,10 @@ class Cache {
      * 
      * Note the `func` should not call any SQLite commands, because it's invoked
      * within a SELECT statement execution.
+     * @param deletedFlag one of #ECacheDeletedFlag enum
+     * @param whereClause an optional SQLite WHERE clause part, or %NULL
+     * @param func an #ECacheForeachFunc function to call for each object
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     foreach(deletedFlag: CacheDeletedFlag, whereClause: string | null, func: CacheForeachFunc, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1251,6 +1362,10 @@ class Cache {
      * When there are requested any changes by the `func,` this function also
      * calls e_cache_copy_missing_to_column_values() to ensure no descendant
      * column data is lost.
+     * @param deletedFlag one of #ECacheDeletedFlag enum
+     * @param whereClause an optional SQLite WHERE clause part, or %NULL
+     * @param func an #ECacheUpdateFunc function to call for each object
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     foreachUpdate(deletedFlag: CacheDeletedFlag, whereClause: string | null, func: CacheUpdateFunc, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1268,16 +1383,21 @@ class Cache {
      * been requested when calling e_cache_initialize_sync(), if not %NULL.
      * Free the returned #ECacheColumnValues with e_cache_column_values_free(), when
      * no longer needed.
+     * @param uid a unique identifier of an object
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ string | null, /* outRevision */ string | null, /* outOtherColumns */ CacheColumnValues | null ]
     getCount(deletedFlag: CacheDeletedFlag, cancellable?: Gio.Cancellable | null): number
     getFilename(): string
     /**
      * Reads the user `key` value as an integer.
+     * @param key a key name
      */
     getKeyInt(key: string): number
     /**
      * The same as e_cache_get(), only considers also locally deleted objects.
+     * @param uid a unique identifier of an object
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getObjectIncludeDeleted(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ string | null, /* outRevision */ string | null, /* outOtherColumns */ CacheColumnValues | null ]
     /**
@@ -1288,6 +1408,8 @@ class Cache {
      * 
      * Both `out_objects` and `out_revisions` contain newly allocated #GSList, which
      * should be freed with g_slist_free_full (slist, g_free); when no longer needed.
+     * @param deletedFlag one of #ECacheDeletedFlag enum
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getObjects(deletedFlag: CacheDeletedFlag, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outObjects */ string[], /* outRevisions */ string[] | null ]
     /**
@@ -1295,6 +1417,7 @@ class Cache {
      * The returned #GSList contains #ECacheOfflineChange structure.
      * Use e_cache_clear_offline_changes() to clear all offline
      * changes at once.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getOfflineChanges(cancellable?: Gio.Cancellable | null): CacheOfflineChange[]
     getOfflineState(uid: string, cancellable?: Gio.Cancellable | null): OfflineState
@@ -1307,6 +1430,8 @@ class Cache {
      * 
      * Both `out_uids` and `out_revisions` contain newly allocated #GSList, which
      * should be freed with g_slist_free_full (slist, g_free); when no longer needed.
+     * @param deletedFlag one of #ECacheDeletedFlag enum
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getUids(deletedFlag: CacheDeletedFlag, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outUids */ string[], /* outRevisions */ string[] | null ]
     getVersion(): number
@@ -1317,6 +1442,9 @@ class Cache {
      * The `other_columns` are added to the objects table (`E_CACHE_TABLE_OBJECTS)`.
      * Values for these columns are returned by e_cache_get()
      * and can be stored with e_cache_put().
+     * @param filename a filename of an SQLite database to use
+     * @param otherColumns an optional    #GSList with additional columns to add to the objects table
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     initializeSync(filename: string, otherColumns?: CacheColumnInfo[] | null, cancellable?: Gio.Cancellable | null): boolean
     isRevisionChangeFrozen(): boolean
@@ -1324,6 +1452,7 @@ class Cache {
      * Locks the `cache` thus other threads cannot use it.
      * This can be called recursively within one thread.
      * Each call should have its pair e_cache_unlock().
+     * @param lockType an #ECacheLockType
      */
     lock(lockType: CacheLockType): void
     /**
@@ -1333,6 +1462,12 @@ class Cache {
      * to be fully synchronized with the server, regardless of its previous
      * offline state. Overwriting locally deleted object behaves like an addition
      * of a completely new object.
+     * @param uid a unique identifier of an object
+     * @param revision a revision of the object
+     * @param object the object itself
+     * @param otherColumns an #ECacheColumnValues with other columns to set; can be %NULL
+     * @param offlineFlag one of #ECacheOfflineFlag, whether putting this object in offline
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     put(uid: string, revision: string | null, object: string, otherColumns: CacheColumnValues | null, offlineFlag: CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1340,47 +1475,66 @@ class Cache {
      * it can remove also any information about locally made offline changes. Removing
      * the object with %E_CACHE_IS_OFFLINE will still remember it for later use
      * with e_cache_get_offline_changes().
+     * @param uid a unique identifier of an object
+     * @param offlineFlag one of #ECacheOfflineFlag, whether removing the object in offline
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     remove(uid: string, offlineFlag: CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes all objects from the `cache` in one call.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     removeAll(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets a `value` of the user `key,` or deletes it, if the `value` is %NULL.
+     * @param key a key name
+     * @param value a value to set, or %NULL to delete the key
      */
     setKey(key: string, value?: string | null): boolean
     /**
      * Sets an integer `value` for the user `key`.
+     * @param key a key name
+     * @param value an integer value to set
      */
     setKeyInt(key: string, value: number): boolean
     /**
      * Sets an offline `state` for the object identified by `uid`.
+     * @param uid a unique identifier of an object
+     * @param state an #EOfflineState to set
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     setOfflineState(uid: string, state: OfflineState, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the `revision` of the whole `cache`. This is not meant to be
      * used by the descendants, because the revision is updated automatically
      * when needed. The descendants can listen to "revision-changed" signal.
+     * @param revision a revision to set; use %NULL to unset it
      */
     setRevision(revision?: string | null): void
     /**
      * Sets a cache data version. This is meant to be used by the descendants.
      * The `version` should be greater than zero.
+     * @param version a cache data version to set
      */
     setVersion(version: number): void
     /**
      * Executes an SQLite statement. Use e_cache_sqlite_select() for
      * SELECT statements.
+     * @param sqlStmt an SQLite statement to execute
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     sqliteExec(sqlStmt: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Runs vacuum (compacts the database file), if needed.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     sqliteMaybeVacuum(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Executes a SELECT statement `sql_stmt` and calls `func` for each row of the result.
      * Use e_cache_sqlite_exec() for statements which do not return row sets.
+     * @param sqlStmt an SQLite SELECT statement to execute
+     * @param func an #ECacheSelectFunc function to call for each row
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     sqliteSelect(sqlStmt: string, func: CacheSelectFunc, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1393,6 +1547,7 @@ class Cache {
      * The cache locked with #E_CACHE_LOCK_WRITE should use either
      * `action` #E_CACHE_UNLOCK_COMMIT or #E_CACHE_UNLOCK_ROLLBACK,
      * while the #E_CACHE_LOCK_READ should use #E_CACHE_UNLOCK_NONE `action`.
+     * @param action an #ECacheUnlockAction
      */
     unlock(action: CacheUnlockAction): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1430,6 +1585,10 @@ class Cache {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1440,6 +1599,12 @@ class Cache {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1463,6 +1628,7 @@ class Cache {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1482,11 +1648,14 @@ class Cache {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1494,6 +1663,8 @@ class Cache {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1511,6 +1682,7 @@ class Cache {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1556,6 +1728,7 @@ class Cache {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1599,15 +1772,20 @@ class Cache {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1648,6 +1826,7 @@ class Cache {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1682,6 +1861,7 @@ class Cache {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of EBackend-1.2.EBackend.Cache */
@@ -1729,6 +1909,7 @@ class Cache {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1749,6 +1930,7 @@ class Cache {
     static errorQuark(): GLib.Quark
     /**
      * Frees a statement previously constructed with e_cache_sqlite_stmt_printf().
+     * @param stmt a statement to free
      */
     static sqliteStmtFree(stmt: string): void
     static $gtype: GObject.Type
@@ -1756,8 +1938,10 @@ class Cache {
 interface CacheReaper_ConstructProps extends EDataServer.Extension_ConstructProps {
 }
 class CacheReaper {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: EDataServer.Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.CacheReaper */
     /**
      * Let's the `cache_reaper` know about a private directory named `name,`
@@ -1765,6 +1949,7 @@ class CacheReaper {
      * is just a directory name, not a path.
      * 
      * Since 3.18
+     * @param name directory name
      */
     addPrivateDirectory(name: string): void
     /**
@@ -1773,6 +1958,7 @@ class CacheReaper {
      * e_cache_reaper_add_private_directory().
      * 
      * Since 3.18
+     * @param name directory name
      */
     removePrivateDirectory(name: string): void
     /* Methods of EDataServer-1.2.EDataServer.Extension */
@@ -1815,6 +2001,10 @@ class CacheReaper {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1825,6 +2015,12 @@ class CacheReaper {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1848,6 +2044,7 @@ class CacheReaper {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1867,11 +2064,14 @@ class CacheReaper {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1879,6 +2079,8 @@ class CacheReaper {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1896,6 +2098,7 @@ class CacheReaper {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1941,6 +2144,7 @@ class CacheReaper {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1984,15 +2188,20 @@ class CacheReaper {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2033,6 +2242,7 @@ class CacheReaper {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2067,6 +2277,7 @@ class CacheReaper {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -2077,6 +2288,7 @@ class CacheReaper {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extensionType the type of extensions to list
      */
     listExtensions(extensionType: GObject.Type): EDataServer.Extension[]
     /**
@@ -2115,12 +2327,18 @@ class CacheReaper {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2142,19 +2360,22 @@ interface CollectionBackend_ConstructProps extends Backend_ConstructProps {
 class CollectionBackend {
     /* Properties of EBackend-1.2.EBackend.CollectionBackend */
     readonly proxyResolver: Gio.ProxyResolver
+    readonly server: SourceRegistryServer
     /* Properties of EBackend-1.2.EBackend.Backend */
     connectable: Gio.SocketConnectable
     readonly mainContext: GLib.MainContext
     online: boolean
+    readonly source: EDataServer.Source
     readonly userPrompter: UserPrompter
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.CollectionBackend */
     /**
      * Authenticates all enabled children sources with the given `crendetials`.
      * This is usually called when the collection source successfully used
      * the `credentials` to connect to the (possibly) remote data store, to
      * open the childern too. Already connected child sources are skipped.
+     * @param credentials credentials to authenticate with
      */
     authenticateChildren(credentials: EDataServer.NamedParameters): void
     /**
@@ -2199,12 +2420,16 @@ class CollectionBackend {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_collection_backend_create_resource_finish() to get the result of
      * the operation.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     createResource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_collection_backend_create_resource().
      * 
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     createResourceFinish(result: Gio.AsyncResult): boolean
     /**
@@ -2223,6 +2448,8 @@ class CollectionBackend {
      * or a different #ESource instance that describes the new resource.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     createResourceSync(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2237,12 +2464,16 @@ class CollectionBackend {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_collection_backend_delete_resource_finish() to get the result of
      * the operation.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     deleteResource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_collection_backend_delete_resource().
      * 
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     deleteResourceFinish(result: Gio.AsyncResult): boolean
     /**
@@ -2255,6 +2486,8 @@ class CollectionBackend {
      * deleted" notification from the server.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     deleteResourceSync(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2265,6 +2498,7 @@ class CollectionBackend {
      * returns %NULL.
      * 
      * The returned string should be freed with g_free() when no longer needed.
+     * @param childSource an #ESource managed by `backend`
      */
     dupResourceId(childSource: EDataServer.Source): string | null
     /**
@@ -2285,12 +2519,14 @@ class CollectionBackend {
     getCacheDir(): string
     /**
      * Checks whether the `backend` has enabled at least of the `parts`.
+     * @param parts a bit-or of #ECollectionBackendParts with parts to be checked
      */
     getPartEnabled(parts: CollectionBackendParts): boolean
     getPopulateFrozen(): boolean
     /**
      * Returns whether the `source` is a newly created child or not. New sources
      * are remembered between two populate calls only.
+     * @param source a child #ESource
      */
     isNewSource(source: EDataServer.Source): boolean
     /**
@@ -2349,6 +2585,7 @@ class CollectionBackend {
      * 
      * The returned data source should be passed to
      * e_source_registry_server_add_source() to export it over D-Bus.
+     * @param resourceId a stable and unique resource ID
      */
     newChild(resourceId: string): EDataServer.Source
     /**
@@ -2385,12 +2622,19 @@ class CollectionBackend {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_backend_credentials_required_finish() to get the result of the operation.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     credentialsRequired(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_backend_credentials_required().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     credentialsRequiredFinish(result: Gio.AsyncResult): boolean
     /**
@@ -2402,12 +2646,18 @@ class CollectionBackend {
      * method asynchronously.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     credentialsRequiredSync(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Makes sure that the "online" property is updated, that is, if there
      * is any destination reachability test pending, it'll be done immediately
      * and the only state will be updated as well.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     ensureOnlineStateUpdated(cancellable?: Gio.Cancellable | null): void
     /**
@@ -2455,6 +2705,7 @@ class CollectionBackend {
      * returns %TRUE, meaning the destination is always reachable.
      * This uses #GNetworkMonitor<!-- -->'s g_network_monitor_can_reach()
      * for reachability tests.
+     * @param cancellable a #GCancellable instance, or %NULL
      */
     isDestinationReachable(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2488,6 +2739,7 @@ class CollectionBackend {
      * This is usually done automatically, when an 'authenticate' signal is
      * received for the associated #ESource. With %NULL `credentials` an attempt
      * without it is run.
+     * @param credentials a credentials to use to authenticate, or %NULL
      */
     scheduleAuthenticate(credentials?: EDataServer.NamedParameters | null): void
     /**
@@ -2496,6 +2748,12 @@ class CollectionBackend {
      * the call fails. The `who_calls` is a prefix of the console message.
      * This is useful when the caller just wants to start the operation
      * without having actual place where to show the operation result.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param whoCalls an identification who calls this
      */
     scheduleCredentialsRequired(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null, whoCalls?: string | null): void
     /**
@@ -2505,6 +2763,7 @@ class CollectionBackend {
      * The initial value of the #EBackend:connectable property is derived from
      * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
      * property, if the extension is present.
+     * @param connectable a #GSocketConnectable, or %NULL
      */
     setConnectable(connectable: Gio.SocketConnectable): void
     /**
@@ -2515,6 +2774,7 @@ class CollectionBackend {
      * automatically determine whether the network service should be reachable,
      * and hence whether the `backend` is #EBackend:online.  But subclasses may
      * override the online state if, for example, a connection attempt fails.
+     * @param online the online state
      */
     setOnline(online: boolean): void
     /**
@@ -2522,17 +2782,23 @@ class CollectionBackend {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_backend_trust_prompt_finish() to get the result of the operation.
+     * @param parameters an #ENamedParameters with values for the trust prompt
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     trustPrompt(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_backend_trust_prompt().
      * If an error occurred, the function will set `error` and return
      * %E_TRUST_PROMPT_RESPONSE_UNKNOWN.
+     * @param result a #GAsyncResult
      */
     trustPromptFinish(result: Gio.AsyncResult): EDataServer.TrustPromptResponse
     /**
      * Asks a user a trust prompt with given `parameters,` and returns what
      * user responded. This blocks until the response is delivered.
+     * @param parameters an #ENamedParameters with values for the trust prompt
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     trustPromptSync(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null): EDataServer.TrustPromptResponse
     /* Methods of GObject-2.0.GObject.Object */
@@ -2570,6 +2836,10 @@ class CollectionBackend {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2580,6 +2850,12 @@ class CollectionBackend {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2603,6 +2879,7 @@ class CollectionBackend {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2622,11 +2899,14 @@ class CollectionBackend {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2634,6 +2914,8 @@ class CollectionBackend {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2651,6 +2933,7 @@ class CollectionBackend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2696,6 +2979,7 @@ class CollectionBackend {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2739,15 +3023,20 @@ class CollectionBackend {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2788,6 +3077,7 @@ class CollectionBackend {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2822,6 +3112,7 @@ class CollectionBackend {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of EBackend-1.2.EBackend.CollectionBackend */
@@ -2833,6 +3124,7 @@ class CollectionBackend {
      * You can think of this as a filtered version of
      * #ESourceRegistryServer's #ESourceRegistryServer::source-added
      * signal which only lets through sources relevant to `backend`.
+     * @param childSource the newly-added child #EServerSideSource
      */
     connect(sigName: "child-added", callback: ((childSource: ServerSideSource) => void)): number
     on(sigName: "child-added", callback: (childSource: ServerSideSource) => void, after?: boolean): NodeJS.EventEmitter
@@ -2847,6 +3139,7 @@ class CollectionBackend {
      * You can think of this as a filtered version of
      * #ESourceRegistryServer's #ESourceRegistryServer::source-removed
      * signal which only lets through sources relevant to `backend`.
+     * @param childSource the child #EServerSideSource that got removed
      */
     connect(sigName: "child-removed", callback: ((childSource: ServerSideSource) => void)): number
     on(sigName: "child-removed", callback: (childSource: ServerSideSource) => void, after?: boolean): NodeJS.EventEmitter
@@ -2882,6 +3175,7 @@ class CollectionBackend {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2893,6 +3187,11 @@ class CollectionBackend {
     on(sigName: "notify::proxy-resolver", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::proxy-resolver", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::proxy-resolver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::server", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::server", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::connectable", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connectable", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::connectable", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2908,6 +3207,11 @@ class CollectionBackend {
     on(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::user-prompter", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-prompter", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::user-prompter", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2928,8 +3232,10 @@ class CollectionBackend {
 interface CollectionBackendFactory_ConstructProps extends BackendFactory_ConstructProps {
 }
 class CollectionBackendFactory {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: EDataServer.Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.CollectionBackendFactory */
     /**
      * Convenience function to populate a set of #ESource instances with mail
@@ -2937,6 +3243,9 @@ class CollectionBackendFactory {
      * used for vendor-specific collection backends like Google or Yahoo! where
      * the host, port, and security details are known ahead of time and only
      * user-specific information needs to be filled in.
+     * @param mailAccountSource an #ESource to hold mail account information
+     * @param mailIdentitySource an #ESource to hold mail identity information
+     * @param mailTransportSource an #ESource to hold mail transport information
      */
     prepareMail(mailAccountSource: EDataServer.Source, mailIdentitySource: EDataServer.Source, mailTransportSource: EDataServer.Source): void
     /* Methods of EBackend-1.2.EBackend.BackendFactory */
@@ -2955,6 +3264,7 @@ class CollectionBackendFactory {
     getModuleFilename(): string
     /**
      * Returns a new #EBackend instance for `source`.
+     * @param source an #ESource
      */
     newBackend(source: EDataServer.Source): Backend
     /**
@@ -3002,6 +3312,10 @@ class CollectionBackendFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3012,6 +3326,12 @@ class CollectionBackendFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3035,6 +3355,7 @@ class CollectionBackendFactory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3054,11 +3375,14 @@ class CollectionBackendFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3066,6 +3390,8 @@ class CollectionBackendFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3083,6 +3409,7 @@ class CollectionBackendFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3128,6 +3455,7 @@ class CollectionBackendFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3171,15 +3499,20 @@ class CollectionBackendFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3220,6 +3553,7 @@ class CollectionBackendFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3254,6 +3588,7 @@ class CollectionBackendFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3285,12 +3620,18 @@ class CollectionBackendFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3307,7 +3648,7 @@ interface DBusServer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DBusServer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.DBusServer */
     /**
      * Increases the use count of `server`.
@@ -3326,6 +3667,7 @@ class DBusServer {
      * 
      * By default the `server` will quit its main loop and cause
      * e_dbus_server_run() to return `code`.
+     * @param code an #EDBusServerExitCode
      */
     quit(code: DBusServerExitCode): void
     /**
@@ -3348,6 +3690,7 @@ class DBusServer {
      * If `wait_for_client` is %TRUE, the `server` will continue running until
      * the first client connection is made instead of quitting on its own if
      * no client connection is made within the first few seconds.
+     * @param waitForClient continue running until a client connects
      */
     run(waitForClient: boolean): DBusServerExitCode
     /* Methods of GObject-2.0.GObject.Object */
@@ -3385,6 +3728,10 @@ class DBusServer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3395,6 +3742,12 @@ class DBusServer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3418,6 +3771,7 @@ class DBusServer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3437,11 +3791,14 @@ class DBusServer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3449,6 +3806,8 @@ class DBusServer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3466,6 +3825,7 @@ class DBusServer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3511,6 +3871,7 @@ class DBusServer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3554,15 +3915,20 @@ class DBusServer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3603,6 +3969,7 @@ class DBusServer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3637,6 +4004,7 @@ class DBusServer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -3647,6 +4015,7 @@ class DBusServer {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extensionType the type of extensions to list
      */
     listExtensions(extensionType: GObject.Type): EDataServer.Extension[]
     /**
@@ -3659,6 +4028,7 @@ class DBusServer {
     /* Signals of EBackend-1.2.EBackend.DBusServer */
     /**
      * Emitted when `server` acquires a connection to the session bus.
+     * @param connection the #GDBusConnection to the session bus
      */
     connect(sigName: "bus-acquired", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-acquired", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -3667,6 +4037,7 @@ class DBusServer {
     emit(sigName: "bus-acquired", connection: Gio.DBusConnection): void
     /**
      * Emitted when `server` acquires its well-known session bus name.
+     * @param connection the #GDBusConnection to the session bus
      */
     connect(sigName: "bus-name-acquired", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-name-acquired", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -3676,6 +4047,7 @@ class DBusServer {
     /**
      * Emitted when `server` loses its well-known session bus name
      * or the session bus connection has been closed.
+     * @param connection the #GDBusconnection to the session bus,              or %NULL if the connection has been closed
      */
     connect(sigName: "bus-name-lost", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-name-lost", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -3684,6 +4056,7 @@ class DBusServer {
     emit(sigName: "bus-name-lost", connection: Gio.DBusConnection): void
     /**
      * Emitted to request that `server` quit its main loop.
+     * @param code an #EDBusServerExitCode
      */
     connect(sigName: "quit-server", callback: ((code: DBusServerExitCode) => void)): number
     on(sigName: "quit-server", callback: (code: DBusServerExitCode) => void, after?: boolean): NodeJS.EventEmitter
@@ -3728,6 +4101,7 @@ class DBusServer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3753,9 +4127,11 @@ interface DataFactory_ConstructProps extends DBusServer_ConstructProps {
 }
 class DataFactory {
     /* Properties of EBackend-1.2.EBackend.DataFactory */
+    readonly backendPerProcess: number
     readonly registry: EDataServer.SourceRegistry
+    readonly reloadSupported: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.DataFactory */
     backendClosed(backend: Backend): void
     backendClosedBySender(backend: Backend, sender: string): void
@@ -3769,6 +4145,8 @@ class DataFactory {
      * 
      * Free the returned pointer with g_object_unref(), if not NULL and no longer
      * needed.
+     * @param backendFactory 
+     * @param source 
      */
     createBackend(backendFactory: BackendFactory, source: EDataServer.Source): Backend | null
     getBackendPerProcess(): number
@@ -3800,6 +4178,8 @@ class DataFactory {
      * The returned #EBackendFactory is referenced for thread-safety.
      * Unreference the #EBackendFactory with g_object_unref() when finished
      * with it.
+     * @param backendName a backend name
+     * @param extensionName an extension name
      */
     refBackendFactory(backendName: string, extensionName: string): BackendFactory | null
     /**
@@ -3807,6 +4187,10 @@ class DataFactory {
      * of the new subprocess to the client, in the way the client can talk
      * directly to the running backend. If the backend already has a subprocess
      * running, the used object path is returned to the client.
+     * @param invocation a #GDBusMethodInvocation
+     * @param uid an #ESource UID
+     * @param extensionName an extension name
+     * @param subprocessPath a path of an executable responsible for running the subprocess
      */
     spawnSubprocessBackend(invocation: Gio.DBusMethodInvocation, uid: string, extensionName: string, subprocessPath: string): void
     useBackendPerProcess(): boolean
@@ -3828,6 +4212,7 @@ class DataFactory {
      * 
      * By default the `server` will quit its main loop and cause
      * e_dbus_server_run() to return `code`.
+     * @param code an #EDBusServerExitCode
      */
     quit(code: DBusServerExitCode): void
     /**
@@ -3850,6 +4235,7 @@ class DataFactory {
      * If `wait_for_client` is %TRUE, the `server` will continue running until
      * the first client connection is made instead of quitting on its own if
      * no client connection is made within the first few seconds.
+     * @param waitForClient continue running until a client connects
      */
     run(waitForClient: boolean): DBusServerExitCode
     /* Methods of GObject-2.0.GObject.Object */
@@ -3887,6 +4273,10 @@ class DataFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3897,6 +4287,12 @@ class DataFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3920,6 +4316,7 @@ class DataFactory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3939,11 +4336,14 @@ class DataFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3951,6 +4351,8 @@ class DataFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3968,6 +4370,7 @@ class DataFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4013,6 +4416,7 @@ class DataFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4056,15 +4460,20 @@ class DataFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4105,6 +4514,7 @@ class DataFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4139,6 +4549,7 @@ class DataFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -4149,6 +4560,7 @@ class DataFactory {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extensionType the type of extensions to list
      */
     listExtensions(extensionType: GObject.Type): EDataServer.Extension[]
     /**
@@ -4198,11 +4610,13 @@ class DataFactory {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of EBackend-1.2.EBackend.DBusServer */
     /**
      * Emitted when `server` acquires a connection to the session bus.
+     * @param connection the #GDBusConnection to the session bus
      */
     connect(sigName: "bus-acquired", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-acquired", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -4211,6 +4625,7 @@ class DataFactory {
     emit(sigName: "bus-acquired", connection: Gio.DBusConnection): void
     /**
      * Emitted when `server` acquires its well-known session bus name.
+     * @param connection the #GDBusConnection to the session bus
      */
     connect(sigName: "bus-name-acquired", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-name-acquired", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -4220,6 +4635,7 @@ class DataFactory {
     /**
      * Emitted when `server` loses its well-known session bus name
      * or the session bus connection has been closed.
+     * @param connection the #GDBusconnection to the session bus,              or %NULL if the connection has been closed
      */
     connect(sigName: "bus-name-lost", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-name-lost", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -4228,6 +4644,7 @@ class DataFactory {
     emit(sigName: "bus-name-lost", connection: Gio.DBusConnection): void
     /**
      * Emitted to request that `server` quit its main loop.
+     * @param code an #EDBusServerExitCode
      */
     connect(sigName: "quit-server", callback: ((code: DBusServerExitCode) => void)): number
     on(sigName: "quit-server", callback: (code: DBusServerExitCode) => void, after?: boolean): NodeJS.EventEmitter
@@ -4272,17 +4689,28 @@ class DataFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::backend-per-process", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::backend-per-process", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::backend-per-process", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::backend-per-process", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::backend-per-process", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::registry", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::registry", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::reload-supported", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reload-supported", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::reload-supported", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::reload-supported", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::reload-supported", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4298,6 +4726,9 @@ class DataFactory {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -4310,12 +4741,19 @@ interface FileCache_ConstructProps extends GObject.Object_ConstructProps {
     filename?: string
 }
 class FileCache {
+    /* Properties of EBackend-1.2.EBackend.FileCache */
+    /**
+     * The filename of the cache.
+     */
+    readonly filename: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.FileCache */
     /**
      * Adds a new `key` / `value` entry to `cache`.  If an object corresponding
      * to `key` already exists in `cache,` the function returns %FALSE.
+     * @param key the hash key of the object to add
+     * @param value the object to add
      */
     addObject(key: string, value: string): boolean
     /**
@@ -4338,6 +4776,7 @@ class FileCache {
     /**
      * Returns the object corresponding to `key`.  If no such object exists
      * in `cache,` the function returns %NULL.
+     * @param key the hash key of the object to find
      */
     getObject(key: string): string | null
     /**
@@ -4352,11 +4791,14 @@ class FileCache {
     /**
      * Removes the object corresponding to `key` from `cache`.
      * If no such object exists in `cache,` the function returns %FALSE.
+     * @param key the hash key of the object to remove
      */
     removeObject(key: string): boolean
     /**
      * Replaces the object corresponding to `key` with `new_value`.
      * If no such object exists in `cache,` the function returns %FALSE.
+     * @param key the hash key of the object to replace
+     * @param newValue the new object for `key`
      */
     replaceObject(key: string, newValue: string): boolean
     /**
@@ -4399,6 +4841,10 @@ class FileCache {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4409,6 +4855,12 @@ class FileCache {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4432,6 +4884,7 @@ class FileCache {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4451,11 +4904,14 @@ class FileCache {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4463,6 +4919,8 @@ class FileCache {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4480,6 +4938,7 @@ class FileCache {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4525,6 +4984,7 @@ class FileCache {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4568,15 +5028,20 @@ class FileCache {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4617,6 +5082,7 @@ class FileCache {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4651,6 +5117,7 @@ class FileCache {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4682,12 +5149,18 @@ class FileCache {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4716,19 +5189,23 @@ interface ServerSideSource_ConstructProps extends EDataServer.Source_ConstructPr
 class ServerSideSource {
     /* Properties of EBackend-1.2.EBackend.ServerSideSource */
     readonly exported: boolean
+    readonly file: Gio.File
     oauth2Support: OAuth2Support
     remoteCreatable: boolean
     remoteDeletable: boolean
     removable: boolean
+    readonly server: SourceRegistryServer
     writable: boolean
     writeDirectory: string
     /* Properties of EDataServer-1.2.EDataServer.Source */
     readonly connectionStatus: EDataServer.SourceConnectionStatus
     displayName: string
     enabled: boolean
+    readonly mainContext: GLib.MainContext
     parent: string
+    readonly uid: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.ServerSideSource */
     /**
      * Returns whether `source` has been exported over D-Bus.
@@ -4775,6 +5252,7 @@ class ServerSideSource {
      * 
      * If a read error occurs or the file contains syntax errors, the function
      * sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     load(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4796,6 +5274,7 @@ class ServerSideSource {
      * 
      * Requests for OAuth 2.0 access tokens are forwarded to `oauth2`_support,
      * which implements the #EOAuth2SupportInterface.
+     * @param oauth2Support an #EOAuth2Support object, or %NULL
      */
     setOauth2Support(oauth2Support?: OAuth2Support | null): void
     /**
@@ -4810,6 +5289,7 @@ class ServerSideSource {
      * Unlike the #ESource:removable and #ESource:writable properties, this
      * is enforced for both clients of the registry D-Bus service and within
      * the registry D-Bus service itself.
+     * @param remoteCreatable whether to export the RemoteCreatable interface
      */
     setRemoteCreatable(remoteCreatable: boolean): void
     /**
@@ -4825,6 +5305,7 @@ class ServerSideSource {
      * Unlike the #ESource:removable and #ESource:writable properties, this
      * is enforced for both clients of the registry D-Bus server and within
      * the registry D-Bus service itself.
+     * @param remoteDeletable whether to export the RemoteDeletable interface
      */
     setRemoteDeletable(remoteDeletable: boolean): void
     /**
@@ -4836,6 +5317,7 @@ class ServerSideSource {
      * 
      * Note this is only enforced for clients of the registry D-Bus service.
      * The service itself may remove any data source at any time.
+     * @param removable whether to export the Removable interface
      */
     setRemovable(removable: boolean): void
     /**
@@ -4847,6 +5329,7 @@ class ServerSideSource {
      * 
      * Note this is only enforced for clients of the registry D-Bus service.
      * The service itself can write to any data source at any time.
+     * @param writable whether to export the Writable interface
      */
     setWritable(writable: boolean): void
     /**
@@ -4856,6 +5339,7 @@ class ServerSideSource {
      * e_server_side_source_get_user_dir(), but an #ECollectionBackend may wish
      * to override this to use its own private cache directory for data sources
      * it creates automatically.
+     * @param writeDirectory the directory where changes are to be written
      */
     setWriteDirectory(writeDirectory: string): void
     /* Methods of EDataServer-1.2.EDataServer.Source */
@@ -4866,6 +5350,7 @@ class ServerSideSource {
      * 
      * Call this function immediately after creating a new #CamelService with
      * camel_session_add_service().
+     * @param service a #CamelService
      */
     camelConfigureService(service: Camel.Service): void
     /**
@@ -4879,6 +5364,7 @@ class ServerSideSource {
     /**
      * Compares two #ESource instances by their display names.  Useful for
      * ordering sources in a user interface.
+     * @param source2 the second #ESource
      */
     compareByDisplayName(source2: EDataServer.Source): number
     /**
@@ -4888,6 +5374,8 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_delete_password_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     deletePassword(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -4897,6 +5385,7 @@ class ServerSideSource {
      * itself completed successfully, not whether a password was found and
      * deleted.  If no password was found, the function will still return
      * %TRUE.  If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     deletePasswordFinish(result: Gio.AsyncResult): boolean
     /**
@@ -4908,6 +5397,7 @@ class ServerSideSource {
      * itself completed successfully, not whether a password was found and
      * deleted.  If no password was found, the function will still return
      * %TRUE.  If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     deletePasswordSync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4940,11 +5430,16 @@ class ServerSideSource {
      * Emits localy (in this process only) the ESource::credentials-required
      * signal with given parameters. That's the difference with e_source_invoke_credentials_required(),
      * which calls the signal globally, within each client.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
      */
     emitCredentialsRequired(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null): void
     /**
      * Checks two #ESource instances for equality.  #ESource instances are
      * equal if their unique identifier strings are equal.
+     * @param source2 the second #ESource
      */
     equal(source2: EDataServer.Source): boolean
     /**
@@ -4984,6 +5479,7 @@ class ServerSideSource {
      * Extension instances are owned by their #ESource and should not be
      * referenced directly.  Instead, reference the #ESource instance and
      * use this function to fetch the extension instance as needed.
+     * @param extensionName an extension name
      */
     getExtension(extensionName: string): EDataServer.SourceExtension
     /**
@@ -4995,6 +5491,8 @@ class ServerSideSource {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_get_last_credentials_required_arguments_finish() to get
      * the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     getLastCredentialsRequiredArguments(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5003,6 +5501,7 @@ class ServerSideSource {
      * about the output arguments.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     getLastCredentialsRequiredArgumentsFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outReason */ EDataServer.SourceCredentialsReason, /* outCertificatePem */ string, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outOpError */ GLib.Error ]
     /**
@@ -5013,6 +5512,7 @@ class ServerSideSource {
      * 
      * If an error occurs, the function sets `error` and returns %FALSE. The result gchar
      * values should be freed with g_free() when no longer needed.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getLastCredentialsRequiredArgumentsSync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outReason */ EDataServer.SourceCredentialsReason, /* outCertificatePem */ string, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outOpError */ GLib.Error ]
     /**
@@ -5022,6 +5522,8 @@ class ServerSideSource {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_get_oauth2_access_token_finish() to get the result of the
      * operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request            is satisfied
      */
     getOauth2AccessToken(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5029,6 +5531,7 @@ class ServerSideSource {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     getOauth2AccessTokenFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     /**
@@ -5037,6 +5540,7 @@ class ServerSideSource {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getOauth2AccessTokenSync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     /**
@@ -5080,6 +5584,7 @@ class ServerSideSource {
     getWritable(): boolean
     /**
      * Checks whether `source` has an #ESourceExtension with the given name.
+     * @param extensionName an extension name
      */
     hasExtension(extensionName: string): boolean
     /**
@@ -5095,12 +5600,16 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_invoke_authenticate_finish() to get the result of the operation.
+     * @param credentials an #ENamedParameters structure with credentials to use; can be %NULL    to use those from the last call
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     invokeAuthenticate(credentials?: EDataServer.NamedParameters | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_invoke_authenticate().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     invokeAuthenticateFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5108,6 +5617,8 @@ class ServerSideSource {
      * knows what credentials to use to connect to its (possibly remote) data store.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param credentials an #ENamedParameters structure with credentials to use; can be %NULL    to use those from the last call
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     invokeAuthenticateSync(credentials?: EDataServer.NamedParameters | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5116,12 +5627,19 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_invoke_credentials_required_finish() to get the result of the operation.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     invokeCredentialsRequired(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_invoke_credentials_required().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     invokeCredentialsRequiredFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5143,6 +5661,11 @@ class ServerSideSource {
      * It is not possible to connect to it at the moment usually.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     invokeCredentialsRequiredSync(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5153,6 +5676,8 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_lookup_password_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     lookupPassword(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5163,6 +5688,7 @@ class ServerSideSource {
      * no password was found, the function will set `out_password` to %NULL
      * but still return %TRUE.  If an error occurs, the function sets `error`
      * and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     lookupPasswordFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outPassword */ string | null ]
     /**
@@ -5175,6 +5701,7 @@ class ServerSideSource {
      * no password was found, the function will set `out_password` to %NULL
      * but still return %TRUE.  If an error occurs, the function sets `error`
      * and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lookupPasswordSync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPassword */ string | null ]
     /**
@@ -5188,6 +5715,9 @@ class ServerSideSource {
      * When the operation is finished, `callback` will be called.  You can
      * then call e_source_mail_signature_load_finish() to get the result of
      * the operation.
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     mailSignatureLoad(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5195,6 +5725,7 @@ class ServerSideSource {
      * signature file contents are placed in `contents,` and `length` is set to
      * the size of the `contents` string.  The `contents` string should be freed
      * with g_free() when no longer needed.
+     * @param result a #GAsyncResult
      */
     mailSignatureLoadFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* contents */ string, /* length */ number | null ]
     /**
@@ -5207,6 +5738,7 @@ class ServerSideSource {
      * If the signature file is executable, it will be executed and its output
      * captured as the email signature content.  If the signature file is not
      * executable, the email signature content is read directly from the file.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mailSignatureLoadSync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* contents */ string, /* length */ number | null ]
     /**
@@ -5217,16 +5749,25 @@ class ServerSideSource {
      * When the operation is finished, `callback` will be called.  You can
      * then call e_source_mail_signature_replace_finish() to get the result
      * of the operation.
+     * @param contents the signature contents
+     * @param length the length of `contents` in bytes
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     mailSignatureReplace(contents: string, length: number, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with e_source_mail_signature_replace().
+     * @param result a #GAsyncResult
      */
     mailSignatureReplaceFinish(result: Gio.AsyncResult): boolean
     /**
      * Replaces the signature file for `source` with the given `contents`
      * of `length` bytes.  The signature file for `source` is given by
      * e_source_mail_signature_get_file().
+     * @param contents the signature contents
+     * @param length the length of `contents` in bytes
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mailSignatureReplaceSync(contents: string, length: number, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5238,10 +5779,15 @@ class ServerSideSource {
      * When the operation is finished, `callback` will be called.  You can
      * then call e_source_mail_signature_symlink_finish() to get the result
      * of the operation.
+     * @param symlinkTarget executable filename to link to
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     mailSignatureSymlink(symlinkTarget: string, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with e_source_mail_signature_symlink().
+     * @param result a #GAsyncResult
      */
     mailSignatureSymlinkFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5249,6 +5795,8 @@ class ServerSideSource {
      * `symlink_target,` which should be an executable file that prints
      * a mail signature to standard output.  The signature file for
      * `source` is given by e_source_mail_signature_get_file().
+     * @param symlinkTarget executable filename to link to
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mailSignatureSymlinkSync(symlinkTarget: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5257,12 +5805,16 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_proxy_lookup_finish() to get the result of the operation.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     proxyLookup(uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_proxy_lookup().
      * 
      * Free the returned proxy URIs with g_strfreev() when finished with them.
+     * @param result a #GAsyncResult
      */
     proxyLookupFinish(result: Gio.AsyncResult): string[] | null
     /**
@@ -5290,6 +5842,8 @@ class ServerSideSource {
      * `error` to `G_IO_ERROR_NOT_SUPPORTED` and returns %NULL.
      * 
      * Free the returned proxy URIs with g_strfreev() when finished with them.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     proxyLookupSync(uri: string, cancellable?: Gio.Cancellable | null): string[] | null
     /**
@@ -5319,6 +5873,8 @@ class ServerSideSource {
      * The returned ID can be passed to e_source_refresh_remove_timeout() to
      * remove the timeout from `context`.  Note the ID is a private handle and
      * cannot be passed to g_source_remove().
+     * @param context a #GMainContext, or %NULL (if %NULL, the default           context will be used)
+     * @param callback function to call on each timeout
      */
     refreshAddTimeout(context: GLib.MainContext | null, callback: EDataServer.SourceRefreshFunc): number
     /**
@@ -5333,11 +5889,13 @@ class ServerSideSource {
     refreshForceTimeout(): void
     /**
      * Removes a timeout #GSource added by e_source_refresh_add_timeout().
+     * @param refreshTimeoutId a refresh timeout ID
      */
     refreshRemoveTimeout(refreshTimeoutId: number): boolean
     /**
      * Removes all timeout #GSource's added by e_source_refresh_add_timeout()
      * whose callback data pointer matches `user_data`.
+     * @param userData user data to match against timeout callbacks
      */
     refreshRemoveTimeoutsByData(userData?: object | null): number
     /**
@@ -5352,11 +5910,15 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remote_create_finish() to get the result of the operation.
+     * @param scratchSource an #ESource describing the resource to create
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     remoteCreate(scratchSource: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remote_create().  If
      * an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     remoteCreateFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5370,6 +5932,8 @@ class ServerSideSource {
      * possibly a server-side path or ID for the resource.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param scratchSource an #ESource describing the resource to create
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     remoteCreateSync(scratchSource: EDataServer.Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5380,11 +5944,14 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remote_delete_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     remoteDelete(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remote_delete().  If
      * an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     remoteDeleteFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5394,6 +5961,7 @@ class ServerSideSource {
      * similar to e_source_remove_sync().
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     remoteDeleteSync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5403,11 +5971,14 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remove_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remove().  If an
      * error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     removeFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5416,10 +5987,12 @@ class ServerSideSource {
      * must be #ESource:removable.
      * 
      * If an error occurs, the functon will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     removeSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Set's current connection status of the `source`.
+     * @param connectionStatus one of the #ESourceConnectionStatus
      */
     setConnectionStatus(connectionStatus: EDataServer.SourceConnectionStatus): void
     /**
@@ -5429,6 +6002,7 @@ class ServerSideSource {
      * 
      * The internal copy of `display_name` is automatically stripped of leading
      * and trailing whitespace.
+     * @param displayName a display name
      */
     setDisplayName(displayName: string): void
     /**
@@ -5437,6 +6011,7 @@ class ServerSideSource {
      * An application should try to honor this setting if at all possible,
      * even if it does not provide a way to change the setting through its
      * user interface.  Disabled data sources should generally be hidden.
+     * @param enabled whether to enable `source`
      */
     setEnabled(enabled: boolean): void
     /**
@@ -5446,6 +6021,7 @@ class ServerSideSource {
      * The internal copy of #ESource:parent is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param parent the UID of the parent #ESource, or %NULL
      */
     setParent(parent?: string | null): void
     /**
@@ -5459,10 +6035,15 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_store_password_finish() to get the result of the operation.
+     * @param password the password to store
+     * @param permanently store permanently or just for the session
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     storePassword(password: string, permanently: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_store_password().
+     * @param result a #GAsyncResult
      */
     storePasswordFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5473,6 +6054,9 @@ class ServerSideSource {
      * If `permanently` is %TRUE, the password is stored in the default keyring.
      * Otherwise the password is stored in the memory-only session keyring.  If
      * an error occurs, the function sets `error` and returns %FALSE.
+     * @param password the password to store
+     * @param permanently store permanently or just for the session
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     storePasswordSync(password: string, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5488,18 +6072,22 @@ class ServerSideSource {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_unset_last_credentials_required_arguments_finish() to get
      * the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     unsetLastCredentialsRequiredArguments(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_unset_last_credentials_required_arguments().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     unsetLastCredentialsRequiredArgumentsFinish(result: Gio.AsyncResult): boolean
     /**
      * Unsets the last used arguments of the 'credentials-required' signal emission.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     unsetLastCredentialsRequiredArgumentsSync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5509,11 +6097,14 @@ class ServerSideSource {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_write_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     write(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_write().  If an
      * error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     writeFinish(result: Gio.AsyncResult): boolean
     /**
@@ -5522,6 +6113,7 @@ class ServerSideSource {
      * be #ESource:writable.
      * 
      * If an error occurs, the functon will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     writeSync(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -5559,6 +6151,10 @@ class ServerSideSource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5569,6 +6165,12 @@ class ServerSideSource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5592,6 +6194,7 @@ class ServerSideSource {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5611,11 +6214,14 @@ class ServerSideSource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5623,6 +6229,8 @@ class ServerSideSource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5640,6 +6248,7 @@ class ServerSideSource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5685,6 +6294,7 @@ class ServerSideSource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5728,15 +6338,20 @@ class ServerSideSource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5777,6 +6392,7 @@ class ServerSideSource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5811,6 +6427,7 @@ class ServerSideSource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -5853,6 +6470,7 @@ class ServerSideSource {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of Gio-2.0.Gio.ProxyResolver */
@@ -5878,23 +6496,30 @@ class ServerSideSource {
      * `direct://` is used when no proxy is needed.
      * Direct connection should not be attempted unless it is part of the
      * returned array of proxies.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable a #GCancellable, or %NULL
      */
     lookup(uri: string, cancellable?: Gio.Cancellable | null): string[]
     /**
      * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
      * details.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to call after resolution completes
      */
     lookupAsync(uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Call this function to obtain the array of proxy URIs when
      * g_proxy_resolver_lookup_async() is complete. See
      * g_proxy_resolver_lookup() for more details.
+     * @param result the result passed to your #GAsyncReadyCallback
      */
     lookupFinish(result: Gio.AsyncResult): string[]
     /* Signals of EDataServer-1.2.EDataServer.Source */
     /**
      * Let's the backend know provided credentials to use to login
      * to (possibly remote) data store.
+     * @param credentials an #ENamedParameters with provided credentials
      */
     connect(sigName: "authenticate", callback: ((credentials: EDataServer.NamedParameters) => void)): number
     on(sigName: "authenticate", callback: (credentials: EDataServer.NamedParameters) => void, after?: boolean): NodeJS.EventEmitter
@@ -5917,6 +6542,10 @@ class ServerSideSource {
      * requires credentials to connect to (possibly remote)
      * data store. The credentials can be passed to the backend using
      * e_source_invoke_authenticate() function.
+     * @param reason an #ESourceCredentialsReason indicating why the credentials are requested
+     * @param certificatePem PEM-encoded secure connection certificate for failed SSL/TLS checks
+     * @param certificateErrors what failed with the SSL/TLS certificate
+     * @param error a text description of the error, if any
      */
     connect(sigName: "credentials-required", callback: ((reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, error: GLib.Error) => void)): number
     on(sigName: "credentials-required", callback: (reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -5952,6 +6581,7 @@ class ServerSideSource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5963,6 +6593,11 @@ class ServerSideSource {
     on(sigName: "notify::exported", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::exported", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::exported", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::oauth2-support", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::oauth2-support", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::oauth2-support", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5983,6 +6618,11 @@ class ServerSideSource {
     on(sigName: "notify::removable", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::removable", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::removable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::server", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::server", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::writable", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::writable", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::writable", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -6008,11 +6648,21 @@ class ServerSideSource {
     on(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::main-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::main-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::parent", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::parent", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::uid", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uid", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::uid", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::uid", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::uid", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6041,18 +6691,23 @@ class ServerSideSource {
      * Unreference the #GFile with g_object_unref() when finished with it.
      * 
      * Note the data source file itself is not created here, only its name.
+     * @param uid unique identifier for a data source, or %NULL
      */
     static newUserFile(uid?: string | null): Gio.File
     /**
      * Extracts a unique identity string from the base name of `file`.
      * If the base name of `file` is missing a '.source' extension, the
      * function sets `error` and returns %NULL.
+     * @param file a #GFile for a data source
      */
     static uidFromFile(file: Gio.File): string | null
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     /**
@@ -6064,17 +6719,24 @@ class ServerSideSource {
 interface ServerSideSourceCredentialsProvider_ConstructProps extends EDataServer.SourceCredentialsProvider_ConstructProps {
 }
 class ServerSideSourceCredentialsProvider {
+    /* Properties of EDataServer-1.2.EDataServer.SourceCredentialsProvider */
+    /**
+     * The Source Registry object, which can be either #ESourceregistry or #ESourceRegistryServer.
+     */
+    readonly registry: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceCredentialsProvider */
     /**
      * Returns whether a credentials prompt can be shown for the `source`.
+     * @param source an #ESource
      */
     canPrompt(source: EDataServer.Source): boolean
     /**
      * Returns whether the `source` can store its credentials. When %FALSE is returned,
      * an attempt to call e_source_credentials_provider_store() or
      * e_source_credentials_provider_store_sync() will fail for this `source`.
+     * @param source an #ESource
      */
     canStore(source: EDataServer.Source): boolean
     /**
@@ -6083,18 +6745,24 @@ class ServerSideSourceCredentialsProvider {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_credentials_provider_delete_finish() to get the result
      * of the operation.
+     * @param source an #ESource, to lookup credentials for
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     delete(source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_credentials_provider_delete().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     deleteFinish(result: Gio.AsyncResult): boolean
     /**
      * Deletes any previously stored credentials for `source`.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource, to store credentials for
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     deleteSync(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -6103,18 +6771,24 @@ class ServerSideSourceCredentialsProvider {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_credentials_provider_lookup_finish() to get the result
      * of the operation.
+     * @param source an #ESource, to lookup credentials for
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     lookup(source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_credentials_provider_lookup().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     lookupFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outCredentials */ EDataServer.NamedParameters ]
     /**
      * Looks up the credentials for `source`.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource, to lookup credentials for
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lookupSync(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCredentials */ EDataServer.NamedParameters ]
     /**
@@ -6123,6 +6797,7 @@ class ServerSideSourceCredentialsProvider {
      * are usually stored on the collection source, thus shared between child
      * sources. When ther eis no such parent source, a %NULL is returned, which
      * means the `source` holds credentials for itself.
+     * @param source an #ESource
      */
     refCredentialsSource(source: EDataServer.Source): EDataServer.Source | null
     /**
@@ -6131,11 +6806,13 @@ class ServerSideSourceCredentialsProvider {
     refRegistry(): GObject.Object
     /**
      * Returns referenced #ESource with the given `uid,` or %NULL, when it could not be found.
+     * @param uid an #ESource UID
      */
     refSource(uid: string): EDataServer.Source | null
     /**
      * Registers a credentials provider implementation and adds its own reference on
      * the `provider_impl`.
+     * @param providerImpl an #ESourceCredentialsProviderImpl
      */
     registerImpl(providerImpl: EDataServer.SourceCredentialsProviderImpl): boolean
     /**
@@ -6146,12 +6823,18 @@ class ServerSideSourceCredentialsProvider {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_credentials_provider_store_finish() to get the result
      * of the operation.
+     * @param source an #ESource, to lookup credentials for
+     * @param credentials an #ENamedParameters with credentials to store
+     * @param permanently store permanently or just for the session
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     store(source: EDataServer.Source, credentials: EDataServer.NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_credentials_provider_store().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     storeFinish(result: Gio.AsyncResult): boolean
     /**
@@ -6160,12 +6843,17 @@ class ServerSideSourceCredentialsProvider {
      * are stored for each `source`.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource, to store credentials for
+     * @param credentials an #ENamedParameters with credentials to store
+     * @param permanently store permanently or just for the session
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     storeSync(source: EDataServer.Source, credentials: EDataServer.NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Unregisters previously registered `provider_impl` with
      * e_source_credentials_provider_register_impl(). Function does nothing,
      * when the `provider_impl` is not registered.
+     * @param providerImpl an #ESourceCredentialsProviderImpl
      */
     unregisterImpl(providerImpl: EDataServer.SourceCredentialsProviderImpl): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6203,6 +6891,10 @@ class ServerSideSourceCredentialsProvider {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6213,6 +6905,12 @@ class ServerSideSourceCredentialsProvider {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6236,6 +6934,7 @@ class ServerSideSourceCredentialsProvider {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6255,11 +6954,14 @@ class ServerSideSourceCredentialsProvider {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6267,6 +6969,8 @@ class ServerSideSourceCredentialsProvider {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6284,6 +6988,7 @@ class ServerSideSourceCredentialsProvider {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6329,6 +7034,7 @@ class ServerSideSourceCredentialsProvider {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6372,15 +7078,20 @@ class ServerSideSourceCredentialsProvider {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6421,6 +7132,7 @@ class ServerSideSourceCredentialsProvider {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6455,6 +7167,7 @@ class ServerSideSourceCredentialsProvider {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -6465,6 +7178,7 @@ class ServerSideSourceCredentialsProvider {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extensionType the type of extensions to list
      */
     listExtensions(extensionType: GObject.Type): EDataServer.Extension[]
     /**
@@ -6503,12 +7217,18 @@ class ServerSideSourceCredentialsProvider {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::registry", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::registry", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6529,12 +7249,15 @@ interface SourceRegistryServer_ConstructProps extends DataFactory_ConstructProps
 }
 class SourceRegistryServer {
     /* Properties of EBackend-1.2.EBackend.DataFactory */
+    readonly backendPerProcess: number
     readonly registry: EDataServer.SourceRegistry
+    readonly reloadSupported: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.SourceRegistryServer */
     /**
      * Adds `source` to `server`.
+     * @param source an #ESource
      */
     addSource(source: EDataServer.Source): void
     /**
@@ -6557,6 +7280,8 @@ class SourceRegistryServer {
      * Note the function returns the #ESource containing the #ESourceExtension
      * instead of the #ESourceExtension itself because extension instances are
      * not to be referenced directly (see e_source_get_extension()).
+     * @param source an #ESource
+     * @param extensionName the extension name to find
      */
     findExtension(source: EDataServer.Source, extensionName: string): EDataServer.Source | null
     getOauth2Services(): EDataServer.OAuth2Services
@@ -6575,6 +7300,7 @@ class SourceRegistryServer {
      *   g_list_free_full (list, g_object_unref);
      * ```
      * 
+     * @param extensionName an extension name, or %NULL
      */
     listSources(extensionName?: string | null): EDataServer.Source[]
     /**
@@ -6586,10 +7312,14 @@ class SourceRegistryServer {
      * If the #E_SOURCE_PERMISSION_REMOVABLE flag is given, then the `server`
      * will emit signals on the D-Bus interface when key files are created or
      * deleted in `path`.
+     * @param path the path to the directory to load
+     * @param flags permission flags for files loaded from `path`
      */
     loadDirectory(path: string, flags: SourcePermissionFlags): boolean
     /**
      * Emits the #ESourceRegistryServer::load-error signal.
+     * @param file the #GFile that failed to load
+     * @param error a #GError describing the load error
      */
     loadError(file: Gio.File, error: GLib.Error): void
     /**
@@ -6598,6 +7328,8 @@ class SourceRegistryServer {
      * 
      * The returned #ESource is referenced for thread-safety.  Unreference
      * the #ESource with g_object_unref() when finished with it.
+     * @param file the data source key file to load
+     * @param flags initial permission flags for the data source
      */
     loadFile(file: Gio.File, flags: SourcePermissionFlags): EDataServer.Source | null
     /**
@@ -6606,6 +7338,9 @@ class SourceRegistryServer {
      * Because multiple errors can occur when loading multiple files, `error` is
      * only set if `path` is invalid.  If a key file fails to load, the error is
      * broadcast through the #ESourceRegistryServer::load-error signal.
+     * @param resource a #GResource containing data source key files
+     * @param path the path to the data source key files inside `resource`
+     * @param flags permission flags for files loaded from `path`
      */
     loadResource(resource: Gio.Resource, path: string, flags: SourcePermissionFlags): boolean
     /**
@@ -6619,6 +7354,7 @@ class SourceRegistryServer {
      * The returned #ECollectionBackend is referenced for thread-safety.
      * Unreference the #ECollectionBackend with g_object_unref() when finished
      * with it.
+     * @param source an #ESource
      */
     refBackend(source: EDataServer.Source): CollectionBackend | null
     /**
@@ -6631,6 +7367,7 @@ class SourceRegistryServer {
      * The returned #ECollectionBackendFactory is referenced for thread-safety.
      * Unreference the #ECollectionBackendFactory with g_object_unref() when
      * finished with it.
+     * @param source an #ESource
      */
     refBackendFactory(source: EDataServer.Source): CollectionBackendFactory | null
     /**
@@ -6650,10 +7387,12 @@ class SourceRegistryServer {
      * 
      * The returned #ESource is referenced for thread-safety and must be
      * unreferenced with g_object_unref() when finished with it.
+     * @param uid a unique identifier string
      */
     refSource(uid: string): EDataServer.Source | null
     /**
      * Removes `source` and all of its descendants from `server`.
+     * @param source an #ESource
      */
     removeSource(source: EDataServer.Source): void
     /* Methods of EBackend-1.2.EBackend.DataFactory */
@@ -6669,6 +7408,8 @@ class SourceRegistryServer {
      * 
      * Free the returned pointer with g_object_unref(), if not NULL and no longer
      * needed.
+     * @param backendFactory 
+     * @param source 
      */
     createBackend(backendFactory: BackendFactory, source: EDataServer.Source): Backend | null
     getBackendPerProcess(): number
@@ -6700,6 +7441,8 @@ class SourceRegistryServer {
      * The returned #EBackendFactory is referenced for thread-safety.
      * Unreference the #EBackendFactory with g_object_unref() when finished
      * with it.
+     * @param backendName a backend name
+     * @param extensionName an extension name
      */
     refBackendFactory(backendName: string, extensionName: string): BackendFactory | null
     /**
@@ -6707,6 +7450,10 @@ class SourceRegistryServer {
      * of the new subprocess to the client, in the way the client can talk
      * directly to the running backend. If the backend already has a subprocess
      * running, the used object path is returned to the client.
+     * @param invocation a #GDBusMethodInvocation
+     * @param uid an #ESource UID
+     * @param extensionName an extension name
+     * @param subprocessPath a path of an executable responsible for running the subprocess
      */
     spawnSubprocessBackend(invocation: Gio.DBusMethodInvocation, uid: string, extensionName: string, subprocessPath: string): void
     useBackendPerProcess(): boolean
@@ -6728,6 +7475,7 @@ class SourceRegistryServer {
      * 
      * By default the `server` will quit its main loop and cause
      * e_dbus_server_run() to return `code`.
+     * @param code an #EDBusServerExitCode
      */
     quit(code: DBusServerExitCode): void
     /**
@@ -6750,6 +7498,7 @@ class SourceRegistryServer {
      * If `wait_for_client` is %TRUE, the `server` will continue running until
      * the first client connection is made instead of quitting on its own if
      * no client connection is made within the first few seconds.
+     * @param waitForClient continue running until a client connects
      */
     run(waitForClient: boolean): DBusServerExitCode
     /* Methods of GObject-2.0.GObject.Object */
@@ -6787,6 +7536,10 @@ class SourceRegistryServer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6797,6 +7550,12 @@ class SourceRegistryServer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6820,6 +7579,7 @@ class SourceRegistryServer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6839,11 +7599,14 @@ class SourceRegistryServer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6851,6 +7614,8 @@ class SourceRegistryServer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6868,6 +7633,7 @@ class SourceRegistryServer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6913,6 +7679,7 @@ class SourceRegistryServer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6956,15 +7723,20 @@ class SourceRegistryServer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7005,6 +7777,7 @@ class SourceRegistryServer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7039,6 +7812,7 @@ class SourceRegistryServer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of EBackend-1.2.EBackend.OAuth2Support */
@@ -7049,6 +7823,9 @@ class SourceRegistryServer {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_oauth2_support_get_access_token_finish() to get the result of the
      * operation.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     getAccessToken(source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7056,6 +7833,7 @@ class SourceRegistryServer {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     getAccessTokenFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     /**
@@ -7064,6 +7842,8 @@ class SourceRegistryServer {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getAccessTokenSync(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -7074,6 +7854,7 @@ class SourceRegistryServer {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extensionType the type of extensions to list
      */
     listExtensions(extensionType: GObject.Type): EDataServer.Extension[]
     /**
@@ -7123,6 +7904,7 @@ class SourceRegistryServer {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of EBackend-1.2.EBackend.SourceRegistryServer */
@@ -7139,6 +7921,8 @@ class SourceRegistryServer {
     /**
      * Emitted when an error occurs while loading or parsing a
      * data source key file.
+     * @param file the #GFile being loaded
+     * @param error a #GError describing the error
      */
     connect(sigName: "load-error", callback: ((file: Gio.File, error: GLib.Error) => void)): number
     on(sigName: "load-error", callback: (file: Gio.File, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -7147,6 +7931,7 @@ class SourceRegistryServer {
     emit(sigName: "load-error", file: Gio.File, error: GLib.Error): void
     /**
      * Emitted when an #EServerSideSource is added to `server`.
+     * @param source the newly-added #EServerSideSource
      */
     connect(sigName: "source-added", callback: ((source: ServerSideSource) => void)): number
     on(sigName: "source-added", callback: (source: ServerSideSource) => void, after?: boolean): NodeJS.EventEmitter
@@ -7155,6 +7940,7 @@ class SourceRegistryServer {
     emit(sigName: "source-added", source: ServerSideSource): void
     /**
      * Emitted when an #EServerSideSource is removed from `server`.
+     * @param source the #EServerSideSource that got removed
      */
     connect(sigName: "source-removed", callback: ((source: ServerSideSource) => void)): number
     on(sigName: "source-removed", callback: (source: ServerSideSource) => void, after?: boolean): NodeJS.EventEmitter
@@ -7173,6 +7959,8 @@ class SourceRegistryServer {
      * 
      * The return value is cumulative.  If any signal handler returns
      * %TRUE, the `key_file` content is written back to disk.
+     * @param keyFile a #GKeyFile
+     * @param uid a unique identifier string for `key_file`
      */
     connect(sigName: "tweak-key-file", callback: ((keyFile: GLib.KeyFile, uid: string) => boolean)): number
     on(sigName: "tweak-key-file", callback: (keyFile: GLib.KeyFile, uid: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -7182,6 +7970,7 @@ class SourceRegistryServer {
     /* Signals of EBackend-1.2.EBackend.DBusServer */
     /**
      * Emitted when `server` acquires a connection to the session bus.
+     * @param connection the #GDBusConnection to the session bus
      */
     connect(sigName: "bus-acquired", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-acquired", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -7190,6 +7979,7 @@ class SourceRegistryServer {
     emit(sigName: "bus-acquired", connection: Gio.DBusConnection): void
     /**
      * Emitted when `server` acquires its well-known session bus name.
+     * @param connection the #GDBusConnection to the session bus
      */
     connect(sigName: "bus-name-acquired", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-name-acquired", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -7199,6 +7989,7 @@ class SourceRegistryServer {
     /**
      * Emitted when `server` loses its well-known session bus name
      * or the session bus connection has been closed.
+     * @param connection the #GDBusconnection to the session bus,              or %NULL if the connection has been closed
      */
     connect(sigName: "bus-name-lost", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-name-lost", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -7207,6 +7998,7 @@ class SourceRegistryServer {
     emit(sigName: "bus-name-lost", connection: Gio.DBusConnection): void
     /**
      * Emitted to request that `server` quit its main loop.
+     * @param code an #EDBusServerExitCode
      */
     connect(sigName: "quit-server", callback: ((code: DBusServerExitCode) => void)): number
     on(sigName: "quit-server", callback: (code: DBusServerExitCode) => void, after?: boolean): NodeJS.EventEmitter
@@ -7251,17 +8043,28 @@ class SourceRegistryServer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::backend-per-process", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::backend-per-process", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::backend-per-process", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::backend-per-process", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::backend-per-process", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::registry", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::registry", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::registry", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::reload-supported", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reload-supported", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::reload-supported", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::reload-supported", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::reload-supported", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7278,6 +8081,9 @@ class SourceRegistryServer {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -7288,7 +8094,7 @@ class SubprocessFactory {
     /* Properties of EBackend-1.2.EBackend.SubprocessFactory */
     readonly registry: EDataServer.SourceRegistry
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.SubprocessFactory */
     /**
      * Calls e_backend_prepare_shutdown() for the list of used backends.
@@ -7304,6 +8110,12 @@ class SubprocessFactory {
     getRegistry(): EDataServer.SourceRegistry
     /**
      * Returns the #EBackend data D-Bus object path
+     * @param connection a #GDBusConnection
+     * @param uid UID of an #ESource to open
+     * @param backendFactoryTypeName the name of the backend factory type
+     * @param moduleFilename the name (full-path) of the backend module to be loaded
+     * @param proxy a #GDBusInterfaceSkeleton, used to communicate to the subprocess backend
+     * @param cancellable a #GCancellable
      */
     openBackend(connection: Gio.DBusConnection, uid: string, backendFactoryTypeName: string, moduleFilename: string, proxy: Gio.DBusInterfaceSkeleton, cancellable?: Gio.Cancellable | null): string
     /**
@@ -7318,11 +8130,17 @@ class SubprocessFactory {
      * 
      * If no suitable #EBackendFactory exists, or if the #EBackend fails to
      * initialize, the function sets `error` and returns %NULL.
+     * @param uid UID of an #ESource to open
+     * @param backendFactoryTypeName the name of the backend factory type
+     * @param moduleFilename the name (full-path) of the backend module to be loaded
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     refInitableBackend(uid: string, backendFactoryTypeName: string, moduleFilename: string, cancellable?: Gio.Cancellable | null): Backend | null
     /**
      * Installs a toggle reference on the backend, that can receive a signal to
      * shutdown once all client connections are closed.
+     * @param backend an #EBackend
+     * @param proxy a #GDBusInterfaceSkeleton, used to communicate to the subprocess backend
      */
     setBackendCallbacks(backend: Backend, proxy: Gio.DBusInterfaceSkeleton): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7360,6 +8178,10 @@ class SubprocessFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7370,6 +8192,12 @@ class SubprocessFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7393,6 +8221,7 @@ class SubprocessFactory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7412,11 +8241,14 @@ class SubprocessFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7424,6 +8256,8 @@ class SubprocessFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7441,6 +8275,7 @@ class SubprocessFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7486,6 +8321,7 @@ class SubprocessFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7529,15 +8365,20 @@ class SubprocessFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7578,6 +8419,7 @@ class SubprocessFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7612,6 +8454,7 @@ class SubprocessFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -7654,6 +8497,7 @@ class SubprocessFactory {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -7685,6 +8529,7 @@ class SubprocessFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7716,6 +8561,9 @@ class SubprocessFactory {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -7724,7 +8572,7 @@ interface UserPrompter_ConstructProps extends GObject.Object_ConstructProps {
 }
 class UserPrompter {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.UserPrompter */
     /**
      * Asynchronously prompt a user for a decision on an extension-provided dialog.
@@ -7737,6 +8585,10 @@ class UserPrompter {
      * call e_user_prompter_extension_prompt_finish() to get the result of the operation.
      * If there is no extension providing given dialog name, the operation finishes with
      * a G_IO_ERROR, G_IO_ERROR_NOT_FOUND #GError.
+     * @param dialogName name of a dialog to invoke
+     * @param inParameters optional parameters to pass to extension; can be %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     extensionPrompt(dialogName: string, inParameters?: EDataServer.NamedParameters | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7750,6 +8602,8 @@ class UserPrompter {
      * If an error occurred, the function sets `error` and returns -1. If there is
      * no extension providing given dialog name, the operation finishes with
      * a G_IO_ERROR, G_IO_ERROR_NOT_FOUND `error`.
+     * @param result a #GAsyncResult
+     * @param outValues Where to store values from the extension, or %NULL
      */
     extensionPromptFinish(result: Gio.AsyncResult, outValues?: EDataServer.NamedParameters | null): number
     /**
@@ -7768,6 +8622,10 @@ class UserPrompter {
      * If an error occurred, the function sets `error` and returns -1. If there is
      * no extension providing given dialog name, the operation finishes with
      * a G_IO_ERROR, G_IO_ERROR_NOT_FOUND `error`.
+     * @param dialogName name of a dialog to invoke
+     * @param inParameters optional parameters to pass to extension; can be %NULL
+     * @param outValues Where to store values from the extension, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     extensionPromptSync(dialogName: string, inParameters?: EDataServer.NamedParameters | null, outValues?: EDataServer.NamedParameters | null, cancellable?: Gio.Cancellable | null): number
     /**
@@ -7781,12 +8639,21 @@ class UserPrompter {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_user_prompter_prompt_finish() to get the result of the operation.
+     * @param type type of the prompt; can be %NULL
+     * @param title window title of the prompt; can be %NULL
+     * @param primaryText primary text of the prompt; can be %NULL
+     * @param secondaryText secondary text of the prompt; can be %NULL
+     * @param useMarkup whether both texts are with markup
+     * @param buttonCaptions captions of buttons to    use in the message; can be %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     prompt(type: string | null, title: string | null, primaryText: string | null, secondaryText: string | null, useMarkup: boolean, buttonCaptions?: string[] | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_user_prompter_prompt().
      * 
      * If an error occurred, the function sets `error` and returns -1.
+     * @param result a #GAsyncResult
      */
     promptFinish(result: Gio.AsyncResult): number
     /**
@@ -7799,6 +8666,13 @@ class UserPrompter {
      * the prompt, a "Dismiss" button.
      * 
      * If an error occurred, the function sets `error` and returns -1.
+     * @param type type of the prompt; can be %NULL
+     * @param title window title of the prompt; can be %NULL
+     * @param primaryText primary text of the prompt; can be %NULL
+     * @param secondaryText secondary text of the prompt; can be %NULL
+     * @param useMarkup whether both texts are with markup
+     * @param buttonCaptions captions of buttons to    use in the message; can be %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     promptSync(type: string | null, title: string | null, primaryText: string | null, secondaryText: string | null, useMarkup: boolean, buttonCaptions?: string[] | null, cancellable?: Gio.Cancellable | null): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -7836,6 +8710,10 @@ class UserPrompter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7846,6 +8724,12 @@ class UserPrompter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7869,6 +8753,7 @@ class UserPrompter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7888,11 +8773,14 @@ class UserPrompter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7900,6 +8788,8 @@ class UserPrompter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7917,6 +8807,7 @@ class UserPrompter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7962,6 +8853,7 @@ class UserPrompter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8005,15 +8897,20 @@ class UserPrompter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8054,6 +8951,7 @@ class UserPrompter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8088,6 +8986,7 @@ class UserPrompter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8119,6 +9018,7 @@ class UserPrompter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8143,7 +9043,7 @@ interface UserPrompterServer_ConstructProps extends DBusServer_ConstructProps {
 }
 class UserPrompterServer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.UserPrompterServer */
     /**
      * Registers `extension` as a provider of `dialog_name` dialog. The names
@@ -8153,6 +9053,8 @@ class UserPrompterServer {
      * 
      * Extensions providing multiple dialogs call this function multiple
      * times, for each dialog name separately.
+     * @param extension an #EUserPrompterServerExtension descendant
+     * @param dialogName name of a dialog, which the `extensions` implement
      */
     register(extension: EDataServer.Extension, dialogName: string): boolean
     /**
@@ -8161,6 +9063,9 @@ class UserPrompterServer {
      * used to close the prompt.
      * 
      * The `extension_values` is ignored for non-extension prompts.
+     * @param promptId Id of a prompt, which was responded
+     * @param response Response of the prompt
+     * @param extensionValues For extension prompts can pass extra return values
      */
     response(promptId: number, response: number, extensionValues?: EDataServer.NamedParameters | null): void
     /* Methods of EBackend-1.2.EBackend.DBusServer */
@@ -8181,6 +9086,7 @@ class UserPrompterServer {
      * 
      * By default the `server` will quit its main loop and cause
      * e_dbus_server_run() to return `code`.
+     * @param code an #EDBusServerExitCode
      */
     quit(code: DBusServerExitCode): void
     /**
@@ -8203,6 +9109,7 @@ class UserPrompterServer {
      * If `wait_for_client` is %TRUE, the `server` will continue running until
      * the first client connection is made instead of quitting on its own if
      * no client connection is made within the first few seconds.
+     * @param waitForClient continue running until a client connects
      */
     run(waitForClient: boolean): DBusServerExitCode
     /* Methods of GObject-2.0.GObject.Object */
@@ -8240,6 +9147,10 @@ class UserPrompterServer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8250,6 +9161,12 @@ class UserPrompterServer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8273,6 +9190,7 @@ class UserPrompterServer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8292,11 +9210,14 @@ class UserPrompterServer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8304,6 +9225,8 @@ class UserPrompterServer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8321,6 +9244,7 @@ class UserPrompterServer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8366,6 +9290,7 @@ class UserPrompterServer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8409,15 +9334,20 @@ class UserPrompterServer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8458,6 +9388,7 @@ class UserPrompterServer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8492,6 +9423,7 @@ class UserPrompterServer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -8502,6 +9434,7 @@ class UserPrompterServer {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extensionType the type of extensions to list
      */
     listExtensions(extensionType: GObject.Type): EDataServer.Extension[]
     /**
@@ -8520,6 +9453,7 @@ class UserPrompterServer {
     /* Signals of EBackend-1.2.EBackend.DBusServer */
     /**
      * Emitted when `server` acquires a connection to the session bus.
+     * @param connection the #GDBusConnection to the session bus
      */
     connect(sigName: "bus-acquired", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-acquired", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -8528,6 +9462,7 @@ class UserPrompterServer {
     emit(sigName: "bus-acquired", connection: Gio.DBusConnection): void
     /**
      * Emitted when `server` acquires its well-known session bus name.
+     * @param connection the #GDBusConnection to the session bus
      */
     connect(sigName: "bus-name-acquired", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-name-acquired", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -8537,6 +9472,7 @@ class UserPrompterServer {
     /**
      * Emitted when `server` loses its well-known session bus name
      * or the session bus connection has been closed.
+     * @param connection the #GDBusconnection to the session bus,              or %NULL if the connection has been closed
      */
     connect(sigName: "bus-name-lost", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "bus-name-lost", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -8545,6 +9481,7 @@ class UserPrompterServer {
     emit(sigName: "bus-name-lost", connection: Gio.DBusConnection): void
     /**
      * Emitted to request that `server` quit its main loop.
+     * @param code an #EDBusServerExitCode
      */
     connect(sigName: "quit-server", callback: ((code: DBusServerExitCode) => void)): number
     on(sigName: "quit-server", callback: (code: DBusServerExitCode) => void, after?: boolean): NodeJS.EventEmitter
@@ -8589,6 +9526,7 @@ class UserPrompterServer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8612,8 +9550,10 @@ class UserPrompterServer {
 interface UserPrompterServerExtension_ConstructProps extends EDataServer.Extension_ConstructProps {
 }
 class UserPrompterServerExtension {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: EDataServer.Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.UserPrompterServerExtension */
     /**
      * Instructs extension to show dialog `dialog_name`. If it cannot be found,
@@ -8629,6 +9569,9 @@ class UserPrompterServerExtension {
      * 
      * Note: The function call should not block main loop, it should
      * just show dialog and return.
+     * @param promptId Prompt identificator, which is used in call to e_user_prompter_server_extension_response()
+     * @param dialogName Name of a dialog to run
+     * @param parameters Optional extension parameters for the dialog, as passed by a caller
      */
     prompt(promptId: number, dialogName: string, parameters?: EDataServer.NamedParameters | null): boolean
     /**
@@ -8637,6 +9580,9 @@ class UserPrompterServerExtension {
      * The `response` and `values` is known only to the caller and to the dialog implementor,
      * it's not interpretted nor checked for correctness in any way in #EUserPrompterServer.
      * The only limitation of `values` is that the array elements are strings.
+     * @param promptId Prompt identificator
+     * @param response Response of the prompt
+     * @param values Additional response values, if extension defines any
      */
     response(promptId: number, response: number, values?: EDataServer.NamedParameters | null): void
     /* Methods of EDataServer-1.2.EDataServer.Extension */
@@ -8679,6 +9625,10 @@ class UserPrompterServerExtension {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8689,6 +9639,12 @@ class UserPrompterServerExtension {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8712,6 +9668,7 @@ class UserPrompterServerExtension {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8731,11 +9688,14 @@ class UserPrompterServerExtension {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8743,6 +9703,8 @@ class UserPrompterServerExtension {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8760,6 +9722,7 @@ class UserPrompterServerExtension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8805,6 +9768,7 @@ class UserPrompterServerExtension {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8848,15 +9812,20 @@ class UserPrompterServerExtension {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8897,6 +9866,7 @@ class UserPrompterServerExtension {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8931,6 +9901,7 @@ class UserPrompterServerExtension {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8962,12 +9933,18 @@ class UserPrompterServerExtension {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extensible", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8985,13 +9962,15 @@ interface WebDAVCollectionBackend_ConstructProps extends CollectionBackend_Const
 class WebDAVCollectionBackend {
     /* Properties of EBackend-1.2.EBackend.CollectionBackend */
     readonly proxyResolver: Gio.ProxyResolver
+    readonly server: SourceRegistryServer
     /* Properties of EBackend-1.2.EBackend.Backend */
     connectable: Gio.SocketConnectable
     readonly mainContext: GLib.MainContext
     online: boolean
+    readonly source: EDataServer.Source
     readonly userPrompter: UserPrompter
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of EBackend-1.2.EBackend.WebDAVCollectionBackend */
     /**
      * This function is usually called in EBackend::authenticate_sync() implementation
@@ -9000,6 +9979,10 @@ class WebDAVCollectionBackend {
      * The `calendar_url` covers all calendars, memo lists and task lists.
      * 
      * The function also takes care of e_collection_backend_authenticate_children() on success.
+     * @param calendarUrl a URL to search calendars at, or %NULL
+     * @param contactsUrl a URL to search contacts at, or %NULL
+     * @param credentials credentials to use when running the discovery
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     discoverSync(calendarUrl: string | null, contactsUrl: string | null, credentials: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null): [ /* returnType */ EDataServer.SourceAuthenticationResult, /* outCertificatePem */ string | null, /* outCertificateErrors */ Gio.TlsCertificateFlags | null ]
     /**
@@ -9008,6 +9991,7 @@ class WebDAVCollectionBackend {
      * when the `source` is not part of the backend and should be removed instead.
      * The default implementation allows all sources, which has %ESourceResource
      * extension defined.
+     * @param source an #ESource
      */
     getResourceId(source: EDataServer.Source): string | null
     isCustomSource(source: EDataServer.Source): boolean
@@ -9017,6 +10001,7 @@ class WebDAVCollectionBackend {
      * This is usually called when the collection source successfully used
      * the `credentials` to connect to the (possibly) remote data store, to
      * open the childern too. Already connected child sources are skipped.
+     * @param credentials credentials to authenticate with
      */
     authenticateChildren(credentials: EDataServer.NamedParameters): void
     /**
@@ -9061,12 +10046,16 @@ class WebDAVCollectionBackend {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_collection_backend_create_resource_finish() to get the result of
      * the operation.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     createResource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_collection_backend_create_resource().
      * 
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     createResourceFinish(result: Gio.AsyncResult): boolean
     /**
@@ -9085,6 +10074,8 @@ class WebDAVCollectionBackend {
      * or a different #ESource instance that describes the new resource.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     createResourceSync(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9099,12 +10090,16 @@ class WebDAVCollectionBackend {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_collection_backend_delete_resource_finish() to get the result of
      * the operation.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     deleteResource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_collection_backend_delete_resource().
      * 
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     deleteResourceFinish(result: Gio.AsyncResult): boolean
     /**
@@ -9117,6 +10112,8 @@ class WebDAVCollectionBackend {
      * deleted" notification from the server.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     deleteResourceSync(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9127,6 +10124,7 @@ class WebDAVCollectionBackend {
      * returns %NULL.
      * 
      * The returned string should be freed with g_free() when no longer needed.
+     * @param childSource an #ESource managed by `backend`
      */
     dupResourceId(childSource: EDataServer.Source): string | null
     /**
@@ -9147,12 +10145,14 @@ class WebDAVCollectionBackend {
     getCacheDir(): string
     /**
      * Checks whether the `backend` has enabled at least of the `parts`.
+     * @param parts a bit-or of #ECollectionBackendParts with parts to be checked
      */
     getPartEnabled(parts: CollectionBackendParts): boolean
     getPopulateFrozen(): boolean
     /**
      * Returns whether the `source` is a newly created child or not. New sources
      * are remembered between two populate calls only.
+     * @param source a child #ESource
      */
     isNewSource(source: EDataServer.Source): boolean
     /**
@@ -9211,6 +10211,7 @@ class WebDAVCollectionBackend {
      * 
      * The returned data source should be passed to
      * e_source_registry_server_add_source() to export it over D-Bus.
+     * @param resourceId a stable and unique resource ID
      */
     newChild(resourceId: string): EDataServer.Source
     /**
@@ -9247,12 +10248,19 @@ class WebDAVCollectionBackend {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_backend_credentials_required_finish() to get the result of the operation.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     credentialsRequired(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_backend_credentials_required().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     credentialsRequiredFinish(result: Gio.AsyncResult): boolean
     /**
@@ -9264,12 +10272,18 @@ class WebDAVCollectionBackend {
      * method asynchronously.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     credentialsRequiredSync(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Makes sure that the "online" property is updated, that is, if there
      * is any destination reachability test pending, it'll be done immediately
      * and the only state will be updated as well.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     ensureOnlineStateUpdated(cancellable?: Gio.Cancellable | null): void
     /**
@@ -9317,6 +10331,7 @@ class WebDAVCollectionBackend {
      * returns %TRUE, meaning the destination is always reachable.
      * This uses #GNetworkMonitor<!-- -->'s g_network_monitor_can_reach()
      * for reachability tests.
+     * @param cancellable a #GCancellable instance, or %NULL
      */
     isDestinationReachable(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9350,6 +10365,7 @@ class WebDAVCollectionBackend {
      * This is usually done automatically, when an 'authenticate' signal is
      * received for the associated #ESource. With %NULL `credentials` an attempt
      * without it is run.
+     * @param credentials a credentials to use to authenticate, or %NULL
      */
     scheduleAuthenticate(credentials?: EDataServer.NamedParameters | null): void
     /**
@@ -9358,6 +10374,12 @@ class WebDAVCollectionBackend {
      * the call fails. The `who_calls` is a prefix of the console message.
      * This is useful when the caller just wants to start the operation
      * without having actual place where to show the operation result.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificatePem PEM-encoded secure connection certificate, or an empty string
+     * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param opError a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param whoCalls an identification who calls this
      */
     scheduleCredentialsRequired(reason: EDataServer.SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError?: GLib.Error | null, cancellable?: Gio.Cancellable | null, whoCalls?: string | null): void
     /**
@@ -9367,6 +10389,7 @@ class WebDAVCollectionBackend {
      * The initial value of the #EBackend:connectable property is derived from
      * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
      * property, if the extension is present.
+     * @param connectable a #GSocketConnectable, or %NULL
      */
     setConnectable(connectable: Gio.SocketConnectable): void
     /**
@@ -9377,6 +10400,7 @@ class WebDAVCollectionBackend {
      * automatically determine whether the network service should be reachable,
      * and hence whether the `backend` is #EBackend:online.  But subclasses may
      * override the online state if, for example, a connection attempt fails.
+     * @param online the online state
      */
     setOnline(online: boolean): void
     /**
@@ -9384,17 +10408,23 @@ class WebDAVCollectionBackend {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_backend_trust_prompt_finish() to get the result of the operation.
+     * @param parameters an #ENamedParameters with values for the trust prompt
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     trustPrompt(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_backend_trust_prompt().
      * If an error occurred, the function will set `error` and return
      * %E_TRUST_PROMPT_RESPONSE_UNKNOWN.
+     * @param result a #GAsyncResult
      */
     trustPromptFinish(result: Gio.AsyncResult): EDataServer.TrustPromptResponse
     /**
      * Asks a user a trust prompt with given `parameters,` and returns what
      * user responded. This blocks until the response is delivered.
+     * @param parameters an #ENamedParameters with values for the trust prompt
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     trustPromptSync(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null): EDataServer.TrustPromptResponse
     /* Methods of GObject-2.0.GObject.Object */
@@ -9432,6 +10462,10 @@ class WebDAVCollectionBackend {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9442,6 +10476,12 @@ class WebDAVCollectionBackend {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9465,6 +10505,7 @@ class WebDAVCollectionBackend {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9484,11 +10525,14 @@ class WebDAVCollectionBackend {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9496,6 +10540,8 @@ class WebDAVCollectionBackend {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9513,6 +10559,7 @@ class WebDAVCollectionBackend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9558,6 +10605,7 @@ class WebDAVCollectionBackend {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9601,15 +10649,20 @@ class WebDAVCollectionBackend {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9650,6 +10703,7 @@ class WebDAVCollectionBackend {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9684,6 +10738,7 @@ class WebDAVCollectionBackend {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of EBackend-1.2.EBackend.CollectionBackend */
@@ -9695,6 +10750,7 @@ class WebDAVCollectionBackend {
      * You can think of this as a filtered version of
      * #ESourceRegistryServer's #ESourceRegistryServer::source-added
      * signal which only lets through sources relevant to `backend`.
+     * @param childSource the newly-added child #EServerSideSource
      */
     connect(sigName: "child-added", callback: ((childSource: ServerSideSource) => void)): number
     on(sigName: "child-added", callback: (childSource: ServerSideSource) => void, after?: boolean): NodeJS.EventEmitter
@@ -9709,6 +10765,7 @@ class WebDAVCollectionBackend {
      * You can think of this as a filtered version of
      * #ESourceRegistryServer's #ESourceRegistryServer::source-removed
      * signal which only lets through sources relevant to `backend`.
+     * @param childSource the child #EServerSideSource that got removed
      */
     connect(sigName: "child-removed", callback: ((childSource: ServerSideSource) => void)): number
     on(sigName: "child-removed", callback: (childSource: ServerSideSource) => void, after?: boolean): NodeJS.EventEmitter
@@ -9744,6 +10801,7 @@ class WebDAVCollectionBackend {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9755,6 +10813,11 @@ class WebDAVCollectionBackend {
     on(sigName: "notify::proxy-resolver", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::proxy-resolver", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::proxy-resolver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::server", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::server", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::server", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::connectable", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connectable", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::connectable", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -9770,6 +10833,11 @@ class WebDAVCollectionBackend {
     on(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::user-prompter", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-prompter", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::user-prompter", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -9789,23 +10857,23 @@ class WebDAVCollectionBackend {
 }
 abstract class BackendClass {
     /* Fields of EBackend-1.2.EBackend.BackendClass */
-    readonly getDestinationAddress: (backend: Backend) => [ /* returnType */ boolean, /* host */ string, /* port */ number ]
-    readonly prepareShutdown: (backend: Backend) => void
-    readonly authenticateSync: (backend: Backend, credentials: EDataServer.NamedParameters, outCertificatePem: string, outCertificateErrors: Gio.TlsCertificateFlags, cancellable?: Gio.Cancellable | null) => EDataServer.SourceAuthenticationResult
+    getDestinationAddress: (backend: Backend) => [ /* returnType */ boolean, /* host */ string, /* port */ number ]
+    prepareShutdown: (backend: Backend) => void
+    authenticateSync: (backend: Backend, credentials: EDataServer.NamedParameters, outCertificatePem: string, outCertificateErrors: Gio.TlsCertificateFlags, cancellable?: Gio.Cancellable | null) => EDataServer.SourceAuthenticationResult
     static name: string
 }
 abstract class BackendFactoryClass {
     /* Fields of EBackend-1.2.EBackend.BackendFactoryClass */
-    readonly getHashKey: (factory: BackendFactory) => string
-    readonly newBackend: (factory: BackendFactory, source: EDataServer.Source) => Backend
+    getHashKey: (factory: BackendFactory) => string
+    newBackend: (factory: BackendFactory, source: EDataServer.Source) => Backend
     /**
      * An #EModule associated with this backend factory
      */
-    readonly eModule: object
+    eModule: object
     /**
      * Whether subporcesses for this backend factory should share one process
      */
-    readonly shareSubprocess: boolean
+    shareSubprocess: boolean
     static name: string
 }
 class BackendFactoryPrivate {
@@ -9816,20 +10884,20 @@ class BackendPrivate {
 }
 abstract class CacheClass {
     /* Fields of EBackend-1.2.EBackend.CacheClass */
-    readonly putLocked: (cache: Cache, uid: string, revision: string, object: string, otherColumns: CacheColumnValues, offlineState: OfflineState, isReplace: boolean, cancellable?: Gio.Cancellable | null) => boolean
-    readonly removeLocked: (cache: Cache, uid: string, cancellable?: Gio.Cancellable | null) => boolean
-    readonly clearOfflineChangesLocked: (cache: Cache, cancellable?: Gio.Cancellable | null) => boolean
-    readonly erase: (cache: Cache) => void
-    readonly beforePut: (cache: Cache, uid: string, revision: string, object: string, otherColumns: CacheColumnValues, isReplace: boolean, cancellable?: Gio.Cancellable | null) => boolean
-    readonly beforeRemove: (cache: Cache, uid: string, cancellable?: Gio.Cancellable | null) => boolean
-    readonly revisionChanged: (cache: Cache) => void
+    putLocked: (cache: Cache, uid: string, revision: string, object: string, otherColumns: CacheColumnValues, offlineState: OfflineState, isReplace: boolean, cancellable?: Gio.Cancellable | null) => boolean
+    removeLocked: (cache: Cache, uid: string, cancellable?: Gio.Cancellable | null) => boolean
+    clearOfflineChangesLocked: (cache: Cache, cancellable?: Gio.Cancellable | null) => boolean
+    erase: (cache: Cache) => void
+    beforePut: (cache: Cache, uid: string, revision: string, object: string, otherColumns: CacheColumnValues, isReplace: boolean, cancellable?: Gio.Cancellable | null) => boolean
+    beforeRemove: (cache: Cache, uid: string, cancellable?: Gio.Cancellable | null) => boolean
+    revisionChanged: (cache: Cache) => void
     static name: string
 }
 class CacheColumnInfo {
     /* Fields of EBackend-1.2.EBackend.CacheColumnInfo */
-    readonly name: string
-    readonly type: string
-    readonly indexName: string
+    name: string
+    type: string
+    indexName: string
     /* Methods of EBackend-1.2.EBackend.CacheColumnInfo */
     copy(): CacheColumnInfo | null
     static name: string
@@ -9840,6 +10908,7 @@ class CacheColumnInfo {
     /**
      * Frees the `info` structure, previously allocated with e_cache_column_info_new()
      * or e_cache_column_info_copy().
+     * @param info an #ECacheColumnInfo
      */
     static free(info?: object | null): void
 }
@@ -9857,6 +10926,7 @@ class CacheColumnValues {
      * Initialized the `iter,` thus the `other_columns` can be traversed
      * with g_hash_table_iter_next(). The key is a column name and
      * the value is the corresponding column value.
+     * @param iter a #GHashTableIter
      */
     initIter(iter: GLib.HashTableIter): void
     /**
@@ -9867,16 +10937,20 @@ class CacheColumnValues {
      * to check whether such column exitst in the `other_columns`.
      * The returned pointer is owned by `other_columns` and is valid until
      * the value is overwritten of the `other_columns` freed.
+     * @param name a column name
      */
     lookup(name: string): string | null
     /**
      * Puts the `value` for column `name`. If contains a value for the same
      * column, then it is replaced. This creates a copy of both `name`
      * and `value`.
+     * @param name a column name
+     * @param value a column value
      */
     put(name: string, value?: string | null): void
     /**
      * Removes value for the column named `name` from `other_columns`.
+     * @param name a column name
      */
     remove(name: string): boolean
     /**
@@ -9887,12 +10961,16 @@ class CacheColumnValues {
      * Puts the `value` for column `name`. If contains a value for the same
      * column, then it is replaced. This creates takes ownership of both
      * the `name` and the `value`.
+     * @param name a column name
+     * @param value a column value
      */
     take(name: string, value?: string | null): void
     /**
      * Puts the `value` for column `name`. If contains a value for the same
      * column, then it is replaced. This creates a copy of the `name,` but
      * takes owner ship of the `value`.
+     * @param name a column name
+     * @param value a column value
      */
     takeValue(name: string, value?: string | null): void
     static name: string
@@ -9906,19 +10984,19 @@ class CacheOfflineChange {
     /**
      * UID of the object
      */
-    readonly uid: string
+    uid: string
     /**
      * stored revision of the object
      */
-    readonly revision: string
+    revision: string
     /**
      * the object itself
      */
-    readonly object: string
+    object: string
     /**
      * an #EOfflineState of the object
      */
-    readonly state: OfflineState
+    state: OfflineState
     /* Methods of EBackend-1.2.EBackend.CacheOfflineChange */
     copy(): CacheOfflineChange | null
     static name: string
@@ -9929,6 +11007,7 @@ class CacheOfflineChange {
     /**
      * Frees the `change` structure, previously allocated with e_cache_offline_change_new()
      * or e_cache_offline_change_copy().
+     * @param change an #ECacheOfflineChange
      */
     static free(change?: object | null): void
 }
@@ -9940,21 +11019,21 @@ abstract class CacheReaperClass {
 }
 abstract class CollectionBackendClass {
     /* Fields of EBackend-1.2.EBackend.CollectionBackendClass */
-    readonly populate: (backend: CollectionBackend) => void
-    readonly dupResourceId: (backend: CollectionBackend, childSource: EDataServer.Source) => string | null
-    readonly childAdded: (backend: CollectionBackend, childSource: EDataServer.Source) => void
-    readonly childRemoved: (backend: CollectionBackend, childSource: EDataServer.Source) => void
-    readonly createResourceSync: (backend: CollectionBackend, source: EDataServer.Source, cancellable?: Gio.Cancellable | null) => boolean
-    readonly createResource: (backend: CollectionBackend, source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly createResourceFinish: (backend: CollectionBackend, result: Gio.AsyncResult) => boolean
-    readonly deleteResourceSync: (backend: CollectionBackend, source: EDataServer.Source, cancellable?: Gio.Cancellable | null) => boolean
-    readonly deleteResource: (backend: CollectionBackend, source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly deleteResourceFinish: (backend: CollectionBackend, result: Gio.AsyncResult) => boolean
+    populate: (backend: CollectionBackend) => void
+    dupResourceId: (backend: CollectionBackend, childSource: EDataServer.Source) => string | null
+    childAdded: (backend: CollectionBackend, childSource: EDataServer.Source) => void
+    childRemoved: (backend: CollectionBackend, childSource: EDataServer.Source) => void
+    createResourceSync: (backend: CollectionBackend, source: EDataServer.Source, cancellable?: Gio.Cancellable | null) => boolean
+    createResource: (backend: CollectionBackend, source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    createResourceFinish: (backend: CollectionBackend, result: Gio.AsyncResult) => boolean
+    deleteResourceSync: (backend: CollectionBackend, source: EDataServer.Source, cancellable?: Gio.Cancellable | null) => boolean
+    deleteResource: (backend: CollectionBackend, source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    deleteResourceFinish: (backend: CollectionBackend, result: Gio.AsyncResult) => boolean
     static name: string
 }
 abstract class CollectionBackendFactoryClass {
     /* Fields of EBackend-1.2.EBackend.CollectionBackendFactoryClass */
-    readonly prepareMail: (factory: CollectionBackendFactory, mailAccountSource: EDataServer.Source, mailIdentitySource: EDataServer.Source, mailTransportSource: EDataServer.Source) => void
+    prepareMail: (factory: CollectionBackendFactory, mailAccountSource: EDataServer.Source, mailIdentitySource: EDataServer.Source, mailTransportSource: EDataServer.Source) => void
     static name: string
 }
 class CollectionBackendFactoryPrivate {
@@ -9965,15 +11044,15 @@ class CollectionBackendPrivate {
 }
 abstract class DBusServerClass {
     /* Fields of EBackend-1.2.EBackend.DBusServerClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly busName: string
-    readonly moduleDirectory: string
-    readonly busAcquired: (server: DBusServer, connection: Gio.DBusConnection) => void
-    readonly busNameAcquired: (server: DBusServer, connection: Gio.DBusConnection) => void
-    readonly busNameLost: (server: DBusServer, connection: Gio.DBusConnection) => void
-    readonly runServer: (server: DBusServer) => DBusServerExitCode
-    readonly quitServer: (server: DBusServer, code: DBusServerExitCode) => void
-    readonly reserved: object[]
+    parentClass: GObject.ObjectClass
+    busName: string
+    moduleDirectory: string
+    busAcquired: (server: DBusServer, connection: Gio.DBusConnection) => void
+    busNameAcquired: (server: DBusServer, connection: Gio.DBusConnection) => void
+    busNameLost: (server: DBusServer, connection: Gio.DBusConnection) => void
+    runServer: (server: DBusServer) => DBusServerExitCode
+    quitServer: (server: DBusServer, code: DBusServerExitCode) => void
+    reserved: object[]
     static name: string
 }
 class DBusServerPrivate {
@@ -9981,17 +11060,17 @@ class DBusServerPrivate {
 }
 abstract class DataFactoryClass {
     /* Fields of EBackend-1.2.EBackend.DataFactoryClass */
-    readonly parentClass: DBusServerClass
-    readonly backendFactoryType: GObject.Type
-    readonly factoryObjectPath: string
-    readonly dataObjectPathPrefix: string
-    readonly subprocessObjectPathPrefix: string
-    readonly subprocessBusNamePrefix: string
-    readonly getFactoryName: (backendFactory: BackendFactory) => string
-    readonly completeOpen: (dataFactory: DataFactory, invocation: Gio.DBusMethodInvocation, objectPath: string, busName: string, extensionName: string) => void
-    readonly createBackend: (dataFactory: DataFactory, backendFactory: BackendFactory, source: EDataServer.Source) => Backend | null
-    readonly openBackend: (dataFactory: DataFactory, backend: Backend, connection: Gio.DBusConnection, cancellable?: Gio.Cancellable | null) => string
-    readonly reserved: object[]
+    parentClass: DBusServerClass
+    backendFactoryType: GObject.Type
+    factoryObjectPath: string
+    dataObjectPathPrefix: string
+    subprocessObjectPathPrefix: string
+    subprocessBusNamePrefix: string
+    getFactoryName: (backendFactory: BackendFactory) => string
+    completeOpen: (dataFactory: DataFactory, invocation: Gio.DBusMethodInvocation, objectPath: string, busName: string, extensionName: string) => void
+    createBackend: (dataFactory: DataFactory, backendFactory: BackendFactory, source: EDataServer.Source) => Backend | null
+    openBackend: (dataFactory: DataFactory, backend: Backend, connection: Gio.DBusConnection, cancellable?: Gio.Cancellable | null) => string
+    reserved: object[]
     static name: string
 }
 class DataFactoryPrivate {
@@ -9999,7 +11078,7 @@ class DataFactoryPrivate {
 }
 abstract class FileCacheClass {
     /* Fields of EBackend-1.2.EBackend.FileCacheClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class FileCachePrivate {
@@ -10007,19 +11086,19 @@ class FileCachePrivate {
 }
 abstract class OAuth2SupportInterface {
     /* Fields of EBackend-1.2.EBackend.OAuth2SupportInterface */
-    readonly getAccessTokenSync: (support: OAuth2Support, source: EDataServer.Source, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
-    readonly getAccessToken: (support: OAuth2Support, source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly getAccessTokenFinish: (support: OAuth2Support, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
+    getAccessTokenSync: (support: OAuth2Support, source: EDataServer.Source, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
+    getAccessToken: (support: OAuth2Support, source: EDataServer.Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    getAccessTokenFinish: (support: OAuth2Support, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     static name: string
 }
 abstract class ServerSideSourceClass {
     /* Fields of EBackend-1.2.EBackend.ServerSideSourceClass */
-    readonly parentClass: EDataServer.SourceClass
+    parentClass: EDataServer.SourceClass
     static name: string
 }
 abstract class ServerSideSourceCredentialsProviderClass {
     /* Fields of EBackend-1.2.EBackend.ServerSideSourceCredentialsProviderClass */
-    readonly parentClass: EDataServer.SourceCredentialsProviderClass
+    parentClass: EDataServer.SourceCredentialsProviderClass
     static name: string
 }
 class ServerSideSourceCredentialsProviderPrivate {
@@ -10030,13 +11109,13 @@ class ServerSideSourcePrivate {
 }
 abstract class SourceRegistryServerClass {
     /* Fields of EBackend-1.2.EBackend.SourceRegistryServerClass */
-    readonly parentClass: DataFactoryClass
-    readonly loadError: (server: SourceRegistryServer, file: Gio.File, error: GLib.Error) => void
-    readonly filesLoaded: (server: SourceRegistryServer) => void
-    readonly sourceAdded: (server: SourceRegistryServer, source: EDataServer.Source) => void
-    readonly sourceRemoved: (server: SourceRegistryServer, source: EDataServer.Source) => void
-    readonly tweakKeyFile: (server: SourceRegistryServer, keyFile: GLib.KeyFile, uid: string) => boolean
-    readonly reserved: object[]
+    parentClass: DataFactoryClass
+    loadError: (server: SourceRegistryServer, file: Gio.File, error: GLib.Error) => void
+    filesLoaded: (server: SourceRegistryServer) => void
+    sourceAdded: (server: SourceRegistryServer, source: EDataServer.Source) => void
+    sourceRemoved: (server: SourceRegistryServer, source: EDataServer.Source) => void
+    tweakKeyFile: (server: SourceRegistryServer, keyFile: GLib.KeyFile, uid: string) => boolean
+    reserved: object[]
     static name: string
 }
 class SourceRegistryServerPrivate {
@@ -10044,10 +11123,10 @@ class SourceRegistryServerPrivate {
 }
 abstract class SubprocessFactoryClass {
     /* Fields of EBackend-1.2.EBackend.SubprocessFactoryClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly openData: (subprocessFactory: SubprocessFactory, backend: Backend, connection: Gio.DBusConnection, data?: object | null, cancellable?: Gio.Cancellable | null) => string
-    readonly backendCreated: (subprocessFactory: SubprocessFactory, backend: Backend) => void
-    readonly backendClosed: (subprocessFactory: SubprocessFactory, backend: Backend) => void
+    parentClass: GObject.ObjectClass
+    openData: (subprocessFactory: SubprocessFactory, backend: Backend, connection: Gio.DBusConnection, data?: object | null, cancellable?: Gio.Cancellable | null) => string
+    backendCreated: (subprocessFactory: SubprocessFactory, backend: Backend) => void
+    backendClosed: (subprocessFactory: SubprocessFactory, backend: Backend) => void
     static name: string
 }
 class SubprocessFactoryPrivate {
@@ -10055,7 +11134,7 @@ class SubprocessFactoryPrivate {
 }
 abstract class UserPrompterClass {
     /* Fields of EBackend-1.2.EBackend.UserPrompterClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class UserPrompterPrivate {
@@ -10063,14 +11142,14 @@ class UserPrompterPrivate {
 }
 abstract class UserPrompterServerClass {
     /* Fields of EBackend-1.2.EBackend.UserPrompterServerClass */
-    readonly parentClass: DBusServerClass
+    parentClass: DBusServerClass
     static name: string
 }
 abstract class UserPrompterServerExtensionClass {
     /* Fields of EBackend-1.2.EBackend.UserPrompterServerExtensionClass */
-    readonly parentClass: EDataServer.ExtensionClass
-    readonly registerDialogs: (extension: EDataServer.Extension, server: object) => void
-    readonly prompt: (extension: UserPrompterServerExtension, promptId: number, dialogName: string, parameters?: EDataServer.NamedParameters | null) => boolean
+    parentClass: EDataServer.ExtensionClass
+    registerDialogs: (extension: EDataServer.Extension, server: object) => void
+    prompt: (extension: UserPrompterServerExtension, promptId: number, dialogName: string, parameters?: EDataServer.NamedParameters | null) => boolean
     static name: string
 }
 class UserPrompterServerExtensionPrivate {
@@ -10081,9 +11160,9 @@ class UserPrompterServerPrivate {
 }
 abstract class WebDAVCollectionBackendClass {
     /* Fields of EBackend-1.2.EBackend.WebDAVCollectionBackendClass */
-    readonly parentClass: CollectionBackendClass
-    readonly getResourceId: (webdavBackend: WebDAVCollectionBackend, source: EDataServer.Source) => string | null
-    readonly isCustomSource: (webdavBackend: WebDAVCollectionBackend, source: EDataServer.Source) => boolean
+    parentClass: CollectionBackendClass
+    getResourceId: (webdavBackend: WebDAVCollectionBackend, source: EDataServer.Source) => string | null
+    isCustomSource: (webdavBackend: WebDAVCollectionBackend, source: EDataServer.Source) => boolean
     static name: string
 }
 class WebDAVCollectionBackendPrivate {

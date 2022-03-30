@@ -109,6 +109,7 @@ class Player {
     readonly pipeline: Gst.Element
     readonly position: number
     rate: number
+    readonly signalDispatcher: PlayerSignalDispatcher
     subtitleVideoOffset: number
     suburi: string
     uri: string
@@ -117,25 +118,25 @@ class Player {
     readonly videoRenderer: PlayerVideoRenderer
     volume: number
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstPlayer-1.0.GstPlayer.Player */
     /**
      * Retrieve the current value of audio-video-offset property
@@ -143,6 +144,7 @@ class Player {
     getAudioVideoOffset(): number
     /**
      * Retrieve the current value of the indicated `type`.
+     * @param type #GstPlayerColorBalanceType
      */
     getColorBalance(type: PlayerColorBalanceType): number
     /**
@@ -203,6 +205,8 @@ class Player {
      * - width, height of type G_TYPE_INT
      * - pixel-aspect-ratio of type GST_TYPE_FRACTION
      *  Except for GST_PLAYER_THUMBNAIL_RAW_NATIVE format, if no config is set, pixel-aspect-ratio would be 1/1
+     * @param format output format of the video snapshot
+     * @param config Additional configuration
      */
     getVideoSnapshot(format: PlayerSnapshotFormat, config?: Gst.Structure | null): Gst.Sample | null
     /**
@@ -224,20 +228,25 @@ class Player {
     /**
      * Seeks the currently-playing stream to the absolute `position` time
      * in nanoseconds.
+     * @param position position to seek in nanoseconds
      */
     seek(position: Gst.ClockTime): void
     setAudioTrack(streamIndex: number): boolean
     /**
      * Enable or disable the current audio track.
+     * @param enabled TRUE or FALSE
      */
     setAudioTrackEnabled(enabled: boolean): void
     /**
      * Sets audio-video-offset property by value of `offset`
+     * @param offset #gint64 in nanoseconds
      */
     setAudioVideoOffset(offset: number): void
     /**
      * Sets the current value of the indicated channel `type` to the passed
      * value.
+     * @param type #GstPlayerColorBalanceType
+     * @param value The new value for the `type,` ranged [0,1]
      */
     setColorBalance(type: PlayerColorBalanceType, value: number): void
     /**
@@ -250,53 +259,64 @@ class Player {
      * the player.
      * 
      * This function takes ownership of `config`.
+     * @param config a #GstStructure
      */
     setConfig(config: Gst.Structure): boolean
     /**
      * Sets the current value of the indicated mode `type` to the passed
      * value.
+     * @param flags The new value for the `type`
      */
     setMultiviewFlags(flags: GstVideo.VideoMultiviewFlags): void
     /**
      * Sets the current value of the indicated mode `type` to the passed
      * value.
+     * @param mode The new value for the `type`
      */
     setMultiviewMode(mode: GstVideo.VideoMultiviewFramePacking): void
     /**
      * %TRUE if the currently-playing stream should be muted.
+     * @param val Mute state the should be set
      */
     setMute(val: boolean): void
     /**
      * Playback at specified rate
+     * @param rate playback rate
      */
     setRate(rate: number): void
     setSubtitleTrack(streamIndex: number): boolean
     /**
      * Enable or disable the current subtitle track.
+     * @param enabled TRUE or FALSE
      */
     setSubtitleTrackEnabled(enabled: boolean): void
     /**
      * Sets the external subtitle URI. This should be combined with a call to
      * gst_player_set_subtitle_track_enabled(`player,` TRUE) so the subtitles are actually
      * rendered.
+     * @param uri subtitle URI
      */
     setSubtitleUri(uri?: string | null): void
     /**
      * Sets subtitle-video-offset property by value of `offset`
+     * @param offset #gint64 in nanoseconds
      */
     setSubtitleVideoOffset(offset: number): void
     /**
      * Sets the next URI to play.
+     * @param uri next URI to play.
      */
     setUri(uri?: string | null): void
     setVideoTrack(streamIndex: number): boolean
     /**
      * Enable or disable the current video track.
+     * @param enabled TRUE or FALSE
      */
     setVideoTrackEnabled(enabled: boolean): void
     setVisualization(name?: string | null): boolean
     /**
      * Enable or disable the visualization.
+     * @param enabled TRUE or FALSE
      */
     setVisualizationEnabled(enabled: boolean): void
     /**
@@ -305,6 +325,7 @@ class Player {
      * This volume is a linear factor. For showing the volume in a GUI it
      * might make sense to first convert from a different format. Volume sliders
      * should usually use a cubic volume. See gst_stream_volume_convert_volume().
+     * @param val the new volume level, as a percentage between 0 and 1
      */
     setVolume(val: number): void
     /**
@@ -319,6 +340,7 @@ class Player {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -326,11 +348,14 @@ class Player {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -353,6 +378,10 @@ class Player {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -378,6 +407,8 @@ class Player {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -387,16 +418,19 @@ class Player {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -412,17 +446,21 @@ class Player {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -433,6 +471,7 @@ class Player {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -440,11 +479,13 @@ class Player {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -458,6 +499,7 @@ class Player {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -511,6 +553,10 @@ class Player {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -521,6 +567,12 @@ class Player {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -544,6 +596,7 @@ class Player {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -563,11 +616,14 @@ class Player {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -575,6 +631,8 @@ class Player {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -592,6 +650,7 @@ class Player {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -637,6 +696,7 @@ class Player {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -680,15 +740,20 @@ class Player {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -729,6 +794,7 @@ class Player {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -753,6 +819,7 @@ class Player {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstPlayer-1.0.GstPlayer.Player */
@@ -826,6 +893,8 @@ class Player {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -861,6 +930,7 @@ class Player {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -917,6 +987,11 @@ class Player {
     on(sigName: "notify::rate", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::rate", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::rate", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::signal-dispatcher", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::signal-dispatcher", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::signal-dispatcher", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::signal-dispatcher", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::signal-dispatcher", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::subtitle-video-offset", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::subtitle-video-offset", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::subtitle-video-offset", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -969,11 +1044,14 @@ class Player {
     /**
      * Return the user agent which has been configured using
      * gst_player_config_set_user_agent() if any.
+     * @param config a #GstPlayer configuration
      */
     static configGetUserAgent(config: Gst.Structure): string | null
     /**
      * set interval in milliseconds between two position-updated signals.
      * pass 0 to stop updating the position.
+     * @param config a #GstPlayer configuration
+     * @param interval interval in ms
      */
     static configSetPositionUpdateInterval(config: Gst.Structure, interval: number): void
     /**
@@ -986,12 +1064,16 @@ class Player {
      * position without slowing down seeking too much.
      * 
      * Accurate seeking is disabled by default.
+     * @param config a #GstPlayer configuration
+     * @param accurate accurate seek or not
      */
     static configSetSeekAccurate(config: Gst.Structure, accurate: boolean): void
     /**
      * Set the user agent to pass to the server if `player` needs to connect
      * to a server during playback. This is typically used when playing HTTP
      * or RTSP streams.
+     * @param config a #GstPlayer configuration
+     * @param agent the string to use as user agent
      */
     static configSetUserAgent(config: Gst.Structure, agent?: string | null): void
     static getAudioStreams(info: PlayerMediaInfo): PlayerAudioInfo[]
@@ -999,6 +1081,7 @@ class Player {
     static getVideoStreams(info: PlayerMediaInfo): PlayerVideoInfo[]
     /**
      * Frees a %NULL terminated array of #GstPlayerVisualization.
+     * @param viss a %NULL terminated array of #GstPlayerVisualization to free
      */
     static visualizationsFree(viss: PlayerVisualization): void
     static visualizationsGet(): PlayerVisualization[]
@@ -1008,7 +1091,7 @@ interface PlayerAudioInfo_ConstructProps extends PlayerStreamInfo_ConstructProps
 }
 class PlayerAudioInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstPlayer-1.0.GstPlayer.PlayerAudioInfo */
     getBitrate(): number
     getChannels(): number
@@ -1067,6 +1150,10 @@ class PlayerAudioInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1077,6 +1164,12 @@ class PlayerAudioInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1100,6 +1193,7 @@ class PlayerAudioInfo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1119,11 +1213,14 @@ class PlayerAudioInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1131,6 +1228,8 @@ class PlayerAudioInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1148,6 +1247,7 @@ class PlayerAudioInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1193,6 +1293,7 @@ class PlayerAudioInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1236,15 +1337,20 @@ class PlayerAudioInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1285,6 +1391,7 @@ class PlayerAudioInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1319,6 +1426,7 @@ class PlayerAudioInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1350,6 +1458,7 @@ class PlayerAudioInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1373,8 +1482,10 @@ interface PlayerGMainContextSignalDispatcher_ConstructProps extends GObject.Obje
     applicationContext?: GLib.MainContext
 }
 class PlayerGMainContextSignalDispatcher {
+    /* Properties of GstPlayer-1.0.GstPlayer.PlayerGMainContextSignalDispatcher */
+    readonly applicationContext: GLib.MainContext
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -1410,6 +1521,10 @@ class PlayerGMainContextSignalDispatcher {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1420,6 +1535,12 @@ class PlayerGMainContextSignalDispatcher {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1443,6 +1564,7 @@ class PlayerGMainContextSignalDispatcher {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1462,11 +1584,14 @@ class PlayerGMainContextSignalDispatcher {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1474,6 +1599,8 @@ class PlayerGMainContextSignalDispatcher {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1491,6 +1618,7 @@ class PlayerGMainContextSignalDispatcher {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1536,6 +1664,7 @@ class PlayerGMainContextSignalDispatcher {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1579,15 +1708,20 @@ class PlayerGMainContextSignalDispatcher {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1628,6 +1762,7 @@ class PlayerGMainContextSignalDispatcher {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1662,6 +1797,7 @@ class PlayerGMainContextSignalDispatcher {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1693,12 +1829,18 @@ class PlayerGMainContextSignalDispatcher {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::application-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::application-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::application-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::application-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::application-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1715,7 +1857,7 @@ interface PlayerMediaInfo_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PlayerMediaInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstPlayer-1.0.GstPlayer.PlayerMediaInfo */
     getAudioStreams(): PlayerAudioInfo[]
     getContainerFormat(): string | null
@@ -1772,6 +1914,10 @@ class PlayerMediaInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1782,6 +1928,12 @@ class PlayerMediaInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1805,6 +1957,7 @@ class PlayerMediaInfo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1824,11 +1977,14 @@ class PlayerMediaInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1836,6 +1992,8 @@ class PlayerMediaInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1853,6 +2011,7 @@ class PlayerMediaInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1898,6 +2057,7 @@ class PlayerMediaInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1941,15 +2101,20 @@ class PlayerMediaInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1990,6 +2155,7 @@ class PlayerMediaInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2024,6 +2190,7 @@ class PlayerMediaInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2055,6 +2222,7 @@ class PlayerMediaInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2077,7 +2245,7 @@ interface PlayerStreamInfo_ConstructProps extends GObject.Object_ConstructProps 
 }
 class PlayerStreamInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstPlayer-1.0.GstPlayer.PlayerStreamInfo */
     getCaps(): Gst.Caps | null
     /**
@@ -2130,6 +2298,10 @@ class PlayerStreamInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2140,6 +2312,12 @@ class PlayerStreamInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2163,6 +2341,7 @@ class PlayerStreamInfo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2182,11 +2361,14 @@ class PlayerStreamInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2194,6 +2376,8 @@ class PlayerStreamInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2211,6 +2395,7 @@ class PlayerStreamInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2256,6 +2441,7 @@ class PlayerStreamInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2299,15 +2485,20 @@ class PlayerStreamInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2348,6 +2539,7 @@ class PlayerStreamInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2382,6 +2574,7 @@ class PlayerStreamInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2413,6 +2606,7 @@ class PlayerStreamInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2435,7 +2629,7 @@ interface PlayerSubtitleInfo_ConstructProps extends PlayerStreamInfo_ConstructPr
 }
 class PlayerSubtitleInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstPlayer-1.0.GstPlayer.PlayerSubtitleInfo */
     getLanguage(): string | null
     /* Methods of GstPlayer-1.0.GstPlayer.PlayerStreamInfo */
@@ -2490,6 +2684,10 @@ class PlayerSubtitleInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2500,6 +2698,12 @@ class PlayerSubtitleInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2523,6 +2727,7 @@ class PlayerSubtitleInfo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2542,11 +2747,14 @@ class PlayerSubtitleInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2554,6 +2762,8 @@ class PlayerSubtitleInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2571,6 +2781,7 @@ class PlayerSubtitleInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2616,6 +2827,7 @@ class PlayerSubtitleInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2659,15 +2871,20 @@ class PlayerSubtitleInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2708,6 +2925,7 @@ class PlayerSubtitleInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2742,6 +2960,7 @@ class PlayerSubtitleInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2773,6 +2992,7 @@ class PlayerSubtitleInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2795,7 +3015,7 @@ interface PlayerVideoInfo_ConstructProps extends PlayerStreamInfo_ConstructProps
 }
 class PlayerVideoInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstPlayer-1.0.GstPlayer.PlayerVideoInfo */
     getBitrate(): number
     getFramerate(): [ /* fpsN */ number, /* fpsD */ number ]
@@ -2858,6 +3078,10 @@ class PlayerVideoInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2868,6 +3092,12 @@ class PlayerVideoInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2891,6 +3121,7 @@ class PlayerVideoInfo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2910,11 +3141,14 @@ class PlayerVideoInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2922,6 +3156,8 @@ class PlayerVideoInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2939,6 +3175,7 @@ class PlayerVideoInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2984,6 +3221,7 @@ class PlayerVideoInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3027,15 +3265,20 @@ class PlayerVideoInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3076,6 +3319,7 @@ class PlayerVideoInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3110,6 +3354,7 @@ class PlayerVideoInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3141,6 +3386,7 @@ class PlayerVideoInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3169,7 +3415,7 @@ class PlayerVideoOverlayVideoRenderer {
     videoSink: Gst.Element
     windowHandle: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer */
     /**
      * Tell an overlay that it has been exposed. This will redraw the current frame
@@ -3193,11 +3439,16 @@ class PlayerVideoOverlayVideoRenderer {
      * 
      * This method is needed for non fullscreen video overlay in UI toolkits that
      * do not support subwindows.
+     * @param x the horizontal offset of the render area inside the window
+     * @param y the vertical offset of the render area inside the window
+     * @param width the width of the render area inside the window
+     * @param height the height of the render area inside the window
      */
     setRenderRectangle(x: number, y: number, width: number, height: number): void
     /**
      * Sets the platform specific window handle into which the video
      * should be rendered
+     * @param windowHandle handle referencing to the platform specific window
      */
     setWindowHandle(windowHandle?: object | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3235,6 +3486,10 @@ class PlayerVideoOverlayVideoRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3245,6 +3500,12 @@ class PlayerVideoOverlayVideoRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3268,6 +3529,7 @@ class PlayerVideoOverlayVideoRenderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3287,11 +3549,14 @@ class PlayerVideoOverlayVideoRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3299,6 +3564,8 @@ class PlayerVideoOverlayVideoRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3316,6 +3583,7 @@ class PlayerVideoOverlayVideoRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3361,6 +3629,7 @@ class PlayerVideoOverlayVideoRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3404,15 +3673,20 @@ class PlayerVideoOverlayVideoRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3453,6 +3727,7 @@ class PlayerVideoOverlayVideoRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3487,6 +3762,7 @@ class PlayerVideoOverlayVideoRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3518,6 +3794,7 @@ class PlayerVideoOverlayVideoRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3562,8 +3839,8 @@ abstract class PlayerMediaInfoClass {
 }
 abstract class PlayerSignalDispatcherInterface {
     /* Fields of GstPlayer-1.0.GstPlayer.PlayerSignalDispatcherInterface */
-    readonly parentIface: GObject.TypeInterface
-    readonly dispatch: (self: PlayerSignalDispatcher, player: Player, emitter: PlayerSignalDispatcherFunc) => void
+    parentIface: GObject.TypeInterface
+    dispatch: (self: PlayerSignalDispatcher, player: Player, emitter: PlayerSignalDispatcherFunc) => void
     static name: string
 }
 abstract class PlayerStreamInfoClass {
@@ -3580,7 +3857,7 @@ abstract class PlayerVideoOverlayVideoRendererClass {
 }
 abstract class PlayerVideoRendererInterface {
     /* Fields of GstPlayer-1.0.GstPlayer.PlayerVideoRendererInterface */
-    readonly parentIface: GObject.TypeInterface
+    parentIface: GObject.TypeInterface
     static name: string
 }
 class PlayerVisualization {
@@ -3588,11 +3865,11 @@ class PlayerVisualization {
     /**
      * name of the visualization.
      */
-    readonly name: string
+    name: string
     /**
      * description of the visualization.
      */
-    readonly description: string
+    description: string
     /* Methods of GstPlayer-1.0.GstPlayer.PlayerVisualization */
     /**
      * Makes a copy of the #GstPlayerVisualization. The result must be

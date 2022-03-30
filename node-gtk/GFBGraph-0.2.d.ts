@@ -28,6 +28,7 @@ class Authorizer {
      * Adds the necessary authorization to `call`.
      * 
      * This method modifies `call` in place and is thread safe.
+     * @param call A #RestProxyCall.
      */
     processCall(call: Rest.ProxyCall): void
     /**
@@ -35,6 +36,7 @@ class Authorizer {
      * can be DELETE, GET and POST.
      * 
      * This method modifies `message` in place and is thread safe.
+     * @param message A #SoupMessage.
      */
     processMessage(message: Soup.Message): void
     /**
@@ -42,6 +44,7 @@ class Authorizer {
      * held by it.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or %NULL.
      */
     refreshAuthorization(cancellable?: Gio.Cancellable | null): boolean
     static name: string
@@ -61,9 +64,9 @@ class Connectable {
     link: string
     updatedTime: string
     /* Fields of GFBGraph-0.2.GFBGraph.Node */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GFBGraph-0.2.GFBGraph.Connectable */
     /**
      * In most cases, #GFBGraphConnectable implementers can use this function in order to parse
@@ -72,38 +75,47 @@ class Connectable {
      * 
      * Normally, Facebook Graph API returns the connections in the same way, using JSON objects,
      * with a root object called "data".
+     * @param payload a const #gchar with the response string from the Facebook Graph API.
      */
     defaultParseConnectedData(payload: string): Node[]
     /**
      * Get the Facebook Graph API function path to retrieve the nodes connected with `node_type`
      * managed by the #GFBGraphConnectable object.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     getConnectionPath(nodeType: GObject.Type): string
     /**
      * Get the params to be inserted in a request to the Facebook Graph API
      * in order to append the node `self` to a node of type `node_type`.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     getConnectionPostParams(nodeType: GObject.Type): GLib.HashTable
     /**
      * Check if `self` object, normally a #GFBGraphNode implementing the #GFBGraphConnectable interface,
      * has the possibility to be connected to another node of type `node_type`.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     isConnectableTo(nodeType: GObject.Type): boolean
     /**
      * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
      * executed.
+     * @param payload a const #gchar with the response string from the Facebook Graph API.
      */
     parseConnectedData(payload: string): Node[]
     /* Methods of GFBGraph-0.2.GFBGraph.Node */
     /**
      * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
      * and be connectable to `node` GType.
+     * @param connectNode A #GFBGraphNode.
+     * @param authorizer A #GFBGraphAuthorizer.
      */
     appendConnection(connectNode: Node, authorizer: Authorizer): boolean
     /**
      * Retrieve the nodes of type `node_type` connected to the `node` object. The `node_type` object must
      * implement the #GFBGraphConnectionable interface and be connectable to `node` type object.
      * See gfbgraph_node_get_connection_nodes_async() for the asynchronous version of this call.
+     * @param nodeType a #GFBGraphNode type #GType that determines the kind of nodes to retrieve.
+     * @param authorizer a #GFBGraphAuthorizer.
      */
     getConnectionNodes(nodeType: GObject.Type, authorizer: Authorizer): Node[]
     /**
@@ -112,11 +124,16 @@ class Connectable {
      * 
      * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
      * to get the list of connected nodes.
+     * @param nodeType a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
+     * @param authorizer a #GFBGraphAuthorizer.
+     * @param cancellable An optional #GCancellable object, or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is completed.
      */
     getConnectionNodesAsync(nodeType: GObject.Type, authorizer: Authorizer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * gfbgraph_node_get_connection_nodes_async().
+     * @param result A #GAsyncResult.
      */
     getConnectionNodesAsyncFinish(result: Gio.AsyncResult): Node[]
     /**
@@ -135,6 +152,7 @@ class Connectable {
     /**
      * Sets the ID for a node. Just useful when a new node is created
      * and the Graph API returns the ID of the new created node.
+     * @param id a const pointer to a #gchar.
      */
     setId(id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -172,6 +190,10 @@ class Connectable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -182,6 +204,12 @@ class Connectable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -205,6 +233,7 @@ class Connectable {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -224,11 +253,14 @@ class Connectable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -236,6 +268,8 @@ class Connectable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -253,6 +287,7 @@ class Connectable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -298,6 +333,7 @@ class Connectable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -341,15 +377,20 @@ class Connectable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -390,6 +431,7 @@ class Connectable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -424,6 +466,7 @@ class Connectable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -455,6 +498,7 @@ class Connectable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -536,9 +580,9 @@ class Album {
     link: string
     updatedTime: string
     /* Fields of GFBGraph-0.2.GFBGraph.Node */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GFBGraph-0.2.GFBGraph.Album */
     getCount(): number
     getCoverPhotoId(): string
@@ -546,22 +590,28 @@ class Album {
     getName(): string
     /**
      * Sets the description for the `album`.
+     * @param description a const pointer to a #gchar.
      */
     setDescription(description: string): void
     /**
      * Sets the name for the `album`.
+     * @param name a const pointer to a #gchar.
      */
     setName(name: string): void
     /* Methods of GFBGraph-0.2.GFBGraph.Node */
     /**
      * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
      * and be connectable to `node` GType.
+     * @param connectNode A #GFBGraphNode.
+     * @param authorizer A #GFBGraphAuthorizer.
      */
     appendConnection(connectNode: Node, authorizer: Authorizer): boolean
     /**
      * Retrieve the nodes of type `node_type` connected to the `node` object. The `node_type` object must
      * implement the #GFBGraphConnectionable interface and be connectable to `node` type object.
      * See gfbgraph_node_get_connection_nodes_async() for the asynchronous version of this call.
+     * @param nodeType a #GFBGraphNode type #GType that determines the kind of nodes to retrieve.
+     * @param authorizer a #GFBGraphAuthorizer.
      */
     getConnectionNodes(nodeType: GObject.Type, authorizer: Authorizer): Node[]
     /**
@@ -570,11 +620,16 @@ class Album {
      * 
      * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
      * to get the list of connected nodes.
+     * @param nodeType a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
+     * @param authorizer a #GFBGraphAuthorizer.
+     * @param cancellable An optional #GCancellable object, or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is completed.
      */
     getConnectionNodesAsync(nodeType: GObject.Type, authorizer: Authorizer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * gfbgraph_node_get_connection_nodes_async().
+     * @param result A #GAsyncResult.
      */
     getConnectionNodesAsyncFinish(result: Gio.AsyncResult): Node[]
     /**
@@ -593,6 +648,7 @@ class Album {
     /**
      * Sets the ID for a node. Just useful when a new node is created
      * and the Graph API returns the ID of the new created node.
+     * @param id a const pointer to a #gchar.
      */
     setId(id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -630,6 +686,10 @@ class Album {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -640,6 +700,12 @@ class Album {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -663,6 +729,7 @@ class Album {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -682,11 +749,14 @@ class Album {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -694,6 +764,8 @@ class Album {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -711,6 +783,7 @@ class Album {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -756,6 +829,7 @@ class Album {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -799,15 +873,20 @@ class Album {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -848,6 +927,7 @@ class Album {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -882,6 +962,7 @@ class Album {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GFBGraph-0.2.GFBGraph.Connectable */
@@ -892,26 +973,31 @@ class Album {
      * 
      * Normally, Facebook Graph API returns the connections in the same way, using JSON objects,
      * with a root object called "data".
+     * @param payload a const #gchar with the response string from the Facebook Graph API.
      */
     defaultParseConnectedData(payload: string): Node[]
     /**
      * Get the Facebook Graph API function path to retrieve the nodes connected with `node_type`
      * managed by the #GFBGraphConnectable object.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     getConnectionPath(nodeType: GObject.Type): string
     /**
      * Get the params to be inserted in a request to the Facebook Graph API
      * in order to append the node `self` to a node of type `node_type`.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     getConnectionPostParams(nodeType: GObject.Type): GLib.HashTable
     /**
      * Check if `self` object, normally a #GFBGraphNode implementing the #GFBGraphConnectable interface,
      * has the possibility to be connected to another node of type `node_type`.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     isConnectableTo(nodeType: GObject.Type): boolean
     /**
      * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
      * executed.
+     * @param payload a const #gchar with the response string from the Facebook Graph API.
      */
     parseConnectedData(payload: string): Node[]
     /* Signals of GObject-2.0.GObject.Object */
@@ -943,6 +1029,7 @@ class Album {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1012,7 +1099,7 @@ interface GoaAuthorizer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class GoaAuthorizer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -1048,6 +1135,10 @@ class GoaAuthorizer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1058,6 +1149,12 @@ class GoaAuthorizer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1081,6 +1178,7 @@ class GoaAuthorizer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1100,11 +1198,14 @@ class GoaAuthorizer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1112,6 +1213,8 @@ class GoaAuthorizer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1129,6 +1232,7 @@ class GoaAuthorizer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1174,6 +1278,7 @@ class GoaAuthorizer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1217,15 +1322,20 @@ class GoaAuthorizer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1266,6 +1376,7 @@ class GoaAuthorizer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1300,6 +1411,7 @@ class GoaAuthorizer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GFBGraph-0.2.GFBGraph.Authorizer */
@@ -1307,6 +1419,7 @@ class GoaAuthorizer {
      * Adds the necessary authorization to `call`.
      * 
      * This method modifies `call` in place and is thread safe.
+     * @param call A #RestProxyCall.
      */
     processCall(call: Rest.ProxyCall): void
     /**
@@ -1314,6 +1427,7 @@ class GoaAuthorizer {
      * can be DELETE, GET and POST.
      * 
      * This method modifies `message` in place and is thread safe.
+     * @param message A #SoupMessage.
      */
     processMessage(message: Soup.Message): void
     /**
@@ -1321,6 +1435,7 @@ class GoaAuthorizer {
      * held by it.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or %NULL.
      */
     refreshAuthorization(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -1352,6 +1467,7 @@ class GoaAuthorizer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1396,17 +1512,21 @@ class Node {
     link: string
     updatedTime: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GFBGraph-0.2.GFBGraph.Node */
     /**
      * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
      * and be connectable to `node` GType.
+     * @param connectNode A #GFBGraphNode.
+     * @param authorizer A #GFBGraphAuthorizer.
      */
     appendConnection(connectNode: Node, authorizer: Authorizer): boolean
     /**
      * Retrieve the nodes of type `node_type` connected to the `node` object. The `node_type` object must
      * implement the #GFBGraphConnectionable interface and be connectable to `node` type object.
      * See gfbgraph_node_get_connection_nodes_async() for the asynchronous version of this call.
+     * @param nodeType a #GFBGraphNode type #GType that determines the kind of nodes to retrieve.
+     * @param authorizer a #GFBGraphAuthorizer.
      */
     getConnectionNodes(nodeType: GObject.Type, authorizer: Authorizer): Node[]
     /**
@@ -1415,11 +1535,16 @@ class Node {
      * 
      * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
      * to get the list of connected nodes.
+     * @param nodeType a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
+     * @param authorizer a #GFBGraphAuthorizer.
+     * @param cancellable An optional #GCancellable object, or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is completed.
      */
     getConnectionNodesAsync(nodeType: GObject.Type, authorizer: Authorizer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * gfbgraph_node_get_connection_nodes_async().
+     * @param result A #GAsyncResult.
      */
     getConnectionNodesAsyncFinish(result: Gio.AsyncResult): Node[]
     /**
@@ -1438,6 +1563,7 @@ class Node {
     /**
      * Sets the ID for a node. Just useful when a new node is created
      * and the Graph API returns the ID of the new created node.
+     * @param id a const pointer to a #gchar.
      */
     setId(id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1475,6 +1601,10 @@ class Node {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1485,6 +1615,12 @@ class Node {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1508,6 +1644,7 @@ class Node {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1527,11 +1664,14 @@ class Node {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1539,6 +1679,8 @@ class Node {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1556,6 +1698,7 @@ class Node {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1601,6 +1744,7 @@ class Node {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1644,15 +1788,20 @@ class Node {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1693,6 +1842,7 @@ class Node {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1727,6 +1877,7 @@ class Node {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1758,6 +1909,7 @@ class Node {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1857,13 +2009,14 @@ class Photo {
     link: string
     updatedTime: string
     /* Fields of GFBGraph-0.2.GFBGraph.Node */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GFBGraph-0.2.GFBGraph.Photo */
     /**
      * Download the default sized photo pointed by `photo,` with a maximum width or height of 720px.
      * The photo always is a JPEG.
+     * @param authorizer a #GFBGraphAuthorizer.
      */
     downloadDefaultSize(authorizer: Authorizer): Gio.InputStream
     getDefaultHeight(): number
@@ -1878,12 +2031,16 @@ class Photo {
     /**
      * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
      * and be connectable to `node` GType.
+     * @param connectNode A #GFBGraphNode.
+     * @param authorizer A #GFBGraphAuthorizer.
      */
     appendConnection(connectNode: Node, authorizer: Authorizer): boolean
     /**
      * Retrieve the nodes of type `node_type` connected to the `node` object. The `node_type` object must
      * implement the #GFBGraphConnectionable interface and be connectable to `node` type object.
      * See gfbgraph_node_get_connection_nodes_async() for the asynchronous version of this call.
+     * @param nodeType a #GFBGraphNode type #GType that determines the kind of nodes to retrieve.
+     * @param authorizer a #GFBGraphAuthorizer.
      */
     getConnectionNodes(nodeType: GObject.Type, authorizer: Authorizer): Node[]
     /**
@@ -1892,11 +2049,16 @@ class Photo {
      * 
      * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
      * to get the list of connected nodes.
+     * @param nodeType a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
+     * @param authorizer a #GFBGraphAuthorizer.
+     * @param cancellable An optional #GCancellable object, or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is completed.
      */
     getConnectionNodesAsync(nodeType: GObject.Type, authorizer: Authorizer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * gfbgraph_node_get_connection_nodes_async().
+     * @param result A #GAsyncResult.
      */
     getConnectionNodesAsyncFinish(result: Gio.AsyncResult): Node[]
     /**
@@ -1915,6 +2077,7 @@ class Photo {
     /**
      * Sets the ID for a node. Just useful when a new node is created
      * and the Graph API returns the ID of the new created node.
+     * @param id a const pointer to a #gchar.
      */
     setId(id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1952,6 +2115,10 @@ class Photo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1962,6 +2129,12 @@ class Photo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1985,6 +2158,7 @@ class Photo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2004,11 +2178,14 @@ class Photo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2016,6 +2193,8 @@ class Photo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2033,6 +2212,7 @@ class Photo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2078,6 +2258,7 @@ class Photo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2121,15 +2302,20 @@ class Photo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2170,6 +2356,7 @@ class Photo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2204,6 +2391,7 @@ class Photo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GFBGraph-0.2.GFBGraph.Connectable */
@@ -2214,26 +2402,31 @@ class Photo {
      * 
      * Normally, Facebook Graph API returns the connections in the same way, using JSON objects,
      * with a root object called "data".
+     * @param payload a const #gchar with the response string from the Facebook Graph API.
      */
     defaultParseConnectedData(payload: string): Node[]
     /**
      * Get the Facebook Graph API function path to retrieve the nodes connected with `node_type`
      * managed by the #GFBGraphConnectable object.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     getConnectionPath(nodeType: GObject.Type): string
     /**
      * Get the params to be inserted in a request to the Facebook Graph API
      * in order to append the node `self` to a node of type `node_type`.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     getConnectionPostParams(nodeType: GObject.Type): GLib.HashTable
     /**
      * Check if `self` object, normally a #GFBGraphNode implementing the #GFBGraphConnectable interface,
      * has the possibility to be connected to another node of type `node_type`.
+     * @param nodeType a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      */
     isConnectableTo(nodeType: GObject.Type): boolean
     /**
      * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
      * executed.
+     * @param payload a const #gchar with the response string from the Facebook Graph API.
      */
     parseConnectedData(payload: string): Node[]
     /* Methods of Json-1.0.Json.Serializable */
@@ -2255,6 +2448,10 @@ class Photo {
      *                                    pspec,
      *                                    property_node);
      * ```
+     * @param propertyName the name of the property to deserialize
+     * @param value a pointer to an uninitialized value
+     * @param pspec a property description
+     * @param propertyNode the JSON node containing the serialized property
      */
     defaultDeserializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec, propertyNode: Json.Node): boolean
     /**
@@ -2277,6 +2474,9 @@ class Photo {
      * 
      * This function will return `NULL` if the property could not be
      * serialized.
+     * @param propertyName the name of the property to serialize
+     * @param value the value of the property to serialize
+     * @param pspec a property description
      */
     defaultSerializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec): Json.Node | null
     /**
@@ -2290,18 +2490,23 @@ class Photo {
      *   initialized with the expected type of the property by using the given
      *   property description (since JSON-GLib 1.6)
      * - a `GValue` initialized with the expected type of the property
+     * @param propertyName the name of the property to serialize
+     * @param pspec a property description
+     * @param propertyNode the JSON node containing the serialized property
      */
     deserializeProperty(propertyName: string, pspec: GObject.ParamSpec, propertyNode: Json.Node): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Calls the [vfunc`Json`.Serializable.find_property] implementation on
      * the `JsonSerializable` instance, which will return the property
      * description for the given name.
+     * @param name the name of the property
      */
     findProperty(name: string): GObject.ParamSpec | null
     /**
      * Calls the [vfunc`Json`.Serializable.get_property] implementation
      * on the `JsonSerializable` instance, which will get the value of
      * the given property.
+     * @param pspec a property description
      */
     getProperty(pspec: GObject.ParamSpec): /* value */ any
     /**
@@ -2313,12 +2518,17 @@ class Photo {
     /**
      * Asks a `JsonSerializable` implementation to serialize an object
      * property into a JSON node.
+     * @param propertyName the name of the property to serialize
+     * @param value the value of the property to serialize
+     * @param pspec a property description
      */
     serializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec): Json.Node
     /**
      * Calls the [vfunc`Json`.Serializable.set_property] implementation
      * on the `JsonSerializable` instance, which will set the property
      * with the given value.
+     * @param pspec a property description
+     * @param value the property value to set
      */
     setProperty(pspec: GObject.ParamSpec, value: any): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2350,6 +2560,7 @@ class Photo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2428,7 +2639,7 @@ class SimpleAuthorizer {
     /* Properties of GFBGraph-0.2.GFBGraph.SimpleAuthorizer */
     accessToken: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2464,6 +2675,10 @@ class SimpleAuthorizer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2474,6 +2689,12 @@ class SimpleAuthorizer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2497,6 +2718,7 @@ class SimpleAuthorizer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2516,11 +2738,14 @@ class SimpleAuthorizer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2528,6 +2753,8 @@ class SimpleAuthorizer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2545,6 +2772,7 @@ class SimpleAuthorizer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2590,6 +2818,7 @@ class SimpleAuthorizer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2633,15 +2862,20 @@ class SimpleAuthorizer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2682,6 +2916,7 @@ class SimpleAuthorizer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2716,6 +2951,7 @@ class SimpleAuthorizer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GFBGraph-0.2.GFBGraph.Authorizer */
@@ -2723,6 +2959,7 @@ class SimpleAuthorizer {
      * Adds the necessary authorization to `call`.
      * 
      * This method modifies `call` in place and is thread safe.
+     * @param call A #RestProxyCall.
      */
     processCall(call: Rest.ProxyCall): void
     /**
@@ -2730,6 +2967,7 @@ class SimpleAuthorizer {
      * can be DELETE, GET and POST.
      * 
      * This method modifies `message` in place and is thread safe.
+     * @param message A #SoupMessage.
      */
     processMessage(message: Soup.Message): void
     /**
@@ -2737,6 +2975,7 @@ class SimpleAuthorizer {
      * held by it.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or %NULL.
      */
     refreshAuthorization(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -2768,6 +3007,7 @@ class SimpleAuthorizer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2826,12 +3066,13 @@ class User {
     link: string
     updatedTime: string
     /* Fields of GFBGraph-0.2.GFBGraph.Node */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GFBGraph-0.2.GFBGraph.User */
     /**
      * Retrieve the albums nodes owned by the `user`. This functions call the function ID/albums.
+     * @param authorizer a #GFBGraphAuthorizer.
      */
     getAlbums(authorizer: Authorizer): Album[]
     /**
@@ -2840,11 +3081,15 @@ class User {
      * 
      * When the operation is finished, `callback` will be called. You can then call gfbgraph_user_get_albums_async_finish()
      * to get the #GList of #GFBGraphAlbum owned by the `user`.
+     * @param authorizer a #GFBGraphAuthorizer.
+     * @param cancellable An optional #GCancellable object, or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is completed.
      */
     getAlbumsAsync(authorizer: Authorizer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * gfbgraph_user_get_albums_async().
+     * @param result A #GAsyncResult.
      */
     getAlbumsAsyncFinish(result: Gio.AsyncResult): Album[]
     /**
@@ -2860,12 +3105,16 @@ class User {
     /**
      * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
      * and be connectable to `node` GType.
+     * @param connectNode A #GFBGraphNode.
+     * @param authorizer A #GFBGraphAuthorizer.
      */
     appendConnection(connectNode: Node, authorizer: Authorizer): boolean
     /**
      * Retrieve the nodes of type `node_type` connected to the `node` object. The `node_type` object must
      * implement the #GFBGraphConnectionable interface and be connectable to `node` type object.
      * See gfbgraph_node_get_connection_nodes_async() for the asynchronous version of this call.
+     * @param nodeType a #GFBGraphNode type #GType that determines the kind of nodes to retrieve.
+     * @param authorizer a #GFBGraphAuthorizer.
      */
     getConnectionNodes(nodeType: GObject.Type, authorizer: Authorizer): Node[]
     /**
@@ -2874,11 +3123,16 @@ class User {
      * 
      * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
      * to get the list of connected nodes.
+     * @param nodeType a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
+     * @param authorizer a #GFBGraphAuthorizer.
+     * @param cancellable An optional #GCancellable object, or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is completed.
      */
     getConnectionNodesAsync(nodeType: GObject.Type, authorizer: Authorizer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * gfbgraph_node_get_connection_nodes_async().
+     * @param result A #GAsyncResult.
      */
     getConnectionNodesAsyncFinish(result: Gio.AsyncResult): Node[]
     /**
@@ -2897,6 +3151,7 @@ class User {
     /**
      * Sets the ID for a node. Just useful when a new node is created
      * and the Graph API returns the ID of the new created node.
+     * @param id a const pointer to a #gchar.
      */
     setId(id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2934,6 +3189,10 @@ class User {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2944,6 +3203,12 @@ class User {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2967,6 +3232,7 @@ class User {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2986,11 +3252,14 @@ class User {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2998,6 +3267,8 @@ class User {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3015,6 +3286,7 @@ class User {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3060,6 +3332,7 @@ class User {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3103,15 +3376,20 @@ class User {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3152,6 +3430,7 @@ class User {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3186,6 +3465,7 @@ class User {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3217,6 +3497,7 @@ class User {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3273,6 +3554,7 @@ class User {
     /**
      * Retrieve the current user logged using the https://graph.facebook.com/me Graph API function.
      * See gfbgraph_user_get_my_async() for the asynchronous version of this call.
+     * @param authorizer a #GFBGraphAuthorizer.
      */
     static getMe(authorizer: Authorizer): User
     /**
@@ -3281,18 +3563,23 @@ class User {
      * 
      * When the operation is finished, `callback` will be called. You can then call gfbgraph_user_get_me_finish()
      * to get the #GFBGraphUser for to the current user logged.
+     * @param authorizer a #GFBGraphAuthorizer.
+     * @param cancellable An optional #GCancellable object, or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is completed.
      */
     static getMeAsync(authorizer: Authorizer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * gfbgraph_user_get_me_async().
+     * @param authorizer a #GFBGraphAuthorizer.
+     * @param result A #GAsyncResult.
      */
     static getMeAsyncFinish(authorizer: Authorizer, result: Gio.AsyncResult): User
     static $gtype: GObject.Type
 }
 abstract class AlbumClass {
     /* Fields of GFBGraph-0.2.GFBGraph.AlbumClass */
-    readonly parentClass: NodeClass
+    parentClass: NodeClass
     static name: string
 }
 class AlbumPrivate {
@@ -3303,23 +3590,23 @@ abstract class AuthorizerInterface {
     /**
      * The parent interface.
      */
-    readonly parent: GObject.TypeInterface
-    readonly processCall: (iface: Authorizer, call: Rest.ProxyCall) => void
-    readonly processMessage: (iface: Authorizer, message: Soup.Message) => void
-    readonly refreshAuthorization: (iface: Authorizer, cancellable?: Gio.Cancellable | null) => boolean
+    parent: GObject.TypeInterface
+    processCall: (iface: Authorizer, call: Rest.ProxyCall) => void
+    processMessage: (iface: Authorizer, message: Soup.Message) => void
+    refreshAuthorization: (iface: Authorizer, cancellable?: Gio.Cancellable | null) => boolean
     static name: string
 }
 abstract class ConnectableInterface {
     /* Fields of GFBGraph-0.2.GFBGraph.ConnectableInterface */
-    readonly parent: GObject.TypeInterface
-    readonly connections: GLib.HashTable
-    readonly getConnectionPostParams: (self: Connectable, nodeType: GObject.Type) => GLib.HashTable
-    readonly parseConnectedData: (self: Connectable, payload: string) => Node[]
+    parent: GObject.TypeInterface
+    connections: GLib.HashTable
+    getConnectionPostParams: (self: Connectable, nodeType: GObject.Type) => GLib.HashTable
+    parseConnectedData: (self: Connectable, payload: string) => Node[]
     static name: string
 }
 abstract class GoaAuthorizerClass {
     /* Fields of GFBGraph-0.2.GFBGraph.GoaAuthorizerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class GoaAuthorizerPrivate {
@@ -3327,7 +3614,7 @@ class GoaAuthorizerPrivate {
 }
 abstract class NodeClass {
     /* Fields of GFBGraph-0.2.GFBGraph.NodeClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class NodePrivate {
@@ -3335,14 +3622,14 @@ class NodePrivate {
 }
 abstract class PhotoClass {
     /* Fields of GFBGraph-0.2.GFBGraph.PhotoClass */
-    readonly parentClass: NodeClass
+    parentClass: NodeClass
     static name: string
 }
 class PhotoImage {
     /* Fields of GFBGraph-0.2.GFBGraph.PhotoImage */
-    readonly width: number
-    readonly height: number
-    readonly source: string
+    width: number
+    height: number
+    source: string
     static name: string
 }
 class PhotoPrivate {
@@ -3350,7 +3637,7 @@ class PhotoPrivate {
 }
 abstract class SimpleAuthorizerClass {
     /* Fields of GFBGraph-0.2.GFBGraph.SimpleAuthorizerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class SimpleAuthorizerPrivate {
@@ -3358,7 +3645,7 @@ class SimpleAuthorizerPrivate {
 }
 abstract class UserClass {
     /* Fields of GFBGraph-0.2.GFBGraph.UserClass */
-    readonly parentClass: NodeClass
+    parentClass: NodeClass
     static name: string
 }
 class UserPrivate {

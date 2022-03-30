@@ -248,6 +248,10 @@ class DataProvider {
      * The standard attributes are available as defines, like
      * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
      * more details.
+     * @param url a #GFile to enumerate
+     * @param attributes an attribute query string
+     * @param flags a set of #TrackerDirectoryFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable?: Gio.Cancellable | null): Gio.FileEnumerator
     /**
@@ -271,11 +275,18 @@ class DataProvider {
      * Any outstanding i/o request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param url a #GFile to enumerate
+     * @param attributes an attribute query string
+     * @param flags a set of #TrackerDirectoryFlags
+     * @param io_priority the I/O priority of the request (example: %G_PRIORITY_DEFAULT)
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous operation started with
      * tracker_data_provider_begin_async().
+     * @param result a #GAsyncResult.
      */
     begin_finish(result: Gio.AsyncResult): Gio.FileEnumerator
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.DataProvider */
@@ -293,6 +304,10 @@ class DataProvider {
      * The standard attributes are available as defines, like
      * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
      * more details.
+     * @param url a #GFile to enumerate
+     * @param attributes an attribute query string
+     * @param flags a set of #TrackerDirectoryFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable?: Gio.Cancellable | null): Gio.FileEnumerator
     /**
@@ -316,11 +331,18 @@ class DataProvider {
      * Any outstanding i/o request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param url a #GFile to enumerate
+     * @param attributes an attribute query string
+     * @param flags a set of #TrackerDirectoryFlags
+     * @param io_priority the I/O priority of the request (example: %G_PRIORITY_DEFAULT)
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous operation started with
      * tracker_data_provider_begin_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_begin_finish(result: Gio.AsyncResult): Gio.FileEnumerator
     static name: string
@@ -336,21 +358,23 @@ class Decorator {
     /* Properties of TrackerMiner-2.0.TrackerMiner.Decorator */
     class_names: string[]
     commit_batch_size: number
+    readonly data_source: string
     priority_rdf_types: string[]
     /* Properties of TrackerMiner-2.0.TrackerMiner.Miner */
     progress: number
     remaining_time: number
     status: string
     /* Fields of TrackerMiner-2.0.TrackerMiner.Miner */
-    readonly parent_instance: GObject.Object
-    readonly priv: MinerPrivate
+    parent_instance: GObject.Object
+    priv: MinerPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TrackerMiner-2.0.TrackerMiner.Decorator */
     /**
      * Deletes resource needing extended metadata extraction from the
      * queue. `id` is the same IDs emitted by tracker-store when the database is
      * updated for consistency. For details, see the GraphUpdated signal.
+     * @param id an ID.
      */
     delete_id(id: number): void
     /**
@@ -378,18 +402,23 @@ class Decorator {
      * 
      * This function will give a #GError if the miner is paused at the
      * time it is called.
+     * @param cancellable a #GCancellable.
+     * @param callback a #GAsyncReadyCallback.
      */
     next(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Should be called in the callback function provided to
      * tracker_decorator_next() to return the result of the task be it an
      * error or not.
+     * @param result a #GAsyncResult.
      */
     next_finish(result: Gio.AsyncResult): DecoratorInfo
     /**
      * Adds resource needing extended metadata extraction to the queue.
      * `id` is the same IDs emitted by tracker-store when the database is updated for
      * consistency. For details, see the GraphUpdated signal.
+     * @param id the ID of the resource ID.
+     * @param class_name_id the ID of the resource's class.
      */
     prepend_id(id: number, class_name_id: number): void
     /**
@@ -397,6 +426,7 @@ class Decorator {
      * `rdf_types` are handled before all other content. This is useful for
      * applications that need their content available sooner than the
      * standard time it would take to index content.
+     * @param rdf_types a string array of rdf types
      */
     set_priority_rdf_types(rdf_types: string): void
     /* Methods of TrackerMiner-2.0.TrackerMiner.Miner */
@@ -465,6 +495,10 @@ class Decorator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -475,6 +509,12 @@ class Decorator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -498,6 +538,7 @@ class Decorator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -517,11 +558,14 @@ class Decorator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -529,6 +573,8 @@ class Decorator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -546,6 +592,7 @@ class Decorator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -591,6 +638,7 @@ class Decorator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -634,15 +682,20 @@ class Decorator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -683,6 +736,7 @@ class Decorator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -717,6 +771,7 @@ class Decorator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -759,6 +814,7 @@ class Decorator {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.Decorator */
@@ -803,6 +859,7 @@ class Decorator {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.Miner */
@@ -850,6 +907,7 @@ class Decorator {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -869,6 +927,7 @@ class Decorator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -906,6 +965,9 @@ class Decorator {
      * will indicate how much has been processed so far. `remaining_time` will
      * give the number expected of seconds to finish processing, 0 if the
      * value cannot be estimated, and -1 if its not applicable.
+     * @param status miner status
+     * @param progress a #gdouble indicating miner progress, from 0 to 1.
+     * @param remaining_time a #gint indicating the reamaining processing time, in seconds.
      */
     connect(sigName: "progress", callback: (($obj: Decorator, status: string, progress: number, remaining_time: number) => void)): number
     connect_after(sigName: "progress", callback: (($obj: Decorator, status: string, progress: number, remaining_time: number) => void)): number
@@ -963,6 +1025,7 @@ class Decorator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
@@ -971,6 +1034,8 @@ class Decorator {
     connect_after(sigName: "notify::class-names", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::commit-batch-size", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::commit-batch-size", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::data-source", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::data-source", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::priority-rdf-types", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::priority-rdf-types", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::progress", callback: (($obj: Decorator, pspec: GObject.ParamSpec) => void)): number
@@ -996,6 +1061,9 @@ class Decorator {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1006,19 +1074,21 @@ class DecoratorFS {
     /* Properties of TrackerMiner-2.0.TrackerMiner.Decorator */
     class_names: string[]
     commit_batch_size: number
+    readonly data_source: string
     priority_rdf_types: string[]
     /* Properties of TrackerMiner-2.0.TrackerMiner.Miner */
     progress: number
     remaining_time: number
     status: string
     /* Fields of TrackerMiner-2.0.TrackerMiner.Decorator */
-    readonly parent_instance: Miner
-    readonly priv: object
+    parent_instance: Miner
+    priv: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TrackerMiner-2.0.TrackerMiner.DecoratorFS */
     /**
      * Prepends a file for processing.
+     * @param file a #GFile to process
      */
     prepend_file(file: Gio.File): number
     /* Methods of TrackerMiner-2.0.TrackerMiner.Decorator */
@@ -1026,6 +1096,7 @@ class DecoratorFS {
      * Deletes resource needing extended metadata extraction from the
      * queue. `id` is the same IDs emitted by tracker-store when the database is
      * updated for consistency. For details, see the GraphUpdated signal.
+     * @param id an ID.
      */
     delete_id(id: number): void
     /**
@@ -1053,18 +1124,23 @@ class DecoratorFS {
      * 
      * This function will give a #GError if the miner is paused at the
      * time it is called.
+     * @param cancellable a #GCancellable.
+     * @param callback a #GAsyncReadyCallback.
      */
     next(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Should be called in the callback function provided to
      * tracker_decorator_next() to return the result of the task be it an
      * error or not.
+     * @param result a #GAsyncResult.
      */
     next_finish(result: Gio.AsyncResult): DecoratorInfo
     /**
      * Adds resource needing extended metadata extraction to the queue.
      * `id` is the same IDs emitted by tracker-store when the database is updated for
      * consistency. For details, see the GraphUpdated signal.
+     * @param id the ID of the resource ID.
+     * @param class_name_id the ID of the resource's class.
      */
     prepend_id(id: number, class_name_id: number): void
     /**
@@ -1072,6 +1148,7 @@ class DecoratorFS {
      * `rdf_types` are handled before all other content. This is useful for
      * applications that need their content available sooner than the
      * standard time it would take to index content.
+     * @param rdf_types a string array of rdf types
      */
     set_priority_rdf_types(rdf_types: string): void
     /* Methods of TrackerMiner-2.0.TrackerMiner.Miner */
@@ -1140,6 +1217,10 @@ class DecoratorFS {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1150,6 +1231,12 @@ class DecoratorFS {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1173,6 +1260,7 @@ class DecoratorFS {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1192,11 +1280,14 @@ class DecoratorFS {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1204,6 +1295,8 @@ class DecoratorFS {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1221,6 +1314,7 @@ class DecoratorFS {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1266,6 +1360,7 @@ class DecoratorFS {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1309,15 +1404,20 @@ class DecoratorFS {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1358,6 +1458,7 @@ class DecoratorFS {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1392,6 +1493,7 @@ class DecoratorFS {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1434,6 +1536,7 @@ class DecoratorFS {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.DecoratorFS */
@@ -1476,6 +1579,7 @@ class DecoratorFS {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.Decorator */
@@ -1520,6 +1624,7 @@ class DecoratorFS {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.Miner */
@@ -1567,6 +1672,7 @@ class DecoratorFS {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1586,6 +1692,7 @@ class DecoratorFS {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1623,6 +1730,9 @@ class DecoratorFS {
      * will indicate how much has been processed so far. `remaining_time` will
      * give the number expected of seconds to finish processing, 0 if the
      * value cannot be estimated, and -1 if its not applicable.
+     * @param status miner status
+     * @param progress a #gdouble indicating miner progress, from 0 to 1.
+     * @param remaining_time a #gint indicating the reamaining processing time, in seconds.
      */
     connect(sigName: "progress", callback: (($obj: DecoratorFS, status: string, progress: number, remaining_time: number) => void)): number
     connect_after(sigName: "progress", callback: (($obj: DecoratorFS, status: string, progress: number, remaining_time: number) => void)): number
@@ -1680,6 +1790,7 @@ class DecoratorFS {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
@@ -1688,6 +1799,8 @@ class DecoratorFS {
     connect_after(sigName: "notify::class-names", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::commit-batch-size", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::commit-batch-size", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::data-source", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::data-source", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::priority-rdf-types", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::priority-rdf-types", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::progress", callback: (($obj: DecoratorFS, pspec: GObject.ParamSpec) => void)): number
@@ -1708,6 +1821,9 @@ class DecoratorFS {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1720,20 +1836,26 @@ interface IndexingTree_ConstructProps extends GObject.Object_ConstructProps {
 class IndexingTree {
     /* Properties of TrackerMiner-2.0.TrackerMiner.IndexingTree */
     filter_hidden: boolean
+    readonly root: Gio.File
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TrackerMiner-2.0.TrackerMiner.IndexingTree */
     /**
      * Adds a directory to the indexing tree with the
      * given configuration flags.
+     * @param directory #GFile pointing to a directory
+     * @param flags Configuration flags for the directory
      */
     add(directory: Gio.File, flags: DirectoryFlags): void
     /**
      * Adds a new filter for basenames.
+     * @param filter filter type
+     * @param glob_string glob-style string for the filter
      */
     add_filter(filter: FilterType, glob_string: string): void
     /**
      * Clears all filters of a given type.
+     * @param type filter type to clear
      */
     clear_filters(type: FilterType): void
     /**
@@ -1743,15 +1865,20 @@ class IndexingTree {
      * 
      * If `file_type` is #G_FILE_TYPE_UNKNOWN, file type will be queried to the
      * file system.
+     * @param file a #GFile
+     * @param file_type a #GFileType
      */
     file_is_indexable(file: Gio.File, file_type: Gio.FileType): boolean
     /**
      * Evaluates if the URL represented by `file` is the same of that for
      * the root of the `tree`.
+     * @param file a #GFile to compare
      */
     file_is_root(file: Gio.File): boolean
     /**
      * Returns %TRUE if `file` matches any filter of the given filter type.
+     * @param type filter type
+     * @param file a #GFile
      */
     file_matches_filter(type: FilterType, file: Gio.File): boolean
     /**
@@ -1760,6 +1887,7 @@ class IndexingTree {
      * for that is returned here. The `filter` allows specific type of
      * policies to be returned, for example, the default policy for files
      * (#TRACKER_FILTER_FILE).
+     * @param filter a #TrackerFilterType
      */
     get_default_policy(filter: FilterType): FilterPolicy
     /**
@@ -1799,6 +1927,7 @@ class IndexingTree {
      * 
      * If the return value is non-%NULL, `directory_flags` would contain the
      * #TrackerDirectoryFlags applying to `file`.
+     * @param file a #GFile
      */
     get_root(file: Gio.File): [ /* returnType */ Gio.File, /* directory_flags */ DirectoryFlags ]
     /**
@@ -1813,16 +1942,21 @@ class IndexingTree {
      * 
      * If `recursive` is #TRUE, #TrackerIndexingTree::directory-updated
      * will be emitted on the indexing roots that are contained in `file`.
+     * @param file a #GFile
+     * @param recursive Whether contained indexing roots are affected by the update
      */
     notify_update(file: Gio.File, recursive: boolean): boolean
     /**
      * returns %TRUE if `parent` should be indexed based on its contents.
+     * @param parent parent directory
+     * @param children children within `parent`
      */
     parent_is_indexable(parent: Gio.File, children: Gio.File[]): boolean
     /**
      * Removes `directory` from the indexing tree, note that
      * only directories previously added with tracker_indexing_tree_add()
      * can be effectively removed.
+     * @param directory #GFile pointing to a directory
      */
     remove(directory: Gio.File): void
     /**
@@ -1832,6 +1966,8 @@ class IndexingTree {
      * 
      * For example, you can (by default), disable indexing all directories
      * using this function.
+     * @param filter a #TrackerFilterType
+     * @param policy a #TrackerFilterPolicy
      */
     set_default_policy(filter: FilterType, policy: FilterPolicy): void
     /**
@@ -1843,6 +1979,7 @@ class IndexingTree {
      * Sets the indexing policy for `tree` with hidden files and content.
      * To ignore hidden files, `filter_hidden` should be %TRUE, otherwise
      * %FALSE.
+     * @param filter_hidden a boolean
      */
     set_filter_hidden(filter_hidden: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1880,6 +2017,10 @@ class IndexingTree {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1890,6 +2031,12 @@ class IndexingTree {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1913,6 +2060,7 @@ class IndexingTree {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1932,11 +2080,14 @@ class IndexingTree {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1944,6 +2095,8 @@ class IndexingTree {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1961,6 +2114,7 @@ class IndexingTree {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2006,6 +2160,7 @@ class IndexingTree {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2049,15 +2204,20 @@ class IndexingTree {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2098,6 +2258,7 @@ class IndexingTree {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2132,6 +2293,7 @@ class IndexingTree {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.IndexingTree */
@@ -2156,6 +2318,7 @@ class IndexingTree {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2166,6 +2329,8 @@ class IndexingTree {
      * 
      * #TrackerIndexingTree does not emit those by itself,
      * those may be triggered through tracker_indexing_tree_notify_update().
+     * @param root the root of this child
+     * @param child the updated child
      */
     connect(sigName: "child-updated", callback: (($obj: IndexingTree, root: Gio.File, child: Gio.File) => void)): number
     connect_after(sigName: "child-updated", callback: (($obj: IndexingTree, root: Gio.File, child: Gio.File) => void)): number
@@ -2176,6 +2341,7 @@ class IndexingTree {
      * are to be considered for indexing. Typically this is
      * signalled when the tracker_indexing_tree_add() API is
      * called.
+     * @param directory a #GFile
      */
     connect(sigName: "directory-added", callback: (($obj: IndexingTree, directory: Gio.File) => void)): number
     connect_after(sigName: "directory-added", callback: (($obj: IndexingTree, directory: Gio.File) => void)): number
@@ -2186,6 +2352,7 @@ class IndexingTree {
      * which are to be considered for indexing. Typically this is
      * signalled when the tracker_indexing_tree_remove() API is
      * called.
+     * @param directory a #GFile
      */
     connect(sigName: "directory-removed", callback: (($obj: IndexingTree, directory: Gio.File) => void)): number
     connect_after(sigName: "directory-removed", callback: (($obj: IndexingTree, directory: Gio.File) => void)): number
@@ -2195,6 +2362,7 @@ class IndexingTree {
      * when either its indexing flags change (e.g. due to consecutive
      * calls to tracker_indexing_tree_add()), or anytime an update is
      * requested through tracker_indexing_tree_notify_update().
+     * @param directory a #GFile
      */
     connect(sigName: "directory-updated", callback: (($obj: IndexingTree, directory: Gio.File) => void)): number
     connect_after(sigName: "directory-updated", callback: (($obj: IndexingTree, directory: Gio.File) => void)): number
@@ -2228,12 +2396,15 @@ class IndexingTree {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IndexingTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IndexingTree, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::filter-hidden", callback: (($obj: IndexingTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter-hidden", callback: (($obj: IndexingTree, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::root", callback: (($obj: IndexingTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: IndexingTree, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2258,7 +2429,7 @@ class Miner {
     remaining_time: number
     status: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TrackerMiner-2.0.TrackerMiner.Miner */
     /**
      * Returns #TRUE if the miner is paused.
@@ -2325,6 +2496,10 @@ class Miner {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2335,6 +2510,12 @@ class Miner {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2358,6 +2539,7 @@ class Miner {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2377,11 +2559,14 @@ class Miner {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2389,6 +2574,8 @@ class Miner {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2406,6 +2593,7 @@ class Miner {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2451,6 +2639,7 @@ class Miner {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2494,15 +2683,20 @@ class Miner {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2543,6 +2737,7 @@ class Miner {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2577,6 +2772,7 @@ class Miner {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -2619,6 +2815,7 @@ class Miner {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.Miner */
@@ -2666,6 +2863,7 @@ class Miner {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2685,6 +2883,7 @@ class Miner {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2705,6 +2904,9 @@ class Miner {
      * will indicate how much has been processed so far. `remaining_time` will
      * give the number expected of seconds to finish processing, 0 if the
      * value cannot be estimated, and -1 if its not applicable.
+     * @param status miner status
+     * @param progress a #gdouble indicating miner progress, from 0 to 1.
+     * @param remaining_time a #gint indicating the reamaining processing time, in seconds.
      */
     connect(sigName: "progress", callback: (($obj: Miner, status: string, progress: number, remaining_time: number) => void)): number
     connect_after(sigName: "progress", callback: (($obj: Miner, status: string, progress: number, remaining_time: number) => void)): number
@@ -2762,6 +2964,7 @@ class Miner {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Miner, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Miner, pspec: GObject.ParamSpec) => void)): number
@@ -2789,6 +2992,9 @@ class Miner {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -2803,24 +3009,29 @@ interface MinerFS_ConstructProps extends Miner_ConstructProps {
 }
 class MinerFS {
     /* Properties of TrackerMiner-2.0.TrackerMiner.MinerFS */
+    readonly data_provider: DataProvider
     processing_pool_ready_limit: number
     processing_pool_wait_limit: number
+    readonly root: Gio.File
     throttle: number
     /* Properties of TrackerMiner-2.0.TrackerMiner.Miner */
     progress: number
     remaining_time: number
     status: string
     /* Fields of TrackerMiner-2.0.TrackerMiner.Miner */
-    readonly parent_instance: GObject.Object
-    readonly priv: MinerPrivate
+    parent_instance: GObject.Object
+    priv: MinerPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TrackerMiner-2.0.TrackerMiner.MinerFS */
     /**
      * Tells the filesystem miner to check and index a file at
      * a given priority, this file must be part of the usual
      * crawling directories of #TrackerMinerFS. See
      * tracker_indexing_tree_add().
+     * @param file #GFile for the file to check
+     * @param priority the priority of the check task
+     * @param check_parents whether to check parents and eligibility or not
      */
     check_file(file: Gio.File, priority: number, check_parents: boolean): void
     /**
@@ -2844,6 +3055,7 @@ class MinerFS {
      * 
      * If `file` is not being currently processed by `fs,` or doesn't
      * exist in the store yet, %NULL will be returned.
+     * @param file a #GFile obtained in #TrackerMinerFS::process-file
      */
     get_urn(file: Gio.File): string | null
     /**
@@ -2861,6 +3073,9 @@ class MinerFS {
      * 
      * This function is expected to be called in reaction to all #TrackerMinerFS
      * signals
+     * @param task a #GTask obtained in a #TrackerMinerFS signal/vmethod
+     * @param sparql Resulting sparql for the given operation, or %NULL if   there is an error
+     * @param error a #GError with the error that happened during processing, or %NULL.
      */
     notify_finish(task: Gio.Task, sparql: string | null, error: GLib.Error): void
     /**
@@ -2868,6 +3083,7 @@ class MinerFS {
      * the URN of the given #GFile
      * 
      * If `file` doesn't exist in the store yet, %NULL will be returned.
+     * @param file a #GFile
      */
     query_urn(file: Gio.File): string
     /**
@@ -2876,6 +3092,7 @@ class MinerFS {
      * operations at full speed, 1.0 is the slowest value. With a value of
      * 1.0, the `fs` is typically waiting one full second before handling
      * the next batch of queued items to be processed.
+     * @param throttle a double between 0.0 and 1.0
      */
     set_throttle(throttle: number): void
     /* Methods of TrackerMiner-2.0.TrackerMiner.Miner */
@@ -2944,6 +3161,10 @@ class MinerFS {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2954,6 +3175,12 @@ class MinerFS {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2977,6 +3204,7 @@ class MinerFS {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2996,11 +3224,14 @@ class MinerFS {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3008,6 +3239,8 @@ class MinerFS {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3025,6 +3258,7 @@ class MinerFS {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3070,6 +3304,7 @@ class MinerFS {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3113,15 +3348,20 @@ class MinerFS {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3162,6 +3402,7 @@ class MinerFS {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3196,6 +3437,7 @@ class MinerFS {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -3238,6 +3480,7 @@ class MinerFS {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.MinerFS */
@@ -3288,6 +3531,7 @@ class MinerFS {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.Miner */
@@ -3335,6 +3579,7 @@ class MinerFS {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3354,6 +3599,7 @@ class MinerFS {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3361,6 +3607,11 @@ class MinerFS {
     /**
      * The ::finished signal is emitted when `miner_fs` has finished
      * all pending processing.
+     * @param elapsed elapsed time since mining was started
+     * @param directories_found number of directories found
+     * @param directories_ignored number of ignored directories
+     * @param files_found number of files found
+     * @param files_ignored number of ignored files
      */
     connect(sigName: "finished", callback: (($obj: MinerFS, elapsed: number, directories_found: number, directories_ignored: number, files_found: number, files_ignored: number) => void)): number
     connect_after(sigName: "finished", callback: (($obj: MinerFS, elapsed: number, directories_found: number, directories_ignored: number, files_found: number, files_ignored: number) => void)): number
@@ -3372,6 +3623,7 @@ class MinerFS {
      * many are still in the queue to be added to the database,
      * but this gives some indication that a location is
      * processed.
+     * @param file a #GFile
      */
     connect(sigName: "finished-root", callback: (($obj: MinerFS, file: Gio.File) => void)): number
     connect_after(sigName: "finished-root", callback: (($obj: MinerFS, file: Gio.File) => void)): number
@@ -3392,6 +3644,8 @@ class MinerFS {
      * must call tracker_miner_fs_notify_finish() to indicate that
      * processing has finished on `file,` so the miner can execute
      * the SPARQL updates and continue processing other files.
+     * @param file a #GFile
+     * @param builder a #TrackerSparqlBuilder
      */
     connect(sigName: "process-file", callback: (($obj: MinerFS, file: Gio.File, builder: Gio.Task) => boolean)): number
     connect_after(sigName: "process-file", callback: (($obj: MinerFS, file: Gio.File, builder: Gio.Task) => boolean)): number
@@ -3410,6 +3664,8 @@ class MinerFS {
      * must call tracker_miner_fs_notify_finish() to indicate that
      * processing has finished on `file,` so the miner can execute
      * the SPARQL updates and continue processing other files.
+     * @param file a #GFile
+     * @param builder a #TrackerSparqlBuilder
      */
     connect(sigName: "process-file-attributes", callback: (($obj: MinerFS, file: Gio.File, builder: Gio.Task) => boolean)): number
     connect_after(sigName: "process-file-attributes", callback: (($obj: MinerFS, file: Gio.File, builder: Gio.Task) => boolean)): number
@@ -3436,6 +3692,7 @@ class MinerFS {
      * If the return value of this signal is %FALSE, the miner will apply
      * its default behavior, which is deleting all triples that correspond
      * to the affected URIs.
+     * @param file a #GFile
      */
     connect(sigName: "remove-file", callback: (($obj: MinerFS, file: Gio.File) => string)): number
     connect_after(sigName: "remove-file", callback: (($obj: MinerFS, file: Gio.File) => string)): number
@@ -3457,6 +3714,9 @@ class MinerFS {
      * will indicate how much has been processed so far. `remaining_time` will
      * give the number expected of seconds to finish processing, 0 if the
      * value cannot be estimated, and -1 if its not applicable.
+     * @param status miner status
+     * @param progress a #gdouble indicating miner progress, from 0 to 1.
+     * @param remaining_time a #gint indicating the reamaining processing time, in seconds.
      */
     connect(sigName: "progress", callback: (($obj: MinerFS, status: string, progress: number, remaining_time: number) => void)): number
     connect_after(sigName: "progress", callback: (($obj: MinerFS, status: string, progress: number, remaining_time: number) => void)): number
@@ -3514,14 +3774,19 @@ class MinerFS {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::data-provider", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::data-provider", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::processing-pool-ready-limit", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::processing-pool-ready-limit", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::processing-pool-wait-limit", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::processing-pool-wait-limit", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::root", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::throttle", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::throttle", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::progress", callback: (($obj: MinerFS, pspec: GObject.ParamSpec) => void)): number
@@ -3547,6 +3812,9 @@ class MinerFS {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -3559,10 +3827,10 @@ class MinerOnline {
     remaining_time: number
     status: string
     /* Fields of TrackerMiner-2.0.TrackerMiner.Miner */
-    readonly parent_instance: GObject.Object
-    readonly priv: MinerPrivate
+    parent_instance: GObject.Object
+    priv: MinerPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TrackerMiner-2.0.TrackerMiner.MinerOnline */
     /**
      * Get the type of network this data `miner` uses to index content.
@@ -3634,6 +3902,10 @@ class MinerOnline {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3644,6 +3916,12 @@ class MinerOnline {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3667,6 +3945,7 @@ class MinerOnline {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3686,11 +3965,14 @@ class MinerOnline {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3698,6 +3980,8 @@ class MinerOnline {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3715,6 +3999,7 @@ class MinerOnline {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3760,6 +4045,7 @@ class MinerOnline {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3803,15 +4089,20 @@ class MinerOnline {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3852,6 +4143,7 @@ class MinerOnline {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3886,6 +4178,7 @@ class MinerOnline {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -3928,6 +4221,7 @@ class MinerOnline {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.MinerOnline */
@@ -3972,6 +4266,7 @@ class MinerOnline {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.Miner */
@@ -4019,6 +4314,7 @@ class MinerOnline {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4038,6 +4334,7 @@ class MinerOnline {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4048,6 +4345,7 @@ class MinerOnline {
      * 
      * Return values of #TRUE from this signal indicate whether a
      * #TrackerMiner should resume indexing or not upon ::connected.
+     * @param type a #TrackerNetworkType
      */
     connect(sigName: "connected", callback: (($obj: MinerOnline, type: any) => boolean)): number
     connect_after(sigName: "connected", callback: (($obj: MinerOnline, type: any) => boolean)): number
@@ -4076,6 +4374,9 @@ class MinerOnline {
      * will indicate how much has been processed so far. `remaining_time` will
      * give the number expected of seconds to finish processing, 0 if the
      * value cannot be estimated, and -1 if its not applicable.
+     * @param status miner status
+     * @param progress a #gdouble indicating miner progress, from 0 to 1.
+     * @param remaining_time a #gint indicating the reamaining processing time, in seconds.
      */
     connect(sigName: "progress", callback: (($obj: MinerOnline, status: string, progress: number, remaining_time: number) => void)): number
     connect_after(sigName: "progress", callback: (($obj: MinerOnline, status: string, progress: number, remaining_time: number) => void)): number
@@ -4133,6 +4434,7 @@ class MinerOnline {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MinerOnline, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MinerOnline, pspec: GObject.ParamSpec) => void)): number
@@ -4155,6 +4457,9 @@ class MinerOnline {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -4166,8 +4471,12 @@ interface MinerProxy_ConstructProps extends GObject.Object_ConstructProps {
     miner?: Miner
 }
 class MinerProxy {
+    /* Properties of TrackerMiner-2.0.TrackerMiner.MinerProxy */
+    readonly dbus_connection: Gio.DBusConnection
+    readonly dbus_path: string
+    readonly miner: Miner
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4203,6 +4512,10 @@ class MinerProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4213,6 +4526,12 @@ class MinerProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4236,6 +4555,7 @@ class MinerProxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4255,11 +4575,14 @@ class MinerProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4267,6 +4590,8 @@ class MinerProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4284,6 +4609,7 @@ class MinerProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4329,6 +4655,7 @@ class MinerProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4372,15 +4699,20 @@ class MinerProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4421,6 +4753,7 @@ class MinerProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4455,6 +4788,7 @@ class MinerProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -4497,6 +4831,7 @@ class MinerProxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerMiner-2.0.TrackerMiner.MinerProxy */
@@ -4539,6 +4874,7 @@ class MinerProxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4558,6 +4894,7 @@ class MinerProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4590,10 +4927,17 @@ class MinerProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MinerProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MinerProxy, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::dbus-connection", callback: (($obj: MinerProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-connection", callback: (($obj: MinerProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: MinerProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: MinerProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::miner", callback: (($obj: MinerProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::miner", callback: (($obj: MinerProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4607,6 +4951,9 @@ class MinerProxy {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -4616,10 +4963,10 @@ abstract class DataProviderIface {
     /**
      * Parent interface type.
      */
-    readonly g_iface: GObject.TypeInterface
-    readonly begin: (data_provider: DataProvider, url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable?: Gio.Cancellable | null) => Gio.FileEnumerator
-    readonly begin_async: (data_provider: DataProvider, url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly begin_finish: (data_provider: DataProvider, result: Gio.AsyncResult) => Gio.FileEnumerator
+    g_iface: GObject.TypeInterface
+    begin: (data_provider: DataProvider, url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable?: Gio.Cancellable | null) => Gio.FileEnumerator
+    begin_async: (data_provider: DataProvider, url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    begin_finish: (data_provider: DataProvider, result: Gio.AsyncResult) => Gio.FileEnumerator
     static name: string
 }
 abstract class DecoratorClass {
@@ -4627,13 +4974,13 @@ abstract class DecoratorClass {
     /**
      * parent object class.
      */
-    readonly parent_class: MinerClass
-    readonly items_available: (decorator: Decorator) => void
-    readonly finished: (decorator: Decorator) => void
+    parent_class: MinerClass
+    items_available: (decorator: Decorator) => void
+    finished: (decorator: Decorator) => void
     /**
      * Reserved for future API improvements.
      */
-    readonly padding: object[]
+    padding: object[]
     static name: string
 }
 abstract class DecoratorFSClass {
@@ -4641,11 +4988,11 @@ abstract class DecoratorFSClass {
     /**
      * parent object class.
      */
-    readonly parent_class: DecoratorClass
+    parent_class: DecoratorClass
     /**
      * Reserved for future API improvements.
      */
-    readonly padding: object[]
+    padding: object[]
     static name: string
 }
 class DecoratorInfo {
@@ -4653,11 +5000,13 @@ class DecoratorInfo {
     /**
      * Completes the task associated to this #TrackerDecoratorInfo.
      * Takes ownership of `sparql`.
+     * @param sparql SPARQL string
      */
     complete(sparql: string): void
     /**
      * Completes the task associated to this #TrackerDecoratorInfo,
      * returning the given `error` happened during SPARQL generation.
+     * @param error An error occurred during SPARQL generation
      */
     complete_error(error: GLib.Error): void
     /**
@@ -4703,15 +5052,15 @@ abstract class IndexingTreeClass {
     /**
      * parent object class
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly directory_added: (indexing_tree: IndexingTree, directory: Gio.File) => void
-    readonly directory_removed: (indexing_tree: IndexingTree, directory: Gio.File) => void
-    readonly directory_updated: (indexing_tree: IndexingTree, directory: Gio.File) => void
-    readonly child_updated: (indexing_tree: IndexingTree, root: Gio.File, child: Gio.File) => void
+    parent_class: GObject.ObjectClass
+    directory_added: (indexing_tree: IndexingTree, directory: Gio.File) => void
+    directory_removed: (indexing_tree: IndexingTree, directory: Gio.File) => void
+    directory_updated: (indexing_tree: IndexingTree, directory: Gio.File) => void
+    child_updated: (indexing_tree: IndexingTree, root: Gio.File, child: Gio.File) => void
     /**
      * Reserved for future API improvements.
      */
-    readonly padding: object[]
+    padding: object[]
     static name: string
 }
 abstract class MinerClass {
@@ -4719,16 +5068,16 @@ abstract class MinerClass {
     /**
      * parent object class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly started: (miner: Miner) => void
-    readonly stopped: (miner: Miner) => void
-    readonly paused: (miner: Miner) => void
-    readonly resumed: (miner: Miner) => void
-    readonly progress: (miner: Miner, status: string, progress: number, remaining_time: number) => void
+    parent_class: GObject.ObjectClass
+    started: (miner: Miner) => void
+    stopped: (miner: Miner) => void
+    paused: (miner: Miner) => void
+    resumed: (miner: Miner) => void
+    progress: (miner: Miner, status: string, progress: number, remaining_time: number) => void
     /**
      * Reserved for future API improvements.
      */
-    readonly padding: object[]
+    padding: object[]
     static name: string
 }
 abstract class MinerFSClass {
@@ -4736,19 +5085,19 @@ abstract class MinerFSClass {
     /**
      * parent object class
      */
-    readonly parent: MinerClass
-    readonly process_file: (fs: MinerFS, file: Gio.File, task: Gio.Task) => boolean
-    readonly finished: (fs: MinerFS, elapsed: number, directories_found: number, directories_ignored: number, files_found: number, files_ignored: number) => void
-    readonly process_file_attributes: (fs: MinerFS, file: Gio.File, task: Gio.Task) => boolean
-    readonly finished_root: (fs: MinerFS, root: Gio.File, directories_found: number, directories_ignored: number, files_found: number, files_ignored: number) => void
-    readonly remove_file: (fs: MinerFS, file: Gio.File) => string
-    readonly remove_children: (fs: MinerFS, file: Gio.File) => string
-    readonly move_file: (fs: MinerFS, dest: Gio.File, source: Gio.File, recursive: boolean) => string
-    readonly filter_event: (fs: MinerFS, type: MinerFSEventType, file: Gio.File, source_file: Gio.File) => boolean
+    parent: MinerClass
+    process_file: (fs: MinerFS, file: Gio.File, task: Gio.Task) => boolean
+    finished: (fs: MinerFS, elapsed: number, directories_found: number, directories_ignored: number, files_found: number, files_ignored: number) => void
+    process_file_attributes: (fs: MinerFS, file: Gio.File, task: Gio.Task) => boolean
+    finished_root: (fs: MinerFS, root: Gio.File, directories_found: number, directories_ignored: number, files_found: number, files_ignored: number) => void
+    remove_file: (fs: MinerFS, file: Gio.File) => string
+    remove_children: (fs: MinerFS, file: Gio.File) => string
+    move_file: (fs: MinerFS, dest: Gio.File, source: Gio.File, recursive: boolean) => string
+    filter_event: (fs: MinerFS, type: MinerFSEventType, file: Gio.File, source_file: Gio.File) => boolean
     /**
      * Reserved for future API improvements.
      */
-    readonly padding: object[]
+    padding: object[]
     static name: string
 }
 class MinerFSPrivate {
@@ -4759,13 +5108,13 @@ abstract class MinerOnlineClass {
     /**
      * a #TrackerMinerClass
      */
-    readonly parent_class: MinerClass
-    readonly connected: (miner: MinerOnline, network: NetworkType) => boolean
-    readonly disconnected: (miner: MinerOnline) => void
+    parent_class: MinerClass
+    connected: (miner: MinerOnline, network: NetworkType) => boolean
+    disconnected: (miner: MinerOnline) => void
     /**
      * Reserved for future API improvements.
      */
-    readonly padding: object[]
+    padding: object[]
     static name: string
 }
 class MinerPrivate {
@@ -4773,7 +5122,7 @@ class MinerPrivate {
 }
 abstract class MinerProxyClass {
     /* Fields of TrackerMiner-2.0.TrackerMiner.MinerProxyClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 }

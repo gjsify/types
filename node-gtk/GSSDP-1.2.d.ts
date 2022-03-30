@@ -133,6 +133,16 @@ class Client {
      */
     active: boolean
     /**
+     * The IP protocol address family this client works on. When specified
+     * during construction without giving a concrete address, it will be
+     * used to determine the proper address.
+     * 
+     * If not specified, will contain the currrent address family after
+     * the call to g_initable_init()<!-- -->. Use %G_SOCKET_FAMILY_INVALID
+     * to specifiy using the default socket family (legacy IP)
+     */
+    readonly addressFamily: Gio.SocketFamily
+    /**
      * The value of the BOOTID.UPNP.ORG header
      * 
      * Since 1.2.0
@@ -153,6 +163,17 @@ class Client {
      */
     hostMask: Gio.InetAddressMask
     /**
+     * The name of the network interface this client is associated with.
+     * Set to NULL to autodetect.
+     */
+    readonly interface: string
+    /**
+     * UDP port to use for sending multicast M-SEARCH requests on the
+     * network. If not set (or set to 0) a random port will be used.
+     * This property can be only set during object construction.
+     */
+    readonly msearchPort: number
+    /**
      * The network this client is currently connected to. You could set this
      * to anything you want to identify the network this client is
      * associated with. If you are using #GUPnPContextManager and associated
@@ -165,8 +186,18 @@ class Client {
      * The SSDP server's identifier.
      */
     serverId: string
+    /**
+     * Time-to-live value to use for all sockets created by this client.
+     * If not set (or set to 0) the value recommended by UPnP will be used.
+     * This property can only be set during object construction.
+     */
+    readonly socketTtl: number
+    /**
+     * The UPnP version the client adheres to.
+     */
+    readonly udaVersion: UDAVersion
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GSSDP-1.2.GSSDP.Client */
     /**
      * Add `user_agent` for `ip_address`.
@@ -176,6 +207,8 @@ class Client {
      * 
      * This information can be used in higher layers to get an User-Agent for
      * devices that do not set the User-Agent header in their SOAP requests.
+     * @param ipAddress The host to add to the cache
+     * @param userAgent User agent ot the host to add
      */
     addCacheEntry(ipAddress: string, userAgent: string): void
     /**
@@ -183,10 +216,13 @@ class Client {
      * be used by clients requiring vendor specific header fields.
      * 
      * If there is an existing header with `name` it will append another one.
+     * @param name Header name
+     * @param value Header value
      */
     appendHeader(name: string, value?: string | null): void
     /**
      * Check if the peer at `address` is reachable using this `client`.
+     * @param address A #GInetSocketAddress of the target. The port part of the address may be 0
      */
     canReach(address: Gio.InetSocketAddress): boolean
     /**
@@ -221,11 +257,13 @@ class Client {
     getUdaVersion(): UDAVersion
     /**
      * Try to get a User-Agent for `ip_address`.
+     * @param ipAddress IP address to guess the user-agent for
      */
     guessUserAgent(ipAddress: string): string
     /**
      * Removes `name` from the list of headers. If there are multiple values for
      * `name,` they are all removed.
+     * @param name Header name
      */
     removeHeader(name: string): void
     /**
@@ -234,15 +272,18 @@ class Client {
      * 
      * The boot-id is used to signalize changes in the network configuration
      * for multi-homed hosts
+     * @param bootId The new boot-id for the client
      */
     setBootId(bootId: number): void
     /**
      * The config-id is used to allow caching of the device or service description.
      * It should be changed if that changes.
+     * @param configId The new config-id for the client
      */
     setConfigId(configId: number): void
     /**
      * Sets the network identification of `client` to `network`.
+     * @param network The string identifying the network
      */
     setNetwork(network: string): void
     /**
@@ -252,6 +293,7 @@ class Client {
      * 
      * By default, GSSDP will generate a header conforming to the requirements
      * defined in the UDA documents: OS/Version UPnP/Version GSSDP/Version.
+     * @param serverId The server ID
      */
     setServerId(serverId: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -289,6 +331,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -299,6 +345,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -322,6 +374,7 @@ class Client {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -341,11 +394,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -353,6 +409,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -370,6 +428,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -415,6 +474,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -458,15 +518,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -507,6 +572,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -541,6 +607,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -583,11 +650,16 @@ class Client {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GSSDP-1.2.GSSDP.Client */
     /**
      * Internal signal.
+     * @param fromIp The IP address of the source.
+     * @param fromPort The UDP port used by the sender.
+     * @param type The #_GSSDPMessageType.
+     * @param headers Parsed #SoupMessageHeaders from the message.
      */
     connect(sigName: "message-received", callback: ((fromIp: string, fromPort: number, type: number, headers: Soup.MessageHeaders) => void)): number
     on(sigName: "message-received", callback: (fromIp: string, fromPort: number, type: number, headers: Soup.MessageHeaders) => void, after?: boolean): NodeJS.EventEmitter
@@ -623,6 +695,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -634,6 +707,11 @@ class Client {
     on(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::address-family", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::address-family", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::address-family", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::address-family", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::address-family", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::boot-id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::boot-id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::boot-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -654,6 +732,16 @@ class Client {
     on(sigName: "notify::host-mask", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::host-mask", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::host-mask", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::interface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::interface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::interface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::interface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::interface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::msearch-port", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::msearch-port", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::msearch-port", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::msearch-port", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::msearch-port", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::network", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::network", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::network", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -664,6 +752,16 @@ class Client {
     on(sigName: "notify::server-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::server-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::server-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::socket-ttl", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::socket-ttl", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::socket-ttl", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::socket-ttl", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::socket-ttl", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::uda-version", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uda-version", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::uda-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::uda-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::uda-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -681,6 +779,9 @@ class Client {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -712,6 +813,10 @@ class ResourceBrowser {
      */
     active: boolean
     /**
+     * The [class`GSSDP`.Client] to use for listening to SSDP messages
+     */
+    readonly client: Client
+    /**
      * The maximum number of seconds in which to request other parties
      * to respond.
      */
@@ -721,7 +826,7 @@ class ResourceBrowser {
      */
     target: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GSSDP-1.2.GSSDP.ResourceBrowser */
     /**
      * Get whether the browser is currently active.
@@ -746,14 +851,17 @@ class ResourceBrowser {
     rescan(): boolean
     /**
      * (De)activates `resource_browser`.
+     * @param active %TRUE to activate `resource_browser`
      */
     setActive(active: boolean): void
     /**
      * Sets the used MX value of `resource_browser` to `mx`.
+     * @param mx The to be used MX value
      */
     setMx(mx: number): void
     /**
      * Sets the browser target of `resource_browser` to `target`.
+     * @param target The browser target
      */
     setTarget(target: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -791,6 +899,10 @@ class ResourceBrowser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -801,6 +913,12 @@ class ResourceBrowser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -824,6 +942,7 @@ class ResourceBrowser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -843,11 +962,14 @@ class ResourceBrowser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -855,6 +977,8 @@ class ResourceBrowser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -872,6 +996,7 @@ class ResourceBrowser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -917,6 +1042,7 @@ class ResourceBrowser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -960,15 +1086,20 @@ class ResourceBrowser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1009,6 +1140,7 @@ class ResourceBrowser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1043,12 +1175,15 @@ class ResourceBrowser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GSSDP-1.2.GSSDP.ResourceBrowser */
     /**
      * The ::resource-available signal is emitted whenever a new resource
      * has become available.
+     * @param usn The USN of the discovered resource
+     * @param locations A [struct`GLib`.List] of strings describing the locations of the discovered resource.
      */
     connect(sigName: "resource-available", callback: ((usn: string, locations: string[]) => void)): number
     on(sigName: "resource-available", callback: (usn: string, locations: string[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -1058,6 +1193,7 @@ class ResourceBrowser {
     /**
      * The ::resource-unavailable signal is emitted whenever a resource
      * is not available any more.
+     * @param usn The USN of the resource
      */
     connect(sigName: "resource-unavailable", callback: ((usn: string) => void)): number
     on(sigName: "resource-unavailable", callback: (usn: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1067,6 +1203,9 @@ class ResourceBrowser {
     /**
      * The ::resource-update signal is emitted whenever an UPnP 1.1
      * device is about to change it's BOOTID.
+     * @param usn The USN of the resource
+     * @param bootId The current boot-id
+     * @param nextBootId The next boot-id
      */
     connect(sigName: "resource-update", callback: ((usn: string, bootId: number, nextBootId: number) => void)): number
     on(sigName: "resource-update", callback: (usn: string, bootId: number, nextBootId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1102,6 +1241,7 @@ class ResourceBrowser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1113,6 +1253,11 @@ class ResourceBrowser {
     on(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::client", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::mx", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mx", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::mx", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1164,6 +1309,10 @@ class ResourceGroup {
      */
     available: boolean
     /**
+     * The #GSSDPClient to use.
+     */
+    readonly client: Client
+    /**
      * The number of seconds our advertisements are valid.
      */
     maxAge: number
@@ -1173,7 +1322,7 @@ class ResourceGroup {
      */
     messageDelay: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GSSDP-1.2.GSSDP.ResourceGroup */
     /**
      * Add an additional resource to announce in this resource group.
@@ -1187,6 +1336,9 @@ class ResourceGroup {
      * 
      * The resource id that is returned by this function can be used with
      * [method`GSSDP`.ResourceGroup.remove_resource].
+     * @param target The resource's target
+     * @param usn The resource's USN
+     * @param locations A #GList of the resource's locations
      */
     addResource(target: string, usn: string, locations: string[]): number
     /**
@@ -1196,6 +1348,9 @@ class ResourceGroup {
      * 
      * The resource id that is returned by this function can be used with
      * [method`GSSDP`.ResourceGroup.remove_resource].
+     * @param target The resource's target
+     * @param usn The resource's USN
+     * @param location The resource's location
      */
     addResourceSimple(target: string, usn: string, location: string): number
     getAvailable(): boolean
@@ -1204,25 +1359,30 @@ class ResourceGroup {
     getMessageDelay(): number
     /**
      * Removes the resource with ID `resource_id` from `resource_group`.
+     * @param resourceId The ID of the resource to remove
      */
     removeResource(resourceId: number): void
     /**
      * Sets `resource_group<`!-- -->s availability to `available`. Changing
      * `resource_group<`!-- -->s availability causes it to announce its new state
      * to listening SSDP clients.
+     * @param available %TRUE if `resource_group` should be available (advertised)
      */
     setAvailable(available: boolean): void
     /**
      * Sets the number of seconds advertisements are valid to `max_age`.
+     * @param maxAge The number of seconds advertisements are valid
      */
     setMaxAge(maxAge: number): void
     /**
      * Sets the minimum time between each SSDP message.
+     * @param messageDelay The message delay in ms.
      */
     setMessageDelay(messageDelay: number): void
     /**
      * Send an `ssdp::update` message if the underlying `GSSDPClient` is running
      * the UDA 1.1 protocol. Does nothing otherwise.
+     * @param newBootId The new boot id of the device
      */
     update(newBootId: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1260,6 +1420,10 @@ class ResourceGroup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1270,6 +1434,12 @@ class ResourceGroup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1293,6 +1463,7 @@ class ResourceGroup {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1312,11 +1483,14 @@ class ResourceGroup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1324,6 +1498,8 @@ class ResourceGroup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1341,6 +1517,7 @@ class ResourceGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1386,6 +1563,7 @@ class ResourceGroup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1429,15 +1607,20 @@ class ResourceGroup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1478,6 +1661,7 @@ class ResourceGroup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1512,6 +1696,7 @@ class ResourceGroup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1543,6 +1728,7 @@ class ResourceGroup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1554,6 +1740,11 @@ class ResourceGroup {
     on(sigName: "notify::available", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::available", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::available", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::client", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::max-age", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-age", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::max-age", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1580,19 +1771,19 @@ class ResourceGroup {
 }
 abstract class ClientClass {
     /* Fields of GSSDP-1.2.GSSDP.ClientClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class ResourceBrowserClass {
     /* Fields of GSSDP-1.2.GSSDP.ResourceBrowserClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly resourceUpdate: (resourceBrowser: ResourceBrowser, usn: string, bootId: number, nextBootId: number) => void
-    readonly resourceUnavailable: (resourceBrowser: ResourceBrowser, usn: string) => void
+    parentClass: GObject.ObjectClass
+    resourceUpdate: (resourceBrowser: ResourceBrowser, usn: string, bootId: number, nextBootId: number) => void
+    resourceUnavailable: (resourceBrowser: ResourceBrowser, usn: string) => void
     static name: string
 }
 abstract class ResourceGroupClass {
     /* Fields of GSSDP-1.2.GSSDP.ResourceGroupClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 }

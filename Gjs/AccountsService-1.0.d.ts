@@ -111,10 +111,11 @@ class User {
     readonly user_name: string
     readonly x_session: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of AccountsService-1.0.AccountsService.User */
     /**
      * Organize the user by login frequency and names.
+     * @param user2 a user
      */
     collate(user2: User): number
     /**
@@ -263,6 +264,7 @@ class User {
      * Changes the account type of `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param account_type a #ActUserAccountType
      */
     set_account_type(account_type: UserAccountType): void
     /**
@@ -272,34 +274,40 @@ class User {
      * calls.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param enabled whether or not to autologin for user.
      */
     set_automatic_login(enabled: boolean): void
     /**
      * Assigns a new email to `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param email an email address
      */
     set_email(email: string): void
     /**
      * Assigns a new icon for `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param icon_file path to an icon
      */
     set_icon_file(icon_file: string): void
     /**
      * Assigns a new locale for `user,` setting #ActUser:language.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param language a locale (for example, `en_US.utf8`), or the empty    string to use the system default locale
      */
     set_language(language: string): void
     /**
      * Assigns a new location for `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param location a location
      */
     set_location(location: string): void
     /**
      * Note this function is synchronous and ignores errors.
+     * @param locked whether or not the account is locked
      */
     set_locked(locked: boolean): void
     /**
@@ -307,12 +315,18 @@ class User {
      * `hint` is displayed to the user if they forget the password.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param password a password
+     * @param hint a hint to help user recall password
      */
     set_password(password: string, hint: string): void
     /**
      * Set the password expiration policy for a user.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param min_days_between_changes location to write minimum number of days needed between password changes.
+     * @param max_days_between_changes location to write maximum number of days password can stay unchanged.
+     * @param days_to_warn location to write number of days to warn user password is about to expire.
+     * @param days_after_expiration_until_lock location to write number of days account will be locked after password expires.
      */
     set_password_expiration_policy(min_days_between_changes: number, max_days_between_changes: number, days_to_warn: number, days_after_expiration_until_lock: number): void
     set_password_hint(hint: string): void
@@ -324,42 +338,49 @@ class User {
      * a password to log in.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param password_mode a #ActUserPasswordMode
      */
     set_password_mode(password_mode: UserPasswordMode): void
     /**
      * Assigns a new name for `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param real_name a new name
      */
     set_real_name(real_name: string): void
     /**
      * Assigns a new session for `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param session a session (e.g. gnome)
      */
     set_session(session: string): void
     /**
      * Assigns a type to the session for `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param session_type a type of session (e.g. "wayland" or "x11")
      */
     set_session_type(session_type: string): void
     /**
      * Set the user expiration policy for a user.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param expiration_time location to write users expires timestamp
      */
     set_user_expiration_policy(expiration_time: number): void
     /**
      * Assigns a new username for `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param user_name a new user name
      */
     set_user_name(user_name: string): void
     /**
      * Assigns a new x session for `user`.
      * 
      * Note this function is synchronous and ignores errors.
+     * @param x_session an x session (e.g. gnome)
      */
     set_x_session(x_session: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -397,6 +418,10 @@ class User {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -407,6 +432,12 @@ class User {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -430,6 +461,7 @@ class User {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -449,11 +481,14 @@ class User {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -461,6 +496,8 @@ class User {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -478,6 +515,7 @@ class User {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -523,6 +561,7 @@ class User {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -566,15 +605,20 @@ class User {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -615,6 +659,7 @@ class User {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -649,6 +694,7 @@ class User {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -668,6 +714,7 @@ class User {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -713,6 +760,7 @@ class User {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: User, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: User, pspec: GObject.ParamSpec) => void)): number
@@ -783,14 +831,16 @@ class UserManager {
     include_usernames_list: object
     readonly is_loaded: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of AccountsService-1.0.AccountsService.UserManager */
     /**
      * Activate the session for a given user.
+     * @param user the user to activate
      */
     activate_user_session(user: User): boolean
     /**
      * Caches a user account so it shows up via act_user_manager_list_users().
+     * @param username a user name
      */
     cache_user(username: string): User
     /**
@@ -799,12 +849,16 @@ class UserManager {
      * 
      * For more details, see act_user_manager_cache_user(), which
      * is the synchronous version of this call.
+     * @param username a unix user name
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
      */
     cache_user_async(username: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous user caching.
      * 
      * See act_user_manager_cache_user_async().
+     * @param result a #GAsyncResult
      */
     cache_user_finish(result: Gio.AsyncResult): User
     /**
@@ -813,6 +867,9 @@ class UserManager {
     can_switch(): boolean
     /**
      * Creates a user account on the system.
+     * @param username a unix user name
+     * @param fullname a unix GECOS value
+     * @param accounttype a #ActUserAccountType
      */
     create_user(username: string, fullname: string, accounttype: UserAccountType): User
     /**
@@ -820,16 +877,24 @@ class UserManager {
      * 
      * For more details, see act_user_manager_create_user(), which
      * is the synchronous version of this call.
+     * @param username a unix user name
+     * @param fullname a unix GECOS value
+     * @param accounttype a #ActUserAccountType
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
      */
     create_user_async(username: string, fullname: string, accounttype: UserAccountType, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous user creation.
      * 
      * See act_user_manager_create_user_async().
+     * @param result a #GAsyncResult
      */
     create_user_finish(result: Gio.AsyncResult): User
     /**
      * Deletes a user account on the system.
+     * @param user an #ActUser object
+     * @param remove_files %TRUE to delete the users home directory
      */
     delete_user(user: User, remove_files: boolean): boolean
     /**
@@ -837,12 +902,17 @@ class UserManager {
      * 
      * For more details, see act_user_manager_delete_user(), which
      * is the synchronous version of this call.
+     * @param user a #ActUser object
+     * @param remove_files %TRUE to delete the users home directory
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
      */
     delete_user_async(user: User, remove_files: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous user account deletion.
      * 
      * See act_user_manager_delete_user_async().
+     * @param result a #GAsyncResult
      */
     delete_user_finish(result: Gio.AsyncResult): boolean
     /**
@@ -850,6 +920,7 @@ class UserManager {
      * from `manager`. Trying to use this object before its
      * #ActUser:is-loaded property is %TRUE will result in undefined
      * behavior.
+     * @param username the login name of the user to get.
      */
     get_user(username: string): User
     /**
@@ -857,6 +928,7 @@ class UserManager {
      * given uid from `manager`. Trying to use this object before its
      * #ActUser:is-loaded property is %TRUE will result in undefined
      * behavior.
+     * @param id the uid of the user to get.
      */
     get_user_by_id(id: number): User
     /**
@@ -876,6 +948,7 @@ class UserManager {
      * language and session. If the user account is from a remote
      * server and the user has never logged in before, then that
      * account will no longer show up in ListCachedUsers() output.
+     * @param username a user name
      */
     uncache_user(username: string): boolean
     uncache_user_async(username: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
@@ -883,6 +956,7 @@ class UserManager {
      * Finishes an asynchronous user uncaching.
      * 
      * See act_user_manager_uncache_user_async().
+     * @param result a #GAsyncResult
      */
     uncache_user_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -920,6 +994,10 @@ class UserManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -930,6 +1008,12 @@ class UserManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -953,6 +1037,7 @@ class UserManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -972,11 +1057,14 @@ class UserManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -984,6 +1072,8 @@ class UserManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1001,6 +1091,7 @@ class UserManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1046,6 +1137,7 @@ class UserManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1089,15 +1181,20 @@ class UserManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1138,6 +1235,7 @@ class UserManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1172,6 +1270,7 @@ class UserManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of AccountsService-1.0.AccountsService.UserManager */
@@ -1196,30 +1295,35 @@ class UserManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of AccountsService-1.0.AccountsService.UserManager */
     /**
      * Emitted when a user is added to the user manager.
+     * @param user the #ActUser that was added
      */
     connect(sigName: "user-added", callback: (($obj: UserManager, user: User) => void)): number
     connect_after(sigName: "user-added", callback: (($obj: UserManager, user: User) => void)): number
     emit(sigName: "user-added", user: User): void
     /**
      * One of the users has changed
+     * @param user the #ActUser that changed
      */
     connect(sigName: "user-changed", callback: (($obj: UserManager, user: User) => void)): number
     connect_after(sigName: "user-changed", callback: (($obj: UserManager, user: User) => void)): number
     emit(sigName: "user-changed", user: User): void
     /**
      * One of the users has logged in or out.
+     * @param user the #ActUser that changed login status
      */
     connect(sigName: "user-is-logged-in-changed", callback: (($obj: UserManager, user: User) => void)): number
     connect_after(sigName: "user-is-logged-in-changed", callback: (($obj: UserManager, user: User) => void)): number
     emit(sigName: "user-is-logged-in-changed", user: User): void
     /**
      * Emitted when a user is removed from the user manager.
+     * @param user the #ActUser that was removed
      */
     connect(sigName: "user-removed", callback: (($obj: UserManager, user: User) => void)): number
     connect_after(sigName: "user-removed", callback: (($obj: UserManager, user: User) => void)): number
@@ -1253,6 +1357,7 @@ class UserManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: UserManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: UserManager, pspec: GObject.ParamSpec) => void)): number
@@ -1284,16 +1389,16 @@ class UserManager {
 }
 abstract class UserClass {
     /* Fields of AccountsService-1.0.AccountsService.UserClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class UserManagerClass {
     /* Fields of AccountsService-1.0.AccountsService.UserManagerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly user_added: (user_manager: UserManager, user: User) => void
-    readonly user_removed: (user_manager: UserManager, user: User) => void
-    readonly user_is_logged_in_changed: (user_manager: UserManager, user: User) => void
-    readonly user_changed: (user_manager: UserManager, user: User) => void
+    parent_class: GObject.ObjectClass
+    user_added: (user_manager: UserManager, user: User) => void
+    user_removed: (user_manager: UserManager, user: User) => void
+    user_is_logged_in_changed: (user_manager: UserManager, user: User) => void
+    user_changed: (user_manager: UserManager, user: User) => void
     static name: string
 }
 }

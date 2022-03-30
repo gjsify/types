@@ -136,7 +136,7 @@ class Context {
     debugLevel: number
     readonly libusbContext: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUsb-1.0.GUsb.Context */
     /**
      * Enumerates all the USB devices and adds them to the context.
@@ -147,14 +147,19 @@ class Context {
     enumerate(): void
     /**
      * Finds a device based on its bus and address values.
+     * @param bus a bus number
+     * @param address a bus address
      */
     findByBusAddress(bus: number, address: number): Device
     /**
      * Finds a device based on its platform id value.
+     * @param platformId a platform id, e.g. "usb:00:03:03:02"
      */
     findByPlatformId(platformId: string): Device
     /**
      * Finds a device based on its bus and address values.
+     * @param vid a vendor ID
+     * @param pid a product ID
      */
     findByVidPid(vid: number, pid: number): Device
     getDevices(): Device[]
@@ -173,6 +178,7 @@ class Context {
     getMainContext(): GLib.MainContext
     /**
      * This function does nothing.
+     * @param mainCtx a #GMainContext, or %NULL
      */
     getSource(mainCtx: GLib.MainContext): Source
     /**
@@ -180,21 +186,25 @@ class Context {
      * 
      * Using %G_LOG_LEVEL_INFO will output to standard out, and everything
      * else logs to standard error.
+     * @param flags a GLogLevelFlags such as %G_LOG_LEVEL_ERROR | %G_LOG_LEVEL_INFO, or 0
      */
     setDebug(flags: GLib.LogLevelFlags): void
     /**
      * Sets the flags to use for the context. These should be set before
      * g_usb_context_enumerate() is called.
+     * @param flags some #GUsbContextFlags, e.g. %G_USB_CONTEXT_FLAGS_AUTO_OPEN_DEVICES
      */
     setFlags(flags: ContextFlags): void
     /**
      * Sets the poll interval for platforms like Windows that do not support `LIBUSB_CAP_HAS_HOTPLUG`.
      * This defaults to 1000ms and can be changed before or after g_usb_context_enumerate() has been
      * called.
+     * @param hotplugPollInterval the interval in ms
      */
     setHotplugPollInterval(hotplugPollInterval: number): void
     /**
      * Sets the internal GMainContext to use for synchronous methods.
+     * @param mainCtx 
      */
     setMainContext(mainCtx: GLib.MainContext): void
     /**
@@ -203,6 +213,8 @@ class Context {
      * 
      * Warning: This is synchronous and blocks until the device comes
      * back or the timeout triggers.
+     * @param device a #GUsbDevice
+     * @param timeoutMs timeout to wait
      */
     waitForReplug(device: Device, timeoutMs: number): Device
     /* Methods of GObject-2.0.GObject.Object */
@@ -240,6 +252,10 @@ class Context {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -250,6 +266,12 @@ class Context {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -273,6 +295,7 @@ class Context {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -292,11 +315,14 @@ class Context {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -304,6 +330,8 @@ class Context {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -321,6 +349,7 @@ class Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -366,6 +395,7 @@ class Context {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -409,15 +439,20 @@ class Context {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -458,6 +493,7 @@ class Context {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -492,6 +528,7 @@ class Context {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -534,11 +571,13 @@ class Context {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GUsb-1.0.GUsb.Context */
     /**
      * This signal is emitted when a USB device is added.
+     * @param device A #GUsbDevice
      */
     connect(sigName: "device-added", callback: ((device: Device) => void)): number
     on(sigName: "device-added", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -547,6 +586,7 @@ class Context {
     emit(sigName: "device-added", device: Device): void
     /**
      * This signal is emitted when a USB device is removed.
+     * @param device A #GUsbDevice
      */
     connect(sigName: "device-removed", callback: ((device: Device) => void)): number
     on(sigName: "device-removed", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -582,6 +622,7 @@ class Context {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -615,6 +656,9 @@ class Context {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -626,25 +670,41 @@ interface Device_ConstructProps extends GObject.Object_ConstructProps {
     platformId?: string
 }
 class Device {
+    /* Properties of GUsb-1.0.GUsb.Device */
+    readonly context: Context
+    readonly libusbDevice: object
+    readonly platformId: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUsb-1.0.GUsb.Device */
     /**
      * Perform a USB bulk transfer.
      * 
      * Warning: this function is synchronous, and cannot be cancelled.
+     * @param endpoint the address of a valid endpoint to communicate with
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
      */
     bulkTransfer(endpoint: number, data: Uint8Array, timeout: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* actualLength */ number | null ]
     /**
      * Do an async bulk transfer
+     * @param endpoint the address of a valid endpoint to communicate with
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     bulkTransferAsync(endpoint: number, data: Uint8Array, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     bulkTransferFinish(res: Gio.AsyncResult): number
     /**
      * Claim an interface of the device.
+     * @param interface bInterfaceNumber of the interface you wish to claim
+     * @param flags #GUsbDeviceClaimInterfaceFlags
      */
     claimInterface(interface: number, flags: DeviceClaimInterfaceFlags): boolean
     /**
@@ -655,14 +715,34 @@ class Device {
      * Perform a USB control transfer.
      * 
      * Warning: this function is synchronous, and cannot be cancelled.
+     * @param direction 
+     * @param requestType the request type field for the setup packet
+     * @param recipient 
+     * @param request the request field for the setup packet
+     * @param value the value field for the setup packet
+     * @param idx the index field for the setup packet
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
      */
     controlTransfer(direction: DeviceDirection, requestType: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array, timeout: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* actualLength */ number | null ]
     /**
      * Do an async control transfer
+     * @param direction 
+     * @param requestType 
+     * @param recipient 
+     * @param request 
+     * @param value 
+     * @param idx 
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     controlTransferAsync(direction: DeviceDirection, requestType: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     controlTransferFinish(res: Gio.AsyncResult): number
     /**
@@ -690,6 +770,9 @@ class Device {
     getConfigurationIndex(): number
     /**
      * Gets the string index from the vendor class interface descriptor.
+     * @param classId a device class, e.g. 0xff for VENDOR
+     * @param subclassId a device subclass
+     * @param protocolId a protocol number
      */
     getCustomIndex(classId: number, subclassId: number, protocolId: number): number
     /**
@@ -711,6 +794,9 @@ class Device {
      * If you want to find all the interfaces that match (there may be other
      * 'alternate' interfaces you have to use g_usb_device_get_interfaces() and
      * check each one manally.
+     * @param classId a device class, e.g. 0xff for VENDOR
+     * @param subclassId a device subclass
+     * @param protocolId a protocol number
      */
     getInterface(classId: number, subclassId: number, protocolId: number): Interface
     /**
@@ -764,6 +850,7 @@ class Device {
     /**
      * Get a string descriptor from the device. The returned string should be freed
      * with g_free() when no longer needed.
+     * @param descIndex the index for the string descriptor to retrieve
      */
     getStringDescriptor(descIndex: number): string
     /**
@@ -772,11 +859,16 @@ class Device {
      * The descriptor will be at most 128 btes in length, if you need to
      * issue a request with either a smaller or larger descriptor, you can
      * use g_usb_device_get_string_descriptor_bytes_full instead.
+     * @param descIndex the index for the string descriptor to retrieve
+     * @param langid the language ID
      */
     getStringDescriptorBytes(descIndex: number, langid: number): any
     /**
      * Get a raw string descriptor from the device. The returned string should be freed
      * with g_bytes_unref() when no longer needed.
+     * @param descIndex the index for the string descriptor to retrieve
+     * @param langid the language ID
+     * @param length size of the request data buffer
      */
     getStringDescriptorBytesFull(descIndex: number, langid: number, length: number): any
     /**
@@ -791,14 +883,24 @@ class Device {
      * Perform a USB interrupt transfer.
      * 
      * Warning: this function is synchronous, and cannot be cancelled.
+     * @param endpoint the address of a valid endpoint to communicate with
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
      */
     interruptTransfer(endpoint: number, data: Uint8Array, timeout: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* actualLength */ number | null ]
     /**
      * Do an async interrupt transfer
+     * @param endpoint the address of a valid endpoint to communicate with
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     interruptTransferAsync(endpoint: number, data: Uint8Array, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     interruptTransferFinish(res: Gio.AsyncResult): number
     /**
@@ -809,6 +911,8 @@ class Device {
     open(): boolean
     /**
      * Release an interface of the device.
+     * @param interface bInterfaceNumber of the interface you wish to release
+     * @param flags #GUsbDeviceClaimInterfaceFlags
      */
     releaseInterface(interface: number, flags: DeviceClaimInterfaceFlags): boolean
     /**
@@ -825,10 +929,13 @@ class Device {
      * Set the active bConfigurationValue for the device.
      * 
      * Warning: this function is synchronous.
+     * @param configuration the configuration value to set
      */
     setConfiguration(configuration: number): boolean
     /**
      * Sets an alternate setting on an interface.
+     * @param interface bInterfaceNumber of the interface you wish to release
+     * @param alt alternative setting number
      */
     setInterfaceAlt(interface: number, alt: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -866,6 +973,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -876,6 +987,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -899,6 +1016,7 @@ class Device {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -918,11 +1036,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -930,6 +1051,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -947,6 +1070,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -992,6 +1116,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1035,15 +1160,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1084,6 +1214,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1118,6 +1249,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1160,6 +1292,7 @@ class Device {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -1191,12 +1324,28 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::libusb-device", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::libusb-device", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::libusb-device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::libusb-device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::libusb-device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::platform-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::platform-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::platform-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::platform-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::platform-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1213,6 +1362,9 @@ class Device {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1222,8 +1374,10 @@ interface DeviceList_ConstructProps extends GObject.Object_ConstructProps {
     context?: Context
 }
 class DeviceList {
+    /* Properties of GUsb-1.0.GUsb.DeviceList */
+    readonly context: Context
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUsb-1.0.GUsb.DeviceList */
     /**
      * This function does nothing.
@@ -1231,10 +1385,14 @@ class DeviceList {
     coldplug(): void
     /**
      * Finds a device based on its bus and address values.
+     * @param bus a bus number
+     * @param address a bus address
      */
     findByBusAddress(bus: number, address: number): Device
     /**
      * Finds a device based on its bus and address values.
+     * @param vid a vendor ID
+     * @param pid a product ID
      */
     findByVidPid(vid: number, pid: number): Device
     getDevices(): Device[]
@@ -1273,6 +1431,10 @@ class DeviceList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1283,6 +1445,12 @@ class DeviceList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1306,6 +1474,7 @@ class DeviceList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1325,11 +1494,14 @@ class DeviceList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1337,6 +1509,8 @@ class DeviceList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1354,6 +1528,7 @@ class DeviceList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1399,6 +1574,7 @@ class DeviceList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1442,15 +1618,20 @@ class DeviceList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1491,6 +1672,7 @@ class DeviceList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1525,11 +1707,13 @@ class DeviceList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GUsb-1.0.GUsb.DeviceList */
     /**
      * This signal is emitted when a USB device is added.
+     * @param device A #GUsbDevice
      */
     connect(sigName: "device-added", callback: ((device: Device) => void)): number
     on(sigName: "device-added", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -1538,6 +1722,7 @@ class DeviceList {
     emit(sigName: "device-added", device: Device): void
     /**
      * This signal is emitted when a USB device is removed.
+     * @param device A #GUsbDevice
      */
     connect(sigName: "device-removed", callback: ((device: Device) => void)): number
     on(sigName: "device-removed", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -1573,12 +1758,18 @@ class DeviceList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1597,7 +1788,7 @@ interface Endpoint_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Endpoint {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUsb-1.0.GUsb.Endpoint */
     /**
      * Gets the address of the endpoint.
@@ -1670,6 +1861,10 @@ class Endpoint {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1680,6 +1875,12 @@ class Endpoint {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1703,6 +1904,7 @@ class Endpoint {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1722,11 +1924,14 @@ class Endpoint {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1734,6 +1939,8 @@ class Endpoint {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1751,6 +1958,7 @@ class Endpoint {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1796,6 +2004,7 @@ class Endpoint {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1839,15 +2048,20 @@ class Endpoint {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1888,6 +2102,7 @@ class Endpoint {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1922,6 +2137,7 @@ class Endpoint {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1953,6 +2169,7 @@ class Endpoint {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1975,7 +2192,7 @@ interface Interface_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Interface {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUsb-1.0.GUsb.Interface */
     /**
      * Gets the alternate setting for the interface.
@@ -2054,6 +2271,10 @@ class Interface {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2064,6 +2285,12 @@ class Interface {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2087,6 +2314,7 @@ class Interface {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2106,11 +2334,14 @@ class Interface {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2118,6 +2349,8 @@ class Interface {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2135,6 +2368,7 @@ class Interface {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2180,6 +2414,7 @@ class Interface {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2223,15 +2458,20 @@ class Interface {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2272,6 +2512,7 @@ class Interface {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2306,6 +2547,7 @@ class Interface {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2337,6 +2579,7 @@ class Interface {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2357,9 +2600,9 @@ class Interface {
 }
 abstract class ContextClass {
     /* Fields of GUsb-1.0.GUsb.ContextClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly deviceAdded: (context: Context, device: Device) => void
-    readonly deviceRemoved: (context: Context, device: Device) => void
+    parentClass: GObject.ObjectClass
+    deviceAdded: (context: Context, device: Device) => void
+    deviceRemoved: (context: Context, device: Device) => void
     static name: string
 }
 class ContextPrivate {
@@ -2367,14 +2610,14 @@ class ContextPrivate {
 }
 abstract class DeviceClass {
     /* Fields of GUsb-1.0.GUsb.DeviceClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class DeviceListClass {
     /* Fields of GUsb-1.0.GUsb.DeviceListClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly deviceAdded: (list: DeviceList, device: Device) => void
-    readonly deviceRemoved: (list: DeviceList, device: Device) => void
+    parentClass: GObject.ObjectClass
+    deviceAdded: (list: DeviceList, device: Device) => void
+    deviceRemoved: (list: DeviceList, device: Device) => void
     static name: string
 }
 class DeviceListPrivate {
@@ -2385,18 +2628,19 @@ class DevicePrivate {
 }
 abstract class EndpointClass {
     /* Fields of GUsb-1.0.GUsb.EndpointClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class InterfaceClass {
     /* Fields of GUsb-1.0.GUsb.InterfaceClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class Source {
     /* Methods of GUsb-1.0.GUsb.Source */
     /**
      * This function does nothing.
+     * @param func a function to call
      */
     setCallback(func: GLib.SourceFunc): void
     static name: string

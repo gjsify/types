@@ -109,29 +109,34 @@ interface NamespaceManager_ConstructProps extends GObject.Object_ConstructProps 
 }
 class NamespaceManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Tracker-2.0.Tracker.NamespaceManager */
     /**
      * Adds `prefix` as the recognised abbreviaton of `namespace`.
      * 
      * Only one prefix is allowed for a given namespace, and all prefixes must
      * be unique.
+     * @param prefix a short, unique prefix to identify `namespace`
+     * @param ns the URL of the given namespace
      */
     add_prefix(prefix: string, ns: string): void
     /**
      * If `compact_uri` begins with one of the prefixes known to this
      * #TrackerNamespaceManager, then the return value will be the
      * expanded URI. Otherwise, a copy of `compact_uri` will be returned.
+     * @param compact_uri a URI or compact URI
      */
     expand_uri(compact_uri: string): string
     /**
      * Calls `func` for each known prefix / URI pair.
+     * @param func the function to call for each prefix / URI pair
      */
     foreach(func: GLib.HFunc): void
     has_prefix(prefix: string): boolean
     /**
      * Looks up the namespace URI corresponding to `prefix,` or %NULL if the prefix
      * is not known.
+     * @param prefix a string
      */
     lookup_prefix(prefix: string): string
     /**
@@ -173,6 +178,10 @@ class NamespaceManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -183,6 +192,12 @@ class NamespaceManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -206,6 +221,7 @@ class NamespaceManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -225,11 +241,14 @@ class NamespaceManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -237,6 +256,8 @@ class NamespaceManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -254,6 +275,7 @@ class NamespaceManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -299,6 +321,7 @@ class NamespaceManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -342,15 +365,20 @@ class NamespaceManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -391,6 +419,7 @@ class NamespaceManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -425,6 +454,7 @@ class NamespaceManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -444,6 +474,7 @@ class NamespaceManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -476,6 +507,7 @@ class NamespaceManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: NamespaceManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: NamespaceManager, pspec: GObject.ParamSpec) => void)): number
@@ -508,8 +540,13 @@ interface Notifier_ConstructProps extends GObject.Object_ConstructProps {
     classes?: string[]
 }
 class Notifier {
+    /* Properties of Tracker-2.0.Tracker.Notifier */
+    /**
+     * RDF classes to listen notifications about.
+     */
+    readonly classes: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -545,6 +582,10 @@ class Notifier {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -555,6 +596,12 @@ class Notifier {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -578,6 +625,7 @@ class Notifier {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -597,11 +645,14 @@ class Notifier {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -609,6 +660,8 @@ class Notifier {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -626,6 +679,7 @@ class Notifier {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -671,6 +725,7 @@ class Notifier {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -714,15 +769,20 @@ class Notifier {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -763,6 +823,7 @@ class Notifier {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -797,6 +858,7 @@ class Notifier {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -839,6 +901,7 @@ class Notifier {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Tracker-2.0.Tracker.Notifier */
@@ -881,6 +944,7 @@ class Notifier {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -900,12 +964,14 @@ class Notifier {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Tracker-2.0.Tracker.Notifier */
     /**
      * Notifies of changes in the Tracker database.
+     * @param events A #GPtrArray of #TrackerNotifierEvent
      */
     connect(sigName: "events", callback: (($obj: Notifier, events: NotifierEvent[]) => void)): number
     connect_after(sigName: "events", callback: (($obj: Notifier, events: NotifierEvent[]) => void)): number
@@ -939,10 +1005,13 @@ class Notifier {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Notifier, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Notifier, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::classes", callback: (($obj: Notifier, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::classes", callback: (($obj: Notifier, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -956,6 +1025,9 @@ class Notifier {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -976,14 +1048,18 @@ class Resource {
      */
     identifier: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Tracker-2.0.Tracker.Resource */
     /**
      * Adds a boolean object to a multi-valued property.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     add_boolean(property_uri: string, value: boolean): void
     /**
      * Adds a double object to a multi-valued property.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     add_double(property_uri: string, value: number): void
     /**
@@ -992,14 +1068,20 @@ class Resource {
      * You can pass any kind of GValue for `value,` but serialization functions will
      * normally only be able to serialize URIs/relationships and fundamental value
      * types (string, int, etc.).
+     * @param property_uri a string identifying the property to set
+     * @param value an initialised #GValue
      */
     add_gvalue(property_uri: string, value: any): void
     /**
      * Adds an integer object to a multi-valued property.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     add_int(property_uri: string, value: number): void
     /**
      * Adds an integer object to a multi-valued property.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     add_int64(property_uri: string, value: number): void
     /**
@@ -1007,44 +1089,57 @@ class Resource {
      * function produces similar RDF to tracker_resource_add_uri(),
      * although in this function the URI will depend on the identifier
      * set on `resource`.
+     * @param property_uri a string identifying the property to modify
+     * @param resource the property object
      */
     add_relation(property_uri: string, resource: Resource): void
     /**
      * Adds a string object to a multi-valued property.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     add_string(property_uri: string, value: string): void
     /**
      * Adds a resource object to a multi-valued property. This function
      * produces similar RDF to tracker_resource_add_relation(), although
      * it requires that the URI is previously known.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     add_uri(property_uri: string, value: string): void
     /**
      * Returns the first boolean object previously assigned to a property.
+     * @param property_uri a string identifying the property to look up
      */
     get_first_boolean(property_uri: string): boolean
     /**
      * Returns the first double object previously assigned to a property.
+     * @param property_uri a string identifying the property to look up
      */
     get_first_double(property_uri: string): number
     /**
      * Returns the first integer object previously assigned to a property.
+     * @param property_uri a string identifying the property to look up
      */
     get_first_int(property_uri: string): number
     /**
      * Returns the first integer object previously assigned to a property.
+     * @param property_uri a string identifying the property to look up
      */
     get_first_int64(property_uri: string): number
     /**
      * Returns the first resource object previously assigned to a property.
+     * @param property_uri a string identifying the property to look up
      */
     get_first_relation(property_uri: string): Resource
     /**
      * Returns the first string object previously assigned to a property.
+     * @param property_uri a string identifying the property to look up
      */
     get_first_string(property_uri: string): string
     /**
      * Returns the first resource object previously assigned to a property.
+     * @param property_uri a string identifying the property to look up
      */
     get_first_uri(property_uri: string): string
     /**
@@ -1056,6 +1151,7 @@ class Resource {
     get_identifier(): string
     /**
      * Returns the list of all known values of the given property.
+     * @param property_uri a string identifying the property to look up
      */
     get_values(property_uri: string): any[]
     identifier_compare_func(identifier: string): number
@@ -1069,6 +1165,7 @@ class Resource {
      * cases you should pass %NULL, which means the set of namespaces returned by
      * tracker_namespace_manager_get_default() will be used. This defines the
      * usual prefixes for all of the ontologies that Tracker ships with by default.
+     * @param namespaces a set of prefixed URLs, or %NULL to use the     default set
      */
     print_jsonld(namespaces?: NamespaceManager | null): string
     /**
@@ -1079,6 +1176,8 @@ class Resource {
      * cases you should pass %NULL, which means the set of namespaces returned by
      * tracker_namespace_manager_get_default() will be used. This defines the
      * usual prefixes for all of the ontologies that Tracker ships with by default.
+     * @param namespaces a set of prefixed URLs, or %NULL to use the     default set
+     * @param graph_id the URN of the graph the data should be added to,     or %NULL
      */
     print_sparql_update(namespaces?: NamespaceManager | null, graph_id?: string | null): string
     /**
@@ -1091,14 +1190,19 @@ class Resource {
      * cases you should pass %NULL, which means the set of namespaces returned by
      * tracker_namespace_manager_get_default() will be used. This defines the
      * usual prefixes for all of the ontologies that Tracker ships with by default.
+     * @param namespaces a set of prefixed URLs, or %NULL to use the     default set
      */
     print_turtle(namespaces?: NamespaceManager | null): string
     /**
      * Sets a single-valued boolean object.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     set_boolean(property_uri: string, value: boolean): void
     /**
      * Sets a single-valued double object.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     set_double(property_uri: string, value: number): void
     /**
@@ -1112,6 +1216,8 @@ class Resource {
      * You can pass any kind of GValue for `value,` but serialization functions will
      * normally only be able to serialize URIs/relationships and fundamental value
      * types (string, int, etc.).
+     * @param property_uri a string identifying the property to set
+     * @param value an initialised #GValue
      */
     set_gvalue(property_uri: string, value: any): void
     /**
@@ -1122,14 +1228,19 @@ class Resource {
      * 
      * If the identifier is set to NULL, a SPARQL blank node identifier such as
      * "_:123" is assigned to the resource.
+     * @param identifier a string identifying the resource
      */
     set_identifier(identifier?: string | null): void
     /**
      * Sets a single-valued integer object.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     set_int(property_uri: string, value: number): void
     /**
      * Sets a single-valued integer object.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     set_int64(property_uri: string, value: number): void
     /**
@@ -1137,16 +1248,22 @@ class Resource {
      * function produces similar RDF to tracker_resource_set_uri(),
      * although in this function the URI will depend on the identifier
      * set on `resource`.
+     * @param property_uri a string identifying the property to modify
+     * @param resource the property object
      */
     set_relation(property_uri: string, resource: Resource): void
     /**
      * Sets a single-valued string object.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     set_string(property_uri: string, value: string): void
     /**
      * Sets a single-valued resource object as a string URI. This function
      * produces similar RDF to tracker_resource_set_relation(), although
      * it requires that the URI is previously known.
+     * @param property_uri a string identifying the property to modify
+     * @param value the property object
      */
     set_uri(property_uri: string, value: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1184,6 +1301,10 @@ class Resource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1194,6 +1315,12 @@ class Resource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1217,6 +1344,7 @@ class Resource {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1236,11 +1364,14 @@ class Resource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1248,6 +1379,8 @@ class Resource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1265,6 +1398,7 @@ class Resource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1310,6 +1444,7 @@ class Resource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1353,15 +1488,20 @@ class Resource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1402,6 +1542,7 @@ class Resource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1436,6 +1577,7 @@ class Resource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1455,6 +1597,7 @@ class Resource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1487,6 +1630,7 @@ class Resource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Resource, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Resource, pspec: GObject.ParamSpec) => void)): number
@@ -1514,7 +1658,7 @@ class SparqlBuilder {
     length: number
     readonly state: any
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Tracker-2.0.Tracker.SparqlBuilder */
     insert_open(graph?: string | null): void
     insert_silent_open(graph?: string | null): void
@@ -1581,6 +1725,10 @@ class SparqlBuilder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1591,6 +1739,12 @@ class SparqlBuilder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1614,6 +1768,7 @@ class SparqlBuilder {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1633,11 +1788,14 @@ class SparqlBuilder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1645,6 +1803,8 @@ class SparqlBuilder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1662,6 +1822,7 @@ class SparqlBuilder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1707,6 +1868,7 @@ class SparqlBuilder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1750,15 +1912,20 @@ class SparqlBuilder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1799,6 +1966,7 @@ class SparqlBuilder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1833,6 +2001,7 @@ class SparqlBuilder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1852,6 +2021,7 @@ class SparqlBuilder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1884,6 +2054,7 @@ class SparqlBuilder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SparqlBuilder, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SparqlBuilder, pspec: GObject.ParamSpec) => void)): number
@@ -1911,7 +2082,7 @@ interface SparqlConnection_ConstructProps extends GObject.Object_ConstructProps 
 }
 class SparqlConnection {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Tracker-2.0.Tracker.SparqlConnection */
     query(sparql: string, cancellable?: Gio.Cancellable | null): any
     query_async(sparql: string, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null): void
@@ -1967,6 +2138,10 @@ class SparqlConnection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1977,6 +2152,12 @@ class SparqlConnection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2000,6 +2181,7 @@ class SparqlConnection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2019,11 +2201,14 @@ class SparqlConnection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2031,6 +2216,8 @@ class SparqlConnection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2048,6 +2235,7 @@ class SparqlConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2093,6 +2281,7 @@ class SparqlConnection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2136,15 +2325,20 @@ class SparqlConnection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2185,6 +2379,7 @@ class SparqlConnection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2219,6 +2414,7 @@ class SparqlConnection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Tracker-2.0.Tracker.SparqlConnection */
@@ -2258,6 +2454,7 @@ class SparqlConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2290,6 +2487,7 @@ class SparqlConnection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SparqlConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SparqlConnection, pspec: GObject.ParamSpec) => void)): number
@@ -2324,7 +2522,7 @@ class SparqlCursor {
     connection: any
     readonly n_columns: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Tracker-2.0.Tracker.SparqlCursor */
     get_value_type(column: number): any
     get_variable_name(column: number): string | null
@@ -2376,6 +2574,10 @@ class SparqlCursor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2386,6 +2588,12 @@ class SparqlCursor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2409,6 +2617,7 @@ class SparqlCursor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2428,11 +2637,14 @@ class SparqlCursor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2440,6 +2652,8 @@ class SparqlCursor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2457,6 +2671,7 @@ class SparqlCursor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2502,6 +2717,7 @@ class SparqlCursor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2545,15 +2761,20 @@ class SparqlCursor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2594,6 +2815,7 @@ class SparqlCursor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2628,6 +2850,7 @@ class SparqlCursor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Tracker-2.0.Tracker.SparqlCursor */
@@ -2661,6 +2884,7 @@ class SparqlCursor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2693,6 +2917,7 @@ class SparqlCursor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SparqlCursor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SparqlCursor, pspec: GObject.ParamSpec) => void)): number
@@ -2720,7 +2945,7 @@ class SparqlStatement {
     sparql: string
     connection: any
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Tracker-2.0.Tracker.SparqlStatement */
     bind_int(name: string, value: number): void
     bind_boolean(name: string, value: boolean): void
@@ -2768,6 +2993,10 @@ class SparqlStatement {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2778,6 +3007,12 @@ class SparqlStatement {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2801,6 +3036,7 @@ class SparqlStatement {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2820,11 +3056,14 @@ class SparqlStatement {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2832,6 +3071,8 @@ class SparqlStatement {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2849,6 +3090,7 @@ class SparqlStatement {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2894,6 +3136,7 @@ class SparqlStatement {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2937,15 +3180,20 @@ class SparqlStatement {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2986,6 +3234,7 @@ class SparqlStatement {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3020,6 +3269,7 @@ class SparqlStatement {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Tracker-2.0.Tracker.SparqlStatement */
@@ -3047,6 +3297,7 @@ class SparqlStatement {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3079,6 +3330,7 @@ class SparqlStatement {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SparqlStatement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SparqlStatement, pspec: GObject.ParamSpec) => void)): number
@@ -3098,13 +3350,13 @@ class SparqlStatement {
 }
 abstract class NamespaceManagerClass {
     /* Fields of Tracker-2.0.Tracker.NamespaceManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class NotifierClass {
     /* Fields of Tracker-2.0.Tracker.NotifierClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class NotifierEvent {
@@ -3148,7 +3400,7 @@ class NotifierEvent {
 }
 abstract class ResourceClass {
     /* Fields of Tracker-2.0.Tracker.ResourceClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class SparqlBuilderClass {
@@ -3159,25 +3411,25 @@ class SparqlBuilderPrivate {
 }
 abstract class SparqlConnectionClass {
     /* Fields of Tracker-2.0.Tracker.SparqlConnectionClass */
-    readonly query: (self: any, sparql: string, cancellable?: Gio.Cancellable | null) => any
-    readonly query_async: (self: any, sparql: string, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly query_finish: (self: any, _res_: Gio.AsyncResult) => any
-    readonly update: (self: any, sparql: string, priority: number, cancellable?: Gio.Cancellable | null) => void
-    readonly update_async: (self: any, sparql: string, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly update_finish: (self: any, _res_: Gio.AsyncResult) => void
-    readonly update_array_async: (self: any, sparql: string[], priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly update_array_finish: (self: any, _res_: Gio.AsyncResult) => any[] | null
-    readonly update_blank: (self: any, sparql: string, priority: number, cancellable?: Gio.Cancellable | null) => GLib.Variant | null
-    readonly update_blank_async: (self: any, sparql: string, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly update_blank_finish: (self: any, _res_: Gio.AsyncResult) => GLib.Variant | null
-    readonly load: (self: any, file: Gio.File, cancellable?: Gio.Cancellable | null) => void
-    readonly load_async: (self: any, file: Gio.File, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly load_finish: (self: any, _res_: Gio.AsyncResult) => void
-    readonly statistics: (self: any, cancellable?: Gio.Cancellable | null) => any | null
-    readonly statistics_async: (self: any, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly statistics_finish: (self: any, _res_: Gio.AsyncResult) => any | null
-    readonly get_namespace_manager: (self: any) => NamespaceManager | null
-    readonly query_statement: (self: any, sparql: string, cancellable?: Gio.Cancellable | null) => any | null
+    query: (self: any, sparql: string, cancellable?: Gio.Cancellable | null) => any
+    query_async: (self: any, sparql: string, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    query_finish: (self: any, _res_: Gio.AsyncResult) => any
+    update: (self: any, sparql: string, priority: number, cancellable?: Gio.Cancellable | null) => void
+    update_async: (self: any, sparql: string, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    update_finish: (self: any, _res_: Gio.AsyncResult) => void
+    update_array_async: (self: any, sparql: string[], priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    update_array_finish: (self: any, _res_: Gio.AsyncResult) => any[] | null
+    update_blank: (self: any, sparql: string, priority: number, cancellable?: Gio.Cancellable | null) => GLib.Variant | null
+    update_blank_async: (self: any, sparql: string, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    update_blank_finish: (self: any, _res_: Gio.AsyncResult) => GLib.Variant | null
+    load: (self: any, file: Gio.File, cancellable?: Gio.Cancellable | null) => void
+    load_async: (self: any, file: Gio.File, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    load_finish: (self: any, _res_: Gio.AsyncResult) => void
+    statistics: (self: any, cancellable?: Gio.Cancellable | null) => any | null
+    statistics_async: (self: any, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    statistics_finish: (self: any, _res_: Gio.AsyncResult) => any | null
+    get_namespace_manager: (self: any) => NamespaceManager | null
+    query_statement: (self: any, sparql: string, cancellable?: Gio.Cancellable | null) => any | null
     static name: string
 }
 class SparqlConnectionPrivate {
@@ -3185,18 +3437,18 @@ class SparqlConnectionPrivate {
 }
 abstract class SparqlCursorClass {
     /* Fields of Tracker-2.0.Tracker.SparqlCursorClass */
-    readonly get_value_type: (self: any, column: number) => any
-    readonly get_variable_name: (self: any, column: number) => string | null
-    readonly get_string: (self: any, column: number) => [ /* returnType */ string | null, /* length */ number ]
-    readonly next: (self: any, cancellable?: Gio.Cancellable | null) => boolean
-    readonly next_async: (self: any, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly next_finish: (self: any, _res_: Gio.AsyncResult) => boolean
-    readonly rewind: (self: any) => void
-    readonly close: (self: any) => void
-    readonly get_integer: (self: any, column: number) => number
-    readonly get_double: (self: any, column: number) => number
-    readonly get_boolean: (self: any, column: number) => boolean
-    readonly is_bound: (self: any, column: number) => boolean
+    get_value_type: (self: any, column: number) => any
+    get_variable_name: (self: any, column: number) => string | null
+    get_string: (self: any, column: number) => [ /* returnType */ string | null, /* length */ number ]
+    next: (self: any, cancellable?: Gio.Cancellable | null) => boolean
+    next_async: (self: any, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    next_finish: (self: any, _res_: Gio.AsyncResult) => boolean
+    rewind: (self: any) => void
+    close: (self: any) => void
+    get_integer: (self: any, column: number) => number
+    get_double: (self: any, column: number) => number
+    get_boolean: (self: any, column: number) => boolean
+    is_bound: (self: any, column: number) => boolean
     static name: string
 }
 class SparqlCursorPrivate {
@@ -3204,13 +3456,13 @@ class SparqlCursorPrivate {
 }
 abstract class SparqlStatementClass {
     /* Fields of Tracker-2.0.Tracker.SparqlStatementClass */
-    readonly bind_int: (self: any, name: string, value: number) => void
-    readonly bind_boolean: (self: any, name: string, value: boolean) => void
-    readonly bind_string: (self: any, name: string, value: string) => void
-    readonly bind_double: (self: any, name: string, value: number) => void
-    readonly execute: (self: any, cancellable?: Gio.Cancellable | null) => any
-    readonly execute_async: (self: any, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly execute_finish: (self: any, _res_: Gio.AsyncResult) => any
+    bind_int: (self: any, name: string, value: number) => void
+    bind_boolean: (self: any, name: string, value: boolean) => void
+    bind_string: (self: any, name: string, value: string) => void
+    bind_double: (self: any, name: string, value: number) => void
+    execute: (self: any, cancellable?: Gio.Cancellable | null) => any
+    execute_async: (self: any, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    execute_finish: (self: any, _res_: Gio.AsyncResult) => any
     static name: string
 }
 class SparqlStatementPrivate {

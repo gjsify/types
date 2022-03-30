@@ -1251,11 +1251,12 @@ interface AuthenticationRequest_ConstructProps extends GObject.Object_ConstructP
 }
 class AuthenticationRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.AuthenticationRequest */
     /**
      * Authenticate the #WebKitAuthenticationRequest using the #WebKitCredential
      * supplied. To continue without credentials, pass %NULL as `credential`.
+     * @param credential A #WebKitCredential, or %NULL
      */
     authenticate(credential?: Credential | null): void
     /**
@@ -1318,6 +1319,7 @@ class AuthenticationRequest {
      * credential storage is disabled or unsupported.
      * Note that storing of credentials will not be allowed on ephemeral
      * sessions in any case.
+     * @param enabled value to set
      */
     set_can_save_credentials(enabled: boolean): void
     /**
@@ -1327,6 +1329,7 @@ class AuthenticationRequest {
      * webkit_authentication_request_get_proposed_credential() already contains previously-stored
      * credentials.)
      * Passing a %NULL `credential` will clear the proposed credential.
+     * @param credential a #WebKitCredential, or %NULL
      */
     set_proposed_credential(credential: Credential): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1364,6 +1367,10 @@ class AuthenticationRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1374,6 +1381,12 @@ class AuthenticationRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1397,6 +1410,7 @@ class AuthenticationRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1416,11 +1430,14 @@ class AuthenticationRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1428,6 +1445,8 @@ class AuthenticationRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1445,6 +1464,7 @@ class AuthenticationRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1490,6 +1510,7 @@ class AuthenticationRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1533,15 +1554,20 @@ class AuthenticationRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1582,6 +1608,7 @@ class AuthenticationRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1616,6 +1643,7 @@ class AuthenticationRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1635,6 +1663,7 @@ class AuthenticationRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1643,6 +1672,7 @@ class AuthenticationRequest {
      * This signal is emitted when the user authentication request succeeded.
      * Applications handling their own credential storage should connect to
      * this signal to save the credentials.
+     * @param credential the #WebKitCredential accepted
      */
     connect(sigName: "authenticated", callback: (($obj: AuthenticationRequest, credential: Credential) => void)): number
     connect_after(sigName: "authenticated", callback: (($obj: AuthenticationRequest, credential: Credential) => void)): number
@@ -1684,6 +1714,7 @@ class AuthenticationRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthenticationRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthenticationRequest, pspec: GObject.ParamSpec) => void)): number
@@ -1705,8 +1736,13 @@ interface AutomationSession_ConstructProps extends GObject.Object_ConstructProps
     id?: string
 }
 class AutomationSession {
+    /* Properties of WebKit2-5.0.WebKit2.AutomationSession */
+    /**
+     * The session unique identifier.
+     */
+    readonly id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.AutomationSession */
     /**
      * Get the #WebKitAutomationSession previously set with webkit_automation_session_set_application_info().
@@ -1723,6 +1759,7 @@ class AutomationSession {
      * if the client requested a specific browser name or version. This will not have any effect when called
      * after the automation session has been fully created, so this must be called in the callback of
      * #WebKitWebContext::automation-started signal.
+     * @param info a #WebKitApplicationInfo
      */
     set_application_info(info: ApplicationInfo): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1760,6 +1797,10 @@ class AutomationSession {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1770,6 +1811,12 @@ class AutomationSession {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1793,6 +1840,7 @@ class AutomationSession {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1812,11 +1860,14 @@ class AutomationSession {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1824,6 +1875,8 @@ class AutomationSession {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1841,6 +1894,7 @@ class AutomationSession {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1886,6 +1940,7 @@ class AutomationSession {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1929,15 +1984,20 @@ class AutomationSession {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1978,6 +2038,7 @@ class AutomationSession {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2012,6 +2073,7 @@ class AutomationSession {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2031,6 +2093,7 @@ class AutomationSession {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2081,10 +2144,13 @@ class AutomationSession {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AutomationSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AutomationSession, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::id", callback: (($obj: AutomationSession, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: (($obj: AutomationSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2098,7 +2164,7 @@ interface BackForwardList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class BackForwardList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.BackForwardList */
     /**
      * Returns the item that precedes the current item.
@@ -2119,6 +2185,7 @@ class BackForwardList {
     get_length(): number
     /**
      * Returns the item at a given index relative to the current item.
+     * @param index the index of the item
      */
     get_nth_item(index: number): BackForwardListItem | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -2156,6 +2223,10 @@ class BackForwardList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2166,6 +2237,12 @@ class BackForwardList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2189,6 +2266,7 @@ class BackForwardList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2208,11 +2286,14 @@ class BackForwardList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2220,6 +2301,8 @@ class BackForwardList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2237,6 +2320,7 @@ class BackForwardList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2282,6 +2366,7 @@ class BackForwardList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2325,15 +2410,20 @@ class BackForwardList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2374,6 +2464,7 @@ class BackForwardList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2408,6 +2499,7 @@ class BackForwardList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2427,6 +2519,7 @@ class BackForwardList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2437,6 +2530,8 @@ class BackForwardList {
      * items are removed. Note that both `item_added` and `items_removed` can
      * %NULL when only the current item is updated. Items are only removed
      * when the list is cleared or the maximum items limit is reached.
+     * @param item_added the #WebKitBackForwardListItem added or %NULL
+     * @param items_removed a #GList of #WebKitBackForwardListItem<!-- -->s
      */
     connect(sigName: "changed", callback: (($obj: BackForwardList, item_added?: BackForwardListItem | null, items_removed?: object | null) => void)): number
     connect_after(sigName: "changed", callback: (($obj: BackForwardList, item_added?: BackForwardListItem | null, items_removed?: object | null) => void)): number
@@ -2470,6 +2565,7 @@ class BackForwardList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BackForwardList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BackForwardList, pspec: GObject.ParamSpec) => void)): number
@@ -2487,7 +2583,7 @@ interface BackForwardListItem_ConstructProps extends GObject.InitiallyUnowned_Co
 }
 class BackForwardListItem {
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.BackForwardListItem */
     /**
      * See also webkit_back_forward_list_item_get_uri().
@@ -2535,6 +2631,10 @@ class BackForwardListItem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2545,6 +2645,12 @@ class BackForwardListItem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2568,6 +2674,7 @@ class BackForwardListItem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2587,11 +2694,14 @@ class BackForwardListItem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2599,6 +2709,8 @@ class BackForwardListItem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2616,6 +2728,7 @@ class BackForwardListItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2661,6 +2774,7 @@ class BackForwardListItem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2704,15 +2818,20 @@ class BackForwardListItem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2753,6 +2872,7 @@ class BackForwardListItem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2787,6 +2907,7 @@ class BackForwardListItem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2806,6 +2927,7 @@ class BackForwardListItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2838,6 +2960,7 @@ class BackForwardListItem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BackForwardListItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BackForwardListItem, pspec: GObject.ParamSpec) => void)): number
@@ -2859,7 +2982,7 @@ class ColorChooserRequest {
     /* Properties of WebKit2-5.0.WebKit2.ColorChooserRequest */
     rgba: Gdk.RGBA
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.ColorChooserRequest */
     /**
      * Cancels `request` and the input element changes to use the initial color
@@ -2885,6 +3008,7 @@ class ColorChooserRequest {
     get_rgba(): /* rgba */ Gdk.RGBA
     /**
      * Sets the current #GdkRGBA color of `request`
+     * @param rgba a pointer #GdkRGBA
      */
     set_rgba(rgba: Gdk.RGBA): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2922,6 +3046,10 @@ class ColorChooserRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2932,6 +3060,12 @@ class ColorChooserRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2955,6 +3089,7 @@ class ColorChooserRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2974,11 +3109,14 @@ class ColorChooserRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2986,6 +3124,8 @@ class ColorChooserRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3003,6 +3143,7 @@ class ColorChooserRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3048,6 +3189,7 @@ class ColorChooserRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3091,15 +3233,20 @@ class ColorChooserRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3140,6 +3287,7 @@ class ColorChooserRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3174,6 +3322,7 @@ class ColorChooserRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3193,6 +3342,7 @@ class ColorChooserRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3235,6 +3385,7 @@ class ColorChooserRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ColorChooserRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ColorChooserRequest, pspec: GObject.ParamSpec) => void)): number
@@ -3254,10 +3405,11 @@ interface ContextMenu_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ContextMenu {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.ContextMenu */
     /**
      * Adds `item` at the end of the `menu`.
+     * @param item the #WebKitContextMenuItem to add
      */
     append(item: ContextMenuItem): void
     /**
@@ -3266,6 +3418,7 @@ class ContextMenu {
     first(): ContextMenuItem
     /**
      * Gets the item at the given position in the `menu`.
+     * @param position the position of the item, counting from 0
      */
     get_item_at_position(position: number): ContextMenuItem
     /**
@@ -3287,6 +3440,8 @@ class ContextMenu {
      * If `position` is negative, or is larger than the number of items
      * in the #WebKitContextMenu, the item is added on to the end of
      * the `menu`. The first position is 0.
+     * @param item the #WebKitContextMenuItem to add
+     * @param position the position to insert the item
      */
     insert(item: ContextMenuItem, position: number): void
     /**
@@ -3299,15 +3454,19 @@ class ContextMenu {
      * in the #WebKitContextMenu, the item is added on to the end of
      * the `menu`.
      * The first position is 0.
+     * @param item the #WebKitContextMenuItem to add
+     * @param position the new position to move the item
      */
     move_item(item: ContextMenuItem, position: number): void
     /**
      * Adds `item` at the beginning of the `menu`.
+     * @param item the #WebKitContextMenuItem to add
      */
     prepend(item: ContextMenuItem): void
     /**
      * Removes `item` from the `menu`.
      * See also webkit_context_menu_remove_all() to remove all items.
+     * @param item the #WebKitContextMenuItem to remove
      */
     remove(item: ContextMenuItem): void
     /**
@@ -3319,6 +3478,7 @@ class ContextMenu {
      * This function can be used from a Web Process extension to set user data
      * that can be retrieved from the UI Process using webkit_context_menu_get_user_data().
      * If the `user_data` #GVariant is floating, it is consumed.
+     * @param user_data a #GVariant
      */
     set_user_data(user_data: GLib.Variant): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3356,6 +3516,10 @@ class ContextMenu {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3366,6 +3530,12 @@ class ContextMenu {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3389,6 +3559,7 @@ class ContextMenu {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3408,11 +3579,14 @@ class ContextMenu {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3420,6 +3594,8 @@ class ContextMenu {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3437,6 +3613,7 @@ class ContextMenu {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3482,6 +3659,7 @@ class ContextMenu {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3525,15 +3703,20 @@ class ContextMenu {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3574,6 +3757,7 @@ class ContextMenu {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3608,6 +3792,7 @@ class ContextMenu {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3627,6 +3812,7 @@ class ContextMenu {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3659,6 +3845,7 @@ class ContextMenu {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContextMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContextMenu, pspec: GObject.ParamSpec) => void)): number
@@ -3679,7 +3866,7 @@ interface ContextMenuItem_ConstructProps extends GObject.InitiallyUnowned_Constr
 }
 class ContextMenuItem {
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.ContextMenuItem */
     /**
      * Gets the action associated to `item` as a #GAction.
@@ -3703,6 +3890,7 @@ class ContextMenuItem {
     /**
      * Sets or replaces the `item` submenu. If `submenu` is %NULL the current
      * submenu of `item` is removed.
+     * @param submenu a #WebKitContextMenu
      */
     set_submenu(submenu?: ContextMenu | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3740,6 +3928,10 @@ class ContextMenuItem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3750,6 +3942,12 @@ class ContextMenuItem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3773,6 +3971,7 @@ class ContextMenuItem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3792,11 +3991,14 @@ class ContextMenuItem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3804,6 +4006,8 @@ class ContextMenuItem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3821,6 +4025,7 @@ class ContextMenuItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3866,6 +4071,7 @@ class ContextMenuItem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3909,15 +4115,20 @@ class ContextMenuItem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3958,6 +4169,7 @@ class ContextMenuItem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3992,6 +4204,7 @@ class ContextMenuItem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4011,6 +4224,7 @@ class ContextMenuItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4043,6 +4257,7 @@ class ContextMenuItem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContextMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContextMenuItem, pspec: GObject.ParamSpec) => void)): number
@@ -4066,17 +4281,21 @@ interface CookieManager_ConstructProps extends GObject.Object_ConstructProps {
 }
 class CookieManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.CookieManager */
     /**
      * Asynchronously add a #SoupCookie to the underlying storage.
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_cookie_manager_add_cookie_finish() to get the result of the operation.
+     * @param cookie the #SoupCookie to be added
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     add_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_cookie_manager_add_cookie().
+     * @param result a #GAsyncResult
      */
     add_cookie_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4088,14 +4307,19 @@ class CookieManager {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_cookie_manager_delete_cookie_finish() to get the result of the operation.
+     * @param cookie the #SoupCookie to be deleted
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     delete_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_cookie_manager_delete_cookie().
+     * @param result a #GAsyncResult
      */
     delete_cookie_finish(result: Gio.AsyncResult): boolean
     /**
      * Remove all cookies of `cookie_manager` for the given `domain`.
+     * @param domain a domain name
      */
     delete_cookies_for_domain(domain: string): void
     /**
@@ -4106,10 +4330,13 @@ class CookieManager {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_cookie_manager_get_accept_policy_finish() to get the result of the operation.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     get_accept_policy(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_cookie_manager_get_accept_policy().
+     * @param result a #GAsyncResult
      */
     get_accept_policy_finish(result: Gio.AsyncResult): CookieAcceptPolicy
     /**
@@ -4118,12 +4345,16 @@ class CookieManager {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_cookie_manager_get_cookies_finish() to get the result of the operation.
+     * @param uri the URI associated to the cookies to be retrieved
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     get_cookies(uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_cookie_manager_get_cookies().
      * The return value is a #GSList of #SoupCookie instances which should be released
      * with g_list_free_full() and soup_cookie_free().
+     * @param result a #GAsyncResult
      */
     get_cookies_finish(result: Gio.AsyncResult): Soup.Cookie[]
     /**
@@ -4131,12 +4362,15 @@ class CookieManager {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_cookie_manager_get_domains_with_cookies_finish() to get the result of the operation.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     get_domains_with_cookies(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_cookie_manager_get_domains_with_cookies().
      * The return value is a %NULL terminated list of strings which should
      * be released with g_strfreev().
+     * @param result a #GAsyncResult
      */
     get_domains_with_cookies_finish(result: Gio.AsyncResult): string[]
     /**
@@ -4145,6 +4379,7 @@ class CookieManager {
      * and `policy` is set to %WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY, %WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS
      * will be used instead. Once disabled, the policy will be set back to %WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY.
      * See also webkit_website_data_manager_set_itp_enabled().
+     * @param policy a #WebKitCookieAcceptPolicy
      */
     set_accept_policy(policy: CookieAcceptPolicy): void
     /**
@@ -4157,6 +4392,8 @@ class CookieManager {
      * method to keep cookies saved across sessions.
      * 
      * This method should never be called on a #WebKitCookieManager associated to an ephemeral #WebKitWebsiteDataManager.
+     * @param filename the filename to read to/write from
+     * @param storage a #WebKitCookiePersistentStorage
      */
     set_persistent_storage(filename: string, storage: CookiePersistentStorage): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4194,6 +4431,10 @@ class CookieManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4204,6 +4445,12 @@ class CookieManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4227,6 +4474,7 @@ class CookieManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4246,11 +4494,14 @@ class CookieManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4258,6 +4509,8 @@ class CookieManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4275,6 +4528,7 @@ class CookieManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4320,6 +4574,7 @@ class CookieManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4363,15 +4618,20 @@ class CookieManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4412,6 +4672,7 @@ class CookieManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4446,6 +4707,7 @@ class CookieManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4465,6 +4727,7 @@ class CookieManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4504,6 +4767,7 @@ class CookieManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CookieManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CookieManager, pspec: GObject.ParamSpec) => void)): number
@@ -4521,7 +4785,7 @@ interface DeviceInfoPermissionRequest_ConstructProps extends GObject.Object_Cons
 }
 class DeviceInfoPermissionRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4557,6 +4821,10 @@ class DeviceInfoPermissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4567,6 +4835,12 @@ class DeviceInfoPermissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4590,6 +4864,7 @@ class DeviceInfoPermissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4609,11 +4884,14 @@ class DeviceInfoPermissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4621,6 +4899,8 @@ class DeviceInfoPermissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4638,6 +4918,7 @@ class DeviceInfoPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4683,6 +4964,7 @@ class DeviceInfoPermissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4726,15 +5008,20 @@ class DeviceInfoPermissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4775,6 +5062,7 @@ class DeviceInfoPermissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4809,6 +5097,7 @@ class DeviceInfoPermissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of WebKit2-5.0.WebKit2.PermissionRequest */
@@ -4846,6 +5135,7 @@ class DeviceInfoPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4878,6 +5168,7 @@ class DeviceInfoPermissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceInfoPermissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceInfoPermissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -4926,7 +5217,7 @@ class Download {
      */
     readonly response: URIResponse
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.Download */
     /**
      * Cancels the download. When the ongoing download
@@ -4984,6 +5275,7 @@ class Download {
      * Sets the #WebKitDownload:allow-overwrite property, which determines whether
      * the download may overwrite an existing file on disk, or if it will fail if
      * the destination already exists.
+     * @param allowed the new value for the #WebKitDownload:allow-overwrite property
      */
     set_allow_overwrite(allowed: boolean): void
     /**
@@ -5000,6 +5292,7 @@ class Download {
      * and destination URI is not set when the download transfer starts,
      * the file will be saved with the filename suggested by the server in
      * %G_USER_DIRECTORY_DOWNLOAD directory.
+     * @param uri the destination URI
      */
     set_destination(uri: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5037,6 +5330,10 @@ class Download {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5047,6 +5344,12 @@ class Download {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5070,6 +5373,7 @@ class Download {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5089,11 +5393,14 @@ class Download {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5101,6 +5408,8 @@ class Download {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5118,6 +5427,7 @@ class Download {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5163,6 +5473,7 @@ class Download {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5206,15 +5517,20 @@ class Download {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5255,6 +5571,7 @@ class Download {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5289,6 +5606,7 @@ class Download {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of WebKit2-5.0.WebKit2.Download */
@@ -5310,6 +5628,7 @@ class Download {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5318,6 +5637,7 @@ class Download {
      * This signal is emitted after #WebKitDownload::decide-destination and before
      * #WebKitDownload::received-data to notify that destination file has been
      * created successfully at `destination`.
+     * @param destination the destination URI
      */
     connect(sigName: "created-destination", callback: (($obj: Download, destination: string) => void)): number
     connect_after(sigName: "created-destination", callback: (($obj: Download, destination: string) => void)): number
@@ -5327,6 +5647,7 @@ class Download {
      * decide a destination URI for the download. If this signal is not
      * handled the file will be downloaded to %G_USER_DIRECTORY_DOWNLOAD
      * directory using `suggested_filename`.
+     * @param suggested_filename the filename suggested for the download
      */
     connect(sigName: "decide-destination", callback: (($obj: Download, suggested_filename: string) => boolean)): number
     connect_after(sigName: "decide-destination", callback: (($obj: Download, suggested_filename: string) => boolean)): number
@@ -5338,6 +5659,7 @@ class Download {
      * with webkit_download_cancel(), this signal is emitted with error
      * %WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER. The download operation finishes
      * after an error and #WebKitDownload::finished signal is emitted after this one.
+     * @param error the #GError that was triggered
      */
     connect(sigName: "failed", callback: (($obj: Download, error: GLib.Error) => void)): number
     connect_after(sigName: "failed", callback: (($obj: Download, error: GLib.Error) => void)): number
@@ -5353,6 +5675,7 @@ class Download {
      * This signal is emitted after response is received,
      * every time new data has been written to the destination. It's
      * useful to know the progress of the download operation.
+     * @param data_length the length of data received in bytes
      */
     connect(sigName: "received-data", callback: (($obj: Download, data_length: number) => void)): number
     connect_after(sigName: "received-data", callback: (($obj: Download, data_length: number) => void)): number
@@ -5386,6 +5709,7 @@ class Download {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Download, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Download, pspec: GObject.ParamSpec) => void)): number
@@ -5417,7 +5741,7 @@ class EditorState {
      */
     readonly typing_attributes: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.EditorState */
     /**
      * Gets the typing attributes at the current cursor position.
@@ -5482,6 +5806,10 @@ class EditorState {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5492,6 +5820,12 @@ class EditorState {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5515,6 +5849,7 @@ class EditorState {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5534,11 +5869,14 @@ class EditorState {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5546,6 +5884,8 @@ class EditorState {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5563,6 +5903,7 @@ class EditorState {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5608,6 +5949,7 @@ class EditorState {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5651,15 +5993,20 @@ class EditorState {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5700,6 +6047,7 @@ class EditorState {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5734,6 +6082,7 @@ class EditorState {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5753,6 +6102,7 @@ class EditorState {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5785,6 +6135,7 @@ class EditorState {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: EditorState, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: EditorState, pspec: GObject.ParamSpec) => void)): number
@@ -5804,7 +6155,7 @@ interface FaviconDatabase_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FaviconDatabase {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.FaviconDatabase */
     /**
      * Clears all icons from the database.
@@ -5824,14 +6175,19 @@ class FaviconDatabase {
      * before attempting to use this function; otherwise,
      * webkit_favicon_database_get_favicon_finish() will return
      * %WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED.
+     * @param page_uri URI of the page for which we want to retrieve the favicon
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is            satisfied or %NULL if you don't care about the result.
      */
     get_favicon(page_uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with webkit_favicon_database_get_favicon().
+     * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to webkit_favicon_database_get_favicon()
      */
     get_favicon_finish(result: Gio.AsyncResult): cairo.Surface
     /**
      * Obtains the URI of the favicon for the given `page_uri`.
+     * @param page_uri URI of the page containing the icon
      */
     get_favicon_uri(page_uri: string): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -5869,6 +6225,10 @@ class FaviconDatabase {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5879,6 +6239,12 @@ class FaviconDatabase {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5902,6 +6268,7 @@ class FaviconDatabase {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5921,11 +6288,14 @@ class FaviconDatabase {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5933,6 +6303,8 @@ class FaviconDatabase {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5950,6 +6322,7 @@ class FaviconDatabase {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5995,6 +6368,7 @@ class FaviconDatabase {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6038,15 +6412,20 @@ class FaviconDatabase {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6087,6 +6466,7 @@ class FaviconDatabase {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6121,6 +6501,7 @@ class FaviconDatabase {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6140,6 +6521,7 @@ class FaviconDatabase {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6151,6 +6533,8 @@ class FaviconDatabase {
      * to get the favicon. If you are interested in the favicon of a
      * #WebKitWebView it's easier to use the #WebKitWebView:favicon
      * property. See webkit_web_view_get_favicon() for more details.
+     * @param page_uri the URI of the Web page containing the icon
+     * @param favicon_uri the URI of the favicon
      */
     connect(sigName: "favicon-changed", callback: (($obj: FaviconDatabase, page_uri: string, favicon_uri: string) => void)): number
     connect_after(sigName: "favicon-changed", callback: (($obj: FaviconDatabase, page_uri: string, favicon_uri: string) => void)): number
@@ -6184,6 +6568,7 @@ class FaviconDatabase {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FaviconDatabase, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FaviconDatabase, pspec: GObject.ParamSpec) => void)): number
@@ -6227,7 +6612,7 @@ class FileChooserRequest {
      */
     readonly selected_files: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.FileChooserRequest */
     /**
      * Ask WebKit to cancel the request. It's important to do this in case
@@ -6278,6 +6663,7 @@ class FileChooserRequest {
     /**
      * Ask WebKit to select local files for upload and complete the
      * request.
+     * @param files a %NULL-terminated array of strings, containing paths to local files.
      */
     select_files(files: string[]): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6315,6 +6701,10 @@ class FileChooserRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6325,6 +6715,12 @@ class FileChooserRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6348,6 +6744,7 @@ class FileChooserRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6367,11 +6764,14 @@ class FileChooserRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6379,6 +6779,8 @@ class FileChooserRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6396,6 +6798,7 @@ class FileChooserRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6441,6 +6844,7 @@ class FileChooserRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6484,15 +6888,20 @@ class FileChooserRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6533,6 +6942,7 @@ class FileChooserRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6567,6 +6977,7 @@ class FileChooserRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6586,6 +6997,7 @@ class FileChooserRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6618,6 +7030,7 @@ class FileChooserRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FileChooserRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FileChooserRequest, pspec: GObject.ParamSpec) => void)): number
@@ -6660,14 +7073,21 @@ class FindController {
      * The current search text for this #WebKitFindController.
      */
     readonly text: string
+    /**
+     * The #WebKitWebView this controller is associated to.
+     */
+    readonly web_view: WebView
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.FindController */
     /**
      * Counts the number of matches for `search_text` found in the
      * #WebKitWebView with the provided `find_options`. The number of
      * matches will be provided by the
      * #WebKitFindController::counted-matches signal.
+     * @param search_text the text to look for
+     * @param find_options a bitmask with the #WebKitFindOptions used in the search
+     * @param max_match_count the maximum number of matches allowed in the search
      */
     count_matches(search_text: string, find_options: number, max_match_count: number): void
     /**
@@ -6715,6 +7135,9 @@ class FindController {
      * 
      * Callers should call webkit_find_controller_search_finish() to
      * finish the current search operation.
+     * @param search_text the text to look for
+     * @param find_options a bitmask with the #WebKitFindOptions used in the search
+     * @param max_match_count the maximum number of matches allowed in the search
      */
     search(search_text: string, find_options: number, max_match_count: number): void
     /**
@@ -6775,6 +7198,10 @@ class FindController {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6785,6 +7212,12 @@ class FindController {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6808,6 +7241,7 @@ class FindController {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6827,11 +7261,14 @@ class FindController {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6839,6 +7276,8 @@ class FindController {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6856,6 +7295,7 @@ class FindController {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6901,6 +7341,7 @@ class FindController {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6944,15 +7385,20 @@ class FindController {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6993,6 +7439,7 @@ class FindController {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7027,6 +7474,7 @@ class FindController {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7046,6 +7494,7 @@ class FindController {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7054,6 +7503,7 @@ class FindController {
      * This signal is emitted when the #WebKitFindController has
      * counted the number of matches for a given text after a call
      * to webkit_find_controller_count_matches().
+     * @param match_count the number of matches of the search text
      */
     connect(sigName: "counted-matches", callback: (($obj: FindController, match_count: number) => void)): number
     connect_after(sigName: "counted-matches", callback: (($obj: FindController, match_count: number) => void)): number
@@ -7074,6 +7524,7 @@ class FindController {
      * asynchronously after a call to webkit_find_controller_search(),
      * webkit_find_controller_search_next() or
      * webkit_find_controller_search_previous().
+     * @param match_count the number of matches found of the search text
      */
     connect(sigName: "found-text", callback: (($obj: FindController, match_count: number) => void)): number
     connect_after(sigName: "found-text", callback: (($obj: FindController, match_count: number) => void)): number
@@ -7107,6 +7558,7 @@ class FindController {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FindController, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FindController, pspec: GObject.ParamSpec) => void)): number
@@ -7117,6 +7569,8 @@ class FindController {
     connect_after(sigName: "notify::options", callback: (($obj: FindController, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::text", callback: (($obj: FindController, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text", callback: (($obj: FindController, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::web-view", callback: (($obj: FindController, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::web-view", callback: (($obj: FindController, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7130,7 +7584,7 @@ interface FormSubmissionRequest_ConstructProps extends GObject.Object_ConstructP
 }
 class FormSubmissionRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.FormSubmissionRequest */
     /**
      * Get a #GHashTable with the values of the text fields contained in the form
@@ -7187,6 +7641,10 @@ class FormSubmissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7197,6 +7655,12 @@ class FormSubmissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7220,6 +7684,7 @@ class FormSubmissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7239,11 +7704,14 @@ class FormSubmissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7251,6 +7719,8 @@ class FormSubmissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7268,6 +7738,7 @@ class FormSubmissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7313,6 +7784,7 @@ class FormSubmissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7356,15 +7828,20 @@ class FormSubmissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7405,6 +7882,7 @@ class FormSubmissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7439,6 +7917,7 @@ class FormSubmissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7458,6 +7937,7 @@ class FormSubmissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7490,6 +7970,7 @@ class FormSubmissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FormSubmissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FormSubmissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -7514,10 +7995,11 @@ class GeolocationManager {
      */
     readonly enable_high_accuracy: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.GeolocationManager */
     /**
      * Notify `manager` that determining the position failed.
+     * @param error_message the error message
      */
     failed(error_message: string): void
     /**
@@ -7526,6 +8008,7 @@ class GeolocationManager {
     get_enable_high_accuracy(): boolean
     /**
      * Notify `manager` that position has been updated to `position`.
+     * @param position a #WebKitGeolocationPosition
      */
     update_position(position: GeolocationPosition): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7563,6 +8046,10 @@ class GeolocationManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7573,6 +8060,12 @@ class GeolocationManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7596,6 +8089,7 @@ class GeolocationManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7615,11 +8109,14 @@ class GeolocationManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7627,6 +8124,8 @@ class GeolocationManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7644,6 +8143,7 @@ class GeolocationManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7689,6 +8189,7 @@ class GeolocationManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7732,15 +8233,20 @@ class GeolocationManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7781,6 +8287,7 @@ class GeolocationManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7815,6 +8322,7 @@ class GeolocationManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7834,6 +8342,7 @@ class GeolocationManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7887,6 +8396,7 @@ class GeolocationManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GeolocationManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GeolocationManager, pspec: GObject.ParamSpec) => void)): number
@@ -7906,7 +8416,7 @@ interface GeolocationPermissionRequest_ConstructProps extends GObject.Object_Con
 }
 class GeolocationPermissionRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -7942,6 +8452,10 @@ class GeolocationPermissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7952,6 +8466,12 @@ class GeolocationPermissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7975,6 +8495,7 @@ class GeolocationPermissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7994,11 +8515,14 @@ class GeolocationPermissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8006,6 +8530,8 @@ class GeolocationPermissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8023,6 +8549,7 @@ class GeolocationPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8068,6 +8595,7 @@ class GeolocationPermissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8111,15 +8639,20 @@ class GeolocationPermissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8160,6 +8693,7 @@ class GeolocationPermissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8194,6 +8728,7 @@ class GeolocationPermissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of WebKit2-5.0.WebKit2.PermissionRequest */
@@ -8231,6 +8766,7 @@ class GeolocationPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8263,6 +8799,7 @@ class GeolocationPermissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GeolocationPermissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GeolocationPermissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -8310,8 +8847,39 @@ interface HitTestResult_ConstructProps extends GObject.Object_ConstructProps {
     media_uri?: string
 }
 class HitTestResult {
+    /* Properties of WebKit2-5.0.WebKit2.HitTestResult */
+    /**
+     * Bitmask of #WebKitHitTestResultContext flags representing
+     * the context of the #WebKitHitTestResult.
+     */
+    readonly context: number
+    /**
+     * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly image_uri: string
+    /**
+     * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly link_label: string
+    /**
+     * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly link_title: string
+    /**
+     * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly link_uri: string
+    /**
+     * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly media_uri: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.HitTestResult */
     /**
      * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE flag is present in
@@ -8402,6 +8970,10 @@ class HitTestResult {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8412,6 +8984,12 @@ class HitTestResult {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8435,6 +9013,7 @@ class HitTestResult {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8454,11 +9033,14 @@ class HitTestResult {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8466,6 +9048,8 @@ class HitTestResult {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8483,6 +9067,7 @@ class HitTestResult {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8528,6 +9113,7 @@ class HitTestResult {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8571,15 +9157,20 @@ class HitTestResult {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8620,6 +9211,7 @@ class HitTestResult {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8654,6 +9246,7 @@ class HitTestResult {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8673,6 +9266,7 @@ class HitTestResult {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8705,10 +9299,23 @@ class HitTestResult {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::image-uri", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::image-uri", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::link-label", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::link-label", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::link-title", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::link-title", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::link-uri", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::link-uri", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::media-uri", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::media-uri", callback: (($obj: HitTestResult, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8728,11 +9335,12 @@ class InputMethodContext {
     input_hints: InputHints
     input_purpose: InputPurpose
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.InputMethodContext */
     /**
      * Allow `key_event` to be handled by the input method. If %TRUE is returned, then no further processing should be
      * done for the key event.
+     * @param key_event the key event to filter
      */
     filter_key_event(key_event: Gdk.Event): boolean
     /**
@@ -8750,6 +9358,10 @@ class InputMethodContext {
     get_preedit(): [ /* text */ string | null, /* underlines */ InputMethodUnderline[] | null, /* cursor_offset */ number | null ]
     /**
      * Notify `context` that cursor area changed in input associated.
+     * @param x the x coordinate of cursor location
+     * @param y the y coordinate of cursor location
+     * @param width the width of cursor area
+     * @param height the height of cursor area
      */
     notify_cursor_area(x: number, y: number, width: number, height: number): void
     /**
@@ -8763,6 +9375,10 @@ class InputMethodContext {
     /**
      * Notify `context` that the context surrounding the cursor has changed.
      * If there's no selection `selection_index` is the same as `cursor_index`.
+     * @param text text surrounding the insertion point
+     * @param length the length of `text,` or -1 if `text` is nul-terminated
+     * @param cursor_index the byte index of the insertion cursor within `text`.
+     * @param selection_index the byte index of the selection cursor within `text`.
      */
     notify_surrounding(text: string, length: number, cursor_index: number, selection_index: number): void
     /**
@@ -8771,11 +9387,13 @@ class InputMethodContext {
     reset(): void
     /**
      * Set whether `context` should enable preedit to display feedback.
+     * @param enabled whether to enable preedit
      */
     set_enable_preedit(enabled: boolean): void
     set_input_hints(hints: InputHints): void
     /**
      * Set the value of the #WebKitInputMethodContext:input-purpose property.
+     * @param purpose a #WebKitInputPurpose
      */
     set_input_purpose(purpose: InputPurpose): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8813,6 +9431,10 @@ class InputMethodContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8823,6 +9445,12 @@ class InputMethodContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8846,6 +9474,7 @@ class InputMethodContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8865,11 +9494,14 @@ class InputMethodContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8877,6 +9509,8 @@ class InputMethodContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8894,6 +9528,7 @@ class InputMethodContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8939,6 +9574,7 @@ class InputMethodContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8982,15 +9618,20 @@ class InputMethodContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9031,6 +9672,7 @@ class InputMethodContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9065,6 +9707,7 @@ class InputMethodContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of WebKit2-5.0.WebKit2.InputMethodContext */
@@ -9073,6 +9716,7 @@ class InputMethodContext {
     /**
      * Allow `key_event` to be handled by the input method. If %TRUE is returned, then no further processing should be
      * done for the key event.
+     * @param key_event the key event to filter
      */
     vfunc_filter_key_event(key_event: Gdk.Event): boolean
     /**
@@ -9082,6 +9726,10 @@ class InputMethodContext {
     vfunc_get_preedit(): [ /* text */ string | null, /* underlines */ InputMethodUnderline[] | null, /* cursor_offset */ number | null ]
     /**
      * Notify `context` that cursor area changed in input associated.
+     * @param x the x coordinate of cursor location
+     * @param y the y coordinate of cursor location
+     * @param width the width of cursor area
+     * @param height the height of cursor area
      */
     vfunc_notify_cursor_area(x: number, y: number, width: number, height: number): void
     /**
@@ -9095,6 +9743,10 @@ class InputMethodContext {
     /**
      * Notify `context` that the context surrounding the cursor has changed.
      * If there's no selection `selection_index` is the same as `cursor_index`.
+     * @param text text surrounding the insertion point
+     * @param length the length of `text,` or -1 if `text` is nul-terminated
+     * @param cursor_index the byte index of the insertion cursor within `text`.
+     * @param selection_index the byte index of the selection cursor within `text`.
      */
     vfunc_notify_surrounding(text: string, length: number, cursor_index: number, selection_index: number): void
     vfunc_preedit_changed(): void
@@ -9106,6 +9758,7 @@ class InputMethodContext {
     vfunc_reset(): void
     /**
      * Set whether `context` should enable preedit to display feedback.
+     * @param enabled whether to enable preedit
      */
     vfunc_set_enable_preedit(enabled: boolean): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9125,6 +9778,7 @@ class InputMethodContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9133,6 +9787,7 @@ class InputMethodContext {
      * Emitted when a complete input sequence has been entered by the user.
      * This can be a single character immediately after a key press or the
      * final result of preediting.
+     * @param text the string result
      */
     connect(sigName: "committed", callback: (($obj: InputMethodContext, text: string) => void)): number
     connect_after(sigName: "committed", callback: (($obj: InputMethodContext, text: string) => void)): number
@@ -9140,6 +9795,8 @@ class InputMethodContext {
     /**
      * Emitted when the input method wants to delete the context surrounding the cursor.
      * If `offset` is a negative value, it means a position before the cursor.
+     * @param offset the character offset from the cursor position of the text to be deleted.
+     * @param n_chars the number of characters to be deleted
      */
     connect(sigName: "delete-surrounding", callback: (($obj: InputMethodContext, offset: number, n_chars: number) => void)): number
     connect_after(sigName: "delete-surrounding", callback: (($obj: InputMethodContext, offset: number, n_chars: number) => void)): number
@@ -9193,6 +9850,7 @@ class InputMethodContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputMethodContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputMethodContext, pspec: GObject.ParamSpec) => void)): number
@@ -9214,7 +9872,7 @@ interface InstallMissingMediaPluginsPermissionRequest_ConstructProps extends GOb
 }
 class InstallMissingMediaPluginsPermissionRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.InstallMissingMediaPluginsPermissionRequest */
     /**
      * Gets the description about the missing plugins provided by the media backend when a media couldn't be played.
@@ -9255,6 +9913,10 @@ class InstallMissingMediaPluginsPermissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9265,6 +9927,12 @@ class InstallMissingMediaPluginsPermissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9288,6 +9956,7 @@ class InstallMissingMediaPluginsPermissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9307,11 +9976,14 @@ class InstallMissingMediaPluginsPermissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9319,6 +9991,8 @@ class InstallMissingMediaPluginsPermissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9336,6 +10010,7 @@ class InstallMissingMediaPluginsPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9381,6 +10056,7 @@ class InstallMissingMediaPluginsPermissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9424,15 +10100,20 @@ class InstallMissingMediaPluginsPermissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9473,6 +10154,7 @@ class InstallMissingMediaPluginsPermissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9507,6 +10189,7 @@ class InstallMissingMediaPluginsPermissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of WebKit2-5.0.WebKit2.PermissionRequest */
@@ -9544,6 +10227,7 @@ class InstallMissingMediaPluginsPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9576,6 +10260,7 @@ class InstallMissingMediaPluginsPermissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InstallMissingMediaPluginsPermissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InstallMissingMediaPluginsPermissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -9593,7 +10278,7 @@ interface MediaKeySystemPermissionRequest_ConstructProps extends GObject.Object_
 }
 class MediaKeySystemPermissionRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -9629,6 +10314,10 @@ class MediaKeySystemPermissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9639,6 +10328,12 @@ class MediaKeySystemPermissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9662,6 +10357,7 @@ class MediaKeySystemPermissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9681,11 +10377,14 @@ class MediaKeySystemPermissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9693,6 +10392,8 @@ class MediaKeySystemPermissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9710,6 +10411,7 @@ class MediaKeySystemPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9755,6 +10457,7 @@ class MediaKeySystemPermissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9798,15 +10501,20 @@ class MediaKeySystemPermissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9847,6 +10555,7 @@ class MediaKeySystemPermissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9881,6 +10590,7 @@ class MediaKeySystemPermissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of WebKit2-5.0.WebKit2.PermissionRequest */
@@ -9918,6 +10628,7 @@ class MediaKeySystemPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9950,6 +10661,7 @@ class MediaKeySystemPermissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MediaKeySystemPermissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MediaKeySystemPermissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -10006,9 +10718,9 @@ class NavigationPolicyDecision {
      */
     readonly request: URIRequest
     /* Fields of WebKit2-5.0.WebKit2.PolicyDecision */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.NavigationPolicyDecision */
     /**
      * Gets the value of the #WebKitNavigationPolicyDecision:frame-name property.
@@ -10056,6 +10768,7 @@ class NavigationPolicyDecision {
      * For example, a navigation decision to a video sharing website may
      * be accepted under the priviso no movies are allowed to autoplay. The
      * autoplay policy in this case would be set in the `policies`.
+     * @param policies a #WebKitWebsitePolicies
      */
     use_with_policies(policies: WebsitePolicies): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10093,6 +10806,10 @@ class NavigationPolicyDecision {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10103,6 +10820,12 @@ class NavigationPolicyDecision {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10126,6 +10849,7 @@ class NavigationPolicyDecision {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10145,11 +10869,14 @@ class NavigationPolicyDecision {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10157,6 +10884,8 @@ class NavigationPolicyDecision {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10174,6 +10903,7 @@ class NavigationPolicyDecision {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10219,6 +10949,7 @@ class NavigationPolicyDecision {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10262,15 +10993,20 @@ class NavigationPolicyDecision {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10311,6 +11047,7 @@ class NavigationPolicyDecision {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10345,6 +11082,7 @@ class NavigationPolicyDecision {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10364,6 +11102,7 @@ class NavigationPolicyDecision {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10396,6 +11135,7 @@ class NavigationPolicyDecision {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: NavigationPolicyDecision, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: NavigationPolicyDecision, pspec: GObject.ParamSpec) => void)): number
@@ -10442,7 +11182,7 @@ class Notification {
      */
     readonly title: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.Notification */
     /**
      * Tells WebKit the notification has been clicked. This will emit the
@@ -10504,6 +11244,10 @@ class Notification {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10514,6 +11258,12 @@ class Notification {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10537,6 +11287,7 @@ class Notification {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10556,11 +11307,14 @@ class Notification {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10568,6 +11322,8 @@ class Notification {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10585,6 +11341,7 @@ class Notification {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10630,6 +11387,7 @@ class Notification {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10673,15 +11431,20 @@ class Notification {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10722,6 +11485,7 @@ class Notification {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10756,6 +11520,7 @@ class Notification {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10775,6 +11540,7 @@ class Notification {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10823,6 +11589,7 @@ class Notification {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Notification, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Notification, pspec: GObject.ParamSpec) => void)): number
@@ -10848,7 +11615,7 @@ interface NotificationPermissionRequest_ConstructProps extends GObject.Object_Co
 }
 class NotificationPermissionRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -10884,6 +11651,10 @@ class NotificationPermissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10894,6 +11665,12 @@ class NotificationPermissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10917,6 +11694,7 @@ class NotificationPermissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10936,11 +11714,14 @@ class NotificationPermissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10948,6 +11729,8 @@ class NotificationPermissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10965,6 +11748,7 @@ class NotificationPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11010,6 +11794,7 @@ class NotificationPermissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11053,15 +11838,20 @@ class NotificationPermissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11102,6 +11892,7 @@ class NotificationPermissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11136,6 +11927,7 @@ class NotificationPermissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of WebKit2-5.0.WebKit2.PermissionRequest */
@@ -11173,6 +11965,7 @@ class NotificationPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11205,6 +11998,7 @@ class NotificationPermissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: NotificationPermissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: NotificationPermissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -11222,13 +12016,14 @@ interface OptionMenu_ConstructProps extends GObject.Object_ConstructProps {
 }
 class OptionMenu {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.OptionMenu */
     /**
      * Activates the #WebKitOptionMenuItem at `index` in `menu`. Activating an item changes the value
      * of the element making the item the active one. You are expected to close the menu with
      * webkit_option_menu_close() after activating an item, calling this function again will have no
      * effect.
+     * @param index the index of the item
      */
     activate_item(index: number): void
     /**
@@ -11241,6 +12036,7 @@ class OptionMenu {
     close(): void
     /**
      * Returns the #WebKitOptionMenuItem at `index` in `menu`.
+     * @param index the index of the item
      */
     get_item(index: number): OptionMenuItem
     /**
@@ -11252,6 +12048,7 @@ class OptionMenu {
      * text shown by the combo button, but it doesn't change the value of the element. You need to
      * explicitly activate the item with webkit_option_menu_select_item() or close the menu with
      * webkit_option_menu_close() in which case the currently selected item will be activated.
+     * @param index the index of the item
      */
     select_item(index: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11289,6 +12086,10 @@ class OptionMenu {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11299,6 +12100,12 @@ class OptionMenu {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11322,6 +12129,7 @@ class OptionMenu {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11341,11 +12149,14 @@ class OptionMenu {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11353,6 +12164,8 @@ class OptionMenu {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11370,6 +12183,7 @@ class OptionMenu {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11415,6 +12229,7 @@ class OptionMenu {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11458,15 +12273,20 @@ class OptionMenu {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11507,6 +12327,7 @@ class OptionMenu {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11541,6 +12362,7 @@ class OptionMenu {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11560,6 +12382,7 @@ class OptionMenu {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11601,6 +12424,7 @@ class OptionMenu {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
@@ -11618,7 +12442,7 @@ interface Plugin_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Plugin {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.Plugin */
     get_description(): string
     /**
@@ -11663,6 +12487,10 @@ class Plugin {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11673,6 +12501,12 @@ class Plugin {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11696,6 +12530,7 @@ class Plugin {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11715,11 +12550,14 @@ class Plugin {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11727,6 +12565,8 @@ class Plugin {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11744,6 +12584,7 @@ class Plugin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11789,6 +12630,7 @@ class Plugin {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11832,15 +12674,20 @@ class Plugin {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11881,6 +12728,7 @@ class Plugin {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11915,6 +12763,7 @@ class Plugin {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11934,6 +12783,7 @@ class Plugin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11966,6 +12816,7 @@ class Plugin {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Plugin, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Plugin, pspec: GObject.ParamSpec) => void)): number
@@ -11983,7 +12834,7 @@ interface PointerLockPermissionRequest_ConstructProps extends GObject.Object_Con
 }
 class PointerLockPermissionRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -12019,6 +12870,10 @@ class PointerLockPermissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12029,6 +12884,12 @@ class PointerLockPermissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12052,6 +12913,7 @@ class PointerLockPermissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12071,11 +12933,14 @@ class PointerLockPermissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12083,6 +12948,8 @@ class PointerLockPermissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12100,6 +12967,7 @@ class PointerLockPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12145,6 +13013,7 @@ class PointerLockPermissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12188,15 +13057,20 @@ class PointerLockPermissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12237,6 +13111,7 @@ class PointerLockPermissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12271,6 +13146,7 @@ class PointerLockPermissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of WebKit2-5.0.WebKit2.PermissionRequest */
@@ -12308,6 +13184,7 @@ class PointerLockPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12340,6 +13217,7 @@ class PointerLockPermissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PointerLockPermissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PointerLockPermissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -12357,7 +13235,7 @@ interface PolicyDecision_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PolicyDecision {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.PolicyDecision */
     /**
      * Spawn a download from this decision.
@@ -12380,6 +13258,7 @@ class PolicyDecision {
      * For example, a navigation decision to a video sharing website may
      * be accepted under the priviso no movies are allowed to autoplay. The
      * autoplay policy in this case would be set in the `policies`.
+     * @param policies a #WebKitWebsitePolicies
      */
     use_with_policies(policies: WebsitePolicies): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12417,6 +13296,10 @@ class PolicyDecision {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12427,6 +13310,12 @@ class PolicyDecision {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12450,6 +13339,7 @@ class PolicyDecision {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12469,11 +13359,14 @@ class PolicyDecision {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12481,6 +13374,8 @@ class PolicyDecision {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12498,6 +13393,7 @@ class PolicyDecision {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12543,6 +13439,7 @@ class PolicyDecision {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12586,15 +13483,20 @@ class PolicyDecision {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12635,6 +13537,7 @@ class PolicyDecision {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12669,6 +13572,7 @@ class PolicyDecision {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12688,6 +13592,7 @@ class PolicyDecision {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12720,6 +13625,7 @@ class PolicyDecision {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PolicyDecision, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PolicyDecision, pspec: GObject.ParamSpec) => void)): number
@@ -12745,8 +13651,17 @@ interface PrintCustomWidget_ConstructProps extends GObject.Object_ConstructProps
     widget?: Gtk.Widget
 }
 class PrintCustomWidget {
+    /* Properties of WebKit2-5.0.WebKit2.PrintCustomWidget */
+    /**
+     * The title of the custom widget.
+     */
+    readonly title: string
+    /**
+     * The custom #GtkWidget that will be embedded in the dialog.
+     */
+    readonly widget: Gtk.Widget
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.PrintCustomWidget */
     /**
      * Return the value of #WebKitPrintCustomWidget:title property for the given
@@ -12796,6 +13711,10 @@ class PrintCustomWidget {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12806,6 +13725,12 @@ class PrintCustomWidget {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12829,6 +13754,7 @@ class PrintCustomWidget {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12848,11 +13774,14 @@ class PrintCustomWidget {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12860,6 +13789,8 @@ class PrintCustomWidget {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12877,6 +13808,7 @@ class PrintCustomWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12922,6 +13854,7 @@ class PrintCustomWidget {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12965,15 +13898,20 @@ class PrintCustomWidget {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13014,6 +13952,7 @@ class PrintCustomWidget {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13048,6 +13987,7 @@ class PrintCustomWidget {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of WebKit2-5.0.WebKit2.PrintCustomWidget */
@@ -13070,6 +14010,7 @@ class PrintCustomWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13086,6 +14027,8 @@ class PrintCustomWidget {
      * Emitted after change of selected printer in the dialog. The actual page setup
      * and print settings are available and the custom widget can actualize itself
      * according to their values.
+     * @param page_setup actual page setup
+     * @param print_settings actual print settings
      */
     connect(sigName: "update", callback: (($obj: PrintCustomWidget, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings) => void)): number
     connect_after(sigName: "update", callback: (($obj: PrintCustomWidget, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings) => void)): number
@@ -13119,10 +14062,15 @@ class PrintCustomWidget {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PrintCustomWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PrintCustomWidget, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::title", callback: (($obj: PrintCustomWidget, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title", callback: (($obj: PrintCustomWidget, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::widget", callback: (($obj: PrintCustomWidget, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::widget", callback: (($obj: PrintCustomWidget, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13159,8 +14107,12 @@ class PrintOperation {
      * The initial #GtkPrintSettings for the print operation.
      */
     print_settings: Gtk.PrintSettings
+    /**
+     * The #WebKitWebView that will be printed.
+     */
+    readonly web_view: WebView
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.PrintOperation */
     /**
      * Return the current page setup of `print_operation`. It returns %NULL until
@@ -13198,16 +14150,19 @@ class PrintOperation {
      * You can get the updated print settings and page setup by calling
      * webkit_print_operation_get_print_settings() and webkit_print_operation_get_page_setup()
      * after this method.
+     * @param parent transient parent of the print dialog
      */
     run_dialog(parent?: Gtk.Window | null): PrintOperationResponse
     /**
      * Set the current page setup of `print_operation`. Current page setup is used for the
      * initial values of the print dialog when webkit_print_operation_run_dialog() is called.
+     * @param page_setup a #GtkPageSetup to set
      */
     set_page_setup(page_setup: Gtk.PageSetup): void
     /**
      * Set the current print settings of `print_operation`. Current print settings are used for
      * the initial values of the print dialog when webkit_print_operation_run_dialog() is called.
+     * @param print_settings a #GtkPrintSettings to set
      */
     set_print_settings(print_settings: Gtk.PrintSettings): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -13245,6 +14200,10 @@ class PrintOperation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13255,6 +14214,12 @@ class PrintOperation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13278,6 +14243,7 @@ class PrintOperation {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13297,11 +14263,14 @@ class PrintOperation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13309,6 +14278,8 @@ class PrintOperation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13326,6 +14297,7 @@ class PrintOperation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13371,6 +14343,7 @@ class PrintOperation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13414,15 +14387,20 @@ class PrintOperation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13463,6 +14441,7 @@ class PrintOperation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13497,6 +14476,7 @@ class PrintOperation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13516,6 +14496,7 @@ class PrintOperation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13533,6 +14514,7 @@ class PrintOperation {
      * Emitted when an error occurs while printing. The given `error,` of the domain
      * %WEBKIT_PRINT_ERROR, contains further details of the failure.
      * The #WebKitPrintOperation::finished signal is emitted after this one.
+     * @param error the #GError that was triggered
      */
     connect(sigName: "failed", callback: (($obj: PrintOperation, error: GLib.Error) => void)): number
     connect_after(sigName: "failed", callback: (($obj: PrintOperation, error: GLib.Error) => void)): number
@@ -13573,6 +14555,7 @@ class PrintOperation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PrintOperation, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PrintOperation, pspec: GObject.ParamSpec) => void)): number
@@ -13581,6 +14564,8 @@ class PrintOperation {
     connect_after(sigName: "notify::page-setup", callback: (($obj: PrintOperation, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::print-settings", callback: (($obj: PrintOperation, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::print-settings", callback: (($obj: PrintOperation, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::web-view", callback: (($obj: PrintOperation, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::web-view", callback: (($obj: PrintOperation, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13607,9 +14592,9 @@ class ResponsePolicyDecision {
      */
     readonly response: URIResponse
     /* Fields of WebKit2-5.0.WebKit2.PolicyDecision */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.ResponsePolicyDecision */
     /**
      * Return the #WebKitURIRequest associated with the response decision.
@@ -13651,6 +14636,7 @@ class ResponsePolicyDecision {
      * For example, a navigation decision to a video sharing website may
      * be accepted under the priviso no movies are allowed to autoplay. The
      * autoplay policy in this case would be set in the `policies`.
+     * @param policies a #WebKitWebsitePolicies
      */
     use_with_policies(policies: WebsitePolicies): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -13688,6 +14674,10 @@ class ResponsePolicyDecision {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13698,6 +14688,12 @@ class ResponsePolicyDecision {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13721,6 +14717,7 @@ class ResponsePolicyDecision {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13740,11 +14737,14 @@ class ResponsePolicyDecision {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13752,6 +14752,8 @@ class ResponsePolicyDecision {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13769,6 +14771,7 @@ class ResponsePolicyDecision {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13814,6 +14817,7 @@ class ResponsePolicyDecision {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13857,15 +14861,20 @@ class ResponsePolicyDecision {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13906,6 +14915,7 @@ class ResponsePolicyDecision {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13940,6 +14950,7 @@ class ResponsePolicyDecision {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13959,6 +14970,7 @@ class ResponsePolicyDecision {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13991,6 +15003,7 @@ class ResponsePolicyDecision {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ResponsePolicyDecision, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ResponsePolicyDecision, pspec: GObject.ParamSpec) => void)): number
@@ -14012,68 +15025,80 @@ interface SecurityManager_ConstructProps extends GObject.Object_ConstructProps {
 }
 class SecurityManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.SecurityManager */
     /**
      * Register `scheme` as a CORS (Cross-origin resource sharing) enabled scheme.
      * This means that CORS requests are allowed. See W3C CORS specification
      * http://www.w3.org/TR/cors/.
+     * @param scheme a URI scheme
      */
     register_uri_scheme_as_cors_enabled(scheme: string): void
     /**
      * Register `scheme` as a display isolated scheme. This means that pages cannot
      * display these URIs unless they are from the same scheme.
+     * @param scheme a URI scheme
      */
     register_uri_scheme_as_display_isolated(scheme: string): void
     /**
      * Register `scheme` as an empty document scheme. This means that
      * they are allowed to commit synchronously.
+     * @param scheme a URI scheme
      */
     register_uri_scheme_as_empty_document(scheme: string): void
     /**
      * Register `scheme` as a local scheme. This means that other non-local pages
      * cannot link to or access URIs of this scheme.
+     * @param scheme a URI scheme
      */
     register_uri_scheme_as_local(scheme: string): void
     /**
      * Register `scheme` as a no-access scheme. This means that pages loaded
      * with this URI scheme cannot access pages loaded with any other URI scheme.
+     * @param scheme a URI scheme
      */
     register_uri_scheme_as_no_access(scheme: string): void
     /**
      * Register `scheme` as a secure scheme. This means that mixed
      * content warnings won't be generated for this scheme when
      * included by an HTTPS page.
+     * @param scheme a URI scheme
      */
     register_uri_scheme_as_secure(scheme: string): void
     /**
      * Whether `scheme` is considered as a CORS enabled scheme.
      * See also webkit_security_manager_register_uri_scheme_as_cors_enabled().
+     * @param scheme a URI scheme
      */
     uri_scheme_is_cors_enabled(scheme: string): boolean
     /**
      * Whether `scheme` is considered as a display isolated scheme.
      * See also webkit_security_manager_register_uri_scheme_as_display_isolated().
+     * @param scheme a URI scheme
      */
     uri_scheme_is_display_isolated(scheme: string): boolean
     /**
      * Whether `scheme` is considered as an empty document scheme.
      * See also webkit_security_manager_register_uri_scheme_as_empty_document().
+     * @param scheme a URI scheme
      */
     uri_scheme_is_empty_document(scheme: string): boolean
     /**
      * Whether `scheme` is considered as a local scheme.
      * See also webkit_security_manager_register_uri_scheme_as_local().
+     * @param scheme a URI scheme
      */
     uri_scheme_is_local(scheme: string): boolean
     /**
      * Whether `scheme` is considered as a no-access scheme.
      * See also webkit_security_manager_register_uri_scheme_as_no_access().
+     * @param scheme a URI scheme
      */
     uri_scheme_is_no_access(scheme: string): boolean
     /**
      * Whether `scheme` is considered as a secure scheme.
      * See also webkit_security_manager_register_uri_scheme_as_secure().
+     * @param scheme a URI scheme
      */
     uri_scheme_is_secure(scheme: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -14111,6 +15136,10 @@ class SecurityManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14121,6 +15150,12 @@ class SecurityManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14144,6 +15179,7 @@ class SecurityManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14163,11 +15199,14 @@ class SecurityManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14175,6 +15214,8 @@ class SecurityManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14192,6 +15233,7 @@ class SecurityManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14237,6 +15279,7 @@ class SecurityManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14280,15 +15323,20 @@ class SecurityManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14329,6 +15377,7 @@ class SecurityManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14363,6 +15412,7 @@ class SecurityManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14382,6 +15432,7 @@ class SecurityManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14414,6 +15465,7 @@ class SecurityManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SecurityManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SecurityManager, pspec: GObject.ParamSpec) => void)): number
@@ -15165,7 +16217,7 @@ class Settings {
      */
     zoom_text_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.Settings */
     /**
      * Get the #WebKitSettings:allow-file-access-from-file-urls property.
@@ -15402,244 +16454,305 @@ class Settings {
     get_zoom_text_only(): boolean
     /**
      * Set the #WebKitSettings:allow-file-access-from-file-urls property.
+     * @param allowed Value to be set
      */
     set_allow_file_access_from_file_urls(allowed: boolean): void
     /**
      * Set the #WebKitSettings:allow-modal-dialogs property.
+     * @param allowed Value to be set
      */
     set_allow_modal_dialogs(allowed: boolean): void
     /**
      * Set the #WebKitSettings:allow-top-navigation-to-data-urls property.
+     * @param allowed Value to be set
      */
     set_allow_top_navigation_to_data_urls(allowed: boolean): void
     /**
      * Set the #WebKitSettings:allow-universal-access-from-file-urls property.
+     * @param allowed Value to be set
      */
     set_allow_universal_access_from_file_urls(allowed: boolean): void
     /**
      * Set the #WebKitSettings:auto-load-images property.
+     * @param enabled Value to be set
      */
     set_auto_load_images(enabled: boolean): void
     /**
      * Set the #WebKitSettings:cursive-font-family property.
+     * @param cursive_font_family the new default cursive font family
      */
     set_cursive_font_family(cursive_font_family: string): void
     /**
      * Set the #WebKitSettings:default-charset property.
+     * @param default_charset default charset to be set
      */
     set_default_charset(default_charset: string): void
     /**
      * Set the #WebKitSettings:default-font-family property.
+     * @param default_font_family the new default font family
      */
     set_default_font_family(default_font_family: string): void
     /**
      * Set the #WebKitSettings:default-font-size property.
+     * @param font_size default font size to be set in pixels
      */
     set_default_font_size(font_size: number): void
     /**
      * Set the #WebKitSettings:default-monospace-font-size property.
+     * @param font_size default monospace font size to be set in pixels
      */
     set_default_monospace_font_size(font_size: number): void
     /**
      * Set the #WebKitSettings:draw-compositing-indicators property.
+     * @param enabled Value to be set
      */
     set_draw_compositing_indicators(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-accelerated-2d-canvas property.
+     * @param enabled Value to be set
      */
     set_enable_accelerated_2d_canvas(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-back-forward-navigation-gestures property.
+     * @param enabled value to be set
      */
     set_enable_back_forward_navigation_gestures(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-caret-browsing property.
+     * @param enabled Value to be set
      */
     set_enable_caret_browsing(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-developer-extras property.
+     * @param enabled Value to be set
      */
     set_enable_developer_extras(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-dns-prefetching property.
+     * @param enabled Value to be set
      */
     set_enable_dns_prefetching(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-encrypted-media property.
+     * @param enabled Value to be set
      */
     set_enable_encrypted_media(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-frame-flattening property.
+     * @param enabled Value to be set
      */
     set_enable_frame_flattening(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-fullscreen property.
+     * @param enabled Value to be set
      */
     set_enable_fullscreen(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-html5-database property.
+     * @param enabled Value to be set
      */
     set_enable_html5_database(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-html5-local-storage property.
+     * @param enabled Value to be set
      */
     set_enable_html5_local_storage(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-hyperlink-auditing property.
+     * @param enabled Value to be set
      */
     set_enable_hyperlink_auditing(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-java property.
+     * @param enabled Value to be set
      */
     set_enable_java(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-javascript property.
+     * @param enabled Value to be set
      */
     set_enable_javascript(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-javascript-markup property.
+     * @param enabled Value to be set
      */
     set_enable_javascript_markup(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-media property.
+     * @param enabled Value to be set
      */
     set_enable_media(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-media-capabilities property.
+     * @param enabled Value to be set
      */
     set_enable_media_capabilities(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-media-stream property.
+     * @param enabled Value to be set
      */
     set_enable_media_stream(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-mediasource property.
+     * @param enabled Value to be set
      */
     set_enable_mediasource(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-mock-capture-devices property.
+     * @param enabled Value to be set
      */
     set_enable_mock_capture_devices(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-offline-web-application-cache property.
+     * @param enabled Value to be set
      */
     set_enable_offline_web_application_cache(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-page-cache property.
+     * @param enabled Value to be set
      */
     set_enable_page_cache(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-plugins property.
+     * @param enabled Value to be set
      */
     set_enable_plugins(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-private-browsing property.
+     * @param enabled Value to be set
      */
     set_enable_private_browsing(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-resizable-text-areas property.
+     * @param enabled Value to be set
      */
     set_enable_resizable_text_areas(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-site-specific-quirks property.
+     * @param enabled Value to be set
      */
     set_enable_site_specific_quirks(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-smooth-scrolling property.
+     * @param enabled Value to be set
      */
     set_enable_smooth_scrolling(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-spatial-navigation property.
+     * @param enabled Value to be set
      */
     set_enable_spatial_navigation(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-tabs-to-links property.
+     * @param enabled Value to be set
      */
     set_enable_tabs_to_links(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-webaudio property.
+     * @param enabled Value to be set
      */
     set_enable_webaudio(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-webgl property.
+     * @param enabled Value to be set
      */
     set_enable_webgl(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-write-console-messages-to-stdout property.
+     * @param enabled Value to be set
      */
     set_enable_write_console_messages_to_stdout(enabled: boolean): void
     /**
      * Set the #WebKitSettings:enable-xss-auditor property.
+     * @param enabled Value to be set
      */
     set_enable_xss_auditor(enabled: boolean): void
     /**
      * Set the #WebKitSettings:fantasy-font-family property.
+     * @param fantasy_font_family the new default fantasy font family
      */
     set_fantasy_font_family(fantasy_font_family: string): void
     /**
      * Set the #WebKitSettings:hardware-acceleration-policy property.
+     * @param policy a #WebKitHardwareAccelerationPolicy
      */
     set_hardware_acceleration_policy(policy: HardwareAccelerationPolicy): void
     /**
      * Set the #WebKitSettings:javascript-can-access-clipboard property.
+     * @param enabled Value to be set
      */
     set_javascript_can_access_clipboard(enabled: boolean): void
     /**
      * Set the #WebKitSettings:javascript-can-open-windows-automatically property.
+     * @param enabled Value to be set
      */
     set_javascript_can_open_windows_automatically(enabled: boolean): void
     /**
      * Set the #WebKitSettings:load-icons-ignoring-image-load-setting property.
+     * @param enabled Value to be set
      */
     set_load_icons_ignoring_image_load_setting(enabled: boolean): void
     /**
      * Set the #WebKitSettings:media-content-types-requiring-hardware-support property.
+     * @param content_types list of media content types requiring hardware support split by semicolons (:) or %NULL to use the default value.
      */
     set_media_content_types_requiring_hardware_support(content_types?: string | null): void
     /**
      * Set the #WebKitSettings:media-playback-allows-inline property.
+     * @param enabled Value to be set
      */
     set_media_playback_allows_inline(enabled: boolean): void
     /**
      * Set the #WebKitSettings:media-playback-requires-user-gesture property.
+     * @param enabled Value to be set
      */
     set_media_playback_requires_user_gesture(enabled: boolean): void
     /**
      * Set the #WebKitSettings:minimum-font-size property.
+     * @param font_size minimum font size to be set in pixels
      */
     set_minimum_font_size(font_size: number): void
     /**
      * Set the #WebKitSettings:monospace-font-family property.
+     * @param monospace_font_family the new default monospace font family
      */
     set_monospace_font_family(monospace_font_family: string): void
     /**
      * Set the #WebKitSettings:pictograph-font-family property.
+     * @param pictograph_font_family the new default pictograph font family
      */
     set_pictograph_font_family(pictograph_font_family: string): void
     /**
      * Set the #WebKitSettings:print-backgrounds property.
+     * @param print_backgrounds Value to be set
      */
     set_print_backgrounds(print_backgrounds: boolean): void
     /**
      * Set the #WebKitSettings:sans-serif-font-family property.
+     * @param sans_serif_font_family the new default sans-serif font family
      */
     set_sans_serif_font_family(sans_serif_font_family: string): void
     /**
      * Set the #WebKitSettings:serif-font-family property.
+     * @param serif_font_family the new default serif font family
      */
     set_serif_font_family(serif_font_family: string): void
     /**
      * Set the #WebKitSettings:user-agent property.
+     * @param user_agent The new custom user agent string or %NULL to use the default user agent
      */
     set_user_agent(user_agent?: string | null): void
     /**
      * Set the #WebKitSettings:user-agent property by appending the application details to the default user
      * agent. If no application name or version is given, the default user agent used will be used. If only
      * the version is given, the default engine version is used with the given application name.
+     * @param application_name The application name used for the user agent or %NULL to use the default user agent.
+     * @param application_version The application version for the user agent or %NULL to user the default version.
      */
     set_user_agent_with_application_details(application_name?: string | null, application_version?: string | null): void
     /**
      * Set the #WebKitSettings:zoom-text-only property.
+     * @param zoom_text_only Value to be set
      */
     set_zoom_text_only(zoom_text_only: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -15677,6 +16790,10 @@ class Settings {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15687,6 +16804,12 @@ class Settings {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15710,6 +16833,7 @@ class Settings {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15729,11 +16853,14 @@ class Settings {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15741,6 +16868,8 @@ class Settings {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15758,6 +16887,7 @@ class Settings {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15803,6 +16933,7 @@ class Settings {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15846,15 +16977,20 @@ class Settings {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15895,6 +17031,7 @@ class Settings {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15929,6 +17066,7 @@ class Settings {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15948,6 +17086,7 @@ class Settings {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15980,6 +17119,7 @@ class Settings {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
@@ -16116,6 +17256,7 @@ class Settings {
      * screen DPI. Applications can use this function to convert font size values
      * in points to font size values in pixels when setting the font size properties
      * of #WebKitSettings.
+     * @param points the font size in points to convert to pixels
      */
     static font_size_to_pixels(points: number): number
     /**
@@ -16123,6 +17264,7 @@ class Settings {
      * screen DPI. Applications can use this function to convert font size values
      * in pixels to font size values in points when getting the font size properties
      * of #WebKitSettings.
+     * @param pixels the font size in pixels to convert to points
      */
     static font_size_to_points(pixels: number): number
     static $gtype: GObject.Type
@@ -16141,7 +17283,7 @@ class URIRequest {
      */
     uri: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.URIRequest */
     /**
      * Get the HTTP headers of a #WebKitURIRequest as a #SoupMessageHeaders.
@@ -16154,6 +17296,7 @@ class URIRequest {
     get_uri(): string
     /**
      * Set the URI of `request`
+     * @param uri an URI
      */
     set_uri(uri: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -16191,6 +17334,10 @@ class URIRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16201,6 +17348,12 @@ class URIRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16224,6 +17377,7 @@ class URIRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16243,11 +17397,14 @@ class URIRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16255,6 +17412,8 @@ class URIRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16272,6 +17431,7 @@ class URIRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16317,6 +17477,7 @@ class URIRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16360,15 +17521,20 @@ class URIRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16409,6 +17575,7 @@ class URIRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16443,6 +17610,7 @@ class URIRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16462,6 +17630,7 @@ class URIRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16494,6 +17663,7 @@ class URIRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: URIRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: URIRequest, pspec: GObject.ParamSpec) => void)): number
@@ -16540,7 +17710,7 @@ class URIResponse {
      */
     readonly uri: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.URIResponse */
     /**
      * Get the expected content length of the #WebKitURIResponse. It can
@@ -16601,6 +17771,10 @@ class URIResponse {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16611,6 +17785,12 @@ class URIResponse {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16634,6 +17814,7 @@ class URIResponse {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16653,11 +17834,14 @@ class URIResponse {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16665,6 +17849,8 @@ class URIResponse {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16682,6 +17868,7 @@ class URIResponse {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16727,6 +17914,7 @@ class URIResponse {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16770,15 +17958,20 @@ class URIResponse {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16819,6 +18012,7 @@ class URIResponse {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16853,6 +18047,7 @@ class URIResponse {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16872,6 +18067,7 @@ class URIResponse {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16904,6 +18100,7 @@ class URIResponse {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: URIResponse, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: URIResponse, pspec: GObject.ParamSpec) => void)): number
@@ -16933,18 +18130,23 @@ interface URISchemeRequest_ConstructProps extends GObject.Object_ConstructProps 
 }
 class URISchemeRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.URISchemeRequest */
     /**
      * Finish a #WebKitURISchemeRequest by setting the contents of the request and its mime type.
+     * @param stream a #GInputStream to read the contents of the request
+     * @param stream_length the length of the stream or -1 if not known
+     * @param content_type the content type of the stream or %NULL if not known
      */
     finish(stream: Gio.InputStream, stream_length: number, content_type?: string | null): void
     /**
      * Finish a #WebKitURISchemeRequest with a #GError.
+     * @param error a #GError that will be passed to the #WebKitWebView
      */
     finish_error(error: GLib.Error): void
     /**
      * Finish a #WebKitURISchemeRequest by returning a #WebKitURISchemeResponse
+     * @param response a #WebKitURISchemeResponse
      */
     finish_with_response(response: URISchemeResponse): void
     get_http_headers(): Soup.MessageHeaders
@@ -17003,6 +18205,10 @@ class URISchemeRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17013,6 +18219,12 @@ class URISchemeRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17036,6 +18248,7 @@ class URISchemeRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17055,11 +18268,14 @@ class URISchemeRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17067,6 +18283,8 @@ class URISchemeRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17084,6 +18302,7 @@ class URISchemeRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17129,6 +18348,7 @@ class URISchemeRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17172,15 +18392,20 @@ class URISchemeRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17221,6 +18446,7 @@ class URISchemeRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17255,6 +18481,7 @@ class URISchemeRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17274,6 +18501,7 @@ class URISchemeRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17306,6 +18534,7 @@ class URISchemeRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: URISchemeRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: URISchemeRequest, pspec: GObject.ParamSpec) => void)): number
@@ -17328,17 +18557,26 @@ interface URISchemeResponse_ConstructProps extends GObject.Object_ConstructProps
     stream_length?: number
 }
 class URISchemeResponse {
+    /* Properties of WebKit2-5.0.WebKit2.URISchemeResponse */
+    /**
+     * The input stream to read from.
+     */
+    readonly stream: Gio.InputStream
+    readonly stream_length: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.URISchemeResponse */
     /**
      * Sets the content type for the `response`
+     * @param content_type the content type of the stream
      */
     set_content_type(content_type: string): void
     set_http_headers(headers: Soup.MessageHeaders): void
     /**
      * Sets the status code and reason phrase for the `response`.
      * If `status_code` is a known value and `reason_phrase` is %NULL, the `reason_phrase` will be set automatically.
+     * @param status_code the HTTP status code to be returned
+     * @param reason_phrase a reason phrase
      */
     set_status(status_code: number, reason_phrase?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -17376,6 +18614,10 @@ class URISchemeResponse {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17386,6 +18628,12 @@ class URISchemeResponse {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17409,6 +18657,7 @@ class URISchemeResponse {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17428,11 +18677,14 @@ class URISchemeResponse {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17440,6 +18692,8 @@ class URISchemeResponse {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17457,6 +18711,7 @@ class URISchemeResponse {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17502,6 +18757,7 @@ class URISchemeResponse {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17545,15 +18801,20 @@ class URISchemeResponse {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17594,6 +18855,7 @@ class URISchemeResponse {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17628,6 +18890,7 @@ class URISchemeResponse {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17647,6 +18910,7 @@ class URISchemeResponse {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17679,10 +18943,15 @@ class URISchemeResponse {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: URISchemeResponse, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: URISchemeResponse, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::stream", callback: (($obj: URISchemeResponse, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::stream", callback: (($obj: URISchemeResponse, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::stream-length", callback: (($obj: URISchemeResponse, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::stream-length", callback: (($obj: URISchemeResponse, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -17703,8 +18972,14 @@ interface UserContentFilterStore_ConstructProps extends GObject.Object_Construct
     path?: string
 }
 class UserContentFilterStore {
+    /* Properties of WebKit2-5.0.WebKit2.UserContentFilterStore */
+    /**
+     * The directory used for filter storage. This path is used as the base
+     * directory where user content filters are stored on disk.
+     */
+    readonly path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.UserContentFilterStore */
     /**
      * Asynchronously retrieve a list of the identifiers for all the stored filters.
@@ -17712,11 +18987,14 @@ class UserContentFilterStore {
      * When the operation is finished, `callback` will be invoked, which then can use
      * webkit_user_content_filter_store_fetch_identifiers_finish() to obtain the list of
      * filter identifiers.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the removal is completed
      */
     fetch_identifiers(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous fetch of the list of identifiers for the stored filters previously
      * started with webkit_user_content_filter_store_fetch_identifiers().
+     * @param result a #GAsyncResult
      */
     fetch_identifiers_finish(result: Gio.AsyncResult): string[]
     get_path(): string
@@ -17726,11 +19004,15 @@ class UserContentFilterStore {
      * 
      * When the operation is finished, `callback` will be invoked, which then can use
      * webkit_user_content_filter_store_load_finish() to obtain the resulting filter.
+     * @param identifier a filter identifier
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the load is completed
      */
     load(identifier: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filter load previously started with
      * webkit_user_content_filter_store_load().
+     * @param result a #GAsyncResult
      */
     load_finish(result: Gio.AsyncResult): UserContentFilter
     /**
@@ -17739,11 +19021,15 @@ class UserContentFilterStore {
      * When the operation is finished, `callback` will be invoked, which then can use
      * webkit_user_content_filter_store_remove_finish() to check whether the removal was
      * successful.
+     * @param identifier a filter identifier
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the removal is completed
      */
     remove(identifier: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filter removal previously started with
      * webkit_user_content_filter_store_remove().
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17757,11 +19043,16 @@ class UserContentFilterStore {
      * 
      * When the operation is finished, `callback` will be invoked, which then can use
      * webkit_user_content_filter_store_save_finish() to obtain the resulting filter.
+     * @param identifier a string used to identify the saved filter
+     * @param source #GBytes containing the rule set in JSON format
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when saving is completed
      */
     save(identifier: string, source: GLib.Bytes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filter save previously started with
      * webkit_user_content_filter_store_save().
+     * @param result a #GAsyncResult
      */
     save_finish(result: Gio.AsyncResult): UserContentFilter
     /**
@@ -17771,11 +19062,16 @@ class UserContentFilterStore {
      * 
      * When the operation is finished, `callback` will be invoked, which then can use
      * webkit_user_content_filter_store_save_finish() to obtain the resulting filter.
+     * @param identifier a string used to identify the saved filter
+     * @param file a #GFile containing the rule set in JSON format
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when saving is completed
      */
     save_from_file(identifier: string, file: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes and asynchronous filter save previously started with
      * webkit_user_content_filter_store_save_from_file().
+     * @param result a #GAsyncResult
      */
     save_from_file_finish(result: Gio.AsyncResult): UserContentFilter
     /* Methods of GObject-2.0.GObject.Object */
@@ -17813,6 +19109,10 @@ class UserContentFilterStore {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17823,6 +19123,12 @@ class UserContentFilterStore {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17846,6 +19152,7 @@ class UserContentFilterStore {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17865,11 +19172,14 @@ class UserContentFilterStore {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17877,6 +19187,8 @@ class UserContentFilterStore {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17894,6 +19206,7 @@ class UserContentFilterStore {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17939,6 +19252,7 @@ class UserContentFilterStore {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17982,15 +19296,20 @@ class UserContentFilterStore {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18031,6 +19350,7 @@ class UserContentFilterStore {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18065,6 +19385,7 @@ class UserContentFilterStore {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18084,6 +19405,7 @@ class UserContentFilterStore {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18116,10 +19438,13 @@ class UserContentFilterStore {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: UserContentFilterStore, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: UserContentFilterStore, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::path", callback: (($obj: UserContentFilterStore, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::path", callback: (($obj: UserContentFilterStore, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -18135,7 +19460,7 @@ interface UserContentManager_ConstructProps extends GObject.Object_ConstructProp
 }
 class UserContentManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.UserContentManager */
     /**
      * Adds a #WebKitUserContentFilter to the given #WebKitUserContentManager.
@@ -18143,18 +19468,21 @@ class UserContentManager {
      * #WebKitUserContentManager instances.
      * 
      * Filters need to be saved and loaded from #WebKitUserContentFilterStore.
+     * @param filter A #WebKitUserContentFilter
      */
     add_filter(filter: UserContentFilter): void
     /**
      * Adds a #WebKitUserScript to the given #WebKitUserContentManager.
      * The same #WebKitUserScript can be reused with multiple
      * #WebKitUserContentManager instances.
+     * @param script A #WebKitUserScript
      */
     add_script(script: UserScript): void
     /**
      * Adds a #WebKitUserStyleSheet to the given #WebKitUserContentManager.
      * The same #WebKitUserStyleSheet can be reused with multiple
      * #WebKitUserContentManager instances.
+     * @param stylesheet A #WebKitUserStyleSheet
      */
     add_style_sheet(stylesheet: UserStyleSheet): void
     /**
@@ -18177,6 +19505,7 @@ class UserContentManager {
      * 
      * Registering a script message handler will fail if the requested
      * name has been already registered before.
+     * @param name Name of the script message channel
      */
     register_script_message_handler(name: string): boolean
     /**
@@ -18185,6 +19514,8 @@ class UserContentManager {
      * 
      * Registering a script message handler will fail if the requested
      * name has been already registered before.
+     * @param name Name of the script message channel
+     * @param world_name the name of a #WebKitScriptWorld
      */
     register_script_message_handler_in_world(name: string, world_name: string): boolean
     /**
@@ -18205,24 +19536,28 @@ class UserContentManager {
      * Removes a filter from the given #WebKitUserContentManager.
      * 
      * Since 2.24
+     * @param filter A #WebKitUserContentFilter
      */
     remove_filter(filter: UserContentFilter): void
     /**
      * Removes a filter from the given #WebKitUserContentManager given the
      * identifier of a #WebKitUserContentFilter as returned by
      * webkit_user_content_filter_get_identifier().
+     * @param filter_id Filter identifier
      */
     remove_filter_by_id(filter_id: string): void
     /**
      * Removes a #WebKitUserScript from the given #WebKitUserContentManager.
      * 
      * See also webkit_user_content_manager_remove_all_scripts().
+     * @param script A #WebKitUserScript
      */
     remove_script(script: UserScript): void
     /**
      * Removes a #WebKitUserStyleSheet from the given #WebKitUserContentManager.
      * 
      * See also webkit_user_content_manager_remove_all_style_sheets().
+     * @param stylesheet A #WebKitUserStyleSheet
      */
     remove_style_sheet(stylesheet: UserStyleSheet): void
     /**
@@ -18234,6 +19569,7 @@ class UserContentManager {
      * unless the handler name is registered again.
      * 
      * See also webkit_user_content_manager_register_script_message_handler().
+     * @param name Name of the script message channel
      */
     unregister_script_message_handler(name: string): void
     /**
@@ -18245,6 +19581,8 @@ class UserContentManager {
      * unless the handler name is registered again.
      * 
      * See also webkit_user_content_manager_register_script_message_handler_in_world().
+     * @param name Name of the script message channel
+     * @param world_name the name of a #WebKitScriptWorld
      */
     unregister_script_message_handler_in_world(name: string, world_name: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -18282,6 +19620,10 @@ class UserContentManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18292,6 +19634,12 @@ class UserContentManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18315,6 +19663,7 @@ class UserContentManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18334,11 +19683,14 @@ class UserContentManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18346,6 +19698,8 @@ class UserContentManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18363,6 +19717,7 @@ class UserContentManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18408,6 +19763,7 @@ class UserContentManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18451,15 +19807,20 @@ class UserContentManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18500,6 +19861,7 @@ class UserContentManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18534,6 +19896,7 @@ class UserContentManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18553,6 +19916,7 @@ class UserContentManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18562,6 +19926,7 @@ class UserContentManager {
      * <code>window.webkit.messageHandlers.&lt;name&gt;.postMessage()</code>, after registering
      * <code>&lt;name&gt;</code> using
      * webkit_user_content_manager_register_script_message_handler()
+     * @param js_result the #WebKitJavascriptResult holding the value received from the JavaScript world.
      */
     connect(sigName: "script-message-received", callback: (($obj: UserContentManager, js_result: JavascriptResult) => void)): number
     connect_after(sigName: "script-message-received", callback: (($obj: UserContentManager, js_result: JavascriptResult) => void)): number
@@ -18595,6 +19960,7 @@ class UserContentManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: UserContentManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: UserContentManager, pspec: GObject.ParamSpec) => void)): number
@@ -18617,7 +19983,7 @@ class UserMediaPermissionRequest {
     readonly is_for_audio_device: boolean
     readonly is_for_video_device: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -18653,6 +20019,10 @@ class UserMediaPermissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18663,6 +20033,12 @@ class UserMediaPermissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18686,6 +20062,7 @@ class UserMediaPermissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18705,11 +20082,14 @@ class UserMediaPermissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18717,6 +20097,8 @@ class UserMediaPermissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18734,6 +20116,7 @@ class UserMediaPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18779,6 +20162,7 @@ class UserMediaPermissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18822,15 +20206,20 @@ class UserMediaPermissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18871,6 +20260,7 @@ class UserMediaPermissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18905,6 +20295,7 @@ class UserMediaPermissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of WebKit2-5.0.WebKit2.PermissionRequest */
@@ -18942,6 +20333,7 @@ class UserMediaPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18974,6 +20366,7 @@ class UserMediaPermissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: UserMediaPermissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: UserMediaPermissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -19009,8 +20402,23 @@ interface UserMessage_ConstructProps extends GObject.InitiallyUnowned_ConstructP
     parameters?: GLib.Variant
 }
 class UserMessage {
+    /* Properties of WebKit2-5.0.WebKit2.UserMessage */
+    /**
+     * The UNIX file descriptors of the user message.
+     */
+    readonly fd_list: Gio.UnixFDList
+    /**
+     * The name of the user message.
+     */
+    readonly name: string
+    /**
+     * The parameters of the user message as a #GVariant, or %NULL
+     * if the message doesn't include parameters. Note that only complete types are
+     * allowed.
+     */
+    readonly parameters: GLib.Variant
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.UserMessage */
     /**
      * Get the `message` list of file descritpor
@@ -19028,6 +20436,7 @@ class UserMessage {
      * Send a reply to `message`. If `reply` is floating, it's consumed.
      * You can only send a reply to a #WebKitUserMessage that has been
      * received.
+     * @param reply a #WebKitUserMessage to send as reply
      */
     send_reply(reply: UserMessage): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -19065,6 +20474,10 @@ class UserMessage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19075,6 +20488,12 @@ class UserMessage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19098,6 +20517,7 @@ class UserMessage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19117,11 +20537,14 @@ class UserMessage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19129,6 +20552,8 @@ class UserMessage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19146,6 +20571,7 @@ class UserMessage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19191,6 +20617,7 @@ class UserMessage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19234,15 +20661,20 @@ class UserMessage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19283,6 +20715,7 @@ class UserMessage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19317,6 +20750,7 @@ class UserMessage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19336,6 +20770,7 @@ class UserMessage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19368,10 +20803,17 @@ class UserMessage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: UserMessage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: UserMessage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::fd-list", callback: (($obj: UserMessage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::fd-list", callback: (($obj: UserMessage, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: UserMessage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: UserMessage, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::parameters", callback: (($obj: UserMessage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parameters", callback: (($obj: UserMessage, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -19410,8 +20852,31 @@ interface WebContext_ConstructProps extends GObject.Object_ConstructProps {
     website_data_manager?: WebsiteDataManager
 }
 class WebContext {
+    /* Properties of WebKit2-5.0.WebKit2.WebContext */
+    /**
+     * The directory where local storage data will be saved.
+     */
+    readonly local_storage_directory: string
+    /**
+     * The #WebKitMemoryPressureSettings applied to the web processes created by this context.
+     */
+    readonly memory_pressure_settings: MemoryPressureSettings
+    /**
+     * Whether swap Web processes on cross-site navigations is enabled.
+     * 
+     * When enabled, pages from each security origin will be handled by
+     * their own separate Web processes, which are started (and
+     * terminated) on demand as the user navigates across different
+     * domains. This is an important security measure which helps prevent
+     * websites stealing data from other visited pages.
+     */
+    readonly process_swap_on_cross_site_navigation_enabled: boolean
+    /**
+     * The #WebKitWebsiteDataManager associated with this context.
+     */
+    readonly website_data_manager: WebsiteDataManager
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.WebContext */
     /**
      * Adds a path to be mounted in the sandbox. `path` must exist before any web process
@@ -19422,10 +20887,14 @@ class WebContext {
      * are not valid.
      * 
      * See also webkit_web_context_set_sandbox_enabled()
+     * @param path an absolute path to mount in the sandbox
+     * @param read_only if %TRUE the path will be read-only
      */
     add_path_to_sandbox(path: string, read_only: boolean): void
     /**
      * Ignore further TLS errors on the `host` for the certificate present in `info`.
+     * @param certificate a #GTlsCertificate
+     * @param host the host for which a certificate is to be allowed
      */
     allow_tls_certificate_for_host(certificate: Gio.TlsCertificate, host: string): void
     /**
@@ -19438,6 +20907,7 @@ class WebContext {
      * will not be associated to any #WebKitWebView, if you are interested in
      * starting a download from a particular #WebKitWebView use
      * webkit_web_view_download_uri() instead.
+     * @param uri the URI to download
      */
     download_uri(uri: string): Download
     /**
@@ -19477,10 +20947,13 @@ class WebContext {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_context_get_plugins_finish() to get the result of the operation.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     get_plugins(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_context_get_plugins.
+     * @param result a #GAsyncResult
      */
     get_plugins_finish(result: Gio.AsyncResult): Plugin[]
     /**
@@ -19542,6 +21015,8 @@ class WebContext {
      * #WebKitWebContext::initialize-notification-permissions so as to
      * ensure that new web processes receive the most recent set of
      * permissions.
+     * @param allowed_origins a #GList of security origins
+     * @param disallowed_origins a #GList of security origins
      */
     initialize_notification_permissions(allowed_origins: SecurityOrigin[], disallowed_origins: SecurityOrigin[]): void
     /**
@@ -19556,6 +21031,7 @@ class WebContext {
     /**
      * Resolve the domain name of the given `hostname` in advance, so that if a URI
      * of `hostname` is requested the load will be performed more quickly.
+     * @param hostname a hostname to be resolved
      */
     prefetch_dns(hostname: string): void
     /**
@@ -19599,15 +21075,19 @@ class WebContext {
      *     g_object_unref (stream);
      * }
      * </programlisting></informalexample>
+     * @param scheme the network scheme to register
+     * @param callback a #WebKitURISchemeRequestCallback
      */
     register_uri_scheme(scheme: string, callback: URISchemeRequestCallback): void
     /**
      * Send `message` to all #WebKitWebExtension<!-- -->s associated to `context`.
      * If `message` is floating, it's consumed.
+     * @param message a #WebKitUserMessage
      */
     send_message_to_all_extensions(message: UserMessage): void
     /**
      * Set an additional directory where WebKit will look for plugins.
+     * @param directory the directory to add
      */
     set_additional_plugins_directory(directory: string): void
     /**
@@ -19619,6 +21099,7 @@ class WebContext {
      * 
      * Note that only one #WebKitWebContext can have automation enabled, so this will do nothing
      * if there's another #WebKitWebContext with automation already enabled.
+     * @param allowed value to set
      */
     set_automation_allowed(allowed: boolean): void
     /**
@@ -19640,6 +21121,7 @@ class WebContext {
      * browsing interface can reduce memory usage substantially by
      * specifying %WEBKIT_CACHE_MODEL_DOCUMENT_VIEWER. The default value is
      * %WEBKIT_CACHE_MODEL_WEB_BROWSER.
+     * @param cache_model a #WebKitCacheModel
      */
     set_cache_model(cache_model: CacheModel): void
     /**
@@ -19650,6 +21132,7 @@ class WebContext {
      * Note that this method overrides the directory set in the #WebKitWebsiteDataManager,
      * but it doesn't change the value returned by webkit_website_data_manager_get_disk_cache_directory()
      * since the #WebKitWebsiteDataManager is immutable.
+     * @param directory the directory to set
      */
     set_disk_cache_directory(directory: string): void
     /**
@@ -19661,6 +21144,7 @@ class WebContext {
      * its use from the applications, so that's why it's expected to be
      * called only once. Further calls for the same instance of
      * #WebKitWebContext won't cause any effect.
+     * @param path an absolute path to the icon database directory or %NULL to use the defaults
      */
     set_favicon_database_directory(path?: string | null): void
     /**
@@ -19672,6 +21156,8 @@ class WebContext {
      * or %WEBKIT_NETWORK_PROXY_MODE_CUSTOM to provide your own proxy settings.
      * When `proxy_mode` is %WEBKIT_NETWORK_PROXY_MODE_CUSTOM `proxy_settings` must be
      * a valid #WebKitNetworkProxySettings; otherwise, `proxy_settings` must be %NULL.
+     * @param proxy_mode a #WebKitNetworkProxyMode
+     * @param proxy_settings a #WebKitNetworkProxySettings, or %NULL
      */
     set_network_proxy_settings(proxy_mode: NetworkProxyMode, proxy_settings?: NetworkProxySettings | null): void
     /**
@@ -19679,6 +21165,7 @@ class WebContext {
      * to least desirable. The list will be used to build the "Accept-Language"
      * header that will be included in the network requests started by
      * the #WebKitWebContext.
+     * @param languages a %NULL-terminated list of language identifiers
      */
     set_preferred_languages(languages?: string[] | null): void
     /**
@@ -19699,6 +21186,7 @@ class WebContext {
      * This method **must be called before any web process has been created**,
      * as early as possible in your application. Calling it later will make
      * your application crash.
+     * @param process_model a #WebKitProcessModel
      */
     set_process_model(process_model: ProcessModel): void
     /**
@@ -19708,10 +21196,12 @@ class WebContext {
      * as early as possible in your application. Calling it later is a fatal error.
      * 
      * This is only implemented on Linux and is a no-op otherwise.
+     * @param enabled if %TRUE enable sandboxing
      */
     set_sandbox_enabled(enabled: boolean): void
     /**
      * Enable or disable the spell checking feature.
+     * @param enabled Value to be set
      */
     set_spell_checking_enabled(enabled: boolean): void
     /**
@@ -19726,14 +21216,17 @@ class WebContext {
      * You need to call this function with a valid list of languages at
      * least once in order to properly enable the spell checking feature
      * in WebKit.
+     * @param languages a %NULL-terminated list of spell checking languages
      */
     set_spell_checking_languages(languages: string[]): void
     /**
      * Set the TLS errors policy of `context` as `policy`
+     * @param policy a #WebKitTLSErrorsPolicy
      */
     set_tls_errors_policy(policy: TLSErrorsPolicy): void
     /**
      * Set the #WebKitWebContext:use-system-appearance-for-scrollbars property.
+     * @param enabled value to set
      */
     set_use_system_appearance_for_scrollbars(enabled: boolean): void
     /**
@@ -19742,6 +21235,7 @@ class WebContext {
      * otherwise it will not have any effect. You can connect to
      * #WebKitWebContext::initialize-web-extensions to call this method
      * before anything is loaded.
+     * @param directory the directory to add
      */
     set_web_extensions_directory(directory: string): void
     /**
@@ -19752,6 +21246,7 @@ class WebContext {
      * otherwise it will not have any effect. You can connect to
      * #WebKitWebContext::initialize-web-extensions to call this method
      * before anything is loaded.
+     * @param user_data a #GVariant
      */
     set_web_extensions_initialization_user_data(user_data: GLib.Variant): void
     /**
@@ -19759,6 +21254,7 @@ class WebContext {
      * The default value is 0 and means no limit.
      * 
      * This function is now deprecated and does nothing for security reasons.
+     * @param limit the maximum number of web processes
      */
     set_web_process_count_limit(limit: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -19796,6 +21292,10 @@ class WebContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19806,6 +21306,12 @@ class WebContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19829,6 +21335,7 @@ class WebContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19848,11 +21355,14 @@ class WebContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19860,6 +21370,8 @@ class WebContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19877,6 +21389,7 @@ class WebContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19922,6 +21435,7 @@ class WebContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19965,15 +21479,20 @@ class WebContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20014,6 +21533,7 @@ class WebContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20048,6 +21568,7 @@ class WebContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of WebKit2-5.0.WebKit2.WebContext */
@@ -20073,6 +21594,7 @@ class WebContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20081,12 +21603,14 @@ class WebContext {
      * This signal is emitted when a new automation request is made.
      * Note that it will never be emitted if automation is not enabled in `context,`
      * see webkit_web_context_set_automation_allowed() for more details.
+     * @param session the #WebKitAutomationSession associated with this event
      */
     connect(sigName: "automation-started", callback: (($obj: WebContext, session: AutomationSession) => void)): number
     connect_after(sigName: "automation-started", callback: (($obj: WebContext, session: AutomationSession) => void)): number
     emit(sigName: "automation-started", session: AutomationSession): void
     /**
      * This signal is emitted when a new download request is made.
+     * @param download the #WebKitDownload associated with this event
      */
     connect(sigName: "download-started", callback: (($obj: WebContext, download: Download) => void)): number
     connect_after(sigName: "download-started", callback: (($obj: WebContext, download: Download) => void)): number
@@ -20120,6 +21644,7 @@ class WebContext {
      * 
      * You can handle the user message asynchronously by calling g_object_ref() on
      * `message` and returning %TRUE.
+     * @param message the #WebKitUserMessage received
      */
     connect(sigName: "user-message-received", callback: (($obj: WebContext, message: UserMessage) => boolean)): number
     connect_after(sigName: "user-message-received", callback: (($obj: WebContext, message: UserMessage) => boolean)): number
@@ -20153,10 +21678,19 @@ class WebContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::local-storage-directory", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-storage-directory", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::memory-pressure-settings", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::memory-pressure-settings", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::process-swap-on-cross-site-navigation-enabled", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::process-swap-on-cross-site-navigation-enabled", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::website-data-manager", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::website-data-manager", callback: (($obj: WebContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -20192,7 +21726,7 @@ class WebInspector {
      */
     readonly inspected_uri: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.WebInspector */
     /**
      * Request `inspector` to be attached. The signal #WebKitWebInspector::attach
@@ -20276,6 +21810,10 @@ class WebInspector {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20286,6 +21824,12 @@ class WebInspector {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20309,6 +21853,7 @@ class WebInspector {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20328,11 +21873,14 @@ class WebInspector {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20340,6 +21888,8 @@ class WebInspector {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20357,6 +21907,7 @@ class WebInspector {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20402,6 +21953,7 @@ class WebInspector {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20445,15 +21997,20 @@ class WebInspector {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20494,6 +22051,7 @@ class WebInspector {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20528,6 +22086,7 @@ class WebInspector {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20547,6 +22106,7 @@ class WebInspector {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20646,6 +22206,7 @@ class WebInspector {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebInspector, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebInspector, pspec: GObject.ParamSpec) => void)): number
@@ -20679,17 +22240,20 @@ class WebResource {
      */
     readonly uri: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.WebResource */
     /**
      * Asynchronously get the raw data for `resource`.
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_resource_get_data_finish() to get the result of the operation.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     get_data(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_resource_get_data().
+     * @param result a #GAsyncResult
      */
     get_data_finish(result: Gio.AsyncResult): Uint8Array
     /**
@@ -20762,6 +22326,10 @@ class WebResource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20772,6 +22340,12 @@ class WebResource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20795,6 +22369,7 @@ class WebResource {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20814,11 +22389,14 @@ class WebResource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20826,6 +22404,8 @@ class WebResource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20843,6 +22423,7 @@ class WebResource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20888,6 +22469,7 @@ class WebResource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20931,15 +22513,20 @@ class WebResource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20980,6 +22567,7 @@ class WebResource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21014,6 +22602,7 @@ class WebResource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21033,6 +22622,7 @@ class WebResource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21040,12 +22630,15 @@ class WebResource {
     /**
      * This signal is emitted when an error occurs during the resource
      * load operation.
+     * @param error the #GError that was triggered
      */
     connect(sigName: "failed", callback: (($obj: WebResource, error: GLib.Error) => void)): number
     connect_after(sigName: "failed", callback: (($obj: WebResource, error: GLib.Error) => void)): number
     emit(sigName: "failed", error: GLib.Error): void
     /**
      * This signal is emitted when a TLS error occurs during the resource load operation.
+     * @param certificate a #GTlsCertificate
+     * @param errors a #GTlsCertificateFlags with the verification status of `certificate`
      */
     connect(sigName: "failed-with-tls-errors", callback: (($obj: WebResource, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => void)): number
     connect_after(sigName: "failed-with-tls-errors", callback: (($obj: WebResource, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => void)): number
@@ -21062,6 +22655,7 @@ class WebResource {
      * This signal is emitted after response is received,
      * every time new data has been received. It's
      * useful to know the progress of the resource load operation.
+     * @param data_length the length of data received in bytes
      */
     connect(sigName: "received-data", callback: (($obj: WebResource, data_length: number) => void)): number
     connect_after(sigName: "received-data", callback: (($obj: WebResource, data_length: number) => void)): number
@@ -21073,6 +22667,8 @@ class WebResource {
      * request sent to the server due to the redirection and the
      * `redirected_response` parameter containing the response
      * received by the server for the initial request.
+     * @param request a #WebKitURIRequest
+     * @param redirected_response a #WebKitURIResponse, or %NULL
      */
     connect(sigName: "sent-request", callback: (($obj: WebResource, request: URIRequest, redirected_response: URIResponse) => void)): number
     connect_after(sigName: "sent-request", callback: (($obj: WebResource, request: URIRequest, redirected_response: URIResponse) => void)): number
@@ -21106,6 +22702,7 @@ class WebResource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebResource, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebResource, pspec: GObject.ParamSpec) => void)): number
@@ -21243,6 +22840,13 @@ interface WebView_ConstructProps extends WebViewBase_ConstructProps {
 class WebView {
     /* Properties of WebKit2-5.0.WebKit2.WebView */
     /**
+     * The #WebKitAutomationBrowsingContextPresentation of #WebKitWebView. This should only be used when
+     * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
+     * signal request. If the new WebView was added to a new tab of current browsing context window
+     * %WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB should be used.
+     */
+    readonly automation_presentation_type: AutomationBrowsingContextPresentation
+    /**
      * Capture state of the camera device. Whenever the user grants a media-request sent by the web
      * page, requesting video capture capabilities (`navigator.mediaDevices.getUserMedia({video:
      * true})`) this property will be set to %WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE.
@@ -21291,6 +22895,27 @@ class WebView {
      */
     readonly favicon: object
     /**
+     * Whether the #WebKitWebView is controlled by automation. This should only be used when
+     * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
+     * signal request.
+     */
+    readonly is_controlled_by_automation: boolean
+    /**
+     * Whether the #WebKitWebView is ephemeral. An ephemeral web view never writes
+     * website data to the client storage, no matter what #WebKitWebsiteDataManager
+     * its context is using. This is normally used to implement private browsing mode.
+     * This is a %G_PARAM_CONSTRUCT_ONLY property, so you have to create an ephemeral
+     * #WebKitWebView and it can't be changed. The ephemeral #WebKitWebsiteDataManager
+     * created for the #WebKitWebView will inherit the network settings from the
+     * #WebKitWebContext<!-- -->'s #WebKitWebsiteDataManager. To use different settings
+     * you can get the #WebKitWebsiteDataManager with webkit_web_view_get_website_data_manager()
+     * and set the new ones.
+     * Note that all #WebKitWebView<!-- -->s created with an ephemeral #WebKitWebContext
+     * will be ephemeral automatically.
+     * See also webkit_web_context_new_ephemeral().
+     */
+    readonly is_ephemeral: boolean
+    /**
      * Whether the #WebKitWebView is currently loading a page. This property becomes
      * %TRUE as soon as a new load operation is requested and before the
      * #WebKitWebView::load-changed signal is emitted with %WEBKIT_LOAD_STARTED and
@@ -21334,6 +22959,12 @@ class WebView {
      */
     readonly page_id: number
     /**
+     * The related #WebKitWebView used when creating the view to share the
+     * same web process. This property is not readable because the related
+     * web view is only valid during the object construction.
+     */
+    readonly related_view: WebView
+    /**
      * The #WebKitSettings of the view.
      */
     settings: Settings
@@ -21347,6 +22978,18 @@ class WebView {
      * See webkit_web_view_get_uri() for more details.
      */
     readonly uri: string
+    /**
+     * The #WebKitUserContentManager of the view.
+     */
+    readonly user_content_manager: UserContentManager
+    /**
+     * The #WebKitWebContext of the view.
+     */
+    readonly web_context: WebContext
+    /**
+     * The #WebKitWebsitePolicies for the view.
+     */
+    readonly website_policies: WebsitePolicies
     /**
      * The zoom level of the #WebKitWebView content.
      * See webkit_web_view_set_zoom_level() for more details.
@@ -21369,6 +23012,13 @@ class WebView {
      * A list of css classes applied to this widget.
      */
     css_classes: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly css_name: string
     /**
      * The cursor used by `widget`.
      */
@@ -21561,21 +23211,25 @@ class WebView {
      */
     accessible_role: Gtk.AccessibleRole
     /* Fields of WebKit2-5.0.WebKit2.WebViewBase */
-    readonly parentInstance: Gtk.Widget
+    parentInstance: Gtk.Widget
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.WebView */
     /**
      * Asynchronously check if it is possible to execute the given editing command.
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_can_execute_editing_command_finish() to get the result of the operation.
+     * @param command the command to check
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     can_execute_editing_command(command: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_can_execute_editing_command().
+     * @param result a #GAsyncResult
      */
     can_execute_editing_command_finish(result: Gio.AsyncResult): boolean
     /**
@@ -21588,22 +23242,27 @@ class WebView {
     can_go_forward(): boolean
     /**
      * Whether or not a MIME type can be displayed in `web_view`.
+     * @param mime_type a MIME type
      */
     can_show_mime_type(mime_type: string): boolean
     /**
      * Requests downloading of the specified URI string for `web_view`.
+     * @param uri the URI to download
      */
     download_uri(uri: string): Download
     /**
      * Request to execute the given `command` for `web_view`. You can use
      * webkit_web_view_can_execute_editing_command() to check whether
      * it's possible to execute the command.
+     * @param command the command to execute
      */
     execute_editing_command(command: string): void
     /**
      * Request to execute the given `command` with `argument` for `web_view`. You can use
      * webkit_web_view_can_execute_editing_command() to check whether
      * it's possible to execute the command.
+     * @param command the command to execute
+     * @param argument the command argument
      */
     execute_editing_command_with_argument(command: string, argument: string): void
     /**
@@ -21711,10 +23370,15 @@ class WebView {
      * When the operation is finished, `callback` will be called. You must
      * call webkit_web_view_get_snapshot_finish() to get the result of the
      * operation.
+     * @param region the #WebKitSnapshotRegion for this snapshot
+     * @param options #WebKitSnapshotOptions for the snapshot
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback
      */
     get_snapshot(region: SnapshotRegion, options: SnapshotOptions, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with webkit_web_view_get_snapshot().
+     * @param result a #GAsyncResult
      */
     get_snapshot_finish(result: Gio.AsyncResult): cairo.Surface
     /**
@@ -21837,29 +23501,19 @@ class WebView {
      * Loads the specific history item `list_item`.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param list_item a #WebKitBackForwardListItem
      */
     go_to_back_forward_list_item(list_item: BackForwardListItem): void
-    /**
-     * Get whether a #WebKitWebView was created with #WebKitWebView:is-controlled-by-automation
-     * property enabled. Only #WebKitWebView<!-- -->s controlled by automation can be used in an
-     * automation session.
-     */
-    is_controlled_by_automation(): boolean
     is_editable(): boolean
-    /**
-     * Get whether a #WebKitWebView is ephemeral. To create an ephemeral #WebKitWebView you need to
-     * use g_object_new() and pass is-ephemeral property with %TRUE value. See
-     * #WebKitWebView:is-ephemeral for more details.
-     * If `web_view` was created with a ephemeral #WebKitWebView:related-view or an
-     * ephemeral #WebKitWebView:web-context it will also be ephemeral.
-     */
-    is_ephemeral(): boolean
     /**
      * Load the given `content` string for the URI `content_uri`.
      * This allows clients to display page-loading errors in the #WebKitWebView itself.
      * When this method is called from #WebKitWebView::load-failed signal to show an
      * error page, then the back-forward list is maintained appropriately.
      * For everything else this method works the same way as webkit_web_view_load_html().
+     * @param content the new content to display as the main page of the `web_view`
+     * @param content_uri the URI for the alternate page content
+     * @param base_uri the base URI for relative locations or %NULL
      */
     load_alternate_html(content: string, content_uri: string, base_uri?: string | null): void
     /**
@@ -21868,6 +23522,10 @@ class WebView {
      * When `encoding` is %NULL, it defaults to "UTF-8".
      * When `base_uri` is %NULL, it defaults to "about:blank".
      * You can monitor the load operation by connecting to #WebKitWebView::load-changed signal.
+     * @param bytes input data to load
+     * @param mime_type the MIME type of `bytes,` or %NULL
+     * @param encoding the character encoding of `bytes,` or %NULL
+     * @param base_uri the base URI for relative locations or %NULL
      */
     load_bytes(bytes: GLib.Bytes, mime_type?: string | null, encoding?: string | null, base_uri?: string | null): void
     /**
@@ -21880,24 +23538,29 @@ class WebView {
      * directory than `base_uri` you can build a data URI for them. When `base_uri` is %NULL,
      * it defaults to "about:blank". The mime type of the document will be "text/html".
      * You can monitor the load operation by connecting to #WebKitWebView::load-changed signal.
+     * @param content The HTML string to load
+     * @param base_uri The base URI for relative locations or %NULL
      */
     load_html(content: string, base_uri?: string | null): void
     /**
      * Load the specified `plain_text` string into `web_view`. The mime type of
      * document will be "text/plain". You can monitor the load
      * operation by connecting to #WebKitWebView::load-changed signal.
+     * @param plain_text The plain text to load
      */
     load_plain_text(plain_text: string): void
     /**
      * Requests loading of the specified #WebKitURIRequest.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param request a #WebKitURIRequest to load
      */
     load_request(request: URIRequest): void
     /**
      * Requests loading of the specified URI string.
      * You can monitor the load operation by connecting to
      * #WebKitWebView::load-changed signal.
+     * @param uri an URI string
      */
     load_uri(uri: string): void
     /**
@@ -21912,6 +23575,7 @@ class WebView {
     reload_bypass_cache(): void
     /**
      * Restore the `web_view` session state from `state`
+     * @param state a #WebKitWebViewSessionState
      */
     restore_session_state(state: WebViewSessionState): void
     /**
@@ -21920,6 +23584,9 @@ class WebView {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_run_javascript_finish() to get the result of the operation.
+     * @param script the script to run
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     run_javascript(script: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -21974,6 +23641,7 @@ class WebView {
      *     g_free (script);
      * }
      * </programlisting></informalexample>
+     * @param result a #GAsyncResult
      */
     run_javascript_finish(result: Gio.AsyncResult): JavascriptResult
     /**
@@ -21983,12 +23651,16 @@ class WebView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_run_javascript_from_gresource_finish() to get the result
      * of the operation.
+     * @param resource the location of the resource to load
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     run_javascript_from_gresource(resource: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript_from_gresource().
      * 
      * Check webkit_web_view_run_javascript_finish() for a usage example.
+     * @param result a #GAsyncResult
      */
     run_javascript_from_gresource_finish(result: Gio.AsyncResult): JavascriptResult
     /**
@@ -21997,10 +23669,15 @@ class WebView {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_run_javascript_in_world_finish() to get the result of the operation.
+     * @param script the script to run
+     * @param world_name the name of a #WebKitScriptWorld
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
      */
     run_javascript_in_world(script: string, world_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript_in_world().
+     * @param result a #GAsyncResult
      */
     run_javascript_in_world_finish(result: Gio.AsyncResult): JavascriptResult
     /**
@@ -22011,10 +23688,14 @@ class WebView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_save_finish() to get the result of the
      * operation.
+     * @param save_mode the #WebKitSaveMode specifying how the web page should be saved.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     save(save_mode: SaveMode, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_save().
+     * @param result a #GAsyncResult
      */
     save_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -22025,10 +23706,15 @@ class WebView {
      * When the operation is finished, `callback` will be called. You can
      * then call webkit_web_view_save_to_file_finish() to get the result of the
      * operation.
+     * @param file the #GFile where the current web page should be saved to.
+     * @param save_mode the #WebKitSaveMode specifying how the web page should be saved.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     save_to_file(file: Gio.File, save_mode: SaveMode, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_save_to_file().
+     * @param result a #GAsyncResult
      */
     save_to_file_finish(result: Gio.AsyncResult): boolean
     /**
@@ -22037,10 +23723,14 @@ class WebView {
      * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_send_message_to_page_finish() to get the message reply.
+     * @param message a #WebKitUserMessage
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
      */
     send_message_to_page(message: UserMessage, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_send_message_to_page().
+     * @param result a #GAsyncResult
      */
     send_message_to_page_finish(result: Gio.AsyncResult): UserMessage
     /**
@@ -22069,6 +23759,7 @@ class WebView {
      *     webkit_web_view_set_background_color (web_view, rgba);
      * }
      * </programlisting></informalexample>
+     * @param rgba a #GdkRGBA
      */
     set_background_color(rgba: Gdk.RGBA): void
     /**
@@ -22077,6 +23768,7 @@ class WebView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     set_camera_capture_state(state: MediaCaptureState): void
     /**
@@ -22094,6 +23786,7 @@ class WebView {
      * 
      * If this function is called multiple times, only the allowlist set by
      * the most recent call will be effective.
+     * @param allowlist an allowlist of URI patterns, or %NULL
      */
     set_cors_allowlist(allowlist?: string[] | null): void
     /**
@@ -22102,6 +23795,7 @@ class WebView {
      * META tags. Calling this method will stop any current load operation and reload the
      * current page. Setting the custom character encoding to %NULL removes the character
      * encoding override.
+     * @param charset a character encoding name or %NULL
      */
     set_custom_charset(charset?: string | null): void
     /**
@@ -22110,6 +23804,7 @@ class WebView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     set_display_capture_state(state: MediaCaptureState): void
     /**
@@ -22123,15 +23818,18 @@ class WebView {
      * Normally, a HTML document is not editable unless the elements within the
      * document are editable. This function provides a way to make the contents
      * of a #WebKitWebView editable without altering the document or DOM structure.
+     * @param editable a #gboolean indicating the editable state
      */
     set_editable(editable: boolean): void
     /**
      * Set the #WebKitInputMethodContext to be used by `web_view,` or %NULL to not use any input method.
      * Note that the same #WebKitInputMethodContext can't be set on more than one #WebKitWebView at the same time.
+     * @param context the #WebKitInputMethodContext to set, or %NULL
      */
     set_input_method_context(context?: InputMethodContext | null): void
     /**
      * Sets the mute state of `web_view`.
+     * @param muted mute flag
      */
     set_is_muted(muted: boolean): void
     /**
@@ -22140,6 +23838,7 @@ class WebView {
      * If #WebKitSettings:enable-mediastream is %FALSE, this method will have no visible effect. Once the
      * state of the device has been set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE it cannot be changed
      * anymore. The page can however request capture again using the mediaDevices API.
+     * @param state a #WebKitMediaCaptureState
      */
     set_microphone_capture_state(state: MediaCaptureState): void
     /**
@@ -22148,11 +23847,13 @@ class WebView {
      * `settings`. New settings are applied immediately on `web_view`.
      * The same #WebKitSettings object can be shared
      * by multiple #WebKitWebView<!-- -->s.
+     * @param settings a #WebKitSettings
      */
     set_settings(settings: Settings): void
     /**
      * Set the zoom level of `web_view,` i.e. the factor by which the
      * view contents are scaled with respect to their original size.
+     * @param zoom_level the zoom level
      */
     set_zoom_level(zoom_level: number): void
     /**
@@ -22180,6 +23881,8 @@ class WebView {
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param action_name action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     action_set_enabled(action_name: string, enabled: boolean): void
     /**
@@ -22210,6 +23913,8 @@ class WebView {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activate_action(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -22221,6 +23926,7 @@ class WebView {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     add_controller(controller: Gtk.EventController): void
     /**
@@ -22231,6 +23937,7 @@ class WebView {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param css_class The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     add_css_class(css_class: string): void
     /**
@@ -22240,6 +23947,7 @@ class WebView {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -22265,6 +23973,7 @@ class WebView {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -22278,6 +23987,10 @@ class WebView {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -22301,6 +24014,7 @@ class WebView {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -22314,6 +24028,7 @@ class WebView {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     compute_bounds(target: Gtk.Widget): [ /* returnType */ boolean, /* out_bounds */ Graphene.Rect ]
     /**
@@ -22330,6 +24045,7 @@ class WebView {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -22338,6 +24054,8 @@ class WebView {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     compute_point(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* out_point */ Graphene.Point ]
     /**
@@ -22347,6 +24065,7 @@ class WebView {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     compute_transform(target: Gtk.Widget): [ /* returnType */ boolean, /* out_transform */ Graphene.Matrix ]
     /**
@@ -22354,6 +24073,8 @@ class WebView {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -22373,10 +24094,15 @@ class WebView {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -22434,6 +24160,7 @@ class WebView {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -22797,6 +24524,7 @@ class WebView {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     get_size(orientation: Gtk.Orientation): number
     /**
@@ -22841,6 +24569,8 @@ class WebView {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widget_type The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -22913,6 +24643,7 @@ class WebView {
     grab_focus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param css_class A style class, without the leading '.'   used for notation of style classes
      */
     has_css_class(css_class: string): boolean
     /**
@@ -22978,6 +24709,8 @@ class WebView {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -22995,6 +24728,8 @@ class WebView {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previous_sibling the new previous sibling of `widget`
      */
     insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void
     /**
@@ -23011,11 +24746,14 @@ class WebView {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param next_sibling the new next sibling of `widget`
      */
     insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -23079,6 +24817,7 @@ class WebView {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -23110,12 +24849,15 @@ class WebView {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param for_size Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, for_size: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -23156,6 +24898,9 @@ class WebView {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -23222,12 +24967,14 @@ class WebView {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     remove_controller(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param css_class The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     remove_css_class(css_class: string): void
     /**
@@ -23236,11 +24983,13 @@ class WebView {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     remove_tick_callback(id: number): void
     /**
@@ -23258,10 +25007,12 @@ class WebView {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param can_focus whether or not the input focus can enter   the widget or any of its children
      */
     set_can_focus(can_focus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param can_target whether this widget should be able to   receive pointer events
      */
     set_can_target(can_target: boolean): void
     /**
@@ -23281,11 +25032,13 @@ class WebView {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param child_visible if %TRUE, `widget` should be mapped along   with its parent.
      */
     set_child_visible(child_visible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     set_css_classes(classes: string[]): void
     /**
@@ -23294,6 +25047,7 @@ class WebView {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     set_cursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -23308,6 +25062,7 @@ class WebView {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     set_cursor_from_name(name?: string | null): void
     /**
@@ -23324,6 +25079,7 @@ class WebView {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -23332,6 +25088,7 @@ class WebView {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -23341,6 +25098,7 @@ class WebView {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focus_on_click whether the widget should grab focus when clicked   with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
@@ -23357,6 +25115,7 @@ class WebView {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     set_focusable(focusable: boolean): void
     /**
@@ -23368,6 +25127,7 @@ class WebView {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param font_map a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
@@ -23376,14 +25136,17 @@ class WebView {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -23414,6 +25177,7 @@ class WebView {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -23431,27 +25195,33 @@ class WebView {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layout_manager a `GtkLayoutManager`
      */
     set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -23466,6 +25236,7 @@ class WebView {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -23491,6 +25262,7 @@ class WebView {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -23503,6 +25275,7 @@ class WebView {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     set_overflow(overflow: Gtk.Overflow): void
     /**
@@ -23514,12 +25287,14 @@ class WebView {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     set_parent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -23529,6 +25304,7 @@ class WebView {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -23567,6 +25343,8 @@ class WebView {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
@@ -23579,6 +25357,8 @@ class WebView {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -23590,6 +25370,7 @@ class WebView {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -23603,10 +25384,12 @@ class WebView {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -23614,12 +25397,14 @@ class WebView {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -23631,6 +25416,7 @@ class WebView {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -23659,6 +25445,8 @@ class WebView {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -23676,6 +25464,8 @@ class WebView {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -23684,6 +25474,9 @@ class WebView {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param dest_widget a `GtkWidget`
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -23717,6 +25510,7 @@ class WebView {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -23754,6 +25548,10 @@ class WebView {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23764,6 +25562,12 @@ class WebView {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23787,6 +25591,7 @@ class WebView {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23806,11 +25611,14 @@ class WebView {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23818,6 +25626,8 @@ class WebView {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23835,6 +25645,7 @@ class WebView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23880,6 +25691,7 @@ class WebView {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23923,15 +25735,20 @@ class WebView {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23972,6 +25789,7 @@ class WebView {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24006,6 +25824,7 @@ class WebView {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -24015,14 +25834,17 @@ class WebView {
     get_accessible_role(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     reset_property(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     reset_relation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     reset_state(state: Gtk.AccessibleState): void
     /**
@@ -24032,6 +25854,8 @@ class WebView {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     update_property(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -24041,6 +25865,8 @@ class WebView {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     update_relation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -24050,6 +25876,8 @@ class WebView {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     update_state(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -24090,25 +25918,41 @@ class WebView {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a `GtkBuilder`
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
      * Similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a `GtkBuilder`
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * Called at the end of each custom element handled by
      * the buildable.
+     * @param builder `GtkBuilder` used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * Called for each unknown element under `<child>`.
+     * @param builder a `GtkBuilder` used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ Gtk.BuildableParser, /* data */ object | null ]
     vfunc_get_id(): string
     /**
      * Retrieves the internal child called `childname` of the `buildable` object.
+     * @param builder a `GtkBuilder`
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     vfunc_parser_finished(builder: Gtk.Builder): void
@@ -24118,25 +25962,41 @@ class WebView {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a `GtkBuilder`
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
      * Similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a `GtkBuilder`
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * Called at the end of each custom element handled by
      * the buildable.
+     * @param builder `GtkBuilder` used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * Called for each unknown element under `<child>`.
+     * @param builder a `GtkBuilder` used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ Gtk.BuildableParser, /* data */ object | null ]
     vfunc_get_id(): string
     /**
      * Retrieves the internal child called `childname` of the `buildable` object.
+     * @param builder a `GtkBuilder`
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     vfunc_parser_finished(builder: Gtk.Builder): void
@@ -24149,6 +26009,8 @@ class WebView {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     vfunc_contains(x: number, y: number): boolean
     vfunc_css_changed(change: Gtk.CssStyleChange): void
@@ -24209,6 +26071,7 @@ class WebView {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -24226,12 +26089,15 @@ class WebView {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param for_size Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     vfunc_measure(orientation: Gtk.Orientation, for_size: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_move_focus(direction: Gtk.DirectionType): void
@@ -24262,6 +26128,7 @@ class WebView {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -24312,6 +26179,7 @@ class WebView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24329,6 +26197,7 @@ class WebView {
      * 
      * The default signal handler will run a default authentication
      * dialog asynchronously for the user to interact with.
+     * @param request a #WebKitAuthenticationRequest
      */
     connect(sigName: "authenticate", callback: (($obj: WebView, request: AuthenticationRequest) => boolean)): number
     connect_after(sigName: "authenticate", callback: (($obj: WebView, request: AuthenticationRequest) => boolean)): number
@@ -24393,6 +26262,9 @@ class WebView {
      * 
      * The proposed #WebKitContextMenu passed in `context_menu` argument is only valid
      * during the signal emission.
+     * @param context_menu the proposed #WebKitContextMenu
+     * @param event the #GdkEvent that triggered the context menu
+     * @param hit_test_result a #WebKitHitTestResult
      */
     connect(sigName: "context-menu", callback: (($obj: WebView, context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult) => boolean)): number
     connect_after(sigName: "context-menu", callback: (($obj: WebView, context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult) => boolean)): number
@@ -24417,6 +26289,7 @@ class WebView {
      * 
      * The new #WebKitWebView should not be displayed to the user
      * until the #WebKitWebView::ready-to-show signal is emitted.
+     * @param navigation_action a #WebKitNavigationAction
      */
     connect(sigName: "create", callback: (($obj: WebView, navigation_action: NavigationAction) => Gtk.Widget)): number
     connect_after(sigName: "create", callback: (($obj: WebView, navigation_action: NavigationAction) => Gtk.Widget)): number
@@ -24463,6 +26336,8 @@ class WebView {
      * made explicitly, webkit_policy_decision_use() will be the default policy decision. The
      * default signal handler will simply call webkit_policy_decision_use(). Only the first
      * policy decision chosen for a given #WebKitPolicyDecision will have any affect.
+     * @param decision the #WebKitPolicyDecision
+     * @param decision_type a #WebKitPolicyDecisionType denoting the type of `decision`
      */
     connect(sigName: "decide-policy", callback: (($obj: WebView, decision: PolicyDecision, decision_type: PolicyDecisionType) => boolean)): number
     connect_after(sigName: "decide-policy", callback: (($obj: WebView, decision: PolicyDecision, decision_type: PolicyDecisionType) => boolean)): number
@@ -24489,6 +26364,7 @@ class WebView {
      * 
      * You can check the `event` parameter to know exactly which kind
      * of event has been detected (see #WebKitInsecureContentEvent).
+     * @param event the #WebKitInsecureContentEvent
      */
     connect(sigName: "insecure-content-detected", callback: (($obj: WebView, event: InsecureContentEvent) => void)): number
     connect_after(sigName: "insecure-content-detected", callback: (($obj: WebView, event: InsecureContentEvent) => void)): number
@@ -24547,6 +26423,7 @@ class WebView {
      *     }
      * }
      * </programlisting></informalexample>
+     * @param load_event the #WebKitLoadEvent
      */
     connect(sigName: "load-changed", callback: (($obj: WebView, load_event: LoadEvent) => void)): number
     connect_after(sigName: "load-changed", callback: (($obj: WebView, load_event: LoadEvent) => void)): number
@@ -24562,6 +26439,9 @@ class WebView {
      * 
      * By default, if the signal is not handled, a stock error page will be displayed.
      * You need to handle the signal if you want to provide your own error page.
+     * @param load_event the #WebKitLoadEvent of the load operation
+     * @param failing_uri the URI that failed to load
+     * @param error the #GError that was triggered
      */
     connect(sigName: "load-failed", callback: (($obj: WebView, load_event: LoadEvent, failing_uri: string, error: GLib.Error) => boolean)): number
     connect_after(sigName: "load-failed", callback: (($obj: WebView, load_event: LoadEvent, failing_uri: string, error: GLib.Error) => boolean)): number
@@ -24576,6 +26456,9 @@ class WebView {
      * 
      * If %FALSE is returned, #WebKitWebView::load-failed will be emitted. The load
      * will finish regardless of the returned value.
+     * @param failing_uri the URI that failed to load
+     * @param certificate a #GTlsCertificate
+     * @param errors a #GTlsCertificateFlags with the verification status of `certificate`
      */
     connect(sigName: "load-failed-with-tls-errors", callback: (($obj: WebView, failing_uri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean)): number
     connect_after(sigName: "load-failed-with-tls-errors", callback: (($obj: WebView, failing_uri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean)): number
@@ -24589,6 +26472,8 @@ class WebView {
      * #GdkModifierType flags indicating the state of modifier keys.
      * The signal is emitted again when the mouse is moved out of the
      * current element with a new `hit_test_result`.
+     * @param hit_test_result a #WebKitHitTestResult
+     * @param modifiers a bitmask of #GdkModifierType
      */
     connect(sigName: "mouse-target-changed", callback: (($obj: WebView, hit_test_result: HitTestResult, modifiers: number) => void)): number
     connect_after(sigName: "mouse-target-changed", callback: (($obj: WebView, hit_test_result: HitTestResult, modifiers: number) => void)): number
@@ -24640,6 +26525,7 @@ class WebView {
      * by the specific #WebKitPermissionRequest that could allow or deny it. Check the
      * documentation of classes implementing #WebKitPermissionRequest interface to know
      * their default action.
+     * @param request the #WebKitPermissionRequest
      */
     connect(sigName: "permission-request", callback: (($obj: WebView, request: PermissionRequest) => boolean)): number
     connect_after(sigName: "permission-request", callback: (($obj: WebView, request: PermissionRequest) => boolean)): number
@@ -24654,6 +26540,7 @@ class WebView {
      * 
      * You can connect to this signal and return %TRUE to cancel the print operation
      * or implement your own print dialog.
+     * @param print_operation the #WebKitPrintOperation that will handle the print request
      */
     connect(sigName: "print", callback: (($obj: WebView, print_operation: PrintOperation) => boolean)): number
     connect_after(sigName: "print", callback: (($obj: WebView, print_operation: PrintOperation) => boolean)): number
@@ -24674,6 +26561,8 @@ class WebView {
      * contains the #WebKitURIRequest that will be sent to the server.
      * You can monitor the load operation by connecting to the different signals
      * of `resource`.
+     * @param resource a #WebKitWebResource
+     * @param request a #WebKitURIRequest
      */
     connect(sigName: "resource-load-started", callback: (($obj: WebView, resource: WebResource, request: URIRequest) => void)): number
     connect_after(sigName: "resource-load-started", callback: (($obj: WebView, resource: WebResource, request: URIRequest) => void)): number
@@ -24704,6 +26593,7 @@ class WebView {
      * 
      * The default signal handler will asynchronously run a regular
      * #GtkColorChooser for the user to interact with.
+     * @param request a #WebKitColorChooserRequest
      */
     connect(sigName: "run-color-chooser", callback: (($obj: WebView, request: ColorChooserRequest) => boolean)): number
     connect_after(sigName: "run-color-chooser", callback: (($obj: WebView, request: ColorChooserRequest) => boolean)): number
@@ -24720,6 +26610,7 @@ class WebView {
      * 
      * The default signal handler will asynchronously run a regular
      * #GtkFileChooserDialog for the user to interact with.
+     * @param request a #WebKitFileChooserRequest
      */
     connect(sigName: "run-file-chooser", callback: (($obj: WebView, request: FileChooserRequest) => boolean)): number
     connect_after(sigName: "run-file-chooser", callback: (($obj: WebView, request: FileChooserRequest) => boolean)): number
@@ -24752,6 +26643,7 @@ class WebView {
      * webkit_script_dialog_close() when done.
      * If the last reference is removed on a #WebKitScriptDialog and the dialog has not been
      * closed, webkit_script_dialog_close() will be called.
+     * @param dialog the #WebKitScriptDialog to show
      */
     connect(sigName: "script-dialog", callback: (($obj: WebView, dialog: ScriptDialog) => boolean)): number
     connect_after(sigName: "script-dialog", callback: (($obj: WebView, dialog: ScriptDialog) => boolean)): number
@@ -24763,6 +26655,7 @@ class WebView {
      * 
      * The default handler will emit a notification using libnotify, if built with
      * support for it.
+     * @param notification a #WebKitNotification
      */
     connect(sigName: "show-notification", callback: (($obj: WebView, notification: Notification) => boolean)): number
     connect_after(sigName: "show-notification", callback: (($obj: WebView, notification: Notification) => boolean)): number
@@ -24777,6 +26670,9 @@ class WebView {
      * To handle this signal asynchronously you should keep a ref of the `menu`.
      * 
      * The default signal handler will pop up a #GtkMenu.
+     * @param menu the #WebKitOptionMenu
+     * @param event the #GdkEvent that triggered the menu, or %NULL
+     * @param rectangle the option element area
      */
     connect(sigName: "show-option-menu", callback: (($obj: WebView, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean)): number
     connect_after(sigName: "show-option-menu", callback: (($obj: WebView, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean)): number
@@ -24793,6 +26689,7 @@ class WebView {
      * webkit_form_submission_request_submit() when done to continue with the form submission.
      * If the last reference is removed on a #WebKitFormSubmissionRequest and the
      * form has not been submitted, webkit_form_submission_request_submit() will be called.
+     * @param request a #WebKitFormSubmissionRequest
      */
     connect(sigName: "submit-form", callback: (($obj: WebView, request: FormSubmissionRequest) => void)): number
     connect_after(sigName: "submit-form", callback: (($obj: WebView, request: FormSubmissionRequest) => void)): number
@@ -24806,6 +26703,7 @@ class WebView {
      * `message` and returning %TRUE. If the last reference of `message` is removed
      * and the message has not been replied to, the operation in the #WebKitWebPage will
      * finish with error %WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE.
+     * @param message the #WebKitUserMessage received
      */
     connect(sigName: "user-message-received", callback: (($obj: WebView, message: UserMessage) => boolean)): number
     connect_after(sigName: "user-message-received", callback: (($obj: WebView, message: UserMessage) => boolean)): number
@@ -24819,6 +26717,7 @@ class WebView {
     /**
      * This signal is emitted when the web process terminates abnormally due
      * to `reason`.
+     * @param reason the a #WebKitWebProcessTerminationReason
      */
     connect(sigName: "web-process-terminated", callback: (($obj: WebView, reason: WebProcessTerminationReason) => void)): number
     connect_after(sigName: "web-process-terminated", callback: (($obj: WebView, reason: WebProcessTerminationReason) => void)): number
@@ -24837,6 +26736,7 @@ class WebView {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: WebView, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: WebView, previous_direction: Gtk.TextDirection) => void)): number
@@ -24851,6 +26751,7 @@ class WebView {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: WebView, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: WebView, direction: Gtk.DirectionType) => boolean)): number
@@ -24874,12 +26775,14 @@ class WebView {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: WebView, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: WebView, group_cycling: boolean) => boolean)): number
     emit(sigName: "mnemonic-activate", group_cycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: (($obj: WebView, direction: Gtk.DirectionType) => void)): number
     connect_after(sigName: "move-focus", callback: (($obj: WebView, direction: Gtk.DirectionType) => void)): number
@@ -24899,6 +26802,10 @@ class WebView {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: (($obj: WebView, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: WebView, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -24922,6 +26829,7 @@ class WebView {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: WebView, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: WebView, flags: Gtk.StateFlags) => void)): number
@@ -24976,10 +26884,13 @@ class WebView {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::automation-presentation-type", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::automation-presentation-type", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::camera-capture-state", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::camera-capture-state", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::display-capture-state", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
@@ -24990,6 +26901,10 @@ class WebView {
     connect_after(sigName: "notify::estimated-load-progress", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::favicon", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::favicon", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::is-controlled-by-automation", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-controlled-by-automation", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::is-ephemeral", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-ephemeral", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::is-loading", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-loading", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::is-muted", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
@@ -25002,12 +26917,20 @@ class WebView {
     connect_after(sigName: "notify::microphone-capture-state", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::page-id", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::page-id", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::related-view", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::related-view", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::settings", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::settings", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::title", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::uri", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::uri", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::user-content-manager", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::user-content-manager", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::web-context", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::web-context", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::website-policies", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::website-policies", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::zoom-level", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::zoom-level", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::can-focus", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
@@ -25016,6 +26939,8 @@ class WebView {
     connect_after(sigName: "notify::can-target", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::css-classes", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::css-classes", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::css-name", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::cursor", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::focus-on-click", callback: (($obj: WebView, pspec: GObject.ParamSpec) => void)): number
@@ -25120,6 +27045,13 @@ class WebViewBase {
      * A list of css classes applied to this widget.
      */
     css_classes: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly css_name: string
     /**
      * The cursor used by `widget`.
      */
@@ -25312,13 +27244,15 @@ class WebViewBase {
      */
     accessible_role: Gtk.AccessibleRole
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param action_name action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     action_set_enabled(action_name: string, enabled: boolean): void
     /**
@@ -25349,6 +27283,8 @@ class WebViewBase {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activate_action(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -25360,6 +27296,7 @@ class WebViewBase {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     add_controller(controller: Gtk.EventController): void
     /**
@@ -25370,6 +27307,7 @@ class WebViewBase {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param css_class The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     add_css_class(css_class: string): void
     /**
@@ -25379,6 +27317,7 @@ class WebViewBase {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -25404,6 +27343,7 @@ class WebViewBase {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -25417,6 +27357,10 @@ class WebViewBase {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -25440,6 +27384,7 @@ class WebViewBase {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -25453,6 +27398,7 @@ class WebViewBase {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     compute_bounds(target: Gtk.Widget): [ /* returnType */ boolean, /* out_bounds */ Graphene.Rect ]
     /**
@@ -25469,6 +27415,7 @@ class WebViewBase {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -25477,6 +27424,8 @@ class WebViewBase {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     compute_point(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* out_point */ Graphene.Point ]
     /**
@@ -25486,6 +27435,7 @@ class WebViewBase {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     compute_transform(target: Gtk.Widget): [ /* returnType */ boolean, /* out_transform */ Graphene.Matrix ]
     /**
@@ -25493,6 +27443,8 @@ class WebViewBase {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -25512,10 +27464,15 @@ class WebViewBase {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -25573,6 +27530,7 @@ class WebViewBase {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -25936,6 +27894,7 @@ class WebViewBase {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     get_size(orientation: Gtk.Orientation): number
     /**
@@ -25980,6 +27939,8 @@ class WebViewBase {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widget_type The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -26052,6 +28013,7 @@ class WebViewBase {
     grab_focus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param css_class A style class, without the leading '.'   used for notation of style classes
      */
     has_css_class(css_class: string): boolean
     /**
@@ -26117,6 +28079,8 @@ class WebViewBase {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -26134,6 +28098,8 @@ class WebViewBase {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previous_sibling the new previous sibling of `widget`
      */
     insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void
     /**
@@ -26150,11 +28116,14 @@ class WebViewBase {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param next_sibling the new next sibling of `widget`
      */
     insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -26218,6 +28187,7 @@ class WebViewBase {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -26249,12 +28219,15 @@ class WebViewBase {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param for_size Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, for_size: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -26295,6 +28268,9 @@ class WebViewBase {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -26361,12 +28337,14 @@ class WebViewBase {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     remove_controller(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param css_class The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     remove_css_class(css_class: string): void
     /**
@@ -26375,11 +28353,13 @@ class WebViewBase {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     remove_tick_callback(id: number): void
     /**
@@ -26397,10 +28377,12 @@ class WebViewBase {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param can_focus whether or not the input focus can enter   the widget or any of its children
      */
     set_can_focus(can_focus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param can_target whether this widget should be able to   receive pointer events
      */
     set_can_target(can_target: boolean): void
     /**
@@ -26420,11 +28402,13 @@ class WebViewBase {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param child_visible if %TRUE, `widget` should be mapped along   with its parent.
      */
     set_child_visible(child_visible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     set_css_classes(classes: string[]): void
     /**
@@ -26433,6 +28417,7 @@ class WebViewBase {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     set_cursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -26447,6 +28432,7 @@ class WebViewBase {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     set_cursor_from_name(name?: string | null): void
     /**
@@ -26463,6 +28449,7 @@ class WebViewBase {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -26471,6 +28458,7 @@ class WebViewBase {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -26480,6 +28468,7 @@ class WebViewBase {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focus_on_click whether the widget should grab focus when clicked   with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
@@ -26496,6 +28485,7 @@ class WebViewBase {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     set_focusable(focusable: boolean): void
     /**
@@ -26507,6 +28497,7 @@ class WebViewBase {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param font_map a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
@@ -26515,14 +28506,17 @@ class WebViewBase {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -26553,6 +28547,7 @@ class WebViewBase {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -26570,27 +28565,33 @@ class WebViewBase {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layout_manager a `GtkLayoutManager`
      */
     set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -26605,6 +28606,7 @@ class WebViewBase {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -26630,6 +28632,7 @@ class WebViewBase {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -26642,6 +28645,7 @@ class WebViewBase {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     set_overflow(overflow: Gtk.Overflow): void
     /**
@@ -26653,12 +28657,14 @@ class WebViewBase {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     set_parent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -26668,6 +28674,7 @@ class WebViewBase {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -26706,6 +28713,8 @@ class WebViewBase {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
@@ -26718,6 +28727,8 @@ class WebViewBase {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -26729,6 +28740,7 @@ class WebViewBase {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -26742,10 +28754,12 @@ class WebViewBase {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -26753,12 +28767,14 @@ class WebViewBase {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -26770,6 +28786,7 @@ class WebViewBase {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -26798,6 +28815,8 @@ class WebViewBase {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -26815,6 +28834,8 @@ class WebViewBase {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -26823,6 +28844,9 @@ class WebViewBase {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param dest_widget a `GtkWidget`
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -26856,6 +28880,7 @@ class WebViewBase {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -26893,6 +28918,10 @@ class WebViewBase {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26903,6 +28932,12 @@ class WebViewBase {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -26926,6 +28961,7 @@ class WebViewBase {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26945,11 +28981,14 @@ class WebViewBase {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26957,6 +28996,8 @@ class WebViewBase {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26974,6 +29015,7 @@ class WebViewBase {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27019,6 +29061,7 @@ class WebViewBase {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27062,15 +29105,20 @@ class WebViewBase {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27111,6 +29159,7 @@ class WebViewBase {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27145,6 +29194,7 @@ class WebViewBase {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -27154,14 +29204,17 @@ class WebViewBase {
     get_accessible_role(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     reset_property(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     reset_relation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     reset_state(state: Gtk.AccessibleState): void
     /**
@@ -27171,6 +29224,8 @@ class WebViewBase {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     update_property(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -27180,6 +29235,8 @@ class WebViewBase {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     update_relation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -27189,6 +29246,8 @@ class WebViewBase {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     update_state(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -27203,25 +29262,41 @@ class WebViewBase {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a `GtkBuilder`
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
      * Similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a `GtkBuilder`
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * Called at the end of each custom element handled by
      * the buildable.
+     * @param builder `GtkBuilder` used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * Called for each unknown element under `<child>`.
+     * @param builder a `GtkBuilder` used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ Gtk.BuildableParser, /* data */ object | null ]
     vfunc_get_id(): string
     /**
      * Retrieves the internal child called `childname` of the `buildable` object.
+     * @param builder a `GtkBuilder`
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     vfunc_parser_finished(builder: Gtk.Builder): void
@@ -27234,6 +29309,8 @@ class WebViewBase {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     vfunc_contains(x: number, y: number): boolean
     vfunc_css_changed(change: Gtk.CssStyleChange): void
@@ -27294,6 +29371,7 @@ class WebViewBase {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -27311,12 +29389,15 @@ class WebViewBase {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param for_size Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     vfunc_measure(orientation: Gtk.Orientation, for_size: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_move_focus(direction: Gtk.DirectionType): void
@@ -27347,6 +29428,7 @@ class WebViewBase {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -27397,6 +29479,7 @@ class WebViewBase {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27414,6 +29497,7 @@ class WebViewBase {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: WebViewBase, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: WebViewBase, previous_direction: Gtk.TextDirection) => void)): number
@@ -27428,6 +29512,7 @@ class WebViewBase {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: WebViewBase, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: WebViewBase, direction: Gtk.DirectionType) => boolean)): number
@@ -27451,12 +29536,14 @@ class WebViewBase {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: WebViewBase, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: WebViewBase, group_cycling: boolean) => boolean)): number
     emit(sigName: "mnemonic-activate", group_cycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: (($obj: WebViewBase, direction: Gtk.DirectionType) => void)): number
     connect_after(sigName: "move-focus", callback: (($obj: WebViewBase, direction: Gtk.DirectionType) => void)): number
@@ -27476,6 +29563,10 @@ class WebViewBase {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: (($obj: WebViewBase, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: WebViewBase, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -27499,6 +29590,7 @@ class WebViewBase {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: WebViewBase, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: WebViewBase, flags: Gtk.StateFlags) => void)): number
@@ -27553,6 +29645,7 @@ class WebViewBase {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
@@ -27563,6 +29656,8 @@ class WebViewBase {
     connect_after(sigName: "notify::can-target", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::css-classes", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::css-classes", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::css-name", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::cursor", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::focus-on-click", callback: (($obj: WebViewBase, pspec: GObject.ParamSpec) => void)): number
@@ -27638,7 +29733,7 @@ interface WebsiteDataAccessPermissionRequest_ConstructProps extends GObject.Obje
 }
 class WebsiteDataAccessPermissionRequest {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.WebsiteDataAccessPermissionRequest */
     /**
      * Get the current domain being browsed.
@@ -27683,6 +29778,10 @@ class WebsiteDataAccessPermissionRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27693,6 +29792,12 @@ class WebsiteDataAccessPermissionRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -27716,6 +29821,7 @@ class WebsiteDataAccessPermissionRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -27735,11 +29841,14 @@ class WebsiteDataAccessPermissionRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -27747,6 +29856,8 @@ class WebsiteDataAccessPermissionRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27764,6 +29875,7 @@ class WebsiteDataAccessPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27809,6 +29921,7 @@ class WebsiteDataAccessPermissionRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27852,15 +29965,20 @@ class WebsiteDataAccessPermissionRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27901,6 +30019,7 @@ class WebsiteDataAccessPermissionRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27935,6 +30054,7 @@ class WebsiteDataAccessPermissionRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of WebKit2-5.0.WebKit2.PermissionRequest */
@@ -27972,6 +30092,7 @@ class WebsiteDataAccessPermissionRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28004,6 +30125,7 @@ class WebsiteDataAccessPermissionRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebsiteDataAccessPermissionRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebsiteDataAccessPermissionRequest, pspec: GObject.ParamSpec) => void)): number
@@ -28074,8 +30196,62 @@ interface WebsiteDataManager_ConstructProps extends GObject.Object_ConstructProp
     websql_directory?: string
 }
 class WebsiteDataManager {
+    /* Properties of WebKit2-5.0.WebKit2.WebsiteDataManager */
+    /**
+     * The base directory for Website cache. This is used as a base directory
+     * for any Website cache when no specific cache directory has been provided.
+     */
+    readonly base_cache_directory: string
+    /**
+     * The base directory for Website data. This is used as a base directory
+     * for any Website data when no specific data directory has been provided.
+     */
+    readonly base_data_directory: string
+    /**
+     * The directory where HTTP disk cache will be stored.
+     */
+    readonly disk_cache_directory: string
+    /**
+     * The directory where DOM cache will be stored.
+     */
+    readonly dom_cache_directory: string
+    /**
+     * The directory where the HTTP Strict-Transport-Security (HSTS) cache will be stored.
+     */
+    readonly hsts_cache_directory: string
+    /**
+     * The directory where IndexedDB databases will be stored.
+     */
+    readonly indexeddb_directory: string
+    /**
+     * Whether the #WebKitWebsiteDataManager is ephemeral. An ephemeral #WebKitWebsiteDataManager
+     * handles all websites data as non-persistent, and nothing will be written to the client
+     * storage. Note that if you create an ephemeral #WebKitWebsiteDataManager all other construction
+     * parameters to configure data directories will be ignored.
+     */
+    readonly is_ephemeral: boolean
+    /**
+     * The directory where Intelligent Tracking Prevention (ITP) data will be stored.
+     */
+    readonly itp_directory: string
+    /**
+     * The directory where local storage data will be stored.
+     */
+    readonly local_storage_directory: string
+    /**
+     * The directory where offline web application cache will be stored.
+     */
+    readonly offline_application_cache_directory: string
+    /**
+     * The directory where service workers registrations will be stored.
+     */
+    readonly service_worker_registrations_directory: string
+    /**
+     * The directory where WebSQL databases will be stored.
+     */
+    readonly websql_directory: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.WebsiteDataManager */
     /**
      * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
@@ -28087,10 +30263,15 @@ class WebsiteDataManager {
      * Due to implementation limitations, this function does not currently delete
      * any stored cookies if `timespan` is nonzero. This behavior may change in the
      * future.
+     * @param types #WebKitWebsiteDataTypes
+     * @param timespan a #GTimeSpan
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     clear(types: WebsiteDataTypes, timespan: GLib.TimeSpan, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_website_data_manager_clear()
+     * @param result a #GAsyncResult
      */
     clear_finish(result: Gio.AsyncResult): boolean
     /**
@@ -28098,10 +30279,14 @@ class WebsiteDataManager {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_website_data_manager_fetch_finish() to get the result of the operation.
+     * @param types #WebKitWebsiteDataTypes
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     fetch(types: WebsiteDataTypes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_website_data_manager_fetch().
+     * @param result a #GAsyncResult
      */
     fetch_finish(result: Gio.AsyncResult): WebsiteData[]
     /**
@@ -28146,10 +30331,13 @@ class WebsiteDataManager {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_website_data_manager_get_itp_summary_finish() to get the result of the operation.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     get_itp_summary(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_website_data_manager_get_itp_summary().
+     * @param result a #GAsyncResult
      */
     get_itp_summary_finish(result: Gio.AsyncResult): ITPThirdParty[]
     /**
@@ -28178,19 +30366,20 @@ class WebsiteDataManager {
      */
     get_websql_directory(): string | null
     /**
-     * Get whether a #WebKitWebsiteDataManager is ephemeral. See #WebKitWebsiteDataManager:is-ephemeral for more details.
-     */
-    is_ephemeral(): boolean
-    /**
      * Asynchronously removes the website data of the for the given `types` for websites in the given `website_data` list.
      * Use webkit_website_data_manager_clear() if you want to remove the website data for all sites.
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_website_data_manager_remove_finish() to get the result of the operation.
+     * @param types #WebKitWebsiteDataTypes
+     * @param website_data a #GList of #WebKitWebsiteData
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     remove(types: WebsiteDataTypes, website_data: WebsiteData[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_website_data_manager_remove().
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
@@ -28198,6 +30387,7 @@ class WebsiteDataManager {
      * are collected and used to decide whether to allow or block third-party cookies and prevent user tracking.
      * Note that while ITP is enabled the accept policy %WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY is ignored and
      * %WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS is used instead. See also webkit_cookie_manager_set_accept_policy().
+     * @param enabled value to set
      */
     set_itp_enabled(enabled: boolean): void
     /**
@@ -28209,16 +30399,20 @@ class WebsiteDataManager {
      * or %WEBKIT_NETWORK_PROXY_MODE_CUSTOM to provide your own proxy settings.
      * When `proxy_mode` is %WEBKIT_NETWORK_PROXY_MODE_CUSTOM `proxy_settings` must be
      * a valid #WebKitNetworkProxySettings; otherwise, `proxy_settings` must be %NULL.
+     * @param proxy_mode a #WebKitNetworkProxyMode
+     * @param proxy_settings a #WebKitNetworkProxySettings, or %NULL
      */
     set_network_proxy_settings(proxy_mode: NetworkProxyMode, proxy_settings?: NetworkProxySettings | null): void
     /**
      * Enable or disable persistent credential storage. When enabled, which is the default for
      * non-ephemeral sessions, the network process will try to read and write HTTP authentiacation
      * credentials from persistent storage.
+     * @param enabled value to set
      */
     set_persistent_credential_storage_enabled(enabled: boolean): void
     /**
      * Set the TLS errors policy of `manager` as `policy`
+     * @param policy a #WebKitTLSErrorsPolicy
      */
     set_tls_errors_policy(policy: TLSErrorsPolicy): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -28256,6 +30450,10 @@ class WebsiteDataManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28266,6 +30464,12 @@ class WebsiteDataManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28289,6 +30493,7 @@ class WebsiteDataManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28308,11 +30513,14 @@ class WebsiteDataManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28320,6 +30528,8 @@ class WebsiteDataManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28337,6 +30547,7 @@ class WebsiteDataManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -28382,6 +30593,7 @@ class WebsiteDataManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -28425,15 +30637,20 @@ class WebsiteDataManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28474,6 +30691,7 @@ class WebsiteDataManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28508,6 +30726,7 @@ class WebsiteDataManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -28527,6 +30746,7 @@ class WebsiteDataManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28559,10 +30779,35 @@ class WebsiteDataManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::base-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::base-data-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-data-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::disk-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::disk-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dom-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dom-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::hsts-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hsts-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::indexeddb-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::indexeddb-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::is-ephemeral", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-ephemeral", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::itp-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::itp-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::local-storage-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-storage-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::offline-application-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::offline-application-cache-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::service-worker-registrations-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service-worker-registrations-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::websql-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::websql-directory", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -28584,6 +30829,7 @@ class WebsiteDataManager {
      * be enabled only if custom settings have been set using this function. After that, in order
      * to remove the custom settings and disable the periodic check, this function must be called
      * passing %NULL as the value of `settings`.
+     * @param settings a WebKitMemoryPressureSettings.
      */
     static set_memory_pressure_settings(settings: MemoryPressureSettings): void
     static $gtype: GObject.Type
@@ -28596,8 +30842,13 @@ interface WebsitePolicies_ConstructProps extends GObject.Object_ConstructProps {
     autoplay?: AutoplayPolicy
 }
 class WebsitePolicies {
+    /* Properties of WebKit2-5.0.WebKit2.WebsitePolicies */
+    /**
+     * The #WebKitAutoplayPolicy of #WebKitWebsitePolicies.
+     */
+    readonly autoplay: AutoplayPolicy
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.WebsitePolicies */
     /**
      * Get the #WebKitWebsitePolicies:autoplay property.
@@ -28638,6 +30889,10 @@ class WebsitePolicies {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28648,6 +30903,12 @@ class WebsitePolicies {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28671,6 +30932,7 @@ class WebsitePolicies {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28690,11 +30952,14 @@ class WebsitePolicies {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28702,6 +30967,8 @@ class WebsitePolicies {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28719,6 +30986,7 @@ class WebsitePolicies {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -28764,6 +31032,7 @@ class WebsitePolicies {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -28807,15 +31076,20 @@ class WebsitePolicies {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28856,6 +31130,7 @@ class WebsitePolicies {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28890,6 +31165,7 @@ class WebsitePolicies {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -28909,6 +31185,7 @@ class WebsitePolicies {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28941,10 +31218,13 @@ class WebsitePolicies {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebsitePolicies, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebsitePolicies, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::autoplay", callback: (($obj: WebsitePolicies, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::autoplay", callback: (($obj: WebsitePolicies, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -28968,8 +31248,17 @@ interface WindowProperties_ConstructProps extends GObject.Object_ConstructProps 
     toolbar_visible?: boolean
 }
 class WindowProperties {
+    /* Properties of WebKit2-5.0.WebKit2.WindowProperties */
+    readonly fullscreen: boolean
+    readonly geometry: Gdk.Rectangle
+    readonly locationbar_visible: boolean
+    readonly menubar_visible: boolean
+    readonly resizable: boolean
+    readonly scrollbars_visible: boolean
+    readonly statusbar_visible: boolean
+    readonly toolbar_visible: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of WebKit2-5.0.WebKit2.WindowProperties */
     /**
      * Get whether the window should be shown in fullscreen state or not.
@@ -29038,6 +31327,10 @@ class WindowProperties {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29048,6 +31341,12 @@ class WindowProperties {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -29071,6 +31370,7 @@ class WindowProperties {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -29090,11 +31390,14 @@ class WindowProperties {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -29102,6 +31405,8 @@ class WindowProperties {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29119,6 +31424,7 @@ class WindowProperties {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -29164,6 +31470,7 @@ class WindowProperties {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -29207,15 +31514,20 @@ class WindowProperties {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -29256,6 +31568,7 @@ class WindowProperties {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -29290,6 +31603,7 @@ class WindowProperties {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -29309,6 +31623,7 @@ class WindowProperties {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29341,10 +31656,27 @@ class WindowProperties {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::fullscreen", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::fullscreen", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::geometry", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::geometry", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::locationbar-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::locationbar-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::menubar-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::menubar-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::resizable", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resizable", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::scrollbars-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scrollbars-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::statusbar-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::statusbar-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::toolbar-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::toolbar-visible", callback: (($obj: WindowProperties, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -29373,6 +31705,7 @@ class ApplicationInfo {
     /**
      * Set the name of the application. If not provided, or %NULL is passed,
      * g_get_prgname() will be used.
+     * @param name the application name
      */
     set_name(name: string): void
     /**
@@ -29380,6 +31713,9 @@ class ApplicationInfo {
      * major.minor.micro you can pass 0 as the micro to use major.minor, or pass
      * 0 as both micro and minor to use only major number. Any other format must
      * be converted to major.minor.micro so that it can be used in version comparisons.
+     * @param major the major version number
+     * @param minor the minor version number
+     * @param micro the micro version number
      */
     set_version(major: number, minor: number, micro: number): void
     /**
@@ -29397,7 +31733,7 @@ class ApplicationInfo {
 }
 abstract class AuthenticationRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.AuthenticationRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AuthenticationRequestPrivate {
@@ -29405,7 +31741,7 @@ class AuthenticationRequestPrivate {
 }
 abstract class AutomationSessionClass {
     /* Fields of WebKit2-5.0.WebKit2.AutomationSessionClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AutomationSessionPrivate {
@@ -29413,12 +31749,12 @@ class AutomationSessionPrivate {
 }
 abstract class BackForwardListClass {
     /* Fields of WebKit2-5.0.WebKit2.BackForwardListClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class BackForwardListItemClass {
     /* Fields of WebKit2-5.0.WebKit2.BackForwardListItemClass */
-    readonly parent_class: GObject.InitiallyUnownedClass
+    parent_class: GObject.InitiallyUnownedClass
     static name: string
 }
 class BackForwardListItemPrivate {
@@ -29429,7 +31765,7 @@ class BackForwardListPrivate {
 }
 abstract class ColorChooserRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.ColorChooserRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class ColorChooserRequestPrivate {
@@ -29437,12 +31773,12 @@ class ColorChooserRequestPrivate {
 }
 abstract class ContextMenuClass {
     /* Fields of WebKit2-5.0.WebKit2.ContextMenuClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ContextMenuItemClass {
     /* Fields of WebKit2-5.0.WebKit2.ContextMenuItemClass */
-    readonly parent_class: GObject.InitiallyUnownedClass
+    parent_class: GObject.InitiallyUnownedClass
     static name: string
 }
 class ContextMenuItemPrivate {
@@ -29453,7 +31789,7 @@ class ContextMenuPrivate {
 }
 abstract class CookieManagerClass {
     /* Fields of WebKit2-5.0.WebKit2.CookieManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CookieManagerPrivate {
@@ -29499,7 +31835,7 @@ class Credential {
 }
 abstract class DeviceInfoPermissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.DeviceInfoPermissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class DeviceInfoPermissionRequestPrivate {
@@ -29507,8 +31843,8 @@ class DeviceInfoPermissionRequestPrivate {
 }
 abstract class DownloadClass {
     /* Fields of WebKit2-5.0.WebKit2.DownloadClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly decide_destination: (download: Download, suggested_filename: string) => boolean
+    parent_class: GObject.ObjectClass
+    decide_destination: (download: Download, suggested_filename: string) => boolean
     static name: string
 }
 class DownloadPrivate {
@@ -29516,7 +31852,7 @@ class DownloadPrivate {
 }
 abstract class EditorStateClass {
     /* Fields of WebKit2-5.0.WebKit2.EditorStateClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class EditorStatePrivate {
@@ -29524,7 +31860,7 @@ class EditorStatePrivate {
 }
 abstract class FaviconDatabaseClass {
     /* Fields of WebKit2-5.0.WebKit2.FaviconDatabaseClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class FaviconDatabasePrivate {
@@ -29532,7 +31868,7 @@ class FaviconDatabasePrivate {
 }
 abstract class FileChooserRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.FileChooserRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class FileChooserRequestPrivate {
@@ -29540,7 +31876,7 @@ class FileChooserRequestPrivate {
 }
 abstract class FindControllerClass {
     /* Fields of WebKit2-5.0.WebKit2.FindControllerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class FindControllerPrivate {
@@ -29548,7 +31884,7 @@ class FindControllerPrivate {
 }
 abstract class FormSubmissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.FormSubmissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class FormSubmissionRequestPrivate {
@@ -29556,7 +31892,7 @@ class FormSubmissionRequestPrivate {
 }
 abstract class GeolocationManagerClass {
     /* Fields of WebKit2-5.0.WebKit2.GeolocationManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class GeolocationManagerPrivate {
@@ -29564,7 +31900,7 @@ class GeolocationManagerPrivate {
 }
 abstract class GeolocationPermissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.GeolocationPermissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class GeolocationPermissionRequestPrivate {
@@ -29582,23 +31918,28 @@ class GeolocationPosition {
     free(): void
     /**
      * Set the `position` altitude
+     * @param altitude altitude in meters
      */
     set_altitude(altitude: number): void
     /**
      * Set the accuracy of `position` altitude
+     * @param altitude_accuracy accuracy of position altitude in meters
      */
     set_altitude_accuracy(altitude_accuracy: number): void
     /**
      * Set the `position` heading, as a positive angle between the direction of movement and the North
      * direction, in clockwise direction.
+     * @param heading heading in degrees
      */
     set_heading(heading: number): void
     /**
      * Set the `position` speed
+     * @param speed speed in meters per second
      */
     set_speed(speed: number): void
     /**
      * Set the `position` timestamp. By default it's the time when the `position` was created.
+     * @param timestamp timestamp in seconds since the epoch, or 0 to use current time
      */
     set_timestamp(timestamp: number): void
     static name: string
@@ -29609,7 +31950,7 @@ class GeolocationPosition {
 }
 abstract class HitTestResultClass {
     /* Fields of WebKit2-5.0.WebKit2.HitTestResultClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class HitTestResultPrivate {
@@ -29673,20 +32014,20 @@ class ITPThirdParty {
 }
 abstract class InputMethodContextClass {
     /* Fields of WebKit2-5.0.WebKit2.InputMethodContextClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly preedit_started: (context: InputMethodContext) => void
-    readonly preedit_changed: (context: InputMethodContext) => void
-    readonly preedit_finished: (context: InputMethodContext) => void
-    readonly committed: (context: InputMethodContext, text: string) => void
-    readonly delete_surrounding: (context: InputMethodContext, offset: number, n_chars: number) => void
-    readonly set_enable_preedit: (context: InputMethodContext, enabled: boolean) => void
-    readonly get_preedit: (context: InputMethodContext) => [ /* text */ string | null, /* underlines */ InputMethodUnderline[] | null, /* cursor_offset */ number | null ]
-    readonly filter_key_event: (context: InputMethodContext, key_event: Gdk.Event) => boolean
-    readonly notify_focus_in: (context: InputMethodContext) => void
-    readonly notify_focus_out: (context: InputMethodContext) => void
-    readonly notify_cursor_area: (context: InputMethodContext, x: number, y: number, width: number, height: number) => void
-    readonly notify_surrounding: (context: InputMethodContext, text: string, length: number, cursor_index: number, selection_index: number) => void
-    readonly reset: (context: InputMethodContext) => void
+    parent_class: GObject.ObjectClass
+    preedit_started: (context: InputMethodContext) => void
+    preedit_changed: (context: InputMethodContext) => void
+    preedit_finished: (context: InputMethodContext) => void
+    committed: (context: InputMethodContext, text: string) => void
+    delete_surrounding: (context: InputMethodContext, offset: number, n_chars: number) => void
+    set_enable_preedit: (context: InputMethodContext, enabled: boolean) => void
+    get_preedit: (context: InputMethodContext) => [ /* text */ string | null, /* underlines */ InputMethodUnderline[] | null, /* cursor_offset */ number | null ]
+    filter_key_event: (context: InputMethodContext, key_event: Gdk.Event) => boolean
+    notify_focus_in: (context: InputMethodContext) => void
+    notify_focus_out: (context: InputMethodContext) => void
+    notify_cursor_area: (context: InputMethodContext, x: number, y: number, width: number, height: number) => void
+    notify_surrounding: (context: InputMethodContext, text: string, length: number, cursor_index: number, selection_index: number) => void
+    reset: (context: InputMethodContext) => void
     static name: string
 }
 class InputMethodContextPrivate {
@@ -29705,6 +32046,7 @@ class InputMethodUnderline {
     /**
      * Set the color of the underline. If `rgba` is %NULL the foreground text color will be used
      * for the underline too.
+     * @param rgba a #GdkRGBA or %NULL
      */
     set_color(rgba?: Gdk.RGBA | null): void
     static name: string
@@ -29715,7 +32057,7 @@ class InputMethodUnderline {
 }
 abstract class InstallMissingMediaPluginsPermissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.InstallMissingMediaPluginsPermissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class InstallMissingMediaPluginsPermissionRequestPrivate {
@@ -29743,7 +32085,7 @@ class JavascriptResult {
 }
 abstract class MediaKeySystemPermissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.MediaKeySystemPermissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MediaKeySystemPermissionRequestPrivate {
@@ -29771,6 +32113,7 @@ class MemoryPressureSettings {
      * 
      * The threshold must be bigger than 0 and smaller than 1, and it must be smaller
      * than the strict threshold defined in `settings`. The default value is 0.33.
+     * @param value fraction of the memory limit where the conservative policy starts working.
      */
     set_conservative_threshold(value: number): void
     /**
@@ -29780,18 +32123,21 @@ class MemoryPressureSettings {
      * The threshold must be a value bigger or equal to 0. A value of 0 means that the process
      * is never killed. If the threshold is not 0, then it must be bigger than the strict threshold
      * defined in `settings`. The threshold can also have values bigger than 1. The default value is 0.
+     * @param value fraction of the memory limit where the process will be killed because   of excessive memory usage.
      */
     set_kill_threshold(value: number): void
     /**
      * Sets `memory_limit` the memory limit value to `settings`.
      * 
      * The default value is the system's RAM size with a maximum of 3GB.
+     * @param memory_limit amount of memory (in MB) that the process is allowed to use.
      */
     set_memory_limit(memory_limit: number): void
     /**
      * Sets `value` as the poll interval used by `settings`.
      * 
      * The poll interval value must be bigger than 0. The default value is 30 seconds.
+     * @param value period (in seconds) between memory usage measurements.
      */
     set_poll_interval(value: number): void
     /**
@@ -29802,6 +32148,7 @@ class MemoryPressureSettings {
      * The threshold must be bigger than 0 and smaller than 1. Also, it must be bigger
      * than the conservative threshold defined in `settings,` and smaller than the kill
      * threshold if the latter is not 0. The default value is 0.5.
+     * @param value fraction of the memory limit where the strict policy starts working.
      */
     set_strict_threshold(value: number): void
     static name: string
@@ -29878,7 +32225,7 @@ class NavigationAction {
 }
 abstract class NavigationPolicyDecisionClass {
     /* Fields of WebKit2-5.0.WebKit2.NavigationPolicyDecisionClass */
-    readonly parent_class: PolicyDecisionClass
+    parent_class: PolicyDecisionClass
     static name: string
 }
 class NavigationPolicyDecisionPrivate {
@@ -29890,6 +32237,8 @@ class NetworkProxySettings {
      * Adds a URI-scheme-specific proxy. URIs whose scheme matches `uri_scheme` will be proxied via `proxy_uri`.
      * As with the default proxy URI, if `proxy_uri` starts with "socks://", it will be treated as referring to
      * all three of the socks5, socks4a, and socks4 proxy types.
+     * @param scheme the URI scheme to add a proxy for
+     * @param proxy_uri the proxy URI to use for `uri_scheme`
      */
     add_proxy_for_scheme(scheme: string, proxy_uri: string): void
     /**
@@ -29908,12 +32257,12 @@ class NetworkProxySettings {
 }
 abstract class NotificationClass {
     /* Fields of WebKit2-5.0.WebKit2.NotificationClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class NotificationPermissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.NotificationPermissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class NotificationPermissionRequestPrivate {
@@ -29924,7 +32273,7 @@ class NotificationPrivate {
 }
 abstract class OptionMenuClass {
     /* Fields of WebKit2-5.0.WebKit2.OptionMenuClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class OptionMenuItem {
@@ -29968,14 +32317,14 @@ class OptionMenuPrivate {
 }
 abstract class PermissionRequestIface {
     /* Fields of WebKit2-5.0.WebKit2.PermissionRequestIface */
-    readonly parent_interface: GObject.TypeInterface
-    readonly allow: (request: PermissionRequest) => void
-    readonly deny: (request: PermissionRequest) => void
+    parent_interface: GObject.TypeInterface
+    allow: (request: PermissionRequest) => void
+    deny: (request: PermissionRequest) => void
     static name: string
 }
 abstract class PluginClass {
     /* Fields of WebKit2-5.0.WebKit2.PluginClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class PluginPrivate {
@@ -29983,7 +32332,7 @@ class PluginPrivate {
 }
 abstract class PointerLockPermissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.PointerLockPermissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class PointerLockPermissionRequestPrivate {
@@ -29991,7 +32340,7 @@ class PointerLockPermissionRequestPrivate {
 }
 abstract class PolicyDecisionClass {
     /* Fields of WebKit2-5.0.WebKit2.PolicyDecisionClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class PolicyDecisionPrivate {
@@ -29999,9 +32348,9 @@ class PolicyDecisionPrivate {
 }
 abstract class PrintCustomWidgetClass {
     /* Fields of WebKit2-5.0.WebKit2.PrintCustomWidgetClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly apply: (print_custom_widget: PrintCustomWidget, widget: Gtk.Widget) => void
-    readonly update: (print_custom_widget: PrintCustomWidget, widget: Gtk.Widget, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings) => void
+    parent_class: GObject.ObjectClass
+    apply: (print_custom_widget: PrintCustomWidget, widget: Gtk.Widget) => void
+    update: (print_custom_widget: PrintCustomWidget, widget: Gtk.Widget, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings) => void
     static name: string
 }
 class PrintCustomWidgetPrivate {
@@ -30009,7 +32358,7 @@ class PrintCustomWidgetPrivate {
 }
 abstract class PrintOperationClass {
     /* Fields of WebKit2-5.0.WebKit2.PrintOperationClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class PrintOperationPrivate {
@@ -30017,7 +32366,7 @@ class PrintOperationPrivate {
 }
 abstract class ResponsePolicyDecisionClass {
     /* Fields of WebKit2-5.0.WebKit2.ResponsePolicyDecisionClass */
-    readonly parent_class: PolicyDecisionClass
+    parent_class: PolicyDecisionClass
     static name: string
 }
 class ResponsePolicyDecisionPrivate {
@@ -30039,6 +32388,7 @@ class ScriptDialog {
      * signal sets %TRUE when the OK or Stay buttons are clicked and %FALSE otherwise.
      * It's an error to use this method with a #WebKitScriptDialog that is not of type
      * %WEBKIT_SCRIPT_DIALOG_CONFIRM or %WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM
+     * @param confirmed whether user confirmed the dialog
      */
     confirm_set_confirmed(confirmed: boolean): void
     /**
@@ -30062,6 +32412,7 @@ class ScriptDialog {
      * signal sets the text of the entry form when OK button is clicked, otherwise %NULL is set.
      * It's an error to use this method with a #WebKitScriptDialog that is not of type
      * %WEBKIT_SCRIPT_DIALOG_PROMPT.
+     * @param text the text to set
      */
     prompt_set_text(text: string): void
     /**
@@ -30080,7 +32431,7 @@ class ScriptDialog {
 }
 abstract class SecurityManagerClass {
     /* Fields of WebKit2-5.0.WebKit2.SecurityManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SecurityManagerPrivate {
@@ -30138,7 +32489,7 @@ class SecurityOrigin {
 }
 abstract class SettingsClass {
     /* Fields of WebKit2-5.0.WebKit2.SettingsClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SettingsPrivate {
@@ -30146,7 +32497,7 @@ class SettingsPrivate {
 }
 abstract class URIRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.URIRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class URIRequestPrivate {
@@ -30154,7 +32505,7 @@ class URIRequestPrivate {
 }
 abstract class URIResponseClass {
     /* Fields of WebKit2-5.0.WebKit2.URIResponseClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class URIResponsePrivate {
@@ -30162,7 +32513,7 @@ class URIResponsePrivate {
 }
 abstract class URISchemeRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.URISchemeRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class URISchemeRequestPrivate {
@@ -30170,7 +32521,7 @@ class URISchemeRequestPrivate {
 }
 abstract class URISchemeResponseClass {
     /* Fields of WebKit2-5.0.WebKit2.URISchemeResponseClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class URISchemeResponsePrivate {
@@ -30199,7 +32550,7 @@ class UserContentFilter {
 }
 abstract class UserContentFilterStoreClass {
     /* Fields of WebKit2-5.0.WebKit2.UserContentFilterStoreClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class UserContentFilterStorePrivate {
@@ -30207,7 +32558,7 @@ class UserContentFilterStorePrivate {
 }
 abstract class UserContentManagerClass {
     /* Fields of WebKit2-5.0.WebKit2.UserContentManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class UserContentManagerPrivate {
@@ -30215,7 +32566,7 @@ class UserContentManagerPrivate {
 }
 abstract class UserMediaPermissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.UserMediaPermissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class UserMediaPermissionRequestPrivate {
@@ -30223,7 +32574,7 @@ class UserMediaPermissionRequestPrivate {
 }
 abstract class UserMessageClass {
     /* Fields of WebKit2-5.0.WebKit2.UserMessageClass */
-    readonly parent_class: GObject.InitiallyUnownedClass
+    parent_class: GObject.InitiallyUnownedClass
     static name: string
 }
 class UserMessagePrivate {
@@ -30273,12 +32624,12 @@ class UserStyleSheet {
 }
 abstract class WebContextClass {
     /* Fields of WebKit2-5.0.WebKit2.WebContextClass */
-    readonly parent: GObject.ObjectClass
-    readonly download_started: (context: WebContext, download: Download) => void
-    readonly initialize_web_extensions: (context: WebContext) => void
-    readonly initialize_notification_permissions: (context: WebContext) => void
-    readonly automation_started: (context: WebContext, session: AutomationSession) => void
-    readonly user_message_received: (context: WebContext, message: UserMessage) => boolean
+    parent: GObject.ObjectClass
+    download_started: (context: WebContext, download: Download) => void
+    initialize_web_extensions: (context: WebContext) => void
+    initialize_notification_permissions: (context: WebContext) => void
+    automation_started: (context: WebContext, session: AutomationSession) => void
+    user_message_received: (context: WebContext, message: UserMessage) => boolean
     static name: string
 }
 class WebContextPrivate {
@@ -30286,7 +32637,7 @@ class WebContextPrivate {
 }
 abstract class WebInspectorClass {
     /* Fields of WebKit2-5.0.WebKit2.WebInspectorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class WebInspectorPrivate {
@@ -30294,7 +32645,7 @@ class WebInspectorPrivate {
 }
 abstract class WebResourceClass {
     /* Fields of WebKit2-5.0.WebKit2.WebResourceClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class WebResourcePrivate {
@@ -30302,7 +32653,7 @@ class WebResourcePrivate {
 }
 abstract class WebViewBaseClass {
     /* Fields of WebKit2-5.0.WebKit2.WebViewBaseClass */
-    readonly parentClass: Gtk.WidgetClass
+    parentClass: Gtk.WidgetClass
     static name: string
 }
 class WebViewBasePrivate {
@@ -30310,33 +32661,33 @@ class WebViewBasePrivate {
 }
 abstract class WebViewClass {
     /* Fields of WebKit2-5.0.WebKit2.WebViewClass */
-    readonly parent: WebViewBaseClass
-    readonly load_changed: (web_view: WebView, load_event: LoadEvent) => void
-    readonly load_failed: (web_view: WebView, load_event: LoadEvent, failing_uri: string, error: GLib.Error) => boolean
-    readonly ready_to_show: (web_view: WebView) => void
-    readonly run_as_modal: (web_view: WebView) => void
-    readonly close: (web_view: WebView) => void
-    readonly script_dialog: (web_view: WebView, dialog: ScriptDialog) => boolean
-    readonly decide_policy: (web_view: WebView, decision: PolicyDecision, type: PolicyDecisionType) => boolean
-    readonly permission_request: (web_view: WebView, permission_request: PermissionRequest) => boolean
-    readonly mouse_target_changed: (web_view: WebView, hit_test_result: HitTestResult, modifiers: number) => void
-    readonly print: (web_view: WebView, print_operation: PrintOperation) => boolean
-    readonly resource_load_started: (web_view: WebView, resource: WebResource, request: URIRequest) => void
-    readonly enter_fullscreen: (web_view: WebView) => boolean
-    readonly leave_fullscreen: (web_view: WebView) => boolean
-    readonly run_file_chooser: (web_view: WebView, request: FileChooserRequest) => boolean
-    readonly context_menu: (web_view: WebView, context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult) => boolean
-    readonly context_menu_dismissed: (web_view: WebView) => void
-    readonly submit_form: (web_view: WebView, request: FormSubmissionRequest) => void
-    readonly insecure_content_detected: (web_view: WebView, event: InsecureContentEvent) => void
-    readonly web_process_crashed: (web_view: WebView) => boolean
-    readonly authenticate: (web_view: WebView, request: AuthenticationRequest) => boolean
-    readonly load_failed_with_tls_errors: (web_view: WebView, failing_uri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean
-    readonly show_notification: (web_view: WebView, notification: Notification) => boolean
-    readonly run_color_chooser: (web_view: WebView, request: ColorChooserRequest) => boolean
-    readonly show_option_menu: (web_view: WebView, rectangle: Gdk.Rectangle, menu: OptionMenu) => boolean
-    readonly web_process_terminated: (web_view: WebView, reason: WebProcessTerminationReason) => void
-    readonly user_message_received: (web_view: WebView, message: UserMessage) => boolean
+    parent: WebViewBaseClass
+    load_changed: (web_view: WebView, load_event: LoadEvent) => void
+    load_failed: (web_view: WebView, load_event: LoadEvent, failing_uri: string, error: GLib.Error) => boolean
+    ready_to_show: (web_view: WebView) => void
+    run_as_modal: (web_view: WebView) => void
+    close: (web_view: WebView) => void
+    script_dialog: (web_view: WebView, dialog: ScriptDialog) => boolean
+    decide_policy: (web_view: WebView, decision: PolicyDecision, type: PolicyDecisionType) => boolean
+    permission_request: (web_view: WebView, permission_request: PermissionRequest) => boolean
+    mouse_target_changed: (web_view: WebView, hit_test_result: HitTestResult, modifiers: number) => void
+    print: (web_view: WebView, print_operation: PrintOperation) => boolean
+    resource_load_started: (web_view: WebView, resource: WebResource, request: URIRequest) => void
+    enter_fullscreen: (web_view: WebView) => boolean
+    leave_fullscreen: (web_view: WebView) => boolean
+    run_file_chooser: (web_view: WebView, request: FileChooserRequest) => boolean
+    context_menu: (web_view: WebView, context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult) => boolean
+    context_menu_dismissed: (web_view: WebView) => void
+    submit_form: (web_view: WebView, request: FormSubmissionRequest) => void
+    insecure_content_detected: (web_view: WebView, event: InsecureContentEvent) => void
+    web_process_crashed: (web_view: WebView) => boolean
+    authenticate: (web_view: WebView, request: AuthenticationRequest) => boolean
+    load_failed_with_tls_errors: (web_view: WebView, failing_uri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean
+    show_notification: (web_view: WebView, notification: Notification) => boolean
+    run_color_chooser: (web_view: WebView, request: ColorChooserRequest) => boolean
+    show_option_menu: (web_view: WebView, rectangle: Gdk.Rectangle, menu: OptionMenu) => boolean
+    web_process_terminated: (web_view: WebView, reason: WebProcessTerminationReason) => void
+    user_message_received: (web_view: WebView, message: UserMessage) => boolean
     static name: string
 }
 class WebViewPrivate {
@@ -30377,6 +32728,7 @@ class WebsiteData {
      * Gets the size of the data of types `types` in a #WebKitWebsiteData.
      * Note that currently the data size is only known for %WEBKIT_WEBSITE_DATA_DISK_CACHE data type
      * so for all other types 0 will be returned.
+     * @param types a bitmask  of #WebKitWebsiteDataTypes
      */
     get_size(types: WebsiteDataTypes): number
     /**
@@ -30400,7 +32752,7 @@ class WebsiteData {
 }
 abstract class WebsiteDataAccessPermissionRequestClass {
     /* Fields of WebKit2-5.0.WebKit2.WebsiteDataAccessPermissionRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class WebsiteDataAccessPermissionRequestPrivate {
@@ -30408,7 +32760,7 @@ class WebsiteDataAccessPermissionRequestPrivate {
 }
 abstract class WebsiteDataManagerClass {
     /* Fields of WebKit2-5.0.WebKit2.WebsiteDataManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class WebsiteDataManagerPrivate {
@@ -30416,7 +32768,7 @@ class WebsiteDataManagerPrivate {
 }
 abstract class WebsitePoliciesClass {
     /* Fields of WebKit2-5.0.WebKit2.WebsitePoliciesClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class WebsitePoliciesPrivate {
@@ -30424,7 +32776,7 @@ class WebsitePoliciesPrivate {
 }
 abstract class WindowPropertiesClass {
     /* Fields of WebKit2-5.0.WebKit2.WindowPropertiesClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class WindowPropertiesPrivate {

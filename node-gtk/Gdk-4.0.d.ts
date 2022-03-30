@@ -641,6 +641,35 @@ enum ScrollDirection {
     SMOOTH,
 }
 /**
+ * Specifies the unit of scroll deltas.
+ * 
+ * When you get %GDK_SCROLL_UNIT_WHEEL, a delta of 1.0 means 1 wheel detent
+ * click in the south direction, 2.0 means 2 wheel detent clicks in the south
+ * direction... This is the same logic for negative values but in the north
+ * direction.
+ * 
+ * If you get %GDK_SCROLL_UNIT_SURFACE, are managing a scrollable view and get a
+ * value of 123, you have to scroll 123 surface logical pixels right if it's
+ * `delta_x` or down if it's `delta_y`. This is the same logic for negative values
+ * but you have to scroll left instead of right if it's `delta_x` and up instead
+ * of down if it's `delta_y`.
+ * 
+ * 1 surface logical pixel is equal to 1 real screen pixel multiplied by the
+ * final scale factor of your graphical interface (the product of the desktop
+ * scale factor and eventually a custom scale factor in your app).
+ */
+enum ScrollUnit {
+    /**
+     * The delta is in number of wheel clicks.
+     */
+    WHEEL,
+    /**
+     * The delta is in surface pixels to scroll directly
+     *   on screen.
+     */
+    SURFACE,
+}
+/**
  * This enumeration describes how the red, green and blue components
  * of physical pixels on an output device are laid out.
  */
@@ -3558,11 +3587,19 @@ class DevicePad {
      */
     readonly direction: Pango.Direction
     /**
+     * The `GdkDisplay` the `GdkDevice` pertains to.
+     */
+    readonly display: Display
+    /**
      * Whether the device has both right-to-left and left-to-right layouts.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly hasBidiLayouts: boolean
+    /**
+     * Whether the device is represented by a cursor on the screen.
+     */
+    readonly hasCursor: boolean
     /**
      * The current modifier state of the device.
      * 
@@ -3574,11 +3611,28 @@ class DevicePad {
      */
     readonly nAxes: number
     /**
+     * The device name.
+     */
+    readonly name: string
+    /**
      * Whether Num Lock is on.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly numLockState: boolean
+    /**
+     * The maximal number of concurrent touches on a touch device.
+     * 
+     * Will be 0 if the device is not a touch device or if the number
+     * of touches is unknown.
+     */
+    readonly numTouches: number
+    /**
+     * Product ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_product_id].
+     */
+    readonly productId: string
     /**
      * Whether Scroll Lock is on.
      * 
@@ -3590,24 +3644,38 @@ class DevicePad {
      */
     seat: Seat
     /**
+     * Source type for the device.
+     */
+    readonly source: InputSource
+    /**
      * The `GdkDeviceTool` that is currently used with this device.
      */
     readonly tool: DeviceTool
+    /**
+     * Vendor ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_vendor_id].
+     */
+    readonly vendorId: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.DevicePad */
     /**
      * Returns the group the given `feature` and `idx` belong to.
      * 
      * f the feature or index do not exist in `pad,` -1 is returned.
+     * @param feature the feature type to get the group from
+     * @param featureIdx the index of the feature to get the group from
      */
     getFeatureGroup(feature: DevicePadFeature, featureIdx: number): number
     /**
      * Returns the number of modes that `group` may have.
+     * @param groupIdx group to get the number of available modes from
      */
     getGroupNModes(groupIdx: number): number
     /**
      * Returns the number of features a tablet pad has.
+     * @param feature a pad feature
      */
     getNFeatures(feature: DevicePadFeature): number
     /**
@@ -3772,6 +3840,10 @@ class DevicePad {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3782,6 +3854,12 @@ class DevicePad {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3805,6 +3883,7 @@ class DevicePad {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3824,11 +3903,14 @@ class DevicePad {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3836,6 +3918,8 @@ class DevicePad {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3853,6 +3937,7 @@ class DevicePad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3898,6 +3983,7 @@ class DevicePad {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3941,15 +4027,20 @@ class DevicePad {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3990,6 +4081,7 @@ class DevicePad {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4024,6 +4116,7 @@ class DevicePad {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Device */
@@ -4043,6 +4136,7 @@ class DevicePad {
     emit(sigName: "changed"): void
     /**
      * Emitted on pen/eraser devices whenever tools enter or leave proximity.
+     * @param tool The new current tool
      */
     connect(sigName: "tool-changed", callback: ((tool: DeviceTool) => void)): number
     on(sigName: "tool-changed", callback: (tool: DeviceTool) => void, after?: boolean): NodeJS.EventEmitter
@@ -4078,6 +4172,7 @@ class DevicePad {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4094,11 +4189,21 @@ class DevicePad {
     on(sigName: "notify::direction", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::direction", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::direction", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::has-bidi-layouts", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-bidi-layouts", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::has-bidi-layouts", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::has-bidi-layouts", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::has-bidi-layouts", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::has-cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::has-cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::has-cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::has-cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::modifier-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modifier-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::modifier-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4109,11 +4214,26 @@ class DevicePad {
     on(sigName: "notify::n-axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::n-axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::n-axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::num-lock-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::num-lock-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::num-lock-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::num-lock-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::num-lock-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::num-touches", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-touches", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::num-touches", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::num-touches", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::num-touches", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::product-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::product-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::product-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::product-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::product-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::scroll-lock-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scroll-lock-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::scroll-lock-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4124,11 +4244,21 @@ class DevicePad {
     on(sigName: "notify::seat", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::seat", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::seat", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::tool", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tool", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::tool", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::tool", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::tool", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::vendor-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vendor-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::vendor-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::vendor-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::vendor-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4150,6 +4280,14 @@ class DragSurface {
      */
     cursor: Cursor
     /**
+     * The `GdkDisplay` connection of the surface.
+     */
+    readonly display: Display
+    /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frameClock: FrameClock
+    /**
      * The height of the surface, in pixels.
      */
     readonly height: number
@@ -4166,10 +4304,12 @@ class DragSurface {
      */
     readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.DragSurface */
     /**
      * Present `drag_surface`.
+     * @param width the unconstrained drag_surface width to layout
+     * @param height the unconstrained drag_surface height to layout
      */
     present(width: number, height: number): boolean
     /* Methods of Gdk-4.0.Gdk.Surface */
@@ -4209,6 +4349,9 @@ class DragSurface {
      * This function always returns a valid pointer, but it will return a
      * pointer to a “nil” surface if `other` is already in an error state
      * or any other error occurs.
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     createSimilarSurface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -4247,6 +4390,7 @@ class DragSurface {
      * specified surface, and it is using the cursor for its parent surface.
      * 
      * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
+     * @param device a pointer `GdkDevice`
      */
     getDeviceCursor(device: Device): Cursor | null
     /**
@@ -4254,6 +4398,7 @@ class DragSurface {
      * 
      * The position is given in coordinates relative to the upper
      * left corner of `surface`.
+     * @param device pointer `GdkDevice` to query to
      */
     getDevicePosition(device: Device): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* mask */ ModifierType | null ]
     /**
@@ -4338,6 +4483,7 @@ class DragSurface {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param cursor a `GdkCursor`
      */
     setCursor(cursor?: Cursor | null): void
     /**
@@ -4348,6 +4494,8 @@ class DragSurface {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param device a pointer `GdkDevice`
+     * @param cursor a `GdkCursor`
      */
     setDeviceCursor(device: Device, cursor: Cursor): void
     /**
@@ -4365,6 +4513,7 @@ class DragSurface {
      * 
      * Use [method`Gdk`.Display.supports_input_shapes] to find out if
      * a particular backend supports input regions.
+     * @param region region of surface to be reactive
      */
     setInputRegion(region: cairo.Region): void
     /**
@@ -4383,6 +4532,7 @@ class DragSurface {
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
      * [vfunc`Gtk`.Widget.css_changed] handler.
+     * @param region a region, or %NULL to make the entire   surface opaque
      */
     setOpaqueRegion(region?: cairo.Region | null): void
     /**
@@ -4390,6 +4540,9 @@ class DragSurface {
      * 
      * Note that this only works if `to` and `from` are popups or
      * transient-for to the same toplevel (directly or indirectly).
+     * @param to the target surface
+     * @param x coordinates to translate
+     * @param y coordinates to translate
      */
     translateCoordinates(to: Surface, x: number, y: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -4427,6 +4580,10 @@ class DragSurface {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4437,6 +4594,12 @@ class DragSurface {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4460,6 +4623,7 @@ class DragSurface {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4479,11 +4643,14 @@ class DragSurface {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4491,6 +4658,8 @@ class DragSurface {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4508,6 +4677,7 @@ class DragSurface {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4553,6 +4723,7 @@ class DragSurface {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4596,15 +4767,20 @@ class DragSurface {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4645,6 +4821,7 @@ class DragSurface {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4679,11 +4856,13 @@ class DragSurface {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Surface */
     /**
      * Emitted when `surface` starts being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "enter-monitor", callback: ((monitor: Monitor) => void)): number
     on(sigName: "enter-monitor", callback: (monitor: Monitor) => void, after?: boolean): NodeJS.EventEmitter
@@ -4692,6 +4871,7 @@ class DragSurface {
     emit(sigName: "enter-monitor", monitor: Monitor): void
     /**
      * Emitted when GDK receives an input event for `surface`.
+     * @param event an input event
      */
     connect(sigName: "event", callback: ((event: Event) => boolean)): number
     on(sigName: "event", callback: (event: Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -4704,6 +4884,8 @@ class DragSurface {
      * 
      * Surface size is reported in ”application pixels”, not
      * ”device pixels” (see gdk_surface_get_scale_factor()).
+     * @param width the current width
+     * @param height the current height
      */
     connect(sigName: "layout", callback: ((width: number, height: number) => void)): number
     on(sigName: "layout", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4712,6 +4894,7 @@ class DragSurface {
     emit(sigName: "layout", width: number, height: number): void
     /**
      * Emitted when `surface` stops being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "leave-monitor", callback: ((monitor: Monitor) => void)): number
     on(sigName: "leave-monitor", callback: (monitor: Monitor) => void, after?: boolean): NodeJS.EventEmitter
@@ -4720,6 +4903,7 @@ class DragSurface {
     emit(sigName: "leave-monitor", monitor: Monitor): void
     /**
      * Emitted when part of the surface needs to be redrawn.
+     * @param region the region that needs to be redrawn
      */
     connect(sigName: "render", callback: ((region: cairo.Region) => boolean)): number
     on(sigName: "render", callback: (region: cairo.Region) => void, after?: boolean): NodeJS.EventEmitter
@@ -4755,6 +4939,7 @@ class DragSurface {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4766,6 +4951,16 @@ class DragSurface {
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::frame-clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::frame-clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4811,6 +5006,10 @@ class Paintable {
      * and `specified_height` are known, but it is useful to call this
      * function in GtkWidget:measure implementations to compute the
      * other dimension when only one dimension is given.
+     * @param specifiedWidth the width `paintable` could be drawn into or   0.0 if unknown
+     * @param specifiedHeight the height `paintable` could be drawn into or   0.0 if unknown
+     * @param defaultWidth the width `paintable` would be drawn into if   no other constraints were given
+     * @param defaultHeight the height `paintable` would be drawn into if   no other constraints were given
      */
     computeConcreteSize(specifiedWidth: number, specifiedHeight: number, defaultWidth: number, defaultHeight: number): [ /* concreteWidth */ number, /* concreteHeight */ number ]
     /**
@@ -4908,6 +5107,9 @@ class Paintable {
      * The paintable is drawn at the current (0,0) offset of the `snapshot`.
      * If `width` and `height` are not larger than zero, this function will
      * do nothing.
+     * @param snapshot a `GdkSnapshot` to snapshot to
+     * @param width width to snapshot in
+     * @param height height to snapshot in
      */
     snapshot(snapshot: Snapshot, width: number, height: number): void
     /* Signals of Gdk-4.0.Gdk.Paintable */
@@ -4948,6 +5150,8 @@ class Paintable {
      * [vfunc`Gdk`.Paintable.get_current_image] virtual function
      * when the paintable is in an incomplete state (like a
      * [class`Gtk`.MediaStream] before receiving the first frame).
+     * @param intrinsicWidth The intrinsic width to report. Can be 0 for no width.
+     * @param intrinsicHeight The intrinsic height to report. Can be 0 for no height.
      */
     static newEmpty(intrinsicWidth: number, intrinsicHeight: number): Paintable
 }
@@ -4963,11 +5167,28 @@ interface Popup_ConstructProps extends Surface_ConstructProps {
     parent?: Surface
 }
 class Popup {
+    /* Properties of Gdk-4.0.Gdk.Popup */
+    /**
+     * Whether to hide on outside clicks.
+     */
+    readonly autohide: boolean
+    /**
+     * The parent surface.
+     */
+    readonly parent: Surface
     /* Properties of Gdk-4.0.Gdk.Surface */
     /**
      * The mouse pointer for the `GdkSurface`.
      */
     cursor: Cursor
+    /**
+     * The `GdkDisplay` connection of the surface.
+     */
+    readonly display: Display
+    /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frameClock: FrameClock
     /**
      * The height of the surface, in pixels.
      */
@@ -4985,7 +5206,7 @@ class Popup {
      */
     readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Popup */
     /**
      * Returns whether this popup is set to hide on outside clicks.
@@ -5033,6 +5254,9 @@ class Popup {
      * Presenting may fail, for example if the `popup` is set to autohide
      * and is immediately hidden upon being presented. If presenting failed,
      * the [signal`Gdk`.Surface::layout] signal will not me emitted.
+     * @param width the unconstrained popup width to layout
+     * @param height the unconstrained popup height to layout
+     * @param layout the `GdkPopupLayout` object used to layout
      */
     present(width: number, height: number, layout: PopupLayout): boolean
     /* Methods of Gdk-4.0.Gdk.Surface */
@@ -5072,6 +5296,9 @@ class Popup {
      * This function always returns a valid pointer, but it will return a
      * pointer to a “nil” surface if `other` is already in an error state
      * or any other error occurs.
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     createSimilarSurface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -5110,6 +5337,7 @@ class Popup {
      * specified surface, and it is using the cursor for its parent surface.
      * 
      * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
+     * @param device a pointer `GdkDevice`
      */
     getDeviceCursor(device: Device): Cursor | null
     /**
@@ -5117,6 +5345,7 @@ class Popup {
      * 
      * The position is given in coordinates relative to the upper
      * left corner of `surface`.
+     * @param device pointer `GdkDevice` to query to
      */
     getDevicePosition(device: Device): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* mask */ ModifierType | null ]
     /**
@@ -5201,6 +5430,7 @@ class Popup {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param cursor a `GdkCursor`
      */
     setCursor(cursor?: Cursor | null): void
     /**
@@ -5211,6 +5441,8 @@ class Popup {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param device a pointer `GdkDevice`
+     * @param cursor a `GdkCursor`
      */
     setDeviceCursor(device: Device, cursor: Cursor): void
     /**
@@ -5228,6 +5460,7 @@ class Popup {
      * 
      * Use [method`Gdk`.Display.supports_input_shapes] to find out if
      * a particular backend supports input regions.
+     * @param region region of surface to be reactive
      */
     setInputRegion(region: cairo.Region): void
     /**
@@ -5246,6 +5479,7 @@ class Popup {
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
      * [vfunc`Gtk`.Widget.css_changed] handler.
+     * @param region a region, or %NULL to make the entire   surface opaque
      */
     setOpaqueRegion(region?: cairo.Region | null): void
     /**
@@ -5253,6 +5487,9 @@ class Popup {
      * 
      * Note that this only works if `to` and `from` are popups or
      * transient-for to the same toplevel (directly or indirectly).
+     * @param to the target surface
+     * @param x coordinates to translate
+     * @param y coordinates to translate
      */
     translateCoordinates(to: Surface, x: number, y: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -5290,6 +5527,10 @@ class Popup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5300,6 +5541,12 @@ class Popup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5323,6 +5570,7 @@ class Popup {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5342,11 +5590,14 @@ class Popup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5354,6 +5605,8 @@ class Popup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5371,6 +5624,7 @@ class Popup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5416,6 +5670,7 @@ class Popup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5459,15 +5714,20 @@ class Popup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5508,6 +5768,7 @@ class Popup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5542,11 +5803,13 @@ class Popup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Surface */
     /**
      * Emitted when `surface` starts being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "enter-monitor", callback: ((monitor: Monitor) => void)): number
     on(sigName: "enter-monitor", callback: (monitor: Monitor) => void, after?: boolean): NodeJS.EventEmitter
@@ -5555,6 +5818,7 @@ class Popup {
     emit(sigName: "enter-monitor", monitor: Monitor): void
     /**
      * Emitted when GDK receives an input event for `surface`.
+     * @param event an input event
      */
     connect(sigName: "event", callback: ((event: Event) => boolean)): number
     on(sigName: "event", callback: (event: Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -5567,6 +5831,8 @@ class Popup {
      * 
      * Surface size is reported in ”application pixels”, not
      * ”device pixels” (see gdk_surface_get_scale_factor()).
+     * @param width the current width
+     * @param height the current height
      */
     connect(sigName: "layout", callback: ((width: number, height: number) => void)): number
     on(sigName: "layout", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5575,6 +5841,7 @@ class Popup {
     emit(sigName: "layout", width: number, height: number): void
     /**
      * Emitted when `surface` stops being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "leave-monitor", callback: ((monitor: Monitor) => void)): number
     on(sigName: "leave-monitor", callback: (monitor: Monitor) => void, after?: boolean): NodeJS.EventEmitter
@@ -5583,6 +5850,7 @@ class Popup {
     emit(sigName: "leave-monitor", monitor: Monitor): void
     /**
      * Emitted when part of the surface needs to be redrawn.
+     * @param region the region that needs to be redrawn
      */
     connect(sigName: "render", callback: ((region: cairo.Region) => boolean)): number
     on(sigName: "render", callback: (region: cairo.Region) => void, after?: boolean): NodeJS.EventEmitter
@@ -5618,17 +5886,38 @@ class Popup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::autohide", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::autohide", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::autohide", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::autohide", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::autohide", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::parent", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::frame-clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::frame-clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5750,6 +6039,14 @@ class Toplevel {
      */
     cursor: Cursor
     /**
+     * The `GdkDisplay` connection of the surface.
+     */
+    readonly display: Display
+    /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frameClock: FrameClock
+    /**
      * The height of the surface, in pixels.
      */
     readonly height: number
@@ -5766,18 +6063,29 @@ class Toplevel {
      */
     readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Toplevel */
     /**
      * Begins an interactive move operation.
      * 
      * You might use this function to implement draggable titlebars.
+     * @param device the device used for the operation
+     * @param button the button being used to drag, or 0 for a keyboard-initiated drag
+     * @param x surface X coordinate of mouse click that began the drag
+     * @param y surface Y coordinate of mouse click that began the drag
+     * @param timestamp timestamp of mouse click that began the drag (use   [method`Gdk`.Event.get_time])
      */
     beginMove(device: Device, button: number, x: number, y: number, timestamp: number): void
     /**
      * Begins an interactive resize operation.
      * 
      * You might use this function to implement a “window resize grip.”
+     * @param edge the edge or corner from which the drag is started
+     * @param device the device used for the operation
+     * @param button the button being used to drag, or 0 for a keyboard-initiated drag
+     * @param x surface X coordinate of mouse click that began the drag
+     * @param y surface Y coordinate of mouse click that began the drag
+     * @param timestamp timestamp of mouse click that began the drag (use   [method`Gdk`.Event.get_time])
      */
     beginResize(edge: SurfaceEdge, device: Device | null, button: number, x: number, y: number, timestamp: number): void
     /**
@@ -5785,6 +6093,7 @@ class Toplevel {
      * 
      * In most cases, [method`Gtk`.Window.present_with_time] should be
      * used on a [class`Gtk`.Window], rather than calling this function.
+     * @param timestamp timestamp of the event triggering the surface focus
      */
     focus(timestamp: number): void
     /**
@@ -5814,6 +6123,7 @@ class Toplevel {
      * 
      * The caller can be notified whenever the request is granted or revoked
      * by listening to the [property`Gdk`.Toplevel:shortcuts-inhibited] property.
+     * @param event the `GdkEvent` that is triggering the inhibit   request, or %NULL if none is available
      */
     inhibitSystemShortcuts(event?: Event | null): void
     /**
@@ -5840,6 +6150,7 @@ class Toplevel {
      * 
      * Presenting is asynchronous and the specified layout parameters are not
      * guaranteed to be respected.
+     * @param layout the `GdkToplevelLayout` object used to layout
      */
     present(layout: ToplevelLayout): void
     /**
@@ -5855,6 +6166,7 @@ class Toplevel {
      * Setting `decorated` to %FALSE hints the desktop environment
      * that the surface has its own, client-side decorations and
      * does not need to have window decorations added.
+     * @param decorated %TRUE to request decorations
      */
     setDecorated(decorated: boolean): void
     /**
@@ -5862,6 +6174,7 @@ class Toplevel {
      * 
      * Setting `deletable` to %TRUE hints the desktop environment
      * that it should offer the user a way to close the surface.
+     * @param deletable %TRUE to request a delete button
      */
     setDeletable(deletable: boolean): void
     /**
@@ -5874,6 +6187,7 @@ class Toplevel {
      * image quality.
      * 
      * Note that some platforms don't support surface icons.
+     * @param surfaces    A list of textures to use as icon, of different sizes
      */
     setIconList(surfaces: Texture[]): void
     /**
@@ -5886,6 +6200,7 @@ class Toplevel {
      * 
      * You should only use this on surfaces for which you have
      * previously called [method`Gdk`.Toplevel.set_transient_for].
+     * @param modal %TRUE if the surface is modal, %FALSE otherwise.
      */
     setModal(modal: boolean): void
     /**
@@ -5894,6 +6209,7 @@ class Toplevel {
      * When using GTK, typically you should use
      * [method`Gtk`.Window.set_startup_id] instead of this
      * low-level function.
+     * @param startupId a string with startup-notification identifier
      */
     setStartupId(startupId: string): void
     /**
@@ -5901,6 +6217,7 @@ class Toplevel {
      * 
      * The title maybe be displayed in the titlebar,
      * in lists of windows, etc.
+     * @param title title of `surface`
      */
     setTitle(title: string): void
     /**
@@ -5913,6 +6230,7 @@ class Toplevel {
      * 
      * See [method`Gtk`.Window.set_transient_for] if you’re using
      * [class`Gtk`.Window] or [class`Gtk`.Dialog].
+     * @param parent another toplevel `GdkSurface`
      */
     setTransientFor(parent: Surface): void
     /**
@@ -5922,6 +6240,7 @@ class Toplevel {
      * on traditional windows managed by the window manager. This is useful
      * for windows using client-side decorations, activating it with a
      * right-click on the window decorations.
+     * @param event a `GdkEvent` to show the menu for
      */
     showWindowMenu(event: Event): boolean
     /**
@@ -5967,6 +6286,9 @@ class Toplevel {
      * This function always returns a valid pointer, but it will return a
      * pointer to a “nil” surface if `other` is already in an error state
      * or any other error occurs.
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     createSimilarSurface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -6005,6 +6327,7 @@ class Toplevel {
      * specified surface, and it is using the cursor for its parent surface.
      * 
      * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
+     * @param device a pointer `GdkDevice`
      */
     getDeviceCursor(device: Device): Cursor | null
     /**
@@ -6012,6 +6335,7 @@ class Toplevel {
      * 
      * The position is given in coordinates relative to the upper
      * left corner of `surface`.
+     * @param device pointer `GdkDevice` to query to
      */
     getDevicePosition(device: Device): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* mask */ ModifierType | null ]
     /**
@@ -6096,6 +6420,7 @@ class Toplevel {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param cursor a `GdkCursor`
      */
     setCursor(cursor?: Cursor | null): void
     /**
@@ -6106,6 +6431,8 @@ class Toplevel {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param device a pointer `GdkDevice`
+     * @param cursor a `GdkCursor`
      */
     setDeviceCursor(device: Device, cursor: Cursor): void
     /**
@@ -6123,6 +6450,7 @@ class Toplevel {
      * 
      * Use [method`Gdk`.Display.supports_input_shapes] to find out if
      * a particular backend supports input regions.
+     * @param region region of surface to be reactive
      */
     setInputRegion(region: cairo.Region): void
     /**
@@ -6141,6 +6469,7 @@ class Toplevel {
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
      * [vfunc`Gtk`.Widget.css_changed] handler.
+     * @param region a region, or %NULL to make the entire   surface opaque
      */
     setOpaqueRegion(region?: cairo.Region | null): void
     /**
@@ -6148,6 +6477,9 @@ class Toplevel {
      * 
      * Note that this only works if `to` and `from` are popups or
      * transient-for to the same toplevel (directly or indirectly).
+     * @param to the target surface
+     * @param x coordinates to translate
+     * @param y coordinates to translate
      */
     translateCoordinates(to: Surface, x: number, y: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -6185,6 +6517,10 @@ class Toplevel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6195,6 +6531,12 @@ class Toplevel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6218,6 +6560,7 @@ class Toplevel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6237,11 +6580,14 @@ class Toplevel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6249,6 +6595,8 @@ class Toplevel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6266,6 +6614,7 @@ class Toplevel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6311,6 +6660,7 @@ class Toplevel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6354,15 +6704,20 @@ class Toplevel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6403,6 +6758,7 @@ class Toplevel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6437,6 +6793,7 @@ class Toplevel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Toplevel */
@@ -6462,6 +6819,7 @@ class Toplevel {
     /* Signals of Gdk-4.0.Gdk.Surface */
     /**
      * Emitted when `surface` starts being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "enter-monitor", callback: ((monitor: Monitor) => void)): number
     on(sigName: "enter-monitor", callback: (monitor: Monitor) => void, after?: boolean): NodeJS.EventEmitter
@@ -6470,6 +6828,7 @@ class Toplevel {
     emit(sigName: "enter-monitor", monitor: Monitor): void
     /**
      * Emitted when GDK receives an input event for `surface`.
+     * @param event an input event
      */
     connect(sigName: "event", callback: ((event: Event) => boolean)): number
     on(sigName: "event", callback: (event: Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -6482,6 +6841,8 @@ class Toplevel {
      * 
      * Surface size is reported in ”application pixels”, not
      * ”device pixels” (see gdk_surface_get_scale_factor()).
+     * @param width the current width
+     * @param height the current height
      */
     connect(sigName: "layout", callback: ((width: number, height: number) => void)): number
     on(sigName: "layout", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -6490,6 +6851,7 @@ class Toplevel {
     emit(sigName: "layout", width: number, height: number): void
     /**
      * Emitted when `surface` stops being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "leave-monitor", callback: ((monitor: Monitor) => void)): number
     on(sigName: "leave-monitor", callback: (monitor: Monitor) => void, after?: boolean): NodeJS.EventEmitter
@@ -6498,6 +6860,7 @@ class Toplevel {
     emit(sigName: "leave-monitor", monitor: Monitor): void
     /**
      * Emitted when part of the surface needs to be redrawn.
+     * @param region the region that needs to be redrawn
      */
     connect(sigName: "render", callback: ((region: cairo.Region) => boolean)): number
     on(sigName: "render", callback: (region: cairo.Region) => void, after?: boolean): NodeJS.EventEmitter
@@ -6533,6 +6896,7 @@ class Toplevel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6594,6 +6958,16 @@ class Toplevel {
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::frame-clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::frame-clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -6634,10 +7008,15 @@ interface AppLaunchContext_ConstructProps extends Gio.AppLaunchContext_Construct
     display?: Display
 }
 class AppLaunchContext {
+    /* Properties of Gdk-4.0.Gdk.AppLaunchContext */
+    /**
+     * The display that the `GdkAppLaunchContext` is on.
+     */
+    readonly display: Display
     /* Fields of Gio-2.0.Gio.AppLaunchContext */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.AppLaunchContext */
     /**
      * Gets the `GdkDisplay` that `context` is for.
@@ -6657,6 +7036,7 @@ class AppLaunchContext {
      * When the workspace is not specified or `desktop` is set to -1,
      * it is up to the window manager to pick one, typically it will
      * be the current workspace.
+     * @param desktop the number of a workspace, or -1
      */
     setDesktop(desktop: number): void
     /**
@@ -6667,6 +7047,7 @@ class AppLaunchContext {
      * notification.
      * 
      * See also [method`Gdk`.AppLaunchContext.set_icon_name].
+     * @param icon a `GIcon`
      */
     setIcon(icon?: Gio.Icon | null): void
     /**
@@ -6679,6 +7060,7 @@ class AppLaunchContext {
      * If neither `icon` or `icon_name` is set, the icon is taken from either
      * the file that is passed to launched application or from the `GAppInfo`
      * for the launched application itself.
+     * @param iconName an icon name
      */
     setIconName(iconName?: string | null): void
     /**
@@ -6691,6 +7073,7 @@ class AppLaunchContext {
      * focus to the newly launched application when the user is busy
      * typing in another window. This is also known as 'focus stealing
      * prevention'.
+     * @param timestamp a timestamp
      */
     setTimestamp(timestamp: number): void
     /* Methods of Gio-2.0.Gio.AppLaunchContext */
@@ -6698,6 +7081,8 @@ class AppLaunchContext {
      * Gets the display string for the `context`. This is used to ensure new
      * applications are started on the same display as the launching
      * application, by setting the `DISPLAY` environment variable.
+     * @param info a #GAppInfo
+     * @param files a #GList of #GFile objects
      */
     getDisplay(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
@@ -6713,21 +7098,27 @@ class AppLaunchContext {
      * 
      * Startup notification IDs are defined in the
      * [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * @param info a #GAppInfo
+     * @param files a #GList of of #GFile objects
      */
     getStartupNotifyId(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
      * Called when an application has failed to launch, so that it can cancel
      * the application startup notification started in g_app_launch_context_get_startup_notify_id().
+     * @param startupNotifyId the startup notification id that was returned by g_app_launch_context_get_startup_notify_id().
      */
     launchFailed(startupNotifyId: string): void
     /**
      * Arranges for `variable` to be set to `value` in the child's
      * environment when `context` is used to launch an application.
+     * @param variable the environment variable to set
+     * @param value the value for to set the variable to.
      */
     setenv(variable: string, value: string): void
     /**
      * Arranges for `variable` to be unset in the child's environment
      * when `context` is used to launch an application.
+     * @param variable the environment variable to remove
      */
     unsetenv(variable: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6765,6 +7156,10 @@ class AppLaunchContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6775,6 +7170,12 @@ class AppLaunchContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6798,6 +7199,7 @@ class AppLaunchContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6817,11 +7219,14 @@ class AppLaunchContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6829,6 +7234,8 @@ class AppLaunchContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6846,6 +7253,7 @@ class AppLaunchContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6891,6 +7299,7 @@ class AppLaunchContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6934,15 +7343,20 @@ class AppLaunchContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6983,6 +7397,7 @@ class AppLaunchContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7017,6 +7432,7 @@ class AppLaunchContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gio-2.0.Gio.AppLaunchContext */
@@ -7024,6 +7440,7 @@ class AppLaunchContext {
      * The #GAppLaunchContext::launch-failed signal is emitted when a #GAppInfo launch
      * fails. The startup notification id is provided, so that the launcher
      * can cancel the startup notification.
+     * @param startupNotifyId the startup notification id for the failed launch
      */
     connect(sigName: "launch-failed", callback: ((startupNotifyId: string) => void)): number
     on(sigName: "launch-failed", callback: (startupNotifyId: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -7045,6 +7462,8 @@ class AppLaunchContext {
      * 
      * It is guaranteed that this signal is followed by either a #GAppLaunchContext::launched or
      * #GAppLaunchContext::launch-failed signal.
+     * @param info the #GAppInfo that is about to be launched
+     * @param platformData additional platform-specific data for this launch
      */
     connect(sigName: "launch-started", callback: ((info: Gio.AppInfo, platformData?: GLib.Variant | null) => void)): number
     on(sigName: "launch-started", callback: (info: Gio.AppInfo, platformData?: GLib.Variant | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -7061,6 +7480,8 @@ class AppLaunchContext {
      * Since 2.72 the `pid` may be 0 if the process id wasn't known (for
      * example if the process was launched via D-Bus). The `pid` may not be
      * set at all in subsequent releases.
+     * @param info the #GAppInfo that was just launched
+     * @param platformData additional platform-specific data for this launch
      */
     connect(sigName: "launched", callback: ((info: Gio.AppInfo, platformData: GLib.Variant) => void)): number
     on(sigName: "launched", callback: (info: Gio.AppInfo, platformData: GLib.Variant) => void, after?: boolean): NodeJS.EventEmitter
@@ -7096,12 +7517,18 @@ class AppLaunchContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7130,6 +7557,7 @@ class ButtonEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -7137,6 +7565,7 @@ class ButtonEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -7144,6 +7573,7 @@ class ButtonEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -7159,6 +7589,7 @@ class ButtonEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -7259,8 +7690,17 @@ class ButtonEvent {
 interface CairoContext_ConstructProps extends DrawContext_ConstructProps {
 }
 class CairoContext {
+    /* Properties of Gdk-4.0.Gdk.DrawContext */
+    /**
+     * The `GdkDisplay` used to create the `GdkDrawContext`.
+     */
+    readonly display: Display
+    /**
+     * The `GdkSurface` the context is bound to.
+     */
+    readonly surface: Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.CairoContext */
     /**
      * Retrieves a Cairo context to be used to draw on the `GdkSurface`
@@ -7299,6 +7739,7 @@ class CairoContext {
      * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
      * use of [class`Gsk`.Renderer]s, so application code does not need to call
      * these functions explicitly.
+     * @param region minimum region that should be drawn
      */
     beginFrame(region: cairo.Region): void
     /**
@@ -7374,6 +7815,10 @@ class CairoContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7384,6 +7829,12 @@ class CairoContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7407,6 +7858,7 @@ class CairoContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7426,11 +7878,14 @@ class CairoContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7438,6 +7893,8 @@ class CairoContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7455,6 +7912,7 @@ class CairoContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7500,6 +7958,7 @@ class CairoContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7543,15 +8002,20 @@ class CairoContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7592,6 +8056,7 @@ class CairoContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7626,6 +8091,7 @@ class CairoContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7657,12 +8123,23 @@ class CairoContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7690,6 +8167,10 @@ class Clipboard {
      */
     readonly content: ContentProvider
     /**
+     * The `GdkDisplay` that the clipboard belongs to.
+     */
+    readonly display: Display
+    /**
      * The possible formats that the clipboard can provide its data in.
      */
     readonly formats: ContentFormats
@@ -7698,7 +8179,7 @@ class Clipboard {
      */
     readonly local: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Clipboard */
     /**
      * Returns the `GdkContentProvider` currently set on `clipboard`.
@@ -7734,12 +8215,17 @@ class Clipboard {
      * 
      * The clipboard will choose the most suitable mime type from the given list
      * to fulfill the request, preferring the ones listed first.
+     * @param mimeTypes a %NULL-terminated array of mime types to choose from
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional `GCancellable` object
+     * @param callback callback to call when the request is satisfied
      */
     readAsync(mimeTypes: string[], ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous clipboard read.
      * 
      * See [method`Gdk`.Clipboard.read_async].
+     * @param result a `GAsyncResult`
      */
     readFinish(result: Gio.AsyncResult): [ /* returnType */ Gio.InputStream | null, /* outMimeType */ string | null ]
     /**
@@ -7751,12 +8237,15 @@ class Clipboard {
      * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
      * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
      * need more control over the operation.
+     * @param cancellable optional `GCancellable` object
+     * @param callback callback to call when the request is satisfied
      */
     readTextAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous clipboard read.
      * 
      * See [method`Gdk`.Clipboard.read_text_async].
+     * @param result a `GAsyncResult`
      */
     readTextFinish(result: Gio.AsyncResult): string | null
     /**
@@ -7768,12 +8257,15 @@ class Clipboard {
      * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
      * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
      * need more control over the operation.
+     * @param cancellable optional `GCancellable` object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     readTextureAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous clipboard read.
      * 
      * See [method`Gdk`.Clipboard.read_texture_async].
+     * @param result a `GAsyncResult`
      */
     readTextureFinish(result: Gio.AsyncResult): Texture | null
     /**
@@ -7786,12 +8278,17 @@ class Clipboard {
      * For local clipboard contents that are available in the given `GType`,
      * the value will be copied directly. Otherwise, GDK will try to use
      * [func`content_deserialize_async]` to convert the clipboard's data.
+     * @param type a `GType` to read
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional `GCancellable` object
+     * @param callback callback to call when the request is satisfied
      */
     readValueAsync(type: GObject.Type, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous clipboard read.
      * 
      * See [method`Gdk`.Clipboard.read_value_async].
+     * @param result a `GAsyncResult`
      */
     readValueFinish(result: Gio.AsyncResult): any
     /**
@@ -7807,10 +8304,12 @@ class Clipboard {
      * If the contents are read by either an external application or the
      * `clipboard'`s read functions, `clipboard` will select the best format to
      * transfer the contents and then request that format from `provider`.
+     * @param provider the new contents of `clipboard`   or %NULL to clear the clipboard
      */
     setContent(provider?: ContentProvider | null): boolean
     /**
      * Sets the `clipboard` to contain the given `value`.
+     * @param value a `GValue` to set
      */
     set(value: any): void
     /**
@@ -7827,12 +8326,16 @@ class Clipboard {
      * 
      * This function is called automatically when a [class`Gtk`.Application] is
      * shut down, so you likely don't need to call it.
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional `GCancellable` object
+     * @param callback callback to call when the request is satisfied
      */
     storeAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous clipboard store.
      * 
      * See [method`Gdk`.Clipboard.store_async].
+     * @param result a `GAsyncResult`
      */
     storeFinish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -7870,6 +8373,10 @@ class Clipboard {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7880,6 +8387,12 @@ class Clipboard {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7903,6 +8416,7 @@ class Clipboard {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7922,11 +8436,14 @@ class Clipboard {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7934,6 +8451,8 @@ class Clipboard {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7951,6 +8470,7 @@ class Clipboard {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7996,6 +8516,7 @@ class Clipboard {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8039,15 +8560,20 @@ class Clipboard {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8088,6 +8614,7 @@ class Clipboard {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8122,6 +8649,7 @@ class Clipboard {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Clipboard */
@@ -8162,6 +8690,7 @@ class Clipboard {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8173,6 +8702,11 @@ class Clipboard {
     on(sigName: "notify::content", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::content", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::content", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::formats", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::formats", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::formats", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -8199,7 +8733,7 @@ interface ContentDeserializer_ConstructProps extends GObject.Object_ConstructPro
 }
 class ContentDeserializer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.ContentDeserializer */
     /**
      * Gets the cancellable for the current operation.
@@ -8245,6 +8779,7 @@ class ContentDeserializer {
      * Indicate that the deserialization has ended with an error.
      * 
      * This function consumes `error`.
+     * @param error a `GError`
      */
     returnError(error: GLib.Error): void
     /**
@@ -8253,6 +8788,8 @@ class ContentDeserializer {
     returnSuccess(): void
     /**
      * Associate data with the current deserialization operation.
+     * @param data data to associate with this operation
+     * @param notify destroy notify for `data`
      */
     setTaskData(data: object | null, notify: GLib.DestroyNotify): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8290,6 +8827,10 @@ class ContentDeserializer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8300,6 +8841,12 @@ class ContentDeserializer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8323,6 +8870,7 @@ class ContentDeserializer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8342,11 +8890,14 @@ class ContentDeserializer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8354,6 +8905,8 @@ class ContentDeserializer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8371,6 +8924,7 @@ class ContentDeserializer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8416,6 +8970,7 @@ class ContentDeserializer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8459,15 +9014,20 @@ class ContentDeserializer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8508,6 +9068,7 @@ class ContentDeserializer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8542,6 +9103,7 @@ class ContentDeserializer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncResult */
@@ -8552,6 +9114,7 @@ class ContentDeserializer {
     /**
      * Checks if `res` has the given `source_tag` (generally a function
      * pointer indicating the function `res` was created by).
+     * @param sourceTag an application-defined tag
      */
     isTagged(sourceTag?: object | null): boolean
     /**
@@ -8596,6 +9159,7 @@ class ContentDeserializer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8627,7 +9191,7 @@ class ContentProvider {
      */
     readonly storableFormats: ContentFormats
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.ContentProvider */
     /**
      * Emits the ::content-changed signal.
@@ -8669,12 +9233,18 @@ class ContentProvider {
      * not supported, `G_IO_ERROR_NOT_SUPPORTED` will be reported.
      * 
      * The given `stream` will not be closed.
+     * @param mimeType the mime type to provide the data in
+     * @param stream the `GOutputStream` to write to
+     * @param ioPriority I/O priority of the request.
+     * @param cancellable optional `GCancellable` object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     writeMimeTypeAsync(mimeType: string, stream: Gio.OutputStream, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous write operation.
      * 
      * See [method`Gdk`.ContentProvider.write_mime_type_async].
+     * @param result a `GAsyncResult`
      */
     writeMimeTypeFinish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8712,6 +9282,10 @@ class ContentProvider {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8722,6 +9296,12 @@ class ContentProvider {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8745,6 +9325,7 @@ class ContentProvider {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8764,11 +9345,14 @@ class ContentProvider {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8776,6 +9360,8 @@ class ContentProvider {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8793,6 +9379,7 @@ class ContentProvider {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8838,6 +9425,7 @@ class ContentProvider {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8881,15 +9469,20 @@ class ContentProvider {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8930,6 +9523,7 @@ class ContentProvider {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8964,6 +9558,7 @@ class ContentProvider {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.ContentProvider */
@@ -9004,6 +9599,7 @@ class ContentProvider {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9040,7 +9636,7 @@ interface ContentSerializer_ConstructProps extends GObject.Object_ConstructProps
 }
 class ContentSerializer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.ContentSerializer */
     /**
      * Gets the cancellable for the current operation.
@@ -9086,6 +9682,7 @@ class ContentSerializer {
      * Indicate that the serialization has ended with an error.
      * 
      * This function consumes `error`.
+     * @param error a `GError`
      */
     returnError(error: GLib.Error): void
     /**
@@ -9094,6 +9691,8 @@ class ContentSerializer {
     returnSuccess(): void
     /**
      * Associate data with the current serialization operation.
+     * @param data data to associate with this operation
+     * @param notify destroy notify for `data`
      */
     setTaskData(data: object | null, notify: GLib.DestroyNotify): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9131,6 +9730,10 @@ class ContentSerializer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9141,6 +9744,12 @@ class ContentSerializer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9164,6 +9773,7 @@ class ContentSerializer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9183,11 +9793,14 @@ class ContentSerializer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9195,6 +9808,8 @@ class ContentSerializer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9212,6 +9827,7 @@ class ContentSerializer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9257,6 +9873,7 @@ class ContentSerializer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9300,15 +9917,20 @@ class ContentSerializer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9349,6 +9971,7 @@ class ContentSerializer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9383,6 +10006,7 @@ class ContentSerializer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncResult */
@@ -9393,6 +10017,7 @@ class ContentSerializer {
     /**
      * Checks if `res` has the given `source_tag` (generally a function
      * pointer indicating the function `res` was created by).
+     * @param sourceTag an application-defined tag
      */
     isTagged(sourceTag?: object | null): boolean
     /**
@@ -9437,6 +10062,7 @@ class ContentSerializer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9479,6 +10105,7 @@ class CrossingEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -9486,6 +10113,7 @@ class CrossingEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -9493,6 +10121,7 @@ class CrossingEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -9508,6 +10137,7 @@ class CrossingEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -9633,8 +10263,33 @@ interface Cursor_ConstructProps extends GObject.Object_ConstructProps {
     texture?: Texture
 }
 class Cursor {
+    /* Properties of Gdk-4.0.Gdk.Cursor */
+    /**
+     * Cursor to fall back to if this cursor cannot be displayed.
+     */
+    readonly fallback: Cursor
+    /**
+     * X position of the cursor hotspot in the cursor image.
+     */
+    readonly hotspotX: number
+    /**
+     * Y position of the cursor hotspot in the cursor image.
+     */
+    readonly hotspotY: number
+    /**
+     * Name of this this cursor.
+     * 
+     * The name will be %NULL if the cursor was created from a texture.
+     */
+    readonly name: string
+    /**
+     * The texture displayed by this cursor.
+     * 
+     * The texture will be %NULL if the cursor was created from a name.
+     */
+    readonly texture: Texture
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Cursor */
     /**
      * Returns the fallback for this `cursor`.
@@ -9713,6 +10368,10 @@ class Cursor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9723,6 +10382,12 @@ class Cursor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9746,6 +10411,7 @@ class Cursor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9765,11 +10431,14 @@ class Cursor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9777,6 +10446,8 @@ class Cursor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9794,6 +10465,7 @@ class Cursor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9839,6 +10511,7 @@ class Cursor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9882,15 +10555,20 @@ class Cursor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9931,6 +10609,7 @@ class Cursor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9965,6 +10644,7 @@ class Cursor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9996,12 +10676,38 @@ class Cursor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::fallback", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::fallback", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::fallback", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::fallback", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::fallback", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::hotspot-x", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hotspot-x", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::hotspot-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::hotspot-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::hotspot-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::hotspot-y", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hotspot-y", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::hotspot-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::hotspot-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::hotspot-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::texture", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::texture", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::texture", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::texture", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::texture", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -10033,6 +10739,7 @@ class DNDEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -10040,6 +10747,7 @@ class DNDEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -10047,6 +10755,7 @@ class DNDEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -10062,6 +10771,7 @@ class DNDEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -10170,6 +10880,7 @@ class DeleteEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -10177,6 +10888,7 @@ class DeleteEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -10184,6 +10896,7 @@ class DeleteEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -10199,6 +10912,7 @@ class DeleteEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -10353,11 +11067,19 @@ class Device {
      */
     readonly direction: Pango.Direction
     /**
+     * The `GdkDisplay` the `GdkDevice` pertains to.
+     */
+    readonly display: Display
+    /**
      * Whether the device has both right-to-left and left-to-right layouts.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly hasBidiLayouts: boolean
+    /**
+     * Whether the device is represented by a cursor on the screen.
+     */
+    readonly hasCursor: boolean
     /**
      * The current modifier state of the device.
      * 
@@ -10369,11 +11091,28 @@ class Device {
      */
     readonly nAxes: number
     /**
+     * The device name.
+     */
+    readonly name: string
+    /**
      * Whether Num Lock is on.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly numLockState: boolean
+    /**
+     * The maximal number of concurrent touches on a touch device.
+     * 
+     * Will be 0 if the device is not a touch device or if the number
+     * of touches is unknown.
+     */
+    readonly numTouches: number
+    /**
+     * Product ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_product_id].
+     */
+    readonly productId: string
     /**
      * Whether Scroll Lock is on.
      * 
@@ -10385,11 +11124,21 @@ class Device {
      */
     seat: Seat
     /**
+     * Source type for the device.
+     */
+    readonly source: InputSource
+    /**
      * The `GdkDeviceTool` that is currently used with this device.
      */
     readonly tool: DeviceTool
+    /**
+     * Vendor ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_vendor_id].
+     */
+    readonly vendorId: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Device */
     /**
      * Retrieves whether the Caps Lock modifier of the keyboard is locked.
@@ -10544,6 +11293,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10554,6 +11307,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10577,6 +11336,7 @@ class Device {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10596,11 +11356,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10608,6 +11371,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10625,6 +11390,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10670,6 +11436,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10713,15 +11480,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10762,6 +11534,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10796,6 +11569,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Device */
@@ -10815,6 +11589,7 @@ class Device {
     emit(sigName: "changed"): void
     /**
      * Emitted on pen/eraser devices whenever tools enter or leave proximity.
+     * @param tool The new current tool
      */
     connect(sigName: "tool-changed", callback: ((tool: DeviceTool) => void)): number
     on(sigName: "tool-changed", callback: (tool: DeviceTool) => void, after?: boolean): NodeJS.EventEmitter
@@ -10850,6 +11625,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10866,11 +11642,21 @@ class Device {
     on(sigName: "notify::direction", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::direction", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::direction", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::has-bidi-layouts", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-bidi-layouts", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::has-bidi-layouts", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::has-bidi-layouts", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::has-bidi-layouts", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::has-cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::has-cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::has-cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::has-cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::modifier-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modifier-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::modifier-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -10881,11 +11667,26 @@ class Device {
     on(sigName: "notify::n-axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::n-axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::n-axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::num-lock-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::num-lock-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::num-lock-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::num-lock-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::num-lock-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::num-touches", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-touches", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::num-touches", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::num-touches", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::num-touches", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::product-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::product-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::product-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::product-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::product-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::scroll-lock-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scroll-lock-state", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::scroll-lock-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -10896,11 +11697,21 @@ class Device {
     on(sigName: "notify::seat", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::seat", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::seat", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::tool", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tool", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::tool", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::tool", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::tool", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::vendor-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vendor-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::vendor-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::vendor-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::vendor-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -10933,8 +11744,25 @@ interface DeviceTool_ConstructProps extends GObject.Object_ConstructProps {
     toolType?: DeviceToolType
 }
 class DeviceTool {
+    /* Properties of Gdk-4.0.Gdk.DeviceTool */
+    /**
+     * The axes of the tool.
+     */
+    readonly axes: AxisFlags
+    /**
+     * The hardware ID of the tool.
+     */
+    readonly hardwareId: number
+    /**
+     * The serial number of the tool.
+     */
+    readonly serial: number
+    /**
+     * The type of the tool.
+     */
+    readonly toolType: DeviceToolType
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.DeviceTool */
     /**
      * Gets the axes of the tool.
@@ -11000,6 +11828,10 @@ class DeviceTool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11010,6 +11842,12 @@ class DeviceTool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11033,6 +11871,7 @@ class DeviceTool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11052,11 +11891,14 @@ class DeviceTool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11064,6 +11906,8 @@ class DeviceTool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11081,6 +11925,7 @@ class DeviceTool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11126,6 +11971,7 @@ class DeviceTool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11169,15 +12015,20 @@ class DeviceTool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11218,6 +12069,7 @@ class DeviceTool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11252,6 +12104,7 @@ class DeviceTool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -11283,12 +12136,33 @@ class DeviceTool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::axes", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::axes", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::axes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::hardware-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hardware-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::hardware-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::hardware-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::hardware-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::serial", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::serial", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::serial", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::serial", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::serial", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::tool-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tool-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::tool-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::tool-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::tool-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11318,7 +12192,7 @@ class Display {
      */
     readonly rgba: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Display */
     /**
      * Emits a short beep on `display`
@@ -11344,6 +12218,7 @@ class Display {
     createGlContext(): GLContext
     /**
      * Returns %TRUE if there is an ongoing grab on `device` for `display`.
+     * @param device a `GdkDevice`
      */
     deviceIsGrabbed(device: Device): boolean
     /**
@@ -11381,6 +12256,7 @@ class Display {
      * 
      * Returns a monitor close to `surface` if it is outside
      * of all monitors.
+     * @param surface a `GdkSurface`
      */
     getMonitorAtSurface(surface: Surface): Monitor
     /**
@@ -11407,6 +12283,8 @@ class Display {
     /**
      * Retrieves a desktop-wide setting such as double-click time
      * for the `display`.
+     * @param name the name of the setting
+     * @param value location to store the value of the setting
      */
     getSetting(name: string, value: any): boolean
     /**
@@ -11459,6 +12337,7 @@ class Display {
      * keyboard group and level.
      * 
      * Free the returned arrays with g_free().
+     * @param keycode a keycode
      */
     mapKeycode(keycode: number): [ /* returnType */ boolean, /* keys */ KeymapKey[] | null, /* keyvals */ number[] | null ]
     /**
@@ -11477,6 +12356,7 @@ class Display {
      * keyboard group. The level is computed from the modifier mask.
      * 
      * The returned array should be freed with g_free().
+     * @param keyval a keyval, such as %GDK_KEY_a, %GDK_KEY_Up, %GDK_KEY_Return, etc.
      */
     mapKeyval(keyval: number): [ /* returnType */ boolean, /* keys */ KeymapKey[] ]
     /**
@@ -11487,6 +12367,7 @@ class Display {
      * with custom startup-notification identifier unless
      * [method`Gtk`.Window.set_auto_startup_notification]
      * is called to disable that feature.
+     * @param startupId a startup-notification identifier, for which   notification process should be completed
      */
     notifyStartupComplete(startupId: string): void
     /**
@@ -11512,6 +12393,7 @@ class Display {
      * 
      * This function is only useful in very special situations
      * and should not be used by applications.
+     * @param event a `GdkEvent`
      */
     putEvent(event: Event): void
     /**
@@ -11556,6 +12438,9 @@ class Display {
      * This function should rarely be needed, since `GdkEventKey` already
      * contains the translated keyval. It is exported for the benefit of
      * virtualized test environments.
+     * @param keycode a keycode
+     * @param state a modifier state
+     * @param group active keyboard group
      */
     translateKey(keycode: number, state: ModifierType, group: number): [ /* returnType */ boolean, /* keyval */ number | null, /* effectiveGroup */ number | null, /* level */ number | null, /* consumed */ ModifierType | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -11593,6 +12478,10 @@ class Display {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11603,6 +12492,12 @@ class Display {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11626,6 +12521,7 @@ class Display {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11645,11 +12541,14 @@ class Display {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11657,6 +12556,8 @@ class Display {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11674,6 +12575,7 @@ class Display {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11719,6 +12621,7 @@ class Display {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11762,15 +12665,20 @@ class Display {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11811,6 +12719,7 @@ class Display {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11845,11 +12754,13 @@ class Display {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Display */
     /**
      * Emitted when the connection to the windowing system for `display` is closed.
+     * @param isError %TRUE if the display was closed due to an error
      */
     connect(sigName: "closed", callback: ((isError: boolean) => void)): number
     on(sigName: "closed", callback: (isError: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -11866,6 +12777,7 @@ class Display {
     emit(sigName: "opened"): void
     /**
      * Emitted whenever a new seat is made known to the windowing system.
+     * @param seat the seat that was just added
      */
     connect(sigName: "seat-added", callback: ((seat: Seat) => void)): number
     on(sigName: "seat-added", callback: (seat: Seat) => void, after?: boolean): NodeJS.EventEmitter
@@ -11874,6 +12786,7 @@ class Display {
     emit(sigName: "seat-added", seat: Seat): void
     /**
      * Emitted whenever a seat is removed by the windowing system.
+     * @param seat the seat that was just removed
      */
     connect(sigName: "seat-removed", callback: ((seat: Seat) => void)): number
     on(sigName: "seat-removed", callback: (seat: Seat) => void, after?: boolean): NodeJS.EventEmitter
@@ -11882,6 +12795,7 @@ class Display {
     emit(sigName: "seat-removed", seat: Seat): void
     /**
      * Emitted whenever a setting changes its value.
+     * @param setting the name of the setting that changed
      */
     connect(sigName: "setting-changed", callback: ((setting: string) => void)): number
     on(sigName: "setting-changed", callback: (setting: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -11917,6 +12831,7 @@ class Display {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -11961,6 +12876,7 @@ class Display {
      * Opens a display.
      * 
      * If opening the display fails, `NULL` is returned.
+     * @param displayName the name of the display to open
      */
     static open(displayName: string): Display | null
     static $gtype: GObject.Type
@@ -11979,7 +12895,7 @@ class DisplayManager {
      */
     defaultDisplay: Display
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.DisplayManager */
     /**
      * Gets the default `GdkDisplay`.
@@ -11991,10 +12907,12 @@ class DisplayManager {
     listDisplays(): Display[]
     /**
      * Opens a display.
+     * @param name the name of the display to open
      */
     openDisplay(name: string): Display | null
     /**
      * Sets `display` as the default display.
+     * @param display a `GdkDisplay`
      */
     setDefaultDisplay(display: Display): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12032,6 +12950,10 @@ class DisplayManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12042,6 +12964,12 @@ class DisplayManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12065,6 +12993,7 @@ class DisplayManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12084,11 +13013,14 @@ class DisplayManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12096,6 +13028,8 @@ class DisplayManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12113,6 +13047,7 @@ class DisplayManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12158,6 +13093,7 @@ class DisplayManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12201,15 +13137,20 @@ class DisplayManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12250,6 +13191,7 @@ class DisplayManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12284,11 +13226,13 @@ class DisplayManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.DisplayManager */
     /**
      * Emitted when a display is opened.
+     * @param display the opened display
      */
     connect(sigName: "display-opened", callback: ((display: Display) => void)): number
     on(sigName: "display-opened", callback: (display: Display) => void, after?: boolean): NodeJS.EventEmitter
@@ -12324,6 +13268,7 @@ class DisplayManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12394,15 +13339,31 @@ class Drag {
      */
     actions: DragAction
     /**
+     * The `GdkContentProvider`.
+     */
+    readonly content: ContentProvider
+    /**
+     * The `GdkDevice` that is performing the drag.
+     */
+    readonly device: Device
+    /**
      * The `GdkDisplay` that the drag belongs to.
      */
     readonly display: Display
     /**
+     * The possible formats that the drag can provide its data in.
+     */
+    readonly formats: ContentFormats
+    /**
      * The currently selected action of the drag.
      */
     selectedAction: DragAction
+    /**
+     * The surface where the drag originates.
+     */
+    readonly surface: Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Drag */
     /**
      * Informs GDK that the drop ended.
@@ -12416,6 +13377,7 @@ class Drag {
      * The `GdkDrag` will only take the first [method`Gdk`.Drag.drop_done]
      * call as effective, if this function is called multiple times,
      * all subsequent calls will be ignored.
+     * @param success whether the drag was ultimatively successful
      */
     dropDone(success: boolean): void
     /**
@@ -12461,6 +13423,8 @@ class Drag {
      * under the cursor hotspot.
      * 
      * Initially, the hotspot is at the top left corner of the drag surface.
+     * @param hotX x coordinate of the drag surface hotspot
+     * @param hotY y coordinate of the drag surface hotspot
      */
     setHotspot(hotX: number, hotY: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12498,6 +13462,10 @@ class Drag {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12508,6 +13476,12 @@ class Drag {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12531,6 +13505,7 @@ class Drag {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12550,11 +13525,14 @@ class Drag {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12562,6 +13540,8 @@ class Drag {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12579,6 +13559,7 @@ class Drag {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12624,6 +13605,7 @@ class Drag {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12667,15 +13649,20 @@ class Drag {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12716,6 +13703,7 @@ class Drag {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12750,11 +13738,13 @@ class Drag {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Drag */
     /**
      * Emitted when the drag operation is cancelled.
+     * @param reason The reason the drag was cancelled
      */
     connect(sigName: "cancel", callback: ((reason: DragCancelReason) => void)): number
     on(sigName: "cancel", callback: (reason: DragCancelReason) => void, after?: boolean): NodeJS.EventEmitter
@@ -12808,6 +13798,7 @@ class Drag {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12819,16 +13810,36 @@ class Drag {
     on(sigName: "notify::actions", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::actions", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::actions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::content", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::content", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::content", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::content", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::content", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::device", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::device", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::formats", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::formats", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::formats", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::formats", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::formats", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::selected-action", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::selected-action", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::selected-action", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::selected-action", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::selected-action", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -12855,6 +13866,12 @@ class Drag {
      * the [signal`Gdk`.Drag::dnd-finished] signal and delete the data at
      * the source if [method`Gdk`.Drag.get_selected_action] returns
      * %GDK_ACTION_MOVE.
+     * @param surface the source surface for this drag
+     * @param device the device that controls this drag
+     * @param content the offered content
+     * @param actions the actions supported by this drag
+     * @param dx the x offset to `device'`s position where the drag nominally started
+     * @param dy the y offset to `device'`s position where the drag nominally started
      */
     static begin(surface: Surface, device: Device, content: ContentProvider, actions: DragAction, dx: number, dy: number): Drag | null
     static $gtype: GObject.Type
@@ -12871,8 +13888,17 @@ interface DrawContext_ConstructProps extends GObject.Object_ConstructProps {
     surface?: Surface
 }
 class DrawContext {
+    /* Properties of Gdk-4.0.Gdk.DrawContext */
+    /**
+     * The `GdkDisplay` used to create the `GdkDrawContext`.
+     */
+    readonly display: Display
+    /**
+     * The `GdkSurface` the context is bound to.
+     */
+    readonly surface: Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.DrawContext */
     /**
      * Indicates that you are beginning the process of redrawing `region`
@@ -12899,6 +13925,7 @@ class DrawContext {
      * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
      * use of [class`Gsk`.Renderer]s, so application code does not need to call
      * these functions explicitly.
+     * @param region minimum region that should be drawn
      */
     beginFrame(region: cairo.Region): void
     /**
@@ -12974,6 +14001,10 @@ class DrawContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12984,6 +14015,12 @@ class DrawContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13007,6 +14044,7 @@ class DrawContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13026,11 +14064,14 @@ class DrawContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13038,6 +14079,8 @@ class DrawContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13055,6 +14098,7 @@ class DrawContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13100,6 +14144,7 @@ class DrawContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13143,15 +14188,20 @@ class DrawContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13192,6 +14242,7 @@ class DrawContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13226,6 +14277,7 @@ class DrawContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -13257,12 +14309,23 @@ class DrawContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13301,17 +14364,38 @@ interface Drop_ConstructProps extends GObject.Object_ConstructProps {
 class Drop {
     /* Properties of Gdk-4.0.Gdk.Drop */
     /**
+     * The possible actions for this drop
+     */
+    readonly actions: DragAction
+    /**
+     * The `GdkDevice` performing the drop
+     */
+    readonly device: Device
+    /**
      * The `GdkDisplay` that the drop belongs to.
      */
     readonly display: Display
+    /**
+     * The `GdkDrag` that initiated this drop
+     */
+    readonly drag: Drag
+    /**
+     * The possible formats that the drop can provide its data in.
+     */
+    readonly formats: ContentFormats
+    /**
+     * The `GdkSurface` the drop happens on
+     */
+    readonly surface: Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Drop */
     /**
      * Ends the drag operation after a drop.
      * 
      * The `action` must be a single action selected from the actions
      * available via [method`Gdk`.Drop.get_actions].
+     * @param action the action performed by the destination or 0 if the drop failed
      */
     finish(action: DragAction): void
     /**
@@ -13358,6 +14442,10 @@ class Drop {
     /**
      * Asynchronously read the dropped data from a `GdkDrop`
      * in a format that complies with one of the mime types.
+     * @param mimeTypes    pointer to an array of mime types
+     * @param ioPriority the I/O priority for the read operation
+     * @param cancellable optional `GCancellable` object
+     * @param callback a `GAsyncReadyCallback` to call when   the request is satisfied
      */
     readAsync(mimeTypes: string[], ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -13369,6 +14457,7 @@ class Drop {
      * g_input_stream_read_bytes_async().
      * 
      * See [method`Gdk`.Drop.read_async].
+     * @param result a `GAsyncResult`
      */
     readFinish(result: Gio.AsyncResult): [ /* returnType */ Gio.InputStream | null, /* outMimeType */ string ]
     /**
@@ -13382,12 +14471,17 @@ class Drop {
      * For local drag-and-drop operations that are available in the given
      * `GType`, the value will be copied directly. Otherwise, GDK will
      * try to use [func`Gdk`.content_deserialize_async] to convert the data.
+     * @param type a `GType` to read
+     * @param ioPriority the I/O priority of the request.
+     * @param cancellable optional `GCancellable` object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     readValueAsync(type: GObject.Type, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async drop read.
      * 
      * See [method`Gdk`.Drop.read_value_async].
+     * @param result a `GAsyncResult`
      */
     readValueFinish(result: Gio.AsyncResult): any
     /**
@@ -13404,6 +14498,8 @@ class Drop {
      * %GDK_DRAG_ENTER or %GDK_DRAG_MOTION events. If the destination does
      * not yet know the exact actions it supports, it should set any possible
      * actions first and then later call this function again.
+     * @param actions Supported actions of the destination, or 0 to indicate    that a drop will not be accepted
+     * @param preferred A unique action that's a member of `actions` indicating the    preferred action
      */
     status(actions: DragAction, preferred: DragAction): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -13441,6 +14537,10 @@ class Drop {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13451,6 +14551,12 @@ class Drop {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13474,6 +14580,7 @@ class Drop {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13493,11 +14600,14 @@ class Drop {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13505,6 +14615,8 @@ class Drop {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13522,6 +14634,7 @@ class Drop {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13567,6 +14680,7 @@ class Drop {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13610,15 +14724,20 @@ class Drop {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13659,6 +14778,7 @@ class Drop {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13693,6 +14813,7 @@ class Drop {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -13724,17 +14845,43 @@ class Drop {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::actions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::actions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::actions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::actions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::actions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::device", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::device", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::drag", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::drag", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::drag", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::drag", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::drag", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::formats", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::formats", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::formats", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::formats", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::formats", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13758,6 +14905,7 @@ class Event {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -13765,6 +14913,7 @@ class Event {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -13772,6 +14921,7 @@ class Event {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -13787,6 +14937,7 @@ class Event {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -13901,6 +15052,7 @@ class FocusEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -13908,6 +15060,7 @@ class FocusEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -13915,6 +15068,7 @@ class FocusEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -13930,6 +15084,7 @@ class FocusEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -14031,7 +15186,7 @@ interface FrameClock_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FrameClock {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.FrameClock */
     /**
      * Starts updates for an animation.
@@ -14092,6 +15247,7 @@ class FrameClock {
      * presentation times are separated by the refresh interval,
      * predicts a presentation time that is a multiple of the refresh
      * interval after the last presentation time, and later than `base_time`.
+     * @param baseTime base time for determining a presentaton time
      */
     getRefreshInfo(baseTime: number): [ /* refreshIntervalReturn */ number | null, /* presentationTimeReturn */ number ]
     /**
@@ -14101,6 +15257,7 @@ class FrameClock {
      * The `GdkFrameTimings` object may not yet be complete: see
      * [method`Gdk`.FrameTimings.get_complete] and
      * [method`Gdk`.FrameClock.get_history_start].
+     * @param frameCounter the frame counter value identifying the frame to  be received
      */
     getTimings(frameCounter: number): FrameTimings | null
     /**
@@ -14115,6 +15272,7 @@ class FrameClock {
      * you should use [method`Gdk`.FrameClock.begin_updating] instead,
      * since this allows GTK to adjust system parameters to get maximally
      * smooth animations.
+     * @param phase the phase that is requested
      */
     requestPhase(phase: FrameClockPhase): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -14152,6 +15310,10 @@ class FrameClock {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14162,6 +15324,12 @@ class FrameClock {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14185,6 +15353,7 @@ class FrameClock {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14204,11 +15373,14 @@ class FrameClock {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14216,6 +15388,8 @@ class FrameClock {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14233,6 +15407,7 @@ class FrameClock {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14278,6 +15453,7 @@ class FrameClock {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14321,15 +15497,20 @@ class FrameClock {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -14370,6 +15551,7 @@ class FrameClock {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -14404,6 +15586,7 @@ class FrameClock {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.FrameClock */
@@ -14516,6 +15699,7 @@ class FrameClock {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14558,8 +15742,24 @@ class GLContext {
      * The API currently in use.
      */
     readonly api: GLAPI
+    /**
+     * Always %NULL
+     * 
+     * As many contexts can share data now and no single shared context exists
+     * anymore, this function has been deprecated and now always returns %NULL.
+     */
+    readonly sharedContext: GLContext
+    /* Properties of Gdk-4.0.Gdk.DrawContext */
+    /**
+     * The `GdkDisplay` used to create the `GdkDrawContext`.
+     */
+    readonly display: Display
+    /**
+     * The `GdkSurface` the context is bound to.
+     */
+    readonly surface: Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.GLContext */
     /**
      * Gets the allowed APIs set via gdk_gl_context_set_allowed_apis().
@@ -14646,6 +15846,7 @@ class GLContext {
      * 
      * Both contexts must be realized for this check to succeed. If either one
      * is not, this function will return %FALSE.
+     * @param other the `GdkGLContext` that should be compatible with `self`
      */
     isShared(other: GLContext): boolean
     /**
@@ -14666,6 +15867,7 @@ class GLContext {
      * It is only relevant during gdk_gl_context_realize().
      * 
      * By default, all APIs are allowed.
+     * @param apis the allowed APIs
      */
     setAllowedApis(apis: GLAPI): void
     /**
@@ -14676,6 +15878,7 @@ class GLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to
      * calling this function.
+     * @param enabled whether to enable debugging in the context
      */
     setDebugEnabled(enabled: boolean): void
     /**
@@ -14688,6 +15891,7 @@ class GLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to calling
      * this function.
+     * @param compatible whether the context should be forward-compatible
      */
     setForwardCompatible(compatible: boolean): void
     /**
@@ -14697,6 +15901,8 @@ class GLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to calling
      * this function.
+     * @param major the major version to request
+     * @param minor the minor version to request
      */
     setRequiredVersion(major: number, minor: number): void
     /**
@@ -14713,6 +15919,7 @@ class GLContext {
      * You should check the return value of [method`Gdk`.GLContext.get_use_es]
      * after calling [method`Gdk`.GLContext.realize] to decide whether to use
      * the OpenGL or OpenGL ES API, extensions, or shaders.
+     * @param useEs whether the context should use OpenGL ES instead of OpenGL,   or -1 to allow auto-detection
      */
     setUseEs(useEs: number): void
     /* Methods of Gdk-4.0.Gdk.DrawContext */
@@ -14741,6 +15948,7 @@ class GLContext {
      * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
      * use of [class`Gsk`.Renderer]s, so application code does not need to call
      * these functions explicitly.
+     * @param region minimum region that should be drawn
      */
     beginFrame(region: cairo.Region): void
     /**
@@ -14808,6 +16016,10 @@ class GLContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14818,6 +16030,12 @@ class GLContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14841,6 +16059,7 @@ class GLContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14860,11 +16079,14 @@ class GLContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14872,6 +16094,8 @@ class GLContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14889,6 +16113,7 @@ class GLContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14934,6 +16159,7 @@ class GLContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14977,15 +16203,20 @@ class GLContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15026,6 +16257,7 @@ class GLContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15060,6 +16292,7 @@ class GLContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -15091,6 +16324,7 @@ class GLContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15107,6 +16341,21 @@ class GLContext {
     on(sigName: "notify::api", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::api", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::api", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::shared-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shared-context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::shared-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::shared-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::shared-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15134,8 +16383,17 @@ class GLContext {
 interface GLTexture_ConstructProps extends Texture_ConstructProps {
 }
 class GLTexture {
+    /* Properties of Gdk-4.0.Gdk.Texture */
+    /**
+     * The height of the texture, in pixels.
+     */
+    readonly height: number
+    /**
+     * The width of the texture, in pixels.
+     */
+    readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.GLTexture */
     /**
      * Releases the GL resources held by a `GdkGLTexture`.
@@ -15166,6 +16424,8 @@ class GLTexture {
      *                       cairo_image_surface_get_stride (surface));
      * cairo_surface_mark_dirty (surface);
      * ```
+     * @param data pointer to enough memory to be filled with the   downloaded data of `texture`
+     * @param stride rowstride in bytes
      */
     download(data: Uint8Array, stride: number): void
     /**
@@ -15184,6 +16444,7 @@ class GLTexture {
      * want to store to a [iface`Gio`.File] or other location, you might want to
      * use [method`Gdk`.Texture.save_to_png_bytes] or look into the
      * gdk-pixbuf library.
+     * @param filename the filename to store to
      */
     saveToPng(filename: string): boolean
     /**
@@ -15207,6 +16468,7 @@ class GLTexture {
      * Store the given `texture` to the `filename` as a TIFF file.
      * 
      * GTK will attempt to store data without loss.
+     * @param filename the filename to store to
      */
     saveToTiff(filename: string): boolean
     /**
@@ -15259,6 +16521,10 @@ class GLTexture {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15269,6 +16535,12 @@ class GLTexture {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15292,6 +16564,7 @@ class GLTexture {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -15311,11 +16584,14 @@ class GLTexture {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -15323,6 +16599,8 @@ class GLTexture {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15340,6 +16618,7 @@ class GLTexture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -15385,6 +16664,7 @@ class GLTexture {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -15428,15 +16708,20 @@ class GLTexture {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15477,6 +16762,7 @@ class GLTexture {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15511,6 +16797,7 @@ class GLTexture {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gdk-4.0.Gdk.Paintable */
@@ -15525,6 +16812,10 @@ class GLTexture {
      * and `specified_height` are known, but it is useful to call this
      * function in GtkWidget:measure implementations to compute the
      * other dimension when only one dimension is given.
+     * @param specifiedWidth the width `paintable` could be drawn into or   0.0 if unknown
+     * @param specifiedHeight the height `paintable` could be drawn into or   0.0 if unknown
+     * @param defaultWidth the width `paintable` would be drawn into if   no other constraints were given
+     * @param defaultHeight the height `paintable` would be drawn into if   no other constraints were given
      */
     computeConcreteSize(specifiedWidth: number, specifiedHeight: number, defaultWidth: number, defaultHeight: number): [ /* concreteWidth */ number, /* concreteHeight */ number ]
     /**
@@ -15622,11 +16913,15 @@ class GLTexture {
      * The paintable is drawn at the current (0,0) offset of the `snapshot`.
      * If `width` and `height` are not larger than zero, this function will
      * do nothing.
+     * @param snapshot a `GdkSnapshot` to snapshot to
+     * @param width width to snapshot in
+     * @param height height to snapshot in
      */
     snapshot(snapshot: Snapshot, width: number, height: number): void
     /* Methods of Gio-2.0.Gio.Icon */
     /**
      * Checks if two icons are equal.
+     * @param icon2 pointer to the second #GIcon.
      */
     equal(icon2?: Gio.Icon | null): boolean
     /**
@@ -15660,16 +16955,22 @@ class GLTexture {
     /**
      * Loads a loadable icon. For the asynchronous version of this function,
      * see g_loadable_icon_load_async().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     load(size: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ Gio.InputStream, /* type */ string | null ]
     /**
      * Loads an icon asynchronously. To finish this function, see
      * g_loadable_icon_load_finish(). For the synchronous, blocking
      * version of this function, see g_loadable_icon_load().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
      */
     loadAsync(size: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
+     * @param res a #GAsyncResult.
      */
     loadFinish(res: Gio.AsyncResult): [ /* returnType */ Gio.InputStream, /* type */ string | null ]
     /* Signals of GObject-2.0.GObject.Object */
@@ -15701,6 +17002,7 @@ class GLTexture {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15736,6 +17038,16 @@ class GLTexture {
     once(sigName: "invalidate-size", callback: () => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "invalidate-size", callback: () => void): NodeJS.EventEmitter
     emit(sigName: "invalidate-size"): void
+    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15755,14 +17067,18 @@ class GLTexture {
      * [vfunc`Gdk`.Paintable.get_current_image] virtual function
      * when the paintable is in an incomplete state (like a
      * [class`Gtk`.MediaStream] before receiving the first frame).
+     * @param intrinsicWidth The intrinsic width to report. Can be 0 for no width.
+     * @param intrinsicHeight The intrinsic height to report. Can be 0 for no height.
      */
     static newEmpty(intrinsicWidth: number, intrinsicHeight: number): Paintable
     /**
      * Deserializes a #GIcon previously serialized using g_icon_serialize().
+     * @param value a #GVariant created with g_icon_serialize()
      */
     static deserialize(value: GLib.Variant): Gio.Icon | null
     /**
      * Gets a hash for an icon.
+     * @param icon #gconstpointer to an icon object.
      */
     static hash(icon: object): number
     /**
@@ -15772,6 +17088,7 @@ class GLTexture {
      * If your application or library provides one or more #GIcon
      * implementations you need to ensure that each #GType is registered
      * with the type system prior to calling g_icon_new_for_string().
+     * @param str A string obtained via g_icon_to_string().
      */
     static newForString(str: string): Gio.Icon
     static $gtype: GObject.Type
@@ -15796,6 +17113,7 @@ class GrabBrokenEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -15803,6 +17121,7 @@ class GrabBrokenEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -15810,6 +17129,7 @@ class GrabBrokenEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -15825,6 +17145,7 @@ class GrabBrokenEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -15964,6 +17285,8 @@ class KeyEvent {
      * if the currently active group is ignored.
      * 
      * Note that we ignore Caps Lock for matching.
+     * @param keyval the keyval to match
+     * @param modifiers the modifiers to match
      */
     matches(keyval: number, modifiers: ModifierType): KeyMatch
     /* Methods of Gdk-4.0.Gdk.Event */
@@ -15976,6 +17299,7 @@ class KeyEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -15983,6 +17307,7 @@ class KeyEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -15990,6 +17315,7 @@ class KeyEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -16005,6 +17331,7 @@ class KeyEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -16105,8 +17432,17 @@ class KeyEvent {
 interface MemoryTexture_ConstructProps extends Texture_ConstructProps {
 }
 class MemoryTexture {
+    /* Properties of Gdk-4.0.Gdk.Texture */
+    /**
+     * The height of the texture, in pixels.
+     */
+    readonly height: number
+    /**
+     * The width of the texture, in pixels.
+     */
+    readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Texture */
     /**
      * Downloads the `texture` into local memory.
@@ -16128,6 +17464,8 @@ class MemoryTexture {
      *                       cairo_image_surface_get_stride (surface));
      * cairo_surface_mark_dirty (surface);
      * ```
+     * @param data pointer to enough memory to be filled with the   downloaded data of `texture`
+     * @param stride rowstride in bytes
      */
     download(data: Uint8Array, stride: number): void
     /**
@@ -16146,6 +17484,7 @@ class MemoryTexture {
      * want to store to a [iface`Gio`.File] or other location, you might want to
      * use [method`Gdk`.Texture.save_to_png_bytes] or look into the
      * gdk-pixbuf library.
+     * @param filename the filename to store to
      */
     saveToPng(filename: string): boolean
     /**
@@ -16169,6 +17508,7 @@ class MemoryTexture {
      * Store the given `texture` to the `filename` as a TIFF file.
      * 
      * GTK will attempt to store data without loss.
+     * @param filename the filename to store to
      */
     saveToTiff(filename: string): boolean
     /**
@@ -16221,6 +17561,10 @@ class MemoryTexture {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16231,6 +17575,12 @@ class MemoryTexture {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -16254,6 +17604,7 @@ class MemoryTexture {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16273,11 +17624,14 @@ class MemoryTexture {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16285,6 +17639,8 @@ class MemoryTexture {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16302,6 +17658,7 @@ class MemoryTexture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -16347,6 +17704,7 @@ class MemoryTexture {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -16390,15 +17748,20 @@ class MemoryTexture {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -16439,6 +17802,7 @@ class MemoryTexture {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -16473,6 +17837,7 @@ class MemoryTexture {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gdk-4.0.Gdk.Paintable */
@@ -16487,6 +17852,10 @@ class MemoryTexture {
      * and `specified_height` are known, but it is useful to call this
      * function in GtkWidget:measure implementations to compute the
      * other dimension when only one dimension is given.
+     * @param specifiedWidth the width `paintable` could be drawn into or   0.0 if unknown
+     * @param specifiedHeight the height `paintable` could be drawn into or   0.0 if unknown
+     * @param defaultWidth the width `paintable` would be drawn into if   no other constraints were given
+     * @param defaultHeight the height `paintable` would be drawn into if   no other constraints were given
      */
     computeConcreteSize(specifiedWidth: number, specifiedHeight: number, defaultWidth: number, defaultHeight: number): [ /* concreteWidth */ number, /* concreteHeight */ number ]
     /**
@@ -16584,11 +17953,15 @@ class MemoryTexture {
      * The paintable is drawn at the current (0,0) offset of the `snapshot`.
      * If `width` and `height` are not larger than zero, this function will
      * do nothing.
+     * @param snapshot a `GdkSnapshot` to snapshot to
+     * @param width width to snapshot in
+     * @param height height to snapshot in
      */
     snapshot(snapshot: Snapshot, width: number, height: number): void
     /* Methods of Gio-2.0.Gio.Icon */
     /**
      * Checks if two icons are equal.
+     * @param icon2 pointer to the second #GIcon.
      */
     equal(icon2?: Gio.Icon | null): boolean
     /**
@@ -16622,16 +17995,22 @@ class MemoryTexture {
     /**
      * Loads a loadable icon. For the asynchronous version of this function,
      * see g_loadable_icon_load_async().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     load(size: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ Gio.InputStream, /* type */ string | null ]
     /**
      * Loads an icon asynchronously. To finish this function, see
      * g_loadable_icon_load_finish(). For the synchronous, blocking
      * version of this function, see g_loadable_icon_load().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
      */
     loadAsync(size: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
+     * @param res a #GAsyncResult.
      */
     loadFinish(res: Gio.AsyncResult): [ /* returnType */ Gio.InputStream, /* type */ string | null ]
     /* Signals of GObject-2.0.GObject.Object */
@@ -16663,6 +18042,7 @@ class MemoryTexture {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -16698,6 +18078,16 @@ class MemoryTexture {
     once(sigName: "invalidate-size", callback: () => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "invalidate-size", callback: () => void): NodeJS.EventEmitter
     emit(sigName: "invalidate-size"): void
+    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -16717,14 +18107,18 @@ class MemoryTexture {
      * [vfunc`Gdk`.Paintable.get_current_image] virtual function
      * when the paintable is in an incomplete state (like a
      * [class`Gtk`.MediaStream] before receiving the first frame).
+     * @param intrinsicWidth The intrinsic width to report. Can be 0 for no width.
+     * @param intrinsicHeight The intrinsic height to report. Can be 0 for no height.
      */
     static newEmpty(intrinsicWidth: number, intrinsicHeight: number): Paintable
     /**
      * Deserializes a #GIcon previously serialized using g_icon_serialize().
+     * @param value a #GVariant created with g_icon_serialize()
      */
     static deserialize(value: GLib.Variant): Gio.Icon | null
     /**
      * Gets a hash for an icon.
+     * @param icon #gconstpointer to an icon object.
      */
     static hash(icon: object): number
     /**
@@ -16734,6 +18128,7 @@ class MemoryTexture {
      * If your application or library provides one or more #GIcon
      * implementations you need to ensure that each #GType is registered
      * with the type system prior to calling g_icon_new_for_string().
+     * @param str A string obtained via g_icon_to_string().
      */
     static newForString(str: string): Gio.Icon
     static $gtype: GObject.Type
@@ -16751,6 +18146,10 @@ class Monitor {
      * The connector name.
      */
     readonly connector: string
+    /**
+     * The `GdkDisplay` of the monitor.
+     */
+    readonly display: Display
     /**
      * The geometry of the monitor.
      */
@@ -16788,7 +18187,7 @@ class Monitor {
      */
     readonly widthMm: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Monitor */
     /**
      * Gets the name of the monitor's connector, if available.
@@ -16895,6 +18294,10 @@ class Monitor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16905,6 +18308,12 @@ class Monitor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -16928,6 +18337,7 @@ class Monitor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16947,11 +18357,14 @@ class Monitor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16959,6 +18372,8 @@ class Monitor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16976,6 +18391,7 @@ class Monitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17021,6 +18437,7 @@ class Monitor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17064,15 +18481,20 @@ class Monitor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17113,6 +18535,7 @@ class Monitor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17147,6 +18570,7 @@ class Monitor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Monitor */
@@ -17187,6 +18611,7 @@ class Monitor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17198,6 +18623,11 @@ class Monitor {
     on(sigName: "notify::connector", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::connector", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::connector", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::geometry", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::geometry", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::geometry", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -17266,6 +18696,7 @@ class MotionEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -17273,6 +18704,7 @@ class MotionEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -17280,6 +18712,7 @@ class MotionEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -17295,6 +18728,7 @@ class MotionEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -17417,6 +18851,7 @@ class PadEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -17424,6 +18859,7 @@ class PadEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -17431,6 +18867,7 @@ class PadEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -17446,6 +18883,7 @@ class PadEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -17554,6 +18992,7 @@ class ProximityEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -17561,6 +19000,7 @@ class ProximityEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -17568,6 +19008,7 @@ class ProximityEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -17583,6 +19024,7 @@ class ProximityEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -17687,12 +19129,22 @@ class ScrollEvent {
      * 
      * The deltas will be zero unless the scroll direction
      * is %GDK_SCROLL_SMOOTH.
+     * 
+     * For the representation unit of these deltas, see
+     * [method`Gdk`.ScrollEvent.get_unit].
      */
     getDeltas(): [ /* deltaX */ number, /* deltaY */ number ]
     /**
      * Extracts the direction of a scroll event.
      */
     getDirection(): ScrollDirection
+    /**
+     * Extracts the scroll delta unit of a scroll event.
+     * 
+     * The unit will always be %GDK_SCROLL_UNIT_WHEEL if the scroll direction is not
+     * %GDK_SCROLL_SMOOTH.
+     */
+    getUnit(): ScrollUnit
     /**
      * Check whether a scroll event is a stop scroll event.
      * 
@@ -17715,6 +19167,7 @@ class ScrollEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -17722,6 +19175,7 @@ class ScrollEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -17729,6 +19183,7 @@ class ScrollEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -17744,6 +19199,7 @@ class ScrollEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -17849,8 +19305,13 @@ interface Seat_ConstructProps extends GObject.Object_ConstructProps {
     display?: Display
 }
 class Seat {
+    /* Properties of Gdk-4.0.Gdk.Seat */
+    /**
+     * `GdkDisplay` of this seat.
+     */
+    readonly display: Display
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Seat */
     /**
      * Returns the capabilities this `GdkSeat` currently has.
@@ -17858,6 +19319,7 @@ class Seat {
     getCapabilities(): SeatCapabilities
     /**
      * Returns the devices that match the given capabilities.
+     * @param capabilities capabilities to get devices for
      */
     getDevices(capabilities: SeatCapabilities): Device[]
     /**
@@ -17911,6 +19373,10 @@ class Seat {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17921,6 +19387,12 @@ class Seat {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17944,6 +19416,7 @@ class Seat {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17963,11 +19436,14 @@ class Seat {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17975,6 +19451,8 @@ class Seat {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17992,6 +19470,7 @@ class Seat {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18037,6 +19516,7 @@ class Seat {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18080,15 +19560,20 @@ class Seat {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18129,6 +19614,7 @@ class Seat {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18163,11 +19649,13 @@ class Seat {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Seat */
     /**
      * Emitted when a new input device is related to this seat.
+     * @param device the newly added `GdkDevice`.
      */
     connect(sigName: "device-added", callback: ((device: Device) => void)): number
     on(sigName: "device-added", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -18176,6 +19664,7 @@ class Seat {
     emit(sigName: "device-added", device: Device): void
     /**
      * Emitted when an input device is removed (e.g. unplugged).
+     * @param device the just removed `GdkDevice`.
      */
     connect(sigName: "device-removed", callback: ((device: Device) => void)): number
     on(sigName: "device-removed", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -18190,6 +19679,7 @@ class Seat {
      * [signal`Gdk`.Device::tool-changed] signal accordingly.
      * 
      * A same tool may be used by several devices.
+     * @param tool the new `GdkDeviceTool` known to the seat
      */
     connect(sigName: "tool-added", callback: ((tool: DeviceTool) => void)): number
     on(sigName: "tool-added", callback: (tool: DeviceTool) => void, after?: boolean): NodeJS.EventEmitter
@@ -18198,6 +19688,7 @@ class Seat {
     emit(sigName: "tool-added", tool: DeviceTool): void
     /**
      * Emitted whenever a tool is no longer known to this `seat`.
+     * @param tool the just removed `GdkDeviceTool`
      */
     connect(sigName: "tool-removed", callback: ((tool: DeviceTool) => void)): number
     on(sigName: "tool-removed", callback: (tool: DeviceTool) => void, after?: boolean): NodeJS.EventEmitter
@@ -18233,12 +19724,18 @@ class Seat {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -18255,7 +19752,7 @@ interface Snapshot_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Snapshot {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -18291,6 +19788,10 @@ class Snapshot {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18301,6 +19802,12 @@ class Snapshot {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18324,6 +19831,7 @@ class Snapshot {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18343,11 +19851,14 @@ class Snapshot {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18355,6 +19866,8 @@ class Snapshot {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18372,6 +19885,7 @@ class Snapshot {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18417,6 +19931,7 @@ class Snapshot {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18460,15 +19975,20 @@ class Snapshot {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18509,6 +20029,7 @@ class Snapshot {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18543,6 +20064,7 @@ class Snapshot {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -18574,6 +20096,7 @@ class Snapshot {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18614,6 +20137,14 @@ class Surface {
      */
     cursor: Cursor
     /**
+     * The `GdkDisplay` connection of the surface.
+     */
+    readonly display: Display
+    /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frameClock: FrameClock
+    /**
      * The height of the surface, in pixels.
      */
     readonly height: number
@@ -18630,7 +20161,7 @@ class Surface {
      */
     readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Surface */
     /**
      * Emits a short beep associated to `surface`.
@@ -18668,6 +20199,9 @@ class Surface {
      * This function always returns a valid pointer, but it will return a
      * pointer to a “nil” surface if `other` is already in an error state
      * or any other error occurs.
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     createSimilarSurface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -18706,6 +20240,7 @@ class Surface {
      * specified surface, and it is using the cursor for its parent surface.
      * 
      * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
+     * @param device a pointer `GdkDevice`
      */
     getDeviceCursor(device: Device): Cursor | null
     /**
@@ -18713,6 +20248,7 @@ class Surface {
      * 
      * The position is given in coordinates relative to the upper
      * left corner of `surface`.
+     * @param device pointer `GdkDevice` to query to
      */
     getDevicePosition(device: Device): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* mask */ ModifierType | null ]
     /**
@@ -18797,6 +20333,7 @@ class Surface {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param cursor a `GdkCursor`
      */
     setCursor(cursor?: Cursor | null): void
     /**
@@ -18807,6 +20344,8 @@ class Surface {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param device a pointer `GdkDevice`
+     * @param cursor a `GdkCursor`
      */
     setDeviceCursor(device: Device, cursor: Cursor): void
     /**
@@ -18824,6 +20363,7 @@ class Surface {
      * 
      * Use [method`Gdk`.Display.supports_input_shapes] to find out if
      * a particular backend supports input regions.
+     * @param region region of surface to be reactive
      */
     setInputRegion(region: cairo.Region): void
     /**
@@ -18842,6 +20382,7 @@ class Surface {
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
      * [vfunc`Gtk`.Widget.css_changed] handler.
+     * @param region a region, or %NULL to make the entire   surface opaque
      */
     setOpaqueRegion(region?: cairo.Region | null): void
     /**
@@ -18849,6 +20390,9 @@ class Surface {
      * 
      * Note that this only works if `to` and `from` are popups or
      * transient-for to the same toplevel (directly or indirectly).
+     * @param to the target surface
+     * @param x coordinates to translate
+     * @param y coordinates to translate
      */
     translateCoordinates(to: Surface, x: number, y: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -18886,6 +20430,10 @@ class Surface {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18896,6 +20444,12 @@ class Surface {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18919,6 +20473,7 @@ class Surface {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18938,11 +20493,14 @@ class Surface {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18950,6 +20508,8 @@ class Surface {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18967,6 +20527,7 @@ class Surface {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19012,6 +20573,7 @@ class Surface {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19055,15 +20617,20 @@ class Surface {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19104,6 +20671,7 @@ class Surface {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19138,11 +20706,13 @@ class Surface {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gdk-4.0.Gdk.Surface */
     /**
      * Emitted when `surface` starts being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "enter-monitor", callback: ((monitor: Monitor) => void)): number
     on(sigName: "enter-monitor", callback: (monitor: Monitor) => void, after?: boolean): NodeJS.EventEmitter
@@ -19151,6 +20721,7 @@ class Surface {
     emit(sigName: "enter-monitor", monitor: Monitor): void
     /**
      * Emitted when GDK receives an input event for `surface`.
+     * @param event an input event
      */
     connect(sigName: "event", callback: ((event: Event) => boolean)): number
     on(sigName: "event", callback: (event: Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -19163,6 +20734,8 @@ class Surface {
      * 
      * Surface size is reported in ”application pixels”, not
      * ”device pixels” (see gdk_surface_get_scale_factor()).
+     * @param width the current width
+     * @param height the current height
      */
     connect(sigName: "layout", callback: ((width: number, height: number) => void)): number
     on(sigName: "layout", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -19171,6 +20744,7 @@ class Surface {
     emit(sigName: "layout", width: number, height: number): void
     /**
      * Emitted when `surface` stops being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "leave-monitor", callback: ((monitor: Monitor) => void)): number
     on(sigName: "leave-monitor", callback: (monitor: Monitor) => void, after?: boolean): NodeJS.EventEmitter
@@ -19179,6 +20753,7 @@ class Surface {
     emit(sigName: "leave-monitor", monitor: Monitor): void
     /**
      * Emitted when part of the surface needs to be redrawn.
+     * @param region the region that needs to be redrawn
      */
     connect(sigName: "render", callback: ((region: cairo.Region) => boolean)): number
     on(sigName: "render", callback: (region: cairo.Region) => void, after?: boolean): NodeJS.EventEmitter
@@ -19214,6 +20789,7 @@ class Surface {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19225,6 +20801,16 @@ class Surface {
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::frame-clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::frame-clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::frame-clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -19272,8 +20858,17 @@ interface Texture_ConstructProps extends GObject.Object_ConstructProps {
     width?: number
 }
 class Texture {
+    /* Properties of Gdk-4.0.Gdk.Texture */
+    /**
+     * The height of the texture, in pixels.
+     */
+    readonly height: number
+    /**
+     * The width of the texture, in pixels.
+     */
+    readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Texture */
     /**
      * Downloads the `texture` into local memory.
@@ -19295,6 +20890,8 @@ class Texture {
      *                       cairo_image_surface_get_stride (surface));
      * cairo_surface_mark_dirty (surface);
      * ```
+     * @param data pointer to enough memory to be filled with the   downloaded data of `texture`
+     * @param stride rowstride in bytes
      */
     download(data: Uint8Array, stride: number): void
     /**
@@ -19313,6 +20910,7 @@ class Texture {
      * want to store to a [iface`Gio`.File] or other location, you might want to
      * use [method`Gdk`.Texture.save_to_png_bytes] or look into the
      * gdk-pixbuf library.
+     * @param filename the filename to store to
      */
     saveToPng(filename: string): boolean
     /**
@@ -19336,6 +20934,7 @@ class Texture {
      * Store the given `texture` to the `filename` as a TIFF file.
      * 
      * GTK will attempt to store data without loss.
+     * @param filename the filename to store to
      */
     saveToTiff(filename: string): boolean
     /**
@@ -19388,6 +20987,10 @@ class Texture {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19398,6 +21001,12 @@ class Texture {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19421,6 +21030,7 @@ class Texture {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19440,11 +21050,14 @@ class Texture {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19452,6 +21065,8 @@ class Texture {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19469,6 +21084,7 @@ class Texture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19514,6 +21130,7 @@ class Texture {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19557,15 +21174,20 @@ class Texture {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19606,6 +21228,7 @@ class Texture {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19640,6 +21263,7 @@ class Texture {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gdk-4.0.Gdk.Paintable */
@@ -19654,6 +21278,10 @@ class Texture {
      * and `specified_height` are known, but it is useful to call this
      * function in GtkWidget:measure implementations to compute the
      * other dimension when only one dimension is given.
+     * @param specifiedWidth the width `paintable` could be drawn into or   0.0 if unknown
+     * @param specifiedHeight the height `paintable` could be drawn into or   0.0 if unknown
+     * @param defaultWidth the width `paintable` would be drawn into if   no other constraints were given
+     * @param defaultHeight the height `paintable` would be drawn into if   no other constraints were given
      */
     computeConcreteSize(specifiedWidth: number, specifiedHeight: number, defaultWidth: number, defaultHeight: number): [ /* concreteWidth */ number, /* concreteHeight */ number ]
     /**
@@ -19751,11 +21379,15 @@ class Texture {
      * The paintable is drawn at the current (0,0) offset of the `snapshot`.
      * If `width` and `height` are not larger than zero, this function will
      * do nothing.
+     * @param snapshot a `GdkSnapshot` to snapshot to
+     * @param width width to snapshot in
+     * @param height height to snapshot in
      */
     snapshot(snapshot: Snapshot, width: number, height: number): void
     /* Methods of Gio-2.0.Gio.Icon */
     /**
      * Checks if two icons are equal.
+     * @param icon2 pointer to the second #GIcon.
      */
     equal(icon2?: Gio.Icon | null): boolean
     /**
@@ -19789,16 +21421,22 @@ class Texture {
     /**
      * Loads a loadable icon. For the asynchronous version of this function,
      * see g_loadable_icon_load_async().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     load(size: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ Gio.InputStream, /* type */ string | null ]
     /**
      * Loads an icon asynchronously. To finish this function, see
      * g_loadable_icon_load_finish(). For the synchronous, blocking
      * version of this function, see g_loadable_icon_load().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
      */
     loadAsync(size: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
+     * @param res a #GAsyncResult.
      */
     loadFinish(res: Gio.AsyncResult): [ /* returnType */ Gio.InputStream, /* type */ string | null ]
     /* Signals of GObject-2.0.GObject.Object */
@@ -19830,6 +21468,7 @@ class Texture {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19865,6 +21504,16 @@ class Texture {
     once(sigName: "invalidate-size", callback: () => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "invalidate-size", callback: () => void): NodeJS.EventEmitter
     emit(sigName: "invalidate-size"): void
+    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -19888,14 +21537,18 @@ class Texture {
      * [vfunc`Gdk`.Paintable.get_current_image] virtual function
      * when the paintable is in an incomplete state (like a
      * [class`Gtk`.MediaStream] before receiving the first frame).
+     * @param intrinsicWidth The intrinsic width to report. Can be 0 for no width.
+     * @param intrinsicHeight The intrinsic height to report. Can be 0 for no height.
      */
     static newEmpty(intrinsicWidth: number, intrinsicHeight: number): Paintable
     /**
      * Deserializes a #GIcon previously serialized using g_icon_serialize().
+     * @param value a #GVariant created with g_icon_serialize()
      */
     static deserialize(value: GLib.Variant): Gio.Icon | null
     /**
      * Gets a hash for an icon.
+     * @param icon #gconstpointer to an icon object.
      */
     static hash(icon: object): number
     /**
@@ -19905,6 +21558,7 @@ class Texture {
      * If your application or library provides one or more #GIcon
      * implementations you need to ensure that each #GType is registered
      * with the type system prior to calling g_icon_new_for_string().
+     * @param str A string obtained via g_icon_to_string().
      */
     static newForString(str: string): Gio.Icon
     static $gtype: GObject.Type
@@ -19925,6 +21579,7 @@ class TouchEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -19932,6 +21587,7 @@ class TouchEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -19939,6 +21595,7 @@ class TouchEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -19954,6 +21611,7 @@ class TouchEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -20083,6 +21741,7 @@ class TouchpadEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getAngle(event2: Event): [ /* returnType */ boolean, /* angle */ number ]
     /**
@@ -20090,6 +21749,7 @@ class TouchpadEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getCenter(event2: Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -20097,6 +21757,7 @@ class TouchpadEvent {
      * 
      * This assumes that both events have X/Y information.
      * If not, this function returns %FALSE.
+     * @param event2 second `GdkEvent`
      */
     getDistance(event2: Event): [ /* returnType */ boolean, /* distance */ number ]
     /**
@@ -20112,6 +21773,7 @@ class TouchpadEvent {
      * 
      * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
      * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+     * @param axisUse the axis use to look for
      */
     getAxis(axisUse: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -20212,8 +21874,17 @@ class TouchpadEvent {
 interface VulkanContext_ConstructProps extends DrawContext_ConstructProps {
 }
 class VulkanContext {
+    /* Properties of Gdk-4.0.Gdk.DrawContext */
+    /**
+     * The `GdkDisplay` used to create the `GdkDrawContext`.
+     */
+    readonly display: Display
+    /**
+     * The `GdkSurface` the context is bound to.
+     */
+    readonly surface: Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.DrawContext */
     /**
      * Indicates that you are beginning the process of redrawing `region`
@@ -20240,6 +21911,7 @@ class VulkanContext {
      * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
      * use of [class`Gsk`.Renderer]s, so application code does not need to call
      * these functions explicitly.
+     * @param region minimum region that should be drawn
      */
     beginFrame(region: cairo.Region): void
     /**
@@ -20315,6 +21987,10 @@ class VulkanContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20325,6 +22001,12 @@ class VulkanContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -20348,6 +22030,7 @@ class VulkanContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -20367,11 +22050,14 @@ class VulkanContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -20379,6 +22065,8 @@ class VulkanContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20396,6 +22084,7 @@ class VulkanContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -20441,6 +22130,7 @@ class VulkanContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -20484,15 +22174,20 @@ class VulkanContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -20533,6 +22228,7 @@ class VulkanContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -20567,6 +22263,7 @@ class VulkanContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -20609,6 +22306,7 @@ class VulkanContext {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of Gdk-4.0.Gdk.VulkanContext */
@@ -20652,12 +22350,23 @@ class VulkanContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::display", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::surface", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -20673,6 +22382,9 @@ class VulkanContext {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -20681,10 +22393,12 @@ class ContentFormats {
     /* Methods of Gdk-4.0.Gdk.ContentFormats */
     /**
      * Checks if a given `GType` is part of the given `formats`.
+     * @param type the `GType` to search for
      */
     containGtype(type: GObject.Type): boolean
     /**
      * Checks if a given mime type is part of the given `formats`.
+     * @param mimeType the mime type to search for
      */
     containMimeType(mimeType: string): boolean
     /**
@@ -20703,6 +22417,7 @@ class ContentFormats {
     getMimeTypes(): string[] | null
     /**
      * Checks if `first` and `second` have any matching formats.
+     * @param second the `GdkContentFormats` to intersect with
      */
     match(second: ContentFormats): boolean
     /**
@@ -20710,6 +22425,7 @@ class ContentFormats {
      * in `second`.
      * 
      * If no matching `GType` is found, %G_TYPE_INVALID is returned.
+     * @param second the `GdkContentFormats` to intersect with
      */
     matchGtype(second: ContentFormats): GObject.Type
     /**
@@ -20717,6 +22433,7 @@ class ContentFormats {
      * in `second`.
      * 
      * If no matching mime type is found, %NULL is returned.
+     * @param second the `GdkContentFormats` to intersect with
      */
     matchMimeType(second: ContentFormats): string | null
     /**
@@ -20724,6 +22441,7 @@ class ContentFormats {
      * 
      * The result of this function can later be parsed with
      * [func`Gdk`.ContentFormats.parse].
+     * @param string a `GString` to print into
      */
     print(string: GLib.String): void
     /**
@@ -20742,6 +22460,7 @@ class ContentFormats {
     /**
      * Append all missing types from `second` to `first,` in the order
      * they had in `second`.
+     * @param second the `GdkContentFormats` to merge from
      */
     union(second: ContentFormats): ContentFormats
     /**
@@ -20785,6 +22504,7 @@ class ContentFormats {
      * 
      * If `string` does not describe valid content formats, %NULL
      * is returned.
+     * @param string the string to parse
      */
     static parse(string: string): ContentFormats | null
 }
@@ -20793,14 +22513,17 @@ class ContentFormatsBuilder {
     /**
      * Appends all formats from `formats` to `builder,` skipping those that
      * already exist.
+     * @param formats the formats to add
      */
     addFormats(formats: ContentFormats): void
     /**
      * Appends `type` to `builder` if it has not already been added.
+     * @param type a `GType`
      */
     addGtype(type: GObject.Type): void
     /**
      * Appends `mime_type` to `builder` if it has not already been added.
+     * @param mimeType a mime type
      */
     addMimeType(mimeType: string): void
     /**
@@ -20832,15 +22555,15 @@ class ContentFormatsBuilder {
 }
 abstract class ContentProviderClass {
     /* Fields of Gdk-4.0.Gdk.ContentProviderClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly contentChanged: (provider: ContentProvider) => void
-    readonly attachClipboard: (provider: ContentProvider, clipboard: Clipboard) => void
-    readonly detachClipboard: (provider: ContentProvider, clipboard: Clipboard) => void
-    readonly refFormats: (provider: ContentProvider) => ContentFormats
-    readonly refStorableFormats: (provider: ContentProvider) => ContentFormats
-    readonly writeMimeTypeAsync: (provider: ContentProvider, mimeType: string, stream: Gio.OutputStream, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly writeMimeTypeFinish: (provider: ContentProvider, result: Gio.AsyncResult) => boolean
-    readonly getValue: (provider: ContentProvider) => [ /* returnType */ boolean, /* value */ any ]
+    parentClass: GObject.ObjectClass
+    contentChanged: (provider: ContentProvider) => void
+    attachClipboard: (provider: ContentProvider, clipboard: Clipboard) => void
+    detachClipboard: (provider: ContentProvider, clipboard: Clipboard) => void
+    refFormats: (provider: ContentProvider) => ContentFormats
+    refStorableFormats: (provider: ContentProvider) => ContentFormats
+    writeMimeTypeAsync: (provider: ContentProvider, mimeType: string, stream: Gio.OutputStream, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    writeMimeTypeFinish: (provider: ContentProvider, result: Gio.AsyncResult) => boolean
+    getValue: (provider: ContentProvider) => [ /* returnType */ boolean, /* value */ any ]
     static name: string
 }
 abstract class DevicePadInterface {
@@ -20948,14 +22671,14 @@ class KeymapKey {
      * the hardware keycode. This is an identifying number for a
      *   physical key.
      */
-    readonly keycode: number
+    keycode: number
     /**
      * indicates movement in a horizontal direction. Usually groups are used
      *   for two different languages. In group 0, a key might have two English
      *   characters, and in group 1 it might have two Hebrew characters. The Hebrew
      *   characters will be printed on the key next to the English characters.
      */
-    readonly group: number
+    group: number
     /**
      * indicates which symbol on the key will be used, in a vertical direction.
      *   So on a standard US keyboard, the key with the number “1” on it also has the
@@ -20964,7 +22687,7 @@ class KeymapKey {
      *   letter at level 0, and an uppercase letter at level 1, though only the
      *   uppercase letter is printed.
      */
-    readonly level: number
+    level: number
     static name: string
 }
 abstract class MemoryTextureClass {
@@ -20975,12 +22698,12 @@ abstract class MonitorClass {
 }
 abstract class PaintableInterface {
     /* Fields of Gdk-4.0.Gdk.PaintableInterface */
-    readonly snapshot: (paintable: Paintable, snapshot: Snapshot, width: number, height: number) => void
-    readonly getCurrentImage: (paintable: Paintable) => Paintable
-    readonly getFlags: (paintable: Paintable) => PaintableFlags
-    readonly getIntrinsicWidth: (paintable: Paintable) => number
-    readonly getIntrinsicHeight: (paintable: Paintable) => number
-    readonly getIntrinsicAspectRatio: (paintable: Paintable) => number
+    snapshot: (paintable: Paintable, snapshot: Snapshot, width: number, height: number) => void
+    getCurrentImage: (paintable: Paintable) => Paintable
+    getFlags: (paintable: Paintable) => PaintableFlags
+    getIntrinsicWidth: (paintable: Paintable) => number
+    getIntrinsicHeight: (paintable: Paintable) => number
+    getIntrinsicAspectRatio: (paintable: Paintable) => number
     static name: string
 }
 abstract class PopupInterface {
@@ -20994,6 +22717,7 @@ class PopupLayout {
     copy(): PopupLayout
     /**
      * Check whether `layout` and `other` has identical layout properties.
+     * @param other another `GdkPopupLayout`
      */
     equal(other: PopupLayout): boolean
     /**
@@ -21032,18 +22756,23 @@ class PopupLayout {
      * %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with
      * %GDK_GRAVITY_NORTH_EAST and vice versa if `surface` extends
      * beyond the left or right edges of the monitor.
+     * @param anchorHints the new `GdkAnchorHints`
      */
     setAnchorHints(anchorHints: AnchorHints): void
     /**
      * Set the anchor rectangle.
+     * @param anchorRect the new anchor rectangle
      */
     setAnchorRect(anchorRect: Rectangle): void
     /**
      * Offset the position of the anchor rectangle with the given delta.
+     * @param dx x delta to offset the anchor rectangle with
+     * @param dy y delta to offset the anchor rectangle with
      */
     setOffset(dx: number, dy: number): void
     /**
      * Set the anchor on the anchor rectangle.
+     * @param anchor the new rect anchor
      */
     setRectAnchor(anchor: Gravity): void
     /**
@@ -21052,10 +22781,15 @@ class PopupLayout {
      * The shadow width corresponds to the part of the computed
      * surface size that would consist of the shadow margin
      * surrounding the window, would there be any.
+     * @param left width of the left part of the shadow
+     * @param right width of the right part of the shadow
+     * @param top height of the top part of the shadow
+     * @param bottom height of the bottom part of the shadow
      */
     setShadowWidth(left: number, right: number, top: number, bottom: number): void
     /**
      * Set the anchor on the popup surface.
+     * @param anchor the new popup surface anchor
      */
     setSurfaceAnchor(anchor: Gravity): void
     /**
@@ -21073,20 +22807,20 @@ class RGBA {
     /**
      * The intensity of the red channel from 0.0 to 1.0 inclusive
      */
-    readonly red: number
+    red: number
     /**
      * The intensity of the green channel from 0.0 to 1.0 inclusive
      */
-    readonly green: number
+    green: number
     /**
      * The intensity of the blue channel from 0.0 to 1.0 inclusive
      */
-    readonly blue: number
+    blue: number
     /**
      * The opacity of the color from 0.0 for completely translucent to
      *   1.0 for opaque
      */
-    readonly alpha: number
+    alpha: number
     /* Methods of Gdk-4.0.Gdk.RGBA */
     /**
      * Makes a copy of a `GdkRGBA`.
@@ -21096,6 +22830,7 @@ class RGBA {
     copy(): RGBA
     /**
      * Compares two `GdkRGBA` colors.
+     * @param p2 another `GdkRGBA`
      */
     equal(p2: RGBA): boolean
     /**
@@ -21139,6 +22874,7 @@ class RGBA {
      * and “b” are either integers in the range 0 to 255 or percentage
      * values in the range 0% to 100%, and a is a floating point value
      * in the range 0 to 1.
+     * @param spec the string specifying the color
      */
     parse(spec: string): boolean
     /**
@@ -21164,26 +22900,29 @@ class Rectangle {
     /**
      * the x coordinate of the top left corner
      */
-    readonly x: number
+    x: number
     /**
      * the y coordinate of the top left corner
      */
-    readonly y: number
+    y: number
     /**
      * the width of the rectangle
      */
-    readonly width: number
+    width: number
     /**
      * the height of the rectangle
      */
-    readonly height: number
+    height: number
     /* Methods of Gdk-4.0.Gdk.Rectangle */
     /**
      * Returns %TRUE if `rect` contains the point described by `x` and `y`.
+     * @param x X coordinate
+     * @param y Y coordinate
      */
     containsPoint(x: number, y: number): boolean
     /**
      * Checks if the two given rectangles are equal.
+     * @param rect2 a `GdkRectangle`
      */
     equal(rect2: Rectangle): boolean
     /**
@@ -21194,6 +22933,7 @@ class Rectangle {
      * to 0 and its x and y values are undefined. If you are only interested
      * in whether the rectangles intersect, but not in the intersecting area
      * itself, pass %NULL for `dest`.
+     * @param src2 a `GdkRectangle`
      */
     intersect(src2: Rectangle): [ /* returnType */ boolean, /* dest */ Rectangle | null ]
     /**
@@ -21205,6 +22945,7 @@ class Rectangle {
      * 
      * Note that this function does not ignore 'empty' rectangles (ie. with
      * zero width or height).
+     * @param src2 a `GdkRectangle`
      */
     union(src2: Rectangle): /* dest */ Rectangle
     static name: string
@@ -21223,15 +22964,15 @@ class TimeCoord {
     /**
      * The timestamp for this event
      */
-    readonly time: number
+    time: number
     /**
      * Flags indicating what axes are present
      */
-    readonly flags: AxisFlags
+    flags: AxisFlags
     /**
      * axis values
      */
-    readonly axes: number[]
+    axes: number[]
     static name: string
 }
 abstract class ToplevelInterface {
@@ -21245,6 +22986,7 @@ class ToplevelLayout {
     copy(): ToplevelLayout
     /**
      * Check whether `layout` and `other` has identical layout properties.
+     * @param other another `GdkToplevelLayout`
      */
     equal(other: ToplevelLayout): boolean
     /**
@@ -21276,16 +23018,20 @@ class ToplevelLayout {
     /**
      * Sets whether the layout should cause the surface
      * to be fullscreen when presented.
+     * @param fullscreen %TRUE to fullscreen the surface
+     * @param monitor the monitor to fullscreen on
      */
     setFullscreen(fullscreen: boolean, monitor?: Monitor | null): void
     /**
      * Sets whether the layout should cause the surface
      * to be maximized when presented.
+     * @param maximized %TRUE to maximize
      */
     setMaximized(maximized: boolean): void
     /**
      * Sets whether the layout should allow the user
      * to resize the surface after it has been presented.
+     * @param resizable %TRUE to allow resizing
      */
     setResizable(resizable: boolean): void
     /**
@@ -21320,6 +23066,8 @@ class ToplevelSize {
      * 
      * The minimum size should be within the bounds (see
      * [method`Gdk`.ToplevelSize.get_bounds]).
+     * @param minWidth the minimum width
+     * @param minHeight the minimum height
      */
     setMinSize(minWidth: number, minHeight: number): void
     /**
@@ -21328,6 +23076,10 @@ class ToplevelSize {
      * The shadow width corresponds to the part of the computed surface size
      * that would consist of the shadow margin surrounding the window, would
      * there be any.
+     * @param left width of the left part of the shadow
+     * @param right width of the right part of the shadow
+     * @param top height of the top part of the shadow
+     * @param bottom height of the bottom part of the shadow
      */
     setShadowWidth(left: number, right: number, top: number, bottom: number): void
     /**
@@ -21337,6 +23089,8 @@ class ToplevelSize {
      * [method`Gdk`.ToplevelSize.get_bounds]). The set size should
      * be considered as a hint, and should not be assumed to be
      * respected by the windowing system, or backend.
+     * @param width the width
+     * @param height the height
      */
     setSize(width: number, height: number): void
     static name: string

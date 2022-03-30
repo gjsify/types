@@ -459,7 +459,7 @@ interface Blob_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Blob {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Blob */
     /**
      * Queries the size in bytes of the data stored in the blob.
@@ -507,6 +507,10 @@ class Blob {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -517,6 +521,12 @@ class Blob {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -540,6 +550,7 @@ class Blob {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -559,11 +570,14 @@ class Blob {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -571,6 +585,8 @@ class Blob {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -588,6 +604,7 @@ class Blob {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -633,6 +650,7 @@ class Blob {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -676,15 +694,20 @@ class Blob {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -725,6 +748,7 @@ class Blob {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -759,6 +783,7 @@ class Blob {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -778,6 +803,7 @@ class Blob {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -810,6 +836,7 @@ class Blob {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Blob, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Blob, pspec: GObject.ParamSpec) => void)): number
@@ -829,7 +856,7 @@ interface ClipData_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ClipData {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.ClipData */
     /**
      * Queries the data blob that actually stores a #GsfClipData's binary data.
@@ -852,6 +879,7 @@ class ClipData {
      * in #GSF_CLIP_FORMAT_WINDOWS_CLIPBOARD format, then it will have extra header
      * bytes in front of the actual metafile data.  This function will skip over
      * those header bytes if necessary and return a pointer to the "real" data.
+     * @param ret_size Location to return the size of the returned data buffer.
      */
     peek_real_data(ret_size: number): object | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -889,6 +917,10 @@ class ClipData {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -899,6 +931,12 @@ class ClipData {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -922,6 +960,7 @@ class ClipData {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -941,11 +980,14 @@ class ClipData {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -953,6 +995,8 @@ class ClipData {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -970,6 +1014,7 @@ class ClipData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1015,6 +1060,7 @@ class ClipData {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1058,15 +1104,20 @@ class ClipData {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1107,6 +1158,7 @@ class ClipData {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1141,6 +1193,7 @@ class ClipData {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1160,6 +1213,7 @@ class ClipData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1192,6 +1246,7 @@ class ClipData {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ClipData, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ClipData, pspec: GObject.ParamSpec) => void)): number
@@ -1211,35 +1266,42 @@ interface DocMetaData_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DocMetaData {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.DocMetaData */
     /**
      * Iterate through each (key, value) pair in this collection
+     * @param func the function called once for each element in the collection
      */
     foreach(func: GLib.HFunc): void
     /**
      * Take ownership of `name` and `value` and insert a property into `meta`.
      * If a property exists with `name,` it is replaced (The link is lost)
+     * @param name the id.
+     * @param value #GValue
      */
     insert(name: string, value: any): void
     lookup(name: string): DocProp | null
     /**
      * Extend `xin` so that it can parse a subtree in OpenDoc metadata format
+     * @param doc #GsfXMLInDoc
      */
     odf_subtree(doc: XMLIn): void
     /**
      * Read a stream formated as a set of MS OLE properties from `in` and store the
      * results in `accum`.
+     * @param in_ #GsfInput
      */
     read_from_msole(in_: Input): GLib.Error
     /**
      * Read an OpenDocument metadata stream from `input` and store the properties
      * into `md`.  Overwrite any existing properties with the same id.
+     * @param input #GsfInput
      */
     read_from_odf(input: Input): GLib.Error
     /**
      * If `name` does not exist in the collection, do nothing. If `name` does exist,
      * remove it and its value from the collection
+     * @param name the non-null string name of the property
      */
     remove(name: string): void
     size(): number
@@ -1282,6 +1344,10 @@ class DocMetaData {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1292,6 +1358,12 @@ class DocMetaData {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1315,6 +1387,7 @@ class DocMetaData {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1334,11 +1407,14 @@ class DocMetaData {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1346,6 +1422,8 @@ class DocMetaData {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1363,6 +1441,7 @@ class DocMetaData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1408,6 +1487,7 @@ class DocMetaData {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1451,15 +1531,20 @@ class DocMetaData {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1500,6 +1585,7 @@ class DocMetaData {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1534,6 +1620,7 @@ class DocMetaData {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1553,6 +1640,7 @@ class DocMetaData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1585,6 +1673,7 @@ class DocMetaData {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DocMetaData, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DocMetaData, pspec: GObject.ParamSpec) => void)): number
@@ -1604,10 +1693,11 @@ interface DocPropVector_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DocPropVector {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.DocPropVector */
     /**
      * Insert a copy of `value` as the last element of `vector`.
+     * @param value The GValue to add to `vector`
      */
     append(value: any): void
     /**
@@ -1652,6 +1742,10 @@ class DocPropVector {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1662,6 +1756,12 @@ class DocPropVector {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1685,6 +1785,7 @@ class DocPropVector {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1704,11 +1805,14 @@ class DocPropVector {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1716,6 +1820,8 @@ class DocPropVector {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1733,6 +1839,7 @@ class DocPropVector {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1778,6 +1885,7 @@ class DocPropVector {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1821,15 +1929,20 @@ class DocPropVector {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1870,6 +1983,7 @@ class DocPropVector {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1904,6 +2018,7 @@ class DocPropVector {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1923,6 +2038,7 @@ class DocPropVector {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1955,6 +2071,7 @@ class DocPropVector {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DocPropVector, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DocPropVector, pspec: GObject.ParamSpec) => void)): number
@@ -1993,13 +2110,13 @@ class Infile {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Infile */
     /**
      * This function finds a child that is several directory levels down
@@ -2010,10 +2127,12 @@ class Infile {
      * words, this function finds the "foo/bar/baz" child.
      * 
      * New in 1.14.9.
+     * @param names A %NULL terminated array of names (e.g. from g_strsplit)
      */
     child_by_aname(names: string[]): Input
     /**
      * TODO : For 2.0 api will change to include a #GError.
+     * @param i target index
      */
     child_by_index(i: number): Input
     /**
@@ -2022,6 +2141,7 @@ class Infile {
      * down use gsf_infile_child_by_aname, for example.
      * 
      * TODO : For 2.0 api will change to include a #GError.
+     * @param name target name
      */
     child_by_name(name: string): Input
     name_by_index(i: number): string | null
@@ -2032,10 +2152,12 @@ class Infile {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -2050,28 +2172,35 @@ class Infile {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -2082,6 +2211,7 @@ class Infile {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -2125,6 +2255,10 @@ class Infile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2135,6 +2269,12 @@ class Infile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2158,6 +2298,7 @@ class Infile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2177,11 +2318,14 @@ class Infile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2189,6 +2333,8 @@ class Infile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2206,6 +2352,7 @@ class Infile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2251,6 +2398,7 @@ class Infile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2294,15 +2442,20 @@ class Infile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2343,6 +2496,7 @@ class Infile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2377,6 +2531,7 @@ class Infile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Infile */
@@ -2394,10 +2549,13 @@ class Infile {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2417,6 +2575,7 @@ class Infile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2449,6 +2608,7 @@ class Infile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Infile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Infile, pspec: GObject.ParamSpec) => void)): number
@@ -2493,19 +2653,20 @@ class InfileMSOle {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Infile */
-    readonly parent: Input
+    parent: Input
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.InfileMSOle */
     /**
      * Retrieves the 16 byte indentifier (often a GUID in MS Windows apps)
      * stored within the directory associated with `ole` and stores it in `res`.
+     * @param res 16 byte identifier (often a GUID in MS Windows apps)
      */
     get_class_id(res: number): boolean
     /* Methods of Gsf-1.Gsf.Infile */
@@ -2518,10 +2679,12 @@ class InfileMSOle {
      * words, this function finds the "foo/bar/baz" child.
      * 
      * New in 1.14.9.
+     * @param names A %NULL terminated array of names (e.g. from g_strsplit)
      */
     child_by_aname(names: string[]): Input
     /**
      * TODO : For 2.0 api will change to include a #GError.
+     * @param i target index
      */
     child_by_index(i: number): Input
     /**
@@ -2530,6 +2693,7 @@ class InfileMSOle {
      * down use gsf_infile_child_by_aname, for example.
      * 
      * TODO : For 2.0 api will change to include a #GError.
+     * @param name target name
      */
     child_by_name(name: string): Input
     name_by_index(i: number): string | null
@@ -2540,10 +2704,12 @@ class InfileMSOle {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -2558,28 +2724,35 @@ class InfileMSOle {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -2590,6 +2763,7 @@ class InfileMSOle {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -2633,6 +2807,10 @@ class InfileMSOle {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2643,6 +2821,12 @@ class InfileMSOle {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2666,6 +2850,7 @@ class InfileMSOle {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2685,11 +2870,14 @@ class InfileMSOle {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2697,6 +2885,8 @@ class InfileMSOle {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2714,6 +2904,7 @@ class InfileMSOle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2759,6 +2950,7 @@ class InfileMSOle {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2802,15 +2994,20 @@ class InfileMSOle {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2851,6 +3048,7 @@ class InfileMSOle {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2885,6 +3083,7 @@ class InfileMSOle {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Infile */
@@ -2902,10 +3101,13 @@ class InfileMSOle {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2925,6 +3127,7 @@ class InfileMSOle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2957,6 +3160,7 @@ class InfileMSOle {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InfileMSOle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InfileMSOle, pspec: GObject.ParamSpec) => void)): number
@@ -3003,15 +3207,15 @@ class InfileMSVBA {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Infile */
-    readonly parent: Input
+    parent: Input
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.InfileMSVBA */
     /**
      * a collection of names and source code.
@@ -3031,10 +3235,12 @@ class InfileMSVBA {
      * words, this function finds the "foo/bar/baz" child.
      * 
      * New in 1.14.9.
+     * @param names A %NULL terminated array of names (e.g. from g_strsplit)
      */
     child_by_aname(names: string[]): Input
     /**
      * TODO : For 2.0 api will change to include a #GError.
+     * @param i target index
      */
     child_by_index(i: number): Input
     /**
@@ -3043,6 +3249,7 @@ class InfileMSVBA {
      * down use gsf_infile_child_by_aname, for example.
      * 
      * TODO : For 2.0 api will change to include a #GError.
+     * @param name target name
      */
     child_by_name(name: string): Input
     name_by_index(i: number): string | null
@@ -3053,10 +3260,12 @@ class InfileMSVBA {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -3071,28 +3280,35 @@ class InfileMSVBA {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -3103,6 +3319,7 @@ class InfileMSVBA {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -3146,6 +3363,10 @@ class InfileMSVBA {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3156,6 +3377,12 @@ class InfileMSVBA {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3179,6 +3406,7 @@ class InfileMSVBA {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3198,11 +3426,14 @@ class InfileMSVBA {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3210,6 +3441,8 @@ class InfileMSVBA {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3227,6 +3460,7 @@ class InfileMSVBA {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3272,6 +3506,7 @@ class InfileMSVBA {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3315,15 +3550,20 @@ class InfileMSVBA {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3364,6 +3604,7 @@ class InfileMSVBA {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3398,6 +3639,7 @@ class InfileMSVBA {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Infile */
@@ -3415,10 +3657,13 @@ class InfileMSVBA {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3438,6 +3683,7 @@ class InfileMSVBA {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3470,6 +3716,7 @@ class InfileMSVBA {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InfileMSVBA, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InfileMSVBA, pspec: GObject.ParamSpec) => void)): number
@@ -3516,15 +3763,15 @@ class InfileStdio {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Infile */
-    readonly parent: Input
+    parent: Input
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Infile */
     /**
      * This function finds a child that is several directory levels down
@@ -3535,10 +3782,12 @@ class InfileStdio {
      * words, this function finds the "foo/bar/baz" child.
      * 
      * New in 1.14.9.
+     * @param names A %NULL terminated array of names (e.g. from g_strsplit)
      */
     child_by_aname(names: string[]): Input
     /**
      * TODO : For 2.0 api will change to include a #GError.
+     * @param i target index
      */
     child_by_index(i: number): Input
     /**
@@ -3547,6 +3796,7 @@ class InfileStdio {
      * down use gsf_infile_child_by_aname, for example.
      * 
      * TODO : For 2.0 api will change to include a #GError.
+     * @param name target name
      */
     child_by_name(name: string): Input
     name_by_index(i: number): string | null
@@ -3557,10 +3807,12 @@ class InfileStdio {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -3575,28 +3827,35 @@ class InfileStdio {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -3607,6 +3866,7 @@ class InfileStdio {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -3650,6 +3910,10 @@ class InfileStdio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3660,6 +3924,12 @@ class InfileStdio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3683,6 +3953,7 @@ class InfileStdio {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3702,11 +3973,14 @@ class InfileStdio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3714,6 +3988,8 @@ class InfileStdio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3731,6 +4007,7 @@ class InfileStdio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3776,6 +4053,7 @@ class InfileStdio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3819,15 +4097,20 @@ class InfileStdio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3868,6 +4151,7 @@ class InfileStdio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3902,6 +4186,7 @@ class InfileStdio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Infile */
@@ -3919,10 +4204,13 @@ class InfileStdio {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3942,6 +4230,7 @@ class InfileStdio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3974,6 +4263,7 @@ class InfileStdio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InfileStdio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InfileStdio, pspec: GObject.ParamSpec) => void)): number
@@ -4002,6 +4292,8 @@ interface InfileTar_ConstructProps extends Infile_ConstructProps {
     source?: Input
 }
 class InfileTar {
+    /* Properties of Gsf-1.Gsf.InfileTar */
+    readonly source: Input
     /* Properties of Gsf-1.Gsf.Input */
     /**
      * %TRUE if the end of the file has been reached.
@@ -4022,15 +4314,15 @@ class InfileTar {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Infile */
-    readonly parent: Input
+    parent: Input
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Infile */
     /**
      * This function finds a child that is several directory levels down
@@ -4041,10 +4333,12 @@ class InfileTar {
      * words, this function finds the "foo/bar/baz" child.
      * 
      * New in 1.14.9.
+     * @param names A %NULL terminated array of names (e.g. from g_strsplit)
      */
     child_by_aname(names: string[]): Input
     /**
      * TODO : For 2.0 api will change to include a #GError.
+     * @param i target index
      */
     child_by_index(i: number): Input
     /**
@@ -4053,6 +4347,7 @@ class InfileTar {
      * down use gsf_infile_child_by_aname, for example.
      * 
      * TODO : For 2.0 api will change to include a #GError.
+     * @param name target name
      */
     child_by_name(name: string): Input
     name_by_index(i: number): string | null
@@ -4063,10 +4358,12 @@ class InfileTar {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -4081,28 +4378,35 @@ class InfileTar {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -4113,6 +4417,7 @@ class InfileTar {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -4156,6 +4461,10 @@ class InfileTar {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4166,6 +4475,12 @@ class InfileTar {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4189,6 +4504,7 @@ class InfileTar {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4208,11 +4524,14 @@ class InfileTar {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4220,6 +4539,8 @@ class InfileTar {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4237,6 +4558,7 @@ class InfileTar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4282,6 +4604,7 @@ class InfileTar {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4325,15 +4648,20 @@ class InfileTar {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4374,6 +4702,7 @@ class InfileTar {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4408,6 +4737,7 @@ class InfileTar {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Infile */
@@ -4425,10 +4755,13 @@ class InfileTar {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4448,6 +4781,7 @@ class InfileTar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4480,10 +4814,13 @@ class InfileTar {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InfileTar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InfileTar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::source", callback: (($obj: InfileTar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: InfileTar, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::eof", callback: (($obj: InfileTar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::eof", callback: (($obj: InfileTar, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::modtime", callback: (($obj: InfileTar, pspec: GObject.ParamSpec) => void)): number
@@ -4514,6 +4851,8 @@ class InfileZip {
      * Controls the level of compression used for new members.
      */
     readonly compression_level: number
+    readonly internal_parent: InfileZip
+    readonly source: Input
     readonly zip64: boolean
     /* Properties of Gsf-1.Gsf.Input */
     /**
@@ -4535,15 +4874,15 @@ class InfileZip {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Infile */
-    readonly parent: Input
+    parent: Input
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Infile */
     /**
      * This function finds a child that is several directory levels down
@@ -4554,10 +4893,12 @@ class InfileZip {
      * words, this function finds the "foo/bar/baz" child.
      * 
      * New in 1.14.9.
+     * @param names A %NULL terminated array of names (e.g. from g_strsplit)
      */
     child_by_aname(names: string[]): Input
     /**
      * TODO : For 2.0 api will change to include a #GError.
+     * @param i target index
      */
     child_by_index(i: number): Input
     /**
@@ -4566,6 +4907,7 @@ class InfileZip {
      * down use gsf_infile_child_by_aname, for example.
      * 
      * TODO : For 2.0 api will change to include a #GError.
+     * @param name target name
      */
     child_by_name(name: string): Input
     name_by_index(i: number): string | null
@@ -4576,10 +4918,12 @@ class InfileZip {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -4594,28 +4938,35 @@ class InfileZip {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -4626,6 +4977,7 @@ class InfileZip {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -4669,6 +5021,10 @@ class InfileZip {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4679,6 +5035,12 @@ class InfileZip {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4702,6 +5064,7 @@ class InfileZip {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4721,11 +5084,14 @@ class InfileZip {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4733,6 +5099,8 @@ class InfileZip {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4750,6 +5118,7 @@ class InfileZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4795,6 +5164,7 @@ class InfileZip {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4838,15 +5208,20 @@ class InfileZip {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4887,6 +5262,7 @@ class InfileZip {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4921,6 +5297,7 @@ class InfileZip {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Infile */
@@ -4938,10 +5315,13 @@ class InfileZip {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4961,6 +5341,7 @@ class InfileZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4993,12 +5374,17 @@ class InfileZip {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::compression-level", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::compression-level", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::internal-parent", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::internal-parent", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::zip64", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::zip64", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::eof", callback: (($obj: InfileZip, pspec: GObject.ParamSpec) => void)): number
@@ -5052,17 +5438,19 @@ class Input {
      */
     readonly size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Input */
     /**
      * Copy the contents from `input` to `output` from their respective
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -5077,28 +5465,35 @@ class Input {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -5109,6 +5504,7 @@ class Input {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -5152,6 +5548,10 @@ class Input {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5162,6 +5562,12 @@ class Input {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5185,6 +5591,7 @@ class Input {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5204,11 +5611,14 @@ class Input {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5216,6 +5626,8 @@ class Input {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5233,6 +5645,7 @@ class Input {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5278,6 +5691,7 @@ class Input {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5321,15 +5735,20 @@ class Input {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5370,6 +5789,7 @@ class Input {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5404,6 +5824,7 @@ class Input {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Input */
@@ -5418,10 +5839,13 @@ class Input {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5441,6 +5865,7 @@ class Input {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5473,6 +5898,7 @@ class Input {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Input, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Input, pspec: GObject.ParamSpec) => void)): number
@@ -5510,6 +5936,10 @@ interface InputGZip_ConstructProps extends Input_ConstructProps {
     uncompressed_size?: number
 }
 class InputGZip {
+    /* Properties of Gsf-1.Gsf.InputGZip */
+    readonly raw: boolean
+    readonly source: Input
+    readonly uncompressed_size: number
     /* Properties of Gsf-1.Gsf.Input */
     /**
      * %TRUE if the end of the file has been reached.
@@ -5530,23 +5960,25 @@ class InputGZip {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Input */
     /**
      * Copy the contents from `input` to `output` from their respective
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -5561,28 +5993,35 @@ class InputGZip {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -5593,6 +6032,7 @@ class InputGZip {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -5636,6 +6076,10 @@ class InputGZip {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5646,6 +6090,12 @@ class InputGZip {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5669,6 +6119,7 @@ class InputGZip {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5688,11 +6139,14 @@ class InputGZip {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5700,6 +6154,8 @@ class InputGZip {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5717,6 +6173,7 @@ class InputGZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5762,6 +6219,7 @@ class InputGZip {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5805,15 +6263,20 @@ class InputGZip {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5854,6 +6317,7 @@ class InputGZip {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5888,6 +6352,7 @@ class InputGZip {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Input */
@@ -5902,10 +6367,13 @@ class InputGZip {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5925,6 +6393,7 @@ class InputGZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5957,10 +6426,17 @@ class InputGZip {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::raw", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::raw", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uncompressed-size", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uncompressed-size", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::eof", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::eof", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::modtime", callback: (($obj: InputGZip, pspec: GObject.ParamSpec) => void)): number
@@ -6003,23 +6479,25 @@ class InputGio {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Input */
     /**
      * Copy the contents from `input` to `output` from their respective
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -6034,28 +6512,35 @@ class InputGio {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -6066,6 +6551,7 @@ class InputGio {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -6109,6 +6595,10 @@ class InputGio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6119,6 +6609,12 @@ class InputGio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6142,6 +6638,7 @@ class InputGio {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6161,11 +6658,14 @@ class InputGio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6173,6 +6673,8 @@ class InputGio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6190,6 +6692,7 @@ class InputGio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6235,6 +6738,7 @@ class InputGio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6278,15 +6782,20 @@ class InputGio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6327,6 +6836,7 @@ class InputGio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6361,6 +6871,7 @@ class InputGio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Input */
@@ -6375,10 +6886,13 @@ class InputGio {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6398,6 +6912,7 @@ class InputGio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6430,6 +6945,7 @@ class InputGio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputGio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputGio, pspec: GObject.ParamSpec) => void)): number
@@ -6461,6 +6977,9 @@ interface InputHTTP_ConstructProps extends Input_ConstructProps {
     url?: string
 }
 class InputHTTP {
+    /* Properties of Gsf-1.Gsf.InputHTTP */
+    readonly content_type: string
+    readonly url: string
     /* Properties of Gsf-1.Gsf.Input */
     /**
      * %TRUE if the end of the file has been reached.
@@ -6481,13 +7000,13 @@ class InputHTTP {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.InputHTTP */
     get_content_type(): string
     get_url(): string
@@ -6497,10 +7016,12 @@ class InputHTTP {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -6515,28 +7036,35 @@ class InputHTTP {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -6547,6 +7075,7 @@ class InputHTTP {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -6590,6 +7119,10 @@ class InputHTTP {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6600,6 +7133,12 @@ class InputHTTP {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6623,6 +7162,7 @@ class InputHTTP {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6642,11 +7182,14 @@ class InputHTTP {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6654,6 +7197,8 @@ class InputHTTP {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6671,6 +7216,7 @@ class InputHTTP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6716,6 +7262,7 @@ class InputHTTP {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6759,15 +7306,20 @@ class InputHTTP {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6808,6 +7360,7 @@ class InputHTTP {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6842,6 +7395,7 @@ class InputHTTP {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Input */
@@ -6856,10 +7410,13 @@ class InputHTTP {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6879,6 +7436,7 @@ class InputHTTP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6911,10 +7469,15 @@ class InputHTTP {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::content-type", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::content-type", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::url", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::url", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::eof", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::eof", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::modtime", callback: (($obj: InputHTTP, pspec: GObject.ParamSpec) => void)): number
@@ -6957,23 +7520,25 @@ class InputMemory {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Input */
     /**
      * Copy the contents from `input` to `output` from their respective
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -6988,28 +7553,35 @@ class InputMemory {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -7020,6 +7592,7 @@ class InputMemory {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -7063,6 +7636,10 @@ class InputMemory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7073,6 +7650,12 @@ class InputMemory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7096,6 +7679,7 @@ class InputMemory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7115,11 +7699,14 @@ class InputMemory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7127,6 +7714,8 @@ class InputMemory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7144,6 +7733,7 @@ class InputMemory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7189,6 +7779,7 @@ class InputMemory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7232,15 +7823,20 @@ class InputMemory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7281,6 +7877,7 @@ class InputMemory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7315,6 +7912,7 @@ class InputMemory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Input */
@@ -7329,10 +7927,13 @@ class InputMemory {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7352,6 +7953,7 @@ class InputMemory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7384,6 +7986,7 @@ class InputMemory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputMemory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputMemory, pspec: GObject.ParamSpec) => void)): number
@@ -7433,23 +8036,25 @@ class InputProxy {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Input */
     /**
      * Copy the contents from `input` to `output` from their respective
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -7464,28 +8069,35 @@ class InputProxy {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -7496,6 +8108,7 @@ class InputProxy {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -7539,6 +8152,10 @@ class InputProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7549,6 +8166,12 @@ class InputProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7572,6 +8195,7 @@ class InputProxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7591,11 +8215,14 @@ class InputProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7603,6 +8230,8 @@ class InputProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7620,6 +8249,7 @@ class InputProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7665,6 +8295,7 @@ class InputProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7708,15 +8339,20 @@ class InputProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7757,6 +8393,7 @@ class InputProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7791,6 +8428,7 @@ class InputProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Input */
@@ -7805,10 +8443,13 @@ class InputProxy {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7828,6 +8469,7 @@ class InputProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7860,6 +8502,7 @@ class InputProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputProxy, pspec: GObject.ParamSpec) => void)): number
@@ -7907,23 +8550,25 @@ class InputStdio {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Input */
     /**
      * Copy the contents from `input` to `output` from their respective
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -7938,28 +8583,35 @@ class InputStdio {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -7970,6 +8622,7 @@ class InputStdio {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -8013,6 +8666,10 @@ class InputStdio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8023,6 +8680,12 @@ class InputStdio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8046,6 +8709,7 @@ class InputStdio {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8065,11 +8729,14 @@ class InputStdio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8077,6 +8744,8 @@ class InputStdio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8094,6 +8763,7 @@ class InputStdio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8139,6 +8809,7 @@ class InputStdio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8182,15 +8853,20 @@ class InputStdio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8231,6 +8907,7 @@ class InputStdio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8265,6 +8942,7 @@ class InputStdio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Input */
@@ -8279,10 +8957,13 @@ class InputStdio {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8302,6 +8983,7 @@ class InputStdio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8334,6 +9016,7 @@ class InputStdio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputStdio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputStdio, pspec: GObject.ParamSpec) => void)): number
@@ -8381,13 +9064,13 @@ class InputTextline {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.InputTextline */
     /**
      * A utility routine to read things line by line from the underlying source.
@@ -8407,10 +9090,12 @@ class InputTextline {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -8425,28 +9110,35 @@ class InputTextline {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -8457,6 +9149,7 @@ class InputTextline {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -8500,6 +9193,10 @@ class InputTextline {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8510,6 +9207,12 @@ class InputTextline {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8533,6 +9236,7 @@ class InputTextline {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8552,11 +9256,14 @@ class InputTextline {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8564,6 +9271,8 @@ class InputTextline {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8581,6 +9290,7 @@ class InputTextline {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8626,6 +9336,7 @@ class InputTextline {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8669,15 +9380,20 @@ class InputTextline {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8718,6 +9434,7 @@ class InputTextline {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8752,6 +9469,7 @@ class InputTextline {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Input */
@@ -8766,10 +9484,13 @@ class InputTextline {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8789,6 +9510,7 @@ class InputTextline {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8821,6 +9543,7 @@ class InputTextline {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputTextline, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputTextline, pspec: GObject.ParamSpec) => void)): number
@@ -8849,35 +9572,48 @@ interface ODFOut_ConstructProps extends XMLOut_ConstructProps {
     odf_version?: number
 }
 class ODFOut {
+    /* Properties of Gsf-1.Gsf.ODFOut */
+    readonly odf_version: number
     /* Properties of Gsf-1.Gsf.XMLOut */
     pretty_print: boolean
+    readonly sink: Output
     /* Fields of Gsf-1.Gsf.XMLOut */
-    readonly base: GObject.Object
-    readonly output: Output
-    readonly priv: object
+    base: GObject.Object
+    output: Output
+    priv: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.ODFOut */
     get_version(): number
     get_version_string(): string
     /* Methods of Gsf-1.Gsf.XMLOut */
     /**
      * Dump `len` bytes in `data` into the content of node `id` using base64
+     * @param id tag id, or %NULL for node content
+     * @param data Data to be written
      */
     add_base64(id: string | null, data: Uint8Array): void
     /**
      * dump boolean value `val` to an attribute named `id` or as the nodes content
      * Use '1' or '0' to simplify import
+     * @param id tag id, or %NULL for node content
+     * @param val a boolean
      */
     add_bool(id: string | null, val: boolean): void
     /**
      * dump Color `r`.`g`.`b` to an attribute named `id` or as the nodes content
+     * @param id tag id, or %NULL for node content
+     * @param r Red value
+     * @param g Green value
+     * @param b Blue value
      */
     add_color(id: string | null, r: number, g: number, b: number): void
     /**
      * dump `val_utf8` to an attribute named `id` or as the nodes content escaping
      * characters as necessary.  If `val_utf8` is %NULL do nothing (no warning, no
      * output)
+     * @param id tag id, or %NULL for node content
+     * @param val_utf8 a utf8 encoded string
      */
     add_cstr(id?: string | null, val_utf8?: string | null): void
     /**
@@ -8885,30 +9621,44 @@ class ODFOut {
      * the content needs escaping.  A useful performance enhancement when
      * the application knows that structure of the content well.  If
      * `val_utf8` is %NULL do nothing (no warning, no output)
+     * @param id tag id, or %NULL for node content
+     * @param val_utf8 a utf8 encoded string to export
      */
     add_cstr_unchecked(id?: string | null, val_utf8?: string | null): void
     /**
      * Output the name of value `val` of enumeration type `etype`.
+     * @param id tag id, or %NULL for node content
+     * @param etype #GType
+     * @param val enum element number
      */
     add_enum(id: string | null, etype: GObject.Type, val: number): void
     /**
      * dump float value `val` to an attribute named `id` or as the nodes
      * content with precision `precision`.  The number will be formattted
      * according to the "C" locale.
+     * @param id tag id, or %NULL for node content
+     * @param val the value
+     * @param precision the number of significant digits to use, -1 meaning "enough".
      */
     add_float(id: string | null, val: number, precision: number): void
     /**
      * Output the value of `val` as a string.  Does NOT store any type information
      * with the string, just thevalue.
+     * @param id tag id, or %NULL for node content
+     * @param val #GValue
      */
     add_gvalue(id: string | null, val: any): void
     /**
      * dump integer value `val` to an attribute named `id` or as the nodes content
+     * @param id tag id, or %NULL for node content
+     * @param val the value
      */
     add_int(id: string | null, val: number): void
     /**
      * dump unsigned integer value `val` to an attribute named `id` or as the nodes
      * content
+     * @param id tag id, or %NULL for node content
+     * @param val the value
      */
     add_uint(id: string | null, val: number): void
     /**
@@ -8922,24 +9672,33 @@ class ODFOut {
     get_pretty_print(): boolean
     /**
      * Store some optional &lt;!DOCTYPE .. &gt; content
+     * @param type the document type declaration
      */
     set_doc_type(type: string): void
     set_pretty_print(pp: boolean): boolean
     /**
      * Convenience routine to output a simple `id` element with content `content`.
+     * @param id Element name
+     * @param content Content of the element
      */
     simple_element(id: string, content: string): void
     /**
      * Convenience routine to output an element `id` with float value `val` using
      * `precision` significant digits.
+     * @param id Element name
+     * @param val Element value
+     * @param precision the number of significant digits to use, -1 meaning "enough".
      */
     simple_float_element(id: string, val: number, precision: number): void
     /**
      * Convenience routine to output an element `id` with integer value `val`.
+     * @param id Element name
+     * @param val Element value
      */
     simple_int_element(id: string, val: number): void
     /**
      * Output a start element `id,` if necessary preceeded by an XML declaration.
+     * @param id Element name
      */
     start_element(id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8977,6 +9736,10 @@ class ODFOut {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8987,6 +9750,12 @@ class ODFOut {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9010,6 +9779,7 @@ class ODFOut {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9029,11 +9799,14 @@ class ODFOut {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9041,6 +9814,8 @@ class ODFOut {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9058,6 +9833,7 @@ class ODFOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9103,6 +9879,7 @@ class ODFOut {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9146,15 +9923,20 @@ class ODFOut {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9195,6 +9977,7 @@ class ODFOut {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9229,6 +10012,7 @@ class ODFOut {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9248,6 +10032,7 @@ class ODFOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9280,12 +10065,17 @@ class ODFOut {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ODFOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ODFOut, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::odf-version", callback: (($obj: ODFOut, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::odf-version", callback: (($obj: ODFOut, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::pretty-print", callback: (($obj: ODFOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pretty-print", callback: (($obj: ODFOut, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sink", callback: (($obj: ODFOut, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sink", callback: (($obj: ODFOut, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9300,6 +10090,13 @@ interface Outfile_ConstructProps extends Output_ConstructProps {
 class Outfile {
     /* Properties of Gsf-1.Gsf.Output */
     /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
+    /**
      * The current position in the output.
      */
     readonly position: number
@@ -9308,23 +10105,27 @@ class Outfile {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Outfile */
     new_child(name: string, is_dir: boolean): Output
     /**
      * A convenience wrapper to create a child in `dir` of `content_type` then create
      * a `type` relation to `parent`
+     * @param name target name
+     * @param content_type non-%NULL content type
+     * @param parent #GsfOutfile
+     * @param type target type
      */
     open_pkg_add_rel(name: string, content_type: string, parent: Outfile, type: string): Output
     /* Methods of Gsf-1.Gsf.Output */
@@ -9336,6 +10137,7 @@ class Outfile {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -9345,22 +10147,27 @@ class Outfile {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -9371,6 +10178,7 @@ class Outfile {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -9408,6 +10216,10 @@ class Outfile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9418,6 +10230,12 @@ class Outfile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9441,6 +10259,7 @@ class Outfile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9460,11 +10279,14 @@ class Outfile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9472,6 +10294,8 @@ class Outfile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9489,6 +10313,7 @@ class Outfile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9534,6 +10359,7 @@ class Outfile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9577,15 +10403,20 @@ class Outfile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9626,6 +10457,7 @@ class Outfile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9660,6 +10492,7 @@ class Outfile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -9674,10 +10507,13 @@ class Outfile {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9697,6 +10533,7 @@ class Outfile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9729,10 +10566,13 @@ class Outfile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::modtime", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
@@ -9753,7 +10593,18 @@ interface OutfileMSOle_ConstructProps extends Outfile_ConstructProps {
     small_block_size?: number
 }
 class OutfileMSOle {
+    /* Properties of Gsf-1.Gsf.OutfileMSOle */
+    readonly big_block_size: number
+    readonly sink: Output
+    readonly small_block_size: number
     /* Properties of Gsf-1.Gsf.Output */
+    /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
     /**
      * The current position in the output.
      */
@@ -9763,23 +10614,24 @@ class OutfileMSOle {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Outfile */
-    readonly parent: Output
+    parent: Output
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.OutfileMSOle */
     /**
      * Write `clsid` to the directory associated with `ole`.
+     * @param clsid Identifier (often a GUID in MS Windows apps)
      */
     set_class_id(clsid: Uint8Array): boolean
     /* Methods of Gsf-1.Gsf.Outfile */
@@ -9787,6 +10639,10 @@ class OutfileMSOle {
     /**
      * A convenience wrapper to create a child in `dir` of `content_type` then create
      * a `type` relation to `parent`
+     * @param name target name
+     * @param content_type non-%NULL content type
+     * @param parent #GsfOutfile
+     * @param type target type
      */
     open_pkg_add_rel(name: string, content_type: string, parent: Outfile, type: string): Output
     /* Methods of Gsf-1.Gsf.Output */
@@ -9798,6 +10654,7 @@ class OutfileMSOle {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -9807,22 +10664,27 @@ class OutfileMSOle {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -9833,6 +10695,7 @@ class OutfileMSOle {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -9870,6 +10733,10 @@ class OutfileMSOle {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9880,6 +10747,12 @@ class OutfileMSOle {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9903,6 +10776,7 @@ class OutfileMSOle {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9922,11 +10796,14 @@ class OutfileMSOle {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9934,6 +10811,8 @@ class OutfileMSOle {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9951,6 +10830,7 @@ class OutfileMSOle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9996,6 +10876,7 @@ class OutfileMSOle {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10039,15 +10920,20 @@ class OutfileMSOle {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10088,6 +10974,7 @@ class OutfileMSOle {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10122,6 +11009,7 @@ class OutfileMSOle {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -10136,10 +11024,13 @@ class OutfileMSOle {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10159,6 +11050,7 @@ class OutfileMSOle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10191,10 +11083,19 @@ class OutfileMSOle {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::big-block-size", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::big-block-size", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sink", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sink", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::small-block-size", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::small-block-size", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::modtime", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
@@ -10218,7 +11119,18 @@ interface OutfileOpenPkg_ConstructProps extends Outfile_ConstructProps {
     sink?: Outfile
 }
 class OutfileOpenPkg {
+    /* Properties of Gsf-1.Gsf.OutfileOpenPkg */
+    readonly content_type: string
+    readonly is_dir: boolean
+    readonly sink: Outfile
     /* Properties of Gsf-1.Gsf.Output */
+    /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
     /**
      * The current position in the output.
      */
@@ -10228,32 +11140,37 @@ class OutfileOpenPkg {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Outfile */
-    readonly parent: Output
+    parent: Output
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.OutfileOpenPkg */
     /**
      * Add an external relation to `parent`.
+     * @param target target type
+     * @param content_type target content
      */
     add_extern_rel(target: string, content_type: string): string
     /**
      * Create a relationship between `child` and `parent` of `type`.
+     * @param parent #GsfOutfileOpenPkg
+     * @param type target type
      */
     relate(parent: OutfileOpenPkg, type: string): string
     set_content_type(content_type: string): void
     /**
      * Assigns a GsfOutput (`sink)` to store the package into.
+     * @param sink #GsfOutput
      */
     set_sink(sink: Output): void
     /* Methods of Gsf-1.Gsf.Outfile */
@@ -10261,6 +11178,10 @@ class OutfileOpenPkg {
     /**
      * A convenience wrapper to create a child in `dir` of `content_type` then create
      * a `type` relation to `parent`
+     * @param name target name
+     * @param content_type non-%NULL content type
+     * @param parent #GsfOutfile
+     * @param type target type
      */
     open_pkg_add_rel(name: string, content_type: string, parent: Outfile, type: string): Output
     /* Methods of Gsf-1.Gsf.Output */
@@ -10272,6 +11193,7 @@ class OutfileOpenPkg {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -10281,22 +11203,27 @@ class OutfileOpenPkg {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -10307,6 +11234,7 @@ class OutfileOpenPkg {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -10344,6 +11272,10 @@ class OutfileOpenPkg {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10354,6 +11286,12 @@ class OutfileOpenPkg {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10377,6 +11315,7 @@ class OutfileOpenPkg {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10396,11 +11335,14 @@ class OutfileOpenPkg {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10408,6 +11350,8 @@ class OutfileOpenPkg {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10425,6 +11369,7 @@ class OutfileOpenPkg {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10470,6 +11415,7 @@ class OutfileOpenPkg {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10513,15 +11459,20 @@ class OutfileOpenPkg {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10562,6 +11513,7 @@ class OutfileOpenPkg {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10596,6 +11548,7 @@ class OutfileOpenPkg {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -10610,10 +11563,13 @@ class OutfileOpenPkg {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10633,6 +11589,7 @@ class OutfileOpenPkg {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10665,10 +11622,19 @@ class OutfileOpenPkg {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::content-type", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::content-type", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::is-dir", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-dir", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sink", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sink", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::modtime", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
@@ -10689,6 +11655,13 @@ interface OutfileStdio_ConstructProps extends Outfile_ConstructProps {
 class OutfileStdio {
     /* Properties of Gsf-1.Gsf.Output */
     /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
+    /**
      * The current position in the output.
      */
     readonly position: number
@@ -10697,25 +11670,29 @@ class OutfileStdio {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Outfile */
-    readonly parent: Output
+    parent: Output
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Outfile */
     new_child(name: string, is_dir: boolean): Output
     /**
      * A convenience wrapper to create a child in `dir` of `content_type` then create
      * a `type` relation to `parent`
+     * @param name target name
+     * @param content_type non-%NULL content type
+     * @param parent #GsfOutfile
+     * @param type target type
      */
     open_pkg_add_rel(name: string, content_type: string, parent: Outfile, type: string): Output
     /* Methods of Gsf-1.Gsf.Output */
@@ -10727,6 +11704,7 @@ class OutfileStdio {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -10736,22 +11714,27 @@ class OutfileStdio {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -10762,6 +11745,7 @@ class OutfileStdio {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -10799,6 +11783,10 @@ class OutfileStdio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10809,6 +11797,12 @@ class OutfileStdio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10832,6 +11826,7 @@ class OutfileStdio {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10851,11 +11846,14 @@ class OutfileStdio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10863,6 +11861,8 @@ class OutfileStdio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10880,6 +11880,7 @@ class OutfileStdio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10925,6 +11926,7 @@ class OutfileStdio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10968,15 +11970,20 @@ class OutfileStdio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11017,6 +12024,7 @@ class OutfileStdio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11051,6 +12059,7 @@ class OutfileStdio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -11065,10 +12074,13 @@ class OutfileStdio {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11088,6 +12100,7 @@ class OutfileStdio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11120,10 +12133,13 @@ class OutfileStdio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::modtime", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
@@ -11148,7 +12164,20 @@ interface OutfileZip_ConstructProps extends Outfile_ConstructProps {
     zip64?: number
 }
 class OutfileZip {
+    /* Properties of Gsf-1.Gsf.OutfileZip */
+    readonly compression_level: number
+    readonly deflate_level: number
+    readonly entry_name: string
+    readonly sink: Output
+    readonly zip64: number
     /* Properties of Gsf-1.Gsf.Output */
+    /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
     /**
      * The current position in the output.
      */
@@ -11158,20 +12187,20 @@ class OutfileZip {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Outfile */
-    readonly parent: Output
+    parent: Output
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.OutfileZip */
     set_compression_method(method: ZipCompressionMethod): boolean
     /* Methods of Gsf-1.Gsf.Outfile */
@@ -11179,6 +12208,10 @@ class OutfileZip {
     /**
      * A convenience wrapper to create a child in `dir` of `content_type` then create
      * a `type` relation to `parent`
+     * @param name target name
+     * @param content_type non-%NULL content type
+     * @param parent #GsfOutfile
+     * @param type target type
      */
     open_pkg_add_rel(name: string, content_type: string, parent: Outfile, type: string): Output
     /* Methods of Gsf-1.Gsf.Output */
@@ -11190,6 +12223,7 @@ class OutfileZip {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -11199,22 +12233,27 @@ class OutfileZip {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -11225,6 +12264,7 @@ class OutfileZip {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -11262,6 +12302,10 @@ class OutfileZip {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11272,6 +12316,12 @@ class OutfileZip {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11295,6 +12345,7 @@ class OutfileZip {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11314,11 +12365,14 @@ class OutfileZip {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11326,6 +12380,8 @@ class OutfileZip {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11343,6 +12399,7 @@ class OutfileZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11388,6 +12445,7 @@ class OutfileZip {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11431,15 +12489,20 @@ class OutfileZip {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11480,6 +12543,7 @@ class OutfileZip {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11514,6 +12578,7 @@ class OutfileZip {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -11528,10 +12593,13 @@ class OutfileZip {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11551,6 +12619,7 @@ class OutfileZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11583,10 +12652,23 @@ class OutfileZip {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::compression-level", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::compression-level", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::deflate-level", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::deflate-level", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::entry-name", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::entry-name", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sink", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sink", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::zip64", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::zip64", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::modtime", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
@@ -11627,6 +12709,13 @@ class Output {
      * %TRUE if the output has been closed.
      */
     readonly is_closed: boolean
+    /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
     name: string
     /**
      * The current position in the output.
@@ -11637,7 +12726,7 @@ class Output {
      */
     readonly size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Output */
     /**
      * Close a stream.
@@ -11647,6 +12736,7 @@ class Output {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -11656,22 +12746,27 @@ class Output {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -11682,6 +12777,7 @@ class Output {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -11719,6 +12815,10 @@ class Output {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11729,6 +12829,12 @@ class Output {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11752,6 +12858,7 @@ class Output {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11771,11 +12878,14 @@ class Output {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11783,6 +12893,8 @@ class Output {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11800,6 +12912,7 @@ class Output {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11845,6 +12958,7 @@ class Output {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11888,15 +13002,20 @@ class Output {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11937,6 +13056,7 @@ class Output {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11971,6 +13091,7 @@ class Output {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -11985,10 +13106,13 @@ class Output {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12008,6 +13132,7 @@ class Output {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12040,6 +13165,7 @@ class Output {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
@@ -12048,6 +13174,8 @@ class Output {
     connect_after(sigName: "notify::container", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::is-closed", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-closed", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::modtime", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::name", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
@@ -12072,6 +13200,13 @@ interface OutputBzip_ConstructProps extends Output_ConstructProps {
 class OutputBzip {
     /* Properties of Gsf-1.Gsf.Output */
     /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
+    /**
      * The current position in the output.
      */
     readonly position: number
@@ -12080,18 +13215,18 @@ class OutputBzip {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Output */
     /**
      * Close a stream.
@@ -12101,6 +13236,7 @@ class OutputBzip {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -12110,22 +13246,27 @@ class OutputBzip {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -12136,6 +13277,7 @@ class OutputBzip {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -12173,6 +13315,10 @@ class OutputBzip {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12183,6 +13329,12 @@ class OutputBzip {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12206,6 +13358,7 @@ class OutputBzip {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12225,11 +13378,14 @@ class OutputBzip {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12237,6 +13393,8 @@ class OutputBzip {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12254,6 +13412,7 @@ class OutputBzip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12299,6 +13458,7 @@ class OutputBzip {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12342,15 +13502,20 @@ class OutputBzip {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12391,6 +13556,7 @@ class OutputBzip {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12425,6 +13591,7 @@ class OutputBzip {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -12439,10 +13606,13 @@ class OutputBzip {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12462,6 +13632,7 @@ class OutputBzip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12494,10 +13665,13 @@ class OutputBzip {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::modtime", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
@@ -12534,6 +13708,13 @@ class OutputCsv {
     sink: Output
     /* Properties of Gsf-1.Gsf.Output */
     /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
+    /**
      * The current position in the output.
      */
     readonly position: number
@@ -12542,18 +13723,18 @@ class OutputCsv {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.OutputCsv */
     write_eol(): boolean
     write_field(field: string, len: number): boolean
@@ -12566,6 +13747,7 @@ class OutputCsv {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -12575,22 +13757,27 @@ class OutputCsv {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -12601,6 +13788,7 @@ class OutputCsv {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -12638,6 +13826,10 @@ class OutputCsv {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12648,6 +13840,12 @@ class OutputCsv {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12671,6 +13869,7 @@ class OutputCsv {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12690,11 +13889,14 @@ class OutputCsv {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12702,6 +13904,8 @@ class OutputCsv {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12719,6 +13923,7 @@ class OutputCsv {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12764,6 +13969,7 @@ class OutputCsv {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12807,15 +14013,20 @@ class OutputCsv {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12856,6 +14067,7 @@ class OutputCsv {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12890,6 +14102,7 @@ class OutputCsv {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -12904,10 +14117,13 @@ class OutputCsv {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12927,6 +14143,7 @@ class OutputCsv {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12959,6 +14176,7 @@ class OutputCsv {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
@@ -12977,6 +14195,8 @@ class OutputCsv {
     connect_after(sigName: "notify::separator", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::sink", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sink", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::modtime", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
@@ -12999,7 +14219,16 @@ interface OutputGZip_ConstructProps extends Output_ConstructProps {
 class OutputGZip {
     /* Properties of Gsf-1.Gsf.OutputGZip */
     deflate_level: number
+    readonly raw: boolean
+    readonly sink: Output
     /* Properties of Gsf-1.Gsf.Output */
+    /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
     /**
      * The current position in the output.
      */
@@ -13009,18 +14238,18 @@ class OutputGZip {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Output */
     /**
      * Close a stream.
@@ -13030,6 +14259,7 @@ class OutputGZip {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -13039,22 +14269,27 @@ class OutputGZip {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -13065,6 +14300,7 @@ class OutputGZip {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -13102,6 +14338,10 @@ class OutputGZip {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13112,6 +14352,12 @@ class OutputGZip {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13135,6 +14381,7 @@ class OutputGZip {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13154,11 +14401,14 @@ class OutputGZip {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13166,6 +14416,8 @@ class OutputGZip {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13183,6 +14435,7 @@ class OutputGZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13228,6 +14481,7 @@ class OutputGZip {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13271,15 +14525,20 @@ class OutputGZip {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13320,6 +14579,7 @@ class OutputGZip {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13354,6 +14614,7 @@ class OutputGZip {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -13368,10 +14629,13 @@ class OutputGZip {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13391,6 +14655,7 @@ class OutputGZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13423,12 +14688,19 @@ class OutputGZip {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::deflate-level", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deflate-level", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::raw", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::raw", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sink", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sink", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::modtime", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
@@ -13449,6 +14721,13 @@ interface OutputGio_ConstructProps extends Output_ConstructProps {
 class OutputGio {
     /* Properties of Gsf-1.Gsf.Output */
     /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
+    /**
      * The current position in the output.
      */
     readonly position: number
@@ -13457,18 +14736,18 @@ class OutputGio {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Output */
     /**
      * Close a stream.
@@ -13478,6 +14757,7 @@ class OutputGio {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -13487,22 +14767,27 @@ class OutputGio {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -13513,6 +14798,7 @@ class OutputGio {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -13550,6 +14836,10 @@ class OutputGio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13560,6 +14850,12 @@ class OutputGio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13583,6 +14879,7 @@ class OutputGio {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13602,11 +14899,14 @@ class OutputGio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13614,6 +14914,8 @@ class OutputGio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13631,6 +14933,7 @@ class OutputGio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13676,6 +14979,7 @@ class OutputGio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13719,15 +15023,20 @@ class OutputGio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13768,6 +15077,7 @@ class OutputGio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13802,6 +15112,7 @@ class OutputGio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -13816,10 +15127,13 @@ class OutputGio {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13839,6 +15153,7 @@ class OutputGio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13871,10 +15186,13 @@ class OutputGio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::modtime", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
@@ -13897,6 +15215,13 @@ interface OutputIOChannel_ConstructProps extends Output_ConstructProps {
 class OutputIOChannel {
     /* Properties of Gsf-1.Gsf.Output */
     /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
+    /**
      * The current position in the output.
      */
     readonly position: number
@@ -13905,18 +15230,18 @@ class OutputIOChannel {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Output */
     /**
      * Close a stream.
@@ -13926,6 +15251,7 @@ class OutputIOChannel {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -13935,22 +15261,27 @@ class OutputIOChannel {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -13961,6 +15292,7 @@ class OutputIOChannel {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -13998,6 +15330,10 @@ class OutputIOChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14008,6 +15344,12 @@ class OutputIOChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14031,6 +15373,7 @@ class OutputIOChannel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14050,11 +15393,14 @@ class OutputIOChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14062,6 +15408,8 @@ class OutputIOChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14079,6 +15427,7 @@ class OutputIOChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14124,6 +15473,7 @@ class OutputIOChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14167,15 +15517,20 @@ class OutputIOChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14216,6 +15571,7 @@ class OutputIOChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14250,6 +15606,7 @@ class OutputIOChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -14264,10 +15621,13 @@ class OutputIOChannel {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14287,6 +15647,7 @@ class OutputIOChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14319,10 +15680,13 @@ class OutputIOChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::modtime", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
@@ -14358,7 +15722,17 @@ class OutputIconv {
      * in the target encoding.  NULL means use \u1234 or \U12345678 format.
      */
     fallback: string
+    readonly input_charset: string
+    readonly output_charset: string
+    readonly sink: Output
     /* Properties of Gsf-1.Gsf.Output */
+    /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
     /**
      * The current position in the output.
      */
@@ -14368,18 +15742,18 @@ class OutputIconv {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Output */
     /**
      * Close a stream.
@@ -14389,6 +15763,7 @@ class OutputIconv {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -14398,22 +15773,27 @@ class OutputIconv {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -14424,6 +15804,7 @@ class OutputIconv {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -14461,6 +15842,10 @@ class OutputIconv {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14471,6 +15856,12 @@ class OutputIconv {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14494,6 +15885,7 @@ class OutputIconv {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14513,11 +15905,14 @@ class OutputIconv {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14525,6 +15920,8 @@ class OutputIconv {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14542,6 +15939,7 @@ class OutputIconv {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14587,6 +15985,7 @@ class OutputIconv {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14630,15 +16029,20 @@ class OutputIconv {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14679,6 +16083,7 @@ class OutputIconv {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14713,6 +16118,7 @@ class OutputIconv {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -14727,10 +16133,13 @@ class OutputIconv {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14750,6 +16159,7 @@ class OutputIconv {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14782,12 +16192,21 @@ class OutputIconv {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::fallback", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::fallback", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::input-charset", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::input-charset", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::output-charset", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::output-charset", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sink", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sink", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::modtime", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
@@ -14808,6 +16227,13 @@ interface OutputMemory_ConstructProps extends Output_ConstructProps {
 class OutputMemory {
     /* Properties of Gsf-1.Gsf.Output */
     /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
+    /**
      * The current position in the output.
      */
     readonly position: number
@@ -14816,18 +16242,18 @@ class OutputMemory {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.OutputMemory */
     get_bytes(): Uint8Array | null
     steal_bytes(): Uint8Array | null
@@ -14840,6 +16266,7 @@ class OutputMemory {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -14849,22 +16276,27 @@ class OutputMemory {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -14875,6 +16307,7 @@ class OutputMemory {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -14912,6 +16345,10 @@ class OutputMemory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14922,6 +16359,12 @@ class OutputMemory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14945,6 +16388,7 @@ class OutputMemory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14964,11 +16408,14 @@ class OutputMemory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14976,6 +16423,8 @@ class OutputMemory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14993,6 +16442,7 @@ class OutputMemory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15038,6 +16488,7 @@ class OutputMemory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15081,15 +16532,20 @@ class OutputMemory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15130,6 +16586,7 @@ class OutputMemory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15164,6 +16621,7 @@ class OutputMemory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -15178,10 +16636,13 @@ class OutputMemory {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15201,6 +16662,7 @@ class OutputMemory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15233,10 +16695,13 @@ class OutputMemory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::modtime", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
@@ -15257,6 +16722,13 @@ interface OutputStdio_ConstructProps extends Output_ConstructProps {
 class OutputStdio {
     /* Properties of Gsf-1.Gsf.Output */
     /**
+     * The time the output was last updated.  This must be set on object
+     * construction and represents the timestamp to put on the resulting
+     * file or #GsfOutfile member.  Not all derived classes will actually
+     * do anything with this property.
+     */
+    readonly modtime: GLib.DateTime
+    /**
      * The current position in the output.
      */
     readonly position: number
@@ -15265,18 +16737,18 @@ class OutputStdio {
      */
     readonly size: number
     /* Fields of Gsf-1.Gsf.Output */
-    readonly g_object: GObject.Object
-    readonly cur_size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly wrapped_by: GObject.Object
-    readonly container: Outfile
-    readonly err: GLib.Error
-    readonly is_closed: boolean
-    readonly printf_buf: string
-    readonly printf_buf_size: number
+    g_object: GObject.Object
+    cur_size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    wrapped_by: GObject.Object
+    container: Outfile
+    err: GLib.Error
+    is_closed: boolean
+    printf_buf: string
+    printf_buf_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.Output */
     /**
      * Close a stream.
@@ -15286,6 +16758,7 @@ class OutputStdio {
     get_modtime(): GLib.DateTime | null
     /**
      * Like fputs, this assumes that the line already ends with a newline
+     * @param line Nul terminated string to write
      */
     puts(line: string): boolean
     /**
@@ -15295,22 +16768,27 @@ class OutputStdio {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param container #GsfOutfile
      */
     set_container(container?: Outfile | null): boolean
     set_modtime(modtime?: GLib.DateTime | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param name the new name
      */
     set_name(name?: string | null): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
      * outputs.</note>
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename?: string | null): boolean
     /**
@@ -15321,6 +16799,7 @@ class OutputStdio {
     tell(): gsf_off_t
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     write(data: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -15358,6 +16837,10 @@ class OutputStdio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15368,6 +16851,12 @@ class OutputStdio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15391,6 +16880,7 @@ class OutputStdio {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15410,11 +16900,14 @@ class OutputStdio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15422,6 +16915,8 @@ class OutputStdio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15439,6 +16934,7 @@ class OutputStdio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15484,6 +16980,7 @@ class OutputStdio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15527,15 +17024,20 @@ class OutputStdio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15576,6 +17078,7 @@ class OutputStdio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15610,6 +17113,7 @@ class OutputStdio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Output */
@@ -15624,10 +17128,13 @@ class OutputStdio {
      * This function is similar to
      * <citerefentry><refentrytitle>fseek</refentrytitle>
      * <manvolnum>3</manvolnum></citerefentry>.
+     * @param offset Relative amount to reposition
+     * @param whence What the offset is relative to.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Write `num_bytes` of `data` to `output`.
+     * @param data Data to write.
      */
     vfunc_Write(data: Uint8Array): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15647,6 +17154,7 @@ class OutputStdio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15679,10 +17187,13 @@ class OutputStdio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::modtime", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modtime", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::position", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
@@ -15702,7 +17213,7 @@ interface SharedMemory_ConstructProps extends GObject.Object_ConstructProps {
 }
 class SharedMemory {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -15738,6 +17249,10 @@ class SharedMemory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15748,6 +17263,12 @@ class SharedMemory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15771,6 +17292,7 @@ class SharedMemory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15790,11 +17312,14 @@ class SharedMemory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15802,6 +17327,8 @@ class SharedMemory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15819,6 +17346,7 @@ class SharedMemory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15864,6 +17392,7 @@ class SharedMemory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15907,15 +17436,20 @@ class SharedMemory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15956,6 +17490,7 @@ class SharedMemory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15990,6 +17525,7 @@ class SharedMemory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16009,6 +17545,7 @@ class SharedMemory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16041,6 +17578,7 @@ class SharedMemory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SharedMemory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SharedMemory, pspec: GObject.ParamSpec) => void)): number
@@ -16080,19 +17618,20 @@ class StructuredBlob {
      */
     readonly remaining: number
     /* Fields of Gsf-1.Gsf.Infile */
-    readonly parent: Input
+    parent: Input
     /* Fields of Gsf-1.Gsf.Input */
-    readonly g_object: GObject.Object
-    readonly size: gsf_off_t
-    readonly cur_offset: gsf_off_t
-    readonly name: string
-    readonly container: Infile
+    g_object: GObject.Object
+    size: gsf_off_t
+    cur_offset: gsf_off_t
+    name: string
+    container: Infile
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.StructuredBlob */
     /**
      * Dumps structured blob `blob` onto the `container`.  Will fail if the output is
      * not an Outfile and blob has multiple streams.
+     * @param container #GsfOutfile
      */
     write(container: Outfile): boolean
     /* Methods of Gsf-1.Gsf.Infile */
@@ -16105,10 +17644,12 @@ class StructuredBlob {
      * words, this function finds the "foo/bar/baz" child.
      * 
      * New in 1.14.9.
+     * @param names A %NULL terminated array of names (e.g. from g_strsplit)
      */
     child_by_aname(names: string[]): Input
     /**
      * TODO : For 2.0 api will change to include a #GError.
+     * @param i target index
      */
     child_by_index(i: number): Input
     /**
@@ -16117,6 +17658,7 @@ class StructuredBlob {
      * down use gsf_infile_child_by_aname, for example.
      * 
      * TODO : For 2.0 api will change to include a #GError.
+     * @param name target name
      */
     child_by_name(name: string): Input
     name_by_index(i: number): string | null
@@ -16127,10 +17669,12 @@ class StructuredBlob {
      * current positions. So if you want to be sure to copy *everything*,
      * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
      * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
+     * @param output a non-null #GsfOutput
      */
     copy(output: Output): boolean
     /**
      * Dumps `input'`s contents to STDOUT, optionally in hex format.
+     * @param dump_as_hex If %TRUE, dump in hexidecmal format
      */
     dump(dump_as_hex: boolean): void
     /**
@@ -16145,28 +17689,35 @@ class StructuredBlob {
     /**
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
+     * @param num_bytes number of bytes to read
      */
     read(num_bytes: number): Uint8Array
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * Emulate forward seeks by reading.
+     * @param pos absolute position to seek to
      */
     seek_emulate(pos: gsf_off_t): boolean
     set_container(container?: Infile | null): boolean
     /**
      * protected.
+     * @param modtime the new modification time.
      */
     set_modtime(modtime?: GLib.DateTime | null): boolean
     set_modtime_from_stat(st?: object | null): boolean
     /**
      * protected.
+     * @param name the new name of the stream
      */
     set_name(name?: string | null): boolean
     /**
      * protected.
+     * @param filename the (fs-sys encoded) filename
      */
     set_name_from_filename(filename: string): boolean
     set_size(size: gsf_off_t): boolean
@@ -16177,6 +17728,7 @@ class StructuredBlob {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     sibling(name: string): Input
     tell(): gsf_off_t
@@ -16220,6 +17772,10 @@ class StructuredBlob {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16230,6 +17786,12 @@ class StructuredBlob {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16253,6 +17815,7 @@ class StructuredBlob {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16272,11 +17835,14 @@ class StructuredBlob {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16284,6 +17850,8 @@ class StructuredBlob {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16301,6 +17869,7 @@ class StructuredBlob {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16346,6 +17915,7 @@ class StructuredBlob {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16389,15 +17959,20 @@ class StructuredBlob {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16438,6 +18013,7 @@ class StructuredBlob {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16472,6 +18048,7 @@ class StructuredBlob {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gsf-1.Gsf.Infile */
@@ -16489,10 +18066,13 @@ class StructuredBlob {
      * 
      * Attempts to open a 'sibling' of `input`.  The caller is responsible for
      * managing the resulting object.
+     * @param name name.
      */
     vfunc_OpenSibling(name: string): Input
     /**
      * Move the current location in the input stream.
+     * @param offset target offset
+     * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
      */
     vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16512,6 +18092,7 @@ class StructuredBlob {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16544,6 +18125,7 @@ class StructuredBlob {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StructuredBlob, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StructuredBlob, pspec: GObject.ParamSpec) => void)): number
@@ -16567,6 +18149,7 @@ class StructuredBlob {
     /**
      * Create a tree of binary blobs with unknown content from a #GsfInput or
      * #GsfInfile and store it in a newly created #GsfStructuredBlob.
+     * @param input An input (potentially a GsfInfile) holding the blob
      */
     static read(input: Input): StructuredBlob
     static $gtype: GObject.Type
@@ -16579,26 +18162,37 @@ interface XMLOut_ConstructProps extends GObject.Object_ConstructProps {
 class XMLOut {
     /* Properties of Gsf-1.Gsf.XMLOut */
     pretty_print: boolean
+    readonly sink: Output
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gsf-1.Gsf.XMLOut */
     /**
      * Dump `len` bytes in `data` into the content of node `id` using base64
+     * @param id tag id, or %NULL for node content
+     * @param data Data to be written
      */
     add_base64(id: string | null, data: Uint8Array): void
     /**
      * dump boolean value `val` to an attribute named `id` or as the nodes content
      * Use '1' or '0' to simplify import
+     * @param id tag id, or %NULL for node content
+     * @param val a boolean
      */
     add_bool(id: string | null, val: boolean): void
     /**
      * dump Color `r`.`g`.`b` to an attribute named `id` or as the nodes content
+     * @param id tag id, or %NULL for node content
+     * @param r Red value
+     * @param g Green value
+     * @param b Blue value
      */
     add_color(id: string | null, r: number, g: number, b: number): void
     /**
      * dump `val_utf8` to an attribute named `id` or as the nodes content escaping
      * characters as necessary.  If `val_utf8` is %NULL do nothing (no warning, no
      * output)
+     * @param id tag id, or %NULL for node content
+     * @param val_utf8 a utf8 encoded string
      */
     add_cstr(id?: string | null, val_utf8?: string | null): void
     /**
@@ -16606,30 +18200,44 @@ class XMLOut {
      * the content needs escaping.  A useful performance enhancement when
      * the application knows that structure of the content well.  If
      * `val_utf8` is %NULL do nothing (no warning, no output)
+     * @param id tag id, or %NULL for node content
+     * @param val_utf8 a utf8 encoded string to export
      */
     add_cstr_unchecked(id?: string | null, val_utf8?: string | null): void
     /**
      * Output the name of value `val` of enumeration type `etype`.
+     * @param id tag id, or %NULL for node content
+     * @param etype #GType
+     * @param val enum element number
      */
     add_enum(id: string | null, etype: GObject.Type, val: number): void
     /**
      * dump float value `val` to an attribute named `id` or as the nodes
      * content with precision `precision`.  The number will be formattted
      * according to the "C" locale.
+     * @param id tag id, or %NULL for node content
+     * @param val the value
+     * @param precision the number of significant digits to use, -1 meaning "enough".
      */
     add_float(id: string | null, val: number, precision: number): void
     /**
      * Output the value of `val` as a string.  Does NOT store any type information
      * with the string, just thevalue.
+     * @param id tag id, or %NULL for node content
+     * @param val #GValue
      */
     add_gvalue(id: string | null, val: any): void
     /**
      * dump integer value `val` to an attribute named `id` or as the nodes content
+     * @param id tag id, or %NULL for node content
+     * @param val the value
      */
     add_int(id: string | null, val: number): void
     /**
      * dump unsigned integer value `val` to an attribute named `id` or as the nodes
      * content
+     * @param id tag id, or %NULL for node content
+     * @param val the value
      */
     add_uint(id: string | null, val: number): void
     /**
@@ -16643,24 +18251,33 @@ class XMLOut {
     get_pretty_print(): boolean
     /**
      * Store some optional &lt;!DOCTYPE .. &gt; content
+     * @param type the document type declaration
      */
     set_doc_type(type: string): void
     set_pretty_print(pp: boolean): boolean
     /**
      * Convenience routine to output a simple `id` element with content `content`.
+     * @param id Element name
+     * @param content Content of the element
      */
     simple_element(id: string, content: string): void
     /**
      * Convenience routine to output an element `id` with float value `val` using
      * `precision` significant digits.
+     * @param id Element name
+     * @param val Element value
+     * @param precision the number of significant digits to use, -1 meaning "enough".
      */
     simple_float_element(id: string, val: number, precision: number): void
     /**
      * Convenience routine to output an element `id` with integer value `val`.
+     * @param id Element name
+     * @param val Element value
      */
     simple_int_element(id: string, val: number): void
     /**
      * Output a start element `id,` if necessary preceeded by an XML declaration.
+     * @param id Element name
      */
     start_element(id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -16698,6 +18315,10 @@ class XMLOut {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16708,6 +18329,12 @@ class XMLOut {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16731,6 +18358,7 @@ class XMLOut {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16750,11 +18378,14 @@ class XMLOut {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16762,6 +18393,8 @@ class XMLOut {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16779,6 +18412,7 @@ class XMLOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16824,6 +18458,7 @@ class XMLOut {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16867,15 +18502,20 @@ class XMLOut {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16916,6 +18556,7 @@ class XMLOut {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16950,6 +18591,7 @@ class XMLOut {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16969,6 +18611,7 @@ class XMLOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17001,12 +18644,15 @@ class XMLOut {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: XMLOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: XMLOut, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::pretty-print", callback: (($obj: XMLOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pretty-print", callback: (($obj: XMLOut, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sink", callback: (($obj: XMLOut, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sink", callback: (($obj: XMLOut, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -17046,10 +18692,12 @@ class DocProp {
     get_val(): any
     /**
      * Sets `prop'`s link to `link`
+     * @param link a link.
      */
     set_link(link?: string | null): void
     /**
      * Assigns `val` to `prop,` and unsets and frees the current value.
+     * @param val #GValue
      */
     set_val(val: any): void
     swap_val(val: any): any
@@ -17061,18 +18709,18 @@ class DocProp {
 }
 abstract class InfileClass {
     /* Fields of Gsf-1.Gsf.InfileClass */
-    readonly input_class: InputClass
-    readonly num_children: (infile: Infile) => number
-    readonly name_by_index: (infile: Infile, i: number) => string | null
+    input_class: InputClass
+    num_children: (infile: Infile) => number
+    name_by_index: (infile: Infile, i: number) => string | null
     static name: string
 }
 abstract class InputClass {
     /* Fields of Gsf-1.Gsf.InputClass */
-    readonly g_object_class: GObject.ObjectClass
-    readonly Dup: (input: Input) => Input | null
-    readonly Read: (input: Input, num_bytes: number, optional_buffer?: Uint8Array | null) => Uint8Array | null
-    readonly Seek: (input: Input, offset: gsf_off_t, whence: GLib.SeekType) => boolean
-    readonly OpenSibling: (input: Input, name: string) => Input
+    g_object_class: GObject.ObjectClass
+    Dup: (input: Input) => Input | null
+    Read: (input: Input, num_bytes: number, optional_buffer?: Uint8Array | null) => Uint8Array | null
+    Seek: (input: Input, offset: gsf_off_t, whence: GLib.SeekType) => boolean
+    OpenSibling: (input: Input, name: string) => Input
     static name: string
 }
 class MSOleSortingKey {
@@ -17087,7 +18735,7 @@ class MSOleSortingKey {
 }
 abstract class ODFOutClass {
     /* Fields of Gsf-1.Gsf.ODFOutClass */
-    readonly base: XMLOutClass
+    base: XMLOutClass
     static name: string
 }
 class OpenPkgRel {
@@ -17102,25 +18750,25 @@ class OpenPkgRels {
 }
 abstract class OutfileClass {
     /* Fields of Gsf-1.Gsf.OutfileClass */
-    readonly output_class: OutputClass
+    output_class: OutputClass
     static name: string
 }
 abstract class OutputClass {
     /* Fields of Gsf-1.Gsf.OutputClass */
-    readonly g_object_class: GObject.ObjectClass
-    readonly Close: (output: Output) => boolean
-    readonly Seek: (output: Output, offset: gsf_off_t, whence: GLib.SeekType) => boolean
-    readonly Write: (output: Output, data: Uint8Array) => boolean
+    g_object_class: GObject.ObjectClass
+    Close: (output: Output) => boolean
+    Seek: (output: Output, offset: gsf_off_t, whence: GLib.SeekType) => boolean
+    Write: (output: Output, data: Uint8Array) => boolean
     static name: string
 }
 abstract class OutputCsvClass {
     /* Fields of Gsf-1.Gsf.OutputCsvClass */
-    readonly output_class: OutputClass
+    output_class: OutputClass
     static name: string
 }
 abstract class OutputIconvClass {
     /* Fields of Gsf-1.Gsf.OutputIconvClass */
-    readonly output_class: OutputClass
+    output_class: OutputClass
     static name: string
 }
 class Timestamp {
@@ -17128,19 +18776,19 @@ class Timestamp {
     /**
      * #GDate in local timezone
      */
-    readonly date: GLib.Date
+    date: GLib.Date
     /**
      * #glong number of seconds since `date`.
      */
-    readonly seconds: number
+    seconds: number
     /**
      * possibly blank #GString of the timezone
      */
-    readonly time_zone: GLib.String
+    time_zone: GLib.String
     /**
      * as from g_date_time_to_unix.
      */
-    readonly timet: number
+    timet: number
     /* Methods of Gsf-1.Gsf.Timestamp */
     /**
      * Produce a string representation (ISO 8601 format) of `stamp`.
@@ -17152,6 +18800,7 @@ class Timestamp {
     copy(): Timestamp
     /**
      * Compare timestamps `a` and `b`.
+     * @param b another timestamp
      */
     equal(b: Timestamp): boolean
     /**
@@ -17161,11 +18810,13 @@ class Timestamp {
     hash(): number
     /**
      * Parser for time stamps.  Requires a ISO 8601 formatted string.
+     * @param spec The string to parse
      */
     load_from_string(spec: string): number
     set_time(t: number): void
     /**
      * Calls g_value_set_box (value, stamp);
+     * @param value #GValue
      */
     to_value(value: any): void
     static name: string
@@ -17182,22 +18833,24 @@ class XMLIn {
     /**
      * user data
      */
-    readonly user_state: object
+    user_state: object
     /**
      * the current node content
      */
-    readonly content: GLib.String
+    content: GLib.String
     /**
      * Current document being parsed #GsfXMLInDoc
      */
-    readonly doc: XMLInDoc
+    doc: XMLInDoc
     /**
      * current node (not on the stack)
      */
-    readonly node: XMLInNode
+    node: XMLInNode
     /* Methods of Gsf-1.Gsf.XMLIn */
     /**
      * According to `state` is `str` in the namespace `ns_id` ?
+     * @param str string to check
+     * @param ns_id the namespace id
      */
     check_ns(str: string, ns_id: number): string | null
     /**
@@ -17207,10 +18860,17 @@ class XMLIn {
     /**
      * Checks to see if `str` is the same as `ns_id:`:`name` with either an explicit
      * namespace or the current default namespace.
+     * @param str The potentially namespace qualified node name.
+     * @param ns_id The name space id to check
+     * @param name The target node name
      */
     namecmp(str: string, ns_id: number, name: string): boolean
     /**
      * Take the first node from `doc` as the current node and call its start handler.
+     * @param doc #GsfXMLInDoc
+     * @param new_state arbitrary content for the parser
+     * @param dtor #GsfXMLInExtDtor
+     * @param attrs array of xmlChar const *
      */
     push_state(doc: XMLInDoc, new_state: object | null, dtor: XMLInExtDtor, attrs: string[]): void
     /**
@@ -17218,6 +18878,7 @@ class XMLIn {
      * 
      * This provides a means to silently ignore unknown tags in contexts where
      * they are expected.
+     * @param silent whether to be silent about unknown tags
      */
     set_silent_unknowns(silent: boolean): void
     static name: string
@@ -17226,6 +18887,7 @@ class XMLInDoc {
     /* Methods of Gsf-1.Gsf.XMLInDoc */
     /**
      * Adds additional nodes to the structure of `doc`
+     * @param nodes %NULL terminated array of #GsfXMLInNode
      */
     add_nodes(nodes: XMLInNode[]): void
     /**
@@ -17235,10 +18897,13 @@ class XMLInDoc {
     /**
      * Read an xml document from `input` and parse based on the the descriptor in
      * `doc`
+     * @param input #GsfInput
+     * @param user_state arbitrary content stored in the parser
      */
     parse(input: Input, user_state?: object | null): boolean
     /**
      * Call the function `handler` when an unexpected child node is found
+     * @param handler The function to call
      */
     set_unknown_handler(handler: XMLInUnknownFunc): void
     static name: string
@@ -17252,8 +18917,8 @@ class XMLInNS {
     /**
      * URI
      */
-    readonly uri: string
-    readonly ns_id: number
+    uri: string
+    ns_id: number
     static name: string
 }
 class XMLInNode {
@@ -17261,38 +18926,38 @@ class XMLInNode {
     /**
      * identifier unique in the entire tree
      */
-    readonly id: string
+    id: string
     /**
      * namespace identifier
      */
-    readonly ns_id: number
+    ns_id: number
     /**
      * node name
      */
-    readonly name: string
+    name: string
     /**
      * parent node identifier
      */
-    readonly parent_id: string
-    readonly start: (xin: XMLIn, attrs: libxml2.Char) => void
-    readonly end: (xin: XMLIn, unknown: XMLBlob) => void
+    parent_id: string
+    start: (xin: XMLIn, attrs: libxml2.Char) => void
+    end: (xin: XMLIn, unknown: XMLBlob) => void
     /**
      * whether the node has content
      */
-    readonly has_content: XMLContent
+    has_content: XMLContent
     /**
      * whether to check namespace for children
      */
-    readonly check_children_for_ns: number
+    check_children_for_ns: number
     /**
      * whether to share children with parent.
      */
-    readonly share_children_with_parent: number
+    share_children_with_parent: number
     static name: string
 }
 abstract class XMLOutClass {
     /* Fields of Gsf-1.Gsf.XMLOutClass */
-    readonly base: GObject.ObjectClass
+    base: GObject.ObjectClass
     static name: string
 }
     type gsf_off_t = number

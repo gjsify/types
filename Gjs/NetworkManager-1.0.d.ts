@@ -2468,13 +2468,14 @@ class Connection {
      */
     path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.Connection */
     /**
      * Adds a #NMSetting to the connection, replacing any previous #NMSetting of the
      * same name which has previously been added to the #NMConnection.  The
      * connection takes ownership of the #NMSetting object and does not increase
      * the setting object's reference count.
+     * @param setting the #NMSetting to add to the connection object
      */
     add_setting(setting: Setting): void
     /**
@@ -2484,12 +2485,15 @@ class Connection {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMConnection objects for similarity, with comparison behavior
      * modified by a set of flags.  See nm_setting_compare() for a description of
      * each flag's behavior.
+     * @param b a second #NMConnection to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Connection, flags: SettingCompareFlags): boolean
     /**
@@ -2498,6 +2502,9 @@ class Connection {
      * each flag's behavior.  If the connections differ, settings and keys within
      * each setting that differ are added to the returned `out_settings` hash table.
      * No values are returned, only key names.
+     * @param b a second #NMConnection to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param out_settings if the connections differ, on return a hash table mapping setting names to second-level GHashTable (utf8 to guint32), which contains the key names that differ mapped to one or more of %NMSettingDiffResult as a bitfield
      */
     diff(b: Connection, flags: SettingCompareFlags, out_settings: GLib.HashTable): boolean
     /**
@@ -2513,6 +2520,7 @@ class Connection {
     /**
      * Iterates over the properties of each #NMSetting object in the #NMConnection,
      * calling the supplied user function for each property.
+     * @param func user-supplied function called for each setting's property
      */
     for_each_setting_value(func: SettingValueIterFn): void
     /**
@@ -2539,6 +2547,7 @@ class Connection {
     /**
      * Gets the #NMSetting with the given #GType, if one has been previously added
      * to the #NMConnection.
+     * @param setting_type the #GType of the setting object to return
      */
     get_setting(setting_type: GObject.Type): Setting
     /**
@@ -2568,6 +2577,7 @@ class Connection {
     /**
      * Gets the #NMSetting with the given name, if one has been previously added
      * the #NMConnection.
+     * @param name a setting name
      */
     get_setting_by_name(name: string): Setting
     /**
@@ -2671,6 +2681,7 @@ class Connection {
      * A convenience function to check if the given `connection` is a particular
      * type (ie wired, Wi-Fi, ppp, etc). Checks the #NMSettingConnection:type
      * property of the connection and matches that against `type`.
+     * @param type a setting name to check the connection's type against (like %NM_SETTING_WIRELESS_SETTING_NAME or %NM_SETTING_WIRED_SETTING_NAME)
      */
     is_type(type: string): boolean
     /**
@@ -2690,23 +2701,27 @@ class Connection {
      * is valid. As this function only performs some specific normalization steps
      * it cannot repair all connections. If the connection has errors that
      * cannot be normalized, the connection will not be modified.
+     * @param parameters a #GHashTable with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by g_str_hash() and g_str_equal() functions. The values are opaque and depend on the parameter name.
      */
     normalize(parameters?: GLib.HashTable | null): [ /* returnType */ boolean, /* modified */ boolean | null ]
     /**
      * Removes the #NMSetting with the given #GType from the #NMConnection.  This
      * operation dereferences the #NMSetting object.
+     * @param setting_type the #GType of the setting object to remove
      */
     remove_setting(setting_type: GObject.Type): void
     replace_settings(new_settings: GLib.HashTable): boolean
     /**
      * Deep-copies the settings of `new_conenction` and replaces the settings of `connection`
      * with the copied settings.
+     * @param new_connection a #NMConnection to replace the settings of `connection` with
      */
     replace_settings_from_connection(new_connection: Connection): boolean
     /**
      * Sets the D-Bus path of the connection.  This property is not serialized, and
      * is only for the reference of the caller.  Sets the #NMConnection:path
      * property.
+     * @param path the D-Bus path of the connection as given by the settings service which provides the connection
      */
     set_path(path: string): void
     /**
@@ -2716,6 +2731,7 @@ class Connection {
      * a #NMSetting object.  The keys are setting object names, and the values
      * are #GHashTables mapping string:GValue, each of which represents the
      * properties of the #NMSetting object.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -2725,6 +2741,8 @@ class Connection {
      * be returned from nm_connection_to_hash().  If `setting_name` is %NULL, expects
      * a fully serialized #NMConnection as returned by nm_connection_to_hash() and
      * will update all secrets from all settings contained in `secrets`.
+     * @param setting_name the setting object name to which the secrets apply
+     * @param secrets a #GHashTable mapping string:#GValue of setting property names and secrets of the given `setting_name`
      */
     update_secrets(setting_name: string, secrets: GLib.HashTable): boolean
     /**
@@ -2774,6 +2792,10 @@ class Connection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2784,6 +2806,12 @@ class Connection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2807,6 +2835,7 @@ class Connection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2826,11 +2855,14 @@ class Connection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2838,6 +2870,8 @@ class Connection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2855,6 +2889,7 @@ class Connection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2900,6 +2935,7 @@ class Connection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2943,15 +2979,20 @@ class Connection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2992,6 +3033,7 @@ class Connection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3026,6 +3068,7 @@ class Connection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Connection */
@@ -3047,6 +3090,7 @@ class Connection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3069,6 +3113,7 @@ class Connection {
     /**
      * The ::secrets-updated signal is emitted when the secrets of a setting
      * have been changed.
+     * @param setting_name the setting name of the #NMSetting for which secrets were updated
      */
     connect(sigName: "secrets-updated", callback: (($obj: Connection, setting_name: string) => void)): number
     connect_after(sigName: "secrets-updated", callback: (($obj: Connection, setting_name: string) => void)): number
@@ -3102,6 +3147,7 @@ class Connection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
@@ -3120,15 +3166,18 @@ class Connection {
     static new_from_hash(hash: GLib.HashTable): Connection
     /**
      * Create a new #NMSetting object of the desired type, given a setting name.
+     * @param name a setting name
      */
     static create_setting(name: string): Setting
     /**
      * Returns the #GType of the setting's class for a given setting name.
+     * @param name a setting name
      */
     static lookup_setting_type(name: string): GObject.Type
     /**
      * Returns the #GType of the setting's class for a given setting error quark.
      * Useful for figuring out which setting a returned error is for.
+     * @param error_quark a setting error quark
      */
     static lookup_setting_type_by_quark(error_quark: GLib.Quark): GObject.Type
     static $gtype: GObject.Type
@@ -3151,7 +3200,7 @@ class Setting {
      */
     name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
     /**
      * Resets and clears any secrets in the setting.  Secrets should be added to the
@@ -3161,12 +3210,15 @@ class Setting {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -3175,6 +3227,10 @@ class Setting {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -3184,6 +3240,7 @@ class Setting {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -3193,6 +3250,8 @@ class Setting {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -3210,12 +3269,15 @@ class Setting {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -3227,6 +3289,7 @@ class Setting {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -3234,6 +3297,7 @@ class Setting {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3271,6 +3335,10 @@ class Setting {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3281,6 +3349,12 @@ class Setting {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3304,6 +3378,7 @@ class Setting {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3323,11 +3398,14 @@ class Setting {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3335,6 +3413,8 @@ class Setting {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3352,6 +3432,7 @@ class Setting {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3397,6 +3478,7 @@ class Setting {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3440,15 +3522,20 @@ class Setting {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3489,6 +3576,7 @@ class Setting {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3523,6 +3611,7 @@ class Setting {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -3559,6 +3648,7 @@ class Setting {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3591,6 +3681,7 @@ class Setting {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Setting, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Setting, pspec: GObject.ParamSpec) => void)): number
@@ -3905,26 +3996,29 @@ class Setting8021x {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.Setting8021x */
     /**
      * Adds an allowed alternate subject name match.  Until at least one
      * match is added, the altSubjectName of the remote authentication
      * server is not verified.
+     * @param altsubject_match the altSubjectName to allow for this connection
      */
     add_altsubject_match(altsubject_match: string): boolean
     /**
      * Adds an allowed EAP method.  The setting is not valid until at least one
      * EAP method has been added.  See #NMSetting8021x:eap property for a list of
      * allowed EAP methods.
+     * @param eap the name of the EAP method to allow for this connection
      */
     add_eap_method(eap: string): boolean
     /**
      * Adds an allowed alternate subject name match for "phase 2".  Until
      * at least one match is added, the altSubjectName of the "phase 2"
      * remote authentication server is not verified.
+     * @param phase2_altsubject_match the "phase 2" altSubjectName to allow for this connection
      */
     add_phase2_altsubject_match(phase2_altsubject_match: string): boolean
     /**
@@ -3941,6 +4035,7 @@ class Setting8021x {
     clear_phase2_altsubject_matches(): void
     /**
      * Returns the altSubjectName match at index `i`.
+     * @param i the zero-based index of the array of altSubjectName matches
      */
     get_altsubject_match(i: number): string
     /**
@@ -4002,6 +4097,7 @@ class Setting8021x {
     get_client_cert_scheme(): Setting8021xCKScheme
     /**
      * Returns the name of the allowed EAP method at index `i`.
+     * @param i the index of the EAP method name to return
      */
     get_eap_method(i: number): string
     /**
@@ -4040,6 +4136,7 @@ class Setting8021x {
     get_phase1_peapver(): string
     /**
      * Returns the "phase 2" altSubjectName match at index `i`.
+     * @param i the zero-based index of the array of "phase 2" altSubjectName matches
      */
     get_phase2_altsubject_match(i: number): string
     get_phase2_auth(): string
@@ -4166,26 +4263,32 @@ class Setting8021x {
     get_system_ca_certs(): boolean
     /**
      * Removes the allowed altSubjectName at the specified index.
+     * @param i the index of the altSubjectName match to remove
      */
     remove_altsubject_match(i: number): void
     /**
      * Removes the allowed altSubjectName `altsubject_match`.
+     * @param altsubject_match the altSubjectName to remove
      */
     remove_altsubject_match_by_value(altsubject_match: string): boolean
     /**
      * Removes the allowed EAP method at the specified index.
+     * @param i the index of the EAP method to remove
      */
     remove_eap_method(i: number): void
     /**
      * Removes the allowed EAP method `method`.
+     * @param eap the name of the EAP method to remove
      */
     remove_eap_method_by_value(eap: string): boolean
     /**
      * Removes the allowed "phase 2" altSubjectName at the specified index.
+     * @param i the index of the "phase 2" altSubjectName match to remove
      */
     remove_phase2_altsubject_match(i: number): void
     /**
      * Removes the allowed "phase 2" altSubjectName `phase2`_altsubject_match.
+     * @param phase2_altsubject_match the "phase 2" altSubjectName to remove
      */
     remove_phase2_altsubject_match_by_value(phase2_altsubject_match: string): boolean
     /**
@@ -4193,6 +4296,9 @@ class Setting8021x {
      * with the raw certificate data if using the %NM_SETTING_802_1X_CK_SCHEME_BLOB
      * scheme, or with the path to the certificate file if using the
      * %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.
+     * @param cert_path when `scheme` is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH   or %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the CA certificate   file (PEM or DER format).  The path must be UTF-8 encoded; use   g_filename_to_utf8() to convert if needed.  Passing %NULL with any `scheme`   clears the CA certificate.
+     * @param scheme desired storage scheme for the certificate
+     * @param out_format on successful return, the type of the certificate added
      */
     set_ca_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean
     /**
@@ -4204,6 +4310,9 @@ class Setting8021x {
      * Client certificates are used to identify the connecting client to the network
      * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
      * authentication method.
+     * @param cert_path when `scheme` is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH   or %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the client   certificate file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8   encoded; use g_filename_to_utf8() to convert if needed.  Passing %NULL with   any `scheme` clears the client certificate.
+     * @param scheme desired storage scheme for the certificate
+     * @param out_format on successful return, the type of the certificate added
      */
     set_client_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean
     /**
@@ -4211,6 +4320,9 @@ class Setting8021x {
      * property with the raw certificate data if using the
      * %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme, or with the path to the certificate
      * file if using the %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.
+     * @param cert_path when `scheme` is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH   or %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the "phase2" CA   certificate file (PEM or DER format).  The path must be UTF-8 encoded; use   g_filename_to_utf8() to convert if needed.  Passing %NULL with any `scheme`   clears the "phase2" CA certificate.
+     * @param scheme desired storage scheme for the certificate
+     * @param out_format on successful return, the type of the certificate added
      */
     set_phase2_ca_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean
     /**
@@ -4222,6 +4334,9 @@ class Setting8021x {
      * Client certificates are used to identify the connecting client to the network
      * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
      * authentication method.
+     * @param cert_path when `scheme` is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH   or %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the "phase2" client   certificate file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8   encoded; use g_filename_to_utf8() to convert if needed.  Passing %NULL with   any `scheme` clears the "phase2" client certificate.
+     * @param scheme desired storage scheme for the certificate
+     * @param out_format on successful return, the type of the certificate added
      */
     set_phase2_client_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean
     /**
@@ -4246,6 +4361,10 @@ class Setting8021x {
      * thus unencrypted private key data using the BLOB scheme may be readable by
      * unprivileged users.  Private keys should always be encrypted with a private
      * key password to prevent unauthorized access to unencrypted private key data.
+     * @param key_path when `scheme` is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH or   %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the "phase2" private   key file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8 encoded;   use g_filename_to_utf8() to convert if needed.  Passing %NULL with any   `scheme` clears the private key.
+     * @param password password used to decrypt the private key, or %NULL if the password   is unknown.  If the password is given but fails to decrypt the private key,   an error is returned.
+     * @param scheme desired storage scheme for the private key
+     * @param out_format on successful return, the type of the private key added
      */
     set_phase2_private_key(key_path: string, password: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean
     /**
@@ -4270,6 +4389,10 @@ class Setting8021x {
      * unencrypted private key data using the BLOB scheme may be readable by
      * unprivileged users.  Private keys should always be encrypted with a private
      * key password to prevent unauthorized access to unencrypted private key data.
+     * @param key_path when `scheme` is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH or   %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the private key file   (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8 encoded; use   g_filename_to_utf8() to convert if needed.  Passing %NULL with any `scheme`   clears the private key.
+     * @param password password used to decrypt the private key, or %NULL if the password   is unknown.  If the password is given but fails to decrypt the private key,   an error is returned.
+     * @param scheme desired storage scheme for the private key
+     * @param out_format on successful return, the type of the private key added
      */
     set_private_key(key_path: string, password: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -4281,12 +4404,15 @@ class Setting8021x {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -4295,6 +4421,10 @@ class Setting8021x {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -4304,6 +4434,7 @@ class Setting8021x {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -4313,6 +4444,8 @@ class Setting8021x {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -4330,12 +4463,15 @@ class Setting8021x {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -4347,6 +4483,7 @@ class Setting8021x {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -4354,6 +4491,7 @@ class Setting8021x {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -4391,6 +4529,10 @@ class Setting8021x {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4401,6 +4543,12 @@ class Setting8021x {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4424,6 +4572,7 @@ class Setting8021x {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4443,11 +4592,14 @@ class Setting8021x {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4455,6 +4607,8 @@ class Setting8021x {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4472,6 +4626,7 @@ class Setting8021x {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4517,6 +4672,7 @@ class Setting8021x {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4560,15 +4716,20 @@ class Setting8021x {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4609,6 +4770,7 @@ class Setting8021x {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4643,6 +4805,7 @@ class Setting8021x {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -4679,6 +4842,7 @@ class Setting8021x {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4711,6 +4875,7 @@ class Setting8021x {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Setting8021x, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Setting8021x, pspec: GObject.ParamSpec) => void)): number
@@ -4841,9 +5006,9 @@ class SettingAdsl {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingAdsl */
     get_encapsulation(): string
     get_password(): string
@@ -4861,12 +5026,15 @@ class SettingAdsl {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -4875,6 +5043,10 @@ class SettingAdsl {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -4884,6 +5056,7 @@ class SettingAdsl {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -4893,6 +5066,8 @@ class SettingAdsl {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -4910,12 +5085,15 @@ class SettingAdsl {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -4927,6 +5105,7 @@ class SettingAdsl {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -4934,6 +5113,7 @@ class SettingAdsl {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -4971,6 +5151,10 @@ class SettingAdsl {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4981,6 +5165,12 @@ class SettingAdsl {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5004,6 +5194,7 @@ class SettingAdsl {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5023,11 +5214,14 @@ class SettingAdsl {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5035,6 +5229,8 @@ class SettingAdsl {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5052,6 +5248,7 @@ class SettingAdsl {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5097,6 +5294,7 @@ class SettingAdsl {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5140,15 +5338,20 @@ class SettingAdsl {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5189,6 +5392,7 @@ class SettingAdsl {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5223,6 +5427,7 @@ class SettingAdsl {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -5259,6 +5464,7 @@ class SettingAdsl {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5291,6 +5497,7 @@ class SettingAdsl {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingAdsl, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingAdsl, pspec: GObject.ParamSpec) => void)): number
@@ -5345,9 +5552,9 @@ class SettingBluetooth {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingBluetooth */
     /**
      * Gets the Bluetooth address of the remote device which this setting
@@ -5368,12 +5575,15 @@ class SettingBluetooth {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -5382,6 +5592,10 @@ class SettingBluetooth {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -5391,6 +5605,7 @@ class SettingBluetooth {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -5400,6 +5615,8 @@ class SettingBluetooth {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -5417,12 +5634,15 @@ class SettingBluetooth {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -5434,6 +5654,7 @@ class SettingBluetooth {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -5441,6 +5662,7 @@ class SettingBluetooth {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -5478,6 +5700,10 @@ class SettingBluetooth {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5488,6 +5714,12 @@ class SettingBluetooth {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5511,6 +5743,7 @@ class SettingBluetooth {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5530,11 +5763,14 @@ class SettingBluetooth {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5542,6 +5778,8 @@ class SettingBluetooth {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5559,6 +5797,7 @@ class SettingBluetooth {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5604,6 +5843,7 @@ class SettingBluetooth {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5647,15 +5887,20 @@ class SettingBluetooth {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5696,6 +5941,7 @@ class SettingBluetooth {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5730,6 +5976,7 @@ class SettingBluetooth {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -5766,6 +6013,7 @@ class SettingBluetooth {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5798,6 +6046,7 @@ class SettingBluetooth {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingBluetooth, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingBluetooth, pspec: GObject.ParamSpec) => void)): number
@@ -5838,9 +6087,9 @@ class SettingBond {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingBond */
     /**
      * Add an option to the table.  The option is compared to an internal list
@@ -5850,6 +6099,8 @@ class SettingBond {
      * 
      * The order of how to set several options is relevant because there are options
      * that conflict with each other.
+     * @param name name for the option
+     * @param value value for the option
      */
     add_option(name: string, value: string): boolean
     get_interface_name(): string
@@ -5865,11 +6116,13 @@ class SettingBond {
      * nm_setting_bond_add_option() and nm_setting_bond_remove_option(),
      * and should not be used to refer to options except for short periods of time
      * such as during option iteration.
+     * @param idx index of the desired option, from 0 to nm_setting_bond_get_num_options() - 1
      */
     get_option(idx: number): [ /* returnType */ boolean, /* out_name */ string, /* out_value */ string ]
     /**
      * Returns the value associated with the bonding option specified by
      * `name,` if it exists.
+     * @param name the option name for which to retrieve the value
      */
     get_option_by_name(name: string): string
     get_option_default(name: string): string
@@ -5880,6 +6133,7 @@ class SettingBond {
     /**
      * Remove the bonding option referenced by `name` from the internal option
      * list.
+     * @param name name of the option to remove
      */
     remove_option(name: string): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -5891,12 +6145,15 @@ class SettingBond {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -5905,6 +6162,10 @@ class SettingBond {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -5914,6 +6175,7 @@ class SettingBond {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -5923,6 +6185,8 @@ class SettingBond {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -5940,12 +6204,15 @@ class SettingBond {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -5957,6 +6224,7 @@ class SettingBond {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -5964,6 +6232,7 @@ class SettingBond {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6001,6 +6270,10 @@ class SettingBond {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6011,6 +6284,12 @@ class SettingBond {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6034,6 +6313,7 @@ class SettingBond {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6053,11 +6333,14 @@ class SettingBond {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6065,6 +6348,8 @@ class SettingBond {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6082,6 +6367,7 @@ class SettingBond {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6127,6 +6413,7 @@ class SettingBond {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6170,15 +6457,20 @@ class SettingBond {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6219,6 +6511,7 @@ class SettingBond {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6253,6 +6546,7 @@ class SettingBond {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -6289,6 +6583,7 @@ class SettingBond {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6321,6 +6616,7 @@ class SettingBond {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingBond, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingBond, pspec: GObject.ParamSpec) => void)): number
@@ -6341,6 +6637,8 @@ class SettingBond {
     /**
      * Checks whether `name` is a valid bond option and `value` is a valid value for
      * the `name`. If `value` is %NULL, the function only validates the option name.
+     * @param name the name of the option to validate
+     * @param value the value of the option to validate
      */
     static validate_option(name: string, value: string): boolean
     static $gtype: GObject.Type
@@ -6418,9 +6716,9 @@ class SettingBridge {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingBridge */
     get_ageing_time(): number
     get_forward_delay(): number
@@ -6439,12 +6737,15 @@ class SettingBridge {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -6453,6 +6754,10 @@ class SettingBridge {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -6462,6 +6767,7 @@ class SettingBridge {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -6471,6 +6777,8 @@ class SettingBridge {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -6488,12 +6796,15 @@ class SettingBridge {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -6505,6 +6816,7 @@ class SettingBridge {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -6512,6 +6824,7 @@ class SettingBridge {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6549,6 +6862,10 @@ class SettingBridge {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6559,6 +6876,12 @@ class SettingBridge {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6582,6 +6905,7 @@ class SettingBridge {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6601,11 +6925,14 @@ class SettingBridge {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6613,6 +6940,8 @@ class SettingBridge {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6630,6 +6959,7 @@ class SettingBridge {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6675,6 +7005,7 @@ class SettingBridge {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6718,15 +7049,20 @@ class SettingBridge {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6767,6 +7103,7 @@ class SettingBridge {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6801,6 +7138,7 @@ class SettingBridge {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -6837,6 +7175,7 @@ class SettingBridge {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6869,6 +7208,7 @@ class SettingBridge {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingBridge, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingBridge, pspec: GObject.ParamSpec) => void)): number
@@ -6941,9 +7281,9 @@ class SettingBridgePort {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingBridgePort */
     get_hairpin_mode(): boolean
     get_path_cost(): number
@@ -6957,12 +7297,15 @@ class SettingBridgePort {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -6971,6 +7314,10 @@ class SettingBridgePort {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -6980,6 +7327,7 @@ class SettingBridgePort {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -6989,6 +7337,8 @@ class SettingBridgePort {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -7006,12 +7356,15 @@ class SettingBridgePort {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -7023,6 +7376,7 @@ class SettingBridgePort {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -7030,6 +7384,7 @@ class SettingBridgePort {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -7067,6 +7422,10 @@ class SettingBridgePort {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7077,6 +7436,12 @@ class SettingBridgePort {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7100,6 +7465,7 @@ class SettingBridgePort {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7119,11 +7485,14 @@ class SettingBridgePort {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7131,6 +7500,8 @@ class SettingBridgePort {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7148,6 +7519,7 @@ class SettingBridgePort {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7193,6 +7565,7 @@ class SettingBridgePort {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7236,15 +7609,20 @@ class SettingBridgePort {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7285,6 +7663,7 @@ class SettingBridgePort {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7319,6 +7698,7 @@ class SettingBridgePort {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -7355,6 +7735,7 @@ class SettingBridgePort {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7387,6 +7768,7 @@ class SettingBridgePort {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingBridgePort, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingBridgePort, pspec: GObject.ParamSpec) => void)): number
@@ -7467,9 +7849,9 @@ class SettingCdma {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingCdma */
     get_number(): string
     get_password(): string
@@ -7484,12 +7866,15 @@ class SettingCdma {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -7498,6 +7883,10 @@ class SettingCdma {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -7507,6 +7896,7 @@ class SettingCdma {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -7516,6 +7906,8 @@ class SettingCdma {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -7533,12 +7925,15 @@ class SettingCdma {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -7550,6 +7945,7 @@ class SettingCdma {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -7557,6 +7953,7 @@ class SettingCdma {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -7594,6 +7991,10 @@ class SettingCdma {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7604,6 +8005,12 @@ class SettingCdma {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7627,6 +8034,7 @@ class SettingCdma {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7646,11 +8054,14 @@ class SettingCdma {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7658,6 +8069,8 @@ class SettingCdma {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7675,6 +8088,7 @@ class SettingCdma {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7720,6 +8134,7 @@ class SettingCdma {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7763,15 +8178,20 @@ class SettingCdma {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7812,6 +8232,7 @@ class SettingCdma {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7846,6 +8267,7 @@ class SettingCdma {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -7882,6 +8304,7 @@ class SettingCdma {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7914,6 +8337,7 @@ class SettingCdma {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingCdma, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingCdma, pspec: GObject.ParamSpec) => void)): number
@@ -8126,18 +8550,22 @@ class SettingConnection {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingConnection */
     /**
      * Adds a permission to the connection's permission list.  At this time, only
      * the "user" permission type is supported, and `pitem` must be a username. See
      * #NMSettingConnection:permissions: for more details.
+     * @param ptype the permission type; at this time only "user" is supported
+     * @param pitem the permission item formatted as required for `ptype`
+     * @param detail unused at this time; must be %NULL
      */
     add_permission(ptype: string, pitem: string, detail?: string | null): boolean
     /**
      * Adds a new secondary connection UUID to the setting.
+     * @param sec_uuid the secondary connection UUID to add
      */
     add_secondary(sec_uuid: string): boolean
     /**
@@ -8170,6 +8598,10 @@ class SettingConnection {
     /**
      * Retrieve one of the entries of the #NMSettingConnection:permissions property
      * of this setting.
+     * @param idx the zero-based index of the permissions entry
+     * @param out_ptype on return, the permission type (at this time, always "user")
+     * @param out_pitem on return, the permission item (formatted according to `ptype,` see #NMSettingConnection:permissions for more detail
+     * @param out_detail on return, the permission detail (at this time, always %NULL)
      */
     get_permission(idx: number, out_ptype: string, out_pitem: string, out_detail: string): boolean
     /**
@@ -8196,24 +8628,31 @@ class SettingConnection {
     is_slave_type(type: string): boolean
     /**
      * Checks whether the given username is allowed to view/access this connection.
+     * @param uname the user name to check permissions for
      */
     permissions_user_allowed(uname: string): boolean
     /**
      * Removes the permission at index `idx` from the connection.
+     * @param idx the zero-based index of the permission to remove
      */
     remove_permission(idx: number): void
     /**
      * Removes the permission from the connection.
      * At this time, only the "user" permission type is supported, and `pitem` must
      * be a username. See #NMSettingConnection:permissions: for more details.
+     * @param ptype the permission type; at this time only "user" is supported
+     * @param pitem the permission item formatted as required for `ptype`
+     * @param detail unused at this time; must be %NULL
      */
     remove_permission_by_value(ptype: string, pitem: string, detail?: string | null): boolean
     /**
      * Removes the secondary coonnection UUID at index `idx`.
+     * @param idx index number of the secondary connection UUID
      */
     remove_secondary(idx: number): void
     /**
      * Removes the secondary coonnection UUID `sec_uuid`.
+     * @param sec_uuid the secondary connection UUID to remove
      */
     remove_secondary_by_value(sec_uuid: string): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -8225,12 +8664,15 @@ class SettingConnection {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -8239,6 +8681,10 @@ class SettingConnection {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -8248,6 +8694,7 @@ class SettingConnection {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -8257,6 +8704,8 @@ class SettingConnection {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -8274,12 +8723,15 @@ class SettingConnection {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -8291,6 +8743,7 @@ class SettingConnection {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -8298,6 +8751,7 @@ class SettingConnection {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8335,6 +8789,10 @@ class SettingConnection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8345,6 +8803,12 @@ class SettingConnection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8368,6 +8832,7 @@ class SettingConnection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8387,11 +8852,14 @@ class SettingConnection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8399,6 +8867,8 @@ class SettingConnection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8416,6 +8886,7 @@ class SettingConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8461,6 +8932,7 @@ class SettingConnection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8504,15 +8976,20 @@ class SettingConnection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8553,6 +9030,7 @@ class SettingConnection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8587,6 +9065,7 @@ class SettingConnection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -8623,6 +9102,7 @@ class SettingConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8655,6 +9135,7 @@ class SettingConnection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingConnection, pspec: GObject.ParamSpec) => void)): number
@@ -8813,9 +9294,9 @@ class SettingDcb {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingDcb */
     get_app_fcoe_flags(): SettingDcbFlags
     get_app_fcoe_mode(): string
@@ -8835,26 +9316,36 @@ class SettingDcb {
     /**
      * These values are only valid when #NMSettingDcb:priority-group-flags includes
      * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+     * @param user_priority the User Priority (0 - 7) to set the bandwidth percentage for
+     * @param bandwidth_percent the bandwidth percentage (0 - 100) that `user_priority` is allowed to use within its priority group
      */
     set_priority_bandwidth(user_priority: number, bandwidth_percent: number): void
     /**
      * These values are only valid when #NMSettingDcb:priority-flow-control includes
      * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+     * @param user_priority the User Priority (0 - 7) to set flow control for
+     * @param enabled %TRUE to enable flow control for this priority, %FALSE to disable it
      */
     set_priority_flow_control(user_priority: number, enabled: boolean): void
     /**
      * These values are only valid when #NMSettingDcb:priority-group-flags includes
      * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+     * @param group_id the priority group (0 - 7) to set the bandwidth percentage for
+     * @param bandwidth_percent the bandwidth percentage (0 - 100) to assign to `group_id` to
      */
     set_priority_group_bandwidth(group_id: number, bandwidth_percent: number): void
     /**
      * These values are only valid when #NMSettingDcb:priority-group-flags includes
      * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+     * @param user_priority the User Priority (0 - 7) to set flow control for
+     * @param group_id the group (0 - 7) to assign `user_priority` to, or 15 for the unrestricted group.
      */
     set_priority_group_id(user_priority: number, group_id: number): void
     /**
      * These values are only valid when #NMSettingDcb:priority-group-flags includes
      * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+     * @param user_priority the User Priority (0 - 7) to set strict bandwidth for
+     * @param strict %TRUE to allow `user_priority` to use all the bandwidth allocated to its priority group, or %FALSE if not
      */
     set_priority_strict_bandwidth(user_priority: number, strict: boolean): void
     set_priority_traffic_class(user_priority: number, traffic_class: number): void
@@ -8867,12 +9358,15 @@ class SettingDcb {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -8881,6 +9375,10 @@ class SettingDcb {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -8890,6 +9388,7 @@ class SettingDcb {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -8899,6 +9398,8 @@ class SettingDcb {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -8916,12 +9417,15 @@ class SettingDcb {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -8933,6 +9437,7 @@ class SettingDcb {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -8940,6 +9445,7 @@ class SettingDcb {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8977,6 +9483,10 @@ class SettingDcb {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8987,6 +9497,12 @@ class SettingDcb {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9010,6 +9526,7 @@ class SettingDcb {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9029,11 +9546,14 @@ class SettingDcb {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9041,6 +9561,8 @@ class SettingDcb {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9058,6 +9580,7 @@ class SettingDcb {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9103,6 +9626,7 @@ class SettingDcb {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9146,15 +9670,20 @@ class SettingDcb {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9195,6 +9724,7 @@ class SettingDcb {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9229,6 +9759,7 @@ class SettingDcb {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -9265,6 +9796,7 @@ class SettingDcb {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9297,6 +9829,7 @@ class SettingDcb {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingDcb, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingDcb, pspec: GObject.ParamSpec) => void)): number
@@ -9343,9 +9876,9 @@ class SettingGeneric {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
     /**
      * Resets and clears any secrets in the setting.  Secrets should be added to the
@@ -9355,12 +9888,15 @@ class SettingGeneric {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -9369,6 +9905,10 @@ class SettingGeneric {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -9378,6 +9918,7 @@ class SettingGeneric {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -9387,6 +9928,8 @@ class SettingGeneric {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -9404,12 +9947,15 @@ class SettingGeneric {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -9421,6 +9967,7 @@ class SettingGeneric {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -9428,6 +9975,7 @@ class SettingGeneric {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -9465,6 +10013,10 @@ class SettingGeneric {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9475,6 +10027,12 @@ class SettingGeneric {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9498,6 +10056,7 @@ class SettingGeneric {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9517,11 +10076,14 @@ class SettingGeneric {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9529,6 +10091,8 @@ class SettingGeneric {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9546,6 +10110,7 @@ class SettingGeneric {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9591,6 +10156,7 @@ class SettingGeneric {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9634,15 +10200,20 @@ class SettingGeneric {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9683,6 +10254,7 @@ class SettingGeneric {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9717,6 +10289,7 @@ class SettingGeneric {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -9753,6 +10326,7 @@ class SettingGeneric {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9785,6 +10359,7 @@ class SettingGeneric {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingGeneric, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingGeneric, pspec: GObject.ParamSpec) => void)): number
@@ -9963,9 +10538,9 @@ class SettingGsm {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingGsm */
     get_allowed_bands(): number
     get_apn(): string
@@ -9987,12 +10562,15 @@ class SettingGsm {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -10001,6 +10579,10 @@ class SettingGsm {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -10010,6 +10592,7 @@ class SettingGsm {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -10019,6 +10602,8 @@ class SettingGsm {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -10036,12 +10621,15 @@ class SettingGsm {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -10053,6 +10641,7 @@ class SettingGsm {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -10060,6 +10649,7 @@ class SettingGsm {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -10097,6 +10687,10 @@ class SettingGsm {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10107,6 +10701,12 @@ class SettingGsm {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10130,6 +10730,7 @@ class SettingGsm {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10149,11 +10750,14 @@ class SettingGsm {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10161,6 +10765,8 @@ class SettingGsm {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10178,6 +10784,7 @@ class SettingGsm {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10223,6 +10830,7 @@ class SettingGsm {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10266,15 +10874,20 @@ class SettingGsm {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10315,6 +10928,7 @@ class SettingGsm {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10349,6 +10963,7 @@ class SettingGsm {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -10385,6 +11000,7 @@ class SettingGsm {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10417,6 +11033,7 @@ class SettingGsm {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingGsm, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingGsm, pspec: GObject.ParamSpec) => void)): number
@@ -10623,26 +11240,30 @@ class SettingIP4Config {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingIP4Config */
     /**
      * Adds a new IPv4 address and associated information to the setting.  The
      * given address is duplicated internally and is not changed by this function.
+     * @param address the new address to add
      */
     add_address(address: IP4Address): boolean
     /**
      * Adds a new DNS server to the setting.
+     * @param dns the IPv4 address (network byte order) of the DNS server to add
      */
     add_dns(dns: number): boolean
     /**
      * Adds a new DNS search domain to the setting.
+     * @param dns_search the search domain to add
      */
     add_dns_search(dns_search: string): boolean
     /**
      * Adds a new IPv4 route and associated information to the setting.  The
      * given route is duplicated internally and is not changed by this function.
+     * @param route the route to add
      */
     add_route(route: IP4Route): boolean
     /**
@@ -10717,34 +11338,42 @@ class SettingIP4Config {
     get_route_metric(): number
     /**
      * Removes the address at index `i`.
+     * @param i index number of the address to remove
      */
     remove_address(i: number): void
     /**
      * Removes the address `address`.
+     * @param address the IP address to remove
      */
     remove_address_by_value(address: IP4Address): boolean
     /**
      * Removes the DNS server at index `i`.
+     * @param i index number of the DNS server to remove
      */
     remove_dns(i: number): void
     /**
      * Removes the DNS server `dns`.
+     * @param dns the DNS server to remove
      */
     remove_dns_by_value(dns: number): boolean
     /**
      * Removes the DNS search domain at index `i`.
+     * @param i index number of the DNS search domain
      */
     remove_dns_search(i: number): void
     /**
      * Removes the DNS search domain `dns_search`.
+     * @param dns_search the search domain to remove
      */
     remove_dns_search_by_value(dns_search: string): boolean
     /**
      * Removes the route at index `i`.
+     * @param i index number of the route
      */
     remove_route(i: number): void
     /**
      * Removes the route `route`.
+     * @param route the route to remove
      */
     remove_route_by_value(route: IP4Route): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -10756,12 +11385,15 @@ class SettingIP4Config {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -10770,6 +11402,10 @@ class SettingIP4Config {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -10779,6 +11415,7 @@ class SettingIP4Config {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -10788,6 +11425,8 @@ class SettingIP4Config {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -10805,12 +11444,15 @@ class SettingIP4Config {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -10822,6 +11464,7 @@ class SettingIP4Config {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -10829,6 +11472,7 @@ class SettingIP4Config {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -10866,6 +11510,10 @@ class SettingIP4Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10876,6 +11524,12 @@ class SettingIP4Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10899,6 +11553,7 @@ class SettingIP4Config {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10918,11 +11573,14 @@ class SettingIP4Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10930,6 +11588,8 @@ class SettingIP4Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10947,6 +11607,7 @@ class SettingIP4Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10992,6 +11653,7 @@ class SettingIP4Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11035,15 +11697,20 @@ class SettingIP4Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11084,6 +11751,7 @@ class SettingIP4Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11118,6 +11786,7 @@ class SettingIP4Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -11154,6 +11823,7 @@ class SettingIP4Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11186,6 +11856,7 @@ class SettingIP4Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingIP4Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingIP4Config, pspec: GObject.ParamSpec) => void)): number
@@ -11372,26 +12043,30 @@ class SettingIP6Config {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingIP6Config */
     /**
      * Adds a new IPv6 address and associated information to the setting.  The
      * given address is duplicated internally and is not changed by this function.
+     * @param address the new address to add
      */
     add_address(address: IP6Address): boolean
     /**
      * Adds a new DNS server to the setting.
+     * @param dns the IPv6 address of the DNS server to add
      */
     add_dns(dns?: object | null): boolean
     /**
      * Adds a new DNS search domain to the setting.
+     * @param dns_search the search domain to add
      */
     add_dns_search(dns_search: string): boolean
     /**
      * Adds a new IPv6 route and associated information to the setting.  The
      * given route is duplicated internally and is not changed by this function.
+     * @param route the route to add
      */
     add_route(route: IP6Route): boolean
     /**
@@ -11456,34 +12131,42 @@ class SettingIP6Config {
     get_route_metric(): number
     /**
      * Removes the address at index `i`.
+     * @param i index number of the address to remove
      */
     remove_address(i: number): void
     /**
      * Removes the address `address`.
+     * @param address the address to remove
      */
     remove_address_by_value(address: IP6Address): boolean
     /**
      * Removes the DNS server at index `i`.
+     * @param i index number of the DNS server to remove
      */
     remove_dns(i: number): void
     /**
      * Removes the DNS server at index `i`.
+     * @param dns the IPv6 address of the DNS server to remove
      */
     remove_dns_by_value(dns?: object | null): boolean
     /**
      * Removes the DNS search domain at index `i`.
+     * @param i index number of the DNS search domain
      */
     remove_dns_search(i: number): void
     /**
      * Removes the DNS search domain `dns_search`.
+     * @param dns_search the search domain to remove
      */
     remove_dns_search_by_value(dns_search: string): boolean
     /**
      * Removes the route at index `i`.
+     * @param i index number of the route
      */
     remove_route(i: number): void
     /**
      * Removes the route `route`.
+     * @param route the route to remove
      */
     remove_route_by_value(route: IP6Route): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -11495,12 +12178,15 @@ class SettingIP6Config {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -11509,6 +12195,10 @@ class SettingIP6Config {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -11518,6 +12208,7 @@ class SettingIP6Config {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -11527,6 +12218,8 @@ class SettingIP6Config {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -11544,12 +12237,15 @@ class SettingIP6Config {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -11561,6 +12257,7 @@ class SettingIP6Config {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -11568,6 +12265,7 @@ class SettingIP6Config {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -11605,6 +12303,10 @@ class SettingIP6Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11615,6 +12317,12 @@ class SettingIP6Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11638,6 +12346,7 @@ class SettingIP6Config {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11657,11 +12366,14 @@ class SettingIP6Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11669,6 +12381,8 @@ class SettingIP6Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11686,6 +12400,7 @@ class SettingIP6Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11731,6 +12446,7 @@ class SettingIP6Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11774,15 +12490,20 @@ class SettingIP6Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11823,6 +12544,7 @@ class SettingIP6Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11857,6 +12579,7 @@ class SettingIP6Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -11893,6 +12616,7 @@ class SettingIP6Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11925,6 +12649,7 @@ class SettingIP6Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingIP6Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingIP6Config, pspec: GObject.ParamSpec) => void)): number
@@ -12019,7 +12744,7 @@ class SettingInfiniband {
      */
     name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingInfiniband */
     get_mac_address(): Uint8Array
     get_mtu(): number
@@ -12047,12 +12772,15 @@ class SettingInfiniband {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -12061,6 +12789,10 @@ class SettingInfiniband {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -12070,6 +12802,7 @@ class SettingInfiniband {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -12079,6 +12812,8 @@ class SettingInfiniband {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -12096,12 +12831,15 @@ class SettingInfiniband {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -12113,6 +12851,7 @@ class SettingInfiniband {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -12120,6 +12859,7 @@ class SettingInfiniband {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -12157,6 +12897,10 @@ class SettingInfiniband {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12167,6 +12911,12 @@ class SettingInfiniband {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12190,6 +12940,7 @@ class SettingInfiniband {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12209,11 +12960,14 @@ class SettingInfiniband {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12221,6 +12975,8 @@ class SettingInfiniband {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12238,6 +12994,7 @@ class SettingInfiniband {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12283,6 +13040,7 @@ class SettingInfiniband {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12326,15 +13084,20 @@ class SettingInfiniband {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12375,6 +13138,7 @@ class SettingInfiniband {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12409,6 +13173,7 @@ class SettingInfiniband {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -12445,6 +13210,7 @@ class SettingInfiniband {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12477,6 +13243,7 @@ class SettingInfiniband {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingInfiniband, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingInfiniband, pspec: GObject.ParamSpec) => void)): number
@@ -12523,9 +13290,9 @@ class SettingOlpcMesh {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingOlpcMesh */
     get_channel(): number
     get_dhcp_anycast_address(): Uint8Array
@@ -12539,12 +13306,15 @@ class SettingOlpcMesh {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -12553,6 +13323,10 @@ class SettingOlpcMesh {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -12562,6 +13336,7 @@ class SettingOlpcMesh {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -12571,6 +13346,8 @@ class SettingOlpcMesh {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -12588,12 +13365,15 @@ class SettingOlpcMesh {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -12605,6 +13385,7 @@ class SettingOlpcMesh {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -12612,6 +13393,7 @@ class SettingOlpcMesh {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -12649,6 +13431,10 @@ class SettingOlpcMesh {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12659,6 +13445,12 @@ class SettingOlpcMesh {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12682,6 +13474,7 @@ class SettingOlpcMesh {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12701,11 +13494,14 @@ class SettingOlpcMesh {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12713,6 +13509,8 @@ class SettingOlpcMesh {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12730,6 +13528,7 @@ class SettingOlpcMesh {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12775,6 +13574,7 @@ class SettingOlpcMesh {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12818,15 +13618,20 @@ class SettingOlpcMesh {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12867,6 +13672,7 @@ class SettingOlpcMesh {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12901,6 +13707,7 @@ class SettingOlpcMesh {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -12937,6 +13744,7 @@ class SettingOlpcMesh {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12969,6 +13777,7 @@ class SettingOlpcMesh {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingOlpcMesh, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingOlpcMesh, pspec: GObject.ParamSpec) => void)): number
@@ -13187,9 +13996,9 @@ class SettingPPP {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingPPP */
     get_baud(): number
     get_crtscts(): boolean
@@ -13218,12 +14027,15 @@ class SettingPPP {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -13232,6 +14044,10 @@ class SettingPPP {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -13241,6 +14057,7 @@ class SettingPPP {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -13250,6 +14067,8 @@ class SettingPPP {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -13267,12 +14086,15 @@ class SettingPPP {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -13284,6 +14106,7 @@ class SettingPPP {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -13291,6 +14114,7 @@ class SettingPPP {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -13328,6 +14152,10 @@ class SettingPPP {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13338,6 +14166,12 @@ class SettingPPP {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13361,6 +14195,7 @@ class SettingPPP {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13380,11 +14215,14 @@ class SettingPPP {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13392,6 +14230,8 @@ class SettingPPP {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13409,6 +14249,7 @@ class SettingPPP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13454,6 +14295,7 @@ class SettingPPP {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13497,15 +14339,20 @@ class SettingPPP {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13546,6 +14393,7 @@ class SettingPPP {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13580,6 +14428,7 @@ class SettingPPP {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -13616,6 +14465,7 @@ class SettingPPP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13648,6 +14498,7 @@ class SettingPPP {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingPPP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingPPP, pspec: GObject.ParamSpec) => void)): number
@@ -13752,9 +14603,9 @@ class SettingPPPOE {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingPPPOE */
     get_password(): string
     get_password_flags(): SettingSecretFlags
@@ -13769,12 +14620,15 @@ class SettingPPPOE {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -13783,6 +14637,10 @@ class SettingPPPOE {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -13792,6 +14650,7 @@ class SettingPPPOE {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -13801,6 +14660,8 @@ class SettingPPPOE {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -13818,12 +14679,15 @@ class SettingPPPOE {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -13835,6 +14699,7 @@ class SettingPPPOE {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -13842,6 +14707,7 @@ class SettingPPPOE {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -13879,6 +14745,10 @@ class SettingPPPOE {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13889,6 +14759,12 @@ class SettingPPPOE {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13912,6 +14788,7 @@ class SettingPPPOE {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13931,11 +14808,14 @@ class SettingPPPOE {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13943,6 +14823,8 @@ class SettingPPPOE {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13960,6 +14842,7 @@ class SettingPPPOE {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14005,6 +14888,7 @@ class SettingPPPOE {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14048,15 +14932,20 @@ class SettingPPPOE {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14097,6 +14986,7 @@ class SettingPPPOE {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14131,6 +15021,7 @@ class SettingPPPOE {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -14167,6 +15058,7 @@ class SettingPPPOE {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14199,6 +15091,7 @@ class SettingPPPOE {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingPPPOE, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingPPPOE, pspec: GObject.ParamSpec) => void)): number
@@ -14285,9 +15178,9 @@ class SettingSerial {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingSerial */
     get_baud(): number
     get_bits(): number
@@ -14303,12 +15196,15 @@ class SettingSerial {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -14317,6 +15213,10 @@ class SettingSerial {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -14326,6 +15226,7 @@ class SettingSerial {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -14335,6 +15236,8 @@ class SettingSerial {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -14352,12 +15255,15 @@ class SettingSerial {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -14369,6 +15275,7 @@ class SettingSerial {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -14376,6 +15283,7 @@ class SettingSerial {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -14413,6 +15321,10 @@ class SettingSerial {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14423,6 +15335,12 @@ class SettingSerial {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14446,6 +15364,7 @@ class SettingSerial {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14465,11 +15384,14 @@ class SettingSerial {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14477,6 +15399,8 @@ class SettingSerial {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14494,6 +15418,7 @@ class SettingSerial {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14539,6 +15464,7 @@ class SettingSerial {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14582,15 +15508,20 @@ class SettingSerial {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14631,6 +15562,7 @@ class SettingSerial {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14665,6 +15597,7 @@ class SettingSerial {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -14701,6 +15634,7 @@ class SettingSerial {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14733,6 +15667,7 @@ class SettingSerial {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingSerial, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingSerial, pspec: GObject.ParamSpec) => void)): number
@@ -14795,9 +15730,9 @@ class SettingTeam {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingTeam */
     get_config(): string
     get_interface_name(): string
@@ -14810,12 +15745,15 @@ class SettingTeam {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -14824,6 +15762,10 @@ class SettingTeam {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -14833,6 +15775,7 @@ class SettingTeam {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -14842,6 +15785,8 @@ class SettingTeam {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -14859,12 +15804,15 @@ class SettingTeam {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -14876,6 +15824,7 @@ class SettingTeam {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -14883,6 +15832,7 @@ class SettingTeam {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -14920,6 +15870,10 @@ class SettingTeam {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14930,6 +15884,12 @@ class SettingTeam {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14953,6 +15913,7 @@ class SettingTeam {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14972,11 +15933,14 @@ class SettingTeam {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14984,6 +15948,8 @@ class SettingTeam {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15001,6 +15967,7 @@ class SettingTeam {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15046,6 +16013,7 @@ class SettingTeam {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15089,15 +16057,20 @@ class SettingTeam {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15138,6 +16111,7 @@ class SettingTeam {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15172,6 +16146,7 @@ class SettingTeam {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -15208,6 +16183,7 @@ class SettingTeam {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15240,6 +16216,7 @@ class SettingTeam {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingTeam, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingTeam, pspec: GObject.ParamSpec) => void)): number
@@ -15288,9 +16265,9 @@ class SettingTeamPort {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingTeamPort */
     get_config(): string
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -15302,12 +16279,15 @@ class SettingTeamPort {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -15316,6 +16296,10 @@ class SettingTeamPort {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -15325,6 +16309,7 @@ class SettingTeamPort {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -15334,6 +16319,8 @@ class SettingTeamPort {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -15351,12 +16338,15 @@ class SettingTeamPort {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -15368,6 +16358,7 @@ class SettingTeamPort {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -15375,6 +16366,7 @@ class SettingTeamPort {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -15412,6 +16404,10 @@ class SettingTeamPort {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15422,6 +16418,12 @@ class SettingTeamPort {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15445,6 +16447,7 @@ class SettingTeamPort {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15464,11 +16467,14 @@ class SettingTeamPort {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15476,6 +16482,8 @@ class SettingTeamPort {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15493,6 +16501,7 @@ class SettingTeamPort {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15538,6 +16547,7 @@ class SettingTeamPort {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15581,15 +16591,20 @@ class SettingTeamPort {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15630,6 +16645,7 @@ class SettingTeamPort {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15664,6 +16680,7 @@ class SettingTeamPort {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -15700,6 +16717,7 @@ class SettingTeamPort {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15732,6 +16750,7 @@ class SettingTeamPort {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingTeamPort, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingTeamPort, pspec: GObject.ParamSpec) => void)): number
@@ -15806,36 +16825,43 @@ class SettingVPN {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingVPN */
     /**
      * Establishes a relationship between `key` and `item` internally in the
      * setting which may be retrieved later.  Should not be used to store passwords
      * or other secrets, which is what nm_setting_vpn_add_secret() is for.
+     * @param key a name that uniquely identifies the given value `item`
+     * @param item the value to be referenced by `key`
      */
     add_data_item(key: string, item: string): void
     /**
      * Establishes a relationship between `key` and `secret` internally in the
      * setting which may be retrieved later.
+     * @param key a name that uniquely identifies the given secret `secret`
+     * @param secret the secret to be referenced by `key`
      */
     add_secret(key: string, secret: string): void
     /**
      * Iterates all data items stored in this setting.  It is safe to add, remove,
      * and modify data items inside `func,` though any additions or removals made
      * during iteration will not be part of the iteration.
+     * @param func an user provided function
      */
     foreach_data_item(func: VPNIterFunc): void
     /**
      * Iterates all secrets stored in this setting.  It is safe to add, remove,
      * and modify secrets inside `func,` though any additions or removals made during
      * iteration will not be part of the iteration.
+     * @param func an user provided function
      */
     foreach_secret(func: VPNIterFunc): void
     /**
      * Retrieves the data item of a key/value relationship previously established
      * by nm_setting_vpn_add_data_item().
+     * @param key the name of the data item to retrieve
      */
     get_data_item(key: string): string
     /**
@@ -15850,6 +16876,7 @@ class SettingVPN {
     /**
      * Retrieves the secret of a key/value relationship previously established
      * by nm_setting_vpn_add_secret().
+     * @param key the name of the secret to retrieve
      */
     get_secret(key: string): string
     /**
@@ -15861,11 +16888,13 @@ class SettingVPN {
     /**
      * Deletes a key/value relationship previously established by
      * nm_setting_vpn_add_data_item().
+     * @param key the name of the data item to remove
      */
     remove_data_item(key: string): boolean
     /**
      * Deletes a key/value relationship previously established by
      * nm_setting_vpn_add_secret().
+     * @param key the name of the secret to remove
      */
     remove_secret(key: string): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -15877,12 +16906,15 @@ class SettingVPN {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -15891,6 +16923,10 @@ class SettingVPN {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -15900,6 +16936,7 @@ class SettingVPN {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -15909,6 +16946,8 @@ class SettingVPN {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -15926,12 +16965,15 @@ class SettingVPN {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -15943,6 +16985,7 @@ class SettingVPN {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -15950,6 +16993,7 @@ class SettingVPN {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -15987,6 +17031,10 @@ class SettingVPN {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15997,6 +17045,12 @@ class SettingVPN {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16020,6 +17074,7 @@ class SettingVPN {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16039,11 +17094,14 @@ class SettingVPN {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16051,6 +17109,8 @@ class SettingVPN {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16068,6 +17128,7 @@ class SettingVPN {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16113,6 +17174,7 @@ class SettingVPN {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16156,15 +17218,20 @@ class SettingVPN {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16205,6 +17272,7 @@ class SettingVPN {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16239,6 +17307,7 @@ class SettingVPN {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -16275,6 +17344,7 @@ class SettingVPN {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16307,6 +17377,7 @@ class SettingVPN {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingVPN, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingVPN, pspec: GObject.ParamSpec) => void)): number
@@ -16401,7 +17472,7 @@ class SettingVlan {
      */
     name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingVlan */
     /**
      * Adds a priority mapping to the #NMSettingVlan:ingress_priority_map or
@@ -16414,17 +17485,23 @@ class SettingVlan {
      * 
      * If `map` is #NM_VLAN_EGRESS_MAP then `from` is the Linux SKB priority value and
      * `to` is the outgoing 802.1q VLAN Priority Code Point (PCP) value.
+     * @param map the type of priority map
+     * @param from the priority to map to `to`
+     * @param to the priority to map `from` to
      */
     add_priority(map: VlanPriorityMap, from: number, to: number): boolean
     /**
      * Adds a priority map entry into either the #NMSettingVlan:ingress_priority_map
      * or the #NMSettingVlan:egress_priority_map properties.  The priority map maps
      * the Linux SKB priorities to 802.1p priorities.
+     * @param map the type of priority map
+     * @param str the string which contains a priority map, like "3:7"
      */
     add_priority_str(map: VlanPriorityMap, str: string): boolean
     /**
      * Clear all the entries from #NMSettingVlan:ingress_priority_map or
      * #NMSettingVlan:egress_priority_map properties.
+     * @param map the type of priority map
      */
     clear_priorities(map: VlanPriorityMap): void
     get_flags(): number
@@ -16434,30 +17511,40 @@ class SettingVlan {
      * Returns the number of entries in the
      * #NMSettingVlan:ingress_priority_map or #NMSettingVlan:egress_priority_map
      * properties of this setting.
+     * @param map the type of priority map
      */
     get_num_priorities(map: VlanPriorityMap): number
     get_parent(): string
     /**
      * Retrieve one of the entries of the #NMSettingVlan:ingress_priority_map
      * or #NMSettingVlan:egress_priority_map properties of this setting.
+     * @param map the type of priority map
+     * @param idx the zero-based index of the ingress/egress priority map entry
      */
     get_priority(map: VlanPriorityMap, idx: number): [ /* returnType */ boolean, /* out_from */ number, /* out_to */ number ]
     /**
      * Removes the priority map at index `idx` from the
      * #NMSettingVlan:ingress_priority_map or #NMSettingVlan:egress_priority_map
      * properties.
+     * @param map the type of priority map
+     * @param idx the zero-based index of the priority map to remove
      */
     remove_priority(map: VlanPriorityMap, idx: number): void
     /**
      * Removes the priority map `form:``to` from the #NMSettingVlan:ingress_priority_map
      * or #NMSettingVlan:egress_priority_map (according to `map` argument)
      * properties.
+     * @param map the type of priority map
+     * @param from the priority to map to `to`
+     * @param to the priority to map `from` to
      */
     remove_priority_by_value(map: VlanPriorityMap, from: number, to: number): boolean
     /**
      * Removes the priority map `str` from the #NMSettingVlan:ingress_priority_map
      * or #NMSettingVlan:egress_priority_map (according to `map` argument)
      * properties.
+     * @param map the type of priority map
+     * @param str the string which contains a priority map, like "3:7"
      */
     remove_priority_str_by_value(map: VlanPriorityMap, str: string): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -16469,12 +17556,15 @@ class SettingVlan {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -16483,6 +17573,10 @@ class SettingVlan {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -16492,6 +17586,7 @@ class SettingVlan {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -16501,6 +17596,8 @@ class SettingVlan {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -16518,12 +17615,15 @@ class SettingVlan {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -16535,6 +17635,7 @@ class SettingVlan {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -16542,6 +17643,7 @@ class SettingVlan {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -16579,6 +17681,10 @@ class SettingVlan {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16589,6 +17695,12 @@ class SettingVlan {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16612,6 +17724,7 @@ class SettingVlan {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16631,11 +17744,14 @@ class SettingVlan {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16643,6 +17759,8 @@ class SettingVlan {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16660,6 +17778,7 @@ class SettingVlan {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16705,6 +17824,7 @@ class SettingVlan {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16748,15 +17868,20 @@ class SettingVlan {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16797,6 +17922,7 @@ class SettingVlan {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16831,6 +17957,7 @@ class SettingVlan {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -16867,6 +17994,7 @@ class SettingVlan {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16899,6 +18027,7 @@ class SettingVlan {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingVlan, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingVlan, pspec: GObject.ParamSpec) => void)): number
@@ -16947,9 +18076,9 @@ class SettingWimax {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingWimax */
     /**
      * Returns the MAC address of a WiMAX device which this connection is locked
@@ -16970,12 +18099,15 @@ class SettingWimax {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -16984,6 +18116,10 @@ class SettingWimax {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -16993,6 +18129,7 @@ class SettingWimax {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -17002,6 +18139,8 @@ class SettingWimax {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -17019,12 +18158,15 @@ class SettingWimax {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -17036,6 +18178,7 @@ class SettingWimax {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -17043,6 +18186,7 @@ class SettingWimax {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -17080,6 +18224,10 @@ class SettingWimax {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17090,6 +18238,12 @@ class SettingWimax {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17113,6 +18267,7 @@ class SettingWimax {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17132,11 +18287,14 @@ class SettingWimax {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17144,6 +18302,8 @@ class SettingWimax {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17161,6 +18321,7 @@ class SettingWimax {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17206,6 +18367,7 @@ class SettingWimax {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17249,15 +18411,20 @@ class SettingWimax {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17298,6 +18465,7 @@ class SettingWimax {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17332,6 +18500,7 @@ class SettingWimax {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -17368,6 +18537,7 @@ class SettingWimax {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17400,6 +18570,7 @@ class SettingWimax {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingWimax, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingWimax, pspec: GObject.ParamSpec) => void)): number
@@ -17498,12 +18669,13 @@ class SettingWired {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingWired */
     /**
      * Adds a new MAC address to the #NMSettingWired:mac-address-blacklist property.
+     * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
      */
     add_mac_blacklist_item(mac: string): boolean
     /**
@@ -17511,6 +18683,8 @@ class SettingWired {
      * of allowed options.  Key names may contain only alphanumeric characters
      * (ie [a-zA-Z0-9]).  Adding a new key replaces any existing key/value pair that
      * may already exist.
+     * @param key key name for the option
+     * @param value value for the option
      */
     add_s390_option(key: string, value: string): boolean
     /**
@@ -17543,11 +18717,13 @@ class SettingWired {
      * nm_setting_wired_add_s390_option() and nm_setting_wired_remove_s390_option(),
      * and should not be used to refer to options except for short periods of time
      * such as during option iteration.
+     * @param idx index of the desired option, from 0 to nm_setting_wired_get_num_s390_options() - 1
      */
     get_s390_option(idx: number): [ /* returnType */ boolean, /* out_key */ string, /* out_value */ string ]
     /**
      * Returns the value associated with the s390-specific option specified by
      * `key,` if it exists.
+     * @param key the key for which to retrieve the value
      */
     get_s390_option_by_key(key: string): string
     /**
@@ -17563,15 +18739,18 @@ class SettingWired {
     get_valid_s390_options(): string[]
     /**
      * Removes the MAC address at index `idx` from the blacklist.
+     * @param idx index number of the MAC address
      */
     remove_mac_blacklist_item(idx: number): void
     /**
      * Removes the MAC address `mac` from the blacklist.
+     * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
      */
     remove_mac_blacklist_item_by_value(mac: string): boolean
     /**
      * Remove the s390-specific option referenced by `key` from the internal option
      * list.
+     * @param key key name for the option to remove
      */
     remove_s390_option(key: string): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -17583,12 +18762,15 @@ class SettingWired {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -17597,6 +18779,10 @@ class SettingWired {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -17606,6 +18792,7 @@ class SettingWired {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -17615,6 +18802,8 @@ class SettingWired {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -17632,12 +18821,15 @@ class SettingWired {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -17649,6 +18841,7 @@ class SettingWired {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -17656,6 +18849,7 @@ class SettingWired {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -17693,6 +18887,10 @@ class SettingWired {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17703,6 +18901,12 @@ class SettingWired {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17726,6 +18930,7 @@ class SettingWired {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17745,11 +18950,14 @@ class SettingWired {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17757,6 +18965,8 @@ class SettingWired {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17774,6 +18984,7 @@ class SettingWired {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17819,6 +19030,7 @@ class SettingWired {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17862,15 +19074,20 @@ class SettingWired {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17911,6 +19128,7 @@ class SettingWired {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17945,6 +19163,7 @@ class SettingWired {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -17981,6 +19200,7 @@ class SettingWired {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18013,6 +19233,7 @@ class SettingWired {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingWired, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingWired, pspec: GObject.ParamSpec) => void)): number
@@ -18177,12 +19398,13 @@ class SettingWireless {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingWireless */
     /**
      * Adds a new MAC address to the #NMSettingWireless:mac-address-blacklist property.
+     * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
      */
     add_mac_blacklist_item(mac: string): boolean
     /**
@@ -18190,6 +19412,7 @@ class SettingWireless {
      * NetworkManager now tracks previously seen BSSIDs internally so this function
      * no longer has much use. Actually, changes you make using this function will
      * not be preserved.
+     * @param bssid the new BSSID to add to the list
      */
     add_seen_bssid(bssid: string): boolean
     /**
@@ -18199,6 +19422,11 @@ class SettingWireless {
      * and mode.  Useful for clients that wish to filter a set of connections
      * against a set of access points and determine which connections are
      * compatible with which access points.
+     * @param s_wireless_sec a #NMSettingWirelessSecurity or %NULL
+     * @param ap_flags the %NM80211ApFlags of the given access point
+     * @param ap_wpa the %NM80211ApSecurityFlags of the given access point's WPA capabilities
+     * @param ap_rsn the %NM80211ApSecurityFlags of the given access point's WPA2/RSN capabilities
+     * @param ap_mode the 802.11 mode of the AP, either Ad-Hoc or Infrastructure
      */
     ap_security_compatible(s_wireless_sec: SettingWirelessSecurity, ap_flags: TODO_80211ApFlags, ap_wpa: TODO_80211ApSecurityFlags, ap_rsn: TODO_80211ApSecurityFlags, ap_mode: TODO_80211Mode): boolean
     /**
@@ -18225,10 +19453,12 @@ class SettingWireless {
     get_tx_power(): number
     /**
      * Removes the MAC address at index `idx` from the blacklist.
+     * @param idx index number of the MAC address
      */
     remove_mac_blacklist_item(idx: number): void
     /**
      * Removes the MAC address `mac` from the blacklist.
+     * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
      */
     remove_mac_blacklist_item_by_value(mac: string): boolean
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -18240,12 +19470,15 @@ class SettingWireless {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -18254,6 +19487,10 @@ class SettingWireless {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -18263,6 +19500,7 @@ class SettingWireless {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -18272,6 +19510,8 @@ class SettingWireless {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -18289,12 +19529,15 @@ class SettingWireless {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -18306,6 +19549,7 @@ class SettingWireless {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -18313,6 +19557,7 @@ class SettingWireless {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -18350,6 +19595,10 @@ class SettingWireless {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18360,6 +19609,12 @@ class SettingWireless {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18383,6 +19638,7 @@ class SettingWireless {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18402,11 +19658,14 @@ class SettingWireless {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18414,6 +19673,8 @@ class SettingWireless {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18431,6 +19692,7 @@ class SettingWireless {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18476,6 +19738,7 @@ class SettingWireless {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18519,15 +19782,20 @@ class SettingWireless {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18568,6 +19836,7 @@ class SettingWireless {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18602,6 +19871,7 @@ class SettingWireless {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -18638,6 +19908,7 @@ class SettingWireless {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18670,6 +19941,7 @@ class SettingWireless {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingWireless, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingWireless, pspec: GObject.ParamSpec) => void)): number
@@ -18890,15 +20162,16 @@ class SettingWirelessSecurity {
      */
     name: string
     /* Fields of NetworkManager-1.0.NetworkManager.Setting */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NetworkManager-1.0.NetworkManager.SettingWirelessSecurity */
     /**
      * Adds an encryption algorithm to the list of allowed groupwise encryption
      * algorithms.  If the list is not empty, then only access points that support
      * one or more of the encryption algorithms in the list will be considered
      * compatible with this connection.
+     * @param group the encryption algorithm to add, one of "wep40", "wep104", "tkip", or "ccmp"
      */
     add_group(group: string): boolean
     /**
@@ -18906,6 +20179,7 @@ class SettingWirelessSecurity {
      * algorithms.  If the list is not empty, then only access points that support
      * one or more of the encryption algorithms in the list will be considered
      * compatible with this connection.
+     * @param pairwise the encryption algorithm to add, one of "tkip" or "ccmp"
      */
     add_pairwise(pairwise: string): boolean
     /**
@@ -18915,6 +20189,7 @@ class SettingWirelessSecurity {
      * protocol list contains only "wpa" but the access point for the SSID specified
      * by this connection only supports WPA2/RSN, the connection cannot be used
      * with the access point.
+     * @param proto the protocol to add, one of "wpa" or "rsn"
      */
     add_proto(proto: string): boolean
     /**
@@ -18936,6 +20211,7 @@ class SettingWirelessSecurity {
     /**
      * Returns the allowed groupwise encryption algorithm from allowed algorithm
      * list.
+     * @param i index of an item in the allowed groupwise encryption algorithm list
      */
     get_group(i: number): string
     get_key_mgmt(): string
@@ -18948,6 +20224,7 @@ class SettingWirelessSecurity {
     /**
      * Returns the allowed pairwise encryption algorithm from allowed algorithm
      * list.
+     * @param i index of an item in the allowed pairwise encryption algorithm list
      */
     get_pairwise(i: number): string
     get_proto(i: number): string
@@ -18960,33 +20237,41 @@ class SettingWirelessSecurity {
     /**
      * Removes an encryption algorithm from the allowed groupwise encryption
      * algorithm list.
+     * @param i the index of an item in the allowed groupwise encryption algorithm list
      */
     remove_group(i: number): void
     /**
      * Removes an encryption algorithm from the allowed groupwise encryption
      * algorithm list.
+     * @param group the encryption algorithm to remove, one of "wep40", "wep104", "tkip", or "ccmp"
      */
     remove_group_by_value(group: string): boolean
     /**
      * Removes an encryption algorithm from the allowed pairwise encryption
      * algorithm list.
+     * @param i the index of an item in the allowed pairwise encryption algorithm list
      */
     remove_pairwise(i: number): void
     /**
      * Removes an encryption algorithm from the allowed pairwise encryption
      * algorithm list.
+     * @param pairwise the encryption algorithm to remove, one of "tkip" or "ccmp"
      */
     remove_pairwise_by_value(pairwise: string): boolean
     /**
      * Removes a protocol from the allowed protocol list.
+     * @param i index of the protocol to remove
      */
     remove_proto(i: number): void
     /**
      * Removes a protocol from the allowed protocol list.
+     * @param proto the protocol to remove, one of "wpa" or "rsn"
      */
     remove_proto_by_value(proto: string): boolean
     /**
      * Sets a WEP key in the given index.
+     * @param idx the index of the key (0..3 inclusive)
+     * @param key the WEP key as a string, in either hexadecimal, ASCII, or passphrase form as determiend by the value of the #NMSettingWirelessSecurity:wep-key-type property.
      */
     set_wep_key(idx: number, key: string): void
     /* Methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -18998,12 +20283,15 @@ class SettingWirelessSecurity {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMSetting objects for similarity, with comparison behavior
      * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
      * for a description of each flag's behavior.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: Setting, flags: SettingCompareFlags): boolean
     /**
@@ -19012,6 +20300,10 @@ class SettingWirelessSecurity {
      * for a description of each flag's behavior.  If the settings differ, the keys
      * of each setting that differ from the other are added to `results,` mapped to
      * one or more #NMSettingDiffResult values.
+     * @param b a second #NMSetting to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+     * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
      */
     diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: GLib.HashTable): [ /* returnType */ boolean, /* results */ GLib.HashTable ]
     /**
@@ -19021,6 +20313,7 @@ class SettingWirelessSecurity {
     /**
      * Iterates over each property of the #NMSetting object, calling the supplied
      * user function for each property.
+     * @param func user-supplied function called for each property of the setting
      */
     enumerate_values(func: SettingValueIterFn): void
     /**
@@ -19030,6 +20323,8 @@ class SettingWirelessSecurity {
     /**
      * For a given secret, retrieves the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to get flags for
+     * @param out_flags on success, the #NMSettingSecretFlags for the secret
      */
     get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean
     /**
@@ -19047,12 +20342,15 @@ class SettingWirelessSecurity {
     /**
      * For a given secret, stores the #NMSettingSecretFlags describing how to
      * handle that secret.
+     * @param secret_name the secret key name to set flags for
+     * @param flags the #NMSettingSecretFlags for the secret
      */
     set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
      * D-Bus or serializing.  The mapping is string to GValue.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: SettingHashFlags): GLib.HashTable
     /**
@@ -19064,6 +20362,7 @@ class SettingWirelessSecurity {
     /**
      * Update the setting's secrets, given a hash table of secrets intended for that
      * setting (deserialized from D-Bus for example).
+     * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
      */
     update_secrets(secrets: GLib.HashTable): boolean
     /**
@@ -19071,6 +20370,7 @@ class SettingWirelessSecurity {
      * some are dependent on other values (hence the need for `all_settings)`.  The
      * returned #GError contains information about which property of the setting
      * failed validation, and in what way that property failed validation.
+     * @param all_settings a #GSList of all settings     in the connection from which `setting` came
      */
     verify(all_settings: Setting[]): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -19108,6 +20408,10 @@ class SettingWirelessSecurity {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19118,6 +20422,12 @@ class SettingWirelessSecurity {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19141,6 +20451,7 @@ class SettingWirelessSecurity {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19160,11 +20471,14 @@ class SettingWirelessSecurity {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19172,6 +20486,8 @@ class SettingWirelessSecurity {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19189,6 +20505,7 @@ class SettingWirelessSecurity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19234,6 +20551,7 @@ class SettingWirelessSecurity {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19277,15 +20595,20 @@ class SettingWirelessSecurity {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19326,6 +20649,7 @@ class SettingWirelessSecurity {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19360,6 +20684,7 @@ class SettingWirelessSecurity {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Setting */
@@ -19396,6 +20721,7 @@ class SettingWirelessSecurity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19428,6 +20754,7 @@ class SettingWirelessSecurity {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SettingWirelessSecurity, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SettingWirelessSecurity, pspec: GObject.ParamSpec) => void)): number
@@ -19475,14 +20802,15 @@ class SettingWirelessSecurity {
 }
 abstract class ConnectionClass {
     /* Fields of NetworkManager-1.0.NetworkManager.ConnectionClass */
-    readonly parent: GObject.ObjectClass
-    readonly secrets_updated: (connection: Connection, setting: string) => void
+    parent: GObject.ObjectClass
+    secrets_updated: (connection: Connection, setting: string) => void
     static name: string
 }
 class IP4Address {
     /* Methods of NetworkManager-1.0.NetworkManager.IP4Address */
     /**
      * Determines if two #NMIP4Address objects contain the same values.
+     * @param other the #NMIP4Address to compare `address` to.
      */
     compare(other: IP4Address): boolean
     /**
@@ -19508,14 +20836,17 @@ class IP4Address {
     ref(): void
     /**
      * Sets the IPv4 address property of this object.
+     * @param addr the IPv4 address in network byte order
      */
     set_address(addr: number): void
     /**
      * Sets the IPv4 default gateway property of this address object.
+     * @param gateway the IPv4 default gateway in network byte order
      */
     set_gateway(gateway: number): void
     /**
      * Sets the IPv4 address prefix.
+     * @param prefix the address prefix, a number between 1 and 32 inclusive
      */
     set_prefix(prefix: number): void
     /**
@@ -19533,6 +20864,7 @@ class IP4Route {
     /* Methods of NetworkManager-1.0.NetworkManager.IP4Route */
     /**
      * Determines if two #NMIP4Route objects contain the same values.
+     * @param other the #NMIP4Route to compare `route` to.
      */
     compare(other: IP4Route): boolean
     /**
@@ -19562,19 +20894,23 @@ class IP4Route {
     ref(): void
     /**
      * Sets the IPv4 destination address property of this route object.
+     * @param dest the destination address in network byte order
      */
     set_dest(dest: number): void
     /**
      * Sets the route metric property of this route object; lower values indicate
      * "better" or more preferred routes.
+     * @param metric the route metric
      */
     set_metric(metric: number): void
     /**
      * Sets the IPv4 address of the next hop of this route.
+     * @param next_hop the IPv4 address of the next hop in network byte order
      */
     set_next_hop(next_hop: number): void
     /**
      * Sets the IPv4 prefix of this route.
+     * @param prefix the prefix, a number between 1 and 32 inclusive
      */
     set_prefix(prefix: number): void
     /**
@@ -19592,6 +20928,7 @@ class IP6Address {
     /* Methods of NetworkManager-1.0.NetworkManager.IP6Address */
     /**
      * Determines if two #NMIP6Address objects contain the same values.
+     * @param other the #NMIP6Address to compare `address` to.
      */
     compare(other: IP6Address): boolean
     /**
@@ -19616,14 +20953,17 @@ class IP6Address {
     ref(): void
     /**
      * Sets the IPv6 address property of this object.
+     * @param addr the IPv6 address
      */
     set_address(addr?: object | null): void
     /**
      * Sets the IPv6 default gateway property of this address object.
+     * @param gateway the IPv6 default gateway
      */
     set_gateway(gateway?: object | null): void
     /**
      * Sets the IPv6 address prefix.
+     * @param prefix the address prefix, a number between 0 and 128 inclusive
      */
     set_prefix(prefix: number): void
     /**
@@ -19641,6 +20981,7 @@ class IP6Route {
     /* Methods of NetworkManager-1.0.NetworkManager.IP6Route */
     /**
      * Determines if two #NMIP6Route objects contain the same values.
+     * @param other the #NMIP6Route to compare `route` to.
      */
     compare(other: IP6Route): boolean
     /**
@@ -19670,19 +21011,23 @@ class IP6Route {
     ref(): void
     /**
      * Sets the IPv6 destination address property of this route object.
+     * @param dest the destination address
      */
     set_dest(dest?: object | null): void
     /**
      * Sets the route metric property of this route object; lower values indicate
      * "better" or more preferred routes.
+     * @param metric the route metric
      */
     set_metric(metric: number): void
     /**
      * Sets the IPv6 address of the next hop of this route.
+     * @param next_hop the IPv6 address of the next hop
      */
     set_next_hop(next_hop?: object | null): void
     /**
      * Sets the IPv6 prefix of this route.
+     * @param prefix the prefix, a number between 1 and 128 inclusive
      */
     set_prefix(prefix: number): void
     /**
@@ -19698,143 +21043,143 @@ class IP6Route {
 }
 abstract class Setting8021xClass {
     /* Fields of NetworkManager-1.0.NetworkManager.Setting8021xClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingAdslClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingAdslClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingBluetoothClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingBluetoothClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingBondClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingBondClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingBridgeClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingBridgeClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingBridgePortClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingBridgePortClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingCdmaClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingCdmaClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingClass */
-    readonly parent: GObject.ObjectClass
-    readonly need_secrets: (setting: Setting) => string[]
-    readonly update_one_secret: (setting: Setting, key: string, value: any) => number
-    readonly get_secret_flags: (setting: Setting, secret_name: string, verify_secret: boolean, out_flags: SettingSecretFlags) => boolean
-    readonly set_secret_flags: (setting: Setting, secret_name: string, verify_secret: boolean, flags: SettingSecretFlags) => boolean
-    readonly compare_property: (setting: Setting, other: Setting, prop_spec: GObject.ParamSpec, flags: SettingCompareFlags) => boolean
-    readonly get_virtual_iface_name: (setting: Setting) => string
+    parent: GObject.ObjectClass
+    need_secrets: (setting: Setting) => string[]
+    update_one_secret: (setting: Setting, key: string, value: any) => number
+    get_secret_flags: (setting: Setting, secret_name: string, verify_secret: boolean, out_flags: SettingSecretFlags) => boolean
+    set_secret_flags: (setting: Setting, secret_name: string, verify_secret: boolean, flags: SettingSecretFlags) => boolean
+    compare_property: (setting: Setting, other: Setting, prop_spec: GObject.ParamSpec, flags: SettingCompareFlags) => boolean
+    get_virtual_iface_name: (setting: Setting) => string
     static name: string
 }
 abstract class SettingConnectionClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingConnectionClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingDcbClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingDcbClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingGenericClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingGenericClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingGsmClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingGsmClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingIP4ConfigClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingIP4ConfigClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingIP6ConfigClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingIP6ConfigClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingInfinibandClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingInfinibandClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingOlpcMeshClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingOlpcMeshClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingPPPClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingPPPClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingPPPOEClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingPPPOEClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingSerialClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingSerialClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingTeamClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingTeamClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingTeamPortClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingTeamPortClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingVPNClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingVPNClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingVlanClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingVlanClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingWimaxClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingWimaxClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingWiredClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingWiredClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingWirelessClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingWirelessClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 abstract class SettingWirelessSecurityClass {
     /* Fields of NetworkManager-1.0.NetworkManager.SettingWirelessSecurityClass */
-    readonly parent: SettingClass
+    parent: SettingClass
     static name: string
 }
 }

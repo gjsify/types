@@ -38,10 +38,9 @@ enum PluginInfoError {
      */
     DEP_LOADING_FAILED,
 }
-function cclosureMarshalVOIDBOXEDOBJECT(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
 function pluginInfoErrorQuark(): GLib.Quark
 /**
- * This function is passed to peas_extension_set_foreach() and
+ * This function is passed to [method`ExtensionSet`.foreach] and
  * will be called for each extension in `set`.
  */
 interface ExtensionSetForeachFunc {
@@ -49,14 +48,23 @@ interface ExtensionSetForeachFunc {
 }
 /**
  * A #PeasFactoryFunc is a factory function which will instanciate a new
- * extension of a given type. g_object_newv() is such a function.
+ * extension of a given type. [ctor`GObject`.Object.newv] is such a function.
  * 
- * It is used with peas_object_module_register_extension_factory().
+ * It is used with [method`ObjectModule`.register_extension_factory].
  */
 interface FactoryFunc {
     (parameters: GObject.Parameter[]): GObject.Object
 }
 class Activatable {
+    /* Properties of Peas-1.0.Peas.Activatable */
+    /**
+     * The object property contains the targetted object for this #PeasActivatable
+     * instance.
+     * 
+     * For example a toplevel window in a typical windowed application. It is set
+     * at construction time and won't change.
+     */
+    readonly object: GObject.Object
     /* Methods of Peas-1.0.Peas.Activatable */
     /**
      * Activates the extension on the targetted object.
@@ -85,12 +93,13 @@ interface Engine_ConstructProps extends GObject.Object_ConstructProps {
     /**
      * The list of loaded plugins.
      * 
-     * This will be modified when peas_engine_load_plugin() or
-     * peas_engine_unload_plugin() is called.
+     * This will be modified when [method`Engine`.load_plugin] or
+     * [method`Engine`.unload_plugin] is called.
      * 
-     * This can be used with GSettings to save the loaded plugins by binding
-     * to this property after instantiating the engine by doing:
-     * |[
+     * This can be used with [class`Gio`.Settings] to save the loaded plugins by
+     * binding to this property after instantiating the engine by doing:
+     * 
+     * ```c
      *   g_settings_bind (gsettings_object,
      *                    LOADED_PLUGINS_KEY,
      *                    engine,
@@ -98,14 +107,13 @@ interface Engine_ConstructProps extends GObject.Object_ConstructProps {
      *                    G_SETTINGS_BIND_DEFAULT);
      * ```
      * 
-     * 
      * Note: notify will not be called when the engine is being destroyed.
      */
     loadedPlugins?: string[]
     /**
      * If non-global plugin loaders should be used.
      * 
-     * See peas_engine_new_with_nonglobal_loaders() for more information.
+     * See [ctor`Engine`.new_with_nonglobal_loaders] for more information.
      */
     nonglobalLoaders?: boolean
 }
@@ -114,12 +122,13 @@ class Engine {
     /**
      * The list of loaded plugins.
      * 
-     * This will be modified when peas_engine_load_plugin() or
-     * peas_engine_unload_plugin() is called.
+     * This will be modified when [method`Engine`.load_plugin] or
+     * [method`Engine`.unload_plugin] is called.
      * 
-     * This can be used with GSettings to save the loaded plugins by binding
-     * to this property after instantiating the engine by doing:
-     * |[
+     * This can be used with [class`Gio`.Settings] to save the loaded plugins by
+     * binding to this property after instantiating the engine by doing:
+     * 
+     * ```c
      *   g_settings_bind (gsettings_object,
      *                    LOADED_PLUGINS_KEY,
      *                    engine,
@@ -127,24 +136,28 @@ class Engine {
      *                    G_SETTINGS_BIND_DEFAULT);
      * ```
      * 
-     * 
      * Note: notify will not be called when the engine is being destroyed.
      */
     loadedPlugins: string[]
     /**
+     * If non-global plugin loaders should be used.
+     * 
+     * See [ctor`Engine`.new_with_nonglobal_loaders] for more information.
+     */
+    readonly nonglobalLoaders: boolean
+    /**
      * The list of found plugins.
      * 
-     * This will be modified when peas_engine_rescan_plugins() is called.
+     * This will be modified when [method`Engine`.rescan_plugins] is called.
      * 
      * Note: the list belongs to the engine and should not be modified or freed.
      */
     readonly pluginList: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Peas-1.0.Peas.Engine */
     /**
-     * This function appends a search path to the list of paths where to
-     * look for plugins.
+     * Appends a search path to the list of paths where to look for plugins.
      * 
      * A so-called "search path" actually consists of both a
      * module directory (where the shared libraries or language modules
@@ -155,84 +168,103 @@ class Engine {
      * when it comes to installation location: the same plugin can be
      * installed either in the system path or in the user's home directory,
      * without taking other special care than using
-     * peas_plugin_info_get_data_dir() when looking for its data files.
+     * [method`PluginInfo`.get_data_dir] when looking for its data files.
      * 
      * If `data_dir` is %NULL, then it is set to the same value as
      * `module_dir`.
+     * @param moduleDir the plugin module directory.
+     * @param dataDir the plugin data directory.
      */
     addSearchPath(moduleDir: string, dataDir?: string | null): void
     /**
      * If the plugin identified by `info` implements the `extension_type,`
      * then this function will return a new instance of this implementation,
-     * wrapped in a new #PeasExtension instance. Otherwise, it will return %NULL.
+     * wrapped in a new [alias`Extension]` instance. Otherwise, it will return %NULL.
      * 
-     * Since libpeas 1.22, `extension_type` can be an Abstract #GType
-     * and not just an Interface #GType.
+     * Since libpeas 1.22, `extension_type` can be an Abstract [alias`GObject`.Type]
+     * and not just an Interface [alias`GObject`.Type].
      * 
-     * See peas_engine_create_extension() for more information.
+     * See [method`Engine`.create_extension] for more information.
+     * @param info A loaded #PeasPluginInfo.
+     * @param extensionType The implemented extension #GType.
+     * @param propNames an array of property names.
+     * @param propValues an array of property values.
      */
     createExtension(info: PluginInfo, extensionType: GObject.Type, propNames: string[], propValues: any[]): Extension
     /**
      * Enable a loader, enables a loader for plugins.
+     * 
      * The C plugin loader is always enabled. The other plugin
      * loaders are: lua5.1, python and python3.
      * 
      * For instance, the following code will enable Python 2 plugins
      * to be loaded:
-     * |[
+     * 
+     * ```c
      * peas_engine_enable_loader (engine, "python");
      * ```
      * 
-     * 
-     * Note: plugin loaders used to be shared across #PeasEngines so enabling
-     *       a loader on one #PeasEngine would enable it on all #PeasEngines.
-     *       This behavior has been kept to avoid breaking applications,
-     *       however a warning has been added to help applications transition.
+     * Note: plugin loaders used to be shared across `PeasEngine`s so enabling
+     *   a loader on one #PeasEngine would enable it on all #PeasEngines.
+     *   This behavior has been kept to avoid breaking applications,
+     *   however a warning has been added to help applications transition.
+     * @param loaderName The name of the loader to enable.
      */
     enableLoader(loaderName: string): void
     /**
-     * This function triggers garbage collection on all the loaders currently
-     * owned by the #PeasEngine.  This can be used to force the loaders to destroy
+     * Triggers garbage collection on all the loaders currently owned by the
+     * #PeasEngine.
+     * 
+     * This can be used to force the loaders to destroy
      * managed objects that still hold references to objects that are about to
      * disappear.
      */
     garbageCollect(): void
     /**
-     * Returns the list of the names of all the loaded plugins, or an array
-     * containing a single %NULL element if there is no plugin currently loaded.
+     * Returns the list of the names of all the loaded plugins.
+     * 
+     * If there is no plugin currently loaded, it will return an array containing a
+     * single %NULL element.
      * 
      * Please note that the returned array is a newly allocated one: you will need
-     * to free it using g_strfreev().
+     * to free it using [func`GLib`.strfreev].
      */
     getLoadedPlugins(): string[]
     /**
-     * Gets the #PeasPluginInfo corresponding with `plugin_name,`
+     * Gets the [struct`PluginInfo]` corresponding with `plugin_name,`
      * or %NULL if `plugin_name` was not found.
+     * @param pluginName A plugin name.
      */
     getPluginInfo(pluginName: string): PluginInfo
     /**
-     * Returns the list of #PeasPluginInfo known to the engine.
+     * Returns the list of [struct`PluginInfo]` known to the engine.
      */
     getPluginList(): PluginInfo[]
     /**
      * Loads the plugin corresponding to `info` if it's not currently loaded.
-     * Emits the "load-plugin" signal; loading the plugin
+     * 
+     * Emits the [signal`Engine:`:load-plugin] signal; loading the plugin
      * actually occurs in the default signal handler.
+     * @param info A #PeasPluginInfo.
      */
     loadPlugin(info: PluginInfo): boolean
     /**
-     * This function prepends a search path to the list of paths where to
-     * look for plugins.
+     * Prepends a search path to the list of paths where to look for plugins.
      * 
-     * See Also: peas_engine_add_search_path()
+     * See Also: [method`Engine`.add_search_path]
+     * @param moduleDir the plugin module directory.
+     * @param dataDir the plugin data directory.
      */
     prependSearchPath(moduleDir: string, dataDir?: string | null): void
     /**
      * Returns if `info` provides an extension for `extension_type`.
+     * 
      * If the `info` is not loaded than %FALSE will always be returned.
      * 
-     * Since libpeas 1.22, `extension_type` can be an Abstract #GType
-     * and not just an Interface #GType.
+     * Since libpeas 1.22, `extension_type` can be an Abstract [alias`GObject`.Type]
+     * and not just an Interface [alias`GObject`.Type].
+     * @param info A #PeasPluginInfo.
+     * @param extensionType The extension #GType.
      */
     providesExtension(info: PluginInfo, extensionType: GObject.Type): boolean
     /**
@@ -244,17 +276,22 @@ class Engine {
      */
     rescanPlugins(): void
     /**
-     * Sets the list of loaded plugins for `engine`. When this function is called,
-     * the #PeasEngine will load all the plugins whose names are in `plugin_names,`
-     * and ensures all other active plugins are unloaded.
+     * Sets the list of loaded plugins for `engine`.
+     * 
+     * When this function is called, the #PeasEngine will load all the plugins whose
+     * names are in `plugin_names,` and ensures all other active plugins are
+     * unloaded.
      * 
      * If `plugin_names` is %NULL, all plugins will be unloaded.
+     * @param pluginNames A %NULL-terminated  array of plugin names, or %NULL.
      */
     setLoadedPlugins(pluginNames?: string[] | null): void
     /**
      * Unloads the plugin corresponding to `info`.
-     * Emits the "unload-plugin" signal; unloading the plugin
+     * 
+     * Emits the [signal`Engine:`:unload-plugin] signal; unloading the plugin
      * actually occurs in the default signal handler.
+     * @param info A #PeasPluginInfo.
      */
     unloadPlugin(info: PluginInfo): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -292,6 +329,10 @@ class Engine {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -302,6 +343,12 @@ class Engine {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -325,6 +372,7 @@ class Engine {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -344,11 +392,14 @@ class Engine {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -356,6 +407,8 @@ class Engine {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -373,6 +426,7 @@ class Engine {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -418,6 +472,7 @@ class Engine {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -461,15 +516,20 @@ class Engine {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -510,6 +570,7 @@ class Engine {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -544,6 +605,7 @@ class Engine {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Peas-1.0.Peas.Engine */
@@ -552,9 +614,10 @@ class Engine {
      * 
      * The plugin is being loaded in the default handler. Hence, if you want to
      * perform some action before the plugin is loaded, you should use
-     * g_signal_connect(), but if you want to perform some action *after* the
+     * [func`GObject`.signal_connect], but if you want to perform some action *after* the
      * plugin is loaded (the most common case), you should use
-     * g_signal_connect_after().
+     * [func`GObject`.signal_connect_after].
+     * @param info A #PeasPluginInfo.
      */
     connect(sigName: "load-plugin", callback: ((info: PluginInfo) => void)): number
     on(sigName: "load-plugin", callback: (info: PluginInfo) => void, after?: boolean): NodeJS.EventEmitter
@@ -564,11 +627,12 @@ class Engine {
     /**
      * The unload-plugin signal is emitted when a plugin is being unloaded.
      * 
-     * The plugin is being unloaded in the default handler. Hence, if you want
-     * to perform some action before the plugin is unloaded (the most common
-     * case), you should use g_signal_connect(), but if you want to perform some
-     * action after the plugin is unloaded (the most common case), you should
-     * use g_signal_connect_after().
+     * The plugin is being unloaded in the default handler. Hence, if you want to
+     * perform some action before the plugin is unloaded (the most common case),
+     * you should use [func`GObject`.signal_connect], but if you want to perform
+     * some action after the plugin is unloaded (the most common case), you should
+     * use [func`GObject`.signal_connect_after].
+     * @param info A #PeasPluginInfo.
      */
     connect(sigName: "unload-plugin", callback: ((info: PluginInfo) => void)): number
     on(sigName: "unload-plugin", callback: (info: PluginInfo) => void, after?: boolean): NodeJS.EventEmitter
@@ -604,6 +668,7 @@ class Engine {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -615,6 +680,11 @@ class Engine {
     on(sigName: "notify::loaded-plugins", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::loaded-plugins", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::loaded-plugins", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::nonglobal-loaders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::nonglobal-loaders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::nonglobal-loaders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::nonglobal-loaders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::nonglobal-loaders", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::plugin-list", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::plugin-list", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::plugin-list", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -635,11 +705,12 @@ class Engine {
     static newWithNonglobalLoaders(): Engine
     /**
      * Return the existing instance of #PeasEngine or a subclass of it.
+     * 
      * If no #PeasEngine subclass has been instantiated yet, the first call
      * of this function will return a new instance of #PeasEngine.
      * 
      * Note: this function should never be used when multiple threads are
-     *       using libpeas API as it is not thread-safe.
+     *   using libpeas API as it is not thread-safe.
      */
     static getDefault(): Engine
     static $gtype: GObject.Type
@@ -647,7 +718,7 @@ class Engine {
 interface ExtensionBase_ConstructProps extends GObject.Object_ConstructProps {
     /* Constructor properties of Peas-1.0.Peas.ExtensionBase */
     /**
-     * The #PeasPluginInfo related to the current plugin.
+     * The [struct`PluginInfo]` related to the current plugin.
      */
     pluginInfo?: PluginInfo
 }
@@ -658,11 +729,15 @@ class ExtensionBase {
      * should look for its data files.
      * 
      * Note: This is the same path as that returned by
-     * peas_plugin_info_get_data_dir().
+     * [method`PluginInfo`.get_data_dir].
      */
     readonly dataDir: string
+    /**
+     * The [struct`PluginInfo]` related to the current plugin.
+     */
+    readonly pluginInfo: PluginInfo
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Peas-1.0.Peas.ExtensionBase */
     /**
      * Get the path of the directory where the plugin should look for
@@ -708,6 +783,10 @@ class ExtensionBase {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -718,6 +797,12 @@ class ExtensionBase {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -741,6 +826,7 @@ class ExtensionBase {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -760,11 +846,14 @@ class ExtensionBase {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -772,6 +861,8 @@ class ExtensionBase {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -789,6 +880,7 @@ class ExtensionBase {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -834,6 +926,7 @@ class ExtensionBase {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -877,15 +970,20 @@ class ExtensionBase {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -926,6 +1024,7 @@ class ExtensionBase {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -960,6 +1059,7 @@ class ExtensionBase {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -991,6 +1091,7 @@ class ExtensionBase {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1002,6 +1103,11 @@ class ExtensionBase {
     on(sigName: "notify::data-dir", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::data-dir", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::data-dir", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::plugin-info", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::plugin-info", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::plugin-info", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::plugin-info", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::plugin-info", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1021,18 +1127,25 @@ interface ExtensionSet_ConstructProps extends GObject.Object_ConstructProps {
     extensionType?: GObject.Type
 }
 class ExtensionSet {
+    /* Properties of Peas-1.0.Peas.ExtensionSet */
+    readonly constructProperties: object
+    readonly engine: Engine
+    readonly extensionType: GObject.Type
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Peas-1.0.Peas.ExtensionSet */
     /**
-     * Calls `func` for each #PeasExtension.
+     * Calls `func` for each [alias`Extension]`.
+     * @param func A function call for each extension.
      */
     foreach(func: ExtensionSetForeachFunc): void
     /**
-     * Returns the #PeasExtension object corresponding to `info,` or %NULL
-     * if the plugin doesn't provide such an extension.
+     * Returns the [alias`Extension]` object corresponding to `info`.
+     * 
+     * If the plugin doesn't provide such an extension, it returns %NULL.
+     * @param info a #PeasPluginInfo
      */
-    getExtension(info: PluginInfo): Extension
+    getExtension(info: PluginInfo): Extension | null
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -1068,6 +1181,10 @@ class ExtensionSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1078,6 +1195,12 @@ class ExtensionSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1101,6 +1224,7 @@ class ExtensionSet {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1120,11 +1244,14 @@ class ExtensionSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1132,6 +1259,8 @@ class ExtensionSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1149,6 +1278,7 @@ class ExtensionSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1194,6 +1324,7 @@ class ExtensionSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1237,15 +1368,20 @@ class ExtensionSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1286,6 +1422,7 @@ class ExtensionSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1320,18 +1457,22 @@ class ExtensionSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Peas-1.0.Peas.ExtensionSet */
     /**
-     * The extension-added signal is emitted when a new extension has been
-     * added to the #PeasExtensionSet. It happens when a new plugin implementing
-     * the extension set's extension type is loaded.
+     * Emitted when a new extension has been added to the #PeasExtensionSet.
+     * 
+     * It happens when a new plugin implementing the extension set's extension
+     * type is loaded.
      * 
      * You should connect to this signal in order to set up the extensions when
      * they are loaded. Note that this signal is not fired for extensions coming
      * from plugins that were already loaded when the #PeasExtensionSet instance
      * was created. You should set those up by yourself.
+     * @param info A #PeasPluginInfo.
+     * @param exten A #PeasExtension.
      */
     connect(sigName: "extension-added", callback: ((info: PluginInfo, exten: GObject.Object) => void)): number
     on(sigName: "extension-added", callback: (info: PluginInfo, exten: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -1339,15 +1480,18 @@ class ExtensionSet {
     off(sigName: "extension-added", callback: (info: PluginInfo, exten: GObject.Object) => void): NodeJS.EventEmitter
     emit(sigName: "extension-added", info: PluginInfo, exten: GObject.Object): void
     /**
-     * The extension-removed signal is emitted when a new extension is about to be
-     * removed from the #PeasExtensionSet. It happens when a plugin implementing
-     * the extension set's extension type is unloaded, or when the
-     * #PeasExtensionSet itself is destroyed.
+     * Emitted when a new extension is about to be removed from the
+     * #PeasExtensionSet.
+     * 
+     * It happens when a plugin implementing the extension set's extension type is
+     * unloaded, or when the #PeasExtensionSet itself is destroyed.
      * 
      * You should connect to this signal in order to clean up the extensions
      * when their plugin is unload. Note that this signal is not fired for the
-     * #PeasExtension instances still available when the #PeasExtensionSet
+     * [alias`Extension]` instances still available when the #PeasExtensionSet
      * instance is destroyed. You should clean those up by yourself.
+     * @param info A #PeasPluginInfo.
+     * @param exten A #PeasExtension.
      */
     connect(sigName: "extension-removed", callback: ((info: PluginInfo, exten: GObject.Object) => void)): number
     on(sigName: "extension-removed", callback: (info: PluginInfo, exten: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -1383,12 +1527,28 @@ class ExtensionSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::construct-properties", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::construct-properties", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::construct-properties", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::construct-properties", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::construct-properties", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::engine", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::engine", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::engine", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::engine", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::engine", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::extension-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extension-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extension-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extension-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extension-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1406,8 +1566,7 @@ class ExtensionSet {
 interface ObjectModule_ConstructProps extends GObject.TypeModule_ConstructProps {
     /* Constructor properties of Peas-1.0.Peas.ObjectModule */
     /**
-     * This property indicates whether the module is loaded with
-     * local linkage, i.e. #G_MODULE_BIND_LOCAL.
+     * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
      * 
      * Since 1.14
      */
@@ -1418,17 +1577,28 @@ interface ObjectModule_ConstructProps extends GObject.TypeModule_ConstructProps 
     symbol?: string
 }
 class ObjectModule {
+    /* Properties of Peas-1.0.Peas.ObjectModule */
+    /**
+     * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
+     * 
+     * Since 1.14
+     */
+    readonly localLinkage: boolean
+    readonly moduleName: string
+    readonly path: string
+    readonly resident: boolean
+    readonly symbol: string
     /* Fields of GObject-2.0.GObject.TypeModule */
-    readonly parentInstance: GObject.Object
-    readonly useCount: number
-    readonly typeInfos: object[]
-    readonly interfaceInfos: object[]
+    parentInstance: GObject.Object
+    useCount: number
+    typeInfos: object[]
+    interfaceInfos: object[]
     /**
      * the name of the module
      */
-    readonly name: string
+    name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Peas-1.0.Peas.ObjectModule */
     /**
      * Register an implementation for an extension type through a factory
@@ -1437,18 +1607,22 @@ class ObjectModule {
      * 
      * This method is primarily meant to be used by native bindings (like gtkmm),
      * creating native types which cannot be instantiated correctly using
-     * g_object_new().  For other uses, you will usually prefer relying on
+     * [ctor`GObject`.Object.new].  For other uses, you will usually prefer relying on
      * peas_object_module_register_extension_type().
      * 
-     * Since libpeas 1.22, `exten_type` can be an Abstract #GType
-     * and not just an Interface #GType.
+     * Since libpeas 1.22, `exten_type` can be an Abstract [alias`GObject`.Type]
+     * and not just an Interface [alias`GObject`.Type].
+     * @param extenType The #GType of the extension you implement.
+     * @param factoryFunc The #PeasFactoryFunc that will create the `exten_type`   instance when requested.
      */
     registerExtensionFactory(extenType: GObject.Type, factoryFunc: FactoryFunc): void
     /**
      * Register `impl_type` as an extension which implements `extension_type`.
      * 
-     * Since libpeas 1.22, `exten_type` can be an Abstract #GType
-     * and not just an Interface #GType.
+     * Since libpeas 1.22, `exten_type` can be an Abstract [alias`GObject`.Type]
+     * and not just an Interface [alias`GObject`.Type].
+     * @param extenType The #GType of the extension you implement.
+     * @param implType The #GType of your implementation of `exten_type`.
      */
     registerExtensionType(extenType: GObject.Type, implType: GObject.Type): void
     /* Methods of GObject-2.0.GObject.TypeModule */
@@ -1462,6 +1636,9 @@ class ObjectModule {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_add_interface_static()
      * instead. This can be used when making a static build of the module.
+     * @param instanceType type to which to add the interface.
+     * @param interfaceType interface type to add
+     * @param interfaceInfo type information structure
      */
     addInterface(instanceType: GObject.Type, interfaceType: GObject.Type, interfaceInfo: GObject.InterfaceInfo): void
     /**
@@ -1475,6 +1652,8 @@ class ObjectModule {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param name name for the type
+     * @param constStaticValues an array of #GEnumValue structs for the                       possible enumeration values. The array is                       terminated by a struct with all members being                       0.
      */
     registerEnum(name: string, constStaticValues: GObject.EnumValue): GObject.Type
     /**
@@ -1488,6 +1667,8 @@ class ObjectModule {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param name name for the type
+     * @param constStaticValues an array of #GFlagsValue structs for the                       possible flags values. The array is                       terminated by a struct with all members being                       0.
      */
     registerFlags(name: string, constStaticValues: GObject.FlagsValue): GObject.Type
     /**
@@ -1505,10 +1686,15 @@ class ObjectModule {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param parentType the type for the parent class
+     * @param typeName name for the type
+     * @param typeInfo type information structure
+     * @param flags flags field providing details about the type
      */
     registerType(parentType: GObject.Type, typeName: string, typeInfo: GObject.TypeInfo, flags: GObject.TypeFlags): GObject.Type
     /**
      * Sets the name for a #GTypeModule
+     * @param name a human-readable name to use in error messages.
      */
     setName(name: string): void
     /**
@@ -1561,6 +1747,10 @@ class ObjectModule {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1571,6 +1761,12 @@ class ObjectModule {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1594,6 +1790,7 @@ class ObjectModule {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1613,11 +1810,14 @@ class ObjectModule {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1625,6 +1825,8 @@ class ObjectModule {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1642,6 +1844,7 @@ class ObjectModule {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1687,6 +1890,7 @@ class ObjectModule {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1730,15 +1934,20 @@ class ObjectModule {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1779,6 +1988,7 @@ class ObjectModule {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1813,6 +2023,7 @@ class ObjectModule {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GObject-2.0.GObject.TypePlugin */
@@ -1820,12 +2031,18 @@ class ObjectModule {
      * Calls the `complete_interface_info` function from the
      * #GTypePluginClass of `plugin`. There should be no need to use this
      * function outside of the GObject type system itself.
+     * @param instanceType the #GType of an instantiatable type to which the interface  is added
+     * @param interfaceType the #GType of the interface whose info is completed
+     * @param info the #GInterfaceInfo to fill in
      */
     completeInterfaceInfo(instanceType: GObject.Type, interfaceType: GObject.Type, info: GObject.InterfaceInfo): void
     /**
      * Calls the `complete_type_info` function from the #GTypePluginClass of `plugin`.
      * There should be no need to use this function outside of the GObject
      * type system itself.
+     * @param gType the #GType whose info is completed
+     * @param info the #GTypeInfo struct to fill in
+     * @param valueTable the #GTypeValueTable to fill in
      */
     completeTypeInfo(gType: GObject.Type, info: GObject.TypeInfo, valueTable: GObject.TypeValueTable): void
     /**
@@ -1863,12 +2080,38 @@ class ObjectModule {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::local-linkage", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-linkage", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::local-linkage", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::local-linkage", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::local-linkage", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::module-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::module-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::module-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::module-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::module-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::resident", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resident", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::resident", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::resident", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::resident", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::symbol", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::symbol", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::symbol", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::symbol", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::symbol", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1886,10 +2129,10 @@ abstract class ActivatableInterface {
     /**
      * The parent interface.
      */
-    readonly gIface: GObject.TypeInterface
-    readonly activate: (activatable: Activatable) => void
-    readonly deactivate: (activatable: Activatable) => void
-    readonly updateState: (activatable: Activatable) => void
+    gIface: GObject.TypeInterface
+    activate: (activatable: Activatable) => void
+    deactivate: (activatable: Activatable) => void
+    updateState: (activatable: Activatable) => void
     static name: string
 }
 abstract class EngineClass {
@@ -1897,9 +2140,9 @@ abstract class EngineClass {
     /**
      * The parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly loadPlugin: (engine: Engine, info: PluginInfo) => void
-    readonly unloadPlugin: (engine: Engine, info: PluginInfo) => void
+    parentClass: GObject.ObjectClass
+    loadPlugin: (engine: Engine, info: PluginInfo) => void
+    unloadPlugin: (engine: Engine, info: PluginInfo) => void
     static name: string
 }
 class EnginePrivate {
@@ -1910,7 +2153,7 @@ abstract class ExtensionBaseClass {
     /**
      * The parent class.
      */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ExtensionBasePrivate {
@@ -1921,10 +2164,10 @@ abstract class ExtensionSetClass {
     /**
      * The parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly call: (set: ExtensionSet, methodName: string, args: GIRepository.Argument) => boolean
-    readonly extensionAdded: (set: ExtensionSet, info: PluginInfo, exten: Extension) => void
-    readonly extensionRemoved: (set: ExtensionSet, info: PluginInfo, exten: Extension) => void
+    parentClass: GObject.ObjectClass
+    call: (set: ExtensionSet, methodName: string, args: GIRepository.Argument) => boolean
+    extensionAdded: (set: ExtensionSet, info: PluginInfo, exten: Extension) => void
+    extensionRemoved: (set: ExtensionSet, info: PluginInfo, exten: Extension) => void
     static name: string
 }
 class ExtensionSetPrivate {
@@ -1935,7 +2178,7 @@ abstract class ObjectModuleClass {
     /**
      * The parent class.
      */
-    readonly parentClass: GObject.TypeModuleClass
+    parentClass: GObject.TypeModuleClass
     static name: string
 }
 class ObjectModulePrivate {
@@ -1959,15 +2202,15 @@ class PluginInfo {
      * Gets the data dir of the plugin.
      * 
      * The module data directory is the directory where a plugin should find its
-     * runtime data. This is not a value read from the #GKeyFile, but rather a
-     * value provided by the #PeasEngine, depending on where the plugin file was
-     * found.
+     * runtime data. This is not a value read from the [struct`GLib`.KeyFile], but
+     * rather a value provided by the [class`Engine]`, depending on where the plugin
+     * file was found.
      */
     getDataDir(): string
     /**
      * Gets the dependencies of the plugin.
      * 
-     * The #PeasEngine will always ensure that the dependencies of a plugin are
+     * The [class`Engine]` will always ensure that the dependencies of a plugin are
      * loaded when the said plugin is loaded. It means that dependencies are
      * loaded before the plugin, and unloaded after it. Circular dependencies of
      * plugins lead to undefined loading order.
@@ -1988,13 +2231,14 @@ class PluginInfo {
      * Gets external data specified for the plugin.
      * 
      * External data is specified in the plugin info file prefixed with X-. For
-     * example, if a key/value pair X-Peas=1 is specified in the key file, you
+     * example, if a key/value pair `X-Peas=1` is specified in the key file, you
      * can use "Peas" for `key` to retrieve the value "1".
      * 
      * Note: that you can omit the X- prefix when retrieving the value,
      * but not when specifying the value in the file.
+     * @param key The key to lookup.
      */
-    getExternalData(key: string): string
+    getExternalData(key: string): string | null
     /**
      * Gets the help URI of the plugin.
      * 
@@ -2020,8 +2264,8 @@ class PluginInfo {
      * Gets the module directory.
      * 
      * The module directory is the directory where the plugin file was found. This
-     * is not a value from the #GKeyFile, but rather a value provided by the
-     * #PeasEngine.
+     * is not a value from the [struct`GLib`.KeyFile], but rather a value provided by the
+     * [class`Engine]`.
      */
     getModuleDir(): string
     /**
@@ -2043,11 +2287,12 @@ class PluginInfo {
      */
     getName(): string
     /**
-     * Creates a new #GSettings for the given `schema_id` and if
+     * Creates a new [class`Gio`.Settings] for the given `schema_id` and if
      * gschemas.compiled is not in the module directory an attempt
      * will be made to create it.
+     * @param schemaId The schema id.
      */
-    getSettings(schemaId?: string | null): Gio.Settings
+    getSettings(schemaId?: string | null): Gio.Settings | null
     /**
      * Gets the version of the plugin.
      * 
@@ -2062,6 +2307,7 @@ class PluginInfo {
     getWebsite(): string
     /**
      * Check if the plugin depends on another plugin.
+     * @param moduleName The name of the plugin to check.
      */
     hasDependency(moduleName: string): boolean
     /**
@@ -2075,10 +2321,11 @@ class PluginInfo {
     /**
      * Check if the plugin is a builtin plugin.
      * 
-     * A builtin plugin is a plugin which cannot be enabled or disabled by the
-     * user through a plugin manager (like #PeasGtkPluginManager). Loading or
-     * unloading such plugins is the responsibility of the application alone.
-     * Most applications will usually load those plugins immediately after
+     * A builtin plugin is a plugin which cannot be enabled or disabled by the user
+     * through a plugin manager (like
+     * [PeasGtkPluginManager](https://gnome.pages.gitlab.gnome.org/libpeas/libpeas-gtk-1.0/class.PluginManager.html)).
+     * Loading or unloading such plugins is the responsibility of the application
+     * alone. Most applications will usually load those plugins immediately after
      * the initialization of the #PeasEngine.
      * 
      * The relevant key in the plugin info file is "Builtin".
@@ -2088,7 +2335,9 @@ class PluginInfo {
      * Check if the plugin is a hidden plugin.
      * 
      * A hidden plugin is a plugin which cannot be seen by a
-     * user through a plugin manager (like #PeasGtkPluginManager). Loading and
+     * user through a plugin manager (like
+     * [PeasGtkPluginManager](https://gnome.pages.gitlab.gnome.org/libpeas/libpeas-gtk-1.0/class.PluginManager.html)).
+     * Loading and
      * unloading such plugins is the responsibility of the application alone or
      * through plugins that depend on them.
      * 

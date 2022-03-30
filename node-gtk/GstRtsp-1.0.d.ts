@@ -611,15 +611,15 @@ class RTSPAuthCredential {
     /**
      * a #GstRTSPAuthMethod
      */
-    readonly scheme: RTSPAuthMethod
+    scheme: RTSPAuthMethod
     /**
      * A NULL-terminated array of #GstRTSPAuthParam
      */
-    readonly params: RTSPAuthParam
+    params: RTSPAuthParam
     /**
      * The authorization for the basic schem
      */
-    readonly authorization: string
+    authorization: string
     static name: string
 }
 class RTSPAuthParam {
@@ -627,11 +627,11 @@ class RTSPAuthParam {
     /**
      * The name of the parameter
      */
-    readonly name: string
+    name: string
     /**
      * The value of the parameter
      */
-    readonly value: string
+    value: string
     /* Methods of GstRtsp-1.0.GstRtsp.RTSPAuthParam */
     copy(): RTSPAuthParam
     free(): void
@@ -655,6 +655,7 @@ class RTSPConnection {
      * #GST_RTSP_ETIMEOUT after the timeout expired.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param timeout a GTimeVal timeout
      */
     connect(timeout: GLib.TimeVal): RTSPResult
     /**
@@ -664,6 +665,7 @@ class RTSPConnection {
      * #GST_RTSP_ETIMEOUT after the timeout expired.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param timeout a timeout in microseconds
      */
     connectUsec(timeout: number): RTSPResult
     /**
@@ -674,6 +676,8 @@ class RTSPConnection {
      * `response` will contain a response to the tunneling request messages.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param timeout a GTimeVal timeout
+     * @param response a #GstRTSPMessage
      */
     connectWithResponse(timeout: GLib.TimeVal, response: RTSPMessage): RTSPResult
     /**
@@ -684,6 +688,8 @@ class RTSPConnection {
      * `response` will contain a response to the tunneling request messages.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param timeout a timeout in microseconds
+     * @param response a #GstRTSPMessage
      */
     connectWithResponseUsec(timeout: number, response: RTSPMessage): RTSPResult
     /**
@@ -696,12 +702,14 @@ class RTSPConnection {
      * 
      * If `conn2` is %NULL then only the base64 decoding context will be setup for
      * `conn`.
+     * @param conn2 a #GstRTSPConnection or %NULL
      */
     doTunnel(conn2: RTSPConnection): RTSPResult
     /**
      * Start or stop the flushing action on `conn`. When flushing, all current
      * and future actions on `conn` will return #GST_RTSP_EINTR until the connection
      * is set to non-flushing mode again.
+     * @param flush start or stop the flush
      */
     flush(flush: boolean): RTSPResult
     /**
@@ -767,6 +775,7 @@ class RTSPConnection {
     isTunneled(): boolean
     /**
      * Calculate the next timeout for `conn,` storing the result in `timeout`.
+     * @param timeout a timeout
      */
     nextTimeout(timeout: GLib.TimeVal): RTSPResult
     /**
@@ -782,6 +791,9 @@ class RTSPConnection {
      * `timeout` can be %NULL, in which case this function might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param events a bitmask of #GstRTSPEvent flags to check
+     * @param revents location for result flags
+     * @param timeout a timeout
      */
     poll(events: RTSPEvent, revents: RTSPEvent, timeout: GLib.TimeVal): RTSPResult
     /**
@@ -793,6 +805,9 @@ class RTSPConnection {
      * `timeout` can be 0, in which case this function might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param events a bitmask of #GstRTSPEvent flags to check
+     * @param revents location for result flags
+     * @param timeout a timeout in microseconds
      */
     pollUsec(events: RTSPEvent, revents: RTSPEvent, timeout: number): RTSPResult
     /**
@@ -801,6 +816,9 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param data the data to read
+     * @param size the size of `data`
+     * @param timeout a timeout value or %NULL
      */
     read(data: number, size: number, timeout: GLib.TimeVal): RTSPResult
     /**
@@ -809,6 +827,9 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param data the data to read
+     * @param size the size of `data`
+     * @param timeout a timeout value in microseconds
      */
     readUsec(data: number, size: number, timeout: number): RTSPResult
     /**
@@ -817,6 +838,8 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param message the message to read
+     * @param timeout a timeout value or %NULL
      */
     receive(message: RTSPMessage, timeout: GLib.TimeVal): RTSPResult
     /**
@@ -825,6 +848,8 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param message the message to read
+     * @param timeout a timeout value or 0
      */
     receiveUsec(message: RTSPMessage, timeout: number): RTSPResult
     /**
@@ -837,6 +862,8 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param message the message to send
+     * @param timeout a timeout value or %NULL
      */
     send(message: RTSPMessage, timeout: GLib.TimeVal): RTSPResult
     /**
@@ -845,6 +872,8 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param messages the messages to send
+     * @param timeout a timeout value or %NULL
      */
     sendMessages(messages: RTSPMessage[], timeout: GLib.TimeVal): RTSPResult
     /**
@@ -853,6 +882,8 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param messages the messages to send
+     * @param timeout a timeout value in microseconds
      */
     sendMessagesUsec(messages: RTSPMessage[], timeout: number): RTSPResult
     /**
@@ -861,6 +892,8 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param message the message to send
+     * @param timeout a timeout value in microseconds
      */
     sendUsec(message: RTSPMessage, timeout: number): RTSPResult
     /**
@@ -870,11 +903,15 @@ class RTSPConnection {
      * (checking against the #GTlsDatabase with the given #GTlsCertificateFlags)
      * have failed. If no #GTlsDatabase is set on this connection, only `func` will
      * be called.
+     * @param func a #GstRTSPConnectionAcceptCertificateFunc to check certificates
      */
     setAcceptCertificateFunc(func: RTSPConnectionAcceptCertificateFunc): void
     /**
      * Configure `conn` for authentication mode `method` with `user` and `pass` as the
      * user and password respectively.
+     * @param method authentication method
+     * @param user the user
+     * @param pass the password
      */
     setAuth(method: RTSPAuthMethod, user: string, pass: string): RTSPResult
     /**
@@ -883,35 +920,44 @@ class RTSPConnection {
      * #GST_RTSP_AUTH_DIGEST, directives should be taken from the digest challenge
      * in the WWW-Authenticate response header and can include realm, domain,
      * nonce, opaque, stale, algorithm, qop as per RFC2617.
+     * @param param authentication directive
+     * @param value value
      */
     setAuthParam(param: string, value: string): void
     /**
      * Configure `conn` to use the specified Content-Length limit.
      * Both requests and responses are validated. If content-length is
      * exceeded, ENOMEM error will be returned.
+     * @param limit Content-Length limit
      */
     setContentLengthLimit(limit: number): void
     /**
      * By setting the HTTP mode to %TRUE the message parsing will support HTTP
      * messages in addition to the RTSP messages. It will also disable the
      * automatic handling of setting up an HTTP tunnel.
+     * @param enable %TRUE to enable manual HTTP mode
      */
     setHttpMode(enable: boolean): void
     /**
      * Set whether to ignore the x-server-ip-address header reply or not. If the
      * header is ignored, the original address will be used instead.
+     * @param ignore %TRUE to ignore the x-server-ip-address header reply or %FALSE to          comply with it (%FALSE is the default).
      */
     setIgnoreXServerReply(ignore: boolean): void
     /**
      * Set the IP address of the server.
+     * @param ip an ip address
      */
     setIp(ip: string): void
     /**
      * Set the proxy host and port.
+     * @param host the proxy host
+     * @param port the proxy port
      */
     setProxy(host: string, port: number): RTSPResult
     /**
      * Configure `conn` to use the specified DSCP value.
+     * @param qosDscp DSCP value
      */
     setQosDscp(qosDscp: number): RTSPResult
     /**
@@ -919,28 +965,33 @@ class RTSPConnection {
      * response received and force it onto any further requests.
      * 
      * The default value is %TRUE
+     * @param remember %TRUE if the connection should remember the session id
      */
     setRememberSessionId(remember: boolean): void
     /**
      * Sets the anchor certificate authorities database. This certificate
      * database will be used to verify the server's certificate in case it
      * can't be verified with the default certificate database first.
+     * @param database a #GTlsDatabase
      */
     setTlsDatabase(database: Gio.TlsDatabase): void
     /**
      * Sets a #GTlsInteraction object to be used when the connection or certificate
      * database need to interact with the user. This will be used to prompt the
      * user for passwords where necessary.
+     * @param interaction a #GTlsInteraction
      */
     setTlsInteraction(interaction: Gio.TlsInteraction): void
     /**
      * Sets the TLS validation flags to be used to verify the peer
      * certificate when a TLS connection is established.
+     * @param flags the validation flags.
      */
     setTlsValidationFlags(flags: Gio.TlsCertificateFlags): boolean
     /**
      * Set the HTTP tunneling state of the connection. This must be configured before
      * the `conn` is connected.
+     * @param tunneled the new state
      */
     setTunneled(tunneled: boolean): void
     /**
@@ -949,6 +1000,9 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param data the data to write
+     * @param size the size of `data`
+     * @param timeout a timeout value or %NULL
      */
     write(data: number, size: number, timeout: GLib.TimeVal): RTSPResult
     /**
@@ -957,6 +1011,9 @@ class RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param data the data to write
+     * @param size the size of `data`
+     * @param timeout a timeout value or 0
      */
     writeUsec(data: number, size: number, timeout: number): RTSPResult
     static name: string
@@ -964,6 +1021,8 @@ class RTSPConnection {
     /**
      * Accept a new connection on `socket` and create a new #GstRTSPConnection for
      * handling communication on new socket.
+     * @param socket a socket
+     * @param cancellable a #GCancellable to cancel the operation
      */
     static accept(socket: Gio.Socket, cancellable?: Gio.Cancellable | null): [ /* returnType */ RTSPResult, /* conn */ RTSPConnection ]
     /**
@@ -972,28 +1031,33 @@ class RTSPConnection {
      * gst_rtsp_connection_connect().
      * 
      * A copy of `url` will be made.
+     * @param url a #GstRTSPUrl
      */
     static create(url: RTSPUrl): [ /* returnType */ RTSPResult, /* conn */ RTSPConnection ]
     /**
      * Create a new #GstRTSPConnection for handling communication on the existing
      * socket `socket`. The `initial_buffer` contains zero terminated data already
      * read from `socket` which should be used before starting to read new data.
+     * @param socket a #GSocket
+     * @param ip the IP address of the other end
+     * @param port the port used by the other end
+     * @param initialBuffer data already read from `fd`
      */
     static createFromSocket(socket: Gio.Socket, ip: string, port: number, initialBuffer: string): [ /* returnType */ RTSPResult, /* conn */ RTSPConnection ]
 }
 abstract class RTSPExtensionInterface {
     /* Fields of GstRtsp-1.0.GstRtsp.RTSPExtensionInterface */
-    readonly parent: GObject.TypeInterface
-    readonly detectServer: (ext: RTSPExtension, resp: RTSPMessage) => boolean
-    readonly beforeSend: (ext: RTSPExtension, req: RTSPMessage) => RTSPResult
-    readonly afterSend: (ext: RTSPExtension, req: RTSPMessage, resp: RTSPMessage) => RTSPResult
-    readonly parseSdp: (ext: RTSPExtension, sdp: GstSdp.SDPMessage, s: Gst.Structure) => RTSPResult
-    readonly setupMedia: (ext: RTSPExtension, media: GstSdp.SDPMedia) => RTSPResult
-    readonly configureStream: (ext: RTSPExtension, caps: Gst.Caps) => boolean
-    readonly getTransports: (ext: RTSPExtension, protocols: RTSPLowerTrans, transport: string) => RTSPResult
-    readonly streamSelect: (ext: RTSPExtension, url: RTSPUrl) => RTSPResult
-    readonly send: (ext: RTSPExtension, req: RTSPMessage, resp: RTSPMessage) => RTSPResult
-    readonly receiveRequest: (ext: RTSPExtension, req: RTSPMessage) => RTSPResult
+    parent: GObject.TypeInterface
+    detectServer: (ext: RTSPExtension, resp: RTSPMessage) => boolean
+    beforeSend: (ext: RTSPExtension, req: RTSPMessage) => RTSPResult
+    afterSend: (ext: RTSPExtension, req: RTSPMessage, resp: RTSPMessage) => RTSPResult
+    parseSdp: (ext: RTSPExtension, sdp: GstSdp.SDPMessage, s: Gst.Structure) => RTSPResult
+    setupMedia: (ext: RTSPExtension, media: GstSdp.SDPMedia) => RTSPResult
+    configureStream: (ext: RTSPExtension, caps: Gst.Caps) => boolean
+    getTransports: (ext: RTSPExtension, protocols: RTSPLowerTrans, transport: string) => RTSPResult
+    streamSelect: (ext: RTSPExtension, url: RTSPUrl) => RTSPResult
+    send: (ext: RTSPExtension, req: RTSPMessage, resp: RTSPMessage) => RTSPResult
+    receiveRequest: (ext: RTSPExtension, req: RTSPMessage) => RTSPResult
     static name: string
 }
 class RTSPMessage {
@@ -1001,21 +1065,26 @@ class RTSPMessage {
     /**
      * the message type
      */
-    readonly type: RTSPMsgType
+    type: RTSPMsgType
     /* Methods of GstRtsp-1.0.GstRtsp.RTSPMessage */
     /**
      * Add a header with key `field` and `value` to `msg`. This function takes a copy
      * of `value`.
+     * @param field a #GstRTSPHeaderField
+     * @param value the value of the header
      */
     addHeader(field: RTSPHeaderField, value: string): RTSPResult
     /**
      * Add a header with key `header` and `value` to `msg`. This function takes a copy
      * of `value`.
+     * @param header header string
+     * @param value the value of the header
      */
     addHeaderByName(header: string, value: string): RTSPResult
     /**
      * Append the currently configured headers in `msg` to the #GString `str` suitable
      * for transmission.
+     * @param str a string
      */
     appendHeaders(str: GLib.String): RTSPResult
     /**
@@ -1052,11 +1121,15 @@ class RTSPMessage {
     /**
      * Get the `indx` header value with key `field` from `msg`. The result in `value`
      * stays valid as long as it remains present in `msg`.
+     * @param field a #GstRTSPHeaderField
+     * @param indx the index of the header
      */
     getHeader(field: RTSPHeaderField, indx: number): [ /* returnType */ RTSPResult, /* value */ string ]
     /**
      * Get the `index` header value with key `header` from `msg`. The result in `value`
      * stays valid as long as it remains present in `msg`.
+     * @param header a #GstRTSPHeaderField
+     * @param index the index of the header
      */
     getHeaderByName(header: string, index: number): [ /* returnType */ RTSPResult, /* value */ string ]
     /**
@@ -1074,11 +1147,14 @@ class RTSPMessage {
     init(): RTSPResult
     /**
      * Initialize a new data #GstRTSPMessage for `channel`.
+     * @param channel a channel
      */
     initData(channel: number): RTSPResult
     /**
      * Initialize `msg` as a request message with `method` and `uri`. To clear `msg`
      * again, use gst_rtsp_message_unset().
+     * @param method the request method to use
+     * @param uri the uri of the request
      */
     initRequest(method: RTSPMethod, uri: string): RTSPResult
     /**
@@ -1088,10 +1164,14 @@ class RTSPMessage {
      * 
      * When `request` is not %NULL, the relevant headers will be copied to the new
      * response message.
+     * @param code the status code
+     * @param reason the status reason or %NULL
+     * @param request the request that triggered the response or %NULL
      */
     initResponse(code: RTSPStatusCode, reason?: string | null, request?: RTSPMessage | null): RTSPResult
     /**
      * Parses the credentials given in a WWW-Authenticate or Authorization header.
+     * @param field a #GstRTSPHeaderField
      */
     parseAuthCredentials(field: RTSPHeaderField): RTSPAuthCredential[]
     /**
@@ -1117,21 +1197,27 @@ class RTSPMessage {
     /**
      * Remove the `indx` header with key `field` from `msg`. If `indx` equals -1, all
      * headers will be removed.
+     * @param field a #GstRTSPHeaderField
+     * @param indx the index of the header
      */
     removeHeader(field: RTSPHeaderField, indx: number): RTSPResult
     /**
      * Remove the `index` header with key `header` from `msg`. If `index` equals -1,
      * all matching headers will be removed.
+     * @param header the header string
+     * @param index the index of the header
      */
     removeHeaderByName(header: string, index: number): RTSPResult
     /**
      * Set the body of `msg` to a copy of `data`. Any existing body or body buffer
      * will be replaced by the new body.
+     * @param data the data
      */
     setBody(data: Uint8Array): RTSPResult
     /**
      * Set the body of `msg` to `buffer`. Any existing body or body buffer
      * will be replaced by the new body.
+     * @param buffer a #GstBuffer
      */
     setBodyBuffer(buffer: Gst.Buffer): RTSPResult
     /**
@@ -1151,21 +1237,27 @@ class RTSPMessage {
     /**
      * Set the body of `msg` to `data` and `size`. This method takes ownership of
      * `data`. Any existing body or body buffer will be replaced by the new body.
+     * @param data the data
      */
     takeBody(data: Uint8Array): RTSPResult
     /**
      * Set the body of `msg` to `buffer`. This method takes ownership of `buffer`.
      * Any existing body or body buffer will be replaced by the new body.
+     * @param buffer a #GstBuffer
      */
     takeBodyBuffer(buffer: Gst.Buffer): RTSPResult
     /**
      * Add a header with key `field` and `value` to `msg`. This function takes
      * ownership of `value`.
+     * @param field a #GstRTSPHeaderField
+     * @param value the value of the header
      */
     takeHeader(field: RTSPHeaderField, value: string): RTSPResult
     /**
      * Add a header with key `header` and `value` to `msg`. This function takes
      * ownership of `value,` but not of `header`.
+     * @param header a header string
+     * @param value the value of the header
      */
     takeHeaderByName(header: string, value: string): RTSPResult
     /**
@@ -1182,21 +1274,24 @@ class RTSPRange {
     /**
      * minimum value of the range
      */
-    readonly min: number
+    min: number
     /**
      * maximum value of the range
      */
-    readonly max: number
+    max: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Converts the range in-place between different types of units.
      * Ranges containing the special value #GST_RTSP_TIME_NOW can not be
      * converted as these are only valid for #GST_RTSP_RANGE_NPT.
+     * @param range a #GstRTSPTimeRange
+     * @param unit the unit to convert the range into
      */
     static convertUnits(range: RTSPTimeRange, unit: RTSPRangeUnit): boolean
     /**
      * Free the memory allocated by `range`.
+     * @param range a #GstRTSPTimeRange
      */
     static free(range: RTSPTimeRange): void
     /**
@@ -1207,14 +1302,17 @@ class RTSPRange {
      * and #GST_RTSP_TIME_END for `min` and `max` respectively.
      * 
      * UTC times will be converted to nanoseconds since 1900.
+     * @param range a #GstRTSPTimeRange
      */
     static getTimes(range: RTSPTimeRange): [ /* returnType */ boolean, /* min */ Gst.ClockTime, /* max */ Gst.ClockTime ]
     /**
      * Parse `rangestr` to a #GstRTSPTimeRange.
+     * @param rangestr a range string to parse
      */
     static parse(rangestr: string): [ /* returnType */ RTSPResult, /* range */ RTSPTimeRange ]
     /**
      * Convert `range` into a string representation.
+     * @param range a #GstRTSPTimeRange
      */
     static toString(range: RTSPTimeRange): string
 }
@@ -1223,12 +1321,12 @@ class RTSPTime {
     /**
      * the time of the time
      */
-    readonly type: RTSPTimeType
+    type: RTSPTimeType
     /**
      * seconds when `type` is GST_RTSP_TIME_SECONDS,
      *           GST_RTSP_TIME_UTC and GST_RTSP_TIME_FRAMES
      */
-    readonly seconds: number
+    seconds: number
     static name: string
 }
 class RTSPTime2 {
@@ -1237,19 +1335,19 @@ class RTSPTime2 {
      * frames and subframes when type in GstRTSPTime is
      *          GST_RTSP_TIME_FRAMES
      */
-    readonly frames: number
+    frames: number
     /**
      * year when type is GST_RTSP_TIME_UTC
      */
-    readonly year: number
+    year: number
     /**
      * month when type is GST_RTSP_TIME_UTC
      */
-    readonly month: number
+    month: number
     /**
      * day when type is GST_RTSP_TIME_UTC
      */
-    readonly day: number
+    day: number
     static name: string
 }
 class RTSPTimeRange {
@@ -1257,23 +1355,23 @@ class RTSPTimeRange {
     /**
      * the time units used
      */
-    readonly unit: RTSPRangeUnit
+    unit: RTSPRangeUnit
     /**
      * the minimum interval
      */
-    readonly min: RTSPTime
+    min: RTSPTime
     /**
      * the maximum interval
      */
-    readonly max: RTSPTime
+    max: RTSPTime
     /**
      * extra fields in the minimum interval (Since: 1.2)
      */
-    readonly min2: RTSPTime2
+    min2: RTSPTime2
     /**
      * extra fields in the maximum interval (Since: 1.2)
      */
-    readonly max2: RTSPTime2
+    max2: RTSPTime2
     static name: string
 }
 class RTSPTransport {
@@ -1281,67 +1379,67 @@ class RTSPTransport {
     /**
      * the transport mode
      */
-    readonly trans: RTSPTransMode
+    trans: RTSPTransMode
     /**
      * the tansport profile
      */
-    readonly profile: RTSPProfile
+    profile: RTSPProfile
     /**
      * the lower transport
      */
-    readonly lowerTransport: RTSPLowerTrans
+    lowerTransport: RTSPLowerTrans
     /**
      * the destination ip/hostname
      */
-    readonly destination: string
+    destination: string
     /**
      * the source ip/hostname
      */
-    readonly source: string
+    source: string
     /**
      * the number of layers
      */
-    readonly layers: number
+    layers: number
     /**
      * if play mode was selected
      */
-    readonly modePlay: boolean
+    modePlay: boolean
     /**
      * if record mode was selected
      */
-    readonly modeRecord: boolean
+    modeRecord: boolean
     /**
      * is append mode was selected
      */
-    readonly append: boolean
+    append: boolean
     /**
      * the interleave range
      */
-    readonly interleaved: RTSPRange
+    interleaved: RTSPRange
     /**
      * the time to live for multicast UDP
      */
-    readonly ttl: number
+    ttl: number
     /**
      * the port pair for multicast sessions
      */
-    readonly port: RTSPRange
+    port: RTSPRange
     /**
      * the client port pair for receiving data. For TCP
      *   based transports, applications can use this field to store the
      *   sender and receiver ports of the client.
      */
-    readonly clientPort: RTSPRange
+    clientPort: RTSPRange
     /**
      * the server port pair for receiving data. For TCP
      *   based transports, applications can use this field to store the
      *   sender and receiver ports of the server.
      */
-    readonly serverPort: RTSPRange
+    serverPort: RTSPRange
     /**
      * the ssrc that the sender/receiver will use
      */
-    readonly ssrc: number
+    ssrc: number
     /* Methods of GstRtsp-1.0.GstRtsp.RTSPTransport */
     /**
      * Convert `transport` into a string that can be used to signal the transport in
@@ -1371,15 +1469,21 @@ class RTSPTransport {
      * 
      * `manager` will contain an element name or %NULL when no manager is
      * needed/available for `trans`.
+     * @param trans a #GstRTSPTransMode
+     * @param option option index.
      */
     static getManager(trans: RTSPTransMode, option: number): [ /* returnType */ RTSPResult, /* manager */ string | null ]
     /**
      * Get the mime type of the transport mode `trans`. This mime type is typically
      * used to generate #GstCaps events.
+     * @param trans a #GstRTSPTransMode
+     * @param mime location to hold the result
      */
     static getMime(trans: RTSPTransMode, mime: string): RTSPResult
     /**
      * Parse the RTSP transport string `str` into `transport`.
+     * @param str a transport string
+     * @param transport a #GstRTSPTransport
      */
     static parse(str: string, transport: RTSPTransport): RTSPResult
 }
@@ -1388,35 +1492,35 @@ class RTSPUrl {
     /**
      * the transports allowed
      */
-    readonly transports: RTSPLowerTrans
+    transports: RTSPLowerTrans
     /**
      * the family
      */
-    readonly family: RTSPFamily
+    family: RTSPFamily
     /**
      * the user
      */
-    readonly user: string
+    user: string
     /**
      * the password
      */
-    readonly passwd: string
+    passwd: string
     /**
      * the host
      */
-    readonly host: string
+    host: string
     /**
      * the port
      */
-    readonly port: number
+    port: number
     /**
      * the absolute path
      */
-    readonly abspath: string
+    abspath: string
     /**
      * additional query parameters
      */
-    readonly query: string
+    query: string
     /* Methods of GstRtsp-1.0.GstRtsp.RTSPUrl */
     /**
      * Make a copy of `url`.
@@ -1451,10 +1555,12 @@ class RTSPUrl {
     /**
      * Get a newly allocated string describing the request URI for `url`
      * combined with the control path for `control_path`
+     * @param controlPath an RTSP aggregate control path
      */
     getRequestUriWithControl(controlPath: string): string
     /**
      * Set the port number in `url` to `port`.
+     * @param port the port
      */
     setPort(port: number): RTSPResult
     static name: string
@@ -1462,6 +1568,7 @@ class RTSPUrl {
     /**
      * Parse the RTSP `urlstr` into a newly allocated #GstRTSPUrl. Free after usage
      * with gst_rtsp_url_free().
+     * @param urlstr the url string to parse
      */
     static parse(urlstr: string): [ /* returnType */ RTSPResult, /* url */ RTSPUrl ]
 }
@@ -1469,6 +1576,7 @@ class RTSPWatch {
     /* Methods of GstRtsp-1.0.GstRtsp.RTSPWatch */
     /**
      * Adds a #GstRTSPWatch to a context so that it will be executed within that context.
+     * @param context a GMainContext (if NULL, the default context will be used)
      */
     attach(context: GLib.MainContext): number
     /**
@@ -1488,6 +1596,7 @@ class RTSPWatch {
      * `watch` becomes writable. In case the `message` is queued, the ID returned in
      * `id` will be non-zero and used as the ID argument in the message_sent
      * callback.
+     * @param message a #GstRTSPMessage
      */
     sendMessage(message: RTSPMessage): [ /* returnType */ RTSPResult, /* id */ number | null ]
     /**
@@ -1498,12 +1607,14 @@ class RTSPWatch {
      * `id` will be non-zero and used as the ID argument in the message_sent
      * callback once the last message is sent. The callback will only be called
      * once for the last message.
+     * @param messages the messages to send
      */
     sendMessages(messages: RTSPMessage[]): [ /* returnType */ RTSPResult, /* id */ number | null ]
     /**
      * When `flushing` is %TRUE, abort a call to gst_rtsp_watch_wait_backlog()
      * and make sure gst_rtsp_watch_write_data() returns immediately with
      * #GST_RTSP_EINTR. And empty the queue.
+     * @param flushing new flushing state
      */
     setFlushing(flushing: boolean): void
     /**
@@ -1512,6 +1623,8 @@ class RTSPWatch {
      * gst_rtsp_watch_send_message() will return #GST_RTSP_ENOMEM.
      * 
      * A value of 0 for `bytes` or `messages` means no limits.
+     * @param bytes maximum bytes
+     * @param messages maximum messages
      */
     setSendBacklog(bytes: number, messages: number): void
     /**
@@ -1530,6 +1643,7 @@ class RTSPWatch {
      * The typically use of this function is when gst_rtsp_watch_write_data
      * returns %GST_RTSP_ENOMEM. The caller then calls this function to wait for
      * free space in the backlog queue and try again.
+     * @param timeout a GTimeVal timeout
      */
     waitBacklog(timeout: GLib.TimeVal): RTSPResult
     /**
@@ -1543,6 +1657,7 @@ class RTSPWatch {
      * The typically use of this function is when gst_rtsp_watch_write_data
      * returns %GST_RTSP_ENOMEM. The caller then calls this function to wait for
      * free space in the backlog queue and try again.
+     * @param timeout a timeout in microseconds
      */
     waitBacklogUsec(timeout: number): RTSPResult
     /**
@@ -1558,21 +1673,22 @@ class RTSPWatch {
      * If the amount of queued data exceeds the limits set with
      * gst_rtsp_watch_set_send_backlog(), this function will return
      * #GST_RTSP_ENOMEM.
+     * @param data the data to queue
      */
     writeData(data: Uint8Array): [ /* returnType */ RTSPResult, /* id */ number | null ]
     static name: string
 }
 class RTSPWatchFuncs {
     /* Fields of GstRtsp-1.0.GstRtsp.RTSPWatchFuncs */
-    readonly messageReceived: (watch: RTSPWatch, message: RTSPMessage) => RTSPResult
-    readonly messageSent: (watch: RTSPWatch, id: number) => RTSPResult
-    readonly closed: (watch: RTSPWatch) => RTSPResult
-    readonly error: (watch: RTSPWatch, result: RTSPResult) => RTSPResult
-    readonly tunnelStart: (watch: RTSPWatch) => RTSPStatusCode
-    readonly tunnelComplete: (watch: RTSPWatch) => RTSPResult
-    readonly errorFull: (watch: RTSPWatch, result: RTSPResult, message: RTSPMessage, id: number) => RTSPResult
-    readonly tunnelLost: (watch: RTSPWatch) => RTSPResult
-    readonly tunnelHttpResponse: (watch: RTSPWatch, request: RTSPMessage, response: RTSPMessage) => RTSPResult
+    messageReceived: (watch: RTSPWatch, message: RTSPMessage) => RTSPResult
+    messageSent: (watch: RTSPWatch, id: number) => RTSPResult
+    closed: (watch: RTSPWatch) => RTSPResult
+    error: (watch: RTSPWatch, result: RTSPResult) => RTSPResult
+    tunnelStart: (watch: RTSPWatch) => RTSPStatusCode
+    tunnelComplete: (watch: RTSPWatch) => RTSPResult
+    errorFull: (watch: RTSPWatch, result: RTSPResult, message: RTSPMessage, id: number) => RTSPResult
+    tunnelLost: (watch: RTSPWatch) => RTSPResult
+    tunnelHttpResponse: (watch: RTSPWatch, request: RTSPMessage, response: RTSPMessage) => RTSPResult
     static name: string
 }
 }

@@ -99,7 +99,7 @@ class BidirIterator {
     readonly valid: boolean
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.BidirIterator */
     previous(): boolean
     has_previous(): boolean
@@ -147,6 +147,10 @@ class BidirIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -157,6 +161,12 @@ class BidirIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -180,6 +190,7 @@ class BidirIterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -199,11 +210,14 @@ class BidirIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -211,6 +225,8 @@ class BidirIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -228,6 +244,7 @@ class BidirIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -273,6 +290,7 @@ class BidirIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -316,15 +334,20 @@ class BidirIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -365,6 +388,7 @@ class BidirIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -399,6 +423,7 @@ class BidirIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -469,6 +494,7 @@ class BidirIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -501,6 +527,7 @@ class BidirIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BidirIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BidirIterator, pspec: GObject.ParamSpec) => void)): number
@@ -530,7 +557,7 @@ class BidirList {
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.BidirList */
     bidir_list_iterator(): BidirListIterator
     get_read_only_view(): BidirList
@@ -604,6 +631,10 @@ class BidirList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -614,6 +645,12 @@ class BidirList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -637,6 +674,7 @@ class BidirList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -656,11 +694,14 @@ class BidirList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -668,6 +709,8 @@ class BidirList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -685,6 +728,7 @@ class BidirList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -730,6 +774,7 @@ class BidirList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -773,15 +818,20 @@ class BidirList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -822,6 +872,7 @@ class BidirList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -856,6 +907,7 @@ class BidirList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.List */
@@ -980,6 +1032,7 @@ class BidirList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1012,6 +1065,7 @@ class BidirList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BidirList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BidirList, pspec: GObject.ParamSpec) => void)): number
@@ -1042,7 +1096,7 @@ class BidirListIterator {
     readonly valid: boolean
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.BidirListIterator */
     insert(item?: object | null): void
     /* Methods of Gee-0.8.Gee.BidirIterator */
@@ -1092,6 +1146,10 @@ class BidirListIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1102,6 +1160,12 @@ class BidirListIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1125,6 +1189,7 @@ class BidirListIterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1144,11 +1209,14 @@ class BidirListIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1156,6 +1224,8 @@ class BidirListIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1173,6 +1243,7 @@ class BidirListIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1218,6 +1289,7 @@ class BidirListIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1261,15 +1333,20 @@ class BidirListIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1310,6 +1387,7 @@ class BidirListIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1344,6 +1422,7 @@ class BidirListIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -1427,6 +1506,7 @@ class BidirListIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1459,6 +1539,7 @@ class BidirListIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BidirListIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BidirListIterator, pspec: GObject.ParamSpec) => void)): number
@@ -1484,7 +1565,7 @@ class BidirMapIterator {
     readonly mutable: boolean
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.BidirMapIterator */
     previous(): boolean
     has_previous(): boolean
@@ -1537,6 +1618,10 @@ class BidirMapIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1547,6 +1632,12 @@ class BidirMapIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1570,6 +1661,7 @@ class BidirMapIterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1589,11 +1681,14 @@ class BidirMapIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1601,6 +1696,8 @@ class BidirMapIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1618,6 +1715,7 @@ class BidirMapIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1663,6 +1761,7 @@ class BidirMapIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1706,15 +1805,20 @@ class BidirMapIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1755,6 +1859,7 @@ class BidirMapIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1789,6 +1894,7 @@ class BidirMapIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.BidirMapIterator */
@@ -1836,6 +1942,7 @@ class BidirMapIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1868,6 +1975,7 @@ class BidirMapIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BidirMapIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BidirMapIterator, pspec: GObject.ParamSpec) => void)): number
@@ -1896,7 +2004,7 @@ class BidirSortedSet {
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.BidirSortedSet */
     bidir_iterator(): BidirIterator
     get_read_only_view(): BidirSortedSet
@@ -1971,6 +2079,10 @@ class BidirSortedSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1981,6 +2093,12 @@ class BidirSortedSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2004,6 +2122,7 @@ class BidirSortedSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2023,11 +2142,14 @@ class BidirSortedSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2035,6 +2157,8 @@ class BidirSortedSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2052,6 +2176,7 @@ class BidirSortedSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2097,6 +2222,7 @@ class BidirSortedSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2140,15 +2266,20 @@ class BidirSortedSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2189,6 +2320,7 @@ class BidirSortedSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2223,6 +2355,7 @@ class BidirSortedSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.SortedSet */
@@ -2349,6 +2482,7 @@ class BidirSortedSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2381,6 +2515,7 @@ class BidirSortedSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BidirSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BidirSortedSet, pspec: GObject.ParamSpec) => void)): number
@@ -2421,7 +2556,7 @@ class BidirSortedMap {
     readonly values: Collection
     readonly entries: Set
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.BidirSortedMap */
     bidir_map_iterator(): BidirMapIterator
     get_read_only_view(): BidirSortedMap
@@ -2491,6 +2626,10 @@ class BidirSortedMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2501,6 +2640,12 @@ class BidirSortedMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2524,6 +2669,7 @@ class BidirSortedMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2543,11 +2689,14 @@ class BidirSortedMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2555,6 +2704,8 @@ class BidirSortedMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2572,6 +2723,7 @@ class BidirSortedMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2617,6 +2769,7 @@ class BidirSortedMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2660,15 +2813,20 @@ class BidirSortedMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2709,6 +2867,7 @@ class BidirSortedMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2743,6 +2902,7 @@ class BidirSortedMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.SortedMap */
@@ -2854,6 +3014,7 @@ class BidirSortedMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2886,6 +3047,7 @@ class BidirSortedMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BidirSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BidirSortedMap, pspec: GObject.ParamSpec) => void)): number
@@ -2928,7 +3090,7 @@ class Collection {
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Collection */
     contains(item?: object | null): boolean
     add(item?: object | null): boolean
@@ -2986,6 +3148,10 @@ class Collection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2996,6 +3162,12 @@ class Collection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3019,6 +3191,7 @@ class Collection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3038,11 +3211,14 @@ class Collection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3050,6 +3226,8 @@ class Collection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3067,6 +3245,7 @@ class Collection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3112,6 +3291,7 @@ class Collection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3155,15 +3335,20 @@ class Collection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3204,6 +3389,7 @@ class Collection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3238,6 +3424,7 @@ class Collection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -3313,6 +3500,7 @@ class Collection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3345,6 +3533,7 @@ class Collection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
@@ -3370,7 +3559,7 @@ interface Comparable_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Comparable {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Comparable */
     compare_to(object?: object | null): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -3408,6 +3597,10 @@ class Comparable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3418,6 +3611,12 @@ class Comparable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3441,6 +3640,7 @@ class Comparable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3460,11 +3660,14 @@ class Comparable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3472,6 +3675,8 @@ class Comparable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3489,6 +3694,7 @@ class Comparable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3534,6 +3740,7 @@ class Comparable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3577,15 +3784,20 @@ class Comparable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3626,6 +3838,7 @@ class Comparable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3660,6 +3873,7 @@ class Comparable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.Comparable */
@@ -3681,6 +3895,7 @@ class Comparable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3713,6 +3928,7 @@ class Comparable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Comparable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Comparable, pspec: GObject.ParamSpec) => void)): number
@@ -3738,7 +3954,7 @@ class Deque {
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Deque */
     offer_head(element?: object | null): boolean
     peek_head(): object | null
@@ -3813,6 +4029,10 @@ class Deque {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3823,6 +4043,12 @@ class Deque {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3846,6 +4072,7 @@ class Deque {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3865,11 +4092,14 @@ class Deque {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3877,6 +4107,8 @@ class Deque {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3894,6 +4126,7 @@ class Deque {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3939,6 +4172,7 @@ class Deque {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3982,15 +4216,20 @@ class Deque {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4031,6 +4270,7 @@ class Deque {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4065,6 +4305,7 @@ class Deque {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -4183,6 +4424,7 @@ class Deque {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4215,6 +4457,7 @@ class Deque {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Deque, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Deque, pspec: GObject.ParamSpec) => void)): number
@@ -4247,7 +4490,7 @@ class Future {
     readonly ready: boolean
     readonly exception: GLib.Error
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Future */
     wait(): object | null
     wait_until(end_time: number): [ /* returnType */ boolean, /* value */ object | null ]
@@ -4296,6 +4539,10 @@ class Future {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4306,6 +4553,12 @@ class Future {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4329,6 +4582,7 @@ class Future {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4348,11 +4602,14 @@ class Future {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4360,6 +4617,8 @@ class Future {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4377,6 +4636,7 @@ class Future {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4422,6 +4682,7 @@ class Future {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4465,15 +4726,20 @@ class Future {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4514,6 +4780,7 @@ class Future {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4548,6 +4815,7 @@ class Future {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.Future */
@@ -4580,6 +4848,7 @@ class Future {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4612,6 +4881,7 @@ class Future {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Future, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Future, pspec: GObject.ParamSpec) => void)): number
@@ -4633,7 +4903,7 @@ interface Hashable_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Hashable {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Hashable */
     hash(): number
     equal_to(object?: object | null): boolean
@@ -4672,6 +4942,10 @@ class Hashable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4682,6 +4956,12 @@ class Hashable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4705,6 +4985,7 @@ class Hashable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4724,11 +5005,14 @@ class Hashable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4736,6 +5020,8 @@ class Hashable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4753,6 +5039,7 @@ class Hashable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4798,6 +5085,7 @@ class Hashable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4841,15 +5129,20 @@ class Hashable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4890,6 +5183,7 @@ class Hashable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4924,6 +5218,7 @@ class Hashable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.Hashable */
@@ -4946,6 +5241,7 @@ class Hashable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4978,6 +5274,7 @@ class Hashable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Hashable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Hashable, pspec: GObject.ParamSpec) => void)): number
@@ -4995,7 +5292,7 @@ interface Iterable_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Iterable {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Iterable */
     iterator(): Iterator
     /* Methods of GObject-2.0.GObject.Object */
@@ -5033,6 +5330,10 @@ class Iterable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5043,6 +5344,12 @@ class Iterable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5066,6 +5373,7 @@ class Iterable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5085,11 +5393,14 @@ class Iterable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5097,6 +5408,8 @@ class Iterable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5114,6 +5427,7 @@ class Iterable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5159,6 +5473,7 @@ class Iterable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5202,15 +5517,20 @@ class Iterable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5251,6 +5571,7 @@ class Iterable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5285,6 +5606,7 @@ class Iterable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -5339,6 +5661,7 @@ class Iterable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5371,6 +5694,7 @@ class Iterable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Iterable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Iterable, pspec: GObject.ParamSpec) => void)): number
@@ -5391,7 +5715,7 @@ class Iterator {
     readonly valid: boolean
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Iterator */
     next(): boolean
     has_next(): boolean
@@ -5434,6 +5758,10 @@ class Iterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5444,6 +5772,12 @@ class Iterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5467,6 +5801,7 @@ class Iterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5486,11 +5821,14 @@ class Iterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5498,6 +5836,8 @@ class Iterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5515,6 +5855,7 @@ class Iterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5560,6 +5901,7 @@ class Iterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5603,15 +5945,20 @@ class Iterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5652,6 +5999,7 @@ class Iterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5686,6 +6034,7 @@ class Iterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -5745,6 +6094,7 @@ class Iterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5777,6 +6127,7 @@ class Iterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Iterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Iterator, pspec: GObject.ParamSpec) => void)): number
@@ -5806,7 +6157,7 @@ class List {
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.List */
     list_iterator(): ListIterator
     get(index: number): object | null
@@ -5877,6 +6228,10 @@ class List {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5887,6 +6242,12 @@ class List {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5910,6 +6271,7 @@ class List {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5929,11 +6291,14 @@ class List {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5941,6 +6306,8 @@ class List {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5958,6 +6325,7 @@ class List {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6003,6 +6371,7 @@ class List {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6046,15 +6415,20 @@ class List {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6095,6 +6469,7 @@ class List {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6129,6 +6504,7 @@ class List {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -6235,6 +6611,7 @@ class List {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6267,6 +6644,7 @@ class List {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: List, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: List, pspec: GObject.ParamSpec) => void)): number
@@ -6297,7 +6675,7 @@ class ListIterator {
     readonly valid: boolean
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.ListIterator */
     set(item?: object | null): void
     add(item?: object | null): void
@@ -6344,6 +6722,10 @@ class ListIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6354,6 +6736,12 @@ class ListIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6377,6 +6765,7 @@ class ListIterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6396,11 +6785,14 @@ class ListIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6408,6 +6800,8 @@ class ListIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6425,6 +6819,7 @@ class ListIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6470,6 +6865,7 @@ class ListIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6513,15 +6909,20 @@ class ListIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6562,6 +6963,7 @@ class ListIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6596,6 +6998,7 @@ class ListIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -6665,6 +7068,7 @@ class ListIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6697,6 +7101,7 @@ class ListIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ListIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ListIterator, pspec: GObject.ParamSpec) => void)): number
@@ -6728,7 +7133,7 @@ class Map {
     readonly entries: Set
     readonly read_only_view: Map
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Map */
     has_key(key?: object | null): boolean
     contains(key?: object | null): boolean
@@ -6788,6 +7193,10 @@ class Map {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6798,6 +7207,12 @@ class Map {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6821,6 +7236,7 @@ class Map {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6840,11 +7256,14 @@ class Map {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6852,6 +7271,8 @@ class Map {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6869,6 +7290,7 @@ class Map {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6914,6 +7336,7 @@ class Map {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6957,15 +7380,20 @@ class Map {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7006,6 +7434,7 @@ class Map {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7040,6 +7469,7 @@ class Map {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Iterable */
@@ -7113,6 +7543,7 @@ class Map {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7145,6 +7576,7 @@ class Map {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Map, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Map, pspec: GObject.ParamSpec) => void)): number
@@ -7180,7 +7612,7 @@ class MapIterator {
     readonly mutable: boolean
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.MapIterator */
     next(): boolean
     has_next(): boolean
@@ -7228,6 +7660,10 @@ class MapIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7238,6 +7674,12 @@ class MapIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7261,6 +7703,7 @@ class MapIterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7280,11 +7723,14 @@ class MapIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7292,6 +7738,8 @@ class MapIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7309,6 +7757,7 @@ class MapIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7354,6 +7803,7 @@ class MapIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7397,15 +7847,20 @@ class MapIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7446,6 +7901,7 @@ class MapIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7480,6 +7936,7 @@ class MapIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.MapIterator */
@@ -7511,6 +7968,7 @@ class MapIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7543,6 +8001,7 @@ class MapIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MapIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MapIterator, pspec: GObject.ParamSpec) => void)): number
@@ -7569,7 +8028,7 @@ class MultiMap {
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.MultiMap */
     get_keys(): Set
     get_all_keys(): MultiSet
@@ -7621,6 +8080,10 @@ class MultiMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7631,6 +8094,12 @@ class MultiMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7654,6 +8123,7 @@ class MultiMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7673,11 +8143,14 @@ class MultiMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7685,6 +8158,8 @@ class MultiMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7702,6 +8177,7 @@ class MultiMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7747,6 +8223,7 @@ class MultiMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7790,15 +8267,20 @@ class MultiMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7839,6 +8321,7 @@ class MultiMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7873,6 +8356,7 @@ class MultiMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.MultiMap */
@@ -7906,6 +8390,7 @@ class MultiMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7938,6 +8423,7 @@ class MultiMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MultiMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MultiMap, pspec: GObject.ParamSpec) => void)): number
@@ -7963,7 +8449,7 @@ class MultiSet {
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.MultiSet */
     count(item?: object | null): number
     get_read_only_view(): MultiSet
@@ -8024,6 +8510,10 @@ class MultiSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8034,6 +8524,12 @@ class MultiSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8057,6 +8553,7 @@ class MultiSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8076,11 +8573,14 @@ class MultiSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8088,6 +8588,8 @@ class MultiSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8105,6 +8607,7 @@ class MultiSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8150,6 +8653,7 @@ class MultiSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8193,15 +8697,20 @@ class MultiSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8242,6 +8751,7 @@ class MultiSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8276,6 +8786,7 @@ class MultiSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -8372,6 +8883,7 @@ class MultiSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8404,6 +8916,7 @@ class MultiSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MultiSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MultiSet, pspec: GObject.ParamSpec) => void)): number
@@ -8439,7 +8952,7 @@ class Queue {
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Queue */
     offer(element?: object | null): boolean
     peek(): object | null
@@ -8505,6 +9018,10 @@ class Queue {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8515,6 +9032,12 @@ class Queue {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8538,6 +9061,7 @@ class Queue {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8557,11 +9081,14 @@ class Queue {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8569,6 +9096,8 @@ class Queue {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8586,6 +9115,7 @@ class Queue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8631,6 +9161,7 @@ class Queue {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8674,15 +9205,20 @@ class Queue {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8723,6 +9259,7 @@ class Queue {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8757,6 +9294,7 @@ class Queue {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -8859,6 +9397,7 @@ class Queue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8891,6 +9430,7 @@ class Queue {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Queue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Queue, pspec: GObject.ParamSpec) => void)): number
@@ -8927,7 +9467,7 @@ class Set {
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Set */
     get_read_only_view(): Set
     /* Methods of Gee-0.8.Gee.Collection */
@@ -8987,6 +9527,10 @@ class Set {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8997,6 +9541,12 @@ class Set {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9020,6 +9570,7 @@ class Set {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9039,11 +9590,14 @@ class Set {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9051,6 +9605,8 @@ class Set {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9068,6 +9624,7 @@ class Set {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9113,6 +9670,7 @@ class Set {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9156,15 +9714,20 @@ class Set {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9205,6 +9768,7 @@ class Set {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9239,6 +9803,7 @@ class Set {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -9334,6 +9899,7 @@ class Set {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9366,6 +9932,7 @@ class Set {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Set, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Set, pspec: GObject.ParamSpec) => void)): number
@@ -9401,7 +9968,7 @@ class SortedMap {
     readonly values: Collection
     readonly entries: Set
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.SortedMap */
     head_map(before?: object | null): SortedMap
     tail_map(after?: object | null): SortedMap
@@ -9468,6 +10035,10 @@ class SortedMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9478,6 +10049,12 @@ class SortedMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9501,6 +10078,7 @@ class SortedMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9520,11 +10098,14 @@ class SortedMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9532,6 +10113,8 @@ class SortedMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9549,6 +10132,7 @@ class SortedMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9594,6 +10178,7 @@ class SortedMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9637,15 +10222,20 @@ class SortedMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9686,6 +10276,7 @@ class SortedMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9720,6 +10311,7 @@ class SortedMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Iterable */
@@ -9819,6 +10411,7 @@ class SortedMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9851,6 +10444,7 @@ class SortedMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SortedMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SortedMap, pspec: GObject.ParamSpec) => void)): number
@@ -9891,7 +10485,7 @@ class SortedSet {
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.SortedSet */
     first(): object | null
     last(): object | null
@@ -9963,6 +10557,10 @@ class SortedSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9973,6 +10571,12 @@ class SortedSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9996,6 +10600,7 @@ class SortedSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10015,11 +10620,14 @@ class SortedSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10027,6 +10635,8 @@ class SortedSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10044,6 +10654,7 @@ class SortedSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10089,6 +10700,7 @@ class SortedSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10132,15 +10744,20 @@ class SortedSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10181,6 +10798,7 @@ class SortedSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10215,6 +10833,7 @@ class SortedSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Set */
@@ -10326,6 +10945,7 @@ class SortedSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10358,6 +10978,7 @@ class SortedSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SortedSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SortedSet, pspec: GObject.ParamSpec) => void)): number
@@ -10383,7 +11004,7 @@ interface Traversable_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Traversable {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.Traversable */
     foreach(f: ForallFunc): boolean
     stream(a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: StreamFunc): Iterator
@@ -10436,6 +11057,10 @@ class Traversable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10446,6 +11071,12 @@ class Traversable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10469,6 +11100,7 @@ class Traversable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10488,11 +11120,14 @@ class Traversable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10500,6 +11135,8 @@ class Traversable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10517,6 +11154,7 @@ class Traversable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10562,6 +11200,7 @@ class Traversable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10605,15 +11244,20 @@ class Traversable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10654,6 +11298,7 @@ class Traversable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10688,6 +11333,7 @@ class Traversable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.Traversable */
@@ -10724,6 +11370,7 @@ class Traversable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10756,6 +11403,7 @@ class Traversable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Traversable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Traversable, pspec: GObject.ParamSpec) => void)): number
@@ -10777,12 +11425,15 @@ interface AbstractBidirList_ConstructProps extends AbstractList_ConstructProps {
 }
 class AbstractBidirList {
     /* Properties of Gee-0.8.Gee.AbstractBidirList */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly read_only_view: BidirList
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractBidirList */
     bidir_list_iterator(): BidirListIterator
     reserved0(): void
@@ -10850,6 +11501,10 @@ class AbstractBidirList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10860,6 +11515,12 @@ class AbstractBidirList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10883,6 +11544,7 @@ class AbstractBidirList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10902,11 +11564,14 @@ class AbstractBidirList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10914,6 +11579,8 @@ class AbstractBidirList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10931,6 +11598,7 @@ class AbstractBidirList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10976,6 +11644,7 @@ class AbstractBidirList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11019,15 +11688,20 @@ class AbstractBidirList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11068,6 +11742,7 @@ class AbstractBidirList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11102,6 +11777,7 @@ class AbstractBidirList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.BidirList */
@@ -11366,6 +12042,7 @@ class AbstractBidirList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11398,10 +12075,17 @@ class AbstractBidirList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractBidirList, pspec: GObject.ParamSpec) => void)): number
@@ -11429,12 +12113,15 @@ interface AbstractBidirSortedSet_ConstructProps extends AbstractSortedSet_Constr
 }
 class AbstractBidirSortedSet {
     /* Properties of Gee-0.8.Gee.AbstractBidirSortedSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly read_only_view: BidirSortedSet
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractBidirSortedSet */
     bidir_iterator(): BidirIterator
     reserved0(): void
@@ -11507,6 +12194,10 @@ class AbstractBidirSortedSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11517,6 +12208,12 @@ class AbstractBidirSortedSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11540,6 +12237,7 @@ class AbstractBidirSortedSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11559,11 +12257,14 @@ class AbstractBidirSortedSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11571,6 +12272,8 @@ class AbstractBidirSortedSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11588,6 +12291,7 @@ class AbstractBidirSortedSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11633,6 +12337,7 @@ class AbstractBidirSortedSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11676,15 +12381,20 @@ class AbstractBidirSortedSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11725,6 +12435,7 @@ class AbstractBidirSortedSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11759,6 +12470,7 @@ class AbstractBidirSortedSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.BidirSortedSet */
@@ -12090,6 +12802,7 @@ class AbstractBidirSortedSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12122,10 +12835,17 @@ class AbstractBidirSortedSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractBidirSortedSet, pspec: GObject.ParamSpec) => void)): number
@@ -12158,6 +12878,12 @@ interface AbstractBidirSortedMap_ConstructProps extends AbstractSortedMap_Constr
 }
 class AbstractBidirSortedMap {
     /* Properties of Gee-0.8.Gee.AbstractBidirSortedMap */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     readonly read_only_view: BidirSortedMap
     /* Properties of Gee-0.8.Gee.AbstractSortedMap */
     readonly ascending_keys: SortedSet
@@ -12169,7 +12895,7 @@ class AbstractBidirSortedMap {
     readonly values: Collection
     readonly entries: Set
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractBidirSortedMap */
     bidir_map_iterator(): BidirMapIterator
     reserved0(): void
@@ -12240,6 +12966,10 @@ class AbstractBidirSortedMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12250,6 +12980,12 @@ class AbstractBidirSortedMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12273,6 +13009,7 @@ class AbstractBidirSortedMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12292,11 +13029,14 @@ class AbstractBidirSortedMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12304,6 +13044,8 @@ class AbstractBidirSortedMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12321,6 +13063,7 @@ class AbstractBidirSortedMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12366,6 +13109,7 @@ class AbstractBidirSortedMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12409,15 +13153,20 @@ class AbstractBidirSortedMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12458,6 +13207,7 @@ class AbstractBidirSortedMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12492,6 +13242,7 @@ class AbstractBidirSortedMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.BidirSortedMap */
@@ -12734,6 +13485,7 @@ class AbstractBidirSortedMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12766,10 +13518,23 @@ class AbstractBidirSortedMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ascending-keys", callback: (($obj: AbstractBidirSortedMap, pspec: GObject.ParamSpec) => void)): number
@@ -12808,11 +13573,14 @@ interface AbstractCollection_ConstructProps extends GObject.Object_ConstructProp
 }
 class AbstractCollection {
     /* Properties of Gee-0.8.Gee.AbstractCollection */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly size: number
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractCollection */
     contains(item?: object | null): boolean
     add(item?: object | null): boolean
@@ -12868,6 +13636,10 @@ class AbstractCollection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12878,6 +13650,12 @@ class AbstractCollection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12901,6 +13679,7 @@ class AbstractCollection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12920,11 +13699,14 @@ class AbstractCollection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12932,6 +13714,8 @@ class AbstractCollection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12949,6 +13733,7 @@ class AbstractCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12994,6 +13779,7 @@ class AbstractCollection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13037,15 +13823,20 @@ class AbstractCollection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13086,6 +13877,7 @@ class AbstractCollection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13120,6 +13912,7 @@ class AbstractCollection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -13229,6 +14022,7 @@ class AbstractCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13261,10 +14055,17 @@ class AbstractCollection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only", callback: (($obj: AbstractCollection, pspec: GObject.ParamSpec) => void)): number
@@ -13290,12 +14091,15 @@ interface AbstractList_ConstructProps extends AbstractCollection_ConstructProps 
 }
 class AbstractList {
     /* Properties of Gee-0.8.Gee.AbstractList */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly read_only_view: List
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractList */
     list_iterator(): ListIterator
     get(index: number): object | null
@@ -13360,6 +14164,10 @@ class AbstractList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13370,6 +14178,12 @@ class AbstractList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13393,6 +14207,7 @@ class AbstractList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13412,11 +14227,14 @@ class AbstractList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13424,6 +14242,8 @@ class AbstractList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13441,6 +14261,7 @@ class AbstractList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13486,6 +14307,7 @@ class AbstractList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13529,15 +14351,20 @@ class AbstractList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13578,6 +14405,7 @@ class AbstractList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13612,6 +14440,7 @@ class AbstractList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.List */
@@ -13807,6 +14636,7 @@ class AbstractList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13839,10 +14669,17 @@ class AbstractList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractList, pspec: GObject.ParamSpec) => void)): number
@@ -13873,6 +14710,12 @@ interface AbstractMap_ConstructProps extends GObject.Object_ConstructProps {
 }
 class AbstractMap {
     /* Properties of Gee-0.8.Gee.AbstractMap */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     readonly size: number
     readonly read_only: boolean
     readonly keys: Set
@@ -13880,7 +14723,7 @@ class AbstractMap {
     readonly entries: Set
     readonly read_only_view: Map
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractMap */
     has_key(key?: object | null): boolean
     has(key?: object | null, value?: object | null): boolean
@@ -13942,6 +14785,10 @@ class AbstractMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13952,6 +14799,12 @@ class AbstractMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13975,6 +14828,7 @@ class AbstractMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13994,11 +14848,14 @@ class AbstractMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14006,6 +14863,8 @@ class AbstractMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14023,6 +14882,7 @@ class AbstractMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14068,6 +14928,7 @@ class AbstractMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14111,15 +14972,20 @@ class AbstractMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14160,6 +15026,7 @@ class AbstractMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14194,6 +15061,7 @@ class AbstractMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Traversable */
@@ -14311,6 +15179,7 @@ class AbstractMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14343,10 +15212,23 @@ class AbstractMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only", callback: (($obj: AbstractMap, pspec: GObject.ParamSpec) => void)): number
@@ -14380,11 +15262,18 @@ interface AbstractMultiMap_ConstructProps extends GObject.Object_ConstructProps 
     v_destroy_func?: GLib.DestroyNotify
 }
 class AbstractMultiMap {
+    /* Properties of Gee-0.8.Gee.AbstractMultiMap */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.MultiMap */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractMultiMap */
     create_value_storage(): Collection
     create_multi_key_set(): MultiSet
@@ -14434,6 +15323,10 @@ class AbstractMultiMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14444,6 +15337,12 @@ class AbstractMultiMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14467,6 +15366,7 @@ class AbstractMultiMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14486,11 +15386,14 @@ class AbstractMultiMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14498,6 +15401,8 @@ class AbstractMultiMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14515,6 +15420,7 @@ class AbstractMultiMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14560,6 +15466,7 @@ class AbstractMultiMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14603,15 +15510,20 @@ class AbstractMultiMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14652,6 +15564,7 @@ class AbstractMultiMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14686,6 +15599,7 @@ class AbstractMultiMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.MultiMap */
@@ -14746,6 +15660,7 @@ class AbstractMultiMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14778,10 +15693,23 @@ class AbstractMultiMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only", callback: (($obj: AbstractMultiMap, pspec: GObject.ParamSpec) => void)): number
@@ -14802,12 +15730,16 @@ interface AbstractMultiSet_ConstructProps extends AbstractCollection_ConstructPr
     g_destroy_func?: GLib.DestroyNotify
 }
 class AbstractMultiSet {
+    /* Properties of Gee-0.8.Gee.AbstractMultiSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractMultiSet */
     reserved0(): void
     reserved1(): void
@@ -14865,6 +15797,10 @@ class AbstractMultiSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14875,6 +15811,12 @@ class AbstractMultiSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14898,6 +15840,7 @@ class AbstractMultiSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14917,11 +15860,14 @@ class AbstractMultiSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14929,6 +15875,8 @@ class AbstractMultiSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14946,6 +15894,7 @@ class AbstractMultiSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14991,6 +15940,7 @@ class AbstractMultiSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15034,15 +15984,20 @@ class AbstractMultiSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15083,6 +16038,7 @@ class AbstractMultiSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15117,6 +16073,7 @@ class AbstractMultiSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.MultiSet */
@@ -15280,6 +16237,7 @@ class AbstractMultiSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15312,10 +16270,17 @@ class AbstractMultiSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only", callback: (($obj: AbstractMultiSet, pspec: GObject.ParamSpec) => void)): number
@@ -15343,6 +16308,9 @@ interface AbstractQueue_ConstructProps extends AbstractCollection_ConstructProps
 }
 class AbstractQueue {
     /* Properties of Gee-0.8.Gee.AbstractQueue */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly capacity: number
     readonly remaining_capacity: number
     readonly is_full: boolean
@@ -15351,7 +16319,7 @@ class AbstractQueue {
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractQueue */
     peek(): object | null
     poll(): object | null
@@ -15413,6 +16381,10 @@ class AbstractQueue {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15423,6 +16395,12 @@ class AbstractQueue {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15446,6 +16424,7 @@ class AbstractQueue {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15465,11 +16444,14 @@ class AbstractQueue {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15477,6 +16459,8 @@ class AbstractQueue {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15494,6 +16478,7 @@ class AbstractQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15539,6 +16524,7 @@ class AbstractQueue {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15582,15 +16568,20 @@ class AbstractQueue {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15631,6 +16622,7 @@ class AbstractQueue {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15665,6 +16657,7 @@ class AbstractQueue {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Queue */
@@ -15831,6 +16824,7 @@ class AbstractQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15863,10 +16857,17 @@ class AbstractQueue {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::capacity", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::capacity", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::remaining-capacity", callback: (($obj: AbstractQueue, pspec: GObject.ParamSpec) => void)): number
@@ -15898,12 +16899,15 @@ interface AbstractSet_ConstructProps extends AbstractCollection_ConstructProps {
 }
 class AbstractSet {
     /* Properties of Gee-0.8.Gee.AbstractSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly read_only_view: Set
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractSet */
     reserved0(): void
     reserved1(): void
@@ -15961,6 +16965,10 @@ class AbstractSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15971,6 +16979,12 @@ class AbstractSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15994,6 +17008,7 @@ class AbstractSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16013,11 +17028,14 @@ class AbstractSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16025,6 +17043,8 @@ class AbstractSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16042,6 +17062,7 @@ class AbstractSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16087,6 +17108,7 @@ class AbstractSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16130,15 +17152,20 @@ class AbstractSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16179,6 +17206,7 @@ class AbstractSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16213,6 +17241,7 @@ class AbstractSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Set */
@@ -16375,6 +17404,7 @@ class AbstractSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16407,10 +17437,17 @@ class AbstractSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractSet, pspec: GObject.ParamSpec) => void)): number
@@ -16439,6 +17476,12 @@ interface AbstractSortedMap_ConstructProps extends AbstractMap_ConstructProps {
 }
 class AbstractSortedMap {
     /* Properties of Gee-0.8.Gee.AbstractSortedMap */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     readonly ascending_keys: SortedSet
     readonly ascending_entries: SortedSet
     /* Properties of Gee-0.8.Gee.AbstractMap */
@@ -16449,7 +17492,7 @@ class AbstractSortedMap {
     readonly entries: Set
     readonly read_only_view: Map
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractSortedMap */
     head_map(before?: object | null): SortedMap
     tail_map(after?: object | null): SortedMap
@@ -16517,6 +17560,10 @@ class AbstractSortedMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16527,6 +17574,12 @@ class AbstractSortedMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16550,6 +17603,7 @@ class AbstractSortedMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16569,11 +17623,14 @@ class AbstractSortedMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16581,6 +17638,8 @@ class AbstractSortedMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16598,6 +17657,7 @@ class AbstractSortedMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16643,6 +17703,7 @@ class AbstractSortedMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16686,15 +17747,20 @@ class AbstractSortedMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16735,6 +17801,7 @@ class AbstractSortedMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16769,6 +17836,7 @@ class AbstractSortedMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.SortedMap */
@@ -16951,6 +18019,7 @@ class AbstractSortedMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16983,10 +18052,23 @@ class AbstractSortedMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ascending-keys", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ascending-keys", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ascending-entries", callback: (($obj: AbstractSortedMap, pspec: GObject.ParamSpec) => void)): number
@@ -17022,12 +18104,15 @@ interface AbstractSortedSet_ConstructProps extends AbstractSet_ConstructProps {
 }
 class AbstractSortedSet {
     /* Properties of Gee-0.8.Gee.AbstractSortedSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly read_only_view: SortedSet
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractSortedSet */
     first(): object | null
     last(): object | null
@@ -17097,6 +18182,10 @@ class AbstractSortedSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17107,6 +18196,12 @@ class AbstractSortedSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17130,6 +18225,7 @@ class AbstractSortedSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17149,11 +18245,14 @@ class AbstractSortedSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17161,6 +18260,8 @@ class AbstractSortedSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17178,6 +18279,7 @@ class AbstractSortedSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17223,6 +18325,7 @@ class AbstractSortedSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17266,15 +18369,20 @@ class AbstractSortedSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17315,6 +18423,7 @@ class AbstractSortedSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17349,6 +18458,7 @@ class AbstractSortedSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.SortedSet */
@@ -17602,6 +18712,7 @@ class AbstractSortedSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17634,10 +18745,17 @@ class AbstractSortedSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: AbstractSortedSet, pspec: GObject.ParamSpec) => void)): number
@@ -17662,13 +18780,17 @@ interface ArrayList_ConstructProps extends AbstractBidirList_ConstructProps {
     g_destroy_func?: GLib.DestroyNotify
 }
 class ArrayList {
+    /* Properties of Gee-0.8.Gee.ArrayList */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractBidirList */
     readonly read_only_view: BidirList
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.ArrayList */
     add_all(collection: Collection): boolean
     get_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
@@ -17739,6 +18861,10 @@ class ArrayList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17749,6 +18875,12 @@ class ArrayList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17772,6 +18904,7 @@ class ArrayList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17791,11 +18924,14 @@ class ArrayList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17803,6 +18939,8 @@ class ArrayList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17820,6 +18958,7 @@ class ArrayList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17865,6 +19004,7 @@ class ArrayList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17908,15 +19048,20 @@ class ArrayList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17957,6 +19102,7 @@ class ArrayList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17991,6 +19137,7 @@ class ArrayList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.ArrayList */
@@ -18217,6 +19364,7 @@ class ArrayList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18249,10 +19397,17 @@ class ArrayList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: ArrayList, pspec: GObject.ParamSpec) => void)): number
@@ -18279,6 +19434,9 @@ interface ArrayQueue_ConstructProps extends AbstractQueue_ConstructProps {
 }
 class ArrayQueue {
     /* Properties of Gee-0.8.Gee.ArrayQueue */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly is_empty: boolean
     /* Properties of Gee-0.8.Gee.AbstractQueue */
     readonly capacity: number
@@ -18289,7 +19447,7 @@ class ArrayQueue {
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.ArrayQueue */
     get_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
     get_is_empty(): boolean
@@ -18354,6 +19512,10 @@ class ArrayQueue {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18364,6 +19526,12 @@ class ArrayQueue {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18387,6 +19555,7 @@ class ArrayQueue {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18406,11 +19575,14 @@ class ArrayQueue {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18418,6 +19590,8 @@ class ArrayQueue {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18435,6 +19609,7 @@ class ArrayQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18480,6 +19655,7 @@ class ArrayQueue {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18523,15 +19699,20 @@ class ArrayQueue {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18572,6 +19753,7 @@ class ArrayQueue {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18606,6 +19788,7 @@ class ArrayQueue {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Deque */
@@ -18832,6 +20015,7 @@ class ArrayQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18864,10 +20048,17 @@ class ArrayQueue {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::is-empty", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-empty", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::capacity", callback: (($obj: ArrayQueue, pspec: GObject.ParamSpec) => void)): number
@@ -18902,6 +20093,9 @@ interface ConcurrentList_ConstructProps extends AbstractList_ConstructProps {
 }
 class ConcurrentList {
     /* Properties of Gee-0.8.Gee.ConcurrentList */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     readonly is_empty: boolean
     /* Properties of Gee-0.8.Gee.AbstractList */
     readonly read_only_view: List
@@ -18909,7 +20103,7 @@ class ConcurrentList {
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.ConcurrentList */
     get_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
     get_is_empty(): boolean
@@ -18977,6 +20171,10 @@ class ConcurrentList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18987,6 +20185,12 @@ class ConcurrentList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19010,6 +20214,7 @@ class ConcurrentList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19029,11 +20234,14 @@ class ConcurrentList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19041,6 +20249,8 @@ class ConcurrentList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19058,6 +20268,7 @@ class ConcurrentList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19103,6 +20314,7 @@ class ConcurrentList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19146,15 +20358,20 @@ class ConcurrentList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19195,6 +20412,7 @@ class ConcurrentList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19229,6 +20447,7 @@ class ConcurrentList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.ConcurrentList */
@@ -19383,6 +20602,7 @@ class ConcurrentList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19415,10 +20635,17 @@ class ConcurrentList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::is-empty", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-empty", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: ConcurrentList, pspec: GObject.ParamSpec) => void)): number
@@ -19445,13 +20672,17 @@ interface ConcurrentSet_ConstructProps extends AbstractSortedSet_ConstructProps 
     g_destroy_func?: GLib.DestroyNotify
 }
 class ConcurrentSet {
+    /* Properties of Gee-0.8.Gee.ConcurrentSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractSortedSet */
     readonly read_only_view: SortedSet
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.AbstractSortedSet */
     first(): object | null
     last(): object | null
@@ -19521,6 +20752,10 @@ class ConcurrentSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19531,6 +20766,12 @@ class ConcurrentSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19554,6 +20795,7 @@ class ConcurrentSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19573,11 +20815,14 @@ class ConcurrentSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19585,6 +20830,8 @@ class ConcurrentSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19602,6 +20849,7 @@ class ConcurrentSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19647,6 +20895,7 @@ class ConcurrentSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19690,15 +20939,20 @@ class ConcurrentSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19739,6 +20993,7 @@ class ConcurrentSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19773,6 +21028,7 @@ class ConcurrentSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.ConcurrentSet */
@@ -19990,6 +21246,7 @@ class ConcurrentSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20022,10 +21279,17 @@ class ConcurrentSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: ConcurrentSet, pspec: GObject.ParamSpec) => void)): number
@@ -20053,6 +21317,13 @@ interface HashMap_ConstructProps extends AbstractMap_ConstructProps {
     v_destroy_func?: GLib.DestroyNotify
 }
 class HashMap {
+    /* Properties of Gee-0.8.Gee.HashMap */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractMap */
     readonly size: number
     readonly read_only: boolean
@@ -20061,7 +21332,7 @@ class HashMap {
     readonly entries: Set
     readonly read_only_view: Map
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.HashMap */
     get_key_hash_func(): [ /* returnType */ HashDataFunc, /* result_target */ object | null ]
     get_key_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
@@ -20127,6 +21398,10 @@ class HashMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20137,6 +21412,12 @@ class HashMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20160,6 +21441,7 @@ class HashMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20179,11 +21461,14 @@ class HashMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20191,6 +21476,8 @@ class HashMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20208,6 +21495,7 @@ class HashMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20253,6 +21541,7 @@ class HashMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20296,15 +21585,20 @@ class HashMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20345,6 +21639,7 @@ class HashMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20379,6 +21674,7 @@ class HashMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.AbstractMap */
@@ -20461,6 +21757,7 @@ class HashMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20493,10 +21790,23 @@ class HashMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only", callback: (($obj: HashMap, pspec: GObject.ParamSpec) => void)): number
@@ -20530,10 +21840,17 @@ interface HashMultiMap_ConstructProps extends AbstractMultiMap_ConstructProps {
     v_destroy_func?: GLib.DestroyNotify
 }
 class HashMultiMap {
+    /* Properties of Gee-0.8.Gee.HashMultiMap */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     /* Fields of Gee-0.8.Gee.AbstractMultiMap */
-    readonly _storage_map: Map
+    _storage_map: Map
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.HashMultiMap */
     get_key_hash_func(): [ /* returnType */ HashDataFunc, /* result_target */ object | null ]
     get_key_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
@@ -20588,6 +21905,10 @@ class HashMultiMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20598,6 +21919,12 @@ class HashMultiMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20621,6 +21948,7 @@ class HashMultiMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20640,11 +21968,14 @@ class HashMultiMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20652,6 +21983,8 @@ class HashMultiMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20669,6 +22002,7 @@ class HashMultiMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20714,6 +22048,7 @@ class HashMultiMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20757,15 +22092,20 @@ class HashMultiMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20806,6 +22146,7 @@ class HashMultiMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20840,6 +22181,7 @@ class HashMultiMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.AbstractMultiMap */
@@ -20885,6 +22227,7 @@ class HashMultiMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20917,10 +22260,23 @@ class HashMultiMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: HashMultiMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -20939,14 +22295,18 @@ interface HashMultiSet_ConstructProps extends AbstractMultiSet_ConstructProps {
     g_destroy_func?: GLib.DestroyNotify
 }
 class HashMultiSet {
+    /* Properties of Gee-0.8.Gee.HashMultiSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of Gee-0.8.Gee.AbstractMultiSet */
-    readonly _storage_map: Map
+    _storage_map: Map
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.HashMultiSet */
     get_hash_func(): [ /* returnType */ HashDataFunc, /* result_target */ object | null ]
     get_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
@@ -21007,6 +22367,10 @@ class HashMultiSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21017,6 +22381,12 @@ class HashMultiSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21040,6 +22410,7 @@ class HashMultiSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21059,11 +22430,14 @@ class HashMultiSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21071,6 +22445,8 @@ class HashMultiSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21088,6 +22464,7 @@ class HashMultiSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21133,6 +22510,7 @@ class HashMultiSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21176,15 +22554,20 @@ class HashMultiSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21225,6 +22608,7 @@ class HashMultiSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21259,6 +22643,7 @@ class HashMultiSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.HashMultiSet */
@@ -21390,6 +22775,7 @@ class HashMultiSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21422,10 +22808,17 @@ class HashMultiSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only", callback: (($obj: HashMultiSet, pspec: GObject.ParamSpec) => void)): number
@@ -21451,13 +22844,17 @@ interface HashSet_ConstructProps extends AbstractSet_ConstructProps {
     g_destroy_func?: GLib.DestroyNotify
 }
 class HashSet {
+    /* Properties of Gee-0.8.Gee.HashSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractSet */
     readonly read_only_view: Set
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.HashSet */
     get_hash_func(): [ /* returnType */ HashDataFunc, /* result_target */ object | null ]
     get_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
@@ -21518,6 +22915,10 @@ class HashSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21528,6 +22929,12 @@ class HashSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21551,6 +22958,7 @@ class HashSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21570,11 +22978,14 @@ class HashSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21582,6 +22993,8 @@ class HashSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21599,6 +23012,7 @@ class HashSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21644,6 +23058,7 @@ class HashSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21687,15 +23102,20 @@ class HashSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21736,6 +23156,7 @@ class HashSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21770,6 +23191,7 @@ class HashSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.HashSet */
@@ -21901,6 +23323,7 @@ class HashSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21933,10 +23356,17 @@ class HashSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: HashSet, pspec: GObject.ParamSpec) => void)): number
@@ -21974,6 +23404,10 @@ interface LinkedList_ConstructProps extends AbstractBidirList_ConstructProps {
     g_destroy_func?: GLib.DestroyNotify
 }
 class LinkedList {
+    /* Properties of Gee-0.8.Gee.LinkedList */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractBidirList */
     readonly read_only_view: BidirList
     /* Properties of Gee-0.8.Gee.AbstractCollection */
@@ -21984,7 +23418,7 @@ class LinkedList {
     readonly remaining_capacity: number
     readonly is_full: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.LinkedList */
     first(): object | null
     last(): object | null
@@ -22056,6 +23490,10 @@ class LinkedList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22066,6 +23504,12 @@ class LinkedList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22089,6 +23533,7 @@ class LinkedList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22108,11 +23553,14 @@ class LinkedList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22120,6 +23568,8 @@ class LinkedList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22137,6 +23587,7 @@ class LinkedList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22182,6 +23633,7 @@ class LinkedList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22225,15 +23677,20 @@ class LinkedList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22274,6 +23731,7 @@ class LinkedList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22308,6 +23766,7 @@ class LinkedList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Queue */
@@ -22626,6 +24085,7 @@ class LinkedList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22658,10 +24118,17 @@ class LinkedList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: LinkedList, pspec: GObject.ParamSpec) => void)): number
@@ -22693,6 +24160,10 @@ interface PriorityQueue_ConstructProps extends AbstractQueue_ConstructProps {
     g_destroy_func?: GLib.DestroyNotify
 }
 class PriorityQueue {
+    /* Properties of Gee-0.8.Gee.PriorityQueue */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractQueue */
     readonly capacity: number
     readonly remaining_capacity: number
@@ -22702,7 +24173,7 @@ class PriorityQueue {
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.PriorityQueue */
     offer(element?: object | null): boolean
     drain(recipient: Collection, amount: number): number
@@ -22768,6 +24239,10 @@ class PriorityQueue {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22778,6 +24253,12 @@ class PriorityQueue {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22801,6 +24282,7 @@ class PriorityQueue {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22820,11 +24302,14 @@ class PriorityQueue {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22832,6 +24317,8 @@ class PriorityQueue {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22849,6 +24336,7 @@ class PriorityQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22894,6 +24382,7 @@ class PriorityQueue {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22937,15 +24426,20 @@ class PriorityQueue {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22986,6 +24480,7 @@ class PriorityQueue {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23020,6 +24515,7 @@ class PriorityQueue {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.AbstractQueue */
@@ -23150,6 +24646,7 @@ class PriorityQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23182,10 +24679,17 @@ class PriorityQueue {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::capacity", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::capacity", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::remaining-capacity", callback: (($obj: PriorityQueue, pspec: GObject.ParamSpec) => void)): number
@@ -23230,6 +24734,13 @@ interface TreeMap_ConstructProps extends AbstractBidirSortedMap_ConstructProps {
     v_destroy_func?: GLib.DestroyNotify
 }
 class TreeMap {
+    /* Properties of Gee-0.8.Gee.TreeMap */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractBidirSortedMap */
     readonly read_only_view: BidirSortedMap
     /* Properties of Gee-0.8.Gee.AbstractSortedMap */
@@ -23242,7 +24753,7 @@ class TreeMap {
     readonly values: Collection
     readonly entries: Set
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.TreeMap */
     get_key_compare_func(): [ /* returnType */ GLib.CompareDataFunc, /* result_target */ object | null ]
     get_value_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
@@ -23316,6 +24827,10 @@ class TreeMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23326,6 +24841,12 @@ class TreeMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23349,6 +24870,7 @@ class TreeMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23368,11 +24890,14 @@ class TreeMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23380,6 +24905,8 @@ class TreeMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23397,6 +24924,7 @@ class TreeMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23442,6 +24970,7 @@ class TreeMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23485,15 +25014,20 @@ class TreeMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23534,6 +25068,7 @@ class TreeMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23568,6 +25103,7 @@ class TreeMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.TreeMap */
@@ -23776,6 +25312,7 @@ class TreeMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23808,10 +25345,23 @@ class TreeMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ascending-keys", callback: (($obj: TreeMap, pspec: GObject.ParamSpec) => void)): number
@@ -23849,10 +25399,17 @@ interface TreeMultiMap_ConstructProps extends AbstractMultiMap_ConstructProps {
     v_destroy_func?: GLib.DestroyNotify
 }
 class TreeMultiMap {
+    /* Properties of Gee-0.8.Gee.TreeMultiMap */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     /* Fields of Gee-0.8.Gee.AbstractMultiMap */
-    readonly _storage_map: Map
+    _storage_map: Map
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.TreeMultiMap */
     get_key_compare_func(): [ /* returnType */ GLib.CompareDataFunc, /* result_target */ object | null ]
     get_value_compare_func(): [ /* returnType */ GLib.CompareDataFunc, /* result_target */ object | null ]
@@ -23905,6 +25462,10 @@ class TreeMultiMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23915,6 +25476,12 @@ class TreeMultiMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23938,6 +25505,7 @@ class TreeMultiMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23957,11 +25525,14 @@ class TreeMultiMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23969,6 +25540,8 @@ class TreeMultiMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23986,6 +25559,7 @@ class TreeMultiMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24031,6 +25605,7 @@ class TreeMultiMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24074,15 +25649,20 @@ class TreeMultiMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24123,6 +25703,7 @@ class TreeMultiMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24157,6 +25738,7 @@ class TreeMultiMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.AbstractMultiMap */
@@ -24202,6 +25784,7 @@ class TreeMultiMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24234,10 +25817,23 @@ class TreeMultiMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: TreeMultiMap, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -24256,14 +25852,18 @@ interface TreeMultiSet_ConstructProps extends AbstractMultiSet_ConstructProps {
     g_destroy_func?: GLib.DestroyNotify
 }
 class TreeMultiSet {
+    /* Properties of Gee-0.8.Gee.TreeMultiSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     readonly read_only_view: Collection
     /* Fields of Gee-0.8.Gee.AbstractMultiSet */
-    readonly _storage_map: Map
+    _storage_map: Map
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.TreeMultiSet */
     get_compare_func(): [ /* returnType */ GLib.CompareDataFunc, /* result_target */ object | null ]
     /* Methods of Gee-0.8.Gee.AbstractMultiSet */
@@ -24323,6 +25923,10 @@ class TreeMultiSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24333,6 +25937,12 @@ class TreeMultiSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24356,6 +25966,7 @@ class TreeMultiSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24375,11 +25986,14 @@ class TreeMultiSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24387,6 +26001,8 @@ class TreeMultiSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24404,6 +26020,7 @@ class TreeMultiSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24449,6 +26066,7 @@ class TreeMultiSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24492,15 +26110,20 @@ class TreeMultiSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24541,6 +26164,7 @@ class TreeMultiSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24575,6 +26199,7 @@ class TreeMultiSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.TreeMultiSet */
@@ -24706,6 +26331,7 @@ class TreeMultiSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24738,10 +26364,17 @@ class TreeMultiSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only", callback: (($obj: TreeMultiSet, pspec: GObject.ParamSpec) => void)): number
@@ -24766,13 +26399,17 @@ interface TreeSet_ConstructProps extends AbstractBidirSortedSet_ConstructProps {
     g_destroy_func?: GLib.DestroyNotify
 }
 class TreeSet {
+    /* Properties of Gee-0.8.Gee.TreeSet */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractBidirSortedSet */
     readonly read_only_view: BidirSortedSet
     /* Properties of Gee-0.8.Gee.AbstractCollection */
     readonly size: number
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.TreeSet */
     get_compare_func(): [ /* returnType */ GLib.CompareDataFunc, /* result_target */ object | null ]
     /* Methods of Gee-0.8.Gee.AbstractBidirSortedSet */
@@ -24847,6 +26484,10 @@ class TreeSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24857,6 +26498,12 @@ class TreeSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24880,6 +26527,7 @@ class TreeSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24899,11 +26547,14 @@ class TreeSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24911,6 +26562,8 @@ class TreeSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24928,6 +26581,7 @@ class TreeSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24973,6 +26627,7 @@ class TreeSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25016,15 +26671,20 @@ class TreeSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25065,6 +26725,7 @@ class TreeSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25099,6 +26760,7 @@ class TreeSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.TreeSet */
@@ -25402,6 +27064,7 @@ class TreeSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25434,10 +27097,17 @@ class TreeSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: TreeSet, pspec: GObject.ParamSpec) => void)): number
@@ -25462,6 +27132,10 @@ interface UnrolledLinkedList_ConstructProps extends AbstractBidirList_ConstructP
     g_destroy_func?: GLib.DestroyNotify
 }
 class UnrolledLinkedList {
+    /* Properties of Gee-0.8.Gee.UnrolledLinkedList */
+    readonly g_type: GObject.Type
+    readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly g_destroy_func: GLib.DestroyNotify
     /* Properties of Gee-0.8.Gee.AbstractBidirList */
     readonly read_only_view: BidirList
     /* Properties of Gee-0.8.Gee.AbstractCollection */
@@ -25472,7 +27146,7 @@ class UnrolledLinkedList {
     readonly remaining_capacity: number
     readonly is_full: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.UnrolledLinkedList */
     get_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ object | null ]
     /* Methods of Gee-0.8.Gee.AbstractBidirList */
@@ -25542,6 +27216,10 @@ class UnrolledLinkedList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25552,6 +27230,12 @@ class UnrolledLinkedList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25575,6 +27259,7 @@ class UnrolledLinkedList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25594,11 +27279,14 @@ class UnrolledLinkedList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25606,6 +27294,8 @@ class UnrolledLinkedList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25623,6 +27313,7 @@ class UnrolledLinkedList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25668,6 +27359,7 @@ class UnrolledLinkedList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25711,15 +27403,20 @@ class UnrolledLinkedList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25760,6 +27457,7 @@ class UnrolledLinkedList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25794,6 +27492,7 @@ class UnrolledLinkedList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gee-0.8.Gee.Queue */
@@ -26112,6 +27811,7 @@ class UnrolledLinkedList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26144,10 +27844,17 @@ class UnrolledLinkedList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-type", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-type", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-dup-func", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-dup-func", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-destroy-func", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-destroy-func", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::read-only-view", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only-view", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: UnrolledLinkedList, pspec: GObject.ParamSpec) => void)): number
@@ -26184,11 +27891,17 @@ interface MapEntry_ConstructProps extends GObject.Object_ConstructProps {
 }
 class MapEntry {
     /* Properties of Gee-0.8.Gee.MapEntry */
+    readonly k_type: GObject.Type
+    readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly k_destroy_func: GLib.DestroyNotify
+    readonly v_type: GObject.Type
+    readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly v_destroy_func: GLib.DestroyNotify
     readonly key: object
     value: object
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gee-0.8.Gee.MapEntry */
     get_key(): object | null
     get_value(): object | null
@@ -26229,6 +27942,10 @@ class MapEntry {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26239,6 +27956,12 @@ class MapEntry {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -26262,6 +27985,7 @@ class MapEntry {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26281,11 +28005,14 @@ class MapEntry {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26293,6 +28020,8 @@ class MapEntry {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26310,6 +28039,7 @@ class MapEntry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -26355,6 +28085,7 @@ class MapEntry {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -26398,15 +28129,20 @@ class MapEntry {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -26447,6 +28183,7 @@ class MapEntry {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -26481,6 +28218,7 @@ class MapEntry {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gee-0.8.Gee.MapEntry */
@@ -26505,6 +28243,7 @@ class MapEntry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26537,10 +28276,23 @@ class MapEntry {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::k-type", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-type", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-dup-func", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-dup-func", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::k-destroy-func", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::k-destroy-func", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-type", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-type", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-dup-func", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-dup-func", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::v-destroy-func", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::v-destroy-func", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::key", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::key", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::value", callback: (($obj: MapEntry, pspec: GObject.ParamSpec) => void)): number
@@ -26558,17 +28310,17 @@ class MapEntry {
 }
 abstract class AbstractBidirListClass {
     /* Fields of Gee-0.8.Gee.AbstractBidirListClass */
-    readonly bidir_list_iterator: (self: AbstractBidirList) => BidirListIterator
-    readonly reserved0: (self: AbstractBidirList) => void
-    readonly reserved1: (self: AbstractBidirList) => void
-    readonly reserved2: (self: AbstractBidirList) => void
-    readonly reserved3: (self: AbstractBidirList) => void
-    readonly reserved4: (self: AbstractBidirList) => void
-    readonly reserved5: (self: AbstractBidirList) => void
-    readonly reserved6: (self: AbstractBidirList) => void
-    readonly reserved7: (self: AbstractBidirList) => void
-    readonly reserved8: (self: AbstractBidirList) => void
-    readonly reserved9: (self: AbstractBidirList) => void
+    bidir_list_iterator: (self: AbstractBidirList) => BidirListIterator
+    reserved0: (self: AbstractBidirList) => void
+    reserved1: (self: AbstractBidirList) => void
+    reserved2: (self: AbstractBidirList) => void
+    reserved3: (self: AbstractBidirList) => void
+    reserved4: (self: AbstractBidirList) => void
+    reserved5: (self: AbstractBidirList) => void
+    reserved6: (self: AbstractBidirList) => void
+    reserved7: (self: AbstractBidirList) => void
+    reserved8: (self: AbstractBidirList) => void
+    reserved9: (self: AbstractBidirList) => void
     static name: string
 }
 class AbstractBidirListPrivate {
@@ -26576,17 +28328,17 @@ class AbstractBidirListPrivate {
 }
 abstract class AbstractBidirSortedSetClass {
     /* Fields of Gee-0.8.Gee.AbstractBidirSortedSetClass */
-    readonly bidir_iterator: (self: AbstractBidirSortedSet) => BidirIterator
-    readonly reserved0: (self: AbstractBidirSortedSet) => void
-    readonly reserved1: (self: AbstractBidirSortedSet) => void
-    readonly reserved2: (self: AbstractBidirSortedSet) => void
-    readonly reserved3: (self: AbstractBidirSortedSet) => void
-    readonly reserved4: (self: AbstractBidirSortedSet) => void
-    readonly reserved5: (self: AbstractBidirSortedSet) => void
-    readonly reserved6: (self: AbstractBidirSortedSet) => void
-    readonly reserved7: (self: AbstractBidirSortedSet) => void
-    readonly reserved8: (self: AbstractBidirSortedSet) => void
-    readonly reserved9: (self: AbstractBidirSortedSet) => void
+    bidir_iterator: (self: AbstractBidirSortedSet) => BidirIterator
+    reserved0: (self: AbstractBidirSortedSet) => void
+    reserved1: (self: AbstractBidirSortedSet) => void
+    reserved2: (self: AbstractBidirSortedSet) => void
+    reserved3: (self: AbstractBidirSortedSet) => void
+    reserved4: (self: AbstractBidirSortedSet) => void
+    reserved5: (self: AbstractBidirSortedSet) => void
+    reserved6: (self: AbstractBidirSortedSet) => void
+    reserved7: (self: AbstractBidirSortedSet) => void
+    reserved8: (self: AbstractBidirSortedSet) => void
+    reserved9: (self: AbstractBidirSortedSet) => void
     static name: string
 }
 class AbstractBidirSortedSetPrivate {
@@ -26594,17 +28346,17 @@ class AbstractBidirSortedSetPrivate {
 }
 abstract class AbstractBidirSortedMapClass {
     /* Fields of Gee-0.8.Gee.AbstractBidirSortedMapClass */
-    readonly bidir_map_iterator: (self: AbstractBidirSortedMap) => BidirMapIterator
-    readonly reserved0: (self: AbstractBidirSortedMap) => void
-    readonly reserved1: (self: AbstractBidirSortedMap) => void
-    readonly reserved2: (self: AbstractBidirSortedMap) => void
-    readonly reserved3: (self: AbstractBidirSortedMap) => void
-    readonly reserved4: (self: AbstractBidirSortedMap) => void
-    readonly reserved5: (self: AbstractBidirSortedMap) => void
-    readonly reserved6: (self: AbstractBidirSortedMap) => void
-    readonly reserved7: (self: AbstractBidirSortedMap) => void
-    readonly reserved8: (self: AbstractBidirSortedMap) => void
-    readonly reserved9: (self: AbstractBidirSortedMap) => void
+    bidir_map_iterator: (self: AbstractBidirSortedMap) => BidirMapIterator
+    reserved0: (self: AbstractBidirSortedMap) => void
+    reserved1: (self: AbstractBidirSortedMap) => void
+    reserved2: (self: AbstractBidirSortedMap) => void
+    reserved3: (self: AbstractBidirSortedMap) => void
+    reserved4: (self: AbstractBidirSortedMap) => void
+    reserved5: (self: AbstractBidirSortedMap) => void
+    reserved6: (self: AbstractBidirSortedMap) => void
+    reserved7: (self: AbstractBidirSortedMap) => void
+    reserved8: (self: AbstractBidirSortedMap) => void
+    reserved9: (self: AbstractBidirSortedMap) => void
     static name: string
 }
 class AbstractBidirSortedMapPrivate {
@@ -26612,22 +28364,22 @@ class AbstractBidirSortedMapPrivate {
 }
 abstract class AbstractCollectionClass {
     /* Fields of Gee-0.8.Gee.AbstractCollectionClass */
-    readonly contains: (self: AbstractCollection, item?: object | null) => boolean
-    readonly add: (self: AbstractCollection, item?: object | null) => boolean
-    readonly remove: (self: AbstractCollection, item?: object | null) => boolean
-    readonly clear: (self: AbstractCollection) => void
-    readonly iterator: (self: AbstractCollection) => Iterator
-    readonly foreach: (self: AbstractCollection, f: ForallFunc) => boolean
-    readonly reserved0: (self: AbstractCollection) => void
-    readonly reserved1: (self: AbstractCollection) => void
-    readonly reserved2: (self: AbstractCollection) => void
-    readonly reserved3: (self: AbstractCollection) => void
-    readonly reserved4: (self: AbstractCollection) => void
-    readonly reserved5: (self: AbstractCollection) => void
-    readonly reserved6: (self: AbstractCollection) => void
-    readonly reserved7: (self: AbstractCollection) => void
-    readonly reserved8: (self: AbstractCollection) => void
-    readonly reserved9: (self: AbstractCollection) => void
+    contains: (self: AbstractCollection, item?: object | null) => boolean
+    add: (self: AbstractCollection, item?: object | null) => boolean
+    remove: (self: AbstractCollection, item?: object | null) => boolean
+    clear: (self: AbstractCollection) => void
+    iterator: (self: AbstractCollection) => Iterator
+    foreach: (self: AbstractCollection, f: ForallFunc) => boolean
+    reserved0: (self: AbstractCollection) => void
+    reserved1: (self: AbstractCollection) => void
+    reserved2: (self: AbstractCollection) => void
+    reserved3: (self: AbstractCollection) => void
+    reserved4: (self: AbstractCollection) => void
+    reserved5: (self: AbstractCollection) => void
+    reserved6: (self: AbstractCollection) => void
+    reserved7: (self: AbstractCollection) => void
+    reserved8: (self: AbstractCollection) => void
+    reserved9: (self: AbstractCollection) => void
     static name: string
 }
 class AbstractCollectionPrivate {
@@ -26635,23 +28387,23 @@ class AbstractCollectionPrivate {
 }
 abstract class AbstractListClass {
     /* Fields of Gee-0.8.Gee.AbstractListClass */
-    readonly list_iterator: (self: AbstractList) => ListIterator
-    readonly get: (self: AbstractList, index: number) => object | null
-    readonly set: (self: AbstractList, index: number, item?: object | null) => void
-    readonly index_of: (self: AbstractList, item?: object | null) => number
-    readonly insert: (self: AbstractList, index: number, item?: object | null) => void
-    readonly remove_at: (self: AbstractList, index: number) => object | null
-    readonly slice: (self: AbstractList, start: number, stop: number) => List | null
-    readonly reserved0: (self: AbstractList) => void
-    readonly reserved1: (self: AbstractList) => void
-    readonly reserved2: (self: AbstractList) => void
-    readonly reserved3: (self: AbstractList) => void
-    readonly reserved4: (self: AbstractList) => void
-    readonly reserved5: (self: AbstractList) => void
-    readonly reserved6: (self: AbstractList) => void
-    readonly reserved7: (self: AbstractList) => void
-    readonly reserved8: (self: AbstractList) => void
-    readonly reserved9: (self: AbstractList) => void
+    list_iterator: (self: AbstractList) => ListIterator
+    get: (self: AbstractList, index: number) => object | null
+    set: (self: AbstractList, index: number, item?: object | null) => void
+    index_of: (self: AbstractList, item?: object | null) => number
+    insert: (self: AbstractList, index: number, item?: object | null) => void
+    remove_at: (self: AbstractList, index: number) => object | null
+    slice: (self: AbstractList, start: number, stop: number) => List | null
+    reserved0: (self: AbstractList) => void
+    reserved1: (self: AbstractList) => void
+    reserved2: (self: AbstractList) => void
+    reserved3: (self: AbstractList) => void
+    reserved4: (self: AbstractList) => void
+    reserved5: (self: AbstractList) => void
+    reserved6: (self: AbstractList) => void
+    reserved7: (self: AbstractList) => void
+    reserved8: (self: AbstractList) => void
+    reserved9: (self: AbstractList) => void
     static name: string
 }
 class AbstractListPrivate {
@@ -26659,25 +28411,25 @@ class AbstractListPrivate {
 }
 abstract class AbstractMapClass {
     /* Fields of Gee-0.8.Gee.AbstractMapClass */
-    readonly has_key: (self: AbstractMap, key?: object | null) => boolean
-    readonly has: (self: AbstractMap, key?: object | null, value?: object | null) => boolean
-    readonly get: (self: AbstractMap, key?: object | null) => object | null
-    readonly set: (self: AbstractMap, key?: object | null, value?: object | null) => void
-    readonly unset: (self: AbstractMap, key?: object | null) => [ /* returnType */ boolean, /* value */ object | null ]
-    readonly map_iterator: (self: AbstractMap) => MapIterator
-    readonly clear: (self: AbstractMap) => void
-    readonly foreach: (self: AbstractMap, f: ForallFunc) => boolean
-    readonly stream: (self: AbstractMap, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: StreamFunc) => Iterator
-    readonly reserved0: (self: AbstractMap) => void
-    readonly reserved1: (self: AbstractMap) => void
-    readonly reserved2: (self: AbstractMap) => void
-    readonly reserved3: (self: AbstractMap) => void
-    readonly reserved4: (self: AbstractMap) => void
-    readonly reserved5: (self: AbstractMap) => void
-    readonly reserved6: (self: AbstractMap) => void
-    readonly reserved7: (self: AbstractMap) => void
-    readonly reserved8: (self: AbstractMap) => void
-    readonly reserved9: (self: AbstractMap) => void
+    has_key: (self: AbstractMap, key?: object | null) => boolean
+    has: (self: AbstractMap, key?: object | null, value?: object | null) => boolean
+    get: (self: AbstractMap, key?: object | null) => object | null
+    set: (self: AbstractMap, key?: object | null, value?: object | null) => void
+    unset: (self: AbstractMap, key?: object | null) => [ /* returnType */ boolean, /* value */ object | null ]
+    map_iterator: (self: AbstractMap) => MapIterator
+    clear: (self: AbstractMap) => void
+    foreach: (self: AbstractMap, f: ForallFunc) => boolean
+    stream: (self: AbstractMap, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: StreamFunc) => Iterator
+    reserved0: (self: AbstractMap) => void
+    reserved1: (self: AbstractMap) => void
+    reserved2: (self: AbstractMap) => void
+    reserved3: (self: AbstractMap) => void
+    reserved4: (self: AbstractMap) => void
+    reserved5: (self: AbstractMap) => void
+    reserved6: (self: AbstractMap) => void
+    reserved7: (self: AbstractMap) => void
+    reserved8: (self: AbstractMap) => void
+    reserved9: (self: AbstractMap) => void
     static name: string
 }
 class AbstractMapPrivate {
@@ -26685,18 +28437,18 @@ class AbstractMapPrivate {
 }
 abstract class AbstractMultiMapClass {
     /* Fields of Gee-0.8.Gee.AbstractMultiMapClass */
-    readonly create_value_storage: (self: AbstractMultiMap) => Collection
-    readonly create_multi_key_set: (self: AbstractMultiMap) => MultiSet
-    readonly get_value_equal_func: (self: AbstractMultiMap) => [ /* returnType */ EqualDataFunc, /* result_target */ object | null, /* result_target_destroy_notify */ GLib.DestroyNotify ]
-    readonly reserved0: (self: AbstractMultiMap) => void
-    readonly reserved1: (self: AbstractMultiMap) => void
-    readonly reserved2: (self: AbstractMultiMap) => void
-    readonly reserved3: (self: AbstractMultiMap) => void
-    readonly reserved4: (self: AbstractMultiMap) => void
-    readonly reserved5: (self: AbstractMultiMap) => void
-    readonly reserved6: (self: AbstractMultiMap) => void
-    readonly reserved7: (self: AbstractMultiMap) => void
-    readonly reserved8: (self: AbstractMultiMap) => void
+    create_value_storage: (self: AbstractMultiMap) => Collection
+    create_multi_key_set: (self: AbstractMultiMap) => MultiSet
+    get_value_equal_func: (self: AbstractMultiMap) => [ /* returnType */ EqualDataFunc, /* result_target */ object | null, /* result_target_destroy_notify */ GLib.DestroyNotify ]
+    reserved0: (self: AbstractMultiMap) => void
+    reserved1: (self: AbstractMultiMap) => void
+    reserved2: (self: AbstractMultiMap) => void
+    reserved3: (self: AbstractMultiMap) => void
+    reserved4: (self: AbstractMultiMap) => void
+    reserved5: (self: AbstractMultiMap) => void
+    reserved6: (self: AbstractMultiMap) => void
+    reserved7: (self: AbstractMultiMap) => void
+    reserved8: (self: AbstractMultiMap) => void
     static name: string
 }
 class AbstractMultiMapPrivate {
@@ -26704,15 +28456,15 @@ class AbstractMultiMapPrivate {
 }
 abstract class AbstractMultiSetClass {
     /* Fields of Gee-0.8.Gee.AbstractMultiSetClass */
-    readonly reserved0: (self: AbstractMultiSet) => void
-    readonly reserved1: (self: AbstractMultiSet) => void
-    readonly reserved2: (self: AbstractMultiSet) => void
-    readonly reserved3: (self: AbstractMultiSet) => void
-    readonly reserved4: (self: AbstractMultiSet) => void
-    readonly reserved5: (self: AbstractMultiSet) => void
-    readonly reserved6: (self: AbstractMultiSet) => void
-    readonly reserved7: (self: AbstractMultiSet) => void
-    readonly reserved8: (self: AbstractMultiSet) => void
+    reserved0: (self: AbstractMultiSet) => void
+    reserved1: (self: AbstractMultiSet) => void
+    reserved2: (self: AbstractMultiSet) => void
+    reserved3: (self: AbstractMultiSet) => void
+    reserved4: (self: AbstractMultiSet) => void
+    reserved5: (self: AbstractMultiSet) => void
+    reserved6: (self: AbstractMultiSet) => void
+    reserved7: (self: AbstractMultiSet) => void
+    reserved8: (self: AbstractMultiSet) => void
     static name: string
 }
 class AbstractMultiSetPrivate {
@@ -26720,18 +28472,18 @@ class AbstractMultiSetPrivate {
 }
 abstract class AbstractQueueClass {
     /* Fields of Gee-0.8.Gee.AbstractQueueClass */
-    readonly peek: (self: AbstractQueue) => object | null
-    readonly poll: (self: AbstractQueue) => object | null
-    readonly reserved0: (self: AbstractQueue) => void
-    readonly reserved1: (self: AbstractQueue) => void
-    readonly reserved2: (self: AbstractQueue) => void
-    readonly reserved3: (self: AbstractQueue) => void
-    readonly reserved4: (self: AbstractQueue) => void
-    readonly reserved5: (self: AbstractQueue) => void
-    readonly reserved6: (self: AbstractQueue) => void
-    readonly reserved7: (self: AbstractQueue) => void
-    readonly reserved8: (self: AbstractQueue) => void
-    readonly reserved9: (self: AbstractQueue) => void
+    peek: (self: AbstractQueue) => object | null
+    poll: (self: AbstractQueue) => object | null
+    reserved0: (self: AbstractQueue) => void
+    reserved1: (self: AbstractQueue) => void
+    reserved2: (self: AbstractQueue) => void
+    reserved3: (self: AbstractQueue) => void
+    reserved4: (self: AbstractQueue) => void
+    reserved5: (self: AbstractQueue) => void
+    reserved6: (self: AbstractQueue) => void
+    reserved7: (self: AbstractQueue) => void
+    reserved8: (self: AbstractQueue) => void
+    reserved9: (self: AbstractQueue) => void
     static name: string
 }
 class AbstractQueuePrivate {
@@ -26739,16 +28491,16 @@ class AbstractQueuePrivate {
 }
 abstract class AbstractSetClass {
     /* Fields of Gee-0.8.Gee.AbstractSetClass */
-    readonly reserved0: (self: AbstractSet) => void
-    readonly reserved1: (self: AbstractSet) => void
-    readonly reserved2: (self: AbstractSet) => void
-    readonly reserved3: (self: AbstractSet) => void
-    readonly reserved4: (self: AbstractSet) => void
-    readonly reserved5: (self: AbstractSet) => void
-    readonly reserved6: (self: AbstractSet) => void
-    readonly reserved7: (self: AbstractSet) => void
-    readonly reserved8: (self: AbstractSet) => void
-    readonly reserved9: (self: AbstractSet) => void
+    reserved0: (self: AbstractSet) => void
+    reserved1: (self: AbstractSet) => void
+    reserved2: (self: AbstractSet) => void
+    reserved3: (self: AbstractSet) => void
+    reserved4: (self: AbstractSet) => void
+    reserved5: (self: AbstractSet) => void
+    reserved6: (self: AbstractSet) => void
+    reserved7: (self: AbstractSet) => void
+    reserved8: (self: AbstractSet) => void
+    reserved9: (self: AbstractSet) => void
     static name: string
 }
 class AbstractSetPrivate {
@@ -26756,19 +28508,19 @@ class AbstractSetPrivate {
 }
 abstract class AbstractSortedMapClass {
     /* Fields of Gee-0.8.Gee.AbstractSortedMapClass */
-    readonly head_map: (self: AbstractSortedMap, before?: object | null) => SortedMap
-    readonly tail_map: (self: AbstractSortedMap, after?: object | null) => SortedMap
-    readonly sub_map: (self: AbstractSortedMap, before?: object | null, after?: object | null) => SortedMap
-    readonly reserved0: (self: AbstractSortedMap) => void
-    readonly reserved1: (self: AbstractSortedMap) => void
-    readonly reserved2: (self: AbstractSortedMap) => void
-    readonly reserved3: (self: AbstractSortedMap) => void
-    readonly reserved4: (self: AbstractSortedMap) => void
-    readonly reserved5: (self: AbstractSortedMap) => void
-    readonly reserved6: (self: AbstractSortedMap) => void
-    readonly reserved7: (self: AbstractSortedMap) => void
-    readonly reserved8: (self: AbstractSortedMap) => void
-    readonly reserved9: (self: AbstractSortedMap) => void
+    head_map: (self: AbstractSortedMap, before?: object | null) => SortedMap
+    tail_map: (self: AbstractSortedMap, after?: object | null) => SortedMap
+    sub_map: (self: AbstractSortedMap, before?: object | null, after?: object | null) => SortedMap
+    reserved0: (self: AbstractSortedMap) => void
+    reserved1: (self: AbstractSortedMap) => void
+    reserved2: (self: AbstractSortedMap) => void
+    reserved3: (self: AbstractSortedMap) => void
+    reserved4: (self: AbstractSortedMap) => void
+    reserved5: (self: AbstractSortedMap) => void
+    reserved6: (self: AbstractSortedMap) => void
+    reserved7: (self: AbstractSortedMap) => void
+    reserved8: (self: AbstractSortedMap) => void
+    reserved9: (self: AbstractSortedMap) => void
     static name: string
 }
 class AbstractSortedMapPrivate {
@@ -26776,26 +28528,26 @@ class AbstractSortedMapPrivate {
 }
 abstract class AbstractSortedSetClass {
     /* Fields of Gee-0.8.Gee.AbstractSortedSetClass */
-    readonly first: (self: AbstractSortedSet) => object | null
-    readonly last: (self: AbstractSortedSet) => object | null
-    readonly iterator_at: (self: AbstractSortedSet, element?: object | null) => Iterator | null
-    readonly lower: (self: AbstractSortedSet, element?: object | null) => object | null
-    readonly higher: (self: AbstractSortedSet, element?: object | null) => object | null
-    readonly floor: (self: AbstractSortedSet, element?: object | null) => object | null
-    readonly ceil: (self: AbstractSortedSet, element?: object | null) => object | null
-    readonly head_set: (self: AbstractSortedSet, before?: object | null) => SortedSet
-    readonly tail_set: (self: AbstractSortedSet, after?: object | null) => SortedSet
-    readonly sub_set: (self: AbstractSortedSet, from?: object | null, to?: object | null) => SortedSet
-    readonly reserved0: (self: AbstractSortedSet) => void
-    readonly reserved1: (self: AbstractSortedSet) => void
-    readonly reserved2: (self: AbstractSortedSet) => void
-    readonly reserved3: (self: AbstractSortedSet) => void
-    readonly reserved4: (self: AbstractSortedSet) => void
-    readonly reserved5: (self: AbstractSortedSet) => void
-    readonly reserved6: (self: AbstractSortedSet) => void
-    readonly reserved7: (self: AbstractSortedSet) => void
-    readonly reserved8: (self: AbstractSortedSet) => void
-    readonly reserved9: (self: AbstractSortedSet) => void
+    first: (self: AbstractSortedSet) => object | null
+    last: (self: AbstractSortedSet) => object | null
+    iterator_at: (self: AbstractSortedSet, element?: object | null) => Iterator | null
+    lower: (self: AbstractSortedSet, element?: object | null) => object | null
+    higher: (self: AbstractSortedSet, element?: object | null) => object | null
+    floor: (self: AbstractSortedSet, element?: object | null) => object | null
+    ceil: (self: AbstractSortedSet, element?: object | null) => object | null
+    head_set: (self: AbstractSortedSet, before?: object | null) => SortedSet
+    tail_set: (self: AbstractSortedSet, after?: object | null) => SortedSet
+    sub_set: (self: AbstractSortedSet, from?: object | null, to?: object | null) => SortedSet
+    reserved0: (self: AbstractSortedSet) => void
+    reserved1: (self: AbstractSortedSet) => void
+    reserved2: (self: AbstractSortedSet) => void
+    reserved3: (self: AbstractSortedSet) => void
+    reserved4: (self: AbstractSortedSet) => void
+    reserved5: (self: AbstractSortedSet) => void
+    reserved6: (self: AbstractSortedSet) => void
+    reserved7: (self: AbstractSortedSet) => void
+    reserved8: (self: AbstractSortedSet) => void
+    reserved9: (self: AbstractSortedSet) => void
     static name: string
 }
 class AbstractSortedSetPrivate {
@@ -26851,7 +28603,7 @@ class HashSetPrivate {
 }
 class HazardPointer {
     /* Fields of Gee-0.8.Gee.HazardPointer */
-    readonly _node: any
+    _node: any
     /* Methods of Gee-0.8.Gee.HazardPointer */
     get(other_thread: boolean): object | null
     release(notify: GLib.DestroyNotify): void
@@ -26872,9 +28624,9 @@ class HazardPointer {
 }
 class HazardPointerContext {
     /* Fields of Gee-0.8.Gee.HazardPointerContext */
-    readonly _parent: object | null
-    readonly _to_free: ArrayList
-    readonly _policy: HazardPointerPolicy | null
+    _parent: object | null
+    _to_free: ArrayList
+    _policy: HazardPointerPolicy | null
     /* Methods of Gee-0.8.Gee.HazardPointerContext */
     try_free(): void
     free_all(): void
@@ -26942,162 +28694,162 @@ class UnrolledLinkedListPrivate {
 }
 abstract class BidirIteratorIface {
     /* Fields of Gee-0.8.Gee.BidirIteratorIface */
-    readonly previous: (self: BidirIterator) => boolean
-    readonly has_previous: (self: BidirIterator) => boolean
-    readonly first: (self: BidirIterator) => boolean
-    readonly last: (self: BidirIterator) => boolean
+    previous: (self: BidirIterator) => boolean
+    has_previous: (self: BidirIterator) => boolean
+    first: (self: BidirIterator) => boolean
+    last: (self: BidirIterator) => boolean
     static name: string
 }
 abstract class BidirListIface {
     /* Fields of Gee-0.8.Gee.BidirListIface */
-    readonly bidir_list_iterator: (self: BidirList) => BidirListIterator
-    readonly get_read_only_view: (self: BidirList) => BidirList
+    bidir_list_iterator: (self: BidirList) => BidirListIterator
+    get_read_only_view: (self: BidirList) => BidirList
     static name: string
 }
 abstract class BidirListIteratorIface {
     /* Fields of Gee-0.8.Gee.BidirListIteratorIface */
-    readonly insert: (self: BidirListIterator, item?: object | null) => void
+    insert: (self: BidirListIterator, item?: object | null) => void
     static name: string
 }
 abstract class BidirMapIteratorIface {
     /* Fields of Gee-0.8.Gee.BidirMapIteratorIface */
-    readonly previous: (self: BidirMapIterator) => boolean
-    readonly has_previous: (self: BidirMapIterator) => boolean
-    readonly first: (self: BidirMapIterator) => boolean
-    readonly last: (self: BidirMapIterator) => boolean
+    previous: (self: BidirMapIterator) => boolean
+    has_previous: (self: BidirMapIterator) => boolean
+    first: (self: BidirMapIterator) => boolean
+    last: (self: BidirMapIterator) => boolean
     static name: string
 }
 abstract class BidirSortedSetIface {
     /* Fields of Gee-0.8.Gee.BidirSortedSetIface */
-    readonly bidir_iterator: (self: BidirSortedSet) => BidirIterator
-    readonly get_read_only_view: (self: BidirSortedSet) => BidirSortedSet
+    bidir_iterator: (self: BidirSortedSet) => BidirIterator
+    get_read_only_view: (self: BidirSortedSet) => BidirSortedSet
     static name: string
 }
 abstract class BidirSortedMapIface {
     /* Fields of Gee-0.8.Gee.BidirSortedMapIface */
-    readonly bidir_map_iterator: (self: BidirSortedMap) => BidirMapIterator
-    readonly get_read_only_view: (self: BidirSortedMap) => BidirSortedMap
+    bidir_map_iterator: (self: BidirSortedMap) => BidirMapIterator
+    get_read_only_view: (self: BidirSortedMap) => BidirSortedMap
     static name: string
 }
 abstract class CollectionIface {
     /* Fields of Gee-0.8.Gee.CollectionIface */
-    readonly contains: (self: Collection, item?: object | null) => boolean
-    readonly add: (self: Collection, item?: object | null) => boolean
-    readonly remove: (self: Collection, item?: object | null) => boolean
-    readonly clear: (self: Collection) => void
-    readonly add_all: (self: Collection, collection: Collection) => boolean
-    readonly contains_all: (self: Collection, collection: Collection) => boolean
-    readonly remove_all: (self: Collection, collection: Collection) => boolean
-    readonly retain_all: (self: Collection, collection: Collection) => boolean
-    readonly to_array: () => [ /* returnType */ object[], /* result_length1 */ number ]
-    readonly add_all_array: (self: Collection, array: object[]) => boolean
-    readonly contains_all_array: (self: Collection, array: object[]) => boolean
-    readonly remove_all_array: (self: Collection, array: object[]) => boolean
-    readonly add_all_iterator: (self: Collection, iter: Iterator) => boolean
-    readonly contains_all_iterator: (self: Collection, iter: Iterator) => boolean
-    readonly remove_all_iterator: (self: Collection, iter: Iterator) => boolean
-    readonly get_size: (self: Collection) => number
-    readonly get_is_empty: (self: Collection) => boolean
-    readonly get_read_only: (self: Collection) => boolean
-    readonly get_read_only_view: (self: Collection) => Collection
+    contains: (self: Collection, item?: object | null) => boolean
+    add: (self: Collection, item?: object | null) => boolean
+    remove: (self: Collection, item?: object | null) => boolean
+    clear: (self: Collection) => void
+    add_all: (self: Collection, collection: Collection) => boolean
+    contains_all: (self: Collection, collection: Collection) => boolean
+    remove_all: (self: Collection, collection: Collection) => boolean
+    retain_all: (self: Collection, collection: Collection) => boolean
+    to_array: () => [ /* returnType */ object[], /* result_length1 */ number ]
+    add_all_array: (self: Collection, array: object[]) => boolean
+    contains_all_array: (self: Collection, array: object[]) => boolean
+    remove_all_array: (self: Collection, array: object[]) => boolean
+    add_all_iterator: (self: Collection, iter: Iterator) => boolean
+    contains_all_iterator: (self: Collection, iter: Iterator) => boolean
+    remove_all_iterator: (self: Collection, iter: Iterator) => boolean
+    get_size: (self: Collection) => number
+    get_is_empty: (self: Collection) => boolean
+    get_read_only: (self: Collection) => boolean
+    get_read_only_view: (self: Collection) => Collection
     static name: string
 }
 abstract class ComparableIface {
     /* Fields of Gee-0.8.Gee.ComparableIface */
-    readonly compare_to: (self: Comparable, object?: object | null) => number
+    compare_to: (self: Comparable, object?: object | null) => number
     static name: string
 }
 abstract class DequeIface {
     /* Fields of Gee-0.8.Gee.DequeIface */
-    readonly offer_head: (self: Deque, element?: object | null) => boolean
-    readonly peek_head: (self: Deque) => object | null
-    readonly poll_head: (self: Deque) => object | null
-    readonly drain_head: (self: Deque, recipient: Collection, amount: number) => number
-    readonly offer_tail: (self: Deque, element?: object | null) => boolean
-    readonly peek_tail: (self: Deque) => object | null
-    readonly poll_tail: (self: Deque) => object | null
-    readonly drain_tail: (self: Deque, recipient: Collection, amount: number) => number
+    offer_head: (self: Deque, element?: object | null) => boolean
+    peek_head: (self: Deque) => object | null
+    poll_head: (self: Deque) => object | null
+    drain_head: (self: Deque, recipient: Collection, amount: number) => number
+    offer_tail: (self: Deque, element?: object | null) => boolean
+    peek_tail: (self: Deque) => object | null
+    poll_tail: (self: Deque) => object | null
+    drain_tail: (self: Deque, recipient: Collection, amount: number) => number
     static name: string
 }
 abstract class FutureIface {
     /* Fields of Gee-0.8.Gee.FutureIface */
-    readonly wait: (self: Future) => object | null
-    readonly wait_until: (self: Future, end_time: number) => [ /* returnType */ boolean, /* value */ object | null ]
-    readonly wait_async: (self: Future, _callback_?: Gio.AsyncReadyCallback | null) => void
-    readonly wait_finish: (self: Future, _res_: Gio.AsyncResult) => object | null
-    readonly map: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
-    readonly light_map: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
-    readonly light_map_broken: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
-    readonly zip: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, b_type: GObject.Type, b_dup_func: GObject.BoxedCopyFunc, b_destroy_func: GLib.DestroyNotify, zip_func: any, second: Future) => Future
-    readonly flat_map: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
-    readonly get_value: (self: Future) => object | null
-    readonly get_ready: (self: Future) => boolean
-    readonly get_exception: (self: Future) => GLib.Error | null
+    wait: (self: Future) => object | null
+    wait_until: (self: Future, end_time: number) => [ /* returnType */ boolean, /* value */ object | null ]
+    wait_async: (self: Future, _callback_?: Gio.AsyncReadyCallback | null) => void
+    wait_finish: (self: Future, _res_: Gio.AsyncResult) => object | null
+    map: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
+    light_map: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
+    light_map_broken: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
+    zip: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, b_type: GObject.Type, b_dup_func: GObject.BoxedCopyFunc, b_destroy_func: GLib.DestroyNotify, zip_func: any, second: Future) => Future
+    flat_map: (self: Future, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
+    get_value: (self: Future) => object | null
+    get_ready: (self: Future) => boolean
+    get_exception: (self: Future) => GLib.Error | null
     static name: string
 }
 abstract class HashableIface {
     /* Fields of Gee-0.8.Gee.HashableIface */
-    readonly hash: (self: Hashable) => number
-    readonly equal_to: (self: Hashable, object?: object | null) => boolean
+    hash: (self: Hashable) => number
+    equal_to: (self: Hashable, object?: object | null) => boolean
     static name: string
 }
 abstract class IterableIface {
     /* Fields of Gee-0.8.Gee.IterableIface */
-    readonly iterator: (self: Iterable) => Iterator
+    iterator: (self: Iterable) => Iterator
     static name: string
 }
 abstract class IteratorIface {
     /* Fields of Gee-0.8.Gee.IteratorIface */
-    readonly next: (self: Iterator) => boolean
-    readonly has_next: (self: Iterator) => boolean
-    readonly get: (self: Iterator) => object | null
-    readonly remove: (self: Iterator) => void
-    readonly get_valid: (self: Iterator) => boolean
-    readonly get_read_only: (self: Iterator) => boolean
+    next: (self: Iterator) => boolean
+    has_next: (self: Iterator) => boolean
+    get: (self: Iterator) => object | null
+    remove: (self: Iterator) => void
+    get_valid: (self: Iterator) => boolean
+    get_read_only: (self: Iterator) => boolean
     static name: string
 }
 abstract class ListIface {
     /* Fields of Gee-0.8.Gee.ListIface */
-    readonly list_iterator: (self: List) => ListIterator
-    readonly get: (self: List, index: number) => object | null
-    readonly set: (self: List, index: number, item?: object | null) => void
-    readonly index_of: (self: List, item?: object | null) => number
-    readonly insert: (self: List, index: number, item?: object | null) => void
-    readonly remove_at: (self: List, index: number) => object | null
-    readonly slice: (self: List, start: number, stop: number) => List | null
-    readonly first: (self: List) => object | null
-    readonly last: (self: List) => object | null
-    readonly insert_all: (self: List, index: number, collection: Collection) => void
-    readonly sort: (self: List, compare_func: GLib.CompareDataFunc | null) => void
-    readonly get_read_only_view: (self: List) => List
+    list_iterator: (self: List) => ListIterator
+    get: (self: List, index: number) => object | null
+    set: (self: List, index: number, item?: object | null) => void
+    index_of: (self: List, item?: object | null) => number
+    insert: (self: List, index: number, item?: object | null) => void
+    remove_at: (self: List, index: number) => object | null
+    slice: (self: List, start: number, stop: number) => List | null
+    first: (self: List) => object | null
+    last: (self: List) => object | null
+    insert_all: (self: List, index: number, collection: Collection) => void
+    sort: (self: List, compare_func: GLib.CompareDataFunc | null) => void
+    get_read_only_view: (self: List) => List
     static name: string
 }
 abstract class ListIteratorIface {
     /* Fields of Gee-0.8.Gee.ListIteratorIface */
-    readonly set: (self: ListIterator, item?: object | null) => void
-    readonly add: (self: ListIterator, item?: object | null) => void
-    readonly index: (self: ListIterator) => number
+    set: (self: ListIterator, item?: object | null) => void
+    add: (self: ListIterator, item?: object | null) => void
+    index: (self: ListIterator) => number
     static name: string
 }
 abstract class MapIface {
     /* Fields of Gee-0.8.Gee.MapIface */
-    readonly has_key: (self: Map, key?: object | null) => boolean
-    readonly has: (self: Map, key?: object | null, value?: object | null) => boolean
-    readonly get: (self: Map, key?: object | null) => object | null
-    readonly set: (self: Map, key?: object | null, value?: object | null) => void
-    readonly unset: (self: Map, key?: object | null) => [ /* returnType */ boolean, /* value */ object | null ]
-    readonly clear: (self: Map) => void
-    readonly map_iterator: (self: Map) => MapIterator
-    readonly set_all: (self: Map, map: Map) => void
-    readonly unset_all: (self: Map, map: Map) => boolean
-    readonly has_all: (self: Map, map: Map) => boolean
-    readonly get_size: (self: Map) => number
-    readonly get_is_empty: (self: Map) => boolean
-    readonly get_read_only: (self: Map) => boolean
-    readonly get_keys: (self: Map) => Set
-    readonly get_values: (self: Map) => Collection
-    readonly get_entries: (self: Map) => Set
-    readonly get_read_only_view: (self: Map) => Map
+    has_key: (self: Map, key?: object | null) => boolean
+    has: (self: Map, key?: object | null, value?: object | null) => boolean
+    get: (self: Map, key?: object | null) => object | null
+    set: (self: Map, key?: object | null, value?: object | null) => void
+    unset: (self: Map, key?: object | null) => [ /* returnType */ boolean, /* value */ object | null ]
+    clear: (self: Map) => void
+    map_iterator: (self: Map) => MapIterator
+    set_all: (self: Map, map: Map) => void
+    unset_all: (self: Map, map: Map) => boolean
+    has_all: (self: Map, map: Map) => boolean
+    get_size: (self: Map) => number
+    get_is_empty: (self: Map) => boolean
+    get_read_only: (self: Map) => boolean
+    get_keys: (self: Map) => Set
+    get_values: (self: Map) => Collection
+    get_entries: (self: Map) => Set
+    get_read_only_view: (self: Map) => Map
     static name: string
 }
 abstract class MapEntryClass {
@@ -27108,101 +28860,101 @@ class MapEntryPrivate {
 }
 abstract class MapIteratorIface {
     /* Fields of Gee-0.8.Gee.MapIteratorIface */
-    readonly next: (self: MapIterator) => boolean
-    readonly has_next: (self: MapIterator) => boolean
-    readonly get_key: (self: MapIterator) => object | null
-    readonly get_value: (self: MapIterator) => object | null
-    readonly set_value: (self: MapIterator, value?: object | null) => void
-    readonly unset: (self: MapIterator) => void
-    readonly fold: (self: MapIterator, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldMapFunc, seed?: object | null) => object | null
-    readonly foreach: (self: MapIterator, f: ForallMapFunc) => boolean
-    readonly get_valid: (self: MapIterator) => boolean
-    readonly get_mutable: (self: MapIterator) => boolean
-    readonly get_read_only: (self: MapIterator) => boolean
+    next: (self: MapIterator) => boolean
+    has_next: (self: MapIterator) => boolean
+    get_key: (self: MapIterator) => object | null
+    get_value: (self: MapIterator) => object | null
+    set_value: (self: MapIterator, value?: object | null) => void
+    unset: (self: MapIterator) => void
+    fold: (self: MapIterator, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldMapFunc, seed?: object | null) => object | null
+    foreach: (self: MapIterator, f: ForallMapFunc) => boolean
+    get_valid: (self: MapIterator) => boolean
+    get_mutable: (self: MapIterator) => boolean
+    get_read_only: (self: MapIterator) => boolean
     static name: string
 }
 abstract class MultiMapIface {
     /* Fields of Gee-0.8.Gee.MultiMapIface */
-    readonly get_keys: (self: MultiMap) => Set
-    readonly get_all_keys: (self: MultiMap) => MultiSet
-    readonly get_values: (self: MultiMap) => Collection
-    readonly contains: (self: MultiMap, key?: object | null) => boolean
-    readonly get: (self: MultiMap, key?: object | null) => Collection
-    readonly set: (self: MultiMap, key?: object | null, value?: object | null) => void
-    readonly remove: (self: MultiMap, key?: object | null, value?: object | null) => boolean
-    readonly remove_all: (self: MultiMap, key?: object | null) => boolean
-    readonly clear: (self: MultiMap) => void
-    readonly map_iterator: (self: MultiMap) => MapIterator
-    readonly get_size: (self: MultiMap) => number
-    readonly get_read_only: (self: MultiMap) => boolean
-    readonly get_read_only_view: (self: MultiMap) => MultiMap
+    get_keys: (self: MultiMap) => Set
+    get_all_keys: (self: MultiMap) => MultiSet
+    get_values: (self: MultiMap) => Collection
+    contains: (self: MultiMap, key?: object | null) => boolean
+    get: (self: MultiMap, key?: object | null) => Collection
+    set: (self: MultiMap, key?: object | null, value?: object | null) => void
+    remove: (self: MultiMap, key?: object | null, value?: object | null) => boolean
+    remove_all: (self: MultiMap, key?: object | null) => boolean
+    clear: (self: MultiMap) => void
+    map_iterator: (self: MultiMap) => MapIterator
+    get_size: (self: MultiMap) => number
+    get_read_only: (self: MultiMap) => boolean
+    get_read_only_view: (self: MultiMap) => MultiMap
     static name: string
 }
 abstract class MultiSetIface {
     /* Fields of Gee-0.8.Gee.MultiSetIface */
-    readonly count: (self: MultiSet, item?: object | null) => number
-    readonly get_read_only_view: (self: MultiSet) => MultiSet
+    count: (self: MultiSet, item?: object | null) => number
+    get_read_only_view: (self: MultiSet) => MultiSet
     static name: string
 }
 abstract class QueueIface {
     /* Fields of Gee-0.8.Gee.QueueIface */
-    readonly offer: (self: Queue, element?: object | null) => boolean
-    readonly peek: (self: Queue) => object | null
-    readonly poll: (self: Queue) => object | null
-    readonly drain: (self: Queue, recipient: Collection, amount: number) => number
-    readonly get_capacity: (self: Queue) => number
-    readonly get_remaining_capacity: (self: Queue) => number
-    readonly get_is_full: (self: Queue) => boolean
+    offer: (self: Queue, element?: object | null) => boolean
+    peek: (self: Queue) => object | null
+    poll: (self: Queue) => object | null
+    drain: (self: Queue, recipient: Collection, amount: number) => number
+    get_capacity: (self: Queue) => number
+    get_remaining_capacity: (self: Queue) => number
+    get_is_full: (self: Queue) => boolean
     static name: string
 }
 abstract class SetIface {
     /* Fields of Gee-0.8.Gee.SetIface */
-    readonly get_read_only_view: (self: Set) => Set
+    get_read_only_view: (self: Set) => Set
     static name: string
 }
 abstract class SortedMapIface {
     /* Fields of Gee-0.8.Gee.SortedMapIface */
-    readonly head_map: (self: SortedMap, before?: object | null) => SortedMap
-    readonly tail_map: (self: SortedMap, after?: object | null) => SortedMap
-    readonly sub_map: (self: SortedMap, before?: object | null, after?: object | null) => SortedMap
-    readonly get_ascending_keys: (self: SortedMap) => SortedSet
-    readonly get_ascending_entries: (self: SortedMap) => SortedSet
-    readonly get_read_only_view: (self: SortedMap) => SortedMap
+    head_map: (self: SortedMap, before?: object | null) => SortedMap
+    tail_map: (self: SortedMap, after?: object | null) => SortedMap
+    sub_map: (self: SortedMap, before?: object | null, after?: object | null) => SortedMap
+    get_ascending_keys: (self: SortedMap) => SortedSet
+    get_ascending_entries: (self: SortedMap) => SortedSet
+    get_read_only_view: (self: SortedMap) => SortedMap
     static name: string
 }
 abstract class SortedSetIface {
     /* Fields of Gee-0.8.Gee.SortedSetIface */
-    readonly first: (self: SortedSet) => object | null
-    readonly last: (self: SortedSet) => object | null
-    readonly iterator_at: (self: SortedSet, element?: object | null) => Iterator | null
-    readonly lower: (self: SortedSet, element?: object | null) => object | null
-    readonly higher: (self: SortedSet, element?: object | null) => object | null
-    readonly floor: (self: SortedSet, element?: object | null) => object | null
-    readonly ceil: (self: SortedSet, element?: object | null) => object | null
-    readonly head_set: (self: SortedSet, before?: object | null) => SortedSet
-    readonly tail_set: (self: SortedSet, after?: object | null) => SortedSet
-    readonly sub_set: (self: SortedSet, from?: object | null, to?: object | null) => SortedSet
-    readonly get_read_only_view: (self: SortedSet) => SortedSet
+    first: (self: SortedSet) => object | null
+    last: (self: SortedSet) => object | null
+    iterator_at: (self: SortedSet, element?: object | null) => Iterator | null
+    lower: (self: SortedSet, element?: object | null) => object | null
+    higher: (self: SortedSet, element?: object | null) => object | null
+    floor: (self: SortedSet, element?: object | null) => object | null
+    ceil: (self: SortedSet, element?: object | null) => object | null
+    head_set: (self: SortedSet, before?: object | null) => SortedSet
+    tail_set: (self: SortedSet, after?: object | null) => SortedSet
+    sub_set: (self: SortedSet, from?: object | null, to?: object | null) => SortedSet
+    get_read_only_view: (self: SortedSet) => SortedSet
     static name: string
 }
 abstract class TraversableIface {
     /* Fields of Gee-0.8.Gee.TraversableIface */
-    readonly foreach: (self: Traversable, f: ForallFunc) => boolean
-    readonly stream: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: StreamFunc) => Iterator
-    readonly fold: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed?: object | null) => object | null
-    readonly map: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: MapFunc) => Iterator
-    readonly scan: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed?: object | null) => Iterator
-    readonly filter: (self: Traversable, pred: Predicate) => Iterator
-    readonly chop: (self: Traversable, offset: number, length: number) => Iterator
-    readonly flat_map: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FlatMapFunc) => Iterator
-    readonly tee: (self: Traversable) => [ /* returnType */ Iterator[], /* result_length1 */ number ]
-    readonly first_match: (self: Traversable, pred: Predicate) => object | null
-    readonly any_match: (self: Traversable, pred: Predicate) => boolean
-    readonly all_match: (self: Traversable, pred: Predicate) => boolean
-    readonly max: (self: Traversable, compare: GLib.CompareDataFunc) => object | null
-    readonly min: (self: Traversable, compare: GLib.CompareDataFunc) => object | null
-    readonly order_by: (self: Traversable, compare: GLib.CompareDataFunc | null) => Iterator
-    readonly get_element_type: (self: Traversable) => GObject.Type
+    foreach: (self: Traversable, f: ForallFunc) => boolean
+    stream: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: StreamFunc) => Iterator
+    fold: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed?: object | null) => object | null
+    map: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: MapFunc) => Iterator
+    scan: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed?: object | null) => Iterator
+    filter: (self: Traversable, pred: Predicate) => Iterator
+    chop: (self: Traversable, offset: number, length: number) => Iterator
+    flat_map: (self: Traversable, a_type: GObject.Type, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FlatMapFunc) => Iterator
+    tee: (self: Traversable) => [ /* returnType */ Iterator[], /* result_length1 */ number ]
+    first_match: (self: Traversable, pred: Predicate) => object | null
+    any_match: (self: Traversable, pred: Predicate) => boolean
+    all_match: (self: Traversable, pred: Predicate) => boolean
+    max: (self: Traversable, compare: GLib.CompareDataFunc) => object | null
+    min: (self: Traversable, compare: GLib.CompareDataFunc) => object | null
+    order_by: (self: Traversable, compare: GLib.CompareDataFunc | null) => Iterator
+    get_element_type: (self: Traversable) => GObject.Type
     static name: string
 }
 }

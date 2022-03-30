@@ -177,34 +177,34 @@ interface ColorBalance_ConstructProps extends Gst.Element_ConstructProps {
 }
 class ColorBalance {
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstInterfaces-0.10.GstInterfaces.ColorBalance */
     /**
      * Get the #GstColorBalanceType of this implementation.
@@ -215,6 +215,7 @@ class ColorBalance {
      * and max_value.
      * #GstColorBalanceChannel::max_value members of the
      * #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
      */
     getValue(channel: ColorBalanceChannel): number
     /**
@@ -228,6 +229,8 @@ class ColorBalance {
      * be between min_value and max_value.
      * #GstColorBalanceChannel::max_value members of the
      * #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
+     * @param value The new value for the channel.
      */
     setValue(channel: ColorBalanceChannel, value: number): void
     /**
@@ -235,6 +238,8 @@ class ColorBalance {
      * interface. It fires the #GstColorBalance::value-changed signal on the
      * instance, and the #GstColorBalanceChannel::value-changed signal on the
      * channel object.
+     * @param channel A #GstColorBalanceChannel whose value has changed
+     * @param value The new value of the channel
      */
     valueChanged(channel: ColorBalanceChannel, value: number): void
     /* Methods of Gst-0.10.Gst.Element */
@@ -345,6 +350,10 @@ class ColorBalance {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -355,6 +364,12 @@ class ColorBalance {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -378,6 +393,7 @@ class ColorBalance {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -397,11 +413,14 @@ class ColorBalance {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -409,6 +428,8 @@ class ColorBalance {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -426,6 +447,7 @@ class ColorBalance {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -471,6 +493,7 @@ class ColorBalance {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -514,15 +537,20 @@ class ColorBalance {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -563,6 +591,7 @@ class ColorBalance {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -597,11 +626,14 @@ class ColorBalance {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstInterfaces-0.10.GstInterfaces.ColorBalance */
     /**
      * Fired when the value of the indicated channel has changed.
+     * @param object The #GstColorBalanceChannel
+     * @param p0 The new value
      */
     connect(sigName: "value-changed", callback: ((object: ColorBalanceChannel, p0: number) => void)): number
     on(sigName: "value-changed", callback: (object: ColorBalanceChannel, p0: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -674,6 +706,7 @@ class ColorBalance {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -696,34 +729,34 @@ interface Mixer_ConstructProps extends Gst.Element_ConstructProps {
 }
 class Mixer {
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstInterfaces-0.10.GstInterfaces.Mixer */
     /**
      * Get the set of supported flags for this mixer implementation.
@@ -735,10 +768,13 @@ class Mixer {
     getMixerType(): MixerType
     /**
      * Get the current value of a name/value option in the mixer.
+     * @param opts The #GstMixerOptions that we operate on.
      */
     getOption(opts: MixerOptions): string
     /**
      * Get the current volume(s) on the given track.
+     * @param track the GstMixerTrack to get the volume from.
+     * @param volumes a pre-allocated array of integers (of size track->num_channels) to store the current volume of each channel in the given track in.
      */
     getVolume(track: MixerTrack, volumes: number): void
     /**
@@ -765,6 +801,8 @@ class Mixer {
      * has changed mute state.
      * This function only works for GstElements that are implementing the
      * GstMixer interface, and the element needs to have been provided a bus.
+     * @param track the GstMixerTrack that has change mute state.
+     * @param mute the new state of the mute flag on the track
      */
     muteToggled(track: MixerTrack, mute: boolean): void
     /**
@@ -773,6 +811,8 @@ class Mixer {
      * object has changed state. 
      * This function only works for GstElements that are implementing the
      * GstMixer interface, and the element needs to have been provided a bus.
+     * @param opts the GstMixerOptions that has changed value.
+     * @param value the new value of the GstMixerOptions.
      */
     optionChanged(opts: MixerOptions, value: string): void
     /**
@@ -785,6 +825,7 @@ class Mixer {
      * This function only works for GstElements that are implementing the
      * GstMixer interface, and the element needs to have been provided a bus
      * for this to work.
+     * @param opts the GstMixerOptions whose list of values has changed
      */
     optionsListChanged(opts: MixerOptions): void
     /**
@@ -793,15 +834,21 @@ class Mixer {
      * has changed recording state.
      * This function only works for GstElements that are implementing the
      * GstMixer interface, and the element needs to have been provided a bus.
+     * @param track the GstMixerTrack that has changed recording state.
+     * @param record the new state of the record flag on the track
      */
     recordToggled(track: MixerTrack, record: boolean): void
     /**
      * Mutes or unmutes the given channel. To find out whether a
      * track is currently muted, use GST_MIXER_TRACK_HAS_FLAG ().
+     * @param track the #GstMixerTrack to operate on.
+     * @param mute a boolean value indicating whether to turn on or off muting.
      */
     setMute(track: MixerTrack, mute: boolean): void
     /**
      * Sets a name/value option in the mixer to the requested value.
+     * @param opts The #GstMixerOptions that we operate on.
+     * @param value The requested new option value.
      */
     setOption(opts: MixerOptions, value: string): void
     /**
@@ -809,6 +856,8 @@ class Mixer {
      * this is only possible on input tracks, not on output tracks
      * (see GST_MIXER_TRACK_HAS_FLAG () and the GST_MIXER_TRACK_INPUT
      * flag).
+     * @param track the #GstMixerTrack to operate on.
+     * @param record a boolean value that indicates whether to turn on or off recording.
      */
     setRecord(track: MixerTrack, record: boolean): void
     /**
@@ -816,6 +865,8 @@ class Mixer {
      * the mixer/element, such as 'Line-in' or 'Microphone'. A
      * channel is said to be a mono-stream inside this track. A
      * stereo track thus contains two channels.
+     * @param track The #GstMixerTrack to set the volume on.
+     * @param volumes an array of integers (of size track->num_channels) that gives the wanted volume for each channel in this track.
      */
     setVolume(track: MixerTrack, volumes: number): void
     /**
@@ -824,6 +875,8 @@ class Mixer {
      * given track have changed.
      * This function only works for GstElements that are implementing the
      * GstMixer interface, and the element needs to have been provided a bus.
+     * @param track the GstMixerTrack that has changed.
+     * @param volumes Array of volume values, one per channel on the mixer track.
      */
     volumeChanged(track: MixerTrack, volumes: number): void
     /* Methods of Gst-0.10.Gst.Element */
@@ -934,6 +987,10 @@ class Mixer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -944,6 +1001,12 @@ class Mixer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -967,6 +1030,7 @@ class Mixer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -986,11 +1050,14 @@ class Mixer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -998,6 +1065,8 @@ class Mixer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1015,6 +1084,7 @@ class Mixer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1060,6 +1130,7 @@ class Mixer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1103,15 +1174,20 @@ class Mixer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1152,6 +1228,7 @@ class Mixer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1186,6 +1263,7 @@ class Mixer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstInterfaces-0.10.GstInterfaces.Mixer */
@@ -1275,6 +1353,7 @@ class Mixer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1297,6 +1376,7 @@ class Navigation {
     /* Methods of GstInterfaces-0.10.GstInterfaces.Navigation */
     /**
      * Sends the indicated command to the navigation interface.
+     * @param command The command to issue
      */
     sendCommand(command: NavigationCommand): void
     sendEvent(structure: Gst.Structure): void
@@ -1306,6 +1386,10 @@ class Navigation {
      * are sent relative to the display space of the related output area. This is
      * usually the size in pixels of the window associated with the element
      * implementing the #GstNavigation interface.
+     * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
+     * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
      */
     sendMouseEvent(event: string, button: number, x: number, y: number): void
     static name: string
@@ -1319,15 +1403,18 @@ class PropertyProbe {
     getProperties(): object[]
     /**
      * Get #GParamSpec for a property for which probing is supported.
+     * @param name name of the property.
      */
     getProperty(name: string): GObject.ParamSpec
     /**
      * Gets the possible (probed) values for the given property,
      * requires the property to have been probed before.
+     * @param pspec the #GParamSpec property identifier.
      */
     getValues(pspec: GObject.ParamSpec): GObject.ValueArray
     /**
      * Same as gst_property_probe_get_values ().
+     * @param name the name of the property to get values for.
      */
     getValuesName(name: string): GObject.ValueArray
     /**
@@ -1336,28 +1423,34 @@ class PropertyProbe {
      * changed. This might be, for example, because a new device was
      * added, and thus device probing needs to be refreshed to display
      * the new device.
+     * @param pspec a #GParamSpec that identifies the property to check.
      */
     needsProbe(pspec: GObject.ParamSpec): boolean
     /**
      * Same as gst_property_probe_needs_probe ().
+     * @param name the name of the property to check.
      */
     needsProbeName(name: string): boolean
     /**
      * Check whether the given property requires a new probe. If so,
      * fo the probe. After that, retrieve a value list. Meant as a
      * utility function that wraps the above functions.
+     * @param pspec The #GParamSpec property identifier.
      */
     probeAndGetValues(pspec: GObject.ParamSpec): GObject.ValueArray
     /**
      * Same as gst_property_probe_probe_and_get_values ().
+     * @param name the name of the property to get values for.
      */
     probeAndGetValuesName(name: string): GObject.ValueArray
     /**
      * Runs a probe on the property specified by `pspec`
+     * @param pspec #GParamSpec of the property.
      */
     probeProperty(pspec: GObject.ParamSpec): void
     /**
      * Runs a probe on the property specified by `name`.
+     * @param name name of the property.
      */
     probePropertyName(name: string): void
     /* Signals of GstInterfaces-0.10.GstInterfaces.PropertyProbe */
@@ -1383,38 +1476,39 @@ interface Tuner_ConstructProps extends Gst.Element_ConstructProps {
 }
 class Tuner {
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstInterfaces-0.10.GstInterfaces.Tuner */
     /**
      * Called by elements implementing the #GstTuner interface when the
      * current channel changes. Fires the #GstTuner::channel-changed signal.
+     * @param channel A #GstTunerChannel instance
      */
     channelChanged(channel: TunerChannel): void
     /**
@@ -1422,12 +1516,15 @@ class Tuner {
      * configured frequency changes. Fires the #GstTuner::frequency-changed
      * signal on the tuner, and the #GstTunerChannel::frequency-changed signal
      * on the channel.
+     * @param channel The current #GstTunerChannel
+     * @param frequency The new frequency setting
      */
     frequencyChanged(channel: TunerChannel, frequency: number): void
     /**
      * Retrieve the current frequency from the given channel. As for
      * gst_tuner_set_frequency(), the #GstTunerChannel must support frequency
      * operations, as indicated by the GST_TUNER_CHANNEL_FREQUENCY flag.
+     * @param channel The #GstTunerChannel to retrieve the frequency from.
      */
     getFrequency(channel: TunerChannel): number
     /**
@@ -1446,11 +1543,13 @@ class Tuner {
     /**
      * Called by elements implementing the #GstTuner interface when the
      * current norm changes. Fires the #GstTuner::norm-changed signal.
+     * @param norm A #GstTunerNorm instance
      */
     normChanged(norm: TunerNorm): void
     /**
      * Tunes the object to the given channel, which should be one of the
      * channels returned by gst_tuner_list_channels().
+     * @param channel the channel to tune to.
      */
     setChannel(channel: TunerChannel): void
     /**
@@ -1462,11 +1561,14 @@ class Tuner {
      * frequency_multiplicator provided in the #GstTunerChannel. The
      * valid range is provided in the min_frequency and max_frequency properties
      * of the #GstTunerChannel.
+     * @param channel The #GstTunerChannel to set the frequency on.
+     * @param frequency The frequency to tune in to.
      */
     setFrequency(channel: TunerChannel, frequency: number): void
     /**
      * Changes the video norm on this tuner to the given norm, which should be
      * one of the norms returned by gst_tuner_list_norms().
+     * @param norm the norm to use for the current channel.
      */
     setNorm(norm: TunerNorm): void
     /**
@@ -1474,6 +1576,8 @@ class Tuner {
      * incoming signal strength changes. Fires the #GstTuner::signal-changed
      * signal on the tuner and the #GstTunerChannel::signal-changed signal on 
      * the channel.
+     * @param channel The current #GstTunerChannel
+     * @param signal The new signal strength
      */
     signalChanged(channel: TunerChannel, signal: number): void
     /**
@@ -1484,6 +1588,7 @@ class Tuner {
      * for is GST_TUNER_CHANNEL_FREQUENCY.
      * The valid range of the signal strength is indicated in the 
      * min_signal and max_signal properties of the #GstTunerChannel.
+     * @param channel the #GstTunerChannel to get the signal strength from.
      */
     signalStrength(channel: TunerChannel): number
     /* Methods of Gst-0.10.Gst.Element */
@@ -1594,6 +1699,10 @@ class Tuner {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1604,6 +1713,12 @@ class Tuner {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1627,6 +1742,7 @@ class Tuner {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1646,11 +1762,14 @@ class Tuner {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1658,6 +1777,8 @@ class Tuner {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1675,6 +1796,7 @@ class Tuner {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1720,6 +1842,7 @@ class Tuner {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1763,15 +1886,20 @@ class Tuner {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1812,6 +1940,7 @@ class Tuner {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1846,11 +1975,13 @@ class Tuner {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstInterfaces-0.10.GstInterfaces.Tuner */
     /**
      * Reports that the current #GstTunerChannel has changed.
+     * @param object The new configured channel.
      */
     connect(sigName: "channel-changed", callback: ((object: TunerChannel) => void)): number
     on(sigName: "channel-changed", callback: (object: TunerChannel) => void, after?: boolean): NodeJS.EventEmitter
@@ -1859,6 +1990,8 @@ class Tuner {
     emit(sigName: "channel-changed", object: TunerChannel): void
     /**
      * Reports that the current frequency has changed.
+     * @param object 
+     * @param p0 
      */
     connect(sigName: "frequency-changed", callback: ((object: TunerChannel, p0: number) => void)): number
     on(sigName: "frequency-changed", callback: (object: TunerChannel, p0: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1867,6 +2000,7 @@ class Tuner {
     emit(sigName: "frequency-changed", object: TunerChannel, p0: number): void
     /**
      * Reports that the current #GstTunerNorm has changed.
+     * @param object The new configured norm.
      */
     connect(sigName: "norm-changed", callback: ((object: TunerNorm) => void)): number
     on(sigName: "norm-changed", callback: (object: TunerNorm) => void, after?: boolean): NodeJS.EventEmitter
@@ -1875,6 +2009,8 @@ class Tuner {
     emit(sigName: "norm-changed", object: TunerNorm): void
     /**
      * Reports that the signal strength has changed.
+     * @param object The current #GstTunerChannel
+     * @param p0 The new signal strength (an integer)
      */
     connect(sigName: "signal-changed", callback: ((object: TunerChannel, p0: number) => void)): number
     on(sigName: "signal-changed", callback: (object: TunerChannel, p0: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1947,6 +2083,7 @@ class Tuner {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1969,65 +2106,73 @@ interface VideoOrientation_ConstructProps extends Gst.Element_ConstructProps {
 }
 class VideoOrientation {
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstInterfaces-0.10.GstInterfaces.VideoOrientation */
     /**
      * Get the horizontal centering offset from the given object.
+     * @param center return location for the result
      */
     getHcenter(center: number): boolean
     /**
      * Get the horizontal flipping state (%TRUE for flipped) from the given object.
+     * @param flip return location for the result
      */
     getHflip(flip: boolean): boolean
     /**
      * Get the vertical centering offset from the given object.
+     * @param center return location for the result
      */
     getVcenter(center: number): boolean
     /**
      * Get the vertical flipping state (%TRUE for flipped) from the given object.
+     * @param flip return location for the result
      */
     getVflip(flip: boolean): boolean
     /**
      * Set the horizontal centering offset for the given object.
+     * @param center centering offset
      */
     setHcenter(center: number): boolean
     /**
      * Set the horizontal flipping state (%TRUE for flipped) for the given object.
+     * @param flip use flipping
      */
     setHflip(flip: boolean): boolean
     /**
      * Set the vertical centering offset for the given object.
+     * @param center centering offset
      */
     setVcenter(center: number): boolean
     /**
      * Set the vertical flipping state (%TRUE for flipped) for the given object.
+     * @param flip use flipping
      */
     setVflip(flip: boolean): boolean
     /* Methods of Gst-0.10.Gst.Element */
@@ -2138,6 +2283,10 @@ class VideoOrientation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2148,6 +2297,12 @@ class VideoOrientation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2171,6 +2326,7 @@ class VideoOrientation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2190,11 +2346,14 @@ class VideoOrientation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2202,6 +2361,8 @@ class VideoOrientation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2219,6 +2380,7 @@ class VideoOrientation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2264,6 +2426,7 @@ class VideoOrientation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2307,15 +2470,20 @@ class VideoOrientation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2356,6 +2524,7 @@ class VideoOrientation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2390,6 +2559,7 @@ class VideoOrientation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-0.10.Gst.Element */
@@ -2458,6 +2628,7 @@ class VideoOrientation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2480,34 +2651,34 @@ interface XOverlay_ConstructProps extends Gst.Element_ConstructProps {
 }
 class XOverlay {
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstInterfaces-0.10.GstInterfaces.XOverlay */
     /**
      * Tell an overlay that it has been exposed. This will redraw the current frame
@@ -2517,6 +2688,7 @@ class XOverlay {
     /**
      * This will post a "have-xwindow-id" element message on the bus.
      * This function should only be used by video overlay plugin developers.
+     * @param xwindowId a #XID referencing the XWindow.
      */
     gotXwindowId(xwindowId: number): void
     /**
@@ -2525,6 +2697,7 @@ class XOverlay {
      * events are not propagated in the window hierarchy if a client is listening
      * for them. This method allows you to disable events handling completely
      * from the XOverlay.
+     * @param handleEvents a #gboolean indicating if events should be handled or not.
      */
     handleEvents(handleEvents: boolean): void
     /**
@@ -2545,6 +2718,10 @@ class XOverlay {
      * the `width` and `height` parameters.
      * This method is needed for non fullscreen video overlay in UI toolkits that
      * do not support subwindows.
+     * @param x the horizontal offset of the render area inside the window
+     * @param y the vertical offset of the render area inside the window
+     * @param width the width of the render area inside the window
+     * @param height the height of the render area inside the window
      */
     setRenderRectangle(x: number, y: number, width: number, height: number): boolean
     /**
@@ -2552,6 +2729,7 @@ class XOverlay {
      * use this method to tell to a XOverlay to display video output to a
      * specific XWindow. Passing 0 as the xwindow_id will tell the overlay to
      * stop using that window and create an internal one.
+     * @param xwindowId a #XID referencing the XWindow.
      */
     setXwindowId(xwindowId: number): void
     /* Methods of Gst-0.10.Gst.Element */
@@ -2662,6 +2840,10 @@ class XOverlay {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2672,6 +2854,12 @@ class XOverlay {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2695,6 +2883,7 @@ class XOverlay {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2714,11 +2903,14 @@ class XOverlay {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2726,6 +2918,8 @@ class XOverlay {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2743,6 +2937,7 @@ class XOverlay {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2788,6 +2983,7 @@ class XOverlay {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2831,15 +3027,20 @@ class XOverlay {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2880,6 +3081,7 @@ class XOverlay {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2914,6 +3116,7 @@ class XOverlay {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-0.10.Gst.Element */
@@ -2982,6 +3185,7 @@ class XOverlay {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3004,7 +3208,7 @@ interface ColorBalanceChannel_ConstructProps extends GObject.Object_ConstructPro
 }
 class ColorBalanceChannel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3040,6 +3244,10 @@ class ColorBalanceChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3050,6 +3258,12 @@ class ColorBalanceChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3073,6 +3287,7 @@ class ColorBalanceChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3092,11 +3307,14 @@ class ColorBalanceChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3104,6 +3322,8 @@ class ColorBalanceChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3121,6 +3341,7 @@ class ColorBalanceChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3166,6 +3387,7 @@ class ColorBalanceChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3209,15 +3431,20 @@ class ColorBalanceChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3258,6 +3485,7 @@ class ColorBalanceChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3292,11 +3520,13 @@ class ColorBalanceChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstInterfaces-0.10.GstInterfaces.ColorBalanceChannel */
     /**
      * Fired when the value of the indicated channel has changed.
+     * @param object The new value
      */
     connect(sigName: "value-changed", callback: ((object: number) => void)): number
     on(sigName: "value-changed", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3332,6 +3562,7 @@ class ColorBalanceChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3353,15 +3584,18 @@ class ColorBalanceChannel {
 interface MixerOptions_ConstructProps extends MixerTrack_ConstructProps {
 }
 class MixerOptions {
+    /* Properties of GstInterfaces-0.10.GstInterfaces.MixerTrack */
+    readonly index: number
+    readonly untranslatedLabel: string
     /* Fields of GstInterfaces-0.10.GstInterfaces.MixerTrack */
-    readonly parent: GObject.Object
-    readonly label: string
-    readonly flags: MixerTrackFlags
-    readonly numChannels: number
-    readonly minVolume: number
-    readonly maxVolume: number
+    parent: GObject.Object
+    label: string
+    flags: MixerTrackFlags
+    numChannels: number
+    minVolume: number
+    maxVolume: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3397,6 +3631,10 @@ class MixerOptions {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3407,6 +3645,12 @@ class MixerOptions {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3430,6 +3674,7 @@ class MixerOptions {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3449,11 +3694,14 @@ class MixerOptions {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3461,6 +3709,8 @@ class MixerOptions {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3478,6 +3728,7 @@ class MixerOptions {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3523,6 +3774,7 @@ class MixerOptions {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3566,15 +3818,20 @@ class MixerOptions {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3615,6 +3872,7 @@ class MixerOptions {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3649,6 +3907,7 @@ class MixerOptions {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3680,12 +3939,23 @@ class MixerOptions {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::index", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::index", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::untranslated-label", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::untranslated-label", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::untranslated-label", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::untranslated-label", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::untranslated-label", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3706,12 +3976,14 @@ interface MixerTrack_ConstructProps extends GObject.Object_ConstructProps {
 class MixerTrack {
     /* Properties of GstInterfaces-0.10.GstInterfaces.MixerTrack */
     readonly flags: number
+    readonly index: number
     readonly label: string
     readonly maxVolume: number
     readonly minVolume: number
     readonly numChannels: number
+    readonly untranslatedLabel: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3747,6 +4019,10 @@ class MixerTrack {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3757,6 +4033,12 @@ class MixerTrack {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3780,6 +4062,7 @@ class MixerTrack {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3799,11 +4082,14 @@ class MixerTrack {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3811,6 +4097,8 @@ class MixerTrack {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3828,6 +4116,7 @@ class MixerTrack {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3873,6 +4162,7 @@ class MixerTrack {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3916,15 +4206,20 @@ class MixerTrack {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3965,6 +4260,7 @@ class MixerTrack {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3999,6 +4295,7 @@ class MixerTrack {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4030,6 +4327,7 @@ class MixerTrack {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4041,6 +4339,11 @@ class MixerTrack {
     on(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::index", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::index", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::index", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::label", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::label", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4061,6 +4364,11 @@ class MixerTrack {
     on(sigName: "notify::num-channels", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::num-channels", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::num-channels", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::untranslated-label", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::untranslated-label", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::untranslated-label", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::untranslated-label", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::untranslated-label", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4077,7 +4385,7 @@ interface TunerChannel_ConstructProps extends GObject.Object_ConstructProps {
 }
 class TunerChannel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4113,6 +4421,10 @@ class TunerChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4123,6 +4435,12 @@ class TunerChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4146,6 +4464,7 @@ class TunerChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4165,11 +4484,14 @@ class TunerChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4177,6 +4499,8 @@ class TunerChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4194,6 +4518,7 @@ class TunerChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4239,6 +4564,7 @@ class TunerChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4282,15 +4608,20 @@ class TunerChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4331,6 +4662,7 @@ class TunerChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4365,11 +4697,13 @@ class TunerChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstInterfaces-0.10.GstInterfaces.TunerChannel */
     /**
      * Reports that the current frequency has changed.
+     * @param object The new frequency (an unsigned long)
      */
     connect(sigName: "frequency-changed", callback: ((object: number) => void)): number
     on(sigName: "frequency-changed", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4378,6 +4712,7 @@ class TunerChannel {
     emit(sigName: "frequency-changed", object: number): void
     /**
      * Reports that the signal strength has changed.
+     * @param object The new signal strength (an integer)
      */
     connect(sigName: "signal-changed", callback: ((object: number) => void)): number
     on(sigName: "signal-changed", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4413,6 +4748,7 @@ class TunerChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4435,7 +4771,7 @@ interface TunerNorm_ConstructProps extends GObject.Object_ConstructProps {
 }
 class TunerNorm {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4471,6 +4807,10 @@ class TunerNorm {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4481,6 +4821,12 @@ class TunerNorm {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4504,6 +4850,7 @@ class TunerNorm {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4523,11 +4870,14 @@ class TunerNorm {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4535,6 +4885,8 @@ class TunerNorm {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4552,6 +4904,7 @@ class TunerNorm {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4597,6 +4950,7 @@ class TunerNorm {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4640,15 +4994,20 @@ class TunerNorm {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4689,6 +5048,7 @@ class TunerNorm {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4723,6 +5083,7 @@ class TunerNorm {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4754,6 +5115,7 @@ class TunerNorm {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4774,129 +5136,129 @@ class TunerNorm {
 }
 abstract class ColorBalanceChannelClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.ColorBalanceChannelClass */
-    readonly parent: GObject.ObjectClass
-    readonly valueChanged: (channel: ColorBalanceChannel, value: number) => void
-    readonly gstReserved: object[]
+    parent: GObject.ObjectClass
+    valueChanged: (channel: ColorBalanceChannel, value: number) => void
+    gstReserved: object[]
     static name: string
 }
 class ColorBalanceClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.ColorBalanceClass */
-    readonly klass: GObject.TypeInterface
-    readonly balanceType: ColorBalanceType
-    readonly listChannels: (balance: ColorBalance) => object[]
-    readonly setValue: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
-    readonly getValue: (balance: ColorBalance, channel: ColorBalanceChannel) => number
-    readonly valueChanged: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
-    readonly gstReserved: object[]
+    klass: GObject.TypeInterface
+    balanceType: ColorBalanceType
+    listChannels: (balance: ColorBalance) => object[]
+    setValue: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
+    getValue: (balance: ColorBalance, channel: ColorBalanceChannel) => number
+    valueChanged: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
+    gstReserved: object[]
     static name: string
 }
 class MixerClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.MixerClass */
-    readonly klass: GObject.TypeInterface
-    readonly mixerType: MixerType
-    readonly listTracks: (mixer: Mixer) => object[]
-    readonly setVolume: (mixer: Mixer, track: MixerTrack, volumes: number) => void
-    readonly getVolume: (mixer: Mixer, track: MixerTrack, volumes: number) => void
-    readonly setMute: (mixer: Mixer, track: MixerTrack, mute: boolean) => void
-    readonly setRecord: (mixer: Mixer, track: MixerTrack, record: boolean) => void
-    readonly muteToggled: (mixer: Mixer, channel: MixerTrack, mute: boolean) => void
-    readonly recordToggled: (mixer: Mixer, channel: MixerTrack, record: boolean) => void
-    readonly volumeChanged: (mixer: Mixer, channel: MixerTrack, volumes: number) => void
-    readonly setOption: (mixer: Mixer, opts: MixerOptions, value: string) => void
-    readonly getOption: (mixer: Mixer, opts: MixerOptions) => string
-    readonly optionChanged: (mixer: Mixer, opts: MixerOptions, option: string) => void
-    readonly getMixerFlags: (mixer: Mixer) => MixerFlags
-    readonly gstReserved: object[]
+    klass: GObject.TypeInterface
+    mixerType: MixerType
+    listTracks: (mixer: Mixer) => object[]
+    setVolume: (mixer: Mixer, track: MixerTrack, volumes: number) => void
+    getVolume: (mixer: Mixer, track: MixerTrack, volumes: number) => void
+    setMute: (mixer: Mixer, track: MixerTrack, mute: boolean) => void
+    setRecord: (mixer: Mixer, track: MixerTrack, record: boolean) => void
+    muteToggled: (mixer: Mixer, channel: MixerTrack, mute: boolean) => void
+    recordToggled: (mixer: Mixer, channel: MixerTrack, record: boolean) => void
+    volumeChanged: (mixer: Mixer, channel: MixerTrack, volumes: number) => void
+    setOption: (mixer: Mixer, opts: MixerOptions, value: string) => void
+    getOption: (mixer: Mixer, opts: MixerOptions) => string
+    optionChanged: (mixer: Mixer, opts: MixerOptions, option: string) => void
+    getMixerFlags: (mixer: Mixer) => MixerFlags
+    gstReserved: object[]
     static name: string
 }
 abstract class MixerOptionsClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.MixerOptionsClass */
-    readonly parent: MixerTrackClass
-    readonly gstReserved: object[]
+    parent: MixerTrackClass
+    gstReserved: object[]
     static name: string
 }
 abstract class MixerTrackClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.MixerTrackClass */
-    readonly parent: GObject.ObjectClass
-    readonly gstReserved: object[]
+    parent: GObject.ObjectClass
+    gstReserved: object[]
     static name: string
 }
 abstract class NavigationInterface {
     /* Fields of GstInterfaces-0.10.GstInterfaces.NavigationInterface */
-    readonly gIface: GObject.TypeInterface
-    readonly sendEvent: (navigation: Navigation, structure: Gst.Structure) => void
-    readonly gstReserved: object[]
+    gIface: GObject.TypeInterface
+    sendEvent: (navigation: Navigation, structure: Gst.Structure) => void
+    gstReserved: object[]
     static name: string
 }
 abstract class PropertyProbeInterface {
     /* Fields of GstInterfaces-0.10.GstInterfaces.PropertyProbeInterface */
-    readonly klass: GObject.TypeInterface
-    readonly probeNeeded: (probe: PropertyProbe, pspec: GObject.ParamSpec) => void
-    readonly getProperties: (probe: PropertyProbe) => object[]
-    readonly needsProbe: (probe: PropertyProbe, propId: number, pspec: GObject.ParamSpec) => boolean
-    readonly probeProperty: (probe: PropertyProbe, propId: number, pspec: GObject.ParamSpec) => void
-    readonly getValues: (probe: PropertyProbe, propId: number, pspec: GObject.ParamSpec) => GObject.ValueArray
-    readonly gstReserved: object[]
+    klass: GObject.TypeInterface
+    probeNeeded: (probe: PropertyProbe, pspec: GObject.ParamSpec) => void
+    getProperties: (probe: PropertyProbe) => object[]
+    needsProbe: (probe: PropertyProbe, propId: number, pspec: GObject.ParamSpec) => boolean
+    probeProperty: (probe: PropertyProbe, propId: number, pspec: GObject.ParamSpec) => void
+    getValues: (probe: PropertyProbe, propId: number, pspec: GObject.ParamSpec) => GObject.ValueArray
+    gstReserved: object[]
     static name: string
 }
 abstract class StreamVolumeInterface {
     /* Fields of GstInterfaces-0.10.GstInterfaces.StreamVolumeInterface */
-    readonly parent: GObject.TypeInterface
-    readonly gstReserved: object[]
+    parent: GObject.TypeInterface
+    gstReserved: object[]
     static name: string
 }
 abstract class TunerChannelClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.TunerChannelClass */
-    readonly parent: GObject.ObjectClass
-    readonly frequencyChanged: (channel: TunerChannel, frequency: number) => void
-    readonly signalChanged: (channel: TunerChannel, signal: number) => void
-    readonly gstReserved: object[]
+    parent: GObject.ObjectClass
+    frequencyChanged: (channel: TunerChannel, frequency: number) => void
+    signalChanged: (channel: TunerChannel, signal: number) => void
+    gstReserved: object[]
     static name: string
 }
 class TunerClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.TunerClass */
-    readonly klass: GObject.TypeInterface
-    readonly listChannels: (tuner: Tuner) => object[]
-    readonly setChannel: (tuner: Tuner, channel: TunerChannel) => void
-    readonly listNorms: (tuner: Tuner) => object[]
-    readonly setNorm: (tuner: Tuner, norm: TunerNorm) => void
-    readonly setFrequency: (tuner: Tuner, channel: TunerChannel, frequency: number) => void
-    readonly getFrequency: (tuner: Tuner, channel: TunerChannel) => number
-    readonly signalStrength: (tuner: Tuner, channel: TunerChannel) => number
-    readonly channelChanged: (tuner: Tuner, channel: TunerChannel) => void
-    readonly normChanged: (tuner: Tuner, norm: TunerNorm) => void
-    readonly frequencyChanged: (tuner: Tuner, channel: TunerChannel, frequency: number) => void
-    readonly signalChanged: (tuner: Tuner, channel: TunerChannel, signal: number) => void
-    readonly gstReserved: object[]
+    klass: GObject.TypeInterface
+    listChannels: (tuner: Tuner) => object[]
+    setChannel: (tuner: Tuner, channel: TunerChannel) => void
+    listNorms: (tuner: Tuner) => object[]
+    setNorm: (tuner: Tuner, norm: TunerNorm) => void
+    setFrequency: (tuner: Tuner, channel: TunerChannel, frequency: number) => void
+    getFrequency: (tuner: Tuner, channel: TunerChannel) => number
+    signalStrength: (tuner: Tuner, channel: TunerChannel) => number
+    channelChanged: (tuner: Tuner, channel: TunerChannel) => void
+    normChanged: (tuner: Tuner, norm: TunerNorm) => void
+    frequencyChanged: (tuner: Tuner, channel: TunerChannel, frequency: number) => void
+    signalChanged: (tuner: Tuner, channel: TunerChannel, signal: number) => void
+    gstReserved: object[]
     static name: string
 }
 abstract class TunerNormClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.TunerNormClass */
-    readonly parent: GObject.ObjectClass
-    readonly gstReserved: object[]
+    parent: GObject.ObjectClass
+    gstReserved: object[]
     static name: string
 }
 abstract class VideoOrientationInterface {
     /* Fields of GstInterfaces-0.10.GstInterfaces.VideoOrientationInterface */
-    readonly parent: GObject.TypeInterface
-    readonly getHflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
-    readonly getVflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
-    readonly getHcenter: (videoOrientation: VideoOrientation, center: number) => boolean
-    readonly getVcenter: (videoOrientation: VideoOrientation, center: number) => boolean
-    readonly setHflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
-    readonly setVflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
-    readonly setHcenter: (videoOrientation: VideoOrientation, center: number) => boolean
-    readonly setVcenter: (videoOrientation: VideoOrientation, center: number) => boolean
+    parent: GObject.TypeInterface
+    getHflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
+    getVflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
+    getHcenter: (videoOrientation: VideoOrientation, center: number) => boolean
+    getVcenter: (videoOrientation: VideoOrientation, center: number) => boolean
+    setHflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
+    setVflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
+    setHcenter: (videoOrientation: VideoOrientation, center: number) => boolean
+    setVcenter: (videoOrientation: VideoOrientation, center: number) => boolean
     static name: string
 }
 class XOverlayClass {
     /* Fields of GstInterfaces-0.10.GstInterfaces.XOverlayClass */
-    readonly klass: GObject.TypeInterface
-    readonly setXwindowId: (overlay: XOverlay, xwindowId: number) => void
-    readonly expose: (overlay: XOverlay) => void
-    readonly handleEvents: (overlay: XOverlay, handleEvents: boolean) => void
-    readonly setRenderRectangle: (overlay: XOverlay, x: number, y: number, width: number, height: number) => void
-    readonly gstReserved: object[]
+    klass: GObject.TypeInterface
+    setXwindowId: (overlay: XOverlay, xwindowId: number) => void
+    expose: (overlay: XOverlay) => void
+    handleEvents: (overlay: XOverlay, handleEvents: boolean) => void
+    setRenderRectangle: (overlay: XOverlay, x: number, y: number, width: number, height: number) => void
+    gstReserved: object[]
     static name: string
 }
 }

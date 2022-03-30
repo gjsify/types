@@ -68,7 +68,7 @@ interface Data_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Data {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.Data */
     /**
      * Gets the bounding cuboid of the vertices in `self`. The cuboid is
@@ -77,6 +77,8 @@ class Data {
      * minimum x, y and z values of all the vertices and `max_vertex` will
      * contain the maximum. The extents of the model are cached so it is
      * cheap to call this function.
+     * @param minVertex A location to return the minimum vertex
+     * @param maxVertex A location to return the maximum vertex
      */
     getExtents(minVertex: Clutter.Vertex, maxVertex: Clutter.Vertex): void
     /**
@@ -84,6 +86,8 @@ class Data {
      * model can then be rendered using mash_data_render(). If
      * there is an error loading the file it will return %FALSE and `error`
      * will be set to a GError instance.
+     * @param flags Flags used to specify load-time modifications to the data
+     * @param filename The name of a file to load
      */
     load(flags: DataFlags, filename: string): boolean
     /**
@@ -130,6 +134,10 @@ class Data {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -140,6 +148,12 @@ class Data {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -163,6 +177,7 @@ class Data {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -182,11 +197,14 @@ class Data {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -194,6 +212,8 @@ class Data {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -211,6 +231,7 @@ class Data {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -256,6 +277,7 @@ class Data {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -299,15 +321,20 @@ class Data {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -348,6 +375,7 @@ class Data {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -382,6 +410,7 @@ class Data {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -413,6 +442,7 @@ class Data {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -438,12 +468,14 @@ interface DataLoader_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DataLoader {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.DataLoader */
     getData(loaderData: DataLoaderData): void
     /**
      * Obtains the loaded data after calling mash_data_loader_load().
      * This function is not usually called by applications.
+     * @param flags 
+     * @param filename 
      */
     load(flags: DataFlags, filename: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -481,6 +513,10 @@ class DataLoader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -491,6 +527,12 @@ class DataLoader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -514,6 +556,7 @@ class DataLoader {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -533,11 +576,14 @@ class DataLoader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -545,6 +591,8 @@ class DataLoader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -562,6 +610,7 @@ class DataLoader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -607,6 +656,7 @@ class DataLoader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -650,15 +700,20 @@ class DataLoader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -699,6 +754,7 @@ class DataLoader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -733,6 +789,7 @@ class DataLoader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -764,6 +821,7 @@ class DataLoader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1402,9 +1460,9 @@ class DirectionalLight {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.Light */
     /**
      * This is a convenience intended to be used within
@@ -1428,6 +1486,8 @@ class DirectionalLight {
      * 
      * The ‘position’ will get translated to something like
      * ‘positiong00000002’.
+     * @param shaderSource The string to append to
+     * @param snippet A snippet of GLSL
      */
     appendShader(shaderSource: GLib.String, snippet: string): void
     /**
@@ -1501,14 +1561,18 @@ class DirectionalLight {
      * 
      * The implementation should always chain up to the #MashLight
      * implementation so that it can declare the built-in uniforms.
+     * @param uniformSource A location to append uniforms declarations to
+     * @param mainSource A location to append lighting algorithm snippets to
      */
     generateShader(uniformSource: GLib.String, mainSource: GLib.String): void
     /**
      * Retrieves the ‘ambient’ color emitted by the light.
+     * @param ambient A return location for the color
      */
     getAmbient(ambient: Clutter.Color): void
     /**
      * Retrieves the ‘diffuse’ color emitted by the light.
+     * @param diffuse A return location for the color
      */
     getDiffuse(diffuse: Clutter.Color): void
     /**
@@ -1516,10 +1580,12 @@ class DirectionalLight {
      * transformations for its parent actors. This should be used for
      * updating uniforms that depend on the actor's transformation or
      * position.
+     * @param matrix The return location for the matrix
      */
     getModelviewMatrix(matrix: Cogl.Matrix): void
     /**
      * Retrieves the ‘specular’ color emitted by the light.
+     * @param specular A return location for the color
      */
     getSpecular(specular: Clutter.Color): void
     /**
@@ -1532,6 +1598,8 @@ class DirectionalLight {
      * appends an actor specific string to the uniform name. This is
      * useful when uniforms have been declared like ‘position$’ within
      * mash_light_append_shader().
+     * @param program The program passed in from mash_light_update_uniforms().
+     * @param uniformName The name of a uniform
      */
     getUniformLocation(program: Cogl.Handle, uniformName: string): number
     /**
@@ -1543,6 +1611,7 @@ class DirectionalLight {
      * light can bounce off other objects to reach it. The Mash lighting
      * model doesn't simulate this bouncing so the ambient color is often
      * used to give an approximation of the effect.
+     * @param ambient The new color value
      */
     setAmbient(ambient: Clutter.Color): void
     /**
@@ -1551,6 +1620,7 @@ class DirectionalLight {
      * of the object is determined per-vertex using the vertex's
      * normal. The diffuse color will be darkened depending on how
      * directly the object faces the light.
+     * @param diffuse The new color value
      */
     setDiffuse(diffuse: Clutter.Color): void
     /**
@@ -1564,6 +1634,9 @@ class DirectionalLight {
      * representing a vector. The vector will be transformed into eye
      * space according to the inverse transposed matrix of `light` so that
      * it won't change direction for non-uniform scaling transformations.
+     * @param program 
+     * @param uniformLocation The location of the uniform
+     * @param directionIn The untransformed direction uniform
      */
     setDirectionUniform(program: Cogl.Handle, uniformLocation: number, directionIn: number): void
     /**
@@ -1574,6 +1647,7 @@ class DirectionalLight {
      * bright light above it, this property will allow you add a bright
      * part where the light can directly reflect off the ball into the
      * eye. It is common to set this to a bright white value.
+     * @param specular The new color value
      */
     setSpecular(specular: Clutter.Color): void
     /**
@@ -1595,6 +1669,7 @@ class DirectionalLight {
      * uniforms. mash_light_get_uniform_location() can be used to make
      * this easier when a uniform is named uniquely using the ‘$’ symbol
      * in mash_light_append_shader().
+     * @param program A #CoglProgram containing the uniforms
      */
     updateUniforms(program: Cogl.Handle): void
     /* Methods of Clutter-1.0.Clutter.Actor */
@@ -1606,6 +1681,7 @@ class DirectionalLight {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     addAction(action: Clutter.Action): void
     /**
@@ -1620,6 +1696,8 @@ class DirectionalLight {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     addActionWithName(name: string, action: Clutter.Action): void
     /**
@@ -1633,6 +1711,7 @@ class DirectionalLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     addChild(child: Clutter.Actor): void
     /**
@@ -1642,6 +1721,7 @@ class DirectionalLight {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     addConstraint(constraint: Clutter.Constraint): void
     /**
@@ -1656,6 +1736,8 @@ class DirectionalLight {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     addConstraintWithName(name: string, constraint: Clutter.Constraint): void
     /**
@@ -1667,6 +1749,7 @@ class DirectionalLight {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     addEffect(effect: Clutter.Effect): void
     /**
@@ -1685,6 +1768,8 @@ class DirectionalLight {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     addEffectWithName(name: string, effect: Clutter.Effect): void
     /**
@@ -1699,6 +1784,8 @@ class DirectionalLight {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     addTransition(name: string, transition: Clutter.Transition): void
     /**
@@ -1722,6 +1809,8 @@ class DirectionalLight {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -1741,6 +1830,12 @@ class DirectionalLight {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param xAlign the horizontal alignment, between 0 and 1
+     * @param yAlign the vertical alignment, between 0 and 1
+     * @param xFill whether the actor should fill horizontally
+     * @param yFill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocateAlignFill(box: Clutter.ActorBox, xAlign: number, yAlign: number, xFill: boolean, yFill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -1797,6 +1892,11 @@ class DirectionalLight {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param availableWidth the maximum available width, or -1 to use the   actor's natural width
+     * @param availableHeight the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocateAvailableSize(x: number, y: number, availableWidth: number, availableHeight: number, flags: Clutter.AllocationFlags): void
     /**
@@ -1812,6 +1912,7 @@ class DirectionalLight {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocatePreferredSize(flags: Clutter.AllocationFlags): void
     /**
@@ -1829,6 +1930,9 @@ class DirectionalLight {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithAlphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -1846,6 +1950,10 @@ class DirectionalLight {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithTimelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -1858,6 +1966,10 @@ class DirectionalLight {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -1869,12 +1981,15 @@ class DirectionalLight {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     applyRelativeTransformToPoint(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     applyTransformToPoint(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -1890,6 +2005,8 @@ class DirectionalLight {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param createChildFunc a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bindModel(model: Gio.ListModel | null, createChildFunc: Clutter.ActorCreateChildFunc): void
     /**
@@ -1908,6 +2025,7 @@ class DirectionalLight {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -1936,6 +2054,7 @@ class DirectionalLight {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -1986,6 +2105,8 @@ class DirectionalLight {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -2017,6 +2138,7 @@ class DirectionalLight {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     getAction(name: string): Clutter.Action
     /**
@@ -2061,6 +2183,7 @@ class DirectionalLight {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     getAllocationVertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -2085,6 +2208,7 @@ class DirectionalLight {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index the position in the list of children
      */
     getChildAtIndex(index: number): Clutter.Actor
     /**
@@ -2108,6 +2232,7 @@ class DirectionalLight {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     getConstraint(name: string): Clutter.Constraint
     /**
@@ -2182,6 +2307,7 @@ class DirectionalLight {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     getEffect(name: string): Clutter.Effect
     /**
@@ -2395,6 +2521,7 @@ class DirectionalLight {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forWidth available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     getPreferredHeight(forWidth: number): [ /* minHeightP */ number | null, /* naturalHeightP */ number | null ]
     /**
@@ -2421,6 +2548,7 @@ class DirectionalLight {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forHeight available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     getPreferredWidth(forHeight: number): [ /* minWidthP */ number | null, /* naturalWidthP */ number | null ]
     /**
@@ -2443,10 +2571,12 @@ class DirectionalLight {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     getRotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     getRotationAngle(axis: Clutter.RotateAxis): number
     /**
@@ -2520,6 +2650,7 @@ class DirectionalLight {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relativeToAncestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     getTransformedPaintVolume(relativeToAncestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -2573,6 +2704,7 @@ class DirectionalLight {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     getTransition(name: string): Clutter.Transition
     /**
@@ -2741,6 +2873,8 @@ class DirectionalLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildAbove(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -2756,6 +2890,8 @@ class DirectionalLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index the index
      */
     insertChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -2771,6 +2907,8 @@ class DirectionalLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildBelow(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -2816,6 +2954,7 @@ class DirectionalLight {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -2840,6 +2979,8 @@ class DirectionalLight {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     moveAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -2852,6 +2993,7 @@ class DirectionalLight {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     moveAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -2862,6 +3004,8 @@ class DirectionalLight {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     moveBy(dx: number, dy: number): void
     /**
@@ -2873,6 +3017,7 @@ class DirectionalLight {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needsExpand(orientation: Clutter.Orientation): boolean
     /**
@@ -2966,6 +3111,7 @@ class DirectionalLight {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queueRedrawWithClip(clip?: cairo.RectangleInt | null): void
     /**
@@ -2983,6 +3129,7 @@ class DirectionalLight {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -3013,11 +3160,13 @@ class DirectionalLight {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     removeAction(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     removeActionByName(name: string): void
     /**
@@ -3045,6 +3194,7 @@ class DirectionalLight {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     removeChild(child: Clutter.Actor): void
     /**
@@ -3055,22 +3205,26 @@ class DirectionalLight {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     removeConstraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     removeConstraintByName(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     removeEffect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     removeEffectByName(name: string): void
     /**
@@ -3081,6 +3235,7 @@ class DirectionalLight {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     removeTransition(name: string): void
     /**
@@ -3096,10 +3251,13 @@ class DirectionalLight {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param newParent the new #ClutterActor parent
      */
     reparent(newParent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param oldChild the child of `self` to replace
+     * @param newChild the #ClutterActor to replace `old_child`
      */
     replaceChild(oldChild: Clutter.Actor, newChild: Clutter.Actor): void
     /**
@@ -3192,6 +3350,8 @@ class DirectionalLight {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     setAllocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -3199,6 +3359,8 @@ class DirectionalLight {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     setAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -3210,6 +3372,7 @@ class DirectionalLight {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     setAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -3222,6 +3385,7 @@ class DirectionalLight {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     setBackgroundColor(color?: Clutter.Color | null): void
     /**
@@ -3232,6 +3396,8 @@ class DirectionalLight {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildAboveSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -3240,6 +3406,8 @@ class DirectionalLight {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index the new index for `child`
      */
     setChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -3250,6 +3418,8 @@ class DirectionalLight {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildBelowSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -3260,21 +3430,28 @@ class DirectionalLight {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     setChildTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     setClip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clipSet %TRUE to apply a clip tracking the allocation
      */
     setClipToAllocation(clipSet: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     setContent(content?: Clutter.Content | null): void
     /**
@@ -3284,12 +3461,14 @@ class DirectionalLight {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     setContentGravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     setContentRepeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -3299,6 +3478,8 @@ class DirectionalLight {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param minFilter the minification filter for the content
+     * @param magFilter the magnification filter for the content
      */
     setContentScalingFilters(minFilter: Clutter.ScalingFilter, magFilter: Clutter.ScalingFilter): void
     /**
@@ -3306,32 +3487,38 @@ class DirectionalLight {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     setDepth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     setEasingDelay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     setEasingDuration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     setEasingMode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param isSet whether to use fixed position
      */
     setFixedPositionSet(isSet: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     setFlags(flags: Clutter.ActorFlags): void
     /**
@@ -3339,6 +3526,7 @@ class DirectionalLight {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     setGeometry(geometry: Clutter.Geometry): void
     /**
@@ -3349,6 +3537,7 @@ class DirectionalLight {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     setHeight(height: number): void
     /**
@@ -3358,39 +3547,46 @@ class DirectionalLight {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     setLayoutManager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     setMargin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     setName(name: string): void
     /**
@@ -3451,6 +3647,7 @@ class DirectionalLight {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     setOffscreenRedirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -3458,6 +3655,7 @@ class DirectionalLight {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     setOpacity(opacity: number): void
     /**
@@ -3469,6 +3667,7 @@ class DirectionalLight {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     setParent(parent: Clutter.Actor): void
     /**
@@ -3478,6 +3677,8 @@ class DirectionalLight {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivotX the normalized X coordinate of the pivot point
+     * @param pivotY the normalized Y coordinate of the pivot point
      */
     setPivotPoint(pivotX: number, pivotY: number): void
     /**
@@ -3485,6 +3686,7 @@ class DirectionalLight {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivotZ the Z coordinate of the actor's pivot point
      */
     setPivotPointZ(pivotZ: number): void
     /**
@@ -3493,10 +3695,13 @@ class DirectionalLight {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     setPosition(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     setReactive(reactive: boolean): void
     /**
@@ -3505,6 +3710,7 @@ class DirectionalLight {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     setRequestMode(mode: Clutter.RequestMode): void
     /**
@@ -3519,6 +3725,11 @@ class DirectionalLight {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     setRotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -3530,6 +3741,8 @@ class DirectionalLight {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     setRotationAngle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -3539,6 +3752,8 @@ class DirectionalLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
      */
     setScale(scaleX: number, scaleY: number): void
     /**
@@ -3548,6 +3763,10 @@ class DirectionalLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param centerX X coordinate of the center of the scaling
+     * @param centerY Y coordinate of the center of the scaling
      */
     setScaleFull(scaleX: number, scaleY: number, centerX: number, centerY: number): void
     /**
@@ -3559,6 +3778,9 @@ class DirectionalLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     setScaleWithGravity(scaleX: number, scaleY: number, gravity: Clutter.Gravity): void
     /**
@@ -3567,6 +3789,7 @@ class DirectionalLight {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scaleZ the scaling factor along the Z axis
      */
     setScaleZ(scaleZ: number): void
     /**
@@ -3577,21 +3800,28 @@ class DirectionalLight {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     setShader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParam(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamFloat(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamInt(param: string, value: number): void
     /**
@@ -3605,6 +3835,8 @@ class DirectionalLight {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     setSize(width: number, height: number): void
     /**
@@ -3618,6 +3850,7 @@ class DirectionalLight {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param textDir the text direction for `self`
      */
     setTextDirection(textDir: Clutter.TextDirection): void
     /**
@@ -3626,11 +3859,15 @@ class DirectionalLight {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     setTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translateX the translation along the X axis
+     * @param translateY the translation along the Y axis
+     * @param translateZ the translation along the Z axis
      */
     setTranslation(translateX: number, translateY: number, translateZ: number): void
     /**
@@ -3641,6 +3878,7 @@ class DirectionalLight {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     setWidth(width: number): void
     /**
@@ -3650,6 +3888,7 @@ class DirectionalLight {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     setX(x: number): void
     /**
@@ -3657,6 +3896,7 @@ class DirectionalLight {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param xAlign the horizontal alignment policy
      */
     setXAlign(xAlign: Clutter.ActorAlign): void
     /**
@@ -3667,6 +3907,7 @@ class DirectionalLight {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     setXExpand(expand: boolean): void
     /**
@@ -3676,6 +3917,7 @@ class DirectionalLight {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     setY(y: number): void
     /**
@@ -3683,6 +3925,7 @@ class DirectionalLight {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param yAlign the vertical alignment policy
      */
     setYAlign(yAlign: Clutter.ActorAlign): void
     /**
@@ -3693,12 +3936,14 @@ class DirectionalLight {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     setYExpand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param zPosition the position on the Z axis
      */
     setZPosition(zPosition: number): void
     /**
@@ -3707,6 +3952,8 @@ class DirectionalLight {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     setZRotationFromGravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -3748,6 +3995,8 @@ class DirectionalLight {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transformStagePoint(x: number, y: number): [ /* returnType */ boolean, /* xOut */ number, /* yOut */ number ]
     /**
@@ -3812,6 +4061,7 @@ class DirectionalLight {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unsetFlags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3849,6 +4099,10 @@ class DirectionalLight {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3859,6 +4113,12 @@ class DirectionalLight {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3882,6 +4142,7 @@ class DirectionalLight {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3901,11 +4162,14 @@ class DirectionalLight {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3913,6 +4177,8 @@ class DirectionalLight {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3930,6 +4196,7 @@ class DirectionalLight {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3975,6 +4242,7 @@ class DirectionalLight {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4018,15 +4286,20 @@ class DirectionalLight {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4067,6 +4340,7 @@ class DirectionalLight {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4101,6 +4375,7 @@ class DirectionalLight {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -4113,14 +4388,23 @@ class DirectionalLight {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param propertyName the name of the animated property
+     * @param initialValue the initial value of the animation interval
+     * @param finalValue the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animateProperty(animation: Clutter.Animation, propertyName: string, initialValue: any, finalValue: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param propertyName the name of the animatable property to find
      */
     findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param propertyName the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     getInitialState(propertyName: string, value: any): void
     /**
@@ -4133,10 +4417,15 @@ class DirectionalLight {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param propertyName the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolateValue(propertyName: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param propertyName the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     setFinalState(propertyName: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -4149,6 +4438,7 @@ class DirectionalLight {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     addActor(actor: Clutter.Actor): void
     /**
@@ -4159,16 +4449,24 @@ class DirectionalLight {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childGetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     childNotify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childSetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -4181,6 +4479,7 @@ class DirectionalLight {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     createChildMeta(actor: Clutter.Actor): void
     /**
@@ -4192,11 +4491,13 @@ class DirectionalLight {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroyChildMeta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param childName the name of the requested child.
      */
     findChildByName(childName: string): Clutter.Actor
     /**
@@ -4207,6 +4508,7 @@ class DirectionalLight {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -4216,11 +4518,13 @@ class DirectionalLight {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreachWithInternals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     getChildMeta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -4229,6 +4533,8 @@ class DirectionalLight {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lowerChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4237,6 +4543,8 @@ class DirectionalLight {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raiseChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4248,6 +4556,7 @@ class DirectionalLight {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     removeActor(actor: Clutter.Actor): void
     /**
@@ -4263,11 +4572,18 @@ class DirectionalLight {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parseCustomNode(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     setCustomProperty(script: Clutter.Script, name: string, value: any): void
     /**
@@ -4277,6 +4593,7 @@ class DirectionalLight {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id the #ClutterScript id of the object
      */
     setId(id: string): void
     /* Signals of Clutter-1.0.Clutter.Actor */
@@ -4287,6 +4604,8 @@ class DirectionalLight {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: ((box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     on(sigName: "allocation-changed", callback: (box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -4296,6 +4615,7 @@ class DirectionalLight {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4305,6 +4625,7 @@ class DirectionalLight {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4319,6 +4640,7 @@ class DirectionalLight {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "captured-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -4348,6 +4670,7 @@ class DirectionalLight {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "enter-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4359,6 +4682,7 @@ class DirectionalLight {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -4393,6 +4717,7 @@ class DirectionalLight {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4403,6 +4728,7 @@ class DirectionalLight {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4411,6 +4737,7 @@ class DirectionalLight {
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "leave-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4420,6 +4747,7 @@ class DirectionalLight {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: ((event: Clutter.MotionEvent) => boolean)): number
     on(sigName: "motion-event", callback: (event: Clutter.MotionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4446,6 +4774,7 @@ class DirectionalLight {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param oldParent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Clutter.Actor | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Clutter.Actor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -4463,6 +4792,7 @@ class DirectionalLight {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: ((color: Clutter.Color) => void)): number
     on(sigName: "pick", callback: (color: Clutter.Color) => void, after?: boolean): NodeJS.EventEmitter
@@ -4515,6 +4845,7 @@ class DirectionalLight {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: ((origin: Clutter.Actor) => void)): number
     on(sigName: "queue-redraw", callback: (origin: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -4550,6 +4881,7 @@ class DirectionalLight {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: ((event: Clutter.ScrollEvent) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Clutter.ScrollEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4568,6 +4900,7 @@ class DirectionalLight {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "touch-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -4580,6 +4913,8 @@ class DirectionalLight {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param isFinished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: ((name: string, isFinished: boolean) => void)): number
     on(sigName: "transition-stopped", callback: (name: string, isFinished: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -4633,6 +4968,7 @@ class DirectionalLight {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4643,6 +4979,7 @@ class DirectionalLight {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-added", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -4652,6 +4989,7 @@ class DirectionalLight {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-removed", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -4662,6 +5000,8 @@ class DirectionalLight {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: ((actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5107,10 +5447,13 @@ class DirectionalLight {
     static new(): DirectionalLight
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param propertyName a property name.
      */
     static classFindChildProperty(klass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static classListChildProperties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -5739,9 +6082,9 @@ class Light {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.Light */
     /**
      * This is a convenience intended to be used within
@@ -5765,6 +6108,8 @@ class Light {
      * 
      * The ‘position’ will get translated to something like
      * ‘positiong00000002’.
+     * @param shaderSource The string to append to
+     * @param snippet A snippet of GLSL
      */
     appendShader(shaderSource: GLib.String, snippet: string): void
     /**
@@ -5838,14 +6183,18 @@ class Light {
      * 
      * The implementation should always chain up to the #MashLight
      * implementation so that it can declare the built-in uniforms.
+     * @param uniformSource A location to append uniforms declarations to
+     * @param mainSource A location to append lighting algorithm snippets to
      */
     generateShader(uniformSource: GLib.String, mainSource: GLib.String): void
     /**
      * Retrieves the ‘ambient’ color emitted by the light.
+     * @param ambient A return location for the color
      */
     getAmbient(ambient: Clutter.Color): void
     /**
      * Retrieves the ‘diffuse’ color emitted by the light.
+     * @param diffuse A return location for the color
      */
     getDiffuse(diffuse: Clutter.Color): void
     /**
@@ -5853,10 +6202,12 @@ class Light {
      * transformations for its parent actors. This should be used for
      * updating uniforms that depend on the actor's transformation or
      * position.
+     * @param matrix The return location for the matrix
      */
     getModelviewMatrix(matrix: Cogl.Matrix): void
     /**
      * Retrieves the ‘specular’ color emitted by the light.
+     * @param specular A return location for the color
      */
     getSpecular(specular: Clutter.Color): void
     /**
@@ -5869,6 +6220,8 @@ class Light {
      * appends an actor specific string to the uniform name. This is
      * useful when uniforms have been declared like ‘position$’ within
      * mash_light_append_shader().
+     * @param program The program passed in from mash_light_update_uniforms().
+     * @param uniformName The name of a uniform
      */
     getUniformLocation(program: Cogl.Handle, uniformName: string): number
     /**
@@ -5880,6 +6233,7 @@ class Light {
      * light can bounce off other objects to reach it. The Mash lighting
      * model doesn't simulate this bouncing so the ambient color is often
      * used to give an approximation of the effect.
+     * @param ambient The new color value
      */
     setAmbient(ambient: Clutter.Color): void
     /**
@@ -5888,6 +6242,7 @@ class Light {
      * of the object is determined per-vertex using the vertex's
      * normal. The diffuse color will be darkened depending on how
      * directly the object faces the light.
+     * @param diffuse The new color value
      */
     setDiffuse(diffuse: Clutter.Color): void
     /**
@@ -5901,6 +6256,9 @@ class Light {
      * representing a vector. The vector will be transformed into eye
      * space according to the inverse transposed matrix of `light` so that
      * it won't change direction for non-uniform scaling transformations.
+     * @param program 
+     * @param uniformLocation The location of the uniform
+     * @param directionIn The untransformed direction uniform
      */
     setDirectionUniform(program: Cogl.Handle, uniformLocation: number, directionIn: number): void
     /**
@@ -5911,6 +6269,7 @@ class Light {
      * bright light above it, this property will allow you add a bright
      * part where the light can directly reflect off the ball into the
      * eye. It is common to set this to a bright white value.
+     * @param specular The new color value
      */
     setSpecular(specular: Clutter.Color): void
     /**
@@ -5932,6 +6291,7 @@ class Light {
      * uniforms. mash_light_get_uniform_location() can be used to make
      * this easier when a uniform is named uniquely using the ‘$’ symbol
      * in mash_light_append_shader().
+     * @param program A #CoglProgram containing the uniforms
      */
     updateUniforms(program: Cogl.Handle): void
     /* Methods of Clutter-1.0.Clutter.Actor */
@@ -5943,6 +6303,7 @@ class Light {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     addAction(action: Clutter.Action): void
     /**
@@ -5957,6 +6318,8 @@ class Light {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     addActionWithName(name: string, action: Clutter.Action): void
     /**
@@ -5970,6 +6333,7 @@ class Light {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     addChild(child: Clutter.Actor): void
     /**
@@ -5979,6 +6343,7 @@ class Light {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     addConstraint(constraint: Clutter.Constraint): void
     /**
@@ -5993,6 +6358,8 @@ class Light {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     addConstraintWithName(name: string, constraint: Clutter.Constraint): void
     /**
@@ -6004,6 +6371,7 @@ class Light {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     addEffect(effect: Clutter.Effect): void
     /**
@@ -6022,6 +6390,8 @@ class Light {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     addEffectWithName(name: string, effect: Clutter.Effect): void
     /**
@@ -6036,6 +6406,8 @@ class Light {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     addTransition(name: string, transition: Clutter.Transition): void
     /**
@@ -6059,6 +6431,8 @@ class Light {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -6078,6 +6452,12 @@ class Light {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param xAlign the horizontal alignment, between 0 and 1
+     * @param yAlign the vertical alignment, between 0 and 1
+     * @param xFill whether the actor should fill horizontally
+     * @param yFill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocateAlignFill(box: Clutter.ActorBox, xAlign: number, yAlign: number, xFill: boolean, yFill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -6134,6 +6514,11 @@ class Light {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param availableWidth the maximum available width, or -1 to use the   actor's natural width
+     * @param availableHeight the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocateAvailableSize(x: number, y: number, availableWidth: number, availableHeight: number, flags: Clutter.AllocationFlags): void
     /**
@@ -6149,6 +6534,7 @@ class Light {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocatePreferredSize(flags: Clutter.AllocationFlags): void
     /**
@@ -6166,6 +6552,9 @@ class Light {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithAlphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -6183,6 +6572,10 @@ class Light {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithTimelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -6195,6 +6588,10 @@ class Light {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -6206,12 +6603,15 @@ class Light {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     applyRelativeTransformToPoint(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     applyTransformToPoint(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -6227,6 +6627,8 @@ class Light {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param createChildFunc a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bindModel(model: Gio.ListModel | null, createChildFunc: Clutter.ActorCreateChildFunc): void
     /**
@@ -6245,6 +6647,7 @@ class Light {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -6273,6 +6676,7 @@ class Light {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -6323,6 +6727,8 @@ class Light {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -6354,6 +6760,7 @@ class Light {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     getAction(name: string): Clutter.Action
     /**
@@ -6398,6 +6805,7 @@ class Light {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     getAllocationVertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -6422,6 +6830,7 @@ class Light {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index the position in the list of children
      */
     getChildAtIndex(index: number): Clutter.Actor
     /**
@@ -6445,6 +6854,7 @@ class Light {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     getConstraint(name: string): Clutter.Constraint
     /**
@@ -6519,6 +6929,7 @@ class Light {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     getEffect(name: string): Clutter.Effect
     /**
@@ -6732,6 +7143,7 @@ class Light {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forWidth available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     getPreferredHeight(forWidth: number): [ /* minHeightP */ number | null, /* naturalHeightP */ number | null ]
     /**
@@ -6758,6 +7170,7 @@ class Light {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forHeight available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     getPreferredWidth(forHeight: number): [ /* minWidthP */ number | null, /* naturalWidthP */ number | null ]
     /**
@@ -6780,10 +7193,12 @@ class Light {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     getRotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     getRotationAngle(axis: Clutter.RotateAxis): number
     /**
@@ -6857,6 +7272,7 @@ class Light {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relativeToAncestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     getTransformedPaintVolume(relativeToAncestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -6910,6 +7326,7 @@ class Light {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     getTransition(name: string): Clutter.Transition
     /**
@@ -7078,6 +7495,8 @@ class Light {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildAbove(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -7093,6 +7512,8 @@ class Light {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index the index
      */
     insertChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -7108,6 +7529,8 @@ class Light {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildBelow(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -7153,6 +7576,7 @@ class Light {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -7177,6 +7601,8 @@ class Light {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     moveAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -7189,6 +7615,7 @@ class Light {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     moveAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -7199,6 +7626,8 @@ class Light {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     moveBy(dx: number, dy: number): void
     /**
@@ -7210,6 +7639,7 @@ class Light {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needsExpand(orientation: Clutter.Orientation): boolean
     /**
@@ -7303,6 +7733,7 @@ class Light {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queueRedrawWithClip(clip?: cairo.RectangleInt | null): void
     /**
@@ -7320,6 +7751,7 @@ class Light {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -7350,11 +7782,13 @@ class Light {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     removeAction(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     removeActionByName(name: string): void
     /**
@@ -7382,6 +7816,7 @@ class Light {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     removeChild(child: Clutter.Actor): void
     /**
@@ -7392,22 +7827,26 @@ class Light {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     removeConstraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     removeConstraintByName(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     removeEffect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     removeEffectByName(name: string): void
     /**
@@ -7418,6 +7857,7 @@ class Light {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     removeTransition(name: string): void
     /**
@@ -7433,10 +7873,13 @@ class Light {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param newParent the new #ClutterActor parent
      */
     reparent(newParent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param oldChild the child of `self` to replace
+     * @param newChild the #ClutterActor to replace `old_child`
      */
     replaceChild(oldChild: Clutter.Actor, newChild: Clutter.Actor): void
     /**
@@ -7529,6 +7972,8 @@ class Light {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     setAllocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -7536,6 +7981,8 @@ class Light {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     setAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -7547,6 +7994,7 @@ class Light {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     setAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -7559,6 +8007,7 @@ class Light {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     setBackgroundColor(color?: Clutter.Color | null): void
     /**
@@ -7569,6 +8018,8 @@ class Light {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildAboveSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -7577,6 +8028,8 @@ class Light {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index the new index for `child`
      */
     setChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -7587,6 +8040,8 @@ class Light {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildBelowSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -7597,21 +8052,28 @@ class Light {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     setChildTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     setClip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clipSet %TRUE to apply a clip tracking the allocation
      */
     setClipToAllocation(clipSet: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     setContent(content?: Clutter.Content | null): void
     /**
@@ -7621,12 +8083,14 @@ class Light {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     setContentGravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     setContentRepeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -7636,6 +8100,8 @@ class Light {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param minFilter the minification filter for the content
+     * @param magFilter the magnification filter for the content
      */
     setContentScalingFilters(minFilter: Clutter.ScalingFilter, magFilter: Clutter.ScalingFilter): void
     /**
@@ -7643,32 +8109,38 @@ class Light {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     setDepth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     setEasingDelay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     setEasingDuration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     setEasingMode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param isSet whether to use fixed position
      */
     setFixedPositionSet(isSet: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     setFlags(flags: Clutter.ActorFlags): void
     /**
@@ -7676,6 +8148,7 @@ class Light {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     setGeometry(geometry: Clutter.Geometry): void
     /**
@@ -7686,6 +8159,7 @@ class Light {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     setHeight(height: number): void
     /**
@@ -7695,39 +8169,46 @@ class Light {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     setLayoutManager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     setMargin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     setName(name: string): void
     /**
@@ -7788,6 +8269,7 @@ class Light {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     setOffscreenRedirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -7795,6 +8277,7 @@ class Light {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     setOpacity(opacity: number): void
     /**
@@ -7806,6 +8289,7 @@ class Light {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     setParent(parent: Clutter.Actor): void
     /**
@@ -7815,6 +8299,8 @@ class Light {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivotX the normalized X coordinate of the pivot point
+     * @param pivotY the normalized Y coordinate of the pivot point
      */
     setPivotPoint(pivotX: number, pivotY: number): void
     /**
@@ -7822,6 +8308,7 @@ class Light {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivotZ the Z coordinate of the actor's pivot point
      */
     setPivotPointZ(pivotZ: number): void
     /**
@@ -7830,10 +8317,13 @@ class Light {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     setPosition(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     setReactive(reactive: boolean): void
     /**
@@ -7842,6 +8332,7 @@ class Light {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     setRequestMode(mode: Clutter.RequestMode): void
     /**
@@ -7856,6 +8347,11 @@ class Light {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     setRotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -7867,6 +8363,8 @@ class Light {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     setRotationAngle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -7876,6 +8374,8 @@ class Light {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
      */
     setScale(scaleX: number, scaleY: number): void
     /**
@@ -7885,6 +8385,10 @@ class Light {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param centerX X coordinate of the center of the scaling
+     * @param centerY Y coordinate of the center of the scaling
      */
     setScaleFull(scaleX: number, scaleY: number, centerX: number, centerY: number): void
     /**
@@ -7896,6 +8400,9 @@ class Light {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     setScaleWithGravity(scaleX: number, scaleY: number, gravity: Clutter.Gravity): void
     /**
@@ -7904,6 +8411,7 @@ class Light {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scaleZ the scaling factor along the Z axis
      */
     setScaleZ(scaleZ: number): void
     /**
@@ -7914,21 +8422,28 @@ class Light {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     setShader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParam(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamFloat(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamInt(param: string, value: number): void
     /**
@@ -7942,6 +8457,8 @@ class Light {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     setSize(width: number, height: number): void
     /**
@@ -7955,6 +8472,7 @@ class Light {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param textDir the text direction for `self`
      */
     setTextDirection(textDir: Clutter.TextDirection): void
     /**
@@ -7963,11 +8481,15 @@ class Light {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     setTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translateX the translation along the X axis
+     * @param translateY the translation along the Y axis
+     * @param translateZ the translation along the Z axis
      */
     setTranslation(translateX: number, translateY: number, translateZ: number): void
     /**
@@ -7978,6 +8500,7 @@ class Light {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     setWidth(width: number): void
     /**
@@ -7987,6 +8510,7 @@ class Light {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     setX(x: number): void
     /**
@@ -7994,6 +8518,7 @@ class Light {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param xAlign the horizontal alignment policy
      */
     setXAlign(xAlign: Clutter.ActorAlign): void
     /**
@@ -8004,6 +8529,7 @@ class Light {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     setXExpand(expand: boolean): void
     /**
@@ -8013,6 +8539,7 @@ class Light {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     setY(y: number): void
     /**
@@ -8020,6 +8547,7 @@ class Light {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param yAlign the vertical alignment policy
      */
     setYAlign(yAlign: Clutter.ActorAlign): void
     /**
@@ -8030,12 +8558,14 @@ class Light {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     setYExpand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param zPosition the position on the Z axis
      */
     setZPosition(zPosition: number): void
     /**
@@ -8044,6 +8574,8 @@ class Light {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     setZRotationFromGravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -8085,6 +8617,8 @@ class Light {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transformStagePoint(x: number, y: number): [ /* returnType */ boolean, /* xOut */ number, /* yOut */ number ]
     /**
@@ -8149,6 +8683,7 @@ class Light {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unsetFlags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8186,6 +8721,10 @@ class Light {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8196,6 +8735,12 @@ class Light {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8219,6 +8764,7 @@ class Light {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8238,11 +8784,14 @@ class Light {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8250,6 +8799,8 @@ class Light {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8267,6 +8818,7 @@ class Light {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8312,6 +8864,7 @@ class Light {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8355,15 +8908,20 @@ class Light {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8404,6 +8962,7 @@ class Light {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8438,6 +8997,7 @@ class Light {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -8450,14 +9010,23 @@ class Light {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param propertyName the name of the animated property
+     * @param initialValue the initial value of the animation interval
+     * @param finalValue the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animateProperty(animation: Clutter.Animation, propertyName: string, initialValue: any, finalValue: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param propertyName the name of the animatable property to find
      */
     findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param propertyName the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     getInitialState(propertyName: string, value: any): void
     /**
@@ -8470,10 +9039,15 @@ class Light {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param propertyName the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolateValue(propertyName: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param propertyName the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     setFinalState(propertyName: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -8486,6 +9060,7 @@ class Light {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     addActor(actor: Clutter.Actor): void
     /**
@@ -8496,16 +9071,24 @@ class Light {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childGetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     childNotify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childSetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -8518,6 +9101,7 @@ class Light {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     createChildMeta(actor: Clutter.Actor): void
     /**
@@ -8529,11 +9113,13 @@ class Light {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroyChildMeta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param childName the name of the requested child.
      */
     findChildByName(childName: string): Clutter.Actor
     /**
@@ -8544,6 +9130,7 @@ class Light {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -8553,11 +9140,13 @@ class Light {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreachWithInternals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     getChildMeta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -8566,6 +9155,8 @@ class Light {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lowerChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -8574,6 +9165,8 @@ class Light {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raiseChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -8585,6 +9178,7 @@ class Light {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     removeActor(actor: Clutter.Actor): void
     /**
@@ -8600,11 +9194,18 @@ class Light {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parseCustomNode(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     setCustomProperty(script: Clutter.Script, name: string, value: any): void
     /**
@@ -8614,6 +9215,7 @@ class Light {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id the #ClutterScript id of the object
      */
     setId(id: string): void
     /* Signals of Clutter-1.0.Clutter.Actor */
@@ -8624,6 +9226,8 @@ class Light {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: ((box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     on(sigName: "allocation-changed", callback: (box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -8633,6 +9237,7 @@ class Light {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8642,6 +9247,7 @@ class Light {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8656,6 +9262,7 @@ class Light {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "captured-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -8685,6 +9292,7 @@ class Light {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "enter-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8696,6 +9304,7 @@ class Light {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -8730,6 +9339,7 @@ class Light {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8740,6 +9350,7 @@ class Light {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8748,6 +9359,7 @@ class Light {
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "leave-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8757,6 +9369,7 @@ class Light {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: ((event: Clutter.MotionEvent) => boolean)): number
     on(sigName: "motion-event", callback: (event: Clutter.MotionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8783,6 +9396,7 @@ class Light {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param oldParent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Clutter.Actor | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Clutter.Actor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -8800,6 +9414,7 @@ class Light {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: ((color: Clutter.Color) => void)): number
     on(sigName: "pick", callback: (color: Clutter.Color) => void, after?: boolean): NodeJS.EventEmitter
@@ -8852,6 +9467,7 @@ class Light {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: ((origin: Clutter.Actor) => void)): number
     on(sigName: "queue-redraw", callback: (origin: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -8887,6 +9503,7 @@ class Light {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: ((event: Clutter.ScrollEvent) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Clutter.ScrollEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -8905,6 +9522,7 @@ class Light {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "touch-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -8917,6 +9535,8 @@ class Light {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param isFinished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: ((name: string, isFinished: boolean) => void)): number
     on(sigName: "transition-stopped", callback: (name: string, isFinished: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -8970,6 +9590,7 @@ class Light {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8980,6 +9601,7 @@ class Light {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-added", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -8989,6 +9611,7 @@ class Light {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-removed", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -8999,6 +9622,8 @@ class Light {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: ((actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9443,10 +10068,13 @@ class Light {
     /* Static methods and pseudo-constructors */
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param propertyName a property name.
      */
     static classFindChildProperty(klass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static classListChildProperties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -9455,16 +10083,18 @@ interface LightSet_ConstructProps extends GObject.Object_ConstructProps {
 }
 class LightSet {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.LightSet */
     /**
      * This adds a light to the set. Lights need to be added to the light
      * set as well as to a container somewhere in the Clutter actor
      * hierarchy in order to be useful.
+     * @param light A #MashLight
      */
     addLight(light: Light): void
     /**
      * Removes a light from the set.
+     * @param light A #MashLight
      */
     removeLight(light: Light): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9502,6 +10132,10 @@ class LightSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9512,6 +10146,12 @@ class LightSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9535,6 +10175,7 @@ class LightSet {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9554,11 +10195,14 @@ class LightSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9566,6 +10210,8 @@ class LightSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9583,6 +10229,7 @@ class LightSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9628,6 +10275,7 @@ class LightSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9671,15 +10319,20 @@ class LightSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9720,6 +10373,7 @@ class LightSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9754,6 +10408,7 @@ class LightSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9785,6 +10440,7 @@ class LightSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10429,15 +11085,16 @@ class Model {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.Model */
     getFitToAllocation(): boolean
     /**
      * Replaces the data used by the actor with `data`. A reference is
      * taken on `data` so if you no longer need it you should unref it with
      * g_object_unref().
+     * @param data The new #MashData
      */
     setData(data: Data): void
     /**
@@ -10465,6 +11122,7 @@ class Model {
      * allocation.
      * 
      * The default value is %TRUE.
+     * @param fitToAllocation New value
      */
     setFitToAllocation(fitToAllocation: boolean): void
     /**
@@ -10472,6 +11130,7 @@ class Model {
      * model. Alternatively %NULL can be passed to disable lighting for
      * this model. The light set represents a collection of #MashLight<!--
      * -->s that will affect the appearance of the model.
+     * @param lightSet A new #MashLightSet
      */
     setLightSet(lightSet: LightSet): void
     /**
@@ -10489,6 +11148,7 @@ class Model {
      * different light sets, it would be better to use a different copy of
      * the same material for each set of models so that they don't
      * repeatedly change the program on the material during paint.
+     * @param material A handle to a Cogl material
      */
     setMaterial(material: Cogl.Handle): void
     /* Methods of Clutter-1.0.Clutter.Actor */
@@ -10500,6 +11160,7 @@ class Model {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     addAction(action: Clutter.Action): void
     /**
@@ -10514,6 +11175,8 @@ class Model {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     addActionWithName(name: string, action: Clutter.Action): void
     /**
@@ -10527,6 +11190,7 @@ class Model {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     addChild(child: Clutter.Actor): void
     /**
@@ -10536,6 +11200,7 @@ class Model {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     addConstraint(constraint: Clutter.Constraint): void
     /**
@@ -10550,6 +11215,8 @@ class Model {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     addConstraintWithName(name: string, constraint: Clutter.Constraint): void
     /**
@@ -10561,6 +11228,7 @@ class Model {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     addEffect(effect: Clutter.Effect): void
     /**
@@ -10579,6 +11247,8 @@ class Model {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     addEffectWithName(name: string, effect: Clutter.Effect): void
     /**
@@ -10593,6 +11263,8 @@ class Model {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     addTransition(name: string, transition: Clutter.Transition): void
     /**
@@ -10616,6 +11288,8 @@ class Model {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -10635,6 +11309,12 @@ class Model {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param xAlign the horizontal alignment, between 0 and 1
+     * @param yAlign the vertical alignment, between 0 and 1
+     * @param xFill whether the actor should fill horizontally
+     * @param yFill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocateAlignFill(box: Clutter.ActorBox, xAlign: number, yAlign: number, xFill: boolean, yFill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -10691,6 +11371,11 @@ class Model {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param availableWidth the maximum available width, or -1 to use the   actor's natural width
+     * @param availableHeight the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocateAvailableSize(x: number, y: number, availableWidth: number, availableHeight: number, flags: Clutter.AllocationFlags): void
     /**
@@ -10706,6 +11391,7 @@ class Model {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocatePreferredSize(flags: Clutter.AllocationFlags): void
     /**
@@ -10723,6 +11409,9 @@ class Model {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithAlphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -10740,6 +11429,10 @@ class Model {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithTimelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -10752,6 +11445,10 @@ class Model {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -10763,12 +11460,15 @@ class Model {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     applyRelativeTransformToPoint(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     applyTransformToPoint(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -10784,6 +11484,8 @@ class Model {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param createChildFunc a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bindModel(model: Gio.ListModel | null, createChildFunc: Clutter.ActorCreateChildFunc): void
     /**
@@ -10802,6 +11504,7 @@ class Model {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -10830,6 +11533,7 @@ class Model {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -10880,6 +11584,8 @@ class Model {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -10911,6 +11617,7 @@ class Model {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     getAction(name: string): Clutter.Action
     /**
@@ -10955,6 +11662,7 @@ class Model {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     getAllocationVertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -10979,6 +11687,7 @@ class Model {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index the position in the list of children
      */
     getChildAtIndex(index: number): Clutter.Actor
     /**
@@ -11002,6 +11711,7 @@ class Model {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     getConstraint(name: string): Clutter.Constraint
     /**
@@ -11076,6 +11786,7 @@ class Model {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     getEffect(name: string): Clutter.Effect
     /**
@@ -11289,6 +12000,7 @@ class Model {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forWidth available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     getPreferredHeight(forWidth: number): [ /* minHeightP */ number | null, /* naturalHeightP */ number | null ]
     /**
@@ -11315,6 +12027,7 @@ class Model {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forHeight available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     getPreferredWidth(forHeight: number): [ /* minWidthP */ number | null, /* naturalWidthP */ number | null ]
     /**
@@ -11337,10 +12050,12 @@ class Model {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     getRotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     getRotationAngle(axis: Clutter.RotateAxis): number
     /**
@@ -11414,6 +12129,7 @@ class Model {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relativeToAncestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     getTransformedPaintVolume(relativeToAncestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -11467,6 +12183,7 @@ class Model {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     getTransition(name: string): Clutter.Transition
     /**
@@ -11635,6 +12352,8 @@ class Model {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildAbove(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -11650,6 +12369,8 @@ class Model {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index the index
      */
     insertChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -11665,6 +12386,8 @@ class Model {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildBelow(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -11710,6 +12433,7 @@ class Model {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -11734,6 +12458,8 @@ class Model {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     moveAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -11746,6 +12472,7 @@ class Model {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     moveAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -11756,6 +12483,8 @@ class Model {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     moveBy(dx: number, dy: number): void
     /**
@@ -11767,6 +12496,7 @@ class Model {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needsExpand(orientation: Clutter.Orientation): boolean
     /**
@@ -11860,6 +12590,7 @@ class Model {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queueRedrawWithClip(clip?: cairo.RectangleInt | null): void
     /**
@@ -11877,6 +12608,7 @@ class Model {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -11907,11 +12639,13 @@ class Model {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     removeAction(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     removeActionByName(name: string): void
     /**
@@ -11939,6 +12673,7 @@ class Model {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     removeChild(child: Clutter.Actor): void
     /**
@@ -11949,22 +12684,26 @@ class Model {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     removeConstraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     removeConstraintByName(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     removeEffect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     removeEffectByName(name: string): void
     /**
@@ -11975,6 +12714,7 @@ class Model {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     removeTransition(name: string): void
     /**
@@ -11990,10 +12730,13 @@ class Model {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param newParent the new #ClutterActor parent
      */
     reparent(newParent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param oldChild the child of `self` to replace
+     * @param newChild the #ClutterActor to replace `old_child`
      */
     replaceChild(oldChild: Clutter.Actor, newChild: Clutter.Actor): void
     /**
@@ -12086,6 +12829,8 @@ class Model {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     setAllocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -12093,6 +12838,8 @@ class Model {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     setAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -12104,6 +12851,7 @@ class Model {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     setAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -12116,6 +12864,7 @@ class Model {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     setBackgroundColor(color?: Clutter.Color | null): void
     /**
@@ -12126,6 +12875,8 @@ class Model {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildAboveSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -12134,6 +12885,8 @@ class Model {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index the new index for `child`
      */
     setChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -12144,6 +12897,8 @@ class Model {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildBelowSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -12154,21 +12909,28 @@ class Model {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     setChildTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     setClip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clipSet %TRUE to apply a clip tracking the allocation
      */
     setClipToAllocation(clipSet: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     setContent(content?: Clutter.Content | null): void
     /**
@@ -12178,12 +12940,14 @@ class Model {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     setContentGravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     setContentRepeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -12193,6 +12957,8 @@ class Model {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param minFilter the minification filter for the content
+     * @param magFilter the magnification filter for the content
      */
     setContentScalingFilters(minFilter: Clutter.ScalingFilter, magFilter: Clutter.ScalingFilter): void
     /**
@@ -12200,32 +12966,38 @@ class Model {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     setDepth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     setEasingDelay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     setEasingDuration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     setEasingMode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param isSet whether to use fixed position
      */
     setFixedPositionSet(isSet: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     setFlags(flags: Clutter.ActorFlags): void
     /**
@@ -12233,6 +13005,7 @@ class Model {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     setGeometry(geometry: Clutter.Geometry): void
     /**
@@ -12243,6 +13016,7 @@ class Model {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     setHeight(height: number): void
     /**
@@ -12252,39 +13026,46 @@ class Model {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     setLayoutManager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     setMargin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     setName(name: string): void
     /**
@@ -12345,6 +13126,7 @@ class Model {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     setOffscreenRedirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -12352,6 +13134,7 @@ class Model {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     setOpacity(opacity: number): void
     /**
@@ -12363,6 +13146,7 @@ class Model {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     setParent(parent: Clutter.Actor): void
     /**
@@ -12372,6 +13156,8 @@ class Model {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivotX the normalized X coordinate of the pivot point
+     * @param pivotY the normalized Y coordinate of the pivot point
      */
     setPivotPoint(pivotX: number, pivotY: number): void
     /**
@@ -12379,6 +13165,7 @@ class Model {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivotZ the Z coordinate of the actor's pivot point
      */
     setPivotPointZ(pivotZ: number): void
     /**
@@ -12387,10 +13174,13 @@ class Model {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     setPosition(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     setReactive(reactive: boolean): void
     /**
@@ -12399,6 +13189,7 @@ class Model {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     setRequestMode(mode: Clutter.RequestMode): void
     /**
@@ -12413,6 +13204,11 @@ class Model {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     setRotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -12424,6 +13220,8 @@ class Model {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     setRotationAngle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -12433,6 +13231,8 @@ class Model {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
      */
     setScale(scaleX: number, scaleY: number): void
     /**
@@ -12442,6 +13242,10 @@ class Model {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param centerX X coordinate of the center of the scaling
+     * @param centerY Y coordinate of the center of the scaling
      */
     setScaleFull(scaleX: number, scaleY: number, centerX: number, centerY: number): void
     /**
@@ -12453,6 +13257,9 @@ class Model {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     setScaleWithGravity(scaleX: number, scaleY: number, gravity: Clutter.Gravity): void
     /**
@@ -12461,6 +13268,7 @@ class Model {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scaleZ the scaling factor along the Z axis
      */
     setScaleZ(scaleZ: number): void
     /**
@@ -12471,21 +13279,28 @@ class Model {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     setShader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParam(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamFloat(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamInt(param: string, value: number): void
     /**
@@ -12499,6 +13314,8 @@ class Model {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     setSize(width: number, height: number): void
     /**
@@ -12512,6 +13329,7 @@ class Model {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param textDir the text direction for `self`
      */
     setTextDirection(textDir: Clutter.TextDirection): void
     /**
@@ -12520,11 +13338,15 @@ class Model {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     setTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translateX the translation along the X axis
+     * @param translateY the translation along the Y axis
+     * @param translateZ the translation along the Z axis
      */
     setTranslation(translateX: number, translateY: number, translateZ: number): void
     /**
@@ -12535,6 +13357,7 @@ class Model {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     setWidth(width: number): void
     /**
@@ -12544,6 +13367,7 @@ class Model {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     setX(x: number): void
     /**
@@ -12551,6 +13375,7 @@ class Model {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param xAlign the horizontal alignment policy
      */
     setXAlign(xAlign: Clutter.ActorAlign): void
     /**
@@ -12561,6 +13386,7 @@ class Model {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     setXExpand(expand: boolean): void
     /**
@@ -12570,6 +13396,7 @@ class Model {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     setY(y: number): void
     /**
@@ -12577,6 +13404,7 @@ class Model {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param yAlign the vertical alignment policy
      */
     setYAlign(yAlign: Clutter.ActorAlign): void
     /**
@@ -12587,12 +13415,14 @@ class Model {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     setYExpand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param zPosition the position on the Z axis
      */
     setZPosition(zPosition: number): void
     /**
@@ -12601,6 +13431,8 @@ class Model {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     setZRotationFromGravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -12642,6 +13474,8 @@ class Model {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transformStagePoint(x: number, y: number): [ /* returnType */ boolean, /* xOut */ number, /* yOut */ number ]
     /**
@@ -12706,6 +13540,7 @@ class Model {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unsetFlags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12743,6 +13578,10 @@ class Model {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12753,6 +13592,12 @@ class Model {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12776,6 +13621,7 @@ class Model {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12795,11 +13641,14 @@ class Model {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12807,6 +13656,8 @@ class Model {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12824,6 +13675,7 @@ class Model {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12869,6 +13721,7 @@ class Model {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12912,15 +13765,20 @@ class Model {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12961,6 +13819,7 @@ class Model {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12995,6 +13854,7 @@ class Model {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -13007,14 +13867,23 @@ class Model {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param propertyName the name of the animated property
+     * @param initialValue the initial value of the animation interval
+     * @param finalValue the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animateProperty(animation: Clutter.Animation, propertyName: string, initialValue: any, finalValue: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param propertyName the name of the animatable property to find
      */
     findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param propertyName the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     getInitialState(propertyName: string, value: any): void
     /**
@@ -13027,10 +13896,15 @@ class Model {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param propertyName the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolateValue(propertyName: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param propertyName the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     setFinalState(propertyName: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -13043,6 +13917,7 @@ class Model {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     addActor(actor: Clutter.Actor): void
     /**
@@ -13053,16 +13928,24 @@ class Model {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childGetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     childNotify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childSetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -13075,6 +13958,7 @@ class Model {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     createChildMeta(actor: Clutter.Actor): void
     /**
@@ -13086,11 +13970,13 @@ class Model {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroyChildMeta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param childName the name of the requested child.
      */
     findChildByName(childName: string): Clutter.Actor
     /**
@@ -13101,6 +13987,7 @@ class Model {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -13110,11 +13997,13 @@ class Model {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreachWithInternals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     getChildMeta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -13123,6 +14012,8 @@ class Model {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lowerChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -13131,6 +14022,8 @@ class Model {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raiseChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -13142,6 +14035,7 @@ class Model {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     removeActor(actor: Clutter.Actor): void
     /**
@@ -13157,11 +14051,18 @@ class Model {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parseCustomNode(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     setCustomProperty(script: Clutter.Script, name: string, value: any): void
     /**
@@ -13171,6 +14072,7 @@ class Model {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id the #ClutterScript id of the object
      */
     setId(id: string): void
     /* Signals of Clutter-1.0.Clutter.Actor */
@@ -13181,6 +14083,8 @@ class Model {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: ((box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     on(sigName: "allocation-changed", callback: (box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -13190,6 +14094,7 @@ class Model {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -13199,6 +14104,7 @@ class Model {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -13213,6 +14119,7 @@ class Model {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "captured-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -13242,6 +14149,7 @@ class Model {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "enter-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -13253,6 +14161,7 @@ class Model {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -13287,6 +14196,7 @@ class Model {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -13297,6 +14207,7 @@ class Model {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -13305,6 +14216,7 @@ class Model {
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "leave-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -13314,6 +14226,7 @@ class Model {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: ((event: Clutter.MotionEvent) => boolean)): number
     on(sigName: "motion-event", callback: (event: Clutter.MotionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -13340,6 +14253,7 @@ class Model {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param oldParent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Clutter.Actor | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Clutter.Actor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -13357,6 +14271,7 @@ class Model {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: ((color: Clutter.Color) => void)): number
     on(sigName: "pick", callback: (color: Clutter.Color) => void, after?: boolean): NodeJS.EventEmitter
@@ -13409,6 +14324,7 @@ class Model {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: ((origin: Clutter.Actor) => void)): number
     on(sigName: "queue-redraw", callback: (origin: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -13444,6 +14360,7 @@ class Model {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: ((event: Clutter.ScrollEvent) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Clutter.ScrollEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -13462,6 +14379,7 @@ class Model {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "touch-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -13474,6 +14392,8 @@ class Model {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param isFinished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: ((name: string, isFinished: boolean) => void)): number
     on(sigName: "transition-stopped", callback: (name: string, isFinished: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -13527,6 +14447,7 @@ class Model {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13537,6 +14458,7 @@ class Model {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-added", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -13546,6 +14468,7 @@ class Model {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-removed", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -13556,6 +14479,8 @@ class Model {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: ((actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14002,10 +14927,13 @@ class Model {
     static newFromFile(flags: DataFlags, filename: string): Model
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param propertyName a property name.
      */
     static classFindChildProperty(klass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static classListChildProperties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -14014,7 +14942,7 @@ interface PlyLoader_ConstructProps extends Data_ConstructProps {
 }
 class PlyLoader {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.Data */
     /**
      * Gets the bounding cuboid of the vertices in `self`. The cuboid is
@@ -14023,6 +14951,8 @@ class PlyLoader {
      * minimum x, y and z values of all the vertices and `max_vertex` will
      * contain the maximum. The extents of the model are cached so it is
      * cheap to call this function.
+     * @param minVertex A location to return the minimum vertex
+     * @param maxVertex A location to return the maximum vertex
      */
     getExtents(minVertex: Clutter.Vertex, maxVertex: Clutter.Vertex): void
     /**
@@ -14030,6 +14960,8 @@ class PlyLoader {
      * model can then be rendered using mash_data_render(). If
      * there is an error loading the file it will return %FALSE and `error`
      * will be set to a GError instance.
+     * @param flags Flags used to specify load-time modifications to the data
+     * @param filename The name of a file to load
      */
     load(flags: DataFlags, filename: string): boolean
     /**
@@ -14076,6 +15008,10 @@ class PlyLoader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14086,6 +15022,12 @@ class PlyLoader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14109,6 +15051,7 @@ class PlyLoader {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14128,11 +15071,14 @@ class PlyLoader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14140,6 +15086,8 @@ class PlyLoader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14157,6 +15105,7 @@ class PlyLoader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14202,6 +15151,7 @@ class PlyLoader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14245,15 +15195,20 @@ class PlyLoader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -14294,6 +15249,7 @@ class PlyLoader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -14328,6 +15284,7 @@ class PlyLoader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -14359,6 +15316,7 @@ class PlyLoader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15005,9 +15963,9 @@ class PointLight {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.PointLight */
     getConstantAttenuation(): number
     getLinearAttenuation(): number
@@ -15016,6 +15974,7 @@ class PointLight {
      * Sets the constant attenuation value on a light. The light intensity
      * is divided by this value. Setting a higher value will cause the
      * light to appear dimmer.
+     * @param attenuation The new value
      */
     setConstantAttenuation(attenuation: number): void
     /**
@@ -15023,6 +15982,7 @@ class PointLight {
      * is divided by this value multiplied by the distance to the
      * light. Setting a higher value will cause the intensity to dim faster
      * as the vertex moves away from the light.
+     * @param attenuation The new value
      */
     setLinearAttenuation(attenuation: number): void
     /**
@@ -15030,6 +15990,7 @@ class PointLight {
      * intensity is divided by this value multiplied by the square of the
      * distance to the light. Setting a higher value will cause the
      * intensity to dim sharply as the vertex moves away from the light.
+     * @param attenuation The new value
      */
     setQuadraticAttenuation(attenuation: number): void
     /* Methods of Mash-0.2.Mash.Light */
@@ -15055,6 +16016,8 @@ class PointLight {
      * 
      * The ‘position’ will get translated to something like
      * ‘positiong00000002’.
+     * @param shaderSource The string to append to
+     * @param snippet A snippet of GLSL
      */
     appendShader(shaderSource: GLib.String, snippet: string): void
     /**
@@ -15128,14 +16091,18 @@ class PointLight {
      * 
      * The implementation should always chain up to the #MashLight
      * implementation so that it can declare the built-in uniforms.
+     * @param uniformSource A location to append uniforms declarations to
+     * @param mainSource A location to append lighting algorithm snippets to
      */
     generateShader(uniformSource: GLib.String, mainSource: GLib.String): void
     /**
      * Retrieves the ‘ambient’ color emitted by the light.
+     * @param ambient A return location for the color
      */
     getAmbient(ambient: Clutter.Color): void
     /**
      * Retrieves the ‘diffuse’ color emitted by the light.
+     * @param diffuse A return location for the color
      */
     getDiffuse(diffuse: Clutter.Color): void
     /**
@@ -15143,10 +16110,12 @@ class PointLight {
      * transformations for its parent actors. This should be used for
      * updating uniforms that depend on the actor's transformation or
      * position.
+     * @param matrix The return location for the matrix
      */
     getModelviewMatrix(matrix: Cogl.Matrix): void
     /**
      * Retrieves the ‘specular’ color emitted by the light.
+     * @param specular A return location for the color
      */
     getSpecular(specular: Clutter.Color): void
     /**
@@ -15159,6 +16128,8 @@ class PointLight {
      * appends an actor specific string to the uniform name. This is
      * useful when uniforms have been declared like ‘position$’ within
      * mash_light_append_shader().
+     * @param program The program passed in from mash_light_update_uniforms().
+     * @param uniformName The name of a uniform
      */
     getUniformLocation(program: Cogl.Handle, uniformName: string): number
     /**
@@ -15170,6 +16141,7 @@ class PointLight {
      * light can bounce off other objects to reach it. The Mash lighting
      * model doesn't simulate this bouncing so the ambient color is often
      * used to give an approximation of the effect.
+     * @param ambient The new color value
      */
     setAmbient(ambient: Clutter.Color): void
     /**
@@ -15178,6 +16150,7 @@ class PointLight {
      * of the object is determined per-vertex using the vertex's
      * normal. The diffuse color will be darkened depending on how
      * directly the object faces the light.
+     * @param diffuse The new color value
      */
     setDiffuse(diffuse: Clutter.Color): void
     /**
@@ -15191,6 +16164,9 @@ class PointLight {
      * representing a vector. The vector will be transformed into eye
      * space according to the inverse transposed matrix of `light` so that
      * it won't change direction for non-uniform scaling transformations.
+     * @param program 
+     * @param uniformLocation The location of the uniform
+     * @param directionIn The untransformed direction uniform
      */
     setDirectionUniform(program: Cogl.Handle, uniformLocation: number, directionIn: number): void
     /**
@@ -15201,6 +16177,7 @@ class PointLight {
      * bright light above it, this property will allow you add a bright
      * part where the light can directly reflect off the ball into the
      * eye. It is common to set this to a bright white value.
+     * @param specular The new color value
      */
     setSpecular(specular: Clutter.Color): void
     /**
@@ -15222,6 +16199,7 @@ class PointLight {
      * uniforms. mash_light_get_uniform_location() can be used to make
      * this easier when a uniform is named uniquely using the ‘$’ symbol
      * in mash_light_append_shader().
+     * @param program A #CoglProgram containing the uniforms
      */
     updateUniforms(program: Cogl.Handle): void
     /* Methods of Clutter-1.0.Clutter.Actor */
@@ -15233,6 +16211,7 @@ class PointLight {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     addAction(action: Clutter.Action): void
     /**
@@ -15247,6 +16226,8 @@ class PointLight {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     addActionWithName(name: string, action: Clutter.Action): void
     /**
@@ -15260,6 +16241,7 @@ class PointLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     addChild(child: Clutter.Actor): void
     /**
@@ -15269,6 +16251,7 @@ class PointLight {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     addConstraint(constraint: Clutter.Constraint): void
     /**
@@ -15283,6 +16266,8 @@ class PointLight {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     addConstraintWithName(name: string, constraint: Clutter.Constraint): void
     /**
@@ -15294,6 +16279,7 @@ class PointLight {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     addEffect(effect: Clutter.Effect): void
     /**
@@ -15312,6 +16298,8 @@ class PointLight {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     addEffectWithName(name: string, effect: Clutter.Effect): void
     /**
@@ -15326,6 +16314,8 @@ class PointLight {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     addTransition(name: string, transition: Clutter.Transition): void
     /**
@@ -15349,6 +16339,8 @@ class PointLight {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -15368,6 +16360,12 @@ class PointLight {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param xAlign the horizontal alignment, between 0 and 1
+     * @param yAlign the vertical alignment, between 0 and 1
+     * @param xFill whether the actor should fill horizontally
+     * @param yFill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocateAlignFill(box: Clutter.ActorBox, xAlign: number, yAlign: number, xFill: boolean, yFill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -15424,6 +16422,11 @@ class PointLight {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param availableWidth the maximum available width, or -1 to use the   actor's natural width
+     * @param availableHeight the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocateAvailableSize(x: number, y: number, availableWidth: number, availableHeight: number, flags: Clutter.AllocationFlags): void
     /**
@@ -15439,6 +16442,7 @@ class PointLight {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocatePreferredSize(flags: Clutter.AllocationFlags): void
     /**
@@ -15456,6 +16460,9 @@ class PointLight {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithAlphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -15473,6 +16480,10 @@ class PointLight {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithTimelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -15485,6 +16496,10 @@ class PointLight {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -15496,12 +16511,15 @@ class PointLight {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     applyRelativeTransformToPoint(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     applyTransformToPoint(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -15517,6 +16535,8 @@ class PointLight {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param createChildFunc a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bindModel(model: Gio.ListModel | null, createChildFunc: Clutter.ActorCreateChildFunc): void
     /**
@@ -15535,6 +16555,7 @@ class PointLight {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -15563,6 +16584,7 @@ class PointLight {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -15613,6 +16635,8 @@ class PointLight {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -15644,6 +16668,7 @@ class PointLight {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     getAction(name: string): Clutter.Action
     /**
@@ -15688,6 +16713,7 @@ class PointLight {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     getAllocationVertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -15712,6 +16738,7 @@ class PointLight {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index the position in the list of children
      */
     getChildAtIndex(index: number): Clutter.Actor
     /**
@@ -15735,6 +16762,7 @@ class PointLight {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     getConstraint(name: string): Clutter.Constraint
     /**
@@ -15809,6 +16837,7 @@ class PointLight {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     getEffect(name: string): Clutter.Effect
     /**
@@ -16022,6 +17051,7 @@ class PointLight {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forWidth available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     getPreferredHeight(forWidth: number): [ /* minHeightP */ number | null, /* naturalHeightP */ number | null ]
     /**
@@ -16048,6 +17078,7 @@ class PointLight {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forHeight available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     getPreferredWidth(forHeight: number): [ /* minWidthP */ number | null, /* naturalWidthP */ number | null ]
     /**
@@ -16070,10 +17101,12 @@ class PointLight {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     getRotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     getRotationAngle(axis: Clutter.RotateAxis): number
     /**
@@ -16147,6 +17180,7 @@ class PointLight {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relativeToAncestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     getTransformedPaintVolume(relativeToAncestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -16200,6 +17234,7 @@ class PointLight {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     getTransition(name: string): Clutter.Transition
     /**
@@ -16368,6 +17403,8 @@ class PointLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildAbove(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -16383,6 +17420,8 @@ class PointLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index the index
      */
     insertChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -16398,6 +17437,8 @@ class PointLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildBelow(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -16443,6 +17484,7 @@ class PointLight {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -16467,6 +17509,8 @@ class PointLight {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     moveAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -16479,6 +17523,7 @@ class PointLight {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     moveAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -16489,6 +17534,8 @@ class PointLight {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     moveBy(dx: number, dy: number): void
     /**
@@ -16500,6 +17547,7 @@ class PointLight {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needsExpand(orientation: Clutter.Orientation): boolean
     /**
@@ -16593,6 +17641,7 @@ class PointLight {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queueRedrawWithClip(clip?: cairo.RectangleInt | null): void
     /**
@@ -16610,6 +17659,7 @@ class PointLight {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -16640,11 +17690,13 @@ class PointLight {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     removeAction(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     removeActionByName(name: string): void
     /**
@@ -16672,6 +17724,7 @@ class PointLight {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     removeChild(child: Clutter.Actor): void
     /**
@@ -16682,22 +17735,26 @@ class PointLight {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     removeConstraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     removeConstraintByName(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     removeEffect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     removeEffectByName(name: string): void
     /**
@@ -16708,6 +17765,7 @@ class PointLight {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     removeTransition(name: string): void
     /**
@@ -16723,10 +17781,13 @@ class PointLight {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param newParent the new #ClutterActor parent
      */
     reparent(newParent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param oldChild the child of `self` to replace
+     * @param newChild the #ClutterActor to replace `old_child`
      */
     replaceChild(oldChild: Clutter.Actor, newChild: Clutter.Actor): void
     /**
@@ -16819,6 +17880,8 @@ class PointLight {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     setAllocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -16826,6 +17889,8 @@ class PointLight {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     setAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -16837,6 +17902,7 @@ class PointLight {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     setAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -16849,6 +17915,7 @@ class PointLight {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     setBackgroundColor(color?: Clutter.Color | null): void
     /**
@@ -16859,6 +17926,8 @@ class PointLight {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildAboveSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -16867,6 +17936,8 @@ class PointLight {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index the new index for `child`
      */
     setChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -16877,6 +17948,8 @@ class PointLight {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildBelowSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -16887,21 +17960,28 @@ class PointLight {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     setChildTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     setClip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clipSet %TRUE to apply a clip tracking the allocation
      */
     setClipToAllocation(clipSet: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     setContent(content?: Clutter.Content | null): void
     /**
@@ -16911,12 +17991,14 @@ class PointLight {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     setContentGravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     setContentRepeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -16926,6 +18008,8 @@ class PointLight {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param minFilter the minification filter for the content
+     * @param magFilter the magnification filter for the content
      */
     setContentScalingFilters(minFilter: Clutter.ScalingFilter, magFilter: Clutter.ScalingFilter): void
     /**
@@ -16933,32 +18017,38 @@ class PointLight {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     setDepth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     setEasingDelay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     setEasingDuration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     setEasingMode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param isSet whether to use fixed position
      */
     setFixedPositionSet(isSet: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     setFlags(flags: Clutter.ActorFlags): void
     /**
@@ -16966,6 +18056,7 @@ class PointLight {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     setGeometry(geometry: Clutter.Geometry): void
     /**
@@ -16976,6 +18067,7 @@ class PointLight {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     setHeight(height: number): void
     /**
@@ -16985,39 +18077,46 @@ class PointLight {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     setLayoutManager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     setMargin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     setName(name: string): void
     /**
@@ -17078,6 +18177,7 @@ class PointLight {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     setOffscreenRedirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -17085,6 +18185,7 @@ class PointLight {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     setOpacity(opacity: number): void
     /**
@@ -17096,6 +18197,7 @@ class PointLight {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     setParent(parent: Clutter.Actor): void
     /**
@@ -17105,6 +18207,8 @@ class PointLight {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivotX the normalized X coordinate of the pivot point
+     * @param pivotY the normalized Y coordinate of the pivot point
      */
     setPivotPoint(pivotX: number, pivotY: number): void
     /**
@@ -17112,6 +18216,7 @@ class PointLight {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivotZ the Z coordinate of the actor's pivot point
      */
     setPivotPointZ(pivotZ: number): void
     /**
@@ -17120,10 +18225,13 @@ class PointLight {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     setPosition(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     setReactive(reactive: boolean): void
     /**
@@ -17132,6 +18240,7 @@ class PointLight {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     setRequestMode(mode: Clutter.RequestMode): void
     /**
@@ -17146,6 +18255,11 @@ class PointLight {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     setRotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -17157,6 +18271,8 @@ class PointLight {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     setRotationAngle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -17166,6 +18282,8 @@ class PointLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
      */
     setScale(scaleX: number, scaleY: number): void
     /**
@@ -17175,6 +18293,10 @@ class PointLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param centerX X coordinate of the center of the scaling
+     * @param centerY Y coordinate of the center of the scaling
      */
     setScaleFull(scaleX: number, scaleY: number, centerX: number, centerY: number): void
     /**
@@ -17186,6 +18308,9 @@ class PointLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     setScaleWithGravity(scaleX: number, scaleY: number, gravity: Clutter.Gravity): void
     /**
@@ -17194,6 +18319,7 @@ class PointLight {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scaleZ the scaling factor along the Z axis
      */
     setScaleZ(scaleZ: number): void
     /**
@@ -17204,21 +18330,28 @@ class PointLight {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     setShader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParam(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamFloat(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamInt(param: string, value: number): void
     /**
@@ -17232,6 +18365,8 @@ class PointLight {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     setSize(width: number, height: number): void
     /**
@@ -17245,6 +18380,7 @@ class PointLight {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param textDir the text direction for `self`
      */
     setTextDirection(textDir: Clutter.TextDirection): void
     /**
@@ -17253,11 +18389,15 @@ class PointLight {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     setTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translateX the translation along the X axis
+     * @param translateY the translation along the Y axis
+     * @param translateZ the translation along the Z axis
      */
     setTranslation(translateX: number, translateY: number, translateZ: number): void
     /**
@@ -17268,6 +18408,7 @@ class PointLight {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     setWidth(width: number): void
     /**
@@ -17277,6 +18418,7 @@ class PointLight {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     setX(x: number): void
     /**
@@ -17284,6 +18426,7 @@ class PointLight {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param xAlign the horizontal alignment policy
      */
     setXAlign(xAlign: Clutter.ActorAlign): void
     /**
@@ -17294,6 +18437,7 @@ class PointLight {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     setXExpand(expand: boolean): void
     /**
@@ -17303,6 +18447,7 @@ class PointLight {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     setY(y: number): void
     /**
@@ -17310,6 +18455,7 @@ class PointLight {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param yAlign the vertical alignment policy
      */
     setYAlign(yAlign: Clutter.ActorAlign): void
     /**
@@ -17320,12 +18466,14 @@ class PointLight {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     setYExpand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param zPosition the position on the Z axis
      */
     setZPosition(zPosition: number): void
     /**
@@ -17334,6 +18482,8 @@ class PointLight {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     setZRotationFromGravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -17375,6 +18525,8 @@ class PointLight {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transformStagePoint(x: number, y: number): [ /* returnType */ boolean, /* xOut */ number, /* yOut */ number ]
     /**
@@ -17439,6 +18591,7 @@ class PointLight {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unsetFlags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -17476,6 +18629,10 @@ class PointLight {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17486,6 +18643,12 @@ class PointLight {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17509,6 +18672,7 @@ class PointLight {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17528,11 +18692,14 @@ class PointLight {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17540,6 +18707,8 @@ class PointLight {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17557,6 +18726,7 @@ class PointLight {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17602,6 +18772,7 @@ class PointLight {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17645,15 +18816,20 @@ class PointLight {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17694,6 +18870,7 @@ class PointLight {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17728,6 +18905,7 @@ class PointLight {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -17740,14 +18918,23 @@ class PointLight {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param propertyName the name of the animated property
+     * @param initialValue the initial value of the animation interval
+     * @param finalValue the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animateProperty(animation: Clutter.Animation, propertyName: string, initialValue: any, finalValue: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param propertyName the name of the animatable property to find
      */
     findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param propertyName the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     getInitialState(propertyName: string, value: any): void
     /**
@@ -17760,10 +18947,15 @@ class PointLight {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param propertyName the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolateValue(propertyName: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param propertyName the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     setFinalState(propertyName: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -17776,6 +18968,7 @@ class PointLight {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     addActor(actor: Clutter.Actor): void
     /**
@@ -17786,16 +18979,24 @@ class PointLight {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childGetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     childNotify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childSetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -17808,6 +19009,7 @@ class PointLight {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     createChildMeta(actor: Clutter.Actor): void
     /**
@@ -17819,11 +19021,13 @@ class PointLight {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroyChildMeta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param childName the name of the requested child.
      */
     findChildByName(childName: string): Clutter.Actor
     /**
@@ -17834,6 +19038,7 @@ class PointLight {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -17843,11 +19048,13 @@ class PointLight {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreachWithInternals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     getChildMeta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -17856,6 +19063,8 @@ class PointLight {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lowerChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -17864,6 +19073,8 @@ class PointLight {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raiseChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -17875,6 +19086,7 @@ class PointLight {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     removeActor(actor: Clutter.Actor): void
     /**
@@ -17890,11 +19102,18 @@ class PointLight {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parseCustomNode(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     setCustomProperty(script: Clutter.Script, name: string, value: any): void
     /**
@@ -17904,6 +19123,7 @@ class PointLight {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id the #ClutterScript id of the object
      */
     setId(id: string): void
     /* Signals of Clutter-1.0.Clutter.Actor */
@@ -17914,6 +19134,8 @@ class PointLight {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: ((box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     on(sigName: "allocation-changed", callback: (box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -17923,6 +19145,7 @@ class PointLight {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -17932,6 +19155,7 @@ class PointLight {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -17946,6 +19170,7 @@ class PointLight {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "captured-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -17975,6 +19200,7 @@ class PointLight {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "enter-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -17986,6 +19212,7 @@ class PointLight {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -18020,6 +19247,7 @@ class PointLight {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -18030,6 +19258,7 @@ class PointLight {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -18038,6 +19267,7 @@ class PointLight {
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "leave-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -18047,6 +19277,7 @@ class PointLight {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: ((event: Clutter.MotionEvent) => boolean)): number
     on(sigName: "motion-event", callback: (event: Clutter.MotionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -18073,6 +19304,7 @@ class PointLight {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param oldParent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Clutter.Actor | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Clutter.Actor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18090,6 +19322,7 @@ class PointLight {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: ((color: Clutter.Color) => void)): number
     on(sigName: "pick", callback: (color: Clutter.Color) => void, after?: boolean): NodeJS.EventEmitter
@@ -18142,6 +19375,7 @@ class PointLight {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: ((origin: Clutter.Actor) => void)): number
     on(sigName: "queue-redraw", callback: (origin: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -18177,6 +19411,7 @@ class PointLight {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: ((event: Clutter.ScrollEvent) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Clutter.ScrollEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -18195,6 +19430,7 @@ class PointLight {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "touch-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -18207,6 +19443,8 @@ class PointLight {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param isFinished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: ((name: string, isFinished: boolean) => void)): number
     on(sigName: "transition-stopped", callback: (name: string, isFinished: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -18260,6 +19498,7 @@ class PointLight {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18270,6 +19509,7 @@ class PointLight {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-added", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -18279,6 +19519,7 @@ class PointLight {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-removed", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -18289,6 +19530,8 @@ class PointLight {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: ((actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18749,10 +19992,13 @@ class PointLight {
     static new(): PointLight
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param propertyName a property name.
      */
     static classFindChildProperty(klass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static classListChildProperties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -19387,9 +20633,9 @@ class SpotLight {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Mash-0.2.Mash.SpotLight */
     getSpotCutoff(): number
     getSpotExponent(): number
@@ -19397,6 +20643,7 @@ class SpotLight {
      * Sets the spot cut off value on a light. This is an angle in degrees
      * which defines the shape of the cone of light emitted from the
      * light. It should be within the range 0° to 90°
+     * @param cutoff The new value
      */
     setSpotCutoff(cutoff: number): void
     /**
@@ -19404,6 +20651,7 @@ class SpotLight {
      * multiplied by the angle between the light direction and the vector
      * to the vertex raised to the power of the exponent. A higher
      * exponent value makes the cone of the light appear smaller.
+     * @param exponent The new value
      */
     setSpotExponent(exponent: number): void
     /* Methods of Mash-0.2.Mash.PointLight */
@@ -19414,6 +20662,7 @@ class SpotLight {
      * Sets the constant attenuation value on a light. The light intensity
      * is divided by this value. Setting a higher value will cause the
      * light to appear dimmer.
+     * @param attenuation The new value
      */
     setConstantAttenuation(attenuation: number): void
     /**
@@ -19421,6 +20670,7 @@ class SpotLight {
      * is divided by this value multiplied by the distance to the
      * light. Setting a higher value will cause the intensity to dim faster
      * as the vertex moves away from the light.
+     * @param attenuation The new value
      */
     setLinearAttenuation(attenuation: number): void
     /**
@@ -19428,6 +20678,7 @@ class SpotLight {
      * intensity is divided by this value multiplied by the square of the
      * distance to the light. Setting a higher value will cause the
      * intensity to dim sharply as the vertex moves away from the light.
+     * @param attenuation The new value
      */
     setQuadraticAttenuation(attenuation: number): void
     /* Methods of Mash-0.2.Mash.Light */
@@ -19453,6 +20704,8 @@ class SpotLight {
      * 
      * The ‘position’ will get translated to something like
      * ‘positiong00000002’.
+     * @param shaderSource The string to append to
+     * @param snippet A snippet of GLSL
      */
     appendShader(shaderSource: GLib.String, snippet: string): void
     /**
@@ -19526,14 +20779,18 @@ class SpotLight {
      * 
      * The implementation should always chain up to the #MashLight
      * implementation so that it can declare the built-in uniforms.
+     * @param uniformSource A location to append uniforms declarations to
+     * @param mainSource A location to append lighting algorithm snippets to
      */
     generateShader(uniformSource: GLib.String, mainSource: GLib.String): void
     /**
      * Retrieves the ‘ambient’ color emitted by the light.
+     * @param ambient A return location for the color
      */
     getAmbient(ambient: Clutter.Color): void
     /**
      * Retrieves the ‘diffuse’ color emitted by the light.
+     * @param diffuse A return location for the color
      */
     getDiffuse(diffuse: Clutter.Color): void
     /**
@@ -19541,10 +20798,12 @@ class SpotLight {
      * transformations for its parent actors. This should be used for
      * updating uniforms that depend on the actor's transformation or
      * position.
+     * @param matrix The return location for the matrix
      */
     getModelviewMatrix(matrix: Cogl.Matrix): void
     /**
      * Retrieves the ‘specular’ color emitted by the light.
+     * @param specular A return location for the color
      */
     getSpecular(specular: Clutter.Color): void
     /**
@@ -19557,6 +20816,8 @@ class SpotLight {
      * appends an actor specific string to the uniform name. This is
      * useful when uniforms have been declared like ‘position$’ within
      * mash_light_append_shader().
+     * @param program The program passed in from mash_light_update_uniforms().
+     * @param uniformName The name of a uniform
      */
     getUniformLocation(program: Cogl.Handle, uniformName: string): number
     /**
@@ -19568,6 +20829,7 @@ class SpotLight {
      * light can bounce off other objects to reach it. The Mash lighting
      * model doesn't simulate this bouncing so the ambient color is often
      * used to give an approximation of the effect.
+     * @param ambient The new color value
      */
     setAmbient(ambient: Clutter.Color): void
     /**
@@ -19576,6 +20838,7 @@ class SpotLight {
      * of the object is determined per-vertex using the vertex's
      * normal. The diffuse color will be darkened depending on how
      * directly the object faces the light.
+     * @param diffuse The new color value
      */
     setDiffuse(diffuse: Clutter.Color): void
     /**
@@ -19589,6 +20852,9 @@ class SpotLight {
      * representing a vector. The vector will be transformed into eye
      * space according to the inverse transposed matrix of `light` so that
      * it won't change direction for non-uniform scaling transformations.
+     * @param program 
+     * @param uniformLocation The location of the uniform
+     * @param directionIn The untransformed direction uniform
      */
     setDirectionUniform(program: Cogl.Handle, uniformLocation: number, directionIn: number): void
     /**
@@ -19599,6 +20865,7 @@ class SpotLight {
      * bright light above it, this property will allow you add a bright
      * part where the light can directly reflect off the ball into the
      * eye. It is common to set this to a bright white value.
+     * @param specular The new color value
      */
     setSpecular(specular: Clutter.Color): void
     /**
@@ -19620,6 +20887,7 @@ class SpotLight {
      * uniforms. mash_light_get_uniform_location() can be used to make
      * this easier when a uniform is named uniquely using the ‘$’ symbol
      * in mash_light_append_shader().
+     * @param program A #CoglProgram containing the uniforms
      */
     updateUniforms(program: Cogl.Handle): void
     /* Methods of Clutter-1.0.Clutter.Actor */
@@ -19631,6 +20899,7 @@ class SpotLight {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     addAction(action: Clutter.Action): void
     /**
@@ -19645,6 +20914,8 @@ class SpotLight {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     addActionWithName(name: string, action: Clutter.Action): void
     /**
@@ -19658,6 +20929,7 @@ class SpotLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     addChild(child: Clutter.Actor): void
     /**
@@ -19667,6 +20939,7 @@ class SpotLight {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     addConstraint(constraint: Clutter.Constraint): void
     /**
@@ -19681,6 +20954,8 @@ class SpotLight {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     addConstraintWithName(name: string, constraint: Clutter.Constraint): void
     /**
@@ -19692,6 +20967,7 @@ class SpotLight {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     addEffect(effect: Clutter.Effect): void
     /**
@@ -19710,6 +20986,8 @@ class SpotLight {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     addEffectWithName(name: string, effect: Clutter.Effect): void
     /**
@@ -19724,6 +21002,8 @@ class SpotLight {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     addTransition(name: string, transition: Clutter.Transition): void
     /**
@@ -19747,6 +21027,8 @@ class SpotLight {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -19766,6 +21048,12 @@ class SpotLight {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param xAlign the horizontal alignment, between 0 and 1
+     * @param yAlign the vertical alignment, between 0 and 1
+     * @param xFill whether the actor should fill horizontally
+     * @param yFill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocateAlignFill(box: Clutter.ActorBox, xAlign: number, yAlign: number, xFill: boolean, yFill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -19822,6 +21110,11 @@ class SpotLight {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param availableWidth the maximum available width, or -1 to use the   actor's natural width
+     * @param availableHeight the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocateAvailableSize(x: number, y: number, availableWidth: number, availableHeight: number, flags: Clutter.AllocationFlags): void
     /**
@@ -19837,6 +21130,7 @@ class SpotLight {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocatePreferredSize(flags: Clutter.AllocationFlags): void
     /**
@@ -19854,6 +21148,9 @@ class SpotLight {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithAlphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -19871,6 +21168,10 @@ class SpotLight {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithTimelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -19883,6 +21184,10 @@ class SpotLight {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -19894,12 +21199,15 @@ class SpotLight {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     applyRelativeTransformToPoint(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     applyTransformToPoint(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -19915,6 +21223,8 @@ class SpotLight {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param createChildFunc a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bindModel(model: Gio.ListModel | null, createChildFunc: Clutter.ActorCreateChildFunc): void
     /**
@@ -19933,6 +21243,7 @@ class SpotLight {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -19961,6 +21272,7 @@ class SpotLight {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -20011,6 +21323,8 @@ class SpotLight {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -20042,6 +21356,7 @@ class SpotLight {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     getAction(name: string): Clutter.Action
     /**
@@ -20086,6 +21401,7 @@ class SpotLight {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     getAllocationVertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -20110,6 +21426,7 @@ class SpotLight {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index the position in the list of children
      */
     getChildAtIndex(index: number): Clutter.Actor
     /**
@@ -20133,6 +21450,7 @@ class SpotLight {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     getConstraint(name: string): Clutter.Constraint
     /**
@@ -20207,6 +21525,7 @@ class SpotLight {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     getEffect(name: string): Clutter.Effect
     /**
@@ -20420,6 +21739,7 @@ class SpotLight {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forWidth available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     getPreferredHeight(forWidth: number): [ /* minHeightP */ number | null, /* naturalHeightP */ number | null ]
     /**
@@ -20446,6 +21766,7 @@ class SpotLight {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forHeight available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     getPreferredWidth(forHeight: number): [ /* minWidthP */ number | null, /* naturalWidthP */ number | null ]
     /**
@@ -20468,10 +21789,12 @@ class SpotLight {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     getRotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     getRotationAngle(axis: Clutter.RotateAxis): number
     /**
@@ -20545,6 +21868,7 @@ class SpotLight {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relativeToAncestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     getTransformedPaintVolume(relativeToAncestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -20598,6 +21922,7 @@ class SpotLight {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     getTransition(name: string): Clutter.Transition
     /**
@@ -20766,6 +22091,8 @@ class SpotLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildAbove(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -20781,6 +22108,8 @@ class SpotLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index the index
      */
     insertChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -20796,6 +22125,8 @@ class SpotLight {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildBelow(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -20841,6 +22172,7 @@ class SpotLight {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -20865,6 +22197,8 @@ class SpotLight {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     moveAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -20877,6 +22211,7 @@ class SpotLight {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     moveAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -20887,6 +22222,8 @@ class SpotLight {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     moveBy(dx: number, dy: number): void
     /**
@@ -20898,6 +22235,7 @@ class SpotLight {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needsExpand(orientation: Clutter.Orientation): boolean
     /**
@@ -20991,6 +22329,7 @@ class SpotLight {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queueRedrawWithClip(clip?: cairo.RectangleInt | null): void
     /**
@@ -21008,6 +22347,7 @@ class SpotLight {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -21038,11 +22378,13 @@ class SpotLight {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     removeAction(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     removeActionByName(name: string): void
     /**
@@ -21070,6 +22412,7 @@ class SpotLight {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     removeChild(child: Clutter.Actor): void
     /**
@@ -21080,22 +22423,26 @@ class SpotLight {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     removeConstraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     removeConstraintByName(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     removeEffect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     removeEffectByName(name: string): void
     /**
@@ -21106,6 +22453,7 @@ class SpotLight {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     removeTransition(name: string): void
     /**
@@ -21121,10 +22469,13 @@ class SpotLight {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param newParent the new #ClutterActor parent
      */
     reparent(newParent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param oldChild the child of `self` to replace
+     * @param newChild the #ClutterActor to replace `old_child`
      */
     replaceChild(oldChild: Clutter.Actor, newChild: Clutter.Actor): void
     /**
@@ -21217,6 +22568,8 @@ class SpotLight {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     setAllocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -21224,6 +22577,8 @@ class SpotLight {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     setAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -21235,6 +22590,7 @@ class SpotLight {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     setAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -21247,6 +22603,7 @@ class SpotLight {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     setBackgroundColor(color?: Clutter.Color | null): void
     /**
@@ -21257,6 +22614,8 @@ class SpotLight {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildAboveSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -21265,6 +22624,8 @@ class SpotLight {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index the new index for `child`
      */
     setChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -21275,6 +22636,8 @@ class SpotLight {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildBelowSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -21285,21 +22648,28 @@ class SpotLight {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     setChildTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     setClip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clipSet %TRUE to apply a clip tracking the allocation
      */
     setClipToAllocation(clipSet: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     setContent(content?: Clutter.Content | null): void
     /**
@@ -21309,12 +22679,14 @@ class SpotLight {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     setContentGravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     setContentRepeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -21324,6 +22696,8 @@ class SpotLight {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param minFilter the minification filter for the content
+     * @param magFilter the magnification filter for the content
      */
     setContentScalingFilters(minFilter: Clutter.ScalingFilter, magFilter: Clutter.ScalingFilter): void
     /**
@@ -21331,32 +22705,38 @@ class SpotLight {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     setDepth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     setEasingDelay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     setEasingDuration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     setEasingMode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param isSet whether to use fixed position
      */
     setFixedPositionSet(isSet: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     setFlags(flags: Clutter.ActorFlags): void
     /**
@@ -21364,6 +22744,7 @@ class SpotLight {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     setGeometry(geometry: Clutter.Geometry): void
     /**
@@ -21374,6 +22755,7 @@ class SpotLight {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     setHeight(height: number): void
     /**
@@ -21383,39 +22765,46 @@ class SpotLight {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     setLayoutManager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     setMargin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     setName(name: string): void
     /**
@@ -21476,6 +22865,7 @@ class SpotLight {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     setOffscreenRedirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -21483,6 +22873,7 @@ class SpotLight {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     setOpacity(opacity: number): void
     /**
@@ -21494,6 +22885,7 @@ class SpotLight {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     setParent(parent: Clutter.Actor): void
     /**
@@ -21503,6 +22895,8 @@ class SpotLight {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivotX the normalized X coordinate of the pivot point
+     * @param pivotY the normalized Y coordinate of the pivot point
      */
     setPivotPoint(pivotX: number, pivotY: number): void
     /**
@@ -21510,6 +22904,7 @@ class SpotLight {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivotZ the Z coordinate of the actor's pivot point
      */
     setPivotPointZ(pivotZ: number): void
     /**
@@ -21518,10 +22913,13 @@ class SpotLight {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     setPosition(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     setReactive(reactive: boolean): void
     /**
@@ -21530,6 +22928,7 @@ class SpotLight {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     setRequestMode(mode: Clutter.RequestMode): void
     /**
@@ -21544,6 +22943,11 @@ class SpotLight {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     setRotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -21555,6 +22959,8 @@ class SpotLight {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     setRotationAngle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -21564,6 +22970,8 @@ class SpotLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
      */
     setScale(scaleX: number, scaleY: number): void
     /**
@@ -21573,6 +22981,10 @@ class SpotLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param centerX X coordinate of the center of the scaling
+     * @param centerY Y coordinate of the center of the scaling
      */
     setScaleFull(scaleX: number, scaleY: number, centerX: number, centerY: number): void
     /**
@@ -21584,6 +22996,9 @@ class SpotLight {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     setScaleWithGravity(scaleX: number, scaleY: number, gravity: Clutter.Gravity): void
     /**
@@ -21592,6 +23007,7 @@ class SpotLight {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scaleZ the scaling factor along the Z axis
      */
     setScaleZ(scaleZ: number): void
     /**
@@ -21602,21 +23018,28 @@ class SpotLight {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     setShader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParam(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamFloat(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamInt(param: string, value: number): void
     /**
@@ -21630,6 +23053,8 @@ class SpotLight {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     setSize(width: number, height: number): void
     /**
@@ -21643,6 +23068,7 @@ class SpotLight {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param textDir the text direction for `self`
      */
     setTextDirection(textDir: Clutter.TextDirection): void
     /**
@@ -21651,11 +23077,15 @@ class SpotLight {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     setTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translateX the translation along the X axis
+     * @param translateY the translation along the Y axis
+     * @param translateZ the translation along the Z axis
      */
     setTranslation(translateX: number, translateY: number, translateZ: number): void
     /**
@@ -21666,6 +23096,7 @@ class SpotLight {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     setWidth(width: number): void
     /**
@@ -21675,6 +23106,7 @@ class SpotLight {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     setX(x: number): void
     /**
@@ -21682,6 +23114,7 @@ class SpotLight {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param xAlign the horizontal alignment policy
      */
     setXAlign(xAlign: Clutter.ActorAlign): void
     /**
@@ -21692,6 +23125,7 @@ class SpotLight {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     setXExpand(expand: boolean): void
     /**
@@ -21701,6 +23135,7 @@ class SpotLight {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     setY(y: number): void
     /**
@@ -21708,6 +23143,7 @@ class SpotLight {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param yAlign the vertical alignment policy
      */
     setYAlign(yAlign: Clutter.ActorAlign): void
     /**
@@ -21718,12 +23154,14 @@ class SpotLight {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     setYExpand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param zPosition the position on the Z axis
      */
     setZPosition(zPosition: number): void
     /**
@@ -21732,6 +23170,8 @@ class SpotLight {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     setZRotationFromGravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -21773,6 +23213,8 @@ class SpotLight {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transformStagePoint(x: number, y: number): [ /* returnType */ boolean, /* xOut */ number, /* yOut */ number ]
     /**
@@ -21837,6 +23279,7 @@ class SpotLight {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unsetFlags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -21874,6 +23317,10 @@ class SpotLight {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21884,6 +23331,12 @@ class SpotLight {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -21907,6 +23360,7 @@ class SpotLight {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -21926,11 +23380,14 @@ class SpotLight {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -21938,6 +23395,8 @@ class SpotLight {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21955,6 +23414,7 @@ class SpotLight {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -22000,6 +23460,7 @@ class SpotLight {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -22043,15 +23504,20 @@ class SpotLight {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -22092,6 +23558,7 @@ class SpotLight {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -22126,6 +23593,7 @@ class SpotLight {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -22138,14 +23606,23 @@ class SpotLight {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param propertyName the name of the animated property
+     * @param initialValue the initial value of the animation interval
+     * @param finalValue the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animateProperty(animation: Clutter.Animation, propertyName: string, initialValue: any, finalValue: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param propertyName the name of the animatable property to find
      */
     findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param propertyName the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     getInitialState(propertyName: string, value: any): void
     /**
@@ -22158,10 +23635,15 @@ class SpotLight {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param propertyName the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolateValue(propertyName: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param propertyName the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     setFinalState(propertyName: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -22174,6 +23656,7 @@ class SpotLight {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     addActor(actor: Clutter.Actor): void
     /**
@@ -22184,16 +23667,24 @@ class SpotLight {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childGetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     childNotify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childSetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -22206,6 +23697,7 @@ class SpotLight {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     createChildMeta(actor: Clutter.Actor): void
     /**
@@ -22217,11 +23709,13 @@ class SpotLight {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroyChildMeta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param childName the name of the requested child.
      */
     findChildByName(childName: string): Clutter.Actor
     /**
@@ -22232,6 +23726,7 @@ class SpotLight {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -22241,11 +23736,13 @@ class SpotLight {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreachWithInternals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     getChildMeta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -22254,6 +23751,8 @@ class SpotLight {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lowerChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -22262,6 +23761,8 @@ class SpotLight {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raiseChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -22273,6 +23774,7 @@ class SpotLight {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     removeActor(actor: Clutter.Actor): void
     /**
@@ -22288,11 +23790,18 @@ class SpotLight {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parseCustomNode(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     setCustomProperty(script: Clutter.Script, name: string, value: any): void
     /**
@@ -22302,6 +23811,7 @@ class SpotLight {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id the #ClutterScript id of the object
      */
     setId(id: string): void
     /* Signals of Clutter-1.0.Clutter.Actor */
@@ -22312,6 +23822,8 @@ class SpotLight {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: ((box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     on(sigName: "allocation-changed", callback: (box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -22321,6 +23833,7 @@ class SpotLight {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -22330,6 +23843,7 @@ class SpotLight {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -22344,6 +23858,7 @@ class SpotLight {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "captured-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -22373,6 +23888,7 @@ class SpotLight {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "enter-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -22384,6 +23900,7 @@ class SpotLight {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -22418,6 +23935,7 @@ class SpotLight {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -22428,6 +23946,7 @@ class SpotLight {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -22436,6 +23955,7 @@ class SpotLight {
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "leave-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -22445,6 +23965,7 @@ class SpotLight {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: ((event: Clutter.MotionEvent) => boolean)): number
     on(sigName: "motion-event", callback: (event: Clutter.MotionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -22471,6 +23992,7 @@ class SpotLight {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param oldParent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Clutter.Actor | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Clutter.Actor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -22488,6 +24010,7 @@ class SpotLight {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: ((color: Clutter.Color) => void)): number
     on(sigName: "pick", callback: (color: Clutter.Color) => void, after?: boolean): NodeJS.EventEmitter
@@ -22540,6 +24063,7 @@ class SpotLight {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: ((origin: Clutter.Actor) => void)): number
     on(sigName: "queue-redraw", callback: (origin: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -22575,6 +24099,7 @@ class SpotLight {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: ((event: Clutter.ScrollEvent) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Clutter.ScrollEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -22593,6 +24118,7 @@ class SpotLight {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "touch-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -22605,6 +24131,8 @@ class SpotLight {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param isFinished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: ((name: string, isFinished: boolean) => void)): number
     on(sigName: "transition-stopped", callback: (name: string, isFinished: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -22658,6 +24186,7 @@ class SpotLight {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -22668,6 +24197,7 @@ class SpotLight {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-added", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -22677,6 +24207,7 @@ class SpotLight {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-removed", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -22687,6 +24218,8 @@ class SpotLight {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: ((actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -23157,10 +24690,13 @@ class SpotLight {
     static new(): SpotLight
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param propertyName a property name.
      */
     static classFindChildProperty(klass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static classListChildProperties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -23170,19 +24706,19 @@ abstract class DataClass {
 }
 abstract class DataLoaderClass {
     /* Fields of Mash-0.2.Mash.DataLoaderClass */
-    readonly load: (dataLoader: DataLoader, flags: DataFlags, filename: string) => boolean
-    readonly getData: (dataLoader: DataLoader, loaderData: DataLoaderData) => void
+    load: (dataLoader: DataLoader, flags: DataFlags, filename: string) => boolean
+    getData: (dataLoader: DataLoader, loaderData: DataLoaderData) => void
     static name: string
 }
 class DataLoaderData {
     /* Fields of Mash-0.2.Mash.DataLoaderData */
-    readonly verticesVbo: Cogl.Handle
-    readonly indices: Cogl.Handle
-    readonly minIndex: number
-    readonly maxIndex: number
-    readonly nTriangles: number
-    readonly minVertex: Clutter.Vertex
-    readonly maxVertex: Clutter.Vertex
+    verticesVbo: Cogl.Handle
+    indices: Cogl.Handle
+    minIndex: number
+    maxIndex: number
+    nTriangles: number
+    minVertex: Clutter.Vertex
+    maxVertex: Clutter.Vertex
     static name: string
 }
 class DataLoaderPrivate {
@@ -23199,8 +24735,8 @@ class DirectionalLightPrivate {
 }
 abstract class LightClass {
     /* Fields of Mash-0.2.Mash.LightClass */
-    readonly generateShader: (light: Light, uniformSource: GLib.String, mainSource: GLib.String) => void
-    readonly updateUniforms: (light: Light, program: Cogl.Handle) => void
+    generateShader: (light: Light, uniformSource: GLib.String, mainSource: GLib.String) => void
+    updateUniforms: (light: Light, program: Cogl.Handle) => void
     static name: string
 }
 class LightPrivate {

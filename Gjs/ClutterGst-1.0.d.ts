@@ -204,12 +204,14 @@ class Player {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_player_get_audio_streams().
+     * @param index_ the index of the audio stream
      */
     set_audio_stream(index_: number): void
     set_buffering_mode(mode: BufferingMode): void
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     set_seek_flags(flags: SeekFlags): void
     /**
@@ -217,6 +219,7 @@ class Player {
      * in the list returned by clutter_gst_player_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index_ the index of the subtitles track
      */
     set_subtitle_track(index_: number): void
     /**
@@ -225,6 +228,7 @@ class Player {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param user_agent the user agent
      */
     set_user_agent(user_agent: string): void
     /* Methods of Clutter-1.0.Clutter.Media */
@@ -266,10 +270,12 @@ class Player {
     get_uri(): string
     /**
      * Sets the playback volume of `media` to `volume`.
+     * @param volume the volume as a double between 0.0 and 1.0
      */
     set_audio_volume(volume: number): void
     /**
      * Sets the source of `media` using a file path.
+     * @param filename A filename
      */
     set_filename(filename: string): void
     /**
@@ -280,11 +286,13 @@ class Player {
      * signal on the #ClutterMedia:playing property and then retrieve the
      * current state with clutter_media_get_playing(). ClutterGstVideoTexture
      * in clutter-gst is an example of such an asynchronous implementation.
+     * @param playing %TRUE to start playing
      */
     set_playing(playing: boolean): void
     /**
      * Sets the playback progress of `media`. The `progress` is
      * a normalized value between 0.0 (begin) and 1.0 (end).
+     * @param progress the progress of the playback, between 0.0 and 1.0
      */
     set_progress(progress: number): void
     /**
@@ -297,14 +305,17 @@ class Player {
      *   clutter_media_set_subtitle_font_name (media, "Sans 24pt");
      * ```
      * 
+     * @param font_name a font name, or %NULL to set the default font name
      */
     set_subtitle_font_name(font_name: string): void
     /**
      * Sets the location of a subtitle file to display while playing `media`.
+     * @param uri the URI of a subtitle file
      */
     set_subtitle_uri(uri: string): void
     /**
      * Sets the URI of `media` to `uri`.
+     * @param uri the URI of the media stream
      */
     set_uri(uri: string): void
     /* Virtual methods of ClutterGst-1.0.ClutterGst.Player */
@@ -354,12 +365,14 @@ class Player {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_player_get_audio_streams().
+     * @param index_ the index of the audio stream
      */
     vfunc_set_audio_stream(index_: number): void
     vfunc_set_buffering_mode(mode: BufferingMode): void
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     vfunc_set_seek_flags(flags: SeekFlags): void
     /**
@@ -367,6 +380,7 @@ class Player {
      * in the list returned by clutter_gst_player_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index_ the index of the subtitles track
      */
     vfunc_set_subtitle_track(index_: number): void
     /**
@@ -375,6 +389,7 @@ class Player {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param user_agent the user agent
      */
     vfunc_set_user_agent(user_agent: string): void
     /* Virtual methods of Clutter-1.0.Clutter.Media */
@@ -384,6 +399,8 @@ class Player {
     /**
      * The ::download-buffering signal is emitted each time their an
      * update about the buffering of the current media.
+     * @param start start position of the buffering
+     * @param stop start position of the buffering
      */
     connect(sigName: "download-buffering", callback: (($obj: Player, start: number, stop: number) => void)): number
     connect_after(sigName: "download-buffering", callback: (($obj: Player, start: number, stop: number) => void)): number
@@ -397,6 +414,7 @@ class Player {
     emit(sigName: "eos"): void
     /**
      * The ::error signal is emitted each time an error occurred.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: (($obj: Player, error: GLib.Error) => void)): number
     connect_after(sigName: "error", callback: (($obj: Player, error: GLib.Error) => void)): number
@@ -408,6 +426,7 @@ class Player {
      * set/get_property of #GObjectClass. You should call this
      * function at the end of the class_init method of the class
      * implementing #ClutterGstPlayer.
+     * @param object_class a #GObjectClass
      */
     static class_init(object_class: GObject.ObjectClass): void
 }
@@ -431,6 +450,7 @@ class VideoSink {
     /* Methods of GstInterfaces-0.10.GstInterfaces.Navigation */
     /**
      * Sends the indicated command to the navigation interface.
+     * @param command The command to issue
      */
     send_command(command: GstInterfaces.NavigationCommand): void
     send_event(structure: Gst.Structure): void
@@ -440,6 +460,10 @@ class VideoSink {
      * are sent relative to the display space of the related output area. This is
      * usually the size in pixels of the window associated with the element
      * implementing the #GstNavigation interface.
+     * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
+     * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
      */
     send_mouse_event(event: string, button: number, x: number, y: number): void
     /* Virtual methods of ClutterGst-1.0.ClutterGst.VideoSink */
@@ -502,6 +526,7 @@ class VideoTexture {
     /* Properties of ClutterGst-1.0.ClutterGst.VideoTexture */
     pixel_aspect_ratio: any
     /* Properties of Clutter-1.0.Clutter.Texture */
+    readonly disable_slicing: boolean
     /**
      * The path of the file containing the image data to be displayed by
      * the texture.
@@ -1221,9 +1246,9 @@ class VideoTexture {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of ClutterGst-1.0.ClutterGst.VideoTexture */
     /**
      * Get the current audio stream. The number returned in the index of the
@@ -1266,6 +1291,7 @@ class VideoTexture {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_video_texture_get_audio_streams().
+     * @param index_ the index of the audio stream
      */
     set_audio_stream(index_: number): void
     set_buffering_mode(mode: BufferingMode): void
@@ -1273,6 +1299,7 @@ class VideoTexture {
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     set_seek_flags(flags: SeekFlags): void
     /**
@@ -1280,6 +1307,7 @@ class VideoTexture {
      * in the list returned by clutter_gst_video_texture_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index_ the index of the subtitles track
      */
     set_subtitle_track(index_: number): void
     /**
@@ -1288,6 +1316,7 @@ class VideoTexture {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param user_agent the user agent
      */
     set_user_agent(user_agent: string): void
     /* Methods of Clutter-1.0.Clutter.Texture */
@@ -1360,6 +1389,15 @@ class VideoTexture {
     get_sync_size(): boolean
     /**
      * Updates a sub-region of the pixel data in a #ClutterTexture.
+     * @param data Image data in RGB type colorspace.
+     * @param has_alpha Set to TRUE if image data has an alpha channel.
+     * @param x X coordinate of upper left corner of region to update.
+     * @param y Y coordinate of upper left corner of region to update.
+     * @param width Width in pixels of region to update.
+     * @param height Height in pixels of region to update.
+     * @param rowstride Distance in bytes between row starts on source buffer.
+     * @param bpp bytes per pixel (Currently only 3 and 4 supported,                        depending on `has_alpha)`
+     * @param flags #ClutterTextureFlags
      */
     set_area_from_rgb_data(data: Uint8Array, has_alpha: boolean, x: number, y: number, width: number, height: number, rowstride: number, bpp: number, flags: Clutter.TextureFlags): boolean
     /**
@@ -1371,12 +1409,14 @@ class VideoTexture {
      * texture. #ClutterTexture requires that the material have a texture
      * layer so you should set one on the material before calling this
      * function.
+     * @param cogl_material A CoglHandle for a material
      */
     set_cogl_material(cogl_material: Cogl.Handle): void
     /**
      * Replaces the underlying COGL texture drawn by this actor with
      * `cogl_tex`. A reference to the texture is taken so if the handle is
      * no longer needed it should be deref'd with cogl_handle_unref.
+     * @param cogl_tex A CoglHandle for a texture
      */
     set_cogl_texture(cogl_tex: Cogl.Handle): void
     /**
@@ -1388,6 +1428,7 @@ class VideoTexture {
      * %CLUTTER_TEXTURE_QUALITY_HIGH which uses extra texture memory resources to
      * improve scaled down rendering as well (by using mipmaps). The default value
      * is %CLUTTER_TEXTURE_QUALITY_MEDIUM.
+     * @param filter_quality new filter quality value
      */
     set_filter_quality(filter_quality: Clutter.TextureQuality): void
     /**
@@ -1400,10 +1441,18 @@ class VideoTexture {
      * will be emitten when the size of the texture is available and
      * #ClutterTexture::load-finished will be emitted when the image has been
      * loaded or if an error occurred.
+     * @param filename The filename of the image in GLib file name encoding
      */
     set_from_file(filename: string): boolean
     /**
      * Sets #ClutterTexture image data.
+     * @param data image data in RGBA type colorspace.
+     * @param has_alpha set to %TRUE if image data has an alpha channel.
+     * @param width width in pixels of image data.
+     * @param height height in pixels of image data
+     * @param rowstride distance in bytes between row starts.
+     * @param bpp bytes per pixel (currently only 3 and 4 supported, depending   on the value of `has_alpha)`
+     * @param flags #ClutterTextureFlags
      */
     set_from_rgb_data(data: Uint8Array, has_alpha: boolean, width: number, height: number, rowstride: number, bpp: number, flags: Clutter.TextureFlags): boolean
     /**
@@ -1416,11 +1465,16 @@ class VideoTexture {
      * The proper way to convert image data in any YUV colorspace to any
      * RGB colorspace is to use a fragment shader associated with the
      * #ClutterTexture material.
+     * @param data Image data in YUV type colorspace.
+     * @param width Width in pixels of image data.
+     * @param height Height in pixels of image data
+     * @param flags #ClutterTextureFlags
      */
     set_from_yuv_data(data: Uint8Array, width: number, height: number, flags: Clutter.TextureFlags): boolean
     /**
      * Sets whether `texture` should have a preferred size maintaining
      * the aspect ratio of the underlying image
+     * @param keep_aspect %TRUE to maintain aspect ratio
      */
     set_keep_aspect_ratio(keep_aspect: boolean): void
     /**
@@ -1430,6 +1484,7 @@ class VideoTexture {
      * 
      * See the #ClutterTexture:load-async property documentation, and
      * clutter_texture_set_load_data_async().
+     * @param load_async %TRUE if the texture should asynchronously load data   from a filename
      */
     set_load_async(load_async: boolean): void
     /**
@@ -1440,6 +1495,7 @@ class VideoTexture {
      * 
      * See the #ClutterTexture:load-async property documentation, and
      * clutter_texture_set_load_async().
+     * @param load_async %TRUE if the texture should asynchronously load data   from a filename
      */
     set_load_data_async(load_async: boolean): void
     /**
@@ -1454,16 +1510,20 @@ class VideoTexture {
      * Also there is currently no control over the threshold used to
      * determine what value of alpha is considered pickable, and so only
      * fully opaque parts of the texture will react to picking.
+     * @param pick_with_alpha %TRUE if the alpha channel should affect the   picking shape
      */
     set_pick_with_alpha(pick_with_alpha: boolean): void
     /**
      * Sets whether the `texture` should repeat horizontally or
      * vertically when the actor size is bigger than the image size
+     * @param repeat_x %TRUE if the texture should repeat horizontally
+     * @param repeat_y %TRUE if the texture should repeat vertically
      */
     set_repeat(repeat_x: boolean, repeat_y: boolean): void
     /**
      * Sets whether `texture` should have the same preferred size as the
      * underlying image data.
+     * @param sync_size %TRUE if the texture should have the same size of the    underlying image data
      */
     set_sync_size(sync_size: boolean): void
     /* Methods of Clutter-1.0.Clutter.Actor */
@@ -1475,6 +1535,7 @@ class VideoTexture {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     add_action(action: Clutter.Action): void
     /**
@@ -1489,6 +1550,8 @@ class VideoTexture {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     add_action_with_name(name: string, action: Clutter.Action): void
     /**
@@ -1502,6 +1565,7 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     add_child(child: Clutter.Actor): void
     /**
@@ -1511,6 +1575,7 @@ class VideoTexture {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     add_constraint(constraint: Clutter.Constraint): void
     /**
@@ -1525,6 +1590,8 @@ class VideoTexture {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     add_constraint_with_name(name: string, constraint: Clutter.Constraint): void
     /**
@@ -1536,6 +1603,7 @@ class VideoTexture {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     add_effect(effect: Clutter.Effect): void
     /**
@@ -1554,6 +1622,8 @@ class VideoTexture {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     add_effect_with_name(name: string, effect: Clutter.Effect): void
     /**
@@ -1568,6 +1638,8 @@ class VideoTexture {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     add_transition(name: string, transition: Clutter.Transition): void
     /**
@@ -1591,6 +1663,8 @@ class VideoTexture {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -1610,6 +1684,12 @@ class VideoTexture {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param x_align the horizontal alignment, between 0 and 1
+     * @param y_align the vertical alignment, between 0 and 1
+     * @param x_fill whether the actor should fill horizontally
+     * @param y_fill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocate_align_fill(box: Clutter.ActorBox, x_align: number, y_align: number, x_fill: boolean, y_fill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -1666,6 +1746,11 @@ class VideoTexture {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param available_width the maximum available width, or -1 to use the   actor's natural width
+     * @param available_height the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocate_available_size(x: number, y: number, available_width: number, available_height: number, flags: Clutter.AllocationFlags): void
     /**
@@ -1681,6 +1766,7 @@ class VideoTexture {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocate_preferred_size(flags: Clutter.AllocationFlags): void
     /**
@@ -1698,6 +1784,9 @@ class VideoTexture {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animate_with_alphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -1715,6 +1804,10 @@ class VideoTexture {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animate_with_timelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -1727,6 +1820,10 @@ class VideoTexture {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -1738,12 +1835,15 @@ class VideoTexture {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     apply_relative_transform_to_point(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     apply_transform_to_point(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -1759,6 +1859,8 @@ class VideoTexture {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param create_child_func a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bind_model(model: Gio.ListModel | null, create_child_func: Clutter.ActorCreateChildFunc): void
     /**
@@ -1777,6 +1879,7 @@ class VideoTexture {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -1805,6 +1908,7 @@ class VideoTexture {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -1855,6 +1959,8 @@ class VideoTexture {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -1886,6 +1992,7 @@ class VideoTexture {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     get_action(name: string): Clutter.Action
     /**
@@ -1930,6 +2037,7 @@ class VideoTexture {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     get_allocation_vertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -1954,6 +2062,7 @@ class VideoTexture {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index_ the position in the list of children
      */
     get_child_at_index(index_: number): Clutter.Actor
     /**
@@ -1977,6 +2086,7 @@ class VideoTexture {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     get_constraint(name: string): Clutter.Constraint
     /**
@@ -2051,6 +2161,7 @@ class VideoTexture {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     get_effect(name: string): Clutter.Effect
     /**
@@ -2264,6 +2375,7 @@ class VideoTexture {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param for_width available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     get_preferred_height(for_width: number): [ /* min_height_p */ number | null, /* natural_height_p */ number | null ]
     /**
@@ -2290,6 +2402,7 @@ class VideoTexture {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param for_height available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     get_preferred_width(for_height: number): [ /* min_width_p */ number | null, /* natural_width_p */ number | null ]
     /**
@@ -2312,10 +2425,12 @@ class VideoTexture {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     get_rotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     get_rotation_angle(axis: Clutter.RotateAxis): number
     /**
@@ -2389,6 +2504,7 @@ class VideoTexture {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relative_to_ancestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     get_transformed_paint_volume(relative_to_ancestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -2442,6 +2558,7 @@ class VideoTexture {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     get_transition(name: string): Clutter.Transition
     /**
@@ -2610,6 +2727,8 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insert_child_above(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -2625,6 +2744,8 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index_ the index
      */
     insert_child_at_index(child: Clutter.Actor, index_: number): void
     /**
@@ -2640,6 +2761,8 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insert_child_below(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -2685,6 +2808,7 @@ class VideoTexture {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -2709,6 +2833,8 @@ class VideoTexture {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchor_x X coordinate of the anchor point
+     * @param anchor_y Y coordinate of the anchor point
      */
     move_anchor_point(anchor_x: number, anchor_y: number): void
     /**
@@ -2721,6 +2847,7 @@ class VideoTexture {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     move_anchor_point_from_gravity(gravity: Clutter.Gravity): void
     /**
@@ -2731,6 +2858,8 @@ class VideoTexture {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     move_by(dx: number, dy: number): void
     /**
@@ -2742,6 +2871,7 @@ class VideoTexture {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needs_expand(orientation: Clutter.Orientation): boolean
     /**
@@ -2835,6 +2965,7 @@ class VideoTexture {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queue_redraw_with_clip(clip?: cairo.RectangleInt | null): void
     /**
@@ -2852,6 +2983,7 @@ class VideoTexture {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -2882,11 +3014,13 @@ class VideoTexture {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     remove_action(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     remove_action_by_name(name: string): void
     /**
@@ -2914,6 +3048,7 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     remove_child(child: Clutter.Actor): void
     /**
@@ -2924,22 +3059,26 @@ class VideoTexture {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     remove_constraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     remove_constraint_by_name(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     remove_effect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     remove_effect_by_name(name: string): void
     /**
@@ -2950,6 +3089,7 @@ class VideoTexture {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     remove_transition(name: string): void
     /**
@@ -2965,10 +3105,13 @@ class VideoTexture {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param new_parent the new #ClutterActor parent
      */
     reparent(new_parent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param old_child the child of `self` to replace
+     * @param new_child the #ClutterActor to replace `old_child`
      */
     replace_child(old_child: Clutter.Actor, new_child: Clutter.Actor): void
     /**
@@ -3061,6 +3204,8 @@ class VideoTexture {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     set_allocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -3068,6 +3213,8 @@ class VideoTexture {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchor_x X coordinate of the anchor point
+     * @param anchor_y Y coordinate of the anchor point
      */
     set_anchor_point(anchor_x: number, anchor_y: number): void
     /**
@@ -3079,6 +3226,7 @@ class VideoTexture {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     set_anchor_point_from_gravity(gravity: Clutter.Gravity): void
     /**
@@ -3091,6 +3239,7 @@ class VideoTexture {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     set_background_color(color?: Clutter.Color | null): void
     /**
@@ -3101,6 +3250,8 @@ class VideoTexture {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     set_child_above_sibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -3109,6 +3260,8 @@ class VideoTexture {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index_ the new index for `child`
      */
     set_child_at_index(child: Clutter.Actor, index_: number): void
     /**
@@ -3119,6 +3272,8 @@ class VideoTexture {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     set_child_below_sibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -3129,21 +3284,28 @@ class VideoTexture {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     set_child_transform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     set_clip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clip_set %TRUE to apply a clip tracking the allocation
      */
     set_clip_to_allocation(clip_set: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     set_content(content?: Clutter.Content | null): void
     /**
@@ -3153,12 +3315,14 @@ class VideoTexture {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     set_content_gravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     set_content_repeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -3168,6 +3332,8 @@ class VideoTexture {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param min_filter the minification filter for the content
+     * @param mag_filter the magnification filter for the content
      */
     set_content_scaling_filters(min_filter: Clutter.ScalingFilter, mag_filter: Clutter.ScalingFilter): void
     /**
@@ -3175,32 +3341,38 @@ class VideoTexture {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     set_depth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     set_easing_delay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     set_easing_duration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     set_easing_mode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param is_set whether to use fixed position
      */
     set_fixed_position_set(is_set: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     set_flags(flags: Clutter.ActorFlags): void
     /**
@@ -3208,6 +3380,7 @@ class VideoTexture {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     set_geometry(geometry: Clutter.Geometry): void
     /**
@@ -3218,6 +3391,7 @@ class VideoTexture {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     set_height(height: number): void
     /**
@@ -3227,39 +3401,46 @@ class VideoTexture {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     set_layout_manager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     set_margin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     set_name(name: string): void
     /**
@@ -3320,6 +3501,7 @@ class VideoTexture {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     set_offscreen_redirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -3327,6 +3509,7 @@ class VideoTexture {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     set_opacity(opacity: number): void
     /**
@@ -3338,6 +3521,7 @@ class VideoTexture {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     set_parent(parent: Clutter.Actor): void
     /**
@@ -3347,6 +3531,8 @@ class VideoTexture {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivot_x the normalized X coordinate of the pivot point
+     * @param pivot_y the normalized Y coordinate of the pivot point
      */
     set_pivot_point(pivot_x: number, pivot_y: number): void
     /**
@@ -3354,6 +3540,7 @@ class VideoTexture {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivot_z the Z coordinate of the actor's pivot point
      */
     set_pivot_point_z(pivot_z: number): void
     /**
@@ -3362,10 +3549,13 @@ class VideoTexture {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     set_position(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     set_reactive(reactive: boolean): void
     /**
@@ -3374,6 +3564,7 @@ class VideoTexture {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     set_request_mode(mode: Clutter.RequestMode): void
     /**
@@ -3388,6 +3579,11 @@ class VideoTexture {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     set_rotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -3399,6 +3595,8 @@ class VideoTexture {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     set_rotation_angle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -3408,6 +3606,8 @@ class VideoTexture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scale_x double factor to scale actor by horizontally.
+     * @param scale_y double factor to scale actor by vertically.
      */
     set_scale(scale_x: number, scale_y: number): void
     /**
@@ -3417,6 +3617,10 @@ class VideoTexture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scale_x double factor to scale actor by horizontally.
+     * @param scale_y double factor to scale actor by vertically.
+     * @param center_x X coordinate of the center of the scaling
+     * @param center_y Y coordinate of the center of the scaling
      */
     set_scale_full(scale_x: number, scale_y: number, center_x: number, center_y: number): void
     /**
@@ -3428,6 +3632,9 @@ class VideoTexture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scale_x double factor to scale actor by horizontally.
+     * @param scale_y double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     set_scale_with_gravity(scale_x: number, scale_y: number, gravity: Clutter.Gravity): void
     /**
@@ -3436,6 +3643,7 @@ class VideoTexture {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scale_z the scaling factor along the Z axis
      */
     set_scale_z(scale_z: number): void
     /**
@@ -3446,21 +3654,28 @@ class VideoTexture {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     set_shader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     set_shader_param(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     set_shader_param_float(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     set_shader_param_int(param: string, value: number): void
     /**
@@ -3474,6 +3689,8 @@ class VideoTexture {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     set_size(width: number, height: number): void
     /**
@@ -3487,6 +3704,7 @@ class VideoTexture {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param text_dir the text direction for `self`
      */
     set_text_direction(text_dir: Clutter.TextDirection): void
     /**
@@ -3495,11 +3713,15 @@ class VideoTexture {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     set_transform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translate_x the translation along the X axis
+     * @param translate_y the translation along the Y axis
+     * @param translate_z the translation along the Z axis
      */
     set_translation(translate_x: number, translate_y: number, translate_z: number): void
     /**
@@ -3510,6 +3732,7 @@ class VideoTexture {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     set_width(width: number): void
     /**
@@ -3519,6 +3742,7 @@ class VideoTexture {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     set_x(x: number): void
     /**
@@ -3526,6 +3750,7 @@ class VideoTexture {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param x_align the horizontal alignment policy
      */
     set_x_align(x_align: Clutter.ActorAlign): void
     /**
@@ -3536,6 +3761,7 @@ class VideoTexture {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     set_x_expand(expand: boolean): void
     /**
@@ -3545,6 +3771,7 @@ class VideoTexture {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     set_y(y: number): void
     /**
@@ -3552,6 +3779,7 @@ class VideoTexture {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param y_align the vertical alignment policy
      */
     set_y_align(y_align: Clutter.ActorAlign): void
     /**
@@ -3562,12 +3790,14 @@ class VideoTexture {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     set_y_expand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param z_position the position on the Z axis
      */
     set_z_position(z_position: number): void
     /**
@@ -3576,6 +3806,8 @@ class VideoTexture {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     set_z_rotation_from_gravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -3617,6 +3849,8 @@ class VideoTexture {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transform_stage_point(x: number, y: number): [ /* returnType */ boolean, /* x_out */ number, /* y_out */ number ]
     /**
@@ -3681,6 +3915,7 @@ class VideoTexture {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unset_flags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3718,6 +3953,10 @@ class VideoTexture {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3728,6 +3967,12 @@ class VideoTexture {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3751,6 +3996,7 @@ class VideoTexture {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3770,11 +4016,14 @@ class VideoTexture {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3782,6 +4031,8 @@ class VideoTexture {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3799,6 +4050,7 @@ class VideoTexture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3844,6 +4096,7 @@ class VideoTexture {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3887,15 +4140,20 @@ class VideoTexture {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3936,6 +4194,7 @@ class VideoTexture {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3970,6 +4229,7 @@ class VideoTexture {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -3982,14 +4242,23 @@ class VideoTexture {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param property_name the name of the animated property
+     * @param initial_value the initial value of the animation interval
+     * @param final_value the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animate_property(animation: Clutter.Animation, property_name: string, initial_value: any, final_value: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param property_name the name of the animatable property to find
      */
     find_property(property_name: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param property_name the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     get_initial_state(property_name: string, value: any): void
     /**
@@ -4002,10 +4271,15 @@ class VideoTexture {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param property_name the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param property_name the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     set_final_state(property_name: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -4018,6 +4292,7 @@ class VideoTexture {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     add_actor(actor: Clutter.Actor): void
     /**
@@ -4028,16 +4303,24 @@ class VideoTexture {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     child_get_property(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     child_set_property(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -4050,6 +4333,7 @@ class VideoTexture {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     create_child_meta(actor: Clutter.Actor): void
     /**
@@ -4061,11 +4345,13 @@ class VideoTexture {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroy_child_meta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param child_name the name of the requested child.
      */
     find_child_by_name(child_name: string): Clutter.Actor
     /**
@@ -4076,6 +4362,7 @@ class VideoTexture {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -4085,11 +4372,13 @@ class VideoTexture {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach_with_internals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -4098,6 +4387,8 @@ class VideoTexture {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4106,6 +4397,8 @@ class VideoTexture {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4117,6 +4410,7 @@ class VideoTexture {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     remove_actor(actor: Clutter.Actor): void
     /**
@@ -4163,10 +4457,12 @@ class VideoTexture {
     get_uri(): string
     /**
      * Sets the playback volume of `media` to `volume`.
+     * @param volume the volume as a double between 0.0 and 1.0
      */
     set_audio_volume(volume: number): void
     /**
      * Sets the source of `media` using a file path.
+     * @param filename A filename
      */
     set_filename(filename: string): void
     /**
@@ -4177,11 +4473,13 @@ class VideoTexture {
      * signal on the #ClutterMedia:playing property and then retrieve the
      * current state with clutter_media_get_playing(). ClutterGstVideoTexture
      * in clutter-gst is an example of such an asynchronous implementation.
+     * @param playing %TRUE to start playing
      */
     set_playing(playing: boolean): void
     /**
      * Sets the playback progress of `media`. The `progress` is
      * a normalized value between 0.0 (begin) and 1.0 (end).
+     * @param progress the progress of the playback, between 0.0 and 1.0
      */
     set_progress(progress: number): void
     /**
@@ -4194,14 +4492,17 @@ class VideoTexture {
      *   clutter_media_set_subtitle_font_name (media, "Sans 24pt");
      * ```
      * 
+     * @param font_name a font name, or %NULL to set the default font name
      */
     set_subtitle_font_name(font_name: string): void
     /**
      * Sets the location of a subtitle file to display while playing `media`.
+     * @param uri the URI of a subtitle file
      */
     set_subtitle_uri(uri: string): void
     /**
      * Sets the URI of `media` to `uri`.
+     * @param uri the URI of the media stream
      */
     set_uri(uri: string): void
     /* Methods of Clutter-1.0.Clutter.Scriptable */
@@ -4212,11 +4513,18 @@ class VideoTexture {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parse_custom_node(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     set_custom_property(script: Clutter.Script, name: string, value: any): void
     /**
@@ -4226,6 +4534,7 @@ class VideoTexture {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id_ the #ClutterScript id of the object
      */
     set_id(id_: string): void
     /* Methods of ClutterGst-1.0.ClutterGst.Player */
@@ -4255,12 +4564,14 @@ class VideoTexture {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_player_get_audio_streams().
+     * @param index_ the index of the audio stream
      */
     set_audio_stream(index_: number): void
     set_buffering_mode(mode: BufferingMode): void
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     set_seek_flags(flags: SeekFlags): void
     /**
@@ -4268,6 +4579,7 @@ class VideoTexture {
      * in the list returned by clutter_gst_player_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index_ the index of the subtitles track
      */
     set_subtitle_track(index_: number): void
     /**
@@ -4276,6 +4588,7 @@ class VideoTexture {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param user_agent the user agent
      */
     set_user_agent(user_agent: string): void
     /* Virtual methods of ClutterGst-1.0.ClutterGst.VideoTexture */
@@ -4288,14 +4601,23 @@ class VideoTexture {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param property_name the name of the animated property
+     * @param initial_value the initial value of the animation interval
+     * @param final_value the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: any, final_value: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param property_name the name of the animatable property to find
      */
     vfunc_find_property(property_name: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param property_name the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     vfunc_get_initial_state(property_name: string, value: any): void
     /**
@@ -4308,10 +4630,15 @@ class VideoTexture {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param property_name the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param property_name the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     vfunc_set_final_state(property_name: string, value: any): void
     vfunc_actor_added(actor: Clutter.Actor): void
@@ -4325,12 +4652,15 @@ class VideoTexture {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     vfunc_add(actor: Clutter.Actor): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
@@ -4343,6 +4673,7 @@ class VideoTexture {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     vfunc_create_child_meta(actor: Clutter.Actor): void
     /**
@@ -4354,6 +4685,7 @@ class VideoTexture {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     vfunc_destroy_child_meta(actor: Clutter.Actor): void
     /**
@@ -4364,6 +4696,7 @@ class VideoTexture {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     vfunc_foreach(callback: Clutter.Callback): void
     /**
@@ -4373,11 +4706,13 @@ class VideoTexture {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     vfunc_foreach_with_internals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -4386,6 +4721,8 @@ class VideoTexture {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4394,6 +4731,8 @@ class VideoTexture {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4405,6 +4744,7 @@ class VideoTexture {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     vfunc_remove(actor: Clutter.Actor): void
     /**
@@ -4421,11 +4761,18 @@ class VideoTexture {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     vfunc_parse_custom_node(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     vfunc_set_custom_property(script: Clutter.Script, name: string, value: any): void
     /**
@@ -4435,6 +4782,7 @@ class VideoTexture {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id_ the #ClutterScript id of the object
      */
     vfunc_set_id(id_: string): void
     vfunc_download_buffering(start: number, stop: number): void
@@ -4483,12 +4831,14 @@ class VideoTexture {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_player_get_audio_streams().
+     * @param index_ the index of the audio stream
      */
     vfunc_set_audio_stream(index_: number): void
     vfunc_set_buffering_mode(mode: BufferingMode): void
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     vfunc_set_seek_flags(flags: SeekFlags): void
     /**
@@ -4496,6 +4846,7 @@ class VideoTexture {
      * in the list returned by clutter_gst_player_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index_ the index of the subtitles track
      */
     vfunc_set_subtitle_track(index_: number): void
     /**
@@ -4504,6 +4855,7 @@ class VideoTexture {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param user_agent the user agent
      */
     vfunc_set_user_agent(user_agent: string): void
     /* Virtual methods of Clutter-1.0.Clutter.Texture */
@@ -4532,6 +4884,8 @@ class VideoTexture {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     vfunc_allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     vfunc_apply_transform(matrix: Clutter.Matrix): void
@@ -4576,6 +4930,7 @@ class VideoTexture {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param for_width available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     vfunc_get_preferred_height(for_width: number): [ /* min_height_p */ number | null, /* natural_height_p */ number | null ]
     /**
@@ -4588,6 +4943,7 @@ class VideoTexture {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param for_height available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     vfunc_get_preferred_width(for_height: number): [ /* min_width_p */ number | null, /* natural_width_p */ number | null ]
     /**
@@ -4763,6 +5119,7 @@ class VideoTexture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4771,6 +5128,7 @@ class VideoTexture {
      * The ::load-finished signal is emitted when a texture load has
      * completed. If there was an error during loading, `error` will
      * be set, otherwise it will be %NULL
+     * @param error A set error, or %NULL
      */
     connect(sigName: "load-finished", callback: (($obj: VideoTexture, error: GLib.Error) => void)): number
     connect_after(sigName: "load-finished", callback: (($obj: VideoTexture, error: GLib.Error) => void)): number
@@ -4786,6 +5144,8 @@ class VideoTexture {
      * The ::size-change signal is emitted each time the size of the
      * pixbuf used by `texture` changes.  The new size is given as
      * argument to the callback.
+     * @param width the width of the new texture
+     * @param height the height of the new texture
      */
     connect(sigName: "size-change", callback: (($obj: VideoTexture, width: number, height: number) => void)): number
     connect_after(sigName: "size-change", callback: (($obj: VideoTexture, width: number, height: number) => void)): number
@@ -4798,6 +5158,8 @@ class VideoTexture {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: (($obj: VideoTexture, box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     connect_after(sigName: "allocation-changed", callback: (($obj: VideoTexture, box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
@@ -4805,6 +5167,7 @@ class VideoTexture {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: (($obj: VideoTexture, event: Clutter.ButtonEvent) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: VideoTexture, event: Clutter.ButtonEvent) => boolean)): number
@@ -4812,6 +5175,7 @@ class VideoTexture {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: (($obj: VideoTexture, event: Clutter.ButtonEvent) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: VideoTexture, event: Clutter.ButtonEvent) => boolean)): number
@@ -4824,6 +5188,7 @@ class VideoTexture {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: (($obj: VideoTexture, event: Clutter.Event) => boolean)): number
     connect_after(sigName: "captured-event", callback: (($obj: VideoTexture, event: Clutter.Event) => boolean)): number
@@ -4849,6 +5214,7 @@ class VideoTexture {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: (($obj: VideoTexture, event: Clutter.CrossingEvent) => boolean)): number
     connect_after(sigName: "enter-event", callback: (($obj: VideoTexture, event: Clutter.CrossingEvent) => boolean)): number
@@ -4858,6 +5224,7 @@ class VideoTexture {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: (($obj: VideoTexture, event: Clutter.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: VideoTexture, event: Clutter.Event) => boolean)): number
@@ -4884,6 +5251,7 @@ class VideoTexture {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: (($obj: VideoTexture, event: Clutter.KeyEvent) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: VideoTexture, event: Clutter.KeyEvent) => boolean)): number
@@ -4892,12 +5260,14 @@ class VideoTexture {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: (($obj: VideoTexture, event: Clutter.KeyEvent) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: VideoTexture, event: Clutter.KeyEvent) => boolean)): number
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: (($obj: VideoTexture, event: Clutter.CrossingEvent) => boolean)): number
     connect_after(sigName: "leave-event", callback: (($obj: VideoTexture, event: Clutter.CrossingEvent) => boolean)): number
@@ -4905,6 +5275,7 @@ class VideoTexture {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: (($obj: VideoTexture, event: Clutter.MotionEvent) => boolean)): number
     connect_after(sigName: "motion-event", callback: (($obj: VideoTexture, event: Clutter.MotionEvent) => boolean)): number
@@ -4927,6 +5298,7 @@ class VideoTexture {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param old_parent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: (($obj: VideoTexture, old_parent?: Clutter.Actor | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: VideoTexture, old_parent?: Clutter.Actor | null) => void)): number
@@ -4942,6 +5314,7 @@ class VideoTexture {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: (($obj: VideoTexture, color: Clutter.Color) => void)): number
     connect_after(sigName: "pick", callback: (($obj: VideoTexture, color: Clutter.Color) => void)): number
@@ -4992,6 +5365,7 @@ class VideoTexture {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: (($obj: VideoTexture, origin: Clutter.Actor) => void)): number
     connect_after(sigName: "queue-redraw", callback: (($obj: VideoTexture, origin: Clutter.Actor) => void)): number
@@ -5021,6 +5395,7 @@ class VideoTexture {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: (($obj: VideoTexture, event: Clutter.ScrollEvent) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: VideoTexture, event: Clutter.ScrollEvent) => boolean)): number
@@ -5035,6 +5410,7 @@ class VideoTexture {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: (($obj: VideoTexture, event: Clutter.Event) => boolean)): number
     connect_after(sigName: "touch-event", callback: (($obj: VideoTexture, event: Clutter.Event) => boolean)): number
@@ -5045,6 +5421,8 @@ class VideoTexture {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param is_finished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: (($obj: VideoTexture, name: string, is_finished: boolean) => void)): number
     connect_after(sigName: "transition-stopped", callback: (($obj: VideoTexture, name: string, is_finished: boolean) => void)): number
@@ -5092,6 +5470,7 @@ class VideoTexture {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
@@ -5100,6 +5479,7 @@ class VideoTexture {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: (($obj: VideoTexture, actor: Clutter.Actor) => void)): number
     connect_after(sigName: "actor-added", callback: (($obj: VideoTexture, actor: Clutter.Actor) => void)): number
@@ -5107,6 +5487,7 @@ class VideoTexture {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: (($obj: VideoTexture, actor: Clutter.Actor) => void)): number
     connect_after(sigName: "actor-removed", callback: (($obj: VideoTexture, actor: Clutter.Actor) => void)): number
@@ -5115,6 +5496,8 @@ class VideoTexture {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: (($obj: VideoTexture, actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: VideoTexture, actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
@@ -5128,6 +5511,7 @@ class VideoTexture {
     emit(sigName: "eos"): void
     /**
      * The ::error signal is emitted each time an error occurred.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: (($obj: VideoTexture, error: GLib.Error) => void)): number
     connect_after(sigName: "error", callback: (($obj: VideoTexture, error: GLib.Error) => void)): number
@@ -5136,12 +5520,16 @@ class VideoTexture {
     /**
      * The ::download-buffering signal is emitted each time their an
      * update about the buffering of the current media.
+     * @param start start position of the buffering
+     * @param stop start position of the buffering
      */
     connect(sigName: "download-buffering", callback: (($obj: VideoTexture, start: number, stop: number) => void)): number
     connect_after(sigName: "download-buffering", callback: (($obj: VideoTexture, start: number, stop: number) => void)): number
     emit(sigName: "download-buffering", start: number, stop: number): void
     connect(sigName: "notify::pixel-aspect-ratio", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pixel-aspect-ratio", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::disable-slicing", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::disable-slicing", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::filename", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filename", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::filter-quality", callback: (($obj: VideoTexture, pspec: GObject.ParamSpec) => void)): number
@@ -5373,10 +5761,13 @@ class VideoTexture {
     static new(): VideoTexture
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param property_name a property name.
      */
     static class_find_child_property(klass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static class_list_child_properties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     /**
@@ -5384,28 +5775,29 @@ class VideoTexture {
      * set/get_property of #GObjectClass. You should call this
      * function at the end of the class_init method of the class
      * implementing #ClutterGstPlayer.
+     * @param object_class a #GObjectClass
      */
     static class_init(object_class: GObject.ObjectClass): void
     static $gtype: GObject.Type
 }
 abstract class PlayerIface {
     /* Fields of ClutterGst-1.0.ClutterGst.PlayerIface */
-    readonly get_pipeline: (player: Player) => Gst.Element
-    readonly get_user_agent: (player: Player) => string
-    readonly set_user_agent: (player: Player, user_agent: string) => void
-    readonly get_seek_flags: (player: Player) => SeekFlags
-    readonly set_seek_flags: (player: Player, flags: SeekFlags) => void
-    readonly get_buffering_mode: (player: Player) => BufferingMode
-    readonly set_buffering_mode: (player: Player, mode: BufferingMode) => void
-    readonly get_audio_streams: (player: Player) => string[]
-    readonly get_audio_stream: (player: Player) => number
-    readonly set_audio_stream: (player: Player, index_: number) => void
-    readonly get_subtitle_tracks: (player: Player) => string[]
-    readonly get_subtitle_track: (player: Player) => number
-    readonly set_subtitle_track: (player: Player, index_: number) => void
-    readonly get_idle: (player: Player) => boolean
-    readonly get_in_seek: (player: Player) => boolean
-    readonly download_buffering: (player: Player, start: number, stop: number) => void
+    get_pipeline: (player: Player) => Gst.Element
+    get_user_agent: (player: Player) => string
+    set_user_agent: (player: Player, user_agent: string) => void
+    get_seek_flags: (player: Player) => SeekFlags
+    set_seek_flags: (player: Player, flags: SeekFlags) => void
+    get_buffering_mode: (player: Player) => BufferingMode
+    set_buffering_mode: (player: Player, mode: BufferingMode) => void
+    get_audio_streams: (player: Player) => string[]
+    get_audio_stream: (player: Player) => number
+    set_audio_stream: (player: Player, index_: number) => void
+    get_subtitle_tracks: (player: Player) => string[]
+    get_subtitle_track: (player: Player) => number
+    set_subtitle_track: (player: Player, index_: number) => void
+    get_idle: (player: Player) => boolean
+    get_in_seek: (player: Player) => boolean
+    download_buffering: (player: Player, start: number, stop: number) => void
     static name: string
 }
 class PlayerIfacePrivate {

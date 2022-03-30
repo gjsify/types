@@ -174,10 +174,12 @@ class Compressor {
     create_top_level_directory: boolean
     readonly files: number
     notify_interval: number
+    readonly output_file: Gio.File
     output_is_dest: boolean
     readonly size: number
+    readonly source_files: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GnomeAutoar-0.1.GnomeAutoar.Compressor */
     /**
      * Gets the number of files has been read
@@ -232,6 +234,7 @@ class Compressor {
      * signal. This prevent too frequent signal emission, which may cause
      * performance impact. If you do not want this feature, you can set the
      * interval to 0, so you will receive every progress update.
+     * @param notify_interval the minimal interval in microseconds
      */
     set_notify_interval(notify_interval: number): void
     /**
@@ -247,15 +250,18 @@ class Compressor {
      * neither check whether the file exists nor create the necessary
      * directories for you. This function should only be called before calling
      * autoar_compressor_start() or autoar_compressor_start_async().
+     * @param output_is_dest %TRUE if the location of the new archive has been already decided
      */
     set_output_is_dest(output_is_dest: boolean): void
     /**
      * Sets the archive passphrase. It works only with %ARCHIVE_FORMAT_ZIP.
+     * @param passphrase the archive passphrase
      */
     set_passphrase(passphrase: string): void
     /**
      * Runs the archive creating work. All callbacks will be called in the same
      * thread as the caller of this functions.
+     * @param cancellable optional #GCancellable object, or %NULL to ignore
      */
     start(cancellable?: Gio.Cancellable | null): void
     /**
@@ -264,6 +270,7 @@ class Compressor {
      * #AutoarCompressor::completed signal to get notification when the work is
      * terminated. All callbacks will be called in the main thread, so you can
      * safely manipulate GTK+ widgets in the callbacks.
+     * @param cancellable optional #GCancellable object, or %NULL to ignore
      */
     start_async(cancellable?: Gio.Cancellable | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -301,6 +308,10 @@ class Compressor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -311,6 +322,12 @@ class Compressor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -334,6 +351,7 @@ class Compressor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -353,11 +371,14 @@ class Compressor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -365,6 +386,8 @@ class Compressor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -382,6 +405,7 @@ class Compressor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -427,6 +451,7 @@ class Compressor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -470,15 +495,20 @@ class Compressor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -519,6 +549,7 @@ class Compressor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -553,6 +584,7 @@ class Compressor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -572,6 +604,7 @@ class Compressor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -592,6 +625,7 @@ class Compressor {
     emit(sigName: "completed"): void
     /**
      * This signal is emitted when the location of the new archive is determined.
+     * @param destination the location of the new archive
      */
     connect(sigName: "decide-dest", callback: (($obj: Compressor, destination: Gio.File) => void)): number
     connect_after(sigName: "decide-dest", callback: (($obj: Compressor, destination: Gio.File) => void)): number
@@ -602,6 +636,7 @@ class Compressor {
      * %AUTOAR_LIBARCHIVE_ERROR, which represent error occurs in #AutoarCompressor,
      * GIO, and libarchive, respectively. The #GError is owned by #AutoarCompressor
      * and should not be freed.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: (($obj: Compressor, error: GLib.Error) => void)): number
     connect_after(sigName: "error", callback: (($obj: Compressor, error: GLib.Error) => void)): number
@@ -611,6 +646,8 @@ class Compressor {
      * `completed_size` and `completed_files` are the same as the
      * #AutoarCompressor:completed_size and #AutoarCompressor:completed_files properties,
      * respectively.
+     * @param completed_size bytes has been read from source files and directories
+     * @param completed_files number of files and directories has been read
      */
     connect(sigName: "progress", callback: (($obj: Compressor, completed_size: number, completed_files: number) => void)): number
     connect_after(sigName: "progress", callback: (($obj: Compressor, completed_size: number, completed_files: number) => void)): number
@@ -644,6 +681,7 @@ class Compressor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
@@ -658,10 +696,14 @@ class Compressor {
     connect_after(sigName: "notify::files", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::notify-interval", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::notify-interval", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::output-file", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::output-file", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::output-is-dest", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::output-is-dest", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::size", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source-files", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source-files", callback: (($obj: Compressor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -691,11 +733,13 @@ class Extractor {
     readonly completed_size: number
     delete_after_extraction: boolean
     notify_interval: number
+    readonly output_file: Gio.File
     output_is_dest: boolean
+    readonly source_file: Gio.File
     readonly total_files: number
     readonly total_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GnomeAutoar-0.1.GnomeAutoar.Extractor */
     /**
      * Gets the number of files has been written to disk.
@@ -740,6 +784,7 @@ class Extractor {
     /**
      * By default #AutoarExtractor:delete-after-extraction is set to %FALSE so the
      * source archive will not be automatically deleted if extraction succeeds.
+     * @param delete_after_extraction %TRUE if the source archive should be deleted after a successful extraction
      */
     set_delete_after_extraction(delete_after_extraction: boolean): void
     /**
@@ -747,6 +792,7 @@ class Extractor {
      * signal. This prevent too frequent signal emission, which may cause
      * performance impact. If you do not want this feature, you can set the interval
      * to 0, so you will receive every progress update.
+     * @param notify_interval the minimal interval in microseconds
      */
     set_notify_interval(notify_interval: number): void
     /**
@@ -764,11 +810,13 @@ class Extractor {
      * 
      * This function should only be called before calling autoar_extractor_start() or
      * autoar_extractor_start_async().
+     * @param output_is_dest %TRUE if #AutoarExtractor:output-file is the destination for extracted files
      */
     set_output_is_dest(output_is_dest: boolean): void
     /**
      * Runs the archive extracting work. All callbacks will be called in the same
      * thread as the caller of this functions.
+     * @param cancellable optional #GCancellable object, or %NULL to ignore
      */
     start(cancellable?: Gio.Cancellable | null): void
     /**
@@ -777,6 +825,7 @@ class Extractor {
      * #AutoarExtractor::completed signal to get notification when the work is
      * terminated. All callbacks will be called in the main thread, so you can
      * safely manipulate GTK+ widgets in the callbacks.
+     * @param cancellable optional #GCancellable object, or %NULL to ignore
      */
     start_async(cancellable?: Gio.Cancellable | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -814,6 +863,10 @@ class Extractor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -824,6 +877,12 @@ class Extractor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -847,6 +906,7 @@ class Extractor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -866,11 +926,14 @@ class Extractor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -878,6 +941,8 @@ class Extractor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -895,6 +960,7 @@ class Extractor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -940,6 +1006,7 @@ class Extractor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -983,15 +1050,20 @@ class Extractor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1032,6 +1104,7 @@ class Extractor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1066,6 +1139,7 @@ class Extractor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1085,6 +1159,7 @@ class Extractor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1115,12 +1190,15 @@ class Extractor {
      * %AUTOAR_LIBARCHIVE_ERROR, which represent error occurs in #AutoarExtractor,
      * GIO, and libarchive, respectively. The #GError is owned by #AutoarExtractor
      * and should not be freed.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: (($obj: Extractor, error: GLib.Error) => void)): number
     connect_after(sigName: "error", callback: (($obj: Extractor, error: GLib.Error) => void)): number
     emit(sigName: "error", error: GLib.Error): void
     /**
      * This signal is used to report progress of extraction.
+     * @param completed_size bytes has been written to disk
+     * @param completed_files number of files have been written to disk
      */
     connect(sigName: "progress", callback: (($obj: Extractor, completed_size: number, completed_files: number) => void)): number
     connect_after(sigName: "progress", callback: (($obj: Extractor, completed_size: number, completed_files: number) => void)): number
@@ -1135,6 +1213,7 @@ class Extractor {
     /**
      * This signal is emitted when #AutoarExtractor finish scanning filename entries
      * in the source archive.
+     * @param files the number of files will be extracted from the source archive
      */
     connect(sigName: "scanned", callback: (($obj: Extractor, files: number) => void)): number
     connect_after(sigName: "scanned", callback: (($obj: Extractor, files: number) => void)): number
@@ -1168,6 +1247,7 @@ class Extractor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
@@ -1180,8 +1260,12 @@ class Extractor {
     connect_after(sigName: "notify::delete-after-extraction", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::notify-interval", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::notify-interval", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::output-file", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::output-file", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::output-is-dest", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::output-is-dest", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source-file", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source-file", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::total-files", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::total-files", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::total-size", callback: (($obj: Extractor, pspec: GObject.ParamSpec) => void)): number
@@ -1203,12 +1287,12 @@ class Extractor {
 }
 abstract class CompressorClass {
     /* Fields of GnomeAutoar-0.1.GnomeAutoar.CompressorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ExtractorClass {
     /* Fields of GnomeAutoar-0.1.GnomeAutoar.ExtractorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 }

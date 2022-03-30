@@ -248,11 +248,11 @@ class Attribute {
     /**
      * The name of the attribute.
      */
-    readonly name: string
+    name: string
     /**
      * The data type.
      */
-    readonly type: AttributeType
+    type: AttributeType
     /* Methods of GnomeKeyring-1.0.GnomeKeyring.Attribute */
     /**
      * Return the string value. It is an error to call this method if
@@ -272,20 +272,28 @@ class Attribute {
     /* Static methods and pseudo-constructors */
     /**
      * Store a key-value-pair with a string value in `attributes`.
+     * @param attributes A #GnomeKeyringAttributeList
+     * @param name The name of the new attribute
+     * @param value The value to store in `attributes`
      */
     static list_append_string(attributes: AttributeList, name: string, value: string): void
     /**
      * Store a key-value-pair with an unsigned 32bit number value in `attributes`.
+     * @param attributes A #GnomeKeyringAttributeList
+     * @param name The name of the new attribute
+     * @param value The value to store in `attributes`
      */
     static list_append_uint32(attributes: AttributeList, name: string, value: number): void
     /**
      * Copy a list of item attributes.
+     * @param attributes A #GnomeKeyringAttributeList to copy.
      */
     static list_copy(attributes: AttributeList): AttributeList
     /**
      * Free the memory used by `attributes`.
      * 
      * If a %NULL pointer is passed, it is ignored.
+     * @param attributes A #GnomeKeyringAttributeList
      */
     static list_free(attributes: AttributeList): void
     /**
@@ -295,6 +303,7 @@ class Attribute {
     /**
      * Create #GList of #GnomeKeyringAttribute pointers from `attributes`. This is
      * mostly useful in language bindings which cannot directly use a #GArray.
+     * @param attributes A #GnomeKeyringAttributeList
      */
     static list_to_glist(attributes: AttributeList): Attribute[]
 }
@@ -303,19 +312,19 @@ class Found {
     /**
      * The keyring the item was found in.
      */
-    readonly keyring: string
+    keyring: string
     /**
      * The identifier for the item.
      */
-    readonly item_id: number
+    item_id: number
     /**
      * The item's attributes.
      */
-    readonly attributes: AttributeList
+    attributes: AttributeList
     /**
      * The item's secret.
      */
-    readonly secret: string
+    secret: string
     /* Methods of GnomeKeyring-1.0.GnomeKeyring.Found */
     /**
      * Copy a #GnomeKeyringFound item.
@@ -332,6 +341,7 @@ class Found {
     /* Static methods and pseudo-constructors */
     /**
      * Free the memory used by the #GnomeKeyringFound items in `found_list`.
+     * @param found_list a #GList of #GnomeKeyringFound
      */
     static list_free(found_list: Found[]): void
 }
@@ -374,12 +384,14 @@ class Info {
      * Set whether or not to lock a keyring after a certain amount of idle time.
      * 
      * See also gnome_keyring_info_set_lock_timeout().
+     * @param value Whether to lock or not.
      */
     set_lock_on_idle(value: boolean): void
     /**
      * Set the idle timeout, in seconds, after which to lock the keyring.
      * 
      * See also gnome_keyring_info_set_lock_on_idle().
+     * @param value The lock timeout in seconds.
      */
     set_lock_timeout(value: number): void
     static name: string
@@ -418,14 +430,17 @@ class ItemInfo {
     get_type(): ItemType
     /**
      * Set the display name on an item info.
+     * @param value The new display name.
      */
     set_display_name(value: string): void
     /**
      * Set the secret on an item info.
+     * @param value The new item secret
      */
     set_secret(value: string): void
     /**
      * Set the type on an item info.
+     * @param type The new item type
      */
     set_type(type: ItemType): void
     static name: string
@@ -439,43 +454,43 @@ class NetworkPasswordData {
     /**
      * Keyring item stored in.
      */
-    readonly keyring: string
+    keyring: string
     /**
      * The identifier of the item.
      */
-    readonly item_id: number
+    item_id: number
     /**
      * Network protocol or scheme.
      */
-    readonly protocol: string
+    protocol: string
     /**
      * Server or host name.
      */
-    readonly server: string
+    server: string
     /**
      * Share or other object on server.
      */
-    readonly object: string
+    object: string
     /**
      * Type of authentication.
      */
-    readonly authtype: string
+    authtype: string
     /**
      * TCP port.
      */
-    readonly port: number
+    port: number
     /**
      * User name.
      */
-    readonly user: string
+    user: string
     /**
      * User domain
      */
-    readonly domain: string
+    domain: string
     /**
      * The password.
      */
-    readonly password: string
+    password: string
     static name: string
 }
 class PasswordSchema {
@@ -483,11 +498,11 @@ class PasswordSchema {
     /**
      * The item type for this schema.
      */
-    readonly item_type: ItemType
+    item_type: ItemType
     /**
      * list of attributes
      */
-    readonly attributes: PasswordSchemaAttribute[]
+    attributes: PasswordSchemaAttribute[]
     static name: string
 }
 class PasswordSchemaAttribute {
@@ -495,11 +510,11 @@ class PasswordSchemaAttribute {
     /**
      * the attribute name
      */
-    readonly name: string
+    name: string
     /**
      * the attribute data type
      */
-    readonly type: AttributeType
+    type: AttributeType
     static name: string
 }
     type AttributeList = GLib.Array

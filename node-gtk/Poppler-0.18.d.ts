@@ -1061,7 +1061,7 @@ interface Annot_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Annot {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.Annot */
     /**
      * Gets the type of `poppler_annot`
@@ -1101,21 +1101,25 @@ class Annot {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1153,6 +1157,10 @@ class Annot {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1163,6 +1171,12 @@ class Annot {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1186,6 +1200,7 @@ class Annot {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1205,11 +1220,14 @@ class Annot {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1217,6 +1235,8 @@ class Annot {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1234,6 +1254,7 @@ class Annot {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1279,6 +1300,7 @@ class Annot {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1322,15 +1344,20 @@ class Annot {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1371,6 +1398,7 @@ class Annot {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1405,6 +1433,7 @@ class Annot {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1436,6 +1465,7 @@ class Annot {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1458,7 +1488,7 @@ interface AnnotCircle_ConstructProps extends AnnotMarkup_ConstructProps {
 }
 class AnnotCircle {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotCircle */
     /**
      * Retrieves the interior color of `poppler_annot`.
@@ -1466,6 +1496,7 @@ class AnnotCircle {
     getInteriorColor(): Color
     /**
      * Sets the interior color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setInteriorColor(popplerColor?: Color | null): void
     /* Methods of Poppler-0.18.Poppler.AnnotMarkup */
@@ -1507,21 +1538,25 @@ class AnnotCircle {
     hasPopup(): boolean
     /**
      * Sets the label text of `poppler_annot,` replacing the current one
+     * @param label a text string containing the new label, or %NULL
      */
     setLabel(label?: string | null): void
     /**
      * Sets the opacity of `poppler_annot`. This value applies to
      * all visible elements of `poppler_annot` in its closed state,
      * but not to the pop-up window that appears when it's openened
+     * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
      */
     setOpacity(opacity: number): void
     /**
      * Associates a new popup window for editing contents of `poppler_annot`.
      * Popup window shall be displayed by viewers at `popup_rect` on the page.
+     * @param popupRect a #PopplerRectangle
      */
     setPopup(popupRect: Rectangle): void
     /**
      * Sets the state of the popup window related to `poppler_annot`.
+     * @param isOpen whether popup window should initially be displayed open
      */
     setPopupIsOpen(isOpen: boolean): void
     /**
@@ -1529,6 +1564,7 @@ class AnnotCircle {
      * This doesn't have any effect if `poppler_annot` doesn't have a
      * popup associated, use poppler_annot_markup_set_popup() to associate
      * a popup window to a #PopplerAnnotMarkup.
+     * @param popplerRect a #PopplerRectangle to set
      */
     setPopupRectangle(popplerRect: Rectangle): void
     /* Methods of Poppler-0.18.Poppler.Annot */
@@ -1570,21 +1606,25 @@ class AnnotCircle {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1622,6 +1662,10 @@ class AnnotCircle {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1632,6 +1676,12 @@ class AnnotCircle {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1655,6 +1705,7 @@ class AnnotCircle {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1674,11 +1725,14 @@ class AnnotCircle {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1686,6 +1740,8 @@ class AnnotCircle {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1703,6 +1759,7 @@ class AnnotCircle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1748,6 +1805,7 @@ class AnnotCircle {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1791,15 +1849,20 @@ class AnnotCircle {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1840,6 +1903,7 @@ class AnnotCircle {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1874,6 +1938,7 @@ class AnnotCircle {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1905,6 +1970,7 @@ class AnnotCircle {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1929,7 +1995,7 @@ interface AnnotFileAttachment_ConstructProps extends AnnotMarkup_ConstructProps 
 }
 class AnnotFileAttachment {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotFileAttachment */
     /**
      * Creates a #PopplerAttachment for the file of the file attachment annotation `annot`.
@@ -1979,21 +2045,25 @@ class AnnotFileAttachment {
     hasPopup(): boolean
     /**
      * Sets the label text of `poppler_annot,` replacing the current one
+     * @param label a text string containing the new label, or %NULL
      */
     setLabel(label?: string | null): void
     /**
      * Sets the opacity of `poppler_annot`. This value applies to
      * all visible elements of `poppler_annot` in its closed state,
      * but not to the pop-up window that appears when it's openened
+     * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
      */
     setOpacity(opacity: number): void
     /**
      * Associates a new popup window for editing contents of `poppler_annot`.
      * Popup window shall be displayed by viewers at `popup_rect` on the page.
+     * @param popupRect a #PopplerRectangle
      */
     setPopup(popupRect: Rectangle): void
     /**
      * Sets the state of the popup window related to `poppler_annot`.
+     * @param isOpen whether popup window should initially be displayed open
      */
     setPopupIsOpen(isOpen: boolean): void
     /**
@@ -2001,6 +2071,7 @@ class AnnotFileAttachment {
      * This doesn't have any effect if `poppler_annot` doesn't have a
      * popup associated, use poppler_annot_markup_set_popup() to associate
      * a popup window to a #PopplerAnnotMarkup.
+     * @param popplerRect a #PopplerRectangle to set
      */
     setPopupRectangle(popplerRect: Rectangle): void
     /* Methods of Poppler-0.18.Poppler.Annot */
@@ -2038,21 +2109,25 @@ class AnnotFileAttachment {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2090,6 +2165,10 @@ class AnnotFileAttachment {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2100,6 +2179,12 @@ class AnnotFileAttachment {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2123,6 +2208,7 @@ class AnnotFileAttachment {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2142,11 +2228,14 @@ class AnnotFileAttachment {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2154,6 +2243,8 @@ class AnnotFileAttachment {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2171,6 +2262,7 @@ class AnnotFileAttachment {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2216,6 +2308,7 @@ class AnnotFileAttachment {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2259,15 +2352,20 @@ class AnnotFileAttachment {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2308,6 +2406,7 @@ class AnnotFileAttachment {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2342,6 +2441,7 @@ class AnnotFileAttachment {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2373,6 +2473,7 @@ class AnnotFileAttachment {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2395,7 +2496,7 @@ interface AnnotFreeText_ConstructProps extends AnnotMarkup_ConstructProps {
 }
 class AnnotFreeText {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotFreeText */
     /**
      * Retrieves a #PopplerAnnotCalloutLine of four or six numbers specifying a callout
@@ -2445,21 +2546,25 @@ class AnnotFreeText {
     hasPopup(): boolean
     /**
      * Sets the label text of `poppler_annot,` replacing the current one
+     * @param label a text string containing the new label, or %NULL
      */
     setLabel(label?: string | null): void
     /**
      * Sets the opacity of `poppler_annot`. This value applies to
      * all visible elements of `poppler_annot` in its closed state,
      * but not to the pop-up window that appears when it's openened
+     * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
      */
     setOpacity(opacity: number): void
     /**
      * Associates a new popup window for editing contents of `poppler_annot`.
      * Popup window shall be displayed by viewers at `popup_rect` on the page.
+     * @param popupRect a #PopplerRectangle
      */
     setPopup(popupRect: Rectangle): void
     /**
      * Sets the state of the popup window related to `poppler_annot`.
+     * @param isOpen whether popup window should initially be displayed open
      */
     setPopupIsOpen(isOpen: boolean): void
     /**
@@ -2467,6 +2572,7 @@ class AnnotFreeText {
      * This doesn't have any effect if `poppler_annot` doesn't have a
      * popup associated, use poppler_annot_markup_set_popup() to associate
      * a popup window to a #PopplerAnnotMarkup.
+     * @param popplerRect a #PopplerRectangle to set
      */
     setPopupRectangle(popplerRect: Rectangle): void
     /* Methods of Poppler-0.18.Poppler.Annot */
@@ -2508,21 +2614,25 @@ class AnnotFreeText {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2560,6 +2670,10 @@ class AnnotFreeText {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2570,6 +2684,12 @@ class AnnotFreeText {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2593,6 +2713,7 @@ class AnnotFreeText {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2612,11 +2733,14 @@ class AnnotFreeText {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2624,6 +2748,8 @@ class AnnotFreeText {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2641,6 +2767,7 @@ class AnnotFreeText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2686,6 +2813,7 @@ class AnnotFreeText {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2729,15 +2857,20 @@ class AnnotFreeText {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2778,6 +2911,7 @@ class AnnotFreeText {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2812,6 +2946,7 @@ class AnnotFreeText {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2843,6 +2978,7 @@ class AnnotFreeText {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2865,10 +3001,12 @@ interface AnnotLine_ConstructProps extends AnnotMarkup_ConstructProps {
 }
 class AnnotLine {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotLine */
     /**
      * Set the coordinate points where the `poppler_annot` starts and ends.
+     * @param start a #PopplerPoint of the starting vertice
+     * @param end a #PopplerPoint of the ending vertice
      */
     setVertices(start: Point, end: Point): void
     /* Methods of Poppler-0.18.Poppler.AnnotMarkup */
@@ -2910,21 +3048,25 @@ class AnnotLine {
     hasPopup(): boolean
     /**
      * Sets the label text of `poppler_annot,` replacing the current one
+     * @param label a text string containing the new label, or %NULL
      */
     setLabel(label?: string | null): void
     /**
      * Sets the opacity of `poppler_annot`. This value applies to
      * all visible elements of `poppler_annot` in its closed state,
      * but not to the pop-up window that appears when it's openened
+     * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
      */
     setOpacity(opacity: number): void
     /**
      * Associates a new popup window for editing contents of `poppler_annot`.
      * Popup window shall be displayed by viewers at `popup_rect` on the page.
+     * @param popupRect a #PopplerRectangle
      */
     setPopup(popupRect: Rectangle): void
     /**
      * Sets the state of the popup window related to `poppler_annot`.
+     * @param isOpen whether popup window should initially be displayed open
      */
     setPopupIsOpen(isOpen: boolean): void
     /**
@@ -2932,6 +3074,7 @@ class AnnotLine {
      * This doesn't have any effect if `poppler_annot` doesn't have a
      * popup associated, use poppler_annot_markup_set_popup() to associate
      * a popup window to a #PopplerAnnotMarkup.
+     * @param popplerRect a #PopplerRectangle to set
      */
     setPopupRectangle(popplerRect: Rectangle): void
     /* Methods of Poppler-0.18.Poppler.Annot */
@@ -2973,21 +3116,25 @@ class AnnotLine {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3025,6 +3172,10 @@ class AnnotLine {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3035,6 +3186,12 @@ class AnnotLine {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3058,6 +3215,7 @@ class AnnotLine {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3077,11 +3235,14 @@ class AnnotLine {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3089,6 +3250,8 @@ class AnnotLine {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3106,6 +3269,7 @@ class AnnotLine {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3151,6 +3315,7 @@ class AnnotLine {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3194,15 +3359,20 @@ class AnnotLine {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3243,6 +3413,7 @@ class AnnotLine {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3277,6 +3448,7 @@ class AnnotLine {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3308,6 +3480,7 @@ class AnnotLine {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3332,7 +3505,7 @@ interface AnnotMarkup_ConstructProps extends Annot_ConstructProps {
 }
 class AnnotMarkup {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotMarkup */
     /**
      * Returns the date and time when the annotation was created
@@ -3372,21 +3545,25 @@ class AnnotMarkup {
     hasPopup(): boolean
     /**
      * Sets the label text of `poppler_annot,` replacing the current one
+     * @param label a text string containing the new label, or %NULL
      */
     setLabel(label?: string | null): void
     /**
      * Sets the opacity of `poppler_annot`. This value applies to
      * all visible elements of `poppler_annot` in its closed state,
      * but not to the pop-up window that appears when it's openened
+     * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
      */
     setOpacity(opacity: number): void
     /**
      * Associates a new popup window for editing contents of `poppler_annot`.
      * Popup window shall be displayed by viewers at `popup_rect` on the page.
+     * @param popupRect a #PopplerRectangle
      */
     setPopup(popupRect: Rectangle): void
     /**
      * Sets the state of the popup window related to `poppler_annot`.
+     * @param isOpen whether popup window should initially be displayed open
      */
     setPopupIsOpen(isOpen: boolean): void
     /**
@@ -3394,6 +3571,7 @@ class AnnotMarkup {
      * This doesn't have any effect if `poppler_annot` doesn't have a
      * popup associated, use poppler_annot_markup_set_popup() to associate
      * a popup window to a #PopplerAnnotMarkup.
+     * @param popplerRect a #PopplerRectangle to set
      */
     setPopupRectangle(popplerRect: Rectangle): void
     /* Methods of Poppler-0.18.Poppler.Annot */
@@ -3435,21 +3613,25 @@ class AnnotMarkup {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3487,6 +3669,10 @@ class AnnotMarkup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3497,6 +3683,12 @@ class AnnotMarkup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3520,6 +3712,7 @@ class AnnotMarkup {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3539,11 +3732,14 @@ class AnnotMarkup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3551,6 +3747,8 @@ class AnnotMarkup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3568,6 +3766,7 @@ class AnnotMarkup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3613,6 +3812,7 @@ class AnnotMarkup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3656,15 +3856,20 @@ class AnnotMarkup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3705,6 +3910,7 @@ class AnnotMarkup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3739,6 +3945,7 @@ class AnnotMarkup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3770,6 +3977,7 @@ class AnnotMarkup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3792,7 +4000,7 @@ interface AnnotMovie_ConstructProps extends Annot_ConstructProps {
 }
 class AnnotMovie {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotMovie */
     /**
      * Retrieves the movie object (PopplerMovie) stored in the `poppler_annot`.
@@ -3841,21 +4049,25 @@ class AnnotMovie {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3893,6 +4105,10 @@ class AnnotMovie {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3903,6 +4119,12 @@ class AnnotMovie {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3926,6 +4148,7 @@ class AnnotMovie {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3945,11 +4168,14 @@ class AnnotMovie {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3957,6 +4183,8 @@ class AnnotMovie {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3974,6 +4202,7 @@ class AnnotMovie {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4019,6 +4248,7 @@ class AnnotMovie {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4062,15 +4292,20 @@ class AnnotMovie {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4111,6 +4346,7 @@ class AnnotMovie {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4145,6 +4381,7 @@ class AnnotMovie {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4176,6 +4413,7 @@ class AnnotMovie {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4198,7 +4436,7 @@ interface AnnotScreen_ConstructProps extends Annot_ConstructProps {
 }
 class AnnotScreen {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotScreen */
     /**
      * Retrieves the action (#PopplerAction) that shall be performed when `poppler_annot` is activated
@@ -4243,21 +4481,25 @@ class AnnotScreen {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4295,6 +4537,10 @@ class AnnotScreen {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4305,6 +4551,12 @@ class AnnotScreen {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4328,6 +4580,7 @@ class AnnotScreen {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4347,11 +4600,14 @@ class AnnotScreen {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4359,6 +4615,8 @@ class AnnotScreen {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4376,6 +4634,7 @@ class AnnotScreen {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4421,6 +4680,7 @@ class AnnotScreen {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4464,15 +4724,20 @@ class AnnotScreen {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4513,6 +4778,7 @@ class AnnotScreen {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4547,6 +4813,7 @@ class AnnotScreen {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4578,6 +4845,7 @@ class AnnotScreen {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4600,7 +4868,7 @@ interface AnnotSquare_ConstructProps extends AnnotMarkup_ConstructProps {
 }
 class AnnotSquare {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotSquare */
     /**
      * Retrieves the interior color of `poppler_annot`.
@@ -4608,6 +4876,7 @@ class AnnotSquare {
     getInteriorColor(): Color
     /**
      * Sets the interior color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setInteriorColor(popplerColor?: Color | null): void
     /* Methods of Poppler-0.18.Poppler.AnnotMarkup */
@@ -4649,21 +4918,25 @@ class AnnotSquare {
     hasPopup(): boolean
     /**
      * Sets the label text of `poppler_annot,` replacing the current one
+     * @param label a text string containing the new label, or %NULL
      */
     setLabel(label?: string | null): void
     /**
      * Sets the opacity of `poppler_annot`. This value applies to
      * all visible elements of `poppler_annot` in its closed state,
      * but not to the pop-up window that appears when it's openened
+     * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
      */
     setOpacity(opacity: number): void
     /**
      * Associates a new popup window for editing contents of `poppler_annot`.
      * Popup window shall be displayed by viewers at `popup_rect` on the page.
+     * @param popupRect a #PopplerRectangle
      */
     setPopup(popupRect: Rectangle): void
     /**
      * Sets the state of the popup window related to `poppler_annot`.
+     * @param isOpen whether popup window should initially be displayed open
      */
     setPopupIsOpen(isOpen: boolean): void
     /**
@@ -4671,6 +4944,7 @@ class AnnotSquare {
      * This doesn't have any effect if `poppler_annot` doesn't have a
      * popup associated, use poppler_annot_markup_set_popup() to associate
      * a popup window to a #PopplerAnnotMarkup.
+     * @param popplerRect a #PopplerRectangle to set
      */
     setPopupRectangle(popplerRect: Rectangle): void
     /* Methods of Poppler-0.18.Poppler.Annot */
@@ -4712,21 +4986,25 @@ class AnnotSquare {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4764,6 +5042,10 @@ class AnnotSquare {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4774,6 +5056,12 @@ class AnnotSquare {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4797,6 +5085,7 @@ class AnnotSquare {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4816,11 +5105,14 @@ class AnnotSquare {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4828,6 +5120,8 @@ class AnnotSquare {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4845,6 +5139,7 @@ class AnnotSquare {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4890,6 +5185,7 @@ class AnnotSquare {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4933,15 +5229,20 @@ class AnnotSquare {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4982,6 +5283,7 @@ class AnnotSquare {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5016,6 +5318,7 @@ class AnnotSquare {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5047,6 +5350,7 @@ class AnnotSquare {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5071,7 +5375,7 @@ interface AnnotText_ConstructProps extends AnnotMarkup_ConstructProps {
 }
 class AnnotText {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotText */
     /**
      * Gets name of the icon of `poppler_annot`.
@@ -5117,10 +5421,12 @@ class AnnotText {
      *   <term>#POPPLER_ANNOT_TEXT_ICON_CIRCLE</term>
      *  </varlistentry>
      * </variablelist>
+     * @param icon the name of an icon
      */
     setIcon(icon: string): void
     /**
      * Sets whether `poppler_annot` should initially be displayed open
+     * @param isOpen whether annotation should initially be displayed open
      */
     setIsOpen(isOpen: boolean): void
     /* Methods of Poppler-0.18.Poppler.AnnotMarkup */
@@ -5162,21 +5468,25 @@ class AnnotText {
     hasPopup(): boolean
     /**
      * Sets the label text of `poppler_annot,` replacing the current one
+     * @param label a text string containing the new label, or %NULL
      */
     setLabel(label?: string | null): void
     /**
      * Sets the opacity of `poppler_annot`. This value applies to
      * all visible elements of `poppler_annot` in its closed state,
      * but not to the pop-up window that appears when it's openened
+     * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
      */
     setOpacity(opacity: number): void
     /**
      * Associates a new popup window for editing contents of `poppler_annot`.
      * Popup window shall be displayed by viewers at `popup_rect` on the page.
+     * @param popupRect a #PopplerRectangle
      */
     setPopup(popupRect: Rectangle): void
     /**
      * Sets the state of the popup window related to `poppler_annot`.
+     * @param isOpen whether popup window should initially be displayed open
      */
     setPopupIsOpen(isOpen: boolean): void
     /**
@@ -5184,6 +5494,7 @@ class AnnotText {
      * This doesn't have any effect if `poppler_annot` doesn't have a
      * popup associated, use poppler_annot_markup_set_popup() to associate
      * a popup window to a #PopplerAnnotMarkup.
+     * @param popplerRect a #PopplerRectangle to set
      */
     setPopupRectangle(popplerRect: Rectangle): void
     /* Methods of Poppler-0.18.Poppler.Annot */
@@ -5225,21 +5536,25 @@ class AnnotText {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5277,6 +5592,10 @@ class AnnotText {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5287,6 +5606,12 @@ class AnnotText {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5310,6 +5635,7 @@ class AnnotText {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5329,11 +5655,14 @@ class AnnotText {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5341,6 +5670,8 @@ class AnnotText {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5358,6 +5689,7 @@ class AnnotText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5403,6 +5735,7 @@ class AnnotText {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5446,15 +5779,20 @@ class AnnotText {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5495,6 +5833,7 @@ class AnnotText {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5529,6 +5868,7 @@ class AnnotText {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5560,6 +5900,7 @@ class AnnotText {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5584,7 +5925,7 @@ interface AnnotTextMarkup_ConstructProps extends AnnotMarkup_ConstructProps {
 }
 class AnnotTextMarkup {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.AnnotTextMarkup */
     /**
      * Returns a #GArray of #PopplerQuadrilateral items that map from a
@@ -5594,6 +5935,7 @@ class AnnotTextMarkup {
     getQuadrilaterals(): Quadrilateral[]
     /**
      * Set the regions (Quadrilaterals) to apply the text markup in `poppler_annot`.
+     * @param quadrilaterals A #GArray of   #PopplerQuadrilateral<!-- -->s
      */
     setQuadrilaterals(quadrilaterals: Quadrilateral[]): void
     /* Methods of Poppler-0.18.Poppler.AnnotMarkup */
@@ -5635,21 +5977,25 @@ class AnnotTextMarkup {
     hasPopup(): boolean
     /**
      * Sets the label text of `poppler_annot,` replacing the current one
+     * @param label a text string containing the new label, or %NULL
      */
     setLabel(label?: string | null): void
     /**
      * Sets the opacity of `poppler_annot`. This value applies to
      * all visible elements of `poppler_annot` in its closed state,
      * but not to the pop-up window that appears when it's openened
+     * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
      */
     setOpacity(opacity: number): void
     /**
      * Associates a new popup window for editing contents of `poppler_annot`.
      * Popup window shall be displayed by viewers at `popup_rect` on the page.
+     * @param popupRect a #PopplerRectangle
      */
     setPopup(popupRect: Rectangle): void
     /**
      * Sets the state of the popup window related to `poppler_annot`.
+     * @param isOpen whether popup window should initially be displayed open
      */
     setPopupIsOpen(isOpen: boolean): void
     /**
@@ -5657,6 +6003,7 @@ class AnnotTextMarkup {
      * This doesn't have any effect if `poppler_annot` doesn't have a
      * popup associated, use poppler_annot_markup_set_popup() to associate
      * a popup window to a #PopplerAnnotMarkup.
+     * @param popplerRect a #PopplerRectangle to set
      */
     setPopupRectangle(popplerRect: Rectangle): void
     /* Methods of Poppler-0.18.Poppler.Annot */
@@ -5698,21 +6045,25 @@ class AnnotTextMarkup {
     getRectangle(): /* popplerRect */ Rectangle
     /**
      * Sets the color of `poppler_annot`.
+     * @param popplerColor a #PopplerColor, or %NULL
      */
     setColor(popplerColor?: Color | null): void
     /**
      * Sets the contents of `poppler_annot` to the given value,
      * replacing the current contents.
+     * @param contents a text string containing the new contents
      */
     setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
+     * @param flags a #PopplerAnnotFlag
      */
     setFlags(flags: AnnotFlag): void
     /**
      * Move the annotation to the rectangle representing the page coordinates
      * where the annotation `poppler_annot` should be placed.
+     * @param popplerRect a #PopplerRectangle with the new annotation's coordinates
      */
     setRectangle(popplerRect: Rectangle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5750,6 +6101,10 @@ class AnnotTextMarkup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5760,6 +6115,12 @@ class AnnotTextMarkup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5783,6 +6144,7 @@ class AnnotTextMarkup {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5802,11 +6164,14 @@ class AnnotTextMarkup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5814,6 +6179,8 @@ class AnnotTextMarkup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5831,6 +6198,7 @@ class AnnotTextMarkup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5876,6 +6244,7 @@ class AnnotTextMarkup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5919,15 +6288,20 @@ class AnnotTextMarkup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5968,6 +6342,7 @@ class AnnotTextMarkup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6002,6 +6377,7 @@ class AnnotTextMarkup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6033,6 +6409,7 @@ class AnnotTextMarkup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6060,7 +6437,7 @@ interface Attachment_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Attachment {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.Attachment */
     getChecksum(): GLib.String
     getCtime(): GLib.DateTime | null
@@ -6072,6 +6449,7 @@ class Attachment {
      * Saves `attachment` to a file indicated by `filename`.  If `error` is set, %FALSE
      * will be returned. Possible errors include those in the #G_FILE_ERROR domain
      * and whatever the save function generates.
+     * @param filename name of file to save
      */
     save(filename: string): boolean
     /**
@@ -6080,6 +6458,7 @@ class Attachment {
      * an in-memory buffer or a socket. If `error` is set, %FALSE will be
      * returned. Possible errors include those in the #G_FILE_ERROR domain and
      * whatever the save function generates.
+     * @param saveFunc a function that is called to save each block of data that the save routine generates.
      */
     saveToCallback(saveFunc: AttachmentSaveFunc): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6117,6 +6496,10 @@ class Attachment {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6127,6 +6510,12 @@ class Attachment {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6150,6 +6539,7 @@ class Attachment {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6169,11 +6559,14 @@ class Attachment {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6181,6 +6574,8 @@ class Attachment {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6198,6 +6593,7 @@ class Attachment {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6243,6 +6639,7 @@ class Attachment {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6286,15 +6683,20 @@ class Attachment {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6335,6 +6737,7 @@ class Attachment {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6369,6 +6772,7 @@ class Attachment {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6400,6 +6804,7 @@ class Attachment {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6559,7 +6964,7 @@ class Document {
     title: string
     readonly viewerPreferences: ViewerPreferences
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.Document */
     /**
      * Creates a #PopplerDest for the named destination `link_name` in `document`.
@@ -6571,6 +6976,7 @@ class Document {
      * function.
      * 
      * The returned value must be freed with poppler_dest_free().
+     * @param linkName a named destination
      */
     findDest(linkName: string): Dest
     /**
@@ -6600,6 +7006,7 @@ class Document {
     /**
      * Returns the #PopplerFormField for the given `id`. It must be freed with
      * g_object_unref()
+     * @param id an id of a #PopplerFormField
      */
     getFormField(id: number): FormField
     /**
@@ -6641,6 +7048,7 @@ class Document {
     /**
      * Returns the #PopplerPage indexed at `index`.  This object is owned by the
      * caller.
+     * @param index a page index
      */
     getPage(index: number): Page
     /**
@@ -6649,6 +7057,7 @@ class Document {
      * and can be document specific.  Typically, it is a value such as "iii" or "3".
      * 
      * By default, "1" refers to the first page.
+     * @param label a page label
      */
     getPageByLabel(label: string): Page
     /**
@@ -6743,6 +7152,7 @@ class Document {
      * will be saved.
      * If `error` is set, %FALSE will be returned. Possible errors
      * include those in the #G_FILE_ERROR domain.
+     * @param uri uri of file to save
      */
     save(uri: string): boolean
     /**
@@ -6751,56 +7161,67 @@ class Document {
      * form fields filled by the user will not be saved.
      * If `error` is set, %FALSE will be returned. Possible errors
      * include those in the #G_FILE_ERROR domain.
+     * @param uri uri of file to save
      */
     saveACopy(uri: string): boolean
     /**
      * Sets the document's author. If `author` is %NULL, Author
      * entry is removed from the document's Info dictionary.
+     * @param author A new author
      */
     setAuthor(author: string): void
     /**
      * Sets the document's creation date. If `creation_date` is -1, CreationDate
      * entry is removed from the document's Info dictionary.
+     * @param creationDate A new creation date
      */
     setCreationDate(creationDate: number): void
     /**
      * Sets the document's creation date. If `creation_datetime` is %NULL,
      * CreationDate entry is removed from the document's Info dictionary.
+     * @param creationDatetime A new creation #GDateTime
      */
     setCreationDateTime(creationDatetime?: GLib.DateTime | null): void
     /**
      * Sets the document's creator. If `creator` is %NULL, Creator
      * entry is removed from the document's Info dictionary.
+     * @param creator A new creator
      */
     setCreator(creator: string): void
     /**
      * Sets the document's keywords. If `keywords` is %NULL,
      * Keywords entry is removed from the document's Info dictionary.
+     * @param keywords New keywords
      */
     setKeywords(keywords: string): void
     /**
      * Sets the document's modification date. If `modification_date` is -1, ModDate
      * entry is removed from the document's Info dictionary.
+     * @param modificationDate A new modification date
      */
     setModificationDate(modificationDate: number): void
     /**
      * Sets the document's modification date. If `modification_datetime` is %NULL,
      * ModDate entry is removed from the document's Info dictionary.
+     * @param modificationDatetime A new modification #GDateTime
      */
     setModificationDateTime(modificationDatetime?: GLib.DateTime | null): void
     /**
      * Sets the document's producer. If `producer` is %NULL,
      * Producer entry is removed from the document's Info dictionary.
+     * @param producer A new producer
      */
     setProducer(producer: string): void
     /**
      * Sets the document's subject. If `subject` is %NULL, Subject
      * entry is removed from the document's Info dictionary.
+     * @param subject A new subject
      */
     setSubject(subject: string): void
     /**
      * Sets the document's title. If `title` is %NULL, Title entry
      * is removed from the document's Info dictionary.
+     * @param title A new title
      */
     setTitle(title: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6838,6 +7259,10 @@ class Document {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6848,6 +7273,12 @@ class Document {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6871,6 +7302,7 @@ class Document {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6890,11 +7322,14 @@ class Document {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6902,6 +7337,8 @@ class Document {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6919,6 +7356,7 @@ class Document {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6964,6 +7402,7 @@ class Document {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7007,15 +7446,20 @@ class Document {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7056,6 +7500,7 @@ class Document {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7090,6 +7535,7 @@ class Document {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7121,6 +7567,7 @@ class Document {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7279,7 +7726,7 @@ interface FontInfo_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FontInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.FontInfo */
     free(): void
     /**
@@ -7301,6 +7748,7 @@ class FontInfo {
      *         poppler_fonts_iter_free (fonts_iter);
      * }
      * </programlisting></informalexample>
+     * @param nPages number of pages to scan
      */
     scan(nPages: number): [ /* returnType */ boolean, /* iter */ FontsIter ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -7338,6 +7786,10 @@ class FontInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7348,6 +7800,12 @@ class FontInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7371,6 +7829,7 @@ class FontInfo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7390,11 +7849,14 @@ class FontInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7402,6 +7864,8 @@ class FontInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7419,6 +7883,7 @@ class FontInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7464,6 +7929,7 @@ class FontInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7507,15 +7973,20 @@ class FontInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7556,6 +8027,7 @@ class FontInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7590,6 +8062,7 @@ class FontInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7621,6 +8094,7 @@ class FontInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7645,7 +8119,7 @@ interface FormField_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FormField {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.FormField */
     /**
      * Gets the button type of `field`
@@ -7659,6 +8133,7 @@ class FormField {
     /**
      * Sets the status of `field`. Set to %TRUE if you want the #PopplerFormField
      * to be 'pressed in', and %FALSE to raise it.
+     * @param state %TRUE or %FALSE
      */
     buttonSetState(state: boolean): void
     /**
@@ -7676,6 +8151,7 @@ class FormField {
     choiceGetChoiceType(): FormChoiceType
     /**
      * Returns the contents of the item on `field` at the given index
+     * @param index the index of the item
      */
     choiceGetItem(index: number): string
     /**
@@ -7692,18 +8168,22 @@ class FormField {
     choiceIsEditable(): boolean
     /**
      * Checks whether the item at the given index on `field` is currently selected
+     * @param index the index of the item
      */
     choiceIsItemSelected(index: number): boolean
     /**
      * Selects the item at the given index on `field`
+     * @param index the index of the item
      */
     choiceSelectItem(index: number): void
     /**
      * Sets the text in `field` to the given value, replacing the current contents
+     * @param text the new text
      */
     choiceSetText(text: string): void
     /**
      * Changes the state of the item at the given index
+     * @param index the index of the item
      */
     choiceToggleItem(index: number): void
     /**
@@ -7718,6 +8198,7 @@ class FormField {
     /**
      * Retrieves the action (#PopplerAction) that shall be performed when
      * an additional action is triggered on `field,` or %NULL.
+     * @param type the type of additional action
      */
     getAdditionalAction(type: AdditionalActionType): Action
     /**
@@ -7786,6 +8267,7 @@ class FormField {
     textIsRichText(): boolean
     /**
      * Sets the text in `field` to the given value, replacing the current contents.
+     * @param text the new text
      */
     textSetText(text: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7823,6 +8305,10 @@ class FormField {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7833,6 +8319,12 @@ class FormField {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7856,6 +8348,7 @@ class FormField {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7875,11 +8368,14 @@ class FormField {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7887,6 +8383,8 @@ class FormField {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7904,6 +8402,7 @@ class FormField {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7949,6 +8448,7 @@ class FormField {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7992,15 +8492,20 @@ class FormField {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8041,6 +8546,7 @@ class FormField {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8075,6 +8581,7 @@ class FormField {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8106,6 +8613,7 @@ class FormField {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8128,7 +8636,7 @@ interface Layer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Layer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.Layer */
     /**
      * Returns the numeric ID the radio button group associated with `layer`.
@@ -8192,6 +8700,10 @@ class Layer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8202,6 +8714,12 @@ class Layer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8225,6 +8743,7 @@ class Layer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8244,11 +8763,14 @@ class Layer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8256,6 +8778,8 @@ class Layer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8273,6 +8797,7 @@ class Layer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8318,6 +8843,7 @@ class Layer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8361,15 +8887,20 @@ class Layer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8410,6 +8941,7 @@ class Layer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8444,6 +8976,7 @@ class Layer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8475,6 +9008,7 @@ class Layer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8497,7 +9031,7 @@ interface Media_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Media {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.Media */
     /**
      * Returns the media clip filename, in case of non-embedded media. filename might be
@@ -8520,6 +9054,7 @@ class Media {
      * If `error` is set, %FALSE will be returned.
      * Possible errors include those in the #G_FILE_ERROR domain
      * and whatever the save function generates.
+     * @param filename name of file to save
      */
     save(filename: string): boolean
     /**
@@ -8528,6 +9063,7 @@ class Media {
      * an in-memory buffer or a socket. If `error` is set, %FALSE will be
      * returned. Possible errors include those in the #G_FILE_ERROR domain and
      * whatever the save function generates.
+     * @param saveFunc a function that is called to save each block of data that the save routine generates.
      */
     saveToCallback(saveFunc: MediaSaveFunc): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8565,6 +9101,10 @@ class Media {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8575,6 +9115,12 @@ class Media {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8598,6 +9144,7 @@ class Media {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8617,11 +9164,14 @@ class Media {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8629,6 +9179,8 @@ class Media {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8646,6 +9198,7 @@ class Media {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8691,6 +9244,7 @@ class Media {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8734,15 +9288,20 @@ class Media {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8783,6 +9342,7 @@ class Media {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8817,6 +9377,7 @@ class Media {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8848,6 +9409,7 @@ class Media {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8870,12 +9432,14 @@ interface Movie_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Movie {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.Movie */
     /**
      * Returns the dimensions of the movie's bounding box (in pixels).
      * The respective PDF movie dictionary entry is optional; if missing,
      * -1x-1 will be returned.
+     * @param width width of the movie's bounding box
+     * @param height height of the movie's bounding box
      */
     getAspect(width: number, height: number): void
     /**
@@ -8956,6 +9520,10 @@ class Movie {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8966,6 +9534,12 @@ class Movie {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8989,6 +9563,7 @@ class Movie {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9008,11 +9583,14 @@ class Movie {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9020,6 +9598,8 @@ class Movie {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9037,6 +9617,7 @@ class Movie {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9082,6 +9663,7 @@ class Movie {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9125,15 +9707,20 @@ class Movie {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9174,6 +9761,7 @@ class Movie {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9208,6 +9796,7 @@ class Movie {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9239,6 +9828,7 @@ class Movie {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9261,7 +9851,7 @@ interface PSFile_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PSFile {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.PSFile */
     /**
      * Frees `ps_file`
@@ -9269,12 +9859,15 @@ class PSFile {
     free(): void
     /**
      * Enable or disable Duplex printing.
+     * @param duplex whether to force duplex printing (on printers which support this)
      */
     setDuplex(duplex: boolean): void
     /**
      * Set the output paper size. These values will end up in the
      * DocumentMedia, the BoundingBox DSC comments and other places in the
      * generated PostScript.
+     * @param width the paper width in 1/72 inch
+     * @param height the paper height in 1/72 inch
      */
     setPaperSize(width: number, height: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9312,6 +9905,10 @@ class PSFile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9322,6 +9919,12 @@ class PSFile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9345,6 +9948,7 @@ class PSFile {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9364,11 +9968,14 @@ class PSFile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9376,6 +9983,8 @@ class PSFile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9393,6 +10002,7 @@ class PSFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9438,6 +10048,7 @@ class PSFile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9481,15 +10092,20 @@ class PSFile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9530,6 +10146,7 @@ class PSFile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9564,6 +10181,7 @@ class PSFile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9595,6 +10213,7 @@ class PSFile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9624,22 +10243,26 @@ class Page {
      */
     readonly label: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.Page */
     /**
      * Adds annotation `annot` to `page`.
+     * @param annot a #PopplerAnnot to add
      */
     addAnnot(annot: Annot): void
     /**
      * Finds `text` in `page` with the default options (%POPPLER_FIND_DEFAULT) and
      * returns a #GList of rectangles for each occurrence of the text on the page.
      * The coordinates are in PDF points.
+     * @param text the text to search for (UTF-8 encoded)
      */
     findText(text: string): Rectangle[]
     /**
      * Finds `text` in `page` with the given #PopplerFindFlags options and
      * returns a #GList of rectangles for each occurrence of the text on the page.
      * The coordinates are in PDF points.
+     * @param text the text to search for (UTF-8 encoded)
+     * @param options find options
      */
     findTextWithOptions(text: string, options: FindFlags): Rectangle[]
     /**
@@ -9665,6 +10288,7 @@ class Page {
     getFormFieldMapping(): FormFieldMapping[]
     /**
      * Returns a cairo surface for the image of the `page`
+     * @param imageId The image identifier
      */
     getImage(imageId: number): cairo.Surface
     /**
@@ -9692,10 +10316,15 @@ class Page {
      * Returns a region containing the area that would be rendered by
      * poppler_page_render_selection().
      * The returned region must be freed with cairo_region_destroy()
+     * @param scale scale specified as pixels per point
+     * @param style a #PopplerSelectionStyle
+     * @param selection start and end point of selection as a rectangle
      */
     getSelectedRegion(scale: number, style: SelectionStyle, selection: Rectangle): cairo.Region
     /**
      * Retrieves the contents of the specified `selection` as text.
+     * @param style a #PopplerSelectionStyle
+     * @param selection the #PopplerRectangle including the text
      */
     getSelectedText(style: SelectionStyle, selection: Rectangle): string
     /**
@@ -9703,6 +10332,9 @@ class Page {
      * poppler_page_render_selection() as a #GList of
      * #PopplerRectangle. The returned list must be freed with
      * poppler_page_selection_region_free().
+     * @param scale scale specified as pixels per point
+     * @param style a #PopplerSelectionStyle
+     * @param selection start and end point of selection as a rectangle
      */
     getSelectionRegion(scale: number, style: SelectionStyle, selection: Rectangle): Rectangle[]
     /**
@@ -9731,10 +10363,12 @@ class Page {
      * Each list element is a #PopplerTextAttributes struct where start_index and
      * end_index indicates the range of text (as returned by poppler_page_get_text_for_area())
      * to which text attributes apply.
+     * @param area a #PopplerRectangle
      */
     getTextAttributesForArea(area: Rectangle): TextAttributes[]
     /**
      * Retrieves the text of `page` contained in `area`.
+     * @param area a #PopplerRectangle
      */
     getTextForArea(area: Rectangle): string
     /**
@@ -9753,6 +10387,7 @@ class Page {
      * 
      * The position in the array represents an offset in the text returned by
      * poppler_page_get_text_for_area()
+     * @param area a #PopplerRectangle
      */
     getTextLayoutForArea(area: Rectangle): [ /* returnType */ boolean, /* rectangles */ Rectangle[] ]
     /**
@@ -9774,6 +10409,7 @@ class Page {
     getTransition(): PageTransition
     /**
      * Removes annotation `annot` from `page`
+     * @param annot a #PopplerAnnot to remove
      */
     removeAnnot(annot: Annot): void
     /**
@@ -9783,6 +10419,7 @@ class Page {
      * poppler_page_render_for_printing() instead.  Please see the documentation
      * for that function for the differences between rendering to the screen and
      * rendering to a printer.
+     * @param cairo cairo context to render to
      */
     render(cairo: cairo.Context): void
     /**
@@ -9815,6 +10452,7 @@ class Page {
      *     and try to down-scale the intermediate surfaces as appropriate.
      *   </listitem>
      * </itemizedlist>
+     * @param cairo cairo context to render to
      */
     renderForPrinting(cairo: cairo.Context): void
     /**
@@ -9823,6 +10461,8 @@ class Page {
      * 
      * See the documentation for poppler_page_render_for_printing() for the
      * differences between rendering to the screen and rendering to a printer.
+     * @param cairo cairo context to render to
+     * @param options print options
      */
     renderForPrintingWithOptions(cairo: cairo.Context, options: PrintFlags): void
     /**
@@ -9834,10 +10474,17 @@ class Page {
      * If non-NULL, `old_selection` specifies the selection that is already
      * rendered to `cairo,` in which case this function will (some day)
      * only render the changed part of the selection.
+     * @param cairo cairo context to render to
+     * @param selection start and end point of selection as a rectangle
+     * @param oldSelection previous selection
+     * @param style a #PopplerSelectionStyle
+     * @param glyphColor color to use for drawing glyphs
+     * @param backgroundColor color to use for the selection background
      */
     renderSelection(cairo: cairo.Context, selection: Rectangle, oldSelection: Rectangle, style: SelectionStyle, glyphColor: Color, backgroundColor: Color): void
     /**
      * Render the page on a postscript file
+     * @param psFile the PopplerPSFile to render to
      */
     renderToPs(psFile: PSFile): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9875,6 +10522,10 @@ class Page {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9885,6 +10536,12 @@ class Page {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9908,6 +10565,7 @@ class Page {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9927,11 +10585,14 @@ class Page {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9939,6 +10600,8 @@ class Page {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9956,6 +10619,7 @@ class Page {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10001,6 +10665,7 @@ class Page {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10044,15 +10709,20 @@ class Page {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10093,6 +10763,7 @@ class Page {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10127,6 +10798,7 @@ class Page {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10158,6 +10830,7 @@ class Page {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10185,16 +10858,19 @@ class Page {
      * poppler_page_get_annot_mapping().  It also unreferences the #PopplerAnnot<!-- -->s
      * that each mapping contains, so if you want to keep them around, you need to
      * reference them with g_object_ref().
+     * @param list A list of   #PopplerAnnotMapping<!-- -->s
      */
     static freeAnnotMapping(list: AnnotMapping[]): void
     /**
      * Frees a list of #PopplerFormFieldMapping<!-- -->s allocated by
      * poppler_page_get_form_field_mapping().
+     * @param list A list of   #PopplerFormFieldMapping<!-- -->s
      */
     static freeFormFieldMapping(list: FormFieldMapping[]): void
     /**
      * Frees a list of #PopplerImageMapping<!-- -->s allocated by
      * poppler_page_get_image_mapping().
+     * @param list A list of   #PopplerImageMapping<!-- -->s
      */
     static freeImageMapping(list: ImageMapping[]): void
     /**
@@ -10202,15 +10878,18 @@ class Page {
      * poppler_page_get_link_mapping().  It also frees the #PopplerAction<!-- -->s
      * that each mapping contains, so if you want to keep them around, you need to
      * copy them with poppler_action_copy().
+     * @param list A list of   #PopplerLinkMapping<!-- -->s
      */
     static freeLinkMapping(list: LinkMapping[]): void
     /**
      * Frees a list of #PopplerTextAttributes<!-- -->s allocated by
      * poppler_page_get_text_attributes().
+     * @param list A list of   #PopplerTextAttributes<!-- -->s
      */
     static freeTextAttributes(list: TextAttributes[]): void
     /**
      * Frees `region`
+     * @param region a #GList of   #PopplerRectangle
      */
     static selectionRegionFree(region: Rectangle[]): void
     static $gtype: GObject.Type
@@ -10219,7 +10898,7 @@ interface StructureElement_ConstructProps extends GObject.Object_ConstructProps 
 }
 class StructureElement {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Poppler-0.18.Poppler.StructureElement */
     /**
      * Acronyms and abbreviations contained in elements of type
@@ -10466,6 +11145,7 @@ class StructureElement {
     /**
      * Obtains the text enclosed by an element, or the text enclosed by the
      * elements in the subtree (including the element itself).
+     * @param flags A #PopplerStructureGetTextFlags value, or    %POPPLER_STRUCTURE_GET_TEXT_NONE to disable all the flags.
      */
     getText(flags: StructureGetTextFlags): string
     /**
@@ -10578,6 +11258,10 @@ class StructureElement {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10588,6 +11272,12 @@ class StructureElement {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10611,6 +11301,7 @@ class StructureElement {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10630,11 +11321,14 @@ class StructureElement {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10642,6 +11336,8 @@ class StructureElement {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10659,6 +11355,7 @@ class StructureElement {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10704,6 +11401,7 @@ class StructureElement {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10747,15 +11445,20 @@ class StructureElement {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10796,6 +11499,7 @@ class StructureElement {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10830,6 +11534,7 @@ class StructureElement {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10861,6 +11566,7 @@ class StructureElement {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10881,38 +11587,38 @@ class StructureElement {
 }
 class ActionAny {
     /* Fields of Poppler-0.18.Poppler.ActionAny */
-    readonly type: ActionType
-    readonly title: string
+    type: ActionType
+    title: string
     static name: string
 }
 class ActionGotoDest {
     /* Fields of Poppler-0.18.Poppler.ActionGotoDest */
-    readonly type: ActionType
-    readonly title: string
-    readonly dest: Dest
+    type: ActionType
+    title: string
+    dest: Dest
     static name: string
 }
 class ActionGotoRemote {
     /* Fields of Poppler-0.18.Poppler.ActionGotoRemote */
-    readonly type: ActionType
-    readonly title: string
-    readonly fileName: string
-    readonly dest: Dest
+    type: ActionType
+    title: string
+    fileName: string
+    dest: Dest
     static name: string
 }
 class ActionJavascript {
     /* Fields of Poppler-0.18.Poppler.ActionJavascript */
-    readonly type: ActionType
-    readonly title: string
-    readonly script: string
+    type: ActionType
+    title: string
+    script: string
     static name: string
 }
 class ActionLaunch {
     /* Fields of Poppler-0.18.Poppler.ActionLaunch */
-    readonly type: ActionType
-    readonly title: string
-    readonly fileName: string
-    readonly params: string
+    type: ActionType
+    title: string
+    fileName: string
+    params: string
     static name: string
 }
 class ActionLayer {
@@ -10920,67 +11626,67 @@ class ActionLayer {
     /**
      * a #PopplerActionLayerAction
      */
-    readonly action: ActionLayerAction
+    action: ActionLayerAction
     /**
      * list of #PopplerLayer<!-- -->s
      */
-    readonly layers: object[]
+    layers: object[]
     static name: string
 }
 class ActionMovie {
     /* Fields of Poppler-0.18.Poppler.ActionMovie */
-    readonly type: ActionType
-    readonly title: string
-    readonly operation: ActionMovieOperation
-    readonly movie: Movie
+    type: ActionType
+    title: string
+    operation: ActionMovieOperation
+    movie: Movie
     static name: string
 }
 class ActionNamed {
     /* Fields of Poppler-0.18.Poppler.ActionNamed */
-    readonly type: ActionType
-    readonly title: string
-    readonly namedDest: string
+    type: ActionType
+    title: string
+    namedDest: string
     static name: string
 }
 class ActionOCGState {
     /* Fields of Poppler-0.18.Poppler.ActionOCGState */
-    readonly type: ActionType
-    readonly title: string
-    readonly stateList: object[]
+    type: ActionType
+    title: string
+    stateList: object[]
     static name: string
 }
 class ActionRendition {
     /* Fields of Poppler-0.18.Poppler.ActionRendition */
-    readonly type: ActionType
-    readonly title: string
-    readonly op: number
-    readonly media: Media
+    type: ActionType
+    title: string
+    op: number
+    media: Media
     static name: string
 }
 class ActionResetForm {
     /* Fields of Poppler-0.18.Poppler.ActionResetForm */
-    readonly type: ActionType
-    readonly title: string
-    readonly fields: object[]
-    readonly exclude: boolean
+    type: ActionType
+    title: string
+    fields: object[]
+    exclude: boolean
     static name: string
 }
 class ActionUri {
     /* Fields of Poppler-0.18.Poppler.ActionUri */
-    readonly type: ActionType
-    readonly title: string
-    readonly uri: string
+    type: ActionType
+    title: string
+    uri: string
     static name: string
 }
 class AnnotCalloutLine {
     /* Fields of Poppler-0.18.Poppler.AnnotCalloutLine */
-    readonly multiline: boolean
-    readonly x1: number
-    readonly y1: number
-    readonly x2: number
-    readonly y2: number
-    readonly x3: number
-    readonly y3: number
+    multiline: boolean
+    x1: number
+    y1: number
+    x2: number
+    y2: number
+    x3: number
+    y3: number
     /* Methods of Poppler-0.18.Poppler.AnnotCalloutLine */
     /**
      * It does copy `callout` to a new #PopplerAnnotCalloutLine.
@@ -11001,11 +11707,11 @@ class AnnotMapping {
     /**
      * a #PopplerRectangle representing an area of the page
      */
-    readonly area: Rectangle
+    area: Rectangle
     /**
      * a #PopplerAnnot
      */
-    readonly annot: Annot
+    annot: Annot
     /* Methods of Poppler-0.18.Poppler.AnnotMapping */
     /**
      * Creates a copy of `mapping`
@@ -11023,7 +11729,7 @@ class AnnotMapping {
 }
 abstract class AttachmentClass {
     /* Fields of Poppler-0.18.Poppler.AttachmentClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class Color {
@@ -11031,15 +11737,15 @@ class Color {
     /**
      * the red component of color
      */
-    readonly red: number
+    red: number
     /**
      * the green component of color
      */
-    readonly green: number
+    green: number
     /**
      * the blue component of color
      */
-    readonly blue: number
+    blue: number
     /* Methods of Poppler-0.18.Poppler.Color */
     /**
      * Creates a copy of `color`
@@ -11060,47 +11766,47 @@ class Dest {
     /**
      * type of destination
      */
-    readonly type: DestType
+    type: DestType
     /**
      * page number
      */
-    readonly pageNum: number
+    pageNum: number
     /**
      * left coordinate
      */
-    readonly left: number
+    left: number
     /**
      * bottom coordinate
      */
-    readonly bottom: number
+    bottom: number
     /**
      * right coordinate
      */
-    readonly right: number
+    right: number
     /**
      * top coordinate
      */
-    readonly top: number
+    top: number
     /**
      * scale factor
      */
-    readonly zoom: number
+    zoom: number
     /**
      * name of the destination (#POPPLER_DEST_NAMED only)
      */
-    readonly namedDest: string
+    namedDest: string
     /**
      * whether left coordinate should be changed
      */
-    readonly changeLeft: number
+    changeLeft: number
     /**
      * whether top coordinate should be changed
      */
-    readonly changeTop: number
+    changeTop: number
     /**
      * whether scale factor should be changed
      */
-    readonly changeZoom: number
+    changeZoom: number
     /* Methods of Poppler-0.18.Poppler.Dest */
     /**
      * Copies `dest,` creating an identical #PopplerDest.
@@ -11167,11 +11873,11 @@ class FormFieldMapping {
     /**
      * a #PopplerRectangle representing an area of the page
      */
-    readonly area: Rectangle
+    area: Rectangle
     /**
      * a #PopplerFormField
      */
-    readonly field: FormField
+    field: FormField
     /* Methods of Poppler-0.18.Poppler.FormFieldMapping */
     /**
      * Creates a copy of `mapping`
@@ -11192,11 +11898,11 @@ class ImageMapping {
     /**
      * a #PopplerRectangle representing an area of the page
      */
-    readonly area: Rectangle
+    area: Rectangle
     /**
      * an image identifier
      */
-    readonly imageId: number
+    imageId: number
     /* Methods of Poppler-0.18.Poppler.ImageMapping */
     /**
      * Creates a copy of `mapping`
@@ -11291,11 +11997,11 @@ class LinkMapping {
     /**
      * a #PopplerRectangle representing an area of the page
      */
-    readonly area: Rectangle
+    area: Rectangle
     /**
      * a #PopplerAction
      */
-    readonly action: Action
+    action: Action
     /* Methods of Poppler-0.18.Poppler.LinkMapping */
     /**
      * Creates a copy of `mapping`
@@ -11316,11 +12022,11 @@ class PageRange {
     /**
      * first page in the range of pages
      */
-    readonly startPage: number
+    startPage: number
     /**
      * last page in the range of pages
      */
-    readonly endPage: number
+    endPage: number
     static name: string
 }
 class PageTransition {
@@ -11328,22 +12034,22 @@ class PageTransition {
     /**
      * the type of transtition
      */
-    readonly type: PageTransitionType
+    type: PageTransitionType
     /**
      * the dimension in which the transition effect shall occur.
      * Only for #POPPLER_PAGE_TRANSITION_SPLIT and #POPPLER_PAGE_TRANSITION_BLINDS transition types
      */
-    readonly alignment: PageTransitionAlignment
+    alignment: PageTransitionAlignment
     /**
      * the direction of motion for the transition effect.
      * Only for #POPPLER_PAGE_TRANSITION_SPLIT, #POPPLER_PAGE_TRANSITION_BOX and #POPPLER_PAGE_TRANSITION_FLY
      * transition types
      */
-    readonly direction: PageTransitionDirection
+    direction: PageTransitionDirection
     /**
      * the duration of the transition effect
      */
-    readonly duration: number
+    duration: number
     /**
      * the direction in which the specified transition effect shall moves,
      * expressed in degrees counterclockwise starting from a left-to-right direction.
@@ -11351,18 +12057,18 @@ class PageTransition {
      * #POPPLER_PAGE_TRANSITION_COVER, #POPPLER_PAGE_TRANSITION_UNCOVER and #POPPLER_PAGE_TRANSITION_PUSH
      * transition types
      */
-    readonly angle: number
+    angle: number
     /**
      * the starting or ending scale at which the changes shall be drawn.
      * Only for #POPPLER_PAGE_TRANSITION_FLY transition type
      */
-    readonly scale: number
+    scale: number
     /**
      * whether the area that will be flown is rectangular and opaque.
      * Only for #POPPLER_PAGE_TRANSITION_FLY transition type
      */
-    readonly rectangular: boolean
-    readonly durationReal: number
+    rectangular: boolean
+    durationReal: number
     /* Methods of Poppler-0.18.Poppler.PageTransition */
     /**
      * Creates a copy of `transition`
@@ -11383,11 +12089,11 @@ class Point {
     /**
      * x coordinate
      */
-    readonly x: number
+    x: number
     /**
      * y coordinate
      */
-    readonly y: number
+    y: number
     /* Methods of Poppler-0.18.Poppler.Point */
     /**
      * Creates a copy of `point`. The copy must be freed with poppler_point_free()
@@ -11409,19 +12115,19 @@ class Quadrilateral {
     /**
      * a #PopplerPoint with the first vertex coordinates
      */
-    readonly p1: Point
+    p1: Point
     /**
      * a #PopplerPoint with the second vertex coordinates
      */
-    readonly p2: Point
+    p2: Point
     /**
      * a #PopplerPoint with the third vertex coordinates
      */
-    readonly p3: Point
+    p3: Point
     /**
      * a #PopplerPoint with the fourth vertex coordinates
      */
-    readonly p4: Point
+    p4: Point
     /* Methods of Poppler-0.18.Poppler.Quadrilateral */
     /**
      * Creates a copy of `quad`. The copy must be freed with poppler_quadrilateral_free() after use.
@@ -11442,19 +12148,19 @@ class Rectangle {
     /**
      * x coordinate of lower left corner
      */
-    readonly x1: number
+    x1: number
     /**
      * y coordinate of lower left corner
      */
-    readonly y1: number
+    y1: number
     /**
      * x coordinate of upper right corner
      */
-    readonly x2: number
+    x2: number
     /**
      * y coordinate of upper right corner
      */
-    readonly y2: number
+    y2: number
     /* Methods of Poppler-0.18.Poppler.Rectangle */
     /**
      * Creates a copy of `rectangle`
@@ -11508,27 +12214,27 @@ class TextAttributes {
     /**
      * font name
      */
-    readonly fontName: string
+    fontName: string
     /**
      * font size
      */
-    readonly fontSize: number
+    fontSize: number
     /**
      * if text is underlined
      */
-    readonly isUnderlined: boolean
+    isUnderlined: boolean
     /**
      * a #PopplerColor, the foreground color
      */
-    readonly color: Color
+    color: Color
     /**
      * start position this text attributes apply
      */
-    readonly startIndex: number
+    startIndex: number
     /**
      * end position this text attributes apply
      */
-    readonly endIndex: number
+    endIndex: number
     /* Methods of Poppler-0.18.Poppler.TextAttributes */
     /**
      * Creates a copy of `text_attrs`

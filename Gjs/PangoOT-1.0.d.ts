@@ -76,7 +76,7 @@ interface Info_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Info {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of PangoOT-1.0.PangoOT.Info */
     /**
      * Finds the index of a feature.
@@ -90,6 +90,10 @@ class Info {
      * the requested feature based on Unicode properties and data. However, this
      * function will still return %FALSE in those cases. So, users may want to
      * ignore the return value of this function in certain cases.
+     * @param table_type the table type to obtain information about
+     * @param feature_tag the tag of the feature to find
+     * @param script_index the index of the script
+     * @param language_index the index of the language whose features are searched,   or %PANGO_OT_DEFAULT_LANGUAGE to use the default language of the script
      */
     find_feature(table_type: TableType, feature_tag: Tag, script_index: number, language_index: number): [ /* returnType */ boolean, /* feature_index */ number | null ]
     /**
@@ -102,6 +106,9 @@ class Info {
      * language system, but that is transparent to the user. The user can simply
      * ignore the return value of this function to automatically fall back to the
      * default language system.
+     * @param table_type the table type to obtain information about
+     * @param script_index the index of the script whose languages are searched
+     * @param language_tag the tag of the language to find
      */
     find_language(table_type: TableType, script_index: number, language_tag: Tag): [ /* returnType */ boolean, /* language_index */ number | null, /* required_feature_index */ number | null ]
     /**
@@ -115,18 +122,28 @@ class Info {
      * how to handle %PANGO_OT_NO_SCRIPT, so one can ignore the return
      * value of this function completely and proceed, to enjoy the automatic
      * fallback to the 'DFLT'/'dflt' script.
+     * @param table_type the table type to obtain information about
+     * @param script_tag the tag of the script to find
      */
     find_script(table_type: TableType, script_tag: Tag): [ /* returnType */ boolean, /* script_index */ number | null ]
     /**
      * Obtains the list of features for the given language of the given script.
+     * @param table_type the table type to obtain information about
+     * @param tag unused parameter
+     * @param script_index the index of the script to obtain information about
+     * @param language_index the index of the language to list features for, or   %PANGO_OT_DEFAULT_LANGUAGE, to list features for the default   language of the script
      */
     list_features(table_type: TableType, tag: Tag, script_index: number, language_index: number): Tag
     /**
      * Obtains the list of available languages for a given script.
+     * @param table_type the table type to obtain information about
+     * @param script_index the index of the script to list languages for
+     * @param language_tag unused parameter
      */
     list_languages(table_type: TableType, script_index: number, language_tag: Tag): Tag
     /**
      * Obtains the list of available scripts.
+     * @param table_type the table type to obtain information about
      */
     list_scripts(table_type: TableType): Tag
     /* Methods of GObject-2.0.GObject.Object */
@@ -164,6 +181,10 @@ class Info {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -174,6 +195,12 @@ class Info {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -197,6 +224,7 @@ class Info {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -216,11 +244,14 @@ class Info {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -228,6 +259,8 @@ class Info {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -245,6 +278,7 @@ class Info {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -290,6 +324,7 @@ class Info {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -333,15 +368,20 @@ class Info {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -382,6 +422,7 @@ class Info {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -416,6 +457,7 @@ class Info {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -435,6 +477,7 @@ class Info {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -467,6 +510,7 @@ class Info {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Info, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Info, pspec: GObject.ParamSpec) => void)): number
@@ -481,6 +525,7 @@ class Info {
     /* Static methods and pseudo-constructors */
     /**
      * Returns the `PangoOTInfo` structure for the given FreeType font face.
+     * @param face a `FT_Face`
      */
     static get(face: freetype2.Face): Info
     static $gtype: GObject.Type
@@ -489,10 +534,13 @@ interface Ruleset_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Ruleset {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of PangoOT-1.0.PangoOT.Ruleset */
     /**
      * Adds a feature to the ruleset.
+     * @param table_type the table type to add a feature to
+     * @param feature_index the index of the feature to add
+     * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   %PANGO_OT_ALL_GLYPHS if it should be applied to all glyphs.
      */
     add_feature(table_type: TableType, feature_index: number, property_bit: number): void
     /**
@@ -507,6 +555,9 @@ class Ruleset {
      * 
      * If `ruleset` was not created using [ctor`PangoOT`.Ruleset.new_for],
      * this function does nothing.
+     * @param table_type the table type to add a feature to
+     * @param feature_tag the tag of the feature to add
+     * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   %PANGO_OT_ALL_GLYPHS if it should be applied to all glyphs.
      */
     maybe_add_feature(table_type: TableType, feature_tag: Tag, property_bit: number): boolean
     /**
@@ -514,16 +565,21 @@ class Ruleset {
      * array `features` converts the feature name to a `PangoOTTag` feature tag
      * using PANGO_OT_TAG_MAKE() and calls [method`PangoOT`.Ruleset.maybe_add_feature]
      * on it.
+     * @param table_type the table type to add features to
+     * @param features array of feature name and property bits to add
+     * @param n_features number of feature records in `features` array
      */
     maybe_add_features(table_type: TableType, features: FeatureMap, n_features: number): number
     /**
      * Performs the OpenType GPOS positioning on `buffer` using
      * the features in `ruleset`.
+     * @param buffer a `PangoOTBuffer`
      */
     position(buffer: Buffer): void
     /**
      * Performs the OpenType GSUB substitution on `buffer` using
      * the features in `ruleset`.
+     * @param buffer a `PangoOTBuffer`
      */
     substitute(buffer: Buffer): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -561,6 +617,10 @@ class Ruleset {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -571,6 +631,12 @@ class Ruleset {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -594,6 +660,7 @@ class Ruleset {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -613,11 +680,14 @@ class Ruleset {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -625,6 +695,8 @@ class Ruleset {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -642,6 +714,7 @@ class Ruleset {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -687,6 +760,7 @@ class Ruleset {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -730,15 +804,20 @@ class Ruleset {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -779,6 +858,7 @@ class Ruleset {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -813,6 +893,7 @@ class Ruleset {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -832,6 +913,7 @@ class Ruleset {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -864,6 +946,7 @@ class Ruleset {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Ruleset, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Ruleset, pspec: GObject.ParamSpec) => void)): number
@@ -889,6 +972,8 @@ class Ruleset {
      * 
      * The static feature map members of `desc` should be alive as
      * long as `info` is.
+     * @param info a `PangoOTInfo`
+     * @param desc a `PangoOTRulesetDescription`
      */
     static get_for_description(info: Info, desc: RulesetDescription): Ruleset
     static $gtype: GObject.Type
@@ -900,6 +985,9 @@ class Buffer {
      * features should be applied on this glyph.
      * 
      * See [method`PangoOT`.Ruleset.add_feature].
+     * @param glyph the glyph index to add, like a `PangoGlyph`
+     * @param properties the glyph properties
+     * @param cluster the cluster that this glyph belongs to
      */
     add_glyph(glyph: number, properties: number, cluster: number): void
     /**
@@ -923,6 +1011,7 @@ class Buffer {
      * This is typically used after the OpenType layout processing
      * is over, to convert the resulting glyphs into a generic Pango
      * glyph string.
+     * @param glyphs a `PangoGlyphString`
      */
     output(glyphs: Pango.GlyphString): void
     /**
@@ -930,6 +1019,7 @@ class Buffer {
      * 
      * This setting is needed for proper horizontal positioning
      * of right-to-left scripts.
+     * @param rtl %TRUE for right-to-left text
      */
     set_rtl(rtl: boolean): void
     /**
@@ -938,6 +1028,7 @@ class Buffer {
      * This setting is needed for proper positioning of Arabic accents,
      * but will produce incorrect results with standard OpenType Indic
      * fonts.
+     * @param zero_width_marks %TRUE if characters with a mark class should   be forced to zero width
      */
     set_zero_width_marks(zero_width_marks: boolean): void
     static name: string
@@ -951,12 +1042,12 @@ class FeatureMap {
     /**
      * feature tag in represented as four-letter ASCII string.
      */
-    readonly feature_name: number[]
+    feature_name: number[]
     /**
      * the property bit to use for this feature.  See
      * pango_ot_ruleset_add_feature() for details.
      */
-    readonly property_bit: number
+    property_bit: number
     static name: string
 }
 class Glyph {
@@ -964,28 +1055,28 @@ class Glyph {
     /**
      * the glyph itself.
      */
-    readonly glyph: number
+    glyph: number
     /**
      * the properties value, identifying which features should be
      * applied on this glyph.  See pango_ot_ruleset_add_feature().
      */
-    readonly properties: number
+    properties: number
     /**
      * the cluster that this glyph belongs to.
      */
-    readonly cluster: number
+    cluster: number
     /**
      * a component value, set by the OpenType layout engine.
      */
-    readonly component: number
+    component: number
     /**
      * a ligature index value, set by the OpenType layout engine.
      */
-    readonly ligID: number
+    ligID: number
     /**
      * for Pango internal use
      */
-    readonly internal: number
+    internal: number
     static name: string
 }
 class RulesetDescription {
@@ -993,37 +1084,37 @@ class RulesetDescription {
     /**
      * a `PangoScript`
      */
-    readonly script: Pango.Script
+    script: Pango.Script
     /**
      * a `PangoLanguage`
      */
-    readonly language: Pango.Language
+    language: Pango.Language
     /**
      * static map of GSUB features
      */
-    readonly static_gsub_features: FeatureMap
+    static_gsub_features: FeatureMap
     /**
      * length of `static_gsub_features,` or 0.
      */
-    readonly n_static_gsub_features: number
+    n_static_gsub_features: number
     /**
      * static map of GPOS features
      */
-    readonly static_gpos_features: FeatureMap
+    static_gpos_features: FeatureMap
     /**
      * length of `static_gpos_features,` or 0.
      */
-    readonly n_static_gpos_features: number
+    n_static_gpos_features: number
     /**
      * map of extra features to add to both
      *   GSUB and GPOS. Unlike the static maps, this pointer need not
      *   live beyond the life of function calls taking this struct.
      */
-    readonly other_features: FeatureMap
+    other_features: FeatureMap
     /**
      * length of `other_features,` or 0.
      */
-    readonly n_other_features: number
+    n_other_features: number
     /* Methods of PangoOT-1.0.PangoOT.RulesetDescription */
     /**
      * Creates a copy of `desc,` which should be freed with
@@ -1044,6 +1135,7 @@ class RulesetDescription {
      * while for other features, the list of features is compared one by
      * one.(Two ruleset descriptions may result in identical rulesets
      * being created, but still compare %FALSE.)
+     * @param desc2 a ruleset description
      */
     equal(desc2: RulesetDescription): boolean
     /**

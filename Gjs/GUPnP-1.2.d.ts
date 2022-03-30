@@ -178,6 +178,11 @@ class Acl {
     can_sync(): boolean
     /**
      * Check whether an IP address is allowed to access this resource.
+     * @param device The #GUPnPDevice associated with `path` or %NULL if unknown.
+     * @param service The #GUPnPService associated with `path` or %NULL if unknown.
+     * @param path The path being served.
+     * @param address IP address of the peer.
+     * @param agent The User-Agent header of the peer or %NULL if not unknown. `returns` %TRUE if the peer is allowed, %FALSE otherwise
      */
     is_allowed(device: object | null, service: object | null, path: string, address: string, agent?: string | null): boolean
     /**
@@ -188,6 +193,13 @@ class Acl {
      * If this function is supported, gupnp_acl_can_sync() should return %TRUE.
      * 
      * Use gupnp_acl_is_allowed_finish() to retrieve the result.
+     * @param device The #GUPnPDevice associated with `path` or %NULL if unknown.
+     * @param service The #GUPnPService associated with `path` or %NULL if unknown.
+     * @param path The path being served.
+     * @param address IP address of the peer
+     * @param agent The User-Agent header of the peer or %NULL if not unknown.
+     * @param cancellable A #GCancellable which can be used to cancel the operation.
+     * @param callback Callback to call after the function is done.
      */
     is_allowed_async(device: object | null, service: object | null, path: string, address: string, agent?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     is_allowed_finish(res: Gio.AsyncResult): boolean
@@ -198,6 +210,11 @@ class Acl {
     vfunc_can_sync(): boolean
     /**
      * Check whether an IP address is allowed to access this resource.
+     * @param device The #GUPnPDevice associated with `path` or %NULL if unknown.
+     * @param service The #GUPnPService associated with `path` or %NULL if unknown.
+     * @param path The path being served.
+     * @param address IP address of the peer.
+     * @param agent The User-Agent header of the peer or %NULL if not unknown. `returns` %TRUE if the peer is allowed, %FALSE otherwise
      */
     vfunc_is_allowed(device: object | null, service: object | null, path: string, address: string, agent?: string | null): boolean
     /**
@@ -208,6 +225,13 @@ class Acl {
      * If this function is supported, gupnp_acl_can_sync() should return %TRUE.
      * 
      * Use gupnp_acl_is_allowed_finish() to retrieve the result.
+     * @param device The #GUPnPDevice associated with `path` or %NULL if unknown.
+     * @param service The #GUPnPService associated with `path` or %NULL if unknown.
+     * @param path The path being served.
+     * @param address IP address of the peer
+     * @param agent The User-Agent header of the peer or %NULL if not unknown.
+     * @param cancellable A #GCancellable which can be used to cancel the operation.
+     * @param callback Callback to call after the function is done.
      */
     vfunc_is_allowed_async(device: object | null, service: object | null, path: string, address: string, agent?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     vfunc_is_allowed_finish(res: Gio.AsyncResult): boolean
@@ -249,6 +273,10 @@ class Context {
      */
     default_language: string
     /**
+     * The port to run on. Set to 0 if you don't care what port to run on.
+     */
+    readonly port: number
+    /**
      * The #SoupServer HTTP server used by GUPnP.
      */
     readonly server: Soup.Server
@@ -256,6 +284,12 @@ class Context {
      * The #SoupSession object used by GUPnP.
      */
     readonly session: Soup.Session
+    /**
+     * The preferred subscription timeout: the number of seconds after
+     * which subscriptions are renewed. Set to '0' if subscriptions
+     * are never to time out.
+     */
+    readonly subscription_timeout: number
     /* Properties of GSSDP-1.2.GSSDP.Client */
     /**
      * Whether this client is active or not (passive). When active
@@ -263,6 +297,16 @@ class Context {
      * not. In most cases, you don't want to touch this property.
      */
     active: boolean
+    /**
+     * The IP protocol address family this client works on. When specified
+     * during construction without giving a concrete address, it will be
+     * used to determine the proper address.
+     * 
+     * If not specified, will contain the currrent address family after
+     * the call to g_initable_init()<!-- -->. Use %G_SOCKET_FAMILY_INVALID
+     * to specifiy using the default socket family (legacy IP)
+     */
+    readonly address_family: Gio.SocketFamily
     /**
      * The value of the BOOTID.UPNP.ORG header
      * 
@@ -284,6 +328,17 @@ class Context {
      */
     host_mask: Gio.InetAddressMask
     /**
+     * The name of the network interface this client is associated with.
+     * Set to NULL to autodetect.
+     */
+    readonly interface: string
+    /**
+     * UDP port to use for sending multicast M-SEARCH requests on the
+     * network. If not set (or set to 0) a random port will be used.
+     * This property can be only set during object construction.
+     */
+    readonly msearch_port: number
+    /**
      * The network this client is currently connected to. You could set this
      * to anything you want to identify the network this client is
      * associated with. If you are using #GUPnPContextManager and associated
@@ -296,13 +351,26 @@ class Context {
      * The SSDP server's identifier.
      */
     server_id: string
+    /**
+     * Time-to-live value to use for all sockets created by this client.
+     * If not set (or set to 0) the value recommended by UPnP will be used.
+     * This property can only be set during object construction.
+     */
+    readonly socket_ttl: number
+    /**
+     * The UPnP version the client adheres to.
+     */
+    readonly uda_version: GSSDP.UDAVersion
     /* Fields of GSSDP-1.2.GSSDP.Client */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.Context */
     /**
      * Add a #SoupServerCallback to the #GUPnPContext<!-- -->'s #SoupServer.
+     * @param use_acl %TRUE, if the path should query the GUPnPContext::acl before serving the resource, %FALSE otherwise.
+     * @param path the toplevel path for the handler.
+     * @param callback callback to invoke for requests under `path`
      */
     add_server_handler(use_acl: boolean, path: string, callback: Soup.ServerCallback): void
     /**
@@ -335,25 +403,33 @@ class Context {
      * Start hosting `local_path` at `server_path`. Files with the path
      * `local_path`.LOCALE (if they exist) will be served up when LOCALE is
      * specified in the request's Accept-Language header.
+     * @param local_path Path to the local file or folder to be hosted
+     * @param server_path Web server path where `local_path` should be hosted
      */
     host_path(local_path: string, server_path: string): void
     /**
      * Use this method to serve different local path to specific user-agent(s). The
      * path `server_path` must already be hosted by `context`.
+     * @param local_path Path to the local file or folder to be hosted
+     * @param server_path Web server path already being hosted
+     * @param user_agent The user-agent as a #GRegex.
      */
     host_path_for_agent(local_path: string, server_path: string, user_agent: GLib.Regex): boolean
     /**
      * Remove a #SoupServerCallback from the #GUPnPContext<!-- -->'s #SoupServer.
+     * @param path the toplevel path for the handler.
      */
     remove_server_handler(path: string): void
     /**
      * Utility function to re-write an uri to the IPv6 link-local form which has
      * the zone index appended to the IP address.
+     * @param uri an uri to rewrite if necessary
      */
     rewrite_uri(uri: string): string
     /**
      * Attach or remove the assoicated access control list to this context. If
      * `acl` is %NULL, the current access control list will be removed.
+     * @param acl The new access control list or %NULL to remove the current list.
      */
     set_acl(acl?: Acl | null): void
     /**
@@ -363,16 +439,19 @@ class Context {
      * is required to send a Content-Language header in return. If there are
      * no files hosted in languages which match the requested ones the
      * Content-Language header is set to this value. The default value is "en".
+     * @param language A language tag as defined in RFC 2616 3.10
      */
     set_default_language(language: string): void
     /**
      * Sets the event subscription timeout to `timeout`. Use 0 if you don't
      * want subscriptions to time out. Note that any client side subscriptions
      * will automatically be renewed.
+     * @param timeout Event subscription timeout in seconds
      */
     set_subscription_timeout(timeout: number): void
     /**
      * Stop hosting the file or folder at `server_path`.
+     * @param server_path Web server path where the file or folder is hosted
      */
     unhost_path(server_path: string): void
     /* Methods of GSSDP-1.2.GSSDP.Client */
@@ -384,6 +463,8 @@ class Context {
      * 
      * This information can be used in higher layers to get an User-Agent for
      * devices that do not set the User-Agent header in their SOAP requests.
+     * @param ip_address The host to add to the cache
+     * @param user_agent User agent ot the host to add
      */
     add_cache_entry(ip_address: string, user_agent: string): void
     /**
@@ -391,10 +472,13 @@ class Context {
      * be used by clients requiring vendor specific header fields.
      * 
      * If there is an existing header with `name` it will append another one.
+     * @param name Header name
+     * @param value Header value
      */
     append_header(name: string, value?: string | null): void
     /**
      * Check if the peer at `address` is reachable using this `client`.
+     * @param address A #GInetSocketAddress of the target. The port part of the address may be 0
      */
     can_reach(address: Gio.InetSocketAddress): boolean
     /**
@@ -429,11 +513,13 @@ class Context {
     get_uda_version(): GSSDP.UDAVersion
     /**
      * Try to get a User-Agent for `ip_address`.
+     * @param ip_address IP address to guess the user-agent for
      */
     guess_user_agent(ip_address: string): string
     /**
      * Removes `name` from the list of headers. If there are multiple values for
      * `name,` they are all removed.
+     * @param name Header name
      */
     remove_header(name: string): void
     /**
@@ -442,15 +528,18 @@ class Context {
      * 
      * The boot-id is used to signalize changes in the network configuration
      * for multi-homed hosts
+     * @param boot_id The new boot-id for the client
      */
     set_boot_id(boot_id: number): void
     /**
      * The config-id is used to allow caching of the device or service description.
      * It should be changed if that changes.
+     * @param config_id The new config-id for the client
      */
     set_config_id(config_id: number): void
     /**
      * Sets the network identification of `client` to `network`.
+     * @param network The string identifying the network
      */
     set_network(network: string): void
     /**
@@ -460,6 +549,7 @@ class Context {
      * 
      * By default, GSSDP will generate a header conforming to the requirements
      * defined in the UDA documents: OS/Version UPnP/Version GSSDP/Version.
+     * @param server_id The server ID
      */
     set_server_id(server_id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -497,6 +587,10 @@ class Context {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -507,6 +601,12 @@ class Context {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -530,6 +630,7 @@ class Context {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -549,11 +650,14 @@ class Context {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -561,6 +665,8 @@ class Context {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -578,6 +684,7 @@ class Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -623,6 +730,7 @@ class Context {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -666,15 +774,20 @@ class Context {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -715,6 +828,7 @@ class Context {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -749,6 +863,7 @@ class Context {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -791,6 +906,7 @@ class Context {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GUPnP-1.2.GUPnP.Context */
@@ -833,6 +949,7 @@ class Context {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GSSDP-1.2.GSSDP.Client */
@@ -875,6 +992,7 @@ class Context {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -894,12 +1012,17 @@ class Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of GSSDP-1.2.GSSDP.Client */
     /**
      * Internal signal.
+     * @param from_ip The IP address of the source.
+     * @param from_port The UDP port used by the sender.
+     * @param type The #_GSSDPMessageType.
+     * @param headers Parsed #SoupMessageHeaders from the message.
      */
     connect(sigName: "message-received", callback: (($obj: Context, from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders) => void)): number
     connect_after(sigName: "message-received", callback: (($obj: Context, from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders) => void)): number
@@ -933,6 +1056,7 @@ class Context {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
@@ -941,12 +1065,18 @@ class Context {
     connect_after(sigName: "notify::acl", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::default-language", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-language", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::port", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::port", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::server", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::server", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::session", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::session", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::subscription-timeout", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subscription-timeout", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::active", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::active", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::address-family", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::address-family", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::boot-id", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::boot-id", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::config-id", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
@@ -955,10 +1085,18 @@ class Context {
     connect_after(sigName: "notify::host-ip", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::host-mask", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::host-mask", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::interface", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::interface", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::msearch-port", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::msearch-port", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::network", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::network", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::server-id", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::server-id", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::socket-ttl", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::socket-ttl", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uda-version", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uda-version", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -974,6 +1112,9 @@ class Context {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -995,19 +1136,25 @@ class ContextFilter {
      * Whether this context filter is active or not.
      */
     enabled: boolean
+    /**
+     * A list of items to filter for.
+     */
+    readonly entries: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.ContextFilter */
     /**
      * Add `entry` in the list of valid criteria used by `context_filter` to
      * filter networks.
      * if `entry` already exists, it won't be added a second time.
+     * @param entry A value used to filter network
      */
     add_entry(entry: string): boolean
     /**
      * Add a list of entries to a #GUPnPContextFilter. This is a helper function to
      * directly add a %NULL-terminated array of string usually aquired from
      * commandline args.
+     * @param entries A %NULL-terminated list of strings
      */
     add_entryv(entries: string[]): void
     /**
@@ -1015,6 +1162,7 @@ class ContextFilter {
      * check all its entries againt #GUPnPContext interface, host ip and network
      * fields information. This function doesn't take into account the
      * `context_filter` status (enabled or not).
+     * @param context A #GUPnPContext to test.
      */
     check_context(context: Context): boolean
     /**
@@ -1038,10 +1186,12 @@ class ContextFilter {
     /**
      * Remove `entry` in the list of valid criteria used by `context_filter` to
      * filter networks.
+     * @param entry A value to remove from the filter list.
      */
     remove_entry(entry: string): boolean
     /**
      * Enable or disable the #GUPnPContextFilter to perform the network filtering.
+     * @param enable %TRUE to enable `context_filter,` %FALSE otherwise
      */
     set_enabled(enable: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1079,6 +1229,10 @@ class ContextFilter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1089,6 +1243,12 @@ class ContextFilter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1112,6 +1272,7 @@ class ContextFilter {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1131,11 +1292,14 @@ class ContextFilter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1143,6 +1307,8 @@ class ContextFilter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1160,6 +1326,7 @@ class ContextFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1205,6 +1372,7 @@ class ContextFilter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1248,15 +1416,20 @@ class ContextFilter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1297,6 +1470,7 @@ class ContextFilter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1331,6 +1505,7 @@ class ContextFilter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1350,6 +1525,7 @@ class ContextFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1382,12 +1558,15 @@ class ContextFilter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContextFilter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContextFilter, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::enabled", callback: (($obj: ContextFilter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enabled", callback: (($obj: ContextFilter, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::entries", callback: (($obj: ContextFilter, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::entries", callback: (($obj: ContextFilter, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1422,8 +1601,24 @@ class ContextManager {
      * The context filter to use.
      */
     readonly context_filter: ContextFilter
+    /**
+     * The socket family to create contexts for. Use %G_SOCKET_FAMILY_INVALID
+     * for any or %G_SOCKET_FAMILY_IPV4 for IPv4 contexts or
+     * %G_SOCKET_FAMILY_IPV6 for IPv6 contexts
+     */
+    readonly family: Gio.SocketFamily
+    /**
+     * Port the contexts listen on, or 0 if you don't care what
+     * port is used by #GUPnPContext objects created by this object.
+     */
+    readonly port: number
+    /**
+     * The UDA version the contexts will support. Use %GSSDP_UDA_VERSION_UNSPECIFIED
+     * for using the default UDA version.
+     */
+    readonly uda_version: GSSDP.UDAVersion
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.ContextManager */
     /**
      * Get the #GUPnPContextFilter associated with `manager`.
@@ -1453,6 +1648,7 @@ class ContextManager {
      * You usually want to call this function from
      * #GUPnPContextManager::context-available handler after you create a
      * #GUPnPControlPoint object for the newly available context.
+     * @param control_point The #GUPnPControlPoint to be taken care of
      */
     manage_control_point(control_point: ControlPoint): void
     /**
@@ -1461,6 +1657,7 @@ class ContextManager {
      * usually want to call this function from
      * #GUPnPContextManager::context-available handler after you create a
      * #GUPnPRootDevice object for the newly available context.
+     * @param root_device The #GUPnPRootDevice to be taken care of
      */
     manage_root_device(root_device: RootDevice): void
     /**
@@ -1505,6 +1702,10 @@ class ContextManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1515,6 +1716,12 @@ class ContextManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1538,6 +1745,7 @@ class ContextManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1557,11 +1765,14 @@ class ContextManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1569,6 +1780,8 @@ class ContextManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1586,6 +1799,7 @@ class ContextManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1631,6 +1845,7 @@ class ContextManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1674,15 +1889,20 @@ class ContextManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1723,6 +1943,7 @@ class ContextManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1757,6 +1978,7 @@ class ContextManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1776,18 +1998,21 @@ class ContextManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of GUPnP-1.2.GUPnP.ContextManager */
     /**
      * Signals the availability of new #GUPnPContext.
+     * @param context The now available #GUPnPContext
      */
     connect(sigName: "context-available", callback: (($obj: ContextManager, context: Context) => void)): number
     connect_after(sigName: "context-available", callback: (($obj: ContextManager, context: Context) => void)): number
     emit(sigName: "context-available", context: Context): void
     /**
      * Signals the unavailability of a #GUPnPContext.
+     * @param context The now unavailable #GUPnPContext
      */
     connect(sigName: "context-unavailable", callback: (($obj: ContextManager, context: Context) => void)): number
     connect_after(sigName: "context-unavailable", callback: (($obj: ContextManager, context: Context) => void)): number
@@ -1821,12 +2046,19 @@ class ContextManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::context-filter", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::context-filter", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::family", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::family", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::port", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::port", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uda-version", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uda-version", callback: (($obj: ContextManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1842,6 +2074,7 @@ class ContextManager {
      * the implementation falls back to the basic Unix context manager instead.
      * 
      * Equivalent to calling #gupnp_context_manager_create_full (%GSSDP_UDA_VERSION_1_0, %G_SOCKET_FAMILY_IPV4, port);
+     * @param port Port to create contexts for, or 0 if you don't care what port is used.
      */
     static create(port: number): ContextManager
     /**
@@ -1849,6 +2082,9 @@ class ContextManager {
      * #GUPnPContextManager depends on the compile-time selection or - in case of
      * NetworkManager - on its availability during runtime. If it is not available,
      * the implementation falls back to the basic Unix context manager instead.
+     * @param uda_version #GSSDPUDAVersion the created contexts should implement (UDA 1.0 or 1.1). For %GSSDP_UDA_VERSION_UNSPECIFIED for default.
+     * @param family #GSocketFamily to create the context for
+     * @param port Port to create contexts for, or 0 if you don't care what port is used.
      */
     static create_full(uda_version: GSSDP.UDAVersion, family: Gio.SocketFamily, port: number): ContextManager
     static $gtype: GObject.Type
@@ -1861,11 +2097,20 @@ interface ControlPoint_ConstructProps extends GSSDP.ResourceBrowser_ConstructPro
     resource_factory?: ResourceFactory
 }
 class ControlPoint {
+    /* Properties of GUPnP-1.2.GUPnP.ControlPoint */
+    /**
+     * The resource factory to use. Set to NULL for default factory.
+     */
+    readonly resource_factory: ResourceFactory
     /* Properties of GSSDP-1.2.GSSDP.ResourceBrowser */
     /**
      * Whether this browser is active or not.
      */
     active: boolean
+    /**
+     * The [class`GSSDP`.Client] to use for listening to SSDP messages
+     */
+    readonly client: GSSDP.Client
     /**
      * The maximum number of seconds in which to request other parties
      * to respond.
@@ -1876,9 +2121,9 @@ class ControlPoint {
      */
     target: string
     /* Fields of GSSDP-1.2.GSSDP.ResourceBrowser */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.ControlPoint */
     /**
      * Get the #GUPnPControlPoint associated with `control_point`.
@@ -1922,14 +2167,17 @@ class ControlPoint {
     rescan(): boolean
     /**
      * (De)activates `resource_browser`.
+     * @param active %TRUE to activate `resource_browser`
      */
     set_active(active: boolean): void
     /**
      * Sets the used MX value of `resource_browser` to `mx`.
+     * @param mx The to be used MX value
      */
     set_mx(mx: number): void
     /**
      * Sets the browser target of `resource_browser` to `target`.
+     * @param target The browser target
      */
     set_target(target: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1967,6 +2215,10 @@ class ControlPoint {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1977,6 +2229,12 @@ class ControlPoint {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2000,6 +2258,7 @@ class ControlPoint {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2019,11 +2278,14 @@ class ControlPoint {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2031,6 +2293,8 @@ class ControlPoint {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2048,6 +2312,7 @@ class ControlPoint {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2093,6 +2358,7 @@ class ControlPoint {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2136,15 +2402,20 @@ class ControlPoint {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2185,6 +2456,7 @@ class ControlPoint {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2219,6 +2491,7 @@ class ControlPoint {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GUPnP-1.2.GUPnP.ControlPoint */
@@ -2246,6 +2519,7 @@ class ControlPoint {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2253,6 +2527,7 @@ class ControlPoint {
     /**
      * The ::device-proxy-available signal is emitted whenever a new
      * device has become available.
+     * @param proxy The now available #GUPnPDeviceProxy
      */
     connect(sigName: "device-proxy-available", callback: (($obj: ControlPoint, proxy: DeviceProxy) => void)): number
     connect_after(sigName: "device-proxy-available", callback: (($obj: ControlPoint, proxy: DeviceProxy) => void)): number
@@ -2260,6 +2535,7 @@ class ControlPoint {
     /**
      * The ::device-proxy-unavailable signal is emitted whenever a
      * device is not available any more.
+     * @param proxy The now unavailable #GUPnPDeviceProxy
      */
     connect(sigName: "device-proxy-unavailable", callback: (($obj: ControlPoint, proxy: DeviceProxy) => void)): number
     connect_after(sigName: "device-proxy-unavailable", callback: (($obj: ControlPoint, proxy: DeviceProxy) => void)): number
@@ -2267,6 +2543,7 @@ class ControlPoint {
     /**
      * The ::service-proxy-available signal is emitted whenever a new
      * service has become available.
+     * @param proxy The now available #GUPnPServiceProxy
      */
     connect(sigName: "service-proxy-available", callback: (($obj: ControlPoint, proxy: ServiceProxy) => void)): number
     connect_after(sigName: "service-proxy-available", callback: (($obj: ControlPoint, proxy: ServiceProxy) => void)): number
@@ -2274,6 +2551,7 @@ class ControlPoint {
     /**
      * The ::service-proxy-unavailable signal is emitted whenever a
      * service is not available any more.
+     * @param proxy The now unavailable #GUPnPServiceProxy
      */
     connect(sigName: "service-proxy-unavailable", callback: (($obj: ControlPoint, proxy: ServiceProxy) => void)): number
     connect_after(sigName: "service-proxy-unavailable", callback: (($obj: ControlPoint, proxy: ServiceProxy) => void)): number
@@ -2282,6 +2560,8 @@ class ControlPoint {
     /**
      * The ::resource-available signal is emitted whenever a new resource
      * has become available.
+     * @param usn The USN of the discovered resource
+     * @param locations A [struct`GLib`.List] of strings describing the locations of the discovered resource.
      */
     connect(sigName: "resource-available", callback: (($obj: ControlPoint, usn: string, locations: string[]) => void)): number
     connect_after(sigName: "resource-available", callback: (($obj: ControlPoint, usn: string, locations: string[]) => void)): number
@@ -2289,6 +2569,7 @@ class ControlPoint {
     /**
      * The ::resource-unavailable signal is emitted whenever a resource
      * is not available any more.
+     * @param usn The USN of the resource
      */
     connect(sigName: "resource-unavailable", callback: (($obj: ControlPoint, usn: string) => void)): number
     connect_after(sigName: "resource-unavailable", callback: (($obj: ControlPoint, usn: string) => void)): number
@@ -2296,6 +2577,9 @@ class ControlPoint {
     /**
      * The ::resource-update signal is emitted whenever an UPnP 1.1
      * device is about to change it's BOOTID.
+     * @param usn The USN of the resource
+     * @param boot_id The current boot-id
+     * @param next_boot_id The next boot-id
      */
     connect(sigName: "resource-update", callback: (($obj: ControlPoint, usn: string, boot_id: number, next_boot_id: number) => void)): number
     connect_after(sigName: "resource-update", callback: (($obj: ControlPoint, usn: string, boot_id: number, next_boot_id: number) => void)): number
@@ -2329,12 +2613,17 @@ class ControlPoint {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::resource-factory", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resource-factory", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::active", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::active", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::mx", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mx", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::target", callback: (($obj: ControlPoint, pspec: GObject.ParamSpec) => void)): number
@@ -2362,7 +2651,21 @@ interface Device_ConstructProps extends DeviceInfo_ConstructProps {
     root_device?: RootDevice
 }
 class Device {
+    /* Properties of GUPnP-1.2.GUPnP.Device */
+    /**
+     * The containing #GUPnPRootDevice, or NULL if this is the root
+     * device.
+     */
+    readonly root_device: RootDevice
     /* Properties of GUPnP-1.2.GUPnP.DeviceInfo */
+    /**
+     * The #GUPnPContext to use.
+     */
+    readonly context: Context
+    /**
+     * The device type.
+     */
+    readonly device_type: string
     /**
      * Private property.
      */
@@ -2376,13 +2679,21 @@ class Device {
      */
     location: string
     /**
+     * The resource factory to use. Set to NULL for default factory.
+     */
+    readonly resource_factory: ResourceFactory
+    /**
+     * The UDN of this device.
+     */
+    readonly udn: string
+    /**
      * The URL base (#SoupURI).
      */
     url_base: Soup.URI
     /* Fields of GUPnP-1.2.GUPnP.DeviceInfo */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.DeviceInfo */
     /**
      * Get the associated #GUPnPContext.
@@ -2391,6 +2702,7 @@ class Device {
     /**
      * This function provides generic access to the contents of arbitrary elements
      * in the device description file.
+     * @param element Name of the description element to retrieve
      */
     get_description_value(element: string): string | null
     /**
@@ -2401,6 +2713,7 @@ class Device {
      * Note that devices are not cached internally, so that every time you call
      * this function a new object is created. The application must cache any used
      * devices if it wishes to keep them around and re-use them.
+     * @param type The type of the device to be retrieved.
      */
     get_device(type: string): DeviceInfo | null
     /**
@@ -2419,6 +2732,11 @@ class Device {
      * `requested_height` are set, only icons that are this size or smaller are
      * returned, unless `prefer_bigger` is set, in which case the next biggest icon
      * will be returned. The returned strings should be freed.
+     * @param requested_mime_type The requested file format, or %NULL for any
+     * @param requested_depth The requested color depth, or -1 for any
+     * @param requested_width The requested width, or -1 for any
+     * @param requested_height The requested height, or -1 for any
+     * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
      */
     get_icon_url(requested_mime_type: string | null, requested_depth: number, requested_width: number, requested_height: number, prefer_bigger: boolean): [ /* returnType */ string | null, /* mime_type */ string | null, /* depth */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -2470,6 +2788,7 @@ class Device {
      * Note that services are not cached internally, so that every time you call
      * this function a new object is created. The application must cache any used
      * services if it wishes to keep them around and re-use them.
+     * @param type The type of the service to be retrieved.
      */
     get_service(type: string): ServiceInfo | null
     /**
@@ -2561,6 +2880,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2571,6 +2894,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2594,6 +2923,7 @@ class Device {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2613,11 +2943,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2625,6 +2958,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2642,6 +2977,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2687,6 +3023,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2730,15 +3067,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2779,6 +3121,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2813,6 +3156,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2832,6 +3176,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2864,16 +3209,27 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::root-device", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root-device", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::context", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::device-type", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-type", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::document", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::document", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::element", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::element", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::location", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::location", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::resource-factory", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resource-factory", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::udn", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::udn", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::url-base", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::url-base", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -2923,6 +3279,14 @@ interface DeviceInfo_ConstructProps extends GObject.Object_ConstructProps {
 class DeviceInfo {
     /* Properties of GUPnP-1.2.GUPnP.DeviceInfo */
     /**
+     * The #GUPnPContext to use.
+     */
+    readonly context: Context
+    /**
+     * The device type.
+     */
+    readonly device_type: string
+    /**
      * Private property.
      */
     document: XMLDoc
@@ -2935,11 +3299,19 @@ class DeviceInfo {
      */
     location: string
     /**
+     * The resource factory to use. Set to NULL for default factory.
+     */
+    readonly resource_factory: ResourceFactory
+    /**
+     * The UDN of this device.
+     */
+    readonly udn: string
+    /**
      * The URL base (#SoupURI).
      */
     url_base: Soup.URI
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.DeviceInfo */
     /**
      * Get the associated #GUPnPContext.
@@ -2948,6 +3320,7 @@ class DeviceInfo {
     /**
      * This function provides generic access to the contents of arbitrary elements
      * in the device description file.
+     * @param element Name of the description element to retrieve
      */
     get_description_value(element: string): string | null
     /**
@@ -2958,6 +3331,7 @@ class DeviceInfo {
      * Note that devices are not cached internally, so that every time you call
      * this function a new object is created. The application must cache any used
      * devices if it wishes to keep them around and re-use them.
+     * @param type The type of the device to be retrieved.
      */
     get_device(type: string): DeviceInfo | null
     /**
@@ -2976,6 +3350,11 @@ class DeviceInfo {
      * `requested_height` are set, only icons that are this size or smaller are
      * returned, unless `prefer_bigger` is set, in which case the next biggest icon
      * will be returned. The returned strings should be freed.
+     * @param requested_mime_type The requested file format, or %NULL for any
+     * @param requested_depth The requested color depth, or -1 for any
+     * @param requested_width The requested width, or -1 for any
+     * @param requested_height The requested height, or -1 for any
+     * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
      */
     get_icon_url(requested_mime_type: string | null, requested_depth: number, requested_width: number, requested_height: number, prefer_bigger: boolean): [ /* returnType */ string | null, /* mime_type */ string | null, /* depth */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -3027,6 +3406,7 @@ class DeviceInfo {
      * Note that services are not cached internally, so that every time you call
      * this function a new object is created. The application must cache any used
      * services if it wishes to keep them around and re-use them.
+     * @param type The type of the service to be retrieved.
      */
     get_service(type: string): ServiceInfo | null
     /**
@@ -3118,6 +3498,10 @@ class DeviceInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3128,6 +3512,12 @@ class DeviceInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3151,6 +3541,7 @@ class DeviceInfo {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3170,11 +3561,14 @@ class DeviceInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3182,6 +3576,8 @@ class DeviceInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3199,6 +3595,7 @@ class DeviceInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3244,6 +3641,7 @@ class DeviceInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3287,15 +3685,20 @@ class DeviceInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3336,6 +3739,7 @@ class DeviceInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3370,6 +3774,7 @@ class DeviceInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3389,6 +3794,7 @@ class DeviceInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3421,16 +3827,25 @@ class DeviceInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::device-type", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-type", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::document", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::document", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::element", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::element", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::location", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::location", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::resource-factory", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resource-factory", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::udn", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::udn", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::url-base", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::url-base", callback: (($obj: DeviceInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -3447,6 +3862,14 @@ interface DeviceProxy_ConstructProps extends DeviceInfo_ConstructProps {
 class DeviceProxy {
     /* Properties of GUPnP-1.2.GUPnP.DeviceInfo */
     /**
+     * The #GUPnPContext to use.
+     */
+    readonly context: Context
+    /**
+     * The device type.
+     */
+    readonly device_type: string
+    /**
      * Private property.
      */
     document: XMLDoc
@@ -3459,13 +3882,21 @@ class DeviceProxy {
      */
     location: string
     /**
+     * The resource factory to use. Set to NULL for default factory.
+     */
+    readonly resource_factory: ResourceFactory
+    /**
+     * The UDN of this device.
+     */
+    readonly udn: string
+    /**
      * The URL base (#SoupURI).
      */
     url_base: Soup.URI
     /* Fields of GUPnP-1.2.GUPnP.DeviceInfo */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.DeviceInfo */
     /**
      * Get the associated #GUPnPContext.
@@ -3474,6 +3905,7 @@ class DeviceProxy {
     /**
      * This function provides generic access to the contents of arbitrary elements
      * in the device description file.
+     * @param element Name of the description element to retrieve
      */
     get_description_value(element: string): string | null
     /**
@@ -3484,6 +3916,7 @@ class DeviceProxy {
      * Note that devices are not cached internally, so that every time you call
      * this function a new object is created. The application must cache any used
      * devices if it wishes to keep them around and re-use them.
+     * @param type The type of the device to be retrieved.
      */
     get_device(type: string): DeviceInfo | null
     /**
@@ -3502,6 +3935,11 @@ class DeviceProxy {
      * `requested_height` are set, only icons that are this size or smaller are
      * returned, unless `prefer_bigger` is set, in which case the next biggest icon
      * will be returned. The returned strings should be freed.
+     * @param requested_mime_type The requested file format, or %NULL for any
+     * @param requested_depth The requested color depth, or -1 for any
+     * @param requested_width The requested width, or -1 for any
+     * @param requested_height The requested height, or -1 for any
+     * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
      */
     get_icon_url(requested_mime_type: string | null, requested_depth: number, requested_width: number, requested_height: number, prefer_bigger: boolean): [ /* returnType */ string | null, /* mime_type */ string | null, /* depth */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -3553,6 +3991,7 @@ class DeviceProxy {
      * Note that services are not cached internally, so that every time you call
      * this function a new object is created. The application must cache any used
      * services if it wishes to keep them around and re-use them.
+     * @param type The type of the service to be retrieved.
      */
     get_service(type: string): ServiceInfo | null
     /**
@@ -3644,6 +4083,10 @@ class DeviceProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3654,6 +4097,12 @@ class DeviceProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3677,6 +4126,7 @@ class DeviceProxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3696,11 +4146,14 @@ class DeviceProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3708,6 +4161,8 @@ class DeviceProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3725,6 +4180,7 @@ class DeviceProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3770,6 +4226,7 @@ class DeviceProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3813,15 +4270,20 @@ class DeviceProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3862,6 +4324,7 @@ class DeviceProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3896,6 +4359,7 @@ class DeviceProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3915,6 +4379,7 @@ class DeviceProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3947,16 +4412,25 @@ class DeviceProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::device-type", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-type", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::document", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::document", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::element", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::element", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::location", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::location", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::resource-factory", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resource-factory", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::udn", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::udn", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::url-base", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::url-base", callback: (($obj: DeviceProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -3972,7 +4446,7 @@ interface ResourceFactory_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ResourceFactory {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.ResourceFactory */
     /**
      * Registers the GType `type` for the proxy of resource of UPnP type `upnp_type`.
@@ -3981,6 +4455,8 @@ class ResourceFactory {
      * 
      * Note: GType `type` must be a derived type of #GUPNP_TYPE_DEVICE_PROXY if
      * resource is a device or #GUPNP_TYPE_SERVICE_PROXY if its a service.
+     * @param upnp_type The UPnP type name of the resource.
+     * @param type The requested GType assignment for the resource proxy.
      */
     register_resource_proxy_type(upnp_type: string, type: GObject.Type): void
     /**
@@ -3995,15 +4471,19 @@ class ResourceFactory {
      * 
      * Note: GType `type` must be a derived type of #GUPNP_TYPE_DEVICE if resource is
      * a device or #GUPNP_TYPE_SERVICE if its a service.
+     * @param upnp_type The UPnP type name of the resource.
+     * @param type The requested GType assignment for the resource.
      */
     register_resource_type(upnp_type: string, type: GObject.Type): void
     /**
      * Unregisters the GType assignment for the proxy of resource of UPnP type
      * `upnp_type`.
+     * @param upnp_type The UPnP type name of the resource.
      */
     unregister_resource_proxy_type(upnp_type: string): boolean
     /**
      * Unregisters the GType assignment for the resource of UPnP type `upnp_type`.
+     * @param upnp_type The UPnP type name of the resource.
      */
     unregister_resource_type(upnp_type: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -4041,6 +4521,10 @@ class ResourceFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4051,6 +4535,12 @@ class ResourceFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4074,6 +4564,7 @@ class ResourceFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4093,11 +4584,14 @@ class ResourceFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4105,6 +4599,8 @@ class ResourceFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4122,6 +4618,7 @@ class ResourceFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4167,6 +4664,7 @@ class ResourceFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4210,15 +4708,20 @@ class ResourceFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4259,6 +4762,7 @@ class ResourceFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4293,6 +4797,7 @@ class ResourceFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4312,6 +4817,7 @@ class ResourceFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4344,6 +4850,7 @@ class ResourceFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ResourceFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ResourceFactory, pspec: GObject.ParamSpec) => void)): number
@@ -4389,7 +4896,34 @@ class RootDevice {
      * TRUE if this device is available.
      */
     available: boolean
+    /**
+     * The path to directory where description documents are provided.
+     */
+    readonly description_dir: string
+    /**
+     * Device description document. Constructor property.
+     */
+    readonly description_doc: XMLDoc
+    /**
+     * The path to device description document. This could either be an
+     * absolute path or path relative to GUPnPRootDevice:description-dir.
+     */
+    readonly description_path: string
+    /* Properties of GUPnP-1.2.GUPnP.Device */
+    /**
+     * The containing #GUPnPRootDevice, or NULL if this is the root
+     * device.
+     */
+    readonly root_device: RootDevice
     /* Properties of GUPnP-1.2.GUPnP.DeviceInfo */
+    /**
+     * The #GUPnPContext to use.
+     */
+    readonly context: Context
+    /**
+     * The device type.
+     */
+    readonly device_type: string
     /**
      * Private property.
      */
@@ -4403,13 +4937,21 @@ class RootDevice {
      */
     location: string
     /**
+     * The resource factory to use. Set to NULL for default factory.
+     */
+    readonly resource_factory: ResourceFactory
+    /**
+     * The UDN of this device.
+     */
+    readonly udn: string
+    /**
      * The URL base (#SoupURI).
      */
     url_base: Soup.URI
     /* Fields of GUPnP-1.2.GUPnP.Device */
-    readonly parent_instance: DeviceInfo
+    parent_instance: DeviceInfo
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.RootDevice */
     /**
      * Get whether or not `root_device` is available (announcing its presence).
@@ -4439,6 +4981,7 @@ class RootDevice {
     /**
      * Controls whether or not `root_device` is available (announcing
      * its presence).
+     * @param available %TRUE if `root_device` should be available
      */
     set_available(available: boolean): void
     /* Methods of GUPnP-1.2.GUPnP.DeviceInfo */
@@ -4449,6 +4992,7 @@ class RootDevice {
     /**
      * This function provides generic access to the contents of arbitrary elements
      * in the device description file.
+     * @param element Name of the description element to retrieve
      */
     get_description_value(element: string): string | null
     /**
@@ -4459,6 +5003,7 @@ class RootDevice {
      * Note that devices are not cached internally, so that every time you call
      * this function a new object is created. The application must cache any used
      * devices if it wishes to keep them around and re-use them.
+     * @param type The type of the device to be retrieved.
      */
     get_device(type: string): DeviceInfo | null
     /**
@@ -4477,6 +5022,11 @@ class RootDevice {
      * `requested_height` are set, only icons that are this size or smaller are
      * returned, unless `prefer_bigger` is set, in which case the next biggest icon
      * will be returned. The returned strings should be freed.
+     * @param requested_mime_type The requested file format, or %NULL for any
+     * @param requested_depth The requested color depth, or -1 for any
+     * @param requested_width The requested width, or -1 for any
+     * @param requested_height The requested height, or -1 for any
+     * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
      */
     get_icon_url(requested_mime_type: string | null, requested_depth: number, requested_width: number, requested_height: number, prefer_bigger: boolean): [ /* returnType */ string | null, /* mime_type */ string | null, /* depth */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -4528,6 +5078,7 @@ class RootDevice {
      * Note that services are not cached internally, so that every time you call
      * this function a new object is created. The application must cache any used
      * services if it wishes to keep them around and re-use them.
+     * @param type The type of the service to be retrieved.
      */
     get_service(type: string): ServiceInfo | null
     /**
@@ -4619,6 +5170,10 @@ class RootDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4629,6 +5184,12 @@ class RootDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4652,6 +5213,7 @@ class RootDevice {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4671,11 +5233,14 @@ class RootDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4683,6 +5248,8 @@ class RootDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4700,6 +5267,7 @@ class RootDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4745,6 +5313,7 @@ class RootDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4788,15 +5357,20 @@ class RootDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4837,6 +5411,7 @@ class RootDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4871,6 +5446,7 @@ class RootDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -4913,6 +5489,7 @@ class RootDevice {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GUPnP-1.2.GUPnP.RootDevice */
@@ -4955,6 +5532,7 @@ class RootDevice {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4974,6 +5552,7 @@ class RootDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5006,18 +5585,35 @@ class RootDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::available", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::available", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::description-dir", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::description-dir", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::description-doc", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::description-doc", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::description-path", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::description-path", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::root-device", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root-device", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::context", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::device-type", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-type", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::document", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::document", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::element", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::element", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::location", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::location", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::resource-factory", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resource-factory", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::udn", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::udn", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::url-base", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::url-base", callback: (($obj: RootDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -5034,6 +5630,9 @@ class RootDevice {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -5046,10 +5645,44 @@ interface Service_ConstructProps extends ServiceInfo_ConstructProps {
     root_device?: RootDevice
 }
 class Service {
+    /* Properties of GUPnP-1.2.GUPnP.Service */
+    /**
+     * The containing #GUPnPRootDevice.
+     */
+    readonly root_device: RootDevice
+    /* Properties of GUPnP-1.2.GUPnP.ServiceInfo */
+    /**
+     * The #GUPnPContext to use.
+     */
+    readonly context: Context
+    /**
+     * Private property.
+     */
+    readonly document: XMLDoc
+    /**
+     * Private property.
+     */
+    readonly element: object
+    /**
+     * The location of the device description file.
+     */
+    readonly location: string
+    /**
+     * The service type.
+     */
+    readonly service_type: string
+    /**
+     * The UDN of the containing device.
+     */
+    readonly udn: string
+    /**
+     * The URL base (#SoupURI).
+     */
+    readonly url_base: Soup.URI
     /* Fields of GUPnP-1.2.GUPnP.ServiceInfo */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.Service */
     /**
      * Causes new notifications to be queued up until gupnp_service_thaw_notify()
@@ -5058,6 +5691,8 @@ class Service {
     freeze_notify(): void
     /**
      * Notifies listening clients that `variable` has changed to `value`.
+     * @param variable The name of the variable to notify
+     * @param value The value of the variable
      */
     notify_value(variable: string, value: any): void
     /**
@@ -5085,6 +5720,7 @@ class Service {
      * <warning>This function can not and therefore does not guarantee that the
      * resulting signal connections will be correct as it depends heavily on a
      * particular naming schemes described above.</warning>
+     * @param user_data the data to pass to each of the callbacks
      */
     signals_autoconnect(user_data?: object | null): void
     /**
@@ -5112,6 +5748,7 @@ class Service {
      * Note that introspection object is created from the information in service
      * description document (SCPD) provided by the service so it can not be created
      * if the service does not provide a SCPD.
+     * @param callback callback to be called when introspection object is ready.
      */
     get_introspection_async(callback: ServiceIntrospectionCallback): void
     /**
@@ -5121,6 +5758,8 @@ class Service {
      * 
      * If `cancellable` is used to cancel the call, `callback` will be called with
      * error code %G_IO_ERROR_CANCELLED.
+     * @param callback callback to be called when introspection object is ready.
+     * @param cancellable GCancellable that can be used to cancel the call, or %NULL.
      */
     get_introspection_async_full(callback: ServiceIntrospectionCallback, cancellable?: Gio.Cancellable | null): void
     /**
@@ -5150,11 +5789,14 @@ class Service {
      * 
      * If `cancellable` is used to cancel the call, `callback` will be called with
      * error code %G_IO_ERROR_CANCELLED.
+     * @param cancellable #GCancellable that can be used to cancel the call, or %NULL.
+     * @param callback callback to be called when introspeciton object is ready.
      */
     introspect_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous call initiated with
      * gupnp_service_info_introspect_async().
+     * @param res A #GAsyncResult
      */
     introspect_finish(res: Gio.AsyncResult): ServiceIntrospection | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -5192,6 +5834,10 @@ class Service {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5202,6 +5848,12 @@ class Service {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5213,6 +5865,7 @@ class Service {
     force_floating(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5232,11 +5885,14 @@ class Service {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5244,6 +5900,8 @@ class Service {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5261,6 +5919,7 @@ class Service {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5306,6 +5965,7 @@ class Service {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5349,15 +6009,20 @@ class Service {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5398,6 +6063,7 @@ class Service {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5420,6 +6086,7 @@ class Service {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GUPnP-1.2.GUPnP.Service */
@@ -5442,6 +6109,7 @@ class Service {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5450,12 +6118,15 @@ class Service {
      * Emitted whenever an action is invoked. Handler should process
      * `action` and must call either gupnp_service_action_return() or
      * gupnp_service_action_return_error().
+     * @param action The invoked #GUPnPServiceAction
      */
     connect(sigName: "action-invoked", callback: (($obj: Service, action: ServiceAction) => void)): number
     connect_after(sigName: "action-invoked", callback: (($obj: Service, action: ServiceAction) => void)): number
     emit(sigName: "action-invoked", action: ServiceAction): void
     /**
      * Emitted whenever notification of a client fails.
+     * @param callback_url A #GList of callback URLs
+     * @param reason A pointer to a #GError describing why the notify failed
      */
     connect(sigName: "notify-failed", callback: (($obj: Service, callback_url: Soup.URI[], reason: GLib.Error) => void)): number
     connect_after(sigName: "notify-failed", callback: (($obj: Service, callback_url: Soup.URI[], reason: GLib.Error) => void)): number
@@ -5463,6 +6134,8 @@ class Service {
     /**
      * Emitted whenever `service` needs to know the value of `variable`.
      * Handler should fill `value` with the value of `variable`.
+     * @param variable The variable that is being queried
+     * @param value The location of the #GValue of the variable
      */
     connect(sigName: "query-variable", callback: (($obj: Service, variable: string, value: any) => void)): number
     connect_after(sigName: "query-variable", callback: (($obj: Service, variable: string, value: any) => void)): number
@@ -5496,10 +6169,27 @@ class Service {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::root-device", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root-device", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::context", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::document", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::document", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::element", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::location", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::location", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::service-type", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service-type", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::udn", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::udn", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::url-base", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::url-base", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5541,8 +6231,37 @@ interface ServiceInfo_ConstructProps extends GObject.Object_ConstructProps {
     url_base?: Soup.URI
 }
 class ServiceInfo {
+    /* Properties of GUPnP-1.2.GUPnP.ServiceInfo */
+    /**
+     * The #GUPnPContext to use.
+     */
+    readonly context: Context
+    /**
+     * Private property.
+     */
+    readonly document: XMLDoc
+    /**
+     * Private property.
+     */
+    readonly element: object
+    /**
+     * The location of the device description file.
+     */
+    readonly location: string
+    /**
+     * The service type.
+     */
+    readonly service_type: string
+    /**
+     * The UDN of the containing device.
+     */
+    readonly udn: string
+    /**
+     * The URL base (#SoupURI).
+     */
+    readonly url_base: Soup.URI
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.ServiceInfo */
     /**
      * Get the #GUPnPContext associated with `info`.
@@ -5564,6 +6283,7 @@ class ServiceInfo {
      * Note that introspection object is created from the information in service
      * description document (SCPD) provided by the service so it can not be created
      * if the service does not provide a SCPD.
+     * @param callback callback to be called when introspection object is ready.
      */
     get_introspection_async(callback: ServiceIntrospectionCallback): void
     /**
@@ -5573,6 +6293,8 @@ class ServiceInfo {
      * 
      * If `cancellable` is used to cancel the call, `callback` will be called with
      * error code %G_IO_ERROR_CANCELLED.
+     * @param callback callback to be called when introspection object is ready.
+     * @param cancellable GCancellable that can be used to cancel the call, or %NULL.
      */
     get_introspection_async_full(callback: ServiceIntrospectionCallback, cancellable?: Gio.Cancellable | null): void
     /**
@@ -5602,11 +6324,14 @@ class ServiceInfo {
      * 
      * If `cancellable` is used to cancel the call, `callback` will be called with
      * error code %G_IO_ERROR_CANCELLED.
+     * @param cancellable #GCancellable that can be used to cancel the call, or %NULL.
+     * @param callback callback to be called when introspeciton object is ready.
      */
     introspect_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous call initiated with
      * gupnp_service_info_introspect_async().
+     * @param res A #GAsyncResult
      */
     introspect_finish(res: Gio.AsyncResult): ServiceIntrospection | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -5644,6 +6369,10 @@ class ServiceInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5654,6 +6383,12 @@ class ServiceInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5677,6 +6412,7 @@ class ServiceInfo {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5696,11 +6432,14 @@ class ServiceInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5708,6 +6447,8 @@ class ServiceInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5725,6 +6466,7 @@ class ServiceInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5770,6 +6512,7 @@ class ServiceInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5813,15 +6556,20 @@ class ServiceInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5862,6 +6610,7 @@ class ServiceInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5896,6 +6645,7 @@ class ServiceInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5915,6 +6665,7 @@ class ServiceInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5947,10 +6698,25 @@ class ServiceInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::document", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::document", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::element", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::location", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::location", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::service-type", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service-type", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::udn", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::udn", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::url-base", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::url-base", callback: (($obj: ServiceInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5968,15 +6734,22 @@ interface ServiceIntrospection_ConstructProps extends GObject.Object_ConstructPr
     scpd?: object
 }
 class ServiceIntrospection {
+    /* Properties of GUPnP-1.2.GUPnP.ServiceIntrospection */
+    /**
+     * The scpd of the device description file.
+     */
+    readonly scpd: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.ServiceIntrospection */
     /**
      * Returns the action by the name `action_name` in this service.
+     * @param action_name The name of the action to retrieve
      */
     get_action(action_name: string): ServiceActionInfo | null
     /**
      * Returns the state variable by the name `variable_name` in this service.
+     * @param variable_name The name of the variable to retrieve
      */
     get_state_variable(variable_name: string): ServiceStateVariableInfo | null
     /**
@@ -6032,6 +6805,10 @@ class ServiceIntrospection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6042,6 +6819,12 @@ class ServiceIntrospection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6065,6 +6848,7 @@ class ServiceIntrospection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6084,11 +6868,14 @@ class ServiceIntrospection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6096,6 +6883,8 @@ class ServiceIntrospection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6113,6 +6902,7 @@ class ServiceIntrospection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6158,6 +6948,7 @@ class ServiceIntrospection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6201,15 +6992,20 @@ class ServiceIntrospection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6250,6 +7046,7 @@ class ServiceIntrospection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6284,6 +7081,7 @@ class ServiceIntrospection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6303,6 +7101,7 @@ class ServiceIntrospection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6335,10 +7134,13 @@ class ServiceIntrospection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ServiceIntrospection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ServiceIntrospection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::scpd", callback: (($obj: ServiceIntrospection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scpd", callback: (($obj: ServiceIntrospection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6361,29 +7163,68 @@ class ServiceProxy {
      * Whether we are subscribed to this service.
      */
     subscribed: boolean
+    /* Properties of GUPnP-1.2.GUPnP.ServiceInfo */
+    /**
+     * The #GUPnPContext to use.
+     */
+    readonly context: Context
+    /**
+     * Private property.
+     */
+    readonly document: XMLDoc
+    /**
+     * Private property.
+     */
+    readonly element: object
+    /**
+     * The location of the device description file.
+     */
+    readonly location: string
+    /**
+     * The service type.
+     */
+    readonly service_type: string
+    /**
+     * The UDN of the containing device.
+     */
+    readonly udn: string
+    /**
+     * The URL base (#SoupURI).
+     */
+    readonly url_base: Soup.URI
     /* Fields of GUPnP-1.2.GUPnP.ServiceInfo */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.ServiceProxy */
     /**
      * Sets up `callback` to be called whenever a change notification for
      * `variable` is recieved.
+     * @param variable The variable to add notification for
+     * @param type The type of the variable
+     * @param callback The callback to call when `variable` changes
      */
     add_notify(variable: string, type: GObject.Type, callback: ServiceProxyNotifyCallback): boolean
     /**
      * Get a notification for anything that happens on the peer. `value` in
      * `callback` will be of type #G_TYPE_POINTER and contain the pre-parsed
      * #xmlDoc. Do NOT free or modify this document.
+     * @param callback The callback to call when the peer issues any variable notification.
      */
     add_raw_notify(callback: ServiceProxyNotifyCallback): boolean
     /**
      * A variant of #gupnp_service_proxy_begin_action that takes lists of
      * in-parameter names, types and values.
+     * @param action An action
+     * @param in_names #GList of 'in' parameter names (as strings)
+     * @param in_values #GList of values (as #GValue) that line up with `in_names`
+     * @param callback The callback to call when sending the action has succeeded or failed
      */
     begin_action_list(action: string, in_names: string[], in_values: any[], callback: ServiceProxyActionCallback): ServiceProxyAction
     /**
      * Synchronously call the `action` on the remote UPnP service.
+     * @param action An action
+     * @param cancellable A #GCancellable which can be used to cancel the current action call
      */
     call_action(action: ServiceProxyAction, cancellable?: Gio.Cancellable | null): ServiceProxyAction | null
     /**
@@ -6393,6 +7234,9 @@ class ServiceProxy {
      * gupnp_service_proxy_action_get_result_hash() or
      * gupnp_service_proxy_action_get_result_list() to extract the result of the
      * remote call.
+     * @param action A #GUPnPServiceProxyAction to call
+     * @param cancellable A #GCancellable which can be used to cancel the current action call
+     * @param callback A #GAsyncReadyCallback to call when the action is finished.
      */
     call_action_async(action: ServiceProxyAction, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6401,15 +7245,19 @@ class ServiceProxy {
      * 
      * Note: This will only signalize transport errors to the caller, such as the action being cancelled
      * or lost connection etc. SOAP call errors are only returned by gupnp_service_proxy_action_get() and such.
+     * @param result a #GAsyncResult
      */
     call_action_finish(result: Gio.AsyncResult): ServiceProxyAction | null
     /**
      * Cancels `action,` freeing the `action` handle.
+     * @param action A #GUPnPServiceProxyAction handle
      */
     cancel_action(action: ServiceProxyAction): void
     /**
      * See gupnp_service_proxy_end_action(); this version takes a #GHashTable for
      * runtime generated parameter lists.
+     * @param action A #GUPnPServiceProxyAction handle
+     * @param hash A #GHashTable of out parameter name and initialised #GValue pairs
      */
     end_action_hash(action: ServiceProxyAction, hash: GLib.HashTable): [ /* returnType */ boolean, /* hash */ GLib.HashTable ]
     /**
@@ -6417,6 +7265,9 @@ class ServiceProxy {
      * out-parameter names, types and place-holders for values. The returned list
      * in `out_values` must be freed using #g_list_free and each element in it using
      * #g_value_unset and #g_slice_free.
+     * @param action A #GUPnPServiceProxyAction handle
+     * @param out_names #GList of 'out' parameter names (as strings)
+     * @param out_types #GList of types (as #GType) that line up with `out_names`
      */
     end_action_list(action: ServiceProxyAction, out_names: string[], out_types: GObject.Type[]): [ /* returnType */ boolean, /* out_values */ any[] ]
     /**
@@ -6430,6 +7281,8 @@ class ServiceProxy {
      * indirectly from a #GUPnPServiceProxyNotifyCallback associated with this
      * service proxy, even if it is for another variable. In later versions such
      * calls are allowed.
+     * @param variable The variable to add notification for
+     * @param callback The callback to call when `variable` changes
      */
     remove_notify(variable: string, callback: ServiceProxyNotifyCallback): boolean
     /**
@@ -6438,11 +7291,17 @@ class ServiceProxy {
      * This function must not be called directly or indirectly from a
      * #GUPnPServiceProxyNotifyCallback associated with this service proxy, even
      * if it is for another variable.
+     * @param callback The callback to call when `variable` changes
      */
     remove_raw_notify(callback: ServiceProxyNotifyCallback): boolean
     /**
      * The synchronous variant of #gupnp_service_proxy_begin_action_list and
      * #gupnp_service_proxy_end_action_list.
+     * @param action An action
+     * @param in_names #GList of 'in' parameter names (as strings)
+     * @param in_values #GList of values (as #GValue) that line up with `in_names`
+     * @param out_names #GList of 'out' parameter names (as strings)
+     * @param out_types #GList of types (as #GType) that line up with `out_names`
      */
     send_action_list(action: string, in_names: string[], in_values: any[], out_names: string[], out_types: GObject.Type[]): [ /* returnType */ boolean, /* out_values */ any[] ]
     /**
@@ -6452,6 +7311,7 @@ class ServiceProxy {
      * If you want to unsubcribe from this service because the application
      * is quitting, rely on automatic synchronised unsubscription on object
      * destruction instead.</note>
+     * @param subscribed %TRUE to subscribe to this service
      */
     set_subscribed(subscribed: boolean): void
     /* Methods of GUPnP-1.2.GUPnP.ServiceInfo */
@@ -6475,6 +7335,7 @@ class ServiceProxy {
      * Note that introspection object is created from the information in service
      * description document (SCPD) provided by the service so it can not be created
      * if the service does not provide a SCPD.
+     * @param callback callback to be called when introspection object is ready.
      */
     get_introspection_async(callback: ServiceIntrospectionCallback): void
     /**
@@ -6484,6 +7345,8 @@ class ServiceProxy {
      * 
      * If `cancellable` is used to cancel the call, `callback` will be called with
      * error code %G_IO_ERROR_CANCELLED.
+     * @param callback callback to be called when introspection object is ready.
+     * @param cancellable GCancellable that can be used to cancel the call, or %NULL.
      */
     get_introspection_async_full(callback: ServiceIntrospectionCallback, cancellable?: Gio.Cancellable | null): void
     /**
@@ -6513,11 +7376,14 @@ class ServiceProxy {
      * 
      * If `cancellable` is used to cancel the call, `callback` will be called with
      * error code %G_IO_ERROR_CANCELLED.
+     * @param cancellable #GCancellable that can be used to cancel the call, or %NULL.
+     * @param callback callback to be called when introspeciton object is ready.
      */
     introspect_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous call initiated with
      * gupnp_service_info_introspect_async().
+     * @param res A #GAsyncResult
      */
     introspect_finish(res: Gio.AsyncResult): ServiceIntrospection | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -6555,6 +7421,10 @@ class ServiceProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6565,6 +7435,12 @@ class ServiceProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6588,6 +7464,7 @@ class ServiceProxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6607,11 +7484,14 @@ class ServiceProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6619,6 +7499,8 @@ class ServiceProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6636,6 +7518,7 @@ class ServiceProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6681,6 +7564,7 @@ class ServiceProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6724,15 +7608,20 @@ class ServiceProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6773,6 +7662,7 @@ class ServiceProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6807,6 +7697,7 @@ class ServiceProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GUPnP-1.2.GUPnP.ServiceProxy */
@@ -6828,6 +7719,7 @@ class ServiceProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6835,6 +7727,7 @@ class ServiceProxy {
     /**
      * Emitted whenever the subscription to this service has been lost due
      * to an error condition.
+     * @param error A pointer to a #GError describing why the subscription has been lost
      */
     connect(sigName: "subscription-lost", callback: (($obj: ServiceProxy, error: GLib.Error) => void)): number
     connect_after(sigName: "subscription-lost", callback: (($obj: ServiceProxy, error: GLib.Error) => void)): number
@@ -6868,12 +7761,27 @@ class ServiceProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::subscribed", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::subscribed", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::context", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::document", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::document", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::element", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::location", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::location", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::service-type", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service-type", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::udn", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::udn", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::url-base", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::url-base", callback: (($obj: ServiceProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6887,7 +7795,7 @@ interface XMLDoc_ConstructProps extends GObject.Object_ConstructProps {
 }
 class XMLDoc {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUPnP-1.2.GUPnP.XMLDoc */
     get_doc(): libxml2.Doc
     /* Methods of GObject-2.0.GObject.Object */
@@ -6925,6 +7833,10 @@ class XMLDoc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6935,6 +7847,12 @@ class XMLDoc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6958,6 +7876,7 @@ class XMLDoc {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6977,11 +7896,14 @@ class XMLDoc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6989,6 +7911,8 @@ class XMLDoc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7006,6 +7930,7 @@ class XMLDoc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7051,6 +7976,7 @@ class XMLDoc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7094,15 +8020,20 @@ class XMLDoc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7143,6 +8074,7 @@ class XMLDoc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7177,6 +8109,7 @@ class XMLDoc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7196,6 +8129,7 @@ class XMLDoc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7228,6 +8162,7 @@ class XMLDoc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: XMLDoc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: XMLDoc, pspec: GObject.ParamSpec) => void)): number
@@ -7249,60 +8184,60 @@ abstract class AclInterface {
     /**
      * The parent interface.
      */
-    readonly parent: GObject.TypeInterface
-    readonly is_allowed: (self: Acl, device: object | null, service: object | null, path: string, address: string, agent?: string | null) => boolean
-    readonly is_allowed_async: (self: Acl, device: object | null, service: object | null, path: string, address: string, agent?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly is_allowed_finish: (self: Acl, res: Gio.AsyncResult) => boolean
-    readonly can_sync: (self: Acl) => boolean
+    parent: GObject.TypeInterface
+    is_allowed: (self: Acl, device: object | null, service: object | null, path: string, address: string, agent?: string | null) => boolean
+    is_allowed_async: (self: Acl, device: object | null, service: object | null, path: string, address: string, agent?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    is_allowed_finish: (self: Acl, res: Gio.AsyncResult) => boolean
+    can_sync: (self: Acl) => boolean
     static name: string
 }
 abstract class ContextClass {
     /* Fields of GUPnP-1.2.GUPnP.ContextClass */
-    readonly parent_class: GSSDP.ClientClass
+    parent_class: GSSDP.ClientClass
     static name: string
 }
 abstract class ContextFilterClass {
     /* Fields of GUPnP-1.2.GUPnP.ContextFilterClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ContextManagerClass {
     /* Fields of GUPnP-1.2.GUPnP.ContextManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ControlPointClass {
     /* Fields of GUPnP-1.2.GUPnP.ControlPointClass */
-    readonly parent_class: GSSDP.ResourceBrowserClass
-    readonly device_proxy_available: (control_point: ControlPoint, proxy: DeviceProxy) => void
-    readonly device_proxy_unavailable: (control_point: ControlPoint, proxy: DeviceProxy) => void
-    readonly service_proxy_available: (control_point: ControlPoint, proxy: ServiceProxy) => void
-    readonly service_proxy_unavailable: (control_point: ControlPoint, proxy: ServiceProxy) => void
+    parent_class: GSSDP.ResourceBrowserClass
+    device_proxy_available: (control_point: ControlPoint, proxy: DeviceProxy) => void
+    device_proxy_unavailable: (control_point: ControlPoint, proxy: DeviceProxy) => void
+    service_proxy_available: (control_point: ControlPoint, proxy: ServiceProxy) => void
+    service_proxy_unavailable: (control_point: ControlPoint, proxy: ServiceProxy) => void
     static name: string
 }
 abstract class DeviceClass {
     /* Fields of GUPnP-1.2.GUPnP.DeviceClass */
-    readonly parent_class: DeviceInfoClass
+    parent_class: DeviceInfoClass
     static name: string
 }
 abstract class DeviceInfoClass {
     /* Fields of GUPnP-1.2.GUPnP.DeviceInfoClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class DeviceProxyClass {
     /* Fields of GUPnP-1.2.GUPnP.DeviceProxyClass */
-    readonly parent_class: DeviceInfoClass
+    parent_class: DeviceInfoClass
     static name: string
 }
 abstract class ResourceFactoryClass {
     /* Fields of GUPnP-1.2.GUPnP.ResourceFactoryClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class RootDeviceClass {
     /* Fields of GUPnP-1.2.GUPnP.RootDeviceClass */
-    readonly parent_class: DeviceClass
+    parent_class: DeviceClass
     static name: string
 }
 class ServiceAction {
@@ -7315,6 +8250,8 @@ class ServiceAction {
      * Retrieves the value of `argument` into a GValue of type `type` and returns it.
      * The method exists only and only to satify PyGI, please use
      * gupnp_service_action_get_value() and ignore this if possible.
+     * @param argument The name of the argument to retrieve
+     * @param type The type of argument to retrieve
      */
     get_value(argument: string, type: GObject.Type): any
     /**
@@ -7333,6 +8270,8 @@ class ServiceAction {
     get_name(): string
     /**
      * A variant of #gupnp_service_action_get that uses #GList instead of varargs.
+     * @param arg_names A #GList of argument names as string
+     * @param arg_types A #GList of argument types as #GType
      */
     get_values(arg_names: string[], arg_types: GObject.Type[]): any[]
     /**
@@ -7341,6 +8280,8 @@ class ServiceAction {
     return(): void
     /**
      * Return `error_code`.
+     * @param error_code The error code
+     * @param error_description The error description, or %NULL if `error_code` is one of #GUPNP_CONTROL_ERROR_INVALID_ACTION, #GUPNP_CONTROL_ERROR_INVALID_ARGS, #GUPNP_CONTROL_ERROR_OUT_OF_SYNC or #GUPNP_CONTROL_ERROR_ACTION_FAILED, in which case a description is provided automatically.
      */
     return_error(error_code: number, error_description: string): void
     /**
@@ -7349,10 +8290,14 @@ class ServiceAction {
     return_success(): void
     /**
      * Sets the value of `argument` to `value`.
+     * @param argument The name of the return value to retrieve
+     * @param value The #GValue to store the return value
      */
     set_value(argument: string, value: any): void
     /**
      * Sets the specified action return values.
+     * @param arg_names A #GList of argument names
+     * @param arg_values The #GList of values (as #GValue<!-- -->s) that line up with `arg_names`.
      */
     set_values(arg_names: string[], arg_values: any[]): void
     static name: string
@@ -7362,20 +8307,20 @@ class ServiceActionArgInfo {
     /**
      * The name of the action argument.
      */
-    readonly name: string
+    name: string
     /**
      * The direction of the action argument.
      */
-    readonly direction: ServiceActionArgDirection
+    direction: ServiceActionArgDirection
     /**
      * The name of the state variable associated with this
      * argument.
      */
-    readonly related_state_variable: string
+    related_state_variable: string
     /**
      * Whether this argument is the return value of the action.
      */
-    readonly retval: boolean
+    retval: boolean
     static name: string
 }
 class ServiceActionInfo {
@@ -7383,29 +8328,29 @@ class ServiceActionInfo {
     /**
      * The name of the action argument.
      */
-    readonly name: string
+    name: string
     /**
      * A GList of all the arguments
      * (of type #GUPnPServiceActionArgInfo) of this action.
      */
-    readonly arguments_: ServiceActionArgInfo[]
+    arguments_: ServiceActionArgInfo[]
     static name: string
 }
 abstract class ServiceClass {
     /* Fields of GUPnP-1.2.GUPnP.ServiceClass */
-    readonly parent_class: ServiceInfoClass
-    readonly action_invoked: (service: Service, action: ServiceAction) => void
-    readonly query_variable: (service: Service, variable: string, value: any) => void
+    parent_class: ServiceInfoClass
+    action_invoked: (service: Service, action: ServiceAction) => void
+    query_variable: (service: Service, variable: string, value: any) => void
     static name: string
 }
 abstract class ServiceInfoClass {
     /* Fields of GUPnP-1.2.GUPnP.ServiceInfoClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ServiceIntrospectionClass {
     /* Fields of GUPnP-1.2.GUPnP.ServiceIntrospectionClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class ServiceProxyAction {
@@ -7458,6 +8403,7 @@ class ServiceProxyAction {
      * }
      * </programlisting>
      * </informalexample>
+     * @param out_hash A #GHashTable of out parameter name and initialised #GValue pairs
      */
     get_result_hash(out_hash: GLib.HashTable): [ /* returnType */ boolean, /* out_hash */ GLib.HashTable ]
     /**
@@ -7512,6 +8458,8 @@ class ServiceProxyAction {
      * }
      * </programlisting>
      * </informalexample>
+     * @param out_names #GList of 'out' parameter names (as strings)
+     * @param out_types #GList of types (as #GType) that line up with `out_names`
      */
     get_result_list(out_names: string[], out_types: GObject.Type[]): [ /* returnType */ boolean, /* out_values */ any[] ]
     ref(): ServiceProxyAction
@@ -7519,6 +8467,8 @@ class ServiceProxyAction {
      * Update the value of `key` to `value`.
      * 
      * `key` needs to already exist in `action`.
+     * @param key the name of the value to modify
+     * @param value the new value of `key`
      */
     set(key: string, value: any): boolean
     unref(): void
@@ -7528,8 +8478,8 @@ class ServiceProxyAction {
 }
 abstract class ServiceProxyClass {
     /* Fields of GUPnP-1.2.GUPnP.ServiceProxyClass */
-    readonly parent_class: ServiceInfoClass
-    readonly subscription_lost: (proxy: ServiceProxy, reason: GLib.Error) => void
+    parent_class: ServiceInfoClass
+    subscription_lost: (proxy: ServiceProxy, reason: GLib.Error) => void
     static name: string
 }
 class ServiceStateVariableInfo {
@@ -7537,50 +8487,50 @@ class ServiceStateVariableInfo {
     /**
      * The name of the state variable.
      */
-    readonly name: string
+    name: string
     /**
      * Whether this state variable can source events.
      */
-    readonly send_events: boolean
+    send_events: boolean
     /**
      * Wether this state variable is a numeric type (integer and
      * float).
      */
-    readonly is_numeric: boolean
+    is_numeric: boolean
     /**
      * The GType of this state variable.
      */
-    readonly type: GObject.Type
+    type: GObject.Type
     /**
      * The default value of this state variable.
      */
-    readonly default_value: any
+    default_value: any
     /**
      * The minimum value of this state variable. Only applies to numeric
      * data types.
      */
-    readonly minimum: any
+    minimum: any
     /**
      * The maximum value of this state variable. Only applies to numeric
      * data types.
      */
-    readonly maximum: any
+    maximum: any
     /**
      * The step value of this state variable. Only applies to numeric
      * data types.
      */
-    readonly step: any
+    step: any
     /**
      * The allowed values of this state variable. Only applies to
      * string data types. Unlike the other fields in this structure, this field
      * contains a list of (char *) strings rather than GValues.
      */
-    readonly allowed_values: string[]
+    allowed_values: string[]
     static name: string
 }
 abstract class XMLDocClass {
     /* Fields of GUPnP-1.2.GUPnP.XMLDocClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
     type WhiteList = ContextFilter

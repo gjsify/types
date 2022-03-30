@@ -79,28 +79,34 @@ class Actor {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Atk.Object
-    readonly role: Atk.Role
-    readonly relation_set: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessible_parent: Atk.Object
+    role: Atk.Role
+    relation_set: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param action_name the action name
+     * @param action_description the action description
+     * @param action_keybinding the action keybinding
+     * @param callback the callback of the action
      */
     add_action(action_name: string, action_description: string, action_keybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param action_id the action id
      */
     remove_action(action_id: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param action_name the name of the action to remove
      */
     remove_action_by_name(action_name: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -111,6 +117,8 @@ class Actor {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -175,6 +183,7 @@ class Actor {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -182,6 +191,8 @@ class Actor {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: Atk.State, value: boolean): void
     /**
@@ -198,6 +209,7 @@ class Actor {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Atk.Object
     /**
@@ -211,10 +223,13 @@ class Actor {
     ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -223,6 +238,7 @@ class Actor {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -230,6 +246,7 @@ class Actor {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -237,14 +254,17 @@ class Actor {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -282,6 +302,10 @@ class Actor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -292,6 +316,12 @@ class Actor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -315,6 +345,7 @@ class Actor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -334,11 +365,14 @@ class Actor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -346,6 +380,8 @@ class Actor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -363,6 +399,7 @@ class Actor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -408,6 +445,7 @@ class Actor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -451,15 +489,20 @@ class Actor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -500,6 +543,7 @@ class Actor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -534,15 +578,18 @@ class Actor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -568,10 +615,12 @@ class Actor {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -595,10 +644,13 @@ class Actor {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -608,6 +660,9 @@ class Actor {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -621,6 +676,7 @@ class Actor {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -629,6 +685,7 @@ class Actor {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -645,12 +702,16 @@ class Actor {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -659,15 +720,24 @@ class Actor {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -675,19 +745,26 @@ class Actor {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Actor */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -718,10 +795,12 @@ class Actor {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -745,6 +824,7 @@ class Actor {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -754,6 +834,8 @@ class Actor {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -762,6 +844,7 @@ class Actor {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -771,6 +854,9 @@ class Actor {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -784,6 +870,7 @@ class Actor {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -801,6 +888,7 @@ class Actor {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -817,12 +905,16 @@ class Actor {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -831,15 +923,24 @@ class Actor {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -847,10 +948,15 @@ class Actor {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -912,6 +1018,7 @@ class Actor {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: Atk.PropertyValues): void
@@ -926,6 +1033,7 @@ class Actor {
     vfunc_ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -933,6 +1041,7 @@ class Actor {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -940,14 +1049,17 @@ class Actor {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Atk.Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -969,6 +1081,7 @@ class Actor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -978,6 +1091,7 @@ class Actor {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Actor, arg1: Atk.Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Actor, arg1: Atk.Object) => void)): number
@@ -986,6 +1100,8 @@ class Actor {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Actor, arg1: number, arg2: Atk.Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Actor, arg1: number, arg2: Atk.Object) => void)): number
@@ -993,6 +1109,7 @@ class Actor {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Actor, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Actor, arg1: boolean) => void)): number
@@ -1011,6 +1128,7 @@ class Actor {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Actor, arg1: Atk.PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Actor, arg1: Atk.PropertyValues) => void)): number
@@ -1019,6 +1137,8 @@ class Actor {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Actor, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Actor, arg1: string, arg2: boolean) => void)): number
@@ -1059,6 +1179,7 @@ class Actor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Actor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Actor, pspec: GObject.ParamSpec) => void)): number
@@ -1067,6 +1188,7 @@ class Actor {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Actor, arg1: Atk.Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Actor, arg1: Atk.Rectangle) => void)): number
@@ -1147,28 +1269,34 @@ class Clone {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Atk.Object
-    readonly role: Atk.Role
-    readonly relation_set: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessible_parent: Atk.Object
+    role: Atk.Role
+    relation_set: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param action_name the action name
+     * @param action_description the action description
+     * @param action_keybinding the action keybinding
+     * @param callback the callback of the action
      */
     add_action(action_name: string, action_description: string, action_keybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param action_id the action id
      */
     remove_action(action_id: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param action_name the name of the action to remove
      */
     remove_action_by_name(action_name: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -1179,6 +1307,8 @@ class Clone {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -1243,6 +1373,7 @@ class Clone {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -1250,6 +1381,8 @@ class Clone {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: Atk.State, value: boolean): void
     /**
@@ -1266,6 +1399,7 @@ class Clone {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Atk.Object
     /**
@@ -1279,10 +1413,13 @@ class Clone {
     ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -1291,6 +1428,7 @@ class Clone {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -1298,6 +1436,7 @@ class Clone {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -1305,14 +1444,17 @@ class Clone {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1350,6 +1492,10 @@ class Clone {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1360,6 +1506,12 @@ class Clone {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1383,6 +1535,7 @@ class Clone {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1402,11 +1555,14 @@ class Clone {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1414,6 +1570,8 @@ class Clone {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1431,6 +1589,7 @@ class Clone {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1476,6 +1635,7 @@ class Clone {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1519,15 +1679,20 @@ class Clone {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1568,6 +1733,7 @@ class Clone {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1602,15 +1768,18 @@ class Clone {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -1636,10 +1805,12 @@ class Clone {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -1663,10 +1834,13 @@ class Clone {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -1676,6 +1850,9 @@ class Clone {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -1689,6 +1866,7 @@ class Clone {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -1697,6 +1875,7 @@ class Clone {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -1713,12 +1892,16 @@ class Clone {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -1727,15 +1910,24 @@ class Clone {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -1743,19 +1935,26 @@ class Clone {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Clone */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -1786,10 +1985,12 @@ class Clone {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -1813,6 +2014,7 @@ class Clone {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -1822,6 +2024,8 @@ class Clone {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -1830,6 +2034,7 @@ class Clone {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -1839,6 +2044,9 @@ class Clone {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -1852,6 +2060,7 @@ class Clone {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -1869,6 +2078,7 @@ class Clone {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -1885,12 +2095,16 @@ class Clone {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -1899,15 +2113,24 @@ class Clone {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -1915,19 +2138,26 @@ class Clone {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Actor */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -1958,10 +2188,12 @@ class Clone {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -1985,6 +2217,7 @@ class Clone {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -1994,6 +2227,8 @@ class Clone {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -2002,6 +2237,7 @@ class Clone {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -2011,6 +2247,9 @@ class Clone {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -2024,6 +2263,7 @@ class Clone {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -2041,6 +2281,7 @@ class Clone {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -2057,12 +2298,16 @@ class Clone {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -2071,15 +2316,24 @@ class Clone {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -2087,10 +2341,15 @@ class Clone {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -2152,6 +2411,7 @@ class Clone {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: Atk.PropertyValues): void
@@ -2166,6 +2426,7 @@ class Clone {
     vfunc_ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -2173,6 +2434,7 @@ class Clone {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -2180,14 +2442,17 @@ class Clone {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Atk.Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -2209,6 +2474,7 @@ class Clone {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2218,6 +2484,7 @@ class Clone {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Clone, arg1: Atk.Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Clone, arg1: Atk.Object) => void)): number
@@ -2226,6 +2493,8 @@ class Clone {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Clone, arg1: number, arg2: Atk.Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Clone, arg1: number, arg2: Atk.Object) => void)): number
@@ -2233,6 +2502,7 @@ class Clone {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Clone, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Clone, arg1: boolean) => void)): number
@@ -2251,6 +2521,7 @@ class Clone {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Clone, arg1: Atk.PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Clone, arg1: Atk.PropertyValues) => void)): number
@@ -2259,6 +2530,8 @@ class Clone {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Clone, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Clone, arg1: string, arg2: boolean) => void)): number
@@ -2299,6 +2572,7 @@ class Clone {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Clone, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Clone, pspec: GObject.ParamSpec) => void)): number
@@ -2307,6 +2581,7 @@ class Clone {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Clone, arg1: Atk.Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Clone, arg1: Atk.Rectangle) => void)): number
@@ -2389,28 +2664,34 @@ class Group {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Atk.Object
-    readonly role: Atk.Role
-    readonly relation_set: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessible_parent: Atk.Object
+    role: Atk.Role
+    relation_set: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param action_name the action name
+     * @param action_description the action description
+     * @param action_keybinding the action keybinding
+     * @param callback the callback of the action
      */
     add_action(action_name: string, action_description: string, action_keybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param action_id the action id
      */
     remove_action(action_id: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param action_name the name of the action to remove
      */
     remove_action_by_name(action_name: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -2421,6 +2702,8 @@ class Group {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -2485,6 +2768,7 @@ class Group {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -2492,6 +2776,8 @@ class Group {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: Atk.State, value: boolean): void
     /**
@@ -2508,6 +2794,7 @@ class Group {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Atk.Object
     /**
@@ -2521,10 +2808,13 @@ class Group {
     ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -2533,6 +2823,7 @@ class Group {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -2540,6 +2831,7 @@ class Group {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -2547,14 +2839,17 @@ class Group {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2592,6 +2887,10 @@ class Group {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2602,6 +2901,12 @@ class Group {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2625,6 +2930,7 @@ class Group {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2644,11 +2950,14 @@ class Group {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2656,6 +2965,8 @@ class Group {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2673,6 +2984,7 @@ class Group {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2718,6 +3030,7 @@ class Group {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2761,15 +3074,20 @@ class Group {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2810,6 +3128,7 @@ class Group {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2844,15 +3163,18 @@ class Group {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -2878,10 +3200,12 @@ class Group {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -2905,10 +3229,13 @@ class Group {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -2918,6 +3245,9 @@ class Group {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -2931,6 +3261,7 @@ class Group {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -2939,6 +3270,7 @@ class Group {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -2955,12 +3287,16 @@ class Group {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -2969,15 +3305,24 @@ class Group {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -2985,19 +3330,26 @@ class Group {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Group */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -3028,10 +3380,12 @@ class Group {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -3055,6 +3409,7 @@ class Group {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -3064,6 +3419,8 @@ class Group {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -3072,6 +3429,7 @@ class Group {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -3081,6 +3439,9 @@ class Group {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -3094,6 +3455,7 @@ class Group {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -3111,6 +3473,7 @@ class Group {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -3127,12 +3490,16 @@ class Group {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -3141,15 +3508,24 @@ class Group {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -3157,19 +3533,26 @@ class Group {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Actor */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -3200,10 +3583,12 @@ class Group {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -3227,6 +3612,7 @@ class Group {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -3236,6 +3622,8 @@ class Group {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -3244,6 +3632,7 @@ class Group {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -3253,6 +3642,9 @@ class Group {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -3266,6 +3658,7 @@ class Group {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -3283,6 +3676,7 @@ class Group {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -3299,12 +3693,16 @@ class Group {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -3313,15 +3711,24 @@ class Group {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -3329,10 +3736,15 @@ class Group {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -3394,6 +3806,7 @@ class Group {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: Atk.PropertyValues): void
@@ -3408,6 +3821,7 @@ class Group {
     vfunc_ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -3415,6 +3829,7 @@ class Group {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -3422,14 +3837,17 @@ class Group {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Atk.Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -3451,6 +3869,7 @@ class Group {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3460,6 +3879,7 @@ class Group {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Group, arg1: Atk.Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Group, arg1: Atk.Object) => void)): number
@@ -3468,6 +3888,8 @@ class Group {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Group, arg1: number, arg2: Atk.Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Group, arg1: number, arg2: Atk.Object) => void)): number
@@ -3475,6 +3897,7 @@ class Group {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Group, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Group, arg1: boolean) => void)): number
@@ -3493,6 +3916,7 @@ class Group {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Group, arg1: Atk.PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Group, arg1: Atk.PropertyValues) => void)): number
@@ -3501,6 +3925,8 @@ class Group {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Group, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Group, arg1: string, arg2: boolean) => void)): number
@@ -3541,6 +3967,7 @@ class Group {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Group, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Group, pspec: GObject.ParamSpec) => void)): number
@@ -3549,6 +3976,7 @@ class Group {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Group, arg1: Atk.Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Group, arg1: Atk.Rectangle) => void)): number
@@ -3631,28 +4059,34 @@ class Rectangle {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Atk.Object
-    readonly role: Atk.Role
-    readonly relation_set: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessible_parent: Atk.Object
+    role: Atk.Role
+    relation_set: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param action_name the action name
+     * @param action_description the action description
+     * @param action_keybinding the action keybinding
+     * @param callback the callback of the action
      */
     add_action(action_name: string, action_description: string, action_keybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param action_id the action id
      */
     remove_action(action_id: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param action_name the name of the action to remove
      */
     remove_action_by_name(action_name: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -3663,6 +4097,8 @@ class Rectangle {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -3727,6 +4163,7 @@ class Rectangle {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -3734,6 +4171,8 @@ class Rectangle {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: Atk.State, value: boolean): void
     /**
@@ -3750,6 +4189,7 @@ class Rectangle {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Atk.Object
     /**
@@ -3763,10 +4203,13 @@ class Rectangle {
     ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -3775,6 +4218,7 @@ class Rectangle {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -3782,6 +4226,7 @@ class Rectangle {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -3789,14 +4234,17 @@ class Rectangle {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3834,6 +4282,10 @@ class Rectangle {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3844,6 +4296,12 @@ class Rectangle {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3867,6 +4325,7 @@ class Rectangle {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3886,11 +4345,14 @@ class Rectangle {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3898,6 +4360,8 @@ class Rectangle {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3915,6 +4379,7 @@ class Rectangle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3960,6 +4425,7 @@ class Rectangle {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4003,15 +4469,20 @@ class Rectangle {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4052,6 +4523,7 @@ class Rectangle {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4086,15 +4558,18 @@ class Rectangle {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -4120,10 +4595,12 @@ class Rectangle {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -4147,10 +4624,13 @@ class Rectangle {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -4160,6 +4640,9 @@ class Rectangle {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -4173,6 +4656,7 @@ class Rectangle {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -4181,6 +4665,7 @@ class Rectangle {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -4197,12 +4682,16 @@ class Rectangle {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -4211,15 +4700,24 @@ class Rectangle {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -4227,19 +4725,26 @@ class Rectangle {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Rectangle */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -4270,10 +4775,12 @@ class Rectangle {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -4297,6 +4804,7 @@ class Rectangle {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -4306,6 +4814,8 @@ class Rectangle {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -4314,6 +4824,7 @@ class Rectangle {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -4323,6 +4834,9 @@ class Rectangle {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -4336,6 +4850,7 @@ class Rectangle {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -4353,6 +4868,7 @@ class Rectangle {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -4369,12 +4885,16 @@ class Rectangle {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -4383,15 +4903,24 @@ class Rectangle {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -4399,19 +4928,26 @@ class Rectangle {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Actor */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -4442,10 +4978,12 @@ class Rectangle {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -4469,6 +5007,7 @@ class Rectangle {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -4478,6 +5017,8 @@ class Rectangle {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -4486,6 +5027,7 @@ class Rectangle {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -4495,6 +5037,9 @@ class Rectangle {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -4508,6 +5053,7 @@ class Rectangle {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -4525,6 +5071,7 @@ class Rectangle {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -4541,12 +5088,16 @@ class Rectangle {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -4555,15 +5106,24 @@ class Rectangle {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -4571,10 +5131,15 @@ class Rectangle {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -4636,6 +5201,7 @@ class Rectangle {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: Atk.PropertyValues): void
@@ -4650,6 +5216,7 @@ class Rectangle {
     vfunc_ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -4657,6 +5224,7 @@ class Rectangle {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -4664,14 +5232,17 @@ class Rectangle {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Atk.Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -4693,6 +5264,7 @@ class Rectangle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4702,6 +5274,7 @@ class Rectangle {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Rectangle, arg1: Atk.Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Rectangle, arg1: Atk.Object) => void)): number
@@ -4710,6 +5283,8 @@ class Rectangle {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Rectangle, arg1: number, arg2: Atk.Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Rectangle, arg1: number, arg2: Atk.Object) => void)): number
@@ -4717,6 +5292,7 @@ class Rectangle {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Rectangle, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Rectangle, arg1: boolean) => void)): number
@@ -4735,6 +5311,7 @@ class Rectangle {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Rectangle, arg1: Atk.PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Rectangle, arg1: Atk.PropertyValues) => void)): number
@@ -4743,6 +5320,8 @@ class Rectangle {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Rectangle, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Rectangle, arg1: string, arg2: boolean) => void)): number
@@ -4783,6 +5362,7 @@ class Rectangle {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Rectangle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Rectangle, pspec: GObject.ParamSpec) => void)): number
@@ -4791,6 +5371,7 @@ class Rectangle {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Rectangle, arg1: Atk.Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Rectangle, arg1: Atk.Rectangle) => void)): number
@@ -4873,16 +5454,16 @@ class Root {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Atk.Object
-    readonly role: Atk.Role
-    readonly relation_set: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessible_parent: Atk.Object
+    role: Atk.Role
+    relation_set: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
     /**
      * Gets the GObject for which `obj` is the accessible object.
@@ -4891,6 +5472,8 @@ class Root {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -4955,6 +5538,7 @@ class Root {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -4962,6 +5546,8 @@ class Root {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: Atk.State, value: boolean): void
     /**
@@ -4978,6 +5564,7 @@ class Root {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Atk.Object
     /**
@@ -4991,10 +5578,13 @@ class Root {
     ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -5003,6 +5593,7 @@ class Root {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -5010,6 +5601,7 @@ class Root {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -5017,14 +5609,17 @@ class Root {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5062,6 +5657,10 @@ class Root {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5072,6 +5671,12 @@ class Root {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5095,6 +5700,7 @@ class Root {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5114,11 +5720,14 @@ class Root {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5126,6 +5735,8 @@ class Root {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5143,6 +5754,7 @@ class Root {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5188,6 +5800,7 @@ class Root {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5231,15 +5844,20 @@ class Root {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5280,6 +5898,7 @@ class Root {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5314,6 +5933,7 @@ class Root {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -5375,6 +5995,7 @@ class Root {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: Atk.PropertyValues): void
@@ -5389,6 +6010,7 @@ class Root {
     vfunc_ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -5396,6 +6018,7 @@ class Root {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -5403,14 +6026,17 @@ class Root {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Atk.Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -5432,6 +6058,7 @@ class Root {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5441,6 +6068,7 @@ class Root {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Root, arg1: Atk.Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Root, arg1: Atk.Object) => void)): number
@@ -5449,6 +6077,8 @@ class Root {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Root, arg1: number, arg2: Atk.Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Root, arg1: number, arg2: Atk.Object) => void)): number
@@ -5456,6 +6086,7 @@ class Root {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Root, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Root, arg1: boolean) => void)): number
@@ -5474,6 +6105,7 @@ class Root {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Root, arg1: Atk.PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Root, arg1: Atk.PropertyValues) => void)): number
@@ -5482,6 +6114,8 @@ class Root {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Root, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Root, arg1: string, arg2: boolean) => void)): number
@@ -5522,6 +6156,7 @@ class Root {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Root, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Root, pspec: GObject.ParamSpec) => void)): number
@@ -5602,28 +6237,34 @@ class Stage {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Atk.Object
-    readonly role: Atk.Role
-    readonly relation_set: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessible_parent: Atk.Object
+    role: Atk.Role
+    relation_set: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param action_name the action name
+     * @param action_description the action description
+     * @param action_keybinding the action keybinding
+     * @param callback the callback of the action
      */
     add_action(action_name: string, action_description: string, action_keybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param action_id the action id
      */
     remove_action(action_id: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param action_name the name of the action to remove
      */
     remove_action_by_name(action_name: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -5634,6 +6275,8 @@ class Stage {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -5698,6 +6341,7 @@ class Stage {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -5705,6 +6349,8 @@ class Stage {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: Atk.State, value: boolean): void
     /**
@@ -5721,6 +6367,7 @@ class Stage {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Atk.Object
     /**
@@ -5734,10 +6381,13 @@ class Stage {
     ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -5746,6 +6396,7 @@ class Stage {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -5753,6 +6404,7 @@ class Stage {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -5760,14 +6412,17 @@ class Stage {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5805,6 +6460,10 @@ class Stage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5815,6 +6474,12 @@ class Stage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5838,6 +6503,7 @@ class Stage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5857,11 +6523,14 @@ class Stage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5869,6 +6538,8 @@ class Stage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5886,6 +6557,7 @@ class Stage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5931,6 +6603,7 @@ class Stage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5974,15 +6647,20 @@ class Stage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6023,6 +6701,7 @@ class Stage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6057,15 +6736,18 @@ class Stage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -6091,10 +6773,12 @@ class Stage {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -6118,10 +6802,13 @@ class Stage {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -6131,6 +6818,9 @@ class Stage {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -6144,6 +6834,7 @@ class Stage {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -6152,6 +6843,7 @@ class Stage {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -6168,12 +6860,16 @@ class Stage {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -6182,15 +6878,24 @@ class Stage {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -6198,19 +6903,26 @@ class Stage {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Stage */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -6241,10 +6953,12 @@ class Stage {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -6268,6 +6982,7 @@ class Stage {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -6277,6 +6992,8 @@ class Stage {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -6285,6 +7002,7 @@ class Stage {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -6294,6 +7012,9 @@ class Stage {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -6307,6 +7028,7 @@ class Stage {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -6324,6 +7046,7 @@ class Stage {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -6340,12 +7063,16 @@ class Stage {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -6354,15 +7081,24 @@ class Stage {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -6370,19 +7106,26 @@ class Stage {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Group */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -6413,10 +7156,12 @@ class Stage {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -6440,6 +7185,7 @@ class Stage {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -6449,6 +7195,8 @@ class Stage {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -6457,6 +7205,7 @@ class Stage {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -6466,6 +7215,9 @@ class Stage {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -6479,6 +7231,7 @@ class Stage {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -6496,6 +7249,7 @@ class Stage {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -6512,12 +7266,16 @@ class Stage {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -6526,15 +7284,24 @@ class Stage {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -6542,19 +7309,26 @@ class Stage {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Actor */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -6585,10 +7359,12 @@ class Stage {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -6612,6 +7388,7 @@ class Stage {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -6621,6 +7398,8 @@ class Stage {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -6629,6 +7408,7 @@ class Stage {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -6638,6 +7418,9 @@ class Stage {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -6651,6 +7434,7 @@ class Stage {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -6668,6 +7452,7 @@ class Stage {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -6684,12 +7469,16 @@ class Stage {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -6698,15 +7487,24 @@ class Stage {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -6714,10 +7512,15 @@ class Stage {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -6779,6 +7582,7 @@ class Stage {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: Atk.PropertyValues): void
@@ -6793,6 +7597,7 @@ class Stage {
     vfunc_ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -6800,6 +7605,7 @@ class Stage {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -6807,14 +7613,17 @@ class Stage {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Atk.Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -6836,6 +7645,7 @@ class Stage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6845,6 +7655,7 @@ class Stage {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Stage, arg1: Atk.Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Stage, arg1: Atk.Object) => void)): number
@@ -6853,6 +7664,8 @@ class Stage {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Stage, arg1: number, arg2: Atk.Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Stage, arg1: number, arg2: Atk.Object) => void)): number
@@ -6860,6 +7673,7 @@ class Stage {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Stage, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Stage, arg1: boolean) => void)): number
@@ -6878,6 +7692,7 @@ class Stage {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Stage, arg1: Atk.PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Stage, arg1: Atk.PropertyValues) => void)): number
@@ -6886,6 +7701,8 @@ class Stage {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Stage, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Stage, arg1: string, arg2: boolean) => void)): number
@@ -6926,6 +7743,7 @@ class Stage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
@@ -6934,6 +7752,7 @@ class Stage {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Stage, arg1: Atk.Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Stage, arg1: Atk.Rectangle) => void)): number
@@ -7081,28 +7900,34 @@ class Text {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Atk.Object
-    readonly role: Atk.Role
-    readonly relation_set: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessible_parent: Atk.Object
+    role: Atk.Role
+    relation_set: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param action_name the action name
+     * @param action_description the action description
+     * @param action_keybinding the action keybinding
+     * @param callback the callback of the action
      */
     add_action(action_name: string, action_description: string, action_keybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param action_id the action id
      */
     remove_action(action_id: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param action_name the name of the action to remove
      */
     remove_action_by_name(action_name: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -7113,6 +7938,8 @@ class Text {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -7177,6 +8004,7 @@ class Text {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -7184,6 +8012,8 @@ class Text {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: Atk.State, value: boolean): void
     /**
@@ -7200,6 +8030,7 @@ class Text {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Atk.Object
     /**
@@ -7213,10 +8044,13 @@ class Text {
     ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -7225,6 +8059,7 @@ class Text {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -7232,6 +8067,7 @@ class Text {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -7239,14 +8075,17 @@ class Text {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7284,6 +8123,10 @@ class Text {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7294,6 +8137,12 @@ class Text {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7317,6 +8166,7 @@ class Text {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7336,11 +8186,14 @@ class Text {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7348,6 +8201,8 @@ class Text {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7365,6 +8220,7 @@ class Text {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7410,6 +8266,7 @@ class Text {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7453,15 +8310,20 @@ class Text {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7502,6 +8364,7 @@ class Text {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7536,15 +8399,18 @@ class Text {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -7570,10 +8436,12 @@ class Text {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -7597,10 +8465,13 @@ class Text {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -7610,6 +8481,9 @@ class Text {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -7623,6 +8497,7 @@ class Text {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -7631,6 +8506,7 @@ class Text {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -7647,12 +8523,16 @@ class Text {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -7661,15 +8541,24 @@ class Text {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -7677,33 +8566,48 @@ class Text {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Methods of Atk-1.0.Atk.EditableText */
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     copy_text(start_pos: number, end_pos: number): void
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard and then delete from the widget.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     cut_text(start_pos: number, end_pos: number): void
     /**
      * Delete text `start_pos` up to, but not including `end_pos`.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     delete_text(start_pos: number, end_pos: number): void
     /**
      * Insert text at a given position.
+     * @param string the text to insert
+     * @param length the length of text to insert, in bytes
+     * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
     insert_text(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
+     * @param position position to paste
      */
     paste_text(position: number): void
     /**
@@ -7711,19 +8615,29 @@ class Text {
      * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
      * that can be set. Note that other attributes that do not have corresponding
      * ATK_ATTRIBUTE macros may also be set for certain text widgets.
+     * @param attrib_set an #AtkAttributeSet
+     * @param start_offset start of range in which to set attributes
+     * @param end_offset end of range in which to set attributes
      */
     set_run_attributes(attrib_set: Atk.AttributeSet, start_offset: number, end_offset: number): boolean
     /**
      * Set text contents of `text`.
+     * @param string string to set for text contents of `text`
      */
     set_text_contents(string: string): void
     /* Methods of Atk-1.0.Atk.Text */
     /**
      * Adds a selection bounded by the specified offsets.
+     * @param start_offset the starting character offset of the selected region
+     * @param end_offset the offset of the first character after the selected region.
      */
     add_selection(start_offset: number, end_offset: number): boolean
     /**
      * Get the ranges of text in the specified bounding box.
+     * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+     * @param x_clip_type Specify the horizontal clip type.
+     * @param y_clip_type Specify the vertical clip type.
      */
     get_bounded_ranges(rect: Atk.TextRectangle, coord_type: Atk.CoordType, x_clip_type: Atk.TextClipType, y_clip_type: Atk.TextClipType): Atk.TextRange[]
     /**
@@ -7732,6 +8646,7 @@ class Text {
     get_caret_offset(): number
     /**
      * Gets the specified text.
+     * @param offset a character offset within `text`
      */
     get_character_at_offset(offset: number): number
     /**
@@ -7744,6 +8659,8 @@ class Text {
      * 
      * Get the bounding box containing the glyph representing the character at
      *     a particular text offset.
+     * @param offset The offset of the text character for which bounding information is required.
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     get_character_extents(offset: number, coords: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -7761,6 +8678,9 @@ class Text {
      * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
      * are interpreted as being relative to the screen or this widget's window
      * depending on `coords`.
+     * @param x screen x-position of character
+     * @param y screen y-position of character
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     get_offset_at_point(x: number, y: number, coords: Atk.CoordType): number
     /**
@@ -7768,6 +8688,9 @@ class Text {
      * 
      * If the extents can not be obtained (e.g. or missing support), the rectangle
      * fields are set to -1.
+     * @param start_offset The offset of the first text character for which boundary        information is required.
+     * @param end_offset The offset of the text character after the last character        for which boundary information is required.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
      */
     get_range_extents(start_offset: number, end_offset: number, coord_type: Atk.CoordType): /* rect */ Atk.TextRectangle
     /**
@@ -7778,10 +8701,12 @@ class Text {
      * after the range.  See the enum AtkTextAttribute for types of text
      * attributes that can be returned. Note that other attributes may also be
      * returned.
+     * @param offset the character offset at which to get the attributes, -1 means the offset of the character to be inserted at the caret location.
      */
     get_run_attributes(offset: number): [ /* returnType */ Atk.AttributeSet, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the text from the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     get_selection(selection_num: number): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -7815,14 +8740,20 @@ class Text {
      * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtkTextGranularity
      */
     get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [ /* returnType */ string | null, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param start_offset a starting character offset within `text`
+     * @param end_offset an ending character offset within `text,` or -1 for the end of the string.
      */
     get_text(start_offset: number, end_offset: number): string
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_after_offset(offset: number, boundary_type: Atk.TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -7850,23 +8781,36 @@ class Text {
      * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
      * string is from the line start at or before the offset to the line
      * start after the offset.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_at_offset(offset: number, boundary_type: Atk.TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_before_offset(offset: number, boundary_type: Atk.TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Removes the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     remove_selection(selection_num: number): boolean
     /**
      * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param type specify where the object should be made visible.
      */
     scroll_substring_to(start_offset: number, end_offset: number, type: Atk.ScrollType): boolean
     /**
      * Move the top-left of a substring of `text` to a given position of the screen
      * by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_substring_to_point(start_offset: number, end_offset: number, coords: Atk.CoordType, x: number, y: number): boolean
     /**
@@ -7887,19 +8831,25 @@ class Text {
      * method should not trigger one either. If the application does not have a caret
      * motion or focus navigation operation, this method should try to scroll the new
      * caret position into view while minimizing unnecessary scroll motion.
+     * @param offset the character offset of the new caret position
      */
     set_caret_offset(offset: number): boolean
     /**
      * Changes the start and end offset of the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
+     * @param start_offset the new starting character offset of the selection
+     * @param end_offset the new end position of (e.g. offset immediately past) the selection
      */
     set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Text */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -7930,10 +8880,12 @@ class Text {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -7957,6 +8909,7 @@ class Text {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -7966,6 +8919,8 @@ class Text {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -7974,6 +8929,7 @@ class Text {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -7983,6 +8939,9 @@ class Text {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -7996,6 +8955,7 @@ class Text {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -8013,6 +8973,7 @@ class Text {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -8029,12 +8990,16 @@ class Text {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -8043,15 +9008,24 @@ class Text {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -8059,32 +9033,47 @@ class Text {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_copy_text(start_pos: number, end_pos: number): void
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard and then delete from the widget.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_cut_text(start_pos: number, end_pos: number): void
     /**
      * Delete text `start_pos` up to, but not including `end_pos`.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_delete_text(start_pos: number, end_pos: number): void
     /**
      * Insert text at a given position.
+     * @param string the text to insert
+     * @param length the length of text to insert, in bytes
+     * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
     vfunc_insert_text(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
+     * @param position position to paste
      */
     vfunc_paste_text(position: number): void
     /**
@@ -8092,18 +9081,28 @@ class Text {
      * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
      * that can be set. Note that other attributes that do not have corresponding
      * ATK_ATTRIBUTE macros may also be set for certain text widgets.
+     * @param attrib_set an #AtkAttributeSet
+     * @param start_offset start of range in which to set attributes
+     * @param end_offset end of range in which to set attributes
      */
     vfunc_set_run_attributes(attrib_set: Atk.AttributeSet, start_offset: number, end_offset: number): boolean
     /**
      * Set text contents of `text`.
+     * @param string string to set for text contents of `text`
      */
     vfunc_set_text_contents(string: string): void
     /**
      * Adds a selection bounded by the specified offsets.
+     * @param start_offset the starting character offset of the selected region
+     * @param end_offset the offset of the first character after the selected region.
      */
     vfunc_add_selection(start_offset: number, end_offset: number): boolean
     /**
      * Get the ranges of text in the specified bounding box.
+     * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+     * @param x_clip_type Specify the horizontal clip type.
+     * @param y_clip_type Specify the vertical clip type.
      */
     vfunc_get_bounded_ranges(rect: Atk.TextRectangle, coord_type: Atk.CoordType, x_clip_type: Atk.TextClipType, y_clip_type: Atk.TextClipType): Atk.TextRange[]
     /**
@@ -8112,6 +9111,7 @@ class Text {
     vfunc_get_caret_offset(): number
     /**
      * Gets the specified text.
+     * @param offset a character offset within `text`
      */
     vfunc_get_character_at_offset(offset: number): number
     /**
@@ -8124,6 +9124,8 @@ class Text {
      * 
      * Get the bounding box containing the glyph representing the character at
      *     a particular text offset.
+     * @param offset The offset of the text character for which bounding information is required.
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     vfunc_get_character_extents(offset: number, coords: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -8141,6 +9143,9 @@ class Text {
      * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
      * are interpreted as being relative to the screen or this widget's window
      * depending on `coords`.
+     * @param x screen x-position of character
+     * @param y screen y-position of character
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     vfunc_get_offset_at_point(x: number, y: number, coords: Atk.CoordType): number
     /**
@@ -8148,6 +9153,9 @@ class Text {
      * 
      * If the extents can not be obtained (e.g. or missing support), the rectangle
      * fields are set to -1.
+     * @param start_offset The offset of the first text character for which boundary        information is required.
+     * @param end_offset The offset of the text character after the last character        for which boundary information is required.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
      */
     vfunc_get_range_extents(start_offset: number, end_offset: number, coord_type: Atk.CoordType): /* rect */ Atk.TextRectangle
     /**
@@ -8158,10 +9166,12 @@ class Text {
      * after the range.  See the enum AtkTextAttribute for types of text
      * attributes that can be returned. Note that other attributes may also be
      * returned.
+     * @param offset the character offset at which to get the attributes, -1 means the offset of the character to be inserted at the caret location.
      */
     vfunc_get_run_attributes(offset: number): [ /* returnType */ Atk.AttributeSet, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the text from the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     vfunc_get_selection(selection_num: number): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -8195,14 +9205,20 @@ class Text {
      * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtkTextGranularity
      */
     vfunc_get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [ /* returnType */ string | null, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param start_offset a starting character offset within `text`
+     * @param end_offset an ending character offset within `text,` or -1 for the end of the string.
      */
     vfunc_get_text(start_offset: number, end_offset: number): string
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_after_offset(offset: number, boundary_type: Atk.TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -8230,23 +9246,36 @@ class Text {
      * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
      * string is from the line start at or before the offset to the line
      * start after the offset.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_at_offset(offset: number, boundary_type: Atk.TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_before_offset(offset: number, boundary_type: Atk.TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Removes the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     vfunc_remove_selection(selection_num: number): boolean
     /**
      * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_substring_to(start_offset: number, end_offset: number, type: Atk.ScrollType): boolean
     /**
      * Move the top-left of a substring of `text` to a given position of the screen
      * by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_substring_to_point(start_offset: number, end_offset: number, coords: Atk.CoordType, x: number, y: number): boolean
     /**
@@ -8267,10 +9296,14 @@ class Text {
      * method should not trigger one either. If the application does not have a caret
      * motion or focus navigation operation, this method should try to scroll the new
      * caret position into view while minimizing unnecessary scroll motion.
+     * @param offset the character offset of the new caret position
      */
     vfunc_set_caret_offset(offset: number): boolean
     /**
      * Changes the start and end offset of the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
+     * @param start_offset the new starting character offset of the selection
+     * @param end_offset the new end position of (e.g. offset immediately past) the selection
      */
     vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
     vfunc_text_attributes_changed(): void
@@ -8280,10 +9313,12 @@ class Text {
     /* Virtual methods of Cally-1.0.Cally.Actor */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -8314,10 +9349,12 @@ class Text {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -8341,6 +9378,7 @@ class Text {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -8350,6 +9388,8 @@ class Text {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -8358,6 +9398,7 @@ class Text {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -8367,6 +9408,9 @@ class Text {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -8380,6 +9424,7 @@ class Text {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -8397,6 +9442,7 @@ class Text {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -8413,12 +9459,16 @@ class Text {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -8427,15 +9477,24 @@ class Text {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -8443,10 +9502,15 @@ class Text {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -8508,6 +9572,7 @@ class Text {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: Atk.PropertyValues): void
@@ -8522,6 +9587,7 @@ class Text {
     vfunc_ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -8529,6 +9595,7 @@ class Text {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -8536,14 +9603,17 @@ class Text {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Atk.Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -8565,6 +9635,7 @@ class Text {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8574,6 +9645,7 @@ class Text {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Text, arg1: Atk.Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Text, arg1: Atk.Object) => void)): number
@@ -8582,6 +9654,8 @@ class Text {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Text, arg1: number, arg2: Atk.Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Text, arg1: number, arg2: Atk.Object) => void)): number
@@ -8589,6 +9663,7 @@ class Text {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Text, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Text, arg1: boolean) => void)): number
@@ -8607,6 +9682,7 @@ class Text {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Text, arg1: Atk.PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Text, arg1: Atk.PropertyValues) => void)): number
@@ -8615,6 +9691,8 @@ class Text {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Text, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Text, arg1: string, arg2: boolean) => void)): number
@@ -8655,6 +9733,7 @@ class Text {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
@@ -8663,6 +9742,7 @@ class Text {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Text, arg1: Atk.Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Text, arg1: Atk.Rectangle) => void)): number
@@ -8680,6 +9760,7 @@ class Text {
      * The "text-caret-moved" signal is emitted when the caret
      * position of the text of an object which implements AtkText
      * changes.
+     * @param arg1 The new position of the text caret.
      */
     connect(sigName: "text-caret-moved", callback: (($obj: Text, arg1: number) => void)): number
     connect_after(sigName: "text-caret-moved", callback: (($obj: Text, arg1: number) => void)): number
@@ -8690,6 +9771,8 @@ class Text {
      * signal will have a detail which is either "insert" or
      * "delete" which identifies whether the text change was an
      * insertion or a deletion.
+     * @param arg1 The position (character offset) of the insertion or deletion.
+     * @param arg2 The length (in characters) of text inserted or deleted.
      */
     connect(sigName: "text-changed", callback: (($obj: Text, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "text-changed", callback: (($obj: Text, arg1: number, arg2: number) => void)): number
@@ -8699,6 +9782,9 @@ class Text {
      * inserted. If the signal was not triggered by the user
      * (e.g. typing or pasting text), the "system" detail should be
      * included.
+     * @param arg1 The position (character offset) of the insertion.
+     * @param arg2 The length (in characters) of text inserted.
+     * @param arg3 The new text inserted
      */
     connect(sigName: "text-insert", callback: (($obj: Text, arg1: number, arg2: number, arg3: string) => void)): number
     connect_after(sigName: "text-insert", callback: (($obj: Text, arg1: number, arg2: number, arg3: string) => void)): number
@@ -8708,6 +9794,9 @@ class Text {
      * removed. If the signal was not triggered by the user
      * (e.g. typing or pasting text), the "system" detail should be
      * included.
+     * @param arg1 The position (character offset) of the removal.
+     * @param arg2 The length (in characters) of text removed.
+     * @param arg3 The old text removed
      */
     connect(sigName: "text-remove", callback: (($obj: Text, arg1: number, arg2: number, arg3: string) => void)): number
     connect_after(sigName: "text-remove", callback: (($obj: Text, arg1: number, arg2: number, arg3: string) => void)): number
@@ -8762,6 +9851,7 @@ class Text {
      * Frees the memory associated with an array of AtkTextRange. It is assumed
      * that the array was returned by the function atk_text_get_bounded_ranges
      * and is NULL terminated.
+     * @param ranges A pointer to an array of #AtkTextRange which is   to be freed.
      */
     static free_ranges(ranges: Atk.TextRange[]): void
     static $gtype: GObject.Type
@@ -8803,28 +9893,34 @@ class Texture {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Atk.Object
-    readonly role: Atk.Role
-    readonly relation_set: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessible_parent: Atk.Object
+    role: Atk.Role
+    relation_set: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param action_name the action name
+     * @param action_description the action description
+     * @param action_keybinding the action keybinding
+     * @param callback the callback of the action
      */
     add_action(action_name: string, action_description: string, action_keybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param action_id the action id
      */
     remove_action(action_id: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param action_name the name of the action to remove
      */
     remove_action_by_name(action_name: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -8835,6 +9931,8 @@ class Texture {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -8899,6 +9997,7 @@ class Texture {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -8906,6 +10005,8 @@ class Texture {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: Atk.State, value: boolean): void
     /**
@@ -8922,6 +10023,7 @@ class Texture {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Atk.Object
     /**
@@ -8935,10 +10037,13 @@ class Texture {
     ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -8947,6 +10052,7 @@ class Texture {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -8954,6 +10060,7 @@ class Texture {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -8961,14 +10068,17 @@ class Texture {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9006,6 +10116,10 @@ class Texture {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9016,6 +10130,12 @@ class Texture {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9039,6 +10159,7 @@ class Texture {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9058,11 +10179,14 @@ class Texture {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9070,6 +10194,8 @@ class Texture {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9087,6 +10213,7 @@ class Texture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9132,6 +10259,7 @@ class Texture {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9175,15 +10303,20 @@ class Texture {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9224,6 +10357,7 @@ class Texture {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9258,15 +10392,18 @@ class Texture {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -9292,10 +10429,12 @@ class Texture {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -9319,10 +10458,13 @@ class Texture {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -9332,6 +10474,9 @@ class Texture {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -9345,6 +10490,7 @@ class Texture {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -9353,6 +10499,7 @@ class Texture {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -9369,12 +10516,16 @@ class Texture {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -9383,15 +10534,24 @@ class Texture {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -9399,19 +10559,26 @@ class Texture {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Texture */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -9442,10 +10609,12 @@ class Texture {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -9469,6 +10638,7 @@ class Texture {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -9478,6 +10648,8 @@ class Texture {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -9486,6 +10658,7 @@ class Texture {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -9495,6 +10668,9 @@ class Texture {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -9508,6 +10684,7 @@ class Texture {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -9525,6 +10702,7 @@ class Texture {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -9541,12 +10719,16 @@ class Texture {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -9555,15 +10737,24 @@ class Texture {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -9571,19 +10762,26 @@ class Texture {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Cally-1.0.Cally.Actor */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -9614,10 +10812,12 @@ class Texture {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -9641,6 +10841,7 @@ class Texture {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -9650,6 +10851,8 @@ class Texture {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -9658,6 +10861,7 @@ class Texture {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Atk.Rectangle): void
@@ -9667,6 +10871,9 @@ class Texture {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
@@ -9680,6 +10887,7 @@ class Texture {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -9697,6 +10905,7 @@ class Texture {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -9713,12 +10922,16 @@ class Texture {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -9727,15 +10940,24 @@ class Texture {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean
     /**
@@ -9743,10 +10965,15 @@ class Texture {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -9808,6 +11035,7 @@ class Texture {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: Atk.PropertyValues): void
@@ -9822,6 +11050,7 @@ class Texture {
     vfunc_ref_state_set(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -9829,6 +11058,7 @@ class Texture {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -9836,14 +11066,17 @@ class Texture {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Atk.Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -9865,6 +11098,7 @@ class Texture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9874,6 +11108,7 @@ class Texture {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Texture, arg1: Atk.Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Texture, arg1: Atk.Object) => void)): number
@@ -9882,6 +11117,8 @@ class Texture {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Texture, arg1: number, arg2: Atk.Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Texture, arg1: number, arg2: Atk.Object) => void)): number
@@ -9889,6 +11126,7 @@ class Texture {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Texture, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Texture, arg1: boolean) => void)): number
@@ -9907,6 +11145,7 @@ class Texture {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Texture, arg1: Atk.PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Texture, arg1: Atk.PropertyValues) => void)): number
@@ -9915,6 +11154,8 @@ class Texture {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Texture, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Texture, arg1: string, arg2: boolean) => void)): number
@@ -9955,6 +11196,7 @@ class Texture {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Texture, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Texture, pspec: GObject.ParamSpec) => void)): number
@@ -9963,6 +11205,7 @@ class Texture {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Texture, arg1: Atk.Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Texture, arg1: Atk.Rectangle) => void)): number
@@ -10012,9 +11255,9 @@ interface Util_ConstructProps extends Atk.Util_ConstructProps {
 }
 class Util {
     /* Fields of Atk-1.0.Atk.Util */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -10050,6 +11293,10 @@ class Util {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10060,6 +11307,12 @@ class Util {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10083,6 +11336,7 @@ class Util {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10102,11 +11356,14 @@ class Util {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10114,6 +11371,8 @@ class Util {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10131,6 +11390,7 @@ class Util {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10176,6 +11436,7 @@ class Util {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10219,15 +11480,20 @@ class Util {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10268,6 +11534,7 @@ class Util {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10302,6 +11569,7 @@ class Util {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10321,6 +11589,7 @@ class Util {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10353,6 +11622,7 @@ class Util {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Util, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Util, pspec: GObject.ParamSpec) => void)): number
@@ -10368,10 +11638,10 @@ class Util {
 }
 abstract class ActorClass {
     /* Fields of Cally-1.0.Cally.ActorClass */
-    readonly notify_clutter: (object: GObject.Object, pspec: GObject.ParamSpec) => void
-    readonly focus_clutter: (actor: Clutter.Actor, data: object) => boolean
-    readonly add_actor: (container: Clutter.Actor, actor: Clutter.Actor, data: object) => number
-    readonly remove_actor: (container: Clutter.Actor, actor: Clutter.Actor, data: object) => number
+    notify_clutter: (object: GObject.Object, pspec: GObject.ParamSpec) => void
+    focus_clutter: (actor: Clutter.Actor, data: object) => boolean
+    add_actor: (container: Clutter.Actor, actor: Clutter.Actor, data: object) => number
+    remove_actor: (container: Clutter.Actor, actor: Clutter.Actor, data: object) => number
     static name: string
 }
 class ActorPrivate {

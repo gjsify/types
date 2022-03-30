@@ -127,8 +127,21 @@ class Account {
      * Whether the account is currently enabled.
      */
     readonly enabled: boolean
+    readonly foreign: boolean
+    /**
+     * The AgAccountId for the account.
+     */
+    readonly id: number
+    /**
+     * The #AgManager from which the account was instantiated.
+     */
+    readonly manager: Manager
+    /**
+     * The ID of the provider for the account.
+     */
+    readonly provider: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Accounts-1.0.Accounts.Account */
     /**
      * Deletes the account. Call ag_account_store() in order to record the change
@@ -157,15 +170,19 @@ class Account {
     getSelectedService(): Service
     /**
      * Creates a new iterator. This method is useful for language bindings only.
+     * @param keyPrefix enumerate only the settings whose key starts with `key_prefix`.
      */
     getSettingsIter(keyPrefix?: string | null): AccountSettingIter
     /**
      * Gets the value of the configuration setting `key:` `value` must be a
      * #GValue initialized to the type of the setting.
+     * @param key the name of the setting to retrieve.
+     * @param value an initialized #GValue to receive the setting's value.
      */
     getValue(key: string, value: any): [ /* returnType */ SettingSource, /* value */ any ]
     /**
      * Gets the value of the configuration setting `key`.
+     * @param key the name of the setting to retrieve.
      */
     getVariant(key: string): [ /* returnType */ GLib.Variant, /* source */ SettingSource | null ]
     /**
@@ -179,10 +196,12 @@ class Account {
     listServices(): Service[]
     /**
      * Get the list of services supported by `account,` filtered by `service_type`.
+     * @param serviceType the service type which all the returned services should provide.
      */
     listServicesByType(serviceType: string): Service[]
     /**
      * Removes the notification callback identified by `watch`.
+     * @param watch the watch to remove.
      */
     removeWatch(watch: AccountWatch): void
     /**
@@ -192,19 +211,24 @@ class Account {
      * 
      * Note that if `account` is being shared with other code one must take special
      * care to make sure the desired service is always selected.
+     * @param service the #AgService to select.
      */
     selectService(service?: Service | null): void
     /**
      * Changes the display name for `account` to `display_name`.
+     * @param displayName the display name to set.
      */
     setDisplayName(displayName: string): void
     /**
      * Sets the "enabled" flag on the selected service for `account`.
+     * @param enabled whether `account` should be enabled.
      */
     setEnabled(enabled: boolean): void
     /**
      * Sets the value of the configuration setting `key` to the value `value`.
      * If `value` is %NULL, then the setting is unset.
+     * @param key the name of the setting to change.
+     * @param value a #GValue holding the new setting's value.
      */
     setValue(key: string, value?: any | null): void
     /**
@@ -212,27 +236,36 @@ class Account {
      * If `value` has a floating reference, the `account` will take ownership
      * of it.
      * If `value` is %NULL, then the setting is unset.
+     * @param key the name of the setting to change.
+     * @param value a #GVariant holding the new setting's value.
      */
     setVariant(key: string, value?: GLib.Variant | null): void
     /**
      * Initializes `iter` to iterate over the account settings. If `key_prefix` is
      * not %NULL, only keys whose names start with `key_prefix` will be iterated
      * over.
+     * @param iter an uninitialized #AgAccountSettingIter structure.
+     * @param keyPrefix enumerate only the settings whose key starts with `key_prefix`.
      */
     settingsIterInit(iter: AccountSettingIter, keyPrefix?: string | null): void
     /**
      * Creates signature of the `key` with given `token`. The account must be
      * stored prior to calling this function.
+     * @param key the name of the key or prefix of the keys to be signed.
+     * @param token a signing token (%NULL-terminated string) for creating the signature. The application must possess (request) the token.
      */
     sign(key: string, token: string): void
     /**
      * Commit the changed account settings to the account database, and invoke
      * `callback` when the operation has been completed.
+     * @param callback function to be called when the settings have been written.
      */
     store(callback: AccountStoreCb): void
     /**
      * Commit the changed account settings to the account database, and invoke
      * `callback` when the operation has been completed.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback function to be called when the settings have been written.
      */
     storeAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -242,31 +275,41 @@ class Account {
     storeBlocking(): boolean
     /**
      * Finishes the store operation started by ag_account_store_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to ag_account_store_async().
      */
     storeFinish(res: Gio.AsyncResult): boolean
     /**
      * Get whether `service_type` is supported on `account`.
+     * @param serviceType the name of the service type to check for
      */
     supportsService(serviceType: string): boolean
     /**
      * Verify if the key is signed and the signature matches the value
      * and provides the aegis token which was used for signing the `key`.
+     * @param key the name of the key or prefix of the keys to be verified.
+     * @param token location to receive the pointer to aegis token.
      */
     verify(key: string, token: string): boolean
     /**
      * Verify if the `key` is signed with any of the tokens from the `tokens`
      * and the signature is valid.
+     * @param key the name of the key or prefix of the keys to be verified.
+     * @param tokens array of aegis tokens.
      */
     verifyWithTokens(key: string, tokens: string): boolean
     /**
      * Installs a watch on all the keys under `key_prefix:` `callback` will be
      * invoked whenever the value of any of these keys changes (or a key is
      * removed).
+     * @param keyPrefix the prefix of the keys to watch.
+     * @param callback a #AgAccountNotifyCb callback to be called.
      */
     watchDir(keyPrefix: string, callback: AccountNotifyCb): AccountWatch
     /**
      * Installs a watch on `key:` `callback` will be invoked whenever the value of
      * `key` changes (or the key is removed).
+     * @param key the name of the key to watch.
+     * @param callback a #AgAccountNotifyCb callback to be called.
      */
     watchKey(key: string, callback: AccountNotifyCb): AccountWatch
     /* Methods of GObject-2.0.GObject.Object */
@@ -304,6 +347,10 @@ class Account {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -314,6 +361,12 @@ class Account {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -337,6 +390,7 @@ class Account {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -356,11 +410,14 @@ class Account {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -368,6 +425,8 @@ class Account {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -385,6 +444,7 @@ class Account {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -430,6 +490,7 @@ class Account {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -473,15 +534,20 @@ class Account {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -522,6 +588,7 @@ class Account {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -556,6 +623,7 @@ class Account {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -598,6 +666,7 @@ class Account {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of Accounts-1.0.Accounts.Account */
@@ -620,6 +689,8 @@ class Account {
     /**
      * Emitted when the account "enabled" status was changed for one of its
      * services, or for the account globally.
+     * @param service the service which was enabled/disabled, or %NULL if the global enabledness of the account changed.
+     * @param enabled the new state of the `account`.
      */
     connect(sigName: "enabled", callback: ((service: string, enabled: boolean) => void)): number
     on(sigName: "enabled", callback: (service: string, enabled: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -655,6 +726,7 @@ class Account {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -671,6 +743,26 @@ class Account {
     on(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::foreign", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::foreign", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::foreign", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::foreign", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::foreign", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::manager", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::manager", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::provider", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::provider", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::provider", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::provider", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::provider", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -686,6 +778,9 @@ class Account {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -704,6 +799,10 @@ interface AccountService_ConstructProps extends GObject.Object_ConstructProps {
 class AccountService {
     /* Properties of Accounts-1.0.Accounts.AccountService */
     /**
+     * The #AgAccount used by the account service.
+     */
+    readonly account: Account
+    /**
      * Whether the account service is currently enabled. The value of
      * this property is %TRUE if and only if the underlying #AgAccount
      * is enabled and the selected #AgService is enabled on it. If this
@@ -711,8 +810,12 @@ class AccountService {
      * object.
      */
     readonly enabled: boolean
+    /**
+     * The #AgService used by the account service.
+     */
+    readonly service: Service
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Accounts-1.0.Accounts.AccountService */
     /**
      * Get the #AgAccount associated with `self`.
@@ -745,20 +848,26 @@ class AccountService {
     getService(): Service
     /**
      * Creates a new iterator. This method is useful for language bindings only.
+     * @param keyPrefix enumerate only the settings whose key starts with `key_prefix`.
      */
     getSettingsIter(keyPrefix?: string | null): AccountSettingIter
     /**
      * Gets the value of the configuration setting `key:` `value` must be a
      * #GValue initialized to the type of the setting.
+     * @param key the name of the setting to retrieve.
+     * @param value an initialized #GValue to receive the setting's value.
      */
     getValue(key: string, value: any): [ /* returnType */ SettingSource, /* value */ any ]
     /**
      * Gets the value of the configuration setting `key`.
+     * @param key the name of the setting to retrieve.
      */
     getVariant(key: string): [ /* returnType */ GLib.Variant, /* source */ SettingSource | null ]
     /**
      * Sets the value of the configuration setting `key` to the value `value`.
      * If `value` is %NULL, then the setting is unset.
+     * @param key the name of the setting to change.
+     * @param value a #GValue holding the new setting's value.
      */
     setValue(key: string, value?: any | null): void
     /**
@@ -766,6 +875,8 @@ class AccountService {
      * If `value` has a floating reference, the `account` will take ownership
      * of it.
      * If `value` is %NULL, then the setting is unset.
+     * @param key the name of the setting to change.
+     * @param value a #GVariant holding the new setting's value.
      */
     setVariant(key: string, value?: GLib.Variant | null): void
     /**
@@ -774,6 +885,8 @@ class AccountService {
      * over.
      * After calling this method, one would typically call
      * ag_account_settings_iter_get_next() to read the settings one by one.
+     * @param iter an uninitialized #AgAccountSettingIter structure.
+     * @param keyPrefix enumerate only the settings whose key starts with `key_prefix`.
      */
     settingsIterInit(iter: AccountSettingIter, keyPrefix?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -811,6 +924,10 @@ class AccountService {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -821,6 +938,12 @@ class AccountService {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -844,6 +967,7 @@ class AccountService {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -863,11 +987,14 @@ class AccountService {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -875,6 +1002,8 @@ class AccountService {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -892,6 +1021,7 @@ class AccountService {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -937,6 +1067,7 @@ class AccountService {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -980,15 +1111,20 @@ class AccountService {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1029,6 +1165,7 @@ class AccountService {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1063,6 +1200,7 @@ class AccountService {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Accounts-1.0.Accounts.AccountService */
@@ -1078,6 +1216,7 @@ class AccountService {
     emit(sigName: "changed"): void
     /**
      * Emitted when the service enabled state changes.
+     * @param enabled whether the service is enabled.
      */
     connect(sigName: "enabled", callback: ((enabled: boolean) => void)): number
     on(sigName: "enabled", callback: (enabled: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -1113,17 +1252,28 @@ class AccountService {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::enabled", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enabled", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::service", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::service", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::service", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::service", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1139,6 +1289,7 @@ class AccountService {
     /**
      * Iterates over the account keys. `iter` must be an iterator previously
      * initialized with ag_account_service_settings_iter_init().
+     * @param iter an initialized #AgAccountSettingIter structure.
      */
     static settingsIterNext(iter: AccountSettingIter): [ /* returnType */ boolean, /* key */ string, /* value */ any ]
     static $gtype: GObject.Type
@@ -1178,14 +1329,29 @@ class Manager {
      * Timeout for database operations, in milliseconds.
      */
     dbTimeout: number
+    /**
+     * If the service type is set, certain operations on the #AgManager, such
+     * as ag_manager_list() and ag_manager_list_services(), will be restricted
+     * to only affect accounts or services with that service type.
+     */
+    readonly serviceType: string
+    /**
+     * Whether to use D-Bus for inter-process change notification. Setting this
+     * property to %FALSE causes libaccounts not to emit the change
+     * notification signals, and also not react to changes made by other
+     * processes. Disabling D-Bus is only meant to be used for specific cases,
+     * such as maintenance programs.
+     */
+    readonly useDbus: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Accounts-1.0.Accounts.Manager */
     /**
      * Create a new account. The account is not stored in the database until
      * ag_account_store() has successfully returned; the `id` field in the
      * #AgAccount structure is also not meant to be valid until the account has
      * been stored.
+     * @param providerName name of the provider of the account.
      */
     createAccount(providerName: string): Account
     /**
@@ -1195,6 +1361,7 @@ class Manager {
     /**
      * Instantiates the object representing the account identified by
      * `account_id`.
+     * @param accountId the #AgAccountId of the account.
      */
     getAccount(accountId: AccountId): Account
     /**
@@ -1214,6 +1381,7 @@ class Manager {
     /**
      * Search for `application_name` in the list of applications, and return a new
      * #AgApplication if a matching application was found.
+     * @param applicationName the name of an application to search for
      */
     getApplication(applicationName: string): Application
     /**
@@ -1236,10 +1404,12 @@ class Manager {
     getEnabledAccountServices(): AccountService[]
     /**
      * Loads the provider identified by `provider_name`.
+     * @param providerName the name of the provider.
      */
     getProvider(providerName: string): Provider
     /**
      * Loads the service identified by `service_name`.
+     * @param serviceName the name of the service.
      */
     getService(serviceName: string): Service
     /**
@@ -1254,10 +1424,12 @@ class Manager {
     list(): AccountId[]
     /**
      * Lists the registered applications which support the given service.
+     * @param service the #AgService for which we want to get the applications list.
      */
     listApplicationsByService(service: Service): Application[]
     /**
      * Lists the accounts supporting the given service type.
+     * @param serviceType the name of the service type to check for.
      */
     listByServiceType(serviceType: string): AccountId[]
     /**
@@ -1266,6 +1438,7 @@ class Manager {
     listEnabled(): AccountId[]
     /**
      * Lists the enabled accounts supporting the given service type.
+     * @param serviceType the name of the service type to check for.
      */
     listEnabledByServiceType(serviceType: string): AccountId[]
     /**
@@ -1285,20 +1458,24 @@ class Manager {
     /**
      * Gets a list of all the installed services where the service type name is
      * `service_type`.
+     * @param serviceType the type of the service.
      */
     listServicesByType(serviceType: string): Service[]
     /**
      * Instantiates the object representing the account identified by
      * `account_id`.
+     * @param accountId the #AgAccountId of the account.
      */
     loadAccount(accountId: AccountId): Account
     /**
      * Instantiate the service type with the name `service_type`.
+     * @param serviceType the name of the service type.
      */
     loadServiceType(serviceType: string): ServiceType
     /**
      * Tells libaccounts whether it should make the client application abort when
      * a timeout error occurs. The default is %FALSE.
+     * @param abort whether to abort when a DB timeout occurs.
      */
     setAbortOnDbTimeout(abort: boolean): void
     /**
@@ -1307,6 +1484,7 @@ class Manager {
      * Higher values mean a higher chance of successful reads, but also mean that
      * the execution might be blocked for a longer time.
      * The default is 5 seconds.
+     * @param timeoutMs the new timeout, in milliseconds.
      */
     setDbTimeout(timeoutMs: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1344,6 +1522,10 @@ class Manager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1354,6 +1536,12 @@ class Manager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1377,6 +1565,7 @@ class Manager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1396,11 +1585,14 @@ class Manager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1408,6 +1600,8 @@ class Manager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1425,6 +1619,7 @@ class Manager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1470,6 +1665,7 @@ class Manager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1513,15 +1709,20 @@ class Manager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1562,6 +1763,7 @@ class Manager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1596,6 +1798,7 @@ class Manager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1638,6 +1841,7 @@ class Manager {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of Accounts-1.0.Accounts.Manager */
@@ -1645,6 +1849,7 @@ class Manager {
      * Emitted when a new account has been created; note that the account must
      * have been stored in the database: the signal is not emitted just in
      * response to ag_manager_create_account().
+     * @param accountId the #AgAccountId of the account that has been created.
      */
     connect(sigName: "account-created", callback: ((accountId: number) => void)): number
     on(sigName: "account-created", callback: (accountId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1655,6 +1860,7 @@ class Manager {
      * Emitted when an account has been deleted.
      * This signal is redundant with #AgAccount::deleted, but it is convenient
      * to provide full change notification with #AgManager.
+     * @param accountId the #AgAccountId of the account that has been deleted.
      */
     connect(sigName: "account-deleted", callback: ((accountId: number) => void)): number
     on(sigName: "account-deleted", callback: (accountId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1665,6 +1871,7 @@ class Manager {
      * Emitted when particular service of an account has been updated.
      * This signal is redundant with #AgAccount::deleted, but it is convenient
      * to provide full change notification with #AgManager.
+     * @param accountId the #AgAccountId of the account that has been update.
      */
     connect(sigName: "account-updated", callback: ((accountId: number) => void)): number
     on(sigName: "account-updated", callback: (accountId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1681,6 +1888,7 @@ class Manager {
      * In practice, this signal might be emitted more often than when strictly
      * needed; applications must call ag_account_list_enabled_services() or
      * ag_manager_list_enabled() to get the current state.
+     * @param accountId the #AgAccountId of the account that has been enabled.
      */
     connect(sigName: "enabled-event", callback: ((accountId: number) => void)): number
     on(sigName: "enabled-event", callback: (accountId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1716,6 +1924,7 @@ class Manager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1732,6 +1941,16 @@ class Manager {
     on(sigName: "notify::db-timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::db-timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::db-timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::service-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::service-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::service-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::service-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::use-dbus", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-dbus", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::use-dbus", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::use-dbus", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::use-dbus", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1749,19 +1968,23 @@ class Manager {
      * Frees the memory taken by a #GList of #AgAccountId allocated by #AgManager,
      * such as by ag_manager_list(), ag_manager_list_enabled() or
      * ag_manager_list_enabled_by_service_type().
+     * @param list a #GList returned from a #AgManager method which returns account IDs.
      */
     static listFree(list: AccountId[]): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
 }
 abstract class AccountClass {
     /* Fields of Accounts-1.0.Accounts.AccountClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class AccountPrivate {
@@ -1769,7 +1992,7 @@ class AccountPrivate {
 }
 abstract class AccountServiceClass {
     /* Fields of Accounts-1.0.Accounts.AccountServiceClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class AccountServicePrivate {
@@ -1780,7 +2003,7 @@ class AccountSettingIter {
     /**
      * the AgAccount to iterate over
      */
-    readonly account: Account
+    account: Account
     /* Methods of Accounts-1.0.Accounts.AccountSettingIter */
     /**
      * Frees the memory associated with an #AgAccountSettingIter.
@@ -1822,6 +2045,7 @@ class Application {
     /**
      * Get the description from the application XML file, for the specified
      * service; if not found, get the service-type description instead.
+     * @param service an #AgService.
      */
     getServiceUsage(service: Service): string
     /**
@@ -1843,6 +2067,7 @@ class AuthData {
     getCredentialsId(): number
     /**
      * Gets the authentication parameters.
+     * @param extraParameters a #GVariant containing client-specific authentication parameters to be added to the returned dictionary.
      */
     getLoginParameters(extraParameters?: GLib.Variant | null): GLib.Variant
     /**
@@ -1861,6 +2086,7 @@ class AuthData {
      * Insert the given authentication parameters into the authentication data. If
      * some parameters were already present, the parameters passed with this method
      * take precedence.
+     * @param parameters a #GHashTable containing the authentication parameters to be added.
      */
     insertParameters(parameters: GLib.HashTable): void
     /**
@@ -1876,8 +2102,8 @@ class AuthData {
 }
 abstract class ManagerClass {
     /* Fields of Accounts-1.0.Accounts.ManagerClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly accountDeleted: (manager: Manager, id: AccountId) => void
+    parentClass: GObject.ObjectClass
+    accountDeleted: (manager: Manager, id: AccountId) => void
     static name: string
 }
 class ManagerPrivate {
@@ -1903,6 +2129,7 @@ class Provider {
      * should not be modified or freed, and is guaranteed to be valid as long as
      * `provider` is referenced.
      * If some error occurs, `contents` is set to %NULL.
+     * @param contents location to receive the pointer to the file contents.
      */
     getFileContents(contents: string): void
     /**
@@ -1936,6 +2163,7 @@ class Provider {
      * regex returned by ag_provider_get_domains_regex().
      * If the provider does not define a regular expression to match the supported
      * domains, this function will return %FALSE.
+     * @param domain a domain name.
      */
     matchDomain(domain: string): boolean
     /**
@@ -1950,6 +2178,7 @@ class Provider {
     /* Static methods and pseudo-constructors */
     /**
      * Frees the list `list`.
+     * @param list a #GList of providers returned by some function of this library.
      */
     static listFree(list: Provider[]): void
 }
@@ -1969,6 +2198,8 @@ class Service {
      * `service` is referenced. If `data_offset` is not %NULL, it is set to the
      * offset where the &lt;type_data&gt; element can be found.
      * If some error occurs, `contents` is set to %NULL.
+     * @param contents location to receive the pointer to the file contents.
+     * @param dataOffset pointer to receive the offset of the type data.
      */
     getFileContents(contents: string, dataOffset: number): void
     /**
@@ -1998,6 +2229,7 @@ class Service {
     getTags(): string[]
     /**
      * Checks if the #AgService has the requested tag.
+     * @param tag tag to check for.
      */
     hasTag(tag: string): boolean
     /**
@@ -2012,6 +2244,7 @@ class Service {
     /* Static methods and pseudo-constructors */
     /**
      * Frees the list `list`.
+     * @param list a #GList of services returned by some function of this library.
      */
     static listFree(list: Service[]): void
 }
@@ -2030,6 +2263,8 @@ class ServiceType {
      * `contents` should not be modified or freed, and is guaranteed to be valid as
      * long as `service_type` is referenced.
      * If some error occurs, `contents` is set to %NULL.
+     * @param contents location to receive the pointer to the file contents.
+     * @param len location to receive the length of the file, in bytes.
      */
     getFileContents(contents: string, len: number): void
     /**
@@ -2050,6 +2285,7 @@ class ServiceType {
     getTags(): string[]
     /**
      * Check if the #AgServiceType has the requested tag.
+     * @param tag the tag to check for.
      */
     hasTag(tag: string): boolean
     /**
@@ -2064,6 +2300,7 @@ class ServiceType {
     /* Static methods and pseudo-constructors */
     /**
      * Frees the list `list`.
+     * @param list a #GList of service types returned by some function of this library, such as ag_manager_list_service_types().
      */
     static listFree(list: ServiceType[]): void
 }

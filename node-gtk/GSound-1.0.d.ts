@@ -324,12 +324,13 @@ interface Context_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Context {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GSound-1.0.GSound.Context */
     /**
      * Requests that a sound be cached on the server. See [#caching][gsound-GSound-Context#caching].
      * 
      * This function is intented to be used by language bindings.
+     * @param attrs Hash table of attrerties
      */
     cache(attrs: GLib.HashTable): boolean
     /**
@@ -345,6 +346,7 @@ class Context {
      * Finish an async operation started by gsound_context_play_full(). You
      * must call this function in the callback to free memory and receive any
      * errors which occurred.
+     * @param result Result object passed to the callback of   gsound_context_play_full()
      */
     playFullFinish(result: Gio.AsyncResult): boolean
     /**
@@ -359,6 +361,9 @@ class Context {
      * use gsound_context_play_simple().
      * 
      * This function is intented to be used by language bindings.
+     * @param attrs Attributes
+     * @param cancellable A #GCancellable, or %NULL
+     * @param callback callback
      */
     playFull(attrs: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -372,6 +377,8 @@ class Context {
      * `cancellable,` if supplied.
      * 
      * This function is intented to be used by language bindings.
+     * @param attrs Attributes
+     * @param cancellable A #GCancellable
      */
     playSimple(attrs: GLib.HashTable, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -383,6 +390,7 @@ class Context {
      * not normally need to set these yourself.
      * 
      * This function is intented to be used by language bindings.
+     * @param attrs Hash table of attributes to set
      */
     setAttributes(attrs: GLib.HashTable): boolean
     /**
@@ -391,6 +399,7 @@ class Context {
      * 
      * Note that this function may return %TRUE even if the specified driver is
      * not available: see the libcanberra documentation for details.
+     * @param driver libcanberra driver to use
      */
     setDriver(driver: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -428,6 +437,10 @@ class Context {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -438,6 +451,12 @@ class Context {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -461,6 +480,7 @@ class Context {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -480,11 +500,14 @@ class Context {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -492,6 +515,8 @@ class Context {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -509,6 +534,7 @@ class Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -554,6 +580,7 @@ class Context {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -597,15 +624,20 @@ class Context {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -646,6 +678,7 @@ class Context {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -680,6 +713,7 @@ class Context {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -722,6 +756,7 @@ class Context {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -753,6 +788,7 @@ class Context {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -775,6 +811,9 @@ class Context {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type

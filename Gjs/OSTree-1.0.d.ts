@@ -395,7 +395,7 @@ interface AsyncProgress_ConstructProps extends GObject.Object_ConstructProps {
 }
 class AsyncProgress {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.AsyncProgress */
     /**
      * Process any pending signals, ensuring the main context is cleared
@@ -444,6 +444,10 @@ class AsyncProgress {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -454,6 +458,12 @@ class AsyncProgress {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -477,6 +487,7 @@ class AsyncProgress {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -496,11 +507,14 @@ class AsyncProgress {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -508,6 +522,8 @@ class AsyncProgress {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -525,6 +541,7 @@ class AsyncProgress {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -570,6 +587,7 @@ class AsyncProgress {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -613,15 +631,20 @@ class AsyncProgress {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -662,6 +685,7 @@ class AsyncProgress {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -696,6 +720,7 @@ class AsyncProgress {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of OSTree-1.0.OSTree.AsyncProgress */
@@ -717,6 +742,7 @@ class AsyncProgress {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -756,6 +782,7 @@ class AsyncProgress {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AsyncProgress, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AsyncProgress, pspec: GObject.ParamSpec) => void)): number
@@ -776,13 +803,16 @@ interface BootconfigParser_ConstructProps extends GObject.Object_ConstructProps 
 }
 class BootconfigParser {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.BootconfigParser */
     clone(): BootconfigParser
     get(key: string): string
     parse(path: Gio.File, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Initialize a bootconfig from the given file.
+     * @param dfd Directory fd
+     * @param path File path
+     * @param cancellable Cancellable
      */
     parse_at(dfd: number, path: string, cancellable?: Gio.Cancellable | null): boolean
     set(key: string, value: string): void
@@ -823,6 +853,10 @@ class BootconfigParser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -833,6 +867,12 @@ class BootconfigParser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -856,6 +896,7 @@ class BootconfigParser {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -875,11 +916,14 @@ class BootconfigParser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -887,6 +931,8 @@ class BootconfigParser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -904,6 +950,7 @@ class BootconfigParser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -949,6 +996,7 @@ class BootconfigParser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -992,15 +1040,20 @@ class BootconfigParser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1041,6 +1094,7 @@ class BootconfigParser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1075,6 +1129,7 @@ class BootconfigParser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1094,6 +1149,7 @@ class BootconfigParser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1126,6 +1182,7 @@ class BootconfigParser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BootconfigParser, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BootconfigParser, pspec: GObject.ParamSpec) => void)): number
@@ -1146,13 +1203,15 @@ interface ChecksumInputStream_ConstructProps extends Gio.FilterInputStream_Const
     checksum?: object
 }
 class ChecksumInputStream {
+    /* Properties of OSTree-1.0.OSTree.ChecksumInputStream */
+    readonly checksum: object
     /* Properties of Gio-2.0.Gio.FilterInputStream */
     close_base_stream: boolean
     /* Fields of Gio-2.0.Gio.FilterInputStream */
-    readonly parent_instance: Gio.InputStream
-    readonly base_stream: Gio.InputStream
+    parent_instance: Gio.InputStream
+    base_stream: Gio.InputStream
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gio-2.0.Gio.FilterInputStream */
     /**
      * Gets the base stream for the filter stream.
@@ -1165,6 +1224,7 @@ class ChecksumInputStream {
     get_close_base_stream(): boolean
     /**
      * Sets whether the base stream will be closed when `stream` is closed.
+     * @param close_base %TRUE to close the base stream.
      */
     set_close_base_stream(close_base: boolean): void
     /* Methods of Gio-2.0.Gio.InputStream */
@@ -1196,6 +1256,7 @@ class ChecksumInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
      * Cancelling a close will still leave the stream closed, but some streams
      * can use a faster close that doesn't block to e.g. check errors.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     close(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1209,10 +1270,14 @@ class ChecksumInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
+     * @param result a #GAsyncResult.
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1245,6 +1310,7 @@ class ChecksumInputStream {
      * partial result will be returned, without an error.
      * 
      * On error -1 is returned and `error` is set accordingly.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read(cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buffer */ Uint8Array ]
     /**
@@ -1267,6 +1333,7 @@ class ChecksumInputStream {
      * read before the error was encountered.  This functionality is only
      * available from C.  If you need it from another language then you must
      * write your own loop around g_input_stream_read().
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_all(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* buffer */ Uint8Array, /* bytes_read */ number ]
     /**
@@ -1280,6 +1347,9 @@ class ChecksumInputStream {
      * Any outstanding I/O request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
     /**
@@ -1292,6 +1362,7 @@ class ChecksumInputStream {
      * read before the error was encountered.  This functionality is only
      * available from C.  If you need it from another language then you must
      * write your own loop around g_input_stream_read_async().
+     * @param result a #GAsyncResult
      */
     read_all_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytes_read */ number ]
     /**
@@ -1318,6 +1389,9 @@ class ChecksumInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
     /**
@@ -1344,6 +1418,8 @@ class ChecksumInputStream {
      * partial result will be returned, without an error.
      * 
      * On error %NULL is returned and `error` is set accordingly.
+     * @param count maximum number of bytes that will be read from the stream. Common values include 4096 and 8192.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_bytes(count: number, cancellable?: Gio.Cancellable | null): GLib.Bytes
     /**
@@ -1367,14 +1443,20 @@ class ChecksumInputStream {
      * Any outstanding I/O request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param count the number of bytes that will be read from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous stream read-into-#GBytes operation.
+     * @param result a #GAsyncResult.
      */
     read_bytes_finish(result: Gio.AsyncResult): GLib.Bytes
     /**
      * Finishes an asynchronous stream read operation.
+     * @param result a #GAsyncResult.
      */
     read_finish(result: Gio.AsyncResult): number
     /**
@@ -1398,6 +1480,8 @@ class ChecksumInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     skip(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -1424,10 +1508,15 @@ class ChecksumInputStream {
      * The asynchronous methods have a default fallback that uses threads to
      * implement asynchronicity, so they are optional for inheriting classes.
      * However, if you override one, you must override all.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream skip operation.
+     * @param result a #GAsyncResult.
      */
     skip_finish(result: Gio.AsyncResult): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -1465,6 +1554,10 @@ class ChecksumInputStream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1475,6 +1568,12 @@ class ChecksumInputStream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1498,6 +1597,7 @@ class ChecksumInputStream {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1517,11 +1617,14 @@ class ChecksumInputStream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1529,6 +1632,8 @@ class ChecksumInputStream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1546,6 +1651,7 @@ class ChecksumInputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1591,6 +1697,7 @@ class ChecksumInputStream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1634,15 +1741,20 @@ class ChecksumInputStream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1683,6 +1795,7 @@ class ChecksumInputStream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1717,6 +1830,7 @@ class ChecksumInputStream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gio-2.0.Gio.InputStream */
@@ -1731,10 +1845,14 @@ class ChecksumInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_close_finish(result: Gio.AsyncResult): boolean
     vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean
@@ -1762,10 +1880,14 @@ class ChecksumInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array | null
     /**
      * Finishes an asynchronous stream read operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_read_finish(result: Gio.AsyncResult): number
     vfunc_read_fn(buffer: object | null, count: number, cancellable?: Gio.Cancellable | null): number
@@ -1784,6 +1906,8 @@ class ChecksumInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -1810,10 +1934,15 @@ class ChecksumInputStream {
      * The asynchronous methods have a default fallback that uses threads to
      * implement asynchronicity, so they are optional for inheriting classes.
      * However, if you override one, you must override all.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream skip operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_skip_finish(result: Gio.AsyncResult): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1833,6 +1962,7 @@ class ChecksumInputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1865,10 +1995,13 @@ class ChecksumInputStream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::checksum", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::checksum", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::close-base-stream", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -1886,7 +2019,7 @@ interface Deployment_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Deployment {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.Deployment */
     clone(): Deployment
     equal(bp: Deployment): boolean
@@ -1944,6 +2077,10 @@ class Deployment {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1954,6 +2091,12 @@ class Deployment {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1977,6 +2120,7 @@ class Deployment {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1996,11 +2140,14 @@ class Deployment {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2008,6 +2155,8 @@ class Deployment {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2025,6 +2174,7 @@ class Deployment {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2070,6 +2220,7 @@ class Deployment {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2113,15 +2264,20 @@ class Deployment {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2162,6 +2318,7 @@ class Deployment {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2196,6 +2353,7 @@ class Deployment {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2215,6 +2373,7 @@ class Deployment {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2247,6 +2406,7 @@ class Deployment {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Deployment, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Deployment, pspec: GObject.ParamSpec) => void)): number
@@ -2268,7 +2428,7 @@ interface GpgVerifyResult_ConstructProps extends GObject.Object_ConstructProps {
 }
 class GpgVerifyResult {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.GpgVerifyResult */
     /**
      * Counts all the signatures in `result`.
@@ -2290,6 +2450,10 @@ class GpgVerifyResult {
      * It is a programmer error to request an invalid `signature_index`.  Use
      * ostree_gpg_verify_result_count_all() to find the number of signatures in
      * `result`.
+     * @param signature_index which signature to describe
+     * @param output_buffer a #GString to hold the description
+     * @param line_prefix optional line prefix string
+     * @param flags flags to adjust the description format
      */
     describe(signature_index: number, output_buffer: GLib.String, line_prefix: string | null, flags: GpgSignatureFormatFlags): void
     /**
@@ -2300,6 +2464,8 @@ class GpgVerifyResult {
      * It is a programmer error to request an invalid #OstreeGpgSignatureAttr or
      * an invalid `signature_index`.  Use ostree_gpg_verify_result_count_all() to
      * find the number of signatures in `result`.
+     * @param signature_index which signature to get attributes from
+     * @param attrs Array of requested attributes
      */
     get(signature_index: number, attrs: GpgSignatureAttr[]): GLib.Variant
     /**
@@ -2326,6 +2492,7 @@ class GpgVerifyResult {
      * It is a programmer error to request an invalid `signature_index`.  Use
      * ostree_gpg_verify_result_count_all() to find the number of signatures in
      * `result`.
+     * @param signature_index which signature to get attributes from
      */
     get_all(signature_index: number): GLib.Variant
     /**
@@ -2334,6 +2501,7 @@ class GpgVerifyResult {
      * signature details can be obtained through ostree_gpg_verify_result_get().
      * If no match is found, the function returns %FALSE and leaves
      * `out_signature_index` unchanged.
+     * @param key_id a GPG key ID or fingerprint
      */
     lookup(key_id: string): [ /* returnType */ boolean, /* out_signature_index */ number ]
     /**
@@ -2378,6 +2546,10 @@ class GpgVerifyResult {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2388,6 +2560,12 @@ class GpgVerifyResult {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2411,6 +2589,7 @@ class GpgVerifyResult {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2430,11 +2609,14 @@ class GpgVerifyResult {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2442,6 +2624,8 @@ class GpgVerifyResult {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2459,6 +2643,7 @@ class GpgVerifyResult {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2504,6 +2689,7 @@ class GpgVerifyResult {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2547,15 +2733,20 @@ class GpgVerifyResult {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2596,6 +2787,7 @@ class GpgVerifyResult {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2630,6 +2822,7 @@ class GpgVerifyResult {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -2672,6 +2865,7 @@ class GpgVerifyResult {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of OSTree-1.0.OSTree.GpgVerifyResult */
@@ -2714,6 +2908,7 @@ class GpgVerifyResult {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2733,6 +2928,7 @@ class GpgVerifyResult {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2765,6 +2961,7 @@ class GpgVerifyResult {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GpgVerifyResult, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GpgVerifyResult, pspec: GObject.ParamSpec) => void)): number
@@ -2784,12 +2981,19 @@ class GpgVerifyResult {
      * 
      * The `variant` <emphasis>MUST</emphasis> have been created by
      * ostree_gpg_verify_result_get_all().
+     * @param variant a #GVariant from ostree_gpg_verify_result_get_all()
+     * @param output_buffer a #GString to hold the description
+     * @param line_prefix optional line prefix string
+     * @param flags flags to adjust the description format
      */
     static describe_variant(variant: GLib.Variant, output_buffer: GLib.String, line_prefix: string | null, flags: GpgSignatureFormatFlags): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -2798,12 +3002,14 @@ interface MutableTree_ConstructProps extends GObject.Object_ConstructProps {
 }
 class MutableTree {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.MutableTree */
     ensure_dir(name: string, out_subdir: MutableTree): boolean
     /**
      * Create all parent trees necessary for the given `split_path` to
      * exist.
+     * @param split_path File path components
+     * @param metadata_checksum SHA256 checksum for metadata
      */
     ensure_parent_dirs(split_path: string[], metadata_checksum: string): [ /* returnType */ boolean, /* out_parent */ MutableTree ]
     get_contents_checksum(): string
@@ -2817,6 +3023,8 @@ class MutableTree {
     /**
      * Traverse `start` number of elements starting from `split_path;` the
      * child will be returned in `out_subdir`.
+     * @param split_path Split pathname
+     * @param start Descend from this number of elements in `split_path`
      */
     walk(split_path: string[], start: number): [ /* returnType */ boolean, /* out_subdir */ MutableTree ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -2854,6 +3062,10 @@ class MutableTree {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2864,6 +3076,12 @@ class MutableTree {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2887,6 +3105,7 @@ class MutableTree {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2906,11 +3125,14 @@ class MutableTree {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2918,6 +3140,8 @@ class MutableTree {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2935,6 +3159,7 @@ class MutableTree {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2980,6 +3205,7 @@ class MutableTree {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3023,15 +3249,20 @@ class MutableTree {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3072,6 +3303,7 @@ class MutableTree {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3106,6 +3338,7 @@ class MutableTree {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3125,6 +3358,7 @@ class MutableTree {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3157,6 +3391,7 @@ class MutableTree {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MutableTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MutableTree, pspec: GObject.ParamSpec) => void)): number
@@ -3179,16 +3414,26 @@ interface Repo_ConstructProps extends GObject.Object_ConstructProps {
     sysroot_path?: Gio.File
 }
 class Repo {
+    /* Properties of OSTree-1.0.OSTree.Repo */
+    readonly path: Gio.File
+    readonly remotes_config_dir: string
+    readonly sysroot_path: Gio.File
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.Repo */
     abort_transaction(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Add a GPG signature to a static delta.
+     * @param key_id NULL-terminated array of GPG keys.
+     * @param homedir GPG home directory, or %NULL
+     * @param cancellable A #GCancellable
      */
     add_gpg_signature_summary(key_id: string[], homedir?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Append a GPG signature to a commit.
+     * @param commit_checksum SHA256 of given commit to sign
+     * @param signature_bytes Signature data
+     * @param cancellable A #GCancellable
      */
     append_gpg_signature(commit_checksum: string, signature_bytes: GLib.Bytes, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3203,12 +3448,18 @@ class Repo {
      * Note in addition that unlike ostree_repo_checkout_tree(), the
      * default is not to use the repository-internal uncompressed objects
      * cache.
+     * @param options Options
+     * @param destination_dfd Directory FD for destination
+     * @param destination_path Directory for destination
+     * @param commit Checksum for commit
+     * @param cancellable Cancellable
      */
     checkout_at(options: RepoCheckoutAtOptions | null, destination_dfd: number, destination_path: string, commit: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Call this after finishing a succession of checkout operations; it
      * will delete any currently-unused uncompressed objects from the
      * cache.
+     * @param cancellable Cancellable
      */
     checkout_gc(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3216,12 +3467,19 @@ class Repo {
      * physical filesystem.  `source` may be any subdirectory of a given
      * commit.  The `mode` and `overwrite_mode` allow control over how the
      * files are checked out.
+     * @param mode Options controlling all files
+     * @param overwrite_mode Whether or not to overwrite files
+     * @param destination Place tree here
+     * @param source Source tree
+     * @param source_info Source info
+     * @param cancellable Cancellable
      */
     checkout_tree(mode: RepoCheckoutMode, overwrite_mode: RepoCheckoutOverwriteMode, destination: Gio.File, source: RepoFile, source_info: Gio.FileInfo, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Complete the transaction. Any refs set with
      * ostree_repo_transaction_set_ref() or
      * ostree_repo_transaction_set_refspec() will be written out.
+     * @param cancellable Cancellable
      */
     commit_transaction(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_stats */ RepoTransactionStats | null ]
     copy_config(): GLib.KeyFile
@@ -3234,12 +3492,17 @@ class Repo {
      * created repository.  However, this function cannot change the mode
      * of an existing repository, and will silently ignore an attempt to
      * do so.
+     * @param mode The mode to store the repository in
+     * @param cancellable Cancellable
      */
     create(mode: RepoMode, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Remove the object of type `objtype` with checksum `sha2`56
      * from the repository.  An error of type %G_IO_ERROR_NOT_FOUND
      * is thrown if the object does not exist.
+     * @param objtype Object type
+     * @param sha256 Checksum
+     * @param cancellable Cancellable
      */
     delete_object(objtype: ObjectType, sha256: string, cancellable?: Gio.Cancellable | null): boolean
     get_config(): GLib.KeyFile
@@ -3266,6 +3529,9 @@ class Repo {
      * `[remote "remotename"]`. This function returns a value named `option_name`
      * underneath that group, and returns it as a boolean.
      * If the option is not set, `out_value` will be set to `default_value`.
+     * @param remote_name Name
+     * @param option_name Option
+     * @param default_value Value returned if `option_name` is not present
      */
     get_remote_boolean_option(remote_name: string, option_name: string, default_value: boolean): [ /* returnType */ boolean, /* out_value */ boolean ]
     /**
@@ -3273,6 +3539,8 @@ class Repo {
      * `[remote "remotename"]`. This function returns a value named `option_name`
      * underneath that group, and returns it as an zero terminated array of strings.
      * If the option is not set, `out_value` will be set to %NULL.
+     * @param remote_name Name
+     * @param option_name Option
      */
     get_remote_list_option(remote_name: string, option_name: string): [ /* returnType */ boolean, /* out_value */ string[] ]
     /**
@@ -3280,6 +3548,9 @@ class Repo {
      * `[remote "remotename"]`. This function returns a value named `option_name`
      * underneath that group, or `default_value` if the remote exists but not the
      * option name.
+     * @param remote_name Name
+     * @param option_name Option
+     * @param default_value Value returned if `option_name` is not present
      */
     get_remote_option(remote_name: string, option_name: string, default_value?: string | null): [ /* returnType */ boolean, /* out_value */ string ]
     /**
@@ -3288,11 +3559,20 @@ class Repo {
      * 
      * The `remote_name` parameter can be %NULL. In that case it will do
      * the verifications using GPG keys in the keyrings of all remotes.
+     * @param remote_name Name of remote
+     * @param data Data as a #GBytes
+     * @param signatures Signatures as a #GBytes
+     * @param keyringdir Path to directory GPG keyrings; overrides built-in default if given
+     * @param extra_keyring Path to additional keyring file (not a directory)
+     * @param cancellable Cancellable
      */
     gpg_verify_data(remote_name: string | null, data: GLib.Bytes, signatures: GLib.Bytes, keyringdir?: Gio.File | null, extra_keyring?: Gio.File | null, cancellable?: Gio.Cancellable | null): GpgVerifyResult
     /**
      * Set `out_have_object` to %TRUE if `self` contains the given object;
      * %FALSE otherwise.
+     * @param objtype Object type
+     * @param checksum ASCII SHA256 checksum
+     * @param cancellable Cancellable
      */
     has_object(objtype: ObjectType, checksum: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_have_object */ boolean ]
     /**
@@ -3302,6 +3582,10 @@ class Repo {
      * hard link operation.
      * 
      * Otherwise, a copy will be performed.
+     * @param source Source repo
+     * @param objtype Object type
+     * @param checksum checksum
+     * @param cancellable Cancellable
      */
     import_object_from(source: Repo, objtype: ObjectType, checksum: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3311,6 +3595,11 @@ class Repo {
      * hard link operation.
      * 
      * Otherwise, a copy will be performed.
+     * @param source Source repo
+     * @param objtype Object type
+     * @param checksum checksum
+     * @param trusted If %TRUE, assume the source repo is valid and trusted
+     * @param cancellable Cancellable
      */
     import_object_from_with_trust(source: Repo, objtype: ObjectType, checksum: string, trusted: boolean, cancellable?: Gio.Cancellable | null): boolean
     is_system(): boolean
@@ -3322,6 +3611,9 @@ class Repo {
     /**
      * This function synchronously enumerates all commit objects starting
      * with `start,` returning data in `out_commits`.
+     * @param start List commits starting with this checksum
+     * @param out_commits Array of GVariants
+     * @param cancellable Cancellable
      */
     list_commit_objects_starting_with(start: string, out_commits: GLib.HashTable, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3329,12 +3621,16 @@ class Repo {
      * repository, returning data in `out_objects`.  `out_objects`
      * maps from keys returned by ostree_object_name_serialize()
      * to #GVariant values of type %OSTREE_REPO_LIST_OBJECTS_VARIANT_TYPE.
+     * @param flags Flags controlling enumeration
+     * @param cancellable Cancellable
      */
     list_objects(flags: RepoListObjectsFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_objects */ GLib.HashTable ]
     /**
      * If `refspec_prefix` is %NULL, list all local and remote refspecs,
      * with their current values in `out_all_refs`.  Otherwise, only list
      * refspecs which have `refspec_prefix` as a prefix.
+     * @param refspec_prefix Only list refs which match this prefix
+     * @param cancellable Cancellable
      */
     list_refs(refspec_prefix?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_all_refs */ GLib.HashTable ]
     /**
@@ -3343,11 +3639,15 @@ class Repo {
      * refspecs which have `refspec_prefix` as a prefix.  Differently from
      * ostree_repo_list_refs(), the prefix will not be removed from the ref
      * name.
+     * @param refspec_prefix Only list refs which match this prefix
+     * @param flags Options controlling listing behavior
+     * @param cancellable Cancellable
      */
     list_refs_ext(refspec_prefix: string | null, flags: RepoListRefsExtFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_all_refs */ GLib.HashTable ]
     /**
      * This function synchronously enumerates all static deltas in the
      * repository, returning its result in `out_deltas`.
+     * @param cancellable Cancellable
      */
     list_static_delta_names(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_deltas */ string[] ]
     /**
@@ -3355,27 +3655,37 @@ class Repo {
      * capable of returning extended state information.  Currently
      * the only extended state is %OSTREE_REPO_COMMIT_STATE_PARTIAL, which
      * means that only a sub-path of the commit is available.
+     * @param checksum Commit checksum
      */
     load_commit(checksum: string): [ /* returnType */ boolean, /* out_commit */ GLib.Variant | null, /* out_state */ RepoCommitState | null ]
     /**
      * Load content object, decomposing it into three parts: the actual
      * content (for regular files), the metadata, and extended attributes.
+     * @param checksum ASCII SHA256 checksum
+     * @param cancellable Cancellable
      */
     load_file(checksum: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_input */ Gio.InputStream | null, /* out_file_info */ Gio.FileInfo | null, /* out_xattrs */ GLib.Variant | null ]
     /**
      * Load object as a stream; useful when copying objects between
      * repositories.
+     * @param objtype Object type
+     * @param checksum ASCII SHA256 checksum
+     * @param cancellable Cancellable
      */
     load_object_stream(objtype: ObjectType, checksum: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_input */ Gio.InputStream, /* out_size */ number ]
     /**
      * Load the metadata object `sha2`56 of type `objtype,` storing the
      * result in `out_variant`.
+     * @param objtype Expected object type
+     * @param sha256 Checksum string
      */
     load_variant(objtype: ObjectType, sha256: string): [ /* returnType */ boolean, /* out_variant */ GLib.Variant ]
     /**
      * Attempt to load the metadata object `sha2`56 of type `objtype` if it
      * exists, storing the result in `out_variant`.  If it doesn't exist,
      * %NULL is returned.
+     * @param objtype Object type
+     * @param sha256 ASCII checksum
      */
     load_variant_if_exists(objtype: ObjectType, sha256: string): [ /* returnType */ boolean, /* out_variant */ GLib.Variant ]
     open(cancellable?: Gio.Cancellable | null): boolean
@@ -3387,6 +3697,7 @@ class Repo {
      * 
      * Currently, transactions are not atomic, and aborting a transaction
      * will not erase any data you  write during the transaction.
+     * @param cancellable Cancellable
      */
     prepare_transaction(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_transaction_resume */ boolean | null ]
     /**
@@ -3403,12 +3714,17 @@ class Repo {
      * Use the %OSTREE_REPO_PRUNE_FLAGS_NO_PRUNE to just determine
      * statistics on objects that would be deleted, without actually
      * deleting them.
+     * @param flags Options controlling prune process
+     * @param depth Stop traversal after this many iterations (-1 for unlimited)
+     * @param cancellable Cancellable
      */
     prune(flags: RepoPruneFlags, depth: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_objects_total */ number, /* out_objects_pruned */ number, /* out_pruned_object_size_total */ number ]
     /**
      * Prune static deltas, if COMMIT is specified then delete static delta files only
      * targeting that commit; otherwise any static delta of non existing commits are
      * deleted.
+     * @param commit ASCII SHA256 checksum for commit, or %NULL for each non existing commit
+     * @param cancellable Cancellable
      */
     prune_static_deltas(commit?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3428,11 +3744,22 @@ class Repo {
      * which is a bug, but kept for compatibility reasons.  If you want to
      * avoid this, use g_main_context_push_thread_default() to push a new
      * one around this call.
+     * @param remote_name Name of remote
+     * @param refs_to_fetch Optional list of refs; if %NULL, fetch all configured refs
+     * @param flags Options controlling fetch behavior
+     * @param progress Progress
+     * @param cancellable Cancellable
      */
     pull(remote_name: string, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress?: AsyncProgress | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * This is similar to ostree_repo_pull(), but only fetches a single
      * subpath.
+     * @param remote_name Name of remote
+     * @param dir_to_pull Subdirectory path
+     * @param refs_to_fetch Optional list of refs; if %NULL, fetch all configured refs
+     * @param flags Options controlling fetch behavior
+     * @param progress Progress
+     * @param cancellable Cancellable
      */
     pull_one_dir(remote_name: string, dir_to_pull: string, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress?: AsyncProgress | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3451,21 +3778,32 @@ class Repo {
      *   * override-commit-ids (as): Array of specific commit IDs to fetch for refs
      *   * dry-run (b): Only print information on what will be downloaded (requires static deltas)
      *   * override-url (s): Fetch objects from this URL if remote specifies no metalink in options
+     * @param remote_name_or_baseurl Name of remote or file:// url
+     * @param options A GVariant a{sv} with an extensible set of flags.
+     * @param progress Progress
+     * @param cancellable Cancellable
      */
     pull_with_options(remote_name_or_baseurl: string, options: GLib.Variant, progress?: AsyncProgress | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Return the size in bytes of object with checksum `sha2`56, after any
      * compression has been applied.
+     * @param objtype Object type
+     * @param sha256 Checksum
+     * @param cancellable Cancellable
      */
     query_object_storage_size(objtype: ObjectType, sha256: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_size */ number ]
     /**
      * Load the content for `rev` into `out_root`.
+     * @param ref Ref or ASCII checksum
+     * @param cancellable Cancellable
      */
     read_commit(ref: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_root */ Gio.File, /* out_commit */ string ]
     /**
      * OSTree commits can have arbitrary metadata associated; this
      * function retrieves them.  If none exists, `out_metadata` will be set
      * to %NULL.
+     * @param checksum ASCII SHA256 commit checksum
+     * @param cancellable Cancellable
      */
     read_commit_detached_metadata(checksum: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_metadata */ GLib.Variant ]
     /**
@@ -3474,6 +3812,8 @@ class Repo {
      * 
      * It is regenerated automatically after a commit if
      * `core/commit-update-summary` is set.
+     * @param additional_metadata A GVariant of type a{sv}, or %NULL
+     * @param cancellable Cancellable
      */
     regenerate_summary(additional_metadata?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3484,17 +3824,29 @@ class Repo {
      *   * s: g_key_file_set_string()
      *   * b: g_key_file_set_boolean()
      *   * as: g_key_file_set_string_list()
+     * @param name Name of remote
+     * @param url URL for remote (if URL begins with metalink=, it will be used as such)
+     * @param options GVariant of type a{sv}
+     * @param cancellable Cancellable
      */
     remote_add(name: string, url: string, options?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * A combined function handling the equivalent of
      * ostree_repo_remote_add(), ostree_repo_remote_delete(), with more
      * options.
+     * @param sysroot System root
+     * @param changeop Operation to perform
+     * @param name Name of remote
+     * @param url URL for remote (if URL begins with metalink=, it will be used as such)
+     * @param options GVariant of type a{sv}
+     * @param cancellable Cancellable
      */
     remote_change(sysroot: Gio.File | null, changeop: RepoRemoteChange, name: string, url: string, options?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Delete the remote named `name`.  It is an error if the provided
      * remote does not exist.
+     * @param name Name of remote
+     * @param cancellable Cancellable
      */
     remote_delete(name: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3508,6 +3860,10 @@ class Repo {
      * 
      * Parse the summary data into a #GVariant using g_variant_new_from_bytes()
      * with #OSTREE_SUMMARY_GVARIANT_FORMAT as the format string.
+     * @param name name of a remote
+     * @param out_summary return location for raw summary data, or %NULL
+     * @param out_signatures return location for raw summary signature                                data, or %NULL
+     * @param cancellable a #GCancellable
      */
     remote_fetch_summary(name: string, out_summary?: GLib.Bytes | null, out_signatures?: GLib.Bytes | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3515,23 +3871,31 @@ class Repo {
      * The following are currently defined:
      * 
      * - override-url (s): Fetch summary from this URL if remote specifies no metalink in options
+     * @param name name of a remote
+     * @param options A GVariant a{sv} with an extensible set of flags
+     * @param out_summary return location for raw summary data, or %NULL
+     * @param out_signatures return location for raw summary signature                              data, or %NULL
+     * @param cancellable a #GCancellable
      */
     remote_fetch_summary_with_options(name: string, options?: GLib.Variant | null, out_summary?: GLib.Bytes | null, out_signatures?: GLib.Bytes | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Return whether GPG verification is enabled for the remote named `name`
      * through `out_gpg_verify`.  It is an error if the provided remote does
      * not exist.
+     * @param name Name of remote
      */
     remote_get_gpg_verify(name: string): [ /* returnType */ boolean, /* out_gpg_verify */ boolean | null ]
     /**
      * Return whether GPG verification of the summary is enabled for the remote
      * named `name` through `out_gpg_verify_summary`.  It is an error if the provided
      * remote does not exist.
+     * @param name Name of remote
      */
     remote_get_gpg_verify_summary(name: string): [ /* returnType */ boolean, /* out_gpg_verify_summary */ boolean | null ]
     /**
      * Return the URL of the remote named `name` through `out_url`.  It is an
      * error if the provided remote does not exist.
+     * @param name Name of remote
      */
     remote_get_url(name: string): [ /* returnType */ boolean, /* out_url */ string | null ]
     /**
@@ -3542,6 +3906,11 @@ class Repo {
      * 
      * The imported keys will be used to conduct GPG verification when pulling
      * from the remote named `name`.
+     * @param name name of a remote
+     * @param source_stream a #GInputStream, or %NULL
+     * @param key_ids a %NULL-terminated array of GPG key IDs, or %NULL
+     * @param out_imported return location for the number of imported                              keys, or %NULL
+     * @param cancellable a #GCancellable
      */
     remote_gpg_import(name: string, source_stream?: Gio.InputStream | null, key_ids?: string[] | null, out_imported?: number | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3554,6 +3923,8 @@ class Repo {
      * Look up the given refspec, returning the checksum it references in
      * the parameter `out_rev`. Will fall back on remote directory if cannot
      * find the given refspec in local.
+     * @param refspec A refspec
+     * @param allow_noent Do not throw an error if refspec does not exist
      */
     resolve_rev(refspec: string, allow_noent: boolean): [ /* returnType */ boolean, /* out_rev */ string ]
     /**
@@ -3561,6 +3932,9 @@ class Repo {
      * the parameter `out_rev`. Differently from ostree_repo_resolve_rev(),
      * this will not fall back to searching through remote repos if a
      * local ref is specified but not found.
+     * @param refspec A refspec
+     * @param allow_noent Do not throw an error if refspec does not exist
+     * @param flags Options controlling behavior
      */
     resolve_rev_ext(refspec: string, allow_noent: boolean, flags: RepoResolveRevExtFlags): [ /* returnType */ boolean, /* out_rev */ string ]
     /**
@@ -3574,6 +3948,7 @@ class Repo {
      * entire objects directory. If your commit is composed of mostly hardlinks to
      * existing ostree objects, then this will speed up considerably, so call it
      * before you call ostree_write_directory_to_mtree() or similar.
+     * @param cancellable Cancellable
      */
     scan_hardlinks(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3581,6 +3956,9 @@ class Repo {
      * per-remote summary caches. Setting this manually is useful when
      * doing operations on a system repo as a user because you don't have
      * write permissions in the repo, where the cache is normally stored.
+     * @param dfd directory fd
+     * @param path subpath in `dfd`
+     * @param cancellable a #GCancellable
      */
     set_cache_dir(dfd: number, path: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3588,21 +3966,35 @@ class Repo {
      * option should only be used by build system tools which are creating
      * disposable virtual machines, or have higher level mechanisms for
      * ensuring data consistency.
+     * @param disable_fsync If %TRUE, do not fsync
      */
     set_disable_fsync(disable_fsync: boolean): void
     /**
      * This is like ostree_repo_transaction_set_ref(), except it may be
      * invoked outside of a transaction.  This is presently safe for the
      * case where we're creating or overwriting an existing ref.
+     * @param remote A remote for the ref
+     * @param ref The ref to write
+     * @param checksum The checksum to point it to, or %NULL to unset
+     * @param cancellable GCancellable
      */
     set_ref_immediate(remote: string | null, ref: string, checksum?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Add a GPG signature to a commit.
+     * @param commit_checksum SHA256 of given commit to sign
+     * @param key_id Use this GPG key id
+     * @param homedir GPG home directory, or %NULL
+     * @param cancellable A #GCancellable
      */
     sign_commit(commit_checksum: string, key_id: string, homedir?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * This function is deprecated, sign the summary file instead.
      * Add a GPG signature to a static delta.
+     * @param from_commit 
+     * @param to_commit 
+     * @param key_id 
+     * @param homedir 
+     * @param cancellable 
      */
     sign_delta(from_commit: string, to_commit: string, key_id: string, homedir: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3610,6 +4002,9 @@ class Repo {
      * on disk, apply it, generating a new commit.  The directory must be
      * named with the form "FROM-TO", where both are checksums, and it
      * must contain a file named "superblock", along with at least one part.
+     * @param dir_or_file Path to a directory containing static delta data, or directly to the superblock
+     * @param skip_validation If %TRUE, assume data integrity
+     * @param cancellable Cancellable
      */
     static_delta_execute_offline(dir_or_file: Gio.File, skip_validation: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3630,6 +4025,12 @@ class Repo {
      *   - verbose: b: Print diagnostic messages.  Default FALSE.
      *   - endianness: b: Deltas use host byte order by default; this option allows choosing (G_BIG_ENDIAN or G_LITTLE_ENDIAN)
      *   - filename: ay: Save delta superblock to this filename, and parts in the same directory.  Default saves to repository.
+     * @param opt High level optimization choice
+     * @param from ASCII SHA256 checksum of origin, or %NULL
+     * @param to ASCII SHA256 checksum of target
+     * @param metadata Optional metadata
+     * @param params Parameters, see below
+     * @param cancellable Cancellable
      */
     static_delta_generate(opt: StaticDeltaGenerateOpt, from: string, to: string, metadata?: GLib.Variant | null, params?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3644,74 +4045,126 @@ class Repo {
      * is completed with ostree_repo_commit_transaction(). If the transaction
      * is instead aborted with ostree_repo_abort_transaction(), no changes will
      * be made to the repository.
+     * @param remote A remote for the ref
+     * @param ref The ref to write
+     * @param checksum The checksum to point it to
      */
     transaction_set_ref(remote: string | null, ref: string, checksum: string): void
     /**
      * Like ostree_repo_transaction_set_ref(), but takes concatenated
      * `refspec` format as input instead of separate remote and name
      * arguments.
+     * @param refspec The refspec to write
+     * @param checksum The checksum to point it to
      */
     transaction_set_refspec(refspec: string, checksum: string): void
     /**
      * Create a new set `out_reachable` containing all objects reachable
      * from `commit_checksum,` traversing `maxdepth` parent commits.
+     * @param commit_checksum ASCII SHA256 checksum
+     * @param maxdepth Traverse this many parent commits, -1 for unlimited
+     * @param cancellable Cancellable
      */
     traverse_commit(commit_checksum: string, maxdepth: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_reachable */ GLib.HashTable ]
     /**
      * Check for a valid GPG signature on commit named by the ASCII
      * checksum `commit_checksum`.
+     * @param commit_checksum ASCII SHA256 checksum
+     * @param keyringdir Path to directory GPG keyrings; overrides built-in default if given
+     * @param extra_keyring Path to additional keyring file (not a directory)
+     * @param cancellable Cancellable
      */
     verify_commit(commit_checksum: string, keyringdir?: Gio.File | null, extra_keyring?: Gio.File | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Read GPG signature(s) on the commit named by the ASCII checksum
      * `commit_checksum` and return detailed results.
+     * @param commit_checksum ASCII SHA256 checksum
+     * @param keyringdir Path to directory GPG keyrings; overrides built-in default if given
+     * @param extra_keyring Path to additional keyring file (not a directory)
+     * @param cancellable Cancellable
      */
     verify_commit_ext(commit_checksum: string, keyringdir?: Gio.File | null, extra_keyring?: Gio.File | null, cancellable?: Gio.Cancellable | null): GpgVerifyResult
     /**
      * Verify `signatures` for `summary` data using GPG keys in the keyring for
      * `remote_name,` and return an #OstreeGpgVerifyResult.
+     * @param remote_name Name of remote
+     * @param summary Summary data as a #GBytes
+     * @param signatures Summary signatures as a #GBytes
+     * @param cancellable Cancellable
      */
     verify_summary(remote_name: string, summary: GLib.Bytes, signatures: GLib.Bytes, cancellable?: Gio.Cancellable | null): GpgVerifyResult
     /**
      * Import an archive file `archive` into the repository, and write its
      * file structure to `mtree`.
+     * @param archive A path to an archive file
+     * @param mtree The #OstreeMutableTree to write to
+     * @param modifier Optional commit modifier
+     * @param autocreate_parents Autocreate parent directories
+     * @param cancellable Cancellable
      */
     write_archive_to_mtree(archive: Gio.File, mtree: MutableTree, modifier: RepoCommitModifier | null, autocreate_parents: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Write a commit metadata object, referencing `root_contents_checksum`
      * and `root_metadata_checksum`.
+     * @param parent ASCII SHA256 checksum for parent, or %NULL for none
+     * @param subject Subject
+     * @param body Body
+     * @param metadata GVariant of type a{sv}, or %NULL for none
+     * @param root The tree to point the commit to
+     * @param cancellable Cancellable
      */
     write_commit(parent: string | null, subject: string | null, body: string | null, metadata: GLib.Variant | null, root: RepoFile, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_commit */ string ]
     /**
      * Replace any existing metadata associated with commit referred to by
      * `checksum` with `metadata`.  If `metadata` is %NULL, then existing
      * data will be deleted.
+     * @param checksum ASCII SHA256 commit checksum
+     * @param metadata Metadata to associate with commit in with format "a{sv}", or %NULL to delete
+     * @param cancellable Cancellable
      */
     write_commit_detached_metadata(checksum: string, metadata?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Write a commit metadata object, referencing `root_contents_checksum`
      * and `root_metadata_checksum`.
+     * @param parent ASCII SHA256 checksum for parent, or %NULL for none
+     * @param subject Subject
+     * @param body Body
+     * @param metadata GVariant of type a{sv}, or %NULL for none
+     * @param root The tree to point the commit to
+     * @param time The time to use to stamp the commit
+     * @param cancellable Cancellable
      */
     write_commit_with_time(parent: string | null, subject: string | null, body: string | null, metadata: GLib.Variant | null, root: RepoFile, time: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_commit */ string ]
     /**
      * Save `new_config` in place of this repository's config file.  Note
      * that `new_config` should not be modified after - this function
      * simply adds a reference.
+     * @param new_config Overwrite the config file with this data.  Do not change later!
      */
     write_config(new_config: GLib.KeyFile): boolean
     /**
      * Store the content object streamed as `object_input,`
      * with total length `length`.  The actual checksum will
      * be returned as `out_csum`.
+     * @param expected_checksum If provided, validate content against this checksum
+     * @param object_input Content object stream
+     * @param length Length of `object_input`
+     * @param cancellable Cancellable
      */
     write_content(expected_checksum: string | null, object_input: Gio.InputStream, length: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_csum */ Uint8Array | null ]
     /**
      * Asynchronously store the content object `object`.  If provided, the
      * checksum `expected_checksum` will be verified.
+     * @param expected_checksum If provided, validate content against this checksum
+     * @param object Input
+     * @param length Length of `object`
+     * @param cancellable Cancellable
+     * @param callback Invoked when content is writed
      */
     write_content_async(expected_checksum: string | null, object: Gio.InputStream, length: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an invocation of ostree_repo_write_content_async().
+     * @param result a #GAsyncResult
      */
     write_content_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_csum */ number ]
     /**
@@ -3720,17 +4173,30 @@ class Repo {
      * 
      * This function should be used when importing file objects from local
      * disk, for example.
+     * @param checksum Store content using this ASCII SHA256 checksum
+     * @param object_input Content stream
+     * @param length Length of `object_input`
+     * @param cancellable Cancellable
      */
     write_content_trusted(checksum: string, object_input: Gio.InputStream, length: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Store as objects all contents of the directory referred to by `dfd`
      * and `path` all children into the repository `self,` overlaying the
      * resulting filesystem hierarchy into `mtree`.
+     * @param dfd Directory file descriptor
+     * @param path Path
+     * @param mtree Overlay directory contents into this tree
+     * @param modifier Optional modifier
+     * @param cancellable Cancellable
      */
     write_dfd_to_mtree(dfd: number, path: string, mtree: MutableTree, modifier?: RepoCommitModifier | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Store objects for `dir` and all children into the repository `self,`
      * overlaying the resulting filesystem hierarchy into `mtree`.
+     * @param dir Path to a directory
+     * @param mtree Overlay directory contents into this tree
+     * @param modifier Optional modifier
+     * @param cancellable Cancellable
      */
     write_directory_to_mtree(dir: Gio.File, mtree: MutableTree, modifier?: RepoCommitModifier | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3739,28 +4205,48 @@ class Repo {
      * 
      * If `expected_checksum` is not %NULL, verify it against the
      * computed checksum.
+     * @param objtype Object type
+     * @param expected_checksum If provided, validate content against this checksum
+     * @param object Metadata
+     * @param cancellable Cancellable
      */
     write_metadata(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_csum */ Uint8Array | null ]
     /**
      * Asynchronously store the metadata object `variant`.  If provided,
      * the checksum `expected_checksum` will be verified.
+     * @param objtype Object type
+     * @param expected_checksum If provided, validate content against this checksum
+     * @param object Metadata
+     * @param cancellable Cancellable
+     * @param callback Invoked when metadata is writed
      */
     write_metadata_async(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     write_metadata_finish(result: Gio.AsyncResult, out_csum: number): boolean
     /**
      * Store the metadata object `variant;` the provided `checksum` is
      * trusted.
+     * @param objtype Object type
+     * @param checksum Store object with this ASCII SHA256 checksum
+     * @param object_input Metadata object stream
+     * @param length Length, may be 0 for unknown
+     * @param cancellable Cancellable
      */
     write_metadata_stream_trusted(objtype: ObjectType, checksum: string, object_input: Gio.InputStream, length: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Store the metadata object `variant;` the provided `checksum` is
      * trusted.
+     * @param objtype Object type
+     * @param checksum Store object with this ASCII SHA256 checksum
+     * @param variant Metadata object
+     * @param cancellable Cancellable
      */
     write_metadata_trusted(objtype: ObjectType, checksum: string, variant: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Write all metadata objects for `mtree` to repo; the resulting
      * `out_file` points to the %OSTREE_OBJECT_TYPE_DIR_TREE object that
      * the `mtree` represented.
+     * @param mtree Mutable tree
+     * @param cancellable Cancellable
      */
     write_mtree(mtree: MutableTree, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_file */ Gio.File ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -3798,6 +4284,10 @@ class Repo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3808,6 +4298,12 @@ class Repo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3831,6 +4327,7 @@ class Repo {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3850,11 +4347,14 @@ class Repo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3862,6 +4362,8 @@ class Repo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3879,6 +4381,7 @@ class Repo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3924,6 +4427,7 @@ class Repo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3967,15 +4471,20 @@ class Repo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4016,6 +4525,7 @@ class Repo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4050,6 +4560,7 @@ class Repo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4069,6 +4580,7 @@ class Repo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4081,6 +4593,8 @@ class Repo {
      * The signal will be emitted from whichever #GMainContext is the
      * thread-default at the point when ostree_repo_pull_with_options()
      * is called.
+     * @param checksum checksum of the signed object
+     * @param result an #OstreeGpgVerifyResult
      */
     connect(sigName: "gpg-verify-result", callback: (($obj: Repo, checksum: string, result: GpgVerifyResult) => void)): number
     connect_after(sigName: "gpg-verify-result", callback: (($obj: Repo, checksum: string, result: GpgVerifyResult) => void)): number
@@ -4114,10 +4628,17 @@ class Repo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Repo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Repo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::path", callback: (($obj: Repo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::path", callback: (($obj: Repo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::remotes-config-dir", callback: (($obj: Repo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::remotes-config-dir", callback: (($obj: Repo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sysroot-path", callback: (($obj: Repo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sysroot-path", callback: (($obj: Repo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4143,6 +4664,8 @@ class Repo {
      * Compatibility note: this function previously assumed that `user_data`
      * was a pointer to a #GSConsole instance.  This is no longer the case,
      * and `user_data` is ignored.
+     * @param progress Async progress
+     * @param user_data User data
      */
     static pull_default_console_progress_changed(progress: AsyncProgress, user_data?: object | null): void
     /**
@@ -4156,7 +4679,7 @@ interface RepoFile_ConstructProps extends GObject.Object_ConstructProps {
 }
 class RepoFile {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.RepoFile */
     ensure_resolved(): boolean
     get_checksum(): string
@@ -4205,6 +4728,10 @@ class RepoFile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4215,6 +4742,12 @@ class RepoFile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4238,6 +4771,7 @@ class RepoFile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4257,11 +4791,14 @@ class RepoFile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4269,6 +4806,8 @@ class RepoFile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4286,6 +4825,7 @@ class RepoFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4331,6 +4871,7 @@ class RepoFile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4374,15 +4915,20 @@ class RepoFile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4423,6 +4969,7 @@ class RepoFile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4457,6 +5004,7 @@ class RepoFile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.File */
@@ -4465,7 +5013,7 @@ class RepoFile {
      * If the file doesn't already exist it is created.
      * 
      * By default files created are generally readable by everyone,
-     * but if you pass #G_FILE_CREATE_PRIVATE in `flags` the file
+     * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
      * will be made readable only to the current user, to the level that
      * is supported on the target filesystem.
      * 
@@ -4478,6 +5026,8 @@ class RepoFile {
      * %G_IO_ERROR_INVALID_FILENAME error. If the file is a directory the
      * %G_IO_ERROR_IS_DIRECTORY error will be returned. Other errors are
      * possible too, and depend on what kind of filesystem the file is on.
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     append_to(flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileOutputStream
     /**
@@ -4489,11 +5039,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_append_to_finish() to get the result
      * of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     append_to_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file append operation started with
      * g_file_append_to_async().
+     * @param res #GAsyncResult
      */
     append_to_finish(res: Gio.AsyncResult): Gio.FileOutputStream
     /**
@@ -4506,20 +5061,22 @@ class RepoFile {
      * implementation of g_file_copy_attributes() and is useful
      * when one needs to query and set the attributes in two
      * stages (e.g., for recursive move of a directory).
+     * @param flags a set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     build_attribute_list_for_copy(flags: Gio.FileCopyFlags, cancellable?: Gio.Cancellable | null): string
     /**
      * Copies the file `source` to the location specified by `destination`.
      * Can not handle recursive copies of directories.
      * 
-     * If the flag #G_FILE_COPY_OVERWRITE is specified an already
+     * If the flag %G_FILE_COPY_OVERWRITE is specified an already
      * existing `destination` file is overwritten.
      * 
-     * If the flag #G_FILE_COPY_NOFOLLOW_SYMLINKS is specified then symlinks
+     * If the flag %G_FILE_COPY_NOFOLLOW_SYMLINKS is specified then symlinks
      * will be copied as symlinks, otherwise the target of the
      * `source` symlink will be copied.
      * 
-     * If the flag #G_FILE_COPY_ALL_METADATA is specified then all the metadata
+     * If the flag %G_FILE_COPY_ALL_METADATA is specified then all the metadata
      * that is possible to copy is copied, not just the default subset (which,
      * for instance, does not include the owner, see #GFileInfo).
      * 
@@ -4536,7 +5093,7 @@ class RepoFile {
      * If the `source` file does not exist, then the %G_IO_ERROR_NOT_FOUND error
      * is returned, independent on the status of the `destination`.
      * 
-     * If #G_FILE_COPY_OVERWRITE is not specified and the target exists, then
+     * If %G_FILE_COPY_OVERWRITE is not specified and the target exists, then
      * the error %G_IO_ERROR_EXISTS is returned.
      * 
      * If trying to overwrite a file over a directory, the %G_IO_ERROR_IS_DIRECTORY
@@ -4544,11 +5101,15 @@ class RepoFile {
      * %G_IO_ERROR_WOULD_MERGE error is returned.
      * 
      * If the source is a directory and the target does not exist, or
-     * #G_FILE_COPY_OVERWRITE is specified and the target is a file, then the
+     * %G_FILE_COPY_OVERWRITE is specified and the target is a file, then the
      * %G_IO_ERROR_WOULD_RECURSE error is returned.
      * 
      * If you are interested in copying the #GFile object itself (not the on-disk
      * file), see g_file_dup().
+     * @param destination destination #GFile
+     * @param flags set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback function to callback with   progress information, or %NULL if progress information is not needed
      */
     copy(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable?: Gio.Cancellable | null, progress_callback?: Gio.FileProgressCallback | null): boolean
     /**
@@ -4562,6 +5123,10 @@ class RepoFile {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * g_file_copy_finish() to get the result of the operation.
+     * @param destination destination #GFile
+     * @param flags set of #GFileCopyFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     copy_async(destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number, cancellable?: Gio.Cancellable | null): void
     /**
@@ -4570,13 +5135,17 @@ class RepoFile {
      * Normally only a subset of the file attributes are copied,
      * those that are copies in a normal file copy operation
      * (which for instance does not include e.g. owner). However
-     * if #G_FILE_COPY_ALL_METADATA is specified in `flags,` then
+     * if %G_FILE_COPY_ALL_METADATA is specified in `flags,` then
      * all the metadata that is possible to copy is copied. This
      * is useful when implementing move by copy + delete source.
+     * @param destination a #GFile to copy attributes to
+     * @param flags a set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     copy_attributes(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Finishes copying the file started with g_file_copy_async().
+     * @param res a #GAsyncResult
      */
     copy_finish(res: Gio.AsyncResult): boolean
     /**
@@ -4584,7 +5153,7 @@ class RepoFile {
      * The file must not already exist.
      * 
      * By default files created are generally readable by everyone,
-     * but if you pass #G_FILE_CREATE_PRIVATE in `flags` the file
+     * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
      * will be made readable only to the current user, to the level
      * that is supported on the target filesystem.
      * 
@@ -4599,6 +5168,8 @@ class RepoFile {
      * error, and if the name is to long %G_IO_ERROR_FILENAME_TOO_LONG will
      * be returned. Other errors are possible too, and depend on what kind
      * of filesystem the file is on.
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     create(flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileOutputStream
     /**
@@ -4611,11 +5182,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_create_finish() to get the result
      * of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     create_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file create operation started with
      * g_file_create_async().
+     * @param res a #GAsyncResult
      */
     create_finish(res: Gio.AsyncResult): Gio.FileOutputStream
     /**
@@ -4623,7 +5199,7 @@ class RepoFile {
      * writing to it. The file must not already exist.
      * 
      * By default files created are generally readable by everyone,
-     * but if you pass #G_FILE_CREATE_PRIVATE in `flags` the file
+     * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
      * will be made readable only to the current user, to the level
      * that is supported on the target filesystem.
      * 
@@ -4642,6 +5218,8 @@ class RepoFile {
      * Note that in many non-local file cases read and write streams are
      * not supported, so make sure you really need to do read and write
      * streaming, rather than just opening for reading or writing.
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     create_readwrite(flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileIOStream
     /**
@@ -4654,11 +5232,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_create_readwrite_finish() to get
      * the result of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     create_readwrite_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file create operation started with
      * g_file_create_readwrite_async().
+     * @param res a #GAsyncResult
      */
     create_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream
     /**
@@ -4684,16 +5267,21 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     delete(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Asynchronously delete a file. If the `file` is a directory, it will
      * only be deleted if it is empty.  This has the same semantics as
      * g_unlink().
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     delete_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes deleting a file started with g_file_delete_async().
+     * @param result a #GAsyncResult
      */
     delete_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4718,11 +5306,15 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param flags flags affecting the operation
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     eject_mountable(flags: Gio.MountUnmountFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous eject operation started by
      * g_file_eject_mountable().
+     * @param result a #GAsyncResult
      */
     eject_mountable_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4734,11 +5326,16 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     eject_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous eject operation started by
      * g_file_eject_mountable_with_operation().
+     * @param result a #GAsyncResult
      */
     eject_mountable_with_operation_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4755,7 +5352,7 @@ class RepoFile {
      * "standard::*" means all attributes in the standard namespace.
      * An example attribute query be "standard::*,owner::user".
      * The standard attributes are available as defines, like
-     * #G_FILE_ATTRIBUTE_STANDARD_NAME. #G_FILE_ATTRIBUTE_STANDARD_NAME should
+     * %G_FILE_ATTRIBUTE_STANDARD_NAME. %G_FILE_ATTRIBUTE_STANDARD_NAME should
      * always be specified if you plan to call g_file_enumerator_get_child() or
      * g_file_enumerator_iterate() on the returned enumerator.
      * 
@@ -4767,6 +5364,9 @@ class RepoFile {
      * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
      * be returned. If the file is not a directory, the %G_IO_ERROR_NOT_DIRECTORY
      * error will be returned. Other errors are possible too.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     enumerate_children(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): Gio.FileEnumerator
     /**
@@ -4780,11 +5380,17 @@ class RepoFile {
      * When the operation is finished, `callback` will be called. You can
      * then call g_file_enumerate_children_finish() to get the result of
      * the operation.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     enumerate_children_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async enumerate children operation.
      * See g_file_enumerate_children_async().
+     * @param res a #GAsyncResult
      */
     enumerate_children_finish(res: Gio.AsyncResult): Gio.FileEnumerator
     /**
@@ -4795,6 +5401,7 @@ class RepoFile {
      * aliasing.
      * 
      * This call does no blocking I/O.
+     * @param file2 the second #GFile
      */
     equal(file2: Gio.File): boolean
     /**
@@ -4807,6 +5414,7 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     find_enclosing_mount(cancellable?: Gio.Cancellable | null): Gio.Mount
     /**
@@ -4818,11 +5426,15 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_find_enclosing_mount_finish() to
      * get the result of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     find_enclosing_mount_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous find mount request.
      * See g_file_find_enclosing_mount_async().
+     * @param res a #GAsyncResult
      */
     find_enclosing_mount_finish(res: Gio.AsyncResult): Gio.Mount
     /**
@@ -4849,6 +5461,7 @@ class RepoFile {
      * for instance to create that file.
      * 
      * This call does no blocking I/O.
+     * @param name string containing the child's basename
      */
     get_child(name: string): Gio.File
     /**
@@ -4860,6 +5473,7 @@ class RepoFile {
      * type a filename in the file selector.
      * 
      * This call does no blocking I/O.
+     * @param display_name string to a possible child
      */
     get_child_for_display_name(display_name: string): Gio.File
     /**
@@ -4898,6 +5512,7 @@ class RepoFile {
      * Gets the path for `descendant` relative to `parent`.
      * 
      * This call does no blocking I/O.
+     * @param descendant input #GFile
      */
     get_relative_path(descendant: Gio.File): string | null
     /**
@@ -4927,6 +5542,7 @@ class RepoFile {
      * If `parent` is %NULL then this function returns %TRUE if `file` has any
      * parent at all.  If `parent` is non-%NULL then %TRUE is only returned
      * if `file` is an immediate child of `parent`.
+     * @param parent the parent to check for, or %NULL
      */
     has_parent(parent?: Gio.File | null): boolean
     /**
@@ -4944,12 +5560,14 @@ class RepoFile {
      * sometimes return %FALSE even if `file` is inside a `prefix` (from a
      * filesystem point of view), because the prefix of `file` is an alias
      * of `prefix`.
+     * @param prefix input #GFile
      */
     has_prefix(prefix: Gio.File): boolean
     /**
      * Checks to see if a #GFile has a given URI scheme.
      * 
      * This call does no blocking I/O.
+     * @param uri_scheme a string containing a URI scheme
      */
     has_uri_scheme(uri_scheme: string): boolean
     /**
@@ -4984,6 +5602,7 @@ class RepoFile {
      * The data contained in the resulting #GBytes is always zero-terminated, but
      * this is not included in the #GBytes length. The resulting #GBytes should be
      * freed with g_bytes_unref() when no longer in use.
+     * @param cancellable a #GCancellable or %NULL
      */
     load_bytes(cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Bytes, /* etag_out */ string | null ]
     /**
@@ -4997,6 +5616,8 @@ class RepoFile {
      * asynchronous operation.
      * 
      * See g_file_load_bytes() for more information.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     load_bytes_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5009,6 +5630,7 @@ class RepoFile {
      * freed with g_bytes_unref() when no longer in use.
      * 
      * See g_file_load_bytes() for more information.
+     * @param result a #GAsyncResult provided to the callback
      */
     load_bytes_finish(result: Gio.AsyncResult): [ /* returnType */ GLib.Bytes, /* etag_out */ string | null ]
     /**
@@ -5020,6 +5642,7 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     load_contents(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* contents */ Uint8Array, /* etag_out */ string | null ]
     /**
@@ -5036,6 +5659,8 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     load_contents_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5044,6 +5669,7 @@ class RepoFile {
      * size of the `contents` string. The `contents` should be freed with
      * g_free() when no longer needed. If `etag_out` is present, it will be
      * set to the new entity tag for the `file`.
+     * @param res a #GAsyncResult
      */
     load_contents_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* contents */ Uint8Array, /* etag_out */ string | null ]
     /**
@@ -5052,6 +5678,7 @@ class RepoFile {
      * zero-terminated, but this is not included in the resultant `length`.
      * The returned `contents` should be freed with g_free() when no longer
      * needed.
+     * @param res a #GAsyncResult
      */
     load_partial_contents_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* contents */ Uint8Array, /* etag_out */ string | null ]
     /**
@@ -5069,15 +5696,20 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     make_directory(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Asynchronously creates a directory.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     make_directory_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous directory creation, started with
      * g_file_make_directory_async().
+     * @param result a #GAsyncResult
      */
     make_directory_finish(result: Gio.AsyncResult): boolean
     /**
@@ -5094,6 +5726,7 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     make_directory_with_parents(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5103,12 +5736,15 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param symlink_value a string with the path for the target   of the new symlink
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     make_symbolic_link(symlink_value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Collects the results from an earlier call to
      * g_file_measure_disk_usage_async().  See g_file_measure_disk_usage() for
      * more information.
+     * @param result the #GAsyncResult passed to your #GAsyncReadyCallback
      */
     measure_disk_usage_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* disk_usage */ number | null, /* num_dirs */ number | null, /* num_files */ number | null ]
     /**
@@ -5118,6 +5754,8 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param flags a set of #GFileMonitorFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     monitor(flags: Gio.FileMonitorFlags, cancellable?: Gio.Cancellable | null): Gio.FileMonitor
     /**
@@ -5133,6 +5771,8 @@ class RepoFile {
      * directories.  It is not possible to monitor all the files in a
      * directory for changes made via hard links; if you want to do this then
      * you must register individual watches with g_file_monitor().
+     * @param flags a set of #GFileMonitorFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     monitor_directory(flags: Gio.FileMonitorFlags, cancellable?: Gio.Cancellable | null): Gio.FileMonitor
     /**
@@ -5150,6 +5790,8 @@ class RepoFile {
      * reported. Using this flag may result in an increase in resource
      * usage, and may not have any effect depending on the #GFileMonitor
      * backend and/or filesystem type.
+     * @param flags a set of #GFileMonitorFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     monitor_file(flags: Gio.FileMonitorFlags, cancellable?: Gio.Cancellable | null): Gio.FileMonitor
     /**
@@ -5163,10 +5805,15 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation   or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     mount_enclosing_volume(flags: Gio.MountMountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a mount operation started by g_file_mount_enclosing_volume().
+     * @param result a #GAsyncResult
      */
     mount_enclosing_volume_finish(result: Gio.AsyncResult): boolean
     /**
@@ -5181,6 +5828,10 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_mount_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     mount_mountable(flags: Gio.MountMountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5188,6 +5839,7 @@ class RepoFile {
      * 
      * Finish an asynchronous mount operation that was started
      * with g_file_mount_mountable().
+     * @param result a #GAsyncResult
      */
     mount_mountable_finish(result: Gio.AsyncResult): Gio.File
     /**
@@ -5197,7 +5849,7 @@ class RepoFile {
      * implementation may support moving directories (for instance on moves
      * inside the same filesystem), but the fallback code does not.
      * 
-     * If the flag #G_FILE_COPY_OVERWRITE is specified an already
+     * If the flag %G_FILE_COPY_OVERWRITE is specified an already
      * existing `destination` file is overwritten.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled by
@@ -5213,7 +5865,7 @@ class RepoFile {
      * If the `source` file does not exist, then the %G_IO_ERROR_NOT_FOUND
      * error is returned, independent on the status of the `destination`.
      * 
-     * If #G_FILE_COPY_OVERWRITE is not specified and the target exists,
+     * If %G_FILE_COPY_OVERWRITE is not specified and the target exists,
      * then the error %G_IO_ERROR_EXISTS is returned.
      * 
      * If trying to overwrite a file over a directory, the %G_IO_ERROR_IS_DIRECTORY
@@ -5221,9 +5873,13 @@ class RepoFile {
      * %G_IO_ERROR_WOULD_MERGE error is returned.
      * 
      * If the source is a directory and the target does not exist, or
-     * #G_FILE_COPY_OVERWRITE is specified and the target is a file, then
+     * %G_FILE_COPY_OVERWRITE is specified and the target is a file, then
      * the %G_IO_ERROR_WOULD_RECURSE error may be returned (if the native
      * move operation isn't available).
+     * @param destination #GFile pointing to the destination location
+     * @param flags set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback #GFileProgressCallback   function for updates
      */
     move(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable?: Gio.Cancellable | null, progress_callback?: Gio.FileProgressCallback | null): boolean
     /**
@@ -5236,11 +5892,18 @@ class RepoFile {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * g_file_move_finish() to get the result of the operation.
+     * @param destination #GFile pointing to the destination location
+     * @param flags set of #GFileCopyFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback #GFileProgressCallback   function for updates
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     move_async(destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number, cancellable?: Gio.Cancellable | null, progress_callback?: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file movement, started with
      * g_file_move_async().
+     * @param result a #GAsyncResult
      */
     move_finish(result: Gio.AsyncResult): boolean
     /**
@@ -5260,6 +5923,7 @@ class RepoFile {
      * file cases read and write streams are not supported, so make sure you
      * really need to do read and write streaming, rather than just opening
      * for reading or writing.
+     * @param cancellable a #GCancellable
      */
     open_readwrite(cancellable?: Gio.Cancellable | null): Gio.FileIOStream
     /**
@@ -5271,11 +5935,15 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_open_readwrite_finish() to get
      * the result of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     open_readwrite_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file read operation started with
      * g_file_open_readwrite_async().
+     * @param res a #GAsyncResult
      */
     open_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream
     /**
@@ -5289,7 +5957,7 @@ class RepoFile {
      */
     peek_path(): string | null
     /**
-     * Polls a file of type #G_FILE_TYPE_MOUNTABLE.
+     * Polls a file of type %G_FILE_TYPE_MOUNTABLE.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
@@ -5298,6 +5966,8 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_mount_mountable_finish() to get
      * the result of the operation.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     poll_mountable(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5305,6 +5975,7 @@ class RepoFile {
      * 
      * Finish an asynchronous poll operation that was polled
      * with g_file_poll_mountable().
+     * @param result a #GAsyncResult
      */
     poll_mountable_finish(result: Gio.AsyncResult): boolean
     /**
@@ -5314,14 +5985,19 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     query_default_handler(cancellable?: Gio.Cancellable | null): Gio.AppInfo
     /**
      * Async version of g_file_query_default_handler().
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     query_default_handler_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a g_file_query_default_handler_async() operation.
+     * @param result a #GAsyncResult
      */
     query_default_handler_finish(result: Gio.AsyncResult): Gio.AppInfo
     /**
@@ -5347,6 +6023,7 @@ class RepoFile {
      * have to fool users that something is possible and then just show an error
      * dialog. If you do this, you should make sure to also handle the errors
      * that can happen due to races when you execute the operation.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     query_exists(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5355,6 +6032,8 @@ class RepoFile {
      * 
      * The primary use case of this method is to check if a file is
      * a regular file, directory, or symlink.
+     * @param flags a set of #GFileQueryInfoFlags passed to g_file_query_info()
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     query_file_type(flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): Gio.FileType
     /**
@@ -5371,9 +6050,9 @@ class RepoFile {
      * attributes, and a wildcard like "filesystem::*" means all attributes
      * in the filesystem namespace. The standard namespace for filesystem
      * attributes is "filesystem". Common attributes of interest are
-     * #G_FILE_ATTRIBUTE_FILESYSTEM_SIZE (the total size of the filesystem
-     * in bytes), #G_FILE_ATTRIBUTE_FILESYSTEM_FREE (number of bytes available),
-     * and #G_FILE_ATTRIBUTE_FILESYSTEM_TYPE (type of the filesystem).
+     * %G_FILE_ATTRIBUTE_FILESYSTEM_SIZE (the total size of the filesystem
+     * in bytes), %G_FILE_ATTRIBUTE_FILESYSTEM_FREE (number of bytes available),
+     * and %G_FILE_ATTRIBUTE_FILESYSTEM_TYPE (type of the filesystem).
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled
      * by triggering the cancellable object from another thread. If the
@@ -5383,6 +6062,8 @@ class RepoFile {
      * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
      * be returned. Other errors are possible too, and depend on what
      * kind of filesystem the file is on.
+     * @param attributes an attribute query string
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     query_filesystem_info(attributes: string, cancellable?: Gio.Cancellable | null): Gio.FileInfo
     /**
@@ -5397,11 +6078,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called. You can
      * then call g_file_query_info_finish() to get the result of the
      * operation.
+     * @param attributes an attribute query string
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     query_filesystem_info_async(attributes: string, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filesystem info query.
      * See g_file_query_filesystem_info_async().
+     * @param res a #GAsyncResult
      */
     query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo
     /**
@@ -5418,7 +6104,7 @@ class RepoFile {
      * "standard::*" means all attributes in the standard namespace.
      * An example attribute query be "standard::*,owner::user".
      * The standard attributes are available as defines, like
-     * #G_FILE_ATTRIBUTE_STANDARD_NAME.
+     * %G_FILE_ATTRIBUTE_STANDARD_NAME.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled
      * by triggering the cancellable object from another thread. If the
@@ -5427,7 +6113,7 @@ class RepoFile {
      * 
      * For symlinks, normally the information about the target of the
      * symlink is returned, rather than information about the symlink
-     * itself. However if you pass #G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
+     * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
      * in `flags` the information about the symlink itself will be returned.
      * Also, for symlinks that point to non-existing files the information
      * about the symlink itself will be returned.
@@ -5435,6 +6121,9 @@ class RepoFile {
      * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
      * returned. Other errors are possible too, and depend on what kind of
      * filesystem the file is on.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     query_info(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): Gio.FileInfo
     /**
@@ -5447,11 +6136,17 @@ class RepoFile {
      * 
      * When the operation is finished, `callback` will be called. You can
      * then call g_file_query_info_finish() to get the result of the operation.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     query_info_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file info query.
      * See g_file_query_info_async().
+     * @param res a #GAsyncResult
      */
     query_info_finish(res: Gio.AsyncResult): Gio.FileInfo
     /**
@@ -5465,6 +6160,7 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     query_settable_attributes(cancellable?: Gio.Cancellable | null): Gio.FileAttributeInfoList
     /**
@@ -5475,6 +6171,7 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     query_writable_namespaces(cancellable?: Gio.Cancellable | null): Gio.FileAttributeInfoList
     /**
@@ -5489,6 +6186,7 @@ class RepoFile {
      * returned. If the file is a directory, the %G_IO_ERROR_IS_DIRECTORY
      * error will be returned. Other errors are possible too, and depend
      * on what kind of filesystem the file is on.
+     * @param cancellable a #GCancellable
      */
     read(cancellable?: Gio.Cancellable | null): Gio.FileInputStream
     /**
@@ -5500,11 +6198,15 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_read_finish() to get the result
      * of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file read operation started with
      * g_file_read_async().
+     * @param res a #GAsyncResult
      */
     read_finish(res: Gio.AsyncResult): Gio.FileInputStream
     /**
@@ -5519,7 +6221,7 @@ class RepoFile {
      * the destination when the stream is closed.
      * 
      * By default files created are generally readable by everyone,
-     * but if you pass #G_FILE_CREATE_PRIVATE in `flags` the file
+     * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
      * will be made readable only to the current user, to the level that
      * is supported on the target filesystem.
      * 
@@ -5549,6 +6251,10 @@ class RepoFile {
      * %G_IO_ERROR_INVALID_FILENAME error, and if the name is to long
      * %G_IO_ERROR_FILENAME_TOO_LONG will be returned. Other errors are
      * possible too, and depend on what kind of filesystem the file is on.
+     * @param etag an optional [entity tag][gfile-etag]   for the current #GFile, or #NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     replace(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileOutputStream
     /**
@@ -5561,6 +6267,12 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_replace_finish() to get the result
      * of the operation.
+     * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     replace_async(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5580,6 +6292,11 @@ class RepoFile {
      * 
      * The returned `new_etag` can be used to verify that the file hasn't
      * changed the next time it is saved over.
+     * @param contents a string containing the new contents for `file`
+     * @param etag the old [entity-tag][gfile-etag] for the document,   or %NULL
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     replace_contents(contents: Uint8Array, etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* new_etag */ string | null ]
     /**
@@ -5602,6 +6319,12 @@ class RepoFile {
      * until `callback` is called. See g_file_replace_contents_bytes_async()
      * for a #GBytes version that will automatically hold a reference to the
      * contents (without copying) for the duration of the call.
+     * @param contents string of contents to replace the file with
+     * @param etag a new [entity tag][gfile-etag] for the `file,` or %NULL
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     replace_contents_async(contents: Uint8Array, etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5613,17 +6336,25 @@ class RepoFile {
      * When this operation has completed, `callback` will be called with
      * `user_user` data, and the operation can be finalized with
      * g_file_replace_contents_finish().
+     * @param contents a #GBytes
+     * @param etag a new [entity tag][gfile-etag] for the `file,` or %NULL
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     replace_contents_bytes_async(contents: GLib.Bytes, etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous replace of the given `file`. See
      * g_file_replace_contents_async(). Sets `new_etag` to the new entity
      * tag for the document, if present.
+     * @param res a #GAsyncResult
      */
     replace_contents_finish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* new_etag */ string | null ]
     /**
      * Finishes an asynchronous file replace operation started with
      * g_file_replace_async().
+     * @param res a #GAsyncResult
      */
     replace_finish(res: Gio.AsyncResult): Gio.FileOutputStream
     /**
@@ -5637,6 +6368,10 @@ class RepoFile {
      * Note that in many non-local file cases read and write streams are not
      * supported, so make sure you really need to do read and write streaming,
      * rather than just opening for reading or writing.
+     * @param etag an optional [entity tag][gfile-etag]   for the current #GFile, or #NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     replace_readwrite(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileIOStream
     /**
@@ -5650,11 +6385,18 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_replace_readwrite_finish() to get
      * the result of the operation.
+     * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     replace_readwrite_async(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file replace operation started with
      * g_file_replace_readwrite_async().
+     * @param res a #GAsyncResult
      */
     replace_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream
     /**
@@ -5664,6 +6406,7 @@ class RepoFile {
      * 
      * If the `relative_path` is an absolute path name, the resolution
      * is done absolutely (without taking `file` path as base).
+     * @param relative_path a given relative path string
      */
     resolve_relative_path(relative_path: string): Gio.File
     /**
@@ -5675,6 +6418,11 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param attribute a string containing the attribute's name
+     * @param type The type of the attribute
+     * @param value_p a pointer to the value (or the pointer   itself if the type is a pointer type)
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: object | null, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5685,6 +6433,10 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param attribute a string containing the attribute's name
+     * @param value a string containing the attribute's new value
+     * @param flags a #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_attribute_byte_string(attribute: string, value: string, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5694,6 +6446,10 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param attribute a string containing the attribute's name
+     * @param value a #gint32 containing the attribute's new value
+     * @param flags a #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_attribute_int32(attribute: string, value: number, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5703,6 +6459,10 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param attribute a string containing the attribute's name
+     * @param value a #guint64 containing the attribute's new value
+     * @param flags a #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_attribute_int64(attribute: string, value: number, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5712,6 +6472,10 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param attribute a string containing the attribute's name
+     * @param value a string containing the attribute's value
+     * @param flags #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_attribute_string(attribute: string, value: string, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5721,6 +6485,10 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param attribute a string containing the attribute's name
+     * @param value a #guint32 containing the attribute's new value
+     * @param flags a #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_attribute_uint32(attribute: string, value: number, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5730,6 +6498,10 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param attribute a string containing the attribute's name
+     * @param value a #guint64 containing the attribute's new value
+     * @param flags a #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_attribute_uint64(attribute: string, value: number, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5741,10 +6513,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_set_attributes_finish() to get
      * the result of the operation.
+     * @param info a #GFileInfo
+     * @param flags a #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback
      */
     set_attributes_async(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes setting an attribute started in g_file_set_attributes_async().
+     * @param result a #GAsyncResult
      */
     set_attributes_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* info */ Gio.FileInfo ]
     /**
@@ -5760,6 +6538,9 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param info a #GFileInfo
+     * @param flags #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_attributes_from_info(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5769,7 +6550,7 @@ class RepoFile {
      * for the target filesystem if possible and the `file` is renamed to this.
      * 
      * If you want to implement a rename operation in the user interface the
-     * edit name (#G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME) should be used as the
+     * edit name (%G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME) should be used as the
      * initial value in the rename widget, and then the result after editing
      * should be passed to g_file_set_display_name().
      * 
@@ -5778,6 +6559,8 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param display_name a string
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     set_display_name(display_name: string, cancellable?: Gio.Cancellable | null): Gio.File
     /**
@@ -5789,15 +6572,20 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_set_display_name_finish() to get
      * the result of the operation.
+     * @param display_name a string
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     set_display_name_async(display_name: string, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes setting a display name started with
      * g_file_set_display_name_async().
+     * @param res a #GAsyncResult
      */
     set_display_name_finish(res: Gio.AsyncResult): Gio.File
     /**
-     * Starts a file of type #G_FILE_TYPE_MOUNTABLE.
+     * Starts a file of type %G_FILE_TYPE_MOUNTABLE.
      * Using `start_operation,` you can request callbacks when, for instance,
      * passwords are needed during authentication.
      * 
@@ -5808,6 +6596,10 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_mount_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param start_operation a #GMountOperation, or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied, or %NULL
      */
     start_mountable(flags: Gio.DriveStartFlags, start_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5815,10 +6607,11 @@ class RepoFile {
      * 
      * Finish an asynchronous start operation that was started
      * with g_file_start_mountable().
+     * @param result a #GAsyncResult
      */
     start_mountable_finish(result: Gio.AsyncResult): boolean
     /**
-     * Stops a file of type #G_FILE_TYPE_MOUNTABLE.
+     * Stops a file of type %G_FILE_TYPE_MOUNTABLE.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
@@ -5827,6 +6620,10 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_stop_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     stop_mountable(flags: Gio.MountUnmountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5834,6 +6631,7 @@ class RepoFile {
      * 
      * Finish an asynchronous stop operation that was started
      * with g_file_stop_mountable().
+     * @param result a #GAsyncResult
      */
     stop_mountable_finish(result: Gio.AsyncResult): boolean
     /**
@@ -5854,15 +6652,20 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     trash(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Asynchronously sends `file` to the Trash location, if possible.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     trash_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file trashing operation, started with
      * g_file_trash_async().
+     * @param result a #GAsyncResult
      */
     trash_finish(result: Gio.AsyncResult): boolean
     /**
@@ -5875,6 +6678,9 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_unmount_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     unmount_mountable(flags: Gio.MountUnmountFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5882,10 +6688,11 @@ class RepoFile {
      * 
      * Finish an asynchronous unmount operation that was started
      * with g_file_unmount_mountable().
+     * @param result a #GAsyncResult
      */
     unmount_mountable_finish(result: Gio.AsyncResult): boolean
     /**
-     * Unmounts a file of type #G_FILE_TYPE_MOUNTABLE.
+     * Unmounts a file of type %G_FILE_TYPE_MOUNTABLE.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
@@ -5894,6 +6701,10 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_unmount_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     unmount_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5902,6 +6713,7 @@ class RepoFile {
      * 
      * Finish an asynchronous unmount operation that was started
      * with g_file_unmount_mountable_with_operation().
+     * @param result a #GAsyncResult
      */
     unmount_mountable_with_operation_finish(result: Gio.AsyncResult): boolean
     /* Virtual methods of OSTree-1.0.OSTree.RepoFile */
@@ -5910,7 +6722,7 @@ class RepoFile {
      * If the file doesn't already exist it is created.
      * 
      * By default files created are generally readable by everyone,
-     * but if you pass #G_FILE_CREATE_PRIVATE in `flags` the file
+     * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
      * will be made readable only to the current user, to the level that
      * is supported on the target filesystem.
      * 
@@ -5923,6 +6735,8 @@ class RepoFile {
      * %G_IO_ERROR_INVALID_FILENAME error. If the file is a directory the
      * %G_IO_ERROR_IS_DIRECTORY error will be returned. Other errors are
      * possible too, and depend on what kind of filesystem the file is on.
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_append_to(flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileOutputStream
     /**
@@ -5934,25 +6748,30 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_append_to_finish() to get the result
      * of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_append_to_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file append operation started with
      * g_file_append_to_async().
+     * @param res #GAsyncResult
      */
     vfunc_append_to_finish(res: Gio.AsyncResult): Gio.FileOutputStream
     /**
      * Copies the file `source` to the location specified by `destination`.
      * Can not handle recursive copies of directories.
      * 
-     * If the flag #G_FILE_COPY_OVERWRITE is specified an already
+     * If the flag %G_FILE_COPY_OVERWRITE is specified an already
      * existing `destination` file is overwritten.
      * 
-     * If the flag #G_FILE_COPY_NOFOLLOW_SYMLINKS is specified then symlinks
+     * If the flag %G_FILE_COPY_NOFOLLOW_SYMLINKS is specified then symlinks
      * will be copied as symlinks, otherwise the target of the
      * `source` symlink will be copied.
      * 
-     * If the flag #G_FILE_COPY_ALL_METADATA is specified then all the metadata
+     * If the flag %G_FILE_COPY_ALL_METADATA is specified then all the metadata
      * that is possible to copy is copied, not just the default subset (which,
      * for instance, does not include the owner, see #GFileInfo).
      * 
@@ -5969,7 +6788,7 @@ class RepoFile {
      * If the `source` file does not exist, then the %G_IO_ERROR_NOT_FOUND error
      * is returned, independent on the status of the `destination`.
      * 
-     * If #G_FILE_COPY_OVERWRITE is not specified and the target exists, then
+     * If %G_FILE_COPY_OVERWRITE is not specified and the target exists, then
      * the error %G_IO_ERROR_EXISTS is returned.
      * 
      * If trying to overwrite a file over a directory, the %G_IO_ERROR_IS_DIRECTORY
@@ -5977,11 +6796,15 @@ class RepoFile {
      * %G_IO_ERROR_WOULD_MERGE error is returned.
      * 
      * If the source is a directory and the target does not exist, or
-     * #G_FILE_COPY_OVERWRITE is specified and the target is a file, then the
+     * %G_FILE_COPY_OVERWRITE is specified and the target is a file, then the
      * %G_IO_ERROR_WOULD_RECURSE error is returned.
      * 
      * If you are interested in copying the #GFile object itself (not the on-disk
      * file), see g_file_dup().
+     * @param destination destination #GFile
+     * @param flags set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback function to callback with   progress information, or %NULL if progress information is not needed
      */
     vfunc_copy(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable?: Gio.Cancellable | null, progress_callback?: Gio.FileProgressCallback | null): boolean
     /**
@@ -5995,10 +6818,15 @@ class RepoFile {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * g_file_copy_finish() to get the result of the operation.
+     * @param destination destination #GFile
+     * @param flags set of #GFileCopyFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_copy_async(destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number, cancellable?: Gio.Cancellable | null): void
     /**
      * Finishes copying the file started with g_file_copy_async().
+     * @param res a #GAsyncResult
      */
     vfunc_copy_finish(res: Gio.AsyncResult): boolean
     /**
@@ -6006,7 +6834,7 @@ class RepoFile {
      * The file must not already exist.
      * 
      * By default files created are generally readable by everyone,
-     * but if you pass #G_FILE_CREATE_PRIVATE in `flags` the file
+     * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
      * will be made readable only to the current user, to the level
      * that is supported on the target filesystem.
      * 
@@ -6021,6 +6849,8 @@ class RepoFile {
      * error, and if the name is to long %G_IO_ERROR_FILENAME_TOO_LONG will
      * be returned. Other errors are possible too, and depend on what kind
      * of filesystem the file is on.
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_create(flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileOutputStream
     /**
@@ -6033,11 +6863,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_create_finish() to get the result
      * of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_create_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file create operation started with
      * g_file_create_async().
+     * @param res a #GAsyncResult
      */
     vfunc_create_finish(res: Gio.AsyncResult): Gio.FileOutputStream
     /**
@@ -6045,7 +6880,7 @@ class RepoFile {
      * writing to it. The file must not already exist.
      * 
      * By default files created are generally readable by everyone,
-     * but if you pass #G_FILE_CREATE_PRIVATE in `flags` the file
+     * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
      * will be made readable only to the current user, to the level
      * that is supported on the target filesystem.
      * 
@@ -6064,6 +6899,8 @@ class RepoFile {
      * Note that in many non-local file cases read and write streams are
      * not supported, so make sure you really need to do read and write
      * streaming, rather than just opening for reading or writing.
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_create_readwrite(flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileIOStream
     /**
@@ -6076,11 +6913,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_create_readwrite_finish() to get
      * the result of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_create_readwrite_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file create operation started with
      * g_file_create_readwrite_async().
+     * @param res a #GAsyncResult
      */
     vfunc_create_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream
     /**
@@ -6106,16 +6948,21 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_delete_file(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Asynchronously delete a file. If the `file` is a directory, it will
      * only be deleted if it is empty.  This has the same semantics as
      * g_unlink().
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_delete_file_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes deleting a file started with g_file_delete_async().
+     * @param result a #GAsyncResult
      */
     vfunc_delete_file_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6140,11 +6987,15 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param flags flags affecting the operation
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_eject_mountable(flags: Gio.MountUnmountFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous eject operation started by
      * g_file_eject_mountable().
+     * @param result a #GAsyncResult
      */
     vfunc_eject_mountable_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6156,11 +7007,16 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_eject_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous eject operation started by
      * g_file_eject_mountable_with_operation().
+     * @param result a #GAsyncResult
      */
     vfunc_eject_mountable_with_operation_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6177,7 +7033,7 @@ class RepoFile {
      * "standard::*" means all attributes in the standard namespace.
      * An example attribute query be "standard::*,owner::user".
      * The standard attributes are available as defines, like
-     * #G_FILE_ATTRIBUTE_STANDARD_NAME. #G_FILE_ATTRIBUTE_STANDARD_NAME should
+     * %G_FILE_ATTRIBUTE_STANDARD_NAME. %G_FILE_ATTRIBUTE_STANDARD_NAME should
      * always be specified if you plan to call g_file_enumerator_get_child() or
      * g_file_enumerator_iterate() on the returned enumerator.
      * 
@@ -6189,6 +7045,9 @@ class RepoFile {
      * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
      * be returned. If the file is not a directory, the %G_IO_ERROR_NOT_DIRECTORY
      * error will be returned. Other errors are possible too.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_enumerate_children(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): Gio.FileEnumerator
     /**
@@ -6202,11 +7061,17 @@ class RepoFile {
      * When the operation is finished, `callback` will be called. You can
      * then call g_file_enumerate_children_finish() to get the result of
      * the operation.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     vfunc_enumerate_children_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async enumerate children operation.
      * See g_file_enumerate_children_async().
+     * @param res a #GAsyncResult
      */
     vfunc_enumerate_children_finish(res: Gio.AsyncResult): Gio.FileEnumerator
     /**
@@ -6217,6 +7082,7 @@ class RepoFile {
      * aliasing.
      * 
      * This call does no blocking I/O.
+     * @param file2 the second #GFile
      */
     vfunc_equal(file2: Gio.File): boolean
     /**
@@ -6229,6 +7095,7 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_find_enclosing_mount(cancellable?: Gio.Cancellable | null): Gio.Mount
     /**
@@ -6240,11 +7107,15 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_find_enclosing_mount_finish() to
      * get the result of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_find_enclosing_mount_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous find mount request.
      * See g_file_find_enclosing_mount_async().
+     * @param res a #GAsyncResult
      */
     vfunc_find_enclosing_mount_finish(res: Gio.AsyncResult): Gio.Mount
     /**
@@ -6272,6 +7143,7 @@ class RepoFile {
      * type a filename in the file selector.
      * 
      * This call does no blocking I/O.
+     * @param display_name string to a possible child
      */
     vfunc_get_child_for_display_name(display_name: string): Gio.File
     /**
@@ -6310,6 +7182,7 @@ class RepoFile {
      * Gets the path for `descendant` relative to `parent`.
      * 
      * This call does no blocking I/O.
+     * @param descendant input #GFile
      */
     vfunc_get_relative_path(descendant: Gio.File): string | null
     /**
@@ -6337,6 +7210,7 @@ class RepoFile {
      * Checks to see if a #GFile has a given URI scheme.
      * 
      * This call does no blocking I/O.
+     * @param uri_scheme a string containing a URI scheme
      */
     vfunc_has_uri_scheme(uri_scheme: string): boolean
     /**
@@ -6374,15 +7248,20 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_make_directory(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Asynchronously creates a directory.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_make_directory_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous directory creation, started with
      * g_file_make_directory_async().
+     * @param result a #GAsyncResult
      */
     vfunc_make_directory_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6392,12 +7271,15 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param symlink_value a string with the path for the target   of the new symlink
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_make_symbolic_link(symlink_value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Collects the results from an earlier call to
      * g_file_measure_disk_usage_async().  See g_file_measure_disk_usage() for
      * more information.
+     * @param result the #GAsyncResult passed to your #GAsyncReadyCallback
      */
     vfunc_measure_disk_usage_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* disk_usage */ number | null, /* num_dirs */ number | null, /* num_files */ number | null ]
     /**
@@ -6413,6 +7295,8 @@ class RepoFile {
      * directories.  It is not possible to monitor all the files in a
      * directory for changes made via hard links; if you want to do this then
      * you must register individual watches with g_file_monitor().
+     * @param flags a set of #GFileMonitorFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_monitor_dir(flags: Gio.FileMonitorFlags, cancellable?: Gio.Cancellable | null): Gio.FileMonitor
     /**
@@ -6430,6 +7314,8 @@ class RepoFile {
      * reported. Using this flag may result in an increase in resource
      * usage, and may not have any effect depending on the #GFileMonitor
      * backend and/or filesystem type.
+     * @param flags a set of #GFileMonitorFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_monitor_file(flags: Gio.FileMonitorFlags, cancellable?: Gio.Cancellable | null): Gio.FileMonitor
     /**
@@ -6443,10 +7329,15 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation   or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_mount_enclosing_volume(flags: Gio.MountMountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a mount operation started by g_file_mount_enclosing_volume().
+     * @param result a #GAsyncResult
      */
     vfunc_mount_enclosing_volume_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6461,6 +7352,10 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_mount_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_mount_mountable(flags: Gio.MountMountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6468,6 +7363,7 @@ class RepoFile {
      * 
      * Finish an asynchronous mount operation that was started
      * with g_file_mount_mountable().
+     * @param result a #GAsyncResult
      */
     vfunc_mount_mountable_finish(result: Gio.AsyncResult): Gio.File
     /**
@@ -6477,7 +7373,7 @@ class RepoFile {
      * implementation may support moving directories (for instance on moves
      * inside the same filesystem), but the fallback code does not.
      * 
-     * If the flag #G_FILE_COPY_OVERWRITE is specified an already
+     * If the flag %G_FILE_COPY_OVERWRITE is specified an already
      * existing `destination` file is overwritten.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled by
@@ -6493,7 +7389,7 @@ class RepoFile {
      * If the `source` file does not exist, then the %G_IO_ERROR_NOT_FOUND
      * error is returned, independent on the status of the `destination`.
      * 
-     * If #G_FILE_COPY_OVERWRITE is not specified and the target exists,
+     * If %G_FILE_COPY_OVERWRITE is not specified and the target exists,
      * then the error %G_IO_ERROR_EXISTS is returned.
      * 
      * If trying to overwrite a file over a directory, the %G_IO_ERROR_IS_DIRECTORY
@@ -6501,9 +7397,13 @@ class RepoFile {
      * %G_IO_ERROR_WOULD_MERGE error is returned.
      * 
      * If the source is a directory and the target does not exist, or
-     * #G_FILE_COPY_OVERWRITE is specified and the target is a file, then
+     * %G_FILE_COPY_OVERWRITE is specified and the target is a file, then
      * the %G_IO_ERROR_WOULD_RECURSE error may be returned (if the native
      * move operation isn't available).
+     * @param destination #GFile pointing to the destination location
+     * @param flags set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback #GFileProgressCallback   function for updates
      */
     vfunc_move(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable?: Gio.Cancellable | null, progress_callback?: Gio.FileProgressCallback | null): boolean
     /**
@@ -6516,11 +7416,18 @@ class RepoFile {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * g_file_move_finish() to get the result of the operation.
+     * @param destination #GFile pointing to the destination location
+     * @param flags set of #GFileCopyFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback #GFileProgressCallback   function for updates
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_move_async(destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number, cancellable?: Gio.Cancellable | null, progress_callback?: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file movement, started with
      * g_file_move_async().
+     * @param result a #GAsyncResult
      */
     vfunc_move_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6540,6 +7447,7 @@ class RepoFile {
      * file cases read and write streams are not supported, so make sure you
      * really need to do read and write streaming, rather than just opening
      * for reading or writing.
+     * @param cancellable a #GCancellable
      */
     vfunc_open_readwrite(cancellable?: Gio.Cancellable | null): Gio.FileIOStream
     /**
@@ -6551,15 +7459,19 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_open_readwrite_finish() to get
      * the result of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_open_readwrite_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file read operation started with
      * g_file_open_readwrite_async().
+     * @param res a #GAsyncResult
      */
     vfunc_open_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream
     /**
-     * Polls a file of type #G_FILE_TYPE_MOUNTABLE.
+     * Polls a file of type %G_FILE_TYPE_MOUNTABLE.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
@@ -6568,6 +7480,8 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_mount_mountable_finish() to get
      * the result of the operation.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_poll_mountable(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6575,6 +7489,7 @@ class RepoFile {
      * 
      * Finish an asynchronous poll operation that was polled
      * with g_file_poll_mountable().
+     * @param result a #GAsyncResult
      */
     vfunc_poll_mountable_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6592,6 +7507,7 @@ class RepoFile {
      * sometimes return %FALSE even if `file` is inside a `prefix` (from a
      * filesystem point of view), because the prefix of `file` is an alias
      * of `prefix`.
+     * @param file input #GFile
      */
     vfunc_prefix_matches(file: Gio.File): boolean
     /**
@@ -6608,9 +7524,9 @@ class RepoFile {
      * attributes, and a wildcard like "filesystem::*" means all attributes
      * in the filesystem namespace. The standard namespace for filesystem
      * attributes is "filesystem". Common attributes of interest are
-     * #G_FILE_ATTRIBUTE_FILESYSTEM_SIZE (the total size of the filesystem
-     * in bytes), #G_FILE_ATTRIBUTE_FILESYSTEM_FREE (number of bytes available),
-     * and #G_FILE_ATTRIBUTE_FILESYSTEM_TYPE (type of the filesystem).
+     * %G_FILE_ATTRIBUTE_FILESYSTEM_SIZE (the total size of the filesystem
+     * in bytes), %G_FILE_ATTRIBUTE_FILESYSTEM_FREE (number of bytes available),
+     * and %G_FILE_ATTRIBUTE_FILESYSTEM_TYPE (type of the filesystem).
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled
      * by triggering the cancellable object from another thread. If the
@@ -6620,6 +7536,8 @@ class RepoFile {
      * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
      * be returned. Other errors are possible too, and depend on what
      * kind of filesystem the file is on.
+     * @param attributes an attribute query string
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_query_filesystem_info(attributes: string, cancellable?: Gio.Cancellable | null): Gio.FileInfo
     /**
@@ -6634,11 +7552,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called. You can
      * then call g_file_query_info_finish() to get the result of the
      * operation.
+     * @param attributes an attribute query string
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_query_filesystem_info_async(attributes: string, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filesystem info query.
      * See g_file_query_filesystem_info_async().
+     * @param res a #GAsyncResult
      */
     vfunc_query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo
     /**
@@ -6655,7 +7578,7 @@ class RepoFile {
      * "standard::*" means all attributes in the standard namespace.
      * An example attribute query be "standard::*,owner::user".
      * The standard attributes are available as defines, like
-     * #G_FILE_ATTRIBUTE_STANDARD_NAME.
+     * %G_FILE_ATTRIBUTE_STANDARD_NAME.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled
      * by triggering the cancellable object from another thread. If the
@@ -6664,7 +7587,7 @@ class RepoFile {
      * 
      * For symlinks, normally the information about the target of the
      * symlink is returned, rather than information about the symlink
-     * itself. However if you pass #G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
+     * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
      * in `flags` the information about the symlink itself will be returned.
      * Also, for symlinks that point to non-existing files the information
      * about the symlink itself will be returned.
@@ -6672,6 +7595,9 @@ class RepoFile {
      * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
      * returned. Other errors are possible too, and depend on what kind of
      * filesystem the file is on.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_query_info(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): Gio.FileInfo
     /**
@@ -6684,11 +7610,17 @@ class RepoFile {
      * 
      * When the operation is finished, `callback` will be called. You can
      * then call g_file_query_info_finish() to get the result of the operation.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     vfunc_query_info_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file info query.
      * See g_file_query_info_async().
+     * @param res a #GAsyncResult
      */
     vfunc_query_info_finish(res: Gio.AsyncResult): Gio.FileInfo
     /**
@@ -6702,6 +7634,7 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_query_settable_attributes(cancellable?: Gio.Cancellable | null): Gio.FileAttributeInfoList
     /**
@@ -6712,6 +7645,7 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_query_writable_namespaces(cancellable?: Gio.Cancellable | null): Gio.FileAttributeInfoList
     /**
@@ -6723,11 +7657,15 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_read_finish() to get the result
      * of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file read operation started with
      * g_file_read_async().
+     * @param res a #GAsyncResult
      */
     vfunc_read_finish(res: Gio.AsyncResult): Gio.FileInputStream
     /**
@@ -6742,6 +7680,7 @@ class RepoFile {
      * returned. If the file is a directory, the %G_IO_ERROR_IS_DIRECTORY
      * error will be returned. Other errors are possible too, and depend
      * on what kind of filesystem the file is on.
+     * @param cancellable a #GCancellable
      */
     vfunc_read_fn(cancellable?: Gio.Cancellable | null): Gio.FileInputStream
     /**
@@ -6756,7 +7695,7 @@ class RepoFile {
      * the destination when the stream is closed.
      * 
      * By default files created are generally readable by everyone,
-     * but if you pass #G_FILE_CREATE_PRIVATE in `flags` the file
+     * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
      * will be made readable only to the current user, to the level that
      * is supported on the target filesystem.
      * 
@@ -6786,6 +7725,10 @@ class RepoFile {
      * %G_IO_ERROR_INVALID_FILENAME error, and if the name is to long
      * %G_IO_ERROR_FILENAME_TOO_LONG will be returned. Other errors are
      * possible too, and depend on what kind of filesystem the file is on.
+     * @param etag an optional [entity tag][gfile-etag]   for the current #GFile, or #NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_replace(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileOutputStream
     /**
@@ -6798,11 +7741,18 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_replace_finish() to get the result
      * of the operation.
+     * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_replace_async(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file replace operation started with
      * g_file_replace_async().
+     * @param res a #GAsyncResult
      */
     vfunc_replace_finish(res: Gio.AsyncResult): Gio.FileOutputStream
     /**
@@ -6816,6 +7766,10 @@ class RepoFile {
      * Note that in many non-local file cases read and write streams are not
      * supported, so make sure you really need to do read and write streaming,
      * rather than just opening for reading or writing.
+     * @param etag an optional [entity tag][gfile-etag]   for the current #GFile, or #NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_replace_readwrite(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable?: Gio.Cancellable | null): Gio.FileIOStream
     /**
@@ -6829,11 +7783,18 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_replace_readwrite_finish() to get
      * the result of the operation.
+     * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_replace_readwrite_async(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file replace operation started with
      * g_file_replace_readwrite_async().
+     * @param res a #GAsyncResult
      */
     vfunc_replace_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream
     /**
@@ -6843,6 +7804,7 @@ class RepoFile {
      * 
      * If the `relative_path` is an absolute path name, the resolution
      * is done absolutely (without taking `file` path as base).
+     * @param relative_path a given relative path string
      */
     vfunc_resolve_relative_path(relative_path: string): Gio.File
     /**
@@ -6854,6 +7816,11 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param attribute a string containing the attribute's name
+     * @param type The type of the attribute
+     * @param value_p a pointer to the value (or the pointer   itself if the type is a pointer type)
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: object | null, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -6865,10 +7832,16 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_set_attributes_finish() to get
      * the result of the operation.
+     * @param info a #GFileInfo
+     * @param flags a #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback
      */
     vfunc_set_attributes_async(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes setting an attribute started in g_file_set_attributes_async().
+     * @param result a #GAsyncResult
      */
     vfunc_set_attributes_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* info */ Gio.FileInfo ]
     /**
@@ -6884,6 +7857,9 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param info a #GFileInfo
+     * @param flags #GFileQueryInfoFlags
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_set_attributes_from_info(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -6893,7 +7869,7 @@ class RepoFile {
      * for the target filesystem if possible and the `file` is renamed to this.
      * 
      * If you want to implement a rename operation in the user interface the
-     * edit name (#G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME) should be used as the
+     * edit name (%G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME) should be used as the
      * initial value in the rename widget, and then the result after editing
      * should be passed to g_file_set_display_name().
      * 
@@ -6902,6 +7878,8 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param display_name a string
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_set_display_name(display_name: string, cancellable?: Gio.Cancellable | null): Gio.File
     /**
@@ -6913,15 +7891,20 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_set_display_name_finish() to get
      * the result of the operation.
+     * @param display_name a string
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_set_display_name_async(display_name: string, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes setting a display name started with
      * g_file_set_display_name_async().
+     * @param res a #GAsyncResult
      */
     vfunc_set_display_name_finish(res: Gio.AsyncResult): Gio.File
     /**
-     * Starts a file of type #G_FILE_TYPE_MOUNTABLE.
+     * Starts a file of type %G_FILE_TYPE_MOUNTABLE.
      * Using `start_operation,` you can request callbacks when, for instance,
      * passwords are needed during authentication.
      * 
@@ -6932,6 +7915,10 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_mount_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param start_operation a #GMountOperation, or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied, or %NULL
      */
     vfunc_start_mountable(flags: Gio.DriveStartFlags, start_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6939,10 +7926,11 @@ class RepoFile {
      * 
      * Finish an asynchronous start operation that was started
      * with g_file_start_mountable().
+     * @param result a #GAsyncResult
      */
     vfunc_start_mountable_finish(result: Gio.AsyncResult): boolean
     /**
-     * Stops a file of type #G_FILE_TYPE_MOUNTABLE.
+     * Stops a file of type %G_FILE_TYPE_MOUNTABLE.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
@@ -6951,6 +7939,10 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_stop_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_stop_mountable(flags: Gio.MountUnmountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6958,6 +7950,7 @@ class RepoFile {
      * 
      * Finish an asynchronous stop operation that was started
      * with g_file_stop_mountable().
+     * @param result a #GAsyncResult
      */
     vfunc_stop_mountable_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6971,15 +7964,20 @@ class RepoFile {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
      */
     vfunc_trash(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Asynchronously sends `file` to the Trash location, if possible.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_trash_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file trashing operation, started with
      * g_file_trash_async().
+     * @param result a #GAsyncResult
      */
     vfunc_trash_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6992,6 +7990,9 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_unmount_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_unmount_mountable(flags: Gio.MountUnmountFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6999,10 +8000,11 @@ class RepoFile {
      * 
      * Finish an asynchronous unmount operation that was started
      * with g_file_unmount_mountable().
+     * @param result a #GAsyncResult
      */
     vfunc_unmount_mountable_finish(result: Gio.AsyncResult): boolean
     /**
-     * Unmounts a file of type #G_FILE_TYPE_MOUNTABLE.
+     * Unmounts a file of type %G_FILE_TYPE_MOUNTABLE.
      * 
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
@@ -7011,6 +8013,10 @@ class RepoFile {
      * When the operation is finished, `callback` will be called.
      * You can then call g_file_unmount_mountable_finish() to get
      * the result of the operation.
+     * @param flags flags affecting the operation
+     * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_unmount_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation?: Gio.MountOperation | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7019,6 +8025,7 @@ class RepoFile {
      * 
      * Finish an asynchronous unmount operation that was started
      * with g_file_unmount_mountable_with_operation().
+     * @param result a #GAsyncResult
      */
     vfunc_unmount_mountable_with_operation_finish(result: Gio.AsyncResult): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7038,6 +8045,7 @@ class RepoFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7070,6 +8078,7 @@ class RepoFile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RepoFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RepoFile, pspec: GObject.ParamSpec) => void)): number
@@ -7097,6 +8106,7 @@ class RepoFile {
      * g_application_command_line_create_file_for_arg() may be more useful
      * for you there.  It is also always possible to use this function with
      * #GOptionContext arguments of type %G_OPTION_ARG_FILENAME.
+     * @param arg a command line string
      */
     static new_for_commandline_arg(arg: string): Gio.File
     /**
@@ -7111,12 +8121,15 @@ class RepoFile {
      * other than the invocation of the current process.
      * 
      * See also g_application_command_line_create_file_for_arg().
+     * @param arg a command line string
+     * @param cwd the current working directory of the commandline
      */
     static new_for_commandline_arg_and_cwd(arg: string, cwd: string): Gio.File
     /**
      * Constructs a #GFile for a given path. This operation never
      * fails, but the returned object might not support any I/O
      * operation if `path` is malformed.
+     * @param path a string containing a relative or absolute path.   The string must be encoded in the glib filename encoding.
      */
     static new_for_path(path: string): Gio.File
     /**
@@ -7124,6 +8137,7 @@ class RepoFile {
      * fails, but the returned object might not support any I/O
      * operation if `uri` is malformed or if the uri type is
      * not supported.
+     * @param uri a UTF-8 string containing a URI
      */
     static new_for_uri(uri: string): Gio.File
     /**
@@ -7137,6 +8151,7 @@ class RepoFile {
      * 
      * Unlike the other #GFile constructors, this will return %NULL if
      * a temporary file could not be created.
+     * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
      */
     static new_tmp(tmpl?: string | null): [ /* returnType */ Gio.File, /* iostream */ Gio.FileIOStream ]
     /**
@@ -7144,6 +8159,7 @@ class RepoFile {
      * given by g_file_get_parse_name()). This operation never fails,
      * but the returned object might not support any I/O operation if
      * the `parse_name` cannot be parsed.
+     * @param parse_name a file name or path to be parsed
      */
     static parse_name(parse_name: string): Gio.File
     static $gtype: GObject.Type
@@ -7153,20 +8169,30 @@ interface SePolicy_ConstructProps extends GObject.Object_ConstructProps {
     path?: Gio.File
 }
 class SePolicy {
+    /* Properties of OSTree-1.0.OSTree.SePolicy */
+    readonly path: Gio.File
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.SePolicy */
     get_csum(): string
     /**
      * Store in `out_label` the security context for the given `relpath` and
      * mode `unix_mode`.  If the policy does not specify a label, %NULL
      * will be returned.
+     * @param relpath Path
+     * @param unix_mode Unix mode
+     * @param cancellable Cancellable
      */
     get_label(relpath: string, unix_mode: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_label */ string | null ]
     get_name(): string
     get_path(): Gio.File
     /**
      * Reset the security context of `target` based on the SELinux policy.
+     * @param path Path string to use for policy lookup
+     * @param info File attributes
+     * @param target Physical path to target file
+     * @param flags Flags controlling behavior
+     * @param cancellable Cancellable
      */
     restorecon(path: string, info: Gio.FileInfo | null, target: Gio.File, flags: SePolicyRestoreconFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_label */ string | null ]
     setfscreatecon(path: string, mode: number): boolean
@@ -7205,6 +8231,10 @@ class SePolicy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7215,6 +8245,12 @@ class SePolicy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7238,6 +8274,7 @@ class SePolicy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7257,11 +8294,14 @@ class SePolicy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7269,6 +8309,8 @@ class SePolicy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7286,6 +8328,7 @@ class SePolicy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7331,6 +8374,7 @@ class SePolicy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7374,15 +8418,20 @@ class SePolicy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7423,6 +8472,7 @@ class SePolicy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7457,6 +8507,7 @@ class SePolicy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -7499,6 +8550,7 @@ class SePolicy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of OSTree-1.0.OSTree.SePolicy */
@@ -7541,6 +8593,7 @@ class SePolicy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7560,6 +8613,7 @@ class SePolicy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7592,10 +8646,13 @@ class SePolicy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SePolicy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SePolicy, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::path", callback: (($obj: SePolicy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::path", callback: (($obj: SePolicy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7607,12 +8664,16 @@ class SePolicy {
     static new(path: Gio.File, cancellable?: Gio.Cancellable | null): SePolicy
     /**
      * Cleanup function for ostree_sepolicy_setfscreatecon().
+     * @param unused 
      */
     static fscreatecon_cleanup(unused?: object | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -7622,28 +8683,43 @@ interface Sysroot_ConstructProps extends GObject.Object_ConstructProps {
     path?: Gio.File
 }
 class Sysroot {
+    /* Properties of OSTree-1.0.OSTree.Sysroot */
+    readonly path: Gio.File
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.Sysroot */
     /**
      * Delete any state that resulted from a partially completed
      * transaction, such as incomplete deployments.
+     * @param cancellable Cancellable
      */
     cleanup(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Check out deployment tree with revision `revision,` performing a 3
      * way merge with `provided_merge_deployment` for configuration.
+     * @param osname osname to use for merge deployment
+     * @param revision Checksum to add
+     * @param origin Origin to use for upgrades
+     * @param provided_merge_deployment Use this deployment for merge path
+     * @param override_kernel_argv Use these as kernel arguments; if %NULL, inherit options from provided_merge_deployment
+     * @param cancellable Cancellable
      */
     deploy_tree(osname: string | null, revision: string, origin?: GLib.KeyFile | null, provided_merge_deployment?: Deployment | null, override_kernel_argv?: string[] | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_deployment */ Deployment ]
     /**
      * Entirely replace the kernel arguments of `deployment` with the
      * values in `new_kargs`.
+     * @param deployment A deployment
+     * @param new_kargs Replace deployment's kernel arguments
+     * @param cancellable Cancellable
      */
     deployment_set_kargs(deployment: Deployment, new_kargs: string[], cancellable?: Gio.Cancellable | null): boolean
     /**
      * By default, deployment directories are not mutable.  This function
      * will allow making them temporarily mutable, for example to allow
      * layering additional non-OSTree content.
+     * @param deployment A deployment
+     * @param is_mutable Whether or not deployment's files can be changed
+     * @param cancellable 
      */
     deployment_set_mutable(deployment: Deployment, is_mutable: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -7653,11 +8729,15 @@ class Sysroot {
      * 
      * The `OSTREE_DEPLOYMENT_UNLOCKED_HOTFIX` state is persistent
      * across reboots.
+     * @param deployment Deployment
+     * @param unlocked_state Transition to this unlocked state
+     * @param cancellable Cancellable
      */
     deployment_unlock(deployment: Deployment, unlocked_state: DeploymentUnlockedState, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Ensure that `self` is set up as a valid rootfs, by creating
      * /ostree/repo, among other things.
+     * @param cancellable Cancellable
      */
     ensure_initialized(cancellable?: Gio.Cancellable | null): boolean
     get_booted_deployment(): Deployment
@@ -7667,6 +8747,7 @@ class Sysroot {
      * Note this function only returns a *relative* path - if you want
      * to access, it, you must either use fd-relative api such as openat(),
      * or concatenate it with the full ostree_sysroot_get_path().
+     * @param deployment A deployment
      */
     get_deployment_dirpath(deployment: Deployment): string
     get_deployments(): Deployment[]
@@ -7679,11 +8760,13 @@ class Sysroot {
     /**
      * Find the deployment to use as a configuration merge source; this is
      * the first one in the current deployment list which matches osname.
+     * @param osname Operating system group
      */
     get_merge_deployment(osname?: string | null): Deployment
     get_path(): Gio.File
     /**
      * Retrieve the OSTree repository in sysroot `self`.
+     * @param cancellable Cancellable
      */
     get_repo(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_repo */ Repo ]
     get_subbootversion(): number
@@ -7691,11 +8774,14 @@ class Sysroot {
      * Initialize the directory structure for an "osname", which is a
      * group of operating system deployments, with a shared `/var`.  One
      * is required for generating a deployment.
+     * @param osname Name group of operating system checkouts
+     * @param cancellable Cancellable
      */
     init_osname(osname: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Load deployment list, bootversion, and subbootversion from the
      * rootfs `self`.
+     * @param cancellable Cancellable
      */
     load(cancellable?: Gio.Cancellable | null): boolean
     load_if_changed(out_changed: boolean, cancellable?: Gio.Cancellable | null): boolean
@@ -7710,16 +8796,20 @@ class Sysroot {
     lock(): boolean
     /**
      * An asynchronous version of ostree_sysroot_lock().
+     * @param cancellable Cancellable
+     * @param callback Callback
      */
     lock_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Call when ostree_sysroot_lock_async() is ready.
+     * @param result Result
      */
     lock_finish(result: Gio.AsyncResult): boolean
     origin_new_from_refspec(refspec: string): GLib.KeyFile
     /**
      * Like ostree_sysroot_cleanup() in that it cleans up incomplete deployments
      * and old boot versions, but does NOT prune the repository.
+     * @param cancellable Cancellable
      */
     prepare_cleanup(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -7734,6 +8824,11 @@ class Sysroot {
      * If %OSTREE_SYSROOT_SIMPLE_WRITE_DEPLOYMENT_FLAGS_NOT_DEFAULT is
      * specified, then instead of prepending, the new deployment will be
      * added right after the booted or merge deployment, instead of first.
+     * @param osname OS name
+     * @param new_deployment Prepend this deployment to the list
+     * @param merge_deployment Use this deployment for configuration merge
+     * @param flags Flags controlling behavior
+     * @param cancellable Cancellable
      */
     simple_write_deployment(osname: string | null, new_deployment: Deployment, merge_deployment: Deployment | null, flags: SysrootSimpleWriteDeploymentFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -7764,12 +8859,17 @@ class Sysroot {
     /**
      * Assuming `new_deployments` have already been deployed in place on
      * disk, atomically update bootloader configuration.
+     * @param new_deployments List of new deployments
+     * @param cancellable Cancellable
      */
     write_deployments(new_deployments: Deployment[], cancellable?: Gio.Cancellable | null): boolean
     /**
      * Immediately replace the origin file of the referenced `deployment`
      * with the contents of `new_origin`.  If `new_origin` is %NULL,
      * this function will write the current origin of `deployment`.
+     * @param deployment Deployment
+     * @param new_origin Origin content
+     * @param cancellable Cancellable
      */
     write_origin_file(deployment: Deployment, new_origin?: GLib.KeyFile | null, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -7807,6 +8907,10 @@ class Sysroot {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7817,6 +8921,12 @@ class Sysroot {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7840,6 +8950,7 @@ class Sysroot {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7859,11 +8970,14 @@ class Sysroot {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7871,6 +8985,8 @@ class Sysroot {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7888,6 +9004,7 @@ class Sysroot {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7933,6 +9050,7 @@ class Sysroot {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7976,15 +9094,20 @@ class Sysroot {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8025,6 +9148,7 @@ class Sysroot {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8059,6 +9183,7 @@ class Sysroot {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8078,6 +9203,7 @@ class Sysroot {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8110,10 +9236,13 @@ class Sysroot {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Sysroot, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Sysroot, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::path", callback: (($obj: Sysroot, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::path", callback: (($obj: Sysroot, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8134,12 +9263,17 @@ interface SysrootUpgrader_ConstructProps extends GObject.Object_ConstructProps {
     sysroot?: Sysroot
 }
 class SysrootUpgrader {
+    /* Properties of OSTree-1.0.OSTree.SysrootUpgrader */
+    readonly flags: SysrootUpgraderFlags
+    readonly osname: string
+    readonly sysroot: Sysroot
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of OSTree-1.0.OSTree.SysrootUpgrader */
     /**
      * Write the new deployment to disk, perform a configuration merge
      * with /etc, and update the bootloader configuration.
+     * @param cancellable Cancellable
      */
     deploy(cancellable?: Gio.Cancellable | null): boolean
     dup_origin(): GLib.KeyFile
@@ -8152,16 +9286,28 @@ class SysrootUpgrader {
      * 
      * If the origin remote is unchanged, `out_changed` will be set to
      * %FALSE.
+     * @param flags Flags controlling pull behavior
+     * @param upgrader_flags Flags controlling upgrader behavior
+     * @param progress Progress
+     * @param cancellable Cancellable
      */
     pull(flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress?: AsyncProgress | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_changed */ boolean ]
     /**
      * Like ostree_sysroot_upgrader_pull(), but allows retrieving just a
      * subpath of the tree.  This can be used to download metadata files
      * from inside the tree such as package databases.
+     * @param dir_to_pull 
+     * @param flags 
+     * @param upgrader_flags 
+     * @param progress 
+     * @param out_changed 
+     * @param cancellable 
      */
     pull_one_dir(dir_to_pull: string, flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: AsyncProgress, out_changed: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Replace the origin with `origin`.
+     * @param origin The new origin
+     * @param cancellable Cancellable
      */
     set_origin(origin?: GLib.KeyFile | null, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8199,6 +9345,10 @@ class SysrootUpgrader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8209,6 +9359,12 @@ class SysrootUpgrader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8232,6 +9388,7 @@ class SysrootUpgrader {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8251,11 +9408,14 @@ class SysrootUpgrader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8263,6 +9423,8 @@ class SysrootUpgrader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8280,6 +9442,7 @@ class SysrootUpgrader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8325,6 +9488,7 @@ class SysrootUpgrader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8368,15 +9532,20 @@ class SysrootUpgrader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8417,6 +9586,7 @@ class SysrootUpgrader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8451,6 +9621,7 @@ class SysrootUpgrader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -8493,6 +9664,7 @@ class SysrootUpgrader {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of OSTree-1.0.OSTree.SysrootUpgrader */
@@ -8535,6 +9707,7 @@ class SysrootUpgrader {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8554,6 +9727,7 @@ class SysrootUpgrader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8586,10 +9760,17 @@ class SysrootUpgrader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SysrootUpgrader, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SysrootUpgrader, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::flags", callback: (($obj: SysrootUpgrader, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::flags", callback: (($obj: SysrootUpgrader, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::osname", callback: (($obj: SysrootUpgrader, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::osname", callback: (($obj: SysrootUpgrader, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sysroot", callback: (($obj: SysrootUpgrader, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sysroot", callback: (($obj: SysrootUpgrader, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8605,20 +9786,26 @@ class SysrootUpgrader {
      * Check that the timestamp on `to_rev` is equal to or newer than
      * `from_rev`.  This protects systems against man-in-the-middle
      * attackers which provide a client with an older commit.
+     * @param repo Repo
+     * @param from_rev From revision
+     * @param to_rev To revision
      */
     static check_timestamps(repo: Repo, from_rev: string, to_rev: string): boolean
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
 }
 abstract class AsyncProgressClass {
     /* Fields of OSTree-1.0.OSTree.AsyncProgressClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly changed: (self: AsyncProgress) => void
+    parent_class: GObject.ObjectClass
+    changed: (self: AsyncProgress) => void
     static name: string
 }
 class Bootloader {
@@ -8629,11 +9816,11 @@ class BootloaderGrub2 {
 }
 class BootloaderInterface {
     /* Fields of OSTree-1.0.OSTree.BootloaderInterface */
-    readonly g_iface: GObject.TypeInterface
-    readonly query: (bootloader: Bootloader, out_is_active: boolean, cancellable: Gio.Cancellable) => boolean
-    readonly get_name: (self: Bootloader) => string
-    readonly write_config: (self: Bootloader, bootversion: number, cancellable: Gio.Cancellable) => boolean
-    readonly is_atomic: (self: Bootloader) => boolean
+    g_iface: GObject.TypeInterface
+    query: (bootloader: Bootloader, out_is_active: boolean, cancellable: Gio.Cancellable) => boolean
+    get_name: (self: Bootloader) => string
+    write_config: (self: Bootloader, bootversion: number, cancellable: Gio.Cancellable) => boolean
+    is_atomic: (self: Bootloader) => boolean
     static name: string
 }
 class BootloaderSyslinux {
@@ -8644,7 +9831,7 @@ class BootloaderUboot {
 }
 abstract class ChecksumInputStreamClass {
     /* Fields of OSTree-1.0.OSTree.ChecksumInputStreamClass */
-    readonly parent_class: Gio.FilterInputStreamClass
+    parent_class: Gio.FilterInputStreamClass
     static name: string
 }
 class ChecksumInputStreamPrivate {
@@ -8652,21 +9839,21 @@ class ChecksumInputStreamPrivate {
 }
 class CmdPrivateVTable {
     /* Fields of OSTree-1.0.OSTree.CmdPrivateVTable */
-    readonly ostree_generate_grub2_config: (sysroot: Sysroot, bootversion: number, target_fd: number, cancellable: Gio.Cancellable) => boolean
-    readonly ostree_static_delta_dump: (repo: Repo, delta_id: string, cancellable: Gio.Cancellable) => boolean
-    readonly ostree_static_delta_query_exists: (repo: Repo, delta_id: string, out_exists: boolean, cancellable: Gio.Cancellable) => boolean
-    readonly ostree_static_delta_delete: (repo: Repo, delta_id: string, cancellable: Gio.Cancellable) => boolean
+    ostree_generate_grub2_config: (sysroot: Sysroot, bootversion: number, target_fd: number, cancellable: Gio.Cancellable) => boolean
+    ostree_static_delta_dump: (repo: Repo, delta_id: string, cancellable: Gio.Cancellable) => boolean
+    ostree_static_delta_query_exists: (repo: Repo, delta_id: string, out_exists: boolean, cancellable: Gio.Cancellable) => boolean
+    ostree_static_delta_delete: (repo: Repo, delta_id: string, cancellable: Gio.Cancellable) => boolean
     static name: string
 }
 class DiffItem {
     /* Fields of OSTree-1.0.OSTree.DiffItem */
-    readonly refcount: number
-    readonly src: Gio.File
-    readonly target: Gio.File
-    readonly src_info: Gio.FileInfo
-    readonly target_info: Gio.FileInfo
-    readonly src_checksum: string
-    readonly target_checksum: string
+    refcount: number
+    src: Gio.File
+    target: Gio.File
+    src_info: Gio.FileInfo
+    target_info: Gio.FileInfo
+    src_checksum: string
+    target_checksum: string
     /* Methods of OSTree-1.0.OSTree.DiffItem */
     ref(): DiffItem
     unref(): void
@@ -8677,12 +9864,12 @@ class GpgVerifier {
 }
 class LibarchiveInputStream {
     /* Fields of OSTree-1.0.OSTree.LibarchiveInputStream */
-    readonly parent_instance: Gio.InputStream
+    parent_instance: Gio.InputStream
     static name: string
 }
 class LibarchiveInputStreamClass {
     /* Fields of OSTree-1.0.OSTree.LibarchiveInputStreamClass */
-    readonly parent_class: Gio.InputStreamClass
+    parent_class: Gio.InputStreamClass
     static name: string
 }
 class LibarchiveInputStreamPrivate {
@@ -8693,7 +9880,7 @@ class LzmaCompressor {
 }
 class LzmaCompressorClass {
     /* Fields of OSTree-1.0.OSTree.LzmaCompressorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class LzmaDecompressor {
@@ -8701,48 +9888,48 @@ class LzmaDecompressor {
 }
 class LzmaDecompressorClass {
     /* Fields of OSTree-1.0.OSTree.LzmaDecompressorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class MutableTreeClass {
     /* Fields of OSTree-1.0.OSTree.MutableTreeClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MutableTreeIter {
     /* Fields of OSTree-1.0.OSTree.MutableTreeIter */
-    readonly in_files: boolean
-    readonly iter: GLib.HashTableIter
+    in_files: boolean
+    iter: GLib.HashTableIter
     static name: string
 }
 class RepoCheckoutAtOptions {
     /* Fields of OSTree-1.0.OSTree.RepoCheckoutAtOptions */
-    readonly mode: RepoCheckoutMode
-    readonly overwrite_mode: RepoCheckoutOverwriteMode
-    readonly enable_uncompressed_cache: boolean
-    readonly enable_fsync: boolean
-    readonly process_whiteouts: boolean
-    readonly no_copy_fallback: boolean
-    readonly unused_bools: boolean[]
-    readonly subpath: string
-    readonly devino_to_csum_cache: RepoDevInoCache
-    readonly unused_ints: number[]
-    readonly unused_ptrs: object[]
+    mode: RepoCheckoutMode
+    overwrite_mode: RepoCheckoutOverwriteMode
+    enable_uncompressed_cache: boolean
+    enable_fsync: boolean
+    process_whiteouts: boolean
+    no_copy_fallback: boolean
+    unused_bools: boolean[]
+    subpath: string
+    devino_to_csum_cache: RepoDevInoCache
+    unused_ints: number[]
+    unused_ptrs: object[]
     static name: string
 }
 class RepoCheckoutOptions {
     /* Fields of OSTree-1.0.OSTree.RepoCheckoutOptions */
-    readonly mode: RepoCheckoutMode
-    readonly overwrite_mode: RepoCheckoutOverwriteMode
-    readonly enable_uncompressed_cache: number
-    readonly disable_fsync: number
-    readonly process_whiteouts: number
-    readonly no_copy_fallback: number
-    readonly reserved: number
-    readonly subpath: string
-    readonly devino_to_csum_cache: RepoDevInoCache
-    readonly unused_uints: number[]
-    readonly unused_ptrs: object[]
+    mode: RepoCheckoutMode
+    overwrite_mode: RepoCheckoutOverwriteMode
+    enable_uncompressed_cache: number
+    disable_fsync: number
+    process_whiteouts: number
+    no_copy_fallback: number
+    reserved: number
+    subpath: string
+    devino_to_csum_cache: RepoDevInoCache
+    unused_uints: number[]
+    unused_ptrs: object[]
     static name: string
 }
 class RepoCommitModifier {
@@ -8759,6 +9946,7 @@ class RepoCommitModifier {
      * 
      * This function will add a reference to `cache` without copying - you
      * should avoid further mutation of the cache.
+     * @param cache A hash table caching device,inode to checksums
      */
     set_devino_cache(cache: RepoDevInoCache): void
     /**
@@ -8770,6 +9958,7 @@ class RepoCommitModifier {
      * ostree_repo_commit_modifier_set_xattr_callback().  However if both
      * specify a value for "security.selinux", then the one from the
      * policy wins.
+     * @param sepolicy Policy to use for labeling
      */
     set_sepolicy(sepolicy?: SePolicy | null): void
     /**
@@ -8777,6 +9966,7 @@ class RepoCommitModifier {
      * the given path.  This is useful for things like ACLs and SELinux,
      * where a build system can label the files as it's committing to the
      * repository.
+     * @param callback Function to be invoked, should return extended attributes for path
      */
     set_xattr_callback(callback: RepoCommitModifierXattrCallback): void
     unref(): void
@@ -8788,9 +9978,9 @@ class RepoCommitModifier {
 }
 class RepoCommitTraverseIter {
     /* Fields of OSTree-1.0.OSTree.RepoCommitTraverseIter */
-    readonly initialized: boolean
-    readonly dummy: object[]
-    readonly dummy_checksum_data: number[]
+    initialized: boolean
+    dummy: object[]
+    dummy_checksum_data: number[]
     /* Methods of OSTree-1.0.OSTree.RepoCommitTraverseIter */
     clear(): void
     /**
@@ -8807,10 +9997,16 @@ class RepoCommitTraverseIter {
     get_file(): [ /* out_name */ string, /* out_checksum */ string ]
     /**
      * Initialize (in place) an iterator over the root of a commit object.
+     * @param repo A repo
+     * @param commit Variant of type %OSTREE_OBJECT_TYPE_COMMIT
+     * @param flags Flags
      */
     init_commit(repo: Repo, commit: GLib.Variant, flags: RepoCommitTraverseFlags): boolean
     /**
      * Initialize (in place) an iterator over a directory tree.
+     * @param repo A repo
+     * @param dirtree Variant of type %OSTREE_OBJECT_TYPE_DIR_TREE
+     * @param flags Flags
      */
     init_dirtree(repo: Repo, dirtree: GLib.Variant, flags: RepoCommitTraverseFlags): boolean
     /**
@@ -8826,6 +10022,7 @@ class RepoCommitTraverseIter {
      * If %OSTREE_REPO_COMMIT_ITER_RESULT_ERROR is returned, it is a
      * program error to call any further API on `iter` except for
      * ostree_repo_commit_traverse_iter_clear().
+     * @param cancellable Cancellable
      */
     next(cancellable?: Gio.Cancellable | null): RepoCommitIterResult
     static name: string
@@ -8844,17 +10041,17 @@ class RepoDevInoCache {
 }
 class RepoExportArchiveOptions {
     /* Fields of OSTree-1.0.OSTree.RepoExportArchiveOptions */
-    readonly disable_xattrs: number
-    readonly reserved: number
-    readonly timestamp_secs: number
-    readonly unused_uint: number[]
-    readonly path_prefix: string
-    readonly unused_ptrs: object[]
+    disable_xattrs: number
+    reserved: number
+    timestamp_secs: number
+    unused_uint: number[]
+    path_prefix: string
+    unused_ptrs: object[]
     static name: string
 }
 abstract class RepoFileClass {
     /* Fields of OSTree-1.0.OSTree.RepoFileClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class RepoFileEnumerator {
@@ -8862,18 +10059,18 @@ class RepoFileEnumerator {
 }
 class RepoFileEnumeratorClass {
     /* Fields of OSTree-1.0.OSTree.RepoFileEnumeratorClass */
-    readonly parent_class: Gio.FileEnumeratorClass
+    parent_class: Gio.FileEnumeratorClass
     static name: string
 }
 class RepoImportArchiveOptions {
     /* Fields of OSTree-1.0.OSTree.RepoImportArchiveOptions */
-    readonly ignore_unsupported_content: number
-    readonly autocreate_parents: number
-    readonly use_ostree_convention: number
-    readonly callback_with_entry_pathname: number
-    readonly reserved: number
-    readonly unused_uint: number[]
-    readonly unused_ptrs: object[]
+    ignore_unsupported_content: number
+    autocreate_parents: number
+    use_ostree_convention: number
+    callback_with_entry_pathname: number
+    reserved: number
+    unused_uint: number[]
+    unused_ptrs: object[]
     static name: string
 }
 class RepoTransactionStats {
@@ -8882,54 +10079,54 @@ class RepoTransactionStats {
      * The total number of metadata objects
      * in the repository after this transaction has completed.
      */
-    readonly metadata_objects_total: number
+    metadata_objects_total: number
     /**
      * The number of metadata objects that
      * were written to the repository in this transaction.
      */
-    readonly metadata_objects_written: number
+    metadata_objects_written: number
     /**
      * The total number of content objects
      * in the repository after this transaction has completed.
      */
-    readonly content_objects_total: number
+    content_objects_total: number
     /**
      * The number of content objects that
      * were written to the repository in this transaction.
      */
-    readonly content_objects_written: number
+    content_objects_written: number
     /**
      * The amount of data added to the repository,
      * in bytes, counting only content objects.
      */
-    readonly content_bytes_written: number
+    content_bytes_written: number
     /**
      * reserved
      */
-    readonly padding1: number
+    padding1: number
     /**
      * reserved
      */
-    readonly padding2: number
+    padding2: number
     /**
      * reserved
      */
-    readonly padding3: number
+    padding3: number
     /**
      * reserved
      */
-    readonly padding4: number
+    padding4: number
     static name: string
 }
 class RollsumMatches {
     /* Fields of OSTree-1.0.OSTree.RollsumMatches */
-    readonly from_rollsums: GLib.HashTable
-    readonly to_rollsums: GLib.HashTable
-    readonly crcmatches: number
-    readonly bufmatches: number
-    readonly total: number
-    readonly match_size: number
-    readonly matches: object[]
+    from_rollsums: GLib.HashTable
+    to_rollsums: GLib.HashTable
+    crcmatches: number
+    bufmatches: number
+    total: number
+    match_size: number
+    matches: object[]
     static name: string
 }
 class TlsCertInteraction {

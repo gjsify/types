@@ -736,6 +736,15 @@ class Array {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -745,7 +754,7 @@ class Array {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Array */
     /**
      * Creates a deep copy of #ICalArray with the same properties as the `array`.
@@ -753,6 +762,7 @@ class Array {
     copy(): Array
     /**
      * Removes the element at the `position` from the array.
+     * @param position The position in which the element will be removed from the array
      */
     removeElementAt(position: number): void
     /**
@@ -765,6 +775,7 @@ class Array {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -786,6 +797,7 @@ class Array {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -795,15 +807,18 @@ class Array {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -846,6 +861,10 @@ class Array {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -856,6 +875,12 @@ class Array {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -879,6 +904,7 @@ class Array {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -898,11 +924,14 @@ class Array {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -910,6 +939,8 @@ class Array {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -927,6 +958,7 @@ class Array {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -972,6 +1004,7 @@ class Array {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1015,15 +1048,20 @@ class Array {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1064,6 +1102,7 @@ class Array {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1098,6 +1137,7 @@ class Array {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1129,6 +1169,7 @@ class Array {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1140,6 +1181,16 @@ class Array {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1172,6 +1223,15 @@ class Attach {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -1181,7 +1241,7 @@ class Attach {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Attach */
     /**
      * Gets the data, if the #ICalAttach is built from the data.
@@ -1201,6 +1261,7 @@ class Attach {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -1222,6 +1283,7 @@ class Attach {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -1231,15 +1293,18 @@ class Attach {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -1282,6 +1347,10 @@ class Attach {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1292,6 +1361,12 @@ class Attach {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1315,6 +1390,7 @@ class Attach {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1334,11 +1410,14 @@ class Attach {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1346,6 +1425,8 @@ class Attach {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1363,6 +1444,7 @@ class Attach {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1408,6 +1490,7 @@ class Attach {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1451,15 +1534,20 @@ class Attach {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1500,6 +1588,7 @@ class Attach {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1534,6 +1623,7 @@ class Attach {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1565,6 +1655,7 @@ class Attach {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1576,6 +1667,16 @@ class Attach {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1612,6 +1713,15 @@ class CompIter {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -1621,7 +1731,7 @@ class CompIter {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.CompIter */
     /**
      * Gets the current #ICalComponent pointed by #ICalCompIter.
@@ -1641,6 +1751,7 @@ class CompIter {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -1662,6 +1773,7 @@ class CompIter {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -1671,15 +1783,18 @@ class CompIter {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -1722,6 +1837,10 @@ class CompIter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1732,6 +1851,12 @@ class CompIter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1755,6 +1880,7 @@ class CompIter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1774,11 +1900,14 @@ class CompIter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1786,6 +1915,8 @@ class CompIter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1803,6 +1934,7 @@ class CompIter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1848,6 +1980,7 @@ class CompIter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1891,15 +2024,20 @@ class CompIter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1940,6 +2078,7 @@ class CompIter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1974,6 +2113,7 @@ class CompIter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2005,6 +2145,7 @@ class CompIter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2016,6 +2157,16 @@ class CompIter {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2048,6 +2199,15 @@ class Component {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -2057,14 +2217,16 @@ class Component {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Component */
     /**
      * Adds a #ICalComponent into another #ICalComponent as a child component.
+     * @param child A child #ICalComponent
      */
     addComponent(child: Component): void
     /**
      * Adds an #ICalProperty into #ICalComponent.
+     * @param property An #ICalProperty
      */
     addProperty(property: Property): void
     /**
@@ -2073,6 +2235,7 @@ class Component {
     asIcalString(): string
     /**
      * Gets the #ICalCompIter pointing to the first child #ICalComponent.
+     * @param kind A #ICalComponentKind
      */
     beginComponent(kind: ComponentKind): CompIter
     /**
@@ -2089,6 +2252,7 @@ class Component {
     convertErrors(): void
     /**
      * Counts the child #ICalComponent with the target kind in the parent one.
+     * @param kind The target #ICalComponentKind
      */
     countComponents(kind: ComponentKind): number
     /**
@@ -2097,16 +2261,20 @@ class Component {
     countErrors(): number
     /**
      * Counts the number of #ICalProperty in #ICalComponent.
+     * @param kind A #ICalPropertyKind
      */
     countProperties(kind: PropertyKind): number
     /**
      * Gets the #ICalCompIter pointing to the end child #ICalComponent.
+     * @param kind A #ICalComponentKind
      */
     endComponent(kind: ComponentKind): CompIter
     /**
      * Cycles through all recurrences of an event. This function will call the specified callback function for
      * once for the base value of DTSTART, and foreach recurring date/time value. It will filter out events
      * that are specified as an EXDATE or an EXRULE.
+     * @param start Ignore timespans before this
+     * @param end Ignore timespans after this
      */
     foreachRecurrence(start: Time, end: Time): void
     /**
@@ -2151,10 +2319,12 @@ class Component {
     getDuration(): Duration
     /**
      * Gets the first #ICalComponent with specific kind in #ICalComponent.
+     * @param kind A #ICalComponentKind
      */
     getFirstComponent(kind: ComponentKind): Component | null
     /**
      * Gets the first #ICalProperty with specific kind in #ICalComponent.
+     * @param kind A #ICalPropertyKind
      */
     getFirstProperty(kind: PropertyKind): Property | null
     /**
@@ -2175,10 +2345,12 @@ class Component {
     getMethod(): PropertyMethod
     /**
      * Gets the next #ICalComponent with specific kind in #ICalComponent.
+     * @param kind A #ICalComponentKind
      */
     getNextComponent(kind: ComponentKind): Component | null
     /**
      * Gets the next #ICalProperty with specific kind in #ICalComponent.
+     * @param kind A #ICalPropertyKind
      */
     getNextProperty(kind: PropertyKind): Property | null
     /**
@@ -2211,6 +2383,7 @@ class Component {
     getSummary(): string
     /**
      * Returns the icaltimezone in the component corresponding to the TZID, or NULL if it can't be found.
+     * @param tzid A string representing timezone
      */
     getTimezone(tzid: string): Timezone | null
     /**
@@ -2232,79 +2405,98 @@ class Component {
     /**
      * Takes 2 VCALENDAR components and merges the second one into the first, resolving any problems with conflicting
      * TZIDs. comp_to_merge will no longer exist after calling this function.
+     * @param compToMerge A #ICalComponent. After merged it will not exist any more.
      */
     mergeComponent(compToMerge: Component): void
     /**
      * Removes a child #ICalComponent from another #ICalComponent.
+     * @param child A child #ICalComponent
      */
     removeComponent(child: Component): void
     /**
      * Removes #ICalProperty from #ICalComponent. Caution: The compare is based on address. So you must use
      * the original #ICalProperty as the target.
+     * @param property A #ICalProperty
      */
     removeProperty(property: Property): void
     /**
      * Sets the comment of the #ICalComponent.
+     * @param v A string representing comment
      */
     setComment(v: string): void
     /**
      * Sets the description of the #ICalComponent.
+     * @param v A string representing description
      */
     setDescription(v: string): void
     /**
      * Sets the dtend of the #ICalComponent.
+     * @param v A #ICalTime
      */
     setDtend(v: Time): void
     /**
      * Sets the dtstamp of the #ICalComponent.
+     * @param v A #ICalTime
      */
     setDtstamp(v: Time): void
     /**
      * Sets the dtstart of the #ICalComponent.
+     * @param v A #ICalTime
      */
     setDtstart(v: Time): void
     /**
      * Sets the due of the #ICalComponent.
+     * @param v A #ICalTime
      */
     setDue(v: Time): void
     /**
      * Sets the duration of the #ICalComponent.
+     * @param v A #ICalDuration
      */
     setDuration(v: Duration): void
     /**
      * Sets the location of the #ICalComponent.
+     * @param v A string representing location
      */
     setLocation(v: string): void
     /**
      * Sets the method of the #ICalComponent.
+     * @param method A #ICalPropertyMethod
      */
     setMethod(method: PropertyMethod): void
     /**
      * Sets the `parent` #ICalComponent of the specified `component`.
+     * @param parent An #ICalComponent, a new parent
      */
     setParent(parent?: Component | null): void
     /**
      * Sets the recurrenceid of the #ICalComponent.
+     * @param v A #ICalTime
      */
     setRecurrenceid(v: Time): void
     /**
      * Sets the relcalid of the #ICalComponent.
+     * @param v A string representing relcalid
      */
     setRelcalid(v: string): void
     /**
      * Sets the sequence of the #ICalComponent.
+     * @param v The sequence number
      */
     setSequence(v: number): void
     /**
      * Sets the status of the #ICalComponent.
+     * @param status A #ICalPropertyStatus
      */
     setStatus(status: PropertyStatus): void
     /**
      * Sets the summary of the #ICalComponent.
+     * @param v A string representing summary
      */
     setSummary(v: string): void
     /**
      * Sets the uid of the #ICalComponent.
+     * @param v A string representing uid
      */
     setUid(v: string): void
     /**
@@ -2317,6 +2509,7 @@ class Component {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -2338,6 +2531,7 @@ class Component {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -2347,15 +2541,18 @@ class Component {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -2398,6 +2595,10 @@ class Component {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2408,6 +2609,12 @@ class Component {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2431,6 +2638,7 @@ class Component {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2450,11 +2658,14 @@ class Component {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2462,6 +2673,8 @@ class Component {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2479,6 +2692,7 @@ class Component {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2524,6 +2738,7 @@ class Component {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2567,15 +2782,20 @@ class Component {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2616,6 +2836,7 @@ class Component {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2650,6 +2871,7 @@ class Component {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2681,6 +2903,7 @@ class Component {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2692,6 +2915,16 @@ class Component {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2734,14 +2967,17 @@ class Component {
     static newXvote(): Component
     /**
      * Converts a string to a #ICalComponentKind.
+     * @param string A string
      */
     static kindFromString(string: string): ComponentKind
     /**
      * Checks if a #ICalComponentKind is valid.
+     * @param kind A #ICalComponentKind
      */
     static kindIsValid(kind: ComponentKind): boolean
     /**
      * Converts a #ICalComponentKind to a string.
+     * @param kind A #ICalComponentKind
      */
     static kindToString(kind: ComponentKind): string
     static $gtype: GObject.Type
@@ -2756,6 +2992,15 @@ class Datetimeperiod {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -2765,7 +3010,7 @@ class Datetimeperiod {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Datetimeperiod */
     /**
      * Gets the period attribute of #ICalDatetimeperiod.
@@ -2777,10 +3022,12 @@ class Datetimeperiod {
     getTime(): Time
     /**
      * Sets the period attribute of #ICalDatetimeperiod.
+     * @param period The period attribute of `dtp`
      */
     setPeriod(period: Period): void
     /**
      * Sets the time attribute of #ICalDatetimeperiod.
+     * @param time The time attribute of `dtp`
      */
     setTime(time: Time): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -2789,6 +3036,7 @@ class Datetimeperiod {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -2810,6 +3058,7 @@ class Datetimeperiod {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -2819,15 +3068,18 @@ class Datetimeperiod {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -2870,6 +3122,10 @@ class Datetimeperiod {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2880,6 +3136,12 @@ class Datetimeperiod {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2903,6 +3165,7 @@ class Datetimeperiod {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2922,11 +3185,14 @@ class Datetimeperiod {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2934,6 +3200,8 @@ class Datetimeperiod {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2951,6 +3219,7 @@ class Datetimeperiod {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2996,6 +3265,7 @@ class Datetimeperiod {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3039,15 +3309,20 @@ class Datetimeperiod {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3088,6 +3363,7 @@ class Datetimeperiod {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3122,6 +3398,7 @@ class Datetimeperiod {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3153,6 +3430,7 @@ class Datetimeperiod {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3164,6 +3442,16 @@ class Datetimeperiod {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -3198,6 +3486,15 @@ class Duration {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -3207,7 +3504,7 @@ class Duration {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Duration */
     /**
      * Converts the #ICalDuration to the representation in string.
@@ -3251,26 +3548,32 @@ class Duration {
     isNullDuration(): boolean
     /**
      * Sets the days of #ICalDuration.
+     * @param days The days
      */
     setDays(days: number): void
     /**
      * Sets the hours of #ICalDuration.
+     * @param hours The hours
      */
     setHours(hours: number): void
     /**
      * Sets the is_neg of #ICalDuration.
+     * @param isNeg The is_neg
      */
     setIsNeg(isNeg: boolean): void
     /**
      * Sets the minutes of #ICalDuration.
+     * @param minutes The minutes
      */
     setMinutes(minutes: number): void
     /**
      * Sets the seconds of #ICalDuration.
+     * @param seconds The seconds
      */
     setSeconds(seconds: number): void
     /**
      * Sets the weeks of #ICalDuration.
+     * @param weeks The weeks
      */
     setWeeks(weeks: number): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -3279,6 +3582,7 @@ class Duration {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -3300,6 +3604,7 @@ class Duration {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -3309,15 +3614,18 @@ class Duration {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -3360,6 +3668,10 @@ class Duration {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3370,6 +3682,12 @@ class Duration {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3393,6 +3711,7 @@ class Duration {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3412,11 +3731,14 @@ class Duration {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3424,6 +3746,8 @@ class Duration {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3441,6 +3765,7 @@ class Duration {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3486,6 +3811,7 @@ class Duration {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3529,15 +3855,20 @@ class Duration {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3578,6 +3909,7 @@ class Duration {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3612,6 +3944,7 @@ class Duration {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3643,6 +3976,7 @@ class Duration {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3654,6 +3988,16 @@ class Duration {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -3691,6 +4035,15 @@ class Geo {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -3700,7 +4053,7 @@ class Geo {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Geo */
     /**
      * Creates a new #ICalGeo, copy of `geo`.
@@ -3716,10 +4069,12 @@ class Geo {
     getLon(): number
     /**
      * Sets the latitude of #ICalGeo.
+     * @param lat The latitude
      */
     setLat(lat: number): void
     /**
      * Sets the longitude of #ICalGeo.
+     * @param lon The longitude
      */
     setLon(lon: number): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -3728,6 +4083,7 @@ class Geo {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -3749,6 +4105,7 @@ class Geo {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -3758,15 +4115,18 @@ class Geo {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -3809,6 +4169,10 @@ class Geo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3819,6 +4183,12 @@ class Geo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3842,6 +4212,7 @@ class Geo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3861,11 +4232,14 @@ class Geo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3873,6 +4247,8 @@ class Geo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3890,6 +4266,7 @@ class Geo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3935,6 +4312,7 @@ class Geo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3978,15 +4356,20 @@ class Geo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4027,6 +4410,7 @@ class Geo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4061,6 +4445,7 @@ class Geo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4092,6 +4477,7 @@ class Geo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4103,6 +4489,16 @@ class Geo {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4161,6 +4557,15 @@ class Object {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -4170,13 +4575,14 @@ class Object {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
     /**
      * Adds a `depender` into the list of objects which should not be destroyed before
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -4198,6 +4604,7 @@ class Object {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -4207,15 +4614,18 @@ class Object {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -4258,6 +4668,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4268,6 +4682,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4291,6 +4711,7 @@ class Object {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4310,11 +4731,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4322,6 +4746,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4339,6 +4765,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4384,6 +4811,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4427,15 +4855,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4476,6 +4909,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4510,6 +4944,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4541,6 +4976,7 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4552,6 +4988,16 @@ class Object {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4590,6 +5036,15 @@ class Parameter {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -4599,7 +5054,7 @@ class Parameter {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Parameter */
     /**
      * Converts an #ICalParameter to the string representation.
@@ -4676,6 +5131,7 @@ class Parameter {
     getXvalue(): string | null
     /**
      * Checks whether native parts of two #ICalParameters have the same name.
+     * @param param2 The #ICalParameter to be checked
      */
     hasSameName(param2: Parameter): number
     /**
@@ -4702,10 +5158,12 @@ class Parameter {
     setIana(v: string): void
     /**
      * Sets the iana_name property of the native part of the #ICalParameter.
+     * @param v The name to be set into the `param`
      */
     setIanaName(v: string): void
     /**
      * Sets the iana_value property of the native part of the #ICalParameter.
+     * @param v The value to be set into the `param`
      */
     setIanaValue(v: string): void
     setId(v: string): void
@@ -4719,6 +5177,7 @@ class Parameter {
     setOptions(v: string): void
     /**
      * Sets the parent #ICalProperty of an #ICalParameter.
+     * @param property The parent #ICalProperty
      */
     setParent(property?: Property | null): void
     setPartstat(v: ParameterPartstat): void
@@ -4745,10 +5204,12 @@ class Parameter {
     setXlicerrortype(v: ParameterXlicerrortype): void
     /**
      * Sets the xname property of the native part of the #ICalParameter.
+     * @param v The name to be set into the `param`
      */
     setXname(v: string): void
     /**
      * Sets the xvalue property of the native part of the #ICalParameter.
+     * @param v The value to be set into the `param`
      */
     setXvalue(v: string): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -4757,6 +5218,7 @@ class Parameter {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -4778,6 +5240,7 @@ class Parameter {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -4787,15 +5250,18 @@ class Parameter {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -4838,6 +5304,10 @@ class Parameter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4848,6 +5318,12 @@ class Parameter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4871,6 +5347,7 @@ class Parameter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4890,11 +5367,14 @@ class Parameter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4902,6 +5382,8 @@ class Parameter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4919,6 +5401,7 @@ class Parameter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4964,6 +5447,7 @@ class Parameter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5007,15 +5491,20 @@ class Parameter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5056,6 +5545,7 @@ class Parameter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5090,6 +5580,7 @@ class Parameter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5121,6 +5612,7 @@ class Parameter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5132,6 +5624,16 @@ class Parameter {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5203,18 +5705,22 @@ class Parameter {
     static newXlicerrortype(v: ParameterXlicerrortype): Parameter
     /**
      * Converts a string to the #ICalParameterKind.
+     * @param string The string representation of the #ICalParameter
      */
     static kindFromString(string: string): ParameterKind
     /**
      * Checks whether #ICalParameterKind is valid.
+     * @param kind The #ICalPropertyKind
      */
     static kindIsValid(kind: ParameterKind): boolean
     /**
      * Converts the #ICalParameter to the string representation.
+     * @param kind The #ICalParameterKind to be converted
      */
     static kindToString(kind: ParameterKind): string
     /**
      * Converts the #ICalParameterValue to #ICalValueKind.
+     * @param value A #ICalParameterValue
      */
     static valueToValueKind(value: ParameterValue): ValueKind
     static $gtype: GObject.Type
@@ -5229,6 +5735,15 @@ class Parser {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -5238,11 +5753,12 @@ class Parser {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Parser */
     /**
      * Add a line at one time into the #ICalParser until the parsing is complete and #ICalComponent will be
      * returned.
+     * @param str A line of string representation of the #ICalComponent
      */
     addLine(str?: string | null): Component | null
     /**
@@ -5256,6 +5772,7 @@ class Parser {
     free(): void
     /**
      * Given a line generator function, returns a single iCal content line.
+     * @param func A line generator function
      */
     getLine(func: ParserLineGenFunc): string
     /**
@@ -5266,6 +5783,7 @@ class Parser {
      * icalparser_parse takes a string that holds the text ( in RFC 2445 format ) and returns a pointer to an
      * #ICalComponent. The caller owns the memory. `func` is a pointer to a function that returns one content
      * line per invocation.
+     * @param func The function used to parse
      */
     parse(func: ParserLineGenFunc): Component
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -5274,6 +5792,7 @@ class Parser {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -5295,6 +5814,7 @@ class Parser {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -5304,15 +5824,18 @@ class Parser {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -5355,6 +5878,10 @@ class Parser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5365,6 +5892,12 @@ class Parser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5388,6 +5921,7 @@ class Parser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5407,11 +5941,14 @@ class Parser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5419,6 +5956,8 @@ class Parser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5436,6 +5975,7 @@ class Parser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5481,6 +6021,7 @@ class Parser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5524,15 +6065,20 @@ class Parser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5573,6 +6119,7 @@ class Parser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5607,6 +6154,7 @@ class Parser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5638,6 +6186,7 @@ class Parser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5649,6 +6198,16 @@ class Parser {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5673,6 +6232,7 @@ class Parser {
     static new(): Parser
     /**
      * Parses the string into a #ICalComponent.
+     * @param str The string to be parsed
      */
     static parseString(str: string): Component
     static $gtype: GObject.Type
@@ -5687,6 +6247,15 @@ class Period {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -5696,7 +6265,7 @@ class Period {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Period */
     /**
      * Translates #ICalPeriod to string.
@@ -5724,14 +6293,17 @@ class Period {
     isValidPeriod(): boolean
     /**
      * Sets the duration of an #ICalPeriod.
+     * @param duration The duration of `period`
      */
     setDuration(duration: Duration): void
     /**
      * Sets the end time of an #ICalPeriod.
+     * @param end The end of `period`
      */
     setEnd(end: Time): void
     /**
      * Sets the start time of an #ICalPeriod.
+     * @param start The start of `period`
      */
     setStart(start: Time): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -5740,6 +6312,7 @@ class Period {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -5761,6 +6334,7 @@ class Period {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -5770,15 +6344,18 @@ class Period {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -5821,6 +6398,10 @@ class Period {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5831,6 +6412,12 @@ class Period {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5854,6 +6441,7 @@ class Period {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5873,11 +6461,14 @@ class Period {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5885,6 +6476,8 @@ class Period {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5902,6 +6495,7 @@ class Period {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5947,6 +6541,7 @@ class Period {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5990,15 +6585,20 @@ class Period {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6039,6 +6639,7 @@ class Period {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6073,6 +6674,7 @@ class Period {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6104,6 +6706,7 @@ class Period {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6115,6 +6718,16 @@ class Period {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -6150,6 +6763,15 @@ class Property {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -6159,11 +6781,12 @@ class Property {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Property */
     /**
      * Adds a #ICalParameter into the #ICalProperty. It behaves like set the copy of the #ICalParameter. Upon
      * completion the native part of #ICalParameter will be set to NULL.
+     * @param parameter The parameter to be added into `prop`
      */
     addParameter(parameter: Parameter): void
     /**
@@ -6285,6 +6908,7 @@ class Property {
      * 
      * The `comp` can be NULL, in which case the parent of the `prop` is used to find
      * the corresponding time zone.
+     * @param comp An #ICalComponent
      */
     getDatetimeWithComponent(comp?: Component | null): Time
     /**
@@ -6353,6 +6977,7 @@ class Property {
     getExrule(): Recurrence
     /**
      * Gets the first #ICalParameter from the parent #ICalProperty.
+     * @param kind The target kind of #ICalParameter to be retrieved
      */
     getFirstParameter(kind: ParameterKind): Parameter
     /**
@@ -6413,6 +7038,7 @@ class Property {
     getName(): string
     /**
      * Gets the next #ICalParameter from the parent #ICalProperty.
+     * @param kind The target kind of #ICalParameter to be retrieved
      */
     getNextParameter(kind: ParameterKind): Parameter
     /**
@@ -6425,6 +7051,7 @@ class Property {
     getOwner(): string
     /**
      * Gets the string representation of the target parameter in the #ICalProperty.
+     * @param name The name of the target parameter
      */
     getParameterAsString(name: string): string
     /**
@@ -6688,495 +7315,620 @@ class Property {
     isaProperty(): number
     /**
      * Removes the target kind of the parameters in the #ICalProperty.
+     * @param kind The #ICalParameterKind to be removed
      */
     removeParameterByKind(kind: ParameterKind): void
     /**
      * Removes parameter in the #ICalProperty by name.
+     * @param name The name of the parameter to be removed
      */
     removeParameterByName(name: string): void
     /**
      * Removes the parameter in the #ICalProperty by ref.
+     * @param param The #ICalParameter to be removed
      */
     removeParameterByRef(param: Parameter): void
     /**
      * Sets the acceptresponse for the #ICalProperty.
+     * @param v The acceptresponse
      */
     setAcceptresponse(v: string): void
     /**
      * Sets the acknowledged time for the #ICalProperty.
+     * @param v The acknowledgement time
      */
     setAcknowledged(v: Time): void
     /**
      * Sets the action for the #ICalProperty.
+     * @param v The action
      */
     setAction(v: PropertyAction): void
     /**
      * Sets the allowconflict for the #ICalProperty.
+     * @param v The allowconflict
      */
     setAllowconflict(v: string): void
     /**
      * Sets the attach for the #ICalProperty.
+     * @param v The attach
      */
     setAttach(v: Attach): void
     /**
      * Sets the attendee for the #ICalProperty.
+     * @param v The attendee
      */
     setAttendee(v: string): void
     /**
      * Sets the busytype for the #ICalProperty.
+     * @param v The busytype
      */
     setBusytype(v: PropertyBusytype): void
     /**
      * Sets the calid for the #ICalProperty.
+     * @param v The calid
      */
     setCalid(v: string): void
     /**
      * Sets the calmaster for the #ICalProperty.
+     * @param v The calmaster
      */
     setCalmaster(v: string): void
     /**
      * Sets the calscale for the #ICalProperty.
+     * @param v The calscale
      */
     setCalscale(v: string): void
     /**
      * Sets the capversion for the #ICalProperty.
+     * @param v The capversion
      */
     setCapversion(v: string): void
     /**
      * Sets the carid for the #ICalProperty.
+     * @param v The carid
      */
     setCarid(v: string): void
     /**
      * Sets the carlevel for the #ICalProperty.
+     * @param v The carlevel
      */
     setCarlevel(v: PropertyCarlevel): void
     /**
      * Sets the categories for the #ICalProperty.
+     * @param v The categories
      */
     setCategories(v: string): void
     /**
      * Sets the class for the #ICalProperty.
+     * @param v The class
      */
     setClass(v: Property_Class): void
     /**
      * Sets the cmd for the #ICalProperty.
+     * @param v The cmd
      */
     setCmd(v: PropertyCmd): void
     /**
      * Sets the color for the `prop`.
+     * @param v The color
      */
     setColor(v: string): void
     /**
      * Sets the comment for the #ICalProperty.
+     * @param v The comment
      */
     setComment(v: string): void
     /**
      * Sets the completed time for the #ICalProperty.
+     * @param v The completed time
      */
     setCompleted(v: Time): void
     /**
      * Sets the components for the #ICalProperty.
+     * @param v The components
      */
     setComponents(v: string): void
     /**
      * Sets the contact for the #ICalProperty.
+     * @param v The contact
      */
     setContact(v: string): void
     /**
      * Sets the created time for the #ICalProperty.
+     * @param v The created time
      */
     setCreated(v: Time): void
     /**
      * Sets the csid for the #ICalProperty.
+     * @param v The csid
      */
     setCsid(v: string): void
     /**
      * Sets the datemax time for the #ICalProperty.
+     * @param v The datemax time
      */
     setDatemax(v: Time): void
     /**
      * Sets the datemin time for the #ICalProperty.
+     * @param v The datemin time
      */
     setDatemin(v: Time): void
     /**
      * Sets the decreed for the #ICalProperty.
+     * @param v The decreed
      */
     setDecreed(v: string): void
     /**
      * Sets the defaultcharset for the #ICalProperty.
+     * @param v The defaultcharset
      */
     setDefaultcharset(v: string): void
     /**
      * Sets the defaultlocale for the #ICalProperty.
+     * @param v The defaultlocale
      */
     setDefaultlocale(v: string): void
     /**
      * Sets the defaulttzid for the #ICalProperty.
+     * @param v The defaulttzid
      */
     setDefaulttzid(v: string): void
     /**
      * Sets the defaultvcars for the #ICalProperty.
+     * @param v The defaultvcars
      */
     setDefaultvcars(v: string): void
     /**
      * Sets the deny for the #ICalProperty.
+     * @param v The deny
      */
     setDeny(v: string): void
     /**
      * Sets the description for the #ICalProperty.
+     * @param v The description
      */
     setDescription(v: string): void
     /**
      * Sets the dtend time for the #ICalProperty.
+     * @param v The dtend time
      */
     setDtend(v: Time): void
     /**
      * Sets the dtstamp time for the #ICalProperty.
+     * @param v The dtstamp time
      */
     setDtstamp(v: Time): void
     /**
      * Sets the dtstart time for the #ICalProperty.
+     * @param v The dtstart time
      */
     setDtstart(v: Time): void
     /**
      * Sets the due time for the #ICalProperty.
+     * @param v The due time
      */
     setDue(v: Time): void
     /**
      * Sets the duration for the #ICalProperty.
+     * @param v The duration
      */
     setDuration(v: Duration): void
     /**
      * Sets the estimatedduration for the #ICalProperty.
+     * @param v The estimatedduration
      */
     setEstimatedduration(v: Duration): void
     /**
      * Sets the exdate time for the #ICalProperty.
+     * @param v The exdate time
      */
     setExdate(v: Time): void
     /**
      * Sets the expand for the #ICalProperty.
+     * @param v The expand
      */
     setExpand(v: number): void
     /**
      * Sets the exrule time for the #ICalProperty.
+     * @param v The exrule recurrence type
      */
     setExrule(v: Recurrence): void
     /**
      * Sets the freebusy time for the #ICalProperty.
+     * @param v The freebusy period type
      */
     setFreebusy(v: Period): void
     /**
      * Sets the geo for the #ICalProperty.
+     * @param v The geo type
      */
     setGeo(v: Geo): void
     /**
      * Sets the grant for the #ICalProperty.
+     * @param v The grant
      */
     setGrant(v: string): void
     /**
      * Sets the itipversion for the #ICalProperty.
+     * @param v The itipversion
      */
     setItipversion(v: string): void
     /**
      * Sets the lastmodified time for the #ICalProperty.
+     * @param v The lastmodified time
      */
     setLastmodified(v: Time): void
     /**
      * Sets the location for the #ICalProperty.
+     * @param v The location
      */
     setLocation(v: string): void
     /**
      * Sets the maxcomponentsize for the #ICalProperty.
+     * @param v The maxcomponentsize
      */
     setMaxcomponentsize(v: number): void
     /**
      * Sets the maxdate time for the #ICalProperty.
+     * @param v The maxdate time
      */
     setMaxdate(v: Time): void
     /**
      * Sets the maxresults for the #ICalProperty.
+     * @param v The maxresults
      */
     setMaxresults(v: number): void
     /**
      * Sets the maxresultssize for the #ICalProperty.
+     * @param v The maxresultssize
      */
     setMaxresultssize(v: number): void
     /**
      * Sets the method for the #ICalProperty.
+     * @param v The method
      */
     setMethod(v: PropertyMethod): void
     /**
      * Sets the mindate time for the #ICalProperty.
+     * @param v The mindate time
      */
     setMindate(v: Time): void
     /**
      * Sets the multipart for the #ICalProperty.
+     * @param v The multipart
      */
     setMultipart(v: string): void
     /**
      * Sets the name for the #ICalProperty.
+     * @param v The name
      */
     setName(v: string): void
     /**
      * Sets the organizer for the #ICalProperty.
+     * @param v The organizer
      */
     setOrganizer(v: string): void
     /**
      * Sets the owner for the #ICalProperty.
+     * @param v The owner
      */
     setOwner(v: string): void
     /**
      * Sets a #ICalParameter into the #ICalProperty. It behaves like set the copy of the #ICalParameter. Upon
      * completion the native part of #ICalParameter will be set to NULL.
+     * @param parameter The parameter to be set into `prop`
      */
     setParameter(parameter: Parameter): void
     /**
      * Sets the #ICalProperty with the parameter defined by the name and value.
+     * @param name The name of the parameter
+     * @param value The value of the parameter
      */
     setParameterFromString(name: string, value: string): void
     /**
      * Sets the parent #ICalComponent of the specified #ICalProperty.
+     * @param component An #ICalComponent
      */
     setParent(component?: Component | null): void
     /**
      * Sets the percentcomplete for the #ICalProperty.
+     * @param v The percentcomplete
      */
     setPercentcomplete(v: number): void
     /**
      * Sets the permission for the #ICalProperty.
+     * @param v The permission
      */
     setPermission(v: string): void
     /**
      * Sets the pollcompletion for the #ICalProperty.
+     * @param v The pollcompletion
      */
     setPollcompletion(v: PropertyPollcompletion): void
     /**
      * Sets the pollitemid for the #ICalProperty.
+     * @param v The pollitemid
      */
     setPollitemid(v: number): void
     /**
      * Sets the pollmode for the #ICalProperty.
+     * @param v The pollmode
      */
     setPollmode(v: PropertyPollmode): void
     /**
      * Sets the pollproperties for the #ICalProperty.
+     * @param v The pollproperties
      */
     setPollproperties(v: string): void
     /**
      * Sets the pollwinner for the #ICalProperty.
+     * @param v The pollwinner
      */
     setPollwinner(v: number): void
     /**
      * Sets the priority for the #ICalProperty.
+     * @param v The priority
      */
     setPriority(v: number): void
     /**
      * Sets the prodid for the #ICalProperty.
+     * @param v The prodid
      */
     setProdid(v: string): void
     /**
      * Sets the query for the #ICalProperty.
+     * @param v The query
      */
     setQuery(v: string): void
     /**
      * Sets the queryid for the #ICalProperty.
+     * @param v The queryid
      */
     setQueryid(v: string): void
     /**
      * Sets the querylevel for the #ICalProperty.
+     * @param v The querylevel
      */
     setQuerylevel(v: PropertyQuerylevel): void
     /**
      * Sets the queryname for the #ICalProperty.
+     * @param v The queryname
      */
     setQueryname(v: string): void
     /**
      * Sets the rdate for the #ICalProperty.
+     * @param v The rdate
      */
     setRdate(v: Datetimeperiod): void
     /**
      * Sets the recuraccepted for the #ICalProperty.
+     * @param v The recuraccepted
      */
     setRecuraccepted(v: string): void
     /**
      * Sets the recurexpand for the #ICalProperty.
+     * @param v The recurexpand
      */
     setRecurexpand(v: string): void
     /**
      * Sets the recurlimit for the #ICalProperty.
+     * @param v The recurlimit
      */
     setRecurlimit(v: string): void
     /**
      * Sets the recurrenceid time for the #ICalProperty.
+     * @param v The recurrenceid time
      */
     setRecurrenceid(v: Time): void
     /**
      * Sets the relatedto for the #ICalProperty.
+     * @param v The relatedto
      */
     setRelatedto(v: string): void
     /**
      * Sets the relcalid for the #ICalProperty.
+     * @param v The relcalid
      */
     setRelcalid(v: string): void
     /**
      * Sets the repeat for the #ICalProperty.
+     * @param v The repeat
      */
     setRepeat(v: number): void
     /**
      * Sets the replyurl for the #ICalProperty.
+     * @param v The replyurl
      */
     setReplyurl(v: string): void
     /**
      * Sets the requeststatus for the #ICalProperty.
+     * @param v The requeststatus
      */
     setRequeststatus(v: Reqstat): void
     /**
      * Sets the resources for the #ICalProperty.
+     * @param v The resources
      */
     setResources(v: string): void
     /**
      * Sets the response for the #ICalProperty.
+     * @param v The response
      */
     setResponse(v: number): void
     /**
      * Sets the restriction for the #ICalProperty.
+     * @param v The restriction
      */
     setRestriction(v: string): void
     /**
      * Sets the rrule for the #ICalProperty.
+     * @param v The rrule recurrence type
      */
     setRrule(v: Recurrence): void
     /**
      * Sets the scope for the #ICalProperty.
+     * @param v The scope
      */
     setScope(v: string): void
     /**
      * Sets the sequence for the #ICalProperty.
+     * @param v The sequence
      */
     setSequence(v: number): void
     /**
      * Sets the status for the #ICalProperty.
+     * @param v The status
      */
     setStatus(v: PropertyStatus): void
     /**
      * Sets the storesexpanded for the #ICalProperty.
+     * @param v The storesexpanded
      */
     setStoresexpanded(v: string): void
     /**
      * Sets the summary for the #ICalProperty.
+     * @param v The summary
      */
     setSummary(v: string): void
     /**
      * Sets the target for the #ICalProperty.
+     * @param v The target
      */
     setTarget(v: string): void
     /**
      * Sets the taskmode for the #ICalProperty.
+     * @param v The taskmode
      */
     setTaskmode(v: PropertyTaskmode): void
     /**
      * Sets the transp for the #ICalProperty.
+     * @param v The transp
      */
     setTransp(v: PropertyTransp): void
     /**
      * Sets the trigger time for the #ICalProperty.
+     * @param v The trigger period type
      */
     setTrigger(v: Trigger): void
     /**
      * Sets the tzid for the #ICalProperty.
+     * @param v The tzid
      */
     setTzid(v: string): void
     /**
      * Sets the tzidaliasof for the #ICalProperty.
+     * @param v The tzidaliasof
      */
     setTzidaliasof(v: string): void
     /**
      * Sets the tzname for the #ICalProperty.
+     * @param v The tzname
      */
     setTzname(v: string): void
     /**
      * Sets the tzoffsetfrom for the #ICalProperty.
+     * @param v The tzoffsetfrom
      */
     setTzoffsetfrom(v: number): void
     /**
      * Sets the tzoffsetto for the #ICalProperty.
+     * @param v The tzoffsetto
      */
     setTzoffsetto(v: number): void
     /**
      * Sets the tzuntil time for the #ICalProperty.
+     * @param v The acknowledgement time
      */
     setTzuntil(v: Time): void
     /**
      * Sets the tzurl for the #ICalProperty.
+     * @param v The tzurl
      */
     setTzurl(v: string): void
     /**
      * Sets the uid for the #ICalProperty.
+     * @param v The uid
      */
     setUid(v: string): void
     /**
      * Sets the url for the #ICalProperty.
+     * @param v The url
      */
     setUrl(v: string): void
     /**
      * Sets the #ICalProperty with the #ICalValue.
+     * @param value The #ICalValue will be set as the property of `prop`
      */
     setValue(value: Value): void
     /**
      * Sets the #ICalProperty with the #ICalValue constructed from string.
+     * @param value The value used to construct the #ICalValue
+     * @param kind The kind used to construct the #ICalValue
      */
     setValueFromString(value: string, kind: string): void
     /**
      * Sets the version for the #ICalProperty.
+     * @param v The version
      */
     setVersion(v: string): void
     /**
      * Sets the voter for the #ICalProperty.
+     * @param v The voter
      */
     setVoter(v: string): void
     /**
      * Sets the x for the #ICalProperty.
+     * @param v The x
      */
     setX(v: string): void
     /**
      * Sets the name of x property for the #ICalProperty.
+     * @param name The name string
      */
     setXName(name: string): void
     /**
      * Sets the xlicclass for the #ICalProperty.
+     * @param v The xlicclass
      */
     setXlicclass(v: PropertyXlicclass): void
     /**
      * Sets the xlicclustercount for the #ICalProperty.
+     * @param v The xlicclustercount
      */
     setXlicclustercount(v: string): void
     /**
      * Sets the xlicerror for the #ICalProperty.
+     * @param v The xlicerror
      */
     setXlicerror(v: string): void
     /**
      * Sets the xlicmimecharset for the #ICalProperty.
+     * @param v The xlicmimecharset
      */
     setXlicmimecharset(v: string): void
     /**
      * Sets the xlicmimecid for the #ICalProperty.
+     * @param v The xlicmimecid
      */
     setXlicmimecid(v: string): void
     /**
      * Sets the xlicmimecontenttype for the #ICalProperty.
+     * @param v The xlicmimecontenttype
      */
     setXlicmimecontenttype(v: string): void
     /**
      * Sets the xlicmimeencoding for the #ICalProperty.
+     * @param v The xlicmimeencoding
      */
     setXlicmimeencoding(v: string): void
     /**
      * Sets the xlicmimefilename for the #ICalProperty.
+     * @param v The xlicmimefilename
      */
     setXlicmimefilename(v: string): void
     /**
      * Sets the xlicmimeoptinfo for the #ICalProperty.
+     * @param v The xlicmimeoptinfo
      */
     setXlicmimeoptinfo(v: string): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -7185,6 +7937,7 @@ class Property {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -7206,6 +7959,7 @@ class Property {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -7215,15 +7969,18 @@ class Property {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -7266,6 +8023,10 @@ class Property {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7276,6 +8037,12 @@ class Property {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7299,6 +8066,7 @@ class Property {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7318,11 +8086,14 @@ class Property {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7330,6 +8101,8 @@ class Property {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7347,6 +8120,7 @@ class Property {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7392,6 +8166,7 @@ class Property {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7435,15 +8210,20 @@ class Property {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7484,6 +8264,7 @@ class Property {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7518,6 +8299,7 @@ class Property {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7549,6 +8331,7 @@ class Property {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7560,6 +8343,16 @@ class Property {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -7699,51 +8492,67 @@ class Property {
     static newXlicmimeoptinfo(v: string): Property
     /**
      * Converts the enum to string.
+     * @param e The enum to be converted
      */
     static enumToString(e: number): string
     /**
      * Converts a integer and string into an enum.
+     * @param kind The kind
+     * @param str A string
      */
     static kindAndStringToEnum(kind: number, str: string): number
     /**
      * Converts the string to #ICalPropertyKind.
+     * @param string A string representing #ICalPropertyKind
      */
     static kindFromString(string: string): PropertyKind
     /**
      * Checks whether the enum belongs to the #ICalPropertyKind.
+     * @param kind A #ICalPropertyKind
+     * @param e The enum to be checked
      */
     static kindHasProperty(kind: PropertyKind, e: number): number
     /**
      * Checks whether #ICalPropertyKind is valid.
+     * @param kind The #ICalPropertyKind
      */
     static kindIsValid(kind: PropertyKind): boolean
     /**
      * Converts the #ICalPropertyKind to a string.
+     * @param kind A #ICalPropertyKind
      */
     static kindToString(kind: PropertyKind): string
     /**
      * Converts the #ICalPropertyKind to #ICalValueKind.
+     * @param kind A #ICalPropertyKind
      */
     static kindToValueKind(kind: PropertyKind): ValueKind
     /**
      * Converts the string to #ICalPropertyKind.
+     * @param str A string
      */
     static methodFromString(str: string): PropertyMethod
     /**
      * Converts the #ICalPropertyMethod to string.
+     * @param method The #ICalPropertyMethod
      */
     static methodToString(method: PropertyMethod): string
     /**
      * Decides if this recurrence is acceptable. This function decides if a specific recurrence value is excluded
      * by EXRULE or EXDATE properties.
+     * @param comp A #ICalComponent
+     * @param dtstart The base dtstart value for this component
+     * @param recurtime The time to test against
      */
     static recurrenceIsExcluded(comp: Component, dtstart: Time, recurtime: Time): boolean
     /**
      * Converts the string to #ICalPropertyKind.
+     * @param str A string
      */
     static statusFromString(str: string): PropertyStatus
     /**
      * Converts the #ICalPropertyStatus to string.
+     * @param method The #ICalPropertyStatus
      */
     static statusToString(method: PropertyStatus): string
     static $gtype: GObject.Type
@@ -7758,6 +8567,15 @@ class RecurIterator {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -7767,7 +8585,7 @@ class RecurIterator {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.RecurIterator */
     /**
      * Gets the next occurrence from an iterator.
@@ -7777,6 +8595,7 @@ class RecurIterator {
      * Sets the date-time at which the iterator will start, where 'start' is a value between DTSTART and UNTIL.
      * Note:
      * CAN NOT be used with RRULEs that contain COUNT.
+     * @param start The date-time to move the iterator to
      */
     setStart(start: Time): number
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -7785,6 +8604,7 @@ class RecurIterator {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -7806,6 +8626,7 @@ class RecurIterator {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -7815,15 +8636,18 @@ class RecurIterator {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -7866,6 +8690,10 @@ class RecurIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7876,6 +8704,12 @@ class RecurIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7899,6 +8733,7 @@ class RecurIterator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7918,11 +8753,14 @@ class RecurIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7930,6 +8768,8 @@ class RecurIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7947,6 +8787,7 @@ class RecurIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7992,6 +8833,7 @@ class RecurIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8035,15 +8877,20 @@ class RecurIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8084,6 +8931,7 @@ class RecurIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8118,6 +8966,7 @@ class RecurIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8149,6 +8998,7 @@ class RecurIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8160,6 +9010,16 @@ class RecurIterator {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -8194,6 +9054,15 @@ class Recurrence {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -8203,7 +9072,7 @@ class Recurrence {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Recurrence */
     /**
      * Resets an #ICalRecurrence.
@@ -8211,6 +9080,7 @@ class Recurrence {
     clear(): void
     /**
      * Gets the by_day value at index `index`. The index should be less than %I_CAL_BY_DAY_SIZE.
+     * @param index The index in by_day of #ICalRecurrence, less than %I_CAL_BY_DAY_SIZE
      */
     getByDay(index: number): number
     /**
@@ -8219,6 +9089,7 @@ class Recurrence {
     getByDayArray(): number[]
     /**
      * Gets the by_hour value at index `index`. The index should be less than %I_CAL_BY_HOUR_SIZE.
+     * @param index The index in by_hour of #ICalRecurrence, less than %I_CAL_BY_HOUR_SIZE
      */
     getByHour(index: number): number
     /**
@@ -8227,6 +9098,7 @@ class Recurrence {
     getByHourArray(): number[]
     /**
      * Gets the by_minute value at index `index`. The index should be less than %I_CAL_BY_MINUTE_SIZE.
+     * @param index The index in by_minute of #ICalRecurrence, less than %I_CAL_BY_MINUTE_SIZE
      */
     getByMinute(index: number): number
     /**
@@ -8235,6 +9107,7 @@ class Recurrence {
     getByMinuteArray(): number[]
     /**
      * Gets the by_month value at index `index`. The index should be less than %I_CAL_BY_MONTH_SIZE.
+     * @param index The index in by_month of #ICalRecurrence, less than %I_CAL_BY_MONTH_SIZE
      */
     getByMonth(index: number): number
     /**
@@ -8243,6 +9116,7 @@ class Recurrence {
     getByMonthArray(): number[]
     /**
      * Gets the by_month_day value at index `index`. The index should be less than %I_CAL_BY_MONTHDAY_SIZE.
+     * @param index The index in by_month_day of #ICalRecurrence, less than %I_CAL_BY_MONTHDAY_SIZE
      */
     getByMonthDay(index: number): number
     /**
@@ -8251,6 +9125,7 @@ class Recurrence {
     getByMonthDayArray(): number[]
     /**
      * Gets the by_second value at index `index`. The index should be less than %I_CAL_BY_SECOND_SIZE.
+     * @param index The index in by_second of #ICalRecurrence, less than %I_CAL_BY_SECOND_SIZE
      */
     getBySecond(index: number): number
     /**
@@ -8259,6 +9134,7 @@ class Recurrence {
     getBySecondArray(): number[]
     /**
      * Gets the by_set_pos value at index `index`. The index should be less than %I_CAL_BY_SETPOS_SIZE.
+     * @param index The index in by_set_pos of #ICalRecurrence, less than %I_CAL_BY_SETPOS_SIZE
      */
     getBySetPos(index: number): number
     /**
@@ -8267,6 +9143,7 @@ class Recurrence {
     getBySetPosArray(): number[]
     /**
      * Gets the by_week_no value at index `index`. The index should be less than %I_CAL_BY_WEEKNO_SIZE.
+     * @param index The index in by_week_no of #ICalRecurrence, less than %I_CAL_BY_WEEKNO_SIZE
      */
     getByWeekNo(index: number): number
     /**
@@ -8275,6 +9152,7 @@ class Recurrence {
     getByWeekNoArray(): number[]
     /**
      * Gets the by_year_day value at index `index`. The index should be less than %I_CAL_BY_YEARDAY_SIZE.
+     * @param index The index in by_year_day of #ICalRecurrence, less than %I_CAL_BY_YEARDAY_SIZE
      */
     getByYearDay(index: number): number
     /**
@@ -8303,103 +9181,135 @@ class Recurrence {
     getWeekStart(): RecurrenceWeekday
     /**
      * Sets the by_day array from #ICalRecurrence at the given index. The array size if I_CAL_BY_DAY_SIZE.
+     * @param index The index in by_day of #ICalRecurrence
+     * @param value The value to be set into by_day of #ICalRecurrence
      */
     setByDay(index: number, value: number): void
     /**
      * Sets the by_day array in `recur` at once. The array size can be less than I_CAL_BY_DAY_SIZE. Shorter arrays
      * are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setByDayArray(values: number[]): void
     /**
      * Sets the by_hour array from #ICalRecurrence at the given index. The array size is I_CAL_BY_HOUR_SIZE.
+     * @param index The index in by_hour of #ICalRecurrence
+     * @param value The value to be set into by_hour of #ICalRecurrence
      */
     setByHour(index: number, value: number): void
     /**
      * Sets the by_hour array in `recur` at once. The array size can be less than I_CAL_BY_HOUR_SIZE. Shorter
      * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setByHourArray(values: number[]): void
     /**
      * Sets the by_minute array from #ICalRecurrence at the given index. The array size is I_CAL_BY_MINUTE_SIZE.
+     * @param index The index in by_minute of #ICalRecurrence
+     * @param value The value to be set into by_minute of #ICalRecurrence
      */
     setByMinute(index: number, value: number): void
     /**
      * Sets the by_minute array in `recur` at once. The array size can be less than I_CAL_BY_MINUTE_SIZE. Shorter
      * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setByMinuteArray(values: number[]): void
     /**
      * Sets the by_month array from #ICalRecurrence at the given index. The array size is I_CAL_BY_MONTH_SIZE.
+     * @param index The index in by_month of #ICalRecurrence
+     * @param value The value to be set into by_month of #ICalRecurrence
      */
     setByMonth(index: number, value: number): void
     /**
      * Sets the by_month array in `recur` at once. The array size can be less than I_CAL_BY_MONTH_SIZE. Shorter
      * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setByMonthArray(values: number[]): void
     /**
      * Sets the by_month_day array from #ICalRecurrence at the given index. The array size if I_CAL_BY_MONTHDAY_SIZE.
+     * @param index The index in by_month_day of #ICalRecurrence
+     * @param value The value to be set into by_month_day of #ICalRecurrence
      */
     setByMonthDay(index: number, value: number): void
     /**
      * Sets the by_month_day array in `recur` at once. The array size can be less than I_CAL_BY_MONTHDAY_SIZE.
      * Shorter arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setByMonthDayArray(values: number[]): void
     /**
      * Sets the by_second array from #ICalRecurrence at the given index. The array size is I_CAL_BY_SECOND_SIZE.
+     * @param index The index in by_second of #ICalRecurrence, less than I_CAL_BY_SECOND_SIZE
+     * @param value The value to be set into by_second of #ICalRecurrence
      */
     setBySecond(index: number, value: number): void
     /**
      * Sets the by_second array in `recur` at once. The array size can be less than I_CAL_BY_SECOND_SIZE. Shorter
      * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setBySecondArray(values: number[]): void
     /**
      * Sets the by_set_pos array from #ICalRecurrence at the given index. The array size is I_CAL_BY_SETPOS_SIZE.
+     * @param index The index in by_set_pos of #ICalRecurrence
+     * @param value The value to be set into by_set_pos of #ICalRecurrence
      */
     setBySetPos(index: number, value: number): void
     /**
      * Sets the by_set_pos array in `recur` at once. The array size can be less than I_CAL_BY_SETPOS_SIZE. Shorter
      * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setBySetPosArray(values: number[]): void
     /**
      * Sets the by_week_no array from #ICalRecurrence at the given index. The array size is I_CAL_BY_WEEKNO_SIZE.
+     * @param index The index in by_week_no of #ICalRecurrence
+     * @param value The value to be set into by_week_no of #ICalRecurrence
      */
     setByWeekNo(index: number, value: number): void
     /**
      * Sets the by_week_no array in `recur` at once. The array size can be less than I_CAL_BY_WEEKNO_SIZE. Shorter
      * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setByWeekNoArray(values: number[]): void
     /**
      * Sets the by_year_day array from #ICalRecurrence at the given index. The array size if I_CAL_BY_YEARDAY_SIZE.
+     * @param index The index in by_year_day of #ICalRecurrence
+     * @param value The value to be set into by_year_day of #ICalRecurrence
      */
     setByYearDay(index: number, value: number): void
     /**
      * Sets the by_year_day array in `recur` at once. The array size can be less than I_CAL_BY_YEARDAY_SIZE.
      * Shorter arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
+     * @param values The array of values
      */
     setByYearDayArray(values: number[]): void
     /**
      * Sets the count from #ICalRecurrence.
+     * @param count The count of #ICalRecurrence
      */
     setCount(count: number): void
     /**
      * Sets the freq from #ICalRecurrence.
+     * @param freq The freq of #ICalRecurrence
      */
     setFreq(freq: RecurrenceFrequency): void
     /**
      * Sets the interval from #ICalRecurrence.
+     * @param interval The interval of #ICalRecurrence
      */
     setInterval(interval: number): void
     /**
      * Sets the until from #ICalRecurrence.
+     * @param until The until of #ICalRecurrence
      */
     setUntil(until: Time): void
     /**
      * Sets the week_start from #ICalRecurrence.
+     * @param weekStart The week_start of #ICalRecurrence
      */
     setWeekStart(weekStart: RecurrenceWeekday): void
     /**
@@ -8412,6 +9322,7 @@ class Recurrence {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -8433,6 +9344,7 @@ class Recurrence {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -8442,15 +9354,18 @@ class Recurrence {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -8493,6 +9408,10 @@ class Recurrence {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8503,6 +9422,12 @@ class Recurrence {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8526,6 +9451,7 @@ class Recurrence {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8545,11 +9471,14 @@ class Recurrence {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8557,6 +9486,8 @@ class Recurrence {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8574,6 +9505,7 @@ class Recurrence {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8619,6 +9551,7 @@ class Recurrence {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8662,15 +9595,20 @@ class Recurrence {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8711,6 +9649,7 @@ class Recurrence {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8745,6 +9684,7 @@ class Recurrence {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8776,6 +9716,7 @@ class Recurrence {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8787,6 +9728,16 @@ class Recurrence {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -8812,22 +9763,27 @@ class Recurrence {
     static newFromString(str: string): Recurrence
     /**
      * Decodes a day to a weekday in a week.
+     * @param day The encoded day which represents the day of the week and Nth day of the week
      */
     static dayDayOfWeek(day: number): RecurrenceWeekday
     /**
      * Decodes a day to a position of the weekday.
+     * @param day The encoded day which represents the day of the week and Nth day of the week
      */
     static dayPosition(day: number): number
     /**
      * Converts a string representation to an enum representation for the frequency.
+     * @param str The string representation of the frequency
      */
     static frequencyFromString(str: string): RecurrenceFrequency
     /**
      * Converts a enum representation to a string representation for the frequency.
+     * @param kind The frequency enum
      */
     static frequencyToString(kind: RecurrenceFrequency): string
     /**
      * Decodes a month and check whether it is a leap month.
+     * @param month The month to be decoded
      */
     static monthIsLeap(month: number): boolean
     static monthMonth(month: number): number
@@ -8841,18 +9797,22 @@ class Recurrence {
     static rscaleSupportedCalendars(): Array
     /**
      * Converts a string representation to an enum representation for the skip.
+     * @param str The string representation of the skip
      */
     static skipFromString(str: string): RecurrenceSkip
     /**
      * Converts a enum representation to a string representation for the skip.
+     * @param kind The frequency enum
      */
     static skipToString(kind: RecurrenceSkip): string
     /**
      * Converts a string representation to an enum representation for the weekday.
+     * @param str The string representation of the weekday
      */
     static weekdayFromString(str: string): RecurrenceWeekday
     /**
      * Converts a enum representation to a string representation for the weekday.
+     * @param kind The frequency enum
      */
     static weekdayToString(kind: RecurrenceWeekday): string
     static $gtype: GObject.Type
@@ -8867,6 +9827,15 @@ class Reqstat {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -8876,7 +9845,7 @@ class Reqstat {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Reqstat */
     /**
      * Gets the code of #ICalReqstat.
@@ -8892,6 +9861,7 @@ class Reqstat {
     getDesc(): string
     /**
      * Sets the code of #ICalReqstat.
+     * @param code The code of `reqstat`
      */
     setCode(code: RequestStatus): void
     /**
@@ -8904,6 +9874,7 @@ class Reqstat {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -8925,6 +9896,7 @@ class Reqstat {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -8934,15 +9906,18 @@ class Reqstat {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -8985,6 +9960,10 @@ class Reqstat {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8995,6 +9974,12 @@ class Reqstat {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9018,6 +10003,7 @@ class Reqstat {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9037,11 +10023,14 @@ class Reqstat {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9049,6 +10038,8 @@ class Reqstat {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9066,6 +10057,7 @@ class Reqstat {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9111,6 +10103,7 @@ class Reqstat {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9154,15 +10147,20 @@ class Reqstat {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9203,6 +10201,7 @@ class Reqstat {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9237,6 +10236,7 @@ class Reqstat {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9268,6 +10268,7 @@ class Reqstat {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9279,6 +10280,16 @@ class Reqstat {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -9313,6 +10324,15 @@ class Time {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -9322,14 +10342,19 @@ class Time {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Time */
     /**
      * Adds a time duration on the time.
+     * @param d A #ICalDuration as the difference
      */
     add(d: Duration): Time
     /**
      * Adds or subtracts a number of days, hours, minutes and seconds from `tt`.
+     * @param days Difference of days adjusted
+     * @param hours Difference of hours adjusted
+     * @param minutes Difference of minutes adjusted
+     * @param seconds Difference of seconds adjusted
      */
     adjust(days: number, hours: number, minutes: number, seconds: number): void
     /**
@@ -9342,6 +10367,7 @@ class Time {
     asTimet(): number
     /**
      * Returns the time as seconds past the UNIX epoch, using timezones.
+     * @param zone The timezone
      */
     asTimetWithZone(zone?: Timezone | null): number
     /**
@@ -9350,26 +10376,34 @@ class Time {
     clone(): Time
     /**
      * Returns -1, 0, or 1 to indicate that a less than b, a==b or a larger than b.
+     * @param b The #ICalTime to be compared
      */
     compare(b: Time): number
     /**
      * Like i_cal_time_compare(), but only use the date parts.
+     * @param b The #ICalTime to be compared
      */
     compareDateOnly(b: Time): number
     /**
      * Like i_cal_time_compare_tz(), but only use the date parts; accepts timezone.
+     * @param b The #ICalTime to be compared
+     * @param zone The target timezone
      */
     compareDateOnlyTz(b: Time, zone?: Timezone | null): number
     /**
      * Convert time from one timezone to another.
+     * @param fromZone From timezone
+     * @param toZone To timezone
      */
     convertTimezone(fromZone?: Timezone | null, toZone?: Timezone | null): void
     /**
      * Converts `tt` to `zone` and return new #ICalTime object.
+     * @param zone The target timezone
      */
     convertToZone(zone?: Timezone | null): Time
     /**
      * Converts `tt` to `zone` and store the result into `tt`.
+     * @param zone The target timezone
      */
     convertToZoneInplace(zone?: Timezone | null): void
     /**
@@ -9453,55 +10487,72 @@ class Time {
     /**
      * Sets the year/month/date parts of the `timetype` in one call. This doesn't verify validity of the given
      * date.
+     * @param year The 'year' part of the date
+     * @param month The 'month' part of the date
+     * @param day The 'day' part of the date
      */
     setDate(year: number, month: number, day: number): void
     /**
      * Sets the day of #ICalTime.
+     * @param day The day
      */
     setDay(day: number): void
     /**
      * Sets the hour of #ICalTime.
+     * @param hour The hour
      */
     setHour(hour: number): void
     /**
      * Sets the is_date of #ICalTime.
+     * @param isDate The is_date
      */
     setIsDate(isDate: boolean): void
     /**
      * Sets the is_daylight of #ICalTime.
+     * @param isDaylight The is_daylight
      */
     setIsDaylight(isDaylight: boolean): void
     /**
      * Sets the minute of #ICalTime.
+     * @param minute The minute
      */
     setMinute(minute: number): void
     /**
      * Sets the month of #ICalTime.
+     * @param month The month
      */
     setMonth(month: number): void
     /**
      * Sets the second of #ICalTime.
+     * @param second The second
      */
     setSecond(second: number): void
     /**
      * Sets the hour/minute/second parts of the `timetype` in one call. This doesn't verify validity of the given
      * time.
+     * @param hour The 'hour' part of the time
+     * @param minute The 'minute' part of the time
+     * @param second The 'second' part of the time
      */
     setTime(hour: number, minute: number, second: number): void
     /**
      * Sets the timezone of the `tt`.
+     * @param zone The timezone
      */
     setTimezone(zone?: Timezone | null): void
     /**
      * Sets the year of #ICalTime.
+     * @param year The year
      */
     setYear(year: number): void
     /**
      * Returns the day of the year for the first day of the week that the given time is within.
+     * @param fdow The first day of the week
      */
     startDoyWeek(fdow: number): number
     /**
      * Gets the duration between two time.
+     * @param t2 The subtracting #ICalTime
      */
     subtract(t2: Time): Duration
     /**
@@ -9514,6 +10565,7 @@ class Time {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -9535,6 +10587,7 @@ class Time {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -9544,15 +10597,18 @@ class Time {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -9595,6 +10651,10 @@ class Time {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9605,6 +10665,12 @@ class Time {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9628,6 +10694,7 @@ class Time {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9647,11 +10714,14 @@ class Time {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9659,6 +10729,8 @@ class Time {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9676,6 +10748,7 @@ class Time {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9721,6 +10794,7 @@ class Time {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9764,15 +10838,20 @@ class Time {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9813,6 +10892,7 @@ class Time {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9847,6 +10927,7 @@ class Time {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9878,6 +10959,7 @@ class Time {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9889,6 +10971,16 @@ class Time {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -9920,18 +11012,25 @@ class Time {
     static newToday(): Time
     /**
      * Gets the number of days in the target month in the target year.
+     * @param month The target month
+     * @param year The target year
      */
     static daysInMonth(month: number, year: number): number
     /**
      * Returns the number of days in this year.
+     * @param year The target year
      */
     static daysInYear(year: number): number
     /**
      * Checks whether a year is a leap year.
+     * @param year The target year
      */
     static daysIsLeapYear(year: number): boolean
     /**
      * Applies a list of timezone changes on the array of components until the end year.
+     * @param comp The #ICalComponent
+     * @param endYear The end year
+     * @param changes The changes to be applies
      */
     static timezoneExpandVtimezone(comp: Component, endYear: number, changes: Array): void
     static $gtype: GObject.Type
@@ -9946,6 +11045,15 @@ class TimeSpan {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -9955,7 +11063,7 @@ class TimeSpan {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.TimeSpan */
     /**
      * Creates a new #ICalTimeSpan, clone of `src`. Free it with g_object_unref(), when no longer needed.
@@ -9963,6 +11071,7 @@ class TimeSpan {
     clone(): TimeSpan
     /**
      * Checks whether one #ICalTimeSpan is contained in another #ICalTimeSpan.
+     * @param container The target container of #ICalTimeSpan
      */
     contains(container: TimeSpan): number
     /**
@@ -9979,18 +11088,22 @@ class TimeSpan {
     getStart(): number
     /**
      * Checks whether two spans overlap.
+     * @param s2 The second #ICalTimeSpan
      */
     overlaps(s2: TimeSpan): number
     /**
      * Sets the end of #ICalTimeSpan.
+     * @param end The end
      */
     setEnd(end: number): void
     /**
      * Sets the is_busy of #ICalTimeSpan.
+     * @param isBusy The is_busy
      */
     setIsBusy(isBusy: boolean): void
     /**
      * Sets the start of #ICalTimeSpan.
+     * @param start The start
      */
     setStart(start: number): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -9999,6 +11112,7 @@ class TimeSpan {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -10020,6 +11134,7 @@ class TimeSpan {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -10029,15 +11144,18 @@ class TimeSpan {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -10080,6 +11198,10 @@ class TimeSpan {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10090,6 +11212,12 @@ class TimeSpan {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10113,6 +11241,7 @@ class TimeSpan {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10132,11 +11261,14 @@ class TimeSpan {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10144,6 +11276,8 @@ class TimeSpan {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10161,6 +11295,7 @@ class TimeSpan {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10206,6 +11341,7 @@ class TimeSpan {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10249,15 +11385,20 @@ class TimeSpan {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10298,6 +11439,7 @@ class TimeSpan {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10332,6 +11474,7 @@ class TimeSpan {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10363,6 +11506,7 @@ class TimeSpan {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10374,6 +11518,16 @@ class TimeSpan {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -10409,6 +11563,15 @@ class Timezone {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -10418,7 +11581,7 @@ class Timezone {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Timezone */
     /**
      * The clone method for #ICalTimezone.
@@ -10426,6 +11589,8 @@ class Timezone {
     copy(): Timezone
     /**
      * Outputs a list of timezone changes for the given timezone to the given file, up to the maximum year given.
+     * @param maxYear Max year
+     * @param fp The file handle
      */
     dumpChanges(maxYear: number, fp?: object | null): number
     /**
@@ -10461,11 +11626,13 @@ class Timezone {
     /**
      * Calculates the UTC offset of a given local time in the given timezone.  It is the number of seconds to
      * add to UTC to get local time.  The is_daylight flag is set to 1 if the time is in daylight-savings time.
+     * @param tt The local time
      */
     getUtcOffset(tt?: Time | null): [ /* returnType */ number, /* isDaylight */ number | null ]
     /**
      * Calculates the UTC offset of a given UTC time in the given timezone.  It is the number of seconds to
      * add to UTC to get local time.  The is_daylight flag is set to 1 if the time is in daylight-savings time.
+     * @param tt The local time
      */
     getUtcOffsetOfUtcTime(tt: Time): [ /* returnType */ number, /* isDaylight */ number | null ]
     /**
@@ -10474,6 +11641,7 @@ class Timezone {
      * 
      * `note` The `zone` assumes ownership
      * of the `comp,` thus make sure you pass an unowned #ICalComponent.
+     * @param comp The VTIMEZONE component of an #ICalTimezone, initializing the tzid, location and tzname fields
      */
     setComponent(comp: Component): number
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -10482,6 +11650,7 @@ class Timezone {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -10503,6 +11672,7 @@ class Timezone {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -10512,15 +11682,18 @@ class Timezone {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -10563,6 +11736,10 @@ class Timezone {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10573,6 +11750,12 @@ class Timezone {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10596,6 +11779,7 @@ class Timezone {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10615,11 +11799,14 @@ class Timezone {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10627,6 +11814,8 @@ class Timezone {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10644,6 +11833,7 @@ class Timezone {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10689,6 +11879,7 @@ class Timezone {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10732,15 +11923,20 @@ class Timezone {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10781,6 +11977,7 @@ class Timezone {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10815,6 +12012,7 @@ class Timezone {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10846,6 +12044,7 @@ class Timezone {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10857,6 +12056,16 @@ class Timezone {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -10885,10 +12094,14 @@ class Timezone {
      * 
      * `note` The `timezones` assumes ownership of the
      * `child,` thus make sure you pass an unowned #ICalComponent.
+     * @param timezones The timezones to be populated
+     * @param child The component to be appended to `timezones`
      */
     static arrayAppendFromVtimezone(timezones: Array, child: Component): void
     /**
      * Gets the #ICalTimezone at specified position in array.
+     * @param timezones The array to be visited
+     * @param index The index
      */
     static arrayElementAt(timezones: Array, index: number): Timezone
     /**
@@ -10901,14 +12114,18 @@ class Timezone {
     static freeZoneDirectory(): void
     /**
      * Returns a single builtin timezone, given its Olson city name.
+     * @param location The location representing the timezone
      */
     static getBuiltinTimezone(location?: string | null): Timezone | null
     /**
      * Returns a single builtin timezone, given its offset.
+     * @param offset The offset used to get the #ICalTimezone
+     * @param tzname The reference #ICalTimezone name
      */
     static getBuiltinTimezoneFromOffset(offset: number, tzname?: string | null): Timezone
     /**
      * Returns a single builtin timezone, given its TZID.
+     * @param tzid The tzid name
      */
     static getBuiltinTimezoneFromTzid(tzid?: string | null): Timezone
     /**
@@ -10921,10 +12138,12 @@ class Timezone {
     static getBuiltinTzdata(): boolean
     /**
      * Gets the location of the vtimezone in component.
+     * @param component The #ICalComponent to be queried
      */
     static getLocationFromVtimezone(component: Component): string
     /**
      * Gets the name of the vtimezone in component.
+     * @param component The #ICalComponent to be queried
      */
     static getTznamesFromVtimezone(component: Component): string
     /**
@@ -10937,16 +12156,19 @@ class Timezone {
     static releaseZoneTab(): void
     /**
      * Sets whether to use builtin timezones files.
+     * @param set Whether to use builtin timezones files
      */
     static setBuiltinTzdata(set: boolean): void
     /**
      * Sets the prefix to be used for tzid's generated from system tzdata. Must be globally unique (such as
      * a domain name owned by the developer of the calling application), and begin and end with forward slashes.
      * Do not change or de-allocate the string buffer after calling this.
+     * @param newPrefix The #ICalTimezone to be set
      */
     static setTzidPrefix(newPrefix: string): void
     /**
      * Sets the directory to look for the zonefiles.
+     * @param path The path to look for the zonefiles
      */
     static setZoneDirectory(path: string): void
     static $gtype: GObject.Type
@@ -10961,6 +12183,15 @@ class Trigger {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -10970,7 +12201,7 @@ class Trigger {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Trigger */
     /**
      * Gets the duration from #ICalTrigger.
@@ -10990,10 +12221,12 @@ class Trigger {
     isNullTrigger(): boolean
     /**
      * Sets the duration from #ICalTrigger.
+     * @param duration The duration of #ICalTrigger
      */
     setDuration(duration: Duration): void
     /**
      * Sets the time from #ICalTrigger.
+     * @param time The time of #ICalTrigger
      */
     setTime(time: Time): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -11002,6 +12235,7 @@ class Trigger {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -11023,6 +12257,7 @@ class Trigger {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -11032,15 +12267,18 @@ class Trigger {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -11083,6 +12321,10 @@ class Trigger {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11093,6 +12335,12 @@ class Trigger {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11116,6 +12364,7 @@ class Trigger {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11135,11 +12384,14 @@ class Trigger {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11147,6 +12399,8 @@ class Trigger {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11164,6 +12418,7 @@ class Trigger {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11209,6 +12464,7 @@ class Trigger {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11252,15 +12508,20 @@ class Trigger {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11301,6 +12562,7 @@ class Trigger {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11335,6 +12597,7 @@ class Trigger {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -11366,6 +12629,7 @@ class Trigger {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -11377,6 +12641,16 @@ class Trigger {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -11412,6 +12686,15 @@ class Value {
      */
     alwaysDestroy: boolean
     /**
+     * Whether the native libical structure is from a global shared memory.
+     * If TRUE, then it is not freed on #ICalObject's finalize.
+     */
+    readonly isGlobalMemory: boolean
+    /**
+     * The native libical structure for this ICalObject.
+     */
+    readonly native: object
+    /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */
     nativeDestroyFunc: object
@@ -11421,7 +12704,7 @@ class Value {
      */
     owner: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ICalGLib-3.0.ICalGLib.Value */
     /**
      * Converts the #ICalValue to a string.
@@ -11433,6 +12716,7 @@ class Value {
     clone(): Value
     /**
      * Compares two #ICalValue.
+     * @param b A #ICalValue
      */
     compare(b: Value): ParameterXliccomparetype
     /**
@@ -11597,146 +12881,182 @@ class Value {
     resetKind(): void
     /**
      * Sets the action in the #ICalValue.
+     * @param v The action value
      */
     setAction(v: PropertyAction): void
     /**
      * Sets the attach in the #ICalValue.
+     * @param v The attach value
      */
     setAttach(v: Attach): void
     /**
      * Sets the binary in the #ICalValue.
+     * @param v The binary value
      */
     setBinary(v: string): void
     /**
      * Sets the boolean in the #ICalValue.
+     * @param v The boolean value
      */
     setBoolean(v: number): void
     /**
      * Sets the busytype in the #ICalValue.
+     * @param v The busytype value
      */
     setBusytype(v: PropertyBusytype): void
     /**
      * Sets the caladdress in the #ICalValue.
+     * @param v The caladdress value
      */
     setCaladdress(v: string): void
     /**
      * Sets the carlevel in the #ICalValue.
+     * @param v The carlevel value
      */
     setCarlevel(v: PropertyCarlevel): void
     /**
      * Sets the class in the #ICalValue.
+     * @param v The class value
      */
     setClass(v: Property_Class): void
     /**
      * Sets the cmd in the #ICalValue.
+     * @param v The cmd value
      */
     setCmd(v: PropertyCmd): void
     /**
      * Sets the date in the #ICalValue.
+     * @param v The date value
      */
     setDate(v: Time): void
     /**
      * Sets the datetime in the #ICalValue.
+     * @param v The datetime value
      */
     setDatetime(v: Time): void
     /**
      * Sets the datetimedate (DATE-TIME or DATE) in the #ICalValue.
+     * @param v The datetimedate (DATE-TIME or DATE) value
      */
     setDatetimedate(v: Time): void
     /**
      * Sets the datetimeperiod in the #ICalValue.
+     * @param v The datetimeperiod value
      */
     setDatetimeperiod(v: Datetimeperiod): void
     /**
      * Sets the duration in the #ICalValue.
+     * @param v The duration value
      */
     setDuration(v: Duration): void
     /**
      * Sets the float in the #ICalValue.
+     * @param v The float value
      */
     setFloat(v: number): void
     /**
      * Sets the geo in the #ICalValue.
+     * @param v The geo value
      */
     setGeo(v: Geo): void
     /**
      * Sets the integer in the #ICalValue.
+     * @param v The integer value
      */
     setInteger(v: number): void
     /**
      * Sets the method in the #ICalValue.
+     * @param v The method value
      */
     setMethod(v: PropertyMethod): void
     /**
      * Sets the parent property of a value.
+     * @param property The parent #ICalProperty
      */
     setParent(property?: Property | null): void
     /**
      * Sets the period in the #ICalValue.
+     * @param v The period value
      */
     setPeriod(v: Period): void
     /**
      * Sets the pollcompletion in the #ICalValue.
+     * @param v The pollcompletion value
      */
     setPollcompletion(v: PropertyPollcompletion): void
     /**
      * Sets the pollmode in the #ICalValue.
+     * @param v The pollmode value
      */
     setPollmode(v: PropertyPollmode): void
     /**
      * Sets the query in the #ICalValue.
+     * @param v The query value
      */
     setQuery(v: string): void
     /**
      * Sets the querylevel in the #ICalValue.
+     * @param v The querylevel value
      */
     setQuerylevel(v: PropertyQuerylevel): void
     /**
      * Sets the recur in the #ICalValue.
+     * @param v The recur value
      */
     setRecur(v: Recurrence): void
     /**
      * Sets the requeststatus in the #ICalValue.
+     * @param v The requeststatus value
      */
     setRequeststatus(v: Reqstat): void
     /**
      * Sets the status in the #ICalValue.
+     * @param v The status value
      */
     setStatus(v: PropertyStatus): void
     /**
      * Sets the string in the #ICalValue.
+     * @param v The string value
      */
     setString(v: string): void
     /**
      * Sets the taskmode in the #ICalValue.
+     * @param v The taskmode value
      */
     setTaskmode(v: PropertyTaskmode): void
     /**
      * Sets the text in the #ICalValue.
+     * @param v The text value
      */
     setText(v: string): void
     /**
      * Sets the transp in the #ICalValue.
+     * @param v The transp value
      */
     setTransp(v: PropertyTransp): void
     /**
      * Sets the trigger in the #ICalValue.
+     * @param v The trigger value
      */
     setTrigger(v: Trigger): void
     /**
      * Sets the uri in the #ICalValue.
+     * @param v The uri value
      */
     setUri(v: string): void
     /**
      * Sets the utcoffset in the #ICalValue.
+     * @param v The utcoffset value
      */
     setUtcoffset(v: number): void
     /**
      * Sets the x in the #ICalValue.
+     * @param v The x value
      */
     setX(v: string): void
     /**
      * Sets the xlicclass in the #ICalValue.
+     * @param v The xlicclass value
      */
     setXlicclass(v: PropertyXlicclass): void
     /* Methods of ICalGLib-3.0.ICalGLib.Object */
@@ -11745,6 +13065,7 @@ class Value {
      * this `iobject`. It's usually used for cases where the `iobject` uses native libical
      * structure from the `depender`. The `depender` is referenced. It's illegal to try
      * to add one `depender` multiple times.
+     * @param depender a #GObject depender
      */
     addDepender(depender: GObject.Object): void
     /**
@@ -11766,6 +13087,7 @@ class Value {
      * Removes a `depender` from the list of objects which should not be destroyed before
      * this `iobject,` previously added with i_cal_object_add_depender(). It's illegal to try
      * to remove the `depender` which is not in the internal list.
+     * @param depender a #GObject depender
      */
     removeDepender(depender: GObject.Object): void
     /**
@@ -11775,15 +13097,18 @@ class Value {
     /**
      * Sets the `ICalObject:`:always-destroy property value. When %TRUE, the native
      * libical structure is always freed, even when an owner of the `iobject` is set.
+     * @param value value to set
      */
     setAlwaysDestroy(value: boolean): void
     /**
      * Sets a function to be used to destroy the native libical structure.
+     * @param nativeDestroyFunc Function to be used to destroy the native libical structure
      */
     setNativeDestroyFunc(nativeDestroyFunc: GLib.DestroyNotify): void
     /**
      * Sets an owner of the native libical structure, that is an object responsible
      * for a destroy of the native libical structure.
+     * @param owner Owner of the native libical structure
      */
     setOwner(owner: GObject.Object): void
     /**
@@ -11826,6 +13151,10 @@ class Value {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11836,6 +13165,12 @@ class Value {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11859,6 +13194,7 @@ class Value {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11878,11 +13214,14 @@ class Value {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11890,6 +13229,8 @@ class Value {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11907,6 +13248,7 @@ class Value {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11952,6 +13294,7 @@ class Value {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11995,15 +13338,20 @@ class Value {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12044,6 +13392,7 @@ class Value {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12078,6 +13427,7 @@ class Value {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -12109,6 +13459,7 @@ class Value {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12120,6 +13471,16 @@ class Value {
     on(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::always-destroy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-global-memory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::is-global-memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::native", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::native", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::native-destroy-func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::native-destroy-func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -12180,26 +13541,32 @@ class Value {
     static newXlicclass(v: PropertyXlicclass): Value
     /**
      * Extracts the original character string encoded by the above function.
+     * @param szText A string
      */
     static decodeIcalString(szText: string): string | null
     /**
      * Encodes a character string in ical format, escape certain characters, etc.
+     * @param szText A string
      */
     static encodeIcalString(szText: string): string | null
     /**
      * Converts a string to #ICalValueKind.
+     * @param str A string
      */
     static kindFromString(str: string): ValueKind
     /**
      * Checks whether the #ICalValueKind is valid.
+     * @param kind The #ICalValueKind to be checked
      */
     static kindIsValid(kind: ValueKind): boolean
     /**
      * Converts a #ICalValueKind to a #ICalPropertyKind.
+     * @param kind A #ICalValueKind
      */
     static kindToPropertyKind(kind: ValueKind): PropertyKind
     /**
      * Converts the #ICalValueKind to a string.
+     * @param kind A #ICalValueKind
      */
     static kindToString(kind: ValueKind): string
     static $gtype: GObject.Type

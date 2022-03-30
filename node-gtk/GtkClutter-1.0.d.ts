@@ -666,9 +666,9 @@ class Actor {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkClutter-1.0.GtkClutter.Actor */
     /**
      * Retrieves the child of the #GtkBin used to hold the contents of `actor`.
@@ -697,6 +697,7 @@ class Actor {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     addAction(action: Clutter.Action): void
     /**
@@ -711,6 +712,8 @@ class Actor {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     addActionWithName(name: string, action: Clutter.Action): void
     /**
@@ -724,6 +727,7 @@ class Actor {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     addChild(child: Clutter.Actor): void
     /**
@@ -733,6 +737,7 @@ class Actor {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     addConstraint(constraint: Clutter.Constraint): void
     /**
@@ -747,6 +752,8 @@ class Actor {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     addConstraintWithName(name: string, constraint: Clutter.Constraint): void
     /**
@@ -758,6 +765,7 @@ class Actor {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     addEffect(effect: Clutter.Effect): void
     /**
@@ -776,6 +784,8 @@ class Actor {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     addEffectWithName(name: string, effect: Clutter.Effect): void
     /**
@@ -790,6 +800,8 @@ class Actor {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     addTransition(name: string, transition: Clutter.Transition): void
     /**
@@ -813,6 +825,8 @@ class Actor {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -832,6 +846,12 @@ class Actor {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param xAlign the horizontal alignment, between 0 and 1
+     * @param yAlign the vertical alignment, between 0 and 1
+     * @param xFill whether the actor should fill horizontally
+     * @param yFill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocateAlignFill(box: Clutter.ActorBox, xAlign: number, yAlign: number, xFill: boolean, yFill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -888,6 +908,11 @@ class Actor {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param availableWidth the maximum available width, or -1 to use the   actor's natural width
+     * @param availableHeight the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocateAvailableSize(x: number, y: number, availableWidth: number, availableHeight: number, flags: Clutter.AllocationFlags): void
     /**
@@ -903,6 +928,7 @@ class Actor {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocatePreferredSize(flags: Clutter.AllocationFlags): void
     /**
@@ -920,6 +946,9 @@ class Actor {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithAlphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -937,6 +966,10 @@ class Actor {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithTimelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -949,6 +982,10 @@ class Actor {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -960,12 +997,15 @@ class Actor {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     applyRelativeTransformToPoint(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     applyTransformToPoint(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -981,6 +1021,8 @@ class Actor {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param createChildFunc a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bindModel(model: Gio.ListModel | null, createChildFunc: Clutter.ActorCreateChildFunc): void
     /**
@@ -999,6 +1041,7 @@ class Actor {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -1027,6 +1070,7 @@ class Actor {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -1077,6 +1121,8 @@ class Actor {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -1108,6 +1154,7 @@ class Actor {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     getAction(name: string): Clutter.Action
     /**
@@ -1152,6 +1199,7 @@ class Actor {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     getAllocationVertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -1176,6 +1224,7 @@ class Actor {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index the position in the list of children
      */
     getChildAtIndex(index: number): Clutter.Actor
     /**
@@ -1199,6 +1248,7 @@ class Actor {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     getConstraint(name: string): Clutter.Constraint
     /**
@@ -1273,6 +1323,7 @@ class Actor {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     getEffect(name: string): Clutter.Effect
     /**
@@ -1486,6 +1537,7 @@ class Actor {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forWidth available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     getPreferredHeight(forWidth: number): [ /* minHeightP */ number | null, /* naturalHeightP */ number | null ]
     /**
@@ -1512,6 +1564,7 @@ class Actor {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forHeight available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     getPreferredWidth(forHeight: number): [ /* minWidthP */ number | null, /* naturalWidthP */ number | null ]
     /**
@@ -1534,10 +1587,12 @@ class Actor {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     getRotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     getRotationAngle(axis: Clutter.RotateAxis): number
     /**
@@ -1611,6 +1666,7 @@ class Actor {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relativeToAncestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     getTransformedPaintVolume(relativeToAncestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -1664,6 +1720,7 @@ class Actor {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     getTransition(name: string): Clutter.Transition
     /**
@@ -1832,6 +1889,8 @@ class Actor {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildAbove(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -1847,6 +1906,8 @@ class Actor {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index the index
      */
     insertChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -1862,6 +1923,8 @@ class Actor {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildBelow(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -1907,6 +1970,7 @@ class Actor {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -1931,6 +1995,8 @@ class Actor {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     moveAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -1943,6 +2009,7 @@ class Actor {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     moveAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -1953,6 +2020,8 @@ class Actor {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     moveBy(dx: number, dy: number): void
     /**
@@ -1964,6 +2033,7 @@ class Actor {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needsExpand(orientation: Clutter.Orientation): boolean
     /**
@@ -2057,6 +2127,7 @@ class Actor {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queueRedrawWithClip(clip?: cairo.RectangleInt | null): void
     /**
@@ -2074,6 +2145,7 @@ class Actor {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -2104,11 +2176,13 @@ class Actor {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     removeAction(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     removeActionByName(name: string): void
     /**
@@ -2136,6 +2210,7 @@ class Actor {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     removeChild(child: Clutter.Actor): void
     /**
@@ -2146,22 +2221,26 @@ class Actor {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     removeConstraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     removeConstraintByName(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     removeEffect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     removeEffectByName(name: string): void
     /**
@@ -2172,6 +2251,7 @@ class Actor {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     removeTransition(name: string): void
     /**
@@ -2187,10 +2267,13 @@ class Actor {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param newParent the new #ClutterActor parent
      */
     reparent(newParent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param oldChild the child of `self` to replace
+     * @param newChild the #ClutterActor to replace `old_child`
      */
     replaceChild(oldChild: Clutter.Actor, newChild: Clutter.Actor): void
     /**
@@ -2283,6 +2366,8 @@ class Actor {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     setAllocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -2290,6 +2375,8 @@ class Actor {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     setAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -2301,6 +2388,7 @@ class Actor {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     setAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -2313,6 +2401,7 @@ class Actor {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     setBackgroundColor(color?: Clutter.Color | null): void
     /**
@@ -2323,6 +2412,8 @@ class Actor {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildAboveSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -2331,6 +2422,8 @@ class Actor {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index the new index for `child`
      */
     setChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -2341,6 +2434,8 @@ class Actor {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildBelowSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -2351,21 +2446,28 @@ class Actor {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     setChildTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     setClip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clipSet %TRUE to apply a clip tracking the allocation
      */
     setClipToAllocation(clipSet: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     setContent(content?: Clutter.Content | null): void
     /**
@@ -2375,12 +2477,14 @@ class Actor {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     setContentGravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     setContentRepeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -2390,6 +2494,8 @@ class Actor {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param minFilter the minification filter for the content
+     * @param magFilter the magnification filter for the content
      */
     setContentScalingFilters(minFilter: Clutter.ScalingFilter, magFilter: Clutter.ScalingFilter): void
     /**
@@ -2397,32 +2503,38 @@ class Actor {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     setDepth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     setEasingDelay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     setEasingDuration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     setEasingMode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param isSet whether to use fixed position
      */
     setFixedPositionSet(isSet: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     setFlags(flags: Clutter.ActorFlags): void
     /**
@@ -2430,6 +2542,7 @@ class Actor {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     setGeometry(geometry: Clutter.Geometry): void
     /**
@@ -2440,6 +2553,7 @@ class Actor {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     setHeight(height: number): void
     /**
@@ -2449,39 +2563,46 @@ class Actor {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     setLayoutManager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     setMargin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     setName(name: string): void
     /**
@@ -2542,6 +2663,7 @@ class Actor {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     setOffscreenRedirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -2549,6 +2671,7 @@ class Actor {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     setOpacity(opacity: number): void
     /**
@@ -2560,6 +2683,7 @@ class Actor {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     setParent(parent: Clutter.Actor): void
     /**
@@ -2569,6 +2693,8 @@ class Actor {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivotX the normalized X coordinate of the pivot point
+     * @param pivotY the normalized Y coordinate of the pivot point
      */
     setPivotPoint(pivotX: number, pivotY: number): void
     /**
@@ -2576,6 +2702,7 @@ class Actor {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivotZ the Z coordinate of the actor's pivot point
      */
     setPivotPointZ(pivotZ: number): void
     /**
@@ -2584,10 +2711,13 @@ class Actor {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     setPosition(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     setReactive(reactive: boolean): void
     /**
@@ -2596,6 +2726,7 @@ class Actor {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     setRequestMode(mode: Clutter.RequestMode): void
     /**
@@ -2610,6 +2741,11 @@ class Actor {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     setRotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -2621,6 +2757,8 @@ class Actor {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     setRotationAngle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -2630,6 +2768,8 @@ class Actor {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
      */
     setScale(scaleX: number, scaleY: number): void
     /**
@@ -2639,6 +2779,10 @@ class Actor {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param centerX X coordinate of the center of the scaling
+     * @param centerY Y coordinate of the center of the scaling
      */
     setScaleFull(scaleX: number, scaleY: number, centerX: number, centerY: number): void
     /**
@@ -2650,6 +2794,9 @@ class Actor {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     setScaleWithGravity(scaleX: number, scaleY: number, gravity: Clutter.Gravity): void
     /**
@@ -2658,6 +2805,7 @@ class Actor {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scaleZ the scaling factor along the Z axis
      */
     setScaleZ(scaleZ: number): void
     /**
@@ -2668,21 +2816,28 @@ class Actor {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     setShader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParam(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamFloat(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamInt(param: string, value: number): void
     /**
@@ -2696,6 +2851,8 @@ class Actor {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     setSize(width: number, height: number): void
     /**
@@ -2709,6 +2866,7 @@ class Actor {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param textDir the text direction for `self`
      */
     setTextDirection(textDir: Clutter.TextDirection): void
     /**
@@ -2717,11 +2875,15 @@ class Actor {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     setTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translateX the translation along the X axis
+     * @param translateY the translation along the Y axis
+     * @param translateZ the translation along the Z axis
      */
     setTranslation(translateX: number, translateY: number, translateZ: number): void
     /**
@@ -2732,6 +2894,7 @@ class Actor {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     setWidth(width: number): void
     /**
@@ -2741,6 +2904,7 @@ class Actor {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     setX(x: number): void
     /**
@@ -2748,6 +2912,7 @@ class Actor {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param xAlign the horizontal alignment policy
      */
     setXAlign(xAlign: Clutter.ActorAlign): void
     /**
@@ -2758,6 +2923,7 @@ class Actor {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     setXExpand(expand: boolean): void
     /**
@@ -2767,6 +2933,7 @@ class Actor {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     setY(y: number): void
     /**
@@ -2774,6 +2941,7 @@ class Actor {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param yAlign the vertical alignment policy
      */
     setYAlign(yAlign: Clutter.ActorAlign): void
     /**
@@ -2784,12 +2952,14 @@ class Actor {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     setYExpand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param zPosition the position on the Z axis
      */
     setZPosition(zPosition: number): void
     /**
@@ -2798,6 +2968,8 @@ class Actor {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     setZRotationFromGravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -2839,6 +3011,8 @@ class Actor {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transformStagePoint(x: number, y: number): [ /* returnType */ boolean, /* xOut */ number, /* yOut */ number ]
     /**
@@ -2903,6 +3077,7 @@ class Actor {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unsetFlags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2940,6 +3115,10 @@ class Actor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2950,6 +3129,12 @@ class Actor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2973,6 +3158,7 @@ class Actor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2992,11 +3178,14 @@ class Actor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3004,6 +3193,8 @@ class Actor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3021,6 +3212,7 @@ class Actor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3066,6 +3258,7 @@ class Actor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3109,15 +3302,20 @@ class Actor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3158,6 +3356,7 @@ class Actor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3192,6 +3391,7 @@ class Actor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -3204,14 +3404,23 @@ class Actor {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param propertyName the name of the animated property
+     * @param initialValue the initial value of the animation interval
+     * @param finalValue the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animateProperty(animation: Clutter.Animation, propertyName: string, initialValue: any, finalValue: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param propertyName the name of the animatable property to find
      */
     findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param propertyName the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     getInitialState(propertyName: string, value: any): void
     /**
@@ -3224,10 +3433,15 @@ class Actor {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param propertyName the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolateValue(propertyName: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param propertyName the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     setFinalState(propertyName: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -3240,6 +3454,7 @@ class Actor {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     addActor(actor: Clutter.Actor): void
     /**
@@ -3250,16 +3465,24 @@ class Actor {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childGetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     childNotify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childSetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -3272,6 +3495,7 @@ class Actor {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     createChildMeta(actor: Clutter.Actor): void
     /**
@@ -3283,11 +3507,13 @@ class Actor {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroyChildMeta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param childName the name of the requested child.
      */
     findChildByName(childName: string): Clutter.Actor
     /**
@@ -3298,6 +3524,7 @@ class Actor {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -3307,11 +3534,13 @@ class Actor {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreachWithInternals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     getChildMeta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -3320,6 +3549,8 @@ class Actor {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lowerChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -3328,6 +3559,8 @@ class Actor {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raiseChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -3339,6 +3572,7 @@ class Actor {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     removeActor(actor: Clutter.Actor): void
     /**
@@ -3354,11 +3588,18 @@ class Actor {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parseCustomNode(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     setCustomProperty(script: Clutter.Script, name: string, value: any): void
     /**
@@ -3368,6 +3609,7 @@ class Actor {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id the #ClutterScript id of the object
      */
     setId(id: string): void
     /* Signals of Clutter-1.0.Clutter.Actor */
@@ -3378,6 +3620,8 @@ class Actor {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: ((box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     on(sigName: "allocation-changed", callback: (box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -3387,6 +3631,7 @@ class Actor {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3396,6 +3641,7 @@ class Actor {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3410,6 +3656,7 @@ class Actor {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "captured-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -3439,6 +3686,7 @@ class Actor {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "enter-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3450,6 +3698,7 @@ class Actor {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -3484,6 +3733,7 @@ class Actor {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3494,6 +3744,7 @@ class Actor {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3502,6 +3753,7 @@ class Actor {
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "leave-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3511,6 +3763,7 @@ class Actor {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: ((event: Clutter.MotionEvent) => boolean)): number
     on(sigName: "motion-event", callback: (event: Clutter.MotionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3537,6 +3790,7 @@ class Actor {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param oldParent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Clutter.Actor | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Clutter.Actor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -3554,6 +3808,7 @@ class Actor {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: ((color: Clutter.Color) => void)): number
     on(sigName: "pick", callback: (color: Clutter.Color) => void, after?: boolean): NodeJS.EventEmitter
@@ -3606,6 +3861,7 @@ class Actor {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: ((origin: Clutter.Actor) => void)): number
     on(sigName: "queue-redraw", callback: (origin: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -3641,6 +3897,7 @@ class Actor {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: ((event: Clutter.ScrollEvent) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Clutter.ScrollEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -3659,6 +3916,7 @@ class Actor {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "touch-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -3671,6 +3929,8 @@ class Actor {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param isFinished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: ((name: string, isFinished: boolean) => void)): number
     on(sigName: "transition-stopped", callback: (name: string, isFinished: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -3724,6 +3984,7 @@ class Actor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3734,6 +3995,7 @@ class Actor {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-added", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -3743,6 +4005,7 @@ class Actor {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-removed", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -3753,6 +4016,8 @@ class Actor {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: ((actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4189,10 +4454,13 @@ class Actor {
     static newWithContents(contents: Gtk.Widget): Actor
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param propertyName a property name.
      */
     static classFindChildProperty(klass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static classListChildProperties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -4390,11 +4658,11 @@ class Embed {
      */
     readonly window: Gdk.Window
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkClutter-1.0.GtkClutter.Embed */
     /**
      * Retrieves the #ClutterStage from `embed`. The returned stage can be
@@ -4419,6 +4687,7 @@ class Embed {
      * there is some size (by setting a custom size on the widget or a default
      * size on the toplevel. This makes more sense when using the `embed`
      * as a viewport into a potentially unlimited clutter space.
+     * @param useLayoutSize a boolean
      */
     setUseLayoutSize(useLayoutSize: boolean): void
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -4435,11 +4704,15 @@ class Embed {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -4450,6 +4723,8 @@ class Embed {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -4458,10 +4733,15 @@ class Embed {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -4481,6 +4761,7 @@ class Embed {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -4495,6 +4776,7 @@ class Embed {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -4534,6 +4816,7 @@ class Embed {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -4557,6 +4840,8 @@ class Embed {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -4569,6 +4854,7 @@ class Embed {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -4582,6 +4868,7 @@ class Embed {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -4592,6 +4879,7 @@ class Embed {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -4603,6 +4891,7 @@ class Embed {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -4615,6 +4904,7 @@ class Embed {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -4627,6 +4917,7 @@ class Embed {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -4634,6 +4925,7 @@ class Embed {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -4642,6 +4934,7 @@ class Embed {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -4665,17 +4958,25 @@ class Embed {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -4685,6 +4986,7 @@ class Embed {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -4708,6 +5010,7 @@ class Embed {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -4718,6 +5021,7 @@ class Embed {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -4740,6 +5044,7 @@ class Embed {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -4750,6 +5055,7 @@ class Embed {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -4769,6 +5075,7 @@ class Embed {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -4786,6 +5093,7 @@ class Embed {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -4830,6 +5138,7 @@ class Embed {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -4838,11 +5147,16 @@ class Embed {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -4871,12 +5185,22 @@ class Embed {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -4911,6 +5235,8 @@ class Embed {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -4965,16 +5291,23 @@ class Embed {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -4984,6 +5317,7 @@ class Embed {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -5001,6 +5335,9 @@ class Embed {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -5041,33 +5378,41 @@ class Embed {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -5097,6 +5442,7 @@ class Embed {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -5126,6 +5472,7 @@ class Embed {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -5157,6 +5504,7 @@ class Embed {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -5219,6 +5567,7 @@ class Embed {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -5283,6 +5632,7 @@ class Embed {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -5292,11 +5642,13 @@ class Embed {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -5450,6 +5802,7 @@ class Embed {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -5537,6 +5890,7 @@ class Embed {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -5548,6 +5902,7 @@ class Embed {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -5589,6 +5944,7 @@ class Embed {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -5719,6 +6075,8 @@ class Embed {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -5937,6 +6295,7 @@ class Embed {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -5947,6 +6306,8 @@ class Embed {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -5954,11 +6315,13 @@ class Embed {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -6026,6 +6389,7 @@ class Embed {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -6062,6 +6426,7 @@ class Embed {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -6080,6 +6445,8 @@ class Embed {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -6097,6 +6464,8 @@ class Embed {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -6106,6 +6475,8 @@ class Embed {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -6113,6 +6484,8 @@ class Embed {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -6120,6 +6493,7 @@ class Embed {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -6141,6 +6515,7 @@ class Embed {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -6151,6 +6526,8 @@ class Embed {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -6158,6 +6535,8 @@ class Embed {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -6186,6 +6565,8 @@ class Embed {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -6196,11 +6577,14 @@ class Embed {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -6209,6 +6593,8 @@ class Embed {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -6262,6 +6648,10 @@ class Embed {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -6275,6 +6665,7 @@ class Embed {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -6320,6 +6711,7 @@ class Embed {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -6331,11 +6723,15 @@ class Embed {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -6343,11 +6739,13 @@ class Embed {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -6362,6 +6760,9 @@ class Embed {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -6374,11 +6775,14 @@ class Embed {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -6407,6 +6811,7 @@ class Embed {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -6435,6 +6840,7 @@ class Embed {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -6459,6 +6865,8 @@ class Embed {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -6471,6 +6879,7 @@ class Embed {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -6485,18 +6894,21 @@ class Embed {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -6517,6 +6929,7 @@ class Embed {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -6530,11 +6943,13 @@ class Embed {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -6544,6 +6959,8 @@ class Embed {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -6558,6 +6975,8 @@ class Embed {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -6573,6 +6992,7 @@ class Embed {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -6601,6 +7021,7 @@ class Embed {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -6615,6 +7036,7 @@ class Embed {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -6622,26 +7044,31 @@ class Embed {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -6655,6 +7082,7 @@ class Embed {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -6683,6 +7111,7 @@ class Embed {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -6701,6 +7130,7 @@ class Embed {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -6708,36 +7138,43 @@ class Embed {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -6750,6 +7187,7 @@ class Embed {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -6758,6 +7196,7 @@ class Embed {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -6775,6 +7214,7 @@ class Embed {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -6784,6 +7224,7 @@ class Embed {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -6795,6 +7236,7 @@ class Embed {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -6804,6 +7246,7 @@ class Embed {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -6813,6 +7256,7 @@ class Embed {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -6831,6 +7275,7 @@ class Embed {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -6838,6 +7283,7 @@ class Embed {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -6871,12 +7317,15 @@ class Embed {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -6893,11 +7342,14 @@ class Embed {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -6905,6 +7357,7 @@ class Embed {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -6916,6 +7369,7 @@ class Embed {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -6924,6 +7378,7 @@ class Embed {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -6932,11 +7387,13 @@ class Embed {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -6944,6 +7401,7 @@ class Embed {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -6951,6 +7409,7 @@ class Embed {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -6961,6 +7420,7 @@ class Embed {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -6971,6 +7431,7 @@ class Embed {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -6985,12 +7446,14 @@ class Embed {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -7032,6 +7495,7 @@ class Embed {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -7048,6 +7512,8 @@ class Embed {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -7082,6 +7548,8 @@ class Embed {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -7095,6 +7563,9 @@ class Embed {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -7124,12 +7595,14 @@ class Embed {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7167,6 +7640,10 @@ class Embed {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7177,6 +7654,12 @@ class Embed {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7200,6 +7683,7 @@ class Embed {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7219,11 +7703,14 @@ class Embed {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7231,6 +7718,8 @@ class Embed {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7248,6 +7737,7 @@ class Embed {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7293,6 +7783,7 @@ class Embed {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7336,15 +7827,20 @@ class Embed {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7385,6 +7881,7 @@ class Embed {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7419,12 +7916,16 @@ class Embed {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -7432,24 +7933,39 @@ class Embed {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -7458,14 +7974,19 @@ class Embed {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Signals of Gtk-3.0.Gtk.Container */
@@ -7503,6 +8024,7 @@ class Embed {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -7517,6 +8039,7 @@ class Embed {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -7529,6 +8052,7 @@ class Embed {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7539,6 +8063,7 @@ class Embed {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7562,6 +8087,7 @@ class Embed {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -7572,6 +8098,7 @@ class Embed {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -7584,6 +8111,7 @@ class Embed {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -7611,6 +8139,7 @@ class Embed {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -7620,6 +8149,7 @@ class Embed {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -7634,6 +8164,7 @@ class Embed {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -7645,6 +8176,7 @@ class Embed {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -7657,6 +8189,10 @@ class Embed {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7726,6 +8262,12 @@ class Embed {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7743,6 +8285,10 @@ class Embed {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7753,6 +8299,7 @@ class Embed {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -7765,6 +8312,8 @@ class Embed {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -7781,6 +8330,8 @@ class Embed {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7876,6 +8427,10 @@ class Embed {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7900,6 +8455,7 @@ class Embed {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -7914,6 +8470,7 @@ class Embed {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -7926,6 +8483,7 @@ class Embed {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -7936,6 +8494,7 @@ class Embed {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -7953,6 +8512,7 @@ class Embed {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -7965,6 +8525,7 @@ class Embed {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -7978,6 +8539,7 @@ class Embed {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -7998,6 +8560,7 @@ class Embed {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -8019,6 +8582,7 @@ class Embed {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -8033,6 +8597,7 @@ class Embed {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -8046,6 +8611,7 @@ class Embed {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -8055,6 +8621,7 @@ class Embed {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -8069,6 +8636,7 @@ class Embed {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -8098,6 +8666,7 @@ class Embed {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -8107,6 +8676,7 @@ class Embed {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -8121,6 +8691,7 @@ class Embed {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -8135,6 +8706,7 @@ class Embed {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -8161,6 +8733,7 @@ class Embed {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -8172,6 +8745,7 @@ class Embed {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -8183,6 +8757,7 @@ class Embed {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -8202,6 +8777,10 @@ class Embed {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -8221,6 +8800,7 @@ class Embed {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -8236,6 +8816,7 @@ class Embed {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -8245,6 +8826,7 @@ class Embed {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -8270,6 +8852,7 @@ class Embed {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -8298,6 +8881,7 @@ class Embed {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -8307,6 +8891,7 @@ class Embed {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -8321,6 +8906,7 @@ class Embed {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -8365,6 +8951,7 @@ class Embed {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -8388,6 +8975,7 @@ class Embed {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -8401,6 +8989,7 @@ class Embed {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -8436,6 +9025,7 @@ class Embed {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8675,6 +9265,7 @@ interface Texture_ConstructProps extends Clutter.Texture_ConstructProps {
 }
 class Texture {
     /* Properties of Clutter-1.0.Clutter.Texture */
+    readonly disableSlicing: boolean
     /**
      * The path of the file containing the image data to be displayed by
      * the texture.
@@ -9325,22 +9916,29 @@ class Texture {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkClutter-1.0.GtkClutter.Texture */
     /**
      * Sets the contents of `texture` using the `icon_name` from the
      * current icon theme.
+     * @param widget a #GtkWidget or %NULL
+     * @param iconName the name of the icon
+     * @param iconSize the icon size or -1
      */
     setFromIconName(widget: Gtk.Widget | null, iconName: string, iconSize: Gtk.IconSize): boolean
     /**
      * Sets the contents of `texture` with a copy of `pixbuf`.
+     * @param pixbuf a #GdkPixbuf
      */
     setFromPixbuf(pixbuf: GdkPixbuf.Pixbuf): boolean
     /**
      * Sets the contents of `texture` using the stock icon `stock_id,` as
      * rendered by `widget`.
+     * @param widget a #GtkWidget
+     * @param stockId the stock id of the icon
+     * @param iconSize the size of the icon, or -1
      */
     setFromStock(widget: Gtk.Widget, stockId: string, iconSize: Gtk.IconSize): boolean
     /* Methods of Clutter-1.0.Clutter.Texture */
@@ -9413,6 +10011,15 @@ class Texture {
     getSyncSize(): boolean
     /**
      * Updates a sub-region of the pixel data in a #ClutterTexture.
+     * @param data Image data in RGB type colorspace.
+     * @param hasAlpha Set to TRUE if image data has an alpha channel.
+     * @param x X coordinate of upper left corner of region to update.
+     * @param y Y coordinate of upper left corner of region to update.
+     * @param width Width in pixels of region to update.
+     * @param height Height in pixels of region to update.
+     * @param rowstride Distance in bytes between row starts on source buffer.
+     * @param bpp bytes per pixel (Currently only 3 and 4 supported,                        depending on `has_alpha)`
+     * @param flags #ClutterTextureFlags
      */
     setAreaFromRgbData(data: Uint8Array, hasAlpha: boolean, x: number, y: number, width: number, height: number, rowstride: number, bpp: number, flags: Clutter.TextureFlags): boolean
     /**
@@ -9424,12 +10031,14 @@ class Texture {
      * texture. #ClutterTexture requires that the material have a texture
      * layer so you should set one on the material before calling this
      * function.
+     * @param coglMaterial A CoglHandle for a material
      */
     setCoglMaterial(coglMaterial: Cogl.Handle): void
     /**
      * Replaces the underlying COGL texture drawn by this actor with
      * `cogl_tex`. A reference to the texture is taken so if the handle is
      * no longer needed it should be deref'd with cogl_handle_unref.
+     * @param coglTex A CoglHandle for a texture
      */
     setCoglTexture(coglTex: Cogl.Handle): void
     /**
@@ -9441,6 +10050,7 @@ class Texture {
      * %CLUTTER_TEXTURE_QUALITY_HIGH which uses extra texture memory resources to
      * improve scaled down rendering as well (by using mipmaps). The default value
      * is %CLUTTER_TEXTURE_QUALITY_MEDIUM.
+     * @param filterQuality new filter quality value
      */
     setFilterQuality(filterQuality: Clutter.TextureQuality): void
     /**
@@ -9453,10 +10063,18 @@ class Texture {
      * will be emitten when the size of the texture is available and
      * #ClutterTexture::load-finished will be emitted when the image has been
      * loaded or if an error occurred.
+     * @param filename The filename of the image in GLib file name encoding
      */
     setFromFile(filename: string): boolean
     /**
      * Sets #ClutterTexture image data.
+     * @param data image data in RGBA type colorspace.
+     * @param hasAlpha set to %TRUE if image data has an alpha channel.
+     * @param width width in pixels of image data.
+     * @param height height in pixels of image data
+     * @param rowstride distance in bytes between row starts.
+     * @param bpp bytes per pixel (currently only 3 and 4 supported, depending   on the value of `has_alpha)`
+     * @param flags #ClutterTextureFlags
      */
     setFromRgbData(data: Uint8Array, hasAlpha: boolean, width: number, height: number, rowstride: number, bpp: number, flags: Clutter.TextureFlags): boolean
     /**
@@ -9469,11 +10087,16 @@ class Texture {
      * The proper way to convert image data in any YUV colorspace to any
      * RGB colorspace is to use a fragment shader associated with the
      * #ClutterTexture material.
+     * @param data Image data in YUV type colorspace.
+     * @param width Width in pixels of image data.
+     * @param height Height in pixels of image data
+     * @param flags #ClutterTextureFlags
      */
     setFromYuvData(data: Uint8Array, width: number, height: number, flags: Clutter.TextureFlags): boolean
     /**
      * Sets whether `texture` should have a preferred size maintaining
      * the aspect ratio of the underlying image
+     * @param keepAspect %TRUE to maintain aspect ratio
      */
     setKeepAspectRatio(keepAspect: boolean): void
     /**
@@ -9483,6 +10106,7 @@ class Texture {
      * 
      * See the #ClutterTexture:load-async property documentation, and
      * clutter_texture_set_load_data_async().
+     * @param loadAsync %TRUE if the texture should asynchronously load data   from a filename
      */
     setLoadAsync(loadAsync: boolean): void
     /**
@@ -9493,6 +10117,7 @@ class Texture {
      * 
      * See the #ClutterTexture:load-async property documentation, and
      * clutter_texture_set_load_async().
+     * @param loadAsync %TRUE if the texture should asynchronously load data   from a filename
      */
     setLoadDataAsync(loadAsync: boolean): void
     /**
@@ -9507,16 +10132,20 @@ class Texture {
      * Also there is currently no control over the threshold used to
      * determine what value of alpha is considered pickable, and so only
      * fully opaque parts of the texture will react to picking.
+     * @param pickWithAlpha %TRUE if the alpha channel should affect the   picking shape
      */
     setPickWithAlpha(pickWithAlpha: boolean): void
     /**
      * Sets whether the `texture` should repeat horizontally or
      * vertically when the actor size is bigger than the image size
+     * @param repeatX %TRUE if the texture should repeat horizontally
+     * @param repeatY %TRUE if the texture should repeat vertically
      */
     setRepeat(repeatX: boolean, repeatY: boolean): void
     /**
      * Sets whether `texture` should have the same preferred size as the
      * underlying image data.
+     * @param syncSize %TRUE if the texture should have the same size of the    underlying image data
      */
     setSyncSize(syncSize: boolean): void
     /* Methods of Clutter-1.0.Clutter.Actor */
@@ -9528,6 +10157,7 @@ class Texture {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     addAction(action: Clutter.Action): void
     /**
@@ -9542,6 +10172,8 @@ class Texture {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     addActionWithName(name: string, action: Clutter.Action): void
     /**
@@ -9555,6 +10187,7 @@ class Texture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     addChild(child: Clutter.Actor): void
     /**
@@ -9564,6 +10197,7 @@ class Texture {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     addConstraint(constraint: Clutter.Constraint): void
     /**
@@ -9578,6 +10212,8 @@ class Texture {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     addConstraintWithName(name: string, constraint: Clutter.Constraint): void
     /**
@@ -9589,6 +10225,7 @@ class Texture {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     addEffect(effect: Clutter.Effect): void
     /**
@@ -9607,6 +10244,8 @@ class Texture {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     addEffectWithName(name: string, effect: Clutter.Effect): void
     /**
@@ -9621,6 +10260,8 @@ class Texture {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     addTransition(name: string, transition: Clutter.Transition): void
     /**
@@ -9644,6 +10285,8 @@ class Texture {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -9663,6 +10306,12 @@ class Texture {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param xAlign the horizontal alignment, between 0 and 1
+     * @param yAlign the vertical alignment, between 0 and 1
+     * @param xFill whether the actor should fill horizontally
+     * @param yFill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocateAlignFill(box: Clutter.ActorBox, xAlign: number, yAlign: number, xFill: boolean, yFill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -9719,6 +10368,11 @@ class Texture {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param availableWidth the maximum available width, or -1 to use the   actor's natural width
+     * @param availableHeight the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocateAvailableSize(x: number, y: number, availableWidth: number, availableHeight: number, flags: Clutter.AllocationFlags): void
     /**
@@ -9734,6 +10388,7 @@ class Texture {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocatePreferredSize(flags: Clutter.AllocationFlags): void
     /**
@@ -9751,6 +10406,9 @@ class Texture {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithAlphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -9768,6 +10426,10 @@ class Texture {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithTimelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -9780,6 +10442,10 @@ class Texture {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -9791,12 +10457,15 @@ class Texture {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     applyRelativeTransformToPoint(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     applyTransformToPoint(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -9812,6 +10481,8 @@ class Texture {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param createChildFunc a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bindModel(model: Gio.ListModel | null, createChildFunc: Clutter.ActorCreateChildFunc): void
     /**
@@ -9830,6 +10501,7 @@ class Texture {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -9858,6 +10530,7 @@ class Texture {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -9908,6 +10581,8 @@ class Texture {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -9939,6 +10614,7 @@ class Texture {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     getAction(name: string): Clutter.Action
     /**
@@ -9983,6 +10659,7 @@ class Texture {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     getAllocationVertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -10007,6 +10684,7 @@ class Texture {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index the position in the list of children
      */
     getChildAtIndex(index: number): Clutter.Actor
     /**
@@ -10030,6 +10708,7 @@ class Texture {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     getConstraint(name: string): Clutter.Constraint
     /**
@@ -10104,6 +10783,7 @@ class Texture {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     getEffect(name: string): Clutter.Effect
     /**
@@ -10317,6 +10997,7 @@ class Texture {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forWidth available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     getPreferredHeight(forWidth: number): [ /* minHeightP */ number | null, /* naturalHeightP */ number | null ]
     /**
@@ -10343,6 +11024,7 @@ class Texture {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forHeight available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     getPreferredWidth(forHeight: number): [ /* minWidthP */ number | null, /* naturalWidthP */ number | null ]
     /**
@@ -10365,10 +11047,12 @@ class Texture {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     getRotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     getRotationAngle(axis: Clutter.RotateAxis): number
     /**
@@ -10442,6 +11126,7 @@ class Texture {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relativeToAncestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     getTransformedPaintVolume(relativeToAncestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -10495,6 +11180,7 @@ class Texture {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     getTransition(name: string): Clutter.Transition
     /**
@@ -10663,6 +11349,8 @@ class Texture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildAbove(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -10678,6 +11366,8 @@ class Texture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index the index
      */
     insertChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -10693,6 +11383,8 @@ class Texture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildBelow(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -10738,6 +11430,7 @@ class Texture {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -10762,6 +11455,8 @@ class Texture {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     moveAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -10774,6 +11469,7 @@ class Texture {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     moveAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -10784,6 +11480,8 @@ class Texture {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     moveBy(dx: number, dy: number): void
     /**
@@ -10795,6 +11493,7 @@ class Texture {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needsExpand(orientation: Clutter.Orientation): boolean
     /**
@@ -10888,6 +11587,7 @@ class Texture {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queueRedrawWithClip(clip?: cairo.RectangleInt | null): void
     /**
@@ -10905,6 +11605,7 @@ class Texture {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -10935,11 +11636,13 @@ class Texture {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     removeAction(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     removeActionByName(name: string): void
     /**
@@ -10967,6 +11670,7 @@ class Texture {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     removeChild(child: Clutter.Actor): void
     /**
@@ -10977,22 +11681,26 @@ class Texture {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     removeConstraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     removeConstraintByName(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     removeEffect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     removeEffectByName(name: string): void
     /**
@@ -11003,6 +11711,7 @@ class Texture {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     removeTransition(name: string): void
     /**
@@ -11018,10 +11727,13 @@ class Texture {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param newParent the new #ClutterActor parent
      */
     reparent(newParent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param oldChild the child of `self` to replace
+     * @param newChild the #ClutterActor to replace `old_child`
      */
     replaceChild(oldChild: Clutter.Actor, newChild: Clutter.Actor): void
     /**
@@ -11114,6 +11826,8 @@ class Texture {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     setAllocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -11121,6 +11835,8 @@ class Texture {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     setAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -11132,6 +11848,7 @@ class Texture {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     setAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -11144,6 +11861,7 @@ class Texture {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     setBackgroundColor(color?: Clutter.Color | null): void
     /**
@@ -11154,6 +11872,8 @@ class Texture {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildAboveSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -11162,6 +11882,8 @@ class Texture {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index the new index for `child`
      */
     setChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -11172,6 +11894,8 @@ class Texture {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildBelowSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -11182,21 +11906,28 @@ class Texture {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     setChildTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     setClip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clipSet %TRUE to apply a clip tracking the allocation
      */
     setClipToAllocation(clipSet: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     setContent(content?: Clutter.Content | null): void
     /**
@@ -11206,12 +11937,14 @@ class Texture {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     setContentGravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     setContentRepeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -11221,6 +11954,8 @@ class Texture {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param minFilter the minification filter for the content
+     * @param magFilter the magnification filter for the content
      */
     setContentScalingFilters(minFilter: Clutter.ScalingFilter, magFilter: Clutter.ScalingFilter): void
     /**
@@ -11228,32 +11963,38 @@ class Texture {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     setDepth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     setEasingDelay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     setEasingDuration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     setEasingMode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param isSet whether to use fixed position
      */
     setFixedPositionSet(isSet: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     setFlags(flags: Clutter.ActorFlags): void
     /**
@@ -11261,6 +12002,7 @@ class Texture {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     setGeometry(geometry: Clutter.Geometry): void
     /**
@@ -11271,6 +12013,7 @@ class Texture {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     setHeight(height: number): void
     /**
@@ -11280,39 +12023,46 @@ class Texture {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     setLayoutManager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     setMargin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     setName(name: string): void
     /**
@@ -11373,6 +12123,7 @@ class Texture {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     setOffscreenRedirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -11380,6 +12131,7 @@ class Texture {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     setOpacity(opacity: number): void
     /**
@@ -11391,6 +12143,7 @@ class Texture {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     setParent(parent: Clutter.Actor): void
     /**
@@ -11400,6 +12153,8 @@ class Texture {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivotX the normalized X coordinate of the pivot point
+     * @param pivotY the normalized Y coordinate of the pivot point
      */
     setPivotPoint(pivotX: number, pivotY: number): void
     /**
@@ -11407,6 +12162,7 @@ class Texture {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivotZ the Z coordinate of the actor's pivot point
      */
     setPivotPointZ(pivotZ: number): void
     /**
@@ -11415,10 +12171,13 @@ class Texture {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     setPosition(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     setReactive(reactive: boolean): void
     /**
@@ -11427,6 +12186,7 @@ class Texture {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     setRequestMode(mode: Clutter.RequestMode): void
     /**
@@ -11441,6 +12201,11 @@ class Texture {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     setRotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -11452,6 +12217,8 @@ class Texture {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     setRotationAngle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -11461,6 +12228,8 @@ class Texture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
      */
     setScale(scaleX: number, scaleY: number): void
     /**
@@ -11470,6 +12239,10 @@ class Texture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param centerX X coordinate of the center of the scaling
+     * @param centerY Y coordinate of the center of the scaling
      */
     setScaleFull(scaleX: number, scaleY: number, centerX: number, centerY: number): void
     /**
@@ -11481,6 +12254,9 @@ class Texture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     setScaleWithGravity(scaleX: number, scaleY: number, gravity: Clutter.Gravity): void
     /**
@@ -11489,6 +12265,7 @@ class Texture {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scaleZ the scaling factor along the Z axis
      */
     setScaleZ(scaleZ: number): void
     /**
@@ -11499,21 +12276,28 @@ class Texture {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     setShader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParam(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamFloat(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamInt(param: string, value: number): void
     /**
@@ -11527,6 +12311,8 @@ class Texture {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     setSize(width: number, height: number): void
     /**
@@ -11540,6 +12326,7 @@ class Texture {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param textDir the text direction for `self`
      */
     setTextDirection(textDir: Clutter.TextDirection): void
     /**
@@ -11548,11 +12335,15 @@ class Texture {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     setTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translateX the translation along the X axis
+     * @param translateY the translation along the Y axis
+     * @param translateZ the translation along the Z axis
      */
     setTranslation(translateX: number, translateY: number, translateZ: number): void
     /**
@@ -11563,6 +12354,7 @@ class Texture {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     setWidth(width: number): void
     /**
@@ -11572,6 +12364,7 @@ class Texture {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     setX(x: number): void
     /**
@@ -11579,6 +12372,7 @@ class Texture {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param xAlign the horizontal alignment policy
      */
     setXAlign(xAlign: Clutter.ActorAlign): void
     /**
@@ -11589,6 +12383,7 @@ class Texture {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     setXExpand(expand: boolean): void
     /**
@@ -11598,6 +12393,7 @@ class Texture {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     setY(y: number): void
     /**
@@ -11605,6 +12401,7 @@ class Texture {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param yAlign the vertical alignment policy
      */
     setYAlign(yAlign: Clutter.ActorAlign): void
     /**
@@ -11615,12 +12412,14 @@ class Texture {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     setYExpand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param zPosition the position on the Z axis
      */
     setZPosition(zPosition: number): void
     /**
@@ -11629,6 +12428,8 @@ class Texture {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     setZRotationFromGravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -11670,6 +12471,8 @@ class Texture {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transformStagePoint(x: number, y: number): [ /* returnType */ boolean, /* xOut */ number, /* yOut */ number ]
     /**
@@ -11734,6 +12537,7 @@ class Texture {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unsetFlags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11771,6 +12575,10 @@ class Texture {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11781,6 +12589,12 @@ class Texture {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11804,6 +12618,7 @@ class Texture {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11823,11 +12638,14 @@ class Texture {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11835,6 +12653,8 @@ class Texture {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11852,6 +12672,7 @@ class Texture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11897,6 +12718,7 @@ class Texture {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11940,15 +12762,20 @@ class Texture {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11989,6 +12816,7 @@ class Texture {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12023,6 +12851,7 @@ class Texture {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -12035,14 +12864,23 @@ class Texture {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param propertyName the name of the animated property
+     * @param initialValue the initial value of the animation interval
+     * @param finalValue the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animateProperty(animation: Clutter.Animation, propertyName: string, initialValue: any, finalValue: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param propertyName the name of the animatable property to find
      */
     findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param propertyName the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     getInitialState(propertyName: string, value: any): void
     /**
@@ -12055,10 +12893,15 @@ class Texture {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param propertyName the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolateValue(propertyName: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param propertyName the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     setFinalState(propertyName: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -12071,6 +12914,7 @@ class Texture {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     addActor(actor: Clutter.Actor): void
     /**
@@ -12081,16 +12925,24 @@ class Texture {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childGetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     childNotify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childSetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -12103,6 +12955,7 @@ class Texture {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     createChildMeta(actor: Clutter.Actor): void
     /**
@@ -12114,11 +12967,13 @@ class Texture {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroyChildMeta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param childName the name of the requested child.
      */
     findChildByName(childName: string): Clutter.Actor
     /**
@@ -12129,6 +12984,7 @@ class Texture {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -12138,11 +12994,13 @@ class Texture {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreachWithInternals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     getChildMeta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -12151,6 +13009,8 @@ class Texture {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lowerChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -12159,6 +13019,8 @@ class Texture {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raiseChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -12170,6 +13032,7 @@ class Texture {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     removeActor(actor: Clutter.Actor): void
     /**
@@ -12185,11 +13048,18 @@ class Texture {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parseCustomNode(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     setCustomProperty(script: Clutter.Script, name: string, value: any): void
     /**
@@ -12199,6 +13069,7 @@ class Texture {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id the #ClutterScript id of the object
      */
     setId(id: string): void
     /* Signals of Clutter-1.0.Clutter.Texture */
@@ -12206,6 +13077,7 @@ class Texture {
      * The ::load-finished signal is emitted when a texture load has
      * completed. If there was an error during loading, `error` will
      * be set, otherwise it will be %NULL
+     * @param error A set error, or %NULL
      */
     connect(sigName: "load-finished", callback: ((error: GLib.Error) => void)): number
     on(sigName: "load-finished", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -12225,6 +13097,8 @@ class Texture {
      * The ::size-change signal is emitted each time the size of the
      * pixbuf used by `texture` changes.  The new size is given as
      * argument to the callback.
+     * @param width the width of the new texture
+     * @param height the height of the new texture
      */
     connect(sigName: "size-change", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-change", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12239,6 +13113,8 @@ class Texture {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: ((box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     on(sigName: "allocation-changed", callback: (box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -12248,6 +13124,7 @@ class Texture {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -12257,6 +13134,7 @@ class Texture {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -12271,6 +13149,7 @@ class Texture {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "captured-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -12300,6 +13179,7 @@ class Texture {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "enter-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -12311,6 +13191,7 @@ class Texture {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -12345,6 +13226,7 @@ class Texture {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -12355,6 +13237,7 @@ class Texture {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -12363,6 +13246,7 @@ class Texture {
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "leave-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -12372,6 +13256,7 @@ class Texture {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: ((event: Clutter.MotionEvent) => boolean)): number
     on(sigName: "motion-event", callback: (event: Clutter.MotionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -12398,6 +13283,7 @@ class Texture {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param oldParent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Clutter.Actor | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Clutter.Actor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -12415,6 +13301,7 @@ class Texture {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: ((color: Clutter.Color) => void)): number
     on(sigName: "pick", callback: (color: Clutter.Color) => void, after?: boolean): NodeJS.EventEmitter
@@ -12467,6 +13354,7 @@ class Texture {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: ((origin: Clutter.Actor) => void)): number
     on(sigName: "queue-redraw", callback: (origin: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -12502,6 +13390,7 @@ class Texture {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: ((event: Clutter.ScrollEvent) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Clutter.ScrollEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -12520,6 +13409,7 @@ class Texture {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "touch-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -12532,6 +13422,8 @@ class Texture {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param isFinished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: ((name: string, isFinished: boolean) => void)): number
     on(sigName: "transition-stopped", callback: (name: string, isFinished: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -12585,6 +13477,7 @@ class Texture {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12595,6 +13488,7 @@ class Texture {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-added", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -12604,6 +13498,7 @@ class Texture {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-removed", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -12614,12 +13509,19 @@ class Texture {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: ((actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "child-notify", actor: Clutter.Actor, pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::disable-slicing", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::disable-slicing", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::disable-slicing", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::disable-slicing", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::disable-slicing", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -13100,10 +14002,13 @@ class Texture {
     static errorQuark(): GLib.Quark
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param propertyName a property name.
      */
     static classFindChildProperty(klass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static classListChildProperties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -13216,6 +14121,7 @@ class Window {
      * more details about transient windows.
      */
     transientFor: Gtk.Window
+    readonly type: Gtk.WindowType
     typeHint: Gdk.WindowTypeHint
     urgencyHint: boolean
     windowPosition: Gtk.WindowPosition
@@ -13397,16 +14303,16 @@ class Window {
      */
     readonly window: Gdk.Window
     /* Fields of Gtk-3.0.Gtk.Window */
-    readonly bin: Gtk.Bin
-    readonly priv: Gtk.WindowPrivate
+    bin: Gtk.Bin
+    priv: Gtk.WindowPrivate
     /* Fields of Gtk-3.0.Gtk.Bin */
-    readonly container: Gtk.Container
+    container: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkClutter-1.0.GtkClutter.Window */
     /**
      * Retrieves the #ClutterStage that this window is embedding
@@ -13431,16 +14337,20 @@ class Window {
      * called by the default ::key_press_event handler for toplevel windows,
      * however in some cases it may be useful to call this directly when
      * overriding the standard key handling for a toplevel window.
+     * @param event a #GdkEventKey
      */
     activateKey(event: Gdk.EventKey): boolean
     /**
      * Associate `accel_group` with `window,` such that calling
      * gtk_accel_groups_activate() on `window` will activate accelerators
      * in `accel_group`.
+     * @param accelGroup a #GtkAccelGroup
      */
     addAccelGroup(accelGroup: Gtk.AccelGroup): void
     /**
      * Adds a mnemonic to this window.
+     * @param keyval the mnemonic
+     * @param target the widget that gets activated by the mnemonic
      */
     addMnemonic(keyval: number, target: Gtk.Widget): void
     /**
@@ -13450,6 +14360,10 @@ class Window {
      * [window manager][gtk-X11-arch] or windowing
      * system. Otherwise, GDK will try to emulate window movement,
      * potentially not all that well, depending on the windowing system.
+     * @param button mouse button that initiated the drag
+     * @param rootX X position where the user clicked to initiate the drag, in root window coordinates
+     * @param rootY Y position where the user clicked to initiate the drag
+     * @param timestamp timestamp from the click event that initiated the drag
      */
     beginMoveDrag(button: number, rootX: number, rootY: number, timestamp: number): void
     /**
@@ -13459,6 +14373,11 @@ class Window {
      * [window manager][gtk-X11-arch] or windowing
      * system. Otherwise, GDK will try to emulate window resizing,
      * potentially not all that well, depending on the windowing system.
+     * @param edge position of the resize control
+     * @param button mouse button that initiated the drag
+     * @param rootX X position where the user clicked to initiate the drag, in root window coordinates
+     * @param rootY Y position where the user clicked to initiate the drag
+     * @param timestamp timestamp from the click event that initiated the drag
      */
     beginResizeDrag(edge: Gdk.WindowEdge, button: number, rootX: number, rootY: number, timestamp: number): void
     /**
@@ -13499,6 +14418,8 @@ class Window {
      * 
      * You can track the fullscreen state via the "window-state-event" signal
      * on #GtkWidget.
+     * @param screen a #GdkScreen to draw to
+     * @param monitor which monitor to go fullscreen on
      */
     fullscreenOnMonitor(screen: Gdk.Screen, monitor: number): void
     /**
@@ -13822,6 +14743,8 @@ class Window {
     maximize(): void
     /**
      * Activates the targets associated with the mnemonic.
+     * @param keyval the mnemonic
+     * @param modifier the modifiers
      */
     mnemonicActivate(keyval: number, modifier: Gdk.ModifierType): boolean
     /**
@@ -13858,6 +14781,8 @@ class Window {
      * has a nice table of gravities in the “implementation notes” section.
      * 
      * The gtk_window_get_position() documentation may also be relevant.
+     * @param x X coordinate to move window to
+     * @param y Y coordinate to move window to
      */
     move(x: number, y: number): void
     /**
@@ -13934,6 +14859,7 @@ class Window {
      * }
      * ```
      * 
+     * @param geometry geometry string
      */
     parseGeometry(geometry: string): boolean
     /**
@@ -13961,6 +14887,7 @@ class Window {
      * timestamp should be gathered when the window was requested to be shown
      * (when clicking a link for example), rather than once the window is
      * ready to be shown.
+     * @param timestamp the timestamp of the user interaction (typically a   button or key press event) which triggered this call
      */
     presentWithTime(timestamp: number): void
     /**
@@ -13970,14 +14897,18 @@ class Window {
      * ::key_release_event handlers for toplevel windows,
      * however in some cases it may be useful to call this directly when
      * overriding the standard key handling for a toplevel window.
+     * @param event a #GdkEventKey
      */
     propagateKeyEvent(event: Gdk.EventKey): boolean
     /**
      * Reverses the effects of gtk_window_add_accel_group().
+     * @param accelGroup a #GtkAccelGroup
      */
     removeAccelGroup(accelGroup: Gtk.AccelGroup): void
     /**
      * Removes a mnemonic from this window.
+     * @param keyval the mnemonic
+     * @param target the widget that gets activated by the mnemonic
      */
     removeMnemonic(keyval: number, target: Gtk.Widget): void
     /**
@@ -14015,6 +14946,8 @@ class Window {
      * and cause the titlebar widget to grow in height, this will result in a
      * window content smaller that specified by gtk_window_resize() and not
      * a larger window.
+     * @param width width in pixels to resize the window to
+     * @param height height in pixels to resize the window to
      */
     resize(width: number, height: number): void
     /**
@@ -14025,11 +14958,14 @@ class Window {
      * Like gtk_window_resize(), but `width` and `height` are interpreted
      * in terms of the base size and increment set with
      * gtk_window_set_geometry_hints.
+     * @param width width in resize increments to resize the window to
+     * @param height height in resize increments to resize the window to
      */
     resizeToGeometry(width: number, height: number): void
     /**
      * Windows may set a hint asking the desktop environment not to receive
      * the input focus. This function sets this hint.
+     * @param setting %TRUE to let this window receive input focus
      */
     setAcceptFocus(setting: boolean): void
     /**
@@ -14045,6 +14981,7 @@ class Window {
      * 
      * This is equivalent to calling gtk_application_remove_window() and/or
      * gtk_application_add_window() on the old/new applications as relevant.
+     * @param application a #GtkApplication, or %NULL to unset
      */
     setApplication(application?: Gtk.Application | null): void
     /**
@@ -14062,6 +14999,7 @@ class Window {
      * between two toplevels instead.
      * 
      * Passing %NULL for `attach_widget` detaches the window.
+     * @param attachWidget a #GtkWidget, or %NULL
      */
     setAttachedTo(attachWidget?: Gtk.Widget | null): void
     /**
@@ -14076,6 +15014,7 @@ class Window {
      * 
      * On Windows, this function always works, since there’s no window manager
      * policy involved.
+     * @param setting %TRUE to decorate the window
      */
     setDecorated(setting: boolean): void
     /**
@@ -14086,12 +15025,15 @@ class Window {
      * gtk_widget_grab_default() on the widget. Before making a widget
      * the default widget, you must call gtk_widget_set_can_default() on
      * the widget you’d like to make the default.
+     * @param defaultWidget widget to be the default, or %NULL     to unset the default widget for the toplevel
      */
     setDefault(defaultWidget?: Gtk.Widget | null): void
     /**
      * Like gtk_window_set_default_size(), but `width` and `height` are interpreted
      * in terms of the base size and increment set with
      * gtk_window_set_geometry_hints.
+     * @param width width in resize increments, or -1 to unset the default width
+     * @param height height in resize increments, or -1 to unset the default height
      */
     setDefaultGeometry(width: number, height: number): void
     /**
@@ -14128,6 +15070,8 @@ class Window {
      * note that the appropriate size to save is the one returned by
      * gtk_window_get_size(). Using the window allocation directly will not
      * work in all circumstances and can lead to growing or shrinking windows.
+     * @param width width in pixels, or -1 to unset the default width
+     * @param height height in pixels, or -1 to unset the default height
      */
     setDefaultSize(width: number, height: number): void
     /**
@@ -14141,6 +15085,7 @@ class Window {
      * 
      * On Windows, this function always works, since there’s no window manager
      * policy involved.
+     * @param setting %TRUE to decorate the window as deletable
      */
     setDeletable(setting: boolean): void
     /**
@@ -14148,6 +15093,7 @@ class Window {
      * will also destroy `window` itself. This is useful for dialogs that
      * shouldn’t persist beyond the lifetime of the main window they're
      * associated with, for example.
+     * @param setting whether to destroy `window` with its transient parent
      */
     setDestroyWithParent(setting: boolean): void
     /**
@@ -14156,16 +15102,19 @@ class Window {
      * the focus widget for this window. To set the focus to a particular
      * widget in the toplevel, it is usually more convenient to use
      * gtk_widget_grab_focus() instead of this function.
+     * @param focus widget to be the new focus widget, or %NULL to unset   any focus widget for the toplevel window.
      */
     setFocus(focus?: Gtk.Widget | null): void
     /**
      * Windows may set a hint asking the desktop environment not to receive
      * the input focus when the window is mapped.  This function sets this
      * hint.
+     * @param setting %TRUE to let this window receive input focus on map
      */
     setFocusOnMap(setting: boolean): void
     /**
      * Sets the #GtkWindow:focus-visible property.
+     * @param setting the new value
      */
     setFocusVisible(setting: boolean): void
     /**
@@ -14173,6 +15122,9 @@ class Window {
      * the user.  You can set a minimum and maximum size; allowed resize
      * increments (e.g. for xterm, you can only resize by the size of a
      * character); aspect ratios; and more. See the #GdkGeometry struct.
+     * @param geometryWidget widget the geometry hints used to be applied to   or %NULL. Since 3.20 this argument is ignored and GTK behaves as if %NULL was   set.
+     * @param geometry struct containing geometry information or %NULL
+     * @param geomMask mask indicating which struct fields should be paid attention to
      */
     setGeometryHints(geometryWidget: Gtk.Widget | null, geometry: Gdk.Geometry | null, geomMask: Gdk.WindowHints): void
     /**
@@ -14182,6 +15134,7 @@ class Window {
      * 
      * The default window gravity is #GDK_GRAVITY_NORTH_WEST which will
      * typically “do what you mean.”
+     * @param gravity window gravity
      */
     setGravity(gravity: Gdk.Gravity): void
     /**
@@ -14191,6 +15144,7 @@ class Window {
      * is actually resizable and not maximized. Use
      * gtk_window_resize_grip_is_visible() to find out if the
      * resize grip is currently shown.
+     * @param value %TRUE to allow a resize grip
      */
     setHasResizeGrip(value: boolean): void
     /**
@@ -14201,6 +15155,7 @@ class Window {
      * bindings which may need to keep the window alive until their
      * wrapper object is garbage collected. There is no justification
      * for ever calling this function in an application.
+     * @param setting the new value
      */
     setHasUserRefCount(setting: boolean): void
     /**
@@ -14214,6 +15169,7 @@ class Window {
      * Note that custom titlebars set with gtk_window_set_titlebar() are
      * not affected by this. The application is in full control of their
      * content and visibility anyway.
+     * @param setting whether to hide the titlebar when `window` is maximized
      */
     setHideTitlebarWhenMaximized(setting: boolean): void
     /**
@@ -14236,6 +15192,7 @@ class Window {
      * 
      * See also gtk_window_set_default_icon_list() to set the icon
      * for all windows in your application in one go.
+     * @param icon icon image, or %NULL
      */
     setIcon(icon?: GdkPixbuf.Pixbuf | null): void
     /**
@@ -14244,6 +15201,7 @@ class Window {
      * 
      * This function is equivalent to calling gtk_window_set_icon()
      * with a pixbuf created by loading the image from `filename`.
+     * @param filename location of icon file
      */
     setIconFromFile(filename: string): boolean
     /**
@@ -14272,6 +15230,7 @@ class Window {
      * window using gtk_window_set_transient_for()) will inherit their
      * icon from their transient parent. So there’s no need to explicitly
      * set the icon on transient windows.
+     * @param list list of #GdkPixbuf
      */
     setIconList(list: GdkPixbuf.Pixbuf[]): void
     /**
@@ -14281,6 +15240,7 @@ class Window {
      * 
      * Note that this has nothing to do with the WM_ICON_NAME
      * property which is mentioned in the ICCCM.
+     * @param name the name of the themed icon
      */
     setIconName(name?: string | null): void
     /**
@@ -14304,6 +15264,7 @@ class Window {
      * the above state is mainly meant for user preferences and should not
      * be used by applications e.g. for drawing attention to their
      * dialogs.
+     * @param setting whether to keep `window` above other windows
      */
     setKeepAbove(setting: boolean): void
     /**
@@ -14327,14 +15288,17 @@ class Window {
      * the above state is mainly meant for user preferences and should not
      * be used by applications e.g. for drawing attention to their
      * dialogs.
+     * @param setting whether to keep `window` below other windows
      */
     setKeepBelow(setting: boolean): void
     /**
      * Sets the mnemonic modifier for this window.
+     * @param modifier the modifier mask used to activate               mnemonics on this window.
      */
     setMnemonicModifier(modifier: Gdk.ModifierType): void
     /**
      * Sets the #GtkWindow:mnemonics-visible property.
+     * @param setting the new value
      */
     setMnemonicsVisible(setting: boolean): void
     /**
@@ -14344,6 +15308,7 @@ class Window {
      * gtk_window_set_transient_for() to make the dialog transient for the
      * parent; most [window managers][gtk-X11-arch]
      * will then disallow lowering the dialog below the parent.
+     * @param modal whether the window is modal
      */
     setModal(modal: boolean): void
     /**
@@ -14356,17 +15321,20 @@ class Window {
      * 
      * Note that setting a window’s opacity after the window has been
      * shown causes it to flicker once on Windows.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
      * Sets a position constraint for this window. If the old or new
      * constraint is %GTK_WIN_POS_CENTER_ALWAYS, this will also cause
      * the window to be repositioned to satisfy the new constraint.
+     * @param position a position constraint.
      */
     setPosition(position: Gtk.WindowPosition): void
     /**
      * Sets whether the user can resize a window. Windows are user resizable
      * by default.
+     * @param resizable %TRUE if the user can resize this window
      */
     setResizable(resizable: boolean): void
     /**
@@ -14382,12 +15350,14 @@ class Window {
      * If a window already has a unique title, you don’t need to set the
      * role, since the WM can use the title to identify the window when
      * restoring the session.
+     * @param role unique identifier for the window to be used when restoring a session
      */
     setRole(role: string): void
     /**
      * Sets the #GdkScreen where the `window` is displayed; if
      * the window is already mapped, it will be unmapped, and
      * then remapped on the new screen.
+     * @param screen a #GdkScreen.
      */
     setScreen(screen: Gdk.Screen): void
     /**
@@ -14396,11 +15366,13 @@ class Window {
      * (A "pager" is any desktop navigation tool such as a workspace
      * switcher that displays a thumbnail representation of the windows
      * on the screen.)
+     * @param setting %TRUE to keep this window from appearing in the pager
      */
     setSkipPagerHint(setting: boolean): void
     /**
      * Windows may set a hint asking the desktop environment not to display
      * the window in the task bar. This function sets this hint.
+     * @param setting %TRUE to keep this window from appearing in the task bar
      */
     setSkipTaskbarHint(setting: boolean): void
     /**
@@ -14414,6 +15386,7 @@ class Window {
      * function generating a window map event.
      * 
      * This function is only useful on X11, not with other GTK+ targets.
+     * @param startupId a string with startup-notification identifier
      */
     setStartupId(startupId: string): void
     /**
@@ -14425,6 +15398,7 @@ class Window {
      * user distinguish this window from other windows they may have
      * open. A good title might include the application name and current
      * document filename, for example.
+     * @param title title of the window
      */
     setTitle(title: string): void
     /**
@@ -14438,6 +15412,7 @@ class Window {
      * Depending on the system, this function may not work for a window
      * that is already visible, so you set the titlebar before calling
      * gtk_widget_show().
+     * @param titlebar the widget to use as titlebar
      */
     setTitlebar(titlebar?: Gtk.Widget | null): void
     /**
@@ -14459,6 +15434,7 @@ class Window {
      * 
      * On Windows, this function puts the child window on top of the parent,
      * much as the window manager would have done on X.
+     * @param parent parent window, or %NULL
      */
     setTransientFor(parent?: Gtk.Window | null): void
     /**
@@ -14470,11 +15446,13 @@ class Window {
      * 
      * gtk_dialog_new_with_buttons() and other convenience functions in GTK+
      * will sometimes call gtk_window_set_type_hint() on your behalf.
+     * @param hint the window type
      */
     setTypeHint(hint: Gdk.WindowTypeHint): void
     /**
      * Windows may set a hint asking the desktop environment to draw
      * the users attention to the window. This function sets this hint.
+     * @param setting %TRUE to mark this window as urgent
      */
     setUrgencyHint(setting: boolean): void
     /**
@@ -14486,6 +15464,8 @@ class Window {
      * gtk_window_set_role() on each window in your application, for the
      * benefit of the session manager. Setting the role allows the window
      * manager to restore window positions when loading a saved session.
+     * @param wmclassName window name hint
+     * @param wmclassClass window class hint
      */
     setWmclass(wmclassName: string, wmclassClass: string): void
     /**
@@ -14561,11 +15541,15 @@ class Window {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     checkResize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to get
+     * @param value a location to return the value
      */
     childGetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -14576,6 +15560,8 @@ class Window {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param childProperty the name of a child property installed on     the class of `container`
      */
     childNotify(child: Gtk.Widget, childProperty: string): void
     /**
@@ -14584,10 +15570,15 @@ class Window {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     childNotifyByPspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param propertyName the name of the property to set
+     * @param value the value to set the property to
      */
     childSetProperty(child: Gtk.Widget, propertyName: string, value: any): void
     /**
@@ -14607,6 +15598,7 @@ class Window {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -14621,6 +15613,7 @@ class Window {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -14660,6 +15653,7 @@ class Window {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     getPathForChild(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -14683,6 +15677,8 @@ class Window {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagateDraw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -14695,6 +15691,7 @@ class Window {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resizeChildren(): void
@@ -14708,6 +15705,7 @@ class Window {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param borderWidth amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     setBorderWidth(borderWidth: number): void
     /**
@@ -14718,6 +15716,7 @@ class Window {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusableWidgets      the new focus chain
      */
     setFocusChain(focusableWidgets: Gtk.Widget[]): void
     /**
@@ -14729,6 +15728,7 @@ class Window {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -14741,6 +15741,7 @@ class Window {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     setFocusHadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -14753,6 +15754,7 @@ class Window {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     setFocusVadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -14760,6 +15762,7 @@ class Window {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needsRedraws the new value for the container’s `reallocate_redraws` flag
      */
     setReallocateRedraws(needsRedraws: boolean): void
     /**
@@ -14768,6 +15771,7 @@ class Window {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resizeMode the new resize mode
      */
     setResizeMode(resizeMode: Gtk.ResizeMode): void
     /**
@@ -14791,17 +15795,25 @@ class Window {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accelSignal widget signal to emit on accelerator activation
+     * @param accelGroup accel group for this widget, added to its toplevel
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
+     * @param accelFlags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     addAccelerator(accelSignal: string, accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType, accelFlags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     addDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     addEvents(events: number): void
     /**
@@ -14811,6 +15823,7 @@ class Window {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -14834,6 +15847,7 @@ class Window {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -14844,6 +15858,7 @@ class Window {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signalId the ID of a signal installed on `widget`
      */
     canActivateAccel(signalId: number): boolean
     /**
@@ -14866,6 +15881,7 @@ class Window {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -14876,6 +15892,7 @@ class Window {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param childProperty the name of a child property installed on the                  class of `widget’`s parent
      */
     childNotify(childProperty: string): void
     /**
@@ -14895,6 +15912,7 @@ class Window {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -14912,6 +15930,7 @@ class Window {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -14956,6 +15975,7 @@ class Window {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widgetPointer address of a variable that contains `widget`
      */
     destroyed(widgetPointer: Gtk.Widget): /* widgetPointer */ Gtk.Widget
     /**
@@ -14964,11 +15984,16 @@ class Window {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     deviceIsShadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     dragBegin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -14997,12 +16022,22 @@ class Window {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     dragBeginWithCoordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -15037,6 +16072,8 @@ class Window {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param targetList list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     dragDestFindTarget(context: Gdk.DragContext, targetList?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -15091,16 +16128,23 @@ class Window {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     dragDestSet(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxyWindow the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param useCoordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     dragDestSetProxy(proxyWindow: Gdk.Window, protocol: Gdk.DragProtocol, useCoordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param targetList list of droppable targets, or %NULL for none
      */
     dragDestSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -15110,6 +16154,7 @@ class Window {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param trackMotion whether to accept all targets
      */
     dragDestSetTrackMotion(trackMotion: boolean): void
     /**
@@ -15127,6 +16172,9 @@ class Window {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     dragGetData(context: Gdk.DragContext, target: Gdk.Atom, time: number): void
     /**
@@ -15167,33 +16215,41 @@ class Window {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param startButtonMask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     dragSourceSet(startButtonMask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     dragSourceSetIconGicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param iconName name of icon to use
      */
     dragSourceSetIconName(iconName: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     dragSourceSetIconPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stockId the ID of the stock icon to use
      */
     dragSourceSetIconStock(stockId: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param targetList list of draggable targets, or %NULL for none
      */
     dragSourceSetTargetList(targetList?: Gtk.TargetList | null): void
     /**
@@ -15223,6 +16279,7 @@ class Window {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -15252,6 +16309,7 @@ class Window {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -15283,6 +16341,7 @@ class Window {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     getActionGroup(prefix: string): Gio.ActionGroup | null
     /**
@@ -15345,6 +16404,7 @@ class Window {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -15409,6 +16469,7 @@ class Window {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     getClipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -15418,11 +16479,13 @@ class Window {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     getDeviceEnabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     getDeviceEvents(device: Gdk.Device): Gdk.EventMask
     /**
@@ -15576,6 +16639,7 @@ class Window {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     getModifierMask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -15658,6 +16722,7 @@ class Window {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     getPreferredHeightAndBaselineForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
@@ -15669,6 +16734,7 @@ class Window {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     getPreferredHeightForWidth(width: number): [ /* minimumHeight */ number | null, /* naturalHeight */ number | null ]
     /**
@@ -15710,6 +16776,7 @@ class Window {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     getPreferredWidthForHeight(height: number): [ /* minimumWidth */ number | null, /* naturalWidth */ number | null ]
     /**
@@ -15829,6 +16896,8 @@ class Window {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widgetType The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -16047,6 +17116,7 @@ class Window {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     inputShapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -16057,6 +17127,8 @@ class Window {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -16064,11 +17136,13 @@ class Window {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -16136,6 +17210,7 @@ class Window {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -16172,6 +17247,7 @@ class Window {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -16190,6 +17266,8 @@ class Window {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modifyBase(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -16207,6 +17285,8 @@ class Window {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modifyBg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -16216,6 +17296,8 @@ class Window {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modifyCursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -16223,6 +17305,8 @@ class Window {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modifyFg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -16230,6 +17314,7 @@ class Window {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param fontDesc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modifyFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -16251,6 +17336,7 @@ class Window {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modifyStyle(style: Gtk.RcStyle): void
     /**
@@ -16261,6 +17347,8 @@ class Window {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modifyText(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -16268,6 +17356,8 @@ class Window {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     overrideBackgroundColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -16296,6 +17386,8 @@ class Window {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     overrideColor(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -16306,11 +17398,14 @@ class Window {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondaryCursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     overrideCursor(cursor?: Gdk.RGBA | null, secondaryCursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param fontDesc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     overrideFont(fontDesc?: Pango.FontDescription | null): void
     /**
@@ -16319,6 +17414,8 @@ class Window {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     overrideSymbolicColor(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -16372,6 +17469,10 @@ class Window {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queueDrawArea(x: number, y: number, width: number, height: number): void
     /**
@@ -16385,6 +17486,7 @@ class Window {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queueDrawRegion(region: cairo.Region): void
     /**
@@ -16430,6 +17532,7 @@ class Window {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     regionIntersect(region: cairo.Region): cairo.Region
     /**
@@ -16441,11 +17544,15 @@ class Window {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     registerWindow(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accelGroup accel group for this widget
+     * @param accelKey GDK keyval of the accelerator
+     * @param accelMods modifier key combination of the accelerator
      */
     removeAccelerator(accelGroup: Gtk.AccelGroup, accelKey: number, accelMods: Gdk.ModifierType): boolean
     /**
@@ -16453,11 +17560,13 @@ class Window {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     removeTickCallback(id: number): void
     /**
@@ -16472,6 +17581,9 @@ class Window {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     renderIcon(stockId: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -16484,11 +17596,14 @@ class Window {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stockId a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     renderIconPixbuf(stockId: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param newParent a #GtkContainer to move the widget into
      */
     reparent(newParent: Gtk.Widget): void
     /**
@@ -16517,6 +17632,7 @@ class Window {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     sendExpose(event: Gdk.Event): number
     /**
@@ -16545,6 +17661,7 @@ class Window {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     sendFocusChange(event: Gdk.Event): boolean
     /**
@@ -16569,6 +17686,8 @@ class Window {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accelPath path used to look up the accelerator
+     * @param accelGroup a #GtkAccelGroup.
      */
     setAccelPath(accelPath?: string | null, accelGroup?: Gtk.AccelGroup | null): void
     /**
@@ -16581,6 +17700,7 @@ class Window {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     setAllocation(allocation: Gtk.Allocation): void
     /**
@@ -16595,18 +17715,21 @@ class Window {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param appPaintable %TRUE if the application will paint on the widget
      */
     setAppPaintable(appPaintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param canDefault whether or not `widget` can be a default widget.
      */
     setCanDefault(canDefault: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param canFocus whether or not `widget` can own the input focus.
      */
     setCanFocus(canFocus: boolean): void
     /**
@@ -16627,6 +17750,7 @@ class Window {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param isVisible if %TRUE, `widget` should be mapped along with its parent.
      */
     setChildVisible(isVisible: boolean): void
     /**
@@ -16640,11 +17764,13 @@ class Window {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     setClip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     setCompositeName(name: string): void
     /**
@@ -16654,6 +17780,8 @@ class Window {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     setDeviceEnabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -16668,6 +17796,8 @@ class Window {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     setDeviceEvents(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -16683,6 +17813,7 @@ class Window {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -16711,6 +17842,7 @@ class Window {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param doubleBuffered %TRUE to double-buffer a widget
      */
     setDoubleBuffered(doubleBuffered: boolean): void
     /**
@@ -16725,6 +17857,7 @@ class Window {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     setEvents(events: number): void
     /**
@@ -16732,26 +17865,31 @@ class Window {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focusOnClick whether the widget should grab focus when clicked with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param fontMap a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -16765,6 +17903,7 @@ class Window {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param hasWindow whether or not `widget` has a window.
      */
     setHasWindow(hasWindow: boolean): void
     /**
@@ -16793,6 +17932,7 @@ class Window {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -16811,6 +17951,7 @@ class Window {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
@@ -16818,36 +17959,43 @@ class Window {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     setMapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -16860,6 +18008,7 @@ class Window {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -16868,6 +18017,7 @@ class Window {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param noShowAll the new value for the “no-show-all” property
      */
     setNoShowAll(noShowAll: boolean): void
     /**
@@ -16885,6 +18035,7 @@ class Window {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -16894,6 +18045,7 @@ class Window {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     setParent(parent: Gtk.Widget): void
     /**
@@ -16905,6 +18057,7 @@ class Window {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parentWindow the new parent window.
      */
     setParentWindow(parentWindow: Gdk.Window): void
     /**
@@ -16914,6 +18067,7 @@ class Window {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     setRealized(realized: boolean): void
     /**
@@ -16923,6 +18077,7 @@ class Window {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -16941,6 +18096,7 @@ class Window {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redrawOnAllocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     setRedrawOnAllocate(redrawOnAllocate: boolean): void
     /**
@@ -16948,6 +18104,7 @@ class Window {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -16981,12 +18138,15 @@ class Window {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     setState(state: Gtk.StateType): void
     /**
@@ -17003,11 +18163,14 @@ class Window {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     setStyle(style?: Gtk.Style | null): void
     /**
@@ -17015,6 +18178,7 @@ class Window {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param supportMultidevice %TRUE to support input from multiple devices.
      */
     setSupportMultidevice(supportMultidevice: boolean): void
     /**
@@ -17026,6 +18190,7 @@ class Window {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -17034,6 +18199,7 @@ class Window {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
@@ -17042,11 +18208,13 @@ class Window {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param customWindow a #GtkWindow, or %NULL
      */
     setTooltipWindow(customWindow?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -17054,6 +18222,7 @@ class Window {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
@@ -17061,6 +18230,7 @@ class Window {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -17071,6 +18241,7 @@ class Window {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -17081,6 +18252,7 @@ class Window {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     setVisual(visual?: Gdk.Visual | null): void
     /**
@@ -17095,12 +18267,14 @@ class Window {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     setWindow(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shapeCombineRegion(region?: cairo.Region | null): void
     /**
@@ -17142,6 +18316,7 @@ class Window {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     sizeAllocate(allocation: Gtk.Allocation): void
     /**
@@ -17158,6 +18333,8 @@ class Window {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocateWithBaseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -17192,6 +18369,8 @@ class Window {
     styleAttach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param propertyName the name of a style property
+     * @param value location to return the property value
      */
     styleGetProperty(propertyName: string, value: any): void
     /**
@@ -17205,6 +18384,9 @@ class Window {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param destWidget a #GtkWidget
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -17234,12 +18416,14 @@ class Window {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregisterWindow(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -17277,6 +18461,10 @@ class Window {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17287,6 +18475,12 @@ class Window {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17310,6 +18504,7 @@ class Window {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17329,11 +18524,14 @@ class Window {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17341,6 +18539,8 @@ class Window {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17358,6 +18558,7 @@ class Window {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17403,6 +18604,7 @@ class Window {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17446,15 +18648,20 @@ class Window {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17495,6 +18702,7 @@ class Window {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17529,12 +18737,16 @@ class Window {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     addChild(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -17542,24 +18754,39 @@ class Window {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     constructChild(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     customFinished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     customTagEnd(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     customTagStart(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     getInternalChild(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -17568,14 +18795,19 @@ class Window {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parserFinished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     setBuildableProperty(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     setName(name: string): void
     /* Signals of Gtk-3.0.Gtk.Window */
@@ -17610,6 +18842,7 @@ class Window {
      * 
      * The default bindings for this signal are Ctrl-Shift-I
      * and Ctrl-Shift-D.
+     * @param toggle toggle the debugger
      */
     connect(sigName: "enable-debugging", callback: ((toggle: boolean) => boolean)): number
     on(sigName: "enable-debugging", callback: (toggle: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -17628,6 +18861,7 @@ class Window {
     /**
      * This signal is emitted whenever the currently focused widget in
      * this window changes.
+     * @param widget the newly focused widget (or %NULL for no focus)
      */
     connect(sigName: "set-focus", callback: ((widget?: Gtk.Widget | null) => void)): number
     on(sigName: "set-focus", callback: (widget?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -17669,6 +18903,7 @@ class Window {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -17683,6 +18918,7 @@ class Window {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: ((event: Gdk.EventButton) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Gdk.EventButton) => void, after?: boolean): NodeJS.EventEmitter
@@ -17695,6 +18931,7 @@ class Window {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signalId the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: ((signalId: number) => boolean)): number
     on(sigName: "can-activate-accel", callback: (signalId: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17705,6 +18942,7 @@ class Window {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param childProperty the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: ((childProperty: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (childProperty: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17728,6 +18966,7 @@ class Window {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: ((event: Gdk.EventConfigure) => boolean)): number
     on(sigName: "configure-event", callback: (event: Gdk.EventConfigure) => void, after?: boolean): NodeJS.EventEmitter
@@ -17738,6 +18977,7 @@ class Window {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: ((event: Gdk.EventExpose) => boolean)): number
     on(sigName: "damage-event", callback: (event: Gdk.EventExpose) => void, after?: boolean): NodeJS.EventEmitter
@@ -17750,6 +18990,7 @@ class Window {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "delete-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -17777,6 +19018,7 @@ class Window {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "destroy-event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -17786,6 +19028,7 @@ class Window {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -17800,6 +19043,7 @@ class Window {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-begin", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -17811,6 +19055,7 @@ class Window {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-data-delete", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -17823,6 +19068,10 @@ class Window {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: ((context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-get", callback: (context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17892,6 +19141,12 @@ class Window {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: ((context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     on(sigName: "drag-data-received", callback: (context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17909,6 +19164,10 @@ class Window {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-drop", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -17919,6 +19178,7 @@ class Window {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: ((context: Gdk.DragContext) => void)): number
     on(sigName: "drag-end", callback: (context: Gdk.DragContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -17931,6 +19191,8 @@ class Window {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: ((context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     on(sigName: "drag-failed", callback: (context: Gdk.DragContext, result: Gtk.DragResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -17947,6 +19209,8 @@ class Window {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: ((context: Gdk.DragContext, time: number) => void)): number
     on(sigName: "drag-leave", callback: (context: Gdk.DragContext, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -18042,6 +19306,10 @@ class Window {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: ((context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     on(sigName: "drag-motion", callback: (context: Gdk.DragContext, x: number, y: number, time: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -18066,6 +19334,7 @@ class Window {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: ((cr: cairo.Context) => boolean)): number
     on(sigName: "draw", callback: (cr: cairo.Context) => void, after?: boolean): NodeJS.EventEmitter
@@ -18080,6 +19349,7 @@ class Window {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "enter-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -18092,6 +19362,7 @@ class Window {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: ((event: Gdk.Event) => boolean)): number
     on(sigName: "event", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -18102,6 +19373,7 @@ class Window {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: ((event: Gdk.Event) => void)): number
     on(sigName: "event-after", callback: (event: Gdk.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -18119,6 +19391,7 @@ class Window {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-in-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -18131,6 +19404,7 @@ class Window {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: ((event: Gdk.EventFocus) => boolean)): number
     on(sigName: "focus-out-event", callback: (event: Gdk.EventFocus) => void, after?: boolean): NodeJS.EventEmitter
@@ -18144,6 +19418,7 @@ class Window {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: ((event: Gdk.EventGrabBroken) => boolean)): number
     on(sigName: "grab-broken-event", callback: (event: Gdk.EventGrabBroken) => void, after?: boolean): NodeJS.EventEmitter
@@ -18164,6 +19439,7 @@ class Window {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param wasGrabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: ((wasGrabbed: boolean) => void)): number
     on(sigName: "grab-notify", callback: (wasGrabbed: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -18185,6 +19461,7 @@ class Window {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previousToplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: ((previousToplevel?: Gtk.Widget | null) => void)): number
     on(sigName: "hierarchy-changed", callback: (previousToplevel?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18199,6 +19476,7 @@ class Window {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -18212,6 +19490,7 @@ class Window {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: ((event: Gdk.EventKey) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Gdk.EventKey) => void, after?: boolean): NodeJS.EventEmitter
@@ -18221,6 +19500,7 @@ class Window {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -18235,6 +19515,7 @@ class Window {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: ((event: Gdk.EventCrossing) => boolean)): number
     on(sigName: "leave-notify-event", callback: (event: Gdk.EventCrossing) => void, after?: boolean): NodeJS.EventEmitter
@@ -18264,6 +19545,7 @@ class Window {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "map-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -18273,6 +19555,7 @@ class Window {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -18287,6 +19570,7 @@ class Window {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: ((event: Gdk.EventMotion) => boolean)): number
     on(sigName: "motion-notify-event", callback: (event: Gdk.EventMotion) => void, after?: boolean): NodeJS.EventEmitter
@@ -18301,6 +19585,7 @@ class Window {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param oldParent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Gtk.Widget | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Gtk.Widget | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18327,6 +19612,7 @@ class Window {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: ((event: Gdk.EventProperty) => boolean)): number
     on(sigName: "property-notify-event", callback: (event: Gdk.EventProperty) => void, after?: boolean): NodeJS.EventEmitter
@@ -18338,6 +19624,7 @@ class Window {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-in-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -18349,6 +19636,7 @@ class Window {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: ((event: Gdk.EventProximity) => boolean)): number
     on(sigName: "proximity-out-event", callback: (event: Gdk.EventProximity) => void, after?: boolean): NodeJS.EventEmitter
@@ -18368,6 +19656,10 @@ class Window {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -18387,6 +19679,7 @@ class Window {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previousScreen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: ((previousScreen?: Gdk.Screen | null) => void)): number
     on(sigName: "screen-changed", callback: (previousScreen?: Gdk.Screen | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18402,6 +19695,7 @@ class Window {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: ((event: Gdk.EventScroll) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Gdk.EventScroll) => void, after?: boolean): NodeJS.EventEmitter
@@ -18411,6 +19705,7 @@ class Window {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-clear-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -18436,6 +19731,7 @@ class Window {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: ((event: Gdk.EventSelection) => boolean)): number
     on(sigName: "selection-request-event", callback: (event: Gdk.EventSelection) => void, after?: boolean): NodeJS.EventEmitter
@@ -18464,6 +19760,7 @@ class Window {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: ((state: Gtk.StateType) => void)): number
     on(sigName: "state-changed", callback: (state: Gtk.StateType) => void, after?: boolean): NodeJS.EventEmitter
@@ -18473,6 +19770,7 @@ class Window {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -18487,6 +19785,7 @@ class Window {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previousStyle the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: ((previousStyle?: Gtk.Style | null) => void)): number
     on(sigName: "style-set", callback: (previousStyle?: Gtk.Style | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -18531,6 +19830,7 @@ class Window {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: ((event: Gdk.EventAny) => boolean)): number
     on(sigName: "unmap-event", callback: (event: Gdk.EventAny) => void, after?: boolean): NodeJS.EventEmitter
@@ -18554,6 +19854,7 @@ class Window {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: ((event: Gdk.EventVisibility) => boolean)): number
     on(sigName: "visibility-notify-event", callback: (event: Gdk.EventVisibility) => void, after?: boolean): NodeJS.EventEmitter
@@ -18567,6 +19868,7 @@ class Window {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: ((event: Gdk.EventWindowState) => boolean)): number
     on(sigName: "window-state-event", callback: (event: Gdk.EventWindowState) => void, after?: boolean): NodeJS.EventEmitter
@@ -18602,6 +19904,7 @@ class Window {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18753,6 +20056,11 @@ class Window {
     on(sigName: "notify::transient-for", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::transient-for", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::transient-for", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::type-hint", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type-hint", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::type-hint", callback: (...args: any[]) => void): NodeJS.EventEmitter

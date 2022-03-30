@@ -1513,10 +1513,10 @@ class Category {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Category */
     /**
      * Gets the icon filename.
@@ -1540,22 +1540,27 @@ class Category {
     getSummary(): string
     /**
      * Sets the icon filename.
+     * @param icon the new value
      */
     setIcon(icon: string): void
     /**
      * Sets the id specific to this category.
+     * @param catId the new value
      */
     setId(catId: string): void
     /**
      * Sets the name.
+     * @param name the new value
      */
     setName(name: string): void
     /**
      * Sets the parent category id.
+     * @param parentId the new value
      */
     setParentId(parentId: string): void
     /**
      * Sets the summary.
+     * @param summary the new value
      */
     setSummary(summary: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1593,6 +1598,10 @@ class Category {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1603,6 +1612,12 @@ class Category {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1626,6 +1641,7 @@ class Category {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1645,11 +1661,14 @@ class Category {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1657,6 +1676,8 @@ class Category {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1674,6 +1695,7 @@ class Category {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1719,6 +1741,7 @@ class Category {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1762,15 +1785,20 @@ class Category {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1811,6 +1839,7 @@ class Category {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1845,6 +1874,7 @@ class Category {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1876,6 +1906,7 @@ class Category {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1948,17 +1979,24 @@ class Client {
     interactive: boolean
     locale: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Client */
     /**
      * We may want to agree to a EULA dialog if one is presented.
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param eulaId the <literal>eula_id</literal> we are agreeing to
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     acceptEula(eulaId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * We may want to agree to a EULA dialog if one is presented.
+     * @param eulaId the <literal>eula_id</literal> we are agreeing to
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     acceptEulaAsync(eulaId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1966,10 +2004,17 @@ class Client {
      * 
      * Warning: this function is synchronous, and will block. Do not use it in GUI
      * applications.
+     * @param transactionId a transaction ID such as "/21_ebcbdaae_data"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     adopt(transactionId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Adopt a transaction which allows the caller to monitor the state or cancel it.
+     * @param transactionId a transaction ID such as "/21_ebcbdaae_data"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     adoptAsync(transactionId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1977,10 +2022,21 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive If we should search recursively for depends
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     dependsOn(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the packages that depend this one, i.e. child->parent.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive If we should search recursively for depends
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     dependsOnAsync(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1988,14 +2044,24 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param directory the location where packages are to be downloaded
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     downloadPackages(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Downloads package files to a specified location.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param directory the location where packages are to be downloaded
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     downloadPackagesAsync(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     genericFinish(res: Gio.AsyncResult): Results
     /**
@@ -2011,10 +2077,15 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getCategories(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get a list of all categories supported.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getCategoriesAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2023,11 +2094,18 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getDetails(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get details of a package, so more information can be obtained for GUI
      * or command line tools.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getDetailsAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2036,11 +2114,18 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param files a null terminated array of filenames
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getDetailsLocal(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get details of a package, so more information can be obtained for GUI
      * or command line tools.
+     * @param files a null terminated array of filenames
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getDetailsLocalAsync(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2049,11 +2134,16 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getDistroUpgrades(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * This method should return a list of distribution upgrades that are available.
      * It should not return updates, only major upgrades.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getDistroUpgradesAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2061,10 +2151,17 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getFiles(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the file list (i.e. a list of files installed) for the specified package.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getFilesAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2073,11 +2170,18 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param files a null terminated array of filenames
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getFilesLocal(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get file list of a package, so more information can be obtained for GUI
      * or command line tools.
+     * @param files a null terminated array of filenames
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getFilesLocalAsync(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2097,10 +2201,17 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param number the number of past transactions to return, or 0 for all
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getOldTransactions(number: number, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the old transaction list, mainly used for the transaction viewer.
+     * @param number the number of past transactions to return, or 0 for all
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getOldTransactionsAsync(number: number, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2108,10 +2219,17 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getPackages(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the list of packages from the backend
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getPackagesAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2119,14 +2237,20 @@ class Client {
      * 
      * Warning: this function is synchronous, and will block. Do not use it in GUI
      * applications.
+     * @param transactionId The transaction id
+     * @param cancellable a #GCancellable or %NULL
      */
     getProgress(transactionId: string, cancellable?: Gio.Cancellable | null): Progress
     /**
      * Find the current state of a transaction.
+     * @param transactionId a transaction ID such as "/21_ebcbdaae_data"
+     * @param cancellable a #GCancellable or %NULL
+     * @param callbackReady the function to run on completion
      */
     getProgressAsync(transactionId: string, cancellable?: Gio.Cancellable | null, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getProgressFinish(res: Gio.AsyncResult): Progress
     /**
@@ -2134,10 +2258,17 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getRepoList(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the list of repositories installed on the system.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getRepoListAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2146,11 +2277,18 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getUpdateDetail(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get details about the specific update, for instance any CVE urls and
      * severity information.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getUpdateDetailAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2158,10 +2296,17 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getUpdates(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get a list of all the packages that can be updated for all repositories.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getUpdatesAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2170,11 +2315,20 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags a transaction type bitfield
+     * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     installFiles(transactionFlags: Bitfield, files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Install a file locally, and get the deps from the repositories.
      * This is useful for double clicking on a .rpm or .deb file.
+     * @param transactionFlags a transaction type bitfield
+     * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     installFilesAsync(transactionFlags: Bitfield, files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2182,10 +2336,19 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     installPackages(transactionFlags: Bitfield, packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Install a package of the newest and most correct version.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     installPackagesAsync(transactionFlags: Bitfield, packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2193,10 +2356,21 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param type the signature type, e.g. %PK_SIGTYPE_ENUM_GPG
+     * @param keyId a key ID such as "0df23df"
+     * @param packageId a signature_id structure such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     installSignature(type: SigTypeEnum, keyId: string, packageId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Install a software repository signature of the newest and most correct version.
+     * @param type the signature type, e.g. %PK_SIGTYPE_ENUM_GPG
+     * @param keyId a key ID such as "0df23df"
+     * @param packageId a signature_id structure such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     installSignatureAsync(type: SigTypeEnum, keyId: string, packageId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2207,6 +2381,9 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param force if we should aggressively drop caches
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     refreshCache(force: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -2214,6 +2391,10 @@ class Client {
      * package lists are up to date.
      * This action may take a few minutes and should be done when the session and
      * system are idle.
+     * @param force if we should aggressively drop caches
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     refreshCacheAsync(force: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2223,12 +2404,25 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param allowDeps if other dependent packages are allowed to be removed from the computer
+     * @param autoremove if other packages installed at the same time should be tried to remove
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     removePackages(transactionFlags: Bitfield, packageIds: string[], allowDeps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Remove a package (optionally with dependancies) from the system.
      * If `allow_deps` is set to %FALSE, and other packages would have to be removed,
      * then the transaction would fail.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param allowDeps if other dependent packages are allowed to be removed from the computer
+     * @param autoremove if other packages installed at the same time should be tried to remove
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     removePackagesAsync(transactionFlags: Bitfield, packageIds: string[], allowDeps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2241,6 +2435,9 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags if only trusted packages should be installed
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repairSystem(transactionFlags: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -2250,6 +2447,10 @@ class Client {
      * system was shutdown during processing an installation.
      * 
      * The backend will decide what is best to do.
+     * @param transactionFlags a transaction type bitfield
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repairSystemAsync(transactionFlags: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2257,10 +2458,19 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param enabled if we should enable the repository
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repoEnable(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Enable or disable the repository.
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param enabled if we should enable the repository
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repoEnableAsync(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2268,10 +2478,21 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags transaction flags
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param autoremove If packages should be auto-removed
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repoRemove(transactionFlags: Bitfield, repoId: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Removes a repo and optionally the packages installed from it.
+     * @param transactionFlags transaction flags
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param autoremove If packages should be auto-removed
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repoRemoveAsync(transactionFlags: Bitfield, repoId: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2280,11 +2501,22 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param parameter the parameter to change
+     * @param value what we should change it to
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repoSetData(repoId: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * We may want to set a repository parameter.
      * NOTE: this is free text, and is left to the backend to define a format.
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param parameter the parameter to change
+     * @param value what we should change it to
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repoSetDataAsync(repoId: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2292,10 +2524,21 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive If we should search recursively for requires
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     requiredBy(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the packages that require this one, i.e. parent->child.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive If we should search recursively for requires
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     requiredByAsync(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2305,12 +2548,21 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packages an array of package names to resolve, e.g. "gnome-system-tools"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     resolve(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Resolve a package name into a `package_id`. This can return installed and
      * available packages and allows you find out if a package is installed locally
      * or is available in a repository.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packages an array of package names to resolve, e.g. "gnome-system-tools"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     resolveAsync(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2320,12 +2572,21 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values free text to search for, for instance, "power"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchDetails(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Search all detailed summary information to try and find a keyword.
      * Think of this as pk_client_search_names(), but trying much harder and
      * taking longer.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values free text to search for, for instance, "power"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchDetailsAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2333,10 +2594,19 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values file to search for, for instance, "/sbin/service"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchFiles(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Search for packages that provide a specific file.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values file to search for, for instance, "/sbin/service"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchFilesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2344,10 +2614,19 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values a group enum to search for, for instance, "system-tools"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchGroups(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Return all packages in a specific group.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values a group enum to search for, for instance, "system-tools"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchGroupsAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2356,31 +2635,44 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values free text to search for, for instance, "power"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchNames(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Search all the locally installed files and remote repositories for a package
      * that matches a specific name.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values free text to search for, for instance, "power"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchNamesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Sets the background value for the client. A background transaction
      * is usually scheduled at a lower priority and is usually given less
      * network and disk performance.
+     * @param background if the transaction is a background transaction
      */
     setBackground(background: boolean): void
     /**
      * Sets the maximum cache age value for the client.
+     * @param cacheAge the cache age to set, where %G_MAXUINT means "never"
      */
     setCacheAge(cacheAge: number): void
     /**
      * Sets the interactive value for the client. Interactive transactions
      * are usually allowed to ask the user questions.
+     * @param interactive the value to set
      */
     setInteractive(interactive: boolean): void
     /**
      * Sets the locale to be used for the client. This may affect returned
      * results.
+     * @param locale the locale to set, e.g. "en_GB.UTF-8"
      */
     setLocale(locale: string): void
     /**
@@ -2388,10 +2680,19 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     updatePackages(transactionFlags: Bitfield, packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Update specific packages to the newest available versions.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     updatePackagesAsync(transactionFlags: Bitfield, packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2403,6 +2704,11 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags transaction flags
+     * @param distroId a distro ID such as "fedora-14"
+     * @param upgradeKind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     upgradeSystem(transactionFlags: Bitfield, distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -2411,6 +2717,12 @@ class Client {
      * or may involve doing an on-line upgrade.
      * 
      * The backend will decide what is best to do.
+     * @param transactionFlags a transaction type bitfield
+     * @param distroId a distro ID such as "fedora-14"
+     * @param upgradeKind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     upgradeSystemAsync(transactionFlags: Bitfield, distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2420,12 +2732,21 @@ class Client {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values a search term such as "sound/mp3"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     whatProvides(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * This should return packages that provide the supplied attributes.
      * This method is useful for finding out what package(s) provide a modalias
      * or GStreamer codec string.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values a search term such as "sound/mp3"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     whatProvidesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2463,6 +2784,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2473,6 +2798,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2496,6 +2827,7 @@ class Client {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2515,11 +2847,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2527,6 +2862,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2544,6 +2881,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2589,6 +2927,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2632,15 +2971,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2681,6 +3025,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2715,6 +3060,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2746,6 +3092,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2796,17 +3143,23 @@ interface ClientHelper_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ClientHelper {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.ClientHelper */
     isActive(): boolean
     /**
      * Starts the helper process, by running the helper process and setting
      * up the socket for use.
+     * @param socketFilename a socket filename that does not already exist
+     * @param argv the executable, along with any arguments
+     * @param envp the environment
      */
     start(socketFilename: string, argv: string, envp: string): boolean
     /**
      * Starts the helper process, by running the helper process and setting
      * up the socket for use.
+     * @param socket the (bound and listening) #GSocket instance to use
+     * @param argv the executable, along with any arguments
+     * @param envp the environment
      */
     startWithSocket(socket: Gio.Socket, argv: string, envp: string): boolean
     /**
@@ -2849,6 +3202,10 @@ class ClientHelper {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2859,6 +3216,12 @@ class ClientHelper {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2882,6 +3245,7 @@ class ClientHelper {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2901,11 +3265,14 @@ class ClientHelper {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2913,6 +3280,8 @@ class ClientHelper {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2930,6 +3299,7 @@ class ClientHelper {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2975,6 +3345,7 @@ class ClientHelper {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3018,15 +3389,20 @@ class ClientHelper {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3067,6 +3443,7 @@ class ClientHelper {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3101,6 +3478,7 @@ class ClientHelper {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3132,6 +3510,7 @@ class ClientHelper {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3185,84 +3564,124 @@ class Control {
     readonly versionMicro: number
     readonly versionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Control */
     /**
      * We may want to know before we run a method if we are going to be denied,
      * accepted or challenged for authentication.
+     * @param actionId The action ID, for instance "org.freedesktop.PackageKit.install-untrusted"
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     canAuthorizeAsync(actionId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     canAuthorizeFinish(res: Gio.AsyncResult): AuthorizeEnum
     /**
      * Gets the debugging state from the daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     getDaemonStateAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getDaemonStateFinish(res: Gio.AsyncResult): string
     /**
      * Gets the properties the daemon supports.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     getProperties(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Gets global properties from the daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     getPropertiesAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getPropertiesFinish(res: Gio.AsyncResult): boolean
     /**
      * Gets a transacton ID from the daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     getTidAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getTidFinish(res: Gio.AsyncResult): string
     /**
      * We may want to know how long it has been since we refreshed the cache or
      * retrieved the update list.
+     * @param role the role enum, e.g. %PK_ROLE_ENUM_GET_UPDATES
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     getTimeSinceActionAsync(role: RoleEnum, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getTimeSinceActionFinish(res: Gio.AsyncResult): number
     /**
      * Gets the transaction list in progress.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     getTransactionList(cancellable?: Gio.Cancellable | null): string[]
     /**
      * Gets the transactions currently running in the daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     getTransactionListAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getTransactionListFinish(res: Gio.AsyncResult): string[]
     /**
      * Sets the network proxy to use in the daemon.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param proxyHttp the HTTP proxy server
+     * @param proxyFtp the FTP proxy server
+     * @param cancellable a #GCancellable or %NULL
      */
     setProxy(proxyHttp: string, proxyFtp: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the network proxy to use in the daemon.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param proxyHttp the HTTP proxy server
+     * @param proxyHttps the HTTPS proxy server
+     * @param proxyFtp the FTP proxy server
+     * @param proxySocks the SOCKS proxy server
+     * @param noProxy the list of download IPs that shouldn't go through the proxy
+     * @param pac the PAC string
+     * @param cancellable a #GCancellable or %NULL
      */
     setProxy2(proxyHttp: string, proxyHttps: string, proxyFtp: string, proxySocks: string, noProxy: string, pac: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Set a proxy on the PK daemon
+     * @param proxyHttp a HTTP proxy string such as "username:password`server`.lan:8080", or %NULL
+     * @param proxyHttps a HTTPS proxy string such as "username:password`server`.lan:8080", or %NULL
+     * @param proxyFtp a FTP proxy string such as "server.lan:8080", or %NULL
+     * @param proxySocks a SOCKS proxy string such as "server.lan:8080", or %NULL
+     * @param noProxy a list of download IPs that shouldn't go through the proxy, or %NULL
+     * @param pac a PAC string, or %NULL
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     setProxy2Async(proxyHttp: string, proxyHttps: string, proxyFtp: string, proxySocks: string, noProxy: string, pac: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -3270,24 +3689,33 @@ class Control {
      * 
      * NOTE: This is just provided for backwards compatibility.
      * Clients should really be using pk_control_set_proxy2_async().
+     * @param proxyHttp a HTTP proxy string such as "username:password`server`.lan:8080"
+     * @param proxyFtp a FTP proxy string such as "server.lan:8080"
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     setProxyAsync(proxyHttp: string, proxyFtp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     setProxyFinish(res: Gio.AsyncResult): boolean
     /**
      * Suggests to the daemon that it should quit as soon as possible.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     suggestDaemonQuit(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Suggests to the daemon that it should quit as soon as possible.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     suggestDaemonQuitAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     suggestDaemonQuitFinish(res: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3325,6 +3753,10 @@ class Control {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3335,6 +3767,12 @@ class Control {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3358,6 +3796,7 @@ class Control {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3377,11 +3816,14 @@ class Control {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3389,6 +3831,8 @@ class Control {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3406,6 +3850,7 @@ class Control {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3451,6 +3896,7 @@ class Control {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3494,15 +3940,20 @@ class Control {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3543,6 +3994,7 @@ class Control {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3577,6 +4029,7 @@ class Control {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of PackageKitGlib-1.0.PackageKitGlib.Control */
@@ -3603,6 +4056,7 @@ class Control {
     /**
      * The ::transaction-list-changed signal is emitted when the list
      * of transactions handled by the daemon is changed.
+     * @param transactionIds an #GStrv array of transaction ID's
      */
     connect(sigName: "transaction-list-changed", callback: ((transactionIds: string[]) => void)): number
     on(sigName: "transaction-list-changed", callback: (transactionIds: string[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -3647,6 +4101,7 @@ class Control {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3746,20 +4201,23 @@ interface Desktop_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Desktop {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Desktop */
     /**
      * Return all desktop files owned by a package, regardless if they are shown
      * in the main menu or not.
+     * @param package the package name, e.g. "gnome-power-manager"
      */
     getFilesForPackage(package: string): string[]
     /**
      * Returns the package name that owns the desktop file. Fast.
+     * @param filename a fully qualified filename
      */
     getPackageForFile(filename: string): string
     /**
      * Return all desktop files owned by a package that would be shown in a menu,
      * i.e are an application
+     * @param package the package name, e.g. "gnome-power-manager"
      */
     getShownForPackage(package: string): string[]
     /**
@@ -3802,6 +4260,10 @@ class Desktop {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3812,6 +4274,12 @@ class Desktop {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3835,6 +4303,7 @@ class Desktop {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3854,11 +4323,14 @@ class Desktop {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3866,6 +4338,8 @@ class Desktop {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3883,6 +4357,7 @@ class Desktop {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3928,6 +4403,7 @@ class Desktop {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3971,15 +4447,20 @@ class Desktop {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4020,6 +4501,7 @@ class Desktop {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4054,6 +4536,7 @@ class Desktop {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4085,6 +4568,7 @@ class Desktop {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4130,10 +4614,10 @@ class Details {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Details */
     /**
      * Gets the description for the details object.
@@ -4203,6 +4687,10 @@ class Details {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4213,6 +4701,12 @@ class Details {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4236,6 +4730,7 @@ class Details {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4255,11 +4750,14 @@ class Details {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4267,6 +4765,8 @@ class Details {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4284,6 +4784,7 @@ class Details {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4329,6 +4830,7 @@ class Details {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4372,15 +4874,20 @@ class Details {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4421,6 +4928,7 @@ class Details {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4455,6 +4963,7 @@ class Details {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4486,6 +4995,7 @@ class Details {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4573,10 +5083,10 @@ class DistroUpgrade {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.DistroUpgrade */
     /**
      * Gets the distribution identifier.
@@ -4626,6 +5136,10 @@ class DistroUpgrade {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4636,6 +5150,12 @@ class DistroUpgrade {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4659,6 +5179,7 @@ class DistroUpgrade {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4678,11 +5199,14 @@ class DistroUpgrade {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4690,6 +5214,8 @@ class DistroUpgrade {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4707,6 +5233,7 @@ class DistroUpgrade {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4752,6 +5279,7 @@ class DistroUpgrade {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4795,15 +5323,20 @@ class DistroUpgrade {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4844,6 +5377,7 @@ class DistroUpgrade {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4878,6 +5412,7 @@ class DistroUpgrade {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4909,6 +5444,7 @@ class DistroUpgrade {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4969,10 +5505,10 @@ class Error {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Error */
     /**
      * Get the error code for this error.
@@ -5017,6 +5553,10 @@ class Error {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5027,6 +5567,12 @@ class Error {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5050,6 +5596,7 @@ class Error {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5069,11 +5616,14 @@ class Error {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5081,6 +5631,8 @@ class Error {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5098,6 +5650,7 @@ class Error {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5143,6 +5696,7 @@ class Error {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5186,15 +5740,20 @@ class Error {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5235,6 +5794,7 @@ class Error {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5269,6 +5829,7 @@ class Error {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5300,6 +5861,7 @@ class Error {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5383,10 +5945,10 @@ class EulaRequired {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.EulaRequired */
     /**
      * Get the ID for this EULA
@@ -5439,6 +6001,10 @@ class EulaRequired {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5449,6 +6015,12 @@ class EulaRequired {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5472,6 +6044,7 @@ class EulaRequired {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5491,11 +6064,14 @@ class EulaRequired {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5503,6 +6079,8 @@ class EulaRequired {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5520,6 +6098,7 @@ class EulaRequired {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5565,6 +6144,7 @@ class EulaRequired {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5608,15 +6188,20 @@ class EulaRequired {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5657,6 +6242,7 @@ class EulaRequired {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5691,6 +6277,7 @@ class EulaRequired {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5722,6 +6309,7 @@ class EulaRequired {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5787,10 +6375,10 @@ class Files {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Files */
     /**
      * Gets the file list
@@ -5835,6 +6423,10 @@ class Files {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5845,6 +6437,12 @@ class Files {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5868,6 +6466,7 @@ class Files {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5887,11 +6486,14 @@ class Files {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5899,6 +6501,8 @@ class Files {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5916,6 +6520,7 @@ class Files {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5961,6 +6566,7 @@ class Files {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6004,15 +6610,20 @@ class Files {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6053,6 +6664,7 @@ class Files {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6087,6 +6699,7 @@ class Files {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6118,6 +6731,7 @@ class Files {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6175,10 +6789,10 @@ class ItemProgress {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.ItemProgress */
     /**
      * Get the package ID this item is working on.
@@ -6227,6 +6841,10 @@ class ItemProgress {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6237,6 +6855,12 @@ class ItemProgress {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6260,6 +6884,7 @@ class ItemProgress {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6279,11 +6904,14 @@ class ItemProgress {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6291,6 +6919,8 @@ class ItemProgress {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6308,6 +6938,7 @@ class ItemProgress {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6353,6 +6984,7 @@ class ItemProgress {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6396,15 +7028,20 @@ class ItemProgress {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6445,6 +7082,7 @@ class ItemProgress {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6479,6 +7117,7 @@ class ItemProgress {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6510,6 +7149,7 @@ class ItemProgress {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6572,10 +7212,10 @@ class MediaChangeRequired {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -6611,6 +7251,10 @@ class MediaChangeRequired {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6621,6 +7265,12 @@ class MediaChangeRequired {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6644,6 +7294,7 @@ class MediaChangeRequired {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6663,11 +7314,14 @@ class MediaChangeRequired {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6675,6 +7329,8 @@ class MediaChangeRequired {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6692,6 +7348,7 @@ class MediaChangeRequired {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6737,6 +7394,7 @@ class MediaChangeRequired {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6780,15 +7438,20 @@ class MediaChangeRequired {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6829,6 +7492,7 @@ class MediaChangeRequired {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6863,6 +7527,7 @@ class MediaChangeRequired {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6894,6 +7559,7 @@ class MediaChangeRequired {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6997,17 +7663,19 @@ class Package {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Package */
     /**
      * Do the #PkPackage's have the same ID.
+     * @param package2 a valid #PkPackage instance
      */
     equal(package2: Package): boolean
     /**
      * Do the #PkPackage's have the same ID.
+     * @param package2 a valid #PkPackage instance
      */
     equalId(package2: Package): boolean
     /**
@@ -7048,6 +7716,7 @@ class Package {
     getVersion(): string
     /**
      * Parses the data to populate the #PkPackage.
+     * @param data the data describing the package
      */
     parse(data: string): boolean
     /**
@@ -7056,20 +7725,24 @@ class Package {
     print(): void
     /**
      * Sets the package object to have the given ID
+     * @param packageId the valid package_id
      */
     setId(packageId: string): boolean
     /**
      * Sets the package info enum.
+     * @param info the #PkInfoEnum
      */
     setInfo(info: InfoEnum): void
     /**
      * Sets the package summary.
+     * @param summary the package summary
      */
     setSummary(summary: string): void
     /**
      * Set an update severity for the `package`. The `update_severity` can be
      * one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
      * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
+     * @param updateSeverity a #PkInfoEnum
      */
     setUpdateSeverity(updateSeverity: InfoEnum): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7107,6 +7780,10 @@ class Package {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7117,6 +7794,12 @@ class Package {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7140,6 +7823,7 @@ class Package {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7159,11 +7843,14 @@ class Package {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7171,6 +7858,8 @@ class Package {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7188,6 +7877,7 @@ class Package {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7233,6 +7923,7 @@ class Package {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7276,15 +7967,20 @@ class Package {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7325,6 +8021,7 @@ class Package {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7359,6 +8056,7 @@ class Package {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of PackageKitGlib-1.0.PackageKitGlib.Package */
@@ -7399,6 +8097,7 @@ class Package {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7531,58 +8230,79 @@ class Package {
     static new(): Package
     /**
      * Generate a PackageID.
+     * @param name the package name
+     * @param version the package version
+     * @param arch the package architecture
+     * @param data the package extra data
      */
     static idBuild(name: string, version: string, arch: string, data: string): string
     /**
      * Check if a Packageid is well formed.
+     * @param packageId the PackageID to check
      */
     static idCheck(packageId: string): boolean
     /**
      * Only compare the name, version, and arch, where the architecture will fuzzy
      * match with i*86.
+     * @param packageId1 the first PackageID
+     * @param packageId2 the second PackageID
      */
     static idEqualFuzzyArch(packageId1: string, packageId2: string): boolean
     /**
      * Splits a PackageID into the correct number of parts, checking the correct
      * number of delimiters are present.
+     * @param packageId the ; delimited PackageID to split
      */
     static idSplit(packageId: string): string[]
     /**
      * Formats the PackageID to be printable to the user.
+     * @param packageId the PackageID
      */
     static idToPrintable(packageId: string): string
     /**
      * Adds a package_id to an existing list.
+     * @param packageIds a string array of package_id's
+     * @param packageId a single package_id
      */
     static idsAddId(packageIds: string, packageId: string): string[]
     /**
      * Adds a package_id to an existing list.
+     * @param packageIds a string array of package_id's
+     * @param packageIdsNew a string array of package_id's
      */
     static idsAddIds(packageIds: string, packageIdsNew: string): string[]
     /**
      * Check the string array of package_id's for validity
+     * @param packageIds a string array of package_id's
      */
     static idsCheck(packageIds: string): boolean
     /**
      * Form a composite string array of package_id's from
      * a single package_id
+     * @param packageId A single package_id
      */
     static idsFromId(packageId: string): string[]
     /**
      * Form a composite string array of package_id's from
      * a delimited string
+     * @param packageId A single package_id
      */
     static idsFromString(packageId: string): string[]
     /**
      * Finds out if a package ID is present in the list.
+     * @param packageIds a string array of package_id's
+     * @param packageId a single package_id
      */
     static idsPresentId(packageIds: string, packageId: string): boolean
     /**
      * Removes a package ID from the the list.
+     * @param packageIds a string array of package_id's
+     * @param packageId a single package_id
      */
     static idsRemoveId(packageIds: string, packageId: string): string[]
     /**
      * Cats the string array of package_id's into one delimited string
+     * @param packageIds a string array of package_id's
      */
     static idsToString(packageIds: string): string
     static $gtype: GObject.Type
@@ -7591,18 +8311,21 @@ interface PackageSack_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PackageSack {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.PackageSack */
     /**
      * Adds a package to the sack.
+     * @param package a valid #PkPackage instance
      */
     addPackage(package: Package): boolean
     /**
      * Adds a package reference to the sack.
+     * @param packageId a package_id descriptor
      */
     addPackageById(packageId: string): boolean
     /**
      * Adds packages from package-list file to a #PkPackageSack.
+     * @param file a valid package-list file
      */
     addPackagesFromFile(file: Gio.File): boolean
     /**
@@ -7612,21 +8335,25 @@ class PackageSack {
     /**
      * Returns a new package sack which only matches packages that return %TRUE
      * from the filter function.
+     * @param filterCb a #PkPackageSackFilterFunc, which returns %TRUE for the #PkPackage's to add
      */
     filter(filterCb: PackageSackFilterFunc): PackageSack
     /**
      * Returns a new package sack which only matches packages that match the
      * specified info enum value.
+     * @param info a #PkInfoEnum value to match
      */
     filterByInfo(info: InfoEnum): PackageSack
     /**
      * Finds a package in a sack from reference. As soon as one package is found
      * the search is stopped.
+     * @param packageId a package_id descriptor
      */
     findById(packageId: string): Package
     /**
      * Finds a package in a sack by package name and architecture. As soon as one
      * package is found the search is stopped.
+     * @param packageId a package_id descriptor
      */
     findByIdNameArch(packageId: string): Package
     /**
@@ -7637,10 +8364,14 @@ class PackageSack {
      * Gets the properties the daemon supports.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     getDetails(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Merges in details about packages.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callback the function to run on completion
      */
     getDetailsAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7659,46 +8390,60 @@ class PackageSack {
      * Gets the properties the daemon supports.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     getUpdateDetail(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Merges in update details about packages.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callback the function to run on completion
      */
     getUpdateDetailAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     mergeGenericFinish(res: Gio.AsyncResult): boolean
     /**
      * Removes from the package sack any packages that return %FALSE from the filter
      * function.
+     * @param filterCb a #PkPackageSackFilterFunc, which returns %TRUE for the #PkPackage's to retain
      */
     removeByFilter(filterCb: PackageSackFilterFunc): boolean
     /**
      * Removes a package reference from the sack. The pointers have to match exactly.
+     * @param package a valid #PkPackage instance
      */
     removePackage(package: Package): boolean
     /**
      * Removes a package reference from the sack. As soon as one package is removed
      * the search is stopped.
+     * @param packageId a package_id descriptor
      */
     removePackageById(packageId: string): boolean
     /**
      * Gets the properties the daemon supports.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     resolve(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Merges in details about packages using resolve.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callback the function to run on completion
      */
     resolveAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Sorts the package sack
+     * @param type the type of sorting, e.g. #PK_PACKAGE_SACK_SORT_TYPE_NAME
      */
     sort(type: PackageSackSortType): void
     /**
      * Write the contents of a #PkPackageSack to a package-list file.
+     * @param file a valid package-list file
      */
     toFile(file: Gio.File): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -7736,6 +8481,10 @@ class PackageSack {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7746,6 +8495,12 @@ class PackageSack {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7769,6 +8524,7 @@ class PackageSack {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7788,11 +8544,14 @@ class PackageSack {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7800,6 +8559,8 @@ class PackageSack {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7817,6 +8578,7 @@ class PackageSack {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7862,6 +8624,7 @@ class PackageSack {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7905,15 +8668,20 @@ class PackageSack {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7954,6 +8722,7 @@ class PackageSack {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7988,6 +8757,7 @@ class PackageSack {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8019,6 +8789,7 @@ class PackageSack {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8165,7 +8936,7 @@ class Progress {
      */
     uid: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Progress */
     /**
      * Get if this transaction can be cancelled.
@@ -8229,62 +9000,77 @@ class Progress {
     getUid(): number
     /**
      * Set if this transaction can be cancelled.
+     * @param allowCancel %TRUE if this transaction can be cancelled.
      */
     setAllowCancel(allowCancel: boolean): boolean
     /**
      * Set if the transaction caller is connected.
+     * @param callerActive %TRUE if the transaction caller is still connected.
      */
     setCallerActive(callerActive: boolean): boolean
     /**
      * Set the number of bytes remaining to download.
+     * @param downloadSizeRemaining number of bytes remaining to download.
      */
     setDownloadSizeRemaining(downloadSizeRemaining: number): boolean
     /**
      * Set the amount of time the transaction has taken.
+     * @param elapsedTime time in seconds
      */
     setElapsedTime(elapsedTime: number): boolean
     /**
      * Set the item progress associated with this transaction.
+     * @param itemProgress a #PkItemProgress
      */
     setItemProgress(itemProgress: ItemProgress): boolean
     /**
      * Set the package this transaction is acting on.
+     * @param package a #PkPackage
      */
     setPackage(package: Package): boolean
     /**
      * Set the package ID this transaction is acting on.
+     * @param packageId a PackageID
      */
     setPackageId(packageId: string): boolean
     /**
      * Set the percentage complete of this transaction.
+     * @param percentage a percentage value (0-100)
      */
     setPercentage(percentage: number): boolean
     /**
      * Set the amount of time the transaction will take to complete.
+     * @param remainingTime time in seconds or 0 if unknown.
      */
     setRemainingTime(remainingTime: number): boolean
     /**
      * Set the role of this transaction.
+     * @param role a #PkRoleEnum
      */
     setRole(role: RoleEnum): boolean
     /**
      * Set the speed of this transaction.
+     * @param speed speed in bits per second or 0 if unknown
      */
     setSpeed(speed: number): boolean
     /**
      * Set the status of this transaction.
+     * @param status a #PkStatusEnum
      */
     setStatus(status: StatusEnum): boolean
     /**
      * Set the flags associated with this transaction.
+     * @param transactionFlags a #PkBitfield containing #PkTransactionFlagEnum values.
      */
     setTransactionFlags(transactionFlags: number): boolean
     /**
      * Set the ID used by this transaction.
+     * @param transactionId a transaction ID.
      */
     setTransactionId(transactionId: string): boolean
     /**
      * Set the UID that started this transaction.
+     * @param uid a UID
      */
     setUid(uid: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8322,6 +9108,10 @@ class Progress {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8332,6 +9122,12 @@ class Progress {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8355,6 +9151,7 @@ class Progress {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8374,11 +9171,14 @@ class Progress {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8386,6 +9186,8 @@ class Progress {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8403,6 +9205,7 @@ class Progress {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8448,6 +9251,7 @@ class Progress {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8491,15 +9295,20 @@ class Progress {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8540,6 +9349,7 @@ class Progress {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8574,6 +9384,7 @@ class Progress {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8605,6 +9416,7 @@ class Progress {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8715,10 +9527,10 @@ class RepoDetail {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.RepoDetail */
     /**
      * Gets the repository description.
@@ -8767,6 +9579,10 @@ class RepoDetail {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8777,6 +9593,12 @@ class RepoDetail {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8800,6 +9622,7 @@ class RepoDetail {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8819,11 +9642,14 @@ class RepoDetail {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8831,6 +9657,8 @@ class RepoDetail {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8848,6 +9676,7 @@ class RepoDetail {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8893,6 +9722,7 @@ class RepoDetail {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8936,15 +9766,20 @@ class RepoDetail {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8985,6 +9820,7 @@ class RepoDetail {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9019,6 +9855,7 @@ class RepoDetail {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9050,6 +9887,7 @@ class RepoDetail {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9122,10 +9960,10 @@ class RepoSignatureRequired {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -9161,6 +9999,10 @@ class RepoSignatureRequired {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9171,6 +10013,12 @@ class RepoSignatureRequired {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9194,6 +10042,7 @@ class RepoSignatureRequired {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9213,11 +10062,14 @@ class RepoSignatureRequired {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9225,6 +10077,8 @@ class RepoSignatureRequired {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9242,6 +10096,7 @@ class RepoSignatureRequired {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9287,6 +10142,7 @@ class RepoSignatureRequired {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9330,15 +10186,20 @@ class RepoSignatureRequired {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9379,6 +10240,7 @@ class RepoSignatureRequired {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9413,6 +10275,7 @@ class RepoSignatureRequired {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9444,6 +10307,7 @@ class RepoSignatureRequired {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9529,10 +10393,10 @@ class RequireRestart {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -9568,6 +10432,10 @@ class RequireRestart {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9578,6 +10446,12 @@ class RequireRestart {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9601,6 +10475,7 @@ class RequireRestart {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9620,11 +10495,14 @@ class RequireRestart {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9632,6 +10510,8 @@ class RequireRestart {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9649,6 +10529,7 @@ class RequireRestart {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9694,6 +10575,7 @@ class RequireRestart {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9737,15 +10619,20 @@ class RequireRestart {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9786,6 +10673,7 @@ class RequireRestart {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9820,6 +10708,7 @@ class RequireRestart {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9851,6 +10740,7 @@ class RequireRestart {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9919,54 +10809,66 @@ class Results {
      */
     transactionFlags: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Results */
     /**
      * Adds a category item to the results set.
+     * @param item the object to add to the array
      */
     addCategory(item: Category): boolean
     /**
      * Adds some package details to the results set.
+     * @param item the object to add to the array
      */
     addDetails(item: Details): boolean
     /**
      * Adds a distribution upgrade item to the results set.
+     * @param item the object to add to the array
      */
     addDistroUpgrade(item: DistroUpgrade): boolean
     /**
      * Adds some EULA details to the results set.
+     * @param item the object to add to the array
      */
     addEulaRequired(item: EulaRequired): boolean
     /**
      * Adds some files details to the results set.
+     * @param item the object to add to the array
      */
     addFiles(item: Files): boolean
     /**
      * Adds some media change details to the results set.
+     * @param item the object to add to the array
      */
     addMediaChangeRequired(item: MediaChangeRequired): boolean
     /**
      * Adds a package to the results set.
+     * @param item the object to add to the array
      */
     addPackage(item: Package): boolean
     /**
      * Adds some repository details to the results set.
+     * @param item the object to add to the array
      */
     addRepoDetail(item: RepoDetail): boolean
     /**
      * Adds some repository signature details to the results set.
+     * @param item the object to add to the array
      */
     addRepoSignatureRequired(item: RepoSignatureRequired): boolean
     /**
      * Adds a require restart item to the results set.
+     * @param item the object to add to the array
      */
     addRequireRestart(item: RequireRestart): boolean
     /**
      * Adds a transaction item to the results set.
+     * @param item the object to add to the array
      */
     addTransaction(item: TransactionPast): boolean
     /**
      * Adds some update details to the results set.
+     * @param item the object to add to the array
      */
     addUpdateDetail(item: UpdateDetail): boolean
     /**
@@ -10050,14 +10952,17 @@ class Results {
     getUpdateDetailArray(): UpdateDetail[]
     /**
      * Adds some error details to the results set.
+     * @param item the object to add to the array
      */
     setErrorCode(item: Error): boolean
     /**
      * Sets the results object to have the given exit code.
+     * @param exitEnum the exit code
      */
     setExitCode(exitEnum: ExitEnum): boolean
     /**
      * Sets the results object to have the given role enum.
+     * @param role the role enum
      */
     setRole(role: RoleEnum): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -10095,6 +11000,10 @@ class Results {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10105,6 +11014,12 @@ class Results {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10128,6 +11043,7 @@ class Results {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10147,11 +11063,14 @@ class Results {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10159,6 +11078,8 @@ class Results {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10176,6 +11097,7 @@ class Results {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10221,6 +11143,7 @@ class Results {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10264,15 +11187,20 @@ class Results {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10313,6 +11241,7 @@ class Results {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10347,6 +11276,7 @@ class Results {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10378,6 +11308,7 @@ class Results {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10428,7 +11359,7 @@ class Source {
     role: RoleEnum
     transactionId: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -10464,6 +11395,10 @@ class Source {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10474,6 +11409,12 @@ class Source {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10497,6 +11438,7 @@ class Source {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10516,11 +11458,14 @@ class Source {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10528,6 +11473,8 @@ class Source {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10545,6 +11492,7 @@ class Source {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10590,6 +11538,7 @@ class Source {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10633,15 +11582,20 @@ class Source {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10682,6 +11636,7 @@ class Source {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10716,6 +11671,7 @@ class Source {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10747,6 +11703,7 @@ class Source {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10829,29 +11786,50 @@ class Task {
     interactive: boolean
     locale: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Client */
-    readonly parent: GObject.Object
-    readonly priv: ClientPrivate
+    parent: GObject.Object
+    priv: ClientPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Task */
     /**
      * Get the list of dependant packages.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive if we should recurse to packages that depend on other packages
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     dependsOnAsync(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the list of dependent packages.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive if we should recurse to packages that depend on other packages
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     dependsOnSync(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Downloads packages
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param directory the destination directory
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     downloadPackagesAsync(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Downloads packages
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param directory the destination directory
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     downloadPackagesSync(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     genericFinish(res: Gio.AsyncResult): Results
     /**
@@ -10864,26 +11842,45 @@ class Task {
     getAllowReinstall(): boolean
     /**
      * Get the categories available.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getCategoriesAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the categories available.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getCategoriesSync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Gets details about packages.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getDetailsAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets details about packages.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getDetailsSync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the files in a package.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getFilesAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the files in a package.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getFilesSync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -10896,18 +11893,32 @@ class Task {
     getOnlyTrusted(): boolean
     /**
      * Gets the list of packages.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getPackagesAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the list of packages.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getPackagesSync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the list of available repositories.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getRepoListAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the list of available repositories.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getRepoListSync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -10916,23 +11927,41 @@ class Task {
     getSimulate(): boolean
     /**
      * Gets details about updates.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getUpdateDetailAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets details about updates.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getUpdateDetailSync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Gets the update lists.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getUpdatesAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the update lists.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getUpdatesSync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Install a file locally, and get the deps from the repositories.
      * This is useful for double clicking on a .rpm or .deb file.
+     * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     installFilesAsync(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -10941,10 +11970,17 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     installFilesSync(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Merges in details about packages using resolve.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     installPackagesAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -10952,20 +11988,36 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     installPackagesSync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Refresh the package cache.
+     * @param force if the metadata should be deleted and re-downloaded even if it is correct
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     refreshCacheAsync(force: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Refresh the package cache.
+     * @param force if the metadata should be deleted and re-downloaded even if it is correct
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     refreshCacheSync(force: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Remove a package (optionally with dependancies) from the system.
      * If `allow_deps` is set to %FALSE, and other packages would have to be removed,
      * then the transaction would fail.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param allowDeps if other dependent packages are allowed to be removed from the computer
+     * @param autoremove if other packages installed at the same time should be tried to remove
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     removePackagesAsync(packageIds: string[], allowDeps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -10975,10 +12027,18 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param allowDeps if other dependent packages are allowed to be removed from the computer
+     * @param autoremove if other packages installed at the same time should be tried to remove
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     removePackagesSync(packageIds: string[], allowDeps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Recover the system from broken dependencies and aborted installations.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repairSystemAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -10987,88 +12047,164 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repairSystemSync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Enable or disable a specific repo.
+     * @param repoId The software repository ID
+     * @param enabled %TRUE or %FALSE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repoEnableAsync(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Enable or disable a specific repo.
+     * @param repoId The software repository ID
+     * @param enabled %TRUE or %FALSE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repoEnableSync(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the packages this package requires.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive if we should return packages that depend on the ones we do
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     requiredByAsync(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the packages this package requires.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive if we should return packages that depend on the ones we do
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     requiredBySync(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Resolves a package name to a package-id.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param packages package names to find
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     resolveAsync(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Resolves a package name to a package-id.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param packages package names to find
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     resolveSync(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Searches for some package details.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values search values
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchDetailsAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Searches for some package details.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values search values
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchDetailsSync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Searches for specific files.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values search values
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchFilesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Searches for specific files.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values search values
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchFilesSync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Searches the group lists.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values search values
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchGroupsAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Searches the group lists.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values search values
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchGroupsSync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Searches for a package name.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values search values
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchNamesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Searches for a package name.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values search values
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchNamesSync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * If package downgrades shall be allowed during transaction.
+     * @param allowDowngrade %TRUE to allow packages to be downgraded.
      */
     setAllowDowngrade(allowDowngrade: boolean): void
     /**
      * If package reinstallation shall be allowed during transaction.
+     * @param allowReinstall %TRUE to allow packages to be reinstalled.
      */
     setAllowReinstall(allowReinstall: boolean): void
     /**
      * If the transaction should be prepared (depsolved, packages
      * downloaded, etc) but not committed.
+     * @param onlyDownload %FALSE to actually commit the transaction
      */
     setOnlyDownload(onlyDownload: boolean): void
     /**
      * If only authenticated packages should be allowed in the
      * transaction.
+     * @param onlyTrusted %TRUE to allow only authenticated packages
      */
     setOnlyTrusted(onlyTrusted: boolean): void
     /**
      * If the simulate step should be run without the actual transaction.
+     * @param simulate the simulate mode
      */
     setSimulate(simulate: boolean): void
     /**
      * Update specific packages to the newest available versions.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     updatePackagesAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11076,6 +12212,9 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     updatePackagesSync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -11084,6 +12223,11 @@ class Task {
      * or may involve doing an on-line upgrade.
      * 
      * The backend will decide what is best to do.
+     * @param distroId a distro ID such as "fedora-14"
+     * @param upgradeKind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     upgradeSystemAsync(distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11092,22 +12236,37 @@ class Task {
      * or may involve doing an on-line upgrade.
      * 
      * The backend will decide what is best to do.
+     * @param distroId a distro ID such as "fedora-14"
+     * @param upgradeKind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     upgradeSystemSync(distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Mark a EULA as accepted by the user.
+     * @param request request ID for EULA.
      */
     userAccepted(request: number): boolean
     /**
      * Mark a EULA as declined by the user.
+     * @param request request ID for EULA.
      */
     userDeclined(request: number): boolean
     /**
      * Find the package that provides some resource.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values values to search for
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     whatProvidesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Find the package that provides some resource.
+     * @param filters a bitfield of filters that can be used to limit the results
+     * @param values values to search for
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     whatProvidesSync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.Client */
@@ -11116,10 +12275,17 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param eulaId the <literal>eula_id</literal> we are agreeing to
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     acceptEula(eulaId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * We may want to agree to a EULA dialog if one is presented.
+     * @param eulaId the <literal>eula_id</literal> we are agreeing to
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     acceptEulaAsync(eulaId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11127,10 +12293,17 @@ class Task {
      * 
      * Warning: this function is synchronous, and will block. Do not use it in GUI
      * applications.
+     * @param transactionId a transaction ID such as "/21_ebcbdaae_data"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     adopt(transactionId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Adopt a transaction which allows the caller to monitor the state or cancel it.
+     * @param transactionId a transaction ID such as "/21_ebcbdaae_data"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     adoptAsync(transactionId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11138,10 +12311,21 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive If we should search recursively for depends
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     dependsOn(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the packages that depend this one, i.e. child->parent.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive If we should search recursively for depends
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     dependsOnAsync(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11149,14 +12333,24 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param directory the location where packages are to be downloaded
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     downloadPackages(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Downloads package files to a specified location.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param directory the location where packages are to be downloaded
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     downloadPackagesAsync(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     genericFinish(res: Gio.AsyncResult): Results
     /**
@@ -11172,10 +12366,15 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getCategories(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get a list of all categories supported.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getCategoriesAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11184,11 +12383,18 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getDetails(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get details of a package, so more information can be obtained for GUI
      * or command line tools.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getDetailsAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11197,11 +12403,18 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param files a null terminated array of filenames
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getDetailsLocal(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get details of a package, so more information can be obtained for GUI
      * or command line tools.
+     * @param files a null terminated array of filenames
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getDetailsLocalAsync(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11210,11 +12423,16 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getDistroUpgrades(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * This method should return a list of distribution upgrades that are available.
      * It should not return updates, only major upgrades.
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getDistroUpgradesAsync(cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11222,10 +12440,17 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getFiles(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the file list (i.e. a list of files installed) for the specified package.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getFilesAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11234,11 +12459,18 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param files a null terminated array of filenames
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getFilesLocal(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get file list of a package, so more information can be obtained for GUI
      * or command line tools.
+     * @param files a null terminated array of filenames
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getFilesLocalAsync(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11258,10 +12490,17 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param number the number of past transactions to return, or 0 for all
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getOldTransactions(number: number, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the old transaction list, mainly used for the transaction viewer.
+     * @param number the number of past transactions to return, or 0 for all
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getOldTransactionsAsync(number: number, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11269,10 +12508,17 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getPackages(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the list of packages from the backend
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getPackagesAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11280,14 +12526,20 @@ class Task {
      * 
      * Warning: this function is synchronous, and will block. Do not use it in GUI
      * applications.
+     * @param transactionId The transaction id
+     * @param cancellable a #GCancellable or %NULL
      */
     getProgress(transactionId: string, cancellable?: Gio.Cancellable | null): Progress
     /**
      * Find the current state of a transaction.
+     * @param transactionId a transaction ID such as "/21_ebcbdaae_data"
+     * @param cancellable a #GCancellable or %NULL
+     * @param callbackReady the function to run on completion
      */
     getProgressAsync(transactionId: string, cancellable?: Gio.Cancellable | null, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getProgressFinish(res: Gio.AsyncResult): Progress
     /**
@@ -11295,10 +12547,17 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getRepoList(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the list of repositories installed on the system.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getRepoListAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11307,11 +12566,18 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getUpdateDetail(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get details about the specific update, for instance any CVE urls and
      * severity information.
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getUpdateDetailAsync(packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11319,10 +12585,17 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     getUpdates(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get a list of all the packages that can be updated for all repositories.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     getUpdatesAsync(filters: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11331,11 +12604,20 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags a transaction type bitfield
+     * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     installFiles(transactionFlags: Bitfield, files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Install a file locally, and get the deps from the repositories.
      * This is useful for double clicking on a .rpm or .deb file.
+     * @param transactionFlags a transaction type bitfield
+     * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     installFilesAsync(transactionFlags: Bitfield, files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11343,10 +12625,19 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     installPackages(transactionFlags: Bitfield, packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Install a package of the newest and most correct version.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     installPackagesAsync(transactionFlags: Bitfield, packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11354,10 +12645,21 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param type the signature type, e.g. %PK_SIGTYPE_ENUM_GPG
+     * @param keyId a key ID such as "0df23df"
+     * @param packageId a signature_id structure such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     installSignature(type: SigTypeEnum, keyId: string, packageId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Install a software repository signature of the newest and most correct version.
+     * @param type the signature type, e.g. %PK_SIGTYPE_ENUM_GPG
+     * @param keyId a key ID such as "0df23df"
+     * @param packageId a signature_id structure such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     installSignatureAsync(type: SigTypeEnum, keyId: string, packageId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11368,6 +12670,9 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param force if we should aggressively drop caches
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     refreshCache(force: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -11375,6 +12680,10 @@ class Task {
      * package lists are up to date.
      * This action may take a few minutes and should be done when the session and
      * system are idle.
+     * @param force if we should aggressively drop caches
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     refreshCacheAsync(force: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11384,12 +12693,25 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param allowDeps if other dependent packages are allowed to be removed from the computer
+     * @param autoremove if other packages installed at the same time should be tried to remove
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     removePackages(transactionFlags: Bitfield, packageIds: string[], allowDeps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Remove a package (optionally with dependancies) from the system.
      * If `allow_deps` is set to %FALSE, and other packages would have to be removed,
      * then the transaction would fail.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param allowDeps if other dependent packages are allowed to be removed from the computer
+     * @param autoremove if other packages installed at the same time should be tried to remove
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     removePackagesAsync(transactionFlags: Bitfield, packageIds: string[], allowDeps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11402,6 +12724,9 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags if only trusted packages should be installed
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repairSystem(transactionFlags: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -11411,6 +12736,10 @@ class Task {
      * system was shutdown during processing an installation.
      * 
      * The backend will decide what is best to do.
+     * @param transactionFlags a transaction type bitfield
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repairSystemAsync(transactionFlags: Bitfield, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11418,10 +12747,19 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param enabled if we should enable the repository
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repoEnable(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Enable or disable the repository.
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param enabled if we should enable the repository
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repoEnableAsync(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11429,10 +12767,21 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags transaction flags
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param autoremove If packages should be auto-removed
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repoRemove(transactionFlags: Bitfield, repoId: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Removes a repo and optionally the packages installed from it.
+     * @param transactionFlags transaction flags
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param autoremove If packages should be auto-removed
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repoRemoveAsync(transactionFlags: Bitfield, repoId: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11441,11 +12790,22 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param parameter the parameter to change
+     * @param value what we should change it to
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     repoSetData(repoId: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * We may want to set a repository parameter.
      * NOTE: this is free text, and is left to the backend to define a format.
+     * @param repoId a repo_id structure such as "livna-devel"
+     * @param parameter the parameter to change
+     * @param value what we should change it to
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     repoSetDataAsync(repoId: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11453,10 +12813,21 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive If we should search recursively for requires
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     requiredBy(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the packages that require this one, i.e. parent->child.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param recursive If we should search recursively for requires
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     requiredByAsync(filters: Bitfield, packageIds: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11466,12 +12837,21 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packages an array of package names to resolve, e.g. "gnome-system-tools"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     resolve(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Resolve a package name into a `package_id`. This can return installed and
      * available packages and allows you find out if a package is installed locally
      * or is available in a repository.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param packages an array of package names to resolve, e.g. "gnome-system-tools"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     resolveAsync(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11481,12 +12861,21 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values free text to search for, for instance, "power"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchDetails(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Search all detailed summary information to try and find a keyword.
      * Think of this as pk_client_search_names(), but trying much harder and
      * taking longer.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values free text to search for, for instance, "power"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchDetailsAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11494,10 +12883,19 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values file to search for, for instance, "/sbin/service"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchFiles(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Search for packages that provide a specific file.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values file to search for, for instance, "/sbin/service"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchFilesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11505,10 +12903,19 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values a group enum to search for, for instance, "system-tools"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchGroups(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Return all packages in a specific group.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values a group enum to search for, for instance, "system-tools"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchGroupsAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11517,31 +12924,44 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values free text to search for, for instance, "power"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     searchNames(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Search all the locally installed files and remote repositories for a package
      * that matches a specific name.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values free text to search for, for instance, "power"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     searchNamesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
      * Sets the background value for the client. A background transaction
      * is usually scheduled at a lower priority and is usually given less
      * network and disk performance.
+     * @param background if the transaction is a background transaction
      */
     setBackground(background: boolean): void
     /**
      * Sets the maximum cache age value for the client.
+     * @param cacheAge the cache age to set, where %G_MAXUINT means "never"
      */
     setCacheAge(cacheAge: number): void
     /**
      * Sets the interactive value for the client. Interactive transactions
      * are usually allowed to ask the user questions.
+     * @param interactive the value to set
      */
     setInteractive(interactive: boolean): void
     /**
      * Sets the locale to be used for the client. This may affect returned
      * results.
+     * @param locale the locale to set, e.g. "en_GB.UTF-8"
      */
     setLocale(locale: string): void
     /**
@@ -11549,10 +12969,19 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     updatePackages(transactionFlags: Bitfield, packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Update specific packages to the newest available versions.
+     * @param transactionFlags a transaction type bitfield
+     * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     updatePackagesAsync(transactionFlags: Bitfield, packageIds: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11564,6 +12993,11 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param transactionFlags transaction flags
+     * @param distroId a distro ID such as "fedora-14"
+     * @param upgradeKind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     upgradeSystem(transactionFlags: Bitfield, distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
@@ -11572,6 +13006,12 @@ class Task {
      * or may involve doing an on-line upgrade.
      * 
      * The backend will decide what is best to do.
+     * @param transactionFlags a transaction type bitfield
+     * @param distroId a distro ID such as "fedora-14"
+     * @param upgradeKind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     upgradeSystemAsync(transactionFlags: Bitfield, distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11581,12 +13021,21 @@ class Task {
      * 
      * Warning: this function is synchronous, and may block. Do not use it in GUI
      * applications.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values a search term such as "sound/mp3"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
      */
     whatProvides(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * This should return packages that provide the supplied attributes.
      * This method is useful for finding out what package(s) provide a modalias
      * or GStreamer codec string.
+     * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+     * @param values a search term such as "sound/mp3"
+     * @param cancellable a #GCancellable or %NULL
+     * @param progressCallback the function to run when the progress changes
+     * @param callbackReady the function to run on completion
      */
     whatProvidesAsync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady?: Gio.AsyncReadyCallback | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11624,6 +13073,10 @@ class Task {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11634,6 +13087,12 @@ class Task {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11657,6 +13116,7 @@ class Task {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11676,11 +13136,14 @@ class Task {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11688,6 +13151,8 @@ class Task {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11705,6 +13170,7 @@ class Task {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11750,6 +13216,7 @@ class Task {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11793,15 +13260,20 @@ class Task {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11842,6 +13314,7 @@ class Task {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11876,6 +13349,7 @@ class Task {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -11907,6 +13381,7 @@ class Task {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -11983,7 +13458,7 @@ interface TransactionList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class TransactionList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.TransactionList */
     /**
      * Gets the string lists of transaction IDs recognised as pending, running or finished by the daemon.
@@ -12024,6 +13499,10 @@ class TransactionList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12034,6 +13513,12 @@ class TransactionList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12057,6 +13542,7 @@ class TransactionList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12076,11 +13562,14 @@ class TransactionList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12088,6 +13577,8 @@ class TransactionList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12105,6 +13596,7 @@ class TransactionList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12150,6 +13642,7 @@ class TransactionList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12193,15 +13686,20 @@ class TransactionList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12242,6 +13740,7 @@ class TransactionList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12276,11 +13775,13 @@ class TransactionList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of PackageKitGlib-1.0.PackageKitGlib.TransactionList */
     /**
      * The ::added signal is emitted when a tid has been added to the transaction list
+     * @param tid the transaction id
      */
     connect(sigName: "added", callback: ((tid: string) => void)): number
     on(sigName: "added", callback: (tid: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -12289,6 +13790,7 @@ class TransactionList {
     emit(sigName: "added", tid: string): void
     /**
      * The ::removed signal is emitted when a tid has been removed from the transaction list
+     * @param tid the transaction id
      */
     connect(sigName: "removed", callback: ((tid: string) => void)): number
     on(sigName: "removed", callback: (tid: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -12324,6 +13826,7 @@ class TransactionList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12368,10 +13871,10 @@ class TransactionPast {
     /* Properties of PackageKitGlib-1.0.PackageKitGlib.Source */
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.TransactionPast */
     /**
      * Gets the past transaction cmdline value;
@@ -12448,6 +13951,10 @@ class TransactionPast {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12458,6 +13965,12 @@ class TransactionPast {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12481,6 +13994,7 @@ class TransactionPast {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12500,11 +14014,14 @@ class TransactionPast {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12512,6 +14029,8 @@ class TransactionPast {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12529,6 +14048,7 @@ class TransactionPast {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12574,6 +14094,7 @@ class TransactionPast {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12617,15 +14138,20 @@ class TransactionPast {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12666,6 +14192,7 @@ class TransactionPast {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12700,6 +14227,7 @@ class TransactionPast {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -12731,6 +14259,7 @@ class TransactionPast {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12831,10 +14360,10 @@ class UpdateDetail {
     role: RoleEnum
     transactionId: string
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.Source */
-    readonly parent: GObject.Object
-    readonly priv: SourcePrivate
+    parent: GObject.Object
+    priv: SourcePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PackageKitGlib-1.0.PackageKitGlib.UpdateDetail */
     /**
      * Gets the update detail bugzilla URLs.
@@ -12919,6 +14448,10 @@ class UpdateDetail {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12929,6 +14462,12 @@ class UpdateDetail {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12952,6 +14491,7 @@ class UpdateDetail {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12971,11 +14511,14 @@ class UpdateDetail {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12983,6 +14526,8 @@ class UpdateDetail {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13000,6 +14545,7 @@ class UpdateDetail {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13045,6 +14591,7 @@ class UpdateDetail {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13088,15 +14635,20 @@ class UpdateDetail {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13137,6 +14689,7 @@ class UpdateDetail {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13171,6 +14724,7 @@ class UpdateDetail {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -13202,6 +14756,7 @@ class UpdateDetail {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13296,7 +14851,7 @@ class UpdateDetail {
 }
 abstract class CategoryClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.CategoryClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class CategoryPrivate {
@@ -13304,13 +14859,13 @@ class CategoryPrivate {
 }
 abstract class ClientClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.ClientClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly changed: (client: Client) => void
+    parentClass: GObject.ObjectClass
+    changed: (client: Client) => void
     static name: string
 }
 abstract class ClientHelperClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.ClientHelperClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ClientHelperPrivate {
@@ -13321,14 +14876,14 @@ class ClientPrivate {
 }
 abstract class ControlClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.ControlClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly transactionListChanged: (control: Control, transactionIds: string) => void
-    readonly updatesChanged: (control: Control) => void
-    readonly repoListChanged: (control: Control) => void
-    readonly networkStateChanged: (control: Control) => void
-    readonly restartSchedule: (control: Control) => void
-    readonly locked: (control: Control, isLocked: boolean) => void
-    readonly connectionChanged: (control: Control, connected: boolean) => void
+    parentClass: GObject.ObjectClass
+    transactionListChanged: (control: Control, transactionIds: string) => void
+    updatesChanged: (control: Control) => void
+    repoListChanged: (control: Control) => void
+    networkStateChanged: (control: Control) => void
+    restartSchedule: (control: Control) => void
+    locked: (control: Control, isLocked: boolean) => void
+    connectionChanged: (control: Control, connected: boolean) => void
     static name: string
 }
 class ControlPrivate {
@@ -13336,7 +14891,7 @@ class ControlPrivate {
 }
 abstract class DesktopClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.DesktopClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class DesktopPrivate {
@@ -13344,7 +14899,7 @@ class DesktopPrivate {
 }
 abstract class DetailsClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.DetailsClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class DetailsPrivate {
@@ -13352,7 +14907,7 @@ class DetailsPrivate {
 }
 abstract class DistroUpgradeClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.DistroUpgradeClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class DistroUpgradePrivate {
@@ -13363,16 +14918,16 @@ class EnumMatch {
     /**
      * enumerated value
      */
-    readonly value: number
+    value: number
     /**
      * string for given value
      */
-    readonly string: string
+    string: string
     static name: string
 }
 abstract class ErrorClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.ErrorClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class ErrorPrivate {
@@ -13380,7 +14935,7 @@ class ErrorPrivate {
 }
 abstract class EulaRequiredClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.EulaRequiredClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class EulaRequiredPrivate {
@@ -13388,7 +14943,7 @@ class EulaRequiredPrivate {
 }
 abstract class FilesClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.FilesClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class FilesPrivate {
@@ -13396,7 +14951,7 @@ class FilesPrivate {
 }
 abstract class ItemProgressClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.ItemProgressClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class ItemProgressPrivate {
@@ -13404,7 +14959,7 @@ class ItemProgressPrivate {
 }
 abstract class MediaChangeRequiredClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.MediaChangeRequiredClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class MediaChangeRequiredPrivate {
@@ -13412,8 +14967,8 @@ class MediaChangeRequiredPrivate {
 }
 abstract class PackageClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.PackageClass */
-    readonly parentClass: SourceClass
-    readonly changed: (package: Package) => void
+    parentClass: SourceClass
+    changed: (package: Package) => void
     static name: string
 }
 class PackagePrivate {
@@ -13421,8 +14976,8 @@ class PackagePrivate {
 }
 abstract class PackageSackClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.PackageSackClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly changed: (sack: PackageSack) => void
+    parentClass: GObject.ObjectClass
+    changed: (sack: PackageSack) => void
     static name: string
 }
 class PackageSackPrivate {
@@ -13433,7 +14988,7 @@ class PackageSackResults {
 }
 abstract class ProgressClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.ProgressClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ProgressPrivate {
@@ -13441,7 +14996,7 @@ class ProgressPrivate {
 }
 abstract class RepoDetailClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.RepoDetailClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class RepoDetailPrivate {
@@ -13449,7 +15004,7 @@ class RepoDetailPrivate {
 }
 abstract class RepoSignatureRequiredClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.RepoSignatureRequiredClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class RepoSignatureRequiredPrivate {
@@ -13457,7 +15012,7 @@ class RepoSignatureRequiredPrivate {
 }
 abstract class RequireRestartClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.RequireRestartClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class RequireRestartPrivate {
@@ -13465,7 +15020,7 @@ class RequireRestartPrivate {
 }
 abstract class ResultsClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.ResultsClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ResultsPrivate {
@@ -13473,7 +15028,7 @@ class ResultsPrivate {
 }
 abstract class SourceClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.SourceClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class SourcePrivate {
@@ -13481,13 +15036,13 @@ class SourcePrivate {
 }
 abstract class TaskClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.TaskClass */
-    readonly parentClass: ClientClass
-    readonly untrustedQuestion: (task: Task, request: number, results: Results) => void
-    readonly keyQuestion: (task: Task, request: number, results: Results) => void
-    readonly eulaQuestion: (task: Task, request: number, results: Results) => void
-    readonly mediaChangeQuestion: (task: Task, request: number, results: Results) => void
-    readonly simulateQuestion: (task: Task, request: number, results: Results) => void
-    readonly repairQuestion: (task: Task, request: number, results: Results) => void
+    parentClass: ClientClass
+    untrustedQuestion: (task: Task, request: number, results: Results) => void
+    keyQuestion: (task: Task, request: number, results: Results) => void
+    eulaQuestion: (task: Task, request: number, results: Results) => void
+    mediaChangeQuestion: (task: Task, request: number, results: Results) => void
+    simulateQuestion: (task: Task, request: number, results: Results) => void
+    repairQuestion: (task: Task, request: number, results: Results) => void
     static name: string
 }
 class TaskPrivate {
@@ -13495,9 +15050,9 @@ class TaskPrivate {
 }
 abstract class TransactionListClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.TransactionListClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly added: (tlist: TransactionList, tid: string) => void
-    readonly removed: (tlist: TransactionList, tid: string) => void
+    parentClass: GObject.ObjectClass
+    added: (tlist: TransactionList, tid: string) => void
+    removed: (tlist: TransactionList, tid: string) => void
     static name: string
 }
 class TransactionListPrivate {
@@ -13505,7 +15060,7 @@ class TransactionListPrivate {
 }
 abstract class TransactionPastClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.TransactionPastClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class TransactionPastPrivate {
@@ -13513,7 +15068,7 @@ class TransactionPastPrivate {
 }
 abstract class UpdateDetailClass {
     /* Fields of PackageKitGlib-1.0.PackageKitGlib.UpdateDetailClass */
-    readonly parentClass: SourceClass
+    parentClass: SourceClass
     static name: string
 }
 class UpdateDetailPrivate {

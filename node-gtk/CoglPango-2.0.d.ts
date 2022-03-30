@@ -37,15 +37,17 @@ interface Renderer_ConstructProps extends Pango.Renderer_ConstructProps {
     context?: object
 }
 class Renderer {
+    /* Properties of CoglPango-2.0.CoglPango.Renderer */
+    readonly context: object
     /* Fields of Pango-1.0.Pango.Renderer */
     /**
      * the current transformation matrix for
      *   the Renderer; may be %NULL, which should be treated the
      *   same as the identity matrix.
      */
-    readonly matrix: Pango.Matrix
+    matrix: Pango.Matrix
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.Renderer */
     /**
      * Does initial setup before rendering operations on `renderer`.
@@ -75,10 +77,18 @@ class Renderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param x X coordinate of underline, in Pango units in user coordinate system
+     * @param y Y coordinate of underline, in Pango units in user coordinate system
+     * @param width width of underline, in Pango units in user coordinate system
+     * @param height height of underline, in Pango units in user coordinate system
      */
     drawErrorUnderline(x: number, y: number, width: number, height: number): void
     /**
      * Draws a single glyph with coordinates in device space.
+     * @param font a `PangoFont`
+     * @param glyph the glyph index of a single glyph
+     * @param x X coordinate of left edge of baseline of glyph
+     * @param y Y coordinate of left edge of baseline of glyph
      */
     drawGlyph(font: Pango.Font, glyph: Pango.Glyph, x: number, y: number): void
     /**
@@ -100,10 +110,18 @@ class Renderer {
      * 
      * The default implementation of this method simply falls back to
      * [method`Pango`.Renderer.draw_glyphs].
+     * @param text the UTF-8 text that `glyph_item` refers to
+     * @param glyphItem a `PangoGlyphItem`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units
      */
     drawGlyphItem(text: string | null, glyphItem: Pango.GlyphItem, x: number, y: number): void
     /**
      * Draws the glyphs in `glyphs` with the specified `PangoRenderer`.
+     * @param font a `PangoFont`
+     * @param glyphs a `PangoGlyphString`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     drawGlyphs(font: Pango.Font, glyphs: Pango.GlyphString, x: number, y: number): void
     /**
@@ -111,6 +129,9 @@ class Renderer {
      * 
      * This is equivalent to drawing the lines of the layout, at their
      * respective positions relative to `x,` `y`.
+     * @param layout a `PangoLayout`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     drawLayout(layout: Pango.Layout, x: number, y: number): void
     /**
@@ -119,6 +140,9 @@ class Renderer {
      * This draws the glyph items that make up the line, as well as
      * shapes, backgrounds and lines that are specified by the attributes
      * of those items.
+     * @param line a `PangoLayoutLine`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     drawLayoutLine(line: Pango.LayoutLine, x: number, y: number): void
     /**
@@ -127,19 +151,33 @@ class Renderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param part type of object this rectangle is part of
+     * @param x X position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param y Y position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param width width of rectangle in Pango units
+     * @param height height of rectangle in Pango units
      */
     drawRectangle(part: Pango.RenderPart, x: number, y: number, width: number, height: number): void
     /**
      * Draws a trapezoid with the parallel sides aligned with the X axis
      * using the given `PangoRenderer`; coordinates are in device space.
+     * @param part type of object this trapezoid is part of
+     * @param y1 Y coordinate of top of trapezoid
+     * @param x11 X coordinate of left end of top of trapezoid
+     * @param x21 X coordinate of right end of top of trapezoid
+     * @param y2 Y coordinate of bottom of trapezoid
+     * @param x12 X coordinate of left end of bottom of trapezoid
+     * @param x22 X coordinate of right end of bottom of trapezoid
      */
     drawTrapezoid(part: Pango.RenderPart, y1: number, x11: number, x21: number, y2: number, x12: number, x22: number): void
     /**
      * Gets the current alpha for the specified part.
+     * @param part the part to get the alpha for
      */
     getAlpha(part: Pango.RenderPart): number
     /**
      * Gets the current rendering color for the specified part.
+     * @param part the part to get the color for
      */
     getColor(part: Pango.RenderPart): Pango.Color | null
     /**
@@ -185,6 +223,7 @@ class Renderer {
      * When the stipple changes or underlines with different stipples
      * might be joined together. Pango automatically calls this for
      * changes to colors. (See [method`Pango`.Renderer.set_color])
+     * @param part the part for which rendering has changed.
      */
     partChanged(part: Pango.RenderPart): void
     /**
@@ -192,16 +231,21 @@ class Renderer {
      * 
      * Note that the alpha may only be used if a color is
      * specified for `part` as well.
+     * @param part the part to set the alpha for
+     * @param alpha an alpha value between 1 and 65536, or 0 to unset the alpha
      */
     setAlpha(part: Pango.RenderPart, alpha: number): void
     /**
      * Sets the color for part of the rendering.
      * 
      * Also see [method`Pango`.Renderer.set_alpha].
+     * @param part the part to change the color of
+     * @param color the new color or %NULL to unset the current color
      */
     setColor(part: Pango.RenderPart, color?: Pango.Color | null): void
     /**
      * Sets the transformation matrix that will be applied when rendering.
+     * @param matrix a `PangoMatrix`, or %NULL to unset any existing matrix  (No matrix set is the same as setting the identity matrix.)
      */
     setMatrix(matrix?: Pango.Matrix | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -239,6 +283,10 @@ class Renderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -249,6 +297,12 @@ class Renderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -272,6 +326,7 @@ class Renderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -291,11 +346,14 @@ class Renderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -303,6 +361,8 @@ class Renderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -320,6 +380,7 @@ class Renderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -365,6 +426,7 @@ class Renderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -408,15 +470,20 @@ class Renderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -457,6 +524,7 @@ class Renderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -491,6 +559,7 @@ class Renderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -522,12 +591,18 @@ class Renderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void

@@ -262,6 +262,8 @@ class Backend {
      * In most situations, the asynchronous version
      * (geocode_backend_forward_search_async()) is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
      */
     forward_search(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -275,11 +277,15 @@ class Backend {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_forward_search_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     forward_search_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a forward geocoding operation. See
      * geocode_backend_forward_search_async().
+     * @param result a #GAsyncResult.
      */
     forward_search_finish(result: Gio.AsyncResult): Place[]
     /**
@@ -293,6 +299,8 @@ class Backend {
      * In most situations, the asynchronous version,
      * geocode_backend_forward_search_async(), is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     reverse_resolve(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -314,10 +322,14 @@ class Backend {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_reverse_resolve_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reverse_resolve_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
+     * @param result a #GAsyncResult.
      */
     reverse_resolve_finish(result: Gio.AsyncResult): Place[]
     /* Virtual methods of GeocodeGlib-1.0.GeocodeGlib.Backend */
@@ -330,6 +342,8 @@ class Backend {
      * In most situations, the asynchronous version
      * (geocode_backend_forward_search_async()) is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
      */
     vfunc_forward_search(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -343,11 +357,15 @@ class Backend {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_forward_search_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_forward_search_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a forward geocoding operation. See
      * geocode_backend_forward_search_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_forward_search_finish(result: Gio.AsyncResult): Place[]
     /**
@@ -361,6 +379,8 @@ class Backend {
      * In most situations, the asynchronous version,
      * geocode_backend_forward_search_async(), is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_reverse_resolve(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -382,10 +402,14 @@ class Backend {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_reverse_resolve_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     vfunc_reverse_resolve_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_reverse_resolve_finish(result: Gio.AsyncResult): Place[]
     static name: string
@@ -410,14 +434,32 @@ interface BoundingBox_ConstructProps extends GObject.Object_ConstructProps {
     top?: number
 }
 class BoundingBox {
+    /* Properties of GeocodeGlib-1.0.GeocodeGlib.BoundingBox */
+    /**
+     * Bottom coordinate.
+     */
+    readonly bottom: number
+    /**
+     * Left coordinate.
+     */
+    readonly left: number
+    /**
+     * Right coordinate.
+     */
+    readonly right: number
+    /**
+     * Top coordinate.
+     */
+    readonly top: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GeocodeGlib-1.0.GeocodeGlib.BoundingBox */
     /**
      * Compare two #GeocodeBoundingBox instances for equality. This compares all
      * fields and only returns %TRUE if the instances are exactly equal.
      * 
      * Both instances must be non-%NULL.
+     * @param b another bounding box
      */
     equal(b: BoundingBox): boolean
     /**
@@ -471,6 +513,10 @@ class BoundingBox {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -481,6 +527,12 @@ class BoundingBox {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -504,6 +556,7 @@ class BoundingBox {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -523,11 +576,14 @@ class BoundingBox {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -535,6 +591,8 @@ class BoundingBox {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -552,6 +610,7 @@ class BoundingBox {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -597,6 +656,7 @@ class BoundingBox {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -640,15 +700,20 @@ class BoundingBox {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -689,6 +754,7 @@ class BoundingBox {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -723,6 +789,7 @@ class BoundingBox {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -742,6 +809,7 @@ class BoundingBox {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -774,10 +842,19 @@ class BoundingBox {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bottom", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bottom", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::left", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::left", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::right", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::right", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::top", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::top", callback: (($obj: BoundingBox, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -829,7 +906,7 @@ class Forward {
      */
     search_area: BoundingBox
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GeocodeGlib-1.0.GeocodeGlib.Forward */
     /**
      * Gets the number of requested results for searches.
@@ -860,29 +937,36 @@ class Forward {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_forward_search_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable forward, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     search_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a forward geocoding operation. See geocode_forward_search_async().
+     * @param res a #GAsyncResult.
      */
     search_finish(res: Gio.AsyncResult): Place[]
     /**
      * Sets the number of requested results to `count`.
+     * @param count the number of requested results, which must be greater than zero
      */
     set_answer_count(count: number): void
     /**
      * Specifies the backend to use in the forward geocoding operation.
      * 
      * If none is given, the default GNOME Nominatim server is used.
+     * @param backend a #GeocodeBackend, or %NULL to use the    default one.
      */
     set_backend(backend?: Backend | null): void
     /**
      * Set the #GeocodeForward:bounded property that regulates whether the
      * #GeocodeForward:search-area property acts restricting or not.
+     * @param bounded #TRUE to restrict results to only items contained within the #GeocodeForward:search-area bounding box.
      */
     set_bounded(bounded: boolean): void
     /**
      * Sets the area to limit searches within.
+     * @param box a bounding box to limit the search area.
      */
     set_search_area(box: BoundingBox): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -920,6 +1004,10 @@ class Forward {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -930,6 +1018,12 @@ class Forward {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -953,6 +1047,7 @@ class Forward {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -972,11 +1067,14 @@ class Forward {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -984,6 +1082,8 @@ class Forward {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1001,6 +1101,7 @@ class Forward {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1046,6 +1147,7 @@ class Forward {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1089,15 +1191,20 @@ class Forward {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1138,6 +1245,7 @@ class Forward {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1172,6 +1280,7 @@ class Forward {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1191,6 +1300,7 @@ class Forward {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1223,6 +1333,7 @@ class Forward {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Forward, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Forward, pspec: GObject.ParamSpec) => void)): number
@@ -1292,6 +1403,11 @@ class Location {
      */
     altitude: number
     /**
+     * The Coordinate Reference System Identification of this location.
+     * Only the value 'wgs84' is currently valid.
+     */
+    readonly crs: LocationCRS
+    /**
      * The description of this location.
      */
     description: string
@@ -1303,8 +1419,16 @@ class Location {
      * The longitude of this location in degrees.
      */
     longitude: number
+    /**
+     * A timestamp in seconds since
+     * <ulink url="http://en.wikipedia.org/wiki/Unix_epoch">Epoch</ulink>,
+     * giving when the location was resolved from an address.
+     * 
+     * A value of 0 (zero) will be interpreted as the current time.
+     */
+    readonly timestamp: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GeocodeGlib-1.0.GeocodeGlib.Location */
     /**
      * Compare two #GeocodeLocation instances for equality. This compares all fields
@@ -1319,6 +1443,7 @@ class Location {
      * different #GeocodeLocation:altitude, %FALSE will be returned.
      * 
      * Both instances must be non-%NULL.
+     * @param b another location
      */
     equal(b: Location): boolean
     /**
@@ -1341,6 +1466,7 @@ class Location {
      * Calculates the distance in km, along the curvature of the Earth,
      * between 2 locations. Note that altitude changes are not
      * taken into account.
+     * @param locb a #GeocodeLocation
      */
     get_distance_from(locb: Location): number
     /**
@@ -1358,6 +1484,7 @@ class Location {
     get_timestamp(): number
     /**
      * Sets the description of `loc` to `description`.
+     * @param description a description for the location
      */
     set_description(description: string): void
     /**
@@ -1373,10 +1500,12 @@ class Location {
      * Android extension</ulink> to set a description is also supported in the form of:
      * 
      * - geo:0,0?q=latitude,longitude(description)
+     * @param uri a URI mapping out a location
      */
     set_from_uri(uri: string): boolean
     /**
      * Creates a URI representing `loc` in the scheme specified in `scheme`.
+     * @param scheme the scheme of the requested URI
      */
     to_uri(scheme: LocationURIScheme): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -1414,6 +1543,10 @@ class Location {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1424,6 +1557,12 @@ class Location {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1447,6 +1586,7 @@ class Location {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1466,11 +1606,14 @@ class Location {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1478,6 +1621,8 @@ class Location {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1495,6 +1640,7 @@ class Location {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1540,6 +1686,7 @@ class Location {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1583,15 +1730,20 @@ class Location {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1632,6 +1784,7 @@ class Location {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1666,6 +1819,7 @@ class Location {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1685,6 +1839,7 @@ class Location {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1717,6 +1872,7 @@ class Location {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
@@ -1725,12 +1881,16 @@ class Location {
     connect_after(sigName: "notify::accuracy", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::altitude", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::altitude", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::crs", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::crs", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::description", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::description", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::latitude", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::latitude", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::longitude", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::longitude", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::timestamp", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::timestamp", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1747,7 +1907,7 @@ interface MockBackend_ConstructProps extends GObject.Object_ConstructProps {
 }
 class MockBackend {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GeocodeGlib-1.0.GeocodeGlib.MockBackend */
     /**
      * Add a query and corresponding result (or error) to the mock backend, meaning
@@ -1760,6 +1920,9 @@ class MockBackend {
      * 
      * Exactly one of `results` and `error` must be set. Empty result sets are
      * represented as a %GEOCODE_ERROR_NO_MATCHES error.
+     * @param params query parameters to     respond to, in the same format as accepted by geocode_forward_search()
+     * @param results result set     to return for the query, or %NULL if `error` is non-%NULL; result sets     must be in the same format as returned by geocode_forward_search()
+     * @param error error to return for the query, or %NULL if `results`     should be returned instead; errors must match those returned by     geocode_forward_search()
      */
     add_forward_result(params: GLib.HashTable, results?: Place[] | null, error?: GLib.Error | null): void
     /**
@@ -1773,6 +1936,9 @@ class MockBackend {
      * 
      * Exactly one of `results` and `error` must be set. Empty result sets are
      * represented as a %GEOCODE_ERROR_NOT_SUPPORTED error.
+     * @param params query parameters to     respond to, in the same format as accepted by geocode_reverse_resolve()
+     * @param results result set     to return for the query, or %NULL if `error` is non-%NULL; result sets     must be in the same format as returned by geocode_reverse_resolve()
+     * @param error error to return for the query, or %NULL if `results`     should be returned instead; errors must match those returned by     geocode_reverse_resolve()
      */
     add_reverse_result(params: GLib.HashTable, results?: Place[] | null, error?: GLib.Error | null): void
     /**
@@ -1833,6 +1999,10 @@ class MockBackend {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1843,6 +2013,12 @@ class MockBackend {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1866,6 +2042,7 @@ class MockBackend {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1885,11 +2062,14 @@ class MockBackend {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1897,6 +2077,8 @@ class MockBackend {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1914,6 +2096,7 @@ class MockBackend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1959,6 +2142,7 @@ class MockBackend {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2002,15 +2186,20 @@ class MockBackend {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2051,6 +2240,7 @@ class MockBackend {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2085,6 +2275,7 @@ class MockBackend {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GeocodeGlib-1.0.GeocodeGlib.Backend */
@@ -2097,6 +2288,8 @@ class MockBackend {
      * In most situations, the asynchronous version
      * (geocode_backend_forward_search_async()) is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
      */
     forward_search(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -2110,11 +2303,15 @@ class MockBackend {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_forward_search_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     forward_search_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a forward geocoding operation. See
      * geocode_backend_forward_search_async().
+     * @param result a #GAsyncResult.
      */
     forward_search_finish(result: Gio.AsyncResult): Place[]
     /**
@@ -2128,6 +2325,8 @@ class MockBackend {
      * In most situations, the asynchronous version,
      * geocode_backend_forward_search_async(), is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     reverse_resolve(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -2149,10 +2348,14 @@ class MockBackend {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_reverse_resolve_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reverse_resolve_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
+     * @param result a #GAsyncResult.
      */
     reverse_resolve_finish(result: Gio.AsyncResult): Place[]
     /* Virtual methods of GeocodeGlib-1.0.GeocodeGlib.MockBackend */
@@ -2165,6 +2368,8 @@ class MockBackend {
      * In most situations, the asynchronous version
      * (geocode_backend_forward_search_async()) is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
      */
     vfunc_forward_search(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -2178,11 +2383,15 @@ class MockBackend {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_forward_search_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_forward_search_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a forward geocoding operation. See
      * geocode_backend_forward_search_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_forward_search_finish(result: Gio.AsyncResult): Place[]
     /**
@@ -2196,6 +2405,8 @@ class MockBackend {
      * In most situations, the asynchronous version,
      * geocode_backend_forward_search_async(), is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_reverse_resolve(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -2217,10 +2428,14 @@ class MockBackend {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_reverse_resolve_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     vfunc_reverse_resolve_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_reverse_resolve_finish(result: Gio.AsyncResult): Place[]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2240,6 +2455,7 @@ class MockBackend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2272,6 +2488,7 @@ class MockBackend {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MockBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MockBackend, pspec: GObject.ParamSpec) => void)): number
@@ -2318,6 +2535,18 @@ interface Nominatim_ConstructProps extends GObject.Object_ConstructProps {
 class Nominatim {
     /* Properties of GeocodeGlib-1.0.GeocodeGlib.Nominatim */
     /**
+     * The base URL of the Nominatim service, for example
+     * `https://nominatim.example.org`.
+     */
+    readonly base_url: string
+    /**
+     * E-mail address of the maintainer of the software making the
+     * geocoding requests to the  Nominatim server. This is used to contact
+     * them in the event of a problem with their usage. See
+     * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
+     */
+    readonly maintainer_email_address: string
+    /**
      * User-Agent string to send with HTTP(S) requests, or %NULL to use the
      * default user agent, which is derived from the geocode-glib version
      * and #GApplication:id, for example: `geocode-glib/3.20 (MyAppId)`.
@@ -2331,7 +2560,7 @@ class Nominatim {
      */
     user_agent: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2367,6 +2596,10 @@ class Nominatim {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2377,6 +2610,12 @@ class Nominatim {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2400,6 +2639,7 @@ class Nominatim {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2419,11 +2659,14 @@ class Nominatim {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2431,6 +2674,8 @@ class Nominatim {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2448,6 +2693,7 @@ class Nominatim {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2493,6 +2739,7 @@ class Nominatim {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2536,15 +2783,20 @@ class Nominatim {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2585,6 +2837,7 @@ class Nominatim {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2619,6 +2872,7 @@ class Nominatim {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GeocodeGlib-1.0.GeocodeGlib.Backend */
@@ -2631,6 +2885,8 @@ class Nominatim {
      * In most situations, the asynchronous version
      * (geocode_backend_forward_search_async()) is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
      */
     forward_search(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -2644,11 +2900,15 @@ class Nominatim {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_forward_search_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     forward_search_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a forward geocoding operation. See
      * geocode_backend_forward_search_async().
+     * @param result a #GAsyncResult.
      */
     forward_search_finish(result: Gio.AsyncResult): Place[]
     /**
@@ -2662,6 +2922,8 @@ class Nominatim {
      * In most situations, the asynchronous version,
      * geocode_backend_forward_search_async(), is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     reverse_resolve(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -2683,10 +2945,14 @@ class Nominatim {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_reverse_resolve_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reverse_resolve_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
+     * @param result a #GAsyncResult.
      */
     reverse_resolve_finish(result: Gio.AsyncResult): Place[]
     /* Virtual methods of GeocodeGlib-1.0.GeocodeGlib.Nominatim */
@@ -2702,6 +2968,8 @@ class Nominatim {
      * In most situations, the asynchronous version
      * (geocode_backend_forward_search_async()) is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
      */
     vfunc_forward_search(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -2715,11 +2983,15 @@ class Nominatim {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_forward_search_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_forward_search_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a forward geocoding operation. See
      * geocode_backend_forward_search_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_forward_search_finish(result: Gio.AsyncResult): Place[]
     /**
@@ -2733,6 +3005,8 @@ class Nominatim {
      * In most situations, the asynchronous version,
      * geocode_backend_forward_search_async(), is more appropriate. See its
      * documentation for more information on usage.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_reverse_resolve(params: GLib.HashTable, cancellable?: Gio.Cancellable | null): Place[]
     /**
@@ -2754,10 +3028,14 @@ class Nominatim {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_backend_reverse_resolve_finish() to get the result of the operation.
+     * @param params a #GHashTable with string keys, and #GValue values.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     vfunc_reverse_resolve_async(params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_reverse_resolve_finish(result: Gio.AsyncResult): Place[]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2777,6 +3055,7 @@ class Nominatim {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2809,10 +3088,15 @@ class Nominatim {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Nominatim, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Nominatim, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::base-url", callback: (($obj: Nominatim, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-url", callback: (($obj: Nominatim, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::maintainer-email-address", callback: (($obj: Nominatim, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::maintainer-email-address", callback: (($obj: Nominatim, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::user-agent", callback: (($obj: Nominatim, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-agent", callback: (($obj: Nominatim, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -2962,6 +3246,10 @@ class Place {
      */
     osm_type: PlaceOsmType
     /**
+     * The type of the place.
+     */
+    readonly place_type: PlaceType
+    /**
      * The postal code.
      */
     postal_code: string
@@ -2982,7 +3270,7 @@ class Place {
      */
     town: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GeocodeGlib-1.0.GeocodeGlib.Place */
     /**
      * Compare two #GeocodePlace instances for equality. This compares all fields
@@ -2992,6 +3280,7 @@ class Place {
      * returned.
      * 
      * Both instances must be non-%NULL.
+     * @param b another place
      */
     equal(b: Place): boolean
     /**
@@ -3072,62 +3361,77 @@ class Place {
     get_town(): string
     /**
      * Sets the local administrative area of `place` to `admin_area`.
+     * @param admin_area an administrative area for the place
      */
     set_administrative_area(admin_area: string): void
     /**
      * Sets the area of `place` to `area`.
+     * @param area a area
      */
     set_area(area: string): void
     /**
      * Sets the #GeocodeBoundingBox for the place `place`.
+     * @param bbox A #GeocodeBoundingBox for the place
      */
     set_bounding_box(bbox: BoundingBox): void
     /**
      * Sets the building of `place` to `building`.
+     * @param building a building
      */
     set_building(building: string): void
     /**
      * Sets the continent of `place` to `continent`.
+     * @param continent a continent for the place
      */
     set_continent(continent: string): void
     /**
      * Sets the country of `place` to `country`.
+     * @param country a country for the place
      */
     set_country(country: string): void
     /**
      * Sets the ISO country code of `place` to `country_code`.
+     * @param country_code an ISO country code for the place
      */
     set_country_code(country_code: string): void
     /**
      * Sets the county of `place` to `county`.
+     * @param county a county for the place
      */
     set_county(county: string): void
     /**
      * Sets the location of `place` to `location`.
+     * @param location A location
      */
     set_location(location: Location): void
     /**
      * Sets the name of the `place` to `name`.
+     * @param name the name of place
      */
     set_name(name: string): void
     /**
      * Sets the postal code of `place` to `postal_code`.
+     * @param postal_code a postal code for the place
      */
     set_postal_code(postal_code: string): void
     /**
      * Sets the state of `place` to `state`.
+     * @param state a state for the place
      */
     set_state(state: string): void
     /**
      * Sets the street of `place` to `street`.
+     * @param street a street
      */
     set_street(street: string): void
     /**
      * Sets the street address of `place` to `street_address`.
+     * @param street_address a street address for the place
      */
     set_street_address(street_address: string): void
     /**
      * Sets the town of `place` to `town`.
+     * @param town a town for the place
      */
     set_town(town: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3165,6 +3469,10 @@ class Place {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3175,6 +3483,12 @@ class Place {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3198,6 +3512,7 @@ class Place {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3217,11 +3532,14 @@ class Place {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3229,6 +3547,8 @@ class Place {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3246,6 +3566,7 @@ class Place {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3291,6 +3612,7 @@ class Place {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3334,15 +3656,20 @@ class Place {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3383,6 +3710,7 @@ class Place {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3417,6 +3745,7 @@ class Place {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3436,6 +3765,7 @@ class Place {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3468,6 +3798,7 @@ class Place {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
@@ -3498,6 +3829,8 @@ class Place {
     connect_after(sigName: "notify::osm-id", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::osm-type", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::osm-type", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::place-type", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::place-type", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::postal-code", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::postal-code", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::state", callback: (($obj: Place, pspec: GObject.ParamSpec) => void)): number
@@ -3524,7 +3857,7 @@ interface Reverse_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Reverse {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GeocodeGlib-1.0.GeocodeGlib.Reverse */
     /**
      * Gets the result of a reverse geocoding
@@ -3544,16 +3877,20 @@ class Reverse {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * geocode_reverse_resolve_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     resolve_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a reverse geocoding operation. See geocode_reverse_resolve_async().
+     * @param res a #GAsyncResult.
      */
     resolve_finish(res: Gio.AsyncResult): Place
     /**
      * Specifies the backend to use in the reverse geocoding operation.
      * 
      * If none is given, the default GNOME Nominatim server is used.
+     * @param backend a #GeocodeBackend, or %NULL to use the default one.
      */
     set_backend(backend?: Backend | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3591,6 +3928,10 @@ class Reverse {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3601,6 +3942,12 @@ class Reverse {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3624,6 +3971,7 @@ class Reverse {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3643,11 +3991,14 @@ class Reverse {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3655,6 +4006,8 @@ class Reverse {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3672,6 +4025,7 @@ class Reverse {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3717,6 +4071,7 @@ class Reverse {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3760,15 +4115,20 @@ class Reverse {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3809,6 +4169,7 @@ class Reverse {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3843,6 +4204,7 @@ class Reverse {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3862,6 +4224,7 @@ class Reverse {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3894,6 +4257,7 @@ class Reverse {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Reverse, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Reverse, pspec: GObject.ParamSpec) => void)): number
@@ -3911,12 +4275,12 @@ class Reverse {
 }
 abstract class BackendInterface {
     /* Fields of GeocodeGlib-1.0.GeocodeGlib.BackendInterface */
-    readonly forward_search: (backend: Backend, params: GLib.HashTable, cancellable?: Gio.Cancellable | null) => Place[]
-    readonly forward_search_async: (backend: Backend, params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly forward_search_finish: (backend: Backend, result: Gio.AsyncResult) => Place[]
-    readonly reverse_resolve: (backend: Backend, params: GLib.HashTable, cancellable?: Gio.Cancellable | null) => Place[]
-    readonly reverse_resolve_async: (backend: Backend, params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly reverse_resolve_finish: (backend: Backend, result: Gio.AsyncResult) => Place[]
+    forward_search: (backend: Backend, params: GLib.HashTable, cancellable?: Gio.Cancellable | null) => Place[]
+    forward_search_async: (backend: Backend, params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    forward_search_finish: (backend: Backend, result: Gio.AsyncResult) => Place[]
+    reverse_resolve: (backend: Backend, params: GLib.HashTable, cancellable?: Gio.Cancellable | null) => Place[]
+    reverse_resolve_async: (backend: Backend, params: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    reverse_resolve_finish: (backend: Backend, result: Gio.AsyncResult) => Place[]
     static name: string
 }
 abstract class BoundingBoxClass {
@@ -3939,7 +4303,7 @@ class LocationPrivate {
 }
 abstract class MockBackendClass {
     /* Fields of GeocodeGlib-1.0.GeocodeGlib.MockBackendClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MockBackendQuery {
@@ -3948,30 +4312,30 @@ class MockBackendQuery {
      * query parameters, in the format accepted by geocode_forward_search()
      *     (if `is_forward` is %TRUE) or geocode_reverse_resolve() (otherwise)
      */
-    readonly params: GLib.HashTable
+    params: GLib.HashTable
     /**
      * %TRUE if this represents a call to geocode_forward_search();
      *     %FALSE if it represents a call to geocode_reverse_resolve()
      */
-    readonly is_forward: boolean
+    is_forward: boolean
     /**
      * results returned by the
      *     query, or %NULL if an error was returned
      */
-    readonly results: Place[]
+    results: Place[]
     /**
      * error returned by the query, or %NULL if a result set
      *     was returned
      */
-    readonly error: GLib.Error
+    error: GLib.Error
     static name: string
 }
 abstract class NominatimClass {
     /* Fields of GeocodeGlib-1.0.GeocodeGlib.NominatimClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly query: (self: Nominatim, uri: string, cancellable?: Gio.Cancellable | null) => string
-    readonly query_async: (self: Nominatim, uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly query_finish: (self: Nominatim, res: Gio.AsyncResult) => string
+    parent_class: GObject.ObjectClass
+    query: (self: Nominatim, uri: string, cancellable?: Gio.Cancellable | null) => string
+    query_async: (self: Nominatim, uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    query_finish: (self: Nominatim, res: Gio.AsyncResult) => string
     static name: string
 }
 abstract class PlaceClass {

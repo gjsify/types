@@ -34,7 +34,7 @@ interface AudioInformation_ConstructProps extends GObject.Object_ConstructProps 
 }
 class AudioInformation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -70,6 +70,10 @@ class AudioInformation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -80,6 +84,12 @@ class AudioInformation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -103,6 +113,7 @@ class AudioInformation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -122,11 +133,14 @@ class AudioInformation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -134,6 +148,8 @@ class AudioInformation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -151,6 +167,7 @@ class AudioInformation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -196,6 +213,7 @@ class AudioInformation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -239,15 +257,20 @@ class AudioInformation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -288,6 +311,7 @@ class AudioInformation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -322,6 +346,7 @@ class AudioInformation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -353,6 +378,7 @@ class AudioInformation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -375,7 +401,7 @@ interface ContainerInformation_ConstructProps extends GObject.Object_ConstructPr
 }
 class ContainerInformation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -411,6 +437,10 @@ class ContainerInformation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -421,6 +451,12 @@ class ContainerInformation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -444,6 +480,7 @@ class ContainerInformation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -463,11 +500,14 @@ class ContainerInformation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -475,6 +515,8 @@ class ContainerInformation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -492,6 +534,7 @@ class ContainerInformation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -537,6 +580,7 @@ class ContainerInformation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -580,15 +624,20 @@ class ContainerInformation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -629,6 +678,7 @@ class ContainerInformation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -663,6 +713,7 @@ class ContainerInformation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -694,6 +745,7 @@ class ContainerInformation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -716,7 +768,7 @@ interface ImageInformation_ConstructProps extends GObject.Object_ConstructProps 
 }
 class ImageInformation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -752,6 +804,10 @@ class ImageInformation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -762,6 +818,12 @@ class ImageInformation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -785,6 +847,7 @@ class ImageInformation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -804,11 +867,14 @@ class ImageInformation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -816,6 +882,8 @@ class ImageInformation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -833,6 +901,7 @@ class ImageInformation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -878,6 +947,7 @@ class ImageInformation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -921,15 +991,20 @@ class ImageInformation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -970,6 +1045,7 @@ class ImageInformation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1004,6 +1080,7 @@ class ImageInformation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1035,6 +1112,7 @@ class ImageInformation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1075,11 +1153,15 @@ class Information {
      */
     readonly imageInformation: ImageInformation
     /**
+     * URI of file which metadata this object stores.
+     */
+    readonly uri: string
+    /**
      * Video information of a file.
      */
     readonly videoInformation: VideoInformation
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUPnPDLNA-2.0.GUPnPDLNA.Information */
     /**
      * Get an audio information of media file if applicable (e.g. for
@@ -1138,6 +1220,10 @@ class Information {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1148,6 +1234,12 @@ class Information {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1171,6 +1263,7 @@ class Information {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1190,11 +1283,14 @@ class Information {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1202,6 +1298,8 @@ class Information {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1219,6 +1317,7 @@ class Information {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1264,6 +1363,7 @@ class Information {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1307,15 +1407,20 @@ class Information {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1356,6 +1461,7 @@ class Information {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1390,6 +1496,7 @@ class Information {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1421,6 +1528,7 @@ class Information {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1442,6 +1550,11 @@ class Information {
     on(sigName: "notify::image-information", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::image-information", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::image-information", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::uri", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uri", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::video-information", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::video-information", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::video-information", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1479,8 +1592,25 @@ interface Profile_ConstructProps extends GObject.Object_ConstructProps {
     videoRestrictions?: object
 }
 class Profile {
+    /* Properties of GUPnPDLNA-2.0.GUPnPDLNA.Profile */
+    readonly audioRestrictions: object
+    readonly containerRestrictions: object
+    /**
+     * Whether the DLNA profile is not a part of DLNA specification.
+     */
+    readonly extended: boolean
+    readonly imageRestrictions: object
+    /**
+     * MIME type of the DLNA profile.
+     */
+    readonly mime: string
+    /**
+     * Name of the DLNA profile.
+     */
+    readonly name: string
+    readonly videoRestrictions: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUPnPDLNA-2.0.GUPnPDLNA.Profile */
     /**
      * Gets a list of audio restrictions.
@@ -1536,6 +1666,10 @@ class Profile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1546,6 +1680,12 @@ class Profile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1569,6 +1709,7 @@ class Profile {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1588,11 +1729,14 @@ class Profile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1600,6 +1744,8 @@ class Profile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1617,6 +1763,7 @@ class Profile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1662,6 +1809,7 @@ class Profile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1705,15 +1853,20 @@ class Profile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1754,6 +1907,7 @@ class Profile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1788,6 +1942,7 @@ class Profile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1819,12 +1974,48 @@ class Profile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::audio-restrictions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::audio-restrictions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::audio-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::audio-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::audio-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::container-restrictions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::container-restrictions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::container-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::container-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::container-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::extended", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extended", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::image-restrictions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::image-restrictions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::image-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::image-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::image-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::mime", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::mime", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::video-restrictions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::video-restrictions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::video-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::video-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::video-restrictions", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1851,26 +2042,43 @@ interface ProfileGuesser_ConstructProps extends GObject.Object_ConstructProps {
     relaxedMode?: boolean
 }
 class ProfileGuesser {
+    /* Properties of GUPnPDLNA-2.0.GUPnPDLNA.ProfileGuesser */
+    /**
+     * Whether profile matching should be done also against DLNA
+     * profiles not being a part of DLNA specification.
+     */
+    readonly extendedMode: boolean
+    /**
+     * Whether profile matching should not be strictly compliant
+     * with the DLNA specification.
+     */
+    readonly relaxedMode: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUPnPDLNA-2.0.GUPnPDLNA.ProfileGuesser */
     getExtendedMode(): boolean
     /**
      * Lookups for #GUPnPDLNAProfile with given `name`.
+     * @param name The name of the DLNA profile to be retrieved.
      */
     getProfile(name: string): Profile
     getRelaxedMode(): boolean
     /**
      * Asynchronously guesses DLNA profile for given `uri`. When guessing
      * is done, ::done signal is emitted on `guesser`.
+     * @param uri URI of media.
+     * @param timeoutInMs Timeout of guessing in miliseconds.
      */
     guessProfileAsync(uri: string, timeoutInMs: number): boolean
     /**
      * Guesses the profile which fits to passed `info`.
+     * @param info The #GUPnPDLNAInformation object.
      */
     guessProfileFromInfo(info: Information): Profile
     /**
      * Synchronously guesses DLNA profile for given `uri`.
+     * @param uri URI of media.
+     * @param timeoutInMs Timeout of guessing in miliseconds.
      */
     guessProfileSync(uri: string, timeoutInMs: number): [ /* returnType */ Profile, /* dlnaInfo */ Information | null ]
     /**
@@ -1912,6 +2120,10 @@ class ProfileGuesser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1922,6 +2134,12 @@ class ProfileGuesser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1945,6 +2163,7 @@ class ProfileGuesser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1964,11 +2183,14 @@ class ProfileGuesser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1976,6 +2198,8 @@ class ProfileGuesser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1993,6 +2217,7 @@ class ProfileGuesser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2038,6 +2263,7 @@ class ProfileGuesser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2081,15 +2307,20 @@ class ProfileGuesser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2130,6 +2361,7 @@ class ProfileGuesser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2164,11 +2396,15 @@ class ProfileGuesser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GUPnPDLNA-2.0.GUPnPDLNA.ProfileGuesser */
     /**
      * Will be emitted when guessing DLNA profile for a URI has finished.
+     * @param info URI metadata as #GUPnPDLNAInformation.
+     * @param dlna The results as #GUPnPDLNAProfile.
+     * @param error Contains details of the error if discovery failed, else is %NULL.
      */
     connect(sigName: "done", callback: ((info: Information, dlna?: Profile | null, error?: GLib.Error | null) => void)): number
     on(sigName: "done", callback: (info: Information, dlna?: Profile | null, error?: GLib.Error | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -2204,12 +2440,23 @@ class ProfileGuesser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extended-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extended-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extended-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extended-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extended-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::relaxed-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::relaxed-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::relaxed-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::relaxed-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::relaxed-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2235,7 +2482,7 @@ interface VideoInformation_ConstructProps extends GObject.Object_ConstructProps 
 }
 class VideoInformation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2271,6 +2518,10 @@ class VideoInformation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2281,6 +2532,12 @@ class VideoInformation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2304,6 +2561,7 @@ class VideoInformation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2323,11 +2581,14 @@ class VideoInformation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2335,6 +2596,8 @@ class VideoInformation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2352,6 +2615,7 @@ class VideoInformation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2397,6 +2661,7 @@ class VideoInformation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2440,15 +2705,20 @@ class VideoInformation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2489,6 +2759,7 @@ class VideoInformation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2523,6 +2794,7 @@ class VideoInformation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2554,6 +2826,7 @@ class VideoInformation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2577,11 +2850,11 @@ abstract class AudioInformationClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     /**
      * Padding. Ignore it.
      */
-    readonly reserved: object[]
+    reserved: object[]
     static name: string
 }
 class BoolValue {
@@ -2589,11 +2862,11 @@ class BoolValue {
     /**
      * The boolean value.
      */
-    readonly value: boolean
+    value: boolean
     /**
      * The state of #GUPnPDLNABoolValue.
      */
-    readonly state: ValueState
+    state: ValueState
     static name: string
 }
 abstract class ContainerInformationClass {
@@ -2601,11 +2874,11 @@ abstract class ContainerInformationClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     /**
      * Padding. Ignore it.
      */
-    readonly reserved: object[]
+    reserved: object[]
     static name: string
 }
 class Fraction {
@@ -2635,15 +2908,15 @@ class FractionValue {
     /**
      * The numerator of fraction.
      */
-    readonly numerator: number
+    numerator: number
     /**
      * The denominator of fraction.
      */
-    readonly denominator: number
+    denominator: number
     /**
      * The state of #GUPnPDLNAFractionValue.
      */
-    readonly state: ValueState
+    state: ValueState
     static name: string
 }
 abstract class ImageInformationClass {
@@ -2651,11 +2924,11 @@ abstract class ImageInformationClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     /**
      * Padding. Ignore it.
      */
-    readonly reserved: object[]
+    reserved: object[]
     static name: string
 }
 abstract class InformationClass {
@@ -2663,16 +2936,16 @@ abstract class InformationClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly getAudioInformation: (info: Information) => AudioInformation
-    readonly getContainerInformation: (info: Information) => ContainerInformation
-    readonly getImageInformation: (info: Information) => ImageInformation
-    readonly getVideoInformation: (info: Information) => VideoInformation
-    readonly getProfileName: (info: Information) => string
+    parentClass: GObject.ObjectClass
+    getAudioInformation: (info: Information) => AudioInformation
+    getContainerInformation: (info: Information) => ContainerInformation
+    getImageInformation: (info: Information) => ImageInformation
+    getVideoInformation: (info: Information) => VideoInformation
+    getProfileName: (info: Information) => string
     /**
      * Padding. Ignore it.
      */
-    readonly reserved: object[]
+    reserved: object[]
     static name: string
 }
 class IntRange {
@@ -2691,11 +2964,11 @@ class IntValue {
     /**
      * The integer value.
      */
-    readonly value: number
+    value: number
     /**
      * The state of #GUPnPDLNAIntValue.
      */
-    readonly state: ValueState
+    state: ValueState
     static name: string
 }
 abstract class ProfileClass {
@@ -2703,7 +2976,7 @@ abstract class ProfileClass {
     /**
      * A #GObjectClass - parent of this class.
      */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class ProfileGuesserClass {
@@ -2711,7 +2984,7 @@ abstract class ProfileGuesserClass {
     /**
      * A #GObjectClass - parent of this class.
      */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class Restriction {
@@ -2742,11 +3015,11 @@ class StringValue {
     /**
      * The string value.
      */
-    readonly value: string
+    value: string
     /**
      * The state of #GUPnPDLNAStringValue.
      */
-    readonly state: ValueState
+    state: ValueState
     static name: string
 }
 class ValueList {
@@ -2774,11 +3047,11 @@ abstract class VideoInformationClass {
     /**
      * Parent class.
      */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     /**
      * Padding. Ignore it.
      */
-    readonly reserved: object[]
+    reserved: object[]
     static name: string
 }
 }

@@ -64,6 +64,11 @@ interface Client_ConstructProps extends GObject.Object_ConstructProps {
 class Client {
     /* Properties of Jsonrpc-1.0.Jsonrpc.Client */
     /**
+     * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
+     * with a JSON-RPC peer.
+     */
+    readonly io_stream: Gio.IOStream
+    /**
      * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
      * communicate with the peer instead of JSON. You should only set this
      * if you know the peer is also a Jsonrpc-GLib based client.
@@ -75,7 +80,7 @@ class Client {
      */
     use_gvariant: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Jsonrpc-1.0.Jsonrpc.Client */
     /**
      * Synchronously calls `method` with `params` on the remote peer.
@@ -85,6 +90,9 @@ class Client {
      * the response.
      * 
      * If `params` is floating then this function consumes the reference.
+     * @param method The name of the method to call
+     * @param params A [struct`GLib`.Variant] of parameters or %NULL
+     * @param cancellable A #GCancellable or %NULL
      */
     call(method: string, params?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* return_value */ GLib.Variant | null ]
     /**
@@ -95,10 +103,15 @@ class Client {
      * any memory held.
      * 
      * If `params` is floating, the floating reference is consumed.
+     * @param method The name of the method to call
+     * @param params A [struct`GLib`.Variant] of parameters or %NULL
+     * @param cancellable A #GCancellable or %NULL
+     * @param callback a callback to executed upon completion
      */
     call_async(method: string, params?: GLib.Variant | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call to [method`Client`.call_async].
+     * @param result A #GAsyncResult provided to the callback in [method`Client`.call_async]
      */
     call_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* return_value */ GLib.Variant | null ]
     /**
@@ -114,6 +127,10 @@ class Client {
      * Server Protocol).
      * 
      * If `params` is floating, the floating reference is consumed.
+     * @param method The name of the method to call
+     * @param params A [struct`GLib`.Variant] of parameters or %NULL
+     * @param cancellable A #GCancellable or %NULL
+     * @param callback Callback to executed upon completion
      */
     call_with_id_async(method: string, params?: GLib.Variant | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* id */ GLib.Variant | null
     /**
@@ -125,6 +142,7 @@ class Client {
      * hold additional references are cancelled.
      * 
      * Failure to call this method results in a leak of #JsonrpcClient.
+     * @param cancellable 
      */
     close(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -132,10 +150,13 @@ class Client {
      * 
      * Currently this operation is implemented synchronously, but in the future may
      * be converted to using asynchronous operations.
+     * @param cancellable 
+     * @param callback 
      */
     close_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous request of [method`Client`.close_async].
+     * @param result 
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -148,6 +169,9 @@ class Client {
      * Synchronous variant of [method`Client`.reply_async].
      * 
      * If `id` or `result` are floating, there floating references are consumed.
+     * @param id The id of the message to reply
+     * @param result The return value or %NULL
+     * @param cancellable A #GCancellable, or %NULL
      */
     reply(id: GLib.Variant, result?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): boolean
     reply_async(id: GLib.Variant, result: GLib.Variant, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
@@ -157,11 +181,17 @@ class Client {
      * Call [method`Client`.reply_error_finish] to get the result of this operation.
      * 
      * If `id` is floating, it's floating reference is consumed.
+     * @param id A [struct`GLib`.Variant] containing the call id
+     * @param code The error code
+     * @param message An optional error message
+     * @param cancellable A #GCancellable, or %NULL
+     * @param callback A #GAsyncReadyCallback or %NULL
      */
     reply_error_async(id: GLib.Variant, code: number, message?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     reply_error_finish(result: Gio.AsyncResult): boolean
     /**
      * Completes an asynchronous request to [method`Client`.reply_async].
+     * @param result A #GAsyncResult
      */
     reply_finish(result: Gio.AsyncResult): boolean
     /**
@@ -170,6 +200,9 @@ class Client {
      * This function will not wait or expect a reply from the peer.
      * 
      * If `params` is floating then the reference is consumed.
+     * @param method The name of the method to call
+     * @param params A [struct`GLib`.Variant] of parameters or %NULL
+     * @param cancellable A #GCancellable or %NULL
      */
     send_notification(method: string, params?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -182,6 +215,10 @@ class Client {
      * not indicate that the peer has received them.
      * 
      * If `params` is floating then the reference is consumed.
+     * @param method The name of the method to call
+     * @param params A [struct`GLib`.Variant] of parameters or %NULL
+     * @param cancellable A #GCancellable or %NULL
+     * @param callback 
      */
     send_notification_async(method: string, params?: GLib.Variant | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -190,6 +227,7 @@ class Client {
      * Successful completion of this function only indicates that the request
      * has been written to the underlying buffer, not that the peer has received
      * the notification.
+     * @param result 
      */
     send_notification_finish(result: Gio.AsyncResult): boolean
     /**
@@ -199,6 +237,7 @@ class Client {
      * peer. Doing so can allow for more efficient communication by avoiding
      * expensive parsing overhead and memory allocations. However, it requires
      * that the peer also supports [struct`GLib`.Variant] encoding.
+     * @param use_gvariant If [struct`GLib`.Variant] should be used
      */
     set_use_gvariant(use_gvariant: boolean): void
     /**
@@ -241,6 +280,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -251,6 +294,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -274,6 +323,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -293,11 +343,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -305,6 +358,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -322,6 +377,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -367,6 +423,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -410,15 +467,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -459,6 +521,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -493,6 +556,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Jsonrpc-1.0.Jsonrpc.Client */
@@ -516,6 +580,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -539,6 +604,9 @@ class Client {
      * Additionally, since 3.28 you may connect to the "detail" of this signal
      * to handle a specific method call. Use the method name as the detail of
      * the signal.
+     * @param method The method name
+     * @param id The "id" field of the JSONRPC message
+     * @param params The "params" field of the JSONRPC message
      */
     connect(sigName: "handle-call", callback: (($obj: Client, method: string, id: GLib.Variant, params?: GLib.Variant | null) => boolean)): number
     connect_after(sigName: "handle-call", callback: (($obj: Client, method: string, id: GLib.Variant, params?: GLib.Variant | null) => boolean)): number
@@ -548,6 +616,8 @@ class Client {
      * peer. Unlike [signal`Client:`:handle-call], this does not have an "id"
      * parameter because notifications do not have ids. They do not round
      * trip.
+     * @param method The method name of the notification
+     * @param params Params for the notification
      */
     connect(sigName: "notification", callback: (($obj: Client, method: string, params?: GLib.Variant | null) => void)): number
     connect_after(sigName: "notification", callback: (($obj: Client, method: string, params?: GLib.Variant | null) => void)): number
@@ -581,10 +651,13 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::io-stream", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::io-stream", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::use-gvariant", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-gvariant", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -619,11 +692,11 @@ class InputStream {
     /* Properties of Gio-2.0.Gio.FilterInputStream */
     close_base_stream: boolean
     /* Fields of Gio-2.0.Gio.DataInputStream */
-    readonly parent_instance: Gio.BufferedInputStream
+    parent_instance: Gio.BufferedInputStream
     /* Fields of Gio-2.0.Gio.FilterInputStream */
-    readonly base_stream: Gio.InputStream
+    base_stream: Gio.InputStream
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Jsonrpc-1.0.Jsonrpc.InputStream */
     read_message(cancellable: Gio.Cancellable | null, message: GLib.Variant): boolean
     read_message_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
@@ -639,6 +712,7 @@ class InputStream {
     get_newline_type(): Gio.DataStreamNewlineType
     /**
      * Reads an unsigned 8-bit/1-byte value from `stream`.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_byte(cancellable?: Gio.Cancellable | null): number
     /**
@@ -646,6 +720,7 @@ class InputStream {
      * 
      * In order to get the correct byte order for this read operation,
      * see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_int16(cancellable?: Gio.Cancellable | null): number
     /**
@@ -657,6 +732,7 @@ class InputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_int32(cancellable?: Gio.Cancellable | null): number
     /**
@@ -668,6 +744,7 @@ class InputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_int64(cancellable?: Gio.Cancellable | null): number
     /**
@@ -678,6 +755,7 @@ class InputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_line(cancellable?: Gio.Cancellable | null): [ /* returnType */ Uint8Array | null, /* length */ number | null ]
     /**
@@ -687,6 +765,9 @@ class InputStream {
      * When the operation is finished, `callback` will be called. You
      * can then call g_data_input_stream_read_line_finish() to get
      * the result of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied.
      */
     read_line_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -694,11 +775,13 @@ class InputStream {
      * g_data_input_stream_read_line_async().  Note the warning about
      * string encoding in g_data_input_stream_read_line() applies here as
      * well.
+     * @param result the #GAsyncResult that was provided to the callback.
      */
     read_line_finish(result: Gio.AsyncResult): [ /* returnType */ Uint8Array | null, /* length */ number | null ]
     /**
      * Finish an asynchronous call started by
      * g_data_input_stream_read_line_async().
+     * @param result the #GAsyncResult that was provided to the callback.
      */
     read_line_finish_utf8(result: Gio.AsyncResult): [ /* returnType */ string | null, /* length */ number | null ]
     /**
@@ -707,6 +790,7 @@ class InputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_line_utf8(cancellable?: Gio.Cancellable | null): [ /* returnType */ string | null, /* length */ number | null ]
     /**
@@ -714,6 +798,7 @@ class InputStream {
      * 
      * In order to get the correct byte order for this read operation,
      * see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_uint16(cancellable?: Gio.Cancellable | null): number
     /**
@@ -725,6 +810,7 @@ class InputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_uint32(cancellable?: Gio.Cancellable | null): number
     /**
@@ -736,6 +822,7 @@ class InputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_uint64(cancellable?: Gio.Cancellable | null): number
     /**
@@ -750,6 +837,8 @@ class InputStream {
      * functions will be marked as deprecated in a future release.  Use
      * g_data_input_stream_read_upto() instead, but note that that function
      * does not consume the stop character.
+     * @param stop_chars characters to terminate the read.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_until(stop_chars: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ string, /* length */ number | null ]
     /**
@@ -768,11 +857,16 @@ class InputStream {
      * inconsistent with g_data_input_stream_read_until().  Both functions
      * will be marked as deprecated in a future release.  Use
      * g_data_input_stream_read_upto_async() instead.
+     * @param stop_chars characters to terminate the read.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied.
      */
     read_until_async(stop_chars: string, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous call started by
      * g_data_input_stream_read_until_async().
+     * @param result the #GAsyncResult that was provided to the callback.
      */
     read_until_finish(result: Gio.AsyncResult): [ /* returnType */ string, /* length */ number | null ]
     /**
@@ -788,6 +882,9 @@ class InputStream {
      * specified.
      * 
      * The returned string will always be nul-terminated on success.
+     * @param stop_chars characters to terminate the read
+     * @param stop_chars_len length of `stop_chars`. May be -1 if `stop_chars` is     nul-terminated
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     read_upto(stop_chars: string, stop_chars_len: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ string, /* length */ number | null ]
     /**
@@ -805,6 +902,11 @@ class InputStream {
      * When the operation is finished, `callback` will be called. You
      * can then call g_data_input_stream_read_upto_finish() to get
      * the result of the operation.
+     * @param stop_chars characters to terminate the read
+     * @param stop_chars_len length of `stop_chars`. May be -1 if `stop_chars` is     nul-terminated
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     read_upto_async(stop_chars: string, stop_chars_len: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -816,11 +918,13 @@ class InputStream {
      * g_data_input_stream_read_upto_async() again.
      * 
      * The returned string will always be nul-terminated on success.
+     * @param result the #GAsyncResult that was provided to the callback
      */
     read_upto_finish(result: Gio.AsyncResult): [ /* returnType */ string, /* length */ number | null ]
     /**
      * This function sets the byte order for the given `stream`. All subsequent
      * reads from the `stream` will be read in the given `order`.
+     * @param order a #GDataStreamByteOrder to set.
      */
     set_byte_order(order: Gio.DataStreamByteOrder): void
     /**
@@ -829,6 +933,7 @@ class InputStream {
      * Note that using G_DATA_STREAM_NEWLINE_TYPE_ANY is slightly unsafe. If a read
      * chunk ends in "CR" we must read an additional byte to know if this is "CR" or
      * "CR LF", and this might block if there is no more data available.
+     * @param type the type of new line return as #GDataStreamNewlineType.
      */
     set_newline_type(type: Gio.DataStreamNewlineType): void
     /* Methods of Gio-2.0.Gio.BufferedInputStream */
@@ -857,6 +962,8 @@ class InputStream {
      * 
      * For the asynchronous, non-blocking, version of this function, see
      * g_buffered_input_stream_fill_async().
+     * @param count the number of bytes that will be read from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     fill(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -866,10 +973,15 @@ class InputStream {
      * 
      * If `count` is -1 then the attempted read size is equal to the number
      * of bytes that are required to fill the buffer.
+     * @param count the number of bytes that will be read from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object
+     * @param callback a #GAsyncReadyCallback
      */
     fill_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous read.
+     * @param result a #GAsyncResult
      */
     fill_finish(result: Gio.AsyncResult): number
     /**
@@ -883,6 +995,8 @@ class InputStream {
     /**
      * Peeks in the buffer, copying data of size `count` into `buffer,`
      * offset `offset` bytes.
+     * @param buffer a pointer to   an allocated chunk of memory
+     * @param offset a #gsize
      */
     peek(buffer: Uint8Array, offset: number): number
     /**
@@ -905,12 +1019,14 @@ class InputStream {
      * partial result will be returned, without an error.
      * 
      * On error -1 is returned and `error` is set accordingly.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     read_byte(cancellable?: Gio.Cancellable | null): number
     /**
      * Sets the size of the internal buffer of `stream` to `size,` or to the
      * size of the contents of the buffer. The buffer can never be resized
      * smaller than its current contents.
+     * @param size a #gsize
      */
     set_buffer_size(size: number): void
     /* Methods of Gio-2.0.Gio.FilterInputStream */
@@ -925,6 +1041,7 @@ class InputStream {
     get_close_base_stream(): boolean
     /**
      * Sets whether the base stream will be closed when `stream` is closed.
+     * @param close_base %TRUE to close the base stream.
      */
     set_close_base_stream(close_base: boolean): void
     /* Methods of Gio-2.0.Gio.InputStream */
@@ -956,6 +1073,7 @@ class InputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
      * Cancelling a close will still leave the stream closed, but some streams
      * can use a faster close that doesn't block to e.g. check errors.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     close(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -969,10 +1087,14 @@ class InputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
+     * @param result a #GAsyncResult.
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1005,6 +1127,7 @@ class InputStream {
      * partial result will be returned, without an error.
      * 
      * On error -1 is returned and `error` is set accordingly.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read(cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buffer */ Uint8Array ]
     /**
@@ -1027,6 +1150,7 @@ class InputStream {
      * read before the error was encountered.  This functionality is only
      * available from C.  If you need it from another language then you must
      * write your own loop around g_input_stream_read().
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_all(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* buffer */ Uint8Array, /* bytes_read */ number ]
     /**
@@ -1040,6 +1164,9 @@ class InputStream {
      * Any outstanding I/O request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
     /**
@@ -1052,6 +1179,7 @@ class InputStream {
      * read before the error was encountered.  This functionality is only
      * available from C.  If you need it from another language then you must
      * write your own loop around g_input_stream_read_async().
+     * @param result a #GAsyncResult
      */
     read_all_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytes_read */ number ]
     /**
@@ -1078,6 +1206,9 @@ class InputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
     /**
@@ -1104,6 +1235,8 @@ class InputStream {
      * partial result will be returned, without an error.
      * 
      * On error %NULL is returned and `error` is set accordingly.
+     * @param count maximum number of bytes that will be read from the stream. Common values include 4096 and 8192.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_bytes(count: number, cancellable?: Gio.Cancellable | null): GLib.Bytes
     /**
@@ -1127,14 +1260,20 @@ class InputStream {
      * Any outstanding I/O request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param count the number of bytes that will be read from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous stream read-into-#GBytes operation.
+     * @param result a #GAsyncResult.
      */
     read_bytes_finish(result: Gio.AsyncResult): GLib.Bytes
     /**
      * Finishes an asynchronous stream read operation.
+     * @param result a #GAsyncResult.
      */
     read_finish(result: Gio.AsyncResult): number
     /**
@@ -1158,6 +1297,8 @@ class InputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     skip(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -1184,10 +1325,15 @@ class InputStream {
      * The asynchronous methods have a default fallback that uses threads to
      * implement asynchronicity, so they are optional for inheriting classes.
      * However, if you override one, you must override all.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream skip operation.
+     * @param result a #GAsyncResult.
      */
     skip_finish(result: Gio.AsyncResult): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -1225,6 +1371,10 @@ class InputStream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1235,6 +1385,12 @@ class InputStream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1258,6 +1414,7 @@ class InputStream {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1277,11 +1434,14 @@ class InputStream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1289,6 +1449,8 @@ class InputStream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1306,6 +1468,7 @@ class InputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1351,6 +1514,7 @@ class InputStream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1394,15 +1558,20 @@ class InputStream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1443,6 +1612,7 @@ class InputStream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1477,6 +1647,7 @@ class InputStream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Seekable */
@@ -1504,6 +1675,9 @@ class InputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param offset a #goffset.
+     * @param type a #GSeekType.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1520,6 +1694,8 @@ class InputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param offset new length for `seekable,` in bytes.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Jsonrpc-1.0.Jsonrpc.InputStream */
@@ -1547,6 +1723,9 @@ class InputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param offset a #goffset.
+     * @param type a #GSeekType.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1563,6 +1742,8 @@ class InputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param offset new length for `seekable,` in bytes.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Gio-2.0.Gio.BufferedInputStream */
@@ -1591,6 +1772,8 @@ class InputStream {
      * 
      * For the asynchronous, non-blocking, version of this function, see
      * g_buffered_input_stream_fill_async().
+     * @param count the number of bytes that will be read from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     vfunc_fill(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -1600,10 +1783,15 @@ class InputStream {
      * 
      * If `count` is -1 then the attempted read size is equal to the number
      * of bytes that are required to fill the buffer.
+     * @param count the number of bytes that will be read from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object
+     * @param callback a #GAsyncReadyCallback
      */
     vfunc_fill_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous read.
+     * @param result a #GAsyncResult
      */
     vfunc_fill_finish(result: Gio.AsyncResult): number
     /* Virtual methods of Gio-2.0.Gio.InputStream */
@@ -1618,10 +1806,14 @@ class InputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_close_finish(result: Gio.AsyncResult): boolean
     vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean
@@ -1649,10 +1841,14 @@ class InputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array | null
     /**
      * Finishes an asynchronous stream read operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_read_finish(result: Gio.AsyncResult): number
     vfunc_read_fn(buffer: object | null, count: number, cancellable?: Gio.Cancellable | null): number
@@ -1671,6 +1867,8 @@ class InputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -1697,10 +1895,15 @@ class InputStream {
      * The asynchronous methods have a default fallback that uses threads to
      * implement asynchronicity, so they are optional for inheriting classes.
      * However, if you override one, you must override all.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream skip operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_skip_finish(result: Gio.AsyncResult): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1720,6 +1923,7 @@ class InputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1752,6 +1956,7 @@ class InputStream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputStream, pspec: GObject.ParamSpec) => void)): number
@@ -1791,12 +1996,14 @@ class OutputStream {
      * multi-byte entities (such as integers) to the stream.
      */
     byte_order: Gio.DataStreamByteOrder
+    /* Properties of Gio-2.0.Gio.FilterOutputStream */
+    readonly close_base_stream: boolean
     /* Fields of Gio-2.0.Gio.DataOutputStream */
-    readonly parent_instance: Gio.FilterOutputStream
+    parent_instance: Gio.FilterOutputStream
     /* Fields of Gio-2.0.Gio.FilterOutputStream */
-    readonly base_stream: Gio.OutputStream
+    base_stream: Gio.OutputStream
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Jsonrpc-1.0.Jsonrpc.OutputStream */
     get_use_gvariant(): boolean
     set_use_gvariant(use_gvariant: boolean): void
@@ -1805,6 +2012,8 @@ class OutputStream {
      * 
      * This operation will complete once the message has been buffered. There
      * is no guarantee the peer received it.
+     * @param message a #GVariant
+     * @param cancellable a #GCancellable or %NULL
      */
     write_message(message: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1812,6 +2021,9 @@ class OutputStream {
      * 
      * This asynchronous operation will complete once the message has
      * been buffered, and there is no guarantee the peer received it.
+     * @param message a #GVariant
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback or %NULL
      */
     write_message_async(message: GLib.Variant, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     write_message_finish(result: Gio.AsyncResult): boolean
@@ -1822,38 +2034,55 @@ class OutputStream {
     get_byte_order(): Gio.DataStreamByteOrder
     /**
      * Puts a byte into the output stream.
+     * @param data a #guchar.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     put_byte(data: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Puts a signed 16-bit integer into the output stream.
+     * @param data a #gint16.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     put_int16(data: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Puts a signed 32-bit integer into the output stream.
+     * @param data a #gint32.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     put_int32(data: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Puts a signed 64-bit integer into the stream.
+     * @param data a #gint64.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     put_int64(data: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Puts a string into the output stream.
+     * @param str a string.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     put_string(str: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Puts an unsigned 16-bit integer into the output stream.
+     * @param data a #guint16.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     put_uint16(data: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Puts an unsigned 32-bit integer into the stream.
+     * @param data a #guint32.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     put_uint32(data: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Puts an unsigned 64-bit integer into the stream.
+     * @param data a #guint64.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     put_uint64(data: number, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the byte order of the data output stream to `order`.
+     * @param order a %GDataStreamByteOrder.
      */
     set_byte_order(order: Gio.DataStreamByteOrder): void
     /* Methods of Gio-2.0.Gio.FilterOutputStream */
@@ -1868,6 +2097,7 @@ class OutputStream {
     get_close_base_stream(): boolean
     /**
      * Sets whether the base stream will be closed when `stream` is closed.
+     * @param close_base %TRUE to close the base stream.
      */
     set_close_base_stream(close_base: boolean): void
     /* Methods of Gio-2.0.Gio.OutputStream */
@@ -1905,6 +2135,7 @@ class OutputStream {
      * can use a faster close that doesn't block to e.g. check errors. On
      * cancellation (as with any error) there is no guarantee that all written
      * data will reach the target.
+     * @param cancellable optional cancellable object
      */
     close(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1918,10 +2149,14 @@ class OutputStream {
      * The asynchronous methods have a default fallback that uses threads
      * to implement asynchronicity, so they are optional for inheriting
      * classes. However, if you override one you must override all.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Closes an output stream.
+     * @param result a #GAsyncResult.
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1934,6 +2169,7 @@ class OutputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional cancellable object
      */
     flush(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1944,10 +2180,14 @@ class OutputStream {
      * When the operation is finished `callback` will be
      * called. You can then call g_output_stream_flush_finish() to get the
      * result of the operation.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     flush_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing an output stream.
+     * @param result a GAsyncResult.
      */
     flush_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1973,6 +2213,9 @@ class OutputStream {
     set_pending(): boolean
     /**
      * Splices an input stream into an output stream.
+     * @param source a #GInputStream.
+     * @param flags a set of #GOutputStreamSpliceFlags.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     splice(source: Gio.InputStream, flags: Gio.OutputStreamSpliceFlags, cancellable?: Gio.Cancellable | null): number
     /**
@@ -1983,10 +2226,16 @@ class OutputStream {
      * 
      * For the synchronous, blocking version of this function, see
      * g_output_stream_splice().
+     * @param source a #GInputStream.
+     * @param flags a set of #GOutputStreamSpliceFlags.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback.
      */
     splice_async(source: Gio.InputStream, flags: Gio.OutputStreamSpliceFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous stream splice operation.
+     * @param result a #GAsyncResult.
      */
     splice_finish(result: Gio.AsyncResult): number
     /**
@@ -2010,6 +2259,8 @@ class OutputStream {
      * partial result will be returned, without an error.
      * 
      * On error -1 is returned and `error` is set accordingly.
+     * @param buffer the buffer containing the data to write.
+     * @param cancellable optional cancellable object
      */
     write(buffer: Uint8Array, cancellable?: Gio.Cancellable | null): number
     /**
@@ -2032,6 +2283,8 @@ class OutputStream {
      * functionality is only available from C.  If you need it from another
      * language then you must write your own loop around
      * g_output_stream_write().
+     * @param buffer the buffer containing the data to write.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     write_all(buffer: Uint8Array, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* bytes_written */ number | null ]
     /**
@@ -2050,6 +2303,10 @@ class OutputStream {
      * 
      * Note that no copy of `buffer` will be made, so it must stay valid
      * until `callback` is called.
+     * @param buffer the buffer containing the data to write
+     * @param io_priority the io priority of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     write_all_async(buffer: Uint8Array, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2063,6 +2320,7 @@ class OutputStream {
      * functionality is only available from C.  If you need it from another
      * language then you must write your own loop around
      * g_output_stream_write_async().
+     * @param result a #GAsyncResult
      */
     write_all_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytes_written */ number | null ]
     /**
@@ -2101,6 +2359,10 @@ class OutputStream {
      * until `callback` is called. See g_output_stream_write_bytes_async()
      * for a #GBytes version that will automatically hold a reference to
      * the contents (without copying) for the duration of the call.
+     * @param buffer the buffer containing the data to write.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     write_async(buffer: Uint8Array, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2115,6 +2377,8 @@ class OutputStream {
      * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
      * #GBytes instance multiple times potentially can result in duplicated
      * data in the output stream.
+     * @param bytes the #GBytes to write
+     * @param cancellable optional cancellable object
      */
     write_bytes(bytes: GLib.Bytes, cancellable?: Gio.Cancellable | null): number
     /**
@@ -2131,14 +2395,20 @@ class OutputStream {
      * 
      * For the synchronous, blocking version of this function, see
      * g_output_stream_write_bytes().
+     * @param bytes The bytes to write
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     write_bytes_async(bytes: GLib.Bytes, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream write-from-#GBytes operation.
+     * @param result a #GAsyncResult.
      */
     write_bytes_finish(result: Gio.AsyncResult): number
     /**
      * Finishes a stream write operation.
+     * @param result a #GAsyncResult.
      */
     write_finish(result: Gio.AsyncResult): number
     /**
@@ -2165,6 +2435,8 @@ class OutputStream {
      * aggregate buffer size, and will return %G_IO_ERROR_INVALID_ARGUMENT if these
      * are exceeded. For example, when writing to a local file on UNIX platforms,
      * the aggregate buffer size must not exceed %G_MAXSSIZE bytes.
+     * @param vectors the buffer containing the #GOutputVectors to write.
+     * @param cancellable optional cancellable object
      */
     writev(vectors: Gio.OutputVector[], cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* bytes_written */ number | null ]
     /**
@@ -2190,6 +2462,8 @@ class OutputStream {
      * 
      * The content of the individual elements of `vectors` might be changed by this
      * function.
+     * @param vectors the buffer containing the #GOutputVectors to write.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     writev_all(vectors: Gio.OutputVector[], cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* bytes_written */ number | null ]
     /**
@@ -2209,6 +2483,10 @@ class OutputStream {
      * Note that no copy of `vectors` will be made, so it must stay valid
      * until `callback` is called. The content of the individual elements
      * of `vectors` might be changed by this function.
+     * @param vectors the buffer containing the #GOutputVectors to write.
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     writev_all_async(vectors: Gio.OutputVector[], io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2222,6 +2500,7 @@ class OutputStream {
      * functionality is only available from C.  If you need it from another
      * language then you must write your own loop around
      * g_output_stream_writev_async().
+     * @param result a #GAsyncResult
      */
     writev_all_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytes_written */ number | null ]
     /**
@@ -2255,10 +2534,15 @@ class OutputStream {
      * 
      * Note that no copy of `vectors` will be made, so it must stay valid
      * until `callback` is called.
+     * @param vectors the buffer containing the #GOutputVectors to write.
+     * @param io_priority the I/O priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     writev_async(vectors: Gio.OutputVector[], io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream writev operation.
+     * @param result a #GAsyncResult.
      */
     writev_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytes_written */ number | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -2296,6 +2580,10 @@ class OutputStream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2306,6 +2594,12 @@ class OutputStream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2329,6 +2623,7 @@ class OutputStream {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2348,11 +2643,14 @@ class OutputStream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2360,6 +2658,8 @@ class OutputStream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2377,6 +2677,7 @@ class OutputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2422,6 +2723,7 @@ class OutputStream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2465,15 +2767,20 @@ class OutputStream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2514,6 +2821,7 @@ class OutputStream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2548,6 +2856,7 @@ class OutputStream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Seekable */
@@ -2575,6 +2884,9 @@ class OutputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param offset a #goffset.
+     * @param type a #GSeekType.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2591,6 +2903,8 @@ class OutputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param offset new length for `seekable,` in bytes.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Jsonrpc-1.0.Jsonrpc.OutputStream */
@@ -2618,6 +2932,9 @@ class OutputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param offset a #goffset.
+     * @param type a #GSeekType.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2634,6 +2951,8 @@ class OutputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param offset new length for `seekable,` in bytes.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Gio-2.0.Gio.OutputStream */
@@ -2648,10 +2967,14 @@ class OutputStream {
      * The asynchronous methods have a default fallback that uses threads
      * to implement asynchronicity, so they are optional for inheriting
      * classes. However, if you override one you must override all.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Closes an output stream.
+     * @param result a #GAsyncResult.
      */
     vfunc_close_finish(result: Gio.AsyncResult): boolean
     vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean
@@ -2665,6 +2988,7 @@ class OutputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional cancellable object
      */
     vfunc_flush(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2675,14 +2999,21 @@ class OutputStream {
      * When the operation is finished `callback` will be
      * called. You can then call g_output_stream_flush_finish() to get the
      * result of the operation.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_flush_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes flushing an output stream.
+     * @param result a GAsyncResult.
      */
     vfunc_flush_finish(result: Gio.AsyncResult): boolean
     /**
      * Splices an input stream into an output stream.
+     * @param source a #GInputStream.
+     * @param flags a set of #GOutputStreamSpliceFlags.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_splice(source: Gio.InputStream, flags: Gio.OutputStreamSpliceFlags, cancellable?: Gio.Cancellable | null): number
     /**
@@ -2693,10 +3024,16 @@ class OutputStream {
      * 
      * For the synchronous, blocking version of this function, see
      * g_output_stream_splice().
+     * @param source a #GInputStream.
+     * @param flags a set of #GOutputStreamSpliceFlags.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback.
      */
     vfunc_splice_async(source: Gio.InputStream, flags: Gio.OutputStreamSpliceFlags, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous stream splice operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_splice_finish(result: Gio.AsyncResult): number
     /**
@@ -2735,10 +3072,15 @@ class OutputStream {
      * until `callback` is called. See g_output_stream_write_bytes_async()
      * for a #GBytes version that will automatically hold a reference to
      * the contents (without copying) for the duration of the call.
+     * @param buffer the buffer containing the data to write.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_write_async(buffer: Uint8Array | null, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream write operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_write_finish(result: Gio.AsyncResult): number
     /**
@@ -2762,6 +3104,8 @@ class OutputStream {
      * partial result will be returned, without an error.
      * 
      * On error -1 is returned and `error` is set accordingly.
+     * @param buffer the buffer containing the data to write.
+     * @param cancellable optional cancellable object
      */
     vfunc_write_fn(buffer: Uint8Array | null, cancellable?: Gio.Cancellable | null): number
     /**
@@ -2795,10 +3139,15 @@ class OutputStream {
      * 
      * Note that no copy of `vectors` will be made, so it must stay valid
      * until `callback` is called.
+     * @param vectors the buffer containing the #GOutputVectors to write.
+     * @param io_priority the I/O priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_writev_async(vectors: Gio.OutputVector[], io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream writev operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_writev_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytes_written */ number | null ]
     /**
@@ -2825,6 +3174,8 @@ class OutputStream {
      * aggregate buffer size, and will return %G_IO_ERROR_INVALID_ARGUMENT if these
      * are exceeded. For example, when writing to a local file on UNIX platforms,
      * the aggregate buffer size must not exceed %G_MAXSSIZE bytes.
+     * @param vectors the buffer containing the #GOutputVectors to write.
+     * @param cancellable optional cancellable object
      */
     vfunc_writev_fn(vectors: Gio.OutputVector[], cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* bytes_written */ number | null ]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2844,6 +3195,7 @@ class OutputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2876,6 +3228,7 @@ class OutputStream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
@@ -2884,6 +3237,8 @@ class OutputStream {
     connect_after(sigName: "notify::use-gvariant", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::byte-order", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::byte-order", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::close-base-stream", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::close-base-stream", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2901,24 +3256,29 @@ interface Server_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Server {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Jsonrpc-1.0.Jsonrpc.Server */
     /**
      * This function accepts `io_stream` as a new client to the #JsonrpcServer
      * by wrapping it in a #JsonrpcClient and starting the message accept
      * loop.
+     * @param io_stream A #GIOStream
      */
     accept_io_stream(io_stream: Gio.IOStream): void
     /**
      * Adds a new handler that will be dispatched when a matching `method` arrives.
+     * @param method A method to handle
+     * @param handler A handler to   execute when an incoming method matches `methods`
      */
     add_handler(method: string, handler: ServerHandler): number
     /**
      * Calls `foreach_func` for every client connected.
+     * @param foreach_func A callback for each client
      */
     foreach(foreach_func: GLib.Func): void
     /**
      * Removes a handler that was previously registered with [method`Server`.add_handler].
+     * @param handler_id A handler returned from [method`Server`.add_handler]
      */
     remove_handler(handler_id: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2956,6 +3316,10 @@ class Server {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2966,6 +3330,12 @@ class Server {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2989,6 +3359,7 @@ class Server {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3008,11 +3379,14 @@ class Server {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3020,6 +3394,8 @@ class Server {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3037,6 +3413,7 @@ class Server {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3082,6 +3459,7 @@ class Server {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3125,15 +3503,20 @@ class Server {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3174,6 +3557,7 @@ class Server {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3208,6 +3592,7 @@ class Server {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Jsonrpc-1.0.Jsonrpc.Server */
@@ -3232,18 +3617,21 @@ class Server {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Jsonrpc-1.0.Jsonrpc.Server */
     /**
      * This signal is emitted when a new client has been accepted.
+     * @param client A #JsonrpcClient
      */
     connect(sigName: "client-accepted", callback: (($obj: Server, client: Client) => void)): number
     connect_after(sigName: "client-accepted", callback: (($obj: Server, client: Client) => void)): number
     emit(sigName: "client-accepted", client: Client): void
     /**
      * This signal is emitted when a new client has been lost.
+     * @param client A #JsonrpcClient
      */
     connect(sigName: "client-closed", callback: (($obj: Server, client: Client) => void)): number
     connect_after(sigName: "client-closed", callback: (($obj: Server, client: Client) => void)): number
@@ -3253,12 +3641,19 @@ class Server {
      * 
      * If you return %TRUE from this function, you should reply to it (even upon
      * failure), using [method`Client`.reply] or [method`Client`.reply_async].
+     * @param client A #JsonrpcClient
+     * @param method The method that was called
+     * @param id The identifier of the method call
+     * @param params The parameters of the method call
      */
     connect(sigName: "handle-call", callback: (($obj: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean)): number
     connect_after(sigName: "handle-call", callback: (($obj: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean)): number
     emit(sigName: "handle-call", client: Client, method: string, id: GLib.Variant, params: GLib.Variant): void
     /**
      * This signal is emitted when the client has sent a notification to us.
+     * @param client A #JsonrpcClient
+     * @param method The notification name
+     * @param id The params for the notification
      */
     connect(sigName: "notification", callback: (($obj: Server, client: Client, method: string, id: GLib.Variant) => void)): number
     connect_after(sigName: "notification", callback: (($obj: Server, client: Client, method: string, id: GLib.Variant) => void)): number
@@ -3292,6 +3687,7 @@ class Server {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
@@ -3309,161 +3705,161 @@ class Server {
 }
 abstract class ClientClass {
     /* Fields of Jsonrpc-1.0.Jsonrpc.ClientClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly notification: (self: Client, method_name: string, params: GLib.Variant) => void
-    readonly handle_call: (self: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean
-    readonly failed: (self: Client) => void
-    readonly _reserved2: object
-    readonly _reserved3: object
-    readonly _reserved4: object
-    readonly _reserved5: object
-    readonly _reserved6: object
-    readonly _reserved7: object
-    readonly _reserved8: object
+    parent_class: GObject.ObjectClass
+    notification: (self: Client, method_name: string, params: GLib.Variant) => void
+    handle_call: (self: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean
+    failed: (self: Client) => void
+    _reserved2: object
+    _reserved3: object
+    _reserved4: object
+    _reserved5: object
+    _reserved6: object
+    _reserved7: object
+    _reserved8: object
     static name: string
 }
 abstract class InputStreamClass {
     /* Fields of Jsonrpc-1.0.Jsonrpc.InputStreamClass */
-    readonly parent_class: Gio.DataInputStreamClass
-    readonly _reserved1: object
-    readonly _reserved2: object
-    readonly _reserved3: object
-    readonly _reserved4: object
-    readonly _reserved5: object
-    readonly _reserved6: object
-    readonly _reserved7: object
-    readonly _reserved8: object
+    parent_class: Gio.DataInputStreamClass
+    _reserved1: object
+    _reserved2: object
+    _reserved3: object
+    _reserved4: object
+    _reserved5: object
+    _reserved6: object
+    _reserved7: object
+    _reserved8: object
     static name: string
 }
 class MessageAny {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageAny */
-    readonly magic: MessageMagic
+    magic: MessageMagic
     static name: string
 }
 class MessageGetBoolean {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetBoolean */
-    readonly magic: MessageMagic
-    readonly valptr: boolean
+    magic: MessageMagic
+    valptr: boolean
     static name: string
 }
 class MessageGetDict {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetDict */
-    readonly magic: MessageMagic
-    readonly dictptr: GLib.VariantDict
+    magic: MessageMagic
+    dictptr: GLib.VariantDict
     static name: string
 }
 class MessageGetDouble {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetDouble */
-    readonly magic: MessageMagic
-    readonly valptr: number
+    magic: MessageMagic
+    valptr: number
     static name: string
 }
 class MessageGetInt32 {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetInt32 */
-    readonly magic: MessageMagic
-    readonly valptr: number
+    magic: MessageMagic
+    valptr: number
     static name: string
 }
 class MessageGetInt64 {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetInt64 */
-    readonly magic: MessageMagic
-    readonly valptr: number
+    magic: MessageMagic
+    valptr: number
     static name: string
 }
 class MessageGetIter {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetIter */
-    readonly magic: MessageMagic
+    magic: MessageMagic
     static name: string
 }
 class MessageGetString {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetString */
-    readonly magic: MessageMagic
-    readonly valptr: string
+    magic: MessageMagic
+    valptr: string
     static name: string
 }
 class MessageGetStrv {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetStrv */
-    readonly magic: MessageMagic
-    readonly valptr: string
+    magic: MessageMagic
+    valptr: string
     static name: string
 }
 class MessageGetVariant {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageGetVariant */
-    readonly magic: MessageMagic
-    readonly variantptr: GLib.Variant
+    magic: MessageMagic
+    variantptr: GLib.Variant
     static name: string
 }
 class MessageMagic {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessageMagic */
-    readonly bytes: number[]
+    bytes: number[]
     static name: string
 }
 class MessagePutBoolean {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessagePutBoolean */
-    readonly magic: MessageMagic
-    readonly val: boolean
+    magic: MessageMagic
+    val: boolean
     static name: string
 }
 class MessagePutDouble {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessagePutDouble */
-    readonly magic: MessageMagic
-    readonly val: number
+    magic: MessageMagic
+    val: number
     static name: string
 }
 class MessagePutInt32 {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessagePutInt32 */
-    readonly magic: MessageMagic
-    readonly val: number
+    magic: MessageMagic
+    val: number
     static name: string
 }
 class MessagePutInt64 {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessagePutInt64 */
-    readonly magic: MessageMagic
-    readonly val: number
+    magic: MessageMagic
+    val: number
     static name: string
 }
 class MessagePutString {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessagePutString */
-    readonly magic: MessageMagic
-    readonly val: string
+    magic: MessageMagic
+    val: string
     static name: string
 }
 class MessagePutStrv {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessagePutStrv */
-    readonly magic: MessageMagic
-    readonly val: string
+    magic: MessageMagic
+    val: string
     static name: string
 }
 class MessagePutVariant {
     /* Fields of Jsonrpc-1.0.Jsonrpc.MessagePutVariant */
-    readonly magic: MessageMagic
-    readonly val: GLib.Variant
+    magic: MessageMagic
+    val: GLib.Variant
     static name: string
 }
 abstract class OutputStreamClass {
     /* Fields of Jsonrpc-1.0.Jsonrpc.OutputStreamClass */
-    readonly parent_class: Gio.DataOutputStreamClass
-    readonly _reserved1: object
-    readonly _reserved2: object
-    readonly _reserved3: object
-    readonly _reserved4: object
-    readonly _reserved5: object
-    readonly _reserved6: object
-    readonly _reserved7: object
-    readonly _reserved8: object
-    readonly _reserved9: object
-    readonly _reserved10: object
-    readonly _reserved11: object
-    readonly _reserved12: object
+    parent_class: Gio.DataOutputStreamClass
+    _reserved1: object
+    _reserved2: object
+    _reserved3: object
+    _reserved4: object
+    _reserved5: object
+    _reserved6: object
+    _reserved7: object
+    _reserved8: object
+    _reserved9: object
+    _reserved10: object
+    _reserved11: object
+    _reserved12: object
     static name: string
 }
 abstract class ServerClass {
     /* Fields of Jsonrpc-1.0.Jsonrpc.ServerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly handle_call: (self: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean
-    readonly notification: (self: Server, client: Client, method: string, params: GLib.Variant) => void
-    readonly client_accepted: (self: Server, client: Client) => void
-    readonly client_closed: (self: Server, client: Client) => void
+    parent_class: GObject.ObjectClass
+    handle_call: (self: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean
+    notification: (self: Server, client: Client, method: string, params: GLib.Variant) => void
+    client_accepted: (self: Server, client: Client) => void
+    client_closed: (self: Server, client: Client) => void
     static name: string
 }
 }

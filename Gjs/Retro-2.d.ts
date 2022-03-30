@@ -338,6 +338,7 @@ class Controller {
     get_controller_type(): ControllerType
     /**
      * Gets the state of an input of `self`.
+     * @param input a #RetroInput to query `self`
      */
     get_input_state(input: Input): number
     /**
@@ -346,10 +347,13 @@ class Controller {
     get_supports_rumble(): boolean
     /**
      * Gets whether `self` has the capability to represent the given controller type.
+     * @param controller_type a #RetroControllerType
      */
     has_capability(controller_type: ControllerType): boolean
     /**
      * Sets the rumble state of `self`.
+     * @param effect the rumble effect
+     * @param strength the rumble effect strength
      */
     set_rumble_state(effect: RumbleEffect, strength: number): void
     /* Virtual methods of Retro-2.Retro.Controller */
@@ -367,6 +371,7 @@ class Controller {
     vfunc_get_controller_type(): ControllerType
     /**
      * Gets the state of an input of `self`.
+     * @param input a #RetroInput to query `self`
      */
     vfunc_get_input_state(input: Input): number
     /**
@@ -375,6 +380,8 @@ class Controller {
     vfunc_get_supports_rumble(): boolean
     /**
      * Sets the rumble state of `self`.
+     * @param effect the rumble effect
+     * @param strength the rumble effect strength
      */
     vfunc_set_rumble_state(effect: RumbleEffect, strength: number): void
     /* Signals of Retro-2.Retro.Controller */
@@ -387,7 +394,7 @@ interface ControllerIterator_ConstructProps extends GObject.Object_ConstructProp
 }
 class ControllerIterator {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.ControllerIterator */
     /**
      * Fetch the next #RetroController and the port number it is plugged into.
@@ -428,6 +435,10 @@ class ControllerIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -438,6 +449,12 @@ class ControllerIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -461,6 +478,7 @@ class ControllerIterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -480,11 +498,14 @@ class ControllerIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -492,6 +513,8 @@ class ControllerIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -509,6 +532,7 @@ class ControllerIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -554,6 +578,7 @@ class ControllerIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -597,15 +622,20 @@ class ControllerIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -646,6 +676,7 @@ class ControllerIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -680,6 +711,7 @@ class ControllerIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -699,6 +731,7 @@ class ControllerIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -731,6 +764,7 @@ class ControllerIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ControllerIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ControllerIterator, pspec: GObject.ParamSpec) => void)): number
@@ -792,6 +826,10 @@ class Core {
     readonly api_version: number
     core_assets_directory: string
     /**
+     * The filename of the core.
+     */
+    readonly filename: string
+    /**
      * The FPS rate for the core's video output.
      */
     readonly frames_per_second: number
@@ -840,7 +878,7 @@ class Core {
      */
     user_name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.Core */
     /**
      * This initializes `self,` loads its available options and loads the medias. You
@@ -874,10 +912,12 @@ class Core {
     get_is_initiated(): boolean
     /**
      * Gets the size of a memory region of `self`.
+     * @param memory_type the type of memory
      */
     get_memory_size(memory_type: MemoryType): number
     /**
      * Gets the option for the given key.
+     * @param key the key of the option
      */
     get_option(key: string): Option
     get_runahead(): number
@@ -908,6 +948,7 @@ class Core {
     get_user_name(): string
     /**
      * Gets whether the core has an option for the given key.
+     * @param key the key of the option
      */
     has_option(key: string): boolean
     /**
@@ -926,10 +967,13 @@ class Core {
     iteration(): void
     /**
      * Loads a memory region of `self`.
+     * @param memory_type the type of memory
+     * @param filename a file to load the data from
      */
     load_memory(memory_type: MemoryType, filename: string): void
     /**
      * Loads the state of the `self`.
+     * @param filename the file to load the state from
      */
     load_state(filename: string): void
     /**
@@ -937,6 +981,8 @@ class Core {
      * for a startup-only option.
      * 
      * You can use this before booting the core.
+     * @param key the key of the option
+     * @param value the default value
      */
     override_option_default(key: string, value: string): void
     /**
@@ -950,14 +996,19 @@ class Core {
     run(): void
     /**
      * Saves a memory region of `self`.
+     * @param memory_type the type of memory
+     * @param filename a file to save the data to
      */
     save_memory(memory_type: MemoryType, filename: string): void
     /**
      * Saves the state of `self`.
+     * @param filename the file to save the state to
      */
     save_state(filename: string): void
     /**
      * Plugs `controller` into the specified port number of `self`.
+     * @param port the port number
+     * @param controller a #RetroController
      */
     set_controller(port: number, controller?: Controller | null): void
     set_core_assets_directory(core_assets_directory: string): void
@@ -965,22 +1016,27 @@ class Core {
      * Sets the current media index.
      * 
      * You can use this after booting the core.
+     * @param media_index the media index
      */
     set_current_media(media_index: number): void
     /**
      * Uses `controller` as the default controller for the given type. When a port
      * has no controller plugged plugged into it, the core will use the default
      * controllers instead.
+     * @param controller_type a #RetroControllerType
+     * @param controller a #RetroController
      */
     set_default_controller(controller_type: ControllerType, controller?: Controller | null): void
     /**
      * Sets the widget whose key events will be forwarded to `self`.
+     * @param widget a #GtkWidget, or %NULL
      */
     set_keyboard(widget?: Gtk.Widget | null): void
     /**
      * Sets the medias to load into the core.
      * 
      * You can use this before booting the core.
+     * @param uris the URIs
      */
     set_medias(uris: string[]): void
     set_runahead(runahead: number): void
@@ -988,10 +1044,12 @@ class Core {
      * Sets the save directory of the core.
      * 
      * The core will save some data here.
+     * @param save_directory the save directory
      */
     set_save_directory(save_directory: string): void
     /**
      * Sets the speed rate at which to run the core.
+     * @param speed_rate a speed rate
      */
     set_speed_rate(speed_rate: number): void
     /**
@@ -999,10 +1057,12 @@ class Core {
      * 
      * The core will look here for additional data, such as firmware ROMs or
      * configuration files.
+     * @param system_directory the system directory
      */
     set_system_directory(system_directory: string): void
     /**
      * Sets the name of the user.
+     * @param user_name the user name
      */
     set_user_name(user_name: string): void
     /**
@@ -1044,6 +1104,10 @@ class Core {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1054,6 +1118,12 @@ class Core {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1077,6 +1147,7 @@ class Core {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1096,11 +1167,14 @@ class Core {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1108,6 +1182,8 @@ class Core {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1125,6 +1201,7 @@ class Core {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1170,6 +1247,7 @@ class Core {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1213,15 +1291,20 @@ class Core {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1262,6 +1345,7 @@ class Core {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1296,6 +1380,7 @@ class Core {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1315,18 +1400,23 @@ class Core {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Retro-2.Retro.Core */
     /**
      * The ::crash signal is emitted when the core crashes.
+     * @param message the message to show to the user
      */
     connect(sigName: "crashed", callback: (($obj: Core, message: string) => void)): number
     connect_after(sigName: "crashed", callback: (($obj: Core, message: string) => void)): number
     emit(sigName: "crashed", message: string): void
     /**
      * The ::log signal is emitted each time the core emits a message to log.
+     * @param log_domain the log domain
+     * @param log_level the log level
+     * @param message the message
      */
     connect(sigName: "log", callback: (($obj: Core, log_domain: string, log_level: GLib.LogLevelFlags, message: string) => void)): number
     connect_after(sigName: "log", callback: (($obj: Core, log_domain: string, log_level: GLib.LogLevelFlags, message: string) => void)): number
@@ -1334,6 +1424,8 @@ class Core {
     /**
      * The ::message signal is emitted each time the core emits a message to
      * display during a given amount of frames.
+     * @param message the message
+     * @param frames the number of frames the message should be displayed
      */
     connect(sigName: "message", callback: (($obj: Core, message: string, frames: number) => void)): number
     connect_after(sigName: "message", callback: (($obj: Core, message: string, frames: number) => void)): number
@@ -1352,6 +1444,7 @@ class Core {
      * 
      * `pixdata` will be invalid after the signal emission, copy it in some way if
      * you want to keep it.
+     * @param pixdata the #RetroPixdata
      */
     connect(sigName: "video-output", callback: (($obj: Core, pixdata: Pixdata) => void)): number
     connect_after(sigName: "video-output", callback: (($obj: Core, pixdata: Pixdata) => void)): number
@@ -1385,6 +1478,7 @@ class Core {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
@@ -1393,6 +1487,8 @@ class Core {
     connect_after(sigName: "notify::api-version", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::core-assets-directory", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::core-assets-directory", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::filename", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filename", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::frames-per-second", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::frames-per-second", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::game-loaded", callback: (($obj: Core, pspec: GObject.ParamSpec) => void)): number
@@ -1426,22 +1522,26 @@ interface CoreDescriptor_ConstructProps extends GObject.Object_ConstructProps {
 }
 class CoreDescriptor {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.CoreDescriptor */
     /**
      * Gets the MD5 fingerprint of the firmware file, or %NULL.
+     * @param firmware a firmware name
      */
     get_firmware_md5(firmware: string): string | null
     /**
      * Gets the demanded path to the firmware file, or %NULL.
+     * @param firmware a firmware name
      */
     get_firmware_path(firmware: string): string | null
     /**
      * Gets the SHA512 fingerprint of the firmware file, or %NULL.
+     * @param firmware a firmware name
      */
     get_firmware_sha512(firmware: string): string | null
     /**
      * Gets the list of firmwares used by the core for this platform.
+     * @param platform a platform name
      */
     get_firmwares(platform: string): string[]
     /**
@@ -1458,6 +1558,7 @@ class CoreDescriptor {
     get_is_emulator(): boolean
     /**
      * Gets whether the firmware is mandatory for the core to function.
+     * @param firmware a firmware name
      */
     get_is_firmware_mandatory(firmware: string): boolean
     /**
@@ -1466,6 +1567,7 @@ class CoreDescriptor {
     get_is_game(): boolean
     /**
      * Gets the list of MIME types accepted used by the core for this platform.
+     * @param platform a platform name
      */
     get_mime_type(platform: string): string[]
     /**
@@ -1482,6 +1584,8 @@ class CoreDescriptor {
     get_name(): string | null
     /**
      * Gets whether the platform supports all of the given MIME types.
+     * @param platform a platform name
+     * @param mime_types the MIME types
      */
     get_platform_supports_mime_types(platform: string, mime_types: string[]): boolean
     /**
@@ -1490,14 +1594,17 @@ class CoreDescriptor {
     get_uri(): string
     /**
      * Gets whether the firmware declares its MD5 fingerprint.
+     * @param firmware a firmware name
      */
     has_firmware_md5(firmware: string): boolean
     /**
      * Gets whether the firmware declares its SHA512 fingerprint.
+     * @param firmware a firmware name
      */
     has_firmware_sha512(firmware: string): boolean
     /**
      * Gets whether the platform has associated firmwares.
+     * @param platform a platform name
      */
     has_firmwares(platform: string): boolean
     /**
@@ -1506,6 +1613,7 @@ class CoreDescriptor {
     has_icon(): boolean
     /**
      * Gets whether the core descriptor declares the given platform.
+     * @param platform a platform name
      */
     has_platform(platform: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1543,6 +1651,10 @@ class CoreDescriptor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1553,6 +1665,12 @@ class CoreDescriptor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1576,6 +1694,7 @@ class CoreDescriptor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1595,11 +1714,14 @@ class CoreDescriptor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1607,6 +1729,8 @@ class CoreDescriptor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1624,6 +1748,7 @@ class CoreDescriptor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1669,6 +1794,7 @@ class CoreDescriptor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1712,15 +1838,20 @@ class CoreDescriptor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1761,6 +1892,7 @@ class CoreDescriptor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1795,6 +1927,7 @@ class CoreDescriptor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1814,6 +1947,7 @@ class CoreDescriptor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1846,6 +1980,7 @@ class CoreDescriptor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CoreDescriptor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CoreDescriptor, pspec: GObject.ParamSpec) => void)): number
@@ -1894,6 +2029,13 @@ class CoreView {
      * A list of css classes applied to this widget.
      */
     css_classes: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly css_name: string
     /**
      * The cursor used by `widget`.
      */
@@ -2086,15 +2228,16 @@ class CoreView {
      */
     accessible_role: Gtk.AccessibleRole
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.CoreView */
     /**
      * Creates a new #RetroController exposing `self` as the specified controller
      * type. The valid controller types are RETRO_CONTROLLER_TYPE_JOYPAD,
      * RETRO_CONTROLLER_TYPE_MOUSE, RETRO_CONTROLLER_TYPE_KEYBOARD and
      * RETRO_CONTROLLER_TYPE_POINTER.
+     * @param controller_type the controller type to expose `self` as
      */
     as_controller(controller_type: ControllerType): Controller
     /**
@@ -2114,6 +2257,7 @@ class CoreView {
     get_controller_capabilities(): number
     /**
      * Gets the state of an input of `self`.
+     * @param input a #RetroInput to query `self`
      */
     get_input_state(input: Input): number
     /**
@@ -2132,25 +2276,30 @@ class CoreView {
     get_snap_pointer_to_borders(): boolean
     /**
      * Sets the `self` as the default controllers of `core`.
+     * @param core a #RetroCore
      */
     set_as_default_controller(core?: Core | null): void
     /**
      * Sets whether the pointer should be grabbed when clicking on the view. This
      * allows `self` to work as a RETRO_CONTROLLER_TYPE_MOUSE instead of a
      * RETRO_CONTROLLER_TYPE_POINTER.
+     * @param can_grab_pointer whether the pointer should be grabbed when clicking on the view
      */
     set_can_grab_pointer(can_grab_pointer: boolean): void
     /**
      * Sets `core` as the #RetroCore handled by `self`.
+     * @param core a #RetroCore, or %NULL
      */
     set_core(core?: Core | null): void
     /**
      * Sets the video filter to use to render the core's video on `self`.
+     * @param filter a #RetroVideoFilter
      */
     set_filter(filter: VideoFilter): void
     /**
      * Sets the key joypad mapping on `self`. If given mapping is %NULL, then set to
      * an empty configuration.
+     * @param mapping a #RetroKeyJoypadMapping
      */
     set_key_joypad_mapping(mapping?: KeyJoypadMapping | null): void
     /**
@@ -2158,18 +2307,22 @@ class CoreView {
      * 
      * retro_pixbuf_set_aspect_ratio() can be used to specify the aspect ratio for
      * the pixbuf. Otherwise the core's aspect ratio will be used.
+     * @param pixbuf a #GdkPixbuf
      */
     set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets whether the pointer should be considered to be at the border of the
      * video display when it is outside of it. This is used when `self` is exposed as
      * a RETRO_CONTROLLER_TYPE_POINTER.
+     * @param snap_pointer_to_borders whether the pointer should snap to the borders
      */
     set_snap_pointer_to_borders(snap_pointer_to_borders: boolean): void
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param action_name action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     action_set_enabled(action_name: string, enabled: boolean): void
     /**
@@ -2200,6 +2353,8 @@ class CoreView {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activate_action(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -2211,6 +2366,7 @@ class CoreView {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     add_controller(controller: Gtk.EventController): void
     /**
@@ -2221,6 +2377,7 @@ class CoreView {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param css_class The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     add_css_class(css_class: string): void
     /**
@@ -2230,6 +2387,7 @@ class CoreView {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -2255,6 +2413,7 @@ class CoreView {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -2268,6 +2427,10 @@ class CoreView {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -2291,6 +2454,7 @@ class CoreView {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -2304,6 +2468,7 @@ class CoreView {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     compute_bounds(target: Gtk.Widget): [ /* returnType */ boolean, /* out_bounds */ Graphene.Rect ]
     /**
@@ -2320,6 +2485,7 @@ class CoreView {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -2328,6 +2494,8 @@ class CoreView {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     compute_point(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* out_point */ Graphene.Point ]
     /**
@@ -2337,6 +2505,7 @@ class CoreView {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     compute_transform(target: Gtk.Widget): [ /* returnType */ boolean, /* out_transform */ Graphene.Matrix ]
     /**
@@ -2344,6 +2513,8 @@ class CoreView {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -2363,10 +2534,15 @@ class CoreView {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -2424,6 +2600,7 @@ class CoreView {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -2787,6 +2964,7 @@ class CoreView {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     get_size(orientation: Gtk.Orientation): number
     /**
@@ -2831,6 +3009,8 @@ class CoreView {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widget_type The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -2903,6 +3083,7 @@ class CoreView {
     grab_focus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param css_class A style class, without the leading '.'   used for notation of style classes
      */
     has_css_class(css_class: string): boolean
     /**
@@ -2968,6 +3149,8 @@ class CoreView {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -2985,6 +3168,8 @@ class CoreView {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previous_sibling the new previous sibling of `widget`
      */
     insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void
     /**
@@ -3001,11 +3186,14 @@ class CoreView {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param next_sibling the new next sibling of `widget`
      */
     insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -3069,6 +3257,7 @@ class CoreView {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -3100,12 +3289,15 @@ class CoreView {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param for_size Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, for_size: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -3146,6 +3338,9 @@ class CoreView {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -3212,12 +3407,14 @@ class CoreView {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     remove_controller(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param css_class The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     remove_css_class(css_class: string): void
     /**
@@ -3226,11 +3423,13 @@ class CoreView {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     remove_tick_callback(id: number): void
     /**
@@ -3248,10 +3447,12 @@ class CoreView {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param can_focus whether or not the input focus can enter   the widget or any of its children
      */
     set_can_focus(can_focus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param can_target whether this widget should be able to   receive pointer events
      */
     set_can_target(can_target: boolean): void
     /**
@@ -3271,11 +3472,13 @@ class CoreView {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param child_visible if %TRUE, `widget` should be mapped along   with its parent.
      */
     set_child_visible(child_visible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     set_css_classes(classes: string[]): void
     /**
@@ -3284,6 +3487,7 @@ class CoreView {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     set_cursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -3298,6 +3502,7 @@ class CoreView {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     set_cursor_from_name(name?: string | null): void
     /**
@@ -3314,6 +3519,7 @@ class CoreView {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -3322,6 +3528,7 @@ class CoreView {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -3331,6 +3538,7 @@ class CoreView {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focus_on_click whether the widget should grab focus when clicked   with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
@@ -3347,6 +3555,7 @@ class CoreView {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     set_focusable(focusable: boolean): void
     /**
@@ -3358,6 +3567,7 @@ class CoreView {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param font_map a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
@@ -3366,14 +3576,17 @@ class CoreView {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -3404,6 +3617,7 @@ class CoreView {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -3421,27 +3635,33 @@ class CoreView {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layout_manager a `GtkLayoutManager`
      */
     set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -3456,6 +3676,7 @@ class CoreView {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -3481,6 +3702,7 @@ class CoreView {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -3493,6 +3715,7 @@ class CoreView {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     set_overflow(overflow: Gtk.Overflow): void
     /**
@@ -3504,12 +3727,14 @@ class CoreView {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     set_parent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -3519,6 +3744,7 @@ class CoreView {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -3557,6 +3783,8 @@ class CoreView {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
@@ -3569,6 +3797,8 @@ class CoreView {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -3580,6 +3810,7 @@ class CoreView {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -3593,10 +3824,12 @@ class CoreView {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -3604,12 +3837,14 @@ class CoreView {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -3621,6 +3856,7 @@ class CoreView {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -3649,6 +3885,8 @@ class CoreView {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -3666,6 +3904,8 @@ class CoreView {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -3674,6 +3914,9 @@ class CoreView {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param dest_widget a `GtkWidget`
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -3707,6 +3950,7 @@ class CoreView {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3744,6 +3988,10 @@ class CoreView {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3754,6 +4002,12 @@ class CoreView {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3777,6 +4031,7 @@ class CoreView {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3796,11 +4051,14 @@ class CoreView {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3808,6 +4066,8 @@ class CoreView {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3825,6 +4085,7 @@ class CoreView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3870,6 +4131,7 @@ class CoreView {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3913,15 +4175,20 @@ class CoreView {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3962,6 +4229,7 @@ class CoreView {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3996,6 +4264,7 @@ class CoreView {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -4005,14 +4274,17 @@ class CoreView {
     get_accessible_role(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     reset_property(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     reset_relation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     reset_state(state: Gtk.AccessibleState): void
     /**
@@ -4022,6 +4294,8 @@ class CoreView {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     update_property(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -4031,6 +4305,8 @@ class CoreView {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     update_relation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -4040,6 +4316,8 @@ class CoreView {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     update_state(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -4054,25 +4332,41 @@ class CoreView {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a `GtkBuilder`
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
      * Similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a `GtkBuilder`
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * Called at the end of each custom element handled by
      * the buildable.
+     * @param builder `GtkBuilder` used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * Called for each unknown element under `<child>`.
+     * @param builder a `GtkBuilder` used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ Gtk.BuildableParser, /* data */ object | null ]
     vfunc_get_id(): string
     /**
      * Retrieves the internal child called `childname` of the `buildable` object.
+     * @param builder a `GtkBuilder`
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     vfunc_parser_finished(builder: Gtk.Builder): void
@@ -4085,6 +4379,8 @@ class CoreView {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     vfunc_contains(x: number, y: number): boolean
     vfunc_css_changed(change: Gtk.CssStyleChange): void
@@ -4145,6 +4441,7 @@ class CoreView {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -4162,12 +4459,15 @@ class CoreView {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param for_size Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     vfunc_measure(orientation: Gtk.Orientation, for_size: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_move_focus(direction: Gtk.DirectionType): void
@@ -4198,6 +4498,7 @@ class CoreView {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -4248,6 +4549,7 @@ class CoreView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4276,6 +4578,7 @@ class CoreView {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: CoreView, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: CoreView, previous_direction: Gtk.TextDirection) => void)): number
@@ -4290,6 +4593,7 @@ class CoreView {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: CoreView, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: CoreView, direction: Gtk.DirectionType) => boolean)): number
@@ -4313,12 +4617,14 @@ class CoreView {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: CoreView, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: CoreView, group_cycling: boolean) => boolean)): number
     emit(sigName: "mnemonic-activate", group_cycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: (($obj: CoreView, direction: Gtk.DirectionType) => void)): number
     connect_after(sigName: "move-focus", callback: (($obj: CoreView, direction: Gtk.DirectionType) => void)): number
@@ -4338,6 +4644,10 @@ class CoreView {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: (($obj: CoreView, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CoreView, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -4361,6 +4671,7 @@ class CoreView {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: CoreView, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: CoreView, flags: Gtk.StateFlags) => void)): number
@@ -4415,6 +4726,7 @@ class CoreView {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
@@ -4429,6 +4741,8 @@ class CoreView {
     connect_after(sigName: "notify::can-target", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::css-classes", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::css-classes", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::css-name", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::cursor", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::focus-on-click", callback: (($obj: CoreView, pspec: GObject.ParamSpec) => void)): number
@@ -4506,14 +4820,17 @@ interface KeyJoypadMapping_ConstructProps extends GObject.Object_ConstructProps 
 }
 class KeyJoypadMapping {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.KeyJoypadMapping */
     /**
      * Gets the mapping key code for the joypad button id.
+     * @param button joypad button id
      */
     get_button_key(button: JoypadId): number
     /**
      * Maps the joypad button id to mapping key code.
+     * @param button joypad button id
+     * @param hardware_keycode mapping key code
      */
     set_button_key(button: JoypadId, hardware_keycode: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4551,6 +4868,10 @@ class KeyJoypadMapping {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4561,6 +4882,12 @@ class KeyJoypadMapping {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4584,6 +4911,7 @@ class KeyJoypadMapping {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4603,11 +4931,14 @@ class KeyJoypadMapping {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4615,6 +4946,8 @@ class KeyJoypadMapping {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4632,6 +4965,7 @@ class KeyJoypadMapping {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4677,6 +5011,7 @@ class KeyJoypadMapping {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4720,15 +5055,20 @@ class KeyJoypadMapping {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4769,6 +5109,7 @@ class KeyJoypadMapping {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4803,6 +5144,7 @@ class KeyJoypadMapping {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4822,6 +5164,7 @@ class KeyJoypadMapping {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4854,6 +5197,7 @@ class KeyJoypadMapping {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: KeyJoypadMapping, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: KeyJoypadMapping, pspec: GObject.ParamSpec) => void)): number
@@ -4874,7 +5218,7 @@ interface ModuleIterator_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ModuleIterator {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.ModuleIterator */
     /**
      * Gets the last #RetroCoreDescriptor fetched by retro_module_iterator_next(),
@@ -4920,6 +5264,10 @@ class ModuleIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4930,6 +5278,12 @@ class ModuleIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4953,6 +5307,7 @@ class ModuleIterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4972,11 +5327,14 @@ class ModuleIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4984,6 +5342,8 @@ class ModuleIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5001,6 +5361,7 @@ class ModuleIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5046,6 +5407,7 @@ class ModuleIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5089,15 +5451,20 @@ class ModuleIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5138,6 +5505,7 @@ class ModuleIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5172,6 +5540,7 @@ class ModuleIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5191,6 +5560,7 @@ class ModuleIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5223,6 +5593,7 @@ class ModuleIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ModuleIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ModuleIterator, pspec: GObject.ParamSpec) => void)): number
@@ -5242,7 +5613,7 @@ interface ModuleQuery_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ModuleQuery {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.ModuleQuery */
     /**
      * Creates a new #RetroModuleIterator.
@@ -5283,6 +5654,10 @@ class ModuleQuery {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5293,6 +5668,12 @@ class ModuleQuery {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5316,6 +5697,7 @@ class ModuleQuery {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5335,11 +5717,14 @@ class ModuleQuery {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5347,6 +5732,8 @@ class ModuleQuery {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5364,6 +5751,7 @@ class ModuleQuery {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5409,6 +5797,7 @@ class ModuleQuery {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5452,15 +5841,20 @@ class ModuleQuery {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5501,6 +5895,7 @@ class ModuleQuery {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5535,6 +5930,7 @@ class ModuleQuery {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5554,6 +5950,7 @@ class ModuleQuery {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5586,6 +5983,7 @@ class ModuleQuery {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ModuleQuery, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ModuleQuery, pspec: GObject.ParamSpec) => void)): number
@@ -5605,7 +6003,7 @@ interface Option_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Option {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.Option */
     /**
      * Gets the description of `self`.
@@ -5626,6 +6024,7 @@ class Option {
     /**
      * Sets the value for `self`. An error will be thrown if the value is invalid for
      * `self`.
+     * @param value the value
      */
     set_value(value: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5663,6 +6062,10 @@ class Option {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5673,6 +6076,12 @@ class Option {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5696,6 +6105,7 @@ class Option {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5715,11 +6125,14 @@ class Option {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5727,6 +6140,8 @@ class Option {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5744,6 +6159,7 @@ class Option {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5789,6 +6205,7 @@ class Option {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5832,15 +6249,20 @@ class Option {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5881,6 +6303,7 @@ class Option {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5915,6 +6338,7 @@ class Option {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5934,6 +6358,7 @@ class Option {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5970,6 +6395,7 @@ class Option {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Option, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Option, pspec: GObject.ParamSpec) => void)): number
@@ -5987,7 +6413,7 @@ interface OptionIterator_ConstructProps extends GObject.Object_ConstructProps {
 }
 class OptionIterator {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Retro-2.Retro.OptionIterator */
     /**
      * Fetch the next #RetroOption and its key.
@@ -6028,6 +6454,10 @@ class OptionIterator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6038,6 +6468,12 @@ class OptionIterator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6061,6 +6497,7 @@ class OptionIterator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6080,11 +6517,14 @@ class OptionIterator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6092,6 +6532,8 @@ class OptionIterator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6109,6 +6551,7 @@ class OptionIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6154,6 +6597,7 @@ class OptionIterator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6197,15 +6641,20 @@ class OptionIterator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6246,6 +6695,7 @@ class OptionIterator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6280,6 +6730,7 @@ class OptionIterator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6299,6 +6750,7 @@ class OptionIterator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6331,6 +6783,7 @@ class OptionIterator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OptionIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OptionIterator, pspec: GObject.ParamSpec) => void)): number
@@ -6349,57 +6802,57 @@ abstract class ControllerInterface {
     /**
      * The parent interface.
      */
-    readonly parent_iface: GObject.TypeInterface
-    readonly get_input_state: (self: Controller, input: Input) => number
-    readonly get_controller_type: (self: Controller) => ControllerType
-    readonly get_capabilities: (self: Controller) => number
-    readonly get_supports_rumble: (self: Controller) => boolean
-    readonly set_rumble_state: (self: Controller, effect: RumbleEffect, strength: number) => void
+    parent_iface: GObject.TypeInterface
+    get_input_state: (self: Controller, input: Input) => number
+    get_controller_type: (self: Controller) => ControllerType
+    get_capabilities: (self: Controller) => number
+    get_supports_rumble: (self: Controller) => boolean
+    set_rumble_state: (self: Controller, effect: RumbleEffect, strength: number) => void
     static name: string
 }
 abstract class ControllerIteratorClass {
     /* Fields of Retro-2.Retro.ControllerIteratorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CoreClass {
     /* Fields of Retro-2.Retro.CoreClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CoreDescriptorClass {
     /* Fields of Retro-2.Retro.CoreDescriptorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CoreViewClass {
     /* Fields of Retro-2.Retro.CoreViewClass */
-    readonly parent_class: Gtk.WidgetClass
+    parent_class: Gtk.WidgetClass
     static name: string
 }
 abstract class KeyJoypadMappingClass {
     /* Fields of Retro-2.Retro.KeyJoypadMappingClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ModuleIteratorClass {
     /* Fields of Retro-2.Retro.ModuleIteratorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ModuleQueryClass {
     /* Fields of Retro-2.Retro.ModuleQueryClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class OptionClass {
     /* Fields of Retro-2.Retro.OptionClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class OptionIteratorClass {
     /* Fields of Retro-2.Retro.OptionIteratorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Pixdata {

@@ -174,57 +174,57 @@ interface VulkanBufferMemoryAllocator_ConstructProps extends Gst.Allocator_Const
 }
 class VulkanBufferMemoryAllocator {
     /* Fields of Gst-1.0.Gst.Allocator */
-    readonly object: Gst.Object
-    readonly memType: string
+    object: Gst.Object
+    memType: string
     /**
      * the implementation of the GstMemoryMapFunction
      */
-    readonly memMap: Gst.MemoryMapFunction
+    memMap: Gst.MemoryMapFunction
     /**
      * the implementation of the GstMemoryUnmapFunction
      */
-    readonly memUnmap: Gst.MemoryUnmapFunction
+    memUnmap: Gst.MemoryUnmapFunction
     /**
      * the implementation of the GstMemoryCopyFunction
      */
-    readonly memCopy: Gst.MemoryCopyFunction
+    memCopy: Gst.MemoryCopyFunction
     /**
      * the implementation of the GstMemoryShareFunction
      */
-    readonly memShare: Gst.MemoryShareFunction
+    memShare: Gst.MemoryShareFunction
     /**
      * the implementation of the GstMemoryIsSpanFunction
      */
-    readonly memIsSpan: Gst.MemoryIsSpanFunction
+    memIsSpan: Gst.MemoryIsSpanFunction
     /**
      * the implementation of the GstMemoryMapFullFunction.
      *      Will be used instead of `mem_map` if present. (Since: 1.6)
      */
-    readonly memMapFull: Gst.MemoryMapFullFunction
+    memMapFull: Gst.MemoryMapFullFunction
     /**
      * the implementation of the GstMemoryUnmapFullFunction.
      *      Will be used instead of `mem_unmap` if present. (Since: 1.6)
      */
-    readonly memUnmapFull: Gst.MemoryUnmapFullFunction
+    memUnmapFull: Gst.MemoryUnmapFullFunction
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Allocator */
     /**
      * Use `allocator` to allocate a new memory block with memory that is at least
@@ -242,10 +242,13 @@ class VulkanBufferMemoryAllocator {
      * The alignment in `params` is given as a bitmask so that `align` + 1 equals
      * the amount of bytes to align to. For example, to align to 8 bytes,
      * use an alignment of 7.
+     * @param size size of the visible memory area
+     * @param params optional parameters
      */
     alloc(size: number, params?: Gst.AllocationParams | null): Gst.Memory | null
     /**
      * Free `memory` that was previously allocated with gst_allocator_alloc().
+     * @param memory the memory to free
      */
     free(memory: Gst.Memory): void
     /**
@@ -259,6 +262,7 @@ class VulkanBufferMemoryAllocator {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -266,11 +270,14 @@ class VulkanBufferMemoryAllocator {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -293,6 +300,10 @@ class VulkanBufferMemoryAllocator {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -318,6 +329,8 @@ class VulkanBufferMemoryAllocator {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -327,16 +340,19 @@ class VulkanBufferMemoryAllocator {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -352,17 +368,21 @@ class VulkanBufferMemoryAllocator {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -373,6 +393,7 @@ class VulkanBufferMemoryAllocator {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -380,11 +401,13 @@ class VulkanBufferMemoryAllocator {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -398,6 +421,7 @@ class VulkanBufferMemoryAllocator {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -451,6 +475,10 @@ class VulkanBufferMemoryAllocator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -461,6 +489,12 @@ class VulkanBufferMemoryAllocator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -484,6 +518,7 @@ class VulkanBufferMemoryAllocator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -503,11 +538,14 @@ class VulkanBufferMemoryAllocator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -515,6 +553,8 @@ class VulkanBufferMemoryAllocator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -532,6 +572,7 @@ class VulkanBufferMemoryAllocator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -577,6 +618,7 @@ class VulkanBufferMemoryAllocator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -620,15 +662,20 @@ class VulkanBufferMemoryAllocator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -669,6 +716,7 @@ class VulkanBufferMemoryAllocator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -693,6 +741,7 @@ class VulkanBufferMemoryAllocator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -700,6 +749,8 @@ class VulkanBufferMemoryAllocator {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -735,6 +786,7 @@ class VulkanBufferMemoryAllocator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -760,36 +812,37 @@ class VulkanBufferPool {
     /**
      * the parent structure
      */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * whether the pool is currently gathering back outstanding buffers
      */
-    readonly flushing: number
+    flushing: number
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.BufferPool */
     /**
      * Acquires a buffer from `pool`. `buffer` should point to a memory location that
      * can hold a pointer to the new buffer.
      * 
      * `params` can contain optional parameters to influence the allocation.
+     * @param params parameters.
      */
     acquireBuffer(params?: Gst.BufferPoolAcquireParams | null): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -805,6 +858,7 @@ class VulkanBufferPool {
     getOptions(): string[]
     /**
      * Checks if the bufferpool supports `option`.
+     * @param option an option
      */
     hasOption(option: string): boolean
     /**
@@ -818,6 +872,7 @@ class VulkanBufferPool {
      * 
      * This function is usually called automatically when the last ref on `buffer`
      * disappears.
+     * @param buffer a #GstBuffer
      */
     releaseBuffer(buffer: Gst.Buffer): void
     /**
@@ -830,6 +885,7 @@ class VulkanBufferPool {
      * Deactivating will free the resources again when there are no outstanding
      * buffers. When there are outstanding buffers, they will be freed as soon as
      * they are all returned to the pool.
+     * @param active the new active state
      */
     setActive(active: boolean): boolean
     /**
@@ -849,11 +905,13 @@ class VulkanBufferPool {
      * then be retrieved and refined with gst_buffer_pool_get_config().
      * 
      * This function takes ownership of `config`.
+     * @param config a #GstStructure
      */
     setConfig(config: Gst.Structure): boolean
     /**
      * Enables or disables the flushing state of a `pool` without freeing or
      * allocating buffers.
+     * @param flushing whether to start or stop flushing
      */
     setFlushing(flushing: boolean): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -863,6 +921,7 @@ class VulkanBufferPool {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -870,11 +929,14 @@ class VulkanBufferPool {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -897,6 +959,10 @@ class VulkanBufferPool {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -922,6 +988,8 @@ class VulkanBufferPool {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -931,16 +999,19 @@ class VulkanBufferPool {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -956,17 +1027,21 @@ class VulkanBufferPool {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -977,6 +1052,7 @@ class VulkanBufferPool {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -984,11 +1060,13 @@ class VulkanBufferPool {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1002,6 +1080,7 @@ class VulkanBufferPool {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1055,6 +1134,10 @@ class VulkanBufferPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1065,6 +1148,12 @@ class VulkanBufferPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1088,6 +1177,7 @@ class VulkanBufferPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1107,11 +1197,14 @@ class VulkanBufferPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1119,6 +1212,8 @@ class VulkanBufferPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1136,6 +1231,7 @@ class VulkanBufferPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1181,6 +1277,7 @@ class VulkanBufferPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1224,15 +1321,20 @@ class VulkanBufferPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1273,6 +1375,7 @@ class VulkanBufferPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1297,6 +1400,7 @@ class VulkanBufferPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -1304,6 +1408,8 @@ class VulkanBufferPool {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1339,6 +1445,7 @@ class VulkanBufferPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1365,21 +1472,21 @@ interface VulkanCommandPool_ConstructProps extends Gst.Object_ConstructProps {
 }
 class VulkanCommandPool {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanCommandPool */
     create(): VulkanCommandBuffer
     getQueue(): VulkanQueue
@@ -1404,6 +1511,7 @@ class VulkanCommandPool {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1411,11 +1519,14 @@ class VulkanCommandPool {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1438,6 +1549,10 @@ class VulkanCommandPool {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1463,6 +1578,8 @@ class VulkanCommandPool {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1472,16 +1589,19 @@ class VulkanCommandPool {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -1497,17 +1617,21 @@ class VulkanCommandPool {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -1518,6 +1642,7 @@ class VulkanCommandPool {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -1525,11 +1650,13 @@ class VulkanCommandPool {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1543,6 +1670,7 @@ class VulkanCommandPool {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1596,6 +1724,10 @@ class VulkanCommandPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1606,6 +1738,12 @@ class VulkanCommandPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1629,6 +1767,7 @@ class VulkanCommandPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1648,11 +1787,14 @@ class VulkanCommandPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1660,6 +1802,8 @@ class VulkanCommandPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1677,6 +1821,7 @@ class VulkanCommandPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1722,6 +1867,7 @@ class VulkanCommandPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1765,15 +1911,20 @@ class VulkanCommandPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1814,6 +1965,7 @@ class VulkanCommandPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1838,6 +1990,7 @@ class VulkanCommandPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -1845,6 +1998,8 @@ class VulkanCommandPool {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1880,6 +2035,7 @@ class VulkanCommandPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1902,26 +2058,26 @@ interface VulkanDescriptorCache_ConstructProps extends VulkanHandlePool_Construc
 }
 class VulkanDescriptorCache {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanHandlePool */
-    readonly parent: Gst.Object
-    readonly device: VulkanDevice
-    readonly outstanding: object[]
-    readonly available: object[]
+    parent: Gst.Object
+    device: VulkanDevice
+    outstanding: object[]
+    available: object[]
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanDescriptorCache */
     acquire(): VulkanDescriptorSet
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanHandlePool */
@@ -1935,6 +2091,7 @@ class VulkanDescriptorCache {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1942,11 +2099,14 @@ class VulkanDescriptorCache {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1969,6 +2129,10 @@ class VulkanDescriptorCache {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1994,6 +2158,8 @@ class VulkanDescriptorCache {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -2003,16 +2169,19 @@ class VulkanDescriptorCache {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -2028,17 +2197,21 @@ class VulkanDescriptorCache {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -2049,6 +2222,7 @@ class VulkanDescriptorCache {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -2056,11 +2230,13 @@ class VulkanDescriptorCache {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -2074,6 +2250,7 @@ class VulkanDescriptorCache {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -2127,6 +2304,10 @@ class VulkanDescriptorCache {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2137,6 +2318,12 @@ class VulkanDescriptorCache {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2160,6 +2347,7 @@ class VulkanDescriptorCache {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2179,11 +2367,14 @@ class VulkanDescriptorCache {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2191,6 +2382,8 @@ class VulkanDescriptorCache {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2208,6 +2401,7 @@ class VulkanDescriptorCache {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2253,6 +2447,7 @@ class VulkanDescriptorCache {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2296,15 +2491,20 @@ class VulkanDescriptorCache {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2345,6 +2545,7 @@ class VulkanDescriptorCache {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2369,6 +2570,7 @@ class VulkanDescriptorCache {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -2376,6 +2578,8 @@ class VulkanDescriptorCache {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2411,6 +2615,7 @@ class VulkanDescriptorCache {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2435,25 +2640,25 @@ interface VulkanDescriptorPool_ConstructProps extends Gst.Object_ConstructProps 
 }
 class VulkanDescriptorPool {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanDescriptorPool */
     create(nLayouts: number, layouts: VulkanHandle): VulkanDescriptorSet
     getDevice(): VulkanDevice
@@ -2465,6 +2670,7 @@ class VulkanDescriptorPool {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -2472,11 +2678,14 @@ class VulkanDescriptorPool {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -2499,6 +2708,10 @@ class VulkanDescriptorPool {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -2524,6 +2737,8 @@ class VulkanDescriptorPool {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -2533,16 +2748,19 @@ class VulkanDescriptorPool {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -2558,17 +2776,21 @@ class VulkanDescriptorPool {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -2579,6 +2801,7 @@ class VulkanDescriptorPool {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -2586,11 +2809,13 @@ class VulkanDescriptorPool {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -2604,6 +2829,7 @@ class VulkanDescriptorPool {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -2657,6 +2883,10 @@ class VulkanDescriptorPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2667,6 +2897,12 @@ class VulkanDescriptorPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2690,6 +2926,7 @@ class VulkanDescriptorPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2709,11 +2946,14 @@ class VulkanDescriptorPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2721,6 +2961,8 @@ class VulkanDescriptorPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2738,6 +2980,7 @@ class VulkanDescriptorPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2783,6 +3026,7 @@ class VulkanDescriptorPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2826,15 +3070,20 @@ class VulkanDescriptorPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2875,6 +3124,7 @@ class VulkanDescriptorPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2899,6 +3149,7 @@ class VulkanDescriptorPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -2906,6 +3157,8 @@ class VulkanDescriptorPool {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2941,6 +3194,7 @@ class VulkanDescriptorPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2968,26 +3222,27 @@ interface VulkanDevice_ConstructProps extends Gst.Object_ConstructProps {
 class VulkanDevice {
     /* Properties of GstVulkan-1.0.GstVulkan.VulkanDevice */
     readonly instance: VulkanInstance
+    readonly physicalDevice: VulkanPhysicalDevice
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanDevice */
     createFence(): VulkanFence
     /**
@@ -2997,6 +3252,7 @@ class VulkanDevice {
     getInstance(): VulkanInstance
     /**
      * Performs vkGetDeviceProcAddr() with `device` and `name`
+     * @param name name of the function to retrieve
      */
     getProcAddress(name: string): object | null
     getQueue(queueFamily: number, queueI: number): VulkanQueue
@@ -3011,6 +3267,7 @@ class VulkanDevice {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -3018,11 +3275,14 @@ class VulkanDevice {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -3045,6 +3305,10 @@ class VulkanDevice {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3070,6 +3334,8 @@ class VulkanDevice {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -3079,16 +3345,19 @@ class VulkanDevice {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -3104,17 +3373,21 @@ class VulkanDevice {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -3125,6 +3398,7 @@ class VulkanDevice {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -3132,11 +3406,13 @@ class VulkanDevice {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -3150,6 +3426,7 @@ class VulkanDevice {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -3203,6 +3480,10 @@ class VulkanDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3213,6 +3494,12 @@ class VulkanDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3236,6 +3523,7 @@ class VulkanDevice {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3255,11 +3543,14 @@ class VulkanDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3267,6 +3558,8 @@ class VulkanDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3284,6 +3577,7 @@ class VulkanDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3329,6 +3623,7 @@ class VulkanDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3372,15 +3667,20 @@ class VulkanDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3421,6 +3721,7 @@ class VulkanDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3445,6 +3746,7 @@ class VulkanDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -3452,6 +3754,8 @@ class VulkanDevice {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3487,6 +3791,7 @@ class VulkanDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3498,6 +3803,11 @@ class VulkanDevice {
     on(sigName: "notify::instance", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::instance", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::instance", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::physical-device", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::physical-device", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::physical-device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::physical-device", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::physical-device", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3516,11 +3826,16 @@ class VulkanDevice {
      * 
      * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
      * for a #GstVulkanDevice.
+     * @param element a #GstElement
+     * @param query a #GstQuery of type #GST_QUERY_CONTEXT
+     * @param device the #GstVulkanDevice
      */
     static handleContextQuery(element: Gst.Element, query: Gst.Query, device: VulkanDevice): boolean
     /**
      * Attempt to retrieve a #GstVulkanDevice using #GST_QUERY_CONTEXT from the
      * surrounding elements of `element`.
+     * @param element a #GstElement
+     * @param device a #GstVulkanDevice
      */
     static runContextQuery(element: Gst.Element, device: VulkanDevice): [ /* returnType */ boolean, /* device */ VulkanDevice ]
     static $gtype: GObject.Type
@@ -3529,31 +3844,33 @@ interface VulkanDisplay_ConstructProps extends Gst.Object_ConstructProps {
 }
 class VulkanDisplay {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanDisplay */
     createWindow(): VulkanWindow
     /**
      * Execute `compare_func` over the list of windows stored by `display`.  The
      * first argument to `compare_func` is the #GstVulkanWindow being checked and the
      * second argument is `data`.
+     * @param data some data to pass to `compare_func`
+     * @param compareFunc a comparison function to run
      */
     findWindow(data: object | null, compareFunc: GLib.CompareFunc): VulkanWindow
     getHandle(): object | null
@@ -3566,6 +3883,7 @@ class VulkanDisplay {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -3573,11 +3891,14 @@ class VulkanDisplay {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -3600,6 +3921,10 @@ class VulkanDisplay {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3625,6 +3950,8 @@ class VulkanDisplay {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -3634,16 +3961,19 @@ class VulkanDisplay {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -3659,17 +3989,21 @@ class VulkanDisplay {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -3680,6 +4014,7 @@ class VulkanDisplay {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -3687,11 +4022,13 @@ class VulkanDisplay {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -3705,6 +4042,7 @@ class VulkanDisplay {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -3758,6 +4096,10 @@ class VulkanDisplay {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3768,6 +4110,12 @@ class VulkanDisplay {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3791,6 +4139,7 @@ class VulkanDisplay {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3810,11 +4159,14 @@ class VulkanDisplay {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3822,6 +4174,8 @@ class VulkanDisplay {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3839,6 +4193,7 @@ class VulkanDisplay {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3884,6 +4239,7 @@ class VulkanDisplay {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3927,15 +4283,20 @@ class VulkanDisplay {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3976,6 +4337,7 @@ class VulkanDisplay {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4000,6 +4362,7 @@ class VulkanDisplay {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -4007,6 +4370,8 @@ class VulkanDisplay {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4042,6 +4407,7 @@ class VulkanDisplay {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4064,6 +4430,7 @@ class VulkanDisplay {
     /**
      * This function will read the %GST_VULKAN_WINDOW environment variable for
      * a user choice or choose the first supported implementation.
+     * @param instance a #GstVulkanInstance
      */
     static chooseType(instance: VulkanInstance): VulkanDisplayType
     /**
@@ -4071,11 +4438,16 @@ class VulkanDisplay {
      * 
      * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
      * for a #GstVulkanDisplay.
+     * @param element a #GstElement
+     * @param query a #GstQuery of type #GST_QUERY_CONTEXT
+     * @param display the #GstVulkanDisplay
      */
     static handleContextQuery(element: Gst.Element, query: Gst.Query, display?: VulkanDisplay | null): boolean
     /**
      * Attempt to retrieve a #GstVulkanDisplay using #GST_QUERY_CONTEXT from the
      * surrounding elements of `element`.
+     * @param element a #GstElement
+     * @param display a #GstVulkanDisplay
      */
     static runContextQuery(element: Gst.Element, display: VulkanDisplay): [ /* returnType */ boolean, /* display */ VulkanDisplay ]
     static $gtype: GObject.Type
@@ -4084,26 +4456,26 @@ interface VulkanFenceCache_ConstructProps extends VulkanHandlePool_ConstructProp
 }
 class VulkanFenceCache {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanHandlePool */
-    readonly parent: Gst.Object
-    readonly device: VulkanDevice
-    readonly outstanding: object[]
-    readonly available: object[]
+    parent: Gst.Object
+    device: VulkanDevice
+    outstanding: object[]
+    available: object[]
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanHandlePool */
     acquire(): object | null
     alloc(): object | null
@@ -4115,6 +4487,7 @@ class VulkanFenceCache {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -4122,11 +4495,14 @@ class VulkanFenceCache {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -4149,6 +4525,10 @@ class VulkanFenceCache {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -4174,6 +4554,8 @@ class VulkanFenceCache {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -4183,16 +4565,19 @@ class VulkanFenceCache {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -4208,17 +4593,21 @@ class VulkanFenceCache {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -4229,6 +4618,7 @@ class VulkanFenceCache {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -4236,11 +4626,13 @@ class VulkanFenceCache {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -4254,6 +4646,7 @@ class VulkanFenceCache {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -4307,6 +4700,10 @@ class VulkanFenceCache {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4317,6 +4714,12 @@ class VulkanFenceCache {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4340,6 +4743,7 @@ class VulkanFenceCache {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4359,11 +4763,14 @@ class VulkanFenceCache {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4371,6 +4778,8 @@ class VulkanFenceCache {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4388,6 +4797,7 @@ class VulkanFenceCache {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4433,6 +4843,7 @@ class VulkanFenceCache {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4476,15 +4887,20 @@ class VulkanFenceCache {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4525,6 +4941,7 @@ class VulkanFenceCache {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4549,6 +4966,7 @@ class VulkanFenceCache {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -4556,6 +4974,8 @@ class VulkanFenceCache {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4591,6 +5011,7 @@ class VulkanFenceCache {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4615,25 +5036,25 @@ interface VulkanFullScreenQuad_ConstructProps extends Gst.Object_ConstructProps 
 }
 class VulkanFullScreenQuad {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanFullScreenQuad */
     draw(): boolean
     fillCommandBuffer(cmd: VulkanCommandBuffer, fence: VulkanFence): boolean
@@ -4654,6 +5075,7 @@ class VulkanFullScreenQuad {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -4661,11 +5083,14 @@ class VulkanFullScreenQuad {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -4688,6 +5113,10 @@ class VulkanFullScreenQuad {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -4713,6 +5142,8 @@ class VulkanFullScreenQuad {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -4722,16 +5153,19 @@ class VulkanFullScreenQuad {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -4747,17 +5181,21 @@ class VulkanFullScreenQuad {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -4768,6 +5206,7 @@ class VulkanFullScreenQuad {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -4775,11 +5214,13 @@ class VulkanFullScreenQuad {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -4793,6 +5234,7 @@ class VulkanFullScreenQuad {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -4846,6 +5288,10 @@ class VulkanFullScreenQuad {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4856,6 +5302,12 @@ class VulkanFullScreenQuad {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4879,6 +5331,7 @@ class VulkanFullScreenQuad {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4898,11 +5351,14 @@ class VulkanFullScreenQuad {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4910,6 +5366,8 @@ class VulkanFullScreenQuad {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4927,6 +5385,7 @@ class VulkanFullScreenQuad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4972,6 +5431,7 @@ class VulkanFullScreenQuad {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5015,15 +5475,20 @@ class VulkanFullScreenQuad {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5064,6 +5529,7 @@ class VulkanFullScreenQuad {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5088,6 +5554,7 @@ class VulkanFullScreenQuad {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -5095,6 +5562,8 @@ class VulkanFullScreenQuad {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5130,6 +5599,7 @@ class VulkanFullScreenQuad {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5154,25 +5624,25 @@ interface VulkanHandlePool_ConstructProps extends Gst.Object_ConstructProps {
 }
 class VulkanHandlePool {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanHandlePool */
     acquire(): object | null
     alloc(): object | null
@@ -5184,6 +5654,7 @@ class VulkanHandlePool {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -5191,11 +5662,14 @@ class VulkanHandlePool {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -5218,6 +5692,10 @@ class VulkanHandlePool {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -5243,6 +5721,8 @@ class VulkanHandlePool {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -5252,16 +5732,19 @@ class VulkanHandlePool {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -5277,17 +5760,21 @@ class VulkanHandlePool {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -5298,6 +5785,7 @@ class VulkanHandlePool {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -5305,11 +5793,13 @@ class VulkanHandlePool {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -5323,6 +5813,7 @@ class VulkanHandlePool {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -5376,6 +5867,10 @@ class VulkanHandlePool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5386,6 +5881,12 @@ class VulkanHandlePool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5409,6 +5910,7 @@ class VulkanHandlePool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5428,11 +5930,14 @@ class VulkanHandlePool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5440,6 +5945,8 @@ class VulkanHandlePool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5457,6 +5964,7 @@ class VulkanHandlePool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5502,6 +6010,7 @@ class VulkanHandlePool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5545,15 +6054,20 @@ class VulkanHandlePool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5594,6 +6108,7 @@ class VulkanHandlePool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5618,6 +6133,7 @@ class VulkanHandlePool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -5625,6 +6141,8 @@ class VulkanHandlePool {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5660,6 +6178,7 @@ class VulkanHandlePool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5685,36 +6204,37 @@ class VulkanImageBufferPool {
     /**
      * the parent structure
      */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * whether the pool is currently gathering back outstanding buffers
      */
-    readonly flushing: number
+    flushing: number
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.BufferPool */
     /**
      * Acquires a buffer from `pool`. `buffer` should point to a memory location that
      * can hold a pointer to the new buffer.
      * 
      * `params` can contain optional parameters to influence the allocation.
+     * @param params parameters.
      */
     acquireBuffer(params?: Gst.BufferPoolAcquireParams | null): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -5730,6 +6250,7 @@ class VulkanImageBufferPool {
     getOptions(): string[]
     /**
      * Checks if the bufferpool supports `option`.
+     * @param option an option
      */
     hasOption(option: string): boolean
     /**
@@ -5743,6 +6264,7 @@ class VulkanImageBufferPool {
      * 
      * This function is usually called automatically when the last ref on `buffer`
      * disappears.
+     * @param buffer a #GstBuffer
      */
     releaseBuffer(buffer: Gst.Buffer): void
     /**
@@ -5755,6 +6277,7 @@ class VulkanImageBufferPool {
      * Deactivating will free the resources again when there are no outstanding
      * buffers. When there are outstanding buffers, they will be freed as soon as
      * they are all returned to the pool.
+     * @param active the new active state
      */
     setActive(active: boolean): boolean
     /**
@@ -5774,11 +6297,13 @@ class VulkanImageBufferPool {
      * then be retrieved and refined with gst_buffer_pool_get_config().
      * 
      * This function takes ownership of `config`.
+     * @param config a #GstStructure
      */
     setConfig(config: Gst.Structure): boolean
     /**
      * Enables or disables the flushing state of a `pool` without freeing or
      * allocating buffers.
+     * @param flushing whether to start or stop flushing
      */
     setFlushing(flushing: boolean): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -5788,6 +6313,7 @@ class VulkanImageBufferPool {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -5795,11 +6321,14 @@ class VulkanImageBufferPool {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -5822,6 +6351,10 @@ class VulkanImageBufferPool {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -5847,6 +6380,8 @@ class VulkanImageBufferPool {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -5856,16 +6391,19 @@ class VulkanImageBufferPool {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -5881,17 +6419,21 @@ class VulkanImageBufferPool {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -5902,6 +6444,7 @@ class VulkanImageBufferPool {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -5909,11 +6452,13 @@ class VulkanImageBufferPool {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -5927,6 +6472,7 @@ class VulkanImageBufferPool {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -5980,6 +6526,10 @@ class VulkanImageBufferPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5990,6 +6540,12 @@ class VulkanImageBufferPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6013,6 +6569,7 @@ class VulkanImageBufferPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6032,11 +6589,14 @@ class VulkanImageBufferPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6044,6 +6604,8 @@ class VulkanImageBufferPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6061,6 +6623,7 @@ class VulkanImageBufferPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6106,6 +6669,7 @@ class VulkanImageBufferPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6149,15 +6713,20 @@ class VulkanImageBufferPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6198,6 +6767,7 @@ class VulkanImageBufferPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6222,6 +6792,7 @@ class VulkanImageBufferPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -6229,6 +6800,8 @@ class VulkanImageBufferPool {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6264,6 +6837,7 @@ class VulkanImageBufferPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6290,57 +6864,57 @@ interface VulkanImageMemoryAllocator_ConstructProps extends Gst.Allocator_Constr
 }
 class VulkanImageMemoryAllocator {
     /* Fields of Gst-1.0.Gst.Allocator */
-    readonly object: Gst.Object
-    readonly memType: string
+    object: Gst.Object
+    memType: string
     /**
      * the implementation of the GstMemoryMapFunction
      */
-    readonly memMap: Gst.MemoryMapFunction
+    memMap: Gst.MemoryMapFunction
     /**
      * the implementation of the GstMemoryUnmapFunction
      */
-    readonly memUnmap: Gst.MemoryUnmapFunction
+    memUnmap: Gst.MemoryUnmapFunction
     /**
      * the implementation of the GstMemoryCopyFunction
      */
-    readonly memCopy: Gst.MemoryCopyFunction
+    memCopy: Gst.MemoryCopyFunction
     /**
      * the implementation of the GstMemoryShareFunction
      */
-    readonly memShare: Gst.MemoryShareFunction
+    memShare: Gst.MemoryShareFunction
     /**
      * the implementation of the GstMemoryIsSpanFunction
      */
-    readonly memIsSpan: Gst.MemoryIsSpanFunction
+    memIsSpan: Gst.MemoryIsSpanFunction
     /**
      * the implementation of the GstMemoryMapFullFunction.
      *      Will be used instead of `mem_map` if present. (Since: 1.6)
      */
-    readonly memMapFull: Gst.MemoryMapFullFunction
+    memMapFull: Gst.MemoryMapFullFunction
     /**
      * the implementation of the GstMemoryUnmapFullFunction.
      *      Will be used instead of `mem_unmap` if present. (Since: 1.6)
      */
-    readonly memUnmapFull: Gst.MemoryUnmapFullFunction
+    memUnmapFull: Gst.MemoryUnmapFullFunction
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Allocator */
     /**
      * Use `allocator` to allocate a new memory block with memory that is at least
@@ -6358,10 +6932,13 @@ class VulkanImageMemoryAllocator {
      * The alignment in `params` is given as a bitmask so that `align` + 1 equals
      * the amount of bytes to align to. For example, to align to 8 bytes,
      * use an alignment of 7.
+     * @param size size of the visible memory area
+     * @param params optional parameters
      */
     alloc(size: number, params?: Gst.AllocationParams | null): Gst.Memory | null
     /**
      * Free `memory` that was previously allocated with gst_allocator_alloc().
+     * @param memory the memory to free
      */
     free(memory: Gst.Memory): void
     /**
@@ -6375,6 +6952,7 @@ class VulkanImageMemoryAllocator {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -6382,11 +6960,14 @@ class VulkanImageMemoryAllocator {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -6409,6 +6990,10 @@ class VulkanImageMemoryAllocator {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -6434,6 +7019,8 @@ class VulkanImageMemoryAllocator {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -6443,16 +7030,19 @@ class VulkanImageMemoryAllocator {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -6468,17 +7058,21 @@ class VulkanImageMemoryAllocator {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -6489,6 +7083,7 @@ class VulkanImageMemoryAllocator {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -6496,11 +7091,13 @@ class VulkanImageMemoryAllocator {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -6514,6 +7111,7 @@ class VulkanImageMemoryAllocator {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -6567,6 +7165,10 @@ class VulkanImageMemoryAllocator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6577,6 +7179,12 @@ class VulkanImageMemoryAllocator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6600,6 +7208,7 @@ class VulkanImageMemoryAllocator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6619,11 +7228,14 @@ class VulkanImageMemoryAllocator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6631,6 +7243,8 @@ class VulkanImageMemoryAllocator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6648,6 +7262,7 @@ class VulkanImageMemoryAllocator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6693,6 +7308,7 @@ class VulkanImageMemoryAllocator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6736,15 +7352,20 @@ class VulkanImageMemoryAllocator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6785,6 +7406,7 @@ class VulkanImageMemoryAllocator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6809,6 +7431,7 @@ class VulkanImageMemoryAllocator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -6816,6 +7439,8 @@ class VulkanImageMemoryAllocator {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6851,6 +7476,7 @@ class VulkanImageMemoryAllocator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6873,29 +7499,30 @@ interface VulkanInstance_ConstructProps extends Gst.Object_ConstructProps {
 }
 class VulkanInstance {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanInstance */
     createDevice(): VulkanDevice
     /**
      * Performs vkGetInstanceProcAddr() with `instance` and `name`
+     * @param name name of the function to retrieve
      */
     getProcAddress(name: string): object | null
     open(): boolean
@@ -6906,6 +7533,7 @@ class VulkanInstance {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -6913,11 +7541,14 @@ class VulkanInstance {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -6940,6 +7571,10 @@ class VulkanInstance {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -6965,6 +7600,8 @@ class VulkanInstance {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -6974,16 +7611,19 @@ class VulkanInstance {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -6999,17 +7639,21 @@ class VulkanInstance {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -7020,6 +7664,7 @@ class VulkanInstance {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -7027,11 +7672,13 @@ class VulkanInstance {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -7045,6 +7692,7 @@ class VulkanInstance {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -7098,6 +7746,10 @@ class VulkanInstance {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7108,6 +7760,12 @@ class VulkanInstance {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7131,6 +7789,7 @@ class VulkanInstance {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7150,11 +7809,14 @@ class VulkanInstance {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7162,6 +7824,8 @@ class VulkanInstance {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7179,6 +7843,7 @@ class VulkanInstance {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7224,6 +7889,7 @@ class VulkanInstance {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7267,15 +7933,20 @@ class VulkanInstance {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7316,6 +7987,7 @@ class VulkanInstance {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7340,6 +8012,7 @@ class VulkanInstance {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstVulkan-1.0.GstVulkan.VulkanInstance */
@@ -7357,6 +8030,8 @@ class VulkanInstance {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7392,6 +8067,7 @@ class VulkanInstance {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7415,11 +8091,16 @@ class VulkanInstance {
      * 
      * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
      * for a #GstVulkanInstance.
+     * @param element a #GstElement
+     * @param query a #GstQuery of type #GST_QUERY_CONTEXT
+     * @param instance the #GstVulkanInstance
      */
     static handleContextQuery(element: Gst.Element, query: Gst.Query, instance?: VulkanInstance | null): boolean
     /**
      * Attempt to retrieve a #GstVulkanInstance using #GST_QUERY_CONTEXT from the
      * surrounding elements of `element`.
+     * @param element a #GstElement
+     * @param instance a #GstVulkanInstance
      */
     static runContextQuery(element: Gst.Element, instance: VulkanInstance): [ /* returnType */ boolean, /* instance */ VulkanInstance ]
     static $gtype: GObject.Type
@@ -7428,57 +8109,57 @@ interface VulkanMemoryAllocator_ConstructProps extends Gst.Allocator_ConstructPr
 }
 class VulkanMemoryAllocator {
     /* Fields of Gst-1.0.Gst.Allocator */
-    readonly object: Gst.Object
-    readonly memType: string
+    object: Gst.Object
+    memType: string
     /**
      * the implementation of the GstMemoryMapFunction
      */
-    readonly memMap: Gst.MemoryMapFunction
+    memMap: Gst.MemoryMapFunction
     /**
      * the implementation of the GstMemoryUnmapFunction
      */
-    readonly memUnmap: Gst.MemoryUnmapFunction
+    memUnmap: Gst.MemoryUnmapFunction
     /**
      * the implementation of the GstMemoryCopyFunction
      */
-    readonly memCopy: Gst.MemoryCopyFunction
+    memCopy: Gst.MemoryCopyFunction
     /**
      * the implementation of the GstMemoryShareFunction
      */
-    readonly memShare: Gst.MemoryShareFunction
+    memShare: Gst.MemoryShareFunction
     /**
      * the implementation of the GstMemoryIsSpanFunction
      */
-    readonly memIsSpan: Gst.MemoryIsSpanFunction
+    memIsSpan: Gst.MemoryIsSpanFunction
     /**
      * the implementation of the GstMemoryMapFullFunction.
      *      Will be used instead of `mem_map` if present. (Since: 1.6)
      */
-    readonly memMapFull: Gst.MemoryMapFullFunction
+    memMapFull: Gst.MemoryMapFullFunction
     /**
      * the implementation of the GstMemoryUnmapFullFunction.
      *      Will be used instead of `mem_unmap` if present. (Since: 1.6)
      */
-    readonly memUnmapFull: Gst.MemoryUnmapFullFunction
+    memUnmapFull: Gst.MemoryUnmapFullFunction
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Allocator */
     /**
      * Use `allocator` to allocate a new memory block with memory that is at least
@@ -7496,10 +8177,13 @@ class VulkanMemoryAllocator {
      * The alignment in `params` is given as a bitmask so that `align` + 1 equals
      * the amount of bytes to align to. For example, to align to 8 bytes,
      * use an alignment of 7.
+     * @param size size of the visible memory area
+     * @param params optional parameters
      */
     alloc(size: number, params?: Gst.AllocationParams | null): Gst.Memory | null
     /**
      * Free `memory` that was previously allocated with gst_allocator_alloc().
+     * @param memory the memory to free
      */
     free(memory: Gst.Memory): void
     /**
@@ -7513,6 +8197,7 @@ class VulkanMemoryAllocator {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -7520,11 +8205,14 @@ class VulkanMemoryAllocator {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -7547,6 +8235,10 @@ class VulkanMemoryAllocator {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -7572,6 +8264,8 @@ class VulkanMemoryAllocator {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -7581,16 +8275,19 @@ class VulkanMemoryAllocator {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -7606,17 +8303,21 @@ class VulkanMemoryAllocator {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -7627,6 +8328,7 @@ class VulkanMemoryAllocator {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -7634,11 +8336,13 @@ class VulkanMemoryAllocator {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -7652,6 +8356,7 @@ class VulkanMemoryAllocator {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -7705,6 +8410,10 @@ class VulkanMemoryAllocator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7715,6 +8424,12 @@ class VulkanMemoryAllocator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7738,6 +8453,7 @@ class VulkanMemoryAllocator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7757,11 +8473,14 @@ class VulkanMemoryAllocator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7769,6 +8488,8 @@ class VulkanMemoryAllocator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7786,6 +8507,7 @@ class VulkanMemoryAllocator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7831,6 +8553,7 @@ class VulkanMemoryAllocator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7874,15 +8597,20 @@ class VulkanMemoryAllocator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7923,6 +8651,7 @@ class VulkanMemoryAllocator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7947,6 +8676,7 @@ class VulkanMemoryAllocator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -7954,6 +8684,8 @@ class VulkanMemoryAllocator {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7989,6 +8721,7 @@ class VulkanMemoryAllocator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8014,23 +8747,25 @@ interface VulkanPhysicalDevice_ConstructProps extends Gst.Object_ConstructProps 
 }
 class VulkanPhysicalDevice {
     /* Properties of GstVulkan-1.0.GstVulkan.VulkanPhysicalDevice */
+    readonly deviceIndex: number
+    readonly instance: VulkanInstance
     readonly name: string
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanPhysicalDevice */
     getInstance(): VulkanInstance
     /* Methods of Gst-1.0.Gst.Object */
@@ -8040,6 +8775,7 @@ class VulkanPhysicalDevice {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -8047,11 +8783,14 @@ class VulkanPhysicalDevice {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -8074,6 +8813,10 @@ class VulkanPhysicalDevice {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -8099,6 +8842,8 @@ class VulkanPhysicalDevice {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -8108,16 +8853,19 @@ class VulkanPhysicalDevice {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -8133,17 +8881,21 @@ class VulkanPhysicalDevice {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -8154,6 +8906,7 @@ class VulkanPhysicalDevice {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -8161,11 +8914,13 @@ class VulkanPhysicalDevice {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -8179,6 +8934,7 @@ class VulkanPhysicalDevice {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -8232,6 +8988,10 @@ class VulkanPhysicalDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8242,6 +9002,12 @@ class VulkanPhysicalDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8265,6 +9031,7 @@ class VulkanPhysicalDevice {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8284,11 +9051,14 @@ class VulkanPhysicalDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8296,6 +9066,8 @@ class VulkanPhysicalDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8313,6 +9085,7 @@ class VulkanPhysicalDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8358,6 +9131,7 @@ class VulkanPhysicalDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8401,15 +9175,20 @@ class VulkanPhysicalDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8450,6 +9229,7 @@ class VulkanPhysicalDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8474,6 +9254,7 @@ class VulkanPhysicalDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -8481,6 +9262,8 @@ class VulkanPhysicalDevice {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8516,12 +9299,23 @@ class VulkanPhysicalDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::device-index", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-index", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::device-index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::device-index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::device-index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::instance", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::instance", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::instance", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::instance", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::instance", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -8546,25 +9340,25 @@ interface VulkanQueue_ConstructProps extends Gst.Object_ConstructProps {
 }
 class VulkanQueue {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanQueue */
     createCommandPool(): VulkanCommandPool
     getDevice(): VulkanDevice
@@ -8586,6 +9380,7 @@ class VulkanQueue {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -8593,11 +9388,14 @@ class VulkanQueue {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -8620,6 +9418,10 @@ class VulkanQueue {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -8645,6 +9447,8 @@ class VulkanQueue {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -8654,16 +9458,19 @@ class VulkanQueue {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -8679,17 +9486,21 @@ class VulkanQueue {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -8700,6 +9511,7 @@ class VulkanQueue {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -8707,11 +9519,13 @@ class VulkanQueue {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -8725,6 +9539,7 @@ class VulkanQueue {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -8778,6 +9593,10 @@ class VulkanQueue {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8788,6 +9607,12 @@ class VulkanQueue {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8811,6 +9636,7 @@ class VulkanQueue {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8830,11 +9656,14 @@ class VulkanQueue {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8842,6 +9671,8 @@ class VulkanQueue {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8859,6 +9690,7 @@ class VulkanQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8904,6 +9736,7 @@ class VulkanQueue {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8947,15 +9780,20 @@ class VulkanQueue {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8996,6 +9834,7 @@ class VulkanQueue {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9020,6 +9859,7 @@ class VulkanQueue {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -9027,6 +9867,8 @@ class VulkanQueue {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9062,6 +9904,7 @@ class VulkanQueue {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9085,11 +9928,16 @@ class VulkanQueue {
      * 
      * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
      * for a #GstVulkanQueue.
+     * @param element a #GstElement
+     * @param query a #GstQuery of type #GST_QUERY_CONTEXT
+     * @param queue the #GstVulkanQueue
      */
     static handleContextQuery(element: Gst.Element, query: Gst.Query, queue?: VulkanQueue | null): boolean
     /**
      * Attempt to retrieve a #GstVulkanQueue using #GST_QUERY_CONTEXT from the
      * surrounding elements of `element`.
+     * @param element a #GstElement
+     * @param queue a #GstVulkanQueue
      */
     static runContextQuery(element: Gst.Element, queue: VulkanQueue): [ /* returnType */ boolean, /* queue */ VulkanQueue ]
     static $gtype: GObject.Type
@@ -9104,25 +9952,25 @@ class VulkanSwapper {
     forceAspectRatio: boolean
     pixelAspectRatio: Gst.Fraction
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanSwapper */
     chooseQueue(availableQueue: VulkanQueue): boolean
     getSupportedCaps(): Gst.Caps
@@ -9136,6 +9984,7 @@ class VulkanSwapper {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -9143,11 +9992,14 @@ class VulkanSwapper {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -9170,6 +10022,10 @@ class VulkanSwapper {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -9195,6 +10051,8 @@ class VulkanSwapper {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -9204,16 +10062,19 @@ class VulkanSwapper {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -9229,17 +10090,21 @@ class VulkanSwapper {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -9250,6 +10115,7 @@ class VulkanSwapper {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -9257,11 +10123,13 @@ class VulkanSwapper {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -9275,6 +10143,7 @@ class VulkanSwapper {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -9328,6 +10197,10 @@ class VulkanSwapper {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9338,6 +10211,12 @@ class VulkanSwapper {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9361,6 +10240,7 @@ class VulkanSwapper {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9380,11 +10260,14 @@ class VulkanSwapper {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9392,6 +10275,8 @@ class VulkanSwapper {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9409,6 +10294,7 @@ class VulkanSwapper {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9454,6 +10340,7 @@ class VulkanSwapper {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9497,15 +10384,20 @@ class VulkanSwapper {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9546,6 +10438,7 @@ class VulkanSwapper {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9570,6 +10463,7 @@ class VulkanSwapper {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -9577,6 +10471,8 @@ class VulkanSwapper {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9612,6 +10508,7 @@ class VulkanSwapper {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9646,27 +10543,27 @@ interface VulkanTrashFenceList_ConstructProps extends VulkanTrashList_ConstructP
 }
 class VulkanTrashFenceList {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanTrashList */
-    readonly parent: VulkanHandlePool
+    parent: VulkanHandlePool
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanHandlePool */
-    readonly device: VulkanDevice
-    readonly outstanding: object[]
-    readonly available: object[]
+    device: VulkanDevice
+    outstanding: object[]
+    available: object[]
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanTrashList */
     acquire(fence: VulkanFence, notify: VulkanTrashNotify): VulkanTrash
     add(trash: VulkanTrash): boolean
@@ -9683,6 +10580,7 @@ class VulkanTrashFenceList {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -9690,11 +10588,14 @@ class VulkanTrashFenceList {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -9717,6 +10618,10 @@ class VulkanTrashFenceList {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -9742,6 +10647,8 @@ class VulkanTrashFenceList {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -9751,16 +10658,19 @@ class VulkanTrashFenceList {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -9776,17 +10686,21 @@ class VulkanTrashFenceList {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -9797,6 +10711,7 @@ class VulkanTrashFenceList {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -9804,11 +10719,13 @@ class VulkanTrashFenceList {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -9822,6 +10739,7 @@ class VulkanTrashFenceList {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -9875,6 +10793,10 @@ class VulkanTrashFenceList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9885,6 +10807,12 @@ class VulkanTrashFenceList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9908,6 +10836,7 @@ class VulkanTrashFenceList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9927,11 +10856,14 @@ class VulkanTrashFenceList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9939,6 +10871,8 @@ class VulkanTrashFenceList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9956,6 +10890,7 @@ class VulkanTrashFenceList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10001,6 +10936,7 @@ class VulkanTrashFenceList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10044,15 +10980,20 @@ class VulkanTrashFenceList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10093,6 +11034,7 @@ class VulkanTrashFenceList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10117,6 +11059,7 @@ class VulkanTrashFenceList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -10124,6 +11067,8 @@ class VulkanTrashFenceList {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10159,6 +11104,7 @@ class VulkanTrashFenceList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10183,26 +11129,26 @@ interface VulkanTrashList_ConstructProps extends VulkanHandlePool_ConstructProps
 }
 class VulkanTrashList {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanHandlePool */
-    readonly parent: Gst.Object
-    readonly device: VulkanDevice
-    readonly outstanding: object[]
-    readonly available: object[]
+    parent: Gst.Object
+    device: VulkanDevice
+    outstanding: object[]
+    available: object[]
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanTrashList */
     acquire(fence: VulkanFence, notify: VulkanTrashNotify): VulkanTrash
     add(trash: VulkanTrash): boolean
@@ -10219,6 +11165,7 @@ class VulkanTrashList {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -10226,11 +11173,14 @@ class VulkanTrashList {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -10253,6 +11203,10 @@ class VulkanTrashList {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -10278,6 +11232,8 @@ class VulkanTrashList {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -10287,16 +11243,19 @@ class VulkanTrashList {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -10312,17 +11271,21 @@ class VulkanTrashList {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -10333,6 +11296,7 @@ class VulkanTrashList {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -10340,11 +11304,13 @@ class VulkanTrashList {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -10358,6 +11324,7 @@ class VulkanTrashList {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -10411,6 +11378,10 @@ class VulkanTrashList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10421,6 +11392,12 @@ class VulkanTrashList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10444,6 +11421,7 @@ class VulkanTrashList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10463,11 +11441,14 @@ class VulkanTrashList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10475,6 +11456,8 @@ class VulkanTrashList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10492,6 +11475,7 @@ class VulkanTrashList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10537,6 +11521,7 @@ class VulkanTrashList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10580,15 +11565,20 @@ class VulkanTrashList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10629,6 +11619,7 @@ class VulkanTrashList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10653,6 +11644,7 @@ class VulkanTrashList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -10660,6 +11652,8 @@ class VulkanTrashList {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10695,6 +11689,7 @@ class VulkanTrashList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10719,120 +11714,120 @@ class VulkanVideoFilter {
     /* Properties of GstBase-1.0.GstBase.BaseTransform */
     qos: boolean
     /* Fields of GstBase-1.0.GstBase.BaseTransform */
-    readonly element: Gst.Element
-    readonly sinkpad: Gst.Pad
-    readonly srcpad: Gst.Pad
-    readonly haveSegment: boolean
-    readonly segment: Gst.Segment
-    readonly queuedBuf: Gst.Buffer
+    element: Gst.Element
+    sinkpad: Gst.Pad
+    srcpad: Gst.Pad
+    haveSegment: boolean
+    segment: Gst.Segment
+    queuedBuf: Gst.Buffer
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-1.0.GstBase.BaseTransform */
     /**
      * Lets #GstBaseTransform sub-classes know the memory `allocator`
@@ -10892,6 +11887,7 @@ class VulkanVideoFilter {
      * unset the flag if the output is no neutral data.
      * 
      * MT safe.
+     * @param gapAware New state
      */
     setGapAware(gapAware: boolean): void
     /**
@@ -10902,6 +11898,7 @@ class VulkanVideoFilter {
      *   * Always %FALSE if ONLY transform function is implemented.
      * 
      * MT safe.
+     * @param inPlace Boolean value indicating that we would like to operate on in_place buffers.
      */
     setInPlace(inPlace: boolean): void
     /**
@@ -10912,6 +11909,7 @@ class VulkanVideoFilter {
      * or transform_ip or generate_output method.
      * 
      * MT safe.
+     * @param passthrough boolean indicating passthrough mode.
      */
     setPassthrough(passthrough: boolean): void
     /**
@@ -10926,12 +11924,14 @@ class VulkanVideoFilter {
      * capsfilter.
      * 
      * MT safe.
+     * @param preferPassthrough New state
      */
     setPreferPassthrough(preferPassthrough: boolean): void
     /**
      * Enable or disable QoS handling in the transform.
      * 
      * MT safe.
+     * @param enabled new state
      */
     setQosEnabled(enabled: boolean): void
     /**
@@ -10940,6 +11940,9 @@ class VulkanVideoFilter {
      * when needed.
      * 
      * MT safe.
+     * @param proportion the proportion
+     * @param diff the diff against the clock
+     * @param timestamp the timestamp of the buffer generating the QoS expressed in running_time.
      */
     updateQos(proportion: number, diff: Gst.ClockTimeDiff, timestamp: Gst.ClockTime): void
     /**
@@ -10948,6 +11951,7 @@ class VulkanVideoFilter {
      * but found a change in them (or computed new information). This way,
      * they can notify downstream about that change without losing any
      * buffer.
+     * @param updatedCaps An updated version of the srcpad caps to be pushed downstream
      */
     updateSrcCaps(updatedCaps: Gst.Caps): boolean
     /* Methods of Gst-1.0.Gst.Element */
@@ -10971,6 +11975,7 @@ class VulkanVideoFilter {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -10986,6 +11991,7 @@ class VulkanVideoFilter {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -10993,6 +11999,7 @@ class VulkanVideoFilter {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -11009,6 +12016,7 @@ class VulkanVideoFilter {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -11024,6 +12032,7 @@ class VulkanVideoFilter {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11033,6 +12042,7 @@ class VulkanVideoFilter {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11042,6 +12052,7 @@ class VulkanVideoFilter {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11072,21 +12083,26 @@ class VulkanVideoFilter {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -11112,10 +12128,12 @@ class VulkanVideoFilter {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -11127,6 +12145,7 @@ class VulkanVideoFilter {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -11160,11 +12179,13 @@ class VulkanVideoFilter {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -11209,6 +12230,7 @@ class VulkanVideoFilter {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -11220,6 +12242,8 @@ class VulkanVideoFilter {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -11227,6 +12251,9 @@ class VulkanVideoFilter {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -11234,6 +12261,10 @@ class VulkanVideoFilter {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -11247,6 +12278,10 @@ class VulkanVideoFilter {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -11275,6 +12310,14 @@ class VulkanVideoFilter {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -11282,6 +12325,15 @@ class VulkanVideoFilter {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -11300,6 +12352,7 @@ class VulkanVideoFilter {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -11316,10 +12369,14 @@ class VulkanVideoFilter {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -11331,6 +12388,7 @@ class VulkanVideoFilter {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -11343,6 +12401,7 @@ class VulkanVideoFilter {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -11354,6 +12413,7 @@ class VulkanVideoFilter {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -11373,6 +12433,7 @@ class VulkanVideoFilter {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -11382,6 +12443,9 @@ class VulkanVideoFilter {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -11397,6 +12461,7 @@ class VulkanVideoFilter {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -11405,6 +12470,13 @@ class VulkanVideoFilter {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -11422,6 +12494,9 @@ class VulkanVideoFilter {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -11433,12 +12508,14 @@ class VulkanVideoFilter {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -11446,18 +12523,21 @@ class VulkanVideoFilter {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -11469,6 +12549,7 @@ class VulkanVideoFilter {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -11484,6 +12565,7 @@ class VulkanVideoFilter {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -11500,6 +12582,7 @@ class VulkanVideoFilter {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -11513,12 +12596,16 @@ class VulkanVideoFilter {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -11528,6 +12615,7 @@ class VulkanVideoFilter {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -11535,11 +12623,14 @@ class VulkanVideoFilter {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -11562,6 +12653,10 @@ class VulkanVideoFilter {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -11587,6 +12682,8 @@ class VulkanVideoFilter {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -11596,16 +12693,19 @@ class VulkanVideoFilter {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -11621,17 +12721,21 @@ class VulkanVideoFilter {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -11642,6 +12746,7 @@ class VulkanVideoFilter {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -11649,11 +12754,13 @@ class VulkanVideoFilter {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -11667,6 +12774,7 @@ class VulkanVideoFilter {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -11720,6 +12828,10 @@ class VulkanVideoFilter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11730,6 +12842,12 @@ class VulkanVideoFilter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11753,6 +12871,7 @@ class VulkanVideoFilter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11772,11 +12891,14 @@ class VulkanVideoFilter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11784,6 +12906,8 @@ class VulkanVideoFilter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11801,6 +12925,7 @@ class VulkanVideoFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11846,6 +12971,7 @@ class VulkanVideoFilter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11889,15 +13015,20 @@ class VulkanVideoFilter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11938,6 +13069,7 @@ class VulkanVideoFilter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11962,6 +13094,7 @@ class VulkanVideoFilter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -11981,6 +13114,7 @@ class VulkanVideoFilter {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -11989,6 +13123,7 @@ class VulkanVideoFilter {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -12000,6 +13135,8 @@ class VulkanVideoFilter {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12035,6 +13172,7 @@ class VulkanVideoFilter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12064,25 +13202,25 @@ class VulkanWindow {
     /* Properties of GstVulkan-1.0.GstVulkan.VulkanWindow */
     readonly display: VulkanDisplay
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanWindow */
     /**
      * Attempt to close the window.
@@ -12097,6 +13235,7 @@ class VulkanWindow {
      * events are not propagated in the window hierarchy if a client is listening
      * for them. This method allows you to disable events handling completely
      * from the `window`.
+     * @param handleEvents a #gboolean indicating if events should be handled or not.
      */
     handleEvents(handleEvents: boolean): void
     open(): boolean
@@ -12108,6 +13247,8 @@ class VulkanWindow {
      * Resize the output surface.
      * 
      * Currently intended for subclasses to update internal state.
+     * @param width the new width
+     * @param height the new height
      */
     resize(width: number, height: number): void
     sendKeyEvent(eventType: string, keyStr: string): void
@@ -12120,6 +13261,7 @@ class VulkanWindow {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -12127,11 +13269,14 @@ class VulkanWindow {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -12154,6 +13299,10 @@ class VulkanWindow {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -12179,6 +13328,8 @@ class VulkanWindow {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -12188,16 +13339,19 @@ class VulkanWindow {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -12213,17 +13367,21 @@ class VulkanWindow {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -12234,6 +13392,7 @@ class VulkanWindow {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -12241,11 +13400,13 @@ class VulkanWindow {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -12259,6 +13420,7 @@ class VulkanWindow {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -12312,6 +13474,10 @@ class VulkanWindow {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12322,6 +13488,12 @@ class VulkanWindow {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12345,6 +13517,7 @@ class VulkanWindow {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12364,11 +13537,14 @@ class VulkanWindow {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12376,6 +13552,8 @@ class VulkanWindow {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12393,6 +13571,7 @@ class VulkanWindow {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12438,6 +13617,7 @@ class VulkanWindow {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12481,15 +13661,20 @@ class VulkanWindow {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12530,6 +13715,7 @@ class VulkanWindow {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12554,6 +13740,7 @@ class VulkanWindow {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstVulkan-1.0.GstVulkan.VulkanWindow */
@@ -12569,6 +13756,8 @@ class VulkanWindow {
     emit(sigName: "draw"): void
     /**
      * Will be emitted when a key event is received by the #GstVulkanWindow.
+     * @param id the name of the event
+     * @param key the id of the key pressed
      */
     connect(sigName: "key-event", callback: ((id: string, key: string) => void)): number
     on(sigName: "key-event", callback: (id: string, key: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -12577,6 +13766,10 @@ class VulkanWindow {
     emit(sigName: "key-event", id: string, key: string): void
     /**
      * Will be emitted when a mouse event is received by the #GstVulkanWindow.
+     * @param id the name of the event
+     * @param button the id of the button
+     * @param x the x coordinate of the mouse event
+     * @param y the y coordinate of the mouse event
      */
     connect(sigName: "mouse-event", callback: ((id: string, button: number, x: number, y: number) => void)): number
     on(sigName: "mouse-event", callback: (id: string, button: number, x: number, y: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12593,6 +13786,8 @@ class VulkanWindow {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12628,6 +13823,7 @@ class VulkanWindow {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12655,44 +13851,48 @@ class VulkanWindow {
 }
 class VulkanBarrierBufferInfo {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanBarrierBufferInfo */
-    readonly parent: VulkanBarrierMemoryInfo
-    readonly offset: Vulkan.DeviceSize
-    readonly size: Vulkan.DeviceSize
+    parent: VulkanBarrierMemoryInfo
+    offset: Vulkan.DeviceSize
+    size: Vulkan.DeviceSize
     static name: string
 }
 class VulkanBarrierImageInfo {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanBarrierImageInfo */
-    readonly parent: VulkanBarrierMemoryInfo
-    readonly imageLayout: Vulkan.ImageLayout
-    readonly subresourceRange: Vulkan.ImageSubresourceRange
+    parent: VulkanBarrierMemoryInfo
+    imageLayout: Vulkan.ImageLayout
+    subresourceRange: Vulkan.ImageSubresourceRange
     static name: string
 }
 class VulkanBarrierMemoryInfo {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanBarrierMemoryInfo */
-    readonly type: VulkanBarrierType
-    readonly flags: VulkanBarrierFlags
-    readonly queue: VulkanQueue
-    readonly pipelineStages: Vulkan.PipelineStageFlags
-    readonly accessFlags: Vulkan.AccessFlags
+    type: VulkanBarrierType
+    flags: VulkanBarrierFlags
+    queue: VulkanQueue
+    pipelineStages: Vulkan.PipelineStageFlags
+    accessFlags: Vulkan.AccessFlags
     static name: string
 }
 class VulkanBufferMemory {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanBufferMemory */
-    readonly parent: Gst.Memory
-    readonly device: VulkanDevice
-    readonly buffer: Vulkan.Buffer
-    readonly vkMem: VulkanMemory
-    readonly requirements: Vulkan.MemoryRequirements
-    readonly usage: Vulkan.BufferUsageFlags
-    readonly barrier: VulkanBarrierBufferInfo
-    readonly lock: GLib.Mutex
-    readonly wrapped: boolean
-    readonly notify: GLib.DestroyNotify
-    readonly userData: object
+    parent: Gst.Memory
+    device: VulkanDevice
+    buffer: Vulkan.Buffer
+    vkMem: VulkanMemory
+    requirements: Vulkan.MemoryRequirements
+    usage: Vulkan.BufferUsageFlags
+    barrier: VulkanBarrierBufferInfo
+    lock: GLib.Mutex
+    wrapped: boolean
+    notify: GLib.DestroyNotify
+    userData: object
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Allocate a new #GstVulkanBufferMemory.
+     * @param device a #GstVulkanDevice
+     * @param size size of the new buffer
+     * @param usage buffer usage flags
+     * @param memPropFlags memory properties flags for the backing memory
      */
     static alloc(device: VulkanDevice, size: number, usage: Vulkan.BufferUsageFlags, memPropFlags: Vulkan.MemoryPropertyFlags): Gst.Memory
     /**
@@ -12702,17 +13902,22 @@ class VulkanBufferMemory {
     static initOnce(): void
     /**
      * Allocated a new wrapped #GstVulkanBufferMemory with `buffer`.
+     * @param device a #GstVulkanDevice
+     * @param buffer a #VkBuffer
+     * @param usage usage flags of `buffer`
+     * @param userData user data to call `notify` with
+     * @param notify a #GDestroyNotify called when `buffer` is no longer in use
      */
     static wrapped(device: VulkanDevice, buffer: Vulkan.Buffer, usage: Vulkan.BufferUsageFlags, userData?: object | null, notify?: GLib.DestroyNotify | null): Gst.Memory
 }
 abstract class VulkanBufferMemoryAllocatorClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanBufferMemoryAllocatorClass */
-    readonly parentClass: Gst.AllocatorClass
+    parentClass: Gst.AllocatorClass
     static name: string
 }
 abstract class VulkanBufferPoolClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanBufferPoolClass */
-    readonly parentClass: Gst.BufferPoolClass
+    parentClass: Gst.BufferPoolClass
     static name: string
 }
 class VulkanBufferPoolPrivate {
@@ -12720,18 +13925,18 @@ class VulkanBufferPoolPrivate {
 }
 class VulkanCommandBuffer {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanCommandBuffer */
-    readonly parent: Gst.MiniObject
-    readonly cmd: Vulkan.CommandBuffer
-    readonly pool: VulkanCommandPool
-    readonly level: Vulkan.CommandBufferLevel
-    readonly lock: GLib.Mutex
+    parent: Gst.MiniObject
+    cmd: Vulkan.CommandBuffer
+    pool: VulkanCommandPool
+    level: Vulkan.CommandBufferLevel
+    lock: GLib.Mutex
     static name: string
     /* Static methods and pseudo-constructors */
     static newWrapped(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel): VulkanCommandBuffer
 }
 abstract class VulkanCommandPoolClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanCommandPoolClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class VulkanCommandPoolPrivate {
@@ -12739,7 +13944,7 @@ class VulkanCommandPoolPrivate {
 }
 abstract class VulkanDescriptorCacheClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanDescriptorCacheClass */
-    readonly parentClass: VulkanHandlePoolClass
+    parentClass: VulkanHandlePoolClass
     static name: string
 }
 class VulkanDescriptorCachePrivate {
@@ -12747,7 +13952,7 @@ class VulkanDescriptorCachePrivate {
 }
 abstract class VulkanDescriptorPoolClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanDescriptorPoolClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class VulkanDescriptorPoolPrivate {
@@ -12755,13 +13960,13 @@ class VulkanDescriptorPoolPrivate {
 }
 class VulkanDescriptorSet {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanDescriptorSet */
-    readonly parent: Gst.MiniObject
-    readonly set: Vulkan.DescriptorSet
-    readonly pool: VulkanDescriptorPool
-    readonly cache: VulkanDescriptorCache
-    readonly nLayouts: number
-    readonly layouts: VulkanHandle
-    readonly lock: GLib.Mutex
+    parent: Gst.MiniObject
+    set: Vulkan.DescriptorSet
+    pool: VulkanDescriptorPool
+    cache: VulkanDescriptorCache
+    nLayouts: number
+    layouts: VulkanHandle
+    lock: GLib.Mutex
     static name: string
     /* Static methods and pseudo-constructors */
     static newWrapped(pool: VulkanDescriptorPool, set: Vulkan.DescriptorSet, nLayouts: number, layouts: VulkanHandle): VulkanDescriptorSet
@@ -12774,7 +13979,7 @@ class VulkanDescriptorSetPrivate {
 }
 abstract class VulkanDeviceClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanDeviceClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class VulkanDevicePrivate {
@@ -12782,9 +13987,9 @@ class VulkanDevicePrivate {
 }
 abstract class VulkanDisplayClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanDisplayClass */
-    readonly objectClass: Gst.ObjectClass
-    readonly getHandle: (display: VulkanDisplay) => object | null
-    readonly createWindow: (display: VulkanDisplay) => VulkanWindow
+    objectClass: Gst.ObjectClass
+    getHandle: (display: VulkanDisplay) => object | null
+    createWindow: (display: VulkanDisplay) => VulkanWindow
     static name: string
 }
 class VulkanDisplayPrivate {
@@ -12792,10 +13997,10 @@ class VulkanDisplayPrivate {
 }
 class VulkanFence {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanFence */
-    readonly parent: Gst.MiniObject
-    readonly device: VulkanDevice
-    readonly cache: VulkanFenceCache
-    readonly fence: Vulkan.Fence
+    parent: Gst.MiniObject
+    device: VulkanDevice
+    cache: VulkanFenceCache
+    fence: Vulkan.Fence
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanFence */
     isSignaled(): boolean
     reset(): void
@@ -12808,7 +14013,7 @@ class VulkanFence {
 }
 abstract class VulkanFenceCacheClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanFenceCacheClass */
-    readonly parentClass: VulkanHandlePoolClass
+    parentClass: VulkanHandlePoolClass
     static name: string
 }
 class VulkanFormatInfo {
@@ -12816,32 +14021,32 @@ class VulkanFormatInfo {
     /**
      * the Vulkan format being described
      */
-    readonly format: Vulkan.Format
+    format: Vulkan.Format
     /**
      * name of this format
      */
-    readonly name: string
+    name: string
     /**
      * how raw data is interpreted and scaled
      * `n_components;` number of components in this format
      */
-    readonly scaling: VulkanFormatScaling
-    readonly flags: VulkanFormatFlags
-    readonly bits: number
-    readonly nComponents: number
-    readonly shift: Uint8Array
-    readonly depth: Uint8Array
-    readonly pixelStride: Uint8Array
-    readonly nPlanes: number
-    readonly plane: Uint8Array
-    readonly poffset: Uint8Array
-    readonly wSub: Uint8Array
-    readonly hSub: Uint8Array
+    scaling: VulkanFormatScaling
+    flags: VulkanFormatFlags
+    bits: number
+    nComponents: number
+    shift: Uint8Array
+    depth: Uint8Array
+    pixelStride: Uint8Array
+    nPlanes: number
+    plane: Uint8Array
+    poffset: Uint8Array
+    wSub: Uint8Array
+    hSub: Uint8Array
     static name: string
 }
 abstract class VulkanFullScreenQuadClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanFullScreenQuadClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class VulkanFullScreenQuadPrivate {
@@ -12852,48 +14057,55 @@ class VulkanHandle {
     /**
      * the parent #GstMiniObject
      */
-    readonly parent: Gst.MiniObject
+    parent: Gst.MiniObject
     /**
      * the #GstVulkanDevice for this handle
      */
-    readonly device: VulkanDevice
+    device: VulkanDevice
     /**
      * the type of handle
      */
-    readonly type: VulkanHandleType
+    type: VulkanHandleType
     /**
      * the handle value
      */
-    readonly handle: VulkanHandleTypedef
-    readonly notify: VulkanHandleDestroyNotify
-    readonly userData: object
+    handle: VulkanHandleTypedef
+    notify: VulkanHandleDestroyNotify
+    userData: object
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanHandle */
     /**
      * Frees the descriptor set layout in `handle`
+     * @param userData callback user data
      */
     freeDescriptorSetLayout(userData?: object | null): void
     /**
      * Frees the framebuffer in `handle`
+     * @param userData callback user data
      */
     freeFramebuffer(userData?: object | null): void
     /**
      * Frees the pipeline in `handle`
+     * @param userData callback user data
      */
     freePipeline(userData?: object | null): void
     /**
      * Frees the pipeline layout in `handle`
+     * @param userData callback user data
      */
     freePipelineLayout(userData?: object | null): void
     /**
      * Frees the render pass in `handle`
+     * @param userData callback user data
      */
     freeRenderPass(userData?: object | null): void
     /**
      * Frees the sampler in `handle`
+     * @param userData callback user data
      */
     freeSampler(userData?: object | null): void
     /**
      * Frees the shader in `handle`
+     * @param userData callback user data
      */
     freeShader(userData?: object | null): void
     static name: string
@@ -12906,16 +14118,20 @@ class VulkanHandle {
      * 
      * Retrieve's the #GstVulkanDisplay or #GstVulkanInstance in `context` and places
      * the result in `display` or `instance` respectively.
+     * @param element a #GstElement
+     * @param context a #GstContext
+     * @param display location of a #GstVulkanDisplay
+     * @param instance location of a #GstVulkanInstance
      */
     static setContext(element: Gst.Element, context: Gst.Context, display: VulkanDisplay | null, instance: VulkanInstance): [ /* returnType */ boolean, /* display */ VulkanDisplay | null, /* instance */ VulkanInstance ]
 }
 abstract class VulkanHandlePoolClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanHandlePoolClass */
-    readonly parent: Gst.ObjectClass
-    readonly alloc: (pool: VulkanHandlePool) => object | null
-    readonly acquire: (pool: VulkanHandlePool) => object | null
-    readonly release: (pool: VulkanHandlePool, handle?: object | null) => void
-    readonly free: (pool: VulkanHandlePool, handle?: object | null) => void
+    parent: Gst.ObjectClass
+    alloc: (pool: VulkanHandlePool) => object | null
+    acquire: (pool: VulkanHandlePool) => object | null
+    release: (pool: VulkanHandlePool, handle?: object | null) => void
+    free: (pool: VulkanHandlePool, handle?: object | null) => void
     static name: string
 }
 class VulkanHandleTypedef {
@@ -12923,7 +14139,7 @@ class VulkanHandleTypedef {
 }
 abstract class VulkanImageBufferPoolClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanImageBufferPoolClass */
-    readonly parentClass: Gst.BufferPoolClass
+    parentClass: Gst.BufferPoolClass
     static name: string
 }
 class VulkanImageBufferPoolPrivate {
@@ -12931,22 +14147,22 @@ class VulkanImageBufferPoolPrivate {
 }
 class VulkanImageMemory {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanImageMemory */
-    readonly parent: Gst.Memory
-    readonly device: VulkanDevice
-    readonly image: Vulkan.Image
-    readonly vkMem: VulkanMemory
-    readonly createInfo: Vulkan.ImageCreateInfo
-    readonly requirements: Vulkan.MemoryRequirements
-    readonly formatProperties: Vulkan.ImageFormatProperties
-    readonly usage: Vulkan.ImageUsageFlags
-    readonly barrier: VulkanBarrierImageInfo
-    readonly lock: GLib.Mutex
-    readonly wrapped: boolean
-    readonly notify: GLib.DestroyNotify
-    readonly userData: object
-    readonly views: object[]
-    readonly outstandingViews: object[]
-    readonly padding: object[]
+    parent: Gst.Memory
+    device: VulkanDevice
+    image: Vulkan.Image
+    vkMem: VulkanMemory
+    createInfo: Vulkan.ImageCreateInfo
+    requirements: Vulkan.MemoryRequirements
+    formatProperties: Vulkan.ImageFormatProperties
+    usage: Vulkan.ImageUsageFlags
+    barrier: VulkanBarrierImageInfo
+    lock: GLib.Mutex
+    wrapped: boolean
+    notify: GLib.DestroyNotify
+    userData: object
+    views: object[]
+    outstandingViews: object[]
+    padding: object[]
     /* Methods of GstVulkan-1.0.GstVulkan.VulkanImageMemory */
     addView(view: VulkanImageView): void
     findView(findFunc: VulkanImageMemoryFindViewFunc): VulkanImageView
@@ -12957,6 +14173,13 @@ class VulkanImageMemory {
     /* Static methods and pseudo-constructors */
     /**
      * Allocated a new #GstVulkanImageMemory.
+     * @param device a #GstVulkanDevice
+     * @param format the VkFormat for the new image
+     * @param width width for the new image
+     * @param height height for the new image
+     * @param tiling tiling for the new image
+     * @param usage usage flags for the new image
+     * @param memPropFlags VkDeviceMemory property flags for the new image
      */
     static alloc(device: VulkanDevice, format: Vulkan.Format, width: number, height: number, tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, memPropFlags: Vulkan.MemoryPropertyFlags): Gst.Memory
     /**
@@ -12968,16 +14191,16 @@ class VulkanImageMemory {
 }
 abstract class VulkanImageMemoryAllocatorClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanImageMemoryAllocatorClass */
-    readonly parentClass: Gst.AllocatorClass
+    parentClass: Gst.AllocatorClass
     static name: string
 }
 class VulkanImageView {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanImageView */
-    readonly parent: Gst.MiniObject
-    readonly device: VulkanDevice
-    readonly image: VulkanImageMemory
-    readonly view: Vulkan.ImageView
-    readonly createInfo: Vulkan.ImageViewCreateInfo
+    parent: Gst.MiniObject
+    device: VulkanDevice
+    image: VulkanImageMemory
+    view: Vulkan.ImageView
+    createInfo: Vulkan.ImageViewCreateInfo
     static name: string
     static new(image: VulkanImageMemory, createInfo: Vulkan.ImageViewCreateInfo): VulkanImageView
     constructor(image: VulkanImageMemory, createInfo: Vulkan.ImageViewCreateInfo)
@@ -12986,7 +14209,7 @@ class VulkanImageView {
 }
 abstract class VulkanInstanceClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanInstanceClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class VulkanInstancePrivate {
@@ -12994,15 +14217,20 @@ class VulkanInstancePrivate {
 }
 class VulkanMemory {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanMemory */
-    readonly mem: Gst.Memory
-    readonly device: VulkanDevice
-    readonly memPtr: Vulkan.DeviceMemory
-    readonly lock: GLib.Mutex
-    readonly mapCount: number
+    mem: Gst.Memory
+    device: VulkanDevice
+    memPtr: Vulkan.DeviceMemory
+    lock: GLib.Mutex
+    mapCount: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Allocated a new #GstVulkanMemory.
+     * @param device a #GstVulkanDevice
+     * @param memoryTypeIndex the Vulkan memory type index
+     * @param params a #GstAllocationParams
+     * @param size the size to allocate
+     * @param memPropFlags 
      */
     static alloc(device: VulkanDevice, memoryTypeIndex: number, params: Gst.AllocationParams, size: number, memPropFlags: Vulkan.MemoryPropertyFlags): Gst.Memory
     static findMemoryTypeIndexWithTypeProperties(device: VulkanDevice, typeBits: number, properties: Vulkan.MemoryPropertyFlags, typeIndex: number): boolean
@@ -13016,12 +14244,12 @@ class VulkanMemory {
 }
 abstract class VulkanMemoryAllocatorClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanMemoryAllocatorClass */
-    readonly parentClass: Gst.AllocatorClass
+    parentClass: Gst.AllocatorClass
     static name: string
 }
 abstract class VulkanPhysicalDeviceClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanPhysicalDeviceClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class VulkanPhysicalDevicePrivate {
@@ -13029,7 +14257,7 @@ class VulkanPhysicalDevicePrivate {
 }
 abstract class VulkanQueueClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanQueueClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class VulkanQueuePrivate {
@@ -13037,7 +14265,7 @@ class VulkanQueuePrivate {
 }
 abstract class VulkanSwapperClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanSwapperClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class VulkanSwapperPrivate {
@@ -13045,11 +14273,11 @@ class VulkanSwapperPrivate {
 }
 class VulkanTrash {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanTrash */
-    readonly parent: Gst.MiniObject
-    readonly cache: VulkanTrashList
-    readonly fence: VulkanFence
-    readonly notify: VulkanTrashNotify
-    readonly userData: object
+    parent: Gst.MiniObject
+    cache: VulkanTrashList
+    fence: VulkanFence
+    notify: VulkanTrashNotify
+    userData: object
     static name: string
     static new(fence: VulkanFence): VulkanTrash
     constructor(fence: VulkanFence)
@@ -13061,21 +14289,21 @@ class VulkanTrash {
 }
 abstract class VulkanTrashFenceListClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanTrashFenceListClass */
-    readonly parentClass: VulkanTrashListClass
+    parentClass: VulkanTrashListClass
     static name: string
 }
 abstract class VulkanTrashListClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanTrashListClass */
-    readonly parentClass: VulkanHandlePoolClass
-    readonly addFunc: VulkanTrashListAdd
-    readonly gcFunc: VulkanTrashListGC
-    readonly waitFunc: VulkanTrashListWait
-    readonly padding: object[]
+    parentClass: VulkanHandlePoolClass
+    addFunc: VulkanTrashListAdd
+    gcFunc: VulkanTrashListGC
+    waitFunc: VulkanTrashListWait
+    padding: object[]
     static name: string
 }
 abstract class VulkanVideoFilterClass {
     /* Fields of GstVulkan-1.0.GstVulkan.VulkanVideoFilterClass */
-    readonly videoSinkClass: GstBase.BaseTransformClass
+    videoSinkClass: GstBase.BaseTransformClass
     static name: string
 }
 abstract class VulkanWindowClass {
@@ -13083,13 +14311,13 @@ abstract class VulkanWindowClass {
     /**
      * Parent class
      */
-    readonly parentClass: Gst.ObjectClass
-    readonly open: (window: VulkanWindow) => boolean
-    readonly close: (window: VulkanWindow) => void
-    readonly getPresentationSupport: (window: VulkanWindow, device: VulkanDevice, queueFamilyIdx: number) => boolean
-    readonly setWindowHandle: (window: VulkanWindow, handle: number) => void
-    readonly getSurfaceDimensions: (window: VulkanWindow, width: number, height: number) => void
-    readonly handleEvents: (window: VulkanWindow, handleEvents: boolean) => void
+    parentClass: Gst.ObjectClass
+    open: (window: VulkanWindow) => boolean
+    close: (window: VulkanWindow) => void
+    getPresentationSupport: (window: VulkanWindow, device: VulkanDevice, queueFamilyIdx: number) => boolean
+    setWindowHandle: (window: VulkanWindow, handle: number) => void
+    getSurfaceDimensions: (window: VulkanWindow, width: number, height: number) => void
+    handleEvents: (window: VulkanWindow, handleEvents: boolean) => void
     static name: string
 }
 class VulkanWindowPrivate {

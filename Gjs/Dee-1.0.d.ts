@@ -196,6 +196,7 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -235,6 +236,8 @@ class Model {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clear_tag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -251,6 +254,8 @@ class Model {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     /**
@@ -263,11 +268,14 @@ class Model {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted_with_sizes(row_spec: GLib.Variant[], cmp_func: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     get_column_index(column_name: string): number
     /**
@@ -277,12 +285,14 @@ class Model {
     get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     get_column_schema(column: number): string
     get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -296,6 +306,7 @@ class Model {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     get_iter_at_row(row: number): ModelIter
     /**
@@ -318,6 +329,7 @@ class Model {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     get_position(iter: ModelIter): number
     get_row(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* out_row_members */ GLib.Variant[] | null ]
@@ -330,6 +342,8 @@ class Model {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     get_tag(iter: ModelIter, tag: ModelTag): object | null
     get_uchar(iter: ModelIter, column: number): number
@@ -340,6 +354,7 @@ class Model {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     get_vardict_schema(column: number): GLib.HashTable
     /**
@@ -347,6 +362,8 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -354,31 +371,40 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted_with_sizes(row_members: GLib.Variant[], cmp_func: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -386,10 +412,12 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -407,6 +435,7 @@ class Model {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -418,28 +447,35 @@ class Model {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     register_vardict_schema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     set_schema_full(column_schemas: string[]): void
     /**
@@ -448,6 +484,9 @@ class Model {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -457,6 +496,9 @@ class Model {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Virtual methods of Dee-1.0.Dee.Model */
@@ -465,6 +507,7 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -516,11 +559,14 @@ class Model {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -530,12 +576,14 @@ class Model {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -549,6 +597,7 @@ class Model {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -571,6 +620,7 @@ class Model {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -583,6 +633,8 @@ class Model {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -593,6 +645,7 @@ class Model {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -600,6 +653,8 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -607,25 +662,32 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -633,10 +695,12 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -654,6 +718,7 @@ class Model {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -665,10 +730,13 @@ class Model {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -678,18 +746,22 @@ class Model {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -698,6 +770,9 @@ class Model {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -707,6 +782,9 @@ class Model {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Signals of Dee-1.0.Dee.Model */
@@ -732,12 +810,14 @@ class Model {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: (($obj: Model, iter: ModelIter) => void)): number
     connect_after(sigName: "row-added", callback: (($obj: Model, iter: ModelIter) => void)): number
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: (($obj: Model, iter: ModelIter) => void)): number
     connect_after(sigName: "row-changed", callback: (($obj: Model, iter: ModelIter) => void)): number
@@ -745,6 +825,7 @@ class Model {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: (($obj: Model, iter: ModelIter) => void)): number
     connect_after(sigName: "row-removed", callback: (($obj: Model, iter: ModelIter) => void)): number
@@ -765,6 +846,7 @@ class ResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource_name The name of the resource to retrieve
      */
     load(resource_name: string): GObject.Object
     /**
@@ -776,6 +858,8 @@ class ResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource A #DeeSerializable to store under `resource_name`
+     * @param resource_name The name to store the resource under. Will overwrite any                 existing resource with the same name
      */
     store(resource: Serializable, resource_name: string): boolean
     /* Virtual methods of Dee-1.0.Dee.ResourceManager */
@@ -791,6 +875,7 @@ class ResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource_name The name of the resource to retrieve
      */
     vfunc_load(resource_name: string): GObject.Object
     /**
@@ -802,6 +887,8 @@ class ResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource A #DeeSerializable to store under `resource_name`
+     * @param resource_name The name to store the resource under. Will overwrite any                 existing resource with the same name
      */
     vfunc_store(resource: Serializable, resource_name: string): boolean
     static name: string
@@ -844,6 +931,7 @@ class ResultSet {
     /**
      * Set the cursor position. Following calls to dee_result_set_peek()
      * or dee_result_set_next() will read the row at position `pos`.
+     * @param pos The position to seek to
      */
     seek(pos: number): void
     /**
@@ -882,6 +970,7 @@ class ResultSet {
     /**
      * Set the cursor position. Following calls to dee_result_set_peek()
      * or dee_result_set_next() will read the row at position `pos`.
+     * @param pos The position to seek to
      */
     vfunc_seek(pos: number): void
     /**
@@ -932,6 +1021,8 @@ class Serializable {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -946,6 +1037,7 @@ class Serializable {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parse_external(data: GLib.Variant): GObject.Object
 }
@@ -953,7 +1045,7 @@ interface Analyzer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Analyzer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Analyzer */
     /**
      * Register a #DeeTermFilterFunc to be called whenever dee_analyzer_analyze()
@@ -961,6 +1053,7 @@ class Analyzer {
      * 
      * Term filters can be used to normalize, add, or remove terms from an input
      * data stream.
+     * @param filter_func Function to call
      */
     add_term_filter(filter_func: TermFilterFunc): void
     /**
@@ -974,6 +1067,9 @@ class Analyzer {
      * The analysis process must call dee_analyzer_tokenize() and run the tokens
      * through all term filters added with dee_analyzer_add_term_filter().
      * Collation keys must be generated with dee_analyzer_collate_key().
+     * @param data The input data to analyze
+     * @param terms_out A #DeeTermList to place the generated terms in.                           If %NULL to terms are generated
+     * @param colkeys_out A #DeeTermList to place generated collation keys in.                             If %NULL no collation keys are generated
      */
     analyze(data: string, terms_out?: TermList | null, colkeys_out?: TermList | null): void
     /**
@@ -982,6 +1078,8 @@ class Analyzer {
      * need a version of this function that works as a #GCompareDataFunc.
      * 
      * The default implementation in #DeeAnalyzer just uses strcmp().
+     * @param key1 The first collation key to compare
+     * @param key2 The second collation key to compare
      */
     collate_cmp(key1: string, key2: string): number
     /**
@@ -989,6 +1087,7 @@ class Analyzer {
      * passed through tokenization and term filters of the analyzer).
      * 
      * The default implementation just calls g_strdup().
+     * @param data The input data to generate a collation key for
      */
     collate_key(data: string): string
     /**
@@ -998,6 +1097,8 @@ class Analyzer {
      * Tokenization splits the input data into constituents (in most cases words),
      * but does not run it through any of the term filters set for the analyzer.
      * It is undefined if the tokenization process itself does any normalization.
+     * @param data The input data to analyze
+     * @param terms_out A #DeeTermList to place the generated tokens in.
      */
     tokenize(data: string, terms_out: TermList): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1035,6 +1136,10 @@ class Analyzer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1045,6 +1150,12 @@ class Analyzer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1068,6 +1179,7 @@ class Analyzer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1087,11 +1199,14 @@ class Analyzer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1099,6 +1214,8 @@ class Analyzer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1116,6 +1233,7 @@ class Analyzer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1161,6 +1279,7 @@ class Analyzer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1204,15 +1323,20 @@ class Analyzer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1253,6 +1377,7 @@ class Analyzer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1287,6 +1412,7 @@ class Analyzer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.Analyzer */
@@ -1296,6 +1422,7 @@ class Analyzer {
      * 
      * Term filters can be used to normalize, add, or remove terms from an input
      * data stream.
+     * @param filter_func Function to call
      */
     vfunc_add_term_filter(filter_func: TermFilterFunc): void
     /**
@@ -1309,6 +1436,9 @@ class Analyzer {
      * The analysis process must call dee_analyzer_tokenize() and run the tokens
      * through all term filters added with dee_analyzer_add_term_filter().
      * Collation keys must be generated with dee_analyzer_collate_key().
+     * @param data The input data to analyze
+     * @param terms_out A #DeeTermList to place the generated terms in.                           If %NULL to terms are generated
+     * @param colkeys_out A #DeeTermList to place generated collation keys in.                             If %NULL no collation keys are generated
      */
     vfunc_analyze(data: string, terms_out?: TermList | null, colkeys_out?: TermList | null): void
     /**
@@ -1317,6 +1447,8 @@ class Analyzer {
      * need a version of this function that works as a #GCompareDataFunc.
      * 
      * The default implementation in #DeeAnalyzer just uses strcmp().
+     * @param key1 The first collation key to compare
+     * @param key2 The second collation key to compare
      */
     vfunc_collate_cmp(key1: string, key2: string): number
     /**
@@ -1324,6 +1456,7 @@ class Analyzer {
      * passed through tokenization and term filters of the analyzer).
      * 
      * The default implementation just calls g_strdup().
+     * @param data The input data to generate a collation key for
      */
     vfunc_collate_key(data: string): string
     /**
@@ -1333,6 +1466,8 @@ class Analyzer {
      * Tokenization splits the input data into constituents (in most cases words),
      * but does not run it through any of the term filters set for the analyzer.
      * It is undefined if the tokenization process itself does any normalization.
+     * @param data The input data to analyze
+     * @param terms_out A #DeeTermList to place the generated tokens in.
      */
     vfunc_tokenize(data: string, terms_out: TermList): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1352,6 +1487,7 @@ class Analyzer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1384,6 +1520,7 @@ class Analyzer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Analyzer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Analyzer, pspec: GObject.ParamSpec) => void)): number
@@ -1400,6 +1537,9 @@ class Analyzer {
     /**
      * A #GCompareDataFunc using a #DeeAnalyzer to compare the keys. This is just
      * a convenience wrapper around dee_analyzer_collate_cmp().
+     * @param key1 The first key to compare
+     * @param key2 The second key to compare
+     * @param analyzer The #DeeAnalyzer to use for the comparison
      */
     static collate_cmp_func(key1: string, key2: string, analyzer?: object | null): number
     static $gtype: GObject.Type
@@ -1409,11 +1549,14 @@ interface Client_ConstructProps extends Peer_ConstructProps {
     bus_address?: string
 }
 class Client {
+    /* Properties of Dee-1.0.Dee.Client */
+    readonly bus_address: string
     /* Properties of Dee-1.0.Dee.Peer */
     readonly swarm_leader: string
     swarm_name: string
+    readonly swarm_owner: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Peer */
     /**
      * Gets list of #GDBusConnection instances used by this #DeePeer instance.
@@ -1476,6 +1619,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1486,6 +1633,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1509,6 +1662,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1528,11 +1682,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1540,6 +1697,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1557,6 +1716,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1602,6 +1762,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1645,15 +1806,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1694,6 +1860,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1728,6 +1895,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.Peer */
@@ -1766,6 +1934,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1776,6 +1945,7 @@ class Client {
     /**
      * Connect to this signal to be notified when peers close
      * their #GDBusConnection.
+     * @param connection the closed #GDBusConnection
      */
     connect(sigName: "connection-closed", callback: (($obj: Client, connection: Gio.DBusConnection) => void)): number
     connect_after(sigName: "connection-closed", callback: (($obj: Client, connection: Gio.DBusConnection) => void)): number
@@ -1783,12 +1953,14 @@ class Client {
     /**
      * Connect to this signal to be notified of existing and new peers that are
      *   in your swarm.
+     * @param name the DBus name of the object found
      */
     connect(sigName: "peer-found", callback: (($obj: Client, name: string) => void)): number
     connect_after(sigName: "peer-found", callback: (($obj: Client, name: string) => void)): number
     emit(sigName: "peer-found", name: string): void
     /**
      * Connect to this signal to be notified when peers disconnect from the swarm
+     * @param name the DBus name of the object that disconnected
      */
     connect(sigName: "peer-lost", callback: (($obj: Client, name: string) => void)): number
     connect_after(sigName: "peer-lost", callback: (($obj: Client, name: string) => void)): number
@@ -1822,14 +1994,19 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bus-address", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-address", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::swarm-leader", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::swarm-leader", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::swarm-name", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::swarm-name", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::swarm-owner", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::swarm-owner", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1852,13 +2029,19 @@ interface FileResourceManager_ConstructProps extends GObject.Object_ConstructPro
     primary_path?: string
 }
 class FileResourceManager {
+    /* Properties of Dee-1.0.Dee.FileResourceManager */
+    /**
+     * Property holding the primary path used to store and load resources
+     */
+    readonly primary_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.FileResourceManager */
     /**
      * Add a path to the set of paths searched for resources. The manager will
      * first search the primary path as specified in the constructor and then
      * search paths in the order they where added.
+     * @param path The path to add to the set of searched paths
      */
     add_search_path(path: string): void
     /**
@@ -1900,6 +2083,10 @@ class FileResourceManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1910,6 +2097,12 @@ class FileResourceManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1933,6 +2126,7 @@ class FileResourceManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1952,11 +2146,14 @@ class FileResourceManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1964,6 +2161,8 @@ class FileResourceManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1981,6 +2180,7 @@ class FileResourceManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2026,6 +2226,7 @@ class FileResourceManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2069,15 +2270,20 @@ class FileResourceManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2118,6 +2324,7 @@ class FileResourceManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2152,6 +2359,7 @@ class FileResourceManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Dee-1.0.Dee.ResourceManager */
@@ -2167,6 +2375,7 @@ class FileResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource_name The name of the resource to retrieve
      */
     load(resource_name: string): GObject.Object
     /**
@@ -2178,6 +2387,8 @@ class FileResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource A #DeeSerializable to store under `resource_name`
+     * @param resource_name The name to store the resource under. Will overwrite any                 existing resource with the same name
      */
     store(resource: Serializable, resource_name: string): boolean
     /* Virtual methods of Dee-1.0.Dee.FileResourceManager */
@@ -2193,6 +2404,7 @@ class FileResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource_name The name of the resource to retrieve
      */
     vfunc_load(resource_name: string): GObject.Object
     /**
@@ -2204,6 +2416,8 @@ class FileResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource A #DeeSerializable to store under `resource_name`
+     * @param resource_name The name to store the resource under. Will overwrite any                 existing resource with the same name
      */
     vfunc_store(resource: Serializable, resource_name: string): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2223,6 +2437,7 @@ class FileResourceManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2255,10 +2470,13 @@ class FileResourceManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FileResourceManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FileResourceManager, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::primary-path", callback: (($obj: FileResourceManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::primary-path", callback: (($obj: FileResourceManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2283,8 +2501,33 @@ interface FilterModel_ConstructProps extends ProxyModel_ConstructProps {
     filter?: Filter
 }
 class FilterModel {
+    /* Properties of Dee-1.0.Dee.FilterModel */
+    /**
+     * Property holding the #DeeFilter used to filter the model
+     * defined in the #DeeFilterModel:back-end property.
+     */
+    readonly filter: Filter
+    /* Properties of Dee-1.0.Dee.ProxyModel */
+    /**
+     * The backend model used by this proxy model.
+     */
+    readonly back_end: Model
+    /**
+     * Boolean property defining whether sequence numbers will be inherited
+     * from the back end model.
+     * You will most likely want to set this property to false
+     * if the implementation manipulates with the rows in the model and keep
+     * track of seqnums yourself.
+     */
+    readonly inherit_seqnums: boolean
+    /**
+     * Boolean property defining whether or not to automatically forward signals
+     * from the back end model. This is especially useful for sub classes wishing
+     * to do their own more advanced signal forwarding.
+     */
+    readonly proxy_signals: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.FilterModel */
     /**
      * Includes `iter` from the back end model in the filtered model, appending
@@ -2292,10 +2535,12 @@ class FilterModel {
      * 
      * This method is usually called when implementing #DeeFilterMapFunc or
      * #DeeFilterMapNotify methods.
+     * @param iter 
      */
     append_iter(iter: ModelIter): ModelIter
     /**
      * Check if `iter` from the back end model is mapped in `self`.
+     * @param iter The #DeeModelIter to check
      */
     contains(iter: ModelIter): boolean
     /**
@@ -2304,6 +2549,8 @@ class FilterModel {
      * 
      * This method is usually called when implementing #DeeFilterMapFunc or
      * #DeeFilterMapNotify methods.
+     * @param iter 
+     * @param pos 
      */
     insert_iter(iter: ModelIter, pos: number): ModelIter
     /**
@@ -2312,6 +2559,8 @@ class FilterModel {
      * 
      * This method is usually called when implementing #DeeFilterMapFunc or
      * #DeeFilterMapNotify methods.
+     * @param iter 
+     * @param pos 
      */
     insert_iter_before(iter: ModelIter, pos: ModelIter): ModelIter
     /**
@@ -2323,6 +2572,7 @@ class FilterModel {
      * This method is mainly intended as a helper for #DeeFilterMapNotify functions
      * of #DeeFilter implementations that creates filter models sorted in
      * accordance with the original models.
+     * @param iter Iterator
      */
     insert_iter_with_original_order(iter: ModelIter): ModelIter
     /**
@@ -2331,6 +2581,7 @@ class FilterModel {
      * 
      * This method is usually called when implementing #DeeFilterMapFunc or
      * #DeeFilterMapNotify methods.
+     * @param iter 
      */
     prepend_iter(iter: ModelIter): ModelIter
     /* Methods of Dee-1.0.Dee.SerializableModel */
@@ -2341,6 +2592,7 @@ class FilterModel {
     inc_seqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     set_seqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2378,6 +2630,10 @@ class FilterModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2388,6 +2644,12 @@ class FilterModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2411,6 +2673,7 @@ class FilterModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2430,11 +2693,14 @@ class FilterModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2442,6 +2708,8 @@ class FilterModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2459,6 +2727,7 @@ class FilterModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2504,6 +2773,7 @@ class FilterModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2547,15 +2817,20 @@ class FilterModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2596,6 +2871,7 @@ class FilterModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2630,6 +2906,7 @@ class FilterModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -2638,6 +2915,7 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -2677,6 +2955,8 @@ class FilterModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clear_tag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -2693,6 +2973,8 @@ class FilterModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     /**
@@ -2705,11 +2987,14 @@ class FilterModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted_with_sizes(row_spec: GLib.Variant[], cmp_func: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     get_column_index(column_name: string): number
     /**
@@ -2719,12 +3004,14 @@ class FilterModel {
     get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     get_column_schema(column: number): string
     get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -2738,6 +3025,7 @@ class FilterModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     get_iter_at_row(row: number): ModelIter
     /**
@@ -2760,6 +3048,7 @@ class FilterModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     get_position(iter: ModelIter): number
     get_row(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* out_row_members */ GLib.Variant[] | null ]
@@ -2772,6 +3061,8 @@ class FilterModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     get_tag(iter: ModelIter, tag: ModelTag): object | null
     get_uchar(iter: ModelIter, column: number): number
@@ -2782,6 +3073,7 @@ class FilterModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     get_vardict_schema(column: number): GLib.HashTable
     /**
@@ -2789,6 +3081,8 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -2796,31 +3090,40 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted_with_sizes(row_members: GLib.Variant[], cmp_func: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -2828,10 +3131,12 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -2849,6 +3154,7 @@ class FilterModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -2860,28 +3166,35 @@ class FilterModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     register_vardict_schema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     set_schema_full(column_schemas: string[]): void
     /**
@@ -2890,6 +3203,9 @@ class FilterModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -2899,6 +3215,9 @@ class FilterModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -2926,6 +3245,7 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -2977,11 +3297,14 @@ class FilterModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -2991,12 +3314,14 @@ class FilterModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -3010,6 +3335,7 @@ class FilterModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -3032,6 +3358,7 @@ class FilterModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -3044,6 +3371,8 @@ class FilterModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -3054,6 +3383,7 @@ class FilterModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -3061,6 +3391,8 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -3068,25 +3400,32 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -3094,10 +3433,12 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -3115,6 +3456,7 @@ class FilterModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -3126,10 +3468,13 @@ class FilterModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -3139,18 +3484,22 @@ class FilterModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -3159,6 +3508,9 @@ class FilterModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -3168,6 +3520,9 @@ class FilterModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -3183,6 +3538,7 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -3234,11 +3590,14 @@ class FilterModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -3248,12 +3607,14 @@ class FilterModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -3267,6 +3628,7 @@ class FilterModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -3289,6 +3651,7 @@ class FilterModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -3301,6 +3664,8 @@ class FilterModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -3311,6 +3676,7 @@ class FilterModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -3318,6 +3684,8 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -3325,25 +3693,32 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -3351,10 +3726,12 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -3372,6 +3749,7 @@ class FilterModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -3383,10 +3761,13 @@ class FilterModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -3396,18 +3777,22 @@ class FilterModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -3416,6 +3801,9 @@ class FilterModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -3425,6 +3813,9 @@ class FilterModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -3440,6 +3831,7 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -3491,11 +3883,14 @@ class FilterModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -3505,12 +3900,14 @@ class FilterModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -3524,6 +3921,7 @@ class FilterModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -3546,6 +3944,7 @@ class FilterModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -3558,6 +3957,8 @@ class FilterModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -3568,6 +3969,7 @@ class FilterModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -3575,6 +3977,8 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -3582,25 +3986,32 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -3608,10 +4019,12 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -3629,6 +4042,7 @@ class FilterModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -3640,10 +4054,13 @@ class FilterModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -3653,18 +4070,22 @@ class FilterModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -3673,6 +4094,9 @@ class FilterModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -3682,6 +4106,9 @@ class FilterModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -3708,6 +4135,7 @@ class FilterModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3740,6 +4168,7 @@ class FilterModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
@@ -3767,12 +4196,14 @@ class FilterModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: (($obj: FilterModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-added", callback: (($obj: FilterModel, iter: ModelIter) => void)): number
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: (($obj: FilterModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-changed", callback: (($obj: FilterModel, iter: ModelIter) => void)): number
@@ -3780,10 +4211,19 @@ class FilterModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: (($obj: FilterModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-removed", callback: (($obj: FilterModel, iter: ModelIter) => void)): number
     emit(sigName: "row-removed", iter: ModelIter): void
+    connect(sigName: "notify::filter", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filter", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::back-end", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::back-end", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::inherit-seqnums", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::inherit-seqnums", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::proxy-signals", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy-signals", callback: (($obj: FilterModel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3805,6 +4245,8 @@ class FilterModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -3819,6 +4261,7 @@ class FilterModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parse_external(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -3827,7 +4270,7 @@ interface GListResultSet_ConstructProps extends GObject.Object_ConstructProps {
 }
 class GListResultSet {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3863,6 +4306,10 @@ class GListResultSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3873,6 +4320,12 @@ class GListResultSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3896,6 +4349,7 @@ class GListResultSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3915,11 +4369,14 @@ class GListResultSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3927,6 +4384,8 @@ class GListResultSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3944,6 +4403,7 @@ class GListResultSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3989,6 +4449,7 @@ class GListResultSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4032,15 +4493,20 @@ class GListResultSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4081,6 +4547,7 @@ class GListResultSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4115,6 +4582,7 @@ class GListResultSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Dee-1.0.Dee.ResultSet */
@@ -4149,6 +4617,7 @@ class GListResultSet {
     /**
      * Set the cursor position. Following calls to dee_result_set_peek()
      * or dee_result_set_next() will read the row at position `pos`.
+     * @param pos The position to seek to
      */
     seek(pos: number): void
     /**
@@ -4187,6 +4656,7 @@ class GListResultSet {
     /**
      * Set the cursor position. Following calls to dee_result_set_peek()
      * or dee_result_set_next() will read the row at position `pos`.
+     * @param pos The position to seek to
      */
     vfunc_seek(pos: number): void
     /**
@@ -4210,6 +4680,7 @@ class GListResultSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4242,6 +4713,7 @@ class GListResultSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GListResultSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GListResultSet, pspec: GObject.ParamSpec) => void)): number
@@ -4258,13 +4730,28 @@ class GListResultSet {
 interface HashIndex_ConstructProps extends Index_ConstructProps {
 }
 class HashIndex {
+    /* Properties of Dee-1.0.Dee.Index */
+    /**
+     * The #DeeAnalyzer used to analyze terms extracted by the model reader
+     */
+    readonly analyzer: Analyzer
+    /**
+     * The #DeeModel being indexed
+     */
+    readonly model: Model
+    /**
+     * The #DeeModelReader used to extract terms from rows in the model
+     */
+    readonly reader: ModelReader
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Index */
     /**
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param start_term The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     foreach(start_term: string, func: IndexIterFunc): void
     /**
@@ -4284,6 +4771,7 @@ class HashIndex {
     get_n_rows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     get_n_rows_for_term(term: string): number
     /**
@@ -4307,6 +4795,7 @@ class HashIndex {
      * 
      * The typical use case for this function is if you need something akin to
      * a primary key in a relational database.
+     * @param term The exact term to match
      */
     lookup_one(term: string): ModelIter
     /* Methods of GObject-2.0.GObject.Object */
@@ -4344,6 +4833,10 @@ class HashIndex {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4354,6 +4847,12 @@ class HashIndex {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4377,6 +4876,7 @@ class HashIndex {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4396,11 +4896,14 @@ class HashIndex {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4408,6 +4911,8 @@ class HashIndex {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4425,6 +4930,7 @@ class HashIndex {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4470,6 +4976,7 @@ class HashIndex {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4513,15 +5020,20 @@ class HashIndex {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4562,6 +5074,7 @@ class HashIndex {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4596,6 +5109,7 @@ class HashIndex {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.Index */
@@ -4603,6 +5117,8 @@ class HashIndex {
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param start_term The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     vfunc_foreach(start_term: string, func: IndexIterFunc): void
     /**
@@ -4613,6 +5129,7 @@ class HashIndex {
     vfunc_get_n_rows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     vfunc_get_n_rows_for_term(term: string): number
     /**
@@ -4641,6 +5158,7 @@ class HashIndex {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4673,10 +5191,17 @@ class HashIndex {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HashIndex, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HashIndex, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::analyzer", callback: (($obj: HashIndex, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::analyzer", callback: (($obj: HashIndex, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::model", callback: (($obj: HashIndex, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model", callback: (($obj: HashIndex, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::reader", callback: (($obj: HashIndex, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reader", callback: (($obj: HashIndex, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4704,13 +5229,28 @@ interface Index_ConstructProps extends GObject.Object_ConstructProps {
     reader?: ModelReader
 }
 class Index {
+    /* Properties of Dee-1.0.Dee.Index */
+    /**
+     * The #DeeAnalyzer used to analyze terms extracted by the model reader
+     */
+    readonly analyzer: Analyzer
+    /**
+     * The #DeeModel being indexed
+     */
+    readonly model: Model
+    /**
+     * The #DeeModelReader used to extract terms from rows in the model
+     */
+    readonly reader: ModelReader
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Index */
     /**
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param start_term The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     foreach(start_term: string, func: IndexIterFunc): void
     /**
@@ -4730,6 +5270,7 @@ class Index {
     get_n_rows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     get_n_rows_for_term(term: string): number
     /**
@@ -4753,6 +5294,7 @@ class Index {
      * 
      * The typical use case for this function is if you need something akin to
      * a primary key in a relational database.
+     * @param term The exact term to match
      */
     lookup_one(term: string): ModelIter
     /* Methods of GObject-2.0.GObject.Object */
@@ -4790,6 +5332,10 @@ class Index {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4800,6 +5346,12 @@ class Index {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4823,6 +5375,7 @@ class Index {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4842,11 +5395,14 @@ class Index {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4854,6 +5410,8 @@ class Index {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4871,6 +5429,7 @@ class Index {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4916,6 +5475,7 @@ class Index {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4959,15 +5519,20 @@ class Index {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5008,6 +5573,7 @@ class Index {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5042,6 +5608,7 @@ class Index {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.Index */
@@ -5049,6 +5616,8 @@ class Index {
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param start_term The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     vfunc_foreach(start_term: string, func: IndexIterFunc): void
     /**
@@ -5059,6 +5628,7 @@ class Index {
     vfunc_get_n_rows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     vfunc_get_n_rows_for_term(term: string): number
     /**
@@ -5087,6 +5657,7 @@ class Index {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5119,10 +5690,17 @@ class Index {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Index, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Index, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::analyzer", callback: (($obj: Index, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::analyzer", callback: (($obj: Index, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::model", callback: (($obj: Index, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model", callback: (($obj: Index, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::reader", callback: (($obj: Index, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reader", callback: (($obj: Index, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5141,8 +5719,9 @@ class Peer {
     /* Properties of Dee-1.0.Dee.Peer */
     readonly swarm_leader: string
     swarm_name: string
+    readonly swarm_owner: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Peer */
     /**
      * Gets list of #GDBusConnection instances used by this #DeePeer instance.
@@ -5205,6 +5784,10 @@ class Peer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5215,6 +5798,12 @@ class Peer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5238,6 +5827,7 @@ class Peer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5257,11 +5847,14 @@ class Peer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5269,6 +5862,8 @@ class Peer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5286,6 +5881,7 @@ class Peer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5331,6 +5927,7 @@ class Peer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5374,15 +5971,20 @@ class Peer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5423,6 +6025,7 @@ class Peer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5457,6 +6060,7 @@ class Peer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.Peer */
@@ -5495,6 +6099,7 @@ class Peer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5505,6 +6110,7 @@ class Peer {
     /**
      * Connect to this signal to be notified when peers close
      * their #GDBusConnection.
+     * @param connection the closed #GDBusConnection
      */
     connect(sigName: "connection-closed", callback: (($obj: Peer, connection: Gio.DBusConnection) => void)): number
     connect_after(sigName: "connection-closed", callback: (($obj: Peer, connection: Gio.DBusConnection) => void)): number
@@ -5512,12 +6118,14 @@ class Peer {
     /**
      * Connect to this signal to be notified of existing and new peers that are
      *   in your swarm.
+     * @param name the DBus name of the object found
      */
     connect(sigName: "peer-found", callback: (($obj: Peer, name: string) => void)): number
     connect_after(sigName: "peer-found", callback: (($obj: Peer, name: string) => void)): number
     emit(sigName: "peer-found", name: string): void
     /**
      * Connect to this signal to be notified when peers disconnect from the swarm
+     * @param name the DBus name of the object that disconnected
      */
     connect(sigName: "peer-lost", callback: (($obj: Peer, name: string) => void)): number
     connect_after(sigName: "peer-lost", callback: (($obj: Peer, name: string) => void)): number
@@ -5551,6 +6159,7 @@ class Peer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Peer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Peer, pspec: GObject.ParamSpec) => void)): number
@@ -5559,6 +6168,8 @@ class Peer {
     connect_after(sigName: "notify::swarm-leader", callback: (($obj: Peer, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::swarm-name", callback: (($obj: Peer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::swarm-name", callback: (($obj: Peer, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::swarm-owner", callback: (($obj: Peer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::swarm-owner", callback: (($obj: Peer, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5592,8 +6203,27 @@ interface ProxyModel_ConstructProps extends SerializableModel_ConstructProps {
     proxy_signals?: boolean
 }
 class ProxyModel {
+    /* Properties of Dee-1.0.Dee.ProxyModel */
+    /**
+     * The backend model used by this proxy model.
+     */
+    readonly back_end: Model
+    /**
+     * Boolean property defining whether sequence numbers will be inherited
+     * from the back end model.
+     * You will most likely want to set this property to false
+     * if the implementation manipulates with the rows in the model and keep
+     * track of seqnums yourself.
+     */
+    readonly inherit_seqnums: boolean
+    /**
+     * Boolean property defining whether or not to automatically forward signals
+     * from the back end model. This is especially useful for sub classes wishing
+     * to do their own more advanced signal forwarding.
+     */
+    readonly proxy_signals: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.SerializableModel */
     get_seqnum(): number
     /**
@@ -5602,6 +6232,7 @@ class ProxyModel {
     inc_seqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     set_seqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5639,6 +6270,10 @@ class ProxyModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5649,6 +6284,12 @@ class ProxyModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5672,6 +6313,7 @@ class ProxyModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5691,11 +6333,14 @@ class ProxyModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5703,6 +6348,8 @@ class ProxyModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5720,6 +6367,7 @@ class ProxyModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5765,6 +6413,7 @@ class ProxyModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5808,15 +6457,20 @@ class ProxyModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5857,6 +6511,7 @@ class ProxyModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5891,6 +6546,7 @@ class ProxyModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -5899,6 +6555,7 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -5938,6 +6595,8 @@ class ProxyModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clear_tag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -5954,6 +6613,8 @@ class ProxyModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     /**
@@ -5966,11 +6627,14 @@ class ProxyModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted_with_sizes(row_spec: GLib.Variant[], cmp_func: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     get_column_index(column_name: string): number
     /**
@@ -5980,12 +6644,14 @@ class ProxyModel {
     get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     get_column_schema(column: number): string
     get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -5999,6 +6665,7 @@ class ProxyModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     get_iter_at_row(row: number): ModelIter
     /**
@@ -6021,6 +6688,7 @@ class ProxyModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     get_position(iter: ModelIter): number
     get_row(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* out_row_members */ GLib.Variant[] | null ]
@@ -6033,6 +6701,8 @@ class ProxyModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     get_tag(iter: ModelIter, tag: ModelTag): object | null
     get_uchar(iter: ModelIter, column: number): number
@@ -6043,6 +6713,7 @@ class ProxyModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     get_vardict_schema(column: number): GLib.HashTable
     /**
@@ -6050,6 +6721,8 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -6057,31 +6730,40 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted_with_sizes(row_members: GLib.Variant[], cmp_func: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -6089,10 +6771,12 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -6110,6 +6794,7 @@ class ProxyModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -6121,28 +6806,35 @@ class ProxyModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     register_vardict_schema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     set_schema_full(column_schemas: string[]): void
     /**
@@ -6151,6 +6843,9 @@ class ProxyModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -6160,6 +6855,9 @@ class ProxyModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -6187,6 +6885,7 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -6238,11 +6937,14 @@ class ProxyModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -6252,12 +6954,14 @@ class ProxyModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -6271,6 +6975,7 @@ class ProxyModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -6293,6 +6998,7 @@ class ProxyModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -6305,6 +7011,8 @@ class ProxyModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -6315,6 +7023,7 @@ class ProxyModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -6322,6 +7031,8 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -6329,25 +7040,32 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -6355,10 +7073,12 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -6376,6 +7096,7 @@ class ProxyModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -6387,10 +7108,13 @@ class ProxyModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -6400,18 +7124,22 @@ class ProxyModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -6420,6 +7148,9 @@ class ProxyModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -6429,6 +7160,9 @@ class ProxyModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -6444,6 +7178,7 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -6495,11 +7230,14 @@ class ProxyModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -6509,12 +7247,14 @@ class ProxyModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -6528,6 +7268,7 @@ class ProxyModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -6550,6 +7291,7 @@ class ProxyModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -6562,6 +7304,8 @@ class ProxyModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -6572,6 +7316,7 @@ class ProxyModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -6579,6 +7324,8 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -6586,25 +7333,32 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -6612,10 +7366,12 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -6633,6 +7389,7 @@ class ProxyModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -6644,10 +7401,13 @@ class ProxyModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -6657,18 +7417,22 @@ class ProxyModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -6677,6 +7441,9 @@ class ProxyModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -6686,6 +7453,9 @@ class ProxyModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -6712,6 +7482,7 @@ class ProxyModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6744,6 +7515,7 @@ class ProxyModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ProxyModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ProxyModel, pspec: GObject.ParamSpec) => void)): number
@@ -6771,12 +7543,14 @@ class ProxyModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: (($obj: ProxyModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-added", callback: (($obj: ProxyModel, iter: ModelIter) => void)): number
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: (($obj: ProxyModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-changed", callback: (($obj: ProxyModel, iter: ModelIter) => void)): number
@@ -6784,10 +7558,17 @@ class ProxyModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: (($obj: ProxyModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-removed", callback: (($obj: ProxyModel, iter: ModelIter) => void)): number
     emit(sigName: "row-removed", iter: ModelIter): void
+    connect(sigName: "notify::back-end", callback: (($obj: ProxyModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::back-end", callback: (($obj: ProxyModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::inherit-seqnums", callback: (($obj: ProxyModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::inherit-seqnums", callback: (($obj: ProxyModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::proxy-signals", callback: (($obj: ProxyModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy-signals", callback: (($obj: ProxyModel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6808,6 +7589,8 @@ class ProxyModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -6822,6 +7605,7 @@ class ProxyModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parse_external(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -6830,7 +7614,7 @@ interface SequenceModel_ConstructProps extends SerializableModel_ConstructProps 
 }
 class SequenceModel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.SerializableModel */
     get_seqnum(): number
     /**
@@ -6839,6 +7623,7 @@ class SequenceModel {
     inc_seqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     set_seqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6876,6 +7661,10 @@ class SequenceModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6886,6 +7675,12 @@ class SequenceModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6909,6 +7704,7 @@ class SequenceModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6928,11 +7724,14 @@ class SequenceModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6940,6 +7739,8 @@ class SequenceModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6957,6 +7758,7 @@ class SequenceModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7002,6 +7804,7 @@ class SequenceModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7045,15 +7848,20 @@ class SequenceModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7094,6 +7902,7 @@ class SequenceModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7128,6 +7937,7 @@ class SequenceModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -7136,6 +7946,7 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -7175,6 +7986,8 @@ class SequenceModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clear_tag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -7191,6 +8004,8 @@ class SequenceModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     /**
@@ -7203,11 +8018,14 @@ class SequenceModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted_with_sizes(row_spec: GLib.Variant[], cmp_func: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     get_column_index(column_name: string): number
     /**
@@ -7217,12 +8035,14 @@ class SequenceModel {
     get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     get_column_schema(column: number): string
     get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -7236,6 +8056,7 @@ class SequenceModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     get_iter_at_row(row: number): ModelIter
     /**
@@ -7258,6 +8079,7 @@ class SequenceModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     get_position(iter: ModelIter): number
     get_row(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* out_row_members */ GLib.Variant[] | null ]
@@ -7270,6 +8092,8 @@ class SequenceModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     get_tag(iter: ModelIter, tag: ModelTag): object | null
     get_uchar(iter: ModelIter, column: number): number
@@ -7280,6 +8104,7 @@ class SequenceModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     get_vardict_schema(column: number): GLib.HashTable
     /**
@@ -7287,6 +8112,8 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -7294,31 +8121,40 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted_with_sizes(row_members: GLib.Variant[], cmp_func: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -7326,10 +8162,12 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -7347,6 +8185,7 @@ class SequenceModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -7358,28 +8197,35 @@ class SequenceModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     register_vardict_schema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     set_schema_full(column_schemas: string[]): void
     /**
@@ -7388,6 +8234,9 @@ class SequenceModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -7397,6 +8246,9 @@ class SequenceModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -7424,6 +8276,7 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -7475,11 +8328,14 @@ class SequenceModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -7489,12 +8345,14 @@ class SequenceModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -7508,6 +8366,7 @@ class SequenceModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -7530,6 +8389,7 @@ class SequenceModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -7542,6 +8402,8 @@ class SequenceModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -7552,6 +8414,7 @@ class SequenceModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -7559,6 +8422,8 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -7566,25 +8431,32 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -7592,10 +8464,12 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -7613,6 +8487,7 @@ class SequenceModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -7624,10 +8499,13 @@ class SequenceModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -7637,18 +8515,22 @@ class SequenceModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -7657,6 +8539,9 @@ class SequenceModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -7666,6 +8551,9 @@ class SequenceModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -7681,6 +8569,7 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -7732,11 +8621,14 @@ class SequenceModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -7746,12 +8638,14 @@ class SequenceModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -7765,6 +8659,7 @@ class SequenceModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -7787,6 +8682,7 @@ class SequenceModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -7799,6 +8695,8 @@ class SequenceModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -7809,6 +8707,7 @@ class SequenceModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -7816,6 +8715,8 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -7823,25 +8724,32 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -7849,10 +8757,12 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -7870,6 +8780,7 @@ class SequenceModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -7881,10 +8792,13 @@ class SequenceModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -7894,18 +8808,22 @@ class SequenceModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -7914,6 +8832,9 @@ class SequenceModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -7923,6 +8844,9 @@ class SequenceModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -7949,6 +8873,7 @@ class SequenceModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7981,6 +8906,7 @@ class SequenceModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SequenceModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SequenceModel, pspec: GObject.ParamSpec) => void)): number
@@ -8008,12 +8934,14 @@ class SequenceModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: (($obj: SequenceModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-added", callback: (($obj: SequenceModel, iter: ModelIter) => void)): number
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: (($obj: SequenceModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-changed", callback: (($obj: SequenceModel, iter: ModelIter) => void)): number
@@ -8021,6 +8949,7 @@ class SequenceModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: (($obj: SequenceModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-removed", callback: (($obj: SequenceModel, iter: ModelIter) => void)): number
@@ -8046,6 +8975,8 @@ class SequenceModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -8060,6 +8991,7 @@ class SequenceModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parse_external(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -8068,7 +9000,7 @@ interface SerializableModel_ConstructProps extends GObject.Object_ConstructProps
 }
 class SerializableModel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.SerializableModel */
     get_seqnum(): number
     /**
@@ -8077,6 +9009,7 @@ class SerializableModel {
     inc_seqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     set_seqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8114,6 +9047,10 @@ class SerializableModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8124,6 +9061,12 @@ class SerializableModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8147,6 +9090,7 @@ class SerializableModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8166,11 +9110,14 @@ class SerializableModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8178,6 +9125,8 @@ class SerializableModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8195,6 +9144,7 @@ class SerializableModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8240,6 +9190,7 @@ class SerializableModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8283,15 +9234,20 @@ class SerializableModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8332,6 +9288,7 @@ class SerializableModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8366,6 +9323,7 @@ class SerializableModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -8374,6 +9332,7 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -8413,6 +9372,8 @@ class SerializableModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clear_tag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -8429,6 +9390,8 @@ class SerializableModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     /**
@@ -8441,11 +9404,14 @@ class SerializableModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted_with_sizes(row_spec: GLib.Variant[], cmp_func: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     get_column_index(column_name: string): number
     /**
@@ -8455,12 +9421,14 @@ class SerializableModel {
     get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     get_column_schema(column: number): string
     get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -8474,6 +9442,7 @@ class SerializableModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     get_iter_at_row(row: number): ModelIter
     /**
@@ -8496,6 +9465,7 @@ class SerializableModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     get_position(iter: ModelIter): number
     get_row(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* out_row_members */ GLib.Variant[] | null ]
@@ -8508,6 +9478,8 @@ class SerializableModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     get_tag(iter: ModelIter, tag: ModelTag): object | null
     get_uchar(iter: ModelIter, column: number): number
@@ -8518,6 +9490,7 @@ class SerializableModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     get_vardict_schema(column: number): GLib.HashTable
     /**
@@ -8525,6 +9498,8 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -8532,31 +9507,40 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted_with_sizes(row_members: GLib.Variant[], cmp_func: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -8564,10 +9548,12 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -8585,6 +9571,7 @@ class SerializableModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -8596,28 +9583,35 @@ class SerializableModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     register_vardict_schema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     set_schema_full(column_schemas: string[]): void
     /**
@@ -8626,6 +9620,9 @@ class SerializableModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -8635,6 +9632,9 @@ class SerializableModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -8662,6 +9662,7 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -8713,11 +9714,14 @@ class SerializableModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -8727,12 +9731,14 @@ class SerializableModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -8746,6 +9752,7 @@ class SerializableModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -8768,6 +9775,7 @@ class SerializableModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -8780,6 +9788,8 @@ class SerializableModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -8790,6 +9800,7 @@ class SerializableModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -8797,6 +9808,8 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -8804,25 +9817,32 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -8830,10 +9850,12 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -8851,6 +9873,7 @@ class SerializableModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -8862,10 +9885,13 @@ class SerializableModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -8875,18 +9901,22 @@ class SerializableModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -8895,6 +9925,9 @@ class SerializableModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -8904,6 +9937,9 @@ class SerializableModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -8930,6 +9966,7 @@ class SerializableModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8962,6 +9999,7 @@ class SerializableModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SerializableModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SerializableModel, pspec: GObject.ParamSpec) => void)): number
@@ -8989,12 +10027,14 @@ class SerializableModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: (($obj: SerializableModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-added", callback: (($obj: SerializableModel, iter: ModelIter) => void)): number
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: (($obj: SerializableModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-changed", callback: (($obj: SerializableModel, iter: ModelIter) => void)): number
@@ -9002,6 +10042,7 @@ class SerializableModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: (($obj: SerializableModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-removed", callback: (($obj: SerializableModel, iter: ModelIter) => void)): number
@@ -9026,6 +10067,8 @@ class SerializableModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -9040,6 +10083,7 @@ class SerializableModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parse_external(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -9050,11 +10094,15 @@ interface Server_ConstructProps extends Peer_ConstructProps {
     same_user_only?: boolean
 }
 class Server {
+    /* Properties of Dee-1.0.Dee.Server */
+    readonly bus_address: string
+    readonly same_user_only: boolean
     /* Properties of Dee-1.0.Dee.Peer */
     readonly swarm_leader: string
     swarm_name: string
+    readonly swarm_owner: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Server */
     /**
      * Gets a D-Bus address string that can be used by clients to connect to server.
@@ -9122,6 +10170,10 @@ class Server {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9132,6 +10184,12 @@ class Server {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9155,6 +10213,7 @@ class Server {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9174,11 +10233,14 @@ class Server {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9186,6 +10248,8 @@ class Server {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9203,6 +10267,7 @@ class Server {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9248,6 +10313,7 @@ class Server {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9291,15 +10357,20 @@ class Server {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9340,6 +10411,7 @@ class Server {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9374,6 +10446,7 @@ class Server {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.Peer */
@@ -9412,6 +10485,7 @@ class Server {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9422,6 +10496,7 @@ class Server {
     /**
      * Connect to this signal to be notified when peers close
      * their #GDBusConnection.
+     * @param connection the closed #GDBusConnection
      */
     connect(sigName: "connection-closed", callback: (($obj: Server, connection: Gio.DBusConnection) => void)): number
     connect_after(sigName: "connection-closed", callback: (($obj: Server, connection: Gio.DBusConnection) => void)): number
@@ -9429,12 +10504,14 @@ class Server {
     /**
      * Connect to this signal to be notified of existing and new peers that are
      *   in your swarm.
+     * @param name the DBus name of the object found
      */
     connect(sigName: "peer-found", callback: (($obj: Server, name: string) => void)): number
     connect_after(sigName: "peer-found", callback: (($obj: Server, name: string) => void)): number
     emit(sigName: "peer-found", name: string): void
     /**
      * Connect to this signal to be notified when peers disconnect from the swarm
+     * @param name the DBus name of the object that disconnected
      */
     connect(sigName: "peer-lost", callback: (($obj: Server, name: string) => void)): number
     connect_after(sigName: "peer-lost", callback: (($obj: Server, name: string) => void)): number
@@ -9468,14 +10545,21 @@ class Server {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bus-address", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-address", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::same-user-only", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::same-user-only", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::swarm-leader", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::swarm-leader", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::swarm-name", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::swarm-name", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::swarm-owner", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::swarm-owner", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9491,6 +10575,8 @@ class Server {
     /**
      * Helper method which creates bus address string for the given name, which
      * should have the same format as a DBus unique name.
+     * @param name A name to create bus address for.
+     * @param include_username Include current user name as part of the bus address.
      */
     static bus_address_for_name(name: string, include_username: boolean): string
     static $gtype: GObject.Type
@@ -9526,6 +10612,16 @@ interface SharedModel_ConstructProps extends ProxyModel_ConstructProps {
 class SharedModel {
     /* Properties of Dee-1.0.Dee.SharedModel */
     /**
+     * Enumeration defining behavior of this model when trying to write to it.
+     * 
+     * Setting this to #DEE_SHARED_MODEL_ACCESS_MODE_LEADER_WRITABLE is useful
+     * when one process is considered an "owner" of a model and all the other
+     * peers are supposed to only synchronize it for reading.
+     * 
+     * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
+     */
+    readonly access_mode: SharedModelAccessMode
+    /**
      * Enumeration defining the flushing behavior.
      * 
      * Setting this to #DEE_SHARED_MODEL_FLUSH_MODE_MANUAL will disable
@@ -9537,6 +10633,10 @@ class SharedModel {
      */
     flush_mode: SharedModelFlushMode
     /**
+     * The #DeePeer that this model uses to connect to the swarm
+     */
+    readonly peer: Peer
+    /**
      * Boolean property defining whether or not the model has synchronized with
      * its peers (if any) yet.
      * 
@@ -9545,8 +10645,27 @@ class SharedModel {
      * you should wait for it to become synchronized.
      */
     readonly synchronized: boolean
+    /* Properties of Dee-1.0.Dee.ProxyModel */
+    /**
+     * The backend model used by this proxy model.
+     */
+    readonly back_end: Model
+    /**
+     * Boolean property defining whether sequence numbers will be inherited
+     * from the back end model.
+     * You will most likely want to set this property to false
+     * if the implementation manipulates with the rows in the model and keep
+     * track of seqnums yourself.
+     */
+    readonly inherit_seqnums: boolean
+    /**
+     * Boolean property defining whether or not to automatically forward signals
+     * from the back end model. This is especially useful for sub classes wishing
+     * to do their own more advanced signal forwarding.
+     */
+    readonly proxy_signals: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.SharedModel */
     /**
      * Expert: All changes to `self` that has not yet been propagated to the peer
@@ -9604,6 +10723,7 @@ class SharedModel {
     is_synchronized(): boolean
     /**
      * Convenience function for setting the #DeeSharedModel:flush-mode property.
+     * @param mode Flush mode to use
      */
     set_flush_mode(mode: SharedModelFlushMode): void
     /* Methods of Dee-1.0.Dee.SerializableModel */
@@ -9614,6 +10734,7 @@ class SharedModel {
     inc_seqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     set_seqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9651,6 +10772,10 @@ class SharedModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9661,6 +10786,12 @@ class SharedModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9684,6 +10815,7 @@ class SharedModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9703,11 +10835,14 @@ class SharedModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9715,6 +10850,8 @@ class SharedModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9732,6 +10869,7 @@ class SharedModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9777,6 +10915,7 @@ class SharedModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9820,15 +10959,20 @@ class SharedModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9869,6 +11013,7 @@ class SharedModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9903,6 +11048,7 @@ class SharedModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -9911,6 +11057,7 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -9950,6 +11097,8 @@ class SharedModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clear_tag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -9966,6 +11115,8 @@ class SharedModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     /**
@@ -9978,11 +11129,14 @@ class SharedModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted_with_sizes(row_spec: GLib.Variant[], cmp_func: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     get_column_index(column_name: string): number
     /**
@@ -9992,12 +11146,14 @@ class SharedModel {
     get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     get_column_schema(column: number): string
     get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -10011,6 +11167,7 @@ class SharedModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     get_iter_at_row(row: number): ModelIter
     /**
@@ -10033,6 +11190,7 @@ class SharedModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     get_position(iter: ModelIter): number
     get_row(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* out_row_members */ GLib.Variant[] | null ]
@@ -10045,6 +11203,8 @@ class SharedModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     get_tag(iter: ModelIter, tag: ModelTag): object | null
     get_uchar(iter: ModelIter, column: number): number
@@ -10055,6 +11215,7 @@ class SharedModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     get_vardict_schema(column: number): GLib.HashTable
     /**
@@ -10062,6 +11223,8 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -10069,31 +11232,40 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted_with_sizes(row_members: GLib.Variant[], cmp_func: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -10101,10 +11273,12 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -10122,6 +11296,7 @@ class SharedModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -10133,28 +11308,35 @@ class SharedModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     register_vardict_schema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     set_schema_full(column_schemas: string[]): void
     /**
@@ -10163,6 +11345,9 @@ class SharedModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -10172,6 +11357,9 @@ class SharedModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -10199,6 +11387,7 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -10250,11 +11439,14 @@ class SharedModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -10264,12 +11456,14 @@ class SharedModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -10283,6 +11477,7 @@ class SharedModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -10305,6 +11500,7 @@ class SharedModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -10317,6 +11513,8 @@ class SharedModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -10327,6 +11525,7 @@ class SharedModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -10334,6 +11533,8 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -10341,25 +11542,32 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -10367,10 +11575,12 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -10388,6 +11598,7 @@ class SharedModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -10399,10 +11610,13 @@ class SharedModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -10412,18 +11626,22 @@ class SharedModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -10432,6 +11650,9 @@ class SharedModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -10441,6 +11662,9 @@ class SharedModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -10456,6 +11680,7 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -10507,11 +11732,14 @@ class SharedModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -10521,12 +11749,14 @@ class SharedModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -10540,6 +11770,7 @@ class SharedModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -10562,6 +11793,7 @@ class SharedModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -10574,6 +11806,8 @@ class SharedModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -10584,6 +11818,7 @@ class SharedModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -10591,6 +11826,8 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -10598,25 +11835,32 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -10624,10 +11868,12 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -10645,6 +11891,7 @@ class SharedModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -10656,10 +11903,13 @@ class SharedModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -10669,18 +11919,22 @@ class SharedModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -10689,6 +11943,9 @@ class SharedModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -10698,6 +11955,9 @@ class SharedModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -10713,6 +11973,7 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -10764,11 +12025,14 @@ class SharedModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -10778,12 +12042,14 @@ class SharedModel {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -10797,6 +12063,7 @@ class SharedModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -10819,6 +12086,7 @@ class SharedModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -10831,6 +12099,8 @@ class SharedModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -10841,6 +12111,7 @@ class SharedModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -10848,6 +12119,8 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -10855,25 +12128,32 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -10881,10 +12161,12 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -10902,6 +12184,7 @@ class SharedModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -10913,10 +12196,13 @@ class SharedModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -10926,18 +12212,22 @@ class SharedModel {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -10946,6 +12236,9 @@ class SharedModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -10955,6 +12248,9 @@ class SharedModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -10981,18 +12277,23 @@ class SharedModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Dee-1.0.Dee.SharedModel */
     /**
      * Emitted right before a remote transaction will be committed to the model.
+     * @param begin_seqnum The seqnum the model has now
+     * @param end_seqnum The seqnum the model will have after the transaction is applied
      */
     connect(sigName: "begin-transaction", callback: (($obj: SharedModel, begin_seqnum: number, end_seqnum: number) => void)): number
     connect_after(sigName: "begin-transaction", callback: (($obj: SharedModel, begin_seqnum: number, end_seqnum: number) => void)): number
     emit(sigName: "begin-transaction", begin_seqnum: number, end_seqnum: number): void
     /**
      * Emitted right after a remote transaction has been committed to the model.
+     * @param begin_seqnum The seqnum the model had before the transaction was applied
+     * @param end_seqnum The seqnum the model has now
      */
     connect(sigName: "end-transaction", callback: (($obj: SharedModel, begin_seqnum: number, end_seqnum: number) => void)): number
     connect_after(sigName: "end-transaction", callback: (($obj: SharedModel, begin_seqnum: number, end_seqnum: number) => void)): number
@@ -11026,6 +12327,7 @@ class SharedModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
@@ -11053,12 +12355,14 @@ class SharedModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: (($obj: SharedModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-added", callback: (($obj: SharedModel, iter: ModelIter) => void)): number
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: (($obj: SharedModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-changed", callback: (($obj: SharedModel, iter: ModelIter) => void)): number
@@ -11066,14 +12370,25 @@ class SharedModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: (($obj: SharedModel, iter: ModelIter) => void)): number
     connect_after(sigName: "row-removed", callback: (($obj: SharedModel, iter: ModelIter) => void)): number
     emit(sigName: "row-removed", iter: ModelIter): void
+    connect(sigName: "notify::access-mode", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::access-mode", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::flush-mode", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::flush-mode", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::peer", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::peer", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::synchronized", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::synchronized", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::back-end", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::back-end", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::inherit-seqnums", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::inherit-seqnums", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::proxy-signals", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy-signals", callback: (($obj: SharedModel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11097,6 +12412,8 @@ class SharedModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -11111,6 +12428,7 @@ class SharedModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parse_external(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -11119,12 +12437,13 @@ interface TermList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class TermList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.TermList */
     /**
      * Add a term to the termlist. Note that it is possible to add a term multiple
      * times. The effect of this is determined by the #DeeModelIndex consuming the
      * #DeeTermList.
+     * @param term The term to add
      */
     add_term(term: string): TermList
     /**
@@ -11156,6 +12475,7 @@ class TermList {
      * 
      * Note that in the default implementation it is guaranteed that the returned
      * string is valid for the entire lifetime of the #DeeTermList.
+     * @param n The (zero based) offset into the term list
      */
     get_term(n: number): string
     num_terms(): number
@@ -11194,6 +12514,10 @@ class TermList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11204,6 +12528,12 @@ class TermList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11227,6 +12557,7 @@ class TermList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11246,11 +12577,14 @@ class TermList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11258,6 +12592,8 @@ class TermList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11275,6 +12611,7 @@ class TermList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11320,6 +12657,7 @@ class TermList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11363,15 +12701,20 @@ class TermList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11412,6 +12755,7 @@ class TermList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11446,6 +12790,7 @@ class TermList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.TermList */
@@ -11453,6 +12798,7 @@ class TermList {
      * Add a term to the termlist. Note that it is possible to add a term multiple
      * times. The effect of this is determined by the #DeeModelIndex consuming the
      * #DeeTermList.
+     * @param term The term to add
      */
     vfunc_add_term(term: string): TermList
     /**
@@ -11484,6 +12830,7 @@ class TermList {
      * 
      * Note that in the default implementation it is guaranteed that the returned
      * string is valid for the entire lifetime of the #DeeTermList.
+     * @param n The (zero based) offset into the term list
      */
     vfunc_get_term(n: number): string
     vfunc_num_terms(): number
@@ -11504,6 +12851,7 @@ class TermList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11536,6 +12884,7 @@ class TermList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TermList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TermList, pspec: GObject.ParamSpec) => void)): number
@@ -11553,7 +12902,7 @@ interface TextAnalyzer_ConstructProps extends Analyzer_ConstructProps {
 }
 class TextAnalyzer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Analyzer */
     /**
      * Register a #DeeTermFilterFunc to be called whenever dee_analyzer_analyze()
@@ -11561,6 +12910,7 @@ class TextAnalyzer {
      * 
      * Term filters can be used to normalize, add, or remove terms from an input
      * data stream.
+     * @param filter_func Function to call
      */
     add_term_filter(filter_func: TermFilterFunc): void
     /**
@@ -11574,6 +12924,9 @@ class TextAnalyzer {
      * The analysis process must call dee_analyzer_tokenize() and run the tokens
      * through all term filters added with dee_analyzer_add_term_filter().
      * Collation keys must be generated with dee_analyzer_collate_key().
+     * @param data The input data to analyze
+     * @param terms_out A #DeeTermList to place the generated terms in.                           If %NULL to terms are generated
+     * @param colkeys_out A #DeeTermList to place generated collation keys in.                             If %NULL no collation keys are generated
      */
     analyze(data: string, terms_out?: TermList | null, colkeys_out?: TermList | null): void
     /**
@@ -11582,6 +12935,8 @@ class TextAnalyzer {
      * need a version of this function that works as a #GCompareDataFunc.
      * 
      * The default implementation in #DeeAnalyzer just uses strcmp().
+     * @param key1 The first collation key to compare
+     * @param key2 The second collation key to compare
      */
     collate_cmp(key1: string, key2: string): number
     /**
@@ -11589,6 +12944,7 @@ class TextAnalyzer {
      * passed through tokenization and term filters of the analyzer).
      * 
      * The default implementation just calls g_strdup().
+     * @param data The input data to generate a collation key for
      */
     collate_key(data: string): string
     /**
@@ -11598,6 +12954,8 @@ class TextAnalyzer {
      * Tokenization splits the input data into constituents (in most cases words),
      * but does not run it through any of the term filters set for the analyzer.
      * It is undefined if the tokenization process itself does any normalization.
+     * @param data The input data to analyze
+     * @param terms_out A #DeeTermList to place the generated tokens in.
      */
     tokenize(data: string, terms_out: TermList): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11635,6 +12993,10 @@ class TextAnalyzer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11645,6 +13007,12 @@ class TextAnalyzer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11668,6 +13036,7 @@ class TextAnalyzer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11687,11 +13056,14 @@ class TextAnalyzer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11699,6 +13071,8 @@ class TextAnalyzer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11716,6 +13090,7 @@ class TextAnalyzer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11761,6 +13136,7 @@ class TextAnalyzer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11804,15 +13180,20 @@ class TextAnalyzer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11853,6 +13234,7 @@ class TextAnalyzer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11887,6 +13269,7 @@ class TextAnalyzer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.Analyzer */
@@ -11896,6 +13279,7 @@ class TextAnalyzer {
      * 
      * Term filters can be used to normalize, add, or remove terms from an input
      * data stream.
+     * @param filter_func Function to call
      */
     vfunc_add_term_filter(filter_func: TermFilterFunc): void
     /**
@@ -11909,6 +13293,9 @@ class TextAnalyzer {
      * The analysis process must call dee_analyzer_tokenize() and run the tokens
      * through all term filters added with dee_analyzer_add_term_filter().
      * Collation keys must be generated with dee_analyzer_collate_key().
+     * @param data The input data to analyze
+     * @param terms_out A #DeeTermList to place the generated terms in.                           If %NULL to terms are generated
+     * @param colkeys_out A #DeeTermList to place generated collation keys in.                             If %NULL no collation keys are generated
      */
     vfunc_analyze(data: string, terms_out?: TermList | null, colkeys_out?: TermList | null): void
     /**
@@ -11917,6 +13304,8 @@ class TextAnalyzer {
      * need a version of this function that works as a #GCompareDataFunc.
      * 
      * The default implementation in #DeeAnalyzer just uses strcmp().
+     * @param key1 The first collation key to compare
+     * @param key2 The second collation key to compare
      */
     vfunc_collate_cmp(key1: string, key2: string): number
     /**
@@ -11924,6 +13313,7 @@ class TextAnalyzer {
      * passed through tokenization and term filters of the analyzer).
      * 
      * The default implementation just calls g_strdup().
+     * @param data The input data to generate a collation key for
      */
     vfunc_collate_key(data: string): string
     /**
@@ -11933,6 +13323,8 @@ class TextAnalyzer {
      * Tokenization splits the input data into constituents (in most cases words),
      * but does not run it through any of the term filters set for the analyzer.
      * It is undefined if the tokenization process itself does any normalization.
+     * @param data The input data to analyze
+     * @param terms_out A #DeeTermList to place the generated tokens in.
      */
     vfunc_tokenize(data: string, terms_out: TermList): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11952,6 +13344,7 @@ class TextAnalyzer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11984,6 +13377,7 @@ class TextAnalyzer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TextAnalyzer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TextAnalyzer, pspec: GObject.ParamSpec) => void)): number
@@ -12006,8 +13400,10 @@ interface Transaction_ConstructProps extends SerializableModel_ConstructProps {
     target?: Model
 }
 class Transaction {
+    /* Properties of Dee-1.0.Dee.Transaction */
+    readonly target: Model
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Transaction */
     /**
      * Apply a transaction to its target model. After this call the transaction
@@ -12032,6 +13428,7 @@ class Transaction {
     inc_seqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     set_seqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12069,6 +13466,10 @@ class Transaction {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12079,6 +13480,12 @@ class Transaction {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12102,6 +13509,7 @@ class Transaction {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12121,11 +13529,14 @@ class Transaction {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12133,6 +13544,8 @@ class Transaction {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12150,6 +13563,7 @@ class Transaction {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12195,6 +13609,7 @@ class Transaction {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12238,15 +13653,20 @@ class Transaction {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12287,6 +13707,7 @@ class Transaction {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12321,6 +13742,7 @@ class Transaction {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -12329,6 +13751,7 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -12368,6 +13791,8 @@ class Transaction {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clear_tag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -12384,6 +13809,8 @@ class Transaction {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     /**
@@ -12396,11 +13823,14 @@ class Transaction {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     find_row_sorted_with_sizes(row_spec: GLib.Variant[], cmp_func: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     get_column_index(column_name: string): number
     /**
@@ -12410,12 +13840,14 @@ class Transaction {
     get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     get_column_schema(column: number): string
     get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -12429,6 +13861,7 @@ class Transaction {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     get_iter_at_row(row: number): ModelIter
     /**
@@ -12451,6 +13884,7 @@ class Transaction {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     get_position(iter: ModelIter): number
     get_row(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* out_row_members */ GLib.Variant[] | null ]
@@ -12463,6 +13897,8 @@ class Transaction {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     get_tag(iter: ModelIter, tag: ModelTag): object | null
     get_uchar(iter: ModelIter, column: number): number
@@ -12473,6 +13909,7 @@ class Transaction {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     get_vardict_schema(column: number): GLib.HashTable
     /**
@@ -12480,6 +13917,8 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -12487,31 +13926,40 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     insert_row_sorted_with_sizes(row_members: GLib.Variant[], cmp_func: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -12519,10 +13967,12 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -12540,6 +13990,7 @@ class Transaction {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -12551,28 +14002,35 @@ class Transaction {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     register_vardict_schema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     set_schema_full(column_schemas: string[]): void
     /**
@@ -12581,6 +14039,9 @@ class Transaction {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -12590,6 +14051,9 @@ class Transaction {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -12617,6 +14081,7 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -12668,11 +14133,14 @@ class Transaction {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -12682,12 +14150,14 @@ class Transaction {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -12701,6 +14171,7 @@ class Transaction {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -12723,6 +14194,7 @@ class Transaction {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -12735,6 +14207,8 @@ class Transaction {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -12745,6 +14219,7 @@ class Transaction {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -12752,6 +14227,8 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -12759,25 +14236,32 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -12785,10 +14269,12 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -12806,6 +14292,7 @@ class Transaction {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -12817,10 +14304,13 @@ class Transaction {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -12830,18 +14320,22 @@ class Transaction {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -12850,6 +14344,9 @@ class Transaction {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -12859,6 +14356,9 @@ class Transaction {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -12874,6 +14374,7 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     vfunc_append_row(row_members: GLib.Variant[]): ModelIter
     /**
@@ -12925,11 +14426,14 @@ class Transaction {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
     vfunc_get_bool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param column_name the column name to retrieve the index of
      */
     vfunc_get_column_index(column_name: string): number
     /**
@@ -12939,12 +14443,14 @@ class Transaction {
     vfunc_get_column_names(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     vfunc_get_column_schema(column: number): string
     vfunc_get_double(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param field_name name of vardict field to get schema of
      */
     vfunc_get_field_schema(field_name: string): [ /* returnType */ string, /* out_column */ number ]
     /**
@@ -12958,6 +14464,7 @@ class Transaction {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     vfunc_get_iter_at_row(row: number): ModelIter
     /**
@@ -12980,6 +14487,7 @@ class Transaction {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     vfunc_get_position(iter: ModelIter): number
     vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant
@@ -12992,6 +14500,8 @@ class Transaction {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     vfunc_get_tag(iter: ModelIter, tag: ModelTag): object | null
     vfunc_get_uchar(iter: ModelIter, column: number): number
@@ -13002,6 +14512,7 @@ class Transaction {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param num_column 
      */
     vfunc_get_vardict_schema(num_column: number): GLib.HashTable
     /**
@@ -13009,6 +14520,8 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter
     /**
@@ -13016,25 +14529,32 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmp_func Callback used for comparison or rows
      */
     vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_first(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     vfunc_is_last(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_next(iter: ModelIter): ModelIter
     /**
@@ -13042,10 +14562,12 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     vfunc_prev(iter: ModelIter): ModelIter
     /**
@@ -13063,6 +14585,7 @@ class Transaction {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tag_destroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     vfunc_register_tag(tag_destroy: GLib.DestroyNotify): ModelTag
     /**
@@ -13074,10 +14597,13 @@ class Transaction {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param num_column 
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     vfunc_remove(iter: ModelIter): void
     vfunc_row_added(iter: ModelIter): void
@@ -13087,18 +14613,22 @@ class Transaction {
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param column_names A list of column names terminated by a %NULL
      */
     vfunc_set_column_names_full(column_names: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param column_schemas A list of #GVariant type strings terminated by a %NULL
      */
     vfunc_set_schema_full(column_schemas: string[]): void
     /**
@@ -13107,6 +14637,9 @@ class Transaction {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -13116,6 +14649,9 @@ class Transaction {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void
     /**
@@ -13142,6 +14678,7 @@ class Transaction {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13174,6 +14711,7 @@ class Transaction {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Transaction, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Transaction, pspec: GObject.ParamSpec) => void)): number
@@ -13201,12 +14739,14 @@ class Transaction {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: (($obj: Transaction, iter: ModelIter) => void)): number
     connect_after(sigName: "row-added", callback: (($obj: Transaction, iter: ModelIter) => void)): number
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: (($obj: Transaction, iter: ModelIter) => void)): number
     connect_after(sigName: "row-changed", callback: (($obj: Transaction, iter: ModelIter) => void)): number
@@ -13214,10 +14754,13 @@ class Transaction {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: (($obj: Transaction, iter: ModelIter) => void)): number
     connect_after(sigName: "row-removed", callback: (($obj: Transaction, iter: ModelIter) => void)): number
     emit(sigName: "row-removed", iter: ModelIter): void
+    connect(sigName: "notify::target", callback: (($obj: Transaction, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::target", callback: (($obj: Transaction, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13240,6 +14783,8 @@ class Transaction {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -13254,6 +14799,7 @@ class Transaction {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parse_external(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -13261,13 +14807,28 @@ class Transaction {
 interface TreeIndex_ConstructProps extends Index_ConstructProps {
 }
 class TreeIndex {
+    /* Properties of Dee-1.0.Dee.Index */
+    /**
+     * The #DeeAnalyzer used to analyze terms extracted by the model reader
+     */
+    readonly analyzer: Analyzer
+    /**
+     * The #DeeModel being indexed
+     */
+    readonly model: Model
+    /**
+     * The #DeeModelReader used to extract terms from rows in the model
+     */
+    readonly reader: ModelReader
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Index */
     /**
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param start_term The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     foreach(start_term: string, func: IndexIterFunc): void
     /**
@@ -13287,6 +14848,7 @@ class TreeIndex {
     get_n_rows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     get_n_rows_for_term(term: string): number
     /**
@@ -13310,6 +14872,7 @@ class TreeIndex {
      * 
      * The typical use case for this function is if you need something akin to
      * a primary key in a relational database.
+     * @param term The exact term to match
      */
     lookup_one(term: string): ModelIter
     /* Methods of GObject-2.0.GObject.Object */
@@ -13347,6 +14910,10 @@ class TreeIndex {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13357,6 +14924,12 @@ class TreeIndex {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13380,6 +14953,7 @@ class TreeIndex {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13399,11 +14973,14 @@ class TreeIndex {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13411,6 +14988,8 @@ class TreeIndex {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13428,6 +15007,7 @@ class TreeIndex {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13473,6 +15053,7 @@ class TreeIndex {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13516,15 +15097,20 @@ class TreeIndex {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13565,6 +15151,7 @@ class TreeIndex {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13599,6 +15186,7 @@ class TreeIndex {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Dee-1.0.Dee.Index */
@@ -13606,6 +15194,8 @@ class TreeIndex {
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param start_term The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     vfunc_foreach(start_term: string, func: IndexIterFunc): void
     /**
@@ -13616,6 +15206,7 @@ class TreeIndex {
     vfunc_get_n_rows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     vfunc_get_n_rows_for_term(term: string): number
     /**
@@ -13644,6 +15235,7 @@ class TreeIndex {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13676,10 +15268,17 @@ class TreeIndex {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TreeIndex, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TreeIndex, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::analyzer", callback: (($obj: TreeIndex, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::analyzer", callback: (($obj: TreeIndex, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::model", callback: (($obj: TreeIndex, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model", callback: (($obj: TreeIndex, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::reader", callback: (($obj: TreeIndex, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reader", callback: (($obj: TreeIndex, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13693,11 +15292,11 @@ class TreeIndex {
 }
 abstract class AnalyzerClass {
     /* Fields of Dee-1.0.Dee.AnalyzerClass */
-    readonly analyze: (self: Analyzer, data: string, terms_out?: TermList | null, colkeys_out?: TermList | null) => void
-    readonly tokenize: (self: Analyzer, data: string, terms_out: TermList) => void
-    readonly add_term_filter: (self: Analyzer, filter_func: TermFilterFunc) => void
-    readonly collate_key: (self: Analyzer, data: string) => string
-    readonly collate_cmp: (self: Analyzer, key1: string, key2: string) => number
+    analyze: (self: Analyzer, data: string, terms_out?: TermList | null, colkeys_out?: TermList | null) => void
+    tokenize: (self: Analyzer, data: string, terms_out: TermList) => void
+    add_term_filter: (self: Analyzer, filter_func: TermFilterFunc) => void
+    collate_key: (self: Analyzer, data: string) => string
+    collate_cmp: (self: Analyzer, key1: string, key2: string) => number
     static name: string
 }
 class AnalyzerPrivate {
@@ -13711,7 +15310,7 @@ class ClientPrivate {
 }
 abstract class FileResourceManagerClass {
     /* Fields of Dee-1.0.Dee.FileResourceManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Filter {
@@ -13720,27 +15319,32 @@ class Filter {
      * The #DeeModelMapFunc used to construct
      *                              the initial contents of a #DeeFilterModel
      */
-    readonly map_func: FilterMapFunc
+    map_func: FilterMapFunc
     /**
      * Callback invoked when the original model changes
      */
-    readonly map_notify: FilterMapNotify
+    map_notify: FilterMapNotify
     /**
      * Callback for freeing the `user_data`
      * `userdata` (closure): Free form user data associated with the filter.
      *                       This pointer will be passed to `map_func` and `map_notify`
      */
-    readonly destroy: GLib.DestroyNotify
-    readonly userdata: object
+    destroy: GLib.DestroyNotify
+    userdata: object
     /* Methods of Dee-1.0.Dee.Filter */
     /**
      * Call the #DeeFilterMapFunc function of a #DeeFilter.
      * When using a #DeeFilterModel you should not call this method yourself.
+     * @param orig_model The model that is being filtered
+     * @param filter_model The #DeeFilterModel that holds the                filtered subset of `orig_model`
      */
     map(orig_model: Model, filter_model: FilterModel): void
     /**
      * Call the #DeeFilterMapNotify function of a #DeeFilter.
      * When using a #DeeFilterModel you should not call this method yourself.
+     * @param orig_iter The #DeeModelIter added to `orig_model`
+     * @param orig_model The model that is being filtered
+     * @param filter_model The #DeeFilterModel that holds the                filtered subset of `orig_model`
      */
     notify(orig_iter: ModelIter, orig_model: Model, filter_model: FilterModel): boolean
     static name: string
@@ -13749,12 +15353,14 @@ class Filter {
      * Create a #DeeFilter that takes string values from a column in the model
      * and builds a #DeeFilterModel with the rows sorted according to the
      * collation rules of the current locale.
+     * @param column The index of a column containing the strings to sort after
      */
     static new_collator(column: number): /* out_filter */ Filter
     /**
      * Create a #DeeFilter that takes string values from a column in the model
      * and builds a #DeeFilterModel with the rows sorted descending according to the
      * collation rules of the current locale.
+     * @param column The index of a column containing the strings to sort after
      */
     static new_collator_desc(column: number): /* out_filter */ Filter
     /**
@@ -13766,22 +15372,29 @@ class Filter {
      * value comparison is done using g_variant_equal(). This means you can use
      * this filter as a convenient fallback when there is no predefined filter
      * for your column type if raw performance is not paramount.
+     * @param column The index of a column containing the string to match
+     * @param value A #GVariant value columns must match exactly.         The matching semantics are those of g_variant_equal(). If `value`         is floating the ownership will be transfered to the filter
      */
     static new_for_any_column(column: number, value: GLib.Variant): /* out_filter */ Filter
     /**
      * Create a #DeeFilter that only includes rows from the original model
      * which has an exact match on some string column. A #DeeFilterModel created
      * with this filter will be ordered in accordance with its parent model.
+     * @param column The index of a column containing the string key to match
+     * @param key 
      */
     static new_for_key_column(column: number, key: string): /* out_filter */ Filter
     /**
      * Create a #DeeFilter that only includes rows from the original model
      * which match a regular expression on some string column. A #DeeFilterModel
      * created with this filter will be ordered in accordance with its parent model.
+     * @param column The index of a column containing the string to match
+     * @param regex The regular expression `column` must match
      */
     static new_regex(column: number, regex: GLib.Regex): /* out_filter */ Filter
     /**
      * Create a new #DeeFilter sorting a model according to a #DeeCompareRowFunc.
+     * @param cmp_row A #DeeCompareRowFunc to use for sorting
      */
     static new_sort(cmp_row: CompareRowFunc): /* out_filter */ Filter
 }
@@ -13793,12 +15406,12 @@ class FilterModelPrivate {
 }
 abstract class GListResultSetClass {
     /* Fields of Dee-1.0.Dee.GListResultSetClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class HashIndexClass {
     /* Fields of Dee-1.0.Dee.HashIndexClass */
-    readonly parent_class: IndexClass
+    parent_class: IndexClass
     static name: string
 }
 class HashIndexPrivate {
@@ -13808,6 +15421,7 @@ class ICUTermFilter {
     /* Methods of Dee-1.0.Dee.ICUTermFilter */
     /**
      * Apply a #DeeICUTermFilter on a piece of UTF-8 text.
+     * @param text The text to apply the filter on
      */
     apply(text: string): string
     /**
@@ -13818,13 +15432,13 @@ class ICUTermFilter {
 }
 abstract class IndexClass {
     /* Fields of Dee-1.0.Dee.IndexClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly lookup: (self: Index, term: string, flags: TermMatchFlag) => ResultSet
-    readonly foreach: (self: Index, start_term: string, func: IndexIterFunc) => void
-    readonly get_n_terms: (self: Index) => number
-    readonly get_n_rows: (self: Index) => number
-    readonly get_n_rows_for_term: (self: Index, term: string) => number
-    readonly get_supported_term_match_flags: (self: Index) => number
+    parent_class: GObject.ObjectClass
+    lookup: (self: Index, term: string, flags: TermMatchFlag) => ResultSet
+    foreach: (self: Index, start_term: string, func: IndexIterFunc) => void
+    get_n_terms: (self: Index) => number
+    get_n_rows: (self: Index) => number
+    get_n_rows_for_term: (self: Index, term: string) => number
+    get_supported_term_match_flags: (self: Index) => number
     static name: string
 }
 class IndexPrivate {
@@ -13832,57 +15446,57 @@ class IndexPrivate {
 }
 abstract class ModelIface {
     /* Fields of Dee-1.0.Dee.ModelIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly row_added: (self: Model, iter: ModelIter) => void
-    readonly row_removed: (self: Model, iter: ModelIter) => void
-    readonly row_changed: (self: Model, iter: ModelIter) => void
-    readonly set_schema_full: (self: Model, column_schemas: string[]) => void
-    readonly get_schema: (self: Model) => string[]
-    readonly get_column_schema: (self: Model, column: number) => string
-    readonly get_field_schema: (self: Model, field_name: string) => [ /* returnType */ string, /* out_column */ number ]
-    readonly get_column_index: (self: Model, column_name: string) => number
-    readonly set_column_names_full: (self: Model, column_names: string[]) => void
-    readonly get_column_names: (self: Model) => string[]
-    readonly register_vardict_schema: (self: Model, num_column: number, schemas: GLib.HashTable) => void
-    readonly get_vardict_schema: (self: Model, num_column: number) => GLib.HashTable
-    readonly get_n_columns: (self: Model) => number
-    readonly get_n_rows: (self: Model) => number
-    readonly append_row: (self: Model, row_members: GLib.Variant[]) => ModelIter
-    readonly prepend_row: (self: Model, row_members: GLib.Variant[]) => ModelIter
-    readonly insert_row: (self: Model, pos: number, row_members: GLib.Variant[]) => ModelIter
-    readonly insert_row_before: (self: Model, iter: ModelIter, row_members: GLib.Variant[]) => ModelIter
-    readonly insert_row_sorted: (self: Model, row_members: GLib.Variant[], cmp_func: CompareRowFunc) => ModelIter
-    readonly find_row_sorted: (self: Model, row_spec: GLib.Variant[], cmp_func: CompareRowFunc) => [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
-    readonly remove: (self: Model, iter: ModelIter) => void
-    readonly clear: (self: Model) => void
-    readonly set_value: (self: Model, iter: ModelIter, column: number, value: GLib.Variant) => void
-    readonly set_row: (self: Model, iter: ModelIter, row_members: GLib.Variant[]) => void
-    readonly get_value: (self: Model, iter: ModelIter, column: number) => GLib.Variant
-    readonly get_value_by_name: (self: Model, iter: ModelIter, column_name: string) => GLib.Variant
-    readonly get_first_iter: (self: Model) => ModelIter
-    readonly get_last_iter: (self: Model) => ModelIter
-    readonly get_iter_at_row: (self: Model, row: number) => ModelIter
-    readonly get_bool: (self: Model, iter: ModelIter, column: number) => boolean
-    readonly get_uchar: (self: Model, iter: ModelIter, column: number) => number
-    readonly get_int32: (self: Model, iter: ModelIter, column: number) => number
-    readonly get_uint32: (self: Model, iter: ModelIter, column: number) => number
-    readonly get_int64: (self: Model, iter: ModelIter, column: number) => number
-    readonly get_uint64: (self: Model, iter: ModelIter, column: number) => number
-    readonly get_double: (self: Model, iter: ModelIter, column: number) => number
-    readonly get_string: (self: Model, iter: ModelIter, column: number) => string
-    readonly next: (self: Model, iter: ModelIter) => ModelIter
-    readonly prev: (self: Model, iter: ModelIter) => ModelIter
-    readonly is_first: (self: Model, iter: ModelIter) => boolean
-    readonly is_last: (self: Model, iter: ModelIter) => boolean
-    readonly get_position: (self: Model, iter: ModelIter) => number
-    readonly register_tag: (self: Model, tag_destroy: GLib.DestroyNotify) => ModelTag
-    readonly get_tag: (self: Model, iter: ModelIter, tag: ModelTag) => object | null
-    readonly set_tag: (self: Model, iter: ModelIter, tag: ModelTag, value?: object | null) => void
-    readonly get_row: (self: Model, iter: ModelIter, out_row_members: GLib.Variant) => GLib.Variant
-    readonly begin_changeset: (self: Model) => void
-    readonly end_changeset: (self: Model) => void
-    readonly changeset_started: (self: Model) => void
-    readonly changeset_finished: (self: Model) => void
+    g_iface: GObject.TypeInterface
+    row_added: (self: Model, iter: ModelIter) => void
+    row_removed: (self: Model, iter: ModelIter) => void
+    row_changed: (self: Model, iter: ModelIter) => void
+    set_schema_full: (self: Model, column_schemas: string[]) => void
+    get_schema: (self: Model) => string[]
+    get_column_schema: (self: Model, column: number) => string
+    get_field_schema: (self: Model, field_name: string) => [ /* returnType */ string, /* out_column */ number ]
+    get_column_index: (self: Model, column_name: string) => number
+    set_column_names_full: (self: Model, column_names: string[]) => void
+    get_column_names: (self: Model) => string[]
+    register_vardict_schema: (self: Model, num_column: number, schemas: GLib.HashTable) => void
+    get_vardict_schema: (self: Model, num_column: number) => GLib.HashTable
+    get_n_columns: (self: Model) => number
+    get_n_rows: (self: Model) => number
+    append_row: (self: Model, row_members: GLib.Variant[]) => ModelIter
+    prepend_row: (self: Model, row_members: GLib.Variant[]) => ModelIter
+    insert_row: (self: Model, pos: number, row_members: GLib.Variant[]) => ModelIter
+    insert_row_before: (self: Model, iter: ModelIter, row_members: GLib.Variant[]) => ModelIter
+    insert_row_sorted: (self: Model, row_members: GLib.Variant[], cmp_func: CompareRowFunc) => ModelIter
+    find_row_sorted: (self: Model, row_spec: GLib.Variant[], cmp_func: CompareRowFunc) => [ /* returnType */ ModelIter, /* out_was_found */ boolean ]
+    remove: (self: Model, iter: ModelIter) => void
+    clear: (self: Model) => void
+    set_value: (self: Model, iter: ModelIter, column: number, value: GLib.Variant) => void
+    set_row: (self: Model, iter: ModelIter, row_members: GLib.Variant[]) => void
+    get_value: (self: Model, iter: ModelIter, column: number) => GLib.Variant
+    get_value_by_name: (self: Model, iter: ModelIter, column_name: string) => GLib.Variant
+    get_first_iter: (self: Model) => ModelIter
+    get_last_iter: (self: Model) => ModelIter
+    get_iter_at_row: (self: Model, row: number) => ModelIter
+    get_bool: (self: Model, iter: ModelIter, column: number) => boolean
+    get_uchar: (self: Model, iter: ModelIter, column: number) => number
+    get_int32: (self: Model, iter: ModelIter, column: number) => number
+    get_uint32: (self: Model, iter: ModelIter, column: number) => number
+    get_int64: (self: Model, iter: ModelIter, column: number) => number
+    get_uint64: (self: Model, iter: ModelIter, column: number) => number
+    get_double: (self: Model, iter: ModelIter, column: number) => number
+    get_string: (self: Model, iter: ModelIter, column: number) => string
+    next: (self: Model, iter: ModelIter) => ModelIter
+    prev: (self: Model, iter: ModelIter) => ModelIter
+    is_first: (self: Model, iter: ModelIter) => boolean
+    is_last: (self: Model, iter: ModelIter) => boolean
+    get_position: (self: Model, iter: ModelIter) => number
+    register_tag: (self: Model, tag_destroy: GLib.DestroyNotify) => ModelTag
+    get_tag: (self: Model, iter: ModelIter, tag: ModelTag) => object | null
+    set_tag: (self: Model, iter: ModelIter, tag: ModelTag, value?: object | null) => void
+    get_row: (self: Model, iter: ModelIter, out_row_members: GLib.Variant) => GLib.Variant
+    begin_changeset: (self: Model) => void
+    end_changeset: (self: Model) => void
+    changeset_started: (self: Model) => void
+    changeset_finished: (self: Model) => void
     static name: string
 }
 class ModelIter {
@@ -13894,15 +15508,15 @@ class ModelReader {
      * The #DeeModelReaderFunc used to extract
      *                                 string from a model
      */
-    readonly reader_func: ModelReaderFunc
+    reader_func: ModelReaderFunc
     /**
      * user data to pass to `reader_func`
      */
-    readonly userdata: object
+    userdata: object
     /**
      * Called when the reader is destroyed
      */
-    readonly destroy: GLib.DestroyNotify
+    destroy: GLib.DestroyNotify
     /* Methods of Dee-1.0.Dee.ModelReader */
     /**
      * Read data from a row in a #DeeModel and extract a string representation from
@@ -13910,20 +15524,25 @@ class ModelReader {
      * 
      * Note that generally a #DeeModelReader need not be confined to reading from
      * one specific column, although in practice most are.
+     * @param model The #DeeModel to read a string from
+     * @param iter The row to read a string from
      */
     read(model: Model, iter: ModelIter): string
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * A #DeeModelReader reading a %gint32 from a #DeeModel at a given column
+     * @param column The column index to read a %gint32 from
      */
     static new_for_int32_column(column: number): /* out_reader */ ModelReader
     /**
      * A #DeeModelReader reading a string from a #DeeModel at a given column
+     * @param column The column index to read a string from
      */
     static new_for_string_column(column: number): /* out_reader */ ModelReader
     /**
      * A #DeeModelReader reading a %guint32 from a #DeeModel at a given column
+     * @param column The column index to read a %guint32 from
      */
     static new_for_uint32_column(column: number): /* out_reader */ ModelReader
 }
@@ -13932,14 +15551,14 @@ class ModelTag {
 }
 abstract class PeerClass {
     /* Fields of Dee-1.0.Dee.PeerClass */
-    readonly peer_found: (self: Peer, name: string) => void
-    readonly peer_lost: (self: Peer, name: string) => void
-    readonly connection_acquired: (self: Peer, connection: Gio.DBusConnection) => void
-    readonly connection_closed: (self: Peer, connection: Gio.DBusConnection) => void
-    readonly get_swarm_leader: (self: Peer) => string
-    readonly is_swarm_leader: (self: Peer) => boolean
-    readonly get_connections: (self: Peer) => Gio.DBusConnection[]
-    readonly list_peers: (self: Peer) => string[]
+    peer_found: (self: Peer, name: string) => void
+    peer_lost: (self: Peer, name: string) => void
+    connection_acquired: (self: Peer, connection: Gio.DBusConnection) => void
+    connection_closed: (self: Peer, connection: Gio.DBusConnection) => void
+    get_swarm_leader: (self: Peer) => string
+    is_swarm_leader: (self: Peer) => boolean
+    get_connections: (self: Peer) => Gio.DBusConnection[]
+    list_peers: (self: Peer) => string[]
     static name: string
 }
 class PeerPrivate {
@@ -13953,21 +15572,21 @@ class ProxyModelPrivate {
 }
 abstract class ResourceManagerIface {
     /* Fields of Dee-1.0.Dee.ResourceManagerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly store: (self: ResourceManager, resource: Serializable, resource_name: string) => boolean
-    readonly load: (self: ResourceManager, resource_name: string) => GObject.Object
+    g_iface: GObject.TypeInterface
+    store: (self: ResourceManager, resource: Serializable, resource_name: string) => boolean
+    load: (self: ResourceManager, resource_name: string) => GObject.Object
     static name: string
 }
 abstract class ResultSetIface {
     /* Fields of Dee-1.0.Dee.ResultSetIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly get_n_rows: (self: ResultSet) => number
-    readonly next: (self: ResultSet) => ModelIter
-    readonly has_next: (self: ResultSet) => boolean
-    readonly peek: (self: ResultSet) => ModelIter
-    readonly seek: (self: ResultSet, pos: number) => void
-    readonly tell: (self: ResultSet) => number
-    readonly get_model: (self: ResultSet) => Model
+    g_iface: GObject.TypeInterface
+    get_n_rows: (self: ResultSet) => number
+    next: (self: ResultSet) => ModelIter
+    has_next: (self: ResultSet) => boolean
+    peek: (self: ResultSet) => ModelIter
+    seek: (self: ResultSet, pos: number) => void
+    tell: (self: ResultSet) => number
+    get_model: (self: ResultSet) => Model
     static name: string
 }
 abstract class SequenceModelClass {
@@ -13978,15 +15597,15 @@ class SequenceModelPrivate {
 }
 abstract class SerializableIface {
     /* Fields of Dee-1.0.Dee.SerializableIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly serialize: (self: Serializable) => GLib.Variant
+    g_iface: GObject.TypeInterface
+    serialize: (self: Serializable) => GLib.Variant
     static name: string
 }
 abstract class SerializableModelClass {
     /* Fields of Dee-1.0.Dee.SerializableModelClass */
-    readonly get_seqnum: (self: Model) => number
-    readonly set_seqnum: (self: Model, seqnum: number) => void
-    readonly inc_seqnum: (self: Model) => number
+    get_seqnum: (self: Model) => number
+    set_seqnum: (self: Model, seqnum: number) => void
+    inc_seqnum: (self: Model) => number
     static name: string
 }
 class SerializableModelPrivate {
@@ -14006,12 +15625,12 @@ class SharedModelPrivate {
 }
 abstract class TermListClass {
     /* Fields of Dee-1.0.Dee.TermListClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly get_term: (self: TermList, n: number) => string
-    readonly add_term: (self: TermList, term: string) => TermList
-    readonly num_terms: (self: TermList) => number
-    readonly clear: (self: TermList) => TermList
-    readonly clone: (self: TermList) => TermList
+    parent_class: GObject.ObjectClass
+    get_term: (self: TermList, n: number) => string
+    add_term: (self: TermList, term: string) => TermList
+    num_terms: (self: TermList) => number
+    clear: (self: TermList) => TermList
+    clone: (self: TermList) => TermList
     static name: string
 }
 class TermListPrivate {
@@ -14031,7 +15650,7 @@ class TransactionPrivate {
 }
 abstract class TreeIndexClass {
     /* Fields of Dee-1.0.Dee.TreeIndexClass */
-    readonly parent_class: IndexClass
+    parent_class: IndexClass
     static name: string
 }
 class TreeIndexPrivate {

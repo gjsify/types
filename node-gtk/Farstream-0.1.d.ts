@@ -143,47 +143,47 @@ class Conference {
     /* Properties of Gst-0.10.Gst.Bin */
     asyncHandling: boolean
     /* Fields of Gst-0.10.Gst.Bin */
-    readonly element: Gst.Element
-    readonly numchildren: number
-    readonly children: object[]
-    readonly childrenCookie: number
-    readonly childBus: Gst.Bus
-    readonly messages: object[]
-    readonly polling: boolean
-    readonly stateDirty: boolean
-    readonly clockDirty: boolean
-    readonly providedClock: Gst.Clock
-    readonly clockProvider: Gst.Element
-    readonly priv: Gst.BinPrivate
-    readonly gstReserved: any[]
+    element: Gst.Element
+    numchildren: number
+    children: object[]
+    childrenCookie: number
+    childBus: Gst.Bus
+    messages: object[]
+    polling: boolean
+    stateDirty: boolean
+    clockDirty: boolean
+    providedClock: Gst.Clock
+    clockProvider: Gst.Element
+    priv: Gst.BinPrivate
+    gstReserved: any[]
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Farstream-0.1.Farstream.Conference */
     /**
      * Create a new Farstream Participant for the type of the given conference.
@@ -191,6 +191,7 @@ class Conference {
     newParticipant(): Participant
     /**
      * Create a new Farstream session for the given conference.
+     * @param mediaType #FsMediaType of the new session
      */
     newSession(mediaType: MediaType): Session
     /* Methods of Gst-0.10.Gst.Bin */
@@ -316,6 +317,10 @@ class Conference {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -326,6 +331,12 @@ class Conference {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -349,6 +360,7 @@ class Conference {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -368,11 +380,14 @@ class Conference {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -380,6 +395,8 @@ class Conference {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -397,6 +414,7 @@ class Conference {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -442,6 +460,7 @@ class Conference {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -485,15 +504,20 @@ class Conference {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -534,6 +558,7 @@ class Conference {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -568,6 +593,7 @@ class Conference {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gst-0.10.Gst.ChildProxy */
@@ -656,6 +682,7 @@ class Conference {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -694,16 +721,18 @@ interface ElementAddedNotifier_ConstructProps extends GObject.Object_ConstructPr
 }
 class ElementAddedNotifier {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Farstream-0.1.Farstream.ElementAddedNotifier */
     /**
      * Add a #GstBin to on which the #FsElementAddedNotifier::element-added signal
      * will be called on every element and sub-element present and added in the
      * future.
+     * @param bin A #GstBin to watch to added elements
      */
     add(bin: Gst.Bin): void
     /**
      * Stop watching the passed bin and its subbins.
+     * @param bin A #GstBin to stop watching
      */
     remove(bin: Gst.Bin): boolean
     /**
@@ -712,11 +741,13 @@ class ElementAddedNotifier {
      * fs_element_added_notifier_set_properties_from_keyfile() .
      * 
      * This is binding friendly (since GKeyFile doesn't have a boxed type).
+     * @param element Element for which to set the default codec preferences
      */
     setDefaultProperties(element: Gst.Element): void
     /**
      * Same as fs_element_added_notifier_set_properties_from_keyfile() but using
      * the name of the file to load instead of the #GKeyFile directly.
+     * @param filename The name of the keyfile to use
      */
     setPropertiesFromFile(filename: string): boolean
     /**
@@ -726,6 +757,7 @@ class ElementAddedNotifier {
      * this function has been called.  It will take ownership of the
      * GKeyFile structure. It will first try the group as the element type, if that
      * does not match, it will check its name.
+     * @param keyfile a #GKeyFile
      */
     setPropertiesFromKeyfile(keyfile: GLib.KeyFile): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -763,6 +795,10 @@ class ElementAddedNotifier {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -773,6 +809,12 @@ class ElementAddedNotifier {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -796,6 +838,7 @@ class ElementAddedNotifier {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -815,11 +858,14 @@ class ElementAddedNotifier {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -827,6 +873,8 @@ class ElementAddedNotifier {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -844,6 +892,7 @@ class ElementAddedNotifier {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -889,6 +938,7 @@ class ElementAddedNotifier {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -932,15 +982,20 @@ class ElementAddedNotifier {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -981,6 +1036,7 @@ class ElementAddedNotifier {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1015,6 +1071,7 @@ class ElementAddedNotifier {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Farstream-0.1.Farstream.ElementAddedNotifier */
@@ -1024,6 +1081,8 @@ class ElementAddedNotifier {
      * Be careful, there is no guarantee that this will be emitted on your
      * main thread, it will be emitted in the thread that added the element.
      * The bin may be %NULL if this is the top-level bin.
+     * @param bin The #GstBin to which this object was added
+     * @param element The #GstElement that was added
      */
     connect(sigName: "element-added", callback: ((bin: Gst.Bin, element: Gst.Element) => void)): number
     on(sigName: "element-added", callback: (bin: Gst.Bin, element: Gst.Element) => void, after?: boolean): NodeJS.EventEmitter
@@ -1059,6 +1118,7 @@ class ElementAddedNotifier {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1083,16 +1143,16 @@ interface Participant_ConstructProps extends Gst.Object_ConstructProps {
 }
 class Participant {
     /* Fields of Gst-0.10.Gst.Object */
-    readonly object: GObject.Object
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    object: GObject.Object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-0.10.Gst.Object */
     setName(name: string): boolean
     getName(): string
@@ -1142,6 +1202,10 @@ class Participant {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1152,6 +1216,12 @@ class Participant {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1175,6 +1245,7 @@ class Participant {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1194,11 +1265,14 @@ class Participant {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1206,6 +1280,8 @@ class Participant {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1223,6 +1299,7 @@ class Participant {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1268,6 +1345,7 @@ class Participant {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1311,15 +1389,20 @@ class Participant {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1360,6 +1443,7 @@ class Participant {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1394,6 +1478,7 @@ class Participant {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-0.10.Gst.Object */
@@ -1446,6 +1531,7 @@ class Participant {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1468,16 +1554,16 @@ interface Plugin_ConstructProps extends GObject.TypeModule_ConstructProps {
 }
 class Plugin {
     /* Fields of GObject-2.0.GObject.TypeModule */
-    readonly parentInstance: GObject.Object
-    readonly useCount: number
-    readonly typeInfos: object[]
-    readonly interfaceInfos: object[]
+    parentInstance: GObject.Object
+    useCount: number
+    typeInfos: object[]
+    interfaceInfos: object[]
     /**
      * the name of the module
      */
-    readonly name: string
+    name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.TypeModule */
     /**
      * Registers an additional interface for a type, whose interface lives
@@ -1489,6 +1575,9 @@ class Plugin {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_add_interface_static()
      * instead. This can be used when making a static build of the module.
+     * @param instanceType type to which to add the interface.
+     * @param interfaceType interface type to add
+     * @param interfaceInfo type information structure
      */
     addInterface(instanceType: GObject.Type, interfaceType: GObject.Type, interfaceInfo: GObject.InterfaceInfo): void
     /**
@@ -1502,6 +1591,8 @@ class Plugin {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param name name for the type
+     * @param constStaticValues an array of #GEnumValue structs for the                       possible enumeration values. The array is                       terminated by a struct with all members being                       0.
      */
     registerEnum(name: string, constStaticValues: GObject.EnumValue): GObject.Type
     /**
@@ -1515,6 +1606,8 @@ class Plugin {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param name name for the type
+     * @param constStaticValues an array of #GFlagsValue structs for the                       possible flags values. The array is                       terminated by a struct with all members being                       0.
      */
     registerFlags(name: string, constStaticValues: GObject.FlagsValue): GObject.Type
     /**
@@ -1532,10 +1625,15 @@ class Plugin {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param parentType the type for the parent class
+     * @param typeName name for the type
+     * @param typeInfo type information structure
+     * @param flags flags field providing details about the type
      */
     registerType(parentType: GObject.Type, typeName: string, typeInfo: GObject.TypeInfo, flags: GObject.TypeFlags): GObject.Type
     /**
      * Sets the name for a #GTypeModule
+     * @param name a human-readable name to use in error messages.
      */
     setName(name: string): void
     /**
@@ -1588,6 +1686,10 @@ class Plugin {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1598,6 +1700,12 @@ class Plugin {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1621,6 +1729,7 @@ class Plugin {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1640,11 +1749,14 @@ class Plugin {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1652,6 +1764,8 @@ class Plugin {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1669,6 +1783,7 @@ class Plugin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1714,6 +1829,7 @@ class Plugin {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1757,15 +1873,20 @@ class Plugin {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1806,6 +1927,7 @@ class Plugin {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1840,6 +1962,7 @@ class Plugin {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GObject-2.0.GObject.TypePlugin */
@@ -1847,12 +1970,18 @@ class Plugin {
      * Calls the `complete_interface_info` function from the
      * #GTypePluginClass of `plugin`. There should be no need to use this
      * function outside of the GObject type system itself.
+     * @param instanceType the #GType of an instantiatable type to which the interface  is added
+     * @param interfaceType the #GType of the interface whose info is completed
+     * @param info the #GInterfaceInfo to fill in
      */
     completeInterfaceInfo(instanceType: GObject.Type, interfaceType: GObject.Type, info: GObject.InterfaceInfo): void
     /**
      * Calls the `complete_type_info` function from the #GTypePluginClass of `plugin`.
      * There should be no need to use this function outside of the GObject
      * type system itself.
+     * @param gType the #GType whose info is completed
+     * @param info the #GTypeInfo struct to fill in
+     * @param valueTable the #GTypeValueTable to fill in
      */
     completeTypeInfo(gType: GObject.Type, info: GObject.TypeInfo, valueTable: GObject.TypeValueTable): void
     /**
@@ -1890,6 +2019,7 @@ class Plugin {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1909,6 +2039,7 @@ class Plugin {
     /* Static methods and pseudo-constructors */
     /**
      * Gets the list of all available plugins of a certain type
+     * @param typeSuffix Get list of plugins with this type suffix
      */
     static listAvailable(typeSuffix: string): string[]
     static $gtype: GObject.Type
@@ -1990,6 +2121,11 @@ class Session {
      */
     readonly codecsWithoutConfig: Codec[]
     /**
+     * The #FsConference parent of this session. This property is a
+     * construct param and is read-only.
+     */
+    readonly conference: Conference
+    /**
      * Indicates the currently active send codec. A user can change the active
      * send codec by calling fs_session_set_send_codec(). The send codec could
      * also be automatically changed by Farstream. This property is an
@@ -1998,6 +2134,16 @@ class Session {
      * the value of this property changes.
      */
     readonly currentSendCodec: Codec
+    /**
+     * The ID of the session, the first number of the pads linked to this session
+     * will be this id
+     */
+    readonly id: number
+    /**
+     * The media-type of the session. This is either Audio, Video or both.
+     * This is a constructor parameter that cannot be changed.
+     */
+    readonly mediaType: MediaType
     /**
      * The Gstreamer sink pad that must be used to send media data on this
      * session. User must unref this GstPad when done with it.
@@ -2008,21 +2154,23 @@ class Session {
      */
     tos: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly object: GObject.Object
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    object: GObject.Object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Farstream-0.1.Farstream.Session */
     /**
      * Some codec updates need to be reliably transmitted to the other side
      * because they contain important parameters required to decode the media.
      * Other codec updates, caused by user action, don't.
+     * @param oldCodecs Codecs previously retrieved from the #FsSession:codecs property
+     * @param newCodecs Codecs recently retrieved from the #FsSession:codecs property
      */
     codecsNeedResend(oldCodecs: Codec[], newCodecs: Codec[]): Codec[]
     /**
@@ -2038,11 +2186,14 @@ class Session {
     /**
      * This function emit the "error" signal on a #FsSession, it should only be
      * called by subclasses.
+     * @param errorNo The number of the error of type #FsError
+     * @param errorMsg Error message
      */
     emitError(errorNo: number, errorMsg: string): void
     /**
      * Returns the GType of the stream transmitter, bindings can use it
      * to validate/convert the parameters passed to fs_session_new_stream().
+     * @param transmitter The name of the transmitter
      */
     getStreamTransmitterType(transmitter: string): GObject.Type
     /**
@@ -2051,26 +2202,32 @@ class Session {
     listTransmitters(): string[]
     /**
      * This function creates a stream for the given participant into the active session.
+     * @param participant #FsParticipant of a participant for the new stream
+     * @param direction #FsStreamDirection describing the direction of the new stream that will be created for this participant
      */
     newStream(participant: Participant, direction: StreamDirection): Stream
     /**
      * Parses a "farstream-codecs-changed" message and checks if it matches
      * the `session` parameters.
+     * @param message a #GstMessage to parse
      */
     parseCodecsChanged(message: Gst.Message): boolean
     /**
      * Parses a "farstream-send-codec-changed" message and checks if it matches
      * the `session` parameters.
+     * @param message a #GstMessage to parse
      */
     parseSendCodecChanged(message: Gst.Message): [ /* returnType */ boolean, /* codec */ Codec, /* secondaryCodecs */ Codec[] ]
     /**
      * Parses a "farstream-telephony-event-started" message and checks if it matches
      * the `session` parameters.
+     * @param message a #GstMessage to parse
      */
     parseTelephonyEventStarted(message: Gst.Message): [ /* returnType */ boolean, /* method */ DTMFMethod, /* event */ DTMFEvent, /* volume */ number ]
     /**
      * Parses a "farstream-telephony-event-stopped" message and checks if it matches
      * the `session` parameters.
+     * @param message a #GstMessage to parse
      */
     parseTelephonyEventStopped(message: Gst.Message): [ /* returnType */ boolean, /* method */ DTMFMethod ]
     /**
@@ -2088,6 +2245,7 @@ class Session {
      * 
      * If the list of specifications would invalidate all codecs, an error will
      * be returned.
+     * @param codecPreferences a #GList of #FsCodec with the desired configuration
      */
     setCodecPreferences(codecPreferences: Codec[]): boolean
     /**
@@ -2096,6 +2254,7 @@ class Session {
      * property of the session. If the given codec is not in the codecs
      * list, `error` will be set and %FALSE will be returned. The `send_codec` will be
      * copied so it must be free'd using fs_codec_destroy() when done.
+     * @param sendCodec a #FsCodec representing the codec to send
      */
     setSendCodec(sendCodec: Codec): boolean
     /**
@@ -2105,6 +2264,8 @@ class Session {
      * 
      * If this function returns %TRUE, a "farstream-telephony-event-started" will
      * always be emitted when the event is actually played out.
+     * @param event A #FsStreamDTMFEvent or another number defined at http://www.iana.org/assignments/audio-telephone-event-registry
+     * @param volume The volume in dBm0 without the negative sign. Should be between 0 and 36. Higher values mean lower volume
      */
     startTelephonyEvent(event: number, volume: number): boolean
     /**
@@ -2167,6 +2328,10 @@ class Session {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2177,6 +2342,12 @@ class Session {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2200,6 +2371,7 @@ class Session {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2219,11 +2391,14 @@ class Session {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2231,6 +2406,8 @@ class Session {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2248,6 +2425,7 @@ class Session {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2293,6 +2471,7 @@ class Session {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2336,15 +2515,20 @@ class Session {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2385,6 +2569,7 @@ class Session {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2419,12 +2604,16 @@ class Session {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Farstream-0.1.Farstream.Session */
     /**
      * This signal is emitted in any error condition, it can be emitted on any
      * thread. Applications should listen to the GstBus for errors.
+     * @param object The #Gobject that emitted the signal
+     * @param errorNo The number of the error
+     * @param errorMsg Error message
      */
     connect(sigName: "error", callback: ((object: GObject.Object, errorNo: Error, errorMsg: string) => void)): number
     on(sigName: "error", callback: (object: GObject.Object, errorNo: Error, errorMsg: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2481,6 +2670,7 @@ class Session {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2502,11 +2692,26 @@ class Session {
     on(sigName: "notify::codecs-without-config", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::codecs-without-config", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::codecs-without-config", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::conference", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::conference", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::conference", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::conference", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::conference", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::current-send-codec", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::current-send-codec", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::current-send-codec", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::current-send-codec", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::current-send-codec", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::media-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::media-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::media-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::media-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::media-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::sink-pad", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sink-pad", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::sink-pad", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2576,22 +2781,32 @@ class Stream {
      */
     readonly negotiatedCodecs: Codec[]
     /**
+     * The #FsParticipant for this stream. This property is a construct param and
+     * is read-only construction.
+     */
+    readonly participant: Participant
+    /**
      * This is the list of remote codecs for this stream. They must be set by the
      * user as soon as they are known using fs_stream_set_remote_codecs()
      * (generally through external signaling). It is a #GList of #FsCodec.
      */
     readonly remoteCodecs: Codec[]
+    /**
+     * The #FsSession for this stream. This property is a construct param and
+     * is read-only construction.
+     */
+    readonly session: Session
     /* Fields of Gst-0.10.Gst.Object */
-    readonly object: GObject.Object
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    object: GObject.Object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Farstream-0.1.Farstream.Stream */
     /**
      * This function is used to add data identifiers that allow the
@@ -2607,6 +2822,7 @@ class Stream {
      * For most protocols, calling this function is optional as the incoming data
      * can be matched with a stream by its source IP address. This is mostly useful
      * if one is using multicast or is behind a muxer server.
+     * @param id The id to add to the stream
      */
     addId(id: number): void
     /**
@@ -2614,6 +2830,7 @@ class Stream {
      * added to the list. The candidates will be used to establish a connection
      * with the peer. A copy will be made so the user must free the
      * passed candidate using fs_candidate_destroy() when done.
+     * @param candidates an #GList of #FsCandidate representing the remote candidates
      */
     addRemoteCandidates(candidates: Candidate[]): boolean
     /**
@@ -2628,42 +2845,52 @@ class Stream {
     /**
      * This function emits the #FsStream::error" signal, it should only be
      * called by subclasses.
+     * @param errorNo The number of the error
+     * @param errorMsg Error message to be displayed to user
      */
     emitError(errorNo: number, errorMsg: string): void
     /**
      * Emits the #FsStream::src-pad-added" signal, it should only be
      * called by subclasses.
+     * @param pad the #GstPad that this #FsStream has created
+     * @param codec The #FsCodec for this pad
      */
     emitSrcPadAdded(pad: Gst.Pad, codec: Codec): void
     /**
      * This function forces data to be sent immediately to the selected remote
      * candidate, by-passing any connectivity checks. There should be at most
      * one candidate per component.
+     * @param remoteCandidates a #GList of #FsCandidate to force
      */
     forceRemoteCandidates(remoteCandidates: Candidate[]): boolean
     /**
      * Parses a "farstream-component-state-changed" message and checks if it matches
      * the `stream` parameters.
+     * @param message a #GstMessage to parse
      */
     parseComponentStateChanged(message: Gst.Message): [ /* returnType */ boolean, /* component */ number, /* state */ StreamState ]
     /**
      * Parses a "farstream-local-candidates-prepared" message and checks if it matches
      * the `stream` parameters.
+     * @param message a #GstMessage to parse
      */
     parseLocalCandidatesPrepared(message: Gst.Message): boolean
     /**
      * Parses a "farstream-new-active-candidate-pair" message and checks
      * if it matches the `stream` parameters.
+     * @param message a #GstMessage to parse
      */
     parseNewActiveCandidatePair(message: Gst.Message): [ /* returnType */ boolean, /* localCandidate */ Candidate, /* remoteCandidate */ Candidate ]
     /**
      * Parses a "farstream-new-local-candidate" message and checks if it matches
      * the `stream` parameters.
+     * @param message a #GstMessage to parse
      */
     parseNewLocalCandidate(message: Gst.Message): [ /* returnType */ boolean, /* candidate */ Candidate ]
     /**
      * Parses a "farstream-recv-codecs-changed" message and checks if it matches
      * the `stream` parameters.
+     * @param message a #GstMessage to parse
      */
     parseRecvCodecsChanged(message: Gst.Message): [ /* returnType */ boolean, /* codecs */ Codec[] ]
     /**
@@ -2672,6 +2899,7 @@ class Stream {
      * codecs or already negotiated codecs for the corresponding #FsSession, `error`
      * will be set and %FALSE will be returned. The `remote_codecs` list will be
      * copied so it must be free'd using fs_codec_list_destroy() when done.
+     * @param remoteCodecs a #GList of #FsCodec representing the remote codecs
      */
     setRemoteCodecs(remoteCodecs: Codec[]): boolean
     /**
@@ -2680,6 +2908,9 @@ class Stream {
      * 
      * The parameters correspond to the varios GObject properties of the
      * selected stream transmitter.
+     * @param transmitter Name of the type of transmitter to use for this stream
+     * @param streamTransmitterParameters (array length=stream_transmitter_n_parameters) (allow-none): an array of n_parameters #GParameter struct that will be passed to the newly-create #FsStreamTransmitter
+     * @param streamTransmitterNParameters Number of parametrs passed to the stream transmitter
      */
     setTransmitter(transmitter: string, streamTransmitterParameters: GObject.Parameter, streamTransmitterNParameters: number): boolean
     /* Methods of Gst-0.10.Gst.Object */
@@ -2731,6 +2962,10 @@ class Stream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2741,6 +2976,12 @@ class Stream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2764,6 +3005,7 @@ class Stream {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2783,11 +3025,14 @@ class Stream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2795,6 +3040,8 @@ class Stream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2812,6 +3059,7 @@ class Stream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2857,6 +3105,7 @@ class Stream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2900,15 +3149,20 @@ class Stream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2949,6 +3203,7 @@ class Stream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2983,11 +3238,14 @@ class Stream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Farstream-0.1.Farstream.Stream */
     /**
      * This signal is emitted in any error condition
+     * @param errorno The number of the error
+     * @param errorMsg Error message to be displayed to user
      */
     connect(sigName: "error", callback: ((errorno: Error, errorMsg: string) => void)): number
     on(sigName: "error", callback: (errorno: Error, errorMsg: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3003,6 +3261,8 @@ class Stream {
      * 
      * This signal is not emitted on the main thread, but on GStreamer's streaming
      * thread!
+     * @param pad #GstPad of the new source pad
+     * @param codec #FsCodec of the codec being received on the new source pad
      */
     connect(sigName: "src-pad-added", callback: ((pad: Gst.Pad, codec: Codec) => void)): number
     on(sigName: "src-pad-added", callback: (pad: Gst.Pad, codec: Codec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3059,6 +3319,7 @@ class Stream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3080,11 +3341,21 @@ class Stream {
     on(sigName: "notify::negotiated-codecs", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::negotiated-codecs", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::negotiated-codecs", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::participant", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::participant", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::participant", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::participant", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::participant", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::remote-codecs", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::remote-codecs", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::remote-codecs", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::remote-codecs", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::remote-codecs", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3113,34 +3384,44 @@ interface StreamTransmitter_ConstructProps extends Gst.Object_ConstructProps {
 class StreamTransmitter {
     /* Properties of Farstream-0.1.Farstream.StreamTransmitter */
     /**
+     * This tells the stream transmitter to associate incoming data with this
+     * based on the source without looking at the content if possible.
+     */
+    readonly associateOnSource: boolean
+    readonly preferredLocalCandidates: any
+    /**
      * A network source #GstElement to be used by the #FsSession
      */
     sending: boolean
     /* Fields of Gst-0.10.Gst.Object */
-    readonly object: GObject.Object
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    object: GObject.Object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Farstream-0.1.Farstream.StreamTransmitter */
     /**
      * This function is used to add remote candidates to the transmitter
+     * @param candidates a #GList of the remote candidates
      */
     addRemoteCandidates(candidates: Candidate[]): boolean
     /**
      * This function emit the "error" signal on a #FsStreamTransmitter, it should
      * only be called by subclasses.
+     * @param errorNo The number of the error
+     * @param errorMsg Error message (for the programmer)
      */
     emitError(errorNo: number, errorMsg: string): void
     /**
      * This function forces data to be sent immediately to the selected remote
      * candidate, by-passing any connectivity checks. There should be at most
      * one candidate per component.
+     * @param remoteCandidates a #GList of #FsCandidate to force
      */
     forceRemoteCandidates(remoteCandidates: Candidate[]): boolean
     /**
@@ -3203,6 +3484,10 @@ class StreamTransmitter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3213,6 +3498,12 @@ class StreamTransmitter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3236,6 +3527,7 @@ class StreamTransmitter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3255,11 +3547,14 @@ class StreamTransmitter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3267,6 +3562,8 @@ class StreamTransmitter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3284,6 +3581,7 @@ class StreamTransmitter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3329,6 +3627,7 @@ class StreamTransmitter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3372,15 +3671,20 @@ class StreamTransmitter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3421,6 +3725,7 @@ class StreamTransmitter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3455,11 +3760,14 @@ class StreamTransmitter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Farstream-0.1.Farstream.StreamTransmitter */
     /**
      * This signal is emitted in any error condition
+     * @param errorno The number of the error
+     * @param errorMsg Error message (for the programmer)
      */
     connect(sigName: "error", callback: ((errorno: Error, errorMsg: string) => void)): number
     on(sigName: "error", callback: (errorno: Error, errorMsg: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3469,6 +3777,8 @@ class StreamTransmitter {
     /**
      * This signal is emitted when a buffer coming from a confirmed known source
      * is received.
+     * @param component The Component on which this buffer was received
+     * @param buffer the #GstBuffer coming from the known source
      */
     connect(sigName: "known-source-packet-received", callback: ((component: number, buffer: object) => void)): number
     on(sigName: "known-source-packet-received", callback: (component: number, buffer: object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3490,6 +3800,8 @@ class StreamTransmitter {
      * candidate pair can change automatically due to network conditions. The user
      * must not modify the candidates and must copy them if he wants to use them
      * outside the callback scope.
+     * @param localCandidate #FsCandidate of the local candidate being used
+     * @param remoteCandidate #FsCandidate of the remote candidate being used
      */
     connect(sigName: "new-active-candidate-pair", callback: ((localCandidate: Candidate, remoteCandidate: Candidate) => void)): number
     on(sigName: "new-active-candidate-pair", callback: (localCandidate: Candidate, remoteCandidate: Candidate) => void, after?: boolean): NodeJS.EventEmitter
@@ -3498,6 +3810,7 @@ class StreamTransmitter {
     emit(sigName: "new-active-candidate-pair", localCandidate: Candidate, remoteCandidate: Candidate): void
     /**
      * This signal is emitted when a new local candidate is discovered.
+     * @param localCandidate #FsCandidate of the local candidate
      */
     connect(sigName: "new-local-candidate", callback: ((localCandidate: Candidate) => void)): number
     on(sigName: "new-local-candidate", callback: (localCandidate: Candidate) => void, after?: boolean): NodeJS.EventEmitter
@@ -3507,6 +3820,8 @@ class StreamTransmitter {
     /**
      * This signal is emitted when the ICE state (or equivalent) of the component
      * changes
+     * @param component the id of the component which state has changed
+     * @param state the new state of the component
      */
     connect(sigName: "state-changed", callback: ((component: number, state: StreamState) => void)): number
     on(sigName: "state-changed", callback: (component: number, state: StreamState) => void, after?: boolean): NodeJS.EventEmitter
@@ -3563,12 +3878,23 @@ class StreamTransmitter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::associate-on-source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::associate-on-source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::associate-on-source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::associate-on-source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::associate-on-source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::preferred-local-candidates", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::preferred-local-candidates", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::preferred-local-candidates", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::preferred-local-candidates", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::preferred-local-candidates", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::sending", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sending", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::sending", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -3600,6 +3926,10 @@ interface Transmitter_ConstructProps extends Gst.Object_ConstructProps {
 class Transmitter {
     /* Properties of Farstream-0.1.Farstream.Transmitter */
     /**
+     * The number of components to create
+     */
+    readonly components: number
+    /**
      * A network source #GstElement to be used by the #FsSession
      * These element's sink must have async=FALSE
      * This element MUST provide a pad named "sink\%d" per component.
@@ -3621,26 +3951,29 @@ class Transmitter {
      */
     tos: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly object: GObject.Object
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    object: GObject.Object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Farstream-0.1.Farstream.Transmitter */
     /**
      * This function emit the "error" signal on a #FsTransmitter, it should
      * only be called by subclasses.
+     * @param errorNo The number of the error
+     * @param errorMsg Error message to be displayed to user
      */
     emitError(errorNo: number, errorMsg: string): void
     /**
      * Get the filter to add on the send pipeline if sending is disabled.
      * 
      * Only for use by subclasses.
+     * @param component The component to get the filter for
      */
     getRecvonlyFilter(component: number): Gst.Element
     /**
@@ -3652,6 +3985,9 @@ class Transmitter {
     /**
      * This function will create a new #FsStreamTransmitter element for a
      * specific participant for this #FsTransmitter
+     * @param participant the #FsParticipant for which the #FsStream using this new #FsStreamTransmitter is created
+     * @param nParameters The number of parameters to pass to the newly created #FsStreamTransmitter
+     * @param parameters an array of #GParameter
      */
     newStreamTransmitter(participant: Participant, nParameters: number, parameters: GObject.Parameter): StreamTransmitter
     /* Methods of Gst-0.10.Gst.Object */
@@ -3703,6 +4039,10 @@ class Transmitter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3713,6 +4053,12 @@ class Transmitter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3736,6 +4082,7 @@ class Transmitter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3755,11 +4102,14 @@ class Transmitter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3767,6 +4117,8 @@ class Transmitter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3784,6 +4136,7 @@ class Transmitter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3829,6 +4182,7 @@ class Transmitter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3872,15 +4226,20 @@ class Transmitter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3921,6 +4280,7 @@ class Transmitter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3955,11 +4315,14 @@ class Transmitter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Farstream-0.1.Farstream.Transmitter */
     /**
      * This signal is emitted in any error condition
+     * @param errorno The number of the error
+     * @param errorMsg Error message to be displayed to user
      */
     connect(sigName: "error", callback: ((errorno: Error, errorMsg: string) => void)): number
     on(sigName: "error", callback: (errorno: Error, errorMsg: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3973,6 +4336,7 @@ class Transmitter {
      * 
      * This element should have a "sending" property that can be changed with the
      * sending state of the stream. It should default to %TRUE.
+     * @param component The component that the filter will be used for
      */
     connect(sigName: "get-recvonly-filter", callback: ((component: number) => Gst.Element)): number
     on(sigName: "get-recvonly-filter", callback: (component: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4029,12 +4393,18 @@ class Transmitter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::components", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::components", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::components", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::components", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::components", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::gst-sink", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::gst-sink", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::gst-sink", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4070,18 +4440,18 @@ class Transmitter {
 }
 class Candidate {
     /* Fields of Farstream-0.1.Farstream.Candidate */
-    readonly foundation: string
-    readonly componentId: number
-    readonly ip: string
-    readonly port: number
-    readonly baseIp: string
-    readonly basePort: number
-    readonly proto: NetworkProtocol
-    readonly priority: number
-    readonly type: CandidateType
-    readonly username: string
-    readonly password: string
-    readonly ttl: number
+    foundation: string
+    componentId: number
+    ip: string
+    port: number
+    baseIp: string
+    basePort: number
+    proto: NetworkProtocol
+    priority: number
+    type: CandidateType
+    username: string
+    password: string
+    ttl: number
     /* Methods of Farstream-0.1.Farstream.Candidate */
     /**
      * Copies a #FsCandidate and its contents.
@@ -4096,27 +4466,33 @@ class Candidate {
 }
 class Codec {
     /* Fields of Farstream-0.1.Farstream.Codec */
-    readonly id: number
-    readonly encodingName: string
-    readonly mediaType: MediaType
-    readonly clockRate: number
-    readonly channels: number
-    readonly minimumReportingInterval: number
-    readonly optionalParams: CodecParameter[]
-    readonly feedbackParams: FeedbackParameter[]
+    id: number
+    encodingName: string
+    mediaType: MediaType
+    clockRate: number
+    channels: number
+    minimumReportingInterval: number
+    optionalParams: CodecParameter[]
+    feedbackParams: FeedbackParameter[]
     /* Methods of Farstream-0.1.Farstream.Codec */
     /**
      * This function adds an new feedback parameter to a #FsCodec
+     * @param type The type of the feedback parameter
+     * @param subtype The subtype of the feedback parameter
+     * @param extraParams The extra_params of the feeback parameter
      */
     addFeedbackParameter(type: string, subtype: string, extraParams: string): void
     /**
      * This function adds an new optional parameter to a #FsCodec
+     * @param name The name of the optional parameter
+     * @param value The extra_params of the optional parameter
      */
     addOptionalParameter(name: string, value: string): void
     /**
      * Compare two codecs, it will declare two codecs to be identical even
      * if their optional parameters are in a different order. %NULL encoding names
      * are ignored.
+     * @param codec2 Second codec
      */
     areEqual(codec2: Codec): boolean
     /**
@@ -4127,23 +4503,30 @@ class Codec {
     /**
      * Finds the #FsFeedbackParameter in the #FsCodec that has the requested
      * subtype, type and extra_params. One of which must be non-NULL;
+     * @param type The subtype of the parameter to search for or %NULL for any type
+     * @param subtype The subtype of the parameter to search for or %NULL for any subtype
+     * @param extraParams The extra_params of the parameter to search for or %NULL for any extra_params
      */
     getFeedbackParameter(type: string, subtype: string, extraParams: string): FeedbackParameter
     /**
      * Finds the #FsCodecParameter in the #FsCodec that has the requested name
      * and, if not %NULL, the requested value
+     * @param name The name of the parameter to search for
+     * @param value The value of the parameter to search for or %NULL for any value
      */
     getOptionalParameter(name: string, value: string): CodecParameter
     /**
      * Removes an optional parameter from a codec.
      * 
      * NULL param will do nothing.
+     * @param item a pointer to the #GList element to remove that contains a #FsFeedbackParameter
      */
     removeFeedbackParameter(item: FeedbackParameter[]): void
     /**
      * Removes an optional parameter from a codec.
      * 
      * NULL param will do nothing.
+     * @param param a pointer to the #FsCodecParameter to remove
      */
     removeOptionalParameter(param: CodecParameter): void
     /**
@@ -4158,8 +4541,8 @@ class Codec {
 }
 class CodecParameter {
     /* Fields of Farstream-0.1.Farstream.CodecParameter */
-    readonly name: string
-    readonly value: string
+    name: string
+    value: string
     /* Methods of Farstream-0.1.Farstream.CodecParameter */
     copy(): CodecParameter
     free(): void
@@ -4167,14 +4550,14 @@ class CodecParameter {
 }
 abstract class ConferenceClass {
     /* Fields of Farstream-0.1.Farstream.ConferenceClass */
-    readonly parent: Gst.BinClass
-    readonly newSession: (conference: Conference, mediaType: MediaType) => Session
-    readonly newParticipant: (conference: Conference) => Participant
+    parent: Gst.BinClass
+    newSession: (conference: Conference, mediaType: MediaType) => Session
+    newParticipant: (conference: Conference) => Participant
     static name: string
 }
 abstract class ElementAddedNotifierClass {
     /* Fields of Farstream-0.1.Farstream.ElementAddedNotifierClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ElementAddedNotifierPrivate {
@@ -4182,9 +4565,9 @@ class ElementAddedNotifierPrivate {
 }
 class FeedbackParameter {
     /* Fields of Farstream-0.1.Farstream.FeedbackParameter */
-    readonly type: string
-    readonly subtype: string
-    readonly extraParams: string
+    type: string
+    subtype: string
+    extraParams: string
     /* Methods of Farstream-0.1.Farstream.FeedbackParameter */
     copy(): FeedbackParameter
     free(): void
@@ -4192,7 +4575,7 @@ class FeedbackParameter {
 }
 abstract class ParticipantClass {
     /* Fields of Farstream-0.1.Farstream.ParticipantClass */
-    readonly parentClass: Gst.ObjectClass
+    parentClass: Gst.ObjectClass
     static name: string
 }
 class ParticipantPrivate {
@@ -4200,7 +4583,7 @@ class ParticipantPrivate {
 }
 abstract class PluginClass {
     /* Fields of Farstream-0.1.Farstream.PluginClass */
-    readonly parentClass: GObject.TypeModuleClass
+    parentClass: GObject.TypeModuleClass
     static name: string
 }
 class PluginPrivate {
@@ -4208,15 +4591,15 @@ class PluginPrivate {
 }
 abstract class SessionClass {
     /* Fields of Farstream-0.1.Farstream.SessionClass */
-    readonly parentClass: Gst.ObjectClass
-    readonly newStream: (session: Session, participant: Participant, direction: StreamDirection) => Stream
-    readonly startTelephonyEvent: (session: Session, event: number, volume: number) => boolean
-    readonly stopTelephonyEvent: (session: Session) => boolean
-    readonly setSendCodec: (session: Session, sendCodec: Codec) => boolean
-    readonly setCodecPreferences: (session: Session, codecPreferences: Codec[]) => boolean
-    readonly listTransmitters: (session: Session) => string[]
-    readonly getStreamTransmitterType: (session: Session, transmitter: string) => GObject.Type
-    readonly codecsNeedResend: (session: Session, oldCodecs: Codec[], newCodecs: Codec[]) => Codec[]
+    parentClass: Gst.ObjectClass
+    newStream: (session: Session, participant: Participant, direction: StreamDirection) => Stream
+    startTelephonyEvent: (session: Session, event: number, volume: number) => boolean
+    stopTelephonyEvent: (session: Session) => boolean
+    setSendCodec: (session: Session, sendCodec: Codec) => boolean
+    setCodecPreferences: (session: Session, codecPreferences: Codec[]) => boolean
+    listTransmitters: (session: Session) => string[]
+    getStreamTransmitterType: (session: Session, transmitter: string) => GObject.Type
+    codecsNeedResend: (session: Session, oldCodecs: Codec[], newCodecs: Codec[]) => Codec[]
     static name: string
 }
 class SessionPrivate {
@@ -4224,12 +4607,12 @@ class SessionPrivate {
 }
 abstract class StreamClass {
     /* Fields of Farstream-0.1.Farstream.StreamClass */
-    readonly parentClass: Gst.ObjectClass
-    readonly addRemoteCandidates: (stream: Stream, candidates: Candidate[]) => boolean
-    readonly forceRemoteCandidates: (stream: Stream, remoteCandidates: Candidate[]) => boolean
-    readonly setRemoteCodecs: (stream: Stream, remoteCodecs: Codec[]) => boolean
-    readonly addId: (stream: Stream, id: number) => void
-    readonly setTransmitter: (stream: Stream, transmitter: string, streamTransmitterParameters: GObject.Parameter, streamTransmitterNParameters: number) => boolean
+    parentClass: Gst.ObjectClass
+    addRemoteCandidates: (stream: Stream, candidates: Candidate[]) => boolean
+    forceRemoteCandidates: (stream: Stream, remoteCandidates: Candidate[]) => boolean
+    setRemoteCodecs: (stream: Stream, remoteCodecs: Codec[]) => boolean
+    addId: (stream: Stream, id: number) => void
+    setTransmitter: (stream: Stream, transmitter: string, streamTransmitterParameters: GObject.Parameter, streamTransmitterNParameters: number) => boolean
     static name: string
 }
 class StreamPrivate {
@@ -4237,11 +4620,11 @@ class StreamPrivate {
 }
 abstract class StreamTransmitterClass {
     /* Fields of Farstream-0.1.Farstream.StreamTransmitterClass */
-    readonly parentClass: Gst.ObjectClass
-    readonly addRemoteCandidates: (streamtransmitter: StreamTransmitter, candidates: Candidate[]) => boolean
-    readonly forceRemoteCandidates: (streamtransmitter: StreamTransmitter, remoteCandidates: Candidate[]) => boolean
-    readonly gatherLocalCandidates: (streamtransmitter: StreamTransmitter) => boolean
-    readonly stop: (streamtransmitter: StreamTransmitter) => void
+    parentClass: Gst.ObjectClass
+    addRemoteCandidates: (streamtransmitter: StreamTransmitter, candidates: Candidate[]) => boolean
+    forceRemoteCandidates: (streamtransmitter: StreamTransmitter, remoteCandidates: Candidate[]) => boolean
+    gatherLocalCandidates: (streamtransmitter: StreamTransmitter) => boolean
+    stop: (streamtransmitter: StreamTransmitter) => void
     static name: string
 }
 class StreamTransmitterPrivate {
@@ -4249,9 +4632,9 @@ class StreamTransmitterPrivate {
 }
 abstract class TransmitterClass {
     /* Fields of Farstream-0.1.Farstream.TransmitterClass */
-    readonly parentClass: Gst.ObjectClass
-    readonly newStreamTransmitter: (transmitter: Transmitter, participant: Participant, nParameters: number, parameters: GObject.Parameter) => StreamTransmitter
-    readonly getStreamTransmitterType: (transmitter: Transmitter) => GObject.Type
+    parentClass: Gst.ObjectClass
+    newStreamTransmitter: (transmitter: Transmitter, participant: Participant, nParameters: number, parameters: GObject.Parameter) => StreamTransmitter
+    getStreamTransmitterType: (transmitter: Transmitter) => GObject.Type
     static name: string
 }
 class TransmitterPrivate {
@@ -4259,9 +4642,9 @@ class TransmitterPrivate {
 }
 class _RtpHeaderExtension {
     /* Fields of Farstream-0.1.Farstream._RtpHeaderExtension */
-    readonly id: number
-    readonly direction: StreamDirection
-    readonly uri: string
+    id: number
+    direction: StreamDirection
+    uri: string
     static name: string
 }
 }

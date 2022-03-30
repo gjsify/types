@@ -78,28 +78,34 @@ class Actor {
      */
     accessibleValue: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessibleParent: Atk.Object
-    readonly role: Atk.Role
-    readonly relationSet: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessibleParent: Atk.Object
+    role: Atk.Role
+    relationSet: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param actionName the action name
+     * @param actionDescription the action description
+     * @param actionKeybinding the action keybinding
+     * @param callback the callback of the action
      */
     addAction(actionName: string, actionDescription: string, actionKeybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param actionId the action id
      */
     removeAction(actionId: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param actionName the name of the action to remove
      */
     removeActionByName(actionName: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -110,6 +116,8 @@ class Actor {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     addRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -174,6 +182,7 @@ class Actor {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -181,6 +190,8 @@ class Actor {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notifyStateChange(state: Atk.State, value: boolean): void
     /**
@@ -197,6 +208,7 @@ class Actor {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     refAccessibleChild(i: number): Atk.Object
     /**
@@ -210,10 +222,13 @@ class Actor {
     refStateSet(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handlerId a guint which identifies the handler to be removed.
      */
     removePropertyChangeHandler(handlerId: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     removeRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -222,6 +237,7 @@ class Actor {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     setAccessibleId(name: string): void
     /**
@@ -229,6 +245,7 @@ class Actor {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     setDescription(description: string): void
     /**
@@ -236,14 +253,17 @@ class Actor {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     setName(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     setParent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     setRole(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -281,6 +301,10 @@ class Actor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -291,6 +315,12 @@ class Actor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -314,6 +344,7 @@ class Actor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -333,11 +364,14 @@ class Actor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -345,6 +379,8 @@ class Actor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -362,6 +398,7 @@ class Actor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -407,6 +444,7 @@ class Actor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -450,15 +488,20 @@ class Actor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -499,6 +542,7 @@ class Actor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -533,15 +577,18 @@ class Actor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     doAction(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getDescription(i: number): string | null
     /**
@@ -567,10 +614,12 @@ class Actor {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     getKeybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getLocalizedName(i: number): string | null
     /**
@@ -594,10 +643,13 @@ class Actor {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     getName(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     setDescription(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -607,6 +659,9 @@ class Actor {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
@@ -620,6 +675,7 @@ class Actor {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getExtents(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -628,6 +684,7 @@ class Actor {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getPosition(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -644,12 +701,16 @@ class Actor {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     refAccessibleAtPoint(x: number, y: number, coordType: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handlerId the handler id of the focus handler to be removed from `component`
      */
     removeFocusHandler(handlerId: number): void
     /**
@@ -658,15 +719,24 @@ class Actor {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scrollTo(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scrollToPoint(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     setExtents(x: number, y: number, width: number, height: number, coordType: Atk.CoordType): boolean
     /**
@@ -674,10 +744,15 @@ class Actor {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     setPosition(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     setSize(width: number, height: number): boolean
     /* Signals of Atk-1.0.Atk.Object */
@@ -686,6 +761,7 @@ class Actor {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: ((arg1: Atk.Object) => void)): number
     on(sigName: "active-descendant-changed", callback: (arg1: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -696,6 +772,8 @@ class Actor {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: ((arg1: number, arg2: Atk.Object) => void)): number
     on(sigName: "children-changed", callback: (arg1: number, arg2: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -705,6 +783,7 @@ class Actor {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: ((arg1: boolean) => void)): number
     on(sigName: "focus-event", callback: (arg1: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -725,6 +804,7 @@ class Actor {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: ((arg1: Atk.PropertyValues) => void)): number
     on(sigName: "property-change", callback: (arg1: Atk.PropertyValues) => void, after?: boolean): NodeJS.EventEmitter
@@ -735,6 +815,8 @@ class Actor {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: ((arg1: string, arg2: boolean) => void)): number
     on(sigName: "state-change", callback: (arg1: string, arg2: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -779,6 +861,7 @@ class Actor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -789,6 +872,7 @@ class Actor {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: ((arg1: Atk.Rectangle) => void)): number
     on(sigName: "bounds-changed", callback: (arg1: Atk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -916,28 +1000,34 @@ class Clone {
      */
     accessibleValue: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessibleParent: Atk.Object
-    readonly role: Atk.Role
-    readonly relationSet: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessibleParent: Atk.Object
+    role: Atk.Role
+    relationSet: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param actionName the action name
+     * @param actionDescription the action description
+     * @param actionKeybinding the action keybinding
+     * @param callback the callback of the action
      */
     addAction(actionName: string, actionDescription: string, actionKeybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param actionId the action id
      */
     removeAction(actionId: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param actionName the name of the action to remove
      */
     removeActionByName(actionName: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -948,6 +1038,8 @@ class Clone {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     addRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -1012,6 +1104,7 @@ class Clone {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -1019,6 +1112,8 @@ class Clone {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notifyStateChange(state: Atk.State, value: boolean): void
     /**
@@ -1035,6 +1130,7 @@ class Clone {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     refAccessibleChild(i: number): Atk.Object
     /**
@@ -1048,10 +1144,13 @@ class Clone {
     refStateSet(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handlerId a guint which identifies the handler to be removed.
      */
     removePropertyChangeHandler(handlerId: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     removeRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -1060,6 +1159,7 @@ class Clone {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     setAccessibleId(name: string): void
     /**
@@ -1067,6 +1167,7 @@ class Clone {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     setDescription(description: string): void
     /**
@@ -1074,14 +1175,17 @@ class Clone {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     setName(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     setParent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     setRole(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1119,6 +1223,10 @@ class Clone {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1129,6 +1237,12 @@ class Clone {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1152,6 +1266,7 @@ class Clone {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1171,11 +1286,14 @@ class Clone {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1183,6 +1301,8 @@ class Clone {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1200,6 +1320,7 @@ class Clone {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1245,6 +1366,7 @@ class Clone {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1288,15 +1410,20 @@ class Clone {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1337,6 +1464,7 @@ class Clone {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1371,15 +1499,18 @@ class Clone {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     doAction(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getDescription(i: number): string | null
     /**
@@ -1405,10 +1536,12 @@ class Clone {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     getKeybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getLocalizedName(i: number): string | null
     /**
@@ -1432,10 +1565,13 @@ class Clone {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     getName(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     setDescription(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -1445,6 +1581,9 @@ class Clone {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
@@ -1458,6 +1597,7 @@ class Clone {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getExtents(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -1466,6 +1606,7 @@ class Clone {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getPosition(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -1482,12 +1623,16 @@ class Clone {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     refAccessibleAtPoint(x: number, y: number, coordType: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handlerId the handler id of the focus handler to be removed from `component`
      */
     removeFocusHandler(handlerId: number): void
     /**
@@ -1496,15 +1641,24 @@ class Clone {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scrollTo(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scrollToPoint(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     setExtents(x: number, y: number, width: number, height: number, coordType: Atk.CoordType): boolean
     /**
@@ -1512,10 +1666,15 @@ class Clone {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     setPosition(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     setSize(width: number, height: number): boolean
     /* Signals of Atk-1.0.Atk.Object */
@@ -1524,6 +1683,7 @@ class Clone {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: ((arg1: Atk.Object) => void)): number
     on(sigName: "active-descendant-changed", callback: (arg1: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -1534,6 +1694,8 @@ class Clone {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: ((arg1: number, arg2: Atk.Object) => void)): number
     on(sigName: "children-changed", callback: (arg1: number, arg2: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -1543,6 +1705,7 @@ class Clone {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: ((arg1: boolean) => void)): number
     on(sigName: "focus-event", callback: (arg1: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -1563,6 +1726,7 @@ class Clone {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: ((arg1: Atk.PropertyValues) => void)): number
     on(sigName: "property-change", callback: (arg1: Atk.PropertyValues) => void, after?: boolean): NodeJS.EventEmitter
@@ -1573,6 +1737,8 @@ class Clone {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: ((arg1: string, arg2: boolean) => void)): number
     on(sigName: "state-change", callback: (arg1: string, arg2: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -1617,6 +1783,7 @@ class Clone {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1627,6 +1794,7 @@ class Clone {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: ((arg1: Atk.Rectangle) => void)): number
     on(sigName: "bounds-changed", callback: (arg1: Atk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -1756,28 +1924,34 @@ class Group {
      */
     accessibleValue: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessibleParent: Atk.Object
-    readonly role: Atk.Role
-    readonly relationSet: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessibleParent: Atk.Object
+    role: Atk.Role
+    relationSet: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param actionName the action name
+     * @param actionDescription the action description
+     * @param actionKeybinding the action keybinding
+     * @param callback the callback of the action
      */
     addAction(actionName: string, actionDescription: string, actionKeybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param actionId the action id
      */
     removeAction(actionId: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param actionName the name of the action to remove
      */
     removeActionByName(actionName: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -1788,6 +1962,8 @@ class Group {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     addRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -1852,6 +2028,7 @@ class Group {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -1859,6 +2036,8 @@ class Group {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notifyStateChange(state: Atk.State, value: boolean): void
     /**
@@ -1875,6 +2054,7 @@ class Group {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     refAccessibleChild(i: number): Atk.Object
     /**
@@ -1888,10 +2068,13 @@ class Group {
     refStateSet(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handlerId a guint which identifies the handler to be removed.
      */
     removePropertyChangeHandler(handlerId: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     removeRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -1900,6 +2083,7 @@ class Group {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     setAccessibleId(name: string): void
     /**
@@ -1907,6 +2091,7 @@ class Group {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     setDescription(description: string): void
     /**
@@ -1914,14 +2099,17 @@ class Group {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     setName(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     setParent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     setRole(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1959,6 +2147,10 @@ class Group {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1969,6 +2161,12 @@ class Group {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1992,6 +2190,7 @@ class Group {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2011,11 +2210,14 @@ class Group {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2023,6 +2225,8 @@ class Group {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2040,6 +2244,7 @@ class Group {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2085,6 +2290,7 @@ class Group {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2128,15 +2334,20 @@ class Group {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2177,6 +2388,7 @@ class Group {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2211,15 +2423,18 @@ class Group {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     doAction(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getDescription(i: number): string | null
     /**
@@ -2245,10 +2460,12 @@ class Group {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     getKeybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getLocalizedName(i: number): string | null
     /**
@@ -2272,10 +2489,13 @@ class Group {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     getName(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     setDescription(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -2285,6 +2505,9 @@ class Group {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
@@ -2298,6 +2521,7 @@ class Group {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getExtents(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -2306,6 +2530,7 @@ class Group {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getPosition(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -2322,12 +2547,16 @@ class Group {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     refAccessibleAtPoint(x: number, y: number, coordType: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handlerId the handler id of the focus handler to be removed from `component`
      */
     removeFocusHandler(handlerId: number): void
     /**
@@ -2336,15 +2565,24 @@ class Group {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scrollTo(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scrollToPoint(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     setExtents(x: number, y: number, width: number, height: number, coordType: Atk.CoordType): boolean
     /**
@@ -2352,10 +2590,15 @@ class Group {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     setPosition(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     setSize(width: number, height: number): boolean
     /* Signals of Atk-1.0.Atk.Object */
@@ -2364,6 +2607,7 @@ class Group {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: ((arg1: Atk.Object) => void)): number
     on(sigName: "active-descendant-changed", callback: (arg1: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -2374,6 +2618,8 @@ class Group {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: ((arg1: number, arg2: Atk.Object) => void)): number
     on(sigName: "children-changed", callback: (arg1: number, arg2: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -2383,6 +2629,7 @@ class Group {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: ((arg1: boolean) => void)): number
     on(sigName: "focus-event", callback: (arg1: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -2403,6 +2650,7 @@ class Group {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: ((arg1: Atk.PropertyValues) => void)): number
     on(sigName: "property-change", callback: (arg1: Atk.PropertyValues) => void, after?: boolean): NodeJS.EventEmitter
@@ -2413,6 +2661,8 @@ class Group {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: ((arg1: string, arg2: boolean) => void)): number
     on(sigName: "state-change", callback: (arg1: string, arg2: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -2457,6 +2707,7 @@ class Group {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2467,6 +2718,7 @@ class Group {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: ((arg1: Atk.Rectangle) => void)): number
     on(sigName: "bounds-changed", callback: (arg1: Atk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -2596,28 +2848,34 @@ class Rectangle {
      */
     accessibleValue: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessibleParent: Atk.Object
-    readonly role: Atk.Role
-    readonly relationSet: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessibleParent: Atk.Object
+    role: Atk.Role
+    relationSet: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param actionName the action name
+     * @param actionDescription the action description
+     * @param actionKeybinding the action keybinding
+     * @param callback the callback of the action
      */
     addAction(actionName: string, actionDescription: string, actionKeybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param actionId the action id
      */
     removeAction(actionId: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param actionName the name of the action to remove
      */
     removeActionByName(actionName: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -2628,6 +2886,8 @@ class Rectangle {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     addRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -2692,6 +2952,7 @@ class Rectangle {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -2699,6 +2960,8 @@ class Rectangle {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notifyStateChange(state: Atk.State, value: boolean): void
     /**
@@ -2715,6 +2978,7 @@ class Rectangle {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     refAccessibleChild(i: number): Atk.Object
     /**
@@ -2728,10 +2992,13 @@ class Rectangle {
     refStateSet(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handlerId a guint which identifies the handler to be removed.
      */
     removePropertyChangeHandler(handlerId: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     removeRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -2740,6 +3007,7 @@ class Rectangle {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     setAccessibleId(name: string): void
     /**
@@ -2747,6 +3015,7 @@ class Rectangle {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     setDescription(description: string): void
     /**
@@ -2754,14 +3023,17 @@ class Rectangle {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     setName(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     setParent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     setRole(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2799,6 +3071,10 @@ class Rectangle {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2809,6 +3085,12 @@ class Rectangle {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2832,6 +3114,7 @@ class Rectangle {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2851,11 +3134,14 @@ class Rectangle {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2863,6 +3149,8 @@ class Rectangle {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2880,6 +3168,7 @@ class Rectangle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2925,6 +3214,7 @@ class Rectangle {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2968,15 +3258,20 @@ class Rectangle {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3017,6 +3312,7 @@ class Rectangle {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3051,15 +3347,18 @@ class Rectangle {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     doAction(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getDescription(i: number): string | null
     /**
@@ -3085,10 +3384,12 @@ class Rectangle {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     getKeybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getLocalizedName(i: number): string | null
     /**
@@ -3112,10 +3413,13 @@ class Rectangle {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     getName(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     setDescription(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -3125,6 +3429,9 @@ class Rectangle {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
@@ -3138,6 +3445,7 @@ class Rectangle {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getExtents(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -3146,6 +3454,7 @@ class Rectangle {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getPosition(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -3162,12 +3471,16 @@ class Rectangle {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     refAccessibleAtPoint(x: number, y: number, coordType: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handlerId the handler id of the focus handler to be removed from `component`
      */
     removeFocusHandler(handlerId: number): void
     /**
@@ -3176,15 +3489,24 @@ class Rectangle {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scrollTo(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scrollToPoint(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     setExtents(x: number, y: number, width: number, height: number, coordType: Atk.CoordType): boolean
     /**
@@ -3192,10 +3514,15 @@ class Rectangle {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     setPosition(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     setSize(width: number, height: number): boolean
     /* Signals of Atk-1.0.Atk.Object */
@@ -3204,6 +3531,7 @@ class Rectangle {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: ((arg1: Atk.Object) => void)): number
     on(sigName: "active-descendant-changed", callback: (arg1: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3214,6 +3542,8 @@ class Rectangle {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: ((arg1: number, arg2: Atk.Object) => void)): number
     on(sigName: "children-changed", callback: (arg1: number, arg2: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3223,6 +3553,7 @@ class Rectangle {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: ((arg1: boolean) => void)): number
     on(sigName: "focus-event", callback: (arg1: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -3243,6 +3574,7 @@ class Rectangle {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: ((arg1: Atk.PropertyValues) => void)): number
     on(sigName: "property-change", callback: (arg1: Atk.PropertyValues) => void, after?: boolean): NodeJS.EventEmitter
@@ -3253,6 +3585,8 @@ class Rectangle {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: ((arg1: string, arg2: boolean) => void)): number
     on(sigName: "state-change", callback: (arg1: string, arg2: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -3297,6 +3631,7 @@ class Rectangle {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3307,6 +3642,7 @@ class Rectangle {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: ((arg1: Atk.Rectangle) => void)): number
     on(sigName: "bounds-changed", callback: (arg1: Atk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -3436,16 +3772,16 @@ class Root {
      */
     accessibleValue: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessibleParent: Atk.Object
-    readonly role: Atk.Role
-    readonly relationSet: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessibleParent: Atk.Object
+    role: Atk.Role
+    relationSet: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
     /**
      * Gets the GObject for which `obj` is the accessible object.
@@ -3454,6 +3790,8 @@ class Root {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     addRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -3518,6 +3856,7 @@ class Root {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -3525,6 +3864,8 @@ class Root {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notifyStateChange(state: Atk.State, value: boolean): void
     /**
@@ -3541,6 +3882,7 @@ class Root {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     refAccessibleChild(i: number): Atk.Object
     /**
@@ -3554,10 +3896,13 @@ class Root {
     refStateSet(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handlerId a guint which identifies the handler to be removed.
      */
     removePropertyChangeHandler(handlerId: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     removeRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -3566,6 +3911,7 @@ class Root {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     setAccessibleId(name: string): void
     /**
@@ -3573,6 +3919,7 @@ class Root {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     setDescription(description: string): void
     /**
@@ -3580,14 +3927,17 @@ class Root {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     setName(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     setParent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     setRole(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3625,6 +3975,10 @@ class Root {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3635,6 +3989,12 @@ class Root {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3658,6 +4018,7 @@ class Root {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3677,11 +4038,14 @@ class Root {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3689,6 +4053,8 @@ class Root {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3706,6 +4072,7 @@ class Root {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3751,6 +4118,7 @@ class Root {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3794,15 +4162,20 @@ class Root {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3843,6 +4216,7 @@ class Root {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3877,6 +4251,7 @@ class Root {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Atk-1.0.Atk.Object */
@@ -3885,6 +4260,7 @@ class Root {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: ((arg1: Atk.Object) => void)): number
     on(sigName: "active-descendant-changed", callback: (arg1: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3895,6 +4271,8 @@ class Root {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: ((arg1: number, arg2: Atk.Object) => void)): number
     on(sigName: "children-changed", callback: (arg1: number, arg2: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3904,6 +4282,7 @@ class Root {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: ((arg1: boolean) => void)): number
     on(sigName: "focus-event", callback: (arg1: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -3924,6 +4303,7 @@ class Root {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: ((arg1: Atk.PropertyValues) => void)): number
     on(sigName: "property-change", callback: (arg1: Atk.PropertyValues) => void, after?: boolean): NodeJS.EventEmitter
@@ -3934,6 +4314,8 @@ class Root {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: ((arg1: string, arg2: boolean) => void)): number
     on(sigName: "state-change", callback: (arg1: string, arg2: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -3978,6 +4360,7 @@ class Root {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4105,28 +4488,34 @@ class Stage {
      */
     accessibleValue: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessibleParent: Atk.Object
-    readonly role: Atk.Role
-    readonly relationSet: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessibleParent: Atk.Object
+    role: Atk.Role
+    relationSet: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param actionName the action name
+     * @param actionDescription the action description
+     * @param actionKeybinding the action keybinding
+     * @param callback the callback of the action
      */
     addAction(actionName: string, actionDescription: string, actionKeybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param actionId the action id
      */
     removeAction(actionId: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param actionName the name of the action to remove
      */
     removeActionByName(actionName: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -4137,6 +4526,8 @@ class Stage {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     addRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -4201,6 +4592,7 @@ class Stage {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -4208,6 +4600,8 @@ class Stage {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notifyStateChange(state: Atk.State, value: boolean): void
     /**
@@ -4224,6 +4618,7 @@ class Stage {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     refAccessibleChild(i: number): Atk.Object
     /**
@@ -4237,10 +4632,13 @@ class Stage {
     refStateSet(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handlerId a guint which identifies the handler to be removed.
      */
     removePropertyChangeHandler(handlerId: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     removeRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -4249,6 +4647,7 @@ class Stage {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     setAccessibleId(name: string): void
     /**
@@ -4256,6 +4655,7 @@ class Stage {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     setDescription(description: string): void
     /**
@@ -4263,14 +4663,17 @@ class Stage {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     setName(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     setParent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     setRole(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4308,6 +4711,10 @@ class Stage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4318,6 +4725,12 @@ class Stage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4341,6 +4754,7 @@ class Stage {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4360,11 +4774,14 @@ class Stage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4372,6 +4789,8 @@ class Stage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4389,6 +4808,7 @@ class Stage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4434,6 +4854,7 @@ class Stage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4477,15 +4898,20 @@ class Stage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4526,6 +4952,7 @@ class Stage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4560,15 +4987,18 @@ class Stage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     doAction(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getDescription(i: number): string | null
     /**
@@ -4594,10 +5024,12 @@ class Stage {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     getKeybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getLocalizedName(i: number): string | null
     /**
@@ -4621,10 +5053,13 @@ class Stage {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     getName(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     setDescription(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -4634,6 +5069,9 @@ class Stage {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
@@ -4647,6 +5085,7 @@ class Stage {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getExtents(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -4655,6 +5094,7 @@ class Stage {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getPosition(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -4671,12 +5111,16 @@ class Stage {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     refAccessibleAtPoint(x: number, y: number, coordType: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handlerId the handler id of the focus handler to be removed from `component`
      */
     removeFocusHandler(handlerId: number): void
     /**
@@ -4685,15 +5129,24 @@ class Stage {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scrollTo(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scrollToPoint(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     setExtents(x: number, y: number, width: number, height: number, coordType: Atk.CoordType): boolean
     /**
@@ -4701,10 +5154,15 @@ class Stage {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     setPosition(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     setSize(width: number, height: number): boolean
     /* Signals of Atk-1.0.Atk.Object */
@@ -4713,6 +5171,7 @@ class Stage {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: ((arg1: Atk.Object) => void)): number
     on(sigName: "active-descendant-changed", callback: (arg1: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -4723,6 +5182,8 @@ class Stage {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: ((arg1: number, arg2: Atk.Object) => void)): number
     on(sigName: "children-changed", callback: (arg1: number, arg2: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -4732,6 +5193,7 @@ class Stage {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: ((arg1: boolean) => void)): number
     on(sigName: "focus-event", callback: (arg1: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -4752,6 +5214,7 @@ class Stage {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: ((arg1: Atk.PropertyValues) => void)): number
     on(sigName: "property-change", callback: (arg1: Atk.PropertyValues) => void, after?: boolean): NodeJS.EventEmitter
@@ -4762,6 +5225,8 @@ class Stage {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: ((arg1: string, arg2: boolean) => void)): number
     on(sigName: "state-change", callback: (arg1: string, arg2: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -4806,6 +5271,7 @@ class Stage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4816,6 +5282,7 @@ class Stage {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: ((arg1: Atk.Rectangle) => void)): number
     on(sigName: "bounds-changed", callback: (arg1: Atk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -5028,28 +5495,34 @@ class Text {
      */
     accessibleValue: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessibleParent: Atk.Object
-    readonly role: Atk.Role
-    readonly relationSet: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessibleParent: Atk.Object
+    role: Atk.Role
+    relationSet: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param actionName the action name
+     * @param actionDescription the action description
+     * @param actionKeybinding the action keybinding
+     * @param callback the callback of the action
      */
     addAction(actionName: string, actionDescription: string, actionKeybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param actionId the action id
      */
     removeAction(actionId: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param actionName the name of the action to remove
      */
     removeActionByName(actionName: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -5060,6 +5533,8 @@ class Text {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     addRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -5124,6 +5599,7 @@ class Text {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -5131,6 +5607,8 @@ class Text {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notifyStateChange(state: Atk.State, value: boolean): void
     /**
@@ -5147,6 +5625,7 @@ class Text {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     refAccessibleChild(i: number): Atk.Object
     /**
@@ -5160,10 +5639,13 @@ class Text {
     refStateSet(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handlerId a guint which identifies the handler to be removed.
      */
     removePropertyChangeHandler(handlerId: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     removeRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -5172,6 +5654,7 @@ class Text {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     setAccessibleId(name: string): void
     /**
@@ -5179,6 +5662,7 @@ class Text {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     setDescription(description: string): void
     /**
@@ -5186,14 +5670,17 @@ class Text {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     setName(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     setParent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     setRole(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5231,6 +5718,10 @@ class Text {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5241,6 +5732,12 @@ class Text {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5264,6 +5761,7 @@ class Text {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5283,11 +5781,14 @@ class Text {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5295,6 +5796,8 @@ class Text {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5312,6 +5815,7 @@ class Text {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5357,6 +5861,7 @@ class Text {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5400,15 +5905,20 @@ class Text {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5449,6 +5959,7 @@ class Text {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5483,15 +5994,18 @@ class Text {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     doAction(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getDescription(i: number): string | null
     /**
@@ -5517,10 +6031,12 @@ class Text {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     getKeybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getLocalizedName(i: number): string | null
     /**
@@ -5544,10 +6060,13 @@ class Text {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     getName(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     setDescription(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -5557,6 +6076,9 @@ class Text {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
@@ -5570,6 +6092,7 @@ class Text {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getExtents(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -5578,6 +6101,7 @@ class Text {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getPosition(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -5594,12 +6118,16 @@ class Text {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     refAccessibleAtPoint(x: number, y: number, coordType: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handlerId the handler id of the focus handler to be removed from `component`
      */
     removeFocusHandler(handlerId: number): void
     /**
@@ -5608,15 +6136,24 @@ class Text {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scrollTo(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scrollToPoint(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     setExtents(x: number, y: number, width: number, height: number, coordType: Atk.CoordType): boolean
     /**
@@ -5624,33 +6161,48 @@ class Text {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     setPosition(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     setSize(width: number, height: number): boolean
     /* Methods of Atk-1.0.Atk.EditableText */
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard.
+     * @param startPos start position
+     * @param endPos end position
      */
     copyText(startPos: number, endPos: number): void
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard and then delete from the widget.
+     * @param startPos start position
+     * @param endPos end position
      */
     cutText(startPos: number, endPos: number): void
     /**
      * Delete text `start_pos` up to, but not including `end_pos`.
+     * @param startPos start position
+     * @param endPos end position
      */
     deleteText(startPos: number, endPos: number): void
     /**
      * Insert text at a given position.
+     * @param string the text to insert
+     * @param length the length of text to insert, in bytes
+     * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
     insertText(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
+     * @param position position to paste
      */
     pasteText(position: number): void
     /**
@@ -5658,19 +6210,29 @@ class Text {
      * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
      * that can be set. Note that other attributes that do not have corresponding
      * ATK_ATTRIBUTE macros may also be set for certain text widgets.
+     * @param attribSet an #AtkAttributeSet
+     * @param startOffset start of range in which to set attributes
+     * @param endOffset end of range in which to set attributes
      */
     setRunAttributes(attribSet: Atk.AttributeSet, startOffset: number, endOffset: number): boolean
     /**
      * Set text contents of `text`.
+     * @param string string to set for text contents of `text`
      */
     setTextContents(string: string): void
     /* Methods of Atk-1.0.Atk.Text */
     /**
      * Adds a selection bounded by the specified offsets.
+     * @param startOffset the starting character offset of the selected region
+     * @param endOffset the offset of the first character after the selected region.
      */
     addSelection(startOffset: number, endOffset: number): boolean
     /**
      * Get the ranges of text in the specified bounding box.
+     * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
+     * @param coordType Specify whether coordinates are relative to the screen or widget window.
+     * @param xClipType Specify the horizontal clip type.
+     * @param yClipType Specify the vertical clip type.
      */
     getBoundedRanges(rect: Atk.TextRectangle, coordType: Atk.CoordType, xClipType: Atk.TextClipType, yClipType: Atk.TextClipType): Atk.TextRange[]
     /**
@@ -5679,6 +6241,7 @@ class Text {
     getCaretOffset(): number
     /**
      * Gets the specified text.
+     * @param offset a character offset within `text`
      */
     getCharacterAtOffset(offset: number): number
     /**
@@ -5691,6 +6254,8 @@ class Text {
      * 
      * Get the bounding box containing the glyph representing the character at
      *     a particular text offset.
+     * @param offset The offset of the text character for which bounding information is required.
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     getCharacterExtents(offset: number, coords: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -5708,6 +6273,9 @@ class Text {
      * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
      * are interpreted as being relative to the screen or this widget's window
      * depending on `coords`.
+     * @param x screen x-position of character
+     * @param y screen y-position of character
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     getOffsetAtPoint(x: number, y: number, coords: Atk.CoordType): number
     /**
@@ -5715,6 +6283,9 @@ class Text {
      * 
      * If the extents can not be obtained (e.g. or missing support), the rectangle
      * fields are set to -1.
+     * @param startOffset The offset of the first text character for which boundary        information is required.
+     * @param endOffset The offset of the text character after the last character        for which boundary information is required.
+     * @param coordType Specify whether coordinates are relative to the screen or widget window.
      */
     getRangeExtents(startOffset: number, endOffset: number, coordType: Atk.CoordType): /* rect */ Atk.TextRectangle
     /**
@@ -5725,10 +6296,12 @@ class Text {
      * after the range.  See the enum AtkTextAttribute for types of text
      * attributes that can be returned. Note that other attributes may also be
      * returned.
+     * @param offset the character offset at which to get the attributes, -1 means the offset of the character to be inserted at the caret location.
      */
     getRunAttributes(offset: number): [ /* returnType */ Atk.AttributeSet, /* startOffset */ number, /* endOffset */ number ]
     /**
      * Gets the text from the specified selection.
+     * @param selectionNum The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     getSelection(selectionNum: number): [ /* returnType */ string, /* startOffset */ number, /* endOffset */ number ]
     /**
@@ -5762,14 +6335,20 @@ class Text {
      * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtkTextGranularity
      */
     getStringAtOffset(offset: number, granularity: Atk.TextGranularity): [ /* returnType */ string | null, /* startOffset */ number, /* endOffset */ number ]
     /**
      * Gets the specified text.
+     * @param startOffset a starting character offset within `text`
+     * @param endOffset an ending character offset within `text,` or -1 for the end of the string.
      */
     getText(startOffset: number, endOffset: number): string
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundaryType An #AtkTextBoundary
      */
     getTextAfterOffset(offset: number, boundaryType: Atk.TextBoundary): [ /* returnType */ string, /* startOffset */ number, /* endOffset */ number ]
     /**
@@ -5797,23 +6376,36 @@ class Text {
      * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
      * string is from the line start at or before the offset to the line
      * start after the offset.
+     * @param offset position
+     * @param boundaryType An #AtkTextBoundary
      */
     getTextAtOffset(offset: number, boundaryType: Atk.TextBoundary): [ /* returnType */ string, /* startOffset */ number, /* endOffset */ number ]
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundaryType An #AtkTextBoundary
      */
     getTextBeforeOffset(offset: number, boundaryType: Atk.TextBoundary): [ /* returnType */ string, /* startOffset */ number, /* endOffset */ number ]
     /**
      * Removes the specified selection.
+     * @param selectionNum The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     removeSelection(selectionNum: number): boolean
     /**
      * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
+     * @param startOffset start offset in the `text`
+     * @param endOffset end offset in the `text,` or -1 for the end of the text.
+     * @param type specify where the object should be made visible.
      */
     scrollSubstringTo(startOffset: number, endOffset: number, type: Atk.ScrollType): boolean
     /**
      * Move the top-left of a substring of `text` to a given position of the screen
      * by scrolling all necessary parents.
+     * @param startOffset start offset in the `text`
+     * @param endOffset end offset in the `text,` or -1 for the end of the text.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scrollSubstringToPoint(startOffset: number, endOffset: number, coords: Atk.CoordType, x: number, y: number): boolean
     /**
@@ -5834,10 +6426,14 @@ class Text {
      * method should not trigger one either. If the application does not have a caret
      * motion or focus navigation operation, this method should try to scroll the new
      * caret position into view while minimizing unnecessary scroll motion.
+     * @param offset the character offset of the new caret position
      */
     setCaretOffset(offset: number): boolean
     /**
      * Changes the start and end offset of the specified selection.
+     * @param selectionNum The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
+     * @param startOffset the new starting character offset of the selection
+     * @param endOffset the new end position of (e.g. offset immediately past) the selection
      */
     setSelection(selectionNum: number, startOffset: number, endOffset: number): boolean
     /* Signals of Atk-1.0.Atk.Object */
@@ -5846,6 +6442,7 @@ class Text {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: ((arg1: Atk.Object) => void)): number
     on(sigName: "active-descendant-changed", callback: (arg1: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -5856,6 +6453,8 @@ class Text {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: ((arg1: number, arg2: Atk.Object) => void)): number
     on(sigName: "children-changed", callback: (arg1: number, arg2: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -5865,6 +6464,7 @@ class Text {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: ((arg1: boolean) => void)): number
     on(sigName: "focus-event", callback: (arg1: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -5885,6 +6485,7 @@ class Text {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: ((arg1: Atk.PropertyValues) => void)): number
     on(sigName: "property-change", callback: (arg1: Atk.PropertyValues) => void, after?: boolean): NodeJS.EventEmitter
@@ -5895,6 +6496,8 @@ class Text {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: ((arg1: string, arg2: boolean) => void)): number
     on(sigName: "state-change", callback: (arg1: string, arg2: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -5939,6 +6542,7 @@ class Text {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5949,6 +6553,7 @@ class Text {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: ((arg1: Atk.Rectangle) => void)): number
     on(sigName: "bounds-changed", callback: (arg1: Atk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -5970,6 +6575,7 @@ class Text {
      * The "text-caret-moved" signal is emitted when the caret
      * position of the text of an object which implements AtkText
      * changes.
+     * @param arg1 The new position of the text caret.
      */
     connect(sigName: "text-caret-moved", callback: ((arg1: number) => void)): number
     on(sigName: "text-caret-moved", callback: (arg1: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5982,6 +6588,8 @@ class Text {
      * signal will have a detail which is either "insert" or
      * "delete" which identifies whether the text change was an
      * insertion or a deletion.
+     * @param arg1 The position (character offset) of the insertion or deletion.
+     * @param arg2 The length (in characters) of text inserted or deleted.
      */
     connect(sigName: "text-changed", callback: ((arg1: number, arg2: number) => void)): number
     on(sigName: "text-changed", callback: (arg1: number, arg2: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5993,6 +6601,9 @@ class Text {
      * inserted. If the signal was not triggered by the user
      * (e.g. typing or pasting text), the "system" detail should be
      * included.
+     * @param arg1 The position (character offset) of the insertion.
+     * @param arg2 The length (in characters) of text inserted.
+     * @param arg3 The new text inserted
      */
     connect(sigName: "text-insert", callback: ((arg1: number, arg2: number, arg3: string) => void)): number
     on(sigName: "text-insert", callback: (arg1: number, arg2: number, arg3: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -6004,6 +6615,9 @@ class Text {
      * removed. If the signal was not triggered by the user
      * (e.g. typing or pasting text), the "system" detail should be
      * included.
+     * @param arg1 The position (character offset) of the removal.
+     * @param arg2 The length (in characters) of text removed.
+     * @param arg3 The old text removed
      */
     connect(sigName: "text-remove", callback: ((arg1: number, arg2: number, arg3: string) => void)): number
     on(sigName: "text-remove", callback: (arg1: number, arg2: number, arg3: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -6107,6 +6721,7 @@ class Text {
      * Frees the memory associated with an array of AtkTextRange. It is assumed
      * that the array was returned by the function atk_text_get_bounded_ranges
      * and is NULL terminated.
+     * @param ranges A pointer to an array of #AtkTextRange which is   to be freed.
      */
     static freeRanges(ranges: Atk.TextRange[]): void
     static $gtype: GObject.Type
@@ -6148,28 +6763,34 @@ class Texture {
      */
     accessibleValue: number
     /* Fields of Atk-1.0.Atk.GObjectAccessible */
-    readonly parent: Atk.Object
+    parent: Atk.Object
     /* Fields of Atk-1.0.Atk.Object */
-    readonly description: string
-    readonly name: string
-    readonly accessibleParent: Atk.Object
-    readonly role: Atk.Role
-    readonly relationSet: Atk.RelationSet
-    readonly layer: Atk.Layer
+    description: string
+    name: string
+    accessibleParent: Atk.Object
+    role: Atk.Role
+    relationSet: Atk.RelationSet
+    layer: Atk.Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Cally-1.0.Cally.Actor */
     /**
      * Adds a new action to be accessed with the #AtkAction interface.
+     * @param actionName the action name
+     * @param actionDescription the action description
+     * @param actionKeybinding the action keybinding
+     * @param callback the callback of the action
      */
     addAction(actionName: string, actionDescription: string, actionKeybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by cally_actor_add_action()
+     * @param actionId the action id
      */
     removeAction(actionId: number): boolean
     /**
      * Removes an action, using the `action_name` used when the action was added
      * with cally_actor_add_action()
+     * @param actionName the name of the action to remove
      */
     removeActionByName(actionName: string): boolean
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
@@ -6180,6 +6801,8 @@ class Texture {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     addRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -6244,6 +6867,7 @@ class Texture {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -6251,6 +6875,8 @@ class Texture {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notifyStateChange(state: Atk.State, value: boolean): void
     /**
@@ -6267,6 +6893,7 @@ class Texture {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     refAccessibleChild(i: number): Atk.Object
     /**
@@ -6280,10 +6907,13 @@ class Texture {
     refStateSet(): Atk.StateSet
     /**
      * Removes a property change handler.
+     * @param handlerId a guint which identifies the handler to be removed.
      */
     removePropertyChangeHandler(handlerId: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     removeRelationship(relationship: Atk.RelationType, target: Atk.Object): boolean
     /**
@@ -6292,6 +6922,7 @@ class Texture {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     setAccessibleId(name: string): void
     /**
@@ -6299,6 +6930,7 @@ class Texture {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     setDescription(description: string): void
     /**
@@ -6306,14 +6938,17 @@ class Texture {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     setName(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     setParent(parent: Atk.Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     setRole(role: Atk.Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6351,6 +6986,10 @@ class Texture {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6361,6 +7000,12 @@ class Texture {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6384,6 +7029,7 @@ class Texture {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6403,11 +7049,14 @@ class Texture {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6415,6 +7064,8 @@ class Texture {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6432,6 +7083,7 @@ class Texture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6477,6 +7129,7 @@ class Texture {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6520,15 +7173,20 @@ class Texture {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6569,6 +7227,7 @@ class Texture {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6603,15 +7262,18 @@ class Texture {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     doAction(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getDescription(i: number): string | null
     /**
@@ -6637,10 +7299,12 @@ class Texture {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     getKeybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     getLocalizedName(i: number): string | null
     /**
@@ -6664,10 +7328,13 @@ class Texture {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     getName(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     setDescription(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -6677,6 +7344,9 @@ class Texture {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
@@ -6690,6 +7360,7 @@ class Texture {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getExtents(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -6698,6 +7369,7 @@ class Texture {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     getPosition(coordType: Atk.CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -6714,12 +7386,16 @@ class Texture {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     refAccessibleAtPoint(x: number, y: number, coordType: Atk.CoordType): Atk.Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handlerId the handler id of the focus handler to be removed from `component`
      */
     removeFocusHandler(handlerId: number): void
     /**
@@ -6728,15 +7404,24 @@ class Texture {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scrollTo(type: Atk.ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scrollToPoint(coords: Atk.CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coordType specifies whether the coordinates are relative to the screen or to the components top level window
      */
     setExtents(x: number, y: number, width: number, height: number, coordType: Atk.CoordType): boolean
     /**
@@ -6744,10 +7429,15 @@ class Texture {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coordType specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     setPosition(x: number, y: number, coordType: Atk.CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     setSize(width: number, height: number): boolean
     /* Signals of Atk-1.0.Atk.Object */
@@ -6756,6 +7446,7 @@ class Texture {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: ((arg1: Atk.Object) => void)): number
     on(sigName: "active-descendant-changed", callback: (arg1: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -6766,6 +7457,8 @@ class Texture {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: ((arg1: number, arg2: Atk.Object) => void)): number
     on(sigName: "children-changed", callback: (arg1: number, arg2: Atk.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -6775,6 +7468,7 @@ class Texture {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: ((arg1: boolean) => void)): number
     on(sigName: "focus-event", callback: (arg1: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -6795,6 +7489,7 @@ class Texture {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: ((arg1: Atk.PropertyValues) => void)): number
     on(sigName: "property-change", callback: (arg1: Atk.PropertyValues) => void, after?: boolean): NodeJS.EventEmitter
@@ -6805,6 +7500,8 @@ class Texture {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: ((arg1: string, arg2: boolean) => void)): number
     on(sigName: "state-change", callback: (arg1: string, arg2: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -6849,6 +7546,7 @@ class Texture {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6859,6 +7557,7 @@ class Texture {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: ((arg1: Atk.Rectangle) => void)): number
     on(sigName: "bounds-changed", callback: (arg1: Atk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -6955,9 +7654,9 @@ interface Util_ConstructProps extends Atk.Util_ConstructProps {
 }
 class Util {
     /* Fields of Atk-1.0.Atk.Util */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -6993,6 +7692,10 @@ class Util {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7003,6 +7706,12 @@ class Util {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7026,6 +7735,7 @@ class Util {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7045,11 +7755,14 @@ class Util {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7057,6 +7770,8 @@ class Util {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7074,6 +7789,7 @@ class Util {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7119,6 +7835,7 @@ class Util {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7162,15 +7879,20 @@ class Util {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7211,6 +7933,7 @@ class Util {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7245,6 +7968,7 @@ class Util {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7276,6 +8000,7 @@ class Util {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7296,10 +8021,10 @@ class Util {
 }
 abstract class ActorClass {
     /* Fields of Cally-1.0.Cally.ActorClass */
-    readonly notifyClutter: (object: GObject.Object, pspec: GObject.ParamSpec) => void
-    readonly focusClutter: (actor: Clutter.Actor, data: object) => boolean
-    readonly addActor: (container: Clutter.Actor, actor: Clutter.Actor, data: object) => number
-    readonly removeActor: (container: Clutter.Actor, actor: Clutter.Actor, data: object) => number
+    notifyClutter: (object: GObject.Object, pspec: GObject.ParamSpec) => void
+    focusClutter: (actor: Clutter.Actor, data: object) => boolean
+    addActor: (container: Clutter.Actor, actor: Clutter.Actor, data: object) => number
+    removeActor: (container: Clutter.Actor, actor: Clutter.Actor, data: object) => number
     static name: string
 }
 class ActorPrivate {

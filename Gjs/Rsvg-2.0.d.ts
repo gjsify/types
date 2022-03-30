@@ -70,9 +70,9 @@ enum Unit {
     PC,
 }
 /**
- * Configuration flags for an `RsvgHandle`.  Note that not all of `RsvgHandle`'s
- * constructors let you specify flags.  For this reason, rsvg_handle_new_from_gfile_sync()
- * and rsvg_handle_new_from_stream_sync() are the preferred ways to create a handle.
+ * Configuration flags for an [class`Rsvg`.Handle].  Note that not all of [class`Rsvg`.Handle]'s
+ * constructors let you specify flags.  For this reason, [ctor`Rsvg`.Handle.new_from_gfile_sync]
+ * and [ctor`Rsvg`.Handle.new_from_stream_sync] are the preferred ways to create a handle.
  */
 enum HandleFlags {
     /**
@@ -168,8 +168,24 @@ const MINOR_VERSION: number
 const VERSION: string
 function cleanup(): void
 function error_quark(): GLib.Quark
+function init(): void
+function pixbuf_from_file(filename: string): GdkPixbuf.Pixbuf | null
+function pixbuf_from_file_at_max_size(filename: string, max_width: number, max_height: number): GdkPixbuf.Pixbuf | null
+function pixbuf_from_file_at_size(filename: string, width: number, height: number): GdkPixbuf.Pixbuf | null
+function pixbuf_from_file_at_zoom(filename: string, x_zoom: number, y_zoom: number): GdkPixbuf.Pixbuf | null
+function pixbuf_from_file_at_zoom_with_max(filename: string, x_zoom: number, y_zoom: number, max_width: number, max_height: number): GdkPixbuf.Pixbuf | null
 function set_default_dpi(dpi: number): void
 function set_default_dpi_x_y(dpi_x: number, dpi_y: number): void
+function term(): void
+/**
+ * Function to let a user of the library specify the SVG's dimensions
+ * 
+ * See the documentation for [method`Rsvg`.Handle.set_size_callback] for an example, and
+ * for the reasons for deprecation.
+ */
+interface SizeFunc {
+    (): void
+}
 interface Handle_ConstructProps extends GObject.Object_ConstructProps {
     /* Constructor properties of Rsvg-2.0.Rsvg.Handle */
     /**
@@ -186,7 +202,7 @@ interface Handle_ConstructProps extends GObject.Object_ConstructProps {
      */
     dpi_y?: number
     /**
-     * Flags from `RsvgHandleFlags`.
+     * Flags from [flags`Rsvg`.HandleFlags].
      */
     flags?: HandleFlags
 }
@@ -211,17 +227,21 @@ class Handle {
     dpi_y: number
     /**
      * Exact width, in pixels, of the rendered SVG before calling the size callback
-     * as specified by rsvg_handle_set_size_callback().
+     * as specified by [method`Rsvg`.Handle.set_size_callback].
      */
     readonly em: number
     /**
      * Exact height, in pixels, of the rendered SVG before calling the size callback
-     * as specified by rsvg_handle_set_size_callback().
+     * as specified by [method`Rsvg`.Handle.set_size_callback].
      */
     readonly ex: number
     /**
+     * Flags from [flags`Rsvg`.HandleFlags].
+     */
+    readonly flags: HandleFlags
+    /**
      * Height, in pixels, of the rendered SVG after calling the size callback
-     * as specified by rsvg_handle_set_size_callback().
+     * as specified by [method`Rsvg`.Handle.set_size_callback].
      */
     readonly height: number
     /**
@@ -234,46 +254,52 @@ class Handle {
     readonly title: string
     /**
      * Width, in pixels, of the rendered SVG after calling the size callback
-     * as specified by rsvg_handle_set_size_callback().
+     * as specified by [method`Rsvg`.Handle.set_size_callback].
      */
     readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Rsvg-2.0.Rsvg.Handle */
     /**
-     * This is used after calling rsvg_handle_write() to indicate that there is no more data
+     * This is used after calling [method`Rsvg`.Handle.write] to indicate that there is no more data
      * to consume, and to start the actual parsing of the SVG document.  The only reason to
-     * call this function is if you use use rsvg_handle_write() to feed data into the `handle;`
-     * if you use the other methods like rsvg_handle_new_from_file() or
-     * rsvg_handle_read_stream_sync(), then you do not need to call this function.
+     * call this function is if you use use [method`Rsvg`.Handle.write] to feed data into the `handle;`
+     * if you use the other methods like [ctor`Rsvg`.Handle.new_from_file] or
+     * [method`Rsvg`.Handle.read_stream_sync], then you do not need to call this function.
      * 
      * This will return `TRUE` if the loader closed successfully and the
      * SVG data was parsed correctly.  Note that `handle` isn't freed until
-     * `g_object_unref` is called.
+     * [method`GObject`.Object.unref] is called.
      */
     close(): boolean
     /**
-     * Gets the base uri for this #RsvgHandle.
+     * Frees `handle`.
+     */
+    free(): void
+    /**
+     * Gets the base uri for this [class`Rsvg`.Handle].
      */
     get_base_uri(): string
+    get_desc(): string | null
     /**
      * Get the SVG's size. Do not call from within the size_func callback, because
      * an infinite loop will occur.
      * 
-     * This function depends on the `RsvgHandle`'s DPI to compute dimensions in
-     * pixels, so you should call rsvg_handle_set_dpi() beforehand.
+     * This function depends on the [class`Rsvg`.Handle]'s DPI to compute dimensions in
+     * pixels, so you should call [method`Rsvg`.Handle.set_dpi] beforehand.
      */
     get_dimensions(): /* dimension_data */ DimensionData
     /**
      * Get the size of a subelement of the SVG file. Do not call from within the
      * size_func callback, because an infinite loop will occur.
      * 
-     * This function depends on the `RsvgHandle`'s DPI to compute dimensions in
-     * pixels, so you should call rsvg_handle_set_dpi() beforehand.
+     * This function depends on the [class`Rsvg`.Handle]'s DPI to compute dimensions in
+     * pixels, so you should call [method`Rsvg`.Handle.set_dpi] beforehand.
      * 
      * Element IDs should look like an URL fragment identifier; for example, pass
      * `#foo` (hash `foo`) to get the geometry of the element that
      * has an `id="foo"` attribute.
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to use the whole SVG.
      */
     get_dimensions_sub(id?: string | null): [ /* returnType */ boolean, /* dimension_data */ DimensionData ]
     /**
@@ -305,6 +331,7 @@ class Handle {
      * 
      * This operation is not constant-time, as it involves going through all
      * the child elements.
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to compute the geometry for the whole SVG.
      */
     get_geometry_for_element(id?: string | null): [ /* returnType */ boolean, /* out_ink_rect */ Rectangle | null, /* out_logical_rect */ Rectangle | null ]
     /**
@@ -330,22 +357,39 @@ class Handle {
      * 
      * This operation is not constant-time, as it involves going through all
      * the child elements.
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to compute the geometry for the whole SVG.
+     * @param viewport Viewport size at which the whole SVG would be fitted.
      */
     get_geometry_for_layer(id: string | null, viewport: Rectangle): [ /* returnType */ boolean, /* out_ink_rect */ Rectangle | null, /* out_logical_rect */ Rectangle | null ]
     /**
-     * Queries the `width`, `height`, and `viewBox` attributes in an SVG document.
+     * In simple terms, queries the `width`, `height`, and `viewBox` attributes in an SVG document.
      * 
      * If you are calling this function to compute a scaling factor to render the SVG,
-     * consider simply using rsvg_handle_render_document() instead; it will do the
+     * consider simply using [method`Rsvg`.Handle.render_document] instead; it will do the
      * scaling computations automatically.
      * 
-     * As an example, the following SVG element has a `width` of 100 pixels and a `height` of 400 pixels, but no `viewBox`:
+     * Before librsvg 2.54.0, the `out_has_width` and `out_has_height` arguments would be set to true or false
+     * depending on whether the SVG document actually had `width` and `height` attributes, respectively.
+     * 
+     * However, since librsvg 2.54.0, `width` and `height` are now [geometry
+     * properties](https://www.w3.org/TR/SVG2/geometry.html) per the SVG2 specification; they
+     * are not plain attributes.  SVG2 made it so that the initial value of those properties
+     * is `auto`, which is equivalent to specifing a value of `100%`.  In this sense, even SVG
+     * documents which lack `width` or `height` attributes semantically have to make them
+     * default to `100%`.  This is why since librsvg 2.54.0, `out_has_width` and
+     * `out_has_heigth` are always returned as `TRUE`, since with SVG2 all documents *have* a
+     * default width and height of `100%`.
+     * 
+     * As an example, the following SVG element has a `width` of 100 pixels and a `height` of 400 pixels, but no `viewBox`.  This
+     * function will return those sizes in `out_width` and `out_height`, and set `out_has_viewbox` to `FALSE`.
      * 
      * ```
      * <svg xmlns="http://www.w3.org/2000/svg" width="100" height="400">
      * ```
      * 
-     * Conversely, the following element has a `viewBox`, but no `width` or `height`:
+     * Conversely, the following element has a `viewBox`, but no `width` or `height`.  This function will
+     * set `out_has_viewbox` to `TRUE`, and it will also set `out_has_width` and `out_has_height` to `TRUE` but
+     * return both length values as `100%`.
      * 
      * ```
      * <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 400">
@@ -360,7 +404,7 @@ class Handle {
      * ```
      * 
      * API ordering: This function must be called on a fully-loaded `handle`.  See
-     * the section "API ordering" for details.
+     * the section "[API ordering](class.Handle.html#api-ordering)" for details.
      * 
      * Panics: this function will panic if the `handle` is not fully-loaded.
      */
@@ -372,9 +416,9 @@ class Handle {
      * document has both `width` and `height` attributes
      * with physical units (px, in, cm, mm, pt, pc) or font-based units (em, ex).  For
      * physical units, the dimensions are normalized to pixels using the dots-per-inch (DPI)
-     * value set previously with rsvg_handle_set_dpi().  For font-based units, this function
+     * value set previously with [method`Rsvg`.Handle.set_dpi].  For font-based units, this function
      * uses the computed value of the `font-size` property for the toplevel
-     * `&lt;svg&gt;` element.  In those cases, this function returns `TRUE`.
+     * `<svg>` element.  In those cases, this function returns `TRUE`.
      * 
      * This function is not able to extract the size in pixels directly from the intrinsic
      * dimensions of the SVG document if the `width` or
@@ -390,7 +434,7 @@ class Handle {
      * <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30"/>
      * ```
      * 
-     * Similarly, if the DPI is set to 96, this document will resolve to 192x288 pixels (i.e. 96*2 x 96*3).
+     * Similarly, if the DPI is set to 96, this document will resolve to 192×288 pixels (i.e. 96×2 × 96×3).
      * 
      * ```
      * <svg xmlns="http://www.w3.org/2000/svg" width="2in" height="3in"/>
@@ -410,18 +454,19 @@ class Handle {
      * 
      * Instead of querying an SVG document's size, applications are encouraged to render SVG
      * documents to a size chosen by the application, by passing a suitably-sized viewport to
-     * rsvg_handle_render_document().
+     * [method`Rsvg`.Handle.render_document].
      */
     get_intrinsic_size_in_pixels(): [ /* returnType */ boolean, /* out_width */ number | null, /* out_height */ number | null ]
+    get_metadata(): string | null
     /**
      * Returns the pixbuf loaded by `handle`.  The pixbuf returned will be reffed, so
      * the caller of this function must assume that ref.
      * 
      * API ordering: This function must be called on a fully-loaded `handle`.  See
-     * the section "API ordering" for details.
+     * the section "[API ordering](class.Handle.html#api-ordering)" for details.
      * 
-     * This function depends on the `RsvgHandle`'s dots-per-inch value (DPI) to compute the
-     * "natural size" of the document in pixels, so you should call rsvg_handle_set_dpi()
+     * This function depends on the [class`Rsvg`.Handle]'s dots-per-inch value (DPI) to compute the
+     * "natural size" of the document in pixels, so you should call [method`Rsvg`.Handle.set_dpi]
      * beforehand.
      */
     get_pixbuf(): GdkPixbuf.Pixbuf | null
@@ -431,51 +476,56 @@ class Handle {
      * sub-sub-elements recursively).  If `id` is `NULL`, this function renders the
      * whole SVG.
      * 
-     * This function depends on the `RsvgHandle`'s dots-per-inch value (DPI) to compute the
-     * "natural size" of the document in pixels, so you should call rsvg_handle_set_dpi()
+     * This function depends on the [class`Rsvg`.Handle]'s dots-per-inch value (DPI) to compute the
+     * "natural size" of the document in pixels, so you should call [method`Rsvg`.Handle.set_dpi]
      * beforehand.
      * 
      * If you need to render an image which is only big enough to fit a particular
-     * sub-element of the SVG, consider using rsvg_handle_render_element().
+     * sub-element of the SVG, consider using [method`Rsvg`.Handle.render_element].
      * 
      * Element IDs should look like an URL fragment identifier; for example, pass
      * `#foo` (hash `foo`) to get the geometry of the element that
      * has an `id="foo"` attribute.
      * 
      * API ordering: This function must be called on a fully-loaded `handle`.  See
-     * the section "API ordering" for details.
+     * the section "[API ordering](class.Handle.html#api-ordering)" for details.
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to use the whole SVG.
      */
     get_pixbuf_sub(id?: string | null): GdkPixbuf.Pixbuf | null
     /**
      * Get the position of a subelement of the SVG file. Do not call from within
      * the size_func callback, because an infinite loop will occur.
      * 
-     * This function depends on the `RsvgHandle`'s DPI to compute dimensions in
-     * pixels, so you should call rsvg_handle_set_dpi() beforehand.
+     * This function depends on the [class`Rsvg`.Handle]'s DPI to compute dimensions in
+     * pixels, so you should call [method`Rsvg`.Handle.set_dpi] beforehand.
      * 
      * Element IDs should look like an URL fragment identifier; for example, pass
      * `#foo` (hash `foo`) to get the geometry of the element that
      * has an `id="foo"` attribute.
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass %NULL to use the whole SVG.
      */
     get_position_sub(id?: string | null): [ /* returnType */ boolean, /* position_data */ PositionData ]
+    get_title(): string | null
     /**
      * Checks whether the element `id` exists in the SVG document.
      * 
      * Element IDs should look like an URL fragment identifier; for example, pass
      * `#foo` (hash `foo`) to get the geometry of the element that
      * has an `id="foo"` attribute.
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.
      */
     has_sub(id: string): boolean
     /**
      * Do not call this function.  This is intended for librsvg's internal
      * test suite only.
+     * @param testing Whether to enable testing mode
      */
     internal_set_testing(testing: boolean): void
     /**
      * Reads `stream` and writes the data from it to `handle`.
      * 
-     * Before calling this function, you may need to call rsvg_handle_set_base_uri()
-     * or rsvg_handle_set_base_gfile() to set the "base file" for resolving
+     * Before calling this function, you may need to call [method`Rsvg`.Handle.set_base_uri]
+     * or [method`Rsvg`.Handle.set_base_gfile] to set the "base file" for resolving
      * references to external resources.  SVG elements like
      * `<image>` which reference external resources will be
      * resolved relative to the location you specify with those functions.
@@ -484,11 +534,13 @@ class Handle {
      * triggering the cancellable object from another thread. If the
      * operation was cancelled, the error `G_IO_ERROR_CANCELLED` will be
      * returned.
+     * @param stream a `GInputStream`
+     * @param cancellable a `GCancellable`, or `NULL`
      */
     read_stream_sync(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Draws a loaded SVG handle to a Cairo context.  Please try to use
-     * rsvg_handle_render_document() instead, which allows you to pick the size
+     * [method`Rsvg`.Handle.render_document] instead, which allows you to pick the size
      * at which the document will be rendered.
      * 
      * Historically this function has picked a size by itself, based on the following rules:
@@ -496,8 +548,8 @@ class Handle {
      * * If the SVG document has both `width` and `height`
      *   attributes with physical units (px, in, cm, mm, pt, pc) or font-based units (em,
      *   ex), the function computes the size directly based on the dots-per-inch (DPI) you
-     *   have configured with rsvg_handle_set_dpi().  This is the same approach as
-     *   rsvg_handle_get_intrinsic_size_in_pixels().
+     *   have configured with [method`Rsvg`.Handle.set_dpi].  This is the same approach as
+     *   [method`Rsvg`.Handle.get_intrinsic_size_in_pixels].
      * 
      * * Otherwise, if there is a `viewBox` attribute and both
      *   `width` and `height` are set to
@@ -512,28 +564,29 @@ class Handle {
      * * This function cannot deal with percentage-based units for `width`
      *   and `height` because there is no viewport against which they could
      *   be resolved; that is why it will compute the extents of objects in that case.  This
-     *   is why we recommend that you use rsvg_handle_render_document() instead, which takes
+     *   is why we recommend that you use [method`Rsvg`.Handle.render_document] instead, which takes
      *   in a viewport and follows the sizing policy from the web platform.
      * 
      * Drawing will occur with respect to the `cr'`s current transformation: for example, if
      * the `cr` has a rotated current transformation matrix, the whole SVG will be rotated in
      * the rendered version.
      * 
-     * This function depends on the `RsvgHandle`'s DPI to compute dimensions in
-     * pixels, so you should call rsvg_handle_set_dpi() beforehand.
+     * This function depends on the [class`Rsvg`.Handle]'s DPI to compute dimensions in
+     * pixels, so you should call [method`Rsvg`.Handle.set_dpi] beforehand.
      * 
      * Note that `cr` must be a Cairo context that is not in an error state, that is,
-     * cairo_status() must return `CAIRO_STATUS_SUCCESS` for it.  Cairo can set a
+     * `cairo_status()` must return `CAIRO_STATUS_SUCCESS` for it.  Cairo can set a
      * context to be in an error state in various situations, for example, if it was
      * passed an invalid matrix or if it was created for an invalid surface.
+     * @param cr A Cairo context
      */
     render_cairo(cr: cairo.Context): boolean
     /**
      * Renders a single SVG element in the same place as for a whole SVG document (a "subset"
-     * of the document).  Please try to use rsvg_handle_render_layer() instead, which allows
+     * of the document).  Please try to use [method`Rsvg`.Handle.render_layer] instead, which allows
      * you to pick the size at which the document with the layer will be rendered.
      * 
-     * This is equivalent to rsvg_handle_render_cairo(), but it renders only a single
+     * This is equivalent to [method`Rsvg`.Handle.render_cairo], but it renders only a single
      * element and its children, as if they composed an individual layer in the SVG.
      * 
      * Historically this function has picked a size for the whole document by itself, based
@@ -542,8 +595,8 @@ class Handle {
      * * If the SVG document has both `width` and `height`
      *   attributes with physical units (px, in, cm, mm, pt, pc) or font-based units (em,
      *   ex), the function computes the size directly based on the dots-per-inch (DPI) you
-     *   have configured with rsvg_handle_set_dpi().  This is the same approach as
-     *   rsvg_handle_get_intrinsic_size_in_pixels().
+     *   have configured with [method`Rsvg`.Handle.set_dpi].  This is the same approach as
+     *   [method`Rsvg`.Handle.get_intrinsic_size_in_pixels].
      * 
      * * Otherwise, if there is a `viewBox` attribute and both
      *   `width` and `height` are set to
@@ -558,24 +611,26 @@ class Handle {
      * * This function cannot deal with percentage-based units for `width`
      *   and `height` because there is no viewport against which they could
      *   be resolved; that is why it will compute the extents of objects in that case.  This
-     *   is why we recommend that you use rsvg_handle_render_layer() instead, which takes
+     *   is why we recommend that you use [method`Rsvg`.Handle.render_layer] instead, which takes
      *   in a viewport and follows the sizing policy from the web platform.
      * 
      * Drawing will occur with respect to the `cr'`s current transformation: for example, if
      * the `cr` has a rotated current transformation matrix, the whole SVG will be rotated in
      * the rendered version.
      * 
-     * This function depends on the `RsvgHandle`'s DPI to compute dimensions in
-     * pixels, so you should call rsvg_handle_set_dpi() beforehand.
+     * This function depends on the [class`Rsvg`.Handle]'s DPI to compute dimensions in
+     * pixels, so you should call [method`Rsvg`.Handle.set_dpi] beforehand.
      * 
      * Note that `cr` must be a Cairo context that is not in an error state, that is,
-     * cairo_status() must return `CAIRO_STATUS_SUCCESS` for it.  Cairo can set a
+     * `cairo_status()` must return `CAIRO_STATUS_SUCCESS` for it.  Cairo can set a
      * context to be in an error state in various situations, for example, if it was
      * passed an invalid matrix or if it was created for an invalid surface.
      * 
      * Element IDs should look like an URL fragment identifier; for example, pass
      * `#foo` (hash `foo`) to get the geometry of the element that
      * has an `id="foo"` attribute.
+     * @param cr A Cairo context
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to render the whole SVG.
      */
     render_cairo_sub(cr: cairo.Context, id?: string | null): boolean
     /**
@@ -586,6 +641,8 @@ class Handle {
      * 
      * The `cr` must be in a `CAIRO_STATUS_SUCCESS` state, or this function will not
      * render anything, and instead will return an error.
+     * @param cr A Cairo context
+     * @param viewport Viewport size at which the whole SVG would be fitted.
      */
     render_document(cr: cairo.Context, viewport: Rectangle): boolean
     /**
@@ -606,6 +663,9 @@ class Handle {
      * 
      * The `element_viewport` gives the position and size at which the named element will
      * be rendered.  FIXME: mention proportional scaling.
+     * @param cr A Cairo context
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to render the whole SVG document tree.
+     * @param element_viewport Viewport size in which to fit the element
      */
     render_element(cr: cairo.Context, id: string | null, element_viewport: Rectangle): boolean
     /**
@@ -615,7 +675,7 @@ class Handle {
      * rendered.  The document is scaled proportionally to fit into this viewport; hence the
      * individual layer may be smaller than this.
      * 
-     * This is equivalent to rsvg_handle_render_document(), but it renders only a
+     * This is equivalent to [method`Rsvg`.Handle.render_document], but it renders only a
      * single element and its children, as if they composed an individual layer in
      * the SVG.  The element is rendered with the same transformation matrix as it
      * has within the whole SVG document.  Applications can use this to re-render a
@@ -629,20 +689,25 @@ class Handle {
      * You can pass `NULL` for the `id` if you want to render all
      * the elements in the SVG, i.e. to render everything from the
      * root element.
+     * @param cr A Cairo context
+     * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to render the whole SVG document tree.
+     * @param viewport Viewport size at which the whole SVG would be fitted.
      */
     render_layer(cr: cairo.Context, id: string | null, viewport: Rectangle): boolean
     /**
      * Set the base URI for `handle` from `file`.
      * 
-     * Note: This function may only be called before rsvg_handle_write() or
-     * rsvg_handle_read_stream_sync() have been called.
+     * Note: This function may only be called before [method`Rsvg`.Handle.write] or
+     * [method`Rsvg`.Handle.read_stream_sync] have been called.
+     * @param base_file a `GFile`
      */
     set_base_gfile(base_file: Gio.File): void
     /**
      * Set the base URI for this SVG.
      * 
-     * Note: This function may only be called before rsvg_handle_write() or
-     * rsvg_handle_read_stream_sync() have been called.
+     * Note: This function may only be called before [method`Rsvg`.Handle.write] or
+     * [method`Rsvg`.Handle.read_stream_sync] have been called.
+     * @param base_uri The base uri
      */
     set_base_uri(base_uri: string): void
     /**
@@ -650,8 +715,9 @@ class Handle {
      * 75, 90, and 300 DPI.
      * 
      * Passing a number <= 0 to `dpi` will reset the DPI to whatever the default
-     * value happens to be, but since rsvg_set_default_dpi() is deprecated, please
+     * value happens to be, but since [id`rsvg_set_default_dpi]` is deprecated, please
      * do not pass values <= 0 to this function.
+     * @param dpi Dots Per Inch (i.e. as Pixels Per Inch)
      */
     set_dpi(dpi: number): void
     /**
@@ -659,10 +725,29 @@ class Handle {
      * 75, 90, and 300 DPI.
      * 
      * Passing a number <= 0 to `dpi` will reset the DPI to whatever the default
-     * value happens to be, but since rsvg_set_default_dpi_x_y() is deprecated,
+     * value happens to be, but since [id`rsvg_set_default_dpi_x_y]` is deprecated,
      * please do not pass values <= 0 to this function.
+     * @param dpi_x Dots Per Inch (i.e. Pixels Per Inch)
+     * @param dpi_y Dots Per Inch (i.e. Pixels Per Inch)
      */
     set_dpi_x_y(dpi_x: number, dpi_y: number): void
+    /**
+     * Sets the sizing function for the `handle,` which can be used to override the
+     * size that librsvg computes for SVG images.  The `size_func` is called from the
+     * following functions:
+     * 
+     * * [method`Rsvg`.Handle.get_dimensions]
+     * * [method`Rsvg`.Handle.get_dimensions_sub]
+     * * [method`Rsvg`.Handle.get_position_sub]
+     * * [method`Rsvg`.Handle.render_cairo]
+     * * [method`Rsvg`.Handle.render_cairo_sub]
+     * 
+     * Librsvg computes the size of the SVG being rendered, and passes it to the
+     * `size_func,` which may then modify these values to set the final size of the
+     * generated image.
+     * @param size_func A sizing function, or `NULL`
+     */
+    set_size_callback(size_func: SizeFunc | null): void
     /**
      * Sets a CSS stylesheet to use for an SVG document.
      * 
@@ -674,18 +759,20 @@ class Handle {
      * [origin](https://drafts.csswg.org/css-cascade-3/#cascading-origins).
      * 
      * Note that ``import`` rules will not be resolved, except for `data:` URLs.
+     * @param css String with CSS data; must be valid UTF-8.
      */
     set_stylesheet(css: Uint8Array): boolean
     /**
      * Loads the next `count` bytes of the image.  You can call this function multiple
-     * times until the whole document is consumed; then you must call rsvg_handle_close()
+     * times until the whole document is consumed; then you must call [method`Rsvg`.Handle.close]
      * to actually parse the document.
      * 
      * Before calling this function for the first time, you may need to call
-     * rsvg_handle_set_base_uri() or rsvg_handle_set_base_gfile() to set the "base
+     * [method`Rsvg`.Handle.set_base_uri] or [method`Rsvg`.Handle.set_base_gfile] to set the "base
      * file" for resolving references to external resources.  SVG elements like
      * `<image>` which reference external resources will be
      * resolved relative to the location you specify with those functions.
+     * @param buf pointer to svg data
      */
     write(buf: Uint8Array): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -723,6 +810,10 @@ class Handle {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -733,6 +824,12 @@ class Handle {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -756,6 +853,7 @@ class Handle {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -775,11 +873,14 @@ class Handle {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -787,6 +888,8 @@ class Handle {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -804,6 +907,7 @@ class Handle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -849,6 +953,7 @@ class Handle {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -892,15 +997,20 @@ class Handle {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -941,6 +1051,7 @@ class Handle {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -975,6 +1086,7 @@ class Handle {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -994,6 +1106,7 @@ class Handle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1026,6 +1139,7 @@ class Handle {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
@@ -1042,6 +1156,8 @@ class Handle {
     connect_after(sigName: "notify::em", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ex", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ex", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::flags", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::flags", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::height", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::metadata", callback: (($obj: Handle, pspec: GObject.ParamSpec) => void)): number
@@ -1071,19 +1187,19 @@ class DimensionData {
     /**
      * SVG's width, in pixels
      */
-    readonly width: number
+    width: number
     /**
      * SVG's height, in pixels
      */
-    readonly height: number
+    height: number
     /**
      * SVG's original width, unmodified by `RsvgSizeFunc`
      */
-    readonly em: number
+    em: number
     /**
      * SVG's original height, unmodified by `RsvgSizeFunc`
      */
-    readonly ex: number
+    ex: number
     static name: string
 }
 abstract class HandleClass {
@@ -1091,7 +1207,7 @@ abstract class HandleClass {
     /**
      * parent class
      */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class Length {
@@ -1099,11 +1215,11 @@ class Length {
     /**
      * numeric part of the length
      */
-    readonly length: number
+    length: number
     /**
      * unit part of the length
      */
-    readonly unit: Unit
+    unit: Unit
     static name: string
 }
 class PositionData {
@@ -1111,11 +1227,11 @@ class PositionData {
     /**
      * position on the x axis
      */
-    readonly x: number
+    x: number
     /**
      * position on the y axis
      */
-    readonly y: number
+    y: number
     static name: string
 }
 class Rectangle {
@@ -1123,19 +1239,19 @@ class Rectangle {
     /**
      * X coordinate of the left side of the rectangle
      */
-    readonly x: number
+    x: number
     /**
      * Y coordinate of the the top side of the rectangle
      */
-    readonly y: number
+    y: number
     /**
      * width of the rectangle
      */
-    readonly width: number
+    width: number
     /**
      * height of the rectangle
      */
-    readonly height: number
+    height: number
     static name: string
 }
 }

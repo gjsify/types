@@ -127,6 +127,7 @@ class Player {
     getVideoSink(): VideoSink
     /**
      * Sets the playback volume of `self` to `volume`.
+     * @param volume the volume as a double between 0.0 and 1.0
      */
     setAudioVolume(volume: number): void
     /**
@@ -137,6 +138,7 @@ class Player {
      * signal on the #ClutterGstPlayer:playing property and then retrieve the
      * current state with clutter_gst_player_get_playing(). ClutterGstVideoActor
      * in clutter-gst is an example of such an asynchronous implementation.
+     * @param playing %TRUE to start playing
      */
     setPlaying(playing: boolean): void
     /* Signals of ClutterGst-3.0.ClutterGst.Player */
@@ -150,6 +152,7 @@ class Player {
     emit(sigName: "eos"): void
     /**
      * The ::error signal is emitted each time an error occurred.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: ((error: GLib.Error) => void)): number
     on(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -159,6 +162,7 @@ class Player {
     /**
      * The ::new-frame signal is emitted each time a frame is received
      * from the video sink.
+     * @param frame the #ClutterGstFrame newly received from the video sink
      */
     connect(sigName: "new-frame", callback: ((frame: Frame) => void)): number
     on(sigName: "new-frame", callback: (frame: Frame) => void, after?: boolean): NodeJS.EventEmitter
@@ -177,6 +181,8 @@ class Player {
     /**
      * The ::size-change signal is emitted each time the new frame
      * has different dimensions to the previous frame.
+     * @param width new width of the frames
+     * @param height new height of the frames
      */
     connect(sigName: "size-change", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-change", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -215,7 +221,7 @@ class Aspectratio {
     player: GObject.Object
     sink: VideoSink
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-3.0.ClutterGst.Content */
     getFrame(): Frame
     getOverlays(): Overlays
@@ -223,6 +229,7 @@ class Aspectratio {
     getSink(): VideoSink
     /**
      * Set the current frame.
+     * @param frame A #ClutterGstFrame
      */
     setFrame(frame: Frame): void
     setPlayer(player: Player): void
@@ -262,6 +269,10 @@ class Aspectratio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -272,6 +283,12 @@ class Aspectratio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -295,6 +312,7 @@ class Aspectratio {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -314,11 +332,14 @@ class Aspectratio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -326,6 +347,8 @@ class Aspectratio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -343,6 +366,7 @@ class Aspectratio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -388,6 +412,7 @@ class Aspectratio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -431,15 +456,20 @@ class Aspectratio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -480,6 +510,7 @@ class Aspectratio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -514,6 +545,7 @@ class Aspectratio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Content */
@@ -536,6 +568,8 @@ class Aspectratio {
     /* Signals of ClutterGst-3.0.ClutterGst.Content */
     /**
      * The ::size-change signal is emitted each time the video size changes.
+     * @param width new width of the frames
+     * @param height new height of the frames
      */
     connect(sigName: "size-change", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-change", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -571,6 +605,7 @@ class Aspectratio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -581,6 +616,7 @@ class Aspectratio {
     /**
      * This signal is emitted each time a #ClutterContent implementation is
      * assigned to a #ClutterActor.
+     * @param actor a #ClutterActor
      */
     connect(sigName: "attached", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "attached", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -590,6 +626,7 @@ class Aspectratio {
     /**
      * This signal is emitted each time a #ClutterContent implementation is
      * removed from a #ClutterActor.
+     * @param actor a #ClutterActor
      */
     connect(sigName: "detached", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "detached", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -675,7 +712,7 @@ class Camera {
      */
     playing: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-3.0.ClutterGst.Camera */
     getBrightness(curValue: number): boolean
     getBrightnessRange(minValue: number, maxValue: number, defaultValue: number): boolean
@@ -689,6 +726,8 @@ class Camera {
      * This method will return FALSE if `property` does not exist or color balance is not
      * supported on `self`.
      * See clutter_gst_camera_supports_color_balance().
+     * @param property Property name
+     * @param curValue Pointer to store the current value of `property`
      */
     getColorBalanceProperty(property: string, curValue: number): boolean
     /**
@@ -697,6 +736,10 @@ class Camera {
      * This method will return FALSE if `property` does not exist or color balance is not
      * supported on `self`.
      * See clutter_gst_camera_supports_color_balance().
+     * @param property Property name
+     * @param minValue Pointer to store the minimum value of `property,` or %NULL
+     * @param maxValue Pointer to store the maximum value of `property,` or %NULL
+     * @param defaultValue Pointer to store the default value of `property,` or %NULL
      */
     getColorBalancePropertyRange(property: string, minValue: number, maxValue: number, defaultValue: number): boolean
     getContrast(curValue: number): boolean
@@ -711,6 +754,7 @@ class Camera {
      * This method will return FALSE if gamma correction is not
      * supported on `self`.
      * See clutter_gst_camera_supports_gamma_correction().
+     * @param curValue Pointer to store the current gamma value
      */
     getGamma(curValue: number): boolean
     /**
@@ -719,6 +763,9 @@ class Camera {
      * This method will return FALSE if gamma correction is not
      * supported on `self`.
      * See clutter_gst_camera_supports_gamma_correction().
+     * @param minValue Pointer to store the minimum gamma value, or %NULL
+     * @param maxValue Pointer to store the maximum gamma value, or %NULL
+     * @param defaultValue Pointer to store the default gamma value, or %NULL
      */
     getGammaRange(minValue: number, maxValue: number, defaultValue: number): boolean
     getHue(curValue: number): boolean
@@ -740,6 +787,7 @@ class Camera {
     setBrightness(value: number): boolean
     /**
      * Set the new active camera device.
+     * @param device a #ClutterGstCameraDevice
      */
     setCameraDevice(device: CameraDevice): boolean
     /**
@@ -750,12 +798,15 @@ class Camera {
      * This method will return FALSE if `property` does not exist or color balance is not
      * supported on `self`.
      * See clutter_gst_camera_supports_color_balance().
+     * @param property Property name
+     * @param value The value to set
      */
     setColorBalanceProperty(property: string, value: number): boolean
     setContrast(value: number): boolean
     /**
      * Set the filter element to be used.
      * Filters can be used for effects, image processing, etc.
+     * @param filter a #GstElement for the filter
      */
     setFilter(filter: Gst.Element): boolean
     /**
@@ -766,18 +817,21 @@ class Camera {
      * This method will return FALSE if gamma correction is not
      * supported on `self`.
      * See clutter_gst_camera_supports_gamma_correction().
+     * @param value The value to set
      */
     setGamma(value: number): boolean
     setHue(value: number): boolean
     /**
      * Set the encoding profile to be used for photo captures.
      * The default profile saves photos as JPEG images.
+     * @param profile A #GstEncodingProfile to be used for photo captures.
      */
     setPhotoProfile(profile: GstPbutils.EncodingProfile): void
     setSaturation(value: number): boolean
     /**
      * Set the encoding profile to be used for video recording.
      * The default profile saves videos as Ogg/Theora videos.
+     * @param profile A #GstEncodingProfile to be used for video recording.
      */
     setVideoProfile(profile: GstPbutils.EncodingProfile): void
     /**
@@ -785,6 +839,7 @@ class Camera {
      * This method requires that `self` is playing and ready for capture.
      * 
      * The ::video-saved signal will be emitted when the video is saved.
+     * @param filename the name of the video file to where the recording will be saved
      */
     startVideoRecording(filename: string): boolean
     /**
@@ -804,6 +859,7 @@ class Camera {
      * This method requires that `self` is playing and ready for capture.
      * 
      * The ::photo-saved signal will be emitted when the video is saved.
+     * @param filename the name of the file to where the photo will be saved
      */
     takePhoto(filename: string): boolean
     /**
@@ -847,6 +903,10 @@ class Camera {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -857,6 +917,12 @@ class Camera {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -880,6 +946,7 @@ class Camera {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -899,11 +966,14 @@ class Camera {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -911,6 +981,8 @@ class Camera {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -928,6 +1000,7 @@ class Camera {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -973,6 +1046,7 @@ class Camera {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1016,15 +1090,20 @@ class Camera {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1065,6 +1144,7 @@ class Camera {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1099,6 +1179,7 @@ class Camera {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of ClutterGst-3.0.ClutterGst.Player */
@@ -1129,6 +1210,7 @@ class Camera {
     getVideoSink(): VideoSink
     /**
      * Sets the playback volume of `self` to `volume`.
+     * @param volume the volume as a double between 0.0 and 1.0
      */
     setAudioVolume(volume: number): void
     /**
@@ -1139,6 +1221,7 @@ class Camera {
      * signal on the #ClutterGstPlayer:playing property and then retrieve the
      * current state with clutter_gst_player_get_playing(). ClutterGstVideoActor
      * in clutter-gst is an example of such an asynchronous implementation.
+     * @param playing %TRUE to start playing
      */
     setPlaying(playing: boolean): void
     /* Signals of ClutterGst-3.0.ClutterGst.Camera */
@@ -1152,6 +1235,7 @@ class Camera {
     emit(sigName: "photo-saved"): void
     /**
      * The ::photo-taken signal is emitted when a photo was taken.
+     * @param pixbuf the photo taken as a #GdkPixbuf
      */
     connect(sigName: "photo-taken", callback: ((pixbuf: GdkPixbuf.Pixbuf) => void)): number
     on(sigName: "photo-taken", callback: (pixbuf: GdkPixbuf.Pixbuf) => void, after?: boolean): NodeJS.EventEmitter
@@ -1161,6 +1245,7 @@ class Camera {
     /**
      * The ::ready-for-capture signal is emitted whenever the value of
      * clutter_gst_camera_is_ready_for_capture changes.
+     * @param ready whether the `self` is ready for a new capture
      */
     connect(sigName: "ready-for-capture", callback: ((ready: boolean) => void)): number
     on(sigName: "ready-for-capture", callback: (ready: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -1204,6 +1289,7 @@ class Camera {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1221,6 +1307,7 @@ class Camera {
     emit(sigName: "eos"): void
     /**
      * The ::error signal is emitted each time an error occurred.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: ((error: GLib.Error) => void)): number
     on(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -1230,6 +1317,7 @@ class Camera {
     /**
      * The ::new-frame signal is emitted each time a frame is received
      * from the video sink.
+     * @param frame the #ClutterGstFrame newly received from the video sink
      */
     connect(sigName: "new-frame", callback: ((frame: Frame) => void)): number
     on(sigName: "new-frame", callback: (frame: Frame) => void, after?: boolean): NodeJS.EventEmitter
@@ -1248,6 +1336,8 @@ class Camera {
     /**
      * The ::size-change signal is emitted each time the new frame
      * has different dimensions to the previous frame.
+     * @param width new width of the frames
+     * @param height new height of the frames
      */
     connect(sigName: "size-change", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-change", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1304,8 +1394,21 @@ interface CameraDevice_ConstructProps extends GObject.Object_ConstructProps {
     node?: string
 }
 class CameraDevice {
+    /* Properties of ClutterGst-3.0.ClutterGst.CameraDevice */
+    /**
+     * The GstElementFactory for this device.
+     */
+    readonly elementFactory: Gst.ElementFactory
+    /**
+     * The device name.
+     */
+    readonly name: string
+    /**
+     * The device node.
+     */
+    readonly node: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-3.0.ClutterGst.CameraDevice */
     /**
      * Retrieve the current capture resolution being used by `device`.
@@ -1325,6 +1428,8 @@ class CameraDevice {
     getSupportedResolutions(): VideoResolution[]
     /**
      * Set the capture resolution to be used by `device`.
+     * @param width The new capture resolution width to use
+     * @param height The new capture resolution height to use
      */
     setCaptureResolution(width: number, height: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1362,6 +1467,10 @@ class CameraDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1372,6 +1481,12 @@ class CameraDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1395,6 +1510,7 @@ class CameraDevice {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1414,11 +1530,14 @@ class CameraDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1426,6 +1545,8 @@ class CameraDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1443,6 +1564,7 @@ class CameraDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1488,6 +1610,7 @@ class CameraDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1531,15 +1654,20 @@ class CameraDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1580,6 +1708,7 @@ class CameraDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1614,12 +1743,15 @@ class CameraDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of ClutterGst-3.0.ClutterGst.CameraDevice */
     /**
      * The ::capture-resolution-changed signal is emitted whenever the value of
      * clutter_gst_camera_device_get_capture_resolution changes.
+     * @param width The new width
+     * @param height The new height
      */
     connect(sigName: "capture-resolution-changed", callback: ((width: number, height: number) => void)): number
     on(sigName: "capture-resolution-changed", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1655,12 +1787,28 @@ class CameraDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-factory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-factory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-factory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-factory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-factory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::node", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::node", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::node", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::node", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::node", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1677,7 +1825,7 @@ interface CameraManager_ConstructProps extends GObject.Object_ConstructProps {
 }
 class CameraManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-3.0.ClutterGst.CameraManager */
     /**
      * Retrieve an array of supported camera devices.
@@ -1718,6 +1866,10 @@ class CameraManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1728,6 +1880,12 @@ class CameraManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1751,6 +1909,7 @@ class CameraManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1770,11 +1929,14 @@ class CameraManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1782,6 +1944,8 @@ class CameraManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1799,6 +1963,7 @@ class CameraManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1844,6 +2009,7 @@ class CameraManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1887,15 +2053,20 @@ class CameraManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1936,6 +2107,7 @@ class CameraManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1970,12 +2142,14 @@ class CameraManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of ClutterGst-3.0.ClutterGst.CameraManager */
     /**
      * The ::camera-added signal is emitted whenever a new camera device
      * is available.
+     * @param cameraDevice a camera device added
      */
     connect(sigName: "camera-added", callback: ((cameraDevice: CameraDevice) => void)): number
     on(sigName: "camera-added", callback: (cameraDevice: CameraDevice) => void, after?: boolean): NodeJS.EventEmitter
@@ -1985,6 +2159,7 @@ class CameraManager {
     /**
      * The ::camera-removed signal is emitted whenever a camera device
      * is unplugged/removed from the system.
+     * @param cameraDevice a camera device
      */
     connect(sigName: "camera-removed", callback: ((cameraDevice: CameraDevice) => void)): number
     on(sigName: "camera-removed", callback: (cameraDevice: CameraDevice) => void, after?: boolean): NodeJS.EventEmitter
@@ -2020,6 +2195,7 @@ class CameraManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2062,7 +2238,7 @@ class Content {
     player: GObject.Object
     sink: VideoSink
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-3.0.ClutterGst.Content */
     getFrame(): Frame
     getOverlays(): Overlays
@@ -2070,6 +2246,7 @@ class Content {
     getSink(): VideoSink
     /**
      * Set the current frame.
+     * @param frame A #ClutterGstFrame
      */
     setFrame(frame: Frame): void
     setPlayer(player: Player): void
@@ -2109,6 +2286,10 @@ class Content {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2119,6 +2300,12 @@ class Content {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2142,6 +2329,7 @@ class Content {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2161,11 +2349,14 @@ class Content {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2173,6 +2364,8 @@ class Content {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2190,6 +2383,7 @@ class Content {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2235,6 +2429,7 @@ class Content {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2278,15 +2473,20 @@ class Content {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2327,6 +2527,7 @@ class Content {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2361,6 +2562,7 @@ class Content {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Content */
@@ -2383,6 +2585,8 @@ class Content {
     /* Signals of ClutterGst-3.0.ClutterGst.Content */
     /**
      * The ::size-change signal is emitted each time the video size changes.
+     * @param width new width of the frames
+     * @param height new height of the frames
      */
     connect(sigName: "size-change", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-change", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2418,6 +2622,7 @@ class Content {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2428,6 +2633,7 @@ class Content {
     /**
      * This signal is emitted each time a #ClutterContent implementation is
      * assigned to a #ClutterActor.
+     * @param actor a #ClutterActor
      */
     connect(sigName: "attached", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "attached", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -2437,6 +2643,7 @@ class Content {
     /**
      * This signal is emitted each time a #ClutterContent implementation is
      * removed from a #ClutterActor.
+     * @param actor a #ClutterActor
      */
     connect(sigName: "detached", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "detached", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -2526,7 +2733,7 @@ class Crop {
     player: GObject.Object
     sink: VideoSink
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-3.0.ClutterGst.Content */
     getFrame(): Frame
     getOverlays(): Overlays
@@ -2534,6 +2741,7 @@ class Crop {
     getSink(): VideoSink
     /**
      * Set the current frame.
+     * @param frame A #ClutterGstFrame
      */
     setFrame(frame: Frame): void
     setPlayer(player: Player): void
@@ -2573,6 +2781,10 @@ class Crop {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2583,6 +2795,12 @@ class Crop {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2606,6 +2824,7 @@ class Crop {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2625,11 +2844,14 @@ class Crop {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2637,6 +2859,8 @@ class Crop {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2654,6 +2878,7 @@ class Crop {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2699,6 +2924,7 @@ class Crop {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2742,15 +2968,20 @@ class Crop {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2791,6 +3022,7 @@ class Crop {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2825,6 +3057,7 @@ class Crop {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Content */
@@ -2847,6 +3080,8 @@ class Crop {
     /* Signals of ClutterGst-3.0.ClutterGst.Content */
     /**
      * The ::size-change signal is emitted each time the video size changes.
+     * @param width new width of the frames
+     * @param height new height of the frames
      */
     connect(sigName: "size-change", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-change", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2882,6 +3117,7 @@ class Crop {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2892,6 +3128,7 @@ class Crop {
     /**
      * This signal is emitted each time a #ClutterContent implementation is
      * assigned to a #ClutterActor.
+     * @param actor a #ClutterActor
      */
     connect(sigName: "attached", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "attached", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -2901,6 +3138,7 @@ class Crop {
     /**
      * This signal is emitted each time a #ClutterContent implementation is
      * removed from a #ClutterActor.
+     * @param actor a #ClutterActor
      */
     connect(sigName: "detached", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "detached", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -3091,7 +3329,7 @@ class Playback {
      */
     playing: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-3.0.ClutterGst.Playback */
     /**
      * Get the current audio stream. The number returned in the index of the
@@ -3169,29 +3407,35 @@ class Playback {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_playback_get_audio_streams().
+     * @param index the index of the audio stream
      */
     setAudioStream(index: number): void
     /**
      * Sets the buffer duration to be used when buffering network streams.
+     * @param duration The new duration
      */
     setBufferDuration(duration: number): void
     /**
      * Sets the buffer size to be used when buffering network streams.
+     * @param size The new size
      */
     setBufferSize(size: number): void
     setBufferingMode(mode: BufferingMode): void
     /**
      * Sets the source of `self` using a file path.
+     * @param filename A filename
      */
     setFilename(filename: string): void
     /**
      * Sets the playback progress of `self`. The `progress` is
      * a normalized value between 0.0 (begin) and 1.0 (end).
+     * @param progress the progress of the playback, between 0.0 and 1.0
      */
     setProgress(progress: number): void
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     setSeekFlags(flags: SeekFlags): void
     /**
@@ -3204,6 +3448,7 @@ class Playback {
      *   clutter_gst_playback_set_subtitle_font_name (player, "Sans 24pt");
      * ```
      * 
+     * @param fontName a font name, or %NULL to set the default font name
      */
     setSubtitleFontName(fontName: string): void
     /**
@@ -3211,14 +3456,17 @@ class Playback {
      * in the list returned by clutter_gst_playback_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index the index of the subtitles track
      */
     setSubtitleTrack(index: number): void
     /**
      * Sets the location of a subtitle file to display while playing `self`.
+     * @param uri the URI of a subtitle file
      */
     setSubtitleUri(uri: string): void
     /**
      * Sets the URI of `self` to `uri`.
+     * @param uri the URI of the media stream
      */
     setUri(uri: string): void
     /**
@@ -3227,6 +3475,7 @@ class Playback {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param userAgent the user agent
      */
     setUserAgent(userAgent: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3264,6 +3513,10 @@ class Playback {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3274,6 +3527,12 @@ class Playback {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3297,6 +3556,7 @@ class Playback {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3316,11 +3576,14 @@ class Playback {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3328,6 +3591,8 @@ class Playback {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3345,6 +3610,7 @@ class Playback {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3390,6 +3656,7 @@ class Playback {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3433,15 +3700,20 @@ class Playback {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3482,6 +3754,7 @@ class Playback {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3516,6 +3789,7 @@ class Playback {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of ClutterGst-3.0.ClutterGst.Player */
@@ -3546,6 +3820,7 @@ class Playback {
     getVideoSink(): VideoSink
     /**
      * Sets the playback volume of `self` to `volume`.
+     * @param volume the volume as a double between 0.0 and 1.0
      */
     setAudioVolume(volume: number): void
     /**
@@ -3556,12 +3831,14 @@ class Playback {
      * signal on the #ClutterGstPlayer:playing property and then retrieve the
      * current state with clutter_gst_player_get_playing(). ClutterGstVideoActor
      * in clutter-gst is an example of such an asynchronous implementation.
+     * @param playing %TRUE to start playing
      */
     setPlaying(playing: boolean): void
     /* Signals of ClutterGst-3.0.ClutterGst.Playback */
     /**
      * The ::should-buffer signal is emitted every time the base class needs to
      * decide whether it should continue buffering in download-buffering mode.
+     * @param query A gst buffering query of format bytes
      */
     connect(sigName: "should-buffer", callback: ((query: Gst.Query) => boolean)): number
     on(sigName: "should-buffer", callback: (query: Gst.Query) => void, after?: boolean): NodeJS.EventEmitter
@@ -3597,6 +3874,7 @@ class Playback {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3614,6 +3892,7 @@ class Playback {
     emit(sigName: "eos"): void
     /**
      * The ::error signal is emitted each time an error occurred.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: ((error: GLib.Error) => void)): number
     on(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -3623,6 +3902,7 @@ class Playback {
     /**
      * The ::new-frame signal is emitted each time a frame is received
      * from the video sink.
+     * @param frame the #ClutterGstFrame newly received from the video sink
      */
     connect(sigName: "new-frame", callback: ((frame: Frame) => void)): number
     on(sigName: "new-frame", callback: (frame: Frame) => void, after?: boolean): NodeJS.EventEmitter
@@ -3641,6 +3921,8 @@ class Playback {
     /**
      * The ::size-change signal is emitted each time the new frame
      * has different dimensions to the previous frame.
+     * @param width new width of the frames
+     * @param height new height of the frames
      */
     connect(sigName: "size-change", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-change", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3827,137 +4109,137 @@ class VideoSink {
      */
     tsOffset: number
     /* Fields of GstVideo-1.0.GstVideo.VideoSink */
-    readonly element: GstBase.BaseSink
+    element: GstBase.BaseSink
     /**
      * video width (derived class needs to set this)
      */
-    readonly width: number
+    width: number
     /**
      * video height (derived class needs to set this)
      */
-    readonly height: number
+    height: number
     /* Fields of GstBase-1.0.GstBase.BaseSink */
-    readonly sinkpad: Gst.Pad
-    readonly padMode: Gst.PadMode
-    readonly offset: number
-    readonly canActivatePull: boolean
-    readonly canActivatePush: boolean
-    readonly prerollLock: GLib.Mutex
-    readonly prerollCond: GLib.Cond
-    readonly eos: boolean
-    readonly needPreroll: boolean
-    readonly havePreroll: boolean
-    readonly playingAsync: boolean
-    readonly haveNewsegment: boolean
-    readonly segment: Gst.Segment
+    sinkpad: Gst.Pad
+    padMode: Gst.PadMode
+    offset: number
+    canActivatePull: boolean
+    canActivatePush: boolean
+    prerollLock: GLib.Mutex
+    prerollCond: GLib.Cond
+    eos: boolean
+    needPreroll: boolean
+    havePreroll: boolean
+    playingAsync: boolean
+    haveNewsegment: boolean
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-3.0.ClutterGst.VideoSink */
     /**
      * Returns a #ClutterGstFrame object suitable to render the current
@@ -3986,6 +4268,7 @@ class VideoSink {
      * until the element state is changed.
      * 
      * This function should be called with the PREROLL_LOCK held.
+     * @param obj the mini object that caused the preroll
      */
     doPreroll(obj: Gst.MiniObject): Gst.FlowReturn
     /**
@@ -4087,24 +4370,29 @@ class VideoSink {
      * disabled, the sink will immediately go to PAUSED instead of waiting for a
      * preroll buffer. This feature is useful if the sink does not synchronize
      * against the clock or when it is dealing with sparse streams.
+     * @param enabled the new async value.
      */
     setAsyncEnabled(enabled: boolean): void
     /**
      * Set the number of bytes that the sink will pull when it is operating in pull
      * mode.
+     * @param blocksize the blocksize in bytes
      */
     setBlocksize(blocksize: number): void
     /**
      * Configure `sink` to drop buffers which are outside the current segment
+     * @param dropOutOfSegment drop buffers outside the segment
      */
     setDropOutOfSegment(dropOutOfSegment: boolean): void
     /**
      * Configures `sink` to store the last received sample in the last-sample
      * property.
+     * @param enabled the new enable-last-sample value.
      */
     setLastSampleEnabled(enabled: boolean): void
     /**
      * Set the maximum amount of bits per second that the sink will render.
+     * @param maxBitrate the max_bitrate in bits per second
      */
     setMaxBitrate(maxBitrate: number): void
     /**
@@ -4112,6 +4400,7 @@ class VideoSink {
      * used to decide if a buffer should be dropped or not based on the
      * buffer timestamp and the current clock time. A value of -1 means
      * an unlimited time.
+     * @param maxLateness the new max lateness value.
      */
     setMaxLateness(maxLateness: number): void
     /**
@@ -4120,10 +4409,12 @@ class VideoSink {
      * pipelines.
      * 
      * This function is usually called by subclasses.
+     * @param processingDeadline the new processing deadline in nanoseconds.
      */
     setProcessingDeadline(processingDeadline: Gst.ClockTime): void
     /**
      * Configures `sink` to send Quality-of-Service events upstream.
+     * @param enabled the new qos value.
      */
     setQosEnabled(enabled: boolean): void
     /**
@@ -4136,6 +4427,7 @@ class VideoSink {
      * other sinks will adjust their latency to delay the rendering of their media.
      * 
      * This function is usually called by subclasses.
+     * @param delay the new delay
      */
     setRenderDelay(delay: Gst.ClockTime): void
     /**
@@ -4144,12 +4436,14 @@ class VideoSink {
      * possible. If `sync` is %TRUE, the timestamps of the incoming
      * buffers will be used to schedule the exact render time of its
      * contents.
+     * @param sync the new sync value.
      */
     setSync(sync: boolean): void
     /**
      * Set the time that will be inserted between rendered buffers. This
      * can be used to control the maximum buffers per second that the sink
      * will render.
+     * @param throttle the throttle time in nanoseconds
      */
     setThrottleTime(throttle: number): void
     /**
@@ -4157,6 +4451,7 @@ class VideoSink {
      * render buffers earlier than their timestamp. A positive value will delay
      * rendering. This function can be used to fix playback of badly timestamped
      * buffers.
+     * @param offset the new offset
      */
     setTsOffset(offset: Gst.ClockTimeDiff): void
     /**
@@ -4171,6 +4466,7 @@ class VideoSink {
      * 
      * The `time` argument should be the running_time of when the timeout should happen
      * and will be adjusted with any latency and offset configured in the sink.
+     * @param time the running_time to be reached
      */
     wait(time: Gst.ClockTime): [ /* returnType */ Gst.FlowReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -4189,6 +4485,7 @@ class VideoSink {
      * The `time` argument should be the running_time of when this method should
      * return and is not adjusted with any latency or offset configured in the
      * sink.
+     * @param time the running_time to be reached
      */
     waitClock(time: Gst.ClockTime): [ /* returnType */ Gst.ClockReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -4233,6 +4530,7 @@ class VideoSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -4248,6 +4546,7 @@ class VideoSink {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -4255,6 +4554,7 @@ class VideoSink {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -4271,6 +4571,7 @@ class VideoSink {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -4286,6 +4587,7 @@ class VideoSink {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -4295,6 +4597,7 @@ class VideoSink {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -4304,6 +4607,7 @@ class VideoSink {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -4334,21 +4638,26 @@ class VideoSink {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -4374,10 +4683,12 @@ class VideoSink {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -4389,6 +4700,7 @@ class VideoSink {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -4422,11 +4734,13 @@ class VideoSink {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -4471,6 +4785,7 @@ class VideoSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -4482,6 +4797,8 @@ class VideoSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -4489,6 +4806,9 @@ class VideoSink {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -4496,6 +4816,10 @@ class VideoSink {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -4509,6 +4833,10 @@ class VideoSink {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -4537,6 +4865,14 @@ class VideoSink {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -4544,6 +4880,15 @@ class VideoSink {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -4562,6 +4907,7 @@ class VideoSink {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -4578,10 +4924,14 @@ class VideoSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -4593,6 +4943,7 @@ class VideoSink {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -4605,6 +4956,7 @@ class VideoSink {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -4616,6 +4968,7 @@ class VideoSink {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -4635,6 +4988,7 @@ class VideoSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -4644,6 +4998,9 @@ class VideoSink {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -4659,6 +5016,7 @@ class VideoSink {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -4667,6 +5025,13 @@ class VideoSink {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -4684,6 +5049,9 @@ class VideoSink {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -4695,12 +5063,14 @@ class VideoSink {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -4708,18 +5078,21 @@ class VideoSink {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -4731,6 +5104,7 @@ class VideoSink {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -4746,6 +5120,7 @@ class VideoSink {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -4762,6 +5137,7 @@ class VideoSink {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -4775,12 +5151,16 @@ class VideoSink {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -4790,6 +5170,7 @@ class VideoSink {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -4797,11 +5178,14 @@ class VideoSink {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -4824,6 +5208,10 @@ class VideoSink {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -4849,6 +5237,8 @@ class VideoSink {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -4858,16 +5248,19 @@ class VideoSink {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -4883,17 +5276,21 @@ class VideoSink {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -4904,6 +5301,7 @@ class VideoSink {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -4911,11 +5309,13 @@ class VideoSink {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -4929,6 +5329,7 @@ class VideoSink {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -4982,6 +5383,10 @@ class VideoSink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4992,6 +5397,12 @@ class VideoSink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5015,6 +5426,7 @@ class VideoSink {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5034,11 +5446,14 @@ class VideoSink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5046,6 +5461,8 @@ class VideoSink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5063,6 +5480,7 @@ class VideoSink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5108,6 +5526,7 @@ class VideoSink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5151,15 +5570,20 @@ class VideoSink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5200,6 +5624,7 @@ class VideoSink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5224,6 +5649,7 @@ class VideoSink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GstVideo-1.0.GstVideo.ColorBalance */
@@ -5238,6 +5664,7 @@ class VideoSink {
      * See Also: The #GstColorBalanceChannel.min_value and
      *         #GstColorBalanceChannel.max_value members of the
      *         #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
      */
     getValue(channel: GstVideo.ColorBalanceChannel): number
     /**
@@ -5251,6 +5678,8 @@ class VideoSink {
      * See Also: The #GstColorBalanceChannel.min_value and
      *         #GstColorBalanceChannel.max_value members of the
      *         #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
+     * @param value The new value for the channel.
      */
     setValue(channel: GstVideo.ColorBalanceChannel, value: number): void
     /**
@@ -5258,20 +5687,32 @@ class VideoSink {
      * interface. It fires the #GstColorBalance::value-changed signal on the
      * instance, and the #GstColorBalanceChannel::value-changed signal on the
      * channel object.
+     * @param channel A #GstColorBalanceChannel whose value has changed
+     * @param value The new value of the channel
      */
     valueChanged(channel: GstVideo.ColorBalanceChannel, value: number): void
     /* Methods of GstVideo-1.0.GstVideo.Navigation */
     /**
      * Sends the indicated command to the navigation interface.
+     * @param command The command to issue
      */
     sendCommand(command: GstVideo.NavigationCommand): void
     sendEvent(structure: Gst.Structure): void
+    /**
+     * Sends an event to the navigation interface.
+     * @param event The event to send
+     */
+    sendEventSimple(event: Gst.Event): void
     sendKeyEvent(event: string, key: string): void
     /**
      * Sends a mouse event to the navigation interface. Mouse event coordinates
      * are sent relative to the display space of the related output area. This is
      * usually the size in pixels of the window associated with the element
      * implementing the #GstNavigation interface.
+     * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
+     * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
      */
     sendMouseEvent(event: string, button: number, x: number, y: number): void
     /**
@@ -5279,6 +5720,10 @@ class VideoSink {
      * are sent relative to the display space of the related output area. This is
      * usually the size in pixels of the window associated with the element
      * implementing the #GstNavigation interface.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
+     * @param deltaX The delta_x coordinate of the mouse event.
+     * @param deltaY The delta_y coordinate of the mouse event.
      */
     sendMouseScrollEvent(x: number, y: number, deltaX: number, deltaY: number): void
     /* Signals of ClutterGst-3.0.ClutterGst.VideoSink */
@@ -5343,6 +5788,7 @@ class VideoSink {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -5351,6 +5797,7 @@ class VideoSink {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -5362,6 +5809,8 @@ class VideoSink {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5397,6 +5846,7 @@ class VideoSink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5406,6 +5856,8 @@ class VideoSink {
     /* Signals of GstVideo-1.0.GstVideo.ColorBalance */
     /**
      * Fired when the value of the indicated channel has changed.
+     * @param channel The #GstColorBalanceChannel
+     * @param value The new value
      */
     connect(sigName: "value-changed", callback: ((channel: GstVideo.ColorBalanceChannel, value: number) => void)): number
     on(sigName: "value-changed", callback: (channel: GstVideo.ColorBalanceChannel, value: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5500,63 +5952,164 @@ class VideoSink {
     /* Static methods and pseudo-constructors */
     static new(): VideoSink
     /**
+     * Try to retrieve x and y coordinates of a #GstNavigation event.
+     * @param event The #GstEvent to inspect.
+     */
+    static eventGetCoordinates(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null ]
+    /**
      * Inspect a #GstEvent and return the #GstNavigationEventType of the event, or
      * #GST_NAVIGATION_EVENT_INVALID if the event is not a #GstNavigation event.
+     * @param event A #GstEvent to inspect.
      */
     static eventGetType(event: Gst.Event): GstVideo.NavigationEventType
     /**
      * Create a new navigation event given navigation command..
+     * @param command The navigation command to use.
      */
     static eventNewCommand(command: GstVideo.NavigationCommand): Gst.Event
     /**
      * Create a new navigation event for the given key press.
+     * @param key A string identifying the key press.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewKeyPress(key: string): Gst.Event
+    static eventNewKeyPress(key: string, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key release.
+     * @param key A string identifying the released key.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewKeyRelease(key: string): Gst.Event
+    static eventNewKeyRelease(key: string, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key mouse button press.
+     * @param button The number of the pressed mouse button.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseButtonPress(button: number, x: number, y: number): Gst.Event
+    static eventNewMouseButtonPress(button: number, x: number, y: number, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key mouse button release.
+     * @param button The number of the released mouse button.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseButtonRelease(button: number, x: number, y: number): Gst.Event
+    static eventNewMouseButtonRelease(button: number, x: number, y: number, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the new mouse location.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseMove(x: number, y: number): Gst.Event
+    static eventNewMouseMove(x: number, y: number, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the mouse scroll.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param deltaX The x component of the scroll movement.
+     * @param deltaY The y component of the scroll movement.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseScroll(x: number, y: number, deltaX: number, deltaY: number): Gst.Event
+    static eventNewMouseScroll(x: number, y: number, deltaX: number, deltaY: number, state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event signalling that all currently active touch
+     * points are cancelled and should be discarded. For example, under Wayland
+     * this event might be sent when a swipe passes the threshold to be recognized
+     * as a gesture by the compositor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchCancel(state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for an added touch point.
+     * @param identifier A number uniquely identifying this touch point. It must stay    unique to this touch point at least until an up event is sent for    the same identifier, or all touch points are cancelled.
+     * @param x The x coordinate of the new touch point.
+     * @param y The y coordinate of the new touch point.
+     * @param pressure Pressure data of the touch point, from 0.0 to 1.0, or NaN if no    data is available.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchDown(identifier: number, x: number, y: number, pressure: number, state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event signalling the end of a touch frame. Touch
+     * frames signal that all previous down, motion and up events not followed by
+     * another touch frame event already should be considered simultaneous.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchFrame(state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for a moved touch point.
+     * @param identifier A number uniquely identifying this touch point. It must    correlate to exactly one previous touch_start event.
+     * @param x The x coordinate of the touch point.
+     * @param y The y coordinate of the touch point.
+     * @param pressure Pressure data of the touch point, from 0.0 to 1.0, or NaN if no    data is available.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchMotion(identifier: number, x: number, y: number, pressure: number, state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for a removed touch point.
+     * @param identifier A number uniquely identifying this touch point. It must    correlate to exactly one previous down event, but can be reused    after sending this event.
+     * @param x The x coordinate of the touch point.
+     * @param y The y coordinate of the touch point.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchUp(identifier: number, x: number, y: number, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Inspect a #GstNavigation command event and retrieve the enum value of the
      * associated command.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseCommand(event: Gst.Event): [ /* returnType */ boolean, /* command */ GstVideo.NavigationCommand | null ]
+    /**
+     * Note: Modifier keys (as defined in #GstNavigationModifierType)
+     * [press](GST_NAVIGATION_EVENT_KEY_PRESS) and
+     * [release](GST_NAVIGATION_KEY_PRESS) events are generated even if those states are
+     * present on all other related events
+     * @param event A #GstEvent to inspect.
+     */
     static eventParseKeyEvent(event: Gst.Event): [ /* returnType */ boolean, /* key */ string | null ]
     /**
      * Retrieve the details of either a #GstNavigation mouse button press event or
      * a mouse button release event. Determine which type the event is using
      * gst_navigation_event_get_type() to retrieve the #GstNavigationEventType.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseButtonEvent(event: Gst.Event): [ /* returnType */ boolean, /* button */ number | null, /* x */ number | null, /* y */ number | null ]
     /**
      * Inspect a #GstNavigation mouse movement event and extract the coordinates
      * of the event.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseMoveEvent(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null ]
     /**
      * Inspect a #GstNavigation mouse scroll event and extract the coordinates
      * of the event.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseScrollEvent(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* deltaX */ number | null, /* deltaY */ number | null ]
+    static eventParseState(event: Gst.Event, state: GstVideo.NavigationModifierType): boolean
+    /**
+     * Retrieve the details of a #GstNavigation touch-down or touch-motion event.
+     * Determine which type the event is using gst_navigation_event_get_type()
+     * to retrieve the #GstNavigationEventType.
+     * @param event A #GstEvent to inspect.
+     */
+    static eventParseTouchEvent(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number | null, /* x */ number | null, /* y */ number | null, /* pressure */ number | null ]
+    /**
+     * Retrieve the details of a #GstNavigation touch-up event.
+     * @param event A #GstEvent to inspect.
+     */
+    static eventParseTouchUpEvent(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number | null, /* x */ number | null, /* y */ number | null ]
+    /**
+     * Try to set x and y coordinates on a #GstNavigation event. The event must
+     * be writable.
+     * @param event The #GstEvent to modify.
+     * @param x The x coordinate to set.
+     * @param y The y coordinate to set.
+     */
+    static eventSetCoordinates(event: Gst.Event, x: number, y: number): boolean
     /**
      * Check a bus message to see if it is a #GstNavigation event, and return
      * the #GstNavigationMessageType identifying the type of the message if so.
+     * @param message A #GstMessage to inspect.
      */
     static messageGetType(message: Gst.Message): GstVideo.NavigationMessageType
     /**
@@ -5564,43 +6117,55 @@ class VideoSink {
      * #GST_NAVIGATION_MESSAGE_ANGLES_CHANGED for notifying an application
      * that the current angle, or current number of angles available in a
      * multiangle video has changed.
+     * @param src A #GstObject to set as source of the new message.
+     * @param curAngle The currently selected angle.
+     * @param nAngles The number of viewing angles now available.
      */
     static messageNewAnglesChanged(src: Gst.Object, curAngle: number, nAngles: number): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
+     * @param src A #GstObject to set as source of the new message.
      */
     static messageNewCommandsChanged(src: Gst.Object): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_EVENT.
+     * @param src A #GstObject to set as source of the new message.
+     * @param event A navigation #GstEvent
      */
     static messageNewEvent(src: Gst.Object, event: Gst.Event): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_MOUSE_OVER.
+     * @param src A #GstObject to set as source of the new message.
+     * @param active %TRUE if the mouse has entered a clickable area of the display. %FALSE if it over a non-clickable area.
      */
     static messageNewMouseOver(src: Gst.Object, active: boolean): Gst.Message
     /**
      * Parse a #GstNavigation message of type GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
      * and extract the `cur_angle` and `n_angles` parameters.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseAnglesChanged(message: Gst.Message): [ /* returnType */ boolean, /* curAngle */ number | null, /* nAngles */ number | null ]
     /**
      * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_EVENT
      * and extract contained #GstEvent. The caller must unref the `event` when done
      * with it.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseEvent(message: Gst.Message): [ /* returnType */ boolean, /* event */ Gst.Event | null ]
     /**
      * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_MOUSE_OVER
      * and extract the active/inactive flag. If the mouse over event is marked
      * active, it indicates that the mouse is over a clickable area.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseMouseOver(message: Gst.Message): [ /* returnType */ boolean, /* active */ boolean | null ]
     /**
      * Inspect a #GstQuery and return the #GstNavigationQueryType associated with
      * it if it is a #GstNavigation query.
+     * @param query The query to inspect
      */
     static queryGetType(query: Gst.Query): GstVideo.NavigationQueryType
     /**
@@ -5618,25 +6183,34 @@ class VideoSink {
      * Parse the current angle number in the #GstNavigation angles `query` into the
      * #guint pointed to by the `cur_angle` variable, and the number of available
      * angles into the #guint pointed to by the `n_angles` variable.
+     * @param query a #GstQuery
      */
     static queryParseAngles(query: Gst.Query): [ /* returnType */ boolean, /* curAngle */ number | null, /* nAngles */ number | null ]
     /**
      * Parse the number of commands in the #GstNavigation commands `query`.
+     * @param query a #GstQuery
      */
     static queryParseCommandsLength(query: Gst.Query): [ /* returnType */ boolean, /* nCmds */ number | null ]
     /**
      * Parse the #GstNavigation command query and retrieve the `nth` command from
      * it into `cmd`. If the list contains less elements than `nth,` `cmd` will be
      * set to #GST_NAVIGATION_COMMAND_INVALID.
+     * @param query a #GstQuery
+     * @param nth the nth command to retrieve.
      */
     static queryParseCommandsNth(query: Gst.Query, nth: number): [ /* returnType */ boolean, /* cmd */ GstVideo.NavigationCommand | null ]
     /**
      * Set the #GstNavigation angles query result field in `query`.
+     * @param query a #GstQuery
+     * @param curAngle the current viewing angle to set.
+     * @param nAngles the number of viewing angles to set.
      */
     static querySetAngles(query: Gst.Query, curAngle: number, nAngles: number): void
     /**
      * Set the #GstNavigation command query result fields in `query`. The number
      * of commands passed must be equal to `n_commands`.
+     * @param query a #GstQuery
+     * @param cmds An array containing `n_cmds`     `GstNavigationCommand` values.
      */
     static querySetCommandsv(query: Gst.Query, cmds: GstVideo.NavigationCommand[]): void
     static $gtype: GObject.Type
@@ -5652,19 +6226,19 @@ class Box {
     /**
      * X coordinate of the top left corner
      */
-    readonly x1: number
+    x1: number
     /**
      * Y coordinate of the top left corner
      */
-    readonly y1: number
+    y1: number
     /**
      * X coordinate of the bottom right corner
      */
-    readonly x2: number
+    x2: number
     /**
      * Y coordinate of the bottom right corner
      */
-    readonly y2: number
+    y2: number
     /* Methods of ClutterGst-3.0.ClutterGst.Box */
     /**
      * Retrieves the height of the `box`
@@ -5678,15 +6252,15 @@ class Box {
 }
 abstract class CameraClass {
     /* Fields of ClutterGst-3.0.ClutterGst.CameraClass */
-    readonly readyForCapture: (self: Camera, ready: boolean) => void
-    readonly photoSaved: (self: Camera) => void
-    readonly photoTaken: (self: Camera, pixbuf: GdkPixbuf.Pixbuf) => void
-    readonly videoSaved: (self: Camera) => void
+    readyForCapture: (self: Camera, ready: boolean) => void
+    photoSaved: (self: Camera) => void
+    photoTaken: (self: Camera, pixbuf: GdkPixbuf.Pixbuf) => void
+    videoSaved: (self: Camera) => void
     static name: string
 }
 abstract class CameraDeviceClass {
     /* Fields of ClutterGst-3.0.ClutterGst.CameraDeviceClass */
-    readonly captureResolutionChanged: (device: CameraDevice, width: number, height: number) => void
+    captureResolutionChanged: (device: CameraDevice, width: number, height: number) => void
     static name: string
 }
 class CameraDevicePrivate {
@@ -5703,7 +6277,7 @@ class CameraPrivate {
 }
 abstract class ContentClass {
     /* Fields of ClutterGst-3.0.ClutterGst.ContentClass */
-    readonly hasPaintingContent: (self: Content) => boolean
+    hasPaintingContent: (self: Content) => boolean
     static name: string
 }
 class ContentPrivate {
@@ -5720,7 +6294,7 @@ class Frame {
     /**
      * a #ClutterGstVideoResolution
      */
-    readonly resolution: VideoResolution
+    resolution: VideoResolution
     static name: string
 }
 class Overlay {
@@ -5729,7 +6303,7 @@ class Overlay {
      * a #ClutterGstBox representing the position of the
      *            overlay within a #ClutterGstFrame.
      */
-    readonly position: Box
+    position: Box
     static name: string
 }
 class Overlays {
@@ -5737,12 +6311,12 @@ class Overlays {
     /**
      * an array of #ClutterGstOverlay
      */
-    readonly overlays: object[]
+    overlays: object[]
     static name: string
 }
 abstract class PlaybackClass {
     /* Fields of ClutterGst-3.0.ClutterGst.PlaybackClass */
-    readonly shouldBuffer: (self: Playback, query: Gst.Query) => boolean
+    shouldBuffer: (self: Playback, query: Gst.Query) => boolean
     static name: string
 }
 class PlaybackPrivate {
@@ -5750,19 +6324,19 @@ class PlaybackPrivate {
 }
 abstract class PlayerIface {
     /* Fields of ClutterGst-3.0.ClutterGst.PlayerIface */
-    readonly getFrame: (self: Player) => Frame
-    readonly getPipeline: (self: Player) => Gst.Element
-    readonly getVideoSink: (self: Player) => VideoSink
-    readonly getIdle: (self: Player) => boolean
-    readonly getAudioVolume: (self: Player) => number
-    readonly setAudioVolume: (self: Player, volume: number) => void
-    readonly getPlaying: (self: Player) => boolean
-    readonly setPlaying: (self: Player, playing: boolean) => void
-    readonly newFrame: (self: Player, frame: Frame) => void
-    readonly ready: (self: Player) => void
-    readonly eos: (self: Player) => void
-    readonly error: (self: Player, error: GLib.Error) => void
-    readonly sizeChange: (self: Player, width: number, height: number) => void
+    getFrame: (self: Player) => Frame
+    getPipeline: (self: Player) => Gst.Element
+    getVideoSink: (self: Player) => VideoSink
+    getIdle: (self: Player) => boolean
+    getAudioVolume: (self: Player) => number
+    setAudioVolume: (self: Player, volume: number) => void
+    getPlaying: (self: Player) => boolean
+    setPlaying: (self: Player, playing: boolean) => void
+    newFrame: (self: Player, frame: Frame) => void
+    ready: (self: Player) => void
+    eos: (self: Player) => void
+    error: (self: Player, error: GLib.Error) => void
+    sizeChange: (self: Player, width: number, height: number) => void
     static name: string
 }
 class PlayerIfacePrivate {
@@ -5773,20 +6347,20 @@ class VideoResolution {
     /**
      * the width, in pixels
      */
-    readonly width: number
+    width: number
     /**
      * the height, in pixels
      */
-    readonly height: number
-    readonly parN: number
-    readonly parD: number
+    height: number
+    parN: number
+    parD: number
     static name: string
 }
 abstract class VideoSinkClass {
     /* Fields of ClutterGst-3.0.ClutterGst.VideoSinkClass */
-    readonly newFrame: (sink: VideoSink) => void
-    readonly pipelineReady: (sink: VideoSink) => void
-    readonly newOverlays: (sink: VideoSink) => void
+    newFrame: (sink: VideoSink) => void
+    pipelineReady: (sink: VideoSink) => void
+    newOverlays: (sink: VideoSink) => void
     static name: string
 }
 class VideoSinkPrivate {

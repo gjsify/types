@@ -263,18 +263,18 @@ class Path {
 }
 class Rectangle {
     /* Fields of cairo-1.0.cairo.Rectangle */
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
+    x: number
+    y: number
+    width: number
+    height: number
     static name: string
 }
 class RectangleInt {
     /* Fields of cairo-1.0.cairo.RectangleInt */
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
+    x: number
+    y: number
+    width: number
+    height: number
     static name: string
 }
 }

@@ -263,6 +263,10 @@ class Serializable {
      *                                    pspec,
      *                                    property_node);
      * ```
+     * @param propertyName the name of the property to deserialize
+     * @param value a pointer to an uninitialized value
+     * @param pspec a property description
+     * @param propertyNode the JSON node containing the serialized property
      */
     defaultDeserializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec, propertyNode: Node): boolean
     /**
@@ -285,6 +289,9 @@ class Serializable {
      * 
      * This function will return `NULL` if the property could not be
      * serialized.
+     * @param propertyName the name of the property to serialize
+     * @param value the value of the property to serialize
+     * @param pspec a property description
      */
     defaultSerializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec): Node | null
     /**
@@ -298,18 +305,23 @@ class Serializable {
      *   initialized with the expected type of the property by using the given
      *   property description (since JSON-GLib 1.6)
      * - a `GValue` initialized with the expected type of the property
+     * @param propertyName the name of the property to serialize
+     * @param pspec a property description
+     * @param propertyNode the JSON node containing the serialized property
      */
     deserializeProperty(propertyName: string, pspec: GObject.ParamSpec, propertyNode: Node): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Calls the [vfunc`Json`.Serializable.find_property] implementation on
      * the `JsonSerializable` instance, which will return the property
      * description for the given name.
+     * @param name the name of the property
      */
     findProperty(name: string): GObject.ParamSpec | null
     /**
      * Calls the [vfunc`Json`.Serializable.get_property] implementation
      * on the `JsonSerializable` instance, which will get the value of
      * the given property.
+     * @param pspec a property description
      */
     getProperty(pspec: GObject.ParamSpec): /* value */ any
     /**
@@ -321,12 +333,17 @@ class Serializable {
     /**
      * Asks a `JsonSerializable` implementation to serialize an object
      * property into a JSON node.
+     * @param propertyName the name of the property to serialize
+     * @param value the value of the property to serialize
+     * @param pspec a property description
      */
     serializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec): Node
     /**
      * Calls the [vfunc`Json`.Serializable.set_property] implementation
      * on the `JsonSerializable` instance, which will set the property
      * with the given value.
+     * @param pspec a property description
+     * @param value the property value to set
      */
     setProperty(pspec: GObject.ParamSpec, value: any): void
     static name: string
@@ -342,8 +359,16 @@ interface Builder_ConstructProps extends GObject.Object_ConstructProps {
     immutable?: boolean
 }
 class Builder {
+    /* Properties of Json-1.0.Json.Builder */
+    /**
+     * Whether the tree should be immutable when created.
+     * 
+     * Making the output immutable on creation avoids the expense
+     * of traversing it to make it immutable later.
+     */
+    readonly immutable: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Json-1.0.Json.Builder */
     /**
      * Adds a boolean value to the currently open object member or array.
@@ -353,6 +378,7 @@ class Builder {
      * is appended to the elements of the open array.
      * 
      * See also: [method`Json`.Builder.add_value]
+     * @param value the value of the member or element
      */
     addBooleanValue(value: boolean): Builder | null
     /**
@@ -363,6 +389,7 @@ class Builder {
      * is appended to the elements of the open array.
      * 
      * See also: [method`Json`.Builder.add_value]
+     * @param value the value of the member or element
      */
     addDoubleValue(value: number): Builder | null
     /**
@@ -373,6 +400,7 @@ class Builder {
      * is appended to the elements of the open array.
      * 
      * See also: [method`Json`.Builder.add_value]
+     * @param value the value of the member or element
      */
     addIntValue(value: number): Builder | null
     /**
@@ -393,6 +421,7 @@ class Builder {
      * is appended to the elements of the open array.
      * 
      * See also: [method`Json`.Builder.add_value]
+     * @param value the value of the member or element
      */
     addStringValue(value: string): Builder | null
     /**
@@ -403,6 +432,7 @@ class Builder {
      * is appended to the elements of the open array.
      * 
      * The builder will take ownership of the node.
+     * @param node the value of the member or element
      */
     addValue(node: Node): Builder | null
     /**
@@ -462,6 +492,7 @@ class Builder {
      *  - [method`Json`.Builder.begin_array], to add an array to the member
      * 
      * This function can only be called within an open object.
+     * @param memberName the name of the member
      */
     setMemberName(memberName: string): Builder | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -499,6 +530,10 @@ class Builder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -509,6 +544,12 @@ class Builder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -532,6 +573,7 @@ class Builder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -551,11 +593,14 @@ class Builder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -563,6 +608,8 @@ class Builder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -580,6 +627,7 @@ class Builder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -625,6 +673,7 @@ class Builder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -668,15 +717,20 @@ class Builder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -717,6 +771,7 @@ class Builder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -751,6 +806,7 @@ class Builder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -782,12 +838,18 @@ class Builder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::immutable", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::immutable", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::immutable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::immutable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::immutable", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -851,7 +913,7 @@ class Generator {
      */
     root: Node
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Json-1.0.Json.Generator */
     /**
      * Retrieves the value set using [method`Json`.Generator.set_indent].
@@ -872,10 +934,12 @@ class Generator {
     getRoot(): Node | null
     /**
      * Sets the number of repetitions for each indentation level.
+     * @param indentLevel the number of repetitions of the indentation character   that should be applied when pretty printing
      */
     setIndent(indentLevel: number): void
     /**
      * Sets the character to be used when indenting.
+     * @param indentChar a Unicode character to be used when indenting
      */
     setIndentChar(indentChar: number): void
     /**
@@ -884,6 +948,7 @@ class Generator {
      * Pretty printing will use indentation character specified in the
      * [property`Json`.Generator:indent-char] property and the spacing
      * specified in the [property`Json`.Generator:indent] property.
+     * @param isPretty whether the generated string should be pretty printed
      */
     setPretty(isPretty: boolean): void
     /**
@@ -892,6 +957,7 @@ class Generator {
      * 
      * The passed `node` is copied by the generator object, so it can be
      * safely freed after calling this function.
+     * @param node the root node
      */
     setRoot(node: Node): void
     /**
@@ -905,14 +971,18 @@ class Generator {
      * 
      * This operation is atomic, in the sense that the data is written to a
      * temporary file which is then renamed to the given `filename`.
+     * @param filename the path to the target file
      */
     toFile(filename: string): boolean
     /**
      * Generates a JSON data stream and appends it to the string buffer.
+     * @param string a string buffer
      */
     toGstring(string: GLib.String): GLib.String
     /**
      * Outputs JSON data and writes it (synchronously) to the given stream.
+     * @param stream the output stream used to write the JSON data
+     * @param cancellable a `GCancellable`
      */
     toStream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -950,6 +1020,10 @@ class Generator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -960,6 +1034,12 @@ class Generator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -983,6 +1063,7 @@ class Generator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1002,11 +1083,14 @@ class Generator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1014,6 +1098,8 @@ class Generator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1031,6 +1117,7 @@ class Generator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1076,6 +1163,7 @@ class Generator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1119,15 +1207,20 @@ class Generator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1168,6 +1261,7 @@ class Generator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1202,6 +1296,7 @@ class Generator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1233,6 +1328,7 @@ class Generator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1285,8 +1381,17 @@ interface Parser_ConstructProps extends GObject.Object_ConstructProps {
     immutable?: boolean
 }
 class Parser {
+    /* Properties of Json-1.0.Json.Parser */
+    /**
+     * Whether the tree built by the parser should be immutable
+     * when created.
+     * 
+     * Making the output immutable on creation avoids the expense
+     * of traversing it to make it immutable later.
+     */
+    readonly immutable: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Json-1.0.Json.Parser */
     /**
      * Retrieves the line currently parsed, starting from 1.
@@ -1333,6 +1438,8 @@ class Parser {
      * 
      * You can call this function multiple times with the same parser, but the
      * contents of the parser will be destroyed each time.
+     * @param data the buffer to parse
+     * @param length the length of the buffer, or -1 if it is `NUL` terminated
      */
     loadFromData(data: string, length: number): boolean
     /**
@@ -1343,6 +1450,7 @@ class Parser {
      * way to load it.
      * 
      * See also: [method`Json`.Parser.load_from_data]
+     * @param filename the path for the file to parse
      */
     loadFromFile(filename: string): boolean
     /**
@@ -1353,6 +1461,7 @@ class Parser {
      * function returns.
      * 
      * If mapping or reading the file fails, a `G_FILE_ERROR` will be returned.
+     * @param filename the path for the file to parse
      */
     loadFromMappedFile(filename: string): boolean
     /**
@@ -1362,6 +1471,8 @@ class Parser {
      * triggering the cancellable object from another thread. If the
      * operation was cancelled, `G_IO_ERROR_CANCELLED` will be set
      * on the given `error`.
+     * @param stream the input stream with the JSON data
+     * @param cancellable a #GCancellable
      */
     loadFromStream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1373,11 +1484,15 @@ class Parser {
      * When the operation is finished, `callback` will be called. You should
      * then call [method`Json`.Parser.load_from_stream_finish] to get the result
      * of the operation.
+     * @param stream the input stream with the JSON data
+     * @param cancellable a #GCancellable
+     * @param callback the function to call when the request is satisfied
      */
     loadFromStreamAsync(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous stream loading started with
      * [method`Json`.Parser.load_from_stream_async].
+     * @param result the result of the asynchronous operation
      */
     loadFromStreamFinish(result: Gio.AsyncResult): boolean
     /**
@@ -1422,6 +1537,10 @@ class Parser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1432,6 +1551,12 @@ class Parser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1455,6 +1580,7 @@ class Parser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1474,11 +1600,14 @@ class Parser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1486,6 +1615,8 @@ class Parser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1503,6 +1634,7 @@ class Parser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1548,6 +1680,7 @@ class Parser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1591,15 +1724,20 @@ class Parser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1640,6 +1778,7 @@ class Parser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1674,12 +1813,15 @@ class Parser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Json-1.0.Json.Parser */
     /**
      * The `::array-element` signal is emitted each time a parser
      * has successfully parsed a single element of a JSON array.
+     * @param array a JSON array
+     * @param index the index of the newly parsed array element
      */
     connect(sigName: "array-element", callback: ((array: Array, index: number) => void)): number
     on(sigName: "array-element", callback: (array: Array, index: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1689,6 +1831,7 @@ class Parser {
     /**
      * The `::array-end` signal is emitted each time a parser
      * has successfully parsed an entire JSON array.
+     * @param array the parsed JSON array
      */
     connect(sigName: "array-end", callback: ((array: Array) => void)): number
     on(sigName: "array-end", callback: (array: Array) => void, after?: boolean): NodeJS.EventEmitter
@@ -1707,6 +1850,7 @@ class Parser {
     /**
      * The `::error` signal is emitted each time a parser encounters
      * an error in a JSON stream.
+     * @param error the error
      */
     connect(sigName: "error", callback: ((error?: object | null) => void)): number
     on(sigName: "error", callback: (error?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -1716,6 +1860,7 @@ class Parser {
     /**
      * The `::object-end` signal is emitted each time a parser
      * has successfully parsed an entire JSON object.
+     * @param object the parsed JSON object
      */
     connect(sigName: "object-end", callback: ((object: Object) => void)): number
     on(sigName: "object-end", callback: (object: Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -1725,6 +1870,8 @@ class Parser {
     /**
      * The `::object-member` signal is emitted each time a parser
      * has successfully parsed a single member of a JSON object
+     * @param object the JSON object being parsed
+     * @param memberName the name of the newly parsed member
      */
     connect(sigName: "object-member", callback: ((object: Object, memberName: string) => void)): number
     on(sigName: "object-member", callback: (object: Object, memberName: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1785,12 +1932,18 @@ class Parser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::immutable", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::immutable", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::immutable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::immutable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::immutable", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1810,13 +1963,14 @@ interface Path_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Path {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Json-1.0.Json.Path */
     /**
      * Validates and decomposes the given expression.
      * 
      * A JSONPath expression must be compiled before calling
      * [method`Json`.Path.match].
+     * @param expression a JSONPath expression
      */
     compile(expression: string): boolean
     /**
@@ -1824,6 +1978,7 @@ class Path {
      * into the `JsonPath`.
      * 
      * The nodes matching the expression will be copied into an array.
+     * @param root the root node of the JSON data to match
      */
     match(root: Node): Node
     /* Methods of GObject-2.0.GObject.Object */
@@ -1861,6 +2016,10 @@ class Path {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1871,6 +2030,12 @@ class Path {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1894,6 +2059,7 @@ class Path {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1913,11 +2079,14 @@ class Path {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1925,6 +2094,8 @@ class Path {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1942,6 +2113,7 @@ class Path {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1987,6 +2159,7 @@ class Path {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2030,15 +2203,20 @@ class Path {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2079,6 +2257,7 @@ class Path {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2113,6 +2292,7 @@ class Path {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2144,6 +2324,7 @@ class Path {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2169,6 +2350,8 @@ class Path {
      * [method`Json`.Path.compile], and [method`Json`.Path.match]. It implicitly
      * creates a `JsonPath` instance, compiles the given expression and matches
      * it against the JSON tree pointed by `root`.
+     * @param expression a JSONPath expression
+     * @param root the root of a JSON tree
      */
     static query(expression: string, root: Node): Node
     static $gtype: GObject.Type
@@ -2187,7 +2370,7 @@ class Reader {
      */
     root: Node
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Json-1.0.Json.Reader */
     /**
      * Counts the elements of the current position, if the reader is
@@ -2334,6 +2517,7 @@ class Reader {
      *     return TRUE;
      *   }
      * ```c
+     * @param index the index of the element
      */
     readElement(index: number): boolean
     /**
@@ -2383,12 +2567,14 @@ class Reader {
      *     return TRUE;
      *   }
      * ```
+     * @param memberName the name of the member to read
      */
     readMember(memberName: string): boolean
     /**
      * Sets the root node of the JSON tree to be read by `reader`.
      * 
      * The reader will take a copy of the node.
+     * @param root the root node
      */
     setRoot(root?: Node | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2426,6 +2612,10 @@ class Reader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2436,6 +2626,12 @@ class Reader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2459,6 +2655,7 @@ class Reader {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2478,11 +2675,14 @@ class Reader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2490,6 +2690,8 @@ class Reader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2507,6 +2709,7 @@ class Reader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2552,6 +2755,7 @@ class Reader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2595,15 +2799,20 @@ class Reader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2644,6 +2853,7 @@ class Reader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2678,6 +2888,7 @@ class Reader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2709,6 +2920,7 @@ class Reader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2742,28 +2954,33 @@ class Array {
      * If `value` is `NULL`, a `null` element will be added instead.
      * 
      * See also: [method`Json`.Array.add_element], [method`Json`.Node.take_array]
+     * @param value the array to add
      */
     addArrayElement(value?: Array | null): void
     /**
      * Conveniently adds the given boolean value into an array.
      * 
      * See also: [method`Json`.Array.add_element], [method`Json`.Node.set_boolean]
+     * @param value the boolean value to add
      */
     addBooleanElement(value: boolean): void
     /**
      * Conveniently adds the given floating point value into an array.
      * 
      * See also: [method`Json`.Array.add_element], [method`Json`.Node.set_double]
+     * @param value the floating point value to add
      */
     addDoubleElement(value: number): void
     /**
      * Appends the given `node` inside an array.
+     * @param node the element to add
      */
     addElement(node: Node): void
     /**
      * Conveniently adds the given integer value into an array.
      * 
      * See also: [method`Json`.Array.add_element], [method`Json`.Node.set_int]
+     * @param value the integer value to add
      */
     addIntElement(value: number): void
     /**
@@ -2778,16 +2995,19 @@ class Array {
      * If `value` is `NULL`, a `null` element will be added instead.
      * 
      * See also: [method`Json`.Array.add_element], [method`Json`.Node.take_object]
+     * @param value the object to add
      */
     addObjectElement(value?: Object | null): void
     /**
      * Conveniently adds the given string value into an array.
      * 
      * See also: [method`Json`.Array.add_element], [method`Json`.Node.set_string]
+     * @param value the string value to add
      */
     addStringElement(value: string): void
     /**
      * Retrieves a copy of the element at the given position in the array.
+     * @param index the index of the element to retrieve
      */
     dupElement(index: number): Node
     /**
@@ -2797,6 +3017,7 @@ class Array {
      * 
      *  - the array have the same number of elements
      *  - the values of elements in corresponding positions are equal
+     * @param b another JSON array
      */
     equal(b: Array): boolean
     /**
@@ -2806,12 +3027,14 @@ class Array {
      * It is safe to change the value of an element of the array while
      * iterating over it, but it is not safe to add or remove elements
      * from the array.
+     * @param func the function to be called on each element
      */
     foreachElement(func: ArrayForeach): void
     /**
      * Conveniently retrieves the array at the given position inside an array.
      * 
      * See also: [method`Json`.Array.get_element], [method`Json`.Node.get_array]
+     * @param index the index of the element to retrieve
      */
     getArrayElement(index: number): Array
     /**
@@ -2819,6 +3042,7 @@ class Array {
      * position inside an array.
      * 
      * See also: [method`Json`.Array.get_element], [method`Json`.Node.get_boolean]
+     * @param index the index of the element to retrieve
      */
     getBooleanElement(index: number): boolean
     /**
@@ -2826,10 +3050,12 @@ class Array {
      * the given position inside an array.
      * 
      * See also: [method`Json`.Array.get_element], [method`Json`.Node.get_double]
+     * @param index the index of the element to retrieve
      */
     getDoubleElement(index: number): number
     /**
      * Retrieves the element at the given position in the array.
+     * @param index the index of the element to retrieve
      */
     getElement(index: number): Node
     /**
@@ -2841,6 +3067,7 @@ class Array {
      * position inside an array.
      * 
      * See also: [method`Json`.Array.get_element], [method`Json`.Node.get_int]
+     * @param index the index of the element to retrieve
      */
     getIntElement(index: number): number
     /**
@@ -2852,12 +3079,14 @@ class Array {
      * array contains a `null` value.
      * 
      * See also: [method`Json`.Array.get_element], [method`Json`.Node.is_null]
+     * @param index the index of the element to retrieve
      */
     getNullElement(index: number): boolean
     /**
      * Conveniently retrieves the object at the given position inside an array.
      * 
      * See also: [method`Json`.Array.get_element], [method`Json`.Node.get_object]
+     * @param index the index of the element to retrieve
      */
     getObjectElement(index: number): Object
     /**
@@ -2865,6 +3094,7 @@ class Array {
      * position inside an array.
      * 
      * See also: [method`Json`.Array.get_element], [method`Json`.Node.get_string]
+     * @param index the index of the element to retrieve
      */
     getStringElement(index: number): string
     /**
@@ -2889,6 +3119,7 @@ class Array {
      * Removes the element at the given position inside an array.
      * 
      * This function will release the reference held on the element.
+     * @param index the position of the element to be removed
      */
     removeElement(index: number): void
     /**
@@ -2968,6 +3199,7 @@ class Node {
      * 
      * Note that integer values are compared numerically, ignoring type, so a
      * double value 4.0 is equal to the integer value 4.
+     * @param b another JSON node
      */
     equal(b: Node): boolean
     /**
@@ -3066,6 +3298,7 @@ class Node {
      * 
      * If the node has already been initialized once, it will be reset to
      * the given type, and any data contained will be cleared.
+     * @param type the type of JSON node to initialize `node` to
      */
     init(type: NodeType): Node
     /**
@@ -3075,6 +3308,7 @@ class Node {
      * 
      * If the node has already been initialized once, it will be reset to
      * the given type, and any data contained will be cleared.
+     * @param array the JSON array to initialize `node` with, or `NULL`
      */
     initArray(array?: Array | null): Node
     /**
@@ -3082,6 +3316,7 @@ class Node {
      * 
      * If the node has already been initialized once, it will be reset to
      * the given type, and any data contained will be cleared.
+     * @param value a boolean value
      */
     initBoolean(value: boolean): Node
     /**
@@ -3089,6 +3324,7 @@ class Node {
      * 
      * If the node has already been initialized once, it will be reset to
      * the given type, and any data contained will be cleared.
+     * @param value a floating point value
      */
     initDouble(value: number): Node
     /**
@@ -3096,6 +3332,7 @@ class Node {
      * 
      * If the node has already been initialized once, it will be reset to
      * the given type, and any data contained will be cleared.
+     * @param value an integer
      */
     initInt(value: number): Node
     /**
@@ -3112,6 +3349,7 @@ class Node {
      * 
      * If the node has already been initialized once, it will be reset to
      * the given type, and any data contained will be cleared.
+     * @param object the JSON object to initialize `node` with, or `NULL`
      */
     initObject(object?: Object | null): Node
     /**
@@ -3119,6 +3357,7 @@ class Node {
      * 
      * If the node has already been initialized once, it will be reset to
      * the given type, and any data contained will be cleared.
+     * @param value a string value
      */
     initString(value?: string | null): Node
     /**
@@ -3154,6 +3393,7 @@ class Node {
      * 
      * It is a programmer error to call this on a node which doesn’t hold an
      * array value. Use `JSON_NODE_HOLDS_ARRAY` first.
+     * @param array a JSON array
      */
     setArray(array: Array): void
     /**
@@ -3162,6 +3402,7 @@ class Node {
      * 
      * It is an error to call this on an immutable node, or on a node which is not
      * a value node.
+     * @param value a boolean value
      */
     setBoolean(value: boolean): void
     /**
@@ -3170,6 +3411,7 @@ class Node {
      * 
      * It is an error to call this on an immutable node, or on a node which is not
      * a value node.
+     * @param value a double value
      */
     setDouble(value: number): void
     /**
@@ -3178,6 +3420,7 @@ class Node {
      * 
      * It is an error to call this on an immutable node, or on a node which is not
      * a value node.
+     * @param value an integer value
      */
     setInt(value: number): void
     /**
@@ -3189,6 +3432,7 @@ class Node {
      * 
      * It is an error to call this on an immutable node, or on a node which is not
      * an object node.
+     * @param object a JSON object
      */
     setObject(object?: Object | null): void
     /**
@@ -3197,6 +3441,7 @@ class Node {
      * It is an error to call this with an immutable `parent`.
      * 
      * The `node` may be immutable.
+     * @param parent the parent node
      */
     setParent(parent?: Node | null): void
     /**
@@ -3205,6 +3450,7 @@ class Node {
      * 
      * It is an error to call this on an immutable node, or on a node which is not
      * a value node.
+     * @param value a string value
      */
     setString(value: string): void
     /**
@@ -3226,6 +3472,7 @@ class Node {
      * 
      * It is an error to call this on an immutable node, or on a node which is not
      * a value node.
+     * @param value the value to set
      */
     setValue(value: any): void
     /**
@@ -3235,6 +3482,7 @@ class Node {
      * 
      * It is a programmer error to call this on a node which doesn’t hold an
      * array value. Use `JSON_NODE_HOLDS_ARRAY` first.
+     * @param array a JSON array
      */
     takeArray(array: Array): void
     /**
@@ -3244,6 +3492,7 @@ class Node {
      * 
      * It is an error to call this on an immutable node, or on a node which is not
      * an object node.
+     * @param object a JSON object
      */
     takeObject(object: Object): void
     /**
@@ -3273,15 +3522,19 @@ class Object {
      * 
      * This function will return if the object already contains a member
      * with the same name.
+     * @param memberName the name of the member
+     * @param node the value of the member
      */
     addMember(memberName: string, node: Node): void
     /**
      * Retrieves a copy of the value of the given member inside an object.
+     * @param memberName the name of the JSON object member to access
      */
     dupMember(memberName: string): Node | null
     /**
      * Check whether `a` and `b` are equal objects, meaning they have the same
      * set of members, and the values of corresponding members are equal.
+     * @param b another JSON object
      */
     equal(b: Object): boolean
     /**
@@ -3294,6 +3547,7 @@ class Object {
      * 
      * The order in which the object members are iterated is the
      * insertion order.
+     * @param func the function to be called on each member
      */
     foreachMember(func: ObjectForeach): void
     /**
@@ -3304,6 +3558,7 @@ class Object {
      * If `member_name` contains `null`, then this function will return `NULL`.
      * 
      * See also: [method`Json`.Object.get_member], [method`Json`.Object.has_member]
+     * @param memberName the name of the member
      */
     getArrayMember(memberName: string): Array | null
     /**
@@ -3313,6 +3568,7 @@ class Object {
      * 
      * See also: [method`Json`.Object.get_boolean_member_with_default],
      *   [method`Json`.Object.get_member], [method`Json`.Object.has_member]
+     * @param memberName the name of the member
      */
     getBooleanMember(memberName: string): boolean
     /**
@@ -3321,6 +3577,8 @@ class Object {
      * 
      * If `member_name` does not exist, does not contain a scalar value,
      * or contains `null`, then `default_value` is returned instead.
+     * @param memberName the name of the `object` member
+     * @param defaultValue the value to return if `member_name` is not valid
      */
     getBooleanMemberWithDefault(memberName: string, defaultValue: boolean): boolean
     /**
@@ -3330,6 +3588,7 @@ class Object {
      * 
      * See also: [method`Json`.Object.get_double_member_with_default],
      *   [method`Json`.Object.get_member], [method`Json`.Object.has_member]
+     * @param memberName the name of the member
      */
     getDoubleMember(memberName: string): number
     /**
@@ -3338,6 +3597,8 @@ class Object {
      * 
      * If `member_name` does not exist, does not contain a scalar value,
      * or contains `null`, then `default_value` is returned instead.
+     * @param memberName the name of the `object` member
+     * @param defaultValue the value to return if `member_name` is not valid
      */
     getDoubleMemberWithDefault(memberName: string, defaultValue: number): number
     /**
@@ -3347,6 +3608,7 @@ class Object {
      * 
      * See also: [method`Json`.Object.get_int_member_with_default],
      *   [method`Json`.Object.get_member], [method`Json`.Object.has_member]
+     * @param memberName the name of the object member
      */
     getIntMember(memberName: string): number
     /**
@@ -3355,10 +3617,13 @@ class Object {
      * 
      * If `member_name` does not exist, does not contain a scalar value,
      * or contains `null`, then `default_value` is returned instead.
+     * @param memberName the name of the object member
+     * @param defaultValue the value to return if `member_name` is not valid
      */
     getIntMemberWithDefault(memberName: string, defaultValue: number): number
     /**
      * Retrieves the value of the given member inside an object.
+     * @param memberName the name of the JSON object member to access
      */
     getMember(memberName: string): Node | null
     /**
@@ -3374,6 +3639,7 @@ class Object {
      * specify a `member_name` which does not exist.
      * 
      * See also: [method`Json`.Object.get_member], [method`Json`.Object.has_member]
+     * @param memberName the name of the member
      */
     getNullMember(memberName: string): boolean
     /**
@@ -3384,6 +3650,7 @@ class Object {
      * If `member_name` contains `null`, then this function will return `NULL`.
      * 
      * See also: [method`Json`.Object.get_member], [method`Json`.Object.has_member]
+     * @param memberName the name of the member
      */
     getObjectMember(memberName: string): Object | null
     /**
@@ -3397,6 +3664,7 @@ class Object {
      * 
      * See also: [method`Json`.Object.get_string_member_with_default],
      *   [method`Json`.Object.get_member], [method`Json`.Object.has_member]
+     * @param memberName the name of the member
      */
     getStringMember(memberName: string): string
     /**
@@ -3405,6 +3673,8 @@ class Object {
      * 
      * If `member_name` does not exist, does not contain a scalar value,
      * or contains `null`, then `default_value` is returned instead.
+     * @param memberName the name of the `object` member
+     * @param defaultValue the value to return if `member_name` is not valid
      */
     getStringMemberWithDefault(memberName: string, defaultValue: string): string
     /**
@@ -3413,6 +3683,7 @@ class Object {
     getValues(): Node[] | null
     /**
      * Checks whether `object` has a member named `member_name`.
+     * @param memberName the name of a JSON object member
      */
     hasMember(memberName: string): boolean
     /**
@@ -3434,6 +3705,7 @@ class Object {
     ref(): Object
     /**
      * Removes `member_name` from `object,` freeing its allocated resources.
+     * @param memberName the name of the member to remove
      */
     removeMember(memberName: string): void
     /**
@@ -3448,24 +3720,32 @@ class Object {
      * Convenience function for setting an object member with an array value.
      * 
      * See also: [method`Json`.Object.set_member], [method`Json`.Node.take_array]
+     * @param memberName the name of the member
+     * @param value the value of the member
      */
     setArrayMember(memberName: string, value: Array): void
     /**
      * Convenience function for setting an object member with a boolean value.
      * 
      * See also: [method`Json`.Object.set_member], [method`Json`.Node.init_boolean]
+     * @param memberName the name of the member
+     * @param value the value of the member
      */
     setBooleanMember(memberName: string, value: boolean): void
     /**
      * Convenience function for setting an object member with a floating point value.
      * 
      * See also: [method`Json`.Object.set_member], [method`Json`.Node.init_double]
+     * @param memberName the name of the member
+     * @param value the value of the member
      */
     setDoubleMember(memberName: string, value: number): void
     /**
      * Convenience function for setting an object member with an integer value.
      * 
      * See also: [method`Json`.Object.set_member], [method`Json`.Node.init_int]
+     * @param memberName the name of the member
+     * @param value the value of the member
      */
     setIntMember(memberName: string, value: number): void
     /**
@@ -3476,24 +3756,31 @@ class Object {
      * 
      * If the object already has a member with the given name, the current
      * value is overwritten with the new.
+     * @param memberName the name of the member
+     * @param node the value of the member
      */
     setMember(memberName: string, node: Node): void
     /**
      * Convenience function for setting an object member with a `null` value.
      * 
      * See also: [method`Json`.Object.set_member], [method`Json`.Node.init_null]
+     * @param memberName the name of the member
      */
     setNullMember(memberName: string): void
     /**
      * Convenience function for setting an object member with an object value.
      * 
      * See also: [method`Json`.Object.set_member], [method`Json`.Node.take_object]
+     * @param memberName the name of the member
+     * @param value the value of the member
      */
     setObjectMember(memberName: string, value: Object): void
     /**
      * Convenience function for setting an object member with a string value.
      * 
      * See also: [method`Json`.Object.set_member], [method`Json`.Node.init_string]
+     * @param memberName the name of the member
+     * @param value the value of the member
      */
     setStringMember(memberName: string, value: string): void
     /**
@@ -3530,6 +3817,7 @@ class ObjectIter {
      * members of the object in an undefined order.
      * 
      * See also: [method`Json`.ObjectIter.init_ordered]
+     * @param object the JSON object to iterate over
      */
     init(object: Object): void
     /**
@@ -3548,6 +3836,7 @@ class ObjectIter {
      * ```
      * 
      * See also: [method`Json`.ObjectIter.init]
+     * @param object the JSON object to iterate over
      */
     initOrdered(object: Object): void
     /**
@@ -3589,15 +3878,15 @@ class ObjectIter {
 }
 abstract class ParserClass {
     /* Fields of Json-1.0.Json.ParserClass */
-    readonly parseStart: (parser: Parser) => void
-    readonly objectStart: (parser: Parser) => void
-    readonly objectMember: (parser: Parser, object: Object, memberName: string) => void
-    readonly objectEnd: (parser: Parser, object: Object) => void
-    readonly arrayStart: (parser: Parser) => void
-    readonly arrayElement: (parser: Parser, array: Array, index: number) => void
-    readonly arrayEnd: (parser: Parser, array: Array) => void
-    readonly parseEnd: (parser: Parser) => void
-    readonly error: (parser: Parser, error: GLib.Error) => void
+    parseStart: (parser: Parser) => void
+    objectStart: (parser: Parser) => void
+    objectMember: (parser: Parser, object: Object, memberName: string) => void
+    objectEnd: (parser: Parser, object: Object) => void
+    arrayStart: (parser: Parser) => void
+    arrayElement: (parser: Parser, array: Array, index: number) => void
+    arrayEnd: (parser: Parser, array: Array) => void
+    parseEnd: (parser: Parser) => void
+    error: (parser: Parser, error: GLib.Error) => void
     static name: string
 }
 class ParserPrivate {
@@ -3614,11 +3903,11 @@ class ReaderPrivate {
 }
 abstract class SerializableIface {
     /* Fields of Json-1.0.Json.SerializableIface */
-    readonly serializeProperty: (serializable: Serializable, propertyName: string, value: any, pspec: GObject.ParamSpec) => Node
-    readonly deserializeProperty: (serializable: Serializable, propertyName: string, pspec: GObject.ParamSpec, propertyNode: Node) => [ /* returnType */ boolean, /* value */ any ]
-    readonly findProperty: (serializable: Serializable, name: string) => GObject.ParamSpec | null
-    readonly setProperty: (serializable: Serializable, pspec: GObject.ParamSpec, value: any) => void
-    readonly getProperty: (serializable: Serializable, pspec: GObject.ParamSpec) => /* value */ any
+    serializeProperty: (serializable: Serializable, propertyName: string, value: any, pspec: GObject.ParamSpec) => Node
+    deserializeProperty: (serializable: Serializable, propertyName: string, pspec: GObject.ParamSpec, propertyNode: Node) => [ /* returnType */ boolean, /* value */ any ]
+    findProperty: (serializable: Serializable, name: string) => GObject.ParamSpec | null
+    setProperty: (serializable: Serializable, pspec: GObject.ParamSpec, value: any) => void
+    getProperty: (serializable: Serializable, pspec: GObject.ParamSpec) => /* value */ any
     static name: string
 }
 }

@@ -125,9 +125,9 @@ interface App_ConstructProps extends AppStreamGlib.App_ConstructProps {
 }
 class App {
     /* Fields of AppStreamGlib-1.0.AppStreamGlib.App */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of AppStreamBuilder-1.0.AppStreamBuilder.App */
     /**
      * Gets the package that backs the application.
@@ -135,131 +135,167 @@ class App {
     getPackage(): Package
     /**
      * Saves to disk any resources set for the application.
+     * @param saveFlags #AsbAppSaveFlags, e.g. %ASB_APP_SAVE_FLAG_SCREENSHOTS
      */
     saveResources(saveFlags: AppSaveFlags): boolean
     /**
      * Sets the HiDPI mode for the application.
+     * @param hidpiEnabled if HiDPI mode should be enabled
      */
     setHidpiEnabled(hidpiEnabled: boolean): void
     /**
      * Sets the package that backs the application.
+     * @param pkg A #AsbPackage
      */
     setPackage(pkg: Package): void
     /* Methods of AppStreamGlib-1.0.AppStreamGlib.App */
     /**
      * Adds a addon to an application.
+     * @param addon a #AsApp instance.
      */
     addAddon(addon: AppStreamGlib.App): void
     /**
      * Adds a agreement to an application.
+     * @param agreement a #AsAgreement instance.
      */
     addAgreement(agreement: AppStreamGlib.Agreement): void
     /**
      * Adds a package name to an application.
+     * @param arch the package name.
      */
     addArch(arch: string): void
     /**
      * Adds a bundle to an application.
+     * @param bundle a #AsBundle instance.
      */
     addBundle(bundle: AppStreamGlib.Bundle): void
     /**
      * Adds a menu category to the application.
+     * @param category the category.
      */
     addCategory(category: string): void
     /**
      * Adds a desktop that requires this application to be installed.
+     * @param compulsoryForDesktop the desktop string, e.g. "GNOME".
      */
     addCompulsoryForDesktop(compulsoryForDesktop: string): void
     /**
      * Adds a content_rating to an application.
+     * @param contentRating a #AsContentRating instance.
      */
     addContentRating(contentRating: AppStreamGlib.ContentRating): void
     /**
      * Adds a parent ID to the application.
+     * @param extends_ the full ID, e.g. "eclipse.desktop".
      */
     addExtends(extends_: string): void
     /**
      * Add a format the application has been built from.
+     * @param format the #AsFormat.
      */
     addFormat(format: AppStreamGlib.Format): void
     /**
      * Adds a icon to an application.
+     * @param icon a #AsIcon instance.
      */
     addIcon(icon: AppStreamGlib.Icon): void
     /**
      * Add a keyword the application should match against.
+     * @param locale the locale. e.g. "en_GB"
+     * @param keyword the keyword.
      */
     addKeyword(locale: string | null, keyword: string): void
     /**
      * Add a kudo the application has obtained.
+     * @param kudo the kudo.
      */
     addKudo(kudo: string): void
     /**
      * Add a kudo the application has obtained.
+     * @param kudoKind the #AsKudoKind.
      */
     addKudoKind(kudoKind: AppStreamGlib.KudoKind): void
     /**
      * Adds a language to the application.
+     * @param percentage the percentage completion of the translation, or 0 for unknown
+     * @param locale the locale. e.g. "en_GB"
      */
     addLanguage(percentage: number, locale?: string | null): void
     /**
      * Adds a launchable to an application.
+     * @param launchable a #AsLaunchable instance.
      */
     addLaunchable(launchable: AppStreamGlib.Launchable): void
     /**
      * Adds a metadata entry to the application.
+     * @param key the metadata key.
+     * @param value the value to store.
      */
     addMetadata(key: string, value?: string | null): void
     /**
      * Adds a mimetype the application can process.
+     * @param mimetype the mimetype.
      */
     addMimetype(mimetype: string): void
     /**
      * Add a permission the application has obtained.
+     * @param permission the permission.
      */
     addPermission(permission: string): void
     /**
      * Adds a package name to an application.
+     * @param pkgname the package name.
      */
     addPkgname(pkgname: string): void
     /**
      * Adds a provide to an application.
+     * @param provide a #AsProvide instance.
      */
     addProvide(provide: AppStreamGlib.Provide): void
     /**
      * Adds a specific attribute to an application.
+     * @param quirk the #AsAppQuirk, e.g. %AS_APP_QUIRK_PROVENANCE
      */
     addQuirk(quirk: AppStreamGlib.AppQuirk): void
     /**
      * Adds a release to an application.
+     * @param release a #AsRelease instance.
      */
     addRelease(release: AppStreamGlib.Release): void
     /**
      * Adds a require to an application.
+     * @param require a #AsRequire instance.
      */
     addRequire(require: AppStreamGlib.Require): void
     /**
      * Adds a review to an application.
+     * @param review a #AsReview instance.
      */
     addReview(review: AppStreamGlib.Review): void
     /**
      * Adds a screenshot to an application.
+     * @param screenshot a #AsScreenshot instance.
      */
     addScreenshot(screenshot: AppStreamGlib.Screenshot): void
     /**
      * Adds a suggest to an application.
+     * @param suggest a #AsSuggest instance.
      */
     addSuggest(suggest: AppStreamGlib.Suggest): void
     /**
      * Adds a translation to an application.
+     * @param translation a #AsTranslation instance.
      */
     addTranslation(translation: AppStreamGlib.Translation): void
     /**
      * Adds some URL data to the application.
+     * @param urlKind the URL kind, e.g. %AS_URL_KIND_HOMEPAGE
+     * @param url the full URL.
      */
     addUrl(urlKind: AppStreamGlib.UrlKind, url: string): void
     /**
      * Converts all the icons in the application to a specific kind.
+     * @param kind the AsIconKind, e.g. %AS_ICON_KIND_EMBEDDED.
      */
     convertIcons(kind: AppStreamGlib.IconKind): boolean
     /**
@@ -272,6 +308,7 @@ class App {
      *  4. kind, e.g. `app` or `runtime`
      *  5. AppStream ID, e.g. `gimp.desktop`
      *  6. branch, e.g. `stable` or `master`
+     * @param app2 another #AsApp instance.
      */
     equal(app2: AppStreamGlib.App): boolean
     /**
@@ -280,6 +317,7 @@ class App {
     getAddons(): AppStreamGlib.App[]
     /**
      * Gets a agreement the application has defined of a specific type.
+     * @param kind an agreement kind, e.g. %AS_AGREEMENT_KIND_EULA
      */
     getAgreementByKind(kind: AppStreamGlib.AgreementKind): AppStreamGlib.Agreement
     /**
@@ -309,6 +347,7 @@ class App {
     getCategories(): string[]
     /**
      * Gets the application summary for a specific locale.
+     * @param locale the locale. e.g. "en_GB"
      */
     getComment(locale?: string | null): string
     /**
@@ -321,6 +360,7 @@ class App {
     getCompulsoryForDesktops(): string[]
     /**
      * Gets a content ratings the application has defined of a specific type.
+     * @param kind a ratings kind, e.g. "oars-1.0"
      */
     getContentRating(kind: string): AppStreamGlib.ContentRating
     /**
@@ -329,6 +369,7 @@ class App {
     getContentRatings(): AppStreamGlib.ContentRating[]
     /**
      * Gets the application description markup for a specific locale.
+     * @param locale the locale. e.g. "en_GB"
      */
     getDescription(locale?: string | null): string
     /**
@@ -337,6 +378,7 @@ class App {
     getDescriptions(): GLib.HashTable
     /**
      * Gets the application developer name for a specific locale.
+     * @param locale the locale. e.g. "en_GB"
      */
     getDeveloperName(locale?: string | null): string
     /**
@@ -349,10 +391,12 @@ class App {
     getExtends(): string[]
     /**
      * Searches the list of formats for a specific filename.
+     * @param filename a filename, e.g. "/home/hughsie/dave.desktop"
      */
     getFormatByFilename(filename: string): AppStreamGlib.Format
     /**
      * Searches the list of formats for a specific format kind.
+     * @param kind a #AsFormatKind, e.g. %AS_FORMAT_KIND_APPDATA
      */
     getFormatByKind(kind: AppStreamGlib.FormatKind): AppStreamGlib.Format
     /**
@@ -369,6 +413,8 @@ class App {
     getIconDefault(): AppStreamGlib.Icon
     /**
      * Finds an icon of a specific size.
+     * @param width Size in pixels
+     * @param height Size in pixels
      */
     getIconForSize(width: number, height: number): AppStreamGlib.Icon
     /**
@@ -398,6 +444,7 @@ class App {
     getIdNoPrefix(): string
     /**
      * Gets any keywords the application should match against.
+     * @param locale the locale. e.g. "en_GB"
      */
     getKeywords(locale?: string | null): string[]
     /**
@@ -410,6 +457,7 @@ class App {
     getKudos(): string[]
     /**
      * Gets the language coverage for the specific language.
+     * @param locale the locale. e.g. "en_GB"
      */
     getLanguage(locale?: string | null): number
     /**
@@ -418,6 +466,7 @@ class App {
     getLanguages(): string[]
     /**
      * Searches the list of launchables for a specific launchable kind.
+     * @param kind a #AsLaunchableKind, e.g. %AS_FORMAT_KIND_APPDATA
      */
     getLaunchableByKind(kind: AppStreamGlib.LaunchableKind): AppStreamGlib.Launchable
     /**
@@ -438,6 +487,7 @@ class App {
     getMetadata(): GLib.HashTable
     /**
      * Gets some metadata item.
+     * @param key the metadata key.
      */
     getMetadataItem(key: string): string
     /**
@@ -450,6 +500,7 @@ class App {
     getMimetypes(): string[]
     /**
      * Gets the application name for a specific locale.
+     * @param locale the locale. e.g. "en_GB"
      */
     getName(locale?: string | null): string
     /**
@@ -490,10 +541,12 @@ class App {
     getProvides(): AppStreamGlib.Provide[]
     /**
      * Gets a specific release from the application.
+     * @param version a version string
      */
     getRelease(version: string): AppStreamGlib.Release
     /**
      * Gets a specific release from the application.
+     * @param version a release version number, e.g. "1.2.3"
      */
     getReleaseByVersion(version: string): AppStreamGlib.Release
     /**
@@ -506,6 +559,8 @@ class App {
     getReleases(): AppStreamGlib.Release[]
     /**
      * Gets a specific requirement for the application.
+     * @param kind a #AsRequireKind, e.g. %AS_REQUIRE_KIND_FIRMWARE
+     * @param value a string, or NULL, e.g. `bootloader`
      */
     getRequireByValue(kind: AppStreamGlib.RequireKind, value: string): AppStreamGlib.Require
     /**
@@ -575,6 +630,7 @@ class App {
     getUpdateContact(): string
     /**
      * Gets a URL.
+     * @param urlKind the URL kind, e.g. %AS_URL_KIND_HOMEPAGE.
      */
     getUrlItem(urlKind: AppStreamGlib.UrlKind): string
     /**
@@ -587,171 +643,220 @@ class App {
     getVetos(): string[]
     /**
      * Searches the category list for a specific item.
+     * @param category a category string, e.g. "DesktopSettings"
      */
     hasCategory(category: string): boolean
     /**
      * Searches the compulsory for desktop list for a specific item.
+     * @param desktop a desktop string, e.g. "GNOME"
      */
     hasCompulsoryForDesktop(desktop: string): boolean
     /**
      * Searches the kudo list for a specific item.
+     * @param kudo a kudo string, e.g. "SearchProvider"
      */
     hasKudo(kudo: string): boolean
     /**
      * Searches the kudo list for a specific item.
+     * @param kudo a #AsKudoKind, e.g. %AS_KUDO_KIND_SEARCH_PROVIDER
      */
     hasKudoKind(kudo: AppStreamGlib.KudoKind): boolean
     /**
      * Searches the permission list for a specific item.
+     * @param permission a permission string, e.g. "Network"
      */
     hasPermission(permission: string): boolean
     /**
      * Queries to see if an application has a specific attribute.
+     * @param quirk the #AsAppQuirk, e.g. %AS_APP_QUIRK_PROVENANCE
      */
     hasQuirk(quirk: AppStreamGlib.AppQuirk): boolean
     /**
      * Parses an AppData file and populates the application state.
+     * @param data data to parse.
+     * @param flags #AsAppParseFlags, e.g. %AS_APP_PARSE_FLAG_USE_HEURISTICS
      */
     parseData(data: any, flags: number): boolean
     /**
      * Parses a desktop or AppData file and populates the application state.
      * 
      * Applications that are not suitable for the store will have vetos added.
+     * @param filename file to load.
+     * @param flags #AsAppParseFlags, e.g. %AS_APP_PARSE_FLAG_USE_HEURISTICS
      */
     parseFile(filename: string, flags: number): boolean
     /**
      * Removed a menu category from the application.
+     * @param category the category.
      */
     removeCategory(category: string): void
     /**
      * Removes a format the application has been built from.
+     * @param format the #AsFormat.
      */
     removeFormat(format: AppStreamGlib.Format): void
     /**
      * Remove a kudo the application has obtained.
+     * @param kudo the kudo.
      */
     removeKudo(kudo: string): void
     /**
      * Removes a metadata item from the application.
+     * @param key the metadata key.
      */
     removeMetadata(key: string): void
     /**
      * Removes a reason to not include the application in the metadata.
+     * @param description veto string
      */
     removeVeto(description: string): void
     /**
      * Searches application data for a specific keyword.
+     * @param search the search term.
      */
     searchMatches(search: string): number
     /**
      * Searches application data for all the specific keywords.
+     * @param search the search terms.
      */
     searchMatchesAll(search: string): number
     /**
      * Set the branch that the instance was sourced from.
+     * @param branch the branch, e.g. "master" or "3-16".
      */
     setBranch(branch: string): void
     /**
      * Sets the application summary for a specific locale.
+     * @param locale the locale. e.g. "en_GB"
+     * @param comment the application summary.
      */
     setComment(locale: string | null, comment: string): void
     /**
      * Sets the application descrption markup for a specific locale.
+     * @param locale the locale. e.g. "en_GB"
+     * @param description the application description.
      */
     setDescription(locale: string | null, description: string): void
     /**
      * Sets the application developer name for a specific locale.
+     * @param locale the locale. e.g. "en_GB"
+     * @param developerName the application developer name.
      */
     setDeveloperName(locale: string | null, developerName: string): void
     /**
      * Sets the icon path, where local icons would be found.
+     * @param iconPath the local path.
      */
     setIconPath(iconPath: string): void
     /**
      * Sets a new application ID. Any invalid characters will be automatically replaced.
+     * @param id the new _full_ application ID, e.g. "org.gnome.Software.desktop".
      */
     setId(id: string): void
     /**
      * Sets the application kind.
+     * @param idKind the #AsAppKind.
      */
     setIdKind(idKind: AppStreamGlib.IdKind): void
     /**
      * Sets the application kind.
+     * @param kind the #AsAppKind.
      */
     setKind(kind: AppStreamGlib.AppKind): void
     /**
      * Sets the merge kind of the application.
+     * @param mergeKind the #AsAppMergeKind.
      */
     setMergeKind(mergeKind: AppStreamGlib.AppMergeKind): void
     /**
      * Set the project license.
+     * @param metadataLicense the project license string.
      */
     setMetadataLicense(metadataLicense: string): void
     /**
      * Sets the application name for a specific locale.
+     * @param locale the locale. e.g. "en_GB"
+     * @param name the application name.
      */
     setName(locale: string | null, name: string): void
     /**
      * Sets the application origin.
+     * @param origin the origin, e.g. "fedora-21"
      */
     setOrigin(origin: string): void
     /**
      * Sets the application priority, where 0 is default and positive numbers
      * are better than negative numbers.
+     * @param priority the priority.
      */
     setPriority(priority: number): void
     /**
      * Set any project affiliation.
+     * @param projectGroup the project group, e.g. "GNOME".
      */
     setProjectGroup(projectGroup: string): void
     /**
      * Set the project license.
+     * @param projectLicense the project license string.
      */
     setProjectLicense(projectLicense: string): void
     /**
      * Sets the scope of the application.
+     * @param scope the #AsAppScope.
      */
     setScope(scope: AppStreamGlib.AppScope): void
     /**
      * Sets the token match fields. The bitfield given here is used to choose what
      * is included in the token cache.
+     * @param searchMatch the #AsAppSearchMatch, e.g. %AS_APP_SEARCH_MATCH_PKGNAME
      */
     setSearchMatch(searchMatch: number): void
     /**
      * Set the file that the instance was sourced from.
+     * @param sourceFile the filename.
      */
     setSourceFile(sourceFile: string): void
     /**
      * Sets the source kind.
+     * @param sourceKind the #AsFormatKind.
      */
     setSourceKind(sourceKind: AppStreamGlib.FormatKind): void
     /**
      * Set the project license.
+     * @param sourcePkgname the project license string.
      */
     setSourcePkgname(sourcePkgname: string): void
     /**
      * Sets the application state.
+     * @param state the #AsAppState.
      */
     setState(state: AppStreamGlib.AppState): void
     /**
      * Sets the check flags, where %AS_APP_TRUST_FLAG_COMPLETE is completely
      * trusted input.
+     * @param trustFlags the #AsAppTrustFlags.
      */
     setTrustFlags(trustFlags: number): void
     /**
      * Set the project license.
+     * @param updateContact the project license string.
      */
     setUpdateContact(updateContact: string): void
     /**
      * Copies information from the donor to the application object.
+     * @param donor the donor.
      */
     subsume(donor: AppStreamGlib.App): void
     /**
      * Copies information from the donor to the application object.
+     * @param donor the donor.
+     * @param flags any optional #AsAppSubsumeFlags, e.g. %AS_APP_SUBSUME_FLAG_NO_OVERWRITE
      */
     subsumeFull(donor: AppStreamGlib.App, flags: number): void
     /**
      * Exports a DOM tree to an XML file.
+     * @param file a #GFile
+     * @param cancellable A #GCancellable
      */
     toFile(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -760,6 +865,7 @@ class App {
     toXml(): GLib.String
     /**
      * Validates data in the instance for style and consistency.
+     * @param flags the #AsAppValidateFlags to use, e.g. %AS_APP_VALIDATE_FLAG_NONE
      */
     validate(flags: number): AppStreamGlib.Problem[]
     /* Methods of GObject-2.0.GObject.Object */
@@ -797,6 +903,10 @@ class App {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -807,6 +917,12 @@ class App {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -830,6 +946,7 @@ class App {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -849,11 +966,14 @@ class App {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -861,6 +981,8 @@ class App {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -878,6 +1000,7 @@ class App {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -923,6 +1046,7 @@ class App {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -966,15 +1090,20 @@ class App {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1015,6 +1144,7 @@ class App {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1049,6 +1179,7 @@ class App {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1080,6 +1211,7 @@ class App {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1106,27 +1238,32 @@ interface Context_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Context {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of AppStreamBuilder-1.0.AppStreamBuilder.Context */
     /**
      * Adds an application to the context.
+     * @param app A #AsbApp
      */
     addApp(app: App): void
     addAppIgnore(pkg: Package): void
     /**
      * Adds a filename to the list of packages to be processed
+     * @param filename package filename
      */
     addFilename(filename: string): boolean
     /**
      * Adds a package to the list of packages to be processed
+     * @param pkg A #AsbPackage
      */
     addPackage(pkg: Package): void
     /**
      * Find a package from its name.
+     * @param pkgname a package name
      */
     findByPkgname(pkgname: string): Package
     /**
      * This function used to find an application in the cache, and now does nothing.
+     * @param filename cache-id
      */
     findInCache(filename: string): boolean
     /**
@@ -1139,6 +1276,7 @@ class Context {
     getCacheDir(): string
     /**
      * Gets one specific build flag.
+     * @param flag A #AsbContextFlags
      */
     getFlag(flag: ContextFlags): boolean
     /**
@@ -1163,53 +1301,65 @@ class Context {
     process(): boolean
     /**
      * Sets the version of the metadata to write.
+     * @param apiVersion the AppStream API version
      */
     setApiVersion(apiVersion: number): void
     /**
      * Sets the basename for the two metadata files.
+     * @param basename AppStream file basename, e.g. "appstream"
      */
     setBasename(basename: string): void
     /**
      * Sets the cache directory to use when building metadata.
+     * @param cacheDir directory
      */
     setCacheDir(cacheDir: string): void
     /**
      * Sets flags to be used when building the metadata.
+     * @param flags #AsbContextFlags, e.g. %ASB_CONTEXT_FLAG_NO_NETWORK
      */
     setFlags(flags: ContextFlags): void
     /**
      * Sets the icons directory to use when building metadata.
+     * @param iconsDir directory
      */
     setIconsDir(iconsDir: string): void
     /**
      * Sets the log directory to use when building metadata.
+     * @param logDir directory
      */
     setLogDir(logDir: string): void
     /**
      * Sets the maximum number of threads to use when processing packages.
      * This function now has no affect as only one thread is ever used.
+     * @param maxThreads integer
      */
     setMaxThreads(maxThreads: number): void
     /**
      * Sets the smallest icon size in pixels supported.
+     * @param minIconSize integer
      */
     setMinIconSize(minIconSize: number): void
     /**
      * Sets the filename location of the old metadata file.
      * This function now has no affect as no cache ID is available.
+     * @param oldMetadata filename, or %NULL
      */
     setOldMetadata(oldMetadata: string): void
     /**
      * Sets the origin for the two metadata files.
+     * @param origin AppStream origin, e.g. "fedora-21"
      */
     setOrigin(origin: string): void
     /**
      * Sets the output directory to use when building metadata.
+     * @param outputDir directory
      */
     setOutputDir(outputDir: string): void
     setScreenshotDir(screenshotDir: string): void
     /**
      * Sets the temporary directory to use when building metadata.
+     * @param tempDir directory
      */
     setTempDir(tempDir: string): void
     /**
@@ -1251,6 +1401,10 @@ class Context {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1261,6 +1415,12 @@ class Context {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1284,6 +1444,7 @@ class Context {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1303,11 +1464,14 @@ class Context {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1315,6 +1479,8 @@ class Context {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1332,6 +1498,7 @@ class Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1377,6 +1544,7 @@ class Context {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1420,15 +1588,20 @@ class Context {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1469,6 +1642,7 @@ class Context {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1503,6 +1677,7 @@ class Context {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1534,6 +1709,7 @@ class Context {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1558,18 +1734,22 @@ interface Package_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Package {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of AppStreamBuilder-1.0.AppStreamBuilder.Package */
     /**
      * Add a package dependancy.
+     * @param dep package dep
      */
     addDep(dep: string): void
     /**
      * Adds a (downstream) release to a package.
+     * @param version a package version
+     * @param release a package release
      */
     addRelease(version: string, release: AppStreamGlib.Release): void
     /**
      * Deallocates previously ensured data.
+     * @param flags #AsbPackageEnsureFlags
      */
     clear(flags: PackageEnsureFlags): void
     /**
@@ -1578,14 +1758,18 @@ class Package {
     close(): boolean
     /**
      * Compares one package with another.
+     * @param pkg2 A #AsbPackage
      */
     compare(pkg2: Package): number
     /**
      * Ensures data exists.
+     * @param flags #AsbPackageEnsureFlags
      */
     ensure(flags: PackageEnsureFlags): boolean
     /**
      * Decompresses a package into a directory, optionally using a glob list.
+     * @param dir directory to explode into
+     * @param glob the glob list, or %NULL
      */
     explode(dir: string, glob: string[]): boolean
     /**
@@ -1598,6 +1782,7 @@ class Package {
     getBasename(): string
     /**
      * Gets a config attribute from a package.
+     * @param key utf8 string
      */
     getConfig(key: string): string
     /**
@@ -1646,6 +1831,7 @@ class Package {
     getNevra(): string
     /**
      * Gets the release for a specific version.
+     * @param version package version
      */
     getRelease(version: string): AppStreamGlib.Release
     /**
@@ -1688,68 +1874,85 @@ class Package {
      * Opens a package and parses the contents.
      * As little i/o should be done at this point, and implementations
      * should rely on asb_package_ensure() to set data.
+     * @param filename package filename
      */
     open(filename: string): boolean
     /**
      * Sets the package architecture.
+     * @param arch package architecture
      */
     setArch(arch: string): void
     /**
      * Sets a config attribute on a package.
+     * @param key utf8 string
+     * @param value utf8 string
      */
     setConfig(key: string, value: string): void
     /**
      * Enables or disables the package.
+     * @param enabled boolean
      */
     setEnabled(enabled: boolean): void
     /**
      * Sets the package epoch
+     * @param epoch epoch, or 0 for unset
      */
     setEpoch(epoch: number): void
     /**
      * Sets the package filelist.
+     * @param filelist package filelist
      */
     setFilelist(filelist: string): void
     /**
      * Sets the package filename.
+     * @param filename package filename
      */
     setFilename(filename: string): void
     /**
      * Sets the package kind.
+     * @param kind A #AsbPackageKind
      */
     setKind(kind: PackageKind): void
     /**
      * Sets the package license.
+     * @param license license string
      */
     setLicense(license: string): void
     /**
      * Sets the package name.
+     * @param name package name
      */
     setName(name: string): void
     /**
      * Sets the package release.
+     * @param release package release
      */
     setRelease(release: string): void
     /**
      * Sets the package source name, which is usually the parent of a set of
      * subpackages.
+     * @param source source string, e.g. the srpm nevra
      */
     setSource(source: string): void
     /**
      * Sets the package source name, which is usually the parent of a set of
      * subpackages.
+     * @param sourcePkgname source string, e.g. the srpm name
      */
     setSourcePkgname(sourcePkgname: string): void
     /**
      * Sets the package URL.
+     * @param url homepage URL
      */
     setUrl(url: string): void
     /**
      * Sets the package version control system.
+     * @param vcs vcs string
      */
     setVcs(vcs: string): void
     /**
      * Sets the package version.
+     * @param version package version
      */
     setVersion(version: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1787,6 +1990,10 @@ class Package {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1797,6 +2004,12 @@ class Package {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1820,6 +2033,7 @@ class Package {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1839,11 +2053,14 @@ class Package {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1851,6 +2068,8 @@ class Package {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1868,6 +2087,7 @@ class Package {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1913,6 +2133,7 @@ class Package {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1956,15 +2177,20 @@ class Package {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2005,6 +2231,7 @@ class Package {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2039,6 +2266,7 @@ class Package {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2070,6 +2298,7 @@ class Package {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2094,7 +2323,7 @@ interface Task_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Task {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of AppStreamBuilder-1.0.AppStreamBuilder.Task */
     /**
      * Processes the task.
@@ -2102,6 +2331,7 @@ class Task {
     process(): boolean
     /**
      * Sets the package used for the task.
+     * @param pkg A #AsbPackage
      */
     setPackage(pkg: Package): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2139,6 +2369,10 @@ class Task {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2149,6 +2383,12 @@ class Task {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2172,6 +2412,7 @@ class Task {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2191,11 +2432,14 @@ class Task {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2203,6 +2447,8 @@ class Task {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2220,6 +2466,7 @@ class Task {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2265,6 +2512,7 @@ class Task {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2308,15 +2556,20 @@ class Task {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2357,6 +2610,7 @@ class Task {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2391,6 +2645,7 @@ class Task {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2422,6 +2677,7 @@ class Task {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2444,27 +2700,27 @@ class Task {
 }
 abstract class AppClass {
     /* Fields of AppStreamBuilder-1.0.AppStreamBuilder.AppClass */
-    readonly parentClass: AppStreamGlib.AppClass
+    parentClass: AppStreamGlib.AppClass
     static name: string
 }
 abstract class ContextClass {
     /* Fields of AppStreamBuilder-1.0.AppStreamBuilder.ContextClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class PackageClass {
     /* Fields of AppStreamBuilder-1.0.AppStreamBuilder.PackageClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly open: (pkg: Package, filename: string) => boolean
-    readonly ensure: (pkg: Package, flags: PackageEnsureFlags) => boolean
-    readonly explode: (pkg: Package, dir: string, glob: string[]) => boolean
-    readonly compare: (pkg1: Package, pkg2: Package) => number
-    readonly close: (pkg: Package) => boolean
+    parentClass: GObject.ObjectClass
+    open: (pkg: Package, filename: string) => boolean
+    ensure: (pkg: Package, flags: PackageEnsureFlags) => boolean
+    explode: (pkg: Package, dir: string, glob: string[]) => boolean
+    compare: (pkg1: Package, pkg2: Package) => number
+    close: (pkg: Package) => boolean
     static name: string
 }
 abstract class TaskClass {
     /* Fields of AppStreamBuilder-1.0.AppStreamBuilder.TaskClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
     type PackageEnsureFlags = number

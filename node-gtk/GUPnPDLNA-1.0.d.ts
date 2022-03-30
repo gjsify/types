@@ -26,6 +26,9 @@ interface Discoverer_ConstructProps extends GstPbutils.Discoverer_ConstructProps
     relaxedMode?: boolean
 }
 class Discoverer {
+    /* Properties of GUPnPDLNA-1.0.GUPnPDLNA.Discoverer */
+    readonly extendedMode: boolean
+    readonly relaxedMode: boolean
     /* Properties of GstPbutils-1.0.GstPbutils.Discoverer */
     /**
      * The duration (in nanoseconds) after which the discovery of an individual
@@ -37,23 +40,26 @@ class Discoverer {
     timeout: number
     useCache: boolean
     /* Fields of GstPbutils-1.0.GstPbutils.Discoverer */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUPnPDLNA-1.0.GUPnPDLNA.Discoverer */
     /**
      * Queues `uri` for metadata discovery. When discovery is completed, the
      * "discovered" signal is emitted on `discoverer`.
+     * @param uri URI to gather metadata for
      */
     discoverUri(uri: string): boolean
     /**
      * Synchronously gathers metadata for `uri`.
+     * @param uri URI to gather metadata for
      */
     discoverUriSync(uri: string): Information
     getExtendedMode(): boolean
     /**
      * Given `name,` this finds the corresponding DLNA profile information (stored
      * as a #GUPnPDLNAProfile).
+     * @param name The name of the DLNA profile to be retrieved
      */
     getProfile(name: string): Profile
     getRelaxedMode(): boolean
@@ -67,6 +73,7 @@ class Discoverer {
      * 
      * A copy of `uri` will be made internally, so the caller can safely g_free()
      * afterwards.
+     * @param uri The URI to run on.
      */
     discoverUri(uri: string): GstPbutils.DiscovererInfo
     /**
@@ -76,6 +83,7 @@ class Discoverer {
      * 
      * A copy of `uri` will be made internally, so the caller can safely g_free()
      * afterwards.
+     * @param uri the URI to add.
      */
     discoverUriAsync(uri: string): boolean
     /**
@@ -124,6 +132,10 @@ class Discoverer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -134,6 +146,12 @@ class Discoverer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -157,6 +175,7 @@ class Discoverer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -176,11 +195,14 @@ class Discoverer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -188,6 +210,8 @@ class Discoverer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -205,6 +229,7 @@ class Discoverer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -250,6 +275,7 @@ class Discoverer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -293,15 +319,20 @@ class Discoverer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -342,6 +373,7 @@ class Discoverer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -376,6 +408,7 @@ class Discoverer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GUPnPDLNA-1.0.GUPnPDLNA.Discoverer */
@@ -383,6 +416,8 @@ class Discoverer {
      * Will be emitted when all information on a URI could be discovered.
      * 
      * The reciever must unref `dlna` with when done using it.
+     * @param dlna the results as #GUPnPDLNAInformation
+     * @param err contains details of the error if discovery fails, else is NULL
      */
     connect(sigName: "done", callback: ((dlna: Information, err: GLib.Error) => void)): number
     on(sigName: "done", callback: (dlna: Information, err: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -396,6 +431,8 @@ class Discoverer {
      * 
      * When an error occurs, `info` might still contain some partial information,
      * depending on the circumstances of the error.
+     * @param info the results #GstDiscovererInfo
+     * @param error #GError, which will be non-NULL                                         if an error occurred during                                         discovery. You must not free                                         this #GError, it will be freed by                                         the discoverer.
      */
     connect(sigName: "discovered", callback: ((info: GstPbutils.DiscovererInfo, error?: GLib.Error | null) => void)): number
     on(sigName: "discovered", callback: (info: GstPbutils.DiscovererInfo, error?: GLib.Error | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -418,6 +455,7 @@ class Discoverer {
      * 
      * This signal is usually emitted from the context of a GStreamer streaming
      * thread.
+     * @param source source element
      */
     connect(sigName: "source-setup", callback: ((source: Gst.Element) => void)): number
     on(sigName: "source-setup", callback: (source: Gst.Element) => void, after?: boolean): NodeJS.EventEmitter
@@ -461,12 +499,23 @@ class Discoverer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extended-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extended-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extended-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extended-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extended-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::relaxed-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::relaxed-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::relaxed-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::relaxed-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::relaxed-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::timeout", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::timeout", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -500,8 +549,12 @@ interface Information_ConstructProps extends GObject.Object_ConstructProps {
     name?: string
 }
 class Information {
+    /* Properties of GUPnPDLNA-1.0.GUPnPDLNA.Information */
+    readonly info: GstPbutils.DiscovererInfo
+    readonly mime: string
+    readonly name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUPnPDLNA-1.0.GUPnPDLNA.Information */
     getInfo(): GstPbutils.DiscovererInfo
     getMime(): string
@@ -541,6 +594,10 @@ class Information {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -551,6 +608,12 @@ class Information {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -574,6 +637,7 @@ class Information {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -593,11 +657,14 @@ class Information {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -605,6 +672,8 @@ class Information {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -622,6 +691,7 @@ class Information {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -667,6 +737,7 @@ class Information {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -710,15 +781,20 @@ class Information {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -759,6 +835,7 @@ class Information {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -793,6 +870,7 @@ class Information {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -824,12 +902,28 @@ class Information {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::info", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::info", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::info", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::info", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::info", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::mime", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::mime", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -853,8 +947,11 @@ interface Profile_ConstructProps extends GObject.Object_ConstructProps {
 class Profile {
     /* Properties of GUPnPDLNA-1.0.GUPnPDLNA.Profile */
     readonly encodingProfile: GstPbutils.EncodingProfile
+    readonly extended: boolean
+    readonly mime: string
+    readonly name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GUPnPDLNA-1.0.GUPnPDLNA.Profile */
     getEncodingProfile(): GstPbutils.EncodingProfile
     getExtended(): boolean
@@ -895,6 +992,10 @@ class Profile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -905,6 +1006,12 @@ class Profile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -928,6 +1035,7 @@ class Profile {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -947,11 +1055,14 @@ class Profile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -959,6 +1070,8 @@ class Profile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -976,6 +1089,7 @@ class Profile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1021,6 +1135,7 @@ class Profile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1064,15 +1179,20 @@ class Profile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1113,6 +1233,7 @@ class Profile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1147,6 +1268,7 @@ class Profile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1178,6 +1300,7 @@ class Profile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1189,6 +1312,21 @@ class Profile {
     on(sigName: "notify::encoding-profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::encoding-profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::encoding-profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::extended", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extended", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::extended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::extended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::extended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::mime", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::mime", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::mime", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1203,18 +1341,18 @@ class Profile {
 }
 abstract class DiscovererClass {
     /* Fields of GUPnPDLNA-1.0.GUPnPDLNA.DiscovererClass */
-    readonly parentClass: GstPbutils.DiscovererClass
-    readonly done: (discoverer: Discoverer, dlna: Information, err: GLib.Error) => void
+    parentClass: GstPbutils.DiscovererClass
+    done: (discoverer: Discoverer, dlna: Information, err: GLib.Error) => void
     static name: string
 }
 abstract class InformationClass {
     /* Fields of GUPnPDLNA-1.0.GUPnPDLNA.InformationClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class ProfileClass {
     /* Fields of GUPnPDLNA-1.0.GUPnPDLNA.ProfileClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 }

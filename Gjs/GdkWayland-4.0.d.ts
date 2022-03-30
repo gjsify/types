@@ -51,11 +51,19 @@ class WaylandDevice {
      */
     readonly direction: Pango.Direction
     /**
+     * The `GdkDisplay` the `GdkDevice` pertains to.
+     */
+    readonly display: Gdk.Display
+    /**
      * Whether the device has both right-to-left and left-to-right layouts.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly has_bidi_layouts: boolean
+    /**
+     * Whether the device is represented by a cursor on the screen.
+     */
+    readonly has_cursor: boolean
     /**
      * The current modifier state of the device.
      * 
@@ -67,11 +75,28 @@ class WaylandDevice {
      */
     readonly n_axes: number
     /**
+     * The device name.
+     */
+    readonly name: string
+    /**
      * Whether Num Lock is on.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly num_lock_state: boolean
+    /**
+     * The maximal number of concurrent touches on a touch device.
+     * 
+     * Will be 0 if the device is not a touch device or if the number
+     * of touches is unknown.
+     */
+    readonly num_touches: number
+    /**
+     * Product ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_product_id].
+     */
+    readonly product_id: string
     /**
      * Whether Scroll Lock is on.
      * 
@@ -83,11 +108,21 @@ class WaylandDevice {
      */
     seat: Gdk.Seat
     /**
+     * Source type for the device.
+     */
+    readonly source: Gdk.InputSource
+    /**
      * The `GdkDeviceTool` that is currently used with this device.
      */
     readonly tool: Gdk.DeviceTool
+    /**
+     * Vendor ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_vendor_id].
+     */
+    readonly vendor_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GdkWayland-4.0.GdkWayland.WaylandDevice */
     /**
      * Returns the `/dev/input/event*` path of this device.
@@ -258,6 +293,10 @@ class WaylandDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -268,6 +307,12 @@ class WaylandDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -291,6 +336,7 @@ class WaylandDevice {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -310,11 +356,14 @@ class WaylandDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -322,6 +371,8 @@ class WaylandDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -339,6 +390,7 @@ class WaylandDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -384,6 +436,7 @@ class WaylandDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -427,15 +480,20 @@ class WaylandDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -476,6 +534,7 @@ class WaylandDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -510,6 +569,7 @@ class WaylandDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -529,6 +589,7 @@ class WaylandDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -547,6 +608,7 @@ class WaylandDevice {
     emit(sigName: "changed"): void
     /**
      * Emitted on pen/eraser devices whenever tools enter or leave proximity.
+     * @param tool The new current tool
      */
     connect(sigName: "tool-changed", callback: (($obj: WaylandDevice, tool: Gdk.DeviceTool) => void)): number
     connect_after(sigName: "tool-changed", callback: (($obj: WaylandDevice, tool: Gdk.DeviceTool) => void)): number
@@ -580,6 +642,7 @@ class WaylandDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
@@ -588,20 +651,34 @@ class WaylandDevice {
     connect_after(sigName: "notify::caps-lock-state", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::direction", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::direction", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::has-bidi-layouts", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-bidi-layouts", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::has-cursor", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-cursor", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::modifier-state", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modifier-state", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::n-axes", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::n-axes", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::num-lock-state", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::num-lock-state", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::num-touches", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-touches", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::product-id", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::product-id", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::scroll-lock-state", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scroll-lock-state", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::seat", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::seat", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::tool", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tool", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::vendor-id", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vendor-id", callback: (($obj: WaylandDevice, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -628,7 +705,7 @@ class WaylandDisplay {
      */
     readonly rgba: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GdkWayland-4.0.GdkWayland.WaylandDisplay */
     /**
      * Retrieves the EGL display connection object for the given GDK display.
@@ -642,10 +719,13 @@ class WaylandDisplay {
     /**
      * Returns %TRUE if the interface was found in the display
      * `wl_registry.global` handler.
+     * @param global global interface to query in the registry
      */
     query_registry(global: string): boolean
     /**
      * Sets the cursor theme for the given `display`.
+     * @param name the new cursor theme
+     * @param size the size to use for cursors
      */
     set_cursor_theme(name: string, size: number): void
     /**
@@ -658,6 +738,7 @@ class WaylandDisplay {
      * The startup ID is also what is used to signal that the startup is
      * complete (for example, when opening a window or when calling
      * [method`Gdk`.Display.notify_startup_complete]).
+     * @param startup_id the startup notification ID (must be valid utf8)
      */
     set_startup_notification_id(startup_id: string): void
     /* Methods of Gdk-4.0.Gdk.Display */
@@ -685,6 +766,7 @@ class WaylandDisplay {
     create_gl_context(): Gdk.GLContext
     /**
      * Returns %TRUE if there is an ongoing grab on `device` for `display`.
+     * @param device a `GdkDevice`
      */
     device_is_grabbed(device: Gdk.Device): boolean
     /**
@@ -722,6 +804,7 @@ class WaylandDisplay {
      * 
      * Returns a monitor close to `surface` if it is outside
      * of all monitors.
+     * @param surface a `GdkSurface`
      */
     get_monitor_at_surface(surface: Gdk.Surface): Gdk.Monitor
     /**
@@ -748,6 +831,8 @@ class WaylandDisplay {
     /**
      * Retrieves a desktop-wide setting such as double-click time
      * for the `display`.
+     * @param name the name of the setting
+     * @param value location to store the value of the setting
      */
     get_setting(name: string, value: any): boolean
     /**
@@ -795,6 +880,7 @@ class WaylandDisplay {
      * keyboard group and level.
      * 
      * Free the returned arrays with g_free().
+     * @param keycode a keycode
      */
     map_keycode(keycode: number): [ /* returnType */ boolean, /* keys */ Gdk.KeymapKey[] | null, /* keyvals */ number[] | null ]
     /**
@@ -813,6 +899,7 @@ class WaylandDisplay {
      * keyboard group. The level is computed from the modifier mask.
      * 
      * The returned array should be freed with g_free().
+     * @param keyval a keyval, such as %GDK_KEY_a, %GDK_KEY_Up, %GDK_KEY_Return, etc.
      */
     map_keyval(keyval: number): [ /* returnType */ boolean, /* keys */ Gdk.KeymapKey[] ]
     /**
@@ -823,6 +910,7 @@ class WaylandDisplay {
      * with custom startup-notification identifier unless
      * [method`Gtk`.Window.set_auto_startup_notification]
      * is called to disable that feature.
+     * @param startup_id a startup-notification identifier, for which   notification process should be completed
      */
     notify_startup_complete(startup_id: string): void
     /**
@@ -848,6 +936,7 @@ class WaylandDisplay {
      * 
      * This function is only useful in very special situations
      * and should not be used by applications.
+     * @param event a `GdkEvent`
      */
     put_event(event: Gdk.Event): void
     /**
@@ -892,6 +981,9 @@ class WaylandDisplay {
      * This function should rarely be needed, since `GdkEventKey` already
      * contains the translated keyval. It is exported for the benefit of
      * virtualized test environments.
+     * @param keycode a keycode
+     * @param state a modifier state
+     * @param group active keyboard group
      */
     translate_key(keycode: number, state: Gdk.ModifierType, group: number): [ /* returnType */ boolean, /* keyval */ number | null, /* effective_group */ number | null, /* level */ number | null, /* consumed */ Gdk.ModifierType | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -929,6 +1021,10 @@ class WaylandDisplay {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -939,6 +1035,12 @@ class WaylandDisplay {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -962,6 +1064,7 @@ class WaylandDisplay {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -981,11 +1084,14 @@ class WaylandDisplay {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -993,6 +1099,8 @@ class WaylandDisplay {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1010,6 +1118,7 @@ class WaylandDisplay {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1055,6 +1164,7 @@ class WaylandDisplay {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1098,15 +1208,20 @@ class WaylandDisplay {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1147,6 +1262,7 @@ class WaylandDisplay {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1181,6 +1297,7 @@ class WaylandDisplay {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1200,12 +1317,14 @@ class WaylandDisplay {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Gdk-4.0.Gdk.Display */
     /**
      * Emitted when the connection to the windowing system for `display` is closed.
+     * @param is_error %TRUE if the display was closed due to an error
      */
     connect(sigName: "closed", callback: (($obj: WaylandDisplay, is_error: boolean) => void)): number
     connect_after(sigName: "closed", callback: (($obj: WaylandDisplay, is_error: boolean) => void)): number
@@ -1218,18 +1337,21 @@ class WaylandDisplay {
     emit(sigName: "opened"): void
     /**
      * Emitted whenever a new seat is made known to the windowing system.
+     * @param seat the seat that was just added
      */
     connect(sigName: "seat-added", callback: (($obj: WaylandDisplay, seat: Gdk.Seat) => void)): number
     connect_after(sigName: "seat-added", callback: (($obj: WaylandDisplay, seat: Gdk.Seat) => void)): number
     emit(sigName: "seat-added", seat: Gdk.Seat): void
     /**
      * Emitted whenever a seat is removed by the windowing system.
+     * @param seat the seat that was just removed
      */
     connect(sigName: "seat-removed", callback: (($obj: WaylandDisplay, seat: Gdk.Seat) => void)): number
     connect_after(sigName: "seat-removed", callback: (($obj: WaylandDisplay, seat: Gdk.Seat) => void)): number
     emit(sigName: "seat-removed", seat: Gdk.Seat): void
     /**
      * Emitted whenever a setting changes its value.
+     * @param setting the name of the setting that changed
      */
     connect(sigName: "setting-changed", callback: (($obj: WaylandDisplay, setting: string) => void)): number
     connect_after(sigName: "setting-changed", callback: (($obj: WaylandDisplay, setting: string) => void)): number
@@ -1263,6 +1385,7 @@ class WaylandDisplay {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WaylandDisplay, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WaylandDisplay, pspec: GObject.ParamSpec) => void)): number
@@ -1294,8 +1417,24 @@ class WaylandGLContext {
      * The API currently in use.
      */
     readonly api: Gdk.GLAPI
+    /**
+     * Always %NULL
+     * 
+     * As many contexts can share data now and no single shared context exists
+     * anymore, this function has been deprecated and now always returns %NULL.
+     */
+    readonly shared_context: Gdk.GLContext
+    /* Properties of Gdk-4.0.Gdk.DrawContext */
+    /**
+     * The `GdkDisplay` used to create the `GdkDrawContext`.
+     */
+    readonly display: Gdk.Display
+    /**
+     * The `GdkSurface` the context is bound to.
+     */
+    readonly surface: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.GLContext */
     /**
      * Gets the allowed APIs set via gdk_gl_context_set_allowed_apis().
@@ -1382,6 +1521,7 @@ class WaylandGLContext {
      * 
      * Both contexts must be realized for this check to succeed. If either one
      * is not, this function will return %FALSE.
+     * @param other the `GdkGLContext` that should be compatible with `self`
      */
     is_shared(other: Gdk.GLContext): boolean
     /**
@@ -1402,6 +1542,7 @@ class WaylandGLContext {
      * It is only relevant during gdk_gl_context_realize().
      * 
      * By default, all APIs are allowed.
+     * @param apis the allowed APIs
      */
     set_allowed_apis(apis: Gdk.GLAPI): void
     /**
@@ -1412,6 +1553,7 @@ class WaylandGLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to
      * calling this function.
+     * @param enabled whether to enable debugging in the context
      */
     set_debug_enabled(enabled: boolean): void
     /**
@@ -1424,6 +1566,7 @@ class WaylandGLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to calling
      * this function.
+     * @param compatible whether the context should be forward-compatible
      */
     set_forward_compatible(compatible: boolean): void
     /**
@@ -1433,6 +1576,8 @@ class WaylandGLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to calling
      * this function.
+     * @param major the major version to request
+     * @param minor the minor version to request
      */
     set_required_version(major: number, minor: number): void
     /**
@@ -1449,6 +1594,7 @@ class WaylandGLContext {
      * You should check the return value of [method`Gdk`.GLContext.get_use_es]
      * after calling [method`Gdk`.GLContext.realize] to decide whether to use
      * the OpenGL or OpenGL ES API, extensions, or shaders.
+     * @param use_es whether the context should use OpenGL ES instead of OpenGL,   or -1 to allow auto-detection
      */
     set_use_es(use_es: number): void
     /* Methods of Gdk-4.0.Gdk.DrawContext */
@@ -1477,6 +1623,7 @@ class WaylandGLContext {
      * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
      * use of [class`Gsk`.Renderer]s, so application code does not need to call
      * these functions explicitly.
+     * @param region minimum region that should be drawn
      */
     begin_frame(region: cairo.Region): void
     /**
@@ -1544,6 +1691,10 @@ class WaylandGLContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1554,6 +1705,12 @@ class WaylandGLContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1577,6 +1734,7 @@ class WaylandGLContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1596,11 +1754,14 @@ class WaylandGLContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1608,6 +1769,8 @@ class WaylandGLContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1625,6 +1788,7 @@ class WaylandGLContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1670,6 +1834,7 @@ class WaylandGLContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1713,15 +1878,20 @@ class WaylandGLContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1762,6 +1932,7 @@ class WaylandGLContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1796,6 +1967,7 @@ class WaylandGLContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1815,6 +1987,7 @@ class WaylandGLContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1847,6 +2020,7 @@ class WaylandGLContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
@@ -1855,6 +2029,12 @@ class WaylandGLContext {
     connect_after(sigName: "notify::allowed-apis", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::api", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::api", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::shared-context", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shared-context", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::surface", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: (($obj: WaylandGLContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1872,6 +2052,10 @@ class WaylandMonitor {
      * The connector name.
      */
     readonly connector: string
+    /**
+     * The `GdkDisplay` of the monitor.
+     */
+    readonly display: Gdk.Display
     /**
      * The geometry of the monitor.
      */
@@ -1909,7 +2093,7 @@ class WaylandMonitor {
      */
     readonly width_mm: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Monitor */
     /**
      * Gets the name of the monitor's connector, if available.
@@ -2016,6 +2200,10 @@ class WaylandMonitor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2026,6 +2214,12 @@ class WaylandMonitor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2049,6 +2243,7 @@ class WaylandMonitor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2068,11 +2263,14 @@ class WaylandMonitor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2080,6 +2278,8 @@ class WaylandMonitor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2097,6 +2297,7 @@ class WaylandMonitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2142,6 +2343,7 @@ class WaylandMonitor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2185,15 +2387,20 @@ class WaylandMonitor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2234,6 +2441,7 @@ class WaylandMonitor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2268,6 +2476,7 @@ class WaylandMonitor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2287,6 +2496,7 @@ class WaylandMonitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2326,12 +2536,15 @@ class WaylandMonitor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::connector", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connector", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::geometry", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::geometry", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::height-mm", callback: (($obj: WaylandMonitor, pspec: GObject.ParamSpec) => void)): number
@@ -2377,6 +2590,14 @@ class WaylandPopup {
      */
     cursor: Gdk.Cursor
     /**
+     * The `GdkDisplay` connection of the surface.
+     */
+    readonly display: Gdk.Display
+    /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frame_clock: Gdk.FrameClock
+    /**
      * The height of the surface, in pixels.
      */
     readonly height: number
@@ -2392,8 +2613,17 @@ class WaylandPopup {
      * The width of the surface in pixels.
      */
     readonly width: number
+    /* Properties of Gdk-4.0.Gdk.Popup */
+    /**
+     * Whether to hide on outside clicks.
+     */
+    readonly autohide: boolean
+    /**
+     * The parent surface.
+     */
+    readonly parent: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Surface */
     /**
      * Emits a short beep associated to `surface`.
@@ -2431,6 +2661,9 @@ class WaylandPopup {
      * This function always returns a valid pointer, but it will return a
      * pointer to a “nil” surface if `other` is already in an error state
      * or any other error occurs.
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -2469,6 +2702,7 @@ class WaylandPopup {
      * specified surface, and it is using the cursor for its parent surface.
      * 
      * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
+     * @param device a pointer `GdkDevice`
      */
     get_device_cursor(device: Gdk.Device): Gdk.Cursor | null
     /**
@@ -2476,6 +2710,7 @@ class WaylandPopup {
      * 
      * The position is given in coordinates relative to the upper
      * left corner of `surface`.
+     * @param device pointer `GdkDevice` to query to
      */
     get_device_position(device: Gdk.Device): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* mask */ Gdk.ModifierType | null ]
     /**
@@ -2560,6 +2795,7 @@ class WaylandPopup {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param cursor a `GdkCursor`
      */
     set_cursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -2570,6 +2806,8 @@ class WaylandPopup {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param device a pointer `GdkDevice`
+     * @param cursor a `GdkCursor`
      */
     set_device_cursor(device: Gdk.Device, cursor: Gdk.Cursor): void
     /**
@@ -2587,6 +2825,7 @@ class WaylandPopup {
      * 
      * Use [method`Gdk`.Display.supports_input_shapes] to find out if
      * a particular backend supports input regions.
+     * @param region region of surface to be reactive
      */
     set_input_region(region: cairo.Region): void
     /**
@@ -2605,6 +2844,7 @@ class WaylandPopup {
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
      * [vfunc`Gtk`.Widget.css_changed] handler.
+     * @param region a region, or %NULL to make the entire   surface opaque
      */
     set_opaque_region(region?: cairo.Region | null): void
     /**
@@ -2612,6 +2852,9 @@ class WaylandPopup {
      * 
      * Note that this only works if `to` and `from` are popups or
      * transient-for to the same toplevel (directly or indirectly).
+     * @param to the target surface
+     * @param x coordinates to translate
+     * @param y coordinates to translate
      */
     translate_coordinates(to: Gdk.Surface, x: number, y: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -2649,6 +2892,10 @@ class WaylandPopup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2659,6 +2906,12 @@ class WaylandPopup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2682,6 +2935,7 @@ class WaylandPopup {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2701,11 +2955,14 @@ class WaylandPopup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2713,6 +2970,8 @@ class WaylandPopup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2730,6 +2989,7 @@ class WaylandPopup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2775,6 +3035,7 @@ class WaylandPopup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2818,15 +3079,20 @@ class WaylandPopup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2867,6 +3133,7 @@ class WaylandPopup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2901,6 +3168,7 @@ class WaylandPopup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gdk-4.0.Gdk.Popup */
@@ -2950,6 +3218,9 @@ class WaylandPopup {
      * Presenting may fail, for example if the `popup` is set to autohide
      * and is immediately hidden upon being presented. If presenting failed,
      * the [signal`Gdk`.Surface::layout] signal will not me emitted.
+     * @param width the unconstrained popup width to layout
+     * @param height the unconstrained popup height to layout
+     * @param layout the `GdkPopupLayout` object used to layout
      */
     present(width: number, height: number, layout: Gdk.PopupLayout): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2969,18 +3240,21 @@ class WaylandPopup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Gdk-4.0.Gdk.Surface */
     /**
      * Emitted when `surface` starts being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "enter-monitor", callback: (($obj: WaylandPopup, monitor: Gdk.Monitor) => void)): number
     connect_after(sigName: "enter-monitor", callback: (($obj: WaylandPopup, monitor: Gdk.Monitor) => void)): number
     emit(sigName: "enter-monitor", monitor: Gdk.Monitor): void
     /**
      * Emitted when GDK receives an input event for `surface`.
+     * @param event an input event
      */
     connect(sigName: "event", callback: (($obj: WaylandPopup, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: WaylandPopup, event: Gdk.Event) => boolean)): number
@@ -2991,18 +3265,22 @@ class WaylandPopup {
      * 
      * Surface size is reported in ”application pixels”, not
      * ”device pixels” (see gdk_surface_get_scale_factor()).
+     * @param width the current width
+     * @param height the current height
      */
     connect(sigName: "layout", callback: (($obj: WaylandPopup, width: number, height: number) => void)): number
     connect_after(sigName: "layout", callback: (($obj: WaylandPopup, width: number, height: number) => void)): number
     emit(sigName: "layout", width: number, height: number): void
     /**
      * Emitted when `surface` stops being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "leave-monitor", callback: (($obj: WaylandPopup, monitor: Gdk.Monitor) => void)): number
     connect_after(sigName: "leave-monitor", callback: (($obj: WaylandPopup, monitor: Gdk.Monitor) => void)): number
     emit(sigName: "leave-monitor", monitor: Gdk.Monitor): void
     /**
      * Emitted when part of the surface needs to be redrawn.
+     * @param region the region that needs to be redrawn
      */
     connect(sigName: "render", callback: (($obj: WaylandPopup, region: cairo.Region) => boolean)): number
     connect_after(sigName: "render", callback: (($obj: WaylandPopup, region: cairo.Region) => boolean)): number
@@ -3036,12 +3314,17 @@ class WaylandPopup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::cursor", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::frame-clock", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::frame-clock", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::height", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::mapped", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
@@ -3050,6 +3333,10 @@ class WaylandPopup {
     connect_after(sigName: "notify::scale-factor", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::width", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::width", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::autohide", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::autohide", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::parent", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: WaylandPopup, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3062,10 +3349,15 @@ class WaylandPopup {
 interface WaylandSeat_ConstructProps extends Gdk.Seat_ConstructProps {
 }
 class WaylandSeat {
+    /* Properties of Gdk-4.0.Gdk.Seat */
+    /**
+     * `GdkDisplay` of this seat.
+     */
+    readonly display: Gdk.Display
     /* Fields of Gdk-4.0.Gdk.Seat */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Seat */
     /**
      * Returns the capabilities this `GdkSeat` currently has.
@@ -3073,6 +3365,7 @@ class WaylandSeat {
     get_capabilities(): Gdk.SeatCapabilities
     /**
      * Returns the devices that match the given capabilities.
+     * @param capabilities capabilities to get devices for
      */
     get_devices(capabilities: Gdk.SeatCapabilities): Gdk.Device[]
     /**
@@ -3126,6 +3419,10 @@ class WaylandSeat {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3136,6 +3433,12 @@ class WaylandSeat {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3159,6 +3462,7 @@ class WaylandSeat {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3178,11 +3482,14 @@ class WaylandSeat {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3190,6 +3497,8 @@ class WaylandSeat {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3207,6 +3516,7 @@ class WaylandSeat {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3252,6 +3562,7 @@ class WaylandSeat {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3295,15 +3606,20 @@ class WaylandSeat {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3344,6 +3660,7 @@ class WaylandSeat {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3378,6 +3695,7 @@ class WaylandSeat {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3397,18 +3715,21 @@ class WaylandSeat {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Gdk-4.0.Gdk.Seat */
     /**
      * Emitted when a new input device is related to this seat.
+     * @param device the newly added `GdkDevice`.
      */
     connect(sigName: "device-added", callback: (($obj: WaylandSeat, device: Gdk.Device) => void)): number
     connect_after(sigName: "device-added", callback: (($obj: WaylandSeat, device: Gdk.Device) => void)): number
     emit(sigName: "device-added", device: Gdk.Device): void
     /**
      * Emitted when an input device is removed (e.g. unplugged).
+     * @param device the just removed `GdkDevice`.
      */
     connect(sigName: "device-removed", callback: (($obj: WaylandSeat, device: Gdk.Device) => void)): number
     connect_after(sigName: "device-removed", callback: (($obj: WaylandSeat, device: Gdk.Device) => void)): number
@@ -3421,12 +3742,14 @@ class WaylandSeat {
      * [signal`Gdk`.Device::tool-changed] signal accordingly.
      * 
      * A same tool may be used by several devices.
+     * @param tool the new `GdkDeviceTool` known to the seat
      */
     connect(sigName: "tool-added", callback: (($obj: WaylandSeat, tool: Gdk.DeviceTool) => void)): number
     connect_after(sigName: "tool-added", callback: (($obj: WaylandSeat, tool: Gdk.DeviceTool) => void)): number
     emit(sigName: "tool-added", tool: Gdk.DeviceTool): void
     /**
      * Emitted whenever a tool is no longer known to this `seat`.
+     * @param tool the just removed `GdkDeviceTool`
      */
     connect(sigName: "tool-removed", callback: (($obj: WaylandSeat, tool: Gdk.DeviceTool) => void)): number
     connect_after(sigName: "tool-removed", callback: (($obj: WaylandSeat, tool: Gdk.DeviceTool) => void)): number
@@ -3460,10 +3783,13 @@ class WaylandSeat {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WaylandSeat, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WaylandSeat, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::display", callback: (($obj: WaylandSeat, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: WaylandSeat, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3482,6 +3808,14 @@ class WaylandSurface {
      */
     cursor: Gdk.Cursor
     /**
+     * The `GdkDisplay` connection of the surface.
+     */
+    readonly display: Gdk.Display
+    /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frame_clock: Gdk.FrameClock
+    /**
      * The height of the surface, in pixels.
      */
     readonly height: number
@@ -3498,7 +3832,7 @@ class WaylandSurface {
      */
     readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Surface */
     /**
      * Emits a short beep associated to `surface`.
@@ -3536,6 +3870,9 @@ class WaylandSurface {
      * This function always returns a valid pointer, but it will return a
      * pointer to a “nil” surface if `other` is already in an error state
      * or any other error occurs.
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -3574,6 +3911,7 @@ class WaylandSurface {
      * specified surface, and it is using the cursor for its parent surface.
      * 
      * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
+     * @param device a pointer `GdkDevice`
      */
     get_device_cursor(device: Gdk.Device): Gdk.Cursor | null
     /**
@@ -3581,6 +3919,7 @@ class WaylandSurface {
      * 
      * The position is given in coordinates relative to the upper
      * left corner of `surface`.
+     * @param device pointer `GdkDevice` to query to
      */
     get_device_position(device: Gdk.Device): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* mask */ Gdk.ModifierType | null ]
     /**
@@ -3665,6 +4004,7 @@ class WaylandSurface {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param cursor a `GdkCursor`
      */
     set_cursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -3675,6 +4015,8 @@ class WaylandSurface {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param device a pointer `GdkDevice`
+     * @param cursor a `GdkCursor`
      */
     set_device_cursor(device: Gdk.Device, cursor: Gdk.Cursor): void
     /**
@@ -3692,6 +4034,7 @@ class WaylandSurface {
      * 
      * Use [method`Gdk`.Display.supports_input_shapes] to find out if
      * a particular backend supports input regions.
+     * @param region region of surface to be reactive
      */
     set_input_region(region: cairo.Region): void
     /**
@@ -3710,6 +4053,7 @@ class WaylandSurface {
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
      * [vfunc`Gtk`.Widget.css_changed] handler.
+     * @param region a region, or %NULL to make the entire   surface opaque
      */
     set_opaque_region(region?: cairo.Region | null): void
     /**
@@ -3717,6 +4061,9 @@ class WaylandSurface {
      * 
      * Note that this only works if `to` and `from` are popups or
      * transient-for to the same toplevel (directly or indirectly).
+     * @param to the target surface
+     * @param x coordinates to translate
+     * @param y coordinates to translate
      */
     translate_coordinates(to: Gdk.Surface, x: number, y: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -3754,6 +4101,10 @@ class WaylandSurface {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3764,6 +4115,12 @@ class WaylandSurface {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3787,6 +4144,7 @@ class WaylandSurface {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3806,11 +4164,14 @@ class WaylandSurface {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3818,6 +4179,8 @@ class WaylandSurface {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3835,6 +4198,7 @@ class WaylandSurface {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3880,6 +4244,7 @@ class WaylandSurface {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3923,15 +4288,20 @@ class WaylandSurface {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3972,6 +4342,7 @@ class WaylandSurface {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4006,6 +4377,7 @@ class WaylandSurface {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4025,18 +4397,21 @@ class WaylandSurface {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Gdk-4.0.Gdk.Surface */
     /**
      * Emitted when `surface` starts being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "enter-monitor", callback: (($obj: WaylandSurface, monitor: Gdk.Monitor) => void)): number
     connect_after(sigName: "enter-monitor", callback: (($obj: WaylandSurface, monitor: Gdk.Monitor) => void)): number
     emit(sigName: "enter-monitor", monitor: Gdk.Monitor): void
     /**
      * Emitted when GDK receives an input event for `surface`.
+     * @param event an input event
      */
     connect(sigName: "event", callback: (($obj: WaylandSurface, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: WaylandSurface, event: Gdk.Event) => boolean)): number
@@ -4047,18 +4422,22 @@ class WaylandSurface {
      * 
      * Surface size is reported in ”application pixels”, not
      * ”device pixels” (see gdk_surface_get_scale_factor()).
+     * @param width the current width
+     * @param height the current height
      */
     connect(sigName: "layout", callback: (($obj: WaylandSurface, width: number, height: number) => void)): number
     connect_after(sigName: "layout", callback: (($obj: WaylandSurface, width: number, height: number) => void)): number
     emit(sigName: "layout", width: number, height: number): void
     /**
      * Emitted when `surface` stops being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "leave-monitor", callback: (($obj: WaylandSurface, monitor: Gdk.Monitor) => void)): number
     connect_after(sigName: "leave-monitor", callback: (($obj: WaylandSurface, monitor: Gdk.Monitor) => void)): number
     emit(sigName: "leave-monitor", monitor: Gdk.Monitor): void
     /**
      * Emitted when part of the surface needs to be redrawn.
+     * @param region the region that needs to be redrawn
      */
     connect(sigName: "render", callback: (($obj: WaylandSurface, region: cairo.Region) => boolean)): number
     connect_after(sigName: "render", callback: (($obj: WaylandSurface, region: cairo.Region) => boolean)): number
@@ -4092,12 +4471,17 @@ class WaylandSurface {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::cursor", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::frame-clock", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::frame-clock", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::height", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::mapped", callback: (($obj: WaylandSurface, pspec: GObject.ParamSpec) => void)): number
@@ -4160,6 +4544,14 @@ class WaylandToplevel {
      */
     cursor: Gdk.Cursor
     /**
+     * The `GdkDisplay` connection of the surface.
+     */
+    readonly display: Gdk.Display
+    /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frame_clock: Gdk.FrameClock
+    /**
      * The height of the surface, in pixels.
      */
     readonly height: number
@@ -4220,7 +4612,7 @@ class WaylandToplevel {
      */
     transient_for: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GdkWayland-4.0.GdkWayland.WaylandToplevel */
     /**
      * Asynchronously obtains a handle for a surface that can be passed
@@ -4240,10 +4632,12 @@ class WaylandToplevel {
      * 
      * Note that this API depends on an unstable Wayland protocol,
      * and thus may require changes in the future.
+     * @param callback callback to call with the handle
      */
     export_handle(callback: WaylandToplevelExported): boolean
     /**
      * Sets the application id on a `GdkToplevel`.
+     * @param application_id the application id for the `toplevel`
      */
     set_application_id(application_id: string): void
     /**
@@ -4255,6 +4649,7 @@ class WaylandToplevel {
      * 
      * Note that this API depends on an unstable Wayland protocol,
      * and thus may require changes in the future.
+     * @param parent_handle_str an exported handle for a surface
      */
     set_transient_for_exported(parent_handle_str: string): boolean
     /**
@@ -4305,6 +4700,9 @@ class WaylandToplevel {
      * This function always returns a valid pointer, but it will return a
      * pointer to a “nil” surface if `other` is already in an error state
      * or any other error occurs.
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -4343,6 +4741,7 @@ class WaylandToplevel {
      * specified surface, and it is using the cursor for its parent surface.
      * 
      * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
+     * @param device a pointer `GdkDevice`
      */
     get_device_cursor(device: Gdk.Device): Gdk.Cursor | null
     /**
@@ -4350,6 +4749,7 @@ class WaylandToplevel {
      * 
      * The position is given in coordinates relative to the upper
      * left corner of `surface`.
+     * @param device pointer `GdkDevice` to query to
      */
     get_device_position(device: Gdk.Device): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* mask */ Gdk.ModifierType | null ]
     /**
@@ -4434,6 +4834,7 @@ class WaylandToplevel {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param cursor a `GdkCursor`
      */
     set_cursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -4444,6 +4845,8 @@ class WaylandToplevel {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param device a pointer `GdkDevice`
+     * @param cursor a `GdkCursor`
      */
     set_device_cursor(device: Gdk.Device, cursor: Gdk.Cursor): void
     /**
@@ -4461,6 +4864,7 @@ class WaylandToplevel {
      * 
      * Use [method`Gdk`.Display.supports_input_shapes] to find out if
      * a particular backend supports input regions.
+     * @param region region of surface to be reactive
      */
     set_input_region(region: cairo.Region): void
     /**
@@ -4479,6 +4883,7 @@ class WaylandToplevel {
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
      * [vfunc`Gtk`.Widget.css_changed] handler.
+     * @param region a region, or %NULL to make the entire   surface opaque
      */
     set_opaque_region(region?: cairo.Region | null): void
     /**
@@ -4486,6 +4891,9 @@ class WaylandToplevel {
      * 
      * Note that this only works if `to` and `from` are popups or
      * transient-for to the same toplevel (directly or indirectly).
+     * @param to the target surface
+     * @param x coordinates to translate
+     * @param y coordinates to translate
      */
     translate_coordinates(to: Gdk.Surface, x: number, y: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -4523,6 +4931,10 @@ class WaylandToplevel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4533,6 +4945,12 @@ class WaylandToplevel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4556,6 +4974,7 @@ class WaylandToplevel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4575,11 +4994,14 @@ class WaylandToplevel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4587,6 +5009,8 @@ class WaylandToplevel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4604,6 +5028,7 @@ class WaylandToplevel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4649,6 +5074,7 @@ class WaylandToplevel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4692,15 +5118,20 @@ class WaylandToplevel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4741,6 +5172,7 @@ class WaylandToplevel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4775,6 +5207,7 @@ class WaylandToplevel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gdk-4.0.Gdk.Toplevel */
@@ -4782,12 +5215,23 @@ class WaylandToplevel {
      * Begins an interactive move operation.
      * 
      * You might use this function to implement draggable titlebars.
+     * @param device the device used for the operation
+     * @param button the button being used to drag, or 0 for a keyboard-initiated drag
+     * @param x surface X coordinate of mouse click that began the drag
+     * @param y surface Y coordinate of mouse click that began the drag
+     * @param timestamp timestamp of mouse click that began the drag (use   [method`Gdk`.Event.get_time])
      */
     begin_move(device: Gdk.Device, button: number, x: number, y: number, timestamp: number): void
     /**
      * Begins an interactive resize operation.
      * 
      * You might use this function to implement a “window resize grip.”
+     * @param edge the edge or corner from which the drag is started
+     * @param device the device used for the operation
+     * @param button the button being used to drag, or 0 for a keyboard-initiated drag
+     * @param x surface X coordinate of mouse click that began the drag
+     * @param y surface Y coordinate of mouse click that began the drag
+     * @param timestamp timestamp of mouse click that began the drag (use   [method`Gdk`.Event.get_time])
      */
     begin_resize(edge: Gdk.SurfaceEdge, device: Gdk.Device | null, button: number, x: number, y: number, timestamp: number): void
     /**
@@ -4795,6 +5239,7 @@ class WaylandToplevel {
      * 
      * In most cases, [method`Gtk`.Window.present_with_time] should be
      * used on a [class`Gtk`.Window], rather than calling this function.
+     * @param timestamp timestamp of the event triggering the surface focus
      */
     focus(timestamp: number): void
     /**
@@ -4824,6 +5269,7 @@ class WaylandToplevel {
      * 
      * The caller can be notified whenever the request is granted or revoked
      * by listening to the [property`Gdk`.Toplevel:shortcuts-inhibited] property.
+     * @param event the `GdkEvent` that is triggering the inhibit   request, or %NULL if none is available
      */
     inhibit_system_shortcuts(event?: Gdk.Event | null): void
     /**
@@ -4850,6 +5296,7 @@ class WaylandToplevel {
      * 
      * Presenting is asynchronous and the specified layout parameters are not
      * guaranteed to be respected.
+     * @param layout the `GdkToplevelLayout` object used to layout
      */
     present(layout: Gdk.ToplevelLayout): void
     /**
@@ -4865,6 +5312,7 @@ class WaylandToplevel {
      * Setting `decorated` to %FALSE hints the desktop environment
      * that the surface has its own, client-side decorations and
      * does not need to have window decorations added.
+     * @param decorated %TRUE to request decorations
      */
     set_decorated(decorated: boolean): void
     /**
@@ -4872,6 +5320,7 @@ class WaylandToplevel {
      * 
      * Setting `deletable` to %TRUE hints the desktop environment
      * that it should offer the user a way to close the surface.
+     * @param deletable %TRUE to request a delete button
      */
     set_deletable(deletable: boolean): void
     /**
@@ -4884,6 +5333,7 @@ class WaylandToplevel {
      * image quality.
      * 
      * Note that some platforms don't support surface icons.
+     * @param surfaces    A list of textures to use as icon, of different sizes
      */
     set_icon_list(surfaces: Gdk.Texture[]): void
     /**
@@ -4896,6 +5346,7 @@ class WaylandToplevel {
      * 
      * You should only use this on surfaces for which you have
      * previously called [method`Gdk`.Toplevel.set_transient_for].
+     * @param modal %TRUE if the surface is modal, %FALSE otherwise.
      */
     set_modal(modal: boolean): void
     /**
@@ -4904,6 +5355,7 @@ class WaylandToplevel {
      * When using GTK, typically you should use
      * [method`Gtk`.Window.set_startup_id] instead of this
      * low-level function.
+     * @param startup_id a string with startup-notification identifier
      */
     set_startup_id(startup_id: string): void
     /**
@@ -4911,6 +5363,7 @@ class WaylandToplevel {
      * 
      * The title maybe be displayed in the titlebar,
      * in lists of windows, etc.
+     * @param title title of `surface`
      */
     set_title(title: string): void
     /**
@@ -4923,6 +5376,7 @@ class WaylandToplevel {
      * 
      * See [method`Gtk`.Window.set_transient_for] if you’re using
      * [class`Gtk`.Window] or [class`Gtk`.Dialog].
+     * @param parent another toplevel `GdkSurface`
      */
     set_transient_for(parent: Gdk.Surface): void
     /**
@@ -4932,6 +5386,7 @@ class WaylandToplevel {
      * on traditional windows managed by the window manager. This is useful
      * for windows using client-side decorations, activating it with a
      * right-click on the window decorations.
+     * @param event a `GdkEvent` to show the menu for
      */
     show_window_menu(event: Gdk.Event): boolean
     /**
@@ -4957,18 +5412,21 @@ class WaylandToplevel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Gdk-4.0.Gdk.Surface */
     /**
      * Emitted when `surface` starts being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "enter-monitor", callback: (($obj: WaylandToplevel, monitor: Gdk.Monitor) => void)): number
     connect_after(sigName: "enter-monitor", callback: (($obj: WaylandToplevel, monitor: Gdk.Monitor) => void)): number
     emit(sigName: "enter-monitor", monitor: Gdk.Monitor): void
     /**
      * Emitted when GDK receives an input event for `surface`.
+     * @param event an input event
      */
     connect(sigName: "event", callback: (($obj: WaylandToplevel, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: WaylandToplevel, event: Gdk.Event) => boolean)): number
@@ -4979,18 +5437,22 @@ class WaylandToplevel {
      * 
      * Surface size is reported in ”application pixels”, not
      * ”device pixels” (see gdk_surface_get_scale_factor()).
+     * @param width the current width
+     * @param height the current height
      */
     connect(sigName: "layout", callback: (($obj: WaylandToplevel, width: number, height: number) => void)): number
     connect_after(sigName: "layout", callback: (($obj: WaylandToplevel, width: number, height: number) => void)): number
     emit(sigName: "layout", width: number, height: number): void
     /**
      * Emitted when `surface` stops being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "leave-monitor", callback: (($obj: WaylandToplevel, monitor: Gdk.Monitor) => void)): number
     connect_after(sigName: "leave-monitor", callback: (($obj: WaylandToplevel, monitor: Gdk.Monitor) => void)): number
     emit(sigName: "leave-monitor", monitor: Gdk.Monitor): void
     /**
      * Emitted when part of the surface needs to be redrawn.
+     * @param region the region that needs to be redrawn
      */
     connect(sigName: "render", callback: (($obj: WaylandToplevel, region: cairo.Region) => boolean)): number
     connect_after(sigName: "render", callback: (($obj: WaylandToplevel, region: cairo.Region) => boolean)): number
@@ -5024,6 +5486,7 @@ class WaylandToplevel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
@@ -5048,6 +5511,10 @@ class WaylandToplevel {
     emit(sigName: "compute-size"): void
     connect(sigName: "notify::cursor", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::frame-clock", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::frame-clock", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::height", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::mapped", callback: (($obj: WaylandToplevel, pspec: GObject.ParamSpec) => void)): number

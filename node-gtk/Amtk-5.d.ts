@@ -85,7 +85,7 @@ interface ActionInfoCentralStore_ConstructProps extends GObject.Object_Construct
 }
 class ActionInfoCentralStore {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Amtk-5.Amtk.ActionInfoCentralStore */
     lookup(actionName: string): ActionInfo
     /* Methods of GObject-2.0.GObject.Object */
@@ -123,6 +123,10 @@ class ActionInfoCentralStore {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -133,6 +137,12 @@ class ActionInfoCentralStore {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -156,6 +166,7 @@ class ActionInfoCentralStore {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -175,11 +186,14 @@ class ActionInfoCentralStore {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -187,6 +201,8 @@ class ActionInfoCentralStore {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -204,6 +220,7 @@ class ActionInfoCentralStore {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -249,6 +266,7 @@ class ActionInfoCentralStore {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -292,15 +310,20 @@ class ActionInfoCentralStore {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -341,6 +364,7 @@ class ActionInfoCentralStore {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -375,6 +399,7 @@ class ActionInfoCentralStore {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -406,6 +431,7 @@ class ActionInfoCentralStore {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -430,13 +456,14 @@ interface ActionInfoStore_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ActionInfoStore {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Amtk-5.Amtk.ActionInfoStore */
     /**
      * Inserts `info` into `store` and into the #AmtkActionInfoCentralStore. Both the
      * `store` and central store must <emphasis>not</emphasis> already contain an
      * #AmtkActionInfo with the same action name. The stores take their own
      * reference on `info`.
+     * @param info an #AmtkActionInfo.
      */
     add(info: ActionInfo): void
     /**
@@ -446,6 +473,8 @@ class ActionInfoStore {
      * `label` and `tooltip` of each entry before setting them to the #AmtkActionInfo.
      * 
      * An API similar to g_action_map_add_action_entries().
+     * @param entries a pointer to the first item in an array of #AmtkActionInfoEntry structs.
+     * @param translationDomain a gettext domain, or %NULL.
      */
     addEntries(entries: ActionInfoEntry[], translationDomain?: string | null): void
     /**
@@ -482,6 +511,7 @@ class ActionInfoStore {
      * later, on demand. For example to create a #GtkShortcutsWindow with
      * #AmtkFactory, containing information about actions that are not added to any
      * menu or toolbar.
+     * @param application a #GtkApplication.
      */
     setAllAccelsToApp(application: Gtk.Application): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -519,6 +549,10 @@ class ActionInfoStore {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -529,6 +563,12 @@ class ActionInfoStore {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -552,6 +592,7 @@ class ActionInfoStore {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -571,11 +612,14 @@ class ActionInfoStore {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -583,6 +627,8 @@ class ActionInfoStore {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -600,6 +646,7 @@ class ActionInfoStore {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -645,6 +692,7 @@ class ActionInfoStore {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -688,15 +736,20 @@ class ActionInfoStore {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -737,6 +790,7 @@ class ActionInfoStore {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -771,6 +825,7 @@ class ActionInfoStore {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -802,6 +857,7 @@ class ActionInfoStore {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -836,11 +892,15 @@ interface ApplicationWindow_ConstructProps extends GObject.Object_ConstructProps
 class ApplicationWindow {
     /* Properties of Amtk-5.Amtk.ApplicationWindow */
     /**
+     * The #GtkApplicationWindow.
+     */
+    readonly applicationWindow: Gtk.ApplicationWindow
+    /**
      * The #GtkStatusbar. %NULL by default.
      */
     statusbar: Gtk.Statusbar
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Amtk-5.Amtk.ApplicationWindow */
     /**
      * Connects to the #AmtkMenuShell::menu-item-selected and
@@ -850,6 +910,7 @@ class ApplicationWindow {
      * The long description is retrieved with amtk_menu_item_get_long_description().
      * So amtk_menu_item_set_long_description() must have been called, which is the
      * case if the #GtkMenuItem has been created with #AmtkFactory.
+     * @param menuShell a #GtkMenuShell.
      */
     connectMenuToStatusbar(menuShell: Gtk.MenuShell): void
     /**
@@ -859,6 +920,7 @@ class ApplicationWindow {
      * 
      * The full path is retrieved with
      * amtk_utils_recent_chooser_menu_get_item_uri().
+     * @param menu a #GtkRecentChooserMenu.
      */
     connectRecentChooserMenuToStatusbar(menu: Gtk.RecentChooserMenu): void
     /**
@@ -888,6 +950,7 @@ class ApplicationWindow {
     getStatusbar(): Gtk.Statusbar | null
     /**
      * Sets the #AmtkApplicationWindow:statusbar property.
+     * @param statusbar a #GtkStatusbar, or %NULL.
      */
     setStatusbar(statusbar?: Gtk.Statusbar | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -925,6 +988,10 @@ class ApplicationWindow {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -935,6 +1002,12 @@ class ApplicationWindow {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -958,6 +1031,7 @@ class ApplicationWindow {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -977,11 +1051,14 @@ class ApplicationWindow {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -989,6 +1066,8 @@ class ApplicationWindow {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1006,6 +1085,7 @@ class ApplicationWindow {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1051,6 +1131,7 @@ class ApplicationWindow {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1094,15 +1175,20 @@ class ApplicationWindow {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1143,6 +1229,7 @@ class ApplicationWindow {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1177,6 +1264,7 @@ class ApplicationWindow {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1208,12 +1296,18 @@ class ApplicationWindow {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::application-window", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::application-window", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::application-window", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::application-window", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::application-window", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::statusbar", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::statusbar", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::statusbar", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1233,6 +1327,7 @@ class ApplicationWindow {
     /**
      * Returns the #AmtkApplicationWindow of `gtk_window`. The returned object is
      * guaranteed to be the same for the lifetime of `gtk_window`.
+     * @param gtkWindow a #GtkApplicationWindow.
      */
     static getFromGtkApplicationWindow(gtkWindow: Gtk.ApplicationWindow): ApplicationWindow
     static $gtype: GObject.Type
@@ -1252,11 +1347,16 @@ interface Factory_ConstructProps extends GObject.Object_ConstructProps {
 class Factory {
     /* Properties of Amtk-5.Amtk.Factory */
     /**
+     * The associated #GtkApplication (it is optional, it can be %NULL).
+     * #AmtkFactory has a weak reference to the #GtkApplication.
+     */
+    readonly application: Gtk.Application
+    /**
      * The default #AmtkFactoryFlags.
      */
     defaultFlags: FactoryFlags
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Amtk-5.Amtk.Factory */
     /**
      * Creates a new #GtkCheckMenuItem for `action_name` with the
@@ -1264,6 +1364,7 @@ class Factory {
      * 
      * See the documentation of amtk_factory_create_check_menu_item_full() for more
      * information.
+     * @param actionName an action name.
      */
     createCheckMenuItem(actionName: string): Gtk.Widget
     /**
@@ -1275,11 +1376,14 @@ class Factory {
      * 
      * If the action controls a boolean property, think about using
      * #GPropertyAction.
+     * @param actionName an action name.
+     * @param flags #AmtkFactoryFlags.
      */
     createCheckMenuItemFull(actionName: string, flags: FactoryFlags): Gtk.Widget
     /**
      * Calls amtk_factory_create_gmenu_item_full() with the
      * #AmtkFactory:default-flags.
+     * @param actionName an action name.
      */
     createGmenuItem(actionName: string): Gio.MenuItem
     /**
@@ -1288,16 +1392,21 @@ class Factory {
      * 
      * Creates a new #GMenuItem for `action_name`. It ignores the tooltip, i.e. the
      * return value of amtk_action_info_get_tooltip().
+     * @param actionName an action name.
+     * @param flags #AmtkFactoryFlags.
      */
     createGmenuItemFull(actionName: string, flags: FactoryFlags): Gio.MenuItem
     /**
      * Creates a new #GtkMenuItem for `action_name` with the
      * #AmtkFactory:default-flags.
+     * @param actionName an action name.
      */
     createMenuItem(actionName: string): Gtk.Widget
     /**
      * This function ignores the #AmtkFactory:default-flags property and takes the
      * `flags` argument instead.
+     * @param actionName an action name.
+     * @param flags #AmtkFactoryFlags.
      */
     createMenuItemFull(actionName: string, flags: FactoryFlags): Gtk.Widget
     /**
@@ -1306,6 +1415,7 @@ class Factory {
      * 
      * See the documentation of amtk_factory_create_menu_tool_button_full() for more
      * information.
+     * @param actionName an action name.
      */
     createMenuToolButton(actionName: string): Gtk.MenuToolButton
     /**
@@ -1314,11 +1424,14 @@ class Factory {
      * 
      * After calling this function, you need to use the #GtkMenuToolButton API to
      * set the menu and also possibly set a tooltip to the arrow.
+     * @param actionName an action name.
+     * @param flags #AmtkFactoryFlags.
      */
     createMenuToolButtonFull(actionName: string, flags: FactoryFlags): Gtk.MenuToolButton
     /**
      * Calls amtk_factory_create_shortcut_full() with the
      * #AmtkFactory:default-flags.
+     * @param actionName an action name.
      */
     createShortcut(actionName: string): Gtk.Widget
     /**
@@ -1343,11 +1456,14 @@ class Factory {
      * 
      * So depending on whether you want to show only the first accelerator or all
      * accelerators, you need to set `flags` appropriately.
+     * @param actionName an action name.
+     * @param flags #AmtkFactoryFlags.
      */
     createShortcutFull(actionName: string, flags: FactoryFlags): Gtk.Widget
     /**
      * Calls amtk_factory_create_simple_menu_full() with the
      * #AmtkFactory:default-flags.
+     * @param entries a   pointer to the first item in an array of #AmtkActionInfoEntry structs.
      */
     createSimpleMenu(entries: ActionInfoEntry[]): Gtk.Widget
     /**
@@ -1363,22 +1479,28 @@ class Factory {
      * 
      * So this function is useful only if the #GtkMenu contains only simple
      * #GtkMenuItem's, not #GtkCheckMenuItem's nor #GtkRadioMenuItem's.
+     * @param entries a   pointer to the first item in an array of #AmtkActionInfoEntry structs.
+     * @param flags #AmtkFactoryFlags.
      */
     createSimpleMenuFull(entries: ActionInfoEntry[], flags: FactoryFlags): Gtk.Widget
     /**
      * Creates a new #GtkToolButton for `action_name` with the
      * #AmtkFactory:default-flags.
+     * @param actionName an action name.
      */
     createToolButton(actionName: string): Gtk.ToolItem
     /**
      * This function ignores the #AmtkFactory:default-flags property and takes the
      * `flags` argument instead.
+     * @param actionName an action name.
+     * @param flags #AmtkFactoryFlags.
      */
     createToolButtonFull(actionName: string, flags: FactoryFlags): Gtk.ToolItem
     getApplication(): Gtk.Application | null
     getDefaultFlags(): FactoryFlags
     /**
      * Sets the #AmtkFactory:default-flags property.
+     * @param defaultFlags the new value.
      */
     setDefaultFlags(defaultFlags: FactoryFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1416,6 +1538,10 @@ class Factory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1426,6 +1552,12 @@ class Factory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1449,6 +1581,7 @@ class Factory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1468,11 +1601,14 @@ class Factory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1480,6 +1616,8 @@ class Factory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1497,6 +1635,7 @@ class Factory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1542,6 +1681,7 @@ class Factory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1585,15 +1725,20 @@ class Factory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1634,6 +1779,7 @@ class Factory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1668,6 +1814,7 @@ class Factory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1699,12 +1846,18 @@ class Factory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::application", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::application", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::application", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::application", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::application", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::default-flags", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-flags", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::default-flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1733,8 +1886,13 @@ interface MenuShell_ConstructProps extends GObject.Object_ConstructProps {
     menuShell?: Gtk.MenuShell
 }
 class MenuShell {
+    /* Properties of Amtk-5.Amtk.MenuShell */
+    /**
+     * The #GtkMenuShell.
+     */
+    readonly menuShell: Gtk.MenuShell
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Amtk-5.Amtk.MenuShell */
     getMenuShell(): Gtk.MenuShell
     /* Methods of GObject-2.0.GObject.Object */
@@ -1772,6 +1930,10 @@ class MenuShell {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1782,6 +1944,12 @@ class MenuShell {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1805,6 +1973,7 @@ class MenuShell {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1824,11 +1993,14 @@ class MenuShell {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1836,6 +2008,8 @@ class MenuShell {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1853,6 +2027,7 @@ class MenuShell {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1898,6 +2073,7 @@ class MenuShell {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1941,15 +2117,20 @@ class MenuShell {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1990,6 +2171,7 @@ class MenuShell {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2024,6 +2206,7 @@ class MenuShell {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Amtk-5.Amtk.MenuShell */
@@ -2031,6 +2214,7 @@ class MenuShell {
      * The ::menu-item-deselected signal is emitted when the
      * #GtkMenuItem::deselect signal is emitted on a #GtkMenuItem belonging
      * (directly or indirectly through submenus) to `amtk_menu_shell`.
+     * @param menuItem the #GtkMenuItem that has been deselected.
      */
     connect(sigName: "menu-item-deselected", callback: ((menuItem: Gtk.MenuItem) => void)): number
     on(sigName: "menu-item-deselected", callback: (menuItem: Gtk.MenuItem) => void, after?: boolean): NodeJS.EventEmitter
@@ -2041,6 +2225,7 @@ class MenuShell {
      * The ::menu-item-selected signal is emitted when the
      * #GtkMenuItem::select signal is emitted on a #GtkMenuItem belonging
      * (directly or indirectly through submenus) to `amtk_menu_shell`.
+     * @param menuItem the #GtkMenuItem that has been selected.
      */
     connect(sigName: "menu-item-selected", callback: ((menuItem: Gtk.MenuItem) => void)): number
     on(sigName: "menu-item-selected", callback: (menuItem: Gtk.MenuItem) => void, after?: boolean): NodeJS.EventEmitter
@@ -2076,12 +2261,18 @@ class MenuShell {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::menu-shell", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::menu-shell", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::menu-shell", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::menu-shell", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::menu-shell", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2096,6 +2287,7 @@ class MenuShell {
     /**
      * Returns the #AmtkMenuShell of `gtk_menu_shell`. The returned object is
      * guaranteed to be the same for the lifetime of `gtk_menu_shell`.
+     * @param gtkMenuShell a #GtkMenuShell.
      */
     static getFromGtkMenuShell(gtkMenuShell: Gtk.MenuShell): MenuShell
     static $gtype: GObject.Type
@@ -2136,17 +2328,20 @@ class ActionInfo {
      * 
      * `accels` must not be %NULL, it must be a %NULL-terminated array, to be
      * consistent with gtk_application_set_accels_for_action().
+     * @param accels a %NULL-terminated array of accelerators in the format understood by gtk_accelerator_parse().
      */
     setAccels(accels: string[]): void
     /**
      * Sets the action name, for example `"win.save"`. Can be a detailed action
      * name, see g_action_parse_detailed_name().
+     * @param actionName the action name.
      */
     setActionName(actionName: string): void
     setIconName(iconName?: string | null): void
     /**
      * Sets the label with a mnemonic. To know how to encode the mnemonic, see the
      * documentation of gtk_label_new_with_mnemonic().
+     * @param label the label (i.e. a short description), or %NULL.
      */
     setLabel(label?: string | null): void
     setTooltip(tooltip?: string | null): void
@@ -2164,8 +2359,8 @@ class ActionInfo {
 }
 abstract class ActionInfoCentralStoreClass {
     /* Fields of Amtk-5.Amtk.ActionInfoCentralStoreClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class ActionInfoCentralStorePrivate {
@@ -2177,30 +2372,30 @@ class ActionInfoEntry {
      * the action name. Can be a detailed action name, see
      *   g_action_parse_detailed_name().
      */
-    readonly actionName: string
+    actionName: string
     /**
      * the icon name, or %NULL.
      */
-    readonly iconName: string
+    iconName: string
     /**
      * the label (i.e. a short description) with a mnemonic, or %NULL.
      */
-    readonly label: string
+    label: string
     /**
      * the accelerator, in the format understood by gtk_accelerator_parse().
      *   Or %NULL.
      */
-    readonly accel: string
+    accel: string
     /**
      * the tooltip (i.e. a long description), or %NULL.
      */
-    readonly tooltip: string
+    tooltip: string
     static name: string
 }
 abstract class ActionInfoStoreClass {
     /* Fields of Amtk-5.Amtk.ActionInfoStoreClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class ActionInfoStorePrivate {
@@ -2208,8 +2403,8 @@ class ActionInfoStorePrivate {
 }
 abstract class ApplicationWindowClass {
     /* Fields of Amtk-5.Amtk.ApplicationWindowClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class ApplicationWindowPrivate {
@@ -2217,8 +2412,8 @@ class ApplicationWindowPrivate {
 }
 abstract class FactoryClass {
     /* Fields of Amtk-5.Amtk.FactoryClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class FactoryPrivate {
@@ -2226,10 +2421,10 @@ class FactoryPrivate {
 }
 abstract class MenuShellClass {
     /* Fields of Amtk-5.Amtk.MenuShellClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly menuItemSelected: (amtkMenuShell: MenuShell, menuItem: Gtk.MenuItem) => void
-    readonly menuItemDeselected: (amtkMenuShell: MenuShell, menuItem: Gtk.MenuItem) => void
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    menuItemSelected: (amtkMenuShell: MenuShell, menuItem: Gtk.MenuItem) => void
+    menuItemDeselected: (amtkMenuShell: MenuShell, menuItem: Gtk.MenuItem) => void
+    padding: object[]
     static name: string
 }
 class MenuShellPrivate {

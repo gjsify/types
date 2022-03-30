@@ -41,29 +41,30 @@ interface GLDisplayEGL_ConstructProps extends GstGL.GLDisplay_ConstructProps {
 }
 class GLDisplayEGL {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstGL-1.0.GstGL.GLDisplay */
     addContext(context: GstGL.GLContext): boolean
     /**
      * It requires the display's object lock to be held.
+     * @param otherContext other #GstGLContext to share resources with.
      */
     createContext(otherContext: GstGL.GLContext): [ /* returnType */ boolean, /* pContext */ GstGL.GLContext ]
     createWindow(): GstGL.GLWindow
@@ -72,12 +73,15 @@ class GLDisplayEGL {
      * application and elements to request a specific set of OpenGL API's based on
      * what they support.  See gst_gl_context_get_gl_api() for the retrieving the
      * API supported by a #GstGLContext.
+     * @param glApi a #GstGLAPI to filter with
      */
     filterGlApi(glApi: GstGL.GLAPI): void
     /**
      * Execute `compare_func` over the list of windows stored by `display`.  The
      * first argument to `compare_func` is the #GstGLWindow being checked and the
      * second argument is `data`.
+     * @param data some data to pass to `compare_func`
+     * @param compareFunc a comparison function to run
      */
     findWindow(data: object | null, compareFunc: GLib.CompareFunc): GstGL.GLWindow
     /**
@@ -90,6 +94,7 @@ class GLDisplayEGL {
     getHandleType(): GstGL.GLDisplayType
     /**
      * Must be called with the object lock held.
+     * @param context the #GstGLContext to remove
      */
     removeContext(context: GstGL.GLContext): void
     removeWindow(window: GstGL.GLWindow): boolean
@@ -97,6 +102,8 @@ class GLDisplayEGL {
      * Execute `compare_func` over the list of windows stored by `display`.  The
      * first argument to `compare_func` is the #GstGLWindow being checked and the
      * second argument is `data`.
+     * @param data some data to pass to `compare_func`
+     * @param compareFunc a comparison function to run
      */
     retrieveWindow(data: object | null, compareFunc: GLib.CompareFunc): GstGL.GLWindow
     /* Methods of Gst-1.0.Gst.Object */
@@ -106,6 +113,7 @@ class GLDisplayEGL {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -113,11 +121,14 @@ class GLDisplayEGL {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -140,6 +151,10 @@ class GLDisplayEGL {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -165,6 +180,8 @@ class GLDisplayEGL {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -174,16 +191,19 @@ class GLDisplayEGL {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -199,17 +219,21 @@ class GLDisplayEGL {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -220,6 +244,7 @@ class GLDisplayEGL {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -227,11 +252,13 @@ class GLDisplayEGL {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -245,6 +272,7 @@ class GLDisplayEGL {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -298,6 +326,10 @@ class GLDisplayEGL {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -308,6 +340,12 @@ class GLDisplayEGL {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -331,6 +369,7 @@ class GLDisplayEGL {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -350,11 +389,14 @@ class GLDisplayEGL {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -362,6 +404,8 @@ class GLDisplayEGL {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -379,6 +423,7 @@ class GLDisplayEGL {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -424,6 +469,7 @@ class GLDisplayEGL {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -467,15 +513,20 @@ class GLDisplayEGL {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -516,6 +567,7 @@ class GLDisplayEGL {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -540,6 +592,7 @@ class GLDisplayEGL {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstGL-1.0.GstGL.GLDisplay */
@@ -547,6 +600,7 @@ class GLDisplayEGL {
      * Overrides the `GstGLContext` creation mechanism.
      * It can be called in any thread and it is emitted with
      * display's object lock held.
+     * @param context other context to share resources with.
      */
     connect(sigName: "create-context", callback: ((context: GstGL.GLContext) => GstGL.GLContext)): number
     on(sigName: "create-context", callback: (context: GstGL.GLContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -558,6 +612,8 @@ class GLDisplayEGL {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -593,6 +649,7 @@ class GLDisplayEGL {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -619,12 +676,15 @@ class GLDisplayEGL {
      * 
      * This function will return the same value for multiple calls with the same
      * `display`.
+     * @param display an existing #GstGLDisplay
      */
     static fromGlDisplay(display: GstGL.GLDisplay): GLDisplayEGL
     /**
      * Attempts to create a new `EGLDisplay` from `display`.  If `type` is
      * %GST_GL_DISPLAY_TYPE_ANY, then `display` must be 0. `type` must not be
      * %GST_GL_DISPLAY_TYPE_NONE.
+     * @param type a #GstGLDisplayType
+     * @param display pointer to a display (or 0)
      */
     static getFromNative(type: GstGL.GLDisplayType, display: number): object | null
     static $gtype: GObject.Type
@@ -633,29 +693,30 @@ interface GLDisplayEGLDevice_ConstructProps extends GstGL.GLDisplay_ConstructPro
 }
 class GLDisplayEGLDevice {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstGL-1.0.GstGL.GLDisplay */
     addContext(context: GstGL.GLContext): boolean
     /**
      * It requires the display's object lock to be held.
+     * @param otherContext other #GstGLContext to share resources with.
      */
     createContext(otherContext: GstGL.GLContext): [ /* returnType */ boolean, /* pContext */ GstGL.GLContext ]
     createWindow(): GstGL.GLWindow
@@ -664,12 +725,15 @@ class GLDisplayEGLDevice {
      * application and elements to request a specific set of OpenGL API's based on
      * what they support.  See gst_gl_context_get_gl_api() for the retrieving the
      * API supported by a #GstGLContext.
+     * @param glApi a #GstGLAPI to filter with
      */
     filterGlApi(glApi: GstGL.GLAPI): void
     /**
      * Execute `compare_func` over the list of windows stored by `display`.  The
      * first argument to `compare_func` is the #GstGLWindow being checked and the
      * second argument is `data`.
+     * @param data some data to pass to `compare_func`
+     * @param compareFunc a comparison function to run
      */
     findWindow(data: object | null, compareFunc: GLib.CompareFunc): GstGL.GLWindow
     /**
@@ -682,6 +746,7 @@ class GLDisplayEGLDevice {
     getHandleType(): GstGL.GLDisplayType
     /**
      * Must be called with the object lock held.
+     * @param context the #GstGLContext to remove
      */
     removeContext(context: GstGL.GLContext): void
     removeWindow(window: GstGL.GLWindow): boolean
@@ -689,6 +754,8 @@ class GLDisplayEGLDevice {
      * Execute `compare_func` over the list of windows stored by `display`.  The
      * first argument to `compare_func` is the #GstGLWindow being checked and the
      * second argument is `data`.
+     * @param data some data to pass to `compare_func`
+     * @param compareFunc a comparison function to run
      */
     retrieveWindow(data: object | null, compareFunc: GLib.CompareFunc): GstGL.GLWindow
     /* Methods of Gst-1.0.Gst.Object */
@@ -698,6 +765,7 @@ class GLDisplayEGLDevice {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -705,11 +773,14 @@ class GLDisplayEGLDevice {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -732,6 +803,10 @@ class GLDisplayEGLDevice {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -757,6 +832,8 @@ class GLDisplayEGLDevice {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -766,16 +843,19 @@ class GLDisplayEGLDevice {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -791,17 +871,21 @@ class GLDisplayEGLDevice {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -812,6 +896,7 @@ class GLDisplayEGLDevice {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -819,11 +904,13 @@ class GLDisplayEGLDevice {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -837,6 +924,7 @@ class GLDisplayEGLDevice {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -890,6 +978,10 @@ class GLDisplayEGLDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -900,6 +992,12 @@ class GLDisplayEGLDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -923,6 +1021,7 @@ class GLDisplayEGLDevice {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -942,11 +1041,14 @@ class GLDisplayEGLDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -954,6 +1056,8 @@ class GLDisplayEGLDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -971,6 +1075,7 @@ class GLDisplayEGLDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1016,6 +1121,7 @@ class GLDisplayEGLDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1059,15 +1165,20 @@ class GLDisplayEGLDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1108,6 +1219,7 @@ class GLDisplayEGLDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1132,6 +1244,7 @@ class GLDisplayEGLDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstGL-1.0.GstGL.GLDisplay */
@@ -1139,6 +1252,7 @@ class GLDisplayEGLDevice {
      * Overrides the `GstGLContext` creation mechanism.
      * It can be called in any thread and it is emitted with
      * display's object lock held.
+     * @param context other context to share resources with.
      */
     connect(sigName: "create-context", callback: ((context: GstGL.GLContext) => GstGL.GLContext)): number
     on(sigName: "create-context", callback: (context: GstGL.GLContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -1150,6 +1264,8 @@ class GLDisplayEGLDevice {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1185,6 +1301,7 @@ class GLDisplayEGLDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1212,57 +1329,57 @@ interface GLMemoryEGLAllocator_ConstructProps extends GstGL.GLMemoryAllocator_Co
 }
 class GLMemoryEGLAllocator {
     /* Fields of Gst-1.0.Gst.Allocator */
-    readonly object: Gst.Object
-    readonly memType: string
+    object: Gst.Object
+    memType: string
     /**
      * the implementation of the GstMemoryMapFunction
      */
-    readonly memMap: Gst.MemoryMapFunction
+    memMap: Gst.MemoryMapFunction
     /**
      * the implementation of the GstMemoryUnmapFunction
      */
-    readonly memUnmap: Gst.MemoryUnmapFunction
+    memUnmap: Gst.MemoryUnmapFunction
     /**
      * the implementation of the GstMemoryCopyFunction
      */
-    readonly memCopy: Gst.MemoryCopyFunction
+    memCopy: Gst.MemoryCopyFunction
     /**
      * the implementation of the GstMemoryShareFunction
      */
-    readonly memShare: Gst.MemoryShareFunction
+    memShare: Gst.MemoryShareFunction
     /**
      * the implementation of the GstMemoryIsSpanFunction
      */
-    readonly memIsSpan: Gst.MemoryIsSpanFunction
+    memIsSpan: Gst.MemoryIsSpanFunction
     /**
      * the implementation of the GstMemoryMapFullFunction.
      *      Will be used instead of `mem_map` if present. (Since: 1.6)
      */
-    readonly memMapFull: Gst.MemoryMapFullFunction
+    memMapFull: Gst.MemoryMapFullFunction
     /**
      * the implementation of the GstMemoryUnmapFullFunction.
      *      Will be used instead of `mem_unmap` if present. (Since: 1.6)
      */
-    readonly memUnmapFull: Gst.MemoryUnmapFullFunction
+    memUnmapFull: Gst.MemoryUnmapFullFunction
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Allocator */
     /**
      * Use `allocator` to allocate a new memory block with memory that is at least
@@ -1280,10 +1397,13 @@ class GLMemoryEGLAllocator {
      * The alignment in `params` is given as a bitmask so that `align` + 1 equals
      * the amount of bytes to align to. For example, to align to 8 bytes,
      * use an alignment of 7.
+     * @param size size of the visible memory area
+     * @param params optional parameters
      */
     alloc(size: number, params?: Gst.AllocationParams | null): Gst.Memory | null
     /**
      * Free `memory` that was previously allocated with gst_allocator_alloc().
+     * @param memory the memory to free
      */
     free(memory: Gst.Memory): void
     /**
@@ -1297,6 +1417,7 @@ class GLMemoryEGLAllocator {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1304,11 +1425,14 @@ class GLMemoryEGLAllocator {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1331,6 +1455,10 @@ class GLMemoryEGLAllocator {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1356,6 +1484,8 @@ class GLMemoryEGLAllocator {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1365,16 +1495,19 @@ class GLMemoryEGLAllocator {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -1390,17 +1523,21 @@ class GLMemoryEGLAllocator {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -1411,6 +1548,7 @@ class GLMemoryEGLAllocator {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -1418,11 +1556,13 @@ class GLMemoryEGLAllocator {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1436,6 +1576,7 @@ class GLMemoryEGLAllocator {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1489,6 +1630,10 @@ class GLMemoryEGLAllocator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1499,6 +1644,12 @@ class GLMemoryEGLAllocator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1522,6 +1673,7 @@ class GLMemoryEGLAllocator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1541,11 +1693,14 @@ class GLMemoryEGLAllocator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1553,6 +1708,8 @@ class GLMemoryEGLAllocator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1570,6 +1727,7 @@ class GLMemoryEGLAllocator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1615,6 +1773,7 @@ class GLMemoryEGLAllocator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1658,15 +1817,20 @@ class GLMemoryEGLAllocator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1707,6 +1871,7 @@ class GLMemoryEGLAllocator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1731,6 +1896,7 @@ class GLMemoryEGLAllocator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -1738,6 +1904,8 @@ class GLMemoryEGLAllocator {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1773,6 +1941,7 @@ class GLMemoryEGLAllocator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1806,6 +1975,11 @@ class EGLImage {
      * one for each plane, each EGL image with a single-channel R format.
      * With NV12, two EGL images are created, one with R format, one
      * with RG format etc.
+     * @param context a #GstGLContext (must be an EGL context)
+     * @param dmabuf the DMA-Buf file descriptor
+     * @param inInfo the #GstVideoInfo in `dmabuf`
+     * @param plane the plane in `in_info` to create and #GstEGLImage for
+     * @param offset the byte-offset in the data
      */
     static fromDmabuf(context: GstGL.GLContext, dmabuf: number, inInfo: GstVideo.VideoInfo, plane: number, offset: number): EGLImage
     /**
@@ -1818,6 +1992,10 @@ class EGLImage {
      * Another notable difference to gst_egl_image_from_dmabuf()
      * is that this function creates one EGL image for all planes, not one for
      * a single plane.
+     * @param context a #GstGLContext (must be an EGL context)
+     * @param fd Array of DMABuf file descriptors
+     * @param offset Array of offsets, relative to the DMABuf
+     * @param inInfo the #GstVideoInfo
      */
     static fromDmabufDirect(context: GstGL.GLContext, fd: number, offset: number, inInfo: GstVideo.VideoInfo): EGLImage
     /**
@@ -1830,20 +2008,25 @@ class EGLImage {
      * Another notable difference to gst_egl_image_from_dmabuf()
      * is that this function creates one EGL image for all planes, not one for
      * a single plane.
+     * @param context a #GstGLContext (must be an EGL context)
+     * @param fd Array of DMABuf file descriptors
+     * @param offset Array of offsets, relative to the DMABuf
+     * @param inInfo the #GstVideoInfo
+     * @param target GL texture target this GstEGLImage is intended for
      */
     static fromDmabufDirectTarget(context: GstGL.GLContext, fd: number, offset: number, inInfo: GstVideo.VideoInfo, target: GstGL.GLTextureTarget): EGLImage
     static fromTexture(context: GstGL.GLContext, glMem: GstGL.GLMemory, attribs: number): EGLImage
 }
 abstract class GLDisplayEGLClass {
     /* Fields of GstGLEGL-1.0.GstGLEGL.GLDisplayEGLClass */
-    readonly objectClass: GstGL.GLDisplayClass
-    readonly padding: object[]
+    objectClass: GstGL.GLDisplayClass
+    padding: object[]
     static name: string
 }
 abstract class GLDisplayEGLDeviceClass {
     /* Fields of GstGLEGL-1.0.GstGLEGL.GLDisplayEGLDeviceClass */
-    readonly objectClass: GstGL.GLDisplayClass
-    readonly padding: object[]
+    objectClass: GstGL.GLDisplayClass
+    padding: object[]
     static name: string
 }
 class GLMemoryEGL {

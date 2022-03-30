@@ -62,6 +62,7 @@ enum RRRotation {
     REFLECT_X,
     REFLECT_Y,
 }
+const DESKTOP_PLATFORM_VERSION: number
 const RR_CONNECTOR_TYPE_PANEL: string
 function desktopThumbnailIsValid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: number): boolean
 function desktopThumbnailPathForUri(uri: string, size: DesktopThumbnailSize): string
@@ -71,6 +72,7 @@ function getCountryFromLocale(locale: string, translation?: string | null): stri
 function getInputSourceFromLocale(locale: string): [ /* returnType */ boolean, /* type */ string, /* id */ string ]
 function getLanguageFromCode(code: string, translation?: string | null): string
 function getLanguageFromLocale(locale: string, translation?: string | null): string
+function getPlatformVersion(): number
 function getTranslatedModifier(modifier: string, translation?: string | null): string
 function languageHasTranslations(code: string): boolean
 function normalizeLocale(locale: string): string
@@ -85,17 +87,25 @@ interface BG_ConstructProps extends GObject.Object_ConstructProps {
 }
 class BG {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.BG */
     changesWithTime(): boolean
     /**
      * Creates a thumbnail for a certain frame, where 'frame' is somewhat
      * vaguely defined as 'suitable point to show while single-stepping
      * through the slideshow'.
+     * @param factory 
+     * @param screen 
+     * @param destWidth 
+     * @param destHeight 
+     * @param frameNum 
      */
     createFrameThumbnail(factory: DesktopThumbnailFactory, screen: Gdk.Screen, destWidth: number, destHeight: number, frameNum: number): GdkPixbuf.Pixbuf
     /**
      * Create a surface that can be set as background for `window`.
+     * @param window 
+     * @param width 
+     * @param height 
      */
     createSurface(window: Gdk.Window, width: number, height: number): cairo.Surface
     createThumbnail(factory: DesktopThumbnailFactory, screen: Gdk.Screen, destWidth: number, destHeight: number): GdkPixbuf.Pixbuf
@@ -146,6 +156,10 @@ class BG {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -156,6 +170,12 @@ class BG {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -179,6 +199,7 @@ class BG {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -198,11 +219,14 @@ class BG {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -210,6 +234,8 @@ class BG {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -227,6 +253,7 @@ class BG {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -272,6 +299,7 @@ class BG {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -315,15 +343,20 @@ class BG {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -364,6 +397,7 @@ class BG {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -398,6 +432,7 @@ class BG {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GnomeDesktop-3.0.GnomeDesktop.BG */
@@ -440,6 +475,7 @@ class BG {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -474,8 +510,19 @@ interface BGCrossfade_ConstructProps extends GObject.Object_ConstructProps {
     width?: number
 }
 class BGCrossfade {
+    /* Properties of GnomeDesktop-3.0.GnomeDesktop.BGCrossfade */
+    /**
+     * When a crossfade is running, this is height of the fading
+     * surface.
+     */
+    readonly height: number
+    /**
+     * When a crossfade is running, this is width of the fading
+     * surface.
+     */
+    readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.BGCrossfade */
     /**
      * This function reveals whether or not `fade` is currently
@@ -487,12 +534,14 @@ class BGCrossfade {
      * Before initiating a crossfade with gnome_bg_crossfade_start()
      * a start and end surface have to be set.  This function sets
      * the surface shown at the end of the crossfade effect.
+     * @param surface The cairo surface to fade to
      */
     setEndSurface(surface: cairo.Surface): boolean
     /**
      * Before initiating a crossfade with gnome_bg_crossfade_start()
      * a start and end surface have to be set.  This function sets
      * the surface shown at the beginning of the crossfade effect.
+     * @param surface The cairo surface to fade from
      */
     setStartSurface(surface: cairo.Surface): boolean
     /**
@@ -501,6 +550,7 @@ class BGCrossfade {
      * gnome_bg_crossfade_start() and gnome_bg_crossfade_end() need to
      * be called. If animations are disabled, the crossfade is skipped,
      * and the window background is set immediately to the end surface.
+     * @param window The #GdkWindow to draw crossfade on
      */
     start(window: Gdk.Window): void
     /**
@@ -544,6 +594,10 @@ class BGCrossfade {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -554,6 +608,12 @@ class BGCrossfade {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -577,6 +637,7 @@ class BGCrossfade {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -596,11 +657,14 @@ class BGCrossfade {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -608,6 +672,8 @@ class BGCrossfade {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -625,6 +691,7 @@ class BGCrossfade {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -670,6 +737,7 @@ class BGCrossfade {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -713,15 +781,20 @@ class BGCrossfade {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -762,6 +835,7 @@ class BGCrossfade {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -796,6 +870,7 @@ class BGCrossfade {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GnomeDesktop-3.0.GnomeDesktop.BGCrossfade */
@@ -803,6 +878,7 @@ class BGCrossfade {
      * When a crossfade finishes, `window` will have a copy
      * of the end surface as its background, and this signal will
      * get emitted.
+     * @param window the #GdkWindow the crossfade happend on.
      */
     connect(sigName: "finished", callback: ((window: GObject.Object) => void)): number
     on(sigName: "finished", callback: (window: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -838,12 +914,23 @@ class BGCrossfade {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -864,14 +951,17 @@ interface BGSlideShow_ConstructProps extends GObject.Object_ConstructProps {
 }
 class BGSlideShow {
     /* Properties of GnomeDesktop-3.0.GnomeDesktop.BGSlideShow */
+    readonly file: Gio.File
     readonly hasMultipleSizes: boolean
     readonly startTime: number
     readonly totalDuration: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.BGSlideShow */
     /**
      * Returns the current slides progress.
+     * @param width monitor width
+     * @param height monitor height
      */
     getCurrentSlide(width: number, height: number): [ /* progress */ number | null, /* duration */ number | null, /* isFixed */ boolean | null, /* file1 */ string | null, /* file2 */ string | null ]
     /**
@@ -884,6 +974,9 @@ class BGSlideShow {
     getNumSlides(): number
     /**
      * Retrieves slide by frame number
+     * @param frameNumber frame number
+     * @param width monitor width
+     * @param height monitor height
      */
     getSlide(frameNumber: number, width: number, height: number): [ /* returnType */ boolean, /* progress */ number | null, /* duration */ number | null, /* isFixed */ boolean | null, /* file1 */ string | null, /* file2 */ string | null ]
     /**
@@ -900,6 +993,8 @@ class BGSlideShow {
     load(): boolean
     /**
      * Tries to load the slide show asynchronously.
+     * @param cancellable a #GCancellable
+     * @param callback the callback
      */
     loadAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -937,6 +1032,10 @@ class BGSlideShow {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -947,6 +1046,12 @@ class BGSlideShow {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -970,6 +1075,7 @@ class BGSlideShow {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -989,11 +1095,14 @@ class BGSlideShow {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1001,6 +1110,8 @@ class BGSlideShow {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1018,6 +1129,7 @@ class BGSlideShow {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1063,6 +1175,7 @@ class BGSlideShow {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1106,15 +1219,20 @@ class BGSlideShow {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1155,6 +1273,7 @@ class BGSlideShow {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1189,6 +1308,7 @@ class BGSlideShow {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1220,12 +1340,18 @@ class BGSlideShow {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::has-multiple-sizes", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-multiple-sizes", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::has-multiple-sizes", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1259,13 +1385,16 @@ interface DesktopThumbnailFactory_ConstructProps extends GObject.Object_Construc
 }
 class DesktopThumbnailFactory {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.DesktopThumbnailFactory */
     /**
      * Returns TRUE if this GnomeDesktopThumbnailFactory can (at least try) to thumbnail
      * this file. Thumbnails or files with failed thumbnails won't be thumbnailed.
      * 
      * Usage of this function is threadsafe and does blocking I/O.
+     * @param uri the uri of a file
+     * @param mimeType the mime type of the file
+     * @param mtime the mtime of the file
      */
     canThumbnail(uri: string, mimeType: string, mtime: number): boolean
     /**
@@ -1273,16 +1402,23 @@ class DesktopThumbnailFactory {
      * to re-thumbnail the file later.
      * 
      * Usage of this function is threadsafe and does blocking I/O.
+     * @param uri the uri of a file
+     * @param mtime the modification time of the file
      */
     createFailedThumbnail(uri: string, mtime: number): void
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_create_failed_thumbnail()
      * 
      * Since 42.0
+     * @param uri the uri of a file
+     * @param originalMtime the modification time of the original file
+     * @param cancellable a Cancellable object
+     * @param callback a function that will be called when the task has ended
      */
     createFailedThumbnailAsync(uri: string, originalMtime: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Since 42.0
+     * @param result the result of the operation
      */
     createFailedThumbnailFinish(result: Gio.AsyncResult): void
     /**
@@ -1290,12 +1426,18 @@ class DesktopThumbnailFactory {
      * it returns a pixbuf that can be used as a thumbnail.
      * 
      * Usage of this function is threadsafe and does blocking I/O.
+     * @param uri the uri of a file
+     * @param mimeType the mime type of the file
      */
     generateThumbnail(uri: string, mimeType: string): GdkPixbuf.Pixbuf
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_generate_thumbnail()
      * 
      * Since 42.0
+     * @param uri the URI of a file
+     * @param mimeType the MIME type of the file
+     * @param cancellable a Cancellable object
+     * @param callback a function that will be called when the task has ended
      */
     generateThumbnailAsync(uri: string, mimeType: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     generateThumbnailFinish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf
@@ -1305,12 +1447,16 @@ class DesktopThumbnailFactory {
      * thumbnail e.g. broken images several times.
      * 
      * Usage of this function is threadsafe and does blocking I/O.
+     * @param uri the uri of a file
+     * @param mtime the mtime of the file
      */
     hasValidFailedThumbnail(uri: string, mtime: number): boolean
     /**
      * Tries to locate an existing thumbnail for the file specified.
      * 
      * Usage of this function is threadsafe and does blocking I/O.
+     * @param uri the uri of a file
+     * @param mtime the mtime of the file
      */
     lookup(uri: string, mtime: number): string
     /**
@@ -1318,16 +1464,25 @@ class DesktopThumbnailFactory {
      * failed thumbnail is written.
      * 
      * Usage of this function is threadsafe and does blocking I/O.
+     * @param thumbnail the thumbnail as a pixbuf
+     * @param uri the uri of a file
+     * @param originalMtime the modification time of the original file
      */
     saveThumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, originalMtime: number): void
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_save_thumbnail()
      * 
      * Since 42.0
+     * @param thumbnail the thumbnail as a pixbuf
+     * @param uri the uri of a file
+     * @param originalMtime the modification time of the original file
+     * @param cancellable a Cancellable object
+     * @param callback a function that will be called when the task has ended
      */
     saveThumbnailAsync(thumbnail: GdkPixbuf.Pixbuf, uri: string, originalMtime: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Since 42.0
+     * @param result the result of the operation
      */
     saveThumbnailFinish(result: Gio.AsyncResult): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1365,6 +1520,10 @@ class DesktopThumbnailFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1375,6 +1534,12 @@ class DesktopThumbnailFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1398,6 +1563,7 @@ class DesktopThumbnailFactory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1417,11 +1583,14 @@ class DesktopThumbnailFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1429,6 +1598,8 @@ class DesktopThumbnailFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1446,6 +1617,7 @@ class DesktopThumbnailFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1491,6 +1663,7 @@ class DesktopThumbnailFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1534,15 +1707,20 @@ class DesktopThumbnailFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1583,6 +1761,7 @@ class DesktopThumbnailFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1617,6 +1796,7 @@ class DesktopThumbnailFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1648,6 +1828,7 @@ class DesktopThumbnailFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1672,7 +1853,7 @@ interface IdleMonitor_ConstructProps extends GObject.Object_ConstructProps {
 }
 class IdleMonitor {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.IdleMonitor */
     addIdleWatch(intervalMsec: number, callback: IdleMonitorWatchFunc | null): number
     addUserActiveWatch(callback: IdleMonitorWatchFunc | null): number
@@ -1681,6 +1862,7 @@ class IdleMonitor {
      * Removes an idle time watcher, previously added by
      * gnome_idle_monitor_add_idle_watch() or
      * gnome_idle_monitor_add_user_active_watch().
+     * @param id A watch ID
      */
     removeWatch(id: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1718,6 +1900,10 @@ class IdleMonitor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1728,6 +1914,12 @@ class IdleMonitor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1751,6 +1943,7 @@ class IdleMonitor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1770,11 +1963,14 @@ class IdleMonitor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1782,6 +1978,8 @@ class IdleMonitor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1799,6 +1997,7 @@ class IdleMonitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1844,6 +2043,7 @@ class IdleMonitor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1887,15 +2087,20 @@ class IdleMonitor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1936,6 +2141,7 @@ class IdleMonitor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1970,6 +2176,7 @@ class IdleMonitor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -2012,6 +2219,7 @@ class IdleMonitor {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -2043,6 +2251,7 @@ class IdleMonitor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2065,6 +2274,9 @@ class IdleMonitor {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -2073,10 +2285,11 @@ interface PnpIds_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PnpIds {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.PnpIds */
     /**
      * Find the full manufacturer name for the given PNP ID.
+     * @param pnpId the PNP ID to look for
      */
     getPnpId(pnpId: string): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -2114,6 +2327,10 @@ class PnpIds {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2124,6 +2341,12 @@ class PnpIds {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2147,6 +2370,7 @@ class PnpIds {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2166,11 +2390,14 @@ class PnpIds {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2178,6 +2405,8 @@ class PnpIds {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2195,6 +2424,7 @@ class PnpIds {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2240,6 +2470,7 @@ class PnpIds {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2283,15 +2514,20 @@ class PnpIds {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2332,6 +2568,7 @@ class PnpIds {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2366,6 +2603,7 @@ class PnpIds {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2397,6 +2635,7 @@ class PnpIds {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2422,8 +2661,10 @@ interface RRConfig_ConstructProps extends GObject.Object_ConstructProps {
     screen?: RRScreen
 }
 class RRConfig {
+    /* Properties of GnomeDesktop-3.0.GnomeDesktop.RRConfig */
+    readonly screen: RRScreen
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.RRConfig */
     applicable(screen: RRScreen): boolean
     apply(screen: RRScreen): boolean
@@ -2471,6 +2712,10 @@ class RRConfig {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2481,6 +2726,12 @@ class RRConfig {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2504,6 +2755,7 @@ class RRConfig {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2523,11 +2775,14 @@ class RRConfig {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2535,6 +2790,8 @@ class RRConfig {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2552,6 +2809,7 @@ class RRConfig {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2597,6 +2855,7 @@ class RRConfig {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2640,15 +2899,20 @@ class RRConfig {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2689,6 +2953,7 @@ class RRConfig {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2723,6 +2988,7 @@ class RRConfig {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2754,12 +3020,18 @@ class RRConfig {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::screen", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::screen", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::screen", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::screen", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::screen", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2778,7 +3050,7 @@ interface RROutputInfo_ConstructProps extends GObject.Object_ConstructProps {
 }
 class RROutputInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.RROutputInfo */
     getAspectRatio(): number
     getDisplayName(): string
@@ -2804,6 +3076,10 @@ class RROutputInfo {
     /**
      * Set the geometry for the monitor connected to the specified output.
      * If the monitor is a tiled monitor, it sets the geometry for the complete monitor.
+     * @param x x offset for monitor
+     * @param y y offset for monitor
+     * @param width monitor width
+     * @param height monitor height
      */
     setGeometry(x: number, y: number, width: number, height: number): void
     setPrimary(primary: boolean): void
@@ -2846,6 +3122,10 @@ class RROutputInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2856,6 +3136,12 @@ class RROutputInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2879,6 +3165,7 @@ class RROutputInfo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2898,11 +3185,14 @@ class RROutputInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2910,6 +3200,8 @@ class RROutputInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2927,6 +3219,7 @@ class RROutputInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2972,6 +3265,7 @@ class RROutputInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3015,15 +3309,20 @@ class RROutputInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3064,6 +3363,7 @@ class RROutputInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3098,6 +3398,7 @@ class RROutputInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3129,6 +3430,7 @@ class RROutputInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3155,8 +3457,9 @@ interface RRScreen_ConstructProps extends GObject.Object_ConstructProps {
 class RRScreen {
     /* Properties of GnomeDesktop-3.0.GnomeDesktop.RRScreen */
     dpmsMode: RRDpmsModeType
+    readonly gdkScreen: Gdk.Screen
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.RRScreen */
     getCrtcById(id: number): RRCrtc
     getDpmsMode(): [ /* returnType */ boolean, /* mode */ RRDpmsMode ]
@@ -3189,6 +3492,7 @@ class RRScreen {
     refresh(): boolean
     /**
      * This method also disables the DPMS timeouts.
+     * @param mode 
      */
     setDpmsMode(mode: RRDpmsMode): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3226,6 +3530,10 @@ class RRScreen {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3236,6 +3544,12 @@ class RRScreen {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3259,6 +3573,7 @@ class RRScreen {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3278,11 +3593,14 @@ class RRScreen {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3290,6 +3608,8 @@ class RRScreen {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3307,6 +3627,7 @@ class RRScreen {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3352,6 +3673,7 @@ class RRScreen {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3395,15 +3717,20 @@ class RRScreen {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3444,6 +3771,7 @@ class RRScreen {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3478,6 +3806,7 @@ class RRScreen {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -3518,16 +3847,21 @@ class RRScreen {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param ioPriority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     initAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     initFinish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     newFinish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -3570,6 +3904,7 @@ class RRScreen {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GnomeDesktop-3.0.GnomeDesktop.RRScreen */
@@ -3592,6 +3927,7 @@ class RRScreen {
      * Therefore, deal with changes to the `output` right in your signal
      * handler, instead of keeping the `output` reference for an async or
      * idle function.
+     * @param output the #GnomeRROutput that was connected
      */
     connect(sigName: "output-connected", callback: ((output?: object | null) => void)): number
     on(sigName: "output-connected", callback: (output?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -3611,6 +3947,7 @@ class RRScreen {
      * Therefore, deal with changes to the `output` right in your signal
      * handler, instead of keeping the `output` reference for an async or
      * idle function.
+     * @param output the #GnomeRROutput that was disconnected
      */
     connect(sigName: "output-disconnected", callback: ((output?: object | null) => void)): number
     on(sigName: "output-disconnected", callback: (output?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -3646,6 +3983,7 @@ class RRScreen {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3657,6 +3995,11 @@ class RRScreen {
     on(sigName: "notify::dpms-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::dpms-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::dpms-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::gdk-screen", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::gdk-screen", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::gdk-screen", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::gdk-screen", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::gdk-screen", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3678,12 +4021,21 @@ class RRScreen {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param objectType a #GType supporting #GAsyncInitable.
+     * @param nParameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param ioPriority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newvAsync(objectType: GObject.Type, nParameters: number, parameters: GObject.Parameter, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -3712,7 +4064,7 @@ class WallClock {
      */
     readonly timezone: GLib.TimeZone
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.WallClock */
     /**
      * Returns the string representing the current time of this clock
@@ -3759,6 +4111,10 @@ class WallClock {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3769,6 +4125,12 @@ class WallClock {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3792,6 +4154,7 @@ class WallClock {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3811,11 +4174,14 @@ class WallClock {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3823,6 +4189,8 @@ class WallClock {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3840,6 +4208,7 @@ class WallClock {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3885,6 +4254,7 @@ class WallClock {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3928,15 +4298,20 @@ class WallClock {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3977,6 +4352,7 @@ class WallClock {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4011,6 +4387,7 @@ class WallClock {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4042,6 +4419,7 @@ class WallClock {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4081,7 +4459,7 @@ interface XkbInfo_ConstructProps extends GObject.Object_ConstructProps {
 }
 class XkbInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GnomeDesktop-3.0.GnomeDesktop.XkbInfo */
     descriptionForGroup(groupId: string): string
     descriptionForOption(groupId: string, id: string): string
@@ -4096,6 +4474,7 @@ class XkbInfo {
     /**
      * Returns a list of all languages supported by a layout, given by
      * `layout_id`.
+     * @param layoutId a layout identifier
      */
     getLanguagesForLayout(layoutId: string): string[]
     /**
@@ -4109,21 +4488,25 @@ class XkbInfo {
      * 
      * If the given layout doesn't exist the return value is %FALSE and
      * all the (out) parameters are set to %NULL.
+     * @param id layout's identifier about which to retrieve the info
      */
     getLayoutInfo(id: string): [ /* returnType */ boolean, /* displayName */ string | null, /* shortName */ string | null, /* xkbLayout */ string | null, /* xkbVariant */ string | null ]
     /**
      * Returns a list of all layout identifiers we know about for
      * `country_code`.
+     * @param countryCode an ISO 3166 code string
      */
     getLayoutsForCountry(countryCode: string): string[]
     /**
      * Returns a list of all layout identifiers we know about for
      * `language_code`.
+     * @param languageCode an ISO 639 code string
      */
     getLayoutsForLanguage(languageCode: string): string[]
     /**
      * Returns a list of all option identifiers we know about for group
      * `group_id`.
+     * @param groupId group's identifier about which to retrieve the options
      */
     getOptionsForGroup(groupId: string): string[]
     /* Methods of GObject-2.0.GObject.Object */
@@ -4161,6 +4544,10 @@ class XkbInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4171,6 +4558,12 @@ class XkbInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4194,6 +4587,7 @@ class XkbInfo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4213,11 +4607,14 @@ class XkbInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4225,6 +4622,8 @@ class XkbInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4242,6 +4641,7 @@ class XkbInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4287,6 +4687,7 @@ class XkbInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4330,15 +4731,20 @@ class XkbInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4379,6 +4785,7 @@ class XkbInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4413,6 +4820,7 @@ class XkbInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GnomeDesktop-3.0.GnomeDesktop.XkbInfo */
@@ -4450,6 +4858,7 @@ class XkbInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4475,8 +4884,8 @@ abstract class BGClass {
 }
 abstract class BGCrossfadeClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.BGCrossfadeClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly finished: (fade: BGCrossfade, window: Gdk.Window) => void
+    parentClass: GObject.ObjectClass
+    finished: (fade: BGCrossfade, window: Gdk.Window) => void
     static name: string
 }
 class BGCrossfadePrivate {
@@ -4484,7 +4893,7 @@ class BGCrossfadePrivate {
 }
 abstract class BGSlideShowClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.BGSlideShowClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class BGSlideShowPrivate {
@@ -4492,7 +4901,7 @@ class BGSlideShowPrivate {
 }
 abstract class DesktopThumbnailFactoryClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.DesktopThumbnailFactoryClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class DesktopThumbnailFactoryPrivate {
@@ -4500,7 +4909,7 @@ class DesktopThumbnailFactoryPrivate {
 }
 abstract class IdleMonitorClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.IdleMonitorClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class IdleMonitorPrivate {
@@ -4508,7 +4917,7 @@ class IdleMonitorPrivate {
 }
 abstract class PnpIdsClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.PnpIdsClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class PnpIdsPrivate {
@@ -4516,12 +4925,12 @@ class PnpIdsPrivate {
 }
 class RRCTM {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.RRCTM */
-    readonly matrix: number[]
+    matrix: number[]
     static name: string
 }
 abstract class RRConfigClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.RRConfigClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class RRConfigPrivate {
@@ -4584,7 +4993,7 @@ class RROutput {
 }
 abstract class RROutputInfoClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.RROutputInfoClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class RROutputInfoPrivate {
@@ -4592,10 +5001,10 @@ class RROutputInfoPrivate {
 }
 abstract class RRScreenClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.RRScreenClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly changed: (screen: RRScreen) => void
-    readonly outputConnected: (screen: RRScreen, output: RROutput) => void
-    readonly outputDisconnected: (screen: RRScreen, output: RROutput) => void
+    parentClass: GObject.ObjectClass
+    changed: (screen: RRScreen) => void
+    outputConnected: (screen: RRScreen, output: RROutput) => void
+    outputDisconnected: (screen: RRScreen, output: RROutput) => void
     static name: string
 }
 class RRScreenPrivate {
@@ -4603,7 +5012,7 @@ class RRScreenPrivate {
 }
 abstract class WallClockClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.WallClockClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class WallClockPrivate {
@@ -4611,7 +5020,7 @@ class WallClockPrivate {
 }
 abstract class XkbInfoClass {
     /* Fields of GnomeDesktop-3.0.GnomeDesktop.XkbInfoClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class XkbInfoPrivate {

@@ -4708,18 +4708,20 @@ interface AttrList_ConstructProps extends Serializable_ConstructProps {
 }
 class AttrList {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.AttrList */
     /**
      * Append an IBusAttribute to IBusAttrList, and increase reference.
+     * @param attr The IBusAttribute instance to be appended.
      */
     append(attr: Attribute): void
     /**
      * Returns #IBusAttribute at given index. Borrowed reference.
+     * @param index Index of the `attr_list`.
      */
     get(index: number): Attribute
     /* Methods of IBus-1.0.IBus.Serializable */
@@ -4730,11 +4732,13 @@ class AttrList {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -4747,6 +4751,8 @@ class AttrList {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -4794,6 +4800,10 @@ class AttrList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4804,6 +4814,12 @@ class AttrList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4827,6 +4843,7 @@ class AttrList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4846,11 +4863,14 @@ class AttrList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4858,6 +4878,8 @@ class AttrList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4875,6 +4897,7 @@ class AttrList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4920,6 +4943,7 @@ class AttrList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4963,15 +4987,20 @@ class AttrList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5012,6 +5041,7 @@ class AttrList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5046,6 +5076,7 @@ class AttrList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -5079,6 +5110,7 @@ class AttrList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5122,6 +5154,7 @@ class AttrList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AttrList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AttrList, pspec: GObject.ParamSpec) => void)): number
@@ -5144,11 +5177,11 @@ interface Attribute_ConstructProps extends Serializable_ConstructProps {
 }
 class Attribute {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Attribute */
     /**
      * Gets an enum of #IBusAttrType.
@@ -5177,11 +5210,13 @@ class Attribute {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -5194,6 +5229,8 @@ class Attribute {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -5241,6 +5278,10 @@ class Attribute {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5251,6 +5292,12 @@ class Attribute {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5274,6 +5321,7 @@ class Attribute {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5293,11 +5341,14 @@ class Attribute {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5305,6 +5356,8 @@ class Attribute {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5322,6 +5375,7 @@ class Attribute {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5367,6 +5421,7 @@ class Attribute {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5410,15 +5465,20 @@ class Attribute {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5459,6 +5519,7 @@ class Attribute {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5493,6 +5554,7 @@ class Attribute {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -5526,6 +5588,7 @@ class Attribute {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5569,6 +5632,7 @@ class Attribute {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Attribute, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Attribute, pspec: GObject.ParamSpec) => void)): number
@@ -5595,35 +5659,52 @@ interface Bus_ConstructProps extends Object_ConstructProps {
     connect_async?: boolean
 }
 class Bus {
+    /* Properties of IBus-1.0.IBus.Bus */
+    /**
+     * Whether the #IBusBus object should connect asynchronously to the bus.
+     */
+    readonly connect_async: boolean
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Bus */
     /**
      * Add a match rule to an #IBusBus synchronously.
+     * @param rule Match rule.
      */
     add_match(rule: string): boolean
     /**
      * Add a match rule to an #IBusBus asynchronously.
+     * @param rule Match rule.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     add_match_async(rule: string, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_add_match_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_add_match_async().
      */
     add_match_async_finish(res: Gio.AsyncResult): boolean
     /**
      * Create an input context for client synchronously.
+     * @param client_name Name of client.      "CreateInputContext" call is suceeded, %NULL otherwise.
      */
     create_input_context(client_name: string): InputContext
     /**
      * Create an input context for client asynchronously.
+     * @param client_name Name of client.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied.      It should not be %NULL.
      */
     create_input_context_async(client_name: string, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_create_input_context_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_create_input_context_async().
      */
     create_input_context_async_finish(res: Gio.AsyncResult): InputContext
     /**
@@ -5632,22 +5713,32 @@ class Bus {
     current_input_context(): string
     /**
      * Get the current focused input context asynchronously.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     current_input_context_async(timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_current_input_context_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_current_input_context_async().
      */
     current_input_context_async_finish(res: Gio.AsyncResult): string
     /**
      * Exit or restart ibus-daemon synchronously.
+     * @param restart Whether restarting the ibus.
      */
     exit(restart: boolean): boolean
     /**
      * Exit or restart ibus-daemon asynchronously.
+     * @param restart Whether restarting the ibus.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     exit_async(restart: boolean, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_exit_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_exit_async().
      */
     exit_async_finish(res: Gio.AsyncResult): boolean
     /**
@@ -5662,6 +5753,7 @@ class Bus {
      * Get engines by given names synchronously. If some engine names do not exist,
      * this function will simply ignore them, and return rest of engines.
      * TODO(penghuang): add asynchronous version
+     * @param names A %NULL-terminated array of names.
      */
     get_engines_by_names(names: string[]): EngineDesc[]
     /**
@@ -5670,34 +5762,50 @@ class Bus {
     get_global_engine(): EngineDesc
     /**
      * Get the description of current global engine asynchronously.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL      if you don't care about the result of the method invocation.
      */
     get_global_engine_async(timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_get_global_engine_async_finish().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_global_engine_async_finish().
      */
     get_global_engine_async_finish(res: Gio.AsyncResult): EngineDesc
     /**
      * Get org.freedesktop.DBus.Properties.
+     * @param property_name property name in org.freedesktop.DBus.Properties.Get
      */
     get_ibus_property(property_name: string): GLib.Variant
     /**
      * Get org.freedesktop.DBus.Properties asynchronously.
+     * @param property_name property name in org.freedesktop.DBus.Properties.Get
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     get_ibus_property_async(property_name: string, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_get_ibus_property_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_ibus_property_async().
      */
     get_ibus_property_async_finish(res: Gio.AsyncResult): GLib.Variant
     /**
      * Return the name owner synchronously.
+     * @param name Name.
      */
     get_name_owner(name: string): string
     /**
      * Return the name owner asynchronously.
+     * @param name Name.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     get_name_owner_async(name: string, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_get_name_owner_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_name_owner_async().
      */
     get_name_owner_async_finish(res: Gio.AsyncResult): string
     /**
@@ -5707,10 +5815,14 @@ class Bus {
     get_use_global_engine(): boolean
     /**
      * Check if the bus's "use_global_engine" option is enabled or not asynchronously.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     get_use_global_engine_async(timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_get_use_global_engine_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_use_global_engine_async().
      */
     get_use_global_engine_async_finish(res: Gio.AsyncResult): boolean
     /**
@@ -5719,10 +5831,14 @@ class Bus {
     get_use_sys_layout(): boolean
     /**
      * Check if the bus's "use_sys_layout" option is enabled or not asynchronously.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     get_use_sys_layout_async(timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_get_use_sys_layout_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_use_sys_layout_async().
      */
     get_use_sys_layout_async_finish(res: Gio.AsyncResult): boolean
     /**
@@ -5740,10 +5856,14 @@ class Bus {
     is_global_engine_enabled(): boolean
     /**
      * Check if the current global engine is enabled or not asynchronously.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     is_global_engine_enabled_async(timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_is_global_engine_enabled_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_is_global_engine_enabled_async().
      */
     is_global_engine_enabled_async_finish(res: Gio.AsyncResult): boolean
     /**
@@ -5752,10 +5872,14 @@ class Bus {
     list_active_engines(): EngineDesc[]
     /**
      * List active engines asynchronously.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL      if you don't care about the result of the method invocation.
      */
     list_active_engines_async(timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_list_active_engines_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_list_active_engines_async().
      */
     list_active_engines_async_finish(res: Gio.AsyncResult): EngineDesc[]
     /**
@@ -5764,10 +5888,14 @@ class Bus {
     list_engines(): EngineDesc[]
     /**
      * List engines asynchronously.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL      if you don't care about the result of the method invocation.
      */
     list_engines_async(timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_list_engines_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_list_engines_async().
      */
     list_engines_async_finish(res: Gio.AsyncResult): EngineDesc[]
     /**
@@ -5779,110 +5907,165 @@ class Bus {
     /**
      * Lists the unique bus names of connections currently queued for a bus name.
      * FIXME add an asynchronous version.
+     * @param name Name to be queried.
      */
     list_queued_owners(name: string): string[]
     /**
      * Checks whether the name has owner synchronously.
+     * @param name Name to be checked.
      */
     name_has_owner(name: string): boolean
     /**
      * Checks whether the name has owner asynchronously.
+     * @param name Name to be checked.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     name_has_owner_async(name: string, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_name_has_owner_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_name_has_owner_async().
      */
     name_has_owner_async_finish(res: Gio.AsyncResult): boolean
     /**
      * Start bus components by engine names synchronously.
+     * @param names A %NULL-terminated array of engine names.
      */
     preload_engines(names: string[]): boolean
     /**
      * Start bus components by engine names asynchronously.
+     * @param names A %NULL-terminated array of engine names.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     preload_engines_async(names: string[], timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_preload_engines_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_preload_engines_async().
      */
     preload_engines_async_finish(res: Gio.AsyncResult): boolean
     /**
      * Register a componet to an #IBusBus synchronously.
+     * @param component A input engine component.
      */
     register_component(component: Component): boolean
     /**
      * Register a componet to an #IBusBus asynchronously.
+     * @param component A input engine component.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     register_component_async(component: Component, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_register_component_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_register_component_async().
      */
     register_component_async_finish(res: Gio.AsyncResult): boolean
     /**
      * Release a name to IBus daemon synchronously.
+     * @param name Name to be released.
      */
     release_name(name: string): number
     /**
      * Release a name to IBus daemon asynchronously.
+     * @param name Name to be released.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     release_name_async(name: string, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_release_name_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_release_name_async().
      */
     release_name_async_finish(res: Gio.AsyncResult): number
     /**
      * Remove a match rule to an #IBusBus synchronously.
+     * @param rule Match rule.
      */
     remove_match(rule: string): boolean
     /**
      * Remove a match rule to an IBusBus asynchronously.
+     * @param rule Match rule.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     remove_match_async(rule: string, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_remove_match_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_remove_match_async().
      */
     remove_match_async_finish(res: Gio.AsyncResult): boolean
     /**
      * Request a name from IBus daemon synchronously.
+     * @param name Name to be requested.
+     * @param flags IBusBusNameFlag.
      */
     request_name(name: string, flags: number): number
     /**
      * Request a name from IBus daemon asynchronously.
+     * @param name Name to be requested.
+     * @param flags Flags (FixMe).
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL      if you don't care about the result of the method invocation.
      */
     request_name_async(name: string, flags: number, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_request_name_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_request_name_async().
      */
     request_name_async_finish(res: Gio.AsyncResult): number
     /**
      * Set current global engine synchronously.
+     * @param global_engine A new engine name.
      */
     set_global_engine(global_engine: string): boolean
     /**
      * Set current global engine asynchronously.
+     * @param global_engine A new engine name.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     set_global_engine_async(global_engine: string, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_set_global_engine_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_set_global_engine_async().
      */
     set_global_engine_async_finish(res: Gio.AsyncResult): boolean
     /**
      * Set org.freedesktop.DBus.Properties.
+     * @param property_name property name in org.freedesktop.DBus.Properties.Set
+     * @param value value in org.freedesktop.DBus.Properties.Set
      */
     set_ibus_property(property_name: string, value: GLib.Variant): void
     /**
      * Set org.freedesktop.DBus.Properties asynchronously.
+     * @param property_name property name in org.freedesktop.DBus.Properties.Set
+     * @param value value in org.freedesktop.DBus.Properties.Set
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
     set_ibus_property_async(property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_set_ibus_property_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_set_ibus_property_async().
      */
     set_ibus_property_async_finish(res: Gio.AsyncResult): boolean
     /**
      * Start or stop watching the NameOwnerChanged DBus signal.
+     * @param watch %TRUE if you want ibusbus to emit "name-owner-changed" signal when ibus-daemon emits the NameOwnerChanged DBus signal.
      */
     set_watch_dbus_signal(watch: boolean): void
     /**
      * Start or stop watching the GlobalEngineChanged IBus signal.
+     * @param watch %TRUE if you want ibusbus to emit "global-engine-changed" signal when ibus-daemon emits the GlobalEngineChanged IBus signal.
      */
     set_watch_ibus_signal(watch: boolean): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -5930,6 +6113,10 @@ class Bus {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5940,6 +6127,12 @@ class Bus {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5963,6 +6156,7 @@ class Bus {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5982,11 +6176,14 @@ class Bus {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5994,6 +6191,8 @@ class Bus {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6011,6 +6210,7 @@ class Bus {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6056,6 +6256,7 @@ class Bus {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6099,15 +6300,20 @@ class Bus {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6148,6 +6354,7 @@ class Bus {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6182,6 +6389,7 @@ class Bus {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -6211,6 +6419,7 @@ class Bus {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6229,12 +6438,16 @@ class Bus {
     emit(sigName: "disconnected"): void
     /**
      * Emitted when global engine is changed.
+     * @param name The name of the new global engine.
      */
     connect(sigName: "global-engine-changed", callback: (($obj: Bus, name: string) => void)): number
     connect_after(sigName: "global-engine-changed", callback: (($obj: Bus, name: string) => void)): number
     emit(sigName: "global-engine-changed", name: string): void
     /**
      * Emitted when D-Bus name owner is changed.
+     * @param name The name which ower is changed.
+     * @param old_owner The unique bus name of the old owner.
+     * @param new_owner The unique bus name of the new owner.
      */
     connect(sigName: "name-owner-changed", callback: (($obj: Bus, name: string, old_owner: string, new_owner: string) => void)): number
     connect_after(sigName: "name-owner-changed", callback: (($obj: Bus, name: string, old_owner: string, new_owner: string) => void)): number
@@ -6279,10 +6492,13 @@ class Bus {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Bus, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Bus, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connect-async", callback: (($obj: Bus, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connect-async", callback: (($obj: Bus, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6333,19 +6549,55 @@ interface Component_ConstructProps extends Serializable_ConstructProps {
     version?: string
 }
 class Component {
+    /* Properties of IBus-1.0.IBus.Component */
+    /**
+     * The author of component
+     */
+    readonly author: string
+    /**
+     * The exec path of component
+     */
+    readonly command_line: string
+    /**
+     * The description of component
+     */
+    readonly description: string
+    /**
+     * The homepage of component
+     */
+    readonly homepage: string
+    /**
+     * The license of component
+     */
+    readonly license: string
+    /**
+     * The name of component
+     */
+    readonly name: string
+    /**
+     * The textdomain of component
+     */
+    readonly textdomain: string
+    /**
+     * The version of component
+     */
+    readonly version: string
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Component */
     /**
      * Add an engine to #IBusComponent according to the description in `engine`.
+     * @param engine A description of an engine.
      */
     add_engine(engine: EngineDesc): void
     /**
      * Add an observed path to #IBusComponent.
+     * @param path Observed path to be added.
+     * @param access_fs %TRUE for filling the file status; %FALSE otherwise.
      */
     add_observed_path(path: string, access_fs: boolean): void
     /**
@@ -6395,11 +6647,15 @@ class Component {
     /**
      * Output #IBusComponent as an XML-formatted string.
      * The output string can be then shown on the screen or written to file.
+     * @param output GString that holds the result.
+     * @param indent level of indent.
      */
     output(output: GLib.String, indent: number): void
     /**
      * Output engine description  as an XML-formatted string.
      * The output string can be then shown on the screen or written to file.
+     * @param output GString that holds the result.
+     * @param indent level of indent.
      */
     output_engines(output: GLib.String, indent: number): void
     /* Methods of IBus-1.0.IBus.Serializable */
@@ -6410,11 +6666,13 @@ class Component {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -6427,6 +6685,8 @@ class Component {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -6474,6 +6734,10 @@ class Component {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6484,6 +6748,12 @@ class Component {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6507,6 +6777,7 @@ class Component {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6526,11 +6797,14 @@ class Component {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6538,6 +6812,8 @@ class Component {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6555,6 +6831,7 @@ class Component {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6600,6 +6877,7 @@ class Component {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6643,15 +6921,20 @@ class Component {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6692,6 +6975,7 @@ class Component {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6726,6 +7010,7 @@ class Component {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -6759,6 +7044,7 @@ class Component {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6802,10 +7088,27 @@ class Component {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::author", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::author", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::command-line", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::command-line", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::description", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::description", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::homepage", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::homepage", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::license", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::license", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::textdomain", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::textdomain", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::version", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::version", callback: (($obj: Component, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6827,6 +7130,17 @@ interface Config_ConstructProps extends Proxy_ConstructProps {
 class Config {
     /* Properties of Gio-2.0.Gio.DBusProxy */
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
+    /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
      * g_dbus_proxy_call_sync() functions.
@@ -6837,6 +7151,10 @@ class Config {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -6865,17 +7183,29 @@ class Config {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Fields of IBus-1.0.IBus.Proxy */
-    readonly parent: Gio.DBusProxy
-    readonly flags: number
-    readonly own: boolean
+    parent: Gio.DBusProxy
+    flags: number
+    own: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Config */
     /**
      * Get the value of a configuration option synchronously.
@@ -6888,52 +7218,80 @@ class Config {
      * ibus-chewing, for example, stores its setting in /desktop/ibus/engine/Chewing,
      * so the section name for it is "engine/Chewing".
      * See also: ibus_config_set_value().
+     * @param section Section name of the configuration option.
+     * @param name Name of the configure option.
      */
     get_value(section: string, name: string): GLib.Variant
     /**
      * Get the value of a configuration option asynchronously.
      * 
      * See also: ibus_config_get_value().
+     * @param section Section name of the configuration option.
+     * @param name Name of the configure option.
+     * @param timeout_ms The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback Callback function to invoke when the return value is ready.
      */
     get_value_async(section: string, name: string, timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish get value of a configuration option.
+     * @param result A #GAsyncResult.
      */
     get_value_async_finish(result: Gio.AsyncResult): GLib.Variant
     /**
      * Get all values in a section synchronously.
+     * @param section Section name of the configuration option.
      */
     get_values(section: string): GLib.Variant
     /**
      * Get all values in a section asynchronously.
      * 
      * See also: ibus_config_get_values().
+     * @param section Section name of the configuration option.
+     * @param timeout_ms The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback Callback function to invoke when the return value is ready.
      */
     get_values_async(section: string, timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish get values in a section.
+     * @param result A #GAsyncResult.
      */
     get_values_async_finish(result: Gio.AsyncResult): GLib.Variant
     /**
      * Set the value of a configuration option synchronously.
+     * @param section Section name of the configuration option.
+     * @param name Name of the configure option its self.
+     * @param value A #GVariant that holds the value. If the value is floating, the function takes ownership of it.
      */
     set_value(section: string, name: string, value: GLib.Variant): boolean
     /**
      * Set the value of a configuration option asynchronously.
      * 
      * See also: ibus_config_set_value().
+     * @param section Section name of the configuration option.
+     * @param name Name of the configure option.
+     * @param value A #GVariant that holds the value. If the value is floating, the function takes ownership of it.
+     * @param timeout_ms The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback Callback function to invoke when the return value is ready.
      */
     set_value_async(section: string, name: string, value: GLib.Variant, timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish set value of a configuration option.
+     * @param result A #GAsyncResult.
      */
     set_value_async_finish(result: Gio.AsyncResult): boolean
     /**
      * Remove an entry of a configuration option.
+     * @param section Section name of the configuration option.
+     * @param name Name of the configure option its self.
      */
     unset(section: string, name: string): boolean
     /**
      * Unsubscribe from the configuration option change notification.
+     * @param section Section name of the configuration option.
+     * @param name Name of the configure option its self.
      */
     unwatch(section?: string | null, name?: string | null): boolean
     /**
@@ -6943,6 +7301,8 @@ class Config {
      * client through #IBusConfig::value-changed signal.  Clients should
      * call ibus_config_watch() with the sections they are interested in,
      * to reduce the number of D-Bus messages.
+     * @param section Section name of the configuration option.
+     * @param name Name of the configure option its self.
      */
     watch(section?: string | null, name?: string | null): boolean
     /* Methods of IBus-1.0.IBus.Proxy */
@@ -7002,10 +7362,17 @@ class Config {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -7045,22 +7412,41 @@ class Config {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -7070,6 +7456,7 @@ class Config {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -7157,6 +7544,8 @@ class Config {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -7165,12 +7554,14 @@ class Config {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7208,6 +7599,10 @@ class Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7218,6 +7613,12 @@ class Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7241,6 +7642,7 @@ class Config {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7260,11 +7662,14 @@ class Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7272,6 +7677,8 @@ class Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7289,6 +7696,7 @@ class Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7334,6 +7742,7 @@ class Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7377,15 +7786,20 @@ class Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7426,6 +7840,7 @@ class Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7460,6 +7875,7 @@ class Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -7500,16 +7916,21 @@ class Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -7526,6 +7947,7 @@ class Config {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -7568,6 +7990,7 @@ class Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of IBus-1.0.IBus.Config */
@@ -7608,11 +8031,15 @@ class Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -7628,6 +8055,7 @@ class Config {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -7669,6 +8097,7 @@ class Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of IBus-1.0.IBus.Proxy */
@@ -7719,11 +8148,15 @@ class Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -7739,6 +8172,7 @@ class Config {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -7780,6 +8214,7 @@ class Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Gio-2.0.Gio.DBusProxy */
@@ -7802,6 +8237,7 @@ class Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7809,6 +8245,9 @@ class Config {
     /**
      * Emitted when configuration value is changed.
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param section Section name.
+     * @param name Name of the property.
+     * @param value Value.
      */
     connect(sigName: "value-changed", callback: (($obj: Config, section: string, name: string, value: GLib.Variant) => void)): number
     connect_after(sigName: "value-changed", callback: (($obj: Config, section: string, name: string, value: GLib.Variant) => void)): number
@@ -7838,6 +8277,8 @@ class Config {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: Config, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: Config, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -7848,6 +8289,9 @@ class Config {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: Config, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: Config, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -7881,16 +8325,29 @@ class Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-bus-type", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7903,6 +8360,9 @@ class Config {
     static new_async_finish(res: Gio.AsyncResult): Config
     /**
      * New an #IBusConfig asynchronously.
+     * @param connection An #GDBusConnection.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied.      The callback should not be %NULL.
      */
     static new_async(connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -7912,12 +8372,21 @@ class Config {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -7925,16 +8394,28 @@ class Config {
 interface ConfigService_ConstructProps extends Service_ConstructProps {
 }
 class ConfigService {
+    /* Properties of IBus-1.0.IBus.Service */
+    /**
+     * The connection of service object.
+     */
+    readonly connection: Gio.DBusConnection
+    /**
+     * The path of service object.
+     */
+    readonly object_path: string
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.ConfigService */
     /**
      * Change a value of a configuration option
      * by sending a "ValueChanged" message to IBus service.
+     * @param section Section name of the configuration option.
+     * @param name Name of the configure option.
+     * @param value GVariant that holds the value.
      */
     value_changed(section: string, name: string, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Service */
@@ -7949,10 +8430,12 @@ class ConfigService {
     get_object_path(): string
     /**
      * Registers service to a connection.
+     * @param connection A GDBusConnection the service will be registered to.
      */
     register(connection: Gio.DBusConnection): boolean
     /**
      * Unregisters service from a connection.
+     * @param connection A GDBusConnection the service was registered with.
      */
     unregister(connection: Gio.DBusConnection): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -8000,6 +8483,10 @@ class ConfigService {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8010,6 +8497,12 @@ class ConfigService {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8033,6 +8526,7 @@ class ConfigService {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8052,11 +8546,14 @@ class ConfigService {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8064,6 +8561,8 @@ class ConfigService {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8081,6 +8580,7 @@ class ConfigService {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8126,6 +8626,7 @@ class ConfigService {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8169,15 +8670,20 @@ class ConfigService {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8218,6 +8724,7 @@ class ConfigService {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8252,6 +8759,7 @@ class ConfigService {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.ConfigService */
@@ -8263,16 +8771,34 @@ class ConfigService {
     /**
      * The ::service_get_property class method is to connect
      * GDBusInterfaceGetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name A property name.
      */
     vfunc_service_get_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string): GLib.Variant | null
     /**
      * The ::service_method_call class method is to connect
      * GDBusInterfaceMethodCallFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param method_name A method name.
+     * @param parameters A parameters.
+     * @param invocation A dbus method invocation.
      */
     vfunc_service_method_call(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation): void
     /**
      * The ::service_set_property class method is to connect
      * GDBusInterfaceSetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name An property name.
+     * @param value An property value.
      */
     vfunc_service_set_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string, value: GLib.Variant): boolean
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -8302,6 +8828,7 @@ class ConfigService {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8345,10 +8872,15 @@ class ConfigService {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ConfigService, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ConfigService, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: (($obj: ConfigService, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: ConfigService, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: ConfigService, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: ConfigService, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8368,12 +8900,23 @@ interface Engine_ConstructProps extends Service_ConstructProps {
     engine_name?: string
 }
 class Engine {
+    /* Properties of IBus-1.0.IBus.Engine */
+    readonly engine_name: string
+    /* Properties of IBus-1.0.IBus.Service */
+    /**
+     * The connection of service object.
+     */
+    readonly connection: Gio.DBusConnection
+    /**
+     * The path of service object.
+     */
+    readonly object_path: string
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Engine */
     /**
      * Commit output of input method to IBus client.
@@ -8381,14 +8924,20 @@ class Engine {
      * (Note: The text object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param text String commit to IBusEngine.
      */
     commit_text(text: Text): void
     /**
      * Delete surrounding text.
+     * @param offset The offset of the first char.
+     * @param nchars Number of chars to be deleted.
      */
     delete_surrounding_text(offset: number, nchars: number): void
     /**
      * Forward the key event.
+     * @param keyval KeySym.
+     * @param keycode keyboard scancode.
+     * @param state Key modifier flags.
      */
     forward_key_event(keyval: number, keycode: number, state: number): void
     /**
@@ -8431,6 +8980,7 @@ class Engine {
      * (Note: The prop_list object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param prop_list Property List.
      */
     register_properties(prop_list: PropList): void
     /**
@@ -8451,6 +9001,8 @@ class Engine {
      * (Note: The text object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param text Update content.
+     * @param visible Whether the auxiliary text bar is visible.
      */
     update_auxiliary_text(text: Text, visible: boolean): void
     /**
@@ -8459,6 +9011,8 @@ class Engine {
      * (Note: The table object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param lookup_table An lookup_table.
+     * @param visible Whether the lookup_table is visible.
      */
     update_lookup_table(lookup_table: LookupTable, visible: boolean): void
     /**
@@ -8470,6 +9024,8 @@ class Engine {
      * (Note: The table object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param lookup_table An lookup_table.
+     * @param visible Whether the lookup_table is visible.
      */
     update_lookup_table_fast(lookup_table: LookupTable, visible: boolean): void
     /**
@@ -8478,6 +9034,9 @@ class Engine {
      * (Note: The text object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param text Update content.
+     * @param cursor_pos Current position of cursor
+     * @param visible Whether the pre-edit buffer is visible.
      */
     update_preedit_text(text: Text, cursor_pos: number, visible: boolean): void
     /**
@@ -8493,6 +9052,10 @@ class Engine {
      * (Note: The text object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param text Update content.
+     * @param cursor_pos Current position of cursor
+     * @param visible Whether the pre-edit buffer is visible.
+     * @param mode Pre-edit commit mode when the focus is lost.
      */
     update_preedit_text_with_mode(text: Text, cursor_pos: number, visible: boolean, mode: PreeditFocusMode): void
     /**
@@ -8501,6 +9064,7 @@ class Engine {
      * (Note: The prop object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param prop IBusProperty to be updated.
      */
     update_property(prop: Property): void
     /* Methods of IBus-1.0.IBus.Service */
@@ -8515,10 +9079,12 @@ class Engine {
     get_object_path(): string
     /**
      * Registers service to a connection.
+     * @param connection A GDBusConnection the service will be registered to.
      */
     register(connection: Gio.DBusConnection): boolean
     /**
      * Unregisters service from a connection.
+     * @param connection A GDBusConnection the service was registered with.
      */
     unregister(connection: Gio.DBusConnection): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -8566,6 +9132,10 @@ class Engine {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8576,6 +9146,12 @@ class Engine {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8599,6 +9175,7 @@ class Engine {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8618,11 +9195,14 @@ class Engine {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8630,6 +9210,8 @@ class Engine {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8647,6 +9229,7 @@ class Engine {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8692,6 +9275,7 @@ class Engine {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8735,15 +9319,20 @@ class Engine {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8784,6 +9373,7 @@ class Engine {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8818,6 +9408,7 @@ class Engine {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Engine */
@@ -8845,16 +9436,34 @@ class Engine {
     /**
      * The ::service_get_property class method is to connect
      * GDBusInterfaceGetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name A property name.
      */
     vfunc_service_get_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string): GLib.Variant | null
     /**
      * The ::service_method_call class method is to connect
      * GDBusInterfaceMethodCallFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param method_name A method name.
+     * @param parameters A parameters.
+     * @param invocation A dbus method invocation.
      */
     vfunc_service_method_call(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation): void
     /**
      * The ::service_set_property class method is to connect
      * GDBusInterfaceSetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name An property name.
+     * @param value An property value.
      */
     vfunc_service_set_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string, value: GLib.Variant): boolean
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -8884,6 +9493,7 @@ class Engine {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8894,6 +9504,7 @@ class Engine {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param n_strokes The number of strokes to be removed. 0 means "remove all".
      */
     connect(sigName: "cancel-hand-writing", callback: (($obj: Engine, n_strokes: number) => void)): number
     connect_after(sigName: "cancel-hand-writing", callback: (($obj: Engine, n_strokes: number) => void)): number
@@ -8904,6 +9515,9 @@ class Engine {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param index Index of candidate be clicked.
+     * @param button Mouse button.
+     * @param state Keyboard state.
      */
     connect(sigName: "candidate-clicked", callback: (($obj: Engine, index: number, button: number, state: number) => void)): number
     connect_after(sigName: "candidate-clicked", callback: (($obj: Engine, index: number, button: number, state: number) => void)): number
@@ -8998,6 +9612,8 @@ class Engine {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param coordinates An array of double (0.0 to 1.0) which represents a stroke (i.e. [x1, y1, x2, y2, x3, y3, ...]).
+     * @param coordinates_len The number of elements in the array.
      */
     connect(sigName: "process-hand-writing-event", callback: (($obj: Engine, coordinates: object, coordinates_len: number) => void)): number
     connect_after(sigName: "process-hand-writing-event", callback: (($obj: Engine, coordinates: object, coordinates_len: number) => void)): number
@@ -9009,6 +9625,9 @@ class Engine {
      * Both the key symbol and keycode are passed to the member function.
      * See ibus_input_context_process_key_event() for further explanation of
      * key symbol, keycode and which to use.
+     * @param keyval Key symbol of the key press.
+     * @param keycode KeyCode of the key press.
+     * @param state Key modifier flags.
      */
     connect(sigName: "process-key-event", callback: (($obj: Engine, keyval: number, keycode: number, state: number) => boolean)): number
     connect_after(sigName: "process-key-event", callback: (($obj: Engine, keyval: number, keycode: number, state: number) => boolean)): number
@@ -9019,6 +9638,8 @@ class Engine {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param name Property name.
+     * @param state Property state.
      */
     connect(sigName: "property-activate", callback: (($obj: Engine, name: string, state: number) => void)): number
     connect_after(sigName: "property-activate", callback: (($obj: Engine, name: string, state: number) => void)): number
@@ -9029,6 +9650,7 @@ class Engine {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param name Property name.
      */
     connect(sigName: "property-hide", callback: (($obj: Engine, name: string) => void)): number
     connect_after(sigName: "property-hide", callback: (($obj: Engine, name: string) => void)): number
@@ -9039,6 +9661,7 @@ class Engine {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param name Property name.
      */
     connect(sigName: "property-show", callback: (($obj: Engine, name: string) => void)): number
     connect_after(sigName: "property-show", callback: (($obj: Engine, name: string) => void)): number
@@ -9061,6 +9684,7 @@ class Engine {
      * 
      * See also:  ibus_input_context_set_capabilities().
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param caps Capabilities flags of IBusEngine, see #IBusCapabilite
      */
     connect(sigName: "set-capabilities", callback: (($obj: Engine, caps: number) => void)): number
     connect_after(sigName: "set-capabilities", callback: (($obj: Engine, caps: number) => void)): number
@@ -9079,6 +9703,8 @@ class Engine {
      * 
      * <note><para>Argument `user_data` is ignored in this
      * function.</para></note>
+     * @param purpose Primary purpose of the input context, as an #IBusInputPurpose.
+     * @param hints Hints that augment `purpose,` as an #IBusInputHints.
      */
     connect(sigName: "set-content-type", callback: (($obj: Engine, purpose: number, hints: number) => void)): number
     connect_after(sigName: "set-content-type", callback: (($obj: Engine, purpose: number, hints: number) => void)): number
@@ -9090,6 +9716,10 @@ class Engine {
      * 
      * See also:  ibus_input_context_set_cursor_location().
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param x X coordinate of the cursor.
+     * @param y Y coordinate of the cursor.
+     * @param w Width of the cursor.
+     * @param h Height of the cursor.
      */
     connect(sigName: "set-cursor-location", callback: (($obj: Engine, x: number, y: number, w: number, h: number) => void)): number
     connect_after(sigName: "set-cursor-location", callback: (($obj: Engine, x: number, y: number, w: number, h: number) => void)): number
@@ -9102,6 +9732,9 @@ class Engine {
      * or "does not support selection retrival".
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param text The surrounding text.
+     * @param cursor_pos The cursor position on surrounding text.
+     * @param anchor_pos The anchor position on selection area.
      */
     connect(sigName: "set-surrounding-text", callback: (($obj: Engine, text: GObject.Object, cursor_pos: number, anchor_pos: number) => void)): number
     connect_after(sigName: "set-surrounding-text", callback: (($obj: Engine, text: GObject.Object, cursor_pos: number, anchor_pos: number) => void)): number
@@ -9146,10 +9779,17 @@ class Engine {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::engine-name", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::engine-name", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9237,12 +9877,81 @@ interface EngineDesc_ConstructProps extends Serializable_ConstructProps {
     version?: string
 }
 class EngineDesc {
+    /* Properties of IBus-1.0.IBus.EngineDesc */
+    /**
+     * The author of engine description
+     */
+    readonly author: string
+    /**
+     * The description of engine description
+     */
+    readonly description: string
+    /**
+     * The hotkeys of engine description
+     */
+    readonly hotkeys: string
+    /**
+     * The icon of engine description
+     */
+    readonly icon: string
+    /**
+     * The key of IBusProperty to change panel icon dynamically.
+     */
+    readonly icon_prop_key: string
+    /**
+     * The language of engine description
+     */
+    readonly language: string
+    /**
+     * The layout of engine description
+     */
+    readonly layout: string
+    /**
+     * The keyboard option of engine description
+     */
+    readonly layout_option: string
+    /**
+     * The keyboard variant of engine description
+     */
+    readonly layout_variant: string
+    /**
+     * The license of engine description
+     */
+    readonly license: string
+    /**
+     * The longname of engine description
+     */
+    readonly longname: string
+    /**
+     * The name of engine description
+     */
+    readonly name: string
+    /**
+     * The rank of engine description
+     */
+    readonly rank: number
+    /**
+     * The exec lists of the engine setup command
+     */
+    readonly setup: string
+    /**
+     * The symbol chars of engine description instead of icon image
+     */
+    readonly symbol: string
+    /**
+     * The textdomain of engine description
+     */
+    readonly textdomain: string
+    /**
+     * The version number of engine description
+     */
+    readonly version: string
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.EngineDesc */
     /**
      * Gets the author property in IBusEngineDesc. It should not be freed.
@@ -9316,6 +10025,8 @@ class EngineDesc {
     /**
      * Output XML-formatted input method engine description.
      * The result will be append to GString specified in `output`.
+     * @param output XML-formatted Input method engine description.
+     * @param indent Number of indent (showed as 4 spaces).
      */
     output(output: GLib.String, indent: number): void
     /* Methods of IBus-1.0.IBus.Serializable */
@@ -9326,11 +10037,13 @@ class EngineDesc {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -9343,6 +10056,8 @@ class EngineDesc {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -9390,6 +10105,10 @@ class EngineDesc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9400,6 +10119,12 @@ class EngineDesc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9423,6 +10148,7 @@ class EngineDesc {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9442,11 +10168,14 @@ class EngineDesc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9454,6 +10183,8 @@ class EngineDesc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9471,6 +10202,7 @@ class EngineDesc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9516,6 +10248,7 @@ class EngineDesc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9559,15 +10292,20 @@ class EngineDesc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9608,6 +10346,7 @@ class EngineDesc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9642,6 +10381,7 @@ class EngineDesc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -9675,6 +10415,7 @@ class EngineDesc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9718,10 +10459,45 @@ class EngineDesc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::author", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::author", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::description", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::description", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::hotkeys", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hotkeys", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::icon", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::icon", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::icon-prop-key", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::icon-prop-key", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::language", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::language", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::layout", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::layout-option", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-option", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::layout-variant", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-variant", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::license", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::license", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::longname", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::longname", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::rank", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::rank", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::setup", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::setup", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::symbol", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::symbol", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::textdomain", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::textdomain", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::version", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::version", callback: (($obj: EngineDesc, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9740,32 +10516,44 @@ class EngineDesc {
 interface EngineSimple_ConstructProps extends Engine_ConstructProps {
 }
 class EngineSimple {
+    /* Properties of IBus-1.0.IBus.Engine */
+    readonly engine_name: string
+    /* Properties of IBus-1.0.IBus.Service */
+    /**
+     * The connection of service object.
+     */
+    readonly connection: Gio.DBusConnection
+    /**
+     * The path of service object.
+     */
+    readonly object_path: string
     /* Fields of IBus-1.0.IBus.Engine */
     /**
      * Whether the engine is enabled.
      */
-    readonly enabled: boolean
+    enabled: boolean
     /**
      * Whether the engine has focus.
      */
-    readonly has_focus: boolean
+    has_focus: boolean
     /**
      * Area of cursor.
      */
-    readonly cursor_area: Rectangle
+    cursor_area: Rectangle
     /**
      * IBusCapabilite (client capabilities) flags.
      */
-    readonly client_capabilities: number
+    client_capabilities: number
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.EngineSimple */
     /**
      * Call ibus_engine_simple_add_table() internally by locale.
+     * @param file The compose file. If the `file` is %NULL,        the current locale is used.
      */
     add_compose_file(file: string): boolean
     /**
@@ -9776,10 +10564,14 @@ class EngineSimple {
      * 
      * The table must be sorted in dictionary order on the numeric value of the key
      * symbol fields. (Values beyond the length of the sequence should be zero.)
+     * @param data The table which must be available      during the whole life of the simple engine.
+     * @param max_seq_len Maximum length of a swquence in the table (cannot be greater      than %IBUS_MAX_COMPOSE_LEN)
+     * @param n_seqs number of sequences in the table
      */
     add_table(data: number[], max_seq_len: number, n_seqs: number): void
     /**
      * Call ibus_engine_simple_add_table() internally by locale.
+     * @param locale The locale name. If the locale is %NULL,                        the current locale is used.
      */
     add_table_by_locale(locale?: string | null): boolean
     /* Methods of IBus-1.0.IBus.Engine */
@@ -9789,14 +10581,20 @@ class EngineSimple {
      * (Note: The text object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param text String commit to IBusEngine.
      */
     commit_text(text: Text): void
     /**
      * Delete surrounding text.
+     * @param offset The offset of the first char.
+     * @param nchars Number of chars to be deleted.
      */
     delete_surrounding_text(offset: number, nchars: number): void
     /**
      * Forward the key event.
+     * @param keyval KeySym.
+     * @param keycode keyboard scancode.
+     * @param state Key modifier flags.
      */
     forward_key_event(keyval: number, keycode: number, state: number): void
     /**
@@ -9839,6 +10637,7 @@ class EngineSimple {
      * (Note: The prop_list object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param prop_list Property List.
      */
     register_properties(prop_list: PropList): void
     /**
@@ -9859,6 +10658,8 @@ class EngineSimple {
      * (Note: The text object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param text Update content.
+     * @param visible Whether the auxiliary text bar is visible.
      */
     update_auxiliary_text(text: Text, visible: boolean): void
     /**
@@ -9867,6 +10668,8 @@ class EngineSimple {
      * (Note: The table object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param lookup_table An lookup_table.
+     * @param visible Whether the lookup_table is visible.
      */
     update_lookup_table(lookup_table: LookupTable, visible: boolean): void
     /**
@@ -9878,6 +10681,8 @@ class EngineSimple {
      * (Note: The table object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param lookup_table An lookup_table.
+     * @param visible Whether the lookup_table is visible.
      */
     update_lookup_table_fast(lookup_table: LookupTable, visible: boolean): void
     /**
@@ -9886,6 +10691,9 @@ class EngineSimple {
      * (Note: The text object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param text Update content.
+     * @param cursor_pos Current position of cursor
+     * @param visible Whether the pre-edit buffer is visible.
      */
     update_preedit_text(text: Text, cursor_pos: number, visible: boolean): void
     /**
@@ -9901,6 +10709,10 @@ class EngineSimple {
      * (Note: The text object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param text Update content.
+     * @param cursor_pos Current position of cursor
+     * @param visible Whether the pre-edit buffer is visible.
+     * @param mode Pre-edit commit mode when the focus is lost.
      */
     update_preedit_text_with_mode(text: Text, cursor_pos: number, visible: boolean, mode: PreeditFocusMode): void
     /**
@@ -9909,6 +10721,7 @@ class EngineSimple {
      * (Note: The prop object will be released, if it is floating.
      *  If caller want to keep the object, caller should make the object
      *  sink by g_object_ref_sink.)
+     * @param prop IBusProperty to be updated.
      */
     update_property(prop: Property): void
     /* Methods of IBus-1.0.IBus.Service */
@@ -9923,10 +10736,12 @@ class EngineSimple {
     get_object_path(): string
     /**
      * Registers service to a connection.
+     * @param connection A GDBusConnection the service will be registered to.
      */
     register(connection: Gio.DBusConnection): boolean
     /**
      * Unregisters service from a connection.
+     * @param connection A GDBusConnection the service was registered with.
      */
     unregister(connection: Gio.DBusConnection): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -9974,6 +10789,10 @@ class EngineSimple {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9984,6 +10803,12 @@ class EngineSimple {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10007,6 +10832,7 @@ class EngineSimple {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10026,11 +10852,14 @@ class EngineSimple {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10038,6 +10867,8 @@ class EngineSimple {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10055,6 +10886,7 @@ class EngineSimple {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10100,6 +10932,7 @@ class EngineSimple {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10143,15 +10976,20 @@ class EngineSimple {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10192,6 +11030,7 @@ class EngineSimple {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10226,6 +11065,7 @@ class EngineSimple {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Engine */
@@ -10253,16 +11093,34 @@ class EngineSimple {
     /**
      * The ::service_get_property class method is to connect
      * GDBusInterfaceGetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name A property name.
      */
     vfunc_service_get_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string): GLib.Variant | null
     /**
      * The ::service_method_call class method is to connect
      * GDBusInterfaceMethodCallFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param method_name A method name.
+     * @param parameters A parameters.
+     * @param invocation A dbus method invocation.
      */
     vfunc_service_method_call(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation): void
     /**
      * The ::service_set_property class method is to connect
      * GDBusInterfaceSetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name An property name.
+     * @param value An property value.
      */
     vfunc_service_set_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string, value: GLib.Variant): boolean
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -10292,6 +11150,7 @@ class EngineSimple {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10302,6 +11161,7 @@ class EngineSimple {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param n_strokes The number of strokes to be removed. 0 means "remove all".
      */
     connect(sigName: "cancel-hand-writing", callback: (($obj: EngineSimple, n_strokes: number) => void)): number
     connect_after(sigName: "cancel-hand-writing", callback: (($obj: EngineSimple, n_strokes: number) => void)): number
@@ -10312,6 +11172,9 @@ class EngineSimple {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param index Index of candidate be clicked.
+     * @param button Mouse button.
+     * @param state Keyboard state.
      */
     connect(sigName: "candidate-clicked", callback: (($obj: EngineSimple, index: number, button: number, state: number) => void)): number
     connect_after(sigName: "candidate-clicked", callback: (($obj: EngineSimple, index: number, button: number, state: number) => void)): number
@@ -10406,6 +11269,8 @@ class EngineSimple {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param coordinates An array of double (0.0 to 1.0) which represents a stroke (i.e. [x1, y1, x2, y2, x3, y3, ...]).
+     * @param coordinates_len The number of elements in the array.
      */
     connect(sigName: "process-hand-writing-event", callback: (($obj: EngineSimple, coordinates: object, coordinates_len: number) => void)): number
     connect_after(sigName: "process-hand-writing-event", callback: (($obj: EngineSimple, coordinates: object, coordinates_len: number) => void)): number
@@ -10417,6 +11282,9 @@ class EngineSimple {
      * Both the key symbol and keycode are passed to the member function.
      * See ibus_input_context_process_key_event() for further explanation of
      * key symbol, keycode and which to use.
+     * @param keyval Key symbol of the key press.
+     * @param keycode KeyCode of the key press.
+     * @param state Key modifier flags.
      */
     connect(sigName: "process-key-event", callback: (($obj: EngineSimple, keyval: number, keycode: number, state: number) => boolean)): number
     connect_after(sigName: "process-key-event", callback: (($obj: EngineSimple, keyval: number, keycode: number, state: number) => boolean)): number
@@ -10427,6 +11295,8 @@ class EngineSimple {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param name Property name.
+     * @param state Property state.
      */
     connect(sigName: "property-activate", callback: (($obj: EngineSimple, name: string, state: number) => void)): number
     connect_after(sigName: "property-activate", callback: (($obj: EngineSimple, name: string, state: number) => void)): number
@@ -10437,6 +11307,7 @@ class EngineSimple {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param name Property name.
      */
     connect(sigName: "property-hide", callback: (($obj: EngineSimple, name: string) => void)): number
     connect_after(sigName: "property-hide", callback: (($obj: EngineSimple, name: string) => void)): number
@@ -10447,6 +11318,7 @@ class EngineSimple {
      * in extended class to receive this signal.
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param name Property name.
      */
     connect(sigName: "property-show", callback: (($obj: EngineSimple, name: string) => void)): number
     connect_after(sigName: "property-show", callback: (($obj: EngineSimple, name: string) => void)): number
@@ -10469,6 +11341,7 @@ class EngineSimple {
      * 
      * See also:  ibus_input_context_set_capabilities().
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param caps Capabilities flags of IBusEngine, see #IBusCapabilite
      */
     connect(sigName: "set-capabilities", callback: (($obj: EngineSimple, caps: number) => void)): number
     connect_after(sigName: "set-capabilities", callback: (($obj: EngineSimple, caps: number) => void)): number
@@ -10487,6 +11360,8 @@ class EngineSimple {
      * 
      * <note><para>Argument `user_data` is ignored in this
      * function.</para></note>
+     * @param purpose Primary purpose of the input context, as an #IBusInputPurpose.
+     * @param hints Hints that augment `purpose,` as an #IBusInputHints.
      */
     connect(sigName: "set-content-type", callback: (($obj: EngineSimple, purpose: number, hints: number) => void)): number
     connect_after(sigName: "set-content-type", callback: (($obj: EngineSimple, purpose: number, hints: number) => void)): number
@@ -10498,6 +11373,10 @@ class EngineSimple {
      * 
      * See also:  ibus_input_context_set_cursor_location().
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param x X coordinate of the cursor.
+     * @param y Y coordinate of the cursor.
+     * @param w Width of the cursor.
+     * @param h Height of the cursor.
      */
     connect(sigName: "set-cursor-location", callback: (($obj: EngineSimple, x: number, y: number, w: number, h: number) => void)): number
     connect_after(sigName: "set-cursor-location", callback: (($obj: EngineSimple, x: number, y: number, w: number, h: number) => void)): number
@@ -10510,6 +11389,9 @@ class EngineSimple {
      * or "does not support selection retrival".
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para></note>
+     * @param text The surrounding text.
+     * @param cursor_pos The cursor position on surrounding text.
+     * @param anchor_pos The anchor position on selection area.
      */
     connect(sigName: "set-surrounding-text", callback: (($obj: EngineSimple, text: GObject.Object, cursor_pos: number, anchor_pos: number) => void)): number
     connect_after(sigName: "set-surrounding-text", callback: (($obj: EngineSimple, text: GObject.Object, cursor_pos: number, anchor_pos: number) => void)): number
@@ -10554,10 +11436,17 @@ class EngineSimple {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: EngineSimple, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: EngineSimple, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::engine-name", callback: (($obj: EngineSimple, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::engine-name", callback: (($obj: EngineSimple, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: EngineSimple, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: EngineSimple, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: EngineSimple, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: EngineSimple, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -10575,19 +11464,31 @@ class EngineSimple {
 interface Factory_ConstructProps extends Service_ConstructProps {
 }
 class Factory {
+    /* Properties of IBus-1.0.IBus.Service */
+    /**
+     * The connection of service object.
+     */
+    readonly connection: Gio.DBusConnection
+    /**
+     * The path of service object.
+     */
+    readonly object_path: string
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Factory */
     /**
      * Add an engine to the factory.
+     * @param engine_name Name of an engine.
+     * @param engine_type GType of an engine.
      */
     add_engine(engine_name: string, engine_type: GObject.Type): void
     /**
      * Creates an #IBusEngine with `engine_name`.
+     * @param engine_name Name of an engine.
      */
     create_engine(engine_name: string): Engine
     /* Methods of IBus-1.0.IBus.Service */
@@ -10602,10 +11503,12 @@ class Factory {
     get_object_path(): string
     /**
      * Registers service to a connection.
+     * @param connection A GDBusConnection the service will be registered to.
      */
     register(connection: Gio.DBusConnection): boolean
     /**
      * Unregisters service from a connection.
+     * @param connection A GDBusConnection the service was registered with.
      */
     unregister(connection: Gio.DBusConnection): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -10653,6 +11556,10 @@ class Factory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10663,6 +11570,12 @@ class Factory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10686,6 +11599,7 @@ class Factory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10705,11 +11619,14 @@ class Factory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10717,6 +11634,8 @@ class Factory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10734,6 +11653,7 @@ class Factory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10779,6 +11699,7 @@ class Factory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10822,15 +11743,20 @@ class Factory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10871,6 +11797,7 @@ class Factory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10905,27 +11832,47 @@ class Factory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Factory */
     /**
      * Creates an #IBusEngine with `engine_name`.
+     * @param engine_name Name of an engine.
      */
     vfunc_create_engine(engine_name: string): Engine
     /* Virtual methods of IBus-1.0.IBus.Service */
     /**
      * The ::service_get_property class method is to connect
      * GDBusInterfaceGetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name A property name.
      */
     vfunc_service_get_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string): GLib.Variant | null
     /**
      * The ::service_method_call class method is to connect
      * GDBusInterfaceMethodCallFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param method_name A method name.
+     * @param parameters A parameters.
+     * @param invocation A dbus method invocation.
      */
     vfunc_service_method_call(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation): void
     /**
      * The ::service_set_property class method is to connect
      * GDBusInterfaceSetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name An property name.
+     * @param value An property value.
      */
     vfunc_service_set_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string, value: GLib.Variant): boolean
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -10955,6 +11902,7 @@ class Factory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10965,6 +11913,7 @@ class Factory {
      * received CreateEngine dbus method. The callback functions
      * will be called until a callback returns a non-null object
      * of IBusEngine.
+     * @param engine_name the engine_name which received the signal
      */
     connect(sigName: "create-engine", callback: (($obj: Factory, engine_name: string) => Engine | null)): number
     connect_after(sigName: "create-engine", callback: (($obj: Factory, engine_name: string) => Engine | null)): number
@@ -11009,10 +11958,15 @@ class Factory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Factory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Factory, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: (($obj: Factory, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: Factory, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: Factory, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: Factory, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11031,33 +11985,46 @@ interface HotkeyProfile_ConstructProps extends Serializable_ConstructProps {
 }
 class HotkeyProfile {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.HotkeyProfile */
     /**
      * Adds a hotkey and its associated event to an #IBusHotkeyProfile.
+     * @param keyval Keycode of the hotkey.
+     * @param modifiers Modifiers of the hotkey.
+     * @param event The event to be associated.
      */
     add_hotkey(keyval: number, modifiers: number, event: GLib.Quark): boolean
     /**
      * Adds a hotkey and its associated event to an #IBusHotkeyProfile.
      * The hotkey is in string format, such like
      * <constant>Control+Shift+A</constant>.
+     * @param str Key in string representation.  '+' is the separator.
+     * @param event The event to be associated.
      */
     add_hotkey_from_string(str: string, event: GLib.Quark): boolean
     /**
      * Emits a <constant>::trigger</constant> signal when a hotkey is in a profile.
+     * @param keyval Keycode of the hotkey.
+     * @param modifiers Modifiers of the hotkey.
+     * @param prev_keyval Keycode of the hotkey.
+     * @param prev_modifiers Modifiers of the hotkey.
+     * @param user_data user data for signal "trigger".
      */
     filter_key_event(keyval: number, modifiers: number, prev_keyval: number, prev_modifiers: number, user_data: object): GLib.Quark
     lookup_hotkey(keyval: number, modifiers: number): GLib.Quark
     /**
      * Removes the hotkey for an #IBusHotkeyProfile.
+     * @param keyval Keycode of the hotkey.
+     * @param modifiers Modifiers of the hotkey.
      */
     remove_hotkey(keyval: number, modifiers: number): boolean
     /**
      * Removes the hotkey for an #IBusHotkeyProfile by event.
+     * @param event The associated event.
      */
     remove_hotkey_by_event(event: GLib.Quark): boolean
     /* Methods of IBus-1.0.IBus.Serializable */
@@ -11068,11 +12035,13 @@ class HotkeyProfile {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -11085,6 +12054,8 @@ class HotkeyProfile {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -11132,6 +12103,10 @@ class HotkeyProfile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11142,6 +12117,12 @@ class HotkeyProfile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11165,6 +12146,7 @@ class HotkeyProfile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11184,11 +12166,14 @@ class HotkeyProfile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11196,6 +12181,8 @@ class HotkeyProfile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11213,6 +12200,7 @@ class HotkeyProfile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11258,6 +12246,7 @@ class HotkeyProfile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11301,15 +12290,20 @@ class HotkeyProfile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11350,6 +12344,7 @@ class HotkeyProfile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11384,6 +12379,7 @@ class HotkeyProfile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.HotkeyProfile */
@@ -11419,6 +12415,7 @@ class HotkeyProfile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11428,6 +12425,8 @@ class HotkeyProfile {
      * Implement the member function trigger() in extended class to receive this signal.
      * 
      * <note><para>The last parameter, user_data is not actually a valid parameter. It is displayed because of GtkDoc bug.</para></note>
+     * @param event An event in GQuark.
+     * @param user_data User data for callback.
      */
     connect(sigName: "trigger", callback: (($obj: HotkeyProfile, event: number, user_data: object) => void)): number
     connect_after(sigName: "trigger", callback: (($obj: HotkeyProfile, event: number, user_data: object) => void)): number
@@ -11472,6 +12471,7 @@ class HotkeyProfile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HotkeyProfile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HotkeyProfile, pspec: GObject.ParamSpec) => void)): number
@@ -11495,6 +12495,17 @@ interface InputContext_ConstructProps extends Proxy_ConstructProps {
 class InputContext {
     /* Properties of Gio-2.0.Gio.DBusProxy */
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
+    /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
      * g_dbus_proxy_call_sync() functions.
@@ -11505,6 +12516,10 @@ class InputContext {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -11533,22 +12548,35 @@ class InputContext {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Fields of IBus-1.0.IBus.Proxy */
-    readonly parent: Gio.DBusProxy
-    readonly flags: number
-    readonly own: boolean
+    parent: Gio.DBusProxy
+    flags: number
+    own: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.InputContext */
     /**
      * Clear handwriting stroke(s) in the current input method engine.
      * 
      * see_also: #IBusEngine::cancel-hand-writing
+     * @param n_strokes The number of strokes to be removed. Pass 0 to remove all.
      */
     cancel_hand_writing(n_strokes: number): void
     /**
@@ -11571,10 +12599,14 @@ class InputContext {
     get_engine(): EngineDesc
     /**
      * An asynchronous IPC will be performed.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or     %NULL if you don't care about the result of the method invocation.
      */
     get_engine_async(timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_input_context_get_engine_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_input_context_get_engine_async().
      */
     get_engine_async_finish(res: Gio.AsyncResult): EngineDesc
     /**
@@ -11593,11 +12625,16 @@ class InputContext {
      * writing area.
      * 
      * see_also: #IBusEngine::process-hand-writing-event
+     * @param coordinates An array of gdouble (0.0 to 1.0) which represents a stroke (i.e. [x1, y1, x2, y2, x3, y3, ...]).
+     * @param coordinates_len The number of elements in the array. The number should be even and >= 4.
      */
     process_hand_writing_event(coordinates: number, coordinates_len: number): void
     /**
      * Pass the key event to input method engine and wait for the reply from
      * ibus (i.e. synchronous IPC).
+     * @param keyval Key symbol of a key event.
+     * @param keycode Keycode of a key event.
+     * @param state Key modifier flags.
      */
     process_key_event(keyval: number, keycode: number, state: number): boolean
     /**
@@ -11620,17 +12657,26 @@ class InputContext {
      * Use ibus_keymap_lookup_keysym() to convert keycode to keysym in given keyboard layout.
      * 
      * see_also: #IBusEngine::process-key-event
+     * @param keyval Key symbol of a key event.
+     * @param keycode Keycode of a key event.
+     * @param state Key modifier flags.
+     * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
+     * @param cancellable A GCancellable or NULL.
+     * @param callback A GAsyncReadyCallback to call when the request is satisfied or NULL      if you don't care about the result of the method invocation.
      */
     process_key_event_async(keyval: number, keycode: number, state: number, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with
      *      ibus_input_context_process_key_event_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to      ibus_input_context_process_key_event_async().
      */
     process_key_event_async_finish(res: Gio.AsyncResult): boolean
     /**
      * Activate the property asynchronously.
      * 
      * See also: #IBusEngine::property_activate
+     * @param prop_name A property name (e.g. "InputMode.WideLatin")
+     * @param state A status of the property (e.g. PROP_STATE_CHECKED)
      */
     property_activate(prop_name: string, state: number): void
     /**
@@ -11645,6 +12691,7 @@ class InputContext {
      * The panel component does nothing for an application that doesn't support focus.
      * 
      * see_also: #IBusEngine::set-capabilities
+     * @param capabilities Capabilities flags of IBusEngine, see #IBusCapabilite
      */
     set_capabilities(capabilities: number): void
     /**
@@ -11656,17 +12703,24 @@ class InputContext {
      * #IBUS_INPUT_PURPOSE_NUMBER.
      * 
      * See also: #IBusEngine::set-content-type
+     * @param purpose Primary purpose of the input context, as an #IBusInputPurpose.
+     * @param hints Hints that augment `purpose,` as an #IBusInputHints.
      */
     set_content_type(purpose: number, hints: number): void
     /**
      * Set the cursor location of IBus input context asynchronously.
      * 
      * see_also: #IBusEngine::set-cursor-location
+     * @param x X coordinate of the cursor.
+     * @param y Y coordinate of the cursor.
+     * @param w Width of the cursor.
+     * @param h Height of the cursor.
      */
     set_cursor_location(x: number, y: number, w: number, h: number): void
     /**
      * Invoked when the IME engine is changed.
      * An asynchronous IPC will be performed.
+     * @param name A name of the engine.
      */
     set_engine(name: string): void
     set_surrounding_text(text: Text, cursor_pos: number, anchor_pos: number): void
@@ -11727,10 +12781,17 @@ class InputContext {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -11770,22 +12831,41 @@ class InputContext {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -11795,6 +12875,7 @@ class InputContext {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -11882,6 +12963,8 @@ class InputContext {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -11890,12 +12973,14 @@ class InputContext {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11933,6 +13018,10 @@ class InputContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11943,6 +13032,12 @@ class InputContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11966,6 +13061,7 @@ class InputContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11985,11 +13081,14 @@ class InputContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11997,6 +13096,8 @@ class InputContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12014,6 +13115,7 @@ class InputContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12059,6 +13161,7 @@ class InputContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12102,15 +13205,20 @@ class InputContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12151,6 +13259,7 @@ class InputContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12185,6 +13294,7 @@ class InputContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -12225,16 +13335,21 @@ class InputContext {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -12251,6 +13366,7 @@ class InputContext {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -12293,6 +13409,7 @@ class InputContext {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of IBus-1.0.IBus.InputContext */
@@ -12333,11 +13450,15 @@ class InputContext {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -12353,6 +13474,7 @@ class InputContext {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -12394,6 +13516,7 @@ class InputContext {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of IBus-1.0.IBus.Proxy */
@@ -12444,11 +13567,15 @@ class InputContext {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -12464,6 +13591,7 @@ class InputContext {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -12505,6 +13633,7 @@ class InputContext {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Gio-2.0.Gio.DBusProxy */
@@ -12527,6 +13656,7 @@ class InputContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12537,6 +13667,7 @@ class InputContext {
      * (Note: The text object is floating, and it will be released after the
      *  signal. If signal handler wants to keep the object, the handler should
      *  use g_object_ref_sink() to get the ownership of the object.)
+     * @param text Text to be committed.
      */
     connect(sigName: "commit-text", callback: (($obj: InputContext, text: Text) => void)): number
     connect_after(sigName: "commit-text", callback: (($obj: InputContext, text: Text) => void)): number
@@ -12555,6 +13686,8 @@ class InputContext {
     emit(sigName: "cursor-up-lookup-table"): void
     /**
      * Emitted to delete surrounding text event from IME to client of IME.
+     * @param offset the character offset from the cursor position of the text to be deleted.   A negative value indicates a position before the cursor.
+     * @param n_chars the number of characters to be deleted.
      */
     connect(sigName: "delete-surrounding-text", callback: (($obj: InputContext, offset: number, n_chars: number) => void)): number
     connect_after(sigName: "delete-surrounding-text", callback: (($obj: InputContext, offset: number, n_chars: number) => void)): number
@@ -12573,6 +13706,9 @@ class InputContext {
     emit(sigName: "enabled"): void
     /**
      * Emitted to forward key event from IME to client of IME.
+     * @param keyval Key symbol of the keyboard event.
+     * @param keycode Key symbol of the keyboard event.
+     * @param modifiers Key modifier flags.
      */
     connect(sigName: "forward-key-event", callback: (($obj: InputContext, keyval: number, keycode: number, modifiers: number) => void)): number
     connect_after(sigName: "forward-key-event", callback: (($obj: InputContext, keyval: number, keycode: number, modifiers: number) => void)): number
@@ -12613,6 +13749,7 @@ class InputContext {
      * (Note: The props object is floating, and it will be released after the
      *  signal. If signal handler wants to keep the object, the handler should
      *  use g_object_ref_sink() to get the ownership of the object.)
+     * @param props An IBusPropList that contains properties.
      */
     connect(sigName: "register-properties", callback: (($obj: InputContext, props: PropList) => void)): number
     connect_after(sigName: "register-properties", callback: (($obj: InputContext, props: PropList) => void)): number
@@ -12641,6 +13778,8 @@ class InputContext {
      * (Note: The text object is floating, and it will be released after the
      *  signal. If signal handler wants to keep the object, the handler should
      *  use g_object_ref_sink() to get the ownership of the object.)
+     * @param text An auxiliary text
+     * @param visible The visibility of `text`
      */
     connect(sigName: "update-auxiliary-text", callback: (($obj: InputContext, text: Text, visible: boolean) => void)): number
     connect_after(sigName: "update-auxiliary-text", callback: (($obj: InputContext, text: Text, visible: boolean) => void)): number
@@ -12651,6 +13790,8 @@ class InputContext {
      * (Note: The table object is floating, and it will be released after the
      *  signal. If signal handler wants to keep the object, the handler should
      *  use g_object_ref_sink() to get the ownership of the object.)
+     * @param table An IBusLookupTable to be updated.
+     * @param visible Whether the table should be visible.
      */
     connect(sigName: "update-lookup-table", callback: (($obj: InputContext, table: LookupTable, visible: boolean) => void)): number
     connect_after(sigName: "update-lookup-table", callback: (($obj: InputContext, table: LookupTable, visible: boolean) => void)): number
@@ -12661,6 +13802,9 @@ class InputContext {
      * (Note: The text object is floating, and it will be released after the
      *  signal. If signal handler wants to keep the object, the handler should
      *  use g_object_ref_sink() to get the ownership of the object.)
+     * @param text Text to be updated.
+     * @param cursor_pos Cursor position.
+     * @param visible Whether the update is visible.
      */
     connect(sigName: "update-preedit-text", callback: (($obj: InputContext, text: Text, cursor_pos: number, visible: boolean) => void)): number
     connect_after(sigName: "update-preedit-text", callback: (($obj: InputContext, text: Text, cursor_pos: number, visible: boolean) => void)): number
@@ -12671,6 +13815,7 @@ class InputContext {
      * (Note: The prop object is floating, and it will be released after the
      *  signal. If signal handler wants to keep the object, the handler should
      *  use g_object_ref_sink() to get the ownership of the object.)
+     * @param prop The IBusProperty to be updated.
      */
     connect(sigName: "update-property", callback: (($obj: InputContext, prop: Property) => void)): number
     connect_after(sigName: "update-property", callback: (($obj: InputContext, prop: Property) => void)): number
@@ -12700,6 +13845,8 @@ class InputContext {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: InputContext, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: InputContext, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -12710,6 +13857,9 @@ class InputContext {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: InputContext, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: InputContext, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -12743,16 +13893,29 @@ class InputContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-bus-type", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: InputContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -12765,19 +13928,30 @@ class InputContext {
     static new_async_finish(res: Gio.AsyncResult): InputContext
     /**
      * Gets an existing IBusInputContext.
+     * @param path The path to the object that emitting the signal.
+     * @param connection A GDBusConnection.
      */
     static get_input_context(path: string, connection: Gio.DBusConnection): InputContext
     /**
      * Gets an existing #IBusInputContext asynchronously.
+     * @param path The path to the object that emitting the signal.
+     * @param connection A #GDBusConnection.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied.      The callback should not be %NULL.
      */
     static get_input_context_async(path: string, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with
      * ibus_input_context_get_input_context_async().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback pass to      ibus_input_context_get_input_context_async().
      */
     static get_input_context_async_finish(res: Gio.AsyncResult): InputContext
     /**
      * Creates a new #IBusInputContext asynchronously.
+     * @param path The path to the object that emitting the signal.
+     * @param connection A #GDBusConnection.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied.      The callback should not be %NULL.
      */
     static new_async(path: string, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -12787,12 +13961,21 @@ class InputContext {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -12801,14 +13984,16 @@ interface Keymap_ConstructProps extends Object_ConstructProps {
 }
 class Keymap {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Keymap */
     /**
      * Converts the scancode to keysym, given the keymap.
+     * @param keycode A scancode to be converted.
+     * @param state Modifier flags(such as Ctrl, Shift).
      */
     lookup_keysym(keycode: number, state: number): number
     /* Methods of IBus-1.0.IBus.Object */
@@ -12856,6 +14041,10 @@ class Keymap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12866,6 +14055,12 @@ class Keymap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12889,6 +14084,7 @@ class Keymap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12908,11 +14104,14 @@ class Keymap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12920,6 +14119,8 @@ class Keymap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12937,6 +14138,7 @@ class Keymap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12982,6 +14184,7 @@ class Keymap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13025,15 +14228,20 @@ class Keymap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13074,6 +14282,7 @@ class Keymap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13108,6 +14317,7 @@ class Keymap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -13137,6 +14347,7 @@ class Keymap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13180,6 +14391,7 @@ class Keymap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Keymap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Keymap, pspec: GObject.ParamSpec) => void)): number
@@ -13200,6 +14412,7 @@ class Keymap {
      * 
      * This function loads the keymap file specified in `name`
      * in the IBUS_DATA_DIR/keymaps directory.
+     * @param name The keymap file to be loaded, such as 'us', 'jp'.
      */
     static get(name: string): Keymap
     static $gtype: GObject.Type
@@ -13208,20 +14421,22 @@ interface LookupTable_ConstructProps extends Serializable_ConstructProps {
 }
 class LookupTable {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.LookupTable */
     /**
      * Append a candidate word/phrase to IBusLookupTable, and increase reference.
+     * @param text candidate word/phrase to be appended (in IBusText format).
      */
     append_candidate(text: Text): void
     /**
      * Append a candidate word/phrase to IBusLookupTable, and increase reference.
      * This function is needed if the input method select candidate with
      * non-numeric keys such as "asdfghjkl;".
+     * @param text A candidate label to be appended (in IBusText format).
      */
     append_label(text: Text): void
     /**
@@ -13246,6 +14461,7 @@ class LookupTable {
     cursor_up(): boolean
     /**
      * Return #IBusText at the given index. Borrowed reference.
+     * @param index Index in the Lookup table.
      */
     get_candidate(index: number): Text
     /**
@@ -13258,6 +14474,7 @@ class LookupTable {
     get_cursor_pos(): number
     /**
      * Return #IBusText at the given index. Borrowed reference.
+     * @param index Index in the Lookup table.
      */
     get_label(index: number): Text
     /**
@@ -13298,28 +14515,35 @@ class LookupTable {
     page_up(): boolean
     /**
      * Set the cursor position of IBusLookupTable.
+     * @param cursor_pos The position of cursor.
      */
     set_cursor_pos(cursor_pos: number): void
     /**
      * Set whether to make the cursor of an IBusLookupTable visible or not.
+     * @param visible Whether to make the cursor of `table` visible.
      */
     set_cursor_visible(visible: boolean): void
     /**
      * Append a candidate word/phrase to IBusLookupTable, and increase reference.
      * This function is needed if the input method select candidate with
      * non-numeric keys such as "asdfghjkl;".
+     * @param index Intex in the Lookup table.
+     * @param text A candidate label to be appended (in IBusText format).
      */
     set_label(index: number, text: Text): void
     /**
      * Set the orientation.
+     * @param orientation .
      */
     set_orientation(orientation: number): void
     /**
      * Set the number of candidate shown per page.
+     * @param page_size number of candidate shown per page.
      */
     set_page_size(page_size: number): void
     /**
      * Set whether to make the IBusLookupTable round or not.
+     * @param round Whether to make `table` round.
      */
     set_round(round: boolean): void
     /* Methods of IBus-1.0.IBus.Serializable */
@@ -13330,11 +14554,13 @@ class LookupTable {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -13347,6 +14573,8 @@ class LookupTable {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -13394,6 +14622,10 @@ class LookupTable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13404,6 +14636,12 @@ class LookupTable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13427,6 +14665,7 @@ class LookupTable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13446,11 +14685,14 @@ class LookupTable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13458,6 +14700,8 @@ class LookupTable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13475,6 +14719,7 @@ class LookupTable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13520,6 +14765,7 @@ class LookupTable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13563,15 +14809,20 @@ class LookupTable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13612,6 +14863,7 @@ class LookupTable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13646,6 +14898,7 @@ class LookupTable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -13679,6 +14932,7 @@ class LookupTable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13722,6 +14976,7 @@ class LookupTable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: LookupTable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: LookupTable, pspec: GObject.ParamSpec) => void)): number
@@ -13744,7 +14999,7 @@ interface Object_ConstructProps extends GObject.InitiallyUnowned_ConstructProps 
 }
 class Object {
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Object */
     /**
      * Emit the "destory" signal notifying all reference holders that they should
@@ -13790,6 +15045,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13800,6 +15059,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13823,6 +15088,7 @@ class Object {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13842,11 +15108,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13854,6 +15123,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13871,6 +15142,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13916,6 +15188,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13959,15 +15232,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14008,6 +15286,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14042,6 +15321,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -14071,6 +15351,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14114,6 +15395,7 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
@@ -14133,11 +15415,11 @@ interface ObservedPath_ConstructProps extends Serializable_ConstructProps {
 }
 class ObservedPath {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.ObservedPath */
     /**
      * Checks whether the path is modified by comparing the mtime in object and
@@ -14147,12 +15429,15 @@ class ObservedPath {
     /**
      * Append the observed path to a string with following format:
      * &lt;path mtime="&lt;i&gt;modified time&lt;/i&gt;" &gt;&lt;i&gt;path&lt;/i&gt;&lt;/path&gt;
+     * @param output Path is appended to.
+     * @param indent number of indent.
      */
     output(output: GLib.String, indent: number): void
     /**
      * Recursively traverse the path and put the files and subdirectory in to
      * a newly allocated
      * GLists, if the `path` is a directory. Otherwise returns NULL.
+     * @param dir_only Only looks for subdirs, not files
      */
     traverse(dir_only: boolean): ObservedPath[]
     /* Methods of IBus-1.0.IBus.Serializable */
@@ -14163,11 +15448,13 @@ class ObservedPath {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -14180,6 +15467,8 @@ class ObservedPath {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -14227,6 +15516,10 @@ class ObservedPath {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14237,6 +15530,12 @@ class ObservedPath {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14260,6 +15559,7 @@ class ObservedPath {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14279,11 +15579,14 @@ class ObservedPath {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14291,6 +15594,8 @@ class ObservedPath {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14308,6 +15613,7 @@ class ObservedPath {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14353,6 +15659,7 @@ class ObservedPath {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14396,15 +15703,20 @@ class ObservedPath {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14445,6 +15757,7 @@ class ObservedPath {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14479,6 +15792,7 @@ class ObservedPath {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -14512,6 +15826,7 @@ class ObservedPath {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14555,6 +15870,7 @@ class ObservedPath {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ObservedPath, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ObservedPath, pspec: GObject.ParamSpec) => void)): number
@@ -14577,16 +15893,28 @@ class ObservedPath {
 interface PanelService_ConstructProps extends Service_ConstructProps {
 }
 class PanelService {
+    /* Properties of IBus-1.0.IBus.Service */
+    /**
+     * The connection of service object.
+     */
+    readonly connection: Gio.DBusConnection
+    /**
+     * The path of service object.
+     */
+    readonly object_path: string
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.PanelService */
     /**
      * Notify that a candidate is clicked
      * by sending a "CandidateClicked" to IBus service.
+     * @param index Index in the Lookup table
+     * @param button GdkEventButton::button (1: left button, etc.)
+     * @param state GdkEventButton::state (key modifier flags)
      */
     candidate_clicked(index: number, button: number, state: number): void
     /**
@@ -14612,16 +15940,20 @@ class PanelService {
     /**
      * Notify that a property is active
      * by sending a "PropertyActivate" message to IBus service.
+     * @param prop_name A property name
+     * @param prop_state State of the property
      */
     property_activate(prop_name: string, prop_state: number): void
     /**
      * Notify that a property is hidden
      * by sending a "ValueChanged" message to IBus service.
+     * @param prop_name A property name
      */
     property_hide(prop_name: string): void
     /**
      * Notify that a property is shown
      * by sending a "ValueChanged" message to IBus service.
+     * @param prop_name A property name
      */
     property_show(prop_name: string): void
     /* Methods of IBus-1.0.IBus.Service */
@@ -14636,10 +15968,12 @@ class PanelService {
     get_object_path(): string
     /**
      * Registers service to a connection.
+     * @param connection A GDBusConnection the service will be registered to.
      */
     register(connection: Gio.DBusConnection): boolean
     /**
      * Unregisters service from a connection.
+     * @param connection A GDBusConnection the service was registered with.
      */
     unregister(connection: Gio.DBusConnection): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -14687,6 +16021,10 @@ class PanelService {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14697,6 +16035,12 @@ class PanelService {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14720,6 +16064,7 @@ class PanelService {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14739,11 +16084,14 @@ class PanelService {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14751,6 +16099,8 @@ class PanelService {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14768,6 +16118,7 @@ class PanelService {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14813,6 +16164,7 @@ class PanelService {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14856,15 +16208,20 @@ class PanelService {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14905,6 +16262,7 @@ class PanelService {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14939,6 +16297,7 @@ class PanelService {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.PanelService */
@@ -14971,16 +16330,34 @@ class PanelService {
     /**
      * The ::service_get_property class method is to connect
      * GDBusInterfaceGetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name A property name.
      */
     vfunc_service_get_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string): GLib.Variant | null
     /**
      * The ::service_method_call class method is to connect
      * GDBusInterfaceMethodCallFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param method_name A method name.
+     * @param parameters A parameters.
+     * @param invocation A dbus method invocation.
      */
     vfunc_service_method_call(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation): void
     /**
      * The ::service_set_property class method is to connect
      * GDBusInterfaceSetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name An property name.
+     * @param value An property value.
      */
     vfunc_service_set_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string, value: GLib.Variant): boolean
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -15010,6 +16387,7 @@ class PanelService {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15046,6 +16424,7 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param input_context_path Object path of InputContext.
      */
     connect(sigName: "destroy-context", callback: (($obj: PanelService, input_context_path: string) => void)): number
     connect_after(sigName: "destroy-context", callback: (($obj: PanelService, input_context_path: string) => void)): number
@@ -15058,6 +16437,7 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param input_context_path Object path of InputContext.
      */
     connect(sigName: "focus-in", callback: (($obj: PanelService, input_context_path: string) => void)): number
     connect_after(sigName: "focus-in", callback: (($obj: PanelService, input_context_path: string) => void)): number
@@ -15070,6 +16450,7 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param input_context_path Object path of InputContext.
      */
     connect(sigName: "focus-out", callback: (($obj: PanelService, input_context_path: string) => void)): number
     connect_after(sigName: "focus-out", callback: (($obj: PanelService, input_context_path: string) => void)): number
@@ -15154,6 +16535,7 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param prop_list An IBusPropList that contains properties.
      */
     connect(sigName: "register-properties", callback: (($obj: PanelService, prop_list: PropList) => void)): number
     connect_after(sigName: "register-properties", callback: (($obj: PanelService, prop_list: PropList) => void)): number
@@ -15178,6 +16560,8 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param purpose Input purpose.
+     * @param hints Input hints.
      */
     connect(sigName: "set-content-type", callback: (($obj: PanelService, purpose: number, hints: number) => void)): number
     connect_after(sigName: "set-content-type", callback: (($obj: PanelService, purpose: number, hints: number) => void)): number
@@ -15190,6 +16574,10 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param x X coordinate of the cursor.
+     * @param y Y coordinate of the cursor.
+     * @param w Width of the cursor.
+     * @param h Height of the cursor.
      */
     connect(sigName: "set-cursor-location", callback: (($obj: PanelService, x: number, y: number, w: number, h: number) => void)): number
     connect_after(sigName: "set-cursor-location", callback: (($obj: PanelService, x: number, y: number, w: number, h: number) => void)): number
@@ -15274,6 +16662,8 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param text A preedit text to be updated.
+     * @param visible Whether the update is visible.
      */
     connect(sigName: "update-auxiliary-text", callback: (($obj: PanelService, text: Text, visible: boolean) => void)): number
     connect_after(sigName: "update-auxiliary-text", callback: (($obj: PanelService, text: Text, visible: boolean) => void)): number
@@ -15286,6 +16676,8 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param lookup_table A lookup table to be updated.
+     * @param visible Whether the update is visible.
      */
     connect(sigName: "update-lookup-table", callback: (($obj: PanelService, lookup_table: LookupTable, visible: boolean) => void)): number
     connect_after(sigName: "update-lookup-table", callback: (($obj: PanelService, lookup_table: LookupTable, visible: boolean) => void)): number
@@ -15298,6 +16690,9 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param text A preedit text to be updated.
+     * @param cursor_pos The cursor position of the text.
+     * @param visible Whether the update is visible.
      */
     connect(sigName: "update-preedit-text", callback: (($obj: PanelService, text: Text, cursor_pos: number, visible: boolean) => void)): number
     connect_after(sigName: "update-preedit-text", callback: (($obj: PanelService, text: Text, cursor_pos: number, visible: boolean) => void)): number
@@ -15310,6 +16705,7 @@ class PanelService {
      * 
      * <note><para>Argument `user_data` is ignored in this function.</para>
      * </note>
+     * @param prop The IBusProperty to be updated.
      */
     connect(sigName: "update-property", callback: (($obj: PanelService, prop: Property) => void)): number
     connect_after(sigName: "update-property", callback: (($obj: PanelService, prop: Property) => void)): number
@@ -15354,10 +16750,15 @@ class PanelService {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PanelService, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PanelService, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: (($obj: PanelService, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: PanelService, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: PanelService, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: PanelService, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15376,22 +16777,25 @@ interface PropList_ConstructProps extends Serializable_ConstructProps {
 }
 class PropList {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.PropList */
     /**
      * Append an IBusProperty to an IBusPropList, and increase reference.
+     * @param prop IBusProperty to be append to `prop_list`.
      */
     append(prop: Property): void
     /**
      * Gets #IBusProperty at given index. Borrowed reference.
+     * @param index Index of an IBusPropList.
      */
     get(index: number): Property
     /**
      * Update an IBusProperty in IBusPropList.
+     * @param prop IBusProperty to be update.
      */
     update_property(prop: Property): boolean
     /* Methods of IBus-1.0.IBus.Serializable */
@@ -15402,11 +16806,13 @@ class PropList {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -15419,6 +16825,8 @@ class PropList {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -15466,6 +16874,10 @@ class PropList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15476,6 +16888,12 @@ class PropList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15499,6 +16917,7 @@ class PropList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15518,11 +16937,14 @@ class PropList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15530,6 +16952,8 @@ class PropList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15547,6 +16971,7 @@ class PropList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15592,6 +17017,7 @@ class PropList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15635,15 +17061,20 @@ class PropList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15684,6 +17115,7 @@ class PropList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15718,6 +17150,7 @@ class PropList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -15751,6 +17184,7 @@ class PropList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15794,6 +17228,7 @@ class PropList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PropList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PropList, pspec: GObject.ParamSpec) => void)): number
@@ -15828,7 +17263,9 @@ interface Property_ConstructProps extends Serializable_ConstructProps {
 class Property {
     /* Properties of IBus-1.0.IBus.Property */
     icon: string
+    readonly key: string
     label: Text
+    readonly prop_type: PropType
     sensitive: boolean
     state: PropState
     sub_props: PropList
@@ -15836,11 +17273,11 @@ class Property {
     tooltip: Text
     visible: boolean
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Property */
     /**
      * Get the icon of #IBusProperty.
@@ -15881,40 +17318,49 @@ class Property {
     get_visible(): boolean
     /**
      * Set the icon of #IBusProperty.
+     * @param icon Icon shown in UI. It could be a full path of an icon file or an icon name.
      */
     set_icon(icon: string): void
     /**
      * Set the label of #IBusProperty.
+     * @param label Text shown in UI.
      */
     set_label(label: Text): void
     /**
      * Set whether the #IBusProperty is sensitive.
+     * @param sensitive Whether the #IBusProperty is sensitive.
      */
     set_sensitive(sensitive: boolean): void
     /**
      * Set the state of the #IBusProperty.
+     * @param state The state of the #IBusProperty.
      */
     set_state(state: PropState): void
     /**
      * Set the sub IBusProperties.
+     * @param prop_list #IBusPropList that contains sub IBusProperties.
      */
     set_sub_props(prop_list: PropList): void
     /**
      * Set the symbol of #IBusProperty.
+     * @param symbol Text shown in UI.
      */
     set_symbol(symbol: Text): void
     /**
      * Set the tooltip of #IBusProperty.
+     * @param tooltip Text of the tooltip.
      */
     set_tooltip(tooltip: Text): void
     /**
      * Set whether the #IBusProperty is visible.
+     * @param visible Whether the #IBusProperty is visible.
      */
     set_visible(visible: boolean): void
     /**
      * Update the content of an #IBusProperty.
      * #IBusProperty `prop_update` can either be sub-property of `prop,`
      * or holds new values for `prop`.
+     * @param prop_update #IBusPropList that contains sub IBusProperties.
      */
     update(prop_update: Property): boolean
     /* Methods of IBus-1.0.IBus.Serializable */
@@ -15925,11 +17371,13 @@ class Property {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -15942,6 +17390,8 @@ class Property {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -15989,6 +17439,10 @@ class Property {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15999,6 +17453,12 @@ class Property {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16022,6 +17482,7 @@ class Property {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16041,11 +17502,14 @@ class Property {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16053,6 +17517,8 @@ class Property {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16070,6 +17536,7 @@ class Property {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16115,6 +17582,7 @@ class Property {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16158,15 +17626,20 @@ class Property {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16207,6 +17680,7 @@ class Property {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16241,6 +17715,7 @@ class Property {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -16274,6 +17749,7 @@ class Property {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16317,14 +17793,19 @@ class Property {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::icon", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::key", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::key", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::label", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::prop-type", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::prop-type", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::sensitive", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sensitive", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::state", callback: (($obj: Property, pspec: GObject.ParamSpec) => void)): number
@@ -16356,6 +17837,17 @@ interface Proxy_ConstructProps extends Gio.DBusProxy_ConstructProps {
 class Proxy {
     /* Properties of Gio-2.0.Gio.DBusProxy */
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
+    /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
      * g_dbus_proxy_call_sync() functions.
@@ -16366,6 +17858,10 @@ class Proxy {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -16394,13 +17890,25 @@ class Proxy {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Proxy */
     /**
      * Dispose the proxy object. If the dbus connection is alive and the own
@@ -16458,10 +17966,17 @@ class Proxy {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -16501,22 +18016,41 @@ class Proxy {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -16526,6 +18060,7 @@ class Proxy {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -16613,6 +18148,8 @@ class Proxy {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -16621,12 +18158,14 @@ class Proxy {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -16664,6 +18203,10 @@ class Proxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16674,6 +18217,12 @@ class Proxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16697,6 +18246,7 @@ class Proxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16716,11 +18266,14 @@ class Proxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16728,6 +18281,8 @@ class Proxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16745,6 +18300,7 @@ class Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16790,6 +18346,7 @@ class Proxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16833,15 +18390,20 @@ class Proxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16882,6 +18444,7 @@ class Proxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16916,6 +18479,7 @@ class Proxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -16956,16 +18520,21 @@ class Proxy {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -16982,6 +18551,7 @@ class Proxy {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -17024,6 +18594,7 @@ class Proxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of IBus-1.0.IBus.Proxy */
@@ -17074,11 +18645,15 @@ class Proxy {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -17094,6 +18669,7 @@ class Proxy {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -17135,6 +18711,7 @@ class Proxy {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Gio-2.0.Gio.DBusProxy */
@@ -17157,6 +18734,7 @@ class Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17185,6 +18763,8 @@ class Proxy {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: Proxy, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: Proxy, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -17195,6 +18775,9 @@ class Proxy {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: Proxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: Proxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -17228,16 +18811,29 @@ class Proxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-bus-type", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -17253,12 +18849,21 @@ class Proxy {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -17267,11 +18872,11 @@ interface Registry_ConstructProps extends Serializable_ConstructProps {
 }
 class Registry {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Registry */
     /**
      * Check if the registry is updated.
@@ -17294,10 +18899,12 @@ class Registry {
     load(): void
     /**
      * Load the user or system registry cache.
+     * @param is_user %TRUE if the registry cache is loaded in the user directory.
      */
     load_cache(is_user: boolean): boolean
     /**
      * Load the registry cache `filename`.
+     * @param filename The file path of the registry cache
      */
     load_cache_file(filename: string): boolean
     /**
@@ -17305,19 +18912,24 @@ class Registry {
      * and add the component objects to the registry.
      * If `dirname` is "/usr/share/ibus/component", this API and
      * ibus_registry_load() are same.
+     * @param dirname IBus component directory which includes XML files.
      */
     load_in_dir(dirname: string): void
     /**
      * Output #IBusRegistry as an XML-formatted string.
      * The output string can be then shown on the screen or written to file.
+     * @param output GString that holds the result.
+     * @param indent level of indent.
      */
     output(output: GLib.String, indent: number): void
     /**
      * Save the registry in a user directory or system directory.
+     * @param is_user %TRUE if the registry cache is saved in the user directory.
      */
     save_cache(is_user: boolean): boolean
     /**
      * Save the registry cache `filename`.
+     * @param filename The file path of the registry cache
      */
     save_cache_file(filename: string): boolean
     /**
@@ -17332,11 +18944,13 @@ class Registry {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -17349,6 +18963,8 @@ class Registry {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -17396,6 +19012,10 @@ class Registry {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17406,6 +19026,12 @@ class Registry {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17429,6 +19055,7 @@ class Registry {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17448,11 +19075,14 @@ class Registry {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17460,6 +19090,8 @@ class Registry {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17477,6 +19109,7 @@ class Registry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17522,6 +19155,7 @@ class Registry {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17565,15 +19199,20 @@ class Registry {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17614,6 +19253,7 @@ class Registry {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17648,6 +19288,7 @@ class Registry {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -17681,6 +19322,7 @@ class Registry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17735,6 +19377,7 @@ class Registry {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Registry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Registry, pspec: GObject.ParamSpec) => void)): number
@@ -17757,11 +19400,11 @@ interface Serializable_ConstructProps extends Object_ConstructProps {
 }
 class Serializable {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Serializable */
     /**
      * Clone an #IBusSerializable.
@@ -17770,11 +19413,13 @@ class Serializable {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -17787,6 +19432,8 @@ class Serializable {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -17834,6 +19481,10 @@ class Serializable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17844,6 +19495,12 @@ class Serializable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17867,6 +19524,7 @@ class Serializable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17886,11 +19544,14 @@ class Serializable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17898,6 +19559,8 @@ class Serializable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17915,6 +19578,7 @@ class Serializable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17960,6 +19624,7 @@ class Serializable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18003,15 +19668,20 @@ class Serializable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18052,6 +19722,7 @@ class Serializable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18086,6 +19757,7 @@ class Serializable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -18119,6 +19791,7 @@ class Serializable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18162,6 +19835,7 @@ class Serializable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Serializable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Serializable, pspec: GObject.ParamSpec) => void)): number
@@ -18180,6 +19854,7 @@ class Serializable {
     /**
      * Deserialize a #GVariant to an #IBusSerializable/
      * The deserialize method should be implemented in extended class.
+     * @param variant A #GVariant.
      */
     static deserialize(variant: GLib.Variant): Serializable
     static $gtype: GObject.Type
@@ -18196,12 +19871,21 @@ interface Service_ConstructProps extends Object_ConstructProps {
     object_path?: string
 }
 class Service {
+    /* Properties of IBus-1.0.IBus.Service */
+    /**
+     * The connection of service object.
+     */
+    readonly connection: Gio.DBusConnection
+    /**
+     * The path of service object.
+     */
+    readonly object_path: string
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Service */
     emit_signal(dest_bus_name: string, interface_name: string, signal_name: string, parameters: GLib.Variant): boolean
     /**
@@ -18214,10 +19898,12 @@ class Service {
     get_object_path(): string
     /**
      * Registers service to a connection.
+     * @param connection A GDBusConnection the service will be registered to.
      */
     register(connection: Gio.DBusConnection): boolean
     /**
      * Unregisters service from a connection.
+     * @param connection A GDBusConnection the service was registered with.
      */
     unregister(connection: Gio.DBusConnection): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -18265,6 +19951,10 @@ class Service {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18275,6 +19965,12 @@ class Service {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18298,6 +19994,7 @@ class Service {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18317,11 +20014,14 @@ class Service {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18329,6 +20029,8 @@ class Service {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18346,6 +20048,7 @@ class Service {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18391,6 +20094,7 @@ class Service {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18434,15 +20138,20 @@ class Service {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18483,6 +20192,7 @@ class Service {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18517,22 +20227,41 @@ class Service {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Service */
     /**
      * The ::service_get_property class method is to connect
      * GDBusInterfaceGetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name A property name.
      */
     vfunc_service_get_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string): GLib.Variant | null
     /**
      * The ::service_method_call class method is to connect
      * GDBusInterfaceMethodCallFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param method_name A method name.
+     * @param parameters A parameters.
+     * @param invocation A dbus method invocation.
      */
     vfunc_service_method_call(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation): void
     /**
      * The ::service_set_property class method is to connect
      * GDBusInterfaceSetPropertyFunc().
+     * @param connection A dbus connection.
+     * @param sender A sender.
+     * @param object_path An object path.
+     * @param interface_name An interface name.
+     * @param property_name An property name.
+     * @param value An property value.
      */
     vfunc_service_set_property(connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string, value: GLib.Variant): boolean
     /* Virtual methods of IBus-1.0.IBus.Object */
@@ -18562,6 +20291,7 @@ class Service {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18605,10 +20335,15 @@ class Service {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -18622,6 +20357,7 @@ class Service {
     static new(): Service
     /**
      * Set the interface introspection information with the service class.
+     * @param xml_data The introspection xml data.
      */
     static add_interfaces(klass: Service | Function | GObject.Type, xml_data: string): boolean
     static $gtype: GObject.Type
@@ -18630,14 +20366,18 @@ interface Text_ConstructProps extends Serializable_ConstructProps {
 }
 class Text {
     /* Fields of IBus-1.0.IBus.Object */
-    readonly parent: GObject.InitiallyUnowned
-    readonly flags: number
-    readonly priv: ObjectPrivate
+    parent: GObject.InitiallyUnowned
+    flags: number
+    priv: ObjectPrivate
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of IBus-1.0.IBus.Text */
     /**
      * Append an IBusAttribute for IBusText.
+     * @param type IBusAttributeType for `text`.
+     * @param value Value for the type.
+     * @param start_index The starting index, inclusive.
+     * @param end_index The ending index, exclusive.
      */
     append_attribute(type: number, value: number, start_index: number, end_index: number): void
     /**
@@ -18663,11 +20403,13 @@ class Text {
     copy(): Serializable
     /**
      * Gets a value from attachment of an #IBusSerializable.
+     * @param key String formatted key for indexing value.
      */
     get_qattachment(key: GLib.Quark): GLib.Variant
     /**
      * Remove a value from attachment of an #IBusSerializable.
      * See also: ibus_serializable_remove_attachment().
+     * @param key String formatted key for indexing value.
      */
     remove_qattachment(key: GLib.Quark): void
     /**
@@ -18680,6 +20422,8 @@ class Text {
      * the serializable will take the ownership.
      * 
      * See also: ibus_serializable_set_attachment().
+     * @param key String formatted key for indexing value.
+     * @param value Value to be attached or %NULL to remove any prevoius value.
      */
     set_qattachment(key: GLib.Quark, value: GLib.Variant): void
     /* Methods of IBus-1.0.IBus.Object */
@@ -18727,6 +20471,10 @@ class Text {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18737,6 +20485,12 @@ class Text {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18760,6 +20514,7 @@ class Text {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18779,11 +20534,14 @@ class Text {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18791,6 +20549,8 @@ class Text {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18808,6 +20568,7 @@ class Text {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18853,6 +20614,7 @@ class Text {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18896,15 +20658,20 @@ class Text {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18945,6 +20712,7 @@ class Text {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18979,6 +20747,7 @@ class Text {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of IBus-1.0.IBus.Serializable */
@@ -19012,6 +20781,7 @@ class Text {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19055,6 +20825,7 @@ class Text {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
@@ -19077,17 +20848,17 @@ class Text {
 }
 abstract class AttrListClass {
     /* Fields of IBus-1.0.IBus.AttrListClass */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 abstract class AttributeClass {
     /* Fields of IBus-1.0.IBus.AttributeClass */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 abstract class BusClass {
     /* Fields of IBus-1.0.IBus.BusClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
 class BusPrivate {
@@ -19095,7 +20866,7 @@ class BusPrivate {
 }
 abstract class ComponentClass {
     /* Fields of IBus-1.0.IBus.ComponentClass */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 class ComponentPrivate {
@@ -19109,39 +20880,39 @@ class ConfigPrivate {
 }
 abstract class ConfigServiceClass {
     /* Fields of IBus-1.0.IBus.ConfigServiceClass */
-    readonly set_value: (config: ConfigService, section: string, name: string, value: GLib.Variant) => boolean
-    readonly get_value: (config: ConfigService, section: string, name: string) => GLib.Variant
-    readonly unset_value: (config: ConfigService, section: string, name: string) => boolean
-    readonly get_values: (config: ConfigService, section: string) => GLib.Variant
+    set_value: (config: ConfigService, section: string, name: string, value: GLib.Variant) => boolean
+    get_value: (config: ConfigService, section: string, name: string) => GLib.Variant
+    unset_value: (config: ConfigService, section: string, name: string) => boolean
+    get_values: (config: ConfigService, section: string) => GLib.Variant
     static name: string
 }
 abstract class EngineClass {
     /* Fields of IBus-1.0.IBus.EngineClass */
-    readonly process_key_event: (engine: Engine, keyval: number, keycode: number, state: number) => boolean
-    readonly focus_in: (engine: Engine) => void
-    readonly focus_out: (engine: Engine) => void
-    readonly reset: (engine: Engine) => void
-    readonly enable: (engine: Engine) => void
-    readonly disable: (engine: Engine) => void
-    readonly set_cursor_location: (engine: Engine, x: number, y: number, w: number, h: number) => void
-    readonly set_capabilities: (engine: Engine, caps: number) => void
-    readonly page_up: (engine: Engine) => void
-    readonly page_down: (engine: Engine) => void
-    readonly cursor_up: (engine: Engine) => void
-    readonly cursor_down: (engine: Engine) => void
-    readonly property_activate: (engine: Engine, prop_name: string, prop_state: number) => void
-    readonly property_show: (engine: Engine, prop_name: string) => void
-    readonly property_hide: (engine: Engine, prop_name: string) => void
-    readonly candidate_clicked: (engine: Engine, index: number, button: number, state: number) => void
-    readonly set_surrounding_text: (engine: Engine, text: Text, cursor_index: number, anchor_pos: number) => void
-    readonly process_hand_writing_event: (engine: Engine, coordinates: number, coordinates_len: number) => void
-    readonly cancel_hand_writing: (engine: Engine, n_strokes: number) => void
-    readonly set_content_type: (engine: Engine, purpose: number, hints: number) => void
+    process_key_event: (engine: Engine, keyval: number, keycode: number, state: number) => boolean
+    focus_in: (engine: Engine) => void
+    focus_out: (engine: Engine) => void
+    reset: (engine: Engine) => void
+    enable: (engine: Engine) => void
+    disable: (engine: Engine) => void
+    set_cursor_location: (engine: Engine, x: number, y: number, w: number, h: number) => void
+    set_capabilities: (engine: Engine, caps: number) => void
+    page_up: (engine: Engine) => void
+    page_down: (engine: Engine) => void
+    cursor_up: (engine: Engine) => void
+    cursor_down: (engine: Engine) => void
+    property_activate: (engine: Engine, prop_name: string, prop_state: number) => void
+    property_show: (engine: Engine, prop_name: string) => void
+    property_hide: (engine: Engine, prop_name: string) => void
+    candidate_clicked: (engine: Engine, index: number, button: number, state: number) => void
+    set_surrounding_text: (engine: Engine, text: Text, cursor_index: number, anchor_pos: number) => void
+    process_hand_writing_event: (engine: Engine, coordinates: number, coordinates_len: number) => void
+    cancel_hand_writing: (engine: Engine, n_strokes: number) => void
+    set_content_type: (engine: Engine, purpose: number, hints: number) => void
     static name: string
 }
 abstract class EngineDescClass {
     /* Fields of IBus-1.0.IBus.EngineDescClass */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 class EngineDescPrivate {
@@ -19158,7 +20929,7 @@ class EngineSimplePrivate {
 }
 abstract class FactoryClass {
     /* Fields of IBus-1.0.IBus.FactoryClass */
-    readonly create_engine: (factory: Factory, engine_name: string) => Engine
+    create_engine: (factory: Factory, engine_name: string) => Engine
     static name: string
 }
 class FactoryPrivate {
@@ -19166,29 +20937,29 @@ class FactoryPrivate {
 }
 abstract class HotkeyProfileClass {
     /* Fields of IBus-1.0.IBus.HotkeyProfileClass */
-    readonly parent: SerializableClass
-    readonly trigger: (profile: HotkeyProfile, event: GLib.Quark) => void
+    parent: SerializableClass
+    trigger: (profile: HotkeyProfile, event: GLib.Quark) => void
     static name: string
 }
 abstract class InputContextClass {
     /* Fields of IBus-1.0.IBus.InputContextClass */
-    readonly parent: ProxyClass
+    parent: ProxyClass
     static name: string
 }
 abstract class KeymapClass {
     /* Fields of IBus-1.0.IBus.KeymapClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
 abstract class LookupTableClass {
     /* Fields of IBus-1.0.IBus.LookupTableClass */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 abstract class ObjectClass {
     /* Fields of IBus-1.0.IBus.ObjectClass */
-    readonly parent: GObject.InitiallyUnownedClass
-    readonly destroy: (object: Object) => void
+    parent: GObject.InitiallyUnownedClass
+    destroy: (object: Object) => void
     static name: string
 }
 class ObjectPrivate {
@@ -19196,37 +20967,37 @@ class ObjectPrivate {
 }
 abstract class ObservedPathClass {
     /* Fields of IBus-1.0.IBus.ObservedPathClass */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 abstract class PanelServiceClass {
     /* Fields of IBus-1.0.IBus.PanelServiceClass */
-    readonly parent: ServiceClass
-    readonly focus_in: (panel: PanelService, input_context_path: string) => void
-    readonly focus_out: (panel: PanelService, input_context_path: string) => void
-    readonly register_properties: (panel: PanelService, prop_list: PropList) => void
-    readonly set_cursor_location: (panel: PanelService, x: number, y: number, w: number, h: number) => void
-    readonly update_auxiliary_text: (panel: PanelService, text: Text, visible: boolean) => void
-    readonly update_lookup_table: (panel: PanelService, lookup_table: LookupTable, visible: boolean) => void
-    readonly update_preedit_text: (panel: PanelService, text: Text, cursor_pos: number, visible: boolean) => void
-    readonly update_property: (panel: PanelService, prop: Property) => void
-    readonly cursor_down_lookup_table: (panel: PanelService) => void
-    readonly cursor_up_lookup_table: (panel: PanelService) => void
-    readonly hide_auxiliary_text: (panel: PanelService) => void
-    readonly hide_language_bar: (panel: PanelService) => void
-    readonly hide_lookup_table: (panel: PanelService) => void
-    readonly hide_preedit_text: (panel: PanelService) => void
-    readonly page_down_lookup_table: (panel: PanelService) => void
-    readonly page_up_lookup_table: (panel: PanelService) => void
-    readonly reset: (panel: PanelService) => void
-    readonly show_auxiliary_text: (panel: PanelService) => void
-    readonly show_language_bar: (panel: PanelService) => void
-    readonly show_lookup_table: (panel: PanelService) => void
-    readonly show_preedit_text: (panel: PanelService) => void
-    readonly start_setup: (panel: PanelService) => void
-    readonly state_changed: (panel: PanelService) => void
-    readonly destroy_context: (panel: PanelService, input_context_path: string) => void
-    readonly set_content_type: (panel: PanelService, purpose: number, hints: number) => void
+    parent: ServiceClass
+    focus_in: (panel: PanelService, input_context_path: string) => void
+    focus_out: (panel: PanelService, input_context_path: string) => void
+    register_properties: (panel: PanelService, prop_list: PropList) => void
+    set_cursor_location: (panel: PanelService, x: number, y: number, w: number, h: number) => void
+    update_auxiliary_text: (panel: PanelService, text: Text, visible: boolean) => void
+    update_lookup_table: (panel: PanelService, lookup_table: LookupTable, visible: boolean) => void
+    update_preedit_text: (panel: PanelService, text: Text, cursor_pos: number, visible: boolean) => void
+    update_property: (panel: PanelService, prop: Property) => void
+    cursor_down_lookup_table: (panel: PanelService) => void
+    cursor_up_lookup_table: (panel: PanelService) => void
+    hide_auxiliary_text: (panel: PanelService) => void
+    hide_language_bar: (panel: PanelService) => void
+    hide_lookup_table: (panel: PanelService) => void
+    hide_preedit_text: (panel: PanelService) => void
+    page_down_lookup_table: (panel: PanelService) => void
+    page_up_lookup_table: (panel: PanelService) => void
+    reset: (panel: PanelService) => void
+    show_auxiliary_text: (panel: PanelService) => void
+    show_language_bar: (panel: PanelService) => void
+    show_lookup_table: (panel: PanelService) => void
+    show_preedit_text: (panel: PanelService) => void
+    start_setup: (panel: PanelService) => void
+    state_changed: (panel: PanelService) => void
+    destroy_context: (panel: PanelService, input_context_path: string) => void
+    set_content_type: (panel: PanelService, purpose: number, hints: number) => void
     static name: string
 }
 abstract class PropListClass {
@@ -19234,12 +21005,12 @@ abstract class PropListClass {
     /**
      * The parent class.
      */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 abstract class PropertyClass {
     /* Fields of IBus-1.0.IBus.PropertyClass */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 class PropertyPrivate {
@@ -19247,8 +21018,8 @@ class PropertyPrivate {
 }
 abstract class ProxyClass {
     /* Fields of IBus-1.0.IBus.ProxyClass */
-    readonly parent: Gio.DBusProxyClass
-    readonly destroy: (proxy: Proxy) => void
+    parent: Gio.DBusProxyClass
+    destroy: (proxy: Proxy) => void
     static name: string
 }
 class Rectangle {
@@ -19256,19 +21027,19 @@ class Rectangle {
     /**
      * x coordinate.
      */
-    readonly x: number
+    x: number
     /**
      * y coordinate.
      */
-    readonly y: number
+    y: number
     /**
      * width of the rectangle.
      */
-    readonly width: number
+    width: number
     /**
      * height of the renctangl.
      */
-    readonly height: number
+    height: number
     static name: string
 }
 abstract class RegistryClass {
@@ -19279,9 +21050,9 @@ class RegistryPrivate {
 }
 abstract class SerializableClass {
     /* Fields of IBus-1.0.IBus.SerializableClass */
-    readonly serialize: (object: Serializable, builder: GLib.VariantBuilder) => boolean
-    readonly deserialize: (object: Serializable, variant: GLib.Variant) => number
-    readonly copy: (dest: Serializable, src: Serializable) => boolean
+    serialize: (object: Serializable, builder: GLib.VariantBuilder) => boolean
+    deserialize: (object: Serializable, variant: GLib.Variant) => number
+    copy: (dest: Serializable, src: Serializable) => boolean
     static name: string
 }
 class SerializablePrivate {
@@ -19289,12 +21060,13 @@ class SerializablePrivate {
 }
 abstract class ServiceClass {
     /* Fields of IBus-1.0.IBus.ServiceClass */
-    readonly service_method_call: (service: Service, connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation) => void
-    readonly service_get_property: (service: Service, connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string) => GLib.Variant | null
-    readonly service_set_property: (service: Service, connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string, value: GLib.Variant) => boolean
+    service_method_call: (service: Service, connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation) => void
+    service_get_property: (service: Service, connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string) => GLib.Variant | null
+    service_set_property: (service: Service, connection: Gio.DBusConnection, sender: string, object_path: string, interface_name: string, property_name: string, value: GLib.Variant) => boolean
     /* Methods of IBus-1.0.IBus.ServiceClass */
     /**
      * Set the interface introspection information with the service class.
+     * @param xml_data The introspection xml data.
      */
     static add_interfaces(klass: Service | Function | GObject.Type, xml_data: string): boolean
     static name: string
@@ -19304,7 +21076,7 @@ class ServicePrivate {
 }
 abstract class TextClass {
     /* Fields of IBus-1.0.IBus.TextClass */
-    readonly parent: SerializableClass
+    parent: SerializableClass
     static name: string
 }
 class XML {
@@ -19312,19 +21084,19 @@ class XML {
     /**
      * Name of XML tag.
      */
-    readonly name: string
+    name: string
     /**
      * Text enclosed by XML start tag and end tag. i.e. <tag>text</tag>.
      */
-    readonly text: string
+    text: string
     /**
      * Attributes of the XML node.
      */
-    readonly attributes: string
+    attributes: string
     /**
      * Children node of this XML node.
      */
-    readonly sub_nodes: object[]
+    sub_nodes: object[]
     /* Methods of IBus-1.0.IBus.XML */
     /**
      * Creates a copy of `node,` which should be freed with
@@ -19339,6 +21111,7 @@ class XML {
     free(): void
     /**
      * Output an XML tree to a GString.
+     * @param output GString which stores the output.
      */
     output(output: GLib.String): void
     static name: string
@@ -19346,10 +21119,12 @@ class XML {
     /**
      * Parse a string buffer which contains an XML-formatted string,
      * and return a corresponding XML tree.
+     * @param buffer Buffer to be parsed.
      */
     static parse_buffer(buffer: string): XML
     /**
      * Parse an XML file and return a corresponding XML tree.
+     * @param name File name to be parsed.
      */
     static parse_file(name: string): XML
 }

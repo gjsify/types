@@ -90,7 +90,7 @@ interface Client_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Client {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GConf-2.0.GConf.Client */
     add_dir(dir: string, preload: ClientPreloadType): void
     /**
@@ -99,6 +99,7 @@ class Client {
      * subdirectory. You should g_free() each string in the list, then
      * g_slist_free() the list itself.  Just like gconf_engine_all_dirs(),
      * but uses #GConfClient caching and error-handling features.
+     * @param dir directory to get subdirectories from.
      */
     all_dirs(dir: string): string[]
     /**
@@ -109,6 +110,7 @@ class Client {
      * children of `dir`.  To free the returned list, gconf_entry_free()
      * each list element, then g_slist_free() the list itself.
      * Just like gconf_engine_all_entries (), but uses #GConfClient caching and error-handling features.
+     * @param dir directory to list.
      */
     all_entries(dir: string): Entry[]
     change_set_from_currentv(keys: string): ChangeSet
@@ -179,6 +181,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -189,6 +195,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -212,6 +224,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -231,11 +244,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -243,6 +259,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -260,6 +278,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -305,6 +324,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -348,15 +368,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -397,6 +422,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -431,6 +457,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GConf-2.0.GConf.Client */
@@ -454,6 +481,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -496,6 +524,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
@@ -527,6 +556,7 @@ class ChangeSet {
      * description of #GConfChangeSetForeachFunc for details.  You may not
      * call gconf_change_set_remove() during the iteration, because you'll
      * confuse the internal data structures and cause memory corruption.
+     * @param func function to call for each change in the change set.
      */
     foreach(func: ChangeSetForeachFunc): void
     ref(): ChangeSet
@@ -549,13 +579,13 @@ class ChangeSet {
 }
 abstract class ClientClass {
     /* Fields of GConf-2.0.GConf.ClientClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly value_changed: (client: Client, key: string, value: Value) => void
-    readonly unreturned_error: (client: Client, error: GLib.Error) => void
-    readonly error: (client: Client, error: GLib.Error) => void
-    readonly pad1: GLib.Func
-    readonly pad2: GLib.Func
-    readonly pad3: GLib.Func
+    parent_class: GObject.ObjectClass
+    value_changed: (client: Client, key: string, value: Value) => void
+    unreturned_error: (client: Client, error: GLib.Error) => void
+    error: (client: Client, error: GLib.Error) => void
+    pad1: GLib.Func
+    pad2: GLib.Func
+    pad3: GLib.Func
     static name: string
 }
 class Engine {
@@ -565,6 +595,7 @@ class Engine {
      * allocated strings. Each string is the absolute path of a
      * subdirectory. You should g_free() each string in the list, then
      * g_slist_free() the list itself.
+     * @param dir Directory to get subdirectories from.
      */
     all_dirs(dir: string): string[]
     /**
@@ -574,6 +605,7 @@ class Engine {
      * and a value. The list is not recursive, it contains only the immediate
      * children of `dir`.  To free the returned list, gconf_entry_free()
      * each list element, then g_slist_free() the list itself.
+     * @param dir Directory to list.
      */
     all_entries(dir: string): Entry[]
     associate_schema(key: string, schema_key: string): boolean
@@ -613,8 +645,8 @@ class Engine {
 }
 class Entry {
     /* Fields of GConf-2.0.GConf.Entry */
-    readonly key: string
-    readonly value: Value
+    key: string
+    value: Value
     /* Methods of GConf-2.0.GConf.Entry */
     copy(): Entry
     equal(b: Entry): boolean
@@ -641,8 +673,8 @@ class Entry {
 }
 class EnumStringPair {
     /* Fields of GConf-2.0.GConf.EnumStringPair */
-    readonly enum_value: number
-    readonly str: string
+    enum_value: number
+    str: string
     static name: string
 }
 class Listeners {
@@ -659,9 +691,9 @@ class Listeners {
 }
 class MetaInfo {
     /* Fields of GConf-2.0.GConf.MetaInfo */
-    readonly schema: string
-    readonly mod_user: string
-    readonly mod_time: GLib.Time
+    schema: string
+    mod_user: string
+    mod_time: GLib.Time
     /* Methods of GConf-2.0.GConf.MetaInfo */
     free(): void
     get_mod_user(): string
@@ -697,7 +729,7 @@ class Schema {
 }
 class Value {
     /* Fields of GConf-2.0.GConf.Value */
-    readonly type: ValueType
+    type: ValueType
     /* Methods of GConf-2.0.GConf.Value */
     compare(value_b: Value): number
     copy(): Value

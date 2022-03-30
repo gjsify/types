@@ -40,10 +40,15 @@ function x11_set_sm_client_id(sm_client_id?: string | null): void
 interface X11AppLaunchContext_ConstructProps extends Gdk.AppLaunchContext_ConstructProps {
 }
 class X11AppLaunchContext {
+    /* Properties of Gdk-4.0.Gdk.AppLaunchContext */
+    /**
+     * The display that the `GdkAppLaunchContext` is on.
+     */
+    readonly display: Gdk.Display
     /* Fields of Gio-2.0.Gio.AppLaunchContext */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.AppLaunchContext */
     /**
      * Gets the `GdkDisplay` that `context` is for.
@@ -63,6 +68,7 @@ class X11AppLaunchContext {
      * When the workspace is not specified or `desktop` is set to -1,
      * it is up to the window manager to pick one, typically it will
      * be the current workspace.
+     * @param desktop the number of a workspace, or -1
      */
     set_desktop(desktop: number): void
     /**
@@ -73,6 +79,7 @@ class X11AppLaunchContext {
      * notification.
      * 
      * See also [method`Gdk`.AppLaunchContext.set_icon_name].
+     * @param icon a `GIcon`
      */
     set_icon(icon?: Gio.Icon | null): void
     /**
@@ -85,6 +92,7 @@ class X11AppLaunchContext {
      * If neither `icon` or `icon_name` is set, the icon is taken from either
      * the file that is passed to launched application or from the `GAppInfo`
      * for the launched application itself.
+     * @param icon_name an icon name
      */
     set_icon_name(icon_name?: string | null): void
     /**
@@ -97,6 +105,7 @@ class X11AppLaunchContext {
      * focus to the newly launched application when the user is busy
      * typing in another window. This is also known as 'focus stealing
      * prevention'.
+     * @param timestamp a timestamp
      */
     set_timestamp(timestamp: number): void
     /* Methods of Gio-2.0.Gio.AppLaunchContext */
@@ -104,6 +113,8 @@ class X11AppLaunchContext {
      * Gets the display string for the `context`. This is used to ensure new
      * applications are started on the same display as the launching
      * application, by setting the `DISPLAY` environment variable.
+     * @param info a #GAppInfo
+     * @param files a #GList of #GFile objects
      */
     get_display(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
@@ -119,21 +130,27 @@ class X11AppLaunchContext {
      * 
      * Startup notification IDs are defined in the
      * [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * @param info a #GAppInfo
+     * @param files a #GList of of #GFile objects
      */
     get_startup_notify_id(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
      * Called when an application has failed to launch, so that it can cancel
      * the application startup notification started in g_app_launch_context_get_startup_notify_id().
+     * @param startup_notify_id the startup notification id that was returned by g_app_launch_context_get_startup_notify_id().
      */
     launch_failed(startup_notify_id: string): void
     /**
      * Arranges for `variable` to be set to `value` in the child's
      * environment when `context` is used to launch an application.
+     * @param variable the environment variable to set
+     * @param value the value for to set the variable to.
      */
     setenv(variable: string, value: string): void
     /**
      * Arranges for `variable` to be unset in the child's environment
      * when `context` is used to launch an application.
+     * @param variable the environment variable to remove
      */
     unsetenv(variable: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -171,6 +188,10 @@ class X11AppLaunchContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -181,6 +202,12 @@ class X11AppLaunchContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -204,6 +231,7 @@ class X11AppLaunchContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -223,11 +251,14 @@ class X11AppLaunchContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -235,6 +266,8 @@ class X11AppLaunchContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -252,6 +285,7 @@ class X11AppLaunchContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -297,6 +331,7 @@ class X11AppLaunchContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -340,15 +375,20 @@ class X11AppLaunchContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -389,6 +429,7 @@ class X11AppLaunchContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -423,6 +464,7 @@ class X11AppLaunchContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gio-2.0.Gio.AppLaunchContext */
@@ -430,6 +472,8 @@ class X11AppLaunchContext {
      * Gets the display string for the `context`. This is used to ensure new
      * applications are started on the same display as the launching
      * application, by setting the `DISPLAY` environment variable.
+     * @param info a #GAppInfo
+     * @param files a #GList of #GFile objects
      */
     vfunc_get_display(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
@@ -438,11 +482,14 @@ class X11AppLaunchContext {
      * 
      * Startup notification IDs are defined in the
      * [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * @param info a #GAppInfo
+     * @param files a #GList of of #GFile objects
      */
     vfunc_get_startup_notify_id(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
      * Called when an application has failed to launch, so that it can cancel
      * the application startup notification started in g_app_launch_context_get_startup_notify_id().
+     * @param startup_notify_id the startup notification id that was returned by g_app_launch_context_get_startup_notify_id().
      */
     vfunc_launch_failed(startup_notify_id: string): void
     vfunc_launch_started(info: Gio.AppInfo, platform_data: GLib.Variant): void
@@ -464,6 +511,7 @@ class X11AppLaunchContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -472,6 +520,7 @@ class X11AppLaunchContext {
      * The #GAppLaunchContext::launch-failed signal is emitted when a #GAppInfo launch
      * fails. The startup notification id is provided, so that the launcher
      * can cancel the startup notification.
+     * @param startup_notify_id the startup notification id for the failed launch
      */
     connect(sigName: "launch-failed", callback: (($obj: X11AppLaunchContext, startup_notify_id: string) => void)): number
     connect_after(sigName: "launch-failed", callback: (($obj: X11AppLaunchContext, startup_notify_id: string) => void)): number
@@ -491,6 +540,8 @@ class X11AppLaunchContext {
      * 
      * It is guaranteed that this signal is followed by either a #GAppLaunchContext::launched or
      * #GAppLaunchContext::launch-failed signal.
+     * @param info the #GAppInfo that is about to be launched
+     * @param platform_data additional platform-specific data for this launch
      */
     connect(sigName: "launch-started", callback: (($obj: X11AppLaunchContext, info: Gio.AppInfo, platform_data?: GLib.Variant | null) => void)): number
     connect_after(sigName: "launch-started", callback: (($obj: X11AppLaunchContext, info: Gio.AppInfo, platform_data?: GLib.Variant | null) => void)): number
@@ -505,6 +556,8 @@ class X11AppLaunchContext {
      * Since 2.72 the `pid` may be 0 if the process id wasn't known (for
      * example if the process was launched via D-Bus). The `pid` may not be
      * set at all in subsequent releases.
+     * @param info the #GAppInfo that was just launched
+     * @param platform_data additional platform-specific data for this launch
      */
     connect(sigName: "launched", callback: (($obj: X11AppLaunchContext, info: Gio.AppInfo, platform_data: GLib.Variant) => void)): number
     connect_after(sigName: "launched", callback: (($obj: X11AppLaunchContext, info: Gio.AppInfo, platform_data: GLib.Variant) => void)): number
@@ -538,10 +591,13 @@ class X11AppLaunchContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11AppLaunchContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11AppLaunchContext, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::display", callback: (($obj: X11AppLaunchContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: X11AppLaunchContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -559,8 +615,13 @@ interface X11DeviceManagerXI2_ConstructProps extends GObject.Object_ConstructPro
     opcode?: number
 }
 class X11DeviceManagerXI2 {
+    /* Properties of GdkX11-4.0.GdkX11.X11DeviceManagerXI2 */
+    readonly display: Gdk.Display
+    readonly major: number
+    readonly minor: number
+    readonly opcode: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -596,6 +657,10 @@ class X11DeviceManagerXI2 {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -606,6 +671,12 @@ class X11DeviceManagerXI2 {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -629,6 +700,7 @@ class X11DeviceManagerXI2 {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -648,11 +720,14 @@ class X11DeviceManagerXI2 {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -660,6 +735,8 @@ class X11DeviceManagerXI2 {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -677,6 +754,7 @@ class X11DeviceManagerXI2 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -722,6 +800,7 @@ class X11DeviceManagerXI2 {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -765,15 +844,20 @@ class X11DeviceManagerXI2 {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -814,6 +898,7 @@ class X11DeviceManagerXI2 {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -848,6 +933,7 @@ class X11DeviceManagerXI2 {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -867,6 +953,7 @@ class X11DeviceManagerXI2 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -899,10 +986,19 @@ class X11DeviceManagerXI2 {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::display", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::major", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::major", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::minor", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::minor", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::opcode", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opcode", callback: (($obj: X11DeviceManagerXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -917,6 +1013,8 @@ interface X11DeviceXI2_ConstructProps extends Gdk.Device_ConstructProps {
     device_id?: number
 }
 class X11DeviceXI2 {
+    /* Properties of GdkX11-4.0.GdkX11.X11DeviceXI2 */
+    readonly device_id: number
     /* Properties of Gdk-4.0.Gdk.Device */
     /**
      * Whether Caps Lock is on.
@@ -931,11 +1029,19 @@ class X11DeviceXI2 {
      */
     readonly direction: Pango.Direction
     /**
+     * The `GdkDisplay` the `GdkDevice` pertains to.
+     */
+    readonly display: Gdk.Display
+    /**
      * Whether the device has both right-to-left and left-to-right layouts.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly has_bidi_layouts: boolean
+    /**
+     * Whether the device is represented by a cursor on the screen.
+     */
+    readonly has_cursor: boolean
     /**
      * The current modifier state of the device.
      * 
@@ -947,11 +1053,28 @@ class X11DeviceXI2 {
      */
     readonly n_axes: number
     /**
+     * The device name.
+     */
+    readonly name: string
+    /**
      * Whether Num Lock is on.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly num_lock_state: boolean
+    /**
+     * The maximal number of concurrent touches on a touch device.
+     * 
+     * Will be 0 if the device is not a touch device or if the number
+     * of touches is unknown.
+     */
+    readonly num_touches: number
+    /**
+     * Product ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_product_id].
+     */
+    readonly product_id: string
     /**
      * Whether Scroll Lock is on.
      * 
@@ -963,11 +1086,21 @@ class X11DeviceXI2 {
      */
     seat: Gdk.Seat
     /**
+     * Source type for the device.
+     */
+    readonly source: Gdk.InputSource
+    /**
      * The `GdkDeviceTool` that is currently used with this device.
      */
     readonly tool: Gdk.DeviceTool
+    /**
+     * Vendor ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_vendor_id].
+     */
+    readonly vendor_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Device */
     /**
      * Retrieves whether the Caps Lock modifier of the keyboard is locked.
@@ -1122,6 +1255,10 @@ class X11DeviceXI2 {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1132,6 +1269,12 @@ class X11DeviceXI2 {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1155,6 +1298,7 @@ class X11DeviceXI2 {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1174,11 +1318,14 @@ class X11DeviceXI2 {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1186,6 +1333,8 @@ class X11DeviceXI2 {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1203,6 +1352,7 @@ class X11DeviceXI2 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1248,6 +1398,7 @@ class X11DeviceXI2 {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1291,15 +1442,20 @@ class X11DeviceXI2 {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1340,6 +1496,7 @@ class X11DeviceXI2 {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1374,6 +1531,7 @@ class X11DeviceXI2 {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1393,6 +1551,7 @@ class X11DeviceXI2 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1411,6 +1570,7 @@ class X11DeviceXI2 {
     emit(sigName: "changed"): void
     /**
      * Emitted on pen/eraser devices whenever tools enter or leave proximity.
+     * @param tool The new current tool
      */
     connect(sigName: "tool-changed", callback: (($obj: X11DeviceXI2, tool: Gdk.DeviceTool) => void)): number
     connect_after(sigName: "tool-changed", callback: (($obj: X11DeviceXI2, tool: Gdk.DeviceTool) => void)): number
@@ -1444,28 +1604,45 @@ class X11DeviceXI2 {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::device-id", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-id", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::caps-lock-state", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::caps-lock-state", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::direction", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::direction", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::has-bidi-layouts", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-bidi-layouts", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::has-cursor", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-cursor", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::modifier-state", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modifier-state", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::n-axes", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::n-axes", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::num-lock-state", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::num-lock-state", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::num-touches", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-touches", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::product-id", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::product-id", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::scroll-lock-state", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scroll-lock-state", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::seat", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::seat", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::tool", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tool", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::vendor-id", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vendor-id", callback: (($obj: X11DeviceXI2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1492,7 +1669,7 @@ class X11Display {
      */
     readonly rgba: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GdkX11-4.0.GdkX11.X11Display */
     /**
      * Pops the error trap pushed by gdk_x11_display_error_trap_push().
@@ -1574,6 +1751,7 @@ class X11Display {
      * It may for example be shared with its fallback cursor. On old
      * X servers that don't support the XCursor extension, all cursors
      * may even fall back to a few default cursors.
+     * @param cursor a `GdkCursor`
      */
     get_xcursor(cursor: Gdk.Cursor): xlib.Cursor
     /**
@@ -1605,6 +1783,8 @@ class X11Display {
      * will have to be handled by the application (GTK applications can learn
      * about cursor theme changes by listening for change notification
      * for the corresponding `GtkSetting`).
+     * @param theme the name of the cursor theme to use, or %NULL   to unset a previously set value
+     * @param size the cursor size to use, or 0 to keep the previous size
      */
     set_cursor_theme(theme: string | null, size: number): void
     /**
@@ -1622,6 +1802,7 @@ class X11Display {
      * The startup ID is also what is used to signal that the startup is
      * complete (for example, when opening a window or when calling
      * gdk_display_notify_startup_complete()).
+     * @param startup_id the startup notification ID (must be valid utf8)
      */
     set_startup_notification_id(startup_id: string): void
     /**
@@ -1632,11 +1813,13 @@ class X11Display {
      * 
      * Once the scale is set by this call it will not change in response
      * to later user configuration changes.
+     * @param scale The new scale value
      */
     set_surface_scale(scale: number): void
     /**
      * Convert a string from the encoding of the current
      * locale into a form suitable for storing in a window property.
+     * @param str a nul-terminated string
      */
     string_to_compound_text(str: string): [ /* returnType */ number, /* encoding */ string, /* format */ number, /* ctext */ Uint8Array ]
     /**
@@ -1644,6 +1827,11 @@ class X11Display {
      * in a property into an array of strings in the encoding of
      * the current locale. (The elements of the array represent the
      * nul-separated elements of the original text string.)
+     * @param encoding a string representing the encoding. The most   common values for this are "STRING", or "COMPOUND_TEXT".   This is value used as the type for the property
+     * @param format the format of the property
+     * @param text The text data
+     * @param length The number of items to transform
+     * @param list location to store an  array of strings in   the encoding of the current locale. This array should be   freed using gdk_x11_free_text_list().
      */
     text_property_to_text_list(encoding: string, format: number, text: number, length: number, list: string): number
     /**
@@ -1653,6 +1841,7 @@ class X11Display {
     ungrab(): void
     /**
      * Converts from UTF-8 to compound text.
+     * @param str a UTF-8 string
      */
     utf8_to_compound_text(str: string): [ /* returnType */ boolean, /* encoding */ string, /* format */ number, /* ctext */ Uint8Array ]
     /* Methods of Gdk-4.0.Gdk.Display */
@@ -1680,6 +1869,7 @@ class X11Display {
     create_gl_context(): Gdk.GLContext
     /**
      * Returns %TRUE if there is an ongoing grab on `device` for `display`.
+     * @param device a `GdkDevice`
      */
     device_is_grabbed(device: Gdk.Device): boolean
     /**
@@ -1717,6 +1907,7 @@ class X11Display {
      * 
      * Returns a monitor close to `surface` if it is outside
      * of all monitors.
+     * @param surface a `GdkSurface`
      */
     get_monitor_at_surface(surface: Gdk.Surface): Gdk.Monitor
     /**
@@ -1743,6 +1934,8 @@ class X11Display {
     /**
      * Retrieves a desktop-wide setting such as double-click time
      * for the `display`.
+     * @param name the name of the setting
+     * @param value location to store the value of the setting
      */
     get_setting(name: string, value: any): boolean
     /**
@@ -1795,6 +1988,7 @@ class X11Display {
      * keyboard group and level.
      * 
      * Free the returned arrays with g_free().
+     * @param keycode a keycode
      */
     map_keycode(keycode: number): [ /* returnType */ boolean, /* keys */ Gdk.KeymapKey[] | null, /* keyvals */ number[] | null ]
     /**
@@ -1813,6 +2007,7 @@ class X11Display {
      * keyboard group. The level is computed from the modifier mask.
      * 
      * The returned array should be freed with g_free().
+     * @param keyval a keyval, such as %GDK_KEY_a, %GDK_KEY_Up, %GDK_KEY_Return, etc.
      */
     map_keyval(keyval: number): [ /* returnType */ boolean, /* keys */ Gdk.KeymapKey[] ]
     /**
@@ -1823,6 +2018,7 @@ class X11Display {
      * with custom startup-notification identifier unless
      * [method`Gtk`.Window.set_auto_startup_notification]
      * is called to disable that feature.
+     * @param startup_id a startup-notification identifier, for which   notification process should be completed
      */
     notify_startup_complete(startup_id: string): void
     /**
@@ -1848,6 +2044,7 @@ class X11Display {
      * 
      * This function is only useful in very special situations
      * and should not be used by applications.
+     * @param event a `GdkEvent`
      */
     put_event(event: Gdk.Event): void
     /**
@@ -1892,6 +2089,9 @@ class X11Display {
      * This function should rarely be needed, since `GdkEventKey` already
      * contains the translated keyval. It is exported for the benefit of
      * virtualized test environments.
+     * @param keycode a keycode
+     * @param state a modifier state
+     * @param group active keyboard group
      */
     translate_key(keycode: number, state: Gdk.ModifierType, group: number): [ /* returnType */ boolean, /* keyval */ number | null, /* effective_group */ number | null, /* level */ number | null, /* consumed */ Gdk.ModifierType | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -1929,6 +2129,10 @@ class X11Display {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1939,6 +2143,12 @@ class X11Display {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1962,6 +2172,7 @@ class X11Display {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1981,11 +2192,14 @@ class X11Display {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1993,6 +2207,8 @@ class X11Display {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2010,6 +2226,7 @@ class X11Display {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2055,6 +2272,7 @@ class X11Display {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2098,15 +2316,20 @@ class X11Display {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2147,6 +2370,7 @@ class X11Display {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2181,6 +2405,7 @@ class X11Display {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2200,6 +2425,7 @@ class X11Display {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2220,6 +2446,7 @@ class X11Display {
      * If you are interested in X GenericEvents, bear in mind that
      * XGetEventData() has been already called on the event, and
      * XFreeEventData() will be called afterwards.
+     * @param xevent a pointer to the XEvent to process
      */
     connect(sigName: "xevent", callback: (($obj: X11Display, xevent?: object | null) => boolean)): number
     connect_after(sigName: "xevent", callback: (($obj: X11Display, xevent?: object | null) => boolean)): number
@@ -2227,6 +2454,7 @@ class X11Display {
     /* Signals of Gdk-4.0.Gdk.Display */
     /**
      * Emitted when the connection to the windowing system for `display` is closed.
+     * @param is_error %TRUE if the display was closed due to an error
      */
     connect(sigName: "closed", callback: (($obj: X11Display, is_error: boolean) => void)): number
     connect_after(sigName: "closed", callback: (($obj: X11Display, is_error: boolean) => void)): number
@@ -2239,18 +2467,21 @@ class X11Display {
     emit(sigName: "opened"): void
     /**
      * Emitted whenever a new seat is made known to the windowing system.
+     * @param seat the seat that was just added
      */
     connect(sigName: "seat-added", callback: (($obj: X11Display, seat: Gdk.Seat) => void)): number
     connect_after(sigName: "seat-added", callback: (($obj: X11Display, seat: Gdk.Seat) => void)): number
     emit(sigName: "seat-added", seat: Gdk.Seat): void
     /**
      * Emitted whenever a seat is removed by the windowing system.
+     * @param seat the seat that was just removed
      */
     connect(sigName: "seat-removed", callback: (($obj: X11Display, seat: Gdk.Seat) => void)): number
     connect_after(sigName: "seat-removed", callback: (($obj: X11Display, seat: Gdk.Seat) => void)): number
     emit(sigName: "seat-removed", seat: Gdk.Seat): void
     /**
      * Emitted whenever a setting changes its value.
+     * @param setting the name of the setting that changed
      */
     connect(sigName: "setting-changed", callback: (($obj: X11Display, setting: string) => void)): number
     connect_after(sigName: "setting-changed", callback: (($obj: X11Display, setting: string) => void)): number
@@ -2284,6 +2515,7 @@ class X11Display {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11Display, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11Display, pspec: GObject.ParamSpec) => void)): number
@@ -2306,6 +2538,7 @@ class X11Display {
      * Tries to open a new display to the X server given by
      * `display_name`. If opening the display fails, %NULL is
      * returned.
+     * @param display_name name of the X display.   See the XOpenDisplay() for details.
      */
     static open(display_name?: string | null): Gdk.Display | null
     /* Function overloads */
@@ -2313,6 +2546,7 @@ class X11Display {
      * Opens a display.
      * 
      * If opening the display fails, `NULL` is returned.
+     * @param display_name the name of the display to open
      */
     static open(display_name: string): Gdk.Display | null
     /**
@@ -2320,6 +2554,8 @@ class X11Display {
      * 
      * The X11 backend uses the program class to set the class name part
      * of the `WM_CLASS` property on toplevel windows; see the ICCCM.
+     * @param display a `GdkDisplay`
+     * @param program_class a string
      */
     static set_program_class(display: Gdk.Display, program_class: string): void
     static $gtype: GObject.Type
@@ -2333,15 +2569,31 @@ class X11Drag {
      */
     actions: Gdk.DragAction
     /**
+     * The `GdkContentProvider`.
+     */
+    readonly content: Gdk.ContentProvider
+    /**
+     * The `GdkDevice` that is performing the drag.
+     */
+    readonly device: Gdk.Device
+    /**
      * The `GdkDisplay` that the drag belongs to.
      */
     readonly display: Gdk.Display
     /**
+     * The possible formats that the drag can provide its data in.
+     */
+    readonly formats: Gdk.ContentFormats
+    /**
      * The currently selected action of the drag.
      */
     selected_action: Gdk.DragAction
+    /**
+     * The surface where the drag originates.
+     */
+    readonly surface: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.Drag */
     /**
      * Informs GDK that the drop ended.
@@ -2355,6 +2607,7 @@ class X11Drag {
      * The `GdkDrag` will only take the first [method`Gdk`.Drag.drop_done]
      * call as effective, if this function is called multiple times,
      * all subsequent calls will be ignored.
+     * @param success whether the drag was ultimatively successful
      */
     drop_done(success: boolean): void
     /**
@@ -2400,6 +2653,8 @@ class X11Drag {
      * under the cursor hotspot.
      * 
      * Initially, the hotspot is at the top left corner of the drag surface.
+     * @param hot_x x coordinate of the drag surface hotspot
+     * @param hot_y y coordinate of the drag surface hotspot
      */
     set_hotspot(hot_x: number, hot_y: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2437,6 +2692,10 @@ class X11Drag {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2447,6 +2706,12 @@ class X11Drag {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2470,6 +2735,7 @@ class X11Drag {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2489,11 +2755,14 @@ class X11Drag {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2501,6 +2770,8 @@ class X11Drag {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2518,6 +2789,7 @@ class X11Drag {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2563,6 +2835,7 @@ class X11Drag {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2606,15 +2879,20 @@ class X11Drag {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2655,6 +2933,7 @@ class X11Drag {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2689,6 +2968,7 @@ class X11Drag {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2708,12 +2988,14 @@ class X11Drag {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Gdk-4.0.Gdk.Drag */
     /**
      * Emitted when the drag operation is cancelled.
+     * @param reason The reason the drag was cancelled
      */
     connect(sigName: "cancel", callback: (($obj: X11Drag, reason: Gdk.DragCancelReason) => void)): number
     connect_after(sigName: "cancel", callback: (($obj: X11Drag, reason: Gdk.DragCancelReason) => void)): number
@@ -2761,16 +3043,25 @@ class X11Drag {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::actions", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::actions", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::content", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::content", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::device", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::display", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::display", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::formats", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::formats", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::selected-action", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::selected-action", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::surface", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: (($obj: X11Drag, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2792,8 +3083,24 @@ class X11GLContext {
      * The API currently in use.
      */
     readonly api: Gdk.GLAPI
+    /**
+     * Always %NULL
+     * 
+     * As many contexts can share data now and no single shared context exists
+     * anymore, this function has been deprecated and now always returns %NULL.
+     */
+    readonly shared_context: Gdk.GLContext
+    /* Properties of Gdk-4.0.Gdk.DrawContext */
+    /**
+     * The `GdkDisplay` used to create the `GdkDrawContext`.
+     */
+    readonly display: Gdk.Display
+    /**
+     * The `GdkSurface` the context is bound to.
+     */
+    readonly surface: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-4.0.Gdk.GLContext */
     /**
      * Gets the allowed APIs set via gdk_gl_context_set_allowed_apis().
@@ -2880,6 +3187,7 @@ class X11GLContext {
      * 
      * Both contexts must be realized for this check to succeed. If either one
      * is not, this function will return %FALSE.
+     * @param other the `GdkGLContext` that should be compatible with `self`
      */
     is_shared(other: Gdk.GLContext): boolean
     /**
@@ -2900,6 +3208,7 @@ class X11GLContext {
      * It is only relevant during gdk_gl_context_realize().
      * 
      * By default, all APIs are allowed.
+     * @param apis the allowed APIs
      */
     set_allowed_apis(apis: Gdk.GLAPI): void
     /**
@@ -2910,6 +3219,7 @@ class X11GLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to
      * calling this function.
+     * @param enabled whether to enable debugging in the context
      */
     set_debug_enabled(enabled: boolean): void
     /**
@@ -2922,6 +3232,7 @@ class X11GLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to calling
      * this function.
+     * @param compatible whether the context should be forward-compatible
      */
     set_forward_compatible(compatible: boolean): void
     /**
@@ -2931,6 +3242,8 @@ class X11GLContext {
      * 
      * The `GdkGLContext` must not be realized or made current prior to calling
      * this function.
+     * @param major the major version to request
+     * @param minor the minor version to request
      */
     set_required_version(major: number, minor: number): void
     /**
@@ -2947,6 +3260,7 @@ class X11GLContext {
      * You should check the return value of [method`Gdk`.GLContext.get_use_es]
      * after calling [method`Gdk`.GLContext.realize] to decide whether to use
      * the OpenGL or OpenGL ES API, extensions, or shaders.
+     * @param use_es whether the context should use OpenGL ES instead of OpenGL,   or -1 to allow auto-detection
      */
     set_use_es(use_es: number): void
     /* Methods of Gdk-4.0.Gdk.DrawContext */
@@ -2975,6 +3289,7 @@ class X11GLContext {
      * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
      * use of [class`Gsk`.Renderer]s, so application code does not need to call
      * these functions explicitly.
+     * @param region minimum region that should be drawn
      */
     begin_frame(region: cairo.Region): void
     /**
@@ -3042,6 +3357,10 @@ class X11GLContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3052,6 +3371,12 @@ class X11GLContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3075,6 +3400,7 @@ class X11GLContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3094,11 +3420,14 @@ class X11GLContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3106,6 +3435,8 @@ class X11GLContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3123,6 +3454,7 @@ class X11GLContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3168,6 +3500,7 @@ class X11GLContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3211,15 +3544,20 @@ class X11GLContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3260,6 +3598,7 @@ class X11GLContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3294,6 +3633,7 @@ class X11GLContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3313,6 +3653,7 @@ class X11GLContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3345,6 +3686,7 @@ class X11GLContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
@@ -3353,6 +3695,12 @@ class X11GLContext {
     connect_after(sigName: "notify::allowed-apis", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::api", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::api", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::shared-context", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shared-context", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::surface", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::surface", callback: (($obj: X11GLContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3370,6 +3718,10 @@ class X11Monitor {
      * The connector name.
      */
     readonly connector: string
+    /**
+     * The `GdkDisplay` of the monitor.
+     */
+    readonly display: Gdk.Display
     /**
      * The geometry of the monitor.
      */
@@ -3407,7 +3759,7 @@ class X11Monitor {
      */
     readonly width_mm: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GdkX11-4.0.GdkX11.X11Monitor */
     /**
      * Returns the XID of the Output corresponding to `monitor`.
@@ -3527,6 +3879,10 @@ class X11Monitor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3537,6 +3893,12 @@ class X11Monitor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3560,6 +3922,7 @@ class X11Monitor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3579,11 +3942,14 @@ class X11Monitor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3591,6 +3957,8 @@ class X11Monitor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3608,6 +3976,7 @@ class X11Monitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3653,6 +4022,7 @@ class X11Monitor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3696,15 +4066,20 @@ class X11Monitor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3745,6 +4120,7 @@ class X11Monitor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3779,6 +4155,7 @@ class X11Monitor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3798,6 +4175,7 @@ class X11Monitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3837,12 +4215,15 @@ class X11Monitor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::connector", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connector", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::geometry", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::geometry", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::height-mm", callback: (($obj: X11Monitor, pspec: GObject.ParamSpec) => void)): number
@@ -3874,7 +4255,7 @@ interface X11Screen_ConstructProps extends GObject.Object_ConstructProps {
 }
 class X11Screen {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GdkX11-4.0.GdkX11.X11Screen */
     /**
      * Returns the current workspace for `screen` when running under a
@@ -3887,6 +4268,7 @@ class X11Screen {
      * Gets the XID of the specified output/monitor.
      * If the X server does not support version 1.2 of the RANDR
      * extension, 0 is returned.
+     * @param monitor_num number of the monitor, between 0 and gdk_screen_get_n_monitors (screen)
      */
     get_monitor_output(monitor_num: number): xlib.XID
     /**
@@ -3921,6 +4303,7 @@ class X11Screen {
      * gdk_x11_screen_supports_net_wm_hint() will return %FALSE for every property.
      * You can monitor the window_manager_changed signal on `GdkX11Screen` to detect
      * a window manager change.
+     * @param property_name name of the WM property
      */
     supports_net_wm_hint(property_name: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3958,6 +4341,10 @@ class X11Screen {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3968,6 +4355,12 @@ class X11Screen {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3991,6 +4384,7 @@ class X11Screen {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4010,11 +4404,14 @@ class X11Screen {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4022,6 +4419,8 @@ class X11Screen {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4039,6 +4438,7 @@ class X11Screen {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4084,6 +4484,7 @@ class X11Screen {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4127,15 +4528,20 @@ class X11Screen {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4176,6 +4582,7 @@ class X11Screen {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4210,6 +4617,7 @@ class X11Screen {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4229,6 +4637,7 @@ class X11Screen {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4265,6 +4674,7 @@ class X11Screen {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11Screen, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11Screen, pspec: GObject.ParamSpec) => void)): number
@@ -4287,6 +4697,14 @@ class X11Surface {
      */
     cursor: Gdk.Cursor
     /**
+     * The `GdkDisplay` connection of the surface.
+     */
+    readonly display: Gdk.Display
+    /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frame_clock: Gdk.FrameClock
+    /**
      * The height of the surface, in pixels.
      */
     readonly height: number
@@ -4303,7 +4721,7 @@ class X11Surface {
      */
     readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GdkX11-4.0.GdkX11.X11Surface */
     /**
      * Gets the number of the workspace `surface` is on.
@@ -4328,6 +4746,7 @@ class X11Surface {
      * Moves the surface to the given workspace when running unde a
      * window manager that supports multiple workspaces, as described
      * in the [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec) specification.
+     * @param desktop the number of the workspace to move the surface to
      */
     move_to_desktop(desktop: number): void
     /**
@@ -4337,21 +4756,25 @@ class X11Surface {
      * the surface is not directly managed by the window manager, then frame
      * synchronziation may need to be disabled. This is the case for a surface
      * embedded via the XEMBED protocol.
+     * @param frame_sync_enabled whether frame-synchronization should be enabled
      */
     set_frame_sync_enabled(frame_sync_enabled: boolean): void
     /**
      * Sets the group leader of `surface` to be `leader`.
      * See the ICCCM for details.
+     * @param leader a `GdkSurface`
      */
     set_group(leader: Gdk.Surface): void
     /**
      * Sets a hint on `surface` that pagers should not
      * display it. See the EWMH for details.
+     * @param skips_pager %TRUE to skip pagers
      */
     set_skip_pager_hint(skips_pager: boolean): void
     /**
      * Sets a hint on `surface` that taskbars should not
      * display it. See the EWMH for details.
+     * @param skips_taskbar %TRUE to skip taskbars
      */
     set_skip_taskbar_hint(skips_taskbar: boolean): void
     /**
@@ -4364,11 +4787,13 @@ class X11Surface {
      * Note that this property is automatically updated by GTK, so this
      * function should only be used by applications which do not use GTK
      * to create toplevel surfaces.
+     * @param variant the theme variant to export
      */
     set_theme_variant(variant: string): void
     /**
      * Sets a hint on `surface` that it needs user attention.
      * See the ICCCM for details.
+     * @param urgent %TRUE to indicate urgenct attention needed
      */
     set_urgency_hint(urgent: boolean): void
     /**
@@ -4384,12 +4809,15 @@ class X11Surface {
      * Note that this property is automatically updated by GDK, so this
      * function should only be used by applications which handle input
      * events bypassing GDK.
+     * @param timestamp An XServer timestamp to which the property should be set
      */
     set_user_time(timestamp: number): void
     /**
      * This function modifies or removes an arbitrary X11 window
      * property of type UTF8_STRING.  If the given `surface` is
      * not a toplevel surface, it is ignored.
+     * @param name Property name, will be interned as an X atom
+     * @param value Property value, or %NULL to delete
      */
     set_utf8_property(name: string, value?: string | null): void
     /* Methods of Gdk-4.0.Gdk.Surface */
@@ -4429,6 +4857,9 @@ class X11Surface {
      * This function always returns a valid pointer, but it will return a
      * pointer to a “nil” surface if `other` is already in an error state
      * or any other error occurs.
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -4467,6 +4898,7 @@ class X11Surface {
      * specified surface, and it is using the cursor for its parent surface.
      * 
      * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
+     * @param device a pointer `GdkDevice`
      */
     get_device_cursor(device: Gdk.Device): Gdk.Cursor | null
     /**
@@ -4474,6 +4906,7 @@ class X11Surface {
      * 
      * The position is given in coordinates relative to the upper
      * left corner of `surface`.
+     * @param device pointer `GdkDevice` to query to
      */
     get_device_position(device: Gdk.Device): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* mask */ Gdk.ModifierType | null ]
     /**
@@ -4558,6 +4991,7 @@ class X11Surface {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param cursor a `GdkCursor`
      */
     set_cursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -4568,6 +5002,8 @@ class X11Surface {
      * 
      * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
      * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+     * @param device a pointer `GdkDevice`
+     * @param cursor a `GdkCursor`
      */
     set_device_cursor(device: Gdk.Device, cursor: Gdk.Cursor): void
     /**
@@ -4585,6 +5021,7 @@ class X11Surface {
      * 
      * Use [method`Gdk`.Display.supports_input_shapes] to find out if
      * a particular backend supports input regions.
+     * @param region region of surface to be reactive
      */
     set_input_region(region: cairo.Region): void
     /**
@@ -4603,6 +5040,7 @@ class X11Surface {
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
      * [vfunc`Gtk`.Widget.css_changed] handler.
+     * @param region a region, or %NULL to make the entire   surface opaque
      */
     set_opaque_region(region?: cairo.Region | null): void
     /**
@@ -4610,6 +5048,9 @@ class X11Surface {
      * 
      * Note that this only works if `to` and `from` are popups or
      * transient-for to the same toplevel (directly or indirectly).
+     * @param to the target surface
+     * @param x coordinates to translate
+     * @param y coordinates to translate
      */
     translate_coordinates(to: Gdk.Surface, x: number, y: number): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -4647,6 +5088,10 @@ class X11Surface {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4657,6 +5102,12 @@ class X11Surface {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4680,6 +5131,7 @@ class X11Surface {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4699,11 +5151,14 @@ class X11Surface {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4711,6 +5166,8 @@ class X11Surface {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4728,6 +5185,7 @@ class X11Surface {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4773,6 +5231,7 @@ class X11Surface {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4816,15 +5275,20 @@ class X11Surface {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4865,6 +5329,7 @@ class X11Surface {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4899,6 +5364,7 @@ class X11Surface {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4918,18 +5384,21 @@ class X11Surface {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Gdk-4.0.Gdk.Surface */
     /**
      * Emitted when `surface` starts being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "enter-monitor", callback: (($obj: X11Surface, monitor: Gdk.Monitor) => void)): number
     connect_after(sigName: "enter-monitor", callback: (($obj: X11Surface, monitor: Gdk.Monitor) => void)): number
     emit(sigName: "enter-monitor", monitor: Gdk.Monitor): void
     /**
      * Emitted when GDK receives an input event for `surface`.
+     * @param event an input event
      */
     connect(sigName: "event", callback: (($obj: X11Surface, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: X11Surface, event: Gdk.Event) => boolean)): number
@@ -4940,18 +5409,22 @@ class X11Surface {
      * 
      * Surface size is reported in ”application pixels”, not
      * ”device pixels” (see gdk_surface_get_scale_factor()).
+     * @param width the current width
+     * @param height the current height
      */
     connect(sigName: "layout", callback: (($obj: X11Surface, width: number, height: number) => void)): number
     connect_after(sigName: "layout", callback: (($obj: X11Surface, width: number, height: number) => void)): number
     emit(sigName: "layout", width: number, height: number): void
     /**
      * Emitted when `surface` stops being present on the monitor.
+     * @param monitor the monitor
      */
     connect(sigName: "leave-monitor", callback: (($obj: X11Surface, monitor: Gdk.Monitor) => void)): number
     connect_after(sigName: "leave-monitor", callback: (($obj: X11Surface, monitor: Gdk.Monitor) => void)): number
     emit(sigName: "leave-monitor", monitor: Gdk.Monitor): void
     /**
      * Emitted when part of the surface needs to be redrawn.
+     * @param region the region that needs to be redrawn
      */
     connect(sigName: "render", callback: (($obj: X11Surface, region: cairo.Region) => boolean)): number
     connect_after(sigName: "render", callback: (($obj: X11Surface, region: cairo.Region) => boolean)): number
@@ -4985,12 +5458,17 @@ class X11Surface {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::cursor", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::frame-clock", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::frame-clock", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::height", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::height", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::mapped", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
@@ -5009,6 +5487,8 @@ class X11Surface {
     /* Static methods and pseudo-constructors */
     /**
      * Looks up the `GdkSurface` that wraps the given native window handle.
+     * @param display the `GdkDisplay` corresponding to the   window handle
+     * @param window an Xlib Window
      */
     static lookup_for_display(display: X11Display, window: xlib.Window): X11Surface
     static $gtype: GObject.Type

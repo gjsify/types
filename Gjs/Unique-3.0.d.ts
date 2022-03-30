@@ -72,11 +72,22 @@ class App {
      */
     readonly is_running: boolean
     /**
+     * The unique name of the application. It must be in form of
+     * a domain-like string, like <literal>org.gnome.MyApplication</literal>.
+     */
+    readonly name: string
+    /**
      * The #GdkScreen of the application.
      */
     screen: Gdk.Screen
+    /**
+     * The startup notification id, needed to complete the startup
+     * notification sequence. If not set, a default id will be
+     * automatically given.
+     */
+    readonly startup_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Unique-3.0.Unique.App */
     /**
      * Adds `command_name` as a custom command that can be used by `app`. You
@@ -86,6 +97,8 @@ class App {
      * The command name is used internally: you need to use the command's logical
      * id in unique_app_send_message() and inside the UniqueApp::message-received
      * signal.
+     * @param command_name command name
+     * @param command_id command logical id
      */
     add_command(command_name: string, command_id: number): void
     /**
@@ -98,11 +111,14 @@ class App {
      * and will call the various signal handlers attach to it. If any handler
      * returns a #UniqueResponse different than %UNIQUE_RESPONSE_OK, the emission
      * will stop.
+     * @param command_id command to send
+     * @param message_data #UniqueMessageData, or %NULL
      */
     send_message(command_id: number, message_data?: MessageData | null): Response
     /**
      * Makes `app` "watch" a window. Every watched window will receive
      * startup notification changes automatically.
+     * @param window the #GtkWindow to watch
      */
     watch_window(window: Gtk.Window): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -140,6 +156,10 @@ class App {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -150,6 +170,12 @@ class App {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -173,6 +199,7 @@ class App {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -192,11 +219,14 @@ class App {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -204,6 +234,8 @@ class App {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -221,6 +253,7 @@ class App {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -266,6 +299,7 @@ class App {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -309,15 +343,20 @@ class App {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -358,6 +397,7 @@ class App {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -392,6 +432,7 @@ class App {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Unique-3.0.Unique.App */
@@ -413,6 +454,7 @@ class App {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -429,6 +471,9 @@ class App {
      * %UNIQUE_RESPONSE_PASSTHROUGH return value is used, the signal
      * emission chain will continue until another handler will return another
      * response code.
+     * @param command command received
+     * @param message_data message data
+     * @param time_ timestamp of the command
      */
     connect(sigName: "message-received", callback: (($obj: App, command: number, message_data: MessageData, time_: number) => Response)): number
     connect_after(sigName: "message-received", callback: (($obj: App, command: number, message_data: MessageData, time_: number) => Response)): number
@@ -462,14 +507,19 @@ class App {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::is-running", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-running", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::screen", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::screen", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::startup-id", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::startup-id", callback: (($obj: App, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -485,7 +535,7 @@ interface Backend_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Backend {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Unique-3.0.Unique.Backend */
     /**
      * FIXME
@@ -512,18 +562,24 @@ class Backend {
     /**
      * Sends `command_id,` and optionally `message_data,` to a running instance
      * using `backend`.
+     * @param command_id command to send
+     * @param message_data message to send, or %NULL
+     * @param time_ time of the command emission, or 0 for the current time
      */
     send_message(command_id: number, message_data: MessageData, time_: number): Response
     /**
      * FIXME
+     * @param name FIXME
      */
     set_name(name: string): void
     /**
      * FIXME
+     * @param screen FIXME
      */
     set_screen(screen: Gdk.Screen): void
     /**
      * FIXME
+     * @param startup_id FIXME
      */
     set_startup_id(startup_id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -561,6 +617,10 @@ class Backend {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -571,6 +631,12 @@ class Backend {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -594,6 +660,7 @@ class Backend {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -613,11 +680,14 @@ class Backend {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -625,6 +695,8 @@ class Backend {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -642,6 +714,7 @@ class Backend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -687,6 +760,7 @@ class Backend {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -730,15 +804,20 @@ class Backend {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -779,6 +858,7 @@ class Backend {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -813,6 +893,7 @@ class Backend {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Unique-3.0.Unique.Backend */
@@ -825,6 +906,9 @@ class Backend {
     /**
      * Sends `command_id,` and optionally `message_data,` to a running instance
      * using `backend`.
+     * @param command_id command to send
+     * @param message_data message to send, or %NULL
+     * @param time_ time of the command emission, or 0 for the current time
      */
     vfunc_send_message(command_id: number, message_data: MessageData, time_: number): Response
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -844,6 +928,7 @@ class Backend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -876,6 +961,7 @@ class Backend {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Backend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Backend, pspec: GObject.ParamSpec) => void)): number
@@ -899,7 +985,7 @@ class Backend {
 }
 abstract class AppClass {
     /* Fields of Unique-3.0.Unique.AppClass */
-    readonly message_received: (app: App, command: number, message_data: MessageData, time_: number) => Response
+    message_received: (app: App, command: number, message_data: MessageData, time_: number) => Response
     static name: string
 }
 class AppPrivate {
@@ -907,8 +993,8 @@ class AppPrivate {
 }
 abstract class BackendClass {
     /* Fields of Unique-3.0.Unique.BackendClass */
-    readonly request_name: (backend: Backend) => boolean
-    readonly send_message: (backend: Backend, command_id: number, message_data: MessageData, time_: number) => Response
+    request_name: (backend: Backend) => boolean
+    send_message: (backend: Backend, command_id: number, message_data: MessageData, time_: number) => Response
     static name: string
 }
 class MessageData {
@@ -973,22 +1059,28 @@ class MessageData {
      * string.
      * 
      * You can use unique_message_data_get() to retrieve the data.
+     * @param data binary blob to set, or %NULL
+     * @param length length of `data`
      */
     set(data: number | null, length: number): void
     /**
      * Sets `filename` as the contents of `message_data`.
+     * @param filename a filename
      */
     set_filename(filename: string): void
     /**
      * Sets `str` as the plain text payload of `message_data,` converting it
      * to UTF-8 if needed. If `length` is -1, the length of the string will
      * be used. Use unique_message_data_get_text() to retrieve the text.
+     * @param str plain text to be set as payload
+     * @param length length of the text, or -1
      */
     set_text(str: string, length: number): boolean
     /**
      * Converts `uris` to a valid URI list and sets it as payload of
      * `message_data`. You can use unique_message_data_get_uris() to
      * retrieve the list from a #UniqueMessageData.
+     * @param uris a list of URIs in a %NULL-terminated string vector
      */
     set_uris(uris: string[]): boolean
     static name: string

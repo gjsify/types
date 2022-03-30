@@ -581,11 +581,12 @@ interface Repository_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Repository {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GIRepository-2.0.GIRepository.Repository */
     /**
      * Obtain an unordered list of versions (either currently loaded or
      * available) for `namespace_` in this `repository`.
+     * @param namespace GI namespace, e.g. "Gtk"
      */
     enumerateVersions(namespace: string): string[]
     /**
@@ -593,6 +594,7 @@ class Repository {
      * domain. Before calling this function for a particular namespace,
      * you must call g_irepository_require() once to load the namespace, or
      * otherwise ensure the namespace has already been loaded.
+     * @param domain a #GError domain
      */
     findByErrorDomain(domain: GLib.Quark): EnumInfo
     /**
@@ -602,6 +604,7 @@ class Repository {
      * mechanism for determining the namespace which corresponds to an
      * arbitrary GType - thus, this function will operate most reliably
      * when you know the GType to originate from be from a loaded namespace.
+     * @param gtype GType to search for
      */
     findByGtype(gtype: GObject.Type): BaseInfo
     /**
@@ -609,6 +612,8 @@ class Repository {
      * this function for a particular namespace, you must call
      * g_irepository_require() once to load the namespace, or otherwise
      * ensure the namespace has already been loaded.
+     * @param namespace Namespace which will be searched
+     * @param name Entry name to find
      */
     findByName(namespace: string, name: string): BaseInfo
     /**
@@ -618,6 +623,7 @@ class Repository {
      * 
      * Note: The namespace must have already been loaded using a function
      * such as g_irepository_require() before calling this function.
+     * @param namespace Namespace to inspect
      */
     getCPrefix(namespace: string): string
     /**
@@ -631,6 +637,7 @@ class Repository {
      * 
      * To get only the immediate dependencies for `namespace_,` use
      * g_irepository_get_immediate_dependencies().
+     * @param namespace Namespace of interest
      */
     getDependencies(namespace: string): string[]
     /**
@@ -642,6 +649,7 @@ class Repository {
      * 
      * To get the transitive closure of dependencies for `namespace_,` use
      * g_irepository_get_dependencies().
+     * @param namespace Namespace of interest
      */
     getImmediateDependencies(namespace: string): string[]
     /**
@@ -650,6 +658,8 @@ class Repository {
      * already been loaded before calling this function.
      * See g_irepository_get_n_infos() to find the maximum number of
      * entries.
+     * @param namespace Namespace to inspect
+     * @param index 0-based offset into namespace metadata for entry
      */
     getInfo(namespace: string, index: number): BaseInfo
     /**
@@ -660,6 +670,7 @@ class Repository {
      * This function returns the number of metadata entries in
      * given namespace `namespace_`.  The namespace must have
      * already been loaded before calling this function.
+     * @param namespace Namespace to inspect
      */
     getNInfos(namespace: string): number
     /**
@@ -674,6 +685,7 @@ class Repository {
      * the #GType of the object.  An example is g_file_new_for_path()
      * returning a concrete class of #GLocalFile, which is a #GType we
      * see at runtime, but not statically.
+     * @param gtype a #GType whose fundamental type is G_TYPE_OBJECT
      */
     getObjectGtypeInterfaces(gtype: GObject.Type): /* interfacesOut */ InterfaceInfo[]
     /**
@@ -684,6 +696,7 @@ class Repository {
      * 
      * Note: The namespace must have already been loaded using a function
      * such as g_irepository_require() before calling this function.
+     * @param namespace Namespace to inspect
      */
     getSharedLibrary(namespace: string): string | null
     /**
@@ -691,6 +704,7 @@ class Repository {
      * .typelib file it was loaded from.  If the typelib for
      * namespace `namespace_` was included in a shared library, return
      * the special string "&lt;builtin&gt;".
+     * @param namespace GI namespace to use, e.g. "Gtk"
      */
     getTypelibPath(namespace: string): string
     /**
@@ -699,6 +713,7 @@ class Repository {
      * 
      * Note: The namespace must have already been loaded using a function
      * such as g_irepository_require() before calling this function.
+     * @param namespace Namespace to inspect
      */
     getVersion(namespace: string): string
     /**
@@ -708,10 +723,14 @@ class Repository {
      * metadata in the namespace, you should call g_irepository_require()
      * instead which will ensure the namespace is loaded, and return as
      * quickly as this function will if it has already been loaded.
+     * @param namespace Namespace of interest
+     * @param version Required version, may be %NULL for latest
      */
     isRegistered(namespace: string, version?: string | null): boolean
     /**
      * TODO
+     * @param typelib TODO
+     * @param flags TODO
      */
     loadTypelib(typelib: Typelib, flags: RepositoryLoadFlags): string
     /**
@@ -720,6 +739,9 @@ class Repository {
      * ".typelib" file using the repository search path.  In addition, a
      * version `version` of namespace may be specified.  If `version` is
      * not specified, the latest will be used.
+     * @param namespace GI namespace to use, e.g. "Gtk"
+     * @param version Version of namespace, may be %NULL for latest
+     * @param flags Set of %GIRepositoryLoadFlags, may be 0
      */
     require(namespace: string, version: string | null, flags: RepositoryLoadFlags): Typelib
     /**
@@ -728,6 +750,10 @@ class Repository {
      * ".typelib" file within the private directory only. In addition, a
      * version `version` of namespace should be specified.  If `version` is
      * not specified, the latest will be used.
+     * @param typelibDir Private directory where to find the requested typelib
+     * @param namespace GI namespace to use, e.g. "Gtk"
+     * @param version Version of namespace, may be %NULL for latest
+     * @param flags Set of %GIRepositoryLoadFlags, may be 0
      */
     requirePrivate(typelibDir: string, namespace: string, version: string | null, flags: RepositoryLoadFlags): Typelib
     /* Methods of GObject-2.0.GObject.Object */
@@ -765,6 +791,10 @@ class Repository {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -775,6 +805,12 @@ class Repository {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -798,6 +834,7 @@ class Repository {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -817,11 +854,14 @@ class Repository {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -829,6 +869,8 @@ class Repository {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -846,6 +888,7 @@ class Repository {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -891,6 +934,7 @@ class Repository {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -934,15 +978,20 @@ class Repository {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -983,6 +1032,7 @@ class Repository {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1017,6 +1067,7 @@ class Repository {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1048,6 +1099,7 @@ class Repository {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1097,6 +1149,7 @@ class Repository {
      * Prepends `directory` to the typelib search path.
      * 
      * See also: g_irepository_get_search_path().
+     * @param directory directory name to prepend to the typelib   search path
      */
     static prependSearchPath(directory: string): void
     static $gtype: GObject.Type
@@ -1112,10 +1165,12 @@ class BaseInfo {
      * Using pointer comparison is not practical since many functions return
      * different instances of #GIBaseInfo that refers to the same part of the
      * TypeLib; use this function instead to do #GIBaseInfo comparisons.
+     * @param info2 a #GIBaseInfo
      */
     equal(info2: BaseInfo): boolean
     /**
      * Retrieve an arbitrary attribute associated with this node.
+     * @param name a freeform string naming an attribute
      */
     getAttribute(name: string): string
     /**
@@ -1173,6 +1228,7 @@ class BaseInfo {
      * }
      * ```
      * 
+     * @param iterator a #GIAttributeIter structure, must be initialized; see below
      */
     iterateAttributes(iterator: AttributeIter): [ /* returnType */ boolean, /* iterator */ AttributeIter, /* name */ string, /* value */ string ]
     static name: string

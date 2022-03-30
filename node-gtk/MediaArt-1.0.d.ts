@@ -82,7 +82,7 @@ interface Process_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Process {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of MediaArt-1.0.MediaArt.Process */
     /**
      * Processes a memory buffer represented by `buffer` and `len`. If you
@@ -94,6 +94,13 @@ class Process {
      * 
      * If `file` is on a removable filesystem, the media art file will be saved in a
      * cache on the removable file system rather than on the host machine.
+     * @param type The type of media
+     * @param flags The options given for how to process the media art
+     * @param relatedFile File related to the media art
+     * @param buffer a buffer containing `file` data, or %NULL
+     * @param mime MIME type of `buffer,` or %NULL
+     * @param artist The artist name `file` or %NULL
+     * @param title The title for `file` or %NULL
      */
     buffer(type: Type, flags: ProcessFlags, relatedFile: Gio.File, buffer: Uint8Array | null, mime: string, artist?: string | null, title?: string | null): boolean
     /**
@@ -124,12 +131,22 @@ class Process {
      * If `file` is on a removable filesystem, the media art file will be
      * saved in a cache on the removable file system rather than on the
      * host machine.
+     * @param type The type of media
+     * @param flags The options given for how to process the media art
+     * @param file File to be processed
+     * @param artist The artist name `file` or %NULL
+     * @param title The title for `file` or %NULL
      */
     file(type: Type, flags: ProcessFlags, file: Gio.File, artist?: string | null, title?: string | null): boolean
     /**
      * This function calls media_art_process_file(), but takes the `uri` as
      * a string rather than a #GFile object. Either `artist` OR `title` can be
      * %NULL, but they can not both be %NULL.
+     * @param type The type of media that contained the image data
+     * @param flags How the media art is processed
+     * @param uri URI of the media file that contained the data
+     * @param artist The artist name `uri` or %NULL
+     * @param title The title for `uri` or %NULL
      */
     uri(type: Type, flags: ProcessFlags, uri: string, artist?: string | null, title?: string | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -167,6 +184,10 @@ class Process {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -177,6 +198,12 @@ class Process {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -200,6 +227,7 @@ class Process {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -219,11 +247,14 @@ class Process {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -231,6 +262,8 @@ class Process {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -248,6 +281,7 @@ class Process {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -293,6 +327,7 @@ class Process {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -336,15 +371,20 @@ class Process {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -385,6 +425,7 @@ class Process {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -419,6 +460,7 @@ class Process {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -461,6 +503,7 @@ class Process {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -492,6 +535,7 @@ class Process {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -514,6 +558,9 @@ class Process {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -523,7 +570,7 @@ abstract class ProcessClass {
     /**
      * parent object class
      */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 }

@@ -191,10 +191,27 @@ class ObjectCache {
      * The attributes cached on this object.
      */
     attributes: Attributes
+    /* Properties of Gck-1.Gck.Object */
+    /**
+     * The raw PKCS11 handle for this object.
+     */
+    readonly handle: number
+    /**
+     * The GckModule that this object belongs to.
+     */
+    readonly module: Module
+    /**
+     * The PKCS11 session to make calls on when this object needs to
+     * perform operations on itself.
+     * 
+     * If this is NULL then a new session is opened for each operation,
+     * such as gck_object_get(), gck_object_set() or gck_object_destroy().
+     */
+    readonly session: Session
     /* Fields of Gck-1.Gck.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gck-1.Gck.ObjectCache */
     /**
      * Adds the attributes to the set cached on this object. If an attribute is
@@ -203,12 +220,14 @@ class ObjectCache {
      * This will be done in a thread-safe manner.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs the attributes to cache
      */
     fill(attrs: Attributes): void
     /**
      * Sets the attributes cached on this object.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs the attributes to set
      */
     setAttributes(attrs?: Attributes | null): void
     /**
@@ -216,6 +235,8 @@ class ObjectCache {
      * exists in the cache, it will be updated, and if it doesn't it will be added.
      * 
      * This may block, use the asynchronous version when this is not desirable
+     * @param attrTypes the types of attributes to update
+     * @param cancellable optional cancellation object
      */
     update(attrTypes: number[], cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -223,11 +244,15 @@ class ObjectCache {
      * exists in the cache, it will be updated, and if it doesn't it will be added.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attrTypes the types of attributes to update
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     updateAsync(attrTypes: number[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to update the object cache with given
      * attributes.
+     * @param result the asynchronous result passed to the callback
      */
     updateFinish(result: Gio.AsyncResult): boolean
     /* Methods of Gck-1.Gck.Object */
@@ -242,6 +267,8 @@ class ObjectCache {
      * read from the object.
      * 
      * This may block, use the asynchronous version when this is not desirable
+     * @param attrTypes the types of attributes to update
+     * @param cancellable optional cancellation object
      */
     cacheLookup(attrTypes: number[], cancellable?: Gio.Cancellable | null): Attributes
     /**
@@ -255,31 +282,40 @@ class ObjectCache {
      * read from the object.
      * 
      * This will return immediately and complete asynchronously
+     * @param attrTypes the types of attributes to update
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     cacheLookupAsync(attrTypes: number[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an operation to lookup attributes in the cache or retrieve them
      * from the object if necessary.
+     * @param result the asynchrounous result passed to the callback
      */
     cacheLookupFinish(result: Gio.AsyncResult): Attributes
     /**
      * Destroy a PKCS#11 object, deleting it from storage or the session.
      * This call may block for an indefinite period.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
      */
     destroy(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Destroy a PKCS#11 object, deleting it from storage or the session.
      * This call will return immediately and complete asynchronously.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
+     * @param callback Callback which is called when operation completes.
      */
     destroyAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the status of the operation to destroy a PKCS#11 object, begun with
      * gck_object_destroy_async().
+     * @param result The result of the destory operation passed to the callback.
      */
     destroyFinish(result: Gio.AsyncResult): boolean
     /**
      * Checks equality of two objects. Two GckObject objects can point to the same
      * underlying PKCS#11 object.
+     * @param object2 a pointer to the second #GckObject
      */
     equal(object2: Object): boolean
     /**
@@ -289,6 +325,9 @@ class ObjectCache {
      * them until gck_object_get_finish() is called.
      * 
      * This call returns immediately and completes asynchronously.
+     * @param attrTypes the types of the attributes to get
+     * @param cancellable optional cancellation object, or %NULL
+     * @param callback A callback which is called when the operation completes.
      */
     getAsync(attrTypes: number[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -296,18 +335,25 @@ class ObjectCache {
      * the returned data has a null terminator.
      * 
      * This call may block for an indefinite period.
+     * @param attrType The attribute to get data for.
+     * @param cancellable A #GCancellable or %NULL
      */
     getData(attrType: number, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
      * Get the data for the specified attribute from the object.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attrType The attribute to get data for.
+     * @param allocator An allocator with which to allocate memory for the data, or %NULL for default.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     getDataAsync(attrType: number, allocator: Allocator, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to get attribute data from
      * an object. For convenience the returned data has an extra null terminator,
      * not included in the returned length.
+     * @param result The result passed to the callback.
      */
     getDataFinish(result: Gio.AsyncResult): Uint8Array
     /**
@@ -315,6 +361,7 @@ class ObjectCache {
      * the object.
      * 
      * No extra references are added to the returned attributes pointer.
+     * @param result The result passed to the callback.
      */
     getFinish(result: Gio.AsyncResult): Attributes
     /**
@@ -323,6 +370,8 @@ class ObjectCache {
      * 
      * No extra references are added to the returned attributes pointer.
      * During this call you may not access the attributes in any way.
+     * @param attrTypes the types of the attributes to get
+     * @param cancellable optional cancellation object, or %NULL
      */
     getFull(attrTypes: number[], cancellable?: Gio.Cancellable | null): Attributes
     /**
@@ -347,6 +396,8 @@ class ObjectCache {
      * an attribute which returns a template.
      * 
      * This call may block for an indefinite period.
+     * @param attrType The template attribute type.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     getTemplate(attrType: number, cancellable?: Gio.Cancellable | null): Attributes
     /**
@@ -354,11 +405,15 @@ class ObjectCache {
      * an attribute which returns a template.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attrType The template attribute type.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     getTemplateAsync(attrType: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to get attribute template from
      * an object.
+     * @param result The result passed to the callback.
      */
     getTemplateFinish(result: Gio.AsyncResult): Attributes
     /**
@@ -372,6 +427,8 @@ class ObjectCache {
      * Set PKCS#11 attributes on an object. This call may block for an indefinite period.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs The attributes to set on the object.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
      */
     set(attrs: Attributes, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -379,11 +436,15 @@ class ObjectCache {
      * immediately and completes asynchronously.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs The attributes to set on the object.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
+     * @param callback Callback which is called when operation completes.
      */
     setAsync(attrs: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the status of the operation to set attributes on a PKCS#11 object,
      * begun with gck_object_set_async().
+     * @param result The result of the destory operation passed to the callback.
      */
     setFinish(result: Gio.AsyncResult): boolean
     /**
@@ -393,6 +454,9 @@ class ObjectCache {
      * If the `attrs` #GckAttributes is floating, it is consumed.
      * 
      * This call may block for an indefinite period.
+     * @param attrType The attribute template type.
+     * @param attrs The attribute template.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     setTemplate(attrType: number, attrs: Attributes, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -402,11 +466,16 @@ class ObjectCache {
      * If the `attrs` #GckAttributes is floating, it is consumed.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attrType The attribute template type.
+     * @param attrs The attribute template.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     setTemplateAsync(attrType: number, attrs: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to set attribute template on
      * an object.
+     * @param result The result passed to the callback.
      */
     setTemplateFinish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -444,6 +513,10 @@ class ObjectCache {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -454,6 +527,12 @@ class ObjectCache {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -477,6 +556,7 @@ class ObjectCache {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -496,11 +576,14 @@ class ObjectCache {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -508,6 +591,8 @@ class ObjectCache {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -525,6 +610,7 @@ class ObjectCache {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -570,6 +656,7 @@ class ObjectCache {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -613,15 +700,20 @@ class ObjectCache {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -662,6 +754,7 @@ class ObjectCache {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -696,6 +789,7 @@ class ObjectCache {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -727,6 +821,7 @@ class ObjectCache {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -738,6 +833,21 @@ class ObjectCache {
     on(sigName: "notify::attributes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::attributes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::attributes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::handle", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::handle", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::module", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::module", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -778,7 +888,7 @@ class Enumerator {
      */
     interaction: Gio.TlsInteraction
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gck-1.Gck.Enumerator */
     /**
      * Get the enumerator that will be run after all objects from this one
@@ -799,6 +909,7 @@ class Enumerator {
      * 
      * %NULL is also returned if the function fails. Use the `error` to determine
      * whether a failure occurred or not.
+     * @param cancellable A #GCancellable or %NULL
      */
     next(cancellable?: Gio.Cancellable | null): Object | null
     /**
@@ -806,6 +917,9 @@ class Enumerator {
      * asynchronously.The maximum number of objects can be specified with
      * `max_objects`. If -1 is specified, then all the remaining objects will be
      * enumerated.
+     * @param maxObjects The maximum number of objects to get
+     * @param cancellable A #GCancellable or %NULL
+     * @param callback Called when the result is ready
      */
     nextAsync(maxObjects: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -813,6 +927,7 @@ class Enumerator {
      * 
      * %NULL is also returned if the function fails. Use the `error` to determine
      * whether a failure occurred or not.
+     * @param result The result passed to the callback
      */
     nextFinish(result: Gio.AsyncResult): Object[]
     /**
@@ -822,15 +937,19 @@ class Enumerator {
      * 
      * %NULL is also returned if the function fails. Use the `error` to determine
      * whether a failure occurred or not.
+     * @param maxObjects The maximum amount of objects to enumerate
+     * @param cancellable A #GCancellable or %NULL
      */
     nextN(maxObjects: number, cancellable?: Gio.Cancellable | null): Object[]
     /**
      * Set a chained enumerator that will be run after all objects from this one
      * are seen.
+     * @param chained the chained enumerator or %NULL
      */
     setChained(chained?: Enumerator | null): void
     /**
      * Set the interaction used when a pin is needed
+     * @param interaction the interaction or %NULL
      */
     setInteraction(interaction?: Gio.TlsInteraction | null): void
     /**
@@ -840,6 +959,8 @@ class Enumerator {
      * If `attr_types` and `attr_count` are non-NULL and non-zero respectively,
      * then the #GckObjectCache interface is expected to be implemented on the
      * derived class, then the enumerator will retrieve attributes for each object.
+     * @param objectType the type of objects to create
+     * @param attrTypes types of attributes to retrieve for objects
      */
     setObjectType(objectType: GObject.Type, attrTypes: number[]): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -877,6 +998,10 @@ class Enumerator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -887,6 +1012,12 @@ class Enumerator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -910,6 +1041,7 @@ class Enumerator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -929,11 +1061,14 @@ class Enumerator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -941,6 +1076,8 @@ class Enumerator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -958,6 +1095,7 @@ class Enumerator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1003,6 +1141,7 @@ class Enumerator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1046,15 +1185,20 @@ class Enumerator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1095,6 +1239,7 @@ class Enumerator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1129,6 +1274,7 @@ class Enumerator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1160,6 +1306,7 @@ class Enumerator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1205,12 +1352,27 @@ interface Module_ConstructProps extends GObject.Object_ConstructProps {
     path?: string
 }
 class Module {
+    /* Properties of Gck-1.Gck.Module */
+    /**
+     * The raw PKCS&num;11 function list for the module.
+     * 
+     * This points to a CK_FUNCTION_LIST structure.
+     */
+    readonly functions: object
+    /**
+     * The PKCS&num;11 module file path.
+     * 
+     * This may be set to NULL if this object was created from an already
+     * initialized module via the gck_module_new() function.
+     */
+    readonly path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gck-1.Gck.Module */
     /**
      * Checks equality of two modules. Two GckModule objects can point to the same
      * underlying PKCS#11 module.
+     * @param module2 a pointer to the second #GckModule
      */
     equal(module2: Module): boolean
     /**
@@ -1224,6 +1386,7 @@ class Module {
     getPath(): string
     /**
      * Get the GckSlot objects for a given module.
+     * @param tokenPresent Whether to limit only to slots with a token present.
      */
     getSlots(tokenPresent: boolean): Slot[]
     /**
@@ -1235,6 +1398,7 @@ class Module {
     hash(): number
     /**
      * Check whether the PKCS#11 URI matches the module
+     * @param uri the uri to match against the module
      */
     match(uri: UriData): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1272,6 +1436,10 @@ class Module {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1282,6 +1450,12 @@ class Module {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1305,6 +1479,7 @@ class Module {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1324,11 +1499,14 @@ class Module {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1336,6 +1514,8 @@ class Module {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1353,6 +1533,7 @@ class Module {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1398,6 +1579,7 @@ class Module {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1441,15 +1623,20 @@ class Module {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1490,6 +1677,7 @@ class Module {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1524,11 +1712,15 @@ class Module {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gck-1.Gck.Module */
     /**
      * Use gck_session_set_interaction() instead of connecting to this signal.
+     * @param object The object to be authenticated.
+     * @param label A displayable label which describes the object.
+     * @param password A gchar** where a password should be returned.
      */
     connect(sigName: "authenticate-object", callback: ((object: Object, label: string, password?: object | null) => boolean)): number
     on(sigName: "authenticate-object", callback: (object: Object, label: string, password?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -1537,6 +1729,9 @@ class Module {
     emit(sigName: "authenticate-object", object: Object, label: string, password?: object | null): void
     /**
      * Use gck_session_set_interaction() instead of connecting to this signal.
+     * @param slot The slot to be authenticated.
+     * @param string A displayable label which describes the object.
+     * @param password A gchar** where a password should be returned.
      */
     connect(sigName: "authenticate-slot", callback: ((slot: Slot, string: string, password?: object | null) => boolean)): number
     on(sigName: "authenticate-slot", callback: (slot: Slot, string: string, password?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -1572,12 +1767,23 @@ class Module {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::functions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::functions", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::functions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::functions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::functions", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1591,15 +1797,21 @@ class Module {
     /* Static methods and pseudo-constructors */
     /**
      * Load and initialize a PKCS#11 module represented by a GckModule object.
+     * @param path The file system path to the PKCS#11 module to load.
+     * @param cancellable optional cancellation object
      */
     static initialize(path: string, cancellable?: Gio.Cancellable | null): Module
     /**
      * Asynchronously load and initialize a PKCS#11 module represented by a
      * [class`Module]` object.
+     * @param path the file system path to the PKCS#11 module to load
+     * @param cancellable optional cancellation object
+     * @param callback a callback which will be called when the operation completes
      */
     static initializeAsync(path: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous initialize operation.
+     * @param result the asynchronous result
      */
     static initializeFinish(result: Gio.AsyncResult): Module | null
     static $gtype: GObject.Type
@@ -1624,8 +1836,25 @@ interface Object_ConstructProps extends GObject.Object_ConstructProps {
     session?: Session
 }
 class Object {
+    /* Properties of Gck-1.Gck.Object */
+    /**
+     * The raw PKCS11 handle for this object.
+     */
+    readonly handle: number
+    /**
+     * The GckModule that this object belongs to.
+     */
+    readonly module: Module
+    /**
+     * The PKCS11 session to make calls on when this object needs to
+     * perform operations on itself.
+     * 
+     * If this is NULL then a new session is opened for each operation,
+     * such as gck_object_get(), gck_object_set() or gck_object_destroy().
+     */
+    readonly session: Session
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gck-1.Gck.Object */
     /**
      * Lookup attributes in the cache, or retrieve them from the object if necessary.
@@ -1638,6 +1867,8 @@ class Object {
      * read from the object.
      * 
      * This may block, use the asynchronous version when this is not desirable
+     * @param attrTypes the types of attributes to update
+     * @param cancellable optional cancellation object
      */
     cacheLookup(attrTypes: number[], cancellable?: Gio.Cancellable | null): Attributes
     /**
@@ -1651,31 +1882,40 @@ class Object {
      * read from the object.
      * 
      * This will return immediately and complete asynchronously
+     * @param attrTypes the types of attributes to update
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     cacheLookupAsync(attrTypes: number[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an operation to lookup attributes in the cache or retrieve them
      * from the object if necessary.
+     * @param result the asynchrounous result passed to the callback
      */
     cacheLookupFinish(result: Gio.AsyncResult): Attributes
     /**
      * Destroy a PKCS#11 object, deleting it from storage or the session.
      * This call may block for an indefinite period.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
      */
     destroy(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Destroy a PKCS#11 object, deleting it from storage or the session.
      * This call will return immediately and complete asynchronously.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
+     * @param callback Callback which is called when operation completes.
      */
     destroyAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the status of the operation to destroy a PKCS#11 object, begun with
      * gck_object_destroy_async().
+     * @param result The result of the destory operation passed to the callback.
      */
     destroyFinish(result: Gio.AsyncResult): boolean
     /**
      * Checks equality of two objects. Two GckObject objects can point to the same
      * underlying PKCS#11 object.
+     * @param object2 a pointer to the second #GckObject
      */
     equal(object2: Object): boolean
     /**
@@ -1685,6 +1925,9 @@ class Object {
      * them until gck_object_get_finish() is called.
      * 
      * This call returns immediately and completes asynchronously.
+     * @param attrTypes the types of the attributes to get
+     * @param cancellable optional cancellation object, or %NULL
+     * @param callback A callback which is called when the operation completes.
      */
     getAsync(attrTypes: number[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1692,18 +1935,25 @@ class Object {
      * the returned data has a null terminator.
      * 
      * This call may block for an indefinite period.
+     * @param attrType The attribute to get data for.
+     * @param cancellable A #GCancellable or %NULL
      */
     getData(attrType: number, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
      * Get the data for the specified attribute from the object.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attrType The attribute to get data for.
+     * @param allocator An allocator with which to allocate memory for the data, or %NULL for default.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     getDataAsync(attrType: number, allocator: Allocator, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to get attribute data from
      * an object. For convenience the returned data has an extra null terminator,
      * not included in the returned length.
+     * @param result The result passed to the callback.
      */
     getDataFinish(result: Gio.AsyncResult): Uint8Array
     /**
@@ -1711,6 +1961,7 @@ class Object {
      * the object.
      * 
      * No extra references are added to the returned attributes pointer.
+     * @param result The result passed to the callback.
      */
     getFinish(result: Gio.AsyncResult): Attributes
     /**
@@ -1719,6 +1970,8 @@ class Object {
      * 
      * No extra references are added to the returned attributes pointer.
      * During this call you may not access the attributes in any way.
+     * @param attrTypes the types of the attributes to get
+     * @param cancellable optional cancellation object, or %NULL
      */
     getFull(attrTypes: number[], cancellable?: Gio.Cancellable | null): Attributes
     /**
@@ -1743,6 +1996,8 @@ class Object {
      * an attribute which returns a template.
      * 
      * This call may block for an indefinite period.
+     * @param attrType The template attribute type.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     getTemplate(attrType: number, cancellable?: Gio.Cancellable | null): Attributes
     /**
@@ -1750,11 +2005,15 @@ class Object {
      * an attribute which returns a template.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attrType The template attribute type.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     getTemplateAsync(attrType: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to get attribute template from
      * an object.
+     * @param result The result passed to the callback.
      */
     getTemplateFinish(result: Gio.AsyncResult): Attributes
     /**
@@ -1768,6 +2027,8 @@ class Object {
      * Set PKCS#11 attributes on an object. This call may block for an indefinite period.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs The attributes to set on the object.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
      */
     set(attrs: Attributes, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1775,11 +2036,15 @@ class Object {
      * immediately and completes asynchronously.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs The attributes to set on the object.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
+     * @param callback Callback which is called when operation completes.
      */
     setAsync(attrs: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the status of the operation to set attributes on a PKCS#11 object,
      * begun with gck_object_set_async().
+     * @param result The result of the destory operation passed to the callback.
      */
     setFinish(result: Gio.AsyncResult): boolean
     /**
@@ -1789,6 +2054,9 @@ class Object {
      * If the `attrs` #GckAttributes is floating, it is consumed.
      * 
      * This call may block for an indefinite period.
+     * @param attrType The attribute template type.
+     * @param attrs The attribute template.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     setTemplate(attrType: number, attrs: Attributes, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1798,11 +2066,16 @@ class Object {
      * If the `attrs` #GckAttributes is floating, it is consumed.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attrType The attribute template type.
+     * @param attrs The attribute template.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     setTemplateAsync(attrType: number, attrs: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to set attribute template on
      * an object.
+     * @param result The result passed to the callback.
      */
     setTemplateFinish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1840,6 +2113,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1850,6 +2127,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1873,6 +2156,7 @@ class Object {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1892,11 +2176,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1904,6 +2191,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1921,6 +2210,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1966,6 +2256,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2009,15 +2300,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2058,6 +2354,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2092,6 +2389,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2123,12 +2421,28 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::handle", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::handle", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::module", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::module", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::session", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2159,18 +2473,28 @@ interface Password_ConstructProps extends Gio.TlsPassword_ConstructProps {
 class Password {
     /* Properties of Gck-1.Gck.Password */
     /**
+     * The PKCS#11 key that the password is being requested for. If this
+     * is set then the GckPassword:token property will be %NULL
+     */
+    readonly key: Object
+    /**
      * The PKCS#11 module that is requesting the password
      */
     readonly module: Module
+    /**
+     * The PKCS#11 token the password is for, if this is set then
+     * the GckPassword:object property will be %NULL
+     */
+    readonly token: Slot
     /* Properties of Gio-2.0.Gio.TlsPassword */
     description: string
     flags: Gio.TlsPasswordFlags
     warning: string
     /* Fields of Gio-2.0.Gio.TlsPassword */
-    readonly parentInstance: GObject.Object
-    readonly priv: Gio.TlsPasswordPrivate
+    parentInstance: GObject.Object
+    priv: Gio.TlsPasswordPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gck-1.Gck.Password */
     /**
      * If the password request is to unlock a PKCS#11 key, then this is the
@@ -2211,10 +2535,12 @@ class Password {
     getWarning(): string
     /**
      * Set a description string about what the password will be used for.
+     * @param description The description of the password
      */
     setDescription(description: string): void
     /**
      * Set flags about the password.
+     * @param flags The flags about the password
      */
     setFlags(flags: Gio.TlsPasswordFlags): void
     /**
@@ -2225,6 +2551,7 @@ class Password {
      * `length` if using a nul-terminated password, and `length` will be
      * calculated automatically. (Note that the terminating nul is not
      * considered part of the password in this case.)
+     * @param value the new password value
      */
     setValue(value: Uint8Array): void
     /**
@@ -2237,12 +2564,15 @@ class Password {
      * `length` if using a nul-terminated password, and `length` will be
      * calculated automatically. (Note that the terminating nul is not
      * considered part of the password in this case.)
+     * @param value the value for the password
+     * @param destroy a function to use to free the password.
      */
     setValueFull(value: Uint8Array, destroy?: GLib.DestroyNotify | null): void
     /**
      * Set a user readable translated warning. Usually this warning is a
      * representation of the password flags returned from
      * g_tls_password_get_flags().
+     * @param warning The user readable warning
      */
     setWarning(warning: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2280,6 +2610,10 @@ class Password {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2290,6 +2624,12 @@ class Password {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2313,6 +2653,7 @@ class Password {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2332,11 +2673,14 @@ class Password {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2344,6 +2688,8 @@ class Password {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2361,6 +2707,7 @@ class Password {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2406,6 +2753,7 @@ class Password {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2449,15 +2797,20 @@ class Password {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2498,6 +2851,7 @@ class Password {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2532,6 +2886,7 @@ class Password {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2563,17 +2918,28 @@ class Password {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::key", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::key", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::key", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::key", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::key", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::module", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::module", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::token", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::token", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::token", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::description", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::description", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2633,6 +2999,14 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
 class Session {
     /* Properties of Gck-1.Gck.Session */
     /**
+     * Raw PKCS#11 application data used to open the PKCS#11 session.
+     */
+    readonly appData: object
+    /**
+     * The raw CK_SESSION_HANDLE handle of this session.
+     */
+    readonly handle: number
+    /**
      * Interaction object used to ask the user for pins when opening
      * sessions. Used if the session_options of the enumerator have
      * %GCK_SESSION_LOGIN_USER
@@ -2642,14 +3016,28 @@ class Session {
      * The GckModule that this session is opened on.
      */
     readonly module: Module
+    /**
+     * Raw PKCS#11 flags used to open the PKCS#11 session.
+     */
+    readonly openingFlags: number
+    /**
+     * The options this session was opened with.
+     */
+    readonly options: SessionOptions
+    /**
+     * The GckSlot this session is opened on.
+     */
+    readonly slot: Slot
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gck-1.Gck.Session */
     /**
      * Create a new PKCS#11 object. This call may block for an
      * indefinite period.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs The attributes to create the object with.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     createObject(attrs: Attributes, cancellable?: Gio.Cancellable | null): Object
     /**
@@ -2657,29 +3045,47 @@ class Session {
      * and complete asynchronously.
      * 
      * If `attrs` is a floating reference, it is consumed.
+     * @param attrs The attributes to create the object with.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @param callback Called when the operation completes.
      */
     createObjectAsync(attrs: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of creating a new PKCS#11 object.
+     * @param result The result passed to the callback.
      */
     createObjectFinish(result: Gio.AsyncResult): Object
     /**
      * Decrypt data in a mechanism specific manner. This call may
      * block for an indefinite period.
+     * @param key The key to decrypt with.
+     * @param mechType The mechanism type to use for decryption.
+     * @param input data to decrypt
+     * @param cancellable Optional cancellation object, or %NULL
      */
     decrypt(key: Object, mechType: number, input: Uint8Array, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
      * Decrypt data in a mechanism specific manner. This call will
      * return immediately and complete asynchronously.
+     * @param key The key to decrypt with.
+     * @param mechanism The mechanism type and parameters to use for decryption.
+     * @param input data to decrypt
+     * @param cancellable A GCancellable which can be used to cancel the operation.
+     * @param callback Called when the operation completes.
      */
     decryptAsync(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an decryption operation.
+     * @param result The result object passed to the callback.
      */
     decryptFinish(result: Gio.AsyncResult): Uint8Array
     /**
      * Decrypt data in a mechanism specific manner. This call may
      * block for an indefinite period.
+     * @param key The key to decrypt with.
+     * @param mechanism The mechanism type and parameters to use for decryption.
+     * @param input data to decrypt
+     * @param cancellable A GCancellable which can be used to cancel the operation.
      */
     decryptFull(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
@@ -2687,6 +3093,10 @@ class Session {
      * indefinite period.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param base The key to derive from.
+     * @param mechType The mechanism to use for derivation.
+     * @param attrs Additional attributes for the derived key.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     deriveKey(base: Object, mechType: number, attrs: Attributes, cancellable?: Gio.Cancellable | null): Object
     /**
@@ -2694,10 +3104,16 @@ class Session {
      * return immediately and complete asynchronously.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param base The key to derive from.
+     * @param mechanism The mechanism to use for derivation.
+     * @param attrs Additional attributes for the derived key.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @param callback Called when the operation completes.
      */
     deriveKeyAsync(base: Object, mechanism: Mechanism, attrs: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of a derive key operation.
+     * @param result The async result passed to the callback.
      */
     deriveKeyFinish(result: Gio.AsyncResult): Object
     /**
@@ -2705,25 +3121,43 @@ class Session {
      * indefinite period.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param base The key to derive from.
+     * @param mechanism The mechanism to use for derivation.
+     * @param attrs Additional attributes for the derived key.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     deriveKeyFull(base: Object, mechanism: Mechanism, attrs: Attributes, cancellable?: Gio.Cancellable | null): Object
     /**
      * Encrypt data in a mechanism specific manner. This call may
      * block for an indefinite period.
+     * @param key The key to encrypt with.
+     * @param mechType The mechanism type to use for encryption.
+     * @param input the data to encrypt
+     * @param cancellable Optional cancellation object, or %NULL
      */
     encrypt(key: Object, mechType: number, input: Uint8Array, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
      * Encrypt data in a mechanism specific manner. This call will
      * return immediately and complete asynchronously.
+     * @param key The key to encrypt with.
+     * @param mechanism The mechanism type and parameters to use for encryption.
+     * @param input the data to encrypt
+     * @param cancellable A GCancellable which can be used to cancel the operation.
+     * @param callback Called when the operation completes.
      */
     encryptAsync(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an encryption operation.
+     * @param result The result object passed to the callback.
      */
     encryptFinish(result: Gio.AsyncResult): Uint8Array
     /**
      * Encrypt data in a mechanism specific manner. This call may
      * block for an indefinite period.
+     * @param key The key to encrypt with.
+     * @param mechanism The mechanism type and parameters to use for encryption.
+     * @param input the data to encrypt
+     * @param cancellable A GCancellable which can be used to cancel the operation.
      */
     encryptFull(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
@@ -2732,6 +3166,7 @@ class Session {
      * If `match` is a floating reference, it is consumed.
      * 
      * This call will not block but will return an enumerator immediately.
+     * @param match attributes that the objects must match, or empty for all objects
      */
     enumerateObjects(match: Attributes): Enumerator
     /**
@@ -2739,6 +3174,8 @@ class Session {
      * block for an indefinite period.
      * 
      * If `match` is a floating reference, it is consumed.
+     * @param match the attributes to match against objects
+     * @param cancellable optional cancellation object or %NULL
      */
     findHandles(match: Attributes, cancellable?: Gio.Cancellable | null): number[] | null
     /**
@@ -2746,10 +3183,14 @@ class Session {
      * return immediately and complete asynchronously.
      * 
      * If `match` is a floating reference, it is consumed.
+     * @param match the attributes to match against the objects
+     * @param cancellable optional cancellation object or %NULL
+     * @param callback called when the operation completes
      */
     findHandlesAsync(match: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of a find handles operation.
+     * @param result the asynchronous result
      */
     findHandlesFinish(result: Gio.AsyncResult): number[] | null
     /**
@@ -2757,6 +3198,8 @@ class Session {
      * block for an indefinite period.
      * 
      * If `match` is a floating reference, it is consumed.
+     * @param match the attributes to match
+     * @param cancellable Optional cancellation object or %NULL.
      */
     findObjects(match: Attributes, cancellable?: Gio.Cancellable | null): Object[]
     /**
@@ -2764,10 +3207,14 @@ class Session {
      * return immediately and complete asynchronously.
      * 
      * If the `match` #GckAttributes is floating, it is consumed.
+     * @param match The attributes to match.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @param callback Called when the operation completes.
      */
     findObjectsAsync(match: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of a find operation.
+     * @param result The attributes to match.
      */
     findObjectsFinish(result: Gio.AsyncResult): Object[]
     /**
@@ -2776,6 +3223,10 @@ class Session {
      * 
      * If `public_attrs` and/or `private_attrs` is a floating reference, it is
      * consumed.
+     * @param mechType The mechanism type to use for key generation.
+     * @param publicAttrs Additional attributes for the generated public key.
+     * @param privateAttrs Additional attributes for the generated private key.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     generateKeyPair(mechType: number, publicAttrs: Attributes, privateAttrs: Attributes, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* publicKey */ Object | null, /* privateKey */ Object | null ]
     /**
@@ -2784,10 +3235,16 @@ class Session {
      * 
      * If `public_attrs` and/or `private_attrs` is a floating reference, it is
      * consumed.
+     * @param mechanism The mechanism to use for key generation.
+     * @param publicAttrs Additional attributes for the generated public key.
+     * @param privateAttrs Additional attributes for the generated private key.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @param callback Called when the operation completes.
      */
     generateKeyPairAsync(mechanism: Mechanism, publicAttrs: Attributes, privateAttrs: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of a generate key pair operation.
+     * @param result The async result passed to the callback.
      */
     generateKeyPairFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* publicKey */ Object | null, /* privateKey */ Object | null ]
     /**
@@ -2796,6 +3253,10 @@ class Session {
      * 
      * If `public_attrs` and/or `private_attrs` is a floating reference, it is
      * consumed.
+     * @param mechanism The mechanism to use for key generation.
+     * @param publicAttrs Additional attributes for the generated public key.
+     * @param privateAttrs Additional attributes for the generated private key.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     generateKeyPairFull(mechanism: Mechanism, publicAttrs: Attributes, privateAttrs: Attributes, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* publicKey */ Object | null, /* privateKey */ Object | null ]
     /**
@@ -2833,6 +3294,8 @@ class Session {
      * the CKU_SO user type.
      * 
      * This call may block for an indefinite period.
+     * @param pin the user's PIN, or %NULL for       protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     initPin(pin: Uint8Array | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2841,91 +3304,140 @@ class Session {
      * the `CKU_SO` user type.
      * 
      * This call will return immediately and completes asynchronously.
+     * @param pin the user's PIN, or %NULL for protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     initPinAsync(pin: Uint8Array | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of initializing a user's PIN.
+     * @param result The result passed to the callback.
      */
     initPinFinish(result: Gio.AsyncResult): boolean
     /**
      * Login the user on the session. This call may block for
      * an indefinite period.
+     * @param userType The type of login user.
+     * @param pin the user's PIN, or %NULL for       protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     login(userType: number, pin: Uint8Array | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Login the user on the session. This call will return
      * immediately and completes asynchronously.
+     * @param userType The type of login user.
+     * @param pin the user's PIN, or %NULL for       protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     loginAsync(userType: number, pin: Uint8Array | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of a login operation.
+     * @param result The result passed to the callback.
      */
     loginFinish(result: Gio.AsyncResult): boolean
     /**
      * Login the user on the session requesting the password interactively
      * when necessary. This call may block for an indefinite period.
+     * @param userType the type of login user
+     * @param interaction interaction to request PIN when necessary
+     * @param cancellable optional cancellation object, or %NULL
      */
     loginInteractive(userType: number, interaction?: Gio.TlsInteraction | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Login the user on the session prompting for passwords interactively when
      * necessary. This call will return immediately and completes asynchronously.
+     * @param userType the type of login user
+     * @param interaction interaction to request PIN when necessary
+     * @param cancellable optional cancellation object, or %NULL
+     * @param callback called when the operation completes
      */
     loginInteractiveAsync(userType: number, interaction?: Gio.TlsInteraction | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of a login operation.
+     * @param result the result passed to the callback
      */
     loginInteractiveFinish(result: Gio.AsyncResult): boolean
     /**
      * Log out of the session. This call may block for an indefinite period.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     logout(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Log out of the session. This call returns immediately and completes
      * asynchronously.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     logoutAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of logging out of a session.
+     * @param result The result passed to the callback.
      */
     logoutFinish(result: Gio.AsyncResult): boolean
     /**
      * Set the interaction object on this session, which is used to prompt for
      * pins and the like.
+     * @param interaction the interaction or %NULL
      */
     setInteraction(interaction?: Gio.TlsInteraction | null): void
     /**
      * Change the user's pin on this slot that this session is opened on.
      * 
      * This call may block for an indefinite period.
+     * @param oldPin the user's old PIN, or %NULL           for protected authentication path.
+     * @param newPin the user's new PIN, or %NULL           for protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     setPin(oldPin: Uint8Array | null, newPin: Uint8Array | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Change the user's pin on this slot that this session is opened on.
      * 
      * This call will return immediately and completes asynchronously.
+     * @param oldPin the user's old PIN, or %NULL           for protected authentication path
+     * @param nOldPin the length of the old PIN
+     * @param newPin the user's new PIN, or %NULL           for protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     setPinAsync(oldPin: Uint8Array | null, nOldPin: number, newPin: Uint8Array | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of changing a user's PIN.
+     * @param result The result passed to the callback.
      */
     setPinFinish(result: Gio.AsyncResult): boolean
     /**
      * Sign data in a mechanism specific manner. This call may
      * block for an indefinite period.
+     * @param key The key to sign with.
+     * @param mechType The mechanism type to use for signing.
+     * @param input data to sign
+     * @param cancellable Optional cancellation object, or %NULL
      */
     sign(key: Object, mechType: number, input: Uint8Array, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
      * Sign data in a mechanism specific manner. This call will
      * return immediately and complete asynchronously.
+     * @param key The key to sign with.
+     * @param mechanism The mechanism type and parameters to use for signing.
+     * @param input data to sign
+     * @param cancellable A GCancellable which can be used to cancel the operation.
+     * @param callback Called when the operation completes.
      */
     signAsync(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an signing operation.
+     * @param result The result object passed to the callback.
      */
     signFinish(result: Gio.AsyncResult): Uint8Array
     /**
      * Sign data in a mechanism specific manner. This call may
      * block for an indefinite period.
+     * @param key The key to sign with.
+     * @param mechanism The mechanism type and parameters to use for signing.
+     * @param input data to sign
+     * @param nResult location to store the length of the result data
+     * @param cancellable A GCancellable which can be used to cancel the operation.
      */
     signFull(key: Object, mechanism: Mechanism, input: Uint8Array, nResult: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -2933,6 +3445,11 @@ class Session {
      * indefinite period.
      * 
      * If `attrs` is a floating reference, it is consumed.
+     * @param wrapper The key to use for unwrapping.
+     * @param mechType The mechanism to use for unwrapping.
+     * @param input the wrapped data as a byte stream
+     * @param attrs Additional attributes for the unwrapped key.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     unwrapKey(wrapper: Object, mechType: number, input: Uint8Array, attrs: Attributes, cancellable?: Gio.Cancellable | null): Object
     /**
@@ -2940,10 +3457,17 @@ class Session {
      * return immediately and complete asynchronously.
      * 
      * If `attrs` is a floating reference, it is consumed.
+     * @param wrapper The key to use for unwrapping.
+     * @param mechanism The mechanism to use for unwrapping.
+     * @param input the wrapped data as a byte stream
+     * @param attrs Additional attributes for the unwrapped key.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @param callback Called when the operation completes.
      */
     unwrapKeyAsync(wrapper: Object, mechanism: Mechanism, input: Uint8Array, attrs: Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of a unwrap key operation.
+     * @param result The async result passed to the callback.
      */
     unwrapKeyFinish(result: Gio.AsyncResult): Object
     /**
@@ -2951,44 +3475,80 @@ class Session {
      * indefinite period.
      * 
      * If `attrs` is a floating reference, it is consumed.
+     * @param wrapper The key to use for unwrapping.
+     * @param mechanism The mechanism to use for unwrapping.
+     * @param input the wrapped data as a byte stream
+     * @param attrs Additional attributes for the unwrapped key.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     unwrapKeyFull(wrapper: Object, mechanism: Mechanism, input: Uint8Array, attrs: Attributes, cancellable?: Gio.Cancellable | null): Object
     /**
      * Verify data in a mechanism specific manner. This call may
      * block for an indefinite period.
+     * @param key The key to verify with.
+     * @param mechType The mechanism type to use for verifying.
+     * @param input data to verify
+     * @param signature the signature
+     * @param cancellable Optional cancellation object, or %NULL
      */
     verify(key: Object, mechType: number, input: Uint8Array, signature: Uint8Array, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Verify data in a mechanism specific manner. This call returns
      * immediately and completes asynchronously.
+     * @param key The key to verify with.
+     * @param mechanism The mechanism type and parameters to use for signing.
+     * @param input data to verify
+     * @param signature the signature
+     * @param cancellable A GCancellable which can be used to cancel the operation.
+     * @param callback Called when the operation completes.
      */
     verifyAsync(key: Object, mechanism: Mechanism, input: Uint8Array, signature: Uint8Array, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an verify operation.
+     * @param result The result object passed to the callback.
      */
     verifyFinish(result: Gio.AsyncResult): boolean
     /**
      * Verify data in a mechanism specific manner. This call may
      * block for an indefinite period.
+     * @param key The key to verify with.
+     * @param mechanism The mechanism type and parameters to use for signing.
+     * @param input data to verify
+     * @param signature the signature
+     * @param cancellable A GCancellable which can be used to cancel the operation.
      */
     verifyFull(key: Object, mechanism: Mechanism, input: Uint8Array, signature: Uint8Array, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Wrap a key into a byte stream. This call may block for an
      * indefinite period.
+     * @param wrapper The key to use for wrapping.
+     * @param mechType The mechanism type to use for wrapping.
+     * @param wrapped The key to wrap.
+     * @param cancellable A #GCancellable or %NULL
      */
     wrapKey(wrapper: Object, mechType: number, wrapped: Object, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
      * Wrap a key into a byte stream. This call will
      * return immediately and complete asynchronously.
+     * @param wrapper The key to use for wrapping.
+     * @param mechanism The mechanism to use for wrapping.
+     * @param wrapped The key to wrap.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @param callback Called when the operation completes.
      */
     wrapKeyAsync(wrapper: Object, mechanism: Mechanism, wrapped: Object, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of a wrap key operation.
+     * @param result The async result passed to the callback.
      */
     wrapKeyFinish(result: Gio.AsyncResult): Uint8Array
     /**
      * Wrap a key into a byte stream. This call may block for an
      * indefinite period.
+     * @param wrapper The key to use for wrapping.
+     * @param mechanism The mechanism to use for wrapping.
+     * @param wrapped The key to wrap.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     wrapKeyFull(wrapper: Object, mechanism: Mechanism, wrapped: Object, cancellable?: Gio.Cancellable | null): Uint8Array
     /* Methods of GObject-2.0.GObject.Object */
@@ -3026,6 +3586,10 @@ class Session {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3036,6 +3600,12 @@ class Session {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3059,6 +3629,7 @@ class Session {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3078,11 +3649,14 @@ class Session {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3090,6 +3664,8 @@ class Session {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3107,6 +3683,7 @@ class Session {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3152,6 +3729,7 @@ class Session {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3195,15 +3773,20 @@ class Session {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3244,6 +3827,7 @@ class Session {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3278,6 +3862,7 @@ class Session {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -3318,16 +3903,21 @@ class Session {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param ioPriority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     initAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     initFinish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     newFinish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -3370,6 +3960,7 @@ class Session {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of Gck-1.Gck.Session */
@@ -3378,6 +3969,7 @@ class Session {
      * a session pool to pick up the handle and keep it around.
      * 
      * If no signal handler claims the handle, then it is closed.
+     * @param handle The handle being discarded.
      */
     connect(sigName: "discard-handle", callback: ((handle: number) => boolean)): number
     on(sigName: "discard-handle", callback: (handle: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3413,12 +4005,23 @@ class Session {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::app-data", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::app-data", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::app-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::app-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::app-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::handle", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::handle", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::interaction", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interaction", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::interaction", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -3429,6 +4032,21 @@ class Session {
     on(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::opening-flags", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opening-flags", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::opening-flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::opening-flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::opening-flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::options", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::options", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::options", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::options", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::options", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::slot", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::slot", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::slot", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::slot", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::slot", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3444,19 +4062,32 @@ class Session {
      * Initialize a session object from a raw PKCS#11 session handle.
      * Usually one would use the [method`Slot`.open_session] function to
      * create a session.
+     * @param slot The slot which the session belongs to.
+     * @param sessionHandle the raw PKCS#11 handle of the session
+     * @param options Session options. Those which are used during opening a session have no effect.
      */
     static fromHandle(slot: Slot, sessionHandle: number, options: SessionOptions): Session
     /**
      * Open a session on the slot. This call may block for an indefinite period.
+     * @param slot the slot to open session on
+     * @param options session options
+     * @param interaction optional interaction for logins or object authentication
+     * @param cancellable optional cancellation object
      */
     static open(slot: Slot, options: SessionOptions, interaction?: Gio.TlsInteraction | null, cancellable?: Gio.Cancellable | null): Session
     /**
      * Open a session on the slot. This call will return immediately and complete
      * asynchronously.
+     * @param slot the slot to open session on
+     * @param options session options
+     * @param interaction optional interaction for logins or object authentication
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static openAsync(slot: Slot, options: SessionOptions, interaction?: Gio.TlsInteraction | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an open session operation.
+     * @param result the result passed to the callback
      */
     static openFinish(result: Gio.AsyncResult): Session
     /**
@@ -3466,12 +4097,21 @@ class Session {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param objectType a #GType supporting #GAsyncInitable.
+     * @param nParameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param ioPriority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newvAsync(objectType: GObject.Type, nParameters: number, parameters: GObject.Parameter, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -3488,8 +4128,17 @@ interface Slot_ConstructProps extends GObject.Object_ConstructProps {
     module?: Module
 }
 class Slot {
+    /* Properties of Gck-1.Gck.Slot */
+    /**
+     * The raw CK_SLOT_ID handle of this slot.
+     */
+    readonly handle: number
+    /**
+     * The PKCS11 object that this slot is a part of.
+     */
+    readonly module: Module
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gck-1.Gck.Slot */
     /**
      * Setup an enumerator for listing matching objects on the slot.
@@ -3497,11 +4146,14 @@ class Slot {
      * If the `match` #GckAttributes is floating, it is consumed.
      * 
      * This call will not block but will return an enumerator immediately.
+     * @param match attributes that the objects must match, or empty for all objects
+     * @param options options for opening a session
      */
     enumerateObjects(match: Attributes, options: SessionOptions): Enumerator
     /**
      * Checks equality of two slots. Two GckSlot objects can point to the same
      * underlying PKCS#11 slot.
+     * @param slot2 a pointer to the second #GckSlot
      */
     equal(slot2: Slot): boolean
     /**
@@ -3514,6 +4166,7 @@ class Slot {
     getInfo(): SlotInfo
     /**
      * Get information for the specified mechanism.
+     * @param mechType The mechanisms type to get info for.
      */
     getMechanismInfo(mechType: number): MechanismInfo
     /**
@@ -3530,6 +4183,7 @@ class Slot {
     getTokenInfo(): TokenInfo
     /**
      * Check if the PKCS11 slot has the given flags.
+     * @param flags The flags to check.
      */
     hasFlags(flags: number): boolean
     /**
@@ -3541,6 +4195,7 @@ class Slot {
     hash(): number
     /**
      * Check whether the PKCS#11 URI matches the slot
+     * @param uri the uri to match against the slot
      */
     match(uri: UriData): boolean
     /**
@@ -3548,6 +4203,8 @@ class Slot {
      * then this may be a recycled session with the same flags.
      * 
      * This call may block for an indefinite period.
+     * @param options The #GckSessionOptions to open a session with.
+     * @param cancellable An optional cancellation object, or %NULL.
      */
     openSession(options: SessionOptions, cancellable?: Gio.Cancellable | null): Session
     /**
@@ -3555,11 +4212,15 @@ class Slot {
      * then this may be a recycled session with the same flags.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param options The options to open the new session with.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     openSessionAsync(options: SessionOptions, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an open session operation. If the 'auto reuse' setting is set,
      * then this may be a recycled session with the same flags.
+     * @param result The result passed to the callback.
      */
     openSessionFinish(result: Gio.AsyncResult): Session
     /* Methods of GObject-2.0.GObject.Object */
@@ -3597,6 +4258,10 @@ class Slot {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3607,6 +4272,12 @@ class Slot {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3630,6 +4301,7 @@ class Slot {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3649,11 +4321,14 @@ class Slot {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3661,6 +4336,8 @@ class Slot {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3678,6 +4355,7 @@ class Slot {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3723,6 +4401,7 @@ class Slot {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3766,15 +4445,20 @@ class Slot {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3815,6 +4499,7 @@ class Slot {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3849,6 +4534,7 @@ class Slot {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3880,12 +4566,23 @@ class Slot {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::handle", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::handle", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::handle", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::module", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::module", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::module", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3899,6 +4596,8 @@ class Slot {
     /* Static methods and pseudo-constructors */
     /**
      * Create a new GckSlot object for a raw PKCS#11 handle.
+     * @param module The module that this slot is on.
+     * @param slotId The raw PKCS#11 handle or slot id of this slot.
      */
     static fromHandle(module: Module, slotId: number): Slot
     static $gtype: GObject.Type
@@ -3908,16 +4607,16 @@ class Attribute {
     /**
      * The attribute type, such as `CKA_LABEL`.
      */
-    readonly type: number
+    type: number
     /**
      * The value of the attribute. May be %NULL.
      */
-    readonly value: Uint8Array
+    value: Uint8Array
     /**
      * The length of the attribute. May be [const`INVALID]` if the
      * attribute is invalid.
      */
-    readonly length: number
+    length: number
     /* Methods of Gck-1.Gck.Attribute */
     /**
      * Clear allocated memory held by a #GckAttribute.
@@ -3942,6 +4641,7 @@ class Attribute {
     dup(): Attribute
     /**
      * Compare two attributes. Useful with <code>GHashTable</code>.
+     * @param attr2 second attribute to compare
      */
     equal(attr2: Attribute): boolean
     /**
@@ -3973,6 +4673,7 @@ class Attribute {
      * conversion is performed. It is an error to pass an attribute
      * to this function unless you're know it's supposed to contain
      * a value of the right type.
+     * @param value The date value to fill in with the parsed date.
      */
     getDate(value: GLib.Date): void
     /**
@@ -3999,6 +4700,7 @@ class Attribute {
      * 
      * When done with the copied attribute you should use
      * [method`Attribute`.clear] to free the internal memory.
+     * @param src An attribute to copy.
      */
     initCopy(src: Attribute): void
     /**
@@ -4026,10 +4728,12 @@ class Attributes {
      * 
      * Use [method`Attributes`.count] to determine how many attributes are
      * in the array.
+     * @param index The attribute index to retrieve.
      */
     at(index: number): Attribute
     /**
      * Check whether the attributes contain a certain attribute.
+     * @param match The attribute to find
      */
     contains(match: Attribute): boolean
     /**
@@ -4042,6 +4746,7 @@ class Attributes {
     dump(): void
     /**
      * Find an attribute with the specified type in the array.
+     * @param attrType The type of attribute to find.
      */
     find(attrType: number): Attribute
     /**
@@ -4050,6 +4755,7 @@ class Attributes {
      * The attribute (if found) must be of the right size to store
      * a boolean value (ie: CK_BBOOL). If the attribute is marked invalid
      * then it will be treated as not found.
+     * @param attrType The type of attribute to find.
      */
     findBoolean(attrType: number): [ /* returnType */ boolean, /* value */ boolean ]
     /**
@@ -4058,6 +4764,7 @@ class Attributes {
      * The attribute (if found) must be of the right size to store
      * a date value (ie: CK_DATE). If the attribute is marked invalid
      * then it will be treated as not found.
+     * @param attrType The type of attribute to find.
      */
     findDate(attrType: number): [ /* returnType */ boolean, /* value */ GLib.Date ]
     /**
@@ -4066,6 +4773,7 @@ class Attributes {
      * If the attribute is marked invalid then it will be treated as not found.
      * The resulting string will be null-terminated, and must be freed by the caller
      * using g_free().
+     * @param attrType The type of attribute to find.
      */
     findString(attrType: number): [ /* returnType */ boolean, /* value */ string ]
     /**
@@ -4074,6 +4782,7 @@ class Attributes {
      * The attribute (if found) must be of the right size to store
      * a unsigned long value (ie: CK_ULONG). If the attribute is marked invalid
      * then it will be treated as not found.
+     * @param attrType The type of attribute to find.
      */
     findUlong(attrType: number): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -4128,6 +4837,7 @@ class Builder {
      * 
      * As an optimization, the attribute memory values are automatically shared
      * between the attributes and the builder.
+     * @param attrs the attributes to add
      */
     addAll(attrs: Attributes): void
     /**
@@ -4140,12 +4850,15 @@ class Builder {
      * 
      * As an optimization, the attribute memory value is automatically shared
      * between the attribute and the builder.
+     * @param attr the attribute to add
      */
     addAttribute(attr: Attribute): void
     /**
      * Add a new attribute to the builder for the boolean `value`.
      * Unconditionally adds a new attribute, even if one with the same `attr_type`
      * already exists.
+     * @param attrType the new attribute type
+     * @param value the attribute value
      */
     addBoolean(attrType: number, value: boolean): void
     /**
@@ -4157,23 +4870,29 @@ class Builder {
      * %NULL may be specified for the `value` argument, in which case an empty
      * attribute is created. [const`INVALID]` may be specified for the length, in
      * which case an invalid attribute is created in the PKCS#11 style.
+     * @param attrType the new attribute type
+     * @param value the new attribute memory
      */
     addData(attrType: number, value: Uint8Array | null): void
     /**
      * Add a new attribute to the builder for the date `value`.
      * Unconditionally adds a new attribute, even if one with the same `attr_type`
      * already exists.
+     * @param attrType the new attribute type
+     * @param value the attribute value
      */
     addDate(attrType: number, value: GLib.Date): void
     /**
      * Add a new attribute to the builder that is empty. Unconditionally
      * adds a new attribute, even if one with the same `attr_type` already exists.
+     * @param attrType the new attribute type
      */
     addEmpty(attrType: number): void
     /**
      * Add a new attribute to the builder that is invalid in the PKCS#11 sense.
      * Unconditionally adds a new attribute, even if one with the same `attr_type`
      * already exists.
+     * @param attrType the new attribute type
      */
     addInvalid(attrType: number): void
     /**
@@ -4189,18 +4908,24 @@ class Builder {
      * 
      * As an optimization, the attribute memory values are automatically shared
      * between the attributes and the builder.
+     * @param attrs the attributes to add
+     * @param onlyTypes the types of attributes to add
      */
     addOnly(attrs: Attributes, onlyTypes: number[]): void
     /**
      * Add a new attribute to the builder for the string `value` or %NULL.
      * Unconditionally adds a new attribute, even if one with the same `attr_type`
      * already exists.
+     * @param attrType the new attribute type
+     * @param value the attribute value
      */
     addString(attrType: number, value?: string | null): void
     /**
      * Add a new attribute to the builder for the unsigned long `value`.
      * Unconditionally adds a new attribute, even if one with the same `attr_type`
      * already exists.
+     * @param attrType the new attribute type
+     * @param value the attribute value
      */
     addUlong(attrType: number, value: number): void
     /**
@@ -4240,6 +4965,7 @@ class Builder {
      * The returned [struct`Attribute]` is owned by the builder and may not be
      * modified in any way. It is only valid until another attribute is added to or
      * set on the builder, or until the builder is cleared or unreferenced.
+     * @param attrType the type of attribute to find
      */
     find(attrType: number): Attribute
     /**
@@ -4247,6 +4973,7 @@ class Builder {
      * of the correct boolean size, and is not invalid in the PKCS#11 sense.
      * If multiple attributes exist for the given attribute type, then the first\
      * one is returned.
+     * @param attrType the type of attribute to find
      */
     findBoolean(attrType: number): [ /* returnType */ boolean, /* value */ boolean ]
     /**
@@ -4254,6 +4981,7 @@ class Builder {
      * the correct date size, and is not invalid in the PKCS#11 sense.
      * If multiple attributes exist for the given attribute type, then the first
      * one is returned.
+     * @param attrType the type of attribute to find
      */
     findDate(attrType: number): [ /* returnType */ boolean, /* value */ GLib.Date ]
     /**
@@ -4261,6 +4989,7 @@ class Builder {
      * non %NULL value pointer, and is not invalid in the PKCS#11 sense.
      * If multiple attributes exist for the given attribute type, then the first
      * one is returned.
+     * @param attrType the type of attribute to find
      */
     findString(attrType: number): [ /* returnType */ boolean, /* value */ string ]
     /**
@@ -4268,6 +4997,7 @@ class Builder {
      * is of the correct unsigned long size, and is not invalid in the PKCS#11 sense.
      * If multiple attributes exist for the given attribute type, then the first
      * one is returned.
+     * @param attrType the type of attribute to find
      */
     findUlong(attrType: number): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -4293,6 +5023,7 @@ class Builder {
      * 
      * If the %GCK_BUILDER_SECURE_MEMORY flag is specified then non-pageable memory
      * will be used for the various values of the attributes in the builder
+     * @param flags the flags for the new builder
      */
     initFull(flags: BuilderFlags): void
     /**
@@ -4310,12 +5041,15 @@ class Builder {
      * 
      * As an optimization, the attribute memory values are automatically shared
      * between the attributes and the builder.
+     * @param attrs the attributes to set
      */
     setAll(attrs: Attributes): void
     /**
      * Set an attribute on the builder for the boolean `value`.
      * If an attribute with `attr_type` already exists in the builder then it is
      * changed to the new value, otherwise an attribute is added.
+     * @param attrType the new attribute type
+     * @param value the attribute value
      */
     setBoolean(attrType: number, value: boolean): void
     /**
@@ -4328,36 +5062,46 @@ class Builder {
      * %NULL may be specified for the `value` argument, in which case an empty
      * attribute is created. [const`INVALID]` may be specified for the length, in
      * which case an invalid attribute is created in the PKCS#11 style.
+     * @param attrType the attribute type
+     * @param value the new attribute memory
      */
     setData(attrType: number, value: Uint8Array | null): void
     /**
      * Set an attribute on the builder for the date `value`.
      * If an attribute with `attr_type` already exists in the builder then it is
      * changed to the new value, otherwise an attribute is added.
+     * @param attrType the new attribute type
+     * @param value the attribute value
      */
     setDate(attrType: number, value: GLib.Date): void
     /**
      * Set an attribute on the builder that is empty. If an attribute
      * with `attr_type` already exists in the builder then it is changed to the new
      * value, otherwise an attribute is added.
+     * @param attrType the attribute type
      */
     setEmpty(attrType: number): void
     /**
      * Set an attribute on the builder that is invalid in the PKCS#11 sense.
      * If an attribute with `attr_type` already exists in the builder then it is
      * changed to the new value, otherwise an attribute is added.
+     * @param attrType the attribute type
      */
     setInvalid(attrType: number): void
     /**
      * Set an attribute on the builder for the string `value` or %NULL.
      * If an attribute with `attr_type` already exists in the builder then it is
      * changed to the new value, otherwise an attribute is added.
+     * @param attrType the new attribute type
+     * @param value the attribute value
      */
     setString(attrType: number, value: string): void
     /**
      * Set an attribute on the builder for the unsigned long `value`.
      * If an attribute with `attr_type` already exists in the builder then it is
      * changed to the new value, otherwise an attribute is added.
+     * @param attrType the new attribute type
+     * @param value the attribute value
      */
     setUlong(attrType: number, value: number): void
     /**
@@ -4378,6 +5122,8 @@ class Builder {
      * %NULL may be specified for the `value` argument, in which case an empty
      * attribute is created. [const`INVALID]` may be specified for the length, in
      * which case an invalid attribute is created in the PKCS#11 style.
+     * @param attrType the new attribute type
+     * @param value the new         attribute memory
      */
     takeData(attrType: number, value: Uint8Array | null): void
     static name: string
@@ -4391,12 +5137,13 @@ class Builder {
      * 
      * It is an error to use this function on builders that were allocated on the
      * stack.
+     * @param builder the builder
      */
     static unref(builder?: object | null): void
 }
 abstract class EnumeratorClass {
     /* Fields of Gck-1.Gck.EnumeratorClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class EnumeratorPrivate {
@@ -4407,15 +5154,15 @@ class Mechanism {
     /**
      * The mechanism type
      */
-    readonly type: number
+    type: number
     /**
      * Mechanism specific data.
      */
-    readonly parameter: object
+    parameter: object
     /**
      * Length of mechanism specific data.
      */
-    readonly nParameter: number
+    nParameter: number
     static name: string
 }
 class MechanismInfo {
@@ -4423,15 +5170,15 @@ class MechanismInfo {
     /**
      * The minimum key size that can be used with this mechanism.
      */
-    readonly minKeySize: number
+    minKeySize: number
     /**
      * The maximum key size that can be used with this mechanism.
      */
-    readonly maxKeySize: number
+    maxKeySize: number
     /**
      * Various PKCS11 flags that apply to this mechanism.
      */
-    readonly flags: number
+    flags: number
     /* Methods of Gck-1.Gck.MechanismInfo */
     /**
      * Make a copy of the mechanism info.
@@ -4445,9 +5192,9 @@ class MechanismInfo {
 }
 abstract class ModuleClass {
     /* Fields of Gck-1.Gck.ModuleClass */
-    readonly parent: GObject.ObjectClass
-    readonly authenticateSlot: (self: Module, slot: Slot, label: string, password: string) => boolean
-    readonly authenticateObject: (self: Module, object: Object, label: string, password: string) => boolean
+    parent: GObject.ObjectClass
+    authenticateSlot: (self: Module, slot: Slot, label: string, password: string) => boolean
+    authenticateObject: (self: Module, object: Object, label: string, password: string) => boolean
     static name: string
 }
 class ModuleInfo {
@@ -4455,31 +5202,31 @@ class ModuleInfo {
     /**
      * The major version of the module.
      */
-    readonly pkcs11VersionMajor: number
+    pkcs11VersionMajor: number
     /**
      * The minor version of the module.
      */
-    readonly pkcs11VersionMinor: number
+    pkcs11VersionMinor: number
     /**
      * The module manufacturer.
      */
-    readonly manufacturerId: string
+    manufacturerId: string
     /**
      * The module PKCS&num;11 flags.
      */
-    readonly flags: number
+    flags: number
     /**
      * The module description.
      */
-    readonly libraryDescription: string
+    libraryDescription: string
     /**
      * The major version of the library.
      */
-    readonly libraryVersionMajor: number
+    libraryVersionMajor: number
     /**
      * The minor version of the library.
      */
-    readonly libraryVersionMinor: number
+    libraryVersionMinor: number
     /* Methods of Gck-1.Gck.ModuleInfo */
     /**
      * Make a copy of the module info.
@@ -4499,17 +5246,17 @@ abstract class ObjectCacheIface {
     /**
      * parent interface
      */
-    readonly interface: GObject.TypeInterface
+    interface: GObject.TypeInterface
     /**
      * attribute types that an
      *                   enumerator should retrieve
      */
-    readonly defaultTypes: number[]
+    defaultTypes: number[]
     /**
      * number of attribute types to be retrieved
      */
-    readonly nDefaultTypes: number
-    readonly fill: (object: ObjectCache, attrs: Attributes) => void
+    nDefaultTypes: number
+    fill: (object: ObjectCache, attrs: Attributes) => void
     static name: string
 }
 abstract class ObjectClass {
@@ -4517,7 +5264,7 @@ abstract class ObjectClass {
     /**
      * derived from this
      */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class ObjectPrivate {
@@ -4528,7 +5275,7 @@ abstract class PasswordClass {
     /**
      * parent class
      */
-    readonly parent: Gio.TlsPasswordClass
+    parent: Gio.TlsPasswordClass
     static name: string
 }
 class PasswordPrivate {
@@ -4536,7 +5283,7 @@ class PasswordPrivate {
 }
 abstract class SessionClass {
     /* Fields of Gck-1.Gck.SessionClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class SessionInfo {
@@ -4544,19 +5291,19 @@ class SessionInfo {
     /**
      * The handle of the PKCS11 slot that this session is opened on.
      */
-    readonly slotId: number
+    slotId: number
     /**
      * The user login state of the session.
      */
-    readonly state: number
+    state: number
     /**
      * Various PKCS11 flags.
      */
-    readonly flags: number
+    flags: number
     /**
      * The last device error that occurred from an operation on this session.
      */
-    readonly deviceError: number
+    deviceError: number
     /* Methods of Gck-1.Gck.SessionInfo */
     /**
      * Make a new copy of a session info structure.
@@ -4573,7 +5320,7 @@ class SessionPrivate {
 }
 abstract class SlotClass {
     /* Fields of Gck-1.Gck.SlotClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class SlotInfo {
@@ -4581,31 +5328,31 @@ class SlotInfo {
     /**
      * Description of the slot.
      */
-    readonly slotDescription: string
+    slotDescription: string
     /**
      * The manufacturer of this slot.
      */
-    readonly manufacturerId: string
+    manufacturerId: string
     /**
      * Various PKCS11 flags that apply to this slot.
      */
-    readonly flags: number
+    flags: number
     /**
      * The major version of the hardware.
      */
-    readonly hardwareVersionMajor: number
+    hardwareVersionMajor: number
     /**
      * The minor version of the hardware.
      */
-    readonly hardwareVersionMinor: number
+    hardwareVersionMinor: number
     /**
      * The major version of the firmware.
      */
-    readonly firmwareVersionMajor: number
+    firmwareVersionMajor: number
     /**
      * The minor version of the firmware.
      */
-    readonly firmwareVersionMinor: number
+    firmwareVersionMinor: number
     /* Methods of Gck-1.Gck.SlotInfo */
     /**
      * Make a copy of the slot info.
@@ -4625,83 +5372,83 @@ class TokenInfo {
     /**
      * The displayable token label.
      */
-    readonly label: string
+    label: string
     /**
      * The manufacturer of this slot.
      */
-    readonly manufacturerId: string
+    manufacturerId: string
     /**
      * The token model number as a string.
      */
-    readonly model: string
+    model: string
     /**
      * The token serial number as a string.
      */
-    readonly serialNumber: string
+    serialNumber: string
     /**
      * Various PKCS11 flags that apply to this token.
      */
-    readonly flags: number
+    flags: number
     /**
      * The maximum number of sessions allowed on this token.
      */
-    readonly maxSessionCount: number
+    maxSessionCount: number
     /**
      * The number of sessions open on this token.
      */
-    readonly sessionCount: number
+    sessionCount: number
     /**
      * The maximum number of read/write sessions allowed on this token.
      */
-    readonly maxRwSessionCount: number
+    maxRwSessionCount: number
     /**
      * The number of sessions open on this token.
      */
-    readonly rwSessionCount: number
+    rwSessionCount: number
     /**
      * The maximum length of a PIN for locking this token.
      */
-    readonly maxPinLen: number
+    maxPinLen: number
     /**
      * The minimum length of a PIN for locking this token.
      */
-    readonly minPinLen: number
+    minPinLen: number
     /**
      * The total amount of memory on this token for storing public objects.
      */
-    readonly totalPublicMemory: number
+    totalPublicMemory: number
     /**
      * The available amount of memory on this token for storing public objects.
      */
-    readonly freePublicMemory: number
+    freePublicMemory: number
     /**
      * The total amount of memory on this token for storing private objects.
      */
-    readonly totalPrivateMemory: number
+    totalPrivateMemory: number
     /**
      * The available amount of memory on this token for storing private objects.
      */
-    readonly freePrivateMemory: number
+    freePrivateMemory: number
     /**
      * The major version of the hardware.
      */
-    readonly hardwareVersionMajor: number
+    hardwareVersionMajor: number
     /**
      * The minor version of the hardware.
      */
-    readonly hardwareVersionMinor: number
+    hardwareVersionMinor: number
     /**
      * The major version of the firmware.
      */
-    readonly firmwareVersionMajor: number
+    firmwareVersionMajor: number
     /**
      * The minor version of the firmware.
      */
-    readonly firmwareVersionMinor: number
+    firmwareVersionMinor: number
     /**
      * If the token has a hardware clock, this is set to the number of seconds since the epoch.
      */
-    readonly utcTime: number
+    utcTime: number
     /* Methods of Gck-1.Gck.TokenInfo */
     /**
      * Make a copy of the token info.
@@ -4718,19 +5465,19 @@ class UriData {
     /**
      * whether any parts of the PKCS#11 URI were unsupported or unrecognized.
      */
-    readonly anyUnrecognized: boolean
+    anyUnrecognized: boolean
     /**
      * information about the PKCS#11 modules matching the URI.
      */
-    readonly moduleInfo: ModuleInfo
+    moduleInfo: ModuleInfo
     /**
      * information about the PKCS#11 tokens matching the URI.
      */
-    readonly tokenInfo: TokenInfo
+    tokenInfo: TokenInfo
     /**
      * information about the PKCS#11 objects matching the URI.
      */
-    readonly attributes: Attributes
+    attributes: Attributes
     /* Methods of Gck-1.Gck.UriData */
     /**
      * Copy a #GckUriData

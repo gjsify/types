@@ -877,16 +877,19 @@ class AccessPoint {
      * The WPA flags of the access point.
      */
     readonly wpa_flags: number
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.AccessPoint */
     /**
      * Validates a given connection against a given Wi-Fi access point to ensure that
      * the connection may be activated with that AP.  The connection must match the
      * `ap'`s SSID, (if given) BSSID, and other attributes like security settings,
      * channel, band, etc.
+     * @param connection an #NMConnection to validate against `ap`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
@@ -899,6 +902,7 @@ class AccessPoint {
      * use nm_remote_settings_list_connections() and then filter the returned list
      * for a given #NMDevice using nm_device_filter_connections() and finally
      * filter that list with this function.
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -992,6 +996,10 @@ class AccessPoint {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1002,6 +1010,12 @@ class AccessPoint {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1025,6 +1039,7 @@ class AccessPoint {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1044,11 +1059,14 @@ class AccessPoint {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1056,6 +1074,8 @@ class AccessPoint {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1073,6 +1093,7 @@ class AccessPoint {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1118,6 +1139,7 @@ class AccessPoint {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1161,15 +1183,20 @@ class AccessPoint {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1210,6 +1237,7 @@ class AccessPoint {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1244,6 +1272,7 @@ class AccessPoint {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -1284,16 +1313,21 @@ class AccessPoint {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1336,6 +1370,7 @@ class AccessPoint {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.AccessPoint */
@@ -1376,11 +1411,15 @@ class AccessPoint {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1422,6 +1461,7 @@ class AccessPoint {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -1463,11 +1503,15 @@ class AccessPoint {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1509,6 +1553,7 @@ class AccessPoint {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1528,6 +1573,7 @@ class AccessPoint {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1538,6 +1584,8 @@ class AccessPoint {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: AccessPoint, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: AccessPoint, error?: object | null, failed_path?: object | null) => void)): number
@@ -1571,6 +1619,7 @@ class AccessPoint {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
@@ -1597,6 +1646,8 @@ class AccessPoint {
     connect_after(sigName: "notify::strength", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::wpa-flags", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::wpa-flags", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1613,12 +1664,21 @@ class AccessPoint {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1684,10 +1744,12 @@ class ActiveConnection {
      * Whether the active connection is a VPN connection.
      */
     readonly vpn: boolean
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.ActiveConnection */
     /**
      * Gets the #NMConnection's DBus object path.  This is often used with
@@ -1799,6 +1861,10 @@ class ActiveConnection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1809,6 +1875,12 @@ class ActiveConnection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1832,6 +1904,7 @@ class ActiveConnection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1851,11 +1924,14 @@ class ActiveConnection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1863,6 +1939,8 @@ class ActiveConnection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1880,6 +1958,7 @@ class ActiveConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1925,6 +2004,7 @@ class ActiveConnection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1968,15 +2048,20 @@ class ActiveConnection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2017,6 +2102,7 @@ class ActiveConnection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2051,6 +2137,7 @@ class ActiveConnection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -2091,16 +2178,21 @@ class ActiveConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -2143,6 +2235,7 @@ class ActiveConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.ActiveConnection */
@@ -2183,11 +2276,15 @@ class ActiveConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -2229,6 +2326,7 @@ class ActiveConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -2270,11 +2368,15 @@ class ActiveConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -2316,6 +2418,7 @@ class ActiveConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2335,6 +2438,7 @@ class ActiveConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2345,6 +2449,8 @@ class ActiveConnection {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: ActiveConnection, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: ActiveConnection, error?: object | null, failed_path?: object | null) => void)): number
@@ -2378,6 +2484,7 @@ class ActiveConnection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ActiveConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ActiveConnection, pspec: GObject.ParamSpec) => void)): number
@@ -2412,6 +2519,8 @@ class ActiveConnection {
     connect_after(sigName: "notify::uuid", callback: (($obj: ActiveConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vpn", callback: (($obj: ActiveConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vpn", callback: (($obj: ActiveConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: ActiveConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: ActiveConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2428,12 +2537,21 @@ class ActiveConnection {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -2529,10 +2647,12 @@ class Client {
      * Whether the WWAN hardware is enabled.
      */
     readonly wwan_hardware_enabled: boolean
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.Client */
     /**
      * Starts a connection to a particular network using the configuration settings
@@ -2550,6 +2670,10 @@ class Client {
      * the new connection, not when it finishes. You can used the returned
      * #NMActiveConnection object (in particular, #NMActiveConnection:state) to
      * track the activation to its completion.
+     * @param connection an #NMConnection
+     * @param device the #NMDevice
+     * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by `device,` which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.
+     * @param callback the function to call when the call is done
      */
     activate_connection(connection?: NetworkManager.Connection | null, device?: Device | null, specific_object?: string | null, callback?: ClientActivateFn | null): void
     /**
@@ -2562,6 +2686,10 @@ class Client {
      * the new connection, not when it finishes. You can used the returned
      * #NMActiveConnection object (in particular, #NMActiveConnection:state) to
      * track the activation to its completion.
+     * @param partial an #NMConnection to add; the connection may be   partially filled (or even %NULL) and will be completed by NetworkManager   using the given `device` and `specific_object` before being added
+     * @param device the #NMDevice
+     * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by `device,` which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.
+     * @param callback the function to call when the call is done
      */
     add_and_activate_connection(partial: NetworkManager.Connection | null, device: Device, specific_object?: string | null, callback?: ClientAddActivateFn | null): void
     /**
@@ -2571,6 +2699,7 @@ class Client {
      * 
      * This is a blocking call; use nm_client_check_connectivity_async()
      * if you do not want to block.
+     * @param cancellable a #GCancellable
      */
     check_connectivity(cancellable?: Gio.Cancellable | null): NetworkManager.ConnectivityState
     /**
@@ -2578,15 +2707,19 @@ class Client {
      * `callback` when complete. Contrast nm_client_get_connectivity(),
      * which (immediately) returns the most recent known state without
      * re-checking, and nm_client_check_connectivity(), which blocks.
+     * @param cancellable a #GCancellable
+     * @param callback callback to call with the result
      */
     check_connectivity_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Retrieves the result of an nm_client_check_connectivity_async()
      * call.
+     * @param result the #GAsyncResult
      */
     check_connectivity_finish(result: Gio.AsyncResult): NetworkManager.ConnectivityState
     /**
      * Deactivates an active #NMActiveConnection.
+     * @param active the #NMActiveConnection to deactivate
      */
     deactivate_connection(active: ActiveConnection): void
     /**
@@ -2620,10 +2753,12 @@ class Client {
     get_connectivity(): NetworkManager.ConnectivityState
     /**
      * Gets a #NMDevice from a #NMClient.
+     * @param iface the interface name to search for
      */
     get_device_by_iface(iface: string): Device
     /**
      * Gets a #NMDevice from a #NMClient.
+     * @param object_path the object path to search for
      */
     get_device_by_path(object_path: string): Device
     /**
@@ -2635,6 +2770,8 @@ class Client {
     get_devices(): Device[]
     /**
      * Gets NetworkManager current logging level and domains.
+     * @param level return location for logging level string
+     * @param domains return location for log domains string. The string is   a list of domains separated by ","
      */
     get_logging(level?: string | null, domains?: string | null): boolean
     /**
@@ -2644,6 +2781,7 @@ class Client {
     /**
      * Requests the result of a specific permission, which indicates whether the
      * client can or cannot perform the action the permission represents
+     * @param permission the permission for which to return the result, one of #NMClientPermission
      */
     get_permission_result(permission: ClientPermission): ClientPermissionResult
     /**
@@ -2681,14 +2819,18 @@ class Client {
      * Enables or disables networking.  When networking is disabled, all controlled
      * interfaces are disconnected and deactivated.  When networking is enabled,
      * all controlled interfaces are available for activation.
+     * @param enabled %TRUE to set networking enabled, %FALSE to set networking disabled
      */
     networking_set_enabled(enabled: boolean): void
     /**
      * Sets NetworkManager logging level and/or domains.
+     * @param level logging level to set (%NULL or an empty string for no change)
+     * @param domains logging domains to set. The string should be a list of log   domains separated by ",". (%NULL or an empty string for no change)
      */
     set_logging(level?: string | null, domains?: string | null): boolean
     /**
      * Deprecated; use nm_client_networking_set_enabled() instead.
+     * @param sleep_ %TRUE to put the daemon to sleep
      */
     sleep(sleep_: boolean): void
     /**
@@ -2701,6 +2843,7 @@ class Client {
     wimax_hardware_get_enabled(): boolean
     /**
      * Enables or disables WiMAX devices.
+     * @param enabled %TRUE to enable WiMAX
      */
     wimax_set_enabled(enabled: boolean): void
     /**
@@ -2713,6 +2856,7 @@ class Client {
     wireless_hardware_get_enabled(): boolean
     /**
      * Enables or disables wireless devices.
+     * @param enabled %TRUE to enable wireless
      */
     wireless_set_enabled(enabled: boolean): void
     /**
@@ -2725,6 +2869,7 @@ class Client {
     wwan_hardware_get_enabled(): boolean
     /**
      * Enables or disables WWAN devices.
+     * @param enabled %TRUE to enable WWAN
      */
     wwan_set_enabled(enabled: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -2771,6 +2916,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2781,6 +2930,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2804,6 +2959,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2823,11 +2979,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2835,6 +2994,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2852,6 +3013,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2897,6 +3059,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2940,15 +3103,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2989,6 +3157,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3023,6 +3192,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -3063,16 +3233,21 @@ class Client {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -3115,6 +3290,7 @@ class Client {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Client */
@@ -3158,11 +3334,15 @@ class Client {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3204,6 +3384,7 @@ class Client {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -3245,11 +3426,15 @@ class Client {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3291,6 +3476,7 @@ class Client {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3310,6 +3496,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3317,6 +3504,7 @@ class Client {
     /**
      * Notifies that a #NMDevice is added.  This signal is emitted for both
      * regular devices and placeholder devices.
+     * @param device the new device
      */
     connect(sigName: "any-device-added", callback: (($obj: Client, device: Device) => void)): number
     connect_after(sigName: "any-device-added", callback: (($obj: Client, device: Device) => void)): number
@@ -3324,6 +3512,7 @@ class Client {
     /**
      * Notifies that a #NMDevice is removed.  This signal is emitted for both
      * regular devices and placeholder devices.
+     * @param device the removed device
      */
     connect(sigName: "any-device-removed", callback: (($obj: Client, device: Device) => void)): number
     connect_after(sigName: "any-device-removed", callback: (($obj: Client, device: Device) => void)): number
@@ -3331,6 +3520,7 @@ class Client {
     /**
      * Notifies that a #NMDevice is added.  This signal is not emitted for
      * placeholder devices.
+     * @param device the new device
      */
     connect(sigName: "device-added", callback: (($obj: Client, device: Device) => void)): number
     connect_after(sigName: "device-added", callback: (($obj: Client, device: Device) => void)): number
@@ -3338,12 +3528,15 @@ class Client {
     /**
      * Notifies that a #NMDevice is removed.  This signal is not emitted for
      * placeholder devices.
+     * @param device the removed device
      */
     connect(sigName: "device-removed", callback: (($obj: Client, device: Device) => void)): number
     connect_after(sigName: "device-removed", callback: (($obj: Client, device: Device) => void)): number
     emit(sigName: "device-removed", device: Device): void
     /**
      * Notifies that a permission has changed
+     * @param permission a permission from #NMClientPermission
+     * @param result the permission's result, one of #NMClientPermissionResult
      */
     connect(sigName: "permission-changed", callback: (($obj: Client, permission: number, result: number) => void)): number
     connect_after(sigName: "permission-changed", callback: (($obj: Client, permission: number, result: number) => void)): number
@@ -3355,6 +3548,8 @@ class Client {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: Client, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: Client, error?: object | null, failed_path?: object | null) => void)): number
@@ -3388,6 +3583,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
@@ -3426,6 +3622,8 @@ class Client {
     connect_after(sigName: "notify::wwan-enabled", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::wwan-hardware-enabled", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::wwan-hardware-enabled", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3445,6 +3643,8 @@ class Client {
      * NOTE: #NMClient provides information about devices and a mechanism to
      * control them.  To access and modify network configuration data, use the
      * #NMRemoteSettings object.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to call when the client is created
      */
     static new_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -3454,12 +3654,21 @@ class Client {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -3472,13 +3681,16 @@ class DHCP4Config {
      * The #GHashTable containing options of the configuration.
      */
     readonly options: GLib.HashTable
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DHCP4Config */
     /**
      * Gets one option by option name.
+     * @param option the option to retrieve
      */
     get_one_option(option: string): string
     /**
@@ -3529,6 +3741,10 @@ class DHCP4Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3539,6 +3755,12 @@ class DHCP4Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3562,6 +3784,7 @@ class DHCP4Config {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3581,11 +3804,14 @@ class DHCP4Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3593,6 +3819,8 @@ class DHCP4Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3610,6 +3838,7 @@ class DHCP4Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3655,6 +3884,7 @@ class DHCP4Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3698,15 +3928,20 @@ class DHCP4Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3747,6 +3982,7 @@ class DHCP4Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3781,6 +4017,7 @@ class DHCP4Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -3821,16 +4058,21 @@ class DHCP4Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -3873,6 +4115,7 @@ class DHCP4Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DHCP4Config */
@@ -3913,11 +4156,15 @@ class DHCP4Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3959,6 +4206,7 @@ class DHCP4Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -4000,11 +4248,15 @@ class DHCP4Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -4046,6 +4298,7 @@ class DHCP4Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4065,6 +4318,7 @@ class DHCP4Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4075,6 +4329,8 @@ class DHCP4Config {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DHCP4Config, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DHCP4Config, error?: object | null, failed_path?: object | null) => void)): number
@@ -4108,12 +4364,15 @@ class DHCP4Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DHCP4Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DHCP4Config, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::options", callback: (($obj: DHCP4Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::options", callback: (($obj: DHCP4Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DHCP4Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DHCP4Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4130,12 +4389,21 @@ class DHCP4Config {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -4148,13 +4416,16 @@ class DHCP6Config {
      * The #GHashTable containing options of the configuration.
      */
     readonly options: GLib.HashTable
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DHCP6Config */
     /**
      * Gets one option by option name.
+     * @param option the option to retrieve
      */
     get_one_option(option: string): string
     /**
@@ -4205,6 +4476,10 @@ class DHCP6Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4215,6 +4490,12 @@ class DHCP6Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4238,6 +4519,7 @@ class DHCP6Config {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4257,11 +4539,14 @@ class DHCP6Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4269,6 +4554,8 @@ class DHCP6Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4286,6 +4573,7 @@ class DHCP6Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4331,6 +4619,7 @@ class DHCP6Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4374,15 +4663,20 @@ class DHCP6Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4423,6 +4717,7 @@ class DHCP6Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4457,6 +4752,7 @@ class DHCP6Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -4497,16 +4793,21 @@ class DHCP6Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -4549,6 +4850,7 @@ class DHCP6Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DHCP6Config */
@@ -4589,11 +4891,15 @@ class DHCP6Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -4635,6 +4941,7 @@ class DHCP6Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -4676,11 +4983,15 @@ class DHCP6Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -4722,6 +5033,7 @@ class DHCP6Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4741,6 +5053,7 @@ class DHCP6Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4751,6 +5064,8 @@ class DHCP6Config {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DHCP6Config, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DHCP6Config, error?: object | null, failed_path?: object | null) => void)): number
@@ -4784,12 +5099,15 @@ class DHCP6Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DHCP6Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DHCP6Config, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::options", callback: (($obj: DHCP6Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::options", callback: (($obj: DHCP6Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DHCP6Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DHCP6Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4806,12 +5124,21 @@ class DHCP6Config {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -4927,10 +5254,12 @@ class Device {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.Device */
     /**
      * Validates a given connection for a given #NMDevice object and returns
@@ -4944,6 +5273,7 @@ class Device {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -4954,16 +5284,19 @@ class Device {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -4975,6 +5308,7 @@ class Device {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -5117,10 +5451,12 @@ class Device {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -5167,6 +5503,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5177,6 +5517,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5200,6 +5546,7 @@ class Device {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5219,11 +5566,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5231,6 +5581,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5248,6 +5600,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5293,6 +5646,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5336,15 +5690,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5385,6 +5744,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5419,6 +5779,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -5459,16 +5820,21 @@ class Device {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -5511,6 +5877,7 @@ class Device {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -5526,6 +5893,7 @@ class Device {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -5580,11 +5948,15 @@ class Device {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -5626,6 +5998,7 @@ class Device {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -5667,11 +6040,15 @@ class Device {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -5713,6 +6090,7 @@ class Device {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5732,12 +6110,16 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: Device, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: Device, new_state: number, old_state: number, reason: number) => void)): number
@@ -5749,6 +6131,8 @@ class Device {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: Device, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: Device, error?: object | null, failed_path?: object | null) => void)): number
@@ -5782,6 +6166,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
@@ -5832,6 +6217,8 @@ class Device {
     connect_after(sigName: "notify::udi", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5844,6 +6231,7 @@ class Device {
     /**
      * Generates a list of short-ish unique presentation names for the
      * devices in `devices`.
+     * @param devices an array of #NMDevice
      */
     static disambiguate_names(devices: Device[]): string[]
     /**
@@ -5853,12 +6241,21 @@ class Device {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -5974,10 +6371,12 @@ class DeviceAdsl {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceAdsl */
     /**
      * Whether the device has carrier.
@@ -5996,6 +6395,7 @@ class DeviceAdsl {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -6006,16 +6406,19 @@ class DeviceAdsl {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -6027,6 +6430,7 @@ class DeviceAdsl {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -6169,10 +6573,12 @@ class DeviceAdsl {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -6219,6 +6625,10 @@ class DeviceAdsl {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6229,6 +6639,12 @@ class DeviceAdsl {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6252,6 +6668,7 @@ class DeviceAdsl {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6271,11 +6688,14 @@ class DeviceAdsl {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6283,6 +6703,8 @@ class DeviceAdsl {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6300,6 +6722,7 @@ class DeviceAdsl {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6345,6 +6768,7 @@ class DeviceAdsl {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6388,15 +6812,20 @@ class DeviceAdsl {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6437,6 +6866,7 @@ class DeviceAdsl {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6471,6 +6901,7 @@ class DeviceAdsl {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -6511,16 +6942,21 @@ class DeviceAdsl {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -6563,6 +6999,7 @@ class DeviceAdsl {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceAdsl */
@@ -6603,11 +7040,15 @@ class DeviceAdsl {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -6649,6 +7090,7 @@ class DeviceAdsl {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -6664,6 +7106,7 @@ class DeviceAdsl {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -6718,11 +7161,15 @@ class DeviceAdsl {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -6764,6 +7211,7 @@ class DeviceAdsl {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -6805,11 +7253,15 @@ class DeviceAdsl {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -6851,6 +7303,7 @@ class DeviceAdsl {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6870,12 +7323,16 @@ class DeviceAdsl {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceAdsl, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceAdsl, new_state: number, old_state: number, reason: number) => void)): number
@@ -6887,6 +7344,8 @@ class DeviceAdsl {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceAdsl, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceAdsl, error?: object | null, failed_path?: object | null) => void)): number
@@ -6920,6 +7379,7 @@ class DeviceAdsl {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceAdsl, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceAdsl, pspec: GObject.ParamSpec) => void)): number
@@ -6972,6 +7432,8 @@ class DeviceAdsl {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceAdsl, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceAdsl, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceAdsl, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceAdsl, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceAdsl, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6990,12 +7452,21 @@ class DeviceAdsl {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -7119,10 +7590,12 @@ class DeviceBond {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceBond */
     /**
      * Whether the device has carrier.
@@ -7149,6 +7622,7 @@ class DeviceBond {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -7159,16 +7633,19 @@ class DeviceBond {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -7180,6 +7657,7 @@ class DeviceBond {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -7318,10 +7796,12 @@ class DeviceBond {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -7368,6 +7848,10 @@ class DeviceBond {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7378,6 +7862,12 @@ class DeviceBond {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7401,6 +7891,7 @@ class DeviceBond {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7420,11 +7911,14 @@ class DeviceBond {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7432,6 +7926,8 @@ class DeviceBond {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7449,6 +7945,7 @@ class DeviceBond {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7494,6 +7991,7 @@ class DeviceBond {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7537,15 +8035,20 @@ class DeviceBond {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7586,6 +8089,7 @@ class DeviceBond {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7620,6 +8124,7 @@ class DeviceBond {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -7660,16 +8165,21 @@ class DeviceBond {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -7712,6 +8222,7 @@ class DeviceBond {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceBond */
@@ -7752,11 +8263,15 @@ class DeviceBond {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -7798,6 +8313,7 @@ class DeviceBond {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -7813,6 +8329,7 @@ class DeviceBond {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -7867,11 +8384,15 @@ class DeviceBond {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -7913,6 +8434,7 @@ class DeviceBond {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -7954,11 +8476,15 @@ class DeviceBond {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -8000,6 +8526,7 @@ class DeviceBond {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8019,12 +8546,16 @@ class DeviceBond {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceBond, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceBond, new_state: number, old_state: number, reason: number) => void)): number
@@ -8036,6 +8567,8 @@ class DeviceBond {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceBond, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceBond, error?: object | null, failed_path?: object | null) => void)): number
@@ -8069,6 +8602,7 @@ class DeviceBond {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceBond, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceBond, pspec: GObject.ParamSpec) => void)): number
@@ -8125,6 +8659,8 @@ class DeviceBond {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceBond, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceBond, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceBond, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceBond, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceBond, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8143,12 +8679,21 @@ class DeviceBond {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -8272,10 +8817,12 @@ class DeviceBridge {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceBridge */
     /**
      * Whether the device has carrier.
@@ -8302,6 +8849,7 @@ class DeviceBridge {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -8312,16 +8860,19 @@ class DeviceBridge {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -8333,6 +8884,7 @@ class DeviceBridge {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -8471,10 +9023,12 @@ class DeviceBridge {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -8521,6 +9075,10 @@ class DeviceBridge {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8531,6 +9089,12 @@ class DeviceBridge {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8554,6 +9118,7 @@ class DeviceBridge {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8573,11 +9138,14 @@ class DeviceBridge {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8585,6 +9153,8 @@ class DeviceBridge {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8602,6 +9172,7 @@ class DeviceBridge {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8647,6 +9218,7 @@ class DeviceBridge {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8690,15 +9262,20 @@ class DeviceBridge {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8739,6 +9316,7 @@ class DeviceBridge {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8773,6 +9351,7 @@ class DeviceBridge {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -8813,16 +9392,21 @@ class DeviceBridge {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -8865,6 +9449,7 @@ class DeviceBridge {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceBridge */
@@ -8905,11 +9490,15 @@ class DeviceBridge {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -8951,6 +9540,7 @@ class DeviceBridge {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -8966,6 +9556,7 @@ class DeviceBridge {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -9020,11 +9611,15 @@ class DeviceBridge {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -9066,6 +9661,7 @@ class DeviceBridge {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -9107,11 +9703,15 @@ class DeviceBridge {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -9153,6 +9753,7 @@ class DeviceBridge {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9172,12 +9773,16 @@ class DeviceBridge {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceBridge, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceBridge, new_state: number, old_state: number, reason: number) => void)): number
@@ -9189,6 +9794,8 @@ class DeviceBridge {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceBridge, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceBridge, error?: object | null, failed_path?: object | null) => void)): number
@@ -9222,6 +9829,7 @@ class DeviceBridge {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceBridge, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceBridge, pspec: GObject.ParamSpec) => void)): number
@@ -9278,6 +9886,8 @@ class DeviceBridge {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceBridge, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceBridge, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceBridge, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceBridge, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceBridge, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9296,12 +9906,21 @@ class DeviceBridge {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -9425,10 +10044,12 @@ class DeviceBt {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceBt */
     /**
      * Returns the Bluetooth device's usable capabilities.
@@ -9455,6 +10076,7 @@ class DeviceBt {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -9465,16 +10087,19 @@ class DeviceBt {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -9486,6 +10111,7 @@ class DeviceBt {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -9624,10 +10250,12 @@ class DeviceBt {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -9674,6 +10302,10 @@ class DeviceBt {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9684,6 +10316,12 @@ class DeviceBt {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9707,6 +10345,7 @@ class DeviceBt {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9726,11 +10365,14 @@ class DeviceBt {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9738,6 +10380,8 @@ class DeviceBt {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9755,6 +10399,7 @@ class DeviceBt {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9800,6 +10445,7 @@ class DeviceBt {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9843,15 +10489,20 @@ class DeviceBt {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9892,6 +10543,7 @@ class DeviceBt {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9926,6 +10578,7 @@ class DeviceBt {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -9966,16 +10619,21 @@ class DeviceBt {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -10018,6 +10676,7 @@ class DeviceBt {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceBt */
@@ -10058,11 +10717,15 @@ class DeviceBt {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -10104,6 +10767,7 @@ class DeviceBt {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -10119,6 +10783,7 @@ class DeviceBt {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -10173,11 +10838,15 @@ class DeviceBt {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -10219,6 +10888,7 @@ class DeviceBt {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -10260,11 +10930,15 @@ class DeviceBt {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -10306,6 +10980,7 @@ class DeviceBt {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10325,12 +11000,16 @@ class DeviceBt {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceBt, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceBt, new_state: number, old_state: number, reason: number) => void)): number
@@ -10342,6 +11021,8 @@ class DeviceBt {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceBt, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceBt, error?: object | null, failed_path?: object | null) => void)): number
@@ -10375,6 +11056,7 @@ class DeviceBt {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceBt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceBt, pspec: GObject.ParamSpec) => void)): number
@@ -10431,6 +11113,8 @@ class DeviceBt {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceBt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceBt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceBt, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceBt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceBt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -10449,12 +11133,21 @@ class DeviceBt {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -10582,10 +11275,12 @@ class DeviceEthernet {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceEthernet */
     /**
      * Whether the device has carrier.
@@ -10616,6 +11311,7 @@ class DeviceEthernet {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -10626,16 +11322,19 @@ class DeviceEthernet {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -10647,6 +11346,7 @@ class DeviceEthernet {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -10785,10 +11485,12 @@ class DeviceEthernet {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -10835,6 +11537,10 @@ class DeviceEthernet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10845,6 +11551,12 @@ class DeviceEthernet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10868,6 +11580,7 @@ class DeviceEthernet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10887,11 +11600,14 @@ class DeviceEthernet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10899,6 +11615,8 @@ class DeviceEthernet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10916,6 +11634,7 @@ class DeviceEthernet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10961,6 +11680,7 @@ class DeviceEthernet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11004,15 +11724,20 @@ class DeviceEthernet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11053,6 +11778,7 @@ class DeviceEthernet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11087,6 +11813,7 @@ class DeviceEthernet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -11127,16 +11854,21 @@ class DeviceEthernet {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -11179,6 +11911,7 @@ class DeviceEthernet {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceEthernet */
@@ -11219,11 +11952,15 @@ class DeviceEthernet {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -11265,6 +12002,7 @@ class DeviceEthernet {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -11280,6 +12018,7 @@ class DeviceEthernet {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -11334,11 +12073,15 @@ class DeviceEthernet {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -11380,6 +12123,7 @@ class DeviceEthernet {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -11421,11 +12165,15 @@ class DeviceEthernet {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -11467,6 +12215,7 @@ class DeviceEthernet {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11486,12 +12235,16 @@ class DeviceEthernet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceEthernet, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceEthernet, new_state: number, old_state: number, reason: number) => void)): number
@@ -11503,6 +12256,8 @@ class DeviceEthernet {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceEthernet, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceEthernet, error?: object | null, failed_path?: object | null) => void)): number
@@ -11536,6 +12291,7 @@ class DeviceEthernet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceEthernet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceEthernet, pspec: GObject.ParamSpec) => void)): number
@@ -11594,6 +12350,8 @@ class DeviceEthernet {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceEthernet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceEthernet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceEthernet, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceEthernet, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceEthernet, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11612,12 +12370,21 @@ class DeviceEthernet {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -11738,10 +12505,12 @@ class DeviceGeneric {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceGeneric */
     /**
      * Gets the hardware address of the #NMDeviceGeneric
@@ -11760,6 +12529,7 @@ class DeviceGeneric {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -11770,16 +12540,19 @@ class DeviceGeneric {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -11791,6 +12564,7 @@ class DeviceGeneric {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -11929,10 +12703,12 @@ class DeviceGeneric {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -11979,6 +12755,10 @@ class DeviceGeneric {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11989,6 +12769,12 @@ class DeviceGeneric {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12012,6 +12798,7 @@ class DeviceGeneric {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12031,11 +12818,14 @@ class DeviceGeneric {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12043,6 +12833,8 @@ class DeviceGeneric {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12060,6 +12852,7 @@ class DeviceGeneric {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12105,6 +12898,7 @@ class DeviceGeneric {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12148,15 +12942,20 @@ class DeviceGeneric {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12197,6 +12996,7 @@ class DeviceGeneric {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12231,6 +13031,7 @@ class DeviceGeneric {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -12271,16 +13072,21 @@ class DeviceGeneric {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -12323,6 +13129,7 @@ class DeviceGeneric {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceGeneric */
@@ -12363,11 +13170,15 @@ class DeviceGeneric {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -12409,6 +13220,7 @@ class DeviceGeneric {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -12424,6 +13236,7 @@ class DeviceGeneric {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -12478,11 +13291,15 @@ class DeviceGeneric {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -12524,6 +13341,7 @@ class DeviceGeneric {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -12565,11 +13383,15 @@ class DeviceGeneric {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -12611,6 +13433,7 @@ class DeviceGeneric {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12630,12 +13453,16 @@ class DeviceGeneric {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceGeneric, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceGeneric, new_state: number, old_state: number, reason: number) => void)): number
@@ -12647,6 +13474,8 @@ class DeviceGeneric {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceGeneric, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceGeneric, error?: object | null, failed_path?: object | null) => void)): number
@@ -12680,6 +13509,7 @@ class DeviceGeneric {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceGeneric, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceGeneric, pspec: GObject.ParamSpec) => void)): number
@@ -12734,6 +13564,8 @@ class DeviceGeneric {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceGeneric, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceGeneric, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceGeneric, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceGeneric, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceGeneric, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -12752,12 +13584,21 @@ class DeviceGeneric {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -12877,10 +13718,12 @@ class DeviceInfiniband {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceInfiniband */
     /**
      * Whether the device has carrier.
@@ -12903,6 +13746,7 @@ class DeviceInfiniband {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -12913,16 +13757,19 @@ class DeviceInfiniband {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -12934,6 +13781,7 @@ class DeviceInfiniband {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -13072,10 +13920,12 @@ class DeviceInfiniband {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -13122,6 +13972,10 @@ class DeviceInfiniband {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13132,6 +13986,12 @@ class DeviceInfiniband {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13155,6 +14015,7 @@ class DeviceInfiniband {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13174,11 +14035,14 @@ class DeviceInfiniband {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13186,6 +14050,8 @@ class DeviceInfiniband {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13203,6 +14069,7 @@ class DeviceInfiniband {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13248,6 +14115,7 @@ class DeviceInfiniband {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13291,15 +14159,20 @@ class DeviceInfiniband {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13340,6 +14213,7 @@ class DeviceInfiniband {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13374,6 +14248,7 @@ class DeviceInfiniband {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -13414,16 +14289,21 @@ class DeviceInfiniband {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -13466,6 +14346,7 @@ class DeviceInfiniband {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceInfiniband */
@@ -13506,11 +14387,15 @@ class DeviceInfiniband {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -13552,6 +14437,7 @@ class DeviceInfiniband {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -13567,6 +14453,7 @@ class DeviceInfiniband {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -13621,11 +14508,15 @@ class DeviceInfiniband {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -13667,6 +14558,7 @@ class DeviceInfiniband {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -13708,11 +14600,15 @@ class DeviceInfiniband {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -13754,6 +14650,7 @@ class DeviceInfiniband {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13773,12 +14670,16 @@ class DeviceInfiniband {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceInfiniband, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceInfiniband, new_state: number, old_state: number, reason: number) => void)): number
@@ -13790,6 +14691,8 @@ class DeviceInfiniband {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceInfiniband, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceInfiniband, error?: object | null, failed_path?: object | null) => void)): number
@@ -13823,6 +14726,7 @@ class DeviceInfiniband {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceInfiniband, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceInfiniband, pspec: GObject.ParamSpec) => void)): number
@@ -13877,6 +14781,8 @@ class DeviceInfiniband {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceInfiniband, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceInfiniband, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceInfiniband, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceInfiniband, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceInfiniband, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13895,12 +14801,21 @@ class DeviceInfiniband {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -14024,10 +14939,12 @@ class DeviceModem {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceModem */
     /**
      * Returns a bitfield of the generic access technology families the modem
@@ -14054,6 +14971,7 @@ class DeviceModem {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -14064,16 +14982,19 @@ class DeviceModem {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -14085,6 +15006,7 @@ class DeviceModem {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -14227,10 +15149,12 @@ class DeviceModem {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -14277,6 +15201,10 @@ class DeviceModem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14287,6 +15215,12 @@ class DeviceModem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14310,6 +15244,7 @@ class DeviceModem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14329,11 +15264,14 @@ class DeviceModem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14341,6 +15279,8 @@ class DeviceModem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14358,6 +15298,7 @@ class DeviceModem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14403,6 +15344,7 @@ class DeviceModem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14446,15 +15388,20 @@ class DeviceModem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14495,6 +15442,7 @@ class DeviceModem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14529,6 +15477,7 @@ class DeviceModem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -14569,16 +15518,21 @@ class DeviceModem {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -14621,6 +15575,7 @@ class DeviceModem {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceModem */
@@ -14661,11 +15616,15 @@ class DeviceModem {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -14707,6 +15666,7 @@ class DeviceModem {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -14722,6 +15682,7 @@ class DeviceModem {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -14776,11 +15737,15 @@ class DeviceModem {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -14822,6 +15787,7 @@ class DeviceModem {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -14863,11 +15829,15 @@ class DeviceModem {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -14909,6 +15879,7 @@ class DeviceModem {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14928,12 +15899,16 @@ class DeviceModem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceModem, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceModem, new_state: number, old_state: number, reason: number) => void)): number
@@ -14945,6 +15920,8 @@ class DeviceModem {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceModem, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceModem, error?: object | null, failed_path?: object | null) => void)): number
@@ -14978,6 +15955,7 @@ class DeviceModem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceModem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceModem, pspec: GObject.ParamSpec) => void)): number
@@ -15032,6 +16010,8 @@ class DeviceModem {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceModem, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceModem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceModem, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceModem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceModem, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15047,12 +16027,21 @@ class DeviceModem {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -15176,10 +16165,12 @@ class DeviceOlpcMesh {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceOlpcMesh */
     /**
      * Returns the active channel of the #NMDeviceOlpcMesh device.
@@ -15206,6 +16197,7 @@ class DeviceOlpcMesh {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -15216,16 +16208,19 @@ class DeviceOlpcMesh {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -15237,6 +16232,7 @@ class DeviceOlpcMesh {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -15375,10 +16371,12 @@ class DeviceOlpcMesh {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -15425,6 +16423,10 @@ class DeviceOlpcMesh {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15435,6 +16437,12 @@ class DeviceOlpcMesh {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15458,6 +16466,7 @@ class DeviceOlpcMesh {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15477,11 +16486,14 @@ class DeviceOlpcMesh {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15489,6 +16501,8 @@ class DeviceOlpcMesh {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15506,6 +16520,7 @@ class DeviceOlpcMesh {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15551,6 +16566,7 @@ class DeviceOlpcMesh {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15594,15 +16610,20 @@ class DeviceOlpcMesh {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15643,6 +16664,7 @@ class DeviceOlpcMesh {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15677,6 +16699,7 @@ class DeviceOlpcMesh {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -15717,16 +16740,21 @@ class DeviceOlpcMesh {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -15769,6 +16797,7 @@ class DeviceOlpcMesh {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceOlpcMesh */
@@ -15809,11 +16838,15 @@ class DeviceOlpcMesh {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -15855,6 +16888,7 @@ class DeviceOlpcMesh {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -15870,6 +16904,7 @@ class DeviceOlpcMesh {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -15924,11 +16959,15 @@ class DeviceOlpcMesh {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -15970,6 +17009,7 @@ class DeviceOlpcMesh {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -16011,11 +17051,15 @@ class DeviceOlpcMesh {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -16057,6 +17101,7 @@ class DeviceOlpcMesh {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16076,12 +17121,16 @@ class DeviceOlpcMesh {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceOlpcMesh, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceOlpcMesh, new_state: number, old_state: number, reason: number) => void)): number
@@ -16093,6 +17142,8 @@ class DeviceOlpcMesh {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceOlpcMesh, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceOlpcMesh, error?: object | null, failed_path?: object | null) => void)): number
@@ -16126,6 +17177,7 @@ class DeviceOlpcMesh {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceOlpcMesh, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceOlpcMesh, pspec: GObject.ParamSpec) => void)): number
@@ -16182,6 +17234,8 @@ class DeviceOlpcMesh {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceOlpcMesh, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceOlpcMesh, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceOlpcMesh, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceOlpcMesh, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceOlpcMesh, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -16200,12 +17254,21 @@ class DeviceOlpcMesh {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -16329,10 +17392,12 @@ class DeviceTeam {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceTeam */
     /**
      * Whether the device has carrier.
@@ -16359,6 +17424,7 @@ class DeviceTeam {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -16369,16 +17435,19 @@ class DeviceTeam {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -16390,6 +17459,7 @@ class DeviceTeam {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -16528,10 +17598,12 @@ class DeviceTeam {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -16578,6 +17650,10 @@ class DeviceTeam {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16588,6 +17664,12 @@ class DeviceTeam {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16611,6 +17693,7 @@ class DeviceTeam {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16630,11 +17713,14 @@ class DeviceTeam {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16642,6 +17728,8 @@ class DeviceTeam {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16659,6 +17747,7 @@ class DeviceTeam {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16704,6 +17793,7 @@ class DeviceTeam {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16747,15 +17837,20 @@ class DeviceTeam {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16796,6 +17891,7 @@ class DeviceTeam {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16830,6 +17926,7 @@ class DeviceTeam {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -16870,16 +17967,21 @@ class DeviceTeam {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -16922,6 +18024,7 @@ class DeviceTeam {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceTeam */
@@ -16962,11 +18065,15 @@ class DeviceTeam {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -17008,6 +18115,7 @@ class DeviceTeam {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -17023,6 +18131,7 @@ class DeviceTeam {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -17077,11 +18186,15 @@ class DeviceTeam {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -17123,6 +18236,7 @@ class DeviceTeam {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -17164,11 +18278,15 @@ class DeviceTeam {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -17210,6 +18328,7 @@ class DeviceTeam {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17229,12 +18348,16 @@ class DeviceTeam {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceTeam, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceTeam, new_state: number, old_state: number, reason: number) => void)): number
@@ -17246,6 +18369,8 @@ class DeviceTeam {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceTeam, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceTeam, error?: object | null, failed_path?: object | null) => void)): number
@@ -17279,6 +18404,7 @@ class DeviceTeam {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceTeam, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceTeam, pspec: GObject.ParamSpec) => void)): number
@@ -17335,6 +18461,8 @@ class DeviceTeam {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceTeam, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceTeam, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceTeam, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceTeam, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceTeam, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -17353,12 +18481,21 @@ class DeviceTeam {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -17486,8 +18623,10 @@ class DeviceVlan {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceVlan */
     /**
      * Whether the device has carrier.
@@ -17512,6 +18651,7 @@ class DeviceVlan {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -17522,16 +18662,19 @@ class DeviceVlan {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -17543,6 +18686,7 @@ class DeviceVlan {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -17681,10 +18825,12 @@ class DeviceVlan {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -17731,6 +18877,10 @@ class DeviceVlan {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17741,6 +18891,12 @@ class DeviceVlan {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17764,6 +18920,7 @@ class DeviceVlan {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17783,11 +18940,14 @@ class DeviceVlan {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17795,6 +18955,8 @@ class DeviceVlan {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17812,6 +18974,7 @@ class DeviceVlan {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17857,6 +19020,7 @@ class DeviceVlan {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17900,15 +19064,20 @@ class DeviceVlan {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17949,6 +19118,7 @@ class DeviceVlan {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17983,6 +19153,7 @@ class DeviceVlan {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -18023,16 +19194,21 @@ class DeviceVlan {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -18075,6 +19251,7 @@ class DeviceVlan {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceVlan */
@@ -18115,11 +19292,15 @@ class DeviceVlan {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -18161,6 +19342,7 @@ class DeviceVlan {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -18176,6 +19358,7 @@ class DeviceVlan {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -18230,11 +19413,15 @@ class DeviceVlan {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -18276,6 +19463,7 @@ class DeviceVlan {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -18317,11 +19505,15 @@ class DeviceVlan {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -18363,6 +19555,7 @@ class DeviceVlan {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18382,12 +19575,16 @@ class DeviceVlan {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceVlan, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceVlan, new_state: number, old_state: number, reason: number) => void)): number
@@ -18399,6 +19596,8 @@ class DeviceVlan {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceVlan, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceVlan, error?: object | null, failed_path?: object | null) => void)): number
@@ -18432,6 +19631,7 @@ class DeviceVlan {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceVlan, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceVlan, pspec: GObject.ParamSpec) => void)): number
@@ -18490,6 +19690,8 @@ class DeviceVlan {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceVlan, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceVlan, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceVlan, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceVlan, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceVlan, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -18508,12 +19710,21 @@ class DeviceVlan {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -18653,13 +19864,16 @@ class DeviceWifi {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceWifi */
     /**
      * Gets a #NMAccessPoint by path.
+     * @param path the object path of the access point
      */
     get_access_point_by_path(path: string): AccessPoint
     /**
@@ -18694,6 +19908,7 @@ class DeviceWifi {
      * Request NM to scan for access points on the #NMDeviceWifi. This function only
      * instructs NM to perform scanning. Use nm_device_wifi_get_access_points()
      * to get available access points.
+     * @param callback the function to call when the call is done
      */
     request_scan_simple(callback?: DeviceWifiRequestScanFn | null): void
     /* Methods of NMClient-1.0.NMClient.Device */
@@ -18709,6 +19924,7 @@ class DeviceWifi {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -18719,16 +19935,19 @@ class DeviceWifi {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -18740,6 +19959,7 @@ class DeviceWifi {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -18878,10 +20098,12 @@ class DeviceWifi {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -18928,6 +20150,10 @@ class DeviceWifi {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18938,6 +20164,12 @@ class DeviceWifi {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18961,6 +20193,7 @@ class DeviceWifi {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18980,11 +20213,14 @@ class DeviceWifi {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18992,6 +20228,8 @@ class DeviceWifi {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19009,6 +20247,7 @@ class DeviceWifi {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19054,6 +20293,7 @@ class DeviceWifi {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19097,15 +20337,20 @@ class DeviceWifi {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19146,6 +20391,7 @@ class DeviceWifi {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19180,6 +20426,7 @@ class DeviceWifi {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -19220,16 +20467,21 @@ class DeviceWifi {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -19272,6 +20524,7 @@ class DeviceWifi {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceWifi */
@@ -19314,11 +20567,15 @@ class DeviceWifi {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -19360,6 +20617,7 @@ class DeviceWifi {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -19375,6 +20633,7 @@ class DeviceWifi {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -19429,11 +20688,15 @@ class DeviceWifi {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -19475,6 +20738,7 @@ class DeviceWifi {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -19516,11 +20780,15 @@ class DeviceWifi {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -19562,6 +20830,7 @@ class DeviceWifi {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19581,18 +20850,21 @@ class DeviceWifi {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.DeviceWifi */
     /**
      * Notifies that a #NMAccessPoint is added to the Wi-Fi device.
+     * @param ap the new access point
      */
     connect(sigName: "access-point-added", callback: (($obj: DeviceWifi, ap: GObject.Object) => void)): number
     connect_after(sigName: "access-point-added", callback: (($obj: DeviceWifi, ap: GObject.Object) => void)): number
     emit(sigName: "access-point-added", ap: GObject.Object): void
     /**
      * Notifies that a #NMAccessPoint is removed from the Wi-Fi device.
+     * @param ap the removed access point
      */
     connect(sigName: "access-point-removed", callback: (($obj: DeviceWifi, ap: GObject.Object) => void)): number
     connect_after(sigName: "access-point-removed", callback: (($obj: DeviceWifi, ap: GObject.Object) => void)): number
@@ -19600,6 +20872,9 @@ class DeviceWifi {
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceWifi, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceWifi, new_state: number, old_state: number, reason: number) => void)): number
@@ -19611,6 +20886,8 @@ class DeviceWifi {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceWifi, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceWifi, error?: object | null, failed_path?: object | null) => void)): number
@@ -19644,6 +20921,7 @@ class DeviceWifi {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceWifi, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceWifi, pspec: GObject.ParamSpec) => void)): number
@@ -19708,6 +20986,8 @@ class DeviceWifi {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceWifi, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceWifi, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceWifi, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceWifi, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceWifi, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -19726,12 +21006,21 @@ class DeviceWifi {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -19885,10 +21174,12 @@ class DeviceWimax {
      * The vendor string of the device.
      */
     readonly vendor: string
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Device */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.DeviceWimax */
     /**
      * Gets the active #NMWimaxNsp.
@@ -19916,6 +21207,7 @@ class DeviceWimax {
     get_hw_address(): string
     /**
      * Gets a #NMWimaxNsp by path.
+     * @param path the object path of the NSP
      */
     get_nsp_by_path(path: string): WimaxNsp
     /**
@@ -19948,6 +21240,7 @@ class DeviceWimax {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -19958,16 +21251,19 @@ class DeviceWimax {
      * network, and will not be valid if it describes a WPA network, or if it is
      * an Ethernet, Bluetooth, WWAN, etc connection that is incompatible with the
      * device.
+     * @param connection an #NMConnection to validate against `device`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Deletes the software device. Hardware devices can't be deleted.
+     * @param callback callback to be called when delete operation completes
      */
     delete(callback?: DeviceCallbackFn | null): void
     /**
      * Disconnects the device if currently connected, and prevents the device from
      * automatically connecting to networks until the next manual network connection
      * request.
+     * @param callback callback to be called when disconnect operation completes
      */
     disconnect(callback?: DeviceCallbackFn | null): void
     /**
@@ -19979,6 +21275,7 @@ class DeviceWimax {
      * Ethernet, Bluetooth, Wi-Fi WPA connections, or any other connection that is
      * incompatible with the device. To get the full list of connections see
      * nm_remote_settings_list_connections().
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -20117,10 +21414,12 @@ class DeviceWimax {
     is_software(): boolean
     /**
      * Enables or disables automatic activation of the #NMDevice.
+     * @param autoconnect %TRUE to enable autoconnecting
      */
     set_autoconnect(autoconnect: boolean): void
     /**
      * Enables or disables management of  #NMDevice by NetworkManager.
+     * @param managed %TRUE to make the device managed by NetworkManager.
      */
     set_managed(managed: boolean): void
     /* Methods of NMClient-1.0.NMClient.Object */
@@ -20167,6 +21466,10 @@ class DeviceWimax {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20177,6 +21480,12 @@ class DeviceWimax {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20200,6 +21509,7 @@ class DeviceWimax {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20219,11 +21529,14 @@ class DeviceWimax {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20231,6 +21544,8 @@ class DeviceWimax {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20248,6 +21563,7 @@ class DeviceWimax {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20293,6 +21609,7 @@ class DeviceWimax {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20336,15 +21653,20 @@ class DeviceWimax {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20385,6 +21707,7 @@ class DeviceWimax {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20419,6 +21742,7 @@ class DeviceWimax {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -20459,16 +21783,21 @@ class DeviceWimax {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -20511,6 +21840,7 @@ class DeviceWimax {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.DeviceWimax */
@@ -20553,11 +21883,15 @@ class DeviceWimax {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -20599,6 +21933,7 @@ class DeviceWimax {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Device */
@@ -20614,6 +21949,7 @@ class DeviceWimax {
      * This function does the same as nm_device_connection_valid(), i.e. checking
      * compatibility of the given device and connection. But, in addition, it sets
      * GError when FALSE is returned.
+     * @param connection an #NMConnection to validate against `device`
      */
     vfunc_connection_compatible(connection: NetworkManager.Connection): boolean
     /**
@@ -20668,11 +22004,15 @@ class DeviceWimax {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -20714,6 +22054,7 @@ class DeviceWimax {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -20755,11 +22096,15 @@ class DeviceWimax {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -20801,6 +22146,7 @@ class DeviceWimax {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20820,18 +22166,21 @@ class DeviceWimax {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of NMClient-1.0.NMClient.DeviceWimax */
     /**
      * Notifies that a #NMWimaxNsp is added to the wimax device.
+     * @param nsp the new NSP
      */
     connect(sigName: "nsp-added", callback: (($obj: DeviceWimax, nsp: GObject.Object) => void)): number
     connect_after(sigName: "nsp-added", callback: (($obj: DeviceWimax, nsp: GObject.Object) => void)): number
     emit(sigName: "nsp-added", nsp: GObject.Object): void
     /**
      * Notifies that a #NMWimaxNsp is removed from the wimax device.
+     * @param nsp the removed NSP
      */
     connect(sigName: "nsp-removed", callback: (($obj: DeviceWimax, nsp: GObject.Object) => void)): number
     connect_after(sigName: "nsp-removed", callback: (($obj: DeviceWimax, nsp: GObject.Object) => void)): number
@@ -20839,6 +22188,9 @@ class DeviceWimax {
     /* Signals of NMClient-1.0.NMClient.Device */
     /**
      * Notifies the state change of a #NMDevice.
+     * @param new_state the new state of the device
+     * @param old_state the previous state of the device
+     * @param reason the reason describing the state change
      */
     connect(sigName: "state-changed", callback: (($obj: DeviceWimax, new_state: number, old_state: number, reason: number) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: DeviceWimax, new_state: number, old_state: number, reason: number) => void)): number
@@ -20850,6 +22202,8 @@ class DeviceWimax {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: DeviceWimax, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: DeviceWimax, error?: object | null, failed_path?: object | null) => void)): number
@@ -20883,6 +22237,7 @@ class DeviceWimax {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceWimax, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceWimax, pspec: GObject.ParamSpec) => void)): number
@@ -20949,6 +22304,8 @@ class DeviceWimax {
     connect_after(sigName: "notify::udi", callback: (($obj: DeviceWimax, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vendor", callback: (($obj: DeviceWimax, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vendor", callback: (($obj: DeviceWimax, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: DeviceWimax, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: DeviceWimax, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -20967,12 +22324,21 @@ class DeviceWimax {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -21009,10 +22375,12 @@ class IP4Config {
      * The #GArray containing WINS servers (#guint32s) of the configuration.
      */
     readonly wins_servers: any
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.IP4Config */
     /**
      * Gets the IP4 addresses (containing the address, prefix, and gateway).
@@ -21086,6 +22454,10 @@ class IP4Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21096,6 +22468,12 @@ class IP4Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21119,6 +22497,7 @@ class IP4Config {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21138,11 +22517,14 @@ class IP4Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21150,6 +22532,8 @@ class IP4Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21167,6 +22551,7 @@ class IP4Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21212,6 +22597,7 @@ class IP4Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21255,15 +22641,20 @@ class IP4Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21304,6 +22695,7 @@ class IP4Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21338,6 +22730,7 @@ class IP4Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -21378,16 +22771,21 @@ class IP4Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -21430,6 +22828,7 @@ class IP4Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.IP4Config */
@@ -21470,11 +22869,15 @@ class IP4Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -21516,6 +22919,7 @@ class IP4Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -21557,11 +22961,15 @@ class IP4Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -21603,6 +23011,7 @@ class IP4Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21622,6 +23031,7 @@ class IP4Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21632,6 +23042,8 @@ class IP4Config {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: IP4Config, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: IP4Config, error?: object | null, failed_path?: object | null) => void)): number
@@ -21665,6 +23077,7 @@ class IP4Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IP4Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IP4Config, pspec: GObject.ParamSpec) => void)): number
@@ -21683,6 +23096,8 @@ class IP4Config {
     connect_after(sigName: "notify::searches", callback: (($obj: IP4Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::wins-servers", callback: (($obj: IP4Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::wins-servers", callback: (($obj: IP4Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: IP4Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: IP4Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21699,12 +23114,21 @@ class IP4Config {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -21742,10 +23166,12 @@ class IP6Config {
      * The #GPtrArray containing dns search strings of the configuration.
      */
     readonly searches: any
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.IP6Config */
     /**
      * Gets the IP6 addresses (containing the address, prefix, and gateway).
@@ -21761,6 +23187,7 @@ class IP6Config {
     get_gateway(): string
     /**
      * Gets the domain name server at index `idx` in the configuration.
+     * @param idx index of the nameserver to return
      */
     get_nameserver(idx: number): Uint8Array
     /**
@@ -21819,6 +23246,10 @@ class IP6Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21829,6 +23260,12 @@ class IP6Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21852,6 +23289,7 @@ class IP6Config {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21871,11 +23309,14 @@ class IP6Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21883,6 +23324,8 @@ class IP6Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21900,6 +23343,7 @@ class IP6Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21945,6 +23389,7 @@ class IP6Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21988,15 +23433,20 @@ class IP6Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22037,6 +23487,7 @@ class IP6Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22071,6 +23522,7 @@ class IP6Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -22111,16 +23563,21 @@ class IP6Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -22163,6 +23620,7 @@ class IP6Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.IP6Config */
@@ -22203,11 +23661,15 @@ class IP6Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -22249,6 +23711,7 @@ class IP6Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -22290,11 +23753,15 @@ class IP6Config {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -22336,6 +23803,7 @@ class IP6Config {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22355,6 +23823,7 @@ class IP6Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22365,6 +23834,8 @@ class IP6Config {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: IP6Config, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: IP6Config, error?: object | null, failed_path?: object | null) => void)): number
@@ -22398,6 +23869,7 @@ class IP6Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IP6Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IP6Config, pspec: GObject.ParamSpec) => void)): number
@@ -22414,6 +23886,8 @@ class IP6Config {
     connect_after(sigName: "notify::routes", callback: (($obj: IP6Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::searches", callback: (($obj: IP6Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::searches", callback: (($obj: IP6Config, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: IP6Config, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: IP6Config, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -22430,12 +23904,21 @@ class IP6Config {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -22445,8 +23928,10 @@ interface Object_ConstructProps extends GObject.Object_ConstructProps {
     dbus_path?: string
 }
 class Object {
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.Object */
     /**
      * Gets the #NMObject's DBusGConnection.
@@ -22491,6 +23976,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22501,6 +23990,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22524,6 +24019,7 @@ class Object {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22543,11 +24039,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22555,6 +24054,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22572,6 +24073,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22617,6 +24119,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22660,15 +24163,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22709,6 +24217,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22743,6 +24252,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -22783,16 +24293,21 @@ class Object {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -22835,6 +24350,7 @@ class Object {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -22876,11 +24392,15 @@ class Object {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -22922,6 +24442,7 @@ class Object {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22941,6 +24462,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22951,6 +24473,8 @@ class Object {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: Object, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: Object, error?: object | null, failed_path?: object | null) => void)): number
@@ -22984,10 +24508,13 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::dbus-path", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -23003,12 +24530,21 @@ class Object {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -23019,6 +24555,7 @@ interface RemoteConnection_ConstructProps extends NetworkManager.Connection_Cons
 }
 class RemoteConnection {
     /* Properties of NMClient-1.0.NMClient.RemoteConnection */
+    readonly dbus_path: string
     /**
      * %TRUE if the remote connection contains changes that have not been saved
      * to disk, %FALSE if the connection is the same as its on-disk representation.
@@ -23031,13 +24568,14 @@ class RemoteConnection {
      */
     path: string
     /* Fields of NetworkManager-1.0.NetworkManager.Connection */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.RemoteConnection */
     /**
      * Send any local changes to the settings and properties of this connection to
      * NetworkManager, which will immediately save them to disk.
+     * @param callback a function to be called when the commit completes
      */
     commit_changes(callback?: RemoteConnectionResultFunc | null): void
     /**
@@ -23045,20 +24583,25 @@ class RemoteConnection {
      * NetworkManager.  The changes are not saved to disk until either
      * nm_remote_connection_save() or nm_remote_connection_commit_changes() is
      * called.
+     * @param callback a function to be called when the commit completes
      */
     commit_changes_unsaved(callback?: RemoteConnectionResultFunc | null): void
     /**
      * Delete the connection.
+     * @param callback a function to be called when the delete completes
      */
     delete(callback?: RemoteConnectionResultFunc | null): void
     /**
      * Request the connection's secrets.
+     * @param setting_name the #NMSetting object name to get secrets for
+     * @param callback a function to be called when the update completes; must not be %NULL
      */
     get_secrets(setting_name: string, callback: RemoteConnectionGetSecretsFunc): void
     get_unsaved(): boolean
     /**
      * Saves the connection to disk if the connection has changes that have not yet
      * been written to disk, or if the connection has never been saved.
+     * @param callback a function to be called when the save completes
      */
     save(callback?: RemoteConnectionResultFunc | null): void
     /* Methods of NetworkManager-1.0.NetworkManager.Connection */
@@ -23067,6 +24610,7 @@ class RemoteConnection {
      * same name which has previously been added to the #NMConnection.  The
      * connection takes ownership of the #NMSetting object and does not increase
      * the setting object's reference count.
+     * @param setting the #NMSetting to add to the connection object
      */
     add_setting(setting: NetworkManager.Setting): void
     /**
@@ -23076,12 +24620,15 @@ class RemoteConnection {
     clear_secrets(): void
     /**
      * Clears and frees secrets determined by `func`.
+     * @param func function to be called to determine whether a     specific secret should be cleared or not
      */
     clear_secrets_with_flags(func: NetworkManager.SettingClearSecretsWithFlagsFn): void
     /**
      * Compares two #NMConnection objects for similarity, with comparison behavior
      * modified by a set of flags.  See nm_setting_compare() for a description of
      * each flag's behavior.
+     * @param b a second #NMConnection to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
      */
     compare(b: NetworkManager.Connection, flags: NetworkManager.SettingCompareFlags): boolean
     /**
@@ -23090,6 +24637,9 @@ class RemoteConnection {
      * each flag's behavior.  If the connections differ, settings and keys within
      * each setting that differ are added to the returned `out_settings` hash table.
      * No values are returned, only key names.
+     * @param b a second #NMConnection to compare with the first
+     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+     * @param out_settings if the connections differ, on return a hash table mapping setting names to second-level GHashTable (utf8 to guint32), which contains the key names that differ mapped to one or more of %NMSettingDiffResult as a bitfield
      */
     diff(b: NetworkManager.Connection, flags: NetworkManager.SettingCompareFlags, out_settings: GLib.HashTable): boolean
     /**
@@ -23105,6 +24655,7 @@ class RemoteConnection {
     /**
      * Iterates over the properties of each #NMSetting object in the #NMConnection,
      * calling the supplied user function for each property.
+     * @param func user-supplied function called for each setting's property
      */
     for_each_setting_value(func: NetworkManager.SettingValueIterFn): void
     /**
@@ -23131,6 +24682,7 @@ class RemoteConnection {
     /**
      * Gets the #NMSetting with the given #GType, if one has been previously added
      * to the #NMConnection.
+     * @param setting_type the #GType of the setting object to return
      */
     get_setting(setting_type: GObject.Type): NetworkManager.Setting
     /**
@@ -23160,6 +24712,7 @@ class RemoteConnection {
     /**
      * Gets the #NMSetting with the given name, if one has been previously added
      * the #NMConnection.
+     * @param name a setting name
      */
     get_setting_by_name(name: string): NetworkManager.Setting
     /**
@@ -23263,6 +24816,7 @@ class RemoteConnection {
      * A convenience function to check if the given `connection` is a particular
      * type (ie wired, Wi-Fi, ppp, etc). Checks the #NMSettingConnection:type
      * property of the connection and matches that against `type`.
+     * @param type a setting name to check the connection's type against (like %NM_SETTING_WIRELESS_SETTING_NAME or %NM_SETTING_WIRED_SETTING_NAME)
      */
     is_type(type: string): boolean
     /**
@@ -23282,23 +24836,27 @@ class RemoteConnection {
      * is valid. As this function only performs some specific normalization steps
      * it cannot repair all connections. If the connection has errors that
      * cannot be normalized, the connection will not be modified.
+     * @param parameters a #GHashTable with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by g_str_hash() and g_str_equal() functions. The values are opaque and depend on the parameter name.
      */
     normalize(parameters?: GLib.HashTable | null): [ /* returnType */ boolean, /* modified */ boolean | null ]
     /**
      * Removes the #NMSetting with the given #GType from the #NMConnection.  This
      * operation dereferences the #NMSetting object.
+     * @param setting_type the #GType of the setting object to remove
      */
     remove_setting(setting_type: GObject.Type): void
     replace_settings(new_settings: GLib.HashTable): boolean
     /**
      * Deep-copies the settings of `new_conenction` and replaces the settings of `connection`
      * with the copied settings.
+     * @param new_connection a #NMConnection to replace the settings of `connection` with
      */
     replace_settings_from_connection(new_connection: NetworkManager.Connection): boolean
     /**
      * Sets the D-Bus path of the connection.  This property is not serialized, and
      * is only for the reference of the caller.  Sets the #NMConnection:path
      * property.
+     * @param path the D-Bus path of the connection as given by the settings service which provides the connection
      */
     set_path(path: string): void
     /**
@@ -23308,6 +24866,7 @@ class RemoteConnection {
      * a #NMSetting object.  The keys are setting object names, and the values
      * are #GHashTables mapping string:GValue, each of which represents the
      * properties of the #NMSetting object.
+     * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
      */
     to_hash(flags: NetworkManager.SettingHashFlags): GLib.HashTable
     /**
@@ -23317,6 +24876,8 @@ class RemoteConnection {
      * be returned from nm_connection_to_hash().  If `setting_name` is %NULL, expects
      * a fully serialized #NMConnection as returned by nm_connection_to_hash() and
      * will update all secrets from all settings contained in `secrets`.
+     * @param setting_name the setting object name to which the secrets apply
+     * @param secrets a #GHashTable mapping string:#GValue of setting property names and secrets of the given `setting_name`
      */
     update_secrets(setting_name: string, secrets: GLib.HashTable): boolean
     /**
@@ -23366,6 +24927,10 @@ class RemoteConnection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23376,6 +24941,12 @@ class RemoteConnection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23399,6 +24970,7 @@ class RemoteConnection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23418,11 +24990,14 @@ class RemoteConnection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23430,6 +25005,8 @@ class RemoteConnection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23447,6 +25024,7 @@ class RemoteConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23492,6 +25070,7 @@ class RemoteConnection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23535,15 +25114,20 @@ class RemoteConnection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23584,6 +25168,7 @@ class RemoteConnection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23618,6 +25203,7 @@ class RemoteConnection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -23658,16 +25244,21 @@ class RemoteConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -23710,6 +25301,7 @@ class RemoteConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.RemoteConnection */
@@ -23752,11 +25344,15 @@ class RemoteConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -23798,6 +25394,7 @@ class RemoteConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NetworkManager-1.0.NetworkManager.Connection */
@@ -23819,6 +25416,7 @@ class RemoteConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23859,6 +25457,7 @@ class RemoteConnection {
     /**
      * The ::secrets-updated signal is emitted when the secrets of a setting
      * have been changed.
+     * @param setting_name the setting name of the #NMSetting for which secrets were updated
      */
     connect(sigName: "secrets-updated", callback: (($obj: RemoteConnection, setting_name: string) => void)): number
     connect_after(sigName: "secrets-updated", callback: (($obj: RemoteConnection, setting_name: string) => void)): number
@@ -23892,10 +25491,13 @@ class RemoteConnection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::dbus-path", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::unsaved", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::unsaved", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::path", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
@@ -23918,12 +25520,21 @@ class RemoteConnection {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -23946,7 +25557,7 @@ class RemoteSettings {
      */
     readonly service_running: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.RemoteSettings */
     /**
      * Requests that the remote settings service add the given settings to a new
@@ -23958,6 +25569,8 @@ class RemoteSettings {
      * Note that the #NMRemoteConnection returned in `callback` may not contain
      * identical settings to `connection` as NetworkManager may perform automatic
      * completion and/or normalization of connection properties.
+     * @param connection the connection to add. Note that this object's settings will be   added, not the object itself
+     * @param callback callback to be called when the add operation completes
      */
     add_connection(connection: NetworkManager.Connection, callback: RemoteSettingsAddConnectionFunc): boolean
     /**
@@ -23965,18 +25578,23 @@ class RemoteSettings {
      * connection.  The connection is not written to disk, which may be done at
      * a later time by calling the connection's nm_remote_connection_commit_changes()
      * method.
+     * @param connection the connection to add. Note that this object's settings will be   added, not the object itself
+     * @param callback callback to be called when the add operation completes
      */
     add_connection_unsaved(connection: NetworkManager.Connection, callback: RemoteSettingsAddConnectionFunc): boolean
     /**
      * Returns the first matching %NMRemoteConnection matching a given `id`.
+     * @param id the id of the remote connection
      */
     get_connection_by_id(id: string): RemoteConnection
     /**
      * Returns the %NMRemoteConnection representing the connection at `path`.
+     * @param path the D-Bus object path of the remote connection
      */
     get_connection_by_path(path: string): RemoteConnection
     /**
      * Returns the %NMRemoteConnection identified by `uuid`.
+     * @param uuid the UUID of the remote connection
      */
     get_connection_by_uuid(uuid: string): RemoteConnection
     list_connections(): RemoteConnection[]
@@ -23992,6 +25610,7 @@ class RemoteSettings {
      * NetworkManager tried to load the files, but some (or all) failed,
      * then `failures` will be set to a %NULL-terminated array of the
      * filenames that failed to load.
+     * @param filenames %NULL-terminated array of filenames to load
      */
     load_connections(filenames: string): [ /* returnType */ boolean, /* failures */ string ]
     /**
@@ -24003,6 +25622,8 @@ class RemoteSettings {
     /**
      * Requests that the machine's persistent hostname be set to the specified value
      * or cleared.
+     * @param hostname the new persistent hostname to set, or %NULL to clear any existing  persistent hostname
+     * @param callback callback to be called when the hostname operation completes
      */
     save_hostname(hostname: string, callback?: RemoteSettingsSaveHostnameFunc | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -24040,6 +25661,10 @@ class RemoteSettings {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24050,6 +25675,12 @@ class RemoteSettings {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24073,6 +25704,7 @@ class RemoteSettings {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24092,11 +25724,14 @@ class RemoteSettings {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24104,6 +25739,8 @@ class RemoteSettings {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24121,6 +25758,7 @@ class RemoteSettings {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24166,6 +25804,7 @@ class RemoteSettings {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24209,15 +25848,20 @@ class RemoteSettings {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24258,6 +25902,7 @@ class RemoteSettings {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24292,6 +25937,7 @@ class RemoteSettings {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -24332,16 +25978,21 @@ class RemoteSettings {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -24384,6 +26035,7 @@ class RemoteSettings {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.RemoteSettings */
@@ -24426,11 +26078,15 @@ class RemoteSettings {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -24472,6 +26128,7 @@ class RemoteSettings {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24491,6 +26148,7 @@ class RemoteSettings {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24530,6 +26188,7 @@ class RemoteSettings {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RemoteSettings, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RemoteSettings, pspec: GObject.ParamSpec) => void)): number
@@ -24555,6 +26214,9 @@ class RemoteSettings {
      * begins asynchronously initializing it. `callback` will be called
      * when it is done; use nm_remote_settings_new_finish() to get the
      * result.
+     * @param bus a valid and connected D-Bus connection
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to call when the settings object is created
      */
     static new_async(bus?: DBusGLib.Connection | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -24564,12 +26226,21 @@ class RemoteSettings {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -24618,15 +26289,27 @@ class SecretAgent {
      */
     capabilities: SecretAgentCapabilities
     /**
+     * Identifies this agent; only one agent in each user session may use the
+     * same identifier.  Identifier formatting follows the same rules as
+     * D-Bus bus names with the exception that the ':' character is not
+     * allowed.  The valid set of characters is "[A-Z][a-z][0-9]_-." and the
+     * identifier is limited in length to 255 characters with a minimum
+     * of 3 characters.  An example valid identifier is 'org.gnome.nm-applet'
+     * (without quotes).
+     */
+    readonly identifier: string
+    /**
      * %TRUE if the agent is registered with NetworkManager, %FALSE if not.
      */
     readonly registered: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.SecretAgent */
     /**
      * Asynchronously ask the agent to delete all saved secrets belonging to
      * `connection`.
+     * @param connection a #NMConnection
+     * @param callback a callback, to be invoked when the operation is done
      */
     delete_secrets(connection: NetworkManager.Connection, callback: SecretAgentDeleteSecretsFunc): void
     get_registered(): boolean
@@ -24636,6 +26319,11 @@ class SecretAgent {
      * agent should use when performing the request, for example returning only
      * existing secrets without user interaction, or requesting entirely new
      * secrets from the user.
+     * @param connection the #NMConnection for which we're asked secrets
+     * @param setting_name the name of the secret setting
+     * @param hints hints to the agent
+     * @param flags flags that modify the behavior of the request
+     * @param callback a callback, to be invoked when the operation is done
      */
     get_secrets(connection: NetworkManager.Connection, setting_name: string, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc): void
     /**
@@ -24649,6 +26337,8 @@ class SecretAgent {
     /**
      * Asynchronously ensure that all secrets inside `connection`
      * are stored to disk.
+     * @param connection a #NMConnection
+     * @param callback a callback, to be invoked when the operation is done
      */
     save_secrets(connection: NetworkManager.Connection, callback: SecretAgentSaveSecretsFunc): void
     /**
@@ -24692,6 +26382,10 @@ class SecretAgent {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24702,6 +26396,12 @@ class SecretAgent {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24725,6 +26425,7 @@ class SecretAgent {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24744,11 +26445,14 @@ class SecretAgent {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24756,6 +26460,8 @@ class SecretAgent {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24773,6 +26479,7 @@ class SecretAgent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24818,6 +26525,7 @@ class SecretAgent {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24861,15 +26569,20 @@ class SecretAgent {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24910,6 +26623,7 @@ class SecretAgent {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24944,6 +26658,7 @@ class SecretAgent {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of NMClient-1.0.NMClient.SecretAgent */
@@ -24951,6 +26666,9 @@ class SecretAgent {
     /**
      * Asynchronously ask the agent to delete all saved secrets belonging to
      * `connection`.
+     * @param connection a #NMConnection
+     * @param connection_path 
+     * @param callback a callback, to be invoked when the operation is done
      */
     vfunc_delete_secrets(connection: NetworkManager.Connection, connection_path: string, callback: SecretAgentDeleteSecretsFunc): void
     /**
@@ -24959,12 +26677,21 @@ class SecretAgent {
      * agent should use when performing the request, for example returning only
      * existing secrets without user interaction, or requesting entirely new
      * secrets from the user.
+     * @param connection the #NMConnection for which we're asked secrets
+     * @param connection_path 
+     * @param setting_name the name of the secret setting
+     * @param hints hints to the agent
+     * @param flags flags that modify the behavior of the request
+     * @param callback a callback, to be invoked when the operation is done
      */
     vfunc_get_secrets(connection: NetworkManager.Connection, connection_path: string, setting_name: string, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc): void
     vfunc_registration_result(error: GLib.Error): void
     /**
      * Asynchronously ensure that all secrets inside `connection`
      * are stored to disk.
+     * @param connection a #NMConnection
+     * @param connection_path 
+     * @param callback a callback, to be invoked when the operation is done
      */
     vfunc_save_secrets(connection: NetworkManager.Connection, connection_path: string, callback: SecretAgentSaveSecretsFunc): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24984,6 +26711,7 @@ class SecretAgent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24991,6 +26719,7 @@ class SecretAgent {
     /**
      * Indicates the result of a registration request; if `error` is NULL the
      * request was successful.
+     * @param error the error, if any, that occurred while registering
      */
     connect(sigName: "registration-result", callback: (($obj: SecretAgent, error?: object | null) => void)): number
     connect_after(sigName: "registration-result", callback: (($obj: SecretAgent, error?: object | null) => void)): number
@@ -25024,6 +26753,7 @@ class SecretAgent {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
@@ -25032,6 +26762,8 @@ class SecretAgent {
     connect_after(sigName: "notify::auto-register", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::capabilities", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::capabilities", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::identifier", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::identifier", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::registered", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::registered", callback: (($obj: SecretAgent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -25113,10 +26845,12 @@ class VPNConnection {
      * Whether the active connection is a VPN connection.
      */
     readonly vpn: boolean
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.ActiveConnection */
-    readonly parent: Object
+    parent: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.VPNConnection */
     /**
      * Gets the VPN login banner of the active #NMVPNConnection.
@@ -25237,6 +26971,10 @@ class VPNConnection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25247,6 +26985,12 @@ class VPNConnection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25270,6 +27014,7 @@ class VPNConnection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25289,11 +27034,14 @@ class VPNConnection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25301,6 +27049,8 @@ class VPNConnection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25318,6 +27068,7 @@ class VPNConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25363,6 +27114,7 @@ class VPNConnection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25406,15 +27158,20 @@ class VPNConnection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25455,6 +27212,7 @@ class VPNConnection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25489,6 +27247,7 @@ class VPNConnection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -25529,16 +27288,21 @@ class VPNConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -25581,6 +27345,7 @@ class VPNConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.VPNConnection */
@@ -25622,11 +27387,15 @@ class VPNConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -25668,6 +27437,7 @@ class VPNConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.ActiveConnection */
@@ -25708,11 +27478,15 @@ class VPNConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -25754,6 +27528,7 @@ class VPNConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -25795,11 +27570,15 @@ class VPNConnection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -25841,6 +27620,7 @@ class VPNConnection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25860,6 +27640,7 @@ class VPNConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25874,6 +27655,8 @@ class VPNConnection {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: VPNConnection, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: VPNConnection, error?: object | null, failed_path?: object | null) => void)): number
@@ -25907,6 +27690,7 @@ class VPNConnection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: VPNConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: VPNConnection, pspec: GObject.ParamSpec) => void)): number
@@ -25945,6 +27729,8 @@ class VPNConnection {
     connect_after(sigName: "notify::uuid", callback: (($obj: VPNConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vpn", callback: (($obj: VPNConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vpn", callback: (($obj: VPNConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: VPNConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: VPNConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -25963,12 +27749,21 @@ class VPNConnection {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -25989,21 +27784,25 @@ class WimaxNsp {
      * The signal quality of the WiMAX NSP.
      */
     readonly signal_quality: number
+    /* Properties of NMClient-1.0.NMClient.Object */
+    readonly dbus_path: string
     /* Fields of NMClient-1.0.NMClient.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of NMClient-1.0.NMClient.WimaxNsp */
     /**
      * Validates a given connection against a given WiMAX NSP to ensure that the
      * connection may be activated with that NSP.  The connection must match the
      * `nsp'`s network name and other attributes.
+     * @param connection an #NMConnection to validate against `nsp`
      */
     connection_valid(connection: NetworkManager.Connection): boolean
     /**
      * Filters a given list of connections for a given #NMWimaxNsp object and
      * return connections which may be activated with the access point.  Any
      * returned connections will match the `nsp'`s network name and other attributes.
+     * @param connections a list of #NMConnection objects to filter
      */
     filter_connections(connections: NetworkManager.Connection[]): NetworkManager.Connection[]
     /**
@@ -26062,6 +27861,10 @@ class WimaxNsp {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26072,6 +27875,12 @@ class WimaxNsp {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -26095,6 +27904,7 @@ class WimaxNsp {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26114,11 +27924,14 @@ class WimaxNsp {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26126,6 +27939,8 @@ class WimaxNsp {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26143,6 +27958,7 @@ class WimaxNsp {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -26188,6 +28004,7 @@ class WimaxNsp {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -26231,15 +28048,20 @@ class WimaxNsp {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -26280,6 +28102,7 @@ class WimaxNsp {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -26314,6 +28137,7 @@ class WimaxNsp {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -26354,16 +28178,21 @@ class WimaxNsp {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -26406,6 +28235,7 @@ class WimaxNsp {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.WimaxNsp */
@@ -26446,11 +28276,15 @@ class WimaxNsp {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -26492,6 +28326,7 @@ class WimaxNsp {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of NMClient-1.0.NMClient.Object */
@@ -26533,11 +28368,15 @@ class WimaxNsp {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -26579,6 +28418,7 @@ class WimaxNsp {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -26598,6 +28438,7 @@ class WimaxNsp {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26608,6 +28449,8 @@ class WimaxNsp {
      * 
      * Note: Be aware that the signal is private for libnm-glib's internal
      *       use.
+     * @param error the error that occurred while creating object
+     * @param failed_path object path of the failed object
      */
     connect(sigName: "object-creation-failed", callback: (($obj: WimaxNsp, error?: object | null, failed_path?: object | null) => void)): number
     connect_after(sigName: "object-creation-failed", callback: (($obj: WimaxNsp, error?: object | null, failed_path?: object | null) => void)): number
@@ -26641,6 +28484,7 @@ class WimaxNsp {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WimaxNsp, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WimaxNsp, pspec: GObject.ParamSpec) => void)): number
@@ -26651,6 +28495,8 @@ class WimaxNsp {
     connect_after(sigName: "notify::network-type", callback: (($obj: WimaxNsp, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::signal-quality", callback: (($obj: WimaxNsp, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::signal-quality", callback: (($obj: WimaxNsp, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-path", callback: (($obj: WimaxNsp, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-path", callback: (($obj: WimaxNsp, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -26667,172 +28513,181 @@ class WimaxNsp {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
 }
 abstract class AccessPointClass {
     /* Fields of NMClient-1.0.NMClient.AccessPointClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
 abstract class ActiveConnectionClass {
     /* Fields of NMClient-1.0.NMClient.ActiveConnectionClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
 abstract class ClientClass {
     /* Fields of NMClient-1.0.NMClient.ClientClass */
-    readonly parent: ObjectClass
-    readonly device_added: (client: Client, device: Device) => void
-    readonly device_removed: (client: Client, device: Device) => void
-    readonly permission_changed: (client: Client, permission: ClientPermission, result: ClientPermissionResult) => void
+    parent: ObjectClass
+    device_added: (client: Client, device: Device) => void
+    device_removed: (client: Client, device: Device) => void
+    permission_changed: (client: Client, permission: ClientPermission, result: ClientPermissionResult) => void
     static name: string
 }
 abstract class DHCP4ConfigClass {
     /* Fields of NMClient-1.0.NMClient.DHCP4ConfigClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
 abstract class DHCP6ConfigClass {
     /* Fields of NMClient-1.0.NMClient.DHCP6ConfigClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
 abstract class DeviceAdslClass {
     /* Fields of NMClient-1.0.NMClient.DeviceAdslClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceBondClass {
     /* Fields of NMClient-1.0.NMClient.DeviceBondClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceBridgeClass {
     /* Fields of NMClient-1.0.NMClient.DeviceBridgeClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceBtClass {
     /* Fields of NMClient-1.0.NMClient.DeviceBtClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceClass {
     /* Fields of NMClient-1.0.NMClient.DeviceClass */
-    readonly parent: ObjectClass
-    readonly state_changed: (device: Device, new_state: NetworkManager.DeviceState, old_state: NetworkManager.DeviceState, reason: NetworkManager.DeviceStateReason) => void
-    readonly connection_compatible: (device: Device, connection: NetworkManager.Connection) => boolean
-    readonly get_type_description: (device: Device) => string
-    readonly get_hw_address: (device: Device) => string
-    readonly get_setting_type: (device: Device) => GObject.Type
+    parent: ObjectClass
+    state_changed: (device: Device, new_state: NetworkManager.DeviceState, old_state: NetworkManager.DeviceState, reason: NetworkManager.DeviceStateReason) => void
+    connection_compatible: (device: Device, connection: NetworkManager.Connection) => boolean
+    get_type_description: (device: Device) => string
+    get_hw_address: (device: Device) => string
+    get_setting_type: (device: Device) => GObject.Type
     static name: string
 }
 abstract class DeviceEthernetClass {
     /* Fields of NMClient-1.0.NMClient.DeviceEthernetClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceGenericClass {
     /* Fields of NMClient-1.0.NMClient.DeviceGenericClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceInfinibandClass {
     /* Fields of NMClient-1.0.NMClient.DeviceInfinibandClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceModemClass {
     /* Fields of NMClient-1.0.NMClient.DeviceModemClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceOlpcMeshClass {
     /* Fields of NMClient-1.0.NMClient.DeviceOlpcMeshClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceTeamClass {
     /* Fields of NMClient-1.0.NMClient.DeviceTeamClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceVlanClass {
     /* Fields of NMClient-1.0.NMClient.DeviceVlanClass */
-    readonly parent: DeviceClass
+    parent: DeviceClass
     static name: string
 }
 abstract class DeviceWifiClass {
     /* Fields of NMClient-1.0.NMClient.DeviceWifiClass */
-    readonly parent: DeviceClass
-    readonly access_point_added: (device: DeviceWifi, ap: AccessPoint) => void
-    readonly access_point_removed: (device: DeviceWifi, ap: AccessPoint) => void
+    parent: DeviceClass
+    access_point_added: (device: DeviceWifi, ap: AccessPoint) => void
+    access_point_removed: (device: DeviceWifi, ap: AccessPoint) => void
     static name: string
 }
 abstract class DeviceWimaxClass {
     /* Fields of NMClient-1.0.NMClient.DeviceWimaxClass */
-    readonly parent: DeviceClass
-    readonly nsp_added: (self: DeviceWimax, nsp: WimaxNsp) => void
-    readonly nsp_removed: (self: DeviceWimax, nsp: WimaxNsp) => void
+    parent: DeviceClass
+    nsp_added: (self: DeviceWimax, nsp: WimaxNsp) => void
+    nsp_removed: (self: DeviceWimax, nsp: WimaxNsp) => void
     static name: string
 }
 abstract class IP4ConfigClass {
     /* Fields of NMClient-1.0.NMClient.IP4ConfigClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
 abstract class IP6ConfigClass {
     /* Fields of NMClient-1.0.NMClient.IP6ConfigClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
 abstract class ObjectClass {
     /* Fields of NMClient-1.0.NMClient.ObjectClass */
-    readonly parent: GObject.ObjectClass
-    readonly object_creation_failed: (master_object: Object, error: GLib.Error, failed_path: string) => void
+    parent: GObject.ObjectClass
+    object_creation_failed: (master_object: Object, error: GLib.Error, failed_path: string) => void
     static name: string
 }
 abstract class RemoteConnectionClass {
     /* Fields of NMClient-1.0.NMClient.RemoteConnectionClass */
-    readonly parent_class: NetworkManager.ConnectionClass
-    readonly updated: (connection: RemoteConnection, new_settings: GLib.HashTable) => void
-    readonly removed: (connection: RemoteConnection) => void
+    parent_class: NetworkManager.ConnectionClass
+    updated: (connection: RemoteConnection, new_settings: GLib.HashTable) => void
+    removed: (connection: RemoteConnection) => void
     static name: string
 }
 abstract class RemoteSettingsClass {
     /* Fields of NMClient-1.0.NMClient.RemoteSettingsClass */
-    readonly parent: GObject.ObjectClass
-    readonly new_connection: (settings: RemoteSettings, connection: RemoteConnection) => void
-    readonly connections_read: (settings: RemoteSettings) => void
+    parent: GObject.ObjectClass
+    new_connection: (settings: RemoteSettings, connection: RemoteConnection) => void
+    connections_read: (settings: RemoteSettings) => void
     static name: string
 }
 abstract class SecretAgentClass {
     /* Fields of NMClient-1.0.NMClient.SecretAgentClass */
-    readonly parent: GObject.ObjectClass
-    readonly get_secrets: (self: SecretAgent, connection: NetworkManager.Connection, connection_path: string, setting_name: string, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc) => void
-    readonly cancel_get_secrets: (self: SecretAgent, connection_path: string, setting_name: string) => void
-    readonly save_secrets: (self: SecretAgent, connection: NetworkManager.Connection, connection_path: string, callback: SecretAgentSaveSecretsFunc) => void
-    readonly delete_secrets: (self: SecretAgent, connection: NetworkManager.Connection, connection_path: string, callback: SecretAgentDeleteSecretsFunc) => void
-    readonly registration_result: (agent: SecretAgent, error: GLib.Error) => void
+    parent: GObject.ObjectClass
+    get_secrets: (self: SecretAgent, connection: NetworkManager.Connection, connection_path: string, setting_name: string, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc) => void
+    cancel_get_secrets: (self: SecretAgent, connection_path: string, setting_name: string) => void
+    save_secrets: (self: SecretAgent, connection: NetworkManager.Connection, connection_path: string, callback: SecretAgentSaveSecretsFunc) => void
+    delete_secrets: (self: SecretAgent, connection: NetworkManager.Connection, connection_path: string, callback: SecretAgentDeleteSecretsFunc) => void
+    registration_result: (agent: SecretAgent, error: GLib.Error) => void
     static name: string
 }
 abstract class VPNConnectionClass {
     /* Fields of NMClient-1.0.NMClient.VPNConnectionClass */
-    readonly parent: ActiveConnectionClass
-    readonly vpn_state_changed: (connection: VPNConnection, state: NetworkManager.VPNConnectionState, reason: NetworkManager.VPNConnectionStateReason) => void
+    parent: ActiveConnectionClass
+    vpn_state_changed: (connection: VPNConnection, state: NetworkManager.VPNConnectionState, reason: NetworkManager.VPNConnectionStateReason) => void
     static name: string
 }
 abstract class WimaxNspClass {
     /* Fields of NMClient-1.0.NMClient.WimaxNspClass */
-    readonly parent: ObjectClass
+    parent: ObjectClass
     static name: string
 }
     type RemoteConnectionCommitFunc = RemoteConnectionResultFunc

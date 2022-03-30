@@ -450,32 +450,32 @@ function glibtopInternetAddr(host: string): number
 function glibtopMakeConnection(hostarg: string, portarg: number, s: number): number
 class glibtop {
     /* Fields of GTop-2.0.GTop.glibtop */
-    readonly flags: number
-    readonly method: number
-    readonly errorMethod: number
-    readonly input: number[]
-    readonly output: number[]
-    readonly socket: number
-    readonly ncpu: number
-    readonly realNcpu: number
-    readonly osVersionCode: number
-    readonly name: string
-    readonly serverCommand: string
-    readonly serverHost: string
-    readonly serverUser: string
-    readonly serverRsh: string
-    readonly features: number
-    readonly serverPort: number
-    readonly sysdeps: glibtop_sysdeps
-    readonly required: glibtop_sysdeps
-    readonly pid: number
-    readonly uid: number
-    readonly euid: number
-    readonly gid: number
-    readonly egid: number
-    readonly machine: glibtop_machine
-    readonly ndisk: number
-    readonly realNdisk: number
+    flags: number
+    method: number
+    errorMethod: number
+    input: number[]
+    output: number[]
+    socket: number
+    ncpu: number
+    realNcpu: number
+    osVersionCode: number
+    name: string
+    serverCommand: string
+    serverHost: string
+    serverUser: string
+    serverRsh: string
+    features: number
+    serverPort: number
+    sysdeps: glibtop_sysdeps
+    required: glibtop_sysdeps
+    pid: number
+    uid: number
+    euid: number
+    gid: number
+    egid: number
+    machine: glibtop_machine
+    ndisk: number
+    realNdisk: number
     /* Methods of GTop-2.0.GTop.glibtop */
     callL(command: number, sendSize: number, sendBuf: object | null, recvSize: number, recvBuf?: object | null): object | null
     callS(command: number, sendSize: number, sendBuf: object | null, recvSize: number, recvBuf?: object | null): object | null
@@ -585,72 +585,72 @@ class glibtop {
 }
 class glibtop_command {
     /* Fields of GTop-2.0.GTop.glibtop_command */
-    readonly command: number
-    readonly size: number
-    readonly dataSize: number
-    readonly parameter: number[]
+    command: number
+    size: number
+    dataSize: number
+    parameter: number[]
     static name: string
 }
 class glibtop_cpu {
     /* Fields of GTop-2.0.GTop.glibtop_cpu */
-    readonly flags: number
-    readonly total: number
-    readonly user: number
-    readonly nice: number
-    readonly sys: number
-    readonly idle: number
-    readonly iowait: number
-    readonly irq: number
-    readonly softirq: number
-    readonly frequency: number
-    readonly xcpuTotal: number[]
-    readonly xcpuUser: number[]
-    readonly xcpuNice: number[]
-    readonly xcpuSys: number[]
-    readonly xcpuIdle: number[]
-    readonly xcpuIowait: number[]
-    readonly xcpuIrq: number[]
-    readonly xcpuSoftirq: number[]
-    readonly xcpuFlags: number
+    flags: number
+    total: number
+    user: number
+    nice: number
+    sys: number
+    idle: number
+    iowait: number
+    irq: number
+    softirq: number
+    frequency: number
+    xcpuTotal: number[]
+    xcpuUser: number[]
+    xcpuNice: number[]
+    xcpuSys: number[]
+    xcpuIdle: number[]
+    xcpuIowait: number[]
+    xcpuIrq: number[]
+    xcpuSoftirq: number[]
+    xcpuFlags: number
     static name: string
 }
 class glibtop_disk {
     /* Fields of GTop-2.0.GTop.glibtop_disk */
-    readonly flags: number
-    readonly xdiskSectorsRead: number[]
-    readonly xdiskTimeRead: number[]
-    readonly xdiskSectorsWrite: number[]
-    readonly xdiskTimeWrite: number[]
-    readonly xdiskFlags: number
+    flags: number
+    xdiskSectorsRead: number[]
+    xdiskTimeRead: number[]
+    xdiskSectorsWrite: number[]
+    xdiskTimeWrite: number[]
+    xdiskFlags: number
     static name: string
 }
 class glibtop_entry {
     /* Fields of GTop-2.0.GTop.glibtop_entry */
-    readonly labels: object[]
-    readonly values: GLib.HashTable
-    readonly descriptions: GLib.HashTable
+    labels: object[]
+    values: GLib.HashTable
+    descriptions: GLib.HashTable
     static name: string
 }
 class glibtop_fsusage {
     /* Fields of GTop-2.0.GTop.glibtop_fsusage */
-    readonly flags: number
-    readonly blocks: number
-    readonly bfree: number
-    readonly bavail: number
-    readonly files: number
-    readonly ffree: number
-    readonly blockSize: number
-    readonly read: number
-    readonly write: number
+    flags: number
+    blocks: number
+    bfree: number
+    bavail: number
+    files: number
+    ffree: number
+    blockSize: number
+    read: number
+    write: number
     static name: string
 }
 class glibtop_loadavg {
     /* Fields of GTop-2.0.GTop.glibtop_loadavg */
-    readonly flags: number
-    readonly loadavg: number[]
-    readonly nrRunning: number
-    readonly nrTasks: number
-    readonly lastPid: number
+    flags: number
+    loadavg: number[]
+    nrRunning: number
+    nrTasks: number
+    lastPid: number
     static name: string
 }
 class glibtop_machine {
@@ -658,227 +658,227 @@ class glibtop_machine {
 }
 class glibtop_map_entry {
     /* Fields of GTop-2.0.GTop.glibtop_map_entry */
-    readonly flags: number
-    readonly start: number
-    readonly end: number
-    readonly offset: number
-    readonly perm: number
-    readonly inode: number
-    readonly device: number
-    readonly size: number
-    readonly rss: number
-    readonly sharedClean: number
-    readonly sharedDirty: number
-    readonly privateClean: number
-    readonly privateDirty: number
-    readonly pss: number
-    readonly swap: number
-    readonly filename: number[]
+    flags: number
+    start: number
+    end: number
+    offset: number
+    perm: number
+    inode: number
+    device: number
+    size: number
+    rss: number
+    sharedClean: number
+    sharedDirty: number
+    privateClean: number
+    privateDirty: number
+    pss: number
+    swap: number
+    filename: number[]
     static name: string
 }
 class glibtop_mem {
     /* Fields of GTop-2.0.GTop.glibtop_mem */
-    readonly flags: number
-    readonly total: number
-    readonly used: number
-    readonly free: number
-    readonly shared: number
-    readonly buffer: number
-    readonly cached: number
-    readonly user: number
-    readonly locked: number
+    flags: number
+    total: number
+    used: number
+    free: number
+    shared: number
+    buffer: number
+    cached: number
+    user: number
+    locked: number
     static name: string
 }
 class glibtop_mountentry {
     /* Fields of GTop-2.0.GTop.glibtop_mountentry */
-    readonly dev: number
-    readonly devname: number[]
-    readonly mountdir: number[]
-    readonly type: number[]
+    dev: number
+    devname: number[]
+    mountdir: number[]
+    type: number[]
     static name: string
 }
 class glibtop_mountlist {
     /* Fields of GTop-2.0.GTop.glibtop_mountlist */
-    readonly flags: number
-    readonly number: number
-    readonly total: number
-    readonly size: number
+    flags: number
+    number: number
+    total: number
+    size: number
     static name: string
 }
 class glibtop_msg_limits {
     /* Fields of GTop-2.0.GTop.glibtop_msg_limits */
-    readonly flags: number
-    readonly msgpool: number
-    readonly msgmap: number
-    readonly msgmax: number
-    readonly msgmnb: number
-    readonly msgmni: number
-    readonly msgssz: number
-    readonly msgtql: number
+    flags: number
+    msgpool: number
+    msgmap: number
+    msgmax: number
+    msgmnb: number
+    msgmni: number
+    msgssz: number
+    msgtql: number
     static name: string
 }
 class glibtop_netlist {
     /* Fields of GTop-2.0.GTop.glibtop_netlist */
-    readonly flags: number
+    flags: number
     /**
      * Number of entries in the returned list.
      */
-    readonly number: number
+    number: number
     static name: string
 }
 class glibtop_netload {
     /* Fields of GTop-2.0.GTop.glibtop_netload */
-    readonly flags: number
-    readonly ifFlags: number
-    readonly mtu: number
-    readonly subnet: number
-    readonly address: number
-    readonly packetsIn: number
-    readonly packetsOut: number
-    readonly packetsTotal: number
-    readonly bytesIn: number
-    readonly bytesOut: number
-    readonly bytesTotal: number
-    readonly errorsIn: number
-    readonly errorsOut: number
-    readonly errorsTotal: number
-    readonly collisions: number
-    readonly address6: Uint8Array
-    readonly prefix6: Uint8Array
-    readonly scope6: number
-    readonly hwaddress: Uint8Array
+    flags: number
+    ifFlags: number
+    mtu: number
+    subnet: number
+    address: number
+    packetsIn: number
+    packetsOut: number
+    packetsTotal: number
+    bytesIn: number
+    bytesOut: number
+    bytesTotal: number
+    errorsIn: number
+    errorsOut: number
+    errorsTotal: number
+    collisions: number
+    address6: Uint8Array
+    prefix6: Uint8Array
+    scope6: number
+    hwaddress: Uint8Array
     static name: string
 }
 class glibtop_open_files_entry {
     /* Fields of GTop-2.0.GTop.glibtop_open_files_entry */
-    readonly fd: number
-    readonly type: number
+    fd: number
+    type: number
     static name: string
 }
 class glibtop_ppp {
     /* Fields of GTop-2.0.GTop.glibtop_ppp */
-    readonly flags: number
-    readonly state: number
-    readonly bytesIn: number
-    readonly bytesOut: number
+    flags: number
+    state: number
+    bytesIn: number
+    bytesOut: number
     static name: string
 }
 class glibtop_proc_affinity {
     /* Fields of GTop-2.0.GTop.glibtop_proc_affinity */
-    readonly flags: number
-    readonly number: number
-    readonly all: boolean
+    flags: number
+    number: number
+    all: boolean
     static name: string
 }
 class glibtop_proc_args {
     /* Fields of GTop-2.0.GTop.glibtop_proc_args */
-    readonly flags: number
-    readonly size: number
+    flags: number
+    size: number
     static name: string
 }
 class glibtop_proc_io {
     /* Fields of GTop-2.0.GTop.glibtop_proc_io */
-    readonly flags: number
+    flags: number
     /**
      * The number of bytes which this task has caused to be read from storage. This
      * is simply the sum of bytes which this process passed to read() and pread(), also including tty IO,
      * and it is unaffected by whether or not actual physical disk IO was required.
      */
-    readonly diskRchar: number
+    diskRchar: number
     /**
      * The number of bytes which this task has caused, or shall cause to be written
      * to disk. Similar caveats apply here as with rchar.
      */
-    readonly diskWchar: number
+    diskWchar: number
     /**
      * Attempt to count the number of bytes which this process really did cause to
      * be fetched from the storage layer. Done at the submit_bio() level, so it is
      * accurate for block-backed filesystems.
      */
-    readonly diskRbytes: number
+    diskRbytes: number
     /**
      * Attempt to count the number of bytes which this process caused to be sent to
      * the storage layer. This is done at page-dirtying time.
      */
-    readonly diskWbytes: number
-    readonly reserved: number[]
+    diskWbytes: number
+    reserved: number[]
     static name: string
 }
 class glibtop_proc_kernel {
     /* Fields of GTop-2.0.GTop.glibtop_proc_kernel */
-    readonly flags: number
-    readonly kFlags: number
-    readonly minFlt: number
-    readonly majFlt: number
-    readonly cminFlt: number
-    readonly cmajFlt: number
-    readonly kstkEsp: number
-    readonly kstkEip: number
-    readonly nwchan: number
-    readonly wchan: number[]
+    flags: number
+    kFlags: number
+    minFlt: number
+    majFlt: number
+    cminFlt: number
+    cmajFlt: number
+    kstkEsp: number
+    kstkEip: number
+    nwchan: number
+    wchan: number[]
     static name: string
 }
 class glibtop_proc_map {
     /* Fields of GTop-2.0.GTop.glibtop_proc_map */
-    readonly flags: number
-    readonly number: number
-    readonly total: number
-    readonly size: number
+    flags: number
+    number: number
+    total: number
+    size: number
     static name: string
 }
 class glibtop_proc_mem {
     /* Fields of GTop-2.0.GTop.glibtop_proc_mem */
-    readonly flags: number
-    readonly size: number
-    readonly vsize: number
-    readonly resident: number
-    readonly share: number
-    readonly rss: number
-    readonly rssRlim: number
+    flags: number
+    size: number
+    vsize: number
+    resident: number
+    share: number
+    rss: number
+    rssRlim: number
     static name: string
 }
 class glibtop_proc_open_files {
     /* Fields of GTop-2.0.GTop.glibtop_proc_open_files */
-    readonly flags: number
-    readonly number: number
-    readonly total: number
-    readonly size: number
+    flags: number
+    number: number
+    total: number
+    size: number
     static name: string
 }
 class glibtop_proc_segment {
     /* Fields of GTop-2.0.GTop.glibtop_proc_segment */
-    readonly flags: number
-    readonly textRss: number
-    readonly shlibRss: number
-    readonly dataRss: number
-    readonly stackRss: number
-    readonly dirtySize: number
-    readonly startCode: number
-    readonly endCode: number
-    readonly startStack: number
+    flags: number
+    textRss: number
+    shlibRss: number
+    dataRss: number
+    stackRss: number
+    dirtySize: number
+    startCode: number
+    endCode: number
+    startStack: number
     static name: string
 }
 class glibtop_proc_signal {
     /* Fields of GTop-2.0.GTop.glibtop_proc_signal */
-    readonly flags: number
-    readonly signal: number[]
-    readonly blocked: number[]
-    readonly sigignore: number[]
-    readonly sigcatch: number[]
+    flags: number
+    signal: number[]
+    blocked: number[]
+    sigignore: number[]
+    sigcatch: number[]
     static name: string
 }
 class glibtop_proc_state {
     /* Fields of GTop-2.0.GTop.glibtop_proc_state */
-    readonly flags: number
-    readonly cmd: number[]
-    readonly state: number
-    readonly uid: number
-    readonly gid: number
-    readonly ruid: number
-    readonly rgid: number
-    readonly hasCpu: number
-    readonly processor: number
-    readonly lastProcessor: number
+    flags: number
+    cmd: number[]
+    state: number
+    uid: number
+    gid: number
+    ruid: number
+    rgid: number
+    hasCpu: number
+    processor: number
+    lastProcessor: number
     static name: string
 }
 class glibtop_proc_time {
@@ -886,211 +886,211 @@ class glibtop_proc_time {
     /**
      * Start time of process in seconds since the epoch.
      */
-    readonly startTime: number
+    startTime: number
     /**
      * Real time accumulated by process (should be `utime` + `stime)`.
      */
-    readonly rtime: number
+    rtime: number
     /**
      * User-mode CPU time accumulated by process.
      */
-    readonly utime: number
+    utime: number
     /**
      * Kernel-mode CPU time accumulated by process.
      */
-    readonly stime: number
+    stime: number
     /**
      * Cumulative utime of process and reaped children.
      */
-    readonly cutime: number
+    cutime: number
     /**
      * Cumulative stime of process and reaped children.
      */
-    readonly cstime: number
+    cstime: number
     /**
      * The time (in jiffies) of the process’s next timeout.
      */
-    readonly timeout: number
+    timeout: number
     /**
      * The time (in jiffies) before the next <type>SIGALRM</type>
      * is sent to the process due to an interval timer.
      */
-    readonly itRealValue: number
+    itRealValue: number
     /**
      * Tick frequency.
      */
-    readonly frequency: number
+    frequency: number
     /**
      * SMP user-mode CPU time accumulated by process.
      */
-    readonly xcpuUtime: number[]
+    xcpuUtime: number[]
     /**
      * SMP kernel-mode CPU time accumulated by process
      */
-    readonly xcpuStime: number[]
+    xcpuStime: number[]
     static name: string
 }
 class glibtop_proc_uid {
     /* Fields of GTop-2.0.GTop.glibtop_proc_uid */
-    readonly flags: number
-    readonly uid: number
-    readonly euid: number
-    readonly gid: number
-    readonly egid: number
-    readonly suid: number
-    readonly sgid: number
-    readonly fsuid: number
-    readonly fsgid: number
-    readonly pid: number
-    readonly ppid: number
-    readonly pgrp: number
-    readonly session: number
-    readonly tty: number
-    readonly tpgid: number
-    readonly priority: number
-    readonly nice: number
-    readonly ngroups: number
-    readonly groups: number[]
+    flags: number
+    uid: number
+    euid: number
+    gid: number
+    egid: number
+    suid: number
+    sgid: number
+    fsuid: number
+    fsgid: number
+    pid: number
+    ppid: number
+    pgrp: number
+    session: number
+    tty: number
+    tpgid: number
+    priority: number
+    nice: number
+    ngroups: number
+    groups: number[]
     static name: string
 }
 class glibtop_proc_wd {
     /* Fields of GTop-2.0.GTop.glibtop_proc_wd */
-    readonly flags: number
-    readonly number: number
-    readonly root: number[]
-    readonly exe: number[]
+    flags: number
+    number: number
+    root: number[]
+    exe: number[]
     static name: string
 }
 class glibtop_proclist {
     /* Fields of GTop-2.0.GTop.glibtop_proclist */
-    readonly flags: number
+    flags: number
     /**
      * Number of entries in the returned list.
      */
-    readonly number: number
+    number: number
     /**
      * Total size of the returned list (this equals `number` * `size)`.
      */
-    readonly total: number
+    total: number
     /**
      * Size of a single entry in the returned list
      * (this equals <type>sizeof(unsigned)</type>).
      */
-    readonly size: number
+    size: number
     static name: string
 }
 class glibtop_response {
     /* Fields of GTop-2.0.GTop.glibtop_response */
-    readonly offset: number
-    readonly size: number
-    readonly dataSize: number
-    readonly u: glibtop_response_union
+    offset: number
+    size: number
+    dataSize: number
+    u: glibtop_response_union
     static name: string
 }
 class glibtop_sem_limits {
     /* Fields of GTop-2.0.GTop.glibtop_sem_limits */
-    readonly flags: number
-    readonly semmap: number
-    readonly semmni: number
-    readonly semmns: number
-    readonly semmnu: number
-    readonly semmsl: number
-    readonly semopm: number
-    readonly semume: number
-    readonly semusz: number
-    readonly semvmx: number
-    readonly semaem: number
+    flags: number
+    semmap: number
+    semmni: number
+    semmns: number
+    semmnu: number
+    semmsl: number
+    semopm: number
+    semume: number
+    semusz: number
+    semvmx: number
+    semaem: number
     static name: string
 }
 class glibtop_shm_limits {
     /* Fields of GTop-2.0.GTop.glibtop_shm_limits */
-    readonly flags: number
-    readonly shmmax: number
-    readonly shmmin: number
-    readonly shmmni: number
-    readonly shmseg: number
-    readonly shmall: number
+    flags: number
+    shmmax: number
+    shmmin: number
+    shmmni: number
+    shmseg: number
+    shmall: number
     static name: string
 }
 class glibtop_signame {
     /* Fields of GTop-2.0.GTop.glibtop_signame */
-    readonly number: number
-    readonly name: string
-    readonly label: string
+    number: number
+    name: string
+    label: string
     static name: string
 }
 class glibtop_swap {
     /* Fields of GTop-2.0.GTop.glibtop_swap */
-    readonly flags: number
-    readonly total: number
-    readonly used: number
-    readonly free: number
-    readonly pagein: number
-    readonly pageout: number
+    flags: number
+    total: number
+    used: number
+    free: number
+    pagein: number
+    pageout: number
     static name: string
 }
 class glibtop_sysdeps {
     /* Fields of GTop-2.0.GTop.glibtop_sysdeps */
-    readonly flags: number
-    readonly features: number
-    readonly cpu: number
-    readonly mem: number
-    readonly swap: number
-    readonly uptime: number
-    readonly loadavg: number
-    readonly shmLimits: number
-    readonly msgLimits: number
-    readonly semLimits: number
-    readonly proclist: number
-    readonly procState: number
-    readonly procUid: number
-    readonly procMem: number
-    readonly procTime: number
-    readonly procSignal: number
-    readonly procKernel: number
-    readonly procSegment: number
-    readonly procArgs: number
-    readonly procMap: number
-    readonly procOpenFiles: number
-    readonly mountlist: number
-    readonly fsusage: number
-    readonly netlist: number
-    readonly netload: number
-    readonly ppp: number
-    readonly procWd: number
-    readonly procAffinity: number
-    readonly procIo: number
-    readonly disk: number
-    readonly reserved1: number
-    readonly reserved2: number
-    readonly reserved3: number
-    readonly reserved4: number
-    readonly reserved5: number
-    readonly reserved6: number
-    readonly reserved7: number
+    flags: number
+    features: number
+    cpu: number
+    mem: number
+    swap: number
+    uptime: number
+    loadavg: number
+    shmLimits: number
+    msgLimits: number
+    semLimits: number
+    proclist: number
+    procState: number
+    procUid: number
+    procMem: number
+    procTime: number
+    procSignal: number
+    procKernel: number
+    procSegment: number
+    procArgs: number
+    procMap: number
+    procOpenFiles: number
+    mountlist: number
+    fsusage: number
+    netlist: number
+    netload: number
+    ppp: number
+    procWd: number
+    procAffinity: number
+    procIo: number
+    disk: number
+    reserved1: number
+    reserved2: number
+    reserved3: number
+    reserved4: number
+    reserved5: number
+    reserved6: number
+    reserved7: number
     static name: string
 }
 class glibtop_sysinfo {
     /* Fields of GTop-2.0.GTop.glibtop_sysinfo */
-    readonly flags: number
-    readonly ncpu: number
-    readonly cpuinfo: glibtop_entry[]
+    flags: number
+    ncpu: number
+    cpuinfo: glibtop_entry[]
     static name: string
 }
 class glibtop_uptime {
     /* Fields of GTop-2.0.GTop.glibtop_uptime */
-    readonly flags: number
-    readonly uptime: number
-    readonly idletime: number
-    readonly bootTime: number
+    flags: number
+    uptime: number
+    idletime: number
+    bootTime: number
     static name: string
 }
 class partition_info {
     /* Fields of GTop-2.0.GTop.partition_info */
-    readonly name: number[]
-    readonly type: number[]
-    readonly raidNum: number[]
-    readonly max: number
+    name: number[]
+    type: number[]
+    raidNum: number[]
+    max: number
     static name: string
 }
 class glibtop_response_union {

@@ -101,7 +101,7 @@ interface ConfigItem_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ConfigItem {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Xkl-1.0.Xkl.ConfigItem */
     get_description(): string
     get_name(): string
@@ -109,16 +109,19 @@ class ConfigItem {
     /**
      * Change the `description` field of a XklConfigItem. This is mostly useful for
      * language bindings, in C you can manipulate the member directly.
+     * @param description Description (max. 192        characters); can be NULL.
      */
     set_description(description?: string | null): void
     /**
      * Change the `name` field of a XklConfigItem. This is mostly useful for
      * language bindings, in C you can manipulate the member directly.
+     * @param name Name (max. 32 characters); can be NULL.
      */
     set_name(name?: string | null): void
     /**
      * Change the `short_description` field of a XklConfigItem. This is mostly useful for
      * language bindings, in C you can manipulate the member directly.
+     * @param short_description Short Description (max. 10        characters); can be NULL.
      */
     set_short_description(short_description?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -156,6 +159,10 @@ class ConfigItem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -166,6 +173,12 @@ class ConfigItem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -189,6 +202,7 @@ class ConfigItem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -208,11 +222,14 @@ class ConfigItem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -220,6 +237,8 @@ class ConfigItem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -237,6 +256,7 @@ class ConfigItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -282,6 +302,7 @@ class ConfigItem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -325,15 +346,20 @@ class ConfigItem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -374,6 +400,7 @@ class ConfigItem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -408,6 +435,7 @@ class ConfigItem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -427,6 +455,7 @@ class ConfigItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -459,6 +488,7 @@ class ConfigItem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ConfigItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ConfigItem, pspec: GObject.ParamSpec) => void)): number
@@ -478,27 +508,34 @@ interface ConfigRec_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ConfigRec {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Xkl-1.0.Xkl.ConfigRec */
     /**
      * Activates some XKB configuration
      * description. Can be NULL
+     * @param engine the engine
      */
     activate(engine: Engine): boolean
     /**
      * Compares two records
+     * @param data2 another record
      */
     equals(data2: ConfigRec): boolean
     /**
      * Loads the current XKB configuration (from backup)
+     * @param engine the engine
      */
     get_from_backup(engine: Engine): boolean
     /**
      * Gets the XKB configuration from any root window property
+     * @param rules_atom_name atom name of the root window property to read
+     * @param rules_file_out pointer to hold the file name
+     * @param engine the engine
      */
     get_from_root_window_property(rules_atom_name: xlib.Atom, rules_file_out: string, engine: Engine): boolean
     /**
      * Loads the current XKB configuration (from X server)
+     * @param engine the engine
      */
     get_from_server(engine: Engine): boolean
     /**
@@ -510,6 +547,7 @@ class ConfigRec {
      * 
      * Frees the previous layout list. This is primarily useful for bindings, in C
      * you can manipulate the `layouts` record member directly.
+     * @param new_layouts zero terminated list of new layout names.
      */
     set_layouts(new_layouts: string[]): void
     /**
@@ -517,6 +555,7 @@ class ConfigRec {
      * 
      * Frees the previous model. This is primarily useful for bindings, in C
      * you can manipulate the `model` record member directly.
+     * @param new_model new keyboard name.
      */
     set_model(new_model: string): void
     /**
@@ -524,10 +563,14 @@ class ConfigRec {
      * 
      * Frees the previous option list. This is primarily useful for bindings, in C
      * you can manipulate the `options` record member directly.
+     * @param new_options zero terminated list of new option names.
      */
     set_options(new_options: string[]): void
     /**
      * Saves the XKB configuration into any root window property
+     * @param rules_atom_name atom name of the root window property to write
+     * @param rules_file rules file name
+     * @param engine the engine
      */
     set_to_root_window_property(rules_atom_name: xlib.Atom, rules_file: string, engine: Engine): boolean
     /**
@@ -535,6 +578,7 @@ class ConfigRec {
      * 
      * Frees the previous variant list. This is primarily useful for bindings, in C
      * you can manipulate the `variants` record member directly.
+     * @param new_variants zero terminated list of new variant names.
      */
     set_variants(new_variants: string[]): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -572,6 +616,10 @@ class ConfigRec {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -582,6 +630,12 @@ class ConfigRec {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -605,6 +659,7 @@ class ConfigRec {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -624,11 +679,14 @@ class ConfigRec {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -636,6 +694,8 @@ class ConfigRec {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -653,6 +713,7 @@ class ConfigRec {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -698,6 +759,7 @@ class ConfigRec {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -741,15 +803,20 @@ class ConfigRec {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -790,6 +857,7 @@ class ConfigRec {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -824,6 +892,7 @@ class ConfigRec {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -843,6 +912,7 @@ class ConfigRec {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -875,6 +945,7 @@ class ConfigRec {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ConfigRec, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ConfigRec, pspec: GObject.ParamSpec) => void)): number
@@ -890,6 +961,10 @@ class ConfigRec {
     static new(): ConfigRec
     /**
      * Writes some XKB configuration into XKM/XKB/... file
+     * @param engine the engine
+     * @param file_name name of the file to create
+     * @param data valid XKB configuration description. Can be NULL
+     * @param binary flag indicating whether the output file should be binary
      */
     static write_to_file(engine: Engine, file_name: string, data: ConfigRec, binary: boolean): boolean
     static $gtype: GObject.Type
@@ -899,75 +974,98 @@ interface ConfigRegistry_ConstructProps extends GObject.Object_ConstructProps {
     engine?: Engine
 }
 class ConfigRegistry {
+    /* Properties of Xkl-1.0.Xkl.ConfigRegistry */
+    readonly engine: Engine
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Xkl-1.0.Xkl.ConfigRegistry */
     /**
      * Loads a keyboard layout information from the XML configuration registry.
+     * @param item pointer to a XklConfigItem containing the name of the keyboard layout. On successfull return, the descriptions are filled.
      */
     find_layout(item: ConfigItem): boolean
     /**
      * Loads a keyboard model information from the XML configuration registry.
+     * @param item pointer to a XklConfigItem containing the name of the keyboard model. On successfull return, the descriptions are filled.
      */
     find_model(item: ConfigItem): boolean
     /**
      * Loads a keyboard option information from the XML configuration
      * registry.
+     * @param option_group_name name of the option group
+     * @param item pointer to a XklConfigItem containing the name of the keyboard option. On successfull return, the descriptions are filled.
      */
     find_option(option_group_name: string, item: ConfigItem): boolean
     /**
      * Loads a keyboard option group information from the XML configuration
      * registry.
+     * @param item pointer to a XklConfigItem containing the name of the keyboard option group. On successfull return, the descriptions are filled.
      */
     find_option_group(item: ConfigItem): boolean
     /**
      * Loads a keyboard layout variant information from the XML configuration
      * registry.
+     * @param layout_name name of the parent layout
+     * @param item pointer to a XklConfigItem containing the name of the keyboard layout variant. On successfull return, the descriptions are filled.
      */
     find_variant(layout_name: string, item: ConfigItem): boolean
     /**
      * Enumerates countries for which layouts are available,
      * from the XML configuration registry
+     * @param func callback to call for every ISO 3166 country code
      */
     foreach_country(func: ConfigItemProcessFunc): void
     /**
      * Enumerates keyboard layout variants for the country,
      * from the XML configuration registry
+     * @param country_code country ISO code for which variants will be listed
+     * @param func callback to call for every country variant
      */
     foreach_country_variant(country_code: string, func: TwoConfigItemsProcessFunc): void
     /**
      * Enumerates languages for which layouts are available,
      * from the XML configuration registry
+     * @param func callback to call for every ISO 639-2 country code
      */
     foreach_language(func: ConfigItemProcessFunc): void
     /**
      * Enumerates keyboard layout variants for the language,
      * from the XML configuration registry
+     * @param language_code language ISO code for which variants will be listed
+     * @param func callback to call for every country variant
      */
     foreach_language_variant(language_code: string, func: TwoConfigItemsProcessFunc): void
     /**
      * Enumerates keyboard layouts from the XML configuration registry
+     * @param func callback to call for every layout
      */
     foreach_layout(func: ConfigItemProcessFunc): void
     /**
      * Enumerates keyboard layout variants from the XML configuration registry
+     * @param layout_name layout name for which variants will be listed
+     * @param func callback to call for every layout variant
      */
     foreach_layout_variant(layout_name: string, func: ConfigItemProcessFunc): void
     /**
      * Enumerates keyboard models from the XML configuration registry
+     * @param func callback to call for every model
      */
     foreach_model(func: ConfigItemProcessFunc): void
     /**
      * Enumerates keyboard options from the XML configuration registry
+     * @param option_group_name option group name for which variants will be listed
+     * @param func callback to call for every option
      */
     foreach_option(option_group_name: string, func: ConfigItemProcessFunc): void
     /**
      * Enumerates keyboard option groups from the XML configuration registry
+     * @param func callback to call for every option group
      */
     foreach_option_group(func: ConfigItemProcessFunc): void
     /**
      * Loads XML configuration registry. The name is taken from X server
      * (for XKB/libxkbfile, from the root window property)
+     * @param if_extras_needed whether exotic materials (layouts, options) should be loaded as well
      */
     load(if_extras_needed: boolean): boolean
     /**
@@ -976,6 +1074,8 @@ class ConfigRegistry {
      * is true:
      * 1. Country description (from the country list or name) contains pattern as substring
      * 2. Language description (from the language list or name) contains pattern as substring
+     * @param pattern pattern to search for (NULL means "all")
+     * @param func callback to call for every matching layout/variant
      */
     search_by_pattern(pattern: string, func: TwoConfigItemsProcessFunc): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1013,6 +1113,10 @@ class ConfigRegistry {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1023,6 +1127,12 @@ class ConfigRegistry {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1046,6 +1156,7 @@ class ConfigRegistry {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1065,11 +1176,14 @@ class ConfigRegistry {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1077,6 +1191,8 @@ class ConfigRegistry {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1094,6 +1210,7 @@ class ConfigRegistry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1139,6 +1256,7 @@ class ConfigRegistry {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1182,15 +1300,20 @@ class ConfigRegistry {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1231,6 +1354,7 @@ class ConfigRegistry {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1265,6 +1389,7 @@ class ConfigRegistry {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1284,6 +1409,7 @@ class ConfigRegistry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1316,10 +1442,13 @@ class ConfigRegistry {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ConfigRegistry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ConfigRegistry, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::engine", callback: (($obj: ConfigRegistry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::engine", callback: (($obj: ConfigRegistry, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1330,6 +1459,7 @@ class ConfigRegistry {
     /* Static methods and pseudo-constructors */
     /**
      * Create new XklConfig
+     * @param engine the engine to use for accessing X in all the operations (like accessing root window properties etc)
      */
     static get_instance(engine: Engine): ConfigRegistry
     static $gtype: GObject.Type
@@ -1342,13 +1472,14 @@ class Engine {
     /* Properties of Xkl-1.0.Xkl.Engine */
     readonly backendName: string
     readonly default_group: number
+    readonly display: object
     readonly features: EngineFeatures
     readonly indicators_handling: boolean
     readonly max_num_groups: number
     readonly num_groups: number
     readonly secondary_groups_mask: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Xkl-1.0.Xkl.Engine */
     /**
      * Allows to switch (once) to the secondary group
@@ -1361,11 +1492,13 @@ class Engine {
     backup_names_prop(): boolean
     /**
      * Drops the state of a given window (of its "App window").
+     * @param win target window
      */
     delete_state(win: xlib.Window): void
     /**
      * Processes X events. Should be included into the main event cycle of an
      * application. One of the most important functions.
+     * @param evt delivered X event
      */
     filter_events(evt: xlib.XEvent): number
     /**
@@ -1405,21 +1538,28 @@ class Engine {
     get_secondary_groups_mask(): number
     /**
      * Finds the state for a given window (for its "App window").
+     * @param win window to query
+     * @param state_out structure to store the state
      */
     get_state(win: xlib.Window, state_out: State): boolean
     get_window_title(win: xlib.Window): string
     /**
      * Grabs some key
+     * @param keycode keycode
+     * @param modifiers bitmask of modifiers
      */
     grab_key(keycode: number, modifiers: number): boolean
     is_group_per_toplevel_window(): boolean
     /**
      * Checks whether 2 windows have the same topmost window
+     * @param win1 first window
+     * @param win2 second window
      */
     is_window_from_same_toplevel_window(win1: xlib.Window, win2: xlib.Window): boolean
     is_window_transparent(win: xlib.Window): boolean
     /**
      * Locks the group. Can be used after xkl_GetXXXGroup functions
+     * @param group group number for locking
      */
     lock_group(group: number): void
     /**
@@ -1432,41 +1572,53 @@ class Engine {
     resume_listen(): number
     /**
      * Stores ths state for a given window
+     * @param win target window
+     * @param state new state of the window
      */
     save_state(win: xlib.Window, state: State): void
     /**
      * Configures the default group set on window creation.
      * If -1, no default group is used
+     * @param group default group
      */
     set_default_group(group: number): void
     /**
      * Sets the configuration parameter: group per application
+     * @param is_global new parameter value
      */
     set_group_per_toplevel_window(is_global: boolean): void
     /**
      * Sets the configuration parameter: perform indicators handling
+     * @param whether_handle new parameter value
      */
     set_indicators_handling(whether_handle: boolean): void
     /**
      * Sets the secondary groups (one bit per group).
      * Secondary groups require explicit "allowance" for switching
+     * @param mask new group mask
      */
     set_secondary_groups_mask(mask: number): void
     /**
      * Sets the "transparent" flag. It means focus switching onto
      * this window will never change the state.
+     * @param win window do set the flag for.
+     * @param transparent if true, the windows is transparent.
      */
     set_window_transparent(win: xlib.Window, transparent: boolean): void
     /**
      * Starts listening for XKB-related events
+     * @param flags any combination of XKLL_* constants
      */
     start_listen(flags: number): number
     /**
      * Stops listening for XKB-related events
+     * @param flags any combination of XKLL_* constants
      */
     stop_listen(flags: number): number
     /**
      * Ungrabs some key
+     * @param keycode keycode
+     * @param modifiers bitmask of modifiers
      */
     ungrab_key(keycode: number, modifiers: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1504,6 +1656,10 @@ class Engine {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1514,6 +1670,12 @@ class Engine {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1537,6 +1699,7 @@ class Engine {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1556,11 +1719,14 @@ class Engine {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1568,6 +1734,8 @@ class Engine {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1585,6 +1753,7 @@ class Engine {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1630,6 +1799,7 @@ class Engine {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1673,15 +1843,20 @@ class Engine {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1722,6 +1897,7 @@ class Engine {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1756,6 +1932,7 @@ class Engine {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Xkl-1.0.Xkl.Engine */
@@ -1780,6 +1957,7 @@ class Engine {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1825,6 +2003,7 @@ class Engine {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
@@ -1833,6 +2012,8 @@ class Engine {
     connect_after(sigName: "notify::backendName", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::default-group", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-group", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::features", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::features", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::indicators-handling", callback: (($obj: Engine, pspec: GObject.ParamSpec) => void)): number
@@ -1855,23 +2036,24 @@ class Engine {
     static VOID__ENUM_INT_BOOLEAN(closure: Function, return_value: any, n_param_values: number, param_values: any, invocation_hint: object, marshal_data: object): void
     /**
      * Get the instance of the XklEngine. Within a process, there is always once instance.
+     * @param display the X display used by the application
      */
     static get_instance(display: xlib.Display): Engine
     static $gtype: GObject.Type
 }
 abstract class ConfigItemClass {
     /* Fields of Xkl-1.0.Xkl.ConfigItemClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ConfigRecClass {
     /* Fields of Xkl-1.0.Xkl.ConfigRecClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ConfigRegistryClass {
     /* Fields of Xkl-1.0.Xkl.ConfigRegistryClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class ConfigRegistryPrivate {
@@ -1879,11 +2061,11 @@ class ConfigRegistryPrivate {
 }
 abstract class EngineClass {
     /* Fields of Xkl-1.0.Xkl.EngineClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly config_notify: (engine: Engine) => void
-    readonly new_window_notify: (engine: Engine, win: xlib.Window, parent: xlib.Window) => number
-    readonly state_notify: (engine: Engine, change_type: EngineStateChange, group: number, restore: boolean) => void
-    readonly new_device_notify: (engine: Engine) => void
+    parent_class: GObject.ObjectClass
+    config_notify: (engine: Engine) => void
+    new_window_notify: (engine: Engine, win: xlib.Window, parent: xlib.Window) => number
+    state_notify: (engine: Engine, change_type: EngineStateChange, group: number, restore: boolean) => void
+    new_device_notify: (engine: Engine) => void
     static name: string
 }
 class EnginePrivate {
@@ -1891,8 +2073,8 @@ class EnginePrivate {
 }
 class State {
     /* Fields of Xkl-1.0.Xkl.State */
-    readonly group: number
-    readonly indicators: number
+    group: number
+    indicators: number
     static name: string
 }
 }

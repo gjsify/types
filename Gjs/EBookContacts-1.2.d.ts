@@ -1026,9 +1026,9 @@ class Contact {
     wants_html: boolean
     x509Cert: ContactCert
     /* Fields of EBookContacts-1.2.EBookContacts.VCard */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EBookContacts-1.2.EBookContacts.Contact */
     /**
      * Creates a copy of `contact`.
@@ -1036,20 +1036,24 @@ class Contact {
     duplicate(): Contact
     /**
      * Gets the value of `contact'`s field specified by `field_id`.
+     * @param field_id an #EContactField
      */
     get(field_id: ContactField): object | null
     /**
      * Gets a list of the vcard attributes for `contact'`s `field_id`.
+     * @param field_id an #EContactField
      */
     get_attributes(field_id: ContactField): VCardAttribute[]
     /**
      * Gets a list of the vcard attributes for `contact'`s `field_ids`.
+     * @param field_ids an array of #EContactField
      */
     get_attributes_set(field_ids: ContactField[]): VCardAttribute[]
     /**
      * Gets the value of `contact'`s field specified by `field_id,` caching
      * the result so it can be freed later. Use e_contact_field_is_string()
      * to check whether the field can be used here.
+     * @param field_id an #EContactField
      */
     get_const(field_id: ContactField): object | null
     /**
@@ -1060,16 +1064,21 @@ class Contact {
     inline_local_photos(): boolean
     /**
      * Sets the value of `contact'`s field specified by `field_id` to `value`.
+     * @param field_id an #EContactField
+     * @param value a value whose type depends on the `field_id`
      */
     set(field_id: ContactField, value?: object | null): void
     /**
      * Sets the vcard attributes for `contact'`s `field_id`.
      * Attributes are added to the contact in the same order as they are in `attributes`.
+     * @param field_id an #EContactField
+     * @param attributes a #GList of pointers to #EVCardAttribute
      */
     set_attributes(field_id: ContactField, attributes: VCardAttribute[]): void
     /* Methods of EBookContacts-1.2.EBookContacts.VCard */
     /**
      * Prepends `attr` to `evc`. This takes ownership of `attr`.
+     * @param attr an #EVCardAttribute to add
      */
     add_attribute(attr: VCardAttribute): void
     /**
@@ -1078,11 +1087,14 @@ class Contact {
      * 
      * This is a convenience wrapper around e_vcard_attribute_add_value() and
      * e_vcard_add_attribute().
+     * @param attr an #EVCardAttribute to add
+     * @param value a value to assign to the attribute
      */
     add_attribute_with_value(attr: VCardAttribute, value: string): void
     /**
      * Appends `attr` to `evc` to the end of a list of attributes. This takes
      * ownership of `attr`.
+     * @param attr an #EVCardAttribute to append
      */
     append_attribute(attr: VCardAttribute): void
     /**
@@ -1091,17 +1103,23 @@ class Contact {
      * 
      * This is a convenience wrapper around e_vcard_attribute_add_value() and
      * e_vcard_append_attribute().
+     * @param attr an #EVCardAttribute to append
+     * @param value a value to assign to the attribute
      */
     append_attribute_with_value(attr: VCardAttribute, value: string): void
     /**
      * Constructs the existing #EVCard, `evc,` setting its vCard data to `str`.
      * 
      * This modifies `evc`.
+     * @param str a vCard string
      */
     construct(str: string): void
     /**
      * Similar to e_vcard_construct_with_uid(), but can also
      * be used with an `str` that is not %NULL terminated.
+     * @param str a vCard string
+     * @param len length of `str,` or -1 if `str` is %NULL terminated
+     * @param uid a unique ID string
      */
     construct_full(str: string, len: number, uid?: string | null): void
     /**
@@ -1110,6 +1128,8 @@ class Contact {
      * non-%NULL).
      * 
      * This modifies `evc`.
+     * @param str a vCard string
+     * @param uid a unique ID string
      */
     construct_with_uid(str: string, uid?: string | null): void
     /**
@@ -1131,11 +1151,13 @@ class Contact {
      * be called often. If extracting a large number of attributes from a vCard, it
      * is more efficient to iterate once over the list returned by
      * e_vcard_get_attributes().</para></note>
+     * @param name the name of the attribute to get
      */
     get_attribute(name: string): VCardAttribute | null
     /**
      * Similar to e_vcard_get_attribute() but this method will not attempt to
      * parse the vCard if it is not already parsed.
+     * @param name the name of the attribute to get
      */
     get_attribute_if_parsed(name: string): VCardAttribute | null
     /**
@@ -1150,6 +1172,7 @@ class Contact {
     is_parsed(): boolean
     /**
      * Removes `attr` from `evc` and frees it. This takes ownership of `attr`.
+     * @param attr an #EVCardAttribute to remove
      */
     remove_attribute(attr: VCardAttribute): void
     /**
@@ -1157,17 +1180,22 @@ class Contact {
      * passed in values. If `attr_group` is %NULL or an empty string,
      * it removes all the attributes with passed in name irrespective of
      * their group names.
+     * @param attr_group group name of attributes to be removed
+     * @param attr_name name of the arributes to be removed
      */
     remove_attributes(attr_group: string | null, attr_name: string): void
     /**
      * Exports `evc` to a string representation, specified
      * by the `format` argument.
+     * @param format the format to export to
      */
     to_string(format: VCardFormat): string
     util_dup_x_attribute(x_name: string): string | null
     /**
      * Sets an "X-" attribute `x_name` to value `value` in `vcard,` or
      * removes it from `vcard,` when `value` is %NULL.
+     * @param x_name the attribute name, which starts with "X-"
+     * @param value the value to set, or %NULL to unset
      */
     util_set_x_attribute(x_name: string, value?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1205,6 +1233,10 @@ class Contact {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1215,6 +1247,12 @@ class Contact {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1238,6 +1276,7 @@ class Contact {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1257,11 +1296,14 @@ class Contact {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1269,6 +1311,8 @@ class Contact {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1286,6 +1330,7 @@ class Contact {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1331,6 +1376,7 @@ class Contact {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1374,15 +1420,20 @@ class Contact {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1423,6 +1474,7 @@ class Contact {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1457,6 +1509,7 @@ class Contact {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1476,6 +1529,7 @@ class Contact {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1508,6 +1562,7 @@ class Contact {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
@@ -1811,33 +1866,40 @@ class Contact {
     static new_from_vcard_with_uid(vcard: string, uid: string): Contact
     /**
      * Gets the #EContactField corresponding to the `field_name`.
+     * @param field_name a string representing a contact field
      */
     static field_id(field_name: string): ContactField
     /**
      * Gets the #EContactField corresponding to the `vcard_field`.
+     * @param vcard_field a string representing a vCard field
      */
     static field_id_from_vcard(vcard_field: string): ContactField
     /**
      * Returns whether the `field_id` is of a string type,
      * thus it can be used with e_contact_get_const().
+     * @param field_id an #EContactField
      */
     static field_is_string(field_id: ContactField): boolean
     /**
      * Gets the string representation of `field_id`.
+     * @param field_id an #EContactField
      */
     static field_name(field_id: ContactField): string
     /**
      * Gets the #GType used for this contact field, this indicates
      * what kind of value can be passed to e_contact_set().
+     * @param field_id an #EContactField
      */
     static field_type(field_id: ContactField): GObject.Type
     /**
      * Gets a human-readable, translated string representation
      * of `field_id`.
+     * @param field_id an #EContactField
      */
     static pretty_name(field_id: ContactField): string
     /**
      * Gets the vcard attribute corresponding to `field_id,` as a string.
+     * @param field_id an #EContactField
      */
     static vcard_attribute(field_id: ContactField): string
     static $gtype: GObject.Type
@@ -1851,8 +1913,10 @@ class SourceBackendSummarySetup {
     /* Properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup */
     indexed_fields: string
     summary_fields: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: EDataServer.Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup */
     /**
      * Fetches the #EContactFields configured to be indexed, with thier respective #EBookIndexTypes.
@@ -1876,6 +1940,9 @@ class SourceBackendSummarySetup {
      * 
      * <note><para>The specified indexed fields must also be a part of the summary, any indexed fields
      * specified that are not already a part of the summary will be ignored.</para></note>
+     * @param fields The array of #EContactFields to set indexes for
+     * @param types The array of #EBookIndexTypes defining what types of indexes to create
+     * @param n_fields The number elements in the passed `fields,` `rule_types` and `rules` arrays.
      */
     set_indexed_fieldsv(fields: ContactField, types: BookIndexType, n_fields: number): void
     /**
@@ -1889,6 +1956,8 @@ class SourceBackendSummarySetup {
      * 
      * <note><para>Only #EContactFields with the type #G_TYPE_STRING or #G_TYPE_BOOLEAN
      * are currently supported as summary fields.</para></note>
+     * @param fields The array of #EContactFields to set as summary fields
+     * @param n_fields The number of #EContactFields in `fields`
      */
     set_summary_fieldsv(fields: ContactField, n_fields: number): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -1951,6 +2020,10 @@ class SourceBackendSummarySetup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1961,6 +2034,12 @@ class SourceBackendSummarySetup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1984,6 +2063,7 @@ class SourceBackendSummarySetup {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2003,11 +2083,14 @@ class SourceBackendSummarySetup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2015,6 +2098,8 @@ class SourceBackendSummarySetup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2032,6 +2117,7 @@ class SourceBackendSummarySetup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2077,6 +2163,7 @@ class SourceBackendSummarySetup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2120,15 +2207,20 @@ class SourceBackendSummarySetup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2169,6 +2261,7 @@ class SourceBackendSummarySetup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2203,6 +2296,7 @@ class SourceBackendSummarySetup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2222,6 +2316,7 @@ class SourceBackendSummarySetup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2254,6 +2349,7 @@ class SourceBackendSummarySetup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
@@ -2262,6 +2358,8 @@ class SourceBackendSummarySetup {
     connect_after(sigName: "notify::indexed-fields", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::summary-fields", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::summary-fields", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2275,10 +2373,11 @@ interface VCard_ConstructProps extends GObject.Object_ConstructProps {
 }
 class VCard {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EBookContacts-1.2.EBookContacts.VCard */
     /**
      * Prepends `attr` to `evc`. This takes ownership of `attr`.
+     * @param attr an #EVCardAttribute to add
      */
     add_attribute(attr: VCardAttribute): void
     /**
@@ -2287,11 +2386,14 @@ class VCard {
      * 
      * This is a convenience wrapper around e_vcard_attribute_add_value() and
      * e_vcard_add_attribute().
+     * @param attr an #EVCardAttribute to add
+     * @param value a value to assign to the attribute
      */
     add_attribute_with_value(attr: VCardAttribute, value: string): void
     /**
      * Appends `attr` to `evc` to the end of a list of attributes. This takes
      * ownership of `attr`.
+     * @param attr an #EVCardAttribute to append
      */
     append_attribute(attr: VCardAttribute): void
     /**
@@ -2300,17 +2402,23 @@ class VCard {
      * 
      * This is a convenience wrapper around e_vcard_attribute_add_value() and
      * e_vcard_append_attribute().
+     * @param attr an #EVCardAttribute to append
+     * @param value a value to assign to the attribute
      */
     append_attribute_with_value(attr: VCardAttribute, value: string): void
     /**
      * Constructs the existing #EVCard, `evc,` setting its vCard data to `str`.
      * 
      * This modifies `evc`.
+     * @param str a vCard string
      */
     construct(str: string): void
     /**
      * Similar to e_vcard_construct_with_uid(), but can also
      * be used with an `str` that is not %NULL terminated.
+     * @param str a vCard string
+     * @param len length of `str,` or -1 if `str` is %NULL terminated
+     * @param uid a unique ID string
      */
     construct_full(str: string, len: number, uid?: string | null): void
     /**
@@ -2319,6 +2427,8 @@ class VCard {
      * non-%NULL).
      * 
      * This modifies `evc`.
+     * @param str a vCard string
+     * @param uid a unique ID string
      */
     construct_with_uid(str: string, uid?: string | null): void
     /**
@@ -2340,11 +2450,13 @@ class VCard {
      * be called often. If extracting a large number of attributes from a vCard, it
      * is more efficient to iterate once over the list returned by
      * e_vcard_get_attributes().</para></note>
+     * @param name the name of the attribute to get
      */
     get_attribute(name: string): VCardAttribute | null
     /**
      * Similar to e_vcard_get_attribute() but this method will not attempt to
      * parse the vCard if it is not already parsed.
+     * @param name the name of the attribute to get
      */
     get_attribute_if_parsed(name: string): VCardAttribute | null
     /**
@@ -2359,6 +2471,7 @@ class VCard {
     is_parsed(): boolean
     /**
      * Removes `attr` from `evc` and frees it. This takes ownership of `attr`.
+     * @param attr an #EVCardAttribute to remove
      */
     remove_attribute(attr: VCardAttribute): void
     /**
@@ -2366,17 +2479,22 @@ class VCard {
      * passed in values. If `attr_group` is %NULL or an empty string,
      * it removes all the attributes with passed in name irrespective of
      * their group names.
+     * @param attr_group group name of attributes to be removed
+     * @param attr_name name of the arributes to be removed
      */
     remove_attributes(attr_group: string | null, attr_name: string): void
     /**
      * Exports `evc` to a string representation, specified
      * by the `format` argument.
+     * @param format the format to export to
      */
     to_string(format: VCardFormat): string
     util_dup_x_attribute(x_name: string): string | null
     /**
      * Sets an "X-" attribute `x_name` to value `value` in `vcard,` or
      * removes it from `vcard,` when `value` is %NULL.
+     * @param x_name the attribute name, which starts with "X-"
+     * @param value the value to set, or %NULL to unset
      */
     util_set_x_attribute(x_name: string, value?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2414,6 +2532,10 @@ class VCard {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2424,6 +2546,12 @@ class VCard {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2447,6 +2575,7 @@ class VCard {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2466,11 +2595,14 @@ class VCard {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2478,6 +2610,8 @@ class VCard {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2495,6 +2629,7 @@ class VCard {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2540,6 +2675,7 @@ class VCard {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2583,15 +2719,20 @@ class VCard {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2632,6 +2773,7 @@ class VCard {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2666,6 +2808,7 @@ class VCard {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2685,6 +2828,7 @@ class VCard {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2717,6 +2861,7 @@ class VCard {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: VCard, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: VCard, pspec: GObject.ParamSpec) => void)): number
@@ -2733,10 +2878,12 @@ class VCard {
     static new_from_string(str: string): VCard
     /**
      * Escapes a string according to RFC2426, section 5.
+     * @param s the string to escape
      */
     static escape_string(s: string): string
     /**
      * Unescapes a string according to RFC2426, section 5.
+     * @param s the string to unescape
      */
     static unescape_string(s: string): string
     static $gtype: GObject.Type
@@ -2746,31 +2893,31 @@ class AddressWestern {
     /**
      * PO Box.
      */
-    readonly po_box: string
+    po_box: string
     /**
      * TODO, we're not sure what this is.
      */
-    readonly extended: string
+    extended: string
     /**
      * Street name
      */
-    readonly street: string
+    street: string
     /**
      * City or town
      */
-    readonly locality: string
+    locality: string
     /**
      * State or province
      */
-    readonly region: string
+    region: string
     /**
      * Postal Code
      */
-    readonly postal_code: string
+    postal_code: string
     /**
      * Country
      */
-    readonly country: string
+    country: string
     /* Methods of EBookContacts-1.2.EBookContacts.AddressWestern */
     /**
      * Creates a copy of `eaw`.
@@ -2785,6 +2932,7 @@ class AddressWestern {
     /**
      * Parses a string representing a mailing address into a
      * structure of type #EAddressWestern.
+     * @param in_address a string representing a mailing address
      */
     static parse(in_address?: string | null): AddressWestern | null
 }
@@ -2793,11 +2941,11 @@ class BookChange {
     /**
      * The #EBookChangeType
      */
-    readonly change_type: BookChangeType
+    change_type: BookChangeType
     /**
      * The #EContact which changed
      */
-    readonly contact: Contact
+    contact: Contact
     static name: string
 }
 class BookQuery {
@@ -2808,6 +2956,7 @@ class BookQuery {
     copy(): BookQuery
     /**
      * Creates a new #EBookQuery which is the opposite of #q.
+     * @param unref if %TRUE, the new query takes ownership of the existing queries
      */
     not(unref: boolean): BookQuery
     /**
@@ -2827,48 +2976,64 @@ class BookQuery {
     /* Static methods and pseudo-constructors */
     /**
      * Create a new #EBookQuery which is the logical AND of the queries in #qs.
+     * @param nqs the number of queries to AND
+     * @param qs pointer to an array of #EBookQuery items
+     * @param unref if %TRUE, the new query takes ownership of the existing queries
      */
     static and(nqs: number, qs: BookQuery, unref: boolean): BookQuery
     /**
      * Creates a new #EBookQuery which tests if any field contains `value`.
+     * @param value a value
      */
     static any_field_contains(value: string): BookQuery
     /**
      * Creates a new #EBookQuery which tests if the field `field` exists.
+     * @param field an #EContactField
      */
     static field_exists(field: ContactField): BookQuery
     /**
      * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
+     * @param field an #EContactField to test
+     * @param test the test to apply
+     * @param value the value to test for
      */
     static field_test(field: ContactField, test: BookQueryTest, value: string): BookQuery
     /**
      * Parse `query_string` and return a new #EBookQuery representing it.
+     * @param query_string the query
      */
     static from_string(query_string: string): BookQuery
     /**
      * Creates a new #EBookQuery which is the logical OR of the queries in #qs.
+     * @param nqs the number of queries to OR
+     * @param qs pointer to an array of #EBookQuery items
+     * @param unref if %TRUE, the new query takes ownership of the existing queries
      */
     static or(nqs: number, qs: BookQuery, unref: boolean): BookQuery
     /**
      * Creates a new #EBookQuery which tests if the field `field` exists. `field`
      * should be a vCard field name, such as #EVC_FN or #EVC_X_MSN.
+     * @param field a field name
      */
     static vcard_field_exists(field: string): BookQuery
     /**
      * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
+     * @param field a EVCard field name to test
+     * @param test the test to apply
+     * @param value the value to test for
      */
     static vcard_field_test(field: string, test: BookQueryTest, value: string): BookQuery
 }
 class ContactAddress {
     /* Fields of EBookContacts-1.2.EBookContacts.ContactAddress */
-    readonly address_format: string
-    readonly po: string
-    readonly ext: string
-    readonly street: string
-    readonly locality: string
-    readonly region: string
-    readonly code: string
-    readonly country: string
+    address_format: string
+    po: string
+    ext: string
+    street: string
+    locality: string
+    region: string
+    code: string
+    country: string
     /* Methods of EBookContacts-1.2.EBookContacts.ContactAddress */
     /**
      * Frees the `address` struct and its contents.
@@ -2882,8 +3047,8 @@ class ContactAddress {
 }
 class ContactCert {
     /* Fields of EBookContacts-1.2.EBookContacts.ContactCert */
-    readonly length: number
-    readonly data: string
+    length: number
+    data: string
     /* Methods of EBookContacts-1.2.EBookContacts.ContactCert */
     /**
      * Frees the `cert` struct and its contents.
@@ -2897,17 +3062,18 @@ class ContactCert {
 }
 abstract class ContactClass {
     /* Fields of EBookContacts-1.2.EBookContacts.ContactClass */
-    readonly parent_class: VCardClass
+    parent_class: VCardClass
     static name: string
 }
 class ContactDate {
     /* Fields of EBookContacts-1.2.EBookContacts.ContactDate */
-    readonly year: number
-    readonly month: number
-    readonly day: number
+    year: number
+    month: number
+    day: number
     /* Methods of EBookContacts-1.2.EBookContacts.ContactDate */
     /**
      * Checks if `dt1` and `dt2` are the same date.
+     * @param dt2 an #EContactDate
      */
     equal(dt2: ContactDate): boolean
     /**
@@ -2926,6 +3092,7 @@ class ContactDate {
     static new(): ContactDate
     /**
      * Creates a new #EContactDate based on `str`.
+     * @param str a date string in the format YYYY-MM-DD or YYYYMMDD
      */
     static from_string(str: string): ContactDate
 }
@@ -2934,11 +3101,11 @@ class ContactGeo {
     /**
      * latitude
      */
-    readonly latitude: number
+    latitude: number
     /**
      * longitude
      */
-    readonly longitude: number
+    longitude: number
     /* Methods of EBookContacts-1.2.EBookContacts.ContactGeo */
     /**
      * Frees the `geo` struct and its contents.
@@ -2952,11 +3119,11 @@ class ContactGeo {
 }
 class ContactName {
     /* Fields of EBookContacts-1.2.EBookContacts.ContactName */
-    readonly family: string
-    readonly given: string
-    readonly additional: string
-    readonly prefixes: string
-    readonly suffixes: string
+    family: string
+    given: string
+    additional: string
+    prefixes: string
+    suffixes: string
     /* Methods of EBookContacts-1.2.EBookContacts.ContactName */
     /**
      * Creates a copy of `n`.
@@ -2977,12 +3144,13 @@ class ContactName {
     static new(): ContactName
     /**
      * Creates a new #EContactName based on the parsed `name_str`.
+     * @param name_str a string representing a contact's full name
      */
     static from_string(name_str: string): ContactName
 }
 class ContactPhoto {
     /* Fields of EBookContacts-1.2.EBookContacts.ContactPhoto */
-    readonly type: ContactPhotoType
+    type: ContactPhotoType
     /* Methods of EBookContacts-1.2.EBookContacts.ContactPhoto */
     /**
      * Creates a copy of `photo`.
@@ -3006,14 +3174,17 @@ class ContactPhoto {
     get_uri(): string | null
     /**
      * Sets the `photo'`s inlined data.
+     * @param data the inlined image data
      */
     set_inlined(data: Uint8Array): void
     /**
      * Sets the `photo'`s mime type.
+     * @param mime_type the mime type
      */
     set_mime_type(mime_type: string): void
     /**
      * Sets the `photo'`s URI.
+     * @param uri the `photo'`s URI
      */
     set_uri(uri: string): void
     static name: string
@@ -3027,13 +3198,13 @@ class ContactPrivate {
 }
 class NameWestern {
     /* Fields of EBookContacts-1.2.EBookContacts.NameWestern */
-    readonly prefix: string
-    readonly first: string
-    readonly middle: string
-    readonly nick: string
-    readonly last: string
-    readonly suffix: string
-    readonly full: string
+    prefix: string
+    first: string
+    middle: string
+    nick: string
+    last: string
+    suffix: string
+    full: string
     /* Methods of EBookContacts-1.2.EBookContacts.NameWestern */
     /**
      * Creates a copy of `w`.
@@ -3048,6 +3219,7 @@ class NameWestern {
     /**
      * Parses `full_name` and returns an #ENameWestern struct filled with
      * the component parts of the name.
+     * @param full_name A string containing a western name.
      */
     static parse(full_name: string): NameWestern
 }
@@ -3055,6 +3227,7 @@ class PhoneNumber {
     /* Methods of EBookContacts-1.2.EBookContacts.PhoneNumber */
     /**
      * Compares two phone numbers.
+     * @param second_number the second EPhoneNumber to compare
      */
     compare(second_number: PhoneNumber): PhoneNumberMatch
     /**
@@ -3069,6 +3242,7 @@ class PhoneNumber {
      * Queries the `phone_number'`s country calling code and optionally stores the country
      * calling code's origin in `source`. For instance when parsing "+1-617-5423789" this
      * function would return one and assing E_PHONE_NUMBER_COUNTRY_FROM_FQTN to `source`.
+     * @param source an optional location for storing the phone number's origin, or %NULL
      */
     get_country_code(source?: PhoneNumberCountrySource | null): number
     /**
@@ -3079,16 +3253,22 @@ class PhoneNumber {
     get_national_number(): string
     /**
      * Describes the `phone_number` according to the rules applying to `format`.
+     * @param format the phone number format to apply
      */
     to_string(format: PhoneNumberFormat): string
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Compares two phone numbers.
+     * @param first_number the first EPhoneNumber to compare
+     * @param second_number the second EPhoneNumber to compare
      */
     static compare_strings(first_number: string, second_number: string): PhoneNumberMatch
     /**
      * Compares two phone numbers within the context of `region_code`.
+     * @param first_number the first EPhoneNumber to compare
+     * @param second_number the second EPhoneNumber to compare
+     * @param region_code a two-letter country code, or %NULL
      */
     static compare_strings_with_region(first_number: string, second_number: string, region_code?: string | null): PhoneNumberMatch
     static error_quark(): GLib.Quark
@@ -3104,6 +3284,8 @@ class PhoneNumber {
      * 
      * If the number is guaranteed to start with a '+' followed by the country
      * calling code, then "ZZ" can be passed for `region_code`.
+     * @param phone_number the phone number to parse
+     * @param region_code a two-letter country code, or %NULL
      */
     static from_string(phone_number: string, region_code?: string | null): PhoneNumber
     /**
@@ -3112,6 +3294,7 @@ class PhoneNumber {
      * 
      * If %NULL is passed for `region_code` the default region as returned by
      * e_phone_number_get_default_region() is used.
+     * @param region_code a two-letter country code, a locale name, or %NULL
      */
     static get_country_code_for_region(region_code?: string | null): number
     /**
@@ -3135,7 +3318,7 @@ class PhoneNumber {
 }
 abstract class SourceBackendSummarySetupClass {
     /* Fields of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupClass */
-    readonly parent_class: EDataServer.SourceBackendClass
+    parent_class: EDataServer.SourceBackendClass
     static name: string
 }
 class SourceBackendSummarySetupPrivate {
@@ -3149,6 +3332,7 @@ class VCardAttribute {
      * 
      * Duplicate parameters have their values merged, so that all parameter names
      * in `attr` are unique. Values are also merged so that uniqueness is preserved.
+     * @param param an #EVCardAttributeParam to add
      */
     add_param(param: VCardAttributeParam): void
     /**
@@ -3157,10 +3341,13 @@ class VCardAttribute {
      * 
      * This is a convenience method for e_vcard_attribute_param_add_value() and
      * e_vcard_attribute_add_param().
+     * @param param an #EVCardAttributeParam
+     * @param value a string value
      */
     add_param_with_value(param: VCardAttributeParam, value: string): void
     /**
      * Appends `value` to `attr'`s list of values.
+     * @param value a string value
      */
     add_value(value: string): void
     /**
@@ -3169,6 +3356,8 @@ class VCardAttribute {
      * 
      * This should only be used if the #EVCardAttribute has a non-raw encoding (i.e.
      * if it’s encoded in base-64 or quoted-printable encoding).
+     * @param value an encoded value
+     * @param len the length of the encoded value, in bytes
      */
     add_value_decoded(value: string, len: number): void
     /**
@@ -3191,6 +3380,7 @@ class VCardAttribute {
      * Gets the list of values for the paramater `name` from `attr`. The list and its
      * contents are owned by `attr,` and must not be freed. If no parameter with the
      * given `name` exists, %NULL is returned.
+     * @param name a parameter name
      */
     get_param(name: string): string[] | null
     /**
@@ -3262,6 +3452,7 @@ class VCardAttribute {
      * 
      * 
      * Comparisons against `typestr` are case-insensitive.
+     * @param typestr a string representing the type
      */
     has_type(typestr: string): boolean
     /**
@@ -3272,12 +3463,15 @@ class VCardAttribute {
      * Removes and frees parameter `param_name` from the attribute `attr`. Parameter
      * names are guaranteed to be unique, so `attr` is guaranteed to have no
      * parameters named `param_name` after this function returns.
+     * @param param_name a parameter name
      */
     remove_param(param_name: string): void
     /**
      * Removes the value `s` from the parameter `param_name` on the attribute `attr`.
      * If `s` was the only value for parameter `param_name,` that parameter is removed
      * entirely from `attr` and freed.
+     * @param param_name a parameter name
+     * @param s a value
      */
     remove_param_value(param_name: string, s: string): void
     /**
@@ -3288,6 +3482,7 @@ class VCardAttribute {
     remove_params(): void
     /**
      * Removes value `s` from the value list in `attr`. The value `s` is not freed.
+     * @param s a value to remove
      */
     remove_value(s: string): void
     /**
@@ -3304,6 +3499,7 @@ class VCardAttributeParam {
     /* Methods of EBookContacts-1.2.EBookContacts.VCardAttributeParam */
     /**
      * Appends `value` to `param'`s list of values.
+     * @param value a string value to add
      */
     add_value(value: string): void
     /**
@@ -3350,7 +3546,7 @@ class VCardAttributeParam {
 }
 abstract class VCardClass {
     /* Fields of EBookContacts-1.2.EBookContacts.VCardClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class VCardPrivate {

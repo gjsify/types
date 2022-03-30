@@ -20,17 +20,19 @@ interface FeedAtomFormatter_ConstructProps extends FeedFormatter_ConstructProps 
 }
 class FeedAtomFormatter {
     /* Fields of Grss-0.7.Grss.FeedFormatter */
-    readonly parent: GObject.Object
-    readonly priv: FeedFormatterPrivate
+    parent: GObject.Object
+    priv: FeedFormatterPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedFormatter */
     /**
      * Adds a single #GrssFeedItem in the `formatter`.
+     * @param item a #GrssFeedItem to add into the `formatter`.
      */
     addItem(item: FeedItem): void
     /**
      * Adds a list of #GrssFeedItems in the `formatter`.
+     * @param items a list of #GrssFeedItems to add into         the `formatter`.
      */
     addItems(items: FeedItem[]): void
     /**
@@ -56,6 +58,7 @@ class FeedAtomFormatter {
      * Inits the #GrssFeedFormatter with the given `channel`. A #GrssFeedFormatter
      * can format a single #GrssFeedChannel each time, but may be reused by calling
      * grss_feed_formatter_reset()
+     * @param channel the reference #GrssFeedChannel for the `formatter`.
      */
     setChannel(channel: FeedChannel): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -93,6 +96,10 @@ class FeedAtomFormatter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -103,6 +110,12 @@ class FeedAtomFormatter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -126,6 +139,7 @@ class FeedAtomFormatter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -145,11 +159,14 @@ class FeedAtomFormatter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -157,6 +174,8 @@ class FeedAtomFormatter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -174,6 +193,7 @@ class FeedAtomFormatter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -219,6 +239,7 @@ class FeedAtomFormatter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -262,15 +283,20 @@ class FeedAtomFormatter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -311,6 +337,7 @@ class FeedAtomFormatter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -345,6 +372,7 @@ class FeedAtomFormatter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -376,6 +404,7 @@ class FeedAtomFormatter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -400,15 +429,17 @@ interface FeedChannel_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedChannel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedChannel */
     /**
      * To add a contributor to the `channel`.
+     * @param contributor a #GrssPerson.
      */
     addContributor(contributor: Person): void
     /**
      * To add a cookie related to the `channel,` will be involved in HTTP sessions
      * while fetching it. More cookie can be added to every #GrssFeedChannel
+     * @param cookie HTML cookie to add to the #GrssFeedChannel's cookie jar
      */
     addCookie(cookie: Soup.Cookie): void
     /**
@@ -425,15 +456,18 @@ class FeedChannel {
     fetchAll(): FeedItem[]
     /**
      * Similar to grss_feed_channel_fetch_all(), but asyncronous.
+     * @param callback function to invoke at the end of the download.
      */
     fetchAllAsync(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finalizes an asyncronous operation started with
      * grss_feed_channel_fetch_all_async().
+     * @param res the #GAsyncResult passed to the callback.
      */
     fetchAllFinish(res: Gio.AsyncResult): FeedItem[]
     /**
      * Similar to grss_feed_channel_fetch(), but asyncronous.
+     * @param callback function to invoke at the end of the download.
      */
     fetchAsync(callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -444,6 +478,7 @@ class FeedChannel {
     /**
      * Finalizes an asyncronous operation started with
      * grss_feed_channel_fetch_async().
+     * @param res the #GAsyncResult passed to the callback.
      */
     fetchFinish(res: Gio.AsyncResult): boolean
     /**
@@ -507,10 +542,13 @@ class FeedChannel {
     getPublishTime(): number
     /**
      * Retrieves information about the PubSubHubbub hub of the channel.
+     * @param hub location for the hub string, or %NULL.
      */
     getPubsubhub(hub: string): boolean
     /**
      * Retrieves information about the RSSCloud coordinates of the channel.
+     * @param path location for the path string, or %NULL.
+     * @param protocol location for the protocol string, or %NULL.
      */
     getRsscloud(path: string, protocol: string): boolean
     /**
@@ -538,79 +576,99 @@ class FeedChannel {
     getWebmaster(): string
     /**
      * To set the category of the `channel`.
+     * @param category category of the feed.
      */
     setCategory(category: string): void
     /**
      * To set the copyright of the feed.
+     * @param copyright copyright of the channel.
      */
     setCopyright(copyright: string): void
     /**
      * To set the description of `channel`.
+     * @param description description of the feed.
      */
     setDescription(description: string): void
     /**
      * To set the editor of the `channel`.
+     * @param editor a #GrssPerson.
      */
     setEditor(editor: Person): void
     /**
      * To assign a file format to the feed.
+     * @param format format of the file, such as "application/atom+xml" or "application/rss+xml".
      */
     setFormat(format: string): void
     /**
      * To set information about the software generator of `channel`.
+     * @param generator software generator of the feed.
      */
     setGenerator(generator: string): void
     /**
      * Set the GZIP compression for the channel to on or off.
+     * @param value %TRUE to enable GZIP compression when fetching the channel
      */
     setGzipCompression(value: boolean): void
     /**
      * To set the homepage of the site the `channel` belongs.
+     * @param homepage homepage for the main website.
      */
     setHomepage(homepage: string): boolean
     /**
      * To set the URL of the icon rappresenting `channel`.
+     * @param icon URL where to retrieve the favicon.
      */
     setIcon(icon: string): boolean
     /**
      * To set a rappresentative image to `channel`.
+     * @param image URL of the image.
      */
     setImage(image: string): boolean
     /**
      * To set the language of `channel`.
+     * @param language string holding the language of the feed.
      */
     setLanguage(language: string): void
     /**
      * To set the time of publishing for the feed.
+     * @param publish timestamp of publishing.
      */
     setPublishTime(publish: number): void
     /**
      * To set information about PubSubHubbub for the channel. To unset the hub,
      * pass %NULL as parameter.
+     * @param hub hub for the feed, or %NULL.
      */
     setPubsubhub(hub: string): boolean
     /**
      * To set information about RSSCloud notifications for the channel.
+     * @param path complete references of the URL where to register subscription, e.g.        http://example.com/rsscloudNotify .
+     * @param protocol type of protocol used for notifications.
      */
     setRsscloud(path: string, protocol: string): void
     /**
      * To assign the URL where to fetch the feed.
+     * @param source URL of the feed.
      */
     setSource(source: string): boolean
     /**
      * To set a title to the `channel`.
+     * @param title title of the feed.
      */
     setTitle(title: string): void
     /**
      * To set the update interval for `channel`.
+     * @param minutes update interval, in minutes.
      */
     setUpdateInterval(minutes: number): void
     /**
      * To set the latest update time of `channel`.
+     * @param update update time of the feed.
      */
     setUpdateTime(update: number): void
     /**
      * To assign a webmaster to the `channel`.
+     * @param webmaster webmaster of the feed.
      */
     setWebmaster(webmaster: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -648,6 +706,10 @@ class FeedChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -658,6 +720,12 @@ class FeedChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -681,6 +749,7 @@ class FeedChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -700,11 +769,14 @@ class FeedChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -712,6 +784,8 @@ class FeedChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -729,6 +803,7 @@ class FeedChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -774,6 +849,7 @@ class FeedChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -817,15 +893,20 @@ class FeedChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -866,6 +947,7 @@ class FeedChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -900,6 +982,7 @@ class FeedChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -931,6 +1014,7 @@ class FeedChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -959,7 +1043,7 @@ interface FeedEnclosure_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedEnclosure {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedEnclosure */
     /**
      * Utility to fetch a #GrssFeedEnclosure. Contents are stored in a temporary
@@ -969,11 +1053,13 @@ class FeedEnclosure {
     fetch(): Gio.File
     /**
      * Similar to grss_feed_enclosure_fetch(), but asyncronous.
+     * @param callback function to invoke at the end of the download.
      */
     fetchAsync(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finalizes an asyncronous operation started with
      * grss_feed_enclosure_fetch_async().
+     * @param res the #GAsyncResult passed to the callback.
      */
     fetchFinish(res: Gio.AsyncResult): Gio.File
     /**
@@ -990,10 +1076,12 @@ class FeedEnclosure {
     getUrl(): string
     /**
      * To set the type of the external file.
+     * @param type type of content.
      */
     setFormat(type: string): void
     /**
      * To set the size of the embedded `enclosure`.
+     * @param length size of the enclosure, in bytes.
      */
     setLength(length: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1031,6 +1119,10 @@ class FeedEnclosure {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1041,6 +1133,12 @@ class FeedEnclosure {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1064,6 +1162,7 @@ class FeedEnclosure {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1083,11 +1182,14 @@ class FeedEnclosure {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1095,6 +1197,8 @@ class FeedEnclosure {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1112,6 +1216,7 @@ class FeedEnclosure {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1157,6 +1262,7 @@ class FeedEnclosure {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1200,15 +1306,20 @@ class FeedEnclosure {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1249,6 +1360,7 @@ class FeedEnclosure {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1283,6 +1395,7 @@ class FeedEnclosure {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1314,6 +1427,7 @@ class FeedEnclosure {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1338,14 +1452,16 @@ interface FeedFormatter_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedFormatter {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedFormatter */
     /**
      * Adds a single #GrssFeedItem in the `formatter`.
+     * @param item a #GrssFeedItem to add into the `formatter`.
      */
     addItem(item: FeedItem): void
     /**
      * Adds a list of #GrssFeedItems in the `formatter`.
+     * @param items a list of #GrssFeedItems to add into         the `formatter`.
      */
     addItems(items: FeedItem[]): void
     /**
@@ -1371,6 +1487,7 @@ class FeedFormatter {
      * Inits the #GrssFeedFormatter with the given `channel`. A #GrssFeedFormatter
      * can format a single #GrssFeedChannel each time, but may be reused by calling
      * grss_feed_formatter_reset()
+     * @param channel the reference #GrssFeedChannel for the `formatter`.
      */
     setChannel(channel: FeedChannel): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1408,6 +1525,10 @@ class FeedFormatter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1418,6 +1539,12 @@ class FeedFormatter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1441,6 +1568,7 @@ class FeedFormatter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1460,11 +1588,14 @@ class FeedFormatter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1472,6 +1603,8 @@ class FeedFormatter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1489,6 +1622,7 @@ class FeedFormatter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1534,6 +1668,7 @@ class FeedFormatter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1577,15 +1712,20 @@ class FeedFormatter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1626,6 +1766,7 @@ class FeedFormatter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1660,6 +1801,7 @@ class FeedFormatter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1691,6 +1833,7 @@ class FeedFormatter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1713,21 +1856,24 @@ interface FeedItem_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedItem {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedItem */
     /**
      * Adds a category to the `item`. The complete list can be obtained with
      * grss_feed_item_get_categories().
+     * @param category a new category to assign to the item.
      */
     addCategory(category: string): void
     /**
      * To add a contributor to the `item`.
+     * @param contributor a #GrssPerson.
      */
     addContributor(contributor: Person): void
     /**
      * Adds an enclosure to the `item`. That external elements may be references
      * to images, videos, or other contents (usually multimedial) embedded in the
      * element.
+     * @param enclosure a #GrssFeedEnclosure to add to the item.
      */
     addEnclosure(enclosure: FeedEnclosure): void
     /**
@@ -1781,6 +1927,8 @@ class FeedItem {
     getPublishTime(): number
     /**
      * Retrieves references to the real source of `item`.
+     * @param realsource will be assigned to the URL of the real source, or %NULL.
+     * @param title will be assigned to the title of the real source, or %NULL.
      */
     getRealSource(realsource: string, title: string): void
     /**
@@ -1797,18 +1945,22 @@ class FeedItem {
     getTitle(): string
     /**
      * To assign an author to the `item`.
+     * @param author a #GrssPerson.
      */
     setAuthor(author: Person): void
     /**
      * To assign the URL where to fetch comments for the item.
+     * @param url URL where to retrieve comments to the item.
      */
     setCommentsUrl(url: string): boolean
     /**
      * To set a copyright reference to `item`.
+     * @param copyright copyright declaration for the item.
      */
     setCopyright(copyright: string): void
     /**
      * To set the description of `item`. Usually "description" means his content.
+     * @param description content of the item.
      */
     setDescription(description: string): void
     /**
@@ -1816,32 +1968,41 @@ class FeedItem {
      * Passing -1 as `latitude` or `longitude,` the relative value is untouched in
      * the object. This is to easy assignment of coordinates in more than a
      * single step. If both are -1, nothing happens.
+     * @param latitude latitude of the point, or -1 to leave the previous one.
+     * @param longitude longitude of the point, or -1 to leave the previous one.
      */
     setGeoPoint(latitude: number, longitude: number): void
     /**
      * To set the ID of the `item`. This parameter has not a particular format: it
      * is just a string used to identify in unique way the item.
+     * @param id the new ID to set.
      */
     setId(id: string): void
     /**
      * To set the publish time of the item.
+     * @param publish publishing timestamp of the item.
      */
     setPublishTime(publish: number): void
     /**
      * To set an alternative real source for `item`. This parameter is used by web
      * aggregators to explicit the origin of a content reproduced in them.
+     * @param realsource URL of the real source for the item.
+     * @param title title of the real source.
      */
     setRealSource(realsource: string, title: string): boolean
     /**
      * To set reference to a post related to `item`.
+     * @param related reference to a related post.
      */
     setRelated(related: string): void
     /**
      * To set the source of the `item`.
+     * @param source URL of the item.
      */
     setSource(source: string): boolean
     /**
      * To set a title to the `item`.
+     * @param title title of the item.
      */
     setTitle(title: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1879,6 +2040,10 @@ class FeedItem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1889,6 +2054,12 @@ class FeedItem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1912,6 +2083,7 @@ class FeedItem {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1931,11 +2103,14 @@ class FeedItem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1943,6 +2118,8 @@ class FeedItem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1960,6 +2137,7 @@ class FeedItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2005,6 +2183,7 @@ class FeedItem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2048,15 +2227,20 @@ class FeedItem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2097,6 +2281,7 @@ class FeedItem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2131,6 +2316,7 @@ class FeedItem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2162,6 +2348,7 @@ class FeedItem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2186,11 +2373,13 @@ interface FeedParser_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedParser {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedParser */
     /**
      * Parses the given XML `doc,` belonging to the given `feed,` to obtain a list
      * of #GrssFeedItem.
+     * @param feed a #GrssFeedChannel to be parsed.
+     * @param doc XML document extracted from the contents of the feed, which must       already been fetched.
      */
     parse(feed: FeedChannel, doc: libxml2.DocPtr): FeedItem[]
     /**
@@ -2198,6 +2387,8 @@ class FeedParser {
      * 
      * Similar to grss_feed_parser_parse(), but grss_feed_parser_parse_channel()
      * skips parsing of items into the document.
+     * @param feed a #GrssFeedChannel to be parsed.
+     * @param doc XML document extracted from the contents of the feed, which must       already been fetched.
      */
     parseChannel(feed: FeedChannel, doc: libxml2.DocPtr): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2235,6 +2426,10 @@ class FeedParser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2245,6 +2440,12 @@ class FeedParser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2268,6 +2469,7 @@ class FeedParser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2287,11 +2489,14 @@ class FeedParser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2299,6 +2504,8 @@ class FeedParser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2316,6 +2523,7 @@ class FeedParser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2361,6 +2569,7 @@ class FeedParser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2404,15 +2613,20 @@ class FeedParser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2453,6 +2667,7 @@ class FeedParser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2487,6 +2702,7 @@ class FeedParser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2518,6 +2734,7 @@ class FeedParser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2542,17 +2759,19 @@ interface FeedRssFormatter_ConstructProps extends FeedFormatter_ConstructProps {
 }
 class FeedRssFormatter {
     /* Fields of Grss-0.7.Grss.FeedFormatter */
-    readonly parent: GObject.Object
-    readonly priv: FeedFormatterPrivate
+    parent: GObject.Object
+    priv: FeedFormatterPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedFormatter */
     /**
      * Adds a single #GrssFeedItem in the `formatter`.
+     * @param item a #GrssFeedItem to add into the `formatter`.
      */
     addItem(item: FeedItem): void
     /**
      * Adds a list of #GrssFeedItems in the `formatter`.
+     * @param items a list of #GrssFeedItems to add into         the `formatter`.
      */
     addItems(items: FeedItem[]): void
     /**
@@ -2578,6 +2797,7 @@ class FeedRssFormatter {
      * Inits the #GrssFeedFormatter with the given `channel`. A #GrssFeedFormatter
      * can format a single #GrssFeedChannel each time, but may be reused by calling
      * grss_feed_formatter_reset()
+     * @param channel the reference #GrssFeedChannel for the `formatter`.
      */
     setChannel(channel: FeedChannel): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2615,6 +2835,10 @@ class FeedRssFormatter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2625,6 +2849,12 @@ class FeedRssFormatter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2648,6 +2878,7 @@ class FeedRssFormatter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2667,11 +2898,14 @@ class FeedRssFormatter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2679,6 +2913,8 @@ class FeedRssFormatter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2696,6 +2932,7 @@ class FeedRssFormatter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2741,6 +2978,7 @@ class FeedRssFormatter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2784,15 +3022,20 @@ class FeedRssFormatter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2833,6 +3076,7 @@ class FeedRssFormatter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2867,6 +3111,7 @@ class FeedRssFormatter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2898,6 +3143,7 @@ class FeedRssFormatter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2922,11 +3168,14 @@ interface FeedsGroup_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedsGroup {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedsGroup */
     /**
      * Creates a new file with the list of `channels` represented in the required
      * `format`. If the file already exists at the `uri` location, it is overwritten.
+     * @param channels list of #GrssFeedChannels.
+     * @param format string rappresenting the desired export format, as returnes by          grss_feeds_group_get_formats().
+     * @param uri URI of the file to write.
      */
     exportFile(channels: FeedChannel[], format: string, uri: string): boolean
     /**
@@ -2935,6 +3184,7 @@ class FeedsGroup {
     getFormats(): string[]
     /**
      * Parses the given file to obtain list of listed feeds.
+     * @param path path of the file to parse.
      */
     parseFile(path: string): FeedChannel[]
     /* Methods of GObject-2.0.GObject.Object */
@@ -2972,6 +3222,10 @@ class FeedsGroup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2982,6 +3236,12 @@ class FeedsGroup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3005,6 +3265,7 @@ class FeedsGroup {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3024,11 +3285,14 @@ class FeedsGroup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3036,6 +3300,8 @@ class FeedsGroup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3053,6 +3319,7 @@ class FeedsGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3098,6 +3365,7 @@ class FeedsGroup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3141,15 +3409,20 @@ class FeedsGroup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3190,6 +3463,7 @@ class FeedsGroup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3224,6 +3498,7 @@ class FeedsGroup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3255,6 +3530,7 @@ class FeedsGroup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3279,7 +3555,7 @@ interface FeedsPool_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedsPool {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedsPool */
     /**
      * Returns the list of feeds currently managed by the `pool`. Please consider
@@ -3305,11 +3581,13 @@ class FeedsPool {
      * "running").
      * The list in `feeds` can be freed after calling this; linked #GrssFeedChannel
      * are g_object_ref'd here.
+     * @param feeds a list of #GrssFeedChannel.
      */
     listen(feeds: FeedChannel[]): void
     /**
      * Permits to pause or resume the `pool` fetching feeds. If `run` is %TRUE, the
      * `pool` starts immediately.
+     * @param run %TRUE to run the pool, %FALSE to pause it.
      */
     switch(run: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3347,6 +3625,10 @@ class FeedsPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3357,6 +3639,12 @@ class FeedsPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3380,6 +3668,7 @@ class FeedsPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3399,11 +3688,14 @@ class FeedsPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3411,6 +3703,8 @@ class FeedsPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3428,6 +3722,7 @@ class FeedsPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3473,6 +3768,7 @@ class FeedsPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3516,15 +3812,20 @@ class FeedsPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3565,6 +3866,7 @@ class FeedsPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3599,12 +3901,14 @@ class FeedsPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Grss-0.7.Grss.FeedsPool */
     /**
      * Emitted when an error raises in fetching or parsing a #GrssFeedChannel
      * assigned to the `pool`.
+     * @param feed the #GrssFeedChannel which failed to fetch or parse.
      */
     connect(sigName: "feed-fail", callback: ((feed: GObject.Object) => void)): number
     on(sigName: "feed-fail", callback: (feed: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3614,6 +3918,7 @@ class FeedsPool {
     /**
      * Emitted when the `pool` starts fetching a new #GrssFeedChannel. To be
      * used to know the internal status of the component.
+     * @param feed the #GrssFeedChannel which is going to be fetched.
      */
     connect(sigName: "feed-fetching", callback: ((feed: GObject.Object) => void)): number
     on(sigName: "feed-fetching", callback: (feed: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -3626,6 +3931,8 @@ class FeedsPool {
      * regards about previously existing elements. `items` may be NULL, if
      * an error occurred while fetching and/or parsing. List of `items`
      * is freed, and his elements are unref'd, when signal ends.
+     * @param feed the #GrssFeedChannel which has been fetched and parsed.
+     * @param items list of #GrssFeedItem obtained parsing the feed.
      */
     connect(sigName: "feed-ready", callback: ((feed: GObject.Object, items: FeedItem[]) => void)): number
     on(sigName: "feed-ready", callback: (feed: GObject.Object, items: FeedItem[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -3661,6 +3968,7 @@ class FeedsPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3685,16 +3993,19 @@ interface FeedsPublisher_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedsPublisher {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedsPublisher */
     /**
      * Format a #GrssFeedChannel in Atom and returns the resulting string.
+     * @param channel the #GrssFeedChannel to dump in the file.
+     * @param items list of #GrssFeedItems to be added in         the feed.
      */
     formatContent(channel: FeedChannel, items: FeedItem[]): string
     /**
      * To customize the port opened by the local server to deliver feeds and
      * catch incoming subscriptions. By default this is 80. Changing the port
      * while the hub is running imply restart the local server.
+     * @param port new listening port for the server.
      */
     hubSetPort(port: number): void
     /**
@@ -3704,10 +4015,12 @@ class FeedsPublisher {
      * PubSubHubbub registration requests from remote subscribers.
      * Pay attention to the fact subscriptions requests for different topic are
      * now rejected.
+     * @param topics a list of #GrssFeedChannels.
      */
     hubSetTopics(topics: FeedChannel[]): void
     /**
      * Permits to start and stop the webserver implemented by this object.
+     * @param run %TRUE to run the local server, %FALSE to stop it.
      */
     hubSwitch(run: boolean): void
     /**
@@ -3715,12 +4028,18 @@ class FeedsPublisher {
      * PubSubHubbub hub has been activated (with grss_feeds_publisher_hub_switch())
      * notifies remote subscribers about the new items which has been added since
      * previous invocation of this function for the same #GrssFeedChannel.
+     * @param channel the #GrssFeedChannel to dump in the file.
+     * @param items list of #GrssFeedItems to be added in         the feed.
+     * @param uri URI of the file to write. The full path must exists.
      */
     publishFile(channel: FeedChannel, items: FeedItem[], uri: string): boolean
     /**
      * If the local web server has been executed (with
      * grss_feeds_publisher_hub_switch()) this function exposes the given `channel`
      * as an Atom formatted file avalable to http://[LOCAL_IP:DEFINED_PORT]/`id` .
+     * @param channel the #GrssFeedChannel to dump in the file.
+     * @param items list of #GrssFeedItems to be added in         the feed.
+     * @param id name used in the external URL of the feed.
      */
     publishWeb(channel: FeedChannel, items: FeedItem[], id: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3758,6 +4077,10 @@ class FeedsPublisher {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3768,6 +4091,12 @@ class FeedsPublisher {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3791,6 +4120,7 @@ class FeedsPublisher {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3810,11 +4140,14 @@ class FeedsPublisher {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3822,6 +4155,8 @@ class FeedsPublisher {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3839,6 +4174,7 @@ class FeedsPublisher {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3884,6 +4220,7 @@ class FeedsPublisher {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3927,15 +4264,20 @@ class FeedsPublisher {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3976,6 +4318,7 @@ class FeedsPublisher {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4010,6 +4353,7 @@ class FeedsPublisher {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Grss-0.7.Grss.FeedsPublisher */
@@ -4052,6 +4396,7 @@ class FeedsPublisher {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4076,11 +4421,13 @@ interface FeedsStore_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedsStore {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedsStore */
     /**
      * To save a new #GrssFeedItem into the `store`. It performs a check to grant
      * `item` is not already saved.
+     * @param channel parent feed for the new item.
+     * @param item new item to permanently save.
      */
     addItemInChannel(channel: FeedChannel, item: FeedItem): void
     /**
@@ -4090,16 +4437,20 @@ class FeedsStore {
     /**
      * To retrieve list of items saved into the store, assigned to the given
      * `channel`.
+     * @param channel parent feed containing required items.
      */
     getItemsByChannel(channel: FeedChannel): FeedItem[]
     /**
      * To retrieve an item into a feed, given his unique ID.
+     * @param channel parent feed containing required item.
+     * @param id unique ID to look for.
      */
     hasItem(channel: FeedChannel, id: string): boolean
     /**
      * This is to permit the `store` to auto-update itself: it creates an internal
      * #GrssFeedsPool and listens for his signals, so to implement the whole loop
      * fetch-parse-save trasparently.
+     * @param run %TRUE to run the `store,` %FALSE to stop.
      */
     switch(run: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4137,6 +4488,10 @@ class FeedsStore {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4147,6 +4502,12 @@ class FeedsStore {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4170,6 +4531,7 @@ class FeedsStore {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4189,11 +4551,14 @@ class FeedsStore {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4201,6 +4566,8 @@ class FeedsStore {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4218,6 +4585,7 @@ class FeedsStore {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4263,6 +4631,7 @@ class FeedsStore {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4306,15 +4675,20 @@ class FeedsStore {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4355,6 +4729,7 @@ class FeedsStore {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4389,6 +4764,7 @@ class FeedsStore {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4420,6 +4796,7 @@ class FeedsStore {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4442,7 +4819,7 @@ interface FeedsSubscriber_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FeedsSubscriber {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grss-0.7.Grss.FeedsSubscriber */
     /**
      * This function returns the Internet address where `sub` is listening for
@@ -4471,6 +4848,7 @@ class FeedsSubscriber {
      * must be call to run the subscription.
      * The list in `feeds` can be freed after calling this; linked #GrssFeedChannel
      * are g_object_ref'd here.
+     * @param feeds a list of #GrssFeedChannel.
      */
     listen(feeds: FeedChannel[]): boolean
     /**
@@ -4479,10 +4857,12 @@ class FeedsSubscriber {
      * subscriber is running imply restart the local server.
      * Pay attention to the fact many publishers' implementations accept only
      * certain ports.
+     * @param port new listening port for the server.
      */
     setPort(port: number): void
     /**
      * Permits to pause or resume `sub` listening for events.
+     * @param run %TRUE to run the subscriber, %FALSE to pause it.
      */
     switch(run: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4520,6 +4900,10 @@ class FeedsSubscriber {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4530,6 +4914,12 @@ class FeedsSubscriber {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4553,6 +4943,7 @@ class FeedsSubscriber {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4572,11 +4963,14 @@ class FeedsSubscriber {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4584,6 +4978,8 @@ class FeedsSubscriber {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4601,6 +4997,7 @@ class FeedsSubscriber {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4646,6 +5043,7 @@ class FeedsSubscriber {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4689,15 +5087,20 @@ class FeedsSubscriber {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4738,6 +5141,7 @@ class FeedsSubscriber {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4772,6 +5176,7 @@ class FeedsSubscriber {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Grss-0.7.Grss.FeedsSubscriber */
@@ -4779,6 +5184,8 @@ class FeedsSubscriber {
      * Emitted when a notification has been received and parsed. The
      * `item` is cached and unref'd when the #GrssFeedsSubscriber is
      * destroyed or a new set of feeds is provided.
+     * @param feed the #GrssFeedChannel which has been updated.
+     * @param item the #GrssFeedItem received.
      */
     connect(sigName: "notification-received", callback: ((feed: GObject.Object, item: GObject.Object) => void)): number
     on(sigName: "notification-received", callback: (feed: GObject.Object, item: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -4814,6 +5221,7 @@ class FeedsSubscriber {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4836,7 +5244,7 @@ class FeedsSubscriber {
 }
 abstract class FeedAtomFormatterClass {
     /* Fields of Grss-0.7.Grss.FeedAtomFormatterClass */
-    readonly parent: FeedFormatterClass
+    parent: FeedFormatterClass
     static name: string
 }
 class FeedAtomFormatterPrivate {
@@ -4844,7 +5252,7 @@ class FeedAtomFormatterPrivate {
 }
 abstract class FeedChannelClass {
     /* Fields of Grss-0.7.Grss.FeedChannelClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class FeedChannelPrivate {
@@ -4852,7 +5260,7 @@ class FeedChannelPrivate {
 }
 abstract class FeedEnclosureClass {
     /* Fields of Grss-0.7.Grss.FeedEnclosureClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class FeedEnclosurePrivate {
@@ -4860,8 +5268,8 @@ class FeedEnclosurePrivate {
 }
 abstract class FeedFormatterClass {
     /* Fields of Grss-0.7.Grss.FeedFormatterClass */
-    readonly parent: GObject.ObjectClass
-    readonly format: (formatter: FeedFormatter) => string
+    parent: GObject.ObjectClass
+    format: (formatter: FeedFormatter) => string
     static name: string
 }
 class FeedFormatterPrivate {
@@ -4869,7 +5277,7 @@ class FeedFormatterPrivate {
 }
 abstract class FeedItemClass {
     /* Fields of Grss-0.7.Grss.FeedItemClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class FeedItemPrivate {
@@ -4877,7 +5285,7 @@ class FeedItemPrivate {
 }
 abstract class FeedParserClass {
     /* Fields of Grss-0.7.Grss.FeedParserClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class FeedParserPrivate {
@@ -4885,7 +5293,7 @@ class FeedParserPrivate {
 }
 abstract class FeedRssFormatterClass {
     /* Fields of Grss-0.7.Grss.FeedRssFormatterClass */
-    readonly parent: FeedFormatterClass
+    parent: FeedFormatterClass
     static name: string
 }
 class FeedRssFormatterPrivate {
@@ -4893,7 +5301,7 @@ class FeedRssFormatterPrivate {
 }
 abstract class FeedsGroupClass {
     /* Fields of Grss-0.7.Grss.FeedsGroupClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class FeedsGroupPrivate {
@@ -4901,8 +5309,8 @@ class FeedsGroupPrivate {
 }
 abstract class FeedsPoolClass {
     /* Fields of Grss-0.7.Grss.FeedsPoolClass */
-    readonly parent: GObject.ObjectClass
-    readonly feedFetching: (pool: FeedsPool, feed: FeedChannel) => void
+    parent: GObject.ObjectClass
+    feedFetching: (pool: FeedsPool, feed: FeedChannel) => void
     static name: string
 }
 class FeedsPoolPrivate {
@@ -4910,9 +5318,9 @@ class FeedsPoolPrivate {
 }
 abstract class FeedsPublisherClass {
     /* Fields of Grss-0.7.Grss.FeedsPublisherClass */
-    readonly parent: GObject.ObjectClass
-    readonly newSubscription: (pub: FeedsPublisher, topic: FeedChannel, callback: string) => void
-    readonly deleteSubscription: (pub: FeedsPublisher, topic: FeedChannel, callback: string) => void
+    parent: GObject.ObjectClass
+    newSubscription: (pub: FeedsPublisher, topic: FeedChannel, callback: string) => void
+    deleteSubscription: (pub: FeedsPublisher, topic: FeedChannel, callback: string) => void
     static name: string
 }
 class FeedsPublisherPrivate {
@@ -4920,11 +5328,11 @@ class FeedsPublisherPrivate {
 }
 abstract class FeedsStoreClass {
     /* Fields of Grss-0.7.Grss.FeedsStoreClass */
-    readonly parent: GObject.ObjectClass
-    readonly getChannels: (store: FeedsStore) => FeedChannel[]
-    readonly getItemsByChannel: (store: FeedsStore, channel: FeedChannel) => FeedItem[]
-    readonly hasItem: (store: FeedsStore, channel: FeedChannel, id: string) => boolean
-    readonly addItemInChannel: (store: FeedsStore, channel: FeedChannel, item: FeedItem) => void
+    parent: GObject.ObjectClass
+    getChannels: (store: FeedsStore) => FeedChannel[]
+    getItemsByChannel: (store: FeedsStore, channel: FeedChannel) => FeedItem[]
+    hasItem: (store: FeedsStore, channel: FeedChannel, id: string) => boolean
+    addItemInChannel: (store: FeedsStore, channel: FeedChannel, item: FeedItem) => void
     static name: string
 }
 class FeedsStorePrivate {
@@ -4932,8 +5340,8 @@ class FeedsStorePrivate {
 }
 abstract class FeedsSubscriberClass {
     /* Fields of Grss-0.7.Grss.FeedsSubscriberClass */
-    readonly parent: GObject.ObjectClass
-    readonly notificationReceived: (sub: FeedsSubscriber, feed: FeedChannel, item: FeedItem) => void
+    parent: GObject.ObjectClass
+    notificationReceived: (sub: FeedsSubscriber, feed: FeedChannel, item: FeedItem) => void
     static name: string
 }
 class FeedsSubscriberPrivate {

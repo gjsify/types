@@ -75,12 +75,15 @@ class Notification {
     id: number
     summary: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Notify-0.7.Notify.Notification */
     /**
      * Adds an action to a notification. When the action is invoked, the
      * specified callback function will be called, along with the value passed
      * to `user_data`.
+     * @param action The action ID.
+     * @param label The human-readable action label.
+     * @param callback The action's callback function.
      */
     addAction(action: string, label: string, callback: ActionCallback): void
     /**
@@ -105,11 +108,13 @@ class Notification {
      * not called or if `app_name` is %NULL, the application name will be
      * set from the value used in notify_init() or overridden with
      * notify_set_app_name().
+     * @param appName the localised application name
      */
     setAppName(appName: string): void
     /**
      * Sets the category of this notification. This can be used by the
      * notification server to filter or display the data in a certain way.
+     * @param category The category.
      */
     setCategory(category: string): void
     /**
@@ -117,39 +122,55 @@ class Notification {
      * a previously set hint for `key` is unset.
      * 
      * If `value` is floating, it is consumed.
+     * @param key the hint key
+     * @param value the hint value, or %NULL to unset the hint
      */
     setHint(key: string, value?: GLib.Variant | null): void
     /**
      * Sets a hint with a byte value.
+     * @param key The hint.
+     * @param value The hint's value.
      */
     setHintByte(key: string, value: number): void
     /**
      * Sets a hint with a byte array value. The length of `value` must be passed
      * as `len`.
+     * @param key The hint.
+     * @param value The hint's value.
      */
     setHintByteArray(key: string, value: Uint8Array): void
     /**
      * Sets a hint with a double value.
+     * @param key The hint.
+     * @param value The hint's value.
      */
     setHintDouble(key: string, value: number): void
     /**
      * Sets a hint with a 32-bit integer value.
+     * @param key The hint.
+     * @param value The hint's value.
      */
     setHintInt32(key: string, value: number): void
     /**
      * Sets a hint with a string value.
+     * @param key The hint.
+     * @param value The hint's value.
      */
     setHintString(key: string, value: string): void
     /**
      * Sets a hint with an unsigned 32-bit integer value.
+     * @param key The hint.
+     * @param value The hint's value.
      */
     setHintUint32(key: string, value: number): void
     /**
      * Sets the icon in the notification from a #GdkPixbuf.
+     * @param icon The icon.
      */
     setIconFromPixbuf(icon: GdkPixbuf.Pixbuf): void
     /**
      * Sets the image in the notification from a #GdkPixbuf.
+     * @param pixbuf The image.
      */
     setImageFromPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
@@ -158,12 +179,14 @@ class Notification {
      * expire, pass %NOTIFY_EXPIRES_NEVER.
      * 
      * Note that the timeout may be ignored by the server.
+     * @param timeout The timeout in milliseconds.
      */
     setTimeout(timeout: number): void
     /**
      * Sets the urgency level of this notification.
      * 
      * See: #NotifyUrgency
+     * @param urgency The urgency level.
      */
     setUrgency(urgency: Urgency): void
     /**
@@ -174,6 +197,9 @@ class Notification {
      * Updates the notification text and icon. This won't send the update out
      * and display it on the screen. For that, you will need to call
      * notify_notification_show().
+     * @param summary The new required summary text.
+     * @param body The optional body text.
+     * @param icon The optional icon theme icon name or filename.
      */
     update(summary: string, body?: string | null, icon?: string | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -211,6 +237,10 @@ class Notification {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -221,6 +251,12 @@ class Notification {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -244,6 +280,7 @@ class Notification {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -263,11 +300,14 @@ class Notification {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -275,6 +315,8 @@ class Notification {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -292,6 +334,7 @@ class Notification {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -337,6 +380,7 @@ class Notification {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -380,15 +424,20 @@ class Notification {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -429,6 +478,7 @@ class Notification {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -463,6 +513,7 @@ class Notification {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Notify-0.7.Notify.Notification */
@@ -503,6 +554,7 @@ class Notification {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -555,8 +607,8 @@ class Notification {
 }
 abstract class NotificationClass {
     /* Fields of Notify-0.7.Notify.NotificationClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly closed: (notification: Notification) => void
+    parentClass: GObject.ObjectClass
+    closed: (notification: Notification) => void
     static name: string
 }
 class NotificationPrivate {

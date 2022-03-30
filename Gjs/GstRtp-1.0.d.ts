@@ -667,115 +667,115 @@ class RTPBaseAudioPayload {
     readonly timestamp: number
     timestamp_offset: number
     /* Fields of GstRtp-1.0.GstRtp.RTPBasePayload */
-    readonly element: Gst.Element
+    element: Gst.Element
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstRtp-1.0.GstRtp.RTPBaseAudioPayload */
     /**
      * Create an RTP buffer and store `payload_len` bytes of the adapter as the
@@ -784,6 +784,8 @@ class RTPBaseAudioPayload {
      * 
      * If `payload_len` is -1, all pending bytes will be flushed. If `timestamp` is
      * -1, the timestamp will be calculated automatically.
+     * @param payload_len length of payload
+     * @param timestamp a #GstClockTime
      */
     flush(payload_len: number, timestamp: Gst.ClockTime): Gst.FlowReturn
     /**
@@ -794,6 +796,8 @@ class RTPBaseAudioPayload {
      * Create an RTP buffer and store `payload_len` bytes of `data` as the
      * payload. Set the timestamp on the new buffer to `timestamp` before pushing
      * the buffer downstream.
+     * @param data data to set as payload
+     * @param timestamp a #GstClockTime
      */
     push(data: Uint8Array, timestamp: Gst.ClockTime): Gst.FlowReturn
     /**
@@ -803,6 +807,8 @@ class RTPBaseAudioPayload {
     set_frame_based(): void
     /**
      * Sets the options for frame based audio codecs.
+     * @param frame_duration The duraction of an audio frame in milliseconds.
+     * @param frame_size The size of an audio frame in bytes.
      */
     set_frame_options(frame_duration: number, frame_size: number): void
     /**
@@ -812,10 +818,12 @@ class RTPBaseAudioPayload {
     set_sample_based(): void
     /**
      * Sets the options for sample based audio codecs.
+     * @param sample_size Size per sample in bytes.
      */
     set_sample_options(sample_size: number): void
     /**
      * Sets the options for sample based audio codecs.
+     * @param sample_size Size per sample in bits.
      */
     set_samplebits_options(sample_size: number): void
     /* Methods of GstRtp-1.0.GstRtp.RTPBasePayload */
@@ -824,17 +832,23 @@ class RTPBaseAudioPayload {
      * minimum `csrc_count` CSRCs, a payload length of `payload_len` and padding of
      * `pad_len`. If `payload` has #GstRTPBasePayload:source-info %TRUE additional
      * CSRCs may be allocated and filled with RTP source information.
+     * @param payload_len the length of the payload
+     * @param pad_len the amount of padding
+     * @param csrc_count the minimum number of CSRC entries
      */
     allocate_output_buffer(payload_len: number, pad_len: number, csrc_count: number): Gst.Buffer
     /**
      * Count the total number of RTP sources found in the meta of `buffer,` which
      * will be automically added by gst_rtp_base_payload_allocate_output_buffer().
      * If #GstRTPBasePayload:source-info is %FALSE the count will be 0.
+     * @param buffer a #GstBuffer, typically the buffer to payload
      */
     get_source_count(buffer: Gst.Buffer): number
     /**
      * Check if the packet with `size` and `duration` would exceed the configured
      * maximum size.
+     * @param size the size of the packet
+     * @param duration the duration of the packet
      */
     is_filled(size: number, duration: Gst.ClockTime): boolean
     /**
@@ -847,6 +861,7 @@ class RTPBaseAudioPayload {
      * seqnum and timestamp of the RTP buffer will be updated first.
      * 
      * This function takes ownership of `buffer`.
+     * @param buffer a #GstBuffer
      */
     push(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -854,21 +869,28 @@ class RTPBaseAudioPayload {
      * seqnum and timestamp of the RTP buffer will be updated first.
      * 
      * This function takes ownership of `list`.
+     * @param list a #GstBufferList
      */
     push_list(list: Gst.BufferList): Gst.FlowReturn
     /**
      * Set the rtp options of the payloader. These options will be set in the caps
      * of the payloader. Subclasses must call this method before calling
      * gst_rtp_base_payload_push() or gst_rtp_base_payload_set_outcaps().
+     * @param media the media type (typically "audio" or "video")
+     * @param dynamic if the payload type is dynamic
+     * @param encoding_name the encoding name
+     * @param clock_rate the clock rate of the media
      */
     set_options(media: string, dynamic: boolean, encoding_name: string, clock_rate: number): void
     /**
      * Configure the output caps with the optional fields.
+     * @param s a #GstStructure with the caps fields
      */
     set_outcaps_structure(s?: Gst.Structure | null): boolean
     /**
      * Enable or disable adding contributing sources to RTP packets from
      * #GstRTPSourceMeta.
+     * @param enable whether to add contributing sources to RTP packets
      */
     set_source_info_enabled(enable: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -892,6 +914,7 @@ class RTPBaseAudioPayload {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -907,6 +930,7 @@ class RTPBaseAudioPayload {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -914,6 +938,7 @@ class RTPBaseAudioPayload {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -930,6 +955,7 @@ class RTPBaseAudioPayload {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -945,6 +971,7 @@ class RTPBaseAudioPayload {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -954,6 +981,7 @@ class RTPBaseAudioPayload {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -963,6 +991,7 @@ class RTPBaseAudioPayload {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -993,21 +1022,26 @@ class RTPBaseAudioPayload {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -1033,10 +1067,12 @@ class RTPBaseAudioPayload {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -1048,6 +1084,7 @@ class RTPBaseAudioPayload {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -1081,11 +1118,13 @@ class RTPBaseAudioPayload {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -1130,6 +1169,7 @@ class RTPBaseAudioPayload {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -1141,6 +1181,8 @@ class RTPBaseAudioPayload {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -1148,6 +1190,9 @@ class RTPBaseAudioPayload {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -1155,6 +1200,10 @@ class RTPBaseAudioPayload {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -1168,6 +1217,10 @@ class RTPBaseAudioPayload {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -1196,6 +1249,14 @@ class RTPBaseAudioPayload {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -1203,6 +1264,15 @@ class RTPBaseAudioPayload {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -1221,6 +1291,7 @@ class RTPBaseAudioPayload {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -1237,10 +1308,14 @@ class RTPBaseAudioPayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -1252,6 +1327,7 @@ class RTPBaseAudioPayload {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -1264,6 +1340,7 @@ class RTPBaseAudioPayload {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -1275,6 +1352,7 @@ class RTPBaseAudioPayload {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -1294,6 +1372,7 @@ class RTPBaseAudioPayload {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -1303,6 +1382,9 @@ class RTPBaseAudioPayload {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -1318,6 +1400,7 @@ class RTPBaseAudioPayload {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -1326,6 +1409,13 @@ class RTPBaseAudioPayload {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -1343,6 +1433,9 @@ class RTPBaseAudioPayload {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -1354,12 +1447,14 @@ class RTPBaseAudioPayload {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -1367,18 +1462,21 @@ class RTPBaseAudioPayload {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -1390,6 +1488,7 @@ class RTPBaseAudioPayload {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -1405,6 +1504,7 @@ class RTPBaseAudioPayload {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -1421,6 +1521,7 @@ class RTPBaseAudioPayload {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -1434,12 +1535,16 @@ class RTPBaseAudioPayload {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -1449,6 +1554,7 @@ class RTPBaseAudioPayload {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -1456,11 +1562,14 @@ class RTPBaseAudioPayload {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -1483,6 +1592,10 @@ class RTPBaseAudioPayload {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1508,6 +1621,8 @@ class RTPBaseAudioPayload {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1517,16 +1632,19 @@ class RTPBaseAudioPayload {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -1542,17 +1660,21 @@ class RTPBaseAudioPayload {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -1563,6 +1685,7 @@ class RTPBaseAudioPayload {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -1570,11 +1693,13 @@ class RTPBaseAudioPayload {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -1588,6 +1713,7 @@ class RTPBaseAudioPayload {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -1641,6 +1767,10 @@ class RTPBaseAudioPayload {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1651,6 +1781,12 @@ class RTPBaseAudioPayload {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1674,6 +1810,7 @@ class RTPBaseAudioPayload {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1693,11 +1830,14 @@ class RTPBaseAudioPayload {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1705,6 +1845,8 @@ class RTPBaseAudioPayload {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1722,6 +1864,7 @@ class RTPBaseAudioPayload {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1767,6 +1910,7 @@ class RTPBaseAudioPayload {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1810,15 +1954,20 @@ class RTPBaseAudioPayload {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1859,6 +2008,7 @@ class RTPBaseAudioPayload {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1883,6 +2033,7 @@ class RTPBaseAudioPayload {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstRtp-1.0.GstRtp.RTPBaseAudioPayload */
@@ -1896,6 +2047,7 @@ class RTPBaseAudioPayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstRtp-1.0.GstRtp.RTPBasePayload */
@@ -1911,6 +2063,7 @@ class RTPBaseAudioPayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_set_caps(caps: Gst.Caps): boolean
@@ -1922,6 +2075,7 @@ class RTPBaseAudioPayload {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -1945,6 +2099,7 @@ class RTPBaseAudioPayload {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -1965,6 +2120,7 @@ class RTPBaseAudioPayload {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -1981,6 +2137,7 @@ class RTPBaseAudioPayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -1990,6 +2147,9 @@ class RTPBaseAudioPayload {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -2001,6 +2161,7 @@ class RTPBaseAudioPayload {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -2008,18 +2169,21 @@ class RTPBaseAudioPayload {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -2036,6 +2200,7 @@ class RTPBaseAudioPayload {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -2058,6 +2223,7 @@ class RTPBaseAudioPayload {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2065,6 +2231,7 @@ class RTPBaseAudioPayload {
     /**
      * Add `ext` as an extension for writing part of an RTP header extension onto
      * outgoing RTP packets.
+     * @param ext the #GstRTPHeaderExtension
      */
     connect(sigName: "add-extension", callback: (($obj: RTPBaseAudioPayload, ext: RTPHeaderExtension) => void)): number
     connect_after(sigName: "add-extension", callback: (($obj: RTPBaseAudioPayload, ext: RTPHeaderExtension) => void)): number
@@ -2078,6 +2245,8 @@ class RTPBaseAudioPayload {
     /**
      * The returned `ext` must be configured with the correct `ext_id` and with the
      * necessary attributes as required by the extension implementation.
+     * @param ext_id the extension id being requested
+     * @param ext_uri the extension URI being requested
      */
     connect(sigName: "request-extension", callback: (($obj: RTPBaseAudioPayload, ext_id: number, ext_uri: string) => RTPHeaderExtension)): number
     connect_after(sigName: "request-extension", callback: (($obj: RTPBaseAudioPayload, ext_id: number, ext_uri: string) => RTPHeaderExtension)): number
@@ -2097,12 +2266,14 @@ class RTPBaseAudioPayload {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: RTPBaseAudioPayload, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: RTPBaseAudioPayload, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: RTPBaseAudioPayload, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: RTPBaseAudioPayload, old_pad: Gst.Pad) => void)): number
@@ -2112,6 +2283,8 @@ class RTPBaseAudioPayload {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: RTPBaseAudioPayload, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: RTPBaseAudioPayload, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -2145,6 +2318,7 @@ class RTPBaseAudioPayload {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RTPBaseAudioPayload, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RTPBaseAudioPayload, pspec: GObject.ParamSpec) => void)): number
@@ -2253,113 +2427,113 @@ class RTPBaseDepayload {
      */
     readonly stats: Gst.Structure
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstRtp-1.0.GstRtp.RTPBaseDepayload */
     /**
      * Queries whether #GstRTPSourceMeta will be added to depayloaded buffers.
@@ -2371,15 +2545,18 @@ class RTPBaseDepayload {
      * 
      * This function will by default apply the last incoming timestamp on
      * the outgoing buffer when it didn't have a timestamp already.
+     * @param out_buf a #GstBuffer
      */
     push(out_buf: Gst.Buffer): Gst.FlowReturn
     /**
      * Push `out_list` to the peer of `filter`. This function takes ownership of
      * `out_list`.
+     * @param out_list a #GstBufferList
      */
     push_list(out_list: Gst.BufferList): Gst.FlowReturn
     /**
      * Enable or disable adding #GstRTPSourceMeta to depayloaded buffers.
+     * @param enable whether to add meta about RTP sources to buffer
      */
     set_source_info_enabled(enable: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -2403,6 +2580,7 @@ class RTPBaseDepayload {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -2418,6 +2596,7 @@ class RTPBaseDepayload {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -2425,6 +2604,7 @@ class RTPBaseDepayload {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -2441,6 +2621,7 @@ class RTPBaseDepayload {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -2456,6 +2637,7 @@ class RTPBaseDepayload {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2465,6 +2647,7 @@ class RTPBaseDepayload {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2474,6 +2657,7 @@ class RTPBaseDepayload {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2504,21 +2688,26 @@ class RTPBaseDepayload {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -2544,10 +2733,12 @@ class RTPBaseDepayload {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -2559,6 +2750,7 @@ class RTPBaseDepayload {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -2592,11 +2784,13 @@ class RTPBaseDepayload {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -2641,6 +2835,7 @@ class RTPBaseDepayload {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -2652,6 +2847,8 @@ class RTPBaseDepayload {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -2659,6 +2856,9 @@ class RTPBaseDepayload {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -2666,6 +2866,10 @@ class RTPBaseDepayload {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -2679,6 +2883,10 @@ class RTPBaseDepayload {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -2707,6 +2915,14 @@ class RTPBaseDepayload {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -2714,6 +2930,15 @@ class RTPBaseDepayload {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -2732,6 +2957,7 @@ class RTPBaseDepayload {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -2748,10 +2974,14 @@ class RTPBaseDepayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -2763,6 +2993,7 @@ class RTPBaseDepayload {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -2775,6 +3006,7 @@ class RTPBaseDepayload {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -2786,6 +3018,7 @@ class RTPBaseDepayload {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -2805,6 +3038,7 @@ class RTPBaseDepayload {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -2814,6 +3048,9 @@ class RTPBaseDepayload {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -2829,6 +3066,7 @@ class RTPBaseDepayload {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -2837,6 +3075,13 @@ class RTPBaseDepayload {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -2854,6 +3099,9 @@ class RTPBaseDepayload {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -2865,12 +3113,14 @@ class RTPBaseDepayload {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -2878,18 +3128,21 @@ class RTPBaseDepayload {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -2901,6 +3154,7 @@ class RTPBaseDepayload {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -2916,6 +3170,7 @@ class RTPBaseDepayload {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -2932,6 +3187,7 @@ class RTPBaseDepayload {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -2945,12 +3201,16 @@ class RTPBaseDepayload {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -2960,6 +3220,7 @@ class RTPBaseDepayload {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -2967,11 +3228,14 @@ class RTPBaseDepayload {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -2994,6 +3258,10 @@ class RTPBaseDepayload {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3019,6 +3287,8 @@ class RTPBaseDepayload {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -3028,16 +3298,19 @@ class RTPBaseDepayload {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -3053,17 +3326,21 @@ class RTPBaseDepayload {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -3074,6 +3351,7 @@ class RTPBaseDepayload {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -3081,11 +3359,13 @@ class RTPBaseDepayload {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -3099,6 +3379,7 @@ class RTPBaseDepayload {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -3152,6 +3433,10 @@ class RTPBaseDepayload {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3162,6 +3447,12 @@ class RTPBaseDepayload {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3185,6 +3476,7 @@ class RTPBaseDepayload {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3204,11 +3496,14 @@ class RTPBaseDepayload {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3216,6 +3511,8 @@ class RTPBaseDepayload {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3233,6 +3530,7 @@ class RTPBaseDepayload {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3278,6 +3576,7 @@ class RTPBaseDepayload {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3321,15 +3620,20 @@ class RTPBaseDepayload {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3370,6 +3674,7 @@ class RTPBaseDepayload {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3394,6 +3699,7 @@ class RTPBaseDepayload {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstRtp-1.0.GstRtp.RTPBaseDepayload */
@@ -3408,6 +3714,7 @@ class RTPBaseDepayload {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -3431,6 +3738,7 @@ class RTPBaseDepayload {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -3451,6 +3759,7 @@ class RTPBaseDepayload {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -3467,6 +3776,7 @@ class RTPBaseDepayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -3476,6 +3786,9 @@ class RTPBaseDepayload {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -3487,6 +3800,7 @@ class RTPBaseDepayload {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -3494,18 +3808,21 @@ class RTPBaseDepayload {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -3522,6 +3839,7 @@ class RTPBaseDepayload {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -3544,6 +3862,7 @@ class RTPBaseDepayload {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3551,6 +3870,7 @@ class RTPBaseDepayload {
     /**
      * Add `ext` as an extension for reading part of an RTP header extension from
      * incoming RTP packets.
+     * @param ext the #GstRTPHeaderExtension
      */
     connect(sigName: "add-extension", callback: (($obj: RTPBaseDepayload, ext: RTPHeaderExtension) => void)): number
     connect_after(sigName: "add-extension", callback: (($obj: RTPBaseDepayload, ext: RTPHeaderExtension) => void)): number
@@ -3564,6 +3884,8 @@ class RTPBaseDepayload {
     /**
      * The returned `ext` must be configured with the correct `ext_id` and with the
      * necessary attributes as required by the extension implementation.
+     * @param ext_id the extension id being requested
+     * @param ext_uri the extension URI being requested
      */
     connect(sigName: "request-extension", callback: (($obj: RTPBaseDepayload, ext_id: number, ext_uri?: string | null) => RTPHeaderExtension)): number
     connect_after(sigName: "request-extension", callback: (($obj: RTPBaseDepayload, ext_id: number, ext_uri?: string | null) => RTPHeaderExtension)): number
@@ -3583,12 +3905,14 @@ class RTPBaseDepayload {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: RTPBaseDepayload, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: RTPBaseDepayload, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: RTPBaseDepayload, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: RTPBaseDepayload, old_pad: Gst.Pad) => void)): number
@@ -3598,6 +3922,8 @@ class RTPBaseDepayload {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: RTPBaseDepayload, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: RTPBaseDepayload, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -3631,6 +3957,7 @@ class RTPBaseDepayload {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RTPBaseDepayload, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RTPBaseDepayload, pspec: GObject.ParamSpec) => void)): number
@@ -3797,130 +4124,136 @@ class RTPBasePayload {
     readonly timestamp: number
     timestamp_offset: number
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstRtp-1.0.GstRtp.RTPBasePayload */
     /**
      * Allocate a new #GstBuffer with enough data to hold an RTP packet with
      * minimum `csrc_count` CSRCs, a payload length of `payload_len` and padding of
      * `pad_len`. If `payload` has #GstRTPBasePayload:source-info %TRUE additional
      * CSRCs may be allocated and filled with RTP source information.
+     * @param payload_len the length of the payload
+     * @param pad_len the amount of padding
+     * @param csrc_count the minimum number of CSRC entries
      */
     allocate_output_buffer(payload_len: number, pad_len: number, csrc_count: number): Gst.Buffer
     /**
      * Count the total number of RTP sources found in the meta of `buffer,` which
      * will be automically added by gst_rtp_base_payload_allocate_output_buffer().
      * If #GstRTPBasePayload:source-info is %FALSE the count will be 0.
+     * @param buffer a #GstBuffer, typically the buffer to payload
      */
     get_source_count(buffer: Gst.Buffer): number
     /**
      * Check if the packet with `size` and `duration` would exceed the configured
      * maximum size.
+     * @param size the size of the packet
+     * @param duration the duration of the packet
      */
     is_filled(size: number, duration: Gst.ClockTime): boolean
     /**
@@ -3933,6 +4266,7 @@ class RTPBasePayload {
      * seqnum and timestamp of the RTP buffer will be updated first.
      * 
      * This function takes ownership of `buffer`.
+     * @param buffer a #GstBuffer
      */
     push(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -3940,21 +4274,28 @@ class RTPBasePayload {
      * seqnum and timestamp of the RTP buffer will be updated first.
      * 
      * This function takes ownership of `list`.
+     * @param list a #GstBufferList
      */
     push_list(list: Gst.BufferList): Gst.FlowReturn
     /**
      * Set the rtp options of the payloader. These options will be set in the caps
      * of the payloader. Subclasses must call this method before calling
      * gst_rtp_base_payload_push() or gst_rtp_base_payload_set_outcaps().
+     * @param media the media type (typically "audio" or "video")
+     * @param dynamic if the payload type is dynamic
+     * @param encoding_name the encoding name
+     * @param clock_rate the clock rate of the media
      */
     set_options(media: string, dynamic: boolean, encoding_name: string, clock_rate: number): void
     /**
      * Configure the output caps with the optional fields.
+     * @param s a #GstStructure with the caps fields
      */
     set_outcaps_structure(s?: Gst.Structure | null): boolean
     /**
      * Enable or disable adding contributing sources to RTP packets from
      * #GstRTPSourceMeta.
+     * @param enable whether to add contributing sources to RTP packets
      */
     set_source_info_enabled(enable: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -3978,6 +4319,7 @@ class RTPBasePayload {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -3993,6 +4335,7 @@ class RTPBasePayload {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -4000,6 +4343,7 @@ class RTPBasePayload {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -4016,6 +4360,7 @@ class RTPBasePayload {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -4031,6 +4376,7 @@ class RTPBasePayload {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -4040,6 +4386,7 @@ class RTPBasePayload {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -4049,6 +4396,7 @@ class RTPBasePayload {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -4079,21 +4427,26 @@ class RTPBasePayload {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -4119,10 +4472,12 @@ class RTPBasePayload {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -4134,6 +4489,7 @@ class RTPBasePayload {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -4167,11 +4523,13 @@ class RTPBasePayload {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -4216,6 +4574,7 @@ class RTPBasePayload {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -4227,6 +4586,8 @@ class RTPBasePayload {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -4234,6 +4595,9 @@ class RTPBasePayload {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -4241,6 +4605,10 @@ class RTPBasePayload {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -4254,6 +4622,10 @@ class RTPBasePayload {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -4282,6 +4654,14 @@ class RTPBasePayload {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -4289,6 +4669,15 @@ class RTPBasePayload {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -4307,6 +4696,7 @@ class RTPBasePayload {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -4323,10 +4713,14 @@ class RTPBasePayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -4338,6 +4732,7 @@ class RTPBasePayload {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -4350,6 +4745,7 @@ class RTPBasePayload {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -4361,6 +4757,7 @@ class RTPBasePayload {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -4380,6 +4777,7 @@ class RTPBasePayload {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -4389,6 +4787,9 @@ class RTPBasePayload {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -4404,6 +4805,7 @@ class RTPBasePayload {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -4412,6 +4814,13 @@ class RTPBasePayload {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -4429,6 +4838,9 @@ class RTPBasePayload {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -4440,12 +4852,14 @@ class RTPBasePayload {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -4453,18 +4867,21 @@ class RTPBasePayload {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -4476,6 +4893,7 @@ class RTPBasePayload {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -4491,6 +4909,7 @@ class RTPBasePayload {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -4507,6 +4926,7 @@ class RTPBasePayload {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -4520,12 +4940,16 @@ class RTPBasePayload {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -4535,6 +4959,7 @@ class RTPBasePayload {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -4542,11 +4967,14 @@ class RTPBasePayload {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -4569,6 +4997,10 @@ class RTPBasePayload {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -4594,6 +5026,8 @@ class RTPBasePayload {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -4603,16 +5037,19 @@ class RTPBasePayload {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -4628,17 +5065,21 @@ class RTPBasePayload {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -4649,6 +5090,7 @@ class RTPBasePayload {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -4656,11 +5098,13 @@ class RTPBasePayload {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -4674,6 +5118,7 @@ class RTPBasePayload {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -4727,6 +5172,10 @@ class RTPBasePayload {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4737,6 +5186,12 @@ class RTPBasePayload {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4760,6 +5215,7 @@ class RTPBasePayload {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4779,11 +5235,14 @@ class RTPBasePayload {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4791,6 +5250,8 @@ class RTPBasePayload {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4808,6 +5269,7 @@ class RTPBasePayload {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4853,6 +5315,7 @@ class RTPBasePayload {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4896,15 +5359,20 @@ class RTPBasePayload {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4945,6 +5413,7 @@ class RTPBasePayload {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4969,6 +5438,7 @@ class RTPBasePayload {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstRtp-1.0.GstRtp.RTPBasePayload */
@@ -4984,6 +5454,7 @@ class RTPBasePayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_set_caps(caps: Gst.Caps): boolean
@@ -4995,6 +5466,7 @@ class RTPBasePayload {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -5018,6 +5490,7 @@ class RTPBasePayload {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -5038,6 +5511,7 @@ class RTPBasePayload {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -5054,6 +5528,7 @@ class RTPBasePayload {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -5063,6 +5538,9 @@ class RTPBasePayload {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -5074,6 +5552,7 @@ class RTPBasePayload {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -5081,18 +5560,21 @@ class RTPBasePayload {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -5109,6 +5591,7 @@ class RTPBasePayload {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -5131,6 +5614,7 @@ class RTPBasePayload {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5138,6 +5622,7 @@ class RTPBasePayload {
     /**
      * Add `ext` as an extension for writing part of an RTP header extension onto
      * outgoing RTP packets.
+     * @param ext the #GstRTPHeaderExtension
      */
     connect(sigName: "add-extension", callback: (($obj: RTPBasePayload, ext: RTPHeaderExtension) => void)): number
     connect_after(sigName: "add-extension", callback: (($obj: RTPBasePayload, ext: RTPHeaderExtension) => void)): number
@@ -5151,6 +5636,8 @@ class RTPBasePayload {
     /**
      * The returned `ext` must be configured with the correct `ext_id` and with the
      * necessary attributes as required by the extension implementation.
+     * @param ext_id the extension id being requested
+     * @param ext_uri the extension URI being requested
      */
     connect(sigName: "request-extension", callback: (($obj: RTPBasePayload, ext_id: number, ext_uri: string) => RTPHeaderExtension)): number
     connect_after(sigName: "request-extension", callback: (($obj: RTPBasePayload, ext_id: number, ext_uri: string) => RTPHeaderExtension)): number
@@ -5170,12 +5657,14 @@ class RTPBasePayload {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: RTPBasePayload, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: RTPBasePayload, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: RTPBasePayload, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: RTPBasePayload, old_pad: Gst.Pad) => void)): number
@@ -5185,6 +5674,8 @@ class RTPBasePayload {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: RTPBasePayload, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: RTPBasePayload, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -5218,6 +5709,7 @@ class RTPBasePayload {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RTPBasePayload, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RTPBasePayload, pspec: GObject.ParamSpec) => void)): number
@@ -5267,113 +5759,113 @@ interface RTPHeaderExtension_ConstructProps extends Gst.Element_ConstructProps {
 }
 class RTPHeaderExtension {
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstRtp-1.0.GstRtp.RTPHeaderExtension */
     /**
      * Retrieve the direction
@@ -5387,6 +5879,7 @@ class RTPHeaderExtension {
      * 
      * Implementations should return as accurate a value as is possible using the
      * information given in the input `buffer`.
+     * @param input_meta a #GstBuffer
      */
     get_max_size(input_meta: Gst.Buffer): number
     get_sdp_caps_field_name(): string
@@ -5394,6 +5887,9 @@ class RTPHeaderExtension {
     get_uri(): string
     /**
      * Read the RTP header extension from `data`.
+     * @param read_flags #GstRTPHeaderExtensionFlags for how the extension should               be written
+     * @param data location to read the rtp header extension from
+     * @param buffer a #GstBuffer to modify if necessary
      */
     read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer): boolean
     /**
@@ -5402,6 +5898,7 @@ class RTPHeaderExtension {
      * 
      * The only current known caps format is based on the SDP standard as produced
      * by gst_sdp_media_attributes_to_caps().
+     * @param caps the #GstCaps to configure this extension with
      */
     set_attributes_from_caps(caps: Gst.Caps): boolean
     /**
@@ -5410,6 +5907,7 @@ class RTPHeaderExtension {
      * 
      * The only current known caps format is based on the SDP standard as produced
      * by gst_sdp_media_attributes_to_caps().
+     * @param caps writable #GstCaps to modify
      */
     set_caps_from_attributes(caps: Gst.Caps): boolean
     /**
@@ -5419,6 +5917,8 @@ class RTPHeaderExtension {
      * 
      * Requires that the extension does not have any attributes or direction
      * advertised in `caps`.
+     * @param caps #GstCaps to write fields into
+     * @param attributes 
      */
     set_caps_from_attributes_helper(caps: Gst.Caps, attributes: string): boolean
     /**
@@ -5426,15 +5926,18 @@ class RTPHeaderExtension {
      * If #GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED is included, the
      * direction will not be included in the caps (as it shouldn't be in the
      * extmap line in the SDP).
+     * @param direction The direction
      */
     set_direction(direction: RTPHeaderExtensionDirection): void
     /**
      * sets the RTP extension id on `ext`
+     * @param ext_id The id of this extension
      */
     set_id(ext_id: number): void
     /**
      * Passes RTP payloader's sink (i.e. not payloaded) `caps` to the header
      * extension.
+     * @param caps sink #GstCaps
      */
     set_non_rtp_sink_caps(caps: Gst.Caps): boolean
     /**
@@ -5444,11 +5947,13 @@ class RTPHeaderExtension {
      * eventually invoke gst_rtp_header_extension_update_non_rtp_src_caps() to
      * have the caps update applied. Applying the update also flips the internal
      * "wants update" flag back to FALSE.
+     * @param state TRUE if caps update is needed
      */
     set_wants_update_non_rtp_src_caps(state: boolean): void
     /**
      * Updates depayloader src caps based on the information received in RTP header.
      * `caps` must be writable as this function may modify them.
+     * @param caps src #GstCaps to modify
      */
     update_non_rtp_src_caps(caps: Gst.Caps): boolean
     /**
@@ -5461,6 +5966,10 @@ class RTPHeaderExtension {
      * Writes the RTP header extension to `data` using information available from
      * the `input_meta`.  `data` will be sized to be at least the value returned
      * from gst_rtp_header_extension_get_max_size().
+     * @param input_meta the input #GstBuffer to read information from if necessary
+     * @param write_flags #GstRTPHeaderExtensionFlags for how the extension should               be written
+     * @param output output RTP #GstBuffer
+     * @param data location to write the rtp header extension into
      */
     write(input_meta: Gst.Buffer, write_flags: RTPHeaderExtensionFlags, output: Gst.Buffer, data: Uint8Array): number
     /* Methods of Gst-1.0.Gst.Element */
@@ -5484,6 +5993,7 @@ class RTPHeaderExtension {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -5499,6 +6009,7 @@ class RTPHeaderExtension {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -5506,6 +6017,7 @@ class RTPHeaderExtension {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -5522,6 +6034,7 @@ class RTPHeaderExtension {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -5537,6 +6050,7 @@ class RTPHeaderExtension {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5546,6 +6060,7 @@ class RTPHeaderExtension {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5555,6 +6070,7 @@ class RTPHeaderExtension {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5585,21 +6101,26 @@ class RTPHeaderExtension {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -5625,10 +6146,12 @@ class RTPHeaderExtension {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -5640,6 +6163,7 @@ class RTPHeaderExtension {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -5673,11 +6197,13 @@ class RTPHeaderExtension {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -5722,6 +6248,7 @@ class RTPHeaderExtension {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -5733,6 +6260,8 @@ class RTPHeaderExtension {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -5740,6 +6269,9 @@ class RTPHeaderExtension {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -5747,6 +6279,10 @@ class RTPHeaderExtension {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -5760,6 +6296,10 @@ class RTPHeaderExtension {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -5788,6 +6328,14 @@ class RTPHeaderExtension {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -5795,6 +6343,15 @@ class RTPHeaderExtension {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -5813,6 +6370,7 @@ class RTPHeaderExtension {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -5829,10 +6387,14 @@ class RTPHeaderExtension {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -5844,6 +6406,7 @@ class RTPHeaderExtension {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -5856,6 +6419,7 @@ class RTPHeaderExtension {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -5867,6 +6431,7 @@ class RTPHeaderExtension {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -5886,6 +6451,7 @@ class RTPHeaderExtension {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -5895,6 +6461,9 @@ class RTPHeaderExtension {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -5910,6 +6479,7 @@ class RTPHeaderExtension {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -5918,6 +6488,13 @@ class RTPHeaderExtension {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -5935,6 +6512,9 @@ class RTPHeaderExtension {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -5946,12 +6526,14 @@ class RTPHeaderExtension {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -5959,18 +6541,21 @@ class RTPHeaderExtension {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -5982,6 +6567,7 @@ class RTPHeaderExtension {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -5997,6 +6583,7 @@ class RTPHeaderExtension {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -6013,6 +6600,7 @@ class RTPHeaderExtension {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -6026,12 +6614,16 @@ class RTPHeaderExtension {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -6041,6 +6633,7 @@ class RTPHeaderExtension {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -6048,11 +6641,14 @@ class RTPHeaderExtension {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -6075,6 +6671,10 @@ class RTPHeaderExtension {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -6100,6 +6700,8 @@ class RTPHeaderExtension {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -6109,16 +6711,19 @@ class RTPHeaderExtension {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -6134,17 +6739,21 @@ class RTPHeaderExtension {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -6155,6 +6764,7 @@ class RTPHeaderExtension {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -6162,11 +6772,13 @@ class RTPHeaderExtension {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -6180,6 +6792,7 @@ class RTPHeaderExtension {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -6233,6 +6846,10 @@ class RTPHeaderExtension {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6243,6 +6860,12 @@ class RTPHeaderExtension {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6266,6 +6889,7 @@ class RTPHeaderExtension {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6285,11 +6909,14 @@ class RTPHeaderExtension {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6297,6 +6924,8 @@ class RTPHeaderExtension {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6314,6 +6943,7 @@ class RTPHeaderExtension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6359,6 +6989,7 @@ class RTPHeaderExtension {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6402,15 +7033,20 @@ class RTPHeaderExtension {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6451,6 +7087,7 @@ class RTPHeaderExtension {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6475,6 +7112,7 @@ class RTPHeaderExtension {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstRtp-1.0.GstRtp.RTPHeaderExtension */
@@ -6485,11 +7123,15 @@ class RTPHeaderExtension {
      * 
      * Implementations should return as accurate a value as is possible using the
      * information given in the input `buffer`.
+     * @param input_meta a #GstBuffer
      */
     vfunc_get_max_size(input_meta: Gst.Buffer): number
     vfunc_get_supported_flags(): RTPHeaderExtensionFlags
     /**
      * Read the RTP header extension from `data`.
+     * @param read_flags #GstRTPHeaderExtensionFlags for how the extension should               be written
+     * @param data location to read the rtp header extension from
+     * @param buffer a #GstBuffer to modify if necessary
      */
     vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer): boolean
     vfunc_set_attributes(direction: RTPHeaderExtensionDirection, attributes: string): boolean
@@ -6499,22 +7141,29 @@ class RTPHeaderExtension {
      * 
      * The only current known caps format is based on the SDP standard as produced
      * by gst_sdp_media_attributes_to_caps().
+     * @param caps writable #GstCaps to modify
      */
     vfunc_set_caps_from_attributes(caps: Gst.Caps): boolean
     /**
      * Passes RTP payloader's sink (i.e. not payloaded) `caps` to the header
      * extension.
+     * @param caps sink #GstCaps
      */
     vfunc_set_non_rtp_sink_caps(caps: Gst.Caps): boolean
     /**
      * Updates depayloader src caps based on the information received in RTP header.
      * `caps` must be writable as this function may modify them.
+     * @param caps src #GstCaps to modify
      */
     vfunc_update_non_rtp_src_caps(caps: Gst.Caps): boolean
     /**
      * Writes the RTP header extension to `data` using information available from
      * the `input_meta`.  `data` will be sized to be at least the value returned
      * from gst_rtp_header_extension_get_max_size().
+     * @param input_meta the input #GstBuffer to read information from if necessary
+     * @param write_flags #GstRTPHeaderExtensionFlags for how the extension should               be written
+     * @param output output RTP #GstBuffer
+     * @param data location to write the rtp header extension into
      */
     vfunc_write(input_meta: Gst.Buffer, write_flags: RTPHeaderExtensionFlags, output: Gst.Buffer, data: Uint8Array): number
     /* Virtual methods of Gst-1.0.Gst.Element */
@@ -6523,6 +7172,7 @@ class RTPHeaderExtension {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -6546,6 +7196,7 @@ class RTPHeaderExtension {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -6566,6 +7217,7 @@ class RTPHeaderExtension {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -6582,6 +7234,7 @@ class RTPHeaderExtension {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -6591,6 +7244,9 @@ class RTPHeaderExtension {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -6602,6 +7258,7 @@ class RTPHeaderExtension {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -6609,18 +7266,21 @@ class RTPHeaderExtension {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -6637,6 +7297,7 @@ class RTPHeaderExtension {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -6659,6 +7320,7 @@ class RTPHeaderExtension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6677,12 +7339,14 @@ class RTPHeaderExtension {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: RTPHeaderExtension, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: RTPHeaderExtension, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: RTPHeaderExtension, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: RTPHeaderExtension, old_pad: Gst.Pad) => void)): number
@@ -6692,6 +7356,8 @@ class RTPHeaderExtension {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: RTPHeaderExtension, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: RTPHeaderExtension, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -6725,6 +7391,7 @@ class RTPHeaderExtension {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RTPHeaderExtension, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RTPHeaderExtension, pspec: GObject.ParamSpec) => void)): number
@@ -6740,23 +7407,27 @@ class RTPHeaderExtension {
     static create_from_uri(uri: string): RTPHeaderExtension | null
     /**
      * Set the URI for this RTP header extension implementation.
+     * @param uri the RTP Header extension uri for `klass`
      */
     static set_uri(klass: RTPHeaderExtension | Function | GObject.Type, uri: string): void
     static $gtype: GObject.Type
 }
 class RTCPBuffer {
     /* Fields of GstRtp-1.0.GstRtp.RTCPBuffer */
-    readonly buffer: Gst.Buffer
-    readonly map: Gst.MapInfo
+    buffer: Gst.Buffer
+    map: Gst.MapInfo
     /* Methods of GstRtp-1.0.GstRtp.RTCPBuffer */
     /**
      * Add a new packet of `type` to `rtcp`. `packet` will point to the newly created
      * packet.
+     * @param type the #GstRTCPType of the new packet
+     * @param packet pointer to new packet
      */
     add_packet(type: RTCPType, packet: RTCPPacket): boolean
     /**
      * Initialize a new #GstRTCPPacket pointer that points to the first packet in
      * `rtcp`.
+     * @param packet a #GstRTCPPacket
      */
     get_first_packet(packet: RTCPPacket): boolean
     /**
@@ -6776,23 +7447,29 @@ class RTCPBuffer {
     /**
      * Open `buffer` for reading or writing, depending on `flags`. The resulting RTCP
      * buffer state is stored in `rtcp`.
+     * @param buffer a buffer with an RTCP packet
+     * @param flags flags for the mapping
+     * @param rtcp resulting #GstRTCPBuffer
      */
     static map(buffer: Gst.Buffer, flags: Gst.MapFlags, rtcp: RTCPBuffer): boolean
     /**
      * Create a new buffer and set the data to a copy of `len`
      * bytes of `data` and the size to `len`. The data will be freed when the buffer
      * is freed.
+     * @param data data for the new buffer
      */
     static new_copy_data(data: Uint8Array): Gst.Buffer
     /**
      * Create a new buffer and set the data and size of the buffer to `data` and `len`
      * respectively. `data` will be freed when the buffer is unreffed, so this
      * function transfers ownership of `data` to the new buffer.
+     * @param data data for the new buffer
      */
     static new_take_data(data: Uint8Array): Gst.Buffer
     /**
      * Check if the data pointed to by `buffer` is a valid RTCP packet using
      * gst_rtcp_buffer_validate_data().
+     * @param buffer the buffer to validate
      */
     static validate(buffer: Gst.Buffer): boolean
     /**
@@ -6800,6 +7477,7 @@ class RTCPBuffer {
      * non-reduced size RTCP packet.
      * Use this function to validate a packet before using the other functions in
      * this module.
+     * @param data the data to validate
      */
     static validate_data(data: Uint8Array): boolean
     /**
@@ -6810,11 +7488,13 @@ class RTCPBuffer {
      * This function is updated to support reduced size rtcp packets according to
      * RFC 5506 and will validate full compound RTCP packets as well as reduced
      * size RTCP packets.
+     * @param data the data to validate
      */
     static validate_data_reduced(data: Uint8Array): boolean
     /**
      * Check if the data pointed to by `buffer` is a valid RTCP packet using
      * gst_rtcp_buffer_validate_reduced().
+     * @param buffer the buffer to validate
      */
     static validate_reduced(buffer: Gst.Buffer): boolean
 }
@@ -6823,20 +7503,28 @@ class RTCPPacket {
     /**
      * pointer to RTCP buffer
      */
-    readonly rtcp: RTCPBuffer
+    rtcp: RTCPBuffer
     /**
      * offset of packet in buffer data
      */
-    readonly offset: number
+    offset: number
     /* Methods of GstRtp-1.0.GstRtp.RTCPPacket */
     /**
      * Add profile-specific extension `data` to `packet`. If `packet` already
      * contains profile-specific extension `data` will be appended to the existing
      * extension.
+     * @param data profile-specific data
      */
     add_profile_specific_ext(data: Uint8Array): boolean
     /**
      * Add a new report block to `packet` with the given values.
+     * @param ssrc data source being reported
+     * @param fractionlost fraction lost since last SR/RR
+     * @param packetslost the cumululative number of packets lost
+     * @param exthighestseq the extended last sequence number received
+     * @param jitter the interarrival jitter
+     * @param lsr the last SR packet from this source
+     * @param dlsr the delay since last SR packet
      */
     add_rb(ssrc: number, fractionlost: number, packetslost: number, exthighestseq: number, jitter: number, lsr: number, dlsr: number): boolean
     /**
@@ -6863,30 +7551,37 @@ class RTCPPacket {
     /**
      * Set the length of the application-dependent data attached to an APP
      * `packet`.
+     * @param wordlen Length of the data in 32-bit words
      */
     app_set_data_length(wordlen: number): boolean
     /**
      * Set the name field of the APP `packet`.
+     * @param name 4-byte ASCII name
      */
     app_set_name(name: string): void
     /**
      * Set the SSRC/CSRC field of the APP `packet`.
+     * @param ssrc SSRC/CSRC of the packet
      */
     app_set_ssrc(ssrc: number): void
     /**
      * Set the subtype field of the APP `packet`.
+     * @param subtype subtype of the packet
      */
     app_set_subtype(subtype: number): void
     /**
      * Add `ssrc` to the BYE `packet`.
+     * @param ssrc an SSRC to add
      */
     bye_add_ssrc(ssrc: number): boolean
     /**
      * Adds `len` SSRCs in `ssrc` to BYE `packet`.
+     * @param ssrc an array of SSRCs to add
      */
     bye_add_ssrcs(ssrc: number[]): boolean
     /**
      * Get the `nth` SSRC of the BYE `packet`.
+     * @param nth the nth SSRC to get
      */
     bye_get_nth_ssrc(nth: number): number
     /**
@@ -6903,6 +7598,7 @@ class RTCPPacket {
     bye_get_ssrc_count(): number
     /**
      * Set the reason string to `reason` in `packet`.
+     * @param reason a reason string
      */
     bye_set_reason(reason: string): boolean
     /**
@@ -6934,18 +7630,22 @@ class RTCPPacket {
     /**
      * Set the length of the Feedback Control Information attached to a
      * RTPFB or PSFB `packet`.
+     * @param wordlen Length of the FCI in 32-bit words
      */
     fb_set_fci_length(wordlen: number): boolean
     /**
      * Set the media SSRC field of the RTPFB or PSFB `packet`.
+     * @param ssrc a media SSRC
      */
     fb_set_media_ssrc(ssrc: number): void
     /**
      * Set the sender SSRC field of the RTPFB or PSFB `packet`.
+     * @param ssrc a sender SSRC
      */
     fb_set_sender_ssrc(ssrc: number): void
     /**
      * Set the feedback message type of the FB `packet`.
+     * @param type the #GstRTCPFBType to set
      */
     fb_set_type(type: RTCPFBType): void
     /**
@@ -6966,6 +7666,7 @@ class RTCPPacket {
     /**
      * Parse the values of the `nth` report block in `packet` and store the result in
      * the values.
+     * @param nth the nth report block in `packet`
      */
     get_rb(nth: number): [ /* ssrc */ number, /* fractionlost */ number, /* packetslost */ number, /* exthighestseq */ number, /* jitter */ number, /* lsr */ number, /* dlsr */ number ]
     /**
@@ -6991,19 +7692,24 @@ class RTCPPacket {
     rr_get_ssrc(): number
     /**
      * Set the ssrc field of the RR `packet`.
+     * @param ssrc the SSRC to set
      */
     rr_set_ssrc(ssrc: number): void
     /**
      * Add a new SDES entry to the current item in `packet`.
+     * @param type the #GstRTCPSDESType of the SDES entry
+     * @param data the data
      */
     sdes_add_entry(type: RTCPSDESType, data: Uint8Array): boolean
     /**
      * Add a new SDES item for `ssrc` to `packet`.
+     * @param ssrc the SSRC of the new item to add
      */
     sdes_add_item(ssrc: number): boolean
     /**
      * This function is like gst_rtcp_packet_sdes_get_entry() but it returns a
      * null-terminated copy of the data instead. use g_free() after usage.
+     * @param type result of the entry type
      */
     sdes_copy_entry(type: RTCPSDESType): [ /* returnType */ boolean, /* data */ Uint8Array ]
     /**
@@ -7022,6 +7728,7 @@ class RTCPPacket {
      * When `type` refers to a text item, `data` will point to a UTF8 string. Note
      * that this UTF8 string is NOT null-terminated. Use
      * gst_rtcp_packet_sdes_copy_entry() to get a null-terminated copy of the entry.
+     * @param type result of the entry type
      */
     sdes_get_entry(type: RTCPSDESType): [ /* returnType */ boolean, /* data */ Uint8Array ]
     /**
@@ -7044,6 +7751,14 @@ class RTCPPacket {
      * Set the `nth` new report block in `packet` with the given values.
      * 
      * Note: Not implemented.
+     * @param nth the nth report block to set
+     * @param ssrc data source being reported
+     * @param fractionlost fraction lost since last SR/RR
+     * @param packetslost the cumululative number of packets lost
+     * @param exthighestseq the extended last sequence number received
+     * @param jitter the interarrival jitter
+     * @param lsr the last SR packet from this source
+     * @param dlsr the delay since last SR packet
      */
     set_rb(nth: number, ssrc: number, fractionlost: number, packetslost: number, exthighestseq: number, jitter: number, lsr: number, dlsr: number): void
     /**
@@ -7052,6 +7767,11 @@ class RTCPPacket {
     sr_get_sender_info(): [ /* ssrc */ number, /* ntptime */ number, /* rtptime */ number, /* packet_count */ number, /* octet_count */ number ]
     /**
      * Set the given values in the SR packet `packet`.
+     * @param ssrc the SSRC
+     * @param ntptime the NTP time
+     * @param rtptime the RTP time
+     * @param packet_count the packet count
+     * @param octet_count the octet count
      */
     sr_set_sender_info(ssrc: number, ntptime: number, rtptime: number, packet_count: number, octet_count: number): void
     /**
@@ -7065,22 +7785,39 @@ class RTCPPacket {
     xr_get_block_type(): RTCPXRType
     /**
      * Parse the extended report block for DLRR report block type.
+     * @param nth the index of sub-block to retrieve.
+     * @param ssrc the SSRC of the receiver.
+     * @param last_rr the last receiver reference timestamp of `ssrc`.
+     * @param delay the delay since `last_rr`.
      */
     xr_get_dlrr_block(nth: number, ssrc: number, last_rr: number, delay: number): boolean
     /**
      * Retrieve the packet receipt time of `seq` which ranges in [begin_seq, end_seq).
+     * @param seq the sequence to retrieve the time.
+     * @param receipt_time the packet receipt time of `seq`.
      */
     xr_get_prt_by_seq(seq: number, receipt_time: number): boolean
     /**
      * Parse the Packet Recept Times Report Block from a XR `packet`
+     * @param ssrc the SSRC of the RTP data packet source being reported upon by this report block.
+     * @param thinning the amount of thinning performed on the sequence number space.
+     * @param begin_seq the first sequence number that this block reports on.
+     * @param end_seq the last sequence number that this block reports on plus one.
      */
     xr_get_prt_info(ssrc: number, thinning: number, begin_seq: number, end_seq: number): boolean
     /**
      * Parse the extended report block for Loss RLE and Duplicated LRE block type.
+     * @param ssrc the SSRC of the RTP data packet source being reported upon by this report block.
+     * @param thinning the amount of thinning performed on the sequence number space.
+     * @param begin_seq the first sequence number that this block reports on.
+     * @param end_seq the last sequence number that this block reports on plus one.
+     * @param chunk_count the number of chunks calculated by block length.
      */
     xr_get_rle_info(ssrc: number, thinning: number, begin_seq: number, end_seq: number, chunk_count: number): boolean
     /**
      * Retrieve actual chunk data.
+     * @param nth the index of chunk to retrieve.
+     * @param chunk the `nth` chunk.
      */
     xr_get_rle_nth_chunk(nth: number, chunk: number): boolean
     xr_get_rrt(timestamp: number): boolean
@@ -7090,20 +7827,34 @@ class RTCPPacket {
     xr_get_ssrc(): number
     /**
      * Extract a basic information from static summary report block of XR `packet`.
+     * @param ssrc the SSRC of the source.
+     * @param begin_seq the first sequence number that this block reports on.
+     * @param end_seq the last sequence number that this block reports on plus one.
      */
     xr_get_summary_info(ssrc: number, begin_seq: number, end_seq: number): boolean
     /**
      * Extract jitter information from the statistics summary. If the jitter flag in
      * a block header is set as zero, all of jitters will be zero.
+     * @param min_jitter the minimum relative transit time between two sequences.
+     * @param max_jitter the maximum relative transit time between two sequences.
+     * @param mean_jitter the mean relative transit time between two sequences.
+     * @param dev_jitter the standard deviation of the relative transit time between two sequences.
      */
     xr_get_summary_jitter(min_jitter: number, max_jitter: number, mean_jitter: number, dev_jitter: number): boolean
     /**
      * Get the number of lost or duplicate packets. If the flag in a block header
      * is set as zero, `lost_packets` or `dup_packets` will be zero.
+     * @param lost_packets the number of lost packets between begin_seq and end_seq.
+     * @param dup_packets the number of duplicate packets between begin_seq and end_seq.
      */
     xr_get_summary_pkt(lost_packets: number, dup_packets: number): boolean
     /**
      * Extract the value of ttl for ipv4, or hop limit for ipv6.
+     * @param is_ipv4 the flag to indicate that the return values are ipv4 ttl or ipv6 hop limits.
+     * @param min_ttl the minimum TTL or Hop Limit value of data packets between two sequences.
+     * @param max_ttl the maximum TTL or Hop Limit value of data packets between two sequences.
+     * @param mean_ttl the mean TTL or Hop Limit value of data packets between two sequences.
+     * @param dev_ttl the standard deviation of the TTL or Hop Limit value of data packets between two sequences.
      */
     xr_get_summary_ttl(is_ipv4: boolean, min_ttl: number, max_ttl: number, mean_ttl: number, dev_ttl: number): boolean
     xr_get_voip_burst_metrics(burst_density: number, gap_density: number, burst_duration: number, gap_duration: number): boolean
@@ -7125,7 +7876,7 @@ abstract class RTPBaseAudioPayloadClass {
     /**
      * the parent class
      */
-    readonly parent_class: RTPBasePayloadClass
+    parent_class: RTPBasePayloadClass
     static name: string
 }
 class RTPBaseAudioPayloadPrivate {
@@ -7136,12 +7887,12 @@ abstract class RTPBaseDepayloadClass {
     /**
      * the parent class
      */
-    readonly parent_class: Gst.ElementClass
-    readonly set_caps: (filter: RTPBaseDepayload, caps: Gst.Caps) => boolean
-    readonly process: (base: RTPBaseDepayload, in_: Gst.Buffer) => Gst.Buffer
-    readonly packet_lost: (filter: RTPBaseDepayload, event: Gst.Event) => boolean
-    readonly handle_event: (filter: RTPBaseDepayload, event: Gst.Event) => boolean
-    readonly process_rtp_packet: (base: RTPBaseDepayload, rtp_buffer: RTPBuffer) => Gst.Buffer
+    parent_class: Gst.ElementClass
+    set_caps: (filter: RTPBaseDepayload, caps: Gst.Caps) => boolean
+    process: (base: RTPBaseDepayload, in_: Gst.Buffer) => Gst.Buffer
+    packet_lost: (filter: RTPBaseDepayload, event: Gst.Event) => boolean
+    handle_event: (filter: RTPBaseDepayload, event: Gst.Event) => boolean
+    process_rtp_packet: (base: RTPBaseDepayload, rtp_buffer: RTPBuffer) => Gst.Buffer
     static name: string
 }
 class RTPBaseDepayloadPrivate {
@@ -7152,13 +7903,13 @@ abstract class RTPBasePayloadClass {
     /**
      * the parent class
      */
-    readonly parent_class: Gst.ElementClass
-    readonly get_caps: (payload: RTPBasePayload, pad: Gst.Pad, filter: Gst.Caps) => Gst.Caps
-    readonly set_caps: (payload: RTPBasePayload, caps: Gst.Caps) => boolean
-    readonly handle_buffer: (payload: RTPBasePayload, buffer: Gst.Buffer) => Gst.FlowReturn
-    readonly sink_event: (payload: RTPBasePayload, event: Gst.Event) => boolean
-    readonly src_event: (payload: RTPBasePayload, event: Gst.Event) => boolean
-    readonly query: (payload: RTPBasePayload, pad: Gst.Pad, query: Gst.Query) => boolean
+    parent_class: Gst.ElementClass
+    get_caps: (payload: RTPBasePayload, pad: Gst.Pad, filter: Gst.Caps) => Gst.Caps
+    set_caps: (payload: RTPBasePayload, caps: Gst.Caps) => boolean
+    handle_buffer: (payload: RTPBasePayload, buffer: Gst.Buffer) => Gst.FlowReturn
+    sink_event: (payload: RTPBasePayload, event: Gst.Event) => boolean
+    src_event: (payload: RTPBasePayload, event: Gst.Event) => boolean
+    query: (payload: RTPBasePayload, pad: Gst.Pad, query: Gst.Query) => boolean
     static name: string
 }
 class RTPBasePayloadPrivate {
@@ -7169,23 +7920,23 @@ class RTPBuffer {
     /**
      * pointer to RTP buffer
      */
-    readonly buffer: Gst.Buffer
+    buffer: Gst.Buffer
     /**
      * internal state
      */
-    readonly state: number
+    state: number
     /**
      * array of data
      */
-    readonly data: object[]
+    data: object[]
     /**
      * array of size
      */
-    readonly size: number[]
+    size: number[]
     /**
      * array of #GstMapInfo
      */
-    readonly map: Gst.MapInfo[]
+    map: Gst.MapInfo[]
     /* Methods of GstRtp-1.0.GstRtp.RTPBuffer */
     /**
      * Adds a RFC 5285 header extension with a one byte header to the end of the
@@ -7195,6 +7946,8 @@ class RTPBuffer {
      * the mechanism described in RFC 5285 or if there is a header extension with
      * a two bytes header as described in RFC 5285. In that case, use
      * gst_rtp_buffer_add_extension_twobytes_header()
+     * @param id The ID of the header extension (between 1 and 14).
+     * @param data location for data
      */
     add_extension_onebyte_header(id: number, data: Uint8Array): boolean
     /**
@@ -7205,10 +7958,14 @@ class RTPBuffer {
      * the mechanism described in RFC 5285 or if there is a header extension with
      * a one byte header as described in RFC 5285. In that case, use
      * gst_rtp_buffer_add_extension_onebyte_header()
+     * @param appbits Application specific bits
+     * @param id The ID of the header extension
+     * @param data location for data
      */
     add_extension_twobytes_header(appbits: number, id: number, data: Uint8Array): boolean
     /**
      * Get the CSRC at index `idx` in `buffer`.
+     * @param idx the index of the CSRC to get
      */
     get_csrc(idx: number): number
     /**
@@ -7233,13 +7990,17 @@ class RTPBuffer {
     /**
      * Parses RFC 5285 style header extensions with a one byte header. It will
      * return the nth extension with the requested id.
+     * @param id The ID of the header extension to be read (between 1 and 14).
+     * @param nth Read the nth extension packet with the requested ID
      */
-    get_extension_onebyte_header(id: number, nth: number): [ /* returnType */ boolean, /* data */ Uint8Array ]
+    get_extension_onebyte_header(id: number, nth: number): [ /* returnType */ boolean, /* data */ Uint8Array | null ]
     /**
      * Parses RFC 5285 style header extensions with a two bytes header. It will
      * return the nth extension with the requested id.
+     * @param id The ID of the header extension to be read (between 1 and 14).
+     * @param nth Read the nth extension packet with the requested ID
      */
-    get_extension_twobytes_header(id: number, nth: number): [ /* returnType */ boolean, /* appbits */ number, /* data */ Uint8Array ]
+    get_extension_twobytes_header(id: number, nth: number): [ /* returnType */ boolean, /* appbits */ number | null, /* data */ Uint8Array | null ]
     /**
      * Return the total length of the header in `buffer`. This include the length of
      * the fixed header, the CSRC list and the extension header.
@@ -7277,6 +8038,8 @@ class RTPBuffer {
      * Create a subbuffer of the payload of the RTP packet in `buffer`. `offset` bytes
      * are skipped in the payload and the subbuffer will be of size `len`.
      * If `len` is -1 the total payload starting from `offset` is subbuffered.
+     * @param offset the offset in the payload
+     * @param len the length in the payload
      */
     get_payload_subbuffer(offset: number, len: number): Gst.Buffer
     /**
@@ -7304,6 +8067,7 @@ class RTPBuffer {
      * `len`. If `len` is 0, the padding is removed.
      * 
      * NOTE: This function does not work correctly.
+     * @param len the new amount of padding
      */
     pad_to(len: number): void
     /**
@@ -7317,10 +8081,13 @@ class RTPBuffer {
     remove_extension_data(): void
     /**
      * Modify the CSRC at index `idx` in `buffer` to `csrc`.
+     * @param idx the CSRC index to set
+     * @param csrc the CSRC in host order to set at `idx`
      */
     set_csrc(idx: number, csrc: number): void
     /**
      * Set the extension bit on the RTP packet in `buffer` to `extension`.
+     * @param extension the new extension
      */
     set_extension(extension: boolean): void
     /**
@@ -7329,39 +8096,49 @@ class RTPBuffer {
      * be made larger.
      * 
      * Will also shorten the extension data from 1.20.
+     * @param bits the bits specific for the extension
+     * @param length the length that counts the number of 32-bit words in the extension, excluding the extension header ( therefore zero is a valid length)
      */
     set_extension_data(bits: number, length: number): boolean
     /**
      * Set the marker bit on the RTP packet in `buffer` to `marker`.
+     * @param marker the new marker
      */
     set_marker(marker: boolean): void
     /**
      * Set the total `rtp` size to `len`. The data in the buffer will be made
      * larger if needed. Any padding will be removed from the packet.
+     * @param len the new packet length
      */
     set_packet_len(len: number): void
     /**
      * Set the padding bit on the RTP packet in `buffer` to `padding`.
+     * @param padding the new padding
      */
     set_padding(padding: boolean): void
     /**
      * Set the payload type of the RTP packet in `buffer` to `payload_type`.
+     * @param payload_type the new type
      */
     set_payload_type(payload_type: number): void
     /**
      * Set the sequence number of the RTP packet in `buffer` to `seq`.
+     * @param seq the new sequence number
      */
     set_seq(seq: number): void
     /**
      * Set the SSRC on the RTP packet in `buffer` to `ssrc`.
+     * @param ssrc the new SSRC
      */
     set_ssrc(ssrc: number): void
     /**
      * Set the timestamp of the RTP packet in `buffer` to `timestamp`.
+     * @param timestamp the new timestamp
      */
     set_timestamp(timestamp: number): void
     /**
      * Set the version of the RTP packet in `buffer` to `version`.
+     * @param version the new version
      */
     set_version(version: number): void
     /**
@@ -7376,30 +8153,44 @@ class RTPBuffer {
      * `buffer` must be writable and all previous memory in `buffer` will be freed.
      * If `pad_len` is >0, the padding bit will be set. All other RTP header fields
      * will be set to 0/FALSE.
+     * @param buffer a #GstBuffer
+     * @param payload_len the length of the payload
+     * @param pad_len the amount of padding
+     * @param csrc_count the number of CSRC entries
      */
     static allocate_data(buffer: Gst.Buffer, payload_len: number, pad_len: number, csrc_count: number): void
     /**
      * Calculate the header length of an RTP packet with `csrc_count` CSRC entries.
      * An RTP packet can have at most 15 CSRC entries.
+     * @param csrc_count the number of CSRC entries
      */
     static calc_header_len(csrc_count: number): number
     /**
      * Calculate the total length of an RTP packet with a payload size of `payload_len,`
      * a padding of `pad_len` and a `csrc_count` CSRC entries.
+     * @param payload_len the length of the payload
+     * @param pad_len the amount of padding
+     * @param csrc_count the number of CSRC entries
      */
     static calc_packet_len(payload_len: number, pad_len: number, csrc_count: number): number
     /**
      * Calculate the length of the payload of an RTP packet with size `packet_len,`
      * a padding of `pad_len` and a `csrc_count` CSRC entries.
+     * @param packet_len the length of the total RTP packet
+     * @param pad_len the amount of padding
+     * @param csrc_count the number of CSRC entries
      */
     static calc_payload_len(packet_len: number, pad_len: number, csrc_count: number): number
     /**
      * Compare two sequence numbers, taking care of wraparounds. This function
      * returns the difference between `seqnum1` and `seqnum2`.
+     * @param seqnum1 a sequence number
+     * @param seqnum2 a sequence number
      */
     static compare_seqnum(seqnum1: number, seqnum2: number): number
     /**
      * Get the default clock-rate for the static payload type `payload_type`.
+     * @param payload_type the static payload type
      */
     static default_clock_rate(payload_type: number): number
     /**
@@ -7411,6 +8202,8 @@ class RTPBuffer {
      * into account:
      *   - timestamp wraparound making sure that the returned value is properly increased.
      *   - timestamp unwraparound making sure that the returned value is properly decreased.
+     * @param exttimestamp a previous extended timestamp
+     * @param timestamp a new timestamp
      */
     static ext_timestamp(exttimestamp: number, timestamp: number): [ /* returnType */ number, /* exttimestamp */ number ]
     /**
@@ -7418,16 +8211,25 @@ class RTPBuffer {
      * on the #GBytes you get from gst_rtp_buffer_get_extension_bytes.
      * Parses RFC 5285 style header extensions with a one byte header. It will
      * return the nth extension with the requested id.
+     * @param bytes #GBytes
+     * @param bit_pattern The bit-pattern. Anything but 0xBEDE is rejected.
+     * @param id The ID of the header extension to be read (between 1 and 14).
+     * @param nth Read the nth extension packet with the requested ID
      */
     static get_extension_onebyte_header_from_bytes(bytes: GLib.Bytes, bit_pattern: number, id: number, nth: number): [ /* returnType */ boolean, /* data */ Uint8Array ]
     /**
      * Map the contents of `buffer` into `rtp`.
+     * @param buffer a #GstBuffer
+     * @param flags #GstMapFlags
      */
     static map(buffer: Gst.Buffer, flags: Gst.MapFlags): [ /* returnType */ boolean, /* rtp */ RTPBuffer ]
     /**
      * Allocate a new #GstBuffer with enough data to hold an RTP packet with
      * `csrc_count` CSRCs, a payload length of `payload_len` and padding of `pad_len`.
      * All other RTP header fields will be set to 0/FALSE.
+     * @param payload_len the length of the payload
+     * @param pad_len the amount of padding
+     * @param csrc_count the number of CSRC entries
      */
     static new_allocate(payload_len: number, pad_len: number, csrc_count: number): Gst.Buffer
     /**
@@ -7435,18 +8237,23 @@ class RTPBuffer {
      * `packet_len` long. The length of the payload depends on `pad_len` and
      * `csrc_count` and can be calculated with gst_rtp_buffer_calc_payload_len().
      * All RTP header fields will be set to 0/FALSE.
+     * @param packet_len the total length of the packet
+     * @param pad_len the amount of padding
+     * @param csrc_count the number of CSRC entries
      */
     static new_allocate_len(packet_len: number, pad_len: number, csrc_count: number): Gst.Buffer
     /**
      * Create a new buffer and set the data to a copy of `len`
      * bytes of `data` and the size to `len`. The data will be freed when the buffer
      * is freed.
+     * @param data data for the new   buffer
      */
     static new_copy_data(data: Uint8Array): Gst.Buffer
     /**
      * Create a new buffer and set the data and size of the buffer to `data` and `len`
      * respectively. `data` will be freed when the buffer is unreffed, so this
      * function transfers ownership of `data` to the new buffer.
+     * @param data    data for the new buffer
      */
     static new_take_data(data: Uint8Array): Gst.Buffer
 }
@@ -7455,18 +8262,19 @@ abstract class RTPHeaderExtensionClass {
     /**
      * the parent class
      */
-    readonly parent_class: Gst.ElementClass
-    readonly get_supported_flags: (ext: RTPHeaderExtension) => RTPHeaderExtensionFlags
-    readonly get_max_size: (ext: RTPHeaderExtension, input_meta: Gst.Buffer) => number
-    readonly write: (ext: RTPHeaderExtension, input_meta: Gst.Buffer, write_flags: RTPHeaderExtensionFlags, output: Gst.Buffer, data: Uint8Array) => number
-    readonly read: (ext: RTPHeaderExtension, read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer) => boolean
-    readonly set_non_rtp_sink_caps: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
-    readonly update_non_rtp_src_caps: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
-    readonly set_attributes: (ext: RTPHeaderExtension, direction: RTPHeaderExtensionDirection, attributes: string) => boolean
-    readonly set_caps_from_attributes: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
+    parent_class: Gst.ElementClass
+    get_supported_flags: (ext: RTPHeaderExtension) => RTPHeaderExtensionFlags
+    get_max_size: (ext: RTPHeaderExtension, input_meta: Gst.Buffer) => number
+    write: (ext: RTPHeaderExtension, input_meta: Gst.Buffer, write_flags: RTPHeaderExtensionFlags, output: Gst.Buffer, data: Uint8Array) => number
+    read: (ext: RTPHeaderExtension, read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer) => boolean
+    set_non_rtp_sink_caps: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
+    update_non_rtp_src_caps: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
+    set_attributes: (ext: RTPHeaderExtension, direction: RTPHeaderExtensionDirection, attributes: string) => boolean
+    set_caps_from_attributes: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
     /* Methods of GstRtp-1.0.GstRtp.RTPHeaderExtensionClass */
     /**
      * Set the URI for this RTP header extension implementation.
+     * @param uri the RTP Header extension uri for `klass`
      */
     static set_uri(klass: RTPHeaderExtension | Function | GObject.Type, uri: string): void
     static name: string
@@ -7476,29 +8284,29 @@ class RTPPayloadInfo {
     /**
      * payload type, -1 means dynamic
      */
-    readonly payload_type: number
+    payload_type: number
     /**
      * the media type(s), usually "audio", "video", "application", "text",
      * "message".
      */
-    readonly media: string
+    media: string
     /**
      * the encoding name of `pt`
      */
-    readonly encoding_name: string
+    encoding_name: string
     /**
      * default clock rate, 0 = unknown/variable
      */
-    readonly clock_rate: number
+    clock_rate: number
     /**
      * encoding parameters. For audio this is the number of
      * channels. NULL = not applicable.
      */
-    readonly encoding_parameters: string
+    encoding_parameters: string
     /**
      * the bitrate of the media. 0 = unknown/variable.
      */
-    readonly bitrate: number
+    bitrate: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -7507,12 +8315,15 @@ class RTPPayloadInfo {
      * types specified with `media` and `encoding` name.
      * 
      * The search for `encoding_name` will be performed in a case insensitive way.
+     * @param media the media to find
+     * @param encoding_name the encoding name to find
      */
     static for_name(media: string, encoding_name: string): RTPPayloadInfo
     /**
      * Get the #GstRTPPayloadInfo for `payload_type`. This function is
      * mostly used to get the default clock-rate and bandwidth for static payload
      * types specified with `payload_type`.
+     * @param payload_type the payload_type to find
      */
     static for_pt(payload_type: number): RTPPayloadInfo
 }
@@ -7521,26 +8332,28 @@ class RTPSourceMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the SSRC
      */
-    readonly ssrc: number
+    ssrc: number
     /**
      * whether `ssrc` is set and valid
      */
-    readonly ssrc_valid: boolean
+    ssrc_valid: boolean
     /**
      * pointer to the CSRCs
      */
-    readonly csrc: number[]
+    csrc: number[]
     /**
      * number of elements in `csrc`
      */
-    readonly csrc_count: number
+    csrc_count: number
     /* Methods of GstRtp-1.0.GstRtp.RTPSourceMeta */
     /**
      * Appends `csrc` to the list of contributing sources in `meta`.
+     * @param csrc the csrcs to append
+     * @param csrc_count number of elements in `csrc`
      */
     append_csrc(csrc: number, csrc_count: number): boolean
     /**
@@ -7549,6 +8362,7 @@ class RTPSourceMeta {
     get_source_count(): number
     /**
      * Sets `ssrc` in `meta`. If `ssrc` is %NULL the ssrc of `meta` will be unset.
+     * @param ssrc pointer to the SSRC
      */
     set_ssrc(ssrc?: number | null): boolean
     static name: string

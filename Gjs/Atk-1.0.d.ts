@@ -1493,10 +1493,12 @@ class Action {
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -1522,10 +1524,12 @@ class Action {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -1549,19 +1553,24 @@ class Action {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Virtual methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -1592,10 +1601,12 @@ class Action {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -1619,6 +1630,7 @@ class Action {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -1628,6 +1640,8 @@ class Action {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -1636,6 +1650,7 @@ class Action {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     static name: string
@@ -1648,6 +1663,9 @@ class Component {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: CoordType): boolean
     /**
@@ -1661,6 +1679,7 @@ class Component {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -1678,6 +1697,7 @@ class Component {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -1694,12 +1714,16 @@ class Component {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -1708,15 +1732,24 @@ class Component {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean
     /**
@@ -1724,10 +1757,15 @@ class Component {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Component */
@@ -1738,6 +1776,9 @@ class Component {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: CoordType): boolean
     /**
@@ -1751,6 +1792,7 @@ class Component {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -1768,6 +1810,7 @@ class Component {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -1784,12 +1827,16 @@ class Component {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -1798,15 +1845,24 @@ class Component {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean
     /**
@@ -1814,16 +1870,22 @@ class Component {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Signals of Atk-1.0.Atk.Component */
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Component, arg1: Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Component, arg1: Rectangle) => void)): number
@@ -1834,6 +1896,7 @@ class Document {
     /* Methods of Atk-1.0.Atk.Document */
     /**
      * Retrieves the value of the given `attribute_name` inside `document`.
+     * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
      */
     get_attribute_value(attribute_name: string): string | null
     /**
@@ -1869,6 +1932,8 @@ class Document {
     get_page_count(): number
     /**
      * Sets the value for the given `attribute_name` inside `document`.
+     * @param attribute_name a character string representing the name of the attribute   whose value is being set.
+     * @param attribute_value a string value to be associated with `attribute_name`.
      */
     set_attribute_value(attribute_name: string, attribute_value: string): boolean
     /* Virtual methods of Atk-1.0.Atk.Document */
@@ -1884,6 +1949,7 @@ class Document {
     vfunc_get_document(): object | null
     /**
      * Retrieves the value of the given `attribute_name` inside `document`.
+     * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
      */
     vfunc_get_document_attribute_value(attribute_name: string): string | null
     /**
@@ -1909,6 +1975,8 @@ class Document {
     vfunc_get_page_count(): number
     /**
      * Sets the value for the given `attribute_name` inside `document`.
+     * @param attribute_name a character string representing the name of the attribute   whose value is being set.
+     * @param attribute_value a string value to be associated with `attribute_name`.
      */
     vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean
     /* Signals of Atk-1.0.Atk.Document */
@@ -1941,6 +2009,7 @@ class Document {
      * The 'page-changed' signal is emitted when the current page of
      * a document changes, e.g. pressing page up/down in a document
      * viewer.
+     * @param page_number the new page number. If this value is unknown or not applicable, -1 should be provided.
      */
     connect(sigName: "page-changed", callback: (($obj: Document, page_number: number) => void)): number
     connect_after(sigName: "page-changed", callback: (($obj: Document, page_number: number) => void)): number
@@ -1962,23 +2031,33 @@ class EditableText {
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     copy_text(start_pos: number, end_pos: number): void
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard and then delete from the widget.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     cut_text(start_pos: number, end_pos: number): void
     /**
      * Delete text `start_pos` up to, but not including `end_pos`.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     delete_text(start_pos: number, end_pos: number): void
     /**
      * Insert text at a given position.
+     * @param string the text to insert
+     * @param length the length of text to insert, in bytes
+     * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
     insert_text(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
+     * @param position position to paste
      */
     paste_text(position: number): void
     /**
@@ -1986,33 +2065,47 @@ class EditableText {
      * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
      * that can be set. Note that other attributes that do not have corresponding
      * ATK_ATTRIBUTE macros may also be set for certain text widgets.
+     * @param attrib_set an #AtkAttributeSet
+     * @param start_offset start of range in which to set attributes
+     * @param end_offset end of range in which to set attributes
      */
     set_run_attributes(attrib_set: AttributeSet, start_offset: number, end_offset: number): boolean
     /**
      * Set text contents of `text`.
+     * @param string string to set for text contents of `text`
      */
     set_text_contents(string: string): void
     /* Virtual methods of Atk-1.0.Atk.EditableText */
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_copy_text(start_pos: number, end_pos: number): void
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard and then delete from the widget.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_cut_text(start_pos: number, end_pos: number): void
     /**
      * Delete text `start_pos` up to, but not including `end_pos`.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_delete_text(start_pos: number, end_pos: number): void
     /**
      * Insert text at a given position.
+     * @param string the text to insert
+     * @param length the length of text to insert, in bytes
+     * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
     vfunc_insert_text(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
+     * @param position position to paste
      */
     vfunc_paste_text(position: number): void
     /**
@@ -2020,10 +2113,14 @@ class EditableText {
      * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
      * that can be set. Note that other attributes that do not have corresponding
      * ATK_ATTRIBUTE macros may also be set for certain text widgets.
+     * @param attrib_set an #AtkAttributeSet
+     * @param start_offset start of range in which to set attributes
+     * @param end_offset end of range in which to set attributes
      */
     vfunc_set_run_attributes(attrib_set: AttributeSet, start_offset: number, end_offset: number): boolean
     /**
      * Set text contents of `text`.
+     * @param string string to set for text contents of `text`
      */
     vfunc_set_text_contents(string: string): void
     static name: string
@@ -2046,11 +2143,13 @@ class Hypertext {
     /**
      * Gets the link in this hypertext document at index
      * `link_index`
+     * @param link_index an integer specifying the desired link
      */
     get_link(link_index: number): Hyperlink
     /**
      * Gets the index into the array of hyperlinks that is associated with
      * the character specified by `char_index`.
+     * @param char_index a character index
      */
     get_link_index(char_index: number): number
     /**
@@ -2061,11 +2160,13 @@ class Hypertext {
     /**
      * Gets the link in this hypertext document at index
      * `link_index`
+     * @param link_index an integer specifying the desired link
      */
     vfunc_get_link(link_index: number): Hyperlink
     /**
      * Gets the index into the array of hyperlinks that is associated with
      * the character specified by `char_index`.
+     * @param char_index a character index
      */
     vfunc_get_link_index(char_index: number): number
     /**
@@ -2078,6 +2179,7 @@ class Hypertext {
      * The "link-selected" signal is emitted by an AtkHyperText
      * object when one of the hyperlinks associated with the object
      * is selected.
+     * @param arg1 the index of the hyperlink which is selected
      */
     connect(sigName: "link-selected", callback: (($obj: Hypertext, arg1: number) => void)): number
     connect_after(sigName: "link-selected", callback: (($obj: Hypertext, arg1: number) => void)): number
@@ -2100,6 +2202,7 @@ class Image {
      * 
      * If the position can not be obtained (e.g. missing support), x and y are set
      * to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_image_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -2113,6 +2216,7 @@ class Image {
     get_image_size(): [ /* width */ number | null, /* height */ number | null ]
     /**
      * Sets the textual description for this image.
+     * @param description a string description to set for `image`
      */
     set_image_description(description: string): boolean
     /* Virtual methods of Atk-1.0.Atk.Image */
@@ -2130,6 +2234,7 @@ class Image {
      * 
      * If the position can not be obtained (e.g. missing support), x and y are set
      * to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_image_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -2143,6 +2248,7 @@ class Image {
     vfunc_get_image_size(): [ /* width */ number | null, /* height */ number | null ]
     /**
      * Sets the textual description for this image.
+     * @param description a string description to set for `image`
      */
     vfunc_set_image_description(description: string): boolean
     static name: string
@@ -2155,6 +2261,7 @@ class Selection {
     /**
      * Adds the specified accessible child of the object to the
      * object's selection.
+     * @param i a #gint specifying the child index.
      */
     add_selection(i: number): boolean
     /**
@@ -2176,6 +2283,7 @@ class Selection {
      * indication of whether AtkSelectionIface is implemented, they should
      * use type checking/interface checking macros or the
      * atk_get_accessible_value() convenience method.
+     * @param i a #gint specifying the child index.
      */
     is_child_selected(i: number): boolean
     /**
@@ -2185,10 +2293,12 @@ class Selection {
      * indication of whether AtkSelectionIface is implemented, they should
      * use type checking/interface checking macros or the
      * atk_get_accessible_value() convenience method.
+     * @param i a #gint specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
      */
     ref_selection(i: number): Object | null
     /**
      * Removes the specified child of the object from the object's selection.
+     * @param i a #gint specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
      */
     remove_selection(i: number): boolean
     /**
@@ -2200,11 +2310,14 @@ class Selection {
     /**
      * Adds the specified accessible child of the object to the
      * object's selection.
+     * @param i a #gint specifying the child index.
      */
     vfunc_add_selection(i: number): boolean
     /* Function overloads */
     /**
      * Adds a selection bounded by the specified offsets.
+     * @param start_offset the starting character offset of the selected region
+     * @param end_offset the offset of the first character after the selected region.
      */
     vfunc_add_selection(start_offset: number, end_offset: number): boolean
     /**
@@ -2226,6 +2339,7 @@ class Selection {
      * indication of whether AtkSelectionIface is implemented, they should
      * use type checking/interface checking macros or the
      * atk_get_accessible_value() convenience method.
+     * @param i a #gint specifying the child index.
      */
     vfunc_is_child_selected(i: number): boolean
     /**
@@ -2235,15 +2349,18 @@ class Selection {
      * indication of whether AtkSelectionIface is implemented, they should
      * use type checking/interface checking macros or the
      * atk_get_accessible_value() convenience method.
+     * @param i a #gint specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
      */
     vfunc_ref_selection(i: number): Object | null
     /**
      * Removes the specified child of the object from the object's selection.
+     * @param i a #gint specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
      */
     vfunc_remove_selection(i: number): boolean
     /* Function overloads */
     /**
      * Removes the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     vfunc_remove_selection(selection_num: number): boolean
     /**
@@ -2267,6 +2384,7 @@ class StreamableContent {
     /**
      * Gets the character string of the specified mime type. The first mime
      * type is at position 0, the second at position 1, and so on.
+     * @param i a gint representing the position of the mime type starting from 0
      */
     get_mime_type(i: number): string
     /**
@@ -2275,6 +2393,7 @@ class StreamableContent {
     get_n_mime_types(): number
     /**
      * Gets the content in the specified mime type.
+     * @param mime_type a gchar* representing the mime type
      */
     get_stream(mime_type: string): GLib.IOChannel
     /**
@@ -2286,12 +2405,14 @@ class StreamableContent {
      * 
      * Note that it is possible for get_uri to return NULL but for
      * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
+     * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
      */
     get_uri(mime_type: string): string | null
     /* Virtual methods of Atk-1.0.Atk.StreamableContent */
     /**
      * Gets the character string of the specified mime type. The first mime
      * type is at position 0, the second at position 1, and so on.
+     * @param i a gint representing the position of the mime type starting from 0
      */
     vfunc_get_mime_type(i: number): string
     /**
@@ -2300,6 +2421,7 @@ class StreamableContent {
     vfunc_get_n_mime_types(): number
     /**
      * Gets the content in the specified mime type.
+     * @param mime_type a gchar* representing the mime type
      */
     vfunc_get_stream(mime_type: string): GLib.IOChannel
     /**
@@ -2311,6 +2433,7 @@ class StreamableContent {
      * 
      * Note that it is possible for get_uri to return NULL but for
      * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
+     * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
      */
     vfunc_get_uri(mime_type: string): string | null
     static name: string
@@ -2319,10 +2442,12 @@ class Table {
     /* Methods of Atk-1.0.Atk.Table */
     /**
      * Adds the specified `column` to the selection.
+     * @param column a #gint representing a column in `table`
      */
     add_column_selection(column: number): boolean
     /**
      * Adds the specified `row` to the selection.
+     * @param row a #gint representing a row in `table`
      */
     add_row_selection(row: number): boolean
     /**
@@ -2331,24 +2456,31 @@ class Table {
     get_caption(): Object | null
     /**
      * Gets a #gint representing the column at the specified `index_`.
+     * @param index_ a #gint representing an index in `table`
      */
     get_column_at_index(index_: number): number
     /**
      * Gets the description text of the specified `column` in the table
+     * @param column a #gint representing a column in `table`
      */
     get_column_description(column: number): string
     /**
      * Gets the number of columns occupied by the accessible object
      * at the specified `row` and `column` in the `table`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     get_column_extent_at(row: number, column: number): number
     /**
      * Gets the column header of a specified column in an accessible table.
+     * @param column a #gint representing a column in the table
      */
     get_column_header(column: number): Object | null
     /**
      * Gets a #gint representing the index at the specified `row` and
      * `column`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     get_index_at(row: number, column: number): number
     /**
@@ -2361,29 +2493,36 @@ class Table {
     get_n_rows(): number
     /**
      * Gets a #gint representing the row at the specified `index_`.
+     * @param index_ a #gint representing an index in `table`
      */
     get_row_at_index(index_: number): number
     /**
      * Gets the description text of the specified row in the table
+     * @param row a #gint representing a row in `table`
      */
     get_row_description(row: number): string | null
     /**
      * Gets the number of rows occupied by the accessible object
      * at a specified `row` and `column` in the `table`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     get_row_extent_at(row: number, column: number): number
     /**
      * Gets the row header of a specified row in an accessible table.
+     * @param row a #gint representing a row in the table
      */
     get_row_header(row: number): Object | null
     /**
      * Gets the selected columns of the table by initializing **selected with
      * the selected column numbers. This array should be freed by the caller.
+     * @param selected a #gint** that is to contain the selected columns numbers
      */
     get_selected_columns(selected: number): number
     /**
      * Gets the selected rows of the table by initializing **selected with
      * the selected row numbers. This array should be freed by the caller.
+     * @param selected a #gint** that is to contain the selected row numbers
      */
     get_selected_rows(selected: number): number
     /**
@@ -2393,62 +2532,82 @@ class Table {
     /**
      * Gets a boolean value indicating whether the specified `column`
      * is selected
+     * @param column a #gint representing a column in `table`
      */
     is_column_selected(column: number): boolean
     /**
      * Gets a boolean value indicating whether the specified `row`
      * is selected
+     * @param row a #gint representing a row in `table`
      */
     is_row_selected(row: number): boolean
     /**
      * Gets a boolean value indicating whether the accessible object
      * at the specified `row` and `column` is selected
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     is_selected(row: number, column: number): boolean
     /**
      * Get a reference to the table cell at `row,` `column`. This cell
      * should implement the interface #AtkTableCell
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     ref_at(row: number, column: number): Object
     /**
      * Adds the specified `column` to the selection.
+     * @param column a #gint representing a column in `table`
      */
     remove_column_selection(column: number): boolean
     /**
      * Removes the specified `row` from the selection.
+     * @param row a #gint representing a row in `table`
      */
     remove_row_selection(row: number): boolean
     /**
      * Sets the caption for the table.
+     * @param caption a #AtkObject representing the caption to set for `table`
      */
     set_caption(caption: Object): void
     /**
      * Sets the description text for the specified `column` of the `table`.
+     * @param column a #gint representing a column in `table`
+     * @param description a #gchar representing the description text to set for the specified `column` of the `table`
      */
     set_column_description(column: number, description: string): void
     /**
      * Sets the specified column header to `header`.
+     * @param column a #gint representing a column in `table`
+     * @param header an #AtkTable
      */
     set_column_header(column: number, header: Object): void
     /**
      * Sets the description text for the specified `row` of `table`.
+     * @param row a #gint representing a row in `table`
+     * @param description a #gchar representing the description text to set for the specified `row` of `table`
      */
     set_row_description(row: number, description: string): void
     /**
      * Sets the specified row header to `header`.
+     * @param row a #gint representing a row in `table`
+     * @param header an #AtkTable
      */
     set_row_header(row: number, header: Object): void
     /**
      * Sets the summary description of the table.
+     * @param accessible an #AtkObject representing the summary description to set for `table`
      */
     set_summary(accessible: Object): void
     /* Virtual methods of Atk-1.0.Atk.Table */
     /**
      * Adds the specified `column` to the selection.
+     * @param column a #gint representing a column in `table`
      */
     vfunc_add_column_selection(column: number): boolean
     /**
      * Adds the specified `row` to the selection.
+     * @param row a #gint representing a row in `table`
      */
     vfunc_add_row_selection(row: number): boolean
     vfunc_column_deleted(column: number, num_deleted: number): void
@@ -2460,24 +2619,31 @@ class Table {
     vfunc_get_caption(): Object | null
     /**
      * Gets a #gint representing the column at the specified `index_`.
+     * @param index_ a #gint representing an index in `table`
      */
     vfunc_get_column_at_index(index_: number): number
     /**
      * Gets the description text of the specified `column` in the table
+     * @param column a #gint representing a column in `table`
      */
     vfunc_get_column_description(column: number): string
     /**
      * Gets the number of columns occupied by the accessible object
      * at the specified `row` and `column` in the `table`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_get_column_extent_at(row: number, column: number): number
     /**
      * Gets the column header of a specified column in an accessible table.
+     * @param column a #gint representing a column in the table
      */
     vfunc_get_column_header(column: number): Object | null
     /**
      * Gets a #gint representing the index at the specified `row` and
      * `column`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_get_index_at(row: number, column: number): number
     /**
@@ -2490,29 +2656,36 @@ class Table {
     vfunc_get_n_rows(): number
     /**
      * Gets a #gint representing the row at the specified `index_`.
+     * @param index_ a #gint representing an index in `table`
      */
     vfunc_get_row_at_index(index_: number): number
     /**
      * Gets the description text of the specified row in the table
+     * @param row a #gint representing a row in `table`
      */
     vfunc_get_row_description(row: number): string | null
     /**
      * Gets the number of rows occupied by the accessible object
      * at a specified `row` and `column` in the `table`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_get_row_extent_at(row: number, column: number): number
     /**
      * Gets the row header of a specified row in an accessible table.
+     * @param row a #gint representing a row in the table
      */
     vfunc_get_row_header(row: number): Object | null
     /**
      * Gets the selected columns of the table by initializing **selected with
      * the selected column numbers. This array should be freed by the caller.
+     * @param selected a #gint** that is to contain the selected columns numbers
      */
     vfunc_get_selected_columns(selected: number): number
     /**
      * Gets the selected rows of the table by initializing **selected with
      * the selected row numbers. This array should be freed by the caller.
+     * @param selected a #gint** that is to contain the selected row numbers
      */
     vfunc_get_selected_rows(selected: number): number
     /**
@@ -2522,30 +2695,38 @@ class Table {
     /**
      * Gets a boolean value indicating whether the specified `column`
      * is selected
+     * @param column a #gint representing a column in `table`
      */
     vfunc_is_column_selected(column: number): boolean
     /**
      * Gets a boolean value indicating whether the specified `row`
      * is selected
+     * @param row a #gint representing a row in `table`
      */
     vfunc_is_row_selected(row: number): boolean
     /**
      * Gets a boolean value indicating whether the accessible object
      * at the specified `row` and `column` is selected
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_is_selected(row: number, column: number): boolean
     vfunc_model_changed(): void
     /**
      * Get a reference to the table cell at `row,` `column`. This cell
      * should implement the interface #AtkTableCell
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_ref_at(row: number, column: number): Object
     /**
      * Adds the specified `column` to the selection.
+     * @param column a #gint representing a column in `table`
      */
     vfunc_remove_column_selection(column: number): boolean
     /**
      * Removes the specified `row` from the selection.
+     * @param row a #gint representing a row in `table`
      */
     vfunc_remove_row_selection(row: number): boolean
     vfunc_row_deleted(row: number, num_deleted: number): void
@@ -2553,32 +2734,44 @@ class Table {
     vfunc_row_reordered(): void
     /**
      * Sets the caption for the table.
+     * @param caption a #AtkObject representing the caption to set for `table`
      */
     vfunc_set_caption(caption: Object): void
     /**
      * Sets the description text for the specified `column` of the `table`.
+     * @param column a #gint representing a column in `table`
+     * @param description a #gchar representing the description text to set for the specified `column` of the `table`
      */
     vfunc_set_column_description(column: number, description: string): void
     /**
      * Sets the specified column header to `header`.
+     * @param column a #gint representing a column in `table`
+     * @param header an #AtkTable
      */
     vfunc_set_column_header(column: number, header: Object): void
     /**
      * Sets the description text for the specified `row` of `table`.
+     * @param row a #gint representing a row in `table`
+     * @param description a #gchar representing the description text to set for the specified `row` of `table`
      */
     vfunc_set_row_description(row: number, description: string): void
     /**
      * Sets the specified row header to `header`.
+     * @param row a #gint representing a row in `table`
+     * @param header an #AtkTable
      */
     vfunc_set_row_header(row: number, header: Object): void
     /**
      * Sets the summary description of the table.
+     * @param accessible an #AtkObject representing the summary description to set for `table`
      */
     vfunc_set_summary(accessible: Object): void
     /* Signals of Atk-1.0.Atk.Table */
     /**
      * The "column-deleted" signal is emitted by an object which
      * implements the AtkTable interface when a column is deleted.
+     * @param arg1 The index of the first column deleted.
+     * @param arg2 The number of columns deleted.
      */
     connect(sigName: "column-deleted", callback: (($obj: Table, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "column-deleted", callback: (($obj: Table, arg1: number, arg2: number) => void)): number
@@ -2586,6 +2779,8 @@ class Table {
     /**
      * The "column-inserted" signal is emitted by an object which
      * implements the AtkTable interface when a column is inserted.
+     * @param arg1 The index of the column inserted.
+     * @param arg2 The number of colums inserted.
      */
     connect(sigName: "column-inserted", callback: (($obj: Table, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "column-inserted", callback: (($obj: Table, arg1: number, arg2: number) => void)): number
@@ -2609,6 +2804,8 @@ class Table {
     /**
      * The "row-deleted" signal is emitted by an object which
      * implements the AtkTable interface when a row is deleted.
+     * @param arg1 The index of the first row deleted.
+     * @param arg2 The number of rows deleted.
      */
     connect(sigName: "row-deleted", callback: (($obj: Table, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "row-deleted", callback: (($obj: Table, arg1: number, arg2: number) => void)): number
@@ -2616,6 +2813,8 @@ class Table {
     /**
      * The "row-inserted" signal is emitted by an object which
      * implements the AtkTable interface when a row is inserted.
+     * @param arg1 The index of the first row inserted.
+     * @param arg2 The number of rows inserted.
      */
     connect(sigName: "row-inserted", callback: (($obj: Table, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "row-inserted", callback: (($obj: Table, arg1: number, arg2: number) => void)): number
@@ -2667,15 +2866,15 @@ class TableCell {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.Object */
-    readonly parent: GObject.Object
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Object
-    readonly role: Role
-    readonly relation_set: RelationSet
-    readonly layer: Layer
+    parent: GObject.Object
+    description: string
+    name: string
+    accessible_parent: Object
+    role: Role
+    relation_set: RelationSet
+    layer: Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.TableCell */
     /**
      * Returns the column headers as an array of cell accessibles.
@@ -2712,6 +2911,8 @@ class TableCell {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -2776,6 +2977,7 @@ class TableCell {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -2783,6 +2985,8 @@ class TableCell {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: State, value: boolean): void
     /**
@@ -2799,6 +3003,7 @@ class TableCell {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Object
     /**
@@ -2812,10 +3017,13 @@ class TableCell {
     ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -2824,6 +3032,7 @@ class TableCell {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -2831,6 +3040,7 @@ class TableCell {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -2838,14 +3048,17 @@ class TableCell {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2883,6 +3096,10 @@ class TableCell {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2893,6 +3110,12 @@ class TableCell {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2916,6 +3139,7 @@ class TableCell {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2935,11 +3159,14 @@ class TableCell {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2947,6 +3174,8 @@ class TableCell {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2964,6 +3193,7 @@ class TableCell {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3009,6 +3239,7 @@ class TableCell {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3052,15 +3283,20 @@ class TableCell {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3101,6 +3337,7 @@ class TableCell {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3135,6 +3372,7 @@ class TableCell {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.TableCell */
@@ -3229,6 +3467,7 @@ class TableCell {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: PropertyValues): void
@@ -3243,6 +3482,7 @@ class TableCell {
     vfunc_ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -3250,6 +3490,7 @@ class TableCell {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -3257,14 +3498,17 @@ class TableCell {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -3286,6 +3530,7 @@ class TableCell {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3295,6 +3540,7 @@ class TableCell {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: TableCell, arg1: Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: TableCell, arg1: Object) => void)): number
@@ -3303,6 +3549,8 @@ class TableCell {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: TableCell, arg1: number, arg2: Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: TableCell, arg1: number, arg2: Object) => void)): number
@@ -3310,6 +3558,7 @@ class TableCell {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: TableCell, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: TableCell, arg1: boolean) => void)): number
@@ -3328,6 +3577,7 @@ class TableCell {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: TableCell, arg1: PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: TableCell, arg1: PropertyValues) => void)): number
@@ -3336,6 +3586,8 @@ class TableCell {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: TableCell, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: TableCell, arg1: string, arg2: boolean) => void)): number
@@ -3376,6 +3628,7 @@ class TableCell {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TableCell, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TableCell, pspec: GObject.ParamSpec) => void)): number
@@ -3421,10 +3674,16 @@ class Text {
     /* Methods of Atk-1.0.Atk.Text */
     /**
      * Adds a selection bounded by the specified offsets.
+     * @param start_offset the starting character offset of the selected region
+     * @param end_offset the offset of the first character after the selected region.
      */
     add_selection(start_offset: number, end_offset: number): boolean
     /**
      * Get the ranges of text in the specified bounding box.
+     * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+     * @param x_clip_type Specify the horizontal clip type.
+     * @param y_clip_type Specify the vertical clip type.
      */
     get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[]
     /**
@@ -3433,6 +3692,7 @@ class Text {
     get_caret_offset(): number
     /**
      * Gets the specified text.
+     * @param offset a character offset within `text`
      */
     get_character_at_offset(offset: number): number
     /**
@@ -3445,6 +3705,8 @@ class Text {
      * 
      * Get the bounding box containing the glyph representing the character at
      *     a particular text offset.
+     * @param offset The offset of the text character for which bounding information is required.
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     get_character_extents(offset: number, coords: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -3462,6 +3724,9 @@ class Text {
      * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
      * are interpreted as being relative to the screen or this widget's window
      * depending on `coords`.
+     * @param x screen x-position of character
+     * @param y screen y-position of character
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     get_offset_at_point(x: number, y: number, coords: CoordType): number
     /**
@@ -3469,6 +3734,9 @@ class Text {
      * 
      * If the extents can not be obtained (e.g. or missing support), the rectangle
      * fields are set to -1.
+     * @param start_offset The offset of the first text character for which boundary        information is required.
+     * @param end_offset The offset of the text character after the last character        for which boundary information is required.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
      */
     get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): /* rect */ TextRectangle
     /**
@@ -3479,10 +3747,12 @@ class Text {
      * after the range.  See the enum AtkTextAttribute for types of text
      * attributes that can be returned. Note that other attributes may also be
      * returned.
+     * @param offset the character offset at which to get the attributes, -1 means the offset of the character to be inserted at the caret location.
      */
     get_run_attributes(offset: number): [ /* returnType */ AttributeSet, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the text from the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     get_selection(selection_num: number): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -3516,14 +3786,20 @@ class Text {
      * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtkTextGranularity
      */
     get_string_at_offset(offset: number, granularity: TextGranularity): [ /* returnType */ string | null, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param start_offset a starting character offset within `text`
+     * @param end_offset an ending character offset within `text,` or -1 for the end of the string.
      */
     get_text(start_offset: number, end_offset: number): string
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_after_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -3551,23 +3827,36 @@ class Text {
      * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
      * string is from the line start at or before the offset to the line
      * start after the offset.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_at_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_before_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Removes the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     remove_selection(selection_num: number): boolean
     /**
      * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param type specify where the object should be made visible.
      */
     scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean
     /**
      * Move the top-left of a substring of `text` to a given position of the screen
      * by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean
     /**
@@ -3588,19 +3877,29 @@ class Text {
      * method should not trigger one either. If the application does not have a caret
      * motion or focus navigation operation, this method should try to scroll the new
      * caret position into view while minimizing unnecessary scroll motion.
+     * @param offset the character offset of the new caret position
      */
     set_caret_offset(offset: number): boolean
     /**
      * Changes the start and end offset of the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
+     * @param start_offset the new starting character offset of the selection
+     * @param end_offset the new end position of (e.g. offset immediately past) the selection
      */
     set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Text */
     /**
      * Adds a selection bounded by the specified offsets.
+     * @param start_offset the starting character offset of the selected region
+     * @param end_offset the offset of the first character after the selected region.
      */
     vfunc_add_selection(start_offset: number, end_offset: number): boolean
     /**
      * Get the ranges of text in the specified bounding box.
+     * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+     * @param x_clip_type Specify the horizontal clip type.
+     * @param y_clip_type Specify the vertical clip type.
      */
     vfunc_get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[]
     /**
@@ -3609,6 +3908,7 @@ class Text {
     vfunc_get_caret_offset(): number
     /**
      * Gets the specified text.
+     * @param offset a character offset within `text`
      */
     vfunc_get_character_at_offset(offset: number): number
     /**
@@ -3621,6 +3921,8 @@ class Text {
      * 
      * Get the bounding box containing the glyph representing the character at
      *     a particular text offset.
+     * @param offset The offset of the text character for which bounding information is required.
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     vfunc_get_character_extents(offset: number, coords: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -3638,6 +3940,9 @@ class Text {
      * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
      * are interpreted as being relative to the screen or this widget's window
      * depending on `coords`.
+     * @param x screen x-position of character
+     * @param y screen y-position of character
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     vfunc_get_offset_at_point(x: number, y: number, coords: CoordType): number
     /**
@@ -3645,6 +3950,9 @@ class Text {
      * 
      * If the extents can not be obtained (e.g. or missing support), the rectangle
      * fields are set to -1.
+     * @param start_offset The offset of the first text character for which boundary        information is required.
+     * @param end_offset The offset of the text character after the last character        for which boundary information is required.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
      */
     vfunc_get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): /* rect */ TextRectangle
     /**
@@ -3655,10 +3963,12 @@ class Text {
      * after the range.  See the enum AtkTextAttribute for types of text
      * attributes that can be returned. Note that other attributes may also be
      * returned.
+     * @param offset the character offset at which to get the attributes, -1 means the offset of the character to be inserted at the caret location.
      */
     vfunc_get_run_attributes(offset: number): [ /* returnType */ AttributeSet, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the text from the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     vfunc_get_selection(selection_num: number): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -3692,14 +4002,20 @@ class Text {
      * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtkTextGranularity
      */
     vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [ /* returnType */ string | null, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param start_offset a starting character offset within `text`
+     * @param end_offset an ending character offset within `text,` or -1 for the end of the string.
      */
     vfunc_get_text(start_offset: number, end_offset: number): string
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_after_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -3727,23 +4043,36 @@ class Text {
      * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
      * string is from the line start at or before the offset to the line
      * start after the offset.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_at_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_before_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Removes the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     vfunc_remove_selection(selection_num: number): boolean
     /**
      * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean
     /**
      * Move the top-left of a substring of `text` to a given position of the screen
      * by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean
     /**
@@ -3764,10 +4093,14 @@ class Text {
      * method should not trigger one either. If the application does not have a caret
      * motion or focus navigation operation, this method should try to scroll the new
      * caret position into view while minimizing unnecessary scroll motion.
+     * @param offset the character offset of the new caret position
      */
     vfunc_set_caret_offset(offset: number): boolean
     /**
      * Changes the start and end offset of the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
+     * @param start_offset the new starting character offset of the selection
+     * @param end_offset the new end position of (e.g. offset immediately past) the selection
      */
     vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
     vfunc_text_attributes_changed(): void
@@ -3787,6 +4120,7 @@ class Text {
      * The "text-caret-moved" signal is emitted when the caret
      * position of the text of an object which implements AtkText
      * changes.
+     * @param arg1 The new position of the text caret.
      */
     connect(sigName: "text-caret-moved", callback: (($obj: Text, arg1: number) => void)): number
     connect_after(sigName: "text-caret-moved", callback: (($obj: Text, arg1: number) => void)): number
@@ -3797,6 +4131,8 @@ class Text {
      * signal will have a detail which is either "insert" or
      * "delete" which identifies whether the text change was an
      * insertion or a deletion.
+     * @param arg1 The position (character offset) of the insertion or deletion.
+     * @param arg2 The length (in characters) of text inserted or deleted.
      */
     connect(sigName: "text-changed", callback: (($obj: Text, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "text-changed", callback: (($obj: Text, arg1: number, arg2: number) => void)): number
@@ -3806,6 +4142,9 @@ class Text {
      * inserted. If the signal was not triggered by the user
      * (e.g. typing or pasting text), the "system" detail should be
      * included.
+     * @param arg1 The position (character offset) of the insertion.
+     * @param arg2 The length (in characters) of text inserted.
+     * @param arg3 The new text inserted
      */
     connect(sigName: "text-insert", callback: (($obj: Text, arg1: number, arg2: number, arg3: string) => void)): number
     connect_after(sigName: "text-insert", callback: (($obj: Text, arg1: number, arg2: number, arg3: string) => void)): number
@@ -3815,6 +4154,9 @@ class Text {
      * removed. If the signal was not triggered by the user
      * (e.g. typing or pasting text), the "system" detail should be
      * included.
+     * @param arg1 The position (character offset) of the removal.
+     * @param arg2 The length (in characters) of text removed.
+     * @param arg3 The old text removed
      */
     connect(sigName: "text-remove", callback: (($obj: Text, arg1: number, arg2: number, arg3: string) => void)): number
     connect_after(sigName: "text-remove", callback: (($obj: Text, arg1: number, arg2: number, arg3: string) => void)): number
@@ -3832,6 +4174,7 @@ class Text {
      * Frees the memory associated with an array of AtkTextRange. It is assumed
      * that the array was returned by the function atk_text_get_bounded_ranges
      * and is NULL terminated.
+     * @param ranges A pointer to an array of #AtkTextRange which is   to be freed.
      */
     static free_ranges(ranges: TextRange[]): void
 }
@@ -3879,6 +4222,7 @@ class Value {
     get_value_and_text(): [ /* value */ number, /* text */ string | null ]
     /**
      * Sets the value of this object.
+     * @param value a #GValue which is the desired new accessible value.
      */
     set_current_value(value: any): boolean
     /**
@@ -3896,6 +4240,7 @@ class Value {
      * decide it, and returned TRUE in any case. For that reason it is not
      * required anymore to return if the value was properly assigned or
      * not.
+     * @param new_value a double which is the desired new accessible value.
      */
     set_value(new_value: number): void
     /* Virtual methods of Atk-1.0.Atk.Value */
@@ -3941,6 +4286,7 @@ class Value {
     vfunc_get_value_and_text(): [ /* value */ number, /* text */ string | null ]
     /**
      * Sets the value of this object.
+     * @param value a #GValue which is the desired new accessible value.
      */
     vfunc_set_current_value(value: any): boolean
     /**
@@ -3958,6 +4304,7 @@ class Value {
      * decide it, and returned TRUE in any case. For that reason it is not
      * required anymore to return if the value was properly assigned or
      * not.
+     * @param new_value a double which is the desired new accessible value.
      */
     vfunc_set_value(new_value: number): void
     /* Signals of Atk-1.0.Atk.Value */
@@ -3974,6 +4321,8 @@ class Value {
      * Example: a password meter whose value changes as the user
      * types their new password. Appropiate value text would be
      * "weak", "acceptable" and "strong".
+     * @param value the new value in a numerical form.
+     * @param text human readable text alternative (also called description) of this object. NULL if not available.
      */
     connect(sigName: "value-changed", callback: (($obj: Value, value: number, text: string) => void)): number
     connect_after(sigName: "value-changed", callback: (($obj: Value, value: number, text: string) => void)): number
@@ -4017,18 +4366,20 @@ class Window {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.Object */
-    readonly parent: GObject.Object
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Object
-    readonly role: Role
-    readonly relation_set: RelationSet
-    readonly layer: Layer
+    parent: GObject.Object
+    description: string
+    name: string
+    accessible_parent: Object
+    role: Role
+    relation_set: RelationSet
+    layer: Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -4093,6 +4444,7 @@ class Window {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -4100,6 +4452,8 @@ class Window {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: State, value: boolean): void
     /**
@@ -4116,6 +4470,7 @@ class Window {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Object
     /**
@@ -4129,10 +4484,13 @@ class Window {
     ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -4141,6 +4499,7 @@ class Window {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -4148,6 +4507,7 @@ class Window {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -4155,14 +4515,17 @@ class Window {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4200,6 +4563,10 @@ class Window {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4210,6 +4577,12 @@ class Window {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4233,6 +4606,7 @@ class Window {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4252,11 +4626,14 @@ class Window {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4264,6 +4641,8 @@ class Window {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4281,6 +4660,7 @@ class Window {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4326,6 +4706,7 @@ class Window {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4369,15 +4750,20 @@ class Window {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4418,6 +4804,7 @@ class Window {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4452,6 +4839,7 @@ class Window {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -4513,6 +4901,7 @@ class Window {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: PropertyValues): void
@@ -4527,6 +4916,7 @@ class Window {
     vfunc_ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -4534,6 +4924,7 @@ class Window {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -4541,14 +4932,17 @@ class Window {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -4570,6 +4964,7 @@ class Window {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4643,6 +5038,7 @@ class Window {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Window, arg1: Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Window, arg1: Object) => void)): number
@@ -4651,6 +5047,8 @@ class Window {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Window, arg1: number, arg2: Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Window, arg1: number, arg2: Object) => void)): number
@@ -4658,6 +5056,7 @@ class Window {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Window, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Window, arg1: boolean) => void)): number
@@ -4676,6 +5075,7 @@ class Window {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Window, arg1: PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Window, arg1: PropertyValues) => void)): number
@@ -4684,6 +5084,8 @@ class Window {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Window, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Window, arg1: string, arg2: boolean) => void)): number
@@ -4724,6 +5126,7 @@ class Window {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
@@ -4802,15 +5205,15 @@ class GObjectAccessible {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.Object */
-    readonly parent: GObject.Object
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Object
-    readonly role: Role
-    readonly relation_set: RelationSet
-    readonly layer: Layer
+    parent: GObject.Object
+    description: string
+    name: string
+    accessible_parent: Object
+    role: Role
+    relation_set: RelationSet
+    layer: Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.GObjectAccessible */
     /**
      * Gets the GObject for which `obj` is the accessible object.
@@ -4819,6 +5222,8 @@ class GObjectAccessible {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -4883,6 +5288,7 @@ class GObjectAccessible {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -4890,6 +5296,8 @@ class GObjectAccessible {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: State, value: boolean): void
     /**
@@ -4906,6 +5314,7 @@ class GObjectAccessible {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Object
     /**
@@ -4919,10 +5328,13 @@ class GObjectAccessible {
     ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -4931,6 +5343,7 @@ class GObjectAccessible {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -4938,6 +5351,7 @@ class GObjectAccessible {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -4945,14 +5359,17 @@ class GObjectAccessible {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4990,6 +5407,10 @@ class GObjectAccessible {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5000,6 +5421,12 @@ class GObjectAccessible {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5023,6 +5450,7 @@ class GObjectAccessible {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5042,11 +5470,14 @@ class GObjectAccessible {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5054,6 +5485,8 @@ class GObjectAccessible {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5071,6 +5504,7 @@ class GObjectAccessible {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5116,6 +5550,7 @@ class GObjectAccessible {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5159,15 +5594,20 @@ class GObjectAccessible {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5208,6 +5648,7 @@ class GObjectAccessible {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5242,6 +5683,7 @@ class GObjectAccessible {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -5303,6 +5745,7 @@ class GObjectAccessible {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: PropertyValues): void
@@ -5317,6 +5760,7 @@ class GObjectAccessible {
     vfunc_ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -5324,6 +5768,7 @@ class GObjectAccessible {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -5331,14 +5776,17 @@ class GObjectAccessible {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -5360,6 +5808,7 @@ class GObjectAccessible {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5369,6 +5818,7 @@ class GObjectAccessible {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: GObjectAccessible, arg1: Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: GObjectAccessible, arg1: Object) => void)): number
@@ -5377,6 +5827,8 @@ class GObjectAccessible {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: GObjectAccessible, arg1: number, arg2: Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: GObjectAccessible, arg1: number, arg2: Object) => void)): number
@@ -5384,6 +5836,7 @@ class GObjectAccessible {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: GObjectAccessible, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: GObjectAccessible, arg1: boolean) => void)): number
@@ -5402,6 +5855,7 @@ class GObjectAccessible {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: GObjectAccessible, arg1: PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: GObjectAccessible, arg1: PropertyValues) => void)): number
@@ -5410,6 +5864,8 @@ class GObjectAccessible {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: GObjectAccessible, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: GObjectAccessible, arg1: string, arg2: boolean) => void)): number
@@ -5450,6 +5906,7 @@ class GObjectAccessible {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GObjectAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GObjectAccessible, pspec: GObject.ParamSpec) => void)): number
@@ -5492,6 +5949,7 @@ class GObjectAccessible {
     /* Static methods and pseudo-constructors */
     /**
      * Gets the accessible object for the specified `obj`.
+     * @param obj a #GObject
      */
     static for_object(obj: GObject.Object): Object
     static $gtype: GObject.Type
@@ -5508,7 +5966,7 @@ class Hyperlink {
     readonly selected_link: boolean
     readonly start_index: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Hyperlink */
     /**
      * Gets the index with the hypertext document at which this link ends.
@@ -5525,6 +5983,7 @@ class Hyperlink {
      * hyperlink etc.
      * 
      * Multiple anchors are primarily used by client-side image maps.
+     * @param i a (zero-index) integer specifying the desired anchor
      */
     get_object(i: number): Object
     /**
@@ -5536,6 +5995,7 @@ class Hyperlink {
      * by `i` of `link_`.
      * 
      * Multiple anchors are primarily used by client-side image maps.
+     * @param i a (zero-index) integer specifying the desired anchor
      */
     get_uri(i: number): string
     /**
@@ -5590,6 +6050,10 @@ class Hyperlink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5600,6 +6064,12 @@ class Hyperlink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5623,6 +6093,7 @@ class Hyperlink {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5642,11 +6113,14 @@ class Hyperlink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5654,6 +6128,8 @@ class Hyperlink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5671,6 +6147,7 @@ class Hyperlink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5716,6 +6193,7 @@ class Hyperlink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5759,15 +6237,20 @@ class Hyperlink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5808,6 +6291,7 @@ class Hyperlink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5842,15 +6326,18 @@ class Hyperlink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -5876,10 +6363,12 @@ class Hyperlink {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -5903,10 +6392,13 @@ class Hyperlink {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Virtual methods of Atk-1.0.Atk.Hyperlink */
@@ -5925,6 +6417,7 @@ class Hyperlink {
      * hyperlink etc.
      * 
      * Multiple anchors are primarily used by client-side image maps.
+     * @param i a (zero-index) integer specifying the desired anchor
      */
     vfunc_get_object(i: number): Object
     /**
@@ -5936,6 +6429,7 @@ class Hyperlink {
      * by `i` of `link_`.
      * 
      * Multiple anchors are primarily used by client-side image maps.
+     * @param i a (zero-index) integer specifying the desired anchor
      */
     vfunc_get_uri(i: number): string
     /**
@@ -5952,10 +6446,12 @@ class Hyperlink {
     vfunc_link_state(): number
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -5986,10 +6482,12 @@ class Hyperlink {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -6013,6 +6511,7 @@ class Hyperlink {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -6022,6 +6521,8 @@ class Hyperlink {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -6030,6 +6531,7 @@ class Hyperlink {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6049,6 +6551,7 @@ class Hyperlink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6088,6 +6591,7 @@ class Hyperlink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Hyperlink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Hyperlink, pspec: GObject.ParamSpec) => void)): number
@@ -6113,7 +6617,7 @@ interface Misc_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Misc {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Misc */
     /**
      * Take the thread mutex for the GUI toolkit,
@@ -6169,6 +6673,10 @@ class Misc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6179,6 +6687,12 @@ class Misc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6202,6 +6716,7 @@ class Misc {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6221,11 +6736,14 @@ class Misc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6233,6 +6751,8 @@ class Misc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6250,6 +6770,7 @@ class Misc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6295,6 +6816,7 @@ class Misc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6338,15 +6860,20 @@ class Misc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6387,6 +6914,7 @@ class Misc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6421,6 +6949,7 @@ class Misc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.Misc */
@@ -6460,6 +6989,7 @@ class Misc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6492,6 +7022,7 @@ class Misc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Misc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Misc, pspec: GObject.ParamSpec) => void)): number
@@ -6547,18 +7078,20 @@ class NoOpObject {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.Object */
-    readonly parent: GObject.Object
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Object
-    readonly role: Role
-    readonly relation_set: RelationSet
-    readonly layer: Layer
+    parent: GObject.Object
+    description: string
+    name: string
+    accessible_parent: Object
+    role: Role
+    relation_set: RelationSet
+    layer: Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -6623,6 +7156,7 @@ class NoOpObject {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -6630,6 +7164,8 @@ class NoOpObject {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: State, value: boolean): void
     /**
@@ -6646,6 +7182,7 @@ class NoOpObject {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Object
     /**
@@ -6659,10 +7196,13 @@ class NoOpObject {
     ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -6671,6 +7211,7 @@ class NoOpObject {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -6678,6 +7219,7 @@ class NoOpObject {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -6685,14 +7227,17 @@ class NoOpObject {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6730,6 +7275,10 @@ class NoOpObject {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6740,6 +7289,12 @@ class NoOpObject {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6763,6 +7318,7 @@ class NoOpObject {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6782,11 +7338,14 @@ class NoOpObject {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6794,6 +7353,8 @@ class NoOpObject {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6811,6 +7372,7 @@ class NoOpObject {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6856,6 +7418,7 @@ class NoOpObject {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6899,15 +7462,20 @@ class NoOpObject {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6948,6 +7516,7 @@ class NoOpObject {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6982,15 +7551,18 @@ class NoOpObject {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Action */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_description(i: number): string | null
     /**
@@ -7016,10 +7588,12 @@ class NoOpObject {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     get_localized_name(i: number): string | null
     /**
@@ -7043,10 +7617,13 @@ class NoOpObject {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     get_name(i: number): string | null
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     set_description(i: number, desc: string): boolean
     /* Methods of Atk-1.0.Atk.Component */
@@ -7056,6 +7633,9 @@ class NoOpObject {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: CoordType): boolean
     /**
@@ -7069,6 +7649,7 @@ class NoOpObject {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -7077,6 +7658,7 @@ class NoOpObject {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -7093,12 +7675,16 @@ class NoOpObject {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -7107,15 +7693,24 @@ class NoOpObject {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean
     /**
@@ -7123,15 +7718,21 @@ class NoOpObject {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Methods of Atk-1.0.Atk.Document */
     /**
      * Retrieves the value of the given `attribute_name` inside `document`.
+     * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
      */
     get_attribute_value(attribute_name: string): string | null
     /**
@@ -7162,29 +7763,41 @@ class NoOpObject {
     get_page_count(): number
     /**
      * Sets the value for the given `attribute_name` inside `document`.
+     * @param attribute_name a character string representing the name of the attribute   whose value is being set.
+     * @param attribute_value a string value to be associated with `attribute_name`.
      */
     set_attribute_value(attribute_name: string, attribute_value: string): boolean
     /* Methods of Atk-1.0.Atk.EditableText */
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     copy_text(start_pos: number, end_pos: number): void
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard and then delete from the widget.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     cut_text(start_pos: number, end_pos: number): void
     /**
      * Delete text `start_pos` up to, but not including `end_pos`.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     delete_text(start_pos: number, end_pos: number): void
     /**
      * Insert text at a given position.
+     * @param string the text to insert
+     * @param length the length of text to insert, in bytes
+     * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
     insert_text(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
+     * @param position position to paste
      */
     paste_text(position: number): void
     /**
@@ -7192,21 +7805,27 @@ class NoOpObject {
      * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
      * that can be set. Note that other attributes that do not have corresponding
      * ATK_ATTRIBUTE macros may also be set for certain text widgets.
+     * @param attrib_set an #AtkAttributeSet
+     * @param start_offset start of range in which to set attributes
+     * @param end_offset end of range in which to set attributes
      */
     set_run_attributes(attrib_set: AttributeSet, start_offset: number, end_offset: number): boolean
     /**
      * Set text contents of `text`.
+     * @param string string to set for text contents of `text`
      */
     set_text_contents(string: string): void
     /* Methods of Atk-1.0.Atk.Hypertext */
     /**
      * Gets the link in this hypertext document at index
      * `link_index`
+     * @param link_index an integer specifying the desired link
      */
     get_link(link_index: number): Hyperlink
     /**
      * Gets the index into the array of hyperlinks that is associated with
      * the character specified by `char_index`.
+     * @param char_index a character index
      */
     get_link_index(char_index: number): number
     /**
@@ -7228,6 +7847,7 @@ class NoOpObject {
      * 
      * If the position can not be obtained (e.g. missing support), x and y are set
      * to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_image_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -7241,12 +7861,14 @@ class NoOpObject {
     get_image_size(): [ /* width */ number | null, /* height */ number | null ]
     /**
      * Sets the textual description for this image.
+     * @param description a string description to set for `image`
      */
     set_image_description(description: string): boolean
     /* Methods of Atk-1.0.Atk.Selection */
     /**
      * Adds the specified accessible child of the object to the
      * object's selection.
+     * @param i a #gint specifying the child index.
      */
     add_selection(i: number): boolean
     /**
@@ -7268,6 +7890,7 @@ class NoOpObject {
      * indication of whether AtkSelectionIface is implemented, they should
      * use type checking/interface checking macros or the
      * atk_get_accessible_value() convenience method.
+     * @param i a #gint specifying the child index.
      */
     is_child_selected(i: number): boolean
     /**
@@ -7277,10 +7900,12 @@ class NoOpObject {
      * indication of whether AtkSelectionIface is implemented, they should
      * use type checking/interface checking macros or the
      * atk_get_accessible_value() convenience method.
+     * @param i a #gint specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
      */
     ref_selection(i: number): Object | null
     /**
      * Removes the specified child of the object from the object's selection.
+     * @param i a #gint specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
      */
     remove_selection(i: number): boolean
     /**
@@ -7291,10 +7916,12 @@ class NoOpObject {
     /* Methods of Atk-1.0.Atk.Table */
     /**
      * Adds the specified `column` to the selection.
+     * @param column a #gint representing a column in `table`
      */
     add_column_selection(column: number): boolean
     /**
      * Adds the specified `row` to the selection.
+     * @param row a #gint representing a row in `table`
      */
     add_row_selection(row: number): boolean
     /**
@@ -7303,24 +7930,31 @@ class NoOpObject {
     get_caption(): Object | null
     /**
      * Gets a #gint representing the column at the specified `index_`.
+     * @param index_ a #gint representing an index in `table`
      */
     get_column_at_index(index_: number): number
     /**
      * Gets the description text of the specified `column` in the table
+     * @param column a #gint representing a column in `table`
      */
     get_column_description(column: number): string
     /**
      * Gets the number of columns occupied by the accessible object
      * at the specified `row` and `column` in the `table`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     get_column_extent_at(row: number, column: number): number
     /**
      * Gets the column header of a specified column in an accessible table.
+     * @param column a #gint representing a column in the table
      */
     get_column_header(column: number): Object | null
     /**
      * Gets a #gint representing the index at the specified `row` and
      * `column`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     get_index_at(row: number, column: number): number
     /**
@@ -7333,29 +7967,36 @@ class NoOpObject {
     get_n_rows(): number
     /**
      * Gets a #gint representing the row at the specified `index_`.
+     * @param index_ a #gint representing an index in `table`
      */
     get_row_at_index(index_: number): number
     /**
      * Gets the description text of the specified row in the table
+     * @param row a #gint representing a row in `table`
      */
     get_row_description(row: number): string | null
     /**
      * Gets the number of rows occupied by the accessible object
      * at a specified `row` and `column` in the `table`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     get_row_extent_at(row: number, column: number): number
     /**
      * Gets the row header of a specified row in an accessible table.
+     * @param row a #gint representing a row in the table
      */
     get_row_header(row: number): Object | null
     /**
      * Gets the selected columns of the table by initializing **selected with
      * the selected column numbers. This array should be freed by the caller.
+     * @param selected a #gint** that is to contain the selected columns numbers
      */
     get_selected_columns(selected: number): number
     /**
      * Gets the selected rows of the table by initializing **selected with
      * the selected row numbers. This array should be freed by the caller.
+     * @param selected a #gint** that is to contain the selected row numbers
      */
     get_selected_rows(selected: number): number
     /**
@@ -7365,53 +8006,71 @@ class NoOpObject {
     /**
      * Gets a boolean value indicating whether the specified `column`
      * is selected
+     * @param column a #gint representing a column in `table`
      */
     is_column_selected(column: number): boolean
     /**
      * Gets a boolean value indicating whether the specified `row`
      * is selected
+     * @param row a #gint representing a row in `table`
      */
     is_row_selected(row: number): boolean
     /**
      * Gets a boolean value indicating whether the accessible object
      * at the specified `row` and `column` is selected
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     is_selected(row: number, column: number): boolean
     /**
      * Get a reference to the table cell at `row,` `column`. This cell
      * should implement the interface #AtkTableCell
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     ref_at(row: number, column: number): Object
     /**
      * Adds the specified `column` to the selection.
+     * @param column a #gint representing a column in `table`
      */
     remove_column_selection(column: number): boolean
     /**
      * Removes the specified `row` from the selection.
+     * @param row a #gint representing a row in `table`
      */
     remove_row_selection(row: number): boolean
     /**
      * Sets the caption for the table.
+     * @param caption a #AtkObject representing the caption to set for `table`
      */
     set_caption(caption: Object): void
     /**
      * Sets the description text for the specified `column` of the `table`.
+     * @param column a #gint representing a column in `table`
+     * @param description a #gchar representing the description text to set for the specified `column` of the `table`
      */
     set_column_description(column: number, description: string): void
     /**
      * Sets the specified column header to `header`.
+     * @param column a #gint representing a column in `table`
+     * @param header an #AtkTable
      */
     set_column_header(column: number, header: Object): void
     /**
      * Sets the description text for the specified `row` of `table`.
+     * @param row a #gint representing a row in `table`
+     * @param description a #gchar representing the description text to set for the specified `row` of `table`
      */
     set_row_description(row: number, description: string): void
     /**
      * Sets the specified row header to `header`.
+     * @param row a #gint representing a row in `table`
+     * @param header an #AtkTable
      */
     set_row_header(row: number, header: Object): void
     /**
      * Sets the summary description of the table.
+     * @param accessible an #AtkObject representing the summary description to set for `table`
      */
     set_summary(accessible: Object): void
     /* Methods of Atk-1.0.Atk.TableCell */
@@ -7450,10 +8109,16 @@ class NoOpObject {
     /* Methods of Atk-1.0.Atk.Text */
     /**
      * Adds a selection bounded by the specified offsets.
+     * @param start_offset the starting character offset of the selected region
+     * @param end_offset the offset of the first character after the selected region.
      */
     add_selection(start_offset: number, end_offset: number): boolean
     /**
      * Get the ranges of text in the specified bounding box.
+     * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+     * @param x_clip_type Specify the horizontal clip type.
+     * @param y_clip_type Specify the vertical clip type.
      */
     get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[]
     /**
@@ -7462,6 +8127,7 @@ class NoOpObject {
     get_caret_offset(): number
     /**
      * Gets the specified text.
+     * @param offset a character offset within `text`
      */
     get_character_at_offset(offset: number): number
     /**
@@ -7474,6 +8140,8 @@ class NoOpObject {
      * 
      * Get the bounding box containing the glyph representing the character at
      *     a particular text offset.
+     * @param offset The offset of the text character for which bounding information is required.
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     get_character_extents(offset: number, coords: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -7491,6 +8159,9 @@ class NoOpObject {
      * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
      * are interpreted as being relative to the screen or this widget's window
      * depending on `coords`.
+     * @param x screen x-position of character
+     * @param y screen y-position of character
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     get_offset_at_point(x: number, y: number, coords: CoordType): number
     /**
@@ -7498,6 +8169,9 @@ class NoOpObject {
      * 
      * If the extents can not be obtained (e.g. or missing support), the rectangle
      * fields are set to -1.
+     * @param start_offset The offset of the first text character for which boundary        information is required.
+     * @param end_offset The offset of the text character after the last character        for which boundary information is required.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
      */
     get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): /* rect */ TextRectangle
     /**
@@ -7508,10 +8182,12 @@ class NoOpObject {
      * after the range.  See the enum AtkTextAttribute for types of text
      * attributes that can be returned. Note that other attributes may also be
      * returned.
+     * @param offset the character offset at which to get the attributes, -1 means the offset of the character to be inserted at the caret location.
      */
     get_run_attributes(offset: number): [ /* returnType */ AttributeSet, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the text from the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     get_selection(selection_num: number): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -7545,14 +8221,20 @@ class NoOpObject {
      * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtkTextGranularity
      */
     get_string_at_offset(offset: number, granularity: TextGranularity): [ /* returnType */ string | null, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param start_offset a starting character offset within `text`
+     * @param end_offset an ending character offset within `text,` or -1 for the end of the string.
      */
     get_text(start_offset: number, end_offset: number): string
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_after_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -7580,23 +8262,36 @@ class NoOpObject {
      * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
      * string is from the line start at or before the offset to the line
      * start after the offset.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_at_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     get_text_before_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Removes the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     remove_selection(selection_num: number): boolean
     /**
      * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param type specify where the object should be made visible.
      */
     scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean
     /**
      * Move the top-left of a substring of `text` to a given position of the screen
      * by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean
     /**
@@ -7617,10 +8312,14 @@ class NoOpObject {
      * method should not trigger one either. If the application does not have a caret
      * motion or focus navigation operation, this method should try to scroll the new
      * caret position into view while minimizing unnecessary scroll motion.
+     * @param offset the character offset of the new caret position
      */
     set_caret_offset(offset: number): boolean
     /**
      * Changes the start and end offset of the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
+     * @param start_offset the new starting character offset of the selection
+     * @param end_offset the new end position of (e.g. offset immediately past) the selection
      */
     set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
     /* Methods of Atk-1.0.Atk.Value */
@@ -7666,6 +8365,7 @@ class NoOpObject {
     get_value_and_text(): [ /* value */ number, /* text */ string | null ]
     /**
      * Sets the value of this object.
+     * @param value a #GValue which is the desired new accessible value.
      */
     set_current_value(value: any): boolean
     /**
@@ -7683,15 +8383,18 @@ class NoOpObject {
      * decide it, and returned TRUE in any case. For that reason it is not
      * required anymore to return if the value was properly assigned or
      * not.
+     * @param new_value a double which is the desired new accessible value.
      */
     set_value(new_value: number): void
     /* Virtual methods of Atk-1.0.Atk.NoOpObject */
     /**
      * Perform the specified action on the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_do_action(i: number): boolean
     /**
      * Returns a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_description(i: number): string | null
     /* Function overloads */
@@ -7722,10 +8425,12 @@ class NoOpObject {
      * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
      * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
      * it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_keybinding(i: number): string | null
     /**
      * Returns the localized name of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_localized_name(i: number): string | null
     /**
@@ -7749,6 +8454,7 @@ class NoOpObject {
      * reported action is actually 'bound' to a nontrivial user event;
      * i.e. the result of some actions via atk_action_do_action() may be
      * NIL.
+     * @param i the action index corresponding to the action to be performed
      */
     vfunc_get_name(i: number): string | null
     /* Function overloads */
@@ -7758,6 +8464,8 @@ class NoOpObject {
     vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
+     * @param i the action index corresponding to the action to be performed
+     * @param desc the description to be assigned to this action
      */
     vfunc_set_description(i: number, desc: string): boolean
     /* Function overloads */
@@ -7766,6 +8474,7 @@ class NoOpObject {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     vfunc_bounds_changed(bounds: Rectangle): void
@@ -7775,6 +8484,9 @@ class NoOpObject {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: CoordType): boolean
     /**
@@ -7788,6 +8500,7 @@ class NoOpObject {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -7805,6 +8518,7 @@ class NoOpObject {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -7821,12 +8535,16 @@ class NoOpObject {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -7835,15 +8553,24 @@ class NoOpObject {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean
     /**
@@ -7851,10 +8578,15 @@ class NoOpObject {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /**
@@ -7869,6 +8601,7 @@ class NoOpObject {
     vfunc_get_document(): object | null
     /**
      * Retrieves the value of the given `attribute_name` inside `document`.
+     * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
      */
     vfunc_get_document_attribute_value(attribute_name: string): string | null
     /**
@@ -7894,28 +8627,40 @@ class NoOpObject {
     vfunc_get_page_count(): number
     /**
      * Sets the value for the given `attribute_name` inside `document`.
+     * @param attribute_name a character string representing the name of the attribute   whose value is being set.
+     * @param attribute_value a string value to be associated with `attribute_name`.
      */
     vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_copy_text(start_pos: number, end_pos: number): void
     /**
      * Copy text from `start_pos` up to, but not including `end_pos`
      * to the clipboard and then delete from the widget.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_cut_text(start_pos: number, end_pos: number): void
     /**
      * Delete text `start_pos` up to, but not including `end_pos`.
+     * @param start_pos start position
+     * @param end_pos end position
      */
     vfunc_delete_text(start_pos: number, end_pos: number): void
     /**
      * Insert text at a given position.
+     * @param string the text to insert
+     * @param length the length of text to insert, in bytes
+     * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
     vfunc_insert_text(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
+     * @param position position to paste
      */
     vfunc_paste_text(position: number): void
     /**
@@ -7923,20 +8668,26 @@ class NoOpObject {
      * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
      * that can be set. Note that other attributes that do not have corresponding
      * ATK_ATTRIBUTE macros may also be set for certain text widgets.
+     * @param attrib_set an #AtkAttributeSet
+     * @param start_offset start of range in which to set attributes
+     * @param end_offset end of range in which to set attributes
      */
     vfunc_set_run_attributes(attrib_set: AttributeSet, start_offset: number, end_offset: number): boolean
     /**
      * Set text contents of `text`.
+     * @param string string to set for text contents of `text`
      */
     vfunc_set_text_contents(string: string): void
     /**
      * Gets the link in this hypertext document at index
      * `link_index`
+     * @param link_index an integer specifying the desired link
      */
     vfunc_get_link(link_index: number): Hyperlink
     /**
      * Gets the index into the array of hyperlinks that is associated with
      * the character specified by `char_index`.
+     * @param char_index a character index
      */
     vfunc_get_link_index(char_index: number): number
     /**
@@ -7958,6 +8709,7 @@ class NoOpObject {
      * 
      * If the position can not be obtained (e.g. missing support), x and y are set
      * to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_image_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -7971,16 +8723,20 @@ class NoOpObject {
     vfunc_get_image_size(): [ /* width */ number | null, /* height */ number | null ]
     /**
      * Sets the textual description for this image.
+     * @param description a string description to set for `image`
      */
     vfunc_set_image_description(description: string): boolean
     /**
      * Adds the specified accessible child of the object to the
      * object's selection.
+     * @param i a #gint specifying the child index.
      */
     vfunc_add_selection(i: number): boolean
     /* Function overloads */
     /**
      * Adds a selection bounded by the specified offsets.
+     * @param start_offset the starting character offset of the selected region
+     * @param end_offset the offset of the first character after the selected region.
      */
     vfunc_add_selection(start_offset: number, end_offset: number): boolean
     /**
@@ -8002,6 +8758,7 @@ class NoOpObject {
      * indication of whether AtkSelectionIface is implemented, they should
      * use type checking/interface checking macros or the
      * atk_get_accessible_value() convenience method.
+     * @param i a #gint specifying the child index.
      */
     vfunc_is_child_selected(i: number): boolean
     /**
@@ -8011,15 +8768,18 @@ class NoOpObject {
      * indication of whether AtkSelectionIface is implemented, they should
      * use type checking/interface checking macros or the
      * atk_get_accessible_value() convenience method.
+     * @param i a #gint specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
      */
     vfunc_ref_selection(i: number): Object | null
     /**
      * Removes the specified child of the object from the object's selection.
+     * @param i a #gint specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
      */
     vfunc_remove_selection(i: number): boolean
     /* Function overloads */
     /**
      * Removes the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     vfunc_remove_selection(selection_num: number): boolean
     /**
@@ -8030,10 +8790,12 @@ class NoOpObject {
     vfunc_selection_changed(): void
     /**
      * Adds the specified `column` to the selection.
+     * @param column a #gint representing a column in `table`
      */
     vfunc_add_column_selection(column: number): boolean
     /**
      * Adds the specified `row` to the selection.
+     * @param row a #gint representing a row in `table`
      */
     vfunc_add_row_selection(row: number): boolean
     vfunc_column_deleted(column: number, num_deleted: number): void
@@ -8045,24 +8807,31 @@ class NoOpObject {
     vfunc_get_caption(): Object | null
     /**
      * Gets a #gint representing the column at the specified `index_`.
+     * @param index_ a #gint representing an index in `table`
      */
     vfunc_get_column_at_index(index_: number): number
     /**
      * Gets the description text of the specified `column` in the table
+     * @param column a #gint representing a column in `table`
      */
     vfunc_get_column_description(column: number): string
     /**
      * Gets the number of columns occupied by the accessible object
      * at the specified `row` and `column` in the `table`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_get_column_extent_at(row: number, column: number): number
     /**
      * Gets the column header of a specified column in an accessible table.
+     * @param column a #gint representing a column in the table
      */
     vfunc_get_column_header(column: number): Object | null
     /**
      * Gets a #gint representing the index at the specified `row` and
      * `column`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_get_index_at(row: number, column: number): number
     /**
@@ -8075,29 +8844,36 @@ class NoOpObject {
     vfunc_get_n_rows(): number
     /**
      * Gets a #gint representing the row at the specified `index_`.
+     * @param index_ a #gint representing an index in `table`
      */
     vfunc_get_row_at_index(index_: number): number
     /**
      * Gets the description text of the specified row in the table
+     * @param row a #gint representing a row in `table`
      */
     vfunc_get_row_description(row: number): string | null
     /**
      * Gets the number of rows occupied by the accessible object
      * at a specified `row` and `column` in the `table`.
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_get_row_extent_at(row: number, column: number): number
     /**
      * Gets the row header of a specified row in an accessible table.
+     * @param row a #gint representing a row in the table
      */
     vfunc_get_row_header(row: number): Object | null
     /**
      * Gets the selected columns of the table by initializing **selected with
      * the selected column numbers. This array should be freed by the caller.
+     * @param selected a #gint** that is to contain the selected columns numbers
      */
     vfunc_get_selected_columns(selected: number): number
     /**
      * Gets the selected rows of the table by initializing **selected with
      * the selected row numbers. This array should be freed by the caller.
+     * @param selected a #gint** that is to contain the selected row numbers
      */
     vfunc_get_selected_rows(selected: number): number
     /**
@@ -8107,30 +8883,38 @@ class NoOpObject {
     /**
      * Gets a boolean value indicating whether the specified `column`
      * is selected
+     * @param column a #gint representing a column in `table`
      */
     vfunc_is_column_selected(column: number): boolean
     /**
      * Gets a boolean value indicating whether the specified `row`
      * is selected
+     * @param row a #gint representing a row in `table`
      */
     vfunc_is_row_selected(row: number): boolean
     /**
      * Gets a boolean value indicating whether the accessible object
      * at the specified `row` and `column` is selected
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_is_selected(row: number, column: number): boolean
     vfunc_model_changed(): void
     /**
      * Get a reference to the table cell at `row,` `column`. This cell
      * should implement the interface #AtkTableCell
+     * @param row a #gint representing a row in `table`
+     * @param column a #gint representing a column in `table`
      */
     vfunc_ref_at(row: number, column: number): Object
     /**
      * Adds the specified `column` to the selection.
+     * @param column a #gint representing a column in `table`
      */
     vfunc_remove_column_selection(column: number): boolean
     /**
      * Removes the specified `row` from the selection.
+     * @param row a #gint representing a row in `table`
      */
     vfunc_remove_row_selection(row: number): boolean
     vfunc_row_deleted(row: number, num_deleted: number): void
@@ -8138,26 +8922,36 @@ class NoOpObject {
     vfunc_row_reordered(): void
     /**
      * Sets the caption for the table.
+     * @param caption a #AtkObject representing the caption to set for `table`
      */
     vfunc_set_caption(caption: Object): void
     /**
      * Sets the description text for the specified `column` of the `table`.
+     * @param column a #gint representing a column in `table`
+     * @param description a #gchar representing the description text to set for the specified `column` of the `table`
      */
     vfunc_set_column_description(column: number, description: string): void
     /**
      * Sets the specified column header to `header`.
+     * @param column a #gint representing a column in `table`
+     * @param header an #AtkTable
      */
     vfunc_set_column_header(column: number, header: Object): void
     /**
      * Sets the description text for the specified `row` of `table`.
+     * @param row a #gint representing a row in `table`
+     * @param description a #gchar representing the description text to set for the specified `row` of `table`
      */
     vfunc_set_row_description(row: number, description: string): void
     /**
      * Sets the specified row header to `header`.
+     * @param row a #gint representing a row in `table`
+     * @param header an #AtkTable
      */
     vfunc_set_row_header(row: number, header: Object): void
     /**
      * Sets the summary description of the table.
+     * @param accessible an #AtkObject representing the summary description to set for `table`
      */
     vfunc_set_summary(accessible: Object): void
     /**
@@ -8190,6 +8984,10 @@ class NoOpObject {
     vfunc_get_table(): Object
     /**
      * Get the ranges of text in the specified bounding box.
+     * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+     * @param x_clip_type Specify the horizontal clip type.
+     * @param y_clip_type Specify the vertical clip type.
      */
     vfunc_get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[]
     /**
@@ -8198,6 +8996,7 @@ class NoOpObject {
     vfunc_get_caret_offset(): number
     /**
      * Gets the specified text.
+     * @param offset a character offset within `text`
      */
     vfunc_get_character_at_offset(offset: number): number
     /**
@@ -8210,6 +9009,8 @@ class NoOpObject {
      * 
      * Get the bounding box containing the glyph representing the character at
      *     a particular text offset.
+     * @param offset The offset of the text character for which bounding information is required.
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     vfunc_get_character_extents(offset: number, coords: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -8227,6 +9028,9 @@ class NoOpObject {
      * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
      * are interpreted as being relative to the screen or this widget's window
      * depending on `coords`.
+     * @param x screen x-position of character
+     * @param y screen y-position of character
+     * @param coords specify whether coordinates are relative to the screen or widget window
      */
     vfunc_get_offset_at_point(x: number, y: number, coords: CoordType): number
     /**
@@ -8234,6 +9038,9 @@ class NoOpObject {
      * 
      * If the extents can not be obtained (e.g. or missing support), the rectangle
      * fields are set to -1.
+     * @param start_offset The offset of the first text character for which boundary        information is required.
+     * @param end_offset The offset of the text character after the last character        for which boundary information is required.
+     * @param coord_type Specify whether coordinates are relative to the screen or widget window.
      */
     vfunc_get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): /* rect */ TextRectangle
     /**
@@ -8244,10 +9051,12 @@ class NoOpObject {
      * after the range.  See the enum AtkTextAttribute for types of text
      * attributes that can be returned. Note that other attributes may also be
      * returned.
+     * @param offset the character offset at which to get the attributes, -1 means the offset of the character to be inserted at the caret location.
      */
     vfunc_get_run_attributes(offset: number): [ /* returnType */ AttributeSet, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the text from the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
      */
     vfunc_get_selection(selection_num: number): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -8281,14 +9090,20 @@ class NoOpObject {
      * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtkTextGranularity
      */
     vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [ /* returnType */ string | null, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param start_offset a starting character offset within `text`
+     * @param end_offset an ending character offset within `text,` or -1 for the end of the string.
      */
     vfunc_get_text(start_offset: number, end_offset: number): string
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_after_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
@@ -8316,19 +9131,31 @@ class NoOpObject {
      * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
      * string is from the line start at or before the offset to the line
      * start after the offset.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_at_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the specified text.
+     * @param offset position
+     * @param boundary_type An #AtkTextBoundary
      */
     vfunc_get_text_before_offset(offset: number, boundary_type: TextBoundary): [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean
     /**
      * Move the top-left of a substring of `text` to a given position of the screen
      * by scrolling all necessary parents.
+     * @param start_offset start offset in the `text`
+     * @param end_offset end offset in the `text,` or -1 for the end of the text.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean
     /**
@@ -8349,10 +9176,14 @@ class NoOpObject {
      * method should not trigger one either. If the application does not have a caret
      * motion or focus navigation operation, this method should try to scroll the new
      * caret position into view while minimizing unnecessary scroll motion.
+     * @param offset the character offset of the new caret position
      */
     vfunc_set_caret_offset(offset: number): boolean
     /**
      * Changes the start and end offset of the specified selection.
+     * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
+     * @param start_offset the new starting character offset of the selection
+     * @param end_offset the new end position of (e.g. offset immediately past) the selection
      */
     vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
     vfunc_text_attributes_changed(): void
@@ -8401,6 +9232,7 @@ class NoOpObject {
     vfunc_get_value_and_text(): [ /* value */ number, /* text */ string | null ]
     /**
      * Sets the value of this object.
+     * @param value a #GValue which is the desired new accessible value.
      */
     vfunc_set_current_value(value: any): boolean
     /**
@@ -8418,6 +9250,7 @@ class NoOpObject {
      * decide it, and returned TRUE in any case. For that reason it is not
      * required anymore to return if the value was properly assigned or
      * not.
+     * @param new_value a double which is the desired new accessible value.
      */
     vfunc_set_value(new_value: number): void
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -8479,6 +9312,7 @@ class NoOpObject {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: PropertyValues): void
@@ -8493,6 +9327,7 @@ class NoOpObject {
     vfunc_ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -8500,6 +9335,7 @@ class NoOpObject {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -8507,14 +9343,17 @@ class NoOpObject {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -8536,6 +9375,7 @@ class NoOpObject {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8545,6 +9385,7 @@ class NoOpObject {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: NoOpObject, arg1: Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: NoOpObject, arg1: Object) => void)): number
@@ -8553,6 +9394,8 @@ class NoOpObject {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: NoOpObject, arg1: number, arg2: Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: NoOpObject, arg1: number, arg2: Object) => void)): number
@@ -8560,6 +9403,7 @@ class NoOpObject {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: NoOpObject, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: NoOpObject, arg1: boolean) => void)): number
@@ -8578,6 +9422,7 @@ class NoOpObject {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: NoOpObject, arg1: PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: NoOpObject, arg1: PropertyValues) => void)): number
@@ -8586,6 +9431,8 @@ class NoOpObject {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: NoOpObject, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: NoOpObject, arg1: string, arg2: boolean) => void)): number
@@ -8626,6 +9473,7 @@ class NoOpObject {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: NoOpObject, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: NoOpObject, pspec: GObject.ParamSpec) => void)): number
@@ -8634,6 +9482,7 @@ class NoOpObject {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: NoOpObject, arg1: Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: NoOpObject, arg1: Rectangle) => void)): number
@@ -8668,6 +9517,7 @@ class NoOpObject {
      * The 'page-changed' signal is emitted when the current page of
      * a document changes, e.g. pressing page up/down in a document
      * viewer.
+     * @param page_number the new page number. If this value is unknown or not applicable, -1 should be provided.
      */
     connect(sigName: "page-changed", callback: (($obj: NoOpObject, page_number: number) => void)): number
     connect_after(sigName: "page-changed", callback: (($obj: NoOpObject, page_number: number) => void)): number
@@ -8687,6 +9537,7 @@ class NoOpObject {
      * The "link-selected" signal is emitted by an AtkHyperText
      * object when one of the hyperlinks associated with the object
      * is selected.
+     * @param arg1 the index of the hyperlink which is selected
      */
     connect(sigName: "link-selected", callback: (($obj: NoOpObject, arg1: number) => void)): number
     connect_after(sigName: "link-selected", callback: (($obj: NoOpObject, arg1: number) => void)): number
@@ -8703,6 +9554,8 @@ class NoOpObject {
     /**
      * The "column-deleted" signal is emitted by an object which
      * implements the AtkTable interface when a column is deleted.
+     * @param arg1 The index of the first column deleted.
+     * @param arg2 The number of columns deleted.
      */
     connect(sigName: "column-deleted", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "column-deleted", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
@@ -8710,6 +9563,8 @@ class NoOpObject {
     /**
      * The "column-inserted" signal is emitted by an object which
      * implements the AtkTable interface when a column is inserted.
+     * @param arg1 The index of the column inserted.
+     * @param arg2 The number of colums inserted.
      */
     connect(sigName: "column-inserted", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "column-inserted", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
@@ -8733,6 +9588,8 @@ class NoOpObject {
     /**
      * The "row-deleted" signal is emitted by an object which
      * implements the AtkTable interface when a row is deleted.
+     * @param arg1 The index of the first row deleted.
+     * @param arg2 The number of rows deleted.
      */
     connect(sigName: "row-deleted", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "row-deleted", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
@@ -8740,6 +9597,8 @@ class NoOpObject {
     /**
      * The "row-inserted" signal is emitted by an object which
      * implements the AtkTable interface when a row is inserted.
+     * @param arg1 The index of the first row inserted.
+     * @param arg2 The number of rows inserted.
      */
     connect(sigName: "row-inserted", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "row-inserted", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
@@ -8765,6 +9624,7 @@ class NoOpObject {
      * The "text-caret-moved" signal is emitted when the caret
      * position of the text of an object which implements AtkText
      * changes.
+     * @param arg1 The new position of the text caret.
      */
     connect(sigName: "text-caret-moved", callback: (($obj: NoOpObject, arg1: number) => void)): number
     connect_after(sigName: "text-caret-moved", callback: (($obj: NoOpObject, arg1: number) => void)): number
@@ -8775,6 +9635,8 @@ class NoOpObject {
      * signal will have a detail which is either "insert" or
      * "delete" which identifies whether the text change was an
      * insertion or a deletion.
+     * @param arg1 The position (character offset) of the insertion or deletion.
+     * @param arg2 The length (in characters) of text inserted or deleted.
      */
     connect(sigName: "text-changed", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "text-changed", callback: (($obj: NoOpObject, arg1: number, arg2: number) => void)): number
@@ -8784,6 +9646,9 @@ class NoOpObject {
      * inserted. If the signal was not triggered by the user
      * (e.g. typing or pasting text), the "system" detail should be
      * included.
+     * @param arg1 The position (character offset) of the insertion.
+     * @param arg2 The length (in characters) of text inserted.
+     * @param arg3 The new text inserted
      */
     connect(sigName: "text-insert", callback: (($obj: NoOpObject, arg1: number, arg2: number, arg3: string) => void)): number
     connect_after(sigName: "text-insert", callback: (($obj: NoOpObject, arg1: number, arg2: number, arg3: string) => void)): number
@@ -8793,6 +9658,9 @@ class NoOpObject {
      * removed. If the signal was not triggered by the user
      * (e.g. typing or pasting text), the "system" detail should be
      * included.
+     * @param arg1 The position (character offset) of the removal.
+     * @param arg2 The length (in characters) of text removed.
+     * @param arg3 The old text removed
      */
     connect(sigName: "text-remove", callback: (($obj: NoOpObject, arg1: number, arg2: number, arg3: string) => void)): number
     connect_after(sigName: "text-remove", callback: (($obj: NoOpObject, arg1: number, arg2: number, arg3: string) => void)): number
@@ -8818,6 +9686,8 @@ class NoOpObject {
      * Example: a password meter whose value changes as the user
      * types their new password. Appropiate value text would be
      * "weak", "acceptable" and "strong".
+     * @param value the new value in a numerical form.
+     * @param text human readable text alternative (also called description) of this object. NULL if not available.
      */
     connect(sigName: "value-changed", callback: (($obj: NoOpObject, value: number, text: string) => void)): number
     connect_after(sigName: "value-changed", callback: (($obj: NoOpObject, value: number, text: string) => void)): number
@@ -8927,6 +9797,7 @@ class NoOpObject {
      * Frees the memory associated with an array of AtkTextRange. It is assumed
      * that the array was returned by the function atk_text_get_bounded_ranges
      * and is NULL terminated.
+     * @param ranges A pointer to an array of #AtkTextRange which is   to be freed.
      */
     static free_ranges(ranges: TextRange[]): void
     static $gtype: GObject.Type
@@ -8935,13 +9806,14 @@ interface NoOpObjectFactory_ConstructProps extends ObjectFactory_ConstructProps 
 }
 class NoOpObjectFactory {
     /* Fields of Atk-1.0.Atk.ObjectFactory */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.ObjectFactory */
     /**
      * Provides an #AtkObject that implements an accessibility interface
      * on behalf of `obj`
+     * @param obj a #GObject
      */
     create_accessible(obj: GObject.Object): Object
     /**
@@ -8991,6 +9863,10 @@ class NoOpObjectFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9001,6 +9877,12 @@ class NoOpObjectFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9024,6 +9906,7 @@ class NoOpObjectFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9043,11 +9926,14 @@ class NoOpObjectFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9055,6 +9941,8 @@ class NoOpObjectFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9072,6 +9960,7 @@ class NoOpObjectFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9117,6 +10006,7 @@ class NoOpObjectFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9160,15 +10050,20 @@ class NoOpObjectFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9209,6 +10104,7 @@ class NoOpObjectFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9243,6 +10139,7 @@ class NoOpObjectFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.ObjectFactory */
@@ -9271,6 +10168,7 @@ class NoOpObjectFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9303,6 +10201,7 @@ class NoOpObjectFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: NoOpObjectFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: NoOpObjectFactory, pspec: GObject.ParamSpec) => void)): number
@@ -9387,10 +10286,12 @@ class Object {
      */
     accessible_value: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -9455,6 +10356,7 @@ class Object {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -9462,6 +10364,8 @@ class Object {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: State, value: boolean): void
     /**
@@ -9478,6 +10382,7 @@ class Object {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Object
     /**
@@ -9491,10 +10396,13 @@ class Object {
     ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -9503,6 +10411,7 @@ class Object {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -9510,6 +10419,7 @@ class Object {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -9517,14 +10427,17 @@ class Object {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9562,6 +10475,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9572,6 +10489,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9595,6 +10518,7 @@ class Object {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9614,11 +10538,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9626,6 +10553,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9643,6 +10572,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9688,6 +10618,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9731,15 +10662,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9780,6 +10716,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9814,6 +10751,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -9875,6 +10813,7 @@ class Object {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: PropertyValues): void
@@ -9889,6 +10828,7 @@ class Object {
     vfunc_ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -9896,6 +10836,7 @@ class Object {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -9903,14 +10844,17 @@ class Object {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -9932,6 +10876,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9941,6 +10886,7 @@ class Object {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Object, arg1: Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Object, arg1: Object) => void)): number
@@ -9949,6 +10895,8 @@ class Object {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Object, arg1: number, arg2: Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Object, arg1: number, arg2: Object) => void)): number
@@ -9956,6 +10904,7 @@ class Object {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Object, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Object, arg1: boolean) => void)): number
@@ -9974,6 +10923,7 @@ class Object {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Object, arg1: PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Object, arg1: PropertyValues) => void)): number
@@ -9982,6 +10932,8 @@ class Object {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Object, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Object, arg1: string, arg2: boolean) => void)): number
@@ -10022,6 +10974,7 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
@@ -10069,11 +11022,12 @@ interface ObjectFactory_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ObjectFactory {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.ObjectFactory */
     /**
      * Provides an #AtkObject that implements an accessibility interface
      * on behalf of `obj`
+     * @param obj a #GObject
      */
     create_accessible(obj: GObject.Object): Object
     /**
@@ -10123,6 +11077,10 @@ class ObjectFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10133,6 +11091,12 @@ class ObjectFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10156,6 +11120,7 @@ class ObjectFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10175,11 +11140,14 @@ class ObjectFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10187,6 +11155,8 @@ class ObjectFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10204,6 +11174,7 @@ class ObjectFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10249,6 +11220,7 @@ class ObjectFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10292,15 +11264,20 @@ class ObjectFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10341,6 +11318,7 @@ class ObjectFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10375,6 +11353,7 @@ class ObjectFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.ObjectFactory */
@@ -10403,6 +11382,7 @@ class ObjectFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10435,6 +11415,7 @@ class ObjectFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ObjectFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ObjectFactory, pspec: GObject.ParamSpec) => void)): number
@@ -10485,15 +11466,15 @@ class Plug {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.Object */
-    readonly parent: GObject.Object
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Object
-    readonly role: Role
-    readonly relation_set: RelationSet
-    readonly layer: Layer
+    parent: GObject.Object
+    description: string
+    name: string
+    accessible_parent: Object
+    role: Role
+    relation_set: RelationSet
+    layer: Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Plug */
     /**
      * Gets the unique ID of an #AtkPlug object, which can be used to
@@ -10516,11 +11497,14 @@ class Plug {
      * from AtkPlug. In such a case, one can create, in addition to the standard
      * accessible object for the toplevel widget, an AtkPlug object, and make the
      * former the child of the latter by calling atk_plug_set_child().
+     * @param child an #AtkObject to be set as accessible child of `plug`.
      */
     set_child(child: Object): void
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -10585,6 +11569,7 @@ class Plug {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -10592,6 +11577,8 @@ class Plug {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: State, value: boolean): void
     /**
@@ -10608,6 +11595,7 @@ class Plug {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Object
     /**
@@ -10621,10 +11609,13 @@ class Plug {
     ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -10633,6 +11624,7 @@ class Plug {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -10640,6 +11632,7 @@ class Plug {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -10647,14 +11640,17 @@ class Plug {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10692,6 +11688,10 @@ class Plug {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10702,6 +11702,12 @@ class Plug {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10725,6 +11731,7 @@ class Plug {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10744,11 +11751,14 @@ class Plug {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10756,6 +11766,8 @@ class Plug {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10773,6 +11785,7 @@ class Plug {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10818,6 +11831,7 @@ class Plug {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10861,15 +11875,20 @@ class Plug {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10910,6 +11929,7 @@ class Plug {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10944,6 +11964,7 @@ class Plug {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Component */
@@ -10953,6 +11974,9 @@ class Plug {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: CoordType): boolean
     /**
@@ -10966,6 +11990,7 @@ class Plug {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -10974,6 +11999,7 @@ class Plug {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -10990,12 +12016,16 @@ class Plug {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -11004,15 +12034,24 @@ class Plug {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean
     /**
@@ -11020,10 +12059,15 @@ class Plug {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Plug */
@@ -11035,6 +12079,9 @@ class Plug {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: CoordType): boolean
     /**
@@ -11048,6 +12095,7 @@ class Plug {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -11065,6 +12113,7 @@ class Plug {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -11081,12 +12130,16 @@ class Plug {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -11095,15 +12148,24 @@ class Plug {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean
     /**
@@ -11111,10 +12173,15 @@ class Plug {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -11176,6 +12243,7 @@ class Plug {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: PropertyValues): void
@@ -11190,6 +12258,7 @@ class Plug {
     vfunc_ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -11197,6 +12266,7 @@ class Plug {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -11204,14 +12274,17 @@ class Plug {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -11233,6 +12306,7 @@ class Plug {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11242,6 +12316,7 @@ class Plug {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Plug, arg1: Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Plug, arg1: Object) => void)): number
@@ -11250,6 +12325,8 @@ class Plug {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Plug, arg1: number, arg2: Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Plug, arg1: number, arg2: Object) => void)): number
@@ -11257,6 +12334,7 @@ class Plug {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Plug, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Plug, arg1: boolean) => void)): number
@@ -11275,6 +12353,7 @@ class Plug {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Plug, arg1: PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Plug, arg1: PropertyValues) => void)): number
@@ -11283,6 +12362,8 @@ class Plug {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Plug, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Plug, arg1: string, arg2: boolean) => void)): number
@@ -11323,6 +12404,7 @@ class Plug {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
@@ -11331,6 +12413,7 @@ class Plug {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Plug, arg1: Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Plug, arg1: Rectangle) => void)): number
@@ -11378,16 +12461,18 @@ interface Registry_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Registry {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Registry */
     /**
      * Gets an #AtkObjectFactory appropriate for creating #AtkObjects
      * appropriate for `type`.
+     * @param type a #GType with which to look up the associated #AtkObjectFactory
      */
     get_factory(type: GObject.Type): ObjectFactory
     /**
      * Provides a #GType indicating the #AtkObjectFactory subclass
      * associated with `type`.
+     * @param type a #GType with which to look up the associated #AtkObjectFactory subclass
      */
     get_factory_type(type: GObject.Type): GObject.Type
     /**
@@ -11395,6 +12480,8 @@ class Registry {
      * The associated `factory_type` will thereafter be responsible for
      * the creation of new #AtkObject implementations for instances
      * appropriate for `type`.
+     * @param type an #AtkObject type
+     * @param factory_type an #AtkObjectFactory type to associate with `type`.  Must implement AtkObject appropriate for `type`.
      */
     set_factory_type(type: GObject.Type, factory_type: GObject.Type): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11432,6 +12519,10 @@ class Registry {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11442,6 +12533,12 @@ class Registry {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11465,6 +12562,7 @@ class Registry {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11484,11 +12582,14 @@ class Registry {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11496,6 +12597,8 @@ class Registry {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11513,6 +12616,7 @@ class Registry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11558,6 +12662,7 @@ class Registry {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11601,15 +12706,20 @@ class Registry {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11650,6 +12760,7 @@ class Registry {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11684,6 +12795,7 @@ class Registry {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11703,6 +12815,7 @@ class Registry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11735,6 +12848,7 @@ class Registry {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Registry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Registry, pspec: GObject.ParamSpec) => void)): number
@@ -11758,11 +12872,12 @@ class Relation {
     relation_type: RelationType
     target: GObject.ValueArray
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Relation */
     /**
      * Adds the specified AtkObject to the target for the relation, if it is
      * not already present.  See also atk_object_add_relationship().
+     * @param target an #AtkObject
      */
     add_target(target: Object): void
     /**
@@ -11775,6 +12890,7 @@ class Relation {
     get_target(): Object[]
     /**
      * Remove the specified AtkObject from the target for the relation.
+     * @param target an #AtkObject
      */
     remove_target(target: Object): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -11812,6 +12928,10 @@ class Relation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11822,6 +12942,12 @@ class Relation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11845,6 +12971,7 @@ class Relation {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11864,11 +12991,14 @@ class Relation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11876,6 +13006,8 @@ class Relation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11893,6 +13025,7 @@ class Relation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11938,6 +13071,7 @@ class Relation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11981,15 +13115,20 @@ class Relation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12030,6 +13169,7 @@ class Relation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12064,6 +13204,7 @@ class Relation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12083,6 +13224,7 @@ class Relation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12115,6 +13257,7 @@ class Relation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Relation, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Relation, pspec: GObject.ParamSpec) => void)): number
@@ -12138,7 +13281,7 @@ interface RelationSet_ConstructProps extends GObject.Object_ConstructProps {
 }
 class RelationSet {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.RelationSet */
     /**
      * Add a new relation to the current relation set if it is not already
@@ -12146,6 +13289,7 @@ class RelationSet {
      * This function ref's the AtkRelation so the caller of this function
      * should unref it to ensure that it will be destroyed when the AtkRelationSet
      * is destroyed.
+     * @param relation an #AtkRelation
      */
     add(relation: Relation): void
     /**
@@ -12153,17 +13297,22 @@ class RelationSet {
      * the current relation set if the relation set does not contain a relation
      * of that type. If it is does contain a relation of that typea the target
      * is added to the relation.
+     * @param relationship an #AtkRelationType
+     * @param target an #AtkObject
      */
     add_relation_by_type(relationship: RelationType, target: Object): void
     /**
      * Determines whether the relation set contains a relation that matches the
      * specified type.
+     * @param relationship an #AtkRelationType
      */
     contains(relationship: RelationType): boolean
     /**
      * Determines whether the relation set contains a relation that
      * matches the specified pair formed by type `relationship` and object
      * `target`.
+     * @param relationship an #AtkRelationType
+     * @param target an #AtkObject
      */
     contains_target(relationship: RelationType, target: Object): boolean
     /**
@@ -12172,16 +13321,19 @@ class RelationSet {
     get_n_relations(): number
     /**
      * Determines the relation at the specified position in the relation set.
+     * @param i a gint representing a position in the set, starting from 0.
      */
     get_relation(i: number): Relation
     /**
      * Finds a relation that matches the specified type.
+     * @param relationship an #AtkRelationType
      */
     get_relation_by_type(relationship: RelationType): Relation
     /**
      * Removes a relation from the relation set.
      * This function unref's the #AtkRelation so it will be deleted unless there
      * is another reference to it.
+     * @param relation an #AtkRelation
      */
     remove(relation: Relation): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12219,6 +13371,10 @@ class RelationSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12229,6 +13385,12 @@ class RelationSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12252,6 +13414,7 @@ class RelationSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12271,11 +13434,14 @@ class RelationSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12283,6 +13449,8 @@ class RelationSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12300,6 +13468,7 @@ class RelationSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12345,6 +13514,7 @@ class RelationSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12388,15 +13558,20 @@ class RelationSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12437,6 +13612,7 @@ class RelationSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12471,6 +13647,7 @@ class RelationSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12490,6 +13667,7 @@ class RelationSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12522,6 +13700,7 @@ class RelationSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RelationSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RelationSet, pspec: GObject.ParamSpec) => void)): number
@@ -12574,15 +13753,15 @@ class Socket {
      */
     accessible_value: number
     /* Fields of Atk-1.0.Atk.Object */
-    readonly parent: GObject.Object
-    readonly description: string
-    readonly name: string
-    readonly accessible_parent: Object
-    readonly role: Role
-    readonly relation_set: RelationSet
-    readonly layer: Layer
+    parent: GObject.Object
+    description: string
+    name: string
+    accessible_parent: Object
+    role: Role
+    relation_set: RelationSet
+    layer: Layer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.Socket */
     /**
      * Embeds the children of an #AtkPlug as the children of the
@@ -12595,6 +13774,7 @@ class Socket {
      * by atk_plug_get_id().  It is the responsibility of the application
      * to pass the plug id on to the process implementing the #AtkSocket
      * as needed.
+     * @param plug_id the ID of an #AtkPlug
      */
     embed(plug_id: string): void
     /**
@@ -12604,6 +13784,8 @@ class Socket {
     /* Methods of Atk-1.0.Atk.Object */
     /**
      * Adds a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is to be the target of the relation.
      */
     add_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -12668,6 +13850,7 @@ class Socket {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     initialize(data?: object | null): void
     /**
@@ -12675,6 +13858,8 @@ class Socket {
      * 
      * Note that as a general rule when the state of an existing object changes,
      * emitting a notification is expected.
+     * @param state an #AtkState whose state is changed
+     * @param value a gboolean which indicates whether the state is being set on or off
      */
     notify_state_change(state: State, value: boolean): void
     /**
@@ -12691,6 +13876,7 @@ class Socket {
      * Gets a reference to the specified accessible child of the object.
      * The accessible children are 0-based so the first accessible child is
      * at index 0, the second at index 1 and so on.
+     * @param i a gint representing the position of the child, starting from 0
      */
     ref_accessible_child(i: number): Object
     /**
@@ -12704,10 +13890,13 @@ class Socket {
     ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     remove_property_change_handler(handler_id: number): void
     /**
      * Removes a relationship of the specified type with the specified target.
+     * @param relationship The #AtkRelationType of the relation
+     * @param target The #AtkObject which is the target of the relation to be removed.
      */
     remove_relationship(relationship: RelationType, target: Object): boolean
     /**
@@ -12716,6 +13905,7 @@ class Socket {
      * Typically, this is the gtkbuilder ID. Such an ID will be available for
      * instance to identify a given well-known accessible object for tailored screen
      * reading, or for automatic regression testing.
+     * @param name a character string to be set as the accessible id
      */
     set_accessible_id(name: string): void
     /**
@@ -12723,6 +13913,7 @@ class Socket {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     set_description(description: string): void
     /**
@@ -12730,14 +13921,17 @@ class Socket {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     set_role(role: Role): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12775,6 +13969,10 @@ class Socket {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12785,6 +13983,12 @@ class Socket {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12808,6 +14012,7 @@ class Socket {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12827,11 +14032,14 @@ class Socket {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12839,6 +14047,8 @@ class Socket {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12856,6 +14066,7 @@ class Socket {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12901,6 +14112,7 @@ class Socket {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12944,15 +14156,20 @@ class Socket {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12993,6 +14210,7 @@ class Socket {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13027,6 +14245,7 @@ class Socket {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atk-1.0.Atk.Component */
@@ -13036,6 +14255,9 @@ class Socket {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     contains(x: number, y: number, coord_type: CoordType): boolean
     /**
@@ -13049,6 +14271,7 @@ class Socket {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_extents(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -13057,6 +14280,7 @@ class Socket {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     get_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -13073,12 +14297,16 @@ class Socket {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     remove_focus_handler(handler_id: number): void
     /**
@@ -13087,15 +14315,24 @@ class Socket {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     scroll_to(type: ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean
     /**
@@ -13103,10 +14340,15 @@ class Socket {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     set_position(x: number, y: number, coord_type: CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Socket */
@@ -13121,6 +14363,7 @@ class Socket {
      * by atk_plug_get_id().  It is the responsibility of the application
      * to pass the plug id on to the process implementing the #AtkSocket
      * as needed.
+     * @param plug_id the ID of an #AtkPlug
      */
     vfunc_embed(plug_id: string): void
     vfunc_bounds_changed(bounds: Rectangle): void
@@ -13130,6 +14373,9 @@ class Socket {
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. In general there are little reason to
      * re-implement it.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_contains(x: number, y: number, coord_type: CoordType): boolean
     /**
@@ -13143,6 +14389,7 @@ class Socket {
      * 
      * If the extent can not be obtained (e.g. a non-embedded plug or missing
      * support), all of x, y, width, height are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_extents(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -13160,6 +14407,7 @@ class Socket {
      * 
      * If the position can not be obtained (e.g. a non-embedded plug or missing
      * support), x and y are set to -1.
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_get_position(coord_type: CoordType): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -13176,12 +14424,16 @@ class Socket {
     /**
      * Gets a reference to the accessible child, if one exists, at the
      * coordinate point specified by `x` and `y`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null
     /**
      * Remove the handler specified by `handler_id` from the list of
      * functions to be executed when this object receives focus events
      * (in or out).
+     * @param handler_id the handler id of the focus handler to be removed from `component`
      */
     vfunc_remove_focus_handler(handler_id: number): void
     /**
@@ -13190,15 +14442,24 @@ class Socket {
      * Contrary to atk_component_set_position, this does not actually move
      * `component` in its parent, this only makes the parents scroll so that the
      * object shows up on the screen, given its current position within the parents.
+     * @param type specify where the object should be made visible.
      */
     vfunc_scroll_to(type: ScrollType): boolean
     /**
      * Move the top-left of `component` to a given position of the screen by
      * scrolling all necessary parents.
+     * @param coords specify whether coordinates are relative to the screen or to the parent object.
+     * @param x x-position where to scroll to
+     * @param y y-position where to scroll to
      */
     vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Sets the extents of `component`.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width width to set for `component`
+     * @param height height to set for `component`
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
      */
     vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean
     /**
@@ -13206,10 +14467,15 @@ class Socket {
      * 
      * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
      * this just moves `component` in its parent.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
      */
     vfunc_set_position(x: number, y: number, coord_type: CoordType): boolean
     /**
      * Set the size of the `component` in terms of width and height.
+     * @param width width to set for `component`
+     * @param height height to set for `component`
      */
     vfunc_set_size(width: number, height: number): boolean
     /* Virtual methods of Atk-1.0.Atk.Object */
@@ -13271,6 +14537,7 @@ class Socket {
      * It does initialization required for the new object. It is intended
      * that this function should called only in the ..._new() functions used
      * to create an instance of a subclass of #AtkObject
+     * @param data a #gpointer which identifies the object for which the AtkObject was created.
      */
     vfunc_initialize(data?: object | null): void
     vfunc_property_change(values: PropertyValues): void
@@ -13285,6 +14552,7 @@ class Socket {
     vfunc_ref_state_set(): StateSet
     /**
      * Removes a property change handler.
+     * @param handler_id a guint which identifies the handler to be removed.
      */
     vfunc_remove_property_change_handler(handler_id: number): void
     /**
@@ -13292,6 +14560,7 @@ class Socket {
      * the description to NULL. This is reserved for the initial value. In
      * this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
      * the name to a empty value you can use "".
+     * @param description a character string to be set as the accessible description
      */
     vfunc_set_description(description: string): void
     /**
@@ -13299,14 +14568,17 @@ class Socket {
      * to NULL. This is reserved for the initial value. In this aspect
      * NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
      * a empty value you can use "".
+     * @param name a character string to be set as the accessible name
      */
     vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
+     * @param parent an #AtkObject to be set as the accessible parent
      */
     vfunc_set_parent(parent: Object): void
     /**
      * Sets the role of the accessible.
+     * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Role): void
     vfunc_state_change(name: string, state_set: boolean): void
@@ -13328,6 +14600,7 @@ class Socket {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13337,6 +14610,7 @@ class Socket {
      * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
      * object in the object changes. For instance, a table will emit the
      * signal when the cell in the table which has focus changes.
+     * @param arg1 the newly focused object.
      */
     connect(sigName: "active-descendant-changed", callback: (($obj: Socket, arg1: Object) => void)): number
     connect_after(sigName: "active-descendant-changed", callback: (($obj: Socket, arg1: Object) => void)): number
@@ -13345,6 +14619,8 @@ class Socket {
      * The signal "children-changed" is emitted when a child is added or
      * removed form an object. It supports two details: "add" and
      * "remove"
+     * @param arg1 The index of the added or removed child. The value can be -1. This is used if the value is not known by the implementor when the child is added/removed or irrelevant.
+     * @param arg2 A gpointer to the child AtkObject which was added or removed. If the child was removed, it is possible that it is not available for the implementor. In that case this pointer can be NULL.
      */
     connect(sigName: "children-changed", callback: (($obj: Socket, arg1: number, arg2: Object) => void)): number
     connect_after(sigName: "children-changed", callback: (($obj: Socket, arg1: number, arg2: Object) => void)): number
@@ -13352,6 +14628,7 @@ class Socket {
     /**
      * The signal "focus-event" is emitted when an object gained or lost
      * focus.
+     * @param arg1 a boolean value which indicates whether the object gained or lost focus.
      */
     connect(sigName: "focus-event", callback: (($obj: Socket, arg1: boolean) => void)): number
     connect_after(sigName: "focus-event", callback: (($obj: Socket, arg1: boolean) => void)): number
@@ -13370,6 +14647,7 @@ class Socket {
      * notifications. #AtkObject::property-changed is needed by the
      * implementation of atk_add_global_event_listener() because GObject
      * notify doesn't support emission hooks.
+     * @param arg1 an #AtkPropertyValues containing the new value of the property which changed.
      */
     connect(sigName: "property-change", callback: (($obj: Socket, arg1: PropertyValues) => void)): number
     connect_after(sigName: "property-change", callback: (($obj: Socket, arg1: PropertyValues) => void)): number
@@ -13378,6 +14656,8 @@ class Socket {
      * The "state-change" signal is emitted when an object's state
      * changes.  The detail value identifies the state type which has
      * changed.
+     * @param arg1 The name of the state which has changed
+     * @param arg2 A boolean which indicates whether the state has been set or unset.
      */
     connect(sigName: "state-change", callback: (($obj: Socket, arg1: string, arg2: boolean) => void)): number
     connect_after(sigName: "state-change", callback: (($obj: Socket, arg1: string, arg2: boolean) => void)): number
@@ -13418,6 +14698,7 @@ class Socket {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
@@ -13426,6 +14707,7 @@ class Socket {
     /**
      * The 'bounds-changed" signal is emitted when the bposition or
      * size of the component changes.
+     * @param arg1 The AtkRectangle giving the new position and size.
      */
     connect(sigName: "bounds-changed", callback: (($obj: Socket, arg1: Rectangle) => void)): number
     connect_after(sigName: "bounds-changed", callback: (($obj: Socket, arg1: Rectangle) => void)): number
@@ -13473,7 +14755,7 @@ interface StateSet_ConstructProps extends GObject.Object_ConstructProps {
 }
 class StateSet {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.StateSet */
     /**
      * Adds the state of the specified type to the state set if it is not already
@@ -13483,6 +14765,7 @@ class StateSet {
      * be used to add a state to a newly-created set which will then be returned by
      * #atk_object_ref_state_set. It should not be used to modify the existing state
      * of an object. See also #atk_object_notify_state_change.
+     * @param type an #AtkStateType
      */
     add_state(type: StateType): boolean
     /**
@@ -13492,11 +14775,13 @@ class StateSet {
      * be used to add states to a newly-created set which will then be returned by
      * #atk_object_ref_state_set. It should not be used to modify the existing state
      * of an object. See also #atk_object_notify_state_change.
+     * @param types an array of #AtkStateType
      */
     add_states(types: StateType[]): void
     /**
      * Constructs the intersection of the two sets, returning %NULL if the
      * intersection is empty.
+     * @param compare_set another #AtkStateSet
      */
     and_sets(compare_set: StateSet): StateSet
     /**
@@ -13505,11 +14790,13 @@ class StateSet {
     clear_states(): void
     /**
      * Checks whether the state for the specified type is in the specified set.
+     * @param type an #AtkStateType
      */
     contains_state(type: StateType): boolean
     /**
      * Checks whether the states for all the specified types are in the
      * specified set.
+     * @param types an array of #AtkStateType
      */
     contains_states(types: StateType[]): boolean
     /**
@@ -13518,6 +14805,7 @@ class StateSet {
     is_empty(): boolean
     /**
      * Constructs the union of the two sets.
+     * @param compare_set another #AtkStateSet
      */
     or_sets(compare_set: StateSet): StateSet | null
     /**
@@ -13527,12 +14815,14 @@ class StateSet {
      * be used to remove a state to a newly-created set which will then be returned
      * by #atk_object_ref_state_set. It should not be used to modify the existing
      * state of an object. See also #atk_object_notify_state_change.
+     * @param type an #AtkType
      */
     remove_state(type: StateType): boolean
     /**
      * Constructs the exclusive-or of the two sets, returning %NULL is empty.
      * The set returned by this operation contains the states in exactly
      * one of the two sets.
+     * @param compare_set another #AtkStateSet
      */
     xor_sets(compare_set: StateSet): StateSet
     /* Methods of GObject-2.0.GObject.Object */
@@ -13570,6 +14860,10 @@ class StateSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13580,6 +14874,12 @@ class StateSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13603,6 +14903,7 @@ class StateSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13622,11 +14923,14 @@ class StateSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13634,6 +14938,8 @@ class StateSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13651,6 +14957,7 @@ class StateSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13696,6 +15003,7 @@ class StateSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13739,15 +15047,20 @@ class StateSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13788,6 +15101,7 @@ class StateSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13822,6 +15136,7 @@ class StateSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13841,6 +15156,7 @@ class StateSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13873,6 +15189,7 @@ class StateSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StateSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StateSet, pspec: GObject.ParamSpec) => void)): number
@@ -13892,7 +15209,7 @@ interface Util_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Util {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -13928,6 +15245,10 @@ class Util {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13938,6 +15259,12 @@ class Util {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13961,6 +15288,7 @@ class Util {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13980,11 +15308,14 @@ class Util {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13992,6 +15323,8 @@ class Util {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14009,6 +15342,7 @@ class Util {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14054,6 +15388,7 @@ class Util {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14097,15 +15432,20 @@ class Util {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14146,6 +15486,7 @@ class Util {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14180,6 +15521,7 @@ class Util {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14199,6 +15541,7 @@ class Util {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14231,6 +15574,7 @@ class Util {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Util, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Util, pspec: GObject.ParamSpec) => void)): number
@@ -14246,13 +15590,13 @@ class Util {
 }
 abstract class ActionIface {
     /* Fields of Atk-1.0.Atk.ActionIface */
-    readonly do_action: (action: Action, i: number) => boolean
-    readonly get_n_actions: (action: Action) => number
-    readonly get_description: (action: Action, i: number) => string | null
-    readonly get_name: (action: Action, i: number) => string | null
-    readonly get_keybinding: (action: Action, i: number) => string | null
-    readonly set_description: (action: Action, i: number, desc: string) => boolean
-    readonly get_localized_name: (action: Action, i: number) => string | null
+    do_action: (action: Action, i: number) => boolean
+    get_n_actions: (action: Action) => number
+    get_description: (action: Action, i: number) => string | null
+    get_name: (action: Action, i: number) => string | null
+    get_keybinding: (action: Action, i: number) => string | null
+    set_description: (action: Action, i: number, desc: string) => boolean
+    get_localized_name: (action: Action, i: number) => string | null
     static name: string
 }
 class Attribute {
@@ -14260,109 +15604,110 @@ class Attribute {
     /**
      * The attribute name.
      */
-    readonly name: string
+    name: string
     /**
      * the value of the attribute, represented as a string.
      */
-    readonly value: string
+    value: string
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Frees the memory used by an #AtkAttributeSet, including all its
      * #AtkAttributes.
+     * @param attrib_set The #AtkAttributeSet to free
      */
     static set_free(attrib_set: AttributeSet): void
 }
 abstract class ComponentIface {
     /* Fields of Atk-1.0.Atk.ComponentIface */
-    readonly contains: (component: Component, x: number, y: number, coord_type: CoordType) => boolean
-    readonly ref_accessible_at_point: (component: Component, x: number, y: number, coord_type: CoordType) => Object | null
-    readonly get_extents: (component: Component, coord_type: CoordType) => [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
-    readonly get_position: (component: Component, coord_type: CoordType) => [ /* x */ number | null, /* y */ number | null ]
-    readonly get_size: (component: Component) => [ /* width */ number | null, /* height */ number | null ]
-    readonly grab_focus: (component: Component) => boolean
-    readonly remove_focus_handler: (component: Component, handler_id: number) => void
-    readonly set_extents: (component: Component, x: number, y: number, width: number, height: number, coord_type: CoordType) => boolean
-    readonly set_position: (component: Component, x: number, y: number, coord_type: CoordType) => boolean
-    readonly set_size: (component: Component, width: number, height: number) => boolean
-    readonly get_layer: (component: Component) => Layer
-    readonly get_mdi_zorder: (component: Component) => number
-    readonly bounds_changed: (component: Component, bounds: Rectangle) => void
-    readonly get_alpha: (component: Component) => number
-    readonly scroll_to: (component: Component, type: ScrollType) => boolean
-    readonly scroll_to_point: (component: Component, coords: CoordType, x: number, y: number) => boolean
+    contains: (component: Component, x: number, y: number, coord_type: CoordType) => boolean
+    ref_accessible_at_point: (component: Component, x: number, y: number, coord_type: CoordType) => Object | null
+    get_extents: (component: Component, coord_type: CoordType) => [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
+    get_position: (component: Component, coord_type: CoordType) => [ /* x */ number | null, /* y */ number | null ]
+    get_size: (component: Component) => [ /* width */ number | null, /* height */ number | null ]
+    grab_focus: (component: Component) => boolean
+    remove_focus_handler: (component: Component, handler_id: number) => void
+    set_extents: (component: Component, x: number, y: number, width: number, height: number, coord_type: CoordType) => boolean
+    set_position: (component: Component, x: number, y: number, coord_type: CoordType) => boolean
+    set_size: (component: Component, width: number, height: number) => boolean
+    get_layer: (component: Component) => Layer
+    get_mdi_zorder: (component: Component) => number
+    bounds_changed: (component: Component, bounds: Rectangle) => void
+    get_alpha: (component: Component) => number
+    scroll_to: (component: Component, type: ScrollType) => boolean
+    scroll_to_point: (component: Component, coords: CoordType, x: number, y: number) => boolean
     static name: string
 }
 abstract class DocumentIface {
     /* Fields of Atk-1.0.Atk.DocumentIface */
-    readonly parent: GObject.TypeInterface
-    readonly get_document_type: (document: Document) => string
-    readonly get_document: (document: Document) => object | null
-    readonly get_document_locale: (document: Document) => string
-    readonly get_document_attributes: (document: Document) => AttributeSet
-    readonly get_document_attribute_value: (document: Document, attribute_name: string) => string | null
-    readonly set_document_attribute: (document: Document, attribute_name: string, attribute_value: string) => boolean
-    readonly get_current_page_number: (document: Document) => number
-    readonly get_page_count: (document: Document) => number
+    parent: GObject.TypeInterface
+    get_document_type: (document: Document) => string
+    get_document: (document: Document) => object | null
+    get_document_locale: (document: Document) => string
+    get_document_attributes: (document: Document) => AttributeSet
+    get_document_attribute_value: (document: Document, attribute_name: string) => string | null
+    set_document_attribute: (document: Document, attribute_name: string, attribute_value: string) => boolean
+    get_current_page_number: (document: Document) => number
+    get_page_count: (document: Document) => number
     static name: string
 }
 abstract class EditableTextIface {
     /* Fields of Atk-1.0.Atk.EditableTextIface */
-    readonly parent_interface: GObject.TypeInterface
-    readonly set_run_attributes: (text: EditableText, attrib_set: AttributeSet, start_offset: number, end_offset: number) => boolean
-    readonly set_text_contents: (text: EditableText, string: string) => void
-    readonly insert_text: (text: EditableText, string: string, length: number, position: number) => void
-    readonly copy_text: (text: EditableText, start_pos: number, end_pos: number) => void
-    readonly cut_text: (text: EditableText, start_pos: number, end_pos: number) => void
-    readonly delete_text: (text: EditableText, start_pos: number, end_pos: number) => void
-    readonly paste_text: (text: EditableText, position: number) => void
+    parent_interface: GObject.TypeInterface
+    set_run_attributes: (text: EditableText, attrib_set: AttributeSet, start_offset: number, end_offset: number) => boolean
+    set_text_contents: (text: EditableText, string: string) => void
+    insert_text: (text: EditableText, string: string, length: number, position: number) => void
+    copy_text: (text: EditableText, start_pos: number, end_pos: number) => void
+    cut_text: (text: EditableText, start_pos: number, end_pos: number) => void
+    delete_text: (text: EditableText, start_pos: number, end_pos: number) => void
+    paste_text: (text: EditableText, position: number) => void
     static name: string
 }
 abstract class GObjectAccessibleClass {
     /* Fields of Atk-1.0.Atk.GObjectAccessibleClass */
-    readonly parent_class: ObjectClass
-    readonly pad1: Function
-    readonly pad2: Function
+    parent_class: ObjectClass
+    pad1: Function
+    pad2: Function
     static name: string
 }
 abstract class HyperlinkClass {
     /* Fields of Atk-1.0.Atk.HyperlinkClass */
-    readonly parent: GObject.ObjectClass
-    readonly get_uri: (link_: Hyperlink, i: number) => string
-    readonly get_object: (link_: Hyperlink, i: number) => Object
-    readonly get_end_index: (link_: Hyperlink) => number
-    readonly get_start_index: (link_: Hyperlink) => number
-    readonly is_valid: (link_: Hyperlink) => boolean
-    readonly get_n_anchors: (link_: Hyperlink) => number
-    readonly link_state: (link_: Hyperlink) => number
-    readonly is_selected_link: (link_: Hyperlink) => boolean
-    readonly link_activated: (link_: Hyperlink) => void
-    readonly pad1: Function
+    parent: GObject.ObjectClass
+    get_uri: (link_: Hyperlink, i: number) => string
+    get_object: (link_: Hyperlink, i: number) => Object
+    get_end_index: (link_: Hyperlink) => number
+    get_start_index: (link_: Hyperlink) => number
+    is_valid: (link_: Hyperlink) => boolean
+    get_n_anchors: (link_: Hyperlink) => number
+    link_state: (link_: Hyperlink) => number
+    is_selected_link: (link_: Hyperlink) => boolean
+    link_activated: (link_: Hyperlink) => void
+    pad1: Function
     static name: string
 }
 abstract class HyperlinkImplIface {
     /* Fields of Atk-1.0.Atk.HyperlinkImplIface */
-    readonly parent: GObject.TypeInterface
-    readonly get_hyperlink: (impl: HyperlinkImpl) => Hyperlink
+    parent: GObject.TypeInterface
+    get_hyperlink: (impl: HyperlinkImpl) => Hyperlink
     static name: string
 }
 abstract class HypertextIface {
     /* Fields of Atk-1.0.Atk.HypertextIface */
-    readonly parent: GObject.TypeInterface
-    readonly get_link: (hypertext: Hypertext, link_index: number) => Hyperlink
-    readonly get_n_links: (hypertext: Hypertext) => number
-    readonly get_link_index: (hypertext: Hypertext, char_index: number) => number
-    readonly link_selected: (hypertext: Hypertext, link_index: number) => void
+    parent: GObject.TypeInterface
+    get_link: (hypertext: Hypertext, link_index: number) => Hyperlink
+    get_n_links: (hypertext: Hypertext) => number
+    get_link_index: (hypertext: Hypertext, char_index: number) => number
+    link_selected: (hypertext: Hypertext, link_index: number) => void
     static name: string
 }
 abstract class ImageIface {
     /* Fields of Atk-1.0.Atk.ImageIface */
-    readonly parent: GObject.TypeInterface
-    readonly get_image_position: (image: Image, coord_type: CoordType) => [ /* x */ number | null, /* y */ number | null ]
-    readonly get_image_description: (image: Image) => string
-    readonly get_image_size: (image: Image) => [ /* width */ number | null, /* height */ number | null ]
-    readonly set_image_description: (image: Image, description: string) => boolean
-    readonly get_image_locale: (image: Image) => string | null
+    parent: GObject.TypeInterface
+    get_image_position: (image: Image, coord_type: CoordType) => [ /* x */ number | null, /* y */ number | null ]
+    get_image_description: (image: Image) => string
+    get_image_size: (image: Image) => [ /* width */ number | null, /* height */ number | null ]
+    set_image_description: (image: Image, description: string) => boolean
+    get_image_locale: (image: Image) => string | null
     static name: string
 }
 class Implementor {
@@ -14379,103 +15724,103 @@ class KeyEventStruct {
     /**
      * An AtkKeyEventType, generally one of ATK_KEY_EVENT_PRESS or ATK_KEY_EVENT_RELEASE
      */
-    readonly type: number
+    type: number
     /**
      * A bitmask representing the state of the modifier keys immediately after the event takes place.
      * The meaning of the bits is currently defined to match the bitmask used by GDK in
      * GdkEventType.state, see
      * http://developer.gnome.org/doc/API/2.0/gdk/gdk-Event-Structures.html#GdkEventKey
      */
-    readonly state: number
+    state: number
     /**
      * A guint representing a keysym value corresponding to those used by GDK and X11: see
      * /usr/X11/include/keysymdef.h.
      */
-    readonly keyval: number
+    keyval: number
     /**
      * The length of member #string.
      */
-    readonly length: number
+    length: number
     /**
      * A string containing one of the following: either a string approximating the text that would
      * result from this keypress, if the key is a control or graphic character, or a symbolic name for this keypress.
      * Alphanumeric and printable keys will have the symbolic key name in this string member, for instance "A". "0",
      * "semicolon", "aacute".  Keypad keys have the prefix "KP".
      */
-    readonly string: string
+    string: string
     /**
      * The raw hardware code that generated the key event.  This field is raraly useful.
      */
-    readonly keycode: number
+    keycode: number
     /**
      * A timestamp in milliseconds indicating when the event occurred.
      * These timestamps are relative to a starting point which should be considered arbitrary,
      * and only used to compare the dispatch times of events to one another.
      */
-    readonly timestamp: number
+    timestamp: number
     static name: string
 }
 abstract class MiscClass {
     /* Fields of Atk-1.0.Atk.MiscClass */
-    readonly parent: GObject.ObjectClass
-    readonly threads_enter: (misc: Misc) => void
-    readonly threads_leave: (misc: Misc) => void
-    readonly vfuncs: object[]
+    parent: GObject.ObjectClass
+    threads_enter: (misc: Misc) => void
+    threads_leave: (misc: Misc) => void
+    vfuncs: object[]
     static name: string
 }
 abstract class NoOpObjectClass {
     /* Fields of Atk-1.0.Atk.NoOpObjectClass */
-    readonly parent_class: ObjectClass
+    parent_class: ObjectClass
     static name: string
 }
 abstract class NoOpObjectFactoryClass {
     /* Fields of Atk-1.0.Atk.NoOpObjectFactoryClass */
-    readonly parent_class: ObjectFactoryClass
+    parent_class: ObjectFactoryClass
     static name: string
 }
 abstract class ObjectClass {
     /* Fields of Atk-1.0.Atk.ObjectClass */
-    readonly parent: GObject.ObjectClass
-    readonly get_name: (accessible: Object) => string
-    readonly get_description: (accessible: Object) => string
-    readonly get_parent: (accessible: Object) => Object
-    readonly get_n_children: (accessible: Object) => number
-    readonly get_index_in_parent: (accessible: Object) => number
-    readonly ref_relation_set: (accessible: Object) => RelationSet
-    readonly get_role: (accessible: Object) => Role
-    readonly get_layer: (accessible: Object) => Layer
-    readonly get_mdi_zorder: (accessible: Object) => number
-    readonly ref_state_set: (accessible: Object) => StateSet
-    readonly set_name: (accessible: Object, name: string) => void
-    readonly set_description: (accessible: Object, description: string) => void
-    readonly set_parent: (accessible: Object, parent: Object) => void
-    readonly set_role: (accessible: Object, role: Role) => void
-    readonly remove_property_change_handler: (accessible: Object, handler_id: number) => void
-    readonly initialize: (accessible: Object, data?: object | null) => void
-    readonly children_changed: (accessible: Object, change_index: number, changed_child?: object | null) => void
-    readonly focus_event: (accessible: Object, focus_in: boolean) => void
-    readonly property_change: (accessible: Object, values: PropertyValues) => void
-    readonly state_change: (accessible: Object, name: string, state_set: boolean) => void
-    readonly visible_data_changed: (accessible: Object) => void
-    readonly active_descendant_changed: (accessible: Object, child?: object | null) => void
-    readonly get_attributes: (accessible: Object) => AttributeSet
-    readonly get_object_locale: (accessible: Object) => string
-    readonly pad1: Function
+    parent: GObject.ObjectClass
+    get_name: (accessible: Object) => string
+    get_description: (accessible: Object) => string
+    get_parent: (accessible: Object) => Object
+    get_n_children: (accessible: Object) => number
+    get_index_in_parent: (accessible: Object) => number
+    ref_relation_set: (accessible: Object) => RelationSet
+    get_role: (accessible: Object) => Role
+    get_layer: (accessible: Object) => Layer
+    get_mdi_zorder: (accessible: Object) => number
+    ref_state_set: (accessible: Object) => StateSet
+    set_name: (accessible: Object, name: string) => void
+    set_description: (accessible: Object, description: string) => void
+    set_parent: (accessible: Object, parent: Object) => void
+    set_role: (accessible: Object, role: Role) => void
+    remove_property_change_handler: (accessible: Object, handler_id: number) => void
+    initialize: (accessible: Object, data?: object | null) => void
+    children_changed: (accessible: Object, change_index: number, changed_child?: object | null) => void
+    focus_event: (accessible: Object, focus_in: boolean) => void
+    property_change: (accessible: Object, values: PropertyValues) => void
+    state_change: (accessible: Object, name: string, state_set: boolean) => void
+    visible_data_changed: (accessible: Object) => void
+    active_descendant_changed: (accessible: Object, child?: object | null) => void
+    get_attributes: (accessible: Object) => AttributeSet
+    get_object_locale: (accessible: Object) => string
+    pad1: Function
     static name: string
 }
 abstract class ObjectFactoryClass {
     /* Fields of Atk-1.0.Atk.ObjectFactoryClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly invalidate: (factory: ObjectFactory) => void
-    readonly get_accessible_type: () => GObject.Type
-    readonly pad1: Function
-    readonly pad2: Function
+    parent_class: GObject.ObjectClass
+    invalidate: (factory: ObjectFactory) => void
+    get_accessible_type: () => GObject.Type
+    pad1: Function
+    pad2: Function
     static name: string
 }
 abstract class PlugClass {
     /* Fields of Atk-1.0.Atk.PlugClass */
-    readonly parent_class: ObjectClass
-    readonly get_object_id: (obj: Plug) => string
+    parent_class: ObjectClass
+    get_object_id: (obj: Plug) => string
     static name: string
 }
 class PropertyValues {
@@ -14483,15 +15828,15 @@ class PropertyValues {
     /**
      * The name of the ATK property which has changed.
      */
-    readonly property_name: string
+    property_name: string
     /**
      * NULL. This field is not used anymore.
      */
-    readonly old_value: any
+    old_value: any
     /**
      * The new value of the named property.
      */
-    readonly new_value: any
+    new_value: any
     static name: string
 }
 class Range {
@@ -14527,155 +15872,155 @@ class Rectangle {
     /**
      * X coordinate of the left side of the rectangle.
      */
-    readonly x: number
+    x: number
     /**
      * Y coordinate of the top side of the rectangle.
      */
-    readonly y: number
+    y: number
     /**
      * width of the rectangle.
      */
-    readonly width: number
+    width: number
     /**
      * height of the rectangle.
      */
-    readonly height: number
+    height: number
     static name: string
 }
 abstract class RegistryClass {
     /* Fields of Atk-1.0.Atk.RegistryClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class RelationClass {
     /* Fields of Atk-1.0.Atk.RelationClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 abstract class RelationSetClass {
     /* Fields of Atk-1.0.Atk.RelationSetClass */
-    readonly parent: GObject.ObjectClass
-    readonly pad1: Function
-    readonly pad2: Function
+    parent: GObject.ObjectClass
+    pad1: Function
+    pad2: Function
     static name: string
 }
 abstract class SelectionIface {
     /* Fields of Atk-1.0.Atk.SelectionIface */
-    readonly parent: GObject.TypeInterface
-    readonly add_selection: (selection: Selection, i: number) => boolean
-    readonly clear_selection: (selection: Selection) => boolean
-    readonly ref_selection: (selection: Selection, i: number) => Object | null
-    readonly get_selection_count: (selection: Selection) => number
-    readonly is_child_selected: (selection: Selection, i: number) => boolean
-    readonly remove_selection: (selection: Selection, i: number) => boolean
-    readonly select_all_selection: (selection: Selection) => boolean
-    readonly selection_changed: (selection: Selection) => void
+    parent: GObject.TypeInterface
+    add_selection: (selection: Selection, i: number) => boolean
+    clear_selection: (selection: Selection) => boolean
+    ref_selection: (selection: Selection, i: number) => Object | null
+    get_selection_count: (selection: Selection) => number
+    is_child_selected: (selection: Selection, i: number) => boolean
+    remove_selection: (selection: Selection, i: number) => boolean
+    select_all_selection: (selection: Selection) => boolean
+    selection_changed: (selection: Selection) => void
     static name: string
 }
 abstract class SocketClass {
     /* Fields of Atk-1.0.Atk.SocketClass */
-    readonly parent_class: ObjectClass
-    readonly embed: (obj: Socket, plug_id: string) => void
+    parent_class: ObjectClass
+    embed: (obj: Socket, plug_id: string) => void
     static name: string
 }
 abstract class StateSetClass {
     /* Fields of Atk-1.0.Atk.StateSetClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 abstract class StreamableContentIface {
     /* Fields of Atk-1.0.Atk.StreamableContentIface */
-    readonly parent: GObject.TypeInterface
-    readonly get_n_mime_types: (streamable: StreamableContent) => number
-    readonly get_mime_type: (streamable: StreamableContent, i: number) => string
-    readonly get_stream: (streamable: StreamableContent, mime_type: string) => GLib.IOChannel
-    readonly get_uri: (streamable: StreamableContent, mime_type: string) => string | null
-    readonly pad1: Function
-    readonly pad2: Function
-    readonly pad3: Function
+    parent: GObject.TypeInterface
+    get_n_mime_types: (streamable: StreamableContent) => number
+    get_mime_type: (streamable: StreamableContent, i: number) => string
+    get_stream: (streamable: StreamableContent, mime_type: string) => GLib.IOChannel
+    get_uri: (streamable: StreamableContent, mime_type: string) => string | null
+    pad1: Function
+    pad2: Function
+    pad3: Function
     static name: string
 }
 abstract class TableCellIface {
     /* Fields of Atk-1.0.Atk.TableCellIface */
-    readonly get_column_span: (cell: TableCell) => number
-    readonly get_column_header_cells: (cell: TableCell) => Object[]
-    readonly get_position: (cell: TableCell) => [ /* returnType */ boolean, /* row */ number, /* column */ number ]
-    readonly get_row_span: (cell: TableCell) => number
-    readonly get_row_header_cells: (cell: TableCell) => Object[]
-    readonly get_row_column_span: (cell: TableCell) => [ /* returnType */ boolean, /* row */ number, /* column */ number, /* row_span */ number, /* column_span */ number ]
-    readonly get_table: (cell: TableCell) => Object
+    get_column_span: (cell: TableCell) => number
+    get_column_header_cells: (cell: TableCell) => Object[]
+    get_position: (cell: TableCell) => [ /* returnType */ boolean, /* row */ number, /* column */ number ]
+    get_row_span: (cell: TableCell) => number
+    get_row_header_cells: (cell: TableCell) => Object[]
+    get_row_column_span: (cell: TableCell) => [ /* returnType */ boolean, /* row */ number, /* column */ number, /* row_span */ number, /* column_span */ number ]
+    get_table: (cell: TableCell) => Object
     static name: string
 }
 abstract class TableIface {
     /* Fields of Atk-1.0.Atk.TableIface */
-    readonly parent: GObject.TypeInterface
-    readonly ref_at: (table: Table, row: number, column: number) => Object
-    readonly get_index_at: (table: Table, row: number, column: number) => number
-    readonly get_column_at_index: (table: Table, index_: number) => number
-    readonly get_row_at_index: (table: Table, index_: number) => number
-    readonly get_n_columns: (table: Table) => number
-    readonly get_n_rows: (table: Table) => number
-    readonly get_column_extent_at: (table: Table, row: number, column: number) => number
-    readonly get_row_extent_at: (table: Table, row: number, column: number) => number
-    readonly get_caption: (table: Table) => Object | null
-    readonly get_column_description: (table: Table, column: number) => string
-    readonly get_column_header: (table: Table, column: number) => Object | null
-    readonly get_row_description: (table: Table, row: number) => string | null
-    readonly get_row_header: (table: Table, row: number) => Object | null
-    readonly get_summary: (table: Table) => Object
-    readonly set_caption: (table: Table, caption: Object) => void
-    readonly set_column_description: (table: Table, column: number, description: string) => void
-    readonly set_column_header: (table: Table, column: number, header: Object) => void
-    readonly set_row_description: (table: Table, row: number, description: string) => void
-    readonly set_row_header: (table: Table, row: number, header: Object) => void
-    readonly set_summary: (table: Table, accessible: Object) => void
-    readonly get_selected_columns: (table: Table, selected: number) => number
-    readonly get_selected_rows: (table: Table, selected: number) => number
-    readonly is_column_selected: (table: Table, column: number) => boolean
-    readonly is_row_selected: (table: Table, row: number) => boolean
-    readonly is_selected: (table: Table, row: number, column: number) => boolean
-    readonly add_row_selection: (table: Table, row: number) => boolean
-    readonly remove_row_selection: (table: Table, row: number) => boolean
-    readonly add_column_selection: (table: Table, column: number) => boolean
-    readonly remove_column_selection: (table: Table, column: number) => boolean
-    readonly row_inserted: (table: Table, row: number, num_inserted: number) => void
-    readonly column_inserted: (table: Table, column: number, num_inserted: number) => void
-    readonly row_deleted: (table: Table, row: number, num_deleted: number) => void
-    readonly column_deleted: (table: Table, column: number, num_deleted: number) => void
-    readonly row_reordered: (table: Table) => void
-    readonly column_reordered: (table: Table) => void
-    readonly model_changed: (table: Table) => void
+    parent: GObject.TypeInterface
+    ref_at: (table: Table, row: number, column: number) => Object
+    get_index_at: (table: Table, row: number, column: number) => number
+    get_column_at_index: (table: Table, index_: number) => number
+    get_row_at_index: (table: Table, index_: number) => number
+    get_n_columns: (table: Table) => number
+    get_n_rows: (table: Table) => number
+    get_column_extent_at: (table: Table, row: number, column: number) => number
+    get_row_extent_at: (table: Table, row: number, column: number) => number
+    get_caption: (table: Table) => Object | null
+    get_column_description: (table: Table, column: number) => string
+    get_column_header: (table: Table, column: number) => Object | null
+    get_row_description: (table: Table, row: number) => string | null
+    get_row_header: (table: Table, row: number) => Object | null
+    get_summary: (table: Table) => Object
+    set_caption: (table: Table, caption: Object) => void
+    set_column_description: (table: Table, column: number, description: string) => void
+    set_column_header: (table: Table, column: number, header: Object) => void
+    set_row_description: (table: Table, row: number, description: string) => void
+    set_row_header: (table: Table, row: number, header: Object) => void
+    set_summary: (table: Table, accessible: Object) => void
+    get_selected_columns: (table: Table, selected: number) => number
+    get_selected_rows: (table: Table, selected: number) => number
+    is_column_selected: (table: Table, column: number) => boolean
+    is_row_selected: (table: Table, row: number) => boolean
+    is_selected: (table: Table, row: number, column: number) => boolean
+    add_row_selection: (table: Table, row: number) => boolean
+    remove_row_selection: (table: Table, row: number) => boolean
+    add_column_selection: (table: Table, column: number) => boolean
+    remove_column_selection: (table: Table, column: number) => boolean
+    row_inserted: (table: Table, row: number, num_inserted: number) => void
+    column_inserted: (table: Table, column: number, num_inserted: number) => void
+    row_deleted: (table: Table, row: number, num_deleted: number) => void
+    column_deleted: (table: Table, column: number, num_deleted: number) => void
+    row_reordered: (table: Table) => void
+    column_reordered: (table: Table) => void
+    model_changed: (table: Table) => void
     static name: string
 }
 abstract class TextIface {
     /* Fields of Atk-1.0.Atk.TextIface */
-    readonly parent: GObject.TypeInterface
-    readonly get_text: (text: Text, start_offset: number, end_offset: number) => string
-    readonly get_text_after_offset: (text: Text, offset: number, boundary_type: TextBoundary) => [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
-    readonly get_text_at_offset: (text: Text, offset: number, boundary_type: TextBoundary) => [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
-    readonly get_character_at_offset: (text: Text, offset: number) => number
-    readonly get_text_before_offset: (text: Text, offset: number, boundary_type: TextBoundary) => [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
-    readonly get_caret_offset: (text: Text) => number
-    readonly get_run_attributes: (text: Text, offset: number) => [ /* returnType */ AttributeSet, /* start_offset */ number, /* end_offset */ number ]
-    readonly get_default_attributes: (text: Text) => AttributeSet
-    readonly get_character_extents: (text: Text, offset: number, coords: CoordType) => [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
-    readonly get_character_count: (text: Text) => number
-    readonly get_offset_at_point: (text: Text, x: number, y: number, coords: CoordType) => number
-    readonly get_n_selections: (text: Text) => number
-    readonly get_selection: (text: Text, selection_num: number) => [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
-    readonly add_selection: (text: Text, start_offset: number, end_offset: number) => boolean
-    readonly remove_selection: (text: Text, selection_num: number) => boolean
-    readonly set_selection: (text: Text, selection_num: number, start_offset: number, end_offset: number) => boolean
-    readonly set_caret_offset: (text: Text, offset: number) => boolean
-    readonly text_changed: (text: Text, position: number, length: number) => void
-    readonly text_caret_moved: (text: Text, location: number) => void
-    readonly text_selection_changed: (text: Text) => void
-    readonly text_attributes_changed: (text: Text) => void
-    readonly get_range_extents: (text: Text, start_offset: number, end_offset: number, coord_type: CoordType) => /* rect */ TextRectangle
-    readonly get_bounded_ranges: (text: Text, rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType) => TextRange[]
-    readonly get_string_at_offset: (text: Text, offset: number, granularity: TextGranularity) => [ /* returnType */ string | null, /* start_offset */ number, /* end_offset */ number ]
-    readonly scroll_substring_to: (text: Text, start_offset: number, end_offset: number, type: ScrollType) => boolean
-    readonly scroll_substring_to_point: (text: Text, start_offset: number, end_offset: number, coords: CoordType, x: number, y: number) => boolean
+    parent: GObject.TypeInterface
+    get_text: (text: Text, start_offset: number, end_offset: number) => string
+    get_text_after_offset: (text: Text, offset: number, boundary_type: TextBoundary) => [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
+    get_text_at_offset: (text: Text, offset: number, boundary_type: TextBoundary) => [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
+    get_character_at_offset: (text: Text, offset: number) => number
+    get_text_before_offset: (text: Text, offset: number, boundary_type: TextBoundary) => [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
+    get_caret_offset: (text: Text) => number
+    get_run_attributes: (text: Text, offset: number) => [ /* returnType */ AttributeSet, /* start_offset */ number, /* end_offset */ number ]
+    get_default_attributes: (text: Text) => AttributeSet
+    get_character_extents: (text: Text, offset: number, coords: CoordType) => [ /* x */ number | null, /* y */ number | null, /* width */ number | null, /* height */ number | null ]
+    get_character_count: (text: Text) => number
+    get_offset_at_point: (text: Text, x: number, y: number, coords: CoordType) => number
+    get_n_selections: (text: Text) => number
+    get_selection: (text: Text, selection_num: number) => [ /* returnType */ string, /* start_offset */ number, /* end_offset */ number ]
+    add_selection: (text: Text, start_offset: number, end_offset: number) => boolean
+    remove_selection: (text: Text, selection_num: number) => boolean
+    set_selection: (text: Text, selection_num: number, start_offset: number, end_offset: number) => boolean
+    set_caret_offset: (text: Text, offset: number) => boolean
+    text_changed: (text: Text, position: number, length: number) => void
+    text_caret_moved: (text: Text, location: number) => void
+    text_selection_changed: (text: Text) => void
+    text_attributes_changed: (text: Text) => void
+    get_range_extents: (text: Text, start_offset: number, end_offset: number, coord_type: CoordType) => /* rect */ TextRectangle
+    get_bounded_ranges: (text: Text, rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType) => TextRange[]
+    get_string_at_offset: (text: Text, offset: number, granularity: TextGranularity) => [ /* returnType */ string | null, /* start_offset */ number, /* end_offset */ number ]
+    scroll_substring_to: (text: Text, start_offset: number, end_offset: number, type: ScrollType) => boolean
+    scroll_substring_to_point: (text: Text, start_offset: number, end_offset: number, coords: CoordType, x: number, y: number) => boolean
     static name: string
 }
 class TextRange {
@@ -14683,19 +16028,19 @@ class TextRange {
     /**
      * A rectangle giving the bounds of the text range
      */
-    readonly bounds: TextRectangle
+    bounds: TextRectangle
     /**
      * The start offset of a AtkTextRange
      */
-    readonly start_offset: number
+    start_offset: number
     /**
      * The end offset of a AtkTextRange
      */
-    readonly end_offset: number
+    end_offset: number
     /**
      * The text in the text range
      */
-    readonly content: string
+    content: string
     static name: string
 }
 class TextRectangle {
@@ -14703,48 +16048,48 @@ class TextRectangle {
     /**
      * The horizontal coordinate of a rectangle
      */
-    readonly x: number
+    x: number
     /**
      * The vertical coordinate of a rectangle
      */
-    readonly y: number
+    y: number
     /**
      * The width of a rectangle
      */
-    readonly width: number
+    width: number
     /**
      * The height of a rectangle
      */
-    readonly height: number
+    height: number
     static name: string
 }
 abstract class UtilClass {
     /* Fields of Atk-1.0.Atk.UtilClass */
-    readonly parent: GObject.ObjectClass
-    readonly remove_global_event_listener: (listener_id: number) => void
-    readonly remove_key_event_listener: (listener_id: number) => void
-    readonly get_toolkit_name: () => string
-    readonly get_toolkit_version: () => string
+    parent: GObject.ObjectClass
+    remove_global_event_listener: (listener_id: number) => void
+    remove_key_event_listener: (listener_id: number) => void
+    get_toolkit_name: () => string
+    get_toolkit_version: () => string
     static name: string
 }
 abstract class ValueIface {
     /* Fields of Atk-1.0.Atk.ValueIface */
-    readonly parent: GObject.TypeInterface
-    readonly get_current_value: (obj: Value) => /* value */ any
-    readonly get_maximum_value: (obj: Value) => /* value */ any
-    readonly get_minimum_value: (obj: Value) => /* value */ any
-    readonly set_current_value: (obj: Value, value: any) => boolean
-    readonly get_minimum_increment: (obj: Value) => /* value */ any
-    readonly get_value_and_text: (obj: Value) => [ /* value */ number, /* text */ string | null ]
-    readonly get_range: (obj: Value) => Range | null
-    readonly get_increment: (obj: Value) => number
-    readonly get_sub_ranges: (obj: Value) => Range[]
-    readonly set_value: (obj: Value, new_value: number) => void
+    parent: GObject.TypeInterface
+    get_current_value: (obj: Value) => /* value */ any
+    get_maximum_value: (obj: Value) => /* value */ any
+    get_minimum_value: (obj: Value) => /* value */ any
+    set_current_value: (obj: Value, value: any) => boolean
+    get_minimum_increment: (obj: Value) => /* value */ any
+    get_value_and_text: (obj: Value) => [ /* value */ number, /* text */ string | null ]
+    get_range: (obj: Value) => Range | null
+    get_increment: (obj: Value) => number
+    get_sub_ranges: (obj: Value) => Range[]
+    set_value: (obj: Value, new_value: number) => void
     static name: string
 }
 abstract class WindowIface {
     /* Fields of Atk-1.0.Atk.WindowIface */
-    readonly parent: GObject.TypeInterface
+    parent: GObject.TypeInterface
     static name: string
 }
     type AttributeSet = any[]

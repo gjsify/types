@@ -1965,16 +1965,24 @@ class Framebuffer {
      * Removes a fence previously submitted with
      * cogl_framebuffer_add_fence_callback(); the callback will not be
      * called.
+     * @param closure The #CoglFenceClosure returned from           cogl_framebuffer_add_fence_callback()
      */
     cancel_fence_callback(closure: FenceClosure): void
     /**
      * Clears all the auxiliary buffers identified in the `buffers` mask, and if
      * that includes the color buffer then the specified `color` is used.
+     * @param buffers A mask of #CoglBufferBit<!-- -->'s identifying which auxiliary   buffers to clear
+     * @param color The color to clear the color buffer too if specified in         `buffers`.
      */
     clear(buffers: number, color: Color): void
     /**
      * Clears all the auxiliary buffers identified in the `buffers` mask, and if
      * that includes the color buffer then the specified `color` is used.
+     * @param buffers A mask of #CoglBufferBit<!-- -->'s identifying which auxiliary   buffers to clear
+     * @param red The red component of color to clear the color buffer too if       specified in `buffers`.
+     * @param green The green component of color to clear the color buffer too if         specified in `buffers`.
+     * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
+     * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
      */
     clear4f(buffers: number, red: number, green: number, blue: number, alpha: number): void
     /**
@@ -1994,6 +2002,7 @@ class Framebuffer {
      * already implicitly discard when you finish rendering to a #CoglOnscreen
      * framebuffer, and it's not meaningful to try and discard the color buffer of
      * a #CoglOffscreen framebuffer since they are single-buffered.
+     * @param buffers A #CoglBufferBit mask of which ancillary buffers you want           to discard.
      */
     discard_buffers(buffers: number): void
     /**
@@ -2018,6 +2027,12 @@ class Framebuffer {
      * <note>This api doesn't support any of the legacy global state options such
      * as cogl_set_depth_test_enabled(), cogl_set_backface_culling_enabled() or
      * cogl_program_use()</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param mode The #CoglVerticesMode defining the topology of vertices
+     * @param first_vertex The vertex offset within the given attributes to draw from
+     * @param n_vertices The number of vertices to draw from the given attributes
+     * @param attributes An array of pointers to #CoglAttribute<-- -->s defining vertex              geometry
+     * @param n_attributes The number of attributes in the `attributes` array.
      */
     draw_attributes(pipeline: Pipeline, mode: VerticesMode, first_vertex: number, n_vertices: number, attributes: Attribute, n_attributes: number): void
     /**
@@ -2060,6 +2075,13 @@ class Framebuffer {
      * <note>This api doesn't support any of the legacy global state
      * options such as cogl_set_depth_test_enabled(),
      * cogl_set_backface_culling_enabled() or cogl_program_use()</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param mode The #CoglVerticesMode defining the topology of vertices
+     * @param first_vertex The vertex offset within the given attributes to draw from
+     * @param n_vertices The number of vertices to draw from the given attributes
+     * @param indices The array of indices used by the GPU to lookup attribute           data for each vertex.
+     * @param attributes An array of pointers to #CoglAttribute<-- -->s defining vertex              geometry
+     * @param n_attributes The number of attributes in the `attributes` array.
      */
     draw_indexed_attributes(pipeline: Pipeline, mode: VerticesMode, first_vertex: number, n_vertices: number, indices: Indices, attributes: Attribute, n_attributes: number): void
     /**
@@ -2108,6 +2130,13 @@ class Framebuffer {
      * smallest layer index) and if you supply less texture coordinates
      * than there are layers in the current source material then default
      * texture coordinates (0.0, 0.0, 1.0, 1.0) are generated.
+     * @param pipeline A #CoglPipeline state object
+     * @param x_1 x coordinate upper left on screen.
+     * @param y_1 y coordinate upper left on screen.
+     * @param x_2 x coordinate lower right on screen.
+     * @param y_2 y coordinate lower right on screen.
+     * @param tex_coords An array containing groups of   4 float values: [s_1, t_1, s_2, t_2] that are interpreted as two texture   coordinates; one for the top left texel, and one for the bottom right   texel. Each value should be between 0.0 and 1.0, where the coordinate   (0.0, 0.0) represents the top left of the texture, and (1.0, 1.0) the   bottom right.
+     * @param tex_coords_len The length of the `tex_coords` array. (For one layer   and one group of texture coordinates, this would be 4)
      */
     draw_multitextured_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number, tex_coords: number[], tex_coords_len: number): void
     /**
@@ -2123,6 +2152,8 @@ class Framebuffer {
      * <note>This api doesn't support any of the legacy global state options such
      * as cogl_set_depth_test_enabled(), cogl_set_backface_culling_enabled() or
      * cogl_program_use()</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param primitive A #CoglPrimitive geometry object
      */
     draw_primitive(pipeline: Pipeline, primitive: Primitive): void
     /**
@@ -2137,6 +2168,11 @@ class Framebuffer {
      * <note>If you want to describe a rectangle with a texture mapped on
      * it then you can use
      * cogl_framebuffer_draw_textured_rectangle().</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param x_1 X coordinate of the top-left corner
+     * @param y_1 Y coordinate of the top-left corner
+     * @param x_2 X coordinate of the bottom-right corner
+     * @param y_2 Y coordinate of the bottom-right corner
      */
     draw_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number): void
     /**
@@ -2159,6 +2195,9 @@ class Framebuffer {
      * cogl_framebuffer_draw_textured_rectangle() separately for multiple
      * rectangles if all of the rectangles will be drawn together with the
      * same `pipeline` state.
+     * @param pipeline A #CoglPipeline state object
+     * @param coordinates an array of coordinates   containing groups of 4 float values: [x_1, y_1, x_2, y_2] that are   interpreted as two position coordinates; one for the top left of   the rectangle (x1, y1), and one for the bottom right of the   rectangle (x2, y2).
+     * @param n_rectangles number of rectangles defined in `coordinates`.
      */
     draw_rectangles(pipeline: Pipeline, coordinates: number[], n_rectangles: number): void
     /**
@@ -2193,6 +2232,15 @@ class Framebuffer {
      * with one of your `pipeline` layers which normally implies working
      * with non-normalized texture coordinates this api should still be
      * passed normalized texture coordinates.</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param x_1 x coordinate upper left on screen.
+     * @param y_1 y coordinate upper left on screen.
+     * @param x_2 x coordinate lower right on screen.
+     * @param y_2 y coordinate lower right on screen.
+     * @param s_1 S texture coordinate of the top-left coorner
+     * @param t_1 T texture coordinate of the top-left coorner
+     * @param s_2 S texture coordinate of the bottom-right coorner
+     * @param t_2 T texture coordinate of the bottom-right coorner
      */
     draw_textured_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number, s_1: number, t_1: number, s_2: number, t_2: number): void
     /**
@@ -2235,6 +2283,9 @@ class Framebuffer {
      * which normally implies working with non-normalized texture
      * coordinates this api should still be passed normalized texture
      * coordinates.</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param coordinates an array containing   groups of 8 float values: [x_1, y_1, x_2, y_2, s_1, t_1, s_2, t_2]   that have the same meaning as the arguments for   cogl_framebuffer_draw_textured_rectangle().
+     * @param n_rectangles number of rectangles to `coordinates` to draw
      */
     draw_textured_rectangles(pipeline: Pipeline, coordinates: number[], n_rectangles: number): void
     /**
@@ -2253,6 +2304,12 @@ class Framebuffer {
      * Replaces the current projection matrix with a perspective matrix
      * for a given viewing frustum defined by 4 side clip planes that
      * all cross through the origin and 2 near and far clip planes.
+     * @param left X position of the left clipping plane where it   intersects the near clipping plane
+     * @param right X position of the right clipping plane where it   intersects the near clipping plane
+     * @param bottom Y position of the bottom clipping plane where it   intersects the near clipping plane
+     * @param top Y position of the top clipping plane where it intersects   the near clipping plane
+     * @param z_near The distance to the near clipping plane (Must be positive)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_far: number): void
     /**
@@ -2387,6 +2444,12 @@ class Framebuffer {
     /**
      * Replaces the current projection matrix with an orthographic projection
      * matrix.
+     * @param x_1 The x coordinate for the first vertical clipping plane
+     * @param y_1 The y coordinate for the first horizontal clipping plane
+     * @param x_2 The x coordinate for the second vertical clipping plane
+     * @param y_2 The y coordinate for the second horizontal clipping plane
+     * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+     * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
      */
     orthographic(x_1: number, y_1: number, x_2: number, y_2: number, near: number, far: number): void
     /**
@@ -2397,6 +2460,10 @@ class Framebuffer {
      * ratio since that will reduce the effectiveness of depth testing
      * since there wont be enough precision to identify the depth of
      * objects near to each other.</note>
+     * @param fov_y Vertical field of view angle in degrees.
+     * @param aspect The (width over height) aspect ratio for display
+     * @param z_near The distance to the near clipping plane (Must be positive,   and must not be 0)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     perspective(fov_y: number, aspect: number, z_near: number, z_far: number): void
     /**
@@ -2427,6 +2494,11 @@ class Framebuffer {
      * the silhouette is intersected with the previous clipping area.  To
      * restore the previous clipping area, call
      * cogl_framebuffer_pop_clip().
+     * @param primitive A #CoglPrimitive describing a flat 2D shape
+     * @param bounds_x1 x coordinate for the top-left corner of the primitives             bounds
+     * @param bounds_y1 y coordinate for the top-left corner of the primitives             bounds
+     * @param bounds_x2 x coordinate for the bottom-right corner of the             primitives bounds.
+     * @param bounds_y2 y coordinate for the bottom-right corner of the             primitives bounds.
      */
     push_primitive_clip(primitive: Primitive, bounds_x1: number, bounds_y1: number, bounds_x2: number, bounds_y2: number): void
     /**
@@ -2438,6 +2510,10 @@ class Framebuffer {
      * 
      * The rectangle is intersected with the current clip region. To undo
      * the effect of this function, call cogl_framebuffer_pop_clip().
+     * @param x_1 x coordinate for top left corner of the clip rectangle
+     * @param y_1 y coordinate for top left corner of the clip rectangle
+     * @param x_2 x coordinate for bottom right corner of the clip rectangle
+     * @param y_2 y coordinate for bottom right corner of the clip rectangle
      */
     push_rectangle_clip(x_1: number, y_1: number, x_2: number, y_2: number): void
     /**
@@ -2449,6 +2525,10 @@ class Framebuffer {
      * 
      * The rectangle is intersected with the current clip region. To undo
      * the effect of this function, call cogl_framebuffer_pop_clip().
+     * @param x left edge of the clip rectangle in window coordinates
+     * @param y top edge of the clip rectangle in window coordinates
+     * @param width width of the clip rectangle
+     * @param height height of the clip rectangle
      */
     push_scissor_clip(x: number, y: number, width: number, height: number): void
     /**
@@ -2477,6 +2557,12 @@ class Framebuffer {
      * cogl_object_unref (bitmap);
      * ```
      * 
+     * @param x The x position to read from
+     * @param y The y position to read from
+     * @param width The width of the region of rectangles to read
+     * @param height The height of the region of rectangles to read
+     * @param format The pixel format to store the data in
+     * @param pixels The address of the buffer to store the data in
      */
     read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): Bool
     /**
@@ -2490,6 +2576,10 @@ class Framebuffer {
      * convert it. To read the pixel values without any conversion you
      * should either specify a format that doesn't use an alpha channel or
      * use one of the formats ending in PRE.
+     * @param x The x position to read from
+     * @param y The y position to read from
+     * @param source Identifies which auxillary buffer you want to read          (only COGL_READ_PIXELS_COLOR_BUFFER supported currently)
+     * @param bitmap The bitmap to store the results in.
      */
     read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): Bool
     /**
@@ -2537,6 +2627,10 @@ class Framebuffer {
      * only guarantees that at-least the region specified will be resolved
      * and if you have rendered to a larger region then it's possible that
      * other samples may be implicitly resolved.
+     * @param x top-left x coordinate of region to resolve
+     * @param y top-left y coordinate of region to resolve
+     * @param width width of region to resolve
+     * @param height height of region to resolve
      */
     resolve_samples_region(x: number, y: number, width: number, height: number): void
     /**
@@ -2545,27 +2639,37 @@ class Framebuffer {
      * rotation follows the right-hand thumb rule so for example rotating
      * by 10 degrees about the axis-vector (0, 0, 1) causes a small
      * counter-clockwise rotation.
+     * @param angle Angle in degrees to rotate.
+     * @param x X-component of vertex to rotate around.
+     * @param y Y-component of vertex to rotate around.
+     * @param z Z-component of vertex to rotate around.
      */
     rotate(angle: number, x: number, y: number, z: number): void
     /**
      * Multiplies the current model-view matrix by one that rotates
      * according to the rotation described by `euler`.
+     * @param euler A #CoglEuler
      */
     rotate_euler(euler: Euler): void
     /**
      * Multiplies the current model-view matrix by one that rotates
      * according to the rotation described by `quaternion`.
+     * @param quaternion A #CoglQuaternion
      */
     rotate_quaternion(quaternion: Quaternion): void
     /**
      * Multiplies the current model-view matrix by one that scales the x,
      * y and z axes by the given values.
+     * @param x Amount to scale along the x-axis
+     * @param y Amount to scale along the y-axis
+     * @param z Amount to scale along the z-axis
      */
     scale(x: number, y: number, z: number): void
     /**
      * Defines a bit mask of which color channels should be written to the
      * given `framebuffer`. If a bit is set in `color_mask` that means that
      * color will be written.
+     * @param color_mask A #CoglColorMask of which color channels to write to              the current framebuffer.
      */
     set_color_mask(color_mask: ColorMask): void
     /**
@@ -2579,6 +2683,7 @@ class Framebuffer {
      * <note>It's not valid to call this function after the framebuffer has been
      * allocated as the creation of the depth texture is done at allocation time.
      * </note>
+     * @param enabled TRUE or FALSE
      */
     set_depth_texture_enabled(enabled: Bool): void
     /**
@@ -2588,6 +2693,7 @@ class Framebuffer {
      * information will be written to this buffer during rendering.
      * 
      * Depth buffer writing is enabled by default.
+     * @param depth_write_enabled %TRUE to enable depth writing or %FALSE to disable
      */
     set_depth_write_enabled(depth_write_enabled: Bool): void
     /**
@@ -2604,14 +2710,17 @@ class Framebuffer {
      * then this has no affect.
      * 
      * Dithering is enabled by default.
+     * @param dither_enabled %TRUE to enable dithering or %FALSE to disable
      */
     set_dither_enabled(dither_enabled: Bool): void
     /**
      * Sets `matrix` as the new model-view matrix.
+     * @param matrix the new model-view matrix
      */
     set_modelview_matrix(matrix: Matrix): void
     /**
      * Sets `matrix` as the new projection matrix.
+     * @param matrix the new projection matrix
      */
     set_projection_matrix(matrix: Matrix): void
     /**
@@ -2647,6 +2756,7 @@ class Framebuffer {
      * all framebuffer samples but if only a small region of a
      * framebuffer has changed this can lead to redundant work being
      * done.</note>
+     * @param samples_per_pixel The minimum number of samples per pixel
      */
     set_samples_per_pixel(samples_per_pixel: number): void
     /**
@@ -2657,6 +2767,7 @@ class Framebuffer {
      * and the framebuffer must have been created with stereo
      * enabled. (See cogl_onscreen_template_set_stereo_enabled(),
      * cogl_framebuffer_get_is_stereo().)
+     * @param stereo_mode A #CoglStereoMode specifying which stereo buffers               should be drawn tow.
      */
     set_stereo_mode(stereo_mode: StereoMode): void
     /**
@@ -2675,15 +2786,23 @@ class Framebuffer {
      * <note>Although the function takes floating point arguments, existing
      * drivers only allow the use of integer values. In the future floating
      * point values will be exposed via a checkable feature.</note>
+     * @param x The top-left x coordinate of the viewport origin (only integers     supported currently)
+     * @param y The top-left y coordinate of the viewport origin (only integers     supported currently)
+     * @param width The width of the viewport (only integers supported currently)
+     * @param height The height of the viewport (only integers supported currently)
      */
     set_viewport(x: number, y: number, width: number, height: number): void
     /**
      * Multiplies the current model-view matrix by the given matrix.
+     * @param matrix the matrix to multiply with the current model-view
      */
     transform(matrix: Matrix): void
     /**
      * Multiplies the current model-view matrix by one that translates the
      * model along all three axes according to the given values.
+     * @param x Distance to translate along the x-axis
+     * @param y Distance to translate along the y-axis
+     * @param z Distance to translate along the z-axis
      */
     translate(x: number, y: number, z: number): void
     static name: string
@@ -2720,6 +2839,9 @@ class Texture {
      * `rowstride` argument, the rowstride should be the rowstride you
      * want for the destination `data` buffer not the rowstride of the
      * source texture</note>
+     * @param format the #CoglPixelFormat to store the texture as.
+     * @param rowstride the rowstride of `data` in bytes or pass 0 to calculate             from the bytes-per-pixel of `format` multiplied by the             `texture` width.
+     * @param data memory location to write the `texture'`s contents, or %NULL to only query the data size through the return value.
      */
     get_data(format: PixelFormat, rowstride: number, data: number): number
     /**
@@ -2775,6 +2897,7 @@ class Texture {
      * is not available then %COGL_PIXEL_FORMAT_RG_88 can still be used as
      * an image format as long as %COGL_TEXTURE_COMPONENTS_RG isn't used
      * as the texture's components.
+     * @param components 
      */
     set_components(components: TextureComponents): void
     /**
@@ -2818,6 +2941,10 @@ class Texture {
      * if the given `texture` has not previously been allocated then this
      * api can return %FALSE and throw an exceptional `error` if there is
      * not enough memory to allocate storage for `texture`.</note>
+     * @param format the #CoglPixelFormat used in the source `data` buffer.
+     * @param rowstride rowstride of the source `data` buffer (computed from             the texture width and `format` if it equals 0)
+     * @param data the source data, pointing to the first top-left pixel to set
+     * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
      */
     set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool
     /**
@@ -2842,6 +2969,7 @@ class Texture {
      * converted.
      * 
      * By default the `premultipled` state is `TRUE`.
+     * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
      */
     set_premultiplied(premultiplied: Bool): void
     /**
@@ -2849,6 +2977,17 @@ class Texture {
      * buffer containing pixel data.
      * 
      * <note>The region set can't be larger than the source `data<`/note>
+     * @param src_x upper left coordinate to use from source data.
+     * @param src_y upper left coordinate to use from source data.
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to `width)`
+     * @param dst_height height of destination region to write. (Must be less   than or equal to `height)`
+     * @param width width of source data buffer.
+     * @param height height of source data buffer.
+     * @param format the #CoglPixelFormat used in the source buffer.
+     * @param rowstride rowstride of source buffer (computed from width if none specified)
+     * @param data the actual pixel data.
      */
     set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: number): Bool
     /**
@@ -2857,6 +2996,13 @@ class Texture {
      * 
      * <note>The region updated can't be larger than the source
      * bitmap</note>
+     * @param src_x upper left coordinate to use from the source bitmap.
+     * @param src_y upper left coordinate to use from the source bitmap
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to the bitmap width)
+     * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
+     * @param bitmap The source bitmap to read from
      */
     set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool
     static name: string
@@ -2875,6 +3021,7 @@ class Attribute {
     get_normalized(): Bool
     /**
      * Sets a new #CoglAttributeBuffer for the attribute.
+     * @param attribute_buffer A #CoglAttributeBuffer
      */
     set_buffer(attribute_buffer: AttributeBuffer): void
     /**
@@ -2887,6 +3034,7 @@ class Attribute {
      * attribute. For the builtin properties cogl_color_in and
      * cogl_normal_in it will default to TRUE and for all other names it
      * will default to FALSE.
+     * @param normalized The new value for the normalized property.
      */
     set_normalized(normalized: Bool): void
     static name: string
@@ -2926,6 +3074,7 @@ class Bitmap {
     /**
      * Parses an image file enough to extract the width and height
      * of the bitmap.
+     * @param filename the file to check
      */
     static get_size_from_file(filename: string): [ /* returnType */ Bool, /* width */ number, /* height */ number ]
 }
@@ -2968,6 +3117,7 @@ class Display {
      * final setup of the display may constrain how onscreen framebuffers may be
      * allocated. If Cogl knows how an application wants to allocate onscreen
      * framebuffers then it can try to make sure to setup the display accordingly.
+     * @param onscreen_template A template for creating #CoglOnscreen framebuffers
      */
     set_onscreen_template(onscreen_template: OnscreenTemplate): void
     /**
@@ -3083,6 +3233,12 @@ class MatrixStack {
      * Replaces the current matrix with a perspective matrix for a given
      * viewing frustum defined by 4 side clip planes that all cross
      * through the origin and 2 near and far clip planes.
+     * @param left X position of the left clipping plane where it   intersects the near clipping plane
+     * @param right X position of the right clipping plane where it   intersects the near clipping plane
+     * @param bottom Y position of the bottom clipping plane where it   intersects the near clipping plane
+     * @param top Y position of the top clipping plane where it intersects   the near clipping plane
+     * @param z_near The distance to the near clipping plane (Must be positive)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_far: number): void
     /**
@@ -3128,10 +3284,17 @@ class MatrixStack {
     load_identity(): void
     /**
      * Multiplies the current matrix by the given matrix.
+     * @param matrix the matrix to multiply with the current model-view
      */
     multiply(matrix: Matrix): void
     /**
      * Replaces the current matrix with an orthographic projection matrix.
+     * @param x_1 The x coordinate for the first vertical clipping plane
+     * @param y_1 The y coordinate for the first horizontal clipping plane
+     * @param x_2 The x coordinate for the second vertical clipping plane
+     * @param y_2 The y coordinate for the second horizontal clipping plane
+     * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+     * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
      */
     orthographic(x_1: number, y_1: number, x_2: number, y_2: number, near: number, far: number): void
     /**
@@ -3142,6 +3305,10 @@ class MatrixStack {
      * ratio since that will reduce the effectiveness of depth testing
      * since there wont be enough precision to identify the depth of
      * objects near to each other.</note>
+     * @param fov_y Vertical field of view angle in degrees.
+     * @param aspect The (width over height) aspect ratio for display
+     * @param z_near The distance to the near clipping plane (Must be positive,   and must not be 0)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     perspective(fov_y: number, aspect: number, z_near: number, z_far: number): void
     /**
@@ -3168,21 +3335,30 @@ class MatrixStack {
      * right-hand thumb rule so for example rotating by 10 degrees about
      * the axis-vector (0, 0, 1) causes a small counter-clockwise
      * rotation.
+     * @param angle Angle in degrees to rotate.
+     * @param x X-component of vertex to rotate around.
+     * @param y Y-component of vertex to rotate around.
+     * @param z Z-component of vertex to rotate around.
      */
     rotate(angle: number, x: number, y: number, z: number): void
     /**
      * Multiplies the current matrix by one that rotates according to the
      * rotation described by `euler`.
+     * @param euler A #CoglEuler
      */
     rotate_euler(euler: Euler): void
     /**
      * Multiplies the current matrix by one that rotates according to the
      * rotation described by `quaternion`.
+     * @param quaternion A #CoglQuaternion
      */
     rotate_quaternion(quaternion: Quaternion): void
     /**
      * Multiplies the current matrix by one that scales the x, y and z
      * axes by the given values.
+     * @param x Amount to scale along the x-axis
+     * @param y Amount to scale along the y-axis
+     * @param z Amount to scale along the z-axis
      */
     scale(x: number, y: number, z: number): void
     /**
@@ -3190,11 +3366,15 @@ class MatrixStack {
      * This effectively discards any other operations that were applied
      * since the last time cogl_matrix_stack_push() was called or since
      * the stack was initialized.
+     * @param matrix A #CoglMatrix replace the current matrix value with
      */
     set(matrix: Matrix): void
     /**
      * Multiplies the current matrix by one that translates along all
      * three axes according to the given values.
+     * @param x Distance to translate along the x-axis
+     * @param y Distance to translate along the y-axis
+     * @param z Distance to translate along the z-axis
      */
     translate(x: number, y: number, z: number): void
     static name: string
@@ -3228,6 +3408,8 @@ class Onscreen {
      * the application should also listen for this event before rendering
      * the dirty region to ensure that the framebuffer is actually ready
      * for rendering.
+     * @param callback A callback function to call for dirty events
+     * @param destroy An optional callback to destroy `user_data` when the           `callback` is removed or `onscreen` is freed.
      */
     add_dirty_callback(callback: OnscreenDirtyCallback, destroy?: UserDataDestroyCallback | null): OnscreenDirtyClosure
     /**
@@ -3254,6 +3436,8 @@ class Onscreen {
      * %COGL_FRAME_EVENT_SYNC events so that your application can avoid
      * wasting resources, drawing more frames than your system compositor
      * can display.
+     * @param callback A callback function to call for frame events
+     * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
      */
     add_frame_callback(callback: FrameCallback, destroy?: UserDataDestroyCallback | null): FrameClosure
     /**
@@ -3275,6 +3459,8 @@ class Onscreen {
      * cogl_poll_renderer_dispatch(). This is so that callbacks shouldn't
      * occur while an application might have arbitrary locks held for
      * example.</note>
+     * @param callback A #CoglOnscreenResizeCallback to call when            the `onscreen` changes size.
+     * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
      */
     add_resize_callback(callback: OnscreenResizeCallback, destroy?: UserDataDestroyCallback | null): OnscreenResizeClosure
     /**
@@ -3290,6 +3476,7 @@ class Onscreen {
      * applications (in conjunction with  cogl_onscreen_set_swap_throttled()) so
      * your application will be able to avoid long blocks in the driver caused by
      * throttling when you request to swap buffers too quickly.
+     * @param callback A callback function to call when a swap            has completed
      */
     add_swap_buffers_callback(callback: SwapBuffersNotify): number
     /**
@@ -3381,6 +3568,7 @@ class Onscreen {
      * If a destroy callback was passed to
      * cogl_onscreen_add_dirty_callback() to destroy the user data then
      * this will also get called.
+     * @param closure A #CoglOnscreenDirtyClosure returned from           cogl_onscreen_add_dirty_callback()
      */
     remove_dirty_callback(closure: OnscreenDirtyClosure): void
     /**
@@ -3390,16 +3578,19 @@ class Onscreen {
      * If a destroy callback was passed to
      * cogl_onscreen_add_frame_callback() to destroy the user data then
      * this will get called.
+     * @param closure A #CoglFrameClosure returned from           cogl_onscreen_add_frame_callback()
      */
     remove_frame_callback(closure: FrameClosure): void
     /**
      * Removes a resize `callback` and `user_data` pair that were previously
      * associated with `onscreen` via cogl_onscreen_add_resize_callback().
+     * @param closure An identifier returned from cogl_onscreen_add_resize_callback()
      */
     remove_resize_callback(closure: OnscreenResizeClosure): void
     /**
      * Removes a callback that was previously registered
      * using cogl_onscreen_add_swap_buffers_callback().
+     * @param id An identifier returned from cogl_onscreen_add_swap_buffers_callback()
      */
     remove_swap_buffers_callback(id: number): void
     /**
@@ -3425,6 +3616,7 @@ class Onscreen {
      * specialized control of the viewport it will need to register a
      * resize handler using cogl_onscreen_add_resize_callback() so that it
      * can track when the viewport has been changed automatically.</note>
+     * @param resizable 
      */
     set_resizable(resizable: Bool): void
     /**
@@ -3432,6 +3624,7 @@ class Onscreen {
      * requests (made using cogl_onscreen_swap_buffers()) throttled either by a
      * displays vblank period or perhaps some other mechanism in a composited
      * environment.
+     * @param throttled Whether swap throttling is wanted or not.
      */
     set_swap_throttled(throttled: Bool): void
     /**
@@ -3511,6 +3704,8 @@ class Onscreen {
      * <note>It is highly recommended to use this API in conjunction with
      * the cogl_onscreen_get_buffer_age() api so that your application can
      * perform incremental rendering based on old back buffers.</note>
+     * @param rectangles An array of integer 4-tuples representing damaged              rectangles as (x, y, width, height) tuples.
+     * @param n_rectangles The number of 4-tuples to be read from `rectangles`
      */
     swap_buffers_with_damage(rectangles: number, n_rectangles: number): void
     /**
@@ -3523,6 +3718,8 @@ class Onscreen {
      * significance of the discard is that you should not expect to be able to
      * start a new frame that incrementally builds on the contents of the previous
      * frame.
+     * @param rectangles An array of integer 4-tuples representing rectangles as              (x, y, width, height) tuples.
+     * @param n_rectangles The number of 4-tuples to be read from `rectangles`
      */
     swap_region(rectangles: number, n_rectangles: number): void
     /* Methods of Cogl-2.0.Cogl.Framebuffer */
@@ -3543,16 +3740,24 @@ class Onscreen {
      * Removes a fence previously submitted with
      * cogl_framebuffer_add_fence_callback(); the callback will not be
      * called.
+     * @param closure The #CoglFenceClosure returned from           cogl_framebuffer_add_fence_callback()
      */
     cancel_fence_callback(closure: FenceClosure): void
     /**
      * Clears all the auxiliary buffers identified in the `buffers` mask, and if
      * that includes the color buffer then the specified `color` is used.
+     * @param buffers A mask of #CoglBufferBit<!-- -->'s identifying which auxiliary   buffers to clear
+     * @param color The color to clear the color buffer too if specified in         `buffers`.
      */
     clear(buffers: number, color: Color): void
     /**
      * Clears all the auxiliary buffers identified in the `buffers` mask, and if
      * that includes the color buffer then the specified `color` is used.
+     * @param buffers A mask of #CoglBufferBit<!-- -->'s identifying which auxiliary   buffers to clear
+     * @param red The red component of color to clear the color buffer too if       specified in `buffers`.
+     * @param green The green component of color to clear the color buffer too if         specified in `buffers`.
+     * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
+     * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
      */
     clear4f(buffers: number, red: number, green: number, blue: number, alpha: number): void
     /**
@@ -3572,6 +3777,7 @@ class Onscreen {
      * already implicitly discard when you finish rendering to a #CoglOnscreen
      * framebuffer, and it's not meaningful to try and discard the color buffer of
      * a #CoglOffscreen framebuffer since they are single-buffered.
+     * @param buffers A #CoglBufferBit mask of which ancillary buffers you want           to discard.
      */
     discard_buffers(buffers: number): void
     /**
@@ -3596,6 +3802,12 @@ class Onscreen {
      * <note>This api doesn't support any of the legacy global state options such
      * as cogl_set_depth_test_enabled(), cogl_set_backface_culling_enabled() or
      * cogl_program_use()</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param mode The #CoglVerticesMode defining the topology of vertices
+     * @param first_vertex The vertex offset within the given attributes to draw from
+     * @param n_vertices The number of vertices to draw from the given attributes
+     * @param attributes An array of pointers to #CoglAttribute<-- -->s defining vertex              geometry
+     * @param n_attributes The number of attributes in the `attributes` array.
      */
     draw_attributes(pipeline: Pipeline, mode: VerticesMode, first_vertex: number, n_vertices: number, attributes: Attribute, n_attributes: number): void
     /**
@@ -3638,6 +3850,13 @@ class Onscreen {
      * <note>This api doesn't support any of the legacy global state
      * options such as cogl_set_depth_test_enabled(),
      * cogl_set_backface_culling_enabled() or cogl_program_use()</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param mode The #CoglVerticesMode defining the topology of vertices
+     * @param first_vertex The vertex offset within the given attributes to draw from
+     * @param n_vertices The number of vertices to draw from the given attributes
+     * @param indices The array of indices used by the GPU to lookup attribute           data for each vertex.
+     * @param attributes An array of pointers to #CoglAttribute<-- -->s defining vertex              geometry
+     * @param n_attributes The number of attributes in the `attributes` array.
      */
     draw_indexed_attributes(pipeline: Pipeline, mode: VerticesMode, first_vertex: number, n_vertices: number, indices: Indices, attributes: Attribute, n_attributes: number): void
     /**
@@ -3686,6 +3905,13 @@ class Onscreen {
      * smallest layer index) and if you supply less texture coordinates
      * than there are layers in the current source material then default
      * texture coordinates (0.0, 0.0, 1.0, 1.0) are generated.
+     * @param pipeline A #CoglPipeline state object
+     * @param x_1 x coordinate upper left on screen.
+     * @param y_1 y coordinate upper left on screen.
+     * @param x_2 x coordinate lower right on screen.
+     * @param y_2 y coordinate lower right on screen.
+     * @param tex_coords An array containing groups of   4 float values: [s_1, t_1, s_2, t_2] that are interpreted as two texture   coordinates; one for the top left texel, and one for the bottom right   texel. Each value should be between 0.0 and 1.0, where the coordinate   (0.0, 0.0) represents the top left of the texture, and (1.0, 1.0) the   bottom right.
+     * @param tex_coords_len The length of the `tex_coords` array. (For one layer   and one group of texture coordinates, this would be 4)
      */
     draw_multitextured_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number, tex_coords: number[], tex_coords_len: number): void
     /**
@@ -3701,6 +3927,8 @@ class Onscreen {
      * <note>This api doesn't support any of the legacy global state options such
      * as cogl_set_depth_test_enabled(), cogl_set_backface_culling_enabled() or
      * cogl_program_use()</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param primitive A #CoglPrimitive geometry object
      */
     draw_primitive(pipeline: Pipeline, primitive: Primitive): void
     /**
@@ -3715,6 +3943,11 @@ class Onscreen {
      * <note>If you want to describe a rectangle with a texture mapped on
      * it then you can use
      * cogl_framebuffer_draw_textured_rectangle().</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param x_1 X coordinate of the top-left corner
+     * @param y_1 Y coordinate of the top-left corner
+     * @param x_2 X coordinate of the bottom-right corner
+     * @param y_2 Y coordinate of the bottom-right corner
      */
     draw_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number): void
     /**
@@ -3737,6 +3970,9 @@ class Onscreen {
      * cogl_framebuffer_draw_textured_rectangle() separately for multiple
      * rectangles if all of the rectangles will be drawn together with the
      * same `pipeline` state.
+     * @param pipeline A #CoglPipeline state object
+     * @param coordinates an array of coordinates   containing groups of 4 float values: [x_1, y_1, x_2, y_2] that are   interpreted as two position coordinates; one for the top left of   the rectangle (x1, y1), and one for the bottom right of the   rectangle (x2, y2).
+     * @param n_rectangles number of rectangles defined in `coordinates`.
      */
     draw_rectangles(pipeline: Pipeline, coordinates: number[], n_rectangles: number): void
     /**
@@ -3771,6 +4007,15 @@ class Onscreen {
      * with one of your `pipeline` layers which normally implies working
      * with non-normalized texture coordinates this api should still be
      * passed normalized texture coordinates.</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param x_1 x coordinate upper left on screen.
+     * @param y_1 y coordinate upper left on screen.
+     * @param x_2 x coordinate lower right on screen.
+     * @param y_2 y coordinate lower right on screen.
+     * @param s_1 S texture coordinate of the top-left coorner
+     * @param t_1 T texture coordinate of the top-left coorner
+     * @param s_2 S texture coordinate of the bottom-right coorner
+     * @param t_2 T texture coordinate of the bottom-right coorner
      */
     draw_textured_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number, s_1: number, t_1: number, s_2: number, t_2: number): void
     /**
@@ -3813,6 +4058,9 @@ class Onscreen {
      * which normally implies working with non-normalized texture
      * coordinates this api should still be passed normalized texture
      * coordinates.</note>
+     * @param pipeline A #CoglPipeline state object
+     * @param coordinates an array containing   groups of 8 float values: [x_1, y_1, x_2, y_2, s_1, t_1, s_2, t_2]   that have the same meaning as the arguments for   cogl_framebuffer_draw_textured_rectangle().
+     * @param n_rectangles number of rectangles to `coordinates` to draw
      */
     draw_textured_rectangles(pipeline: Pipeline, coordinates: number[], n_rectangles: number): void
     /**
@@ -3831,6 +4079,12 @@ class Onscreen {
      * Replaces the current projection matrix with a perspective matrix
      * for a given viewing frustum defined by 4 side clip planes that
      * all cross through the origin and 2 near and far clip planes.
+     * @param left X position of the left clipping plane where it   intersects the near clipping plane
+     * @param right X position of the right clipping plane where it   intersects the near clipping plane
+     * @param bottom Y position of the bottom clipping plane where it   intersects the near clipping plane
+     * @param top Y position of the top clipping plane where it intersects   the near clipping plane
+     * @param z_near The distance to the near clipping plane (Must be positive)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_far: number): void
     /**
@@ -3965,6 +4219,12 @@ class Onscreen {
     /**
      * Replaces the current projection matrix with an orthographic projection
      * matrix.
+     * @param x_1 The x coordinate for the first vertical clipping plane
+     * @param y_1 The y coordinate for the first horizontal clipping plane
+     * @param x_2 The x coordinate for the second vertical clipping plane
+     * @param y_2 The y coordinate for the second horizontal clipping plane
+     * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+     * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
      */
     orthographic(x_1: number, y_1: number, x_2: number, y_2: number, near: number, far: number): void
     /**
@@ -3975,6 +4235,10 @@ class Onscreen {
      * ratio since that will reduce the effectiveness of depth testing
      * since there wont be enough precision to identify the depth of
      * objects near to each other.</note>
+     * @param fov_y Vertical field of view angle in degrees.
+     * @param aspect The (width over height) aspect ratio for display
+     * @param z_near The distance to the near clipping plane (Must be positive,   and must not be 0)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     perspective(fov_y: number, aspect: number, z_near: number, z_far: number): void
     /**
@@ -4005,6 +4269,11 @@ class Onscreen {
      * the silhouette is intersected with the previous clipping area.  To
      * restore the previous clipping area, call
      * cogl_framebuffer_pop_clip().
+     * @param primitive A #CoglPrimitive describing a flat 2D shape
+     * @param bounds_x1 x coordinate for the top-left corner of the primitives             bounds
+     * @param bounds_y1 y coordinate for the top-left corner of the primitives             bounds
+     * @param bounds_x2 x coordinate for the bottom-right corner of the             primitives bounds.
+     * @param bounds_y2 y coordinate for the bottom-right corner of the             primitives bounds.
      */
     push_primitive_clip(primitive: Primitive, bounds_x1: number, bounds_y1: number, bounds_x2: number, bounds_y2: number): void
     /**
@@ -4016,6 +4285,10 @@ class Onscreen {
      * 
      * The rectangle is intersected with the current clip region. To undo
      * the effect of this function, call cogl_framebuffer_pop_clip().
+     * @param x_1 x coordinate for top left corner of the clip rectangle
+     * @param y_1 y coordinate for top left corner of the clip rectangle
+     * @param x_2 x coordinate for bottom right corner of the clip rectangle
+     * @param y_2 y coordinate for bottom right corner of the clip rectangle
      */
     push_rectangle_clip(x_1: number, y_1: number, x_2: number, y_2: number): void
     /**
@@ -4027,6 +4300,10 @@ class Onscreen {
      * 
      * The rectangle is intersected with the current clip region. To undo
      * the effect of this function, call cogl_framebuffer_pop_clip().
+     * @param x left edge of the clip rectangle in window coordinates
+     * @param y top edge of the clip rectangle in window coordinates
+     * @param width width of the clip rectangle
+     * @param height height of the clip rectangle
      */
     push_scissor_clip(x: number, y: number, width: number, height: number): void
     /**
@@ -4055,6 +4332,12 @@ class Onscreen {
      * cogl_object_unref (bitmap);
      * ```
      * 
+     * @param x The x position to read from
+     * @param y The y position to read from
+     * @param width The width of the region of rectangles to read
+     * @param height The height of the region of rectangles to read
+     * @param format The pixel format to store the data in
+     * @param pixels The address of the buffer to store the data in
      */
     read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): Bool
     /**
@@ -4068,6 +4351,10 @@ class Onscreen {
      * convert it. To read the pixel values without any conversion you
      * should either specify a format that doesn't use an alpha channel or
      * use one of the formats ending in PRE.
+     * @param x The x position to read from
+     * @param y The y position to read from
+     * @param source Identifies which auxillary buffer you want to read          (only COGL_READ_PIXELS_COLOR_BUFFER supported currently)
+     * @param bitmap The bitmap to store the results in.
      */
     read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): Bool
     /**
@@ -4115,6 +4402,10 @@ class Onscreen {
      * only guarantees that at-least the region specified will be resolved
      * and if you have rendered to a larger region then it's possible that
      * other samples may be implicitly resolved.
+     * @param x top-left x coordinate of region to resolve
+     * @param y top-left y coordinate of region to resolve
+     * @param width width of region to resolve
+     * @param height height of region to resolve
      */
     resolve_samples_region(x: number, y: number, width: number, height: number): void
     /**
@@ -4123,27 +4414,37 @@ class Onscreen {
      * rotation follows the right-hand thumb rule so for example rotating
      * by 10 degrees about the axis-vector (0, 0, 1) causes a small
      * counter-clockwise rotation.
+     * @param angle Angle in degrees to rotate.
+     * @param x X-component of vertex to rotate around.
+     * @param y Y-component of vertex to rotate around.
+     * @param z Z-component of vertex to rotate around.
      */
     rotate(angle: number, x: number, y: number, z: number): void
     /**
      * Multiplies the current model-view matrix by one that rotates
      * according to the rotation described by `euler`.
+     * @param euler A #CoglEuler
      */
     rotate_euler(euler: Euler): void
     /**
      * Multiplies the current model-view matrix by one that rotates
      * according to the rotation described by `quaternion`.
+     * @param quaternion A #CoglQuaternion
      */
     rotate_quaternion(quaternion: Quaternion): void
     /**
      * Multiplies the current model-view matrix by one that scales the x,
      * y and z axes by the given values.
+     * @param x Amount to scale along the x-axis
+     * @param y Amount to scale along the y-axis
+     * @param z Amount to scale along the z-axis
      */
     scale(x: number, y: number, z: number): void
     /**
      * Defines a bit mask of which color channels should be written to the
      * given `framebuffer`. If a bit is set in `color_mask` that means that
      * color will be written.
+     * @param color_mask A #CoglColorMask of which color channels to write to              the current framebuffer.
      */
     set_color_mask(color_mask: ColorMask): void
     /**
@@ -4157,6 +4458,7 @@ class Onscreen {
      * <note>It's not valid to call this function after the framebuffer has been
      * allocated as the creation of the depth texture is done at allocation time.
      * </note>
+     * @param enabled TRUE or FALSE
      */
     set_depth_texture_enabled(enabled: Bool): void
     /**
@@ -4166,6 +4468,7 @@ class Onscreen {
      * information will be written to this buffer during rendering.
      * 
      * Depth buffer writing is enabled by default.
+     * @param depth_write_enabled %TRUE to enable depth writing or %FALSE to disable
      */
     set_depth_write_enabled(depth_write_enabled: Bool): void
     /**
@@ -4182,14 +4485,17 @@ class Onscreen {
      * then this has no affect.
      * 
      * Dithering is enabled by default.
+     * @param dither_enabled %TRUE to enable dithering or %FALSE to disable
      */
     set_dither_enabled(dither_enabled: Bool): void
     /**
      * Sets `matrix` as the new model-view matrix.
+     * @param matrix the new model-view matrix
      */
     set_modelview_matrix(matrix: Matrix): void
     /**
      * Sets `matrix` as the new projection matrix.
+     * @param matrix the new projection matrix
      */
     set_projection_matrix(matrix: Matrix): void
     /**
@@ -4225,6 +4531,7 @@ class Onscreen {
      * all framebuffer samples but if only a small region of a
      * framebuffer has changed this can lead to redundant work being
      * done.</note>
+     * @param samples_per_pixel The minimum number of samples per pixel
      */
     set_samples_per_pixel(samples_per_pixel: number): void
     /**
@@ -4235,6 +4542,7 @@ class Onscreen {
      * and the framebuffer must have been created with stereo
      * enabled. (See cogl_onscreen_template_set_stereo_enabled(),
      * cogl_framebuffer_get_is_stereo().)
+     * @param stereo_mode A #CoglStereoMode specifying which stereo buffers               should be drawn tow.
      */
     set_stereo_mode(stereo_mode: StereoMode): void
     /**
@@ -4253,15 +4561,23 @@ class Onscreen {
      * <note>Although the function takes floating point arguments, existing
      * drivers only allow the use of integer values. In the future floating
      * point values will be exposed via a checkable feature.</note>
+     * @param x The top-left x coordinate of the viewport origin (only integers     supported currently)
+     * @param y The top-left y coordinate of the viewport origin (only integers     supported currently)
+     * @param width The width of the viewport (only integers supported currently)
+     * @param height The height of the viewport (only integers supported currently)
      */
     set_viewport(x: number, y: number, width: number, height: number): void
     /**
      * Multiplies the current model-view matrix by the given matrix.
+     * @param matrix the matrix to multiply with the current model-view
      */
     transform(matrix: Matrix): void
     /**
      * Multiplies the current model-view matrix by one that translates the
      * model along all three axes according to the given values.
+     * @param x Distance to translate along the x-axis
+     * @param y Distance to translate along the y-axis
+     * @param z Distance to translate along the z-axis
      */
     translate(x: number, y: number, z: number): void
     static name: string
@@ -4288,6 +4604,7 @@ class OnscreenTemplate {
      * being redundant to use the cogl_framebuffer_resolve_samples() and
      * cogl_framebuffer_resolve_samples_region() apis with single-sample
      * rendering.</note>
+     * @param n The minimum number of samples per pixel
      */
     set_samples_per_pixel(n: number): void
     /**
@@ -4296,12 +4613,14 @@ class OnscreenTemplate {
      * buffers, for use with stereo display. If the display system
      * does not support stereo, then creation of the framebuffer will
      * fail.
+     * @param enabled Whether framebuffers are created with stereo buffers
      */
     set_stereo_enabled(enabled: Bool): void
     /**
      * Requests that any future #CoglOnscreen framebuffers derived from this
      * template should enable or disable swap throttling according to the given
      * `throttled` argument.
+     * @param throttled Whether throttling should be enabled
      */
     set_swap_throttled(throttled: Bool): void
     static name: string
@@ -4365,6 +4684,8 @@ class Pipeline {
      * around depends on the hook that is given to
      * cogl_snippet_new(). Note that some hooks can't be used with a layer
      * and need to be added with cogl_pipeline_add_snippet() instead.
+     * @param layer The layer to hook the snippet to
+     * @param snippet A #CoglSnippet
      */
     add_layer_snippet(layer: number, snippet: Snippet): void
     /**
@@ -4372,6 +4693,7 @@ class Pipeline {
      * replace some part of the pipeline as defined by the hook point in
      * `snippet`. Note that some hook points are specific to a layer and
      * must be added with cogl_pipeline_add_layer_snippet() instead.
+     * @param snippet The #CoglSnippet to add to the vertex processing hook
      */
     add_snippet(snippet: Snippet): void
     /**
@@ -4387,12 +4709,14 @@ class Pipeline {
     copy(): Pipeline
     /**
      * Iterates all the layer indices of the given `pipeline`.
+     * @param callback A #CoglPipelineLayerCallback to be            called for each layer index
      */
     foreach_layer(callback: PipelineLayerCallback): void
     get_alpha_test_function(): PipelineAlphaFunc
     get_alpha_test_reference(): number
     /**
      * Retrieves the current ambient color for `pipeline`
+     * @param ambient The location to store the ambient color
      */
     get_ambient(ambient: Color): void
     /**
@@ -4413,10 +4737,12 @@ class Pipeline {
     get_depth_state(): /* state_out */ DepthState
     /**
      * Retrieves the current diffuse color for `pipeline`
+     * @param diffuse The location to store the diffuse color
      */
     get_diffuse(diffuse: Color): void
     /**
      * Retrieves the pipelines current emission color.
+     * @param emission The location to store the emission color
      */
     get_emission(emission: Color): void
     /**
@@ -4436,6 +4762,7 @@ class Pipeline {
      * 
      * The default filter is %COGL_PIPELINE_FILTER_LINEAR but this can be
      * changed using cogl_pipeline_set_layer_filters().
+     * @param layer_index the layer number to change.
      */
     get_layer_mag_filter(layer_index: number): PipelineFilter
     /**
@@ -4445,27 +4772,32 @@ class Pipeline {
      * 
      * The default filter is %COGL_PIPELINE_FILTER_LINEAR but this can be
      * changed using cogl_pipeline_set_layer_filters().
+     * @param layer_index the layer number to change.
      */
     get_layer_min_filter(layer_index: number): PipelineFilter
     /**
      * Gets whether point sprite coordinate generation is enabled for this
      * texture layer.
+     * @param layer_index the layer number to check.
      */
     get_layer_point_sprite_coords_enabled(layer_index: number): Bool
     get_layer_texture(layer_index: number): Texture
     /**
      * Returns the wrap mode for the 'p' coordinate of texture lookups on this
      * layer.
+     * @param layer_index the layer number to change.
      */
     get_layer_wrap_mode_p(layer_index: number): PipelineWrapMode
     /**
      * Returns the wrap mode for the 's' coordinate of texture lookups on this
      * layer.
+     * @param layer_index the layer number to change.
      */
     get_layer_wrap_mode_s(layer_index: number): PipelineWrapMode
     /**
      * Returns the wrap mode for the 't' coordinate of texture lookups on this
      * layer.
+     * @param layer_index the layer number to change.
      */
     get_layer_wrap_mode_t(layer_index: number): PipelineWrapMode
     /**
@@ -4484,6 +4816,7 @@ class Pipeline {
     get_shininess(): number
     /**
      * Retrieves the pipelines current specular color.
+     * @param specular The location to store the specular color
      */
     get_specular(specular: Color): void
     /**
@@ -4496,6 +4829,7 @@ class Pipeline {
      * this pipeline so it can not be used to test whether uniforms are
      * present. It is not necessary to set the program on the pipeline
      * before calling this function.
+     * @param uniform_name The name of a uniform
      */
     get_uniform_location(uniform_name: string): number
     /**
@@ -4505,6 +4839,7 @@ class Pipeline {
     get_user_program(): Handle
     /**
      * This function removes a layer from your pipeline
+     * @param layer_index Specifies the layer you want to remove
      */
     remove_layer(layer_index: number): void
     /**
@@ -4515,6 +4850,8 @@ class Pipeline {
      * and which continue on to the blending stage.
      * 
      * The default is %COGL_PIPELINE_ALPHA_FUNC_ALWAYS
+     * @param alpha_func A `CoglPipelineAlphaFunc` constant
+     * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
      */
     set_alpha_test_function(alpha_func: PipelineAlphaFunc, alpha_reference: number): void
     /**
@@ -4526,6 +4863,7 @@ class Pipeline {
      * slant.
      * 
      * The default value is (0.2, 0.2, 0.2, 1.0)
+     * @param ambient The components of the desired ambient color
      */
     set_ambient(ambient: Color): void
     /**
@@ -4535,6 +4873,7 @@ class Pipeline {
      * The default ambient color is (0.2, 0.2, 0.2, 1.0)
      * 
      * The default diffuse color is (0.8, 0.8, 0.8, 1.0)
+     * @param color The components of the desired ambient and diffuse colors
      */
     set_ambient_and_diffuse(color: Color): void
     /**
@@ -4601,11 +4940,13 @@ class Pipeline {
      * 
      * That gives normal alpha-blending when the calculated color for the pipeline
      * is in premultiplied form.
+     * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>   describing the desired blend function.
      */
     set_blend(blend_string: string): Bool
     /**
      * When blending is setup to reference a CONSTANT blend factor then
      * blending will depend on the constant set with this function.
+     * @param constant_color The constant color you want
      */
     set_blend_constant(constant_color: Color): void
     /**
@@ -4617,24 +4958,34 @@ class Pipeline {
      * semi-transparent red. See cogl_color_premultiply().
      * 
      * The default value is (1.0, 1.0, 1.0, 1.0)
+     * @param color The components of the color
      */
     set_color(color: Color): void
     /**
      * Sets the basic color of the pipeline, used when no lighting is enabled.
      * 
      * The default value is (1.0, 1.0, 1.0, 1.0)
+     * @param red The red component
+     * @param green The green component
+     * @param blue The blue component
+     * @param alpha The alpha component
      */
     set_color4f(red: number, green: number, blue: number, alpha: number): void
     /**
      * Sets the basic color of the pipeline, used when no lighting is enabled.
      * 
      * The default value is (0xff, 0xff, 0xff, 0xff)
+     * @param red The red component
+     * @param green The green component
+     * @param blue The blue component
+     * @param alpha The alpha component
      */
     set_color4ub(red: number, green: number, blue: number, alpha: number): void
     /**
      * Defines a bit mask of which color channels should be written to the
      * current framebuffer. If a bit is set in `color_mask` that means that
      * color will be written.
+     * @param color_mask A #CoglColorMask of which color channels to write to              the current framebuffer.
      */
     set_color_mask(color_mask: ColorMask): void
     /**
@@ -4652,6 +5003,7 @@ class Pipeline {
      * cogl_pipeline_set_front_face_winding().
      * 
      * Status: Unstable
+     * @param cull_face_mode The new mode to set
      */
     set_cull_face_mode(cull_face_mode: PipelineCullFaceMode): void
     /**
@@ -4662,6 +5014,7 @@ class Pipeline {
      * 
      * Note: Since some platforms do not support the depth range feature
      * it is possible for this function to fail and report an `error`.
+     * @param state A #CoglDepthState struct
      */
     set_depth_state(state: DepthState): Bool
     /**
@@ -4670,6 +5023,7 @@ class Pipeline {
      * surface directly - perpendicular to the surface.
      * 
      * The default value is (0.8, 0.8, 0.8, 1.0)
+     * @param diffuse The components of the desired diffuse color
      */
     set_diffuse(diffuse: Color): void
     /**
@@ -4678,6 +5032,7 @@ class Pipeline {
      * color.
      * 
      * The default value is (0.0, 0.0, 0.0, 1.0)
+     * @param emission The components of the desired emissive color
      */
     set_emission(emission: Color): void
     /**
@@ -4690,6 +5045,7 @@ class Pipeline {
      * %COGL_WINDING_COUNTER_CLOCKWISE.
      * 
      * Status: Unstable
+     * @param front_winding the winding order
      */
     set_front_face_winding(front_winding: Winding): void
     /**
@@ -4769,11 +5125,15 @@ class Pipeline {
      * 
      * <note>You can't give a multiplication factor for arguments as you can
      * with blending.</note>
+     * @param layer_index Specifies the layer you want define a combine function for
+     * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>    describing the desired texture combine function.
      */
     set_layer_combine(layer_index: number, blend_string: string): Bool
     /**
      * When you are using the 'CONSTANT' color source in a layer combine
      * description then you can use this function to define its value.
+     * @param layer_index Specifies the layer you want to specify a constant used               for texture combining
+     * @param constant The constant color you want
      */
     set_layer_combine_constant(layer_index: number, constant: Color): void
     /**
@@ -4784,11 +5144,16 @@ class Pipeline {
      * %COGL_PIPELINE_FILTER_NEAREST or %COGL_PIPELINE_FILTER_LINEAR as
      * magnification filters since magnification doesn't ever need to
      * reference values stored in the mipmap chain.</note>
+     * @param layer_index the layer number to change.
+     * @param min_filter the filter used when scaling a texture down.
+     * @param mag_filter the filter used when magnifying a texture.
      */
     set_layer_filters(layer_index: number, min_filter: PipelineFilter, mag_filter: PipelineFilter): void
     /**
      * This function lets you set a matrix that can be used to e.g. translate
      * and rotate a single layer of a pipeline used to fill your geometry.
+     * @param layer_index the index for the layer inside `pipeline`
+     * @param matrix the transformation matrix for the layer
      */
     set_layer_matrix(layer_index: number, matrix: Matrix): void
     /**
@@ -4803,6 +5168,8 @@ class Pipeline {
      * cogl_pipeline_copy(). In that case this function can be used to
      * specify the texture type so that any pipeline copies can share the
      * internal texture type state for efficiency.
+     * @param layer_index The layer number to modify
+     * @param texture_type The type of the default texture to use
      */
     set_layer_null_texture(layer_index: number, texture_type: TextureType): void
     /**
@@ -4816,6 +5183,8 @@ class Pipeline {
      * This function will only work if %COGL_FEATURE_ID_POINT_SPRITE is
      * available. If the feature is not available then the function will
      * return %FALSE and set `error`.
+     * @param layer_index the layer number to change.
+     * @param enable whether to enable point sprite coord generation.
      */
     set_layer_point_sprite_coords_enabled(layer_index: number, enable: Bool): Bool
     set_layer_texture(layer_index: number, texture: Texture): void
@@ -4825,19 +5194,27 @@ class Pipeline {
      * cogl_pipeline_set_layer_wrap_mode_s(),
      * cogl_pipeline_set_layer_wrap_mode_t() and
      * cogl_pipeline_set_layer_wrap_mode_p() separately.
+     * @param layer_index the layer number to change.
+     * @param mode the new wrap mode
      */
     set_layer_wrap_mode(layer_index: number, mode: PipelineWrapMode): void
     /**
      * Sets the wrap mode for the 'p' coordinate of texture lookups on
      * this layer. 'p' is the third coordinate.
+     * @param layer_index the layer number to change.
+     * @param mode the new wrap mode
      */
     set_layer_wrap_mode_p(layer_index: number, mode: PipelineWrapMode): void
     /**
      * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
+     * @param layer_index the layer number to change.
+     * @param mode the new wrap mode
      */
     set_layer_wrap_mode_s(layer_index: number, mode: PipelineWrapMode): void
     /**
      * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
+     * @param layer_index the layer number to change.
+     * @param mode the new wrap mode
      */
     set_layer_wrap_mode_t(layer_index: number, mode: PipelineWrapMode): void
     /**
@@ -4856,6 +5233,7 @@ class Pipeline {
      * %COGL_FEATURE_ID_PER_VERTEX_POINT_SIZE feature is available. If
      * this is not available then the function will return %FALSE and set
      * a #CoglError.
+     * @param enable whether to enable per-vertex point size
      */
     set_per_vertex_point_size(enable: Bool): Bool
     /**
@@ -4871,6 +5249,7 @@ class Pipeline {
      * pipeline will have undefined results. This is the default value so
      * if an application wants to draw points it must make sure to use a
      * pipeline that has an explicit point size set on it.
+     * @param point_size the new point size.
      */
     set_point_size(point_size: number): void
     /**
@@ -4880,6 +5259,7 @@ class Pipeline {
      * object appear more shiny.
      * 
      * The default value is 0.0
+     * @param shininess The desired shininess; must be >= 0.0
      */
     set_shininess(shininess: number): void
     /**
@@ -4888,6 +5268,7 @@ class Pipeline {
      * position, and is brightest along the lines of reflection.
      * 
      * The default value is (0.0, 0.0, 0.0, 1.0)
+     * @param specular The components of the desired specular color
      */
     set_specular(specular: Color): void
     /**
@@ -4901,6 +5282,8 @@ class Pipeline {
      * This function should be used to set uniforms that are of type
      * float. It can also be used to set a single member of a float array
      * uniform.
+     * @param uniform_location The uniform's location identifier
+     * @param value The new value for the uniform
      */
     set_uniform_1f(uniform_location: number, value: number): void
     /**
@@ -4914,6 +5297,8 @@ class Pipeline {
      * This function should be used to set uniforms that are of type
      * int. It can also be used to set a single member of a int array
      * uniform or a sampler uniform.
+     * @param uniform_location The uniform's location identifier
+     * @param value The new value for the uniform
      */
     set_uniform_1i(uniform_location: number, value: number): void
     /**
@@ -4929,6 +5314,10 @@ class Pipeline {
      * single vec4 uniform you would use 4 for `n_components` and 1 for
      * `count`. To set an array of 8 float values, you could use 1 for
      * `n_components` and 8 for `count`.
+     * @param uniform_location The uniform's location identifier
+     * @param n_components The number of components in the corresponding uniform's type
+     * @param count The number of values to set
+     * @param value Pointer to the new values to set
      */
     set_uniform_float(uniform_location: number, n_components: number, count: number, value: number): void
     /**
@@ -4944,6 +5333,10 @@ class Pipeline {
      * ivec4 uniform you would use 4 for `n_components` and 1 for
      * `count`. To set an array of 8 int values, you could use 1 for
      * `n_components` and 8 for `count`.
+     * @param uniform_location The uniform's location identifier
+     * @param n_components The number of components in the corresponding uniform's type
+     * @param count The number of values to set
+     * @param value Pointer to the new values to set
      */
     set_uniform_int(uniform_location: number, n_components: number, count: number, value: number): void
     /**
@@ -4964,6 +5357,11 @@ class Pipeline {
      * row-major order. You can pass a #CoglMatrix by calling by passing
      * the result of cogl_matrix_get_array() in `value` and setting
      * `transpose` to %FALSE.
+     * @param uniform_location The uniform's location identifier
+     * @param dimensions The size of the matrix
+     * @param count The number of values to set
+     * @param transpose Whether to transpose the matrix
+     * @param value Pointer to the new values to set
      */
     set_uniform_matrix(uniform_location: number, dimensions: number, count: number, transpose: Bool, value: number): void
     /**
@@ -5006,6 +5404,7 @@ class Pipeline {
      * Also remember you need to check for either the
      * %COGL_FEATURE_SHADERS_GLSL or %COGL_FEATURE_SHADERS_ARBFP before
      * using the cogl_program or cogl_shader API.
+     * @param program A #CoglHandle to a linked CoglProgram
      */
     set_user_program(program: Handle): void
     static name: string
@@ -5038,10 +5437,13 @@ class Primitive {
      * ensure that only low-level textures that can be directly sampled by
      * a GPU such as #CoglTexture2D, #CoglTextureRectangle or #CoglTexture3D
      * are associated with layers of the given `pipeline`.
+     * @param framebuffer A destination #CoglFramebuffer
+     * @param pipeline A #CoglPipeline state object
      */
     draw(framebuffer: Framebuffer, pipeline: Pipeline): void
     /**
      * Iterates all the attributes of the given #CoglPrimitive.
+     * @param callback A #CoglPrimitiveAttributeCallback to be            called for each attribute
      */
     foreach_attribute(callback: PrimitiveAttributeCallback): void
     get_first_vertex(): number
@@ -5064,6 +5466,8 @@ class Primitive {
     get_n_vertices(): number
     /**
      * Replaces all the attributes of the given #CoglPrimitive object.
+     * @param attributes an array of #CoglAttribute pointers
+     * @param n_attributes the number of elements in `attributes`
      */
     set_attributes(attributes: Attribute, n_attributes: number): void
     set_first_vertex(first_vertex: number): void
@@ -5086,6 +5490,8 @@ class Primitive {
      * <note>The #CoglPrimitive <structfield>first_vertex</structfield> property
      * also affects drawing with indices by defining the first entry of the
      * indices to start drawing from.</note>
+     * @param indices A #CoglIndices array
+     * @param n_indices The number of indices to reference when drawing
      */
     set_indices(indices: Indices, n_indices: number): void
     set_mode(mode: VerticesMode): void
@@ -5099,6 +5505,7 @@ class Primitive {
      * <note>To be clear; it doesn't refer to the number of vertices - in
      * terms of data - associated with the primitive it's just the number
      * of vertices to read and draw.</note>
+     * @param n_vertices The number of vertices to read when drawing.
      */
     set_n_vertices(n_vertices: number): void
     static name: string
@@ -5119,6 +5526,8 @@ class Primitive {
      * filter that requires the lower mipmap levels. An application should
      * disable this if it wants to upload its own data for the other
      * levels. By default auto mipmapping is enabled.
+     * @param primitive_texture A #CoglPrimitiveTexture
+     * @param value The new value for whether to auto mipmap
      */
     static texture_set_auto_mipmap(primitive_texture: PrimitiveTexture, value: Bool): void
 }
@@ -5129,11 +5538,13 @@ class Renderer {
      * 
      * Applications should ideally minimize how many of these constraints they
      * depend on to ensure maximum portability.
+     * @param constraint A #CoglRendererConstraint to add
      */
     add_constraint(constraint: RendererConstraint): void
     /**
      * Tests if a given `onscreen_template` can be supported with the given
      * `renderer`.
+     * @param onscreen_template A #CoglOnscreenTemplate
      */
     check_onscreen_template(onscreen_template: OnscreenTemplate): Bool
     /**
@@ -5147,6 +5558,7 @@ class Renderer {
      * Iterates all known display outputs for the given `renderer` and
      * passes a corresponding #CoglOutput pointer to the given `callback`
      * for each one, along with the given `user_data`.
+     * @param callback A #CoglOutputCallback to be called for            each display output
      */
     foreach_output(callback: OutputCallback): void
     /**
@@ -5170,6 +5582,7 @@ class Renderer {
      * 
      * Applications should ideally minimize how many of these constraints they
      * depend on to ensure maximum portability.
+     * @param constraint A #CoglRendererConstraint to remove
      */
     remove_constraint(constraint: RendererConstraint): void
     /**
@@ -5182,6 +5595,7 @@ class Renderer {
      * choosing the driver.
      * 
      * This may only be called on an un-connected #CoglRenderer.
+     * @param driver 
      */
     set_driver(driver: Driver): void
     /**
@@ -5192,6 +5606,7 @@ class Renderer {
      * will fail and report an error.
      * 
      * This may only be called on an un-connected #CoglRenderer.
+     * @param winsys_id An ID of the winsys you explicitly want to use.
      */
     set_winsys_id(winsys_id: WinsysID): void
     static name: string
@@ -5216,6 +5631,7 @@ class Snippet {
      * This function should only be called before the snippet is attached
      * to its first pipeline. After that the snippet should be considered
      * immutable.
+     * @param declarations The new source string for the declarations section   of this snippet.
      */
     set_declarations(declarations: string): void
     /**
@@ -5227,6 +5643,7 @@ class Snippet {
      * This function should only be called before the snippet is attached
      * to its first pipeline. After that the snippet should be considered
      * immutable.
+     * @param post The new source string for the post section of this snippet.
      */
     set_post(post: string): void
     /**
@@ -5238,6 +5655,7 @@ class Snippet {
      * This function should only be called before the snippet is attached
      * to its first pipeline. After that the snippet should be considered
      * immutable.
+     * @param pre The new source string for the pre section of this snippet.
      */
     set_pre(pre: string): void
     /**
@@ -5249,6 +5667,7 @@ class Snippet {
      * This function should only be called before the snippet is attached
      * to its first pipeline. After that the snippet should be considered
      * immutable.
+     * @param replace The new source string for the replace section of this snippet.
      */
     set_replace(replace: string): void
     static name: string
@@ -5311,6 +5730,9 @@ class Texture2D {
      * `rowstride` argument, the rowstride should be the rowstride you
      * want for the destination `data` buffer not the rowstride of the
      * source texture</note>
+     * @param format the #CoglPixelFormat to store the texture as.
+     * @param rowstride the rowstride of `data` in bytes or pass 0 to calculate             from the bytes-per-pixel of `format` multiplied by the             `texture` width.
+     * @param data memory location to write the `texture'`s contents, or %NULL to only query the data size through the return value.
      */
     get_data(format: PixelFormat, rowstride: number, data: number): number
     /**
@@ -5366,6 +5788,7 @@ class Texture2D {
      * is not available then %COGL_PIXEL_FORMAT_RG_88 can still be used as
      * an image format as long as %COGL_TEXTURE_COMPONENTS_RG isn't used
      * as the texture's components.
+     * @param components 
      */
     set_components(components: TextureComponents): void
     /**
@@ -5409,6 +5832,10 @@ class Texture2D {
      * if the given `texture` has not previously been allocated then this
      * api can return %FALSE and throw an exceptional `error` if there is
      * not enough memory to allocate storage for `texture`.</note>
+     * @param format the #CoglPixelFormat used in the source `data` buffer.
+     * @param rowstride rowstride of the source `data` buffer (computed from             the texture width and `format` if it equals 0)
+     * @param data the source data, pointing to the first top-left pixel to set
+     * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
      */
     set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool
     /**
@@ -5433,6 +5860,7 @@ class Texture2D {
      * converted.
      * 
      * By default the `premultipled` state is `TRUE`.
+     * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
      */
     set_premultiplied(premultiplied: Bool): void
     /**
@@ -5440,6 +5868,17 @@ class Texture2D {
      * buffer containing pixel data.
      * 
      * <note>The region set can't be larger than the source `data<`/note>
+     * @param src_x upper left coordinate to use from source data.
+     * @param src_y upper left coordinate to use from source data.
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to `width)`
+     * @param dst_height height of destination region to write. (Must be less   than or equal to `height)`
+     * @param width width of source data buffer.
+     * @param height height of source data buffer.
+     * @param format the #CoglPixelFormat used in the source buffer.
+     * @param rowstride rowstride of source buffer (computed from width if none specified)
+     * @param data the actual pixel data.
      */
     set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: number): Bool
     /**
@@ -5448,6 +5887,13 @@ class Texture2D {
      * 
      * <note>The region updated can't be larger than the source
      * bitmap</note>
+     * @param src_x upper left coordinate to use from the source bitmap.
+     * @param src_y upper left coordinate to use from the source bitmap
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to the bitmap width)
+     * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
+     * @param bitmap The source bitmap to read from
      */
     set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool
     static name: string
@@ -5488,6 +5934,9 @@ class Texture2DSliced {
      * `rowstride` argument, the rowstride should be the rowstride you
      * want for the destination `data` buffer not the rowstride of the
      * source texture</note>
+     * @param format the #CoglPixelFormat to store the texture as.
+     * @param rowstride the rowstride of `data` in bytes or pass 0 to calculate             from the bytes-per-pixel of `format` multiplied by the             `texture` width.
+     * @param data memory location to write the `texture'`s contents, or %NULL to only query the data size through the return value.
      */
     get_data(format: PixelFormat, rowstride: number, data: number): number
     /**
@@ -5543,6 +5992,7 @@ class Texture2DSliced {
      * is not available then %COGL_PIXEL_FORMAT_RG_88 can still be used as
      * an image format as long as %COGL_TEXTURE_COMPONENTS_RG isn't used
      * as the texture's components.
+     * @param components 
      */
     set_components(components: TextureComponents): void
     /**
@@ -5586,6 +6036,10 @@ class Texture2DSliced {
      * if the given `texture` has not previously been allocated then this
      * api can return %FALSE and throw an exceptional `error` if there is
      * not enough memory to allocate storage for `texture`.</note>
+     * @param format the #CoglPixelFormat used in the source `data` buffer.
+     * @param rowstride rowstride of the source `data` buffer (computed from             the texture width and `format` if it equals 0)
+     * @param data the source data, pointing to the first top-left pixel to set
+     * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
      */
     set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool
     /**
@@ -5610,6 +6064,7 @@ class Texture2DSliced {
      * converted.
      * 
      * By default the `premultipled` state is `TRUE`.
+     * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
      */
     set_premultiplied(premultiplied: Bool): void
     /**
@@ -5617,6 +6072,17 @@ class Texture2DSliced {
      * buffer containing pixel data.
      * 
      * <note>The region set can't be larger than the source `data<`/note>
+     * @param src_x upper left coordinate to use from source data.
+     * @param src_y upper left coordinate to use from source data.
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to `width)`
+     * @param dst_height height of destination region to write. (Must be less   than or equal to `height)`
+     * @param width width of source data buffer.
+     * @param height height of source data buffer.
+     * @param format the #CoglPixelFormat used in the source buffer.
+     * @param rowstride rowstride of source buffer (computed from width if none specified)
+     * @param data the actual pixel data.
      */
     set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: number): Bool
     /**
@@ -5625,6 +6091,13 @@ class Texture2DSliced {
      * 
      * <note>The region updated can't be larger than the source
      * bitmap</note>
+     * @param src_x upper left coordinate to use from the source bitmap.
+     * @param src_y upper left coordinate to use from the source bitmap
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to the bitmap width)
+     * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
+     * @param bitmap The source bitmap to read from
      */
     set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool
     static name: string
@@ -5664,6 +6137,9 @@ class Texture3D {
      * `rowstride` argument, the rowstride should be the rowstride you
      * want for the destination `data` buffer not the rowstride of the
      * source texture</note>
+     * @param format the #CoglPixelFormat to store the texture as.
+     * @param rowstride the rowstride of `data` in bytes or pass 0 to calculate             from the bytes-per-pixel of `format` multiplied by the             `texture` width.
+     * @param data memory location to write the `texture'`s contents, or %NULL to only query the data size through the return value.
      */
     get_data(format: PixelFormat, rowstride: number, data: number): number
     /**
@@ -5719,6 +6195,7 @@ class Texture3D {
      * is not available then %COGL_PIXEL_FORMAT_RG_88 can still be used as
      * an image format as long as %COGL_TEXTURE_COMPONENTS_RG isn't used
      * as the texture's components.
+     * @param components 
      */
     set_components(components: TextureComponents): void
     /**
@@ -5762,6 +6239,10 @@ class Texture3D {
      * if the given `texture` has not previously been allocated then this
      * api can return %FALSE and throw an exceptional `error` if there is
      * not enough memory to allocate storage for `texture`.</note>
+     * @param format the #CoglPixelFormat used in the source `data` buffer.
+     * @param rowstride rowstride of the source `data` buffer (computed from             the texture width and `format` if it equals 0)
+     * @param data the source data, pointing to the first top-left pixel to set
+     * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
      */
     set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool
     /**
@@ -5786,6 +6267,7 @@ class Texture3D {
      * converted.
      * 
      * By default the `premultipled` state is `TRUE`.
+     * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
      */
     set_premultiplied(premultiplied: Bool): void
     /**
@@ -5793,6 +6275,17 @@ class Texture3D {
      * buffer containing pixel data.
      * 
      * <note>The region set can't be larger than the source `data<`/note>
+     * @param src_x upper left coordinate to use from source data.
+     * @param src_y upper left coordinate to use from source data.
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to `width)`
+     * @param dst_height height of destination region to write. (Must be less   than or equal to `height)`
+     * @param width width of source data buffer.
+     * @param height height of source data buffer.
+     * @param format the #CoglPixelFormat used in the source buffer.
+     * @param rowstride rowstride of source buffer (computed from width if none specified)
+     * @param data the actual pixel data.
      */
     set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: number): Bool
     /**
@@ -5801,6 +6294,13 @@ class Texture3D {
      * 
      * <note>The region updated can't be larger than the source
      * bitmap</note>
+     * @param src_x upper left coordinate to use from the source bitmap.
+     * @param src_y upper left coordinate to use from the source bitmap
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to the bitmap width)
+     * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
+     * @param bitmap The source bitmap to read from
      */
     set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool
     static name: string
@@ -5827,12 +6327,18 @@ class TexturePixmapX11 {
      * 
      * Note that Cogl will subtract from the damage region as it processes
      * damage events.
+     * @param damage A X11 Damage object or 0
+     * @param report_level The report level which describes how to interpret   the damage events. This should match the level that the damage   object was created with.
      */
     set_damage_object(damage: number, report_level: TexturePixmapX11ReportLevel): void
     /**
      * Forces an update of the given `texture` so that it is refreshed with
      * the contents of the pixmap that was given to
      * cogl_texture_pixmap_x11_new().
+     * @param x x coordinate of the area to update
+     * @param y y coordinate of the area to update
+     * @param width width of the area to update
+     * @param height height of the area to update
      */
     update_area(x: number, y: number, width: number, height: number): void
     static name: string
@@ -5873,6 +6379,9 @@ class TextureRectangle {
      * `rowstride` argument, the rowstride should be the rowstride you
      * want for the destination `data` buffer not the rowstride of the
      * source texture</note>
+     * @param format the #CoglPixelFormat to store the texture as.
+     * @param rowstride the rowstride of `data` in bytes or pass 0 to calculate             from the bytes-per-pixel of `format` multiplied by the             `texture` width.
+     * @param data memory location to write the `texture'`s contents, or %NULL to only query the data size through the return value.
      */
     get_data(format: PixelFormat, rowstride: number, data: number): number
     /**
@@ -5928,6 +6437,7 @@ class TextureRectangle {
      * is not available then %COGL_PIXEL_FORMAT_RG_88 can still be used as
      * an image format as long as %COGL_TEXTURE_COMPONENTS_RG isn't used
      * as the texture's components.
+     * @param components 
      */
     set_components(components: TextureComponents): void
     /**
@@ -5971,6 +6481,10 @@ class TextureRectangle {
      * if the given `texture` has not previously been allocated then this
      * api can return %FALSE and throw an exceptional `error` if there is
      * not enough memory to allocate storage for `texture`.</note>
+     * @param format the #CoglPixelFormat used in the source `data` buffer.
+     * @param rowstride rowstride of the source `data` buffer (computed from             the texture width and `format` if it equals 0)
+     * @param data the source data, pointing to the first top-left pixel to set
+     * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
      */
     set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool
     /**
@@ -5995,6 +6509,7 @@ class TextureRectangle {
      * converted.
      * 
      * By default the `premultipled` state is `TRUE`.
+     * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
      */
     set_premultiplied(premultiplied: Bool): void
     /**
@@ -6002,6 +6517,17 @@ class TextureRectangle {
      * buffer containing pixel data.
      * 
      * <note>The region set can't be larger than the source `data<`/note>
+     * @param src_x upper left coordinate to use from source data.
+     * @param src_y upper left coordinate to use from source data.
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to `width)`
+     * @param dst_height height of destination region to write. (Must be less   than or equal to `height)`
+     * @param width width of source data buffer.
+     * @param height height of source data buffer.
+     * @param format the #CoglPixelFormat used in the source buffer.
+     * @param rowstride rowstride of source buffer (computed from width if none specified)
+     * @param data the actual pixel data.
      */
     set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: number): Bool
     /**
@@ -6010,6 +6536,13 @@ class TextureRectangle {
      * 
      * <note>The region updated can't be larger than the source
      * bitmap</note>
+     * @param src_x upper left coordinate to use from the source bitmap.
+     * @param src_y upper left coordinate to use from the source bitmap
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to the bitmap width)
+     * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
+     * @param bitmap The source bitmap to read from
      */
     set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool
     static name: string
@@ -6090,14 +6623,23 @@ class Color {
     get_red_float(): number
     /**
      * Sets the values of the passed channels into a #CoglColor
+     * @param red value of the red channel, between 0 and 1.0
+     * @param green value of the green channel, between 0 and 1.0
+     * @param blue value of the blue channel, between 0 and 1.0
+     * @param alpha value of the alpha channel, between 0 and 1.0
      */
     init_from_4f(red: number, green: number, blue: number, alpha: number): void
     /**
      * Sets the values of the passed channels into a #CoglColor
+     * @param color_array a pointer to an array of 4 float color components
      */
     init_from_4fv(color_array: number): void
     /**
      * Sets the values of the passed channels into a #CoglColor.
+     * @param red value of the red channel, between 0 and 255
+     * @param green value of the green channel, between 0 and 255
+     * @param blue value of the blue channel, between 0 and 255
+     * @param alpha value of the alpha channel, between 0 and 255
      */
     init_from_4ub(red: number, green: number, blue: number, alpha: number): void
     /**
@@ -6108,58 +6650,78 @@ class Color {
     premultiply(): void
     /**
      * Sets the alpha channel of `color` to `alpha`.
+     * @param alpha a float value between 0.0f and 1.0f
      */
     set_alpha(alpha: number): void
     /**
      * Sets the alpha channel of `color` to `alpha`.
+     * @param alpha a byte value between 0 and 255
      */
     set_alpha_byte(alpha: number): void
     /**
      * Sets the alpha channel of `color` to `alpha`.
+     * @param alpha a float value between 0.0f and 1.0f
      */
     set_alpha_float(alpha: number): void
     /**
      * Sets the blue channel of `color` to `blue`.
+     * @param blue a float value between 0.0f and 1.0f
      */
     set_blue(blue: number): void
     /**
      * Sets the blue channel of `color` to `blue`.
+     * @param blue a byte value between 0 and 255
      */
     set_blue_byte(blue: number): void
     /**
      * Sets the blue channel of `color` to `blue`.
+     * @param blue a float value between 0.0f and 1.0f
      */
     set_blue_float(blue: number): void
     /**
      * Sets the values of the passed channels into a #CoglColor
+     * @param red value of the red channel, between 0 and %1.0
+     * @param green value of the green channel, between 0 and %1.0
+     * @param blue value of the blue channel, between 0 and %1.0
+     * @param alpha value of the alpha channel, between 0 and %1.0
      */
     set_from_4f(red: number, green: number, blue: number, alpha: number): void
     /**
      * Sets the values of the passed channels into a #CoglColor.
+     * @param red value of the red channel, between 0 and 255
+     * @param green value of the green channel, between 0 and 255
+     * @param blue value of the blue channel, between 0 and 255
+     * @param alpha value of the alpha channel, between 0 and 255
      */
     set_from_4ub(red: number, green: number, blue: number, alpha: number): void
     /**
      * Sets the green channel of `color` to `green`.
+     * @param green a float value between 0.0f and 1.0f
      */
     set_green(green: number): void
     /**
      * Sets the green channel of `color` to `green`.
+     * @param green a byte value between 0 and 255
      */
     set_green_byte(green: number): void
     /**
      * Sets the green channel of `color` to `green`.
+     * @param green a float value between 0.0f and 1.0f
      */
     set_green_float(green: number): void
     /**
      * Sets the red channel of `color` to `red`.
+     * @param red a float value between 0.0f and 1.0f
      */
     set_red(red: number): void
     /**
      * Sets the red channel of `color` to `red`.
+     * @param red a byte value between 0 and 255
      */
     set_red_byte(red: number): void
     /**
      * Sets the red channel of `color` to `red`.
+     * @param red a float value between 0.0f and 1.0f
      */
     set_red_float(red: number): void
     /**
@@ -6185,11 +6747,16 @@ class Color {
      * 
      * This function can be passed to g_hash_table_new() as the `key_equal_func`
      * parameter, when using #CoglColor<!-- -->s as keys in a #GHashTable.
+     * @param v1 a #CoglColor
+     * @param v2 a #CoglColor
      */
     static equal(v1?: object | null, v2?: object | null): Bool
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
      * values into a #CoglColor.
+     * @param hue hue value, in the 0 .. 360 range
+     * @param saturation saturation value, in the 0 .. 1 range
+     * @param luminance luminance value, in the 0 .. 1 range
      */
     static init_from_hsl(hue: number, saturation: number, luminance: number): /* color */ Color
 }
@@ -6198,12 +6765,12 @@ class DebugObjectTypeInfo {
     /**
      * A human readable name for the type.
      */
-    readonly name: string
+    name: string
     /**
      * The number of objects of this type that are
      *   currently in use
      */
-    readonly instance_count: number
+    instance_count: number
     static name: string
 }
 class DepthState {
@@ -6212,6 +6779,8 @@ class DepthState {
      * Gets the current range to which normalized depth values are mapped
      * before writing to the depth buffer. This corresponds to the range
      * set with cogl_depth_state_set_range().
+     * @param near_val A pointer to store the near component of the depth range
+     * @param far_val A pointer to store the far component of the depth range
      */
     get_range(near_val: number, far_val: number): void
     /**
@@ -6263,6 +6832,8 @@ class DepthState {
      * NB: this won't directly affect the state of the GPU. You have
      * to then set the state on a #CoglPipeline using
      * cogl_pipeline_set_depth_state().
+     * @param near_val The near component of the desired depth range which will be clamped to the range [0, 1]
+     * @param far_val The far component of the desired depth range which will be clamped to the range [0, 1]
      */
     set_range(near_val: number, far_val: number): void
     /**
@@ -6282,6 +6853,7 @@ class DepthState {
      * NB: this won't directly affect the state of the GPU. You have
      * to then set the state on a #CoglPipeline using
      * cogl_pipeline_set_depth_state()
+     * @param enable The enable state you want
      */
     set_test_enabled(enable: Bool): void
     /**
@@ -6294,6 +6866,7 @@ class DepthState {
      * NB: this won't directly affect the state of the GPU. You have
      * to then set the state on a #CoglPipeline using
      * cogl_pipeline_set_depth_state()
+     * @param function_ The #CoglDepthTestFunction to set
      */
     set_test_function(function_: DepthTestFunction): void
     /**
@@ -6308,6 +6881,7 @@ class DepthState {
      * NB: this won't directly affect the state of the GPU. You have
      * to then set the state on a #CoglPipeline using
      * cogl_pipeline_set_depth_state()
+     * @param enable The enable state you want
      */
     set_write_enabled(enable: Bool): void
     static name: string
@@ -6317,15 +6891,15 @@ class Euler {
     /**
      * Angle to rotate around an object's y axis
      */
-    readonly heading: number
+    heading: number
     /**
      * Angle to rotate around an object's x axis
      */
-    readonly pitch: number
+    pitch: number
     /**
      * Angle to rotate around an object's z axis
      */
-    readonly roll: number
+    roll: number
     /* Methods of Cogl-2.0.Cogl.Euler */
     /**
      * Allocates a new #CoglEuler and initilizes it with the component
@@ -6342,16 +6916,21 @@ class Euler {
      * Initializes `euler` to represent a rotation of `x_angle` degrees
      * around the x axis, then `y_angle` degrees around the y_axis and
      * `z_angle` degrees around the z axis.
+     * @param heading Angle to rotate around an object's y axis
+     * @param pitch Angle to rotate around an object's x axis
+     * @param roll Angle to rotate around an object's z axis
      */
     init(heading: number, pitch: number, roll: number): void
     /**
      * Extracts a euler rotation from the given `matrix` and
      * initializses `euler` with the component x, y and z rotation angles.
+     * @param matrix A #CoglMatrix containing a rotation, but no scaling,          mirroring or skewing.
      */
     init_from_matrix(matrix: Matrix): void
     /**
      * Initializes a `euler` rotation with the equivalent rotation
      * represented by the given `quaternion`.
+     * @param quaternion A #CoglEuler with the rotation to initialize with
      */
     init_from_quaternion(quaternion: Quaternion): void
     static name: string
@@ -6363,6 +6942,8 @@ class Euler {
      * <note>This function only checks that all three components rotations
      * are numerically equal, it does not consider that some rotations
      * can be represented with different component rotations</note>
+     * @param v1 The first euler angle to compare
+     * @param v2 The second euler angle to compare
      */
     static equal(v1?: object | null, v2?: object | null): Bool
 }
@@ -6379,172 +6960,172 @@ class FrameClosure {
 }
 class GLES2Vtable {
     /* Fields of Cogl-2.0.Cogl.GLES2Vtable */
-    readonly glBindTexture: (target: GL.enum_, texture: GL.uint) => void
-    readonly glBlendFunc: (sfactor: GL.enum_, dfactor: GL.enum_) => void
-    readonly glClear: (mask: GL.bitfield) => void
-    readonly glClearColor: (red: GL.clampf, green: GL.clampf, blue: GL.clampf, alpha: GL.clampf) => void
-    readonly glClearStencil: (s: GL.int) => void
-    readonly glColorMask: (red: GL.boolean_, green: GL.boolean_, blue: GL.boolean_, alpha: GL.boolean_) => void
-    readonly glCopyTexSubImage2D: (target: GL.enum_, level: GL.int, xoffset: GL.int, yoffset: GL.int, x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei) => void
-    readonly glDeleteTextures: (n: GL.sizei, textures: GL.uint) => void
-    readonly glDepthFunc: (func: GL.enum_) => void
-    readonly glDepthMask: (flag: GL.boolean_) => void
-    readonly glDisable: (cap: GL.enum_) => void
-    readonly glDrawArrays: (mode: GL.enum_, first: GL.int, count: GL.sizei) => void
-    readonly glDrawElements: (mode: GL.enum_, count: GL.sizei, type: GL.enum_, indices: GL.void_) => void
-    readonly glEnable: (cap: GL.enum_) => void
-    readonly glFinish: () => void
-    readonly glFlush: () => void
-    readonly glFrontFace: (mode: GL.enum_) => void
-    readonly glCullFace: (mode: GL.enum_) => void
-    readonly glGenTextures: (n: GL.sizei, textures: GL.uint) => void
-    readonly glGetIntegerv: (pname: GL.enum_, params: GL.int) => void
-    readonly glGetBooleanv: (pname: GL.enum_, params: GL.boolean_) => void
-    readonly glGetFloatv: (pname: GL.enum_, params: GL.float) => void
-    readonly glHint: (target: GL.enum_, mode: GL.enum_) => void
-    readonly glPixelStorei: (pname: GL.enum_, param: GL.int) => void
-    readonly glReadPixels: (x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei, format: GL.enum_, type: GL.enum_, pixels: GL.void_) => void
-    readonly glScissor: (x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei) => void
-    readonly glStencilFunc: (func: GL.enum_, ref: GL.int, mask: GL.uint) => void
-    readonly glStencilMask: (mask: GL.uint) => void
-    readonly glStencilOp: (fail: GL.enum_, zfail: GL.enum_, zpass: GL.enum_) => void
-    readonly glTexImage2D: (target: GL.enum_, level: GL.int, internalformat: GL.int, width: GL.sizei, height: GL.sizei, border: GL.int, format: GL.enum_, type: GL.enum_, pixels: GL.void_) => void
-    readonly glTexParameterf: (target: GL.enum_, pname: GL.enum_, param: GL.float) => void
-    readonly glTexParameterfv: (target: GL.enum_, pname: GL.enum_, params: GL.float) => void
-    readonly glTexParameteri: (target: GL.enum_, pname: GL.enum_, param: GL.int) => void
-    readonly glTexParameteriv: (target: GL.enum_, pname: GL.enum_, params: GL.int) => void
-    readonly glGetTexParameterfv: (target: GL.enum_, pname: GL.enum_, params: GL.float) => void
-    readonly glGetTexParameteriv: (target: GL.enum_, pname: GL.enum_, params: GL.int) => void
-    readonly glTexSubImage2D: (target: GL.enum_, level: GL.int, xoffset: GL.int, yoffset: GL.int, width: GL.sizei, height: GL.sizei, format: GL.enum_, type: GL.enum_, pixels: GL.void_) => void
-    readonly glCopyTexImage2D: (target: GL.enum_, level: GL.int, internalformat: GL.enum_, x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei, border: GL.int) => void
-    readonly glViewport: (x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei) => void
-    readonly glLineWidth: (width: GL.float) => void
-    readonly glPolygonOffset: (factor: GL.float, units: GL.float) => void
-    readonly glDepthRangef: (near_val: GL.float, far_val: GL.float) => void
-    readonly glClearDepthf: (depth: GL.clampf) => void
-    readonly glCompressedTexImage2D: (target: GL.enum_, level: GL.int, internalformat: GL.enum_, width: GL.sizei, height: GL.sizei, border: GL.int, imageSize: GL.sizei, data: GL.void_) => void
-    readonly glCompressedTexSubImage2D: (target: GL.enum_, level: GL.int, xoffset: GL.int, yoffset: GL.int, width: GL.sizei, height: GL.sizei, format: GL.enum_, imageSize: GL.sizei, data: GL.void_) => void
-    readonly glSampleCoverage: (value: GL.clampf, invert: GL.boolean_) => void
-    readonly glGetBufferParameteriv: (target: GL.enum_, pname: GL.enum_, params: GL.int) => void
-    readonly glGenBuffers: (n: GL.sizei, buffers: GL.uint) => void
-    readonly glBindBuffer: (target: GL.enum_, buffer: GL.uint) => void
-    readonly glBufferData: (target: GL.enum_, size: GL.sizeiptr, data: GL.void_, usage: GL.enum_) => void
-    readonly glBufferSubData: (target: GL.enum_, offset: GL.intptr, size: GL.sizeiptr, data: GL.void_) => void
-    readonly glDeleteBuffers: (n: GL.sizei, buffers: GL.uint) => void
-    readonly glActiveTexture: (texture: GL.enum_) => void
-    readonly glGenRenderbuffers: (n: GL.sizei, renderbuffers: GL.uint) => void
-    readonly glDeleteRenderbuffers: (n: GL.sizei, renderbuffers: GL.uint) => void
-    readonly glBindRenderbuffer: (target: GL.enum_, renderbuffer: GL.uint) => void
-    readonly glRenderbufferStorage: (target: GL.enum_, internalformat: GL.enum_, width: GL.sizei, height: GL.sizei) => void
-    readonly glGenFramebuffers: (n: GL.sizei, framebuffers: GL.uint) => void
-    readonly glBindFramebuffer: (target: GL.enum_, framebuffer: GL.uint) => void
-    readonly glFramebufferTexture2D: (target: GL.enum_, attachment: GL.enum_, textarget: GL.enum_, texture: GL.uint, level: GL.int) => void
-    readonly glFramebufferRenderbuffer: (target: GL.enum_, attachment: GL.enum_, renderbuffertarget: GL.enum_, renderbuffer: GL.uint) => void
-    readonly glDeleteFramebuffers: (n: GL.sizei, framebuffers: GL.uint) => void
-    readonly glGenerateMipmap: (target: GL.enum_) => void
-    readonly glGetFramebufferAttachmentParameteriv: (target: GL.enum_, attachment: GL.enum_, pname: GL.enum_, params: GL.int) => void
-    readonly glGetRenderbufferParameteriv: (target: GL.enum_, pname: GL.enum_, params: GL.int) => void
-    readonly glBlendEquation: (mode: GL.enum_) => void
-    readonly glBlendColor: (red: GL.clampf, green: GL.clampf, blue: GL.clampf, alpha: GL.clampf) => void
-    readonly glBlendFuncSeparate: (srcRGB: GL.enum_, dstRGB: GL.enum_, srcAlpha: GL.enum_, dstAlpha: GL.enum_) => void
-    readonly glBlendEquationSeparate: (modeRGB: GL.enum_, modeAlpha: GL.enum_) => void
-    readonly glReleaseShaderCompiler: () => void
-    readonly glGetShaderPrecisionFormat: (shadertype: GL.enum_, precisiontype: GL.enum_, range: GL.int, precision: GL.int) => void
-    readonly glShaderBinary: (n: GL.sizei, shaders: GL.uint, binaryformat: GL.enum_, binary: GL.void_, length: GL.sizei) => void
-    readonly glStencilFuncSeparate: (face: GL.enum_, func: GL.enum_, ref: GL.int, mask: GL.uint) => void
-    readonly glStencilMaskSeparate: (face: GL.enum_, mask: GL.uint) => void
-    readonly glStencilOpSeparate: (face: GL.enum_, fail: GL.enum_, zfail: GL.enum_, zpass: GL.enum_) => void
-    readonly glDeleteShader: (shader: GL.uint) => void
-    readonly glAttachShader: (program: GL.uint, shader: GL.uint) => void
-    readonly glUseProgram: (program: GL.uint) => void
-    readonly glDeleteProgram: (program: GL.uint) => void
-    readonly glGetShaderInfoLog: (shader: GL.uint, maxLength: GL.sizei, length: GL.sizei, infoLog: string) => void
-    readonly glGetProgramInfoLog: (program: GL.uint, bufSize: GL.sizei, length: GL.sizei, infoLog: string) => void
-    readonly glGetShaderiv: (shader: GL.uint, pname: GL.enum_, params: GL.int) => void
-    readonly glGetProgramiv: (program: GL.uint, pname: GL.enum_, params: GL.int) => void
-    readonly glDetachShader: (program: GL.uint, shader: GL.uint) => void
-    readonly glGetAttachedShaders: (program: GL.uint, maxcount: GL.sizei, count: GL.sizei, shaders: GL.uint) => void
-    readonly glShaderSource: (shader: GL.uint, count: GL.sizei, string: string, length: GL.int) => void
-    readonly glCompileShader: (shader: GL.uint) => void
-    readonly glLinkProgram: (program: GL.uint) => void
-    readonly glUniform1f: (location: GL.int, v0: GL.float) => void
-    readonly glUniform2f: (location: GL.int, v0: GL.float, v1: GL.float) => void
-    readonly glUniform3f: (location: GL.int, v0: GL.float, v1: GL.float, v2: GL.float) => void
-    readonly glUniform4f: (location: GL.int, v0: GL.float, v1: GL.float, v2: GL.float, v3: GL.float) => void
-    readonly glUniform1fv: (location: GL.int, count: GL.sizei, value: GL.float) => void
-    readonly glUniform2fv: (location: GL.int, count: GL.sizei, value: GL.float) => void
-    readonly glUniform3fv: (location: GL.int, count: GL.sizei, value: GL.float) => void
-    readonly glUniform4fv: (location: GL.int, count: GL.sizei, value: GL.float) => void
-    readonly glUniform1i: (location: GL.int, v0: GL.int) => void
-    readonly glUniform2i: (location: GL.int, v0: GL.int, v1: GL.int) => void
-    readonly glUniform3i: (location: GL.int, v0: GL.int, v1: GL.int, v2: GL.int) => void
-    readonly glUniform4i: (location: GL.int, v0: GL.int, v1: GL.int, v2: GL.int, v3: GL.int) => void
-    readonly glUniform1iv: (location: GL.int, count: GL.sizei, value: GL.int) => void
-    readonly glUniform2iv: (location: GL.int, count: GL.sizei, value: GL.int) => void
-    readonly glUniform3iv: (location: GL.int, count: GL.sizei, value: GL.int) => void
-    readonly glUniform4iv: (location: GL.int, count: GL.sizei, value: GL.int) => void
-    readonly glUniformMatrix2fv: (location: GL.int, count: GL.sizei, transpose: GL.boolean_, value: GL.float) => void
-    readonly glUniformMatrix3fv: (location: GL.int, count: GL.sizei, transpose: GL.boolean_, value: GL.float) => void
-    readonly glUniformMatrix4fv: (location: GL.int, count: GL.sizei, transpose: GL.boolean_, value: GL.float) => void
-    readonly glGetUniformfv: (program: GL.uint, location: GL.int, params: GL.float) => void
-    readonly glGetUniformiv: (program: GL.uint, location: GL.int, params: GL.int) => void
-    readonly glValidateProgram: (program: GL.uint) => void
-    readonly glVertexAttribPointer: (index: GL.uint, size: GL.int, type: GL.enum_, normalized: GL.boolean_, stride: GL.sizei, pointer: GL.void_) => void
-    readonly glEnableVertexAttribArray: (index: GL.uint) => void
-    readonly glDisableVertexAttribArray: (index: GL.uint) => void
-    readonly glVertexAttrib1f: (indx: GL.uint, x: GL.float) => void
-    readonly glVertexAttrib1fv: (indx: GL.uint, values: GL.float) => void
-    readonly glVertexAttrib2f: (indx: GL.uint, x: GL.float, y: GL.float) => void
-    readonly glVertexAttrib2fv: (indx: GL.uint, values: GL.float) => void
-    readonly glVertexAttrib3f: (indx: GL.uint, x: GL.float, y: GL.float, z: GL.float) => void
-    readonly glVertexAttrib3fv: (indx: GL.uint, values: GL.float) => void
-    readonly glVertexAttrib4f: (index: GL.uint, x: GL.float, y: GL.float, z: GL.float, w: GL.float) => void
-    readonly glVertexAttrib4fv: (indx: GL.uint, values: GL.float) => void
-    readonly glGetVertexAttribfv: (index: GL.uint, pname: GL.enum_, params: GL.float) => void
-    readonly glGetVertexAttribiv: (index: GL.uint, pname: GL.enum_, params: GL.int) => void
-    readonly glGetVertexAttribPointerv: (index: GL.uint, pname: GL.enum_, pointer: GL.void_) => void
+    glBindTexture: (target: GL.enum_, texture: GL.uint) => void
+    glBlendFunc: (sfactor: GL.enum_, dfactor: GL.enum_) => void
+    glClear: (mask: GL.bitfield) => void
+    glClearColor: (red: GL.clampf, green: GL.clampf, blue: GL.clampf, alpha: GL.clampf) => void
+    glClearStencil: (s: GL.int) => void
+    glColorMask: (red: GL.boolean_, green: GL.boolean_, blue: GL.boolean_, alpha: GL.boolean_) => void
+    glCopyTexSubImage2D: (target: GL.enum_, level: GL.int, xoffset: GL.int, yoffset: GL.int, x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei) => void
+    glDeleteTextures: (n: GL.sizei, textures: GL.uint) => void
+    glDepthFunc: (func: GL.enum_) => void
+    glDepthMask: (flag: GL.boolean_) => void
+    glDisable: (cap: GL.enum_) => void
+    glDrawArrays: (mode: GL.enum_, first: GL.int, count: GL.sizei) => void
+    glDrawElements: (mode: GL.enum_, count: GL.sizei, type: GL.enum_, indices: GL.void_) => void
+    glEnable: (cap: GL.enum_) => void
+    glFinish: () => void
+    glFlush: () => void
+    glFrontFace: (mode: GL.enum_) => void
+    glCullFace: (mode: GL.enum_) => void
+    glGenTextures: (n: GL.sizei, textures: GL.uint) => void
+    glGetIntegerv: (pname: GL.enum_, params: GL.int) => void
+    glGetBooleanv: (pname: GL.enum_, params: GL.boolean_) => void
+    glGetFloatv: (pname: GL.enum_, params: GL.float) => void
+    glHint: (target: GL.enum_, mode: GL.enum_) => void
+    glPixelStorei: (pname: GL.enum_, param: GL.int) => void
+    glReadPixels: (x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei, format: GL.enum_, type: GL.enum_, pixels: GL.void_) => void
+    glScissor: (x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei) => void
+    glStencilFunc: (func: GL.enum_, ref: GL.int, mask: GL.uint) => void
+    glStencilMask: (mask: GL.uint) => void
+    glStencilOp: (fail: GL.enum_, zfail: GL.enum_, zpass: GL.enum_) => void
+    glTexImage2D: (target: GL.enum_, level: GL.int, internalformat: GL.int, width: GL.sizei, height: GL.sizei, border: GL.int, format: GL.enum_, type: GL.enum_, pixels: GL.void_) => void
+    glTexParameterf: (target: GL.enum_, pname: GL.enum_, param: GL.float) => void
+    glTexParameterfv: (target: GL.enum_, pname: GL.enum_, params: GL.float) => void
+    glTexParameteri: (target: GL.enum_, pname: GL.enum_, param: GL.int) => void
+    glTexParameteriv: (target: GL.enum_, pname: GL.enum_, params: GL.int) => void
+    glGetTexParameterfv: (target: GL.enum_, pname: GL.enum_, params: GL.float) => void
+    glGetTexParameteriv: (target: GL.enum_, pname: GL.enum_, params: GL.int) => void
+    glTexSubImage2D: (target: GL.enum_, level: GL.int, xoffset: GL.int, yoffset: GL.int, width: GL.sizei, height: GL.sizei, format: GL.enum_, type: GL.enum_, pixels: GL.void_) => void
+    glCopyTexImage2D: (target: GL.enum_, level: GL.int, internalformat: GL.enum_, x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei, border: GL.int) => void
+    glViewport: (x: GL.int, y: GL.int, width: GL.sizei, height: GL.sizei) => void
+    glLineWidth: (width: GL.float) => void
+    glPolygonOffset: (factor: GL.float, units: GL.float) => void
+    glDepthRangef: (near_val: GL.float, far_val: GL.float) => void
+    glClearDepthf: (depth: GL.clampf) => void
+    glCompressedTexImage2D: (target: GL.enum_, level: GL.int, internalformat: GL.enum_, width: GL.sizei, height: GL.sizei, border: GL.int, imageSize: GL.sizei, data: GL.void_) => void
+    glCompressedTexSubImage2D: (target: GL.enum_, level: GL.int, xoffset: GL.int, yoffset: GL.int, width: GL.sizei, height: GL.sizei, format: GL.enum_, imageSize: GL.sizei, data: GL.void_) => void
+    glSampleCoverage: (value: GL.clampf, invert: GL.boolean_) => void
+    glGetBufferParameteriv: (target: GL.enum_, pname: GL.enum_, params: GL.int) => void
+    glGenBuffers: (n: GL.sizei, buffers: GL.uint) => void
+    glBindBuffer: (target: GL.enum_, buffer: GL.uint) => void
+    glBufferData: (target: GL.enum_, size: GL.sizeiptr, data: GL.void_, usage: GL.enum_) => void
+    glBufferSubData: (target: GL.enum_, offset: GL.intptr, size: GL.sizeiptr, data: GL.void_) => void
+    glDeleteBuffers: (n: GL.sizei, buffers: GL.uint) => void
+    glActiveTexture: (texture: GL.enum_) => void
+    glGenRenderbuffers: (n: GL.sizei, renderbuffers: GL.uint) => void
+    glDeleteRenderbuffers: (n: GL.sizei, renderbuffers: GL.uint) => void
+    glBindRenderbuffer: (target: GL.enum_, renderbuffer: GL.uint) => void
+    glRenderbufferStorage: (target: GL.enum_, internalformat: GL.enum_, width: GL.sizei, height: GL.sizei) => void
+    glGenFramebuffers: (n: GL.sizei, framebuffers: GL.uint) => void
+    glBindFramebuffer: (target: GL.enum_, framebuffer: GL.uint) => void
+    glFramebufferTexture2D: (target: GL.enum_, attachment: GL.enum_, textarget: GL.enum_, texture: GL.uint, level: GL.int) => void
+    glFramebufferRenderbuffer: (target: GL.enum_, attachment: GL.enum_, renderbuffertarget: GL.enum_, renderbuffer: GL.uint) => void
+    glDeleteFramebuffers: (n: GL.sizei, framebuffers: GL.uint) => void
+    glGenerateMipmap: (target: GL.enum_) => void
+    glGetFramebufferAttachmentParameteriv: (target: GL.enum_, attachment: GL.enum_, pname: GL.enum_, params: GL.int) => void
+    glGetRenderbufferParameteriv: (target: GL.enum_, pname: GL.enum_, params: GL.int) => void
+    glBlendEquation: (mode: GL.enum_) => void
+    glBlendColor: (red: GL.clampf, green: GL.clampf, blue: GL.clampf, alpha: GL.clampf) => void
+    glBlendFuncSeparate: (srcRGB: GL.enum_, dstRGB: GL.enum_, srcAlpha: GL.enum_, dstAlpha: GL.enum_) => void
+    glBlendEquationSeparate: (modeRGB: GL.enum_, modeAlpha: GL.enum_) => void
+    glReleaseShaderCompiler: () => void
+    glGetShaderPrecisionFormat: (shadertype: GL.enum_, precisiontype: GL.enum_, range: GL.int, precision: GL.int) => void
+    glShaderBinary: (n: GL.sizei, shaders: GL.uint, binaryformat: GL.enum_, binary: GL.void_, length: GL.sizei) => void
+    glStencilFuncSeparate: (face: GL.enum_, func: GL.enum_, ref: GL.int, mask: GL.uint) => void
+    glStencilMaskSeparate: (face: GL.enum_, mask: GL.uint) => void
+    glStencilOpSeparate: (face: GL.enum_, fail: GL.enum_, zfail: GL.enum_, zpass: GL.enum_) => void
+    glDeleteShader: (shader: GL.uint) => void
+    glAttachShader: (program: GL.uint, shader: GL.uint) => void
+    glUseProgram: (program: GL.uint) => void
+    glDeleteProgram: (program: GL.uint) => void
+    glGetShaderInfoLog: (shader: GL.uint, maxLength: GL.sizei, length: GL.sizei, infoLog: string) => void
+    glGetProgramInfoLog: (program: GL.uint, bufSize: GL.sizei, length: GL.sizei, infoLog: string) => void
+    glGetShaderiv: (shader: GL.uint, pname: GL.enum_, params: GL.int) => void
+    glGetProgramiv: (program: GL.uint, pname: GL.enum_, params: GL.int) => void
+    glDetachShader: (program: GL.uint, shader: GL.uint) => void
+    glGetAttachedShaders: (program: GL.uint, maxcount: GL.sizei, count: GL.sizei, shaders: GL.uint) => void
+    glShaderSource: (shader: GL.uint, count: GL.sizei, string: string, length: GL.int) => void
+    glCompileShader: (shader: GL.uint) => void
+    glLinkProgram: (program: GL.uint) => void
+    glUniform1f: (location: GL.int, v0: GL.float) => void
+    glUniform2f: (location: GL.int, v0: GL.float, v1: GL.float) => void
+    glUniform3f: (location: GL.int, v0: GL.float, v1: GL.float, v2: GL.float) => void
+    glUniform4f: (location: GL.int, v0: GL.float, v1: GL.float, v2: GL.float, v3: GL.float) => void
+    glUniform1fv: (location: GL.int, count: GL.sizei, value: GL.float) => void
+    glUniform2fv: (location: GL.int, count: GL.sizei, value: GL.float) => void
+    glUniform3fv: (location: GL.int, count: GL.sizei, value: GL.float) => void
+    glUniform4fv: (location: GL.int, count: GL.sizei, value: GL.float) => void
+    glUniform1i: (location: GL.int, v0: GL.int) => void
+    glUniform2i: (location: GL.int, v0: GL.int, v1: GL.int) => void
+    glUniform3i: (location: GL.int, v0: GL.int, v1: GL.int, v2: GL.int) => void
+    glUniform4i: (location: GL.int, v0: GL.int, v1: GL.int, v2: GL.int, v3: GL.int) => void
+    glUniform1iv: (location: GL.int, count: GL.sizei, value: GL.int) => void
+    glUniform2iv: (location: GL.int, count: GL.sizei, value: GL.int) => void
+    glUniform3iv: (location: GL.int, count: GL.sizei, value: GL.int) => void
+    glUniform4iv: (location: GL.int, count: GL.sizei, value: GL.int) => void
+    glUniformMatrix2fv: (location: GL.int, count: GL.sizei, transpose: GL.boolean_, value: GL.float) => void
+    glUniformMatrix3fv: (location: GL.int, count: GL.sizei, transpose: GL.boolean_, value: GL.float) => void
+    glUniformMatrix4fv: (location: GL.int, count: GL.sizei, transpose: GL.boolean_, value: GL.float) => void
+    glGetUniformfv: (program: GL.uint, location: GL.int, params: GL.float) => void
+    glGetUniformiv: (program: GL.uint, location: GL.int, params: GL.int) => void
+    glValidateProgram: (program: GL.uint) => void
+    glVertexAttribPointer: (index: GL.uint, size: GL.int, type: GL.enum_, normalized: GL.boolean_, stride: GL.sizei, pointer: GL.void_) => void
+    glEnableVertexAttribArray: (index: GL.uint) => void
+    glDisableVertexAttribArray: (index: GL.uint) => void
+    glVertexAttrib1f: (indx: GL.uint, x: GL.float) => void
+    glVertexAttrib1fv: (indx: GL.uint, values: GL.float) => void
+    glVertexAttrib2f: (indx: GL.uint, x: GL.float, y: GL.float) => void
+    glVertexAttrib2fv: (indx: GL.uint, values: GL.float) => void
+    glVertexAttrib3f: (indx: GL.uint, x: GL.float, y: GL.float, z: GL.float) => void
+    glVertexAttrib3fv: (indx: GL.uint, values: GL.float) => void
+    glVertexAttrib4f: (index: GL.uint, x: GL.float, y: GL.float, z: GL.float, w: GL.float) => void
+    glVertexAttrib4fv: (indx: GL.uint, values: GL.float) => void
+    glGetVertexAttribfv: (index: GL.uint, pname: GL.enum_, params: GL.float) => void
+    glGetVertexAttribiv: (index: GL.uint, pname: GL.enum_, params: GL.int) => void
+    glGetVertexAttribPointerv: (index: GL.uint, pname: GL.enum_, pointer: GL.void_) => void
     static name: string
 }
 class GtypeClass {
     /* Fields of Cogl-2.0.Cogl.GtypeClass */
-    readonly base_class: GObject.TypeClass
-    readonly dummy: number
+    base_class: GObject.TypeClass
+    dummy: number
     static name: string
 }
 class GtypeObject {
     /* Fields of Cogl-2.0.Cogl.GtypeObject */
-    readonly parent_instance: GObject.TypeInstance
-    readonly dummy: number
+    parent_instance: GObject.TypeInstance
+    dummy: number
     static name: string
 }
 class KmsCrtc {
     /* Fields of Cogl-2.0.Cogl.KmsCrtc */
-    readonly id: number
-    readonly x: number
-    readonly y: number
-    readonly connectors: number
-    readonly count: number
-    readonly ignore: Bool
+    id: number
+    x: number
+    y: number
+    connectors: number
+    count: number
+    ignore: Bool
     static name: string
 }
 class Matrix {
     /* Fields of Cogl-2.0.Cogl.Matrix */
-    readonly xx: number
-    readonly yx: number
-    readonly zx: number
-    readonly wx: number
-    readonly xy: number
-    readonly yy: number
-    readonly zy: number
-    readonly wy: number
-    readonly xz: number
-    readonly yz: number
-    readonly zz: number
-    readonly wz: number
-    readonly xw: number
-    readonly yw: number
-    readonly zw: number
-    readonly ww: number
+    xx: number
+    yx: number
+    zx: number
+    wx: number
+    xy: number
+    yy: number
+    zy: number
+    wy: number
+    xz: number
+    yz: number
+    zz: number
+    wz: number
+    xw: number
+    yw: number
+    zw: number
+    ww: number
     /* Methods of Cogl-2.0.Cogl.Matrix */
     /**
      * Allocates a new #CoglMatrix on the heap and initializes it with
@@ -6558,6 +7139,12 @@ class Matrix {
     free(): void
     /**
      * Multiplies `matrix` by the given frustum perspective matrix.
+     * @param left X position of the left clipping plane where it   intersects the near clipping plane
+     * @param right X position of the right clipping plane where it   intersects the near clipping plane
+     * @param bottom Y position of the bottom clipping plane where it   intersects the near clipping plane
+     * @param top Y position of the top clipping plane where it intersects   the near clipping plane
+     * @param z_near The distance to the near clipping plane (Must be positive)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_far: number): void
     /**
@@ -6577,14 +7164,17 @@ class Matrix {
     get_inverse(): [ /* returnType */ Bool, /* inverse */ Matrix ]
     /**
      * Initializes `matrix` with the contents of `array`
+     * @param array A linear array of 16 floats (column-major order)
      */
     init_from_array(array: number): void
     /**
      * Initializes `matrix` from a #CoglEuler rotation.
+     * @param euler A #CoglEuler
      */
     init_from_euler(euler: Euler): void
     /**
      * Initializes `matrix` from a #CoglQuaternion rotation.
+     * @param quaternion A #CoglQuaternion
      */
     init_from_quaternion(quaternion: Quaternion): void
     /**
@@ -6609,6 +7199,9 @@ class Matrix {
      *   .wx=0; .wy=0; .wz=0; .ww=1;
      * ```
      * 
+     * @param tx x coordinate of the translation vector
+     * @param ty y coordinate of the translation vector
+     * @param tz z coordinate of the translation vector
      */
     init_translation(tx: number, ty: number, tz: number): void
     /**
@@ -6642,6 +7235,15 @@ class Matrix {
      * 
      * <note>Almost always when you use this function it should be the first
      * transform applied to a new modelview transform</note>
+     * @param eye_position_x The X coordinate to look from
+     * @param eye_position_y The Y coordinate to look from
+     * @param eye_position_z The Z coordinate to look from
+     * @param object_x The X coordinate of the object to look at
+     * @param object_y The Y coordinate of the object to look at
+     * @param object_z The Z coordinate of the object to look at
+     * @param world_up_x The X component of the world's up direction vector
+     * @param world_up_y The Y component of the world's up direction vector
+     * @param world_up_z The Z component of the world's up direction vector
      */
     look_at(eye_position_x: number, eye_position_y: number, eye_position_z: number, object_x: number, object_y: number, object_z: number, world_up_x: number, world_up_y: number, world_up_z: number): void
     /**
@@ -6650,14 +7252,28 @@ class Matrix {
      * 
      * <note>It is possible to multiply the `a` matrix in-place, so
      * `result` can be equal to `a` but can't be equal to `b`.</note>
+     * @param a A 4x4 transformation matrix
+     * @param b A 4x4 transformation matrix
      */
     multiply(a: Matrix, b: Matrix): void
     /**
      * Multiplies `matrix` by a parallel projection matrix.
+     * @param left The coordinate for the left clipping plane
+     * @param right The coordinate for the right clipping plane
+     * @param bottom The coordinate for the bottom clipping plane
+     * @param top The coordinate for the top clipping plane
+     * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+     * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
      */
     ortho(left: number, right: number, bottom: number, top: number, near: number, far: number): void
     /**
      * Multiplies `matrix` by a parallel projection matrix.
+     * @param x_1 The x coordinate for the first vertical clipping plane
+     * @param y_1 The y coordinate for the first horizontal clipping plane
+     * @param x_2 The x coordinate for the second vertical clipping plane
+     * @param y_2 The y coordinate for the second horizontal clipping plane
+     * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+     * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
      */
     orthographic(x_1: number, y_1: number, x_2: number, y_2: number, near: number, far: number): void
     /**
@@ -6667,6 +7283,10 @@ class Matrix {
      * ratio since that will reduce the effectiveness of depth testing
      * since there wont be enough precision to identify the depth of
      * objects near to each other.</note>
+     * @param fov_y Vertical field of view angle in degrees.
+     * @param aspect The (width over height) aspect ratio for display
+     * @param z_near The distance to the near clipping plane (Must be positive,   and must not be 0)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     perspective(fov_y: number, aspect: number, z_near: number, z_far: number): void
     /**
@@ -6703,31 +7323,50 @@ class Matrix {
      *                             N_VERTICES);
      * ```
      * 
+     * @param n_components The number of position components for each input point.                (either 2, 3 or 4)
+     * @param stride_in The stride in bytes between input points.
+     * @param points_in A pointer to the first component of the first input point.
+     * @param stride_out The stride in bytes between output points.
+     * @param points_out A pointer to the first component of the first output point.
+     * @param n_points The number of points to transform.
      */
     project_points(n_components: number, stride_in: number, points_in: object | null, stride_out: number, points_out: object | null, n_points: number): void
     /**
      * Multiplies `matrix` with a rotation matrix that applies a rotation
      * of `angle` degrees around the specified 3D vector.
+     * @param angle The angle you want to rotate in degrees
+     * @param x X component of your rotation vector
+     * @param y Y component of your rotation vector
+     * @param z Z component of your rotation vector
      */
     rotate(angle: number, x: number, y: number, z: number): void
     /**
      * Multiplies `matrix` with a rotation transformation described by the
      * given #CoglEuler.
+     * @param euler A euler describing a rotation
      */
     rotate_euler(euler: Euler): void
     /**
      * Multiplies `matrix` with a rotation transformation described by the
      * given #CoglQuaternion.
+     * @param quaternion A quaternion describing a rotation
      */
     rotate_quaternion(quaternion: Quaternion): void
     /**
      * Multiplies `matrix` with a transform matrix that scales along the X,
      * Y and Z axis.
+     * @param sx The X scale factor
+     * @param sy The Y scale factor
+     * @param sz The Z scale factor
      */
     scale(sx: number, sy: number, sz: number): void
     /**
      * Transforms a point whos position is given and returned as four float
      * components.
+     * @param x The X component of your points position
+     * @param y The Y component of your points position
+     * @param z The Z component of your points position
+     * @param w The W component of your points position
      */
     transform_point(x: number, y: number, z: number, w: number): [ /* x */ number, /* y */ number, /* z */ number, /* w */ number ]
     /**
@@ -6767,11 +7406,20 @@ class Matrix {
      *                               N_VERTICES);
      * ```
      * 
+     * @param n_components The number of position components for each input point.                (either 2 or 3)
+     * @param stride_in The stride in bytes between input points.
+     * @param points_in A pointer to the first component of the first input point.
+     * @param stride_out The stride in bytes between output points.
+     * @param points_out A pointer to the first component of the first output point.
+     * @param n_points The number of points to transform.
      */
     transform_points(n_components: number, stride_in: number, points_in: object | null, stride_out: number, points_out: object | null, n_points: number): void
     /**
      * Multiplies `matrix` with a transform matrix that translates along
      * the X, Y and Z axis.
+     * @param x The X translation you want to apply
+     * @param y The Y translation you want to apply
+     * @param z The Z translation you want to apply
      */
     translate(x: number, y: number, z: number): void
     /**
@@ -6791,6 +7439,14 @@ class Matrix {
      * Toolkits such as Clutter that mix 2D and 3D drawing can use this to
      * create a 2D coordinate system within a 3D perspective projected
      * view frustum.
+     * @param left coord of left vertical clipping plane
+     * @param right coord of right vertical clipping plane
+     * @param bottom coord of bottom horizontal clipping plane
+     * @param top coord of top horizontal clipping plane
+     * @param z_near The distance to the near clip plane. Never pass 0 and always pass   a positive number.
+     * @param z_2d The distance to the 2D plane. (Should always be positive and   be between `z_near` and the z_far value that was passed to   cogl_matrix_frustum())
+     * @param width_2d The width of the 2D coordinate system
+     * @param height_2d The height of the 2D coordinate system
      */
     view_2d_in_frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_2d: number, width_2d: number, height_2d: number): void
     /**
@@ -6805,6 +7461,12 @@ class Matrix {
      * Toolkits such as Clutter that mix 2D and 3D drawing can use this to
      * create a 2D coordinate system within a 3D perspective projected
      * view frustum.
+     * @param fov_y A field of view angle for the Y axis
+     * @param aspect The ratio of width to height determining the field of view angle   for the x axis.
+     * @param z_near The distance to the near clip plane. Never pass 0 and always pass   a positive number.
+     * @param z_2d The distance to the 2D plane. (Should always be positive and   be between `z_near` and the z_far value that was passed to   cogl_matrix_frustum())
+     * @param width_2d The width of the 2D coordinate system
+     * @param height_2d The height of the 2D coordinate system
      */
     view_2d_in_perspective(fov_y: number, aspect: number, z_near: number, z_2d: number, width_2d: number, height_2d: number): void
     static name: string
@@ -6814,6 +7476,8 @@ class Matrix {
      * transformation. Although internally the matrices may have different
      * annotations associated with them and may potentially have a cached
      * inverse matrix these are not considered in the comparison.
+     * @param v1 A 4x4 transformation matrix
+     * @param v2 A 4x4 transformation matrix
      */
     static equal(v1?: object | null, v2?: object | null): Bool
 }
@@ -6826,6 +7490,7 @@ class MatrixEntry {
      * 
      * If the difference between the two translations involves anything
      * other than a translation then the function returns %FALSE.
+     * @param entry1 A second reference transform
      */
     calculate_translation(entry1: MatrixEntry): [ /* returnType */ Bool, /* x */ number, /* y */ number, /* z */ number ]
     /**
@@ -6835,6 +7500,7 @@ class MatrixEntry {
      * <note>In many cases it is unnecessary to use this api and instead
      * direct pointer comparisons of entries are good enough and much
      * cheaper too.</note>
+     * @param entry1 A second #CoglMatrixEntry to compare
      */
     equal(entry1: MatrixEntry): Bool
     /**
@@ -6890,19 +7556,19 @@ class OnscreenDirtyInfo {
     /**
      * Left edge of the dirty rectangle
      */
-    readonly x: number
+    x: number
     /**
      * Top edge of the dirty rectangle, measured from the top of the window
      */
-    readonly y: number
+    y: number
     /**
      * Width of the dirty rectangle
      */
-    readonly width: number
+    width: number
     /**
      * Height of the dirty rectangle
      */
-    readonly height: number
+    height: number
     static name: string
 }
 class OnscreenResizeClosure {
@@ -6913,7 +7579,7 @@ class PollFD {
     /**
      * The file descriptor to block on
      */
-    readonly fd: number
+    fd: number
     static name: string
 }
 class Quaternion {
@@ -6921,22 +7587,22 @@ class Quaternion {
     /**
      * based on the angle of rotation it is cos(𝜃/2)
      */
-    readonly w: number
+    w: number
     /**
      * based on the angle of rotation and x component of the axis of
      *     rotation it is sin(𝜃/2)*axis.x
      */
-    readonly x: number
+    x: number
     /**
      * based on the angle of rotation and y component of the axis of
      *     rotation it is sin(𝜃/2)*axis.y
      */
-    readonly y: number
+    y: number
     /**
      * based on the angle of rotation and z component of the axis of
      *     rotation it is sin(𝜃/2)*axis.z
      */
-    readonly z: number
+    z: number
     /* Methods of Cogl-2.0.Cogl.Quaternion */
     /**
      * Allocates a new #CoglQuaternion on the stack and initializes it with
@@ -6955,27 +7621,36 @@ class Quaternion {
      * Initializes a quaternion that rotates `angle` degrees around the
      * axis vector (`x,` `y,` `z)`. The axis vector does not need to be
      * normalized.
+     * @param angle The angle you want to rotate around the given axis
+     * @param x The x component of your axis vector about which you want to rotate.
+     * @param y The y component of your axis vector about which you want to rotate.
+     * @param z The z component of your axis vector about which you want to rotate.
      */
     init(angle: number, x: number, y: number, z: number): void
     /**
      * Initializes a quaternion that rotates `angle` degrees around the
      * given `axis` vector. The axis vector does not need to be
      * normalized.
+     * @param angle The angle to rotate around `axis3`f
+     * @param axis3f your 3 component axis vector about which you want to rotate.
      */
     init_from_angle_vector(angle: number, axis3f: number): void
     /**
      * Initializes a [w (x, y,z)] quaternion directly from an array of 4
      * floats: [w,x,y,z].
+     * @param array An array of 4 floats w,(x,y,z)
      */
     init_from_array(array: number): void
     init_from_euler(euler: Euler): void
     /**
      * Initializes a quaternion from a rotation matrix.
+     * @param matrix A rotation matrix with which to initialize the quaternion
      */
     init_from_matrix(matrix: Matrix): void
     init_from_quaternion(src: Quaternion): void
     /**
      * XXX: check which direction this rotates
+     * @param angle The angle to rotate around the x axis
      */
     init_from_x_rotation(angle: number): void
     init_from_y_rotation(angle: number): void
@@ -6999,6 +7674,8 @@ class Quaternion {
      * 
      * <note>It is possible to multiply the `a` quaternion in-place, so
      * `result` can be equal to `a` but can't be equal to `b`.</note>
+     * @param left The second #CoglQuaternion rotation to apply
+     * @param right The first #CoglQuaternion rotation to apply
      */
     multiply(left: Quaternion, right: Quaternion): void
     /**
@@ -7028,6 +7705,9 @@ class Quaternion {
      * faster than cogl_quaternion_slerp()
      * </listitem>
      * </itemizedlist>
+     * @param a The first #CoglQuaternion
+     * @param b The second #CoglQuaternion
+     * @param t The factor in the range [0,1] used to interpolate between quaterion `a` and `b`.
      */
     nlerp(a: Quaternion, b: Quaternion, t: number): void
     normalize(): void
@@ -7050,6 +7730,9 @@ class Quaternion {
      * more expensive than cogl_quaternion_nlerp()
      * </listitem>
      * </itemizedlist>
+     * @param a The first #CoglQuaternion
+     * @param b The second #CoglQuaternion
+     * @param t The factor in the range [0,1] used to interpolate between quaternion `a` and `b`.
      */
     slerp(a: Quaternion, b: Quaternion, t: number): void
     squad(prev: Quaternion, a: Quaternion, b: Quaternion, next: Quaternion, t: number): void
@@ -7062,6 +7745,8 @@ class Quaternion {
      * An epsilon value is not used to compare the float components, but
      * the == operator is at least used so that 0 and -0 are considered
      * equal.
+     * @param v1 A #CoglQuaternion
+     * @param v2 A #CoglQuaternion
      */
     static equal(v1?: object | null, v2?: object | null): Bool
 }
@@ -7070,28 +7755,28 @@ class TextureVertex {
     /**
      * Model x-coordinate
      */
-    readonly x: number
+    x: number
     /**
      * Model y-coordinate
      */
-    readonly y: number
+    y: number
     /**
      * Model z-coordinate
      */
-    readonly z: number
+    z: number
     /**
      * Texture x-coordinate
      */
-    readonly tx: number
+    tx: number
     /**
      * Texture y-coordinate
      */
-    readonly ty: number
+    ty: number
     /**
      * The color to use at this vertex. This is ignored if
      *   use_color is %FALSE when calling cogl_polygon()
      */
-    readonly color: Color
+    color: Color
     static name: string
 }
 class UserDataKey {
@@ -7099,7 +7784,7 @@ class UserDataKey {
     /**
      * ignored.
      */
-    readonly unused: number
+    unused: number
     static name: string
 }
 class VertexP2 {
@@ -7107,11 +7792,11 @@ class VertexP2 {
     /**
      * The x component of a position attribute
      */
-    readonly x: number
+    x: number
     /**
      * The y component of a position attribute
      */
-    readonly y: number
+    y: number
     static name: string
 }
 class VertexP2C4 {
@@ -7119,27 +7804,27 @@ class VertexP2C4 {
     /**
      * The x component of a position attribute
      */
-    readonly x: number
+    x: number
     /**
      * The y component of a position attribute
      */
-    readonly y: number
+    y: number
     /**
      * The red component of a color attribute
      */
-    readonly r: number
+    r: number
     /**
      * The blue component of a color attribute
      */
-    readonly g: number
+    g: number
     /**
      * The green component of a color attribute
      */
-    readonly b: number
+    b: number
     /**
      * The alpha component of a color attribute
      */
-    readonly a: number
+    a: number
     static name: string
 }
 class VertexP2T2 {
@@ -7147,19 +7832,19 @@ class VertexP2T2 {
     /**
      * The x component of a position attribute
      */
-    readonly x: number
+    x: number
     /**
      * The y component of a position attribute
      */
-    readonly y: number
+    y: number
     /**
      * The s component of a texture coordinate attribute
      */
-    readonly s: number
+    s: number
     /**
      * The t component of a texture coordinate attribute
      */
-    readonly t: number
+    t: number
     static name: string
 }
 class VertexP2T2C4 {
@@ -7167,35 +7852,35 @@ class VertexP2T2C4 {
     /**
      * The x component of a position attribute
      */
-    readonly x: number
+    x: number
     /**
      * The y component of a position attribute
      */
-    readonly y: number
+    y: number
     /**
      * The s component of a texture coordinate attribute
      */
-    readonly s: number
+    s: number
     /**
      * The t component of a texture coordinate attribute
      */
-    readonly t: number
+    t: number
     /**
      * The red component of a color attribute
      */
-    readonly r: number
+    r: number
     /**
      * The blue component of a color attribute
      */
-    readonly g: number
+    g: number
     /**
      * The green component of a color attribute
      */
-    readonly b: number
+    b: number
     /**
      * The alpha component of a color attribute
      */
-    readonly a: number
+    a: number
     static name: string
 }
 class VertexP3 {
@@ -7203,15 +7888,15 @@ class VertexP3 {
     /**
      * The x component of a position attribute
      */
-    readonly x: number
+    x: number
     /**
      * The y component of a position attribute
      */
-    readonly y: number
+    y: number
     /**
      * The z component of a position attribute
      */
-    readonly z: number
+    z: number
     static name: string
 }
 class VertexP3C4 {
@@ -7219,31 +7904,31 @@ class VertexP3C4 {
     /**
      * The x component of a position attribute
      */
-    readonly x: number
+    x: number
     /**
      * The y component of a position attribute
      */
-    readonly y: number
+    y: number
     /**
      * The z component of a position attribute
      */
-    readonly z: number
+    z: number
     /**
      * The red component of a color attribute
      */
-    readonly r: number
+    r: number
     /**
      * The blue component of a color attribute
      */
-    readonly g: number
+    g: number
     /**
      * The green component of a color attribute
      */
-    readonly b: number
+    b: number
     /**
      * The alpha component of a color attribute
      */
-    readonly a: number
+    a: number
     static name: string
 }
 class VertexP3T2 {
@@ -7251,23 +7936,23 @@ class VertexP3T2 {
     /**
      * The x component of a position attribute
      */
-    readonly x: number
+    x: number
     /**
      * The y component of a position attribute
      */
-    readonly y: number
+    y: number
     /**
      * The z component of a position attribute
      */
-    readonly z: number
+    z: number
     /**
      * The s component of a texture coordinate attribute
      */
-    readonly s: number
+    s: number
     /**
      * The t component of a texture coordinate attribute
      */
-    readonly t: number
+    t: number
     static name: string
 }
 class VertexP3T2C4 {
@@ -7275,64 +7960,64 @@ class VertexP3T2C4 {
     /**
      * The x component of a position attribute
      */
-    readonly x: number
+    x: number
     /**
      * The y component of a position attribute
      */
-    readonly y: number
+    y: number
     /**
      * The z component of a position attribute
      */
-    readonly z: number
+    z: number
     /**
      * The s component of a texture coordinate attribute
      */
-    readonly s: number
+    s: number
     /**
      * The t component of a texture coordinate attribute
      */
-    readonly t: number
+    t: number
     /**
      * The red component of a color attribute
      */
-    readonly r: number
+    r: number
     /**
      * The blue component of a color attribute
      */
-    readonly g: number
+    g: number
     /**
      * The green component of a color attribute
      */
-    readonly b: number
+    b: number
     /**
      * The alpha component of a color attribute
      */
-    readonly a: number
+    a: number
     static name: string
 }
 class _ColorSizeCheck {
     /* Fields of Cogl-2.0.Cogl._ColorSizeCheck */
-    readonly compile_time_assert_CoglColor_size: number[]
+    compile_time_assert_CoglColor_size: number[]
     static name: string
 }
 class _EulerSizeCheck {
     /* Fields of Cogl-2.0.Cogl._EulerSizeCheck */
-    readonly compile_time_assert_CoglEuler_size: number[]
+    compile_time_assert_CoglEuler_size: number[]
     static name: string
 }
 class _MatrixSizeCheck {
     /* Fields of Cogl-2.0.Cogl._MatrixSizeCheck */
-    readonly compile_time_assert_CoglMatrix_size: number[]
+    compile_time_assert_CoglMatrix_size: number[]
     static name: string
 }
 class _QuaternionSizeCheck {
     /* Fields of Cogl-2.0.Cogl._QuaternionSizeCheck */
-    readonly compile_time_assert_CoglQuaternion_size: number[]
+    compile_time_assert_CoglQuaternion_size: number[]
     static name: string
 }
 class _TextureVertexSizeCheck {
     /* Fields of Cogl-2.0.Cogl._TextureVertexSizeCheck */
-    readonly compile_time_assert_CoglTextureVertex_size: number[]
+    compile_time_assert_CoglTextureVertex_size: number[]
     static name: string
 }
     type Angle = number

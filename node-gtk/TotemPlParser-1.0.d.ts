@@ -280,21 +280,24 @@ class Parser {
      */
     recurse: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TotemPlParser-1.0.TotemPlParser.Parser */
     /**
      * Adds a glob to the list of mimetypes to ignore, so that
      * any URI of that glob is ignored during playlist parsing.
+     * @param glob a glob to ignore
      */
     addIgnoredGlob(glob: string): void
     /**
      * Adds a mimetype to the list of mimetypes to ignore, so that
      * any URI of that mimetype is ignored during playlist parsing.
+     * @param mimetype the mimetype to ignore
      */
     addIgnoredMimetype(mimetype: string): void
     /**
      * Adds a scheme to the list of schemes to ignore, so that
      * any URI using that scheme is ignored during playlist parsing.
+     * @param scheme the scheme to ignore
      */
     addIgnoredScheme(scheme: string): void
     /**
@@ -303,6 +306,8 @@ class Parser {
      * servers. totem_pl_parser_parse_async() is recommended instead.
      * 
      * Return values are as totem_pl_parser_parse_with_base().
+     * @param uri the URI of the playlist to parse
+     * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
      */
     parse(uri: string, fallback: boolean): ParserResult
     /**
@@ -313,6 +318,10 @@ class Parser {
      * 
      * When the operation is finished, `callback` will be called. You can then call totem_pl_parser_parse_finish()
      * to get the results of the operation.
+     * @param uri the URI of the playlist to parse
+     * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when parsing is finished
      */
     parseAsync(uri: string, fallback: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -321,11 +330,15 @@ class Parser {
      * 
      * If parsing of the playlist is cancelled part-way through, %TOTEM_PL_PARSER_RESULT_CANCELLED is returned when
      * this function is called.
+     * @param asyncResult a #GAsyncResult
      */
     parseFinish(asyncResult: Gio.AsyncResult): ParserResult
     /**
      * Parses a playlist given by the absolute URI `uri,` using
      * `base` to resolve relative paths where appropriate.
+     * @param uri the URI of the playlist to parse
+     * @param base the base path for relative filenames, or %NULL
+     * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
      */
     parseWithBase(uri: string, base: string | null, fallback: boolean): ParserResult
     /**
@@ -336,6 +349,11 @@ class Parser {
      * 
      * When the operation is finished, `callback` will be called. You can then call totem_pl_parser_parse_finish()
      * to get the results of the operation.
+     * @param uri the URI of the playlist to parse
+     * @param base the base path for relative filenames, or %NULL
+     * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when parsing is finished
      */
     parseWithBaseAsync(uri: string, base: string | null, fallback: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -356,6 +374,10 @@ class Parser {
      * 
      * If writing a PLA playlist and there is an error converting a URI's encoding,
      * a code from #GConvertError will be returned.
+     * @param playlist a #TotemPlPlaylist
+     * @param dest output #GFile
+     * @param title the playlist title
+     * @param type a #TotemPlParserType for the outputted playlist
      */
     save(playlist: Playlist, dest: Gio.File, title: string, type: ParserType): boolean
     /**
@@ -364,6 +386,12 @@ class Parser {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * totem_pl_parser_save_finish() to get the results of the operation.
+     * @param playlist a #TotemPlPlaylist
+     * @param dest output #GFile
+     * @param title the playlist title
+     * @param type a #TotemPlParserType for the outputted playlist
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when saving has finished
      */
     saveAsync(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -371,6 +399,7 @@ class Parser {
      * 
      * If saving of the playlist is cancelled part-way through, %G_IO_ERROR_CANCELLED will be
      * returned when this function is called.
+     * @param asyncResult a #GAsyncResult
      */
     saveFinish(asyncResult: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -408,6 +437,10 @@ class Parser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -418,6 +451,12 @@ class Parser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -441,6 +480,7 @@ class Parser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -460,11 +500,14 @@ class Parser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -472,6 +515,8 @@ class Parser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -489,6 +534,7 @@ class Parser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -534,6 +580,7 @@ class Parser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -577,15 +624,20 @@ class Parser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -626,6 +678,7 @@ class Parser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -660,11 +713,14 @@ class Parser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of TotemPlParser-1.0.TotemPlParser.Parser */
     /**
      * The ::entry-parsed signal is emitted when a new entry is parsed.
+     * @param uri the URI of the entry parsed
+     * @param metadata a #GHashTable of metadata relating to the entry added
      */
     connect(sigName: "entry-parsed", callback: ((uri: string, metadata: GLib.HashTable) => void)): number
     on(sigName: "entry-parsed", callback: (uri: string, metadata: GLib.HashTable) => void, after?: boolean): NodeJS.EventEmitter
@@ -675,6 +731,7 @@ class Parser {
      * The ::playlist-ended signal is emitted when a playlist is finished
      * parsing. It is only called when #TotemPlParser::playlist-started
      * has been called for that playlist.
+     * @param uri the URI of the playlist that finished parsing.
      */
     connect(sigName: "playlist-ended", callback: ((uri: string) => void)): number
     on(sigName: "playlist-ended", callback: (uri: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -686,6 +743,8 @@ class Parser {
      * started. This signal isn't emitted for all types of playlists, but
      * can be relied on to be called for playlists which support playlist
      * metadata, such as title.
+     * @param uri the URI of the new playlist started
+     * @param metadata a #GHashTable of metadata relating to the playlist that started.
      */
     connect(sigName: "playlist-started", callback: ((uri: string, metadata: GLib.HashTable) => void)): number
     on(sigName: "playlist-started", callback: (uri: string, metadata: GLib.HashTable) => void, after?: boolean): NodeJS.EventEmitter
@@ -721,6 +780,7 @@ class Parser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -761,6 +821,9 @@ class Parser {
     static new(): Parser
     /**
      * Checks if the first `len` bytes of `data` can be parsed.
+     * @param data the data to check for parsability
+     * @param len the length of data to check
+     * @param debug %TRUE if debug statements should be printed
      */
     static canParseFromData(data: string, len: number, debug: boolean): boolean
     /**
@@ -769,22 +832,30 @@ class Parser {
      *  <listitem><para>they have a special mimetype, or</para></listitem>
      *  <listitem><para>they have a mimetype which could be a video or a playlist.</para></listitem>
      * </itemizedlist>
+     * @param filename the file to check for parsability
+     * @param debug %TRUE if debug statements should be printed
      */
     static canParseFromFilename(filename: string, debug: boolean): boolean
     /**
      * Checks if the remote URI can be parsed. Note that this does
      * not actually try to open the remote URI, or deduce its mime-type
      * from filename, as this would bring too many false positives.
+     * @param uri the remote URI to check for parsability
+     * @param debug %TRUE if debug statements should be printed
      */
     static canParseFromUri(uri: string, debug: boolean): boolean
     /**
      * Parses the given date string and returns it as a <type>gint64</type>
      * denoting the date in seconds since the UNIX Epoch.
+     * @param dateStr the date string to parse
+     * @param debug %TRUE if debug statements should be printed
      */
     static parseDate(dateStr: string, debug: boolean): number
     /**
      * Parses the given duration string and returns it as a <type>gint64</type>
      * denoting the duration in seconds.
+     * @param duration the duration string to parse
+     * @param debug %TRUE if debug statements should be printed
      */
     static parseDuration(duration: string, debug: boolean): number
     static $gtype: GObject.Type
@@ -793,7 +864,7 @@ interface Playlist_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Playlist {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TotemPlParser-1.0.TotemPlParser.Playlist */
     /**
      * Appends a new empty element to `playlist,` and modifies `iter` so
@@ -804,6 +875,9 @@ class Playlist {
     /**
      * Gets the value for `key` (Such as %TOTEM_PL_PARSER_FIELD_URI) in
      * the playlist item pointed by `iter`.
+     * @param iter a #TotemPlPlaylistIter pointing to some item in `playlist`
+     * @param key data key
+     * @param value an empty #GValue to set
      */
     getValue(iter: PlaylistIter, key: string, value: any): boolean
     /**
@@ -813,6 +887,7 @@ class Playlist {
      * 
      * `position` may be minor than 0 to prepend elements, or bigger than
      * the current `playlist` size to append elements.
+     * @param position position in the playlist
      */
     insert(position: number): /* iter */ PlaylistIter
     /**
@@ -824,6 +899,7 @@ class Playlist {
      * pointed to. This function will return %FALSE if there was no
      * next element, or `iter` didn't actually point to any element
      * in `playlist`.
+     * @param iter a #TotemPlPlaylistIter pointing to some item in `playlist`
      */
     iterNext(iter: PlaylistIter): boolean
     /**
@@ -831,6 +907,7 @@ class Playlist {
      * pointed to. This function will return %FALSE if there was no
      * previous element, or `iter` didn't actually point to any element
      * in `playlist`.
+     * @param iter a #TotemPlPlaylistIter pointing to some item in `playlist`
      */
     iterPrev(iter: PlaylistIter): boolean
     /**
@@ -841,6 +918,9 @@ class Playlist {
     prepend(): /* iter */ PlaylistIter
     /**
      * Sets the value for `key` in the element pointed by `iter`.
+     * @param iter a #TotemPlPlaylistIter pointing to some item in `playlist`
+     * @param key key to set the value for
+     * @param value #GValue containing the key value
      */
     setValue(iter: PlaylistIter, key: string, value: any): boolean
     /**
@@ -882,6 +962,10 @@ class Playlist {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -892,6 +976,12 @@ class Playlist {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -915,6 +1005,7 @@ class Playlist {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -934,11 +1025,14 @@ class Playlist {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -946,6 +1040,8 @@ class Playlist {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -963,6 +1059,7 @@ class Playlist {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1008,6 +1105,7 @@ class Playlist {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1051,15 +1149,20 @@ class Playlist {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1100,6 +1203,7 @@ class Playlist {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1134,6 +1238,7 @@ class Playlist {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1165,6 +1270,7 @@ class Playlist {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1190,10 +1296,10 @@ abstract class ParserClass {
     /**
      * the parent class
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly entryParsed: (parser: Parser, uri: string, metadata: GLib.HashTable) => void
-    readonly playlistStarted: (parser: Parser, uri: string, metadata: GLib.HashTable) => void
-    readonly playlistEnded: (parser: Parser, uri: string) => void
+    parentClass: GObject.ObjectClass
+    entryParsed: (parser: Parser, uri: string, metadata: GLib.HashTable) => void
+    playlistStarted: (parser: Parser, uri: string, metadata: GLib.HashTable) => void
+    playlistEnded: (parser: Parser, uri: string) => void
     static name: string
 }
 class ParserPrivate {
@@ -1204,7 +1310,7 @@ abstract class PlaylistClass {
     /**
      * the parent class
      */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class PlaylistIter {

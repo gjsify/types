@@ -2885,9 +2885,9 @@ interface AppLaunchContext_ConstructProps extends Gio.AppLaunchContext_Construct
 }
 class AppLaunchContext {
     /* Fields of Gio-2.0.Gio.AppLaunchContext */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.AppLaunchContext */
     /**
      * Sets the workspace on which applications will be launched when
@@ -2899,11 +2899,13 @@ class AppLaunchContext {
      * When the workspace is not specified or `desktop` is set to -1,
      * it is up to the window manager to pick one, typically it will
      * be the current workspace.
+     * @param desktop the number of a workspace, or -1
      */
     set_desktop(desktop: number): void
     /**
      * Sets the display on which applications will be launched when
      * using this context. See also gdk_app_launch_context_set_screen().
+     * @param display a #GdkDisplay
      */
     set_display(display: Display): void
     /**
@@ -2914,6 +2916,7 @@ class AppLaunchContext {
      * notification.
      * 
      * See also gdk_app_launch_context_set_icon_name().
+     * @param icon a #GIcon, or %NULL
      */
     set_icon(icon?: Gio.Icon | null): void
     /**
@@ -2925,6 +2928,7 @@ class AppLaunchContext {
      * If neither `icon` or `icon_name` is set, the icon is taken from either
      * the file that is passed to launched application or from the #GAppInfo
      * for the launched application itself.
+     * @param icon_name an icon name, or %NULL
      */
     set_icon_name(icon_name?: string | null): void
     /**
@@ -2934,6 +2938,7 @@ class AppLaunchContext {
      * If both `screen` and `display` are set, the `screen` takes priority.
      * If neither `screen` or `display` are set, the default screen and
      * display are used.
+     * @param screen a #GdkScreen
      */
     set_screen(screen: Screen): void
     /**
@@ -2944,6 +2949,7 @@ class AppLaunchContext {
      * focus to the newly launched application when the user is busy
      * typing in another window. This is also known as 'focus stealing
      * prevention'.
+     * @param timestamp a timestamp
      */
     set_timestamp(timestamp: number): void
     /* Methods of Gio-2.0.Gio.AppLaunchContext */
@@ -2951,6 +2957,8 @@ class AppLaunchContext {
      * Gets the display string for the `context`. This is used to ensure new
      * applications are started on the same display as the launching
      * application, by setting the `DISPLAY` environment variable.
+     * @param info a #GAppInfo
+     * @param files a #GList of #GFile objects
      */
     get_display(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
@@ -2966,21 +2974,27 @@ class AppLaunchContext {
      * 
      * Startup notification IDs are defined in the
      * [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * @param info a #GAppInfo
+     * @param files a #GList of of #GFile objects
      */
     get_startup_notify_id(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
      * Called when an application has failed to launch, so that it can cancel
      * the application startup notification started in g_app_launch_context_get_startup_notify_id().
+     * @param startup_notify_id the startup notification id that was returned by g_app_launch_context_get_startup_notify_id().
      */
     launch_failed(startup_notify_id: string): void
     /**
      * Arranges for `variable` to be set to `value` in the child's
      * environment when `context` is used to launch an application.
+     * @param variable the environment variable to set
+     * @param value the value for to set the variable to.
      */
     setenv(variable: string, value: string): void
     /**
      * Arranges for `variable` to be unset in the child's environment
      * when `context` is used to launch an application.
+     * @param variable the environment variable to remove
      */
     unsetenv(variable: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3018,6 +3032,10 @@ class AppLaunchContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3028,6 +3046,12 @@ class AppLaunchContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3051,6 +3075,7 @@ class AppLaunchContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3070,11 +3095,14 @@ class AppLaunchContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3082,6 +3110,8 @@ class AppLaunchContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3099,6 +3129,7 @@ class AppLaunchContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3144,6 +3175,7 @@ class AppLaunchContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3187,15 +3219,20 @@ class AppLaunchContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3236,6 +3273,7 @@ class AppLaunchContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3270,6 +3308,7 @@ class AppLaunchContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gio-2.0.Gio.AppLaunchContext */
@@ -3277,6 +3316,8 @@ class AppLaunchContext {
      * Gets the display string for the `context`. This is used to ensure new
      * applications are started on the same display as the launching
      * application, by setting the `DISPLAY` environment variable.
+     * @param info a #GAppInfo
+     * @param files a #GList of #GFile objects
      */
     vfunc_get_display(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
@@ -3285,11 +3326,14 @@ class AppLaunchContext {
      * 
      * Startup notification IDs are defined in the
      * [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * @param info a #GAppInfo
+     * @param files a #GList of of #GFile objects
      */
     vfunc_get_startup_notify_id(info: Gio.AppInfo, files: Gio.File[]): string | null
     /**
      * Called when an application has failed to launch, so that it can cancel
      * the application startup notification started in g_app_launch_context_get_startup_notify_id().
+     * @param startup_notify_id the startup notification id that was returned by g_app_launch_context_get_startup_notify_id().
      */
     vfunc_launch_failed(startup_notify_id: string): void
     vfunc_launch_started(info: Gio.AppInfo, platform_data: GLib.Variant): void
@@ -3311,6 +3355,7 @@ class AppLaunchContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3319,6 +3364,7 @@ class AppLaunchContext {
      * The #GAppLaunchContext::launch-failed signal is emitted when a #GAppInfo launch
      * fails. The startup notification id is provided, so that the launcher
      * can cancel the startup notification.
+     * @param startup_notify_id the startup notification id for the failed launch
      */
     connect(sigName: "launch-failed", callback: (($obj: AppLaunchContext, startup_notify_id: string) => void)): number
     connect_after(sigName: "launch-failed", callback: (($obj: AppLaunchContext, startup_notify_id: string) => void)): number
@@ -3338,6 +3384,8 @@ class AppLaunchContext {
      * 
      * It is guaranteed that this signal is followed by either a #GAppLaunchContext::launched or
      * #GAppLaunchContext::launch-failed signal.
+     * @param info the #GAppInfo that is about to be launched
+     * @param platform_data additional platform-specific data for this launch
      */
     connect(sigName: "launch-started", callback: (($obj: AppLaunchContext, info: Gio.AppInfo, platform_data?: GLib.Variant | null) => void)): number
     connect_after(sigName: "launch-started", callback: (($obj: AppLaunchContext, info: Gio.AppInfo, platform_data?: GLib.Variant | null) => void)): number
@@ -3352,6 +3400,8 @@ class AppLaunchContext {
      * Since 2.72 the `pid` may be 0 if the process id wasn't known (for
      * example if the process was launched via D-Bus). The `pid` may not be
      * set at all in subsequent releases.
+     * @param info the #GAppInfo that was just launched
+     * @param platform_data additional platform-specific data for this launch
      */
     connect(sigName: "launched", callback: (($obj: AppLaunchContext, info: Gio.AppInfo, platform_data: GLib.Variant) => void)): number
     connect_after(sigName: "launched", callback: (($obj: AppLaunchContext, info: Gio.AppInfo, platform_data: GLib.Variant) => void)): number
@@ -3385,6 +3435,7 @@ class AppLaunchContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AppLaunchContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AppLaunchContext, pspec: GObject.ParamSpec) => void)): number
@@ -3406,14 +3457,22 @@ interface Colormap_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Colormap {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Colormap */
     /**
      * Allocates a single color from a colormap.
+     * @param color the color to allocate. On return the    <structfield>pixel</structfield> field will be    filled in if allocation succeeds.
+     * @param writeable If %TRUE, the color is allocated writeable    (their values can later be changed using gdk_color_change()).    Writeable colors cannot be shared between applications.
+     * @param best_match If %TRUE, GDK will attempt to do matching against    existing colors if the color cannot be allocated as requested.
      */
     alloc_color(color: Color, writeable: boolean, best_match: boolean): boolean
     /**
      * Allocates colors from a colormap.
+     * @param colors The color values to allocate. On return, the pixel    values for allocated colors will be filled in.
+     * @param n_colors The number of colors in `colors`.
+     * @param writeable If %TRUE, the colors are allocated writeable    (their values can later be changed using gdk_color_change()).    Writeable colors cannot be shared between applications.
+     * @param best_match If %TRUE, GDK will attempt to do matching against    existing colors if the colors cannot be allocated as requested.
+     * @param success An array of length `ncolors`. On return, this   indicates whether the corresponding color in `colors` was   successfully allocated or not.
      */
     alloc_colors(colors: Color, n_colors: number, writeable: boolean, best_match: boolean, success: boolean): number
     /**
@@ -3421,10 +3480,13 @@ class Colormap {
      * to match the values in the <structfield>colors</structfield>
      * array in the colormap. This function is obsolete and
      * should not be used. See gdk_color_change().
+     * @param ncolors the number of colors to change.
      */
     change(ncolors: number): void
     /**
      * Frees previously allocated colors.
+     * @param colors the colors to free.
+     * @param n_colors the number of colors in `colors`.
      */
     free_colors(colors: Color, n_colors: number): void
     /**
@@ -3438,6 +3500,8 @@ class Colormap {
      * 
      * This function is rarely useful; it's used for example to
      * implement the eyedropper feature in #GtkColorSelection.
+     * @param pixel pixel value in hardware display format
+     * @param result #GdkColor with red, green, blue fields initialized
      */
     query_color(pixel: number, result: Color): void
     /**
@@ -3479,6 +3543,10 @@ class Colormap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3489,6 +3557,12 @@ class Colormap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3512,6 +3586,7 @@ class Colormap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3531,11 +3606,14 @@ class Colormap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3543,6 +3621,8 @@ class Colormap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3560,6 +3640,7 @@ class Colormap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3605,6 +3686,7 @@ class Colormap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3648,15 +3730,20 @@ class Colormap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3697,6 +3784,7 @@ class Colormap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3721,6 +3809,7 @@ class Colormap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3740,6 +3829,7 @@ class Colormap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3772,6 +3862,7 @@ class Colormap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Colormap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Colormap, pspec: GObject.ParamSpec) => void)): number
@@ -3797,15 +3888,19 @@ interface Device_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Device {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Device */
     /**
      * Interprets an array of double as axis values for a given device,
      * and locates the value in the array for a given axis use.
+     * @param axes pointer to an array of axes
+     * @param use the use to look for
+     * @param value location to store the found value.
      */
     get_axis(axes: number, use: AxisUse, value: number): boolean
     /**
      * Returns the axis use for `index`.
+     * @param index the index of the axis.
      */
     get_axis_use(index: number): AxisUse
     /**
@@ -3819,11 +3914,17 @@ class Device {
      * do not support motion history, in which case, %FALSE will
      * be returned. (This is not distinguishable from the case where
      * motion history is supported and no events were found.)
+     * @param window the window with respect to which which the event coordinates will be reported
+     * @param start starting timestamp for range of events to return
+     * @param stop ending timestamp for the range of events to return
      */
     get_history(window: Window, start: number, stop: number): [ /* returnType */ boolean, /* events */ TimeCoord[] ]
     /**
      * If `index` has a valid keyval, this function will
      * fill in `keyval` and `modifiers` with the keyval settings.
+     * @param index the index of the macro button to get.
+     * @param keyval return value for the keyval.
+     * @param modifiers return value for modifiers.
      */
     get_key(index: number, keyval: number, modifiers: ModifierType): void
     /**
@@ -3886,6 +3987,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3896,6 +4001,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3919,6 +4030,7 @@ class Device {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3938,11 +4050,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3950,6 +4065,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3967,6 +4084,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4012,6 +4130,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4055,15 +4174,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4104,6 +4228,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4138,6 +4263,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4157,6 +4283,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4189,6 +4316,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
@@ -4203,6 +4331,8 @@ class Device {
     /* Static methods and pseudo-constructors */
     /**
      * Frees an array of #GdkTimeCoord that was returned by gdk_device_get_history().
+     * @param events an array of #GdkTimeCoord.
+     * @param n_events the length of the array.
      */
     static free_history(events: TimeCoord, n_events: number): /* events */ TimeCoord
     static $gtype: GObject.Type
@@ -4211,7 +4341,7 @@ interface Display_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Display {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Display */
     /**
      * Emits a short beep on `display`
@@ -4273,6 +4403,7 @@ class Display {
     is_closed(): boolean
     /**
      * Release any keyboard grab
+     * @param time_ a timestap (e.g #GDK_CURRENT_TIME).
      */
     keyboard_ungrab(time_: number): void
     /**
@@ -4288,16 +4419,19 @@ class Display {
     pointer_is_grabbed(): boolean
     /**
      * Release any pointer grab.
+     * @param time_ a timestap (e.g. %GDK_CURRENT_TIME).
      */
     pointer_ungrab(time_: number): void
     /**
      * Appends a copy of the given event onto the front of the event
      * queue for `display`.
+     * @param event a #GdkEvent.
      */
     put_event(event: Event): void
     /**
      * Request #GdkEventOwnerChange events for ownership changes
      * of the selection named by the given atom.
+     * @param selection the #GdkAtom naming the selection for which             ownership change notification is requested
      */
     request_selection_notification(selection: Atom): boolean
     /**
@@ -4306,6 +4440,7 @@ class Display {
      * See also gdk_display_set_double_click_time().
      * Applications should <emphasis>not</emphasis> set this, it is a global
      * user-configured setting.
+     * @param distance distance in pixels
      */
     set_double_click_distance(distance: number): void
     /**
@@ -4313,6 +4448,7 @@ class Display {
      * count as a double click and result in a #GDK_2BUTTON_PRESS event).
      * Applications should <emphasis>not</emphasis> set this, it is a global
      * user-configured setting.
+     * @param msec double click time in milliseconds (thousandths of a second)
      */
     set_double_click_time(msec: number): void
     /**
@@ -4321,6 +4457,10 @@ class Display {
      * according to the freedesktop clipboard specification, available at
      * <ulink url="http://www.freedesktop.org/Standards/clipboard-manager-spec">
      * http://www.freedesktop.org/Standards/clipboard-manager-spec</ulink>.
+     * @param clipboard_window a #GdkWindow belonging to the clipboard owner
+     * @param time_ a timestamp
+     * @param targets an array of targets that should be saved, or %NULL                    if all available targets should be saved.
+     * @param n_targets length of the `targets` array
      */
     store_clipboard(clipboard_window: Window, time_: number, targets: Atom, n_targets: number): void
     /**
@@ -4389,6 +4529,9 @@ class Display {
      * control of the user. This function was added to cover
      * some rare use cases like keyboard navigation support
      * for the color picker in the #GtkColorSelectionDialog.
+     * @param screen the screen of `display` to warp the pointer to
+     * @param x the x coordinate of the destination
+     * @param y the y coordinate of the destination
      */
     warp_pointer(screen: Screen, x: number, y: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4426,6 +4569,10 @@ class Display {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4436,6 +4583,12 @@ class Display {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4459,6 +4612,7 @@ class Display {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4478,11 +4632,14 @@ class Display {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4490,6 +4647,8 @@ class Display {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4507,6 +4666,7 @@ class Display {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4552,6 +4712,7 @@ class Display {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4595,15 +4756,20 @@ class Display {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4644,6 +4810,7 @@ class Display {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4678,6 +4845,7 @@ class Display {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gdk-2.0.Gdk.Display */
@@ -4704,6 +4872,7 @@ class Display {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4711,6 +4880,7 @@ class Display {
     /**
      * The ::closed signal is emitted when the connection to the windowing
      * system for `display` is closed.
+     * @param is_error %TRUE if the display was closed due to an error
      */
     connect(sigName: "closed", callback: (($obj: Display, is_error: boolean) => void)): number
     connect_after(sigName: "closed", callback: (($obj: Display, is_error: boolean) => void)): number
@@ -4744,6 +4914,7 @@ class Display {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Display, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Display, pspec: GObject.ParamSpec) => void)): number
@@ -4772,7 +4943,7 @@ class DisplayManager {
     /* Properties of Gdk-2.0.Gdk.DisplayManager */
     default_display: Display
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.DisplayManager */
     /**
      * Gets the default #GdkDisplay.
@@ -4784,6 +4955,7 @@ class DisplayManager {
     list_displays(): Display[]
     /**
      * Sets `display` as the default display.
+     * @param display a #GdkDisplay
      */
     set_default_display(display: Display): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4821,6 +4993,10 @@ class DisplayManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4831,6 +5007,12 @@ class DisplayManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4854,6 +5036,7 @@ class DisplayManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4873,11 +5056,14 @@ class DisplayManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4885,6 +5071,8 @@ class DisplayManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4902,6 +5090,7 @@ class DisplayManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4947,6 +5136,7 @@ class DisplayManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4990,15 +5180,20 @@ class DisplayManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5039,6 +5234,7 @@ class DisplayManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5073,6 +5269,7 @@ class DisplayManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gdk-2.0.Gdk.DisplayManager */
@@ -5094,12 +5291,14 @@ class DisplayManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of Gdk-2.0.Gdk.DisplayManager */
     /**
      * The ::display_opened signal is emitted when a display is opened.
+     * @param display the opened display
      */
     connect(sigName: "display-opened", callback: (($obj: DisplayManager, display: Display) => void)): number
     connect_after(sigName: "display-opened", callback: (($obj: DisplayManager, display: Display) => void)): number
@@ -5133,6 +5332,7 @@ class DisplayManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DisplayManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DisplayManager, pspec: GObject.ParamSpec) => void)): number
@@ -5157,7 +5357,7 @@ interface DragContext_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DragContext {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.DragContext */
     /**
      * Determines the bitmask of actions proposed by the source if
@@ -5231,6 +5431,10 @@ class DragContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5241,6 +5445,12 @@ class DragContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5264,6 +5474,7 @@ class DragContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5283,11 +5494,14 @@ class DragContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5295,6 +5509,8 @@ class DragContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5312,6 +5528,7 @@ class DragContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5357,6 +5574,7 @@ class DragContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5400,15 +5618,20 @@ class DragContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5449,6 +5672,7 @@ class DragContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5473,6 +5697,7 @@ class DragContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5492,6 +5717,7 @@ class DragContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5524,6 +5750,7 @@ class DragContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DragContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DragContext, pspec: GObject.ParamSpec) => void)): number
@@ -5543,11 +5770,12 @@ interface Drawable_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Drawable {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Drawable */
     /**
      * Equivalent to g_object_get_data(); the #GObject variant should be
      * used instead.
+     * @param key name the data was stored under
      */
     get_data(key: string): object | null
     /**
@@ -5574,11 +5802,15 @@ class Drawable {
      * graphics contexts you intend to use together should match. i.e.
      * when using a #GdkGC to draw to a drawable, or copying one drawable
      * to another, the colormaps should match.
+     * @param colormap a #GdkColormap
      */
     set_colormap(colormap: Colormap): void
     /**
      * This function is equivalent to g_object_set_data(),
      * the #GObject variant should be used instead.
+     * @param key name to store the data under
+     * @param data arbitrary data
+     * @param destroy_func function to free `data,` or %NULL
      */
     set_data(key: string, data?: object | null, destroy_func?: GLib.DestroyNotify | null): void
     /**
@@ -5620,6 +5852,10 @@ class Drawable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5630,6 +5866,12 @@ class Drawable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5653,6 +5895,7 @@ class Drawable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5672,11 +5915,14 @@ class Drawable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5684,6 +5930,8 @@ class Drawable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5701,6 +5949,7 @@ class Drawable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5746,6 +5995,7 @@ class Drawable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5789,15 +6039,20 @@ class Drawable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5838,6 +6093,7 @@ class Drawable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5862,6 +6118,7 @@ class Drawable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gdk-2.0.Gdk.Drawable */
@@ -5907,6 +6164,7 @@ class Drawable {
      * graphics contexts you intend to use together should match. i.e.
      * when using a #GdkGC to draw to a drawable, or copying one drawable
      * to another, the colormaps should match.
+     * @param cmap 
      */
     vfunc_set_colormap(cmap: Colormap): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5926,6 +6184,7 @@ class Drawable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5958,6 +6217,7 @@ class Drawable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Drawable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Drawable, pspec: GObject.ParamSpec) => void)): number
@@ -5975,11 +6235,12 @@ interface GC_ConstructProps extends GObject.Object_ConstructProps {
 }
 class GC {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.GC */
     /**
      * Copy the set of values from one graphics context
      * onto another graphics context.
+     * @param src_gc the source graphics context.
      */
     copy(src_gc: GC): void
     /**
@@ -5987,6 +6248,7 @@ class GC {
      * only the pixel values of the `values->`foreground and `values->`background
      * are filled, use gdk_colormap_query_color() to obtain the rgb values
      * if you need them.
+     * @param values the #GdkGCValues structure in which to store the results.
      */
     get_values(values: GCValues): void
     /**
@@ -5994,6 +6256,8 @@ class GC {
      * of the GC so that drawing at x - x_offset, y - y_offset with
      * the offset GC  has the same effect as drawing at x, y with the original
      * GC.
+     * @param x_offset amount by which to offset the GC in the X direction
+     * @param y_offset amount by which to offset the GC in the Y direction
      */
     offset(x_offset: number, y_offset: number): void
     /**
@@ -6001,36 +6265,43 @@ class GC {
      * Note that this function uses `color->`pixel, use
      * gdk_gc_set_rgb_bg_color() to specify the background
      * color as red, green, blue components.
+     * @param color the new background color.
      */
     set_background(color: Color): void
     /**
      * Sets the clip mask for a graphics context from a bitmap.
      * The clip mask is interpreted relative to the clip
      * origin. (See gdk_gc_set_clip_origin()).
+     * @param mask a bitmap.
      */
     set_clip_mask(mask: Bitmap): void
     /**
      * Sets the origin of the clip mask. The coordinates are
      * interpreted relative to the upper-left corner of
      * the destination drawable of the current operation.
+     * @param x the x-coordinate of the origin.
+     * @param y the y-coordinate of the origin.
      */
     set_clip_origin(x: number, y: number): void
     /**
      * Sets the clip mask for a graphics context from a
      * rectangle. The clip mask is interpreted relative to the clip
      * origin. (See gdk_gc_set_clip_origin()).
+     * @param rectangle the rectangle to clip to.
      */
     set_clip_rectangle(rectangle: Rectangle): void
     /**
      * Sets the clip mask for a graphics context from a region structure.
      * The clip mask is interpreted relative to the clip origin. (See
      * gdk_gc_set_clip_origin()).
+     * @param region the #GdkRegion.
      */
     set_clip_region(region: Region): void
     /**
      * Sets the colormap for the GC to the given colormap. The depth
      * of the colormap's visual must match the depth of the drawable
      * for which the GC was created.
+     * @param colormap a #GdkColormap
      */
     set_colormap(colormap: Colormap): void
     /**
@@ -6044,6 +6315,9 @@ class GC {
      * The `dash_offset` defines the phase of the pattern,
      * specifying how many pixels into the dash-list the pattern
      * should actually begin.
+     * @param dash_offset the phase of the dash pattern.
+     * @param dash_list an array of dash lengths.
+     * @param n the number of elements in `dash_list`.
      */
     set_dashes(dash_offset: number, dash_list: number, n: number): void
     /**
@@ -6051,10 +6325,12 @@ class GC {
      * using this graphics context generate exposure events
      * for the corresponding regions of the destination
      * drawable. (See gdk_draw_drawable()).
+     * @param exposures if %TRUE, exposure events will be generated.
      */
     set_exposures(exposures: boolean): void
     /**
      * Set the fill mode for a graphics context.
+     * @param fill the new fill mode.
      */
     set_fill(fill: Fill): void
     /**
@@ -6062,6 +6338,7 @@ class GC {
      * all text-drawing functions in GDK take a `font`
      * argument; the value set here is used when that
      * argument is %NULL.)
+     * @param font the new font.
      */
     set_font(font: Font): void
     /**
@@ -6069,18 +6346,24 @@ class GC {
      * Note that this function uses `color->`pixel, use
      * gdk_gc_set_rgb_fg_color() to specify the foreground
      * color as red, green, blue components.
+     * @param color the new foreground color.
      */
     set_foreground(color: Color): void
     /**
      * Determines how the current pixel values and the
      * pixel values being drawn are combined to produce
      * the final pixel values.
+     * @param function_ the #GdkFunction to use
      */
     set_function(function_: Function): void
     /**
      * Sets various attributes of how lines are drawn. See
      * the corresponding members of #GdkGCValues for full
      * explanations of the arguments.
+     * @param line_width the width of lines.
+     * @param line_style the dash-style for lines.
+     * @param cap_style the manner in which the ends of lines are drawn.
+     * @param join_style the in which lines are joined together.
      */
     set_line_attributes(line_width: number, line_style: LineStyle, cap_style: CapStyle, join_style: JoinStyle): void
     /**
@@ -6091,6 +6374,7 @@ class GC {
      * number of colors), a colorcube will be allocated in the colormap.
      * 
      * Calling this function for a GC without a colormap is an error.
+     * @param color an unallocated #GdkColor.
      */
     set_rgb_bg_color(color: Color): void
     /**
@@ -6101,23 +6385,27 @@ class GC {
      * number of colors), a colorcube will be allocated in the colormap.
      * 
      * Calling this function for a GC without a colormap is an error.
+     * @param color an unallocated #GdkColor.
      */
     set_rgb_fg_color(color: Color): void
     /**
      * Set the stipple bitmap for a graphics context. The
      * stipple will only be used if the fill mode is
      * %GDK_STIPPLED or %GDK_OPAQUE_STIPPLED.
+     * @param stipple the new stipple bitmap.
      */
     set_stipple(stipple: Pixmap): void
     /**
      * Sets how drawing with this GC on a window will affect child
      * windows of that window.
+     * @param mode the subwindow mode.
      */
     set_subwindow(mode: SubwindowMode): void
     /**
      * Set a tile pixmap for a graphics context.
      * This will only be used if the fill mode
      * is %GDK_TILED.
+     * @param tile the new tile pixmap.
      */
     set_tile(tile: Pixmap): void
     /**
@@ -6125,6 +6413,8 @@ class GC {
      * the GC. The tile or stipple will be aligned such
      * that the upper left corner of the tile or stipple
      * will coincide with this point.
+     * @param x the x-coordinate of the origin.
+     * @param y the y-coordinate of the origin.
      */
     set_ts_origin(x: number, y: number): void
     /**
@@ -6133,6 +6423,8 @@ class GC {
      * set as the new value for `gc`. If you're only setting a few values
      * on `gc,` calling individual "setter" functions is likely more
      * convenient.
+     * @param values struct containing the new values
+     * @param values_mask mask indicating which struct fields are to be used
      */
     set_values(values: GCValues, values_mask: GCValuesMask): void
     /**
@@ -6174,6 +6466,10 @@ class GC {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6184,6 +6480,12 @@ class GC {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6207,6 +6509,7 @@ class GC {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6226,11 +6529,14 @@ class GC {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6238,6 +6544,8 @@ class GC {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6255,6 +6563,7 @@ class GC {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6300,6 +6609,7 @@ class GC {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6343,15 +6653,20 @@ class GC {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6392,6 +6707,7 @@ class GC {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6416,6 +6732,7 @@ class GC {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gdk-2.0.Gdk.GC */
@@ -6424,6 +6741,7 @@ class GC {
      * only the pixel values of the `values->`foreground and `values->`background
      * are filled, use gdk_colormap_query_color() to obtain the rgb values
      * if you need them.
+     * @param values the #GdkGCValues structure in which to store the results.
      */
     vfunc_get_values(values: GCValues): void
     /**
@@ -6437,6 +6755,9 @@ class GC {
      * The `dash_offset` defines the phase of the pattern,
      * specifying how many pixels into the dash-list the pattern
      * should actually begin.
+     * @param dash_offset the phase of the dash pattern.
+     * @param dash_list an array of dash lengths.
+     * @param n the number of elements in `dash_list`.
      */
     vfunc_set_dashes(dash_offset: number, dash_list: number, n: number): void
     /**
@@ -6445,6 +6766,8 @@ class GC {
      * set as the new value for `gc`. If you're only setting a few values
      * on `gc,` calling individual "setter" functions is likely more
      * convenient.
+     * @param values struct containing the new values
+     * @param mask 
      */
     vfunc_set_values(values: GCValues, mask: GCValuesMask): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6464,6 +6787,7 @@ class GC {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6496,6 +6820,7 @@ class GC {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GC, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GC, pspec: GObject.ParamSpec) => void)): number
@@ -6516,7 +6841,7 @@ interface Image_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Image {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Image */
     /**
      * Determines the number of bits per pixel of the image.
@@ -6562,6 +6887,7 @@ class Image {
      * correct colormap if you get the image from a drawable. If you
      * create the image from scratch, use the colormap of the drawable you
      * intend to render the image to.
+     * @param colormap a #GdkColormap
      */
     set_colormap(colormap: Colormap): void
     /**
@@ -6603,6 +6929,10 @@ class Image {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6613,6 +6943,12 @@ class Image {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6636,6 +6972,7 @@ class Image {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6655,11 +6992,14 @@ class Image {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6667,6 +7007,8 @@ class Image {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6684,6 +7026,7 @@ class Image {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6729,6 +7072,7 @@ class Image {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6772,15 +7116,20 @@ class Image {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6821,6 +7170,7 @@ class Image {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6845,6 +7195,7 @@ class Image {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6864,6 +7215,7 @@ class Image {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6896,6 +7248,7 @@ class Image {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
@@ -6915,7 +7268,7 @@ interface Keymap_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Keymap {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Keymap */
     /**
      * Adds virtual modifiers (i.e. Super, Hyper and Meta) which correspond
@@ -6929,6 +7282,7 @@ class Keymap {
      * 
      * This function is useful when matching key events against
      * accelerators.
+     * @param state pointer to the modifier mask to change
      */
     add_virtual_modifiers(state: ModifierType): void
     /**
@@ -6952,6 +7306,8 @@ class Keymap {
      * 
      * Note that passing %NULL for `keymap` is deprecated and will stop
      * to work in GTK+ 3.0. Use gdk_keymap_get_for_display() instead.
+     * @param hardware_keycode a keycode
+     * @param n_entries length of `keys` and `keyvals`
      */
     get_entries_for_keycode(hardware_keycode: number, n_entries: number): [ /* returnType */ boolean, /* keys */ KeymapKey, /* keyvals */ number ]
     /**
@@ -6969,6 +7325,7 @@ class Keymap {
      * 
      * Note that passing %NULL for `keymap` is deprecated and will stop
      * to work in GTK+ 3.0. Use gdk_keymap_get_for_display() instead.
+     * @param keyval a keyval, such as %GDK_a, %GDK_Up, %GDK_Return, etc.
      */
     get_entries_for_keyval(keyval: number): [ /* returnType */ boolean, /* keys */ KeymapKey, /* n_keys */ number ]
     /**
@@ -6988,6 +7345,7 @@ class Keymap {
      * 
      * Note that passing %NULL for `keymap` is deprecated and will stop
      * to work in GTK+ 3.0. Use gdk_keymap_get_for_display() instead.
+     * @param key a #GdkKeymapKey with keycode, group, and level initialized
      */
     lookup_key(key: KeymapKey): number
     /**
@@ -6997,6 +7355,7 @@ class Keymap {
      * 
      * This function is useful when matching key events against
      * accelerators.
+     * @param state pointer to the modifier state to map
      */
     map_virtual_modifiers(state: ModifierType): boolean
     /**
@@ -7055,6 +7414,9 @@ class Keymap {
      * 
      * Note that passing %NULL for `keymap` is deprecated and will stop
      * to work in GTK+ 3.0. Use gdk_keymap_get_for_display() instead.
+     * @param hardware_keycode a keycode
+     * @param state a modifier state
+     * @param group active keyboard group
      */
     translate_keyboard_state(hardware_keycode: number, state: ModifierType, group: number): [ /* returnType */ boolean, /* keyval */ number | null, /* effective_group */ number | null, /* level */ number | null, /* consumed_modifiers */ ModifierType | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -7092,6 +7454,10 @@ class Keymap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7102,6 +7468,12 @@ class Keymap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7125,6 +7497,7 @@ class Keymap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7144,11 +7517,14 @@ class Keymap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7156,6 +7532,8 @@ class Keymap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7173,6 +7551,7 @@ class Keymap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7218,6 +7597,7 @@ class Keymap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7261,15 +7641,20 @@ class Keymap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7310,6 +7695,7 @@ class Keymap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7344,6 +7730,7 @@ class Keymap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gdk-2.0.Gdk.Keymap */
@@ -7367,6 +7754,7 @@ class Keymap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7422,6 +7810,7 @@ class Keymap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Keymap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Keymap, pspec: GObject.ParamSpec) => void)): number
@@ -7440,18 +7829,21 @@ interface PangoRenderer_ConstructProps extends Pango.Renderer_ConstructProps {
     screen?: Screen
 }
 class PangoRenderer {
+    /* Properties of Gdk-2.0.Gdk.PangoRenderer */
+    readonly screen: Screen
     /* Fields of Pango-1.0.Pango.Renderer */
     /**
      * the current transformation matrix for
      *   the Renderer; may be %NULL, which should be treated the
      *   same as the identity matrix.
      */
-    readonly matrix: Pango.Matrix
+    matrix: Pango.Matrix
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.PangoRenderer */
     /**
      * Sets the drawable the renderer draws to.
+     * @param drawable the new target drawable, or %NULL
      */
     set_drawable(drawable?: Drawable | null): void
     /**
@@ -7460,12 +7852,15 @@ class PangoRenderer {
      * %NULL for the `gc` parameter, since GDK may make internal copies
      * of the GC which won't be updated to follow changes to the
      * original GC.
+     * @param gc the new GC to use for drawing, or %NULL
      */
     set_gc(gc?: GC | null): void
     /**
      * Sets the color for a particular render part (foreground,
      * background, underline, etc.), overriding any attributes on the layouts
      * renderered with this renderer.
+     * @param part the part to render to set the color of
+     * @param color the color to use, or %NULL to unset a previously         set override color.
      */
     set_override_color(part: Pango.RenderPart, color?: Color | null): void
     /**
@@ -7475,6 +7870,8 @@ class PangoRenderer {
      * only useful when you call low level functions like pango_renderer_draw_glyphs()
      * directly, or in the 'prepare_run' virtual function of a subclass of
      * #GdkPangoRenderer.
+     * @param part the part to render with the stipple
+     * @param stipple the new stipple value.
      */
     set_stipple(part: Pango.RenderPart, stipple: Bitmap): void
     /* Methods of Pango-1.0.Pango.Renderer */
@@ -7506,10 +7903,18 @@ class PangoRenderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param x X coordinate of underline, in Pango units in user coordinate system
+     * @param y Y coordinate of underline, in Pango units in user coordinate system
+     * @param width width of underline, in Pango units in user coordinate system
+     * @param height height of underline, in Pango units in user coordinate system
      */
     draw_error_underline(x: number, y: number, width: number, height: number): void
     /**
      * Draws a single glyph with coordinates in device space.
+     * @param font a `PangoFont`
+     * @param glyph the glyph index of a single glyph
+     * @param x X coordinate of left edge of baseline of glyph
+     * @param y Y coordinate of left edge of baseline of glyph
      */
     draw_glyph(font: Pango.Font, glyph: Pango.Glyph, x: number, y: number): void
     /**
@@ -7531,10 +7936,18 @@ class PangoRenderer {
      * 
      * The default implementation of this method simply falls back to
      * [method`Pango`.Renderer.draw_glyphs].
+     * @param text the UTF-8 text that `glyph_item` refers to
+     * @param glyph_item a `PangoGlyphItem`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units
      */
     draw_glyph_item(text: string | null, glyph_item: Pango.GlyphItem, x: number, y: number): void
     /**
      * Draws the glyphs in `glyphs` with the specified `PangoRenderer`.
+     * @param font a `PangoFont`
+     * @param glyphs a `PangoGlyphString`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     draw_glyphs(font: Pango.Font, glyphs: Pango.GlyphString, x: number, y: number): void
     /**
@@ -7542,6 +7955,9 @@ class PangoRenderer {
      * 
      * This is equivalent to drawing the lines of the layout, at their
      * respective positions relative to `x,` `y`.
+     * @param layout a `PangoLayout`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     draw_layout(layout: Pango.Layout, x: number, y: number): void
     /**
@@ -7550,6 +7966,9 @@ class PangoRenderer {
      * This draws the glyph items that make up the line, as well as
      * shapes, backgrounds and lines that are specified by the attributes
      * of those items.
+     * @param line a `PangoLayoutLine`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     draw_layout_line(line: Pango.LayoutLine, x: number, y: number): void
     /**
@@ -7558,19 +7977,33 @@ class PangoRenderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param part type of object this rectangle is part of
+     * @param x X position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param y Y position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param width width of rectangle in Pango units
+     * @param height height of rectangle in Pango units
      */
     draw_rectangle(part: Pango.RenderPart, x: number, y: number, width: number, height: number): void
     /**
      * Draws a trapezoid with the parallel sides aligned with the X axis
      * using the given `PangoRenderer`; coordinates are in device space.
+     * @param part type of object this trapezoid is part of
+     * @param y1_ Y coordinate of top of trapezoid
+     * @param x11 X coordinate of left end of top of trapezoid
+     * @param x21 X coordinate of right end of top of trapezoid
+     * @param y2 Y coordinate of bottom of trapezoid
+     * @param x12 X coordinate of left end of bottom of trapezoid
+     * @param x22 X coordinate of right end of bottom of trapezoid
      */
     draw_trapezoid(part: Pango.RenderPart, y1_: number, x11: number, x21: number, y2: number, x12: number, x22: number): void
     /**
      * Gets the current alpha for the specified part.
+     * @param part the part to get the alpha for
      */
     get_alpha(part: Pango.RenderPart): number
     /**
      * Gets the current rendering color for the specified part.
+     * @param part the part to get the color for
      */
     get_color(part: Pango.RenderPart): Pango.Color | null
     /**
@@ -7616,6 +8049,7 @@ class PangoRenderer {
      * When the stipple changes or underlines with different stipples
      * might be joined together. Pango automatically calls this for
      * changes to colors. (See [method`Pango`.Renderer.set_color])
+     * @param part the part for which rendering has changed.
      */
     part_changed(part: Pango.RenderPart): void
     /**
@@ -7623,16 +8057,21 @@ class PangoRenderer {
      * 
      * Note that the alpha may only be used if a color is
      * specified for `part` as well.
+     * @param part the part to set the alpha for
+     * @param alpha an alpha value between 1 and 65536, or 0 to unset the alpha
      */
     set_alpha(part: Pango.RenderPart, alpha: number): void
     /**
      * Sets the color for part of the rendering.
      * 
      * Also see [method`Pango`.Renderer.set_alpha].
+     * @param part the part to change the color of
+     * @param color the new color or %NULL to unset the current color
      */
     set_color(part: Pango.RenderPart, color?: Pango.Color | null): void
     /**
      * Sets the transformation matrix that will be applied when rendering.
+     * @param matrix a `PangoMatrix`, or %NULL to unset any existing matrix  (No matrix set is the same as setting the identity matrix.)
      */
     set_matrix(matrix?: Pango.Matrix | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7670,6 +8109,10 @@ class PangoRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7680,6 +8123,12 @@ class PangoRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7703,6 +8152,7 @@ class PangoRenderer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7722,11 +8172,14 @@ class PangoRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7734,6 +8187,8 @@ class PangoRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7751,6 +8206,7 @@ class PangoRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7796,6 +8252,7 @@ class PangoRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7839,15 +8296,20 @@ class PangoRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7888,6 +8350,7 @@ class PangoRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7922,6 +8385,7 @@ class PangoRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Pango-1.0.Pango.Renderer */
@@ -7936,10 +8400,18 @@ class PangoRenderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param x X coordinate of underline, in Pango units in user coordinate system
+     * @param y Y coordinate of underline, in Pango units in user coordinate system
+     * @param width width of underline, in Pango units in user coordinate system
+     * @param height height of underline, in Pango units in user coordinate system
      */
     vfunc_draw_error_underline(x: number, y: number, width: number, height: number): void
     /**
      * Draws a single glyph with coordinates in device space.
+     * @param font a `PangoFont`
+     * @param glyph the glyph index of a single glyph
+     * @param x X coordinate of left edge of baseline of glyph
+     * @param y Y coordinate of left edge of baseline of glyph
      */
     vfunc_draw_glyph(font: Pango.Font, glyph: Pango.Glyph, x: number, y: number): void
     /**
@@ -7961,10 +8433,18 @@ class PangoRenderer {
      * 
      * The default implementation of this method simply falls back to
      * [method`Pango`.Renderer.draw_glyphs].
+     * @param text the UTF-8 text that `glyph_item` refers to
+     * @param glyph_item a `PangoGlyphItem`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units
      */
     vfunc_draw_glyph_item(text: string | null, glyph_item: Pango.GlyphItem, x: number, y: number): void
     /**
      * Draws the glyphs in `glyphs` with the specified `PangoRenderer`.
+     * @param font a `PangoFont`
+     * @param glyphs a `PangoGlyphString`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     vfunc_draw_glyphs(font: Pango.Font, glyphs: Pango.GlyphString, x: number, y: number): void
     /**
@@ -7973,12 +8453,24 @@ class PangoRenderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param part type of object this rectangle is part of
+     * @param x X position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param y Y position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param width width of rectangle in Pango units
+     * @param height height of rectangle in Pango units
      */
     vfunc_draw_rectangle(part: Pango.RenderPart, x: number, y: number, width: number, height: number): void
     vfunc_draw_shape(attr: Pango.AttrShape, x: number, y: number): void
     /**
      * Draws a trapezoid with the parallel sides aligned with the X axis
      * using the given `PangoRenderer`; coordinates are in device space.
+     * @param part type of object this trapezoid is part of
+     * @param y1_ Y coordinate of top of trapezoid
+     * @param x11 X coordinate of left end of top of trapezoid
+     * @param x21 X coordinate of right end of top of trapezoid
+     * @param y2 Y coordinate of bottom of trapezoid
+     * @param x12 X coordinate of left end of bottom of trapezoid
+     * @param x22 X coordinate of right end of bottom of trapezoid
      */
     vfunc_draw_trapezoid(part: Pango.RenderPart, y1_: number, x11: number, x21: number, y2: number, x12: number, x22: number): void
     vfunc_end(): void
@@ -7998,6 +8490,7 @@ class PangoRenderer {
      * When the stipple changes or underlines with different stipples
      * might be joined together. Pango automatically calls this for
      * changes to colors. (See [method`Pango`.Renderer.set_color])
+     * @param part the part for which rendering has changed.
      */
     vfunc_part_changed(part: Pango.RenderPart): void
     vfunc_prepare_run(run: Pango.LayoutRun): void
@@ -8018,6 +8511,7 @@ class PangoRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8050,10 +8544,13 @@ class PangoRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PangoRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PangoRenderer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::screen", callback: (($obj: PangoRenderer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::screen", callback: (($obj: PangoRenderer, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8069,9 +8566,9 @@ interface Pixmap_ConstructProps extends Drawable_ConstructProps {
 }
 class Pixmap {
     /* Fields of Gdk-2.0.Gdk.Drawable */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Pixmap */
     /**
      * This function is purely to make it possible to query the size of pixmaps
@@ -8083,6 +8580,7 @@ class Pixmap {
     /**
      * Equivalent to g_object_get_data(); the #GObject variant should be
      * used instead.
+     * @param key name the data was stored under
      */
     get_data(key: string): object | null
     /**
@@ -8109,11 +8607,15 @@ class Pixmap {
      * graphics contexts you intend to use together should match. i.e.
      * when using a #GdkGC to draw to a drawable, or copying one drawable
      * to another, the colormaps should match.
+     * @param colormap a #GdkColormap
      */
     set_colormap(colormap: Colormap): void
     /**
      * This function is equivalent to g_object_set_data(),
      * the #GObject variant should be used instead.
+     * @param key name to store the data under
+     * @param data arbitrary data
+     * @param destroy_func function to free `data,` or %NULL
      */
     set_data(key: string, data?: object | null, destroy_func?: GLib.DestroyNotify | null): void
     /**
@@ -8155,6 +8657,10 @@ class Pixmap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8165,6 +8671,12 @@ class Pixmap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8188,6 +8700,7 @@ class Pixmap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8207,11 +8720,14 @@ class Pixmap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8219,6 +8735,8 @@ class Pixmap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8236,6 +8754,7 @@ class Pixmap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8281,6 +8800,7 @@ class Pixmap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8324,15 +8844,20 @@ class Pixmap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8373,6 +8898,7 @@ class Pixmap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8397,6 +8923,7 @@ class Pixmap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gdk-2.0.Gdk.Drawable */
@@ -8442,6 +8969,7 @@ class Pixmap {
      * graphics contexts you intend to use together should match. i.e.
      * when using a #GdkGC to draw to a drawable, or copying one drawable
      * to another, the colormaps should match.
+     * @param cmap 
      */
     vfunc_set_colormap(cmap: Colormap): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8461,6 +8989,7 @@ class Pixmap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8493,6 +9022,7 @@ class Pixmap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Pixmap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Pixmap, pspec: GObject.ParamSpec) => void)): number
@@ -8511,19 +9041,35 @@ class Pixmap {
     static new(drawable: Drawable, width: number, height: number, depth: number): Pixmap
     /**
      * Create a pixmap from a XPM file using a particular colormap.
+     * @param drawable a #GdkDrawable, used to determine default values for the new pixmap. Can be %NULL if `colormap` is given.
+     * @param colormap the #GdkColormap that the new pixmap will be use. If omitted, the colormap for `window` will be used.
+     * @param mask a pointer to a place to store a bitmap representing the transparency mask of the XPM file. Can be %NULL, in which case transparency will be ignored.
+     * @param transparent_color the color to be used for the pixels that are transparent in the input file. Can be %NULL, in which case a default color will be used.
+     * @param filename the filename of a file containing XPM data.
      */
     static colormap_create_from_xpm(drawable: Drawable, colormap: Colormap, mask: Bitmap, transparent_color: Color, filename: string): Pixmap
     /**
      * Create a pixmap from data in XPM format using a particular
      * colormap.
+     * @param drawable a #GdkDrawable, used to determine default values     for the new pixmap. Can be %NULL if `colormap` is given.
+     * @param colormap the #GdkColormap that the new pixmap will be use.     If omitted, the colormap for `window` will be used.
+     * @param mask a pointer to a place to store a bitmap representing     the transparency mask of the XPM file. Can be %NULL,     in which case transparency will be ignored.
+     * @param transparent_color the color to be used for the pixels     that are transparent in the input file. Can be %NULL,     in which case a default color will be used.
+     * @param data Pointer to a string containing the XPM data.
      */
     static colormap_create_from_xpm_d(drawable: Drawable, colormap: Colormap, mask: Bitmap, transparent_color: Color, data: string): Pixmap
     /**
      * Create a pixmap from a XPM file.
+     * @param drawable a #GdkDrawable, used to determine default values for the new pixmap.
+     * @param transparent_color the color to be used for the pixels that are transparent in the input file. Can be %NULL, in which case a default color will be used.
+     * @param filename the filename of a file containing XPM data.
      */
     static create_from_xpm(drawable: Drawable, transparent_color: Color, filename: string): [ /* returnType */ Pixmap, /* mask */ Bitmap ]
     /**
      * Create a pixmap from data in XPM format.
+     * @param drawable a #GdkDrawable, used to determine default values     for the new pixmap.
+     * @param transparent_color This color will be used for the pixels     that are transparent in the input file. Can be %NULL     in which case a default color will be used.
+     * @param data Pointer to a string containing the XPM data.
      */
     static create_from_xpm_d(drawable: Drawable, transparent_color: Color, data: string): [ /* returnType */ Pixmap, /* mask */ Bitmap ]
     static $gtype: GObject.Type
@@ -8538,7 +9084,7 @@ class Screen {
     font_options: object
     resolution: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Screen */
     broadcast_client_message(event: Event): void
     /**
@@ -8560,11 +9106,14 @@ class Screen {
     get_height_mm(): number
     /**
      * Returns the monitor number in which the point (`x,``y)` is located.
+     * @param x the x coordinate in the virtual screen.
+     * @param y the y coordinate in the virtual screen.
      */
     get_monitor_at_point(x: number, y: number): number
     /**
      * Returns the number of the monitor in which the largest area of the
      * bounding rectangle of `window` resides.
+     * @param window a #GdkWindow
      */
     get_monitor_at_window(window: Window): number
     /**
@@ -8573,20 +9122,25 @@ class Screen {
      * 
      * Note that the size of the entire screen area can be retrieved via
      * gdk_screen_get_width() and gdk_screen_get_height().
+     * @param monitor_num the monitor number, between 0 and gdk_screen_get_n_monitors (screen)
+     * @param dest a #GdkRectangle to be filled with the monitor geometry
      */
     get_monitor_geometry(monitor_num: number, dest: Rectangle): void
     /**
      * Gets the height in millimeters of the specified monitor.
+     * @param monitor_num number of the monitor, between 0 and gdk_screen_get_n_monitors (screen)
      */
     get_monitor_height_mm(monitor_num: number): number
     /**
      * Returns the output name of the specified monitor.
      * Usually something like VGA, DVI, or TV, not the actual
      * product name of the display device.
+     * @param monitor_num number of the monitor, between 0 and gdk_screen_get_n_monitors (screen)
      */
     get_monitor_plug_name(monitor_num: number): string
     /**
      * Gets the width in millimeters of the specified monitor, if available.
+     * @param monitor_num number of the monitor, between 0 and gdk_screen_get_n_monitors (screen)
      */
     get_monitor_width_mm(monitor_num: number): number
     /**
@@ -8729,6 +9283,7 @@ class Screen {
     make_display_name(): string
     /**
      * Sets the default `colormap` for `screen`.
+     * @param colormap a #GdkColormap
      */
     set_default_colormap(colormap: Colormap): void
     /**
@@ -8737,6 +9292,7 @@ class Screen {
      * with gdk_pango_context_get_for_screen(). Changing the
      * default set of font options does not affect contexts that
      * have already been created.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
@@ -8744,6 +9300,7 @@ class Screen {
      * scale factor between points specified in a #PangoFontDescription
      * and cairo units. The default value is 96, meaning that a 10 point
      * font will be 13 units high. (10 * 96. / 72. = 13.3).
+     * @param dpi the resolution in "dots per inch". (Physical inches aren't actually   involved; the terminology is conventional.)
      */
     set_resolution(dpi: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8781,6 +9338,10 @@ class Screen {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8791,6 +9352,12 @@ class Screen {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8814,6 +9381,7 @@ class Screen {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8833,11 +9401,14 @@ class Screen {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8845,6 +9416,8 @@ class Screen {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8862,6 +9435,7 @@ class Screen {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8907,6 +9481,7 @@ class Screen {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8950,15 +9525,20 @@ class Screen {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8999,6 +9579,7 @@ class Screen {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9033,6 +9614,7 @@ class Screen {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gdk-2.0.Gdk.Screen */
@@ -9056,6 +9638,7 @@ class Screen {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9113,6 +9696,7 @@ class Screen {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Screen, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Screen, pspec: GObject.ParamSpec) => void)): number
@@ -9158,7 +9742,7 @@ interface Visual_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Visual {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Visual */
     /**
      * Returns the number of significant bits per red, green and blue value.
@@ -9243,6 +9827,10 @@ class Visual {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9253,6 +9841,12 @@ class Visual {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9276,6 +9870,7 @@ class Visual {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9295,11 +9890,14 @@ class Visual {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9307,6 +9905,8 @@ class Visual {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9324,6 +9924,7 @@ class Visual {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9369,6 +9970,7 @@ class Visual {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9412,15 +10014,20 @@ class Visual {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9461,6 +10068,7 @@ class Visual {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9495,6 +10103,7 @@ class Visual {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9514,6 +10123,7 @@ class Visual {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9546,6 +10156,7 @@ class Visual {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Visual, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Visual, pspec: GObject.ParamSpec) => void)): number
@@ -9575,6 +10186,8 @@ class Visual {
     static get_best_type(): VisualType
     /**
      * Combines gdk_visual_get_best_with_depth() and gdk_visual_get_best_with_type().
+     * @param depth a bit depth
+     * @param visual_type a visual type
      */
     static get_best_with_both(depth: number, visual_type: VisualType): Visual
     /**
@@ -9582,6 +10195,7 @@ class Visual {
      * Color visuals and visuals with mutable colormaps are preferred
      * over grayscale or fixed-colormap visuals. The return value should not
      * be freed. %NULL may be returned if no visual supports `depth`.
+     * @param depth a bit depth
      */
     static get_best_with_depth(depth: number): Visual
     /**
@@ -9589,6 +10203,7 @@ class Visual {
      * Visuals with higher color depths are considered better. The return value
      * should not be freed. %NULL may be returned if no visual has type
      * `visual_type`.
+     * @param visual_type a visual type
      */
     static get_best_with_type(visual_type: VisualType): Visual
     /**
@@ -9615,9 +10230,9 @@ class Window {
      */
     cursor: Cursor
     /* Fields of Gdk-2.0.Gdk.Drawable */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gdk-2.0.Gdk.Window */
     /**
      * Emits a short beep associated to `window` in the appropriate
@@ -9632,12 +10247,17 @@ class Window {
      * the <ulink url="http://www.freedesktop.org/Standards/wm-spec">Extended
      * Window Manager Hints</ulink>, but has a fallback implementation for
      * other window managers.
+     * @param button the button being used to drag
+     * @param root_x root window X coordinate of mouse click that began the drag
+     * @param root_y root window Y coordinate of mouse click that began the drag
+     * @param timestamp timestamp of mouse click that began the drag
      */
     begin_move_drag(button: number, root_x: number, root_y: number, timestamp: number): void
     /**
      * A convenience wrapper around gdk_window_begin_paint_region() which
      * creates a rectangular region for you. See
      * gdk_window_begin_paint_region() for details.
+     * @param rectangle rectangle you intend to draw to
      */
     begin_paint_rect(rectangle: Rectangle): void
     /**
@@ -9679,6 +10299,7 @@ class Window {
      * the topmost backing store in the stack. One matching call to
      * gdk_window_end_paint() is required for each call to
      * gdk_window_begin_paint_region().
+     * @param region region you intend to draw to
      */
     begin_paint_region(region: Region): void
     /**
@@ -9687,6 +10308,11 @@ class Window {
      * example; in fact #GtkStatusbar uses it. The function works best
      * with window managers that support the <ulink url="http://www.freedesktop.org/Standards/wm-spec">Extended Window Manager Hints</ulink>, but has a
      * fallback implementation for other window managers.
+     * @param edge the edge or corner from which the drag is started
+     * @param button the button being used to drag
+     * @param root_x root window X coordinate of mouse click that began the drag
+     * @param root_y root window Y coordinate of mouse click that began the drag
+     * @param timestamp timestamp of mouse click that began the drag (use gdk_event_get_time())
      */
     begin_resize_drag(edge: WindowEdge, button: number, root_x: number, root_y: number, timestamp: number): void
     /**
@@ -9695,6 +10321,10 @@ class Window {
     clear(): void
     /**
      * Clears an area of `window` to the background color or background pixmap.
+     * @param x x coordinate of rectangle to clear
+     * @param y y coordinate of rectangle to clear
+     * @param width width of rectangle to clear
+     * @param height height of rectangle to clear
      */
     clear_area(x: number, y: number, width: number, height: number): void
     /**
@@ -9703,6 +10333,10 @@ class Window {
      * 
      * This function has a stupid name because it dates back to the mists
      * time, pre-GDK-1.0.
+     * @param x x coordinate of rectangle to clear
+     * @param y y coordinate of rectangle to clear
+     * @param width width of rectangle to clear
+     * @param height height of rectangle to clear
      */
     clear_area_e(x: number, y: number, width: number, height: number): void
     /**
@@ -9733,6 +10367,8 @@ class Window {
      * walks down a window hierarchy.
      * 
      * See also: gdk_window_coords_to_parent()
+     * @param parent_x X coordinate in parent's coordinate system
+     * @param parent_y Y coordinate in parent's coordinate system
      */
     coords_from_parent(parent_x: number, parent_y: number): [ /* x */ number | null, /* y */ number | null ]
     /**
@@ -9752,6 +10388,8 @@ class Window {
      * walks up a window hierarchy.
      * 
      * See also: gdk_window_coords_from_parent()
+     * @param x X coordinate in child's coordinate system
+     * @param y Y coordinate in child's coordinate system
      */
     coords_to_parent(x: number, y: number): [ /* parent_x */ number | null, /* parent_y */ number | null ]
     /**
@@ -9764,6 +10402,9 @@ class Window {
      * 
      * Initially the surface contents are all 0 (transparent if contents
      * have transparency, black otherwise.)
+     * @param content the content for the new surface
+     * @param width width of the new surface
+     * @param height height of the new surface
      */
     create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface
     /**
@@ -9837,6 +10478,7 @@ class Window {
     /**
      * Sets keyboard focus to `window`. In most cases, gtk_window_present()
      * should be used on a #GtkWindow, rather than calling this function.
+     * @param timestamp timestamp of the event triggering the window focus
      */
     focus(timestamp: number): void
     /**
@@ -9918,6 +10560,7 @@ class Window {
     get_cursor(): Cursor
     /**
      * Returns the decorations set on the GdkWindow with #gdk_window_set_decorations
+     * @param decorations The window decorations will be written here
      */
     get_decorations(decorations: WMDecoration): boolean
     /**
@@ -9927,6 +10570,8 @@ class Window {
      * root window (i.e. you don't assume that the desktop begins
      * at root window coordinate 0,0) this function is not necessary.
      * It's deprecated for that reason.
+     * @param x return location for X coordinate
+     * @param y return location for Y coordinate
      */
     get_deskrelative_origin(x: number, y: number): boolean
     /**
@@ -9943,6 +10588,7 @@ class Window {
      * titlebar/borders if any. The frame position is given in root window
      * coordinates. To get the position of the window itself (rather than
      * the frame) in root window coordinates, use gdk_window_get_origin().
+     * @param rect rectangle to fill with bounding box of the window frame
      */
     get_frame_extents(rect: Rectangle): void
     /**
@@ -9968,6 +10614,11 @@ class Window {
      * whereas gdk_window_get_geometry() is restricted to the 16-bit
      * coordinates of X11.
      * </note>
+     * @param x return location for X coordinate of window (relative to its parent)
+     * @param y return location for Y coordinate of window (relative to its parent)
+     * @param width return location for width of window
+     * @param height return location for height of window
+     * @param depth return location for bit depth of window
      */
     get_geometry(x: number, y: number, width: number, height: number, depth: number): void
     /**
@@ -10001,6 +10652,8 @@ class Window {
      * (Compare with gdk_window_get_position() and
      * gdk_window_get_geometry() which return the position of a window
      * relative to its parent window.)
+     * @param x return location for X coordinate
+     * @param y return location for Y coordinate
      */
     get_origin(x: number, y: number): number
     /**
@@ -10024,11 +10677,15 @@ class Window {
      * window coordinates. This is similar to
      * gdk_window_get_origin() but allows you go pass
      * in any position in the window, not just the origin.
+     * @param x X coordinate in window
+     * @param y Y coordinate in window
      */
     get_root_coords(x: number, y: number): [ /* root_x */ number, /* root_y */ number ]
     /**
      * Obtains the top-left corner of the window manager frame in root
      * window coordinates.
+     * @param x return location for X position of window frame
+     * @param y return location for Y position of window frame
      */
     get_root_origin(x: number, y: number): void
     /**
@@ -10094,6 +10751,9 @@ class Window {
      * 
      * On the Win32 platform, this functionality is not present and the
      * function does nothing.
+     * @param mask shape mask, or %NULL
+     * @param x X position of shape mask with respect to `window`
+     * @param y Y position of shape mask with respect to `window`
      */
     input_shape_combine_mask(mask: Bitmap | null, x: number, y: number): void
     /**
@@ -10113,6 +10773,9 @@ class Window {
      * 
      * On the Win32 platform, this functionality is not present and the
      * function does nothing.
+     * @param shape_region region of window to be non-transparent
+     * @param offset_x X position of `shape_region` in `window` coordinates
+     * @param offset_y Y position of `shape_region` in `window` coordinates
      */
     input_shape_combine_region(shape_region: Region, offset_x: number, offset_y: number): void
     /**
@@ -10132,12 +10795,17 @@ class Window {
      * each child window that intersects `region` will also be invalidated.
      * Only children for which `child_func` returns TRUE will have the area
      * invalidated.
+     * @param region a #GdkRegion
+     * @param child_func function to use to decide if to recurse to a child,              %NULL means never recurse.
+     * @param user_data data passed to `child_func`
      */
     invalidate_maybe_recurse(region: Region, child_func?: object | null, user_data?: object | null): void
     /**
      * A convenience wrapper around gdk_window_invalidate_region() which
      * invalidates a rectangular region. See
      * gdk_window_invalidate_region() for details.
+     * @param rect rectangle to invalidate or %NULL to invalidate the whole      window
+     * @param invalidate_children whether to also invalidate child windows
      */
     invalidate_rect(rect: Rectangle | null, invalidate_children: boolean): void
     /**
@@ -10158,6 +10826,8 @@ class Window {
      * If %FALSE, then the update area for child windows will remain
      * unaffected. See gdk_window_invalidate_maybe_recurse if you need
      * fine grained control over which children are invalidated.
+     * @param region a #GdkRegion
+     * @param invalidate_children %TRUE to also invalidate child windows
      */
     invalidate_region(region: Region, invalidate_children: boolean): void
     /**
@@ -10242,6 +10912,8 @@ class Window {
      * 
      * If you're also planning to resize the window, use gdk_window_move_resize()
      * to both move and resize simultaneously, for a nicer visual effect.
+     * @param x X coordinate relative to window's parent
+     * @param y Y coordinate relative to window's parent
      */
     move(x: number, y: number): void
     /**
@@ -10250,6 +10922,9 @@ class Window {
      * that not covered by the new position of `region` are invalidated.
      * 
      * Child windows are not moved.
+     * @param region The #GdkRegion to move
+     * @param dx Amount to move in the X direction
+     * @param dy Amount to move in the Y direction
      */
     move_region(region: Region, dx: number, dy: number): void
     /**
@@ -10257,6 +10932,10 @@ class Window {
      * except that both operations are performed at once, avoiding strange
      * visual effects. (i.e. the user may be able to see the window first
      * move, then resize, if you don't use gdk_window_move_resize().)
+     * @param x new X position relative to window's parent
+     * @param y new Y position relative to window's parent
+     * @param width new width
+     * @param height new height
      */
     move_resize(x: number, y: number, width: number, height: number): void
     /**
@@ -10264,6 +10943,8 @@ class Window {
      * `attributes`. See #GdkWindowAttr and #GdkWindowAttributesType for
      * more details.  Note: to use this on displays other than the default
      * display, `parent` must be specified.
+     * @param attributes attributes of the new window
+     * @param attributes_mask mask indicating which fields in `attributes` are valid
      */
     new(attributes: WindowAttr, attributes_mask: number): Window
     /**
@@ -10280,6 +10961,7 @@ class Window {
      * to be delivered immediately and synchronously (vs. the usual
      * case, where GDK delivers them in an idle handler). Occasionally
      * this is useful to produce nicer scrolling behavior, for example.
+     * @param update_children whether to also process updates for child windows
      */
     process_updates(update_children: boolean): void
     /**
@@ -10304,6 +10986,13 @@ class Window {
      * 
      * Redirection is active until gdk_window_remove_redirection()
      * is called.
+     * @param drawable a #GdkDrawable
+     * @param src_x x position in `window`
+     * @param src_y y position in `window`
+     * @param dest_x x position in `drawable`
+     * @param dest_y y position in `drawable`
+     * @param width width of redirection, or -1 to use the width of `window`
+     * @param height height of redirection or -1 to use the height of `window`
      */
     redirect_to_drawable(drawable: Drawable, src_x: number, src_y: number, dest_x: number, dest_y: number, width: number, height: number): void
     register_dnd(): void
@@ -10315,6 +11004,9 @@ class Window {
     /**
      * Reparents `window` into the given `new_parent`. The window being
      * reparented will be unmapped as a side effect.
+     * @param new_parent new parent to move `window` into
+     * @param x X location inside the new parent
+     * @param y Y location inside the new parent
      */
     reparent(new_parent: Window, x: number, y: number): void
     /**
@@ -10326,6 +11018,8 @@ class Window {
      * 
      * If you're also planning to move the window, use gdk_window_move_resize()
      * to both move and resize simultaneously, for a nicer visual effect.
+     * @param width new width of the window
+     * @param height new height of the window
      */
     resize(width: number, height: number): void
     /**
@@ -10339,6 +11033,8 @@ class Window {
      * If `window` is a toplevel, the window manager may choose to deny the
      * request to move the window in the Z-order, gdk_window_restack() only
      * requests the restack, does not guarantee it.
+     * @param sibling a #GdkWindow that is a sibling of `window,` or %NULL
+     * @param above a boolean
      */
     restack(sibling: Window | null, above: boolean): void
     /**
@@ -10353,6 +11049,8 @@ class Window {
      * beyond the edges of the window. In other cases, a multi-step process
      * is used to scroll the window which may produce temporary visual
      * artifacts and unnecessary invalidations.
+     * @param dx Amount to scroll in the X direction
+     * @param dy Amount to scroll in the Y direction
      */
     scroll(dx: number, dy: number): void
     /**
@@ -10361,6 +11059,7 @@ class Window {
      * 
      * On X, it is the responsibility of the window manager to interpret this
      * hint. ICCCM-compliant window manager usually respect it.
+     * @param accept_focus %TRUE if the window should receive input focus
      */
     set_accept_focus(accept_focus: boolean): void
     /**
@@ -10382,6 +11081,8 @@ class Window {
      * The windowing system will normally fill a window with its background
      * when the window is obscured then exposed, and when you call
      * gdk_window_clear().
+     * @param pixmap a #GdkPixmap, or %NULL
+     * @param parent_relative whether the tiling origin is at the origin of   `window'`s parent
      */
     set_back_pixmap(pixmap: Pixmap | null, parent_relative: boolean): void
     /**
@@ -10394,6 +11095,7 @@ class Window {
      * to allocate a color.
      * 
      * See also gdk_window_set_back_pixmap().
+     * @param color an allocated #GdkColor
      */
     set_background(color: Color): void
     /**
@@ -10434,6 +11136,7 @@ class Window {
      * You must call gdk_display_supports_composite() to check if
      * setting a window as composited is supported before
      * attempting to do so.
+     * @param composited %TRUE to set the window as composited
      */
     set_composited(composited: boolean): void
     /**
@@ -10442,6 +11145,7 @@ class Window {
      * invisible, use %GDK_BLANK_CURSOR. Passing %NULL for the `cursor` argument
      * to gdk_window_set_cursor() means that `window` will use the cursor of its
      * parent window. Most windows should use this default.
+     * @param cursor a cursor
      */
     set_cursor(cursor?: Cursor | null): void
     /**
@@ -10459,6 +11163,7 @@ class Window {
      * 
      * Most window managers honor a decorations hint of 0 to disable all decorations,
      * but very few honor all possible combinations of bits.
+     * @param decorations decoration hint mask
      */
     set_decorations(decorations: WMDecoration): void
     /**
@@ -10466,6 +11171,7 @@ class Window {
      * for that window. For example, an event mask including #GDK_BUTTON_PRESS_MASK
      * means the window should report button press events. The event mask
      * is the bitwise OR of values from the #GdkEventMask enumeration.
+     * @param event_mask event mask for `window`
      */
     set_events(event_mask: EventMask): void
     /**
@@ -10477,6 +11183,7 @@ class Window {
      * On X, it is the responsibility of the window manager to interpret
      * this hint. Window managers following the freedesktop.org window
      * manager extension specification should respect it.
+     * @param focus_on_map %TRUE if the window should receive input focus when mapped
      */
     set_focus_on_map(focus_on_map: boolean): void
     /**
@@ -10493,6 +11200,7 @@ class Window {
      * then the other bits indicate which functions to disable; if
      * it doesn't include #GDK_FUNC_ALL, it indicates which functions to
      * enable.
+     * @param functions bitmask of operations to allow on `window`
      */
     set_functions(functions: WMFunction): void
     /**
@@ -10517,6 +11225,8 @@ class Window {
      * constraints for programmatic resizes, you should generally
      * call gdk_window_constrain_size() yourself to determine
      * appropriate sizes.
+     * @param geometry geometry hints
+     * @param geom_mask bitmask indicating fields of `geometry` to pay attention to
      */
     set_geometry_hints(geometry: Geometry, geom_mask: WindowHints): void
     /**
@@ -10530,6 +11240,7 @@ class Window {
      * allow users to minimize/unminimize all windows belonging to an
      * application at once. You should only set a non-default group window
      * if your application pretends to be multiple applications.
+     * @param leader group leader window, or %NULL to restore the default group leader window
      */
     set_group(leader: Window): void
     /**
@@ -10539,6 +11250,13 @@ class Window {
      * depending on what you're trying to do.
      * 
      * If using GDK directly, use gdk_window_set_geometry_hints().
+     * @param x ignored field, does not matter
+     * @param y ignored field, does not matter
+     * @param min_width minimum width hint
+     * @param min_height minimum height hint
+     * @param max_width max width hint
+     * @param max_height max height hint
+     * @param flags logical OR of GDK_HINT_POS, GDK_HINT_MIN_SIZE, and/or GDK_HINT_MAX_SIZE
      */
     set_hints(x: number, y: number, min_width: number, min_height: number, max_width: number, max_height: number, flags: number): void
     /**
@@ -10547,6 +11265,9 @@ class Window {
      * and gtk_window_set_icon(). If those don't meet your needs, look at
      * gdk_window_set_icon_list(). Only if all those are too high-level do you
      * want to fall back to gdk_window_set_icon().
+     * @param icon_window a #GdkWindow to use for the icon, or %NULL to unset
+     * @param pixmap a #GdkPixmap to use as the icon, or %NULL to unset
+     * @param mask a 1-bit pixmap (#GdkBitmap) to use as mask for `pixmap,` or %NULL to have none
      */
     set_icon(icon_window: Window, pixmap: Pixmap, mask: Bitmap): void
     /**
@@ -10557,6 +11278,7 @@ class Window {
      * can scale the icon  but setting several size icons can give better
      * image quality since the window manager may only need to scale the
      * icon by a small amount or not at all.
+     * @param pixbufs      A list of pixbufs, of different sizes.
      */
     set_icon_list(pixbufs: GdkPixbuf.Pixbuf[]): void
     /**
@@ -10570,6 +11292,7 @@ class Window {
      * 
      * Using %NULL for `name` unsets the icon title; further calls to
      * gdk_window_set_title() will again update the icon title as well.
+     * @param name name of window while iconified (minimized)
      */
     set_icon_name(name: string): void
     /**
@@ -10582,6 +11305,7 @@ class Window {
      * "keep above"; so you can't rely on the window being kept above.
      * But it will happen with most standard window managers,
      * and GDK makes a best effort to get it to happen.
+     * @param setting whether to keep `window` above other windows
      */
     set_keep_above(setting: boolean): void
     /**
@@ -10594,6 +11318,7 @@ class Window {
      * "keep below"; so you can't rely on the window being kept below.
      * But it will happen with most standard window managers,
      * and GDK makes a best effort to get it to happen.
+     * @param setting whether to keep `window` below other windows
      */
     set_keep_below(setting: boolean): void
     /**
@@ -10604,6 +11329,7 @@ class Window {
      * 
      * You should only use this on windows for which you have
      * previously called gdk_window_set_transient_for()
+     * @param modal %TRUE if the window is modal, %FALSE otherwise.
      */
     set_modal_hint(modal: boolean): void
     /**
@@ -10617,6 +11343,7 @@ class Window {
      * For setting up per-pixel alpha, see gdk_screen_get_rgba_colormap().
      * For making non-toplevel windows translucent, see
      * gdk_window_set_composited().
+     * @param opacity opacity
      */
     set_opacity(opacity: number): void
     /**
@@ -10628,6 +11355,7 @@ class Window {
      * Override redirect should only be used for short-lived temporary
      * windows, such as popup menus. #GtkMenu uses an override redirect
      * window in its implementation, for example.
+     * @param override_redirect %TRUE if window should be override redirect
      */
     set_override_redirect(override_redirect: boolean): void
     /**
@@ -10643,6 +11371,7 @@ class Window {
      * should set the role on those windows. It doesn't matter what string
      * you use for the role, as long as you have a different role for each
      * non-interchangeable kind of window.
+     * @param role a string indicating its role
      */
     set_role(role: string): void
     /**
@@ -10654,6 +11383,7 @@ class Window {
      * <emphasis>not</emphasis> be called in addition, instead you should
      * allow the window to be treated according to standard policy for
      * its semantic type.
+     * @param skips_pager %TRUE to skip the pager
      */
     set_skip_pager_hint(skips_pager: boolean): void
     /**
@@ -10663,11 +11393,13 @@ class Window {
      * function should <emphasis>not</emphasis> be called in addition,
      * instead you should allow the window to be treated according to
      * standard policy for its semantic type.
+     * @param skips_taskbar %TRUE to skip the taskbar
      */
     set_skip_taskbar_hint(skips_taskbar: boolean): void
     /**
      * When using GTK+, typically you should use gtk_window_set_startup_id()
      * instead of this low-level function.
+     * @param startup_id a string with startup-notification identifier
      */
     set_startup_id(startup_id: string): void
     /**
@@ -10675,6 +11407,7 @@ class Window {
      * all children get static subwindow gravity. This is used if you are
      * implementing scary features that involve deep knowledge of the
      * windowing system. Don't worry about it unless you have to.
+     * @param use_static %TRUE to turn on static gravity
      */
     set_static_gravities(use_static: boolean): boolean
     /**
@@ -10683,6 +11416,7 @@ class Window {
      * (using gdk_window_set_icon_name()), the icon name will be set to
      * `title` as well. `title` must be in UTF-8 encoding (as with all
      * user-readable strings in GDK/GTK+). `title` may not be %NULL.
+     * @param title title of `window`
      */
     set_title(title: string): void
     /**
@@ -10693,6 +11427,7 @@ class Window {
      * 
      * See gtk_window_set_transient_for() if you're using #GtkWindow or
      * #GtkDialog.
+     * @param parent another toplevel #GdkWindow
      */
     set_transient_for(parent: Window): void
     /**
@@ -10702,11 +11437,13 @@ class Window {
      * of the window.
      * 
      * The hint must be set before the window is mapped.
+     * @param hint A hint of the function this window will have
      */
     set_type_hint(hint: WindowTypeHint): void
     /**
      * Toggles whether a window needs the user's
      * urgent attention.
+     * @param urgent %TRUE if the window is urgent
      */
     set_urgency_hint(urgent: boolean): void
     /**
@@ -10717,6 +11454,7 @@ class Window {
      * this function for that. If GTK+ receives an event for a #GdkWindow,
      * and the user data for the window is non-%NULL, GTK+ will assume the
      * user data is a #GtkWidget, and forward the event to that widget.
+     * @param user_data user data
      */
     set_user_data(user_data?: object | null): void
     /**
@@ -10735,6 +11473,9 @@ class Window {
      * will do nothing.
      * 
      * This function works on both toplevel and child windows.
+     * @param mask shape mask
+     * @param x X position of shape mask with respect to `window`
+     * @param y Y position of shape mask with respect to `window`
      */
     shape_combine_mask(mask: Bitmap, x: number, y: number): void
     /**
@@ -10753,6 +11494,9 @@ class Window {
      * will do nothing.
      * 
      * This function works on both toplevel and child windows.
+     * @param shape_region region of window to be non-transparent
+     * @param offset_x X position of `shape_region` in `window` coordinates
+     * @param offset_y Y position of `shape_region` in `window` coordinates
      */
     shape_combine_region(shape_region: Region, offset_x: number, offset_y: number): void
     /**
@@ -10843,6 +11587,7 @@ class Window {
     /**
      * Equivalent to g_object_get_data(); the #GObject variant should be
      * used instead.
+     * @param key name the data was stored under
      */
     get_data(key: string): object | null
     /**
@@ -10869,11 +11614,15 @@ class Window {
      * graphics contexts you intend to use together should match. i.e.
      * when using a #GdkGC to draw to a drawable, or copying one drawable
      * to another, the colormaps should match.
+     * @param colormap a #GdkColormap
      */
     set_colormap(colormap: Colormap): void
     /**
      * This function is equivalent to g_object_set_data(),
      * the #GObject variant should be used instead.
+     * @param key name to store the data under
+     * @param data arbitrary data
+     * @param destroy_func function to free `data,` or %NULL
      */
     set_data(key: string, data?: object | null, destroy_func?: GLib.DestroyNotify | null): void
     /**
@@ -10915,6 +11664,10 @@ class Window {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10925,6 +11678,12 @@ class Window {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10948,6 +11707,7 @@ class Window {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10967,11 +11727,14 @@ class Window {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10979,6 +11742,8 @@ class Window {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10996,6 +11761,7 @@ class Window {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11041,6 +11807,7 @@ class Window {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11084,15 +11851,20 @@ class Window {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11133,6 +11905,7 @@ class Window {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11157,6 +11930,7 @@ class Window {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gdk-2.0.Gdk.Drawable */
@@ -11202,6 +11976,7 @@ class Window {
      * graphics contexts you intend to use together should match. i.e.
      * when using a #GdkGC to draw to a drawable, or copying one drawable
      * to another, the colormaps should match.
+     * @param cmap 
      */
     vfunc_set_colormap(cmap: Colormap): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11221,6 +11996,7 @@ class Window {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11230,6 +12006,8 @@ class Window {
      * in the embedder of an offscreen window to the offscreen window.
      * 
      * See also #GtkWindow::to-embedder.
+     * @param embedder_x x coordinate in the embedder window
+     * @param embedder_y y coordinate in the embedder window
      */
     connect(sigName: "from-embedder", callback: (($obj: Window, embedder_x: number, embedder_y: number) => void)): number
     connect_after(sigName: "from-embedder", callback: (($obj: Window, embedder_x: number, embedder_y: number) => void)): number
@@ -11237,6 +12015,8 @@ class Window {
     /**
      * The ::pick-embedded-child signal is emitted to find an embedded
      * child at the given position.
+     * @param x x coordinate in the window
+     * @param y y coordinate in the window
      */
     connect(sigName: "pick-embedded-child", callback: (($obj: Window, x: number, y: number) => Window)): number
     connect_after(sigName: "pick-embedded-child", callback: (($obj: Window, x: number, y: number) => Window)): number
@@ -11246,6 +12026,8 @@ class Window {
      * in an offscreen window to its embedder.
      * 
      * See also #GtkWindow::from-embedder.
+     * @param offscreen_x x coordinate in the offscreen window
+     * @param offscreen_y y coordinate in the offscreen window
      */
     connect(sigName: "to-embedder", callback: (($obj: Window, offscreen_x: number, offscreen_y: number) => void)): number
     connect_after(sigName: "to-embedder", callback: (($obj: Window, offscreen_x: number, offscreen_y: number) => void)): number
@@ -11279,6 +12061,7 @@ class Window {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
@@ -11296,7 +12079,7 @@ class Window {
 }
 abstract class AppLaunchContextClass {
     /* Fields of Gdk-2.0.Gdk.AppLaunchContextClass */
-    readonly parent_class: Gio.AppLaunchContextClass
+    parent_class: Gio.AppLaunchContextClass
     static name: string
 }
 class AppLaunchContextPrivate {
@@ -11309,15 +12092,15 @@ class Atom {
 }
 class Bitmap {
     /* Fields of Gdk-2.0.Gdk.Bitmap */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     static name: string
 }
 class Color {
     /* Fields of Gdk-2.0.Gdk.Color */
-    readonly pixel: number
-    readonly red: number
-    readonly green: number
-    readonly blue: number
+    pixel: number
+    red: number
+    green: number
+    blue: number
     /* Methods of Gdk-2.0.Gdk.Color */
     /**
      * Makes a copy of a color structure. The result
@@ -11326,6 +12109,7 @@ class Color {
     copy(): Color
     /**
      * Compares two colors.
+     * @param colorb another #GdkColor.
      */
     equal(colorb: Color): boolean
     /**
@@ -11349,11 +12133,15 @@ class Color {
     /* Static methods and pseudo-constructors */
     /**
      * Allocates a single color from a colormap.
+     * @param colormap a #GdkColormap.
+     * @param color The color to allocate. On return, the    <structfield>pixel</structfield> field will be filled in.
      */
     static alloc(colormap: Colormap, color: Color): number
     /**
      * Returns the black color for a given colormap. The resulting
      * value has already been allocated.
+     * @param colormap a #GdkColormap.
+     * @param color the location to store the color.
      */
     static black(colormap: Colormap, color: Color): number
     /**
@@ -11362,6 +12150,8 @@ class Color {
      * colormap, then the color must have been allocated
      * using gdk_colormap_alloc_colors() with the
      * `writeable` set to %TRUE.
+     * @param colormap a #GdkColormap.
+     * @param color a #GdkColor, with the color to change in the <structfield>pixel</structfield> field, and the new value in the remaining fields.
      */
     static change(colormap: Colormap, color: Color): number
     /**
@@ -11377,22 +12167,25 @@ class Color {
      * red, green, and blue components of the color, respectively. (White
      * in the four forms is '&num;fff' '&num;ffffff' '&num;fffffffff' and
      * '&num;ffffffffffff')
+     * @param spec the string specifying the color.
      */
     static parse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
     /**
      * Returns the white color for a given colormap. The resulting
      * value has already allocated been allocated.
+     * @param colormap a #GdkColormap.
+     * @param color the location to store the color.
      */
     static white(colormap: Colormap, color: Color): number
 }
 abstract class ColormapClass {
     /* Fields of Gdk-2.0.Gdk.ColormapClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Cursor {
     /* Fields of Gdk-2.0.Gdk.Cursor */
-    readonly type: CursorType
+    type: CursorType
     /* Methods of Gdk-2.0.Gdk.Cursor */
     /**
      * Returns the cursor type for this cursor.
@@ -11419,9 +12212,9 @@ class Cursor {
 }
 class DeviceAxis {
     /* Fields of Gdk-2.0.Gdk.DeviceAxis */
-    readonly use: AxisUse
-    readonly min: number
-    readonly max: number
+    use: AxisUse
+    min: number
+    max: number
     static name: string
 }
 abstract class DeviceClass {
@@ -11429,286 +12222,286 @@ abstract class DeviceClass {
 }
 class DeviceKey {
     /* Fields of Gdk-2.0.Gdk.DeviceKey */
-    readonly keyval: number
-    readonly modifiers: ModifierType
+    keyval: number
+    modifiers: ModifierType
     static name: string
 }
 abstract class DisplayClass {
     /* Fields of Gdk-2.0.Gdk.DisplayClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly get_display_name: (display: Display) => string
-    readonly get_n_screens: (display: Display) => number
-    readonly closed: (display: Display, is_error: boolean) => void
+    parent_class: GObject.ObjectClass
+    get_display_name: (display: Display) => string
+    get_n_screens: (display: Display) => number
+    closed: (display: Display, is_error: boolean) => void
     static name: string
 }
 abstract class DisplayManagerClass {
     /* Fields of Gdk-2.0.Gdk.DisplayManagerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly display_opened: (display_manager: DisplayManager, display: Display) => void
+    parent_class: GObject.ObjectClass
+    display_opened: (display_manager: DisplayManager, display: Display) => void
     static name: string
 }
 class DisplayPointerHooks {
     /* Fields of Gdk-2.0.Gdk.DisplayPointerHooks */
-    readonly get_pointer: (display: Display, screen: Screen, x: number, y: number, mask: ModifierType) => void
+    get_pointer: (display: Display, screen: Screen, x: number, y: number, mask: ModifierType) => void
     static name: string
 }
 abstract class DragContextClass {
     /* Fields of Gdk-2.0.Gdk.DragContextClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class DrawableClass {
     /* Fields of Gdk-2.0.Gdk.DrawableClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly draw_rectangle: (drawable: Drawable, gc: GC, filled: boolean, x: number, y: number, width: number, height: number) => void
-    readonly draw_arc: (drawable: Drawable, gc: GC, filled: boolean, x: number, y: number, width: number, height: number, angle1: number, angle2: number) => void
-    readonly draw_polygon: (drawable: Drawable, gc: GC, filled: boolean, points: Point, npoints: number) => void
-    readonly draw_text: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string, text_length: number) => void
-    readonly draw_text_wc: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: WChar, text_length: number) => void
-    readonly draw_drawable: (drawable: Drawable, gc: GC, src: Drawable, xsrc: number, ysrc: number, xdest: number, ydest: number, width: number, height: number) => void
-    readonly draw_points: (drawable: Drawable, gc: GC, points: Point, npoints: number) => void
-    readonly draw_segments: (drawable: Drawable, gc: GC, segs: Segment, nsegs: number) => void
-    readonly draw_lines: (drawable: Drawable, gc: GC, points: Point, npoints: number) => void
-    readonly draw_glyphs: (drawable: Drawable, gc: GC, font: Pango.Font, x: number, y: number, glyphs: Pango.GlyphString) => void
-    readonly draw_image: (drawable: Drawable, gc: GC, image: Image, xsrc: number, ysrc: number, xdest: number, ydest: number, width: number, height: number) => void
-    readonly get_depth: (drawable: Drawable) => number
-    readonly get_size: (drawable: Drawable) => [ /* width */ number | null, /* height */ number | null ]
-    readonly set_colormap: (drawable: Drawable, cmap: Colormap) => void
-    readonly draw_pixbuf: (drawable: Drawable, gc: GC, pixbuf: GdkPixbuf.Pixbuf, src_x: number, src_y: number, dest_x: number, dest_y: number, width: number, height: number, dither: RgbDither, x_dither: number, y_dither: number) => void
-    readonly draw_glyphs_transformed: (drawable: Drawable, gc: GC, matrix: Pango.Matrix, font: Pango.Font, x: number, y: number, glyphs: Pango.GlyphString) => void
-    readonly draw_trapezoids: (drawable: Drawable, gc: GC, trapezoids: Trapezoid, n_trapezoids: number) => void
-    readonly ref_cairo_surface: (drawable: Drawable) => cairo.Surface
-    readonly set_cairo_clip: (drawable: Drawable, cr: cairo.Context) => void
-    readonly create_cairo_surface: (drawable: Drawable, width: number, height: number) => cairo.Surface
-    readonly draw_drawable_with_src: (drawable: Drawable, gc: GC, src: Drawable, xsrc: number, ysrc: number, xdest: number, ydest: number, width: number, height: number, original_src: Drawable) => void
+    parent_class: GObject.ObjectClass
+    draw_rectangle: (drawable: Drawable, gc: GC, filled: boolean, x: number, y: number, width: number, height: number) => void
+    draw_arc: (drawable: Drawable, gc: GC, filled: boolean, x: number, y: number, width: number, height: number, angle1: number, angle2: number) => void
+    draw_polygon: (drawable: Drawable, gc: GC, filled: boolean, points: Point, npoints: number) => void
+    draw_text: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string, text_length: number) => void
+    draw_text_wc: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: WChar, text_length: number) => void
+    draw_drawable: (drawable: Drawable, gc: GC, src: Drawable, xsrc: number, ysrc: number, xdest: number, ydest: number, width: number, height: number) => void
+    draw_points: (drawable: Drawable, gc: GC, points: Point, npoints: number) => void
+    draw_segments: (drawable: Drawable, gc: GC, segs: Segment, nsegs: number) => void
+    draw_lines: (drawable: Drawable, gc: GC, points: Point, npoints: number) => void
+    draw_glyphs: (drawable: Drawable, gc: GC, font: Pango.Font, x: number, y: number, glyphs: Pango.GlyphString) => void
+    draw_image: (drawable: Drawable, gc: GC, image: Image, xsrc: number, ysrc: number, xdest: number, ydest: number, width: number, height: number) => void
+    get_depth: (drawable: Drawable) => number
+    get_size: (drawable: Drawable) => [ /* width */ number | null, /* height */ number | null ]
+    set_colormap: (drawable: Drawable, cmap: Colormap) => void
+    draw_pixbuf: (drawable: Drawable, gc: GC, pixbuf: GdkPixbuf.Pixbuf, src_x: number, src_y: number, dest_x: number, dest_y: number, width: number, height: number, dither: RgbDither, x_dither: number, y_dither: number) => void
+    draw_glyphs_transformed: (drawable: Drawable, gc: GC, matrix: Pango.Matrix, font: Pango.Font, x: number, y: number, glyphs: Pango.GlyphString) => void
+    draw_trapezoids: (drawable: Drawable, gc: GC, trapezoids: Trapezoid, n_trapezoids: number) => void
+    ref_cairo_surface: (drawable: Drawable) => cairo.Surface
+    set_cairo_clip: (drawable: Drawable, cr: cairo.Context) => void
+    create_cairo_surface: (drawable: Drawable, width: number, height: number) => cairo.Surface
+    draw_drawable_with_src: (drawable: Drawable, gc: GC, src: Drawable, xsrc: number, ysrc: number, xdest: number, ydest: number, width: number, height: number, original_src: Drawable) => void
     static name: string
 }
 class EventAny {
     /* Fields of Gdk-2.0.Gdk.EventAny */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
+    type: EventType
+    window: Window
+    send_event: number
     static name: string
 }
 class EventButton {
     /* Fields of Gdk-2.0.Gdk.EventButton */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly time: number
-    readonly x: number
-    readonly y: number
-    readonly axes: number
-    readonly state: number
-    readonly button: number
-    readonly device: Device
-    readonly x_root: number
-    readonly y_root: number
+    type: EventType
+    window: Window
+    send_event: number
+    time: number
+    x: number
+    y: number
+    axes: number
+    state: number
+    button: number
+    device: Device
+    x_root: number
+    y_root: number
     static name: string
 }
 class EventClient {
     /* Fields of Gdk-2.0.Gdk.EventClient */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly message_type: Atom
-    readonly data_format: number
+    type: EventType
+    window: Window
+    send_event: number
+    message_type: Atom
+    data_format: number
     static name: string
 }
 class EventConfigure {
     /* Fields of Gdk-2.0.Gdk.EventConfigure */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
+    type: EventType
+    window: Window
+    send_event: number
+    x: number
+    y: number
+    width: number
+    height: number
     static name: string
 }
 class EventCrossing {
     /* Fields of Gdk-2.0.Gdk.EventCrossing */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly subwindow: Window
-    readonly time: number
-    readonly x: number
-    readonly y: number
-    readonly x_root: number
-    readonly y_root: number
-    readonly mode: CrossingMode
-    readonly detail: NotifyType
-    readonly focus: boolean
-    readonly state: number
+    type: EventType
+    window: Window
+    send_event: number
+    subwindow: Window
+    time: number
+    x: number
+    y: number
+    x_root: number
+    y_root: number
+    mode: CrossingMode
+    detail: NotifyType
+    focus: boolean
+    state: number
     static name: string
 }
 class EventDND {
     /* Fields of Gdk-2.0.Gdk.EventDND */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly context: DragContext
-    readonly time: number
-    readonly x_root: number
-    readonly y_root: number
+    type: EventType
+    window: Window
+    send_event: number
+    context: DragContext
+    time: number
+    x_root: number
+    y_root: number
     static name: string
 }
 class EventExpose {
     /* Fields of Gdk-2.0.Gdk.EventExpose */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly area: Rectangle
-    readonly region: Region
-    readonly count: number
+    type: EventType
+    window: Window
+    send_event: number
+    area: Rectangle
+    region: Region
+    count: number
     static name: string
 }
 class EventFocus {
     /* Fields of Gdk-2.0.Gdk.EventFocus */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly in_: number
+    type: EventType
+    window: Window
+    send_event: number
+    in_: number
     static name: string
 }
 class EventGrabBroken {
     /* Fields of Gdk-2.0.Gdk.EventGrabBroken */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly keyboard: boolean
-    readonly implicit: boolean
-    readonly grab_window: Window
+    type: EventType
+    window: Window
+    send_event: number
+    keyboard: boolean
+    implicit: boolean
+    grab_window: Window
     static name: string
 }
 class EventKey {
     /* Fields of Gdk-2.0.Gdk.EventKey */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly time: number
-    readonly state: number
-    readonly keyval: number
-    readonly length: number
-    readonly string: string
-    readonly hardware_keycode: number
-    readonly group: number
-    readonly is_modifier: number
+    type: EventType
+    window: Window
+    send_event: number
+    time: number
+    state: number
+    keyval: number
+    length: number
+    string: string
+    hardware_keycode: number
+    group: number
+    is_modifier: number
     static name: string
 }
 class EventMotion {
     /* Fields of Gdk-2.0.Gdk.EventMotion */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly time: number
-    readonly x: number
-    readonly y: number
-    readonly axes: number
-    readonly state: number
-    readonly is_hint: number
-    readonly device: Device
-    readonly x_root: number
-    readonly y_root: number
+    type: EventType
+    window: Window
+    send_event: number
+    time: number
+    x: number
+    y: number
+    axes: number
+    state: number
+    is_hint: number
+    device: Device
+    x_root: number
+    y_root: number
     static name: string
 }
 class EventNoExpose {
     /* Fields of Gdk-2.0.Gdk.EventNoExpose */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
+    type: EventType
+    window: Window
+    send_event: number
     static name: string
 }
 class EventOwnerChange {
     /* Fields of Gdk-2.0.Gdk.EventOwnerChange */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly owner: NativeWindow
-    readonly reason: OwnerChange
-    readonly selection: Atom
-    readonly time: number
-    readonly selection_time: number
+    type: EventType
+    window: Window
+    send_event: number
+    owner: NativeWindow
+    reason: OwnerChange
+    selection: Atom
+    time: number
+    selection_time: number
     static name: string
 }
 class EventProperty {
     /* Fields of Gdk-2.0.Gdk.EventProperty */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly atom: Atom
-    readonly time: number
-    readonly state: number
+    type: EventType
+    window: Window
+    send_event: number
+    atom: Atom
+    time: number
+    state: number
     static name: string
 }
 class EventProximity {
     /* Fields of Gdk-2.0.Gdk.EventProximity */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly time: number
-    readonly device: Device
+    type: EventType
+    window: Window
+    send_event: number
+    time: number
+    device: Device
     static name: string
 }
 class EventScroll {
     /* Fields of Gdk-2.0.Gdk.EventScroll */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly time: number
-    readonly x: number
-    readonly y: number
-    readonly state: number
-    readonly direction: ScrollDirection
-    readonly device: Device
-    readonly x_root: number
-    readonly y_root: number
+    type: EventType
+    window: Window
+    send_event: number
+    time: number
+    x: number
+    y: number
+    state: number
+    direction: ScrollDirection
+    device: Device
+    x_root: number
+    y_root: number
     static name: string
 }
 class EventSelection {
     /* Fields of Gdk-2.0.Gdk.EventSelection */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly selection: Atom
-    readonly target: Atom
-    readonly property: Atom
-    readonly time: number
-    readonly requestor: NativeWindow
+    type: EventType
+    window: Window
+    send_event: number
+    selection: Atom
+    target: Atom
+    property: Atom
+    time: number
+    requestor: NativeWindow
     static name: string
 }
 class EventSetting {
     /* Fields of Gdk-2.0.Gdk.EventSetting */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly action: SettingAction
-    readonly name: string
+    type: EventType
+    window: Window
+    send_event: number
+    action: SettingAction
+    name: string
     static name: string
 }
 class EventVisibility {
     /* Fields of Gdk-2.0.Gdk.EventVisibility */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly state: VisibilityState
+    type: EventType
+    window: Window
+    send_event: number
+    state: VisibilityState
     static name: string
 }
 class EventWindowState {
     /* Fields of Gdk-2.0.Gdk.EventWindowState */
-    readonly type: EventType
-    readonly window: Window
-    readonly send_event: number
-    readonly changed_mask: WindowState
-    readonly new_window_state: WindowState
+    type: EventType
+    window: Window
+    send_event: number
+    changed_mask: WindowState
+    new_window_state: WindowState
     static name: string
 }
 class Font {
     /* Fields of Gdk-2.0.Gdk.Font */
-    readonly type: FontType
-    readonly ascent: number
-    readonly descent: number
+    type: FontType
+    ascent: number
+    descent: number
     /* Methods of Gdk-2.0.Gdk.Font */
     equal(fontb: Font): boolean
     id(): number
@@ -11729,6 +12522,7 @@ class Font {
      * internationalization will not be handled correctly. This function
      * should only be used for legacy code that cannot be easily converted
      * to use Pango. Using Pango directly will produce better results.
+     * @param font_desc a #PangoFontDescription.
      */
     static from_description(font_desc: Pango.FontDescription): Font
     static from_description_for_display(display: Display, font_desc: Pango.FontDescription): Font
@@ -11737,106 +12531,110 @@ class Font {
      * 
      * The font may be newly loaded or looked up the font in a cache.
      * You should make no assumptions about the initial reference count.
+     * @param font_name a XLFD describing the font to load.
      */
     static load(font_name: string): Font
     static load_for_display(display: Display, font_name: string): Font
 }
 abstract class GCClass {
     /* Fields of Gdk-2.0.Gdk.GCClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly get_values: (gc: GC, values: GCValues) => void
-    readonly set_values: (gc: GC, values: GCValues, mask: GCValuesMask) => void
-    readonly set_dashes: (gc: GC, dash_offset: number, dash_list: number, n: number) => void
+    parent_class: GObject.ObjectClass
+    get_values: (gc: GC, values: GCValues) => void
+    set_values: (gc: GC, values: GCValues, mask: GCValuesMask) => void
+    set_dashes: (gc: GC, dash_offset: number, dash_list: number, n: number) => void
     static name: string
 }
 class GCValues {
     /* Fields of Gdk-2.0.Gdk.GCValues */
-    readonly foreground: Color
-    readonly background: Color
-    readonly font: Font
-    readonly function_: Function
-    readonly fill: Fill
-    readonly tile: Pixmap
-    readonly stipple: Pixmap
-    readonly clip_mask: Pixmap
-    readonly subwindow_mode: SubwindowMode
-    readonly ts_x_origin: number
-    readonly ts_y_origin: number
-    readonly clip_x_origin: number
-    readonly clip_y_origin: number
-    readonly graphics_exposures: number
-    readonly line_width: number
-    readonly line_style: LineStyle
-    readonly cap_style: CapStyle
-    readonly join_style: JoinStyle
+    foreground: Color
+    background: Color
+    font: Font
+    function_: Function
+    fill: Fill
+    tile: Pixmap
+    stipple: Pixmap
+    clip_mask: Pixmap
+    subwindow_mode: SubwindowMode
+    ts_x_origin: number
+    ts_y_origin: number
+    clip_x_origin: number
+    clip_y_origin: number
+    graphics_exposures: number
+    line_width: number
+    line_style: LineStyle
+    cap_style: CapStyle
+    join_style: JoinStyle
     static name: string
 }
 class Geometry {
     /* Fields of Gdk-2.0.Gdk.Geometry */
-    readonly min_width: number
-    readonly min_height: number
-    readonly max_width: number
-    readonly max_height: number
-    readonly base_width: number
-    readonly base_height: number
-    readonly width_inc: number
-    readonly height_inc: number
-    readonly min_aspect: number
-    readonly max_aspect: number
-    readonly win_gravity: Gravity
+    min_width: number
+    min_height: number
+    max_width: number
+    max_height: number
+    base_width: number
+    base_height: number
+    width_inc: number
+    height_inc: number
+    min_aspect: number
+    max_aspect: number
+    win_gravity: Gravity
     static name: string
 }
 abstract class ImageClass {
     /* Fields of Gdk-2.0.Gdk.ImageClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class KeyboardGrabInfo {
     /* Fields of Gdk-2.0.Gdk.KeyboardGrabInfo */
-    readonly window: Window
-    readonly native_window: Window
-    readonly serial: number
-    readonly owner_events: boolean
-    readonly time: number
+    window: Window
+    native_window: Window
+    serial: number
+    owner_events: boolean
+    time: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Determines information about the current keyboard grab.
      * This is not public API and must not be used by applications.
+     * @param display the display for which to get the grab information
+     * @param grab_window location to store current grab window
+     * @param owner_events location to store boolean indicating whether   the `owner_events` flag to gdk_keyboard_grab() was %TRUE.
      */
     static libgtk_only(display: Display, grab_window: Window, owner_events: boolean): boolean
 }
 abstract class KeymapClass {
     /* Fields of Gdk-2.0.Gdk.KeymapClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly direction_changed: (keymap: Keymap) => void
-    readonly keys_changed: (keymap: Keymap) => void
-    readonly state_changed: (keymap: Keymap) => void
+    parent_class: GObject.ObjectClass
+    direction_changed: (keymap: Keymap) => void
+    keys_changed: (keymap: Keymap) => void
+    state_changed: (keymap: Keymap) => void
     static name: string
 }
 class KeymapKey {
     /* Fields of Gdk-2.0.Gdk.KeymapKey */
-    readonly keycode: number
-    readonly group: number
-    readonly level: number
+    keycode: number
+    group: number
+    level: number
     static name: string
 }
 class PangoAttrEmbossColor {
     /* Fields of Gdk-2.0.Gdk.PangoAttrEmbossColor */
-    readonly attr: Pango.Attribute
-    readonly color: Pango.Color
+    attr: Pango.Attribute
+    color: Pango.Color
     static name: string
 }
 class PangoAttrEmbossed {
     /* Fields of Gdk-2.0.Gdk.PangoAttrEmbossed */
-    readonly attr: Pango.Attribute
-    readonly embossed: boolean
+    attr: Pango.Attribute
+    embossed: boolean
     static name: string
 }
 class PangoAttrStipple {
     /* Fields of Gdk-2.0.Gdk.PangoAttrStipple */
-    readonly attr: Pango.Attribute
-    readonly stipple: Bitmap
+    attr: Pango.Attribute
+    stipple: Bitmap
     static name: string
 }
 abstract class PangoRendererClass {
@@ -11847,20 +12645,20 @@ class PangoRendererPrivate {
 }
 class PixmapObject {
     /* Fields of Gdk-2.0.Gdk.PixmapObject */
-    readonly parent_instance: Drawable
-    readonly impl: Drawable
-    readonly depth: number
+    parent_instance: Drawable
+    impl: Drawable
+    depth: number
     static name: string
 }
 class PixmapObjectClass {
     /* Fields of Gdk-2.0.Gdk.PixmapObjectClass */
-    readonly parent_class: DrawableClass
+    parent_class: DrawableClass
     static name: string
 }
 class Point {
     /* Fields of Gdk-2.0.Gdk.Point */
-    readonly x: number
-    readonly y: number
+    x: number
+    y: number
     static name: string
 }
 class PointerHooks {
@@ -11868,21 +12666,21 @@ class PointerHooks {
 }
 class PointerWindowInfo {
     /* Fields of Gdk-2.0.Gdk.PointerWindowInfo */
-    readonly toplevel_under_pointer: Window
-    readonly window_under_pointer: Window
-    readonly toplevel_x: number
-    readonly toplevel_y: number
-    readonly state: number
-    readonly button: number
-    readonly motion_hint_serial: number
+    toplevel_under_pointer: Window
+    window_under_pointer: Window
+    toplevel_x: number
+    toplevel_y: number
+    state: number
+    button: number
+    motion_hint_serial: number
     static name: string
 }
 class Rectangle {
     /* Fields of Gdk-2.0.Gdk.Rectangle */
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
+    x: number
+    y: number
+    width: number
+    height: number
     /* Methods of Gdk-2.0.Gdk.Rectangle */
     /**
      * Calculates the intersection of two rectangles. It is allowed for
@@ -11891,6 +12689,7 @@ class Rectangle {
      * and y values are undefined. If you are only interested in whether
      * the rectangles intersect, but not in the intersecting area itself,
      * pass %NULL for `dest`.
+     * @param src2 a #GdkRectangle
      */
     intersect(src2: Rectangle): [ /* returnType */ boolean, /* dest */ Rectangle | null ]
     /**
@@ -11898,6 +12697,7 @@ class Rectangle {
      * The union of rectangles `src1` and `src2` is the smallest rectangle which
      * includes both `src1` and `src2` within it.
      * It is allowed for `dest` to be the same as either `src1` or `src2`.
+     * @param src2 a #GdkRectangle
      */
     union(src2: Rectangle): /* dest */ Rectangle
     static name: string
@@ -11914,114 +12714,130 @@ class Region {
     empty(): boolean
     /**
      * Finds out if the two regions are the same.
+     * @param region2 a #GdkRegion
      */
     equal(region2: Region): boolean
     /**
      * Obtains the smallest rectangle which includes the entire #GdkRegion.
+     * @param rectangle return location for the clipbox
      */
     get_clipbox(rectangle: Rectangle): void
     /**
      * Obtains the area covered by the region as a list of rectangles.
      * The array returned in `rectangles` must be freed with g_free().
+     * @param rectangles return location for an array of rectangles
      */
     get_rectangles(rectangles: Rectangle[]): void
     /**
      * Sets the area of `source1` to the intersection of the areas of `source1`
      * and `source2`. The resulting area is the set of pixels contained in
      * both `source1` and `source2`.
+     * @param source2 another #GdkRegion
      */
     intersect(source2: Region): void
     /**
      * Moves a region the specified distance.
+     * @param dx the distance to move the region horizontally
+     * @param dy the distance to move the region vertically
      */
     offset(dx: number, dy: number): void
     /**
      * Finds out if a point is in a region.
+     * @param x the x coordinate of a point
+     * @param y the y coordinate of a point
      */
     point_in(x: number, y: number): boolean
     /**
      * Finds out if a regions is the same as a rectangle.
+     * @param rectangle a #GdkRectangle
      */
     rect_equal(rectangle: Rectangle): boolean
     /**
      * Tests whether a rectangle is within a region.
+     * @param rectangle a #GdkRectangle.
      */
     rect_in(rectangle: Rectangle): OverlapType
     /**
      * Resizes a region by the specified amount.
      * Positive values shrink the region. Negative values expand it.
+     * @param dx the number of pixels to shrink the region horizontally
+     * @param dy the number of pixels to shrink the region vertically
      */
     shrink(dx: number, dy: number): void
     /**
      * Subtracts the area of `source2` from the area `source1`. The resulting
      * area is the set of pixels contained in `source1` but not in `source2`.
+     * @param source2 another #GdkRegion
      */
     subtract(source2: Region): void
     /**
      * Sets the area of `source1` to the union of the areas of `source1` and
      * `source2`. The resulting area is the set of pixels contained in
      * either `source1` or `source2`.
+     * @param source2 a #GdkRegion
      */
     union(source2: Region): void
     /**
      * Sets the area of `region` to the union of the areas of `region` and
      * `rect`. The resulting area is the set of pixels contained in
      * either `region` or `rect`.
+     * @param rect a #GdkRectangle.
      */
     union_with_rect(rect: Rectangle): void
     /**
      * Sets the area of `source1` to the exclusive-OR of the areas of `source1`
      * and `source2`. The resulting area is the set of pixels contained in one
      * or the other of the two sources but not in both.
+     * @param source2 another #GdkRegion
      */
     xor(source2: Region): void
     static name: string
 }
 class RgbCmap {
     /* Fields of Gdk-2.0.Gdk.RgbCmap */
-    readonly colors: number[]
-    readonly n_colors: number
+    colors: number[]
+    n_colors: number
     /* Methods of Gdk-2.0.Gdk.RgbCmap */
     free(): void
     static name: string
 }
 abstract class ScreenClass {
     /* Fields of Gdk-2.0.Gdk.ScreenClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly size_changed: (screen: Screen) => void
-    readonly composited_changed: (screen: Screen) => void
-    readonly monitors_changed: (screen: Screen) => void
+    parent_class: GObject.ObjectClass
+    size_changed: (screen: Screen) => void
+    composited_changed: (screen: Screen) => void
+    monitors_changed: (screen: Screen) => void
     static name: string
 }
 class Segment {
     /* Fields of Gdk-2.0.Gdk.Segment */
-    readonly x1: number
-    readonly y1: number
-    readonly x2: number
-    readonly y2: number
+    x1: number
+    y1: number
+    x2: number
+    y2: number
     static name: string
 }
 class Span {
     /* Fields of Gdk-2.0.Gdk.Span */
-    readonly x: number
-    readonly y: number
-    readonly width: number
+    x: number
+    y: number
+    width: number
     static name: string
 }
 class TimeCoord {
     /* Fields of Gdk-2.0.Gdk.TimeCoord */
-    readonly time: number
-    readonly axes: number[]
+    time: number
+    axes: number[]
     static name: string
 }
 class Trapezoid {
     /* Fields of Gdk-2.0.Gdk.Trapezoid */
-    readonly y1: number
-    readonly x11: number
-    readonly x21: number
-    readonly y2: number
-    readonly x12: number
-    readonly x22: number
+    y1: number
+    x11: number
+    x21: number
+    y2: number
+    x12: number
+    x22: number
     static name: string
 }
 abstract class VisualClass {
@@ -12029,21 +12845,21 @@ abstract class VisualClass {
 }
 class WindowAttr {
     /* Fields of Gdk-2.0.Gdk.WindowAttr */
-    readonly title: string
-    readonly event_mask: number
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
-    readonly wclass: WindowClass
-    readonly visual: Visual
-    readonly colormap: Colormap
-    readonly window_type: WindowType
-    readonly cursor: Cursor
-    readonly wmclass_name: string
-    readonly wmclass_class: string
-    readonly override_redirect: boolean
-    readonly type_hint: WindowTypeHint
+    title: string
+    event_mask: number
+    x: number
+    y: number
+    width: number
+    height: number
+    wclass: WindowClass
+    visual: Visual
+    colormap: Colormap
+    window_type: WindowType
+    cursor: Cursor
+    wmclass_name: string
+    wmclass_class: string
+    override_redirect: boolean
+    type_hint: WindowTypeHint
     static name: string
 }
 class WindowObject {
@@ -12051,7 +12867,7 @@ class WindowObject {
 }
 class WindowObjectClass {
     /* Fields of Gdk-2.0.Gdk.WindowObjectClass */
-    readonly parent_class: DrawableClass
+    parent_class: DrawableClass
     static name: string
 }
 class WindowRedirect {
@@ -12074,6 +12890,7 @@ class Event {
     /**
      * Extract the axis value for a particular axis use from
      * an event structure.
+     * @param axis_use the axis use to look for
      */
     get_axis(axis_use: AxisUse): [ /* returnType */ boolean, /* value */ number ]
     /**
@@ -12107,6 +12924,7 @@ class Event {
      * on the default #GdkDisplay.)
      * This could be used for communicating between different applications,
      * though the amount of data is limited to 20 bytes.
+     * @param winid the window to send the X ClientMessage event to.
      */
     send_client_message(winid: NativeWindow): boolean
     /**
@@ -12123,6 +12941,7 @@ class Event {
      * Sets the screen for `event` to `screen`. The event must
      * have been allocated by GTK+, for instance, by
      * gdk_event_copy().
+     * @param screen a #GdkScreen
      */
     set_screen(screen: Screen): void
     static name: string
@@ -12144,6 +12963,7 @@ class Event {
      * usually not useful for GTK+ applications. (Although an application
      * can call this function then call gtk_main_do_event() to pass
      * events to GTK+.)
+     * @param func the function to call to handle events from GDK.
      */
     static handler_set(func: EventFunc): void
     /**
@@ -12169,6 +12989,7 @@ class Event {
      * }
      * ```
      * 
+     * @param event a valid #GdkEvent
      */
     static request_motions(event: EventMotion): void
     static send_client_message_for_display(display: Display, event: Event, winid: NativeWindow): boolean

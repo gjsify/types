@@ -1346,52 +1346,75 @@ interface DeviceQueue_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DeviceQueue {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of ColorHug-1.0.ColorHug.DeviceQueue */
     /**
      * Adds a raw command to the device queue.
+     * @param device A #GUsbDevice
+     * @param cmd The command, e.g. %CH_CMD_TAKE_READINGS
+     * @param buffer_in The input buffer, or %NULL
+     * @param buffer_in_len The size of `buffer_in`
+     * @param buffer_out The output buffer, or %NULL
+     * @param buffer_out_len The size of `buffer_out`
      */
     add(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: number, buffer_out: number, buffer_out_len: number): void
     /**
      * Boots the device from bootloader to firmware mode.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
      */
     boot_flash(device: GUsb.Device): void
     /**
      * Clears a calibration slot.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param calibration_index Slot
      */
     clear_calibration(device: GUsb.Device, calibration_index: number): void
     /**
      * Erase program code on the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param address The device EEPROM address
+     * @param len The length of `data`
      */
     erase_flash(device: GUsb.Device, address: number, len: number): void
     /**
      * Gets the ADC Vref- calibration value.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param vref The voltage reference, ranging from 0.0 to 3.3V.
      */
     get_adc_vref_neg(device: GUsb.Device, vref: number): void
     /**
      * Gets the ADC Vref+ calibration value.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param vref The voltage reference, ranging from 0.0 to 3.3V.
      */
     get_adc_vref_pos(device: GUsb.Device, vref: number): void
     /**
      * Gets the calibration data.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param calibration_index The slot position
+     * @param calibration the 3x3 calibration matrix
+     * @param types The types the matrix supports
+     * @param description The description of the calibration
      */
     get_calibration(device: GUsb.Device, calibration_index: number, calibration: Colord.Mat3x3, types: number, description: string): void
     /**
      * Gets the calibration map.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param calibration_map An array of slot positions
      */
     get_calibration_map(device: GUsb.Device, calibration_map: number): void
     /**
@@ -1399,157 +1422,219 @@ class DeviceQueue {
      * spectral peaks returned by the CCD.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param indexes An array of red, green, blue indexes
      */
     get_ccd_calibration(device: GUsb.Device, indexes: number): void
     /**
      * Gets the selected sensor color.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param color_select The color select, e.g. %CH_COLOR_SELECT_RED
      */
     get_color_select(device: GUsb.Device, color_select: ColorSelect): void
     /**
      * Gets the DAC value.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param dac_value value between 0.0 and 0.99
      */
     get_dac_value(device: GUsb.Device, dac_value: number): void
     /**
      * Gets the device dark offsets.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param value A #CdColorRGB
      */
     get_dark_offsets(device: GUsb.Device, value: Colord.ColorRGB): void
     /**
      * Gets the firmware version.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param major The firmware major version
+     * @param minor The firmware minor version
+     * @param micro The firmware micro version
      */
     get_firmware_ver(device: GUsb.Device, major: number, minor: number, micro: number): void
     /**
      * Gets the hardware version.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param hw_version The hardware version
      */
     get_hardware_version(device: GUsb.Device, hw_version: number): void
     /**
      * Gets the reading integral time.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param integral_time The sensor integral time in device units
      */
     get_integral_time(device: GUsb.Device, integral_time: number): void
     /**
      * Gets the LED status.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param leds The LED bitfield
      */
     get_leds(device: GUsb.Device, leds: number): void
     /**
      * Gets the measurement mode.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param measure_mode The #ChMeasureMode, e.g. %CH_MEASURE_MODE_DURATION
      */
     get_measure_mode(device: GUsb.Device, measure_mode: MeasureMode): void
     /**
      * Gets the sensor multiplier.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param multiplier The device multiplier, e.g. %CH_FREQ_SCALE_100
      */
     get_multiplier(device: GUsb.Device, multiplier: FreqScale): void
     /**
      * Gets the owner email address.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param email An email address
      */
     get_owner_email(device: GUsb.Device, email: string): void
     /**
      * Gets the owner name.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param name The owner name
      */
     get_owner_name(device: GUsb.Device, name: string): void
     /**
      * Gets the PCB errata level.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param pcb_errata The PCB errata, e.g. %CH_PCB_ERRATA_SWAPPED_LEDS
      */
     get_pcb_errata(device: GUsb.Device, pcb_errata: number): void
     /**
      * Gets the post scale value.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param post_scale The post-scale value
      */
     get_post_scale(device: GUsb.Device, post_scale: number): void
     /**
      * Gets the pre scale value.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param pre_scale Pre-scale value
      */
     get_pre_scale(device: GUsb.Device, pre_scale: number): void
     /**
      * Gets the remote hash stored on the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param remote_hash A #ChSha1
      */
     get_remote_hash(device: GUsb.Device, remote_hash: Sha1): void
     /**
      * Gets the device serial number.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param serial_number The device serial number
      */
     get_serial_number(device: GUsb.Device, serial_number: number): void
     /**
      * Gets the device temperature.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param temperature Temperature in Celcius
      */
     get_temperature(device: GUsb.Device, temperature: number): void
     /**
      * Processes all commands in the command queue.
      * WARNING: this function is syncronous and will block.
+     * @param process_flags Flags how to process the queue, e.g. %CH_DEVICE_QUEUE_PROCESS_FLAGS_CONTINUE_ERRORS
+     * @param cancellable #GCancellable or %NULL
      */
     process(process_flags: DeviceQueueProcessFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Processes all commands in the command queue.
+     * @param process_flags 
+     * @param cancellable A #GCancellable, or %NULL
+     * @param callback A #GAsyncReadyCallback that will be called when finished.
      */
     process_async(process_flags: DeviceQueueProcessFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     process_finish(res: Gio.AsyncResult): boolean
     /**
      * Reads firmware on the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param data Firmware binary data
+     * @param len Size of `data`
      */
     read_firmware(device: GUsb.Device, data: number, len: number): void
     /**
      * Read flash code from the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param address The device EEPROM address
+     * @param data Binary data
+     * @param len The length of `data`
      */
     read_flash(device: GUsb.Device, address: number, data: number, len: number): void
     /**
      * Reads binary data from the SRAM.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param address The device memory address
+     * @param data The binary data
+     * @param len Size of `data`
      */
     read_sram(device: GUsb.Device, address: number, data: number, len: number): void
     /**
      * Resets the device back to bootloader mode.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
      */
     reset(device: GUsb.Device): void
     /**
      * Performs some self tests on the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
      */
     self_test(device: GUsb.Device): void
     /**
      * Sets the calibration data.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param calibration_index The slot position
+     * @param calibration the 3x3 calibration matrix
+     * @param types The types the matrix supports
+     * @param description The description of the calibration
      */
     set_calibration(device: GUsb.Device, calibration_index: number, calibration: Colord.Mat3x3, types: number, description: string): void
     set_calibration_ccmx(device: GUsb.Device, calibration_index: number, ccmx: Colord.It8): boolean
@@ -1557,6 +1642,8 @@ class DeviceQueue {
      * Sets the calibration map.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param calibration_map An array of slot positions
      */
     set_calibration_map(device: GUsb.Device, calibration_map: number): void
     /**
@@ -1564,24 +1651,32 @@ class DeviceQueue {
      * spectral peaks returned by the CCD.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param indexes An array of red, green, blue indexes
      */
     set_ccd_calibration(device: GUsb.Device, indexes: number): void
     /**
      * Sets the sensor measurement color.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param color_select The color select, e.g. %CH_COLOR_SELECT_RED
      */
     set_color_select(device: GUsb.Device, color_select: ColorSelect): void
     /**
      * Sets the post scale value.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param dac_value The DAC value
      */
     set_dac_value(device: GUsb.Device, dac_value: number): void
     /**
      * Sets the device dark offsets.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param value A #CdColorRGB
      */
     set_dark_offsets(device: GUsb.Device, value: Colord.ColorRGB): void
     /**
@@ -1590,90 +1685,123 @@ class DeviceQueue {
      * ColorHug device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param value Success value
      */
     set_flash_success(device: GUsb.Device, value: number): void
     /**
      * Sets the reading integral time.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param integral_time The sensor integral time in device units
      */
     set_integral_time(device: GUsb.Device, integral_time: number): void
     /**
      * Sets the LED status.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param leds The LEDs bitfield
+     * @param repeat Sets the number of times to repeat the pattern
+     * @param on_time Set the on time
+     * @param off_time Set the off time
      */
     set_leds(device: GUsb.Device, leds: number, repeat: number, on_time: number, off_time: number): void
     /**
      * Sets the measurement mode.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param measure_mode The #ChMeasureMode, e.g. %CH_MEASURE_MODE_DURATION
      */
     set_measure_mode(device: GUsb.Device, measure_mode: MeasureMode): void
     /**
      * Sets the sensor multiplier.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param multiplier The device multiplier, e.g. %CH_FREQ_SCALE_100
      */
     set_multiplier(device: GUsb.Device, multiplier: FreqScale): void
     /**
      * Sets the owner email address.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param email An email address
      */
     set_owner_email(device: GUsb.Device, email: string): void
     /**
      * Sets the owner name.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param name The owner name
      */
     set_owner_name(device: GUsb.Device, name: string): void
     /**
      * Sets the PCB board errata.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param pcb_errata The PCB errata, e.g. %CH_PCB_ERRATA_SWAPPED_LEDS
      */
     set_pcb_errata(device: GUsb.Device, pcb_errata: number): void
     /**
      * Sets the post scale value.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param post_scale The post-scale value
      */
     set_post_scale(device: GUsb.Device, post_scale: number): void
     /**
      * Sets the pre-scale value.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param pre_scale Pre-scale value
      */
     set_pre_scale(device: GUsb.Device, pre_scale: number): void
     /**
      * Sets the remote hash on the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param remote_hash A #ChSha1
      */
     set_remote_hash(device: GUsb.Device, remote_hash: Sha1): void
     /**
      * Sets the device serial number.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param serial_number The device serial number
      */
     set_serial_number(device: GUsb.Device, serial_number: number): void
     /**
      * Get an array of raw readings in quick succession.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param reading_array An array of raw readings
      */
     take_reading_array(device: GUsb.Device, reading_array: number): void
     /**
      * Take a raw reading from the sensor.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param take_reading A raw reading value
      */
     take_reading_raw(device: GUsb.Device, take_reading: number): void
     /**
      * Takes a raw spectral reading.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param sram_addr The SRAM location where the data is held
      */
     take_reading_spectral(device: GUsb.Device, sram_addr: number): void
     /**
@@ -1681,48 +1809,73 @@ class DeviceQueue {
      * calibration matrix.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param value The #CdColorRGB of the raw reading
      */
     take_readings(device: GUsb.Device, value: Colord.ColorRGB): void
     /**
      * Take an XYZ fully cooked reading from the sensor.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param calibration_index 
+     * @param value The #CdColorXYZ for a given calibration slot
      */
     take_readings_xyz(device: GUsb.Device, calibration_index: number, value: Colord.ColorXYZ): void
     /**
      * Verifies firmware on the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param data Firmware binary data
+     * @param len Size of `data`
      */
     verify_firmware(device: GUsb.Device, data: number, len: number): void
     /**
      * Verify flash code from the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param address The device EEPROM address
+     * @param data Binary data
+     * @param len The length of `data`
      */
     verify_flash(device: GUsb.Device, address: number, data: number, len: number): void
     /**
      * Writes values to the firmware to be set at device startup.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param magic The magic sekret string
      */
     write_eeprom(device: GUsb.Device, magic: string): void
     /**
      * Writes new firmware to the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param data Firmware binary data
+     * @param len Size of `data`
      */
     write_firmware(device: GUsb.Device, data: number, len: number): void
     /**
      * Write flash code to the device.
      * 
      * NOTE: This command is available on hardware version: 1 & 2
+     * @param device A #GUsbDevice
+     * @param address The device EEPROM address
+     * @param data Binary data
+     * @param len The length of `data`
      */
     write_flash(device: GUsb.Device, address: number, data: number, len: number): void
     /**
      * Writes binary data to the SRAM.
      * 
      * NOTE: This command is available on hardware version: 2
+     * @param device A #GUsbDevice
+     * @param address The device memory address
+     * @param data The binary data
+     * @param len Size of `data`
      */
     write_sram(device: GUsb.Device, address: number, data: number, len: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1760,6 +1913,10 @@ class DeviceQueue {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1770,6 +1927,12 @@ class DeviceQueue {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1793,6 +1956,7 @@ class DeviceQueue {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1812,11 +1976,14 @@ class DeviceQueue {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1824,6 +1991,8 @@ class DeviceQueue {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1841,6 +2010,7 @@ class DeviceQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1886,6 +2056,7 @@ class DeviceQueue {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1929,15 +2100,20 @@ class DeviceQueue {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1978,6 +2154,7 @@ class DeviceQueue {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2012,6 +2189,7 @@ class DeviceQueue {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of ColorHug-1.0.ColorHug.DeviceQueue */
@@ -2034,6 +2212,7 @@ class DeviceQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2073,6 +2252,7 @@ class DeviceQueue {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceQueue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceQueue, pspec: GObject.ParamSpec) => void)): number
@@ -2090,14 +2270,14 @@ class DeviceQueue {
 }
 abstract class DeviceQueueClass {
     /* Fields of ColorHug-1.0.ColorHug.DeviceQueueClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly device_failed: (device_queue: DeviceQueue, device: GUsb.Device, error_message: string) => void
-    readonly progress_changed: (device_queue: DeviceQueue, percentage: number) => void
+    parent_class: GObject.ObjectClass
+    device_failed: (device_queue: DeviceQueue, device: GUsb.Device, error_message: string) => void
+    progress_changed: (device_queue: DeviceQueue, percentage: number) => void
     static name: string
 }
 class Sha1 {
     /* Fields of ColorHug-1.0.ColorHug.Sha1 */
-    readonly bytes: Uint8Array
+    bytes: Uint8Array
     /* Methods of ColorHug-1.0.ColorHug.Sha1 */
     /**
      * Gets a string representation of the SHA1 hash.
@@ -2107,6 +2287,8 @@ class Sha1 {
     /* Static methods and pseudo-constructors */
     /**
      * Parses a SHA1 hash from a string value.
+     * @param value A string representation of the SHA1 hash
+     * @param sha1 A %ChSha1
      */
     static parse(value: string, sha1: Sha1): boolean
 }

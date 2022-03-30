@@ -334,6 +334,8 @@ class CompletionProvider {
      * edit points the user may cycle through.
      * 
      * See also: [class`Snippet]`, [class`SnippetChunk]`, [method`View`.push_snippet]
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
      */
     activate(context: CompletionContext, proposal: CompletionProposal): void
     /**
@@ -345,6 +347,9 @@ class CompletionProvider {
      * This allows for columns of information among completion proposals
      * resulting in better alignment of similar content (icons, return types,
      * method names, and parameter lists).
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
+     * @param cell a #GtkSourceCompletionCell
      */
     display(context: CompletionContext, proposal: CompletionProposal, cell: CompletionCell): void
     /**
@@ -355,6 +360,7 @@ class CompletionProvider {
      * above lower priority providers.
      * 
      * Lower value indicates higher priority.
+     * @param context a #GtkSourceCompletionContext
      */
     getPriority(context: CompletionContext): number
     /**
@@ -370,6 +376,8 @@ class CompletionProvider {
      * 
      * An example would be period '.' which might indicate that the user wants
      * to complete method or field names of an object.
+     * @param iter a #GtkTextIter
+     * @param ch a #gunichar of the character inserted
      */
     isTrigger(iter: Gtk.TextIter, ch: number): boolean
     /**
@@ -379,6 +387,10 @@ class CompletionProvider {
      * This is useful when using languages where convention may lead to less
      * typing by the user. One example may be the use of "." or "-" to expand
      * a field access in the C programming language.
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
+     * @param keyval a keyval such as [const`Gdk`.KEY_period]
+     * @param state a #GdkModifierType or 0
      */
     keyActivates(context: CompletionContext, proposal: CompletionProposal, keyval: number, state: Gdk.ModifierType): boolean
     /**
@@ -387,6 +399,8 @@ class CompletionProvider {
      * 
      * This can be used by the completion view to allow the user to move laterally
      * through similar proposals, such as overrides of methods by the same name.
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
      */
     listAlternates(context: CompletionContext, proposal: CompletionProposal): CompletionProposal[] | null
     /**
@@ -397,10 +411,14 @@ class CompletionProvider {
      * results are displayed to the user,
      * [method`CompletionContext`.set_proposals_for_provider] may be used
      * to reduce latency until the user sees results.
+     * @param context a #GtkSourceCompletionContext
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a callback to execute upon completion
      */
     populateAsync(context: CompletionContext, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous operation to populate a completion provider.
+     * @param result a #GAsyncResult provided to callback
      */
     populateFinish(result: Gio.AsyncResult): Gio.ListModel
     /**
@@ -410,6 +428,8 @@ class CompletionProvider {
      * This can happen as the user types additional text onto the word so
      * that previously matched items may be removed from the list instead of
      * generating new [iface`Gio`.ListModel] of results.
+     * @param context a #GtkSourceCompletionContext
+     * @param model a #GListModel
      */
     refilter(context: CompletionContext, model: Gio.ListModel): void
     static name: string
@@ -441,6 +461,8 @@ class Indenter {
      * 
      * The default implementation for this virtual function will copy the
      * indentation of the previous line.
+     * @param view a #GtkSourceView
+     * @param iter the location of the indentation request
      */
     indent(view: View, iter: Gtk.TextIter): /* iter */ Gtk.TextIter
     /**
@@ -452,6 +474,10 @@ class Indenter {
      * not have %GDK_SHIFT_MASK set. This is to allow the user to avoid
      * indentation when Shift+Return is pressed. Other indenters may want
      * to copy this behavior to provide a consistent experience to users.
+     * @param view a #GtkSourceView
+     * @param location the location where `ch` is to be inserted
+     * @param state modifier state for the insertion
+     * @param keyval the keyval pressed such as [const`Gdk`.KEY_Return]
      */
     isTrigger(view: View, location: Gtk.TextIter, state: Gdk.ModifierType, keyval: number): boolean
     static name: string
@@ -471,6 +497,7 @@ class StyleSchemeChooser {
     getStyleScheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     setStyleScheme(scheme: StyleScheme): void
     static name: string
@@ -545,6 +572,10 @@ class Buffer {
      */
     readonly hasSelection: boolean
     /**
+     * The GtkTextTagTable for the buffer.
+     */
+    readonly tagTable: Gtk.TextTagTable
+    /**
      * The text content of the buffer.
      * 
      * Without child widgets and images,
@@ -552,10 +583,10 @@ class Buffer {
      */
     text: string
     /* Fields of Gtk-4.0.Gtk.TextBuffer */
-    readonly parentInstance: GObject.Object
-    readonly priv: Gtk.TextBufferPrivate
+    parentInstance: GObject.Object
+    priv: Gtk.TextBufferPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Buffer */
     /**
      * Moves `iter` to the position of the previous [class`Mark]` of the given
@@ -563,6 +594,8 @@ class Buffer {
      * 
      * Returns %TRUE if `iter` was moved. If `category` is NULL, the
      * previous source mark can be of any category.
+     * @param iter an iterator.
+     * @param category category to search for, or %NULL
      */
     backwardIterToSourceMark(iter: Gtk.TextIter, category?: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -570,6 +603,9 @@ class Buffer {
      * 
      * Since 5.4, this function will update the position of `start` and
      * `end` to surround the modified text.
+     * @param caseType how to change the case.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
      */
     changeCase(caseType: ChangeCaseType, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -588,6 +624,9 @@ class Buffer {
      * 
      * Typical uses for a source mark are bookmarks, breakpoints, current
      * executing instruction indication in a source file, etc..
+     * @param name the name of the mark, or %NULL.
+     * @param category a string defining the mark category.
+     * @param where location to place the mark.
      */
     createSourceMark(name: string | null, category: string, where: Gtk.TextIter): Mark
     /**
@@ -598,6 +637,8 @@ class Buffer {
      * This is a potentially slow operation and should be used only
      * when you need to make sure that some text not currently
      * visible is highlighted, for instance before printing.
+     * @param start start of the area to highlight.
+     * @param end end of the area to highlight.
      */
     ensureHighlight(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -606,12 +647,15 @@ class Buffer {
      * 
      * Returns %TRUE if `iter` was moved. If `category` is NULL, the
      * next source mark can be of any category.
+     * @param iter an iterator.
+     * @param category category to search for, or %NULL
      */
     forwardIterToSourceMark(iter: Gtk.TextIter, category?: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Get all defined context classes at `iter`.
      * 
      * See the [class`Buffer]` description for the list of default context classes.
+     * @param iter a #GtkTextIter.
      */
     getContextClassesAtIter(iter: Gtk.TextIter): string[]
     /**
@@ -636,12 +680,16 @@ class Buffer {
      * Returns the list of marks of the given category at `iter`.
      * 
      * If `category` is %NULL it returns all marks at `iter`.
+     * @param iter an iterator.
+     * @param category category to search for, or %NULL
      */
     getSourceMarksAtIter(iter: Gtk.TextIter, category?: string | null): Mark[]
     /**
      * Returns the list of marks of the given category at `line`.
      * 
      * If `category` is %NULL, all marks at `line` are returned.
+     * @param line a line number.
+     * @param category category to search for, or %NULL
      */
     getSourceMarksAtLine(line: number, category?: string | null): Mark[]
     /**
@@ -660,6 +708,8 @@ class Buffer {
      * toggle is found.
      * 
      * See the [class`Buffer]` description for the list of default context classes.
+     * @param iter a #GtkTextIter.
+     * @param contextClass the context class.
      */
     iterBackwardToContextClassToggle(iter: Gtk.TextIter, contextClass: string): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -671,22 +721,31 @@ class Buffer {
      * toggle is found.
      * 
      * See the [class`Buffer]` description for the list of default context classes.
+     * @param iter a #GtkTextIter.
+     * @param contextClass the context class.
      */
     iterForwardToContextClassToggle(iter: Gtk.TextIter, contextClass: string): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Check if the class `context_class` is set on `iter`.
      * 
      * See the [class`Buffer]` description for the list of default context classes.
+     * @param iter a #GtkTextIter.
+     * @param contextClass class to search for.
      */
     iterHasContextClass(iter: Gtk.TextIter, contextClass: string): boolean
     /**
      * Joins the lines of text between the specified iterators.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
      */
     joinLines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * Remove all marks of `category` between `start` and `end` from the buffer.
      * 
      * If `category` is NULL, all marks in the range will be removed.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param category category to search for, or %NULL.
      */
     removeSourceMarks(start: Gtk.TextIter, end: Gtk.TextIter, category?: string | null): void
     /**
@@ -695,6 +754,7 @@ class Buffer {
      * If activated, when you position your cursor over a bracket character
      * (a parenthesis, a square bracket, etc.) the matching opening or
      * closing bracket character will be highlighted.
+     * @param highlight %TRUE if you want matching brackets highlighted.
      */
     setHighlightMatchingBrackets(highlight: boolean): void
     /**
@@ -706,6 +766,7 @@ class Buffer {
      * If `highlight` is %FALSE, syntax highlighting is disabled and all the
      * [class`Gtk`.TextTag] objects that have been added by the syntax highlighting engine
      * are removed from the buffer.
+     * @param highlight %TRUE to enable syntax highlighting, %FALSE to disable it.
      */
     setHighlightSyntax(highlight: boolean): void
     /**
@@ -724,6 +785,7 @@ class Buffer {
      * On the other hand, if `implicit_trailing_newline` is %FALSE, the file's
      * content is not modified when loaded into the `buffer,` and the `buffer'`s
      * content is not modified when saved into a file.
+     * @param implicitTrailingNewline the new value.
      */
     setImplicitTrailingNewline(implicitTrailingNewline: boolean): void
     /**
@@ -734,6 +796,7 @@ class Buffer {
      * syntax highlighting, see [method`Buffer`.set_highlight_syntax].
      * 
      * The buffer holds a reference to `language`.
+     * @param language a #GtkSourceLanguage to set, or %NULL.
      */
     setLanguage(language?: Language | null): void
     /**
@@ -750,10 +813,15 @@ class Buffer {
      * background color).
      * 
      * The buffer holds a reference to `scheme`.
+     * @param scheme a #GtkSourceStyleScheme or %NULL.
      */
     setStyleScheme(scheme?: StyleScheme | null): void
     /**
      * Sort the lines of text between the specified iterators.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param flags #GtkSourceSortFlags specifying how the sort should behave
+     * @param column sort considering the text starting at the given column
      */
     sortLines(start: Gtk.TextIter, end: Gtk.TextIter, flags: SortFlags, column: number): void
     /* Methods of Gtk-4.0.Gtk.TextBuffer */
@@ -766,6 +834,8 @@ class Buffer {
      * 
      * Emits the [signal`Gtk`.TextBuffer::mark-set] signal as notification
      * of the mark's initial placement.
+     * @param mark the mark to add
+     * @param where location to place mark
      */
     addMark(mark: Gtk.TextMark, where: Gtk.TextIter): void
     /**
@@ -774,6 +844,7 @@ class Buffer {
      * 
      * In most cases, `clipboard` will be the `GdkClipboard` returned by
      * [method`Gtk`.Widget.get_primary_clipboard] for a view of `buffer`.
+     * @param clipboard a `GdkClipboard`
      */
     addSelectionClipboard(clipboard: Gdk.Clipboard): void
     /**
@@ -782,6 +853,9 @@ class Buffer {
      * The default handler for the signal applies
      * `tag` to the given range. `start` and `end` do
      * not have to be in order.
+     * @param tag a `GtkTextTag`
+     * @param start one bound of range to be tagged
+     * @param end other bound of range to be tagged
      */
     applyTag(tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -790,6 +864,9 @@ class Buffer {
      * Calls [method`Gtk`.TextTagTable.lookup] on the buffer’s
      * tag table to get a `GtkTextTag`, then calls
      * [method`Gtk`.TextBuffer.apply_tag].
+     * @param name name of a named `GtkTextTag`
+     * @param start one bound of range to be tagged
+     * @param end other bound of range to be tagged
      */
     applyTagByName(name: string, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -804,6 +881,9 @@ class Buffer {
      * Because the buffer is modified, all outstanding iterators become
      * invalid after calling this function; however, the `iter` will be
      * re-initialized to point to the location where text was deleted.
+     * @param iter a position in `buffer`
+     * @param interactive whether the deletion is caused by user interaction
+     * @param defaultEditable whether the buffer is editable by default
      */
     backspace(iter: Gtk.TextIter, interactive: boolean, defaultEditable: boolean): boolean
     /**
@@ -843,6 +923,7 @@ class Buffer {
     beginUserAction(): void
     /**
      * Copies the currently-selected text to a clipboard.
+     * @param clipboard the `GdkClipboard` object to copy to
      */
     copyClipboard(clipboard: Gdk.Clipboard): void
     /**
@@ -854,6 +935,7 @@ class Buffer {
      * 
      * The new anchor is owned by the buffer; no reference count is
      * returned to the caller of this function.
+     * @param iter location in the buffer
      */
     createChildAnchor(iter: Gtk.TextIter): Gtk.TextChildAnchor
     /**
@@ -876,11 +958,16 @@ class Buffer {
      * 
      * Emits the [signal`Gtk`.TextBuffer::mark-set] signal as notification
      * of the mark's initial placement.
+     * @param markName name for mark
+     * @param where location to place mark
+     * @param leftGravity whether the mark has left gravity
      */
     createMark(markName: string | null, where: Gtk.TextIter, leftGravity: boolean): Gtk.TextMark
     /**
      * Copies the currently-selected text to a clipboard,
      * then deletes said text if it’s editable.
+     * @param clipboard the `GdkClipboard` object to cut to
+     * @param defaultEditable default editability of the buffer
      */
     cutClipboard(clipboard: Gdk.Clipboard, defaultEditable: boolean): void
     /**
@@ -894,6 +981,8 @@ class Buffer {
      * buffer is modified, all outstanding iterators become invalid after
      * calling this function; however, the `start` and `end` will be
      * re-initialized to point to the location where text was deleted.
+     * @param start a position in `buffer`
+     * @param end another position in `buffer`
      */
     delete(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -903,6 +992,9 @@ class Buffer {
      * sub-range of [`start,``end)`. `start` and `end` are revalidated
      * to point to the location of the last deleted range, or left
      * untouched if no text was deleted.
+     * @param startIter start of range to delete
+     * @param endIter end of range
+     * @param defaultEditable whether the buffer is editable by default
      */
     deleteInteractive(startIter: Gtk.TextIter, endIter: Gtk.TextIter, defaultEditable: boolean): boolean
     /**
@@ -918,12 +1010,14 @@ class Buffer {
      * 
      * The [signal`Gtk`.TextBuffer::mark-deleted] signal will be emitted as
      * notification after the mark is deleted.
+     * @param mark a `GtkTextMark` in `buffer`
      */
     deleteMark(mark: Gtk.TextMark): void
     /**
      * Deletes the mark named `name;` the mark must exist.
      * 
      * See [method`Gtk`.TextBuffer.delete_mark] for details.
+     * @param name name of a mark in `buffer`
      */
     deleteMarkByName(name: string): void
     /**
@@ -932,6 +1026,8 @@ class Buffer {
      * 
      * If `interactive` is %TRUE, the editability of the selection will be
      * considered (users can’t delete uneditable text).
+     * @param interactive whether the deletion is caused by user interaction
+     * @param defaultEditable whether the buffer is editable by default
      */
     deleteSelection(interactive: boolean, defaultEditable: boolean): boolean
     /**
@@ -1013,6 +1109,7 @@ class Buffer {
     getInsert(): Gtk.TextMark
     /**
      * Obtains the location of `anchor` within `buffer`.
+     * @param anchor a child anchor that appears in `buffer`
      */
     getIterAtChildAnchor(anchor: Gtk.TextChildAnchor): /* iter */ Gtk.TextIter
     /**
@@ -1020,6 +1117,7 @@ class Buffer {
      * 
      * If `line_number` is greater than or equal to the number of lines
      * in the `buffer,` the end iterator is returned.
+     * @param lineNumber line number counting from 0
      */
     getIterAtLine(lineNumber: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -1031,6 +1129,8 @@ class Buffer {
      * If `line_number` is greater than or equal to the number of lines in the `buffer,`
      * the end iterator is returned. And if `byte_index` is off the
      * end of the line, the iterator at the end of the line is returned.
+     * @param lineNumber line number counting from 0
+     * @param byteIndex byte index from start of line
      */
     getIterAtLineIndex(lineNumber: number, byteIndex: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -1042,10 +1142,13 @@ class Buffer {
      * If `line_number` is greater than or equal to the number of lines in the `buffer,`
      * the end iterator is returned. And if `char_offset` is off the
      * end of the line, the iterator at the end of the line is returned.
+     * @param lineNumber line number counting from 0
+     * @param charOffset char offset from start of line
      */
     getIterAtLineOffset(lineNumber: number, charOffset: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Initializes `iter` with the current position of `mark`.
+     * @param mark a `GtkTextMark` in `buffer`
      */
     getIterAtMark(mark: Gtk.TextMark): /* iter */ Gtk.TextIter
     /**
@@ -1055,6 +1158,7 @@ class Buffer {
      * If `char_offset` is -1 or greater than the number
      * of characters in the buffer, `iter` is initialized to the end iterator,
      * the iterator one past the last valid character in the buffer.
+     * @param charOffset char offset from start of buffer, counting from 0, or -1
      */
     getIterAtOffset(charOffset: number): /* iter */ Gtk.TextIter
     /**
@@ -1066,6 +1170,7 @@ class Buffer {
     /**
      * Returns the mark named `name` in buffer `buffer,` or %NULL if no such
      * mark exists in the buffer.
+     * @param name a mark name
      */
     getMark(name: string): Gtk.TextMark | null
     /**
@@ -1127,6 +1232,9 @@ class Buffer {
      * indexes into the buffer. Contrast with [method`Gtk`.TextBuffer.get_text].
      * Note that 0xFFFC can occur in normal text as well, so it is not a
      * reliable indicator that a paintable or widget is in the buffer.
+     * @param start start of a range
+     * @param end end of a range
+     * @param includeHiddenChars whether to include invisible text
      */
     getSlice(start: Gtk.TextIter, end: Gtk.TextIter, includeHiddenChars: boolean): string
     /**
@@ -1149,6 +1257,9 @@ class Buffer {
      * byte and character indexes into the returned string do not
      * correspond to byte and character indexes into the buffer.
      * Contrast with [method`Gtk`.TextBuffer.get_slice].
+     * @param start start of a range
+     * @param end end of a range
+     * @param includeHiddenChars whether to include invisible text
      */
     getText(start: Gtk.TextIter, end: Gtk.TextIter, includeHiddenChars: boolean): string
     /**
@@ -1160,6 +1271,9 @@ class Buffer {
      * insertion occurs (because the buffer contents change), but the
      * default signal handler revalidates it to point to the end of the
      * inserted text.
+     * @param iter a position in the buffer
+     * @param text text in UTF-8 format
+     * @param len length of text in bytes, or -1
      */
     insert(iter: Gtk.TextIter, text: string, len: number): void
     /**
@@ -1167,6 +1281,8 @@ class Buffer {
      * 
      * Simply calls [method`Gtk`.TextBuffer.insert],
      * using the current cursor position as the insertion point.
+     * @param text text in UTF-8 format
+     * @param len length of text, in bytes
      */
     insertAtCursor(text: string, len: number): void
     /**
@@ -1183,6 +1299,8 @@ class Buffer {
      * Consider [method`Gtk`.TextBuffer.create_child_anchor] as a more
      * convenient alternative to this function. The buffer will add a
      * reference to the anchor, so you can unref it after insertion.
+     * @param iter location to insert the anchor
+     * @param anchor a `GtkTextChildAnchor`
      */
     insertChildAnchor(iter: Gtk.TextIter, anchor: Gtk.TextChildAnchor): void
     /**
@@ -1196,6 +1314,10 @@ class Buffer {
      * `default_editable` indicates the editability of text that doesn't
      * have a tag affecting editability applied to it. Typically the
      * result of [method`Gtk`.TextView.get_editable] is appropriate here.
+     * @param iter a position in `buffer`
+     * @param text some UTF-8 text
+     * @param len length of text in bytes, or -1
+     * @param defaultEditable default editability of buffer
      */
     insertInteractive(iter: Gtk.TextIter, text: string, len: number, defaultEditable: boolean): boolean
     /**
@@ -1207,6 +1329,9 @@ class Buffer {
      * `default_editable` indicates the editability of text that doesn't
      * have a tag affecting editability applied to it. Typically the
      * result of [method`Gtk`.TextView.get_editable] is appropriate here.
+     * @param text text in UTF-8 format
+     * @param len length of text in bytes, or -1
+     * @param defaultEditable default editability of buffer
      */
     insertInteractiveAtCursor(text: string, len: number, defaultEditable: boolean): boolean
     /**
@@ -1216,6 +1341,9 @@ class Buffer {
      * and valid UTF-8. Emits the [signal`Gtk`.TextBuffer::insert-text] signal,
      * possibly multiple times; insertion actually occurs in the default handler
      * for the signal. `iter` will point to the end of the inserted text on return.
+     * @param iter location to insert the markup
+     * @param markup a nul-terminated UTF-8 string containing Pango markup
+     * @param len length of `markup` in bytes, or -1
      */
     insertMarkup(iter: Gtk.TextIter, markup: string, len: number): void
     /**
@@ -1228,6 +1356,8 @@ class Buffer {
      * as a string include this character for paintable, but the “text”
      * variants do not. e.g. see [method`Gtk`.TextBuffer.get_slice] and
      * [method`Gtk`.TextBuffer.get_text].
+     * @param iter location to insert the paintable
+     * @param paintable a `GdkPaintable`
      */
     insertPaintable(iter: Gtk.TextIter, paintable: Gdk.Paintable): void
     /**
@@ -1242,6 +1372,9 @@ class Buffer {
      * 
      * Implemented via emissions of the ::insert-text and ::apply-tag signals,
      * so expect those.
+     * @param iter a position in `buffer`
+     * @param start a position in a `GtkTextBuffer`
+     * @param end another position in the same buffer as `start`
      */
     insertRange(iter: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -1253,6 +1386,10 @@ class Buffer {
      * parameter indicates whether the text is editable at `iter` if
      * no tags enclosing `iter` affect editability. Typically the result
      * of [method`Gtk`.TextView.get_editable] is appropriate here.
+     * @param iter a position in `buffer`
+     * @param start a position in a `GtkTextBuffer`
+     * @param end another position in the same buffer as `start`
+     * @param defaultEditable default editability of the buffer
      */
     insertRangeInteractive(iter: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter, defaultEditable: boolean): boolean
     /**
@@ -1260,12 +1397,16 @@ class Buffer {
      * 
      * Emits the [signal`Gtk`.TextBuffer::mark-set] signal
      * as notification of the move.
+     * @param mark a `GtkTextMark`
+     * @param where new location for `mark` in `buffer`
      */
     moveMark(mark: Gtk.TextMark, where: Gtk.TextIter): void
     /**
      * Moves the mark named `name` (which must exist) to location `where`.
      * 
      * See [method`Gtk`.TextBuffer.move_mark] for details.
+     * @param name name of a mark
+     * @param where new location for mark
      */
     moveMarkByName(name: string, where: Gtk.TextIter): void
     /**
@@ -1278,6 +1419,9 @@ class Buffer {
      * Note: pasting is asynchronous, that is, we’ll ask for the paste data
      * and return, and at some point later after the main loop runs, the paste
      * data will be inserted.
+     * @param clipboard the `GdkClipboard` to paste from
+     * @param overrideLocation location to insert pasted text
+     * @param defaultEditable whether the buffer is editable by default
      */
     pasteClipboard(clipboard: Gdk.Clipboard, overrideLocation: Gtk.TextIter | null, defaultEditable: boolean): void
     /**
@@ -1290,6 +1434,7 @@ class Buffer {
      * inefficient since the temporarily-selected region will force stuff
      * to be recalculated. This function moves them as a unit, which can
      * be optimized.
+     * @param where where to put the cursor
      */
     placeCursor(where: Gtk.TextIter): void
     /**
@@ -1303,11 +1448,14 @@ class Buffer {
      * unrelated to the code you’re currently writing. That is, using this
      * function is probably a bad idea if you have two or more unrelated
      * code sections that add tags.
+     * @param start one bound of range to be untagged
+     * @param end other bound of range to be untagged
      */
     removeAllTags(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * Removes a `GdkClipboard` added with
      * gtk_text_buffer_add_selection_clipboard().
+     * @param clipboard a `GdkClipboard` added to `buffer` by   [method`Gtk`.TextBuffer.add_selection_clipboard]
      */
     removeSelectionClipboard(clipboard: Gdk.Clipboard): void
     /**
@@ -1316,6 +1464,9 @@ class Buffer {
      * The default handler for the signal removes all occurrences
      * of `tag` from the given range. `start` and `end` don’t have
      * to be in order.
+     * @param tag a `GtkTextTag`
+     * @param start one bound of range to be untagged
+     * @param end other bound of range to be untagged
      */
     removeTag(tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -1324,6 +1475,9 @@ class Buffer {
      * Calls [method`Gtk`.TextTagTable.lookup] on the buffer’s
      * tag table to get a `GtkTextTag`, then calls
      * [method`Gtk`.TextBuffer.remove_tag].
+     * @param name name of a `GtkTextTag`
+     * @param start one bound of range to be untagged
+     * @param end other bound of range to be untagged
      */
     removeTagByName(name: string, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -1336,6 +1490,8 @@ class Buffer {
      * inefficient since the temporarily-selected region will force stuff
      * to be recalculated. This function moves them as a unit, which can
      * be optimized.
+     * @param ins where to put the “insert” mark
+     * @param bound where to put the “selection_bound” mark
      */
     selectRange(ins: Gtk.TextIter, bound: Gtk.TextIter): void
     /**
@@ -1350,6 +1506,7 @@ class Buffer {
      * See [method`Gtk`.TextBuffer.begin_irreversible_action] and
      * [method`Gtk`.TextBuffer.end_irreversible_action] to create
      * changes to the buffer that cannot be undone.
+     * @param enableUndo %TRUE to enable undo
      */
     setEnableUndo(enableUndo: boolean): void
     /**
@@ -1358,6 +1515,7 @@ class Buffer {
      * If 0, unlimited undo actions may be performed. Note that this may
      * have a memory usage impact as it requires storing an additional
      * copy of the inserted or removed text within the text buffer.
+     * @param maxUndoLevels the maximum number of undo actions to perform
      */
     setMaxUndoLevels(maxUndoLevels: number): void
     /**
@@ -1370,6 +1528,7 @@ class Buffer {
      * toggled on the modified bit again. When the modified
      * bit flips, the buffer emits the
      * [signal`Gtk`.TextBuffer::modified-changed] signal.
+     * @param setting modification flag setting
      */
     setModified(setting: boolean): void
     /**
@@ -1377,6 +1536,8 @@ class Buffer {
      * 
      * If `len` is -1, `text` must be nul-terminated.
      * `text` must be valid UTF-8.
+     * @param text UTF-8 text to insert
+     * @param len length of `text` in bytes
      */
     setText(text: string, len: number): void
     /**
@@ -1418,6 +1579,10 @@ class Buffer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1428,6 +1593,12 @@ class Buffer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1451,6 +1622,7 @@ class Buffer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1470,11 +1642,14 @@ class Buffer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1482,6 +1657,8 @@ class Buffer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1499,6 +1676,7 @@ class Buffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1544,6 +1722,7 @@ class Buffer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1587,15 +1766,20 @@ class Buffer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1636,6 +1820,7 @@ class Buffer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1670,6 +1855,7 @@ class Buffer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GtkSource-5.GtkSource.Buffer */
@@ -1682,6 +1868,8 @@ class Buffer {
      * the cursor moves.
      * 
      * A use-case for this signal is to show messages in a [class`Gtk`.Statusbar].
+     * @param iter if found, the location of the matching bracket.
+     * @param state state of bracket matching.
      */
     connect(sigName: "bracket-matched", callback: ((iter: Gtk.TextIter | null, state: BracketMatchType) => void)): number
     on(sigName: "bracket-matched", callback: (iter: Gtk.TextIter | null, state: BracketMatchType) => void, after?: boolean): NodeJS.EventEmitter
@@ -1700,6 +1888,8 @@ class Buffer {
      * The ::highlight-updated signal is emitted when the syntax
      * highlighting and [context classes](./class.Buffer.html#context-classes) are updated in a
      * certain region of the `buffer`.
+     * @param start the start of the updated region
+     * @param end the end of the updated region
      */
     connect(sigName: "highlight-updated", callback: ((start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     on(sigName: "highlight-updated", callback: (start: Gtk.TextIter, end: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -1709,6 +1899,7 @@ class Buffer {
     /**
      * The ::source-mark-updated signal is emitted each time
      * a mark is added to, moved or removed from the `buffer`.
+     * @param mark the [class`Mark]`
      */
     connect(sigName: "source-mark-updated", callback: ((mark: Gtk.TextMark) => void)): number
     on(sigName: "source-mark-updated", callback: (mark: Gtk.TextMark) => void, after?: boolean): NodeJS.EventEmitter
@@ -1729,6 +1920,9 @@ class Buffer {
      * [method`Gtk`.TextBuffer.apply_tag],
      * [method`Gtk`.TextBuffer.insert_with_tags],
      * [method`Gtk`.TextBuffer.insert_range].
+     * @param tag the applied tag
+     * @param start the start of the range the tag is applied to
+     * @param end the end of the range the tag is applied to
      */
     connect(sigName: "apply-tag", callback: ((tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     on(sigName: "apply-tag", callback: (tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -1772,6 +1966,8 @@ class Buffer {
      * the deleted text.
      * 
      * See also: [method`Gtk`.TextBuffer.delete].
+     * @param start the start of the range to be deleted
+     * @param end the end of the range to be deleted
      */
     connect(sigName: "delete-range", callback: ((start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     on(sigName: "delete-range", callback: (start: Gtk.TextIter, end: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -1807,6 +2003,8 @@ class Buffer {
      * it to be placed after the inserted `anchor`.
      * 
      * See also: [method`Gtk`.TextBuffer.insert_child_anchor].
+     * @param location position to insert `anchor` in `textbuffer`
+     * @param anchor the `GtkTextChildAnchor` to be inserted
      */
     connect(sigName: "insert-child-anchor", callback: ((location: Gtk.TextIter, anchor: Gtk.TextChildAnchor) => void)): number
     on(sigName: "insert-child-anchor", callback: (location: Gtk.TextIter, anchor: Gtk.TextChildAnchor) => void, after?: boolean): NodeJS.EventEmitter
@@ -1824,6 +2022,8 @@ class Buffer {
      * it to be placed after the inserted `paintable`.
      * 
      * See also: [method`Gtk`.TextBuffer.insert_paintable].
+     * @param location position to insert `paintable` in `textbuffer`
+     * @param paintable the `GdkPaintable` to be inserted
      */
     connect(sigName: "insert-paintable", callback: ((location: Gtk.TextIter, paintable: Gdk.Paintable) => void)): number
     on(sigName: "insert-paintable", callback: (location: Gtk.TextIter, paintable: Gdk.Paintable) => void, after?: boolean): NodeJS.EventEmitter
@@ -1842,6 +2042,9 @@ class Buffer {
      * 
      * See also: [method`Gtk`.TextBuffer.insert],
      * [method`Gtk`.TextBuffer.insert_range].
+     * @param location position to insert `text` in `textbuffer`
+     * @param text the UTF-8 text to be inserted
+     * @param len length of the inserted text in bytes
      */
     connect(sigName: "insert-text", callback: ((location: Gtk.TextIter, text: string, len: number) => void)): number
     on(sigName: "insert-text", callback: (location: Gtk.TextIter, text: string, len: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1852,6 +2055,7 @@ class Buffer {
      * Emitted as notification after a `GtkTextMark` is deleted.
      * 
      * See also: [method`Gtk`.TextBuffer.delete_mark].
+     * @param mark The mark that was deleted
      */
     connect(sigName: "mark-deleted", callback: ((mark: Gtk.TextMark) => void)): number
     on(sigName: "mark-deleted", callback: (mark: Gtk.TextMark) => void, after?: boolean): NodeJS.EventEmitter
@@ -1864,6 +2068,8 @@ class Buffer {
      * See also:
      * [method`Gtk`.TextBuffer.create_mark],
      * [method`Gtk`.TextBuffer.move_mark].
+     * @param location The location of `mark` in `textbuffer`
+     * @param mark The mark that is set
      */
     connect(sigName: "mark-set", callback: ((location: Gtk.TextIter, mark: Gtk.TextMark) => void)): number
     on(sigName: "mark-set", callback: (location: Gtk.TextIter, mark: Gtk.TextMark) => void, after?: boolean): NodeJS.EventEmitter
@@ -1886,6 +2092,7 @@ class Buffer {
      * This is useful to properly scroll the view to the end
      * of the pasted text. See [method`Gtk`.TextBuffer.paste_clipboard]
      * for more details.
+     * @param clipboard the `GdkClipboard` pasted from
      */
     connect(sigName: "paste-done", callback: ((clipboard: Gdk.Clipboard) => void)): number
     on(sigName: "paste-done", callback: (clipboard: Gdk.Clipboard) => void, after?: boolean): NodeJS.EventEmitter
@@ -1912,6 +2119,9 @@ class Buffer {
      * to revalidate them).
      * 
      * See also: [method`Gtk`.TextBuffer.remove_tag].
+     * @param tag the tag to be removed
+     * @param start the start of the range the tag is removed from
+     * @param end the end of the range the tag is removed from
      */
     connect(sigName: "remove-tag", callback: ((tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     on(sigName: "remove-tag", callback: (tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -1957,6 +2167,7 @@ class Buffer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2013,6 +2224,11 @@ class Buffer {
     on(sigName: "notify::has-selection", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::has-selection", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::has-selection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::tag-table", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tag-table", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::tag-table", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::tag-table", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::tag-table", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::text", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::text", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2088,12 +2304,18 @@ class Completion {
      * the list of completions presented to the user.
      */
     showIcons: boolean
+    /**
+     * The "view" property is the #GtkTextView for which this #GtkSourceCompletion
+     * is providing completion features.
+     */
+    readonly view: View
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Completion */
     /**
      * Adds a [iface`CompletionProvider]` to the list of providers to be queried
      * for completion results.
+     * @param provider a #GtkSourceCompletionProvider
      */
     addProvider(provider: CompletionProvider): void
     blockInteractive(): void
@@ -2116,6 +2338,7 @@ class Completion {
     /**
      * Removes a [iface`CompletionProvider]` previously added with
      * [method`Completion`.add_provider].
+     * @param provider a #GtkSourceCompletionProvider
      */
     removeProvider(provider: CompletionProvider): void
     setPageSize(pageSize: number): void
@@ -2162,6 +2385,10 @@ class Completion {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2172,6 +2399,12 @@ class Completion {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2195,6 +2428,7 @@ class Completion {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2214,11 +2448,14 @@ class Completion {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2226,6 +2463,8 @@ class Completion {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2243,6 +2482,7 @@ class Completion {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2288,6 +2528,7 @@ class Completion {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2331,15 +2572,20 @@ class Completion {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2380,6 +2626,7 @@ class Completion {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2414,6 +2661,7 @@ class Completion {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GtkSource-5.GtkSource.Completion */
@@ -2429,6 +2677,7 @@ class Completion {
     /**
      * The "provided-added" signal is emitted when a new provider is
      * added to the completion.
+     * @param provider a #GtkSourceCompletionProvider
      */
     connect(sigName: "provider-added", callback: ((provider: CompletionProvider) => void)): number
     on(sigName: "provider-added", callback: (provider: CompletionProvider) => void, after?: boolean): NodeJS.EventEmitter
@@ -2438,6 +2687,7 @@ class Completion {
     /**
      * The "provided-removed" signal is emitted when a provider has
      * been removed from the completion.
+     * @param provider a #GtkSourceCompletionProvider
      */
     connect(sigName: "provider-removed", callback: ((provider: CompletionProvider) => void)): number
     on(sigName: "provider-removed", callback: (provider: CompletionProvider) => void, after?: boolean): NodeJS.EventEmitter
@@ -2482,6 +2732,7 @@ class Completion {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2513,6 +2764,11 @@ class Completion {
     on(sigName: "notify::show-icons", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::show-icons", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::show-icons", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::view", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2527,6 +2783,8 @@ class Completion {
     /**
      * This will add `<b>` tags around matched characters in `haystack`
      * based on `casefold_query`.
+     * @param haystack the string to be highlighted
+     * @param casefoldQuery the typed-text used to highlight `haystack`
      */
     static fuzzyHighlight(haystack: string, casefoldQuery: string): Pango.AttrList | null
     /**
@@ -2538,6 +2796,8 @@ class Completion {
      * 
      * Score will be set with the score of the match upon success. Otherwise,
      * it will be set to zero.
+     * @param haystack the string to be searched.
+     * @param casefoldNeedle A g_utf8_casefold() version of the needle.
      */
     static fuzzyMatch(haystack: string | null, casefoldNeedle: string): [ /* returnType */ boolean, /* priority */ number | null ]
     static $gtype: GObject.Type
@@ -2559,6 +2819,7 @@ interface CompletionCell_ConstructProps extends Gtk.Widget_ConstructProps {
 }
 class CompletionCell {
     /* Properties of GtkSource-5.GtkSource.CompletionCell */
+    readonly column: CompletionColumn
     markup: string
     paintable: Gdk.Paintable
     text: string
@@ -2580,6 +2841,13 @@ class CompletionCell {
      * A list of css classes applied to this widget.
      */
     cssClasses: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
     /**
      * The cursor used by `widget`.
      */
@@ -2772,9 +3040,9 @@ class CompletionCell {
      */
     accessibleRole: Gtk.AccessibleRole
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.CompletionCell */
     getColumn(): CompletionColumn
     /**
@@ -2792,6 +3060,8 @@ class CompletionCell {
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -2822,6 +3092,8 @@ class CompletionCell {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -2833,6 +3105,7 @@ class CompletionCell {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -2843,6 +3116,7 @@ class CompletionCell {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -2852,6 +3126,7 @@ class CompletionCell {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -2877,6 +3152,7 @@ class CompletionCell {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -2890,6 +3166,10 @@ class CompletionCell {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -2913,6 +3193,7 @@ class CompletionCell {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -2926,6 +3207,7 @@ class CompletionCell {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -2942,6 +3224,7 @@ class CompletionCell {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -2950,6 +3233,8 @@ class CompletionCell {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -2959,6 +3244,7 @@ class CompletionCell {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -2966,6 +3252,8 @@ class CompletionCell {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -2985,10 +3273,15 @@ class CompletionCell {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -3046,6 +3339,7 @@ class CompletionCell {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -3409,6 +3703,7 @@ class CompletionCell {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -3453,6 +3748,8 @@ class CompletionCell {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -3525,6 +3822,7 @@ class CompletionCell {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -3590,6 +3888,8 @@ class CompletionCell {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -3607,6 +3907,8 @@ class CompletionCell {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -3623,11 +3925,14 @@ class CompletionCell {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -3691,6 +3996,7 @@ class CompletionCell {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -3722,12 +4028,15 @@ class CompletionCell {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -3768,6 +4077,9 @@ class CompletionCell {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -3834,12 +4146,14 @@ class CompletionCell {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -3848,11 +4162,13 @@ class CompletionCell {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -3870,10 +4186,12 @@ class CompletionCell {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -3893,11 +4211,13 @@ class CompletionCell {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -3906,6 +4226,7 @@ class CompletionCell {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -3920,6 +4241,7 @@ class CompletionCell {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -3936,6 +4258,7 @@ class CompletionCell {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -3944,6 +4267,7 @@ class CompletionCell {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -3953,6 +4277,7 @@ class CompletionCell {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -3969,6 +4294,7 @@ class CompletionCell {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -3980,6 +4306,7 @@ class CompletionCell {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -3988,14 +4315,17 @@ class CompletionCell {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -4026,6 +4356,7 @@ class CompletionCell {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -4043,27 +4374,33 @@ class CompletionCell {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -4078,6 +4415,7 @@ class CompletionCell {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -4103,6 +4441,7 @@ class CompletionCell {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -4115,6 +4454,7 @@ class CompletionCell {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -4126,12 +4466,14 @@ class CompletionCell {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -4141,6 +4483,7 @@ class CompletionCell {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -4179,6 +4522,8 @@ class CompletionCell {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -4191,6 +4536,8 @@ class CompletionCell {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -4202,6 +4549,7 @@ class CompletionCell {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -4215,10 +4563,12 @@ class CompletionCell {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -4226,12 +4576,14 @@ class CompletionCell {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -4243,6 +4595,7 @@ class CompletionCell {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -4271,6 +4624,8 @@ class CompletionCell {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -4288,6 +4643,8 @@ class CompletionCell {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -4296,6 +4653,9 @@ class CompletionCell {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -4329,6 +4689,7 @@ class CompletionCell {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4366,6 +4727,10 @@ class CompletionCell {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4376,6 +4741,12 @@ class CompletionCell {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4399,6 +4770,7 @@ class CompletionCell {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4418,11 +4790,14 @@ class CompletionCell {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4430,6 +4805,8 @@ class CompletionCell {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4447,6 +4824,7 @@ class CompletionCell {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4492,6 +4870,7 @@ class CompletionCell {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4535,15 +4914,20 @@ class CompletionCell {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4584,6 +4968,7 @@ class CompletionCell {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4618,6 +5003,7 @@ class CompletionCell {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -4627,14 +5013,17 @@ class CompletionCell {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -4644,6 +5033,8 @@ class CompletionCell {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -4653,6 +5044,8 @@ class CompletionCell {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -4662,6 +5055,8 @@ class CompletionCell {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -4688,6 +5083,7 @@ class CompletionCell {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -4706,6 +5102,7 @@ class CompletionCell {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -4733,6 +5130,7 @@ class CompletionCell {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -4741,6 +5139,7 @@ class CompletionCell {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -4762,6 +5161,10 @@ class CompletionCell {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -4791,6 +5194,7 @@ class CompletionCell {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -4851,12 +5255,18 @@ class CompletionCell {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::column", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::column", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::column", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::column", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::column", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::markup", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::markup", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::markup", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4892,6 +5302,11 @@ class CompletionCell {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5074,6 +5489,10 @@ class CompletionContext {
      */
     readonly busy: boolean
     /**
+     * The "completion" is the #GtkSourceCompletion that was used to create the context.
+     */
+    readonly completion: Completion
+    /**
      * The "empty" property is %TRUE when there are no results.
      * 
      * It will be notified when the first result is added or the last
@@ -5081,7 +5500,7 @@ class CompletionContext {
      */
     readonly empty: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.CompletionContext */
     /**
      * Gets the mode for which the context was activated.
@@ -5141,6 +5560,8 @@ class CompletionContext {
      * This can be used to immediately return results for a provider while it does
      * additional asynchronous work. Doing so will allow the completions to
      * update while the operation is in progress.
+     * @param provider an #GtkSourceCompletionProvider
+     * @param results a #GListModel or %NULL
      */
     setProposalsForProvider(provider: CompletionProvider, results?: Gio.ListModel | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5178,6 +5599,10 @@ class CompletionContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5188,6 +5613,12 @@ class CompletionContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5211,6 +5642,7 @@ class CompletionContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5230,11 +5662,14 @@ class CompletionContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5242,6 +5677,8 @@ class CompletionContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5259,6 +5696,7 @@ class CompletionContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5304,6 +5742,7 @@ class CompletionContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5347,15 +5786,20 @@ class CompletionContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5396,6 +5840,7 @@ class CompletionContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5430,6 +5875,7 @@ class CompletionContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.ListModel */
@@ -5465,6 +5911,7 @@ class CompletionContext {
      * of g_list_model_get_item().
      * 
      * See also: g_list_model_get_n_items()
+     * @param position the position of the item to fetch
      */
     getItem(position: number): GObject.Object | null
     /**
@@ -5488,6 +5935,9 @@ class CompletionContext {
      * series of accesses to the model via the API, without returning to the
      * mainloop, and without calling other code, will continue to view the
      * same contents of the model.
+     * @param position the position at which `list` changed
+     * @param removed the number of items removed
+     * @param added the number of items added
      */
     itemsChanged(position: number, removed: number, added: number): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5519,6 +5969,7 @@ class CompletionContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5533,6 +5984,9 @@ class CompletionContext {
      * 
      * Note: If `removed != added`, the positions of all later items
      * in the model change.
+     * @param position the position at which `list` changed
+     * @param removed the number of items removed
+     * @param added the number of items added
      */
     connect(sigName: "items-changed", callback: ((position: number, removed: number, added: number) => void)): number
     on(sigName: "items-changed", callback: (position: number, removed: number, added: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5544,6 +5998,11 @@ class CompletionContext {
     on(sigName: "notify::busy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::busy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::busy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::completion", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::completion", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::completion", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::completion", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::completion", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::empty", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::empty", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::empty", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5571,7 +6030,7 @@ class CompletionSnippets {
     priority: number
     title: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -5607,6 +6066,10 @@ class CompletionSnippets {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5617,6 +6080,12 @@ class CompletionSnippets {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5640,6 +6109,7 @@ class CompletionSnippets {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5659,11 +6129,14 @@ class CompletionSnippets {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5671,6 +6144,8 @@ class CompletionSnippets {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5688,6 +6163,7 @@ class CompletionSnippets {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5733,6 +6209,7 @@ class CompletionSnippets {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5776,15 +6253,20 @@ class CompletionSnippets {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5825,6 +6307,7 @@ class CompletionSnippets {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5859,6 +6342,7 @@ class CompletionSnippets {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GtkSource-5.GtkSource.CompletionProvider */
@@ -5871,6 +6355,8 @@ class CompletionSnippets {
      * edit points the user may cycle through.
      * 
      * See also: [class`Snippet]`, [class`SnippetChunk]`, [method`View`.push_snippet]
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
      */
     activate(context: CompletionContext, proposal: CompletionProposal): void
     /**
@@ -5882,6 +6368,9 @@ class CompletionSnippets {
      * This allows for columns of information among completion proposals
      * resulting in better alignment of similar content (icons, return types,
      * method names, and parameter lists).
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
+     * @param cell a #GtkSourceCompletionCell
      */
     display(context: CompletionContext, proposal: CompletionProposal, cell: CompletionCell): void
     /**
@@ -5892,6 +6381,7 @@ class CompletionSnippets {
      * above lower priority providers.
      * 
      * Lower value indicates higher priority.
+     * @param context a #GtkSourceCompletionContext
      */
     getPriority(context: CompletionContext): number
     /**
@@ -5907,6 +6397,8 @@ class CompletionSnippets {
      * 
      * An example would be period '.' which might indicate that the user wants
      * to complete method or field names of an object.
+     * @param iter a #GtkTextIter
+     * @param ch a #gunichar of the character inserted
      */
     isTrigger(iter: Gtk.TextIter, ch: number): boolean
     /**
@@ -5916,6 +6408,10 @@ class CompletionSnippets {
      * This is useful when using languages where convention may lead to less
      * typing by the user. One example may be the use of "." or "-" to expand
      * a field access in the C programming language.
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
+     * @param keyval a keyval such as [const`Gdk`.KEY_period]
+     * @param state a #GdkModifierType or 0
      */
     keyActivates(context: CompletionContext, proposal: CompletionProposal, keyval: number, state: Gdk.ModifierType): boolean
     /**
@@ -5924,6 +6420,8 @@ class CompletionSnippets {
      * 
      * This can be used by the completion view to allow the user to move laterally
      * through similar proposals, such as overrides of methods by the same name.
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
      */
     listAlternates(context: CompletionContext, proposal: CompletionProposal): CompletionProposal[] | null
     /**
@@ -5934,10 +6432,14 @@ class CompletionSnippets {
      * results are displayed to the user,
      * [method`CompletionContext`.set_proposals_for_provider] may be used
      * to reduce latency until the user sees results.
+     * @param context a #GtkSourceCompletionContext
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a callback to execute upon completion
      */
     populateAsync(context: CompletionContext, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous operation to populate a completion provider.
+     * @param result a #GAsyncResult provided to callback
      */
     populateFinish(result: Gio.AsyncResult): Gio.ListModel
     /**
@@ -5947,6 +6449,8 @@ class CompletionSnippets {
      * This can happen as the user types additional text onto the word so
      * that previously matched items may be removed from the list instead of
      * generating new [iface`Gio`.ListModel] of results.
+     * @param context a #GtkSourceCompletionContext
+     * @param model a #GListModel
      */
     refilter(context: CompletionContext, model: Gio.ListModel): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5978,6 +6482,7 @@ class CompletionSnippets {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6024,14 +6529,16 @@ class CompletionWords {
     scanBatchSize: number
     title: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.CompletionWords */
     /**
      * Registers `buffer` in the `words` provider.
+     * @param buffer a #GtkTextBuffer
      */
     register(buffer: Gtk.TextBuffer): void
     /**
      * Unregisters `buffer` from the `words` provider.
+     * @param buffer a #GtkTextBuffer
      */
     unregister(buffer: Gtk.TextBuffer): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6069,6 +6576,10 @@ class CompletionWords {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6079,6 +6590,12 @@ class CompletionWords {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6102,6 +6619,7 @@ class CompletionWords {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6121,11 +6639,14 @@ class CompletionWords {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6133,6 +6654,8 @@ class CompletionWords {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6150,6 +6673,7 @@ class CompletionWords {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6195,6 +6719,7 @@ class CompletionWords {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6238,15 +6763,20 @@ class CompletionWords {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6287,6 +6817,7 @@ class CompletionWords {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6321,6 +6852,7 @@ class CompletionWords {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GtkSource-5.GtkSource.CompletionProvider */
@@ -6333,6 +6865,8 @@ class CompletionWords {
      * edit points the user may cycle through.
      * 
      * See also: [class`Snippet]`, [class`SnippetChunk]`, [method`View`.push_snippet]
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
      */
     activate(context: CompletionContext, proposal: CompletionProposal): void
     /**
@@ -6344,6 +6878,9 @@ class CompletionWords {
      * This allows for columns of information among completion proposals
      * resulting in better alignment of similar content (icons, return types,
      * method names, and parameter lists).
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
+     * @param cell a #GtkSourceCompletionCell
      */
     display(context: CompletionContext, proposal: CompletionProposal, cell: CompletionCell): void
     /**
@@ -6354,6 +6891,7 @@ class CompletionWords {
      * above lower priority providers.
      * 
      * Lower value indicates higher priority.
+     * @param context a #GtkSourceCompletionContext
      */
     getPriority(context: CompletionContext): number
     /**
@@ -6369,6 +6907,8 @@ class CompletionWords {
      * 
      * An example would be period '.' which might indicate that the user wants
      * to complete method or field names of an object.
+     * @param iter a #GtkTextIter
+     * @param ch a #gunichar of the character inserted
      */
     isTrigger(iter: Gtk.TextIter, ch: number): boolean
     /**
@@ -6378,6 +6918,10 @@ class CompletionWords {
      * This is useful when using languages where convention may lead to less
      * typing by the user. One example may be the use of "." or "-" to expand
      * a field access in the C programming language.
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
+     * @param keyval a keyval such as [const`Gdk`.KEY_period]
+     * @param state a #GdkModifierType or 0
      */
     keyActivates(context: CompletionContext, proposal: CompletionProposal, keyval: number, state: Gdk.ModifierType): boolean
     /**
@@ -6386,6 +6930,8 @@ class CompletionWords {
      * 
      * This can be used by the completion view to allow the user to move laterally
      * through similar proposals, such as overrides of methods by the same name.
+     * @param context a #GtkSourceCompletionContext
+     * @param proposal a #GtkSourceCompletionProposal
      */
     listAlternates(context: CompletionContext, proposal: CompletionProposal): CompletionProposal[] | null
     /**
@@ -6396,10 +6942,14 @@ class CompletionWords {
      * results are displayed to the user,
      * [method`CompletionContext`.set_proposals_for_provider] may be used
      * to reduce latency until the user sees results.
+     * @param context a #GtkSourceCompletionContext
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a callback to execute upon completion
      */
     populateAsync(context: CompletionContext, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous operation to populate a completion provider.
+     * @param result a #GAsyncResult provided to callback
      */
     populateFinish(result: Gio.AsyncResult): Gio.ListModel
     /**
@@ -6409,6 +6959,8 @@ class CompletionWords {
      * This can happen as the user types additional text onto the word so
      * that previously matched items may be removed from the list instead of
      * generating new [iface`Gio`.ListModel] of results.
+     * @param context a #GtkSourceCompletionContext
+     * @param model a #GListModel
      */
     refilter(context: CompletionContext, model: Gio.ListModel): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6440,6 +6992,7 @@ class CompletionWords {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6517,7 +7070,7 @@ class File {
      */
     readonly readOnly: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.File */
     /**
      * Checks synchronously the file on disk, to know whether the file is externally
@@ -6570,6 +7123,7 @@ class File {
     isReadonly(): boolean
     /**
      * Sets the location.
+     * @param location the new #GFile, or %NULL.
      */
     setLocation(location?: Gio.File | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6607,6 +7161,10 @@ class File {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6617,6 +7175,12 @@ class File {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6640,6 +7204,7 @@ class File {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6659,11 +7224,14 @@ class File {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6671,6 +7239,8 @@ class File {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6688,6 +7258,7 @@ class File {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6733,6 +7304,7 @@ class File {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6776,15 +7348,20 @@ class File {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6825,6 +7402,7 @@ class File {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6859,6 +7437,7 @@ class File {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6890,6 +7469,7 @@ class File {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6960,8 +7540,30 @@ interface FileLoader_ConstructProps extends GObject.Object_ConstructProps {
     location?: Gio.File
 }
 class FileLoader {
+    /* Properties of GtkSource-5.GtkSource.FileLoader */
+    /**
+     * The #GtkSourceBuffer to load the contents into. The
+     * #GtkSourceFileLoader object has a weak reference to the buffer.
+     */
+    readonly buffer: Buffer
+    /**
+     * The #GtkSourceFile. The #GtkSourceFileLoader object has a weak
+     * reference to the file.
+     */
+    readonly file: File
+    /**
+     * The #GInputStream to load. Useful for reading stdin. If this property
+     * is set, the #GtkSourceFileLoader:location property is ignored.
+     */
+    readonly inputStream: Gio.InputStream
+    /**
+     * The #GFile to load. If the #GtkSourceFileLoader:input-stream is
+     * %NULL, by default the location is taken from the #GtkSourceFile at
+     * construction time.
+     */
+    readonly location: Gio.File
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.FileLoader */
     getBuffer(): Buffer
     getCompressionType(): CompressionType
@@ -6975,6 +7577,10 @@ class FileLoader {
      * 
      * See the [iface`Gio`.AsyncResult] documentation to know how to use this
      * function.
+     * @param ioPriority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progressCallback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     loadAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, progressCallback?: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6983,6 +7589,7 @@ class FileLoader {
      * If the contents has been loaded, the following [class`File]` properties will
      * be updated: the location, the encoding, the newline type and the compression
      * type.
+     * @param result a #GAsyncResult.
      */
     loadFinish(result: Gio.AsyncResult): boolean
     /**
@@ -6997,6 +7604,7 @@ class FileLoader {
      * 
      * 1. If set, the [class`File]`'s encoding as returned by [method`File`.get_encoding].
      * 2. The default candidates as returned by [func`Encoding`.get_default_candidates].
+     * @param candidateEncodings a list of   #GtkSourceEncoding<!-- -->s.
      */
     setCandidateEncodings(candidateEncodings: Encoding[]): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7034,6 +7642,10 @@ class FileLoader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7044,6 +7656,12 @@ class FileLoader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7067,6 +7685,7 @@ class FileLoader {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7086,11 +7705,14 @@ class FileLoader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7098,6 +7720,8 @@ class FileLoader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7115,6 +7739,7 @@ class FileLoader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7160,6 +7785,7 @@ class FileLoader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7203,15 +7829,20 @@ class FileLoader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7252,6 +7883,7 @@ class FileLoader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7286,6 +7918,7 @@ class FileLoader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7317,12 +7950,33 @@ class FileLoader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::input-stream", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::input-stream", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::input-stream", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::input-stream", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::input-stream", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::location", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::location", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::location", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::location", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::location", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7375,6 +8029,11 @@ interface FileSaver_ConstructProps extends GObject.Object_ConstructProps {
 class FileSaver {
     /* Properties of GtkSource-5.GtkSource.FileSaver */
     /**
+     * The #GtkSourceBuffer to save. The #GtkSourceFileSaver object has a
+     * weak reference to the buffer.
+     */
+    readonly buffer: Buffer
+    /**
      * The compression type.
      */
     compressionType: CompressionType
@@ -7383,15 +8042,25 @@ class FileSaver {
      */
     encoding: Encoding
     /**
+     * The #GtkSourceFile. The #GtkSourceFileSaver object has a weak
+     * reference to the file.
+     */
+    readonly file: File
+    /**
      * File saving flags.
      */
     flags: FileSaverFlags
+    /**
+     * The #GFile where to save the buffer. By default the location is taken
+     * from the #GtkSourceFile at construction time.
+     */
+    readonly location: Gio.File
     /**
      * The newline type.
      */
     newlineType: NewlineType
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.FileSaver */
     getBuffer(): Buffer
     getCompressionType(): CompressionType
@@ -7404,6 +8073,10 @@ class FileSaver {
      * Saves asynchronously the buffer into the file.
      * 
      * See the [iface`Gio`.AsyncResult] documentation to know how to use this function.
+     * @param ioPriority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progressCallback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     saveAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, progressCallback?: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7415,23 +8088,27 @@ class FileSaver {
      * 
      * Since the 3.20 version, [method`Gtk`.TextBuffer.set_modified] is called with %FALSE
      * if the file has been saved successfully.
+     * @param result a #GAsyncResult.
      */
     saveFinish(result: Gio.AsyncResult): boolean
     /**
      * Sets the compression type. By default the compression type is taken from the
      * #GtkSourceFile.
+     * @param compressionType the new compression type.
      */
     setCompressionType(compressionType: CompressionType): void
     /**
      * Sets the encoding. If `encoding` is %NULL, the UTF-8 encoding will be set.
      * 
      * By default the encoding is taken from the #GtkSourceFile.
+     * @param encoding the new encoding, or %NULL for UTF-8.
      */
     setEncoding(encoding?: Encoding | null): void
     setFlags(flags: FileSaverFlags): void
     /**
      * Sets the newline type. By default the newline type is taken from the
      * #GtkSourceFile.
+     * @param newlineType the new newline type.
      */
     setNewlineType(newlineType: NewlineType): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7469,6 +8146,10 @@ class FileSaver {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7479,6 +8160,12 @@ class FileSaver {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7502,6 +8189,7 @@ class FileSaver {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7521,11 +8209,14 @@ class FileSaver {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7533,6 +8224,8 @@ class FileSaver {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7550,6 +8243,7 @@ class FileSaver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7595,6 +8289,7 @@ class FileSaver {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7638,15 +8333,20 @@ class FileSaver {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7687,6 +8387,7 @@ class FileSaver {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7721,6 +8422,7 @@ class FileSaver {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7752,12 +8454,18 @@ class FileSaver {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::compression-type", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::compression-type", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::compression-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -7768,11 +8476,21 @@ class FileSaver {
     on(sigName: "notify::encoding", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::encoding", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::encoding", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::flags", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::flags", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::location", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::location", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::location", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::location", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::location", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::newline-type", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::newline-type", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::newline-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -7812,6 +8530,15 @@ interface Gutter_ConstructProps extends Gtk.Widget_ConstructProps {
     accessibleRole?: Gtk.AccessibleRole
 }
 class Gutter {
+    /* Properties of GtkSource-5.GtkSource.Gutter */
+    /**
+     * The #GtkSourceView of the gutter.
+     */
+    readonly view: View
+    /**
+     * The text window type on which the window is placed.
+     */
+    readonly windowType: Gtk.TextWindowType
     /* Properties of Gtk-4.0.Gtk.Widget */
     /**
      * Whether the widget or any of its descendents can accept
@@ -7829,6 +8556,13 @@ class Gutter {
      * A list of css classes applied to this widget.
      */
     cssClasses: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
     /**
      * The cursor used by `widget`.
      */
@@ -8021,26 +8755,32 @@ class Gutter {
      */
     accessibleRole: Gtk.AccessibleRole
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Gutter */
     getView(): View
     /**
      * Insert `renderer` into the gutter. If `renderer` is yet unowned then gutter
      * claims its ownership. Otherwise just increases renderer's reference count.
      * `renderer` cannot be already inserted to another gutter.
+     * @param renderer a gutter renderer (must inherit from #GtkSourceGutterRenderer).
+     * @param position the renderer position.
      */
     insert(renderer: GutterRenderer, position: number): boolean
     remove(renderer: GutterRenderer): void
     /**
      * Reorders `renderer` in `gutter` to new `position`.
+     * @param renderer a #GtkCellRenderer.
+     * @param position the new renderer position.
      */
     reorder(renderer: GutterRenderer, position: number): void
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -8071,6 +8811,8 @@ class Gutter {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -8082,6 +8824,7 @@ class Gutter {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -8092,6 +8835,7 @@ class Gutter {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -8101,6 +8845,7 @@ class Gutter {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -8126,6 +8871,7 @@ class Gutter {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -8139,6 +8885,10 @@ class Gutter {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -8162,6 +8912,7 @@ class Gutter {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -8175,6 +8926,7 @@ class Gutter {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -8191,6 +8943,7 @@ class Gutter {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -8199,6 +8952,8 @@ class Gutter {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -8208,6 +8963,7 @@ class Gutter {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -8215,6 +8971,8 @@ class Gutter {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -8234,10 +8992,15 @@ class Gutter {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -8295,6 +9058,7 @@ class Gutter {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -8658,6 +9422,7 @@ class Gutter {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -8702,6 +9467,8 @@ class Gutter {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -8774,6 +9541,7 @@ class Gutter {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -8839,6 +9607,8 @@ class Gutter {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -8856,6 +9626,8 @@ class Gutter {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -8872,11 +9644,14 @@ class Gutter {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -8940,6 +9715,7 @@ class Gutter {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -8971,12 +9747,15 @@ class Gutter {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -9017,6 +9796,9 @@ class Gutter {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -9083,12 +9865,14 @@ class Gutter {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -9097,11 +9881,13 @@ class Gutter {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -9119,10 +9905,12 @@ class Gutter {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -9142,11 +9930,13 @@ class Gutter {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -9155,6 +9945,7 @@ class Gutter {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -9169,6 +9960,7 @@ class Gutter {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -9185,6 +9977,7 @@ class Gutter {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -9193,6 +9986,7 @@ class Gutter {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -9202,6 +9996,7 @@ class Gutter {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -9218,6 +10013,7 @@ class Gutter {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -9229,6 +10025,7 @@ class Gutter {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -9237,14 +10034,17 @@ class Gutter {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -9275,6 +10075,7 @@ class Gutter {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -9292,27 +10093,33 @@ class Gutter {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -9327,6 +10134,7 @@ class Gutter {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -9352,6 +10160,7 @@ class Gutter {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -9364,6 +10173,7 @@ class Gutter {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -9375,12 +10185,14 @@ class Gutter {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -9390,6 +10202,7 @@ class Gutter {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -9428,6 +10241,8 @@ class Gutter {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -9440,6 +10255,8 @@ class Gutter {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -9451,6 +10268,7 @@ class Gutter {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -9464,10 +10282,12 @@ class Gutter {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -9475,12 +10295,14 @@ class Gutter {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -9492,6 +10314,7 @@ class Gutter {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -9520,6 +10343,8 @@ class Gutter {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -9537,6 +10362,8 @@ class Gutter {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -9545,6 +10372,9 @@ class Gutter {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -9578,6 +10408,7 @@ class Gutter {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9615,6 +10446,10 @@ class Gutter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9625,6 +10460,12 @@ class Gutter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9648,6 +10489,7 @@ class Gutter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9667,11 +10509,14 @@ class Gutter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9679,6 +10524,8 @@ class Gutter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9696,6 +10543,7 @@ class Gutter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9741,6 +10589,7 @@ class Gutter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9784,15 +10633,20 @@ class Gutter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9833,6 +10687,7 @@ class Gutter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9867,6 +10722,7 @@ class Gutter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -9876,14 +10732,17 @@ class Gutter {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -9893,6 +10752,8 @@ class Gutter {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -9902,6 +10763,8 @@ class Gutter {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -9911,6 +10774,8 @@ class Gutter {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -9937,6 +10802,7 @@ class Gutter {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -9955,6 +10821,7 @@ class Gutter {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -9982,6 +10849,7 @@ class Gutter {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -9990,6 +10858,7 @@ class Gutter {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -10011,6 +10880,10 @@ class Gutter {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -10040,6 +10913,7 @@ class Gutter {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -10100,12 +10974,23 @@ class Gutter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::view", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::view", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::window-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::window-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::window-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::window-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::window-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::can-focus", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::can-focus", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::can-focus", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -10121,6 +11006,11 @@ class Gutter {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -10292,7 +11182,7 @@ interface GutterLines_ConstructProps extends GObject.Object_ConstructProps {
 }
 class GutterLines {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.GutterLines */
     /**
      * Adds the class `name` to `line`.
@@ -10301,6 +11191,8 @@ class GutterLines {
      * faster version of this function is available via
      * [method`GutterLines`.add_qclass] for situations where the [alias`GLib`.Quark] is
      * known ahead of time.
+     * @param line a line number starting from zero
+     * @param name a class name
      */
     addClass(line: number, name: string): void
     /**
@@ -10311,6 +11203,8 @@ class GutterLines {
      * 
      * You can remove `qname` by calling
      * [method`GutterLines`.remove_qclass].
+     * @param line a line number starting from zero
+     * @param qname a class name as a #GQuark
      */
     addQclass(line: number, qname: GLib.Quark): void
     /**
@@ -10324,6 +11218,7 @@ class GutterLines {
     getFirst(): number
     /**
      * Gets a #GtkTextIter for the current buffer at `line`
+     * @param line the line number
      */
     getIterAtLine(line: number): /* iter */ Gtk.TextIter
     /**
@@ -10335,6 +11230,8 @@ class GutterLines {
      * Gets the Y range for a line based on `mode`.
      * 
      * The value for `y` is relative to the renderers widget coordinates.
+     * @param line a line number starting from zero
+     * @param mode a #GtkSourceGutterRendererAlignmentMode
      */
     getLineYrange(line: number, mode: GutterRendererAlignmentMode): [ /* y */ number, /* height */ number ]
     /**
@@ -10349,25 +11246,32 @@ class GutterLines {
      * A faster version of this function is provided via
      * [method`GutterLines`.has_qclass] for situations where the quark
      * is known ahead of time.
+     * @param line a line number starting from zero
+     * @param name a class name that may be converted, to a #GQuark
      */
     hasClass(line: number, name: string): boolean
     /**
      * Checks to see if [method`GutterLines`.add_qclass] was called with
      * the quark denoted by `qname` for `line`.
+     * @param line a line number starting from zero
+     * @param qname a #GQuark containing the class name
      */
     hasQclass(line: number, qname: GLib.Quark): boolean
     /**
      * Checks to see if `line` contains the insertion cursor.
+     * @param line a line number starting from zero
      */
     isCursor(line: number): boolean
     /**
      * Checks to see if `line` is marked as prelit. Generally, this means
      * the mouse pointer is over the line within the gutter.
+     * @param line a line number starting from zero
      */
     isPrelit(line: number): boolean
     /**
      * Checks to see if the view had a selection and if that selection overlaps
      * `line` in some way.
+     * @param line a line number starting from zero
      */
     isSelected(line: number): boolean
     /**
@@ -10376,11 +11280,15 @@ class GutterLines {
      * A faster version of this function is available via
      * [method`GutterLines`.remove_qclass] for situations where the
      * #GQuark is known ahead of time.
+     * @param line a line number starting from zero
+     * @param name a class name
      */
     removeClass(line: number, name: string): void
     /**
      * Reverses a call to [method`GutterLines`.add_qclass] by removing
      * the [alias`GLib`.Quark] matching `qname`.
+     * @param line a line number starting from zero
+     * @param qname a #GQuark to remove from `line`
      */
     removeQclass(line: number, qname: GLib.Quark): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10418,6 +11326,10 @@ class GutterLines {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10428,6 +11340,12 @@ class GutterLines {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10451,6 +11369,7 @@ class GutterLines {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10470,11 +11389,14 @@ class GutterLines {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10482,6 +11404,8 @@ class GutterLines {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10499,6 +11423,7 @@ class GutterLines {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10544,6 +11469,7 @@ class GutterLines {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10587,15 +11513,20 @@ class GutterLines {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10636,6 +11567,7 @@ class GutterLines {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10670,6 +11602,7 @@ class GutterLines {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10701,6 +11634,7 @@ class GutterLines {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10816,6 +11750,13 @@ class GutterRenderer {
      * A list of css classes applied to this widget.
      */
     cssClasses: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
     /**
      * The cursor used by `widget`.
      */
@@ -11008,13 +11949,18 @@ class GutterRenderer {
      */
     accessibleRole: Gtk.AccessibleRole
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.GutterRenderer */
     /**
      * Emits the [signal`GutterRenderer:`:activate] signal of the renderer. This is
      * called from [class`Gutter]` and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param button the button that was pressed
+     * @param state a #GdkModifierType
+     * @param nPresses the number of button presses
      */
     activate(iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number): void
     /**
@@ -11026,6 +11972,9 @@ class GutterRenderer {
      * 
      * It is encouraged that renderers use this function when snappshotting
      * to ensure consistent placement of their contents.
+     * @param line the line number for content
+     * @param width the width of the content to draw
+     * @param height the height of the content to draw
      */
     alignCell(line: number, width: number, height: number): [ /* x */ number, /* y */ number ]
     /**
@@ -11072,42 +12021,51 @@ class GutterRenderer {
      * Get whether the renderer is activatable at the location provided. This is
      * called from [class`Gutter]` to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
      */
     queryActivatable(iter: Gtk.TextIter, area: Gdk.Rectangle): boolean
     /**
      * Set the alignment mode. The alignment mode describes the manner in which the
      * renderer is aligned (see [property`GutterRenderer:`xalign] and
      * [property`GutterRenderer:`yalign]).
+     * @param mode a #GtkSourceGutterRendererAlignmentMode
      */
     setAlignmentMode(mode: GutterRendererAlignmentMode): void
     /**
      * Adjusts the `xalign` property.
      * 
      * This may be used to adjust where within the cell rectangle the renderer will draw.
+     * @param xalign the Y padding for the drawing cell
      */
     setXalign(xalign: number): void
     /**
      * Adjusts the `xpad` property.
      * 
      * This may be used to adjust the cell rectangle that the renderer will use to draw.
+     * @param xpad the Y padding for the drawing cell
      */
     setXpad(xpad: number): void
     /**
      * Adjusts the `yalign` property.
      * 
      * This may be used to adjust where within the cell rectangle the renderer will draw.
+     * @param yalign the Y padding for the drawing cell
      */
     setYalign(yalign: number): void
     /**
      * Adjusts the `ypad` property.
      * 
      * This may be used to adjust the cell rectangle that the renderer will use to draw.
+     * @param ypad the Y padding for the drawing cell
      */
     setYpad(ypad: number): void
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -11138,6 +12096,8 @@ class GutterRenderer {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -11149,6 +12109,7 @@ class GutterRenderer {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -11159,6 +12120,7 @@ class GutterRenderer {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -11168,6 +12130,7 @@ class GutterRenderer {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -11193,6 +12156,7 @@ class GutterRenderer {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -11206,6 +12170,10 @@ class GutterRenderer {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -11229,6 +12197,7 @@ class GutterRenderer {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -11242,6 +12211,7 @@ class GutterRenderer {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -11258,6 +12228,7 @@ class GutterRenderer {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -11266,6 +12237,8 @@ class GutterRenderer {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -11275,6 +12248,7 @@ class GutterRenderer {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -11282,6 +12256,8 @@ class GutterRenderer {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -11301,10 +12277,15 @@ class GutterRenderer {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -11362,6 +12343,7 @@ class GutterRenderer {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -11725,6 +12707,7 @@ class GutterRenderer {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -11769,6 +12752,8 @@ class GutterRenderer {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -11841,6 +12826,7 @@ class GutterRenderer {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -11906,6 +12892,8 @@ class GutterRenderer {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -11923,6 +12911,8 @@ class GutterRenderer {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -11939,11 +12929,14 @@ class GutterRenderer {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -12007,6 +13000,7 @@ class GutterRenderer {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -12038,12 +13032,15 @@ class GutterRenderer {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -12084,6 +13081,9 @@ class GutterRenderer {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -12150,12 +13150,14 @@ class GutterRenderer {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -12164,11 +13166,13 @@ class GutterRenderer {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -12186,10 +13190,12 @@ class GutterRenderer {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -12209,11 +13215,13 @@ class GutterRenderer {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -12222,6 +13230,7 @@ class GutterRenderer {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -12236,6 +13245,7 @@ class GutterRenderer {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -12252,6 +13262,7 @@ class GutterRenderer {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -12260,6 +13271,7 @@ class GutterRenderer {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -12269,6 +13281,7 @@ class GutterRenderer {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -12285,6 +13298,7 @@ class GutterRenderer {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -12296,6 +13310,7 @@ class GutterRenderer {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -12304,14 +13319,17 @@ class GutterRenderer {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -12342,6 +13360,7 @@ class GutterRenderer {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -12359,27 +13378,33 @@ class GutterRenderer {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -12394,6 +13419,7 @@ class GutterRenderer {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -12419,6 +13445,7 @@ class GutterRenderer {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -12431,6 +13458,7 @@ class GutterRenderer {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -12442,12 +13470,14 @@ class GutterRenderer {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -12457,6 +13487,7 @@ class GutterRenderer {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -12495,6 +13526,8 @@ class GutterRenderer {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -12507,6 +13540,8 @@ class GutterRenderer {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -12518,6 +13553,7 @@ class GutterRenderer {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -12531,10 +13567,12 @@ class GutterRenderer {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -12542,12 +13580,14 @@ class GutterRenderer {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -12559,6 +13599,7 @@ class GutterRenderer {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -12587,6 +13628,8 @@ class GutterRenderer {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -12604,6 +13647,8 @@ class GutterRenderer {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -12612,6 +13657,9 @@ class GutterRenderer {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -12645,6 +13693,7 @@ class GutterRenderer {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12682,6 +13731,10 @@ class GutterRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12692,6 +13745,12 @@ class GutterRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12715,6 +13774,7 @@ class GutterRenderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12734,11 +13794,14 @@ class GutterRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12746,6 +13809,8 @@ class GutterRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12763,6 +13828,7 @@ class GutterRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12808,6 +13874,7 @@ class GutterRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12851,15 +13918,20 @@ class GutterRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12900,6 +13972,7 @@ class GutterRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12934,6 +14007,7 @@ class GutterRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -12943,14 +14017,17 @@ class GutterRenderer {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -12960,6 +14037,8 @@ class GutterRenderer {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -12969,6 +14048,8 @@ class GutterRenderer {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -12978,6 +14059,8 @@ class GutterRenderer {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -12991,6 +14074,11 @@ class GutterRenderer {
     /* Signals of GtkSource-5.GtkSource.GutterRenderer */
     /**
      * The signal is emitted when the renderer is activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param button the button that was pressed
+     * @param state a #GdkModifierType of state
+     * @param nPresses the number of button presses
      */
     connect(sigName: "activate", callback: ((iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number) => void)): number
     on(sigName: "activate", callback: (iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12999,6 +14087,8 @@ class GutterRenderer {
     emit(sigName: "activate", iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number): void
     /**
      * The signal is emitted when the renderer can possibly be activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
      */
     connect(sigName: "query-activatable", callback: ((iter: Gtk.TextIter, area: Gdk.Rectangle) => boolean)): number
     on(sigName: "query-activatable", callback: (iter: Gtk.TextIter, area: Gdk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -13026,6 +14116,7 @@ class GutterRenderer {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -13044,6 +14135,7 @@ class GutterRenderer {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -13071,6 +14163,7 @@ class GutterRenderer {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -13079,6 +14172,7 @@ class GutterRenderer {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -13100,6 +14194,10 @@ class GutterRenderer {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -13129,6 +14227,7 @@ class GutterRenderer {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -13189,6 +14288,7 @@ class GutterRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13245,6 +14345,11 @@ class GutterRenderer {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -13490,6 +14595,13 @@ class GutterRendererPixbuf {
      */
     cssClasses: string[]
     /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
+    /**
      * The cursor used by `widget`.
      */
     cursor: Gdk.Cursor
@@ -13681,9 +14793,9 @@ class GutterRendererPixbuf {
      */
     accessibleRole: Gtk.AccessibleRole
     /* Fields of GtkSource-5.GtkSource.GutterRenderer */
-    readonly parentInstance: Gtk.Widget
+    parentInstance: Gtk.Widget
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.GutterRendererPixbuf */
     /**
      * Get the gicon of the renderer
@@ -13703,6 +14815,7 @@ class GutterRendererPixbuf {
      * Allows overlaying a paintable on top of any other image that
      * has been set for the pixbuf. This will be applied when the
      * widget is next snapshot.
+     * @param paintable a #GdkPaintable
      */
     overlayPaintable(paintable: Gdk.Paintable): void
     setGicon(icon?: Gio.Icon | null): void
@@ -13713,6 +14826,11 @@ class GutterRendererPixbuf {
     /**
      * Emits the [signal`GutterRenderer:`:activate] signal of the renderer. This is
      * called from [class`Gutter]` and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param button the button that was pressed
+     * @param state a #GdkModifierType
+     * @param nPresses the number of button presses
      */
     activate(iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number): void
     /**
@@ -13724,6 +14842,9 @@ class GutterRendererPixbuf {
      * 
      * It is encouraged that renderers use this function when snappshotting
      * to ensure consistent placement of their contents.
+     * @param line the line number for content
+     * @param width the width of the content to draw
+     * @param height the height of the content to draw
      */
     alignCell(line: number, width: number, height: number): [ /* x */ number, /* y */ number ]
     /**
@@ -13770,42 +14891,51 @@ class GutterRendererPixbuf {
      * Get whether the renderer is activatable at the location provided. This is
      * called from [class`Gutter]` to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
      */
     queryActivatable(iter: Gtk.TextIter, area: Gdk.Rectangle): boolean
     /**
      * Set the alignment mode. The alignment mode describes the manner in which the
      * renderer is aligned (see [property`GutterRenderer:`xalign] and
      * [property`GutterRenderer:`yalign]).
+     * @param mode a #GtkSourceGutterRendererAlignmentMode
      */
     setAlignmentMode(mode: GutterRendererAlignmentMode): void
     /**
      * Adjusts the `xalign` property.
      * 
      * This may be used to adjust where within the cell rectangle the renderer will draw.
+     * @param xalign the Y padding for the drawing cell
      */
     setXalign(xalign: number): void
     /**
      * Adjusts the `xpad` property.
      * 
      * This may be used to adjust the cell rectangle that the renderer will use to draw.
+     * @param xpad the Y padding for the drawing cell
      */
     setXpad(xpad: number): void
     /**
      * Adjusts the `yalign` property.
      * 
      * This may be used to adjust where within the cell rectangle the renderer will draw.
+     * @param yalign the Y padding for the drawing cell
      */
     setYalign(yalign: number): void
     /**
      * Adjusts the `ypad` property.
      * 
      * This may be used to adjust the cell rectangle that the renderer will use to draw.
+     * @param ypad the Y padding for the drawing cell
      */
     setYpad(ypad: number): void
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -13836,6 +14966,8 @@ class GutterRendererPixbuf {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -13847,6 +14979,7 @@ class GutterRendererPixbuf {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -13857,6 +14990,7 @@ class GutterRendererPixbuf {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -13866,6 +15000,7 @@ class GutterRendererPixbuf {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -13891,6 +15026,7 @@ class GutterRendererPixbuf {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -13904,6 +15040,10 @@ class GutterRendererPixbuf {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -13927,6 +15067,7 @@ class GutterRendererPixbuf {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -13940,6 +15081,7 @@ class GutterRendererPixbuf {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -13956,6 +15098,7 @@ class GutterRendererPixbuf {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -13964,6 +15107,8 @@ class GutterRendererPixbuf {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -13973,6 +15118,7 @@ class GutterRendererPixbuf {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -13980,6 +15126,8 @@ class GutterRendererPixbuf {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -13999,10 +15147,15 @@ class GutterRendererPixbuf {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -14060,6 +15213,7 @@ class GutterRendererPixbuf {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -14423,6 +15577,7 @@ class GutterRendererPixbuf {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -14467,6 +15622,8 @@ class GutterRendererPixbuf {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -14539,6 +15696,7 @@ class GutterRendererPixbuf {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -14604,6 +15762,8 @@ class GutterRendererPixbuf {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -14621,6 +15781,8 @@ class GutterRendererPixbuf {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -14637,11 +15799,14 @@ class GutterRendererPixbuf {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -14705,6 +15870,7 @@ class GutterRendererPixbuf {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -14736,12 +15902,15 @@ class GutterRendererPixbuf {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -14782,6 +15951,9 @@ class GutterRendererPixbuf {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -14848,12 +16020,14 @@ class GutterRendererPixbuf {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -14862,11 +16036,13 @@ class GutterRendererPixbuf {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -14884,10 +16060,12 @@ class GutterRendererPixbuf {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -14907,11 +16085,13 @@ class GutterRendererPixbuf {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -14920,6 +16100,7 @@ class GutterRendererPixbuf {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -14934,6 +16115,7 @@ class GutterRendererPixbuf {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -14950,6 +16132,7 @@ class GutterRendererPixbuf {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -14958,6 +16141,7 @@ class GutterRendererPixbuf {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -14967,6 +16151,7 @@ class GutterRendererPixbuf {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -14983,6 +16168,7 @@ class GutterRendererPixbuf {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -14994,6 +16180,7 @@ class GutterRendererPixbuf {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -15002,14 +16189,17 @@ class GutterRendererPixbuf {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -15040,6 +16230,7 @@ class GutterRendererPixbuf {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -15057,27 +16248,33 @@ class GutterRendererPixbuf {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -15092,6 +16289,7 @@ class GutterRendererPixbuf {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -15117,6 +16315,7 @@ class GutterRendererPixbuf {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -15129,6 +16328,7 @@ class GutterRendererPixbuf {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -15140,12 +16340,14 @@ class GutterRendererPixbuf {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -15155,6 +16357,7 @@ class GutterRendererPixbuf {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -15193,6 +16396,8 @@ class GutterRendererPixbuf {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -15205,6 +16410,8 @@ class GutterRendererPixbuf {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -15216,6 +16423,7 @@ class GutterRendererPixbuf {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -15229,10 +16437,12 @@ class GutterRendererPixbuf {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -15240,12 +16450,14 @@ class GutterRendererPixbuf {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -15257,6 +16469,7 @@ class GutterRendererPixbuf {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -15285,6 +16498,8 @@ class GutterRendererPixbuf {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -15302,6 +16517,8 @@ class GutterRendererPixbuf {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -15310,6 +16527,9 @@ class GutterRendererPixbuf {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -15343,6 +16563,7 @@ class GutterRendererPixbuf {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -15380,6 +16601,10 @@ class GutterRendererPixbuf {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15390,6 +16615,12 @@ class GutterRendererPixbuf {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15413,6 +16644,7 @@ class GutterRendererPixbuf {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -15432,11 +16664,14 @@ class GutterRendererPixbuf {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -15444,6 +16679,8 @@ class GutterRendererPixbuf {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15461,6 +16698,7 @@ class GutterRendererPixbuf {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -15506,6 +16744,7 @@ class GutterRendererPixbuf {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -15549,15 +16788,20 @@ class GutterRendererPixbuf {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15598,6 +16842,7 @@ class GutterRendererPixbuf {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15632,6 +16877,7 @@ class GutterRendererPixbuf {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -15641,14 +16887,17 @@ class GutterRendererPixbuf {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -15658,6 +16907,8 @@ class GutterRendererPixbuf {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -15667,6 +16918,8 @@ class GutterRendererPixbuf {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -15676,6 +16929,8 @@ class GutterRendererPixbuf {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -15689,6 +16944,11 @@ class GutterRendererPixbuf {
     /* Signals of GtkSource-5.GtkSource.GutterRenderer */
     /**
      * The signal is emitted when the renderer is activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param button the button that was pressed
+     * @param state a #GdkModifierType of state
+     * @param nPresses the number of button presses
      */
     connect(sigName: "activate", callback: ((iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number) => void)): number
     on(sigName: "activate", callback: (iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -15697,6 +16957,8 @@ class GutterRendererPixbuf {
     emit(sigName: "activate", iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number): void
     /**
      * The signal is emitted when the renderer can possibly be activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
      */
     connect(sigName: "query-activatable", callback: ((iter: Gtk.TextIter, area: Gdk.Rectangle) => boolean)): number
     on(sigName: "query-activatable", callback: (iter: Gtk.TextIter, area: Gdk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -15724,6 +16986,7 @@ class GutterRendererPixbuf {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -15742,6 +17005,7 @@ class GutterRendererPixbuf {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -15769,6 +17033,7 @@ class GutterRendererPixbuf {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -15777,6 +17042,7 @@ class GutterRendererPixbuf {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -15798,6 +17064,10 @@ class GutterRendererPixbuf {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -15827,6 +17097,7 @@ class GutterRendererPixbuf {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -15887,6 +17158,7 @@ class GutterRendererPixbuf {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15963,6 +17235,11 @@ class GutterRendererPixbuf {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -16206,6 +17483,13 @@ class GutterRendererText {
      */
     cssClasses: string[]
     /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
+    /**
      * The cursor used by `widget`.
      */
     cursor: Gdk.Cursor
@@ -16397,18 +17681,20 @@ class GutterRendererText {
      */
     accessibleRole: Gtk.AccessibleRole
     /* Fields of GtkSource-5.GtkSource.GutterRenderer */
-    readonly parentInstance: Gtk.Widget
+    parentInstance: Gtk.Widget
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.GutterRendererText */
     /**
      * Measures the text provided using the pango layout used by the
      * #GtkSourceGutterRendererText.
+     * @param text the text to measure.
      */
     measure(text: string): [ /* width */ number | null, /* height */ number | null ]
     /**
      * Measures the pango markup provided using the pango layout used by the
      * #GtkSourceGutterRendererText.
+     * @param markup the pango markup to measure.
      */
     measureMarkup(markup: string): [ /* width */ number | null, /* height */ number | null ]
     setMarkup(markup: string, length: number): void
@@ -16417,6 +17703,11 @@ class GutterRendererText {
     /**
      * Emits the [signal`GutterRenderer:`:activate] signal of the renderer. This is
      * called from [class`Gutter]` and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param button the button that was pressed
+     * @param state a #GdkModifierType
+     * @param nPresses the number of button presses
      */
     activate(iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number): void
     /**
@@ -16428,6 +17719,9 @@ class GutterRendererText {
      * 
      * It is encouraged that renderers use this function when snappshotting
      * to ensure consistent placement of their contents.
+     * @param line the line number for content
+     * @param width the width of the content to draw
+     * @param height the height of the content to draw
      */
     alignCell(line: number, width: number, height: number): [ /* x */ number, /* y */ number ]
     /**
@@ -16474,42 +17768,51 @@ class GutterRendererText {
      * Get whether the renderer is activatable at the location provided. This is
      * called from [class`Gutter]` to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
      */
     queryActivatable(iter: Gtk.TextIter, area: Gdk.Rectangle): boolean
     /**
      * Set the alignment mode. The alignment mode describes the manner in which the
      * renderer is aligned (see [property`GutterRenderer:`xalign] and
      * [property`GutterRenderer:`yalign]).
+     * @param mode a #GtkSourceGutterRendererAlignmentMode
      */
     setAlignmentMode(mode: GutterRendererAlignmentMode): void
     /**
      * Adjusts the `xalign` property.
      * 
      * This may be used to adjust where within the cell rectangle the renderer will draw.
+     * @param xalign the Y padding for the drawing cell
      */
     setXalign(xalign: number): void
     /**
      * Adjusts the `xpad` property.
      * 
      * This may be used to adjust the cell rectangle that the renderer will use to draw.
+     * @param xpad the Y padding for the drawing cell
      */
     setXpad(xpad: number): void
     /**
      * Adjusts the `yalign` property.
      * 
      * This may be used to adjust where within the cell rectangle the renderer will draw.
+     * @param yalign the Y padding for the drawing cell
      */
     setYalign(yalign: number): void
     /**
      * Adjusts the `ypad` property.
      * 
      * This may be used to adjust the cell rectangle that the renderer will use to draw.
+     * @param ypad the Y padding for the drawing cell
      */
     setYpad(ypad: number): void
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -16540,6 +17843,8 @@ class GutterRendererText {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -16551,6 +17856,7 @@ class GutterRendererText {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -16561,6 +17867,7 @@ class GutterRendererText {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -16570,6 +17877,7 @@ class GutterRendererText {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -16595,6 +17903,7 @@ class GutterRendererText {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -16608,6 +17917,10 @@ class GutterRendererText {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -16631,6 +17944,7 @@ class GutterRendererText {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -16644,6 +17958,7 @@ class GutterRendererText {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -16660,6 +17975,7 @@ class GutterRendererText {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -16668,6 +17984,8 @@ class GutterRendererText {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -16677,6 +17995,7 @@ class GutterRendererText {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -16684,6 +18003,8 @@ class GutterRendererText {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -16703,10 +18024,15 @@ class GutterRendererText {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -16764,6 +18090,7 @@ class GutterRendererText {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -17127,6 +18454,7 @@ class GutterRendererText {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -17171,6 +18499,8 @@ class GutterRendererText {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -17243,6 +18573,7 @@ class GutterRendererText {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -17308,6 +18639,8 @@ class GutterRendererText {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -17325,6 +18658,8 @@ class GutterRendererText {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -17341,11 +18676,14 @@ class GutterRendererText {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -17409,6 +18747,7 @@ class GutterRendererText {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -17440,12 +18779,15 @@ class GutterRendererText {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -17486,6 +18828,9 @@ class GutterRendererText {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -17552,12 +18897,14 @@ class GutterRendererText {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -17566,11 +18913,13 @@ class GutterRendererText {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -17588,10 +18937,12 @@ class GutterRendererText {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -17611,11 +18962,13 @@ class GutterRendererText {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -17624,6 +18977,7 @@ class GutterRendererText {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -17638,6 +18992,7 @@ class GutterRendererText {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -17654,6 +19009,7 @@ class GutterRendererText {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -17662,6 +19018,7 @@ class GutterRendererText {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -17671,6 +19028,7 @@ class GutterRendererText {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -17687,6 +19045,7 @@ class GutterRendererText {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -17698,6 +19057,7 @@ class GutterRendererText {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -17706,14 +19066,17 @@ class GutterRendererText {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -17744,6 +19107,7 @@ class GutterRendererText {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -17761,27 +19125,33 @@ class GutterRendererText {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -17796,6 +19166,7 @@ class GutterRendererText {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -17821,6 +19192,7 @@ class GutterRendererText {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -17833,6 +19205,7 @@ class GutterRendererText {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -17844,12 +19217,14 @@ class GutterRendererText {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -17859,6 +19234,7 @@ class GutterRendererText {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -17897,6 +19273,8 @@ class GutterRendererText {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -17909,6 +19287,8 @@ class GutterRendererText {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -17920,6 +19300,7 @@ class GutterRendererText {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -17933,10 +19314,12 @@ class GutterRendererText {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -17944,12 +19327,14 @@ class GutterRendererText {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -17961,6 +19346,7 @@ class GutterRendererText {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -17989,6 +19375,8 @@ class GutterRendererText {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -18006,6 +19394,8 @@ class GutterRendererText {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -18014,6 +19404,9 @@ class GutterRendererText {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -18047,6 +19440,7 @@ class GutterRendererText {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -18084,6 +19478,10 @@ class GutterRendererText {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18094,6 +19492,12 @@ class GutterRendererText {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18117,6 +19521,7 @@ class GutterRendererText {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18136,11 +19541,14 @@ class GutterRendererText {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18148,6 +19556,8 @@ class GutterRendererText {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18165,6 +19575,7 @@ class GutterRendererText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18210,6 +19621,7 @@ class GutterRendererText {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18253,15 +19665,20 @@ class GutterRendererText {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18302,6 +19719,7 @@ class GutterRendererText {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18336,6 +19754,7 @@ class GutterRendererText {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -18345,14 +19764,17 @@ class GutterRendererText {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -18362,6 +19784,8 @@ class GutterRendererText {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -18371,6 +19795,8 @@ class GutterRendererText {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -18380,6 +19806,8 @@ class GutterRendererText {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -18393,6 +19821,11 @@ class GutterRendererText {
     /* Signals of GtkSource-5.GtkSource.GutterRenderer */
     /**
      * The signal is emitted when the renderer is activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param button the button that was pressed
+     * @param state a #GdkModifierType of state
+     * @param nPresses the number of button presses
      */
     connect(sigName: "activate", callback: ((iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number) => void)): number
     on(sigName: "activate", callback: (iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -18401,6 +19834,8 @@ class GutterRendererText {
     emit(sigName: "activate", iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number): void
     /**
      * The signal is emitted when the renderer can possibly be activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
      */
     connect(sigName: "query-activatable", callback: ((iter: Gtk.TextIter, area: Gdk.Rectangle) => boolean)): number
     on(sigName: "query-activatable", callback: (iter: Gtk.TextIter, area: Gdk.Rectangle) => void, after?: boolean): NodeJS.EventEmitter
@@ -18428,6 +19863,7 @@ class GutterRendererText {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -18446,6 +19882,7 @@ class GutterRendererText {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -18473,6 +19910,7 @@ class GutterRendererText {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -18481,6 +19919,7 @@ class GutterRendererText {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -18502,6 +19941,10 @@ class GutterRendererText {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -18531,6 +19974,7 @@ class GutterRendererText {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -18591,6 +20035,7 @@ class GutterRendererText {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18657,6 +20102,11 @@ class GutterRendererText {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -18840,7 +20290,7 @@ class Hover {
      */
     hoverDelay: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Hover */
     addProvider(provider: HoverProvider): void
     removeProvider(provider: HoverProvider): void
@@ -18879,6 +20329,10 @@ class Hover {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18889,6 +20343,12 @@ class Hover {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18912,6 +20372,7 @@ class Hover {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18931,11 +20392,14 @@ class Hover {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18943,6 +20407,8 @@ class Hover {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18960,6 +20426,7 @@ class Hover {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19005,6 +20472,7 @@ class Hover {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19048,15 +20516,20 @@ class Hover {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19097,6 +20570,7 @@ class Hover {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19131,6 +20605,7 @@ class Hover {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -19162,6 +20637,7 @@ class Hover {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19189,7 +20665,7 @@ interface HoverContext_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HoverContext {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.HoverContext */
     /**
      * Gets the current word bounds of the hover.
@@ -19242,6 +20718,10 @@ class HoverContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19252,6 +20732,12 @@ class HoverContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19275,6 +20761,7 @@ class HoverContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19294,11 +20781,14 @@ class HoverContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19306,6 +20796,8 @@ class HoverContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19323,6 +20815,7 @@ class HoverContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19368,6 +20861,7 @@ class HoverContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19411,15 +20905,20 @@ class HoverContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19460,6 +20959,7 @@ class HoverContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19494,6 +20994,7 @@ class HoverContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -19525,6 +21026,7 @@ class HoverContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19570,6 +21072,13 @@ class HoverDisplay {
      * A list of css classes applied to this widget.
      */
     cssClasses: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
     /**
      * The cursor used by `widget`.
      */
@@ -19762,9 +21271,9 @@ class HoverDisplay {
      */
     accessibleRole: Gtk.AccessibleRole
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.HoverDisplay */
     append(child: Gtk.Widget): void
     insertAfter(child: Gtk.Widget, sibling: Gtk.Widget): void
@@ -19774,6 +21283,8 @@ class HoverDisplay {
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -19804,6 +21315,8 @@ class HoverDisplay {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -19815,6 +21328,7 @@ class HoverDisplay {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -19825,6 +21339,7 @@ class HoverDisplay {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -19834,6 +21349,7 @@ class HoverDisplay {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -19859,6 +21375,7 @@ class HoverDisplay {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -19872,6 +21389,10 @@ class HoverDisplay {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -19895,6 +21416,7 @@ class HoverDisplay {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -19908,6 +21430,7 @@ class HoverDisplay {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -19924,6 +21447,7 @@ class HoverDisplay {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -19932,6 +21456,8 @@ class HoverDisplay {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -19941,6 +21467,7 @@ class HoverDisplay {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -19948,6 +21475,8 @@ class HoverDisplay {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -19967,10 +21496,15 @@ class HoverDisplay {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -20028,6 +21562,7 @@ class HoverDisplay {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -20391,6 +21926,7 @@ class HoverDisplay {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -20435,6 +21971,8 @@ class HoverDisplay {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -20507,6 +22045,7 @@ class HoverDisplay {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -20572,6 +22111,8 @@ class HoverDisplay {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -20589,6 +22130,8 @@ class HoverDisplay {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -20605,11 +22148,14 @@ class HoverDisplay {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -20673,6 +22219,7 @@ class HoverDisplay {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -20704,12 +22251,15 @@ class HoverDisplay {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -20750,6 +22300,9 @@ class HoverDisplay {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -20816,12 +22369,14 @@ class HoverDisplay {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -20830,11 +22385,13 @@ class HoverDisplay {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -20852,10 +22409,12 @@ class HoverDisplay {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -20875,11 +22434,13 @@ class HoverDisplay {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -20888,6 +22449,7 @@ class HoverDisplay {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -20902,6 +22464,7 @@ class HoverDisplay {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -20918,6 +22481,7 @@ class HoverDisplay {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -20926,6 +22490,7 @@ class HoverDisplay {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -20935,6 +22500,7 @@ class HoverDisplay {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -20951,6 +22517,7 @@ class HoverDisplay {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -20962,6 +22529,7 @@ class HoverDisplay {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -20970,14 +22538,17 @@ class HoverDisplay {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -21008,6 +22579,7 @@ class HoverDisplay {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -21025,27 +22597,33 @@ class HoverDisplay {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -21060,6 +22638,7 @@ class HoverDisplay {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -21085,6 +22664,7 @@ class HoverDisplay {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -21097,6 +22677,7 @@ class HoverDisplay {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -21108,12 +22689,14 @@ class HoverDisplay {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -21123,6 +22706,7 @@ class HoverDisplay {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -21161,6 +22745,8 @@ class HoverDisplay {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -21173,6 +22759,8 @@ class HoverDisplay {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -21184,6 +22772,7 @@ class HoverDisplay {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -21197,10 +22786,12 @@ class HoverDisplay {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -21208,12 +22799,14 @@ class HoverDisplay {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -21225,6 +22818,7 @@ class HoverDisplay {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -21253,6 +22847,8 @@ class HoverDisplay {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -21270,6 +22866,8 @@ class HoverDisplay {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -21278,6 +22876,9 @@ class HoverDisplay {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -21311,6 +22912,7 @@ class HoverDisplay {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -21348,6 +22950,10 @@ class HoverDisplay {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21358,6 +22964,12 @@ class HoverDisplay {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -21381,6 +22993,7 @@ class HoverDisplay {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -21400,11 +23013,14 @@ class HoverDisplay {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -21412,6 +23028,8 @@ class HoverDisplay {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21429,6 +23047,7 @@ class HoverDisplay {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -21474,6 +23093,7 @@ class HoverDisplay {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -21517,15 +23137,20 @@ class HoverDisplay {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -21566,6 +23191,7 @@ class HoverDisplay {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -21600,6 +23226,7 @@ class HoverDisplay {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -21609,14 +23236,17 @@ class HoverDisplay {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -21626,6 +23256,8 @@ class HoverDisplay {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -21635,6 +23267,8 @@ class HoverDisplay {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -21644,6 +23278,8 @@ class HoverDisplay {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -21670,6 +23306,7 @@ class HoverDisplay {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -21688,6 +23325,7 @@ class HoverDisplay {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -21715,6 +23353,7 @@ class HoverDisplay {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -21723,6 +23362,7 @@ class HoverDisplay {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -21744,6 +23384,10 @@ class HoverDisplay {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -21773,6 +23417,7 @@ class HoverDisplay {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -21833,6 +23478,7 @@ class HoverDisplay {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -21854,6 +23500,11 @@ class HoverDisplay {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -22030,7 +23681,7 @@ class Language {
     readonly name: string
     readonly section: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Language */
     /**
      * Returns the globs associated to this language.
@@ -22078,6 +23729,7 @@ class Language {
     /**
      * Returns the ID of the style to use if the specified `style_id`
      * is not present in the current style scheme.
+     * @param styleId a style ID.
      */
     getStyleFallback(styleId: string): string | null
     /**
@@ -22086,6 +23738,7 @@ class Language {
     getStyleIds(): string[] | null
     /**
      * Returns the name of the style with ID `style_id` defined by this `language`.
+     * @param styleId a style ID.
      */
     getStyleName(styleId: string): string | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -22123,6 +23776,10 @@ class Language {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22133,6 +23790,12 @@ class Language {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -22156,6 +23819,7 @@ class Language {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -22175,11 +23839,14 @@ class Language {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -22187,6 +23854,8 @@ class Language {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22204,6 +23873,7 @@ class Language {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -22249,6 +23919,7 @@ class Language {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -22292,15 +23963,20 @@ class Language {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -22341,6 +24017,7 @@ class Language {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -22375,6 +24052,7 @@ class Language {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -22406,6 +24084,7 @@ class Language {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -22453,18 +24132,20 @@ class LanguageManager {
     readonly languageIds: string[]
     searchPath: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.LanguageManager */
     /**
      * Appends `path` to the list of directories where the `manager` looks for
      * language files.
      * 
      * See [method`LanguageManager`.set_search_path] for details.
+     * @param path a directory or a filename.
      */
     appendSearchPath(path: string): void
     /**
      * Gets the [class`Language]` identified by the given `id` in the language
      * manager.
+     * @param id a language id.
      */
     getLanguage(id: string): Language | null
     /**
@@ -22513,6 +24194,8 @@ class LanguageManager {
      * 
      * etc. Use [method`Language`.get_mime_types] and [method`Language`.get_globs]
      * if you need full control over file -> language mapping.
+     * @param filename a filename in Glib filename encoding, or %NULL.
+     * @param contentType a content type (as in GIO API), or %NULL.
      */
     guessLanguage(filename?: string | null, contentType?: string | null): Language | null
     /**
@@ -22520,6 +24203,7 @@ class LanguageManager {
      * for language files.
      * 
      * See [method`LanguageManager`.set_search_path] for details.
+     * @param path a directory or a filename.
      */
     prependSearchPath(path: string): void
     /**
@@ -22536,6 +24220,7 @@ class LanguageManager {
      * Since GtkSourceView 5.4 this function will allow you to provide
      * paths in the form of "resource:///" URIs to embedded `GResource`s.
      * They must contain the path of a directory within the `GResource`.
+     * @param dirs a %NULL-terminated array of   strings or %NULL.
      */
     setSearchPath(dirs?: string[] | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -22573,6 +24258,10 @@ class LanguageManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22583,6 +24272,12 @@ class LanguageManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -22606,6 +24301,7 @@ class LanguageManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -22625,11 +24321,14 @@ class LanguageManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -22637,6 +24336,8 @@ class LanguageManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22654,6 +24355,7 @@ class LanguageManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -22699,6 +24401,7 @@ class LanguageManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -22742,15 +24445,20 @@ class LanguageManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -22791,6 +24499,7 @@ class LanguageManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -22825,6 +24534,7 @@ class LanguageManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -22856,6 +24566,7 @@ class LanguageManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -23109,6 +24820,13 @@ class Map {
      */
     cssClasses: string[]
     /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
+    /**
      * The cursor used by `widget`.
      */
     cursor: Gdk.Cursor
@@ -23321,9 +25039,9 @@ class Map {
      */
     vscrollPolicy: Gtk.ScrollablePolicy
     /* Fields of GtkSource-5.GtkSource.View */
-    readonly parentInstance: Gtk.TextView
+    parentInstance: Gtk.TextView
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Map */
     /**
      * Gets the [property`Map:`view] property, which is the view this widget is mapping.
@@ -23331,6 +25049,7 @@ class Map {
     getView(): View | null
     /**
      * Sets the view that `map` will be doing the mapping to.
+     * @param view a #GtkSourceView
      */
     setView(view: View): void
     /* Methods of GtkSource-5.GtkSource.View */
@@ -23363,6 +25082,7 @@ class Map {
      * Only %GTK_TEXT_WINDOW_LEFT and %GTK_TEXT_WINDOW_RIGHT are supported,
      * respectively corresponding to the left and right gutter. The line numbers
      * and mark category icons are rendered in the left gutter.
+     * @param windowType the gutter window type.
      */
     getGutter(windowType: Gtk.TextWindowType): Gutter
     /**
@@ -23398,6 +25118,8 @@ class Map {
     getInsertSpacesInsteadOfTabs(): boolean
     /**
      * Gets attributes and priority for the `category`.
+     * @param category the category.
+     * @param priority place where priority of the category will be stored.
      */
     getMarkAttributes(category: string, priority: number): MarkAttributes
     /**
@@ -23440,11 +25162,14 @@ class Map {
     /**
      * Determines the visual column at `iter` taking into consideration the
      * [property`View:`tab-width] of `view`.
+     * @param iter a position in `view`.
      */
     getVisualColumn(iter: Gtk.TextIter): number
     /**
      * Inserts one indentation level at the beginning of the specified lines. The
      * empty lines are not indented.
+     * @param start #GtkTextIter of the first line to indent
+     * @param end #GtkTextIter of the last line to indent
      */
     indentLines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -23453,6 +25178,8 @@ class Map {
      * If another snippet was already active, it will be paused and the new
      * snippet will become active. Once the focus positions of `snippet` have
      * been exhausted, editing will return to the previous snippet.
+     * @param snippet a #GtkSourceSnippet
+     * @param location a #GtkTextIter or %NULL for the cursor position
      */
     pushSnippet(snippet: Snippet, location?: Gtk.TextIter | null): void
     /**
@@ -23462,10 +25189,12 @@ class Map {
      * same indentation as the previous line. This is **not** a
      * "smart indentation" where an indentation level is added or removed depending
      * on the context.
+     * @param enable whether to enable auto indentation.
      */
     setAutoIndent(enable: boolean): void
     /**
      * Set if and how the background pattern should be displayed.
+     * @param backgroundPattern the #GtkSourceBackgroundPatternType.
      */
     setBackgroundPattern(backgroundPattern: BackgroundPatternType): void
     /**
@@ -23474,10 +25203,12 @@ class Map {
      * If `enable_snippets` is %TRUE, matching snippets found in the
      * [class`SnippetManager]` may be expanded when the user presses
      * Tab after a word in the [class`View]`.
+     * @param enableSnippets if snippets should be enabled
      */
     setEnableSnippets(enableSnippets: boolean): void
     /**
      * If `highlight` is %TRUE the current line will be highlighted.
+     * @param highlight whether to highlight the current line.
      */
     setHighlightCurrentLine(highlight: boolean): void
     /**
@@ -23490,6 +25221,7 @@ class Map {
      * 
      * When the selection doesn't span several lines, the tab key always replaces
      * the selection with a normal `\t` character.
+     * @param enable whether to indent a block when tab is pressed.
      */
     setIndentOnTab(enable: boolean): void
     /**
@@ -23515,6 +25247,7 @@ class Map {
      * The test-widget program (available in the GtkSourceView repository) may be
      * useful to better understand the indentation settings (enable the space
      * drawing!).
+     * @param width indent width in characters.
      */
     setIndentWidth(width: number): void
     /**
@@ -23522,6 +25255,7 @@ class Map {
      * 
      * Note that the indenter will not be used unless #GtkSourceView:auto-indent
      * has been set to %TRUE.
+     * @param indenter a #GtkSourceIndenter or %NULL
      */
     setIndenter(indenter?: Indenter | null): void
     /**
@@ -23529,36 +25263,46 @@ class Map {
      * 
      * Of course it is still possible to insert a real `\t` programmatically with the
      * [class`Gtk`.TextBuffer] API.
+     * @param enable whether to insert spaces instead of tabs.
      */
     setInsertSpacesInsteadOfTabs(enable: boolean): void
     /**
      * Sets attributes and priority for the `category`.
+     * @param category the category.
+     * @param attributes mark attributes.
+     * @param priority priority of the category.
      */
     setMarkAttributes(category: string, attributes: MarkAttributes, priority: number): void
     /**
      * Sets the position of the right margin in the given `view`.
+     * @param pos the width in characters where to position the right margin.
      */
     setRightMarginPosition(pos: number): void
     /**
      * If %TRUE line marks will be displayed beside the text.
+     * @param show whether line marks should be displayed.
      */
     setShowLineMarks(show: boolean): void
     /**
      * If %TRUE line numbers will be displayed beside the text.
+     * @param show whether line numbers should be displayed.
      */
     setShowLineNumbers(show: boolean): void
     /**
      * If %TRUE a right margin is displayed.
+     * @param show whether to show a right margin.
      */
     setShowRightMargin(show: boolean): void
     /**
      * When set to %TRUE, pressing the Backspace key will try to delete spaces
      * up to the previous tab stop.
+     * @param smartBackspace whether to enable smart Backspace handling.
      */
     setSmartBackspace(smartBackspace: boolean): void
     /**
      * Set the desired movement of the cursor when HOME and END keys
      * are pressed.
+     * @param smartHomeEnd the desired behavior among #GtkSourceSmartHomeEndType.
      */
     setSmartHomeEnd(smartHomeEnd: SmartHomeEndType): void
     /**
@@ -23566,16 +25310,21 @@ class Map {
      * 
      * The #GtkTextBuffer still contains `\t` characters,
      * but they can take a different visual width in a [class`View]` widget.
+     * @param width width of tab in characters.
      */
     setTabWidth(width: number): void
     /**
      * Removes one indentation level at the beginning of the
      * specified lines.
+     * @param start #GtkTextIter of the first line to indent
+     * @param end #GtkTextIter of the last line to indent
      */
     unindentLines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /* Methods of Gtk-4.0.Gtk.TextView */
     /**
      * Adds a child widget in the text buffer, at the given `anchor`.
+     * @param child a `GtkWidget`
+     * @param anchor a `GtkTextChildAnchor` in the `GtkTextBuffer` for `text_view`
      */
     addChildAtAnchor(child: Gtk.Widget, anchor: Gtk.TextChildAnchor): void
     /**
@@ -23589,6 +25338,9 @@ class Map {
      * 
      * If instead you want a widget that will not move with the
      * `GtkTextView` contents see `GtkOverlay`.
+     * @param child a `GtkWidget`
+     * @param xpos X position of child in window coordinates
+     * @param ypos Y position of child in window coordinates
      */
     addOverlay(child: Gtk.Widget, xpos: number, ypos: number): void
     /**
@@ -23601,6 +25353,7 @@ class Map {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the `GtkTextBuffer`.
+     * @param iter a `GtkTextIter`
      */
     backwardDisplayLine(iter: Gtk.TextIter): boolean
     /**
@@ -23613,10 +25366,14 @@ class Map {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the `GtkTextBuffer`.
+     * @param iter a `GtkTextIter`
      */
     backwardDisplayLineStart(iter: Gtk.TextIter): boolean
     /**
      * Converts buffer coordinates to window coordinates.
+     * @param win a `GtkTextWindowType`
+     * @param bufferX buffer x coordinate
+     * @param bufferY buffer y coordinate
      */
     bufferToWindowCoords(win: Gtk.TextWindowType, bufferX: number, bufferY: number): [ /* windowX */ number | null, /* windowY */ number | null ]
     /**
@@ -23629,6 +25386,7 @@ class Map {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the `GtkTextBuffer`.
+     * @param iter a `GtkTextIter`
      */
     forwardDisplayLine(iter: Gtk.TextIter): boolean
     /**
@@ -23641,6 +25399,7 @@ class Map {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the `GtkTextBuffer`.
+     * @param iter a `GtkTextIter`
      */
     forwardDisplayLineEnd(iter: Gtk.TextIter): boolean
     /**
@@ -23681,6 +25440,7 @@ class Map {
      * The rectangle position is in buffer coordinates; use
      * [method`Gtk`.TextView.buffer_to_window_coords] to convert these
      * coordinates to coordinates for one of the windows in the text view.
+     * @param iter a `GtkTextIter`
      */
     getCursorLocations(iter?: Gtk.TextIter | null): [ /* strong */ Gdk.Rectangle | null, /* weak */ Gdk.Rectangle | null ]
     /**
@@ -23705,6 +25465,7 @@ class Map {
      * 
      * `win` must be one of %GTK_TEXT_WINDOW_LEFT, %GTK_TEXT_WINDOW_RIGHT,
      * %GTK_TEXT_WINDOW_TOP, or %GTK_TEXT_WINDOW_BOTTOM.
+     * @param win a `GtkTextWindowType`
      */
     getGutter(win: Gtk.TextWindowType): Gtk.Widget | null
     /**
@@ -23729,6 +25490,8 @@ class Map {
      * the currently-displayed portion. If you have coordinates from an
      * event, you have to convert those to buffer coordinates with
      * [method`Gtk`.TextView.window_to_buffer_coords].
+     * @param x x position, in buffer coordinates
+     * @param y y position, in buffer coordinates
      */
     getIterAtLocation(x: number, y: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -23742,6 +25505,8 @@ class Map {
      * 
      * Note that this is different from [method`Gtk`.TextView.get_iter_at_location],
      * which returns cursor locations, i.e. positions between characters.
+     * @param x x position, in buffer coordinates
+     * @param y y position, in buffer coordinates
      */
     getIterAtPosition(x: number, y: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter, /* trailing */ number | null ]
     /**
@@ -23750,6 +25515,7 @@ class Map {
      * The rectangle position is in buffer coordinates; use
      * [method`Gtk`.TextView.buffer_to_window_coords] to convert these
      * coordinates to coordinates for one of the windows in the text view.
+     * @param iter a `GtkTextIter`
      */
     getIterLocation(iter: Gtk.TextIter): /* location */ Gdk.Rectangle
     /**
@@ -23772,6 +25538,7 @@ class Map {
      * [method`Gtk`.TextView.window_to_buffer_coords]. If non-%NULL,
      * `line_top` will be filled with the coordinate of the top edge
      * of the line.
+     * @param y a y coordinate
      */
     getLineAtY(y: number): [ /* targetIter */ Gtk.TextIter, /* lineTop */ number ]
     /**
@@ -23780,6 +25547,7 @@ class Map {
      * 
      * The coordinate is a buffer coordinate; convert to window
      * coordinates with [method`Gtk`.TextView.buffer_to_window_coords].
+     * @param iter a `GtkTextIter`
      */
     getLineYrange(iter: Gtk.TextIter): [ /* y */ number, /* height */ number ]
     /**
@@ -23885,17 +25653,22 @@ class Map {
      *   return GTK_WIDGET_CLASS (gtk_foo_bar_parent_class)->key_press_event (widget, event);
      * }
      * ```
+     * @param event the key event
      */
     imContextFilterKeypress(event: Gdk.Event): boolean
     /**
      * Moves a mark within the buffer so that it's
      * located within the currently-visible text area.
+     * @param mark a `GtkTextMark`
      */
     moveMarkOnscreen(mark: Gtk.TextMark): boolean
     /**
      * Updates the position of a child.
      * 
      * See [method`Gtk`.TextView.add_overlay].
+     * @param child a widget already added with [method`Gtk`.TextView.add_overlay]
+     * @param xpos new X position in buffer coordinates
+     * @param ypos new Y position in buffer coordinates
      */
     moveOverlay(child: Gtk.Widget, xpos: number, ypos: number): void
     /**
@@ -23911,6 +25684,8 @@ class Map {
      * between logical and visual order will depend on the direction
      * of the current run, and there may be jumps when the cursor
      * is moved off of the end of a run.
+     * @param iter a `GtkTextIter`
+     * @param count number of characters to move (negative moves left,    positive moves right)
      */
     moveVisually(iter: Gtk.TextIter, count: number): boolean
     /**
@@ -23920,6 +25695,7 @@ class Map {
     placeCursorOnscreen(): boolean
     /**
      * Removes a child widget from `text_view`.
+     * @param child the child to remove
      */
     remove(child: Gtk.Widget): void
     /**
@@ -23943,6 +25719,7 @@ class Map {
     /**
      * Scrolls `text_view` the minimum distance such that `mark` is contained
      * within the visible area of the widget.
+     * @param mark a mark in the buffer for `text_view`
      */
     scrollMarkOnscreen(mark: Gtk.TextMark): void
     /**
@@ -23961,6 +25738,11 @@ class Map {
      * called before the height computations. To avoid oddness, consider
      * using [method`Gtk`.TextView.scroll_to_mark] which saves a point to be
      * scrolled to after line validation.
+     * @param iter a `GtkTextIter`
+     * @param withinMargin margin as a [0.0,0.5) fraction of screen size
+     * @param useAlign whether to use alignment arguments (if %FALSE,    just get the mark onscreen)
+     * @param xalign horizontal alignment of mark within visible area
+     * @param yalign vertical alignment of mark within visible area
      */
     scrollToIter(iter: Gtk.TextIter, withinMargin: number, useAlign: boolean, xalign: number, yalign: number): boolean
     /**
@@ -23972,6 +25754,11 @@ class Map {
      * the minimal distance to get the mark onscreen, possibly not scrolling
      * at all. The effective screen for purposes of this function is reduced
      * by a margin of size `within_margin`.
+     * @param mark a `GtkTextMark`
+     * @param withinMargin margin as a [0.0,0.5) fraction of screen size
+     * @param useAlign whether to use alignment arguments (if %FALSE, just    get the mark onscreen)
+     * @param xalign horizontal alignment of mark within visible area
+     * @param yalign vertical alignment of mark within visible area
      */
     scrollToMark(mark: Gtk.TextMark, withinMargin: number, useAlign: boolean, xalign: number, yalign: number): void
     /**
@@ -23980,6 +25767,7 @@ class Map {
      * If `accepts_tab` is %TRUE, a tab character is inserted. If `accepts_tab`
      * is %FALSE the keyboard focus is moved to the next widget in the focus
      * chain.
+     * @param acceptsTab %TRUE if pressing the Tab key should insert a tab    character, %FALSE, if pressing the Tab key should move the    keyboard focus.
      */
     setAcceptsTab(acceptsTab: boolean): void
     /**
@@ -23987,6 +25775,7 @@ class Map {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param bottomMargin bottom margin in pixels
      */
     setBottomMargin(bottomMargin: number): void
     /**
@@ -23996,6 +25785,7 @@ class Map {
      * a reference is added to `buffer`. If you owned a reference to `buffer`
      * before passing it to this function, you must remove that reference
      * yourself; `GtkTextView` will not “adopt” it.
+     * @param buffer a `GtkTextBuffer`
      */
     setBuffer(buffer?: Gtk.TextBuffer | null): void
     /**
@@ -24006,6 +25796,7 @@ class Map {
      * 
      * Note that this property may be overridden by the
      * [property`GtkSettings:`gtk-keynav-use-caret] setting.
+     * @param setting whether to show the insertion cursor
      */
     setCursorVisible(setting: boolean): void
     /**
@@ -24013,6 +25804,7 @@ class Map {
      * 
      * You can override this default setting with tags in the buffer,
      * using the “editable” attribute of tags.
+     * @param setting whether it’s editable
      */
     setEditable(setting: boolean): void
     /**
@@ -24020,6 +25812,7 @@ class Map {
      * menu for `text_view`.
      * 
      * You can pass %NULL to remove a previously set extra menu.
+     * @param model a `GMenuModel`
      */
     setExtraMenu(model?: Gio.MenuModel | null): void
     /**
@@ -24027,12 +25820,15 @@ class Map {
      * 
      * `win` must be one of %GTK_TEXT_WINDOW_LEFT, %GTK_TEXT_WINDOW_RIGHT,
      * %GTK_TEXT_WINDOW_TOP, or %GTK_TEXT_WINDOW_BOTTOM.
+     * @param win a `GtkTextWindowType`
+     * @param widget a `GtkWidget`
      */
     setGutter(win: Gtk.TextWindowType, widget?: Gtk.Widget | null): void
     /**
      * Sets the default indentation for paragraphs in `text_view`.
      * 
      * Tags in the buffer may override the default.
+     * @param indent indentation in pixels
      */
     setIndent(indent: number): void
     /**
@@ -24040,6 +25836,7 @@ class Map {
      * 
      * The `input-hints` allow input methods to fine-tune
      * their behaviour.
+     * @param hints the hints
      */
     setInputHints(hints: Gtk.InputHints): void
     /**
@@ -24047,12 +25844,14 @@ class Map {
      * 
      * The `input-purpose` can be used by on-screen keyboards
      * and other input methods to adjust their behaviour.
+     * @param purpose the purpose
      */
     setInputPurpose(purpose: Gtk.InputPurpose): void
     /**
      * Sets the default justification of text in `text_view`.
      * 
      * Tags in the view’s buffer may override the default.
+     * @param justification justification
      */
     setJustification(justification: Gtk.Justification): void
     /**
@@ -24062,21 +25861,25 @@ class Map {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param leftMargin left margin in pixels
      */
     setLeftMargin(leftMargin: number): void
     /**
      * Sets whether the `GtkTextView` should display text in
      * monospace styling.
+     * @param monospace %TRUE to request monospace styling
      */
     setMonospace(monospace: boolean): void
     /**
      * Changes the `GtkTextView` overwrite mode.
+     * @param overwrite %TRUE to turn on overwrite mode, %FALSE to turn it off
      */
     setOverwrite(overwrite: boolean): void
     /**
      * Sets the default number of blank pixels above paragraphs in `text_view`.
      * 
      * Tags in the buffer for `text_view` may override the defaults.
+     * @param pixelsAboveLines pixels above paragraphs
      */
     setPixelsAboveLines(pixelsAboveLines: number): void
     /**
@@ -24084,6 +25887,7 @@ class Map {
      * to put below paragraphs in `text_view`.
      * 
      * May be overridden by tags applied to `text_view’`s buffer.
+     * @param pixelsBelowLines pixels below paragraphs
      */
     setPixelsBelowLines(pixelsBelowLines: number): void
     /**
@@ -24091,6 +25895,7 @@ class Map {
      * display/wrapped lines within a paragraph.
      * 
      * May be overridden by tags in `text_view’`s buffer.
+     * @param pixelsInsideWrap default number of pixels between wrapped lines
      */
     setPixelsInsideWrap(pixelsInsideWrap: number): void
     /**
@@ -24100,12 +25905,14 @@ class Map {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param rightMargin right margin in pixels
      */
     setRightMargin(rightMargin: number): void
     /**
      * Sets the default tab stops for paragraphs in `text_view`.
      * 
      * Tags in the buffer may override the default.
+     * @param tabs tabs as a `PangoTabArray`
      */
     setTabs(tabs: Pango.TabArray): void
     /**
@@ -24113,10 +25920,12 @@ class Map {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param topMargin top margin in pixels
      */
     setTopMargin(topMargin: number): void
     /**
      * Sets the line wrapping for the view.
+     * @param wrapMode a `GtkWrapMode`
      */
     setWrapMode(wrapMode: Gtk.WrapMode): void
     /**
@@ -24124,17 +25933,23 @@ class Map {
      * 
      * See [method`Gtk`.TextView.forward_display_line] for an
      * explanation of display lines vs. paragraphs.
+     * @param iter a `GtkTextIter`
      */
     startsDisplayLine(iter: Gtk.TextIter): boolean
     /**
      * Converts coordinates on the window identified by `win` to buffer
      * coordinates.
+     * @param win a `GtkTextWindowType`
+     * @param windowX window x coordinate
+     * @param windowY window y coordinate
      */
     windowToBufferCoords(win: Gtk.TextWindowType, windowX: number, windowY: number): [ /* bufferX */ number | null, /* bufferY */ number | null ]
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -24165,6 +25980,8 @@ class Map {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -24176,6 +25993,7 @@ class Map {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -24186,6 +26004,7 @@ class Map {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -24195,6 +26014,7 @@ class Map {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -24220,6 +26040,7 @@ class Map {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -24233,6 +26054,10 @@ class Map {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -24256,6 +26081,7 @@ class Map {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -24269,6 +26095,7 @@ class Map {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -24285,6 +26112,7 @@ class Map {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -24293,6 +26121,8 @@ class Map {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -24302,6 +26132,7 @@ class Map {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -24309,6 +26140,8 @@ class Map {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -24328,10 +26161,15 @@ class Map {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -24389,6 +26227,7 @@ class Map {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -24752,6 +26591,7 @@ class Map {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -24796,6 +26636,8 @@ class Map {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -24868,6 +26710,7 @@ class Map {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -24933,6 +26776,8 @@ class Map {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -24950,6 +26795,8 @@ class Map {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -24966,11 +26813,14 @@ class Map {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -25034,6 +26884,7 @@ class Map {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -25065,12 +26916,15 @@ class Map {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -25111,6 +26965,9 @@ class Map {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -25177,12 +27034,14 @@ class Map {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -25191,11 +27050,13 @@ class Map {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -25213,10 +27074,12 @@ class Map {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -25236,11 +27099,13 @@ class Map {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -25249,6 +27114,7 @@ class Map {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -25263,6 +27129,7 @@ class Map {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -25279,6 +27146,7 @@ class Map {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -25287,6 +27155,7 @@ class Map {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -25296,6 +27165,7 @@ class Map {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -25312,6 +27182,7 @@ class Map {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -25323,6 +27194,7 @@ class Map {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -25331,14 +27203,17 @@ class Map {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -25369,6 +27244,7 @@ class Map {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -25386,27 +27262,33 @@ class Map {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -25421,6 +27303,7 @@ class Map {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -25446,6 +27329,7 @@ class Map {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -25458,6 +27342,7 @@ class Map {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -25469,12 +27354,14 @@ class Map {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -25484,6 +27371,7 @@ class Map {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -25522,6 +27410,8 @@ class Map {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -25534,6 +27424,8 @@ class Map {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -25545,6 +27437,7 @@ class Map {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -25558,10 +27451,12 @@ class Map {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -25569,12 +27464,14 @@ class Map {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -25586,6 +27483,7 @@ class Map {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -25614,6 +27512,8 @@ class Map {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -25631,6 +27531,8 @@ class Map {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -25639,6 +27541,9 @@ class Map {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -25672,6 +27577,7 @@ class Map {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -25709,6 +27615,10 @@ class Map {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25719,6 +27629,12 @@ class Map {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -25742,6 +27658,7 @@ class Map {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -25761,11 +27678,14 @@ class Map {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -25773,6 +27693,8 @@ class Map {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25790,6 +27712,7 @@ class Map {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -25835,6 +27758,7 @@ class Map {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -25878,15 +27802,20 @@ class Map {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -25927,6 +27856,7 @@ class Map {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -25961,6 +27891,7 @@ class Map {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -25970,14 +27901,17 @@ class Map {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -25987,6 +27921,8 @@ class Map {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -25996,6 +27932,8 @@ class Map {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -26005,6 +27943,8 @@ class Map {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -26043,6 +27983,7 @@ class Map {
     getVscrollPolicy(): Gtk.ScrollablePolicy
     /**
      * Sets the horizontal adjustment of the `GtkScrollable`.
+     * @param hadjustment a `GtkAdjustment`
      */
     setHadjustment(hadjustment?: Gtk.Adjustment | null): void
     /**
@@ -26050,10 +27991,12 @@ class Map {
      * 
      * The policy determines whether horizontal scrolling should start
      * below the minimum width or below the natural width.
+     * @param policy the horizontal `GtkScrollablePolicy`
      */
     setHscrollPolicy(policy: Gtk.ScrollablePolicy): void
     /**
      * Sets the vertical adjustment of the `GtkScrollable`.
+     * @param vadjustment a `GtkAdjustment`
      */
     setVadjustment(vadjustment?: Gtk.Adjustment | null): void
     /**
@@ -26061,11 +28004,13 @@ class Map {
      * 
      * The policy determines whether vertical scrolling should start
      * below the minimum height or below the natural height.
+     * @param policy the vertical `GtkScrollablePolicy`
      */
     setVscrollPolicy(policy: Gtk.ScrollablePolicy): void
     /* Signals of GtkSource-5.GtkSource.View */
     /**
      * Keybinding signal to change case of the text at the current cursor position.
+     * @param caseType the case to use
      */
     connect(sigName: "change-case", callback: ((caseType: ChangeCaseType) => void)): number
     on(sigName: "change-case", callback: (caseType: ChangeCaseType) => void, after?: boolean): NodeJS.EventEmitter
@@ -26074,6 +28019,7 @@ class Map {
     emit(sigName: "change-case", caseType: ChangeCaseType): void
     /**
      * Keybinding signal to edit a number at the current cursor position.
+     * @param count the number to add to the number at the current position
      */
     connect(sigName: "change-number", callback: ((count: number) => void)): number
     on(sigName: "change-number", callback: (count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -26093,6 +28039,10 @@ class Map {
      * was a button press in the line marks gutter).
      * 
      * You can use `iter` to determine on which line the activation took place.
+     * @param iter a #GtkTextIter
+     * @param button the button that was pressed
+     * @param state the modifier state, if any
+     * @param nPresses the number of presses
      */
     connect(sigName: "line-mark-activated", callback: ((iter: Gtk.TextIter, button: number, state: Gdk.ModifierType, nPresses: number) => void)): number
     on(sigName: "line-mark-activated", callback: (iter: Gtk.TextIter, button: number, state: Gdk.ModifierType, nPresses: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -26104,6 +28054,7 @@ class Map {
      * 
      * The default binding key is Alt+Up/Down arrow. And moves the currently selected lines,
      * or the current line up or down by one line.
+     * @param down %TRUE to move down, %FALSE to move up.
      */
     connect(sigName: "move-lines", callback: ((down: boolean) => void)): number
     on(sigName: "move-lines", callback: (down: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -26112,6 +28063,7 @@ class Map {
     emit(sigName: "move-lines", down: boolean): void
     /**
      * Keybinding signal to move the cursor to the matching bracket.
+     * @param extendSelection %TRUE if the move should extend the selection
      */
     connect(sigName: "move-to-matching-bracket", callback: ((extendSelection: boolean) => void)): number
     on(sigName: "move-to-matching-bracket", callback: (extendSelection: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -26123,6 +28075,7 @@ class Map {
      * 
      * The default binding key is Alt+Left/Right Arrow and moves the current selection, or the current
      * word by one word.
+     * @param count the number of words to move over
      */
     connect(sigName: "move-words", callback: ((count: number) => void)): number
     on(sigName: "move-words", callback: (count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -26135,6 +28088,8 @@ class Map {
      * If another snippet was active, it will be paused until all focus positions of `snippet` have been exhausted.
      * 
      * `location` will be updated to point at the end of the snippet.
+     * @param snippet a #GtkSourceSnippet
+     * @param location a #GtkTextIter
      */
     connect(sigName: "push-snippet", callback: ((snippet: Snippet, location: Gtk.TextIter) => void)): number
     on(sigName: "push-snippet", callback: (snippet: Snippet, location: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -26165,6 +28120,8 @@ class Map {
      * during the [signal`Gtk`.TextView::move-cursor] action. This can be used to find
      * out whether the cursor was moved by a normal home/end or by a smart
      * home/end.
+     * @param iter a #GtkTextIter
+     * @param count the count
      */
     connect(sigName: "smart-home-end", callback: ((iter: Gtk.TextIter, count: number) => void)): number
     on(sigName: "smart-home-end", callback: (iter: Gtk.TextIter, count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -26226,6 +28183,8 @@ class Map {
      * deleting a character, <kbd>Ctrl</kbd>-<kbd>Delete</kbd> for
      * deleting a word and <kbd>Ctrl</kbd>-<kbd>Backspace</kbd> for
      * deleting a word backwards.
+     * @param type the granularity of the deletion, as a `GtkDeleteType`
+     * @param count the number of `type` units to delete
      */
     connect(sigName: "delete-from-cursor", callback: ((type: Gtk.DeleteType, count: number) => void)): number
     on(sigName: "delete-from-cursor", callback: (type: Gtk.DeleteType, count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -26234,6 +28193,10 @@ class Map {
     emit(sigName: "delete-from-cursor", type: Gtk.DeleteType, count: number): void
     /**
      * Emitted when the selection needs to be extended at `location`.
+     * @param granularity the granularity type
+     * @param location the location where to extend the selection
+     * @param start where the selection should start
+     * @param end where the selection should end
      */
     connect(sigName: "extend-selection", callback: ((granularity: Gtk.TextExtendSelection, location: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter) => boolean)): number
     on(sigName: "extend-selection", callback: (granularity: Gtk.TextExtendSelection, location: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -26247,6 +28210,7 @@ class Map {
      * The ::insert-at-cursor signal is a [keybinding signal](class.SignalAction.html).
      * 
      * This signal has no default bindings.
+     * @param string the string to insert
      */
     connect(sigName: "insert-at-cursor", callback: ((string: string) => void)): number
     on(sigName: "insert-at-cursor", callback: (string: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -26291,6 +28255,9 @@ class Map {
      * - <kbd>PgUp</kbd>, <kbd>PgDn</kbd> move vertically by pages
      * - <kbd>Ctrl</kbd>-<kbd>PgUp</kbd>, <kbd>Ctrl</kbd>-<kbd>PgDn</kbd>
      *   move horizontally by pages
+     * @param step the granularity of the move, as a `GtkMovementStep`
+     * @param count the number of `step` units to move
+     * @param extendSelection %TRUE if the move should extend the selection
      */
     connect(sigName: "move-cursor", callback: ((step: Gtk.MovementStep, count: number, extendSelection: boolean) => void)): number
     on(sigName: "move-cursor", callback: (step: Gtk.MovementStep, count: number, extendSelection: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -26306,6 +28273,8 @@ class Map {
      * window.
      * 
      * There are no default bindings for this signal.
+     * @param step the granularity of the movement, as a `GtkScrollStep`
+     * @param count the number of `step` units to move
      */
     connect(sigName: "move-viewport", callback: ((step: Gtk.ScrollStep, count: number) => void)): number
     on(sigName: "move-viewport", callback: (step: Gtk.ScrollStep, count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -26336,6 +28305,7 @@ class Map {
      * 
      * This signal is only emitted if the text at the given position
      * is actually editable.
+     * @param preedit the current preedit string
      */
     connect(sigName: "preedit-changed", callback: ((preedit: string) => void)): number
     on(sigName: "preedit-changed", callback: (preedit: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -26352,6 +28322,7 @@ class Map {
      * <kbd>Ctrl</kbd>-<kbd>/</kbd> for selecting and
      * <kbd>Shift</kbd>-<kbd>Ctrl</kbd>-<kbd>a</kbd> and
      * <kbd>Ctrl</kbd>-<kbd>\</kbd> for unselecting.
+     * @param select %TRUE to select, %FALSE to unselect
      */
     connect(sigName: "select-all", callback: ((select: boolean) => void)): number
     on(sigName: "select-all", callback: (select: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -26414,6 +28385,7 @@ class Map {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -26432,6 +28404,7 @@ class Map {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -26459,6 +28432,7 @@ class Map {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -26467,6 +28441,7 @@ class Map {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -26488,6 +28463,10 @@ class Map {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -26517,6 +28496,7 @@ class Map {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -26577,6 +28557,7 @@ class Map {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -26798,6 +28779,11 @@ class Map {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -26999,10 +28985,29 @@ interface Mark_ConstructProps extends Gtk.TextMark_ConstructProps {
     category?: string
 }
 class Mark {
+    /* Properties of GtkSource-5.GtkSource.Mark */
+    /**
+     * The category of the `GtkSourceMark`, classifies the mark and controls
+     * which pixbuf is used and with which priority it is drawn.
+     */
+    readonly category: string
+    /* Properties of Gtk-4.0.Gtk.TextMark */
+    /**
+     * Whether the mark has left gravity.
+     * 
+     * When text is inserted at the mark’s current location, if the mark
+     * has left gravity it will be moved to the left of the newly-inserted
+     * text, otherwise to the right.
+     */
+    readonly leftGravity: boolean
+    /**
+     * The name of the mark or %NULL if the mark is anonymous.
+     */
+    readonly name: string
     /* Fields of Gtk-4.0.Gtk.TextMark */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Mark */
     /**
      * Returns the mark category.
@@ -27015,6 +29020,7 @@ class Mark {
      *  If there is no next mark, %NULL will be returned.
      * 
      * If `category` is %NULL, looks for marks of any category.
+     * @param category a string specifying the mark category, or %NULL.
      */
     next(category?: string | null): Mark | null
     /**
@@ -27024,6 +29030,7 @@ class Mark {
      * If there is no previous mark, %NULL is returned.
      * 
      * If `category` is %NULL, looks for marks of any category
+     * @param category a string specifying the mark category, or %NULL.
      */
     prev(category: string): Mark | null
     /* Methods of Gtk-4.0.Gtk.TextMark */
@@ -27092,6 +29099,10 @@ class Mark {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27102,6 +29113,12 @@ class Mark {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -27125,6 +29142,7 @@ class Mark {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -27144,11 +29162,14 @@ class Mark {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -27156,6 +29177,8 @@ class Mark {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27173,6 +29196,7 @@ class Mark {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -27218,6 +29242,7 @@ class Mark {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -27261,15 +29286,20 @@ class Mark {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -27310,6 +29340,7 @@ class Mark {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -27344,6 +29375,7 @@ class Mark {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -27375,12 +29407,28 @@ class Mark {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::category", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::category", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::category", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::category", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::category", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::left-gravity", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::left-gravity", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::left-gravity", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::left-gravity", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::left-gravity", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -27435,7 +29483,7 @@ class MarkAttributes {
      */
     pixbuf: GdkPixbuf.Pixbuf
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.MarkAttributes */
     /**
      * Stores background color in `background`.
@@ -27463,12 +29511,14 @@ class MarkAttributes {
      * Queries for a tooltip by emitting a [signal`MarkAttributes:`:query-tooltip-markup] signal.
      * 
      * The tooltip may contain a markup.
+     * @param mark a #GtkSourceMark.
      */
     getTooltipMarkup(mark: Mark): string
     /**
      * Queries for a tooltip by emitting a [signal`MarkAttributes:`:query-tooltip-text] signal.
      * 
      * The tooltip is a plain text.
+     * @param mark a #GtkSourceMark.
      */
     getTooltipText(mark: Mark): string
     /**
@@ -27481,22 +29531,28 @@ class MarkAttributes {
      * - [method`MarkAttributes`.set_icon_name]
      * 
      * `size` cannot be lower than 1.
+     * @param widget widget of which style settings may be used.
+     * @param size size of the rendered icon.
      */
     renderIcon(widget: Gtk.Widget, size: number): Gdk.Paintable
     /**
      * Sets background color to the one given in `background`.
+     * @param background a #GdkRGBA.
      */
     setBackground(background: Gdk.RGBA): void
     /**
      * Sets an icon to be used as a base for rendered icon.
+     * @param gicon a #GIcon to be used.
      */
     setGicon(gicon: Gio.Icon): void
     /**
      * Sets a name of an icon to be used as a base for rendered icon.
+     * @param iconName name of an icon to be used.
      */
     setIconName(iconName: string): void
     /**
      * Sets a pixbuf to be used as a base for rendered icon.
+     * @param pixbuf a #GdkPixbuf to be used.
      */
     setPixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -27534,6 +29590,10 @@ class MarkAttributes {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27544,6 +29604,12 @@ class MarkAttributes {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -27567,6 +29633,7 @@ class MarkAttributes {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -27586,11 +29653,14 @@ class MarkAttributes {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -27598,6 +29668,8 @@ class MarkAttributes {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27615,6 +29687,7 @@ class MarkAttributes {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -27660,6 +29733,7 @@ class MarkAttributes {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -27703,15 +29777,20 @@ class MarkAttributes {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -27752,6 +29831,7 @@ class MarkAttributes {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -27786,12 +29866,14 @@ class MarkAttributes {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GtkSource-5.GtkSource.MarkAttributes */
     /**
      * The code should connect to this signal to provide a tooltip for given
      * `mark`. The tooltip can contain a markup.
+     * @param mark The #GtkSourceMark.
      */
     connect(sigName: "query-tooltip-markup", callback: ((mark: Mark) => string)): number
     on(sigName: "query-tooltip-markup", callback: (mark: Mark) => void, after?: boolean): NodeJS.EventEmitter
@@ -27801,6 +29883,7 @@ class MarkAttributes {
     /**
      * The code should connect to this signal to provide a tooltip for given
      * `mark`. The tooltip should be just a plain text.
+     * @param mark The #GtkSourceMark.
      */
     connect(sigName: "query-tooltip-text", callback: ((mark: Mark) => string)): number
     on(sigName: "query-tooltip-text", callback: (mark: Mark) => void, after?: boolean): NodeJS.EventEmitter
@@ -27836,6 +29919,7 @@ class MarkAttributes {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -27998,6 +30082,10 @@ class PrintCompositor {
      */
     bodyFontName: string
     /**
+     * The [class`Buffer]` object to print.
+     */
+    readonly buffer: Buffer
+    /**
      * Name of the font used to print page footer.
      * If this property is unspecified, the text body font is used.
      * 
@@ -28093,7 +30181,7 @@ class PrintCompositor {
      */
     wrapMode: Gtk.WrapMode
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.PrintCompositor */
     /**
      * Draw page `page_nr` for printing on the the Cairo context encapsuled in `context`.
@@ -28119,6 +30207,8 @@ class PrintCompositor {
      *                                            page_nr);
      * }
      * ```
+     * @param context the #GtkPrintContext encapsulating the context information that is required when           drawing the page for printing.
+     * @param pageNr the number of the page to print.
      */
     drawPage(context: Gtk.PrintContext, pageNr: number): void
     /**
@@ -28129,6 +30219,7 @@ class PrintCompositor {
     getBodyFontName(): string
     /**
      * Gets the bottom margin in units of `unit`.
+     * @param unit the unit for the return value.
      */
     getBottomMargin(unit: Gtk.Unit): number
     /**
@@ -28159,6 +30250,7 @@ class PrintCompositor {
     getHighlightSyntax(): boolean
     /**
      * Gets the left margin in units of `unit`.
+     * @param unit the unit for the return value.
      */
     getLeftMargin(unit: Gtk.Unit): number
     /**
@@ -28201,6 +30293,7 @@ class PrintCompositor {
     getPrintLineNumbers(): number
     /**
      * Gets the right margin in units of `unit`.
+     * @param unit the unit for the return value.
      */
     getRightMargin(unit: Gtk.Unit): number
     /**
@@ -28209,6 +30302,7 @@ class PrintCompositor {
     getTabWidth(): number
     /**
      * Gets the top margin in units of `unit`.
+     * @param unit the unit for the return value.
      */
     getTopMargin(unit: Gtk.Unit): number
     /**
@@ -28218,6 +30312,7 @@ class PrintCompositor {
     /**
      * Specifies a tag whose style should be ignored when compositing the
      * document to the printable page.
+     * @param tag a #GtkTextTag
      */
     ignoreTag(tag: Gtk.TextTag): void
     /**
@@ -28281,6 +30376,7 @@ class PrintCompositor {
      *     gtk_print_operation_set_n_pages (operation, n_pages);
      * }
      * ```
+     * @param context the #GtkPrintContext whose parameters (e.g. paper size, print margins, etc.) are used by the the `compositor` to paginate the document.
      */
     paginate(context: Gtk.PrintContext): boolean
     /**
@@ -28293,10 +30389,13 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param fontName the name of the default font for the body text.
      */
     setBodyFontName(fontName: string): void
     /**
      * Sets the bottom margin used by `compositor`.
+     * @param margin the new bottom margin in units of `unit`.
+     * @param unit the units for `margin`.
      */
     setBottomMargin(margin: number, unit: Gtk.Unit): void
     /**
@@ -28312,11 +30411,16 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param fontName the name of the font for the footer text, or %NULL.
      */
     setFooterFontName(fontName?: string | null): void
     /**
      * See [method`PrintCompositor`.set_header_format] for more information
      * about the parameters.
+     * @param separator %TRUE if you want a separator line to be printed.
+     * @param left a format string to print on the left of the footer.
+     * @param center a format string to print on the center of the footer.
+     * @param right a format string to print on the right of the footer.
      */
     setFooterFormat(separator: boolean, left?: string | null, center?: string | null, right?: string | null): void
     /**
@@ -28332,6 +30436,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param fontName the name of the font for header text, or %NULL.
      */
     setHeaderFontName(fontName?: string | null): void
     /**
@@ -28358,6 +30463,10 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param separator %TRUE if you want a separator line to be printed.
+     * @param left a format string to print on the left of the header.
+     * @param center a format string to print on the center of the header.
+     * @param right a format string to print on the right of the header.
      */
     setHeaderFormat(separator: boolean, left?: string | null, center?: string | null, right?: string | null): void
     /**
@@ -28366,10 +30475,13 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param highlight whether syntax should be highlighted.
      */
     setHighlightSyntax(highlight: boolean): void
     /**
      * Sets the left margin used by `compositor`.
+     * @param margin the new left margin in units of `unit`.
+     * @param unit the units for `margin`.
      */
     setLeftMargin(margin: number, unit: Gtk.Unit): void
     /**
@@ -28385,6 +30497,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param fontName the name of the font for line numbers, or %NULL.
      */
     setLineNumbersFontName(fontName?: string | null): void
     /**
@@ -28399,6 +30512,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param print %TRUE if you want the footer to be printed.
      */
     setPrintFooter(print: boolean): void
     /**
@@ -28412,6 +30526,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param print %TRUE if you want the header to be printed.
      */
     setPrintHeader(print: boolean): void
     /**
@@ -28424,10 +30539,13 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param interval interval for printed line numbers.
      */
     setPrintLineNumbers(interval: number): void
     /**
      * Sets the right margin used by `compositor`.
+     * @param margin the new right margin in units of `unit`.
+     * @param unit the units for `margin`.
      */
     setRightMargin(margin: number, unit: Gtk.Unit): void
     /**
@@ -28435,10 +30553,13 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param width width of tab in characters.
      */
     setTabWidth(width: number): void
     /**
      * Sets the top margin used by `compositor`.
+     * @param margin the new top margin in units of `unit`
+     * @param unit the units for `margin`
      */
     setTopMargin(margin: number, unit: Gtk.Unit): void
     /**
@@ -28446,6 +30567,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * [method`PrintCompositor`.paginate] function.
+     * @param wrapMode a #GtkWrapMode.
      */
     setWrapMode(wrapMode: Gtk.WrapMode): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -28483,6 +30605,10 @@ class PrintCompositor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28493,6 +30619,12 @@ class PrintCompositor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -28516,6 +30648,7 @@ class PrintCompositor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -28535,11 +30668,14 @@ class PrintCompositor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -28547,6 +30683,8 @@ class PrintCompositor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28564,6 +30702,7 @@ class PrintCompositor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -28609,6 +30748,7 @@ class PrintCompositor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -28652,15 +30792,20 @@ class PrintCompositor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -28701,6 +30846,7 @@ class PrintCompositor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -28735,6 +30881,7 @@ class PrintCompositor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -28766,6 +30913,7 @@ class PrintCompositor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -28777,6 +30925,11 @@ class PrintCompositor {
     on(sigName: "notify::body-font-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::body-font-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::body-font-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::footer-font-name", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::footer-font-name", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::footer-font-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -28851,17 +31004,26 @@ interface Region_ConstructProps extends GObject.Object_ConstructProps {
     buffer?: Gtk.TextBuffer
 }
 class Region {
+    /* Properties of GtkSource-5.GtkSource.Region */
+    /**
+     * The [class`Gtk`.TextBuffer]. The #GtkSourceRegion has a weak reference to the
+     * buffer.
+     */
+    readonly buffer: Gtk.TextBuffer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Region */
     /**
      * Adds `region_to_add` to `region`.
      * 
      * `region_to_add` is not modified.
+     * @param regionToAdd the #GtkSourceRegion to add to `region,` or %NULL.
      */
     addRegion(regionToAdd?: Region | null): void
     /**
      * Adds the subregion delimited by `_start` and `_end` to `region`.
+     * @param start the start of the subregion.
+     * @param end the end of the subregion.
      */
     addSubregion(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -28879,6 +31041,7 @@ class Region {
      * Returns the intersection between `region1` and `region2`.
      * 
      * `region1` and `region2` are not modified.
+     * @param region2 a #GtkSourceRegion, or %NULL.
      */
     intersectRegion(region2?: Region | null): Region | null
     /**
@@ -28886,6 +31049,8 @@ class Region {
      * `_start` and `_end`.
      * 
      * `region` is not modified.
+     * @param start the start of the subregion.
+     * @param end the end of the subregion.
      */
     intersectSubregion(start: Gtk.TextIter, end: Gtk.TextIter): Region | null
     /**
@@ -28898,10 +31063,13 @@ class Region {
      * Subtracts `region_to_subtract` from `region`.
      * 
      * `region_to_subtract` is not modified.
+     * @param regionToSubtract the #GtkSourceRegion to subtract from   `region,` or %NULL.
      */
     subtractRegion(regionToSubtract?: Region | null): void
     /**
      * Subtracts the subregion delimited by `_start` and `_end` from `region`.
+     * @param start the start of the subregion.
+     * @param end the end of the subregion.
      */
     subtractSubregion(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -28946,6 +31114,10 @@ class Region {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28956,6 +31128,12 @@ class Region {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -28979,6 +31157,7 @@ class Region {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -28998,11 +31177,14 @@ class Region {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -29010,6 +31192,8 @@ class Region {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29027,6 +31211,7 @@ class Region {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -29072,6 +31257,7 @@ class Region {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -29115,15 +31301,20 @@ class Region {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -29164,6 +31355,7 @@ class Region {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -29198,6 +31390,7 @@ class Region {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -29229,12 +31422,18 @@ class Region {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -29273,6 +31472,10 @@ interface SearchContext_ConstructProps extends GObject.Object_ConstructProps {
 class SearchContext {
     /* Properties of GtkSource-5.GtkSource.SearchContext */
     /**
+     * The [class`Buffer]` associated to the search context.
+     */
+    readonly buffer: Buffer
+    /**
      * Highlight the search occurrences.
      */
     highlight: boolean
@@ -29294,8 +31497,14 @@ class SearchContext {
      * Free with [method`GLib`.Error.free].
      */
     readonly regexError: GLib.Error
+    /**
+     * The [class`SearchSettings]` associated to the search context.
+     * 
+     * This property is construct-only since version 4.0.
+     */
+    readonly settings: SearchSettings
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.SearchContext */
     /**
      * Synchronous backward search.
@@ -29309,6 +31518,7 @@ class SearchContext {
      * The `has_wrapped_around` out parameter is set independently of whether a match
      * is found. So if this function returns %FALSE, `has_wrapped_around` will have
      * the same value as the [property`SearchSettings:`wrap-around] property.
+     * @param iter start of search.
      */
     backward(iter: Gtk.TextIter): [ /* returnType */ boolean, /* matchStart */ Gtk.TextIter | null, /* matchEnd */ Gtk.TextIter | null, /* hasWrappedAround */ boolean | null ]
     /**
@@ -29319,6 +31529,9 @@ class SearchContext {
      * If the operation is cancelled, the `callback` will only be called if
      * `cancellable` was not %NULL. The method takes
      * ownership of `cancellable,` so you can unref it after calling this function.
+     * @param iter start of search.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     backwardAsync(iter: Gtk.TextIter, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -29327,6 +31540,7 @@ class SearchContext {
      * 
      * See the documentation of [method`SearchContext`.backward] for more
      * details.
+     * @param result a #GAsyncResult.
      */
     backwardFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* matchStart */ Gtk.TextIter | null, /* matchEnd */ Gtk.TextIter | null, /* hasWrappedAround */ boolean | null ]
     /**
@@ -29341,6 +31555,7 @@ class SearchContext {
      * The `has_wrapped_around` out parameter is set independently of whether a match
      * is found. So if this function returns %FALSE, `has_wrapped_around` will have
      * the same value as the  [property`SearchSettings:`wrap-around] property.
+     * @param iter start of search.
      */
     forward(iter: Gtk.TextIter): [ /* returnType */ boolean, /* matchStart */ Gtk.TextIter | null, /* matchEnd */ Gtk.TextIter | null, /* hasWrappedAround */ boolean | null ]
     /**
@@ -29351,6 +31566,9 @@ class SearchContext {
      * If the operation is cancelled, the `callback` will only be called if
      * `cancellable` was not %NULL. The method takes
      * ownership of `cancellable,` so you can unref it after calling this function.
+     * @param iter start of search.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     forwardAsync(iter: Gtk.TextIter, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -29358,6 +31576,7 @@ class SearchContext {
      * 
      * See the documentation of [method`SearchContext`.forward] for more
      * details.
+     * @param result a #GAsyncResult.
      */
     forwardFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* matchStart */ Gtk.TextIter | null, /* matchEnd */ Gtk.TextIter | null, /* hasWrappedAround */ boolean | null ]
     getBuffer(): Buffer
@@ -29369,6 +31588,8 @@ class SearchContext {
      * If the buffer is not already fully scanned, the position may be unknown,
      * and -1 is returned. If 0 is returned, it means that this part of the buffer
      * has already been scanned, and that `match_start` and `match_end` don't delimit an occurrence.
+     * @param matchStart the start of the occurrence.
+     * @param matchEnd the end of the occurrence.
      */
     getOccurrencePosition(matchStart: Gtk.TextIter, matchEnd: Gtk.TextIter): number
     /**
@@ -29399,6 +31620,10 @@ class SearchContext {
      * For a regular expression replacement, you can check if `replace` is valid by
      * calling [func`GLib`.Regex.check_replacement]. The `replace` text can contain
      * backreferences.
+     * @param matchStart the start of the match to replace.
+     * @param matchEnd the end of the match to replace.
+     * @param replace the replacement text.
+     * @param replaceLength the length of `replace` in bytes, or -1.
      */
     replace(matchStart: Gtk.TextIter, matchEnd: Gtk.TextIter, replace: string, replaceLength: number): boolean
     /**
@@ -29409,10 +31634,13 @@ class SearchContext {
      * For a regular expression replacement, you can check if `replace` is valid by
      * calling [func`GLib`.Regex.check_replacement]. The `replace` text can contain
      * backreferences.
+     * @param replace the replacement text.
+     * @param replaceLength the length of `replace` in bytes, or -1.
      */
     replaceAll(replace: string, replaceLength: number): number
     /**
      * Enables or disables the search occurrences highlighting.
+     * @param highlight the setting.
      */
     setHighlight(highlight: boolean): void
     /**
@@ -29420,6 +31648,7 @@ class SearchContext {
      * 
      * If `match_style` is %NULL, default theme's scheme 'match-style' will be used.
      * To enable or disable the search highlighting, use [method`SearchContext`.set_highlight].
+     * @param matchStyle a #GtkSourceStyle, or %NULL.
      */
     setMatchStyle(matchStyle?: Style | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -29457,6 +31686,10 @@ class SearchContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29467,6 +31700,12 @@ class SearchContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -29490,6 +31729,7 @@ class SearchContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -29509,11 +31749,14 @@ class SearchContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -29521,6 +31764,8 @@ class SearchContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29538,6 +31783,7 @@ class SearchContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -29583,6 +31829,7 @@ class SearchContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -29626,15 +31873,20 @@ class SearchContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -29675,6 +31927,7 @@ class SearchContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -29709,6 +31962,7 @@ class SearchContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -29740,12 +31994,18 @@ class SearchContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::highlight", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::highlight", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::highlight", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -29766,6 +32026,11 @@ class SearchContext {
     on(sigName: "notify::regex-error", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::regex-error", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::regex-error", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::settings", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::settings", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::settings", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::settings", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::settings", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -29840,7 +32105,7 @@ class SearchSettings {
      */
     wrapAround: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.SearchSettings */
     getAtWordBoundaries(): boolean
     getCaseSensitive(): boolean
@@ -29861,10 +32126,12 @@ class SearchSettings {
      * If `at_word_boundaries` is %TRUE, a search match must start and end a word.
      * The match can span multiple words. See also [method`Gtk`.TextIter.starts_word] and
      * [method`Gtk`.TextIter.ends_word].
+     * @param atWordBoundaries the setting.
      */
     setAtWordBoundaries(atWordBoundaries: boolean): void
     /**
      * Enables or disables the case sensitivity for the search.
+     * @param caseSensitive the setting.
      */
     setCaseSensitive(caseSensitive: boolean): void
     /**
@@ -29876,6 +32143,7 @@ class SearchSettings {
      * [class`SearchContext]` uses #GRegex when regex search is enabled. See the
      * [Regular expression syntax](https://developer.gnome.org/glib/stable/glib-regex-syntax.html)
      * page in the GLib reference manual.
+     * @param regexEnabled the setting.
      */
     setRegexEnabled(regexEnabled: boolean): void
     /**
@@ -29886,6 +32154,7 @@ class SearchSettings {
      * 
      * You may be interested to call [func`utils_unescape_search_text]` before
      * this function.
+     * @param searchText the nul-terminated text to search, or %NULL to disable the search.
      */
     setSearchText(searchText?: string | null): void
     /**
@@ -29894,6 +32163,7 @@ class SearchSettings {
      * If `wrap_around` is %TRUE, the forward search continues at the beginning of the buffer
      * if no search occurrences are found. Similarly, the backward search continues to search at
      * the end of the buffer.
+     * @param wrapAround the setting.
      */
     setWrapAround(wrapAround: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -29931,6 +32201,10 @@ class SearchSettings {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29941,6 +32215,12 @@ class SearchSettings {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -29964,6 +32244,7 @@ class SearchSettings {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -29983,11 +32264,14 @@ class SearchSettings {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -29995,6 +32279,8 @@ class SearchSettings {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -30012,6 +32298,7 @@ class SearchSettings {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -30057,6 +32344,7 @@ class SearchSettings {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -30100,15 +32388,20 @@ class SearchSettings {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -30149,6 +32442,7 @@ class SearchSettings {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -30183,6 +32477,7 @@ class SearchSettings {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -30214,6 +32509,7 @@ class SearchSettings {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -30275,12 +32571,13 @@ class Snippet {
     name: string
     trigger: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Snippet */
     /**
      * Appends `chunk` to the `snippet`.
      * 
      * This may only be called before the snippet has been expanded.
+     * @param chunk a #GtkSourceSnippetChunk
      */
     addChunk(chunk: SnippetChunk): void
     /**
@@ -30320,6 +32617,7 @@ class Snippet {
     getName(): string
     /**
      * Gets the chunk at `nth`.
+     * @param nth the nth chunk to get
      */
     getNthChunk(nth: number): SnippetChunk
     /**
@@ -30331,20 +32629,24 @@ class Snippet {
     getTrigger(): string | null
     /**
      * Sets the description for the snippet.
+     * @param description the snippet description
      */
     setDescription(description: string): void
     /**
      * Sets the language identifier for the snippet.
      * 
      * This should match the [property`Language:`id] identifier.
+     * @param languageId the language identifier for the snippet
      */
     setLanguageId(languageId: string): void
     /**
      * Sets the name for the snippet.
+     * @param name the snippet name
      */
     setName(name: string): void
     /**
      * Sets the trigger for the snippet.
+     * @param trigger the trigger word
      */
     setTrigger(trigger: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -30382,6 +32684,10 @@ class Snippet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30392,6 +32698,12 @@ class Snippet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -30415,6 +32727,7 @@ class Snippet {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -30434,11 +32747,14 @@ class Snippet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -30446,6 +32762,8 @@ class Snippet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -30463,6 +32781,7 @@ class Snippet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -30508,6 +32827,7 @@ class Snippet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -30551,15 +32871,20 @@ class Snippet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -30600,6 +32925,7 @@ class Snippet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -30634,6 +32960,7 @@ class Snippet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -30665,6 +32992,7 @@ class Snippet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -30733,7 +33061,7 @@ class SnippetChunk {
     textSet: boolean
     tooltipText: string
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.SnippetChunk */
     /**
      * Copies the source snippet.
@@ -30790,6 +33118,7 @@ class SnippetChunk {
      * and snippet editing ends when it has been reached.
      * 
      * A focus-position of -1 means the chunk cannot be focused by the user.
+     * @param focusPosition the focus-position
      */
     setFocusPosition(focusPosition: number): void
     /**
@@ -30799,6 +33128,7 @@ class SnippetChunk {
      * within the snippet context. If the user has changed the text, the
      * [property`SnippetChunk:`text and] [property`SnippetChunk:`text-set] properties
      * are updated.
+     * @param spec the new specification for the chunk
      */
     setSpec(spec: string): void
     /**
@@ -30807,6 +33137,7 @@ class SnippetChunk {
      * This is usually used by the snippet engine to update the text, but may
      * be useful when creating custom snippets to avoid expansion of any
      * specification.
+     * @param text the text of the property
      */
     setText(text: string): void
     /**
@@ -30814,6 +33145,7 @@ class SnippetChunk {
      * 
      * This is typically set when the user has edited a snippet chunk by the
      * snippet engine.
+     * @param textSet the property value
      */
     setTextSet(textSet: boolean): void
     setTooltipText(tooltipText: string): void
@@ -30852,6 +33184,10 @@ class SnippetChunk {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30862,6 +33198,12 @@ class SnippetChunk {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -30885,6 +33227,7 @@ class SnippetChunk {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -30904,11 +33247,14 @@ class SnippetChunk {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -30916,6 +33262,8 @@ class SnippetChunk {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -30933,6 +33281,7 @@ class SnippetChunk {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -30978,6 +33327,7 @@ class SnippetChunk {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -31021,15 +33371,20 @@ class SnippetChunk {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -31070,6 +33425,7 @@ class SnippetChunk {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -31104,6 +33460,7 @@ class SnippetChunk {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -31135,6 +33492,7 @@ class SnippetChunk {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -31189,7 +33547,7 @@ interface SnippetContext_ConstructProps extends GObject.Object_ConstructProps {
 }
 class SnippetContext {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.SnippetContext */
     /**
      * Removes all variables from the context.
@@ -31198,6 +33556,7 @@ class SnippetContext {
     expand(input: string): string
     /**
      * Gets the current value for a variable named `key`.
+     * @param key the name of the variable
      */
     getVariable(key: string): string | null
     /**
@@ -31207,6 +33566,8 @@ class SnippetContext {
      * but is expected to not change during use of the snippet.
      * 
      * Examples would be the date or users name.
+     * @param key the constant name
+     * @param value the value of the constant
      */
     setConstant(key: string, value: string): void
     setLinePrefix(linePrefix: string): void
@@ -31217,6 +33578,8 @@ class SnippetContext {
      * 
      * This variable may be overridden by future updates to the
      * context.
+     * @param key the variable name
+     * @param value the value for the variable
      */
     setVariable(key: string, value: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -31254,6 +33617,10 @@ class SnippetContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -31264,6 +33631,12 @@ class SnippetContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -31287,6 +33660,7 @@ class SnippetContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -31306,11 +33680,14 @@ class SnippetContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -31318,6 +33695,8 @@ class SnippetContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31335,6 +33714,7 @@ class SnippetContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -31380,6 +33760,7 @@ class SnippetContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -31423,15 +33804,20 @@ class SnippetContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -31472,6 +33858,7 @@ class SnippetContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -31506,6 +33893,7 @@ class SnippetContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GtkSource-5.GtkSource.SnippetContext */
@@ -31549,6 +33937,7 @@ class SnippetContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -31583,7 +33972,7 @@ class SnippetManager {
      */
     searchPath: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.SnippetManager */
     /**
      * Gets the list directories where `self` looks for snippet files.
@@ -31594,6 +33983,9 @@ class SnippetManager {
      * and/or `trigger`.
      * 
      * If `group` or `language_id` are %NULL, they will be ignored.
+     * @param group a group name or %NULL
+     * @param languageId a #GtkSourceLanguage:id or %NULL
+     * @param trigger the trigger for the snippet
      */
     getSnippet(group: string | null, languageId: string | null, trigger: string): Snippet | null
     /**
@@ -31613,6 +34005,9 @@ class SnippetManager {
      * [method`Gio`.ListModel.get_item] is called for a specific snippet. This helps reduce
      * the number of [class`GObject`.Object]'s that are created at runtime to those needed by
      * the calling application.
+     * @param group a group name or %NULL
+     * @param languageId a #GtkSourceLanguage:id or %NULL
+     * @param triggerPrefix a prefix for a trigger to activate
      */
     listMatching(group?: string | null, languageId?: string | null, triggerPrefix?: string | null): Gio.ListModel
     /**
@@ -31625,6 +34020,7 @@ class SnippetManager {
      * snippet files are loaded for the first time. In practice
      * to set a custom search path for a `GtkSourceSnippetManager`,
      * you have to call this function right after creating it.
+     * @param dirs a %NULL-terminated array of   strings or %NULL.
      */
     setSearchPath(dirs?: string[] | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -31662,6 +34058,10 @@ class SnippetManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -31672,6 +34072,12 @@ class SnippetManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -31695,6 +34101,7 @@ class SnippetManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -31714,11 +34121,14 @@ class SnippetManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -31726,6 +34136,8 @@ class SnippetManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31743,6 +34155,7 @@ class SnippetManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -31788,6 +34201,7 @@ class SnippetManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -31831,15 +34245,20 @@ class SnippetManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -31880,6 +34299,7 @@ class SnippetManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -31914,6 +34334,7 @@ class SnippetManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -31945,6 +34366,7 @@ class SnippetManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -32019,7 +34441,7 @@ class SpaceDrawer {
      */
     matrix: GLib.Variant
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.SpaceDrawer */
     /**
      * Binds the [property`SpaceDrawer:`matrix] property to a [class`Gio`.Settings] key.
@@ -32031,6 +34453,9 @@ class SpaceDrawer {
      * mapping functions don't support [struct`GLib`.Variant] properties (maybe it will be
      * supported by a future GIO version, in which case this function can be
      * deprecated).
+     * @param settings a #GSettings object.
+     * @param key the `settings` key to bind.
+     * @param flags flags for the binding.
      */
     bindMatrixSetting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags): void
     getEnableMatrix(): boolean
@@ -32053,10 +34478,12 @@ class SpaceDrawer {
      * those locations. Which means that if a certain kind of white space is present
      * in the return value, then that kind of white space is drawn at all the
      * specified `locations`.
+     * @param locations one or several #GtkSourceSpaceLocationFlags.
      */
     getTypesForLocations(locations: SpaceLocationFlags): SpaceTypeFlags
     /**
      * Sets whether the [property`SpaceDrawer:`matrix] property is enabled.
+     * @param enableMatrix the new value.
      */
     setEnableMatrix(enableMatrix: boolean): void
     /**
@@ -32068,11 +34495,14 @@ class SpaceDrawer {
      * 
      * The [method`SpaceDrawer`.set_types_for_locations] function may be more
      * convenient to use.
+     * @param matrix the new matrix value, or %NULL.
      */
     setMatrix(matrix?: GLib.Variant | null): void
     /**
      * Modifies the [property`SpaceDrawer:`matrix] property at the specified
      * `locations`.
+     * @param locations one or several #GtkSourceSpaceLocationFlags.
+     * @param types a combination of #GtkSourceSpaceTypeFlags.
      */
     setTypesForLocations(locations: SpaceLocationFlags, types: SpaceTypeFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -32110,6 +34540,10 @@ class SpaceDrawer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -32120,6 +34554,12 @@ class SpaceDrawer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -32143,6 +34583,7 @@ class SpaceDrawer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -32162,11 +34603,14 @@ class SpaceDrawer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -32174,6 +34618,8 @@ class SpaceDrawer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -32191,6 +34637,7 @@ class SpaceDrawer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -32236,6 +34683,7 @@ class SpaceDrawer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -32279,15 +34727,20 @@ class SpaceDrawer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -32328,6 +34781,7 @@ class SpaceDrawer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -32362,6 +34816,7 @@ class SpaceDrawer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -32393,6 +34848,7 @@ class SpaceDrawer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -32447,8 +34903,29 @@ interface Style_ConstructProps extends GObject.Object_ConstructProps {
     weightSet?: boolean
 }
 class Style {
+    /* Properties of GtkSource-5.GtkSource.Style */
+    readonly background: string
+    readonly backgroundSet: boolean
+    readonly bold: boolean
+    readonly boldSet: boolean
+    readonly foreground: string
+    readonly foregroundSet: boolean
+    readonly italic: boolean
+    readonly italicSet: boolean
+    readonly lineBackground: string
+    readonly lineBackgroundSet: boolean
+    readonly pangoUnderline: Pango.Underline
+    readonly scale: string
+    readonly scaleSet: boolean
+    readonly strikethrough: boolean
+    readonly strikethroughSet: boolean
+    readonly underlineColor: string
+    readonly underlineColorSet: boolean
+    readonly underlineSet: boolean
+    readonly weight: Pango.Weight
+    readonly weightSet: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.Style */
     /**
      * This function modifies the [class`Gtk`.TextTag] properties that are related to the
@@ -32458,6 +34935,7 @@ class Style {
      * 
      * If `style` is %NULL, the related *-set properties of [class`Gtk`.TextTag] are set to
      * %FALSE.
+     * @param tag a #GtkTextTag to apply styles to.
      */
     apply(tag: Gtk.TextTag): void
     /**
@@ -32500,6 +34978,10 @@ class Style {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -32510,6 +34992,12 @@ class Style {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -32533,6 +35021,7 @@ class Style {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -32552,11 +35041,14 @@ class Style {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -32564,6 +35056,8 @@ class Style {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -32581,6 +35075,7 @@ class Style {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -32626,6 +35121,7 @@ class Style {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -32669,15 +35165,20 @@ class Style {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -32718,6 +35219,7 @@ class Style {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -32752,6 +35254,7 @@ class Style {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -32783,12 +35286,113 @@ class Style {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::background", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::background", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::background", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::background", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::background", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::background-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::background-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::background-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::background-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::background-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::bold", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bold", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::bold", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::bold", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::bold", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::bold-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bold-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::bold-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::bold-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::bold-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::foreground", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::foreground", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::foreground", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::foreground", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::foreground", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::foreground-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::foreground-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::foreground-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::foreground-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::foreground-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::italic", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::italic", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::italic", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::italic", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::italic", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::italic-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::italic-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::italic-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::italic-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::italic-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::line-background", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::line-background", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::line-background", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::line-background", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::line-background", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::line-background-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::line-background-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::line-background-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::line-background-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::line-background-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::pango-underline", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pango-underline", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::pango-underline", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::pango-underline", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::pango-underline", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::scale", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::scale", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::scale", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::scale", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::scale-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::scale-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::scale-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::scale-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::strikethrough", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::strikethrough", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::strikethrough", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::strikethrough", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::strikethrough", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::strikethrough-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::strikethrough-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::strikethrough-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::strikethrough-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::strikethrough-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::underline-color", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::underline-color", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::underline-color", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::underline-color", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::underline-color", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::underline-color-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::underline-color-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::underline-color-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::underline-color-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::underline-color-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::underline-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::underline-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::underline-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::underline-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::underline-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::weight", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::weight", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::weight", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::weight", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::weight", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::weight-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::weight-set", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::weight-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::weight-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::weight-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -32820,11 +35424,16 @@ class StyleScheme {
      */
     readonly filename: string
     /**
+     * Style scheme id, a unique string used to identify the style scheme
+     * in [class`StyleSchemeManager]`.
+     */
+    readonly id: string
+    /**
      * Style scheme name, a translatable string to present to the user.
      */
     readonly name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.StyleScheme */
     getAuthors(): string[] | null
     getDescription(): string | null
@@ -32832,6 +35441,7 @@ class StyleScheme {
     getId(): string
     /**
      * Gets a metadata property from the style scheme.
+     * @param name metadata property name.
      */
     getMetadata(name: string): string | null
     getName(): string
@@ -32871,6 +35481,10 @@ class StyleScheme {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -32881,6 +35495,12 @@ class StyleScheme {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -32904,6 +35524,7 @@ class StyleScheme {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -32923,11 +35544,14 @@ class StyleScheme {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -32935,6 +35559,8 @@ class StyleScheme {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -32952,6 +35578,7 @@ class StyleScheme {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -32997,6 +35624,7 @@ class StyleScheme {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -33040,15 +35668,20 @@ class StyleScheme {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -33089,6 +35722,7 @@ class StyleScheme {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -33123,6 +35757,7 @@ class StyleScheme {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -33154,6 +35789,7 @@ class StyleScheme {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -33170,6 +35806,11 @@ class StyleScheme {
     on(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -33246,6 +35887,13 @@ class StyleSchemeChooserButton {
      * A list of css classes applied to this widget.
      */
     cssClasses: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
     /**
      * The cursor used by `widget`.
      */
@@ -33448,9 +36096,9 @@ class StyleSchemeChooserButton {
      */
     styleScheme: StyleScheme
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gtk-4.0.Gtk.Button */
     /**
      * Gets the child widget of `button`.
@@ -33490,12 +36138,14 @@ class StyleSchemeChooserButton {
      * Most likely, you'll either set the accessibility label or description
      * for `button` explicitly, or you'll set a labelled-by or described-by
      * relations from `child` to `button`.
+     * @param child the child widget
      */
     setChild(child?: Gtk.Widget | null): void
     /**
      * Sets the style of the button.
      * 
      * Buttons can has a flat appearance or have a frame drawn around them.
+     * @param hasFrame whether the button should have a visible frame
      */
     setHasFrame(hasFrame: boolean): void
     /**
@@ -33503,12 +36153,14 @@ class StyleSchemeChooserButton {
      * 
      * If `button` already contains a child widget, that child widget will
      * be removed and replaced with the image.
+     * @param iconName An icon name
      */
     setIconName(iconName: string): void
     /**
      * Sets the text of the label of the button to `label`.
      * 
      * This will also clear any previously set labels.
+     * @param label a string
      */
     setLabel(label: string): void
     /**
@@ -33516,12 +36168,15 @@ class StyleSchemeChooserButton {
      * 
      * If true, an underline in the text of the button label indicates
      * the next character should be used for the mnemonic accelerator key.
+     * @param useUnderline %TRUE if underlines in the text indicate mnemonics
      */
     setUseUnderline(useUnderline: boolean): void
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -33552,6 +36207,8 @@ class StyleSchemeChooserButton {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -33563,6 +36220,7 @@ class StyleSchemeChooserButton {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -33573,6 +36231,7 @@ class StyleSchemeChooserButton {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -33582,6 +36241,7 @@ class StyleSchemeChooserButton {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -33607,6 +36267,7 @@ class StyleSchemeChooserButton {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -33620,6 +36281,10 @@ class StyleSchemeChooserButton {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -33643,6 +36308,7 @@ class StyleSchemeChooserButton {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -33656,6 +36322,7 @@ class StyleSchemeChooserButton {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -33672,6 +36339,7 @@ class StyleSchemeChooserButton {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -33680,6 +36348,8 @@ class StyleSchemeChooserButton {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -33689,6 +36359,7 @@ class StyleSchemeChooserButton {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -33696,6 +36367,8 @@ class StyleSchemeChooserButton {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -33715,10 +36388,15 @@ class StyleSchemeChooserButton {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -33776,6 +36454,7 @@ class StyleSchemeChooserButton {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -34139,6 +36818,7 @@ class StyleSchemeChooserButton {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -34183,6 +36863,8 @@ class StyleSchemeChooserButton {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -34255,6 +36937,7 @@ class StyleSchemeChooserButton {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -34320,6 +37003,8 @@ class StyleSchemeChooserButton {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -34337,6 +37022,8 @@ class StyleSchemeChooserButton {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -34353,11 +37040,14 @@ class StyleSchemeChooserButton {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -34421,6 +37111,7 @@ class StyleSchemeChooserButton {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -34452,12 +37143,15 @@ class StyleSchemeChooserButton {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -34498,6 +37192,9 @@ class StyleSchemeChooserButton {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -34564,12 +37261,14 @@ class StyleSchemeChooserButton {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -34578,11 +37277,13 @@ class StyleSchemeChooserButton {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -34600,10 +37301,12 @@ class StyleSchemeChooserButton {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -34623,11 +37326,13 @@ class StyleSchemeChooserButton {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -34636,6 +37341,7 @@ class StyleSchemeChooserButton {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -34650,6 +37356,7 @@ class StyleSchemeChooserButton {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -34666,6 +37373,7 @@ class StyleSchemeChooserButton {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -34674,6 +37382,7 @@ class StyleSchemeChooserButton {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -34683,6 +37392,7 @@ class StyleSchemeChooserButton {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -34699,6 +37409,7 @@ class StyleSchemeChooserButton {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -34710,6 +37421,7 @@ class StyleSchemeChooserButton {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -34718,14 +37430,17 @@ class StyleSchemeChooserButton {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -34756,6 +37471,7 @@ class StyleSchemeChooserButton {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -34773,27 +37489,33 @@ class StyleSchemeChooserButton {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -34808,6 +37530,7 @@ class StyleSchemeChooserButton {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -34833,6 +37556,7 @@ class StyleSchemeChooserButton {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -34845,6 +37569,7 @@ class StyleSchemeChooserButton {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -34856,12 +37581,14 @@ class StyleSchemeChooserButton {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -34871,6 +37598,7 @@ class StyleSchemeChooserButton {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -34909,6 +37637,8 @@ class StyleSchemeChooserButton {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -34921,6 +37651,8 @@ class StyleSchemeChooserButton {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -34932,6 +37664,7 @@ class StyleSchemeChooserButton {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -34945,10 +37678,12 @@ class StyleSchemeChooserButton {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -34956,12 +37691,14 @@ class StyleSchemeChooserButton {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -34973,6 +37710,7 @@ class StyleSchemeChooserButton {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -35001,6 +37739,8 @@ class StyleSchemeChooserButton {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -35018,6 +37758,8 @@ class StyleSchemeChooserButton {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -35026,6 +37768,9 @@ class StyleSchemeChooserButton {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -35059,6 +37804,7 @@ class StyleSchemeChooserButton {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -35096,6 +37842,10 @@ class StyleSchemeChooserButton {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -35106,6 +37856,12 @@ class StyleSchemeChooserButton {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -35129,6 +37885,7 @@ class StyleSchemeChooserButton {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -35148,11 +37905,14 @@ class StyleSchemeChooserButton {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -35160,6 +37920,8 @@ class StyleSchemeChooserButton {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -35177,6 +37939,7 @@ class StyleSchemeChooserButton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -35222,6 +37985,7 @@ class StyleSchemeChooserButton {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -35265,15 +38029,20 @@ class StyleSchemeChooserButton {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -35314,6 +38083,7 @@ class StyleSchemeChooserButton {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -35348,6 +38118,7 @@ class StyleSchemeChooserButton {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -35357,14 +38128,17 @@ class StyleSchemeChooserButton {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -35374,6 +38148,8 @@ class StyleSchemeChooserButton {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -35383,6 +38159,8 @@ class StyleSchemeChooserButton {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -35392,6 +38170,8 @@ class StyleSchemeChooserButton {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Actionable */
@@ -35417,6 +38197,7 @@ class StyleSchemeChooserButton {
      * containing [class`ApplicationWindow]` or its associated [class`Application]`,
      * respectively. This is the same form used for actions in the [class`Gio`.Menu]
      * associated with the window.
+     * @param actionName an action name
      */
     setActionName(actionName?: string | null): void
     /**
@@ -35438,6 +38219,7 @@ class StyleSchemeChooserButton {
      * is now equal to the target value of the button, the button will now
      * be rendered as active (and the other buttons, with different targets,
      * rendered inactive).
+     * @param targetValue a [struct`GLib`.Variant] to set as the target value
      */
     setActionTargetValue(targetValue?: GLib.Variant | null): void
     /**
@@ -35446,6 +38228,7 @@ class StyleSchemeChooserButton {
      * 
      * `detailed_action_name` is a string in the format accepted by
      * [func`Gio`.Action.parse_detailed_name].
+     * @param detailedActionName the detailed action name
      */
     setDetailedActionName(detailedActionName: string): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -35463,6 +38246,7 @@ class StyleSchemeChooserButton {
     getStyleScheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     setStyleScheme(scheme: StyleScheme): void
     /* Signals of Gtk-4.0.Gtk.Button */
@@ -35501,6 +38285,7 @@ class StyleSchemeChooserButton {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -35519,6 +38304,7 @@ class StyleSchemeChooserButton {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -35546,6 +38332,7 @@ class StyleSchemeChooserButton {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -35554,6 +38341,7 @@ class StyleSchemeChooserButton {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -35575,6 +38363,10 @@ class StyleSchemeChooserButton {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -35604,6 +38396,7 @@ class StyleSchemeChooserButton {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -35664,6 +38457,7 @@ class StyleSchemeChooserButton {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -35710,6 +38504,11 @@ class StyleSchemeChooserButton {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -35929,6 +38728,13 @@ class StyleSchemeChooserWidget {
      */
     cssClasses: string[]
     /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
+    /**
      * The cursor used by `widget`.
      */
     cursor: Gdk.Cursor
@@ -36127,13 +38933,15 @@ class StyleSchemeChooserWidget {
      */
     styleScheme: StyleScheme
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -36164,6 +38972,8 @@ class StyleSchemeChooserWidget {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -36175,6 +38985,7 @@ class StyleSchemeChooserWidget {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -36185,6 +38996,7 @@ class StyleSchemeChooserWidget {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -36194,6 +39006,7 @@ class StyleSchemeChooserWidget {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -36219,6 +39032,7 @@ class StyleSchemeChooserWidget {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -36232,6 +39046,10 @@ class StyleSchemeChooserWidget {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -36255,6 +39073,7 @@ class StyleSchemeChooserWidget {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -36268,6 +39087,7 @@ class StyleSchemeChooserWidget {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -36284,6 +39104,7 @@ class StyleSchemeChooserWidget {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -36292,6 +39113,8 @@ class StyleSchemeChooserWidget {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -36301,6 +39124,7 @@ class StyleSchemeChooserWidget {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -36308,6 +39132,8 @@ class StyleSchemeChooserWidget {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -36327,10 +39153,15 @@ class StyleSchemeChooserWidget {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -36388,6 +39219,7 @@ class StyleSchemeChooserWidget {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -36751,6 +39583,7 @@ class StyleSchemeChooserWidget {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -36795,6 +39628,8 @@ class StyleSchemeChooserWidget {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -36867,6 +39702,7 @@ class StyleSchemeChooserWidget {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -36932,6 +39768,8 @@ class StyleSchemeChooserWidget {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -36949,6 +39787,8 @@ class StyleSchemeChooserWidget {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -36965,11 +39805,14 @@ class StyleSchemeChooserWidget {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -37033,6 +39876,7 @@ class StyleSchemeChooserWidget {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -37064,12 +39908,15 @@ class StyleSchemeChooserWidget {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -37110,6 +39957,9 @@ class StyleSchemeChooserWidget {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -37176,12 +40026,14 @@ class StyleSchemeChooserWidget {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -37190,11 +40042,13 @@ class StyleSchemeChooserWidget {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -37212,10 +40066,12 @@ class StyleSchemeChooserWidget {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -37235,11 +40091,13 @@ class StyleSchemeChooserWidget {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -37248,6 +40106,7 @@ class StyleSchemeChooserWidget {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -37262,6 +40121,7 @@ class StyleSchemeChooserWidget {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -37278,6 +40138,7 @@ class StyleSchemeChooserWidget {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -37286,6 +40147,7 @@ class StyleSchemeChooserWidget {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -37295,6 +40157,7 @@ class StyleSchemeChooserWidget {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -37311,6 +40174,7 @@ class StyleSchemeChooserWidget {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -37322,6 +40186,7 @@ class StyleSchemeChooserWidget {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -37330,14 +40195,17 @@ class StyleSchemeChooserWidget {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -37368,6 +40236,7 @@ class StyleSchemeChooserWidget {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -37385,27 +40254,33 @@ class StyleSchemeChooserWidget {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -37420,6 +40295,7 @@ class StyleSchemeChooserWidget {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -37445,6 +40321,7 @@ class StyleSchemeChooserWidget {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -37457,6 +40334,7 @@ class StyleSchemeChooserWidget {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -37468,12 +40346,14 @@ class StyleSchemeChooserWidget {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -37483,6 +40363,7 @@ class StyleSchemeChooserWidget {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -37521,6 +40402,8 @@ class StyleSchemeChooserWidget {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -37533,6 +40416,8 @@ class StyleSchemeChooserWidget {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -37544,6 +40429,7 @@ class StyleSchemeChooserWidget {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -37557,10 +40443,12 @@ class StyleSchemeChooserWidget {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -37568,12 +40456,14 @@ class StyleSchemeChooserWidget {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -37585,6 +40475,7 @@ class StyleSchemeChooserWidget {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -37613,6 +40504,8 @@ class StyleSchemeChooserWidget {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -37630,6 +40523,8 @@ class StyleSchemeChooserWidget {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -37638,6 +40533,9 @@ class StyleSchemeChooserWidget {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -37671,6 +40569,7 @@ class StyleSchemeChooserWidget {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -37708,6 +40607,10 @@ class StyleSchemeChooserWidget {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -37718,6 +40621,12 @@ class StyleSchemeChooserWidget {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -37741,6 +40650,7 @@ class StyleSchemeChooserWidget {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -37760,11 +40670,14 @@ class StyleSchemeChooserWidget {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -37772,6 +40685,8 @@ class StyleSchemeChooserWidget {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -37789,6 +40704,7 @@ class StyleSchemeChooserWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -37834,6 +40750,7 @@ class StyleSchemeChooserWidget {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -37877,15 +40794,20 @@ class StyleSchemeChooserWidget {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -37926,6 +40848,7 @@ class StyleSchemeChooserWidget {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -37960,6 +40883,7 @@ class StyleSchemeChooserWidget {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -37969,14 +40893,17 @@ class StyleSchemeChooserWidget {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -37986,6 +40913,8 @@ class StyleSchemeChooserWidget {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -37995,6 +40924,8 @@ class StyleSchemeChooserWidget {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -38004,6 +40935,8 @@ class StyleSchemeChooserWidget {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -38021,6 +40954,7 @@ class StyleSchemeChooserWidget {
     getStyleScheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     setStyleScheme(scheme: StyleScheme): void
     /* Signals of Gtk-4.0.Gtk.Widget */
@@ -38039,6 +40973,7 @@ class StyleSchemeChooserWidget {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -38057,6 +40992,7 @@ class StyleSchemeChooserWidget {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -38084,6 +41020,7 @@ class StyleSchemeChooserWidget {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -38092,6 +41029,7 @@ class StyleSchemeChooserWidget {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -38113,6 +41051,10 @@ class StyleSchemeChooserWidget {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -38142,6 +41084,7 @@ class StyleSchemeChooserWidget {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -38202,6 +41145,7 @@ class StyleSchemeChooserWidget {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -38223,6 +41167,11 @@ class StyleSchemeChooserWidget {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -38406,13 +41355,14 @@ class StyleSchemeManager {
     readonly schemeIds: string[]
     searchPath: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.StyleSchemeManager */
     /**
      * Appends `path` to the list of directories where the `manager` looks for
      * style scheme files.
      * 
      * See [method`StyleSchemeManager`.set_search_path] for details.
+     * @param path a directory or a filename.
      */
     appendSearchPath(path: string): void
     /**
@@ -38424,6 +41374,7 @@ class StyleSchemeManager {
     forceRescan(): void
     /**
      * Looks up style scheme by id.
+     * @param schemeId style scheme id to find.
      */
     getScheme(schemeId: string): StyleScheme | null
     /**
@@ -38441,6 +41392,7 @@ class StyleSchemeManager {
      * for style scheme files.
      * 
      * See [method`StyleSchemeManager`.set_search_path] for details.
+     * @param path a directory or a filename.
      */
     prependSearchPath(path: string): void
     /**
@@ -38448,6 +41400,7 @@ class StyleSchemeManager {
      * style scheme files.
      * 
      * If `path` is %NULL, the search path is reset to default.
+     * @param path a %NULL-terminated array of   strings or %NULL.
      */
     setSearchPath(path?: string[] | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -38485,6 +41438,10 @@ class StyleSchemeManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -38495,6 +41452,12 @@ class StyleSchemeManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -38518,6 +41481,7 @@ class StyleSchemeManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -38537,11 +41501,14 @@ class StyleSchemeManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -38549,6 +41516,8 @@ class StyleSchemeManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -38566,6 +41535,7 @@ class StyleSchemeManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -38611,6 +41581,7 @@ class StyleSchemeManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -38654,15 +41625,20 @@ class StyleSchemeManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -38703,6 +41679,7 @@ class StyleSchemeManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -38737,6 +41714,7 @@ class StyleSchemeManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -38768,6 +41746,7 @@ class StyleSchemeManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -38819,6 +41798,7 @@ interface StyleSchemePreview_ConstructProps extends Gtk.Widget_ConstructProps {
 }
 class StyleSchemePreview {
     /* Properties of GtkSource-5.GtkSource.StyleSchemePreview */
+    readonly scheme: StyleScheme
     selected: boolean
     /* Properties of Gtk-4.0.Gtk.Widget */
     /**
@@ -38837,6 +41817,13 @@ class StyleSchemePreview {
      * A list of css classes applied to this widget.
      */
     cssClasses: string[]
+    /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
     /**
      * The cursor used by `widget`.
      */
@@ -39032,9 +42019,9 @@ class StyleSchemePreview {
     actionName: string
     actionTarget: GLib.Variant
     /* Fields of Gtk-4.0.Gtk.Widget */
-    readonly parentInstance: GObject.InitiallyUnowned
+    parentInstance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.StyleSchemePreview */
     /**
      * Gets the #GtkSourceStyleScheme previewed by the widget.
@@ -39046,6 +42033,8 @@ class StyleSchemePreview {
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -39076,6 +42065,8 @@ class StyleSchemePreview {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -39087,6 +42078,7 @@ class StyleSchemePreview {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -39097,6 +42089,7 @@ class StyleSchemePreview {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -39106,6 +42099,7 @@ class StyleSchemePreview {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -39131,6 +42125,7 @@ class StyleSchemePreview {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -39144,6 +42139,10 @@ class StyleSchemePreview {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -39167,6 +42166,7 @@ class StyleSchemePreview {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -39180,6 +42180,7 @@ class StyleSchemePreview {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -39196,6 +42197,7 @@ class StyleSchemePreview {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -39204,6 +42206,8 @@ class StyleSchemePreview {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -39213,6 +42217,7 @@ class StyleSchemePreview {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -39220,6 +42225,8 @@ class StyleSchemePreview {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -39239,10 +42246,15 @@ class StyleSchemePreview {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -39300,6 +42312,7 @@ class StyleSchemePreview {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -39663,6 +42676,7 @@ class StyleSchemePreview {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -39707,6 +42721,8 @@ class StyleSchemePreview {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -39779,6 +42795,7 @@ class StyleSchemePreview {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -39844,6 +42861,8 @@ class StyleSchemePreview {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -39861,6 +42880,8 @@ class StyleSchemePreview {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -39877,11 +42898,14 @@ class StyleSchemePreview {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -39945,6 +42969,7 @@ class StyleSchemePreview {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -39976,12 +43001,15 @@ class StyleSchemePreview {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -40022,6 +43050,9 @@ class StyleSchemePreview {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -40088,12 +43119,14 @@ class StyleSchemePreview {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -40102,11 +43135,13 @@ class StyleSchemePreview {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -40124,10 +43159,12 @@ class StyleSchemePreview {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -40147,11 +43184,13 @@ class StyleSchemePreview {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -40160,6 +43199,7 @@ class StyleSchemePreview {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -40174,6 +43214,7 @@ class StyleSchemePreview {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -40190,6 +43231,7 @@ class StyleSchemePreview {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -40198,6 +43240,7 @@ class StyleSchemePreview {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -40207,6 +43250,7 @@ class StyleSchemePreview {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -40223,6 +43267,7 @@ class StyleSchemePreview {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -40234,6 +43279,7 @@ class StyleSchemePreview {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -40242,14 +43288,17 @@ class StyleSchemePreview {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -40280,6 +43329,7 @@ class StyleSchemePreview {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -40297,27 +43347,33 @@ class StyleSchemePreview {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -40332,6 +43388,7 @@ class StyleSchemePreview {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -40357,6 +43414,7 @@ class StyleSchemePreview {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -40369,6 +43427,7 @@ class StyleSchemePreview {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -40380,12 +43439,14 @@ class StyleSchemePreview {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -40395,6 +43456,7 @@ class StyleSchemePreview {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -40433,6 +43495,8 @@ class StyleSchemePreview {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -40445,6 +43509,8 @@ class StyleSchemePreview {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -40456,6 +43522,7 @@ class StyleSchemePreview {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -40469,10 +43536,12 @@ class StyleSchemePreview {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -40480,12 +43549,14 @@ class StyleSchemePreview {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -40497,6 +43568,7 @@ class StyleSchemePreview {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -40525,6 +43597,8 @@ class StyleSchemePreview {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -40542,6 +43616,8 @@ class StyleSchemePreview {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -40550,6 +43626,9 @@ class StyleSchemePreview {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -40583,6 +43662,7 @@ class StyleSchemePreview {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -40620,6 +43700,10 @@ class StyleSchemePreview {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -40630,6 +43714,12 @@ class StyleSchemePreview {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -40653,6 +43743,7 @@ class StyleSchemePreview {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -40672,11 +43763,14 @@ class StyleSchemePreview {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -40684,6 +43778,8 @@ class StyleSchemePreview {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -40701,6 +43797,7 @@ class StyleSchemePreview {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -40746,6 +43843,7 @@ class StyleSchemePreview {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -40789,15 +43887,20 @@ class StyleSchemePreview {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -40838,6 +43941,7 @@ class StyleSchemePreview {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -40872,6 +43976,7 @@ class StyleSchemePreview {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -40881,14 +43986,17 @@ class StyleSchemePreview {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -40898,6 +44006,8 @@ class StyleSchemePreview {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -40907,6 +44017,8 @@ class StyleSchemePreview {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -40916,6 +44028,8 @@ class StyleSchemePreview {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Actionable */
@@ -40941,6 +44055,7 @@ class StyleSchemePreview {
      * containing [class`ApplicationWindow]` or its associated [class`Application]`,
      * respectively. This is the same form used for actions in the [class`Gio`.Menu]
      * associated with the window.
+     * @param actionName an action name
      */
     setActionName(actionName?: string | null): void
     /**
@@ -40962,6 +44077,7 @@ class StyleSchemePreview {
      * is now equal to the target value of the button, the button will now
      * be rendered as active (and the other buttons, with different targets,
      * rendered inactive).
+     * @param targetValue a [struct`GLib`.Variant] to set as the target value
      */
     setActionTargetValue(targetValue?: GLib.Variant | null): void
     /**
@@ -40970,6 +44086,7 @@ class StyleSchemePreview {
      * 
      * `detailed_action_name` is a string in the format accepted by
      * [func`Gio`.Action.parse_detailed_name].
+     * @param detailedActionName the detailed action name
      */
     setDetailedActionName(detailedActionName: string): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -41002,6 +44119,7 @@ class StyleSchemePreview {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -41020,6 +44138,7 @@ class StyleSchemePreview {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -41047,6 +44166,7 @@ class StyleSchemePreview {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -41055,6 +44175,7 @@ class StyleSchemePreview {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -41076,6 +44197,10 @@ class StyleSchemePreview {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -41105,6 +44230,7 @@ class StyleSchemePreview {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -41165,12 +44291,18 @@ class StyleSchemePreview {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::scheme", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scheme", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::scheme", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::scheme", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::scheme", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::selected", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::selected", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::selected", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -41191,6 +44323,11 @@ class StyleSchemePreview {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -41529,6 +44666,12 @@ class Tag {
     lineHeight: number
     lineHeightSet: boolean
     /**
+     * The name used to refer to the tag.
+     * 
+     * %NULL for anonymous tags.
+     */
+    readonly name: string
+    /**
      * Style of overline for this text.
      */
     overline: Pango.Overline
@@ -41683,10 +44826,10 @@ class Tag {
     wrapMode: Gtk.WrapMode
     wrapModeSet: boolean
     /* Fields of Gtk-4.0.Gtk.TextTag */
-    readonly parentInstance: GObject.Object
-    readonly priv: Gtk.TextTagPrivate
+    parentInstance: GObject.Object
+    priv: Gtk.TextTagPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gtk-4.0.Gtk.TextTag */
     /**
      * Emits the [signal`Gtk`.TextTagTable::tag-changed] signal on the
@@ -41694,6 +44837,7 @@ class Tag {
      * 
      * The signal is already emitted when setting a `GtkTextTag` property.
      * This function is useful for a `GtkTextTag` subclass.
+     * @param sizeChanged whether the change affects the `GtkTextView` layout
      */
     changed(sizeChanged: boolean): void
     /**
@@ -41715,6 +44859,7 @@ class Tag {
      * precedence of a set of tags is the order in which they were added
      * to the table, or created with [method`Gtk`.TextBuffer.create_tag],
      * which adds the tag to the buffer’s table automatically.
+     * @param priority the new priority
      */
     setPriority(priority: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -41752,6 +44897,10 @@ class Tag {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -41762,6 +44911,12 @@ class Tag {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -41785,6 +44940,7 @@ class Tag {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -41804,11 +44960,14 @@ class Tag {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -41816,6 +44975,8 @@ class Tag {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -41833,6 +44994,7 @@ class Tag {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -41878,6 +45040,7 @@ class Tag {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -41921,15 +45084,20 @@ class Tag {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -41970,6 +45138,7 @@ class Tag {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -42004,6 +45173,7 @@ class Tag {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -42035,6 +45205,7 @@ class Tag {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -42241,6 +45412,11 @@ class Tag {
     on(sigName: "notify::line-height-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::line-height-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::line-height-set", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::overline", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::overline", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::overline", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -42776,6 +45952,13 @@ class View {
      */
     cssClasses: string[]
     /**
+     * The name of this widget in the CSS tree.
+     * 
+     * This property is meant to be set by widget implementations,
+     * typically in their instance init function.
+     */
+    readonly cssName: string
+    /**
      * The cursor used by `widget`.
      */
     cursor: Gdk.Cursor
@@ -42988,9 +46171,9 @@ class View {
      */
     vscrollPolicy: Gtk.ScrollablePolicy
     /* Fields of Gtk-4.0.Gtk.TextView */
-    readonly parentInstance: Gtk.Widget
+    parentInstance: Gtk.Widget
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.View */
     /**
      * Returns whether auto-indentation of text is enabled.
@@ -43021,6 +46204,7 @@ class View {
      * Only %GTK_TEXT_WINDOW_LEFT and %GTK_TEXT_WINDOW_RIGHT are supported,
      * respectively corresponding to the left and right gutter. The line numbers
      * and mark category icons are rendered in the left gutter.
+     * @param windowType the gutter window type.
      */
     getGutter(windowType: Gtk.TextWindowType): Gutter
     /**
@@ -43056,6 +46240,8 @@ class View {
     getInsertSpacesInsteadOfTabs(): boolean
     /**
      * Gets attributes and priority for the `category`.
+     * @param category the category.
+     * @param priority place where priority of the category will be stored.
      */
     getMarkAttributes(category: string, priority: number): MarkAttributes
     /**
@@ -43098,11 +46284,14 @@ class View {
     /**
      * Determines the visual column at `iter` taking into consideration the
      * [property`View:`tab-width] of `view`.
+     * @param iter a position in `view`.
      */
     getVisualColumn(iter: Gtk.TextIter): number
     /**
      * Inserts one indentation level at the beginning of the specified lines. The
      * empty lines are not indented.
+     * @param start #GtkTextIter of the first line to indent
+     * @param end #GtkTextIter of the last line to indent
      */
     indentLines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -43111,6 +46300,8 @@ class View {
      * If another snippet was already active, it will be paused and the new
      * snippet will become active. Once the focus positions of `snippet` have
      * been exhausted, editing will return to the previous snippet.
+     * @param snippet a #GtkSourceSnippet
+     * @param location a #GtkTextIter or %NULL for the cursor position
      */
     pushSnippet(snippet: Snippet, location?: Gtk.TextIter | null): void
     /**
@@ -43120,10 +46311,12 @@ class View {
      * same indentation as the previous line. This is **not** a
      * "smart indentation" where an indentation level is added or removed depending
      * on the context.
+     * @param enable whether to enable auto indentation.
      */
     setAutoIndent(enable: boolean): void
     /**
      * Set if and how the background pattern should be displayed.
+     * @param backgroundPattern the #GtkSourceBackgroundPatternType.
      */
     setBackgroundPattern(backgroundPattern: BackgroundPatternType): void
     /**
@@ -43132,10 +46325,12 @@ class View {
      * If `enable_snippets` is %TRUE, matching snippets found in the
      * [class`SnippetManager]` may be expanded when the user presses
      * Tab after a word in the [class`View]`.
+     * @param enableSnippets if snippets should be enabled
      */
     setEnableSnippets(enableSnippets: boolean): void
     /**
      * If `highlight` is %TRUE the current line will be highlighted.
+     * @param highlight whether to highlight the current line.
      */
     setHighlightCurrentLine(highlight: boolean): void
     /**
@@ -43148,6 +46343,7 @@ class View {
      * 
      * When the selection doesn't span several lines, the tab key always replaces
      * the selection with a normal `\t` character.
+     * @param enable whether to indent a block when tab is pressed.
      */
     setIndentOnTab(enable: boolean): void
     /**
@@ -43173,6 +46369,7 @@ class View {
      * The test-widget program (available in the GtkSourceView repository) may be
      * useful to better understand the indentation settings (enable the space
      * drawing!).
+     * @param width indent width in characters.
      */
     setIndentWidth(width: number): void
     /**
@@ -43180,6 +46377,7 @@ class View {
      * 
      * Note that the indenter will not be used unless #GtkSourceView:auto-indent
      * has been set to %TRUE.
+     * @param indenter a #GtkSourceIndenter or %NULL
      */
     setIndenter(indenter?: Indenter | null): void
     /**
@@ -43187,36 +46385,46 @@ class View {
      * 
      * Of course it is still possible to insert a real `\t` programmatically with the
      * [class`Gtk`.TextBuffer] API.
+     * @param enable whether to insert spaces instead of tabs.
      */
     setInsertSpacesInsteadOfTabs(enable: boolean): void
     /**
      * Sets attributes and priority for the `category`.
+     * @param category the category.
+     * @param attributes mark attributes.
+     * @param priority priority of the category.
      */
     setMarkAttributes(category: string, attributes: MarkAttributes, priority: number): void
     /**
      * Sets the position of the right margin in the given `view`.
+     * @param pos the width in characters where to position the right margin.
      */
     setRightMarginPosition(pos: number): void
     /**
      * If %TRUE line marks will be displayed beside the text.
+     * @param show whether line marks should be displayed.
      */
     setShowLineMarks(show: boolean): void
     /**
      * If %TRUE line numbers will be displayed beside the text.
+     * @param show whether line numbers should be displayed.
      */
     setShowLineNumbers(show: boolean): void
     /**
      * If %TRUE a right margin is displayed.
+     * @param show whether to show a right margin.
      */
     setShowRightMargin(show: boolean): void
     /**
      * When set to %TRUE, pressing the Backspace key will try to delete spaces
      * up to the previous tab stop.
+     * @param smartBackspace whether to enable smart Backspace handling.
      */
     setSmartBackspace(smartBackspace: boolean): void
     /**
      * Set the desired movement of the cursor when HOME and END keys
      * are pressed.
+     * @param smartHomeEnd the desired behavior among #GtkSourceSmartHomeEndType.
      */
     setSmartHomeEnd(smartHomeEnd: SmartHomeEndType): void
     /**
@@ -43224,16 +46432,21 @@ class View {
      * 
      * The #GtkTextBuffer still contains `\t` characters,
      * but they can take a different visual width in a [class`View]` widget.
+     * @param width width of tab in characters.
      */
     setTabWidth(width: number): void
     /**
      * Removes one indentation level at the beginning of the
      * specified lines.
+     * @param start #GtkTextIter of the first line to indent
+     * @param end #GtkTextIter of the last line to indent
      */
     unindentLines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /* Methods of Gtk-4.0.Gtk.TextView */
     /**
      * Adds a child widget in the text buffer, at the given `anchor`.
+     * @param child a `GtkWidget`
+     * @param anchor a `GtkTextChildAnchor` in the `GtkTextBuffer` for `text_view`
      */
     addChildAtAnchor(child: Gtk.Widget, anchor: Gtk.TextChildAnchor): void
     /**
@@ -43247,6 +46460,9 @@ class View {
      * 
      * If instead you want a widget that will not move with the
      * `GtkTextView` contents see `GtkOverlay`.
+     * @param child a `GtkWidget`
+     * @param xpos X position of child in window coordinates
+     * @param ypos Y position of child in window coordinates
      */
     addOverlay(child: Gtk.Widget, xpos: number, ypos: number): void
     /**
@@ -43259,6 +46475,7 @@ class View {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the `GtkTextBuffer`.
+     * @param iter a `GtkTextIter`
      */
     backwardDisplayLine(iter: Gtk.TextIter): boolean
     /**
@@ -43271,10 +46488,14 @@ class View {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the `GtkTextBuffer`.
+     * @param iter a `GtkTextIter`
      */
     backwardDisplayLineStart(iter: Gtk.TextIter): boolean
     /**
      * Converts buffer coordinates to window coordinates.
+     * @param win a `GtkTextWindowType`
+     * @param bufferX buffer x coordinate
+     * @param bufferY buffer y coordinate
      */
     bufferToWindowCoords(win: Gtk.TextWindowType, bufferX: number, bufferY: number): [ /* windowX */ number | null, /* windowY */ number | null ]
     /**
@@ -43287,6 +46508,7 @@ class View {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the `GtkTextBuffer`.
+     * @param iter a `GtkTextIter`
      */
     forwardDisplayLine(iter: Gtk.TextIter): boolean
     /**
@@ -43299,6 +46521,7 @@ class View {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the `GtkTextBuffer`.
+     * @param iter a `GtkTextIter`
      */
     forwardDisplayLineEnd(iter: Gtk.TextIter): boolean
     /**
@@ -43339,6 +46562,7 @@ class View {
      * The rectangle position is in buffer coordinates; use
      * [method`Gtk`.TextView.buffer_to_window_coords] to convert these
      * coordinates to coordinates for one of the windows in the text view.
+     * @param iter a `GtkTextIter`
      */
     getCursorLocations(iter?: Gtk.TextIter | null): [ /* strong */ Gdk.Rectangle | null, /* weak */ Gdk.Rectangle | null ]
     /**
@@ -43363,6 +46587,7 @@ class View {
      * 
      * `win` must be one of %GTK_TEXT_WINDOW_LEFT, %GTK_TEXT_WINDOW_RIGHT,
      * %GTK_TEXT_WINDOW_TOP, or %GTK_TEXT_WINDOW_BOTTOM.
+     * @param win a `GtkTextWindowType`
      */
     getGutter(win: Gtk.TextWindowType): Gtk.Widget | null
     /**
@@ -43387,6 +46612,8 @@ class View {
      * the currently-displayed portion. If you have coordinates from an
      * event, you have to convert those to buffer coordinates with
      * [method`Gtk`.TextView.window_to_buffer_coords].
+     * @param x x position, in buffer coordinates
+     * @param y y position, in buffer coordinates
      */
     getIterAtLocation(x: number, y: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -43400,6 +46627,8 @@ class View {
      * 
      * Note that this is different from [method`Gtk`.TextView.get_iter_at_location],
      * which returns cursor locations, i.e. positions between characters.
+     * @param x x position, in buffer coordinates
+     * @param y y position, in buffer coordinates
      */
     getIterAtPosition(x: number, y: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter, /* trailing */ number | null ]
     /**
@@ -43408,6 +46637,7 @@ class View {
      * The rectangle position is in buffer coordinates; use
      * [method`Gtk`.TextView.buffer_to_window_coords] to convert these
      * coordinates to coordinates for one of the windows in the text view.
+     * @param iter a `GtkTextIter`
      */
     getIterLocation(iter: Gtk.TextIter): /* location */ Gdk.Rectangle
     /**
@@ -43430,6 +46660,7 @@ class View {
      * [method`Gtk`.TextView.window_to_buffer_coords]. If non-%NULL,
      * `line_top` will be filled with the coordinate of the top edge
      * of the line.
+     * @param y a y coordinate
      */
     getLineAtY(y: number): [ /* targetIter */ Gtk.TextIter, /* lineTop */ number ]
     /**
@@ -43438,6 +46669,7 @@ class View {
      * 
      * The coordinate is a buffer coordinate; convert to window
      * coordinates with [method`Gtk`.TextView.buffer_to_window_coords].
+     * @param iter a `GtkTextIter`
      */
     getLineYrange(iter: Gtk.TextIter): [ /* y */ number, /* height */ number ]
     /**
@@ -43543,17 +46775,22 @@ class View {
      *   return GTK_WIDGET_CLASS (gtk_foo_bar_parent_class)->key_press_event (widget, event);
      * }
      * ```
+     * @param event the key event
      */
     imContextFilterKeypress(event: Gdk.Event): boolean
     /**
      * Moves a mark within the buffer so that it's
      * located within the currently-visible text area.
+     * @param mark a `GtkTextMark`
      */
     moveMarkOnscreen(mark: Gtk.TextMark): boolean
     /**
      * Updates the position of a child.
      * 
      * See [method`Gtk`.TextView.add_overlay].
+     * @param child a widget already added with [method`Gtk`.TextView.add_overlay]
+     * @param xpos new X position in buffer coordinates
+     * @param ypos new Y position in buffer coordinates
      */
     moveOverlay(child: Gtk.Widget, xpos: number, ypos: number): void
     /**
@@ -43569,6 +46806,8 @@ class View {
      * between logical and visual order will depend on the direction
      * of the current run, and there may be jumps when the cursor
      * is moved off of the end of a run.
+     * @param iter a `GtkTextIter`
+     * @param count number of characters to move (negative moves left,    positive moves right)
      */
     moveVisually(iter: Gtk.TextIter, count: number): boolean
     /**
@@ -43578,6 +46817,7 @@ class View {
     placeCursorOnscreen(): boolean
     /**
      * Removes a child widget from `text_view`.
+     * @param child the child to remove
      */
     remove(child: Gtk.Widget): void
     /**
@@ -43601,6 +46841,7 @@ class View {
     /**
      * Scrolls `text_view` the minimum distance such that `mark` is contained
      * within the visible area of the widget.
+     * @param mark a mark in the buffer for `text_view`
      */
     scrollMarkOnscreen(mark: Gtk.TextMark): void
     /**
@@ -43619,6 +46860,11 @@ class View {
      * called before the height computations. To avoid oddness, consider
      * using [method`Gtk`.TextView.scroll_to_mark] which saves a point to be
      * scrolled to after line validation.
+     * @param iter a `GtkTextIter`
+     * @param withinMargin margin as a [0.0,0.5) fraction of screen size
+     * @param useAlign whether to use alignment arguments (if %FALSE,    just get the mark onscreen)
+     * @param xalign horizontal alignment of mark within visible area
+     * @param yalign vertical alignment of mark within visible area
      */
     scrollToIter(iter: Gtk.TextIter, withinMargin: number, useAlign: boolean, xalign: number, yalign: number): boolean
     /**
@@ -43630,6 +46876,11 @@ class View {
      * the minimal distance to get the mark onscreen, possibly not scrolling
      * at all. The effective screen for purposes of this function is reduced
      * by a margin of size `within_margin`.
+     * @param mark a `GtkTextMark`
+     * @param withinMargin margin as a [0.0,0.5) fraction of screen size
+     * @param useAlign whether to use alignment arguments (if %FALSE, just    get the mark onscreen)
+     * @param xalign horizontal alignment of mark within visible area
+     * @param yalign vertical alignment of mark within visible area
      */
     scrollToMark(mark: Gtk.TextMark, withinMargin: number, useAlign: boolean, xalign: number, yalign: number): void
     /**
@@ -43638,6 +46889,7 @@ class View {
      * If `accepts_tab` is %TRUE, a tab character is inserted. If `accepts_tab`
      * is %FALSE the keyboard focus is moved to the next widget in the focus
      * chain.
+     * @param acceptsTab %TRUE if pressing the Tab key should insert a tab    character, %FALSE, if pressing the Tab key should move the    keyboard focus.
      */
     setAcceptsTab(acceptsTab: boolean): void
     /**
@@ -43645,6 +46897,7 @@ class View {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param bottomMargin bottom margin in pixels
      */
     setBottomMargin(bottomMargin: number): void
     /**
@@ -43654,6 +46907,7 @@ class View {
      * a reference is added to `buffer`. If you owned a reference to `buffer`
      * before passing it to this function, you must remove that reference
      * yourself; `GtkTextView` will not “adopt” it.
+     * @param buffer a `GtkTextBuffer`
      */
     setBuffer(buffer?: Gtk.TextBuffer | null): void
     /**
@@ -43664,6 +46918,7 @@ class View {
      * 
      * Note that this property may be overridden by the
      * [property`GtkSettings:`gtk-keynav-use-caret] setting.
+     * @param setting whether to show the insertion cursor
      */
     setCursorVisible(setting: boolean): void
     /**
@@ -43671,6 +46926,7 @@ class View {
      * 
      * You can override this default setting with tags in the buffer,
      * using the “editable” attribute of tags.
+     * @param setting whether it’s editable
      */
     setEditable(setting: boolean): void
     /**
@@ -43678,6 +46934,7 @@ class View {
      * menu for `text_view`.
      * 
      * You can pass %NULL to remove a previously set extra menu.
+     * @param model a `GMenuModel`
      */
     setExtraMenu(model?: Gio.MenuModel | null): void
     /**
@@ -43685,12 +46942,15 @@ class View {
      * 
      * `win` must be one of %GTK_TEXT_WINDOW_LEFT, %GTK_TEXT_WINDOW_RIGHT,
      * %GTK_TEXT_WINDOW_TOP, or %GTK_TEXT_WINDOW_BOTTOM.
+     * @param win a `GtkTextWindowType`
+     * @param widget a `GtkWidget`
      */
     setGutter(win: Gtk.TextWindowType, widget?: Gtk.Widget | null): void
     /**
      * Sets the default indentation for paragraphs in `text_view`.
      * 
      * Tags in the buffer may override the default.
+     * @param indent indentation in pixels
      */
     setIndent(indent: number): void
     /**
@@ -43698,6 +46958,7 @@ class View {
      * 
      * The `input-hints` allow input methods to fine-tune
      * their behaviour.
+     * @param hints the hints
      */
     setInputHints(hints: Gtk.InputHints): void
     /**
@@ -43705,12 +46966,14 @@ class View {
      * 
      * The `input-purpose` can be used by on-screen keyboards
      * and other input methods to adjust their behaviour.
+     * @param purpose the purpose
      */
     setInputPurpose(purpose: Gtk.InputPurpose): void
     /**
      * Sets the default justification of text in `text_view`.
      * 
      * Tags in the view’s buffer may override the default.
+     * @param justification justification
      */
     setJustification(justification: Gtk.Justification): void
     /**
@@ -43720,21 +46983,25 @@ class View {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param leftMargin left margin in pixels
      */
     setLeftMargin(leftMargin: number): void
     /**
      * Sets whether the `GtkTextView` should display text in
      * monospace styling.
+     * @param monospace %TRUE to request monospace styling
      */
     setMonospace(monospace: boolean): void
     /**
      * Changes the `GtkTextView` overwrite mode.
+     * @param overwrite %TRUE to turn on overwrite mode, %FALSE to turn it off
      */
     setOverwrite(overwrite: boolean): void
     /**
      * Sets the default number of blank pixels above paragraphs in `text_view`.
      * 
      * Tags in the buffer for `text_view` may override the defaults.
+     * @param pixelsAboveLines pixels above paragraphs
      */
     setPixelsAboveLines(pixelsAboveLines: number): void
     /**
@@ -43742,6 +47009,7 @@ class View {
      * to put below paragraphs in `text_view`.
      * 
      * May be overridden by tags applied to `text_view’`s buffer.
+     * @param pixelsBelowLines pixels below paragraphs
      */
     setPixelsBelowLines(pixelsBelowLines: number): void
     /**
@@ -43749,6 +47017,7 @@ class View {
      * display/wrapped lines within a paragraph.
      * 
      * May be overridden by tags in `text_view’`s buffer.
+     * @param pixelsInsideWrap default number of pixels between wrapped lines
      */
     setPixelsInsideWrap(pixelsInsideWrap: number): void
     /**
@@ -43758,12 +47027,14 @@ class View {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param rightMargin right margin in pixels
      */
     setRightMargin(rightMargin: number): void
     /**
      * Sets the default tab stops for paragraphs in `text_view`.
      * 
      * Tags in the buffer may override the default.
+     * @param tabs tabs as a `PangoTabArray`
      */
     setTabs(tabs: Pango.TabArray): void
     /**
@@ -43771,10 +47042,12 @@ class View {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param topMargin top margin in pixels
      */
     setTopMargin(topMargin: number): void
     /**
      * Sets the line wrapping for the view.
+     * @param wrapMode a `GtkWrapMode`
      */
     setWrapMode(wrapMode: Gtk.WrapMode): void
     /**
@@ -43782,17 +47055,23 @@ class View {
      * 
      * See [method`Gtk`.TextView.forward_display_line] for an
      * explanation of display lines vs. paragraphs.
+     * @param iter a `GtkTextIter`
      */
     startsDisplayLine(iter: Gtk.TextIter): boolean
     /**
      * Converts coordinates on the window identified by `win` to buffer
      * coordinates.
+     * @param win a `GtkTextWindowType`
+     * @param windowX window x coordinate
+     * @param windowY window y coordinate
      */
     windowToBufferCoords(win: Gtk.TextWindowType, windowX: number, windowY: number): [ /* bufferX */ number | null, /* bufferY */ number | null ]
     /* Methods of Gtk-4.0.Gtk.Widget */
     /**
      * Enable or disable an action installed with
      * gtk_widget_class_install_action().
+     * @param actionName action name, such as "clipboard.paste"
+     * @param enabled whether the action is now enabled
      */
     actionSetEnabled(actionName: string, enabled: boolean): void
     /**
@@ -43823,6 +47102,8 @@ class View {
      * 
      * The arguments must match the actions expected parameter type,
      * as returned by `g_action_get_parameter_type()`.
+     * @param name the name of the action to activate
+     * @param args parameters to use
      */
     activateAction(name: string, args?: GLib.Variant | null): boolean
     /**
@@ -43834,6 +47115,7 @@ class View {
      * 
      * You will usually want to call this function right after
      * creating any kind of [class`Gtk`.EventController].
+     * @param controller a `GtkEventController` that hasn't been   added to a widget yet
      */
     addController(controller: Gtk.EventController): void
     /**
@@ -43844,6 +47126,7 @@ class View {
      * 
      * Use [method`Gtk`.Widget.remove_css_class] to remove the
      * style again.
+     * @param cssClass The style class to add to `widget,` without   the leading '.' used for notation of style classes
      */
     addCssClass(cssClass: string): void
     /**
@@ -43853,6 +47136,7 @@ class View {
      * list of mnemonic labels for the widget is cleared when the
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well.
+     * @param label a `GtkWidget` that acts as a mnemonic label for `widget`
      */
     addMnemonicLabel(label: Gtk.Widget): void
     /**
@@ -43878,6 +47162,7 @@ class View {
      * This is a more convenient alternative to connecting directly to the
      * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
      * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     addTickCallback(callback: Gtk.TickCallback): number
     /**
@@ -43891,6 +47176,10 @@ class View {
      * 
      * For a version that does not take a transform, see
      * [method`Gtk`.Widget.size_allocate].
+     * @param width New width of `widget`
+     * @param height New height of `widget`
+     * @param baseline New baseline of `widget,` or -1
+     * @param transform Transformation to be applied to `widget`
      */
     allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void
     /**
@@ -43914,6 +47203,7 @@ class View {
      * This function is used by custom widget implementations; if you're
      * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
      * the focus to a particular widget.
+     * @param direction direction of focus movement
      */
     childFocus(direction: Gtk.DirectionType): boolean
     /**
@@ -43927,6 +47217,7 @@ class View {
      * returned and `bounds` is set to the zero rectangle.
      * 
      * It is valid for `widget` and `target` to be the same widget.
+     * @param target the `GtkWidget`
      */
     computeBounds(target: Gtk.Widget): [ /* returnType */ boolean, /* outBounds */ Graphene.Rect ]
     /**
@@ -43943,6 +47234,7 @@ class View {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     computeExpand(orientation: Gtk.Orientation): boolean
     /**
@@ -43951,6 +47243,8 @@ class View {
      * 
      * In order to perform this operation, both widgets must share a
      * common ancestor.
+     * @param target the `GtkWidget` to transform into
+     * @param point a point in `widget'`s coordinate system
      */
     computePoint(target: Gtk.Widget, point: Graphene.Point): [ /* returnType */ boolean, /* outPoint */ Graphene.Point ]
     /**
@@ -43960,6 +47254,7 @@ class View {
      * The transform can not be computed in certain cases, for example
      * when `widget` and `target` do not share a common ancestor. In that
      * case `out_transform` gets set to the identity matrix.
+     * @param target the target widget that the matrix will transform to
      */
     computeTransform(target: Gtk.Widget): [ /* returnType */ boolean, /* outTransform */ Graphene.Matrix ]
     /**
@@ -43967,6 +47262,8 @@ class View {
      * 
      * The coordinates for (`x,` `y)` must be in widget coordinates, so
      * (0, 0) is assumed to be the top left of `widget'`s content area.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
      */
     contains(x: number, y: number): boolean
     /**
@@ -43986,10 +47283,15 @@ class View {
      * you need to re-create it when the widget `PangoContext`
      * is replaced. This can be tracked by listening to changes
      * of the [property`Gtk`.Widget:root] property on the widget.
+     * @param text text to set on the layout
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
      * Checks to see if a drag movement has passed the GTK drag threshold.
+     * @param startX X coordinate of start of drag
+     * @param startY Y coordinate of start of drag
+     * @param currentX current X coordinate
+     * @param currentY current Y coordinate
      */
     dragCheckThreshold(startX: number, startY: number, currentX: number, currentY: number): boolean
     /**
@@ -44047,6 +47349,7 @@ class View {
      * 
      * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
      * considers `widget` to be an ancestor of itself.
+     * @param widgetType ancestor type
      */
     getAncestor(widgetType: GObject.Type): Gtk.Widget | null
     /**
@@ -44410,6 +47713,7 @@ class View {
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * @param orientation the orientation to query
      */
     getSize(orientation: Gtk.Orientation): number
     /**
@@ -44454,6 +47758,8 @@ class View {
      * This function is only meant to be called for code which is private
      * to the `widget_type` which declared the child and is meant for language
      * bindings which cannot easily make use of the GObject structure offsets.
+     * @param widgetType The `GType` to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     getTemplateChild(widgetType: GObject.Type, name: string): GObject.Object
     /**
@@ -44526,6 +47832,7 @@ class View {
     grabFocus(): boolean
     /**
      * Returns whether `css_class` is currently applied to `widget`.
+     * @param cssClass A style class, without the leading '.'   used for notation of style classes
      */
     hasCssClass(cssClass: string): boolean
     /**
@@ -44591,6 +47898,8 @@ class View {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is
      * removed from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a `GActionGroup`, or %NULL to remove   the previously inserted group for `name`
      */
     insertActionGroup(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -44608,6 +47917,8 @@ class View {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param previousSibling the new previous sibling of `widget`
      */
     insertAfter(parent: Gtk.Widget, previousSibling?: Gtk.Widget | null): void
     /**
@@ -44624,11 +47935,14 @@ class View {
      * 
      * This API is primarily meant for widget implementations; if you are
      * just using a widget, you *must* use its own API for adding children.
+     * @param parent the parent `GtkWidget` to insert `widget` into
+     * @param nextSibling the new next sibling of `widget`
      */
     insertBefore(parent: Gtk.Widget, nextSibling?: Gtk.Widget | null): void
     /**
      * Determines whether `widget` is somewhere inside `ancestor,`
      * possibly with intermediate containers.
+     * @param ancestor another `GtkWidget`
      */
     isAncestor(ancestor: Gtk.Widget): boolean
     /**
@@ -44692,6 +48006,7 @@ class View {
      * [class`Gtk`.Entry] widgets where the user should be able to navigate
      * the entire row with the cursor keys, as e.g. known from user
      * interfaces that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynavFailed(direction: Gtk.DirectionType): boolean
     /**
@@ -44723,12 +48038,15 @@ class View {
      * 
      * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
      * a more details on implementing `GtkWidgetClass.measure()`.
+     * @param orientation the orientation to measure
+     * @param forSize Size for the opposite of `orientation,` i.e.   if `orientation` is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
      */
     measure(orientation: Gtk.Orientation, forSize: number): [ /* minimum */ number | null, /* natural */ number | null, /* minimumBaseline */ number | null, /* naturalBaseline */ number | null ]
     /**
      * Emits the ::mnemonic-activate signal.
      * 
      * See [signal`Gtk`.Widget::mnemonic-activate].
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonicActivate(groupCycling: boolean): boolean
     /**
@@ -44769,6 +48087,9 @@ class View {
      * This function is used on the toplevel to determine the widget
      * below the mouse cursor for purposes of hover highlighting and
      * delivering events.
+     * @param x X coordinate to test, relative to `widget'`s origin
+     * @param y Y coordinate to test, relative to `widget'`s origin
+     * @param flags Flags to influence what is picked
      */
     pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null
     /**
@@ -44835,12 +48156,14 @@ class View {
      * 
      * Widgets will remove all event controllers automatically when they
      * are destroyed, there is normally no need to call this function.
+     * @param controller a `GtkEventController`
      */
     removeController(controller: Gtk.EventController): void
     /**
      * Removes a style from `widget`.
      * 
      * After this, the style of `widget` will stop matching for `css_class`.
+     * @param cssClass The style class to remove from `widget,` without   the leading '.' used for notation of style classes
      */
     removeCssClass(cssClass: string): void
     /**
@@ -44849,11 +48172,13 @@ class View {
      * See [method`Gtk`.Widget.list_mnemonic_labels]. The widget must
      * have previously been added to the list with
      * [method`Gtk`.Widget.add_mnemonic_label].
+     * @param label a `GtkWidget` that was previously set as a mnemonic   label for `widget` with [method`Gtk`.Widget.add_mnemonic_label]
      */
     removeMnemonicLabel(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by [method`Gtk`.Widget.add_tick_callback]
      */
     removeTickCallback(id: number): void
     /**
@@ -44871,10 +48196,12 @@ class View {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param canFocus whether or not the input focus can enter   the widget or any of its children
      */
     setCanFocus(canFocus: boolean): void
     /**
      * Sets whether `widget` can be the target of pointer events.
+     * @param canTarget whether this widget should be able to   receive pointer events
      */
     setCanTarget(canTarget: boolean): void
     /**
@@ -44894,11 +48221,13 @@ class View {
      * 
      * This function is only useful for container implementations
      * and should never be called by an application.
+     * @param childVisible if %TRUE, `widget` should be mapped along   with its parent.
      */
     setChildVisible(childVisible: boolean): void
     /**
      * Clear all style classes applied to `widget`
      * and replace them with `classes`.
+     * @param classes    %NULL-terminated list of style classes to apply to `widget`.
      */
     setCssClasses(classes: string[]): void
     /**
@@ -44907,6 +48236,7 @@ class View {
      * 
      * If the `cursor` is NULL, `widget` will use the cursor
      * inherited from the parent widget.
+     * @param cursor the new cursor
      */
     setCursor(cursor?: Gdk.Cursor | null): void
     /**
@@ -44921,6 +48251,7 @@ class View {
      * On top of that, this function allows `name` to be %NULL, which
      * will do the same as calling [method`Gtk`.Widget.set_cursor]
      * with a %NULL cursor.
+     * @param name The name of the cursor
      */
     setCursorFromName(name?: string | null): void
     /**
@@ -44937,6 +48268,7 @@ class View {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by [func`Gtk`.Widget.set_default_direction] will be used.
+     * @param dir the new direction
      */
     setDirection(dir: Gtk.TextDirection): void
     /**
@@ -44945,6 +48277,7 @@ class View {
      * This function is only suitable for widget implementations.
      * If you want a certain widget to get the input focus, call
      * [method`Gtk`.Widget.grab_focus] on it.
+     * @param child a direct child widget of `widget` or %NULL   to unset the focus child of `widget`
      */
     setFocusChild(child?: Gtk.Widget | null): void
     /**
@@ -44954,6 +48287,7 @@ class View {
      * Making mouse clicks not grab focus is useful in places like
      * toolbars where you don’t want the keyboard focus removed from
      * the main area of the application.
+     * @param focusOnClick whether the widget should grab focus when clicked   with the mouse
      */
     setFocusOnClick(focusOnClick: boolean): void
     /**
@@ -44970,6 +48304,7 @@ class View {
      * 
      * See [method`Gtk`.Widget.grab_focus] for actually setting
      * the input focus on a widget.
+     * @param focusable whether or not `widget` can own the input focus
      */
     setFocusable(focusable: boolean): void
     /**
@@ -44981,6 +48316,7 @@ class View {
      * of available fonts.
      * 
      * When not set, the widget will inherit the font map from its parent.
+     * @param fontMap a `PangoFontMap`, or %NULL to unset any   previously set font map
      */
     setFontMap(fontMap?: Pango.FontMap | null): void
     /**
@@ -44989,14 +48325,17 @@ class View {
      * 
      * When not set, the default font options for the `GdkDisplay`
      * will be used.
+     * @param options a `cairo_font_options_t`   to unset any previously set default font options
      */
     setFontOptions(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
+     * @param align the horizontal alignment
      */
     setHalign(align: Gtk.Align): void
     /**
      * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
+     * @param hasTooltip whether or not `widget` has a tooltip.
      */
     setHasTooltip(hasTooltip: boolean): void
     /**
@@ -45027,6 +48366,7 @@ class View {
      * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
      * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     setHexpand(expand: boolean): void
     /**
@@ -45044,27 +48384,33 @@ class View {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     setHexpandSet(set: boolean): void
     /**
      * Sets the layout manager delegate instance that provides an
      * implementation for measuring and allocating the children of `widget`.
+     * @param layoutManager a `GtkLayoutManager`
      */
     setLayoutManager(layoutManager?: Gtk.LayoutManager | null): void
     /**
      * Sets the bottom margin of `widget`.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
+     * @param margin the end margin
      */
     setMarginEnd(margin: number): void
     /**
      * Sets the start margin of `widget`.
+     * @param margin the start margin
      */
     setMarginStart(margin: number): void
     /**
      * Sets the top margin of `widget`.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
@@ -45079,6 +48425,7 @@ class View {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     setName(name: string): void
     /**
@@ -45104,6 +48451,7 @@ class View {
      * and other [iface`Gtk`.Native] widgets with their own surface will use their
      * own opacity value, and thus by default appear non-translucent,
      * even if they are attached to a toplevel that is translucent.
+     * @param opacity desired opacity, between 0 and 1
      */
     setOpacity(opacity: number): void
     /**
@@ -45116,6 +48464,7 @@ class View {
      * should not be used by application code.
      * 
      * The default value is %GTK_OVERFLOW_VISIBLE.
+     * @param overflow desired overflow
      */
     setOverflow(overflow: Gtk.Overflow): void
     /**
@@ -45127,12 +48476,14 @@ class View {
      * 
      * This function is useful only when implementing subclasses of
      * `GtkWidget`.
+     * @param parent parent widget
      */
     setParent(parent: Gtk.Widget): void
     /**
      * Specifies whether `widget` will be treated as the default
      * widget within its toplevel when it has the focus, even if
      * another widget is the default.
+     * @param receivesDefault whether or not `widget` can be a default widget.
      */
     setReceivesDefault(receivesDefault: boolean): void
     /**
@@ -45142,6 +48493,7 @@ class View {
      * Insensitive widgets are “grayed out” and the user can’t
      * interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     setSensitive(sensitive: boolean): void
     /**
@@ -45180,6 +48532,8 @@ class View {
      * [property`Gtk`.Widget:margin-bottom], but it does include pretty
      * much all other padding or border properties set by any subclass
      * of `GtkWidget`.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     setSizeRequest(width: number, height: number): void
     /**
@@ -45192,6 +48546,8 @@ class View {
      * the widget's direction, use [method`Gtk`.Widget.set_direction].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     setStateFlags(flags: Gtk.StateFlags, clear: boolean): void
     /**
@@ -45203,6 +48559,7 @@ class View {
      * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_markup].
+     * @param markup the contents of the tooltip for `widget`
      */
     setTooltipMarkup(markup?: string | null): void
     /**
@@ -45216,10 +48573,12 @@ class View {
      * [signal`Gtk`.Widget::query-tooltip] signal.
      * 
      * See also [method`Gtk`.Tooltip.set_text].
+     * @param text the contents of the tooltip for `widget`
      */
     setTooltipText(text?: string | null): void
     /**
      * Sets the vertical alignment of `widget`.
+     * @param align the vertical alignment
      */
     setValign(align: Gtk.Align): void
     /**
@@ -45227,12 +48586,14 @@ class View {
      * space.
      * 
      * See [method`Gtk`.Widget.set_hexpand] for more detail.
+     * @param expand whether to expand
      */
     setVexpand(expand: boolean): void
     /**
      * Sets whether the vexpand flag will be used.
      * 
      * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+     * @param set value for vexpand-set property
      */
     setVexpandSet(set: boolean): void
     /**
@@ -45244,6 +48605,7 @@ class View {
      * This function simply calls [method`Gtk`.Widget.show] or
      * [method`Gtk`.Widget.hide] but is nicer to use when the
      * visibility of the widget depends on some condition.
+     * @param visible whether the widget should be shown or not
      */
     setVisible(visible: boolean): void
     /**
@@ -45272,6 +48634,8 @@ class View {
      * the origin to the position in `allocation`.
      * 
      * This is a simple form of [method`Gtk`.Widget.allocate].
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     sizeAllocate(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -45289,6 +48653,8 @@ class View {
      * `snapshot,` and deciding whether the child needs to be snapshot.
      * 
      * This function does nothing for children that implement `GtkNative`.
+     * @param child a child of `widget`
+     * @param snapshot `GtkSnapshot` as passed to the widget. In particular, no   calls to gtk_snapshot_translate() or other transform calls should   have been made.
      */
     snapshotChild(child: Gtk.Widget, snapshot: Gtk.Snapshot): void
     /**
@@ -45297,6 +48663,9 @@ class View {
      * 
      * In order to perform this operation, both widget must share
      * a common ancestor.
+     * @param destWidget a `GtkWidget`
+     * @param srcX X position relative to `src_widget`
+     * @param srcY Y position relative to `src_widget`
      */
     translateCoordinates(destWidget: Gtk.Widget, srcX: number, srcY: number): [ /* returnType */ boolean, /* destX */ number | null, /* destY */ number | null ]
     /**
@@ -45330,6 +48699,7 @@ class View {
      * See [method`Gtk`.Widget.set_state_flags].
      * 
      * This function is for use in widget implementations.
+     * @param flags State flags to turn off
      */
     unsetStateFlags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -45367,6 +48737,10 @@ class View {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -45377,6 +48751,12 @@ class View {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -45400,6 +48780,7 @@ class View {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -45419,11 +48800,14 @@ class View {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -45431,6 +48815,8 @@ class View {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -45448,6 +48834,7 @@ class View {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -45493,6 +48880,7 @@ class View {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -45536,15 +48924,20 @@ class View {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -45585,6 +48978,7 @@ class View {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -45619,6 +49013,7 @@ class View {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gtk-4.0.Gtk.Accessible */
@@ -45628,14 +49023,17 @@ class View {
     getAccessibleRole(): Gtk.AccessibleRole
     /**
      * Resets the accessible `property` to its default value.
+     * @param property a `GtkAccessibleProperty`
      */
     resetProperty(property: Gtk.AccessibleProperty): void
     /**
      * Resets the accessible `relation` to its default value.
+     * @param relation a `GtkAccessibleRelation`
      */
     resetRelation(relation: Gtk.AccessibleRelation): void
     /**
      * Resets the accessible `state` to its default value.
+     * @param state a `GtkAccessibleState`
      */
     resetState(state: Gtk.AccessibleState): void
     /**
@@ -45645,6 +49043,8 @@ class View {
      * property change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param properties an array of `GtkAccessibleProperty`
+     * @param values an array of `GValues`, one for each property
      */
     updateProperty(properties: Gtk.AccessibleProperty[], values: any[]): void
     /**
@@ -45654,6 +49054,8 @@ class View {
      * relation change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param relations an array of `GtkAccessibleRelation`
+     * @param values an array of `GValues`, one for each relation
      */
     updateRelation(relations: Gtk.AccessibleRelation[], values: any[]): void
     /**
@@ -45663,6 +49065,8 @@ class View {
      * state change must be communicated to assistive technologies.
      * 
      * This function is meant to be used by language bindings.
+     * @param states an array of `GtkAccessibleState`
+     * @param values an array of `GValues`, one for each state
      */
     updateState(states: Gtk.AccessibleState[], values: any[]): void
     /* Methods of Gtk-4.0.Gtk.Buildable */
@@ -45701,6 +49105,7 @@ class View {
     getVscrollPolicy(): Gtk.ScrollablePolicy
     /**
      * Sets the horizontal adjustment of the `GtkScrollable`.
+     * @param hadjustment a `GtkAdjustment`
      */
     setHadjustment(hadjustment?: Gtk.Adjustment | null): void
     /**
@@ -45708,10 +49113,12 @@ class View {
      * 
      * The policy determines whether horizontal scrolling should start
      * below the minimum width or below the natural width.
+     * @param policy the horizontal `GtkScrollablePolicy`
      */
     setHscrollPolicy(policy: Gtk.ScrollablePolicy): void
     /**
      * Sets the vertical adjustment of the `GtkScrollable`.
+     * @param vadjustment a `GtkAdjustment`
      */
     setVadjustment(vadjustment?: Gtk.Adjustment | null): void
     /**
@@ -45719,11 +49126,13 @@ class View {
      * 
      * The policy determines whether vertical scrolling should start
      * below the minimum height or below the natural height.
+     * @param policy the vertical `GtkScrollablePolicy`
      */
     setVscrollPolicy(policy: Gtk.ScrollablePolicy): void
     /* Signals of GtkSource-5.GtkSource.View */
     /**
      * Keybinding signal to change case of the text at the current cursor position.
+     * @param caseType the case to use
      */
     connect(sigName: "change-case", callback: ((caseType: ChangeCaseType) => void)): number
     on(sigName: "change-case", callback: (caseType: ChangeCaseType) => void, after?: boolean): NodeJS.EventEmitter
@@ -45732,6 +49141,7 @@ class View {
     emit(sigName: "change-case", caseType: ChangeCaseType): void
     /**
      * Keybinding signal to edit a number at the current cursor position.
+     * @param count the number to add to the number at the current position
      */
     connect(sigName: "change-number", callback: ((count: number) => void)): number
     on(sigName: "change-number", callback: (count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -45751,6 +49161,10 @@ class View {
      * was a button press in the line marks gutter).
      * 
      * You can use `iter` to determine on which line the activation took place.
+     * @param iter a #GtkTextIter
+     * @param button the button that was pressed
+     * @param state the modifier state, if any
+     * @param nPresses the number of presses
      */
     connect(sigName: "line-mark-activated", callback: ((iter: Gtk.TextIter, button: number, state: Gdk.ModifierType, nPresses: number) => void)): number
     on(sigName: "line-mark-activated", callback: (iter: Gtk.TextIter, button: number, state: Gdk.ModifierType, nPresses: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -45762,6 +49176,7 @@ class View {
      * 
      * The default binding key is Alt+Up/Down arrow. And moves the currently selected lines,
      * or the current line up or down by one line.
+     * @param down %TRUE to move down, %FALSE to move up.
      */
     connect(sigName: "move-lines", callback: ((down: boolean) => void)): number
     on(sigName: "move-lines", callback: (down: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -45770,6 +49185,7 @@ class View {
     emit(sigName: "move-lines", down: boolean): void
     /**
      * Keybinding signal to move the cursor to the matching bracket.
+     * @param extendSelection %TRUE if the move should extend the selection
      */
     connect(sigName: "move-to-matching-bracket", callback: ((extendSelection: boolean) => void)): number
     on(sigName: "move-to-matching-bracket", callback: (extendSelection: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -45781,6 +49197,7 @@ class View {
      * 
      * The default binding key is Alt+Left/Right Arrow and moves the current selection, or the current
      * word by one word.
+     * @param count the number of words to move over
      */
     connect(sigName: "move-words", callback: ((count: number) => void)): number
     on(sigName: "move-words", callback: (count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -45793,6 +49210,8 @@ class View {
      * If another snippet was active, it will be paused until all focus positions of `snippet` have been exhausted.
      * 
      * `location` will be updated to point at the end of the snippet.
+     * @param snippet a #GtkSourceSnippet
+     * @param location a #GtkTextIter
      */
     connect(sigName: "push-snippet", callback: ((snippet: Snippet, location: Gtk.TextIter) => void)): number
     on(sigName: "push-snippet", callback: (snippet: Snippet, location: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -45823,6 +49242,8 @@ class View {
      * during the [signal`Gtk`.TextView::move-cursor] action. This can be used to find
      * out whether the cursor was moved by a normal home/end or by a smart
      * home/end.
+     * @param iter a #GtkTextIter
+     * @param count the count
      */
     connect(sigName: "smart-home-end", callback: ((iter: Gtk.TextIter, count: number) => void)): number
     on(sigName: "smart-home-end", callback: (iter: Gtk.TextIter, count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -45884,6 +49305,8 @@ class View {
      * deleting a character, <kbd>Ctrl</kbd>-<kbd>Delete</kbd> for
      * deleting a word and <kbd>Ctrl</kbd>-<kbd>Backspace</kbd> for
      * deleting a word backwards.
+     * @param type the granularity of the deletion, as a `GtkDeleteType`
+     * @param count the number of `type` units to delete
      */
     connect(sigName: "delete-from-cursor", callback: ((type: Gtk.DeleteType, count: number) => void)): number
     on(sigName: "delete-from-cursor", callback: (type: Gtk.DeleteType, count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -45892,6 +49315,10 @@ class View {
     emit(sigName: "delete-from-cursor", type: Gtk.DeleteType, count: number): void
     /**
      * Emitted when the selection needs to be extended at `location`.
+     * @param granularity the granularity type
+     * @param location the location where to extend the selection
+     * @param start where the selection should start
+     * @param end where the selection should end
      */
     connect(sigName: "extend-selection", callback: ((granularity: Gtk.TextExtendSelection, location: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter) => boolean)): number
     on(sigName: "extend-selection", callback: (granularity: Gtk.TextExtendSelection, location: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -45905,6 +49332,7 @@ class View {
      * The ::insert-at-cursor signal is a [keybinding signal](class.SignalAction.html).
      * 
      * This signal has no default bindings.
+     * @param string the string to insert
      */
     connect(sigName: "insert-at-cursor", callback: ((string: string) => void)): number
     on(sigName: "insert-at-cursor", callback: (string: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -45949,6 +49377,9 @@ class View {
      * - <kbd>PgUp</kbd>, <kbd>PgDn</kbd> move vertically by pages
      * - <kbd>Ctrl</kbd>-<kbd>PgUp</kbd>, <kbd>Ctrl</kbd>-<kbd>PgDn</kbd>
      *   move horizontally by pages
+     * @param step the granularity of the move, as a `GtkMovementStep`
+     * @param count the number of `step` units to move
+     * @param extendSelection %TRUE if the move should extend the selection
      */
     connect(sigName: "move-cursor", callback: ((step: Gtk.MovementStep, count: number, extendSelection: boolean) => void)): number
     on(sigName: "move-cursor", callback: (step: Gtk.MovementStep, count: number, extendSelection: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -45964,6 +49395,8 @@ class View {
      * window.
      * 
      * There are no default bindings for this signal.
+     * @param step the granularity of the movement, as a `GtkScrollStep`
+     * @param count the number of `step` units to move
      */
     connect(sigName: "move-viewport", callback: ((step: Gtk.ScrollStep, count: number) => void)): number
     on(sigName: "move-viewport", callback: (step: Gtk.ScrollStep, count: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -45994,6 +49427,7 @@ class View {
      * 
      * This signal is only emitted if the text at the given position
      * is actually editable.
+     * @param preedit the current preedit string
      */
     connect(sigName: "preedit-changed", callback: ((preedit: string) => void)): number
     on(sigName: "preedit-changed", callback: (preedit: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -46010,6 +49444,7 @@ class View {
      * <kbd>Ctrl</kbd>-<kbd>/</kbd> for selecting and
      * <kbd>Shift</kbd>-<kbd>Ctrl</kbd>-<kbd>a</kbd> and
      * <kbd>Ctrl</kbd>-<kbd>\</kbd> for unselecting.
+     * @param select %TRUE to select, %FALSE to unselect
      */
     connect(sigName: "select-all", callback: ((select: boolean) => void)): number
     on(sigName: "select-all", callback: (select: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -46072,6 +49507,7 @@ class View {
     emit(sigName: "destroy"): void
     /**
      * Emitted when the text direction of a widget changes.
+     * @param previousDirection the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: ((previousDirection: Gtk.TextDirection) => void)): number
     on(sigName: "direction-changed", callback: (previousDirection: Gtk.TextDirection) => void, after?: boolean): NodeJS.EventEmitter
@@ -46090,6 +49526,7 @@ class View {
      * Emitted if keyboard navigation fails.
      * 
      * See [method`Gtk`.Widget.keynav_failed] for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: ((direction: Gtk.DirectionType) => boolean)): number
     on(sigName: "keynav-failed", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -46117,6 +49554,7 @@ class View {
      * 
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param groupCycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: ((groupCycling: boolean) => boolean)): number
     on(sigName: "mnemonic-activate", callback: (groupCycling: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -46125,6 +49563,7 @@ class View {
     emit(sigName: "mnemonic-activate", groupCycling: boolean): void
     /**
      * Emitted when the focus is moved.
+     * @param direction the direction of the focus move
      */
     connect(sigName: "move-focus", callback: ((direction: Gtk.DirectionType) => void)): number
     on(sigName: "move-focus", callback: (direction: Gtk.DirectionType) => void, after?: boolean): NodeJS.EventEmitter
@@ -46146,6 +49585,10 @@ class View {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has   been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has   been emitted, relative to `widget'`s top
+     * @param keyboardMode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a `GtkTooltip`
      */
     connect(sigName: "query-tooltip", callback: ((x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     on(sigName: "query-tooltip", callback: (x: number, y: number, keyboardMode: boolean, tooltip: Gtk.Tooltip) => void, after?: boolean): NodeJS.EventEmitter
@@ -46175,6 +49618,7 @@ class View {
      * Emitted when the widget state changes.
      * 
      * See [method`Gtk`.Widget.get_state_flags].
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: ((flags: Gtk.StateFlags) => void)): number
     on(sigName: "state-flags-changed", callback: (flags: Gtk.StateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -46235,6 +49679,7 @@ class View {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -46446,6 +49891,11 @@ class View {
     on(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::css-classes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::css-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cursor", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -46658,14 +50108,15 @@ class VimIMContext {
      */
     inputPurpose: Gtk.InputPurpose
     /* Fields of Gtk-4.0.Gtk.IMContext */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GtkSource-5.GtkSource.VimIMContext */
     /**
      * Executes `command` as if it was typed into the command bar by the
      * user except that this does not emit the
      * [signal`VimIMContext:`:execute-command] signal.
+     * @param command the command text
      */
     executeCommand(command: string): void
     /**
@@ -46695,12 +50146,21 @@ class VimIMContext {
      * This function is used by an input method that wants to make
      * subsitutions in the existing text in response to new input.
      * It is not useful for applications.
+     * @param offset offset from cursor position in chars;    a negative value means start before the cursor.
+     * @param nChars number of characters to delete.
      */
     deleteSurrounding(offset: number, nChars: number): boolean
     /**
      * Allow an input method to forward key press and release events
      * to another input method without necessarily having a `GdkEvent`
      * available.
+     * @param press whether to forward a key press or release event
+     * @param surface the surface the event is for
+     * @param device the device that the event is for
+     * @param time the timestamp for the event
+     * @param keycode the keycode for the event
+     * @param state modifier state for the event
+     * @param group the active keyboard group for the event
      */
     filterKey(press: boolean, surface: Gdk.Surface, device: Gdk.Device, time: number, keycode: number, state: Gdk.ModifierType, group: number): boolean
     /**
@@ -46709,6 +50169,7 @@ class VimIMContext {
      * 
      * If this function returns %TRUE, then no further processing
      * should be done for this key event.
+     * @param event the key event
      */
     filterKeypress(event: Gdk.Event): boolean
     /**
@@ -46783,6 +50244,7 @@ class VimIMContext {
      * This is the `GtkWidget` holding the input focus. This widget is
      * used in order to correctly position status windows, and may
      * also be used for purposes internal to the input method.
+     * @param widget the client widget. This may be %NULL to indicate   that the previous client widget no longer exists.
      */
     setClientWidget(widget?: Gtk.Widget | null): void
     /**
@@ -46790,6 +50252,7 @@ class VimIMContext {
      * position has been made.
      * 
      * The location is relative to the client widget.
+     * @param area new location
      */
     setCursorLocation(area: Gdk.Rectangle): void
     /**
@@ -46799,6 +50262,9 @@ class VimIMContext {
      * This function is expected to be called in response to the
      * [signal`Gtk`.IMContext::retrieve-surrounding] signal, and will
      * likely have no effect if called at other times.
+     * @param text text surrounding the insertion point, as UTF-8.   the preedit string should not be included within `text`
+     * @param len the length of `text,` or -1 if `text` is nul-terminated
+     * @param cursorIndex the byte index of the insertion cursor within `text`.
      */
     setSurrounding(text: string, len: number, cursorIndex: number): void
     /**
@@ -46806,6 +50272,10 @@ class VimIMContext {
      * string. This function is expected to be called in response to the
      * [signal`Gtk`.IMContext::retrieve_surrounding] signal, and will likely
      * have no effect if called at other times.
+     * @param text text surrounding the insertion point, as UTF-8.   the preedit string should not be included within `text`
+     * @param len the length of `text,` or -1 if `text` is nul-terminated
+     * @param cursorIndex the byte index of the insertion cursor within `text`
+     * @param anchorIndex the byte index of the selection bound within `text`
      */
     setSurroundingWithSelection(text: string, len: number, cursorIndex: number, anchorIndex: number): void
     /**
@@ -46815,6 +50285,7 @@ class VimIMContext {
      * If `use_preedit` is %FALSE (default is %TRUE), then the IM context
      * may use some other method to display feedback, such as displaying
      * it in a child of the root window.
+     * @param usePreedit whether the IM context should use the preedit string.
      */
     setUsePreedit(usePreedit: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -46852,6 +50323,10 @@ class VimIMContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -46862,6 +50337,12 @@ class VimIMContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -46885,6 +50366,7 @@ class VimIMContext {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -46904,11 +50386,14 @@ class VimIMContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -46916,6 +50401,8 @@ class VimIMContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -46933,6 +50420,7 @@ class VimIMContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -46978,6 +50466,7 @@ class VimIMContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -47021,15 +50510,20 @@ class VimIMContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -47070,6 +50564,7 @@ class VimIMContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -47104,6 +50599,7 @@ class VimIMContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GtkSource-5.GtkSource.VimIMContext */
@@ -47114,6 +50610,8 @@ class VimIMContext {
      * 
      * This may be executed in relation to the user running the
      * `:edit` or `:e` commands.
+     * @param view the #GtkSourceView
+     * @param path the path if provided, otherwise %NULL
      */
     connect(sigName: "edit", callback: ((view: View, path?: string | null) => void)): number
     on(sigName: "edit", callback: (view: View, path?: string | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -47126,6 +50624,7 @@ class VimIMContext {
      * 
      * If the application chooses to implement this, it should return
      * %TRUE from this signal to indicate the command has been handled.
+     * @param command the command to execute
      */
     connect(sigName: "execute-command", callback: ((command: string) => boolean)): number
     on(sigName: "execute-command", callback: (command: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -47135,6 +50634,8 @@ class VimIMContext {
     /**
      * Requests that the application format the text between
      * `begin` and `end`.
+     * @param begin the start location
+     * @param end the end location
      */
     connect(sigName: "format-text", callback: ((begin: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     on(sigName: "format-text", callback: (begin: Gtk.TextIter, end: Gtk.TextIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -47146,6 +50647,8 @@ class VimIMContext {
      * 
      * If a filename was provided, it will be available to the signal handler as `path`.
      * This may be executed in relation to the user running the `:write` or `:w` commands.
+     * @param view the #GtkSourceView
+     * @param path the path if provided, otherwise %NULL
      */
     connect(sigName: "write", callback: ((view: View, path?: string | null) => void)): number
     on(sigName: "write", callback: (view: View, path?: string | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -47162,6 +50665,7 @@ class VimIMContext {
      * 
      * This can be a single character immediately after a key press or
      * the final result of preediting.
+     * @param str the completed character(s) entered by the user
      */
     connect(sigName: "commit", callback: ((str: string) => void)): number
     on(sigName: "commit", callback: (str: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -47171,6 +50675,8 @@ class VimIMContext {
     /**
      * The ::delete-surrounding signal is emitted when the input method
      * needs to delete all or part of the context surrounding the cursor.
+     * @param offset the character offset from the cursor position of the text   to be deleted. A negative value indicates a position before   the cursor.
+     * @param nChars the number of characters to be deleted
      */
     connect(sigName: "delete-surrounding", callback: ((offset: number, nChars: number) => boolean)): number
     on(sigName: "delete-surrounding", callback: (offset: number, nChars: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -47248,6 +50754,7 @@ class VimIMContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -47290,53 +50797,53 @@ class VimIMContext {
 }
 abstract class BufferClass {
     /* Fields of GtkSource-5.GtkSource.BufferClass */
-    readonly parentClass: Gtk.TextBufferClass
-    readonly bracketMatched: (buffer: Buffer, iter: Gtk.TextIter, state: BracketMatchType) => void
+    parentClass: Gtk.TextBufferClass
+    bracketMatched: (buffer: Buffer, iter: Gtk.TextIter, state: BracketMatchType) => void
     static name: string
 }
 abstract class CompletionCellClass {
     /* Fields of GtkSource-5.GtkSource.CompletionCellClass */
-    readonly parentClass: Gtk.WidgetClass
+    parentClass: Gtk.WidgetClass
     static name: string
 }
 abstract class CompletionClass {
     /* Fields of GtkSource-5.GtkSource.CompletionClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class CompletionContextClass {
     /* Fields of GtkSource-5.GtkSource.CompletionContextClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class CompletionProposalInterface {
     /* Fields of GtkSource-5.GtkSource.CompletionProposalInterface */
-    readonly parentIface: GObject.TypeInterface
+    parentIface: GObject.TypeInterface
     static name: string
 }
 abstract class CompletionProviderInterface {
     /* Fields of GtkSource-5.GtkSource.CompletionProviderInterface */
-    readonly parentIface: GObject.TypeInterface
-    readonly getTitle: (self: CompletionProvider) => string | null
-    readonly getPriority: (self: CompletionProvider, context: CompletionContext) => number
-    readonly isTrigger: (self: CompletionProvider, iter: Gtk.TextIter, ch: number) => boolean
-    readonly keyActivates: (self: CompletionProvider, context: CompletionContext, proposal: CompletionProposal, keyval: number, state: Gdk.ModifierType) => boolean
-    readonly populateAsync: (self: CompletionProvider, context: CompletionContext, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly populateFinish: (self: CompletionProvider, result: Gio.AsyncResult) => Gio.ListModel
-    readonly refilter: (self: CompletionProvider, context: CompletionContext, model: Gio.ListModel) => void
-    readonly display: (self: CompletionProvider, context: CompletionContext, proposal: CompletionProposal, cell: CompletionCell) => void
-    readonly activate: (self: CompletionProvider, context: CompletionContext, proposal: CompletionProposal) => void
-    readonly listAlternates: (self: CompletionProvider, context: CompletionContext, proposal: CompletionProposal) => CompletionProposal[] | null
+    parentIface: GObject.TypeInterface
+    getTitle: (self: CompletionProvider) => string | null
+    getPriority: (self: CompletionProvider, context: CompletionContext) => number
+    isTrigger: (self: CompletionProvider, iter: Gtk.TextIter, ch: number) => boolean
+    keyActivates: (self: CompletionProvider, context: CompletionContext, proposal: CompletionProposal, keyval: number, state: Gdk.ModifierType) => boolean
+    populateAsync: (self: CompletionProvider, context: CompletionContext, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    populateFinish: (self: CompletionProvider, result: Gio.AsyncResult) => Gio.ListModel
+    refilter: (self: CompletionProvider, context: CompletionContext, model: Gio.ListModel) => void
+    display: (self: CompletionProvider, context: CompletionContext, proposal: CompletionProposal, cell: CompletionCell) => void
+    activate: (self: CompletionProvider, context: CompletionContext, proposal: CompletionProposal) => void
+    listAlternates: (self: CompletionProvider, context: CompletionContext, proposal: CompletionProposal) => CompletionProposal[] | null
     static name: string
 }
 abstract class CompletionSnippetsClass {
     /* Fields of GtkSource-5.GtkSource.CompletionSnippetsClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class CompletionWordsClass {
     /* Fields of GtkSource-5.GtkSource.CompletionWordsClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class Encoding {
@@ -47384,121 +50891,122 @@ class Encoding {
     /**
      * Gets a #GtkSourceEncoding from a character set such as "UTF-8" or
      * "ISO-8859-1".
+     * @param charset a character set.
      */
     static getFromCharset(charset: string): Encoding | null
     static getUtf8(): Encoding
 }
 abstract class FileClass {
     /* Fields of GtkSource-5.GtkSource.FileClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class FileLoaderClass {
     /* Fields of GtkSource-5.GtkSource.FileLoaderClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class FileSaverClass {
     /* Fields of GtkSource-5.GtkSource.FileSaverClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class GutterClass {
     /* Fields of GtkSource-5.GtkSource.GutterClass */
-    readonly parentClass: Gtk.WidgetClass
+    parentClass: Gtk.WidgetClass
     static name: string
 }
 abstract class GutterLinesClass {
     /* Fields of GtkSource-5.GtkSource.GutterLinesClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class GutterRendererClass {
     /* Fields of GtkSource-5.GtkSource.GutterRendererClass */
-    readonly parentClass: Gtk.WidgetClass
-    readonly queryData: (renderer: GutterRenderer, lines: GutterLines, line: number) => void
-    readonly begin: (renderer: GutterRenderer, lines: GutterLines) => void
-    readonly snapshotLine: (renderer: GutterRenderer, snapshot: Gtk.Snapshot, lines: GutterLines, line: number) => void
-    readonly end: (renderer: GutterRenderer) => void
-    readonly changeView: (renderer: GutterRenderer, oldView?: View | null) => void
-    readonly changeBuffer: (renderer: GutterRenderer, oldBuffer?: Buffer | null) => void
-    readonly queryActivatable: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle) => boolean
-    readonly activate: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number) => void
+    parentClass: Gtk.WidgetClass
+    queryData: (renderer: GutterRenderer, lines: GutterLines, line: number) => void
+    begin: (renderer: GutterRenderer, lines: GutterLines) => void
+    snapshotLine: (renderer: GutterRenderer, snapshot: Gtk.Snapshot, lines: GutterLines, line: number) => void
+    end: (renderer: GutterRenderer) => void
+    changeView: (renderer: GutterRenderer, oldView?: View | null) => void
+    changeBuffer: (renderer: GutterRenderer, oldBuffer?: Buffer | null) => void
+    queryActivatable: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle) => boolean
+    activate: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, nPresses: number) => void
     static name: string
 }
 abstract class GutterRendererPixbufClass {
     /* Fields of GtkSource-5.GtkSource.GutterRendererPixbufClass */
-    readonly parentClass: GutterRendererClass
+    parentClass: GutterRendererClass
     static name: string
 }
 abstract class GutterRendererTextClass {
     /* Fields of GtkSource-5.GtkSource.GutterRendererTextClass */
-    readonly parentClass: GutterRendererClass
+    parentClass: GutterRendererClass
     static name: string
 }
 abstract class HoverClass {
     /* Fields of GtkSource-5.GtkSource.HoverClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HoverContextClass {
     /* Fields of GtkSource-5.GtkSource.HoverContextClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HoverDisplayClass {
     /* Fields of GtkSource-5.GtkSource.HoverDisplayClass */
-    readonly parentClass: Gtk.WidgetClass
+    parentClass: Gtk.WidgetClass
     static name: string
 }
 abstract class HoverProviderInterface {
     /* Fields of GtkSource-5.GtkSource.HoverProviderInterface */
-    readonly parentIface: GObject.TypeInterface
-    readonly populate: (self: HoverProvider, context: HoverContext, display: HoverDisplay) => boolean
-    readonly populateAsync: (self: HoverProvider, context: HoverContext, display: HoverDisplay, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly populateFinish: (self: HoverProvider, result: Gio.AsyncResult) => boolean
+    parentIface: GObject.TypeInterface
+    populate: (self: HoverProvider, context: HoverContext, display: HoverDisplay) => boolean
+    populateAsync: (self: HoverProvider, context: HoverContext, display: HoverDisplay, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    populateFinish: (self: HoverProvider, result: Gio.AsyncResult) => boolean
     static name: string
 }
 abstract class IndenterInterface {
     /* Fields of GtkSource-5.GtkSource.IndenterInterface */
-    readonly parentIface: GObject.TypeInterface
-    readonly isTrigger: (self: Indenter, view: View, location: Gtk.TextIter, state: Gdk.ModifierType, keyval: number) => boolean
-    readonly indent: (self: Indenter, view: View, iter: Gtk.TextIter) => /* iter */ Gtk.TextIter
+    parentIface: GObject.TypeInterface
+    isTrigger: (self: Indenter, view: View, location: Gtk.TextIter, state: Gdk.ModifierType, keyval: number) => boolean
+    indent: (self: Indenter, view: View, iter: Gtk.TextIter) => /* iter */ Gtk.TextIter
     static name: string
 }
 abstract class LanguageClass {
     /* Fields of GtkSource-5.GtkSource.LanguageClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class LanguageManagerClass {
     /* Fields of GtkSource-5.GtkSource.LanguageManagerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class MapClass {
     /* Fields of GtkSource-5.GtkSource.MapClass */
-    readonly parentClass: ViewClass
+    parentClass: ViewClass
     static name: string
 }
 abstract class MarkAttributesClass {
     /* Fields of GtkSource-5.GtkSource.MarkAttributesClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class MarkClass {
     /* Fields of GtkSource-5.GtkSource.MarkClass */
-    readonly parentClass: Gtk.TextMarkClass
+    parentClass: Gtk.TextMarkClass
     static name: string
 }
 abstract class PrintCompositorClass {
     /* Fields of GtkSource-5.GtkSource.PrintCompositorClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class RegionClass {
     /* Fields of GtkSource-5.GtkSource.RegionClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class RegionIter {
@@ -47516,94 +51024,94 @@ class RegionIter {
 }
 abstract class SearchContextClass {
     /* Fields of GtkSource-5.GtkSource.SearchContextClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class SearchSettingsClass {
     /* Fields of GtkSource-5.GtkSource.SearchSettingsClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class SnippetChunkClass {
     /* Fields of GtkSource-5.GtkSource.SnippetChunkClass */
-    readonly parentClass: GObject.InitiallyUnownedClass
+    parentClass: GObject.InitiallyUnownedClass
     static name: string
 }
 abstract class SnippetClass {
     /* Fields of GtkSource-5.GtkSource.SnippetClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class SnippetContextClass {
     /* Fields of GtkSource-5.GtkSource.SnippetContextClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class SnippetManagerClass {
     /* Fields of GtkSource-5.GtkSource.SnippetManagerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class SpaceDrawerClass {
     /* Fields of GtkSource-5.GtkSource.SpaceDrawerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class StyleClass {
     /* Fields of GtkSource-5.GtkSource.StyleClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class StyleSchemeChooserButtonClass {
     /* Fields of GtkSource-5.GtkSource.StyleSchemeChooserButtonClass */
-    readonly parent: Gtk.ButtonClass
+    parent: Gtk.ButtonClass
     static name: string
 }
 abstract class StyleSchemeChooserInterface {
     /* Fields of GtkSource-5.GtkSource.StyleSchemeChooserInterface */
-    readonly baseInterface: GObject.TypeInterface
-    readonly getStyleScheme: (chooser: StyleSchemeChooser) => StyleScheme
-    readonly setStyleScheme: (chooser: StyleSchemeChooser, scheme: StyleScheme) => void
+    baseInterface: GObject.TypeInterface
+    getStyleScheme: (chooser: StyleSchemeChooser) => StyleScheme
+    setStyleScheme: (chooser: StyleSchemeChooser, scheme: StyleScheme) => void
     static name: string
 }
 abstract class StyleSchemeChooserWidgetClass {
     /* Fields of GtkSource-5.GtkSource.StyleSchemeChooserWidgetClass */
-    readonly parent: Gtk.WidgetClass
+    parent: Gtk.WidgetClass
     static name: string
 }
 abstract class StyleSchemeClass {
     /* Fields of GtkSource-5.GtkSource.StyleSchemeClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class StyleSchemeManagerClass {
     /* Fields of GtkSource-5.GtkSource.StyleSchemeManagerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class StyleSchemePreviewClass {
     /* Fields of GtkSource-5.GtkSource.StyleSchemePreviewClass */
-    readonly parentClass: Gtk.WidgetClass
+    parentClass: Gtk.WidgetClass
     static name: string
 }
 abstract class TagClass {
     /* Fields of GtkSource-5.GtkSource.TagClass */
-    readonly parentClass: Gtk.TextTagClass
+    parentClass: Gtk.TextTagClass
     static name: string
 }
 abstract class ViewClass {
     /* Fields of GtkSource-5.GtkSource.ViewClass */
-    readonly parentClass: Gtk.TextViewClass
-    readonly lineMarkActivated: (view: View, iter: Gtk.TextIter, button: number, state: Gdk.ModifierType, nPresses: number) => void
-    readonly showCompletion: (view: View) => void
-    readonly moveLines: (view: View, down: boolean) => void
-    readonly moveWords: (view: View, step: number) => void
-    readonly pushSnippet: (view: View, snippet: Snippet, location?: Gtk.TextIter | null) => void
+    parentClass: Gtk.TextViewClass
+    lineMarkActivated: (view: View, iter: Gtk.TextIter, button: number, state: Gdk.ModifierType, nPresses: number) => void
+    showCompletion: (view: View) => void
+    moveLines: (view: View, down: boolean) => void
+    moveWords: (view: View, step: number) => void
+    pushSnippet: (view: View, snippet: Snippet, location?: Gtk.TextIter | null) => void
     static name: string
 }
 abstract class VimIMContextClass {
     /* Fields of GtkSource-5.GtkSource.VimIMContextClass */
-    readonly parentClass: Gtk.IMContextClass
+    parentClass: Gtk.IMContextClass
     static name: string
 }
 }

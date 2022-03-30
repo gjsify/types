@@ -51,22 +51,27 @@ interface GContext_ConstructProps extends GObject.InitiallyUnowned_ConstructProp
 }
 class GContext {
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Anthy-9000.Anthy.GContext */
     /**
      * Commit a prediction string with `ntg_seg` .
+     * @param nth_seg Nth segment
      */
     commit_prediction(nth_seg: number): number
     /**
      * Commit a string with `ntg_seg` and `nth_lookup`.
+     * @param nth_seg Nth segment
+     * @param nth_lookup Nth lookup
      */
     commit_segment(nth_seg: number, nth_lookup: number): number
     /**
      * Set a personal dictionary.
+     * @param dict_name a Dictionary name
      */
     do_set_personality(dict_name: string): number
     /**
      * The number of the candidates
+     * @param nth_seg 
      */
     get_nr_candidates(nth_seg: number): number
     /**
@@ -79,10 +84,13 @@ class GContext {
     get_nr_segments(): number
     /**
      * A newly assigned string with `ntg_seg` .
+     * @param nth_seg Nth segment
      */
     get_prediction(nth_seg: number): string
     /**
      * A newly assigned string with `ntg_seg` and `nth_lookup` .
+     * @param nth_seg Nth segment
+     * @param nth_lookup Nth lookup
      */
     get_segment(nth_seg: number, nth_lookup: number): string
     /**
@@ -91,18 +99,23 @@ class GContext {
     init_personality(): void
     /**
      * Resize the nth segment.
+     * @param nth nth segment
+     * @param resize size
      */
     resize_segment(nth: number, resize: number): void
     /**
      * Set an encoding.
+     * @param encoding An encoding
      */
     set_encoding(encoding: number): number
     /**
      * Set a prediction string.
+     * @param string A prediction string
      */
     set_prediction_string(string: string): number
     /**
      * Set a conversion string.
+     * @param string A conversion string
      */
     set_string(string: string): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -140,6 +153,10 @@ class GContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -150,6 +167,12 @@ class GContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -173,6 +196,7 @@ class GContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -192,11 +216,14 @@ class GContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -204,6 +231,8 @@ class GContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -221,6 +250,7 @@ class GContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -266,6 +296,7 @@ class GContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -309,15 +340,20 @@ class GContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -358,6 +394,7 @@ class GContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -392,6 +429,7 @@ class GContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -411,6 +449,7 @@ class GContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -443,6 +482,7 @@ class GContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GContext, pspec: GObject.ParamSpec) => void)): number
@@ -460,7 +500,7 @@ class GContext {
 }
 abstract class GContextClass {
     /* Fields of Anthy-9000.Anthy.GContextClass */
-    readonly parent: GObject.InitiallyUnownedClass
+    parent: GObject.InitiallyUnownedClass
     static name: string
 }
 class GContextPrivate {
@@ -471,18 +511,18 @@ class anthy_context_t {
 }
 class anthy_conv_stat {
     /* Fields of Anthy-9000.Anthy.anthy_conv_stat */
-    readonly nr_segment: number
+    nr_segment: number
     static name: string
 }
 class anthy_prediction_stat {
     /* Fields of Anthy-9000.Anthy.anthy_prediction_stat */
-    readonly nr_prediction: number
+    nr_prediction: number
     static name: string
 }
 class anthy_segment_stat {
     /* Fields of Anthy-9000.Anthy.anthy_segment_stat */
-    readonly nr_candidate: number
-    readonly seg_len: number
+    nr_candidate: number
+    seg_len: number
     static name: string
 }
 }

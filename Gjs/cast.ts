@@ -12711,6 +12711,11 @@ const inheritanceTable: { [key: string]: string[] } = {
     'Ggit.ObjectFactoryBase',
     'GObject.Object',
 ],
+    'Ggit.Mailmap': [
+    'Ggit.Native',
+    'Ggit.ObjectFactoryBase',
+    'GObject.Object',
+],
     'Ggit.Native': [
     'Ggit.ObjectFactoryBase',
     'GObject.Object',

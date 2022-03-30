@@ -96,19 +96,28 @@ class CellRendererColor {
     yalign: number
     ypad: number
     /* Fields of Gtk-3.0.Gtk.CellRenderer */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gtk-3.0.Gtk.CellRenderer */
     /**
      * Passes an activate event to the cell renderer for possible processing.
      * Some cell renderers may use events; for example, #GtkCellRendererToggle
      * toggles when it gets a mouse click.
+     * @param event a #GdkEvent
+     * @param widget widget that received the event
+     * @param path widget-dependent string representation of the event location;    e.g. for #GtkTreeView, a string representation of #GtkTreePath
+     * @param background_area background area as passed to gtk_cell_renderer_render()
+     * @param cell_area cell area as passed to gtk_cell_renderer_render()
+     * @param flags render flags
      */
     activate(event: Gdk.Event, widget: Gtk.Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: Gtk.CellRendererState): boolean
     /**
      * Gets the aligned area used by `cell` inside `cell_area`. Used for finding
      * the appropriate edit and focus rectangle.
+     * @param widget the #GtkWidget this cell will be rendering to
+     * @param flags render flags
+     * @param cell_area cell area which would be passed to gtk_cell_renderer_render()
      */
     get_aligned_area(widget: Gtk.Widget, flags: Gtk.CellRendererState, cell_area: Gdk.Rectangle): /* aligned_area */ Gdk.Rectangle
     /**
@@ -125,25 +134,32 @@ class CellRendererColor {
     get_padding(): [ /* xpad */ number | null, /* ypad */ number | null ]
     /**
      * Retreives a renderer’s natural size when rendered to `widget`.
+     * @param widget the #GtkWidget this cell will be rendering to
      */
     get_preferred_height(widget: Gtk.Widget): [ /* minimum_size */ number | null, /* natural_size */ number | null ]
     /**
      * Retreives a cell renderers’s minimum and natural height if it were rendered to
      * `widget` with the specified `width`.
+     * @param widget the #GtkWidget this cell will be rendering to
+     * @param width the size which is available for allocation
      */
     get_preferred_height_for_width(widget: Gtk.Widget, width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
      * Retrieves the minimum and natural size of a cell taking
      * into account the widget’s preference for height-for-width management.
+     * @param widget the #GtkWidget this cell will be rendering to
      */
     get_preferred_size(widget: Gtk.Widget): [ /* minimum_size */ Gtk.Requisition | null, /* natural_size */ Gtk.Requisition | null ]
     /**
      * Retreives a renderer’s natural size when rendered to `widget`.
+     * @param widget the #GtkWidget this cell will be rendering to
      */
     get_preferred_width(widget: Gtk.Widget): [ /* minimum_size */ number | null, /* natural_size */ number | null ]
     /**
      * Retreives a cell renderers’s minimum and natural width if it were rendered to
      * `widget` with the specified `height`.
+     * @param widget the #GtkWidget this cell will be rendering to
+     * @param height the size which is available for allocation
      */
     get_preferred_width_for_height(widget: Gtk.Widget, height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -163,12 +179,16 @@ class CellRendererColor {
      * 
      * Please note that the values set in `width` and `height,` as well as those
      * in `x_offset` and `y_offset` are inclusive of the xpad and ypad properties.
+     * @param widget the widget the renderer is rendering to
+     * @param cell_area The area a cell will be allocated, or %NULL
      */
     get_size(widget: Gtk.Widget, cell_area?: Gdk.Rectangle | null): [ /* x_offset */ number | null, /* y_offset */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
      * Translates the cell renderer state to #GtkStateFlags,
      * based on the cell renderer and widget sensitivity, and
      * the given #GtkCellRendererState.
+     * @param widget a #GtkWidget, or %NULL
+     * @param cell_state cell renderer state
      */
     get_state(widget: Gtk.Widget | null, cell_state: Gtk.CellRendererState): Gtk.StateFlags
     /**
@@ -187,31 +207,50 @@ class CellRendererColor {
      * blank space around the cell, and also the area containing the tree expander;
      * so the `background_area` rectangles for all cells tile to cover the entire
      * `window`.
+     * @param cr a cairo context to draw to
+     * @param widget the widget owning `window`
+     * @param background_area entire cell area (including tree expanders and maybe    padding on the sides)
+     * @param cell_area area normally rendered by a cell renderer
+     * @param flags flags that affect rendering
      */
     render(cr: cairo.Context, widget: Gtk.Widget, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: Gtk.CellRendererState): void
     /**
      * Sets the renderer’s alignment within its available space.
+     * @param xalign the x alignment of the cell renderer
+     * @param yalign the y alignment of the cell renderer
      */
     set_alignment(xalign: number, yalign: number): void
     /**
      * Sets the renderer size to be explicit, independent of the properties set.
+     * @param width the width of the cell renderer, or -1
+     * @param height the height of the cell renderer, or -1
      */
     set_fixed_size(width: number, height: number): void
     /**
      * Sets the renderer’s padding.
+     * @param xpad the x padding of the cell renderer
+     * @param ypad the y padding of the cell renderer
      */
     set_padding(xpad: number, ypad: number): void
     /**
      * Sets the cell renderer’s sensitivity.
+     * @param sensitive the sensitivity of the cell
      */
     set_sensitive(sensitive: boolean): void
     /**
      * Sets the cell renderer’s visibility.
+     * @param visible the visibility of the cell
      */
     set_visible(visible: boolean): void
     /**
      * Starts editing the contents of this `cell,` through a new #GtkCellEditable
      * widget created by the #GtkCellRendererClass.start_editing virtual function.
+     * @param event a #GdkEvent
+     * @param widget widget that received the event
+     * @param path widget-dependent string representation of the event location;    e.g. for #GtkTreeView, a string representation of #GtkTreePath
+     * @param background_area background area as passed to gtk_cell_renderer_render()
+     * @param cell_area cell area as passed to gtk_cell_renderer_render()
+     * @param flags render flags
      */
     start_editing(event: Gdk.Event | null, widget: Gtk.Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: Gtk.CellRendererState): Gtk.CellEditable | null
     /**
@@ -222,6 +261,7 @@ class CellRendererColor {
      * This function should be called by cell renderer implementations
      * in response to the #GtkCellEditable::editing-done signal of
      * #GtkCellEditable.
+     * @param canceled %TRUE if the editing has been canceled
      */
     stop_editing(canceled: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -259,6 +299,10 @@ class CellRendererColor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -269,6 +313,12 @@ class CellRendererColor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -292,6 +342,7 @@ class CellRendererColor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -311,11 +362,14 @@ class CellRendererColor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -323,6 +377,8 @@ class CellRendererColor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -340,6 +396,7 @@ class CellRendererColor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -385,6 +442,7 @@ class CellRendererColor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -428,15 +486,20 @@ class CellRendererColor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -477,6 +540,7 @@ class CellRendererColor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -511,6 +575,7 @@ class CellRendererColor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gtk-3.0.Gtk.CellRenderer */
@@ -518,6 +583,12 @@ class CellRendererColor {
      * Passes an activate event to the cell renderer for possible processing.
      * Some cell renderers may use events; for example, #GtkCellRendererToggle
      * toggles when it gets a mouse click.
+     * @param event a #GdkEvent
+     * @param widget widget that received the event
+     * @param path widget-dependent string representation of the event location;    e.g. for #GtkTreeView, a string representation of #GtkTreePath
+     * @param background_area background area as passed to gtk_cell_renderer_render()
+     * @param cell_area cell area as passed to gtk_cell_renderer_render()
+     * @param flags render flags
      */
     vfunc_activate(event: Gdk.Event, widget: Gtk.Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: Gtk.CellRendererState): boolean
     vfunc_editing_canceled(): void
@@ -525,24 +596,33 @@ class CellRendererColor {
     /**
      * Gets the aligned area used by `cell` inside `cell_area`. Used for finding
      * the appropriate edit and focus rectangle.
+     * @param widget the #GtkWidget this cell will be rendering to
+     * @param flags render flags
+     * @param cell_area cell area which would be passed to gtk_cell_renderer_render()
      */
     vfunc_get_aligned_area(widget: Gtk.Widget, flags: Gtk.CellRendererState, cell_area: Gdk.Rectangle): /* aligned_area */ Gdk.Rectangle
     /**
      * Retreives a renderer’s natural size when rendered to `widget`.
+     * @param widget the #GtkWidget this cell will be rendering to
      */
     vfunc_get_preferred_height(widget: Gtk.Widget): [ /* minimum_size */ number | null, /* natural_size */ number | null ]
     /**
      * Retreives a cell renderers’s minimum and natural height if it were rendered to
      * `widget` with the specified `width`.
+     * @param widget the #GtkWidget this cell will be rendering to
+     * @param width the size which is available for allocation
      */
     vfunc_get_preferred_height_for_width(widget: Gtk.Widget, width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
      * Retreives a renderer’s natural size when rendered to `widget`.
+     * @param widget the #GtkWidget this cell will be rendering to
      */
     vfunc_get_preferred_width(widget: Gtk.Widget): [ /* minimum_size */ number | null, /* natural_size */ number | null ]
     /**
      * Retreives a cell renderers’s minimum and natural width if it were rendered to
      * `widget` with the specified `height`.
+     * @param widget the #GtkWidget this cell will be rendering to
+     * @param height the size which is available for allocation
      */
     vfunc_get_preferred_width_for_height(widget: Gtk.Widget, height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -558,6 +638,8 @@ class CellRendererColor {
      * 
      * Please note that the values set in `width` and `height,` as well as those
      * in `x_offset` and `y_offset` are inclusive of the xpad and ypad properties.
+     * @param widget the widget the renderer is rendering to
+     * @param cell_area The area a cell will be allocated, or %NULL
      */
     vfunc_get_size(widget: Gtk.Widget, cell_area?: Gdk.Rectangle | null): [ /* x_offset */ number | null, /* y_offset */ number | null, /* width */ number | null, /* height */ number | null ]
     /**
@@ -568,11 +650,22 @@ class CellRendererColor {
      * blank space around the cell, and also the area containing the tree expander;
      * so the `background_area` rectangles for all cells tile to cover the entire
      * `window`.
+     * @param cr a cairo context to draw to
+     * @param widget the widget owning `window`
+     * @param background_area entire cell area (including tree expanders and maybe    padding on the sides)
+     * @param cell_area area normally rendered by a cell renderer
+     * @param flags flags that affect rendering
      */
     vfunc_render(cr: cairo.Context, widget: Gtk.Widget, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: Gtk.CellRendererState): void
     /**
      * Starts editing the contents of this `cell,` through a new #GtkCellEditable
      * widget created by the #GtkCellRendererClass.start_editing virtual function.
+     * @param event a #GdkEvent
+     * @param widget widget that received the event
+     * @param path widget-dependent string representation of the event location;    e.g. for #GtkTreeView, a string representation of #GtkTreePath
+     * @param background_area background area as passed to gtk_cell_renderer_render()
+     * @param cell_area cell area as passed to gtk_cell_renderer_render()
+     * @param flags render flags
      */
     vfunc_start_editing(event: Gdk.Event | null, widget: Gtk.Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: Gtk.CellRendererState): Gtk.CellEditable | null
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -592,6 +685,7 @@ class CellRendererColor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -638,6 +732,8 @@ class CellRendererColor {
      * }
      * ```
      * 
+     * @param editable the #GtkCellEditable
+     * @param path the path identifying the edited cell
      */
     connect(sigName: "editing-started", callback: (($obj: CellRendererColor, editable: Gtk.CellEditable, path: string) => void)): number
     connect_after(sigName: "editing-started", callback: (($obj: CellRendererColor, editable: Gtk.CellEditable, path: string) => void)): number
@@ -671,6 +767,7 @@ class CellRendererColor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CellRendererColor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CellRendererColor, pspec: GObject.ParamSpec) => void)): number
@@ -743,8 +840,12 @@ class CredentialsPrompter {
      * The #ESourceCredentialsProvider object, which the prompter uses.
      */
     readonly provider: EDataServer.SourceCredentialsProvider
+    /**
+     * The #ESourceRegistry object, to whose credential requests the prompter listens.
+     */
+    readonly registry: EDataServer.SourceRegistry
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServerUI-1.2.EDataServerUI.CredentialsPrompter */
     /**
      * Completes an ongoing credentials prompt on idle, by finishing the `async_result`.
@@ -755,6 +856,10 @@ class CredentialsPrompter {
      * 
      * Using %NULL `credentials` will result in a G_IO_ERROR_CANCELLED error, if
      * no other `error` is provided.
+     * @param async_result a #GSimpleAsyncResult
+     * @param source an #ESource, on which the prompt was started
+     * @param credentials credentials, as provided by a user, on %NULL, when the prompt was cancelled
+     * @param error a resulting #GError, or %NULL
      */
     complete_prompt_call(async_result: Gio.SimpleAsyncResult, source: EDataServer.Source, credentials: EDataServer.NamedParameters | null, error: GLib.Error): void
     /**
@@ -770,6 +875,7 @@ class CredentialsPrompter {
      * value for the ECredentialsPrompter::auto-prompt property.
      * 
      * This value does not influence direct calls of e_credentials_prompter_prompt().
+     * @param source an #ESource
      */
     get_auto_prompt_disabled_for(source: EDataServer.Source): boolean
     /**
@@ -787,6 +893,7 @@ class CredentialsPrompter {
      * If there is no callback registered or the current callbacks don't have any suitable
      * window, then there's chosen the last active window from the default GApplication,
      * if any available.
+     * @param auth_source an #ESource
      */
     get_dialog_parent_full(auth_source?: EDataServer.Source | null): Gtk.Window | null
     /**
@@ -808,6 +915,10 @@ class CredentialsPrompter {
      * Note: The function doesn't return until the loop is terminated, either
      *    successfully or unsuccessfully. The function can be called from any
      *    thread, though a dedicated thread is preferred.
+     * @param source an #ESource to be prompted credentials for
+     * @param flags a bit-or of #ECredentialsPrompterPromptFlags initial flags
+     * @param func an #ECredentialsPrompterLoopPromptFunc user function to call to check provided credentials
+     * @param cancellable an optional #GCancellable, or %NULL
      */
     loop_prompt_sync(source: EDataServer.Source, flags: CredentialsPrompterPromptFlags, func: CredentialsPrompterLoopPromptFunc, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -819,6 +930,7 @@ class CredentialsPrompter {
      * Continues a credential prompt for `source`. Returns, whether anything will be done.
      * The %FALSE either means that the `source<`!-- -->'s connection status is not
      * the %E_SOURCE_CONNECTION_STATUS_AWAITING_CREDENTIALS or it is disabled.
+     * @param source an #ESource
      */
     process_source(source: EDataServer.Source): boolean
     /**
@@ -828,6 +940,10 @@ class CredentialsPrompter {
      * with e_source_invoke_authenticate() directly, in this case.
      * Call e_credentials_prompter_prompt_finish() in `callback` to get to
      * the provided credentials.
+     * @param source an #ESource, which prompt the credentials for
+     * @param error_text Additional error text to show to a user, or %NULL
+     * @param flags a bit-or of #ECredentialsPrompterPromptFlags
+     * @param callback a callback to call when the credentials are ready, or %NULL
      */
     prompt(source: EDataServer.Source, error_text: string | null, flags: CredentialsPrompterPromptFlags, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -837,6 +953,7 @@ class CredentialsPrompter {
      * will have set a newly allocated #ENamedParameters structure with provided credentials,
      * which should be freed with e_named_credentials_free() when no longer needed.
      * Both output arguments will be set to %NULL on error and %FALSE will be returned.
+     * @param result a #GAsyncResult
      */
     prompt_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_source */ EDataServer.Source | null, /* out_credentials */ EDataServer.NamedParameters | null ]
     /**
@@ -849,6 +966,8 @@ class CredentialsPrompter {
      * A special value %NULL can be used for the `authentication_method,` which means
      * a default credentials prompter, that is to be used when there is no prompter
      * registered for the exact authentication method.
+     * @param authentication_method an authentication method to registr `prompter_impl` for; or %NULL
+     * @param prompter_impl an #ECredentialsPrompterImpl
      */
     register_impl(authentication_method: string | null, prompter_impl: CredentialsPrompterImpl): boolean
     /**
@@ -859,6 +978,7 @@ class CredentialsPrompter {
      * auto-prompt per an #ESource.
      * 
      * This property does not influence direct calls of e_credentials_prompter_prompt().
+     * @param auto_prompt new value of the auto-prompt property
      */
     set_auto_prompt(auto_prompt: boolean): void
     /**
@@ -867,12 +987,16 @@ class CredentialsPrompter {
      * value for the ECredentialsPrompter::auto-prompt property.
      * 
      * This value does not influence direct calls of e_credentials_prompter_prompt().
+     * @param source an #ESource
+     * @param is_disabled whether the auto-prompt should be disabled for this `source`
      */
     set_auto_prompt_disabled_for(source: EDataServer.Source, is_disabled: boolean): void
     /**
      * Unregisters previously registered `prompter_impl` for the given `autnetication_method` with
      * e_credentials_prompter_register_impl(). Function does nothing, if no such authentication
      * method is registered or if it has set a different prompter implementation.
+     * @param authentication_method an authentication method to registr `prompter_impl` for; or %NULL
+     * @param prompter_impl an #ECredentialsPrompterImpl
      */
     unregister_impl(authentication_method: string | null, prompter_impl: CredentialsPrompterImpl): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -910,6 +1034,10 @@ class CredentialsPrompter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -920,6 +1048,12 @@ class CredentialsPrompter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -943,6 +1077,7 @@ class CredentialsPrompter {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -962,11 +1097,14 @@ class CredentialsPrompter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -974,6 +1112,8 @@ class CredentialsPrompter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -991,6 +1131,7 @@ class CredentialsPrompter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1036,6 +1177,7 @@ class CredentialsPrompter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1079,15 +1221,20 @@ class CredentialsPrompter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1128,6 +1275,7 @@ class CredentialsPrompter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1162,6 +1310,7 @@ class CredentialsPrompter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -1172,6 +1321,7 @@ class CredentialsPrompter {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extension_type the type of extensions to list
      */
     list_extensions(extension_type: GObject.Type): EDataServer.Extension[]
     /**
@@ -1206,6 +1356,7 @@ class CredentialsPrompter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1222,6 +1373,7 @@ class CredentialsPrompter {
      * Emitted when a new dialog will be shown, to get the right parent
      * window for it. If the result of the call is %NULL, then it tries
      * to get the window from the default GtkApplication.
+     * @param auth_source an #ESource, for which to show the credentials prompt
      */
     connect(sigName: "get-dialog-parent-full", callback: (($obj: CredentialsPrompter, auth_source?: EDataServer.Source | null) => Gtk.Window | null)): number
     connect_after(sigName: "get-dialog-parent-full", callback: (($obj: CredentialsPrompter, auth_source?: EDataServer.Source | null) => Gtk.Window | null)): number
@@ -1255,6 +1407,7 @@ class CredentialsPrompter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CredentialsPrompter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CredentialsPrompter, pspec: GObject.ParamSpec) => void)): number
@@ -1263,6 +1416,8 @@ class CredentialsPrompter {
     connect_after(sigName: "notify::auto-prompt", callback: (($obj: CredentialsPrompter, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::provider", callback: (($obj: CredentialsPrompter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::provider", callback: (($obj: CredentialsPrompter, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::registry", callback: (($obj: CredentialsPrompter, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::registry", callback: (($obj: CredentialsPrompter, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1277,11 +1432,14 @@ class CredentialsPrompter {
 interface CredentialsPrompterImpl_ConstructProps extends EDataServer.Extension_ConstructProps {
 }
 class CredentialsPrompterImpl {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: EDataServer.Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
+     * @param prompt_id a prompt ID to cancel
      */
     cancel_prompt(prompt_id?: object | null): void
     /**
@@ -1300,6 +1458,11 @@ class CredentialsPrompterImpl {
      * are stored only for that particular source. If the sources share credentials,
      * which can be a case when the `auth_source` is part of a collection, then
      * the `cred_stource` can be that collection source.
+     * @param prompt_id a prompt ID to be passed to e_credentials_prompter_impl_prompt_finish()
+     * @param auth_source an #ESource, to prompt the credentials for (the source which asked for credentials)
+     * @param cred_source a parent #ESource, from which credentials were taken, or should be stored to
+     * @param error_text an optional error text from the previous credentials prompt; can be %NULL
+     * @param credentials credentials, as saved in keyring; can be empty, but not %NULL
      */
     prompt(prompt_id: object | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string | null, credentials: EDataServer.NamedParameters): void
     /**
@@ -1310,6 +1473,8 @@ class CredentialsPrompterImpl {
      * Once the prompt is finished another queued is started, if any pending exists.
      * Use %NULL `credentials` for cancelled prompts, otherwise the credentials are used
      * for authentication of the associated #ESource.
+     * @param prompt_id a prompt ID
+     * @param credentials credentials to use; can be %NULL for cancelled prompts
      */
     prompt_finish(prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null): void
     /* Methods of EDataServer-1.2.EDataServer.Extension */
@@ -1352,6 +1517,10 @@ class CredentialsPrompterImpl {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1362,6 +1531,12 @@ class CredentialsPrompterImpl {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1385,6 +1560,7 @@ class CredentialsPrompterImpl {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1404,11 +1580,14 @@ class CredentialsPrompterImpl {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1416,6 +1595,8 @@ class CredentialsPrompterImpl {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1433,6 +1614,7 @@ class CredentialsPrompterImpl {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1478,6 +1660,7 @@ class CredentialsPrompterImpl {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1521,15 +1704,20 @@ class CredentialsPrompterImpl {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1570,6 +1758,7 @@ class CredentialsPrompterImpl {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1604,11 +1793,13 @@ class CredentialsPrompterImpl {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
+     * @param prompt_id a prompt ID to cancel
      */
     vfunc_cancel_prompt(prompt_id?: object | null): void
     vfunc_process_prompt(prompt_id: object | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters): void
@@ -1630,12 +1821,15 @@ class CredentialsPrompterImpl {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Emitted when a prompt of ID `prompt_id` is finished.
+     * @param prompt_id an ID of the prompt which was finished
+     * @param credentials entered credentials, or %NULL for cancelled prompts
      */
     connect(sigName: "prompt-finished", callback: (($obj: CredentialsPrompterImpl, prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null) => void)): number
     connect_after(sigName: "prompt-finished", callback: (($obj: CredentialsPrompterImpl, prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null) => void)): number
@@ -1669,10 +1863,13 @@ class CredentialsPrompterImpl {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CredentialsPrompterImpl, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CredentialsPrompterImpl, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: CredentialsPrompterImpl, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: CredentialsPrompterImpl, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1685,14 +1882,17 @@ class CredentialsPrompterImpl {
 interface CredentialsPrompterImplOAuth2_ConstructProps extends CredentialsPrompterImpl_ConstructProps {
 }
 class CredentialsPrompterImplOAuth2 {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: EDataServer.Extensible
     /* Fields of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
-    readonly parent: EDataServer.Extension
-    readonly priv: CredentialsPrompterImplPrivate
+    parent: EDataServer.Extension
+    priv: CredentialsPrompterImplPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
+     * @param prompt_id a prompt ID to cancel
      */
     cancel_prompt(prompt_id?: object | null): void
     /**
@@ -1711,6 +1911,11 @@ class CredentialsPrompterImplOAuth2 {
      * are stored only for that particular source. If the sources share credentials,
      * which can be a case when the `auth_source` is part of a collection, then
      * the `cred_stource` can be that collection source.
+     * @param prompt_id a prompt ID to be passed to e_credentials_prompter_impl_prompt_finish()
+     * @param auth_source an #ESource, to prompt the credentials for (the source which asked for credentials)
+     * @param cred_source a parent #ESource, from which credentials were taken, or should be stored to
+     * @param error_text an optional error text from the previous credentials prompt; can be %NULL
+     * @param credentials credentials, as saved in keyring; can be empty, but not %NULL
      */
     prompt(prompt_id: object | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string | null, credentials: EDataServer.NamedParameters): void
     /**
@@ -1721,6 +1926,8 @@ class CredentialsPrompterImplOAuth2 {
      * Once the prompt is finished another queued is started, if any pending exists.
      * Use %NULL `credentials` for cancelled prompts, otherwise the credentials are used
      * for authentication of the associated #ESource.
+     * @param prompt_id a prompt ID
+     * @param credentials credentials to use; can be %NULL for cancelled prompts
      */
     prompt_finish(prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null): void
     /* Methods of EDataServer-1.2.EDataServer.Extension */
@@ -1763,6 +1970,10 @@ class CredentialsPrompterImplOAuth2 {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1773,6 +1984,12 @@ class CredentialsPrompterImplOAuth2 {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1796,6 +2013,7 @@ class CredentialsPrompterImplOAuth2 {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1815,11 +2033,14 @@ class CredentialsPrompterImplOAuth2 {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1827,6 +2048,8 @@ class CredentialsPrompterImplOAuth2 {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1844,6 +2067,7 @@ class CredentialsPrompterImplOAuth2 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1889,6 +2113,7 @@ class CredentialsPrompterImplOAuth2 {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1932,15 +2157,20 @@ class CredentialsPrompterImplOAuth2 {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1981,6 +2211,7 @@ class CredentialsPrompterImplOAuth2 {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2015,11 +2246,13 @@ class CredentialsPrompterImplOAuth2 {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
+     * @param prompt_id a prompt ID to cancel
      */
     vfunc_cancel_prompt(prompt_id?: object | null): void
     vfunc_process_prompt(prompt_id: object | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters): void
@@ -2041,12 +2274,15 @@ class CredentialsPrompterImplOAuth2 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Emitted when a prompt of ID `prompt_id` is finished.
+     * @param prompt_id an ID of the prompt which was finished
+     * @param credentials entered credentials, or %NULL for cancelled prompts
      */
     connect(sigName: "prompt-finished", callback: (($obj: CredentialsPrompterImplOAuth2, prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null) => void)): number
     connect_after(sigName: "prompt-finished", callback: (($obj: CredentialsPrompterImplOAuth2, prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null) => void)): number
@@ -2080,10 +2316,13 @@ class CredentialsPrompterImplOAuth2 {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CredentialsPrompterImplOAuth2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CredentialsPrompterImplOAuth2, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: CredentialsPrompterImplOAuth2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: CredentialsPrompterImplOAuth2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2098,14 +2337,17 @@ class CredentialsPrompterImplOAuth2 {
 interface CredentialsPrompterImplPassword_ConstructProps extends CredentialsPrompterImpl_ConstructProps {
 }
 class CredentialsPrompterImplPassword {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: EDataServer.Extensible
     /* Fields of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
-    readonly parent: EDataServer.Extension
-    readonly priv: CredentialsPrompterImplPrivate
+    parent: EDataServer.Extension
+    priv: CredentialsPrompterImplPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
+     * @param prompt_id a prompt ID to cancel
      */
     cancel_prompt(prompt_id?: object | null): void
     /**
@@ -2124,6 +2366,11 @@ class CredentialsPrompterImplPassword {
      * are stored only for that particular source. If the sources share credentials,
      * which can be a case when the `auth_source` is part of a collection, then
      * the `cred_stource` can be that collection source.
+     * @param prompt_id a prompt ID to be passed to e_credentials_prompter_impl_prompt_finish()
+     * @param auth_source an #ESource, to prompt the credentials for (the source which asked for credentials)
+     * @param cred_source a parent #ESource, from which credentials were taken, or should be stored to
+     * @param error_text an optional error text from the previous credentials prompt; can be %NULL
+     * @param credentials credentials, as saved in keyring; can be empty, but not %NULL
      */
     prompt(prompt_id: object | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string | null, credentials: EDataServer.NamedParameters): void
     /**
@@ -2134,6 +2381,8 @@ class CredentialsPrompterImplPassword {
      * Once the prompt is finished another queued is started, if any pending exists.
      * Use %NULL `credentials` for cancelled prompts, otherwise the credentials are used
      * for authentication of the associated #ESource.
+     * @param prompt_id a prompt ID
+     * @param credentials credentials to use; can be %NULL for cancelled prompts
      */
     prompt_finish(prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null): void
     /* Methods of EDataServer-1.2.EDataServer.Extension */
@@ -2176,6 +2425,10 @@ class CredentialsPrompterImplPassword {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2186,6 +2439,12 @@ class CredentialsPrompterImplPassword {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2209,6 +2468,7 @@ class CredentialsPrompterImplPassword {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2228,11 +2488,14 @@ class CredentialsPrompterImplPassword {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2240,6 +2503,8 @@ class CredentialsPrompterImplPassword {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2257,6 +2522,7 @@ class CredentialsPrompterImplPassword {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2302,6 +2568,7 @@ class CredentialsPrompterImplPassword {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2345,15 +2612,20 @@ class CredentialsPrompterImplPassword {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2394,6 +2666,7 @@ class CredentialsPrompterImplPassword {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2428,11 +2701,13 @@ class CredentialsPrompterImplPassword {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
+     * @param prompt_id a prompt ID to cancel
      */
     vfunc_cancel_prompt(prompt_id?: object | null): void
     vfunc_process_prompt(prompt_id: object | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters): void
@@ -2454,12 +2729,15 @@ class CredentialsPrompterImplPassword {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl */
     /**
      * Emitted when a prompt of ID `prompt_id` is finished.
+     * @param prompt_id an ID of the prompt which was finished
+     * @param credentials entered credentials, or %NULL for cancelled prompts
      */
     connect(sigName: "prompt-finished", callback: (($obj: CredentialsPrompterImplPassword, prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null) => void)): number
     connect_after(sigName: "prompt-finished", callback: (($obj: CredentialsPrompterImplPassword, prompt_id?: object | null, credentials?: EDataServer.NamedParameters | null) => void)): number
@@ -2493,10 +2771,13 @@ class CredentialsPrompterImplPassword {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CredentialsPrompterImplPassword, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CredentialsPrompterImplPassword, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: CredentialsPrompterImplPassword, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: CredentialsPrompterImplPassword, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2520,6 +2801,7 @@ interface RemindersWidget_ConstructProps extends Gtk.Grid_ConstructProps {
 class RemindersWidget {
     /* Properties of EDataServerUI-1.2.EDataServerUI.RemindersWidget */
     readonly empty: boolean
+    readonly watcher: ECal.ReminderWatcher
     /* Properties of Gtk-3.0.Gtk.Grid */
     baseline_row: number
     column_homogeneous: boolean
@@ -2709,11 +2991,11 @@ class RemindersWidget {
      */
     orientation: Gtk.Orientation
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServerUI-1.2.EDataServerUI.RemindersWidget */
     get_paned(): Gtk.Paned
     get_settings(): Gio.Settings
@@ -2724,6 +3006,8 @@ class RemindersWidget {
      * Shows a warning in the GUI with the `error` message, optionally prefixed
      * with `prefix`. When `error` is %NULL, an "Unknown error" message is shown
      * instead.
+     * @param prefix an optional prefix to show before the error message, or %NULL for none
+     * @param error a #GError to show the message from in the UI, or %NULL for unknown error
      */
     report_error(prefix?: string | null, error?: GLib.Error | null): void
     /* Methods of Gtk-3.0.Gtk.Grid */
@@ -2733,6 +3017,11 @@ class RemindersWidget {
      * The position of `child` is determined by `left` and `top`. The
      * number of “cells” that `child` will occupy is determined by
      * `width` and `height`.
+     * @param child the widget to add
+     * @param left the column number to attach the left side of `child` to
+     * @param top the row number to attach the top side of `child` to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attach(child: Gtk.Widget, left: number, top: number, width: number, height: number): void
     /**
@@ -2745,6 +3034,11 @@ class RemindersWidget {
      * 
      * Attaching widgets labeled [1], [2], [3] with `sibling` == %NULL and
      * `side` == %GTK_POS_LEFT yields a layout of [3][2][1].
+     * @param child the widget to add
+     * @param sibling the child of `grid` that `child` will be placed     next to, or %NULL to place `child` at the beginning or end
+     * @param side the side of `sibling` that `child` is positioned next to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attach_next_to(child: Gtk.Widget, sibling: Gtk.Widget | null, side: Gtk.PositionType, width: number, height: number): void
     /**
@@ -2754,6 +3048,8 @@ class RemindersWidget {
     /**
      * Gets the child of `grid` whose area covers the grid
      * cell whose upper left corner is at `left,` `top`.
+     * @param left the left edge of the cell
+     * @param top the top edge of the cell
      */
     get_child_at(left: number, top: number): Gtk.Widget | null
     /**
@@ -2768,6 +3064,7 @@ class RemindersWidget {
      * Returns the baseline position of `row` as set
      * by gtk_grid_set_row_baseline_position() or the default value
      * %GTK_BASELINE_POSITION_CENTER.
+     * @param row a row index
      */
     get_row_baseline_position(row: number): Gtk.BaselinePosition
     /**
@@ -2784,6 +3081,7 @@ class RemindersWidget {
      * Children which are attached at or to the right of this position
      * are moved one column to the right. Children which span across this
      * position are grown to span the new column.
+     * @param position the position to insert the column at
      */
     insert_column(position: number): void
     /**
@@ -2793,6 +3091,8 @@ class RemindersWidget {
      * determined by `side`. If `side` is %GTK_POS_TOP or %GTK_POS_BOTTOM,
      * a row is inserted. If `side` is %GTK_POS_LEFT of %GTK_POS_RIGHT,
      * a column is inserted.
+     * @param sibling the child of `grid` that the new row or column will be     placed next to
+     * @param side the side of `sibling` that `child` is positioned next to
      */
     insert_next_to(sibling: Gtk.Widget, side: Gtk.PositionType): void
     /**
@@ -2801,6 +3101,7 @@ class RemindersWidget {
      * Children which are attached at or below this position
      * are moved one row down. Children which span across this
      * position are grown to span the new row.
+     * @param position the position to insert the row at
      */
     insert_row(position: number): void
     /**
@@ -2810,6 +3111,7 @@ class RemindersWidget {
      * spanning children that overlap this column have their
      * width reduced by one, and children after the column
      * are moved to the left.
+     * @param position the position of the column to remove
      */
     remove_column(position: number): void
     /**
@@ -2819,6 +3121,7 @@ class RemindersWidget {
      * spanning children that overlap this row have their
      * height reduced by one, and children below the row
      * are moved up.
+     * @param position the position of the row to remove
      */
     remove_row(position: number): void
     /**
@@ -2826,27 +3129,34 @@ class RemindersWidget {
      * Each row in the grid can have its own local baseline, but only
      * one of those is global, meaning it will be the baseline in the
      * parent of the `grid`.
+     * @param row the row index
      */
     set_baseline_row(row: number): void
     /**
      * Sets whether all columns of `grid` will have the same width.
+     * @param homogeneous %TRUE to make columns homogeneous
      */
     set_column_homogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between columns of `grid`.
+     * @param spacing the amount of space to insert between columns
      */
     set_column_spacing(spacing: number): void
     /**
      * Sets how the baseline should be positioned on `row` of the
      * grid, in case that row is assigned more space than is requested.
+     * @param row a row index
+     * @param pos a #GtkBaselinePosition
      */
     set_row_baseline_position(row: number, pos: Gtk.BaselinePosition): void
     /**
      * Sets whether all rows of `grid` will have the same height.
+     * @param homogeneous %TRUE to make rows homogeneous
      */
     set_row_homogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between rows of `grid`.
+     * @param spacing the amount of space to insert between rows
      */
     set_row_spacing(spacing: number): void
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -2863,11 +3173,15 @@ class RemindersWidget {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -2878,6 +3192,8 @@ class RemindersWidget {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -2886,10 +3202,15 @@ class RemindersWidget {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -2909,6 +3230,7 @@ class RemindersWidget {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -2923,6 +3245,7 @@ class RemindersWidget {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -2962,6 +3285,7 @@ class RemindersWidget {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -2985,6 +3309,8 @@ class RemindersWidget {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -2997,6 +3323,7 @@ class RemindersWidget {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -3010,6 +3337,7 @@ class RemindersWidget {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -3020,6 +3348,7 @@ class RemindersWidget {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -3031,6 +3360,7 @@ class RemindersWidget {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -3043,6 +3373,7 @@ class RemindersWidget {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -3055,6 +3386,7 @@ class RemindersWidget {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -3062,6 +3394,7 @@ class RemindersWidget {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -3070,6 +3403,7 @@ class RemindersWidget {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -3093,17 +3427,25 @@ class RemindersWidget {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -3113,6 +3455,7 @@ class RemindersWidget {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -3136,6 +3479,7 @@ class RemindersWidget {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -3146,6 +3490,7 @@ class RemindersWidget {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -3168,6 +3513,7 @@ class RemindersWidget {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -3178,6 +3524,7 @@ class RemindersWidget {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -3197,6 +3544,7 @@ class RemindersWidget {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -3214,6 +3562,7 @@ class RemindersWidget {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -3258,6 +3607,7 @@ class RemindersWidget {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -3266,11 +3616,16 @@ class RemindersWidget {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -3299,12 +3654,22 @@ class RemindersWidget {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -3339,6 +3704,8 @@ class RemindersWidget {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -3393,16 +3760,23 @@ class RemindersWidget {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -3412,6 +3786,7 @@ class RemindersWidget {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -3429,6 +3804,9 @@ class RemindersWidget {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -3469,33 +3847,41 @@ class RemindersWidget {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -3525,6 +3911,7 @@ class RemindersWidget {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -3554,6 +3941,7 @@ class RemindersWidget {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -3585,6 +3973,7 @@ class RemindersWidget {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -3647,6 +4036,7 @@ class RemindersWidget {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -3711,6 +4101,7 @@ class RemindersWidget {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -3720,11 +4111,13 @@ class RemindersWidget {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -3878,6 +4271,7 @@ class RemindersWidget {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -3965,6 +4359,7 @@ class RemindersWidget {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -3976,6 +4371,7 @@ class RemindersWidget {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -4017,6 +4413,7 @@ class RemindersWidget {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -4147,6 +4544,8 @@ class RemindersWidget {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -4365,6 +4764,7 @@ class RemindersWidget {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -4375,6 +4775,8 @@ class RemindersWidget {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -4382,11 +4784,13 @@ class RemindersWidget {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -4454,6 +4858,7 @@ class RemindersWidget {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -4490,6 +4895,7 @@ class RemindersWidget {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -4508,6 +4914,8 @@ class RemindersWidget {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -4525,6 +4933,8 @@ class RemindersWidget {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -4534,6 +4944,8 @@ class RemindersWidget {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -4541,6 +4953,8 @@ class RemindersWidget {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -4548,6 +4962,7 @@ class RemindersWidget {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -4569,6 +4984,7 @@ class RemindersWidget {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -4579,6 +4995,8 @@ class RemindersWidget {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -4586,6 +5004,8 @@ class RemindersWidget {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -4614,6 +5034,8 @@ class RemindersWidget {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -4624,11 +5046,14 @@ class RemindersWidget {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -4637,6 +5062,8 @@ class RemindersWidget {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -4690,6 +5117,10 @@ class RemindersWidget {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -4703,6 +5134,7 @@ class RemindersWidget {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -4748,6 +5180,7 @@ class RemindersWidget {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -4759,11 +5192,15 @@ class RemindersWidget {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -4771,11 +5208,13 @@ class RemindersWidget {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -4790,6 +5229,9 @@ class RemindersWidget {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -4802,11 +5244,14 @@ class RemindersWidget {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -4835,6 +5280,7 @@ class RemindersWidget {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -4863,6 +5309,7 @@ class RemindersWidget {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -4887,6 +5334,8 @@ class RemindersWidget {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -4899,6 +5348,7 @@ class RemindersWidget {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -4913,18 +5363,21 @@ class RemindersWidget {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -4945,6 +5398,7 @@ class RemindersWidget {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -4958,11 +5412,13 @@ class RemindersWidget {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -4972,6 +5428,8 @@ class RemindersWidget {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -4986,6 +5444,8 @@ class RemindersWidget {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -5001,6 +5461,7 @@ class RemindersWidget {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -5029,6 +5490,7 @@ class RemindersWidget {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -5043,6 +5505,7 @@ class RemindersWidget {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -5050,26 +5513,31 @@ class RemindersWidget {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -5083,6 +5551,7 @@ class RemindersWidget {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -5111,6 +5580,7 @@ class RemindersWidget {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -5129,6 +5599,7 @@ class RemindersWidget {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -5136,36 +5607,43 @@ class RemindersWidget {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -5178,6 +5656,7 @@ class RemindersWidget {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -5186,6 +5665,7 @@ class RemindersWidget {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -5203,6 +5683,7 @@ class RemindersWidget {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -5212,6 +5693,7 @@ class RemindersWidget {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -5223,6 +5705,7 @@ class RemindersWidget {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -5232,6 +5715,7 @@ class RemindersWidget {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -5241,6 +5725,7 @@ class RemindersWidget {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -5259,6 +5744,7 @@ class RemindersWidget {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -5266,6 +5752,7 @@ class RemindersWidget {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -5299,12 +5786,15 @@ class RemindersWidget {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -5321,11 +5811,14 @@ class RemindersWidget {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -5333,6 +5826,7 @@ class RemindersWidget {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -5344,6 +5838,7 @@ class RemindersWidget {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -5352,6 +5847,7 @@ class RemindersWidget {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -5360,11 +5856,13 @@ class RemindersWidget {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -5372,6 +5870,7 @@ class RemindersWidget {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -5379,6 +5878,7 @@ class RemindersWidget {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -5389,6 +5889,7 @@ class RemindersWidget {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -5399,6 +5900,7 @@ class RemindersWidget {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -5413,12 +5915,14 @@ class RemindersWidget {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -5460,6 +5964,7 @@ class RemindersWidget {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -5476,6 +5981,8 @@ class RemindersWidget {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -5510,6 +6017,8 @@ class RemindersWidget {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -5523,6 +6032,9 @@ class RemindersWidget {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -5552,12 +6064,14 @@ class RemindersWidget {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5595,6 +6109,10 @@ class RemindersWidget {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5605,6 +6123,12 @@ class RemindersWidget {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5628,6 +6152,7 @@ class RemindersWidget {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5647,11 +6172,14 @@ class RemindersWidget {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5659,6 +6187,8 @@ class RemindersWidget {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5676,6 +6206,7 @@ class RemindersWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5721,6 +6252,7 @@ class RemindersWidget {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5764,15 +6296,20 @@ class RemindersWidget {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5813,6 +6350,7 @@ class RemindersWidget {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5847,6 +6385,7 @@ class RemindersWidget {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -5857,6 +6396,7 @@ class RemindersWidget {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extension_type the type of extensions to list
      */
     list_extensions(extension_type: GObject.Type): EDataServer.Extension[]
     /**
@@ -5870,6 +6410,9 @@ class RemindersWidget {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -5877,24 +6420,39 @@ class RemindersWidget {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -5903,14 +6461,19 @@ class RemindersWidget {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Methods of Gtk-3.0.Gtk.Orientable */
@@ -5920,6 +6483,7 @@ class RemindersWidget {
     get_orientation(): Gtk.Orientation
     /**
      * Sets the orientation of the `orientable`.
+     * @param orientation the orientable’s new orientation.
      */
     set_orientation(orientation: Gtk.Orientation): void
     /* Virtual methods of EDataServerUI-1.2.EDataServerUI.RemindersWidget */
@@ -5928,6 +6492,9 @@ class RemindersWidget {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -5935,24 +6502,39 @@ class RemindersWidget {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -5969,14 +6551,19 @@ class RemindersWidget {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /* Virtual methods of Gtk-3.0.Gtk.Container */
@@ -5993,6 +6580,7 @@ class RemindersWidget {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -6014,12 +6602,15 @@ class RemindersWidget {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -6032,6 +6623,7 @@ class RemindersWidget {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6044,6 +6636,7 @@ class RemindersWidget {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -6061,6 +6654,7 @@ class RemindersWidget {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -6071,6 +6665,7 @@ class RemindersWidget {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -6135,6 +6730,7 @@ class RemindersWidget {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -6177,6 +6773,7 @@ class RemindersWidget {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -6188,6 +6785,7 @@ class RemindersWidget {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -6211,6 +6809,7 @@ class RemindersWidget {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -6274,6 +6873,7 @@ class RemindersWidget {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -6285,6 +6885,7 @@ class RemindersWidget {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -6306,6 +6907,7 @@ class RemindersWidget {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -6368,6 +6970,7 @@ class RemindersWidget {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -6406,6 +7009,7 @@ class RemindersWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6441,6 +7045,7 @@ class RemindersWidget {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: RemindersWidget, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: RemindersWidget, event: Gdk.EventButton) => boolean)): number
@@ -6453,6 +7058,7 @@ class RemindersWidget {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: RemindersWidget, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: RemindersWidget, event: Gdk.EventButton) => boolean)): number
@@ -6463,6 +7069,7 @@ class RemindersWidget {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: RemindersWidget, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: RemindersWidget, signal_id: number) => boolean)): number
@@ -6471,6 +7078,7 @@ class RemindersWidget {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: RemindersWidget, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: RemindersWidget, child_property: GObject.ParamSpec) => void)): number
@@ -6490,6 +7098,7 @@ class RemindersWidget {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: RemindersWidget, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: RemindersWidget, event: Gdk.EventConfigure) => boolean)): number
@@ -6498,6 +7107,7 @@ class RemindersWidget {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: RemindersWidget, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: RemindersWidget, event: Gdk.EventExpose) => boolean)): number
@@ -6508,6 +7118,7 @@ class RemindersWidget {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: RemindersWidget, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: RemindersWidget, event: Gdk.Event) => boolean)): number
@@ -6531,6 +7142,7 @@ class RemindersWidget {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: RemindersWidget, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: RemindersWidget, event: Gdk.Event) => boolean)): number
@@ -6538,6 +7150,7 @@ class RemindersWidget {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: RemindersWidget, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: RemindersWidget, previous_direction: Gtk.TextDirection) => void)): number
@@ -6550,6 +7163,7 @@ class RemindersWidget {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: RemindersWidget, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: RemindersWidget, context: Gdk.DragContext) => void)): number
@@ -6559,6 +7173,7 @@ class RemindersWidget {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: RemindersWidget, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: RemindersWidget, context: Gdk.DragContext) => void)): number
@@ -6569,6 +7184,10 @@ class RemindersWidget {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: RemindersWidget, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: RemindersWidget, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -6636,6 +7255,12 @@ class RemindersWidget {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: RemindersWidget, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: RemindersWidget, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -6651,6 +7276,10 @@ class RemindersWidget {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: RemindersWidget, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: RemindersWidget, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -6659,6 +7288,7 @@ class RemindersWidget {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: RemindersWidget, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: RemindersWidget, context: Gdk.DragContext) => void)): number
@@ -6669,6 +7299,8 @@ class RemindersWidget {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: RemindersWidget, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: RemindersWidget, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -6683,6 +7315,8 @@ class RemindersWidget {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: RemindersWidget, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: RemindersWidget, context: Gdk.DragContext, time: number) => void)): number
@@ -6776,6 +7410,10 @@ class RemindersWidget {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: RemindersWidget, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: RemindersWidget, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -6798,6 +7436,7 @@ class RemindersWidget {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: RemindersWidget, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: RemindersWidget, cr: cairo.Context) => boolean)): number
@@ -6810,6 +7449,7 @@ class RemindersWidget {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventCrossing) => boolean)): number
@@ -6820,6 +7460,7 @@ class RemindersWidget {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: RemindersWidget, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: RemindersWidget, event: Gdk.Event) => boolean)): number
@@ -6828,6 +7469,7 @@ class RemindersWidget {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: RemindersWidget, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: RemindersWidget, event: Gdk.Event) => void)): number
@@ -6841,6 +7483,7 @@ class RemindersWidget {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: RemindersWidget, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: RemindersWidget, event: Gdk.EventFocus) => boolean)): number
@@ -6851,6 +7494,7 @@ class RemindersWidget {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: RemindersWidget, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: RemindersWidget, event: Gdk.EventFocus) => boolean)): number
@@ -6862,6 +7506,7 @@ class RemindersWidget {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: RemindersWidget, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: RemindersWidget, event: Gdk.EventGrabBroken) => boolean)): number
@@ -6878,6 +7523,7 @@ class RemindersWidget {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: RemindersWidget, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: RemindersWidget, was_grabbed: boolean) => void)): number
@@ -6895,6 +7541,7 @@ class RemindersWidget {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: RemindersWidget, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: RemindersWidget, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -6907,6 +7554,7 @@ class RemindersWidget {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: RemindersWidget, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: RemindersWidget, event: Gdk.EventKey) => boolean)): number
@@ -6918,6 +7566,7 @@ class RemindersWidget {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: RemindersWidget, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: RemindersWidget, event: Gdk.EventKey) => boolean)): number
@@ -6925,6 +7574,7 @@ class RemindersWidget {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: RemindersWidget, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: RemindersWidget, direction: Gtk.DirectionType) => boolean)): number
@@ -6937,6 +7587,7 @@ class RemindersWidget {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventCrossing) => boolean)): number
@@ -6962,6 +7613,7 @@ class RemindersWidget {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: RemindersWidget, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: RemindersWidget, event: Gdk.EventAny) => boolean)): number
@@ -6969,6 +7621,7 @@ class RemindersWidget {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: RemindersWidget, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: RemindersWidget, group_cycling: boolean) => boolean)): number
@@ -6981,6 +7634,7 @@ class RemindersWidget {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventMotion) => boolean)): number
@@ -6991,6 +7645,7 @@ class RemindersWidget {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: RemindersWidget, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: RemindersWidget, old_parent?: Gtk.Widget | null) => void)): number
@@ -7013,6 +7668,7 @@ class RemindersWidget {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventProperty) => boolean)): number
@@ -7022,6 +7678,7 @@ class RemindersWidget {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: RemindersWidget, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: RemindersWidget, event: Gdk.EventProximity) => boolean)): number
@@ -7031,6 +7688,7 @@ class RemindersWidget {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: RemindersWidget, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: RemindersWidget, event: Gdk.EventProximity) => boolean)): number
@@ -7048,6 +7706,10 @@ class RemindersWidget {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: RemindersWidget, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: RemindersWidget, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -7063,6 +7725,7 @@ class RemindersWidget {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: RemindersWidget, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: RemindersWidget, previous_screen?: Gdk.Screen | null) => void)): number
@@ -7076,6 +7739,7 @@ class RemindersWidget {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: RemindersWidget, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: RemindersWidget, event: Gdk.EventScroll) => boolean)): number
@@ -7083,6 +7747,7 @@ class RemindersWidget {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: RemindersWidget, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: RemindersWidget, event: Gdk.EventSelection) => boolean)): number
@@ -7100,6 +7765,7 @@ class RemindersWidget {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: RemindersWidget, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: RemindersWidget, event: Gdk.EventSelection) => boolean)): number
@@ -7120,6 +7786,7 @@ class RemindersWidget {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: RemindersWidget, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: RemindersWidget, state: Gtk.StateType) => void)): number
@@ -7127,6 +7794,7 @@ class RemindersWidget {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: RemindersWidget, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: RemindersWidget, flags: Gtk.StateFlags) => void)): number
@@ -7139,6 +7807,7 @@ class RemindersWidget {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: RemindersWidget, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: RemindersWidget, previous_style?: Gtk.Style | null) => void)): number
@@ -7175,6 +7844,7 @@ class RemindersWidget {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: RemindersWidget, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: RemindersWidget, event: Gdk.EventAny) => boolean)): number
@@ -7194,6 +7864,7 @@ class RemindersWidget {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: RemindersWidget, event: Gdk.EventVisibility) => boolean)): number
@@ -7205,6 +7876,7 @@ class RemindersWidget {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: RemindersWidget, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: RemindersWidget, event: Gdk.EventWindowState) => boolean)): number
@@ -7238,12 +7910,15 @@ class RemindersWidget {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::empty", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::empty", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::watcher", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::watcher", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::baseline-row", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-row", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::column-homogeneous", callback: (($obj: RemindersWidget, pspec: GObject.ParamSpec) => void)): number
@@ -7550,11 +8225,11 @@ class WebDAVDiscoverContent {
      */
     orientation: Gtk.Orientation
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServerUI-1.2.EDataServerUI.WebDAVDiscoverContent */
     /**
      * Returns currently set base URL for the `content`. This is used to overwrite the one
@@ -7570,6 +8245,7 @@ class WebDAVDiscoverContent {
      * 
      * All the `out_href,` `out_display_name` and `out_color` are newly allocated strings, which should
      * be freed with g_free(), when no longer needed.
+     * @param index an index of the selected source; counts from 0
      */
     get_selected(index: number): [ /* returnType */ boolean, /* out_href */ string, /* out_supports */ number, /* out_display_name */ string, /* out_color */ string, /* out_order */ number ]
     /**
@@ -7592,6 +8268,9 @@ class WebDAVDiscoverContent {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_webdav_discover_content_refresh_finish() to get the result of the operation.
+     * @param display_name optional display name to use for scratch sources
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     refresh(display_name?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7600,22 +8279,26 @@ class WebDAVDiscoverContent {
      * available e_webdav_discover_content_show_error() for convenience, which
      * shows the error within `content` and takes care of it when refreshing
      * the content.
+     * @param result a #GAsyncResult
      */
     refresh_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets base URL for the `content`. This is used to overwrite the one set on
      * the #ESource from the creation time. The URL can be either a full URL, a path
      * or even a %NULL.
+     * @param base_url a base URL
      */
     set_base_url(base_url: string): void
     /**
      * Sets whether the WebDAV discovery content allows multiselect.
+     * @param multiselect whether multiselect is allowed
      */
     set_multiselect(multiselect: boolean): void
     /**
      * Shows the `error` within `content,` unless it's a #G_IO_ERROR_CANCELLED, or %NULL,
      * which are safely ignored. The advantage of this function is that the error
      * message is removed when the refresh operation is started.
+     * @param error a #GError to show in the UI, or %NULL
      */
     show_error(error: GLib.Error): void
     /* Methods of Gtk-3.0.Gtk.Grid */
@@ -7625,6 +8308,11 @@ class WebDAVDiscoverContent {
      * The position of `child` is determined by `left` and `top`. The
      * number of “cells” that `child` will occupy is determined by
      * `width` and `height`.
+     * @param child the widget to add
+     * @param left the column number to attach the left side of `child` to
+     * @param top the row number to attach the top side of `child` to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attach(child: Gtk.Widget, left: number, top: number, width: number, height: number): void
     /**
@@ -7637,6 +8325,11 @@ class WebDAVDiscoverContent {
      * 
      * Attaching widgets labeled [1], [2], [3] with `sibling` == %NULL and
      * `side` == %GTK_POS_LEFT yields a layout of [3][2][1].
+     * @param child the widget to add
+     * @param sibling the child of `grid` that `child` will be placed     next to, or %NULL to place `child` at the beginning or end
+     * @param side the side of `sibling` that `child` is positioned next to
+     * @param width the number of columns that `child` will span
+     * @param height the number of rows that `child` will span
      */
     attach_next_to(child: Gtk.Widget, sibling: Gtk.Widget | null, side: Gtk.PositionType, width: number, height: number): void
     /**
@@ -7646,6 +8339,8 @@ class WebDAVDiscoverContent {
     /**
      * Gets the child of `grid` whose area covers the grid
      * cell whose upper left corner is at `left,` `top`.
+     * @param left the left edge of the cell
+     * @param top the top edge of the cell
      */
     get_child_at(left: number, top: number): Gtk.Widget | null
     /**
@@ -7660,6 +8355,7 @@ class WebDAVDiscoverContent {
      * Returns the baseline position of `row` as set
      * by gtk_grid_set_row_baseline_position() or the default value
      * %GTK_BASELINE_POSITION_CENTER.
+     * @param row a row index
      */
     get_row_baseline_position(row: number): Gtk.BaselinePosition
     /**
@@ -7676,6 +8372,7 @@ class WebDAVDiscoverContent {
      * Children which are attached at or to the right of this position
      * are moved one column to the right. Children which span across this
      * position are grown to span the new column.
+     * @param position the position to insert the column at
      */
     insert_column(position: number): void
     /**
@@ -7685,6 +8382,8 @@ class WebDAVDiscoverContent {
      * determined by `side`. If `side` is %GTK_POS_TOP or %GTK_POS_BOTTOM,
      * a row is inserted. If `side` is %GTK_POS_LEFT of %GTK_POS_RIGHT,
      * a column is inserted.
+     * @param sibling the child of `grid` that the new row or column will be     placed next to
+     * @param side the side of `sibling` that `child` is positioned next to
      */
     insert_next_to(sibling: Gtk.Widget, side: Gtk.PositionType): void
     /**
@@ -7693,6 +8392,7 @@ class WebDAVDiscoverContent {
      * Children which are attached at or below this position
      * are moved one row down. Children which span across this
      * position are grown to span the new row.
+     * @param position the position to insert the row at
      */
     insert_row(position: number): void
     /**
@@ -7702,6 +8402,7 @@ class WebDAVDiscoverContent {
      * spanning children that overlap this column have their
      * width reduced by one, and children after the column
      * are moved to the left.
+     * @param position the position of the column to remove
      */
     remove_column(position: number): void
     /**
@@ -7711,6 +8412,7 @@ class WebDAVDiscoverContent {
      * spanning children that overlap this row have their
      * height reduced by one, and children below the row
      * are moved up.
+     * @param position the position of the row to remove
      */
     remove_row(position: number): void
     /**
@@ -7718,27 +8420,34 @@ class WebDAVDiscoverContent {
      * Each row in the grid can have its own local baseline, but only
      * one of those is global, meaning it will be the baseline in the
      * parent of the `grid`.
+     * @param row the row index
      */
     set_baseline_row(row: number): void
     /**
      * Sets whether all columns of `grid` will have the same width.
+     * @param homogeneous %TRUE to make columns homogeneous
      */
     set_column_homogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between columns of `grid`.
+     * @param spacing the amount of space to insert between columns
      */
     set_column_spacing(spacing: number): void
     /**
      * Sets how the baseline should be positioned on `row` of the
      * grid, in case that row is assigned more space than is requested.
+     * @param row a row index
+     * @param pos a #GtkBaselinePosition
      */
     set_row_baseline_position(row: number, pos: Gtk.BaselinePosition): void
     /**
      * Sets whether all rows of `grid` will have the same height.
+     * @param homogeneous %TRUE to make rows homogeneous
      */
     set_row_homogeneous(homogeneous: boolean): void
     /**
      * Sets the amount of space between rows of `grid`.
+     * @param spacing the amount of space to insert between rows
      */
     set_row_spacing(spacing: number): void
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -7755,11 +8464,15 @@ class WebDAVDiscoverContent {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -7770,6 +8483,8 @@ class WebDAVDiscoverContent {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -7778,10 +8493,15 @@ class WebDAVDiscoverContent {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -7801,6 +8521,7 @@ class WebDAVDiscoverContent {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -7815,6 +8536,7 @@ class WebDAVDiscoverContent {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -7854,6 +8576,7 @@ class WebDAVDiscoverContent {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -7877,6 +8600,8 @@ class WebDAVDiscoverContent {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -7889,6 +8614,7 @@ class WebDAVDiscoverContent {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -7902,6 +8628,7 @@ class WebDAVDiscoverContent {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -7912,6 +8639,7 @@ class WebDAVDiscoverContent {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -7923,6 +8651,7 @@ class WebDAVDiscoverContent {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -7935,6 +8664,7 @@ class WebDAVDiscoverContent {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -7947,6 +8677,7 @@ class WebDAVDiscoverContent {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -7954,6 +8685,7 @@ class WebDAVDiscoverContent {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -7962,6 +8694,7 @@ class WebDAVDiscoverContent {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -7985,17 +8718,25 @@ class WebDAVDiscoverContent {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -8005,6 +8746,7 @@ class WebDAVDiscoverContent {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -8028,6 +8770,7 @@ class WebDAVDiscoverContent {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -8038,6 +8781,7 @@ class WebDAVDiscoverContent {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -8060,6 +8804,7 @@ class WebDAVDiscoverContent {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -8070,6 +8815,7 @@ class WebDAVDiscoverContent {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -8089,6 +8835,7 @@ class WebDAVDiscoverContent {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -8106,6 +8853,7 @@ class WebDAVDiscoverContent {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -8150,6 +8898,7 @@ class WebDAVDiscoverContent {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -8158,11 +8907,16 @@ class WebDAVDiscoverContent {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -8191,12 +8945,22 @@ class WebDAVDiscoverContent {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -8231,6 +8995,8 @@ class WebDAVDiscoverContent {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -8285,16 +9051,23 @@ class WebDAVDiscoverContent {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -8304,6 +9077,7 @@ class WebDAVDiscoverContent {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -8321,6 +9095,9 @@ class WebDAVDiscoverContent {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -8361,33 +9138,41 @@ class WebDAVDiscoverContent {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -8417,6 +9202,7 @@ class WebDAVDiscoverContent {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -8446,6 +9232,7 @@ class WebDAVDiscoverContent {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -8477,6 +9264,7 @@ class WebDAVDiscoverContent {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -8539,6 +9327,7 @@ class WebDAVDiscoverContent {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -8603,6 +9392,7 @@ class WebDAVDiscoverContent {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -8612,11 +9402,13 @@ class WebDAVDiscoverContent {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -8770,6 +9562,7 @@ class WebDAVDiscoverContent {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -8857,6 +9650,7 @@ class WebDAVDiscoverContent {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -8868,6 +9662,7 @@ class WebDAVDiscoverContent {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -8909,6 +9704,7 @@ class WebDAVDiscoverContent {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -9039,6 +9835,8 @@ class WebDAVDiscoverContent {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -9257,6 +10055,7 @@ class WebDAVDiscoverContent {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -9267,6 +10066,8 @@ class WebDAVDiscoverContent {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -9274,11 +10075,13 @@ class WebDAVDiscoverContent {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -9346,6 +10149,7 @@ class WebDAVDiscoverContent {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -9382,6 +10186,7 @@ class WebDAVDiscoverContent {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -9400,6 +10205,8 @@ class WebDAVDiscoverContent {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -9417,6 +10224,8 @@ class WebDAVDiscoverContent {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -9426,6 +10235,8 @@ class WebDAVDiscoverContent {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -9433,6 +10244,8 @@ class WebDAVDiscoverContent {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -9440,6 +10253,7 @@ class WebDAVDiscoverContent {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -9461,6 +10275,7 @@ class WebDAVDiscoverContent {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -9471,6 +10286,8 @@ class WebDAVDiscoverContent {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -9478,6 +10295,8 @@ class WebDAVDiscoverContent {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -9506,6 +10325,8 @@ class WebDAVDiscoverContent {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -9516,11 +10337,14 @@ class WebDAVDiscoverContent {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -9529,6 +10353,8 @@ class WebDAVDiscoverContent {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -9582,6 +10408,10 @@ class WebDAVDiscoverContent {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -9595,6 +10425,7 @@ class WebDAVDiscoverContent {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -9640,6 +10471,7 @@ class WebDAVDiscoverContent {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -9651,11 +10483,15 @@ class WebDAVDiscoverContent {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -9663,11 +10499,13 @@ class WebDAVDiscoverContent {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -9682,6 +10520,9 @@ class WebDAVDiscoverContent {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -9694,11 +10535,14 @@ class WebDAVDiscoverContent {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -9727,6 +10571,7 @@ class WebDAVDiscoverContent {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -9755,6 +10600,7 @@ class WebDAVDiscoverContent {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -9779,6 +10625,8 @@ class WebDAVDiscoverContent {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -9791,6 +10639,7 @@ class WebDAVDiscoverContent {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -9805,18 +10654,21 @@ class WebDAVDiscoverContent {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -9837,6 +10689,7 @@ class WebDAVDiscoverContent {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -9850,11 +10703,13 @@ class WebDAVDiscoverContent {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -9864,6 +10719,8 @@ class WebDAVDiscoverContent {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -9878,6 +10735,8 @@ class WebDAVDiscoverContent {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -9893,6 +10752,7 @@ class WebDAVDiscoverContent {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -9921,6 +10781,7 @@ class WebDAVDiscoverContent {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -9935,6 +10796,7 @@ class WebDAVDiscoverContent {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -9942,26 +10804,31 @@ class WebDAVDiscoverContent {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -9975,6 +10842,7 @@ class WebDAVDiscoverContent {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -10003,6 +10871,7 @@ class WebDAVDiscoverContent {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -10021,6 +10890,7 @@ class WebDAVDiscoverContent {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -10028,36 +10898,43 @@ class WebDAVDiscoverContent {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -10070,6 +10947,7 @@ class WebDAVDiscoverContent {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -10078,6 +10956,7 @@ class WebDAVDiscoverContent {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -10095,6 +10974,7 @@ class WebDAVDiscoverContent {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -10104,6 +10984,7 @@ class WebDAVDiscoverContent {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -10115,6 +10996,7 @@ class WebDAVDiscoverContent {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -10124,6 +11006,7 @@ class WebDAVDiscoverContent {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -10133,6 +11016,7 @@ class WebDAVDiscoverContent {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -10151,6 +11035,7 @@ class WebDAVDiscoverContent {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -10158,6 +11043,7 @@ class WebDAVDiscoverContent {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -10191,12 +11077,15 @@ class WebDAVDiscoverContent {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -10213,11 +11102,14 @@ class WebDAVDiscoverContent {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -10225,6 +11117,7 @@ class WebDAVDiscoverContent {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -10236,6 +11129,7 @@ class WebDAVDiscoverContent {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -10244,6 +11138,7 @@ class WebDAVDiscoverContent {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -10252,11 +11147,13 @@ class WebDAVDiscoverContent {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -10264,6 +11161,7 @@ class WebDAVDiscoverContent {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -10271,6 +11169,7 @@ class WebDAVDiscoverContent {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -10281,6 +11180,7 @@ class WebDAVDiscoverContent {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -10291,6 +11191,7 @@ class WebDAVDiscoverContent {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -10305,12 +11206,14 @@ class WebDAVDiscoverContent {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -10352,6 +11255,7 @@ class WebDAVDiscoverContent {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -10368,6 +11272,8 @@ class WebDAVDiscoverContent {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -10402,6 +11308,8 @@ class WebDAVDiscoverContent {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -10415,6 +11323,9 @@ class WebDAVDiscoverContent {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -10444,12 +11355,14 @@ class WebDAVDiscoverContent {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10487,6 +11400,10 @@ class WebDAVDiscoverContent {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10497,6 +11414,12 @@ class WebDAVDiscoverContent {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10520,6 +11443,7 @@ class WebDAVDiscoverContent {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10539,11 +11463,14 @@ class WebDAVDiscoverContent {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10551,6 +11478,8 @@ class WebDAVDiscoverContent {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10568,6 +11497,7 @@ class WebDAVDiscoverContent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10613,6 +11543,7 @@ class WebDAVDiscoverContent {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10656,15 +11587,20 @@ class WebDAVDiscoverContent {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10705,6 +11641,7 @@ class WebDAVDiscoverContent {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10739,12 +11676,16 @@ class WebDAVDiscoverContent {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -10752,24 +11693,39 @@ class WebDAVDiscoverContent {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -10778,14 +11734,19 @@ class WebDAVDiscoverContent {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Methods of Gtk-3.0.Gtk.Orientable */
@@ -10795,12 +11756,16 @@ class WebDAVDiscoverContent {
     get_orientation(): Gtk.Orientation
     /**
      * Sets the orientation of the `orientable`.
+     * @param orientation the orientable’s new orientation.
      */
     set_orientation(orientation: Gtk.Orientation): void
     /* Virtual methods of EDataServerUI-1.2.EDataServerUI.WebDAVDiscoverContent */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -10808,24 +11773,39 @@ class WebDAVDiscoverContent {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -10842,14 +11822,19 @@ class WebDAVDiscoverContent {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /* Virtual methods of Gtk-3.0.Gtk.Container */
@@ -10866,6 +11851,7 @@ class WebDAVDiscoverContent {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -10887,12 +11873,15 @@ class WebDAVDiscoverContent {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -10905,6 +11894,7 @@ class WebDAVDiscoverContent {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10917,6 +11907,7 @@ class WebDAVDiscoverContent {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -10934,6 +11925,7 @@ class WebDAVDiscoverContent {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -10944,6 +11936,7 @@ class WebDAVDiscoverContent {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -11008,6 +12001,7 @@ class WebDAVDiscoverContent {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -11050,6 +12044,7 @@ class WebDAVDiscoverContent {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -11061,6 +12056,7 @@ class WebDAVDiscoverContent {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -11084,6 +12080,7 @@ class WebDAVDiscoverContent {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -11147,6 +12144,7 @@ class WebDAVDiscoverContent {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -11158,6 +12156,7 @@ class WebDAVDiscoverContent {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -11179,6 +12178,7 @@ class WebDAVDiscoverContent {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -11241,6 +12241,7 @@ class WebDAVDiscoverContent {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -11279,6 +12280,7 @@ class WebDAVDiscoverContent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11307,6 +12309,7 @@ class WebDAVDiscoverContent {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventButton) => boolean)): number
@@ -11319,6 +12322,7 @@ class WebDAVDiscoverContent {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventButton) => boolean)): number
@@ -11329,6 +12333,7 @@ class WebDAVDiscoverContent {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: WebDAVDiscoverContent, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: WebDAVDiscoverContent, signal_id: number) => boolean)): number
@@ -11337,6 +12342,7 @@ class WebDAVDiscoverContent {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: WebDAVDiscoverContent, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: WebDAVDiscoverContent, child_property: GObject.ParamSpec) => void)): number
@@ -11356,6 +12362,7 @@ class WebDAVDiscoverContent {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventConfigure) => boolean)): number
@@ -11364,6 +12371,7 @@ class WebDAVDiscoverContent {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventExpose) => boolean)): number
@@ -11374,6 +12382,7 @@ class WebDAVDiscoverContent {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.Event) => boolean)): number
@@ -11397,6 +12406,7 @@ class WebDAVDiscoverContent {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.Event) => boolean)): number
@@ -11404,6 +12414,7 @@ class WebDAVDiscoverContent {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: WebDAVDiscoverContent, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: WebDAVDiscoverContent, previous_direction: Gtk.TextDirection) => void)): number
@@ -11416,6 +12427,7 @@ class WebDAVDiscoverContent {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext) => void)): number
@@ -11425,6 +12437,7 @@ class WebDAVDiscoverContent {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext) => void)): number
@@ -11435,6 +12448,10 @@ class WebDAVDiscoverContent {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -11502,6 +12519,12 @@ class WebDAVDiscoverContent {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -11517,6 +12540,10 @@ class WebDAVDiscoverContent {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -11525,6 +12552,7 @@ class WebDAVDiscoverContent {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext) => void)): number
@@ -11535,6 +12563,8 @@ class WebDAVDiscoverContent {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -11549,6 +12579,8 @@ class WebDAVDiscoverContent {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, time: number) => void)): number
@@ -11642,6 +12674,10 @@ class WebDAVDiscoverContent {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: WebDAVDiscoverContent, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -11664,6 +12700,7 @@ class WebDAVDiscoverContent {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: WebDAVDiscoverContent, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: WebDAVDiscoverContent, cr: cairo.Context) => boolean)): number
@@ -11676,6 +12713,7 @@ class WebDAVDiscoverContent {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventCrossing) => boolean)): number
@@ -11686,6 +12724,7 @@ class WebDAVDiscoverContent {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.Event) => boolean)): number
@@ -11694,6 +12733,7 @@ class WebDAVDiscoverContent {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: WebDAVDiscoverContent, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: WebDAVDiscoverContent, event: Gdk.Event) => void)): number
@@ -11707,6 +12747,7 @@ class WebDAVDiscoverContent {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventFocus) => boolean)): number
@@ -11717,6 +12758,7 @@ class WebDAVDiscoverContent {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventFocus) => boolean)): number
@@ -11728,6 +12770,7 @@ class WebDAVDiscoverContent {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventGrabBroken) => boolean)): number
@@ -11744,6 +12787,7 @@ class WebDAVDiscoverContent {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: WebDAVDiscoverContent, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: WebDAVDiscoverContent, was_grabbed: boolean) => void)): number
@@ -11761,6 +12805,7 @@ class WebDAVDiscoverContent {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: WebDAVDiscoverContent, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: WebDAVDiscoverContent, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -11773,6 +12818,7 @@ class WebDAVDiscoverContent {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventKey) => boolean)): number
@@ -11784,6 +12830,7 @@ class WebDAVDiscoverContent {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventKey) => boolean)): number
@@ -11791,6 +12838,7 @@ class WebDAVDiscoverContent {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: WebDAVDiscoverContent, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: WebDAVDiscoverContent, direction: Gtk.DirectionType) => boolean)): number
@@ -11803,6 +12851,7 @@ class WebDAVDiscoverContent {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventCrossing) => boolean)): number
@@ -11828,6 +12877,7 @@ class WebDAVDiscoverContent {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventAny) => boolean)): number
@@ -11835,6 +12885,7 @@ class WebDAVDiscoverContent {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: WebDAVDiscoverContent, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: WebDAVDiscoverContent, group_cycling: boolean) => boolean)): number
@@ -11847,6 +12898,7 @@ class WebDAVDiscoverContent {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventMotion) => boolean)): number
@@ -11857,6 +12909,7 @@ class WebDAVDiscoverContent {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: WebDAVDiscoverContent, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: WebDAVDiscoverContent, old_parent?: Gtk.Widget | null) => void)): number
@@ -11879,6 +12932,7 @@ class WebDAVDiscoverContent {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventProperty) => boolean)): number
@@ -11888,6 +12942,7 @@ class WebDAVDiscoverContent {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventProximity) => boolean)): number
@@ -11897,6 +12952,7 @@ class WebDAVDiscoverContent {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventProximity) => boolean)): number
@@ -11914,6 +12970,10 @@ class WebDAVDiscoverContent {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: WebDAVDiscoverContent, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: WebDAVDiscoverContent, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -11929,6 +12989,7 @@ class WebDAVDiscoverContent {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: WebDAVDiscoverContent, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: WebDAVDiscoverContent, previous_screen?: Gdk.Screen | null) => void)): number
@@ -11942,6 +13003,7 @@ class WebDAVDiscoverContent {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventScroll) => boolean)): number
@@ -11949,6 +13011,7 @@ class WebDAVDiscoverContent {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventSelection) => boolean)): number
@@ -11966,6 +13029,7 @@ class WebDAVDiscoverContent {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventSelection) => boolean)): number
@@ -11986,6 +13050,7 @@ class WebDAVDiscoverContent {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: WebDAVDiscoverContent, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: WebDAVDiscoverContent, state: Gtk.StateType) => void)): number
@@ -11993,6 +13058,7 @@ class WebDAVDiscoverContent {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: WebDAVDiscoverContent, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: WebDAVDiscoverContent, flags: Gtk.StateFlags) => void)): number
@@ -12005,6 +13071,7 @@ class WebDAVDiscoverContent {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: WebDAVDiscoverContent, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: WebDAVDiscoverContent, previous_style?: Gtk.Style | null) => void)): number
@@ -12041,6 +13108,7 @@ class WebDAVDiscoverContent {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventAny) => boolean)): number
@@ -12060,6 +13128,7 @@ class WebDAVDiscoverContent {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventVisibility) => boolean)): number
@@ -12071,6 +13140,7 @@ class WebDAVDiscoverContent {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: WebDAVDiscoverContent, event: Gdk.EventWindowState) => boolean)): number
@@ -12104,6 +13174,7 @@ class WebDAVDiscoverContent {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebDAVDiscoverContent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebDAVDiscoverContent, pspec: GObject.ParamSpec) => void)): number
@@ -12220,6 +13291,15 @@ class WebDAVDiscoverContent {
 interface WebDAVDiscoverDialog_ConstructProps extends Gtk.Dialog_ConstructProps {
 }
 class WebDAVDiscoverDialog {
+    /* Properties of Gtk-3.0.Gtk.Dialog */
+    /**
+     * %TRUE if the dialog uses a #GtkHeaderBar for action buttons
+     * instead of the action-area.
+     * 
+     * For technical reasons, this property is declared as an integer
+     * property, but you should only set it to %TRUE or %FALSE.
+     */
+    readonly use_header_bar: number
     /* Properties of Gtk-3.0.Gtk.Window */
     /**
      * Whether the window should receive the input focus.
@@ -12325,6 +13405,7 @@ class WebDAVDiscoverDialog {
      * more details about transient windows.
      */
     transient_for: Gtk.Window
+    readonly type: Gtk.WindowType
     type_hint: Gdk.WindowTypeHint
     urgency_hint: boolean
     window_position: Gtk.WindowPosition
@@ -12502,18 +13583,18 @@ class WebDAVDiscoverDialog {
     visible: boolean
     width_request: number
     /* Fields of Gtk-3.0.Gtk.Dialog */
-    readonly window: Gtk.Window
+    window: Gtk.Window
     /* Fields of Gtk-3.0.Gtk.Window */
-    readonly bin: Gtk.Bin
-    readonly priv: Gtk.WindowPrivate
+    bin: Gtk.Bin
+    priv: Gtk.WindowPrivate
     /* Fields of Gtk-3.0.Gtk.Bin */
-    readonly container: Gtk.Container
+    container: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServerUI-1.2.EDataServerUI.WebDAVDiscoverDialog */
     /**
      * Returns inner WebDAV discovery content, which can be further manipulated.
@@ -12531,6 +13612,8 @@ class WebDAVDiscoverDialog {
      * appended to the end of the dialog’s action area. If you want to add a
      * non-activatable widget, simply pack it into the `action_area` field
      * of the #GtkDialog struct.
+     * @param child an activatable widget
+     * @param response_id response ID for `child`
      */
     add_action_widget(child: Gtk.Widget, response_id: number): void
     /**
@@ -12539,6 +13622,8 @@ class WebDAVDiscoverDialog {
      * the given `response_id`. The button is appended to the end of the
      * dialog’s action area. The button widget is returned, but usually
      * you don’t need it.
+     * @param button_text text of button
+     * @param response_id response ID for the button
      */
     add_button(button_text: string, response_id: number): Gtk.Widget
     /**
@@ -12558,11 +13643,13 @@ class WebDAVDiscoverDialog {
     /**
      * Gets the response id of a widget in the action area
      * of a dialog.
+     * @param widget a widget in the action area of `dialog`
      */
     get_response_for_widget(widget: Gtk.Widget): number
     /**
      * Gets the widget button that uses the given response ID in the action area
      * of a dialog.
+     * @param response_id the response ID used by the `dialog` widget
      */
     get_widget_for_response(response_id: number): Gtk.Widget | null
     /**
@@ -12570,6 +13657,7 @@ class WebDAVDiscoverDialog {
      * Used to indicate that the user has responded to the dialog in some way;
      * typically either you or gtk_dialog_run() will be monitoring the
      * ::response signal and take appropriate action.
+     * @param response_id response ID
      */
     response(response_id: number): void
     /**
@@ -12631,18 +13719,22 @@ class WebDAVDiscoverDialog {
      * See gtk_dialog_set_alternative_button_order() for more information.
      * 
      * This function is for use by language bindings.
+     * @param new_order an array of response ids of     `dialog’`s buttons
      */
     set_alternative_button_order_from_array(new_order: number[]): void
     /**
      * Sets the last widget in the dialog’s action area with the given `response_id`
      * as the default widget for the dialog. Pressing “Enter” normally activates
      * the default widget.
+     * @param response_id a response ID
      */
     set_default_response(response_id: number): void
     /**
      * Calls `gtk_widget_set_sensitive (widget, `setting)``
      * for each widget in the dialog’s action area with the given `response_id`.
      * A convenient way to sensitize/desensitize dialog buttons.
+     * @param response_id a response ID
+     * @param setting %TRUE for sensitive
      */
     set_response_sensitive(response_id: number, setting: boolean): void
     /* Methods of Gtk-3.0.Gtk.Window */
@@ -12662,16 +13754,20 @@ class WebDAVDiscoverDialog {
      * called by the default ::key_press_event handler for toplevel windows,
      * however in some cases it may be useful to call this directly when
      * overriding the standard key handling for a toplevel window.
+     * @param event a #GdkEventKey
      */
     activate_key(event: Gdk.EventKey): boolean
     /**
      * Associate `accel_group` with `window,` such that calling
      * gtk_accel_groups_activate() on `window` will activate accelerators
      * in `accel_group`.
+     * @param accel_group a #GtkAccelGroup
      */
     add_accel_group(accel_group: Gtk.AccelGroup): void
     /**
      * Adds a mnemonic to this window.
+     * @param keyval the mnemonic
+     * @param target the widget that gets activated by the mnemonic
      */
     add_mnemonic(keyval: number, target: Gtk.Widget): void
     /**
@@ -12681,6 +13777,10 @@ class WebDAVDiscoverDialog {
      * [window manager][gtk-X11-arch] or windowing
      * system. Otherwise, GDK will try to emulate window movement,
      * potentially not all that well, depending on the windowing system.
+     * @param button mouse button that initiated the drag
+     * @param root_x X position where the user clicked to initiate the drag, in root window coordinates
+     * @param root_y Y position where the user clicked to initiate the drag
+     * @param timestamp timestamp from the click event that initiated the drag
      */
     begin_move_drag(button: number, root_x: number, root_y: number, timestamp: number): void
     /**
@@ -12690,6 +13790,11 @@ class WebDAVDiscoverDialog {
      * [window manager][gtk-X11-arch] or windowing
      * system. Otherwise, GDK will try to emulate window resizing,
      * potentially not all that well, depending on the windowing system.
+     * @param edge position of the resize control
+     * @param button mouse button that initiated the drag
+     * @param root_x X position where the user clicked to initiate the drag, in root window coordinates
+     * @param root_y Y position where the user clicked to initiate the drag
+     * @param timestamp timestamp from the click event that initiated the drag
      */
     begin_resize_drag(edge: Gdk.WindowEdge, button: number, root_x: number, root_y: number, timestamp: number): void
     /**
@@ -12730,6 +13835,8 @@ class WebDAVDiscoverDialog {
      * 
      * You can track the fullscreen state via the "window-state-event" signal
      * on #GtkWidget.
+     * @param screen a #GdkScreen to draw to
+     * @param monitor which monitor to go fullscreen on
      */
     fullscreen_on_monitor(screen: Gdk.Screen, monitor: number): void
     /**
@@ -13053,6 +14160,8 @@ class WebDAVDiscoverDialog {
     maximize(): void
     /**
      * Activates the targets associated with the mnemonic.
+     * @param keyval the mnemonic
+     * @param modifier the modifiers
      */
     mnemonic_activate(keyval: number, modifier: Gdk.ModifierType): boolean
     /**
@@ -13089,6 +14198,8 @@ class WebDAVDiscoverDialog {
      * has a nice table of gravities in the “implementation notes” section.
      * 
      * The gtk_window_get_position() documentation may also be relevant.
+     * @param x X coordinate to move window to
+     * @param y Y coordinate to move window to
      */
     move(x: number, y: number): void
     /**
@@ -13165,6 +14276,7 @@ class WebDAVDiscoverDialog {
      * }
      * ```
      * 
+     * @param geometry geometry string
      */
     parse_geometry(geometry: string): boolean
     /**
@@ -13192,6 +14304,7 @@ class WebDAVDiscoverDialog {
      * timestamp should be gathered when the window was requested to be shown
      * (when clicking a link for example), rather than once the window is
      * ready to be shown.
+     * @param timestamp the timestamp of the user interaction (typically a   button or key press event) which triggered this call
      */
     present_with_time(timestamp: number): void
     /**
@@ -13201,14 +14314,18 @@ class WebDAVDiscoverDialog {
      * ::key_release_event handlers for toplevel windows,
      * however in some cases it may be useful to call this directly when
      * overriding the standard key handling for a toplevel window.
+     * @param event a #GdkEventKey
      */
     propagate_key_event(event: Gdk.EventKey): boolean
     /**
      * Reverses the effects of gtk_window_add_accel_group().
+     * @param accel_group a #GtkAccelGroup
      */
     remove_accel_group(accel_group: Gtk.AccelGroup): void
     /**
      * Removes a mnemonic from this window.
+     * @param keyval the mnemonic
+     * @param target the widget that gets activated by the mnemonic
      */
     remove_mnemonic(keyval: number, target: Gtk.Widget): void
     /**
@@ -13246,6 +14363,8 @@ class WebDAVDiscoverDialog {
      * and cause the titlebar widget to grow in height, this will result in a
      * window content smaller that specified by gtk_window_resize() and not
      * a larger window.
+     * @param width width in pixels to resize the window to
+     * @param height height in pixels to resize the window to
      */
     resize(width: number, height: number): void
     /**
@@ -13256,11 +14375,14 @@ class WebDAVDiscoverDialog {
      * Like gtk_window_resize(), but `width` and `height` are interpreted
      * in terms of the base size and increment set with
      * gtk_window_set_geometry_hints.
+     * @param width width in resize increments to resize the window to
+     * @param height height in resize increments to resize the window to
      */
     resize_to_geometry(width: number, height: number): void
     /**
      * Windows may set a hint asking the desktop environment not to receive
      * the input focus. This function sets this hint.
+     * @param setting %TRUE to let this window receive input focus
      */
     set_accept_focus(setting: boolean): void
     /**
@@ -13276,6 +14398,7 @@ class WebDAVDiscoverDialog {
      * 
      * This is equivalent to calling gtk_application_remove_window() and/or
      * gtk_application_add_window() on the old/new applications as relevant.
+     * @param application a #GtkApplication, or %NULL to unset
      */
     set_application(application?: Gtk.Application | null): void
     /**
@@ -13293,6 +14416,7 @@ class WebDAVDiscoverDialog {
      * between two toplevels instead.
      * 
      * Passing %NULL for `attach_widget` detaches the window.
+     * @param attach_widget a #GtkWidget, or %NULL
      */
     set_attached_to(attach_widget?: Gtk.Widget | null): void
     /**
@@ -13307,6 +14431,7 @@ class WebDAVDiscoverDialog {
      * 
      * On Windows, this function always works, since there’s no window manager
      * policy involved.
+     * @param setting %TRUE to decorate the window
      */
     set_decorated(setting: boolean): void
     /**
@@ -13317,12 +14442,15 @@ class WebDAVDiscoverDialog {
      * gtk_widget_grab_default() on the widget. Before making a widget
      * the default widget, you must call gtk_widget_set_can_default() on
      * the widget you’d like to make the default.
+     * @param default_widget widget to be the default, or %NULL     to unset the default widget for the toplevel
      */
     set_default(default_widget?: Gtk.Widget | null): void
     /**
      * Like gtk_window_set_default_size(), but `width` and `height` are interpreted
      * in terms of the base size and increment set with
      * gtk_window_set_geometry_hints.
+     * @param width width in resize increments, or -1 to unset the default width
+     * @param height height in resize increments, or -1 to unset the default height
      */
     set_default_geometry(width: number, height: number): void
     /**
@@ -13359,6 +14487,8 @@ class WebDAVDiscoverDialog {
      * note that the appropriate size to save is the one returned by
      * gtk_window_get_size(). Using the window allocation directly will not
      * work in all circumstances and can lead to growing or shrinking windows.
+     * @param width width in pixels, or -1 to unset the default width
+     * @param height height in pixels, or -1 to unset the default height
      */
     set_default_size(width: number, height: number): void
     /**
@@ -13372,6 +14502,7 @@ class WebDAVDiscoverDialog {
      * 
      * On Windows, this function always works, since there’s no window manager
      * policy involved.
+     * @param setting %TRUE to decorate the window as deletable
      */
     set_deletable(setting: boolean): void
     /**
@@ -13379,6 +14510,7 @@ class WebDAVDiscoverDialog {
      * will also destroy `window` itself. This is useful for dialogs that
      * shouldn’t persist beyond the lifetime of the main window they're
      * associated with, for example.
+     * @param setting whether to destroy `window` with its transient parent
      */
     set_destroy_with_parent(setting: boolean): void
     /**
@@ -13387,16 +14519,19 @@ class WebDAVDiscoverDialog {
      * the focus widget for this window. To set the focus to a particular
      * widget in the toplevel, it is usually more convenient to use
      * gtk_widget_grab_focus() instead of this function.
+     * @param focus widget to be the new focus widget, or %NULL to unset   any focus widget for the toplevel window.
      */
     set_focus(focus?: Gtk.Widget | null): void
     /**
      * Windows may set a hint asking the desktop environment not to receive
      * the input focus when the window is mapped.  This function sets this
      * hint.
+     * @param setting %TRUE to let this window receive input focus on map
      */
     set_focus_on_map(setting: boolean): void
     /**
      * Sets the #GtkWindow:focus-visible property.
+     * @param setting the new value
      */
     set_focus_visible(setting: boolean): void
     /**
@@ -13404,6 +14539,9 @@ class WebDAVDiscoverDialog {
      * the user.  You can set a minimum and maximum size; allowed resize
      * increments (e.g. for xterm, you can only resize by the size of a
      * character); aspect ratios; and more. See the #GdkGeometry struct.
+     * @param geometry_widget widget the geometry hints used to be applied to   or %NULL. Since 3.20 this argument is ignored and GTK behaves as if %NULL was   set.
+     * @param geometry struct containing geometry information or %NULL
+     * @param geom_mask mask indicating which struct fields should be paid attention to
      */
     set_geometry_hints(geometry_widget: Gtk.Widget | null, geometry: Gdk.Geometry | null, geom_mask: Gdk.WindowHints): void
     /**
@@ -13413,6 +14551,7 @@ class WebDAVDiscoverDialog {
      * 
      * The default window gravity is #GDK_GRAVITY_NORTH_WEST which will
      * typically “do what you mean.”
+     * @param gravity window gravity
      */
     set_gravity(gravity: Gdk.Gravity): void
     /**
@@ -13422,6 +14561,7 @@ class WebDAVDiscoverDialog {
      * is actually resizable and not maximized. Use
      * gtk_window_resize_grip_is_visible() to find out if the
      * resize grip is currently shown.
+     * @param value %TRUE to allow a resize grip
      */
     set_has_resize_grip(value: boolean): void
     /**
@@ -13432,6 +14572,7 @@ class WebDAVDiscoverDialog {
      * bindings which may need to keep the window alive until their
      * wrapper object is garbage collected. There is no justification
      * for ever calling this function in an application.
+     * @param setting the new value
      */
     set_has_user_ref_count(setting: boolean): void
     /**
@@ -13445,6 +14586,7 @@ class WebDAVDiscoverDialog {
      * Note that custom titlebars set with gtk_window_set_titlebar() are
      * not affected by this. The application is in full control of their
      * content and visibility anyway.
+     * @param setting whether to hide the titlebar when `window` is maximized
      */
     set_hide_titlebar_when_maximized(setting: boolean): void
     /**
@@ -13467,6 +14609,7 @@ class WebDAVDiscoverDialog {
      * 
      * See also gtk_window_set_default_icon_list() to set the icon
      * for all windows in your application in one go.
+     * @param icon icon image, or %NULL
      */
     set_icon(icon?: GdkPixbuf.Pixbuf | null): void
     /**
@@ -13475,6 +14618,7 @@ class WebDAVDiscoverDialog {
      * 
      * This function is equivalent to calling gtk_window_set_icon()
      * with a pixbuf created by loading the image from `filename`.
+     * @param filename location of icon file
      */
     set_icon_from_file(filename: string): boolean
     /**
@@ -13503,6 +14647,7 @@ class WebDAVDiscoverDialog {
      * window using gtk_window_set_transient_for()) will inherit their
      * icon from their transient parent. So there’s no need to explicitly
      * set the icon on transient windows.
+     * @param list list of #GdkPixbuf
      */
     set_icon_list(list: GdkPixbuf.Pixbuf[]): void
     /**
@@ -13512,6 +14657,7 @@ class WebDAVDiscoverDialog {
      * 
      * Note that this has nothing to do with the WM_ICON_NAME
      * property which is mentioned in the ICCCM.
+     * @param name the name of the themed icon
      */
     set_icon_name(name?: string | null): void
     /**
@@ -13535,6 +14681,7 @@ class WebDAVDiscoverDialog {
      * the above state is mainly meant for user preferences and should not
      * be used by applications e.g. for drawing attention to their
      * dialogs.
+     * @param setting whether to keep `window` above other windows
      */
     set_keep_above(setting: boolean): void
     /**
@@ -13558,14 +14705,17 @@ class WebDAVDiscoverDialog {
      * the above state is mainly meant for user preferences and should not
      * be used by applications e.g. for drawing attention to their
      * dialogs.
+     * @param setting whether to keep `window` below other windows
      */
     set_keep_below(setting: boolean): void
     /**
      * Sets the mnemonic modifier for this window.
+     * @param modifier the modifier mask used to activate               mnemonics on this window.
      */
     set_mnemonic_modifier(modifier: Gdk.ModifierType): void
     /**
      * Sets the #GtkWindow:mnemonics-visible property.
+     * @param setting the new value
      */
     set_mnemonics_visible(setting: boolean): void
     /**
@@ -13575,6 +14725,7 @@ class WebDAVDiscoverDialog {
      * gtk_window_set_transient_for() to make the dialog transient for the
      * parent; most [window managers][gtk-X11-arch]
      * will then disallow lowering the dialog below the parent.
+     * @param modal whether the window is modal
      */
     set_modal(modal: boolean): void
     /**
@@ -13587,17 +14738,20 @@ class WebDAVDiscoverDialog {
      * 
      * Note that setting a window’s opacity after the window has been
      * shown causes it to flicker once on Windows.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
      * Sets a position constraint for this window. If the old or new
      * constraint is %GTK_WIN_POS_CENTER_ALWAYS, this will also cause
      * the window to be repositioned to satisfy the new constraint.
+     * @param position a position constraint.
      */
     set_position(position: Gtk.WindowPosition): void
     /**
      * Sets whether the user can resize a window. Windows are user resizable
      * by default.
+     * @param resizable %TRUE if the user can resize this window
      */
     set_resizable(resizable: boolean): void
     /**
@@ -13613,12 +14767,14 @@ class WebDAVDiscoverDialog {
      * If a window already has a unique title, you don’t need to set the
      * role, since the WM can use the title to identify the window when
      * restoring the session.
+     * @param role unique identifier for the window to be used when restoring a session
      */
     set_role(role: string): void
     /**
      * Sets the #GdkScreen where the `window` is displayed; if
      * the window is already mapped, it will be unmapped, and
      * then remapped on the new screen.
+     * @param screen a #GdkScreen.
      */
     set_screen(screen: Gdk.Screen): void
     /**
@@ -13627,11 +14783,13 @@ class WebDAVDiscoverDialog {
      * (A "pager" is any desktop navigation tool such as a workspace
      * switcher that displays a thumbnail representation of the windows
      * on the screen.)
+     * @param setting %TRUE to keep this window from appearing in the pager
      */
     set_skip_pager_hint(setting: boolean): void
     /**
      * Windows may set a hint asking the desktop environment not to display
      * the window in the task bar. This function sets this hint.
+     * @param setting %TRUE to keep this window from appearing in the task bar
      */
     set_skip_taskbar_hint(setting: boolean): void
     /**
@@ -13645,6 +14803,7 @@ class WebDAVDiscoverDialog {
      * function generating a window map event.
      * 
      * This function is only useful on X11, not with other GTK+ targets.
+     * @param startup_id a string with startup-notification identifier
      */
     set_startup_id(startup_id: string): void
     /**
@@ -13656,6 +14815,7 @@ class WebDAVDiscoverDialog {
      * user distinguish this window from other windows they may have
      * open. A good title might include the application name and current
      * document filename, for example.
+     * @param title title of the window
      */
     set_title(title: string): void
     /**
@@ -13669,6 +14829,7 @@ class WebDAVDiscoverDialog {
      * Depending on the system, this function may not work for a window
      * that is already visible, so you set the titlebar before calling
      * gtk_widget_show().
+     * @param titlebar the widget to use as titlebar
      */
     set_titlebar(titlebar?: Gtk.Widget | null): void
     /**
@@ -13690,6 +14851,7 @@ class WebDAVDiscoverDialog {
      * 
      * On Windows, this function puts the child window on top of the parent,
      * much as the window manager would have done on X.
+     * @param parent parent window, or %NULL
      */
     set_transient_for(parent?: Gtk.Window | null): void
     /**
@@ -13701,11 +14863,13 @@ class WebDAVDiscoverDialog {
      * 
      * gtk_dialog_new_with_buttons() and other convenience functions in GTK+
      * will sometimes call gtk_window_set_type_hint() on your behalf.
+     * @param hint the window type
      */
     set_type_hint(hint: Gdk.WindowTypeHint): void
     /**
      * Windows may set a hint asking the desktop environment to draw
      * the users attention to the window. This function sets this hint.
+     * @param setting %TRUE to mark this window as urgent
      */
     set_urgency_hint(setting: boolean): void
     /**
@@ -13717,6 +14881,8 @@ class WebDAVDiscoverDialog {
      * gtk_window_set_role() on each window in your application, for the
      * benefit of the session manager. Setting the role allows the window
      * manager to restore window positions when loading a saved session.
+     * @param wmclass_name window name hint
+     * @param wmclass_class window class hint
      */
     set_wmclass(wmclass_name: string, wmclass_class: string): void
     /**
@@ -13792,11 +14958,15 @@ class WebDAVDiscoverDialog {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -13807,6 +14977,8 @@ class WebDAVDiscoverDialog {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -13815,10 +14987,15 @@ class WebDAVDiscoverDialog {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -13838,6 +15015,7 @@ class WebDAVDiscoverDialog {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -13852,6 +15030,7 @@ class WebDAVDiscoverDialog {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -13891,6 +15070,7 @@ class WebDAVDiscoverDialog {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -13914,6 +15094,8 @@ class WebDAVDiscoverDialog {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -13926,6 +15108,7 @@ class WebDAVDiscoverDialog {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -13939,6 +15122,7 @@ class WebDAVDiscoverDialog {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -13949,6 +15133,7 @@ class WebDAVDiscoverDialog {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -13960,6 +15145,7 @@ class WebDAVDiscoverDialog {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -13972,6 +15158,7 @@ class WebDAVDiscoverDialog {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -13984,6 +15171,7 @@ class WebDAVDiscoverDialog {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -13991,6 +15179,7 @@ class WebDAVDiscoverDialog {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -13999,6 +15188,7 @@ class WebDAVDiscoverDialog {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -14022,17 +15212,25 @@ class WebDAVDiscoverDialog {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -14042,6 +15240,7 @@ class WebDAVDiscoverDialog {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -14065,6 +15264,7 @@ class WebDAVDiscoverDialog {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -14075,6 +15275,7 @@ class WebDAVDiscoverDialog {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -14097,6 +15298,7 @@ class WebDAVDiscoverDialog {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -14107,6 +15309,7 @@ class WebDAVDiscoverDialog {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -14126,6 +15329,7 @@ class WebDAVDiscoverDialog {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -14143,6 +15347,7 @@ class WebDAVDiscoverDialog {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -14187,6 +15392,7 @@ class WebDAVDiscoverDialog {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -14195,11 +15401,16 @@ class WebDAVDiscoverDialog {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -14228,12 +15439,22 @@ class WebDAVDiscoverDialog {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -14268,6 +15489,8 @@ class WebDAVDiscoverDialog {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -14322,16 +15545,23 @@ class WebDAVDiscoverDialog {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -14341,6 +15571,7 @@ class WebDAVDiscoverDialog {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -14358,6 +15589,9 @@ class WebDAVDiscoverDialog {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -14398,33 +15632,41 @@ class WebDAVDiscoverDialog {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -14454,6 +15696,7 @@ class WebDAVDiscoverDialog {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -14483,6 +15726,7 @@ class WebDAVDiscoverDialog {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -14514,6 +15758,7 @@ class WebDAVDiscoverDialog {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -14576,6 +15821,7 @@ class WebDAVDiscoverDialog {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -14640,6 +15886,7 @@ class WebDAVDiscoverDialog {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -14649,11 +15896,13 @@ class WebDAVDiscoverDialog {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -14807,6 +16056,7 @@ class WebDAVDiscoverDialog {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -14889,6 +16139,7 @@ class WebDAVDiscoverDialog {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -14900,6 +16151,7 @@ class WebDAVDiscoverDialog {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -14941,6 +16193,7 @@ class WebDAVDiscoverDialog {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -15060,6 +16313,8 @@ class WebDAVDiscoverDialog {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -15278,6 +16533,7 @@ class WebDAVDiscoverDialog {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -15288,6 +16544,8 @@ class WebDAVDiscoverDialog {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -15295,11 +16553,13 @@ class WebDAVDiscoverDialog {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -15367,6 +16627,7 @@ class WebDAVDiscoverDialog {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -15403,6 +16664,7 @@ class WebDAVDiscoverDialog {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -15421,6 +16683,8 @@ class WebDAVDiscoverDialog {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -15438,6 +16702,8 @@ class WebDAVDiscoverDialog {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -15447,6 +16713,8 @@ class WebDAVDiscoverDialog {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -15454,6 +16722,8 @@ class WebDAVDiscoverDialog {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -15461,6 +16731,7 @@ class WebDAVDiscoverDialog {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -15482,6 +16753,7 @@ class WebDAVDiscoverDialog {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -15492,6 +16764,8 @@ class WebDAVDiscoverDialog {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -15499,6 +16773,8 @@ class WebDAVDiscoverDialog {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -15527,6 +16803,8 @@ class WebDAVDiscoverDialog {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -15537,11 +16815,14 @@ class WebDAVDiscoverDialog {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -15550,6 +16831,8 @@ class WebDAVDiscoverDialog {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -15603,6 +16886,10 @@ class WebDAVDiscoverDialog {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -15616,6 +16903,7 @@ class WebDAVDiscoverDialog {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -15661,6 +16949,7 @@ class WebDAVDiscoverDialog {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -15672,11 +16961,15 @@ class WebDAVDiscoverDialog {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -15684,11 +16977,13 @@ class WebDAVDiscoverDialog {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -15703,6 +16998,9 @@ class WebDAVDiscoverDialog {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -15715,11 +17013,14 @@ class WebDAVDiscoverDialog {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -15748,6 +17049,7 @@ class WebDAVDiscoverDialog {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -15776,6 +17078,7 @@ class WebDAVDiscoverDialog {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -15800,6 +17103,8 @@ class WebDAVDiscoverDialog {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -15812,6 +17117,7 @@ class WebDAVDiscoverDialog {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -15826,18 +17132,21 @@ class WebDAVDiscoverDialog {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -15858,6 +17167,7 @@ class WebDAVDiscoverDialog {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -15871,11 +17181,13 @@ class WebDAVDiscoverDialog {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -15885,6 +17197,8 @@ class WebDAVDiscoverDialog {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -15899,6 +17213,8 @@ class WebDAVDiscoverDialog {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -15914,6 +17230,7 @@ class WebDAVDiscoverDialog {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -15942,6 +17259,7 @@ class WebDAVDiscoverDialog {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -15956,6 +17274,7 @@ class WebDAVDiscoverDialog {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -15963,26 +17282,31 @@ class WebDAVDiscoverDialog {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -15996,6 +17320,7 @@ class WebDAVDiscoverDialog {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -16024,6 +17349,7 @@ class WebDAVDiscoverDialog {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -16042,6 +17368,7 @@ class WebDAVDiscoverDialog {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -16049,36 +17376,43 @@ class WebDAVDiscoverDialog {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -16091,6 +17425,7 @@ class WebDAVDiscoverDialog {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -16099,6 +17434,7 @@ class WebDAVDiscoverDialog {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -16116,6 +17452,7 @@ class WebDAVDiscoverDialog {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -16125,6 +17462,7 @@ class WebDAVDiscoverDialog {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -16136,6 +17474,7 @@ class WebDAVDiscoverDialog {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -16145,6 +17484,7 @@ class WebDAVDiscoverDialog {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -16154,6 +17494,7 @@ class WebDAVDiscoverDialog {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -16172,6 +17513,7 @@ class WebDAVDiscoverDialog {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -16179,6 +17521,7 @@ class WebDAVDiscoverDialog {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -16212,12 +17555,15 @@ class WebDAVDiscoverDialog {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -16234,11 +17580,14 @@ class WebDAVDiscoverDialog {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -16246,6 +17595,7 @@ class WebDAVDiscoverDialog {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -16257,6 +17607,7 @@ class WebDAVDiscoverDialog {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -16265,6 +17616,7 @@ class WebDAVDiscoverDialog {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -16273,11 +17625,13 @@ class WebDAVDiscoverDialog {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -16285,6 +17639,7 @@ class WebDAVDiscoverDialog {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -16292,6 +17647,7 @@ class WebDAVDiscoverDialog {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -16302,6 +17658,7 @@ class WebDAVDiscoverDialog {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -16312,6 +17669,7 @@ class WebDAVDiscoverDialog {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -16326,12 +17684,14 @@ class WebDAVDiscoverDialog {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -16373,6 +17733,7 @@ class WebDAVDiscoverDialog {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -16389,6 +17750,8 @@ class WebDAVDiscoverDialog {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -16423,6 +17786,8 @@ class WebDAVDiscoverDialog {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -16436,6 +17801,9 @@ class WebDAVDiscoverDialog {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -16465,12 +17833,14 @@ class WebDAVDiscoverDialog {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -16508,6 +17878,10 @@ class WebDAVDiscoverDialog {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16518,6 +17892,12 @@ class WebDAVDiscoverDialog {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16541,6 +17921,7 @@ class WebDAVDiscoverDialog {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16560,11 +17941,14 @@ class WebDAVDiscoverDialog {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16572,6 +17956,8 @@ class WebDAVDiscoverDialog {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16589,6 +17975,7 @@ class WebDAVDiscoverDialog {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16634,6 +18021,7 @@ class WebDAVDiscoverDialog {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16677,15 +18065,20 @@ class WebDAVDiscoverDialog {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16726,6 +18119,7 @@ class WebDAVDiscoverDialog {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16760,12 +18154,16 @@ class WebDAVDiscoverDialog {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -16773,24 +18171,39 @@ class WebDAVDiscoverDialog {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -16799,20 +18212,28 @@ class WebDAVDiscoverDialog {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Virtual methods of EDataServerUI-1.2.EDataServerUI.WebDAVDiscoverDialog */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -16820,24 +18241,39 @@ class WebDAVDiscoverDialog {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -16854,14 +18290,19 @@ class WebDAVDiscoverDialog {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /* Virtual methods of Gtk-3.0.Gtk.Dialog */
@@ -16871,6 +18312,7 @@ class WebDAVDiscoverDialog {
      * Used to indicate that the user has responded to the dialog in some way;
      * typically either you or gtk_dialog_run() will be monitoring the
      * ::response signal and take appropriate action.
+     * @param response_id response ID
      */
     vfunc_response(response_id: number): void
     /* Virtual methods of Gtk-3.0.Gtk.Window */
@@ -16884,6 +18326,7 @@ class WebDAVDiscoverDialog {
      * the focus widget for this window. To set the focus to a particular
      * widget in the toplevel, it is usually more convenient to use
      * gtk_widget_grab_focus() instead of this function.
+     * @param focus widget to be the new focus widget, or %NULL to unset   any focus widget for the toplevel window.
      */
     vfunc_set_focus(focus?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Container */
@@ -16900,6 +18343,7 @@ class WebDAVDiscoverDialog {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -16921,12 +18365,15 @@ class WebDAVDiscoverDialog {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -16939,6 +18386,7 @@ class WebDAVDiscoverDialog {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16951,6 +18399,7 @@ class WebDAVDiscoverDialog {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -16968,6 +18417,7 @@ class WebDAVDiscoverDialog {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -16978,6 +18428,7 @@ class WebDAVDiscoverDialog {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -17042,6 +18493,7 @@ class WebDAVDiscoverDialog {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -17084,6 +18536,7 @@ class WebDAVDiscoverDialog {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -17095,6 +18548,7 @@ class WebDAVDiscoverDialog {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -17118,6 +18572,7 @@ class WebDAVDiscoverDialog {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -17181,6 +18636,7 @@ class WebDAVDiscoverDialog {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -17192,6 +18648,7 @@ class WebDAVDiscoverDialog {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -17213,6 +18670,7 @@ class WebDAVDiscoverDialog {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -17275,6 +18733,7 @@ class WebDAVDiscoverDialog {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -17313,6 +18772,7 @@ class WebDAVDiscoverDialog {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17333,6 +18793,7 @@ class WebDAVDiscoverDialog {
      * delete event, or the application programmer calls gtk_dialog_response().
      * On a delete event, the response ID is #GTK_RESPONSE_DELETE_EVENT.
      * Otherwise, it depends on which action widget was clicked.
+     * @param response_id the response ID
      */
     connect(sigName: "response", callback: (($obj: WebDAVDiscoverDialog, response_id: number) => void)): number
     connect_after(sigName: "response", callback: (($obj: WebDAVDiscoverDialog, response_id: number) => void)): number
@@ -17365,6 +18826,7 @@ class WebDAVDiscoverDialog {
      * 
      * The default bindings for this signal are Ctrl-Shift-I
      * and Ctrl-Shift-D.
+     * @param toggle toggle the debugger
      */
     connect(sigName: "enable-debugging", callback: (($obj: WebDAVDiscoverDialog, toggle: boolean) => boolean)): number
     connect_after(sigName: "enable-debugging", callback: (($obj: WebDAVDiscoverDialog, toggle: boolean) => boolean)): number
@@ -17379,6 +18841,7 @@ class WebDAVDiscoverDialog {
     /**
      * This signal is emitted whenever the currently focused widget in
      * this window changes.
+     * @param widget the newly focused widget (or %NULL for no focus)
      */
     connect(sigName: "set-focus", callback: (($obj: WebDAVDiscoverDialog, widget?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "set-focus", callback: (($obj: WebDAVDiscoverDialog, widget?: Gtk.Widget | null) => void)): number
@@ -17408,6 +18871,7 @@ class WebDAVDiscoverDialog {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventButton) => boolean)): number
@@ -17420,6 +18884,7 @@ class WebDAVDiscoverDialog {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventButton) => boolean)): number
@@ -17430,6 +18895,7 @@ class WebDAVDiscoverDialog {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: WebDAVDiscoverDialog, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: WebDAVDiscoverDialog, signal_id: number) => boolean)): number
@@ -17438,6 +18904,7 @@ class WebDAVDiscoverDialog {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: WebDAVDiscoverDialog, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: WebDAVDiscoverDialog, child_property: GObject.ParamSpec) => void)): number
@@ -17457,6 +18924,7 @@ class WebDAVDiscoverDialog {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventConfigure) => boolean)): number
@@ -17465,6 +18933,7 @@ class WebDAVDiscoverDialog {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventExpose) => boolean)): number
@@ -17475,6 +18944,7 @@ class WebDAVDiscoverDialog {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.Event) => boolean)): number
@@ -17498,6 +18968,7 @@ class WebDAVDiscoverDialog {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.Event) => boolean)): number
@@ -17505,6 +18976,7 @@ class WebDAVDiscoverDialog {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: WebDAVDiscoverDialog, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: WebDAVDiscoverDialog, previous_direction: Gtk.TextDirection) => void)): number
@@ -17517,6 +18989,7 @@ class WebDAVDiscoverDialog {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext) => void)): number
@@ -17526,6 +18999,7 @@ class WebDAVDiscoverDialog {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext) => void)): number
@@ -17536,6 +19010,10 @@ class WebDAVDiscoverDialog {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -17603,6 +19081,12 @@ class WebDAVDiscoverDialog {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -17618,6 +19102,10 @@ class WebDAVDiscoverDialog {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -17626,6 +19114,7 @@ class WebDAVDiscoverDialog {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext) => void)): number
@@ -17636,6 +19125,8 @@ class WebDAVDiscoverDialog {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -17650,6 +19141,8 @@ class WebDAVDiscoverDialog {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, time: number) => void)): number
@@ -17743,6 +19236,10 @@ class WebDAVDiscoverDialog {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: WebDAVDiscoverDialog, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -17765,6 +19262,7 @@ class WebDAVDiscoverDialog {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: WebDAVDiscoverDialog, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: WebDAVDiscoverDialog, cr: cairo.Context) => boolean)): number
@@ -17777,6 +19275,7 @@ class WebDAVDiscoverDialog {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventCrossing) => boolean)): number
@@ -17787,6 +19286,7 @@ class WebDAVDiscoverDialog {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.Event) => boolean)): number
@@ -17795,6 +19295,7 @@ class WebDAVDiscoverDialog {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.Event) => void)): number
@@ -17808,6 +19309,7 @@ class WebDAVDiscoverDialog {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventFocus) => boolean)): number
@@ -17818,6 +19320,7 @@ class WebDAVDiscoverDialog {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventFocus) => boolean)): number
@@ -17829,6 +19332,7 @@ class WebDAVDiscoverDialog {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventGrabBroken) => boolean)): number
@@ -17845,6 +19349,7 @@ class WebDAVDiscoverDialog {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: WebDAVDiscoverDialog, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: WebDAVDiscoverDialog, was_grabbed: boolean) => void)): number
@@ -17862,6 +19367,7 @@ class WebDAVDiscoverDialog {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: WebDAVDiscoverDialog, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: WebDAVDiscoverDialog, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -17874,6 +19380,7 @@ class WebDAVDiscoverDialog {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventKey) => boolean)): number
@@ -17885,6 +19392,7 @@ class WebDAVDiscoverDialog {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventKey) => boolean)): number
@@ -17892,6 +19400,7 @@ class WebDAVDiscoverDialog {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: WebDAVDiscoverDialog, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: WebDAVDiscoverDialog, direction: Gtk.DirectionType) => boolean)): number
@@ -17904,6 +19413,7 @@ class WebDAVDiscoverDialog {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventCrossing) => boolean)): number
@@ -17929,6 +19439,7 @@ class WebDAVDiscoverDialog {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventAny) => boolean)): number
@@ -17936,6 +19447,7 @@ class WebDAVDiscoverDialog {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: WebDAVDiscoverDialog, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: WebDAVDiscoverDialog, group_cycling: boolean) => boolean)): number
@@ -17948,6 +19460,7 @@ class WebDAVDiscoverDialog {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventMotion) => boolean)): number
@@ -17958,6 +19471,7 @@ class WebDAVDiscoverDialog {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: WebDAVDiscoverDialog, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: WebDAVDiscoverDialog, old_parent?: Gtk.Widget | null) => void)): number
@@ -17980,6 +19494,7 @@ class WebDAVDiscoverDialog {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventProperty) => boolean)): number
@@ -17989,6 +19504,7 @@ class WebDAVDiscoverDialog {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventProximity) => boolean)): number
@@ -17998,6 +19514,7 @@ class WebDAVDiscoverDialog {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventProximity) => boolean)): number
@@ -18015,6 +19532,10 @@ class WebDAVDiscoverDialog {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: WebDAVDiscoverDialog, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: WebDAVDiscoverDialog, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -18030,6 +19551,7 @@ class WebDAVDiscoverDialog {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: WebDAVDiscoverDialog, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: WebDAVDiscoverDialog, previous_screen?: Gdk.Screen | null) => void)): number
@@ -18043,6 +19565,7 @@ class WebDAVDiscoverDialog {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventScroll) => boolean)): number
@@ -18050,6 +19573,7 @@ class WebDAVDiscoverDialog {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventSelection) => boolean)): number
@@ -18067,6 +19591,7 @@ class WebDAVDiscoverDialog {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventSelection) => boolean)): number
@@ -18087,6 +19612,7 @@ class WebDAVDiscoverDialog {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: WebDAVDiscoverDialog, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: WebDAVDiscoverDialog, state: Gtk.StateType) => void)): number
@@ -18094,6 +19620,7 @@ class WebDAVDiscoverDialog {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: WebDAVDiscoverDialog, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: WebDAVDiscoverDialog, flags: Gtk.StateFlags) => void)): number
@@ -18106,6 +19633,7 @@ class WebDAVDiscoverDialog {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: WebDAVDiscoverDialog, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: WebDAVDiscoverDialog, previous_style?: Gtk.Style | null) => void)): number
@@ -18142,6 +19670,7 @@ class WebDAVDiscoverDialog {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventAny) => boolean)): number
@@ -18161,6 +19690,7 @@ class WebDAVDiscoverDialog {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventVisibility) => boolean)): number
@@ -18172,6 +19702,7 @@ class WebDAVDiscoverDialog {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: WebDAVDiscoverDialog, event: Gdk.EventWindowState) => boolean)): number
@@ -18205,10 +19736,13 @@ class WebDAVDiscoverDialog {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::use-header-bar", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-header-bar", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-focus", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::application", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
@@ -18267,6 +19801,8 @@ class WebDAVDiscoverDialog {
     connect_after(sigName: "notify::title", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::transient-for", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::type", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::type-hint", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type-hint", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::urgency-hint", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
@@ -18371,7 +19907,7 @@ class WebDAVDiscoverDialog {
 }
 abstract class CellRendererColorClass {
     /* Fields of EDataServerUI-1.2.EDataServerUI.CellRendererColorClass */
-    readonly parent_class: Gtk.CellRendererClass
+    parent_class: Gtk.CellRendererClass
     static name: string
 }
 class CellRendererColorPrivate {
@@ -18379,22 +19915,22 @@ class CellRendererColorPrivate {
 }
 abstract class CredentialsPrompterClass {
     /* Fields of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly get_dialog_parent: (prompter: CredentialsPrompter) => Gtk.Window | null
+    parent_class: GObject.ObjectClass
+    get_dialog_parent: (prompter: CredentialsPrompter) => Gtk.Window | null
     static name: string
 }
 abstract class CredentialsPrompterImplClass {
     /* Fields of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImplClass */
-    readonly parent_class: EDataServer.ExtensionClass
-    readonly authentication_methods: string
-    readonly process_prompt: (prompter_impl: CredentialsPrompterImpl, prompt_id: object | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters) => void
-    readonly cancel_prompt: (prompter_impl: CredentialsPrompterImpl, prompt_id?: object | null) => void
-    readonly prompt_finished: (prompter_impl: CredentialsPrompterImpl, prompt_id: object | null, credentials: EDataServer.NamedParameters) => void
+    parent_class: EDataServer.ExtensionClass
+    authentication_methods: string
+    process_prompt: (prompter_impl: CredentialsPrompterImpl, prompt_id: object | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters) => void
+    cancel_prompt: (prompter_impl: CredentialsPrompterImpl, prompt_id?: object | null) => void
+    prompt_finished: (prompter_impl: CredentialsPrompterImpl, prompt_id: object | null, credentials: EDataServer.NamedParameters) => void
     static name: string
 }
 abstract class CredentialsPrompterImplOAuth2Class {
     /* Fields of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImplOAuth2Class */
-    readonly parent_class: CredentialsPrompterImplClass
+    parent_class: CredentialsPrompterImplClass
     static name: string
 }
 class CredentialsPrompterImplOAuth2Private {
@@ -18402,7 +19938,7 @@ class CredentialsPrompterImplOAuth2Private {
 }
 abstract class CredentialsPrompterImplPasswordClass {
     /* Fields of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImplPasswordClass */
-    readonly parent_class: CredentialsPrompterImplClass
+    parent_class: CredentialsPrompterImplClass
     static name: string
 }
 class CredentialsPrompterImplPasswordPrivate {
@@ -18416,8 +19952,8 @@ class CredentialsPrompterPrivate {
 }
 abstract class RemindersWidgetClass {
     /* Fields of EDataServerUI-1.2.EDataServerUI.RemindersWidgetClass */
-    readonly changed: (reminders: RemindersWidget) => void
-    readonly activated: (reminders: RemindersWidget, rd: ECal.ReminderData) => boolean
+    changed: (reminders: RemindersWidget) => void
+    activated: (reminders: RemindersWidget, rd: ECal.ReminderData) => boolean
     static name: string
 }
 class RemindersWidgetPrivate {
@@ -18425,12 +19961,12 @@ class RemindersWidgetPrivate {
 }
 abstract class WebDAVDiscoverContentClass {
     /* Fields of EDataServerUI-1.2.EDataServerUI.WebDAVDiscoverContentClass */
-    readonly parent_class: Gtk.GridClass
+    parent_class: Gtk.GridClass
     static name: string
 }
 abstract class WebDAVDiscoverDialogClass {
     /* Fields of EDataServerUI-1.2.EDataServerUI.WebDAVDiscoverDialogClass */
-    readonly parent_class: Gtk.DialogClass
+    parent_class: Gtk.DialogClass
     static name: string
 }
 }

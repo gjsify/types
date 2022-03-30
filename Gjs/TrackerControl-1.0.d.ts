@@ -36,8 +36,10 @@ interface MinerManager_ConstructProps extends GObject.Object_ConstructProps {
     auto_start?: boolean
 }
 class MinerManager {
+    /* Properties of TrackerControl-1.0.TrackerControl.MinerManager */
+    readonly auto_start: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TrackerControl-1.0.TrackerControl.MinerManager */
     /**
      * Returns a list of references for all available miners. Available
@@ -47,10 +49,12 @@ class MinerManager {
     get_available(): string[] | null
     /**
      * Returns the description for the given `miner`.
+     * @param miner miner reference
      */
     get_description(miner: string): string
     /**
      * Returns a translated display name for `miner`.
+     * @param miner miner reference
      */
     get_display_name(miner: string): string
     /**
@@ -62,6 +66,7 @@ class MinerManager {
      * Returns the current status, progress and remaining time for `miner`.
      * `remaining_time` will be 0 if not possible to compute it yet,
      * and less than zero if it is not applicable.
+     * @param miner miner reference
      */
     get_status(miner: string): [ /* returnType */ boolean, /* status */ string | null, /* progress */ number | null, /* remaining_time */ number | null ]
     /**
@@ -69,24 +74,31 @@ class MinerManager {
      * used for cases where a file is updated by Tracker by the
      * tracker-writeback service. This API is used to avoid signalling up
      * the stack the changes to `urls`.
+     * @param miner miner reference
+     * @param urls the subjects to ignore the next updates of
      */
     ignore_next_update(miner: string, urls: string): boolean
     /**
      * Tells the filesystem miner to start indexing the `file`.
      * 
      * On failure `error` will be set.
+     * @param file a URL valid in GIO of a file to give to the miner for processing
      */
     index_file(file: Gio.File): boolean
     /**
      * Tells the filesystem miner to start indexing the `file`. Once the message has been sent,
      * `callback` will be called. You can then call tracker_miner_manager_index_file_finish()
      * to get the result.
+     * @param file a URL valid in GIO of a file to give to the miner for processing
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     index_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a request to index a file. See tracker_miner_manager_index_file_async()
      * 
      * On failure `error` will be set.
+     * @param result a #GAsyncResult
      */
     index_file_finish(result: Gio.AsyncResult): boolean
     /**
@@ -97,6 +109,8 @@ class MinerManager {
      * operation closely to its own lifetime.
      * 
      * On failure `error` will be set.
+     * @param file a URL valid in GIO of a file to give to the miner for processing
+     * @param cancellable a #GCancellable, or %NULL
      */
     index_file_for_process(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -109,16 +123,21 @@ class MinerManager {
      * When the operation is finished, `callback` will be called. You can
      * then call tracker_miner_manager_index_file_for_process_finish() to
      * get the result of the operation.
+     * @param file a URL valid in GIO of a file to give to the miner for processing
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     index_file_for_process_async(file: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a request to index a file. See tracker_miner_manager_index_file_for_process_async()
      * 
      * On failure `error` will be set.
+     * @param result a #GAsyncResult
      */
     index_file_for_process_finish(result: Gio.AsyncResult): boolean
     /**
      * Returns the miner's current activity.
+     * @param miner miner reference
      */
     is_active(miner: string): boolean
     /**
@@ -127,12 +146,15 @@ class MinerManager {
      * the pause reasons and the applications that asked for it. Both
      * arrays will have the same lengh, and will be sorted so the
      * application/pause reason pairs have the same index.
+     * @param miner miner reference
      */
     is_paused(miner: string): [ /* returnType */ boolean, /* applications */ string[] | null, /* reasons */ string[] | null ]
     /**
      * Asks `miner` to pause. a miner could be paused by
      * several reasons, and its activity won't be resumed
      * until all pause requests have been resumed.
+     * @param miner miner reference
+     * @param reason reason to pause
      */
     pause(miner: string, reason: string): [ /* returnType */ boolean, /* cookie */ number | null ]
     /**
@@ -145,6 +167,8 @@ class MinerManager {
      * NOTE: If you call g_object_unref() on the `manager` before you
      * intend to resume the pause and it finalizes, it will automatically
      * resume.
+     * @param miner miner reference
+     * @param reason reason to pause
      */
     pause_for_process(miner: string, reason: string): [ /* returnType */ boolean, /* cookie */ number | null ]
     /**
@@ -152,11 +176,14 @@ class MinerManager {
      * the `mimetypes` list.
      * 
      * On failure `error` will be set.
+     * @param mimetypes an array of mimetypes (E.G. "text/plain"). All items with a mimetype in that list will be reindexed.
      */
     reindex_by_mimetype(mimetypes: string[]): boolean
     /**
      * Tells `miner` to resume activity. The miner won't actually resume
      * operations until all pause requests have been resumed.
+     * @param miner miner reference
+     * @param cookie pause cookie
      */
     resume(miner: string, cookie: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -194,6 +221,10 @@ class MinerManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -204,6 +235,12 @@ class MinerManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -227,6 +264,7 @@ class MinerManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -246,11 +284,14 @@ class MinerManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -258,6 +299,8 @@ class MinerManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -275,6 +318,7 @@ class MinerManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -320,6 +364,7 @@ class MinerManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -363,15 +408,20 @@ class MinerManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -412,6 +462,7 @@ class MinerManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -446,6 +497,7 @@ class MinerManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -488,6 +540,7 @@ class MinerManager {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of TrackerControl-1.0.TrackerControl.MinerManager */
@@ -535,6 +588,7 @@ class MinerManager {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -554,6 +608,7 @@ class MinerManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -562,6 +617,7 @@ class MinerManager {
      * The ::miner-activated signal will be emitted whenever a miner
      * (referenced by `miner)` is activated (technically, this means
      * the miner has appeared in the session bus).
+     * @param miner miner reference
      */
     connect(sigName: "miner-activated", callback: (($obj: MinerManager, miner: string) => void)): number
     connect_after(sigName: "miner-activated", callback: (($obj: MinerManager, miner: string) => void)): number
@@ -570,6 +626,7 @@ class MinerManager {
      * The ::miner-deactivated signal will be emitted whenever a miner
      * (referenced by `miner)` is deactivated (technically, this means
      * the miner has disappeared from the session bus).
+     * @param miner miner reference
      */
     connect(sigName: "miner-deactivated", callback: (($obj: MinerManager, miner: string) => void)): number
     connect_after(sigName: "miner-deactivated", callback: (($obj: MinerManager, miner: string) => void)): number
@@ -577,6 +634,7 @@ class MinerManager {
     /**
      * The ::miner-paused signal will be emitted whenever a miner
      * (referenced by `miner)` is paused.
+     * @param miner miner reference
      */
     connect(sigName: "miner-paused", callback: (($obj: MinerManager, miner: string) => void)): number
     connect_after(sigName: "miner-paused", callback: (($obj: MinerManager, miner: string) => void)): number
@@ -584,6 +642,10 @@ class MinerManager {
     /**
      * The ::miner-progress signal is meant to report status/progress changes
      * in any tracked miner.
+     * @param miner miner reference
+     * @param status miner status
+     * @param progress miner progress, from 0 to 1
+     * @param remaining_time remaining processing time
      */
     connect(sigName: "miner-progress", callback: (($obj: MinerManager, miner: string, status: string, progress: number, remaining_time: number) => void)): number
     connect_after(sigName: "miner-progress", callback: (($obj: MinerManager, miner: string, status: string, progress: number, remaining_time: number) => void)): number
@@ -591,6 +653,7 @@ class MinerManager {
     /**
      * The ::miner-resumed signal will be emitted whenever a miner
      * (referenced by `miner)` is resumed.
+     * @param miner miner reference
      */
     connect(sigName: "miner-resumed", callback: (($obj: MinerManager, miner: string) => void)): number
     connect_after(sigName: "miner-resumed", callback: (($obj: MinerManager, miner: string) => void)): number
@@ -624,10 +687,13 @@ class MinerManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MinerManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MinerManager, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::auto-start", callback: (($obj: MinerManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::auto-start", callback: (($obj: MinerManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -643,18 +709,21 @@ class MinerManager {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
 }
 abstract class MinerManagerClass {
     /* Fields of TrackerControl-1.0.TrackerControl.MinerManagerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly miner_progress: (manager: MinerManager, miner_name: string, status: string, progress: number) => void
-    readonly miner_paused: (manager: MinerManager, miner_name: string) => void
-    readonly miner_resumed: (manager: MinerManager, miner_name: string) => void
-    readonly miner_activated: (manager: MinerManager, miner_name: string) => void
-    readonly miner_deactivated: (manager: MinerManager, miner_name: string) => void
+    parent_class: GObject.ObjectClass
+    miner_progress: (manager: MinerManager, miner_name: string, status: string, progress: number) => void
+    miner_paused: (manager: MinerManager, miner_name: string) => void
+    miner_resumed: (manager: MinerManager, miner_name: string) => void
+    miner_activated: (manager: MinerManager, miner_name: string) => void
+    miner_deactivated: (manager: MinerManager, miner_name: string) => void
     static name: string
 }
 }

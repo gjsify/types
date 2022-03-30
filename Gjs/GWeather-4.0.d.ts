@@ -538,7 +538,7 @@ class Info {
      */
     location: Location
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GWeather-4.0.GWeather.Info */
     abort(): void
     get_apparent(): string
@@ -618,6 +618,7 @@ class Info {
      * 
      * If the application uses #GApplication, then the application ID
      * will be automatically filled in.
+     * @param application_id the application ID to set
      */
     set_application_id(application_id: string): void
     /**
@@ -630,6 +631,7 @@ class Info {
      * URL to an online contact form which weather providers can use
      * to contact the application developer. Avoid using bug tracker
      * URLs which require creating accounts.
+     * @param contact_info the contact information for the application
      */
     set_contact_info(contact_info: string): void
     /**
@@ -639,6 +641,7 @@ class Info {
      * 
      * Online providers will not be enabled if the application ID is
      * not set to a valid value.
+     * @param providers a bitmask of #GWeatherProvider
      */
     set_enabled_providers(providers: Provider): void
     /**
@@ -646,6 +649,7 @@ class Info {
      * 
      * Note that this will clear any forecast or current conditions, and
      * you must call [method`GWeather`.Info.update] to obtain the new data.
+     * @param location a location for which weather is desired
      */
     set_location(location?: Location | null): void
     /**
@@ -692,6 +696,10 @@ class Info {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -702,6 +710,12 @@ class Info {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -725,6 +739,7 @@ class Info {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -744,11 +759,14 @@ class Info {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -756,6 +774,8 @@ class Info {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -773,6 +793,7 @@ class Info {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -818,6 +839,7 @@ class Info {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -861,15 +883,20 @@ class Info {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -910,6 +937,7 @@ class Info {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -944,6 +972,7 @@ class Info {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -963,6 +992,7 @@ class Info {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1004,6 +1034,7 @@ class Info {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Info, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Info, pspec: GObject.ParamSpec) => void)): number
@@ -1040,7 +1071,7 @@ interface Location_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Location {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GWeather-4.0.GWeather.Location */
     /**
      * This call undoes the effect of gweather_location_serialize(), that
@@ -1048,6 +1079,7 @@ class Location {
      * happens in the context of `world` (i.e, for a city or weather station,
      * the resulting location will be attached to a administrative division,
      * country and region as appropriate).
+     * @param serialized the #GVariant representing the #GWeatherLocation
      */
     deserialize(serialized: GLib.Variant): Location
     /**
@@ -1057,6 +1089,10 @@ class Location {
      * 
      * The given location must be at most a %GWEATHER_LOCATION_ADM1 location; this
      * restriction may be lifted in a future version.
+     * @param lat Latitude, in degrees
+     * @param lon Longitude, in degrees
+     * @param cancellable a cancellable instance
+     * @param callback callback function
      */
     detect_nearest_city(lat: number, lon: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1069,11 +1105,13 @@ class Location {
      * locations belong to different worlds (in which case care must be
      * taken when passing them GWeatherLocationEntry and GWeatherInfo), or
      * if one is them is detached it could have a custom name.
+     * @param two another #GWeatherLocation
      */
     equal(two: Location): boolean
     /**
      * Retrieves the country identified by the specified ISO 3166 code,
      * if present in the database.
+     * @param country_code a country code
      */
     find_by_country_code(country_code: string): Location
     /**
@@ -1084,6 +1122,7 @@ class Location {
      * not usually what you want.
      * 
      * See [method`GWeather`.Location.deserialize] to recover a stored location.
+     * @param station_code a 4 letter METAR code
      */
     find_by_station_code(station_code: string): Location | null
     /**
@@ -1095,6 +1134,8 @@ class Location {
      * 
      * Note that this function does not check if (`lat,` `lon)` fall inside
      * `loc,` or are in the same region and time zone as the return value.
+     * @param lat Latitude, in degrees
+     * @param lon Longitude, in degrees
      */
     find_nearest_city(lat: number, lon: number): Location
     /**
@@ -1107,11 +1148,15 @@ class Location {
      * 
      * `loc` must be at most a %GWEATHER_LOCATION_ADM1 location.
      * This restriction may be lifted in a future version.
+     * @param lat Latitude, in degrees
+     * @param lon Longitude, in degrees
+     * @param func a function to iterate   over the locations; the function must return `TRUE` to continue checking   for the location, and `FALSE` to filter the location out
      */
     find_nearest_city_full(lat: number, lon: number, func: FilterFunc | null): Location
     /**
      * Frees the array of timezones returned by
      * gweather_location_get_timezones().
+     * @param zones an array of timezones   returned by [method`GWeather`.Location.get_timezones]
      */
     free_timezones(zones: GLib.TimeZone[]): void
     /**
@@ -1160,6 +1205,7 @@ class Location {
     get_country_name(): string | null
     /**
      * Determines the distance in kilometers between `loc` and `loc2`.
+     * @param loc2 a second #GWeatherLocation
      */
     get_distance(loc2: Location): number
     /**
@@ -1236,6 +1282,7 @@ class Location {
      *        // Do something with child
      *     }
      * ```
+     * @param child the next child
      */
     next_child(child?: Location | null): Location | null
     /**
@@ -1285,6 +1332,10 @@ class Location {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1295,6 +1346,12 @@ class Location {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1318,6 +1375,7 @@ class Location {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1337,11 +1395,14 @@ class Location {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1349,6 +1410,8 @@ class Location {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1366,6 +1429,7 @@ class Location {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1411,6 +1475,7 @@ class Location {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1454,15 +1519,20 @@ class Location {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1503,6 +1573,7 @@ class Location {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1537,6 +1608,7 @@ class Location {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1556,6 +1628,7 @@ class Location {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1588,6 +1661,7 @@ class Location {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Location, pspec: GObject.ParamSpec) => void)): number
@@ -1603,6 +1677,7 @@ class Location {
     static new_detached(name: string, icao: string | null, latitude: number, longitude: number): Location
     /**
      * Fetches the location from `result`.
+     * @param result the result of the asynchronous operation
      */
     static detect_nearest_city_finish(result: Gio.AsyncResult): Location
     /**
@@ -1618,15 +1693,15 @@ class Conditions {
     /**
      * %TRUE if the struct contains usable data, %FALSE otherwise
      */
-    readonly significant: boolean
+    significant: boolean
     /**
      * the main weather phenomenon
      */
-    readonly phenomenon: ConditionPhenomenon
+    phenomenon: ConditionPhenomenon
     /**
      * a modifier for `phenomenon`
      */
-    readonly qualifier: ConditionQualifier
+    qualifier: ConditionQualifier
     /* Methods of GWeather-4.0.GWeather.Conditions */
     to_string(): string
     to_string_full(options: FormatOptions): string
@@ -1634,12 +1709,12 @@ class Conditions {
 }
 abstract class InfoClass {
     /* Fields of GWeather-4.0.GWeather.InfoClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class LocationClass {
     /* Fields of GWeather-4.0.GWeather.LocationClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
     type MoonLatitude = number

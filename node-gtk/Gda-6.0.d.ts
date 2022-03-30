@@ -1329,6 +1329,7 @@ class DataHandler {
     /* Methods of Gda-6.0.Gda.DataHandler */
     /**
      * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+     * @param type a #GType
      */
     acceptsGType(type: GObject.Type): boolean
     /**
@@ -1338,6 +1339,7 @@ class DataHandler {
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
+     * @param type a #GType
      */
     getSaneInitValue(type: GObject.Type): any | null
     /**
@@ -1349,6 +1351,7 @@ class DataHandler {
      * 
      * If the value is NULL or is of type GDA_TYPE_NULL,
      * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+     * @param value the value to be converted to a string, or %NULL
      */
     getSqlFromValue(value?: any | null): string
     /**
@@ -1357,6 +1360,7 @@ class DataHandler {
      * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
      * 
      * Note: the returned value will be in the current locale representation.
+     * @param value the value to be converted to a string, or %NULL
      */
     getStrFromValue(value?: any | null): string
     /**
@@ -1367,6 +1371,8 @@ class DataHandler {
      * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
      * if the `sql` string does not correspond to a valid SQL string for the requested type, then
      * the %NULL is returned.
+     * @param sql an SQL string, or %NULL
+     * @param type a GType
      */
     getValueFromSql(sql: string | null, type: GObject.Type): any
     /**
@@ -1379,6 +1385,8 @@ class DataHandler {
      * %NULL is returned.
      * 
      * Note: the `str` string must be in the current locale representation
+     * @param str a string or %NULL
+     * @param type a GType
      */
     getValueFromStr(str: string | null, type: GObject.Type): any
     static name: string
@@ -1389,6 +1397,7 @@ class DataHandler {
      * taking into account the locale).
      * 
      * The returned pointer is %NULL if there is no default data handler available for the `for_type` data type
+     * @param forType a #GType type
      */
     static getDefault(forType: GObject.Type): DataHandler
 }
@@ -1400,6 +1409,7 @@ class DataModel {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -1416,6 +1426,7 @@ class DataModel {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -1425,6 +1436,7 @@ class DataModel {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -1461,6 +1473,7 @@ class DataModel {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -1474,6 +1487,7 @@ class DataModel {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -1526,6 +1540,11 @@ class DataModel {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -1539,6 +1558,10 @@ class DataModel {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -1556,10 +1579,13 @@ class DataModel {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -1582,6 +1608,8 @@ class DataModel {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -1596,6 +1624,10 @@ class DataModel {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -1622,6 +1654,8 @@ class DataModel {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -1629,6 +1663,9 @@ class DataModel {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -1650,6 +1687,9 @@ class DataModel {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -1657,18 +1697,25 @@ class DataModel {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -1676,6 +1723,7 @@ class DataModel {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -1687,6 +1735,7 @@ class DataModel {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -1694,6 +1743,7 @@ class DataModel {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -1701,20 +1751,27 @@ class DataModel {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -1722,6 +1779,9 @@ class DataModel {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -1733,6 +1793,8 @@ class DataModel {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -1768,6 +1830,7 @@ class DataModel {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1776,6 +1839,7 @@ class DataModel {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1784,6 +1848,7 @@ class DataModel {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1798,10 +1863,12 @@ class DbBuildable {
     /* Methods of Gda-6.0.Gda.DbBuildable */
     /**
      * This method parse XML node and populate `self` object.
+     * @param node a node to parse
      */
     parseNode(node: libxml2.NodePtr): boolean
     /**
      * Write content from the `self` to the `node`
+     * @param node a node to write data in
      */
     writeNode(node: libxml2.NodePtr): boolean
     static name: string
@@ -1812,15 +1879,21 @@ class DdlModifiable {
      * This method executes CREATE operation. That is, #GdaDbTable, #GdaDbIndex, and #GdaDbView
      * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. #GdaDbColumn
      * implements ADD COLUMN operation as part of ALTER TABLE operation.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     create(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding DROP operation
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     drop(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
      * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     rename(cnc: Connection, userData?: object | null): boolean
     static name: string
@@ -1867,6 +1940,7 @@ class Provider {
     getDefDbmsType(cnc: Connection, gType: GObject.Type): string
     /**
      * This command should be called inmediately called after a INSERT SQL command
+     * @param cnc a #GdaConnection to get last inserted from
      */
     getLastInserted(cnc: Connection): Set
     getName(): string
@@ -1889,6 +1963,8 @@ class Provider {
     static name: string
 }
 class ProviderMeta {
+    /* Properties of Gda-6.0.Gda.ProviderMeta */
+    readonly connection: Connection
     /* Methods of Gda-6.0.Gda.ProviderMeta */
     btypes(): DataModel
     characterSet(chsetCatalog: string, chsetSchema: string, chsetNameN: string): Row
@@ -1915,10 +1991,14 @@ class ProviderMeta {
     enumsType(): DataModel
     /**
      * SQL is specific for current provider.
+     * @param sql a string with the SQL to execute on provider
+     * @param params a #GdaSet with all paramaters to use in query
      */
     executeQuery(sql: string, params?: Set | null): DataModel | null
     /**
      * SQL is specific for current provider.
+     * @param sql a string with the SQL to execute on provider
+     * @param params 
      */
     executeQueryRow(sql: string, params: Set): Row | null
     getConnection(): Connection
@@ -1961,12 +2041,13 @@ interface Batch_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Batch {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.Batch */
     /**
      * Add `stmt` to the list of statements managed by `batch`. A #GdaStatement object can be
      * added multiple times to a #GdaBatch object. The `batch` increases reference count for `stmt` and
      * the `stmt` instance can be freed using g_object_unref().
+     * @param stmt a statement to add to `batch'`s statements list
      */
     addStatement(stmt: Statement): void
     /**
@@ -1988,6 +2069,7 @@ class Batch {
     /**
      * Removes `stmt` from the list of statements managed by `batch`. If `stmt` is present several
      * times in `batch'`s statements' list, then only the first one is removed.
+     * @param stmt a statement to remove from `batch'`s statements list
      */
     removeStatement(stmt: Statement): void
     /**
@@ -2029,6 +2111,10 @@ class Batch {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2039,6 +2125,12 @@ class Batch {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2062,6 +2154,7 @@ class Batch {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2081,11 +2174,14 @@ class Batch {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2093,6 +2189,8 @@ class Batch {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2110,6 +2208,7 @@ class Batch {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2155,6 +2254,7 @@ class Batch {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2198,15 +2298,20 @@ class Batch {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2247,6 +2352,7 @@ class Batch {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2281,11 +2387,13 @@ class Batch {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.Batch */
     /**
      * Gets emitted whenever a #GdaStatement in the `batch` object changes
+     * @param changedStmt the statement which has been changed
      */
     connect(sigName: "changed", callback: ((changedStmt: GObject.Object) => void)): number
     on(sigName: "changed", callback: (changedStmt: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -2321,6 +2429,7 @@ class Batch {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2347,16 +2456,22 @@ interface BlobOp_ConstructProps extends GObject.Object_ConstructProps {
     connection?: Connection
 }
 class BlobOp {
+    /* Properties of Gda-6.0.Gda.BlobOp */
+    readonly connection: Connection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.BlobOp */
     getLength(): number
     /**
      * Reads a chunk of bytes from the BLOB accessible through `op` into `blob`.
+     * @param blob a #GdaBlob to read data to
+     * @param offset offset to read from the start of the blob (starts at 0)
+     * @param size maximum number of bytes to read.
      */
     read(blob: Blob, offset: number, size: number): number
     /**
      * Reads the whole contents of the blob manipulated by `op` into `blob`
+     * @param blob a #GdaBlob to read data to
      */
     readAll(blob: Blob): boolean
     /**
@@ -2365,11 +2480,14 @@ class BlobOp {
      * 
      * If `blob` has an associated #GdaBlobOp (ie. if `blob->`op is not %NULL) then the data to be written
      * using `op` is the data fetched using `blob->`op.
+     * @param blob a #GdaBlob which contains the data to write
+     * @param offset offset to write from the start of the blob (starts at 0)
      */
     write(blob: Blob, offset: number): number
     /**
      * Writes the whole contents of `blob` into the blob manipulated by `op`. If necessary the resulting
      * blob is truncated from its previous length.
+     * @param blob a #GdaBlob which contains the data to write
      */
     writeAll(blob: Blob): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -2407,6 +2525,10 @@ class BlobOp {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2417,6 +2539,12 @@ class BlobOp {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2440,6 +2568,7 @@ class BlobOp {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2459,11 +2588,14 @@ class BlobOp {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2471,6 +2603,8 @@ class BlobOp {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2488,6 +2622,7 @@ class BlobOp {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2533,6 +2668,7 @@ class BlobOp {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2576,15 +2712,20 @@ class BlobOp {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2625,6 +2766,7 @@ class BlobOp {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2659,6 +2801,7 @@ class BlobOp {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2690,12 +2833,18 @@ class BlobOp {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2720,7 +2869,7 @@ class Column {
     id: string
     name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.Column */
     /**
      * Creates a new #GdaColumn object from an existing one.
@@ -2739,35 +2888,43 @@ class Column {
     getPosition(): number
     /**
      * Sets the 'allow null' flag of the given column.
+     * @param allow whether the given column should allows null values or not.
      */
     setAllowNull(allow: boolean): void
     /**
      * Sets the auto increment flag for the given column.
+     * @param isAuto auto increment status.
      */
     setAutoIncrement(isAuto: boolean): void
     /**
      * Defines `column'`s database type
+     * @param dbmsType a string
      */
     setDbmsType(dbmsType: string): void
     /**
      * Sets `column'`s default #GValue.
+     * @param defaultValue default #GValue for the column
      */
     setDefaultValue(defaultValue?: any | null): void
     /**
      * Sets the column's description
+     * @param descr description.
      */
     setDescription(descr: string): void
     /**
      * Sets the type of `column` to `type`.
+     * @param type the new type of `column`.
      */
     setGType(type: GObject.Type): void
     /**
      * Sets the name of `column` to `name`.
+     * @param name the new name of `column`.
      */
     setName(name: string): void
     /**
      * Sets the position of the column refer to in the containing
      * data model.
+     * @param position the wanted position of the column in the containing data model.
      */
     setPosition(position: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2805,6 +2962,10 @@ class Column {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2815,6 +2976,12 @@ class Column {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2838,6 +3005,7 @@ class Column {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2857,11 +3025,14 @@ class Column {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2869,6 +3040,8 @@ class Column {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2886,6 +3059,7 @@ class Column {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2931,6 +3105,7 @@ class Column {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2974,15 +3149,20 @@ class Column {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3023,6 +3203,7 @@ class Column {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3057,11 +3238,14 @@ class Column {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.Column */
     /**
      * Gets emitted whenever `column'`s type has been changed
+     * @param oldType the column's previous type
+     * @param newType the column's new type
      */
     connect(sigName: "g-type-changed", callback: ((oldType: GObject.Type, newType: GObject.Type) => void)): number
     on(sigName: "g-type-changed", callback: (oldType: GObject.Type, newType: GObject.Type) => void, after?: boolean): NodeJS.EventEmitter
@@ -3070,6 +3254,7 @@ class Column {
     emit(sigName: "g-type-changed", oldType: GObject.Type, newType: GObject.Type): void
     /**
      * Gets emitted whenever `column'`s name has been changed
+     * @param oldName the column's previous name
      */
     connect(sigName: "name-changed", callback: ((oldName: string) => void)): number
     on(sigName: "name-changed", callback: (oldName: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3105,6 +3290,7 @@ class Column {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3162,7 +3348,7 @@ class Config {
      */
     userFilename: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3198,6 +3384,10 @@ class Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3208,6 +3398,12 @@ class Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3231,6 +3427,7 @@ class Config {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3250,11 +3447,14 @@ class Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3262,6 +3462,8 @@ class Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3279,6 +3481,7 @@ class Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3324,6 +3527,7 @@ class Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3367,15 +3571,20 @@ class Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3416,6 +3625,7 @@ class Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3450,11 +3660,13 @@ class Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.Config */
     /**
      * Gets emitted whenever a new DSN has been defined
+     * @param newDsn a #GdaDsnInfo
      */
     connect(sigName: "dsn-added", callback: ((newDsn?: object | null) => void)): number
     on(sigName: "dsn-added", callback: (newDsn?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -3463,6 +3675,7 @@ class Config {
     emit(sigName: "dsn-added", newDsn?: object | null): void
     /**
      * Gets emitted whenever a DSN's definition has been changed
+     * @param dsn a #GdaDsnInfo
      */
     connect(sigName: "dsn-changed", callback: ((dsn?: object | null) => void)): number
     on(sigName: "dsn-changed", callback: (dsn?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -3471,6 +3684,7 @@ class Config {
     emit(sigName: "dsn-changed", dsn?: object | null): void
     /**
      * Gets emitted whenever a DSN has been removed
+     * @param oldDsn a #GdaDsnInfo
      */
     connect(sigName: "dsn-removed", callback: ((oldDsn?: object | null) => void)): number
     on(sigName: "dsn-removed", callback: (oldDsn?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -3479,6 +3693,7 @@ class Config {
     emit(sigName: "dsn-removed", oldDsn?: object | null): void
     /**
      * Gets emitted whenever a DSN is about to be removed
+     * @param oldDsn a #GdaDsnInfo
      */
     connect(sigName: "dsn-to-be-removed", callback: ((oldDsn?: object | null) => void)): number
     on(sigName: "dsn-to-be-removed", callback: (oldDsn?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -3514,6 +3729,7 @@ class Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3550,11 +3766,13 @@ class Config {
      * Add or update a DSN from the definition in `info`.
      * 
      * This method may fail with a %GDA_CONFIG_ERROR domain error (see the #GdaConfigError error codes).
+     * @param info a pointer to a filled GdaDsnInfo structure
      */
     static defineDsn(info: DsnInfo): boolean
     /**
      * Tells if the data source identified as `dsn_name` needs any authentication. If a &lt;username&gt;
      * and optionally a &lt;password&gt; are specified, they are ignored.
+     * @param dsnName the name of a DSN, in the "[&lt;username&gt;[:&lt;password&gt;]`]`&lt;DSN&gt;" format
      */
     static dsnNeedsAuthentication(dsnName: string): boolean
     static errorQuark(): GLib.Quark
@@ -3569,14 +3787,17 @@ class Config {
      * `dsn_name'`s format is "[&lt;username&gt;[:&lt;password&gt;]`]`&lt;DSN&gt;" (if &lt;username&gt;
      * and optionally &lt;password&gt; are provided, they are ignored). Also see the gda_dsn_split() utility
      * function.
+     * @param dsnName the name of the DSN to look for
      */
     static getDsnInfo(dsnName: string): DsnInfo
     /**
      * Get a pointer to a read-only #GdaDsnInfo at the `index` position
+     * @param index an index
      */
     static getDsnInfoAtIndex(index: number): DsnInfo
     /**
      * Get the index (starting at 0) of the DSN named `dsn_name`
+     * @param dsnName a DSN
      */
     static getDsnInfoIndex(dsnName: string): number
     /**
@@ -3589,10 +3810,12 @@ class Config {
      * returned object.
      * 
      * This method may fail with a %GDA_CONFIG_ERROR domain error (see the #GdaConfigError error codes).
+     * @param providerName a database provider
      */
     static getProvider(providerName: string): ServerProvider
     /**
      * Get some information about the a database provider (adapter) named
+     * @param providerName a database provider
      */
     static getProviderInfo(providerName: string): ProviderInfo
     /**
@@ -3626,6 +3849,7 @@ class Config {
      * Remove the DSN named `dsn_name`.
      * 
      * This method may fail with a %GDA_CONFIG_ERROR domain error (see the #GdaConfigError error codes).
+     * @param dsnName the name of the DSN to remove
      */
     static removeDsn(dsnName: string): boolean
     static $gtype: GObject.Type
@@ -3680,7 +3904,7 @@ class Connection {
     metaStore: MetaStore
     provider: ServerProvider
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.Connection */
     /**
      * Adds an event to the given connection. This function is usually
@@ -3693,6 +3917,7 @@ class Connection {
      * informed of events.
      * 
      * WARNING: the reference to the `event` object is stolen by this function!
+     * @param event is stored internally, so you don't need to unref it.
      */
     addEvent(event: ConnectionEvent): void
     /**
@@ -3701,10 +3926,13 @@ class Connection {
      * 
      * If `gda_stmt` changes or is destroyed, the the association will be lost and the connection will lose the
      * reference it has on `prepared_stmt`.
+     * @param gdaStmt a #GdaStatement object
+     * @param preparedStmt a prepared statement object (as a #GdaPStmt object, or more likely a descendant)
      */
     addPreparedStatement(gdaStmt: Statement, preparedStmt: PStmt): void
     /**
      * Adds a SAVEPOINT named `name`.
+     * @param name name of the savepoint to add
      */
     addSavepoint(name?: string | null): boolean
     /**
@@ -3715,6 +3943,9 @@ class Connection {
      * If one of the statement fails, then none of the subsequent statement will be executed, and the method returns
      * the list of #GObject created by the correct execution of the previous statements. If a transaction is required,
      * then it should be started before calling this method.
+     * @param batch a #GdaBatch object which contains all the statements to execute
+     * @param params a #GdaSet object (which can be obtained using gda_batch_get_parameters()), or %NULL
+     * @param modelUsage specifies how the returned data model(s) will be used, as a #GdaStatementModelUsage enum
      */
     batchExecute(batch: Batch, params: Set | null, modelUsage: StatementModelUsage): GObject.Object[]
     /**
@@ -3722,6 +3953,8 @@ class Connection {
      * 
      * Before starting a transaction, you can check whether the underlying
      * provider does support transactions or not by using the gda_connection_supports_feature() function.
+     * @param name the name of the transation to start, or %NULL
+     * @param level the requested transaction level (use %GDA_TRANSACTION_ISOLATION_SERVER_DEFAULT to apply the server default)
      */
     beginTransaction(name: string | null, level: TransactionIsolation): boolean
     /**
@@ -3736,6 +3969,7 @@ class Connection {
     /**
      * Commits the given transaction to the backend database. You need to call
      * gda_connection_begin_transaction() first.
+     * @param name the name of the transation to commit, or %NULL
      */
     commitTransaction(name?: string | null): boolean
     /**
@@ -3751,6 +3985,8 @@ class Connection {
      * Creates a new #GdaServerOperation object which can be modified in order
      * to perform the type type of action. It is a wrapper around the gda_server_provider_create_operation()
      * method.
+     * @param type the type of operation requested
+     * @param options an optional list of parameters
      */
     createOperation(type: ServerOperationType, options?: Set | null): ServerOperation
     /**
@@ -3763,6 +3999,7 @@ class Connection {
     /**
      * Removes any prepared statement associated to `gda_stmt` in `cnc:` this undoes what
      * gda_connection_add_prepared_statement() does.
+     * @param gdaStmt a #GdaStatement object
      */
     delPreparedStatement(gdaStmt: Statement): void
     /**
@@ -3812,19 +4049,25 @@ class Connection {
      * 
      * ```
      * 
+     * @param table the table's name with the row's values to be updated
+     * @param conditionColumnName the name of the column to used in the WHERE condition clause
+     * @param conditionValue the `condition_column_type'`s GType
      */
     deleteRowFromTable(table: string, conditionColumnName: string, conditionValue: any): boolean
     /**
      * Delete the SAVEPOINT named `name` when not used anymore.
+     * @param name name of the savepoint to delete
      */
     deleteSavepoint(name?: string | null): boolean
     /**
      * This is a convenience function to execute a SQL command over the opened connection. For the
      * returned value, see gda_connection_statement_execute_non_select()'s documentation.
+     * @param sql a query statement that must not begin with "SELECT"
      */
     executeNonSelectCommand(sql: string): number
     /**
      * Execute a SQL SELECT command over an opened connection.
+     * @param sql a query statement that must begin with "SELECT"
      */
     executeSelectCommand(sql: string): DataModel
     /**
@@ -3858,6 +4101,7 @@ class Connection {
      * 
      * If no main context has been defined, then some function calls (for example connection opening) may block until the
      * operation has finished.
+     * @param thread the #GThread in which `context` will be used, or %NULL (for the current thread)
      */
     getMainContext(thread?: GLib.Thread | null): GLib.MainContext
     /**
@@ -3866,6 +4110,8 @@ class Connection {
     getMetaStore(): MetaStore
     /**
      * see #gda_connection_get_meta_store_data
+     * @param metaType describes which data to get.
+     * @param filters a #GList of #GdaHolder objects
      */
     getMetaStoreData(metaType: ConnectionMetaType, filters: Holder[]): DataModel
     /**
@@ -3875,6 +4121,7 @@ class Connection {
     /**
      * Retrieves a pointer to an object representing a prepared statement for `gda_stmt` within `cnc`. The
      * association must have been done using gda_connection_add_prepared_statement().
+     * @param gdaStmt a #GdaStatement object
      */
     getPreparedStatement(gdaStmt: Statement): PStmt
     /**
@@ -3904,11 +4151,15 @@ class Connection {
      * provided. It internally relies on variables which makes it immune to SQL injection problems.
      * 
      * The equivalent SQL command is: INSERT INTO &lt;table&gt; (&lt;column_name&gt; [,...]) VALUES (&lt;column_name&gt; = &lt;new_value&gt; [,...]).
+     * @param table table's name to insert into
+     * @param colNames a list of column names (as const gchar *)
+     * @param values a list of values (as #GValue)
      */
     insertRowIntoTableV(table: string, colNames: string[], values: any[]): boolean
     /**
      * Internal function to be called by database providers to force a transaction status
      * change.
+     * @param newstate the new state
      */
     internalChangeTransactionState(newstate: TransactionStatusState): void
     /**
@@ -3927,6 +4178,8 @@ class Connection {
      * Note: this function should not be called if gda_connection_internal_statement_executed()
      * has already been called because a statement's execution was necessary to perform
      * the action.
+     * @param parentTrans name of the parent transaction, or %NULL
+     * @param svpName savepoint's name, or %NULL
      */
     internalSavepointAdded(parentTrans: string | null, svpName: string): void
     /**
@@ -3936,6 +4189,7 @@ class Connection {
      * Note: this function should not be called if gda_connection_internal_statement_executed()
      * has already been called because a statement's execution was necessary to perform
      * the action.
+     * @param svpName savepoint's name, or %NULL
      */
     internalSavepointRemoved(svpName?: string | null): void
     /**
@@ -3945,6 +4199,7 @@ class Connection {
      * Note: this function should not be called if gda_connection_internal_statement_executed()
      * has already been called because a statement's execution was necessary to perform
      * the action.
+     * @param svpName savepoint's name, or %NULL
      */
     internalSavepointRolledback(svpName?: string | null): void
     /**
@@ -3952,11 +4207,16 @@ class Connection {
      * set opaque `data,` you'll have to do it yourself.
      * 
      * Note: `destroy_func,` needs to free the memory associated to `data,` if necessary.
+     * @param data a #GdaServerProviderConnectionData, which can be extended as needed by the provider for which `cnc` is opened
+     * @param destroyFunc function to call when the connection closes and `data` needs to be destroyed
      */
     internalSetProviderData(data: ServerProviderConnectionData, destroyFunc: GLib.DestroyNotify): void
     /**
      * Internal functions to be called by database providers when a statement has been executed
      * to keep track of the transaction status of the connection
+     * @param stmt a #GdaStatement which has been executed
+     * @param params execution's parameters
+     * @param error a #GdaConnectionEvent if the execution failed, or %NULL
      */
     internalStatementExecuted(stmt: Statement, params: Set | null, error: ConnectionEvent): void
     /**
@@ -3966,6 +4226,7 @@ class Connection {
      * Note: this function should not be called if gda_connection_internal_statement_executed()
      * has already been called because a statement's execution was necessary to perform
      * the action.
+     * @param transName transaction's name, or %NULL
      */
     internalTransactionCommitted(transName?: string | null): void
     /**
@@ -3975,6 +4236,7 @@ class Connection {
      * Note: this function should not be called if gda_connection_internal_statement_executed()
      * has already been called because a statement's execution was necessary to perform
      * the action.
+     * @param transName transaction's name, or %NULL
      */
     internalTransactionRolledback(transName?: string | null): void
     /**
@@ -3984,6 +4246,9 @@ class Connection {
      * Note: this function should not be called if gda_connection_internal_statement_executed()
      * has already been called because a statement's execution was necessary to perform
      * the action.
+     * @param parentTrans name of the parent transaction, or %NULL
+     * @param transName transaction's name, or %NULL
+     * @param isolLevel isolation level.
      */
     internalTransactionStarted(parentTrans: string | null, transName: string, isolLevel: TransactionIsolation): void
     /**
@@ -4005,27 +4270,33 @@ class Connection {
      * 
      * Note: `callback` function will be called when processing events from the #GMainContext defined by
      * gda_connection_set_main_context(), for example when there is a main loop for that main context.
+     * @param callback a #GdaConnectionOpenFunc which will be called after the connection has been opened (of failed to open)
      */
     openAsync(callback: ConnectionOpenFunc): number
     /**
      * This method is similar to gda_server_operation_get_value_at(), but for SQL identifiers: a new string
      * is returned instead of a #GValue. Also the returned string is assumed to represents an SQL identifier
      * and will correctly be quoted to be used with `cnc`.
+     * @param op a #GdaServerOperation object
+     * @param path a complete path to a node (starting with "/")
      */
     operationGetSqlIdentifierAtPath(op: ServerOperation, path: string): string | null
     /**
      * This function helps to parse a SQL string which uses parameters and store them at `params`.
+     * @param sql an SQL command to parse, not %NULL
      */
     parseSqlString(sql: string): [ /* returnType */ Statement, /* params */ Set | null ]
     /**
      * Performs the operation described by `op` (which should have been created using
      * gda_connection_create_operation()). It is a wrapper around the gda_server_provider_perform_operation()
      * method.
+     * @param op a #GdaServerOperation object
      */
     performOperation(op: ServerOperation): boolean
     /**
      * Use this method to get a pointer to the next available connection event which can then be customized
      * and taken into account using gda_connection_add_event().
+     * @param type a #GdaConnectionEventType
      */
     pointAvailableEvent(type: ConnectionEventType): ConnectionEvent
     /**
@@ -4051,11 +4322,14 @@ class Connection {
      * to the operation. When finished call #gda_server_operation_perform_create_table
      * or #gda_server_provider_perform_operation
      * in order to execute the operation.
+     * @param tableName name of the table to create
+     * @param arguments_ list of arguments as #GdaServerOperationPrepareCreateTableArg containing column's name, column's #GType and a #GdaServerOperationCreateTableFlag flag
      */
     prepareOperationCreateTable(tableName: string, arguments_: ServerOperationCreateTableArg[]): ServerOperation | null
     /**
      * This is just a convenient function to create a #GdaServerOperation to drop a
      * table in an opened connection.
+     * @param tableName name of the table to drop
      */
     prepareOperationDropTable(tableName: string): ServerOperation | null
     /**
@@ -4074,6 +4348,7 @@ class Connection {
      * 
      * One can safely pass an already quoted `id` to this method, either with quoting characters allowed by `cnc` or using the
      * double quote (") character.
+     * @param id an SQL identifier
      */
     quoteSqlIdentifier(id: string): string
     /**
@@ -4081,10 +4356,15 @@ class Connection {
      * method, it is recommended to be within a transaction.
      * 
      * If `error` is not %NULL and `stop_on_error` is %FALSE, then it may contain the last error which occurred.
+     * @param rstmt a #GdaRepetitiveStatement object
+     * @param modelUsage specifies how the returned data model will be used as a #GdaStatementModelUsage enum
+     * @param colTypes an array of GType to request each returned GdaDataModel's column's GType, see gda_connection_statement_execute_select_full() for more information
+     * @param stopOnError set to TRUE if the method has to stop on the first error.
      */
     repetitiveStatementExecute(rstmt: RepetitiveStatement, modelUsage: StatementModelUsage, colTypes: GObject.Type[] | null, stopOnError: boolean): GObject.Object[]
     /**
      * Rollback all the modifications made after the SAVEPOINT named `name`.
+     * @param name name of the savepoint to rollback to
      */
     rollbackSavepoint(name?: string | null): boolean
     /**
@@ -4092,6 +4372,7 @@ class Connection {
      * made to the underlying data source since the last call to
      * #gda_connection_begin_transaction() or #gda_connection_commit_transaction()
      * will be discarded.
+     * @param name the name of the transation to commit, or %NULL
      */
     rollbackTransaction(name?: string | null): boolean
     /**
@@ -4115,6 +4396,8 @@ class Connection {
      * 
      * If `context` is %NULL, then potentially blocking operation will actually block any event from being processed
      * while the blocking operation is being performed.
+     * @param thread the #GThread in which `context` will be used, or %NULL (for the current thread)
+     * @param context a #GMainContext, or %NULL
      */
     setMainContext(thread?: GLib.Thread | null, context?: GLib.MainContext | null): void
     /**
@@ -4175,6 +4458,9 @@ class Connection {
      * 
      * Also see the <link linkend="limitations">provider's limitations</link>, and the
      * <link linkend="data-select">Advanced GdaDataSelect usage</link> sections.
+     * @param stmt a #GdaStatement object
+     * @param params a #GdaSet object (which can be obtained using gda_statement_get_parameters()), or %NULL
+     * @param modelUsage in the case where `stmt` is a SELECT statement, specifies how the returned data model will be used
      */
     statementExecute(stmt: Statement, params: Set | null, modelUsage: StatementModelUsage): [ /* returnType */ GObject.Object, /* lastInsertRow */ Set | null ]
     /**
@@ -4189,6 +4475,8 @@ class Connection {
      * about the `params` list of parameters.
      * 
      * See gda_connection_statement_execute() form more information about `last_insert_row`.
+     * @param stmt a #GdaStatement object.
+     * @param params a #GdaSet object (which can be obtained using gda_statement_get_parameters()), or %NULL
      */
     statementExecuteNonSelect(stmt: Statement, params?: Set | null): [ /* returnType */ number, /* lastInsertRow */ Set | null ]
     /**
@@ -4202,6 +4490,8 @@ class Connection {
      * 
      * See the documentation of the gda_connection_statement_execute() for information
      * about the `params` list of parameters.
+     * @param stmt a #GdaStatement object.
+     * @param params a #GdaSet object (which can be obtained using gda_statement_get_parameters()), or %NULL
      */
     statementExecuteSelect(stmt: Statement, params?: Set | null): DataModel
     /**
@@ -4215,6 +4505,10 @@ class Connection {
      * 
      * See the documentation of the gda_connection_statement_execute() for information
      * about the `params` list of parameters.
+     * @param stmt a #GdaStatement object.
+     * @param params a #GdaSet object (which can be obtained using gda_statement_get_parameters()), or %NULL
+     * @param modelUsage specifies how the returned data model will be used as a #GdaStatementModelUsage enum
+     * @param colTypes an array of GType to request each returned #GdaDataModel's column's GType, terminated with the G_TYPE_NONE value. Any value left to 0 will make the database provider determine the real GType. `col_types` can also be %NULL if no column type is specified.
      */
     statementExecuteSelectFull(stmt: Statement, params: Set | null, modelUsage: StatementModelUsage, colTypes?: GObject.Type[] | null): DataModel
     /**
@@ -4228,14 +4522,19 @@ class Connection {
      * gda_connection_statement_execute() does not fail (this will usually be the case with statements such as
      * <![CDATA["SELECT * FROM ##tablename::string"]]> because database usually don't allow variables to be used in place of a
      * table name).
+     * @param stmt a #GdaStatement object
      */
     statementPrepare(stmt: Statement): boolean
     /**
      * Renders `stmt` as an SQL statement, adapted to the SQL dialect used by `cnc`
+     * @param stmt a #GdaStatement object
+     * @param params a #GdaSet object (which can be obtained using gda_statement_get_parameters()), or %NULL
+     * @param flags SQL rendering flags, as #GdaStatementSqlFlag OR'ed values
      */
     statementToSql(stmt: Statement, params: Set | null, flags: StatementSqlFlag): [ /* returnType */ string, /* paramsUsed */ Holder[] | null ]
     /**
      * Asks the underlying provider for if a specific feature is supported.
+     * @param feature feature to ask for.
      */
     supportsFeature(feature: ConnectionFeature): boolean
     /**
@@ -4278,6 +4577,7 @@ class Connection {
      * 
      * For more information, see the <link linkend="information_schema">Database structure</link> section, and
      * the <link linkend="howto-meta2">Update the meta data about a table</link> howto.
+     * @param context description of which part of `cnc'`s associated #GdaMetaStore should be updated, or %NULL
      */
     updateMetaStore(context?: MetaContext | null): boolean
     /**
@@ -4287,10 +4587,16 @@ class Connection {
      * provided. It internally relies on variables which makes it immune to SQL injection problems.
      * 
      * The equivalent SQL command is: UPDATE &lt;table&gt; SET &lt;column_name&gt; = &lt;new_value&gt; [,...] WHERE &lt;condition_column_name&gt; = &lt;condition_value&gt;.
+     * @param table the table's name with the row's values to be updated
+     * @param conditionColumnName the name of the column to used in the WHERE condition clause
+     * @param conditionValue the `condition_column_type'`s GType
+     * @param colNames a list of column names (as const gchar *)
+     * @param values a list of values (as #GValue)
      */
     updateRowInTableV(table: string, conditionColumnName: string, conditionValue: any, colNames: string[], values: any[]): boolean
     /**
      * Produces a fully quoted and escaped string from a GValue
+     * @param from #GValue to convert from
      */
     valueToSqlString(from: any): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -4328,6 +4634,10 @@ class Connection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4338,6 +4648,12 @@ class Connection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4361,6 +4677,7 @@ class Connection {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4380,11 +4697,14 @@ class Connection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4392,6 +4712,8 @@ class Connection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4409,6 +4731,7 @@ class Connection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4454,6 +4777,7 @@ class Connection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4497,15 +4821,20 @@ class Connection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4546,6 +4875,7 @@ class Connection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4580,6 +4910,7 @@ class Connection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.Lockable */
@@ -4624,6 +4955,7 @@ class Connection {
     /**
      * Gets emitted whenever a connection event occurs. Check the nature of `event` to
      * see if it's an error or a simple notification
+     * @param event a #GdaConnectionEvent object
      */
     connect(sigName: "error", callback: ((event: ConnectionEvent) => void)): number
     on(sigName: "error", callback: (event: ConnectionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -4641,6 +4973,7 @@ class Connection {
     /**
      * Gets emitted when the `cnc'`s status has changed (usually when a the connection is being used to execute
      * a statement)
+     * @param status the new connection status
      */
     connect(sigName: "status-changed", callback: ((status: ConnectionStatus) => void)): number
     on(sigName: "status-changed", callback: (status: ConnectionStatus) => void, after?: boolean): NodeJS.EventEmitter
@@ -4685,6 +5018,7 @@ class Connection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4749,27 +5083,41 @@ class Connection {
     /**
      * Retreive a pointer to the #GdaWorker used internally by the connection. This function is reserved to
      * database provider's implementation and should not be used otherwise.
+     * @param data a #GdaServerProviderConnectionData, or %NULL
      */
     static internalGetWorker(data?: ServerProviderConnectionData | null): Worker
     /**
      * This function creates a connection and opens it, using a DSN. If opening fails, then no connection is created.
      * See gda_connection_new_from_dsn() for more information.
+     * @param dsn data sourcename.
+     * @param authString authentication string, or %NULL
+     * @param options options for the connection (see #GdaConnectionOptions).
      */
     static openFromDsn(dsn: DsnInfo, authString: string | null, options: ConnectionOptions): Connection
     /**
      * This function creates a connection and opens it, using a DSN name. If opening fails, then no connection is created. The named DSN should be available.
      * See gda_connection_new_from_dsn_name() for more information.
+     * @param dsnName data source name.
+     * @param authString authentication string, or %NULL
+     * @param options options for the connection (see #GdaConnectionOptions).
      */
     static openFromDsnName(dsnName: string, authString: string | null, options: ConnectionOptions): Connection
     /**
      * This function creates a connection and opens it, using a connection string. If opening fails, then no connection is created.
      * See gda_connection_new_from_string() for more information.
+     * @param providerName provider ID to connect to, or %NULL
+     * @param cncString connection string.
+     * @param authString authentication string, or %NULL
+     * @param options options for the connection (see #GdaConnectionOptions).
      */
     static openFromString(providerName: string | null, cncString: string, authString: string | null, options: ConnectionOptions): Connection
     /**
      * Opens an SQLite connection even if the SQLite provider is not installed,
      * to be used by database providers which need a temporary database to store
      * some information.
+     * @param directory the directory the database file will be in, or %NULL for the default TMP directory
+     * @param filename the database file name
+     * @param autoUnlink if %TRUE, then the database file will be removed afterwards
      */
     static openSqlite(directory: string | null, filename: string, autoUnlink: boolean): Connection
     /**
@@ -4797,6 +5145,7 @@ class Connection {
      * out_provider: "PostgreSQL"
      * out_username: "meme"
      * out_password: "pass"]]></programlisting>
+     * @param string a string in the "[&lt;provider&gt;://][&lt;username&gt;[:&lt;password&gt;]`]`&lt;connection_params&gt;" form
      */
     static stringSplit(string: string): [ /* outCncParams */ string, /* outProvider */ string, /* outUsername */ string, /* outPassword */ string ]
     static $gtype: GObject.Type
@@ -4809,7 +5158,7 @@ class ConnectionEvent {
     /* Properties of Gda-6.0.Gda.ConnectionEvent */
     type: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.ConnectionEvent */
     getCode(): number
     /**
@@ -4838,15 +5187,18 @@ class ConnectionEvent {
      * gda_connection_event_get_gda_code() instead.
      * 
      * This function should not be called directly
+     * @param code a code.
      */
     setCode(code: number): void
     /**
      * Sets `event'`s `description`. This function should not be called directly.
+     * @param description a description, or %NULL (to unset current description if any)
      */
     setDescription(description?: string | null): void
     /**
      * Sets `event'`s severity (from a simple notice to a fatal event)
      * This function should not be called directly.
+     * @param type the severity of the event
      */
     setEventType(type: ConnectionEventType): void
     /**
@@ -4855,16 +5207,19 @@ class ConnectionEvent {
      * use gda_connection_event_get_code() or gda_connection_event_get_sqlstate() instead.
      * 
      * This function should not be called directly
+     * @param code a code
      */
     setGdaCode(code: ConnectionEventCode): void
     /**
      * Sets `event'`s `source;` this function should not be called directly
+     * @param source a source.
      */
     setSource(source: string): void
     /**
      * Changes the SQLSTATE code of `event,` this function should not be called directly
      * 
      * Sets `event'`s SQL state.
+     * @param sqlstate SQL state.
      */
     setSqlstate(sqlstate: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4902,6 +5257,10 @@ class ConnectionEvent {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4912,6 +5271,12 @@ class ConnectionEvent {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4935,6 +5300,7 @@ class ConnectionEvent {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4954,11 +5320,14 @@ class ConnectionEvent {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4966,6 +5335,8 @@ class ConnectionEvent {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4983,6 +5354,7 @@ class ConnectionEvent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5028,6 +5400,7 @@ class ConnectionEvent {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5071,15 +5444,20 @@ class ConnectionEvent {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5120,6 +5498,7 @@ class ConnectionEvent {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5154,6 +5533,7 @@ class ConnectionEvent {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5185,6 +5565,7 @@ class ConnectionEvent {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5213,8 +5594,10 @@ interface DataAccessWrapper_ConstructProps extends GObject.Object_ConstructProps
     model?: DataModel
 }
 class DataAccessWrapper {
+    /* Properties of Gda-6.0.Gda.DataAccessWrapper */
+    readonly model: DataModel
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataAccessWrapper */
     /**
      * `wrapper` will report as many columns as `mapping_size,` and for each value at position 'i' in `mapping,`
@@ -5233,6 +5616,7 @@ class DataAccessWrapper {
      * 
      * If the mapping is applied, then any existing iterator will be invalid, and `wrapper` is reset as if it
      * had just been created.
+     * @param mapping an array of #gint which represents the mapping between `wrapper'`s columns and the columns of the wrapped data model
      */
     setMapping(mapping: number[] | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -5270,6 +5654,10 @@ class DataAccessWrapper {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5280,6 +5668,12 @@ class DataAccessWrapper {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5303,6 +5697,7 @@ class DataAccessWrapper {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5322,11 +5717,14 @@ class DataAccessWrapper {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5334,6 +5732,8 @@ class DataAccessWrapper {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5351,6 +5751,7 @@ class DataAccessWrapper {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5396,6 +5797,7 @@ class DataAccessWrapper {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5439,15 +5841,20 @@ class DataAccessWrapper {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5488,6 +5895,7 @@ class DataAccessWrapper {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5522,6 +5930,7 @@ class DataAccessWrapper {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataModel */
@@ -5531,6 +5940,7 @@ class DataAccessWrapper {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -5547,6 +5957,7 @@ class DataAccessWrapper {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -5556,6 +5967,7 @@ class DataAccessWrapper {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -5592,6 +6004,7 @@ class DataAccessWrapper {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -5605,6 +6018,7 @@ class DataAccessWrapper {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -5657,6 +6071,11 @@ class DataAccessWrapper {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -5670,6 +6089,10 @@ class DataAccessWrapper {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -5687,10 +6110,13 @@ class DataAccessWrapper {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -5713,6 +6139,8 @@ class DataAccessWrapper {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -5727,6 +6155,10 @@ class DataAccessWrapper {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -5753,6 +6185,8 @@ class DataAccessWrapper {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -5760,6 +6194,9 @@ class DataAccessWrapper {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -5781,6 +6218,9 @@ class DataAccessWrapper {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -5788,18 +6228,25 @@ class DataAccessWrapper {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -5807,6 +6254,7 @@ class DataAccessWrapper {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -5818,6 +6266,7 @@ class DataAccessWrapper {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -5825,6 +6274,7 @@ class DataAccessWrapper {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -5832,20 +6282,27 @@ class DataAccessWrapper {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -5853,6 +6310,9 @@ class DataAccessWrapper {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -5864,6 +6324,8 @@ class DataAccessWrapper {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -5899,6 +6361,7 @@ class DataAccessWrapper {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5934,6 +6397,7 @@ class DataAccessWrapper {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5942,6 +6406,7 @@ class DataAccessWrapper {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5950,12 +6415,18 @@ class DataAccessWrapper {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "row-updated", callback: (row: number) => void): NodeJS.EventEmitter
     emit(sigName: "row-updated", row: number): void
+    connect(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5980,7 +6451,7 @@ class DataComparator {
     newModel: DataModel
     oldModel: DataModel
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataComparator */
     /**
      * Actually computes the differences between the data models for which `comp` is defined.
@@ -5992,6 +6463,7 @@ class DataComparator {
     computeDiff(): boolean
     /**
      * Get a pointer to the #GdaDiff structure representing the difference which number is `pos`
+     * @param pos the requested difference number (starting at 0)
      */
     getDiff(pos: number): Diff
     /**
@@ -6001,6 +6473,7 @@ class DataComparator {
     /**
      * Defines the columns which will be used as a key when searching data. This is not mandatory but
      * will speed things up as less data will be processed.
+     * @param colNumbers an array of `nb_cols` values
      */
     setKeyColumns(colNumbers: number[]): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6038,6 +6511,10 @@ class DataComparator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6048,6 +6525,12 @@ class DataComparator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6071,6 +6554,7 @@ class DataComparator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6090,11 +6574,14 @@ class DataComparator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6102,6 +6589,8 @@ class DataComparator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6119,6 +6608,7 @@ class DataComparator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6164,6 +6654,7 @@ class DataComparator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6207,15 +6698,20 @@ class DataComparator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6256,6 +6752,7 @@ class DataComparator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6290,6 +6787,7 @@ class DataComparator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.DataComparator */
@@ -6327,6 +6825,7 @@ class DataComparator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6368,7 +6867,7 @@ class DataModelArray {
     nColumns: number
     readOnly: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataModelArray */
     /**
      * Frees all the rows in `model`.
@@ -6376,6 +6875,7 @@ class DataModelArray {
     clear(): void
     /**
      * Get a pointer to a row in `model`
+     * @param row row number (starting from 0)
      */
     getRow(row: number): Row
     /**
@@ -6383,6 +6883,7 @@ class DataModelArray {
      * `cols` must be greated than or equal to 0.
      * 
      * Also clears `model'`s contents.
+     * @param cols number of columns for rows this data model should use.
      */
     setNColumns(cols: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6420,6 +6921,10 @@ class DataModelArray {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6430,6 +6935,12 @@ class DataModelArray {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6453,6 +6964,7 @@ class DataModelArray {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6472,11 +6984,14 @@ class DataModelArray {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6484,6 +6999,8 @@ class DataModelArray {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6501,6 +7018,7 @@ class DataModelArray {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6546,6 +7064,7 @@ class DataModelArray {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6589,15 +7108,20 @@ class DataModelArray {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6638,6 +7162,7 @@ class DataModelArray {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6672,6 +7197,7 @@ class DataModelArray {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataModel */
@@ -6681,6 +7207,7 @@ class DataModelArray {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -6697,6 +7224,7 @@ class DataModelArray {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -6706,6 +7234,7 @@ class DataModelArray {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -6742,6 +7271,7 @@ class DataModelArray {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -6755,6 +7285,7 @@ class DataModelArray {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -6807,6 +7338,11 @@ class DataModelArray {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -6820,6 +7356,10 @@ class DataModelArray {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -6837,10 +7377,13 @@ class DataModelArray {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -6863,6 +7406,8 @@ class DataModelArray {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -6877,6 +7422,10 @@ class DataModelArray {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -6903,6 +7452,8 @@ class DataModelArray {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -6910,6 +7461,9 @@ class DataModelArray {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -6931,6 +7485,9 @@ class DataModelArray {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -6938,18 +7495,25 @@ class DataModelArray {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -6957,6 +7521,7 @@ class DataModelArray {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -6968,6 +7533,7 @@ class DataModelArray {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -6975,6 +7541,7 @@ class DataModelArray {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -6982,20 +7549,27 @@ class DataModelArray {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -7003,6 +7577,9 @@ class DataModelArray {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -7014,6 +7591,8 @@ class DataModelArray {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -7049,6 +7628,7 @@ class DataModelArray {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7084,6 +7664,7 @@ class DataModelArray {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7092,6 +7673,7 @@ class DataModelArray {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7100,6 +7682,7 @@ class DataModelArray {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7130,6 +7713,8 @@ class DataModelArray {
     /**
      * Creates a new #GdaDataModel object with the column types as
      * specified.
+     * @param cols number of columns for rows in this data model.
+     * @param types array of types of the columns of the model to create as #GType, as many as indicated by `cols`
      */
     static newWithGTypes(cols: number, types: GObject.Type[]): DataModel
     static errorQuark(): GLib.Quark
@@ -7140,8 +7725,10 @@ interface DataModelDir_ConstructProps extends GObject.Object_ConstructProps {
     basedir?: string
 }
 class DataModelDir {
+    /* Properties of Gda-6.0.Gda.DataModelDir */
+    readonly basedir: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataModelDir */
     /**
      * Reset the list of errors which have occurred while using `model`
@@ -7186,6 +7773,10 @@ class DataModelDir {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7196,6 +7787,12 @@ class DataModelDir {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7219,6 +7816,7 @@ class DataModelDir {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7238,11 +7836,14 @@ class DataModelDir {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7250,6 +7851,8 @@ class DataModelDir {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7267,6 +7870,7 @@ class DataModelDir {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7312,6 +7916,7 @@ class DataModelDir {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7355,15 +7960,20 @@ class DataModelDir {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7404,6 +8014,7 @@ class DataModelDir {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7438,6 +8049,7 @@ class DataModelDir {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataModel */
@@ -7447,6 +8059,7 @@ class DataModelDir {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -7463,6 +8076,7 @@ class DataModelDir {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -7472,6 +8086,7 @@ class DataModelDir {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -7508,6 +8123,7 @@ class DataModelDir {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -7521,6 +8137,7 @@ class DataModelDir {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -7573,6 +8190,11 @@ class DataModelDir {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -7586,6 +8208,10 @@ class DataModelDir {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -7603,10 +8229,13 @@ class DataModelDir {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -7629,6 +8258,8 @@ class DataModelDir {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -7643,6 +8274,10 @@ class DataModelDir {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -7669,6 +8304,8 @@ class DataModelDir {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -7676,6 +8313,9 @@ class DataModelDir {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -7697,6 +8337,9 @@ class DataModelDir {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -7704,18 +8347,25 @@ class DataModelDir {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -7723,6 +8373,7 @@ class DataModelDir {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -7734,6 +8385,7 @@ class DataModelDir {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -7741,6 +8393,7 @@ class DataModelDir {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -7748,20 +8401,27 @@ class DataModelDir {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -7769,6 +8429,9 @@ class DataModelDir {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -7780,6 +8443,8 @@ class DataModelDir {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -7815,6 +8480,7 @@ class DataModelDir {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7850,6 +8516,7 @@ class DataModelDir {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7858,6 +8525,7 @@ class DataModelDir {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7866,12 +8534,18 @@ class DataModelDir {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "row-updated", callback: (row: number) => void): NodeJS.EventEmitter
     emit(sigName: "row-updated", row: number): void
+    connect(sigName: "notify::basedir", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::basedir", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::basedir", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::basedir", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::basedir", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7919,13 +8593,34 @@ interface DataModelImport_ConstructProps extends GObject.Object_ConstructProps {
 class DataModelImport {
     /* Properties of Gda-6.0.Gda.DataModelImport */
     /**
+     * Data to import, as a string.
+     */
+    readonly dataString: string
+    /**
+     * Name of the file to import.
+     */
+    readonly filename: string
+    /**
+     * Data model options.
+     */
+    readonly options: Set
+    /**
+     * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
+     * access will have to be done using a cursor.
+     */
+    readonly randomAccess: boolean
+    /**
      * Defines the behaviour in case the imported data contains recoverable errors (usually too
      * many or too few data per row). If set to %TRUE, an error will be reported and the import
      * will stop, and if set to %FALSE, then the error will be reported but the import will not stop.
      */
     strict: boolean
+    /**
+     * Data to import, as a pointer to an XML node (a #xmlNodePtr).
+     */
+    readonly xmlNode: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataModelImport */
     /**
      * Clears the history of errors `model` has to report
@@ -7971,6 +8666,10 @@ class DataModelImport {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7981,6 +8680,12 @@ class DataModelImport {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8004,6 +8709,7 @@ class DataModelImport {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8023,11 +8729,14 @@ class DataModelImport {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8035,6 +8744,8 @@ class DataModelImport {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8052,6 +8763,7 @@ class DataModelImport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8097,6 +8809,7 @@ class DataModelImport {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8140,15 +8853,20 @@ class DataModelImport {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8189,6 +8907,7 @@ class DataModelImport {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8223,6 +8942,7 @@ class DataModelImport {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataModel */
@@ -8232,6 +8952,7 @@ class DataModelImport {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -8248,6 +8969,7 @@ class DataModelImport {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -8257,6 +8979,7 @@ class DataModelImport {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -8293,6 +9016,7 @@ class DataModelImport {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -8306,6 +9030,7 @@ class DataModelImport {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -8358,6 +9083,11 @@ class DataModelImport {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -8371,6 +9101,10 @@ class DataModelImport {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -8388,10 +9122,13 @@ class DataModelImport {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -8414,6 +9151,8 @@ class DataModelImport {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -8428,6 +9167,10 @@ class DataModelImport {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -8454,6 +9197,8 @@ class DataModelImport {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -8461,6 +9206,9 @@ class DataModelImport {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -8482,6 +9230,9 @@ class DataModelImport {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -8489,18 +9240,25 @@ class DataModelImport {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -8508,6 +9266,7 @@ class DataModelImport {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -8519,6 +9278,7 @@ class DataModelImport {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -8526,6 +9286,7 @@ class DataModelImport {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -8533,20 +9294,27 @@ class DataModelImport {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -8554,6 +9322,9 @@ class DataModelImport {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -8565,6 +9336,8 @@ class DataModelImport {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -8600,6 +9373,7 @@ class DataModelImport {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8635,6 +9409,7 @@ class DataModelImport {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -8643,6 +9418,7 @@ class DataModelImport {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -8651,17 +9427,43 @@ class DataModelImport {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "row-updated", callback: (row: number) => void): NodeJS.EventEmitter
     emit(sigName: "row-updated", row: number): void
+    connect(sigName: "notify::data-string", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::data-string", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::data-string", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::data-string", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::data-string", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::options", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::options", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::options", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::options", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::options", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::random-access", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::random-access", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::random-access", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::random-access", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::random-access", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::strict", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::strict", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::strict", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::strict", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::strict", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::xml-node", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::xml-node", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::xml-node", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::xml-node", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::xml-node", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8691,6 +9493,9 @@ class DataModelImport {
      * </itemizedlist>
      * 
      * Note: after the creation, please use gda_data_model_import_get_errors() to check any error.
+     * @param filename the file to import data from
+     * @param randomAccess TRUE if random access will be required
+     * @param options importing options
      */
     static newFile(filename: string, randomAccess: boolean, options?: Set | null): DataModel
     /**
@@ -8698,11 +9503,15 @@ class DataModelImport {
      * 
      * Important note: the `data` string is not copied for memory efficiency reasons and should not
      * therefore be altered in any way as long as the returned data model exists.
+     * @param data a string containing the data to import
+     * @param randomAccess TRUE if random access will be required
+     * @param options importing options, see gda_data_model_import_new_file() for more information
      */
     static newMem(data: string, randomAccess: boolean, options?: Set | null): DataModel
     /**
      * Creates a new #GdaDataModel and loads the data in `node`. The resulting data model
      * can be accessed in a random way.
+     * @param node an XML node corresponding to a &lt;data-array&gt; tag
      */
     static newXmlNode(node: libxml2.NodePtr): DataModel
     static errorQuark(): GLib.Quark
@@ -8717,6 +9526,7 @@ class DataModelImportIter {
     updateModel: boolean
     /* Properties of Gda-6.0.Gda.Set */
     description: string
+    readonly holders: object
     id: string
     name: string
     /**
@@ -8726,13 +9536,14 @@ class DataModelImportIter {
      */
     validateChanges: boolean
     /* Fields of Gda-6.0.Gda.DataModelIter */
-    readonly parentInstance: Set
+    parentInstance: Set
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataModelIter */
     /**
      * Fetch a pointer to the #GdaHolder object which is synchronized with data at
      * column `col`
+     * @param col the requested column
      */
     getHolderForField(col: number): Holder
     /**
@@ -8741,14 +9552,17 @@ class DataModelImportIter {
     getRow(): number
     /**
      * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
+     * @param col the requested column
      */
     getValueAt(col: number): any | null
     /**
      * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
+     * @param col the requested column
      */
     getValueAtE(col: number): any | null
     /**
      * Get the value stored at the column `field_name` in `iter`
+     * @param fieldName the requested column name
      */
     getValueForField(fieldName: string): any | null
     /**
@@ -8807,10 +9621,13 @@ class DataModelImportIter {
      * When this function returns %TRUE, then `iter` has actually been moved to the next row,
      * but some values may not have been read correctly in the row, in which case the
      * correcsponding #GdaHolder will be left invalid.
+     * @param row the row to set `iter` to
      */
     moveToRow(row: number): boolean
     /**
      * Sets a value in `iter,` at the column specified by `col`
+     * @param col the column number
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, value: any): boolean
     /* Methods of Gda-6.0.Gda.Set */
@@ -8820,6 +9637,7 @@ class DataModelImportIter {
      * NOTE: if `set` already has a #GdaHolder with the same ID as `holder,` then `holder`
      * will not be added to the set (even if `holder'`s type or value is not the same as the
      * one already in `set)`.
+     * @param holder a #GdaHolder object
      */
     addHolder(holder: Holder): boolean
     /**
@@ -8829,35 +9647,42 @@ class DataModelImportIter {
     /**
      * Finds a #GdaSetGroup which lists a  #GdaSetNode containing `holder,`
      * don't modify the returned structure.
+     * @param holder a #GdaHolder object
      */
     getGroup(holder: Holder): SetGroup
     getGroups(): SetGroup[]
     /**
      * Finds a #GdaHolder using its ID
+     * @param holderId the ID of the requested value holder
      */
     getHolder(holderId: string): Holder
     /**
      * Get the value of the #GdaHolder which ID is `holder_id`
+     * @param holderId the ID of the holder to set the value
      */
     getHolderValue(holderId: string): any | null
     getHolders(): Holder[]
     /**
      * Finds a #GdaSetNode holding information for `holder,` don't modify the returned structure
+     * @param holder a #GdaHolder object
      */
     getNode(holder: Holder): SetNode
     getNodes(): SetNode[]
     /**
      * Finds a #GdaHolder using its position
+     * @param pos the position of the requested #GdaHolder, starting at %0
      */
     getNthHolder(pos: number): Holder
     /**
      * Finds a #GdaSetSource which contains the #GdaDataModel restricting the possible values of
      * `holder,` don't modify the returned structure.
+     * @param holder a #GdaHolder object
      */
     getSource(holder: Holder): SetSource
     /**
      * Finds the #GdaSetSource structure used in `set` for which `model` is a
      * the data model (the returned structure should not be modified).
+     * @param model a #GdaDataModel object
      */
     getSourceForModel(model: DataModel): SetSource
     getSources(): SetSource[]
@@ -8865,10 +9690,12 @@ class DataModelImportIter {
      * Add to `set` all the holders of `set_to_merge`.
      * Note1: only the #GdaHolder of `set_to_merge` for which no holder in `set` has the same ID are merged
      * Note2: all the #GdaHolder merged in `set` are still used by `set_to_merge`.
+     * @param setToMerge a #GdaSet object
      */
     mergeWithSet(setToMerge: Set): void
     /**
      * Removes a #GdaHolder from the list of holders managed by `set`
+     * @param holder the #GdaHolder to remove from `set`
      */
     removeHolder(holder: Holder): void
     /**
@@ -8878,6 +9705,8 @@ class DataModelImportIter {
      * Also for each #GdaHolder for which `source->`data_model is a source model,
      * this method calls gda_holder_set_source_model() with `model` to replace
      * the source by the new model
+     * @param source a pointer to a #GdaSetSource in `set`
+     * @param model a #GdaDataModel
      */
     replaceSourceModel(source: SetSource, model: DataModel): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8915,6 +9744,10 @@ class DataModelImportIter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8925,6 +9758,12 @@ class DataModelImportIter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8948,6 +9787,7 @@ class DataModelImportIter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8967,11 +9807,14 @@ class DataModelImportIter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8979,6 +9822,8 @@ class DataModelImportIter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8996,6 +9841,7 @@ class DataModelImportIter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9041,6 +9887,7 @@ class DataModelImportIter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9084,15 +9931,20 @@ class DataModelImportIter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9133,6 +9985,7 @@ class DataModelImportIter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9167,6 +10020,7 @@ class DataModelImportIter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.DataModelIter */
@@ -9181,6 +10035,7 @@ class DataModelImportIter {
     emit(sigName: "end-of-data"): void
     /**
      * Gets emitted when the row `iter` is currently pointing has changed
+     * @param row the new iter's row
      */
     connect(sigName: "row-changed", callback: ((row: number) => void)): number
     on(sigName: "row-changed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -9190,6 +10045,9 @@ class DataModelImportIter {
     /* Signals of Gda-6.0.Gda.Set */
     /**
      * Gets emitted when an attribute for any of the #GdaHolder objects managed by `set` has changed
+     * @param holder the GdaHolder for which an attribute changed
+     * @param attrName attribute's name
+     * @param attrValue attribute's value
      */
     connect(sigName: "holder-attr-changed", callback: ((holder: Holder, attrName: string, attrValue: any) => void)): number
     on(sigName: "holder-attr-changed", callback: (holder: Holder, attrName: string, attrValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -9204,6 +10062,7 @@ class DataModelImportIter {
     /**
      * Gets emitted when `holder` in `set` has its type finally set, in case
      * it was #GDA_TYPE_NULL
+     * @param holder the #GdaHolder for which the #GType has been set
      */
     connect(sigName: "holder-type-set", callback: ((holder: Holder) => void)): number
     on(sigName: "holder-type-set", callback: (holder: Holder) => void, after?: boolean): NodeJS.EventEmitter
@@ -9220,6 +10079,7 @@ class DataModelImportIter {
     emit(sigName: "public-data-changed"): void
     /**
      * Gets emitted when the data model in `source` has changed
+     * @param source the #GdaSetSource for which the `data_model` attribute has changed
      */
     connect(sigName: "source-model-changed", callback: ((source?: object | null) => void)): number
     on(sigName: "source-model-changed", callback: (source?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -9229,6 +10089,8 @@ class DataModelImportIter {
     /**
      * Gets emitted when a #GdaHolder's in `set` is going to change its value. One can connect to
      * this signal to control which values `holder` can have (for example to implement some business rules)
+     * @param holder the #GdaHolder which is going to change
+     * @param newValue the proposed new value for `holder`
      */
     connect(sigName: "validate-holder-change", callback: ((holder: Holder, newValue: any) => GLib.Error)): number
     on(sigName: "validate-holder-change", callback: (holder: Holder, newValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -9273,6 +10135,7 @@ class DataModelImportIter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9299,6 +10162,11 @@ class DataModelImportIter {
     on(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::holders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::holders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -9339,6 +10207,7 @@ class DataModelIter {
     updateModel: boolean
     /* Properties of Gda-6.0.Gda.Set */
     description: string
+    readonly holders: object
     id: string
     name: string
     /**
@@ -9348,13 +10217,14 @@ class DataModelIter {
      */
     validateChanges: boolean
     /* Fields of Gda-6.0.Gda.Set */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataModelIter */
     /**
      * Fetch a pointer to the #GdaHolder object which is synchronized with data at
      * column `col`
+     * @param col the requested column
      */
     getHolderForField(col: number): Holder
     /**
@@ -9363,14 +10233,17 @@ class DataModelIter {
     getRow(): number
     /**
      * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
+     * @param col the requested column
      */
     getValueAt(col: number): any | null
     /**
      * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
+     * @param col the requested column
      */
     getValueAtE(col: number): any | null
     /**
      * Get the value stored at the column `field_name` in `iter`
+     * @param fieldName the requested column name
      */
     getValueForField(fieldName: string): any | null
     /**
@@ -9429,10 +10302,13 @@ class DataModelIter {
      * When this function returns %TRUE, then `iter` has actually been moved to the next row,
      * but some values may not have been read correctly in the row, in which case the
      * correcsponding #GdaHolder will be left invalid.
+     * @param row the row to set `iter` to
      */
     moveToRow(row: number): boolean
     /**
      * Sets a value in `iter,` at the column specified by `col`
+     * @param col the column number
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, value: any): boolean
     /* Methods of Gda-6.0.Gda.Set */
@@ -9442,6 +10318,7 @@ class DataModelIter {
      * NOTE: if `set` already has a #GdaHolder with the same ID as `holder,` then `holder`
      * will not be added to the set (even if `holder'`s type or value is not the same as the
      * one already in `set)`.
+     * @param holder a #GdaHolder object
      */
     addHolder(holder: Holder): boolean
     /**
@@ -9451,35 +10328,42 @@ class DataModelIter {
     /**
      * Finds a #GdaSetGroup which lists a  #GdaSetNode containing `holder,`
      * don't modify the returned structure.
+     * @param holder a #GdaHolder object
      */
     getGroup(holder: Holder): SetGroup
     getGroups(): SetGroup[]
     /**
      * Finds a #GdaHolder using its ID
+     * @param holderId the ID of the requested value holder
      */
     getHolder(holderId: string): Holder
     /**
      * Get the value of the #GdaHolder which ID is `holder_id`
+     * @param holderId the ID of the holder to set the value
      */
     getHolderValue(holderId: string): any | null
     getHolders(): Holder[]
     /**
      * Finds a #GdaSetNode holding information for `holder,` don't modify the returned structure
+     * @param holder a #GdaHolder object
      */
     getNode(holder: Holder): SetNode
     getNodes(): SetNode[]
     /**
      * Finds a #GdaHolder using its position
+     * @param pos the position of the requested #GdaHolder, starting at %0
      */
     getNthHolder(pos: number): Holder
     /**
      * Finds a #GdaSetSource which contains the #GdaDataModel restricting the possible values of
      * `holder,` don't modify the returned structure.
+     * @param holder a #GdaHolder object
      */
     getSource(holder: Holder): SetSource
     /**
      * Finds the #GdaSetSource structure used in `set` for which `model` is a
      * the data model (the returned structure should not be modified).
+     * @param model a #GdaDataModel object
      */
     getSourceForModel(model: DataModel): SetSource
     getSources(): SetSource[]
@@ -9487,10 +10371,12 @@ class DataModelIter {
      * Add to `set` all the holders of `set_to_merge`.
      * Note1: only the #GdaHolder of `set_to_merge` for which no holder in `set` has the same ID are merged
      * Note2: all the #GdaHolder merged in `set` are still used by `set_to_merge`.
+     * @param setToMerge a #GdaSet object
      */
     mergeWithSet(setToMerge: Set): void
     /**
      * Removes a #GdaHolder from the list of holders managed by `set`
+     * @param holder the #GdaHolder to remove from `set`
      */
     removeHolder(holder: Holder): void
     /**
@@ -9500,6 +10386,8 @@ class DataModelIter {
      * Also for each #GdaHolder for which `source->`data_model is a source model,
      * this method calls gda_holder_set_source_model() with `model` to replace
      * the source by the new model
+     * @param source a pointer to a #GdaSetSource in `set`
+     * @param model a #GdaDataModel
      */
     replaceSourceModel(source: SetSource, model: DataModel): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9537,6 +10425,10 @@ class DataModelIter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9547,6 +10439,12 @@ class DataModelIter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9570,6 +10468,7 @@ class DataModelIter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9589,11 +10488,14 @@ class DataModelIter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9601,6 +10503,8 @@ class DataModelIter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9618,6 +10522,7 @@ class DataModelIter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9663,6 +10568,7 @@ class DataModelIter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9706,15 +10612,20 @@ class DataModelIter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9755,6 +10666,7 @@ class DataModelIter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9789,6 +10701,7 @@ class DataModelIter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.DataModelIter */
@@ -9803,6 +10716,7 @@ class DataModelIter {
     emit(sigName: "end-of-data"): void
     /**
      * Gets emitted when the row `iter` is currently pointing has changed
+     * @param row the new iter's row
      */
     connect(sigName: "row-changed", callback: ((row: number) => void)): number
     on(sigName: "row-changed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -9812,6 +10726,9 @@ class DataModelIter {
     /* Signals of Gda-6.0.Gda.Set */
     /**
      * Gets emitted when an attribute for any of the #GdaHolder objects managed by `set` has changed
+     * @param holder the GdaHolder for which an attribute changed
+     * @param attrName attribute's name
+     * @param attrValue attribute's value
      */
     connect(sigName: "holder-attr-changed", callback: ((holder: Holder, attrName: string, attrValue: any) => void)): number
     on(sigName: "holder-attr-changed", callback: (holder: Holder, attrName: string, attrValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -9826,6 +10743,7 @@ class DataModelIter {
     /**
      * Gets emitted when `holder` in `set` has its type finally set, in case
      * it was #GDA_TYPE_NULL
+     * @param holder the #GdaHolder for which the #GType has been set
      */
     connect(sigName: "holder-type-set", callback: ((holder: Holder) => void)): number
     on(sigName: "holder-type-set", callback: (holder: Holder) => void, after?: boolean): NodeJS.EventEmitter
@@ -9842,6 +10760,7 @@ class DataModelIter {
     emit(sigName: "public-data-changed"): void
     /**
      * Gets emitted when the data model in `source` has changed
+     * @param source the #GdaSetSource for which the `data_model` attribute has changed
      */
     connect(sigName: "source-model-changed", callback: ((source?: object | null) => void)): number
     on(sigName: "source-model-changed", callback: (source?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -9851,6 +10770,8 @@ class DataModelIter {
     /**
      * Gets emitted when a #GdaHolder's in `set` is going to change its value. One can connect to
      * this signal to control which values `holder` can have (for example to implement some business rules)
+     * @param holder the #GdaHolder which is going to change
+     * @param newValue the proposed new value for `holder`
      */
     connect(sigName: "validate-holder-change", callback: ((holder: Holder, newValue: any) => GLib.Error)): number
     on(sigName: "validate-holder-change", callback: (holder: Holder, newValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -9895,6 +10816,7 @@ class DataModelIter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9921,6 +10843,11 @@ class DataModelIter {
     on(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::holders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::holders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -9956,7 +10883,7 @@ class DataModelSelect {
     /* Properties of Gda-6.0.Gda.DataModelSelect */
     readonly valid: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataModelSelect */
     getParameters(): Set
     /**
@@ -10000,6 +10927,10 @@ class DataModelSelect {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10010,6 +10941,12 @@ class DataModelSelect {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10033,6 +10970,7 @@ class DataModelSelect {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10052,11 +10990,14 @@ class DataModelSelect {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10064,6 +11005,8 @@ class DataModelSelect {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10081,6 +11024,7 @@ class DataModelSelect {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10126,6 +11070,7 @@ class DataModelSelect {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10169,15 +11114,20 @@ class DataModelSelect {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10218,6 +11168,7 @@ class DataModelSelect {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10252,6 +11203,7 @@ class DataModelSelect {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataModel */
@@ -10261,6 +11213,7 @@ class DataModelSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -10277,6 +11230,7 @@ class DataModelSelect {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -10286,6 +11240,7 @@ class DataModelSelect {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -10322,6 +11277,7 @@ class DataModelSelect {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -10335,6 +11291,7 @@ class DataModelSelect {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -10387,6 +11344,11 @@ class DataModelSelect {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -10400,6 +11362,10 @@ class DataModelSelect {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -10417,10 +11383,13 @@ class DataModelSelect {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -10443,6 +11412,8 @@ class DataModelSelect {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -10457,6 +11428,10 @@ class DataModelSelect {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -10483,6 +11458,8 @@ class DataModelSelect {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -10490,6 +11467,9 @@ class DataModelSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -10511,6 +11491,9 @@ class DataModelSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -10518,18 +11501,25 @@ class DataModelSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -10537,6 +11527,7 @@ class DataModelSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -10548,6 +11539,7 @@ class DataModelSelect {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -10555,6 +11547,7 @@ class DataModelSelect {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -10562,20 +11555,27 @@ class DataModelSelect {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -10583,6 +11583,9 @@ class DataModelSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -10594,6 +11597,8 @@ class DataModelSelect {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -10639,6 +11644,7 @@ class DataModelSelect {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10674,6 +11680,7 @@ class DataModelSelect {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -10682,6 +11689,7 @@ class DataModelSelect {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -10690,6 +11698,7 @@ class DataModelSelect {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -10725,7 +11734,7 @@ class DataPivot {
     /* Properties of Gda-6.0.Gda.DataPivot */
     model: DataModel
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataPivot */
     /**
      * Specifies that `field` has to be included in the analysis.
@@ -10742,6 +11751,9 @@ class DataPivot {
      * 
      * It is also possible to specify several fields to be added, while separating them by a comma (in effect
      * still forming a valid SQL syntax).
+     * @param aggregateType the type of aggregate operation to perform
+     * @param field the field description, see below
+     * @param alias the field alias, or %NULL
      */
     addData(aggregateType: DataPivotAggregate, field: string, alias?: string | null): boolean
     /**
@@ -10759,6 +11771,9 @@ class DataPivot {
      * 
      * It is also possible to specify several fields to be added, while separating them by a comma (in effect
      * still forming a valid SQL syntax).
+     * @param fieldType the type of field to add
+     * @param field the field description, see below
+     * @param alias the field alias, or %NULL
      */
     addField(fieldType: DataPivotFieldType, field: string, alias?: string | null): boolean
     /**
@@ -10800,6 +11815,10 @@ class DataPivot {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10810,6 +11829,12 @@ class DataPivot {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10833,6 +11858,7 @@ class DataPivot {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10852,11 +11878,14 @@ class DataPivot {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10864,6 +11893,8 @@ class DataPivot {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10881,6 +11912,7 @@ class DataPivot {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10926,6 +11958,7 @@ class DataPivot {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10969,15 +12002,20 @@ class DataPivot {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11018,6 +12056,7 @@ class DataPivot {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11052,6 +12091,7 @@ class DataPivot {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataModel */
@@ -11061,6 +12101,7 @@ class DataPivot {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -11077,6 +12118,7 @@ class DataPivot {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -11086,6 +12128,7 @@ class DataPivot {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -11122,6 +12165,7 @@ class DataPivot {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -11135,6 +12179,7 @@ class DataPivot {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -11187,6 +12232,11 @@ class DataPivot {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -11200,6 +12250,10 @@ class DataPivot {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -11217,10 +12271,13 @@ class DataPivot {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -11243,6 +12300,8 @@ class DataPivot {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -11257,6 +12316,10 @@ class DataPivot {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -11283,6 +12346,8 @@ class DataPivot {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -11290,6 +12355,9 @@ class DataPivot {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -11311,6 +12379,9 @@ class DataPivot {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -11318,18 +12389,25 @@ class DataPivot {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -11337,6 +12415,7 @@ class DataPivot {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -11348,6 +12427,7 @@ class DataPivot {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -11355,6 +12435,7 @@ class DataPivot {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -11362,20 +12443,27 @@ class DataPivot {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -11383,6 +12471,9 @@ class DataPivot {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -11394,6 +12485,8 @@ class DataPivot {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -11429,6 +12522,7 @@ class DataPivot {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -11464,6 +12558,7 @@ class DataPivot {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -11472,6 +12567,7 @@ class DataPivot {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -11480,6 +12576,7 @@ class DataPivot {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -11545,12 +12642,15 @@ class DataProxy {
     prependNullEntry: boolean
     sampleSize: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataProxy */
     /**
      * Alters the attributes of the value stored at (proxy_row, col) in `proxy`. the `alter_flags`
      * can only contain the GDA_VALUE_ATTR_IS_NULL, GDA_VALUE_ATTR_IS_DEFAULT and GDA_VALUE_ATTR_IS_UNCHANGED
      * flags (other flags are ignored).
+     * @param proxyRow A proxy row number
+     * @param col a valid column number
+     * @param alterFlags flags to alter the attributes
      */
     alterValueAttributes(proxyRow: number, col: number, alterFlags: ValueAttribute): void
     /**
@@ -11561,6 +12661,7 @@ class DataProxy {
     applyAllChanges(): boolean
     /**
      * Commits the modified data in the proxy back into the #GdaDataModel.
+     * @param proxyRow the row number to commit
      */
     applyRowChanges(proxyRow: number): boolean
     /**
@@ -11573,10 +12674,13 @@ class DataProxy {
     /**
      * Resets data at the corresponding row and column. If `proxy_row` corresponds to a new row, then
      * that new row is deleted from `proxy`.
+     * @param proxyRow the row to cancel changes
+     * @param col the column to cancel changes, or less than 0 to cancel any change on the `row` row
      */
     cancelRowChanges(proxyRow: number, col: number): void
     /**
      * Marks the row `proxy_row` to be deleted
+     * @param proxyRow A proxy row number
      */
     delete(proxyRow: number): void
     /**
@@ -11614,6 +12718,7 @@ class DataProxy {
     getProxiedModelNRows(): number
     /**
      * Get the `proxy'`s proxied model row corresponding to `proxy_row`
+     * @param proxyRow A proxy row number
      */
     getProxiedModelRow(proxyRow: number): number
     /**
@@ -11631,12 +12736,16 @@ class DataProxy {
     /**
      * Get the attributes of the value stored at (proxy_row, col) in `proxy,` which
      * is an ORed value of #GdaValueAttribute flags
+     * @param proxyRow a proxy row
+     * @param col a valid proxy column
      */
     getValueAttributes(proxyRow: number, col: number): ValueAttribute
     /**
      * Retrieve a whole list of values from the `proxy` data model. This function
      * calls gda_data_proxy_get_value()
      * for each column index specified in `cols_index,` and generates a #GSList on the way.
+     * @param proxyRow a proxy row
+     * @param colsIndex array containing the columns for which the values are requested
      */
     getValues(proxyRow: number, colsIndex: number[]): any[]
     /**
@@ -11646,15 +12755,18 @@ class DataProxy {
     isReadOnly(): boolean
     /**
      * Tells if the row number `proxy_row` has changed
+     * @param proxyRow A proxy row number
      */
     rowHasChanged(proxyRow: number): boolean
     /**
      * Tells if the row number `proxy_row` is marked to be deleted.
+     * @param proxyRow A proxy row number
      */
     rowIsDeleted(proxyRow: number): boolean
     /**
      * Tells if the row number `proxy_row` is a row which has been inserted in `proxy`
      * (and is thus not in the proxied data model).
+     * @param proxyRow A proxy row number
      */
     rowIsInserted(proxyRow: number): boolean
     /**
@@ -11669,10 +12781,12 @@ class DataProxy {
      * 
      * Note that any previous filter expression is replaced with the new `filter_expr` if no error occurs
      * (if an error occurs, then any previous filter is left unchanged).
+     * @param filterExpr an SQL based expression which will filter the contents of `proxy,` or %NULL to remove any previous filter
      */
     setFilterExpr(filterExpr?: string | null): boolean
     /**
      * Orders by the `col` column
+     * @param col the column number to order from
      */
     setOrderingColumn(col: number): boolean
     /**
@@ -11687,14 +12801,17 @@ class DataProxy {
      * when the displayed chunk of data changes are still held as modified rows.
      * 
      * To remove the chunking of the data to display, simply pass `sample_size` the %0 value.
+     * @param sampleSize the requested size of a chunk, or 0
      */
     setSampleSize(sampleSize: number): void
     /**
      * Sets the number of the first row to be available in `proxy` (in reference to the proxied data model)
+     * @param sampleStart the number of the first row to be displayed
      */
     setSampleStart(sampleStart: number): void
     /**
      * Remove the "to be deleted" mark at the row `proxy_row,` if it existed.
+     * @param proxyRow A proxy row number
      */
     undelete(proxyRow: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11732,6 +12849,10 @@ class DataProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11742,6 +12863,12 @@ class DataProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11765,6 +12892,7 @@ class DataProxy {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11784,11 +12912,14 @@ class DataProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11796,6 +12927,8 @@ class DataProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11813,6 +12946,7 @@ class DataProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11858,6 +12992,7 @@ class DataProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11901,15 +13036,20 @@ class DataProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11950,6 +13090,7 @@ class DataProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11984,6 +13125,7 @@ class DataProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataModel */
@@ -11993,6 +13135,7 @@ class DataProxy {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -12009,6 +13152,7 @@ class DataProxy {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -12018,6 +13162,7 @@ class DataProxy {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -12054,6 +13199,7 @@ class DataProxy {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -12067,6 +13213,7 @@ class DataProxy {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -12119,6 +13266,11 @@ class DataProxy {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -12132,6 +13284,10 @@ class DataProxy {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -12149,10 +13305,13 @@ class DataProxy {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -12175,6 +13334,8 @@ class DataProxy {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -12189,6 +13350,10 @@ class DataProxy {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -12215,6 +13380,8 @@ class DataProxy {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -12222,6 +13389,9 @@ class DataProxy {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -12243,6 +13413,9 @@ class DataProxy {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -12250,18 +13423,25 @@ class DataProxy {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -12269,6 +13449,7 @@ class DataProxy {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -12280,6 +13461,7 @@ class DataProxy {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -12287,6 +13469,7 @@ class DataProxy {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -12294,20 +13477,27 @@ class DataProxy {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -12315,6 +13505,9 @@ class DataProxy {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -12326,6 +13519,8 @@ class DataProxy {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -12343,6 +13538,8 @@ class DataProxy {
     emit(sigName: "filter-changed"): void
     /**
      * Gets emitted when `proxy` has committed a row change to the proxied data model.
+     * @param row the proxy's row
+     * @param proxiedRow the proxied data model's row
      */
     connect(sigName: "row-changes-applied", callback: ((row: number, proxiedRow: number) => void)): number
     on(sigName: "row-changes-applied", callback: (row: number, proxiedRow: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12351,6 +13548,8 @@ class DataProxy {
     emit(sigName: "row-changes-applied", row: number, proxiedRow: number): void
     /**
      * Gets emitted whenever a row has been marked to be deleted, or has been unmarked to be deleted
+     * @param row the concerned `proxy'`s row
+     * @param toBeDeleted tells if the `row` is marked to be deleted
      */
     connect(sigName: "row-delete-changed", callback: ((row: number, toBeDeleted: boolean) => void)): number
     on(sigName: "row-delete-changed", callback: (row: number, toBeDeleted: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -12360,6 +13559,8 @@ class DataProxy {
     /**
      * Gets emitted whenever `proxy'`s sample size has been changed. `sample_start` and `sample_end` are
      * in reference to the proxied data model.
+     * @param sampleStart the first row of the sample
+     * @param sampleEnd the last row of the sample
      */
     connect(sigName: "sample-changed", callback: ((sampleStart: number, sampleEnd: number) => void)): number
     on(sigName: "sample-changed", callback: (sampleStart: number, sampleEnd: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12368,6 +13569,7 @@ class DataProxy {
     emit(sigName: "sample-changed", sampleStart: number, sampleEnd: number): void
     /**
      * Gets emitted whenever `proxy'`s sample size has been changed
+     * @param sampleSize the new sample size
      */
     connect(sigName: "sample-size-changed", callback: ((sampleSize: number) => void)): number
     on(sigName: "sample-size-changed", callback: (sampleSize: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12377,6 +13579,8 @@ class DataProxy {
     /**
      * Gets emitted when `proxy` is about to commit a row change to the proxied data model. If any
      * callback returns a non %NULL value, then the change commit fails with the returned #GError
+     * @param row the proxy's row
+     * @param proxiedRow the proxied data model's row
      */
     connect(sigName: "validate-row-changes", callback: ((row: number, proxiedRow: number) => GLib.Error)): number
     on(sigName: "validate-row-changes", callback: (row: number, proxiedRow: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12412,6 +13616,7 @@ class DataProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12447,6 +13652,7 @@ class DataProxy {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12455,6 +13661,7 @@ class DataProxy {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12463,6 +13670,7 @@ class DataProxy {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -12527,18 +13735,21 @@ interface DataSelect_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DataSelect {
     /* Properties of Gda-6.0.Gda.DataSelect */
+    readonly connection: Connection
     deleteStmt: Statement
+    readonly execParams: Set
     /**
      * This property stores the execution delay which has been necessary to obtain the data
      */
     executionDelay: number
     insertStmt: Statement
+    readonly modelUsage: number
     preparedStmt: PStmt
     readonly selectStmt: Statement
     storeAllRows: boolean
     updateStmt: Statement
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataSelect */
     /**
      * Computes correct attributes for each of `model'`s columns, which includes the "NOT NULL" attribute, the
@@ -12556,6 +13767,7 @@ class DataSelect {
     /**
      * Makes `model` try to compute INSERT, UPDATE and DELETE statements to be used when modifying `model'`s contents.
      * Note: any modification statement set using gda_data_select_set_modification_statement() will first be unset
+     * @param condType the type of condition for the modifications where one row only should be identified
      */
     computeModificationStatementsExt(condType: DataSelectConditionType): boolean
     /**
@@ -12644,15 +13856,18 @@ class DataSelect {
      * NOTE2: if gda_data_select_set_row_selection_condition()
      * or gda_data_select_set_row_selection_condition_sql() have not yet been successfully be called before, then
      * the WHERE part of `mod_stmt` will be used as if one of these functions had been called.
+     * @param modStmt a #GdaStatement (INSERT, UPDATE or DELETE)
      */
     setModificationStatement(modStmt: Statement): boolean
     /**
      * Offers the same feature as gda_data_select_set_modification_statement() but using an SQL statement.
+     * @param sql an SQL text
      */
     setModificationStatementSql(sql: string): boolean
     /**
      * Offers the same features as gda_data_select_set_row_selection_condition_sql() but using a #GdaSqlExpr
      * structure instead of an SQL syntax.
+     * @param expr a #GdaSqlExpr expression
      */
     setRowSelectionCondition(expr: SqlExpr): boolean
     /**
@@ -12669,6 +13884,7 @@ class DataSelect {
      * For more information about the syntax of the parameters (named <![CDATA["##-1::int"]]> for example), see the
      * <link linkend="GdaSqlParser.description">GdaSqlParser</link> documentation, and
      * gda_data_select_set_modification_statement().
+     * @param sqlWhere an SQL condition (without the WHERE keyword)
      */
     setRowSelectionConditionSql(sqlWhere: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -12706,6 +13922,10 @@ class DataSelect {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12716,6 +13936,12 @@ class DataSelect {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12739,6 +13965,7 @@ class DataSelect {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12758,11 +13985,14 @@ class DataSelect {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12770,6 +14000,8 @@ class DataSelect {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12787,6 +14019,7 @@ class DataSelect {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12832,6 +14065,7 @@ class DataSelect {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12875,15 +14109,20 @@ class DataSelect {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12924,6 +14163,7 @@ class DataSelect {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12958,6 +14198,7 @@ class DataSelect {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataModel */
@@ -12967,6 +14208,7 @@ class DataSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
      */
     addDataFromXmlNode(node: libxml2.NodePtr): boolean
     /**
@@ -12983,6 +14225,7 @@ class DataSelect {
      * 
      * Upon errors -1 will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
      */
     appendValues(values?: any[] | null): number
     /**
@@ -12992,6 +14235,7 @@ class DataSelect {
     /**
      * Like gda_data_model_array_copy_model(), makes a copy of `src,` but copies only some
      * columns.
+     * @param cols array of `src'`s columns to copy into the new array, not %NULL
      */
     arrayCopyModelExt(cols: number[]): DataModelArray | null
     /**
@@ -13028,6 +14272,7 @@ class DataSelect {
      * 
      * WARNING: the returned #GdaColumn object belongs to the `model` model and
      * and should not be destroyed; any modification will affect the whole data model.
+     * @param col column number.
      */
     describeColumn(col: number): Column | null
     /**
@@ -13041,6 +14286,7 @@ class DataSelect {
      *   <listitem><para>GDA_DATA_MODEL_NULL_AS_EMPTY: if set, replace the 'NULL' string with an empty string for NULL values </para></listitem>
      *   <listitem><para>GDA_DATA_MODEL_DUMP_TRUNCATE: if set to a numeric value, truncates the output to the width specified by the value. If the value is -1 then the actual terminal size (if it can be determined) is used</para></listitem>
      * </itemizedlist>
+     * @param toStream where to dump the data model
      */
     dump(toStream?: object | null): void
     /**
@@ -13093,6 +14339,11 @@ class DataSelect {
      * 
      * Upon errors %FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param format the format in which to export data
+     * @param file the filename to export to
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
@@ -13106,6 +14357,10 @@ class DataSelect {
      * another row).
      * 
      * See also gda_data_model_dump_as_string();
+     * @param format the format in which to export data
+     * @param cols an array containing which columns of `model` will be exported, or %NULL for all columns
+     * @param rows an array containing which rows of `model` will be exported, or %NULL for all rows
+     * @param options list of options for the export
      */
     exportToString(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string
     /**
@@ -13123,10 +14378,13 @@ class DataSelect {
      * is an ORed value of #GdaValueAttribute flags. As a special case, if
      * `row` is -1, then the attributes returned correspond to a "would be" value
      * if a row was added to `model`.
+     * @param col a valid column number
+     * @param row a valid row number, or -1
      */
     getAttributesAt(col: number, row: number): ValueAttribute
     /**
      * Get the index of the first column named `name` in `model`.
+     * @param name a column name
      */
     getColumnIndex(name: string): number
     getColumnName(col: number): string
@@ -13149,6 +14407,8 @@ class DataSelect {
      * `cols_index` match. If the row can't be identified, then returns -1;
      * 
      * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+     * @param values a list of #GValue values (no %NULL is allowed)
+     * @param colsIndex an array of #gint containing the column number to match each value of `values`
      */
     getRowFromValues(values: any[], colsIndex: number[]): number
     /**
@@ -13163,6 +14423,10 @@ class DataSelect {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
+     * @param expectedType the expected data type of the returned value
+     * @param nullok if TRUE, then NULL values (value of type %GDA_TYPE_NULL) will not generate any error
      */
     getTypedValueAt(col: number, row: number, expectedType: GObject.Type, nullok: boolean): any | null
     /**
@@ -13189,6 +14453,8 @@ class DataSelect {
      * 
      * Upon errors %NULL will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col a valid column number.
+     * @param row a valid row number.
      */
     getValueAt(col: number, row: number): any | null
     /**
@@ -13196,6 +14462,9 @@ class DataSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param file the filename to import from
+     * @param colsTrans a #GHashTable for columns translating, or %NULL, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
@@ -13217,6 +14486,9 @@ class DataSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param from the source #GdaDataModel
+     * @param overwrite TRUE if `to` is completely overwritten by `from'`s data, and FALSE if `from'`s data is appended to `to`
+     * @param colsTrans a #GHashTable for columns translating, or %NULL
      */
     importFromModel(from: DataModel, overwrite: boolean, colsTrans?: GLib.HashTable | null): boolean
     /**
@@ -13224,18 +14496,25 @@ class DataSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param string the string to import data from
+     * @param colsTrans a hash table containing which columns of `model` will be imported, or %NULL for all columns, see gda_data_model_import_from_model()
+     * @param options list of options for the export
      */
     importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMoveNextDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
      */
     iterMovePrevDefault(iter: DataModelIter): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
+     * @param iter a #GdaDataModelIter iterating in `model`
+     * @param row the requested row
      */
     iterMoveToRowDefault(iter: DataModelIter, row: number): boolean
     /**
@@ -13243,6 +14522,7 @@ class DataSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row the row number to be removed.
      */
     removeRow(row: number): boolean
     /**
@@ -13254,6 +14534,7 @@ class DataSelect {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been inserted.
+     * @param row row number.
      */
     rowInserted(row: number): void
     /**
@@ -13261,6 +14542,7 @@ class DataSelect {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been removed
+     * @param row row number.
      */
     rowRemoved(row: number): void
     /**
@@ -13268,20 +14550,27 @@ class DataSelect {
      * 
      * This method should only be used by #GdaDataModel implementations to
      * signal that a row has been updated.
+     * @param row row number.
      */
     rowUpdated(row: number): void
     /**
      * Sends a hint to the data model. The hint may or may not be handled by the data
      * model, depending on its implementation
+     * @param hint a hint to send to the model
+     * @param hintValue an optional value to specify the hint, or %NULL
      */
     sendHint(hint: DataModelHint, hintValue?: any | null): void
     /**
      * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
      * title to `name`.
+     * @param col column number
+     * @param name name for the given column.
      */
     setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
+     * @param col column number
+     * @param title title for the given column.
      */
     setColumnTitle(col: number, title: string): void
     /**
@@ -13289,6 +14578,9 @@ class DataSelect {
      * 
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param col column number.
+     * @param row row number.
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, row: number, value: any): boolean
     /**
@@ -13300,6 +14592,8 @@ class DataSelect {
      *  
      * Upon errors FALSE will be returned and `error` will be assigned a
      * #GError from the #GDA_DATA_MODEL_ERROR domain.
+     * @param row row number.
+     * @param values a list of #GValue (or %NULL), one for at most the number of columns of `model`
      */
     setValues(row: number, values?: any[] | null): boolean
     /**
@@ -13335,6 +14629,7 @@ class DataSelect {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13370,6 +14665,7 @@ class DataSelect {
     emit(sigName: "reset"): void
     /**
      * Gets emitted when a row has been inserted in `model`
+     * @param row the row number
      */
     connect(sigName: "row-inserted", callback: ((row: number) => void)): number
     on(sigName: "row-inserted", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -13378,6 +14674,7 @@ class DataSelect {
     emit(sigName: "row-inserted", row: number): void
     /**
      * Gets emitted when a row has been removed from `model`
+     * @param row the row number
      */
     connect(sigName: "row-removed", callback: ((row: number) => void)): number
     on(sigName: "row-removed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -13386,17 +14683,28 @@ class DataSelect {
     emit(sigName: "row-removed", row: number): void
     /**
      * Gets emitted when a row has been modified in `model`
+     * @param row the row number
      */
     connect(sigName: "row-updated", callback: ((row: number) => void)): number
     on(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "row-updated", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "row-updated", callback: (row: number) => void): NodeJS.EventEmitter
     emit(sigName: "row-updated", row: number): void
+    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::delete-stmt", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::delete-stmt", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::delete-stmt", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::delete-stmt", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::delete-stmt", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::exec-params", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::exec-params", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::exec-params", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::exec-params", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::exec-params", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::execution-delay", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::execution-delay", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::execution-delay", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -13407,6 +14715,11 @@ class DataSelect {
     on(sigName: "notify::insert-stmt", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::insert-stmt", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::insert-stmt", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::model-usage", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model-usage", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::model-usage", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::model-usage", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::model-usage", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::prepared-stmt", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::prepared-stmt", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::prepared-stmt", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -13450,6 +14763,7 @@ class DataSelectIter {
     updateModel: boolean
     /* Properties of Gda-6.0.Gda.Set */
     description: string
+    readonly holders: object
     id: string
     name: string
     /**
@@ -13459,13 +14773,14 @@ class DataSelectIter {
      */
     validateChanges: boolean
     /* Fields of Gda-6.0.Gda.DataModelIter */
-    readonly parentInstance: Set
+    parentInstance: Set
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DataModelIter */
     /**
      * Fetch a pointer to the #GdaHolder object which is synchronized with data at
      * column `col`
+     * @param col the requested column
      */
     getHolderForField(col: number): Holder
     /**
@@ -13474,14 +14789,17 @@ class DataSelectIter {
     getRow(): number
     /**
      * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
+     * @param col the requested column
      */
     getValueAt(col: number): any | null
     /**
      * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
+     * @param col the requested column
      */
     getValueAtE(col: number): any | null
     /**
      * Get the value stored at the column `field_name` in `iter`
+     * @param fieldName the requested column name
      */
     getValueForField(fieldName: string): any | null
     /**
@@ -13540,10 +14858,13 @@ class DataSelectIter {
      * When this function returns %TRUE, then `iter` has actually been moved to the next row,
      * but some values may not have been read correctly in the row, in which case the
      * correcsponding #GdaHolder will be left invalid.
+     * @param row the row to set `iter` to
      */
     moveToRow(row: number): boolean
     /**
      * Sets a value in `iter,` at the column specified by `col`
+     * @param col the column number
+     * @param value a #GValue (not %NULL)
      */
     setValueAt(col: number, value: any): boolean
     /* Methods of Gda-6.0.Gda.Set */
@@ -13553,6 +14874,7 @@ class DataSelectIter {
      * NOTE: if `set` already has a #GdaHolder with the same ID as `holder,` then `holder`
      * will not be added to the set (even if `holder'`s type or value is not the same as the
      * one already in `set)`.
+     * @param holder a #GdaHolder object
      */
     addHolder(holder: Holder): boolean
     /**
@@ -13562,35 +14884,42 @@ class DataSelectIter {
     /**
      * Finds a #GdaSetGroup which lists a  #GdaSetNode containing `holder,`
      * don't modify the returned structure.
+     * @param holder a #GdaHolder object
      */
     getGroup(holder: Holder): SetGroup
     getGroups(): SetGroup[]
     /**
      * Finds a #GdaHolder using its ID
+     * @param holderId the ID of the requested value holder
      */
     getHolder(holderId: string): Holder
     /**
      * Get the value of the #GdaHolder which ID is `holder_id`
+     * @param holderId the ID of the holder to set the value
      */
     getHolderValue(holderId: string): any | null
     getHolders(): Holder[]
     /**
      * Finds a #GdaSetNode holding information for `holder,` don't modify the returned structure
+     * @param holder a #GdaHolder object
      */
     getNode(holder: Holder): SetNode
     getNodes(): SetNode[]
     /**
      * Finds a #GdaHolder using its position
+     * @param pos the position of the requested #GdaHolder, starting at %0
      */
     getNthHolder(pos: number): Holder
     /**
      * Finds a #GdaSetSource which contains the #GdaDataModel restricting the possible values of
      * `holder,` don't modify the returned structure.
+     * @param holder a #GdaHolder object
      */
     getSource(holder: Holder): SetSource
     /**
      * Finds the #GdaSetSource structure used in `set` for which `model` is a
      * the data model (the returned structure should not be modified).
+     * @param model a #GdaDataModel object
      */
     getSourceForModel(model: DataModel): SetSource
     getSources(): SetSource[]
@@ -13598,10 +14927,12 @@ class DataSelectIter {
      * Add to `set` all the holders of `set_to_merge`.
      * Note1: only the #GdaHolder of `set_to_merge` for which no holder in `set` has the same ID are merged
      * Note2: all the #GdaHolder merged in `set` are still used by `set_to_merge`.
+     * @param setToMerge a #GdaSet object
      */
     mergeWithSet(setToMerge: Set): void
     /**
      * Removes a #GdaHolder from the list of holders managed by `set`
+     * @param holder the #GdaHolder to remove from `set`
      */
     removeHolder(holder: Holder): void
     /**
@@ -13611,6 +14942,8 @@ class DataSelectIter {
      * Also for each #GdaHolder for which `source->`data_model is a source model,
      * this method calls gda_holder_set_source_model() with `model` to replace
      * the source by the new model
+     * @param source a pointer to a #GdaSetSource in `set`
+     * @param model a #GdaDataModel
      */
     replaceSourceModel(source: SetSource, model: DataModel): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -13648,6 +14981,10 @@ class DataSelectIter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13658,6 +14995,12 @@ class DataSelectIter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13681,6 +15024,7 @@ class DataSelectIter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13700,11 +15044,14 @@ class DataSelectIter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13712,6 +15059,8 @@ class DataSelectIter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13729,6 +15078,7 @@ class DataSelectIter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13774,6 +15124,7 @@ class DataSelectIter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13817,15 +15168,20 @@ class DataSelectIter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13866,6 +15222,7 @@ class DataSelectIter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13900,6 +15257,7 @@ class DataSelectIter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.DataModelIter */
@@ -13914,6 +15272,7 @@ class DataSelectIter {
     emit(sigName: "end-of-data"): void
     /**
      * Gets emitted when the row `iter` is currently pointing has changed
+     * @param row the new iter's row
      */
     connect(sigName: "row-changed", callback: ((row: number) => void)): number
     on(sigName: "row-changed", callback: (row: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -13923,6 +15282,9 @@ class DataSelectIter {
     /* Signals of Gda-6.0.Gda.Set */
     /**
      * Gets emitted when an attribute for any of the #GdaHolder objects managed by `set` has changed
+     * @param holder the GdaHolder for which an attribute changed
+     * @param attrName attribute's name
+     * @param attrValue attribute's value
      */
     connect(sigName: "holder-attr-changed", callback: ((holder: Holder, attrName: string, attrValue: any) => void)): number
     on(sigName: "holder-attr-changed", callback: (holder: Holder, attrName: string, attrValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -13937,6 +15299,7 @@ class DataSelectIter {
     /**
      * Gets emitted when `holder` in `set` has its type finally set, in case
      * it was #GDA_TYPE_NULL
+     * @param holder the #GdaHolder for which the #GType has been set
      */
     connect(sigName: "holder-type-set", callback: ((holder: Holder) => void)): number
     on(sigName: "holder-type-set", callback: (holder: Holder) => void, after?: boolean): NodeJS.EventEmitter
@@ -13953,6 +15316,7 @@ class DataSelectIter {
     emit(sigName: "public-data-changed"): void
     /**
      * Gets emitted when the data model in `source` has changed
+     * @param source the #GdaSetSource for which the `data_model` attribute has changed
      */
     connect(sigName: "source-model-changed", callback: ((source?: object | null) => void)): number
     on(sigName: "source-model-changed", callback: (source?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -13962,6 +15326,8 @@ class DataSelectIter {
     /**
      * Gets emitted when a #GdaHolder's in `set` is going to change its value. One can connect to
      * this signal to control which values `holder` can have (for example to implement some business rules)
+     * @param holder the #GdaHolder which is going to change
+     * @param newValue the proposed new value for `holder`
      */
     connect(sigName: "validate-holder-change", callback: ((holder: Holder, newValue: any) => GLib.Error)): number
     on(sigName: "validate-holder-change", callback: (holder: Holder, newValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -14006,6 +15372,7 @@ class DataSelectIter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14032,6 +15399,11 @@ class DataSelectIter {
     on(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::holders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::holders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -14063,12 +15435,13 @@ interface DbBase_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DbBase {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DbBase */
     /**
      * Compares two objects similar to g_strcmp(). In general, catalog and schema can be %NULL. In this case
      * those pairs are ignored. If we represent a full name as catalog.schema.name then two objects
      * null.null.customer and main.main.customer are identical.
+     * @param b second #GdaDbBase object
      */
     compare(b: DbBase): number
     /**
@@ -14092,10 +15465,12 @@ class DbBase {
     getSchema(): string
     /**
      * Set catalog name
+     * @param catalog Catalog name as a string
      */
     setCatalog(catalog: string): void
     /**
      * Set object name. If `name` is %NULL the function just returns.
+     * @param name Object name as a string
      */
     setName(name: string): void
     /**
@@ -14103,10 +15478,14 @@ class DbBase {
      * `name` always should be a valid, not %NULL string. The `name` must be
      * set. If `catalog` is %NULL `schema` may not be %NULL but if `schema` is
      * %NULL `catalog` also should be %NULL.
+     * @param catalog a catalog name associated with the table
+     * @param schema a schema name associated with the table
+     * @param name a table name associated with the table
      */
     setNames(catalog: string | null, schema: string | null, name: string): void
     /**
      * Set object schema. If `schema` is %NULL the function just returns.
+     * @param schema Schema name as a string
      */
     setSchema(schema: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -14144,6 +15523,10 @@ class DbBase {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14154,6 +15537,12 @@ class DbBase {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14177,6 +15566,7 @@ class DbBase {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14196,11 +15586,14 @@ class DbBase {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14208,6 +15601,8 @@ class DbBase {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14225,6 +15620,7 @@ class DbBase {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14270,6 +15666,7 @@ class DbBase {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14313,15 +15710,20 @@ class DbBase {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -14362,6 +15764,7 @@ class DbBase {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -14396,6 +15799,7 @@ class DbBase {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -14427,6 +15831,7 @@ class DbBase {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14457,21 +15862,26 @@ class DbCatalog {
     connection: Connection
     schemaName: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DbCatalog */
     /**
      * This method append `table` to the total list of all tables stored in `self`. This method increase
      * reference count for `table`.
+     * @param table table to append
      */
     appendTable(table: DbTable): void
     /**
      * This method append `view` to the total list of all views stored in `self`. This method increase
      * reference count for `view`.
+     * @param view view to append
      */
     appendView(view: DbView): void
     /**
      * Convenient function to get a table based on `name`. The coller is responsible
      * for calling gda_db_catalog_parse_cnc() before calling this function.
+     * @param catalog 
+     * @param schema 
+     * @param name table name
      */
     getTable(catalog: string, schema: string, name: string): DbTable
     getTables(): DbTable[]
@@ -14510,6 +15920,9 @@ class DbCatalog {
      *  return NULL;
      * ```
      * 
+     * @param catalog a catalog name or %NULL
+     * @param schema a schema name or %NULL
+     * @param name view name. Can't be %NULL
      */
     getView(catalog: string, schema: string, name: string): DbView
     getViews(): DbView[]
@@ -14521,6 +15934,7 @@ class DbCatalog {
     parseCnc(): boolean
     /**
      * For detailed description see gda_db_catalog_parse_file_from_path()
+     * @param xmlfile xml file as #GFile instance
      */
     parseFile(xmlfile: Gio.File): boolean
     /**
@@ -14579,6 +15993,7 @@ class DbCatalog {
      * returned if fails. The `xmlfile` will be validated internally using
      * gda_db_catalog_validate_file_from_path(). he same method can be used to validate xmlfile
      * before parsing it.
+     * @param xmlfile xml file to parse
      */
     parseFileFromPath(xmlfile: string): boolean
     /**
@@ -14606,10 +16021,12 @@ class DbCatalog {
     /**
      * This method writes database description as xml file.
      * Similar to gda_db_catalog_write_to_path()
+     * @param file a #GFile to write database description
      */
     writeToFile(file: Gio.File): boolean
     /**
      * Save content of `self` to a user friendly xml file.
+     * @param path path to xml file to save #GdaDbCatalog
      */
     writeToPath(path: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -14647,6 +16064,10 @@ class DbCatalog {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14657,6 +16078,12 @@ class DbCatalog {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14680,6 +16107,7 @@ class DbCatalog {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14699,11 +16127,14 @@ class DbCatalog {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14711,6 +16142,8 @@ class DbCatalog {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14728,6 +16161,7 @@ class DbCatalog {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14773,6 +16207,7 @@ class DbCatalog {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14816,15 +16251,20 @@ class DbCatalog {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -14865,6 +16305,7 @@ class DbCatalog {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -14899,6 +16340,7 @@ class DbCatalog {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -14930,6 +16372,7 @@ class DbCatalog {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14961,6 +16404,7 @@ class DbCatalog {
     static errorQuark(): GLib.Quark
     /**
      * Convenient method to varify xmlfile before prsing it.
+     * @param xmlfile xml file to validate
      */
     static validateFileFromPath(xmlfile: string): boolean
     static $gtype: GObject.Type
@@ -14993,7 +16437,7 @@ class DbColumn {
     table: DbTable
     unique: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DbColumn */
     /**
      * Get value for autoinc key
@@ -15044,51 +16488,63 @@ class DbColumn {
     /**
      * Populate `op` with information stored in `self`. This method is used to
      * prepare `op` for %GDA_SERVER_OPERATION_ADD_COLUMN operation.
+     * @param op #GdaServerOperation to add information
      */
     prepareAdd(op: ServerOperation): boolean
     /**
      * This method populate `op` with information stored in `self`.
+     * @param op a #GdaServerOperation instance to update for TABLE_CREATE operation
+     * @param order Order number for the column
      */
     prepareCreate(op: ServerOperation, order: number): boolean
     /**
      * Set value for auto-incremented key.
+     * @param autoinc value to set
      */
     setAutoinc(autoinc: boolean): void
     /**
      * Sets check string to the column.
+     * @param value value to set
      */
     setCheck(value: string): void
     /**
      * Set value for column comment.
+     * @param comnt comment to set
      */
     setComment(comnt: string): void
     setDefault(value: string): void
     /**
      * Set column name.
+     * @param name name as a string
      */
     setName(name: string): void
     setNnul(nnul: boolean): void
     /**
      * If `pkey` is %TRUE, the given column will be marked with PRIMERY KEY flag
+     * @param pkey value to set
      */
     setPkey(pkey: boolean): void
     /**
      * Scale is used for float number representation to specify a number of decimal digits.
      * This value is ignore for column types except float or double.
+     * @param scale scale value to set
      */
     setScale(scale: number): void
     /**
      * Set value for column size. This is relevant only for string column type.
+     * @param size value to set
      */
     setSize(size: number): void
     /**
      * Set type of the column as a #GType. For numeric type, #GDA_TYPE_NUMERIC should be used. Other
      * types, e.g. %G_TYPE_FLOAT or %G_TYPE_DOUBLE can also be used but precision and scale should not be
      * set. In this case appropriate types for DB implementation will be used, e.g. float4.
+     * @param type #GType for column
      */
     setType(type: GObject.Type): void
     /**
      * Set value for unique key.
+     * @param unique value to set
      */
     setUnique(unique: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -15126,6 +16582,10 @@ class DbColumn {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15136,6 +16596,12 @@ class DbColumn {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15159,6 +16625,7 @@ class DbColumn {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -15178,11 +16645,14 @@ class DbColumn {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -15190,6 +16660,8 @@ class DbColumn {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15207,6 +16679,7 @@ class DbColumn {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -15252,6 +16725,7 @@ class DbColumn {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -15295,15 +16769,20 @@ class DbColumn {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15344,6 +16823,7 @@ class DbColumn {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15378,15 +16858,18 @@ class DbColumn {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DbBuildable */
     /**
      * This method parse XML node and populate `self` object.
+     * @param node a node to parse
      */
     parseNode(node: libxml2.NodePtr): boolean
     /**
      * Write content from the `self` to the `node`
+     * @param node a node to write data in
      */
     writeNode(node: libxml2.NodePtr): boolean
     /* Methods of Gda-6.0.Gda.DdlModifiable */
@@ -15394,15 +16877,21 @@ class DbColumn {
      * This method executes CREATE operation. That is, #GdaDbTable, #GdaDbIndex, and #GdaDbView
      * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. #GdaDbColumn
      * implements ADD COLUMN operation as part of ALTER TABLE operation.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     create(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding DROP operation
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     drop(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
      * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     rename(cnc: Connection, userData?: object | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -15434,6 +16923,7 @@ class DbColumn {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15514,7 +17004,7 @@ interface DbFkey_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DbFkey {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DbFkey */
     getFieldName(): string[]
     getOndelete(): string
@@ -15528,22 +17018,29 @@ class DbFkey {
     getRefTable(): string
     /**
      * Prepare `op` object for execution by populating with information stored in `self`.
+     * @param op a #GdaServerOperation to populate
+     * @param i Order number
      */
     prepareCreate(op: ServerOperation, i: number): boolean
     /**
      * All arguments should be valid strings.
+     * @param field Field name as a string
+     * @param reffield A reference field name as a string
      */
     setField(field: string, reffield: string): void
     /**
      * Set action for ON_DELETE
+     * @param id #GdaDbFkeyReferenceAction action to set
      */
     setOndelete(id: DbFkeyReferenceAction): void
     /**
      * Set action for ON_UPDATE
+     * @param id #GdaDbFkeyReferenceAction action to set
      */
     setOnupdate(id: DbFkeyReferenceAction): void
     /**
      * Set reference table
+     * @param rtable reference table name
      */
     setRefTable(rtable: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -15581,6 +17078,10 @@ class DbFkey {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15591,6 +17092,12 @@ class DbFkey {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15614,6 +17121,7 @@ class DbFkey {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -15633,11 +17141,14 @@ class DbFkey {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -15645,6 +17156,8 @@ class DbFkey {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15662,6 +17175,7 @@ class DbFkey {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -15707,6 +17221,7 @@ class DbFkey {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -15750,15 +17265,20 @@ class DbFkey {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15799,6 +17319,7 @@ class DbFkey {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15833,15 +17354,18 @@ class DbFkey {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DbBuildable */
     /**
      * This method parse XML node and populate `self` object.
+     * @param node a node to parse
      */
     parseNode(node: libxml2.NodePtr): boolean
     /**
      * Write content from the `self` to the `node`
+     * @param node a node to write data in
      */
     writeNode(node: libxml2.NodePtr): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -15873,6 +17397,7 @@ class DbFkey {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15901,14 +17426,15 @@ class DbIndex {
     /* Properties of Gda-6.0.Gda.DbIndex */
     table: DbTable
     /* Fields of Gda-6.0.Gda.DbBase */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DbIndex */
     /**
      * Append to index filed to the current index instance, The `self` object will recieve full
      * ownership of the field. After this call, the reference count for `field` will be increased and
      * the instance of `fiels` must be destroyed by calling g_object_unref()
+     * @param field a field to set
      */
     appendField(field: DbIndexField): void
     /**
@@ -15920,6 +17446,7 @@ class DbIndex {
     /**
      * If `val` is %TRUE a "UNIQUE" will be added to the INDEX CREATE command, e.g.
      * CREATE UNIQUE INDEX ...
+     * @param val if set to %TRUE UNIQUE index type will be used.
      */
     setUnique(val: boolean): void
     /* Methods of Gda-6.0.Gda.DbBase */
@@ -15927,6 +17454,7 @@ class DbIndex {
      * Compares two objects similar to g_strcmp(). In general, catalog and schema can be %NULL. In this case
      * those pairs are ignored. If we represent a full name as catalog.schema.name then two objects
      * null.null.customer and main.main.customer are identical.
+     * @param b second #GdaDbBase object
      */
     compare(b: DbBase): number
     /**
@@ -15950,10 +17478,12 @@ class DbIndex {
     getSchema(): string
     /**
      * Set catalog name
+     * @param catalog Catalog name as a string
      */
     setCatalog(catalog: string): void
     /**
      * Set object name. If `name` is %NULL the function just returns.
+     * @param name Object name as a string
      */
     setName(name: string): void
     /**
@@ -15961,10 +17491,14 @@ class DbIndex {
      * `name` always should be a valid, not %NULL string. The `name` must be
      * set. If `catalog` is %NULL `schema` may not be %NULL but if `schema` is
      * %NULL `catalog` also should be %NULL.
+     * @param catalog a catalog name associated with the table
+     * @param schema a schema name associated with the table
+     * @param name a table name associated with the table
      */
     setNames(catalog: string | null, schema: string | null, name: string): void
     /**
      * Set object schema. If `schema` is %NULL the function just returns.
+     * @param schema Schema name as a string
      */
     setSchema(schema: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -16002,6 +17536,10 @@ class DbIndex {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16012,6 +17550,12 @@ class DbIndex {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -16035,6 +17579,7 @@ class DbIndex {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16054,11 +17599,14 @@ class DbIndex {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16066,6 +17614,8 @@ class DbIndex {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16083,6 +17633,7 @@ class DbIndex {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -16128,6 +17679,7 @@ class DbIndex {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -16171,15 +17723,20 @@ class DbIndex {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -16220,6 +17777,7 @@ class DbIndex {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -16254,6 +17812,7 @@ class DbIndex {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DdlModifiable */
@@ -16261,15 +17820,21 @@ class DbIndex {
      * This method executes CREATE operation. That is, #GdaDbTable, #GdaDbIndex, and #GdaDbView
      * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. #GdaDbColumn
      * implements ADD COLUMN operation as part of ALTER TABLE operation.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     create(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding DROP operation
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     drop(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
      * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     rename(cnc: Connection, userData?: object | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -16301,6 +17866,7 @@ class DbIndex {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -16333,7 +17899,7 @@ interface DbIndexField_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DbIndexField {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DbIndexField */
     getCollate(): string
     /**
@@ -16347,12 +17913,14 @@ class DbIndexField {
      * string but user should provide valid values. For instance, SQLite3 accepts only "BINARY",
      * "NOCASE", and "RTRIM" values. PostgreSQL, on the other hand expects a name of a callable object,
      * e.g. function.
+     * @param collate collate to set
      */
     setCollate(collate: string): void
     /**
      * Only full name will be extracted from `column`. The `column` instance should be freed using
      * g_object_unref(). The instance `self` take a copy of the `column` object by increasing its
      * referecne count.
+     * @param column column to add index to
      */
     setColumn(column: DbColumn): void
     setSortOrder(sorder: DbIndexSortOrder): void
@@ -16391,6 +17959,10 @@ class DbIndexField {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16401,6 +17973,12 @@ class DbIndexField {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -16424,6 +18002,7 @@ class DbIndexField {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16443,11 +18022,14 @@ class DbIndexField {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16455,6 +18037,8 @@ class DbIndexField {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16472,6 +18056,7 @@ class DbIndexField {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -16517,6 +18102,7 @@ class DbIndexField {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -16560,15 +18146,20 @@ class DbIndexField {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -16609,6 +18200,7 @@ class DbIndexField {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -16643,6 +18235,7 @@ class DbIndexField {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -16674,6 +18267,7 @@ class DbIndexField {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -16704,22 +18298,25 @@ class DbTable {
     comment: string
     istemp: string
     /* Fields of Gda-6.0.Gda.DbBase */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DbTable */
     /**
      * Append `column` to the internal list of columns
+     * @param column column to add
      */
     appendColumn(column: DbColumn): void
     /**
      * Adds global table constraint. It will be added to the sql string by the provider implementation
      * if it supports it. Usually, table constraint is very complex and the current method just append
      * a list of constraints to the sql string.
+     * @param constr a constraint string to append
      */
     appendConstraint(constr: string): void
     /**
      * Append `fkey` to the internal list of columns
+     * @param fkey fkry to add
      */
     appendFkey(fkey: DbFkey): void
     /**
@@ -16741,16 +18338,21 @@ class DbTable {
     /**
      * Populate `op` with information stored in `self`. This method sets `op` to execute CREATE_TABLE
      * operation.
+     * @param op an instance of #GdaServerOperation to populate.
+     * @param ifnotexists Set it to TRUE if "IF NOT EXISTS" should be added
      */
     prepareCreate(op: ServerOperation, ifnotexists: boolean): boolean
     /**
      * Set if the table should be temporary or not.  %FALSE is set by default.
+     * @param istemp Set if the table should be temporary
      */
     setIsTemp(istemp: boolean): void
     /**
      * With this method object `obj` in the database available through `cnc` will be updated using
      * ADD_COLUMN operation with information stored in `self`. This method is designed for internal use
      * only and should not be used for the new code. It will be obsolete.
+     * @param obj The corresponding meta object to take data from
+     * @param cnc opened connection
      */
     update(obj: MetaTable, cnc: Connection): boolean
     /* Methods of Gda-6.0.Gda.DbBase */
@@ -16758,6 +18360,7 @@ class DbTable {
      * Compares two objects similar to g_strcmp(). In general, catalog and schema can be %NULL. In this case
      * those pairs are ignored. If we represent a full name as catalog.schema.name then two objects
      * null.null.customer and main.main.customer are identical.
+     * @param b second #GdaDbBase object
      */
     compare(b: DbBase): number
     /**
@@ -16781,10 +18384,12 @@ class DbTable {
     getSchema(): string
     /**
      * Set catalog name
+     * @param catalog Catalog name as a string
      */
     setCatalog(catalog: string): void
     /**
      * Set object name. If `name` is %NULL the function just returns.
+     * @param name Object name as a string
      */
     setName(name: string): void
     /**
@@ -16792,10 +18397,14 @@ class DbTable {
      * `name` always should be a valid, not %NULL string. The `name` must be
      * set. If `catalog` is %NULL `schema` may not be %NULL but if `schema` is
      * %NULL `catalog` also should be %NULL.
+     * @param catalog a catalog name associated with the table
+     * @param schema a schema name associated with the table
+     * @param name a table name associated with the table
      */
     setNames(catalog: string | null, schema: string | null, name: string): void
     /**
      * Set object schema. If `schema` is %NULL the function just returns.
+     * @param schema Schema name as a string
      */
     setSchema(schema: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -16833,6 +18442,10 @@ class DbTable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16843,6 +18456,12 @@ class DbTable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -16866,6 +18485,7 @@ class DbTable {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16885,11 +18505,14 @@ class DbTable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16897,6 +18520,8 @@ class DbTable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16914,6 +18539,7 @@ class DbTable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -16959,6 +18585,7 @@ class DbTable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17002,15 +18629,20 @@ class DbTable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17051,6 +18683,7 @@ class DbTable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17085,15 +18718,18 @@ class DbTable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DbBuildable */
     /**
      * This method parse XML node and populate `self` object.
+     * @param node a node to parse
      */
     parseNode(node: libxml2.NodePtr): boolean
     /**
      * Write content from the `self` to the `node`
+     * @param node a node to write data in
      */
     writeNode(node: libxml2.NodePtr): boolean
     /* Methods of Gda-6.0.Gda.DdlModifiable */
@@ -17101,15 +18737,21 @@ class DbTable {
      * This method executes CREATE operation. That is, #GdaDbTable, #GdaDbIndex, and #GdaDbView
      * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. #GdaDbColumn
      * implements ADD COLUMN operation as part of ALTER TABLE operation.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     create(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding DROP operation
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     drop(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
      * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     rename(cnc: Connection, userData?: object | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -17141,6 +18783,7 @@ class DbTable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17188,9 +18831,9 @@ class DbView {
     istemp: boolean
     replace: boolean
     /* Fields of Gda-6.0.Gda.DbBase */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.DbView */
     getDefstring(): string
     getIfnoexist(): boolean
@@ -17199,6 +18842,7 @@ class DbView {
     /**
      * Populate `op` with information needed to perform CREATE_VIEW operation. This method was desgned
      * for internal use and will be obsolete in the future. Do not use it for the new code.
+     * @param op #GdaServerOperation instance to populate
      */
     prepareCreate(op: ServerOperation): boolean
     setDefstring(str: string): void
@@ -17210,6 +18854,7 @@ class DbView {
      * Compares two objects similar to g_strcmp(). In general, catalog and schema can be %NULL. In this case
      * those pairs are ignored. If we represent a full name as catalog.schema.name then two objects
      * null.null.customer and main.main.customer are identical.
+     * @param b second #GdaDbBase object
      */
     compare(b: DbBase): number
     /**
@@ -17233,10 +18878,12 @@ class DbView {
     getSchema(): string
     /**
      * Set catalog name
+     * @param catalog Catalog name as a string
      */
     setCatalog(catalog: string): void
     /**
      * Set object name. If `name` is %NULL the function just returns.
+     * @param name Object name as a string
      */
     setName(name: string): void
     /**
@@ -17244,10 +18891,14 @@ class DbView {
      * `name` always should be a valid, not %NULL string. The `name` must be
      * set. If `catalog` is %NULL `schema` may not be %NULL but if `schema` is
      * %NULL `catalog` also should be %NULL.
+     * @param catalog a catalog name associated with the table
+     * @param schema a schema name associated with the table
+     * @param name a table name associated with the table
      */
     setNames(catalog: string | null, schema: string | null, name: string): void
     /**
      * Set object schema. If `schema` is %NULL the function just returns.
+     * @param schema Schema name as a string
      */
     setSchema(schema: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -17285,6 +18936,10 @@ class DbView {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17295,6 +18950,12 @@ class DbView {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17318,6 +18979,7 @@ class DbView {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17337,11 +18999,14 @@ class DbView {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17349,6 +19014,8 @@ class DbView {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17366,6 +19033,7 @@ class DbView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17411,6 +19079,7 @@ class DbView {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17454,15 +19123,20 @@ class DbView {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17503,6 +19177,7 @@ class DbView {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17537,15 +19212,18 @@ class DbView {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DbBuildable */
     /**
      * This method parse XML node and populate `self` object.
+     * @param node a node to parse
      */
     parseNode(node: libxml2.NodePtr): boolean
     /**
      * Write content from the `self` to the `node`
+     * @param node a node to write data in
      */
     writeNode(node: libxml2.NodePtr): boolean
     /* Methods of Gda-6.0.Gda.DdlModifiable */
@@ -17553,15 +19231,21 @@ class DbView {
      * This method executes CREATE operation. That is, #GdaDbTable, #GdaDbIndex, and #GdaDbView
      * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. #GdaDbColumn
      * implements ADD COLUMN operation as part of ALTER TABLE operation.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     create(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding DROP operation
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     drop(cnc: Connection, userData?: object | null): boolean
     /**
      * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
      * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
+     * @param cnc Opened connection
+     * @param userData Additional information provided by the user
      */
     rename(cnc: Connection, userData?: object | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -17593,6 +19277,7 @@ class DbView {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17640,7 +19325,7 @@ interface HandlerBin_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HandlerBin {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -17676,6 +19361,10 @@ class HandlerBin {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17686,6 +19375,12 @@ class HandlerBin {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17709,6 +19404,7 @@ class HandlerBin {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17728,11 +19424,14 @@ class HandlerBin {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17740,6 +19439,8 @@ class HandlerBin {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17757,6 +19458,7 @@ class HandlerBin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17802,6 +19504,7 @@ class HandlerBin {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17845,15 +19548,20 @@ class HandlerBin {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17894,6 +19602,7 @@ class HandlerBin {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17928,11 +19637,13 @@ class HandlerBin {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataHandler */
     /**
      * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+     * @param type a #GType
      */
     acceptsGType(type: GObject.Type): boolean
     /**
@@ -17942,6 +19653,7 @@ class HandlerBin {
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
+     * @param type a #GType
      */
     getSaneInitValue(type: GObject.Type): any | null
     /**
@@ -17953,6 +19665,7 @@ class HandlerBin {
      * 
      * If the value is NULL or is of type GDA_TYPE_NULL,
      * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+     * @param value the value to be converted to a string, or %NULL
      */
     getSqlFromValue(value?: any | null): string
     /**
@@ -17961,6 +19674,7 @@ class HandlerBin {
      * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
      * 
      * Note: the returned value will be in the current locale representation.
+     * @param value the value to be converted to a string, or %NULL
      */
     getStrFromValue(value?: any | null): string
     /**
@@ -17971,6 +19685,8 @@ class HandlerBin {
      * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
      * if the `sql` string does not correspond to a valid SQL string for the requested type, then
      * the %NULL is returned.
+     * @param sql an SQL string, or %NULL
+     * @param type a GType
      */
     getValueFromSql(sql: string | null, type: GObject.Type): any
     /**
@@ -17983,6 +19699,8 @@ class HandlerBin {
      * %NULL is returned.
      * 
      * Note: the `str` string must be in the current locale representation
+     * @param str a string or %NULL
+     * @param type a GType
      */
     getValueFromStr(str: string | null, type: GObject.Type): any
     /* Signals of GObject-2.0.GObject.Object */
@@ -18014,6 +19732,7 @@ class HandlerBin {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18038,6 +19757,7 @@ class HandlerBin {
      * taking into account the locale).
      * 
      * The returned pointer is %NULL if there is no default data handler available for the `for_type` data type
+     * @param forType a #GType type
      */
     static getDefault(forType: GObject.Type): DataHandler
     static $gtype: GObject.Type
@@ -18046,7 +19766,7 @@ interface HandlerBoolean_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HandlerBoolean {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -18082,6 +19802,10 @@ class HandlerBoolean {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18092,6 +19816,12 @@ class HandlerBoolean {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18115,6 +19845,7 @@ class HandlerBoolean {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18134,11 +19865,14 @@ class HandlerBoolean {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18146,6 +19880,8 @@ class HandlerBoolean {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18163,6 +19899,7 @@ class HandlerBoolean {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18208,6 +19945,7 @@ class HandlerBoolean {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18251,15 +19989,20 @@ class HandlerBoolean {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18300,6 +20043,7 @@ class HandlerBoolean {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18334,11 +20078,13 @@ class HandlerBoolean {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataHandler */
     /**
      * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+     * @param type a #GType
      */
     acceptsGType(type: GObject.Type): boolean
     /**
@@ -18348,6 +20094,7 @@ class HandlerBoolean {
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
+     * @param type a #GType
      */
     getSaneInitValue(type: GObject.Type): any | null
     /**
@@ -18359,6 +20106,7 @@ class HandlerBoolean {
      * 
      * If the value is NULL or is of type GDA_TYPE_NULL,
      * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+     * @param value the value to be converted to a string, or %NULL
      */
     getSqlFromValue(value?: any | null): string
     /**
@@ -18367,6 +20115,7 @@ class HandlerBoolean {
      * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
      * 
      * Note: the returned value will be in the current locale representation.
+     * @param value the value to be converted to a string, or %NULL
      */
     getStrFromValue(value?: any | null): string
     /**
@@ -18377,6 +20126,8 @@ class HandlerBoolean {
      * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
      * if the `sql` string does not correspond to a valid SQL string for the requested type, then
      * the %NULL is returned.
+     * @param sql an SQL string, or %NULL
+     * @param type a GType
      */
     getValueFromSql(sql: string | null, type: GObject.Type): any
     /**
@@ -18389,6 +20140,8 @@ class HandlerBoolean {
      * %NULL is returned.
      * 
      * Note: the `str` string must be in the current locale representation
+     * @param str a string or %NULL
+     * @param type a GType
      */
     getValueFromStr(str: string | null, type: GObject.Type): any
     /* Signals of GObject-2.0.GObject.Object */
@@ -18420,6 +20173,7 @@ class HandlerBoolean {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18444,6 +20198,7 @@ class HandlerBoolean {
      * taking into account the locale).
      * 
      * The returned pointer is %NULL if there is no default data handler available for the `for_type` data type
+     * @param forType a #GType type
      */
     static getDefault(forType: GObject.Type): DataHandler
     static $gtype: GObject.Type
@@ -18452,7 +20207,7 @@ interface HandlerNumerical_ConstructProps extends GObject.Object_ConstructProps 
 }
 class HandlerNumerical {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -18488,6 +20243,10 @@ class HandlerNumerical {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18498,6 +20257,12 @@ class HandlerNumerical {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18521,6 +20286,7 @@ class HandlerNumerical {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18540,11 +20306,14 @@ class HandlerNumerical {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18552,6 +20321,8 @@ class HandlerNumerical {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18569,6 +20340,7 @@ class HandlerNumerical {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18614,6 +20386,7 @@ class HandlerNumerical {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18657,15 +20430,20 @@ class HandlerNumerical {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18706,6 +20484,7 @@ class HandlerNumerical {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18740,11 +20519,13 @@ class HandlerNumerical {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataHandler */
     /**
      * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+     * @param type a #GType
      */
     acceptsGType(type: GObject.Type): boolean
     /**
@@ -18754,6 +20535,7 @@ class HandlerNumerical {
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
+     * @param type a #GType
      */
     getSaneInitValue(type: GObject.Type): any | null
     /**
@@ -18765,6 +20547,7 @@ class HandlerNumerical {
      * 
      * If the value is NULL or is of type GDA_TYPE_NULL,
      * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+     * @param value the value to be converted to a string, or %NULL
      */
     getSqlFromValue(value?: any | null): string
     /**
@@ -18773,6 +20556,7 @@ class HandlerNumerical {
      * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
      * 
      * Note: the returned value will be in the current locale representation.
+     * @param value the value to be converted to a string, or %NULL
      */
     getStrFromValue(value?: any | null): string
     /**
@@ -18783,6 +20567,8 @@ class HandlerNumerical {
      * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
      * if the `sql` string does not correspond to a valid SQL string for the requested type, then
      * the %NULL is returned.
+     * @param sql an SQL string, or %NULL
+     * @param type a GType
      */
     getValueFromSql(sql: string | null, type: GObject.Type): any
     /**
@@ -18795,6 +20581,8 @@ class HandlerNumerical {
      * %NULL is returned.
      * 
      * Note: the `str` string must be in the current locale representation
+     * @param str a string or %NULL
+     * @param type a GType
      */
     getValueFromStr(str: string | null, type: GObject.Type): any
     /* Signals of GObject-2.0.GObject.Object */
@@ -18826,6 +20614,7 @@ class HandlerNumerical {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18850,6 +20639,7 @@ class HandlerNumerical {
      * taking into account the locale).
      * 
      * The returned pointer is %NULL if there is no default data handler available for the `for_type` data type
+     * @param forType a #GType type
      */
     static getDefault(forType: GObject.Type): DataHandler
     static $gtype: GObject.Type
@@ -18858,7 +20648,7 @@ interface HandlerString_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HandlerString {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -18894,6 +20684,10 @@ class HandlerString {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18904,6 +20698,12 @@ class HandlerString {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18927,6 +20727,7 @@ class HandlerString {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18946,11 +20747,14 @@ class HandlerString {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18958,6 +20762,8 @@ class HandlerString {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18975,6 +20781,7 @@ class HandlerString {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19020,6 +20827,7 @@ class HandlerString {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19063,15 +20871,20 @@ class HandlerString {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19112,6 +20925,7 @@ class HandlerString {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19146,11 +20960,13 @@ class HandlerString {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataHandler */
     /**
      * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+     * @param type a #GType
      */
     acceptsGType(type: GObject.Type): boolean
     /**
@@ -19160,6 +20976,7 @@ class HandlerString {
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
+     * @param type a #GType
      */
     getSaneInitValue(type: GObject.Type): any | null
     /**
@@ -19171,6 +20988,7 @@ class HandlerString {
      * 
      * If the value is NULL or is of type GDA_TYPE_NULL,
      * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+     * @param value the value to be converted to a string, or %NULL
      */
     getSqlFromValue(value?: any | null): string
     /**
@@ -19179,6 +20997,7 @@ class HandlerString {
      * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
      * 
      * Note: the returned value will be in the current locale representation.
+     * @param value the value to be converted to a string, or %NULL
      */
     getStrFromValue(value?: any | null): string
     /**
@@ -19189,6 +21008,8 @@ class HandlerString {
      * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
      * if the `sql` string does not correspond to a valid SQL string for the requested type, then
      * the %NULL is returned.
+     * @param sql an SQL string, or %NULL
+     * @param type a GType
      */
     getValueFromSql(sql: string | null, type: GObject.Type): any
     /**
@@ -19201,6 +21022,8 @@ class HandlerString {
      * %NULL is returned.
      * 
      * Note: the `str` string must be in the current locale representation
+     * @param str a string or %NULL
+     * @param type a GType
      */
     getValueFromStr(str: string | null, type: GObject.Type): any
     /* Signals of GObject-2.0.GObject.Object */
@@ -19232,6 +21055,7 @@ class HandlerString {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19257,6 +21081,7 @@ class HandlerString {
      * taking into account the locale).
      * 
      * The returned pointer is %NULL if there is no default data handler available for the `for_type` data type
+     * @param forType a #GType type
      */
     static getDefault(forType: GObject.Type): DataHandler
     static $gtype: GObject.Type
@@ -19265,7 +21090,7 @@ interface HandlerText_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HandlerText {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -19301,6 +21126,10 @@ class HandlerText {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19311,6 +21140,12 @@ class HandlerText {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19334,6 +21169,7 @@ class HandlerText {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19353,11 +21189,14 @@ class HandlerText {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19365,6 +21204,8 @@ class HandlerText {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19382,6 +21223,7 @@ class HandlerText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19427,6 +21269,7 @@ class HandlerText {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19470,15 +21313,20 @@ class HandlerText {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19519,6 +21367,7 @@ class HandlerText {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19553,11 +21402,13 @@ class HandlerText {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataHandler */
     /**
      * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+     * @param type a #GType
      */
     acceptsGType(type: GObject.Type): boolean
     /**
@@ -19567,6 +21418,7 @@ class HandlerText {
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
+     * @param type a #GType
      */
     getSaneInitValue(type: GObject.Type): any | null
     /**
@@ -19578,6 +21430,7 @@ class HandlerText {
      * 
      * If the value is NULL or is of type GDA_TYPE_NULL,
      * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+     * @param value the value to be converted to a string, or %NULL
      */
     getSqlFromValue(value?: any | null): string
     /**
@@ -19586,6 +21439,7 @@ class HandlerText {
      * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
      * 
      * Note: the returned value will be in the current locale representation.
+     * @param value the value to be converted to a string, or %NULL
      */
     getStrFromValue(value?: any | null): string
     /**
@@ -19596,6 +21450,8 @@ class HandlerText {
      * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
      * if the `sql` string does not correspond to a valid SQL string for the requested type, then
      * the %NULL is returned.
+     * @param sql an SQL string, or %NULL
+     * @param type a GType
      */
     getValueFromSql(sql: string | null, type: GObject.Type): any
     /**
@@ -19608,6 +21464,8 @@ class HandlerText {
      * %NULL is returned.
      * 
      * Note: the `str` string must be in the current locale representation
+     * @param str a string or %NULL
+     * @param type a GType
      */
     getValueFromStr(str: string | null, type: GObject.Type): any
     /* Signals of GObject-2.0.GObject.Object */
@@ -19639,6 +21497,7 @@ class HandlerText {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19663,6 +21522,7 @@ class HandlerText {
      * taking into account the locale).
      * 
      * The returned pointer is %NULL if there is no default data handler available for the `for_type` data type
+     * @param forType a #GType type
      */
     static getDefault(forType: GObject.Type): DataHandler
     static $gtype: GObject.Type
@@ -19671,15 +21531,17 @@ interface HandlerTime_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HandlerTime {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.HandlerTime */
     /**
      * Get a string representing the locale-dependent way to enter a date/time/datetime, using
      * a syntax suitable for the #GdauiFormatEntry widget
+     * @param type the type of data being handled
      */
     getFormat(type: GObject.Type): string
     /**
      * Get a string giving the user a hint about the locale-dependent requested format.
+     * @param type the type of data being handled
      */
     getHint(type: GObject.Type): string
     getNoLocaleStrFromValue(value: any): string
@@ -19690,6 +21552,11 @@ class HandlerTime {
      * 
      * The default implementation is `first=`G_DATE_MONTH, `sec=`G_DATE_DAY and `third=`G_DATE_YEAR
      * (the year is rendered on 4 digits) and the separator is '-'
+     * @param first what comes first in the date representation
+     * @param sec what comes second in the date representation
+     * @param third what comes third in the date representation
+     * @param separator separator character used between year, month and day
+     * @param twodigitsYears TRUE if year part of date must be rendered on 2 digits
      */
     setSqlSpec(first: GLib.DateDMY, sec: GLib.DateDMY, third: GLib.DateDMY, separator: number, twodigitsYears: boolean): void
     /**
@@ -19700,6 +21567,11 @@ class HandlerTime {
      * 
      * The default implementation depends on the current locale, except if `dh` was created
      * using gda_handler_time_new_no_locale().
+     * @param first what comes first in the date representation
+     * @param sec what comes second in the date representation
+     * @param third what comes third in the date representation
+     * @param separator separator character used between year, month and day
+     * @param twodigitsYears TRUE if year part of date must be rendered on 2 digits
      */
     setStrSpec(first: GLib.DateDMY, sec: GLib.DateDMY, third: GLib.DateDMY, separator: number, twodigitsYears: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -19737,6 +21609,10 @@ class HandlerTime {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19747,6 +21623,12 @@ class HandlerTime {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19770,6 +21652,7 @@ class HandlerTime {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19789,11 +21672,14 @@ class HandlerTime {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19801,6 +21687,8 @@ class HandlerTime {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19818,6 +21706,7 @@ class HandlerTime {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19863,6 +21752,7 @@ class HandlerTime {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19906,15 +21796,20 @@ class HandlerTime {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19955,6 +21850,7 @@ class HandlerTime {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19989,11 +21885,13 @@ class HandlerTime {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataHandler */
     /**
      * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+     * @param type a #GType
      */
     acceptsGType(type: GObject.Type): boolean
     /**
@@ -20003,6 +21901,7 @@ class HandlerTime {
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
+     * @param type a #GType
      */
     getSaneInitValue(type: GObject.Type): any | null
     /**
@@ -20014,6 +21913,7 @@ class HandlerTime {
      * 
      * If the value is NULL or is of type GDA_TYPE_NULL,
      * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+     * @param value the value to be converted to a string, or %NULL
      */
     getSqlFromValue(value?: any | null): string
     /**
@@ -20022,6 +21922,7 @@ class HandlerTime {
      * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
      * 
      * Note: the returned value will be in the current locale representation.
+     * @param value the value to be converted to a string, or %NULL
      */
     getStrFromValue(value?: any | null): string
     /**
@@ -20032,6 +21933,8 @@ class HandlerTime {
      * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
      * if the `sql` string does not correspond to a valid SQL string for the requested type, then
      * the %NULL is returned.
+     * @param sql an SQL string, or %NULL
+     * @param type a GType
      */
     getValueFromSql(sql: string | null, type: GObject.Type): any
     /**
@@ -20044,6 +21947,8 @@ class HandlerTime {
      * %NULL is returned.
      * 
      * Note: the `str` string must be in the current locale representation
+     * @param str a string or %NULL
+     * @param type a GType
      */
     getValueFromStr(str: string | null, type: GObject.Type): any
     /* Signals of GObject-2.0.GObject.Object */
@@ -20075,6 +21980,7 @@ class HandlerTime {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -20100,6 +22006,7 @@ class HandlerTime {
      * taking into account the locale).
      * 
      * The returned pointer is %NULL if there is no default data handler available for the `for_type` data type
+     * @param forType a #GType type
      */
     static getDefault(forType: GObject.Type): DataHandler
     static $gtype: GObject.Type
@@ -20108,7 +22015,7 @@ interface HandlerType_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HandlerType {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -20144,6 +22051,10 @@ class HandlerType {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20154,6 +22065,12 @@ class HandlerType {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -20177,6 +22094,7 @@ class HandlerType {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -20196,11 +22114,14 @@ class HandlerType {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -20208,6 +22129,8 @@ class HandlerType {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20225,6 +22148,7 @@ class HandlerType {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -20270,6 +22194,7 @@ class HandlerType {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -20313,15 +22238,20 @@ class HandlerType {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -20362,6 +22292,7 @@ class HandlerType {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -20396,11 +22327,13 @@ class HandlerType {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.DataHandler */
     /**
      * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+     * @param type a #GType
      */
     acceptsGType(type: GObject.Type): boolean
     /**
@@ -20410,6 +22343,7 @@ class HandlerType {
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
+     * @param type a #GType
      */
     getSaneInitValue(type: GObject.Type): any | null
     /**
@@ -20421,6 +22355,7 @@ class HandlerType {
      * 
      * If the value is NULL or is of type GDA_TYPE_NULL,
      * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+     * @param value the value to be converted to a string, or %NULL
      */
     getSqlFromValue(value?: any | null): string
     /**
@@ -20429,6 +22364,7 @@ class HandlerType {
      * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
      * 
      * Note: the returned value will be in the current locale representation.
+     * @param value the value to be converted to a string, or %NULL
      */
     getStrFromValue(value?: any | null): string
     /**
@@ -20439,6 +22375,8 @@ class HandlerType {
      * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
      * if the `sql` string does not correspond to a valid SQL string for the requested type, then
      * the %NULL is returned.
+     * @param sql an SQL string, or %NULL
+     * @param type a GType
      */
     getValueFromSql(sql: string | null, type: GObject.Type): any
     /**
@@ -20451,6 +22389,8 @@ class HandlerType {
      * %NULL is returned.
      * 
      * Note: the `str` string must be in the current locale representation
+     * @param str a string or %NULL
+     * @param type a GType
      */
     getValueFromStr(str: string | null, type: GObject.Type): any
     /* Signals of GObject-2.0.GObject.Object */
@@ -20482,6 +22422,7 @@ class HandlerType {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -20506,6 +22447,7 @@ class HandlerType {
      * taking into account the locale).
      * 
      * The returned pointer is %NULL if there is no default data handler available for the `for_type` data type
+     * @param forType a #GType type
      */
     static getDefault(forType: GObject.Type): DataHandler
     static $gtype: GObject.Type
@@ -20546,7 +22488,7 @@ class Holder {
      */
     validateChanges: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.Holder */
     /**
      * Copy constructor.
@@ -20567,6 +22509,7 @@ class Holder {
      * to it using gda_holder_set_value() or gda_holder_take_value().
      * 
      * `holder'`s value is set to %NULL.
+     * @param error a #GError explaining why `holder` is declared invalid, or %NULL
      */
     forceInvalidE(error?: GLib.Error | null): void
     /**
@@ -20605,6 +22548,7 @@ class Holder {
      * as well.
      * 
      * Otherwise, this method returns %NULL, and if `col` is not %NULL, then it is set to 0.
+     * @param col a place to store the column in the model sourcing the holder, or %NULL
      */
     getSourceModel(col: number): DataModel
     /**
@@ -20619,6 +22563,7 @@ class Holder {
     /**
      * Same functionality as gda_holder_get_value() except that it returns the value as a string
      * (the conversion is done using `dh` if not %NULL, or the default data handler otherwise).
+     * @param dh a #GdaDataHandler to use, or %NULL
      */
     getValueStr(dh?: DataHandler | null): string
     /**
@@ -20636,6 +22581,7 @@ class Holder {
      * involved is set to match the other when any of them sets its type to something different than GDA_TYPE_NULL).
      * 
      * If `bind_to` is %NULL, then `holder` will not be bound anymore.
+     * @param bindTo a #GdaHolder or %NULL
      */
     setBind(bindTo: Holder): boolean
     /**
@@ -20644,10 +22590,12 @@ class Holder {
      * gda_value_new_null().
      * 
      * NOTE: the default value does not need to be of the same type as the one required by `holder`.
+     * @param value a value to set the holder's default value, or %NULL
      */
     setDefaultValue(value: any): void
     /**
      * Sets if the holder can have a NULL value. If `not_null` is TRUE, then that won't be allowed
+     * @param notNull TRUE if `holder` should not accept %NULL values
      */
     setNotNull(notNull: boolean): void
     /**
@@ -20657,6 +22605,8 @@ class Holder {
      * 
      * If `model` is %NULL, then the effect is to cancel ant previous call to gda_holder_set_source_model()
      * where `model` was not %NULL.
+     * @param model a #GdaDataModel object or %NULL
+     * @param col the reference column in `model`
      */
     setSourceModel(model: DataModel, col: number): boolean
     /**
@@ -20677,6 +22627,7 @@ class Holder {
      * Note3: before the change is accepted by `holder,` the "validate-change" signal will be emitted (the value
      * of which can prevent the change from happening) which can be connected to to have a greater control
      * of which values `holder` can have, or implement some business rules.
+     * @param value a value to set the holder to, or %NULL
      */
     setValue(value?: any | null): boolean
     /**
@@ -20687,6 +22638,8 @@ class Holder {
      * Note1: if `value` is %NULL or is the "NULL" string, then `holder'`s value is set to %NULL.
      * Note2: if `holder` can't accept the `value` value, then this method returns FALSE, and `holder` will be left
      * in an invalid state.
+     * @param dh a #GdaDataHandler to use, or %NULL
+     * @param value a value to set the holder to, as a string
      */
     setValueStr(dh: DataHandler, value: string): boolean
     /**
@@ -20709,6 +22662,8 @@ class Holder {
      * Note2: before the change is accepted by `holder,` the "validate-change" signal will be emitted (the value
      * of which can prevent the change from happening) which can be connected to to have a greater control
      * of which values `holder` can have, or implement some business rules.
+     * @param value a const value to set the holder to
+     * @param valueChanged a boolean set with TRUE if the value changes, FALSE elsewhere.
      */
     takeStaticValue(value: any, valueChanged: boolean): any
     /**
@@ -20734,6 +22689,7 @@ class Holder {
      * 
      * Note4: in any case, the caller should not use `value` anymore after this function returns because it may
      * have been freed. If necessary, use gda_holder_get_value() to get the real value.
+     * @param value a value to set the holder to
      */
     takeValue(value: any): boolean
     /**
@@ -20775,6 +22731,10 @@ class Holder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20785,6 +22745,12 @@ class Holder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -20808,6 +22774,7 @@ class Holder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -20827,11 +22794,14 @@ class Holder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -20839,6 +22809,8 @@ class Holder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20856,6 +22828,7 @@ class Holder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -20901,6 +22874,7 @@ class Holder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -20944,15 +22918,20 @@ class Holder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -20993,6 +22972,7 @@ class Holder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -21027,6 +23007,7 @@ class Holder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.Lockable */
@@ -21079,6 +23060,7 @@ class Holder {
     /**
      * Gets emitted when `holder` is going to change its value. One can connect to
      * this signal to control which values `holder` can have (for example to implement some business rules)
+     * @param newValue the proposed new value for `holder`
      */
     connect(sigName: "validate-change", callback: ((newValue: any) => GLib.Error)): number
     on(sigName: "validate-change", callback: (newValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -21114,6 +23096,7 @@ class Holder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -21198,14 +23181,20 @@ interface MetaStore_ConstructProps extends GObject.Object_ConstructProps {
     schema?: string
 }
 class MetaStore {
+    /* Properties of Gda-6.0.Gda.MetaStore */
+    readonly catalog: string
+    readonly cnc: Connection
+    readonly cncString: string
+    readonly schema: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.MetaStore */
     /**
      * Creates a new #GdaDataModelArray data model which can be used, after being correctly filled,
      * with the gda_meta_store_modify*() methods.*
      * 
      * To be used by provider's implementation
+     * @param tableName the name of a table present in `store`
      */
     createModifyDataModel(tableName: string): DataModel
     createStruct(features: MetaStructFeature): MetaStruct
@@ -21227,6 +23216,16 @@ class MetaStore {
      * 
      * If `catalog` is not %NULL, then `schema` must also be not %NULL (the same restriction applies to
      * `ref_catalog` and `ref_schema)`.
+     * @param mstruct a #GdaMetaStruct, or %NULL
+     * @param fkName the name of the foreign key to declare
+     * @param catalog the catalog in which the table (for which the foreign key is for) is, or %NULL
+     * @param schema the schema in which the table (for which the foreign key is for) is, or %NULL
+     * @param table the name of the table (for which the foreign key is for)
+     * @param refCatalog the catalog in which the referenced table is, or %NULL
+     * @param refSchema the schema in which the referenced table is, or %NULL
+     * @param refTable the name of the referenced table
+     * @param colnames an array of column names from the table for which the foreign key is for
+     * @param refColnames an array of column names from the referenced table
      */
     declareForeignKey(mstruct: MetaStruct | null, fkName: string, catalog: string | null, schema: string | null, table: string, refCatalog: string | null, refSchema: string | null, refTable: string, colnames: string[], refColnames: string[]): boolean
     /**
@@ -21237,6 +23236,8 @@ class MetaStore {
      * For more information about
      * SQL identifiers are represented in `store,` see the
      * <link linkend="information_schema:sql_identifiers">meta data section about SQL identifiers</link>.
+     * @param selectSql a SELECT statement
+     * @param vars a hash table with all variables names as keys and GValue* as value, representing values for all the variables mentioned in `select_sql`. If there is no variable then this part can be omitted.
      */
     extract(selectSql: string, vars?: GLib.HashTable | null): DataModel
     /**
@@ -21249,6 +23250,7 @@ class MetaStore {
      * 
      * If there is no attribute named `att_name` then `att_value` is set to %NULL
      * and `error` will contain the GDA_META_STORE_ATTRIBUTE_NOT_FOUND_ERROR error code, and FALSE is returned.
+     * @param attName name of the attribute to get
      */
     getAttributeValue(attName: string): [ /* returnType */ boolean, /* attValue */ string ]
     /**
@@ -21267,11 +23269,18 @@ class MetaStore {
     /**
      * Propagates an update to `store,` the update's contents is represented by `new_data,` this function is
      * primarily reserved to database providers.
+     * @param tableName the name of the table to modify within `store`
+     * @param newData a #GdaDataModel containing the new data to set in `table_name,` or %NULL (treated as a data model with no row at all)
+     * @param condition SQL expression (which may contain variables) defining the rows which are being obsoleted by `new_data,` or %NULL
+     * @param valueNames names of values
+     * @param values values
      */
     modify(tableName: string, newData: DataModel | null, condition: string | null, valueNames: string[], values: any[]): boolean
     /**
      * Propagates an update to `store,` the update's contents is represented by `new_data,` this function is
      * primarily reserved to database providers.
+     * @param context a #GdaMetaContext context describing what to modify in `store`
+     * @param newData a #GdaDataModel containing the new data to set in `table_name,` or %NULL (treated as a data model with no row at all)
      */
     modifyWithContext(context: MetaContext, newData?: DataModel | null): boolean
     /**
@@ -21322,6 +23331,7 @@ class MetaStore {
      *           descr CDATA #IMPLIED>
      * 
      * <!ELEMENT definition (#PCDATA)>]]></programlisting>
+     * @param xmlDescription an XML description of the table or view to add to `store`
      */
     schemaAddCustomObject(xmlDescription: string): boolean
     /**
@@ -21335,6 +23345,7 @@ class MetaStore {
      * The tables are ordered in a way that tables dependencies
      * are respected: if table B has a foreign key on table A, then table A will be listed before table B in the returned
      * list.
+     * @param tableName the name of the table for which all the dependencies must be listed
      */
     schemaGetDependTables(tableName: string): string[]
     /**
@@ -21343,16 +23354,20 @@ class MetaStore {
     schemaGetStructure(): MetaStruct
     /**
      * Removes the custom database object named `obj_name`.
+     * @param objName name of the custom object to remove
      */
     schemaRemoveCustomObject(objName: string): boolean
     /**
      * Set the value of the attribute named `att_name` to `att_value;` see gda_meta_store_get_attribute_value() for
      * more information.
+     * @param attName name of the attribute to set
+     * @param attValue value of the attribute to set, or %NULL to unset the attribute
      */
     setAttributeValue(attName: string, attValue?: string | null): boolean
     /**
      * Specifies how `store` must handle SQL identifiers it has to store. This method is mainly used by
      * database providers.
+     * @param style a style
      */
     setIdentifiersStyle(style: SqlIdentifierStyle): void
     /**
@@ -21360,6 +23375,7 @@ class MetaStore {
      * keyword or not.
      * 
      * This method is mainly used by database providers.
+     * @param func a #GdaSqlReservedKeywordsFunc function, or %NULL
      */
     setReservedKeywordsFunc(func?: SqlReservedKeywordsFunc | null): void
     /**
@@ -21375,6 +23391,14 @@ class MetaStore {
      * 
      * See gda_meta_store_declare_foreign_key() for more information anout the `catalog,` `schema,` `name,`
      * `ref_catalog,` `ref_schema` and `ref_name` arguments.
+     * @param mstruct a #GdaMetaStruct, or %NULL
+     * @param fkName the name of the foreign key to declare
+     * @param catalog the catalog in which the table (for which the foreign key is for) is, or %NULL
+     * @param schema the schema in which the table (for which the foreign key is for) is, or %NULL
+     * @param table the name of the table (for which the foreign key is for)
+     * @param refCatalog the catalog in which the referenced table is, or %NULL
+     * @param refSchema the schema in which the referenced table is, or %NULL
+     * @param refTable the name of the referenced table
      */
     undeclareForeignKey(mstruct: MetaStruct | null, fkName: string, catalog: string | null, schema: string | null, table: string, refCatalog: string | null, refSchema: string | null, refTable: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -21412,6 +23436,10 @@ class MetaStore {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21422,6 +23450,12 @@ class MetaStore {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -21445,6 +23479,7 @@ class MetaStore {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -21464,11 +23499,14 @@ class MetaStore {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -21476,6 +23514,8 @@ class MetaStore {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21493,6 +23533,7 @@ class MetaStore {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -21538,6 +23579,7 @@ class MetaStore {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -21581,15 +23623,20 @@ class MetaStore {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -21630,6 +23677,7 @@ class MetaStore {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -21664,11 +23712,13 @@ class MetaStore {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.MetaStore */
     /**
      * This signal is emitted when the `store'`s contents have changed (the changes are in the `changes` list)
+     * @param changes a list of changes made, as a #GSList of pointers to #GdaMetaStoreChange (which must not be modified)
      */
     connect(sigName: "meta-changed", callback: ((changes: MetaStoreChange[]) => void)): number
     on(sigName: "meta-changed", callback: (changes: MetaStoreChange[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -21688,6 +23738,7 @@ class MetaStore {
      * This signal is emitted when the contents of a table should be updated (data to update or insert only;
      * deleting data is done automatically). This signal is used for internal purposes by the #GdaConnection
      * object.
+     * @param suggest the suggested update, as a #GdaMetaContext structure
      */
     connect(sigName: "suggest-update", callback: ((suggest: MetaContext) => GLib.Error)): number
     on(sigName: "suggest-update", callback: (suggest: MetaContext) => void, after?: boolean): NodeJS.EventEmitter
@@ -21723,12 +23774,33 @@ class MetaStore {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::catalog", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::catalog", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::catalog", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::catalog", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::catalog", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::cnc", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cnc", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::cnc", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::cnc", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::cnc", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::cnc-string", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cnc-string", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::cnc-string", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::cnc-string", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::cnc-string", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::schema", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::schema", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21750,6 +23822,8 @@ class MetaStore {
      * The returned SQL identifier can be used in conjunction with gda_connection_update_meta_store(),
      * gda_connection_get_meta_store_data(), gda_connection_get_meta_store_data_v() and
      * gda_meta_store_extract().
+     * @param id an SQL identifier
+     * @param cnc a #GdaConnection
      */
     static sqlIdentifierQuote(id: string, cnc: Connection): string
     static $gtype: GObject.Type
@@ -21760,8 +23834,11 @@ interface MetaStruct_ConstructProps extends GObject.Object_ConstructProps {
     metaStore?: MetaStore
 }
 class MetaStruct {
+    /* Properties of Gda-6.0.Gda.MetaStruct */
+    readonly features: number
+    readonly metaStore: MetaStore
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.MetaStruct */
     /**
      * Creates a new #GdaMetaDbObject structure in `mstruct` to represent the database object (of type `type)`
@@ -21783,6 +23860,10 @@ class MetaStruct {
      * 
      * For more information, see the <link linkend="information_schema:sql_identifiers">
      * meta data section about SQL identifiers</link>.
+     * @param type the type of object to add (which can be GDA_META_DB_UNKNOWN)
+     * @param catalog the catalog the object belongs to (as a G_TYPE_STRING GValue), or %NULL
+     * @param schema the schema the object belongs to (as a G_TYPE_STRING GValue), or %NULL
+     * @param name the object's name (as a G_TYPE_STRING GValue), not %NULL
      */
     complement(type: MetaDbObjectType, catalog: any | null, schema: any | null, name: any): MetaDbObject | null
     /**
@@ -21806,6 +23887,7 @@ class MetaStruct {
      * of `dbo`.
      * 
      * Please refer to gda_meta_struct_complement() form more information.
+     * @param dbo a #GdaMetaDbObject part of `mstruct`
      */
     complementDepend(dbo: MetaDbObject): boolean
     /**
@@ -21815,10 +23897,13 @@ class MetaStruct {
      * if `schema` is %NULL then any schema will be used (if `schema` is %NULL then catalog must also be %NULL).
      * 
      * Please refer to gda_meta_struct_complement() form more information.
+     * @param catalog name of a catalog, or %NULL
+     * @param schema name of a schema, or %NULL
      */
     complementSchema(catalog?: any | null, schema?: any | null): boolean
     /**
      * Creates a new graph (in the GraphViz syntax) representation of `mstruct`.
+     * @param info informs what kind of information to show in the resulting graph
      */
     dumpAsGraph(info: MetaGraphInfo): string | null
     /**
@@ -21832,19 +23917,28 @@ class MetaStruct {
      * 
      * If one or both of `catalog` and `schema` are %NULL, and more than one database object matches the name, then
      * the return value is also %NULL.
+     * @param catalog the catalog the object belongs to (as a G_TYPE_STRING GValue), or %NULL
+     * @param schema the schema the object belongs to (as a G_TYPE_STRING GValue), or %NULL
+     * @param name the object's name (as a G_TYPE_STRING GValue), not %NULL
      */
     getDbObject(catalog: any | null, schema: any | null, name: any): MetaDbObject | null
     /**
      * Tries to find the #GdaMetaTableColumn representing the column named `col_name` in `table`.
+     * @param table the #GdaMetaTable structure to find the column for
+     * @param colName the name of the column to find (as a G_TYPE_STRING GValue)
      */
     getTableColumn(table: MetaTable, colName: any): MetaTableColumn | null
     /**
      * Loads an XML description into `mstruct`. This method is still experimental and no description
      * the XML file structure is given, and no guarantee that it will remain as it is given.
+     * @param catalog the catalog name, or %NULL
+     * @param schema the schema name, or %NULL
+     * @param xmlSpecFile the specifications as the name of an XML file
      */
     loadFromXmlFile(catalog: string | null, schema: string | null, xmlSpecFile: string): boolean
     /**
      * Reorders the list of database objects within `mstruct` in a way specified by `sort_type`.
+     * @param sortType the kind of sorting requested
      */
     sortDbObjects(sortType: MetaSortType): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -21882,6 +23976,10 @@ class MetaStruct {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21892,6 +23990,12 @@ class MetaStruct {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -21915,6 +24019,7 @@ class MetaStruct {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -21934,11 +24039,14 @@ class MetaStruct {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -21946,6 +24054,8 @@ class MetaStruct {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21963,6 +24073,7 @@ class MetaStruct {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -22008,6 +24119,7 @@ class MetaStruct {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -22051,15 +24163,20 @@ class MetaStruct {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -22100,6 +24217,7 @@ class MetaStruct {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -22134,6 +24252,7 @@ class MetaStruct {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -22165,12 +24284,23 @@ class MetaStruct {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::features", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::features", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::features", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::features", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::features", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::meta-store", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::meta-store", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -22189,10 +24319,11 @@ interface PStmt_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PStmt {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.PStmt */
     /**
      * Copies `src'`s data to `dest`
+     * @param dest a #GdaPStmt object
      */
     copyContents(dest: PStmt): void
     /**
@@ -22224,24 +24355,29 @@ class PStmt {
     /**
      * Set column's types for statement. `types` is stalen and should
      * no be modified
+     * @param types an array of types to use for each column
      */
     setCols(types: GObject.Type[]): void
     /**
      * Informs `pstmt` that it corresponds to the preparation of the `stmt` statement
+     * @param stmt a #GdaStatement object, or %NULL
      */
     setGdaStatement(stmt?: Statement | null): void
     /**
      * List of parameters' IDs (as gchar *), list is stolen
+     * @param params a list of strings with ID's to set
      */
     setParamIds(params: string[]): void
     /**
      * Set SQL code used for this prepared statement, mem freed by GdaPStmt
+     * @param sql 
      */
     setSql(sql: string): void
     /**
      * Set the list of #GdaColumn objects which data models created from this
      * prepared statement can copy. The list is stolen, so you should not
      * free it.
+     * @param columns a list of #GdaColumn
      */
     setTmplColumns(columns: Column[]): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -22279,6 +24415,10 @@ class PStmt {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22289,6 +24429,12 @@ class PStmt {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -22312,6 +24458,7 @@ class PStmt {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -22331,11 +24478,14 @@ class PStmt {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -22343,6 +24493,8 @@ class PStmt {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22360,6 +24512,7 @@ class PStmt {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -22405,6 +24558,7 @@ class PStmt {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -22448,15 +24602,20 @@ class PStmt {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -22497,6 +24656,7 @@ class PStmt {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -22531,6 +24691,7 @@ class PStmt {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -22562,6 +24723,7 @@ class PStmt {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -22585,14 +24747,18 @@ interface RepetitiveStatement_ConstructProps extends GObject.Object_ConstructPro
     statement?: Statement
 }
 class RepetitiveStatement {
+    /* Properties of Gda-6.0.Gda.RepetitiveStatement */
+    readonly statement: Statement
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.RepetitiveStatement */
     /**
      * Specifies that `rstmt` be executed one time with the values contained in `values`.
      * 
      * A new #GdaSet to be used as the `values` argument can be obtained using
      * gda_repetitive_statement_get_template_set().
+     * @param values a #GdaSet object with the values to be used
+     * @param makeCopy %TRUE if `values` is copied, and %FALSE if `values` is only ref'ed
      */
     appendSet(values: Set, makeCopy: boolean): boolean
     /**
@@ -22604,6 +24770,7 @@ class RepetitiveStatement {
      * `rstmt` object.
      * 
      * Use this object with gda_repetitive_statement_append_set().
+     * @param set a place to store the returned template set
      */
     getTemplateSet(set: Set): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -22641,6 +24808,10 @@ class RepetitiveStatement {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22651,6 +24822,12 @@ class RepetitiveStatement {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -22674,6 +24851,7 @@ class RepetitiveStatement {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -22693,11 +24871,14 @@ class RepetitiveStatement {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -22705,6 +24886,8 @@ class RepetitiveStatement {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22722,6 +24905,7 @@ class RepetitiveStatement {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -22767,6 +24951,7 @@ class RepetitiveStatement {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -22810,15 +24995,20 @@ class RepetitiveStatement {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -22859,6 +25049,7 @@ class RepetitiveStatement {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -22893,6 +25084,7 @@ class RepetitiveStatement {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -22924,12 +25116,18 @@ class RepetitiveStatement {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::statement", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::statement", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::statement", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::statement", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::statement", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -22951,8 +25149,12 @@ interface Row_ConstructProps extends GObject.Object_ConstructProps {
     nbValues?: number
 }
 class Row {
+    /* Properties of Gda-6.0.Gda.Row */
+    readonly model: DataModel
+    readonly modelRow: number
+    readonly nbValues: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.Row */
     getLength(): number
     /**
@@ -22960,28 +25162,34 @@ class Row {
      * 
      * This is a pointer to the internal array of values. Don't try to free
      * or modify it (modifying is reserved to database provider's implementations).
+     * @param num field index.
      */
     getValue(num: number): any | null
     /**
      * Marks `value` as being invalid. This method is mainly used by database
      * providers' implementations to report any error while reading a value from the database.
+     * @param value a #GValue belonging to `row` (obtained with gda_row_get_value()).
      */
     invalidateValue(value: any): void
     /**
      * Marks `value` as being invalid. This method is mainly used by database
      * providers' implementations to report any error while reading a value from the database.
+     * @param value a #GValue belonging to `row` (obtained with gda_row_get_value()).
+     * @param error the error which lead to the invalidation
      */
     invalidateValueE(value: any, error?: GLib.Error | null): void
     /**
      * Tells if `value` has been marked as being invalid by gda_row_invalidate_value().
      * This method is mainly used by database
      * providers' implementations to report any error while reading a value from the database.
+     * @param value a #GValue belonging to `row` (obtained with gda_row_get_value()).
      */
     valueIsValid(value: any): boolean
     /**
      * Tells if `value` has been marked as being invalid by gda_row_invalidate_value().
      * This method is mainly used by database
      * providers' implementations to report any error while reading a value from the database.
+     * @param value a #GValue belonging to `row` (obtained with gda_row_get_value()).
      */
     valueIsValidE(value: any): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -23019,6 +25227,10 @@ class Row {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23029,6 +25241,12 @@ class Row {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -23052,6 +25270,7 @@ class Row {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -23071,11 +25290,14 @@ class Row {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -23083,6 +25305,8 @@ class Row {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23100,6 +25324,7 @@ class Row {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -23145,6 +25370,7 @@ class Row {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -23188,15 +25414,20 @@ class Row {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -23237,6 +25468,7 @@ class Row {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -23271,6 +25503,7 @@ class Row {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -23302,12 +25535,28 @@ class Row {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::model-row", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model-row", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::model-row", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::model-row", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::model-row", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::nb-values", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::nb-values", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::nb-values", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::nb-values", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::nb-values", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -23332,21 +25581,31 @@ interface ServerOperation_ConstructProps extends GObject.Object_ConstructProps {
     specResource?: string
 }
 class ServerOperation {
+    /* Properties of Gda-6.0.Gda.ServerOperation */
+    readonly connection: Connection
+    readonly opType: number
+    readonly provider: ServerProvider
+    readonly specFilename: string
+    readonly specResource: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.ServerOperation */
     addItemToSequence(seqPath: string): number
     delItemFromSequence(itemPath: string): boolean
     /**
      * Get the complete path to the parent of the node defined by `path`
+     * @param path a complete path to a node (starting with "/")
      */
     getNodeParent(path: string): string
     /**
      * Get the last part of `path`
+     * @param path a complete path to a node (starting with "/")
      */
     getNodePathPortion(path: string): string
     /**
      * Convenience function to get the type of a node.
+     * @param path a complete path to a node (starting with "/")
+     * @param status a place to store the status of the node, or %NULL
      */
     getNodeType(path: string, status?: ServerOperationNodeStatus | null): ServerOperationNodeType
     /**
@@ -23360,6 +25619,7 @@ class ServerOperation {
     /**
      * Fetch the contents of a sequence. `path` can describe either a sequence (for example "/SEQNAME") or an item in a sequence
      * (for example "/SEQNAME/3")
+     * @param path a complete path to a sequence node (starting with "/")
      */
     getSequenceItemNames(path: string): string[]
     getSequenceMaxSize(path: string): number
@@ -23369,6 +25629,7 @@ class ServerOperation {
     getSqlIdentifierAtPath(path: string): string
     /**
      * Get the value for the node at the `path` path
+     * @param path a complete path to a node (starting with "/")
      */
     getValueAt(path: string): any | null
     /**
@@ -23376,6 +25637,7 @@ class ServerOperation {
      * 
      * if `xml_file` is not %NULL, the validity of `op` is tested against that specification,
      * and not against the current `op'`s specification.
+     * @param xmlFile an XML specification file (see gda_server_operation_new()) or %NULL
      */
     isValid(xmlFile?: string | null): boolean
     /**
@@ -23383,21 +25645,25 @@ class ServerOperation {
      * 
      * if `xml_data` is not %NULL, the validity of `op` is tested against that specification,
      * and not against the current `op'`s specification.
+     * @param resource the name of a resource containing an XML specification data (see gda_server_operation_new()) or %NULL
      */
     isValidFromResource(resource?: string | null): boolean
     /**
      * Loads the contents of `node` into `op`. The XML tree passed through the `node`
      * argument must correspond to an XML tree saved using gda_server_operation_save_data_to_xml().
+     * @param node a #xmlNodePtr
      */
     loadDataFromXml(node: libxml2.NodePtr): boolean
     /**
      * Creates a new database using the specifications in `op`. `op` can be obtained using
      * gda_server_provider_create_operation(), or gda_server_operation_prepare_create_database().
+     * @param provider the database provider to use, or %NULL if `op` has been created using gda_server_operation_prepare_create_database()
      */
     performCreateDatabase(provider?: string | null): boolean
     /**
      * Destroys an existing database using the specifications in `op`. `op` can be obtained using
      * gda_server_provider_create_operation(), or gda_server_operation_prepare_drop_database().
+     * @param provider the database provider to use, or %NULL if `op` has been created using gda_server_operation_prepare_drop_database()
      */
     performDropDatabase(provider?: string | null): boolean
     /**
@@ -23439,6 +25705,8 @@ class ServerOperation {
      *     </itemizedlist>
      *  </para></listitem>
      * </itemizedlist>
+     * @param value a string
+     * @param path a complete path to a node (starting with "/")
      */
     setValueAt(value: string | null, path: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -23476,6 +25744,10 @@ class ServerOperation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23486,6 +25758,12 @@ class ServerOperation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -23509,6 +25787,7 @@ class ServerOperation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -23528,11 +25807,14 @@ class ServerOperation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -23540,6 +25822,8 @@ class ServerOperation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23557,6 +25841,7 @@ class ServerOperation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -23602,6 +25887,7 @@ class ServerOperation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -23645,15 +25931,20 @@ class ServerOperation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -23694,6 +25985,7 @@ class ServerOperation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -23728,11 +26020,14 @@ class ServerOperation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.ServerOperation */
     /**
      * Gets emitted whenever a new sequence item (from a sequence template) has been added
+     * @param seqPath the path to the new sequence item
+     * @param itemIndex the index (starting from 0) of the new sequence item in the sequence
      */
     connect(sigName: "sequence-item-added", callback: ((seqPath: string, itemIndex: number) => void)): number
     on(sigName: "sequence-item-added", callback: (seqPath: string, itemIndex: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -23741,6 +26036,8 @@ class ServerOperation {
     emit(sigName: "sequence-item-added", seqPath: string, itemIndex: number): void
     /**
      * Gets emitted whenever a sequence item is about to be removed
+     * @param seqPath the path to the sequence item to be removed
+     * @param itemIndex the index (starting from 0) of the sequence item in the sequence
      */
     connect(sigName: "sequence-item-remove", callback: ((seqPath: string, itemIndex: number) => void)): number
     on(sigName: "sequence-item-remove", callback: (seqPath: string, itemIndex: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -23776,12 +26073,38 @@ class ServerOperation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::op-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::op-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::op-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::op-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::op-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::provider", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::provider", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::provider", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::provider", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::provider", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spec-filename", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spec-filename", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spec-filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spec-filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spec-filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::spec-resource", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::spec-resource", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::spec-resource", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::spec-resource", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::spec-resource", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -23797,6 +26120,7 @@ class ServerOperation {
     static errorQuark(): GLib.Quark
     /**
      * Get a string version of `type`
+     * @param type a #GdaServerOperationType value
      */
     static opTypeToString(type: ServerOperationType): string
     /**
@@ -23806,6 +26130,8 @@ class ServerOperation {
      * 
      * If `db_name` is left %NULL, then the name of the database to create will have to be set in the
      * returned #GdaServerOperation using gda_server_operation_set_value_at().
+     * @param provider the database provider to use
+     * @param dbName the name of the database to create, or %NULL
      */
     static prepareCreateDatabase(provider: string, dbName?: string | null): ServerOperation | null
     /**
@@ -23815,10 +26141,13 @@ class ServerOperation {
      * 
      * If `db_name` is left %NULL, then the name of the database to drop will have to be set in the
      * returned #GdaServerOperation using gda_server_operation_set_value_at().
+     * @param provider the database provider to use
+     * @param dbName the name of the database to drop, or %NULL
      */
     static prepareDropDatabase(provider: string, dbName?: string | null): ServerOperation | null
     /**
      * Performs the reverse of gda_server_operation_op_type_to_string()
+     * @param str a string
      */
     static stringToOpType(str: string): ServerOperationType
     static $gtype: GObject.Type
@@ -23827,7 +26156,7 @@ interface ServerProvider_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ServerProvider {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.ServerProvider */
     /**
      * Creates a new #GdaServerOperation object which can be modified in order to perform the `type` type of
@@ -23836,6 +26165,9 @@ class ServerProvider {
      *  <listitem>named values which ID is a path in the resulting GdaServerOperation object, to initialize some value</listitem>
      *  <listitem>named values which may change the contents of the GdaServerOperation, see <link linkend="gda-server-op-information-std">this section</link> for more information</listitem>
      * </itemizedlist>
+     * @param cnc a #GdaConnection object which will be used to perform an action, or %NULL
+     * @param type the type of operation requested
+     * @param options a list of parameters or %NULL
      */
     createOperation(cnc: Connection | null, type: ServerOperationType, options?: Set | null): ServerOperation | null
     /**
@@ -23844,21 +26176,28 @@ class ServerProvider {
      * 
      * If `prov` does not have its own parser, then %NULL is returned, and a general SQL parser can be obtained
      * using gda_sql_parser_new().
+     * @param cnc a #GdaConnection, or %NULL
      */
     createParser(cnc?: Connection | null): SqlParser
     /**
      * Escapes `str` for use within an SQL command (to avoid SQL injection attacks). Note that the returned value still needs
      * to be enclosed in single quotes before being used in an SQL statement.
+     * @param cnc a #GdaConnection object, or %NULL
+     * @param str a string to escape
      */
     escapeString(cnc: Connection | null, str: string): string
     /**
      * Find a #GdaDataHandler object to manipulate data of type `for_type`.
      * 
      * Note: this function is currently very poorly implemented by database providers.
+     * @param cnc a #GdaConnection object, or %NULL
+     * @param forType a DBMS type definition
      */
     getDataHandlerDbms(cnc: Connection | null, forType: string): DataHandler
     /**
      * Find a #GdaDataHandler object to manipulate data of type `for_type`. The returned object must not be modified.
+     * @param cnc a #GdaConnection object, or %NULL
+     * @param forType a #GType
      */
     getDataHandlerGType(cnc: Connection | null, forType: GObject.Type): DataHandler
     /**
@@ -23867,6 +26206,8 @@ class ServerProvider {
      * The returned value may be %NULL either if the provider does not implement that method, or if
      * there is no DBMS data type which could contain data of the `g_type` type (for example %NULL may be
      * returned if a DBMS has integers only up to 4 bytes and a #G_TYPE_INT64 is requested).
+     * @param cnc a #GdaConnection object or %NULL
+     * @param type a #GType value type
      */
     getDefaultDbmsType(cnc: Connection | null, type: GObject.Type): string | null
     /**
@@ -23875,6 +26216,7 @@ class ServerProvider {
     getName(): string
     /**
      * Get the version of the database to which the connection is opened.
+     * @param cnc a #GdaConnection object
      */
     getServerVersion(cnc: Connection): string
     /**
@@ -23885,11 +26227,15 @@ class ServerProvider {
     /**
      * Reserved to database provider's implementations: get the #GdaDataHandler associated to `prov`
      * for connection `cnc`. You probably want to use gda_server_provider_get_data_handler_g_type().
+     * @param cnc a #GdaConnection
+     * @param gType a #GType
+     * @param dbmsType a database type
      */
     handlerFind(cnc: Connection | null, gType: GObject.Type, dbmsType?: string | null): DataHandler
     /**
      * Reserved to database provider's implementations. This method defines a default data handler for
      * `provider,` and returns that #GdaDataHandler.
+     * @param type a #GType
      */
     handlerUseDefault(type: GObject.Type): DataHandler
     /**
@@ -23901,10 +26247,14 @@ class ServerProvider {
     /**
      * Performs the operation described by `op`. Note that `op` is not destroyed by this method
      * and can be reused.
+     * @param cnc a #GdaConnection object which will be used to perform the action, or %NULL
+     * @param op a #GdaServerOperation object
      */
     performOperation(cnc: Connection | null, op: ServerOperation): boolean
     /**
      * Performs the operation described by `op,` using the SQL from the rendering of the operation
+     * @param cnc a #GdaConnection object which will be used to perform an action, or %NULL
+     * @param op a #GdaServerOperation object
      */
     performOperationDefault(cnc: Connection | null, op: ServerOperation): boolean
     /**
@@ -23913,6 +26263,8 @@ class ServerProvider {
      * 
      * This function's purpose is mainly informative to get the actual SQL code which would be executed to perform
      * the operation; to actually perform the operation, use gda_server_provider_perform_operation().
+     * @param cnc a #GdaConnection object which will be used to render the action, or %NULL
+     * @param op a #GdaServerOperation object
      */
     renderOperation(cnc: Connection | null, op: ServerOperation): string | null
     /**
@@ -23930,23 +26282,36 @@ class ServerProvider {
      * If `dbms_type` is not %NULL, then if will contain a constant string representing
      * the database type used for the conversion if the conversion was successfull, or %NULL
      * otherwise.
+     * @param cnc a #GdaConnection object, or %NULL
+     * @param string the SQL string to convert to a value
+     * @param preferredType a #GType, or #G_TYPE_INVALID
+     * @param dbmsType place to get the actual database type used if the conversion succeeded, or %NULL
      */
     stringToValue(cnc: Connection | null, string: string, preferredType: GObject.Type, dbmsType?: string | null): any
     /**
      * Tests if a feature is supported
+     * @param cnc a #GdaConnection object, or %NULL
+     * @param feature #GdaConnectionFeature feature to test
      */
     supportsFeature(cnc: Connection | null, feature: ConnectionFeature): boolean
     /**
      * Tells if `provider` supports the `type` of operation on the `cnc` connection, using the
      * (optional) `options` parameters.
+     * @param cnc a #GdaConnection object which would be used to perform an action, or %NULL
+     * @param type the type of operation requested
+     * @param options a list of named parameters, or %NULL
      */
     supportsOperation(cnc: Connection | null, type: ServerOperationType, options?: Set | null): boolean
     /**
      * Unescapes `str` for use within an SQL command. This is the exact opposite of gda_server_provider_escape_string().
+     * @param cnc a #GdaConnection object, or %NULL
+     * @param str a string to escape
      */
     unescapeString(cnc: Connection | null, str: string): string
     /**
      * Produces a fully quoted and escaped string from a GValue
+     * @param cnc a #GdaConnection object, or %NULL
+     * @param from #GValue to convert from
      */
     valueToSqlString(cnc: Connection | null, from: any): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -23984,6 +26349,10 @@ class ServerProvider {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23994,6 +26363,12 @@ class ServerProvider {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -24017,6 +26392,7 @@ class ServerProvider {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -24036,11 +26412,14 @@ class ServerProvider {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -24048,6 +26427,8 @@ class ServerProvider {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24065,6 +26446,7 @@ class ServerProvider {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -24110,6 +26492,7 @@ class ServerProvider {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -24153,15 +26536,20 @@ class ServerProvider {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -24202,6 +26590,7 @@ class ServerProvider {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -24236,6 +26625,7 @@ class ServerProvider {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.Lockable */
@@ -24289,6 +26679,7 @@ class ServerProvider {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -24313,11 +26704,14 @@ class ServerProvider {
      * 
      * NB: if `cnc` is NOT %NULL and has a #GdaWorker associated, and if we are in its worker thread, then this function
      *     returns %NULL (to avoid generating contexts which are never used)
+     * @param cnc a #GdaConnection, or %NULL
      */
     static getRealMainContext(cnc?: Connection | null): GLib.MainContext
     /**
      * Loads and returns the contents of the specified resource.
      * This function should only be used by database provider's implementations
+     * @param provName the provider's name
+     * @param resource the name of the resource to load
      */
     static loadResourceContents(provName: string, resource: string): string
     /**
@@ -24328,6 +26722,9 @@ class ServerProvider {
      * `provider`.
      * 
      * Warning: this function must only be called once for each different values of `type` and for each `klass`
+     * @param klass a #GdaServerProviderClass object
+     * @param type a #GdaServerProviderFunctionsType type
+     * @param functionsSet a pointer to the function set, or %NULL
      */
     static setImplFunctions(klass: ServerProviderClass, type: ServerProviderFunctionsType, functionsSet?: object | null): void
     static $gtype: GObject.Type
@@ -24348,6 +26745,7 @@ interface Set_ConstructProps extends GObject.Object_ConstructProps {
 class Set {
     /* Properties of Gda-6.0.Gda.Set */
     description: string
+    readonly holders: object
     id: string
     name: string
     /**
@@ -24357,7 +26755,7 @@ class Set {
      */
     validateChanges: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.Set */
     /**
      * Adds `holder` to the list of holders managed within `set`.
@@ -24365,6 +26763,7 @@ class Set {
      * NOTE: if `set` already has a #GdaHolder with the same ID as `holder,` then `holder`
      * will not be added to the set (even if `holder'`s type or value is not the same as the
      * one already in `set)`.
+     * @param holder a #GdaHolder object
      */
     addHolder(holder: Holder): boolean
     /**
@@ -24374,35 +26773,42 @@ class Set {
     /**
      * Finds a #GdaSetGroup which lists a  #GdaSetNode containing `holder,`
      * don't modify the returned structure.
+     * @param holder a #GdaHolder object
      */
     getGroup(holder: Holder): SetGroup
     getGroups(): SetGroup[]
     /**
      * Finds a #GdaHolder using its ID
+     * @param holderId the ID of the requested value holder
      */
     getHolder(holderId: string): Holder
     /**
      * Get the value of the #GdaHolder which ID is `holder_id`
+     * @param holderId the ID of the holder to set the value
      */
     getHolderValue(holderId: string): any | null
     getHolders(): Holder[]
     /**
      * Finds a #GdaSetNode holding information for `holder,` don't modify the returned structure
+     * @param holder a #GdaHolder object
      */
     getNode(holder: Holder): SetNode
     getNodes(): SetNode[]
     /**
      * Finds a #GdaHolder using its position
+     * @param pos the position of the requested #GdaHolder, starting at %0
      */
     getNthHolder(pos: number): Holder
     /**
      * Finds a #GdaSetSource which contains the #GdaDataModel restricting the possible values of
      * `holder,` don't modify the returned structure.
+     * @param holder a #GdaHolder object
      */
     getSource(holder: Holder): SetSource
     /**
      * Finds the #GdaSetSource structure used in `set` for which `model` is a
      * the data model (the returned structure should not be modified).
+     * @param model a #GdaDataModel object
      */
     getSourceForModel(model: DataModel): SetSource
     getSources(): SetSource[]
@@ -24418,10 +26824,12 @@ class Set {
      * Add to `set` all the holders of `set_to_merge`.
      * Note1: only the #GdaHolder of `set_to_merge` for which no holder in `set` has the same ID are merged
      * Note2: all the #GdaHolder merged in `set` are still used by `set_to_merge`.
+     * @param setToMerge a #GdaSet object
      */
     mergeWithSet(setToMerge: Set): void
     /**
      * Removes a #GdaHolder from the list of holders managed by `set`
+     * @param holder the #GdaHolder to remove from `set`
      */
     removeHolder(holder: Holder): void
     /**
@@ -24431,6 +26839,8 @@ class Set {
      * Also for each #GdaHolder for which `source->`data_model is a source model,
      * this method calls gda_holder_set_source_model() with `model` to replace
      * the source by the new model
+     * @param source a pointer to a #GdaSetSource in `set`
+     * @param model a #GdaDataModel
      */
     replaceSourceModel(source: SetSource, model: DataModel): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -24468,6 +26878,10 @@ class Set {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24478,6 +26892,12 @@ class Set {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -24501,6 +26921,7 @@ class Set {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -24520,11 +26941,14 @@ class Set {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -24532,6 +26956,8 @@ class Set {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24549,6 +26975,7 @@ class Set {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -24594,6 +27021,7 @@ class Set {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -24637,15 +27065,20 @@ class Set {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -24686,6 +27119,7 @@ class Set {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -24720,11 +27154,15 @@ class Set {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.Set */
     /**
      * Gets emitted when an attribute for any of the #GdaHolder objects managed by `set` has changed
+     * @param holder the GdaHolder for which an attribute changed
+     * @param attrName attribute's name
+     * @param attrValue attribute's value
      */
     connect(sigName: "holder-attr-changed", callback: ((holder: Holder, attrName: string, attrValue: any) => void)): number
     on(sigName: "holder-attr-changed", callback: (holder: Holder, attrName: string, attrValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -24739,6 +27177,7 @@ class Set {
     /**
      * Gets emitted when `holder` in `set` has its type finally set, in case
      * it was #GDA_TYPE_NULL
+     * @param holder the #GdaHolder for which the #GType has been set
      */
     connect(sigName: "holder-type-set", callback: ((holder: Holder) => void)): number
     on(sigName: "holder-type-set", callback: (holder: Holder) => void, after?: boolean): NodeJS.EventEmitter
@@ -24755,6 +27194,7 @@ class Set {
     emit(sigName: "public-data-changed"): void
     /**
      * Gets emitted when the data model in `source` has changed
+     * @param source the #GdaSetSource for which the `data_model` attribute has changed
      */
     connect(sigName: "source-model-changed", callback: ((source?: object | null) => void)): number
     on(sigName: "source-model-changed", callback: (source?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -24764,6 +27204,8 @@ class Set {
     /**
      * Gets emitted when a #GdaHolder's in `set` is going to change its value. One can connect to
      * this signal to control which values `holder` can have (for example to implement some business rules)
+     * @param holder the #GdaHolder which is going to change
+     * @param newValue the proposed new value for `holder`
      */
     connect(sigName: "validate-holder-change", callback: ((holder: Holder, newValue: any) => GLib.Error)): number
     on(sigName: "validate-holder-change", callback: (holder: Holder, newValue: any) => void, after?: boolean): NodeJS.EventEmitter
@@ -24808,6 +27250,7 @@ class Set {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -24819,6 +27262,11 @@ class Set {
     on(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::holders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::holders", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::holders", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -24859,16 +27307,24 @@ interface SqlBuilder_ConstructProps extends GObject.Object_ConstructProps {
 }
 class SqlBuilder {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.SqlBuilder */
     /**
      * Creates a new CASE ... WHEN ... THEN ... ELSE ... END expression. The WHEN expression and the THEN
      * expression IDs are taken from the `when_array` and `then_array` at the same index, for each index inferior to
      * `args_size`.
+     * @param testExpr the expression ID representing the test of the CASE, or %0
+     * @param elseExpr the expression ID representing the ELSE expression, or %0
+     * @param whenArray an array containing each WHEN expression ID, having at least `args_size` elements
+     * @param thenArray an array containing each THEN expression ID, having at least `args_size` elements
      */
     addCase(testExpr: SqlBuilderId, elseExpr: SqlBuilderId, whenArray: SqlBuilderId[], thenArray: SqlBuilderId[]): SqlBuilderId
     /**
      * Builds a new expression which represents a condition (or operation).
+     * @param op type of condition
+     * @param op1 the ID of the 1st argument (not 0)
+     * @param op2 the ID of the 2nd argument (may be %0 if `op` needs only one operand)
+     * @param op3 the ID of the 3rd argument (may be %0 if `op` needs only one or two operand)
      */
     addCond(op: SqlOperatorType, op1: SqlBuilderId, op2: SqlBuilderId, op3: SqlBuilderId): SqlBuilderId
     /**
@@ -24877,6 +27333,8 @@ class SqlBuilder {
      * As a side case, if `ops_ids_size` is 1,
      * then `op` is ignored, and the returned ID represents `op_ids[`0] (this avoids any problem for example
      * when `op` is GDA_SQL_OPERATOR_TYPE_AND and there is in fact only one operand).
+     * @param op type of condition
+     * @param opIds an array of ID for the arguments (not %0)
      */
     addCondV(op: SqlOperatorType, opIds: SqlBuilderId[]): SqlBuilderId
     /**
@@ -24887,6 +27345,7 @@ class SqlBuilder {
      * If `value'`s type is a string then it is possible to customize how the value has to be interpreted by passing a
      * specific #GdaDataHandler object as `dh`. This feature is very rarely used and the `dh` argument should generally
      * be %NULL.
+     * @param value value to set the expression to, or %NULL or a GDA_TYPE_NULL value to represent an SQL NULL
      */
     addExprValue(value?: any | null): SqlBuilderId
     /**
@@ -24898,6 +27357,8 @@ class SqlBuilder {
      * Calling this with a %NULL `table_name` is equivalent to calling gda_sql_builder_add_id().
      * 
      * For SELECT queries, see gda_sql_builder_select_add_field().
+     * @param fieldName a field name
+     * @param tableName a table name, or %NULL
      */
     addFieldId(fieldName: string, tableName?: string | null): SqlBuilderId
     /**
@@ -24905,6 +27366,8 @@ class SqlBuilder {
      * 
      * Specifies that the field represented by `field_name` will be set to the value identified
      * by `value`
+     * @param fieldName a field name
+     * @param value value to set the field to, or %NULL or a GDA_TYPE_NULL value to represent an SQL NULL
      */
     addFieldValueAsGvalue(fieldName: string, value?: any | null): void
     /**
@@ -24922,10 +27385,14 @@ class SqlBuilder {
      * </itemizedlist>
      * 
      * See also gda_sql_builder_add_field_value() and gda_sql_builder_add_field_value_as_gvalue().
+     * @param fieldId the ID of the field's name or definition
+     * @param valueId the ID of the value to set the field to, or %0
      */
     addFieldValueId(fieldId: SqlBuilderId, valueId: SqlBuilderId): void
     /**
      * Builds a new expression which represents a function applied to some arguments
+     * @param funcName the functions's name
+     * @param args an array of IDs representing the function's arguments
      */
     addFunction(funcName: string, args: SqlBuilderId[]): SqlBuilderId
     /**
@@ -24950,6 +27417,7 @@ class SqlBuilder {
      * because "date" is an SQL reserved keyword.
      * 
      * For fields, see gda_sql_builder_add_field_id().
+     * @param str a string
      */
     addId(str: string): SqlBuilderId
     /**
@@ -24966,27 +27434,35 @@ class SqlBuilder {
      * ##age::int
      * ]]>
      * </programlisting>
+     * @param paramName parameter's name
+     * @param type parameter's type
+     * @param nullok TRUE if the parameter can be set to %NULL
      */
     addParam(paramName: string, type: GObject.Type, nullok: boolean): SqlBuilderId
     /**
      * Adds an expression which is a subselect.
+     * @param sqlst a pointer to a #GdaSqlStatement, which has to be a SELECT or compound SELECT. This will be copied.
      */
     addSubSelect(sqlst: SqlStatement): SqlBuilderId
     /**
      * Add a sub select to a COMPOUND statement
+     * @param sqlst a pointer to a #GdaSqlStatement, which has to be a SELECT or compound SELECT. This will be copied.
      */
     compoundAddSubSelect(sqlst: SqlStatement): void
     /**
      * Add a sub select to a COMPOUND statement
+     * @param subselect a #GdaSqlBuilder, which has to be a SELECT or compound SELECT. This will be copied.
      */
     compoundAddSubSelectFromBuilder(subselect: SqlBuilder): void
     /**
      * Changes the type of compound which `builder` is making, for a COMPOUND statement
+     * @param compoundType a type of compound
      */
     compoundSetType(compoundType: SqlStatementCompoundType): void
     /**
      * Exports a part managed by `builder` as a new #GdaSqlExpr, which can represent any expression
      * in a statement.
+     * @param id the ID of the expression to be exported, (must be a valid ID in `builder,` not %0)
      */
     exportExpression(id: SqlBuilderId): SqlExpr
     /**
@@ -25002,15 +27478,20 @@ class SqlBuilder {
     getStatement(): Statement
     /**
      * Imports the `expr` into `builder`.
+     * @param expr a #GdaSqlExpr obtained using gda_sql_builder_export_expression()
      */
     importExpression(expr: SqlExpr): SqlBuilderId
     /**
      * Imports the an expression located in `query` into `builder`.
+     * @param query a #GdaSqlBuilder object to get expression from
+     * @param exprId a #GdaSqlBuilderId of the expression in `query`
      */
     importExpressionFromBuilder(query: SqlBuilder, exprId: SqlBuilderId): SqlBuilderId
     /**
      * Alter a join in a SELECT statement to make its condition use equal field
      * values in the fields named `field_name` in both tables, via the USING keyword.
+     * @param joinId the ID of the join to modify (not %0)
+     * @param fieldName the name of the field to use in the join condition (not %NULL)
      */
     joinAddField(joinId: SqlBuilderId, fieldName: string): void
     /**
@@ -25019,22 +27500,30 @@ class SqlBuilder {
      * Add a selected selected item to the SELECT statement.
      * 
      * For non-SELECT statements, see gda_sql_builder_add_field_id().
+     * @param fieldName a field name
+     * @param tableName a table name, or %NULL
+     * @param alias an alias (eg. for the "AS" clause), or %NULL
      */
     selectAddField(fieldName: string, tableName?: string | null, alias?: string | null): SqlBuilderId
     /**
      * Adds a new target to a SELECT statement
+     * @param tableName the name of the target table
+     * @param alias the alias to give to the target, or %NULL
      */
     selectAddTarget(tableName: string, alias?: string | null): SqlBuilderId
     /**
      * Adds a new target to a SELECT statement. If there already exists a target representing
      * the same table and the same alias (or with the same absence of alias) then the same target
      * ID is returned instead of the ID of a new target.
+     * @param tableId the ID of the expression holding a table reference (not %0)
+     * @param alias the alias to give to the target, or %NULL
      */
     selectAddTargetId(tableId: SqlBuilderId, alias?: string | null): SqlBuilderId
     /**
      * Valid only for: SELECT statements
      * 
      * Adds the `expr_id` expression to the GROUP BY clause's expressions list
+     * @param exprId the ID of the expression to set use in the GROUP BY clause, or 0 to unset any previous GROUP BY clause
      */
     selectGroupBy(exprId: SqlBuilderId): void
     /**
@@ -25044,10 +27533,17 @@ class SqlBuilder {
      * the target represented by `right_target_id,` then the actual type of join may be switched from
      * %GDA_SQL_SELECT_JOIN_LEFT to %GDA_SQL_SELECT_JOIN_RIGHT or from %GDA_SQL_SELECT_JOIN_RIGHT to
      * %GDA_SQL_SELECT_JOIN_LEFT.
+     * @param leftTargetId the ID of the left target to use (not %0)
+     * @param rightTargetId the ID of the right target to use (not %0)
+     * @param joinType the type of join
+     * @param joinExpr joining expression's ID, or %0
      */
     selectJoinTargets(leftTargetId: SqlBuilderId, rightTargetId: SqlBuilderId, joinType: SqlSelectJoinType, joinExpr: SqlBuilderId): SqlBuilderId
     /**
      * Adds a new ORDER BY expression to a SELECT statement.
+     * @param exprId the ID of the expression to use during sorting (not %0)
+     * @param asc %TRUE for an ascending sorting
+     * @param collationName name of the collation to use when sorting, or %NULL
      */
     selectOrderBy(exprId: SqlBuilderId, asc: boolean, collationName?: string | null): void
     /**
@@ -25057,12 +27553,15 @@ class SqlBuilder {
      * If `distinct` is %TRUE, then the ID of an expression can be specified as the `expr_id` argument:
      * if not %0, this is the expression used to apply the DISTINCT clause on (the resuting SQL
      * will then usually be "... DISTINCT ON &lt;expression&gt;...").
+     * @param distinct set to %TRUE to have the DISTINCT requirement
+     * @param exprId the ID of the DISTINCT ON expression, or %0 if no expression is to be used. It is ignored           if `distinct` is %FALSE.
      */
     selectSetDistinct(distinct: boolean, exprId: SqlBuilderId): void
     /**
      * Valid only for: SELECT statements
      * 
      * Sets the HAVING condition of the statement
+     * @param condId the ID of the expression to set as HAVING condition, or 0 to unset any previous HAVING condition
      */
     selectSetHaving(condId: SqlBuilderId): void
     /**
@@ -25073,18 +27572,22 @@ class SqlBuilder {
      * 
      * If `limit_count_expr_id` is %0, then removes any LIMIT which may have been imposed by a previous
      * call to this method.
+     * @param limitCountExprId the ID of the LIMIT expression, or %0
+     * @param limitOffsetExprId the ID of the OFFSET expression, or %0
      */
     selectSetLimit(limitCountExprId: SqlBuilderId, limitOffsetExprId: SqlBuilderId): void
     /**
      * Valid only for: INSERT, UPDATE, DELETE statements
      * 
      * Sets the name of the table on which the built statement operates.
+     * @param tableName a table name
      */
     setTable(tableName: string): void
     /**
      * Valid only for: UPDATE, DELETE, SELECT statements
      * 
      * Sets the WHERE condition of the statement
+     * @param condId the ID of the expression to set as WHERE condition, or 0 to unset any previous WHERE condition
      */
     setWhere(condId: SqlBuilderId): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -25122,6 +27625,10 @@ class SqlBuilder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25132,6 +27639,12 @@ class SqlBuilder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -25155,6 +27668,7 @@ class SqlBuilder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -25174,11 +27688,14 @@ class SqlBuilder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -25186,6 +27703,8 @@ class SqlBuilder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25203,6 +27722,7 @@ class SqlBuilder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -25248,6 +27768,7 @@ class SqlBuilder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -25291,15 +27812,20 @@ class SqlBuilder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -25340,6 +27866,7 @@ class SqlBuilder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -25374,6 +27901,7 @@ class SqlBuilder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -25405,6 +27933,7 @@ class SqlBuilder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -25440,7 +27969,7 @@ class SqlParser {
     mode: number
     tokenizerFlavour: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.SqlParser */
     /**
      * Parse `filename'`s contents and creates a #GdaBatch object which contains all the
@@ -25450,6 +27979,7 @@ class SqlParser {
      * at some point, then the parsing stops, `error` may be set and %NULL is returned
      * 
      * if `sql` is %NULL, then the returned #GdaBatch object will contain no statement.
+     * @param filename name of the file to parse
      */
     parseFileAsBatch(filename: string): Batch | null
     /**
@@ -25459,6 +27989,7 @@ class SqlParser {
      * 
      * To include variables in the `sql` string, see the
      * <link linkend="GdaSqlParser.description">GdaSqlParser's object description</link>.
+     * @param sql the SQL string to parse
      */
     parseString(sql: string): [ /* returnType */ Statement | null, /* remain */ string | null ]
     /**
@@ -25473,6 +28004,7 @@ class SqlParser {
      * 
      * To include variables in the `sql` string, see the
      * <link linkend="GdaSqlParser.description">GdaSqlParser's object description</link>.
+     * @param sql the SQL string to parse
      */
     parseStringAsBatch(sql: string): [ /* returnType */ Batch | null, /* remain */ string | null ]
     setOverflowError(): void
@@ -25512,6 +28044,10 @@ class SqlParser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25522,6 +28058,12 @@ class SqlParser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -25545,6 +28087,7 @@ class SqlParser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -25564,11 +28107,14 @@ class SqlParser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -25576,6 +28122,8 @@ class SqlParser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25593,6 +28141,7 @@ class SqlParser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -25638,6 +28187,7 @@ class SqlParser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -25681,15 +28231,20 @@ class SqlParser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -25730,6 +28285,7 @@ class SqlParser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -25764,6 +28320,7 @@ class SqlParser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gda-6.0.Gda.Lockable */
@@ -25817,6 +28374,7 @@ class SqlParser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -25871,7 +28429,7 @@ class Statement {
     /* Properties of Gda-6.0.Gda.Statement */
     structure: SqlStatement
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.Statement */
     /**
      * Checks that `stmt'`s structure is correct.
@@ -25884,6 +28442,7 @@ class Statement {
      * If `cnc` is %NULL, then cleans anything related to `cnc` in `stmt`.
      * 
      * See gda_sql_statement_check_validity() for more information.
+     * @param cnc a #GdaConnection object, or %NULL
      */
     checkValidity(cnc?: Connection | null): boolean
     /**
@@ -25910,6 +28469,7 @@ class Statement {
     /**
      * "Normalizes" some parts of `stmt,` see gda_sql_statement_normalize() for more
      * information.
+     * @param cnc a #GdaConnection object
      */
     normalize(cnc: Connection): boolean
     /**
@@ -25925,6 +28485,8 @@ class Statement {
      * is re-written into <programlisting><![CDATA[INSERT INTO mytable (id, name) VALUES (23, DEFAULT)]]></programlisting>
      * if `remove` is %FALSE and into <programlisting><![CDATA[INSERT INTO mytable (id) VALUES (23)]]></programlisting>
      * if `remove` is %TRUE.
+     * @param params a #GdaSet containing the variable's values to be bound when executing `stmt`
+     * @param remove set to %TRUE if DEFAULT fields are removed, of %FALSE if the "DEFAULT" keyword is used
      */
     rewriteForDefaultValues(params: Set, remove: boolean): SqlStatement | null
     /**
@@ -25937,6 +28499,9 @@ class Statement {
      * If `cnc` is not %NULL, then the rendered SQL will better be suited to be used by `cnc` (in particular
      * it may include some SQL tweaks and/or proprietary extensions specific to the database engine used by `cnc)`:
      * in this case the result is similar to calling gda_connection_statement_to_sql().
+     * @param cnc a #GdaConnection object, or %NULL
+     * @param params parameters contained in a single #GdaSet object, or %NULL
+     * @param flags a set of flags to control the rendering
      */
     toSqlExtended(cnc: Connection | null, params: Set | null, flags: StatementSqlFlag): [ /* returnType */ string, /* paramsUsed */ Holder[] | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -25974,6 +28539,10 @@ class Statement {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25984,6 +28553,12 @@ class Statement {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -26007,6 +28582,7 @@ class Statement {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -26026,11 +28602,14 @@ class Statement {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -26038,6 +28617,8 @@ class Statement {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26055,6 +28636,7 @@ class Statement {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -26100,6 +28682,7 @@ class Statement {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -26143,15 +28726,20 @@ class Statement {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -26192,6 +28780,7 @@ class Statement {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -26226,12 +28815,15 @@ class Statement {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.Statement */
     /**
      * Gets emitted whenever the structure and contents
      * of `stmt` have been verified (emitted after gda_statement_check_validity()).
+     * @param cnc a #GdaConnection
+     * @param checked whether `stmt` have been verified
      */
     connect(sigName: "checked", callback: ((cnc: Connection, checked: boolean) => void)): number
     on(sigName: "checked", callback: (cnc: Connection, checked: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -26275,6 +28867,7 @@ class Statement {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -26305,7 +28898,7 @@ interface TransactionStatus_ConstructProps extends GObject.Object_ConstructProps
 }
 class TransactionStatus {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.TransactionStatus */
     addEventSql(sql: string, connEvent: ConnectionEvent): TransactionStatusEvent
     addEventSub(subTrans: TransactionStatus): TransactionStatusEvent
@@ -26314,6 +28907,8 @@ class TransactionStatus {
     /**
      * Find a pointer to the "current" _unnamed_ transaction, which is the last
      * transaction if there are several nested transactions
+     * @param destev 
+     * @param unnamedOnly 
      */
     findCurrent(destev: TransactionStatusEvent, unnamedOnly: boolean): TransactionStatus | null
     freeEvents(event: TransactionStatusEvent, freeAfter: boolean): void
@@ -26356,6 +28951,10 @@ class TransactionStatus {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26366,6 +28965,12 @@ class TransactionStatus {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -26389,6 +28994,7 @@ class TransactionStatus {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -26408,11 +29014,14 @@ class TransactionStatus {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -26420,6 +29029,8 @@ class TransactionStatus {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26437,6 +29048,7 @@ class TransactionStatus {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -26482,6 +29094,7 @@ class TransactionStatus {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -26525,15 +29138,20 @@ class TransactionStatus {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -26574,6 +29192,7 @@ class TransactionStatus {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -26608,6 +29227,7 @@ class TransactionStatus {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -26639,6 +29259,7 @@ class TransactionStatus {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -26668,10 +29289,11 @@ class Tree {
      */
     readonly isList: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.Tree */
     /**
      * Sets `manager` as a top #GdaTreeManager object, which will be responsible for creating top level nodes in `tree`.
+     * @param manager a #GdaTreeManager object
      */
     addManager(manager: TreeManager): void
     /**
@@ -26680,18 +29302,24 @@ class Tree {
     clean(): void
     /**
      * Dumps the contents of `tree` to `stream,` using a hierarchical view.
+     * @param node a #GdaTreeNode to start the dump from, or %NULL for a full dump
+     * @param stream a stream to send the dump to, or %NULL for STDOUT
      */
     dump(node?: TreeNode | null, stream?: object | null): void
     /**
      * Locates a #GdaTreeNode using the `tree_path` path.
+     * @param treePath full path to the required nodes (if `use_names` is %TRUE, then it must start with '/')
+     * @param useNames if %TRUE, then `tree_path` will be interpreted as a unix style path, and if %FALSE,             then `tree_path` will be interpreted similarly to the #GtkTreePath's string representation.
      */
     getNode(treePath: string, useNames: boolean): TreeNode | null
     /**
      * Get the #GdaTreeManager which created `node` in `tree`
+     * @param node a #GdaTreeNode present in `tree`
      */
     getNodeManager(node: TreeNode): TreeManager
     /**
      * Get the path associated to `node` in `tree`.
+     * @param node a #GdaTreeNode node in `tree`
      */
     getNodePath(node: TreeNode): string
     /**
@@ -26699,10 +29327,15 @@ class Tree {
      * at the specified path.
      * 
      * As a corner case if `tree_path` is %NULL, then the returned list contains all the top level nodes.
+     * @param treePath full path to the required nodes (if `use_names` is %TRUE, then it must start with '/'), or %NULL
+     * @param useNames if %TRUE, then `tree_path` will be interpreted as a unix style path, and if %FALSE,             then `tree_path` will be interpreted similarly to the #GtkTreePath's string representation.
      */
     getNodesInPath(treePath: string | null, useNames: boolean): TreeNode[]
     /**
      * Sets an attribute to `tree,` which will be accessible to any node in it.
+     * @param attribute attribute name
+     * @param value a #GValue, or %NULL
+     * @param destroy a function to be called when `attribute` is not needed anymore, or %NULL
      */
     setAttribute(attribute: string, value: any, destroy: GLib.DestroyNotify): void
     /**
@@ -26713,10 +29346,12 @@ class Tree {
     /**
      * Update the children of `node` in `tree` (not recursively, to update recursively, use
      * gda_tree_update_part()). If `node` is %NULL then the top level nodes are updated.
+     * @param node a #GdaTreeNode node in `tree,` or %NULL
      */
     updateChildren(node?: TreeNode | null): boolean
     /**
      * Requests that `tree` be populated with nodes, starting from `node`
+     * @param node a #GdaTreeNode node in `tree`
      */
     updatePart(node: TreeNode): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -26754,6 +29389,10 @@ class Tree {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26764,6 +29403,12 @@ class Tree {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -26787,6 +29432,7 @@ class Tree {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -26806,11 +29452,14 @@ class Tree {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -26818,6 +29467,8 @@ class Tree {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26835,6 +29486,7 @@ class Tree {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -26880,6 +29532,7 @@ class Tree {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -26923,15 +29576,20 @@ class Tree {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -26972,6 +29630,7 @@ class Tree {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -27006,11 +29665,13 @@ class Tree {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.Tree */
     /**
      * Gets emitted when a `node` has changed in `tree`
+     * @param node the #GdaTreeNode which has changed
      */
     connect(sigName: "node-changed", callback: ((node: TreeNode) => void)): number
     on(sigName: "node-changed", callback: (node: TreeNode) => void, after?: boolean): NodeJS.EventEmitter
@@ -27019,6 +29680,7 @@ class Tree {
     emit(sigName: "node-changed", node: TreeNode): void
     /**
      * Gets emitted when a `node` has been removed from `tree`
+     * @param nodePath the position the node held in `tree` as a tree path
      */
     connect(sigName: "node-deleted", callback: ((nodePath: string) => void)): number
     on(sigName: "node-deleted", callback: (nodePath: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -27028,6 +29690,7 @@ class Tree {
     /**
      * Gets emitted when a `node` has has a child when it did not have any or when it
      * does not have a ny children anymore when it had some
+     * @param node the #GdaTreeNode which changed from having children to being a        leaf or the other way around
      */
     connect(sigName: "node-has-child-toggled", callback: ((node: TreeNode) => void)): number
     on(sigName: "node-has-child-toggled", callback: (node: TreeNode) => void, after?: boolean): NodeJS.EventEmitter
@@ -27036,6 +29699,7 @@ class Tree {
     emit(sigName: "node-has-child-toggled", node: TreeNode): void
     /**
      * Gets emitted when a `node` has been inserted in `tree`
+     * @param node the #GdaTreeNode which has inserted
      */
     connect(sigName: "node-inserted", callback: ((node: TreeNode) => void)): number
     on(sigName: "node-inserted", callback: (node: TreeNode) => void, after?: boolean): NodeJS.EventEmitter
@@ -27071,6 +29735,7 @@ class Tree {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -27131,7 +29796,7 @@ class TreeManager {
      */
     recursive: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.TreeManager */
     /**
      * Adds a sub manager to `manager`. Use this method to create the skeleton structure
@@ -27141,6 +29806,7 @@ class TreeManager {
      * Please note that it's possible for `mgr` and `sub` to be the same object, but beware of the possible
      * infinite recursive behaviour in this case when creating children nodes
      * (depending on the actual implementation of the #GdaTreeManager).
+     * @param sub a #GdaTreeManager object to add
      */
     addManager(sub: TreeManager): void
     /**
@@ -27148,6 +29814,8 @@ class TreeManager {
      * one to customize the attributes of new nodes created by an existing #GdaTreeManager.
      * 
      * As a side effect, if `value` is %NULL, then the corresponding attribute, if it was set, is unset.
+     * @param attribute an attribute name
+     * @param value the attribute's value, or %NULL
      */
     addNewNodeAttribute(attribute: string, value?: any | null): void
     /**
@@ -27156,6 +29824,8 @@ class TreeManager {
      * 
      * This method is usually used when implementing a #GdaTreeManagerNodesFunc function (to create nodes),
      * or when subclassing the #GdaTreeManager.
+     * @param parent the parent the new node may have, or %NULL
+     * @param name name given to the new node, or %NULL
      */
     createNode(parent?: TreeNode | null, name?: string | null): TreeNode
     /**
@@ -27168,6 +29838,7 @@ class TreeManager {
      * 
      * Specifying a custom #GdaTreeManagerNodeFunc function for example allows one to use
      * specialized sub-classed #GdaTreeNode objects.
+     * @param func a #GdaTreeManagerNodeFunc function pointer, or %NULL
      */
     setNodeCreateFunc(func?: TreeManagerNodeFunc | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -27205,6 +29876,10 @@ class TreeManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27215,6 +29890,12 @@ class TreeManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -27238,6 +29919,7 @@ class TreeManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -27257,11 +29939,14 @@ class TreeManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -27269,6 +29954,8 @@ class TreeManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27286,6 +29973,7 @@ class TreeManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -27331,6 +30019,7 @@ class TreeManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -27374,15 +30063,20 @@ class TreeManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -27423,6 +30117,7 @@ class TreeManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -27457,6 +30152,7 @@ class TreeManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -27488,6 +30184,7 @@ class TreeManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -27542,6 +30239,26 @@ interface TreeMgrColumns_ConstructProps extends TreeManager_ConstructProps {
     tableName?: string
 }
 class TreeMgrColumns {
+    /* Properties of Gda-6.0.Gda.TreeMgrColumns */
+    /**
+     * Defines the #GdaConnection to display information for. Necessary upon construction unless
+     * the #GdaTreeMgrColumns:meta-store property is specified instead.
+     */
+    readonly connection: Connection
+    /**
+     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+     * the #GdaTreeMgrColumns:connection property is specified instead. This property has
+     * priority over the GdaTreeMgrColumns:connection property.
+     */
+    readonly metaStore: MetaStore
+    /**
+     * If no set, then the table name will be fetched from the parent node using the "schema" attribute
+     */
+    readonly schema: string
+    /**
+     * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
+     */
+    readonly tableName: string
     /* Properties of Gda-6.0.Gda.TreeManager */
     /**
      * This property specifies the function which needs to be called when the list of #GdaTreeNode nodes
@@ -27558,9 +30275,9 @@ class TreeMgrColumns {
      */
     recursive: boolean
     /* Fields of Gda-6.0.Gda.TreeManager */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.TreeManager */
     /**
      * Adds a sub manager to `manager`. Use this method to create the skeleton structure
@@ -27570,6 +30287,7 @@ class TreeMgrColumns {
      * Please note that it's possible for `mgr` and `sub` to be the same object, but beware of the possible
      * infinite recursive behaviour in this case when creating children nodes
      * (depending on the actual implementation of the #GdaTreeManager).
+     * @param sub a #GdaTreeManager object to add
      */
     addManager(sub: TreeManager): void
     /**
@@ -27577,6 +30295,8 @@ class TreeMgrColumns {
      * one to customize the attributes of new nodes created by an existing #GdaTreeManager.
      * 
      * As a side effect, if `value` is %NULL, then the corresponding attribute, if it was set, is unset.
+     * @param attribute an attribute name
+     * @param value the attribute's value, or %NULL
      */
     addNewNodeAttribute(attribute: string, value?: any | null): void
     /**
@@ -27585,6 +30305,8 @@ class TreeMgrColumns {
      * 
      * This method is usually used when implementing a #GdaTreeManagerNodesFunc function (to create nodes),
      * or when subclassing the #GdaTreeManager.
+     * @param parent the parent the new node may have, or %NULL
+     * @param name name given to the new node, or %NULL
      */
     createNode(parent?: TreeNode | null, name?: string | null): TreeNode
     /**
@@ -27597,6 +30319,7 @@ class TreeMgrColumns {
      * 
      * Specifying a custom #GdaTreeManagerNodeFunc function for example allows one to use
      * specialized sub-classed #GdaTreeNode objects.
+     * @param func a #GdaTreeManagerNodeFunc function pointer, or %NULL
      */
     setNodeCreateFunc(func?: TreeManagerNodeFunc | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -27634,6 +30357,10 @@ class TreeMgrColumns {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27644,6 +30371,12 @@ class TreeMgrColumns {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -27667,6 +30400,7 @@ class TreeMgrColumns {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -27686,11 +30420,14 @@ class TreeMgrColumns {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -27698,6 +30435,8 @@ class TreeMgrColumns {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27715,6 +30454,7 @@ class TreeMgrColumns {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -27760,6 +30500,7 @@ class TreeMgrColumns {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -27803,15 +30544,20 @@ class TreeMgrColumns {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -27852,6 +30598,7 @@ class TreeMgrColumns {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -27886,6 +30633,7 @@ class TreeMgrColumns {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -27917,12 +30665,33 @@ class TreeMgrColumns {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::meta-store", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::meta-store", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::schema", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::schema", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::table-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::table-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::table-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::table-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::table-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -27952,6 +30721,8 @@ interface TreeMgrLabel_ConstructProps extends TreeManager_ConstructProps {
     label?: string
 }
 class TreeMgrLabel {
+    /* Properties of Gda-6.0.Gda.TreeMgrLabel */
+    readonly label: string
     /* Properties of Gda-6.0.Gda.TreeManager */
     /**
      * This property specifies the function which needs to be called when the list of #GdaTreeNode nodes
@@ -27968,9 +30739,9 @@ class TreeMgrLabel {
      */
     recursive: boolean
     /* Fields of Gda-6.0.Gda.TreeManager */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.TreeManager */
     /**
      * Adds a sub manager to `manager`. Use this method to create the skeleton structure
@@ -27980,6 +30751,7 @@ class TreeMgrLabel {
      * Please note that it's possible for `mgr` and `sub` to be the same object, but beware of the possible
      * infinite recursive behaviour in this case when creating children nodes
      * (depending on the actual implementation of the #GdaTreeManager).
+     * @param sub a #GdaTreeManager object to add
      */
     addManager(sub: TreeManager): void
     /**
@@ -27987,6 +30759,8 @@ class TreeMgrLabel {
      * one to customize the attributes of new nodes created by an existing #GdaTreeManager.
      * 
      * As a side effect, if `value` is %NULL, then the corresponding attribute, if it was set, is unset.
+     * @param attribute an attribute name
+     * @param value the attribute's value, or %NULL
      */
     addNewNodeAttribute(attribute: string, value?: any | null): void
     /**
@@ -27995,6 +30769,8 @@ class TreeMgrLabel {
      * 
      * This method is usually used when implementing a #GdaTreeManagerNodesFunc function (to create nodes),
      * or when subclassing the #GdaTreeManager.
+     * @param parent the parent the new node may have, or %NULL
+     * @param name name given to the new node, or %NULL
      */
     createNode(parent?: TreeNode | null, name?: string | null): TreeNode
     /**
@@ -28007,6 +30783,7 @@ class TreeMgrLabel {
      * 
      * Specifying a custom #GdaTreeManagerNodeFunc function for example allows one to use
      * specialized sub-classed #GdaTreeNode objects.
+     * @param func a #GdaTreeManagerNodeFunc function pointer, or %NULL
      */
     setNodeCreateFunc(func?: TreeManagerNodeFunc | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -28044,6 +30821,10 @@ class TreeMgrLabel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28054,6 +30835,12 @@ class TreeMgrLabel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -28077,6 +30864,7 @@ class TreeMgrLabel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -28096,11 +30884,14 @@ class TreeMgrLabel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -28108,6 +30899,8 @@ class TreeMgrLabel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28125,6 +30918,7 @@ class TreeMgrLabel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -28170,6 +30964,7 @@ class TreeMgrLabel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -28213,15 +31008,20 @@ class TreeMgrLabel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -28262,6 +31062,7 @@ class TreeMgrLabel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -28296,6 +31097,7 @@ class TreeMgrLabel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -28327,12 +31129,18 @@ class TreeMgrLabel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::label", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::label", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::label", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::label", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -28372,6 +31180,18 @@ interface TreeMgrSchemas_ConstructProps extends TreeManager_ConstructProps {
     metaStore?: MetaStore
 }
 class TreeMgrSchemas {
+    /* Properties of Gda-6.0.Gda.TreeMgrSchemas */
+    /**
+     * Defines the #GdaConnection to display information for. Necessary upon construction unless
+     * the #GdaTreeMgrSchema:meta-store property is specified instead.
+     */
+    readonly connection: Connection
+    /**
+     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+     * the #GdaTreeMgrSchema:connection property is specified instead. This property has
+     * priority over the GdaTreeMgrSchema:connection property.
+     */
+    readonly metaStore: MetaStore
     /* Properties of Gda-6.0.Gda.TreeManager */
     /**
      * This property specifies the function which needs to be called when the list of #GdaTreeNode nodes
@@ -28388,9 +31208,9 @@ class TreeMgrSchemas {
      */
     recursive: boolean
     /* Fields of Gda-6.0.Gda.TreeManager */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.TreeManager */
     /**
      * Adds a sub manager to `manager`. Use this method to create the skeleton structure
@@ -28400,6 +31220,7 @@ class TreeMgrSchemas {
      * Please note that it's possible for `mgr` and `sub` to be the same object, but beware of the possible
      * infinite recursive behaviour in this case when creating children nodes
      * (depending on the actual implementation of the #GdaTreeManager).
+     * @param sub a #GdaTreeManager object to add
      */
     addManager(sub: TreeManager): void
     /**
@@ -28407,6 +31228,8 @@ class TreeMgrSchemas {
      * one to customize the attributes of new nodes created by an existing #GdaTreeManager.
      * 
      * As a side effect, if `value` is %NULL, then the corresponding attribute, if it was set, is unset.
+     * @param attribute an attribute name
+     * @param value the attribute's value, or %NULL
      */
     addNewNodeAttribute(attribute: string, value?: any | null): void
     /**
@@ -28415,6 +31238,8 @@ class TreeMgrSchemas {
      * 
      * This method is usually used when implementing a #GdaTreeManagerNodesFunc function (to create nodes),
      * or when subclassing the #GdaTreeManager.
+     * @param parent the parent the new node may have, or %NULL
+     * @param name name given to the new node, or %NULL
      */
     createNode(parent?: TreeNode | null, name?: string | null): TreeNode
     /**
@@ -28427,6 +31252,7 @@ class TreeMgrSchemas {
      * 
      * Specifying a custom #GdaTreeManagerNodeFunc function for example allows one to use
      * specialized sub-classed #GdaTreeNode objects.
+     * @param func a #GdaTreeManagerNodeFunc function pointer, or %NULL
      */
     setNodeCreateFunc(func?: TreeManagerNodeFunc | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -28464,6 +31290,10 @@ class TreeMgrSchemas {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28474,6 +31304,12 @@ class TreeMgrSchemas {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -28497,6 +31333,7 @@ class TreeMgrSchemas {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -28516,11 +31353,14 @@ class TreeMgrSchemas {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -28528,6 +31368,8 @@ class TreeMgrSchemas {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28545,6 +31387,7 @@ class TreeMgrSchemas {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -28590,6 +31433,7 @@ class TreeMgrSchemas {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -28633,15 +31477,20 @@ class TreeMgrSchemas {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -28682,6 +31531,7 @@ class TreeMgrSchemas {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -28716,6 +31566,7 @@ class TreeMgrSchemas {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -28747,12 +31598,23 @@ class TreeMgrSchemas {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::meta-store", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::meta-store", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -28784,6 +31646,10 @@ interface TreeMgrSelect_ConstructProps extends TreeManager_ConstructProps {
     statement?: Statement
 }
 class TreeMgrSelect {
+    /* Properties of Gda-6.0.Gda.TreeMgrSelect */
+    readonly connection: Connection
+    readonly params: Set
+    readonly statement: Statement
     /* Properties of Gda-6.0.Gda.TreeManager */
     /**
      * This property specifies the function which needs to be called when the list of #GdaTreeNode nodes
@@ -28800,9 +31666,9 @@ class TreeMgrSelect {
      */
     recursive: boolean
     /* Fields of Gda-6.0.Gda.TreeManager */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.TreeManager */
     /**
      * Adds a sub manager to `manager`. Use this method to create the skeleton structure
@@ -28812,6 +31678,7 @@ class TreeMgrSelect {
      * Please note that it's possible for `mgr` and `sub` to be the same object, but beware of the possible
      * infinite recursive behaviour in this case when creating children nodes
      * (depending on the actual implementation of the #GdaTreeManager).
+     * @param sub a #GdaTreeManager object to add
      */
     addManager(sub: TreeManager): void
     /**
@@ -28819,6 +31686,8 @@ class TreeMgrSelect {
      * one to customize the attributes of new nodes created by an existing #GdaTreeManager.
      * 
      * As a side effect, if `value` is %NULL, then the corresponding attribute, if it was set, is unset.
+     * @param attribute an attribute name
+     * @param value the attribute's value, or %NULL
      */
     addNewNodeAttribute(attribute: string, value?: any | null): void
     /**
@@ -28827,6 +31696,8 @@ class TreeMgrSelect {
      * 
      * This method is usually used when implementing a #GdaTreeManagerNodesFunc function (to create nodes),
      * or when subclassing the #GdaTreeManager.
+     * @param parent the parent the new node may have, or %NULL
+     * @param name name given to the new node, or %NULL
      */
     createNode(parent?: TreeNode | null, name?: string | null): TreeNode
     /**
@@ -28839,6 +31710,7 @@ class TreeMgrSelect {
      * 
      * Specifying a custom #GdaTreeManagerNodeFunc function for example allows one to use
      * specialized sub-classed #GdaTreeNode objects.
+     * @param func a #GdaTreeManagerNodeFunc function pointer, or %NULL
      */
     setNodeCreateFunc(func?: TreeManagerNodeFunc | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -28876,6 +31748,10 @@ class TreeMgrSelect {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28886,6 +31762,12 @@ class TreeMgrSelect {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -28909,6 +31791,7 @@ class TreeMgrSelect {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -28928,11 +31811,14 @@ class TreeMgrSelect {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -28940,6 +31826,8 @@ class TreeMgrSelect {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28957,6 +31845,7 @@ class TreeMgrSelect {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -29002,6 +31891,7 @@ class TreeMgrSelect {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -29045,15 +31935,20 @@ class TreeMgrSelect {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -29094,6 +31989,7 @@ class TreeMgrSelect {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -29128,6 +32024,7 @@ class TreeMgrSelect {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -29159,12 +32056,28 @@ class TreeMgrSelect {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::params", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::params", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::params", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::params", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::params", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::statement", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::statement", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::statement", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::statement", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::statement", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -29210,6 +32123,24 @@ interface TreeMgrTables_ConstructProps extends TreeManager_ConstructProps {
     schema?: string
 }
 class TreeMgrTables {
+    /* Properties of Gda-6.0.Gda.TreeMgrTables */
+    /**
+     * Defines the #GdaConnection to display information for. Necessary upon construction unless
+     * the #GdaTreeMgrTables:meta-store property is specified instead.
+     */
+    readonly connection: Connection
+    /**
+     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+     * the #GdaTreeMgrTables:connection property is specified instead. This property has
+     * priority over the GdaTreeMgrTables:connection property.
+     */
+    readonly metaStore: MetaStore
+    /**
+     * If no set, then the table name will be fetched from the parent node using the "schema" attribute. If not
+     * found that way, then the list of visible tables (tables which can be identified without having to specify
+     * a schema) will be used
+     */
+    readonly schema: string
     /* Properties of Gda-6.0.Gda.TreeManager */
     /**
      * This property specifies the function which needs to be called when the list of #GdaTreeNode nodes
@@ -29226,9 +32157,9 @@ class TreeMgrTables {
      */
     recursive: boolean
     /* Fields of Gda-6.0.Gda.TreeManager */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.TreeManager */
     /**
      * Adds a sub manager to `manager`. Use this method to create the skeleton structure
@@ -29238,6 +32169,7 @@ class TreeMgrTables {
      * Please note that it's possible for `mgr` and `sub` to be the same object, but beware of the possible
      * infinite recursive behaviour in this case when creating children nodes
      * (depending on the actual implementation of the #GdaTreeManager).
+     * @param sub a #GdaTreeManager object to add
      */
     addManager(sub: TreeManager): void
     /**
@@ -29245,6 +32177,8 @@ class TreeMgrTables {
      * one to customize the attributes of new nodes created by an existing #GdaTreeManager.
      * 
      * As a side effect, if `value` is %NULL, then the corresponding attribute, if it was set, is unset.
+     * @param attribute an attribute name
+     * @param value the attribute's value, or %NULL
      */
     addNewNodeAttribute(attribute: string, value?: any | null): void
     /**
@@ -29253,6 +32187,8 @@ class TreeMgrTables {
      * 
      * This method is usually used when implementing a #GdaTreeManagerNodesFunc function (to create nodes),
      * or when subclassing the #GdaTreeManager.
+     * @param parent the parent the new node may have, or %NULL
+     * @param name name given to the new node, or %NULL
      */
     createNode(parent?: TreeNode | null, name?: string | null): TreeNode
     /**
@@ -29265,6 +32201,7 @@ class TreeMgrTables {
      * 
      * Specifying a custom #GdaTreeManagerNodeFunc function for example allows one to use
      * specialized sub-classed #GdaTreeNode objects.
+     * @param func a #GdaTreeManagerNodeFunc function pointer, or %NULL
      */
     setNodeCreateFunc(func?: TreeManagerNodeFunc | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -29302,6 +32239,10 @@ class TreeMgrTables {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29312,6 +32253,12 @@ class TreeMgrTables {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -29335,6 +32282,7 @@ class TreeMgrTables {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -29354,11 +32302,14 @@ class TreeMgrTables {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -29366,6 +32317,8 @@ class TreeMgrTables {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29383,6 +32336,7 @@ class TreeMgrTables {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -29428,6 +32382,7 @@ class TreeMgrTables {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -29471,15 +32426,20 @@ class TreeMgrTables {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -29520,6 +32480,7 @@ class TreeMgrTables {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -29554,6 +32515,7 @@ class TreeMgrTables {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -29585,12 +32547,28 @@ class TreeMgrTables {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::meta-store", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::meta-store", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::meta-store", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::schema", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::schema", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::func", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::func", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -29623,7 +32601,7 @@ class TreeNode {
     /* Properties of Gda-6.0.Gda.TreeNode */
     name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.TreeNode */
     /**
      * Get the value associated to the attribute named `attribute` for `node`. If the attribute is not set,
@@ -29631,14 +32609,17 @@ class TreeNode {
      * 
      * Attributes can have any name, but Libgda proposes some default names,
      * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
+     * @param attribute attribute name as a string
      */
     fetchAttribute(attribute: string): any
     /**
      * Get the #GdaTreeNode child of `node` at position `index` (starting at 0).
+     * @param index a index
      */
     getChildIndex(index: number): TreeNode
     /**
      * Get the #GdaTreeNode child of `node` which has the #GDA_ATTRIBUTE_NAME set to `name`
+     * @param name requested node's name
      */
     getChildName(name: string): TreeNode
     /**
@@ -29652,6 +32633,7 @@ class TreeNode {
      * 
      * Attributes can have any name, but Libgda proposes some default names,
      * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
+     * @param attribute attribute name as a string
      */
     getNodeAttribute(attribute: string): any
     /**
@@ -29677,6 +32659,9 @@ class TreeNode {
      * 
      * If there is already an attribute named `attribute` set, then its value is replaced with the new value (`value` is
      * copied), except if `value` is %NULL, in which case the attribute is removed.
+     * @param attribute attribute name
+     * @param value a #GValue, or %NULL
+     * @param destroy a function to be called when `attribute` is not needed anymore, or %NULL
      */
     setNodeAttribute(attribute: string, value: any | null, destroy: GLib.DestroyNotify): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -29714,6 +32699,10 @@ class TreeNode {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29724,6 +32713,12 @@ class TreeNode {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -29747,6 +32742,7 @@ class TreeNode {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -29766,11 +32762,14 @@ class TreeNode {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -29778,6 +32777,8 @@ class TreeNode {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29795,6 +32796,7 @@ class TreeNode {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -29840,6 +32842,7 @@ class TreeNode {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -29883,15 +32886,20 @@ class TreeNode {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -29932,6 +32940,7 @@ class TreeNode {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -29966,11 +32975,13 @@ class TreeNode {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gda-6.0.Gda.TreeNode */
     /**
      * Gets emitted when a `node` has changed
+     * @param node the #GdaTreeNode which has changed
      */
     connect(sigName: "node-changed", callback: ((node: TreeNode) => void)): number
     on(sigName: "node-changed", callback: (node: TreeNode) => void, after?: boolean): NodeJS.EventEmitter
@@ -29979,6 +32990,7 @@ class TreeNode {
     emit(sigName: "node-changed", node: TreeNode): void
     /**
      * Gets emitted when a `node` has been removed
+     * @param relativePath the path the node held, relative to `reporting`
      */
     connect(sigName: "node-deleted", callback: ((relativePath: string) => void)): number
     on(sigName: "node-deleted", callback: (relativePath: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -29988,6 +33000,7 @@ class TreeNode {
     /**
      * Gets emitted when a `node` has has a child when it did not have any or when it
      * does not have a ny children anymore when it had some
+     * @param node the #GdaTreeNode which changed from having children to being a        leaf or the other way around
      */
     connect(sigName: "node-has-child-toggled", callback: ((node: TreeNode) => void)): number
     on(sigName: "node-has-child-toggled", callback: (node: TreeNode) => void, after?: boolean): NodeJS.EventEmitter
@@ -29996,6 +33009,7 @@ class TreeNode {
     emit(sigName: "node-has-child-toggled", node: TreeNode): void
     /**
      * Gets emitted when a `node` has been inserted
+     * @param node the #GdaTreeNode which has been inserted
      */
     connect(sigName: "node-inserted", callback: ((node: TreeNode) => void)): number
     on(sigName: "node-inserted", callback: (node: TreeNode) => void, after?: boolean): NodeJS.EventEmitter
@@ -30031,6 +33045,7 @@ class TreeNode {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -30066,8 +33081,11 @@ interface XaTransaction_ConstructProps extends GObject.Object_ConstructProps {
     transactionId?: string
 }
 class XaTransaction {
+    /* Properties of Gda-6.0.Gda.XaTransaction */
+    readonly formatId: number
+    readonly transactionId: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gda-6.0.Gda.XaTransaction */
     /**
      * Begins a distributed transaction (managed by `xa_trans)`. Please note that this phase may fail
@@ -30101,6 +33119,8 @@ class XaTransaction {
      * Note: any #GdaConnection object can only be registered with at most one #GdaXaTransaction object; also
      * some connections may not be registered at all with a #GdaXaTransaction object because the database
      * provider being used does not support it.
+     * @param cnc the connection to add to `xa_trans`
+     * @param branch the branch qualifier
      */
     registerConnection(cnc: Connection, branch: string): boolean
     /**
@@ -30110,6 +33130,7 @@ class XaTransaction {
     /**
      * Unregisters `cnc` to be used by `xa_trans` to create a distributed transaction. This is
      * the opposite of gda_xa_transaction_register_connection().
+     * @param cnc the connection to add to `xa_trans`
      */
     unregisterConnection(cnc: Connection): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -30147,6 +33168,10 @@ class XaTransaction {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30157,6 +33182,12 @@ class XaTransaction {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -30180,6 +33211,7 @@ class XaTransaction {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -30199,11 +33231,14 @@ class XaTransaction {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -30211,6 +33246,8 @@ class XaTransaction {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -30228,6 +33265,7 @@ class XaTransaction {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -30273,6 +33311,7 @@ class XaTransaction {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -30316,15 +33355,20 @@ class XaTransaction {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -30365,6 +33409,7 @@ class XaTransaction {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -30399,6 +33444,7 @@ class XaTransaction {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -30430,12 +33476,23 @@ class XaTransaction {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::format-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::format-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::format-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::format-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::format-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::transaction-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::transaction-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::transaction-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::transaction-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::transaction-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -30452,14 +33509,15 @@ class XaTransaction {
     /**
      * Creates a new #GdaXaTransactionId structure from its string representation, it's the opposite
      * of gda_xa_transaction_id_to_string().
+     * @param str a string representation of a #GdaXaTransactionId, in the "gtrid,bqual,formatID" format
      */
     static stringToId(str: string): XaTransactionId
     static $gtype: GObject.Type
 }
 abstract class BatchClass {
     /* Fields of Gda-6.0.Gda.BatchClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly changed: (batch: Batch, changedStmt: Statement) => void
+    parentClass: GObject.ObjectClass
+    changed: (batch: Batch, changedStmt: Statement) => void
     static name: string
 }
 class Binary {
@@ -30480,10 +33538,12 @@ class Binary {
     resetData(): void
     /**
      * Set binary data to a #GdaBinary, holding a copy of the data.
+     * @param val value to be copied by #GdaBinary.
      */
     setData(val: Uint8Array): void
     /**
      * Set binary data to a #GdaBinary, directly holding `val` (no copy made).
+     * @param val value to be taken by #GdaBinary.
      */
     takeData(val: Uint8Array): void
     /**
@@ -30498,6 +33558,7 @@ class Binary {
      * Use this function to get a representation as much readable by humans as possible of a binary
      * chunk. Note that this function is internally called when transforming a binary value to
      * a string for example when using g_value_transform() or gda_value_stringify().
+     * @param maxlen a maximum len used to truncate, or %0 for no maximum length
      */
     toString(maxlen: number): string
     static name: string
@@ -30520,12 +33581,14 @@ class Blob {
     getOp(): BlobOp
     /**
      * Correctly assigns `op` to `blob` (increases `op'`s reference count)
+     * @param op a #GdaBlobOp object, or %NULL
      */
     setOp(op?: BlobOp | null): void
     /**
      * Converts all the non printable characters of blob->data into the \xxx representation
      * where xxx is the octal representation of the byte, and the '\' (backslash) character
      * is converted to "\\".
+     * @param maxlen a maximum len used to truncate, or 0 for no maximum length
      */
     toString(maxlen: number): string
     static name: string
@@ -30536,83 +33599,83 @@ class Blob {
 }
 abstract class BlobOpClass {
     /* Fields of Gda-6.0.Gda.BlobOpClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly functions: object
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    functions: object
+    padding: object[]
     static name: string
 }
 class BlobOpFunctions {
     /* Fields of Gda-6.0.Gda.BlobOpFunctions */
-    readonly getLength: (op: BlobOp) => number
-    readonly read: (op: BlobOp, blob: Blob, offset: number, size: number) => number
-    readonly write: (op: BlobOp, blob: Blob, offset: number) => number
-    readonly writeAll: (op: BlobOp, blob: Blob) => boolean
+    getLength: (op: BlobOp) => number
+    read: (op: BlobOp, blob: Blob, offset: number, size: number) => number
+    write: (op: BlobOp, blob: Blob, offset: number) => number
+    writeAll: (op: BlobOp, blob: Blob) => boolean
     static name: string
 }
 abstract class ColumnClass {
     /* Fields of Gda-6.0.Gda.ColumnClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly nameChanged: (column: Column, oldName: string) => void
-    readonly gTypeChanged: (column: Column, oldType: GObject.Type, newType: GObject.Type) => void
+    parentClass: GObject.ObjectClass
+    nameChanged: (column: Column, oldName: string) => void
+    gTypeChanged: (column: Column, oldType: GObject.Type, newType: GObject.Type) => void
     static name: string
 }
 abstract class ConfigClass {
     /* Fields of Gda-6.0.Gda.ConfigClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly dsnAdded: (conf: Config, newDsn: DsnInfo) => void
-    readonly dsnToBeRemoved: (conf: Config, oldDsn: DsnInfo) => void
-    readonly dsnRemoved: (conf: Config, oldDsn: DsnInfo) => void
-    readonly dsnChanged: (conf: Config, dsn: DsnInfo) => void
+    parentClass: GObject.ObjectClass
+    dsnAdded: (conf: Config, newDsn: DsnInfo) => void
+    dsnToBeRemoved: (conf: Config, oldDsn: DsnInfo) => void
+    dsnRemoved: (conf: Config, oldDsn: DsnInfo) => void
+    dsnChanged: (conf: Config, dsn: DsnInfo) => void
     static name: string
 }
 abstract class ConnectionClass {
     /* Fields of Gda-6.0.Gda.ConnectionClass */
-    readonly objectClass: GObject.ObjectClass
-    readonly statusChanged: (obj: Connection, status: ConnectionStatus) => void
-    readonly error: (cnc: Connection, error: ConnectionEvent) => void
-    readonly opened: (obj: Connection) => void
-    readonly closed: (obj: Connection) => void
-    readonly dsnChanged: (obj: Connection) => void
-    readonly transactionStatusChanged: (obj: Connection) => void
+    objectClass: GObject.ObjectClass
+    statusChanged: (obj: Connection, status: ConnectionStatus) => void
+    error: (cnc: Connection, error: ConnectionEvent) => void
+    opened: (obj: Connection) => void
+    closed: (obj: Connection) => void
+    dsnChanged: (obj: Connection) => void
+    transactionStatusChanged: (obj: Connection) => void
     static name: string
 }
 abstract class ConnectionEventClass {
     /* Fields of Gda-6.0.Gda.ConnectionEventClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 abstract class DataAccessWrapperClass {
     /* Fields of Gda-6.0.Gda.DataAccessWrapperClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class DataComparatorClass {
     /* Fields of Gda-6.0.Gda.DataComparatorClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly diffComputed: (comp: DataComparator, diff: Diff) => boolean
+    parentClass: GObject.ObjectClass
+    diffComputed: (comp: DataComparator, diff: Diff) => boolean
     static name: string
 }
 abstract class DataHandlerInterface {
     /* Fields of Gda-6.0.Gda.DataHandlerInterface */
-    readonly gIface: GObject.TypeInterface
-    readonly getSqlFromValue: (dh: DataHandler, value?: any | null) => string
-    readonly getStrFromValue: (dh: DataHandler, value?: any | null) => string
-    readonly getValueFromSql: (dh: DataHandler, sql: string | null, type: GObject.Type) => any
-    readonly getValueFromStr: (dh: DataHandler, str: string | null, type: GObject.Type) => any
-    readonly getSaneInitValue: (dh: DataHandler, type: GObject.Type) => any | null
-    readonly acceptsGType: (dh: DataHandler, type: GObject.Type) => boolean
-    readonly getDescr: (dh: DataHandler) => string
+    gIface: GObject.TypeInterface
+    getSqlFromValue: (dh: DataHandler, value?: any | null) => string
+    getStrFromValue: (dh: DataHandler, value?: any | null) => string
+    getValueFromSql: (dh: DataHandler, sql: string | null, type: GObject.Type) => any
+    getValueFromStr: (dh: DataHandler, str: string | null, type: GObject.Type) => any
+    getSaneInitValue: (dh: DataHandler, type: GObject.Type) => any | null
+    acceptsGType: (dh: DataHandler, type: GObject.Type) => boolean
+    getDescr: (dh: DataHandler) => string
     static name: string
 }
 abstract class DataModelArrayClass {
     /* Fields of Gda-6.0.Gda.DataModelArrayClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class DataModelDirClass {
     /* Fields of Gda-6.0.Gda.DataModelDirClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class DataModelIface {
@@ -30620,148 +33683,148 @@ abstract class DataModelIface {
 }
 abstract class DataModelImportClass {
     /* Fields of Gda-6.0.Gda.DataModelImportClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class DataModelImportIterClass {
     /* Fields of Gda-6.0.Gda.DataModelImportIterClass */
-    readonly parentClass: DataModelIterClass
+    parentClass: DataModelIterClass
     static name: string
 }
 class DataModelInterface {
     /* Fields of Gda-6.0.Gda.DataModelInterface */
-    readonly gIface: GObject.TypeInterface
-    readonly getNRows: (model: DataModel) => number
-    readonly getNColumns: (model: DataModel) => number
-    readonly getAccessFlags: (model: DataModel) => DataModelAccessFlags
-    readonly getValueAt: (model: DataModel, col: number, row: number) => any
-    readonly getAttributesAt: (model: DataModel, col: number, row: number) => ValueAttribute
-    readonly setValueAt: (model: DataModel, col: number, row: number, value: any) => boolean
-    readonly appendRow: (model: DataModel) => number
-    readonly removeRow: (model: DataModel, row: number) => boolean
-    readonly freeze: (model: DataModel) => void
-    readonly thaw: (model: DataModel) => void
-    readonly getNotify: (model: DataModel) => boolean
-    readonly sendHint: (model: DataModel, hint: DataModelHint, hintValue: any) => void
-    readonly getExceptions: (model: DataModel) => GLib.Error
-    readonly rowInserted: (model: DataModel, row: number) => void
-    readonly rowUpdated: (model: DataModel, row: number) => void
-    readonly rowRemoved: (model: DataModel, row: number) => void
-    readonly changed: (model: DataModel) => void
-    readonly reset: (model: DataModel) => void
-    readonly accessChanged: (model: DataModel) => void
+    gIface: GObject.TypeInterface
+    getNRows: (model: DataModel) => number
+    getNColumns: (model: DataModel) => number
+    getAccessFlags: (model: DataModel) => DataModelAccessFlags
+    getValueAt: (model: DataModel, col: number, row: number) => any
+    getAttributesAt: (model: DataModel, col: number, row: number) => ValueAttribute
+    setValueAt: (model: DataModel, col: number, row: number, value: any) => boolean
+    appendRow: (model: DataModel) => number
+    removeRow: (model: DataModel, row: number) => boolean
+    freeze: (model: DataModel) => void
+    thaw: (model: DataModel) => void
+    getNotify: (model: DataModel) => boolean
+    sendHint: (model: DataModel, hint: DataModelHint, hintValue: any) => void
+    getExceptions: (model: DataModel) => GLib.Error
+    rowInserted: (model: DataModel, row: number) => void
+    rowUpdated: (model: DataModel, row: number) => void
+    rowRemoved: (model: DataModel, row: number) => void
+    changed: (model: DataModel) => void
+    reset: (model: DataModel) => void
+    accessChanged: (model: DataModel) => void
     static name: string
 }
 abstract class DataModelIterClass {
     /* Fields of Gda-6.0.Gda.DataModelIterClass */
-    readonly parentClass: SetClass
-    readonly moveToRow: (iter: DataModelIter, row: number) => boolean
-    readonly moveNext: (iter: DataModelIter) => boolean
-    readonly movePrev: (iter: DataModelIter) => boolean
-    readonly setValueAt: (iter: DataModelIter, col: number, value: any) => boolean
-    readonly rowChanged: (iter: DataModelIter, row: number) => void
-    readonly endOfData: (iter: DataModelIter) => void
+    parentClass: SetClass
+    moveToRow: (iter: DataModelIter, row: number) => boolean
+    moveNext: (iter: DataModelIter) => boolean
+    movePrev: (iter: DataModelIter) => boolean
+    setValueAt: (iter: DataModelIter, col: number, value: any) => boolean
+    rowChanged: (iter: DataModelIter, row: number) => void
+    endOfData: (iter: DataModelIter) => void
     static name: string
 }
 abstract class DataModelSelectClass {
     /* Fields of Gda-6.0.Gda.DataModelSelectClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly updated: (model: DataModelSelect) => void
+    parentClass: GObject.ObjectClass
+    updated: (model: DataModelSelect) => void
     static name: string
 }
 abstract class DataPivotClass {
     /* Fields of Gda-6.0.Gda.DataPivotClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class DataProxyClass {
     /* Fields of Gda-6.0.Gda.DataProxyClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly rowDeleteChanged: (proxy: DataProxy, row: number, toBeDeleted: boolean) => void
-    readonly sampleSizeChanged: (proxy: DataProxy, sampleSize: number) => void
-    readonly sampleChanged: (proxy: DataProxy, sampleStart: number, sampleEnd: number) => void
-    readonly validateRowChanges: (proxy: DataProxy, row: number, proxiedRow: number) => GLib.Error
-    readonly rowChangesApplied: (proxy: DataProxy, row: number, proxiedRow: number) => void
-    readonly filterChanged: (proxy: DataProxy) => void
+    parentClass: GObject.ObjectClass
+    rowDeleteChanged: (proxy: DataProxy, row: number, toBeDeleted: boolean) => void
+    sampleSizeChanged: (proxy: DataProxy, sampleSize: number) => void
+    sampleChanged: (proxy: DataProxy, sampleStart: number, sampleEnd: number) => void
+    validateRowChanges: (proxy: DataProxy, row: number, proxiedRow: number) => GLib.Error
+    rowChangesApplied: (proxy: DataProxy, row: number, proxiedRow: number) => void
+    filterChanged: (proxy: DataProxy) => void
     static name: string
 }
 abstract class DataSelectClass {
     /* Fields of Gda-6.0.Gda.DataSelectClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly fetchNbRows: (model: DataSelect) => number
-    readonly fetchRandom: (model: DataSelect, prow: Row, rownum: number) => boolean
-    readonly storeAll: (model: DataSelect) => boolean
-    readonly fetchNext: (model: DataSelect, prow: Row, rownum: number) => boolean
-    readonly fetchPrev: (model: DataSelect, prow: Row, rownum: number) => boolean
-    readonly fetchAt: (model: DataSelect, prow: Row, rownum: number) => boolean
+    parentClass: GObject.ObjectClass
+    fetchNbRows: (model: DataSelect) => number
+    fetchRandom: (model: DataSelect, prow: Row, rownum: number) => boolean
+    storeAll: (model: DataSelect) => boolean
+    fetchNext: (model: DataSelect, prow: Row, rownum: number) => boolean
+    fetchPrev: (model: DataSelect, prow: Row, rownum: number) => boolean
+    fetchAt: (model: DataSelect, prow: Row, rownum: number) => boolean
     static name: string
 }
 abstract class DataSelectIterClass {
     /* Fields of Gda-6.0.Gda.DataSelectIterClass */
-    readonly parentClass: DataModelIterClass
+    parentClass: DataModelIterClass
     static name: string
 }
 abstract class DbBaseClass {
     /* Fields of Gda-6.0.Gda.DbBaseClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 abstract class DbBuildableInterface {
     /* Fields of Gda-6.0.Gda.DbBuildableInterface */
-    readonly parentIface: GObject.TypeInterface
-    readonly parseNode: (self: DbBuildable, node: libxml2.NodePtr) => boolean
-    readonly writeNode: (self: DbBuildable, node: libxml2.NodePtr) => boolean
+    parentIface: GObject.TypeInterface
+    parseNode: (self: DbBuildable, node: libxml2.NodePtr) => boolean
+    writeNode: (self: DbBuildable, node: libxml2.NodePtr) => boolean
     static name: string
 }
 abstract class DbCatalogClass {
     /* Fields of Gda-6.0.Gda.DbCatalogClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 abstract class DbColumnClass {
     /* Fields of Gda-6.0.Gda.DbColumnClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 abstract class DbFkeyClass {
     /* Fields of Gda-6.0.Gda.DbFkeyClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class DbIndexClass {
     /* Fields of Gda-6.0.Gda.DbIndexClass */
-    readonly parentClass: DbBaseClass
+    parentClass: DbBaseClass
     static name: string
 }
 abstract class DbIndexFieldClass {
     /* Fields of Gda-6.0.Gda.DbIndexFieldClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class DbTableClass {
     /* Fields of Gda-6.0.Gda.DbTableClass */
-    readonly parentClass: DbBaseClass
+    parentClass: DbBaseClass
     static name: string
 }
 abstract class DbViewClass {
     /* Fields of Gda-6.0.Gda.DbViewClass */
-    readonly parentClass: DbBaseClass
+    parentClass: DbBaseClass
     static name: string
 }
 abstract class DdlModifiableInterface {
     /* Fields of Gda-6.0.Gda.DdlModifiableInterface */
-    readonly parentIface: GObject.TypeInterface
-    readonly create: (self: DdlModifiable, cnc: Connection) => boolean
-    readonly drop: (self: DdlModifiable, cnc: Connection) => boolean
-    readonly rename: (self: DdlModifiable, cnc: Connection) => boolean
+    parentIface: GObject.TypeInterface
+    create: (self: DdlModifiable, cnc: Connection) => boolean
+    drop: (self: DdlModifiable, cnc: Connection) => boolean
+    rename: (self: DdlModifiable, cnc: Connection) => boolean
     static name: string
 }
 class Diff {
     /* Fields of Gda-6.0.Gda.Diff */
-    readonly type: DiffType
-    readonly oldRow: number
-    readonly newRow: number
-    readonly values: GLib.HashTable
+    type: DiffType
+    oldRow: number
+    newRow: number
+    values: GLib.HashTable
     static name: string
 }
 class DsnInfo {
@@ -30769,27 +33832,27 @@ class DsnInfo {
     /**
      * the (unique) name of the DSN (plain text, not RFC 1738 encoded)
      */
-    readonly name: string
+    name: string
     /**
      * the ID of the database provider to be used (plain text, not RFC 1738 encoded)
      */
-    readonly provider: string
+    provider: string
     /**
      * a descriptive string (plain text, not RFC 1738 encoded), can be %NULL.
      */
-    readonly description: string
+    description: string
     /**
      * the connection string, a semi-colon separated &lt;key>=&lt;value&gt; list where &lt;key&gt; and &lt;value&gt; are RFC 1738 encoded
      */
-    readonly cncString: string
+    cncString: string
     /**
      * the authentication string, a semi-colon separated &lt;key>=&lt;value&gt; list where &lt;key&gt; and &lt;value&gt; are RFC 1738 encoded. Can be %NULL.
      */
-    readonly authString: string
+    authString: string
     /**
      * %TRUE if the DSN is a system wide defined data source
      */
-    readonly isSystem: boolean
+    isSystem: boolean
     /* Methods of Gda-6.0.Gda.DsnInfo */
     /**
      * Copy constructor.
@@ -30800,6 +33863,7 @@ class DsnInfo {
      * 
      * If both `dsn1` and `dsn2` are %NULL, then the function returns %TRUE.
      * If only one of `dsn1` or `dsn2` is %NULL, then the function return %FALSE.
+     * @param dsn2 a #GdaDsnInfo
      */
     equal(dsn2?: DsnInfo | null): boolean
     /**
@@ -30828,54 +33892,54 @@ class GeometricPoint {
 }
 abstract class HandlerBinClass {
     /* Fields of Gda-6.0.Gda.HandlerBinClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HandlerBooleanClass {
     /* Fields of Gda-6.0.Gda.HandlerBooleanClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HandlerNumericalClass {
     /* Fields of Gda-6.0.Gda.HandlerNumericalClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HandlerStringClass {
     /* Fields of Gda-6.0.Gda.HandlerStringClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HandlerTextClass {
     /* Fields of Gda-6.0.Gda.HandlerTextClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HandlerTimeClass {
     /* Fields of Gda-6.0.Gda.HandlerTimeClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HandlerTypeClass {
     /* Fields of Gda-6.0.Gda.HandlerTypeClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HolderClass {
     /* Fields of Gda-6.0.Gda.HolderClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly changed: (holder: Holder) => void
-    readonly sourceChanged: (holder: Holder) => void
-    readonly validateChange: (holder: Holder, newValue: any) => GLib.Error
-    readonly toDefault: (holder: Holder) => void
+    parentClass: GObject.ObjectClass
+    changed: (holder: Holder) => void
+    sourceChanged: (holder: Holder) => void
+    validateChange: (holder: Holder, newValue: any) => GLib.Error
+    toDefault: (holder: Holder) => void
     static name: string
 }
 abstract class LockableInterface {
     /* Fields of Gda-6.0.Gda.LockableInterface */
-    readonly gIface: GObject.TypeInterface
-    readonly lock: (lockable: Lockable) => void
-    readonly trylock: (lockable: Lockable) => boolean
-    readonly unlock: (lockable: Lockable) => void
+    gIface: GObject.TypeInterface
+    lock: (lockable: Lockable) => void
+    trylock: (lockable: Lockable) => boolean
+    unlock: (lockable: Lockable) => void
     static name: string
 }
 class MetaContext {
@@ -30883,24 +33947,24 @@ class MetaContext {
     /**
      * the name of the table <emphasis>in the GdaMetaStore's internal database</emphasis>
      */
-    readonly tableName: string
+    tableName: string
     /**
      * the size of the `column_names` and `column_values` arrays
      */
-    readonly size: number
+    size: number
     /**
      * an array of column names (columns of the `table_name` table)
      */
-    readonly columnNames: string[]
+    columnNames: string[]
     /**
      * an array of values, one for each column named in `column_names`
      */
-    readonly columnValues: any[]
+    columnValues: any[]
     /**
      * A #GHashTable storing columns' name as key and #GValue as column's
      * value.
      */
-    readonly columns: GLib.HashTable
+    columns: GLib.HashTable
     /* Methods of Gda-6.0.Gda.MetaContext */
     /**
      * Copy constructor.
@@ -30921,6 +33985,9 @@ class MetaContext {
      * schema</link>). If the given `column` already exists it's value is overwrited.
      * 
      * Column's name and value is copied and destroyed when #gda_meta_context_free is called.
+     * @param column the column's name
+     * @param value the column's value
+     * @param cnc a #GdaConnection to be used when identifier are normalized, or NULL
      */
     setColumn(column: string, value: any, cnc?: Connection | null): void
     /**
@@ -30928,12 +33995,15 @@ class MetaContext {
      * to represent its value.
      * 
      * `columns` incements its reference counting. Is recommended to use #gda_meta_context_free in order to free them.
+     * @param columns a #GHashTable with the table's columns' name and their values to use in context.
+     * @param cnc a #GdaConnection to used to normalize identifiers quoting, or NULL
      */
     setColumns(columns: GLib.HashTable, cnc?: Connection | null): void
     /**
      * Set table's name to use in the context. The table is one of <link linkend="information_schema">database
      * schema</link> used to store meta information about the database. Use "_tables" to update meta information
      * about database's tables.
+     * @param table a string with the table's name to use in context
      */
     setTable(table: string): void
     /**
@@ -30951,40 +34021,40 @@ class MetaDbObject {
     /**
      * the type of object (table, view)
      */
-    readonly objType: MetaDbObjectType
+    objType: MetaDbObjectType
     /**
      * set to %TRUE if the information in this #GdaMetaDbObject may be outdated because the #GdaMetaStore has been updated
      */
-    readonly outdated: boolean
+    outdated: boolean
     /**
      * the catalog the object is in
      */
-    readonly objCatalog: string
+    objCatalog: string
     /**
      * the schema the object is in
      */
-    readonly objSchema: string
+    objSchema: string
     /**
      * the object's name
      */
-    readonly objName: string
+    objName: string
     /**
      * the shortest way to name the object
      */
-    readonly objShortName: string
+    objShortName: string
     /**
      * the full name of the object (in the &lt;schema&gt;.&lt;nameagt; notation
      */
-    readonly objFullName: string
+    objFullName: string
     /**
      * object's owner
      */
-    readonly objOwner: string
+    objOwner: string
     /**
      * list of #GdaMetaDbObject pointers on which this object depends (through foreign keys
      *               or tables used for views)
      */
-    readonly dependList: MetaDbObject[]
+    dependList: MetaDbObject[]
     static name: string
 }
 class MetaStoreChange {
@@ -31004,14 +34074,14 @@ class MetaStoreChange {
 }
 abstract class MetaStoreClass {
     /* Fields of Gda-6.0.Gda.MetaStoreClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly metaReset: (store: MetaStore) => void
-    readonly suggestUpdate: (store: MetaStore, suggest: MetaContext) => GLib.Error
+    parentClass: GObject.ObjectClass
+    metaReset: (store: MetaStore) => void
+    suggestUpdate: (store: MetaStore, suggest: MetaContext) => GLib.Error
     static name: string
 }
 abstract class MetaStructClass {
     /* Fields of Gda-6.0.Gda.MetaStructClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class MetaTable {
@@ -31019,24 +34089,24 @@ class MetaTable {
     /**
      * list of #GdaMetaTableColumn structures, one for each column in the table
      */
-    readonly columns: MetaTableColumn[]
+    columns: MetaTableColumn[]
     /**
      * index of the columns part of the primary key for the table (WARNING: columns numbering
      *                 here start at 0)
      */
-    readonly pkColsArray: number
+    pkColsArray: number
     /**
      * size of the `pk_cols_array` array
      */
-    readonly pkColsNb: number
+    pkColsNb: number
     /**
      * list of #GdaMetaTableForeignKey where the referenced table is this table
      */
-    readonly reverseFkList: MetaTableForeignKey[]
+    reverseFkList: MetaTableForeignKey[]
     /**
      * list of #GdaMetaTableForeignKey for this table
      */
-    readonly fkList: MetaTableForeignKey[]
+    fkList: MetaTableForeignKey[]
     static name: string
 }
 class MetaTableColumn {
@@ -31044,29 +34114,29 @@ class MetaTableColumn {
     /**
      * the column's name
      */
-    readonly columnName: string
+    columnName: string
     /**
      * the column's DBMS's type
      */
-    readonly columnType: string
+    columnType: string
     /**
      * the detected column's #GType
      */
-    readonly gtype: GObject.Type
+    gtype: GObject.Type
     /**
      * tells if the column is part of a primary key
      */
-    readonly pkey: boolean
+    pkey: boolean
     /**
      * tells if the column can be %NULL
      */
-    readonly nullok: boolean
+    nullok: boolean
     /**
      * the column's default value, represented as a valid SQL value (surrounded by simple quotes for strings, ...), or %NULL if column has no default value
      */
-    readonly defaultValue: string
-    readonly autoIncement: boolean
-    readonly desc: string
+    defaultValue: string
+    autoIncement: boolean
+    desc: string
     static name: string
 }
 class MetaTableForeignKey {
@@ -31074,34 +34144,34 @@ class MetaTableForeignKey {
     /**
      * the #GdaMetaDbObject for which this structure represents a foreign key
      */
-    readonly metaTable: MetaDbObject
+    metaTable: MetaDbObject
     /**
      * the #GdaMetaDbObject which is referenced by the foreign key
      */
-    readonly dependOn: MetaDbObject
+    dependOn: MetaDbObject
     /**
      * the size of the `fk_cols_array,` `fk_names_array,` `ref_pk_cols_array` and `ref_pk_names_array` arrays
      */
-    readonly colsNb: number
+    colsNb: number
     /**
      * the columns' indexes in `meta_table` which participate in the constraint (WARNING: columns numbering
      *                 here start at 1)
      */
-    readonly fkColsArray: number
+    fkColsArray: number
     /**
      * the columns' names in `meta_table` which participate in the constraint
      */
-    readonly fkNamesArray: string
+    fkNamesArray: string
     /**
      * the columns' indexes in `depend_on` which participate in the constraint (WARNING: columns numbering
      *                 here start at 1)
      */
-    readonly refPkColsArray: number
+    refPkColsArray: number
     /**
      * the columns' names in `depend_on` which participate in the constraint
      */
-    readonly refPkNamesArray: string
-    readonly fkName: string
+    refPkNamesArray: string
+    fkName: string
     static name: string
 }
 class MetaView {
@@ -31109,15 +34179,15 @@ class MetaView {
     /**
      * a view is also a table as it has columns
      */
-    readonly table: MetaTable
+    table: MetaTable
     /**
      * views' definition
      */
-    readonly viewDef: string
+    viewDef: string
     /**
      * tells if the view's contents can be updated
      */
-    readonly isUpdatable: boolean
+    isUpdatable: boolean
     static name: string
 }
 class Numeric {
@@ -31145,18 +34215,22 @@ class Numeric {
     getWidth(): number
     /**
      * Sets `numeric` using a #gdouble represented by `number`.
+     * @param number a #gdouble
      */
     setDouble(number: number): void
     /**
      * Sets `numeric` with a number represented by `str,` in the C locale format (dot as a fraction separator).
+     * @param str a string representing a number, in the C locale format
      */
     setFromString(str: string): void
     /**
      * Sets the precision of a #GdaNumeric.
+     * @param precision a #glong
      */
     setPrecision(precision: number): void
     /**
      * Sets the width of a #GdaNumeric. (Not yet implemented).
+     * @param width a #glong
      */
     setWidth(width: number): void
     static name: string
@@ -31167,7 +34241,7 @@ class Numeric {
 }
 abstract class PStmtClass {
     /* Fields of Gda-6.0.Gda.PStmtClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ProviderInfo {
@@ -31175,119 +34249,119 @@ class ProviderInfo {
     /**
      * the unique identifier of the database provider
      */
-    readonly id: string
+    id: string
     /**
      * the complete path to the shared library implementing the database provider
      */
-    readonly location: string
+    location: string
     /**
      * provider's description
      */
-    readonly description: string
+    description: string
     /**
      * a #GdaSet containing all the parameters which can/must be specified when opening a connection or defining a named data source (DSN)
      */
-    readonly dsnParams: Set
+    dsnParams: Set
     /**
      * a #GdaSet containing all the authentication parameters
      */
-    readonly authParams: Set
-    readonly iconId: string
+    authParams: Set
+    iconId: string
     static name: string
 }
 abstract class ProviderInterface {
     /* Fields of Gda-6.0.Gda.ProviderInterface */
-    readonly gIface: GObject.TypeInterface
-    readonly getName: (provider: Provider) => string
-    readonly getVersion: (provider: Provider) => string
-    readonly getServerVersion: (provider: Provider, cnc: Connection) => string
-    readonly supportsFeature: (provider: Provider, cnc: Connection, feature: ConnectionFeature) => boolean
-    readonly createConnection: (provider: Provider) => Connection
-    readonly createParser: (provider: Provider, cnc: Connection) => SqlParser
-    readonly getDataHandler: (provider: Provider, cnc: Connection, gType: GObject.Type, dbmsType: string) => DataHandler
-    readonly getDefDbmsType: (provider: Provider, cnc: Connection, gType: GObject.Type) => string
-    readonly supportsOperation: (provider: Provider, cnc: Connection, type: ServerOperationType, options: Set) => boolean
-    readonly createOperation: (provider: Provider, cnc: Connection, type: ServerOperationType, options: Set) => ServerOperation
-    readonly renderOperation: (provider: Provider, cnc: Connection, op: ServerOperation) => string
-    readonly statementToSql: (provider: Provider, cnc: Connection, stmt: Statement, params: Set | null, flags: StatementSqlFlag) => [ /* returnType */ string, /* paramsUsed */ Holder[] | null ]
-    readonly identifierQuote: (provider: Provider, cnc: Connection | null, id: string, forMetaStore: boolean, forceQuotes: boolean) => string
-    readonly statementRewrite: (provider: Provider, cnc: Connection, stmt: Statement, params: Set) => SqlStatement
-    readonly openConnection: (provider: Provider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
-    readonly prepareConnection: (provider: Provider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
-    readonly closeConnection: (provider: Provider, cnc: Connection) => boolean
-    readonly escapeString: (provider: Provider, cnc: Connection, str: string) => string
-    readonly unescapeString: (provider: Provider, cnc: Connection, str: string) => string
-    readonly performOperation: (provider: Provider, cnc: Connection, op: ServerOperation) => boolean
-    readonly beginTransaction: (provider: Provider, cnc: Connection, name: string, level: TransactionIsolation) => boolean
-    readonly commitTransaction: (provider: Provider, cnc: Connection, name: string) => boolean
-    readonly rollbackTransaction: (provider: Provider, cnc: Connection, name: string) => boolean
-    readonly addSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
-    readonly rollbackSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
-    readonly deleteSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
-    readonly statementPrepare: (provider: Provider, cnc: Connection, stmt: Statement) => boolean
-    readonly statementExecute: (provider: Provider, cnc: Connection, stmt: Statement, params: Set, modelUsage: StatementModelUsage, colTypes: GObject.Type, lastInsertedRow: Set) => GObject.Object
-    readonly getLastInserted: (provider: Provider, cnc: Connection) => Set
-    readonly padding: object[]
+    gIface: GObject.TypeInterface
+    getName: (provider: Provider) => string
+    getVersion: (provider: Provider) => string
+    getServerVersion: (provider: Provider, cnc: Connection) => string
+    supportsFeature: (provider: Provider, cnc: Connection, feature: ConnectionFeature) => boolean
+    createConnection: (provider: Provider) => Connection
+    createParser: (provider: Provider, cnc: Connection) => SqlParser
+    getDataHandler: (provider: Provider, cnc: Connection, gType: GObject.Type, dbmsType: string) => DataHandler
+    getDefDbmsType: (provider: Provider, cnc: Connection, gType: GObject.Type) => string
+    supportsOperation: (provider: Provider, cnc: Connection, type: ServerOperationType, options: Set) => boolean
+    createOperation: (provider: Provider, cnc: Connection, type: ServerOperationType, options: Set) => ServerOperation
+    renderOperation: (provider: Provider, cnc: Connection, op: ServerOperation) => string
+    statementToSql: (provider: Provider, cnc: Connection, stmt: Statement, params: Set | null, flags: StatementSqlFlag) => [ /* returnType */ string, /* paramsUsed */ Holder[] | null ]
+    identifierQuote: (provider: Provider, cnc: Connection | null, id: string, forMetaStore: boolean, forceQuotes: boolean) => string
+    statementRewrite: (provider: Provider, cnc: Connection, stmt: Statement, params: Set) => SqlStatement
+    openConnection: (provider: Provider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
+    prepareConnection: (provider: Provider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
+    closeConnection: (provider: Provider, cnc: Connection) => boolean
+    escapeString: (provider: Provider, cnc: Connection, str: string) => string
+    unescapeString: (provider: Provider, cnc: Connection, str: string) => string
+    performOperation: (provider: Provider, cnc: Connection, op: ServerOperation) => boolean
+    beginTransaction: (provider: Provider, cnc: Connection, name: string, level: TransactionIsolation) => boolean
+    commitTransaction: (provider: Provider, cnc: Connection, name: string) => boolean
+    rollbackTransaction: (provider: Provider, cnc: Connection, name: string) => boolean
+    addSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
+    rollbackSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
+    deleteSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
+    statementPrepare: (provider: Provider, cnc: Connection, stmt: Statement) => boolean
+    statementExecute: (provider: Provider, cnc: Connection, stmt: Statement, params: Set, modelUsage: StatementModelUsage, colTypes: GObject.Type, lastInsertedRow: Set) => GObject.Object
+    getLastInserted: (provider: Provider, cnc: Connection) => Set
+    padding: object[]
     static name: string
 }
 abstract class ProviderMetaInterface {
     /* Fields of Gda-6.0.Gda.ProviderMetaInterface */
-    readonly gIface: GObject.TypeInterface
-    readonly btypes: (prov: ProviderMeta) => DataModel
-    readonly udts: (prov: ProviderMeta) => DataModel
-    readonly udt: (prov: ProviderMeta, udtCatalog: string, udtSchema: string) => Row
-    readonly udtCols: (prov: ProviderMeta) => DataModel
-    readonly udtCol: (prov: ProviderMeta, udtCatalog: string, udtSchema: string, udtName: string) => Row
-    readonly enumsType: (prov: ProviderMeta) => DataModel
-    readonly enumType: (prov: ProviderMeta, udtCatalog: string, udtSchema: string, udtName: string) => Row
-    readonly domains: (prov: ProviderMeta) => DataModel
-    readonly domain: (prov: ProviderMeta, domainCatalog: string, domainSchema: string) => Row
-    readonly domainsConstraints: (prov: ProviderMeta) => DataModel
-    readonly domainConstraints: (prov: ProviderMeta, domainCatalog: string, domainSchema: string, domainName: string) => DataModel
-    readonly domainConstraint: (prov: ProviderMeta, domainCatalog: string, domainSchema: string, domainName: string, constraintName: string) => Row
-    readonly elementTypes: (prov: ProviderMeta) => DataModel
-    readonly elementType: (prov: ProviderMeta, specificName: string) => Row
-    readonly collations: (prov: ProviderMeta) => DataModel
-    readonly collation: (prov: ProviderMeta, collationCatalog: string, collationSchema: string, collationNameN: string) => Row
-    readonly characterSets: (prov: ProviderMeta) => DataModel
-    readonly characterSet: (prov: ProviderMeta, chsetCatalog: string, chsetSchema: string, chsetNameN: string) => Row
-    readonly schematas: (prov: ProviderMeta) => DataModel
-    readonly schemata: (prov: ProviderMeta, catalogName: string, schemaNameN: string) => Row
-    readonly tablesColumns: (prov: ProviderMeta) => DataModel
-    readonly tables: (prov: ProviderMeta) => DataModel
-    readonly table: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableNameN: string) => Row
-    readonly views: (prov: ProviderMeta) => DataModel
-    readonly view: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewNameN: string) => Row
-    readonly columns: (prov: ProviderMeta) => DataModel
-    readonly tableColumns: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
-    readonly tableColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, columnName: string) => Row
-    readonly viewsColumns: (prov: ProviderMeta) => DataModel
-    readonly viewColumns: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewName: string) => DataModel
-    readonly viewColumn: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewName: string, columnName: string) => Row
-    readonly constraintsTables: (prov: ProviderMeta) => DataModel
-    readonly constraintsTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
-    readonly constraintTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintNameN: string) => Row
-    readonly constraintsRef: (prov: ProviderMeta) => DataModel
-    readonly constraintsRefTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
-    readonly constraintRef: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
-    readonly keyColumns: (prov: ProviderMeta) => DataModel
-    readonly keyColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
-    readonly checkColumns: (prov: ProviderMeta) => DataModel
-    readonly checkColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
-    readonly triggers: (prov: ProviderMeta) => DataModel
-    readonly trigger: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => Row
-    readonly routines: (prov: ProviderMeta) => DataModel
-    readonly routine: (prov: ProviderMeta, routineCatalog: string, routineSchema: string, routineNameN: string) => Row
-    readonly routinesCol: (prov: ProviderMeta) => DataModel
-    readonly routineCol: (prov: ProviderMeta, routCatalog: string, routSchema: string, routName: string) => Row
-    readonly routinesPars: (prov: ProviderMeta) => DataModel
-    readonly routinePars: (prov: ProviderMeta, routCatalog: string, routSchema: string, routName: string) => Row
-    readonly indexesTables: (prov: ProviderMeta) => DataModel
-    readonly indexesTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
-    readonly indexTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, indexNameN: string) => Row
-    readonly indexCols: (prov: ProviderMeta) => DataModel
-    readonly indexCol: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, indexName: string) => Row
-    readonly padding: object[]
+    gIface: GObject.TypeInterface
+    btypes: (prov: ProviderMeta) => DataModel
+    udts: (prov: ProviderMeta) => DataModel
+    udt: (prov: ProviderMeta, udtCatalog: string, udtSchema: string) => Row
+    udtCols: (prov: ProviderMeta) => DataModel
+    udtCol: (prov: ProviderMeta, udtCatalog: string, udtSchema: string, udtName: string) => Row
+    enumsType: (prov: ProviderMeta) => DataModel
+    enumType: (prov: ProviderMeta, udtCatalog: string, udtSchema: string, udtName: string) => Row
+    domains: (prov: ProviderMeta) => DataModel
+    domain: (prov: ProviderMeta, domainCatalog: string, domainSchema: string) => Row
+    domainsConstraints: (prov: ProviderMeta) => DataModel
+    domainConstraints: (prov: ProviderMeta, domainCatalog: string, domainSchema: string, domainName: string) => DataModel
+    domainConstraint: (prov: ProviderMeta, domainCatalog: string, domainSchema: string, domainName: string, constraintName: string) => Row
+    elementTypes: (prov: ProviderMeta) => DataModel
+    elementType: (prov: ProviderMeta, specificName: string) => Row
+    collations: (prov: ProviderMeta) => DataModel
+    collation: (prov: ProviderMeta, collationCatalog: string, collationSchema: string, collationNameN: string) => Row
+    characterSets: (prov: ProviderMeta) => DataModel
+    characterSet: (prov: ProviderMeta, chsetCatalog: string, chsetSchema: string, chsetNameN: string) => Row
+    schematas: (prov: ProviderMeta) => DataModel
+    schemata: (prov: ProviderMeta, catalogName: string, schemaNameN: string) => Row
+    tablesColumns: (prov: ProviderMeta) => DataModel
+    tables: (prov: ProviderMeta) => DataModel
+    table: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableNameN: string) => Row
+    views: (prov: ProviderMeta) => DataModel
+    view: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewNameN: string) => Row
+    columns: (prov: ProviderMeta) => DataModel
+    tableColumns: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
+    tableColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, columnName: string) => Row
+    viewsColumns: (prov: ProviderMeta) => DataModel
+    viewColumns: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewName: string) => DataModel
+    viewColumn: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewName: string, columnName: string) => Row
+    constraintsTables: (prov: ProviderMeta) => DataModel
+    constraintsTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
+    constraintTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintNameN: string) => Row
+    constraintsRef: (prov: ProviderMeta) => DataModel
+    constraintsRefTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
+    constraintRef: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
+    keyColumns: (prov: ProviderMeta) => DataModel
+    keyColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
+    checkColumns: (prov: ProviderMeta) => DataModel
+    checkColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
+    triggers: (prov: ProviderMeta) => DataModel
+    trigger: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => Row
+    routines: (prov: ProviderMeta) => DataModel
+    routine: (prov: ProviderMeta, routineCatalog: string, routineSchema: string, routineNameN: string) => Row
+    routinesCol: (prov: ProviderMeta) => DataModel
+    routineCol: (prov: ProviderMeta, routCatalog: string, routSchema: string, routName: string) => Row
+    routinesPars: (prov: ProviderMeta) => DataModel
+    routinePars: (prov: ProviderMeta, routCatalog: string, routSchema: string, routName: string) => Row
+    indexesTables: (prov: ProviderMeta) => DataModel
+    indexesTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
+    indexTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, indexNameN: string) => Row
+    indexCols: (prov: ProviderMeta) => DataModel
+    indexCol: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, indexName: string) => Row
+    padding: object[]
     static name: string
 }
 class QuarkList {
@@ -31312,6 +34386,8 @@ class QuarkList {
      * Adds new key->value pairs from the given `string`. If `cleanup` is
      * set to %TRUE, the previous contents will be discarded before adding
      * the new pairs.
+     * @param string a string.
+     * @param cleanup whether to cleanup the previous content or not.
      */
     addFromString(string: string, cleanup: boolean): void
     /**
@@ -31326,11 +34402,13 @@ class QuarkList {
      * Searches for the value identified by `name` in the given #GdaQuarkList. For protected values
      * (authentification data), don't forget to call gda_quark_list_protect_values() when you
      * don't need them anymore (when needed again, they will be unmangled again).
+     * @param name the name of the value to search for.
      */
     find(name: string): string
     /**
      * Calls the given function for each of the key/value pairs in `qlist`. The function is passed the key and value
      * of each pair, and the given user_data parameter. `qlist` may not be modified while iterating over it.
+     * @param func the function to call for each key/value pair
      */
     foreach(func: GLib.HFunc): void
     /**
@@ -31344,6 +34422,7 @@ class QuarkList {
     protectValues(): void
     /**
      * Removes an entry from the #GdaQuarkList, given its name.
+     * @param name an entry name.
      */
     remove(name: string): void
     static name: string
@@ -31355,19 +34434,19 @@ class QuarkList {
 }
 abstract class RepetitiveStatementClass {
     /* Fields of Gda-6.0.Gda.RepetitiveStatementClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class RowClass {
     /* Fields of Gda-6.0.Gda.RowClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class ServerOperationClass {
     /* Fields of Gda-6.0.Gda.ServerOperationClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly seqItemAdded: (op: ServerOperation, seqPath: string, itemIndex: number) => void
-    readonly seqItemRemove: (op: ServerOperation, seqPath: string, itemIndex: number) => void
+    parentClass: GObject.ObjectClass
+    seqItemAdded: (op: ServerOperation, seqPath: string, itemIndex: number) => void
+    seqItemRemove: (op: ServerOperation, seqPath: string, itemIndex: number) => void
     static name: string
 }
 class ServerOperationCreateTableArg {
@@ -31383,24 +34462,29 @@ class ServerOperationCreateTableArg {
     getFlags(): ServerOperationCreateTableFlag
     /**
      * Sets column name to be created with the new table.
+     * @param name the table's column's name.
      */
     setColumnName(name: string): void
     setColumnType(ctype: GObject.Type): void
     /**
      * You should set this if you use a #GDA_SERVER_OPERATION_CREATE_TABLE_FKEY_FLAG flag.
+     * @param action action to perform on delete action of the referenced field.
      */
     setFkeyOndelete(action: string): void
     setFkeyOndupdate(action: string): void
     /**
      * You should set this if you use a #GDA_SERVER_OPERATION_CREATE_TABLE_FKEY_FLAG flag.
+     * @param refs list of references from local to foreign fields. This list is owned by `arg,` then you should not free it.
      */
     setFkeyRefs(refs: ServerOperationCreateTableArgFKeyRefField[]): void
     /**
      * You should set this if you use a #GDA_SERVER_OPERATION_CREATE_TABLE_FKEY_FLAG flag.
+     * @param name the table's name of reference.
      */
     setFkeyTable(name: string): void
     /**
      * Sets flags for new column to create with the table.
+     * @param flags flags to used in this argument as #GdaServerOperationCreateTableFlag
      */
     setFlags(flags: ServerOperationCreateTableFlag): void
     static name: string
@@ -31425,13 +34509,13 @@ class ServerOperationCreateTableArgFKeyRefField {
 }
 class ServerOperationNode {
     /* Fields of Gda-6.0.Gda.ServerOperationNode */
-    readonly type: ServerOperationNodeType
-    readonly status: ServerOperationNodeStatus
-    readonly plist: Set
-    readonly model: DataModel
-    readonly column: Column
-    readonly param: Holder
-    readonly priv: object
+    type: ServerOperationNodeType
+    status: ServerOperationNodeStatus
+    plist: Set
+    model: DataModel
+    column: Column
+    param: Holder
+    priv: object
     /* Methods of Gda-6.0.Gda.ServerOperationNode */
     copy(): ServerOperationNode
     free(): void
@@ -31439,97 +34523,97 @@ class ServerOperationNode {
 }
 class ServerProviderBase {
     /* Fields of Gda-6.0.Gda.ServerProviderBase */
-    readonly getName: (provider: ServerProvider) => string
-    readonly getVersion: (provider: ServerProvider) => string
-    readonly getServerVersion: (provider: ServerProvider, cnc: Connection) => string
-    readonly supportsFeature: (provider: ServerProvider, cnc: Connection, feature: ConnectionFeature) => boolean
-    readonly createWorker: (provider: ServerProvider, forCnc: boolean) => Worker
-    readonly getDefDbmsType: (provider: ServerProvider, cnc: Connection, gType: GObject.Type) => string
-    readonly supportsOperation: (provider: ServerProvider, cnc: Connection, type: ServerOperationType, options: Set) => boolean
-    readonly renderOperation: (provider: ServerProvider, cnc: Connection, op: ServerOperation) => string
-    readonly identifierQuote: (provider: ServerProvider, cnc: Connection, id: string, forMetaStore: boolean, forceQuotes: boolean) => string
-    readonly statementRewrite: (provider: ServerProvider, cnc: Connection, stmt: Statement, params: Set) => SqlStatement
-    readonly openConnection: (provider: ServerProvider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
-    readonly prepareConnection: (provider: ServerProvider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
-    readonly closeConnection: (provider: ServerProvider, cnc: Connection) => boolean
-    readonly escapeString: (provider: ServerProvider, cnc: Connection, str: string) => string
-    readonly unescapeString: (provider: ServerProvider, cnc: Connection, str: string) => string
-    readonly performOperation: (provider: ServerProvider, cnc: Connection, op: ServerOperation) => boolean
-    readonly beginTransaction: (provider: ServerProvider, cnc: Connection, name: string, level: TransactionIsolation) => boolean
-    readonly commitTransaction: (provider: ServerProvider, cnc: Connection, name: string) => boolean
-    readonly rollbackTransaction: (provider: ServerProvider, cnc: Connection, name: string) => boolean
-    readonly addSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
-    readonly rollbackSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
-    readonly deleteSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
-    readonly statementPrepare: (provider: ServerProvider, cnc: Connection, stmt: Statement) => boolean
+    getName: (provider: ServerProvider) => string
+    getVersion: (provider: ServerProvider) => string
+    getServerVersion: (provider: ServerProvider, cnc: Connection) => string
+    supportsFeature: (provider: ServerProvider, cnc: Connection, feature: ConnectionFeature) => boolean
+    createWorker: (provider: ServerProvider, forCnc: boolean) => Worker
+    getDefDbmsType: (provider: ServerProvider, cnc: Connection, gType: GObject.Type) => string
+    supportsOperation: (provider: ServerProvider, cnc: Connection, type: ServerOperationType, options: Set) => boolean
+    renderOperation: (provider: ServerProvider, cnc: Connection, op: ServerOperation) => string
+    identifierQuote: (provider: ServerProvider, cnc: Connection, id: string, forMetaStore: boolean, forceQuotes: boolean) => string
+    statementRewrite: (provider: ServerProvider, cnc: Connection, stmt: Statement, params: Set) => SqlStatement
+    openConnection: (provider: ServerProvider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
+    prepareConnection: (provider: ServerProvider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
+    closeConnection: (provider: ServerProvider, cnc: Connection) => boolean
+    escapeString: (provider: ServerProvider, cnc: Connection, str: string) => string
+    unescapeString: (provider: ServerProvider, cnc: Connection, str: string) => string
+    performOperation: (provider: ServerProvider, cnc: Connection, op: ServerOperation) => boolean
+    beginTransaction: (provider: ServerProvider, cnc: Connection, name: string, level: TransactionIsolation) => boolean
+    commitTransaction: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    rollbackTransaction: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    addSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    rollbackSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    deleteSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    statementPrepare: (provider: ServerProvider, cnc: Connection, stmt: Statement) => boolean
     static name: string
 }
 abstract class ServerProviderClass {
     /* Fields of Gda-6.0.Gda.ServerProviderClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly functionsSets: object[]
+    parentClass: GObject.ObjectClass
+    functionsSets: object[]
     static name: string
 }
 class ServerProviderConnectionData {
     /* Fields of Gda-6.0.Gda.ServerProviderConnectionData */
-    readonly worker: Worker
-    readonly providerDataDestroyFunc: GLib.DestroyNotify
-    readonly pad1: object
-    readonly pad2: object
+    worker: Worker
+    providerDataDestroyFunc: GLib.DestroyNotify
+    pad1: object
+    pad2: object
     static name: string
 }
 class ServerProviderHandlerInfo {
     /* Fields of Gda-6.0.Gda.ServerProviderHandlerInfo */
-    readonly cnc: Connection
-    readonly gType: GObject.Type
-    readonly dbmsType: string
+    cnc: Connection
+    gType: GObject.Type
+    dbmsType: string
     static name: string
 }
 class ServerProviderMeta {
     /* Fields of Gda-6.0.Gda.ServerProviderMeta */
-    readonly udt: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, udtCatalog: any, udtSchema: any) => boolean
-    readonly udtCols: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, udtCatalog: any, udtSchema: any, udtName: any) => boolean
-    readonly enums: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, udtCatalog: any, udtSchema: any, udtName: any) => boolean
-    readonly domains: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, domainCatalog: any, domainSchema: any) => boolean
-    readonly constraintsDom: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, domainCatalog: any, domainSchema: any, domainName: any) => boolean
-    readonly elTypes: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, specificName: any) => boolean
-    readonly collations: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, collationCatalog: any, collationSchema: any, collationNameN: any) => boolean
-    readonly characterSets: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, chsetCatalog: any, chsetSchema: any, chsetNameN: any) => boolean
-    readonly schemata: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, catalogName: any, schemaNameN: any) => boolean
-    readonly tablesViews: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableNameN: any) => boolean
-    readonly columns: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any) => boolean
-    readonly viewCols: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, viewCatalog: any, viewSchema: any, viewName: any) => boolean
-    readonly constraintsTab: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, constraintNameN: any) => boolean
-    readonly constraintsRef: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, constraintName: any) => boolean
-    readonly keyColumns: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, constraintName: any) => boolean
-    readonly checkColumns: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, constraintName: any) => boolean
-    readonly triggers: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any) => boolean
-    readonly routines: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, routineCatalog: any, routineSchema: any, routineNameN: any) => boolean
-    readonly routineCol: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, routCatalog: any, routSchema: any, routName: any, colName: any, ordinalPosition: any) => boolean
-    readonly routinePar: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, routCatalog: any, routSchema: any, routName: any) => boolean
-    readonly indexesTab: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, indexNameN: any) => boolean
-    readonly indexCols: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, indexName: any) => boolean
+    udt: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, udtCatalog: any, udtSchema: any) => boolean
+    udtCols: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, udtCatalog: any, udtSchema: any, udtName: any) => boolean
+    enums: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, udtCatalog: any, udtSchema: any, udtName: any) => boolean
+    domains: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, domainCatalog: any, domainSchema: any) => boolean
+    constraintsDom: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, domainCatalog: any, domainSchema: any, domainName: any) => boolean
+    elTypes: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, specificName: any) => boolean
+    collations: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, collationCatalog: any, collationSchema: any, collationNameN: any) => boolean
+    characterSets: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, chsetCatalog: any, chsetSchema: any, chsetNameN: any) => boolean
+    schemata: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, catalogName: any, schemaNameN: any) => boolean
+    tablesViews: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableNameN: any) => boolean
+    columns: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any) => boolean
+    viewCols: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, viewCatalog: any, viewSchema: any, viewName: any) => boolean
+    constraintsTab: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, constraintNameN: any) => boolean
+    constraintsRef: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, constraintName: any) => boolean
+    keyColumns: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, constraintName: any) => boolean
+    checkColumns: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, constraintName: any) => boolean
+    triggers: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any) => boolean
+    routines: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, routineCatalog: any, routineSchema: any, routineNameN: any) => boolean
+    routineCol: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, routCatalog: any, routSchema: any, routName: any, colName: any, ordinalPosition: any) => boolean
+    routinePar: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, routCatalog: any, routSchema: any, routName: any) => boolean
+    indexesTab: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, indexNameN: any) => boolean
+    indexCols: (prov: ServerProvider, cnc: Connection, meta: MetaStore, ctx: MetaContext, error: GLib.Error, tableCatalog: any, tableSchema: any, tableName: any, indexName: any) => boolean
     static name: string
 }
 class ServerProviderXa {
     /* Fields of Gda-6.0.Gda.ServerProviderXa */
-    readonly xaStart: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
-    readonly xaEnd: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
-    readonly xaPrepare: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
-    readonly xaCommit: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
-    readonly xaRollback: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
+    xaStart: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
+    xaEnd: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
+    xaPrepare: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
+    xaCommit: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
+    xaRollback: (prov: ServerProvider, cnc: Connection, trx: XaTransactionId) => boolean
     static name: string
 }
 abstract class SetClass {
     /* Fields of Gda-6.0.Gda.SetClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly validateHolderChange: (set: Set, holder: Holder, newValue: any) => GLib.Error
-    readonly validateSet: (set: Set) => GLib.Error
-    readonly holderChanged: (set: Set, holder: Holder) => void
-    readonly holderAttrChanged: (set: Set, holder: Holder, attrName: string, attrValue: any) => void
-    readonly publicDataChanged: (set: Set) => void
-    readonly holderTypeSet: (set: Set, holder: Holder) => void
-    readonly sourceModelChanged: (set: Set, source: SetSource) => void
+    parentClass: GObject.ObjectClass
+    validateHolderChange: (set: Set, holder: Holder, newValue: any) => GLib.Error
+    validateSet: (set: Set) => GLib.Error
+    holderChanged: (set: Set, holder: Holder) => void
+    holderAttrChanged: (set: Set, holder: Holder, attrName: string, attrValue: any) => void
+    publicDataChanged: (set: Set) => void
+    holderTypeSet: (set: Set, holder: Holder) => void
+    sourceModelChanged: (set: Set, source: SetSource) => void
     static name: string
 }
 class SetGroup {
@@ -31578,15 +34662,18 @@ class SetNode {
      * Set a #GdaDataModel to be used by `node`. `model` increment its reference
      * counting when set. Internally referenced column number is set to first column
      * in `model`.
+     * @param model a #GdaDataModel to be used by `node`
      */
     setDataModel(model?: DataModel | null): void
     /**
      * Set a #GdaHolder to `node`.
+     * @param holder 
      */
     setHolder(holder: Holder): void
     /**
      * Set column number in the #GdaDataModel used `node`. If no #GdaDataModel is set
      * then column is set to invalid (-1);
+     * @param column 
      */
     setSourceColumn(column: number): void
     static name: string
@@ -31599,6 +34686,7 @@ class SetSource {
     /* Methods of Gda-6.0.Gda.SetSource */
     /**
      * Set a #GdaDataModel
+     * @param node a #GdaSetNode to add
      */
     addNode(node: SetNode): void
     /**
@@ -31614,6 +34702,7 @@ class SetSource {
     getNodes(): SetNode[]
     /**
      * Set a #GdaDataModel
+     * @param model a #GdaDataModel
      */
     setDataModel(model: DataModel): void
     static name: string
@@ -31627,11 +34716,11 @@ class SqlAnyPart {
     /**
      * type of structure, as a #GdaSqlAnyPartType enum.
      */
-    readonly type: SqlAnyPartType
+    type: SqlAnyPartType
     /**
      * pointer to the parent #GdaSqlAnyPart structure
      */
-    readonly parent: SqlAnyPart
+    parent: SqlAnyPart
     /* Methods of Gda-6.0.Gda.SqlAnyPart */
     /**
      * Checks for any error in `node'`s structure to make sure it is valid. This
@@ -31641,13 +34730,14 @@ class SqlAnyPart {
     checkStructure(): boolean
     /**
      * Calls a function for each element of a #GdaSqlAnyPart node
+     * @param func function to call for each sub node
      */
     foreach(func: SqlForeachFunc): boolean
     static name: string
 }
 abstract class SqlBuilderClass {
     /* Fields of Gda-6.0.Gda.SqlBuilderClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class SqlCase {
@@ -31655,23 +34745,23 @@ class SqlCase {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * expression to test
      */
-    readonly baseExpr: SqlExpr
+    baseExpr: SqlExpr
     /**
      * list of #GdaSqlExpr, one for each WHEN clause
      */
-    readonly whenExprList: object[]
+    whenExprList: object[]
     /**
      * list of #GdaSqlExpr, one for each THEN clause
      */
-    readonly thenExprList: object[]
+    thenExprList: object[]
     /**
      * default expression for the CASE
      */
-    readonly elseExpr: SqlExpr
+    elseExpr: SqlExpr
     /* Methods of Gda-6.0.Gda.SqlCase */
     /**
      * Creates a new #GdaSqlCase structure initiated with the values stored in `sc`.
@@ -31697,39 +34787,39 @@ class SqlExpr {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * a #GValue, or %NULL. Please see specific note about this field.
      */
-    readonly value: any
+    value: any
     /**
      * a #GdaSqlParamSpec, or %NULL if this is not a variable
      */
-    readonly paramSpec: SqlParamSpec
+    paramSpec: SqlParamSpec
     /**
      * not %NULL if expression is a function or aggregate
      */
-    readonly func: SqlFunction
+    func: SqlFunction
     /**
      * not %NULL if expression is a condition or an operation
      */
-    readonly cond: SqlOperation
+    cond: SqlOperation
     /**
      * not %NULL if expression is a sub select statement (#GdaSqlStatementSelect or #GdaSqlStatementCompound)
      */
-    readonly select: SqlAnyPart
+    select: SqlAnyPart
     /**
      * not %NULL if expression is a CASE WHEN ... expression
      */
-    readonly caseS: SqlCase
+    caseS: SqlCase
     /**
      * not %NULL if expression must be cast to another data type
      */
-    readonly castAs: string
+    castAs: string
     /**
      * Please see specific note about the `value` field
      */
-    readonly valueIsIdent: boolean
+    valueIsIdent: boolean
     /* Methods of Gda-6.0.Gda.SqlExpr */
     /**
      * Creates a new #GdaSqlExpr structure initiated with the values stored in `expr`.
@@ -31747,6 +34837,7 @@ class SqlExpr {
     /**
      * Sets the expression's parent to the #GdaSqlStatementSelect held by `stmt`. After
      * calling this function `stmt` is freed.
+     * @param stmt a #GdaSqlStatement holding the #GdaSqlStatementSelect to take from
      */
     takeSelect(stmt: SqlStatement): void
     static name: string
@@ -31757,12 +34848,12 @@ class SqlExpr {
 }
 class SqlField {
     /* Fields of Gda-6.0.Gda.SqlField */
-    readonly any: SqlAnyPart
-    readonly fieldName: string
+    any: SqlAnyPart
+    fieldName: string
     /**
      * validity check with a connection
      */
-    readonly validityMetaTableColumn: MetaTableColumn
+    validityMetaTableColumn: MetaTableColumn
     /* Methods of Gda-6.0.Gda.SqlField */
     /**
      * Creates a new GdaSqlField structure initiated with the values stored in `field`.
@@ -31780,6 +34871,7 @@ class SqlField {
     /**
      * Sets the field's name using the string held by `value`. When call, `value` is freed using
      * #gda_value_free().
+     * @param value a #GValue holding a string to take from
      */
     takeName(value: any): void
     static name: string
@@ -31793,15 +34885,15 @@ class SqlFunction {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * name of the function , in the form [[catalog.]schema.]function_name
      */
-    readonly functionName: string
+    functionName: string
     /**
      * list of #GdaSqlExpr expressions, one for each argument
      */
-    readonly argsList: object[]
+    argsList: object[]
     /* Methods of Gda-6.0.Gda.SqlFunction */
     checkClean(): void
     /**
@@ -31820,11 +34912,13 @@ class SqlFunction {
     /**
      * Sets the function's arguments to point to `args,` then sets the
      * list's data elements' parent to `function`.
+     * @param args a #GSList to take from
      */
     takeArgsList(args: SqlExpr[]): void
     /**
      * Sets the function's name using the string held by `value`. When call, `value` is freed using
      * #gda_value_free().
+     * @param value a #GValue holding a string to take from
      */
     takeName(value: any): void
     static name: string
@@ -31838,16 +34932,16 @@ class SqlOperation {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * operator type to be used. See #GdaSqlOperatorType
      */
-    readonly operatorType: SqlOperatorType
+    operatorType: SqlOperatorType
     /**
      * 
      * : list of #GdaSqlExpr operands
      */
-    readonly operands: SqlExpr[]
+    operands: SqlExpr[]
     /* Methods of Gda-6.0.Gda.SqlOperation */
     /**
      * Creates a new #GdaSqlOperation structure initiated with the values stored in `operation`.
@@ -31869,24 +34963,26 @@ class SqlOperation {
     static new(parent: SqlAnyPart): SqlOperation
     /**
      * Returns #GdaSqlOperatorType that correspond with the string `op`.
+     * @param op a #GdaSqlOperation structure
      */
     static operatorFromString(op: string): SqlOperatorType
     /**
      * Returns a constant string representing a operator name. You don't need to free
      * the returned string.
+     * @param op a #GdaSqlOperation structure
      */
     static operatorToString(op: SqlOperatorType): string
 }
 class SqlParamSpec {
     /* Fields of Gda-6.0.Gda.SqlParamSpec */
-    readonly name: string
-    readonly descr: string
-    readonly isParam: boolean
-    readonly nullok: boolean
-    readonly gType: GObject.Type
-    readonly validityMetaDict: object
-    readonly gdaReserved1: object
-    readonly gdaReserved2: object
+    name: string
+    descr: string
+    isParam: boolean
+    nullok: boolean
+    gType: GObject.Type
+    validityMetaDict: object
+    gdaReserved1: object
+    gdaReserved2: object
     /* Methods of Gda-6.0.Gda.SqlParamSpec */
     /**
      * Creates a copy of `pspec`.
@@ -31903,11 +34999,13 @@ class SqlParamSpec {
     /**
      * Sets `pspec'`s description. `value'`s ownership is transferred to
      * `pspec` (which means `pspec` is then responsible for freeing it when no longer needed).
+     * @param value a G_TYPE_STRING #GValue
      */
     takeDescr(value: any): void
     /**
      * Sets `pspec'`s name. `value'`s ownership is transferred to
      * `pspec` (which means `pspec` is then responsible for freeing it when no longer needed).
+     * @param value a G_TYPE_STRING #GValue
      */
     takeName(value: any): void
     /**
@@ -31915,6 +35013,7 @@ class SqlParamSpec {
      * `pspec` (which means `pspec` is then responsible for freeing it when no longer needed).
      * 
      * If `value'`s string starts by 't' or 'T' then `pspec` will be allowed to be %NULL
+     * @param value a G_TYPE_STRING #GValue.
      */
     takeNullok(value: any): void
     /**
@@ -31922,6 +35021,7 @@ class SqlParamSpec {
      * `pspec` (which means `pspec` is then responsible for freeing it when no longer needed).
      * 
      * `value` must represent a data type, as understood by gda_g_type_from_string().
+     * @param value a G_TYPE_STRING #GValue
      */
     takeType(value: any): void
     static name: string
@@ -31932,23 +35032,23 @@ class SqlParamSpec {
 }
 abstract class SqlParserClass {
     /* Fields of Gda-6.0.Gda.SqlParserClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly delimAlloc: (f: object) => object
-    readonly delimFree: (d: object, f: object) => void
-    readonly delimTrace: (d: object, s: string) => void
-    readonly delimParse: (d: object, i: number, v: any, iface: SqlParserIface) => void
-    readonly delimTokensTrans: number
-    readonly parserAlloc: (f: object) => object
-    readonly parserFree: (p: object, f: object) => void
-    readonly parserTrace: (p: object, s: string) => void
-    readonly parserParse: (p: object, i: number, v: any, iface: SqlParserIface) => void
-    readonly parserTokensTrans: number
+    parentClass: GObject.ObjectClass
+    delimAlloc: (f: object) => object
+    delimFree: (d: object, f: object) => void
+    delimTrace: (d: object, s: string) => void
+    delimParse: (d: object, i: number, v: any, iface: SqlParserIface) => void
+    delimTokensTrans: number
+    parserAlloc: (f: object) => object
+    parserFree: (p: object, f: object) => void
+    parserTrace: (p: object, s: string) => void
+    parserParse: (p: object, i: number, v: any, iface: SqlParserIface) => void
+    parserTokensTrans: number
     static name: string
 }
 class SqlParserIface {
     /* Fields of Gda-6.0.Gda.SqlParserIface */
-    readonly parser: SqlParser
-    readonly parsedStatement: SqlStatement
+    parser: SqlParser
+    parsedStatement: SqlStatement
     static name: string
 }
 class SqlSelectField {
@@ -31956,25 +35056,25 @@ class SqlSelectField {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * expression
      */
-    readonly expr: SqlExpr
+    expr: SqlExpr
     /**
      * field name part of `expr` if `expr` represents a field
      */
-    readonly fieldName: string
+    fieldName: string
     /**
      * table name part of `expr` if `expr` represents a field
      */
-    readonly tableName: string
+    tableName: string
     /**
      * alias
      */
-    readonly as: string
-    readonly validityMetaObject: MetaDbObject
-    readonly validityMetaTableColumn: MetaTableColumn
+    as: string
+    validityMetaObject: MetaDbObject
+    validityMetaTableColumn: MetaTableColumn
     /* Methods of Gda-6.0.Gda.SqlSelectField */
     /**
      * Creates a new #GdaSqlSelectField structure initiated with the values stored in `field`.
@@ -31992,16 +35092,19 @@ class SqlSelectField {
     /**
      * Sets the 'as' field's string in the #GdaSqlSelectField structure. `alias` is freed
      * after call this function.
+     * @param alias a #GValue to take from
      */
     takeAlias(alias: any): void
     /**
      * Sets the expression field in the #GdaSqlSelectField structure to point to `expr`
      * and modify it to sets its parent to `field`.
+     * @param expr a #GdaSqlExpr to take from
      */
     takeExpr(expr: SqlExpr): void
     /**
      * Sets the expression field's value in the #GdaSqlSelectField structure to point to `value;`
      * after this `field` is the owner of `value`.
+     * @param value a #GValue to take from
      */
     takeStarValue(value: any): void
     static name: string
@@ -32015,15 +35118,15 @@ class SqlSelectFrom {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * list of #GdaSqlSelectTarget
      */
-    readonly targets: SqlSelectTarget[]
+    targets: SqlSelectTarget[]
     /**
      * list of #GdaSqlSelectJoin
      */
-    readonly joins: SqlSelectJoin[]
+    joins: SqlSelectJoin[]
     /* Methods of Gda-6.0.Gda.SqlSelectFrom */
     /**
      * Creates a new #GdaSqlSelectFrom structure initiated with the values stored in `from`.
@@ -32040,11 +35143,13 @@ class SqlSelectFrom {
     /**
      * Append `join` to the joins in the FROM clause and set `join'`s parent to
      * `from;` after call this function `from` owns `join` then you must not free it.
+     * @param join a #GdaSqlSelectJoin to take from
      */
     takeNewJoin(join: SqlSelectJoin): void
     /**
      * Append `target` to the targets in the FROM clause and set `target'`s parent to
      * `from;` after call this function `from` owns `target` then you must not free it.
+     * @param target a #GdaSqlSelectTarget to take from
      */
     takeNewTarget(target: SqlSelectTarget): void
     static name: string
@@ -32058,23 +35163,23 @@ class SqlSelectJoin {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * type of join
      */
-    readonly type: SqlSelectJoinType
+    type: SqlSelectJoinType
     /**
      * represents a join between a target at (pos &lt; `position)` and the one at `position`
      */
-    readonly position: number
+    position: number
     /**
      * joining expression, or %NULL
      */
-    readonly expr: SqlExpr
+    expr: SqlExpr
     /**
      * list of #GdaSqlField pointers to use when joining, or %NULL
      */
-    readonly use: object[]
+    use: object[]
     /* Methods of Gda-6.0.Gda.SqlSelectJoin */
     /**
      * Creates a new #GdaSqlSelectJoin structure initiated with the values stored in `join`.
@@ -32095,6 +35200,7 @@ class SqlSelectJoin {
     static new(parent: SqlAnyPart): SqlSelectJoin
     /**
      * Creates a new string representing the join type.
+     * @param type a #GdaSqlSelectJoinType structure to be copied
      */
     static typeToString(type: SqlSelectJoinType): string
 }
@@ -32103,19 +35209,19 @@ class SqlSelectOrder {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * expression to order on
      */
-    readonly expr: SqlExpr
+    expr: SqlExpr
     /**
      * TRUE is ordering is ascending
      */
-    readonly asc: boolean
+    asc: boolean
     /**
      * name of the collation to use for ordering
      */
-    readonly collationName: string
+    collationName: string
     /* Methods of Gda-6.0.Gda.SqlSelectOrder */
     /**
      * Creates a new #GdaSqlSelectOrder structure initiated with the values stored in `order`.
@@ -32140,20 +35246,20 @@ class SqlSelectTarget {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * expression
      */
-    readonly expr: SqlExpr
+    expr: SqlExpr
     /**
      * table name part of `expr` if `expr` represents a table
      */
-    readonly tableName: string
+    tableName: string
     /**
      * alias
      */
-    readonly as: string
-    readonly validityMetaObject: MetaDbObject
+    as: string
+    validityMetaObject: MetaDbObject
     /* Methods of Gda-6.0.Gda.SqlSelectTarget */
     /**
      * Creates a new #GdaSqlSelectTarget structure initiated with the values stored in `target`.
@@ -32172,12 +35278,14 @@ class SqlSelectTarget {
     /**
      * Sets the target to be a SELECT subquery setting target's expression to use
      * `stmt;` after call this function the target owns `stmt,` then you must not free it.
+     * @param stmt a #GValue to take from
      */
     takeSelect(stmt: SqlStatement): void
     /**
      * Sets the target's name using the string stored in `value` and the expression
      * to set its value to point to value; after call this function the target owns
      * `value,` then you must not free it.
+     * @param value a #GValue to take from
      */
     takeTableName(value: any): void
     static name: string
@@ -32188,16 +35296,16 @@ class SqlSelectTarget {
 }
 class SqlStatement {
     /* Fields of Gda-6.0.Gda.SqlStatement */
-    readonly sql: string
+    sql: string
     /**
      * type of statement
      */
-    readonly stmtType: SqlStatementType
+    stmtType: SqlStatementType
     /**
      * contents, cast it depending on `stmt_type` (for example to a #GdaSqlStatementSelect).
      */
-    readonly contents: object
-    readonly validityMetaStruct: MetaStruct
+    contents: object
+    validityMetaStruct: MetaStruct
     /* Methods of Gda-6.0.Gda.SqlStatement */
     /**
      * Cleans any data set by a previous call to gda_sql_statement_check_validity().
@@ -32219,6 +35327,7 @@ class SqlStatement {
      * 
      * Also note that some parts of `stmt` may be modified: for example leading and trailing spaces in aliases or
      * objects names will be removed.
+     * @param cnc a #GdaConnection object, or %NULL
      */
     checkValidity(cnc?: Connection | null): boolean
     /**
@@ -32233,15 +35342,18 @@ class SqlStatement {
      * 
      * Also note that some parts of `stmt` may be modified: for example leading and trailing spaces in aliases or
      * objects names will be removed.
+     * @param mstruct a #GdaMetaStruct object, or %NULL
      */
     checkValidityM(mstruct?: MetaStruct | null): boolean
     /**
      * Specifies `stmt'`s type of compound
+     * @param type a #GdaSqlStatementCompoundType value
      */
     compoundSetType(type: SqlStatementCompoundType): void
     /**
      * Adds the `s` sub-statement to the `stmt` compound statement. `s'`s reference is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param s a #GdaSqlStatement pointer
      */
     compoundTakeStmt(s: SqlStatement): void
     /**
@@ -32251,11 +35363,13 @@ class SqlStatement {
     /**
      * Sets the WHERE condition of `stmt`. `cond'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param cond the WHERE condition of the DELETE statement, as a #GdaSqlExpr
      */
     deleteTakeCondition(cond: SqlExpr): void
     /**
      * Sets the name of the table to delete from in `stmt`. `value'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param value a table name as a G_TYPE_STRING #GValue
      */
     deleteTakeTableName(value: any): void
     /**
@@ -32266,40 +35380,47 @@ class SqlStatement {
      * Sets a list of values to be inserted by `stmt`. `list'`s
      * ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param list a list of #GdaSqlExpr pointers
      */
     insertTake1ValuesList(list: SqlExpr[]): void
     /**
      * Sets a list of list of values to be inserted by `stmt`. `list'`s
      * ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param list a list of #GSList of #GdaSqlExpr pointers
      */
     insertTakeExtraValuesList(list: SqlExpr[]): void
     /**
      * Sets the list of fields for which values will be specified in `stmt`. `list'`s
      * ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param list a list of #GdaSqlField pointers
      */
     insertTakeFieldsList(list: SqlField[]): void
     /**
      * Sets the name of the resolution conflict algorithm used by `stmt`. `value'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param value name of the resolution conflict algorithm, as a G_TYPE_STRING #GValue
      */
     insertTakeOnConflict(value: any): void
     /**
      * Specifies a SELECT statement, the values inserted will be the result set of `select`. `select'`s
      * ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param select a SELECT or COMPOUND #GdaSqlStatement pointer
      */
     insertTakeSelect(select: SqlStatement): void
     /**
      * Sets the name of the table to insert into in `stmt`. `value'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param value name of the table to insert into, as a G_TYPE_STRING #GValue
      */
     insertTakeTableName(value: any): void
     /**
      * "Normalizes" (in place) some parts of `stmt,` which means `stmt` may be modified.
      * At the moment any "*" field in a SELECT statement will be replaced by one
      * #GdaSqlSelectField structure for each field in the referenced table.
+     * @param cnc a #GdaConnection object, or %NULL
      */
     normalize(cnc?: Connection | null): boolean
     /**
@@ -32307,6 +35428,8 @@ class SqlStatement {
      * 
      * `distinct_expr'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param distinct a TRUE/FALSE value
+     * @param distinctExpr a #GdaSqlExpr pointer representing what the DISTINCT is on, or %NULL
      */
     selectTakeDistinct(distinct: boolean, distinctExpr?: SqlExpr | null): void
     /**
@@ -32314,6 +35437,7 @@ class SqlStatement {
      * 
      * `expr_list'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param exprList a list of #GdaSqlSelectField pointers
      */
     selectTakeExprList(exprList: SqlSelectField[]): void
     /**
@@ -32321,6 +35445,7 @@ class SqlStatement {
      * 
      * `from'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param from a #GdaSqlSelectFrom pointer
      */
     selectTakeFrom(from: SqlSelectFrom): void
     /**
@@ -32328,6 +35453,7 @@ class SqlStatement {
      * 
      * `group_by'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param groupBy a list of #GdaSqlExpr pointer
      */
     selectTakeGroupBy(groupBy: SqlExpr[]): void
     /**
@@ -32335,6 +35461,7 @@ class SqlStatement {
      * 
      * `expr'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param expr a #GdaSqlExpr pointer
      */
     selectTakeHavingCond(expr: SqlExpr): void
     /**
@@ -32342,6 +35469,8 @@ class SqlStatement {
      * 
      * `count` and `offset'`s responsibility are transferred to
      * `stmt` (which means `stmt` is then responsible for freeing them when no longer needed).
+     * @param count a #GdaSqlExpr pointer
+     * @param offset a #GdaSqlExpr pointer
      */
     selectTakeLimits(count: SqlExpr, offset: SqlExpr): void
     /**
@@ -32349,6 +35478,7 @@ class SqlStatement {
      * 
      * `order_by'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param orderBy a list of #GdaSqlSelectOrder pointer
      */
     selectTakeOrderBy(orderBy: SqlSelectOrder[]): void
     /**
@@ -32356,6 +35486,7 @@ class SqlStatement {
      * 
      * `expr'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param expr a #GdaSqlExpr pointer
      */
     selectTakeWhereCond(expr: SqlExpr): void
     /**
@@ -32368,6 +35499,7 @@ class SqlStatement {
      * 
      * `value'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param value a G_TYPE_STRING value
      */
     transTakeMode(value: any): void
     /**
@@ -32375,6 +35507,7 @@ class SqlStatement {
      * 
      * `value'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param value a G_TYPE_STRING value
      */
     transTakeName(value: any): void
     /**
@@ -32383,6 +35516,7 @@ class SqlStatement {
      * `expressions'`s
      * ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param expressions a list of #GdaSqlExpr pointers
      */
     unknownTakeExpressions(expressions: SqlExpr[]): void
     /**
@@ -32390,11 +35524,13 @@ class SqlStatement {
      * 
      * `expr'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param cond a #GdaSqlExpr pointer
      */
     updateTakeCondition(cond: SqlExpr): void
     /**
      * Sets the name of the resolution conflict algorithm used by `stmt`. `value'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param value name of the resolution conflict algorithm, as a G_TYPE_STRING #GValue
      */
     updateTakeOnConflict(value: any): void
     /**
@@ -32402,6 +35538,8 @@ class SqlStatement {
      * 
      * `fname` and `expr'`s responsibility are transferred to
      * `stmt` (which means `stmt` is then responsible for freeing them when no longer needed).
+     * @param fname a field name, as a G_TYPE_STRING #GValue
+     * @param expr a #GdaSqlExpr pointer
      */
     updateTakeSetValue(fname: any, expr: SqlExpr): void
     /**
@@ -32409,6 +35547,7 @@ class SqlStatement {
      * 
      * `value'`s ownership is transferred to
      * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
+     * @param value a table name, as a G_TYPE_STRING #GValue
      */
     updateTakeTableName(value: any): void
     static name: string
@@ -32419,44 +35558,46 @@ class SqlStatement {
     static getContentsInfos(type: SqlStatementType): SqlStatementContentsInfo
     /**
      * Converts a string to a #GdaSqlStatementType value, see also gda_sql_statement_type_to_string()
+     * @param type a string representing a #GdaSqlStatementType type
      */
     static stringToType(type: string): SqlStatementType
     /**
      * Converts a #GdaSqlStatementType to a string, see also gda_sql_statement_string_to_type()
+     * @param type a #GdaSqlStatementType value
      */
     static typeToString(type: SqlStatementType): string
 }
 class SqlStatementCheckValidityData {
     /* Fields of Gda-6.0.Gda.SqlStatementCheckValidityData */
-    readonly cnc: Connection
-    readonly store: MetaStore
-    readonly mstruct: MetaStruct
+    cnc: Connection
+    store: MetaStore
+    mstruct: MetaStruct
     static name: string
 }
 class SqlStatementCompound {
     /* Fields of Gda-6.0.Gda.SqlStatementCompound */
-    readonly any: SqlAnyPart
-    readonly compoundType: SqlStatementCompoundType
-    readonly stmtList: object[]
+    any: SqlAnyPart
+    compoundType: SqlStatementCompoundType
+    stmtList: object[]
     static name: string
 }
 class SqlStatementContentsInfo {
     /* Fields of Gda-6.0.Gda.SqlStatementContentsInfo */
-    readonly type: SqlStatementType
-    readonly name: string
-    readonly construct: () => object
-    readonly free: (stm: object) => void
-    readonly copy: (stm: object) => object
-    readonly serialize: (stm: object) => string
-    readonly checkStructureFunc: SqlForeachFunc
-    readonly checkValidityFunc: SqlForeachFunc
+    type: SqlStatementType
+    name: string
+    construct: () => object
+    free: (stm: object) => void
+    copy: (stm: object) => object
+    serialize: (stm: object) => string
+    checkStructureFunc: SqlForeachFunc
+    checkValidityFunc: SqlForeachFunc
     static name: string
 }
 class SqlStatementDelete {
     /* Fields of Gda-6.0.Gda.SqlStatementDelete */
-    readonly any: SqlAnyPart
-    readonly table: SqlTable
-    readonly cond: SqlExpr
+    any: SqlAnyPart
+    table: SqlTable
+    cond: SqlExpr
     static name: string
 }
 class SqlStatementInsert {
@@ -32464,42 +35605,42 @@ class SqlStatementInsert {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * conflict resolution clause if there is one (such as "OR REPLACE")
      */
-    readonly onConflict: string
+    onConflict: string
     /**
      * name of the table to which data is inserted
      */
-    readonly table: SqlTable
+    table: SqlTable
     /**
      * list of #GdaSqlField fields which are valued for insertion
      */
-    readonly fieldsList: object[]
+    fieldsList: object[]
     /**
      * list of list of #GdaSqlExpr expressions (this is a list of list, not a simple list)
      */
-    readonly valuesList: object[]
+    valuesList: object[]
     /**
      * a #GdaSqlStatementSelect or #GdaSqlStatementCompound structure representing the values to insert
      */
-    readonly select: SqlAnyPart
+    select: SqlAnyPart
     static name: string
 }
 class SqlStatementSelect {
     /* Fields of Gda-6.0.Gda.SqlStatementSelect */
-    readonly any: SqlAnyPart
-    readonly distinct: boolean
-    readonly distinctExpr: SqlExpr
-    readonly exprList: object[]
-    readonly from: SqlSelectFrom
-    readonly whereCond: SqlExpr
-    readonly groupBy: object[]
-    readonly havingCond: SqlExpr
-    readonly orderBy: object[]
-    readonly limitCount: SqlExpr
-    readonly limitOffset: SqlExpr
+    any: SqlAnyPart
+    distinct: boolean
+    distinctExpr: SqlExpr
+    exprList: object[]
+    from: SqlSelectFrom
+    whereCond: SqlExpr
+    groupBy: object[]
+    havingCond: SqlExpr
+    orderBy: object[]
+    limitCount: SqlExpr
+    limitOffset: SqlExpr
     static name: string
 }
 class SqlStatementTransaction {
@@ -32507,45 +35648,45 @@ class SqlStatementTransaction {
     /**
      * inheritance structure
      */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * isolation level as a #GdaTransactionIsolation
      */
-    readonly isolationLevel: TransactionIsolation
+    isolationLevel: TransactionIsolation
     /**
      * transaction mode (DEFERRED, IMMEDIATE, EXCLUSIVE, READ_WRITE, READ_ONLY)
      */
-    readonly transMode: string
+    transMode: string
     /**
      * transaction name
      */
-    readonly transName: string
+    transName: string
     static name: string
 }
 class SqlStatementUnknown {
     /* Fields of Gda-6.0.Gda.SqlStatementUnknown */
-    readonly any: SqlAnyPart
+    any: SqlAnyPart
     /**
      * a list of #GdaSqlExpr pointers
      */
-    readonly expressions: object[]
+    expressions: object[]
     static name: string
 }
 class SqlStatementUpdate {
     /* Fields of Gda-6.0.Gda.SqlStatementUpdate */
-    readonly any: SqlAnyPart
-    readonly onConflict: string
-    readonly table: SqlTable
-    readonly fieldsList: object[]
-    readonly exprList: object[]
-    readonly cond: SqlExpr
+    any: SqlAnyPart
+    onConflict: string
+    table: SqlTable
+    fieldsList: object[]
+    exprList: object[]
+    cond: SqlExpr
     static name: string
 }
 class SqlTable {
     /* Fields of Gda-6.0.Gda.SqlTable */
-    readonly any: SqlAnyPart
-    readonly tableName: string
-    readonly validityMetaObject: MetaDbObject
+    any: SqlAnyPart
+    tableName: string
+    validityMetaObject: MetaDbObject
     /* Methods of Gda-6.0.Gda.SqlTable */
     /**
      * Creates a new #GdaSqlTable structure initiated with the values stored in `table`.
@@ -32563,6 +35704,7 @@ class SqlTable {
     /**
      * Sets the table's name using the string held by `value`. When call, `value` is freed using
      * gda_value_free().
+     * @param value a #GValue holding a string to take from
      */
     takeName(value: any): void
     static name: string
@@ -32573,9 +35715,9 @@ class SqlTable {
 }
 abstract class StatementClass {
     /* Fields of Gda-6.0.Gda.StatementClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly checked: (stmt: Statement, cnc: Connection, checked: boolean) => void
-    readonly reset: (stmt: Statement) => void
+    parentClass: GObject.ObjectClass
+    checked: (stmt: Statement, cnc: Connection, checked: boolean) => void
+    reset: (stmt: Statement) => void
     static name: string
 }
 class Text {
@@ -32587,10 +35729,12 @@ class Text {
     getString(): string
     /**
      * Set string. The string is duplicated.
+     * @param str a string to set from
      */
     setString(str: string): void
     /**
      * Takes ownership on a given string, so you don't need to free it.
+     * @param str a string to take ownership on
      */
     takeString(str: string): void
     static name: string
@@ -32602,6 +35746,7 @@ class Text {
      * The "encoding" consists in replacing non
      * alphanumeric character with the string "__gdaXX" where XX is the hex. representation
      * of the non alphanumeric char.
+     * @param text the text to convert
      */
     static toAlphanum(text: string): string
 }
@@ -32641,22 +35786,27 @@ class Time {
     getTz(): GLib.TimeZone
     /**
      * Set new value for the second fraction
+     * @param fraction new second fraction to set to.
      */
     setFraction(fraction: number): void
     /**
      * Set hour component to the #GdaTime instance.
+     * @param hour new hours to set to
      */
     setHour(hour: number): void
     /**
      * Set minutes to the #GdaTime instance
+     * @param minute new minutes to set to
      */
     setMinute(minute: number): void
     /**
      * Set second component
+     * @param second new seconds to set to
      */
     setSecond(second: number): void
     /**
      * Set timezone component for the instance of #GdaTime
+     * @param timezone new time zone to set to. See #gda_time_change_timezone
      */
     setTimezone(timezone: number): void
     /**
@@ -32676,6 +35826,7 @@ class Time {
     toStringUtc(): string
     /**
      * Translate `time'`s to give timezone
+     * @param ntz a new #GTimeZone to use
      */
     toTimezone(ntz: GLib.TimeZone): Time
     /**
@@ -32696,64 +35847,64 @@ class Time {
 }
 abstract class TransactionStatusClass {
     /* Fields of Gda-6.0.Gda.TransactionStatusClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class TransactionStatusEvent {
     /* Fields of Gda-6.0.Gda.TransactionStatusEvent */
-    readonly trans: TransactionStatus
-    readonly type: TransactionStatusEventType
-    readonly connEvent: ConnectionEvent
+    trans: TransactionStatus
+    type: TransactionStatusEventType
+    connEvent: ConnectionEvent
     static name: string
 }
 abstract class TreeClass {
     /* Fields of Gda-6.0.Gda.TreeClass */
-    readonly objectClass: GObject.ObjectClass
-    readonly nodeChanged: (tree: Tree, node: TreeNode) => void
-    readonly nodeInserted: (tree: Tree, node: TreeNode) => void
-    readonly nodeHasChildToggled: (tree: Tree, node: TreeNode) => void
-    readonly nodeDeleted: (tree: Tree, nodePath: string) => void
+    objectClass: GObject.ObjectClass
+    nodeChanged: (tree: Tree, node: TreeNode) => void
+    nodeInserted: (tree: Tree, node: TreeNode) => void
+    nodeHasChildToggled: (tree: Tree, node: TreeNode) => void
+    nodeDeleted: (tree: Tree, nodePath: string) => void
     static name: string
 }
 abstract class TreeManagerClass {
     /* Fields of Gda-6.0.Gda.TreeManagerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class TreeMgrColumnsClass {
     /* Fields of Gda-6.0.Gda.TreeMgrColumnsClass */
-    readonly objectClass: TreeManagerClass
+    objectClass: TreeManagerClass
     static name: string
 }
 abstract class TreeMgrLabelClass {
     /* Fields of Gda-6.0.Gda.TreeMgrLabelClass */
-    readonly parentClass: TreeManagerClass
+    parentClass: TreeManagerClass
     static name: string
 }
 abstract class TreeMgrSchemasClass {
     /* Fields of Gda-6.0.Gda.TreeMgrSchemasClass */
-    readonly objectClass: TreeManagerClass
+    objectClass: TreeManagerClass
     static name: string
 }
 abstract class TreeMgrSelectClass {
     /* Fields of Gda-6.0.Gda.TreeMgrSelectClass */
-    readonly objectClass: TreeManagerClass
+    objectClass: TreeManagerClass
     static name: string
 }
 abstract class TreeMgrTablesClass {
     /* Fields of Gda-6.0.Gda.TreeMgrTablesClass */
-    readonly objectClass: TreeManagerClass
+    objectClass: TreeManagerClass
     static name: string
 }
 abstract class TreeNodeClass {
     /* Fields of Gda-6.0.Gda.TreeNodeClass */
-    readonly objectClass: GObject.ObjectClass
-    readonly nodeChanged: (reporting: TreeNode, node: TreeNode) => void
-    readonly nodeInserted: (reporting: TreeNode, node: TreeNode) => void
-    readonly nodeHasChildToggled: (reporting: TreeNode, node: TreeNode) => void
-    readonly nodeDeleted: (reporting: TreeNode, relativePath: string) => void
-    readonly dumpHeader: (node: TreeNode) => string
-    readonly dumpChildren: (node: TreeNode, prefix: string, inString: GLib.String) => void
+    objectClass: GObject.ObjectClass
+    nodeChanged: (reporting: TreeNode, node: TreeNode) => void
+    nodeInserted: (reporting: TreeNode, node: TreeNode) => void
+    nodeHasChildToggled: (reporting: TreeNode, node: TreeNode) => void
+    nodeDeleted: (reporting: TreeNode, relativePath: string) => void
+    dumpHeader: (node: TreeNode) => string
+    dumpChildren: (node: TreeNode, prefix: string, inString: GLib.String) => void
     static name: string
 }
 class Worker {
@@ -32763,6 +35914,7 @@ class Worker {
      * then this function returns %FALSE.
      * 
      * This function can be called on already cancelled jobs, and simply returns %TRUE in that case.
+     * @param jobId the ID of the job, as returned by gda_worker_submit_job()
      */
     cancelJob(jobId: number): boolean
     /**
@@ -32792,6 +35944,12 @@ class Worker {
      *  <listitem><para>`result_destroy_func` is needed in case `out_result` is %NULL (to avoid memory leaks)</para></listitem>
      *  <listitem><para>passing %NULL for `context` is similar to passing the result of g_main_context_ref_thread_default()</para></listitem>
      * </itemizedlist>
+     * @param context a #GMainContext to execute a main loop in (while waiting), or %NULL
+     * @param timeoutMs the maximum number of milisecons to wait before returning, or %0 for unlimited wait
+     * @param outResult a place to store the result, if any, of `func'`s execution, or %NULL
+     * @param outJobId a place to store the ID of the job having been submitted, or %NULL
+     * @param func the function to call from the worker thread
+     * @param dataDestroyFunc a function to destroy `data,` or %NULL
      */
     doJob(context: GLib.MainContext | null, timeoutMs: number, outResult: object | null, outJobId: number | null, func: WorkerFunc, dataDestroyFunc?: GLib.DestroyNotify | null): boolean
     /**
@@ -32803,12 +35961,15 @@ class Worker {
      * 
      * Note: if there is a result, it will be stored in `out_result,` and it's up to the caller to free
      * the result, the #GdaWorker object will not do it (ownership of the result is transfered to the caller).
+     * @param jobId the ID of the job, as returned by gda_worker_submit_job()
+     * @param outResult a place to store the value returned by the execution of the requested function within the worker thread, or %NULL
      */
     fetchJobResult(jobId: number, outResult?: object | null): boolean
     /**
      * Forget all about the job with ID `job_id`. As opposed to gda_worker_cancel_job(), this function can be used to tell
      * `worker` that whatever happens to the specific job, you are not interrested anymore (i.e. that `worker` can
      * do whatever is possible to simple discard everything related to that job).
+     * @param jobId the ID of the job, as returned by gda_worker_submit_job()
      */
     forgetJob(jobId: number): void
     /**
@@ -32836,6 +35997,8 @@ class Worker {
      *   submitted before are not affected</para></listitem>
      *  <listitem><para>passing %NULL for `context` is similar to passing the result of g_main_context_ref_thread_default()</para></listitem>
      * </itemizedlist>
+     * @param context a #GMainContext, or %NULL
+     * @param callback the function to call when a job submitted from within the calling thread using gda_worker_submit_job() has finished being processed.
      */
     setCallback(context?: GLib.MainContext | null, callback?: WorkerCallback | null): boolean
     /**
@@ -32854,6 +36017,9 @@ class Worker {
      *    is in any specific state.</para></listitem>
      *  <listitem><para>passing %NULL for `callback_context` is similar to passing the result of g_main_context_ref_thread_default()</para></listitem>
      * </itemizedlist>
+     * @param callbackContext a #GMainContext, or %NULL (ignored if no setting has been defined with gda_worker_set_callback())
+     * @param func the function to call from the worker thread
+     * @param dataDestroyFunc a function to destroy `data,` or %NULL
      */
     submitJob(callbackContext: GLib.MainContext | null, func: WorkerFunc, dataDestroyFunc?: GLib.DestroyNotify | null): number
     /**
@@ -32874,6 +36040,7 @@ class Worker {
      * 
      * Note: it's up to the caller to free the result, the #GdaWorker object will not do it (ownership of the result is
      * transfered to the caller).
+     * @param func the function to call from the worker thread
      */
     waitJob(func: WorkerFunc): object | null
     static name: string
@@ -32893,12 +36060,14 @@ class Worker {
      * When the returned #GdaWorker's reference count reaches 0, then it is destroyed, and *`location` is set to %NULL.
      * 
      * In any case, the returned value is the same as *`location`.
+     * @param location a place to store and test for existence, not %NULL
+     * @param allowDestroy defines if the created `GdaWorker` (see case 1 below) will allow its reference to drop to 0 and be destroyed
      */
     static newUnique(location: Worker, allowDestroy: boolean): Worker
 }
 abstract class XaTransactionClass {
     /* Fields of Gda-6.0.Gda.XaTransactionClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class XaTransactionId {
@@ -32906,16 +36075,16 @@ class XaTransactionId {
     /**
      * any number
      */
-    readonly format: number
+    format: number
     /**
      * number between 1 and 64
      */
-    readonly gtridLength: number
+    gtridLength: number
     /**
      * number between 1 and 64
      */
-    readonly bqualLength: number
-    readonly data: number[]
+    bqualLength: number
+    data: number[]
     /* Methods of Gda-6.0.Gda.XaTransactionId */
     /**
      * Creates a string representation of `xid,` in the format &lt;gtrid&gt;,&lt;bqual&gt;,&lt;formatID&gt; the

@@ -22,57 +22,57 @@ interface PhysMemoryAllocator_ConstructProps extends Gst.Allocator_ConstructProp
 }
 class PhysMemoryAllocator {
     /* Fields of Gst-1.0.Gst.Allocator */
-    readonly object: Gst.Object
-    readonly mem_type: string
+    object: Gst.Object
+    mem_type: string
     /**
      * the implementation of the GstMemoryMapFunction
      */
-    readonly mem_map: Gst.MemoryMapFunction
+    mem_map: Gst.MemoryMapFunction
     /**
      * the implementation of the GstMemoryUnmapFunction
      */
-    readonly mem_unmap: Gst.MemoryUnmapFunction
+    mem_unmap: Gst.MemoryUnmapFunction
     /**
      * the implementation of the GstMemoryCopyFunction
      */
-    readonly mem_copy: Gst.MemoryCopyFunction
+    mem_copy: Gst.MemoryCopyFunction
     /**
      * the implementation of the GstMemoryShareFunction
      */
-    readonly mem_share: Gst.MemoryShareFunction
+    mem_share: Gst.MemoryShareFunction
     /**
      * the implementation of the GstMemoryIsSpanFunction
      */
-    readonly mem_is_span: Gst.MemoryIsSpanFunction
+    mem_is_span: Gst.MemoryIsSpanFunction
     /**
      * the implementation of the GstMemoryMapFullFunction.
      *      Will be used instead of `mem_map` if present. (Since: 1.6)
      */
-    readonly mem_map_full: Gst.MemoryMapFullFunction
+    mem_map_full: Gst.MemoryMapFullFunction
     /**
      * the implementation of the GstMemoryUnmapFullFunction.
      *      Will be used instead of `mem_unmap` if present. (Since: 1.6)
      */
-    readonly mem_unmap_full: Gst.MemoryUnmapFullFunction
+    mem_unmap_full: Gst.MemoryUnmapFullFunction
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Allocator */
     /**
      * Use `allocator` to allocate a new memory block with memory that is at least
@@ -90,10 +90,13 @@ class PhysMemoryAllocator {
      * The alignment in `params` is given as a bitmask so that `align` + 1 equals
      * the amount of bytes to align to. For example, to align to 8 bytes,
      * use an alignment of 7.
+     * @param size size of the visible memory area
+     * @param params optional parameters
      */
     alloc(size: number, params?: Gst.AllocationParams | null): Gst.Memory | null
     /**
      * Free `memory` that was previously allocated with gst_allocator_alloc().
+     * @param memory the memory to free
      */
     free(memory: Gst.Memory): void
     /**
@@ -107,6 +110,7 @@ class PhysMemoryAllocator {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -114,11 +118,14 @@ class PhysMemoryAllocator {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -141,6 +148,10 @@ class PhysMemoryAllocator {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -166,6 +177,8 @@ class PhysMemoryAllocator {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -175,16 +188,19 @@ class PhysMemoryAllocator {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -200,17 +216,21 @@ class PhysMemoryAllocator {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -221,6 +241,7 @@ class PhysMemoryAllocator {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -228,11 +249,13 @@ class PhysMemoryAllocator {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -246,6 +269,7 @@ class PhysMemoryAllocator {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -299,6 +323,10 @@ class PhysMemoryAllocator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -309,6 +337,12 @@ class PhysMemoryAllocator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -332,6 +366,7 @@ class PhysMemoryAllocator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -351,11 +386,14 @@ class PhysMemoryAllocator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -363,6 +401,8 @@ class PhysMemoryAllocator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -380,6 +420,7 @@ class PhysMemoryAllocator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -425,6 +466,7 @@ class PhysMemoryAllocator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -468,15 +510,20 @@ class PhysMemoryAllocator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -517,6 +564,7 @@ class PhysMemoryAllocator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -541,6 +589,7 @@ class PhysMemoryAllocator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstBadAllocators-1.0.GstBadAllocators.PhysMemoryAllocator */
@@ -562,10 +611,13 @@ class PhysMemoryAllocator {
      * The alignment in `params` is given as a bitmask so that `align` + 1 equals
      * the amount of bytes to align to. For example, to align to 8 bytes,
      * use an alignment of 7.
+     * @param size size of the visible memory area
+     * @param params optional parameters
      */
     vfunc_alloc(size: number, params?: Gst.AllocationParams | null): Gst.Memory | null
     /**
      * Free `memory` that was previously allocated with gst_allocator_alloc().
+     * @param memory the memory to free
      */
     vfunc_free(memory: Gst.Memory): void
     /* Virtual methods of Gst-1.0.Gst.Object */
@@ -587,6 +639,7 @@ class PhysMemoryAllocator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -595,6 +648,8 @@ class PhysMemoryAllocator {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: PhysMemoryAllocator, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: PhysMemoryAllocator, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -628,6 +683,7 @@ class PhysMemoryAllocator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PhysMemoryAllocator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PhysMemoryAllocator, pspec: GObject.ParamSpec) => void)): number
@@ -643,8 +699,8 @@ class PhysMemoryAllocator {
 }
 abstract class PhysMemoryAllocatorInterface {
     /* Fields of GstBadAllocators-1.0.GstBadAllocators.PhysMemoryAllocatorInterface */
-    readonly parent_iface: GObject.TypeInterface
-    readonly get_phys_addr: (allocator: PhysMemoryAllocator, mem: Gst.Memory) => number
+    parent_iface: GObject.TypeInterface
+    get_phys_addr: (allocator: PhysMemoryAllocator, mem: Gst.Memory) => number
     static name: string
 }
 }

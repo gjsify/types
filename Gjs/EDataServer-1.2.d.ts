@@ -1045,6 +1045,7 @@ class Extensible {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extension_type the type of extensions to list
      */
     list_extensions(extension_type: GObject.Type): Extension[]
     /**
@@ -1068,10 +1069,13 @@ class OAuth2Service {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param source an #ESource
      */
     can_process(source: Source): boolean
     /**
      * Deletes token information for the `service` and `source` from the secret store.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1090,6 +1094,10 @@ class OAuth2Service {
      * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
      * 
      * This method is always called after e_oauth2_service_get_authentication_policy().
+     * @param source an associated #ESource
+     * @param page_title a web page title
+     * @param page_uri a web page URI
+     * @param page_content a web page content
      */
     extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content?: string | null): [ /* returnType */ boolean, /* out_authorization_code */ string ]
     /**
@@ -1097,6 +1105,9 @@ class OAuth2Service {
      * in case it's expired it refreshes the token, if possible.
      * 
      * Free the returned `out_access_token` with g_free(), when no longer needed.
+     * @param source an #ESource
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_access_token_sync(source: Source, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
     /**
@@ -1107,6 +1118,8 @@ class OAuth2Service {
      * can be used to block certain resources or to abort the authentication when
      * the server redirects to an unexpected page (like when user denies authorization
      * in the page).
+     * @param source an associated #ESource
+     * @param uri a URI of the navigation resource
      */
     get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
     get_authentication_uri(source: Source): string
@@ -1128,6 +1141,7 @@ class OAuth2Service {
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+     * @param source an associated #ESource
      */
     get_redirect_uri(source: Source): string | null
     get_refresh_uri(source: Source): string
@@ -1146,6 +1160,8 @@ class OAuth2Service {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     guess_can_process(protocol?: string | null, hostname?: string | null): boolean
     /**
@@ -1158,6 +1174,8 @@ class OAuth2Service {
      * The `uri_query` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param uri_query query for the URI to use
      */
     prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable): void
     /**
@@ -1170,6 +1188,9 @@ class OAuth2Service {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+     * @param form form parameters to be used in the POST request
      */
     prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable): void
     /**
@@ -1177,6 +1198,8 @@ class OAuth2Service {
      * the e_oauth2_service_get_authentication_uri(), with POST data
      * being provided by e_oauth2_service_prepare_get_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     prepare_get_token_message(source: Source, message: Soup.Message): void
     /**
@@ -1189,6 +1212,9 @@ class OAuth2Service {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param refresh_token a refresh token to be used
+     * @param form form parameters to be used in the POST request
      */
     prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable): void
     /**
@@ -1196,18 +1222,28 @@ class OAuth2Service {
      * the e_oauth2_service_get_refresh_uri(), with POST data
      * being provided by e_oauth2_service_prepare_refresh_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     prepare_refresh_token_message(source: Source, message: Soup.Message): void
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to obtain
      * a new access token, associated with the given `authorization_code` and stores
      * it into the secret store on success.
+     * @param source an #ESource
+     * @param authorization_code authorization code provided by the server
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     receive_and_store_token_sync(source: Source, authorization_code: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to refresh
      * existing access token with provided `refresh_token` and stores it into the secret
      * store on success.
+     * @param source an #ESource
+     * @param refresh_token refresh token as provided by the server
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     refresh_and_store_token_sync(source: Source, refresh_token: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EDataServer-1.2.EDataServer.OAuth2Service */
@@ -1221,6 +1257,7 @@ class OAuth2Service {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param source an #ESource
      */
     vfunc_can_process(source: Source): boolean
     /**
@@ -1239,6 +1276,10 @@ class OAuth2Service {
      * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
      * 
      * This method is always called after e_oauth2_service_get_authentication_policy().
+     * @param source an associated #ESource
+     * @param page_title a web page title
+     * @param page_uri a web page URI
+     * @param page_content a web page content
      */
     vfunc_extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content?: string | null): [ /* returnType */ boolean, /* out_authorization_code */ string ]
     /**
@@ -1249,6 +1290,8 @@ class OAuth2Service {
      * can be used to block certain resources or to abort the authentication when
      * the server redirects to an unexpected page (like when user denies authorization
      * in the page).
+     * @param source an associated #ESource
+     * @param uri a URI of the navigation resource
      */
     vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
     vfunc_get_authentication_uri(source: Source): string
@@ -1270,6 +1313,7 @@ class OAuth2Service {
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+     * @param source an associated #ESource
      */
     vfunc_get_redirect_uri(source: Source): string | null
     vfunc_get_refresh_uri(source: Source): string
@@ -1288,6 +1332,8 @@ class OAuth2Service {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean
     /**
@@ -1300,6 +1346,8 @@ class OAuth2Service {
      * The `uri_query` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param uri_query query for the URI to use
      */
     vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable): void
     /**
@@ -1312,6 +1360,9 @@ class OAuth2Service {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+     * @param form form parameters to be used in the POST request
      */
     vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable): void
     /**
@@ -1319,6 +1370,8 @@ class OAuth2Service {
      * the e_oauth2_service_get_authentication_uri(), with POST data
      * being provided by e_oauth2_service_prepare_get_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void
     /**
@@ -1331,6 +1384,9 @@ class OAuth2Service {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param refresh_token a refresh token to be used
+     * @param form form parameters to be used in the POST request
      */
     vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable): void
     /**
@@ -1338,6 +1394,8 @@ class OAuth2Service {
      * the e_oauth2_service_get_refresh_uri(), with POST data
      * being provided by e_oauth2_service_prepare_refresh_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void
     static name: string
@@ -1350,6 +1408,9 @@ class OAuth2Service {
      * 
      * If the `value` is %NULL, then the property named `name` is removed
      * from the `form` instead.
+     * @param form a #GHashTable
+     * @param name a property name
+     * @param value a property value
      */
     static util_set_to_form(form: GLib.HashTable, name: string, value?: string | null): void
     /**
@@ -1361,6 +1422,9 @@ class OAuth2Service {
      * 
      * If the `value` is %NULL, then the property named `name` is removed
      * from the `form` instead.
+     * @param form a #GHashTable
+     * @param name a property name
+     * @param value a property value
      */
     static util_take_to_form(form: GLib.HashTable, name: string, value?: string | null): void
 }
@@ -1398,8 +1462,12 @@ class Client {
      * Whether this client's backing data is readonly.
      */
     readonly readonly: boolean
+    /**
+     * The #ESource for which this client was created.
+     */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.Client */
     /**
      * Cancels all pending operations started on `client`.
@@ -1408,6 +1476,7 @@ class Client {
     /**
      * Check if backend supports particular capability.
      * To get all capabilities use e_client_get_capabilities().
+     * @param capability a capability
      */
     check_capability(capability: string): boolean
     /**
@@ -1424,14 +1493,20 @@ class Client {
      * Queries `client'`s backend for a property of name `prop_name`.
      * The call is finished by e_client_get_backend_property_finish()
      * from the `callback`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_get_backend_property().
+     * @param result a #GAsyncResult
      */
     get_backend_property_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Queries `client'`s backend for a property of name `prop_name`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_backend_property_sync(prop_name: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
@@ -1463,14 +1538,20 @@ class Client {
     /**
      * Opens the `client,` making it ready for queries and other operations.
      * The call is finished by e_client_open_finish() from the `callback`.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_open().
+     * @param result a #GAsyncResult
      */
     open_finish(result: Gio.AsyncResult): boolean
     /**
      * Opens the `client,` making it ready for queries and other operations.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
      */
     open_sync(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1487,10 +1568,13 @@ class Client {
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
      * The call is finished by e_client_refresh_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_refresh().
+     * @param result a #GAsyncResult
      */
     refresh_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1498,21 +1582,26 @@ class Client {
      * that the refresh is done, backend only notifies whether it started
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
      * The call is finished by e_client_remove_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_remove().
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
+     * @param cancellable a #GCancellable; can be %NULL
      */
     remove_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1522,12 +1611,15 @@ class Client {
      * e_client_check_capability() is using the cached value.
      * The call is finished by e_client_retrieve_capabilities_finish()
      * from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     retrieve_capabilities(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_retrieve_capabilities().
      * Returned value of `capabilities` should be freed with g_free(),
      * when no longer needed.
+     * @param result a #GAsyncResult
      */
     retrieve_capabilities_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1536,6 +1628,7 @@ class Client {
      * is cached and any subsequent call of e_client_get_capabilities() and
      * e_client_check_capability() is using the cached value. Returned value
      * of `capabilities` should be freed with g_free(), when no longer needed.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     retrieve_capabilities_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1544,12 +1637,15 @@ class Client {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_client_retrieve_properties_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     retrieve_properties(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_client_retrieve_properties().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     retrieve_properties_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1557,31 +1653,42 @@ class Client {
      * for the D-Bus property change notifications delivery.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     retrieve_properties_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`. The call is finished
      * by e_client_set_backend_property_finish() from the `callback`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     set_backend_property(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_set_backend_property().
+     * @param result a #GAsyncResult
      */
     set_backend_property_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     set_backend_property_sync(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets a D-Bus bus name that will be used to connect the client
      * to the backend subprocess.
+     * @param bus_name a string representing a D-Bus bus name
      */
     set_bus_name(bus_name: string): void
     /**
      * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
      * `dbus_erorr` and `out_error` can point to the same variable.
+     * @param dbus_error a #GError returned bu D-Bus
      */
     unwrap_dbus_error(dbus_error: GLib.Error): void
     /**
@@ -1590,10 +1697,14 @@ class Client {
      * 
      * The call is finished by e_client_wait_for_connected_finish() from
      * the `callback`.
+     * @param timeout_seconds a timeout for the wait, in seconds
+     * @param cancellable a #GCancellable; or %NULL
+     * @param callback callback to call when a result is ready
      */
     wait_for_connected(timeout_seconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_wait_for_connected().
+     * @param result a #GAsyncResult
      */
     wait_for_connected_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1603,6 +1714,8 @@ class Client {
      * Note: This also calls e_client_retrieve_properties_sync() on success, to have
      *   up-to-date property values on the client side, without a delay due
      *   to property change notifcations delivery through D-Bus.
+     * @param timeout_seconds a timeout for the wait, in seconds
+     * @param cancellable a #GCancellable; or %NULL
      */
     wait_for_connected_sync(timeout_seconds: number, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1640,6 +1753,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1650,6 +1767,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1673,6 +1796,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1692,11 +1816,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1704,6 +1831,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1721,6 +1850,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1766,6 +1896,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1809,15 +1940,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1858,6 +1994,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1892,6 +2029,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServer-1.2.EDataServer.Client */
@@ -1902,27 +2040,39 @@ class Client {
      * Queries `client'`s backend for a property of name `prop_name`.
      * The call is finished by e_client_get_backend_property_finish()
      * from the `callback`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_get_backend_property().
+     * @param result a #GAsyncResult
      */
     vfunc_get_backend_property_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Queries `client'`s backend for a property of name `prop_name`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_get_backend_property_sync(prop_name: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Opens the `client,` making it ready for queries and other operations.
      * The call is finished by e_client_open_finish() from the `callback`.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_open().
+     * @param result a #GAsyncResult
      */
     vfunc_open_finish(result: Gio.AsyncResult): boolean
     /**
      * Opens the `client,` making it ready for queries and other operations.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_open_sync(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): boolean
     vfunc_opened(error: GLib.Error): void
@@ -1932,10 +2082,13 @@ class Client {
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
      * The call is finished by e_client_refresh_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_refresh().
+     * @param result a #GAsyncResult
      */
     vfunc_refresh_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1943,21 +2096,26 @@ class Client {
      * that the refresh is done, backend only notifies whether it started
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
      * The call is finished by e_client_remove_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_remove().
+     * @param result a #GAsyncResult
      */
     vfunc_remove_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_remove_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1967,12 +2125,15 @@ class Client {
      * e_client_check_capability() is using the cached value.
      * The call is finished by e_client_retrieve_capabilities_finish()
      * from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_retrieve_capabilities(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_retrieve_capabilities().
      * Returned value of `capabilities` should be freed with g_free(),
      * when no longer needed.
+     * @param result a #GAsyncResult
      */
     vfunc_retrieve_capabilities_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1981,6 +2142,7 @@ class Client {
      * is cached and any subsequent call of e_client_get_capabilities() and
      * e_client_check_capability() is using the cached value. Returned value
      * of `capabilities` should be freed with g_free(), when no longer needed.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_retrieve_capabilities_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1988,26 +2150,36 @@ class Client {
      * for the D-Bus property change notifications delivery.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_retrieve_properties_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`. The call is finished
      * by e_client_set_backend_property_finish() from the `callback`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_set_backend_property(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_set_backend_property().
+     * @param result a #GAsyncResult
      */
     vfunc_set_backend_property_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_set_backend_property_sync(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
      * `dbus_erorr` and `out_error` can point to the same variable.
+     * @param dbus_error a #GError returned bu D-Bus
      */
     vfunc_unwrap_dbus_error(dbus_error: GLib.Error): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2027,6 +2199,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2072,6 +2245,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
@@ -2086,6 +2260,8 @@ class Client {
     connect_after(sigName: "notify::opened", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::readonly", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::readonly", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2098,35 +2274,45 @@ class Client {
     static error_quark(): GLib.Quark
     /**
      * Get localized human readable description of the given error code.
+     * @param code an #EClientError error code
      */
     static error_to_string(code: ClientError): string
     /**
      * Copies a #GSList of #GObject<!-- -->s to the end of `copy_to`.
+     * @param copy_to Where to copy; may be %NULL
+     * @param objects #GSList of #GObject<!-- -->s to be copied
      */
     static util_copy_object_slist(copy_to: GObject.Object[] | null, objects: GObject.Object[]): GObject.Object[]
     /**
      * Copies the #GSList of strings to the end of `copy_to`.
+     * @param copy_to Where to copy; may be %NULL
+     * @param strings #GSList of strings to be copied
      */
     static util_copy_string_slist(copy_to: string[] | null, strings: string[]): string[]
     /**
      * Calls g_object_unref() on each member of `objects` and then frees `objects`
      * itself.
+     * @param objects a #GSList of #GObject<!-- -->s
      */
     static util_free_object_slist(objects: GObject.Object[]): void
     /**
      * Frees memory previously allocated by e_client_util_strv_to_slist().
+     * @param strings a #GSList of strings (gchar *)
      */
     static util_free_string_slist(strings: string[]): void
     /**
      * Parses comma-separated list of values into #GSList.
+     * @param strings string of comma-separated values
      */
     static util_parse_comma_strings(strings: string): string[]
     /**
      * Convert a list of strings into a %NULL-terminated array of strings.
+     * @param strings a #GSList of strings (const gchar *)
      */
     static util_slist_to_strv(strings: string[]): string[]
     /**
      * Convert a %NULL-terminated array of strings to a list of strings.
+     * @param strv a %NULL-terminated array of strings (const gchar *)
      */
     static util_strv_to_slist(strv: string): string[]
     /**
@@ -2140,6 +2326,11 @@ class Client {
      * `fail_when_none_matched` is %FALSE, the error is always processed and will
      * result in E_CLIENT_ERROR, E_CLIENT_ERROR_OTHER_ERROR if none of `known_error`
      * matches.
+     * @param dbus_error DBus #GError to unwrap
+     * @param known_errors List of known errors against which try to match
+     * @param known_errors_count How many items are stored in `known_errors`
+     * @param known_errors_domain Error domain for `known_errors`
+     * @param fail_when_none_matched Whether to fail when none of `known_errors` matches
      */
     static util_unwrap_dbus_error(dbus_error: GLib.Error, known_errors: ClientErrorsList, known_errors_count: number, known_errors_domain: GLib.Quark, fail_when_none_matched: boolean): [ /* returnType */ boolean, /* client_error */ GLib.Error ]
     static $gtype: GObject.Type
@@ -2149,8 +2340,10 @@ interface Extension_ConstructProps extends GObject.Object_ConstructProps {
     extensible?: Extensible
 }
 class Extension {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.Extension */
     /**
      * Returns the object that `extension` extends.
@@ -2191,6 +2384,10 @@ class Extension {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2201,6 +2398,12 @@ class Extension {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2224,6 +2427,7 @@ class Extension {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2243,11 +2447,14 @@ class Extension {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2255,6 +2462,8 @@ class Extension {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2272,6 +2481,7 @@ class Extension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2317,6 +2527,7 @@ class Extension {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2360,15 +2571,20 @@ class Extension {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2409,6 +2625,7 @@ class Extension {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2443,6 +2660,7 @@ class Extension {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2462,6 +2680,7 @@ class Extension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2494,10 +2713,13 @@ class Extension {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Extension, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Extension, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: Extension, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: Extension, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2513,8 +2735,11 @@ interface GDataOAuth2Authorizer_ConstructProps extends GObject.Object_ConstructP
     source?: Source
 }
 class GDataOAuth2Authorizer {
+    /* Properties of EDataServer-1.2.EDataServer.GDataOAuth2Authorizer */
+    readonly service_type: GObject.Type
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.GDataOAuth2Authorizer */
     clone_credentials(): NamedParameters | null
     get_service_type(): GObject.Type
@@ -2524,6 +2749,7 @@ class GDataOAuth2Authorizer {
      * Updates internally stored credentials, used to get access token.
      * 
      * See: e_gdata_oauth2_authorizer_supported()
+     * @param credentials credentials to set, or %NULL
      */
     set_credentials(credentials?: NamedParameters | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2561,6 +2787,10 @@ class GDataOAuth2Authorizer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2571,6 +2801,12 @@ class GDataOAuth2Authorizer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2594,6 +2830,7 @@ class GDataOAuth2Authorizer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2613,11 +2850,14 @@ class GDataOAuth2Authorizer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2625,6 +2865,8 @@ class GDataOAuth2Authorizer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2642,6 +2884,7 @@ class GDataOAuth2Authorizer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2687,6 +2930,7 @@ class GDataOAuth2Authorizer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2730,15 +2974,20 @@ class GDataOAuth2Authorizer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2779,6 +3028,7 @@ class GDataOAuth2Authorizer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2813,6 +3063,7 @@ class GDataOAuth2Authorizer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GData-0.0.GData.Authorizer */
@@ -2834,6 +3085,7 @@ class GDataOAuth2Authorizer {
      * 
      * 
      * This method is thread safe.
+     * @param domain the #GDataAuthorizationDomain to check against
      */
     is_authorized_for_domain(domain: GData.AuthorizationDomain): boolean
     /**
@@ -2847,6 +3099,8 @@ class GDataOAuth2Authorizer {
      * This modifies `message` in place.
      * 
      * This method is thread safe.
+     * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+     * @param message the query to process
      */
     process_request(domain: GData.AuthorizationDomain | null, message: Soup.Message): void
     /**
@@ -2867,6 +3121,7 @@ class GDataOAuth2Authorizer {
      * %FALSE will be returned immediately in that case and `error` will not be set.
      * 
      * This method is thread safe.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     refresh_authorization(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2881,12 +3136,15 @@ class GDataOAuth2Authorizer {
      * to get the results of the operation.
      * 
      * This method is thread safe.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
      */
     refresh_authorization_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
      * 
      * This method is thread safe.
+     * @param async_result a #GAsyncResult
      */
     refresh_authorization_finish(async_result: Gio.AsyncResult): boolean
     /* Virtual methods of EDataServer-1.2.EDataServer.GDataOAuth2Authorizer */
@@ -2908,6 +3166,7 @@ class GDataOAuth2Authorizer {
      * 
      * 
      * This method is thread safe.
+     * @param domain the #GDataAuthorizationDomain to check against
      */
     vfunc_is_authorized_for_domain(domain: GData.AuthorizationDomain): boolean
     /**
@@ -2921,6 +3180,8 @@ class GDataOAuth2Authorizer {
      * This modifies `message` in place.
      * 
      * This method is thread safe.
+     * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+     * @param message the query to process
      */
     vfunc_process_request(domain: GData.AuthorizationDomain | null, message: Soup.Message): void
     /**
@@ -2941,6 +3202,7 @@ class GDataOAuth2Authorizer {
      * %FALSE will be returned immediately in that case and `error` will not be set.
      * 
      * This method is thread safe.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2955,12 +3217,15 @@ class GDataOAuth2Authorizer {
      * to get the results of the operation.
      * 
      * This method is thread safe.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
      */
     vfunc_refresh_authorization_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
      * 
      * This method is thread safe.
+     * @param async_result a #GAsyncResult
      */
     vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2980,6 +3245,7 @@ class GDataOAuth2Authorizer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3012,10 +3278,15 @@ class GDataOAuth2Authorizer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GDataOAuth2Authorizer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GDataOAuth2Authorizer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::service-type", callback: (($obj: GDataOAuth2Authorizer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service-type", callback: (($obj: GDataOAuth2Authorizer, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: GDataOAuth2Authorizer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: GDataOAuth2Authorizer, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3036,17 +3307,22 @@ interface Module_ConstructProps extends GObject.TypeModule_ConstructProps {
     filename?: string
 }
 class Module {
+    /* Properties of EDataServer-1.2.EDataServer.Module */
+    /**
+     * The filename of the module.
+     */
+    readonly filename: string
     /* Fields of GObject-2.0.GObject.TypeModule */
-    readonly parent_instance: GObject.Object
-    readonly use_count: number
-    readonly type_infos: object[]
-    readonly interface_infos: object[]
+    parent_instance: GObject.Object
+    use_count: number
+    type_infos: object[]
+    interface_infos: object[]
     /**
      * the name of the module
      */
-    readonly name: string
+    name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.Module */
     /**
      * Returns the filename of the shared library for `module`.  The
@@ -3064,6 +3340,9 @@ class Module {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_add_interface_static()
      * instead. This can be used when making a static build of the module.
+     * @param instance_type type to which to add the interface.
+     * @param interface_type interface type to add
+     * @param interface_info type information structure
      */
     add_interface(instance_type: GObject.Type, interface_type: GObject.Type, interface_info: GObject.InterfaceInfo): void
     /**
@@ -3077,6 +3356,8 @@ class Module {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param name name for the type
+     * @param const_static_values an array of #GEnumValue structs for the                       possible enumeration values. The array is                       terminated by a struct with all members being                       0.
      */
     register_enum(name: string, const_static_values: GObject.EnumValue): GObject.Type
     /**
@@ -3090,6 +3371,8 @@ class Module {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param name name for the type
+     * @param const_static_values an array of #GFlagsValue structs for the                       possible flags values. The array is                       terminated by a struct with all members being                       0.
      */
     register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.Type
     /**
@@ -3107,10 +3390,15 @@ class Module {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param parent_type the type for the parent class
+     * @param type_name name for the type
+     * @param type_info type information structure
+     * @param flags flags field providing details about the type
      */
     register_type(parent_type: GObject.Type, type_name: string, type_info: GObject.TypeInfo, flags: GObject.TypeFlags): GObject.Type
     /**
      * Sets the name for a #GTypeModule
+     * @param name a human-readable name to use in error messages.
      */
     set_name(name: string): void
     /**
@@ -3163,6 +3451,10 @@ class Module {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3173,6 +3465,12 @@ class Module {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3196,6 +3494,7 @@ class Module {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3215,11 +3514,14 @@ class Module {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3227,6 +3529,8 @@ class Module {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3244,6 +3548,7 @@ class Module {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3289,6 +3594,7 @@ class Module {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3332,15 +3638,20 @@ class Module {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3381,6 +3692,7 @@ class Module {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3415,6 +3727,7 @@ class Module {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GObject-2.0.GObject.TypePlugin */
@@ -3422,12 +3735,18 @@ class Module {
      * Calls the `complete_interface_info` function from the
      * #GTypePluginClass of `plugin`. There should be no need to use this
      * function outside of the GObject type system itself.
+     * @param instance_type the #GType of an instantiatable type to which the interface  is added
+     * @param interface_type the #GType of the interface whose info is completed
+     * @param info the #GInterfaceInfo to fill in
      */
     complete_interface_info(instance_type: GObject.Type, interface_type: GObject.Type, info: GObject.InterfaceInfo): void
     /**
      * Calls the `complete_type_info` function from the #GTypePluginClass of `plugin`.
      * There should be no need to use this function outside of the GObject
      * type system itself.
+     * @param g_type the #GType whose info is completed
+     * @param info the #GTypeInfo struct to fill in
+     * @param value_table the #GTypeValueTable to fill in
      */
     complete_type_info(g_type: GObject.Type, info: GObject.TypeInfo, value_table: GObject.TypeValueTable): void
     /**
@@ -3456,6 +3775,7 @@ class Module {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3488,10 +3808,13 @@ class Module {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Module, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Module, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::filename", callback: (($obj: Module, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filename", callback: (($obj: Module, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3506,6 +3829,7 @@ class Module {
      * you want to unload them (enabling on-demand loading) you must call
      * g_type_module_unuse() on all the modules.  Free the returned list
      * with g_list_free().
+     * @param dirname pathname for a directory containing modules to load
      */
     static load_all_in_directory(dirname: string): Module[]
     /**
@@ -3517,12 +3841,15 @@ class Module {
      * 
      * When `dirprefix` is %NULL, or not a prefix of `dirname,` behaves
      * the same as e_module_load_all_in_directory().
+     * @param dirname pathname for a directory containing modules to load
+     * @param dirprefix prefix of `dirname,` which can be replaced by custom prefixes, or %NULL
      */
     static load_all_in_directory_and_prefixes(dirname: string, dirprefix?: string | null): Module[]
     /**
      * Load the module from the specified filename into memory. If
      * you want to unload it (enabling on-demand loading) you must call
      * g_type_module_unuse() on the module.
+     * @param filename filename of the module to load
      */
     static load_file(filename: string): Module
     static $gtype: GObject.Type
@@ -3588,7 +3915,7 @@ class NetworkMonitor {
      */
     readonly network_metered: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.NetworkMonitor */
     /**
      * Get currently set GIO name for the network availability checks.
@@ -3607,6 +3934,7 @@ class NetworkMonitor {
      * be used to report the network as always reachable. When an unknown GIO
      * name is used the default #GNetworkMonitor implementation, as returned
      * by the g_network_monitor_get_default(), will be used.
+     * @param gio_name a GIO name of a #GNetworkMonitor implementation to use, or %NULL
      */
     set_gio_name(gio_name?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3644,6 +3972,10 @@ class NetworkMonitor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3654,6 +3986,12 @@ class NetworkMonitor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3677,6 +4015,7 @@ class NetworkMonitor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3696,11 +4035,14 @@ class NetworkMonitor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3708,6 +4050,8 @@ class NetworkMonitor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3725,6 +4069,7 @@ class NetworkMonitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3770,6 +4115,7 @@ class NetworkMonitor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3813,15 +4159,20 @@ class NetworkMonitor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3862,6 +4213,7 @@ class NetworkMonitor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3896,6 +4248,7 @@ class NetworkMonitor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -3938,6 +4291,7 @@ class NetworkMonitor {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of Gio-2.0.Gio.NetworkMonitor */
@@ -3959,6 +4313,8 @@ class NetworkMonitor {
      * `connectable,` it may still block for a brief period of time (eg,
      * trying to do multicast DNS on the local network), so if you do not
      * want to block, you should use g_network_monitor_can_reach_async().
+     * @param connectable a #GSocketConnectable
+     * @param cancellable a #GCancellable, or %NULL
      */
     can_reach(connectable: Gio.SocketConnectable, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3971,11 +4327,15 @@ class NetworkMonitor {
      * When the operation is finished, `callback` will be called.
      * You can then call g_network_monitor_can_reach_finish()
      * to get the result of the operation.
+     * @param connectable a #GSocketConnectable
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
      */
     can_reach_async(connectable: Gio.SocketConnectable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async network connectivity test.
      * See g_network_monitor_can_reach_async().
+     * @param result a #GAsyncResult
      */
     can_reach_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4052,6 +4412,7 @@ class NetworkMonitor {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4072,6 +4433,8 @@ class NetworkMonitor {
      * `connectable,` it may still block for a brief period of time (eg,
      * trying to do multicast DNS on the local network), so if you do not
      * want to block, you should use g_network_monitor_can_reach_async().
+     * @param connectable a #GSocketConnectable
+     * @param cancellable a #GCancellable, or %NULL
      */
     vfunc_can_reach(connectable: Gio.SocketConnectable, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4084,11 +4447,15 @@ class NetworkMonitor {
      * When the operation is finished, `callback` will be called.
      * You can then call g_network_monitor_can_reach_finish()
      * to get the result of the operation.
+     * @param connectable a #GSocketConnectable
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
      */
     vfunc_can_reach_async(connectable: Gio.SocketConnectable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async network connectivity test.
      * See g_network_monitor_can_reach_async().
+     * @param result a #GAsyncResult
      */
     vfunc_can_reach_finish(result: Gio.AsyncResult): boolean
     vfunc_network_changed(network_available: boolean): void
@@ -4109,6 +4476,7 @@ class NetworkMonitor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4141,6 +4509,7 @@ class NetworkMonitor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: NetworkMonitor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: NetworkMonitor, pspec: GObject.ParamSpec) => void)): number
@@ -4148,6 +4517,7 @@ class NetworkMonitor {
     /* Signals of Gio-2.0.Gio.NetworkMonitor */
     /**
      * Emitted when the network configuration changes.
+     * @param network_available the current value of #GNetworkMonitor:network-available
      */
     connect(sigName: "network-changed", callback: (($obj: NetworkMonitor, network_available: boolean) => void)): number
     connect_after(sigName: "network-changed", callback: (($obj: NetworkMonitor, network_available: boolean) => void)): number
@@ -4177,6 +4547,9 @@ class NetworkMonitor {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -4184,8 +4557,10 @@ class NetworkMonitor {
 interface OAuth2ServiceBase_ConstructProps extends Extension_ConstructProps {
 }
 class OAuth2ServiceBase {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.Extension */
     /**
      * Returns the object that `extension` extends.
@@ -4226,6 +4601,10 @@ class OAuth2ServiceBase {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4236,6 +4615,12 @@ class OAuth2ServiceBase {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4259,6 +4644,7 @@ class OAuth2ServiceBase {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4278,11 +4664,14 @@ class OAuth2ServiceBase {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4290,6 +4679,8 @@ class OAuth2ServiceBase {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4307,6 +4698,7 @@ class OAuth2ServiceBase {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4352,6 +4744,7 @@ class OAuth2ServiceBase {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4395,15 +4788,20 @@ class OAuth2ServiceBase {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4444,6 +4842,7 @@ class OAuth2ServiceBase {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4478,6 +4877,7 @@ class OAuth2ServiceBase {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4497,6 +4897,7 @@ class OAuth2ServiceBase {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4529,10 +4930,13 @@ class OAuth2ServiceBase {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OAuth2ServiceBase, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OAuth2ServiceBase, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: OAuth2ServiceBase, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: OAuth2ServiceBase, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4545,10 +4949,12 @@ class OAuth2ServiceBase {
 interface OAuth2ServiceGoogle_ConstructProps extends OAuth2ServiceBase_ConstructProps {
 }
 class OAuth2ServiceGoogle {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: Extensible
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServiceBase */
-    readonly parent: Extension
+    parent: Extension
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.Extension */
     /**
      * Returns the object that `extension` extends.
@@ -4589,6 +4995,10 @@ class OAuth2ServiceGoogle {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4599,6 +5009,12 @@ class OAuth2ServiceGoogle {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4622,6 +5038,7 @@ class OAuth2ServiceGoogle {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4641,11 +5058,14 @@ class OAuth2ServiceGoogle {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4653,6 +5073,8 @@ class OAuth2ServiceGoogle {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4670,6 +5092,7 @@ class OAuth2ServiceGoogle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4715,6 +5138,7 @@ class OAuth2ServiceGoogle {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4758,15 +5182,20 @@ class OAuth2ServiceGoogle {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4807,6 +5236,7 @@ class OAuth2ServiceGoogle {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4841,6 +5271,7 @@ class OAuth2ServiceGoogle {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.OAuth2Service */
@@ -4854,10 +5285,13 @@ class OAuth2ServiceGoogle {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param source an #ESource
      */
     can_process(source: Source): boolean
     /**
      * Deletes token information for the `service` and `source` from the secret store.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4876,6 +5310,10 @@ class OAuth2ServiceGoogle {
      * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
      * 
      * This method is always called after e_oauth2_service_get_authentication_policy().
+     * @param source an associated #ESource
+     * @param page_title a web page title
+     * @param page_uri a web page URI
+     * @param page_content a web page content
      */
     extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content?: string | null): [ /* returnType */ boolean, /* out_authorization_code */ string ]
     /**
@@ -4883,6 +5321,9 @@ class OAuth2ServiceGoogle {
      * in case it's expired it refreshes the token, if possible.
      * 
      * Free the returned `out_access_token` with g_free(), when no longer needed.
+     * @param source an #ESource
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_access_token_sync(source: Source, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
     /**
@@ -4893,6 +5334,8 @@ class OAuth2ServiceGoogle {
      * can be used to block certain resources or to abort the authentication when
      * the server redirects to an unexpected page (like when user denies authorization
      * in the page).
+     * @param source an associated #ESource
+     * @param uri a URI of the navigation resource
      */
     get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
     get_authentication_uri(source: Source): string
@@ -4914,6 +5357,7 @@ class OAuth2ServiceGoogle {
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+     * @param source an associated #ESource
      */
     get_redirect_uri(source: Source): string | null
     get_refresh_uri(source: Source): string
@@ -4932,6 +5376,8 @@ class OAuth2ServiceGoogle {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     guess_can_process(protocol?: string | null, hostname?: string | null): boolean
     /**
@@ -4944,6 +5390,8 @@ class OAuth2ServiceGoogle {
      * The `uri_query` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param uri_query query for the URI to use
      */
     prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable): void
     /**
@@ -4956,6 +5404,9 @@ class OAuth2ServiceGoogle {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+     * @param form form parameters to be used in the POST request
      */
     prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable): void
     /**
@@ -4963,6 +5414,8 @@ class OAuth2ServiceGoogle {
      * the e_oauth2_service_get_authentication_uri(), with POST data
      * being provided by e_oauth2_service_prepare_get_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     prepare_get_token_message(source: Source, message: Soup.Message): void
     /**
@@ -4975,6 +5428,9 @@ class OAuth2ServiceGoogle {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param refresh_token a refresh token to be used
+     * @param form form parameters to be used in the POST request
      */
     prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable): void
     /**
@@ -4982,18 +5438,28 @@ class OAuth2ServiceGoogle {
      * the e_oauth2_service_get_refresh_uri(), with POST data
      * being provided by e_oauth2_service_prepare_refresh_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     prepare_refresh_token_message(source: Source, message: Soup.Message): void
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to obtain
      * a new access token, associated with the given `authorization_code` and stores
      * it into the secret store on success.
+     * @param source an #ESource
+     * @param authorization_code authorization code provided by the server
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     receive_and_store_token_sync(source: Source, authorization_code: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to refresh
      * existing access token with provided `refresh_token` and stores it into the secret
      * store on success.
+     * @param source an #ESource
+     * @param refresh_token refresh token as provided by the server
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     refresh_and_store_token_sync(source: Source, refresh_token: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EDataServer-1.2.EDataServer.OAuth2ServiceGoogle */
@@ -5007,6 +5473,7 @@ class OAuth2ServiceGoogle {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param source an #ESource
      */
     vfunc_can_process(source: Source): boolean
     /**
@@ -5025,6 +5492,10 @@ class OAuth2ServiceGoogle {
      * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
      * 
      * This method is always called after e_oauth2_service_get_authentication_policy().
+     * @param source an associated #ESource
+     * @param page_title a web page title
+     * @param page_uri a web page URI
+     * @param page_content a web page content
      */
     vfunc_extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content?: string | null): [ /* returnType */ boolean, /* out_authorization_code */ string ]
     /**
@@ -5035,6 +5506,8 @@ class OAuth2ServiceGoogle {
      * can be used to block certain resources or to abort the authentication when
      * the server redirects to an unexpected page (like when user denies authorization
      * in the page).
+     * @param source an associated #ESource
+     * @param uri a URI of the navigation resource
      */
     vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
     vfunc_get_authentication_uri(source: Source): string
@@ -5056,6 +5529,7 @@ class OAuth2ServiceGoogle {
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+     * @param source an associated #ESource
      */
     vfunc_get_redirect_uri(source: Source): string | null
     vfunc_get_refresh_uri(source: Source): string
@@ -5074,6 +5548,8 @@ class OAuth2ServiceGoogle {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean
     /**
@@ -5086,6 +5562,8 @@ class OAuth2ServiceGoogle {
      * The `uri_query` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param uri_query query for the URI to use
      */
     vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable): void
     /**
@@ -5098,6 +5576,9 @@ class OAuth2ServiceGoogle {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+     * @param form form parameters to be used in the POST request
      */
     vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable): void
     /**
@@ -5105,6 +5586,8 @@ class OAuth2ServiceGoogle {
      * the e_oauth2_service_get_authentication_uri(), with POST data
      * being provided by e_oauth2_service_prepare_get_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void
     /**
@@ -5117,6 +5600,9 @@ class OAuth2ServiceGoogle {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param refresh_token a refresh token to be used
+     * @param form form parameters to be used in the POST request
      */
     vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable): void
     /**
@@ -5124,6 +5610,8 @@ class OAuth2ServiceGoogle {
      * the e_oauth2_service_get_refresh_uri(), with POST data
      * being provided by e_oauth2_service_prepare_refresh_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5143,6 +5631,7 @@ class OAuth2ServiceGoogle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5175,10 +5664,13 @@ class OAuth2ServiceGoogle {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OAuth2ServiceGoogle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OAuth2ServiceGoogle, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: OAuth2ServiceGoogle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: OAuth2ServiceGoogle, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5195,6 +5687,9 @@ class OAuth2ServiceGoogle {
      * 
      * If the `value` is %NULL, then the property named `name` is removed
      * from the `form` instead.
+     * @param form a #GHashTable
+     * @param name a property name
+     * @param value a property value
      */
     static util_set_to_form(form: GLib.HashTable, name: string, value?: string | null): void
     /**
@@ -5206,6 +5701,9 @@ class OAuth2ServiceGoogle {
      * 
      * If the `value` is %NULL, then the property named `name` is removed
      * from the `form` instead.
+     * @param form a #GHashTable
+     * @param name a property name
+     * @param value a property value
      */
     static util_take_to_form(form: GLib.HashTable, name: string, value?: string | null): void
     static $gtype: GObject.Type
@@ -5213,10 +5711,12 @@ class OAuth2ServiceGoogle {
 interface OAuth2ServiceOutlook_ConstructProps extends OAuth2ServiceBase_ConstructProps {
 }
 class OAuth2ServiceOutlook {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: Extensible
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServiceBase */
-    readonly parent: Extension
+    parent: Extension
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.Extension */
     /**
      * Returns the object that `extension` extends.
@@ -5257,6 +5757,10 @@ class OAuth2ServiceOutlook {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5267,6 +5771,12 @@ class OAuth2ServiceOutlook {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5290,6 +5800,7 @@ class OAuth2ServiceOutlook {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5309,11 +5820,14 @@ class OAuth2ServiceOutlook {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5321,6 +5835,8 @@ class OAuth2ServiceOutlook {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5338,6 +5854,7 @@ class OAuth2ServiceOutlook {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5383,6 +5900,7 @@ class OAuth2ServiceOutlook {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5426,15 +5944,20 @@ class OAuth2ServiceOutlook {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5475,6 +5998,7 @@ class OAuth2ServiceOutlook {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5509,6 +6033,7 @@ class OAuth2ServiceOutlook {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.OAuth2Service */
@@ -5522,10 +6047,13 @@ class OAuth2ServiceOutlook {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param source an #ESource
      */
     can_process(source: Source): boolean
     /**
      * Deletes token information for the `service` and `source` from the secret store.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -5544,6 +6072,10 @@ class OAuth2ServiceOutlook {
      * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
      * 
      * This method is always called after e_oauth2_service_get_authentication_policy().
+     * @param source an associated #ESource
+     * @param page_title a web page title
+     * @param page_uri a web page URI
+     * @param page_content a web page content
      */
     extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content?: string | null): [ /* returnType */ boolean, /* out_authorization_code */ string ]
     /**
@@ -5551,6 +6083,9 @@ class OAuth2ServiceOutlook {
      * in case it's expired it refreshes the token, if possible.
      * 
      * Free the returned `out_access_token` with g_free(), when no longer needed.
+     * @param source an #ESource
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_access_token_sync(source: Source, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
     /**
@@ -5561,6 +6096,8 @@ class OAuth2ServiceOutlook {
      * can be used to block certain resources or to abort the authentication when
      * the server redirects to an unexpected page (like when user denies authorization
      * in the page).
+     * @param source an associated #ESource
+     * @param uri a URI of the navigation resource
      */
     get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
     get_authentication_uri(source: Source): string
@@ -5582,6 +6119,7 @@ class OAuth2ServiceOutlook {
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+     * @param source an associated #ESource
      */
     get_redirect_uri(source: Source): string | null
     get_refresh_uri(source: Source): string
@@ -5600,6 +6138,8 @@ class OAuth2ServiceOutlook {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     guess_can_process(protocol?: string | null, hostname?: string | null): boolean
     /**
@@ -5612,6 +6152,8 @@ class OAuth2ServiceOutlook {
      * The `uri_query` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param uri_query query for the URI to use
      */
     prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable): void
     /**
@@ -5624,6 +6166,9 @@ class OAuth2ServiceOutlook {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+     * @param form form parameters to be used in the POST request
      */
     prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable): void
     /**
@@ -5631,6 +6176,8 @@ class OAuth2ServiceOutlook {
      * the e_oauth2_service_get_authentication_uri(), with POST data
      * being provided by e_oauth2_service_prepare_get_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     prepare_get_token_message(source: Source, message: Soup.Message): void
     /**
@@ -5643,6 +6190,9 @@ class OAuth2ServiceOutlook {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param refresh_token a refresh token to be used
+     * @param form form parameters to be used in the POST request
      */
     prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable): void
     /**
@@ -5650,18 +6200,28 @@ class OAuth2ServiceOutlook {
      * the e_oauth2_service_get_refresh_uri(), with POST data
      * being provided by e_oauth2_service_prepare_refresh_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     prepare_refresh_token_message(source: Source, message: Soup.Message): void
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to obtain
      * a new access token, associated with the given `authorization_code` and stores
      * it into the secret store on success.
+     * @param source an #ESource
+     * @param authorization_code authorization code provided by the server
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     receive_and_store_token_sync(source: Source, authorization_code: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to refresh
      * existing access token with provided `refresh_token` and stores it into the secret
      * store on success.
+     * @param source an #ESource
+     * @param refresh_token refresh token as provided by the server
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     refresh_and_store_token_sync(source: Source, refresh_token: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EDataServer-1.2.EDataServer.OAuth2ServiceOutlook */
@@ -5675,6 +6235,7 @@ class OAuth2ServiceOutlook {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param source an #ESource
      */
     vfunc_can_process(source: Source): boolean
     /**
@@ -5693,6 +6254,10 @@ class OAuth2ServiceOutlook {
      * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
      * 
      * This method is always called after e_oauth2_service_get_authentication_policy().
+     * @param source an associated #ESource
+     * @param page_title a web page title
+     * @param page_uri a web page URI
+     * @param page_content a web page content
      */
     vfunc_extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content?: string | null): [ /* returnType */ boolean, /* out_authorization_code */ string ]
     /**
@@ -5703,6 +6268,8 @@ class OAuth2ServiceOutlook {
      * can be used to block certain resources or to abort the authentication when
      * the server redirects to an unexpected page (like when user denies authorization
      * in the page).
+     * @param source an associated #ESource
+     * @param uri a URI of the navigation resource
      */
     vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
     vfunc_get_authentication_uri(source: Source): string
@@ -5724,6 +6291,7 @@ class OAuth2ServiceOutlook {
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+     * @param source an associated #ESource
      */
     vfunc_get_redirect_uri(source: Source): string | null
     vfunc_get_refresh_uri(source: Source): string
@@ -5742,6 +6310,8 @@ class OAuth2ServiceOutlook {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean
     /**
@@ -5754,6 +6324,8 @@ class OAuth2ServiceOutlook {
      * The `uri_query` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param uri_query query for the URI to use
      */
     vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable): void
     /**
@@ -5766,6 +6338,9 @@ class OAuth2ServiceOutlook {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+     * @param form form parameters to be used in the POST request
      */
     vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable): void
     /**
@@ -5773,6 +6348,8 @@ class OAuth2ServiceOutlook {
      * the e_oauth2_service_get_authentication_uri(), with POST data
      * being provided by e_oauth2_service_prepare_get_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void
     /**
@@ -5785,6 +6362,9 @@ class OAuth2ServiceOutlook {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param refresh_token a refresh token to be used
+     * @param form form parameters to be used in the POST request
      */
     vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable): void
     /**
@@ -5792,6 +6372,8 @@ class OAuth2ServiceOutlook {
      * the e_oauth2_service_get_refresh_uri(), with POST data
      * being provided by e_oauth2_service_prepare_refresh_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5811,6 +6393,7 @@ class OAuth2ServiceOutlook {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5843,10 +6426,13 @@ class OAuth2ServiceOutlook {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OAuth2ServiceOutlook, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OAuth2ServiceOutlook, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: OAuth2ServiceOutlook, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: OAuth2ServiceOutlook, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5863,6 +6449,9 @@ class OAuth2ServiceOutlook {
      * 
      * If the `value` is %NULL, then the property named `name` is removed
      * from the `form` instead.
+     * @param form a #GHashTable
+     * @param name a property name
+     * @param value a property value
      */
     static util_set_to_form(form: GLib.HashTable, name: string, value?: string | null): void
     /**
@@ -5874,6 +6463,9 @@ class OAuth2ServiceOutlook {
      * 
      * If the `value` is %NULL, then the property named `name` is removed
      * from the `form` instead.
+     * @param form a #GHashTable
+     * @param name a property name
+     * @param value a property value
      */
     static util_take_to_form(form: GLib.HashTable, name: string, value?: string | null): void
     static $gtype: GObject.Type
@@ -5881,10 +6473,12 @@ class OAuth2ServiceOutlook {
 interface OAuth2ServiceYahoo_ConstructProps extends OAuth2ServiceBase_ConstructProps {
 }
 class OAuth2ServiceYahoo {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: Extensible
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServiceBase */
-    readonly parent: Extension
+    parent: Extension
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.Extension */
     /**
      * Returns the object that `extension` extends.
@@ -5925,6 +6519,10 @@ class OAuth2ServiceYahoo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5935,6 +6533,12 @@ class OAuth2ServiceYahoo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5958,6 +6562,7 @@ class OAuth2ServiceYahoo {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5977,11 +6582,14 @@ class OAuth2ServiceYahoo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5989,6 +6597,8 @@ class OAuth2ServiceYahoo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6006,6 +6616,7 @@ class OAuth2ServiceYahoo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6051,6 +6662,7 @@ class OAuth2ServiceYahoo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6094,15 +6706,20 @@ class OAuth2ServiceYahoo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6143,6 +6760,7 @@ class OAuth2ServiceYahoo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6177,6 +6795,7 @@ class OAuth2ServiceYahoo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.OAuth2Service */
@@ -6190,10 +6809,13 @@ class OAuth2ServiceYahoo {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param source an #ESource
      */
     can_process(source: Source): boolean
     /**
      * Deletes token information for the `service` and `source` from the secret store.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -6212,6 +6834,10 @@ class OAuth2ServiceYahoo {
      * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
      * 
      * This method is always called after e_oauth2_service_get_authentication_policy().
+     * @param source an associated #ESource
+     * @param page_title a web page title
+     * @param page_uri a web page URI
+     * @param page_content a web page content
      */
     extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content?: string | null): [ /* returnType */ boolean, /* out_authorization_code */ string ]
     /**
@@ -6219,6 +6845,9 @@ class OAuth2ServiceYahoo {
      * in case it's expired it refreshes the token, if possible.
      * 
      * Free the returned `out_access_token` with g_free(), when no longer needed.
+     * @param source an #ESource
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_access_token_sync(source: Source, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
     /**
@@ -6229,6 +6858,8 @@ class OAuth2ServiceYahoo {
      * can be used to block certain resources or to abort the authentication when
      * the server redirects to an unexpected page (like when user denies authorization
      * in the page).
+     * @param source an associated #ESource
+     * @param uri a URI of the navigation resource
      */
     get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
     get_authentication_uri(source: Source): string
@@ -6250,6 +6881,7 @@ class OAuth2ServiceYahoo {
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+     * @param source an associated #ESource
      */
     get_redirect_uri(source: Source): string | null
     get_refresh_uri(source: Source): string
@@ -6268,6 +6900,8 @@ class OAuth2ServiceYahoo {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     guess_can_process(protocol?: string | null, hostname?: string | null): boolean
     /**
@@ -6280,6 +6914,8 @@ class OAuth2ServiceYahoo {
      * The `uri_query` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param uri_query query for the URI to use
      */
     prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable): void
     /**
@@ -6292,6 +6928,9 @@ class OAuth2ServiceYahoo {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+     * @param form form parameters to be used in the POST request
      */
     prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable): void
     /**
@@ -6299,6 +6938,8 @@ class OAuth2ServiceYahoo {
      * the e_oauth2_service_get_authentication_uri(), with POST data
      * being provided by e_oauth2_service_prepare_get_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     prepare_get_token_message(source: Source, message: Soup.Message): void
     /**
@@ -6311,6 +6952,9 @@ class OAuth2ServiceYahoo {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param refresh_token a refresh token to be used
+     * @param form form parameters to be used in the POST request
      */
     prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable): void
     /**
@@ -6318,18 +6962,28 @@ class OAuth2ServiceYahoo {
      * the e_oauth2_service_get_refresh_uri(), with POST data
      * being provided by e_oauth2_service_prepare_refresh_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     prepare_refresh_token_message(source: Source, message: Soup.Message): void
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to obtain
      * a new access token, associated with the given `authorization_code` and stores
      * it into the secret store on success.
+     * @param source an #ESource
+     * @param authorization_code authorization code provided by the server
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     receive_and_store_token_sync(source: Source, authorization_code: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to refresh
      * existing access token with provided `refresh_token` and stores it into the secret
      * store on success.
+     * @param source an #ESource
+     * @param refresh_token refresh token as provided by the server
+     * @param ref_source an #EOAuth2ServiceRefSourceFunc function to obtain an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     refresh_and_store_token_sync(source: Source, refresh_token: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EDataServer-1.2.EDataServer.OAuth2ServiceYahoo */
@@ -6343,6 +6997,7 @@ class OAuth2ServiceYahoo {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param source an #ESource
      */
     vfunc_can_process(source: Source): boolean
     /**
@@ -6361,6 +7016,10 @@ class OAuth2ServiceYahoo {
      * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
      * 
      * This method is always called after e_oauth2_service_get_authentication_policy().
+     * @param source an associated #ESource
+     * @param page_title a web page title
+     * @param page_uri a web page URI
+     * @param page_content a web page content
      */
     vfunc_extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content?: string | null): [ /* returnType */ boolean, /* out_authorization_code */ string ]
     /**
@@ -6371,6 +7030,8 @@ class OAuth2ServiceYahoo {
      * can be used to block certain resources or to abort the authentication when
      * the server redirects to an unexpected page (like when user denies authorization
      * in the page).
+     * @param source an associated #ESource
+     * @param uri a URI of the navigation resource
      */
     vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
     vfunc_get_authentication_uri(source: Source): string
@@ -6392,6 +7053,7 @@ class OAuth2ServiceYahoo {
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+     * @param source an associated #ESource
      */
     vfunc_get_redirect_uri(source: Source): string | null
     vfunc_get_refresh_uri(source: Source): string
@@ -6410,6 +7072,8 @@ class OAuth2ServiceYahoo {
      * 
      * The default implementation is tried always as the first and when it fails, then
      * the descendant's implementation is called.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean
     /**
@@ -6422,6 +7086,8 @@ class OAuth2ServiceYahoo {
      * The `uri_query` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param uri_query query for the URI to use
      */
     vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable): void
     /**
@@ -6434,6 +7100,9 @@ class OAuth2ServiceYahoo {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+     * @param form form parameters to be used in the POST request
      */
     vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable): void
     /**
@@ -6441,6 +7110,8 @@ class OAuth2ServiceYahoo {
      * the e_oauth2_service_get_authentication_uri(), with POST data
      * being provided by e_oauth2_service_prepare_get_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void
     /**
@@ -6453,6 +7124,9 @@ class OAuth2ServiceYahoo {
      * The `form` hash table expects both key and value to be newly allocated
      * strings, which will be freed together with the hash table or when the key
      * is replaced.
+     * @param source an associated #ESource
+     * @param refresh_token a refresh token to be used
+     * @param form form parameters to be used in the POST request
      */
     vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable): void
     /**
@@ -6460,6 +7134,8 @@ class OAuth2ServiceYahoo {
      * the e_oauth2_service_get_refresh_uri(), with POST data
      * being provided by e_oauth2_service_prepare_refresh_token_form().
      * The default implementation does nothing with the `message`.
+     * @param source an associated #ESource
+     * @param message a #SoupMessage
      */
     vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6479,6 +7155,7 @@ class OAuth2ServiceYahoo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6511,10 +7188,13 @@ class OAuth2ServiceYahoo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OAuth2ServiceYahoo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OAuth2ServiceYahoo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: OAuth2ServiceYahoo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: OAuth2ServiceYahoo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6531,6 +7211,9 @@ class OAuth2ServiceYahoo {
      * 
      * If the `value` is %NULL, then the property named `name` is removed
      * from the `form` instead.
+     * @param form a #GHashTable
+     * @param name a property name
+     * @param value a property value
      */
     static util_set_to_form(form: GLib.HashTable, name: string, value?: string | null): void
     /**
@@ -6542,6 +7225,9 @@ class OAuth2ServiceYahoo {
      * 
      * If the `value` is %NULL, then the property named `name` is removed
      * from the `form` instead.
+     * @param form a #GHashTable
+     * @param name a property name
+     * @param value a property value
      */
     static util_take_to_form(form: GLib.HashTable, name: string, value?: string | null): void
     static $gtype: GObject.Type
@@ -6550,11 +7236,12 @@ interface OAuth2Services_ConstructProps extends GObject.Object_ConstructProps {
 }
 class OAuth2Services {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.OAuth2Services */
     /**
      * Adds the `service` to the list of known OAuth2 services into `services`.
      * It also adds a reference to `service`.
+     * @param service an #EOAuth2Service to add
      */
     add(service: OAuth2Service): void
     /**
@@ -6562,6 +7249,7 @@ class OAuth2Services {
      * can be used with the given `source`.
      * 
      * The returned #EOAuth2Service is referenced for thread safety, if found.
+     * @param source an #ESource
      */
     find(source: Source): OAuth2Service | null
     /**
@@ -6572,6 +7260,8 @@ class OAuth2Services {
      * are important and whether all or only any of them can be required.
      * 
      * The returned #EOAuth2Service is referenced for thread safety, if found.
+     * @param protocol a protocol to search the service for, like "imap", or %NULL
+     * @param hostname a host name to search the service for, like "server.example.com", or %NULL
      */
     guess(protocol?: string | null, hostname?: string | null): OAuth2Service | null
     is_oauth2_alias(auth_method?: string | null): boolean
@@ -6585,6 +7275,7 @@ class OAuth2Services {
     /**
      * Removes the `service` from the list of known services in `services`.
      * The function does nothing, if the `service` had not been added.
+     * @param service an #EOAuth2Service to remove
      */
     remove(service: OAuth2Service): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6622,6 +7313,10 @@ class OAuth2Services {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6632,6 +7327,12 @@ class OAuth2Services {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6655,6 +7356,7 @@ class OAuth2Services {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6674,11 +7376,14 @@ class OAuth2Services {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6686,6 +7391,8 @@ class OAuth2Services {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6703,6 +7410,7 @@ class OAuth2Services {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6748,6 +7456,7 @@ class OAuth2Services {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6791,15 +7500,20 @@ class OAuth2Services {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6840,6 +7554,7 @@ class OAuth2Services {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6874,6 +7589,7 @@ class OAuth2Services {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of EDataServer-1.2.EDataServer.Extensible */
@@ -6884,6 +7600,7 @@ class OAuth2Services {
      * 
      * The list itself should be freed with g_list_free().  The extension
      * objects are owned by `extensible` and should not be unreferenced.
+     * @param extension_type the type of extensions to list
      */
     list_extensions(extension_type: GObject.Type): Extension[]
     /**
@@ -6910,6 +7627,7 @@ class OAuth2Services {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6942,6 +7660,7 @@ class OAuth2Services {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: OAuth2Services, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: OAuth2Services, pspec: GObject.ParamSpec) => void)): number
@@ -6961,6 +7680,7 @@ class OAuth2Services {
      * The #EOAuth2Services is implemented as a singleton, thus it won't be
      * much trouble, as long as there is something else having created one
      * instance.
+     * @param auth_method an authentication method, or %NULL
      */
     static is_oauth2_alias_static(auth_method?: string | null): boolean
     static is_supported(): boolean
@@ -6975,10 +7695,10 @@ class SoupAuthBearer {
     is_for_proxy: boolean
     readonly scheme_name: string
     /* Fields of Soup-2.4.Soup.Auth */
-    readonly parent: GObject.Object
-    readonly realm: string
+    parent: GObject.Object
+    realm: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SoupAuthBearer */
     is_expired(): boolean
     /**
@@ -6988,12 +7708,16 @@ class SoupAuthBearer {
      * 
      * If `expires_in_seconds` is greater than zero, soup_auth_is_authenticated()
      * will return %FALSE after the given number of seconds have elapsed.
+     * @param access_token an OAuth 2.0 access token
+     * @param expires_in_seconds expiry for `access_token,` or 0 if unknown
      */
     set_access_token(access_token: string, expires_in_seconds: number): void
     /* Methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     authenticate(username: string, password: string): void
     /**
@@ -7005,6 +7729,7 @@ class SoupAuthBearer {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     get_authorization(msg: Soup.Message): string
     /**
@@ -7023,6 +7748,7 @@ class SoupAuthBearer {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     get_protection_space(source_uri: Soup.URI): string[]
     /**
@@ -7044,6 +7770,7 @@ class SoupAuthBearer {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     is_ready(msg: Soup.Message): boolean
     save_password(username: string, password: string): void
@@ -7051,6 +7778,8 @@ class SoupAuthBearer {
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     update(msg: Soup.Message, auth_header: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -7088,6 +7817,10 @@ class SoupAuthBearer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7098,6 +7831,12 @@ class SoupAuthBearer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7121,6 +7860,7 @@ class SoupAuthBearer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7140,11 +7880,14 @@ class SoupAuthBearer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7152,6 +7895,8 @@ class SoupAuthBearer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7169,6 +7914,7 @@ class SoupAuthBearer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7214,6 +7960,7 @@ class SoupAuthBearer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7257,15 +8004,20 @@ class SoupAuthBearer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7306,6 +8058,7 @@ class SoupAuthBearer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7340,12 +8093,15 @@ class SoupAuthBearer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     vfunc_authenticate(username: string, password: string): void
     /**
@@ -7357,6 +8113,7 @@ class SoupAuthBearer {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     vfunc_get_authorization(msg: Soup.Message): string
     /**
@@ -7364,6 +8121,7 @@ class SoupAuthBearer {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     vfunc_get_protection_space(source_uri: Soup.URI): string[]
     /**
@@ -7375,12 +8133,15 @@ class SoupAuthBearer {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     vfunc_is_ready(msg: Soup.Message): boolean
     /**
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     vfunc_update(msg: Soup.Message, auth_header: GLib.HashTable): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7400,6 +8161,7 @@ class SoupAuthBearer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7432,6 +8194,7 @@ class SoupAuthBearer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SoupAuthBearer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SoupAuthBearer, pspec: GObject.ParamSpec) => void)): number
@@ -7470,6 +8233,10 @@ class SoupSession {
      * The #ENamedParameters containing login credentials.
      */
     credentials: NamedParameters
+    /**
+     * The #ESource being used for this soup session.
+     */
+    readonly source: Source
     /* Properties of Soup-2.4.Soup.Session */
     /**
      * If non-%NULL, the value to use for the "Accept-Language" header
@@ -7488,6 +8255,22 @@ class SoupSession {
      * #SoupSession:accept-language.
      */
     accept_language_auto: boolean
+    /**
+     * The #GMainContext that miscellaneous session-related
+     * asynchronous callbacks are invoked on. (Eg, setting
+     * #SoupSession:idle-timeout will add a timeout source on this
+     * context.)
+     * 
+     * For a plain #SoupSession, this property is always set to
+     * the #GMainContext that is the thread-default at the time
+     * the session was created, and cannot be overridden. For the
+     * deprecated #SoupSession subclasses, the default value is
+     * %NULL, meaning to use the global default #GMainContext.
+     * 
+     * If #SoupSession:use-thread-context is %FALSE, this context
+     * will also be used for asynchronous HTTP I/O.
+     */
+    readonly async_context: object
     /**
      * A %NULL-terminated array of URI schemes that should be
      * considered to be aliases for "http". Eg, if this included
@@ -7531,6 +8314,14 @@ class SoupSession {
      * connections will never time out).
      */
     idle_timeout: number
+    /**
+     * Sets the #SoupAddress to use for the client side of
+     * the connection.
+     * 
+     * Use this property if you want for instance to bind the
+     * local socket to a specific IP address.
+     */
+    readonly local_address: Soup.Address
     max_conns: number
     max_conns_per_host: number
     /**
@@ -7704,15 +8495,18 @@ class SoupSession {
      */
     user_agent: string
     /* Fields of Soup-2.4.Soup.Session */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SoupSession */
     /**
      * Checks result of the `request` and sets the `error` if it failed.
      * When it failed and the `read_bytes` is provided, then these are
      * set to `request'`s message response_body, thus it can be used
      * later.
+     * @param request a #SoupRequestHTTP
+     * @param read_bytes optional bytes which had been read from the stream, or %NULL
+     * @param bytes_length how many bytes had been read; ignored when `read_bytes` is %NULL
      */
     check_result(request: Soup.RequestHTTP, read_bytes: object | null, bytes_length: number): boolean
     dup_credentials(): NamedParameters | null
@@ -7730,6 +8524,8 @@ class SoupSession {
      * and with "Connection" to be "close".
      * 
      * See also e_soup_session_new_request_uri().
+     * @param method an HTTP method
+     * @param uri_string a URI string to use for the request
      */
     new_request(method: string, uri_string: string): Soup.RequestHTTP
     /**
@@ -7738,6 +8534,8 @@ class SoupSession {
      * and with "Connection" to be "close".
      * 
      * See also e_soup_session_new_request().
+     * @param method an HTTP method
+     * @param uri a #SoupURI to use for the request
      */
     new_request_uri(method: string, uri: Soup.URI): Soup.RequestHTTP
     /**
@@ -7748,6 +8546,8 @@ class SoupSession {
      * 
      * The function prints read content to stdout when
      * e_soup_session_get_log_level() returns #SOUP_LOGGER_LOG_BODY.
+     * @param request a #SoupRequestHTTP to send
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     send_request_simple_sync(request: Soup.RequestHTTP, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
@@ -7770,11 +8570,14 @@ class SoupSession {
      * read from the resulting #GInputStream, thus use
      * e_soup_session_check_result() to verify that the receive had
      * been finished properly.
+     * @param request a #SoupRequestHTTP to send
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     send_request_sync(request: Soup.RequestHTTP, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
      * Sets credentials to use for connection. Using %NULL for `credentials`
      * unsets previous value.
+     * @param credentials an #ENamedParameters with credentials to use, or %NULL
      */
     set_credentials(credentials?: NamedParameters | null): void
     /**
@@ -7787,6 +8590,7 @@ class SoupSession {
      * Any other value, including %NULL, disables logging.
      * 
      * Use e_soup_session_get_log_level() to get current log level.
+     * @param logging_level logging level to setup, or %NULL
      */
     setup_logging(logging_level?: string | null): void
     /* Methods of Soup-2.4.Soup.Session */
@@ -7808,6 +8612,7 @@ class SoupSession {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature an object that implements #SoupSessionFeature
      */
     add_feature(feature: Soup.SessionFeature): void
     /**
@@ -7826,6 +8631,7 @@ class SoupSession {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature_type a #GType
      */
     add_feature_by_type(feature_type: GObject.Type): void
     /**
@@ -7851,6 +8657,8 @@ class SoupSession {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     cancel_message(msg: Soup.Message, status_code: number): void
     /**
@@ -7858,10 +8666,15 @@ class SoupSession {
      * and finishes when the connection is done or an error ocurred.
      * 
      * Call soup_session_connect_finish() to get the #GIOStream to communicate with the server.
+     * @param uri a #SoupURI to connect to
+     * @param cancellable a #GCancellable
+     * @param progress_callback a #SoupSessionConnectProgressCallback which will be called for every network event that occurs during the connection.
+     * @param callback the callback to invoke when the operation finishes
      */
     connect_async(uri: Soup.URI, cancellable?: Gio.Cancellable | null, progress_callback?: Soup.SessionConnectProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the #GIOStream created for the connection to communicate with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     connect_finish(result: Gio.AsyncResult): Gio.IOStream
     /**
@@ -7877,6 +8690,7 @@ class SoupSession {
      * Gets the first feature in `session` of type `feature_type`. For
      * features where there may be more than one feature of a given type,
      * use soup_session_get_features().
+     * @param feature_type the #GType of the feature to get
      */
     get_feature(feature_type: GObject.Type): Soup.SessionFeature | null
     /**
@@ -7887,12 +8701,15 @@ class SoupSession {
      * particular, if there are two matching features, and the first is
      * disabled on `msg,` and the second is not, then this will return
      * %NULL, not the second feature.
+     * @param feature_type the #GType of the feature to get
+     * @param msg a #SoupMessage
      */
     get_feature_for_message(feature_type: GObject.Type, msg: Soup.Message): Soup.SessionFeature | null
     /**
      * Generates a list of `session'`s features of type `feature_type`. (If
      * you want to see all features, you can pass %SOUP_TYPE_SESSION_FEATURE
      * for `feature_type`.)
+     * @param feature_type the #GType of the class of features to get
      */
     get_features(feature_type: GObject.Type): Soup.SessionFeature[]
     /**
@@ -7900,6 +8717,7 @@ class SoupSession {
      * be the type of either a #SoupSessionFeature, or else a subtype of
      * some class managed by another feature, such as #SoupAuth or
      * #SoupRequest).
+     * @param feature_type the #GType of the class of features to check for
      */
     has_feature(feature_type: GObject.Type): boolean
     /**
@@ -7908,6 +8726,7 @@ class SoupSession {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     pause_message(msg: Soup.Message): void
     /**
@@ -7919,6 +8738,9 @@ class SoupSession {
      * If `cancellable` is non-%NULL, it can be used to cancel the
      * resolution. `callback` will still be invoked in this case, with a
      * status of %SOUP_STATUS_CANCELLED.
+     * @param hostname a hostname to be resolved
+     * @param cancellable a #GCancellable object, or %NULL
+     * @param callback callback to call with the     result, or %NULL
      */
     prefetch_dns(hostname: string, cancellable?: Gio.Cancellable | null, callback?: Soup.AddressCallback | null): void
     /**
@@ -7926,6 +8748,7 @@ class SoupSession {
      * session can try to prepare (resolving the domain name, obtaining
      * proxy address, etc.) in order to work more quickly once the URI is
      * actually requested.
+     * @param uri a #SoupURI which may be required
      */
     prepare_for_uri(uri: Soup.URI): void
     /**
@@ -7949,6 +8772,8 @@ class SoupSession {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     queue_message(msg: Soup.Message, callback?: Soup.SessionCallback | null): void
     /**
@@ -7964,10 +8789,12 @@ class SoupSession {
      * 
      * If `msg` has already been redirected too many times, this will
      * cause it to fail with %SOUP_STATUS_TOO_MANY_REDIRECTS.
+     * @param msg a #SoupMessage that has received a 3xx response
      */
     redirect_message(msg: Soup.Message): boolean
     /**
      * Removes `feature'`s functionality from `session`.
+     * @param feature a feature that has previously been added to `session`
      */
     remove_feature(feature: Soup.SessionFeature): void
     /**
@@ -7975,31 +8802,39 @@ class SoupSession {
      * `feature_type)` from `session`. You can also remove standard features
      * from the session at construct time by using the
      * %SOUP_SESSION_REMOVE_FEATURE_BY_TYPE property.
+     * @param feature_type a #GType
      */
     remove_feature_by_type(feature_type: GObject.Type): void
     /**
      * Creates a #SoupRequest for retrieving `uri_string`.
+     * @param uri_string a URI, in string form
      */
     request(uri_string: string): Soup.Request
     /**
      * Creates a #SoupRequest for retrieving `uri_string,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri_string a URI, in string form
      */
     request_http(method: string, uri_string: string): Soup.RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_http_uri(method: string, uri: Soup.URI): Soup.RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri`.
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_uri(uri: Soup.URI): Soup.Request
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     requeue_message(msg: Soup.Message): void
     /**
@@ -8028,6 +8863,8 @@ class SoupSession {
      * 
      * (Note that this method cannot be called on the deprecated
      * #SoupSessionAsync subclass.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
      */
     send(msg: Soup.Message, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -8047,12 +8884,16 @@ class SoupSession {
      * #SoupSessionSync subclass, and can only be called on
      * #SoupSessionAsync if you have set the
      * #SoupSession:use-thread-context property.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     send_async(msg: Soup.Message, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the response to a soup_session_send_async() call and (if
      * successful), returns a #GInputStream that can be used to read the
      * response body.
+     * @param result the #GAsyncResult passed to your callback
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -8072,6 +8913,7 @@ class SoupSession {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     send_message(msg: Soup.Message): number
     /**
@@ -8083,6 +8925,7 @@ class SoupSession {
      * 
      * Calling this function may cause `msg` to be freed if you are not
      * holding any other reference to it.
+     * @param msg the message whose connection is to be stolen
      */
     steal_connection(msg: Soup.Message): Gio.IOStream
     /**
@@ -8095,6 +8938,7 @@ class SoupSession {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     unpause_message(msg: Soup.Message): void
     /**
@@ -8116,6 +8960,11 @@ class SoupSession {
      * and body from the server's response, and
      * soup_session_websocket_connect_finish() will return
      * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
+     * @param msg #SoupMessage indicating the WebSocket server to connect to
+     * @param origin origin of the connection
+     * @param protocols a   %NULL-terminated array of protocols supported
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     websocket_connect_async(msg: Soup.Message, origin?: string | null, protocols?: string[] | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -8123,12 +8972,14 @@ class SoupSession {
      * soup_session_websocket_connect_async() call and (if successful),
      * returns a #SoupWebsocketConnection that can be used to communicate
      * with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     websocket_connect_finish(result: Gio.AsyncResult): Soup.WebsocketConnection
     /**
      * Checks if `msg` contains a response that would cause `session` to
      * redirect it to a new URL (ignoring `msg'`s %SOUP_MESSAGE_NO_REDIRECT
      * flag, and the number of times it has already been redirected).
+     * @param msg a #SoupMessage that has response headers
      */
     would_redirect(msg: Soup.Message): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -8166,6 +9017,10 @@ class SoupSession {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8176,6 +9031,12 @@ class SoupSession {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8199,6 +9060,7 @@ class SoupSession {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8218,11 +9080,14 @@ class SoupSession {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8230,6 +9095,8 @@ class SoupSession {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8247,6 +9114,7 @@ class SoupSession {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8292,6 +9160,7 @@ class SoupSession {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8335,15 +9204,20 @@ class SoupSession {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8384,6 +9258,7 @@ class SoupSession {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8418,6 +9293,7 @@ class SoupSession {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Session */
@@ -8446,6 +9322,8 @@ class SoupSession {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     vfunc_cancel_message(msg: Soup.Message, status_code: number): void
     vfunc_flush_queue(): void
@@ -8471,12 +9349,15 @@ class SoupSession {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     vfunc_queue_message(msg: Soup.Message, callback?: Soup.SessionCallback | null): void
     vfunc_request_started(msg: Soup.Message, socket: Soup.Socket): void
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     vfunc_requeue_message(msg: Soup.Message): void
     /**
@@ -8496,6 +9377,7 @@ class SoupSession {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     vfunc_send_message(msg: Soup.Message): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8515,6 +9397,7 @@ class SoupSession {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8535,6 +9418,9 @@ class SoupSession {
      * (as long as you g_object_ref() it to make sure it doesn't
      * get destroyed), and then unpause `msg` when you are ready
      * for it to continue.
+     * @param msg the #SoupMessage being sent
+     * @param auth the #SoupAuth to authenticate
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: (($obj: SoupSession, msg: Soup.Message, auth: Soup.Auth, retrying: boolean) => void)): number
     connect_after(sigName: "authenticate", callback: (($obj: SoupSession, msg: Soup.Message, auth: Soup.Auth, retrying: boolean) => void)): number
@@ -8543,6 +9429,7 @@ class SoupSession {
      * Emitted when a new connection is created. This is an
      * internal signal intended only to be used for debugging
      * purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "connection-created", callback: (($obj: SoupSession, connection: GObject.Object) => void)): number
     connect_after(sigName: "connection-created", callback: (($obj: SoupSession, connection: GObject.Object) => void)): number
@@ -8583,6 +9470,7 @@ class SoupSession {
      * exactly once, but #SoupSession::request_started and
      * #SoupMessage::finished (and all of the other #SoupMessage
      * signals) may be invoked multiple times for a given message.
+     * @param msg the request that was queued
      */
     connect(sigName: "request-queued", callback: (($obj: SoupSession, msg: Soup.Message) => void)): number
     connect_after(sigName: "request-queued", callback: (($obj: SoupSession, msg: Soup.Message) => void)): number
@@ -8591,6 +9479,8 @@ class SoupSession {
      * Emitted just before a request is sent. See
      * #SoupSession::request_queued for a detailed description of
      * the message lifecycle within a session.
+     * @param msg the request being sent
+     * @param socket the socket the request is being sent on
      */
     connect(sigName: "request-started", callback: (($obj: SoupSession, msg: Soup.Message, socket: Soup.Socket) => void)): number
     connect_after(sigName: "request-started", callback: (($obj: SoupSession, msg: Soup.Message, socket: Soup.Socket) => void)): number
@@ -8600,6 +9490,7 @@ class SoupSession {
      * indicating that `session` is done with it. See
      * #SoupSession::request_queued for a detailed description of the
      * message lifecycle within a session.
+     * @param msg the request that was unqueued
      */
     connect(sigName: "request-unqueued", callback: (($obj: SoupSession, msg: Soup.Message) => void)): number
     connect_after(sigName: "request-unqueued", callback: (($obj: SoupSession, msg: Soup.Message) => void)): number
@@ -8608,6 +9499,7 @@ class SoupSession {
      * Emitted when an SSL tunnel is being created on a proxy
      * connection. This is an internal signal intended only to be
      * used for debugging purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "tunneling", callback: (($obj: SoupSession, connection: GObject.Object) => void)): number
     connect_after(sigName: "tunneling", callback: (($obj: SoupSession, connection: GObject.Object) => void)): number
@@ -8641,22 +9533,29 @@ class SoupSession {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::credentials", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::credentials", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-language", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-language-auto", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language-auto", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::async-context", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::async-context", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::http-aliases", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::http-aliases", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::https-aliases", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::https-aliases", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::idle-timeout", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle-timeout", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::local-address", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-address", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-conns", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns-per-host", callback: (($obj: SoupSession, pspec: GObject.ParamSpec) => void)): number
@@ -8698,12 +9597,15 @@ class SoupSession {
      * Normalizes the path of the `suri,` aka encodes characters, which should
      * be encoded, if needed. Returns, whether any change had been made to the path.
      * It doesn't touch other parts of the `suri`.
+     * @param suri a #SoupURI to normalize the path for
      */
     static util_normalize_uri_path(suri: Soup.URI): boolean
     /**
      * Returns the `reason_phrase,` if it's non-%NULL and non-empty, a static string
      * corresponding to `status_code`. In case neither that can be found a localized
      * "Unknown error" message is returned.
+     * @param status_code an HTTP status code
+     * @param reason_phrase preferred string to use for the message, or %NULL
      */
     static util_status_to_string(status_code: number, reason_phrase?: string | null): string
     static $gtype: GObject.Type
@@ -8721,13 +9623,15 @@ class Source {
     readonly connection_status: SourceConnectionStatus
     display_name: string
     enabled: boolean
+    readonly main_context: GLib.MainContext
     parent: string
     readonly remote_creatable: boolean
     readonly remote_deletable: boolean
     readonly removable: boolean
+    readonly uid: string
     readonly writable: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.Source */
     /**
      * This function essentially glues together `source` and `serivce` so their
@@ -8736,6 +9640,7 @@ class Source {
      * 
      * Call this function immediately after creating a new #CamelService with
      * camel_session_add_service().
+     * @param service a #CamelService
      */
     camel_configure_service(service: Camel.Service): void
     /**
@@ -8749,6 +9654,7 @@ class Source {
     /**
      * Compares two #ESource instances by their display names.  Useful for
      * ordering sources in a user interface.
+     * @param source2 the second #ESource
      */
     compare_by_display_name(source2: Source): number
     /**
@@ -8758,6 +9664,8 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_delete_password_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     delete_password(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -8767,6 +9675,7 @@ class Source {
      * itself completed successfully, not whether a password was found and
      * deleted.  If no password was found, the function will still return
      * %TRUE.  If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     delete_password_finish(result: Gio.AsyncResult): boolean
     /**
@@ -8778,6 +9687,7 @@ class Source {
      * itself completed successfully, not whether a password was found and
      * deleted.  If no password was found, the function will still return
      * %TRUE.  If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_password_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -8810,11 +9720,16 @@ class Source {
      * Emits localy (in this process only) the ESource::credentials-required
      * signal with given parameters. That's the difference with e_source_invoke_credentials_required(),
      * which calls the signal globally, within each client.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
+     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param op_error a #GError with a description of the previous credentials error, or %NULL
      */
     emit_credentials_required(reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null): void
     /**
      * Checks two #ESource instances for equality.  #ESource instances are
      * equal if their unique identifier strings are equal.
+     * @param source2 the second #ESource
      */
     equal(source2: Source): boolean
     /**
@@ -8854,6 +9769,7 @@ class Source {
      * Extension instances are owned by their #ESource and should not be
      * referenced directly.  Instead, reference the #ESource instance and
      * use this function to fetch the extension instance as needed.
+     * @param extension_name an extension name
      */
     get_extension(extension_name: string): SourceExtension
     /**
@@ -8865,6 +9781,8 @@ class Source {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_get_last_credentials_required_arguments_finish() to get
      * the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     get_last_credentials_required_arguments(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -8873,6 +9791,7 @@ class Source {
      * about the output arguments.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     get_last_credentials_required_arguments_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_reason */ SourceCredentialsReason, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags, /* out_op_error */ GLib.Error ]
     /**
@@ -8883,6 +9802,7 @@ class Source {
      * 
      * If an error occurs, the function sets `error` and returns %FALSE. The result gchar
      * values should be freed with g_free() when no longer needed.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_last_credentials_required_arguments_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_reason */ SourceCredentialsReason, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags, /* out_op_error */ GLib.Error ]
     /**
@@ -8892,6 +9812,8 @@ class Source {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_get_oauth2_access_token_finish() to get the result of the
      * operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request            is satisfied
      */
     get_oauth2_access_token(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -8899,6 +9821,7 @@ class Source {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     get_oauth2_access_token_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number | null ]
     /**
@@ -8907,6 +9830,7 @@ class Source {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_oauth2_access_token_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number | null ]
     /**
@@ -8950,6 +9874,7 @@ class Source {
     get_writable(): boolean
     /**
      * Checks whether `source` has an #ESourceExtension with the given name.
+     * @param extension_name an extension name
      */
     has_extension(extension_name: string): boolean
     /**
@@ -8965,12 +9890,16 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_invoke_authenticate_finish() to get the result of the operation.
+     * @param credentials an #ENamedParameters structure with credentials to use; can be %NULL    to use those from the last call
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     invoke_authenticate(credentials?: NamedParameters | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_invoke_authenticate().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     invoke_authenticate_finish(result: Gio.AsyncResult): boolean
     /**
@@ -8978,6 +9907,8 @@ class Source {
      * knows what credentials to use to connect to its (possibly remote) data store.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param credentials an #ENamedParameters structure with credentials to use; can be %NULL    to use those from the last call
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     invoke_authenticate_sync(credentials?: NamedParameters | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -8986,12 +9917,19 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_invoke_credentials_required_finish() to get the result of the operation.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
+     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param op_error a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     invoke_credentials_required(reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_invoke_credentials_required().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     invoke_credentials_required_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9013,6 +9951,11 @@ class Source {
      * It is not possible to connect to it at the moment usually.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param reason an #ESourceCredentialsReason, why the credentials are required
+     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
+     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
+     * @param op_error a #GError with a description of the previous credentials error, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     invoke_credentials_required_sync(reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9023,6 +9966,8 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_lookup_password_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     lookup_password(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -9033,6 +9978,7 @@ class Source {
      * no password was found, the function will set `out_password` to %NULL
      * but still return %TRUE.  If an error occurs, the function sets `error`
      * and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     lookup_password_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_password */ string | null ]
     /**
@@ -9045,6 +9991,7 @@ class Source {
      * no password was found, the function will set `out_password` to %NULL
      * but still return %TRUE.  If an error occurs, the function sets `error`
      * and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lookup_password_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_password */ string | null ]
     /**
@@ -9058,6 +10005,9 @@ class Source {
      * When the operation is finished, `callback` will be called.  You can
      * then call e_source_mail_signature_load_finish() to get the result of
      * the operation.
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     mail_signature_load(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -9065,6 +10015,7 @@ class Source {
      * signature file contents are placed in `contents,` and `length` is set to
      * the size of the `contents` string.  The `contents` string should be freed
      * with g_free() when no longer needed.
+     * @param result a #GAsyncResult
      */
     mail_signature_load_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* contents */ string, /* length */ number | null ]
     /**
@@ -9077,6 +10028,7 @@ class Source {
      * If the signature file is executable, it will be executed and its output
      * captured as the email signature content.  If the signature file is not
      * executable, the email signature content is read directly from the file.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mail_signature_load_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* contents */ string, /* length */ number | null ]
     /**
@@ -9087,16 +10039,25 @@ class Source {
      * When the operation is finished, `callback` will be called.  You can
      * then call e_source_mail_signature_replace_finish() to get the result
      * of the operation.
+     * @param contents the signature contents
+     * @param length the length of `contents` in bytes
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     mail_signature_replace(contents: string, length: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with e_source_mail_signature_replace().
+     * @param result a #GAsyncResult
      */
     mail_signature_replace_finish(result: Gio.AsyncResult): boolean
     /**
      * Replaces the signature file for `source` with the given `contents`
      * of `length` bytes.  The signature file for `source` is given by
      * e_source_mail_signature_get_file().
+     * @param contents the signature contents
+     * @param length the length of `contents` in bytes
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mail_signature_replace_sync(contents: string, length: number, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9108,10 +10069,15 @@ class Source {
      * When the operation is finished, `callback` will be called.  You can
      * then call e_source_mail_signature_symlink_finish() to get the result
      * of the operation.
+     * @param symlink_target executable filename to link to
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     mail_signature_symlink(symlink_target: string, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with e_source_mail_signature_symlink().
+     * @param result a #GAsyncResult
      */
     mail_signature_symlink_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9119,6 +10085,8 @@ class Source {
      * `symlink_target,` which should be an executable file that prints
      * a mail signature to standard output.  The signature file for
      * `source` is given by e_source_mail_signature_get_file().
+     * @param symlink_target executable filename to link to
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mail_signature_symlink_sync(symlink_target: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9127,12 +10095,16 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_proxy_lookup_finish() to get the result of the operation.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     proxy_lookup(uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_proxy_lookup().
      * 
      * Free the returned proxy URIs with g_strfreev() when finished with them.
+     * @param result a #GAsyncResult
      */
     proxy_lookup_finish(result: Gio.AsyncResult): string[] | null
     /**
@@ -9160,6 +10132,8 @@ class Source {
      * `error` to `G_IO_ERROR_NOT_SUPPORTED` and returns %NULL.
      * 
      * Free the returned proxy URIs with g_strfreev() when finished with them.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     proxy_lookup_sync(uri: string, cancellable?: Gio.Cancellable | null): string[] | null
     /**
@@ -9189,6 +10163,8 @@ class Source {
      * The returned ID can be passed to e_source_refresh_remove_timeout() to
      * remove the timeout from `context`.  Note the ID is a private handle and
      * cannot be passed to g_source_remove().
+     * @param context a #GMainContext, or %NULL (if %NULL, the default           context will be used)
+     * @param callback function to call on each timeout
      */
     refresh_add_timeout(context: GLib.MainContext | null, callback: SourceRefreshFunc): number
     /**
@@ -9203,11 +10179,13 @@ class Source {
     refresh_force_timeout(): void
     /**
      * Removes a timeout #GSource added by e_source_refresh_add_timeout().
+     * @param refresh_timeout_id a refresh timeout ID
      */
     refresh_remove_timeout(refresh_timeout_id: number): boolean
     /**
      * Removes all timeout #GSource's added by e_source_refresh_add_timeout()
      * whose callback data pointer matches `user_data`.
+     * @param user_data user data to match against timeout callbacks
      */
     refresh_remove_timeouts_by_data(user_data?: object | null): number
     /**
@@ -9222,11 +10200,15 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remote_create_finish() to get the result of the operation.
+     * @param scratch_source an #ESource describing the resource to create
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     remote_create(scratch_source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remote_create().  If
      * an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     remote_create_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9240,6 +10222,8 @@ class Source {
      * possibly a server-side path or ID for the resource.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param scratch_source an #ESource describing the resource to create
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     remote_create_sync(scratch_source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9250,11 +10234,14 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remote_delete_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     remote_delete(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remote_delete().  If
      * an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     remote_delete_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9264,6 +10251,7 @@ class Source {
      * similar to e_source_remove_sync().
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     remote_delete_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9273,11 +10261,14 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remove_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remove().  If an
      * error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9286,10 +10277,12 @@ class Source {
      * must be #ESource:removable.
      * 
      * If an error occurs, the functon will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     remove_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Set's current connection status of the `source`.
+     * @param connection_status one of the #ESourceConnectionStatus
      */
     set_connection_status(connection_status: SourceConnectionStatus): void
     /**
@@ -9299,6 +10292,7 @@ class Source {
      * 
      * The internal copy of `display_name` is automatically stripped of leading
      * and trailing whitespace.
+     * @param display_name a display name
      */
     set_display_name(display_name: string): void
     /**
@@ -9307,6 +10301,7 @@ class Source {
      * An application should try to honor this setting if at all possible,
      * even if it does not provide a way to change the setting through its
      * user interface.  Disabled data sources should generally be hidden.
+     * @param enabled whether to enable `source`
      */
     set_enabled(enabled: boolean): void
     /**
@@ -9316,6 +10311,7 @@ class Source {
      * The internal copy of #ESource:parent is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param parent the UID of the parent #ESource, or %NULL
      */
     set_parent(parent?: string | null): void
     /**
@@ -9329,10 +10325,15 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_store_password_finish() to get the result of the operation.
+     * @param password the password to store
+     * @param permanently store permanently or just for the session
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     store_password(password: string, permanently: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_store_password().
+     * @param result a #GAsyncResult
      */
     store_password_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9343,6 +10344,9 @@ class Source {
      * If `permanently` is %TRUE, the password is stored in the default keyring.
      * Otherwise the password is stored in the memory-only session keyring.  If
      * an error occurs, the function sets `error` and returns %FALSE.
+     * @param password the password to store
+     * @param permanently store permanently or just for the session
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     store_password_sync(password: string, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9358,18 +10362,22 @@ class Source {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_unset_last_credentials_required_arguments_finish() to get
      * the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     unset_last_credentials_required_arguments(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_unset_last_credentials_required_arguments().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     unset_last_credentials_required_arguments_finish(result: Gio.AsyncResult): boolean
     /**
      * Unsets the last used arguments of the 'credentials-required' signal emission.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     unset_last_credentials_required_arguments_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9379,11 +10387,14 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_write_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     write(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_write().  If an
      * error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     write_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9392,6 +10403,7 @@ class Source {
      * be #ESource:writable.
      * 
      * If an error occurs, the functon will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     write_sync(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -9429,6 +10441,10 @@ class Source {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9439,6 +10455,12 @@ class Source {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9462,6 +10484,7 @@ class Source {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9481,11 +10504,14 @@ class Source {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9493,6 +10519,8 @@ class Source {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9510,6 +10538,7 @@ class Source {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9555,6 +10584,7 @@ class Source {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9598,15 +10628,20 @@ class Source {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9647,6 +10682,7 @@ class Source {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9681,6 +10717,7 @@ class Source {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -9723,6 +10760,7 @@ class Source {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of Gio-2.0.Gio.ProxyResolver */
@@ -9748,17 +10786,23 @@ class Source {
      * `direct://` is used when no proxy is needed.
      * Direct connection should not be attempted unless it is part of the
      * returned array of proxies.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable a #GCancellable, or %NULL
      */
     lookup(uri: string, cancellable?: Gio.Cancellable | null): string[]
     /**
      * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
      * details.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to call after resolution completes
      */
     lookup_async(uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Call this function to obtain the array of proxy URIs when
      * g_proxy_resolver_lookup_async() is complete. See
      * g_proxy_resolver_lookup() for more details.
+     * @param result the result passed to your #GAsyncReadyCallback
      */
     lookup_finish(result: Gio.AsyncResult): string[]
     /* Virtual methods of EDataServer-1.2.EDataServer.Source */
@@ -9779,6 +10823,8 @@ class Source {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_get_oauth2_access_token_finish() to get the result of the
      * operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request            is satisfied
      */
     vfunc_get_oauth2_access_token(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -9786,6 +10832,7 @@ class Source {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     vfunc_get_oauth2_access_token_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number | null ]
     /**
@@ -9794,6 +10841,7 @@ class Source {
      * 
      * Free the returned access token with g_free() when finished with it.
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_get_oauth2_access_token_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number | null ]
     vfunc_invoke_authenticate_impl(dbus_source: object | null, arg_credentials: string, cancellable?: Gio.Cancellable | null): boolean
@@ -9810,11 +10858,15 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remote_create_finish() to get the result of the operation.
+     * @param scratch_source an #ESource describing the resource to create
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_remote_create(scratch_source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remote_create().  If
      * an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     vfunc_remote_create_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9828,6 +10880,8 @@ class Source {
      * possibly a server-side path or ID for the resource.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param scratch_source an #ESource describing the resource to create
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_remote_create_sync(scratch_source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9838,11 +10892,14 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remote_delete_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_remote_delete(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remote_delete().  If
      * an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     vfunc_remote_delete_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9852,6 +10909,7 @@ class Source {
      * similar to e_source_remove_sync().
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_remote_delete_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9861,11 +10919,14 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_remove_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_remove().  If an
      * error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     vfunc_remove_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9874,6 +10935,7 @@ class Source {
      * must be #ESource:removable.
      * 
      * If an error occurs, the functon will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_remove_sync(cancellable?: Gio.Cancellable | null): boolean
     vfunc_unset_last_credentials_required_arguments_impl(cancellable?: Gio.Cancellable | null): boolean
@@ -9884,11 +10946,14 @@ class Source {
      * 
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_write_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_write(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_write().  If an
      * error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     vfunc_write_finish(result: Gio.AsyncResult): boolean
     /**
@@ -9897,6 +10962,7 @@ class Source {
      * be #ESource:writable.
      * 
      * If an error occurs, the functon will set `error` and return %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_write_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9938,6 +11004,7 @@ class Source {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -9962,17 +11029,23 @@ class Source {
      * `direct://` is used when no proxy is needed.
      * Direct connection should not be attempted unless it is part of the
      * returned array of proxies.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable a #GCancellable, or %NULL
      */
     vfunc_lookup(uri: string, cancellable?: Gio.Cancellable | null): string[]
     /**
      * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
      * details.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to call after resolution completes
      */
     vfunc_lookup_async(uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Call this function to obtain the array of proxy URIs when
      * g_proxy_resolver_lookup_async() is complete. See
      * g_proxy_resolver_lookup() for more details.
+     * @param result the result passed to your #GAsyncReadyCallback
      */
     vfunc_lookup_finish(result: Gio.AsyncResult): string[]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9992,6 +11065,7 @@ class Source {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9999,6 +11073,7 @@ class Source {
     /**
      * Let's the backend know provided credentials to use to login
      * to (possibly remote) data store.
+     * @param credentials an #ENamedParameters with provided credentials
      */
     connect(sigName: "authenticate", callback: (($obj: Source, credentials: NamedParameters) => void)): number
     connect_after(sigName: "authenticate", callback: (($obj: Source, credentials: NamedParameters) => void)): number
@@ -10017,6 +11092,10 @@ class Source {
      * requires credentials to connect to (possibly remote)
      * data store. The credentials can be passed to the backend using
      * e_source_invoke_authenticate() function.
+     * @param reason an #ESourceCredentialsReason indicating why the credentials are requested
+     * @param certificate_pem PEM-encoded secure connection certificate for failed SSL/TLS checks
+     * @param certificate_errors what failed with the SSL/TLS certificate
+     * @param error a text description of the error, if any
      */
     connect(sigName: "credentials-required", callback: (($obj: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error: GLib.Error) => void)): number
     connect_after(sigName: "credentials-required", callback: (($obj: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error: GLib.Error) => void)): number
@@ -10050,6 +11129,7 @@ class Source {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
@@ -10060,6 +11140,8 @@ class Source {
     connect_after(sigName: "notify::display-name", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::enabled", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enabled", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::main-context", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::main-context", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::parent", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::parent", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::remote-creatable", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
@@ -10068,6 +11150,8 @@ class Source {
     connect_after(sigName: "notify::remote-deletable", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::removable", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::removable", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uid", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uid", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::writable", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::writable", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -10086,12 +11170,16 @@ class Source {
      * 
      * This function is made public only to aid in account migration.
      * Applications should not need to use this.
+     * @param param_name a #GParamSpec name
      */
     static parameter_to_key(param_name: string): string
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     /**
@@ -10109,12 +11197,15 @@ class SourceAddressBook {
     order: number
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceAddressBook */
     get_order(): number
     /**
      * Set the sorting order of the source.
+     * @param order a sorting order
      */
     set_order(order: number): void
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
@@ -10135,6 +11226,7 @@ class SourceAddressBook {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -10197,6 +11289,10 @@ class SourceAddressBook {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10207,6 +11303,12 @@ class SourceAddressBook {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10230,6 +11332,7 @@ class SourceAddressBook {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10249,11 +11352,14 @@ class SourceAddressBook {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10261,6 +11367,8 @@ class SourceAddressBook {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10278,6 +11386,7 @@ class SourceAddressBook {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10323,6 +11432,7 @@ class SourceAddressBook {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10366,15 +11476,20 @@ class SourceAddressBook {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10415,6 +11530,7 @@ class SourceAddressBook {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10449,6 +11565,7 @@ class SourceAddressBook {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10468,6 +11585,7 @@ class SourceAddressBook {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10500,6 +11618,7 @@ class SourceAddressBook {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceAddressBook, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceAddressBook, pspec: GObject.ParamSpec) => void)): number
@@ -10508,6 +11627,8 @@ class SourceAddressBook {
     connect_after(sigName: "notify::order", callback: (($obj: SourceAddressBook, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::backend-name", callback: (($obj: SourceAddressBook, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceAddressBook, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceAddressBook, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceAddressBook, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -10526,8 +11647,10 @@ class SourceAlarms {
     /* Properties of EDataServer-1.2.EDataServer.SourceAlarms */
     include_me: boolean
     last_notified: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceAlarms */
     /**
      * Thread-safe variation of e_source_alarms_get_last_notified().
@@ -10557,6 +11680,7 @@ class SourceAlarms {
      * 
      * Alarm daemons such as evolution-alarm-notify can use this property to
      * decide which calendars to query for upcoming appointments.
+     * @param include_me whether to show alarms for upcoming appointments
      */
     set_include_me(include_me: boolean): void
     /**
@@ -10570,6 +11694,7 @@ class SourceAlarms {
      * 
      * Generally, this function should only be called by an alarm daemon
      * such as evolution-alarm-notify.
+     * @param last_notified an ISO 8601 timestamp, or %NULL
      */
     set_last_notified(last_notified?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -10632,6 +11757,10 @@ class SourceAlarms {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10642,6 +11771,12 @@ class SourceAlarms {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10665,6 +11800,7 @@ class SourceAlarms {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10684,11 +11820,14 @@ class SourceAlarms {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10696,6 +11835,8 @@ class SourceAlarms {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10713,6 +11854,7 @@ class SourceAlarms {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10758,6 +11900,7 @@ class SourceAlarms {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10801,15 +11944,20 @@ class SourceAlarms {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10850,6 +11998,7 @@ class SourceAlarms {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10884,6 +12033,7 @@ class SourceAlarms {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10903,6 +12053,7 @@ class SourceAlarms {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10935,6 +12086,7 @@ class SourceAlarms {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceAlarms, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceAlarms, pspec: GObject.ParamSpec) => void)): number
@@ -10943,6 +12095,8 @@ class SourceAlarms {
     connect_after(sigName: "notify::include-me", callback: (($obj: SourceAlarms, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::last-notified", callback: (($obj: SourceAlarms, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::last-notified", callback: (($obj: SourceAlarms, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceAlarms, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceAlarms, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -10974,8 +12128,10 @@ class SourceAuthentication {
     proxy_uid: string
     remember_password: boolean
     user: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceAuthentication */
     /**
      * Thread-safe variation of e_source_authentication_get_credential_name().
@@ -11079,6 +12235,7 @@ class SourceAuthentication {
      * The internal copy of `credential_name` is automatically stripped
      * of leading and trailing whitespace. If the resulting string is
      * empty, %NULL is set instead.
+     * @param credential_name a credential name, or %NULL
      */
     set_credential_name(credential_name?: string | null): void
     /**
@@ -11087,11 +12244,13 @@ class SourceAuthentication {
      * The internal copy of `host` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param host a host name, or %NULL
      */
     set_host(host?: string | null): void
     /**
      * Set if the authentication is done by an external application such as a
      * Single Sign On application (e.g. GNOME Online Accounts)
+     * @param is_external %TRUE if the authentication is done using an external application, %FALSE otherwise
      */
     set_is_external(is_external: boolean): void
     /**
@@ -11101,21 +12260,25 @@ class SourceAuthentication {
      * convention is to set the method to "none".  In keeping with that
      * convention, #ESourceAuthentication:method will be set to "none" if
      * `method` is %NULL or an empty string.
+     * @param method authentication method, or %NULL
      */
     set_method(method?: string | null): void
     /**
      * Sets the port number used to authenticate to a remote account.
+     * @param port a port number
      */
     set_port(port: number): void
     /**
      * Sets the #ESource:uid of the #ESource that holds network proxy settings
      * for use when connecting to a remote account.
+     * @param proxy_uid the proxy profile #ESource:uid
      */
     set_proxy_uid(proxy_uid: string): void
     /**
      * Sets whether to offer to remember the provided password by default in
      * password prompts.  This way, if the user unchecks the option it will be
      * unchecked by default in future password prompts.
+     * @param remember_password whether to offer to remember the password by default
      */
     set_remember_password(remember_password: boolean): void
     /**
@@ -11124,6 +12287,7 @@ class SourceAuthentication {
      * The internal copy of `user` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param user a user name, or %NULL
      */
     set_user(user?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -11186,6 +12350,10 @@ class SourceAuthentication {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11196,6 +12364,12 @@ class SourceAuthentication {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11219,6 +12393,7 @@ class SourceAuthentication {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11238,11 +12413,14 @@ class SourceAuthentication {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11250,6 +12428,8 @@ class SourceAuthentication {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11267,6 +12447,7 @@ class SourceAuthentication {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11312,6 +12493,7 @@ class SourceAuthentication {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11355,15 +12537,20 @@ class SourceAuthentication {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11404,6 +12591,7 @@ class SourceAuthentication {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11438,6 +12626,7 @@ class SourceAuthentication {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11457,6 +12646,7 @@ class SourceAuthentication {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11489,6 +12679,7 @@ class SourceAuthentication {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceAuthentication, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceAuthentication, pspec: GObject.ParamSpec) => void)): number
@@ -11511,6 +12702,8 @@ class SourceAuthentication {
     connect_after(sigName: "notify::remember-password", callback: (($obj: SourceAuthentication, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::user", callback: (($obj: SourceAuthentication, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user", callback: (($obj: SourceAuthentication, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceAuthentication, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceAuthentication, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11527,8 +12720,10 @@ interface SourceAutocomplete_ConstructProps extends SourceExtension_ConstructPro
 class SourceAutocomplete {
     /* Properties of EDataServer-1.2.EDataServer.SourceAutocomplete */
     include_me: boolean
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceAutocomplete */
     /**
      * Returns whether the address book described by the #ESource to which
@@ -11540,6 +12735,7 @@ class SourceAutocomplete {
      * Sets whether the address book described by the #ESource to which
      * `extension` belongs should be queried when the user inputs a partial
      * contact name or email address.
+     * @param include_me whether to use the autocomplete feature
      */
     set_include_me(include_me: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -11602,6 +12798,10 @@ class SourceAutocomplete {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11612,6 +12812,12 @@ class SourceAutocomplete {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11635,6 +12841,7 @@ class SourceAutocomplete {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11654,11 +12861,14 @@ class SourceAutocomplete {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11666,6 +12876,8 @@ class SourceAutocomplete {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11683,6 +12895,7 @@ class SourceAutocomplete {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11728,6 +12941,7 @@ class SourceAutocomplete {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11771,15 +12985,20 @@ class SourceAutocomplete {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11820,6 +13039,7 @@ class SourceAutocomplete {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11854,6 +13074,7 @@ class SourceAutocomplete {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11873,6 +13094,7 @@ class SourceAutocomplete {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11905,12 +13127,15 @@ class SourceAutocomplete {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceAutocomplete, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceAutocomplete, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::include-me", callback: (($obj: SourceAutocomplete, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::include-me", callback: (($obj: SourceAutocomplete, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceAutocomplete, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceAutocomplete, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11927,8 +13152,10 @@ interface SourceAutoconfig_ConstructProps extends SourceExtension_ConstructProps
 class SourceAutoconfig {
     /* Properties of EDataServer-1.2.EDataServer.SourceAutoconfig */
     revision: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceAutoconfig */
     /**
      * Thread-safe variation of e_source_autoconfig_get_revision().
@@ -11960,6 +13187,7 @@ class SourceAutoconfig {
      * 
      * The internal copy of `revision` is automatically stripped of leading and
      * trailing whitespace.
+     * @param revision a revision
      */
     set_revision(revision: string): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -12022,6 +13250,10 @@ class SourceAutoconfig {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12032,6 +13264,12 @@ class SourceAutoconfig {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12055,6 +13293,7 @@ class SourceAutoconfig {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12074,11 +13313,14 @@ class SourceAutoconfig {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12086,6 +13328,8 @@ class SourceAutoconfig {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12103,6 +13347,7 @@ class SourceAutoconfig {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12148,6 +13393,7 @@ class SourceAutoconfig {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12191,15 +13437,20 @@ class SourceAutoconfig {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12240,6 +13491,7 @@ class SourceAutoconfig {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12274,6 +13526,7 @@ class SourceAutoconfig {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12293,6 +13546,7 @@ class SourceAutoconfig {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12325,12 +13579,15 @@ class SourceAutoconfig {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceAutoconfig, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceAutoconfig, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::revision", callback: (($obj: SourceAutoconfig, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::revision", callback: (($obj: SourceAutoconfig, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceAutoconfig, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceAutoconfig, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -12347,8 +13604,10 @@ interface SourceBackend_ConstructProps extends SourceExtension_ConstructProps {
 class SourceBackend {
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
     /**
      * Thread-safe variation of e_source_backend_get_backend_name().
@@ -12367,6 +13626,7 @@ class SourceBackend {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -12429,6 +13689,10 @@ class SourceBackend {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12439,6 +13703,12 @@ class SourceBackend {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12462,6 +13732,7 @@ class SourceBackend {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12481,11 +13752,14 @@ class SourceBackend {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12493,6 +13767,8 @@ class SourceBackend {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12510,6 +13786,7 @@ class SourceBackend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12555,6 +13832,7 @@ class SourceBackend {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12598,15 +13876,20 @@ class SourceBackend {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12647,6 +13930,7 @@ class SourceBackend {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12681,6 +13965,7 @@ class SourceBackend {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12700,6 +13985,7 @@ class SourceBackend {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12732,12 +14018,15 @@ class SourceBackend {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceBackend, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::backend-name", callback: (($obj: SourceBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceBackend, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceBackend, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceBackend, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -12756,8 +14045,10 @@ class SourceCalendar {
     selected: boolean
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceSelectable */
     /**
      * Thread-safe variation of e_source_selectable_get_color().
@@ -12791,16 +14082,19 @@ class SourceCalendar {
      * The internal copy of `color` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param color a color specification, or %NULL
      */
     set_color(color?: string | null): void
     /**
      * Sets the sorting order for the #ESource to which `extension` belongs.
+     * @param order the sorting order
      */
     set_order(order: number): void
     /**
      * Sets the selected state for the #ESource to which `extension` belongs.
      * The selected state is often represented as a checkbox next to the data
      * source's display name in user interfaces.
+     * @param selected selected state
      */
     set_selected(selected: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
@@ -12821,6 +14115,7 @@ class SourceCalendar {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -12883,6 +14178,10 @@ class SourceCalendar {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12893,6 +14192,12 @@ class SourceCalendar {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12916,6 +14221,7 @@ class SourceCalendar {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12935,11 +14241,14 @@ class SourceCalendar {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12947,6 +14256,8 @@ class SourceCalendar {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12964,6 +14275,7 @@ class SourceCalendar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13009,6 +14321,7 @@ class SourceCalendar {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13052,15 +14365,20 @@ class SourceCalendar {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13101,6 +14419,7 @@ class SourceCalendar {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13135,6 +14454,7 @@ class SourceCalendar {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13154,6 +14474,7 @@ class SourceCalendar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13186,6 +14507,7 @@ class SourceCalendar {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceCalendar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceCalendar, pspec: GObject.ParamSpec) => void)): number
@@ -13198,6 +14520,8 @@ class SourceCalendar {
     connect_after(sigName: "notify::selected", callback: (($obj: SourceCalendar, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::backend-name", callback: (($obj: SourceCalendar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceCalendar, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceCalendar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceCalendar, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13212,8 +14536,10 @@ interface SourceCamel_ConstructProps extends SourceExtension_ConstructProps {
 class SourceCamel {
     /* Properties of EDataServer-1.2.EDataServer.SourceCamel */
     readonly settings: Camel.Settings
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceCamel */
     /**
      * Returns `extension'`s #ESourceCamel:settings instance, pre-configured
@@ -13285,6 +14611,10 @@ class SourceCamel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13295,6 +14625,12 @@ class SourceCamel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13318,6 +14654,7 @@ class SourceCamel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13337,11 +14674,14 @@ class SourceCamel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13349,6 +14689,8 @@ class SourceCamel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13366,6 +14708,7 @@ class SourceCamel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13411,6 +14754,7 @@ class SourceCamel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13454,15 +14798,20 @@ class SourceCamel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13503,6 +14852,7 @@ class SourceCamel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13537,6 +14887,7 @@ class SourceCamel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13556,6 +14907,7 @@ class SourceCamel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13588,12 +14940,15 @@ class SourceCamel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceCamel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceCamel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::settings", callback: (($obj: SourceCamel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::settings", callback: (($obj: SourceCamel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceCamel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceCamel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13615,6 +14970,8 @@ class SourceCamel {
      * provides a way for the calendar and address book components of such a
      * package to generate an #ESourceCamel subtype for its #CamelSettings
      * subtype without having to load all available #CamelProvider modules.
+     * @param protocol a #CamelProvider protocol
+     * @param settings_type a subtype of #CamelSettings
      */
     static generate_subtype(protocol: string, settings_type: GObject.Type): GObject.Type
     /**
@@ -13624,6 +14981,7 @@ class SourceCamel {
      * 
      * For example, given a protocol named "imap" the function would return
      * "Imap Backend".
+     * @param protocol a #CamelProvider protocol
      */
     static get_extension_name(protocol: string): string
     /**
@@ -13632,6 +14990,7 @@ class SourceCamel {
      * 
      * For example, given a protocol named "imap" the function would return
      * "ESourceCamelImap".
+     * @param protocol a #CamelProvider protocol
      */
     static get_type_name(protocol: string): string
     /**
@@ -13663,8 +15022,10 @@ class SourceCollection {
     mail_enabled: boolean
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceCollection */
     /**
      * Thread-safe variation of e_source_collection_get_calendar_url().
@@ -13734,6 +15095,7 @@ class SourceCollection {
     /**
      * Sets whether the collection backend allows a user to rename child
      * sources. It is meant mainly for GUI. The default is %FALSE.
+     * @param allow_sources_rename whether mail sources should be enabled
      */
     set_allow_sources_rename(allow_sources_rename: boolean): void
     /**
@@ -13746,6 +15108,7 @@ class SourceCollection {
      * Calling this function from a registry service client has no effect until
      * the change is submitted to the registry service through e_source_write(),
      * but there should rarely be any need for clients to call this.
+     * @param calendar_enabled whether calendar sources should be enabled
      */
     set_calendar_enabled(calendar_enabled: boolean): void
     /**
@@ -13754,6 +15117,7 @@ class SourceCollection {
      * The internal copy of `calendar_url` is automatically stripped of leading
      * and trailing whitespace. If the resulting string is empty, %NULL is set
      * instead.
+     * @param calendar_url calendar top URL, or %NULL
      */
     set_calendar_url(calendar_url?: string | null): void
     /**
@@ -13766,6 +15130,7 @@ class SourceCollection {
      * Calling this function from a registry service client has no effect until
      * the change is submitted to the registry service through e_source_write(),
      * but there should rarely be any need for clients to call this.
+     * @param contacts_enabled whether address book sources should be enabled
      */
     set_contacts_enabled(contacts_enabled: boolean): void
     /**
@@ -13774,6 +15139,7 @@ class SourceCollection {
      * The internal copy of `contacts_url` is automatically stripped of leading
      * and trailing whitespace. If the resulting string is empty, %NULL is set
      * instead.
+     * @param contacts_url contacts top URL, or %NULL
      */
     set_contacts_url(contacts_url?: string | null): void
     /**
@@ -13783,6 +15149,7 @@ class SourceCollection {
      * The internal copy of `identity` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is
      * set instead.
+     * @param identity the collection identity, or %NULL
      */
     set_identity(identity?: string | null): void
     /**
@@ -13795,6 +15162,7 @@ class SourceCollection {
      * Calling this function from a registry service client has no effect until
      * the changes is submitted to the registry service through e_source_write(),
      * but there should rarely be any need for clients to call this.
+     * @param mail_enabled whether mail sources should be enabled
      */
     set_mail_enabled(mail_enabled: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
@@ -13815,6 +15183,7 @@ class SourceCollection {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -13877,6 +15246,10 @@ class SourceCollection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13887,6 +15260,12 @@ class SourceCollection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13910,6 +15289,7 @@ class SourceCollection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13929,11 +15309,14 @@ class SourceCollection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13941,6 +15324,8 @@ class SourceCollection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13958,6 +15343,7 @@ class SourceCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14003,6 +15389,7 @@ class SourceCollection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14046,15 +15433,20 @@ class SourceCollection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14095,6 +15487,7 @@ class SourceCollection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14129,6 +15522,7 @@ class SourceCollection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14148,6 +15542,7 @@ class SourceCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14180,6 +15575,7 @@ class SourceCollection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceCollection, pspec: GObject.ParamSpec) => void)): number
@@ -14200,6 +15596,8 @@ class SourceCollection {
     connect_after(sigName: "notify::mail-enabled", callback: (($obj: SourceCollection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::backend-name", callback: (($obj: SourceCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceCollection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceCollection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceCollection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -14216,8 +15614,10 @@ interface SourceContacts_ConstructProps extends SourceExtension_ConstructProps {
 class SourceContacts {
     /* Properties of EDataServer-1.2.EDataServer.SourceContacts */
     include_me: boolean
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceContacts */
     get_include_me(): boolean
     set_include_me(include_me: boolean): void
@@ -14281,6 +15681,10 @@ class SourceContacts {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14291,6 +15695,12 @@ class SourceContacts {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14314,6 +15724,7 @@ class SourceContacts {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14333,11 +15744,14 @@ class SourceContacts {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14345,6 +15759,8 @@ class SourceContacts {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14362,6 +15778,7 @@ class SourceContacts {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14407,6 +15824,7 @@ class SourceContacts {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14450,15 +15868,20 @@ class SourceContacts {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14499,6 +15922,7 @@ class SourceContacts {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14533,6 +15957,7 @@ class SourceContacts {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14552,6 +15977,7 @@ class SourceContacts {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14584,12 +16010,15 @@ class SourceContacts {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceContacts, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceContacts, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::include-me", callback: (($obj: SourceContacts, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::include-me", callback: (($obj: SourceContacts, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceContacts, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceContacts, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -14607,17 +16036,24 @@ interface SourceCredentialsProvider_ConstructProps extends GObject.Object_Constr
     registry?: GObject.Object
 }
 class SourceCredentialsProvider {
+    /* Properties of EDataServer-1.2.EDataServer.SourceCredentialsProvider */
+    /**
+     * The Source Registry object, which can be either #ESourceregistry or #ESourceRegistryServer.
+     */
+    readonly registry: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceCredentialsProvider */
     /**
      * Returns whether a credentials prompt can be shown for the `source`.
+     * @param source an #ESource
      */
     can_prompt(source: Source): boolean
     /**
      * Returns whether the `source` can store its credentials. When %FALSE is returned,
      * an attempt to call e_source_credentials_provider_store() or
      * e_source_credentials_provider_store_sync() will fail for this `source`.
+     * @param source an #ESource
      */
     can_store(source: Source): boolean
     /**
@@ -14626,18 +16062,24 @@ class SourceCredentialsProvider {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_credentials_provider_delete_finish() to get the result
      * of the operation.
+     * @param source an #ESource, to lookup credentials for
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     delete(source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_credentials_provider_delete().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     delete_finish(result: Gio.AsyncResult): boolean
     /**
      * Deletes any previously stored credentials for `source`.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource, to store credentials for
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -14646,18 +16088,24 @@ class SourceCredentialsProvider {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_credentials_provider_lookup_finish() to get the result
      * of the operation.
+     * @param source an #ESource, to lookup credentials for
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     lookup(source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_credentials_provider_lookup().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     lookup_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
     /**
      * Looks up the credentials for `source`.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource, to lookup credentials for
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lookup_sync(source: Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
     /**
@@ -14666,6 +16114,7 @@ class SourceCredentialsProvider {
      * are usually stored on the collection source, thus shared between child
      * sources. When ther eis no such parent source, a %NULL is returned, which
      * means the `source` holds credentials for itself.
+     * @param source an #ESource
      */
     ref_credentials_source(source: Source): Source | null
     /**
@@ -14674,11 +16123,13 @@ class SourceCredentialsProvider {
     ref_registry(): GObject.Object
     /**
      * Returns referenced #ESource with the given `uid,` or %NULL, when it could not be found.
+     * @param uid an #ESource UID
      */
     ref_source(uid: string): Source | null
     /**
      * Registers a credentials provider implementation and adds its own reference on
      * the `provider_impl`.
+     * @param provider_impl an #ESourceCredentialsProviderImpl
      */
     register_impl(provider_impl: SourceCredentialsProviderImpl): boolean
     /**
@@ -14689,12 +16140,18 @@ class SourceCredentialsProvider {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_credentials_provider_store_finish() to get the result
      * of the operation.
+     * @param source an #ESource, to lookup credentials for
+     * @param credentials an #ENamedParameters with credentials to store
+     * @param permanently store permanently or just for the session
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     store(source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_credentials_provider_store().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     store_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14703,12 +16160,17 @@ class SourceCredentialsProvider {
      * are stored for each `source`.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource, to store credentials for
+     * @param credentials an #ENamedParameters with credentials to store
+     * @param permanently store permanently or just for the session
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Unregisters previously registered `provider_impl` with
      * e_source_credentials_provider_register_impl(). Function does nothing,
      * when the `provider_impl` is not registered.
+     * @param provider_impl an #ESourceCredentialsProviderImpl
      */
     unregister_impl(provider_impl: SourceCredentialsProviderImpl): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -14746,6 +16208,10 @@ class SourceCredentialsProvider {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14756,6 +16222,12 @@ class SourceCredentialsProvider {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14779,6 +16251,7 @@ class SourceCredentialsProvider {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14798,11 +16271,14 @@ class SourceCredentialsProvider {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14810,6 +16286,8 @@ class SourceCredentialsProvider {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14827,6 +16305,7 @@ class SourceCredentialsProvider {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14872,6 +16351,7 @@ class SourceCredentialsProvider {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14915,15 +16395,20 @@ class SourceCredentialsProvider {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14964,6 +16449,7 @@ class SourceCredentialsProvider {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14998,11 +16484,13 @@ class SourceCredentialsProvider {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServer-1.2.EDataServer.SourceCredentialsProvider */
     /**
      * Returns referenced #ESource with the given `uid,` or %NULL, when it could not be found.
+     * @param uid an #ESource UID
      */
     vfunc_ref_source(uid: string): Source | null
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15022,6 +16510,7 @@ class SourceCredentialsProvider {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15054,10 +16543,13 @@ class SourceCredentialsProvider {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceCredentialsProvider, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceCredentialsProvider, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::registry", callback: (($obj: SourceCredentialsProvider, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::registry", callback: (($obj: SourceCredentialsProvider, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15072,11 +16564,14 @@ class SourceCredentialsProvider {
 interface SourceCredentialsProviderImpl_ConstructProps extends Extension_ConstructProps {
 }
 class SourceCredentialsProviderImpl {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceCredentialsProviderImpl */
     /**
      * Returns whether the `provider_impl` can process credentials for the `source`.
+     * @param source an #ESource
      */
     can_process(source: Source): boolean
     /**
@@ -15093,6 +16588,8 @@ class SourceCredentialsProviderImpl {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -15108,6 +16605,8 @@ class SourceCredentialsProviderImpl {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lookup_sync(source: Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
     /**
@@ -15116,6 +16615,10 @@ class SourceCredentialsProviderImpl {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param credentials an #ENamedParameters containing credentials to store
+     * @param permanently whether to store credentials permanently, or for the current session only
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of EDataServer-1.2.EDataServer.Extension */
@@ -15158,6 +16661,10 @@ class SourceCredentialsProviderImpl {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15168,6 +16675,12 @@ class SourceCredentialsProviderImpl {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15191,6 +16704,7 @@ class SourceCredentialsProviderImpl {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15210,11 +16724,14 @@ class SourceCredentialsProviderImpl {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15222,6 +16739,8 @@ class SourceCredentialsProviderImpl {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15239,6 +16758,7 @@ class SourceCredentialsProviderImpl {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15284,6 +16804,7 @@ class SourceCredentialsProviderImpl {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15327,15 +16848,20 @@ class SourceCredentialsProviderImpl {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15376,6 +16902,7 @@ class SourceCredentialsProviderImpl {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15410,11 +16937,13 @@ class SourceCredentialsProviderImpl {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServer-1.2.EDataServer.SourceCredentialsProviderImpl */
     /**
      * Returns whether the `provider_impl` can process credentials for the `source`.
+     * @param source an #ESource
      */
     vfunc_can_process(source: Source): boolean
     /**
@@ -15431,6 +16960,8 @@ class SourceCredentialsProviderImpl {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -15442,6 +16973,8 @@ class SourceCredentialsProviderImpl {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_lookup_sync(source: Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
     /**
@@ -15450,6 +16983,10 @@ class SourceCredentialsProviderImpl {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param credentials an #ENamedParameters containing credentials to store
+     * @param permanently whether to store credentials permanently, or for the current session only
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15469,6 +17006,7 @@ class SourceCredentialsProviderImpl {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15501,10 +17039,13 @@ class SourceCredentialsProviderImpl {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceCredentialsProviderImpl, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceCredentialsProviderImpl, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: SourceCredentialsProviderImpl, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: SourceCredentialsProviderImpl, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15517,11 +17058,14 @@ class SourceCredentialsProviderImpl {
 interface SourceCredentialsProviderImplOAuth2_ConstructProps extends SourceCredentialsProviderImpl_ConstructProps {
 }
 class SourceCredentialsProviderImplOAuth2 {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceCredentialsProviderImpl */
     /**
      * Returns whether the `provider_impl` can process credentials for the `source`.
+     * @param source an #ESource
      */
     can_process(source: Source): boolean
     /**
@@ -15538,6 +17082,8 @@ class SourceCredentialsProviderImplOAuth2 {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -15553,6 +17099,8 @@ class SourceCredentialsProviderImplOAuth2 {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lookup_sync(source: Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
     /**
@@ -15561,6 +17109,10 @@ class SourceCredentialsProviderImplOAuth2 {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param credentials an #ENamedParameters containing credentials to store
+     * @param permanently whether to store credentials permanently, or for the current session only
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of EDataServer-1.2.EDataServer.Extension */
@@ -15603,6 +17155,10 @@ class SourceCredentialsProviderImplOAuth2 {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15613,6 +17169,12 @@ class SourceCredentialsProviderImplOAuth2 {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15636,6 +17198,7 @@ class SourceCredentialsProviderImplOAuth2 {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15655,11 +17218,14 @@ class SourceCredentialsProviderImplOAuth2 {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15667,6 +17233,8 @@ class SourceCredentialsProviderImplOAuth2 {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15684,6 +17252,7 @@ class SourceCredentialsProviderImplOAuth2 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15729,6 +17298,7 @@ class SourceCredentialsProviderImplOAuth2 {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15772,15 +17342,20 @@ class SourceCredentialsProviderImplOAuth2 {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15821,6 +17396,7 @@ class SourceCredentialsProviderImplOAuth2 {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15855,11 +17431,13 @@ class SourceCredentialsProviderImplOAuth2 {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServer-1.2.EDataServer.SourceCredentialsProviderImpl */
     /**
      * Returns whether the `provider_impl` can process credentials for the `source`.
+     * @param source an #ESource
      */
     vfunc_can_process(source: Source): boolean
     /**
@@ -15876,6 +17454,8 @@ class SourceCredentialsProviderImplOAuth2 {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -15887,6 +17467,8 @@ class SourceCredentialsProviderImplOAuth2 {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_lookup_sync(source: Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
     /**
@@ -15895,6 +17477,10 @@ class SourceCredentialsProviderImplOAuth2 {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param credentials an #ENamedParameters containing credentials to store
+     * @param permanently whether to store credentials permanently, or for the current session only
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15914,6 +17500,7 @@ class SourceCredentialsProviderImplOAuth2 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15946,10 +17533,13 @@ class SourceCredentialsProviderImplOAuth2 {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceCredentialsProviderImplOAuth2, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceCredentialsProviderImplOAuth2, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: SourceCredentialsProviderImplOAuth2, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: SourceCredentialsProviderImplOAuth2, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15962,11 +17552,14 @@ class SourceCredentialsProviderImplOAuth2 {
 interface SourceCredentialsProviderImplPassword_ConstructProps extends SourceCredentialsProviderImpl_ConstructProps {
 }
 class SourceCredentialsProviderImplPassword {
+    /* Properties of EDataServer-1.2.EDataServer.Extension */
+    readonly extensible: Extensible
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceCredentialsProviderImpl */
     /**
      * Returns whether the `provider_impl` can process credentials for the `source`.
+     * @param source an #ESource
      */
     can_process(source: Source): boolean
     /**
@@ -15983,6 +17576,8 @@ class SourceCredentialsProviderImplPassword {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -15998,6 +17593,8 @@ class SourceCredentialsProviderImplPassword {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lookup_sync(source: Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
     /**
@@ -16006,6 +17603,10 @@ class SourceCredentialsProviderImplPassword {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param credentials an #ENamedParameters containing credentials to store
+     * @param permanently whether to store credentials permanently, or for the current session only
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of EDataServer-1.2.EDataServer.Extension */
@@ -16048,6 +17649,10 @@ class SourceCredentialsProviderImplPassword {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16058,6 +17663,12 @@ class SourceCredentialsProviderImplPassword {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16081,6 +17692,7 @@ class SourceCredentialsProviderImplPassword {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16100,11 +17712,14 @@ class SourceCredentialsProviderImplPassword {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16112,6 +17727,8 @@ class SourceCredentialsProviderImplPassword {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16129,6 +17746,7 @@ class SourceCredentialsProviderImplPassword {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16174,6 +17792,7 @@ class SourceCredentialsProviderImplPassword {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16217,15 +17836,20 @@ class SourceCredentialsProviderImplPassword {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16266,6 +17890,7 @@ class SourceCredentialsProviderImplPassword {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16300,11 +17925,13 @@ class SourceCredentialsProviderImplPassword {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServer-1.2.EDataServer.SourceCredentialsProviderImpl */
     /**
      * Returns whether the `provider_impl` can process credentials for the `source`.
+     * @param source an #ESource
      */
     vfunc_can_process(source: Source): boolean
     /**
@@ -16321,6 +17948,8 @@ class SourceCredentialsProviderImplPassword {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -16332,6 +17961,8 @@ class SourceCredentialsProviderImplPassword {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_lookup_sync(source: Source, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
     /**
@@ -16340,6 +17971,10 @@ class SourceCredentialsProviderImplPassword {
      * Default implementation returns %FALSE and sets #G_IO_ERROR_NOT_SUPPORTED error.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param source an #ESource
+     * @param credentials an #ENamedParameters containing credentials to store
+     * @param permanently whether to store credentials permanently, or for the current session only
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16359,6 +17994,7 @@ class SourceCredentialsProviderImplPassword {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16391,10 +18027,13 @@ class SourceCredentialsProviderImplPassword {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceCredentialsProviderImplPassword, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceCredentialsProviderImplPassword, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extensible", callback: (($obj: SourceCredentialsProviderImplPassword, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensible", callback: (($obj: SourceCredentialsProviderImplPassword, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -16409,8 +18048,10 @@ interface SourceExtension_ConstructProps extends GObject.Object_ConstructProps {
     source?: Source
 }
 class SourceExtension {
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
     /**
      * Returns the #ESource instance to which `extension` belongs.
@@ -16471,6 +18112,10 @@ class SourceExtension {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16481,6 +18126,12 @@ class SourceExtension {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16504,6 +18155,7 @@ class SourceExtension {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16523,11 +18175,14 @@ class SourceExtension {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16535,6 +18190,8 @@ class SourceExtension {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16552,6 +18209,7 @@ class SourceExtension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16597,6 +18255,7 @@ class SourceExtension {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16640,15 +18299,20 @@ class SourceExtension {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16689,6 +18353,7 @@ class SourceExtension {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16723,6 +18388,7 @@ class SourceExtension {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16742,6 +18408,7 @@ class SourceExtension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16774,10 +18441,13 @@ class SourceExtension {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceExtension, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceExtension, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::source", callback: (($obj: SourceExtension, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceExtension, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -16802,8 +18472,10 @@ class SourceGoa {
     calendar_url: string
     contacts_url: string
     name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceGoa */
     /**
      * Thread-safe variation of e_source_goa_get_account_id().
@@ -16876,6 +18548,7 @@ class SourceGoa {
      * The internal copy of `account_id` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param account_id the associated GNOME Online Account ID, or %NULL
      */
     set_account_id(account_id?: string | null): void
     /**
@@ -16885,6 +18558,7 @@ class SourceGoa {
      * The internal copy of `address` is automatically stripped of leading
      * and trailing whitespace. If the resulting string is empty, %NULL is set
      * instead.
+     * @param address the associated GNOME Online Account's Address, or %NULL
      */
     set_address(address?: string | null): void
     /**
@@ -16894,6 +18568,7 @@ class SourceGoa {
      * The internal copy of `calendar_url` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param calendar_url the associated GNOME Online Account                calendar URL, or %NULL
      */
     set_calendar_url(calendar_url?: string | null): void
     /**
@@ -16903,6 +18578,7 @@ class SourceGoa {
      * The internal copy of `contacts_url` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param contacts_url the associated GNOME Online Account                contacts URL, or %NULL
      */
     set_contacts_url(contacts_url?: string | null): void
     /**
@@ -16912,6 +18588,7 @@ class SourceGoa {
      * The internal copy of `name` is automatically stripped of leading
      * and trailing whitespace. If the resulting string is empty, %NULL is set
      * instead.
+     * @param name the associated GNOME Online Account's Name, or %NULL
      */
     set_name(name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -16974,6 +18651,10 @@ class SourceGoa {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16984,6 +18665,12 @@ class SourceGoa {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17007,6 +18694,7 @@ class SourceGoa {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17026,11 +18714,14 @@ class SourceGoa {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17038,6 +18729,8 @@ class SourceGoa {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17055,6 +18748,7 @@ class SourceGoa {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17100,6 +18794,7 @@ class SourceGoa {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17143,15 +18838,20 @@ class SourceGoa {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17192,6 +18892,7 @@ class SourceGoa {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17226,6 +18927,7 @@ class SourceGoa {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17245,6 +18947,7 @@ class SourceGoa {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17277,6 +18980,7 @@ class SourceGoa {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceGoa, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceGoa, pspec: GObject.ParamSpec) => void)): number
@@ -17291,6 +18995,8 @@ class SourceGoa {
     connect_after(sigName: "notify::contacts-url", callback: (($obj: SourceGoa, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::name", callback: (($obj: SourceGoa, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: SourceGoa, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceGoa, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceGoa, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -17319,8 +19025,10 @@ class SourceLDAP {
     root_dn: string
     scope: SourceLDAPScope
     security: SourceLDAPSecurity
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceLDAP */
     dup_filter(): string
     dup_root_dn(): string
@@ -17398,6 +19106,10 @@ class SourceLDAP {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17408,6 +19120,12 @@ class SourceLDAP {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17431,6 +19149,7 @@ class SourceLDAP {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17450,11 +19169,14 @@ class SourceLDAP {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17462,6 +19184,8 @@ class SourceLDAP {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17479,6 +19203,7 @@ class SourceLDAP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17524,6 +19249,7 @@ class SourceLDAP {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17567,15 +19293,20 @@ class SourceLDAP {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17616,6 +19347,7 @@ class SourceLDAP {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17650,6 +19382,7 @@ class SourceLDAP {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17669,6 +19402,7 @@ class SourceLDAP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17701,6 +19435,7 @@ class SourceLDAP {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceLDAP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceLDAP, pspec: GObject.ParamSpec) => void)): number
@@ -17719,6 +19454,8 @@ class SourceLDAP {
     connect_after(sigName: "notify::scope", callback: (($obj: SourceLDAP, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::security", callback: (($obj: SourceLDAP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::security", callback: (($obj: SourceLDAP, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceLDAP, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceLDAP, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -17739,8 +19476,10 @@ class SourceLocal {
     custom_file: Gio.File
     email_address: string
     writable: boolean
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceLocal */
     /**
      * A thread safe variant to get a custom file being set on the `extension`.
@@ -17772,6 +19511,7 @@ class SourceLocal {
     get_writable(): boolean
     /**
      * Set, or unset, when using %NULL, the custom file for the `extension`.
+     * @param custom_file a #GFile, or %NULL
      */
     set_custom_file(custom_file?: Gio.File | null): void
     /**
@@ -17780,12 +19520,14 @@ class SourceLocal {
      * The internal copy of `email_address` is automatically stripped of leading
      * and trailing whitespace. If the resulting string is empty, %NULL is set
      * instead.
+     * @param email_address an email address, or %NULL
      */
     set_email_address(email_address?: string | null): void
     /**
      * Set whether the custom file should be opened in writable mode.
      * The default is %TRUE. The file can be still opened for read-only,
      * for example when the access to the file is read-only.
+     * @param writable value to set
      */
     set_writable(writable: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -17848,6 +19590,10 @@ class SourceLocal {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17858,6 +19604,12 @@ class SourceLocal {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17881,6 +19633,7 @@ class SourceLocal {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17900,11 +19653,14 @@ class SourceLocal {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17912,6 +19668,8 @@ class SourceLocal {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17929,6 +19687,7 @@ class SourceLocal {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17974,6 +19733,7 @@ class SourceLocal {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18017,15 +19777,20 @@ class SourceLocal {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18066,6 +19831,7 @@ class SourceLocal {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18100,6 +19866,7 @@ class SourceLocal {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18119,6 +19886,7 @@ class SourceLocal {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18151,6 +19919,7 @@ class SourceLocal {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceLocal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceLocal, pspec: GObject.ParamSpec) => void)): number
@@ -18161,6 +19930,8 @@ class SourceLocal {
     connect_after(sigName: "notify::email-address", callback: (($obj: SourceLocal, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::writable", callback: (($obj: SourceLocal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::writable", callback: (($obj: SourceLocal, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceLocal, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceLocal, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -18177,8 +19948,10 @@ interface SourceMDN_ConstructProps extends SourceExtension_ConstructProps {
 class SourceMDN {
     /* Properties of EDataServer-1.2.EDataServer.SourceMDN */
     response_policy: MdnResponsePolicy
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceMDN */
     /**
      * Returns the policy for this mail account on responding to Message
@@ -18188,6 +19961,7 @@ class SourceMDN {
     /**
      * Sets the policy for this mail account on responding to Message
      * Disposition Notification requests when receiving mail messages.
+     * @param response_policy the #EMdnResponsePolicy
      */
     set_response_policy(response_policy: MdnResponsePolicy): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -18250,6 +20024,10 @@ class SourceMDN {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18260,6 +20038,12 @@ class SourceMDN {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18283,6 +20067,7 @@ class SourceMDN {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18302,11 +20087,14 @@ class SourceMDN {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18314,6 +20102,8 @@ class SourceMDN {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18331,6 +20121,7 @@ class SourceMDN {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18376,6 +20167,7 @@ class SourceMDN {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18419,15 +20211,20 @@ class SourceMDN {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18468,6 +20265,7 @@ class SourceMDN {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18502,6 +20300,7 @@ class SourceMDN {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18521,6 +20320,7 @@ class SourceMDN {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18553,12 +20353,15 @@ class SourceMDN {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceMDN, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceMDN, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::response-policy", callback: (($obj: SourceMDN, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::response-policy", callback: (($obj: SourceMDN, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceMDN, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceMDN, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -18585,8 +20388,10 @@ class SourceMailAccount {
     needs_initial_setup: boolean
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceMailAccount */
     /**
      * Thread-safe variation of e_source_mail_account_get_archive_folder().
@@ -18625,27 +20430,32 @@ class SourceMailAccount {
      * The internal copy of `archive_folder` is automatically stripped of leading
      * and trailing whitespace. If the resulting string is empty, %NULL is set
      * instead.
+     * @param archive_folder an identifier for the archive folder, or %NULL
      */
     set_archive_folder(archive_folder?: string | null): void
     /**
      * Sets the #ESource:uid of the #ESource that describes the mail
      * identity to be used for this account.
+     * @param identity_uid the mail identity #ESource:uid, or %NULL
      */
     set_identity_uid(identity_uid?: string | null): void
     /**
      * Sets whether the messages in this account should be marked
      * as seen automatically. An inconsistent state means to use
      * global option.
+     * @param mark_seen an #EThreeState as the value to set
      */
     set_mark_seen(mark_seen: ThreeState): void
     /**
      * Sets the `timeout` in milliseconds for marking messages
      * as seen in this account. Whether the timeout is used
      * depends on e_source_mail_account_get_mark_seen().
+     * @param timeout a timeout in milliseconds
      */
     set_mark_seen_timeout(timeout: number): void
     /**
      * Sets whether the account needs to run its initial setup.
+     * @param needs_initial_setup value to set
      */
     set_needs_initial_setup(needs_initial_setup: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
@@ -18666,6 +20476,7 @@ class SourceMailAccount {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -18728,6 +20539,10 @@ class SourceMailAccount {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18738,6 +20553,12 @@ class SourceMailAccount {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18761,6 +20582,7 @@ class SourceMailAccount {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18780,11 +20602,14 @@ class SourceMailAccount {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18792,6 +20617,8 @@ class SourceMailAccount {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18809,6 +20636,7 @@ class SourceMailAccount {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18854,6 +20682,7 @@ class SourceMailAccount {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18897,15 +20726,20 @@ class SourceMailAccount {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18946,6 +20780,7 @@ class SourceMailAccount {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18980,6 +20815,7 @@ class SourceMailAccount {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18999,6 +20835,7 @@ class SourceMailAccount {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19031,6 +20868,7 @@ class SourceMailAccount {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceMailAccount, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceMailAccount, pspec: GObject.ParamSpec) => void)): number
@@ -19047,6 +20885,8 @@ class SourceMailAccount {
     connect_after(sigName: "notify::needs-initial-setup", callback: (($obj: SourceMailAccount, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::backend-name", callback: (($obj: SourceMailAccount, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceMailAccount, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceMailAccount, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceMailAccount, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -19079,8 +20919,10 @@ class SourceMailComposition {
     start_bottom: ThreeState
     templates_folder: string
     top_signature: ThreeState
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceMailComposition */
     /**
      * Thread-safe variation of e_source_mail_composition_get_bcc().
@@ -19177,12 +21019,14 @@ class SourceMailComposition {
      * Sets the recipients which should automatically be added to the blind
      * carbon-copy (Bcc) list when composing a new mail message.  The recipient
      * strings should be of the form "Full Name &lt;email-address&gt;".
+     * @param bcc a %NULL-terminated string array of Bcc    recipients
      */
     set_bcc(bcc: string[]): void
     /**
      * Sets the recipients which should automatically be added to the carbon
      * copy (Cc) list when composing a new mail message.  The recipient strings
      * should be of the form "Full Name &lt;email-address&gt;".
+     * @param cc a %NULL-terminated string array of Cc    recipients
      */
     set_cc(cc: string[]): void
     /**
@@ -19192,6 +21036,7 @@ class SourceMailComposition {
      * The internal copy of `drafts_folder` is automatically stripped of
      * leading and trailing whitespace.  If the resulting string is empty,
      * %NULL is set instead.
+     * @param drafts_folder an identifier for the preferred drafts                 folder, or %NULL
      */
     set_drafts_folder(drafts_folder?: string | null): void
     /**
@@ -19201,23 +21046,27 @@ class SourceMailComposition {
      * The internal copy of `language` is automatically stripped of
      * leading and trailing whitespace.  If the resulting string is empty,
      * %NULL is set instead.
+     * @param language an identifier for the preferred language, or %NULL
      */
     set_language(language?: string | null): void
     /**
      * Sets preferred reply style to be used when replying
      * using the associated account. To unset the preference,
      * use the %E_SOURCE_MAIL_COMPOSITION_REPLY_STYLE_DEFAULT.
+     * @param reply_style an #ESourceMailCompositionReplyStyle
      */
     set_reply_style(reply_style: SourceMailCompositionReplyStyle): void
     /**
      * Sets whether outgoing iMIP messages such as meeting requests should
      * also be signed.  This is primarily intended as a workaround for certain
      * versions of Microsoft Outlook which can't handle signed iMIP messages.
+     * @param sign_imip whether outgoing iMIP messages should be signed
      */
     set_sign_imip(sign_imip: boolean): void
     /**
      * Sets whether start bottom when replying or forwarding using the associated account.
      * To unset the preference, use the %E_THREE_STATE_INCONSISTENT.
+     * @param start_bottom an #EThreeState
      */
     set_start_bottom(start_bottom: ThreeState): void
     /**
@@ -19227,11 +21076,13 @@ class SourceMailComposition {
      * The internal copy of `templates_folder` is automatically stripped of
      * leading and trailing whitespace.  If the resulting string is empty,
      * %NULL is set instead.
+     * @param templates_folder an identifier for the preferred templates                    folder, or %NULL
      */
     set_templates_folder(templates_folder?: string | null): void
     /**
      * Sets whether place signature at top when replying or forwarding using the associated account.
      * To unset the preference, use the %E_THREE_STATE_INCONSISTENT.
+     * @param top_signature an #EThreeState
      */
     set_top_signature(top_signature: ThreeState): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -19294,6 +21145,10 @@ class SourceMailComposition {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19304,6 +21159,12 @@ class SourceMailComposition {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19327,6 +21188,7 @@ class SourceMailComposition {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19346,11 +21208,14 @@ class SourceMailComposition {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19358,6 +21223,8 @@ class SourceMailComposition {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19375,6 +21242,7 @@ class SourceMailComposition {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19420,6 +21288,7 @@ class SourceMailComposition {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19463,15 +21332,20 @@ class SourceMailComposition {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19512,6 +21386,7 @@ class SourceMailComposition {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19546,6 +21421,7 @@ class SourceMailComposition {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19565,6 +21441,7 @@ class SourceMailComposition {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19597,6 +21474,7 @@ class SourceMailComposition {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceMailComposition, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceMailComposition, pspec: GObject.ParamSpec) => void)): number
@@ -19619,6 +21497,8 @@ class SourceMailComposition {
     connect_after(sigName: "notify::templates-folder", callback: (($obj: SourceMailComposition, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::top-signature", callback: (($obj: SourceMailComposition, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::top-signature", callback: (($obj: SourceMailComposition, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceMailComposition, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceMailComposition, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -19645,8 +21525,10 @@ class SourceMailIdentity {
     organization: string
     reply_to: string
     signature_uid: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceMailIdentity */
     /**
      * Thread-safe variation of e_source_mail_identity_get_address().
@@ -19741,6 +21623,7 @@ class SourceMailIdentity {
      * The internal copy of `address` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param address the sender's email address, or %NULL
      */
     set_address(address?: string | null): void
     /**
@@ -19750,6 +21633,7 @@ class SourceMailIdentity {
      * The internal copy of `aliases` is automatically stripped of leading and
      * trailing whitespace. If the resulting string is empty, %NULL is set
      * instead.
+     * @param aliases the sender's email address aliases, or %NULL
      */
     set_aliases(aliases?: string | null): void
     /**
@@ -19757,6 +21641,7 @@ class SourceMailIdentity {
      * 
      * The internal copy of `name` is automatically stripped of leading and
      * trailing whitespace.
+     * @param name the sender's name, or %NULL
      */
     set_name(name?: string | null): void
     /**
@@ -19765,6 +21650,7 @@ class SourceMailIdentity {
      * The internal copy of `organization` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param organization the sender's organization, or %NULL
      */
     set_organization(organization?: string | null): void
     /**
@@ -19774,6 +21660,7 @@ class SourceMailIdentity {
      * The internal copy of `reply_to` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is
      * set instead.
+     * @param reply_to the sender's reply-to address, or %NULL
      */
     set_reply_to(reply_to?: string | null): void
     /**
@@ -19783,6 +21670,7 @@ class SourceMailIdentity {
      * convention is to set the #ESourceMailIdentity:signature-uid property
      * to "none".  In keeping with that convention, the property will be set
      * to "none" if `signature_uid` is %NULL or an empty string.
+     * @param signature_uid the sender's signature ID, or %NULL
      */
     set_signature_uid(signature_uid?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -19845,6 +21733,10 @@ class SourceMailIdentity {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19855,6 +21747,12 @@ class SourceMailIdentity {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19878,6 +21776,7 @@ class SourceMailIdentity {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19897,11 +21796,14 @@ class SourceMailIdentity {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19909,6 +21811,8 @@ class SourceMailIdentity {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19926,6 +21830,7 @@ class SourceMailIdentity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19971,6 +21876,7 @@ class SourceMailIdentity {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20014,15 +21920,20 @@ class SourceMailIdentity {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20063,6 +21974,7 @@ class SourceMailIdentity {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20097,6 +22009,7 @@ class SourceMailIdentity {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20116,6 +22029,7 @@ class SourceMailIdentity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20148,6 +22062,7 @@ class SourceMailIdentity {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceMailIdentity, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceMailIdentity, pspec: GObject.ParamSpec) => void)): number
@@ -20164,6 +22079,8 @@ class SourceMailIdentity {
     connect_after(sigName: "notify::reply-to", callback: (($obj: SourceMailIdentity, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::signature-uid", callback: (($obj: SourceMailIdentity, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::signature-uid", callback: (($obj: SourceMailIdentity, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceMailIdentity, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceMailIdentity, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -20181,8 +22098,10 @@ class SourceMailSignature {
     /* Properties of EDataServer-1.2.EDataServer.SourceMailSignature */
     readonly file: Gio.File
     mime_type: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceMailSignature */
     /**
      * Thread-safe variation of e_source_mail_signature_get_mime_type().
@@ -20217,6 +22136,7 @@ class SourceMailSignature {
      * The internal copy of `mime_type` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is
      * set instead.
+     * @param mime_type a MIME type, or %NULL
      */
     set_mime_type(mime_type?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -20279,6 +22199,10 @@ class SourceMailSignature {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20289,6 +22213,12 @@ class SourceMailSignature {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20312,6 +22242,7 @@ class SourceMailSignature {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20331,11 +22262,14 @@ class SourceMailSignature {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20343,6 +22277,8 @@ class SourceMailSignature {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20360,6 +22296,7 @@ class SourceMailSignature {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20405,6 +22342,7 @@ class SourceMailSignature {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20448,15 +22386,20 @@ class SourceMailSignature {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20497,6 +22440,7 @@ class SourceMailSignature {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20531,6 +22475,7 @@ class SourceMailSignature {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20550,6 +22495,7 @@ class SourceMailSignature {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20582,6 +22528,7 @@ class SourceMailSignature {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceMailSignature, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceMailSignature, pspec: GObject.ParamSpec) => void)): number
@@ -20590,6 +22537,8 @@ class SourceMailSignature {
     connect_after(sigName: "notify::file", callback: (($obj: SourceMailSignature, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::mime-type", callback: (($obj: SourceMailSignature, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mime-type", callback: (($obj: SourceMailSignature, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceMailSignature, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceMailSignature, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -20612,8 +22561,10 @@ class SourceMailSubmission {
     sent_folder: string
     transport_uid: string
     use_sent_folder: boolean
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceMailSubmission */
     /**
      * Thread-safe variation of e_source_mail_submission_get_sent_folder().
@@ -20648,6 +22599,7 @@ class SourceMailSubmission {
     /**
      * Sets whether save replies in the folder of the message
      * being replied to, instead of the Sent folder.
+     * @param replies_to_origin_folder new value
      */
     set_replies_to_origin_folder(replies_to_origin_folder: boolean): void
     /**
@@ -20657,15 +22609,18 @@ class SourceMailSubmission {
      * The internal copy of `sent_folder` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param sent_folder an identifier for the preferred sent folder,               or %NULL
      */
     set_sent_folder(sent_folder?: string | null): void
     /**
      * Sets the #ESource:uid of the #ESource that describes the mail
      * transport to be used for outgoing messages.
+     * @param transport_uid the mail transport #ESource:uid, or %NULL
      */
     set_transport_uid(transport_uid?: string | null): void
     /**
      * Sets whether save messages to the sent folder at all.
+     * @param use_sent_folder the value to set
      */
     set_use_sent_folder(use_sent_folder: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -20728,6 +22683,10 @@ class SourceMailSubmission {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20738,6 +22697,12 @@ class SourceMailSubmission {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20761,6 +22726,7 @@ class SourceMailSubmission {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20780,11 +22746,14 @@ class SourceMailSubmission {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20792,6 +22761,8 @@ class SourceMailSubmission {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20809,6 +22780,7 @@ class SourceMailSubmission {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20854,6 +22826,7 @@ class SourceMailSubmission {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20897,15 +22870,20 @@ class SourceMailSubmission {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20946,6 +22924,7 @@ class SourceMailSubmission {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20980,6 +22959,7 @@ class SourceMailSubmission {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20999,6 +22979,7 @@ class SourceMailSubmission {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21031,6 +23012,7 @@ class SourceMailSubmission {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceMailSubmission, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceMailSubmission, pspec: GObject.ParamSpec) => void)): number
@@ -21043,6 +23025,8 @@ class SourceMailSubmission {
     connect_after(sigName: "notify::transport-uid", callback: (($obj: SourceMailSubmission, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::use-sent-folder", callback: (($obj: SourceMailSubmission, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-sent-folder", callback: (($obj: SourceMailSubmission, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceMailSubmission, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceMailSubmission, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21057,8 +23041,10 @@ interface SourceMailTransport_ConstructProps extends SourceBackend_ConstructProp
 class SourceMailTransport {
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
     /**
      * Thread-safe variation of e_source_backend_get_backend_name().
@@ -21077,6 +23063,7 @@ class SourceMailTransport {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -21139,6 +23126,10 @@ class SourceMailTransport {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21149,6 +23140,12 @@ class SourceMailTransport {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21172,6 +23169,7 @@ class SourceMailTransport {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21191,11 +23189,14 @@ class SourceMailTransport {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21203,6 +23204,8 @@ class SourceMailTransport {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21220,6 +23223,7 @@ class SourceMailTransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21265,6 +23269,7 @@ class SourceMailTransport {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21308,15 +23313,20 @@ class SourceMailTransport {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21357,6 +23367,7 @@ class SourceMailTransport {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21391,6 +23402,7 @@ class SourceMailTransport {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21410,6 +23422,7 @@ class SourceMailTransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21442,12 +23455,15 @@ class SourceMailTransport {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceMailTransport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceMailTransport, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::backend-name", callback: (($obj: SourceMailTransport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceMailTransport, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceMailTransport, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceMailTransport, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21466,8 +23482,10 @@ class SourceMemoList {
     selected: boolean
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceSelectable */
     /**
      * Thread-safe variation of e_source_selectable_get_color().
@@ -21501,16 +23519,19 @@ class SourceMemoList {
      * The internal copy of `color` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param color a color specification, or %NULL
      */
     set_color(color?: string | null): void
     /**
      * Sets the sorting order for the #ESource to which `extension` belongs.
+     * @param order the sorting order
      */
     set_order(order: number): void
     /**
      * Sets the selected state for the #ESource to which `extension` belongs.
      * The selected state is often represented as a checkbox next to the data
      * source's display name in user interfaces.
+     * @param selected selected state
      */
     set_selected(selected: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
@@ -21531,6 +23552,7 @@ class SourceMemoList {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -21593,6 +23615,10 @@ class SourceMemoList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21603,6 +23629,12 @@ class SourceMemoList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21626,6 +23658,7 @@ class SourceMemoList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21645,11 +23678,14 @@ class SourceMemoList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21657,6 +23693,8 @@ class SourceMemoList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21674,6 +23712,7 @@ class SourceMemoList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21719,6 +23758,7 @@ class SourceMemoList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21762,15 +23802,20 @@ class SourceMemoList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21811,6 +23856,7 @@ class SourceMemoList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21845,6 +23891,7 @@ class SourceMemoList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21864,6 +23911,7 @@ class SourceMemoList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21896,6 +23944,7 @@ class SourceMemoList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceMemoList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceMemoList, pspec: GObject.ParamSpec) => void)): number
@@ -21908,6 +23957,8 @@ class SourceMemoList {
     connect_after(sigName: "notify::selected", callback: (($obj: SourceMemoList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::backend-name", callback: (($obj: SourceMemoList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceMemoList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceMemoList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceMemoList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21924,8 +23975,10 @@ interface SourceOffline_ConstructProps extends SourceExtension_ConstructProps {
 class SourceOffline {
     /* Properties of EDataServer-1.2.EDataServer.SourceOffline */
     stay_synchronized: boolean
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceOffline */
     /**
      * Returns whether data from a remote server should be cached locally
@@ -21937,6 +23990,7 @@ class SourceOffline {
      * Sets whether data from a remote server should be cached locally for
      * viewing while offline.  Backends are responsible for implementing
      * such caching.
+     * @param stay_synchronized whether data should be cached for offline
      */
     set_stay_synchronized(stay_synchronized: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -21999,6 +24053,10 @@ class SourceOffline {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22009,6 +24067,12 @@ class SourceOffline {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22032,6 +24096,7 @@ class SourceOffline {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22051,11 +24116,14 @@ class SourceOffline {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22063,6 +24131,8 @@ class SourceOffline {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22080,6 +24150,7 @@ class SourceOffline {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22125,6 +24196,7 @@ class SourceOffline {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22168,15 +24240,20 @@ class SourceOffline {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22217,6 +24294,7 @@ class SourceOffline {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22251,6 +24329,7 @@ class SourceOffline {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22270,6 +24349,7 @@ class SourceOffline {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22302,12 +24382,15 @@ class SourceOffline {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceOffline, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceOffline, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::stay-synchronized", callback: (($obj: SourceOffline, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stay-synchronized", callback: (($obj: SourceOffline, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceOffline, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceOffline, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -22336,8 +24419,10 @@ class SourceOpenPGP {
     prefer_inline: boolean
     sign_by_default: boolean
     signing_algorithm: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceOpenPGP */
     /**
      * Thread-safe variation of e_source_openpgp_get_key_id().
@@ -22388,15 +24473,18 @@ class SourceOpenPGP {
     /**
      * Sets whether to skip key validation and assume that used keys are
      * always fully trusted.
+     * @param always_trust whether used keys are always fully trusted
      */
     set_always_trust(always_trust: boolean): void
     /**
      * Sets whether to digitally encrypt outgoing messages by default using
      * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
+     * @param encrypt_by_default whether to encrypt outgoing messages by default
      */
     set_encrypt_by_default(encrypt_by_default: boolean): void
     /**
      * Sets whether to "encrypt-to-self" when sending encrypted messages.
+     * @param encrypt_to_self whether to "encrypt-to-self"
      */
     set_encrypt_to_self(encrypt_to_self: boolean): void
     /**
@@ -22405,15 +24493,18 @@ class SourceOpenPGP {
      * The internal copy of `key_id` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param key_id the key ID used to sign and encrypt messages
      */
     set_key_id(key_id: string): void
     /**
      * Sets whether to prefer inline sign/encrypt of the text/plain messages.
+     * @param prefer_inline whether to prefer inline sign/encrypt of the text/plain messages
      */
     set_prefer_inline(prefer_inline: boolean): void
     /**
      * Sets whether to digitally sign outgoing messages by default using
      * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
+     * @param sign_by_default whether to sign outgoing messages by default
      */
     set_sign_by_default(sign_by_default: boolean): void
     /**
@@ -22423,6 +24514,7 @@ class SourceOpenPGP {
      * The internal copy of `signing_algorithm` is automatically stripped of
      * leading and trailing whitespace.  If the resulting string is empty,
      * %NULL is set instead.
+     * @param signing_algorithm the signing algorithm for outgoing messages
      */
     set_signing_algorithm(signing_algorithm: string): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -22485,6 +24577,10 @@ class SourceOpenPGP {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22495,6 +24591,12 @@ class SourceOpenPGP {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22518,6 +24620,7 @@ class SourceOpenPGP {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22537,11 +24640,14 @@ class SourceOpenPGP {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22549,6 +24655,8 @@ class SourceOpenPGP {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22566,6 +24674,7 @@ class SourceOpenPGP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22611,6 +24720,7 @@ class SourceOpenPGP {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22654,15 +24764,20 @@ class SourceOpenPGP {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22703,6 +24818,7 @@ class SourceOpenPGP {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22737,6 +24853,7 @@ class SourceOpenPGP {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22756,6 +24873,7 @@ class SourceOpenPGP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22788,6 +24906,7 @@ class SourceOpenPGP {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
@@ -22806,6 +24925,8 @@ class SourceOpenPGP {
     connect_after(sigName: "notify::sign-by-default", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::signing-algorithm", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::signing-algorithm", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -22848,8 +24969,10 @@ class SourceProxy {
     method: ProxyMethod
     socks_host: string
     socks_port: number
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceProxy */
     /**
      * Thread-safe variation of e_source_proxy_get_autoconfig_url().
@@ -22995,36 +25118,43 @@ class SourceProxy {
      * Sets the URL that provides proxy configuration values.  When the
      * `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_AUTO,` this URL
      * is used to look up proxy information for all protocols.
+     * @param autoconfig_url an autoconfiguration URL
      */
     set_autoconfig_url(autoconfig_url: string): void
     /**
      * Sets the machine name to proxy FTP through when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param ftp_host FTP proxy host name
      */
     set_ftp_host(ftp_host: string): void
     /**
      * Sets the port on the machine defined by #ESourceProxy:ftp-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param ftp_port FTP proxy port
      */
     set_ftp_port(ftp_port: number): void
     /**
      * Sets the password to pass as authentication when doing HTTP proxying
      * and #ESourceProxy:http-use-auth is %TRUE.
+     * @param http_auth_password HTTP proxy password
      */
     set_http_auth_password(http_auth_password: string): void
     /**
      * Sets the user name to pass as authentication when doing HTTP proxying
      * and #ESourceProxy:http-use-auth is %TRUE.
+     * @param http_auth_user HTTP proxy username
      */
     set_http_auth_user(http_auth_user: string): void
     /**
      * Sets the machine name to proxy HTTP through when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param http_host HTTP proxy host name
      */
     set_http_host(http_host: string): void
     /**
      * Sets the port on the machine defined by #ESourceProxy:http-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param http_port HTTP proxy port
      */
     set_http_port(http_port: number): void
     /**
@@ -23034,16 +25164,19 @@ class SourceProxy {
      * The username/password combo is defined by #ESourceProxy:http-auth-user
      * and #ESourceProxy:http-auth-password, but only applies when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param http_use_auth whether to authenticate HTTP proxy connections
      */
     set_http_use_auth(http_use_auth: boolean): void
     /**
      * Sets the machine name to proxy secure HTTP through when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param https_host secure HTTP proxy host name
      */
     set_https_host(https_host: string): void
     /**
      * Sets the port on the machine defined by #ESourceProxy:https-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param https_port secure HTTP proxy port
      */
     set_https_port(https_port: number): void
     /**
@@ -23051,6 +25184,7 @@ class SourceProxy {
      * (if it is active).  The array elements can be hostnames, domains (using an
      * initial wildcard like *.foo.com), IP host addresses (both IPv4 and IPv6)
      * and network addresses with a netmask (something like 192.168.0.0/24).
+     * @param ignore_hosts a %NULL-terminated string array of hosts
      */
     set_ignore_hosts(ignore_hosts: string): void
     /**
@@ -23058,16 +25192,19 @@ class SourceProxy {
      * 
      * The proxy configuration method determines the behavior of
      * e_source_proxy_lookup().
+     * @param method the proxy configuration method
      */
     set_method(method: ProxyMethod): void
     /**
      * Sets the machine name to use as a SOCKS proxy when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param socks_host SOCKS proxy host name
      */
     set_socks_host(socks_host: string): void
     /**
      * Sets the port on the machine defined by #ESourceProxy:socks-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
+     * @param socks_port SOCKS proxy port
      */
     set_socks_port(socks_port: number): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -23130,6 +25267,10 @@ class SourceProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23140,6 +25281,12 @@ class SourceProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23163,6 +25310,7 @@ class SourceProxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23182,11 +25330,14 @@ class SourceProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23194,6 +25345,8 @@ class SourceProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23211,6 +25364,7 @@ class SourceProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23256,6 +25410,7 @@ class SourceProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23299,15 +25454,20 @@ class SourceProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23348,6 +25508,7 @@ class SourceProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23382,6 +25543,7 @@ class SourceProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23401,6 +25563,7 @@ class SourceProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23433,6 +25596,7 @@ class SourceProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceProxy, pspec: GObject.ParamSpec) => void)): number
@@ -23465,6 +25629,8 @@ class SourceProxy {
     connect_after(sigName: "notify::socks-host", callback: (($obj: SourceProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::socks-port", callback: (($obj: SourceProxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::socks-port", callback: (($obj: SourceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceProxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceProxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -23483,8 +25649,10 @@ class SourceRefresh {
     /* Properties of EDataServer-1.2.EDataServer.SourceRefresh */
     enabled: boolean
     interval_minutes: number
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceRefresh */
     /**
      * Returns whether to periodically fetch updates from a remote server.
@@ -23505,6 +25673,7 @@ class SourceRefresh {
      * 
      * The refresh interval is determined by the #ESourceRefresh:interval-minutes
      * property.
+     * @param enabled whether to enable periodic refresh
      */
     set_enabled(enabled: boolean): void
     /**
@@ -23512,6 +25681,7 @@ class SourceRefresh {
      * 
      * Note this value is only effective when the #ESourceRefresh:enabled
      * property is %TRUE.
+     * @param interval_minutes the interval in minutes
      */
     set_interval_minutes(interval_minutes: number): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -23574,6 +25744,10 @@ class SourceRefresh {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23584,6 +25758,12 @@ class SourceRefresh {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23607,6 +25787,7 @@ class SourceRefresh {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23626,11 +25807,14 @@ class SourceRefresh {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23638,6 +25822,8 @@ class SourceRefresh {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23655,6 +25841,7 @@ class SourceRefresh {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23700,6 +25887,7 @@ class SourceRefresh {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23743,15 +25931,20 @@ class SourceRefresh {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23792,6 +25985,7 @@ class SourceRefresh {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23826,6 +26020,7 @@ class SourceRefresh {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23845,6 +26040,7 @@ class SourceRefresh {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23877,6 +26073,7 @@ class SourceRefresh {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
@@ -23885,6 +26082,8 @@ class SourceRefresh {
     connect_after(sigName: "notify::enabled", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interval-minutes", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interval-minutes", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -23948,7 +26147,7 @@ class SourceRegistry {
      */
     default_task_list: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceRegistry */
     /**
      * Determines whether `source` is "effectively" enabled by examining its
@@ -23960,6 +26159,7 @@ class SourceRegistry {
      * Use this function instead of e_source_get_enabled() to determine
      * things like whether to display an #ESource in a user interface or
      * whether to act on the data set described by the #ESource.
+     * @param source an #ESource
      */
     check_enabled(source: Source): boolean
     /**
@@ -23968,12 +26168,16 @@ class SourceRegistry {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_registry_commit_source_finish() to get the result of the
      * operation.
+     * @param source an #ESource with changes to commit
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     commit_source(source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_registry_commit_source().
      * 
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     commit_source_finish(result: Gio.AsyncResult): boolean
     /**
@@ -23991,6 +26195,8 @@ class SourceRegistry {
      * independent data source.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param source an #ESource with changes to commit
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     commit_source_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -24001,12 +26207,16 @@ class SourceRegistry {
      * When the operation is finished, `callback` will be called.  You can then
      * call e_source_registry_create_sources_finish() to get the result of the
      * operation.
+     * @param list_of_sources a list of #ESource instances with no #GDBusObject
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     create_sources(list_of_sources: Source[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_registry_create_sources().
      * 
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     create_sources_finish(result: Gio.AsyncResult): boolean
     /**
@@ -24015,11 +26225,14 @@ class SourceRegistry {
      * no #GDBusObject.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param list_of_sources a list of #ESource instances with no #GDBusObject
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     create_sources_sync(list_of_sources: Source[], cancellable?: Gio.Cancellable | null): boolean
     /**
      * Handy debugging function that uses e_source_registry_build_display_tree()
      * to print a tree of registered sources to standard output.
+     * @param extension_name an extension name, or %NULL
      */
     debug_dump(extension_name?: string | null): void
     /**
@@ -24037,6 +26250,8 @@ class SourceRegistry {
      * `source'`s #ESource:display-name is at least unique among its siblings.
      * 
      * Free the returned string with g_free() when finished with it.
+     * @param source an #ESource
+     * @param extension_name an extension name, or %NULL
      */
     dup_unique_display_name(source: Source, extension_name?: string | null): string
     /**
@@ -24059,6 +26274,8 @@ class SourceRegistry {
      * Note the function returns the #ESource containing the #ESourceExtension
      * instead of the #ESourceExtension itself because extension instances are
      * not to be referenced directly (see e_source_get_extension()).
+     * @param source an #ESource
+     * @param extension_name the extension name to find
      */
     find_extension(source: Source, extension_name: string): Source | null
     get_oauth2_services(): OAuth2Services
@@ -24076,6 +26293,7 @@ class SourceRegistry {
      *   g_list_free_full (list, g_object_unref);
      * ```
      * 
+     * @param extension_name an extension name, or %NULL
      */
     list_enabled(extension_name?: string | null): Source[]
     /**
@@ -24093,6 +26311,7 @@ class SourceRegistry {
      *   g_list_free_full (list, g_object_unref);
      * ```
      * 
+     * @param extension_name an extension name, or %NULL
      */
     list_sources(extension_name?: string | null): Source[]
     /**
@@ -24196,6 +26415,7 @@ class SourceRegistry {
      * 
      * The returned #ESource is referenced for thread-safety and must be
      * unreferenced with g_object_unref() when finished with it.
+     * @param extension_name an extension_name
      */
     ref_default_for_extension_name(extension_name: string): Source | null
     /**
@@ -24241,6 +26461,7 @@ class SourceRegistry {
      * 
      * The returned #ESource is referenced for thread-safety and must be
      * unreferenced with g_object_unref() when finished with it.
+     * @param uid a unique identifier string
      */
     ref_source(uid: string): Source | null
     /**
@@ -24252,12 +26473,16 @@ class SourceRegistry {
      * When the operation is finished, `callback` will be called. You can then
      * call e_source_registry_refresh_backend_finish() to get the result of
      * the operation.
+     * @param source_uid UID of a collection #ESource whose backend to refresh
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     refresh_backend(source_uid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_registry_refresh_backend().
      * 
      * If an error occurred, the function will set `error` and return %FALSE.
+     * @param result a #GAsyncResult
      */
     refresh_backend_finish(result: Gio.AsyncResult): boolean
     /**
@@ -24267,18 +26492,22 @@ class SourceRegistry {
      * when the collection backend is offline.
      * 
      * If an error occurs, the function will set `error` and return %FALSE.
+     * @param source_uid UID of a collection #ESource whose backend to refresh
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     refresh_backend_sync(source_uid: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets `default_source` as the default address book.  If `default_source`
      * is %NULL, the default address book is reset to the built-in address book.
      * This setting will persist across sessions until changed.
+     * @param default_source an address book #ESource, or %NULL
      */
     set_default_address_book(default_source?: Source | null): void
     /**
      * Sets `default_source` as the default calendar.  If `default_source`
      * is %NULL, the default calendar is reset to the built-in calendar.
      * This setting will persist across sessions until changed.
+     * @param default_source a calendar #ESource, or %NULL
      */
     set_default_calendar(default_source?: Source | null): void
     /**
@@ -24311,30 +26540,36 @@ class SourceRegistry {
      * the default task list is reset to the built-in task list.
      * 
      * For all other values of `extension_name,` the function does nothing.
+     * @param extension_name an extension name
+     * @param default_source an #ESource, or %NULL
      */
     set_default_for_extension_name(extension_name: string, default_source?: Source | null): void
     /**
      * Sets `default_source` as the default mail account.  If `default_source`
      * is %NULL, the default mail account is reset to the built-in mail account.
      * This setting will persist across sessions until changed.
+     * @param default_source a mail account #ESource, or %NULL
      */
     set_default_mail_account(default_source?: Source | null): void
     /**
      * Sets `default_source` as the default mail identity.  If `default_source`
      * is %NULL, the next request for the default mail identity will use the
      * fallbacks described in e_source_registry_ref_default_mail_identity().
+     * @param default_source a mail identity #ESource, or %NULL
      */
     set_default_mail_identity(default_source?: Source | null): void
     /**
      * Sets `default_source` as the default memo list.  If `default_source`
      * is %NULL, the default memo list is reset to the built-in memo list.
      * This setting will persist across sessions until changed.
+     * @param default_source a memo list #ESource, or %NULL
      */
     set_default_memo_list(default_source?: Source | null): void
     /**
      * Sets `default_source` as the default task list.  If `default_source`
      * is %NULL, the default task list is reset to the built-in task list.
      * This setting will persist across sessions until changed.
+     * @param default_source a task list #ESource, or %NULL
      */
     set_default_task_list(default_source?: Source | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -24372,6 +26607,10 @@ class SourceRegistry {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24382,6 +26621,12 @@ class SourceRegistry {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24405,6 +26650,7 @@ class SourceRegistry {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24424,11 +26670,14 @@ class SourceRegistry {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24436,6 +26685,8 @@ class SourceRegistry {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24453,6 +26704,7 @@ class SourceRegistry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24498,6 +26750,7 @@ class SourceRegistry {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24541,15 +26794,20 @@ class SourceRegistry {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24590,6 +26848,7 @@ class SourceRegistry {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24624,6 +26883,7 @@ class SourceRegistry {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -24664,16 +26924,21 @@ class SourceRegistry {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -24716,6 +26981,7 @@ class SourceRegistry {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of EDataServer-1.2.EDataServer.SourceRegistry */
@@ -24762,11 +27028,15 @@ class SourceRegistry {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -24808,6 +27078,7 @@ class SourceRegistry {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24827,6 +27098,7 @@ class SourceRegistry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24839,12 +27111,18 @@ class SourceRegistry {
      * the thread-default main context from the time the `registry` was created.
      * 
      * Note: This is just a proxy signal for the ESource::credentials-required signal.
+     * @param source the #ESource that requires credentials
+     * @param reason an #ESourceCredentialsReason indicating why the credentials are requested
+     * @param certificate_pem PEM-encoded secure connection certificate for failed SSL checks
+     * @param certificate_errors what failed with the SSL certificate
+     * @param op_error a #GError with a description of the error, or %NULL
      */
     connect(sigName: "credentials-required", callback: (($obj: SourceRegistry, source: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error) => void)): number
     connect_after(sigName: "credentials-required", callback: (($obj: SourceRegistry, source: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error) => void)): number
     emit(sigName: "credentials-required", source: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error): void
     /**
      * Emitted when an #ESource is added to `registry`.
+     * @param source the newly-added #ESource
      */
     connect(sigName: "source-added", callback: (($obj: SourceRegistry, source: Source) => void)): number
     connect_after(sigName: "source-added", callback: (($obj: SourceRegistry, source: Source) => void)): number
@@ -24852,24 +27130,28 @@ class SourceRegistry {
     /**
      * Emitted when an #ESource registered with `registry` emits
      * its #ESource::changed signal.
+     * @param source the #ESource that changed
      */
     connect(sigName: "source-changed", callback: (($obj: SourceRegistry, source: Source) => void)): number
     connect_after(sigName: "source-changed", callback: (($obj: SourceRegistry, source: Source) => void)): number
     emit(sigName: "source-changed", source: Source): void
     /**
      * Emitted when an #ESource #ESource:enabled property becomes %FALSE.
+     * @param source the #ESource that got disabled
      */
     connect(sigName: "source-disabled", callback: (($obj: SourceRegistry, source: Source) => void)): number
     connect_after(sigName: "source-disabled", callback: (($obj: SourceRegistry, source: Source) => void)): number
     emit(sigName: "source-disabled", source: Source): void
     /**
      * Emitted when an #ESource #ESource:enabled property becomes %TRUE.
+     * @param source the #ESource that got enabled
      */
     connect(sigName: "source-enabled", callback: (($obj: SourceRegistry, source: Source) => void)): number
     connect_after(sigName: "source-enabled", callback: (($obj: SourceRegistry, source: Source) => void)): number
     emit(sigName: "source-enabled", source: Source): void
     /**
      * Emitted when an #ESource is removed from `registry`.
+     * @param source the #ESource that got removed
      */
     connect(sigName: "source-removed", callback: (($obj: SourceRegistry, source: Source) => void)): number
     connect_after(sigName: "source-removed", callback: (($obj: SourceRegistry, source: Source) => void)): number
@@ -24903,6 +27185,7 @@ class SourceRegistry {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceRegistry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceRegistry, pspec: GObject.ParamSpec) => void)): number
@@ -24933,6 +27216,7 @@ class SourceRegistry {
     /**
      * Convenience function to free a #GNode tree of registered
      * sources created by e_source_registry_build_display_tree().
+     * @param display_tree a tree of sources, arranged for display
      */
     static free_display_tree(display_tree: GLib.Node): void
     /**
@@ -24942,12 +27226,21 @@ class SourceRegistry {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -24967,8 +27260,20 @@ interface SourceRegistryWatcher_ConstructProps extends GObject.Object_ConstructP
     registry?: SourceRegistry
 }
 class SourceRegistryWatcher {
+    /* Properties of EDataServer-1.2.EDataServer.SourceRegistryWatcher */
+    /**
+     * Optional extension name, to consider sources with only.
+     * It can be %NULL, to check for all sources. This is
+     * a complementary filter to #ESourceRegistryWatcher::filter
+     * signal.
+     */
+    readonly extension_name: string
+    /**
+     * The #ESourceRegistry manages #ESource instances.
+     */
+    readonly registry: SourceRegistry
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceRegistryWatcher */
     get_extension_name(): string | null
     /**
@@ -25016,6 +27321,10 @@ class SourceRegistryWatcher {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25026,6 +27335,12 @@ class SourceRegistryWatcher {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25049,6 +27364,7 @@ class SourceRegistryWatcher {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25068,11 +27384,14 @@ class SourceRegistryWatcher {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25080,6 +27399,8 @@ class SourceRegistryWatcher {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25097,6 +27418,7 @@ class SourceRegistryWatcher {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25142,6 +27464,7 @@ class SourceRegistryWatcher {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25185,15 +27508,20 @@ class SourceRegistryWatcher {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25234,6 +27562,7 @@ class SourceRegistryWatcher {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25268,6 +27597,7 @@ class SourceRegistryWatcher {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServer-1.2.EDataServer.SourceRegistryWatcher */
@@ -25291,6 +27621,7 @@ class SourceRegistryWatcher {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25298,6 +27629,7 @@ class SourceRegistryWatcher {
     /**
      * A signal emitted when the `source` is enabled or added and it had been
      * considered for inclusion with the `ESourceRegistryWatcher:`:filter signal.
+     * @param source the #ESource which appeared
      */
     connect(sigName: "appeared", callback: (($obj: SourceRegistryWatcher, source: Source) => void)): number
     connect_after(sigName: "appeared", callback: (($obj: SourceRegistryWatcher, source: Source) => void)): number
@@ -25306,6 +27638,7 @@ class SourceRegistryWatcher {
      * A signal emitted when the `source` is disabled or removed and it had been
      * considered for inclusion with the `ESourceRegistryWatcher:`:filter signal
      * earlier.
+     * @param source the #ESource which disappeared
      */
     connect(sigName: "disappeared", callback: (($obj: SourceRegistryWatcher, source: Source) => void)): number
     connect_after(sigName: "disappeared", callback: (($obj: SourceRegistryWatcher, source: Source) => void)): number
@@ -25314,6 +27647,7 @@ class SourceRegistryWatcher {
      * A filter signal which verifies whether the `source` can be considered
      * for inclusion in the watcher or not. If none is set then all the sources
      * are included.
+     * @param source the #ESource to filter
      */
     connect(sigName: "filter", callback: (($obj: SourceRegistryWatcher, source: Source) => boolean)): number
     connect_after(sigName: "filter", callback: (($obj: SourceRegistryWatcher, source: Source) => boolean)): number
@@ -25347,10 +27681,15 @@ class SourceRegistryWatcher {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceRegistryWatcher, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceRegistryWatcher, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::extension-name", callback: (($obj: SourceRegistryWatcher, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extension-name", callback: (($obj: SourceRegistryWatcher, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::registry", callback: (($obj: SourceRegistryWatcher, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::registry", callback: (($obj: SourceRegistryWatcher, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -25369,8 +27708,10 @@ interface SourceResource_ConstructProps extends SourceExtension_ConstructProps {
 class SourceResource {
     /* Properties of EDataServer-1.2.EDataServer.SourceResource */
     identity: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceResource */
     /**
      * Thread-safe variation of e_source_resource_get_identity().
@@ -25391,6 +27732,7 @@ class SourceResource {
      * The internal copy of `identity` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param identity the identity of a remote resource
      */
     set_identity(identity?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -25453,6 +27795,10 @@ class SourceResource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25463,6 +27809,12 @@ class SourceResource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25486,6 +27838,7 @@ class SourceResource {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25505,11 +27858,14 @@ class SourceResource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25517,6 +27873,8 @@ class SourceResource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25534,6 +27892,7 @@ class SourceResource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25579,6 +27938,7 @@ class SourceResource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25622,15 +27982,20 @@ class SourceResource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25671,6 +28036,7 @@ class SourceResource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25705,6 +28071,7 @@ class SourceResource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25724,6 +28091,7 @@ class SourceResource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25756,12 +28124,15 @@ class SourceResource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceResource, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceResource, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::identity", callback: (($obj: SourceResource, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::identity", callback: (($obj: SourceResource, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceResource, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceResource, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -25778,8 +28149,10 @@ interface SourceRevisionGuards_ConstructProps extends SourceExtension_ConstructP
 class SourceRevisionGuards {
     /* Properties of EDataServer-1.2.EDataServer.SourceRevisionGuards */
     enabled: boolean
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceRevisionGuards */
     /**
      * Checks whether revision guards for the given #ESource are enabled.
@@ -25789,6 +28162,7 @@ class SourceRevisionGuards {
      * Enables or disables the revision guards for a given #ESource.
      * 
      * Revision guards are disabled by default.
+     * @param enabled Whether to enable or disable the revision guards.
      */
     set_enabled(enabled: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -25851,6 +28225,10 @@ class SourceRevisionGuards {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25861,6 +28239,12 @@ class SourceRevisionGuards {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25884,6 +28268,7 @@ class SourceRevisionGuards {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25903,11 +28288,14 @@ class SourceRevisionGuards {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25915,6 +28303,8 @@ class SourceRevisionGuards {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25932,6 +28322,7 @@ class SourceRevisionGuards {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25977,6 +28368,7 @@ class SourceRevisionGuards {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -26020,15 +28412,20 @@ class SourceRevisionGuards {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -26069,6 +28466,7 @@ class SourceRevisionGuards {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -26103,6 +28501,7 @@ class SourceRevisionGuards {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -26122,6 +28521,7 @@ class SourceRevisionGuards {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26154,12 +28554,15 @@ class SourceRevisionGuards {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceRevisionGuards, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceRevisionGuards, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::enabled", callback: (($obj: SourceRevisionGuards, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enabled", callback: (($obj: SourceRevisionGuards, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceRevisionGuards, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceRevisionGuards, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -26186,8 +28589,10 @@ class SourceSMIME {
     sign_by_default: boolean
     signing_algorithm: string
     signing_certificate: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceSMIME */
     /**
      * Thread-safe variation of e_source_smime_get_encryption_certificate().
@@ -26240,21 +28645,25 @@ class SourceSMIME {
     /**
      * Sets whether to encrypt outgoing messages by default using S/MIME
      * software such as Mozilla Network Security Services (NSS).
+     * @param encrypt_by_default whether to encrypt outgoing messages by default
      */
     set_encrypt_by_default(encrypt_by_default: boolean): void
     /**
      * Sets whether to "encrypt-to-self" when sending encrypted messages.
+     * @param encrypt_to_self whether to "encrypt-to-self"
      */
     set_encrypt_to_self(encrypt_to_self: boolean): void
     /**
      * Sets the certificate name used to encrypt messages.
      * 
      * If the `encryption_certificate` string is empty, %NULL is set instead.
+     * @param encryption_certificate the certificate name used to encrypt                          messages, or %NULL
      */
     set_encryption_certificate(encryption_certificate?: string | null): void
     /**
      * Sets whether to digitally sign outgoing messages by default using
      * S/MIME software such as Mozilla Network Security Services (NSS).
+     * @param sign_by_default whether to sign outgoing messages by default
      */
     set_sign_by_default(sign_by_default: boolean): void
     /**
@@ -26264,12 +28673,14 @@ class SourceSMIME {
      * The internal copy of `signing_algorithm` is automatically stripped of
      * leading and trailing whitespace.  If the resulting string is empty,
      * %NULL is set instead.
+     * @param signing_algorithm the signing algorithm for outgoing                     messages, or %NULL
      */
     set_signing_algorithm(signing_algorithm?: string | null): void
     /**
      * Sets the S/MIME certificate name used to sign messages.
      * 
      * If the `signing_certificate` string is empty, %NULL is set instead.
+     * @param signing_certificate the certificate name used to sign                       messages, or %NULL
      */
     set_signing_certificate(signing_certificate?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -26332,6 +28743,10 @@ class SourceSMIME {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26342,6 +28757,12 @@ class SourceSMIME {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -26365,6 +28786,7 @@ class SourceSMIME {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26384,11 +28806,14 @@ class SourceSMIME {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26396,6 +28821,8 @@ class SourceSMIME {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26413,6 +28840,7 @@ class SourceSMIME {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -26458,6 +28886,7 @@ class SourceSMIME {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -26501,15 +28930,20 @@ class SourceSMIME {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -26550,6 +28984,7 @@ class SourceSMIME {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -26584,6 +29019,7 @@ class SourceSMIME {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -26603,6 +29039,7 @@ class SourceSMIME {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26635,6 +29072,7 @@ class SourceSMIME {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceSMIME, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceSMIME, pspec: GObject.ParamSpec) => void)): number
@@ -26651,6 +29089,8 @@ class SourceSMIME {
     connect_after(sigName: "notify::signing-algorithm", callback: (($obj: SourceSMIME, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::signing-certificate", callback: (($obj: SourceSMIME, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::signing-certificate", callback: (($obj: SourceSMIME, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceSMIME, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceSMIME, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -26669,8 +29109,10 @@ class SourceSecurity {
     /* Properties of EDataServer-1.2.EDataServer.SourceSecurity */
     method: string
     secure: boolean
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceSecurity */
     /**
      * Thread-safe variation of e_source_security_get_method().
@@ -26700,6 +29142,7 @@ class SourceSecurity {
      * desired, the convention is to set #ESourceSecurity:method to "none".
      * In keeping with that convention, #ESourceSecurity:method will be set
      * to "none" if `method` is %NULL or an empty string.
+     * @param method security method, or %NULL
      */
     set_method(method?: string | null): void
     /**
@@ -26709,6 +29152,7 @@ class SourceSecurity {
      * #ESourceSecurity:method property is set to "none".  If `secure` is
      * %TRUE, the function assumes the backend will use Transport Layer
      * Security and sets the #ESourceSecurity:method property to "tls".
+     * @param secure whether a secure network connection is desired
      */
     set_secure(secure: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -26771,6 +29215,10 @@ class SourceSecurity {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26781,6 +29229,12 @@ class SourceSecurity {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -26804,6 +29258,7 @@ class SourceSecurity {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26823,11 +29278,14 @@ class SourceSecurity {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26835,6 +29293,8 @@ class SourceSecurity {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26852,6 +29312,7 @@ class SourceSecurity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -26897,6 +29358,7 @@ class SourceSecurity {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -26940,15 +29402,20 @@ class SourceSecurity {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -26989,6 +29456,7 @@ class SourceSecurity {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27023,6 +29491,7 @@ class SourceSecurity {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -27042,6 +29511,7 @@ class SourceSecurity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27074,6 +29544,7 @@ class SourceSecurity {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceSecurity, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceSecurity, pspec: GObject.ParamSpec) => void)): number
@@ -27082,6 +29553,8 @@ class SourceSecurity {
     connect_after(sigName: "notify::method", callback: (($obj: SourceSecurity, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::secure", callback: (($obj: SourceSecurity, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::secure", callback: (($obj: SourceSecurity, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceSecurity, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceSecurity, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -27104,8 +29577,10 @@ class SourceSelectable {
     selected: boolean
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceSelectable */
     /**
      * Thread-safe variation of e_source_selectable_get_color().
@@ -27139,16 +29614,19 @@ class SourceSelectable {
      * The internal copy of `color` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param color a color specification, or %NULL
      */
     set_color(color?: string | null): void
     /**
      * Sets the sorting order for the #ESource to which `extension` belongs.
+     * @param order the sorting order
      */
     set_order(order: number): void
     /**
      * Sets the selected state for the #ESource to which `extension` belongs.
      * The selected state is often represented as a checkbox next to the data
      * source's display name in user interfaces.
+     * @param selected selected state
      */
     set_selected(selected: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
@@ -27169,6 +29647,7 @@ class SourceSelectable {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -27231,6 +29710,10 @@ class SourceSelectable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27241,6 +29724,12 @@ class SourceSelectable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -27264,6 +29753,7 @@ class SourceSelectable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -27283,11 +29773,14 @@ class SourceSelectable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -27295,6 +29788,8 @@ class SourceSelectable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27312,6 +29807,7 @@ class SourceSelectable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27357,6 +29853,7 @@ class SourceSelectable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27400,15 +29897,20 @@ class SourceSelectable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27449,6 +29951,7 @@ class SourceSelectable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27483,6 +29986,7 @@ class SourceSelectable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -27502,6 +30006,7 @@ class SourceSelectable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27534,6 +30039,7 @@ class SourceSelectable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceSelectable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceSelectable, pspec: GObject.ParamSpec) => void)): number
@@ -27546,6 +30052,8 @@ class SourceSelectable {
     connect_after(sigName: "notify::selected", callback: (($obj: SourceSelectable, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::backend-name", callback: (($obj: SourceSelectable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceSelectable, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceSelectable, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceSelectable, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -27564,8 +30072,10 @@ class SourceTaskList {
     selected: boolean
     /* Properties of EDataServer-1.2.EDataServer.SourceBackend */
     backend_name: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceSelectable */
     /**
      * Thread-safe variation of e_source_selectable_get_color().
@@ -27599,16 +30109,19 @@ class SourceTaskList {
      * The internal copy of `color` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param color a color specification, or %NULL
      */
     set_color(color?: string | null): void
     /**
      * Sets the sorting order for the #ESource to which `extension` belongs.
+     * @param order the sorting order
      */
     set_order(order: number): void
     /**
      * Sets the selected state for the #ESource to which `extension` belongs.
      * The selected state is often represented as a checkbox next to the data
      * source's display name in user interfaces.
+     * @param selected selected state
      */
     set_selected(selected: boolean): void
     /* Methods of EDataServer-1.2.EDataServer.SourceBackend */
@@ -27629,6 +30142,7 @@ class SourceTaskList {
      * The internal copy of `backend_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param backend_name a backend name, or %NULL
      */
     set_backend_name(backend_name?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -27691,6 +30205,10 @@ class SourceTaskList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27701,6 +30219,12 @@ class SourceTaskList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -27724,6 +30248,7 @@ class SourceTaskList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -27743,11 +30268,14 @@ class SourceTaskList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -27755,6 +30283,8 @@ class SourceTaskList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27772,6 +30302,7 @@ class SourceTaskList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27817,6 +30348,7 @@ class SourceTaskList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27860,15 +30392,20 @@ class SourceTaskList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27909,6 +30446,7 @@ class SourceTaskList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27943,6 +30481,7 @@ class SourceTaskList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -27962,6 +30501,7 @@ class SourceTaskList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27994,6 +30534,7 @@ class SourceTaskList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceTaskList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceTaskList, pspec: GObject.ParamSpec) => void)): number
@@ -28006,6 +30547,8 @@ class SourceTaskList {
     connect_after(sigName: "notify::selected", callback: (($obj: SourceTaskList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::backend-name", callback: (($obj: SourceTaskList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-name", callback: (($obj: SourceTaskList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceTaskList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceTaskList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -28022,8 +30565,10 @@ interface SourceUoa_ConstructProps extends SourceExtension_ConstructProps {
 class SourceUoa {
     /* Properties of EDataServer-1.2.EDataServer.SourceUoa */
     account_id: number
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceUoa */
     /**
      * Returns the numeric identifier of the Ubuntu Online Account associated
@@ -28033,6 +30578,7 @@ class SourceUoa {
     /**
      * Sets the numeric identifier of the Ubuntu Online Account associated
      * with the #ESource to which `extension` belongs.
+     * @param account_id the associated Ubuntu Online Account ID
      */
     set_account_id(account_id: number): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -28095,6 +30641,10 @@ class SourceUoa {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28105,6 +30655,12 @@ class SourceUoa {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28128,6 +30684,7 @@ class SourceUoa {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28147,11 +30704,14 @@ class SourceUoa {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28159,6 +30719,8 @@ class SourceUoa {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28176,6 +30738,7 @@ class SourceUoa {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -28221,6 +30784,7 @@ class SourceUoa {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -28264,15 +30828,20 @@ class SourceUoa {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28313,6 +30882,7 @@ class SourceUoa {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28347,6 +30917,7 @@ class SourceUoa {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -28366,6 +30937,7 @@ class SourceUoa {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28398,12 +30970,15 @@ class SourceUoa {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceUoa, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceUoa, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::account-id", callback: (($obj: SourceUoa, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::account-id", callback: (($obj: SourceUoa, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceUoa, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceUoa, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -28422,8 +30997,10 @@ class SourceWeather {
     /* Properties of EDataServer-1.2.EDataServer.SourceWeather */
     location: string
     units: SourceWeatherUnits
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceWeather */
     dup_location(): string
     get_location(): string
@@ -28490,6 +31067,10 @@ class SourceWeather {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28500,6 +31081,12 @@ class SourceWeather {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28523,6 +31110,7 @@ class SourceWeather {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28542,11 +31130,14 @@ class SourceWeather {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28554,6 +31145,8 @@ class SourceWeather {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28571,6 +31164,7 @@ class SourceWeather {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -28616,6 +31210,7 @@ class SourceWeather {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -28659,15 +31254,20 @@ class SourceWeather {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28708,6 +31308,7 @@ class SourceWeather {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28742,6 +31343,7 @@ class SourceWeather {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -28761,6 +31363,7 @@ class SourceWeather {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28793,6 +31396,7 @@ class SourceWeather {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceWeather, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceWeather, pspec: GObject.ParamSpec) => void)): number
@@ -28801,6 +31405,8 @@ class SourceWeather {
     connect_after(sigName: "notify::location", callback: (($obj: SourceWeather, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::units", callback: (($obj: SourceWeather, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::units", callback: (($obj: SourceWeather, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceWeather, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceWeather, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -28817,8 +31423,10 @@ interface SourceWebDAVNotes_ConstructProps extends SourceExtension_ConstructProp
 class SourceWebDAVNotes {
     /* Properties of EDataServer-1.2.EDataServer.SourceWebDAVNotes */
     default_ext: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceWebDAVNotes */
     /**
      * Thread-safe variation of e_source_webdav_notes_get_default_ext().
@@ -28837,6 +31445,7 @@ class SourceWebDAVNotes {
      * The internal copy of `default_ext` is automatically stripped of leading and
      * trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param default_ext a default file extension, or %NULL
      */
     set_default_ext(default_ext?: string | null): void
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -28899,6 +31508,10 @@ class SourceWebDAVNotes {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28909,6 +31522,12 @@ class SourceWebDAVNotes {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28932,6 +31551,7 @@ class SourceWebDAVNotes {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28951,11 +31571,14 @@ class SourceWebDAVNotes {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28963,6 +31586,8 @@ class SourceWebDAVNotes {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28980,6 +31605,7 @@ class SourceWebDAVNotes {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -29025,6 +31651,7 @@ class SourceWebDAVNotes {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -29068,15 +31695,20 @@ class SourceWebDAVNotes {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -29117,6 +31749,7 @@ class SourceWebDAVNotes {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -29151,6 +31784,7 @@ class SourceWebDAVNotes {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -29170,6 +31804,7 @@ class SourceWebDAVNotes {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29202,12 +31837,15 @@ class SourceWebDAVNotes {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceWebDAVNotes, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceWebDAVNotes, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::default-ext", callback: (($obj: SourceWebDAVNotes, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-ext", callback: (($obj: SourceWebDAVNotes, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceWebDAVNotes, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceWebDAVNotes, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -29242,8 +31880,10 @@ class SourceWebdav {
     resource_query: string
     soup_uri: Soup.URI
     ssl_trust: string
+    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
+    readonly source: Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.SourceWebdav */
     /**
      * Thread-safe variation of e_source_webdav_get_color().
@@ -29365,10 +32005,12 @@ class SourceWebdav {
      *     and work around the bug automatically.
      *   </para>
      * </note>
+     * @param avoid_ifmatch whether the WebDAV server is known to exhibit the bug
      */
     set_avoid_ifmatch(avoid_ifmatch: boolean): void
     /**
      * FIXME Document me!
+     * @param calendar_auto_schedule whether the server supports the "calendar-auto-schedule" feature of CalDAV
      */
     set_calendar_auto_schedule(calendar_auto_schedule: boolean): void
     /**
@@ -29377,6 +32019,7 @@ class SourceWebdav {
      * The internal copy of `color` is automatically stripped of leading
      * and trailing whitespace. If the resulting string is empty, %NULL is set
      * instead.
+     * @param color the color of the WebDAV resource, or %NULL
      */
     set_color(color?: string | null): void
     /**
@@ -29387,6 +32030,7 @@ class SourceWebdav {
      * The internal copy of `display_name` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param display_name the display name of the WebDAV resource,                or %NULL
      */
     set_display_name(display_name?: string | null): void
     /**
@@ -29396,10 +32040,12 @@ class SourceWebdav {
      * The internal copy of `email_address` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param email_address the user's email address, or %NULL
      */
     set_email_address(email_address?: string | null): void
     /**
      * Set the sorting order of the resource.
+     * @param order a sorting order
      */
     set_order(order: number): void
     /**
@@ -29408,6 +32054,7 @@ class SourceWebdav {
      * The internal copy of `resource_path` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param resource_path the absolute path to a WebDAV resource,                 or %NULL
      */
     set_resource_path(resource_path?: string | null): void
     /**
@@ -29421,6 +32068,7 @@ class SourceWebdav {
      * The internal copy of `resource_query` is automatically stripped of leading
      * and trailing whitespace.  If the resulting string is empty, %NULL is set
      * instead.
+     * @param resource_query the query to access a WebDAV resource,                  or %NULL
      */
     set_resource_query(resource_query?: string | null): void
     /**
@@ -29428,11 +32076,13 @@ class SourceWebdav {
      * `uri` to the #ESourceAuthentication extension, the #ESourceSecurity
      * extension, and `extension` itself.  (The "fragment" component of
      * `uri` is ignored.)
+     * @param soup_uri a #SoupURI
      */
     set_soup_uri(soup_uri: Soup.URI): void
     /**
      * Sets the SSL/TLS certificate trust. See e_source_webdav_get_ssl_trust()
      * for more infomation about its content and how to use it.
+     * @param ssl_trust the ssl_trust to store, or %NULL to unset
      */
     set_ssl_trust(ssl_trust?: string | null): void
     /**
@@ -29440,6 +32090,7 @@ class SourceWebdav {
      * the certificate and host information as before. The function does
      * nothing, when none SSL trust is set or when %E_TRUST_PROMPT_RESPONSE_UNKNOWN
      * is used as the `response`.
+     * @param response an #ETrustPromptResponse to set
      */
     set_ssl_trust_response(response: TrustPromptResponse): void
     /**
@@ -29451,11 +32102,17 @@ class SourceWebdav {
      * Updates user's response from a trust prompt, thus it is re-used the next
      * time it'll be needed. An #E_TRUST_PROMPT_RESPONSE_UNKNOWN is treated as
      * a temporary reject, which means the user will be asked again.
+     * @param host a host name to store the certificate for
+     * @param cert the invalid certificate of the connection over which `host` is about        to be sent
+     * @param response user's response from a trust prompt for `cert`
      */
     update_ssl_trust(host: string, cert: Gio.TlsCertificate, response: TrustPromptResponse): void
     /**
      * Verifies SSL/TLS trust for the given `host` and `cert,` as previously stored in the `extension`
      * with e_source_webdav_update_ssl_trust().
+     * @param host a host name to store the certificate for
+     * @param cert the invalid certificate of the connection over which `host` is about        to be sent
+     * @param cert_errors a bit-or of #GTlsCertificateFlags describing the reason   for the `cert` to be considered invalid
      */
     verify_ssl_trust(host: string, cert: Gio.TlsCertificate, cert_errors: Gio.TlsCertificateFlags): TrustPromptResponse
     /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
@@ -29518,6 +32175,10 @@ class SourceWebdav {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29528,6 +32189,12 @@ class SourceWebdav {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -29551,6 +32218,7 @@ class SourceWebdav {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -29570,11 +32238,14 @@ class SourceWebdav {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -29582,6 +32253,8 @@ class SourceWebdav {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29599,6 +32272,7 @@ class SourceWebdav {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -29644,6 +32318,7 @@ class SourceWebdav {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -29687,15 +32362,20 @@ class SourceWebdav {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -29736,6 +32416,7 @@ class SourceWebdav {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -29770,6 +32451,7 @@ class SourceWebdav {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -29789,6 +32471,7 @@ class SourceWebdav {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29821,6 +32504,7 @@ class SourceWebdav {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SourceWebdav, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SourceWebdav, pspec: GObject.ParamSpec) => void)): number
@@ -29845,6 +32529,8 @@ class SourceWebdav {
     connect_after(sigName: "notify::soup-uri", callback: (($obj: SourceWebdav, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ssl-trust", callback: (($obj: SourceWebdav, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ssl-trust", callback: (($obj: SourceWebdav, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: SourceWebdav, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: SourceWebdav, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -29862,6 +32548,10 @@ class WebDAVSession {
      * The #ENamedParameters containing login credentials.
      */
     credentials: NamedParameters
+    /**
+     * The #ESource being used for this soup session.
+     */
+    readonly source: Source
     /* Properties of Soup-2.4.Soup.Session */
     /**
      * If non-%NULL, the value to use for the "Accept-Language" header
@@ -29880,6 +32570,22 @@ class WebDAVSession {
      * #SoupSession:accept-language.
      */
     accept_language_auto: boolean
+    /**
+     * The #GMainContext that miscellaneous session-related
+     * asynchronous callbacks are invoked on. (Eg, setting
+     * #SoupSession:idle-timeout will add a timeout source on this
+     * context.)
+     * 
+     * For a plain #SoupSession, this property is always set to
+     * the #GMainContext that is the thread-default at the time
+     * the session was created, and cannot be overridden. For the
+     * deprecated #SoupSession subclasses, the default value is
+     * %NULL, meaning to use the global default #GMainContext.
+     * 
+     * If #SoupSession:use-thread-context is %FALSE, this context
+     * will also be used for asynchronous HTTP I/O.
+     */
+    readonly async_context: object
     /**
      * A %NULL-terminated array of URI schemes that should be
      * considered to be aliases for "http". Eg, if this included
@@ -29923,6 +32629,14 @@ class WebDAVSession {
      * connections will never time out).
      */
     idle_timeout: number
+    /**
+     * Sets the #SoupAddress to use for the client side of
+     * the connection.
+     * 
+     * Use this property if you want for instance to bind the
+     * local socket to a specific IP address.
+     */
+    readonly local_address: Soup.Address
     max_conns: number
     max_conns_per_host: number
     /**
@@ -30096,13 +32810,16 @@ class WebDAVSession {
      */
     user_agent: string
     /* Fields of Soup-2.4.Soup.Session */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.WebDAVSession */
     /**
      * Issues ACL request on the provided `uri,` or, in case it's %NULL, on the URI
      * defined in associated #ESource.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param xml the request itself, as an #EXmlDocument, the root element should be DAV:acl
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     acl_sync(uri: string | null, xml: XmlDocument, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30110,6 +32827,11 @@ class WebDAVSession {
      * The `source_uri` can reference also collections, in which case the `depth` influences
      * whether only the collection itself is copied (%E_WEBDAV_DEPTH_THIS) or whether
      * the collection with all its children is copied (%E_WEBDAV_DEPTH_INFINITY).
+     * @param source_uri URI of the resource or collection to copy
+     * @param destination_uri URI of the destination
+     * @param depth requested depth, can be one of %E_WEBDAV_DEPTH_THIS or %E_WEBDAV_DEPTH_INFINITY
+     * @param can_overwrite whether can overwrite `destination_uri,` when it exists
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     copy_sync(source_uri: string, destination_uri: string, depth: string, can_overwrite: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30125,6 +32847,10 @@ class WebDAVSession {
      * 
      * Note that the actual usage of `etag` is also influenced by #ESourceWebdav:avoid-ifmatch
      * property of the associated #ESource.
+     * @param uri URI of the resource to delete
+     * @param depth optional requested depth, can be one of %E_WEBDAV_DEPTH_THIS or %E_WEBDAV_DEPTH_INFINITY, or %NULL
+     * @param etag an optional ETag of the resource, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     delete_sync(uri: string, depth?: string | null, etag?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30133,6 +32859,8 @@ class WebDAVSession {
      * used instead, taken from the #ESourceWebdav extension, if defined.
      * 
      * Free the returned pointer with g_free(), when no longer needed.
+     * @param request_uri a #SoupURI to which the `href` belongs, or %NULL
+     * @param href a possibly path-only href
      */
     ensure_full_uri(request_uri: Soup.URI | null, href: string): string
     /**
@@ -30145,6 +32873,8 @@ class WebDAVSession {
      * Free the returned `out_principal_hrefs` with
      * g_slist_free_full (entries, g_free);
      * when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_acl_restrictions_sync(uri?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_restrictions */ number, /* out_principal_kind */ WebDAVACEPrincipalKind, /* out_principal_hrefs */ string[] ]
     /**
@@ -30156,6 +32886,8 @@ class WebDAVSession {
      * Free the returned `out_entries` with
      * g_slist_free_full (entries, e_webdav_access_control_entry_free);
      * when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_acl_sync(uri?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_entries */ WebDAVAccessControlEntry[] ]
     /**
@@ -30165,6 +32897,8 @@ class WebDAVSession {
      * Free the returned `out_privileges` with
      * g_slist_free_full (privileges, e_webdav_privilege_free);
      * when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_current_user_privilege_set_sync(uri?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_privileges */ WebDAVPrivilege[] ]
     /**
@@ -30180,6 +32914,8 @@ class WebDAVSession {
      * when no longer needed.
      * 
      * To read large data use e_webdav_session_get_sync() instead.
+     * @param uri URI of the resource to read
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_data_sync(uri: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_href */ string | null, /* out_etag */ string | null, /* out_bytes */ string, /* out_length */ number | null ]
     /**
@@ -30200,6 +32936,8 @@ class WebDAVSession {
      * Free the returned `out_principal_hrefs` with
      * g_slist_free_full (entries, g_free);
      * when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_principal_collection_set_sync(uri?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_principal_hrefs */ string[] ]
     /**
@@ -30210,6 +32948,8 @@ class WebDAVSession {
      * 
      * Free the returned `out_privileges` with e_webdav_session_util_free_privileges()
      * when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_supported_privilege_set_sync(uri?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_privileges */ GLib.Node ]
     /**
@@ -30221,6 +32961,8 @@ class WebDAVSession {
      * 
      * The e_webdav_session_get_data_sync() can be used to read the resource data
      * directly to memory.
+     * @param uri URI of the resource to read
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     get_sync(uri: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_href */ string | null, /* out_etag */ string | null, /* out_stream */ Gio.OutputStream ]
     /**
@@ -30231,6 +32973,8 @@ class WebDAVSession {
      * the server doesn't support it.
      * 
      * Free the returned `out_ctag` with g_free(), when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     getctag_sync(uri?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_ctag */ string ]
     /**
@@ -30243,6 +32987,10 @@ class WebDAVSession {
      * Free the returned `out_resources` with
      * g_slist_free_full (resources, e_webdav_resource_free);
      * when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param depth requested depth, can be one of %E_WEBDAV_DEPTH_THIS, %E_WEBDAV_DEPTH_THIS_AND_CHILDREN or %E_WEBDAV_DEPTH_INFINITY
+     * @param flags a bit-or of #EWebDAVListFlags, claiming what properties to read
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     list_sync(uri: string | null, depth: string, flags: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_resources */ WebDAVResource[] ]
     /**
@@ -30256,6 +33004,11 @@ class WebDAVSession {
      * The `out_lock_token` can be refreshed with e_webdav_session_refresh_lock_sync().
      * Release the lock with e_webdav_session_unlock_sync().
      * Free the returned `out_lock_token` with g_free(), when no longer needed.
+     * @param uri URI to lock, or %NULL to read from #ESource
+     * @param lock_scope an #EWebDAVLockScope to define the scope of the lock
+     * @param lock_timeout timeout for the lock, in seconds, on 0 to infinity
+     * @param owner optional identificator of the owner of the lock, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lock_resource_sync(uri: string | null, lock_scope: WebDAVLockScope, lock_timeout: number, owner?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_lock_token */ string ]
     /**
@@ -30268,6 +33021,11 @@ class WebDAVSession {
      * 
      * If provided, free the returned `out_xml_response` with xmlFreeDoc(),
      * when no longer needed.
+     * @param uri URI to lock, or %NULL to read from #ESource
+     * @param depth requested depth, can be one of %E_WEBDAV_DEPTH_THIS or %E_WEBDAV_DEPTH_INFINITY
+     * @param lock_timeout timeout for the lock, in seconds, on 0 to infinity
+     * @param xml an XML describing the lock request, with DAV:lockinfo root element
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     lock_sync(uri: string | null, depth: string, lock_timeout: number, xml: XmlDocument, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_lock_token */ string, /* out_xml_response */ libxml2.Doc | null ]
     /**
@@ -30280,6 +33038,12 @@ class WebDAVSession {
      * Note that CalDAV RFC 4791 Section 4.2 forbids to create calendar
      * resources under other calendar resources (no nested calendars
      * are allowed).
+     * @param uri URI of the collection to create
+     * @param display_name a human-readable display name to set, or %NULL
+     * @param description a human-readable description of the calendar, or %NULL
+     * @param color a color to set, in format "&num;RRGGBB", or %NULL
+     * @param supports a bit-or of EWebDAVResourceSupports values
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mkcalendar_sync(uri: string, display_name: string | null, description: string | null, color: string | null, supports: number, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30288,17 +33052,27 @@ class WebDAVSession {
      * Note that CardDAV RFC 6352 Section 5.2 forbids to create address book
      * resources under other address book resources (no nested address books
      * are allowed).
+     * @param uri URI of the collection to create
+     * @param display_name a human-readable display name to set, or %NULL
+     * @param description a human-readable description of the address book, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mkcol_addressbook_sync(uri: string, display_name?: string | null, description?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Creates a new generic collection identified by `uri` on the server.
      * To create specific collections use e_webdav_session_mkcalendar_sync()
      * or e_webdav_session_mkcol_addressbook_sync().
+     * @param uri URI of the collection to create
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     mkcol_sync(uri: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Moves a resource identified by `source_uri` to `destination_uri` on the server.
      * The `source_uri` can reference also collections.
+     * @param source_uri URI of the resource or collection to copy
+     * @param destination_uri URI of the destination
+     * @param can_overwrite whether can overwrite `destination_uri,` when it exists
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     move_sync(source_uri: string, destination_uri: string, can_overwrite: boolean, cancellable?: Gio.Cancellable | null): boolean
     new_request(method: string, uri?: string | null): Soup.RequestHTTP
@@ -30317,6 +33091,8 @@ class WebDAVSession {
      * doesn't have any particular meaning and the strings are compared case insensitively.
      * Free the hash table with g_hash_table_destroy(), when no longer needed. The returned
      * value can be %NULL on success, it's when the server doesn't provide the information.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     options_sync(uri?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_capabilities */ GLib.HashTable, /* out_allows */ GLib.HashTable ]
     /**
@@ -30330,6 +33106,12 @@ class WebDAVSession {
      * 
      * The optional `out_content` can be used to get actual result content. Free it
      * with g_byte_array_free(), when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param data data to post to the server
+     * @param data_length length of `data,` or -1, when `data` is NUL-terminated
+     * @param out_content_type return location for response Content-Type, or %NULL
+     * @param out_content return location for response content, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     post_sync(uri: string | null, data: string, data_length: number, out_content_type?: string | null, out_content?: Uint8Array | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30341,6 +33123,13 @@ class WebDAVSession {
      * 
      * The optional `out_content` can be used to get actual result content. Free it
      * with g_byte_array_free(), when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param data data to post to the server
+     * @param data_length length of `data,` or -1, when `data` is NUL-terminated
+     * @param in_content_type a Content-Type of the `data,` or %NULL, to use application/xml
+     * @param out_content_type return location for response Content-Type, or %NULL
+     * @param out_content return location for response content, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     post_with_content_type_sync(uri: string | null, data: string, data_length: number, in_content_type?: string | null, out_content_type?: string | null, out_content?: Uint8Array | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30362,6 +33151,12 @@ class WebDAVSession {
      * Free the returned `out_principals` with
      * g_slist_free_full (principals, e_webdav_resource_free);
      * when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param apply_to_principal_collection_set whether to apply to principal-collection-set
+     * @param match_ns_uri namespace URI of the property to search in, or %NULL for %E_WEBDAV_NS_DAV
+     * @param match_property name of the property to search in
+     * @param match_value a string value to search for
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     principal_property_search_sync(uri: string | null, apply_to_principal_collection_set: boolean, match_ns_uri: string | null, match_property: string, match_value: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_principals */ WebDAVResource[] ]
     /**
@@ -30370,12 +33165,19 @@ class WebDAVSession {
      * DAV:propstat.
      * 
      * The `xml` can be %NULL, in which case the server should behave like DAV:allprop request.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param depth requested depth, can be one of %E_WEBDAV_DEPTH_THIS, %E_WEBDAV_DEPTH_THIS_AND_CHILDREN or %E_WEBDAV_DEPTH_INFINITY
+     * @param xml the request itself, as an #EXmlDocument, the root element should be DAV:propfind, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     propfind_sync(uri: string | null, depth: string, xml?: XmlDocument | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Issues PROPPATCH request on the provided `uri,` or, in case it's %NULL, on the URI
      * defined in associated #ESource, with the `changes`. The order of requested changes
      * inside `xml` is significant, unlike on other places.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param xml an #EXmlDocument with request changes, its root element should be DAV:propertyupdate
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     proppatch_sync(uri: string | null, xml: XmlDocument, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30398,6 +33200,12 @@ class WebDAVSession {
      * The `out_etag` contains ETag of the resource after it had been saved.
      * 
      * To write large data use e_webdav_session_put_sync() instead.
+     * @param uri URI of the resource to write
+     * @param etag an ETag of the resource, if it's an existing resource, or %NULL
+     * @param content_type Content-Type of the `bytes` to be written
+     * @param bytes actual bytes to be written
+     * @param length how many bytes to write, or -1, when the `bytes` is NUL-terminated
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     put_data_sync(uri: string, etag: string | null, content_type: string, bytes: string, length: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_href */ string | null, /* out_etag */ string | null ]
     /**
@@ -30425,6 +33233,11 @@ class WebDAVSession {
      * This method uses Transfer-Encoding:chunked, in contrast to the
      * e_webdav_session_put_data_sync(), which writes data stored in memory
      * like any other request.
+     * @param uri URI of the resource to write
+     * @param etag an ETag of the resource, if it's an existing resource, or %NULL
+     * @param content_type Content-Type of the `bytes` to be written
+     * @param stream a #GInputStream with data to be written
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     put_sync(uri: string, etag: string | null, content_type: string, stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_href */ string | null, /* out_etag */ string | null ]
     /**
@@ -30432,6 +33245,10 @@ class WebDAVSession {
      * or, in case it's %NULL, on the URI defined in associated #ESource.
      * The `lock_token` is returned from e_webdav_session_lock_sync() and
      * the `uri` should be the same as that used with e_webdav_session_lock_sync().
+     * @param uri URI to lock, or %NULL to read from #ESource
+     * @param lock_token token of an existing lock
+     * @param lock_timeout timeout for the lock, in seconds, on 0 to infinity
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     refresh_lock_sync(uri: string | null, lock_token: string, lock_timeout: number, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30449,6 +33266,10 @@ class WebDAVSession {
      * 
      * As the caller might not be interested in errors, also the `inout_error`
      * can be %NULL, in which case the function does nothing.
+     * @param request a #SoupRequestHTTP
+     * @param response_data received response data, or %NULL
+     * @param ignore_multistatus whether to ignore multistatus responses
+     * @param prefix error message prefix, used when replacing, or %NULL
      */
     replace_with_detailed_error(request: Soup.RequestHTTP, response_data: Uint8Array | null, ignore_multistatus: boolean, prefix?: string | null): boolean
     /**
@@ -30465,6 +33286,12 @@ class WebDAVSession {
      * 
      * The optional `out_content` can be used to get actual result content. Free it
      * with g_byte_array_free(), when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param depth requested depth, can be %NULL, then no Depth header is sent
+     * @param xml the request itself, as an #EXmlDocument
+     * @param out_content_type return location for response Content-Type, or %NULL
+     * @param out_content return location for response content, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     report_sync(uri: string | null, depth: string | null, xml: XmlDocument, out_content_type?: string | null, out_content?: Uint8Array | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30487,6 +33314,9 @@ class WebDAVSession {
      * or there's a need to write such Access Control Entry, then do not use
      * e_webdav_session_get_acl_sync(), neither e_webdav_session_set_acl_sync(),
      * and write more generic implementation.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param entries entries to write
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     set_acl_sync(uri: string | null, entries: WebDAVAccessControlEntry[], cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30494,6 +33324,8 @@ class WebDAVSession {
      * 
      * The `message,` if provided, is used to verify that the response is an XML Content-Type.
      * It's used to get the request URI as well.
+     * @param message an optional #SoupMessage corresponding to the response, or %NULL
+     * @param xml_data a #GByteArray containing CALDAV:mkcalendar-response response
      */
     traverse_mkcalendar_response(message: Soup.Message | null, xml_data: Uint8Array): boolean
     /**
@@ -30501,6 +33333,8 @@ class WebDAVSession {
      * 
      * The `message,` if provided, is used to verify that the response is an XML Content-Type.
      * It's used to get the request URI as well.
+     * @param message an optional #SoupMessage corresponding to the response, or %NULL
+     * @param xml_data a #GByteArray containing DAV:mkcol-response response
      */
     traverse_mkcol_response(message: Soup.Message | null, xml_data: Uint8Array): boolean
     /**
@@ -30508,6 +33342,8 @@ class WebDAVSession {
      * 
      * The `message,` if provided, is used to verify that the response is a multi-status
      * and that the Content-Type is properly set. It's used to get a request URI as well.
+     * @param message an optional #SoupMessage corresponding to the response, or %NULL
+     * @param xml_data a #GByteArray containing DAV:multistatus response
      */
     traverse_multistatus_response(message: Soup.Message | null, xml_data: Uint8Array): boolean
     /**
@@ -30515,6 +33351,9 @@ class WebDAVSession {
      * or, in case it's %NULL, on the URI defined in associated #ESource.
      * The `lock_token` is returned from e_webdav_session_lock_sync() and
      * the `uri` should be the same as that used with e_webdav_session_lock_sync().
+     * @param uri URI to lock, or %NULL to read from #ESource
+     * @param lock_token token of an existing lock
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     unlock_sync(uri: string | null, lock_token: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30525,6 +33364,9 @@ class WebDAVSession {
      * This function supports only flat properties, those not under other element.
      * To support more complex property tries use e_webdav_session_proppatch_sync()
      * directly.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param changes a #GSList with request changes
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     update_properties_sync(uri: string | null, changes: WebDAVPropertyChange[], cancellable?: Gio.Cancellable | null): boolean
     /* Methods of EDataServer-1.2.EDataServer.SoupSession */
@@ -30533,6 +33375,9 @@ class WebDAVSession {
      * When it failed and the `read_bytes` is provided, then these are
      * set to `request'`s message response_body, thus it can be used
      * later.
+     * @param request a #SoupRequestHTTP
+     * @param read_bytes optional bytes which had been read from the stream, or %NULL
+     * @param bytes_length how many bytes had been read; ignored when `read_bytes` is %NULL
      */
     check_result(request: Soup.RequestHTTP, read_bytes: object | null, bytes_length: number): boolean
     dup_credentials(): NamedParameters | null
@@ -30550,6 +33395,8 @@ class WebDAVSession {
      * and with "Connection" to be "close".
      * 
      * See also e_soup_session_new_request_uri().
+     * @param method an HTTP method
+     * @param uri_string a URI string to use for the request
      */
     new_request(method: string, uri_string: string): Soup.RequestHTTP
     /**
@@ -30558,6 +33405,8 @@ class WebDAVSession {
      * and with "Connection" to be "close".
      * 
      * See also e_soup_session_new_request().
+     * @param method an HTTP method
+     * @param uri a #SoupURI to use for the request
      */
     new_request_uri(method: string, uri: Soup.URI): Soup.RequestHTTP
     /**
@@ -30568,6 +33417,8 @@ class WebDAVSession {
      * 
      * The function prints read content to stdout when
      * e_soup_session_get_log_level() returns #SOUP_LOGGER_LOG_BODY.
+     * @param request a #SoupRequestHTTP to send
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     send_request_simple_sync(request: Soup.RequestHTTP, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
@@ -30590,11 +33441,14 @@ class WebDAVSession {
      * read from the resulting #GInputStream, thus use
      * e_soup_session_check_result() to verify that the receive had
      * been finished properly.
+     * @param request a #SoupRequestHTTP to send
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     send_request_sync(request: Soup.RequestHTTP, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
      * Sets credentials to use for connection. Using %NULL for `credentials`
      * unsets previous value.
+     * @param credentials an #ENamedParameters with credentials to use, or %NULL
      */
     set_credentials(credentials?: NamedParameters | null): void
     /**
@@ -30607,6 +33461,7 @@ class WebDAVSession {
      * Any other value, including %NULL, disables logging.
      * 
      * Use e_soup_session_get_log_level() to get current log level.
+     * @param logging_level logging level to setup, or %NULL
      */
     setup_logging(logging_level?: string | null): void
     /* Methods of Soup-2.4.Soup.Session */
@@ -30628,6 +33483,7 @@ class WebDAVSession {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature an object that implements #SoupSessionFeature
      */
     add_feature(feature: Soup.SessionFeature): void
     /**
@@ -30646,6 +33502,7 @@ class WebDAVSession {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature_type a #GType
      */
     add_feature_by_type(feature_type: GObject.Type): void
     /**
@@ -30671,6 +33528,8 @@ class WebDAVSession {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     cancel_message(msg: Soup.Message, status_code: number): void
     /**
@@ -30678,10 +33537,15 @@ class WebDAVSession {
      * and finishes when the connection is done or an error ocurred.
      * 
      * Call soup_session_connect_finish() to get the #GIOStream to communicate with the server.
+     * @param uri a #SoupURI to connect to
+     * @param cancellable a #GCancellable
+     * @param progress_callback a #SoupSessionConnectProgressCallback which will be called for every network event that occurs during the connection.
+     * @param callback the callback to invoke when the operation finishes
      */
     connect_async(uri: Soup.URI, cancellable?: Gio.Cancellable | null, progress_callback?: Soup.SessionConnectProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the #GIOStream created for the connection to communicate with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     connect_finish(result: Gio.AsyncResult): Gio.IOStream
     /**
@@ -30697,6 +33561,7 @@ class WebDAVSession {
      * Gets the first feature in `session` of type `feature_type`. For
      * features where there may be more than one feature of a given type,
      * use soup_session_get_features().
+     * @param feature_type the #GType of the feature to get
      */
     get_feature(feature_type: GObject.Type): Soup.SessionFeature | null
     /**
@@ -30707,12 +33572,15 @@ class WebDAVSession {
      * particular, if there are two matching features, and the first is
      * disabled on `msg,` and the second is not, then this will return
      * %NULL, not the second feature.
+     * @param feature_type the #GType of the feature to get
+     * @param msg a #SoupMessage
      */
     get_feature_for_message(feature_type: GObject.Type, msg: Soup.Message): Soup.SessionFeature | null
     /**
      * Generates a list of `session'`s features of type `feature_type`. (If
      * you want to see all features, you can pass %SOUP_TYPE_SESSION_FEATURE
      * for `feature_type`.)
+     * @param feature_type the #GType of the class of features to get
      */
     get_features(feature_type: GObject.Type): Soup.SessionFeature[]
     /**
@@ -30720,6 +33588,7 @@ class WebDAVSession {
      * be the type of either a #SoupSessionFeature, or else a subtype of
      * some class managed by another feature, such as #SoupAuth or
      * #SoupRequest).
+     * @param feature_type the #GType of the class of features to check for
      */
     has_feature(feature_type: GObject.Type): boolean
     /**
@@ -30728,6 +33597,7 @@ class WebDAVSession {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     pause_message(msg: Soup.Message): void
     /**
@@ -30739,6 +33609,9 @@ class WebDAVSession {
      * If `cancellable` is non-%NULL, it can be used to cancel the
      * resolution. `callback` will still be invoked in this case, with a
      * status of %SOUP_STATUS_CANCELLED.
+     * @param hostname a hostname to be resolved
+     * @param cancellable a #GCancellable object, or %NULL
+     * @param callback callback to call with the     result, or %NULL
      */
     prefetch_dns(hostname: string, cancellable?: Gio.Cancellable | null, callback?: Soup.AddressCallback | null): void
     /**
@@ -30746,6 +33619,7 @@ class WebDAVSession {
      * session can try to prepare (resolving the domain name, obtaining
      * proxy address, etc.) in order to work more quickly once the URI is
      * actually requested.
+     * @param uri a #SoupURI which may be required
      */
     prepare_for_uri(uri: Soup.URI): void
     /**
@@ -30769,6 +33643,8 @@ class WebDAVSession {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     queue_message(msg: Soup.Message, callback?: Soup.SessionCallback | null): void
     /**
@@ -30784,10 +33660,12 @@ class WebDAVSession {
      * 
      * If `msg` has already been redirected too many times, this will
      * cause it to fail with %SOUP_STATUS_TOO_MANY_REDIRECTS.
+     * @param msg a #SoupMessage that has received a 3xx response
      */
     redirect_message(msg: Soup.Message): boolean
     /**
      * Removes `feature'`s functionality from `session`.
+     * @param feature a feature that has previously been added to `session`
      */
     remove_feature(feature: Soup.SessionFeature): void
     /**
@@ -30795,31 +33673,39 @@ class WebDAVSession {
      * `feature_type)` from `session`. You can also remove standard features
      * from the session at construct time by using the
      * %SOUP_SESSION_REMOVE_FEATURE_BY_TYPE property.
+     * @param feature_type a #GType
      */
     remove_feature_by_type(feature_type: GObject.Type): void
     /**
      * Creates a #SoupRequest for retrieving `uri_string`.
+     * @param uri_string a URI, in string form
      */
     request(uri_string: string): Soup.Request
     /**
      * Creates a #SoupRequest for retrieving `uri_string,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri_string a URI, in string form
      */
     request_http(method: string, uri_string: string): Soup.RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_http_uri(method: string, uri: Soup.URI): Soup.RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri`.
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_uri(uri: Soup.URI): Soup.Request
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     requeue_message(msg: Soup.Message): void
     /**
@@ -30848,6 +33734,8 @@ class WebDAVSession {
      * 
      * (Note that this method cannot be called on the deprecated
      * #SoupSessionAsync subclass.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
      */
     send(msg: Soup.Message, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -30867,12 +33755,16 @@ class WebDAVSession {
      * #SoupSessionSync subclass, and can only be called on
      * #SoupSessionAsync if you have set the
      * #SoupSession:use-thread-context property.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     send_async(msg: Soup.Message, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the response to a soup_session_send_async() call and (if
      * successful), returns a #GInputStream that can be used to read the
      * response body.
+     * @param result the #GAsyncResult passed to your callback
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -30892,6 +33784,7 @@ class WebDAVSession {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     send_message(msg: Soup.Message): number
     /**
@@ -30903,6 +33796,7 @@ class WebDAVSession {
      * 
      * Calling this function may cause `msg` to be freed if you are not
      * holding any other reference to it.
+     * @param msg the message whose connection is to be stolen
      */
     steal_connection(msg: Soup.Message): Gio.IOStream
     /**
@@ -30915,6 +33809,7 @@ class WebDAVSession {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     unpause_message(msg: Soup.Message): void
     /**
@@ -30936,6 +33831,11 @@ class WebDAVSession {
      * and body from the server's response, and
      * soup_session_websocket_connect_finish() will return
      * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
+     * @param msg #SoupMessage indicating the WebSocket server to connect to
+     * @param origin origin of the connection
+     * @param protocols a   %NULL-terminated array of protocols supported
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     websocket_connect_async(msg: Soup.Message, origin?: string | null, protocols?: string[] | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -30943,12 +33843,14 @@ class WebDAVSession {
      * soup_session_websocket_connect_async() call and (if successful),
      * returns a #SoupWebsocketConnection that can be used to communicate
      * with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     websocket_connect_finish(result: Gio.AsyncResult): Soup.WebsocketConnection
     /**
      * Checks if `msg` contains a response that would cause `session` to
      * redirect it to a new URL (ignoring `msg'`s %SOUP_MESSAGE_NO_REDIRECT
      * flag, and the number of times it has already been redirected).
+     * @param msg a #SoupMessage that has response headers
      */
     would_redirect(msg: Soup.Message): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -30986,6 +33888,10 @@ class WebDAVSession {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30996,6 +33902,12 @@ class WebDAVSession {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -31019,6 +33931,7 @@ class WebDAVSession {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -31038,11 +33951,14 @@ class WebDAVSession {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -31050,6 +33966,8 @@ class WebDAVSession {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31067,6 +33985,7 @@ class WebDAVSession {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -31112,6 +34031,7 @@ class WebDAVSession {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -31155,15 +34075,20 @@ class WebDAVSession {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -31204,6 +34129,7 @@ class WebDAVSession {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -31238,6 +34164,7 @@ class WebDAVSession {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Session */
@@ -31266,6 +34193,8 @@ class WebDAVSession {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     vfunc_cancel_message(msg: Soup.Message, status_code: number): void
     vfunc_flush_queue(): void
@@ -31291,12 +34220,15 @@ class WebDAVSession {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     vfunc_queue_message(msg: Soup.Message, callback?: Soup.SessionCallback | null): void
     vfunc_request_started(msg: Soup.Message, socket: Soup.Socket): void
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     vfunc_requeue_message(msg: Soup.Message): void
     /**
@@ -31316,6 +34248,7 @@ class WebDAVSession {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     vfunc_send_message(msg: Soup.Message): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -31335,6 +34268,7 @@ class WebDAVSession {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31355,6 +34289,9 @@ class WebDAVSession {
      * (as long as you g_object_ref() it to make sure it doesn't
      * get destroyed), and then unpause `msg` when you are ready
      * for it to continue.
+     * @param msg the #SoupMessage being sent
+     * @param auth the #SoupAuth to authenticate
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: (($obj: WebDAVSession, msg: Soup.Message, auth: Soup.Auth, retrying: boolean) => void)): number
     connect_after(sigName: "authenticate", callback: (($obj: WebDAVSession, msg: Soup.Message, auth: Soup.Auth, retrying: boolean) => void)): number
@@ -31363,6 +34300,7 @@ class WebDAVSession {
      * Emitted when a new connection is created. This is an
      * internal signal intended only to be used for debugging
      * purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "connection-created", callback: (($obj: WebDAVSession, connection: GObject.Object) => void)): number
     connect_after(sigName: "connection-created", callback: (($obj: WebDAVSession, connection: GObject.Object) => void)): number
@@ -31403,6 +34341,7 @@ class WebDAVSession {
      * exactly once, but #SoupSession::request_started and
      * #SoupMessage::finished (and all of the other #SoupMessage
      * signals) may be invoked multiple times for a given message.
+     * @param msg the request that was queued
      */
     connect(sigName: "request-queued", callback: (($obj: WebDAVSession, msg: Soup.Message) => void)): number
     connect_after(sigName: "request-queued", callback: (($obj: WebDAVSession, msg: Soup.Message) => void)): number
@@ -31411,6 +34350,8 @@ class WebDAVSession {
      * Emitted just before a request is sent. See
      * #SoupSession::request_queued for a detailed description of
      * the message lifecycle within a session.
+     * @param msg the request being sent
+     * @param socket the socket the request is being sent on
      */
     connect(sigName: "request-started", callback: (($obj: WebDAVSession, msg: Soup.Message, socket: Soup.Socket) => void)): number
     connect_after(sigName: "request-started", callback: (($obj: WebDAVSession, msg: Soup.Message, socket: Soup.Socket) => void)): number
@@ -31420,6 +34361,7 @@ class WebDAVSession {
      * indicating that `session` is done with it. See
      * #SoupSession::request_queued for a detailed description of the
      * message lifecycle within a session.
+     * @param msg the request that was unqueued
      */
     connect(sigName: "request-unqueued", callback: (($obj: WebDAVSession, msg: Soup.Message) => void)): number
     connect_after(sigName: "request-unqueued", callback: (($obj: WebDAVSession, msg: Soup.Message) => void)): number
@@ -31428,6 +34370,7 @@ class WebDAVSession {
      * Emitted when an SSL tunnel is being created on a proxy
      * connection. This is an internal signal intended only to be
      * used for debugging purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "tunneling", callback: (($obj: WebDAVSession, connection: GObject.Object) => void)): number
     connect_after(sigName: "tunneling", callback: (($obj: WebDAVSession, connection: GObject.Object) => void)): number
@@ -31461,22 +34404,29 @@ class WebDAVSession {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::credentials", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::credentials", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-language", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-language-auto", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language-auto", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::async-context", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::async-context", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::http-aliases", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::http-aliases", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::https-aliases", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::https-aliases", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::idle-timeout", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle-timeout", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::local-address", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-address", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-conns", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns-per-host", callback: (($obj: WebDAVSession, pspec: GObject.ParamSpec) => void)): number
@@ -31518,6 +34468,7 @@ class WebDAVSession {
     /**
      * Frees `privileges` returned by e_webdav_session_get_supported_privilege_set_sync().
      * The function does nothing, if `privileges` is %NULL.
+     * @param privileges a tree of #EWebDAVPrivilege structures
      */
     static util_free_privileges(privileges?: GLib.Node | null): void
     /**
@@ -31528,12 +34479,15 @@ class WebDAVSession {
      * case sensitively. It also ignores the username/password
      * information in the hostname part, if it's included.
      * The function doesn't decode any URI-encoded characters.
+     * @param href1 the first href
+     * @param href2 the second href
      */
     static util_item_href_equal(href1: string, href2: string): boolean
     /**
      * Dequotes `text,` if it's enclosed in double-quotes. The function
      * changes `text,` it doesn't allocate new string. The function does
      * nothing when the `text` is not enclosed in double-quotes.
+     * @param text text to dequote
      */
     static util_maybe_dequote(text?: string | null): [ /* returnType */ string, /* text */ string | null ]
     static $gtype: GObject.Type
@@ -31542,13 +34496,16 @@ interface XmlDocument_ConstructProps extends GObject.Object_ConstructProps {
 }
 class XmlDocument {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of EDataServer-1.2.EDataServer.XmlDocument */
     /**
      * Adds a new attribute to the current element.
      * Use %NULL `ns_href,` to use the default namespace, otherwise either previously
      * added namespace with the same href from e_xml_document_add_namespaces() is picked,
      * or a new namespace with generated prefix is added.
+     * @param ns_href optional namespace href for the new attribute, or %NULL
+     * @param name name of the attribute
+     * @param value value of the attribute
      */
     add_attribute(ns_href: string | null, name: string, value: string): void
     /**
@@ -31556,6 +34513,9 @@ class XmlDocument {
      * Use %NULL `ns_href,` to use the default namespace, otherwise either previously
      * added namespace with the same href from e_xml_document_add_namespaces() is picked,
      * or a new namespace with generated prefix is added.
+     * @param ns_href optional namespace href for the new attribute, or %NULL
+     * @param name name of the attribute
+     * @param value double value of the attribute
      */
     add_attribute_double(ns_href: string | null, name: string, value: number): void
     /**
@@ -31563,6 +34523,9 @@ class XmlDocument {
      * Use %NULL `ns_href,` to use the default namespace, otherwise either previously
      * added namespace with the same href from e_xml_document_add_namespaces() is picked,
      * or a new namespace with generated prefix is added.
+     * @param ns_href optional namespace href for the new attribute, or %NULL
+     * @param name name of the attribute
+     * @param value integer value of the attribute
      */
     add_attribute_int(ns_href: string | null, name: string, value: number): void
     /**
@@ -31571,6 +34534,9 @@ class XmlDocument {
      * Use %NULL `ns_href,` to use the default namespace, otherwise either previously
      * added namespace with the same href from e_xml_document_add_namespaces() is picked,
      * or a new namespace with generated prefix is added.
+     * @param ns_href optional namespace href for the new attribute, or %NULL
+     * @param name name of the attribute
+     * @param value time_t value of the attribute
      */
     add_attribute_time(ns_href: string | null, name: string, value: number): void
     /**
@@ -31579,6 +34545,9 @@ class XmlDocument {
      * Use %NULL `ns_href,` to use the default namespace, otherwise either previously
      * added namespace with the same href from e_xml_document_add_namespaces() is picked,
      * or a new namespace with generated prefix is added.
+     * @param ns_href optional namespace href for the new attribute, or %NULL
+     * @param name name of the attribute
+     * @param value time_t value of the attribute
      */
     add_attribute_time_ical(ns_href: string | null, name: string, value: number): void
     /**
@@ -31586,6 +34555,8 @@ class XmlDocument {
      * 
      * It's the same as calling e_xml_document_start_element() immediately
      * followed by e_xml_document_end_element().
+     * @param ns_href optional namespace href for the new element, or %NULL
+     * @param name name of the new element
      */
     add_empty_element(ns_href: string | null, name: string): void
     /**
@@ -31609,6 +34580,8 @@ class XmlDocument {
      * or a new namespace with generated prefix is added.
      * 
      * To start a text node use e_xml_document_start_text_element().
+     * @param ns_href optional namespace href for the new element, or %NULL
+     * @param name name of the new element
      */
     start_element(ns_href: string | null, name: string): void
     /**
@@ -31619,31 +34592,41 @@ class XmlDocument {
      * or a new namespace with generated prefix is added.
      * 
      * To start a non-text node use e_xml_document_start_element().
+     * @param ns_href optional namespace href for the new element, or %NULL
+     * @param name name of the new element
      */
     start_text_element(ns_href: string | null, name: string): void
     /**
      * Writes `value` of length `len,` encoded to base64, as content of the current element.
+     * @param value value to write as the content
+     * @param len length of `value`
      */
     write_base64(value: string, len: number): void
     /**
      * Writes `value` of length `len` as content of the current element.
+     * @param value value to write as the content
+     * @param len length of `value`
      */
     write_buffer(value: string, len: number): void
     /**
      * Writes `value` as content of the current element.
+     * @param value value to write as the content
      */
     write_double(value: number): void
     /**
      * Writes `value` as content of the current element.
+     * @param value value to write as the content
      */
     write_int(value: number): void
     /**
      * Writes `value` as content of the current element.
+     * @param value value to write as the content
      */
     write_string(value: string): void
     /**
      * Writes `value` in ISO 8601 format as content of the current element.
      * The format is "YYYY-MM-DDTHH:MM:SSZ".
+     * @param value value to write as the content
      */
     write_time(value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -31681,6 +34664,10 @@ class XmlDocument {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -31691,6 +34678,12 @@ class XmlDocument {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -31714,6 +34707,7 @@ class XmlDocument {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -31733,11 +34727,14 @@ class XmlDocument {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -31745,6 +34742,8 @@ class XmlDocument {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31762,6 +34761,7 @@ class XmlDocument {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -31807,6 +34807,7 @@ class XmlDocument {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -31850,15 +34851,20 @@ class XmlDocument {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -31899,6 +34905,7 @@ class XmlDocument {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -31933,6 +34940,7 @@ class XmlDocument {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -31952,6 +34960,7 @@ class XmlDocument {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31984,6 +34993,7 @@ class XmlDocument {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: XmlDocument, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: XmlDocument, pspec: GObject.ParamSpec) => void)): number
@@ -32004,30 +35014,30 @@ class AsyncClosure {
 }
 abstract class ClientClass {
     /* Fields of EDataServer-1.2.EDataServer.ClientClass */
-    readonly unwrap_dbus_error: (client: Client, dbus_error: GLib.Error) => void
-    readonly retrieve_capabilities: (client: Client, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly retrieve_capabilities_finish: (client: Client, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* capabilities */ string ]
-    readonly retrieve_capabilities_sync: (client: Client, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* capabilities */ string ]
-    readonly get_backend_property: (client: Client, prop_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly get_backend_property_finish: (client: Client, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* prop_value */ string ]
-    readonly get_backend_property_sync: (client: Client, prop_name: string, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* prop_value */ string ]
-    readonly set_backend_property: (client: Client, prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly set_backend_property_finish: (client: Client, result: Gio.AsyncResult) => boolean
-    readonly set_backend_property_sync: (client: Client, prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null) => boolean
-    readonly open: (client: Client, only_if_exists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly open_finish: (client: Client, result: Gio.AsyncResult) => boolean
-    readonly open_sync: (client: Client, only_if_exists: boolean, cancellable?: Gio.Cancellable | null) => boolean
-    readonly remove: (client: Client, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly remove_finish: (client: Client, result: Gio.AsyncResult) => boolean
-    readonly remove_sync: (client: Client, cancellable?: Gio.Cancellable | null) => boolean
-    readonly refresh: (client: Client, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly refresh_finish: (client: Client, result: Gio.AsyncResult) => boolean
-    readonly refresh_sync: (client: Client, cancellable?: Gio.Cancellable | null) => boolean
-    readonly retrieve_properties_sync: (client: Client, cancellable?: Gio.Cancellable | null) => boolean
-    readonly opened: (client: Client, error: GLib.Error) => void
-    readonly backend_error: (client: Client, error_msg: string) => void
-    readonly backend_died: (client: Client) => void
-    readonly backend_property_changed: (client: Client, prop_name: string, prop_value: string) => void
+    unwrap_dbus_error: (client: Client, dbus_error: GLib.Error) => void
+    retrieve_capabilities: (client: Client, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    retrieve_capabilities_finish: (client: Client, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* capabilities */ string ]
+    retrieve_capabilities_sync: (client: Client, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* capabilities */ string ]
+    get_backend_property: (client: Client, prop_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    get_backend_property_finish: (client: Client, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* prop_value */ string ]
+    get_backend_property_sync: (client: Client, prop_name: string, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* prop_value */ string ]
+    set_backend_property: (client: Client, prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    set_backend_property_finish: (client: Client, result: Gio.AsyncResult) => boolean
+    set_backend_property_sync: (client: Client, prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null) => boolean
+    open: (client: Client, only_if_exists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    open_finish: (client: Client, result: Gio.AsyncResult) => boolean
+    open_sync: (client: Client, only_if_exists: boolean, cancellable?: Gio.Cancellable | null) => boolean
+    remove: (client: Client, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    remove_finish: (client: Client, result: Gio.AsyncResult) => boolean
+    remove_sync: (client: Client, cancellable?: Gio.Cancellable | null) => boolean
+    refresh: (client: Client, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    refresh_finish: (client: Client, result: Gio.AsyncResult) => boolean
+    refresh_sync: (client: Client, cancellable?: Gio.Cancellable | null) => boolean
+    retrieve_properties_sync: (client: Client, cancellable?: Gio.Cancellable | null) => boolean
+    opened: (client: Client, error: GLib.Error) => void
+    backend_error: (client: Client, error_msg: string) => void
+    backend_died: (client: Client) => void
+    backend_property_changed: (client: Client, prop_name: string, prop_value: string) => void
     static name: string
 }
 class ClientErrorsList {
@@ -32047,6 +35057,8 @@ class Collator {
      * Either `str_a` or `str_b` can be %NULL, %NULL strings are considered to sort below other strings.
      * 
      * This function will first ensure that both strings are valid UTF-8.
+     * @param str_a A string to compare
+     * @param str_b The string to compare with `str_a`
      */
     collate(str_a?: string | null, str_b?: string | null): [ /* returnType */ boolean, /* result */ number ]
     /**
@@ -32055,6 +35067,7 @@ class Collator {
      * of calling e_collator_collate() on the same original strings.
      * 
      * This function will first ensure that `str` is valid UTF-8 encoded.
+     * @param str The string to generate a collation key for
      */
     generate_key(str: string): string
     /**
@@ -32070,11 +35083,13 @@ class Collator {
      * the characters 'e', 'E', 'é', 'É', 'è' or 'È'. It will also
      * sort above any sort keys generated for words starting with
      * the characters 'd' or 'D'.
+     * @param index An index into the alphabetic labels
      */
     generate_key_for_index(index: number): string
     /**
      * Checks which index, as determined by e_collator_get_index_labels(),
      * that `str` should sort under.
+     * @param str A string
      */
     get_index(str: string): number
     /**
@@ -32100,13 +35115,13 @@ class Collator {
 }
 abstract class ExtensibleInterface {
     /* Fields of EDataServer-1.2.EDataServer.ExtensibleInterface */
-    readonly parent_interface: GObject.TypeInterface
+    parent_interface: GObject.TypeInterface
     static name: string
 }
 abstract class ExtensionClass {
     /* Fields of EDataServer-1.2.EDataServer.ExtensionClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly extensible_type: GObject.Type
+    parent_class: GObject.ObjectClass
+    extensible_type: GObject.Type
     static name: string
 }
 class ExtensionPrivate {
@@ -32117,14 +35132,14 @@ class Flag {
 }
 class FreeFormExpSymbol {
     /* Fields of EDataServer-1.2.EDataServer.FreeFormExpSymbol */
-    readonly names: string
-    readonly hint: string
-    readonly build_sexp: FreeFormExpBuildSexpFunc
+    names: string
+    hint: string
+    build_sexp: FreeFormExpBuildSexpFunc
     static name: string
 }
 abstract class GDataOAuth2AuthorizerClass {
     /* Fields of EDataServer-1.2.EDataServer.GDataOAuth2AuthorizerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class GDataOAuth2AuthorizerPrivate {
@@ -32135,7 +35150,7 @@ class MemChunk {
 }
 abstract class ModuleClass {
     /* Fields of EDataServer-1.2.EDataServer.ModuleClass */
-    readonly parent_class: GObject.TypeModuleClass
+    parent_class: GObject.TypeModuleClass
     static name: string
 }
 class ModulePrivate {
@@ -32146,6 +35161,7 @@ class NamedParameters {
     /**
      * Makes content of the `parameters` the same as `from`.
      * Functions clears content of `parameters` if `from` is %NULL.
+     * @param from an #ENamedParameters to get values from, or %NULL
      */
     assign(from?: NamedParameters | null): void
     /**
@@ -32163,6 +35179,7 @@ class NamedParameters {
     /**
      * Returns current value of a parameter with name `name`. If not such
      * exists, then returns %NULL.
+     * @param name name of a parameter to get
      */
     get(name: string): string | null
     get_name(index: number): string | null
@@ -32181,6 +35198,8 @@ class NamedParameters {
      * 
      * Note: There is a restriction on parameter names, it cannot be empty or
      * contain a colon character (':'), otherwise it can be pretty much anything.
+     * @param name name of a parameter to set
+     * @param value value to set, or %NULL to unset
      */
     set(name: string, value?: string | null): void
     /**
@@ -32188,6 +35207,9 @@ class NamedParameters {
      * and returns whether they are equal, either case sensitively or
      * insensitively, based on `case_sensitively` argument. Function
      * returns %FALSE, if no such parameter exists.
+     * @param name name of a parameter to test
+     * @param value value to test
+     * @param case_sensitively whether to compare case sensitively
      */
     test(name: string, value: string, case_sensitively: boolean): boolean
     to_string(): string | null
@@ -32202,7 +35224,7 @@ class NamedParameters {
 }
 abstract class NetworkMonitorClass {
     /* Fields of EDataServer-1.2.EDataServer.NetworkMonitorClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class NetworkMonitorPrivate {
@@ -32210,51 +35232,51 @@ class NetworkMonitorPrivate {
 }
 abstract class OAuth2ServiceBaseClass {
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServiceBaseClass */
-    readonly parent_class: ExtensionClass
+    parent_class: ExtensionClass
     static name: string
 }
 abstract class OAuth2ServiceGoogleClass {
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServiceGoogleClass */
-    readonly parent_class: OAuth2ServiceBaseClass
+    parent_class: OAuth2ServiceBaseClass
     static name: string
 }
 abstract class OAuth2ServiceInterface {
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServiceInterface */
-    readonly parent_interface: GObject.TypeInterface
-    readonly can_process: (service: OAuth2Service, source: Source) => boolean
-    readonly guess_can_process: (service: OAuth2Service, protocol?: string | null, hostname?: string | null) => boolean
-    readonly get_flags: (service: OAuth2Service) => number
-    readonly get_name: (service: OAuth2Service) => string
-    readonly get_display_name: (service: OAuth2Service) => string
-    readonly get_client_id: (service: OAuth2Service, source: Source) => string
-    readonly get_client_secret: (service: OAuth2Service, source: Source) => string | null
-    readonly get_authentication_uri: (service: OAuth2Service, source: Source) => string
-    readonly get_refresh_uri: (service: OAuth2Service, source: Source) => string
-    readonly get_redirect_uri: (service: OAuth2Service, source: Source) => string | null
-    readonly prepare_authentication_uri_query: (service: OAuth2Service, source: Source, uri_query: GLib.HashTable) => void
-    readonly get_authentication_policy: (service: OAuth2Service, source: Source, uri: string) => OAuth2ServiceNavigationPolicy
-    readonly extract_authorization_code: (service: OAuth2Service, source: Source, page_title: string, page_uri: string, page_content?: string | null) => [ /* returnType */ boolean, /* out_authorization_code */ string ]
-    readonly prepare_get_token_form: (service: OAuth2Service, source: Source, authorization_code: string, form: GLib.HashTable) => void
-    readonly prepare_get_token_message: (service: OAuth2Service, source: Source, message: Soup.Message) => void
-    readonly prepare_refresh_token_form: (service: OAuth2Service, source: Source, refresh_token: string, form: GLib.HashTable) => void
-    readonly prepare_refresh_token_message: (service: OAuth2Service, source: Source, message: Soup.Message) => void
-    readonly reserved: object[]
+    parent_interface: GObject.TypeInterface
+    can_process: (service: OAuth2Service, source: Source) => boolean
+    guess_can_process: (service: OAuth2Service, protocol?: string | null, hostname?: string | null) => boolean
+    get_flags: (service: OAuth2Service) => number
+    get_name: (service: OAuth2Service) => string
+    get_display_name: (service: OAuth2Service) => string
+    get_client_id: (service: OAuth2Service, source: Source) => string
+    get_client_secret: (service: OAuth2Service, source: Source) => string | null
+    get_authentication_uri: (service: OAuth2Service, source: Source) => string
+    get_refresh_uri: (service: OAuth2Service, source: Source) => string
+    get_redirect_uri: (service: OAuth2Service, source: Source) => string | null
+    prepare_authentication_uri_query: (service: OAuth2Service, source: Source, uri_query: GLib.HashTable) => void
+    get_authentication_policy: (service: OAuth2Service, source: Source, uri: string) => OAuth2ServiceNavigationPolicy
+    extract_authorization_code: (service: OAuth2Service, source: Source, page_title: string, page_uri: string, page_content?: string | null) => [ /* returnType */ boolean, /* out_authorization_code */ string ]
+    prepare_get_token_form: (service: OAuth2Service, source: Source, authorization_code: string, form: GLib.HashTable) => void
+    prepare_get_token_message: (service: OAuth2Service, source: Source, message: Soup.Message) => void
+    prepare_refresh_token_form: (service: OAuth2Service, source: Source, refresh_token: string, form: GLib.HashTable) => void
+    prepare_refresh_token_message: (service: OAuth2Service, source: Source, message: Soup.Message) => void
+    reserved: object[]
     static name: string
 }
 abstract class OAuth2ServiceOutlookClass {
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServiceOutlookClass */
-    readonly parent_class: OAuth2ServiceBaseClass
+    parent_class: OAuth2ServiceBaseClass
     static name: string
 }
 abstract class OAuth2ServiceYahooClass {
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServiceYahooClass */
-    readonly parent_class: OAuth2ServiceBaseClass
+    parent_class: OAuth2ServiceBaseClass
     static name: string
 }
 abstract class OAuth2ServicesClass {
     /* Fields of EDataServer-1.2.EDataServer.OAuth2ServicesClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly reserved: object[]
+    parent_class: GObject.ObjectClass
+    reserved: object[]
     static name: string
 }
 class OAuth2ServicesPrivate {
@@ -32269,10 +35291,12 @@ class OperationPool {
     /**
      * Pushes an operation to be processed.  `opdata` is passed to the function
      * provided in e_operation_pool_new().
+     * @param opdata user data for the operation
      */
     push(opdata?: object | null): void
     /**
      * Releases `opid` previously reserved by e_operation_pool_reserve_opid().
+     * @param opid an operation ID
      */
     release_opid(opid: number): void
     /**
@@ -32285,7 +35309,7 @@ class OperationPool {
 }
 abstract class SoupAuthBearerClass {
     /* Fields of EDataServer-1.2.EDataServer.SoupAuthBearerClass */
-    readonly parent_class: Soup.AuthClass
+    parent_class: Soup.AuthClass
     static name: string
 }
 class SoupAuthBearerPrivate {
@@ -32293,8 +35317,8 @@ class SoupAuthBearerPrivate {
 }
 abstract class SoupSessionClass {
     /* Fields of EDataServer-1.2.EDataServer.SoupSessionClass */
-    readonly parent_class: Soup.SessionClass
-    readonly reserved: object[]
+    parent_class: Soup.SessionClass
+    reserved: object[]
     static name: string
 }
 class SoupSessionPrivate {
@@ -32302,7 +35326,7 @@ class SoupSessionPrivate {
 }
 abstract class SourceAddressBookClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceAddressBookClass */
-    readonly parent_class: SourceBackendClass
+    parent_class: SourceBackendClass
     static name: string
 }
 class SourceAddressBookPrivate {
@@ -32310,7 +35334,7 @@ class SourceAddressBookPrivate {
 }
 abstract class SourceAlarmsClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceAlarmsClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceAlarmsPrivate {
@@ -32318,7 +35342,7 @@ class SourceAlarmsPrivate {
 }
 abstract class SourceAuthenticationClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceAuthenticationClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceAuthenticationPrivate {
@@ -32326,7 +35350,7 @@ class SourceAuthenticationPrivate {
 }
 abstract class SourceAutocompleteClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceAutocompleteClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceAutocompletePrivate {
@@ -32334,7 +35358,7 @@ class SourceAutocompletePrivate {
 }
 abstract class SourceAutoconfigClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceAutoconfigClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceAutoconfigPrivate {
@@ -32342,7 +35366,7 @@ class SourceAutoconfigPrivate {
 }
 abstract class SourceBackendClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceBackendClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceBackendPrivate {
@@ -32350,7 +35374,7 @@ class SourceBackendPrivate {
 }
 abstract class SourceCalendarClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceCalendarClass */
-    readonly parent_class: SourceSelectableClass
+    parent_class: SourceSelectableClass
     static name: string
 }
 class SourceCalendarPrivate {
@@ -32358,8 +35382,8 @@ class SourceCalendarPrivate {
 }
 abstract class SourceCamelClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceCamelClass */
-    readonly parent_class: SourceExtensionClass
-    readonly settings_type: GObject.Type
+    parent_class: SourceExtensionClass
+    settings_type: GObject.Type
     static name: string
 }
 class SourceCamelPrivate {
@@ -32367,34 +35391,34 @@ class SourceCamelPrivate {
 }
 abstract class SourceClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly changed: (source: Source) => void
-    readonly credentials_required: (source: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error) => void
-    readonly authenticate: (source: Source, credentials: NamedParameters) => void
-    readonly remove_sync: (source: Source, cancellable?: Gio.Cancellable | null) => boolean
-    readonly remove: (source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly remove_finish: (source: Source, result: Gio.AsyncResult) => boolean
-    readonly write_sync: (source: Source, cancellable?: Gio.Cancellable | null) => boolean
-    readonly write: (source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly write_finish: (source: Source, result: Gio.AsyncResult) => boolean
-    readonly remote_create_sync: (source: Source, scratch_source: Source, cancellable?: Gio.Cancellable | null) => boolean
-    readonly remote_create: (source: Source, scratch_source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly remote_create_finish: (source: Source, result: Gio.AsyncResult) => boolean
-    readonly remote_delete_sync: (source: Source, cancellable?: Gio.Cancellable | null) => boolean
-    readonly remote_delete: (source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly remote_delete_finish: (source: Source, result: Gio.AsyncResult) => boolean
-    readonly get_oauth2_access_token_sync: (source: Source, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number | null ]
-    readonly get_oauth2_access_token: (source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly get_oauth2_access_token_finish: (source: Source, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number | null ]
-    readonly invoke_credentials_required_impl: (source: Source, dbus_source: object | null, arg_reason: string, arg_certificate_pem: string, arg_certificate_errors: string, arg_dbus_error_name: string, arg_dbus_error_message: string, cancellable?: Gio.Cancellable | null) => boolean
-    readonly invoke_authenticate_impl: (source: Source, dbus_source: object | null, arg_credentials: string, cancellable?: Gio.Cancellable | null) => boolean
-    readonly unset_last_credentials_required_arguments_impl: (source: Source, cancellable?: Gio.Cancellable | null) => boolean
-    readonly reserved: object[]
+    parent_class: GObject.ObjectClass
+    changed: (source: Source) => void
+    credentials_required: (source: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error) => void
+    authenticate: (source: Source, credentials: NamedParameters) => void
+    remove_sync: (source: Source, cancellable?: Gio.Cancellable | null) => boolean
+    remove: (source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    remove_finish: (source: Source, result: Gio.AsyncResult) => boolean
+    write_sync: (source: Source, cancellable?: Gio.Cancellable | null) => boolean
+    write: (source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    write_finish: (source: Source, result: Gio.AsyncResult) => boolean
+    remote_create_sync: (source: Source, scratch_source: Source, cancellable?: Gio.Cancellable | null) => boolean
+    remote_create: (source: Source, scratch_source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    remote_create_finish: (source: Source, result: Gio.AsyncResult) => boolean
+    remote_delete_sync: (source: Source, cancellable?: Gio.Cancellable | null) => boolean
+    remote_delete: (source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    remote_delete_finish: (source: Source, result: Gio.AsyncResult) => boolean
+    get_oauth2_access_token_sync: (source: Source, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number | null ]
+    get_oauth2_access_token: (source: Source, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    get_oauth2_access_token_finish: (source: Source, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number | null ]
+    invoke_credentials_required_impl: (source: Source, dbus_source: object | null, arg_reason: string, arg_certificate_pem: string, arg_certificate_errors: string, arg_dbus_error_name: string, arg_dbus_error_message: string, cancellable?: Gio.Cancellable | null) => boolean
+    invoke_authenticate_impl: (source: Source, dbus_source: object | null, arg_credentials: string, cancellable?: Gio.Cancellable | null) => boolean
+    unset_last_credentials_required_arguments_impl: (source: Source, cancellable?: Gio.Cancellable | null) => boolean
+    reserved: object[]
     static name: string
 }
 abstract class SourceCollectionClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceCollectionClass */
-    readonly parent_class: SourceBackendClass
+    parent_class: SourceBackendClass
     static name: string
 }
 class SourceCollectionPrivate {
@@ -32402,7 +35426,7 @@ class SourceCollectionPrivate {
 }
 abstract class SourceContactsClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceContactsClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceContactsPrivate {
@@ -32410,24 +35434,24 @@ class SourceContactsPrivate {
 }
 abstract class SourceCredentialsProviderClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceCredentialsProviderClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly ref_source: (provider: SourceCredentialsProvider, uid: string) => Source | null
+    parent_class: GObject.ObjectClass
+    ref_source: (provider: SourceCredentialsProvider, uid: string) => Source | null
     static name: string
 }
 abstract class SourceCredentialsProviderImplClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceCredentialsProviderImplClass */
-    readonly parent_class: ExtensionClass
-    readonly can_process: (provider_impl: SourceCredentialsProviderImpl, source: Source) => boolean
-    readonly can_store: (provider_impl: SourceCredentialsProviderImpl) => boolean
-    readonly can_prompt: (provider_impl: SourceCredentialsProviderImpl) => boolean
-    readonly lookup_sync: (provider_impl: SourceCredentialsProviderImpl, source: Source, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
-    readonly store_sync: (provider_impl: SourceCredentialsProviderImpl, source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null) => boolean
-    readonly delete_sync: (provider_impl: SourceCredentialsProviderImpl, source: Source, cancellable?: Gio.Cancellable | null) => boolean
+    parent_class: ExtensionClass
+    can_process: (provider_impl: SourceCredentialsProviderImpl, source: Source) => boolean
+    can_store: (provider_impl: SourceCredentialsProviderImpl) => boolean
+    can_prompt: (provider_impl: SourceCredentialsProviderImpl) => boolean
+    lookup_sync: (provider_impl: SourceCredentialsProviderImpl, source: Source, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_credentials */ NamedParameters ]
+    store_sync: (provider_impl: SourceCredentialsProviderImpl, source: Source, credentials: NamedParameters, permanently: boolean, cancellable?: Gio.Cancellable | null) => boolean
+    delete_sync: (provider_impl: SourceCredentialsProviderImpl, source: Source, cancellable?: Gio.Cancellable | null) => boolean
     static name: string
 }
 abstract class SourceCredentialsProviderImplOAuth2Class {
     /* Fields of EDataServer-1.2.EDataServer.SourceCredentialsProviderImplOAuth2Class */
-    readonly parent_class: SourceCredentialsProviderImplClass
+    parent_class: SourceCredentialsProviderImplClass
     static name: string
 }
 class SourceCredentialsProviderImplOAuth2Private {
@@ -32435,7 +35459,7 @@ class SourceCredentialsProviderImplOAuth2Private {
 }
 abstract class SourceCredentialsProviderImplPasswordClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceCredentialsProviderImplPasswordClass */
-    readonly parent_class: SourceCredentialsProviderImplClass
+    parent_class: SourceCredentialsProviderImplClass
     static name: string
 }
 class SourceCredentialsProviderImplPasswordPrivate {
@@ -32449,8 +35473,8 @@ class SourceCredentialsProviderPrivate {
 }
 abstract class SourceExtensionClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceExtensionClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly name: string
+    parent_class: GObject.ObjectClass
+    name: string
     static name: string
 }
 class SourceExtensionPrivate {
@@ -32458,7 +35482,7 @@ class SourceExtensionPrivate {
 }
 abstract class SourceGoaClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceGoaClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceGoaPrivate {
@@ -32466,7 +35490,7 @@ class SourceGoaPrivate {
 }
 abstract class SourceLDAPClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceLDAPClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceLDAPPrivate {
@@ -32474,7 +35498,7 @@ class SourceLDAPPrivate {
 }
 abstract class SourceLocalClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceLocalClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceLocalPrivate {
@@ -32482,7 +35506,7 @@ class SourceLocalPrivate {
 }
 abstract class SourceMDNClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceMDNClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceMDNPrivate {
@@ -32490,7 +35514,7 @@ class SourceMDNPrivate {
 }
 abstract class SourceMailAccountClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceMailAccountClass */
-    readonly parent_class: SourceBackendClass
+    parent_class: SourceBackendClass
     static name: string
 }
 class SourceMailAccountPrivate {
@@ -32498,7 +35522,7 @@ class SourceMailAccountPrivate {
 }
 abstract class SourceMailCompositionClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceMailCompositionClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceMailCompositionPrivate {
@@ -32506,7 +35530,7 @@ class SourceMailCompositionPrivate {
 }
 abstract class SourceMailIdentityClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceMailIdentityClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceMailIdentityPrivate {
@@ -32514,7 +35538,7 @@ class SourceMailIdentityPrivate {
 }
 abstract class SourceMailSignatureClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceMailSignatureClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceMailSignaturePrivate {
@@ -32522,7 +35546,7 @@ class SourceMailSignaturePrivate {
 }
 abstract class SourceMailSubmissionClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceMailSubmissionClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceMailSubmissionPrivate {
@@ -32530,7 +35554,7 @@ class SourceMailSubmissionPrivate {
 }
 abstract class SourceMailTransportClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceMailTransportClass */
-    readonly parent_class: SourceBackendClass
+    parent_class: SourceBackendClass
     static name: string
 }
 class SourceMailTransportPrivate {
@@ -32538,7 +35562,7 @@ class SourceMailTransportPrivate {
 }
 abstract class SourceMemoListClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceMemoListClass */
-    readonly parent_class: SourceSelectableClass
+    parent_class: SourceSelectableClass
     static name: string
 }
 class SourceMemoListPrivate {
@@ -32546,7 +35570,7 @@ class SourceMemoListPrivate {
 }
 abstract class SourceOfflineClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceOfflineClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceOfflinePrivate {
@@ -32554,7 +35578,7 @@ class SourceOfflinePrivate {
 }
 abstract class SourceOpenPGPClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceOpenPGPClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceOpenPGPPrivate {
@@ -32565,7 +35589,7 @@ class SourcePrivate {
 }
 abstract class SourceProxyClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceProxyClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceProxyPrivate {
@@ -32573,7 +35597,7 @@ class SourceProxyPrivate {
 }
 abstract class SourceRefreshClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceRefreshClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceRefreshPrivate {
@@ -32581,13 +35605,13 @@ class SourceRefreshPrivate {
 }
 abstract class SourceRegistryClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceRegistryClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly source_added: (registry: SourceRegistry, source: Source) => void
-    readonly source_changed: (registry: SourceRegistry, source: Source) => void
-    readonly source_removed: (registry: SourceRegistry, source: Source) => void
-    readonly source_enabled: (registry: SourceRegistry, source: Source) => void
-    readonly source_disabled: (registry: SourceRegistry, source: Source) => void
-    readonly credentials_required: (registry: SourceRegistry, source: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error) => void
+    parent_class: GObject.ObjectClass
+    source_added: (registry: SourceRegistry, source: Source) => void
+    source_changed: (registry: SourceRegistry, source: Source) => void
+    source_removed: (registry: SourceRegistry, source: Source) => void
+    source_enabled: (registry: SourceRegistry, source: Source) => void
+    source_disabled: (registry: SourceRegistry, source: Source) => void
+    credentials_required: (registry: SourceRegistry, source: Source, reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error) => void
     static name: string
 }
 class SourceRegistryPrivate {
@@ -32595,10 +35619,10 @@ class SourceRegistryPrivate {
 }
 abstract class SourceRegistryWatcherClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceRegistryWatcherClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly filter: (watcher: SourceRegistryWatcher, source: Source) => boolean
-    readonly appeared: (watcher: SourceRegistryWatcher, source: Source) => void
-    readonly disappeared: (watcher: SourceRegistryWatcher, source: Source) => void
+    parent_class: GObject.ObjectClass
+    filter: (watcher: SourceRegistryWatcher, source: Source) => boolean
+    appeared: (watcher: SourceRegistryWatcher, source: Source) => void
+    disappeared: (watcher: SourceRegistryWatcher, source: Source) => void
     static name: string
 }
 class SourceRegistryWatcherPrivate {
@@ -32606,7 +35630,7 @@ class SourceRegistryWatcherPrivate {
 }
 abstract class SourceResourceClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceResourceClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceResourcePrivate {
@@ -32614,7 +35638,7 @@ class SourceResourcePrivate {
 }
 abstract class SourceRevisionGuardsClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceRevisionGuardsClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceRevisionGuardsPrivate {
@@ -32622,7 +35646,7 @@ class SourceRevisionGuardsPrivate {
 }
 abstract class SourceSMIMEClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceSMIMEClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceSMIMEPrivate {
@@ -32630,7 +35654,7 @@ class SourceSMIMEPrivate {
 }
 abstract class SourceSecurityClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceSecurityClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceSecurityPrivate {
@@ -32638,7 +35662,7 @@ class SourceSecurityPrivate {
 }
 abstract class SourceSelectableClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceSelectableClass */
-    readonly parent_class: SourceBackendClass
+    parent_class: SourceBackendClass
     static name: string
 }
 class SourceSelectablePrivate {
@@ -32646,7 +35670,7 @@ class SourceSelectablePrivate {
 }
 abstract class SourceTaskListClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceTaskListClass */
-    readonly parent_class: SourceSelectableClass
+    parent_class: SourceSelectableClass
     static name: string
 }
 class SourceTaskListPrivate {
@@ -32654,7 +35678,7 @@ class SourceTaskListPrivate {
 }
 abstract class SourceUoaClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceUoaClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceUoaPrivate {
@@ -32662,7 +35686,7 @@ class SourceUoaPrivate {
 }
 abstract class SourceWeatherClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceWeatherClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceWeatherPrivate {
@@ -32670,7 +35694,7 @@ class SourceWeatherPrivate {
 }
 abstract class SourceWebDAVNotesClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceWebDAVNotesClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceWebDAVNotesPrivate {
@@ -32678,7 +35702,7 @@ class SourceWebDAVNotesPrivate {
 }
 abstract class SourceWebdavClass {
     /* Fields of EDataServer-1.2.EDataServer.SourceWebdavClass */
-    readonly parent_class: SourceExtensionClass
+    parent_class: SourceExtensionClass
     static name: string
 }
 class SourceWebdavPrivate {
@@ -32686,16 +35710,17 @@ class SourceWebdavPrivate {
 }
 class WebDAVAccessControlEntry {
     /* Fields of EDataServer-1.2.EDataServer.WebDAVAccessControlEntry */
-    readonly principal_kind: WebDAVACEPrincipalKind
-    readonly principal_href: string
-    readonly flags: number
-    readonly inherited_href: string
-    readonly privileges: object[]
+    principal_kind: WebDAVACEPrincipalKind
+    principal_href: string
+    flags: number
+    inherited_href: string
+    privileges: object[]
     /* Methods of EDataServer-1.2.EDataServer.WebDAVAccessControlEntry */
     /**
      * Appends a new `privilege` to the list of privileges for the `ace`.
      * The function assumes ownership of the `privilege,` which is freed
      * together with the `ace`.
+     * @param privilege an #EWebDAVPrivilege
      */
     append_privilege(privilege: WebDAVPrivilege): void
     copy(): WebDAVAccessControlEntry | null
@@ -32708,17 +35733,18 @@ class WebDAVAccessControlEntry {
     /**
      * Frees an #EWebDAVAccessControlEntry previously created with e_webdav_access_control_entry_new()
      * or e_webdav_access_control_entry_copy(). The function does nothing, if `ptr` is %NULL.
+     * @param ptr an #EWebDAVAccessControlEntry
      */
     static free(ptr?: object | null): void
 }
 class WebDAVDiscoveredSource {
     /* Fields of EDataServer-1.2.EDataServer.WebDAVDiscoveredSource */
-    readonly href: string
-    readonly supports: number
-    readonly display_name: string
-    readonly description: string
-    readonly color: string
-    readonly order: number
+    href: string
+    supports: number
+    display_name: string
+    description: string
+    color: string
+    order: number
     /* Methods of EDataServer-1.2.EDataServer.WebDAVDiscoveredSource */
     /**
      * Copies the given EWebDAVDiscoveredSource.
@@ -32732,11 +35758,11 @@ class WebDAVDiscoveredSource {
 }
 class WebDAVPrivilege {
     /* Fields of EDataServer-1.2.EDataServer.WebDAVPrivilege */
-    readonly ns_uri: string
-    readonly name: string
-    readonly description: string
-    readonly kind: WebDAVPrivilegeKind
-    readonly hint: WebDAVPrivilegeHint
+    ns_uri: string
+    name: string
+    description: string
+    kind: WebDAVPrivilegeKind
+    hint: WebDAVPrivilegeHint
     /* Methods of EDataServer-1.2.EDataServer.WebDAVPrivilege */
     copy(): WebDAVPrivilege | null
     static name: string
@@ -32747,15 +35773,16 @@ class WebDAVPrivilege {
     /**
      * Frees an #EWebDAVPrivilege previously created with e_webdav_privilege_new()
      * or e_webdav_privilege_copy(). The function does nothing, if `ptr` is %NULL.
+     * @param ptr an #EWebDAVPrivilege
      */
     static free(ptr?: object | null): void
 }
 class WebDAVPropertyChange {
     /* Fields of EDataServer-1.2.EDataServer.WebDAVPropertyChange */
-    readonly kind: WebDAVPropertyChangeKind
-    readonly ns_uri: string
-    readonly name: string
-    readonly value: string
+    kind: WebDAVPropertyChangeKind
+    ns_uri: string
+    name: string
+    value: string
     /* Methods of EDataServer-1.2.EDataServer.WebDAVPropertyChange */
     copy(): WebDAVPropertyChange | null
     static name: string
@@ -32766,23 +35793,24 @@ class WebDAVPropertyChange {
      * Frees an #EWebDAVPropertyChange previously created with e_webdav_property_change_new_set(),
      * e_webdav_property_change_new_remove() or or e_webdav_property_change_copy().
      * The function does nothing, if `ptr` is %NULL.
+     * @param ptr an #EWebDAVPropertyChange
      */
     static free(ptr?: object | null): void
 }
 class WebDAVResource {
     /* Fields of EDataServer-1.2.EDataServer.WebDAVResource */
-    readonly kind: WebDAVResourceKind
-    readonly supports: number
-    readonly href: string
-    readonly etag: string
-    readonly display_name: string
-    readonly content_type: string
-    readonly content_length: number
-    readonly creation_date: number
-    readonly last_modified: number
-    readonly description: string
-    readonly color: string
-    readonly order: number
+    kind: WebDAVResourceKind
+    supports: number
+    href: string
+    etag: string
+    display_name: string
+    content_type: string
+    content_length: number
+    creation_date: number
+    last_modified: number
+    description: string
+    color: string
+    order: number
     /* Methods of EDataServer-1.2.EDataServer.WebDAVResource */
     copy(): WebDAVResource | null
     static name: string
@@ -32793,13 +35821,14 @@ class WebDAVResource {
     /**
      * Frees an #EWebDAVResource previously created with e_webdav_resource_new()
      * or e_webdav_resource_copy(). The function does nothing, if `ptr` is %NULL.
+     * @param ptr an #EWebDAVResource
      */
     static free(ptr?: object | null): void
 }
 abstract class WebDAVSessionClass {
     /* Fields of EDataServer-1.2.EDataServer.WebDAVSessionClass */
-    readonly parent_class: SoupSessionClass
-    readonly reserved: object[]
+    parent_class: SoupSessionClass
+    reserved: object[]
     static name: string
 }
 class WebDAVSessionPrivate {
@@ -32807,8 +35836,8 @@ class WebDAVSessionPrivate {
 }
 abstract class XmlDocumentClass {
     /* Fields of EDataServer-1.2.EDataServer.XmlDocumentClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly reserved: object[]
+    parent_class: GObject.ObjectClass
+    reserved: object[]
     static name: string
 }
 class XmlDocumentPrivate {

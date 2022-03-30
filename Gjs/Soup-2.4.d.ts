@@ -1829,6 +1829,7 @@ class PasswordManager {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -1836,11 +1837,13 @@ class PasswordManager {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.PasswordManager */
@@ -1852,6 +1855,7 @@ class PasswordManager {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -1859,11 +1863,13 @@ class PasswordManager {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -1881,6 +1887,7 @@ class ProxyResolver {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -1888,11 +1895,13 @@ class ProxyResolver {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.ProxyResolver */
@@ -1904,6 +1913,7 @@ class ProxyResolver {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -1911,11 +1921,13 @@ class ProxyResolver {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -1928,12 +1940,18 @@ class ProxyURIResolver {
     /**
      * Asynchronously determines a proxy URI to use for `msg` and calls
      * `callback`.
+     * @param uri the #SoupURI you want a proxy for
+     * @param async_context the #GMainContext to invoke `callback` in
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to invoke with the proxy address
      */
     get_proxy_uri_async(uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback): void
     /**
      * Synchronously determines a proxy URI to use for `uri`. If `uri`
      * should be sent via proxy, *`proxy_uri` will be set to the URI of the
      * proxy, else it will be set to %NULL.
+     * @param uri the #SoupURI you want a proxy for
+     * @param cancellable a #GCancellable, or %NULL
      */
     get_proxy_uri_sync(uri: URI, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* proxy_uri */ URI ]
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -1942,6 +1960,7 @@ class ProxyURIResolver {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -1949,23 +1968,31 @@ class ProxyURIResolver {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.ProxyURIResolver */
     /**
      * Asynchronously determines a proxy URI to use for `msg` and calls
      * `callback`.
+     * @param uri the #SoupURI you want a proxy for
+     * @param async_context the #GMainContext to invoke `callback` in
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to invoke with the proxy address
      */
     vfunc_get_proxy_uri_async(uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback): void
     /**
      * Synchronously determines a proxy URI to use for `uri`. If `uri`
      * should be sent via proxy, *`proxy_uri` will be set to the URI of the
      * proxy, else it will be set to %NULL.
+     * @param uri the #SoupURI you want a proxy for
+     * @param cancellable a #GCancellable, or %NULL
      */
     vfunc_get_proxy_uri_sync(uri: URI, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* proxy_uri */ URI ]
     /* Virtual methods of Soup-2.4.Soup.SessionFeature */
@@ -1974,6 +2001,7 @@ class ProxyURIResolver {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -1981,11 +2009,13 @@ class ProxyURIResolver {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -2000,6 +2030,7 @@ class SessionFeature {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -2007,11 +2038,13 @@ class SessionFeature {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.SessionFeature */
@@ -2020,6 +2053,7 @@ class SessionFeature {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -2027,11 +2061,13 @@ class SessionFeature {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -2049,9 +2085,14 @@ interface Address_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Address {
     /* Properties of Soup-2.4.Soup.Address */
+    readonly family: AddressFamily
+    readonly name: string
     readonly physical: string
+    readonly port: number
+    readonly protocol: string
+    readonly sockaddr: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Address */
     /**
      * Tests if `addr1` and `addr2` have the same IP address. This method
@@ -2066,6 +2107,7 @@ class Address {
      * 
      * See also soup_address_equal_by_name(), which compares by name
      * rather than by IP address.
+     * @param addr2 another #SoupAddress with a resolved   IP address
      */
     equal_by_ip(addr2: Address): boolean
     /**
@@ -2090,6 +2132,7 @@ class Address {
      * 
      * See also soup_address_equal_by_ip(), which compares by IP address
      * rather than by name.
+     * @param addr2 another #SoupAddress with a resolved   name
      */
     equal_by_name(addr2: Address): boolean
     /**
@@ -2161,6 +2204,9 @@ class Address {
      * result in redundant DNS queries being made). But it is not safe to
      * call from multiple threads, or with different `async_contexts,` or
      * mixed with calls to soup_address_resolve_sync().
+     * @param async_context the #GMainContext to call `callback` from
+     * @param cancellable a #GCancellable object, or %NULL
+     * @param callback callback to call with the result
      */
     resolve_async(async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: AddressCallback): void
     /**
@@ -2175,6 +2221,7 @@ class Address {
      * threads, but it is not safe to mix calls to
      * soup_address_resolve_sync() with calls to
      * soup_address_resolve_async() on the same address.
+     * @param cancellable a #GCancellable object, or %NULL
      */
     resolve_sync(cancellable?: Gio.Cancellable | null): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -2212,6 +2259,10 @@ class Address {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2222,6 +2273,12 @@ class Address {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2245,6 +2302,7 @@ class Address {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2264,11 +2322,14 @@ class Address {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2276,6 +2337,8 @@ class Address {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2293,6 +2356,7 @@ class Address {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2338,6 +2402,7 @@ class Address {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2381,15 +2446,20 @@ class Address {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2430,6 +2500,7 @@ class Address {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2464,6 +2535,7 @@ class Address {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.SocketConnectable */
@@ -2533,6 +2605,7 @@ class Address {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2565,12 +2638,23 @@ class Address {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::family", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::family", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::physical", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::physical", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::port", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::port", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::protocol", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::protocol", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::sockaddr", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sockaddr", callback: (($obj: Address, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2598,11 +2682,13 @@ class Auth {
     realm: string
     readonly scheme_name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     authenticate(username: string, password: string): void
     /**
@@ -2614,6 +2700,7 @@ class Auth {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     get_authorization(msg: Message): string
     /**
@@ -2632,6 +2719,7 @@ class Auth {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     get_protection_space(source_uri: URI): string[]
     /**
@@ -2653,6 +2741,7 @@ class Auth {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     is_ready(msg: Message): boolean
     save_password(username: string, password: string): void
@@ -2660,6 +2749,8 @@ class Auth {
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     update(msg: Message, auth_header: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -2697,6 +2788,10 @@ class Auth {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2707,6 +2802,12 @@ class Auth {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2730,6 +2831,7 @@ class Auth {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2749,11 +2851,14 @@ class Auth {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2761,6 +2866,8 @@ class Auth {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2778,6 +2885,7 @@ class Auth {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2823,6 +2931,7 @@ class Auth {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2866,15 +2975,20 @@ class Auth {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2915,6 +3029,7 @@ class Auth {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2949,12 +3064,15 @@ class Auth {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     vfunc_authenticate(username: string, password: string): void
     /**
@@ -2966,6 +3084,7 @@ class Auth {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     vfunc_get_authorization(msg: Message): string
     /**
@@ -2973,6 +3092,7 @@ class Auth {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     vfunc_get_protection_space(source_uri: URI): string[]
     /**
@@ -2984,12 +3104,15 @@ class Auth {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     vfunc_is_ready(msg: Message): boolean
     /**
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3009,6 +3132,7 @@ class Auth {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3041,6 +3165,7 @@ class Auth {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
@@ -3075,14 +3200,16 @@ class AuthBasic {
     is_for_proxy: boolean
     readonly scheme_name: string
     /* Fields of Soup-2.4.Soup.Auth */
-    readonly parent: GObject.Object
-    readonly realm: string
+    parent: GObject.Object
+    realm: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     authenticate(username: string, password: string): void
     /**
@@ -3094,6 +3221,7 @@ class AuthBasic {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     get_authorization(msg: Message): string
     /**
@@ -3112,6 +3240,7 @@ class AuthBasic {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     get_protection_space(source_uri: URI): string[]
     /**
@@ -3133,6 +3262,7 @@ class AuthBasic {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     is_ready(msg: Message): boolean
     save_password(username: string, password: string): void
@@ -3140,6 +3270,8 @@ class AuthBasic {
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     update(msg: Message, auth_header: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3177,6 +3309,10 @@ class AuthBasic {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3187,6 +3323,12 @@ class AuthBasic {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3210,6 +3352,7 @@ class AuthBasic {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3229,11 +3372,14 @@ class AuthBasic {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3241,6 +3387,8 @@ class AuthBasic {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3258,6 +3406,7 @@ class AuthBasic {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3303,6 +3452,7 @@ class AuthBasic {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3346,15 +3496,20 @@ class AuthBasic {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3395,6 +3550,7 @@ class AuthBasic {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3429,12 +3585,15 @@ class AuthBasic {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     vfunc_authenticate(username: string, password: string): void
     /**
@@ -3446,6 +3605,7 @@ class AuthBasic {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     vfunc_get_authorization(msg: Message): string
     /**
@@ -3453,6 +3613,7 @@ class AuthBasic {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     vfunc_get_protection_space(source_uri: URI): string[]
     /**
@@ -3464,12 +3625,15 @@ class AuthBasic {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     vfunc_is_ready(msg: Message): boolean
     /**
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3489,6 +3653,7 @@ class AuthBasic {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3521,6 +3686,7 @@ class AuthBasic {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
@@ -3551,14 +3717,16 @@ class AuthDigest {
     is_for_proxy: boolean
     readonly scheme_name: string
     /* Fields of Soup-2.4.Soup.Auth */
-    readonly parent: GObject.Object
-    readonly realm: string
+    parent: GObject.Object
+    realm: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     authenticate(username: string, password: string): void
     /**
@@ -3570,6 +3738,7 @@ class AuthDigest {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     get_authorization(msg: Message): string
     /**
@@ -3588,6 +3757,7 @@ class AuthDigest {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     get_protection_space(source_uri: URI): string[]
     /**
@@ -3609,6 +3779,7 @@ class AuthDigest {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     is_ready(msg: Message): boolean
     save_password(username: string, password: string): void
@@ -3616,6 +3787,8 @@ class AuthDigest {
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     update(msg: Message, auth_header: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3653,6 +3826,10 @@ class AuthDigest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3663,6 +3840,12 @@ class AuthDigest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3686,6 +3869,7 @@ class AuthDigest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3705,11 +3889,14 @@ class AuthDigest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3717,6 +3904,8 @@ class AuthDigest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3734,6 +3923,7 @@ class AuthDigest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3779,6 +3969,7 @@ class AuthDigest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3822,15 +4013,20 @@ class AuthDigest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3871,6 +4067,7 @@ class AuthDigest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3905,12 +4102,15 @@ class AuthDigest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     vfunc_authenticate(username: string, password: string): void
     /**
@@ -3922,6 +4122,7 @@ class AuthDigest {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     vfunc_get_authorization(msg: Message): string
     /**
@@ -3929,6 +4130,7 @@ class AuthDigest {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     vfunc_get_protection_space(source_uri: URI): string[]
     /**
@@ -3940,12 +4142,15 @@ class AuthDigest {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     vfunc_is_ready(msg: Message): boolean
     /**
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3965,6 +4170,7 @@ class AuthDigest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3997,6 +4203,7 @@ class AuthDigest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
@@ -4048,9 +4255,11 @@ class AuthDomain {
      */
     generic_auth_callback: AuthDomainGenericAuthCallback
     generic_auth_data: object
+    readonly proxy: boolean
+    readonly realm: string
     remove_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.AuthDomain */
     /**
      * Checks if `msg` contains appropriate authorization for `domain` to
@@ -4060,6 +4269,7 @@ class AuthDomain {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     accepts(msg: Message): string | null
     /**
@@ -4069,12 +4279,16 @@ class AuthDomain {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     challenge(msg: Message): void
     /**
      * Checks if `msg` authenticates to `domain` via `username` and
      * `password`. This would normally be called from a
      * #SoupAuthDomainGenericAuthCallback.
+     * @param msg a #SoupMessage
+     * @param username a username
+     * @param password a password
      */
     check_password(msg: Message, username: string, password: string): boolean
     /**
@@ -4085,6 +4299,7 @@ class AuthDomain {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     covers(msg: Message): boolean
     /**
@@ -4116,6 +4331,7 @@ class AuthDomain {
      * You can also set the filter by setting the %SOUP_AUTH_DOMAIN_FILTER
      * and %SOUP_AUTH_DOMAIN_FILTER_DATA properties, which can also be
      * used to set the filter at construct time.
+     * @param filter the auth filter for `domain`
      */
     set_filter(filter: AuthDomainFilter): void
     /**
@@ -4125,6 +4341,7 @@ class AuthDomain {
      * #SoupAuthDomainDigestAuthCallback), the generic auth callback
      * will be invoked. See #SoupAuthDomainGenericAuthCallback for information
      * on what the callback should do.
+     * @param auth_callback the auth callback
      */
     set_generic_auth_callback(auth_callback: AuthDomainGenericAuthCallback): void
     try_generic_auth_callback(msg: Message, username: string): boolean
@@ -4163,6 +4380,10 @@ class AuthDomain {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4173,6 +4394,12 @@ class AuthDomain {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4196,6 +4423,7 @@ class AuthDomain {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4215,11 +4443,14 @@ class AuthDomain {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4227,6 +4458,8 @@ class AuthDomain {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4244,6 +4477,7 @@ class AuthDomain {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4289,6 +4523,7 @@ class AuthDomain {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4332,15 +4567,20 @@ class AuthDomain {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4381,6 +4621,7 @@ class AuthDomain {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4415,6 +4656,7 @@ class AuthDomain {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.AuthDomain */
@@ -4426,12 +4668,16 @@ class AuthDomain {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     vfunc_challenge(msg: Message): string
     /**
      * Checks if `msg` authenticates to `domain` via `username` and
      * `password`. This would normally be called from a
      * #SoupAuthDomainGenericAuthCallback.
+     * @param msg a #SoupMessage
+     * @param username a username
+     * @param password a password
      */
     vfunc_check_password(msg: Message, username: string, password: string): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4451,6 +4697,7 @@ class AuthDomain {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4483,6 +4730,7 @@ class AuthDomain {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
@@ -4497,6 +4745,10 @@ class AuthDomain {
     connect_after(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::proxy", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::realm", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::realm", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::remove-path", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::remove-path", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -4541,11 +4793,13 @@ class AuthDomainBasic {
      */
     generic_auth_callback: AuthDomainGenericAuthCallback
     generic_auth_data: object
+    readonly proxy: boolean
+    readonly realm: string
     remove_path: string
     /* Fields of Soup-2.4.Soup.AuthDomain */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.AuthDomainBasic */
     /**
      * Sets the callback that `domain` will use to authenticate incoming
@@ -4557,6 +4811,7 @@ class AuthDomainBasic {
      * %SOUP_AUTH_DOMAIN_BASIC_AUTH_CALLBACK and
      * %SOUP_AUTH_DOMAIN_BASIC_AUTH_DATA properties, which can also be
      * used to set the callback at construct time.
+     * @param callback the callback
      */
     set_auth_callback(callback: AuthDomainBasicAuthCallback): void
     /* Methods of Soup-2.4.Soup.AuthDomain */
@@ -4568,6 +4823,7 @@ class AuthDomainBasic {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     accepts(msg: Message): string | null
     /**
@@ -4577,12 +4833,16 @@ class AuthDomainBasic {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     challenge(msg: Message): void
     /**
      * Checks if `msg` authenticates to `domain` via `username` and
      * `password`. This would normally be called from a
      * #SoupAuthDomainGenericAuthCallback.
+     * @param msg a #SoupMessage
+     * @param username a username
+     * @param password a password
      */
     check_password(msg: Message, username: string, password: string): boolean
     /**
@@ -4593,6 +4853,7 @@ class AuthDomainBasic {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     covers(msg: Message): boolean
     /**
@@ -4624,6 +4885,7 @@ class AuthDomainBasic {
      * You can also set the filter by setting the %SOUP_AUTH_DOMAIN_FILTER
      * and %SOUP_AUTH_DOMAIN_FILTER_DATA properties, which can also be
      * used to set the filter at construct time.
+     * @param filter the auth filter for `domain`
      */
     set_filter(filter: AuthDomainFilter): void
     /**
@@ -4633,6 +4895,7 @@ class AuthDomainBasic {
      * #SoupAuthDomainDigestAuthCallback), the generic auth callback
      * will be invoked. See #SoupAuthDomainGenericAuthCallback for information
      * on what the callback should do.
+     * @param auth_callback the auth callback
      */
     set_generic_auth_callback(auth_callback: AuthDomainGenericAuthCallback): void
     try_generic_auth_callback(msg: Message, username: string): boolean
@@ -4671,6 +4934,10 @@ class AuthDomainBasic {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4681,6 +4948,12 @@ class AuthDomainBasic {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4704,6 +4977,7 @@ class AuthDomainBasic {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4723,11 +4997,14 @@ class AuthDomainBasic {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4735,6 +5012,8 @@ class AuthDomainBasic {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4752,6 +5031,7 @@ class AuthDomainBasic {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4797,6 +5077,7 @@ class AuthDomainBasic {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4840,15 +5121,20 @@ class AuthDomainBasic {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4889,6 +5175,7 @@ class AuthDomainBasic {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4923,6 +5210,7 @@ class AuthDomainBasic {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.AuthDomain */
@@ -4934,12 +5222,16 @@ class AuthDomainBasic {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     vfunc_challenge(msg: Message): string
     /**
      * Checks if `msg` authenticates to `domain` via `username` and
      * `password`. This would normally be called from a
      * #SoupAuthDomainGenericAuthCallback.
+     * @param msg a #SoupMessage
+     * @param username a username
+     * @param password a password
      */
     vfunc_check_password(msg: Message, username: string, password: string): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4959,6 +5251,7 @@ class AuthDomainBasic {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4991,6 +5284,7 @@ class AuthDomainBasic {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
@@ -5009,6 +5303,10 @@ class AuthDomainBasic {
     connect_after(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::proxy", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::realm", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::realm", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::remove-path", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::remove-path", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -5053,11 +5351,13 @@ class AuthDomainDigest {
      */
     generic_auth_callback: AuthDomainGenericAuthCallback
     generic_auth_data: object
+    readonly proxy: boolean
+    readonly realm: string
     remove_path: string
     /* Fields of Soup-2.4.Soup.AuthDomain */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.AuthDomainDigest */
     /**
      * Sets the callback that `domain` will use to authenticate incoming
@@ -5069,6 +5369,7 @@ class AuthDomainDigest {
      * %SOUP_AUTH_DOMAIN_DIGEST_AUTH_CALLBACK and
      * %SOUP_AUTH_DOMAIN_DIGEST_AUTH_DATA properties, which can also be
      * used to set the callback at construct time.
+     * @param callback the callback
      */
     set_auth_callback(callback: AuthDomainDigestAuthCallback): void
     /* Methods of Soup-2.4.Soup.AuthDomain */
@@ -5080,6 +5381,7 @@ class AuthDomainDigest {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     accepts(msg: Message): string | null
     /**
@@ -5089,12 +5391,16 @@ class AuthDomainDigest {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     challenge(msg: Message): void
     /**
      * Checks if `msg` authenticates to `domain` via `username` and
      * `password`. This would normally be called from a
      * #SoupAuthDomainGenericAuthCallback.
+     * @param msg a #SoupMessage
+     * @param username a username
+     * @param password a password
      */
     check_password(msg: Message, username: string, password: string): boolean
     /**
@@ -5105,6 +5411,7 @@ class AuthDomainDigest {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     covers(msg: Message): boolean
     /**
@@ -5136,6 +5443,7 @@ class AuthDomainDigest {
      * You can also set the filter by setting the %SOUP_AUTH_DOMAIN_FILTER
      * and %SOUP_AUTH_DOMAIN_FILTER_DATA properties, which can also be
      * used to set the filter at construct time.
+     * @param filter the auth filter for `domain`
      */
     set_filter(filter: AuthDomainFilter): void
     /**
@@ -5145,6 +5453,7 @@ class AuthDomainDigest {
      * #SoupAuthDomainDigestAuthCallback), the generic auth callback
      * will be invoked. See #SoupAuthDomainGenericAuthCallback for information
      * on what the callback should do.
+     * @param auth_callback the auth callback
      */
     set_generic_auth_callback(auth_callback: AuthDomainGenericAuthCallback): void
     try_generic_auth_callback(msg: Message, username: string): boolean
@@ -5183,6 +5492,10 @@ class AuthDomainDigest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5193,6 +5506,12 @@ class AuthDomainDigest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5216,6 +5535,7 @@ class AuthDomainDigest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5235,11 +5555,14 @@ class AuthDomainDigest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5247,6 +5570,8 @@ class AuthDomainDigest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5264,6 +5589,7 @@ class AuthDomainDigest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5309,6 +5635,7 @@ class AuthDomainDigest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5352,15 +5679,20 @@ class AuthDomainDigest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5401,6 +5733,7 @@ class AuthDomainDigest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5435,6 +5768,7 @@ class AuthDomainDigest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.AuthDomain */
@@ -5446,12 +5780,16 @@ class AuthDomainDigest {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @param msg a #SoupMessage
      */
     vfunc_challenge(msg: Message): string
     /**
      * Checks if `msg` authenticates to `domain` via `username` and
      * `password`. This would normally be called from a
      * #SoupAuthDomainGenericAuthCallback.
+     * @param msg a #SoupMessage
+     * @param username a username
+     * @param password a password
      */
     vfunc_check_password(msg: Message, username: string, password: string): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5471,6 +5809,7 @@ class AuthDomainDigest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5503,6 +5842,7 @@ class AuthDomainDigest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
@@ -5521,6 +5861,10 @@ class AuthDomainDigest {
     connect_after(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::proxy", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::realm", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::realm", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::remove-path", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::remove-path", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -5545,6 +5889,9 @@ class AuthDomainDigest {
      * passwords which might also be usable at other sites. (Note also
      * that the encoded password returned by this method is identical to
      * the encoded password stored in an Apache .htdigest file.)
+     * @param username a username
+     * @param realm an auth realm name
+     * @param password the password for `username` in `realm`
      */
     static encode_password(username: string, realm: string, password: string): string
     static $gtype: GObject.Type
@@ -5553,7 +5900,7 @@ interface AuthManager_ConstructProps extends GObject.Object_ConstructProps {
 }
 class AuthManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.AuthManager */
     /**
      * Clear all credentials cached by `manager`
@@ -5569,6 +5916,8 @@ class AuthManager {
      * This is only useful for authentication types where the initial
      * Authorization header does not depend on any additional information
      * from the server. (Eg, Basic or NTLM, but not Digest.)
+     * @param uri the #SoupURI under which `auth` is to be used
+     * @param auth the #SoupAuth to use
      */
     use_auth(uri: URI, auth: Auth): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5606,6 +5955,10 @@ class AuthManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5616,6 +5969,12 @@ class AuthManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5639,6 +5998,7 @@ class AuthManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5658,11 +6018,14 @@ class AuthManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5670,6 +6033,8 @@ class AuthManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5687,6 +6052,7 @@ class AuthManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5732,6 +6098,7 @@ class AuthManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5775,15 +6142,20 @@ class AuthManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5824,6 +6196,7 @@ class AuthManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5858,6 +6231,7 @@ class AuthManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -5866,6 +6240,7 @@ class AuthManager {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -5873,11 +6248,13 @@ class AuthManager {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.AuthManager */
@@ -5887,6 +6264,7 @@ class AuthManager {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -5894,11 +6272,13 @@ class AuthManager {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -5921,6 +6301,7 @@ class AuthManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5932,6 +6313,9 @@ class AuthManager {
      * #SoupSession connects to this signal and emits its own
      * #SoupSession::authenticate signal when it is emitted, so
      * you shouldn't need to use this signal directly.
+     * @param msg the #SoupMessage being sent
+     * @param auth the #SoupAuth to authenticate
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: (($obj: AuthManager, msg: Message, auth: Auth, retrying: boolean) => void)): number
     connect_after(sigName: "authenticate", callback: (($obj: AuthManager, msg: Message, auth: Auth, retrying: boolean) => void)): number
@@ -5965,6 +6349,7 @@ class AuthManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthManager, pspec: GObject.ParamSpec) => void)): number
@@ -5987,14 +6372,16 @@ class AuthNTLM {
     is_for_proxy: boolean
     readonly scheme_name: string
     /* Fields of Soup-2.4.Soup.Auth */
-    readonly parent: GObject.Object
-    readonly realm: string
+    parent: GObject.Object
+    realm: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     authenticate(username: string, password: string): void
     /**
@@ -6006,6 +6393,7 @@ class AuthNTLM {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     get_authorization(msg: Message): string
     /**
@@ -6024,6 +6412,7 @@ class AuthNTLM {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     get_protection_space(source_uri: URI): string[]
     /**
@@ -6045,6 +6434,7 @@ class AuthNTLM {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     is_ready(msg: Message): boolean
     save_password(username: string, password: string): void
@@ -6052,6 +6442,8 @@ class AuthNTLM {
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     update(msg: Message, auth_header: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6089,6 +6481,10 @@ class AuthNTLM {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6099,6 +6495,12 @@ class AuthNTLM {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6122,6 +6524,7 @@ class AuthNTLM {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6141,11 +6544,14 @@ class AuthNTLM {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6153,6 +6559,8 @@ class AuthNTLM {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6170,6 +6578,7 @@ class AuthNTLM {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6215,6 +6624,7 @@ class AuthNTLM {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6258,15 +6668,20 @@ class AuthNTLM {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6307,6 +6722,7 @@ class AuthNTLM {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6341,12 +6757,15 @@ class AuthNTLM {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     vfunc_authenticate(username: string, password: string): void
     /**
@@ -6358,6 +6777,7 @@ class AuthNTLM {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     vfunc_get_authorization(msg: Message): string
     /**
@@ -6365,6 +6785,7 @@ class AuthNTLM {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     vfunc_get_protection_space(source_uri: URI): string[]
     /**
@@ -6376,12 +6797,15 @@ class AuthNTLM {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     vfunc_is_ready(msg: Message): boolean
     /**
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6401,6 +6825,7 @@ class AuthNTLM {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6433,6 +6858,7 @@ class AuthNTLM {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
@@ -6463,14 +6889,16 @@ class AuthNegotiate {
     is_for_proxy: boolean
     readonly scheme_name: string
     /* Fields of Soup-2.4.Soup.Auth */
-    readonly parent: GObject.Object
-    readonly realm: string
+    parent: GObject.Object
+    realm: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     authenticate(username: string, password: string): void
     /**
@@ -6482,6 +6910,7 @@ class AuthNegotiate {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     get_authorization(msg: Message): string
     /**
@@ -6500,6 +6929,7 @@ class AuthNegotiate {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     get_protection_space(source_uri: URI): string[]
     /**
@@ -6521,6 +6951,7 @@ class AuthNegotiate {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     is_ready(msg: Message): boolean
     save_password(username: string, password: string): void
@@ -6528,6 +6959,8 @@ class AuthNegotiate {
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     update(msg: Message, auth_header: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6565,6 +6998,10 @@ class AuthNegotiate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6575,6 +7012,12 @@ class AuthNegotiate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6598,6 +7041,7 @@ class AuthNegotiate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6617,11 +7061,14 @@ class AuthNegotiate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6629,6 +7076,8 @@ class AuthNegotiate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6646,6 +7095,7 @@ class AuthNegotiate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6691,6 +7141,7 @@ class AuthNegotiate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6734,15 +7185,20 @@ class AuthNegotiate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6783,6 +7239,7 @@ class AuthNegotiate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6817,12 +7274,15 @@ class AuthNegotiate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Auth */
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @param username the username provided by the user or client
+     * @param password the password provided by the user or client
      */
     vfunc_authenticate(username: string, password: string): void
     /**
@@ -6834,6 +7294,7 @@ class AuthNegotiate {
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @param msg the #SoupMessage to be authorized
      */
     vfunc_get_authorization(msg: Message): string
     /**
@@ -6841,6 +7302,7 @@ class AuthNegotiate {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     vfunc_get_protection_space(source_uri: URI): string[]
     /**
@@ -6852,12 +7314,15 @@ class AuthNegotiate {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @param msg a #SoupMessage
      */
     vfunc_is_ready(msg: Message): boolean
     /**
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @param msg the #SoupMessage `auth` is being updated for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6877,6 +7342,7 @@ class AuthNegotiate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6909,6 +7375,7 @@ class AuthNegotiate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
@@ -6944,8 +7411,11 @@ interface Cache_ConstructProps extends GObject.Object_ConstructProps {
     cache_type?: CacheType
 }
 class Cache {
+    /* Properties of Soup-2.4.Soup.Cache */
+    readonly cache_dir: string
+    readonly cache_type: CacheType
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Cache */
     /**
      * Will remove all entries in the `cache` plus all the cache files.
@@ -6979,6 +7449,7 @@ class Cache {
     load(): void
     /**
      * Sets the maximum size of the cache.
+     * @param max_size the maximum size of the cache, in bytes
      */
     set_max_size(max_size: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7016,6 +7487,10 @@ class Cache {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7026,6 +7501,12 @@ class Cache {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7049,6 +7530,7 @@ class Cache {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7068,11 +7550,14 @@ class Cache {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7080,6 +7565,8 @@ class Cache {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7097,6 +7584,7 @@ class Cache {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7142,6 +7630,7 @@ class Cache {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7185,15 +7674,20 @@ class Cache {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7234,6 +7728,7 @@ class Cache {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7268,6 +7763,7 @@ class Cache {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -7276,6 +7772,7 @@ class Cache {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -7283,11 +7780,13 @@ class Cache {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.Cache */
@@ -7297,6 +7796,7 @@ class Cache {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -7304,11 +7804,13 @@ class Cache {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -7331,6 +7833,7 @@ class Cache {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7363,10 +7866,15 @@ class Cache {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::cache-dir", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cache-dir", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::cache-type", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cache-type", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7382,7 +7890,7 @@ interface ContentDecoder_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ContentDecoder {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -7418,6 +7926,10 @@ class ContentDecoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7428,6 +7940,12 @@ class ContentDecoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7451,6 +7969,7 @@ class ContentDecoder {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7470,11 +7989,14 @@ class ContentDecoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7482,6 +8004,8 @@ class ContentDecoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7499,6 +8023,7 @@ class ContentDecoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7544,6 +8069,7 @@ class ContentDecoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7587,15 +8113,20 @@ class ContentDecoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7636,6 +8167,7 @@ class ContentDecoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7670,6 +8202,7 @@ class ContentDecoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -7678,6 +8211,7 @@ class ContentDecoder {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -7685,11 +8219,13 @@ class ContentDecoder {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.ContentDecoder */
@@ -7698,6 +8234,7 @@ class ContentDecoder {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -7705,11 +8242,13 @@ class ContentDecoder {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -7732,6 +8271,7 @@ class ContentDecoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7764,6 +8304,7 @@ class ContentDecoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContentDecoder, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContentDecoder, pspec: GObject.ParamSpec) => void)): number
@@ -7781,7 +8322,7 @@ interface ContentSniffer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ContentSniffer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.ContentSniffer */
     /**
      * Gets the number of bytes `sniffer` needs in order to properly sniff
@@ -7792,6 +8333,8 @@ class ContentSniffer {
      * Sniffs `buffer` to determine its Content-Type. The result may also
      * be influenced by the Content-Type declared in `msg'`s response
      * headers.
+     * @param msg the message to sniff
+     * @param buffer a buffer containing the start of `msg'`s response body
      */
     sniff(msg: Message, buffer: Buffer): [ /* returnType */ string, /* params */ GLib.HashTable | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -7829,6 +8372,10 @@ class ContentSniffer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7839,6 +8386,12 @@ class ContentSniffer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7862,6 +8415,7 @@ class ContentSniffer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7881,11 +8435,14 @@ class ContentSniffer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7893,6 +8450,8 @@ class ContentSniffer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7910,6 +8469,7 @@ class ContentSniffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7955,6 +8515,7 @@ class ContentSniffer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7998,15 +8559,20 @@ class ContentSniffer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8047,6 +8613,7 @@ class ContentSniffer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8081,6 +8648,7 @@ class ContentSniffer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -8089,6 +8657,7 @@ class ContentSniffer {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -8096,11 +8665,13 @@ class ContentSniffer {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.ContentSniffer */
@@ -8113,6 +8684,8 @@ class ContentSniffer {
      * Sniffs `buffer` to determine its Content-Type. The result may also
      * be influenced by the Content-Type declared in `msg'`s response
      * headers.
+     * @param msg the message to sniff
+     * @param buffer a buffer containing the start of `msg'`s response body
      */
     vfunc_sniff(msg: Message, buffer: Buffer): [ /* returnType */ string, /* params */ GLib.HashTable | null ]
     /**
@@ -8120,6 +8693,7 @@ class ContentSniffer {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -8127,11 +8701,13 @@ class ContentSniffer {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -8154,6 +8730,7 @@ class ContentSniffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8186,6 +8763,7 @@ class ContentSniffer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContentSniffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContentSniffer, pspec: GObject.ParamSpec) => void)): number
@@ -8215,8 +8793,9 @@ class CookieJar {
      * The policy the jar should follow to accept or reject cookies
      */
     accept_policy: CookieJarAcceptPolicy
+    readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.CookieJar */
     /**
      * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
@@ -8224,6 +8803,7 @@ class CookieJar {
      * that the cookie's expire date is not in the past).
      * 
      * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
+     * @param cookie a #SoupCookie
      */
     add_cookie(cookie: Cookie): void
     /**
@@ -8238,6 +8818,9 @@ class CookieJar {
      * from insecure origins. %NULL is treated as secure.
      * 
      * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
+     * @param cookie a #SoupCookie
+     * @param uri the URI setting the cookie
+     * @param first_party the URI for the main document
      */
     add_cookie_full(cookie: Cookie, uri?: URI | null, first_party?: URI | null): void
     /**
@@ -8252,6 +8835,8 @@ class CookieJar {
      * 
      * For secure cookies to work properly you may want to use
      * soup_cookie_jar_add_cookie_full().
+     * @param first_party the URI for the main document
+     * @param cookie a #SoupCookie
      */
     add_cookie_with_first_party(first_party: URI, cookie: Cookie): void
     /**
@@ -8262,6 +8847,7 @@ class CookieJar {
     all_cookies(): Cookie[]
     /**
      * Deletes `cookie` from `jar,` emitting the 'changed' signal.
+     * @param cookie a #SoupCookie
      */
     delete_cookie(cookie: Cookie): void
     /**
@@ -8279,6 +8865,8 @@ class CookieJar {
      * header itself when making the actual HTTP request, you should
      * almost certainly be setting `for_http` to %FALSE if you are calling
      * this.
+     * @param uri a #SoupURI
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
      */
     get_cookie_list(uri: URI, for_http: boolean): Cookie[]
     /**
@@ -8286,6 +8874,12 @@ class CookieJar {
      * provides more information required to use SameSite cookies. See the
      * [SameSite cookies spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
      * for more detailed information.
+     * @param uri a #SoupURI
+     * @param top_level a #SoupURI for the top level document
+     * @param site_for_cookies a #SoupURI indicating the origin to get cookies for
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
+     * @param is_safe_method if the HTTP method is safe, as defined by RFC 7231, ignored when `for_http` is %FALSE
+     * @param is_top_level_navigation whether or not the HTTP request is part of top level navigation
      */
     get_cookie_list_with_same_site_info(uri: URI, top_level: URI | null, site_for_cookies: URI | null, for_http: boolean, is_safe_method: boolean, is_top_level_navigation: boolean): Cookie[]
     /**
@@ -8299,6 +8893,8 @@ class CookieJar {
      * header itself when making the actual HTTP request, you should
      * almost certainly be setting `for_http` to %FALSE if you are calling
      * this.
+     * @param uri a #SoupURI
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
      */
     get_cookies(uri: URI, for_http: boolean): string | null
     /**
@@ -8313,6 +8909,7 @@ class CookieJar {
     save(): void
     /**
      * Sets `policy` as the cookie acceptance policy for `jar`.
+     * @param policy a #SoupCookieJarAcceptPolicy
      */
     set_accept_policy(policy: CookieJarAcceptPolicy): void
     /**
@@ -8325,6 +8922,8 @@ class CookieJar {
      * soup_cookie_jar_set_cookie_with_first_party(), otherwise the jar
      * will have no way of knowing if the cookie is being set by a third
      * party or not.
+     * @param uri the URI setting the cookie
+     * @param cookie the stringified cookie to set
      */
     set_cookie(uri: URI, cookie: string): void
     /**
@@ -8332,6 +8931,9 @@ class CookieJar {
      * Set-Cookie header returned from a request to `uri`. `first_party`
      * will be used to reject cookies coming from third party resources in
      * case such a security policy is set in the `jar`.
+     * @param uri the URI setting the cookie
+     * @param first_party the URI for the main document
+     * @param cookie the stringified cookie to set
      */
     set_cookie_with_first_party(uri: URI, first_party: URI, cookie: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8369,6 +8971,10 @@ class CookieJar {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8379,6 +8985,12 @@ class CookieJar {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8402,6 +9014,7 @@ class CookieJar {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8421,11 +9034,14 @@ class CookieJar {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8433,6 +9049,8 @@ class CookieJar {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8450,6 +9068,7 @@ class CookieJar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8495,6 +9114,7 @@ class CookieJar {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8538,15 +9158,20 @@ class CookieJar {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8587,6 +9212,7 @@ class CookieJar {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8621,6 +9247,7 @@ class CookieJar {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -8629,6 +9256,7 @@ class CookieJar {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -8636,11 +9264,13 @@ class CookieJar {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.CookieJar */
@@ -8660,6 +9290,7 @@ class CookieJar {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -8667,11 +9298,13 @@ class CookieJar {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -8694,6 +9327,7 @@ class CookieJar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8706,6 +9340,8 @@ class CookieJar {
      * `new_cookie` will be %NULL. If a cookie has been changed,
      * `old_cookie` will contain its old value, and `new_cookie` its
      * new value.
+     * @param old_cookie the old #SoupCookie value
+     * @param new_cookie the new #SoupCookie value
      */
     connect(sigName: "changed", callback: (($obj: CookieJar, old_cookie: Cookie, new_cookie: Cookie) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CookieJar, old_cookie: Cookie, new_cookie: Cookie) => void)): number
@@ -8739,12 +9375,15 @@ class CookieJar {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::accept-policy", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-policy", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::read-only", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::read-only", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8761,15 +9400,18 @@ interface CookieJarDB_ConstructProps extends CookieJar_ConstructProps {
     filename?: string
 }
 class CookieJarDB {
+    /* Properties of Soup-2.4.Soup.CookieJarDB */
+    readonly filename: string
     /* Properties of Soup-2.4.Soup.CookieJar */
     /**
      * The policy the jar should follow to accept or reject cookies
      */
     accept_policy: CookieJarAcceptPolicy
+    readonly read_only: boolean
     /* Fields of Soup-2.4.Soup.CookieJar */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.CookieJar */
     /**
      * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
@@ -8777,6 +9419,7 @@ class CookieJarDB {
      * that the cookie's expire date is not in the past).
      * 
      * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
+     * @param cookie a #SoupCookie
      */
     add_cookie(cookie: Cookie): void
     /**
@@ -8791,6 +9434,9 @@ class CookieJarDB {
      * from insecure origins. %NULL is treated as secure.
      * 
      * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
+     * @param cookie a #SoupCookie
+     * @param uri the URI setting the cookie
+     * @param first_party the URI for the main document
      */
     add_cookie_full(cookie: Cookie, uri?: URI | null, first_party?: URI | null): void
     /**
@@ -8805,6 +9451,8 @@ class CookieJarDB {
      * 
      * For secure cookies to work properly you may want to use
      * soup_cookie_jar_add_cookie_full().
+     * @param first_party the URI for the main document
+     * @param cookie a #SoupCookie
      */
     add_cookie_with_first_party(first_party: URI, cookie: Cookie): void
     /**
@@ -8815,6 +9463,7 @@ class CookieJarDB {
     all_cookies(): Cookie[]
     /**
      * Deletes `cookie` from `jar,` emitting the 'changed' signal.
+     * @param cookie a #SoupCookie
      */
     delete_cookie(cookie: Cookie): void
     /**
@@ -8832,6 +9481,8 @@ class CookieJarDB {
      * header itself when making the actual HTTP request, you should
      * almost certainly be setting `for_http` to %FALSE if you are calling
      * this.
+     * @param uri a #SoupURI
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
      */
     get_cookie_list(uri: URI, for_http: boolean): Cookie[]
     /**
@@ -8839,6 +9490,12 @@ class CookieJarDB {
      * provides more information required to use SameSite cookies. See the
      * [SameSite cookies spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
      * for more detailed information.
+     * @param uri a #SoupURI
+     * @param top_level a #SoupURI for the top level document
+     * @param site_for_cookies a #SoupURI indicating the origin to get cookies for
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
+     * @param is_safe_method if the HTTP method is safe, as defined by RFC 7231, ignored when `for_http` is %FALSE
+     * @param is_top_level_navigation whether or not the HTTP request is part of top level navigation
      */
     get_cookie_list_with_same_site_info(uri: URI, top_level: URI | null, site_for_cookies: URI | null, for_http: boolean, is_safe_method: boolean, is_top_level_navigation: boolean): Cookie[]
     /**
@@ -8852,6 +9509,8 @@ class CookieJarDB {
      * header itself when making the actual HTTP request, you should
      * almost certainly be setting `for_http` to %FALSE if you are calling
      * this.
+     * @param uri a #SoupURI
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
      */
     get_cookies(uri: URI, for_http: boolean): string | null
     /**
@@ -8866,6 +9525,7 @@ class CookieJarDB {
     save(): void
     /**
      * Sets `policy` as the cookie acceptance policy for `jar`.
+     * @param policy a #SoupCookieJarAcceptPolicy
      */
     set_accept_policy(policy: CookieJarAcceptPolicy): void
     /**
@@ -8878,6 +9538,8 @@ class CookieJarDB {
      * soup_cookie_jar_set_cookie_with_first_party(), otherwise the jar
      * will have no way of knowing if the cookie is being set by a third
      * party or not.
+     * @param uri the URI setting the cookie
+     * @param cookie the stringified cookie to set
      */
     set_cookie(uri: URI, cookie: string): void
     /**
@@ -8885,6 +9547,9 @@ class CookieJarDB {
      * Set-Cookie header returned from a request to `uri`. `first_party`
      * will be used to reject cookies coming from third party resources in
      * case such a security policy is set in the `jar`.
+     * @param uri the URI setting the cookie
+     * @param first_party the URI for the main document
+     * @param cookie the stringified cookie to set
      */
     set_cookie_with_first_party(uri: URI, first_party: URI, cookie: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8922,6 +9587,10 @@ class CookieJarDB {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8932,6 +9601,12 @@ class CookieJarDB {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8955,6 +9630,7 @@ class CookieJarDB {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8974,11 +9650,14 @@ class CookieJarDB {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8986,6 +9665,8 @@ class CookieJarDB {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9003,6 +9684,7 @@ class CookieJarDB {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9048,6 +9730,7 @@ class CookieJarDB {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9091,15 +9774,20 @@ class CookieJarDB {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9140,6 +9828,7 @@ class CookieJarDB {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9174,6 +9863,7 @@ class CookieJarDB {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -9182,6 +9872,7 @@ class CookieJarDB {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -9189,11 +9880,13 @@ class CookieJarDB {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.CookieJarDB */
@@ -9202,6 +9895,7 @@ class CookieJarDB {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -9209,11 +9903,13 @@ class CookieJarDB {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -9236,6 +9932,7 @@ class CookieJarDB {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -9243,11 +9940,13 @@ class CookieJarDB {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -9270,6 +9969,7 @@ class CookieJarDB {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9282,6 +9982,8 @@ class CookieJarDB {
      * `new_cookie` will be %NULL. If a cookie has been changed,
      * `old_cookie` will contain its old value, and `new_cookie` its
      * new value.
+     * @param old_cookie the old #SoupCookie value
+     * @param new_cookie the new #SoupCookie value
      */
     connect(sigName: "changed", callback: (($obj: CookieJarDB, old_cookie: Cookie, new_cookie: Cookie) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CookieJarDB, old_cookie: Cookie, new_cookie: Cookie) => void)): number
@@ -9315,12 +10017,17 @@ class CookieJarDB {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::filename", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filename", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-policy", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-policy", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::read-only", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::read-only", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9339,15 +10046,18 @@ interface CookieJarText_ConstructProps extends CookieJar_ConstructProps {
     filename?: string
 }
 class CookieJarText {
+    /* Properties of Soup-2.4.Soup.CookieJarText */
+    readonly filename: string
     /* Properties of Soup-2.4.Soup.CookieJar */
     /**
      * The policy the jar should follow to accept or reject cookies
      */
     accept_policy: CookieJarAcceptPolicy
+    readonly read_only: boolean
     /* Fields of Soup-2.4.Soup.CookieJar */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.CookieJar */
     /**
      * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
@@ -9355,6 +10065,7 @@ class CookieJarText {
      * that the cookie's expire date is not in the past).
      * 
      * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
+     * @param cookie a #SoupCookie
      */
     add_cookie(cookie: Cookie): void
     /**
@@ -9369,6 +10080,9 @@ class CookieJarText {
      * from insecure origins. %NULL is treated as secure.
      * 
      * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
+     * @param cookie a #SoupCookie
+     * @param uri the URI setting the cookie
+     * @param first_party the URI for the main document
      */
     add_cookie_full(cookie: Cookie, uri?: URI | null, first_party?: URI | null): void
     /**
@@ -9383,6 +10097,8 @@ class CookieJarText {
      * 
      * For secure cookies to work properly you may want to use
      * soup_cookie_jar_add_cookie_full().
+     * @param first_party the URI for the main document
+     * @param cookie a #SoupCookie
      */
     add_cookie_with_first_party(first_party: URI, cookie: Cookie): void
     /**
@@ -9393,6 +10109,7 @@ class CookieJarText {
     all_cookies(): Cookie[]
     /**
      * Deletes `cookie` from `jar,` emitting the 'changed' signal.
+     * @param cookie a #SoupCookie
      */
     delete_cookie(cookie: Cookie): void
     /**
@@ -9410,6 +10127,8 @@ class CookieJarText {
      * header itself when making the actual HTTP request, you should
      * almost certainly be setting `for_http` to %FALSE if you are calling
      * this.
+     * @param uri a #SoupURI
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
      */
     get_cookie_list(uri: URI, for_http: boolean): Cookie[]
     /**
@@ -9417,6 +10136,12 @@ class CookieJarText {
      * provides more information required to use SameSite cookies. See the
      * [SameSite cookies spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
      * for more detailed information.
+     * @param uri a #SoupURI
+     * @param top_level a #SoupURI for the top level document
+     * @param site_for_cookies a #SoupURI indicating the origin to get cookies for
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
+     * @param is_safe_method if the HTTP method is safe, as defined by RFC 7231, ignored when `for_http` is %FALSE
+     * @param is_top_level_navigation whether or not the HTTP request is part of top level navigation
      */
     get_cookie_list_with_same_site_info(uri: URI, top_level: URI | null, site_for_cookies: URI | null, for_http: boolean, is_safe_method: boolean, is_top_level_navigation: boolean): Cookie[]
     /**
@@ -9430,6 +10155,8 @@ class CookieJarText {
      * header itself when making the actual HTTP request, you should
      * almost certainly be setting `for_http` to %FALSE if you are calling
      * this.
+     * @param uri a #SoupURI
+     * @param for_http whether or not the return value is being passed directly to an HTTP operation
      */
     get_cookies(uri: URI, for_http: boolean): string | null
     /**
@@ -9444,6 +10171,7 @@ class CookieJarText {
     save(): void
     /**
      * Sets `policy` as the cookie acceptance policy for `jar`.
+     * @param policy a #SoupCookieJarAcceptPolicy
      */
     set_accept_policy(policy: CookieJarAcceptPolicy): void
     /**
@@ -9456,6 +10184,8 @@ class CookieJarText {
      * soup_cookie_jar_set_cookie_with_first_party(), otherwise the jar
      * will have no way of knowing if the cookie is being set by a third
      * party or not.
+     * @param uri the URI setting the cookie
+     * @param cookie the stringified cookie to set
      */
     set_cookie(uri: URI, cookie: string): void
     /**
@@ -9463,6 +10193,9 @@ class CookieJarText {
      * Set-Cookie header returned from a request to `uri`. `first_party`
      * will be used to reject cookies coming from third party resources in
      * case such a security policy is set in the `jar`.
+     * @param uri the URI setting the cookie
+     * @param first_party the URI for the main document
+     * @param cookie the stringified cookie to set
      */
     set_cookie_with_first_party(uri: URI, first_party: URI, cookie: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9500,6 +10233,10 @@ class CookieJarText {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9510,6 +10247,12 @@ class CookieJarText {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9533,6 +10276,7 @@ class CookieJarText {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9552,11 +10296,14 @@ class CookieJarText {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9564,6 +10311,8 @@ class CookieJarText {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9581,6 +10330,7 @@ class CookieJarText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9626,6 +10376,7 @@ class CookieJarText {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9669,15 +10420,20 @@ class CookieJarText {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9718,6 +10474,7 @@ class CookieJarText {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9752,6 +10509,7 @@ class CookieJarText {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -9760,6 +10518,7 @@ class CookieJarText {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -9767,11 +10526,13 @@ class CookieJarText {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.CookieJarText */
@@ -9780,6 +10541,7 @@ class CookieJarText {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -9787,11 +10549,13 @@ class CookieJarText {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -9814,6 +10578,7 @@ class CookieJarText {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -9821,11 +10586,13 @@ class CookieJarText {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -9848,6 +10615,7 @@ class CookieJarText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9860,6 +10628,8 @@ class CookieJarText {
      * `new_cookie` will be %NULL. If a cookie has been changed,
      * `old_cookie` will contain its old value, and `new_cookie` its
      * new value.
+     * @param old_cookie the old #SoupCookie value
+     * @param new_cookie the new #SoupCookie value
      */
     connect(sigName: "changed", callback: (($obj: CookieJarText, old_cookie: Cookie, new_cookie: Cookie) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CookieJarText, old_cookie: Cookie, new_cookie: Cookie) => void)): number
@@ -9893,12 +10663,17 @@ class CookieJarText {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::filename", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filename", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-policy", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-policy", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::read-only", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::read-only", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9916,18 +10691,21 @@ interface HSTSEnforcer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HSTSEnforcer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.HSTSEnforcer */
     /**
      * Gets a list of domains for which there are policies in `enforcer`.
+     * @param session_policies whether to include session policies
      */
     get_domains(session_policies: boolean): string[]
     /**
      * Gets a list with the policies in `enforcer`.
+     * @param session_policies whether to include session policies
      */
     get_policies(session_policies: boolean): HSTSPolicy[]
     /**
      * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
+     * @param domain a domain.
      */
     has_valid_policy(domain: string): boolean
     /**
@@ -9942,12 +10720,15 @@ class HSTSEnforcer {
      * is, one created with soup_hsts_policy_new_session_policy(), the policy
      * will not expire and will be enforced during the lifetime of
      * `hsts_enforcer'`s #SoupSession.
+     * @param policy the policy of the HSTS host
      */
     set_policy(policy: HSTSPolicy): void
     /**
      * Sets a session policy for `domain`. A session policy is a policy
      * that is permanent to the lifetime of `hsts_enforcer'`s #SoupSession
      * and doesn't expire.
+     * @param domain policy domain or hostname
+     * @param include_subdomains %TRUE if the policy applies on sub domains
      */
     set_session_policy(domain: string, include_subdomains: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9985,6 +10766,10 @@ class HSTSEnforcer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9995,6 +10780,12 @@ class HSTSEnforcer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10018,6 +10809,7 @@ class HSTSEnforcer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10037,11 +10829,14 @@ class HSTSEnforcer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10049,6 +10844,8 @@ class HSTSEnforcer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10066,6 +10863,7 @@ class HSTSEnforcer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10111,6 +10909,7 @@ class HSTSEnforcer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10154,15 +10953,20 @@ class HSTSEnforcer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10203,6 +11007,7 @@ class HSTSEnforcer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10237,6 +11042,7 @@ class HSTSEnforcer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -10245,6 +11051,7 @@ class HSTSEnforcer {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -10252,17 +11059,20 @@ class HSTSEnforcer {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.HSTSEnforcer */
     vfunc_changed(old_policy: HSTSPolicy, new_policy: HSTSPolicy): void
     /**
      * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
+     * @param domain a domain.
      */
     vfunc_has_valid_policy(domain: string): boolean
     vfunc_hsts_enforced(message: Message): void
@@ -10275,6 +11085,7 @@ class HSTSEnforcer {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -10282,11 +11093,13 @@ class HSTSEnforcer {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -10309,6 +11122,7 @@ class HSTSEnforcer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10324,6 +11138,8 @@ class HSTSEnforcer {
      * 
      * Note that you shouldn't modify the policies from a callback to
      * this signal.
+     * @param old_policy the old #SoupHSTSPolicy value
+     * @param new_policy the new #SoupHSTSPolicy value
      */
     connect(sigName: "changed", callback: (($obj: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void)): number
     connect_after(sigName: "changed", callback: (($obj: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void)): number
@@ -10332,6 +11148,7 @@ class HSTSEnforcer {
      * Emitted when `hsts_enforcer` has upgraded the protocol
      * for `message` to HTTPS as a result of matching its domain with
      * a HSTS policy.
+     * @param message the message for which HSTS is being enforced
      */
     connect(sigName: "hsts-enforced", callback: (($obj: HSTSEnforcer, message: Message) => void)): number
     connect_after(sigName: "hsts-enforced", callback: (($obj: HSTSEnforcer, message: Message) => void)): number
@@ -10365,6 +11182,7 @@ class HSTSEnforcer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HSTSEnforcer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HSTSEnforcer, pspec: GObject.ParamSpec) => void)): number
@@ -10388,22 +11206,30 @@ interface HSTSEnforcerDB_ConstructProps extends HSTSEnforcer_ConstructProps {
     filename?: string
 }
 class HSTSEnforcerDB {
+    /* Properties of Soup-2.4.Soup.HSTSEnforcerDB */
+    /**
+     * The filename of the SQLite database where HSTS policies are stored.
+     */
+    readonly filename: string
     /* Fields of Soup-2.4.Soup.HSTSEnforcer */
-    readonly parent: GObject.Object
-    readonly priv: HSTSEnforcerPrivate
+    parent: GObject.Object
+    priv: HSTSEnforcerPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.HSTSEnforcer */
     /**
      * Gets a list of domains for which there are policies in `enforcer`.
+     * @param session_policies whether to include session policies
      */
     get_domains(session_policies: boolean): string[]
     /**
      * Gets a list with the policies in `enforcer`.
+     * @param session_policies whether to include session policies
      */
     get_policies(session_policies: boolean): HSTSPolicy[]
     /**
      * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
+     * @param domain a domain.
      */
     has_valid_policy(domain: string): boolean
     /**
@@ -10418,12 +11244,15 @@ class HSTSEnforcerDB {
      * is, one created with soup_hsts_policy_new_session_policy(), the policy
      * will not expire and will be enforced during the lifetime of
      * `hsts_enforcer'`s #SoupSession.
+     * @param policy the policy of the HSTS host
      */
     set_policy(policy: HSTSPolicy): void
     /**
      * Sets a session policy for `domain`. A session policy is a policy
      * that is permanent to the lifetime of `hsts_enforcer'`s #SoupSession
      * and doesn't expire.
+     * @param domain policy domain or hostname
+     * @param include_subdomains %TRUE if the policy applies on sub domains
      */
     set_session_policy(domain: string, include_subdomains: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10461,6 +11290,10 @@ class HSTSEnforcerDB {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10471,6 +11304,12 @@ class HSTSEnforcerDB {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10494,6 +11333,7 @@ class HSTSEnforcerDB {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10513,11 +11353,14 @@ class HSTSEnforcerDB {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10525,6 +11368,8 @@ class HSTSEnforcerDB {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10542,6 +11387,7 @@ class HSTSEnforcerDB {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10587,6 +11433,7 @@ class HSTSEnforcerDB {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10630,15 +11477,20 @@ class HSTSEnforcerDB {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10679,6 +11531,7 @@ class HSTSEnforcerDB {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10713,6 +11566,7 @@ class HSTSEnforcerDB {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -10721,6 +11575,7 @@ class HSTSEnforcerDB {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -10728,11 +11583,13 @@ class HSTSEnforcerDB {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.HSTSEnforcerDB */
@@ -10741,6 +11598,7 @@ class HSTSEnforcerDB {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -10748,11 +11606,13 @@ class HSTSEnforcerDB {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -10762,6 +11622,7 @@ class HSTSEnforcerDB {
     vfunc_changed(old_policy: HSTSPolicy, new_policy: HSTSPolicy): void
     /**
      * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
+     * @param domain a domain.
      */
     vfunc_has_valid_policy(domain: string): boolean
     vfunc_hsts_enforced(message: Message): void
@@ -10774,6 +11635,7 @@ class HSTSEnforcerDB {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -10781,11 +11643,13 @@ class HSTSEnforcerDB {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -10808,6 +11672,7 @@ class HSTSEnforcerDB {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10823,6 +11688,8 @@ class HSTSEnforcerDB {
      * 
      * Note that you shouldn't modify the policies from a callback to
      * this signal.
+     * @param old_policy the old #SoupHSTSPolicy value
+     * @param new_policy the new #SoupHSTSPolicy value
      */
     connect(sigName: "changed", callback: (($obj: HSTSEnforcerDB, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void)): number
     connect_after(sigName: "changed", callback: (($obj: HSTSEnforcerDB, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void)): number
@@ -10831,6 +11698,7 @@ class HSTSEnforcerDB {
      * Emitted when `hsts_enforcer` has upgraded the protocol
      * for `message` to HTTPS as a result of matching its domain with
      * a HSTS policy.
+     * @param message the message for which HSTS is being enforced
      */
     connect(sigName: "hsts-enforced", callback: (($obj: HSTSEnforcerDB, message: Message) => void)): number
     connect_after(sigName: "hsts-enforced", callback: (($obj: HSTSEnforcerDB, message: Message) => void)): number
@@ -10864,10 +11732,13 @@ class HSTSEnforcerDB {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HSTSEnforcerDB, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HSTSEnforcerDB, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::filename", callback: (($obj: HSTSEnforcerDB, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filename", callback: (($obj: HSTSEnforcerDB, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -10907,7 +11778,7 @@ class Logger {
      */
     max_body_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Logger */
     /**
      * Sets `logger` to watch `session` and print debug information for
@@ -10916,15 +11787,18 @@ class Logger {
      * (The session will take a reference on `logger,` which will be
      * removed when you call soup_logger_detach(), or when the session is
      * destroyed.)
+     * @param session a #SoupSession
      */
     attach(session: Session): void
     /**
      * Stops `logger` from watching `session`.
+     * @param session a #SoupSession
      */
     detach(session: Session): void
     /**
      * Sets up an alternate log printing routine, if you don't want
      * the log to go to <literal>stdout</literal>.
+     * @param printer the callback for printing logging output
      */
     set_printer(printer: LoggerPrinter): void
     /**
@@ -10933,6 +11807,7 @@ class Logger {
      * determine how much (if any) of that request to log. (If you do not
      * set a request filter, `logger` will just always log requests at the
      * level passed to soup_logger_new().)
+     * @param request_filter the callback for request debugging
      */
     set_request_filter(request_filter: LoggerFilter): void
     /**
@@ -10941,6 +11816,7 @@ class Logger {
      * determine how much (if any) of that response to log. (If you do not
      * set a response filter, `logger` will just always log responses at
      * the level passed to soup_logger_new().)
+     * @param response_filter the callback for response debugging
      */
     set_response_filter(response_filter: LoggerFilter): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10978,6 +11854,10 @@ class Logger {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10988,6 +11868,12 @@ class Logger {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11011,6 +11897,7 @@ class Logger {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11030,11 +11917,14 @@ class Logger {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11042,6 +11932,8 @@ class Logger {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11059,6 +11951,7 @@ class Logger {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11104,6 +11997,7 @@ class Logger {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11147,15 +12041,20 @@ class Logger {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11196,6 +12095,7 @@ class Logger {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11230,6 +12130,7 @@ class Logger {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -11238,6 +12139,7 @@ class Logger {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -11245,11 +12147,13 @@ class Logger {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.Logger */
@@ -11258,6 +12162,7 @@ class Logger {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -11265,11 +12170,13 @@ class Logger {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -11292,6 +12199,7 @@ class Logger {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11324,6 +12232,7 @@ class Logger {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Logger, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Logger, pspec: GObject.ParamSpec) => void)): number
@@ -11400,6 +12309,7 @@ class Message {
      */
     readonly response_body_data: GLib.Bytes
     readonly response_headers: MessageHeaders
+    readonly server_side: boolean
     site_for_cookies: URI
     status_code: number
     /**
@@ -11412,7 +12322,7 @@ class Message {
     tls_errors: Gio.TlsCertificateFlags
     uri: URI
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Message */
     content_sniffed(content_type: string, params: GLib.HashTable): void
     /**
@@ -11426,6 +12336,7 @@ class Message {
      * a message that has already been queued is undefined. In particular,
      * you cannot call this on a message that is being requeued after a
      * redirect or authentication.
+     * @param feature_type the #GType of a #SoupSessionFeature
      */
     disable_feature(feature_type: GObject.Type): void
     finished(): void
@@ -11486,6 +12397,7 @@ class Message {
      * Get whether #SoupSessionFeature<!-- -->s of the given `feature_type`
      * (or a subclass of that type) are disabled on `msg`.
      * See soup_message_disable_feature().
+     * @param feature_type the #GType of a #SoupSessionFeature
      */
     is_feature_disabled(feature_type: GObject.Type): boolean
     /**
@@ -11524,27 +12436,32 @@ class Message {
      * you'll need to ref the #SoupBuffer (or its owner, in the
      * soup_buffer_new_with_owner() case) to ensure that the data remains
      * valid.
+     * @param allocator the chunk allocator callback
      */
     set_chunk_allocator(allocator: ChunkAllocator): void
     /**
      * Sets `first_party` as the main document #SoupURI for `msg`. For
      * details of when and how this is used refer to the documentation for
      * #SoupCookieJarAcceptPolicy.
+     * @param first_party the #SoupURI for the `msg'`s first party
      */
     set_first_party(first_party: URI): void
     /**
      * Sets the specified flags on `msg`.
+     * @param flags a set of #SoupMessageFlags values
      */
     set_flags(flags: MessageFlags): void
     /**
      * Sets the HTTP version on `msg`. The default version is
      * %SOUP_HTTP_1_1. Setting it to %SOUP_HTTP_1_0 will prevent certain
      * functionality from being used.
+     * @param version the HTTP version
      */
     set_http_version(version: HTTPVersion): void
     /**
      * See the [same-site spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
      * for more information.
+     * @param is_top_level_navigation if %TRUE indicate the current request is a top-level navigation
      */
     set_is_top_level_navigation(is_top_level_navigation: boolean): void
     /**
@@ -11560,6 +12477,7 @@ class Message {
      * (or with synchronous messages on a plain #SoupSession) because in
      * the synchronous/blocking case, priority ends up being determined
      * semi-randomly by thread scheduling.
+     * @param priority the #SoupMessagePriority
      */
     set_priority(priority: MessagePriority): void
     /**
@@ -11571,16 +12489,24 @@ class Message {
      * interpreted relative to `msg'`s current URI. In particular, if
      * `redirect_uri` is just a path, it will replace the path
      * <emphasis>and query</emphasis> of `msg'`s URI.
+     * @param status_code a 3xx status code
+     * @param redirect_uri the URI to redirect `msg` to
      */
     set_redirect(status_code: number, redirect_uri: string): void
     /**
      * Convenience function to set the request body of a #SoupMessage. If
      * `content_type` is %NULL, the request body must be empty as well.
+     * @param content_type MIME Content-Type of the body
+     * @param req_use a #SoupMemoryUse describing how to handle `req_body`
+     * @param req_body    a data buffer containing the body of the message request.
      */
     set_request(content_type: string | null, req_use: MemoryUse, req_body: Uint8Array | null): void
     /**
      * Convenience function to set the response body of a #SoupMessage. If
      * `content_type` is %NULL, the response body must be empty as well.
+     * @param content_type MIME Content-Type of the body
+     * @param resp_use a #SoupMemoryUse describing how to handle `resp_body`
+     * @param resp_body    a data buffer containing the body of the message response.
      */
     set_response(content_type: string | null, resp_use: MemoryUse, resp_body: Uint8Array | null): void
     /**
@@ -11592,21 +12518,26 @@ class Message {
      * 
      * See the [same-site spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
      * for more information.
+     * @param site_for_cookies the #SoupURI for the `msg'`s site for cookies
      */
     set_site_for_cookies(site_for_cookies?: URI | null): void
     /**
      * Sets `msg'`s status code to `status_code`. If `status_code` is a
      * known value, it will also set `msg'`s reason_phrase.
+     * @param status_code an HTTP status code
      */
     set_status(status_code: number): void
     /**
      * Sets `msg'`s status code and reason phrase.
+     * @param status_code an HTTP status code
+     * @param reason_phrase a description of the status
      */
     set_status_full(status_code: number, reason_phrase: string): void
     /**
      * Sets `msg'`s URI to `uri`. If `msg` has already been sent and you want
      * to re-send it with the new URI, you need to call
      * soup_session_requeue_message().
+     * @param uri the new #SoupURI
      */
     set_uri(uri: URI): void
     starting(): void
@@ -11650,6 +12581,10 @@ class Message {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11660,6 +12595,12 @@ class Message {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11683,6 +12624,7 @@ class Message {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11702,11 +12644,14 @@ class Message {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11714,6 +12659,8 @@ class Message {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11731,6 +12678,7 @@ class Message {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11776,6 +12724,7 @@ class Message {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11819,15 +12768,20 @@ class Message {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11868,6 +12822,7 @@ class Message {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11902,6 +12857,7 @@ class Message {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Message */
@@ -11933,6 +12889,7 @@ class Message {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11957,6 +12914,8 @@ class Message {
      * After this signal is emitted, the data that was spooled so
      * that sniffing could be done is delivered on the first
      * emission of #SoupMessage::got-chunk.
+     * @param type the content type that we got from sniffing
+     * @param params a #GHashTable with the parameters
      */
     connect(sigName: "content-sniffed", callback: (($obj: Message, type: string, params: GLib.HashTable) => void)): number
     connect_after(sigName: "content-sniffed", callback: (($obj: Message, type: string, params: GLib.HashTable) => void)): number
@@ -11991,6 +12950,7 @@ class Message {
      * If you cancel or requeue `msg` while processing this signal,
      * then the current HTTP I/O will be stopped after this signal
      * emission finished, and `msg'`s connection will be closed.
+     * @param chunk the just-read chunk
      */
     connect(sigName: "got-chunk", callback: (($obj: Message, chunk: Buffer) => void)): number
     connect_after(sigName: "got-chunk", callback: (($obj: Message, chunk: Buffer) => void)): number
@@ -12045,6 +13005,8 @@ class Message {
      * See #GSocketClient::event for more information on what
      * the different values of `event` correspond to, and what
      * `connection` will be in each case.
+     * @param event the network event
+     * @param connection the current state of the network connection
      */
     connect(sigName: "network-event", callback: (($obj: Message, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void)): number
     connect_after(sigName: "network-event", callback: (($obj: Message, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void)): number
@@ -12082,6 +13044,7 @@ class Message {
      * Unlike #SoupMessage::wrote_chunk, this is emitted after
      * every successful write() call, not only after finishing a
      * complete "chunk".
+     * @param chunk the data written
      */
     connect(sigName: "wrote-body-data", callback: (($obj: Message, chunk: Buffer) => void)): number
     connect_after(sigName: "wrote-body-data", callback: (($obj: Message, chunk: Buffer) => void)): number
@@ -12144,6 +13107,7 @@ class Message {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
@@ -12174,6 +13138,8 @@ class Message {
     connect_after(sigName: "notify::response-body-data", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::response-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::response-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::server-side", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::server-side", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::site-for-cookies", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::site-for-cookies", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::status-code", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
@@ -12201,13 +13167,15 @@ interface MultipartInputStream_ConstructProps extends Gio.FilterInputStream_Cons
     message?: Message
 }
 class MultipartInputStream {
+    /* Properties of Soup-2.4.Soup.MultipartInputStream */
+    readonly message: Message
     /* Properties of Gio-2.0.Gio.FilterInputStream */
     close_base_stream: boolean
     /* Fields of Gio-2.0.Gio.FilterInputStream */
-    readonly parent_instance: Gio.InputStream
-    readonly base_stream: Gio.InputStream
+    parent_instance: Gio.InputStream
+    base_stream: Gio.InputStream
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.MultipartInputStream */
     /**
      * Obtains the headers for the part currently being processed. Note
@@ -12233,16 +13201,21 @@ class MultipartInputStream {
      * headers for the first part. A read of 0 bytes indicates the end of
      * the part; a new call to this function should be done at that point,
      * to obtain the next part.
+     * @param cancellable a #GCancellable
      */
     next_part(cancellable?: Gio.Cancellable | null): Gio.InputStream | null
     /**
      * Obtains a #GInputStream for the next request. See
      * soup_multipart_input_stream_next_part() for details on the
      * workflow.
+     * @param io_priority the I/O priority for the request.
+     * @param cancellable a #GCancellable.
+     * @param callback callback to call when request is satisfied.
      */
     next_part_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous request for the next part.
+     * @param result a #GAsyncResult.
      */
     next_part_finish(result: Gio.AsyncResult): Gio.InputStream | null
     /* Methods of Gio-2.0.Gio.FilterInputStream */
@@ -12257,6 +13230,7 @@ class MultipartInputStream {
     get_close_base_stream(): boolean
     /**
      * Sets whether the base stream will be closed when `stream` is closed.
+     * @param close_base %TRUE to close the base stream.
      */
     set_close_base_stream(close_base: boolean): void
     /* Methods of Gio-2.0.Gio.InputStream */
@@ -12288,6 +13262,7 @@ class MultipartInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
      * Cancelling a close will still leave the stream closed, but some streams
      * can use a faster close that doesn't block to e.g. check errors.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     close(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -12301,10 +13276,14 @@ class MultipartInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
+     * @param result a #GAsyncResult.
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -12337,6 +13316,7 @@ class MultipartInputStream {
      * partial result will be returned, without an error.
      * 
      * On error -1 is returned and `error` is set accordingly.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read(cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buffer */ Uint8Array ]
     /**
@@ -12359,6 +13339,7 @@ class MultipartInputStream {
      * read before the error was encountered.  This functionality is only
      * available from C.  If you need it from another language then you must
      * write your own loop around g_input_stream_read().
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_all(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* buffer */ Uint8Array, /* bytes_read */ number ]
     /**
@@ -12372,6 +13353,9 @@ class MultipartInputStream {
      * Any outstanding I/O request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
     /**
@@ -12384,6 +13368,7 @@ class MultipartInputStream {
      * read before the error was encountered.  This functionality is only
      * available from C.  If you need it from another language then you must
      * write your own loop around g_input_stream_read_async().
+     * @param result a #GAsyncResult
      */
     read_all_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytes_read */ number ]
     /**
@@ -12410,6 +13395,9 @@ class MultipartInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
     /**
@@ -12436,6 +13424,8 @@ class MultipartInputStream {
      * partial result will be returned, without an error.
      * 
      * On error %NULL is returned and `error` is set accordingly.
+     * @param count maximum number of bytes that will be read from the stream. Common values include 4096 and 8192.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read_bytes(count: number, cancellable?: Gio.Cancellable | null): GLib.Bytes
     /**
@@ -12459,14 +13449,20 @@ class MultipartInputStream {
      * Any outstanding I/O request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param count the number of bytes that will be read from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous stream read-into-#GBytes operation.
+     * @param result a #GAsyncResult.
      */
     read_bytes_finish(result: Gio.AsyncResult): GLib.Bytes
     /**
      * Finishes an asynchronous stream read operation.
+     * @param result a #GAsyncResult.
      */
     read_finish(result: Gio.AsyncResult): number
     /**
@@ -12490,6 +13486,8 @@ class MultipartInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     skip(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -12516,10 +13514,15 @@ class MultipartInputStream {
      * The asynchronous methods have a default fallback that uses threads to
      * implement asynchronicity, so they are optional for inheriting classes.
      * However, if you override one, you must override all.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream skip operation.
+     * @param result a #GAsyncResult.
      */
     skip_finish(result: Gio.AsyncResult): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -12557,6 +13560,10 @@ class MultipartInputStream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12567,6 +13574,12 @@ class MultipartInputStream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12590,6 +13603,7 @@ class MultipartInputStream {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12609,11 +13623,14 @@ class MultipartInputStream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12621,6 +13638,8 @@ class MultipartInputStream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12638,6 +13657,7 @@ class MultipartInputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12683,6 +13703,7 @@ class MultipartInputStream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12726,15 +13747,20 @@ class MultipartInputStream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12775,6 +13801,7 @@ class MultipartInputStream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12809,6 +13836,7 @@ class MultipartInputStream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.PollableInputStream */
@@ -12831,6 +13859,7 @@ class MultipartInputStream {
      * the stream may not actually be readable even after the source
      * triggers, so you should use g_pollable_input_stream_read_nonblocking()
      * rather than g_input_stream_read() from the callback.
+     * @param cancellable a #GCancellable, or %NULL
      */
     create_source(cancellable?: Gio.Cancellable | null): GLib.Source
     /**
@@ -12856,6 +13885,7 @@ class MultipartInputStream {
      * if `cancellable` has already been cancelled when you call, which
      * may happen if you call this method after a source triggers due
      * to having been cancelled.
+     * @param cancellable a #GCancellable, or %NULL
      */
     read_nonblocking(cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buffer */ Uint8Array ]
     /* Virtual methods of Soup-2.4.Soup.MultipartInputStream */
@@ -12878,6 +13908,7 @@ class MultipartInputStream {
      * the stream may not actually be readable even after the source
      * triggers, so you should use g_pollable_input_stream_read_nonblocking()
      * rather than g_input_stream_read() from the callback.
+     * @param cancellable a #GCancellable, or %NULL
      */
     vfunc_create_source(cancellable?: Gio.Cancellable | null): GLib.Source
     /**
@@ -12917,10 +13948,14 @@ class MultipartInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
+     * @param result a #GAsyncResult.
      */
     vfunc_close_finish(result: Gio.AsyncResult): boolean
     vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean
@@ -12948,10 +13983,14 @@ class MultipartInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array | null
     /**
      * Finishes an asynchronous stream read operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_read_finish(result: Gio.AsyncResult): number
     vfunc_read_fn(buffer: object | null, count: number, cancellable?: Gio.Cancellable | null): number
@@ -12970,6 +14009,8 @@ class MultipartInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -12996,10 +14037,15 @@ class MultipartInputStream {
      * The asynchronous methods have a default fallback that uses threads to
      * implement asynchronicity, so they are optional for inheriting classes.
      * However, if you override one, you must override all.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream skip operation.
+     * @param result a #GAsyncResult.
      */
     vfunc_skip_finish(result: Gio.AsyncResult): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13019,6 +14065,7 @@ class MultipartInputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13051,10 +14098,13 @@ class MultipartInputStream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::message", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::message", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::close-base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -13076,7 +14126,7 @@ class ProxyResolverDefault {
     /* Properties of Soup-2.4.Soup.ProxyResolverDefault */
     gproxy_resolver: Gio.ProxyResolver
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -13112,6 +14162,10 @@ class ProxyResolverDefault {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13122,6 +14176,12 @@ class ProxyResolverDefault {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13145,6 +14205,7 @@ class ProxyResolverDefault {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13164,11 +14225,14 @@ class ProxyResolverDefault {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13176,6 +14240,8 @@ class ProxyResolverDefault {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13193,6 +14259,7 @@ class ProxyResolverDefault {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13238,6 +14305,7 @@ class ProxyResolverDefault {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13281,15 +14349,20 @@ class ProxyResolverDefault {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13330,6 +14403,7 @@ class ProxyResolverDefault {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13364,18 +14438,25 @@ class ProxyResolverDefault {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.ProxyURIResolver */
     /**
      * Asynchronously determines a proxy URI to use for `msg` and calls
      * `callback`.
+     * @param uri the #SoupURI you want a proxy for
+     * @param async_context the #GMainContext to invoke `callback` in
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to invoke with the proxy address
      */
     get_proxy_uri_async(uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback): void
     /**
      * Synchronously determines a proxy URI to use for `uri`. If `uri`
      * should be sent via proxy, *`proxy_uri` will be set to the URI of the
      * proxy, else it will be set to %NULL.
+     * @param uri the #SoupURI you want a proxy for
+     * @param cancellable a #GCancellable, or %NULL
      */
     get_proxy_uri_sync(uri: URI, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* proxy_uri */ URI ]
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -13384,6 +14465,7 @@ class ProxyResolverDefault {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -13391,23 +14473,31 @@ class ProxyResolverDefault {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.ProxyResolverDefault */
     /**
      * Asynchronously determines a proxy URI to use for `msg` and calls
      * `callback`.
+     * @param uri the #SoupURI you want a proxy for
+     * @param async_context the #GMainContext to invoke `callback` in
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to invoke with the proxy address
      */
     vfunc_get_proxy_uri_async(uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback): void
     /**
      * Synchronously determines a proxy URI to use for `uri`. If `uri`
      * should be sent via proxy, *`proxy_uri` will be set to the URI of the
      * proxy, else it will be set to %NULL.
+     * @param uri the #SoupURI you want a proxy for
+     * @param cancellable a #GCancellable, or %NULL
      */
     vfunc_get_proxy_uri_sync(uri: URI, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* proxy_uri */ URI ]
     /**
@@ -13415,6 +14505,7 @@ class ProxyResolverDefault {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -13422,11 +14513,13 @@ class ProxyResolverDefault {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -13449,6 +14542,7 @@ class ProxyResolverDefault {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13481,6 +14575,7 @@ class ProxyResolverDefault {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ProxyResolverDefault, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ProxyResolverDefault, pspec: GObject.ParamSpec) => void)): number
@@ -13508,8 +14603,17 @@ interface Request_ConstructProps extends GObject.Object_ConstructProps {
     uri?: URI
 }
 class Request {
+    /* Properties of Soup-2.4.Soup.Request */
+    /**
+     * The request's #SoupSession.
+     */
+    readonly session: Session
+    /**
+     * The request URI.
+     */
+    readonly uri: URI
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Request */
     /**
      * Gets the length of the data represented by `request`. For most
@@ -13540,6 +14644,7 @@ class Request {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionAsync.
+     * @param cancellable a #GCancellable or %NULL
      */
     send(cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -13548,10 +14653,13 @@ class Request {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback
      */
     send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of a soup_request_send_async().
+     * @param result the #GAsyncResult
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /* Methods of GObject-2.0.GObject.Object */
@@ -13589,6 +14697,10 @@ class Request {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13599,6 +14711,12 @@ class Request {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13622,6 +14740,7 @@ class Request {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13641,11 +14760,14 @@ class Request {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13653,6 +14775,8 @@ class Request {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13670,6 +14794,7 @@ class Request {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13715,6 +14840,7 @@ class Request {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13758,15 +14884,20 @@ class Request {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13807,6 +14938,7 @@ class Request {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13841,6 +14973,7 @@ class Request {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -13883,6 +15016,7 @@ class Request {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Soup-2.4.Soup.Request */
@@ -13908,6 +15042,7 @@ class Request {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionAsync.
+     * @param cancellable a #GCancellable or %NULL
      */
     vfunc_send(cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -13916,10 +15051,13 @@ class Request {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback
      */
     vfunc_send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of a soup_request_send_async().
+     * @param result the #GAsyncResult
      */
     vfunc_send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -13961,6 +15099,7 @@ class Request {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13980,6 +15119,7 @@ class Request {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14012,10 +15152,15 @@ class Request {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Request, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Request, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::session", callback: (($obj: Request, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: (($obj: Request, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uri", callback: (($obj: Request, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uri", callback: (($obj: Request, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -14028,6 +15173,9 @@ class Request {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -14035,11 +15183,20 @@ class Request {
 interface RequestData_ConstructProps extends Request_ConstructProps {
 }
 class RequestData {
+    /* Properties of Soup-2.4.Soup.Request */
+    /**
+     * The request's #SoupSession.
+     */
+    readonly session: Session
+    /**
+     * The request URI.
+     */
+    readonly uri: URI
     /* Fields of Soup-2.4.Soup.Request */
-    readonly parent: GObject.Object
-    readonly priv: RequestPrivate
+    parent: GObject.Object
+    priv: RequestPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Request */
     /**
      * Gets the length of the data represented by `request`. For most
@@ -14070,6 +15227,7 @@ class RequestData {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionAsync.
+     * @param cancellable a #GCancellable or %NULL
      */
     send(cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -14078,10 +15236,13 @@ class RequestData {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback
      */
     send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of a soup_request_send_async().
+     * @param result the #GAsyncResult
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /* Methods of GObject-2.0.GObject.Object */
@@ -14119,6 +15280,10 @@ class RequestData {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14129,6 +15294,12 @@ class RequestData {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14152,6 +15323,7 @@ class RequestData {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14171,11 +15343,14 @@ class RequestData {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14183,6 +15358,8 @@ class RequestData {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14200,6 +15377,7 @@ class RequestData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14245,6 +15423,7 @@ class RequestData {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14288,15 +15467,20 @@ class RequestData {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14337,6 +15521,7 @@ class RequestData {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14371,6 +15556,7 @@ class RequestData {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -14413,6 +15599,7 @@ class RequestData {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Soup-2.4.Soup.RequestData */
@@ -14455,6 +15642,7 @@ class RequestData {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Soup-2.4.Soup.Request */
@@ -14480,6 +15668,7 @@ class RequestData {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionAsync.
+     * @param cancellable a #GCancellable or %NULL
      */
     vfunc_send(cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -14488,10 +15677,13 @@ class RequestData {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback
      */
     vfunc_send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of a soup_request_send_async().
+     * @param result the #GAsyncResult
      */
     vfunc_send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -14533,6 +15725,7 @@ class RequestData {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14552,6 +15745,7 @@ class RequestData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14584,10 +15778,15 @@ class RequestData {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RequestData, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RequestData, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::session", callback: (($obj: RequestData, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: (($obj: RequestData, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uri", callback: (($obj: RequestData, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uri", callback: (($obj: RequestData, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -14600,6 +15799,9 @@ class RequestData {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -14607,11 +15809,20 @@ class RequestData {
 interface RequestFile_ConstructProps extends Request_ConstructProps {
 }
 class RequestFile {
+    /* Properties of Soup-2.4.Soup.Request */
+    /**
+     * The request's #SoupSession.
+     */
+    readonly session: Session
+    /**
+     * The request URI.
+     */
+    readonly uri: URI
     /* Fields of Soup-2.4.Soup.Request */
-    readonly parent: GObject.Object
-    readonly priv: RequestPrivate
+    parent: GObject.Object
+    priv: RequestPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.RequestFile */
     /**
      * Gets a #GFile corresponding to `file'`s URI
@@ -14647,6 +15858,7 @@ class RequestFile {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionAsync.
+     * @param cancellable a #GCancellable or %NULL
      */
     send(cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -14655,10 +15867,13 @@ class RequestFile {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback
      */
     send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of a soup_request_send_async().
+     * @param result the #GAsyncResult
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /* Methods of GObject-2.0.GObject.Object */
@@ -14696,6 +15911,10 @@ class RequestFile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14706,6 +15925,12 @@ class RequestFile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14729,6 +15954,7 @@ class RequestFile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14748,11 +15974,14 @@ class RequestFile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14760,6 +15989,8 @@ class RequestFile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14777,6 +16008,7 @@ class RequestFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14822,6 +16054,7 @@ class RequestFile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14865,15 +16098,20 @@ class RequestFile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14914,6 +16152,7 @@ class RequestFile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14948,6 +16187,7 @@ class RequestFile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -14990,6 +16230,7 @@ class RequestFile {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Soup-2.4.Soup.RequestFile */
@@ -15032,6 +16273,7 @@ class RequestFile {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Soup-2.4.Soup.Request */
@@ -15057,6 +16299,7 @@ class RequestFile {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionAsync.
+     * @param cancellable a #GCancellable or %NULL
      */
     vfunc_send(cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -15065,10 +16308,13 @@ class RequestFile {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback
      */
     vfunc_send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of a soup_request_send_async().
+     * @param result the #GAsyncResult
      */
     vfunc_send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -15110,6 +16356,7 @@ class RequestFile {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15129,6 +16376,7 @@ class RequestFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15161,10 +16409,15 @@ class RequestFile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RequestFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RequestFile, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::session", callback: (($obj: RequestFile, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: (($obj: RequestFile, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uri", callback: (($obj: RequestFile, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uri", callback: (($obj: RequestFile, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15177,6 +16430,9 @@ class RequestFile {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -15184,11 +16440,20 @@ class RequestFile {
 interface RequestHTTP_ConstructProps extends Request_ConstructProps {
 }
 class RequestHTTP {
+    /* Properties of Soup-2.4.Soup.Request */
+    /**
+     * The request's #SoupSession.
+     */
+    readonly session: Session
+    /**
+     * The request URI.
+     */
+    readonly uri: URI
     /* Fields of Soup-2.4.Soup.Request */
-    readonly parent: GObject.Object
-    readonly priv: RequestPrivate
+    parent: GObject.Object
+    priv: RequestPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.RequestHTTP */
     /**
      * Gets a new reference to the #SoupMessage associated to this SoupRequest
@@ -15224,6 +16489,7 @@ class RequestHTTP {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionAsync.
+     * @param cancellable a #GCancellable or %NULL
      */
     send(cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -15232,10 +16498,13 @@ class RequestHTTP {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback
      */
     send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of a soup_request_send_async().
+     * @param result the #GAsyncResult
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /* Methods of GObject-2.0.GObject.Object */
@@ -15273,6 +16542,10 @@ class RequestHTTP {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15283,6 +16556,12 @@ class RequestHTTP {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15306,6 +16585,7 @@ class RequestHTTP {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15325,11 +16605,14 @@ class RequestHTTP {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15337,6 +16620,8 @@ class RequestHTTP {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15354,6 +16639,7 @@ class RequestHTTP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15399,6 +16685,7 @@ class RequestHTTP {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15442,15 +16729,20 @@ class RequestHTTP {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15491,6 +16783,7 @@ class RequestHTTP {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15525,6 +16818,7 @@ class RequestHTTP {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -15567,6 +16861,7 @@ class RequestHTTP {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Soup-2.4.Soup.RequestHTTP */
@@ -15609,6 +16904,7 @@ class RequestHTTP {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Soup-2.4.Soup.Request */
@@ -15634,6 +16930,7 @@ class RequestHTTP {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionAsync.
+     * @param cancellable a #GCancellable or %NULL
      */
     vfunc_send(cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -15642,10 +16939,13 @@ class RequestHTTP {
      * 
      * Note that you cannot use this method with #SoupRequests attached to
      * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a #GAsyncReadyCallback
      */
     vfunc_send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of a soup_request_send_async().
+     * @param result the #GAsyncResult
      */
     vfunc_send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -15687,6 +16987,7 @@ class RequestHTTP {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15706,6 +17007,7 @@ class RequestHTTP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15738,10 +17040,15 @@ class RequestHTTP {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RequestHTTP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RequestHTTP, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::session", callback: (($obj: RequestHTTP, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: (($obj: RequestHTTP, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uri", callback: (($obj: RequestHTTP, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uri", callback: (($obj: RequestHTTP, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15754,6 +17061,9 @@ class RequestHTTP {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -15762,7 +17072,7 @@ interface Requester_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Requester {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Requester */
     request(uri_string: string): Request
     request_uri(uri: URI): Request
@@ -15801,6 +17111,10 @@ class Requester {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15811,6 +17125,12 @@ class Requester {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15834,6 +17154,7 @@ class Requester {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15853,11 +17174,14 @@ class Requester {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15865,6 +17189,8 @@ class Requester {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15882,6 +17208,7 @@ class Requester {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15927,6 +17254,7 @@ class Requester {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15970,15 +17298,20 @@ class Requester {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16019,6 +17352,7 @@ class Requester {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16053,6 +17387,7 @@ class Requester {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -16061,6 +17396,7 @@ class Requester {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -16068,11 +17404,13 @@ class Requester {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.Requester */
@@ -16081,6 +17419,7 @@ class Requester {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -16088,11 +17427,13 @@ class Requester {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -16115,6 +17456,7 @@ class Requester {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16147,6 +17489,7 @@ class Requester {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Requester, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Requester, pspec: GObject.ParamSpec) => void)): number
@@ -16269,6 +17612,13 @@ interface Server_ConstructProps extends GObject.Object_ConstructProps {
 class Server {
     /* Properties of Soup-2.4.Soup.Server */
     /**
+     * The server's #GMainContext, if you are using the old API.
+     * Servers created using soup_server_listen() will listen on
+     * the #GMainContext that was the thread-default context at
+     * the time soup_server_listen() was called.
+     */
+    readonly async_context: object
+    /**
      * A %NULL-terminated array of URI schemes that should be
      * considered to be aliases for "http". Eg, if this included
      * <literal>"dav"</literal>, than a URI of
@@ -16296,6 +17646,20 @@ class Server {
      */
     https_aliases: string[]
     /**
+     * The address of the network interface the server is
+     * listening on, if you are using the old #SoupServer API.
+     * (This will not be set if you use soup_server_listen(),
+     * etc.)
+     */
+    readonly interface: Address
+    /**
+     * The port the server is listening on, if you are using the
+     * old #SoupServer API. (This will not be set if you use
+     * soup_server_listen(), etc.)
+     */
+    readonly port: number
+    readonly raw_paths: boolean
+    /**
      * If non-%NULL, the value to use for the "Server" header on
      * #SoupMessage<!-- -->s processed by this server.
      * 
@@ -16322,11 +17686,40 @@ class Server {
      * header for you.
      */
     server_header: string
+    /**
+     * Path to a file containing a PEM-encoded certificate.
+     * 
+     * If you set this property and #SoupServer:ssl-key-file at
+     * construct time, then soup_server_new() will try to read the
+     * files; if it cannot, it will return %NULL, with no explicit
+     * indication of what went wrong (and logging a warning with
+     * newer versions of glib, since returning %NULL from a
+     * constructor is illegal).
+     */
+    readonly ssl_cert_file: string
+    /**
+     * Path to a file containing a PEM-encoded private key. See
+     * #SoupServer:ssl-cert-file for more information about how this
+     * is used.
+     */
+    readonly ssl_key_file: string
+    /**
+     * A #GTlsCertificate that has a #GTlsCertificate:private-key
+     * set. If this is set, then the server will be able to speak
+     * https in addition to (or instead of) plain http.
+     * 
+     * Alternatively, you can call soup_server_set_ssl_cert_file()
+     * to have #SoupServer read in a a certificate from a file.
+     */
+    readonly tls_certificate: Gio.TlsCertificate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Server */
     /**
      * Add a new client stream to the `server`.
+     * @param stream a #GIOStream
+     * @param local_addr the local #GSocketAddress associated with the `stream`
+     * @param remote_addr the remote #GSocketAddress associated with the `stream`
      */
     accept_iostream(stream: Gio.IOStream, local_addr?: Gio.SocketAddress | null, remote_addr?: Gio.SocketAddress | null): boolean
     /**
@@ -16341,6 +17734,7 @@ class Server {
      * Proxy Authentication Required). If the request used the
      * "100-continue" Expectation, `server` will reject it before the
      * request body is sent.
+     * @param auth_domain a #SoupAuthDomain
      */
     add_auth_domain(auth_domain: AuthDomain): void
     /**
@@ -16371,6 +17765,8 @@ class Server {
      * long as you have not set the #SoupMessage:status-code by the time
      * #SoupMessage::got-body is emitted, the non-early handler will be
      * run as well.
+     * @param path the toplevel path for the handler
+     * @param callback callback to invoke for requests under `path`
      */
     add_early_handler(path: string | null, callback: ServerCallback): void
     /**
@@ -16411,6 +17807,8 @@ class Server {
      * encoding but no more chunks are available.) When you are done, call
      * soup_message_body_complete() to indicate that no more chunks are
      * coming.
+     * @param path the toplevel path for the handler
+     * @param callback callback to invoke for requests under `path`
      */
     add_handler(path: string | null, callback: ServerCallback): void
     /**
@@ -16423,6 +17821,7 @@ class Server {
      * construct time by using the %SOUP_SERVER_ADD_WEBSOCKET_EXTENSION property.
      * Note that #SoupWebsocketExtensionDeflate is supported by default, use
      * soup_server_remove_websocket_extension() if you want to disable it.
+     * @param extension_type a #GType
      */
     add_websocket_extension(extension_type: GObject.Type): void
     /**
@@ -16444,6 +17843,10 @@ class Server {
      * whatever checks are needed (possibly calling
      * soup_server_check_websocket_handshake() one or more times), and
      * setting a failure status code if the handshake should be rejected.
+     * @param path the toplevel path for the handler
+     * @param origin the origin of the connection
+     * @param protocols the protocols   supported by this handler
+     * @param callback callback to invoke for successful WebSocket requests under `path`
      */
     add_websocket_handler(path: string | null, origin: string | null, protocols: string[] | null, callback: ServerWebsocketCallback): void
     /**
@@ -16537,6 +17940,8 @@ class Server {
      * Note that #SoupServer never makes use of dual IPv4/IPv6 sockets; if
      * `address` is an IPv6 address, it will only accept IPv6 connections.
      * You must configure IPv4 listening separately.
+     * @param address the address of the interface to listen on
+     * @param options listening options for this server
      */
     listen(address: Gio.SocketAddress, options: ServerListenOptions): boolean
     /**
@@ -16550,6 +17955,8 @@ class Server {
      * soup_server_get_uris() to find out what port it ended up choosing.)
      * 
      * See soup_server_listen() for more details.
+     * @param port the port to listen on, or 0
+     * @param options listening options for this server
      */
     listen_all(port: number, options: ServerListenOptions): boolean
     /**
@@ -16560,6 +17967,8 @@ class Server {
      * 
      * Note that `server` will close `fd` when you free it or call
      * soup_server_disconnect().
+     * @param fd the file descriptor of a listening socket
+     * @param options listening options for this server
      */
     listen_fd(fd: number, options: ServerListenOptions): boolean
     /**
@@ -16573,6 +17982,8 @@ class Server {
      * ended up choosing.)
      * 
      * See soup_server_listen() for more details.
+     * @param port the port to listen on, or 0
+     * @param options listening options for this server
      */
     listen_local(port: number, options: ServerListenOptions): boolean
     /**
@@ -16580,6 +17991,8 @@ class Server {
      * `socket`.
      * 
      * See soup_server_listen() for more details.
+     * @param socket a listening #GSocket
+     * @param options listening options for this server
      */
     listen_socket(socket: Gio.Socket, options: ServerListenOptions): boolean
     /**
@@ -16590,6 +18003,7 @@ class Server {
      * This must only be called on #SoupMessages which were created by the
      * #SoupServer and are currently doing I/O, such as those passed into a
      * #SoupServerCallback or emitted in a #SoupServer::request-read signal.
+     * @param msg a #SoupMessage associated with `server`.
      */
     pause_message(msg: Message): void
     /**
@@ -16607,10 +18021,12 @@ class Server {
     quit(): void
     /**
      * Removes `auth_domain` from `server`.
+     * @param auth_domain a #SoupAuthDomain
      */
     remove_auth_domain(auth_domain: AuthDomain): void
     /**
      * Removes all handlers (early and normal) registered at `path`.
+     * @param path the toplevel path for the handler
      */
     remove_handler(path: string): void
     /**
@@ -16618,6 +18034,7 @@ class Server {
      * `extension_type)` from `server`. You can also remove extensions enabled by default
      * from the server at construct time by using the %SOUP_SERVER_REMOVE_WEBSOCKET_EXTENSION
      * property.
+     * @param extension_type a #GType
      */
     remove_websocket_extension(extension_type: GObject.Type): void
     /**
@@ -16646,6 +18063,8 @@ class Server {
      * 
      * Alternatively, you can set the #SoupServer:tls-certificate property
      * at construction time, if you already have a #GTlsCertificate.
+     * @param ssl_cert_file path to a file containing a PEM-encoded SSL/TLS   certificate.
+     * @param ssl_key_file path to a file containing a PEM-encoded private key.
      */
     set_ssl_cert_file(ssl_cert_file: string, ssl_key_file: string): boolean
     /**
@@ -16658,6 +18077,7 @@ class Server {
      * This must only be called on #SoupMessages which were created by the
      * #SoupServer and are currently doing I/O, such as those passed into a
      * #SoupServerCallback or emitted in a #SoupServer::request-read signal.
+     * @param msg a #SoupMessage associated with `server`.
      */
     unpause_message(msg: Message): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -16695,6 +18115,10 @@ class Server {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16705,6 +18129,12 @@ class Server {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16728,6 +18158,7 @@ class Server {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16747,11 +18178,14 @@ class Server {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16759,6 +18193,8 @@ class Server {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16776,6 +18212,7 @@ class Server {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16821,6 +18258,7 @@ class Server {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16864,15 +18302,20 @@ class Server {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16913,6 +18356,7 @@ class Server {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16947,6 +18391,7 @@ class Server {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Server */
@@ -16971,6 +18416,7 @@ class Server {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16987,6 +18433,8 @@ class Server {
      * emitted; the signal exists primarily to allow the server to
      * free any state that it may have allocated in
      * #SoupServer::request_started.
+     * @param message the message
+     * @param client the client context
      */
     connect(sigName: "request-aborted", callback: (($obj: Server, message: Message, client: ClientContext) => void)): number
     connect_after(sigName: "request-aborted", callback: (($obj: Server, message: Message, client: ClientContext) => void)): number
@@ -16994,6 +18442,8 @@ class Server {
     /**
      * Emitted when the server has finished writing a response to
      * a request.
+     * @param message the message
+     * @param client the client context
      */
     connect(sigName: "request-finished", callback: (($obj: Server, message: Message, client: ClientContext) => void)): number
     connect_after(sigName: "request-finished", callback: (($obj: Server, message: Message, client: ClientContext) => void)): number
@@ -17006,6 +18456,8 @@ class Server {
      * before any (non-early) handlers are called for the message,
      * and if it sets the message's #status_code, then normal
      * handler processing will be skipped.
+     * @param message the message
+     * @param client the client context
      */
     connect(sigName: "request-read", callback: (($obj: Server, message: Message, client: ClientContext) => void)): number
     connect_after(sigName: "request-read", callback: (($obj: Server, message: Message, client: ClientContext) => void)): number
@@ -17022,6 +18474,8 @@ class Server {
      * a #SoupServer::request_finished signal. If a network error
      * occurs, the processing will instead end with
      * #SoupServer::request_aborted.
+     * @param message the new message
+     * @param client the client context
      */
     connect(sigName: "request-started", callback: (($obj: Server, message: Message, client: ClientContext) => void)): number
     connect_after(sigName: "request-started", callback: (($obj: Server, message: Message, client: ClientContext) => void)): number
@@ -17055,16 +18509,31 @@ class Server {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::async-context", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::async-context", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::http-aliases", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::http-aliases", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::https-aliases", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::https-aliases", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::interface", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::interface", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::port", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::port", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::raw-paths", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::raw-paths", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::server-header", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::server-header", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::ssl-cert-file", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::ssl-cert-file", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::ssl-key-file", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::ssl-key-file", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::tls-certificate", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tls-certificate", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -17353,6 +18822,22 @@ class Session {
      */
     accept_language_auto: boolean
     /**
+     * The #GMainContext that miscellaneous session-related
+     * asynchronous callbacks are invoked on. (Eg, setting
+     * #SoupSession:idle-timeout will add a timeout source on this
+     * context.)
+     * 
+     * For a plain #SoupSession, this property is always set to
+     * the #GMainContext that is the thread-default at the time
+     * the session was created, and cannot be overridden. For the
+     * deprecated #SoupSession subclasses, the default value is
+     * %NULL, meaning to use the global default #GMainContext.
+     * 
+     * If #SoupSession:use-thread-context is %FALSE, this context
+     * will also be used for asynchronous HTTP I/O.
+     */
+    readonly async_context: object
+    /**
      * A %NULL-terminated array of URI schemes that should be
      * considered to be aliases for "http". Eg, if this included
      * <literal>"dav"</literal>, than a URI of
@@ -17395,6 +18880,14 @@ class Session {
      * connections will never time out).
      */
     idle_timeout: number
+    /**
+     * Sets the #SoupAddress to use for the client side of
+     * the connection.
+     * 
+     * Use this property if you want for instance to bind the
+     * local socket to a specific IP address.
+     */
+    readonly local_address: Address
     max_conns: number
     max_conns_per_host: number
     /**
@@ -17568,7 +19061,7 @@ class Session {
      */
     user_agent: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Session */
     /**
      * Cancels all pending requests in `session` and closes all idle
@@ -17588,6 +19081,7 @@ class Session {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature an object that implements #SoupSessionFeature
      */
     add_feature(feature: SessionFeature): void
     /**
@@ -17606,6 +19100,7 @@ class Session {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature_type a #GType
      */
     add_feature_by_type(feature_type: GObject.Type): void
     /**
@@ -17631,6 +19126,8 @@ class Session {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     cancel_message(msg: Message, status_code: number): void
     /**
@@ -17638,10 +19135,15 @@ class Session {
      * and finishes when the connection is done or an error ocurred.
      * 
      * Call soup_session_connect_finish() to get the #GIOStream to communicate with the server.
+     * @param uri a #SoupURI to connect to
+     * @param cancellable a #GCancellable
+     * @param progress_callback a #SoupSessionConnectProgressCallback which will be called for every network event that occurs during the connection.
+     * @param callback the callback to invoke when the operation finishes
      */
     connect_async(uri: URI, cancellable?: Gio.Cancellable | null, progress_callback?: SessionConnectProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the #GIOStream created for the connection to communicate with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     connect_finish(result: Gio.AsyncResult): Gio.IOStream
     /**
@@ -17657,6 +19159,7 @@ class Session {
      * Gets the first feature in `session` of type `feature_type`. For
      * features where there may be more than one feature of a given type,
      * use soup_session_get_features().
+     * @param feature_type the #GType of the feature to get
      */
     get_feature(feature_type: GObject.Type): SessionFeature | null
     /**
@@ -17667,12 +19170,15 @@ class Session {
      * particular, if there are two matching features, and the first is
      * disabled on `msg,` and the second is not, then this will return
      * %NULL, not the second feature.
+     * @param feature_type the #GType of the feature to get
+     * @param msg a #SoupMessage
      */
     get_feature_for_message(feature_type: GObject.Type, msg: Message): SessionFeature | null
     /**
      * Generates a list of `session'`s features of type `feature_type`. (If
      * you want to see all features, you can pass %SOUP_TYPE_SESSION_FEATURE
      * for `feature_type`.)
+     * @param feature_type the #GType of the class of features to get
      */
     get_features(feature_type: GObject.Type): SessionFeature[]
     /**
@@ -17680,6 +19186,7 @@ class Session {
      * be the type of either a #SoupSessionFeature, or else a subtype of
      * some class managed by another feature, such as #SoupAuth or
      * #SoupRequest).
+     * @param feature_type the #GType of the class of features to check for
      */
     has_feature(feature_type: GObject.Type): boolean
     /**
@@ -17688,6 +19195,7 @@ class Session {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     pause_message(msg: Message): void
     /**
@@ -17699,6 +19207,9 @@ class Session {
      * If `cancellable` is non-%NULL, it can be used to cancel the
      * resolution. `callback` will still be invoked in this case, with a
      * status of %SOUP_STATUS_CANCELLED.
+     * @param hostname a hostname to be resolved
+     * @param cancellable a #GCancellable object, or %NULL
+     * @param callback callback to call with the     result, or %NULL
      */
     prefetch_dns(hostname: string, cancellable?: Gio.Cancellable | null, callback?: AddressCallback | null): void
     /**
@@ -17706,6 +19217,7 @@ class Session {
      * session can try to prepare (resolving the domain name, obtaining
      * proxy address, etc.) in order to work more quickly once the URI is
      * actually requested.
+     * @param uri a #SoupURI which may be required
      */
     prepare_for_uri(uri: URI): void
     /**
@@ -17729,6 +19241,8 @@ class Session {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     queue_message(msg: Message, callback?: SessionCallback | null): void
     /**
@@ -17744,10 +19258,12 @@ class Session {
      * 
      * If `msg` has already been redirected too many times, this will
      * cause it to fail with %SOUP_STATUS_TOO_MANY_REDIRECTS.
+     * @param msg a #SoupMessage that has received a 3xx response
      */
     redirect_message(msg: Message): boolean
     /**
      * Removes `feature'`s functionality from `session`.
+     * @param feature a feature that has previously been added to `session`
      */
     remove_feature(feature: SessionFeature): void
     /**
@@ -17755,31 +19271,39 @@ class Session {
      * `feature_type)` from `session`. You can also remove standard features
      * from the session at construct time by using the
      * %SOUP_SESSION_REMOVE_FEATURE_BY_TYPE property.
+     * @param feature_type a #GType
      */
     remove_feature_by_type(feature_type: GObject.Type): void
     /**
      * Creates a #SoupRequest for retrieving `uri_string`.
+     * @param uri_string a URI, in string form
      */
     request(uri_string: string): Request
     /**
      * Creates a #SoupRequest for retrieving `uri_string,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri_string a URI, in string form
      */
     request_http(method: string, uri_string: string): RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_http_uri(method: string, uri: URI): RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri`.
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_uri(uri: URI): Request
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     requeue_message(msg: Message): void
     /**
@@ -17808,6 +19332,8 @@ class Session {
      * 
      * (Note that this method cannot be called on the deprecated
      * #SoupSessionAsync subclass.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
      */
     send(msg: Message, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -17827,12 +19353,16 @@ class Session {
      * #SoupSessionSync subclass, and can only be called on
      * #SoupSessionAsync if you have set the
      * #SoupSession:use-thread-context property.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     send_async(msg: Message, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the response to a soup_session_send_async() call and (if
      * successful), returns a #GInputStream that can be used to read the
      * response body.
+     * @param result the #GAsyncResult passed to your callback
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -17852,6 +19382,7 @@ class Session {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     send_message(msg: Message): number
     /**
@@ -17863,6 +19394,7 @@ class Session {
      * 
      * Calling this function may cause `msg` to be freed if you are not
      * holding any other reference to it.
+     * @param msg the message whose connection is to be stolen
      */
     steal_connection(msg: Message): Gio.IOStream
     /**
@@ -17875,6 +19407,7 @@ class Session {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     unpause_message(msg: Message): void
     /**
@@ -17896,6 +19429,11 @@ class Session {
      * and body from the server's response, and
      * soup_session_websocket_connect_finish() will return
      * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
+     * @param msg #SoupMessage indicating the WebSocket server to connect to
+     * @param origin origin of the connection
+     * @param protocols a   %NULL-terminated array of protocols supported
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     websocket_connect_async(msg: Message, origin?: string | null, protocols?: string[] | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -17903,12 +19441,14 @@ class Session {
      * soup_session_websocket_connect_async() call and (if successful),
      * returns a #SoupWebsocketConnection that can be used to communicate
      * with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     websocket_connect_finish(result: Gio.AsyncResult): WebsocketConnection
     /**
      * Checks if `msg` contains a response that would cause `session` to
      * redirect it to a new URL (ignoring `msg'`s %SOUP_MESSAGE_NO_REDIRECT
      * flag, and the number of times it has already been redirected).
+     * @param msg a #SoupMessage that has response headers
      */
     would_redirect(msg: Message): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -17946,6 +19486,10 @@ class Session {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17956,6 +19500,12 @@ class Session {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17979,6 +19529,7 @@ class Session {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17998,11 +19549,14 @@ class Session {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18010,6 +19564,8 @@ class Session {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18027,6 +19583,7 @@ class Session {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18072,6 +19629,7 @@ class Session {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18115,15 +19673,20 @@ class Session {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18164,6 +19727,7 @@ class Session {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18198,6 +19762,7 @@ class Session {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Session */
@@ -18226,6 +19791,8 @@ class Session {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     vfunc_cancel_message(msg: Message, status_code: number): void
     vfunc_flush_queue(): void
@@ -18251,12 +19818,15 @@ class Session {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     vfunc_queue_message(msg: Message, callback?: SessionCallback | null): void
     vfunc_request_started(msg: Message, socket: Socket): void
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     vfunc_requeue_message(msg: Message): void
     /**
@@ -18276,6 +19846,7 @@ class Session {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     vfunc_send_message(msg: Message): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18295,6 +19866,7 @@ class Session {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18315,6 +19887,9 @@ class Session {
      * (as long as you g_object_ref() it to make sure it doesn't
      * get destroyed), and then unpause `msg` when you are ready
      * for it to continue.
+     * @param msg the #SoupMessage being sent
+     * @param auth the #SoupAuth to authenticate
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: (($obj: Session, msg: Message, auth: Auth, retrying: boolean) => void)): number
     connect_after(sigName: "authenticate", callback: (($obj: Session, msg: Message, auth: Auth, retrying: boolean) => void)): number
@@ -18323,6 +19898,7 @@ class Session {
      * Emitted when a new connection is created. This is an
      * internal signal intended only to be used for debugging
      * purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "connection-created", callback: (($obj: Session, connection: GObject.Object) => void)): number
     connect_after(sigName: "connection-created", callback: (($obj: Session, connection: GObject.Object) => void)): number
@@ -18363,6 +19939,7 @@ class Session {
      * exactly once, but #SoupSession::request_started and
      * #SoupMessage::finished (and all of the other #SoupMessage
      * signals) may be invoked multiple times for a given message.
+     * @param msg the request that was queued
      */
     connect(sigName: "request-queued", callback: (($obj: Session, msg: Message) => void)): number
     connect_after(sigName: "request-queued", callback: (($obj: Session, msg: Message) => void)): number
@@ -18371,6 +19948,8 @@ class Session {
      * Emitted just before a request is sent. See
      * #SoupSession::request_queued for a detailed description of
      * the message lifecycle within a session.
+     * @param msg the request being sent
+     * @param socket the socket the request is being sent on
      */
     connect(sigName: "request-started", callback: (($obj: Session, msg: Message, socket: Socket) => void)): number
     connect_after(sigName: "request-started", callback: (($obj: Session, msg: Message, socket: Socket) => void)): number
@@ -18380,6 +19959,7 @@ class Session {
      * indicating that `session` is done with it. See
      * #SoupSession::request_queued for a detailed description of the
      * message lifecycle within a session.
+     * @param msg the request that was unqueued
      */
     connect(sigName: "request-unqueued", callback: (($obj: Session, msg: Message) => void)): number
     connect_after(sigName: "request-unqueued", callback: (($obj: Session, msg: Message) => void)): number
@@ -18388,6 +19968,7 @@ class Session {
      * Emitted when an SSL tunnel is being created on a proxy
      * connection. This is an internal signal intended only to be
      * used for debugging purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "tunneling", callback: (($obj: Session, connection: GObject.Object) => void)): number
     connect_after(sigName: "tunneling", callback: (($obj: Session, connection: GObject.Object) => void)): number
@@ -18421,6 +20002,7 @@ class Session {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
@@ -18429,12 +20011,16 @@ class Session {
     connect_after(sigName: "notify::accept-language", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-language-auto", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language-auto", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::async-context", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::async-context", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::http-aliases", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::http-aliases", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::https-aliases", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::https-aliases", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::idle-timeout", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle-timeout", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::local-address", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-address", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-conns", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns-per-host", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
@@ -18494,6 +20080,22 @@ class SessionAsync {
      */
     accept_language_auto: boolean
     /**
+     * The #GMainContext that miscellaneous session-related
+     * asynchronous callbacks are invoked on. (Eg, setting
+     * #SoupSession:idle-timeout will add a timeout source on this
+     * context.)
+     * 
+     * For a plain #SoupSession, this property is always set to
+     * the #GMainContext that is the thread-default at the time
+     * the session was created, and cannot be overridden. For the
+     * deprecated #SoupSession subclasses, the default value is
+     * %NULL, meaning to use the global default #GMainContext.
+     * 
+     * If #SoupSession:use-thread-context is %FALSE, this context
+     * will also be used for asynchronous HTTP I/O.
+     */
+    readonly async_context: object
+    /**
      * A %NULL-terminated array of URI schemes that should be
      * considered to be aliases for "http". Eg, if this included
      * <literal>"dav"</literal>, than a URI of
@@ -18536,6 +20138,14 @@ class SessionAsync {
      * connections will never time out).
      */
     idle_timeout: number
+    /**
+     * Sets the #SoupAddress to use for the client side of
+     * the connection.
+     * 
+     * Use this property if you want for instance to bind the
+     * local socket to a specific IP address.
+     */
+    readonly local_address: Address
     max_conns: number
     max_conns_per_host: number
     /**
@@ -18709,9 +20319,9 @@ class SessionAsync {
      */
     user_agent: string
     /* Fields of Soup-2.4.Soup.Session */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Session */
     /**
      * Cancels all pending requests in `session` and closes all idle
@@ -18731,6 +20341,7 @@ class SessionAsync {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature an object that implements #SoupSessionFeature
      */
     add_feature(feature: SessionFeature): void
     /**
@@ -18749,6 +20360,7 @@ class SessionAsync {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature_type a #GType
      */
     add_feature_by_type(feature_type: GObject.Type): void
     /**
@@ -18774,6 +20386,8 @@ class SessionAsync {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     cancel_message(msg: Message, status_code: number): void
     /**
@@ -18781,10 +20395,15 @@ class SessionAsync {
      * and finishes when the connection is done or an error ocurred.
      * 
      * Call soup_session_connect_finish() to get the #GIOStream to communicate with the server.
+     * @param uri a #SoupURI to connect to
+     * @param cancellable a #GCancellable
+     * @param progress_callback a #SoupSessionConnectProgressCallback which will be called for every network event that occurs during the connection.
+     * @param callback the callback to invoke when the operation finishes
      */
     connect_async(uri: URI, cancellable?: Gio.Cancellable | null, progress_callback?: SessionConnectProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the #GIOStream created for the connection to communicate with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     connect_finish(result: Gio.AsyncResult): Gio.IOStream
     /**
@@ -18800,6 +20419,7 @@ class SessionAsync {
      * Gets the first feature in `session` of type `feature_type`. For
      * features where there may be more than one feature of a given type,
      * use soup_session_get_features().
+     * @param feature_type the #GType of the feature to get
      */
     get_feature(feature_type: GObject.Type): SessionFeature | null
     /**
@@ -18810,12 +20430,15 @@ class SessionAsync {
      * particular, if there are two matching features, and the first is
      * disabled on `msg,` and the second is not, then this will return
      * %NULL, not the second feature.
+     * @param feature_type the #GType of the feature to get
+     * @param msg a #SoupMessage
      */
     get_feature_for_message(feature_type: GObject.Type, msg: Message): SessionFeature | null
     /**
      * Generates a list of `session'`s features of type `feature_type`. (If
      * you want to see all features, you can pass %SOUP_TYPE_SESSION_FEATURE
      * for `feature_type`.)
+     * @param feature_type the #GType of the class of features to get
      */
     get_features(feature_type: GObject.Type): SessionFeature[]
     /**
@@ -18823,6 +20446,7 @@ class SessionAsync {
      * be the type of either a #SoupSessionFeature, or else a subtype of
      * some class managed by another feature, such as #SoupAuth or
      * #SoupRequest).
+     * @param feature_type the #GType of the class of features to check for
      */
     has_feature(feature_type: GObject.Type): boolean
     /**
@@ -18831,6 +20455,7 @@ class SessionAsync {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     pause_message(msg: Message): void
     /**
@@ -18842,6 +20467,9 @@ class SessionAsync {
      * If `cancellable` is non-%NULL, it can be used to cancel the
      * resolution. `callback` will still be invoked in this case, with a
      * status of %SOUP_STATUS_CANCELLED.
+     * @param hostname a hostname to be resolved
+     * @param cancellable a #GCancellable object, or %NULL
+     * @param callback callback to call with the     result, or %NULL
      */
     prefetch_dns(hostname: string, cancellable?: Gio.Cancellable | null, callback?: AddressCallback | null): void
     /**
@@ -18849,6 +20477,7 @@ class SessionAsync {
      * session can try to prepare (resolving the domain name, obtaining
      * proxy address, etc.) in order to work more quickly once the URI is
      * actually requested.
+     * @param uri a #SoupURI which may be required
      */
     prepare_for_uri(uri: URI): void
     /**
@@ -18872,6 +20501,8 @@ class SessionAsync {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     queue_message(msg: Message, callback?: SessionCallback | null): void
     /**
@@ -18887,10 +20518,12 @@ class SessionAsync {
      * 
      * If `msg` has already been redirected too many times, this will
      * cause it to fail with %SOUP_STATUS_TOO_MANY_REDIRECTS.
+     * @param msg a #SoupMessage that has received a 3xx response
      */
     redirect_message(msg: Message): boolean
     /**
      * Removes `feature'`s functionality from `session`.
+     * @param feature a feature that has previously been added to `session`
      */
     remove_feature(feature: SessionFeature): void
     /**
@@ -18898,31 +20531,39 @@ class SessionAsync {
      * `feature_type)` from `session`. You can also remove standard features
      * from the session at construct time by using the
      * %SOUP_SESSION_REMOVE_FEATURE_BY_TYPE property.
+     * @param feature_type a #GType
      */
     remove_feature_by_type(feature_type: GObject.Type): void
     /**
      * Creates a #SoupRequest for retrieving `uri_string`.
+     * @param uri_string a URI, in string form
      */
     request(uri_string: string): Request
     /**
      * Creates a #SoupRequest for retrieving `uri_string,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri_string a URI, in string form
      */
     request_http(method: string, uri_string: string): RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_http_uri(method: string, uri: URI): RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri`.
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_uri(uri: URI): Request
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     requeue_message(msg: Message): void
     /**
@@ -18951,6 +20592,8 @@ class SessionAsync {
      * 
      * (Note that this method cannot be called on the deprecated
      * #SoupSessionAsync subclass.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
      */
     send(msg: Message, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -18970,12 +20613,16 @@ class SessionAsync {
      * #SoupSessionSync subclass, and can only be called on
      * #SoupSessionAsync if you have set the
      * #SoupSession:use-thread-context property.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     send_async(msg: Message, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the response to a soup_session_send_async() call and (if
      * successful), returns a #GInputStream that can be used to read the
      * response body.
+     * @param result the #GAsyncResult passed to your callback
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -18995,6 +20642,7 @@ class SessionAsync {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     send_message(msg: Message): number
     /**
@@ -19006,6 +20654,7 @@ class SessionAsync {
      * 
      * Calling this function may cause `msg` to be freed if you are not
      * holding any other reference to it.
+     * @param msg the message whose connection is to be stolen
      */
     steal_connection(msg: Message): Gio.IOStream
     /**
@@ -19018,6 +20667,7 @@ class SessionAsync {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     unpause_message(msg: Message): void
     /**
@@ -19039,6 +20689,11 @@ class SessionAsync {
      * and body from the server's response, and
      * soup_session_websocket_connect_finish() will return
      * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
+     * @param msg #SoupMessage indicating the WebSocket server to connect to
+     * @param origin origin of the connection
+     * @param protocols a   %NULL-terminated array of protocols supported
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     websocket_connect_async(msg: Message, origin?: string | null, protocols?: string[] | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -19046,12 +20701,14 @@ class SessionAsync {
      * soup_session_websocket_connect_async() call and (if successful),
      * returns a #SoupWebsocketConnection that can be used to communicate
      * with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     websocket_connect_finish(result: Gio.AsyncResult): WebsocketConnection
     /**
      * Checks if `msg` contains a response that would cause `session` to
      * redirect it to a new URL (ignoring `msg'`s %SOUP_MESSAGE_NO_REDIRECT
      * flag, and the number of times it has already been redirected).
+     * @param msg a #SoupMessage that has response headers
      */
     would_redirect(msg: Message): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -19089,6 +20746,10 @@ class SessionAsync {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19099,6 +20760,12 @@ class SessionAsync {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19122,6 +20789,7 @@ class SessionAsync {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19141,11 +20809,14 @@ class SessionAsync {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19153,6 +20824,8 @@ class SessionAsync {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19170,6 +20843,7 @@ class SessionAsync {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19215,6 +20889,7 @@ class SessionAsync {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19258,15 +20933,20 @@ class SessionAsync {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19307,6 +20987,7 @@ class SessionAsync {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19341,6 +21022,7 @@ class SessionAsync {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Session */
@@ -19369,6 +21051,8 @@ class SessionAsync {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     vfunc_cancel_message(msg: Message, status_code: number): void
     vfunc_flush_queue(): void
@@ -19394,12 +21078,15 @@ class SessionAsync {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     vfunc_queue_message(msg: Message, callback?: SessionCallback | null): void
     vfunc_request_started(msg: Message, socket: Socket): void
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     vfunc_requeue_message(msg: Message): void
     /**
@@ -19419,6 +21106,7 @@ class SessionAsync {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     vfunc_send_message(msg: Message): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19438,6 +21126,7 @@ class SessionAsync {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19458,6 +21147,9 @@ class SessionAsync {
      * (as long as you g_object_ref() it to make sure it doesn't
      * get destroyed), and then unpause `msg` when you are ready
      * for it to continue.
+     * @param msg the #SoupMessage being sent
+     * @param auth the #SoupAuth to authenticate
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: (($obj: SessionAsync, msg: Message, auth: Auth, retrying: boolean) => void)): number
     connect_after(sigName: "authenticate", callback: (($obj: SessionAsync, msg: Message, auth: Auth, retrying: boolean) => void)): number
@@ -19466,6 +21158,7 @@ class SessionAsync {
      * Emitted when a new connection is created. This is an
      * internal signal intended only to be used for debugging
      * purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "connection-created", callback: (($obj: SessionAsync, connection: GObject.Object) => void)): number
     connect_after(sigName: "connection-created", callback: (($obj: SessionAsync, connection: GObject.Object) => void)): number
@@ -19506,6 +21199,7 @@ class SessionAsync {
      * exactly once, but #SoupSession::request_started and
      * #SoupMessage::finished (and all of the other #SoupMessage
      * signals) may be invoked multiple times for a given message.
+     * @param msg the request that was queued
      */
     connect(sigName: "request-queued", callback: (($obj: SessionAsync, msg: Message) => void)): number
     connect_after(sigName: "request-queued", callback: (($obj: SessionAsync, msg: Message) => void)): number
@@ -19514,6 +21208,8 @@ class SessionAsync {
      * Emitted just before a request is sent. See
      * #SoupSession::request_queued for a detailed description of
      * the message lifecycle within a session.
+     * @param msg the request being sent
+     * @param socket the socket the request is being sent on
      */
     connect(sigName: "request-started", callback: (($obj: SessionAsync, msg: Message, socket: Socket) => void)): number
     connect_after(sigName: "request-started", callback: (($obj: SessionAsync, msg: Message, socket: Socket) => void)): number
@@ -19523,6 +21219,7 @@ class SessionAsync {
      * indicating that `session` is done with it. See
      * #SoupSession::request_queued for a detailed description of the
      * message lifecycle within a session.
+     * @param msg the request that was unqueued
      */
     connect(sigName: "request-unqueued", callback: (($obj: SessionAsync, msg: Message) => void)): number
     connect_after(sigName: "request-unqueued", callback: (($obj: SessionAsync, msg: Message) => void)): number
@@ -19531,6 +21228,7 @@ class SessionAsync {
      * Emitted when an SSL tunnel is being created on a proxy
      * connection. This is an internal signal intended only to be
      * used for debugging purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "tunneling", callback: (($obj: SessionAsync, connection: GObject.Object) => void)): number
     connect_after(sigName: "tunneling", callback: (($obj: SessionAsync, connection: GObject.Object) => void)): number
@@ -19564,6 +21262,7 @@ class SessionAsync {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
@@ -19572,12 +21271,16 @@ class SessionAsync {
     connect_after(sigName: "notify::accept-language", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-language-auto", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language-auto", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::async-context", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::async-context", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::http-aliases", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::http-aliases", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::https-aliases", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::https-aliases", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::idle-timeout", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle-timeout", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::local-address", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-address", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-conns", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns-per-host", callback: (($obj: SessionAsync, pspec: GObject.ParamSpec) => void)): number
@@ -19637,6 +21340,22 @@ class SessionSync {
      */
     accept_language_auto: boolean
     /**
+     * The #GMainContext that miscellaneous session-related
+     * asynchronous callbacks are invoked on. (Eg, setting
+     * #SoupSession:idle-timeout will add a timeout source on this
+     * context.)
+     * 
+     * For a plain #SoupSession, this property is always set to
+     * the #GMainContext that is the thread-default at the time
+     * the session was created, and cannot be overridden. For the
+     * deprecated #SoupSession subclasses, the default value is
+     * %NULL, meaning to use the global default #GMainContext.
+     * 
+     * If #SoupSession:use-thread-context is %FALSE, this context
+     * will also be used for asynchronous HTTP I/O.
+     */
+    readonly async_context: object
+    /**
      * A %NULL-terminated array of URI schemes that should be
      * considered to be aliases for "http". Eg, if this included
      * <literal>"dav"</literal>, than a URI of
@@ -19679,6 +21398,14 @@ class SessionSync {
      * connections will never time out).
      */
     idle_timeout: number
+    /**
+     * Sets the #SoupAddress to use for the client side of
+     * the connection.
+     * 
+     * Use this property if you want for instance to bind the
+     * local socket to a specific IP address.
+     */
+    readonly local_address: Address
     max_conns: number
     max_conns_per_host: number
     /**
@@ -19852,9 +21579,9 @@ class SessionSync {
      */
     user_agent: string
     /* Fields of Soup-2.4.Soup.Session */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Session */
     /**
      * Cancels all pending requests in `session` and closes all idle
@@ -19874,6 +21601,7 @@ class SessionSync {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature an object that implements #SoupSessionFeature
      */
     add_feature(feature: SessionFeature): void
     /**
@@ -19892,6 +21620,7 @@ class SessionSync {
      * 
      * See the main #SoupSession documentation for information on what
      * features are present in sessions by default.
+     * @param feature_type a #GType
      */
     add_feature_by_type(feature_type: GObject.Type): void
     /**
@@ -19917,6 +21646,8 @@ class SessionSync {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     cancel_message(msg: Message, status_code: number): void
     /**
@@ -19924,10 +21655,15 @@ class SessionSync {
      * and finishes when the connection is done or an error ocurred.
      * 
      * Call soup_session_connect_finish() to get the #GIOStream to communicate with the server.
+     * @param uri a #SoupURI to connect to
+     * @param cancellable a #GCancellable
+     * @param progress_callback a #SoupSessionConnectProgressCallback which will be called for every network event that occurs during the connection.
+     * @param callback the callback to invoke when the operation finishes
      */
     connect_async(uri: URI, cancellable?: Gio.Cancellable | null, progress_callback?: SessionConnectProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the #GIOStream created for the connection to communicate with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     connect_finish(result: Gio.AsyncResult): Gio.IOStream
     /**
@@ -19943,6 +21679,7 @@ class SessionSync {
      * Gets the first feature in `session` of type `feature_type`. For
      * features where there may be more than one feature of a given type,
      * use soup_session_get_features().
+     * @param feature_type the #GType of the feature to get
      */
     get_feature(feature_type: GObject.Type): SessionFeature | null
     /**
@@ -19953,12 +21690,15 @@ class SessionSync {
      * particular, if there are two matching features, and the first is
      * disabled on `msg,` and the second is not, then this will return
      * %NULL, not the second feature.
+     * @param feature_type the #GType of the feature to get
+     * @param msg a #SoupMessage
      */
     get_feature_for_message(feature_type: GObject.Type, msg: Message): SessionFeature | null
     /**
      * Generates a list of `session'`s features of type `feature_type`. (If
      * you want to see all features, you can pass %SOUP_TYPE_SESSION_FEATURE
      * for `feature_type`.)
+     * @param feature_type the #GType of the class of features to get
      */
     get_features(feature_type: GObject.Type): SessionFeature[]
     /**
@@ -19966,6 +21706,7 @@ class SessionSync {
      * be the type of either a #SoupSessionFeature, or else a subtype of
      * some class managed by another feature, such as #SoupAuth or
      * #SoupRequest).
+     * @param feature_type the #GType of the class of features to check for
      */
     has_feature(feature_type: GObject.Type): boolean
     /**
@@ -19974,6 +21715,7 @@ class SessionSync {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     pause_message(msg: Message): void
     /**
@@ -19985,6 +21727,9 @@ class SessionSync {
      * If `cancellable` is non-%NULL, it can be used to cancel the
      * resolution. `callback` will still be invoked in this case, with a
      * status of %SOUP_STATUS_CANCELLED.
+     * @param hostname a hostname to be resolved
+     * @param cancellable a #GCancellable object, or %NULL
+     * @param callback callback to call with the     result, or %NULL
      */
     prefetch_dns(hostname: string, cancellable?: Gio.Cancellable | null, callback?: AddressCallback | null): void
     /**
@@ -19992,6 +21737,7 @@ class SessionSync {
      * session can try to prepare (resolving the domain name, obtaining
      * proxy address, etc.) in order to work more quickly once the URI is
      * actually requested.
+     * @param uri a #SoupURI which may be required
      */
     prepare_for_uri(uri: URI): void
     /**
@@ -20015,6 +21761,8 @@ class SessionSync {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     queue_message(msg: Message, callback?: SessionCallback | null): void
     /**
@@ -20030,10 +21778,12 @@ class SessionSync {
      * 
      * If `msg` has already been redirected too many times, this will
      * cause it to fail with %SOUP_STATUS_TOO_MANY_REDIRECTS.
+     * @param msg a #SoupMessage that has received a 3xx response
      */
     redirect_message(msg: Message): boolean
     /**
      * Removes `feature'`s functionality from `session`.
+     * @param feature a feature that has previously been added to `session`
      */
     remove_feature(feature: SessionFeature): void
     /**
@@ -20041,31 +21791,39 @@ class SessionSync {
      * `feature_type)` from `session`. You can also remove standard features
      * from the session at construct time by using the
      * %SOUP_SESSION_REMOVE_FEATURE_BY_TYPE property.
+     * @param feature_type a #GType
      */
     remove_feature_by_type(feature_type: GObject.Type): void
     /**
      * Creates a #SoupRequest for retrieving `uri_string`.
+     * @param uri_string a URI, in string form
      */
     request(uri_string: string): Request
     /**
      * Creates a #SoupRequest for retrieving `uri_string,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri_string a URI, in string form
      */
     request_http(method: string, uri_string: string): RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri,` which must be an
      * "http" or "https" URI (or another protocol listed in `session'`s
      * #SoupSession:http-aliases or #SoupSession:https-aliases).
+     * @param method an HTTP method
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_http_uri(method: string, uri: URI): RequestHTTP
     /**
      * Creates a #SoupRequest for retrieving `uri`.
+     * @param uri a #SoupURI representing the URI to retrieve
      */
     request_uri(uri: URI): Request
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     requeue_message(msg: Message): void
     /**
@@ -20094,6 +21852,8 @@ class SessionSync {
      * 
      * (Note that this method cannot be called on the deprecated
      * #SoupSessionAsync subclass.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
      */
     send(msg: Message, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -20113,12 +21873,16 @@ class SessionSync {
      * #SoupSessionSync subclass, and can only be called on
      * #SoupSessionAsync if you have set the
      * #SoupSession:use-thread-context property.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     send_async(msg: Message, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the response to a soup_session_send_async() call and (if
      * successful), returns a #GInputStream that can be used to read the
      * response body.
+     * @param result the #GAsyncResult passed to your callback
      */
     send_finish(result: Gio.AsyncResult): Gio.InputStream
     /**
@@ -20138,6 +21902,7 @@ class SessionSync {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     send_message(msg: Message): number
     /**
@@ -20149,6 +21914,7 @@ class SessionSync {
      * 
      * Calling this function may cause `msg` to be freed if you are not
      * holding any other reference to it.
+     * @param msg the message whose connection is to be stolen
      */
     steal_connection(msg: Message): Gio.IOStream
     /**
@@ -20161,6 +21927,7 @@ class SessionSync {
      * 
      * This may only be called for asynchronous messages (those sent on a
      * #SoupSessionAsync or using soup_session_queue_message()).
+     * @param msg a #SoupMessage currently running on `session`
      */
     unpause_message(msg: Message): void
     /**
@@ -20182,6 +21949,11 @@ class SessionSync {
      * and body from the server's response, and
      * soup_session_websocket_connect_finish() will return
      * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
+     * @param msg #SoupMessage indicating the WebSocket server to connect to
+     * @param origin origin of the connection
+     * @param protocols a   %NULL-terminated array of protocols supported
+     * @param cancellable a #GCancellable
+     * @param callback the callback to invoke
      */
     websocket_connect_async(msg: Message, origin?: string | null, protocols?: string[] | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -20189,12 +21961,14 @@ class SessionSync {
      * soup_session_websocket_connect_async() call and (if successful),
      * returns a #SoupWebsocketConnection that can be used to communicate
      * with the server.
+     * @param result the #GAsyncResult passed to your callback
      */
     websocket_connect_finish(result: Gio.AsyncResult): WebsocketConnection
     /**
      * Checks if `msg` contains a response that would cause `session` to
      * redirect it to a new URL (ignoring `msg'`s %SOUP_MESSAGE_NO_REDIRECT
      * flag, and the number of times it has already been redirected).
+     * @param msg a #SoupMessage that has response headers
      */
     would_redirect(msg: Message): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -20232,6 +22006,10 @@ class SessionSync {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20242,6 +22020,12 @@ class SessionSync {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20265,6 +22049,7 @@ class SessionSync {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20284,11 +22069,14 @@ class SessionSync {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20296,6 +22084,8 @@ class SessionSync {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20313,6 +22103,7 @@ class SessionSync {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20358,6 +22149,7 @@ class SessionSync {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20401,15 +22193,20 @@ class SessionSync {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20450,6 +22247,7 @@ class SessionSync {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20484,6 +22282,7 @@ class SessionSync {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.Session */
@@ -20512,6 +22311,8 @@ class SessionSync {
      * #SoupSession does not have this behavior; cancelling an
      * asynchronous message will merely queue its callback to be run after
      * returning to the main loop.
+     * @param msg the message to cancel
+     * @param status_code status code to set on `msg` (generally %SOUP_STATUS_CANCELLED)
      */
     vfunc_cancel_message(msg: Message, status_code: number): void
     vfunc_flush_queue(): void
@@ -20537,12 +22338,15 @@ class SessionSync {
      * asynchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to queue
+     * @param callback a #SoupSessionCallback which will be called after the message completes or when an unrecoverable error occurs.
      */
     vfunc_queue_message(msg: Message, callback?: SessionCallback | null): void
     vfunc_request_started(msg: Message, socket: Socket): void
     /**
      * This causes `msg` to be placed back on the queue to be attempted
      * again.
+     * @param msg the message to requeue
      */
     vfunc_requeue_message(msg: Message): void
     /**
@@ -20562,6 +22366,7 @@ class SessionSync {
      * synchronously sends a message, but returns before reading the
      * response body, and allows you to read the response via a
      * #GInputStream.
+     * @param msg the message to send
      */
     vfunc_send_message(msg: Message): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20581,6 +22386,7 @@ class SessionSync {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20601,6 +22407,9 @@ class SessionSync {
      * (as long as you g_object_ref() it to make sure it doesn't
      * get destroyed), and then unpause `msg` when you are ready
      * for it to continue.
+     * @param msg the #SoupMessage being sent
+     * @param auth the #SoupAuth to authenticate
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: (($obj: SessionSync, msg: Message, auth: Auth, retrying: boolean) => void)): number
     connect_after(sigName: "authenticate", callback: (($obj: SessionSync, msg: Message, auth: Auth, retrying: boolean) => void)): number
@@ -20609,6 +22418,7 @@ class SessionSync {
      * Emitted when a new connection is created. This is an
      * internal signal intended only to be used for debugging
      * purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "connection-created", callback: (($obj: SessionSync, connection: GObject.Object) => void)): number
     connect_after(sigName: "connection-created", callback: (($obj: SessionSync, connection: GObject.Object) => void)): number
@@ -20649,6 +22459,7 @@ class SessionSync {
      * exactly once, but #SoupSession::request_started and
      * #SoupMessage::finished (and all of the other #SoupMessage
      * signals) may be invoked multiple times for a given message.
+     * @param msg the request that was queued
      */
     connect(sigName: "request-queued", callback: (($obj: SessionSync, msg: Message) => void)): number
     connect_after(sigName: "request-queued", callback: (($obj: SessionSync, msg: Message) => void)): number
@@ -20657,6 +22468,8 @@ class SessionSync {
      * Emitted just before a request is sent. See
      * #SoupSession::request_queued for a detailed description of
      * the message lifecycle within a session.
+     * @param msg the request being sent
+     * @param socket the socket the request is being sent on
      */
     connect(sigName: "request-started", callback: (($obj: SessionSync, msg: Message, socket: Socket) => void)): number
     connect_after(sigName: "request-started", callback: (($obj: SessionSync, msg: Message, socket: Socket) => void)): number
@@ -20666,6 +22479,7 @@ class SessionSync {
      * indicating that `session` is done with it. See
      * #SoupSession::request_queued for a detailed description of the
      * message lifecycle within a session.
+     * @param msg the request that was unqueued
      */
     connect(sigName: "request-unqueued", callback: (($obj: SessionSync, msg: Message) => void)): number
     connect_after(sigName: "request-unqueued", callback: (($obj: SessionSync, msg: Message) => void)): number
@@ -20674,6 +22488,7 @@ class SessionSync {
      * Emitted when an SSL tunnel is being created on a proxy
      * connection. This is an internal signal intended only to be
      * used for debugging purposes, and may go away in the future.
+     * @param connection the connection
      */
     connect(sigName: "tunneling", callback: (($obj: SessionSync, connection: GObject.Object) => void)): number
     connect_after(sigName: "tunneling", callback: (($obj: SessionSync, connection: GObject.Object) => void)): number
@@ -20707,6 +22522,7 @@ class SessionSync {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
@@ -20715,12 +22531,16 @@ class SessionSync {
     connect_after(sigName: "notify::accept-language", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::accept-language-auto", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language-auto", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::async-context", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::async-context", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::http-aliases", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::http-aliases", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::https-aliases", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::https-aliases", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::idle-timeout", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle-timeout", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::local-address", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-address", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-conns", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-conns-per-host", callback: (($obj: SessionSync, pspec: GObject.ParamSpec) => void)): number
@@ -20801,6 +22621,10 @@ interface Socket_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Socket {
     /* Properties of Soup-2.4.Soup.Socket */
+    readonly async_context: object
+    readonly fd: number
+    readonly gsocket: Gio.Socket
+    readonly iostream: Gio.IOStream
     ipv6_only: boolean
     /**
      * Whether or not the socket is a server socket.
@@ -20812,6 +22636,7 @@ class Socket {
      * sockets.
      */
     readonly is_server: boolean
+    readonly local_address: Address
     /**
      * Whether or not the socket uses non-blocking I/O.
      * 
@@ -20835,13 +22660,20 @@ class Socket {
      * code that handles that case just won't get used for them.
      */
     non_blocking: boolean
+    readonly remote_address: Address
     ssl_creds: object
+    readonly ssl_fallback: boolean
+    readonly ssl_strict: boolean
     timeout: number
     readonly tls_certificate: Gio.TlsCertificate
     readonly tls_errors: Gio.TlsCertificateFlags
     readonly trusted_certificate: boolean
+    /**
+     * Use g_main_context_get_thread_default().
+     */
+    readonly use_thread_context: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.Socket */
     /**
      * Begins asynchronously connecting to `sock'`s remote address. The
@@ -20851,6 +22683,8 @@ class Socket {
      * If `cancellable` is non-%NULL, it can be used to cancel the
      * connection. `callback` will still be invoked in this case, with a
      * status of %SOUP_STATUS_CANCELLED.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback callback to call after connecting
      */
     connect_async(cancellable: Gio.Cancellable | null, callback: SocketCallback): void
     /**
@@ -20859,6 +22693,7 @@ class Socket {
      * If `cancellable` is non-%NULL, it can be used to cancel the
      * connection, in which case soup_socket_connect_sync() will return
      * %SOUP_STATUS_CANCELLED.
+     * @param cancellable a #GCancellable, or %NULL
      */
     connect_sync(cancellable?: Gio.Cancellable | null): number
     /**
@@ -20913,6 +22748,8 @@ class Socket {
      * socket first. #SoupSocket::readable is only emitted after
      * soup_socket_read() returns %SOUP_SOCKET_WOULD_BLOCK, and it is only
      * emitted once. See the documentation for #SoupSocket:non-blocking.)
+     * @param buffer buffer to read   into
+     * @param cancellable a #GCancellable, or %NULL
      */
     read(buffer: Uint8Array, cancellable?: Gio.Cancellable | null): [ /* returnType */ SocketIOStatus, /* nread */ number ]
     /**
@@ -20928,15 +22765,22 @@ class Socket {
      * bytes in its internal buffer, in case they form the start of the
      * boundary string. Thus, `len` normally needs to be at least 1 byte
      * longer than `boundary_len` if you want to make any progress at all.
+     * @param buffer buffer to read   into
+     * @param boundary boundary to read until
+     * @param boundary_len length of `boundary` in bytes
+     * @param cancellable a #GCancellable, or %NULL
      */
     read_until(buffer: Uint8Array, boundary: object | null, boundary_len: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ SocketIOStatus, /* nread */ number, /* got_boundary */ boolean ]
     /**
      * Starts using SSL on `socket,` expecting to find a host named
      * `ssl_host`.
+     * @param ssl_host hostname of the SSL server
+     * @param cancellable a #GCancellable
      */
     start_proxy_ssl(ssl_host: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Starts using SSL on `socket`.
+     * @param cancellable a #GCancellable
      */
     start_ssl(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -20952,6 +22796,8 @@ class Socket {
      * emitted after soup_socket_write() returns %SOUP_SOCKET_WOULD_BLOCK,
      * and it is only emitted once. See the documentation for
      * #SoupSocket:non-blocking.)
+     * @param buffer data to write
+     * @param cancellable a #GCancellable, or %NULL
      */
     write(buffer: Uint8Array, cancellable?: Gio.Cancellable | null): [ /* returnType */ SocketIOStatus, /* nwrote */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -20989,6 +22835,10 @@ class Socket {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20999,6 +22849,12 @@ class Socket {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21022,6 +22878,7 @@ class Socket {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21041,11 +22898,14 @@ class Socket {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21053,6 +22913,8 @@ class Socket {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21070,6 +22932,7 @@ class Socket {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21115,6 +22978,7 @@ class Socket {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21158,15 +23022,20 @@ class Socket {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21207,6 +23076,7 @@ class Socket {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21241,6 +23111,7 @@ class Socket {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -21283,6 +23154,7 @@ class Socket {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Soup-2.4.Soup.Socket */
@@ -21329,6 +23201,7 @@ class Socket {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21348,6 +23221,7 @@ class Socket {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21362,6 +23236,8 @@ class Socket {
     /**
      * Emitted when a network-related event occurs. See
      * #GSocketClient::event for more details.
+     * @param event the event that occurred
+     * @param connection the current connection state
      */
     connect(sigName: "event", callback: (($obj: Socket, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void)): number
     connect_after(sigName: "event", callback: (($obj: Socket, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void)): number
@@ -21372,6 +23248,7 @@ class Socket {
      * 
      * You must ref the `new` if you want to keep it; otherwise it
      * will be destroyed after the signal is emitted.
+     * @param new_ the new socket
      */
     connect(sigName: "new-connection", callback: (($obj: Socket, new_: Socket) => void)): number
     connect_after(sigName: "new-connection", callback: (($obj: Socket, new_: Socket) => void)): number
@@ -21420,18 +23297,35 @@ class Socket {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::async-context", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::async-context", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::fd", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::fd", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::gsocket", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::gsocket", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::iostream", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::iostream", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ipv6-only", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ipv6-only", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::is-server", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-server", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::local-address", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-address", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::non-blocking", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::non-blocking", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::remote-address", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::remote-address", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ssl-creds", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ssl-creds", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::ssl-fallback", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::ssl-fallback", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::ssl-strict", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::ssl-strict", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::timeout", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::timeout", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::tls-certificate", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
@@ -21440,6 +23334,8 @@ class Socket {
     connect_after(sigName: "notify::tls-errors", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::trusted-certificate", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::trusted-certificate", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::use-thread-context", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-thread-context", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21452,6 +23348,9 @@ class Socket {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -21504,6 +23403,21 @@ interface WebsocketConnection_ConstructProps extends GObject.Object_ConstructPro
 class WebsocketConnection {
     /* Properties of Soup-2.4.Soup.WebsocketConnection */
     /**
+     * The type of connection (client/server).
+     */
+    readonly connection_type: WebsocketConnectionType
+    /**
+     * List of #SoupWebsocketExtension objects that are active in the connection.
+     */
+    readonly extensions: object
+    /**
+     * The underlying IO stream the WebSocket is communicating
+     * over.
+     * 
+     * The input and output streams must be pollable streams.
+     */
+    readonly io_stream: Gio.IOStream
+    /**
      * Interval in seconds on when to send a ping message which will
      * serve as a keepalive message. If set to 0 the keepalive message is
      * disabled.
@@ -21515,11 +23429,27 @@ class WebsocketConnection {
      */
     max_incoming_payload_size: number
     /**
+     * The client's Origin.
+     */
+    readonly origin: string
+    /**
+     * The chosen protocol, or %NULL if a protocol was not agreed
+     * upon.
+     */
+    readonly protocol: string
+    /**
      * The current state of the WebSocket.
      */
     readonly state: WebsocketState
+    /**
+     * The URI of the WebSocket.
+     * 
+     * For servers this represents the address of the WebSocket,
+     * and for clients it is the address connected to.
+     */
+    readonly uri: URI
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.WebsocketConnection */
     /**
      * Close the connection in an orderly fashion.
@@ -21532,6 +23462,8 @@ class WebsocketConnection {
      * If `code` is %SOUP_WEBSOCKET_CLOSE_NO_STATUS a close message with no body
      * (without code and data) is sent.
      * Note that the `data` must be UTF-8 valid.
+     * @param code close code
+     * @param data close data
      */
     close(code: number, data?: string | null): void
     /**
@@ -21595,6 +23527,7 @@ class WebsocketConnection {
      * 
      * The message is queued to be sent and will be sent when the main loop
      * is run.
+     * @param data the message contents
      */
     send_binary(data: Uint8Array | null): void
     /**
@@ -21603,6 +23536,8 @@ class WebsocketConnection {
      * 
      * The message is queued to be sent and will be sent when the main loop
      * is run.
+     * @param type the type of message contents
+     * @param message the message data as #GBytes
      */
     send_message(type: WebsocketDataType, message: GLib.Bytes): void
     /**
@@ -21612,16 +23547,19 @@ class WebsocketConnection {
      * 
      * The message is queued to be sent and will be sent when the main loop
      * is run.
+     * @param text the message contents
      */
     send_text(text: string): void
     /**
      * Sets the interval in seconds on when to send a ping message which will serve
      * as a keepalive message. If set to 0 the keepalive message is disabled.
+     * @param interval the interval to send a ping message or 0 to disable it
      */
     set_keepalive_interval(interval: number): void
     /**
      * Sets the maximum payload size allowed for incoming packets. It
      * does not limit the outgoing packet size.
+     * @param max_incoming_payload_size the maximum payload size
      */
     set_max_incoming_payload_size(max_incoming_payload_size: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -21659,6 +23597,10 @@ class WebsocketConnection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21669,6 +23611,12 @@ class WebsocketConnection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21692,6 +23640,7 @@ class WebsocketConnection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21711,11 +23660,14 @@ class WebsocketConnection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21723,6 +23675,8 @@ class WebsocketConnection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21740,6 +23694,7 @@ class WebsocketConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21785,6 +23740,7 @@ class WebsocketConnection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21828,15 +23784,20 @@ class WebsocketConnection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21877,6 +23838,7 @@ class WebsocketConnection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21911,6 +23873,7 @@ class WebsocketConnection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.WebsocketConnection */
@@ -21936,6 +23899,7 @@ class WebsocketConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21961,6 +23925,7 @@ class WebsocketConnection {
      * Emitted when an error occurred on the WebSocket. This may
      * be fired multiple times. Fatal errors will be followed by
      * the #SoupWebsocketConnection::closed signal being emitted.
+     * @param error the error that occured
      */
     connect(sigName: "error", callback: (($obj: WebsocketConnection, error: GLib.Error) => void)): number
     connect_after(sigName: "error", callback: (($obj: WebsocketConnection, error: GLib.Error) => void)): number
@@ -21971,6 +23936,8 @@ class WebsocketConnection {
      * As a convenience, the `message` data will always be
      * NUL-terminated, but the NUL byte will not be included in
      * the length count.
+     * @param type the type of message contents
+     * @param message the message data
      */
     connect(sigName: "message", callback: (($obj: WebsocketConnection, type: number, message: GLib.Bytes) => void)): number
     connect_after(sigName: "message", callback: (($obj: WebsocketConnection, type: number, message: GLib.Bytes) => void)): number
@@ -21982,6 +23949,7 @@ class WebsocketConnection {
      * As a convenience, the `message` data will always be
      * NUL-terminated, but the NUL byte will not be included in
      * the length count.
+     * @param message the application data (if any)
      */
     connect(sigName: "pong", callback: (($obj: WebsocketConnection, message: GLib.Bytes) => void)): number
     connect_after(sigName: "pong", callback: (($obj: WebsocketConnection, message: GLib.Bytes) => void)): number
@@ -22015,16 +23983,29 @@ class WebsocketConnection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::connection-type", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection-type", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::extensions", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extensions", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::io-stream", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::io-stream", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::keepalive-interval", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::keepalive-interval", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-incoming-payload-size", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-incoming-payload-size", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::origin", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::origin", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::protocol", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::protocol", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::state", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::state", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uri", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uri", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -22041,10 +24022,12 @@ interface WebsocketExtension_ConstructProps extends GObject.Object_ConstructProp
 }
 class WebsocketExtension {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.WebsocketExtension */
     /**
      * Configures `extension` with the given `params`
+     * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
+     * @param params the parameters, or %NULL
      */
     configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable | null): boolean
     /**
@@ -22063,6 +24046,8 @@ class WebsocketExtension {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will reset them in `header`.
+     * @param header the message header
+     * @param payload the payload data
      */
     process_incoming_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
     /**
@@ -22071,6 +24056,8 @@ class WebsocketExtension {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will change them in `header`.
+     * @param header the message header
+     * @param payload the payload data
      */
     process_outgoing_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -22108,6 +24095,10 @@ class WebsocketExtension {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22118,6 +24109,12 @@ class WebsocketExtension {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22141,6 +24138,7 @@ class WebsocketExtension {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22160,11 +24158,14 @@ class WebsocketExtension {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22172,6 +24173,8 @@ class WebsocketExtension {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22189,6 +24192,7 @@ class WebsocketExtension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22234,6 +24238,7 @@ class WebsocketExtension {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22277,15 +24282,20 @@ class WebsocketExtension {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22326,6 +24336,7 @@ class WebsocketExtension {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22360,11 +24371,14 @@ class WebsocketExtension {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.WebsocketExtension */
     /**
      * Configures `extension` with the given `params`
+     * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
+     * @param params the parameters, or %NULL
      */
     vfunc_configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable | null): boolean
     /**
@@ -22383,6 +24397,8 @@ class WebsocketExtension {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will reset them in `header`.
+     * @param header the message header
+     * @param payload the payload data
      */
     vfunc_process_incoming_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
     /**
@@ -22391,6 +24407,8 @@ class WebsocketExtension {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will change them in `header`.
+     * @param header the message header
+     * @param payload the payload data
      */
     vfunc_process_outgoing_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22410,6 +24428,7 @@ class WebsocketExtension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22442,6 +24461,7 @@ class WebsocketExtension {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebsocketExtension, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebsocketExtension, pspec: GObject.ParamSpec) => void)): number
@@ -22459,12 +24479,14 @@ interface WebsocketExtensionDeflate_ConstructProps extends WebsocketExtension_Co
 }
 class WebsocketExtensionDeflate {
     /* Fields of Soup-2.4.Soup.WebsocketExtension */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Soup-2.4.Soup.WebsocketExtension */
     /**
      * Configures `extension` with the given `params`
+     * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
+     * @param params the parameters, or %NULL
      */
     configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable | null): boolean
     /**
@@ -22483,6 +24505,8 @@ class WebsocketExtensionDeflate {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will reset them in `header`.
+     * @param header the message header
+     * @param payload the payload data
      */
     process_incoming_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
     /**
@@ -22491,6 +24515,8 @@ class WebsocketExtensionDeflate {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will change them in `header`.
+     * @param header the message header
+     * @param payload the payload data
      */
     process_outgoing_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -22528,6 +24554,10 @@ class WebsocketExtensionDeflate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22538,6 +24568,12 @@ class WebsocketExtensionDeflate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22561,6 +24597,7 @@ class WebsocketExtensionDeflate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22580,11 +24617,14 @@ class WebsocketExtensionDeflate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22592,6 +24632,8 @@ class WebsocketExtensionDeflate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22609,6 +24651,7 @@ class WebsocketExtensionDeflate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22654,6 +24697,7 @@ class WebsocketExtensionDeflate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22697,15 +24741,20 @@ class WebsocketExtensionDeflate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22746,6 +24795,7 @@ class WebsocketExtensionDeflate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22780,11 +24830,14 @@ class WebsocketExtensionDeflate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Soup-2.4.Soup.WebsocketExtension */
     /**
      * Configures `extension` with the given `params`
+     * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
+     * @param params the parameters, or %NULL
      */
     vfunc_configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable | null): boolean
     /**
@@ -22803,6 +24856,8 @@ class WebsocketExtensionDeflate {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will reset them in `header`.
+     * @param header the message header
+     * @param payload the payload data
      */
     vfunc_process_incoming_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
     /**
@@ -22811,6 +24866,8 @@ class WebsocketExtensionDeflate {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will change them in `header`.
+     * @param header the message header
+     * @param payload the payload data
      */
     vfunc_process_outgoing_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22830,6 +24887,7 @@ class WebsocketExtensionDeflate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22862,6 +24920,7 @@ class WebsocketExtensionDeflate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebsocketExtensionDeflate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebsocketExtensionDeflate, pspec: GObject.ParamSpec) => void)): number
@@ -22879,7 +24938,7 @@ interface WebsocketExtensionManager_ConstructProps extends GObject.Object_Constr
 }
 class WebsocketExtensionManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -22915,6 +24974,10 @@ class WebsocketExtensionManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22925,6 +24988,12 @@ class WebsocketExtensionManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22948,6 +25017,7 @@ class WebsocketExtensionManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22967,11 +25037,14 @@ class WebsocketExtensionManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22979,6 +25052,8 @@ class WebsocketExtensionManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22996,6 +25071,7 @@ class WebsocketExtensionManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23041,6 +25117,7 @@ class WebsocketExtensionManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23084,15 +25161,20 @@ class WebsocketExtensionManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23133,6 +25215,7 @@ class WebsocketExtensionManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23167,6 +25250,7 @@ class WebsocketExtensionManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Soup-2.4.Soup.SessionFeature */
@@ -23175,6 +25259,7 @@ class WebsocketExtensionManager {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     add_feature(type: GObject.Type): boolean
     attach(session: Session): void
@@ -23182,11 +25267,13 @@ class WebsocketExtensionManager {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     remove_feature(type: GObject.Type): boolean
     /* Virtual methods of Soup-2.4.Soup.WebsocketExtensionManager */
@@ -23195,6 +25282,7 @@ class WebsocketExtensionManager {
      * This is used for features that can be extended with multiple
      * different types. Eg, the authentication manager can be extended
      * with subtypes of #SoupAuth.
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_add_feature(type: GObject.Type): boolean
     vfunc_attach(session: Session): void
@@ -23202,11 +25290,13 @@ class WebsocketExtensionManager {
     /**
      * Tests if `feature` has a "sub-feature" of type `type`. See
      * soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_has_feature(type: GObject.Type): boolean
     /**
      * Removes the "sub-feature" of type `type` from the base feature
      * `feature`. See soup_session_feature_add_feature().
+     * @param type the #GType of a "sub-feature"
      */
     vfunc_remove_feature(type: GObject.Type): boolean
     vfunc_request_queued(session: Session, msg: Message): void
@@ -23229,6 +25319,7 @@ class WebsocketExtensionManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23261,6 +25352,7 @@ class WebsocketExtensionManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: WebsocketExtensionManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: WebsocketExtensionManager, pspec: GObject.ParamSpec) => void)): number
@@ -23276,45 +25368,45 @@ class WebsocketExtensionManager {
 }
 abstract class AddressClass {
     /* Fields of Soup-2.4.Soup.AddressClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class AuthClass {
     /* Fields of Soup-2.4.Soup.AuthClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly scheme_name: string
-    readonly strength: number
-    readonly update: (auth: Auth, msg: Message, auth_header: GLib.HashTable) => boolean
-    readonly get_protection_space: (auth: Auth, source_uri: URI) => string[]
-    readonly authenticate: (auth: Auth, username: string, password: string) => void
-    readonly is_authenticated: (auth: Auth) => boolean
-    readonly get_authorization: (auth: Auth, msg: Message) => string
-    readonly is_ready: (auth: Auth, msg: Message) => boolean
-    readonly can_authenticate: (auth: Auth) => boolean
+    parent_class: GObject.ObjectClass
+    scheme_name: string
+    strength: number
+    update: (auth: Auth, msg: Message, auth_header: GLib.HashTable) => boolean
+    get_protection_space: (auth: Auth, source_uri: URI) => string[]
+    authenticate: (auth: Auth, username: string, password: string) => void
+    is_authenticated: (auth: Auth) => boolean
+    get_authorization: (auth: Auth, msg: Message) => string
+    is_ready: (auth: Auth, msg: Message) => boolean
+    can_authenticate: (auth: Auth) => boolean
     static name: string
 }
 abstract class AuthDomainBasicClass {
     /* Fields of Soup-2.4.Soup.AuthDomainBasicClass */
-    readonly parent_class: AuthDomainClass
+    parent_class: AuthDomainClass
     static name: string
 }
 abstract class AuthDomainClass {
     /* Fields of Soup-2.4.Soup.AuthDomainClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly accepts: (domain: AuthDomain, msg: Message, header: string) => string
-    readonly challenge: (domain: AuthDomain, msg: Message) => string
-    readonly check_password: (domain: AuthDomain, msg: Message, username: string, password: string) => boolean
+    parent_class: GObject.ObjectClass
+    accepts: (domain: AuthDomain, msg: Message, header: string) => string
+    challenge: (domain: AuthDomain, msg: Message) => string
+    check_password: (domain: AuthDomain, msg: Message, username: string, password: string) => boolean
     static name: string
 }
 abstract class AuthDomainDigestClass {
     /* Fields of Soup-2.4.Soup.AuthDomainDigestClass */
-    readonly parent_class: AuthDomainClass
+    parent_class: AuthDomainClass
     static name: string
 }
 abstract class AuthManagerClass {
     /* Fields of Soup-2.4.Soup.AuthManagerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly authenticate: (manager: AuthManager, msg: Message, auth: Auth, retrying: boolean) => void
+    parent_class: GObject.ObjectClass
+    authenticate: (manager: AuthManager, msg: Message, auth: Auth, retrying: boolean) => void
     static name: string
 }
 class AuthManagerPrivate {
@@ -23325,11 +25417,11 @@ class Buffer {
     /**
      * the data
      */
-    readonly data: object
+    data: object
     /**
      * length of `data`
      */
-    readonly length: number
+    length: number
     /* Methods of Soup-2.4.Soup.Buffer */
     /**
      * Makes a copy of `buffer`. In reality, #SoupBuffer is a refcounted
@@ -23368,6 +25460,8 @@ class Buffer {
      * `parent` starting at `offset`. (Normally this will not actually copy
      * any data, but will instead simply reference the same data as
      * `parent` does.)
+     * @param offset offset within `parent` to start at
+     * @param length number of bytes to copy from `parent`
      */
     new_subbuffer(offset: number, length: number): Buffer
     static name: string
@@ -23379,8 +25473,8 @@ class Buffer {
 }
 abstract class CacheClass {
     /* Fields of Soup-2.4.Soup.CacheClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly get_cacheability: (cache: Cache, msg: Message) => Cacheability
+    parent_class: GObject.ObjectClass
+    get_cacheability: (cache: Cache, msg: Message) => Cacheability
     static name: string
 }
 class CachePrivate {
@@ -23464,7 +25558,7 @@ class Connection {
 }
 abstract class ContentDecoderClass {
     /* Fields of Soup-2.4.Soup.ContentDecoderClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class ContentDecoderPrivate {
@@ -23472,9 +25566,9 @@ class ContentDecoderPrivate {
 }
 abstract class ContentSnifferClass {
     /* Fields of Soup-2.4.Soup.ContentSnifferClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly sniff: (sniffer: ContentSniffer, msg: Message, buffer: Buffer) => [ /* returnType */ string, /* params */ GLib.HashTable | null ]
-    readonly get_buffer_size: (sniffer: ContentSniffer) => number
+    parent_class: GObject.ObjectClass
+    sniff: (sniffer: ContentSniffer, msg: Message, buffer: Buffer) => [ /* returnType */ string, /* params */ GLib.HashTable | null ]
+    get_buffer_size: (sniffer: ContentSniffer) => number
     static name: string
 }
 class ContentSnifferPrivate {
@@ -23485,32 +25579,32 @@ class Cookie {
     /**
      * the cookie name
      */
-    readonly name: string
+    name: string
     /**
      * the cookie value
      */
-    readonly value: string
+    value: string
     /**
      * the "domain" attribute, or else the hostname that the
      * cookie came from.
      */
-    readonly domain: string
+    domain: string
     /**
      * the "path" attribute, or %NULL
      */
-    readonly path: string
+    path: string
     /**
      * the cookie expiration time, or %NULL for a session cookie
      */
-    readonly expires: Date
+    expires: Date
     /**
      * %TRUE if the cookie should only be tranferred over SSL
      */
-    readonly secure: boolean
+    secure: boolean
     /**
      * %TRUE if the cookie should not be exposed to scripts
      */
-    readonly http_only: boolean
+    http_only: boolean
     /* Methods of Soup-2.4.Soup.Cookie */
     /**
      * Tests if `cookie` should be sent to `uri`.
@@ -23518,6 +25612,7 @@ class Cookie {
      * (At the moment, this does not check that `cookie'`s domain matches
      * `uri,` because it assumes that the caller has already done that.
      * But don't rely on that; it may change in the future.)
+     * @param uri a #SoupURI
      */
     applies_to_uri(uri: URI): boolean
     /**
@@ -23528,6 +25623,7 @@ class Cookie {
      * Checks if the `cookie'`s domain and `host` match in the sense that
      * `cookie` should be sent when making a request to `host,` or that
      * `cookie` should be accepted when receiving a response from `host`.
+     * @param host a URI
      */
     domain_matches(host: string): boolean
     /**
@@ -23535,6 +25631,7 @@ class Cookie {
      * 
      * Note that currently, this does not check that the cookie domains
      * match. This may change in the future.
+     * @param cookie2 a #SoupCookie
      */
     equal(cookie2: Cookie): boolean
     /**
@@ -23572,6 +25669,7 @@ class Cookie {
     get_value(): string
     /**
      * Sets `cookie'`s domain to `domain`
+     * @param domain the new domain
      */
     set_domain(domain: string): void
     /**
@@ -23580,12 +25678,14 @@ class Cookie {
      * client's session.
      * 
      * (This sets the same property as soup_cookie_set_max_age().)
+     * @param expires the new expiration time, or %NULL
      */
     set_expires(expires: Date): void
     /**
      * Sets `cookie'`s HttpOnly attribute to `http_only`. If %TRUE, `cookie`
      * will be marked as "http only", meaning it should not be exposed to
      * web page scripts or other untrusted code.
+     * @param http_only the new value for the HttpOnly attribute
      */
     set_http_only(http_only: boolean): void
     /**
@@ -23599,29 +25699,35 @@ class Cookie {
      * considered already-expired.)
      * 
      * (This sets the same property as soup_cookie_set_expires().)
+     * @param max_age the new max age
      */
     set_max_age(max_age: number): void
     /**
      * Sets `cookie'`s name to `name`
+     * @param name the new name
      */
     set_name(name: string): void
     /**
      * Sets `cookie'`s path to `path`
+     * @param path the new path
      */
     set_path(path: string): void
     /**
      * When used in conjunction with soup_cookie_jar_get_cookie_list_with_same_site_info() this
      * sets the policy of when this cookie should be exposed.
+     * @param policy a #SoupSameSitePolicy
      */
     set_same_site_policy(policy: SameSitePolicy): void
     /**
      * Sets `cookie'`s secure attribute to `secure`. If %TRUE, `cookie` will
      * only be transmitted from the client to the server over secure
      * (https) connections.
+     * @param secure the new value for the secure attribute
      */
     set_secure(secure: boolean): void
     /**
      * Sets `cookie'`s value to `value`
+     * @param value the new value
      */
     set_value(value: string): void
     /**
@@ -23649,25 +25755,27 @@ class Cookie {
      * valid state for a #SoupCookie, and you will need to fill in some
      * appropriate string for the domain if you want to actually make use
      * of the cookie.
+     * @param header a cookie string (eg, the value of a Set-Cookie header)
+     * @param origin origin of the cookie, or %NULL
      */
     static parse(header: string, origin: URI): Cookie | null
 }
 abstract class CookieJarClass {
     /* Fields of Soup-2.4.Soup.CookieJarClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly save: (jar: CookieJar) => void
-    readonly is_persistent: (jar: CookieJar) => boolean
-    readonly changed: (jar: CookieJar, old_cookie: Cookie, new_cookie: Cookie) => void
+    parent_class: GObject.ObjectClass
+    save: (jar: CookieJar) => void
+    is_persistent: (jar: CookieJar) => boolean
+    changed: (jar: CookieJar, old_cookie: Cookie, new_cookie: Cookie) => void
     static name: string
 }
 abstract class CookieJarDBClass {
     /* Fields of Soup-2.4.Soup.CookieJarDBClass */
-    readonly parent_class: CookieJarClass
+    parent_class: CookieJarClass
     static name: string
 }
 abstract class CookieJarTextClass {
     /* Fields of Soup-2.4.Soup.CookieJarTextClass */
-    readonly parent_class: CookieJarClass
+    parent_class: CookieJarClass
     static name: string
 }
 class Date {
@@ -23675,35 +25783,35 @@ class Date {
     /**
      * the year, 1 to 9999
      */
-    readonly year: number
+    year: number
     /**
      * the month, 1 to 12
      */
-    readonly month: number
+    month: number
     /**
      * day of the month, 1 to 31
      */
-    readonly day: number
+    day: number
     /**
      * hour of the day, 0 to 23
      */
-    readonly hour: number
+    hour: number
     /**
      * minute, 0 to 59
      */
-    readonly minute: number
+    minute: number
     /**
      * second, 0 to 59 (or up to 61 in the case of leap seconds)
      */
-    readonly second: number
+    second: number
     /**
      * %TRUE if the date is in UTC
      */
-    readonly utc: boolean
+    utc: boolean
     /**
      * offset from UTC
      */
-    readonly offset: number
+    offset: number
     /* Methods of Soup-2.4.Soup.Date */
     /**
      * Copies `date`.
@@ -23751,6 +25859,7 @@ class Date {
     is_past(): boolean
     /**
      * Converts `date` to a string in the format described by `format`.
+     * @param format the format to generate the date in
      */
     to_string(format: DateFormat): string
     /**
@@ -23780,16 +25889,16 @@ abstract class HSTSEnforcerClass {
     /**
      * The parent class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly is_persistent: (hsts_enforcer: HSTSEnforcer) => boolean
-    readonly has_valid_policy: (hsts_enforcer: HSTSEnforcer, domain: string) => boolean
-    readonly changed: (enforcer: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void
-    readonly hsts_enforced: (enforcer: HSTSEnforcer, message: Message) => void
+    parent_class: GObject.ObjectClass
+    is_persistent: (hsts_enforcer: HSTSEnforcer) => boolean
+    has_valid_policy: (hsts_enforcer: HSTSEnforcer, domain: string) => boolean
+    changed: (enforcer: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void
+    hsts_enforced: (enforcer: HSTSEnforcer, message: Message) => void
     static name: string
 }
 abstract class HSTSEnforcerDBClass {
     /* Fields of Soup-2.4.Soup.HSTSEnforcerDBClass */
-    readonly parent_class: HSTSEnforcerClass
+    parent_class: HSTSEnforcerClass
     static name: string
 }
 class HSTSEnforcerDBPrivate {
@@ -23803,19 +25912,19 @@ class HSTSPolicy {
     /**
      * The domain or hostname that the policy applies to
      */
-    readonly domain: string
+    domain: string
     /**
      * The maximum age, in seconds, that the policy is valid
      */
-    readonly max_age: number
+    max_age: number
     /**
      * the policy expiration time, or %NULL for a permanent session policy
      */
-    readonly expires: Date
+    expires: Date
     /**
      * %TRUE if the policy applies on subdomains
      */
-    readonly include_subdomains: boolean
+    include_subdomains: boolean
     /* Methods of Soup-2.4.Soup.HSTSPolicy */
     /**
      * Copies `policy`.
@@ -23823,6 +25932,7 @@ class HSTSPolicy {
     copy(): HSTSPolicy
     /**
      * Tests if `policy1` and `policy2` are equal.
+     * @param policy2 a #SoupHSTSPolicy
      */
     equal(policy2: HSTSPolicy): boolean
     /**
@@ -23858,7 +25968,7 @@ class HSTSPolicy {
 }
 abstract class LoggerClass {
     /* Fields of Soup-2.4.Soup.LoggerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MessageBody {
@@ -23866,17 +25976,18 @@ class MessageBody {
     /**
      * the data
      */
-    readonly data: string
+    data: string
     /**
      * length of `data`
      */
-    readonly length: number
+    length: number
     /* Methods of Soup-2.4.Soup.MessageBody */
     /**
      * Appends the data from `buffer` to `body`. (#SoupMessageBody uses
      * #SoupBuffers internally, so this is normally a constant-time
      * operation that doesn't actually require copying the data in
      * `buffer`.)
+     * @param buffer a #SoupBuffer
      */
     append_buffer(buffer: Buffer): void
     /**
@@ -23885,6 +25996,7 @@ class MessageBody {
      * This function is exactly equivalent to soup_message_body_append()
      * with %SOUP_MEMORY_TAKE as second argument; it exists mainly for
      * convenience and simplifying language bindings.
+     * @param data data to append
      */
     append(data: Uint8Array): void
     /**
@@ -23924,6 +26036,7 @@ class MessageBody {
      * soup_message_body_get_chunk() will return %NULL (indicating that
      * `body` may still potentially have more data, but that data is not
      * currently available).
+     * @param offset an offset
      */
     get_chunk(offset: number): Buffer | null
     /**
@@ -23934,6 +26047,7 @@ class MessageBody {
      * 
      * This is a low-level method which you should not normally need to
      * use.
+     * @param chunk a #SoupBuffer received from the network
      */
     got_chunk(chunk: Buffer): void
     /**
@@ -23965,6 +26079,7 @@ class MessageBody {
      * %SOUP_MESSAGE_CAN_REBUILD flag on the message, then the chunks will
      * be discarded, and you will be responsible for recreating the
      * request body after the #SoupMessage::restarted signal is emitted.
+     * @param accumulate whether or not to accumulate body chunks in `body`
      */
     set_accumulate(accumulate: boolean): void
     /**
@@ -23980,6 +26095,7 @@ class MessageBody {
      * This is a low-level method which you should not need to use, and
      * there are further restrictions on its proper use which are not
      * documented here.
+     * @param chunk a #SoupBuffer returned from soup_message_body_get_chunk()
      */
     wrote_chunk(chunk: Buffer): void
     static name: string
@@ -23990,18 +26106,18 @@ class MessageBody {
 }
 abstract class MessageClass {
     /* Fields of Soup-2.4.Soup.MessageClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly wrote_informational: (msg: Message) => void
-    readonly wrote_headers: (msg: Message) => void
-    readonly wrote_chunk: (msg: Message) => void
-    readonly wrote_body: (msg: Message) => void
-    readonly got_informational: (msg: Message) => void
-    readonly got_headers: (msg: Message) => void
-    readonly got_chunk: (msg: Message, chunk: Buffer) => void
-    readonly got_body: (msg: Message) => void
-    readonly restarted: (msg: Message) => void
-    readonly finished: (msg: Message) => void
-    readonly starting: (msg: Message) => void
+    parent_class: GObject.ObjectClass
+    wrote_informational: (msg: Message) => void
+    wrote_headers: (msg: Message) => void
+    wrote_chunk: (msg: Message) => void
+    wrote_body: (msg: Message) => void
+    got_informational: (msg: Message) => void
+    got_headers: (msg: Message) => void
+    got_chunk: (msg: Message, chunk: Buffer) => void
+    got_body: (msg: Message) => void
+    restarted: (msg: Message) => void
+    finished: (msg: Message) => void
+    starting: (msg: Message) => void
     static name: string
 }
 class MessageHeaders {
@@ -24014,6 +26130,8 @@ class MessageHeaders {
      * 
      * The caller is expected to make sure that `name` and `value` are
      * syntactically correct.
+     * @param name the header name to add
+     * @param value the new value of `name`
      */
     append(name: string, value: string): void
     /**
@@ -24037,6 +26155,7 @@ class MessageHeaders {
      * required for interoperability in some cases.)
      * 
      * You may not modify the headers from `func`.
+     * @param func callback function to run for each header
      */
     foreach(func: MessageHeadersForeachFunc): void
     /**
@@ -24045,6 +26164,7 @@ class MessageHeaders {
     free(): void
     /**
      * Frees the array of ranges returned from soup_message_headers_get_ranges().
+     * @param ranges an array of #SoupRange
      */
     free_ranges(ranges: Range): void
     /**
@@ -24057,6 +26177,7 @@ class MessageHeaders {
      * the methods soup_message_headers_get_one() and
      * soup_message_headers_get_list() were introduced, so callers can
      * explicitly state which behavior they are expecting.
+     * @param name header name
      */
     get(name: string): string | null
     /**
@@ -24126,6 +26247,7 @@ class MessageHeaders {
      * with it anyway, because the HTTP spec explicitly states that this
      * transformation is allowed, and so an upstream proxy could do the
      * same thing.
+     * @param name header name
      */
     get_list(name: string): string | null
     /**
@@ -24138,6 +26260,7 @@ class MessageHeaders {
      * is not defined which one will be returned. (Ideally, it will return
      * whichever one makes libsoup most compatible with other HTTP
      * implementations.)
+     * @param name header name
      */
     get_one(name: string): string | null
     /**
@@ -24170,6 +26293,7 @@ class MessageHeaders {
      * body available, and only want to generate the parts that were
      * actually requested by the client.
      * </para></note>
+     * @param total_length the total_length of the response body
      */
     get_ranges(total_length: number): [ /* returnType */ boolean, /* ranges */ Range[] ]
     /**
@@ -24178,16 +26302,21 @@ class MessageHeaders {
      * 
      * (If `name` is present in `hdrs,` then this is equivalent to calling
      * soup_header_contains() on its value.)
+     * @param name header name
+     * @param token token to look for
      */
     header_contains(name: string, token: string): boolean
     /**
      * Checks whether the header `name` is present in `hdrs` and is
      * (case-insensitively) equal to `value`.
+     * @param name header name
+     * @param value expected value
      */
     header_equals(name: string, value: string): boolean
     /**
      * Removes `name` from `hdrs`. If there are multiple values for `name,`
      * they are all removed.
+     * @param name the header name to remove
      */
     remove(name: string): void
     /**
@@ -24196,6 +26325,8 @@ class MessageHeaders {
      * 
      * The caller is expected to make sure that `name` and `value` are
      * syntactically correct.
+     * @param name the header name to replace
+     * @param value the new value of `name`
      */
     replace(name: string, value: string): void
     /**
@@ -24204,6 +26335,8 @@ class MessageHeaders {
      * 
      * See soup_message_headers_get_content_disposition() for a discussion
      * of how Content-Disposition is used in HTTP.
+     * @param disposition the disposition-type
+     * @param params additional parameters, or %NULL
      */
     set_content_disposition(disposition: string, params?: GLib.HashTable | null): void
     /**
@@ -24218,6 +26351,7 @@ class MessageHeaders {
      * soup_message_headers_set_content_length() allows you to put the
      * correct content length into the response without needing to waste
      * memory by filling in a response body which won't actually be sent.
+     * @param content_length the message body length
      */
     set_content_length(content_length: number): void
     /**
@@ -24230,17 +26364,23 @@ class MessageHeaders {
      * not normally need to call this function youself. See
      * soup_message_headers_get_ranges() for more details.
      * </para></note>
+     * @param start the start of the range
+     * @param end the end of the range
+     * @param total_length the total length of the resource, or -1 if unknown
      */
     set_content_range(start: number, end: number, total_length: number): void
     /**
      * Sets the "Content-Type" header in `hdrs` to `content_type,`
      * optionally with additional parameters specified in `params`.
+     * @param content_type the MIME type
+     * @param params additional parameters, or %NULL
      */
     set_content_type(content_type: string, params?: GLib.HashTable | null): void
     /**
      * Sets the message body encoding that `hdrs` will declare. In particular,
      * you should use this if you are going to send a request or response in
      * chunked encoding.
+     * @param encoding a #SoupEncoding
      */
     set_encoding(encoding: Encoding): void
     /**
@@ -24254,6 +26394,7 @@ class MessageHeaders {
      * post, or because you're POSTing to a URL that doesn't exist). This
      * saves you from having to transmit the large request body when the
      * server is just going to ignore it anyway.
+     * @param expectations the expectations to set
      */
     set_expectations(expectations: Expectation): void
     /**
@@ -24262,12 +26403,16 @@ class MessageHeaders {
      * 
      * If you need to request multiple ranges, use
      * soup_message_headers_set_ranges().
+     * @param start the start of the range to request
+     * @param end the end of the range to request
      */
     set_range(start: number, end: number): void
     /**
      * Sets `hdrs'`s Range header to request the indicated ranges. (If you
      * only want to request a single range, you can use
      * soup_message_headers_set_range().)
+     * @param ranges an array of #SoupRange
+     * @param length the length of `range`
      */
     set_ranges(ranges: Range, length: number): void
     static name: string
@@ -24289,6 +26434,7 @@ class MessageHeadersIter {
     /* Static methods and pseudo-constructors */
     /**
      * Initializes `iter` for iterating `hdrs`.
+     * @param hdrs a %SoupMessageHeaders
      */
     static init(hdrs: MessageHeaders): /* iter */ MessageHeadersIter
 }
@@ -24305,6 +26451,10 @@ class Multipart {
      * "Content-Disposition: form-data", as per the HTML forms
      * specification. See soup_form_request_new_from_multipart() for more
      * details.
+     * @param control_name the name of the control associated with this file
+     * @param filename the name of the file, or %NULL if not known
+     * @param content_type the MIME type of the file, or %NULL if not known
+     * @param body the file data
      */
     append_form_file(control_name: string, filename: string, content_type: string, body: Buffer): void
     /**
@@ -24312,6 +26462,8 @@ class Multipart {
      * "Content-Disposition: form-data", as per the HTML forms
      * specification. See soup_form_request_new_from_multipart() for more
      * details.
+     * @param control_name the name of the control associated with `data`
+     * @param data the body data
      */
     append_form_string(control_name: string, data: string): void
     /**
@@ -24319,6 +26471,8 @@ class Multipart {
      * (The multipart will make its own copies of `headers` and `body,` so
      * you should free your copies if you are not using them for anything
      * else.)
+     * @param headers the MIME part headers
+     * @param body the MIME part body
      */
     append_part(headers: MessageHeaders, body: Buffer): void
     /**
@@ -24331,10 +26485,13 @@ class Multipart {
     get_length(): number
     /**
      * Gets the indicated body part from `multipart`.
+     * @param part the part number to get (counting from 0)
      */
     get_part(part: number): [ /* returnType */ boolean, /* headers */ MessageHeaders, /* body */ Buffer ]
     /**
      * Serializes `multipart` to `dest_headers` and `dest_body`.
+     * @param dest_headers the headers of the HTTP message to serialize `multipart` to
+     * @param dest_body the body of the HTTP message to serialize `multipart` to
      */
     to_message(dest_headers: MessageHeaders, dest_body: MessageBody): void
     static name: string
@@ -24346,7 +26503,7 @@ class Multipart {
 }
 abstract class MultipartInputStreamClass {
     /* Fields of Soup-2.4.Soup.MultipartInputStreamClass */
-    readonly parent_class: Gio.FilterInputStreamClass
+    parent_class: Gio.FilterInputStreamClass
     static name: string
 }
 class MultipartInputStreamPrivate {
@@ -24354,28 +26511,28 @@ class MultipartInputStreamPrivate {
 }
 abstract class PasswordManagerInterface {
     /* Fields of Soup-2.4.Soup.PasswordManagerInterface */
-    readonly base: GObject.TypeInterface
-    readonly get_passwords_async: (password_manager: PasswordManager, msg: Message, auth: Auth, retrying: boolean, async_context: GLib.MainContext, cancellable: Gio.Cancellable | null, callback: PasswordManagerCallback) => void
-    readonly get_passwords_sync: (password_manager: PasswordManager, msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null) => void
+    base: GObject.TypeInterface
+    get_passwords_async: (password_manager: PasswordManager, msg: Message, auth: Auth, retrying: boolean, async_context: GLib.MainContext, cancellable: Gio.Cancellable | null, callback: PasswordManagerCallback) => void
+    get_passwords_sync: (password_manager: PasswordManager, msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null) => void
     static name: string
 }
 abstract class ProxyResolverDefaultClass {
     /* Fields of Soup-2.4.Soup.ProxyResolverDefaultClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ProxyResolverInterface {
     /* Fields of Soup-2.4.Soup.ProxyResolverInterface */
-    readonly base: GObject.TypeInterface
-    readonly get_proxy_async: (proxy_resolver: ProxyResolver, msg: Message, async_context: GLib.MainContext, cancellable: Gio.Cancellable | null, callback: ProxyResolverCallback) => void
-    readonly get_proxy_sync: (proxy_resolver: ProxyResolver, msg: Message, cancellable?: Gio.Cancellable | null) => [ /* returnType */ number, /* addr */ Address ]
+    base: GObject.TypeInterface
+    get_proxy_async: (proxy_resolver: ProxyResolver, msg: Message, async_context: GLib.MainContext, cancellable: Gio.Cancellable | null, callback: ProxyResolverCallback) => void
+    get_proxy_sync: (proxy_resolver: ProxyResolver, msg: Message, cancellable?: Gio.Cancellable | null) => [ /* returnType */ number, /* addr */ Address ]
     static name: string
 }
 abstract class ProxyURIResolverInterface {
     /* Fields of Soup-2.4.Soup.ProxyURIResolverInterface */
-    readonly base: GObject.TypeInterface
-    readonly get_proxy_uri_async: (proxy_uri_resolver: ProxyURIResolver, uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback) => void
-    readonly get_proxy_uri_sync: (proxy_uri_resolver: ProxyURIResolver, uri: URI, cancellable?: Gio.Cancellable | null) => [ /* returnType */ number, /* proxy_uri */ URI ]
+    base: GObject.TypeInterface
+    get_proxy_uri_async: (proxy_uri_resolver: ProxyURIResolver, uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback) => void
+    get_proxy_uri_sync: (proxy_uri_resolver: ProxyURIResolver, uri: URI, cancellable?: Gio.Cancellable | null) => [ /* returnType */ number, /* proxy_uri */ URI ]
     static name: string
 }
 class Range {
@@ -24383,28 +26540,28 @@ class Range {
     /**
      * the start of the range
      */
-    readonly start: number
+    start: number
     /**
      * the end of the range
      */
-    readonly end: number
+    end: number
     static name: string
 }
 abstract class RequestClass {
     /* Fields of Soup-2.4.Soup.RequestClass */
-    readonly parent: GObject.ObjectClass
-    readonly schemes: string
-    readonly check_uri: (req_base: Request, uri: URI) => boolean
-    readonly send: (request: Request, cancellable?: Gio.Cancellable | null) => Gio.InputStream
-    readonly send_async: (request: Request, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly send_finish: (request: Request, result: Gio.AsyncResult) => Gio.InputStream
-    readonly get_content_length: (request: Request) => number
-    readonly get_content_type: (request: Request) => string | null
+    parent: GObject.ObjectClass
+    schemes: string
+    check_uri: (req_base: Request, uri: URI) => boolean
+    send: (request: Request, cancellable?: Gio.Cancellable | null) => Gio.InputStream
+    send_async: (request: Request, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    send_finish: (request: Request, result: Gio.AsyncResult) => Gio.InputStream
+    get_content_length: (request: Request) => number
+    get_content_type: (request: Request) => string | null
     static name: string
 }
 abstract class RequestDataClass {
     /* Fields of Soup-2.4.Soup.RequestDataClass */
-    readonly parent: RequestClass
+    parent: RequestClass
     static name: string
 }
 class RequestDataPrivate {
@@ -24412,7 +26569,7 @@ class RequestDataPrivate {
 }
 abstract class RequestFileClass {
     /* Fields of Soup-2.4.Soup.RequestFileClass */
-    readonly parent: RequestClass
+    parent: RequestClass
     static name: string
 }
 class RequestFilePrivate {
@@ -24420,7 +26577,7 @@ class RequestFilePrivate {
 }
 abstract class RequestHTTPClass {
     /* Fields of Soup-2.4.Soup.RequestHTTPClass */
-    readonly parent: RequestClass
+    parent: RequestClass
     static name: string
 }
 class RequestHTTPPrivate {
@@ -24431,7 +26588,7 @@ class RequestPrivate {
 }
 abstract class RequesterClass {
     /* Fields of Soup-2.4.Soup.RequesterClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class RequesterPrivate {
@@ -24439,30 +26596,30 @@ class RequesterPrivate {
 }
 abstract class ServerClass {
     /* Fields of Soup-2.4.Soup.ServerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly request_started: (server: Server, msg: Message, client: ClientContext) => void
-    readonly request_read: (server: Server, msg: Message, client: ClientContext) => void
-    readonly request_finished: (server: Server, msg: Message, client: ClientContext) => void
-    readonly request_aborted: (server: Server, msg: Message, client: ClientContext) => void
+    parent_class: GObject.ObjectClass
+    request_started: (server: Server, msg: Message, client: ClientContext) => void
+    request_read: (server: Server, msg: Message, client: ClientContext) => void
+    request_finished: (server: Server, msg: Message, client: ClientContext) => void
+    request_aborted: (server: Server, msg: Message, client: ClientContext) => void
     static name: string
 }
 abstract class SessionAsyncClass {
     /* Fields of Soup-2.4.Soup.SessionAsyncClass */
-    readonly parent_class: SessionClass
+    parent_class: SessionClass
     static name: string
 }
 abstract class SessionClass {
     /* Fields of Soup-2.4.Soup.SessionClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly request_started: (session: Session, msg: Message, socket: Socket) => void
-    readonly authenticate: (session: Session, msg: Message, auth: Auth, retrying: boolean) => void
-    readonly queue_message: (session: Session, msg: Message, callback?: SessionCallback | null) => void
-    readonly requeue_message: (session: Session, msg: Message) => void
-    readonly send_message: (session: Session, msg: Message) => number
-    readonly cancel_message: (session: Session, msg: Message, status_code: number) => void
-    readonly auth_required: (session: Session, msg: Message, auth: Auth, retrying: boolean) => void
-    readonly flush_queue: (session: Session) => void
-    readonly kick: (session: Session) => void
+    parent_class: GObject.ObjectClass
+    request_started: (session: Session, msg: Message, socket: Socket) => void
+    authenticate: (session: Session, msg: Message, auth: Auth, retrying: boolean) => void
+    queue_message: (session: Session, msg: Message, callback?: SessionCallback | null) => void
+    requeue_message: (session: Session, msg: Message) => void
+    send_message: (session: Session, msg: Message) => number
+    cancel_message: (session: Session, msg: Message, status_code: number) => void
+    auth_required: (session: Session, msg: Message, auth: Auth, retrying: boolean) => void
+    flush_queue: (session: Session) => void
+    kick: (session: Session) => void
     static name: string
 }
 abstract class SessionFeatureInterface {
@@ -24470,29 +26627,29 @@ abstract class SessionFeatureInterface {
     /**
      * The parent interface.
      */
-    readonly parent: GObject.TypeInterface
-    readonly attach: (feature: SessionFeature, session: Session) => void
-    readonly detach: (feature: SessionFeature, session: Session) => void
-    readonly request_queued: (feature: SessionFeature, session: Session, msg: Message) => void
-    readonly request_started: (feature: SessionFeature, session: Session, msg: Message, socket: Socket) => void
-    readonly request_unqueued: (feature: SessionFeature, session: Session, msg: Message) => void
-    readonly add_feature: (feature: SessionFeature, type: GObject.Type) => boolean
-    readonly remove_feature: (feature: SessionFeature, type: GObject.Type) => boolean
-    readonly has_feature: (feature: SessionFeature, type: GObject.Type) => boolean
+    parent: GObject.TypeInterface
+    attach: (feature: SessionFeature, session: Session) => void
+    detach: (feature: SessionFeature, session: Session) => void
+    request_queued: (feature: SessionFeature, session: Session, msg: Message) => void
+    request_started: (feature: SessionFeature, session: Session, msg: Message, socket: Socket) => void
+    request_unqueued: (feature: SessionFeature, session: Session, msg: Message) => void
+    add_feature: (feature: SessionFeature, type: GObject.Type) => boolean
+    remove_feature: (feature: SessionFeature, type: GObject.Type) => boolean
+    has_feature: (feature: SessionFeature, type: GObject.Type) => boolean
     static name: string
 }
 abstract class SessionSyncClass {
     /* Fields of Soup-2.4.Soup.SessionSyncClass */
-    readonly parent_class: SessionClass
+    parent_class: SessionClass
     static name: string
 }
 abstract class SocketClass {
     /* Fields of Soup-2.4.Soup.SocketClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly readable: (sock: Socket) => void
-    readonly writable: (sock: Socket) => void
-    readonly disconnected: (sock: Socket) => void
-    readonly new_connection: (listener: Socket, new_sock: Socket) => void
+    parent_class: GObject.ObjectClass
+    readable: (sock: Socket) => void
+    writable: (sock: Socket) => void
+    disconnected: (sock: Socket) => void
+    new_connection: (listener: Socket, new_sock: Socket) => void
     static name: string
 }
 class URI {
@@ -24500,35 +26657,35 @@ class URI {
     /**
      * the URI scheme (eg, "http")
      */
-    readonly scheme: string
+    scheme: string
     /**
      * a username, or %NULL
      */
-    readonly user: string
+    user: string
     /**
      * a password, or %NULL
      */
-    readonly password: string
+    password: string
     /**
      * the hostname or IP address, or %NULL
      */
-    readonly host: string
+    host: string
     /**
      * the port number on `host`
      */
-    readonly port: number
+    port: number
     /**
      * the path on `host`
      */
-    readonly path: string
+    path: string
     /**
      * a query for `path,` or %NULL
      */
-    readonly query: string
+    query: string
     /**
      * a fragment identifier within `path,` or %NULL
      */
-    readonly fragment: string
+    fragment: string
     /* Methods of Soup-2.4.Soup.URI */
     /**
      * Copies `uri`
@@ -24540,6 +26697,7 @@ class URI {
     copy_host(): URI
     /**
      * Tests whether or not `uri1` and `uri2` are equal in all parts
+     * @param uri2 another #SoupURI
      */
     equal(uri2: URI): boolean
     /**
@@ -24580,6 +26738,7 @@ class URI {
     get_user(): string
     /**
      * Compares `v1` and `v2`, considering only the scheme, host, and port.
+     * @param v2 a #SoupURI with a non-%NULL `host` member
      */
     host_equal(v2: URI): boolean
     /**
@@ -24588,6 +26747,7 @@ class URI {
     host_hash(): number
     /**
      * Sets `uri'`s fragment to `fragment`.
+     * @param fragment the fragment
      */
     set_fragment(fragment?: string | null): void
     /**
@@ -24598,37 +26758,45 @@ class URI {
      * converting `uri` to a string.
      * 
      * http and https URIs should not have a %NULL `host`.
+     * @param host the hostname or IP address, or %NULL
      */
     set_host(host?: string | null): void
     /**
      * Sets `uri'`s password to `password`.
+     * @param password the password, or %NULL
      */
     set_password(password?: string | null): void
     /**
      * Sets `uri'`s path to `path`.
+     * @param path the non-%NULL path
      */
     set_path(path: string): void
     /**
      * Sets `uri'`s port to `port`. If `port` is 0, `uri` will not have an
      * explicitly-specified port.
+     * @param port the port, or 0
      */
     set_port(port: number): void
     /**
      * Sets `uri'`s query to `query`.
+     * @param query the query
      */
     set_query(query?: string | null): void
     /**
      * Sets `uri'`s query to the result of encoding `form` according to the
      * HTML form rules. See soup_form_encode_hash() for more information.
+     * @param form a #GHashTable containing HTML form information
      */
     set_query_from_form(form: GLib.HashTable): void
     /**
      * Sets `uri'`s scheme to `scheme`. This will also set `uri'`s port to
      * the default port for `scheme,` if known.
+     * @param scheme the URI scheme
      */
     set_scheme(scheme: string): void
     /**
      * Sets `uri'`s user to `user`.
+     * @param user the username, or %NULL
      */
     set_user(user?: string | null): void
     /**
@@ -24640,6 +26808,7 @@ class URI {
      * 
      * Note that the output will never contain a password, even if `uri`
      * does.
+     * @param just_path_and_query if %TRUE, output just the path and query portions
      */
     to_string(just_path_and_query: boolean): string
     /**
@@ -24660,12 +26829,15 @@ class URI {
      * In the past, this would return %NULL if `part` contained invalid
      * percent-encoding, but now it just ignores the problem (as
      * soup_uri_new() already did).
+     * @param part a URI part
      */
     static decode(part: string): string
     /**
      * This %<!-- -->-encodes the given URI part and returns the escaped
      * version in allocated memory, which the caller must free when it is
      * done.
+     * @param part a URI part
+     * @param escape_extra additional reserved characters to escape (or %NULL)
      */
     static encode(part: string, escape_extra?: string | null): string
     /**
@@ -24686,17 +26858,19 @@ class URI {
      * In the past, this would return %NULL if `part` contained invalid
      * percent-encoding, but now it just ignores the problem (as
      * soup_uri_new() already did).
+     * @param part a URI part
+     * @param unescape_extra reserved characters to unescape (or %NULL)
      */
     static normalize(part: string, unescape_extra?: string | null): string
 }
 abstract class WebsocketConnectionClass {
     /* Fields of Soup-2.4.Soup.WebsocketConnectionClass */
-    readonly parent: GObject.ObjectClass
-    readonly message: (self: WebsocketConnection, type: WebsocketDataType, message: GLib.Bytes) => void
-    readonly error: (self: WebsocketConnection, error: GLib.Error) => void
-    readonly closing: (self: WebsocketConnection) => void
-    readonly closed: (self: WebsocketConnection) => void
-    readonly pong: (self: WebsocketConnection, message: GLib.Bytes) => void
+    parent: GObject.ObjectClass
+    message: (self: WebsocketConnection, type: WebsocketDataType, message: GLib.Bytes) => void
+    error: (self: WebsocketConnection, error: GLib.Error) => void
+    closing: (self: WebsocketConnection) => void
+    closed: (self: WebsocketConnection) => void
+    pong: (self: WebsocketConnection, message: GLib.Bytes) => void
     static name: string
 }
 class WebsocketConnectionPrivate {
@@ -24707,23 +26881,23 @@ abstract class WebsocketExtensionClass {
     /**
      * the parent class
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly name: string
-    readonly configure: (extension: WebsocketExtension, connection_type: WebsocketConnectionType, params?: GLib.HashTable | null) => boolean
-    readonly get_request_params: (extension: WebsocketExtension) => string | null
-    readonly get_response_params: (extension: WebsocketExtension) => string | null
-    readonly process_outgoing_message: (extension: WebsocketExtension, header: number, payload: GLib.Bytes) => [ /* returnType */ GLib.Bytes, /* header */ number ]
-    readonly process_incoming_message: (extension: WebsocketExtension, header: number, payload: GLib.Bytes) => [ /* returnType */ GLib.Bytes, /* header */ number ]
+    parent_class: GObject.ObjectClass
+    name: string
+    configure: (extension: WebsocketExtension, connection_type: WebsocketConnectionType, params?: GLib.HashTable | null) => boolean
+    get_request_params: (extension: WebsocketExtension) => string | null
+    get_response_params: (extension: WebsocketExtension) => string | null
+    process_outgoing_message: (extension: WebsocketExtension, header: number, payload: GLib.Bytes) => [ /* returnType */ GLib.Bytes, /* header */ number ]
+    process_incoming_message: (extension: WebsocketExtension, header: number, payload: GLib.Bytes) => [ /* returnType */ GLib.Bytes, /* header */ number ]
     static name: string
 }
 abstract class WebsocketExtensionDeflateClass {
     /* Fields of Soup-2.4.Soup.WebsocketExtensionDeflateClass */
-    readonly parent_class: WebsocketExtensionClass
+    parent_class: WebsocketExtensionClass
     static name: string
 }
 abstract class WebsocketExtensionManagerClass {
     /* Fields of Soup-2.4.Soup.WebsocketExtensionManagerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class XMLRPCParams {
@@ -24753,6 +26927,7 @@ class XMLRPCParams {
      *    type check this special variant.
      *  - `signature` must not have maybes, otherwise an error is returned.
      *  - Dictionaries must have string keys, otherwise an error is returned.
+     * @param signature A valid #GVariant type string, or %NULL
      */
     parse(signature?: string | null): GLib.Variant
     static name: string

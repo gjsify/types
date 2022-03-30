@@ -378,10 +378,10 @@ class AvatarFormat {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.AvatarFormat */
     getAlpha(): boolean
     getHeight(): number
@@ -392,10 +392,13 @@ class AvatarFormat {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -412,12 +415,14 @@ class AvatarFormat {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -425,6 +430,8 @@ class AvatarFormat {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -432,12 +439,16 @@ class AvatarFormat {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -445,35 +456,47 @@ class AvatarFormat {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -511,6 +534,10 @@ class AvatarFormat {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -521,6 +548,12 @@ class AvatarFormat {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -544,6 +577,7 @@ class AvatarFormat {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -563,11 +597,14 @@ class AvatarFormat {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -575,6 +612,8 @@ class AvatarFormat {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -592,6 +631,7 @@ class AvatarFormat {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -637,6 +677,7 @@ class AvatarFormat {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -680,15 +721,20 @@ class AvatarFormat {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -729,6 +775,7 @@ class AvatarFormat {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -763,6 +810,7 @@ class AvatarFormat {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -794,6 +842,7 @@ class AvatarFormat {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -851,22 +900,26 @@ class Datamap {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Datamap */
     /**
      * Adds the input value and the output value associated to it to
      * the `map`.
+     * @param inval the input value
+     * @param outval the output value
      */
     insert(inval: string, outval: string): void
     /**
      * Returns the output value with which `inval` is associated to.
+     * @param inval the input value
      */
     lookup(inval: string): string
     /**
      * Returns the input value with which `outval` is associated to.
+     * @param outval the output value
      */
     reverseLookup(outval: string): string
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
@@ -874,10 +927,13 @@ class Datamap {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -894,12 +950,14 @@ class Datamap {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -907,6 +965,8 @@ class Datamap {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -914,12 +974,16 @@ class Datamap {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -927,35 +991,47 @@ class Datamap {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -993,6 +1069,10 @@ class Datamap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1003,6 +1083,12 @@ class Datamap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1026,6 +1112,7 @@ class Datamap {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1045,11 +1132,14 @@ class Datamap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1057,6 +1147,8 @@ class Datamap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1074,6 +1166,7 @@ class Datamap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1119,6 +1212,7 @@ class Datamap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1162,15 +1256,20 @@ class Datamap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1211,6 +1310,7 @@ class Datamap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1245,6 +1345,7 @@ class Datamap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1276,6 +1377,7 @@ class Datamap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1304,26 +1406,37 @@ class Datamap {
 interface DatamapList_ConstructProps extends List_ConstructProps {
 }
 class DatamapList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -1331,6 +1444,8 @@ class DatamapList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -1338,11 +1453,14 @@ class DatamapList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -1363,6 +1481,7 @@ class DatamapList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -1372,17 +1491,20 @@ class DatamapList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -1420,6 +1542,10 @@ class DatamapList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1430,6 +1556,12 @@ class DatamapList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1453,6 +1585,7 @@ class DatamapList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1472,11 +1605,14 @@ class DatamapList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1484,6 +1620,8 @@ class DatamapList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1501,6 +1639,7 @@ class DatamapList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1546,6 +1685,7 @@ class DatamapList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1589,15 +1729,20 @@ class DatamapList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1638,6 +1783,7 @@ class DatamapList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1672,6 +1818,7 @@ class DatamapList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1703,12 +1850,18 @@ class DatamapList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1727,7 +1880,7 @@ interface Db_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Db {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Db */
     addDatamap(datamap: Datamap): void
     addDeployment(deployment: Deployment): void
@@ -1737,6 +1890,8 @@ class Db {
     addPlatform(platform: Platform): void
     /**
      * Find the deployment for `os` on `platform,` if any.
+     * @param os the operating system to find
+     * @param platform the virtualization platform
      */
     findDeployment(os: Os, platform: Platform): Deployment
     getDatamap(id: string): Datamap
@@ -1753,10 +1908,12 @@ class Db {
     getPlatformList(): PlatformList
     /**
      * Guess operating system given an #OsinfoMedia object.
+     * @param media the installation media
      */
     guessOsFromMedia(media: Media): [ /* returnType */ Os, /* matchedMedia */ Media | null ]
     /**
      * Guess operating system given an #OsinfoTree object.
+     * @param tree the installation tree
      */
     guessOsFromTree(tree: Tree): [ /* returnType */ Os, /* matchedTree */ Tree | null ]
     /**
@@ -1765,6 +1922,7 @@ class Db {
      * stored in `db`. In particular, after a call to osinfo_db_identify_media(), if
      * the media could be identified, its OsinfoEntify::id and OsinfoMedia::os
      * properties will be set.
+     * @param media the installation media data
      */
     identifyMedia(media: Media): boolean
     /**
@@ -1773,36 +1931,43 @@ class Db {
      * stored in `db`. In particular, after a call to osinfo_db_identify_tree(), if
      * the tree could be identified, its OsinfoEntify::id and OsinfoMedia::os
      * properties will be set.
+     * @param tree the installation tree data
      */
     identifyTree(tree: Tree): boolean
     /**
      * Get all operating systems that are the referee
      * in an operating system relationship.
+     * @param relshp the product relationship
      */
     uniqueValuesForOsRelationship(relshp: ProductRelationship): OsList
     /**
      * Get all platforms that are the referee
      * in an platform relationship.
+     * @param relshp the product relationship
      */
     uniqueValuesForPlatformRelationship(relshp: ProductRelationship): PlatformList
     /**
      * Get all unique values for a named property amongst all
      * deployments in the database
+     * @param propName a property name
      */
     uniqueValuesForPropertyInDeployment(propName: string): string[]
     /**
      * Get all unique values for a named property amongst all
      * devices in the database
+     * @param propName a property name
      */
     uniqueValuesForPropertyInDevice(propName: string): string[]
     /**
      * Get all unique values for a named property amongst all
      * operating systems in the database
+     * @param propName a property name
      */
     uniqueValuesForPropertyInOs(propName: string): string[]
     /**
      * Get all unique values for a named property amongst all
      * platforms in the database
+     * @param propName a property name
      */
     uniqueValuesForPropertyInPlatform(propName: string): string[]
     /* Methods of GObject-2.0.GObject.Object */
@@ -1840,6 +2005,10 @@ class Db {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1850,6 +2019,12 @@ class Db {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1873,6 +2048,7 @@ class Db {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1892,11 +2068,14 @@ class Db {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1904,6 +2083,8 @@ class Db {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1921,6 +2102,7 @@ class Db {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1966,6 +2148,7 @@ class Db {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2009,15 +2192,20 @@ class Db {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2058,6 +2246,7 @@ class Db {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2092,6 +2281,7 @@ class Db {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2123,6 +2313,7 @@ class Db {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2155,6 +2346,15 @@ interface Deployment_ConstructProps extends Entity_ConstructProps {
     platform?: Platform
 }
 class Deployment {
+    /* Properties of Libosinfo-1.0.Libosinfo.Deployment */
+    /**
+     * The operating system to be deployed
+     */
+    readonly os: Os
+    /**
+     * The platform to deploy on
+     */
+    readonly platform: Platform
     /* Properties of Libosinfo-1.0.Libosinfo.Entity */
     /**
      * The unique identifier for the entity The format of identifiers
@@ -2164,24 +2364,27 @@ class Deployment {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Deployment */
     /**
      * Associate a device with a deployment. The returned #OsinfoDeviceLink
      * can be used to record extra metadata against the link
+     * @param dev the device to associate
      */
     addDevice(dev: Device): DeviceLink
     /**
      * Retrieve all the associated devices matching the filter.
      * The filter matches against the link, not the device.
+     * @param filter an optional filter
      */
     getDeviceLinks(filter?: Filter | null): DeviceLinkList
     /**
      * Retrieve all the associated devices matching the filter.
      * The filter matches against the device, not the link.
+     * @param filter an optional filter
      */
     getDevices(filter?: Filter | null): DeviceList
     /**
@@ -2194,11 +2397,13 @@ class Deployment {
     getPlatform(): Platform
     /**
      * Get the preferred device matching a given filter
+     * @param filter a device metadata filter
      */
     getPreferredDevice(filter?: Filter | null): Device
     /**
      * Get the preferred device link matching a given filter and platform.
      * The filter matches against attributes on the link, not the device.
+     * @param filter a device metadata filter
      */
     getPreferredDeviceLink(filter?: Filter | null): DeviceLink
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
@@ -2206,10 +2411,13 @@ class Deployment {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -2226,12 +2434,14 @@ class Deployment {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -2239,6 +2449,8 @@ class Deployment {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -2246,12 +2458,16 @@ class Deployment {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -2259,35 +2475,47 @@ class Deployment {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2325,6 +2553,10 @@ class Deployment {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2335,6 +2567,12 @@ class Deployment {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2358,6 +2596,7 @@ class Deployment {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2377,11 +2616,14 @@ class Deployment {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2389,6 +2631,8 @@ class Deployment {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2406,6 +2650,7 @@ class Deployment {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2451,6 +2696,7 @@ class Deployment {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2494,15 +2740,20 @@ class Deployment {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2543,6 +2794,7 @@ class Deployment {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2577,6 +2829,7 @@ class Deployment {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2608,12 +2861,23 @@ class Deployment {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::os", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::os", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::os", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::os", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::os", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::platform", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::platform", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::platform", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::platform", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::platform", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2636,11 +2900,18 @@ class Deployment {
 interface DeploymentList_ConstructProps extends List_ConstructProps {
 }
 class DeploymentList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.DeploymentList */
     /**
      * Construct a new deployment list that is filled with deployments
@@ -2650,33 +2921,40 @@ class DeploymentList {
     /**
      * Construct a new deployment list that is filled with deployments
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): DeploymentList
     /**
      * Construct a new deployment list that is filled with only the
      * deployments that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second deployment list to copy
      */
     newIntersection(sourceTwo: DeploymentList): DeploymentList
     /**
      * Construct a new deployment list that is filled with all the
      * deployments that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second deployment list to copy
      */
     newUnion(sourceTwo: DeploymentList): DeploymentList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -2684,6 +2962,8 @@ class DeploymentList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -2691,11 +2971,14 @@ class DeploymentList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -2716,6 +2999,7 @@ class DeploymentList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -2725,17 +3009,20 @@ class DeploymentList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -2773,6 +3060,10 @@ class DeploymentList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2783,6 +3074,12 @@ class DeploymentList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2806,6 +3103,7 @@ class DeploymentList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2825,11 +3123,14 @@ class DeploymentList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2837,6 +3138,8 @@ class DeploymentList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2854,6 +3157,7 @@ class DeploymentList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2899,6 +3203,7 @@ class DeploymentList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2942,15 +3247,20 @@ class DeploymentList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2991,6 +3301,7 @@ class DeploymentList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3025,6 +3336,7 @@ class DeploymentList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3056,12 +3368,18 @@ class DeploymentList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3088,10 +3406,10 @@ class Device {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Device */
     getBusType(): string
     getClass(): string
@@ -3106,10 +3424,13 @@ class Device {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -3126,12 +3447,14 @@ class Device {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -3139,6 +3462,8 @@ class Device {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -3146,12 +3471,16 @@ class Device {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -3159,35 +3488,47 @@ class Device {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3225,6 +3566,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3235,6 +3580,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3258,6 +3609,7 @@ class Device {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3277,11 +3629,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3289,6 +3644,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3306,6 +3663,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3351,6 +3709,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3394,15 +3753,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3443,6 +3807,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3477,6 +3842,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3508,6 +3874,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3545,10 +3912,10 @@ class DeviceDriver {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.DeviceDriver */
     /**
      * Retrieves the target hardware architecture of `driver`.
@@ -3580,10 +3947,13 @@ class DeviceDriver {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -3600,12 +3970,14 @@ class DeviceDriver {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -3613,6 +3985,8 @@ class DeviceDriver {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -3620,12 +3994,16 @@ class DeviceDriver {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -3633,35 +4011,47 @@ class DeviceDriver {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3699,6 +4089,10 @@ class DeviceDriver {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3709,6 +4103,12 @@ class DeviceDriver {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3732,6 +4132,7 @@ class DeviceDriver {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3751,11 +4152,14 @@ class DeviceDriver {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3763,6 +4167,8 @@ class DeviceDriver {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3780,6 +4186,7 @@ class DeviceDriver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3825,6 +4232,7 @@ class DeviceDriver {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3868,15 +4276,20 @@ class DeviceDriver {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3917,6 +4330,7 @@ class DeviceDriver {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3951,6 +4365,7 @@ class DeviceDriver {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3982,6 +4397,7 @@ class DeviceDriver {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4008,26 +4424,37 @@ class DeviceDriver {
 interface DeviceDriverList_ConstructProps extends List_ConstructProps {
 }
 class DeviceDriverList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -4035,6 +4462,8 @@ class DeviceDriverList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -4042,11 +4471,14 @@ class DeviceDriverList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -4067,6 +4499,7 @@ class DeviceDriverList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -4076,17 +4509,20 @@ class DeviceDriverList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -4124,6 +4560,10 @@ class DeviceDriverList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4134,6 +4574,12 @@ class DeviceDriverList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4157,6 +4603,7 @@ class DeviceDriverList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4176,11 +4623,14 @@ class DeviceDriverList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4188,6 +4638,8 @@ class DeviceDriverList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4205,6 +4657,7 @@ class DeviceDriverList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4250,6 +4703,7 @@ class DeviceDriverList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4293,15 +4747,20 @@ class DeviceDriverList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4342,6 +4801,7 @@ class DeviceDriverList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4376,6 +4836,7 @@ class DeviceDriverList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4407,12 +4868,18 @@ class DeviceDriverList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4435,6 +4902,11 @@ interface DeviceLink_ConstructProps extends Entity_ConstructProps {
     target?: Device
 }
 class DeviceLink {
+    /* Properties of Libosinfo-1.0.Libosinfo.DeviceLink */
+    /**
+     * The target of the device link.
+     */
+    readonly target: Device
     /* Properties of Libosinfo-1.0.Libosinfo.Entity */
     /**
      * The unique identifier for the entity The format of identifiers
@@ -4444,10 +4916,10 @@ class DeviceLink {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.DeviceLink */
     getDriver(): string
     /**
@@ -4459,10 +4931,13 @@ class DeviceLink {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -4479,12 +4954,14 @@ class DeviceLink {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -4492,6 +4969,8 @@ class DeviceLink {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -4499,12 +4978,16 @@ class DeviceLink {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -4512,35 +4995,47 @@ class DeviceLink {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4578,6 +5073,10 @@ class DeviceLink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4588,6 +5087,12 @@ class DeviceLink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4611,6 +5116,7 @@ class DeviceLink {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4630,11 +5136,14 @@ class DeviceLink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4642,6 +5151,8 @@ class DeviceLink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4659,6 +5170,7 @@ class DeviceLink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4704,6 +5216,7 @@ class DeviceLink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4747,15 +5260,20 @@ class DeviceLink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4796,6 +5314,7 @@ class DeviceLink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4830,6 +5349,7 @@ class DeviceLink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4861,12 +5381,18 @@ class DeviceLink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::target", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::target", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -4894,11 +5420,16 @@ interface DeviceLinkFilter_ConstructProps extends Filter_ConstructProps {
     targetFilter?: Filter
 }
 class DeviceLinkFilter {
+    /* Properties of Libosinfo-1.0.Libosinfo.DeviceLinkFilter */
+    /**
+     * The operating system to be deployed
+     */
+    readonly targetFilter: Filter
     /* Fields of Libosinfo-1.0.Libosinfo.Filter */
-    readonly parentInstance: GObject.Object
-    readonly priv: FilterPrivate
+    parentInstance: GObject.Object
+    priv: FilterPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.DeviceLinkFilter */
     /**
      * Retrieve the filter used to match against the target of
@@ -4912,11 +5443,14 @@ class DeviceLinkFilter {
      * If multiple constraints are added for the same
      * `propName,` with different values, the entity have
      * all property values.
+     * @param propName the name of the parameter key
+     * @param propVal the required property value
      */
     addConstraint(propName: string, propVal: string): void
     /**
      * Remove all filter constraints for the matching property
      * name.
+     * @param propName name of the key to remove constraints for
      */
     clearConstraint(propName: string): void
     /**
@@ -4929,10 +5463,12 @@ class DeviceLinkFilter {
     getConstraintKeys(): string[]
     /**
      * Get a list values for filter constraints with the named key
+     * @param propName the name of the key
      */
     getConstraintValues(propName: string): string[]
     /**
      * Determine of an entity matches a filter
+     * @param entity an entity to query
      */
     matches(entity: Entity): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -4970,6 +5506,10 @@ class DeviceLinkFilter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4980,6 +5520,12 @@ class DeviceLinkFilter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5003,6 +5549,7 @@ class DeviceLinkFilter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5022,11 +5569,14 @@ class DeviceLinkFilter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5034,6 +5584,8 @@ class DeviceLinkFilter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5051,6 +5603,7 @@ class DeviceLinkFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5096,6 +5649,7 @@ class DeviceLinkFilter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5139,15 +5693,20 @@ class DeviceLinkFilter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5188,6 +5747,7 @@ class DeviceLinkFilter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5222,6 +5782,7 @@ class DeviceLinkFilter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5253,12 +5814,18 @@ class DeviceLinkFilter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::target-filter", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::target-filter", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::target-filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::target-filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::target-filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5278,14 +5845,22 @@ class DeviceLinkFilter {
 interface DeviceLinkList_ConstructProps extends List_ConstructProps {
 }
 class DeviceLinkList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.DeviceLinkList */
     /**
      * Get all devices matching a given filter
+     * @param filter an optional device property filter
      */
     getDevices(filter?: Filter | null): DeviceList
     /**
@@ -5296,33 +5871,40 @@ class DeviceLinkList {
     /**
      * Construct a new devicelink list that is filled with devicelinks
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): DeviceLinkList
     /**
      * Construct a new devicelink list that is filled with only the
      * devicelinks that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second devicelink list to copy
      */
     newIntersection(sourceTwo: DeviceLinkList): DeviceLinkList
     /**
      * Construct a new devicelink list that is filled with all the
      * devicelinks that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second devicelink list to copy
      */
     newUnion(sourceTwo: DeviceLinkList): DeviceLinkList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -5330,6 +5912,8 @@ class DeviceLinkList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -5337,11 +5921,14 @@ class DeviceLinkList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -5362,6 +5949,7 @@ class DeviceLinkList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -5371,17 +5959,20 @@ class DeviceLinkList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -5419,6 +6010,10 @@ class DeviceLinkList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5429,6 +6024,12 @@ class DeviceLinkList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5452,6 +6053,7 @@ class DeviceLinkList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5471,11 +6073,14 @@ class DeviceLinkList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5483,6 +6088,8 @@ class DeviceLinkList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5500,6 +6107,7 @@ class DeviceLinkList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5545,6 +6153,7 @@ class DeviceLinkList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5588,15 +6197,20 @@ class DeviceLinkList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5637,6 +6251,7 @@ class DeviceLinkList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5671,6 +6286,7 @@ class DeviceLinkList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5702,12 +6318,18 @@ class DeviceLinkList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5725,11 +6347,18 @@ class DeviceLinkList {
 interface DeviceList_ConstructProps extends List_ConstructProps {
 }
 class DeviceList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.DeviceList */
     /**
      * Construct a new device list that is filled with devices
@@ -5739,33 +6368,40 @@ class DeviceList {
     /**
      * Construct a new device list that is filled with devices
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): DeviceList
     /**
      * Construct a new device list that is filled with only the
      * devices that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second device list to copy
      */
     newIntersection(sourceTwo: DeviceList): DeviceList
     /**
      * Construct a new device list that is filled with all the
      * devices that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second device list to copy
      */
     newUnion(sourceTwo: DeviceList): DeviceList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -5773,6 +6409,8 @@ class DeviceList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -5780,11 +6418,14 @@ class DeviceList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -5805,6 +6446,7 @@ class DeviceList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -5814,17 +6456,20 @@ class DeviceList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -5862,6 +6507,10 @@ class DeviceList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5872,6 +6521,12 @@ class DeviceList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5895,6 +6550,7 @@ class DeviceList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5914,11 +6570,14 @@ class DeviceList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5926,6 +6585,8 @@ class DeviceList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5943,6 +6604,7 @@ class DeviceList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5988,6 +6650,7 @@ class DeviceList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6031,15 +6694,20 @@ class DeviceList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6080,6 +6748,7 @@ class DeviceList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6114,6 +6783,7 @@ class DeviceList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6145,12 +6815,18 @@ class DeviceList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6185,16 +6861,19 @@ class Entity {
      */
     id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
     /**
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -6211,12 +6890,14 @@ class Entity {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -6224,6 +6905,8 @@ class Entity {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -6231,12 +6914,16 @@ class Entity {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -6244,35 +6931,47 @@ class Entity {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6310,6 +7009,10 @@ class Entity {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6320,6 +7023,12 @@ class Entity {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6343,6 +7052,7 @@ class Entity {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6362,11 +7072,14 @@ class Entity {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6374,6 +7087,8 @@ class Entity {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6391,6 +7106,7 @@ class Entity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6436,6 +7152,7 @@ class Entity {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6479,15 +7196,20 @@ class Entity {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6528,6 +7250,7 @@ class Entity {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6562,6 +7285,7 @@ class Entity {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6593,6 +7317,7 @@ class Entity {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6620,7 +7345,7 @@ interface Filter_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Filter {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Filter */
     /**
      * Adds a constraint that requires the entity to have
@@ -6628,11 +7353,14 @@ class Filter {
      * If multiple constraints are added for the same
      * `propName,` with different values, the entity have
      * all property values.
+     * @param propName the name of the parameter key
+     * @param propVal the required property value
      */
     addConstraint(propName: string, propVal: string): void
     /**
      * Remove all filter constraints for the matching property
      * name.
+     * @param propName name of the key to remove constraints for
      */
     clearConstraint(propName: string): void
     /**
@@ -6645,10 +7373,12 @@ class Filter {
     getConstraintKeys(): string[]
     /**
      * Get a list values for filter constraints with the named key
+     * @param propName the name of the key
      */
     getConstraintValues(propName: string): string[]
     /**
      * Determine of an entity matches a filter
+     * @param entity an entity to query
      */
     matches(entity: Entity): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6686,6 +7416,10 @@ class Filter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6696,6 +7430,12 @@ class Filter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6719,6 +7459,7 @@ class Filter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6738,11 +7479,14 @@ class Filter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6750,6 +7494,8 @@ class Filter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6767,6 +7513,7 @@ class Filter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6812,6 +7559,7 @@ class Filter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6855,15 +7603,20 @@ class Filter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6904,6 +7657,7 @@ class Filter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6938,6 +7692,7 @@ class Filter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6969,6 +7724,7 @@ class Filter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7013,10 +7769,10 @@ class Firmware {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Firmware */
     /**
      * Retrieves the target hardware architecture of the OS `firmware` provides.
@@ -7035,10 +7791,13 @@ class Firmware {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -7055,12 +7814,14 @@ class Firmware {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -7068,6 +7829,8 @@ class Firmware {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -7075,12 +7838,16 @@ class Firmware {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -7088,35 +7855,47 @@ class Firmware {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7154,6 +7933,10 @@ class Firmware {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7164,6 +7947,12 @@ class Firmware {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7187,6 +7976,7 @@ class Firmware {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7206,11 +7996,14 @@ class Firmware {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7218,6 +8011,8 @@ class Firmware {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7235,6 +8030,7 @@ class Firmware {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7280,6 +8076,7 @@ class Firmware {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7323,15 +8120,20 @@ class Firmware {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7372,6 +8174,7 @@ class Firmware {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7406,6 +8209,7 @@ class Firmware {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7437,6 +8241,7 @@ class Firmware {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7475,26 +8280,37 @@ class Firmware {
 interface FirmwareList_ConstructProps extends List_ConstructProps {
 }
 class FirmwareList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -7502,6 +8318,8 @@ class FirmwareList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -7509,11 +8327,14 @@ class FirmwareList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -7534,6 +8355,7 @@ class FirmwareList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -7543,17 +8365,20 @@ class FirmwareList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -7591,6 +8416,10 @@ class FirmwareList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7601,6 +8430,12 @@ class FirmwareList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7624,6 +8459,7 @@ class FirmwareList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7643,11 +8479,14 @@ class FirmwareList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7655,6 +8494,8 @@ class FirmwareList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7672,6 +8513,7 @@ class FirmwareList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7717,6 +8559,7 @@ class FirmwareList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7760,15 +8603,20 @@ class FirmwareList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7809,6 +8657,7 @@ class FirmwareList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7843,6 +8692,7 @@ class FirmwareList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7874,12 +8724,18 @@ class FirmwareList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7940,10 +8796,10 @@ class Image {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Image */
     /**
      * Retrieves the target hardware architecture of the OS `image` provides.
@@ -7968,6 +8824,7 @@ class Image {
     getUrl(): string
     /**
      * Sets the #OsinfoOs associated to the #OsinfoImage instance.
+     * @param os an #OsinfoOs instance
      */
     setOs(os: Os): void
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
@@ -7975,10 +8832,13 @@ class Image {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -7995,12 +8855,14 @@ class Image {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -8008,6 +8870,8 @@ class Image {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -8015,12 +8879,16 @@ class Image {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -8028,35 +8896,47 @@ class Image {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8094,6 +8974,10 @@ class Image {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8104,6 +8988,12 @@ class Image {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8127,6 +9017,7 @@ class Image {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8146,11 +9037,14 @@ class Image {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8158,6 +9052,8 @@ class Image {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8175,6 +9071,7 @@ class Image {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8220,6 +9117,7 @@ class Image {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8263,15 +9161,20 @@ class Image {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8312,6 +9215,7 @@ class Image {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8346,6 +9250,7 @@ class Image {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8377,6 +9282,7 @@ class Image {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8425,26 +9331,37 @@ class Image {
 interface ImageList_ConstructProps extends List_ConstructProps {
 }
 class ImageList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -8452,6 +9369,8 @@ class ImageList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -8459,11 +9378,14 @@ class ImageList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -8484,6 +9406,7 @@ class ImageList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -8493,17 +9416,20 @@ class ImageList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -8541,6 +9467,10 @@ class ImageList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8551,6 +9481,12 @@ class ImageList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8574,6 +9510,7 @@ class ImageList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8593,11 +9530,14 @@ class ImageList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8605,6 +9545,8 @@ class ImageList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8622,6 +9564,7 @@ class ImageList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8667,6 +9610,7 @@ class ImageList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8710,15 +9654,20 @@ class ImageList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8759,6 +9708,7 @@ class ImageList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8793,6 +9743,7 @@ class ImageList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8824,12 +9775,18 @@ class ImageList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8856,10 +9813,10 @@ class InstallConfig {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.InstallConfig */
     getAdminPassword(): string
     getAvatarDisk(): string
@@ -8890,6 +9847,7 @@ class InstallConfig {
     getUserRealname(): string
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_ADMIN_PASSWORD parameter
+     * @param password the administrator password to be set
      */
     setAdminPassword(password: string): void
     /**
@@ -8897,6 +9855,7 @@ class InstallConfig {
      * 
      * Please read documentation on #osinfo_install_config_set_target_disk() for
      * explanation on the format of `disk` string.
+     * @param disk the avatar disk
      */
     setAvatarDisk(disk: string): void
     /**
@@ -8909,18 +9868,21 @@ class InstallConfig {
      * 
      * Also note that in case of #OSINFO_PATH_FORMAT_DOS, the drive/disk letter
      * and the leading ':' must not be included in the path.
+     * @param location new location
      */
     setAvatarLocation(location: string): void
     /**
      * If a script requires drivers to be signed, this function can be used to
      * disable that security feature. WARNING: Disabling driver signing may very
      * well mean disabling it permanently.
+     * @param signing boolean value
      */
     setDriverSigning(signing: boolean): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_HARDWARE_ARCH parameter.
      * 
      * The list of valid architectures are part of osinfo.rng schema
+     * @param arch the hardware architecture
      */
     setHardwareArch(arch: string): void
     /**
@@ -8932,11 +9894,13 @@ class InstallConfig {
      * characters long and make sure that it does not contain any characters other
      * than ASCII alphanumeric and '-'. Otherwise unattended installation might
      * fail.
+     * @param hostname the desired hostname
      */
     setHostname(hostname: string): void
     /**
      * When performing a tree based installation the script will need the installation
      * URL to be set, whenever the installation is performed from a non canonical place.
+     * @param url the URL used to perform the installation
      */
     setInstallationUrl(url: string): void
     /**
@@ -8944,6 +9908,7 @@ class InstallConfig {
      * 
      * The expected format of this string is the same as
      * #osinfo_install_config_set_l10n_language function's 'language' parameter.
+     * @param keyboard the keyboard
      */
     setL10nKeyboard(keyboard: string): void
     /**
@@ -8956,12 +9921,14 @@ class InstallConfig {
      * Encoding and variant are (at least for now) not supported. For example,
      * 'pt_BR' is accepted is accepted as the language codes for Brazilian Portuguese
      * but 'pt_BR.utf8' is not.
+     * @param language the language
      */
     setL10nLanguage(language: string): void
     /**
      * Set the #OSINFO_INSTALL_CONFIG_PROP_L10N_TIMEZONE parameter.
      * 
      * The expected format of this string is the tzdata names standard.
+     * @param tz the timezone
      */
     setL10nTimezone(tz: string): void
     /**
@@ -8974,6 +9941,7 @@ class InstallConfig {
      * NOTE: Not every install script supports post-installation of drivers. Use
      * #osinfo_install_script_get_can_post_install_drivers() to find out if an
      * install script supports it.
+     * @param disk the target disk
      */
     setPostInstallDriversDisk(disk: string): void
     /**
@@ -8986,6 +9954,7 @@ class InstallConfig {
      * NOTE: Not every install script supports post-installation of drivers. Use
      * #osinfo_install_script_get_can_post_install_drivers() to find out if an
      * install script supports it.
+     * @param location the location of avatar
      */
     setPostInstallDriversLocation(location: string): void
     /**
@@ -9003,6 +9972,7 @@ class InstallConfig {
      * 
      * NOTE: Microsoft Windows XP requires pre-installation driver files to be
      * present in the script disk under the toplevel directory.
+     * @param disk the disk
      */
     setPreInstallDriversDisk(disk: string): void
     /**
@@ -9013,14 +9983,17 @@ class InstallConfig {
      * 
      * Please read documentation on #osinfo_install_config_set_avatar_location() for
      * explanation on the format of `location` string.
+     * @param location the location
      */
     setPreInstallDriversLocation(location: string): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_REG_LOGIN parameter.
+     * @param name the registration login
      */
     setRegLogin(name: string): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_REG_PASSWORD parameter.
+     * @param password the registration password
      */
     setRegPassword(password: string): void
     setRegProductKey(key: string): void
@@ -9029,6 +10002,7 @@ class InstallConfig {
      * 
      * Please read documentation on #osinfo_install_config_set_target_disk() for
      * explanation on the format of `disk` string.
+     * @param disk the disk
      */
     setScriptDisk(disk: string): void
     /**
@@ -9040,26 +10014,32 @@ class InstallConfig {
      * does the script expects this string to be in. In case of
      * #OSINFO_PATH_FORMAT_UNIX unix device node names are expected, e.g "/dev/fd0".
      * In case of #OSINFO_PATH_FORMAT_DOS drive letters are expected, e.g "A".
+     * @param disk the target disk
      */
     setTargetDisk(disk: string): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_ADMIN parameter.
+     * @param admin whether the user should be set as administrator or not
      */
     setUserAdministrator(admin: boolean): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_AUTOLOGIN parameter.
+     * @param autologin whether autologin should be set for the user or not
      */
     setUserAutologin(autologin: boolean): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_LOGIN parameter.
+     * @param username the chosen username for the user log into the system
      */
     setUserLogin(username: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_USER_PASSWORD parameter
+     * @param password the user password to be set
      */
     setUserPassword(password: string): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_REALNAME parameter.
+     * @param name the user real name to be displayed
      */
     setUserRealname(name: string): void
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
@@ -9067,10 +10047,13 @@ class InstallConfig {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -9087,12 +10070,14 @@ class InstallConfig {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -9100,6 +10085,8 @@ class InstallConfig {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -9107,12 +10094,16 @@ class InstallConfig {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -9120,35 +10111,47 @@ class InstallConfig {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9186,6 +10189,10 @@ class InstallConfig {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9196,6 +10203,12 @@ class InstallConfig {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9219,6 +10232,7 @@ class InstallConfig {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9238,11 +10252,14 @@ class InstallConfig {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9250,6 +10267,8 @@ class InstallConfig {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9267,6 +10286,7 @@ class InstallConfig {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9312,6 +10332,7 @@ class InstallConfig {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9355,15 +10376,20 @@ class InstallConfig {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9404,6 +10430,7 @@ class InstallConfig {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9438,6 +10465,7 @@ class InstallConfig {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9469,6 +10497,7 @@ class InstallConfig {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9509,6 +10538,10 @@ interface InstallConfigParam_ConstructProps extends Entity_ConstructProps {
 class InstallConfigParam {
     /* Properties of Libosinfo-1.0.Libosinfo.InstallConfigParam */
     /**
+     * The name of the configuration parameter.
+     */
+    readonly name: string
+    /**
      * The policy of the configuration parameter.
      */
     readonly policy: InstallConfigParamPolicy
@@ -9526,10 +10559,10 @@ class InstallConfigParam {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.InstallConfigParam */
     getName(): string
     getPolicy(): InstallConfigParamPolicy
@@ -9540,6 +10573,7 @@ class InstallConfigParam {
      * After a call to osinfo_install_config_param_set_value_map(), `datamap` will
      * be used to transform values set for this parameter to OS-specific
      * values. A NULL `datamap` will disable transformations.
+     * @param datamap a #OsinfoDatamap to transform values this parameter is set to, or NULL to disable transformations for this parameter
      */
     setValueMap(datamap: Datamap): void
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
@@ -9547,10 +10581,13 @@ class InstallConfigParam {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -9567,12 +10604,14 @@ class InstallConfigParam {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -9580,6 +10619,8 @@ class InstallConfigParam {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -9587,12 +10628,16 @@ class InstallConfigParam {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -9600,35 +10645,47 @@ class InstallConfigParam {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9666,6 +10723,10 @@ class InstallConfigParam {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9676,6 +10737,12 @@ class InstallConfigParam {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9699,6 +10766,7 @@ class InstallConfigParam {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9718,11 +10786,14 @@ class InstallConfigParam {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9730,6 +10801,8 @@ class InstallConfigParam {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9747,6 +10820,7 @@ class InstallConfigParam {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9792,6 +10866,7 @@ class InstallConfigParam {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9835,15 +10910,20 @@ class InstallConfigParam {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9884,6 +10964,7 @@ class InstallConfigParam {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9918,6 +10999,7 @@ class InstallConfigParam {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9949,12 +11031,18 @@ class InstallConfigParam {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::policy", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::policy", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::policy", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -9987,26 +11075,37 @@ class InstallConfigParam {
 interface InstallConfigParamList_ConstructProps extends List_ConstructProps {
 }
 class InstallConfigParamList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -10014,6 +11113,8 @@ class InstallConfigParamList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -10021,11 +11122,14 @@ class InstallConfigParamList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -10046,6 +11150,7 @@ class InstallConfigParamList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -10055,17 +11160,20 @@ class InstallConfigParamList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -10103,6 +11211,10 @@ class InstallConfigParamList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10113,6 +11225,12 @@ class InstallConfigParamList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10136,6 +11254,7 @@ class InstallConfigParamList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10155,11 +11274,14 @@ class InstallConfigParamList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10167,6 +11289,8 @@ class InstallConfigParamList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10184,6 +11308,7 @@ class InstallConfigParamList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10229,6 +11354,7 @@ class InstallConfigParamList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10272,15 +11398,20 @@ class InstallConfigParamList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10321,6 +11452,7 @@ class InstallConfigParamList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10355,6 +11487,7 @@ class InstallConfigParamList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10386,12 +11519,18 @@ class InstallConfigParamList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -10420,6 +11559,9 @@ class InstallScript {
     readonly pathFormat: PathFormat
     preferredInjectionMethod: InstallScriptInjectionMethod
     readonly productKeyFormat: string
+    readonly profile: string
+    readonly templateData: string
+    readonly templateUri: string
     /* Properties of Libosinfo-1.0.Libosinfo.Entity */
     /**
      * The unique identifier for the entity The format of identifiers
@@ -10429,13 +11571,16 @@ class InstallScript {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.InstallScript */
     /**
      * Creates an install script.
+     * @param os the os
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
      */
     generate(os: Os, config: InstallConfig, cancellable?: Gio.Cancellable | null): string
     /**
@@ -10445,6 +11590,10 @@ class InstallScript {
      * 
      * If you are generating the script for a specific media, it is recommended that
      * you use #osinfo_install_script_generate_for_media_async() instead.
+     * @param os the os
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
      */
     generateAsync(os: Os, config: InstallConfig, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -10461,6 +11610,8 @@ class InstallScript {
      * If you are generating the command line for a specific tree, it is
      * recommended that you use
      * #osinfo_install_script_generate_command_line_for_tree() instead.
+     * @param os the os entity
+     * @param config the install script config
      */
     generateCommandLine(os: Os, config: InstallConfig): string
     /**
@@ -10472,6 +11623,8 @@ class InstallScript {
      * 
      * The media `media` must have been identified successfully using
      * #osinfo_db_identify_media() before calling this function.
+     * @param media the media
+     * @param config the install script config
      */
     generateCommandLineForMedia(media: Media, config: InstallConfig): string
     /**
@@ -10483,35 +11636,55 @@ class InstallScript {
      * 
      * The tree `tree` must have been identified successfully using
      * #osinfo_db_identify_tree() before calling this function.
+     * @param tree the tree
+     * @param config the install script config
      */
     generateCommandLineForTree(tree: Tree, config: InstallConfig): string
     generateFinish(res: Gio.AsyncResult): string
     /**
      * Creates an install script. The media `media` must have been identified
      * successfully using #osinfo_db_identify_media() before calling this function.
+     * @param media the media
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
      */
     generateForMedia(media: Media, config: InstallConfig, cancellable?: Gio.Cancellable | null): string
     /**
      * Asynchronous variant of #osinfo_install_script_generate_for_media(). From the
      * callback, call #osinfo_install_script_generate_for_media_finish() to
      * conclude this call and get the generated script.
+     * @param media the media
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
      */
     generateForMediaAsync(media: Media, config: InstallConfig, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     generateForMediaFinish(res: Gio.AsyncResult): string
     /**
      * Creates an install script. The tree `tree` must have been identified
      * successfully using #osinfo_db_identify_tree() before calling this function.
+     * @param tree the tree
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
      */
     generateForTree(tree: Tree, config: InstallConfig, cancellable?: Gio.Cancellable | null): string
     /**
      * Asynchronous variant of #osinfo_install_script_generate_for_tree(). From the
      * callback, call #osinfo_install_script_generate_for_tree_finish() to
      * conclude this call and get the generated script.
+     * @param tree the tree
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
      */
     generateForTreeAsync(tree: Tree, config: InstallConfig, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     generateForTreeFinish(res: Gio.AsyncResult): string
     /**
      * Creates an install script that is written to the returned file.
+     * @param os the os entity
+     * @param config the install script config
+     * @param outputDir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
      */
     generateOutput(os: Os, config: InstallConfig, outputDir: Gio.File, cancellable?: Gio.Cancellable | null): Gio.File
     /**
@@ -10521,11 +11694,20 @@ class InstallScript {
      * 
      * If you are generating the script for a specific media, it is recommended that
      * you use #osinfo_install_script_generate_output_for_media_async() instead.
+     * @param os the os
+     * @param config the install script config
+     * @param outputDir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
      */
     generateOutputAsync(os: Os, config: InstallConfig, outputDir: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     generateOutputFinish(res: Gio.AsyncResult): Gio.File
     /**
      * Creates an install script that is written to the returned file.
+     * @param media the media
+     * @param config the install script config
+     * @param outputDir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
      */
     generateOutputForMedia(media: Media, config: InstallConfig, outputDir: Gio.File, cancellable?: Gio.Cancellable | null): Gio.File
     /**
@@ -10533,11 +11715,20 @@ class InstallScript {
      * From the callback, call
      * #osinfo_install_script_generate_output_for_media_finish() to conclude this
      * call and get the generated file.
+     * @param media the media
+     * @param config the install script config
+     * @param outputDir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
      */
     generateOutputForMediaAsync(media: Media, config: InstallConfig, outputDir: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     generateOutputForMediaFinish(res: Gio.AsyncResult): Gio.File
     /**
      * Creates an install script that is written to the returned file.
+     * @param tree the tree
+     * @param config the install script config
+     * @param outputDir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
      */
     generateOutputForTree(tree: Tree, config: InstallConfig, outputDir: Gio.File, cancellable?: Gio.Cancellable | null): Gio.File
     /**
@@ -10545,6 +11736,11 @@ class InstallScript {
      * From the callback, call
      * #osinfo_install_script_generate_output_for_tree_finish() to conclude this
      * call and get the generated file.
+     * @param tree the tree
+     * @param config the install script config
+     * @param outputDir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
      */
     generateOutputForTreeAsync(tree: Tree, config: InstallConfig, outputDir: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     generateOutputForTreeFinish(res: Gio.AsyncResult): Gio.File
@@ -10569,6 +11765,7 @@ class InstallScript {
     getCanPreInstallDrivers(): boolean
     /**
      * Get a config param from the config param's list
+     * @param name name of the parameter
      */
     getConfigParam(name: string): InstallConfigParam
     /**
@@ -10657,22 +11854,27 @@ class InstallScript {
      * Returns whether the `script` has the `config_param` searched or not.
      * 
      * This code assumes that the 'id' and 'name' entity properties are the same.
+     * @param configParam an #OsinfoInstallConfigParam
      */
     hasConfigParam(configParam: InstallConfigParam): boolean
     /**
      * Returns whether the `script` has a configuration parameter matching `name` or not.
+     * @param name the configuration parameter name
      */
     hasConfigParamName(name: string): boolean
     /**
      * Set the installation source to be used with the `script`.
+     * @param source one of the installation sources: OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_MEDIA, OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_NETWORK
      */
     setInstallationSource(source: InstallScriptInstallationSource): void
     /**
      * Mind that not all installers support any name for the installer scripts.
+     * @param prefix a prefix to be added to the file generated
      */
     setOutputPrefix(prefix: string): void
     /**
      * Set the preferred injection method to be used with the `script`
+     * @param method one of the injection methods: OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_CDROM, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_FLOPPY, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_INITRD, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_WEB
      */
     setPreferredInjectionMethod(method: InstallScriptInjectionMethod): void
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
@@ -10680,10 +11882,13 @@ class InstallScript {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -10700,12 +11905,14 @@ class InstallScript {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -10713,6 +11920,8 @@ class InstallScript {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -10720,12 +11929,16 @@ class InstallScript {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -10733,35 +11946,47 @@ class InstallScript {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10799,6 +12024,10 @@ class InstallScript {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10809,6 +12038,12 @@ class InstallScript {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10832,6 +12067,7 @@ class InstallScript {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10851,11 +12087,14 @@ class InstallScript {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10863,6 +12102,8 @@ class InstallScript {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10880,6 +12121,7 @@ class InstallScript {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10925,6 +12167,7 @@ class InstallScript {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10968,15 +12211,20 @@ class InstallScript {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11017,6 +12265,7 @@ class InstallScript {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11051,6 +12300,7 @@ class InstallScript {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -11082,6 +12332,7 @@ class InstallScript {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -11113,6 +12364,21 @@ class InstallScript {
     on(sigName: "notify::product-key-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::product-key-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::product-key-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::profile", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::profile", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::template-data", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::template-data", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::template-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::template-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::template-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::template-uri", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::template-uri", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::template-uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::template-uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::template-uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -11137,11 +12403,18 @@ class InstallScript {
 interface InstallScriptList_ConstructProps extends List_ConstructProps {
 }
 class InstallScriptList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.InstallScriptList */
     /**
      * Construct a new install_script list that is filled with install_scripts
@@ -11151,33 +12424,40 @@ class InstallScriptList {
     /**
      * Construct a new install_script list that is filled with install_scripts
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): InstallScriptList
     /**
      * Construct a new install_script list that is filled with only the
      * install_scripts that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second install_script list to copy
      */
     newIntersection(sourceTwo: InstallScriptList): InstallScriptList
     /**
      * Construct a new install_script list that is filled with all the
      * install_scripts that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second install_script list to copy
      */
     newUnion(sourceTwo: InstallScriptList): InstallScriptList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -11185,6 +12465,8 @@ class InstallScriptList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -11192,11 +12474,14 @@ class InstallScriptList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -11217,6 +12502,7 @@ class InstallScriptList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -11226,17 +12512,20 @@ class InstallScriptList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -11274,6 +12563,10 @@ class InstallScriptList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11284,6 +12577,12 @@ class InstallScriptList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11307,6 +12606,7 @@ class InstallScriptList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11326,11 +12626,14 @@ class InstallScriptList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11338,6 +12641,8 @@ class InstallScriptList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11355,6 +12660,7 @@ class InstallScriptList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11400,6 +12706,7 @@ class InstallScriptList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11443,15 +12750,20 @@ class InstallScriptList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11492,6 +12804,7 @@ class InstallScriptList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11526,6 +12839,7 @@ class InstallScriptList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -11557,12 +12871,18 @@ class InstallScriptList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11587,23 +12907,34 @@ interface List_ConstructProps extends GObject.Object_ConstructProps {
     elementType?: GObject.Type
 }
 class List {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -11611,6 +12942,8 @@ class List {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -11618,11 +12951,14 @@ class List {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -11643,6 +12979,7 @@ class List {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -11652,17 +12989,20 @@ class List {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -11700,6 +13040,10 @@ class List {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11710,6 +13054,12 @@ class List {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11733,6 +13083,7 @@ class List {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11752,11 +13103,14 @@ class List {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11764,6 +13118,8 @@ class List {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11781,6 +13137,7 @@ class List {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11826,6 +13183,7 @@ class List {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -11869,15 +13227,20 @@ class List {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -11918,6 +13281,7 @@ class List {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -11952,6 +13316,7 @@ class List {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -11983,12 +13348,18 @@ class List {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -12005,7 +13376,7 @@ interface Loader_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Loader {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Loader */
     /**
      * Retrieves the database being populated
@@ -12021,6 +13392,7 @@ class Loader {
      * points to a file, that will be loaded as XML
      * Otherwise it can point to a directory which will
      * be recursively traversed, loading all files as XML.
+     * @param path the fully qualified path
      */
     processPath(path: string): void
     /**
@@ -12032,6 +13404,7 @@ class Loader {
      * points to a file, that will be loaded as XML
      * Otherwise it can point to a directory which will
      * be recursively traversed, loading all files as XML.
+     * @param uri the data source URI
      */
     processUri(uri: string): void
     /**
@@ -12073,6 +13446,10 @@ class Loader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12083,6 +13460,12 @@ class Loader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12106,6 +13489,7 @@ class Loader {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12125,11 +13509,14 @@ class Loader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12137,6 +13524,8 @@ class Loader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12154,6 +13543,7 @@ class Loader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12199,6 +13589,7 @@ class Loader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12242,15 +13633,20 @@ class Loader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12291,6 +13687,7 @@ class Loader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12325,6 +13722,7 @@ class Loader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -12356,6 +13754,7 @@ class Loader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12560,13 +13959,14 @@ class Media {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Media */
     /**
      * Adds an `script` to the specified `media`
+     * @param script an #OsinfoInstallScript instance
      */
     addInstallScript(script: InstallScript): void
     /**
@@ -12676,10 +14076,13 @@ class Media {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -12696,12 +14099,14 @@ class Media {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -12709,6 +14114,8 @@ class Media {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -12716,12 +14123,16 @@ class Media {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -12729,35 +14140,47 @@ class Media {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12795,6 +14218,10 @@ class Media {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12805,6 +14232,12 @@ class Media {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -12828,6 +14261,7 @@ class Media {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12847,11 +14281,14 @@ class Media {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12859,6 +14296,8 @@ class Media {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12876,6 +14315,7 @@ class Media {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12921,6 +14361,7 @@ class Media {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12964,15 +14405,20 @@ class Media {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13013,6 +14459,7 @@ class Media {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13047,6 +14494,7 @@ class Media {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -13078,6 +14526,7 @@ class Media {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13186,15 +14635,22 @@ class Media {
      * could be a http:// or a https:// URI or a local path.
      * 
      * NOTE: Currently this only works for ISO images/devices.
+     * @param location the location of an installation media
+     * @param cancellable a #GCancellable, or %NULL
      */
     static createFromLocation(location: string, cancellable?: Gio.Cancellable | null): Media
     /**
      * Asynchronous variant of #osinfo_media_create_from_location.
+     * @param location the location of an installation media
+     * @param priority the I/O priority of the request
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
      */
     static createFromLocationAsync(location: string, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous media object creation process started with
      * #osinfo_media_create_from_location_async.
+     * @param res a #GAsyncResult
      */
     static createFromLocationFinish(res: Gio.AsyncResult): Media
     /**
@@ -13202,15 +14658,24 @@ class Media {
      * could be a http:// or a https:// URI or a local path.
      * 
      * NOTE: Currently this only works for ISO images/devices.
+     * @param location the location of an installation media
+     * @param cancellable a #GCancellable, or %NULL
+     * @param flags An #OsinfoMediaDetectFlag, or 0.
      */
     static createFromLocationWithFlags(location: string, cancellable: Gio.Cancellable | null, flags: number): Media
     /**
      * Asynchronous variant of #osinfo_media_create_from_location_with_flags.
+     * @param location the location of an installation media
+     * @param priority the I/O priority of the request
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
+     * @param flags An #OsinfoMediaDetectFlag, or 0.
      */
     static createFromLocationWithFlagsAsync(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null, flags: number): void
     /**
      * Finishes an asynchronous media object creation process started with
      * #osinfo_media_create_from_location_async.
+     * @param res a #GAsyncResult
      */
     static createFromLocationWithFlagsFinish(res: Gio.AsyncResult): Media
     static $gtype: GObject.Type
@@ -13218,11 +14683,18 @@ class Media {
 interface MediaList_ConstructProps extends List_ConstructProps {
 }
 class MediaList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.MediaList */
     /**
      * Construct a new media list that is filled with medias
@@ -13232,33 +14704,40 @@ class MediaList {
     /**
      * Construct a new media list that is filled with medias
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): MediaList
     /**
      * Construct a new media list that is filled with only the
      * medias that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second media list to copy
      */
     newIntersection(sourceTwo: MediaList): MediaList
     /**
      * Construct a new media list that is filled with all the
      * medias that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second media list to copy
      */
     newUnion(sourceTwo: MediaList): MediaList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -13266,6 +14745,8 @@ class MediaList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -13273,11 +14754,14 @@ class MediaList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -13298,6 +14782,7 @@ class MediaList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -13307,17 +14792,20 @@ class MediaList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -13355,6 +14843,10 @@ class MediaList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13365,6 +14857,12 @@ class MediaList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13388,6 +14886,7 @@ class MediaList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13407,11 +14906,14 @@ class MediaList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13419,6 +14921,8 @@ class MediaList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13436,6 +14940,7 @@ class MediaList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13481,6 +14986,7 @@ class MediaList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13524,15 +15030,20 @@ class MediaList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13573,6 +15084,7 @@ class MediaList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13607,6 +15119,7 @@ class MediaList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -13638,12 +15151,18 @@ class MediaList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13715,60 +15234,72 @@ class Os {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Product */
-    readonly parentInstance: Entity
-    readonly priv: ProductPrivate
+    parentInstance: Entity
+    priv: ProductPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Os */
     /**
      * Associated a device with an operating system.  The
      * returned #OsinfoDeviceLink can be used to record
      * extra metadata against the link
+     * @param dev the device to associate with
      */
     addDevice(dev: Device): DeviceLink
     /**
      * Adds `driver` to the list of device drivers of operating system `os`.
+     * @param driver the device driver to add
      */
     addDeviceDriver(driver: DeviceDriver): void
     /**
      * Adds `firmware` to the list of firmwares of operating system `os`.
+     * @param firmware the firmware to add
      */
     addFirmware(firmware: Firmware): void
     /**
      * Adds an installed image `image` to operating system `os`.
+     * @param image the image to add
      */
     addImage(image: Image): void
     /**
      * Adds `script` to the list of scripts of operating system `os`.
+     * @param script the install script to add
      */
     addInstallScript(script: InstallScript): void
     /**
      * Adds `resources` to list of maximum resources of operating system `os`.
+     * @param resources the resources to add
      */
     addMaximumResources(resources: Resources): void
     /**
      * Adds installation media `media` to operating system `os`.
+     * @param media the media to add
      */
     addMedia(media: Media): void
     /**
      * Adds `resources` to list of minimum resources of operating system `os`.
+     * @param resources the resources to add
      */
     addMinimumResources(resources: Resources): void
     /**
      * Adds `resources` to list of resources needed for network installing an
      * operating system `os`.
+     * @param resources the resources to add
      */
     addNetworkInstallResources(resources: Resources): void
     /**
      * Adds `resources` to list of recommended resources of operating system `os`.
+     * @param resources the resources to add
      */
     addRecommendedResources(resources: Resources): void
     /**
      * Adds installation tree `tree` to operating system `os`.
+     * @param tree the tree to add
      */
     addTree(tree: Tree): void
     /**
      * Adds a variant `variant` to operating system `os`.
+     * @param variant the variant to add
      */
     addVariant(variant: OsVariant): void
     findInstallScript(profile: string): InstallScript
@@ -13776,12 +15307,14 @@ class Os {
      * Get all devicelinks matching a given filter but unlike
      * osinfo_os_get_device_links this function also retrieves devices from all
      * derived and cloned operating systems.
+     * @param filter an optional device property filter
      */
     getAllDeviceLinks(filter?: Filter | null): DeviceLinkList
     /**
      * Get all devices matching a given filter but unlike osinfo_os_get_devices
      * this function also retrieves devices from all derived and cloned operating
      * systems.
+     * @param filter an optional device property filter
      */
     getAllDevices(filter?: Filter | null): DeviceList
     /**
@@ -13791,6 +15324,7 @@ class Os {
     getCloudImageUsername(): string
     /**
      * Get the complete firmwares matching a given filter, including the non-supported ones.
+     * @param filter an optional firmware property filter
      */
     getCompleteFirmwareList(filter?: Filter | null): FirmwareList
     /**
@@ -13804,15 +15338,20 @@ class Os {
     /**
      * Get all devices matching a given filter. The filter
      * matches against the links, not the devices.
+     * @param filter an optional device property filter
      */
     getDeviceLinks(filter?: Filter | null): DeviceLinkList
     /**
      * Get all devices matching a given filter
+     * @param filter an optional device property filter
      */
     getDevices(filter?: Filter | null): DeviceList
     /**
      * A utility function that gets devices found from the list of devices
      * `os` supports, for which the value of `property` is `value`.
+     * @param property the property of interest
+     * @param value the required value of property `property`
+     * @param inherited Should devices from inherited and cloned OSs be included in the search.
      */
     getDevicesByProperty(property: string, value: string, inherited: boolean): DeviceList
     /**
@@ -13827,6 +15366,7 @@ class Os {
     getFamily(): string
     /**
      * Get all the supported firmwares matching a given filter
+     * @param filter an optional firmware property filter
      */
     getFirmwareList(filter?: Filter | null): FirmwareList
     /**
@@ -13875,6 +15415,8 @@ class Os {
     /* Methods of Libosinfo-1.0.Libosinfo.Product */
     /**
      * Add an association between two products
+     * @param relshp the relationship
+     * @param otherproduct the product to relate to
      */
     addRelated(relshp: ProductRelationship, otherproduct: Product): void
     getCodename(): string
@@ -13885,6 +15427,7 @@ class Os {
     /**
      * Get a list of products satisfying the requested
      * relationship
+     * @param relshp the relationship to query
      */
     getRelated(relshp: ProductRelationship): ProductList
     getReleaseDate(): GLib.Date
@@ -13901,10 +15444,13 @@ class Os {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -13921,12 +15467,14 @@ class Os {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -13934,6 +15482,8 @@ class Os {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -13941,12 +15491,16 @@ class Os {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -13954,35 +15508,47 @@ class Os {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -14020,6 +15586,10 @@ class Os {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14030,6 +15600,12 @@ class Os {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14053,6 +15629,7 @@ class Os {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14072,11 +15649,14 @@ class Os {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14084,6 +15664,8 @@ class Os {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14101,6 +15683,7 @@ class Os {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14146,6 +15729,7 @@ class Os {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14189,15 +15773,20 @@ class Os {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -14238,6 +15827,7 @@ class Os {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -14272,6 +15862,7 @@ class Os {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -14303,6 +15894,7 @@ class Os {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14381,11 +15973,18 @@ class Os {
 interface OsList_ConstructProps extends ProductList_ConstructProps {
 }
 class OsList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.ProductList */
-    readonly parentInstance: List
-    readonly priv: ProductListPrivate
+    parentInstance: List
+    priv: ProductListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.OsList */
     /**
      * Construct a new os list that is filled with oss
@@ -14395,16 +15994,19 @@ class OsList {
     /**
      * Construct a new os list that is filled with oss
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): OsList
     /**
      * Construct a new os list that is filled with only the
      * oss that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second os list to copy
      */
     newIntersection(sourceTwo: OsList): OsList
     /**
      * Construct a new os list that is filled with all the
      * oss that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second os list to copy
      */
     newUnion(sourceTwo: OsList): OsList
     /* Methods of Libosinfo-1.0.Libosinfo.ProductList */
@@ -14416,33 +16018,40 @@ class OsList {
     /**
      * Construct a new os list that is filled with oss
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): ProductList
     /**
      * Construct a new os list that is filled with only the
      * oss that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second os list to copy
      */
     newIntersection(sourceTwo: ProductList): ProductList
     /**
      * Construct a new os list that is filled with all the
      * oss that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second os list to copy
      */
     newUnion(sourceTwo: ProductList): ProductList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -14450,6 +16059,8 @@ class OsList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -14457,11 +16068,14 @@ class OsList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -14482,6 +16096,7 @@ class OsList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -14491,17 +16106,20 @@ class OsList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -14539,6 +16157,10 @@ class OsList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14549,6 +16171,12 @@ class OsList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14572,6 +16200,7 @@ class OsList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14591,11 +16220,14 @@ class OsList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14603,6 +16235,8 @@ class OsList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14620,6 +16254,7 @@ class OsList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14665,6 +16300,7 @@ class OsList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14708,15 +16344,20 @@ class OsList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -14757,6 +16398,7 @@ class OsList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -14791,6 +16433,7 @@ class OsList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -14822,12 +16465,18 @@ class OsList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -14866,10 +16515,10 @@ class OsVariant {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.OsVariant */
     /**
      * The name of the `variant`
@@ -14880,10 +16529,13 @@ class OsVariant {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -14900,12 +16552,14 @@ class OsVariant {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -14913,6 +16567,8 @@ class OsVariant {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -14920,12 +16576,16 @@ class OsVariant {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -14933,35 +16593,47 @@ class OsVariant {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -14999,6 +16671,10 @@ class OsVariant {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15009,6 +16685,12 @@ class OsVariant {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15032,6 +16714,7 @@ class OsVariant {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -15051,11 +16734,14 @@ class OsVariant {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -15063,6 +16749,8 @@ class OsVariant {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15080,6 +16768,7 @@ class OsVariant {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -15125,6 +16814,7 @@ class OsVariant {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -15168,15 +16858,20 @@ class OsVariant {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15217,6 +16912,7 @@ class OsVariant {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15251,6 +16947,7 @@ class OsVariant {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -15282,6 +16979,7 @@ class OsVariant {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15315,26 +17013,37 @@ class OsVariant {
 interface OsVariantList_ConstructProps extends List_ConstructProps {
 }
 class OsVariantList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -15342,6 +17051,8 @@ class OsVariantList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -15349,11 +17060,14 @@ class OsVariantList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -15374,6 +17088,7 @@ class OsVariantList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -15383,17 +17098,20 @@ class OsVariantList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -15431,6 +17149,10 @@ class OsVariantList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15441,6 +17163,12 @@ class OsVariantList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15464,6 +17192,7 @@ class OsVariantList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -15483,11 +17212,14 @@ class OsVariantList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -15495,6 +17227,8 @@ class OsVariantList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15512,6 +17246,7 @@ class OsVariantList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -15557,6 +17292,7 @@ class OsVariantList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -15600,15 +17336,20 @@ class OsVariantList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15649,6 +17390,7 @@ class OsVariantList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15683,6 +17425,7 @@ class OsVariantList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -15714,12 +17457,18 @@ class OsVariantList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15771,35 +17520,41 @@ class Platform {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Product */
-    readonly parentInstance: Entity
-    readonly priv: ProductPrivate
+    parentInstance: Entity
+    priv: ProductPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Platform */
     /**
      * Associate a device with a platform. The returned #OsinfoDeviceLink
      * can be used to record extra metadata against the link
+     * @param dev the device to associate
      */
     addDevice(dev: Device): DeviceLink
     /**
      * Get all platforms matching a given filter but unlike
      * osinfo_platform_get_devices this function also retrieves devices from
      * all derived and upgraded platforms.
+     * @param filter an optional device property filter
      */
     getAllDevices(filter?: Filter | null): DeviceList
     /**
      * Retrieve all the associated devices matching the filter.
      * The filter matches against the link, not the device.
+     * @param filter an optional filter
      */
     getDeviceLinks(filter?: Filter | null): DeviceLinkList
     /**
      * Retrieve all the associated devices matching the filter.
      * The filter matches against the device, not the link.
+     * @param filter an optional filter
      */
     getDevices(filter?: Filter | null): DeviceList
     /* Methods of Libosinfo-1.0.Libosinfo.Product */
     /**
      * Add an association between two products
+     * @param relshp the relationship
+     * @param otherproduct the product to relate to
      */
     addRelated(relshp: ProductRelationship, otherproduct: Product): void
     getCodename(): string
@@ -15810,6 +17565,7 @@ class Platform {
     /**
      * Get a list of products satisfying the requested
      * relationship
+     * @param relshp the relationship to query
      */
     getRelated(relshp: ProductRelationship): ProductList
     getReleaseDate(): GLib.Date
@@ -15826,10 +17582,13 @@ class Platform {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -15846,12 +17605,14 @@ class Platform {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -15859,6 +17620,8 @@ class Platform {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -15866,12 +17629,16 @@ class Platform {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -15879,35 +17646,47 @@ class Platform {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -15945,6 +17724,10 @@ class Platform {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15955,6 +17738,12 @@ class Platform {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15978,6 +17767,7 @@ class Platform {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -15997,11 +17787,14 @@ class Platform {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16009,6 +17802,8 @@ class Platform {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16026,6 +17821,7 @@ class Platform {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -16071,6 +17867,7 @@ class Platform {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -16114,15 +17911,20 @@ class Platform {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -16163,6 +17965,7 @@ class Platform {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -16197,6 +18000,7 @@ class Platform {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -16228,6 +18032,7 @@ class Platform {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -16286,11 +18091,18 @@ class Platform {
 interface PlatformList_ConstructProps extends ProductList_ConstructProps {
 }
 class PlatformList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.ProductList */
-    readonly parentInstance: List
-    readonly priv: ProductListPrivate
+    parentInstance: List
+    priv: ProductListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.PlatformList */
     /**
      * Construct a new platform list that is filled with platforms
@@ -16300,16 +18112,19 @@ class PlatformList {
     /**
      * Construct a new platform list that is filled with platforms
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): PlatformList
     /**
      * Construct a new platform list that is filled with only the
      * platforms that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second platform list to copy
      */
     newIntersection(sourceTwo: PlatformList): PlatformList
     /**
      * Construct a new platform list that is filled with all the
      * platforms that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second platform list to copy
      */
     newUnion(sourceTwo: PlatformList): PlatformList
     /* Methods of Libosinfo-1.0.Libosinfo.ProductList */
@@ -16321,33 +18136,40 @@ class PlatformList {
     /**
      * Construct a new os list that is filled with oss
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): ProductList
     /**
      * Construct a new os list that is filled with only the
      * oss that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second os list to copy
      */
     newIntersection(sourceTwo: ProductList): ProductList
     /**
      * Construct a new os list that is filled with all the
      * oss that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second os list to copy
      */
     newUnion(sourceTwo: ProductList): ProductList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -16355,6 +18177,8 @@ class PlatformList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -16362,11 +18186,14 @@ class PlatformList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -16387,6 +18214,7 @@ class PlatformList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -16396,17 +18224,20 @@ class PlatformList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -16444,6 +18275,10 @@ class PlatformList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16454,6 +18289,12 @@ class PlatformList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -16477,6 +18318,7 @@ class PlatformList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16496,11 +18338,14 @@ class PlatformList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16508,6 +18353,8 @@ class PlatformList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16525,6 +18372,7 @@ class PlatformList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -16570,6 +18418,7 @@ class PlatformList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -16613,15 +18462,20 @@ class PlatformList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -16662,6 +18516,7 @@ class PlatformList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -16696,6 +18551,7 @@ class PlatformList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -16727,12 +18583,18 @@ class PlatformList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -16786,13 +18648,15 @@ class Product {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Product */
     /**
      * Add an association between two products
+     * @param relshp the relationship
+     * @param otherproduct the product to relate to
      */
     addRelated(relshp: ProductRelationship, otherproduct: Product): void
     getCodename(): string
@@ -16803,6 +18667,7 @@ class Product {
     /**
      * Get a list of products satisfying the requested
      * relationship
+     * @param relshp the relationship to query
      */
     getRelated(relshp: ProductRelationship): ProductList
     getReleaseDate(): GLib.Date
@@ -16819,10 +18684,13 @@ class Product {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -16839,12 +18707,14 @@ class Product {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -16852,6 +18722,8 @@ class Product {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -16859,12 +18731,16 @@ class Product {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -16872,35 +18748,47 @@ class Product {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -16938,6 +18826,10 @@ class Product {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16948,6 +18840,12 @@ class Product {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -16971,6 +18869,7 @@ class Product {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16990,11 +18889,14 @@ class Product {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17002,6 +18904,8 @@ class Product {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17019,6 +18923,7 @@ class Product {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17064,6 +18969,7 @@ class Product {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17107,15 +19013,20 @@ class Product {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17156,6 +19067,7 @@ class Product {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17190,6 +19102,7 @@ class Product {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -17221,6 +19134,7 @@ class Product {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17278,21 +19192,24 @@ interface ProductFilter_ConstructProps extends Filter_ConstructProps {
 }
 class ProductFilter {
     /* Fields of Libosinfo-1.0.Libosinfo.Filter */
-    readonly parentInstance: GObject.Object
-    readonly priv: FilterPrivate
+    parentInstance: GObject.Object
+    priv: FilterPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.ProductFilter */
     /**
      * Adds a constraint that matches products which
      * have a relationship `relshp` with `product`. Multiple constraints
      * can be set for the same `relshp` or `product,` in which case
      * all must match
+     * @param relshp the relationship to filter on
+     * @param product the target product to filter on
      */
     addProductConstraint(relshp: ProductRelationship, product: Product): number
     addSupportDateConstraint(when: GLib.Date): void
     /**
      * Remove all constraints for the relationship `relshp`
+     * @param relshp the relationship to clear
      */
     clearProductConstraint(relshp: ProductRelationship): void
     /**
@@ -17303,6 +19220,7 @@ class ProductFilter {
      * Retrieve a list of all operating systems that are
      * the target of constraint for the  relationship
      * `relshp`.
+     * @param relshp a relationship to query
      */
     getProductConstraintValues(relshp: ProductRelationship): Product[]
     /* Methods of Libosinfo-1.0.Libosinfo.Filter */
@@ -17312,11 +19230,14 @@ class ProductFilter {
      * If multiple constraints are added for the same
      * `propName,` with different values, the entity have
      * all property values.
+     * @param propName the name of the parameter key
+     * @param propVal the required property value
      */
     addConstraint(propName: string, propVal: string): void
     /**
      * Remove all filter constraints for the matching property
      * name.
+     * @param propName name of the key to remove constraints for
      */
     clearConstraint(propName: string): void
     /**
@@ -17329,10 +19250,12 @@ class ProductFilter {
     getConstraintKeys(): string[]
     /**
      * Get a list values for filter constraints with the named key
+     * @param propName the name of the key
      */
     getConstraintValues(propName: string): string[]
     /**
      * Determine of an entity matches a filter
+     * @param entity an entity to query
      */
     matches(entity: Entity): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -17370,6 +19293,10 @@ class ProductFilter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17380,6 +19307,12 @@ class ProductFilter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17403,6 +19336,7 @@ class ProductFilter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17422,11 +19356,14 @@ class ProductFilter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17434,6 +19371,8 @@ class ProductFilter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17451,6 +19390,7 @@ class ProductFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17496,6 +19436,7 @@ class ProductFilter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17539,15 +19480,20 @@ class ProductFilter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17588,6 +19534,7 @@ class ProductFilter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17622,6 +19569,7 @@ class ProductFilter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -17653,6 +19601,7 @@ class ProductFilter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17678,11 +19627,18 @@ class ProductFilter {
 interface ProductList_ConstructProps extends List_ConstructProps {
 }
 class ProductList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.ProductList */
     /**
      * Construct a new os list that is filled with oss
@@ -17692,33 +19648,40 @@ class ProductList {
     /**
      * Construct a new os list that is filled with oss
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): ProductList
     /**
      * Construct a new os list that is filled with only the
      * oss that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second os list to copy
      */
     newIntersection(sourceTwo: ProductList): ProductList
     /**
      * Construct a new os list that is filled with all the
      * oss that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second os list to copy
      */
     newUnion(sourceTwo: ProductList): ProductList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -17726,6 +19689,8 @@ class ProductList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -17733,11 +19698,14 @@ class ProductList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -17758,6 +19726,7 @@ class ProductList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -17767,17 +19736,20 @@ class ProductList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -17815,6 +19787,10 @@ class ProductList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17825,6 +19801,12 @@ class ProductList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17848,6 +19830,7 @@ class ProductList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17867,11 +19850,14 @@ class ProductList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17879,6 +19865,8 @@ class ProductList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17896,6 +19884,7 @@ class ProductList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17941,6 +19930,7 @@ class ProductList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17984,15 +19974,20 @@ class ProductList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18033,6 +20028,7 @@ class ProductList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18067,6 +20063,7 @@ class ProductList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -18098,12 +20095,18 @@ class ProductList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -18144,6 +20147,10 @@ interface Resources_ConstructProps extends Entity_ConstructProps {
 class Resources {
     /* Properties of Libosinfo-1.0.Libosinfo.Resources */
     /**
+     * The target hardware architecture to which these resources applies.
+     */
+    readonly architecture: string
+    /**
      * The CPU frequency in hertz (Hz).
      */
     cpu: number
@@ -18168,10 +20175,10 @@ class Resources {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Resources */
     /**
      * Retrieves the target hardware architecture to which `resources` applies. Some
@@ -18201,18 +20208,22 @@ class Resources {
     getStorage(): number
     /**
      * Sets the CPU frequency.
+     * @param cpu the CPU frequency in hertz (Hz)
      */
     setCpu(cpu: number): void
     /**
      * Sets the number of CPUs.
+     * @param nCpus the number of CPUs
      */
     setNCpus(nCpus: number): void
     /**
      * Sets the amount of RAM in bytes.
+     * @param ram the amount of ram in bytes
      */
     setRam(ram: number): void
     /**
      * Sets the amount of storage space.
+     * @param storage the amount of storage in bytes
      */
     setStorage(storage: number): void
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
@@ -18220,10 +20231,13 @@ class Resources {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -18240,12 +20254,14 @@ class Resources {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -18253,6 +20269,8 @@ class Resources {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -18260,12 +20278,16 @@ class Resources {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -18273,35 +20295,47 @@ class Resources {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -18339,6 +20373,10 @@ class Resources {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18349,6 +20387,12 @@ class Resources {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18372,6 +20416,7 @@ class Resources {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18391,11 +20436,14 @@ class Resources {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18403,6 +20451,8 @@ class Resources {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18420,6 +20470,7 @@ class Resources {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18465,6 +20516,7 @@ class Resources {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18508,15 +20560,20 @@ class Resources {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18557,6 +20614,7 @@ class Resources {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18591,6 +20649,7 @@ class Resources {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -18622,12 +20681,18 @@ class Resources {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::architecture", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::architecture", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::architecture", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::architecture", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::architecture", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::cpu", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cpu", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::cpu", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -18670,11 +20735,18 @@ class Resources {
 interface ResourcesList_ConstructProps extends List_ConstructProps {
 }
 class ResourcesList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.ResourcesList */
     /**
      * Construct a new resources list that is filled with resources instances
@@ -18684,33 +20756,40 @@ class ResourcesList {
     /**
      * Construct a new resources list that is filled with resources instances
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): ResourcesList
     /**
      * Construct a new resources list that is filled with only the
      * resources instances that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second resources list to copy
      */
     newIntersection(sourceTwo: ResourcesList): ResourcesList
     /**
      * Construct a new resources list that is filled with all the
      * resources instances that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second resources list to copy
      */
     newUnion(sourceTwo: ResourcesList): ResourcesList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -18718,6 +20797,8 @@ class ResourcesList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -18725,11 +20806,14 @@ class ResourcesList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -18750,6 +20834,7 @@ class ResourcesList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -18759,17 +20844,20 @@ class ResourcesList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -18807,6 +20895,10 @@ class ResourcesList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18817,6 +20909,12 @@ class ResourcesList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18840,6 +20938,7 @@ class ResourcesList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18859,11 +20958,14 @@ class ResourcesList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18871,6 +20973,8 @@ class ResourcesList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18888,6 +20992,7 @@ class ResourcesList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18933,6 +21038,7 @@ class ResourcesList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18976,15 +21082,20 @@ class ResourcesList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19025,6 +21136,7 @@ class ResourcesList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19059,6 +21171,7 @@ class ResourcesList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -19090,12 +21203,18 @@ class ResourcesList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -19218,10 +21337,10 @@ class Tree {
      */
     id: string
     /* Fields of Libosinfo-1.0.Libosinfo.Entity */
-    readonly parentInstance: GObject.Object
-    readonly priv: EntityPrivate
+    parentInstance: GObject.Object
+    priv: EntityPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.Tree */
     /**
      * Retrieves the target hardware architecture of the OS `tree` provides.
@@ -19282,6 +21401,7 @@ class Tree {
     getUrl(): string
     /**
      * Sets the #OsinfoOs associated to the #OsinfoTree instance.
+     * @param os an #OsinfoOs instance
      */
     setOs(os: Os): void
     /* Methods of Libosinfo-1.0.Libosinfo.Entity */
@@ -19289,10 +21409,13 @@ class Tree {
      * Adds a new parameter against the entity. A key can have multiple
      * values associated. Thus repeated calls with the same key will
      * build up a list of possible values.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
+     * @param key the name of the key
      */
     clearParam(key: string): void
     /**
@@ -19309,12 +21432,14 @@ class Tree {
      * Retrieve the parameter value associated with a named key. If
      * multiple values are stored against the key, only the first
      * value is returned. If no value is associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, FALSE is returned
+     * @param key the name of the key
      */
     getParamValueBoolean(key: string): boolean
     /**
@@ -19322,6 +21447,8 @@ class Tree {
      * boolean. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
@@ -19329,12 +21456,16 @@ class Tree {
      * enum value. If multiple values are stored against the key, only
      * the first value is returned. If no value is associated, the
      * `default_value` is returned.
+     * @param key the name of the key
+     * @param enumType the enum type
+     * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      */
     getParamValueEnum(key: string, enumType: GObject.Type, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, -1 is returned.
+     * @param key the name of the key
      */
     getParamValueInt64(key: string): number
     /**
@@ -19342,35 +21473,47 @@ class Tree {
      * int64. If multiple values are stored against the key, only the
      * first value is returned. If no value is associated, `default_value`
      * is returned.
+     * @param key the name of the key
+     * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      */
     getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
+     * @param key the name of the key
      */
     getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the data to associated with that key
      */
     setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the boolean value to be associated with that key
      */
     setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the enum value to be associated with that key
+     * @param enumType the enum type
      */
     setParamEnum(key: string, value: number, enumType: GObject.Type): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
      * cleared.
+     * @param key the name of the key
+     * @param value the int64 value to be associated with that key
      */
     setParamInt64(key: string, value: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -19408,6 +21551,10 @@ class Tree {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19418,6 +21565,12 @@ class Tree {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19441,6 +21594,7 @@ class Tree {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19460,11 +21614,14 @@ class Tree {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19472,6 +21629,8 @@ class Tree {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19489,6 +21648,7 @@ class Tree {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19534,6 +21694,7 @@ class Tree {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19577,15 +21738,20 @@ class Tree {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19626,6 +21792,7 @@ class Tree {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19660,6 +21827,7 @@ class Tree {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -19691,6 +21859,7 @@ class Tree {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19774,19 +21943,28 @@ class Tree {
      * could be a http:// or a https:// URI, or a local file.
      * 
      * NOTE: Currently this only works for trees with a .treeinfo file
+     * @param location the location of an installation tree
+     * @param cancellable a #GCancellable, or %NULL
      */
     static createFromLocation(location: string, cancellable?: Gio.Cancellable | null): Tree
     /**
      * Asynchronous variant of #osinfo_tree_create_from_location.
+     * @param location the location of an installation tree
+     * @param priority the I/O priority of the request
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback Function to call when result of this call is ready
      */
     static createFromLocationAsync(location: string, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous tree object creation process started with
      * #osinfo_tree_create_from_location_async.
+     * @param res a #GAsyncResult
      */
     static createFromLocationFinish(res: Gio.AsyncResult): Tree
     /**
      * Creates a new #OsinfoTree for installation tree represented by `treeinfo`.
+     * @param treeinfo a string representing the .treeinfo content
+     * @param location the location of the original `treeinfo`
      */
     static createFromTreeinfo(treeinfo: string, location: string): Tree
     static $gtype: GObject.Type
@@ -19794,11 +21972,18 @@ class Tree {
 interface TreeList_ConstructProps extends List_ConstructProps {
 }
 class TreeList {
+    /* Properties of Libosinfo-1.0.Libosinfo.List */
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.Type
     /* Fields of Libosinfo-1.0.Libosinfo.List */
-    readonly parentInstance: GObject.Object
-    readonly priv: ListPrivate
+    parentInstance: GObject.Object
+    priv: ListPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Libosinfo-1.0.Libosinfo.TreeList */
     /**
      * Construct a new tree list that is filled with trees
@@ -19808,33 +21993,40 @@ class TreeList {
     /**
      * Construct a new tree list that is filled with trees
      * from `source` that match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): TreeList
     /**
      * Construct a new tree list that is filled with only the
      * trees that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second tree list to copy
      */
     newIntersection(sourceTwo: TreeList): TreeList
     /**
      * Construct a new tree list that is filled with all the
      * trees that are present in either `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second tree list to copy
      */
     newUnion(sourceTwo: TreeList): TreeList
     /* Methods of Libosinfo-1.0.Libosinfo.List */
     /**
      * Adds a new entity to the list.
+     * @param entity the entity to add to the list
      */
     add(entity: Entity): void
     /**
      * Adds all entities from `source` to `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the list to add
      */
     addAll(source: List): void
     /**
      * Adds all entities from `source` which are matched by `filter`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param source the source for elements
+     * @param filter filter to process the source with
      */
     addFiltered(source: List, filter: Filter): void
     /**
@@ -19842,6 +22034,8 @@ class TreeList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addIntersection(sourceOne: List, sourceTwo: List): void
     /**
@@ -19849,11 +22043,14 @@ class TreeList {
      * adds the resulting list of entities to the `list`. Using one
      * of the constructors in a subclass is preferable
      * to this method.
+     * @param sourceOne the first list to add
+     * @param sourceTwo the second list to add
      */
     addUnion(sourceOne: List, sourceTwo: List): void
     /**
      * Search the list looking for the entity with a matching
      * unique identifier.
+     * @param id the unique identifier
      */
     findById(id: string): Entity
     /**
@@ -19874,6 +22071,7 @@ class TreeList {
      * Retrieves the element in the list at position `idx`. If
      * `idx` is less than zero, or greater than the number of
      * elements in the list, the results are undefined.
+     * @param idx the list position to fetch
      */
     getNth(idx: number): Entity
     /**
@@ -19883,17 +22081,20 @@ class TreeList {
     /**
      * Construct a new list that is filled with elements from `source` that
      * match `filter`
+     * @param filter the filter to apply
      */
     newFiltered(filter: Filter): List
     /**
      * Construct a new list that is filled with only the elements
      * that are present in both `sourceOne` and `sourceTwo`.
+     * @param sourceTwo the second list to copy
      */
     newIntersection(sourceTwo: List): List
     /**
      * Construct a new list that is filled with all the that are present in
      * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
      * the same type.
+     * @param sourceTwo the second list to copy
      */
     newUnion(sourceTwo: List): List
     /* Methods of GObject-2.0.GObject.Object */
@@ -19931,6 +22132,10 @@ class TreeList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19941,6 +22146,12 @@ class TreeList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19964,6 +22175,7 @@ class TreeList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19983,11 +22195,14 @@ class TreeList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19995,6 +22210,8 @@ class TreeList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20012,6 +22229,7 @@ class TreeList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -20057,6 +22275,7 @@ class TreeList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -20100,15 +22319,20 @@ class TreeList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -20149,6 +22373,7 @@ class TreeList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -20183,6 +22408,7 @@ class TreeList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -20214,12 +22440,18 @@ class TreeList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -20236,7 +22468,7 @@ class TreeList {
 }
 abstract class AvatarFormatClass {
     /* Fields of Libosinfo-1.0.Libosinfo.AvatarFormatClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 class AvatarFormatPrivate {
@@ -20244,12 +22476,12 @@ class AvatarFormatPrivate {
 }
 abstract class DatamapClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DatamapClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class DatamapListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DatamapListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class DatamapListPrivate {
@@ -20260,7 +22492,7 @@ class DatamapPrivate {
 }
 abstract class DbClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DbClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class DbPrivate {
@@ -20268,12 +22500,12 @@ class DbPrivate {
 }
 abstract class DeploymentClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeploymentClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class DeploymentListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeploymentListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class DeploymentListPrivate {
@@ -20284,17 +22516,17 @@ class DeploymentPrivate {
 }
 abstract class DeviceClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeviceClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class DeviceDriverClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeviceDriverClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class DeviceDriverListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeviceDriverListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class DeviceDriverListPrivate {
@@ -20305,12 +22537,12 @@ class DeviceDriverPrivate {
 }
 abstract class DeviceLinkClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeviceLinkClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class DeviceLinkFilterClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeviceLinkFilterClass */
-    readonly parentClass: FilterClass
+    parentClass: FilterClass
     static name: string
 }
 class DeviceLinkFilterPrivate {
@@ -20318,7 +22550,7 @@ class DeviceLinkFilterPrivate {
 }
 abstract class DeviceLinkListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeviceLinkListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class DeviceLinkListPrivate {
@@ -20329,7 +22561,7 @@ class DeviceLinkPrivate {
 }
 abstract class DeviceListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.DeviceListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class DeviceListPrivate {
@@ -20340,7 +22572,7 @@ class DevicePrivate {
 }
 abstract class EntityClass {
     /* Fields of Libosinfo-1.0.Libosinfo.EntityClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class EntityPrivate {
@@ -20348,8 +22580,8 @@ class EntityPrivate {
 }
 abstract class FilterClass {
     /* Fields of Libosinfo-1.0.Libosinfo.FilterClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly matches: (filter: Filter, entity: Entity) => boolean
+    parentClass: GObject.ObjectClass
+    matches: (filter: Filter, entity: Entity) => boolean
     static name: string
 }
 class FilterPrivate {
@@ -20357,12 +22589,12 @@ class FilterPrivate {
 }
 abstract class FirmwareClass {
     /* Fields of Libosinfo-1.0.Libosinfo.FirmwareClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class FirmwareListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.FirmwareListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class FirmwareListPrivate {
@@ -20373,12 +22605,12 @@ class FirmwarePrivate {
 }
 abstract class ImageClass {
     /* Fields of Libosinfo-1.0.Libosinfo.ImageClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class ImageListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.ImageListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class ImageListPrivate {
@@ -20389,17 +22621,17 @@ class ImagePrivate {
 }
 abstract class InstallConfigClass {
     /* Fields of Libosinfo-1.0.Libosinfo.InstallConfigClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class InstallConfigParamClass {
     /* Fields of Libosinfo-1.0.Libosinfo.InstallConfigParamClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class InstallConfigParamListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.InstallConfigParamListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class InstallConfigParamListPrivate {
@@ -20413,12 +22645,12 @@ class InstallConfigPrivate {
 }
 abstract class InstallScriptClass {
     /* Fields of Libosinfo-1.0.Libosinfo.InstallScriptClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class InstallScriptListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.InstallScriptListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class InstallScriptListPrivate {
@@ -20429,7 +22661,7 @@ class InstallScriptPrivate {
 }
 abstract class ListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.ListClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ListPrivate {
@@ -20437,7 +22669,7 @@ class ListPrivate {
 }
 abstract class LoaderClass {
     /* Fields of Libosinfo-1.0.Libosinfo.LoaderClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class LoaderPrivate {
@@ -20445,12 +22677,12 @@ class LoaderPrivate {
 }
 abstract class MediaClass {
     /* Fields of Libosinfo-1.0.Libosinfo.MediaClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class MediaListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.MediaListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class MediaListPrivate {
@@ -20461,12 +22693,12 @@ class MediaPrivate {
 }
 abstract class OsClass {
     /* Fields of Libosinfo-1.0.Libosinfo.OsClass */
-    readonly parentClass: ProductClass
+    parentClass: ProductClass
     static name: string
 }
 abstract class OsListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.OsListClass */
-    readonly parentClass: ProductListClass
+    parentClass: ProductListClass
     static name: string
 }
 class OsListPrivate {
@@ -20477,12 +22709,12 @@ class OsPrivate {
 }
 abstract class OsVariantClass {
     /* Fields of Libosinfo-1.0.Libosinfo.OsVariantClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class OsVariantListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.OsVariantListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class OsVariantListPrivate {
@@ -20493,12 +22725,12 @@ class OsVariantPrivate {
 }
 abstract class PlatformClass {
     /* Fields of Libosinfo-1.0.Libosinfo.PlatformClass */
-    readonly parentClass: ProductClass
+    parentClass: ProductClass
     static name: string
 }
 abstract class PlatformListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.PlatformListClass */
-    readonly parentClass: ProductListClass
+    parentClass: ProductListClass
     static name: string
 }
 class PlatformListPrivate {
@@ -20509,12 +22741,12 @@ class PlatformPrivate {
 }
 abstract class ProductClass {
     /* Fields of Libosinfo-1.0.Libosinfo.ProductClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class ProductFilterClass {
     /* Fields of Libosinfo-1.0.Libosinfo.ProductFilterClass */
-    readonly parentClass: FilterClass
+    parentClass: FilterClass
     static name: string
 }
 class ProductFilterPrivate {
@@ -20522,7 +22754,7 @@ class ProductFilterPrivate {
 }
 abstract class ProductListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.ProductListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class ProductListPrivate {
@@ -20533,12 +22765,12 @@ class ProductPrivate {
 }
 abstract class ResourcesClass {
     /* Fields of Libosinfo-1.0.Libosinfo.ResourcesClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class ResourcesListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.ResourcesListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class ResourcesListPrivate {
@@ -20549,12 +22781,12 @@ class ResourcesPrivate {
 }
 abstract class TreeClass {
     /* Fields of Libosinfo-1.0.Libosinfo.TreeClass */
-    readonly parentClass: EntityClass
+    parentClass: EntityClass
     static name: string
 }
 abstract class TreeListClass {
     /* Fields of Libosinfo-1.0.Libosinfo.TreeListClass */
-    readonly parentClass: ListClass
+    parentClass: ListClass
     static name: string
 }
 class TreeListPrivate {

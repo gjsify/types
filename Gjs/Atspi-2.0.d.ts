@@ -1930,11 +1930,13 @@ class Action {
     /* Methods of Atspi-2.0.Atspi.Action */
     /**
      * Invoke the action indicated by #index.
+     * @param i an integer specifying which action to invoke.
      */
     do_action(i: number): boolean
     /**
      * Get the description of '`i-th'` action invocable on an
      *      object implementing #AtspiAction.
+     * @param i an integer indicating which action to query.
      */
     get_action_description(i: number): string
     /**
@@ -1959,11 +1961,13 @@ class Action {
      *        "&lt;Control&gt;", "&lt;Alt&gt;", "&lt;Shift&gt;", "&lt;Mod2&gt;",
      *        etc. (we use the same string as gtk_accelerator_name() in
      *        gtk+-2.X.
+     * @param i an integer indicating which action to query.
      */
     get_key_binding(i: number): string
     /**
      * Get the name of the '`i-th'` action invocable on an
      *      object implementing #AtspiAction.
+     * @param i an integer indicating which action to query.
      */
     get_localized_name(i: number): string
     /**
@@ -1973,6 +1977,7 @@ class Action {
     /**
      * Get the name of the '`i-th'` action invocable on an
      *      object implementing #AtspiAction.
+     * @param i an integer indicating which action to query.
      */
     get_action_name(i: number): string
     static name: string
@@ -1983,20 +1988,38 @@ class Collection {
     /**
      * Gets all #AtspiAccessible objects from the `collection` matching a given
      * `rule`.
+     * @param rule An #AtspiMatchRule describing the match criteria.
+     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
+     * @param count The maximum number of results to return, or 0 for no limit.
+     * @param traverse Not supported.
      */
     get_matches(rule: MatchRule, sortby: CollectionSortOrder, count: number, traverse: boolean): Accessible[]
     /**
      * Gets all #AtspiAccessible objects from the `collection,` before
      * `current_object,` matching a given `rule`.
+     * @param current_object Upon reaching this object, searching should stop.
+     * @param rule An #AtspiMatchRule describing the match criteria.
+     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
+     * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
+     * @param count The maximum number of results to return, or 0 for no limit.
+     * @param traverse Not supported.
      */
     get_matches_from(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, count: number, traverse: boolean): Accessible[]
     /**
      * Gets all #AtspiAccessible objects from the `collection,` after
      * `current_object,` matching a given `rule`.
+     * @param current_object The object at which to start searching.
+     * @param rule An #AtspiMatchRule describing the match criteria.
+     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
+     * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
+     * @param limit_scope If #TRUE, only descendants of `current_object'`s parent          will be returned. Otherwise (if #FALSE), any accessible may be          returned if it would preceed `current_object` in a flattened          hierarchy.
+     * @param count The maximum number of results to return, or 0 for no limit.
+     * @param traverse Not supported.
      */
     get_matches_to(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, limit_scope: boolean, count: number, traverse: boolean): Accessible[]
     /**
      * Not yet implemented.
+     * @param test 
      */
     is_ancestor_of(test: Accessible): boolean
     static name: string
@@ -2005,10 +2028,16 @@ class Component {
     /* Methods of Atspi-2.0.Atspi.Component */
     /**
      * Queries whether a given #AtspiComponent contains a particular point.
+     * @param x a #gint specifying the x coordinate in question.
+     * @param y a #gint specifying the y coordinate in question.
+     * @param ctype the desired coordinate system of the point (`x,` `y)`         (e.g. CSPI_COORD_TYPE_WINDOW, CSPI_COORD_TYPE_SCREEN).
      */
     contains(x: number, y: number, ctype: CoordType): boolean
     /**
      * Gets the accessible child at a given coordinate within an #AtspiComponent.
+     * @param x a #gint specifying the x coordinate of the point in question.
+     * @param y a #gint specifying the y coordinate of the point in question.
+     * @param ctype the coordinate system of the point (`x,` `y)`         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_accessible_at_point(x: number, y: number, ctype: CoordType): Accessible | null
     /**
@@ -2019,6 +2048,7 @@ class Component {
      * Gets the bounding box of the specified #AtspiComponent.
      * The returned values are meaningful only if the Component has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_extents(ctype: CoordType): Rect
     /**
@@ -2035,6 +2065,7 @@ class Component {
      * Gets the minimum x and y coordinates of the specified #AtspiComponent.
      * The returned values are meaningful only if the Component has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_position(ctype: CoordType): Point
     /**
@@ -2051,23 +2082,37 @@ class Component {
     /**
      * Scrolls whatever container of the #AtspiComponent object so it becomes
      * visible on the screen.
+     * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
      */
     scroll_to(type: ScrollType): boolean
     /**
      * Scrolls whatever container of the #AtspiComponent object so it becomes
      * visible on the screen at a given position.
+     * @param coords a #AtspiCoordType indicating whether the coordinates are relative to          the screen, to the window, or to the parent object.
+     * @param x the x coordinate of the point to reach
+     * @param y the y coordinate of the point to reach
      */
     scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Moves and resizes the specified component.
+     * @param x the new vertical position to which the component should be moved.
+     * @param y the new horizontal position to which the component should be moved.
+     * @param width the width to which the component should be resized.
+     * @param height the height to which the component should be resized.
+     * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean
     /**
      * Moves the component to the specified position.
+     * @param x the new vertical position to which the component should be moved.
+     * @param y the new horizontal position to which the component should be moved.
+     * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     set_position(x: number, y: number, ctype: CoordType): boolean
     /**
      * Resizes the specified component to the given coordinates.
+     * @param width the width to which the component should be resized.
+     * @param height the height to which the component should be resized.
      */
     set_size(width: number, height: number): boolean
     static name: string
@@ -2076,6 +2121,7 @@ class Document {
     /* Methods of Atspi-2.0.Atspi.Document */
     /**
      * Gets the value of a single attribute, if specified for the document as a whole.
+     * @param attribute a string indicating the name of a specific attribute.
      */
     get_document_attribute_value(attribute: string): string
     /**
@@ -2104,6 +2150,8 @@ class EditableText {
      * Copies text from an #AtspiEditableText object into the system clipboard.
      * 
      * see: #atspi_editable_text_paste_text
+     * @param start_pos a #gint indicating the starting character offset       of the text to copy.
+     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be copied.
      */
     copy_text(start_pos: number, end_pos: number): boolean
     /**
@@ -2111,6 +2159,8 @@ class EditableText {
      *       excised portion into the system clipboard.
      * 
      * see: #atspi_editable_text_paste_text
+     * @param start_pos a #gint indicating the starting character offset       of the text to cut.
+     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be cut.
      */
     cut_text(start_pos: number, end_pos: number): boolean
     /**
@@ -2118,6 +2168,8 @@ class EditableText {
      *       excised portion into the system clipboard.
      * 
      * see: #atspi_editable_text_cut_text
+     * @param start_pos a #gint indicating the starting character offset       of the text to delete.
+     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be deleted.
      */
     delete_text(start_pos: number, end_pos: number): boolean
     /**
@@ -2125,6 +2177,9 @@ class EditableText {
      * As with all character offsets, the specified `position` may not be the
      * same as the resulting byte offset, since the text is in a
      * variable-width encoding.
+     * @param position a #gint indicating the character offset at which to insert       the new text.
+     * @param text a string representing the text to insert, in UTF-8 encoding.
+     * @param length the number of characters of text to insert, in bytes. If the byte count of text is less than or equal to length, the entire contents of text will be inserted.
      */
     insert_text(position: number, text: string, length: number): boolean
     /**
@@ -2132,10 +2187,12 @@ class EditableText {
      * As with all character offsets, the specified `position` may not be the
      *       same as the resulting byte offset, since the text is in a
      *       variable-width encoding.
+     * @param position a #gint indicating the character offset at which to insert       the new text.
      */
     paste_text(position: number): boolean
     /**
      * Replace the entire text contents of an #AtspiEditableText object.
+     * @param new_contents a character string, encoded in UTF-8, which is to      become the new text contents of the #AtspiEditableText object.
      */
     set_text_contents(new_contents: string): boolean
     static name: string
@@ -2144,11 +2201,13 @@ class Hypertext {
     /* Methods of Atspi-2.0.Atspi.Hypertext */
     /**
      * Gets the #AtspiHyperlink object at a specified index.
+     * @param link_index a (zero-index) #gint indicating which hyperlink to query.
      */
     get_link(link_index: number): Hyperlink | null
     /**
      * Gets the index of the #AtspiHyperlink object at a specified
      *        character offset.
+     * @param character_offset a #gint specifying the character offset to query.
      */
     get_link_index(character_offset: number): number
     /**
@@ -2169,6 +2228,7 @@ class Image {
      *         specified #AtspiImage implementor.
      * The returned values are meaningful only if the Image has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_image_extents(ctype: CoordType): Rect
     /**
@@ -2180,6 +2240,7 @@ class Image {
      *         specified #AtspiImage implementor.
      * The returned values are meaningful only if the Image has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_image_position(ctype: CoordType): Point
     /**
@@ -2203,6 +2264,7 @@ class Selection {
      *          in the parent container.
      * 
      * See #atspi_selection_deselect_selected_child
+     * @param child_index a #gint indicating which of the children              of the #AtspiAccessible is to be de-selected.
      */
     deselect_child(child_index: number): boolean
     /**
@@ -2211,6 +2273,7 @@ class Selection {
      *          not the index in the parent container.  `selectedChildIndex` in this
      *          method, and `child_index` in #atspi_selection_select_child
      *          are asymmetric.
+     * @param selected_child_index a #gint indicating which of the selected children              of the #Accessible is to be selected.
      */
     deselect_selected_child(selected_child_index: number): boolean
     /**
@@ -2227,12 +2290,14 @@ class Selection {
      *      #atspi_accessible_get_index_in_parent.
      *      `selected_child_index` must lie between 0
      *      and #atspi_selection_get_n_selected_children - 1, inclusive.
+     * @param selected_child_index a #gint indicating which of the selected      children is specified.
      */
     get_selected_child(selected_child_index: number): Accessible
     /**
      * Determines whether a particular child of an #AtspiSelection implementor
      *        is currently selected.  Note that `child_index` is the index into the
      *        standard #AtspiAccessible container's list of children.
+     * @param child_index an index into the #AtspiSelection's list of children.
      */
     is_child_selected(child_index: number): boolean
     /**
@@ -2245,6 +2310,7 @@ class Selection {
      *         For #AtspiSelection implementors that only allow
      *         single selections, this may replace the (single) current
      *         selection.
+     * @param child_index a #gint indicating which child of the #Accessible              is to be selected.
      */
     select_child(child_index: number): boolean
     static name: string
@@ -2254,17 +2320,21 @@ class Table {
     /**
      * Selects the specified column, adding it to the current column selection.
      * Not all tables support column selection.
+     * @param column the zero-indexed column number of the column being selected.
      */
     add_column_selection(column: number): boolean
     /**
      * Selects the specified row, adding it to the current row selection.
      * Not all tables support row selection.
+     * @param row the zero-indexed row number of the row being selected.
      */
     add_row_selection(row: number): boolean
     /**
      * Gets the table cell at the specified row and column indices.
      * To get the accessible object at a particular (x, y) screen
      * coordinate, use #atspi_component_get_accessible_at_point.
+     * @param row the specified table row, zero-indexed.
+     * @param column the specified table column, zero-indexed.
      */
     get_accessible_at(row: number, column: number): Accessible
     /**
@@ -2276,11 +2346,13 @@ class Table {
      * child index.
      * 
      * `see` #atspi_table_get_index_at, #atspi_table_get_row_at_index
+     * @param index the specified child index, zero-indexed.
      */
     get_column_at_index(index: number): number
     /**
      * Gets a text description of a particular table column.  This differs from
      * #atspi_table_get_column_header, which returns an #Accessible.
+     * @param column the specified table column, zero-indexed.
      */
     get_column_description(column: number): string
     /**
@@ -2289,12 +2361,15 @@ class Table {
      * rows and/or columns).
      * The returned values are meaningful only if the Table has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param row the specified table row, zero-indexed.
+     * @param column the specified table column, zero-indexed.
      */
     get_column_extent_at(row: number, column: number): number
     /**
      * Gets the header associated with a table column, if available.
      * This differs from #atspi_table_get_column_description, which
      * returns a string.
+     * @param column the specified table column, zero-indexed.
      */
     get_column_header(column: number): Accessible
     /**
@@ -2303,6 +2378,8 @@ class Table {
      * coordinate, use #atspi_component_get_accessible_at_point.
      * 
      * `see` #atspi_table_get_row_at_index, #atspi_table_get_column_at_index
+     * @param row the specified table row, zero-indexed.
+     * @param column the specified table column, zero-indexed.
      */
     get_index_at(row: number, column: number): number
     /**
@@ -2332,6 +2409,7 @@ class Table {
      * child index.
      * 
      * `see` #atspi_table_get_index_at, #atspi_table_get_column_at_index
+     * @param index the specified child index, zero-indexed.
      */
     get_row_at_index(index: number): number
     /**
@@ -2356,11 +2434,13 @@ class Table {
      * row, col, row_extents, col_extents,
      * and is_selected will contain 2, 5, 1, 2, and
      * #TRUE, respectively.
+     * @param index the index of the #AtspiTable child whose row/column extents are requested.
      */
     get_row_column_extents_at_index(index: number): [ /* returnType */ boolean, /* row */ number, /* col */ number, /* row_extents */ number, /* col_extents */ number, /* is_selected */ boolean ]
     /**
      * Gets a text description of a particular table row.  This differs from
      * #atspi_table_get_row_header, which returns an #AtspiAccessible.
+     * @param row the specified table row, zero-indexed.
      */
     get_row_description(row: number): string
     /**
@@ -2369,11 +2449,14 @@ class Table {
      * and/or columns).
      * The returned values are meaningful only if the Table has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param row the specified table row, zero-indexed.
+     * @param column the specified table column, zero-indexed.
      */
     get_row_extent_at(row: number, column: number): number
     /**
      * Gets the header associated with a table row, if available. This differs from
      * #atspi_table_get_row_description, which returns a string.
+     * @param row the specified table row, zero-indexed.
      */
     get_row_header(row: number): Accessible
     /**
@@ -2392,26 +2475,32 @@ class Table {
     /**
      * Determines whether specified table column is selected.
      * Not all tables support column selection.
+     * @param column the zero-indexed column number of the column being queried.
      */
     is_column_selected(column: number): boolean
     /**
      * Determines whether a table row is selected.  Not all tables support
      * row selection.
+     * @param row the zero-indexed row number of the row being queried.
      */
     is_row_selected(row: number): boolean
     /**
      * Determines whether the cell at a specific row and column is selected.
+     * @param row the zero-indexed row of the cell being queried.
+     * @param column the zero-indexed column of the cell being queried.
      */
     is_selected(row: number, column: number): boolean
     /**
      * De-selects the specified column, removing it from the current column
      * selection.
      * Not all tables support column selection.
+     * @param column the zero-indexed column number of the column being de-selected.
      */
     remove_column_selection(column: number): boolean
     /**
      * De-selects the specified row, removing it from the current row selection.
      * Not all tables support row selection.
+     * @param row the zero-indexed number of the row being de-selected.
      */
     remove_row_selection(row: number): boolean
     static name: string
@@ -2459,15 +2548,21 @@ class Text {
     /* Methods of Atspi-2.0.Atspi.Text */
     /**
      * Selects some text (adds a text selection) in an #AtspiText object.
+     * @param start_offset the starting offset of the desired new selection.
+     * @param end_offset the offset of the first character after the new selection.
      */
     add_selection(start_offset: number, end_offset: number): boolean
     /**
      * Gets a set of attributes applied to a range of text from an #AtspiText object, optionally
      * including its 'default' attributes.
+     * @param offset a #gint indicating the offset from which the attribute        search is based.
+     * @param include_defaults a #bool that, when set as #FALSE, indicates the call should only return those attributes which are explicitly set on the current attribute run, omitting any attributes which are inherited from the default values.
      */
     get_attribute_run(offset: number, include_defaults: boolean): [ /* returnType */ GLib.HashTable, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the value of a named attribute at a given offset.
+     * @param offset The character offset at which to query the attribute.
+     * @param attribute_name The attribute to query.
      */
     get_text_attribute_value(offset: number, attribute_name: string): string | null
     /**
@@ -2475,11 +2570,19 @@ class Text {
      * object. The text attributes correspond to CSS attributes
      * where possible.
      * <em>DEPRECATED</em>
+     * @param offset a #gint indicating the offset from which the attribute        search is based.
      */
     get_text_attributes(offset: number): [ /* returnType */ GLib.HashTable, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the ranges of text from an #AtspiText object which lie within the
      *          bounds defined by (`x,` `y)` and (`x+``width,` `y+``height)`.
+     * @param x the 'starting' x coordinate of the bounding box.
+     * @param y the 'starting' y coordinate of the bounding box.
+     * @param width the x extent of the bounding box.
+     * @param height the y extent of the bounding box.
+     * @param type an #AccessibleCoordType indicating the coordinate system to use        for the returned values.
+     * @param clipTypeX an #AtspiTextClipType indicating how to treat characters that        intersect the bounding box's x extents.
+     * @param clipTypeY an #AtspiTextClipType indicating how to treat characters that        intersect the bounding box's y extents.
      */
     get_bounded_ranges(x: number, y: number, width: number, height: number, type: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType): TextRange[]
     /**
@@ -2488,6 +2591,7 @@ class Text {
     get_caret_offset(): number
     /**
      * Gets the character at a given offset for an #AtspiText object.
+     * @param offset a #gint indicating the text offset where the desired          character is located.
      */
     get_character_at_offset(offset: number): number
     /**
@@ -2499,6 +2603,8 @@ class Text {
      *        the character at a particular text offset.
      * The returned values are meaningful only if the Text has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param offset a #gint indicating the offset of the text character for        whom boundary information is requested.
+     * @param type an #AccessibleCoordType indicating the coordinate system to use        for the returned values.
      */
     get_character_extents(offset: number, type: CoordType): Rect
     /**
@@ -2516,17 +2622,24 @@ class Text {
     get_n_selections(): number
     /**
      * Gets the character offset into the text at a given point.
+     * @param x the x coordinate of the point to be queried.
+     * @param y the y coordinate of the point to be queried.
+     * @param type an #AtspiCoordType indicating the coordinate system in which       the values should be returned.
      */
     get_offset_at_point(x: number, y: number, type: CoordType): number
     /**
      * Gets the bounding box for text within a range in an  #AtspiText object.
      * The returned values are meaningful only if the Text has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param start_offset a #gint indicating the offset of the first text character for        whom boundary information is requested.
+     * @param end_offset a #gint indicating the offset of the text character        after the last character for whom boundary information is requested.
+     * @param type an #AtspiCoordType indicating the coordinate system to use        for the returned values.
      */
     get_range_extents(start_offset: number, end_offset: number, type: CoordType): Rect
     /**
      * Gets the bounds of the `selection_num-th` active text selection for an
      *         #AtspiText object.
+     * @param selection_num a #gint indicating which selection to query.
      */
     get_selection(selection_num: number): Range
     /**
@@ -2560,49 +2673,72 @@ class Text {
      * If `granularity` is ATSPI_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtspiTextGranularity
      */
     get_string_at_offset(offset: number, granularity: TextGranularity): TextRange
     /**
      * Gets a range of text from an #AtspiText object.  The number of bytes
      *          in the returned string may exceed either end_offset or start_offset, since
      *          UTF-8 is a variable-width encoding.
+     * @param start_offset a #gint indicating the start of the desired text range.
+     * @param end_offset a #gint indicating the first character past the desired range.
      */
     get_text(start_offset: number, end_offset: number): string
     /**
      * Gets delimited text from an #AtspiText object which follows a given
      *          text offset.
+     * @param offset a #gint indicating the offset from which the delimiter        search is based.
+     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
      */
     get_text_after_offset(offset: number, type: TextBoundaryType): TextRange
     /**
      * Gets delimited text from an #AtspiText object which includes a given
      *          text offset.
+     * @param offset a #gint indicating the offset from which the delimiter        search is based.
+     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
      */
     get_text_at_offset(offset: number, type: TextBoundaryType): TextRange
     /**
      * Gets delimited text from an #AtspiText object which precedes a given
      *          text offset.
+     * @param offset a #gint indicating the offset from which the delimiter        search is based.
+     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
      */
     get_text_before_offset(offset: number, type: TextBoundaryType): TextRange
     /**
      * De-selects a text selection.
+     * @param selection_num a #gint indicating which text selection to remove.
      */
     remove_selection(selection_num: number): boolean
     /**
      * Scrolls whatever container of the #AtspiText text range so it becomes
      * visible on the screen.
+     * @param start_offset a #gint indicating the start of the desired text range.
+     * @param end_offset a #gint indicating the first character past the desired range.
+     * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
      */
     scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean
     /**
      * Scrolls whatever container of the #AtspiText text range so it becomes
      * visible on the screen at a given position.
+     * @param start_offset a #gint indicating the start of the desired text range.
+     * @param end_offset a #gint indicating the first character past the desired range.
+     * @param coords a #AtspiCoordType indicating whether the coordinates are relative to          the screen, to the window, or to the parent object.
+     * @param x the x coordinate of the point to reach
+     * @param y the y coordinate of the point to reach
      */
     scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean
     /**
      * Moves the text caret to a given position.
+     * @param new_offset the offset to which the text caret is to be moved.
      */
     set_caret_offset(new_offset: number): boolean
     /**
      * Changes the bounds of an existing #AtspiText text selection.
+     * @param selection_num a zero-offset index indicating which text selection to modify.
+     * @param start_offset a #gint indicating the new starting offset for the selection.
+     * @param end_offset a #gint indicating the desired new offset of the first character             after the selection.
      */
     set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
     static name: string
@@ -2627,6 +2763,7 @@ class Value {
     get_minimum_value(): number
     /**
      * Sets the current value of an #AtspiValue.
+     * @param new_value a #gdouble value which is the desired new value of the object.
      */
     set_current_value(new_value: number): boolean
     static name: string
@@ -2635,11 +2772,11 @@ interface Accessible_ConstructProps extends Object_ConstructProps {
 }
 class Accessible {
     /* Fields of Atspi-2.0.Atspi.Object */
-    readonly parent: GObject.Object
-    readonly app: Application
-    readonly path: string
+    parent: GObject.Object
+    app: Application
+    path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.Accessible */
     /**
      * Clears the cached information for the given accessible and all of its
@@ -2682,6 +2819,7 @@ class Accessible {
     get_attributes_as_array(): string[]
     /**
      * Gets the #AtspiAccessible child of an #AtspiAccessible object at a given index.
+     * @param child_index a #long indicating which child is specified.
      */
     get_child_at_index(child_index: number): Accessible
     /**
@@ -2814,6 +2952,7 @@ class Accessible {
      * be cached.
      * This function is intended to work around bugs in toolkits where the proper
      * events are not raised / to aid in testing for such bugs.
+     * @param mask An #AtspiCache specifying a bit mask of the types of data to cache.
      */
     set_cache_mask(mask: Cache): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2851,6 +2990,10 @@ class Accessible {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2861,6 +3004,12 @@ class Accessible {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2884,6 +3033,7 @@ class Accessible {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2903,11 +3053,14 @@ class Accessible {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2915,6 +3068,8 @@ class Accessible {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2932,6 +3087,7 @@ class Accessible {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2977,6 +3133,7 @@ class Accessible {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3020,15 +3177,20 @@ class Accessible {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3069,6 +3231,7 @@ class Accessible {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3103,16 +3266,19 @@ class Accessible {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Atspi-2.0.Atspi.Action */
     /**
      * Invoke the action indicated by #index.
+     * @param i an integer specifying which action to invoke.
      */
     do_action(i: number): boolean
     /**
      * Get the description of '`i-th'` action invocable on an
      *      object implementing #AtspiAction.
+     * @param i an integer indicating which action to query.
      */
     get_action_description(i: number): string
     /**
@@ -3137,11 +3303,13 @@ class Accessible {
      *        "&lt;Control&gt;", "&lt;Alt&gt;", "&lt;Shift&gt;", "&lt;Mod2&gt;",
      *        etc. (we use the same string as gtk_accelerator_name() in
      *        gtk+-2.X.
+     * @param i an integer indicating which action to query.
      */
     get_key_binding(i: number): string
     /**
      * Get the name of the '`i-th'` action invocable on an
      *      object implementing #AtspiAction.
+     * @param i an integer indicating which action to query.
      */
     get_localized_name(i: number): string
     /**
@@ -3151,6 +3319,7 @@ class Accessible {
     /**
      * Get the name of the '`i-th'` action invocable on an
      *      object implementing #AtspiAction.
+     * @param i an integer indicating which action to query.
      */
     get_action_name(i: number): string
     /* Methods of Atspi-2.0.Atspi.Collection */
@@ -3158,29 +3327,53 @@ class Accessible {
     /**
      * Gets all #AtspiAccessible objects from the `collection` matching a given
      * `rule`.
+     * @param rule An #AtspiMatchRule describing the match criteria.
+     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
+     * @param count The maximum number of results to return, or 0 for no limit.
+     * @param traverse Not supported.
      */
     get_matches(rule: MatchRule, sortby: CollectionSortOrder, count: number, traverse: boolean): Accessible[]
     /**
      * Gets all #AtspiAccessible objects from the `collection,` before
      * `current_object,` matching a given `rule`.
+     * @param current_object Upon reaching this object, searching should stop.
+     * @param rule An #AtspiMatchRule describing the match criteria.
+     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
+     * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
+     * @param count The maximum number of results to return, or 0 for no limit.
+     * @param traverse Not supported.
      */
     get_matches_from(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, count: number, traverse: boolean): Accessible[]
     /**
      * Gets all #AtspiAccessible objects from the `collection,` after
      * `current_object,` matching a given `rule`.
+     * @param current_object The object at which to start searching.
+     * @param rule An #AtspiMatchRule describing the match criteria.
+     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
+     * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
+     * @param limit_scope If #TRUE, only descendants of `current_object'`s parent          will be returned. Otherwise (if #FALSE), any accessible may be          returned if it would preceed `current_object` in a flattened          hierarchy.
+     * @param count The maximum number of results to return, or 0 for no limit.
+     * @param traverse Not supported.
      */
     get_matches_to(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, limit_scope: boolean, count: number, traverse: boolean): Accessible[]
     /**
      * Not yet implemented.
+     * @param test 
      */
     is_ancestor_of(test: Accessible): boolean
     /* Methods of Atspi-2.0.Atspi.Component */
     /**
      * Queries whether a given #AtspiComponent contains a particular point.
+     * @param x a #gint specifying the x coordinate in question.
+     * @param y a #gint specifying the y coordinate in question.
+     * @param ctype the desired coordinate system of the point (`x,` `y)`         (e.g. CSPI_COORD_TYPE_WINDOW, CSPI_COORD_TYPE_SCREEN).
      */
     contains(x: number, y: number, ctype: CoordType): boolean
     /**
      * Gets the accessible child at a given coordinate within an #AtspiComponent.
+     * @param x a #gint specifying the x coordinate of the point in question.
+     * @param y a #gint specifying the y coordinate of the point in question.
+     * @param ctype the coordinate system of the point (`x,` `y)`         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_accessible_at_point(x: number, y: number, ctype: CoordType): Accessible | null
     /**
@@ -3191,6 +3384,7 @@ class Accessible {
      * Gets the bounding box of the specified #AtspiComponent.
      * The returned values are meaningful only if the Component has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_extents(ctype: CoordType): Rect
     /**
@@ -3207,6 +3401,7 @@ class Accessible {
      * Gets the minimum x and y coordinates of the specified #AtspiComponent.
      * The returned values are meaningful only if the Component has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_position(ctype: CoordType): Point
     /**
@@ -3223,28 +3418,43 @@ class Accessible {
     /**
      * Scrolls whatever container of the #AtspiComponent object so it becomes
      * visible on the screen.
+     * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
      */
     scroll_to(type: ScrollType): boolean
     /**
      * Scrolls whatever container of the #AtspiComponent object so it becomes
      * visible on the screen at a given position.
+     * @param coords a #AtspiCoordType indicating whether the coordinates are relative to          the screen, to the window, or to the parent object.
+     * @param x the x coordinate of the point to reach
+     * @param y the y coordinate of the point to reach
      */
     scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Moves and resizes the specified component.
+     * @param x the new vertical position to which the component should be moved.
+     * @param y the new horizontal position to which the component should be moved.
+     * @param width the width to which the component should be resized.
+     * @param height the height to which the component should be resized.
+     * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean
     /**
      * Moves the component to the specified position.
+     * @param x the new vertical position to which the component should be moved.
+     * @param y the new horizontal position to which the component should be moved.
+     * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     set_position(x: number, y: number, ctype: CoordType): boolean
     /**
      * Resizes the specified component to the given coordinates.
+     * @param width the width to which the component should be resized.
+     * @param height the height to which the component should be resized.
      */
     set_size(width: number, height: number): boolean
     /* Methods of Atspi-2.0.Atspi.Document */
     /**
      * Gets the value of a single attribute, if specified for the document as a whole.
+     * @param attribute a string indicating the name of a specific attribute.
      */
     get_document_attribute_value(attribute: string): string
     /**
@@ -3270,6 +3480,8 @@ class Accessible {
      * Copies text from an #AtspiEditableText object into the system clipboard.
      * 
      * see: #atspi_editable_text_paste_text
+     * @param start_pos a #gint indicating the starting character offset       of the text to copy.
+     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be copied.
      */
     copy_text(start_pos: number, end_pos: number): boolean
     /**
@@ -3277,6 +3489,8 @@ class Accessible {
      *       excised portion into the system clipboard.
      * 
      * see: #atspi_editable_text_paste_text
+     * @param start_pos a #gint indicating the starting character offset       of the text to cut.
+     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be cut.
      */
     cut_text(start_pos: number, end_pos: number): boolean
     /**
@@ -3284,6 +3498,8 @@ class Accessible {
      *       excised portion into the system clipboard.
      * 
      * see: #atspi_editable_text_cut_text
+     * @param start_pos a #gint indicating the starting character offset       of the text to delete.
+     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be deleted.
      */
     delete_text(start_pos: number, end_pos: number): boolean
     /**
@@ -3291,6 +3507,9 @@ class Accessible {
      * As with all character offsets, the specified `position` may not be the
      * same as the resulting byte offset, since the text is in a
      * variable-width encoding.
+     * @param position a #gint indicating the character offset at which to insert       the new text.
+     * @param text a string representing the text to insert, in UTF-8 encoding.
+     * @param length the number of characters of text to insert, in bytes. If the byte count of text is less than or equal to length, the entire contents of text will be inserted.
      */
     insert_text(position: number, text: string, length: number): boolean
     /**
@@ -3298,20 +3517,24 @@ class Accessible {
      * As with all character offsets, the specified `position` may not be the
      *       same as the resulting byte offset, since the text is in a
      *       variable-width encoding.
+     * @param position a #gint indicating the character offset at which to insert       the new text.
      */
     paste_text(position: number): boolean
     /**
      * Replace the entire text contents of an #AtspiEditableText object.
+     * @param new_contents a character string, encoded in UTF-8, which is to      become the new text contents of the #AtspiEditableText object.
      */
     set_text_contents(new_contents: string): boolean
     /* Methods of Atspi-2.0.Atspi.Hypertext */
     /**
      * Gets the #AtspiHyperlink object at a specified index.
+     * @param link_index a (zero-index) #gint indicating which hyperlink to query.
      */
     get_link(link_index: number): Hyperlink | null
     /**
      * Gets the index of the #AtspiHyperlink object at a specified
      *        character offset.
+     * @param character_offset a #gint specifying the character offset to query.
      */
     get_link_index(character_offset: number): number
     /**
@@ -3329,6 +3552,7 @@ class Accessible {
      *         specified #AtspiImage implementor.
      * The returned values are meaningful only if the Image has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_image_extents(ctype: CoordType): Rect
     /**
@@ -3340,6 +3564,7 @@ class Accessible {
      *         specified #AtspiImage implementor.
      * The returned values are meaningful only if the Image has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      */
     get_image_position(ctype: CoordType): Point
     /**
@@ -3360,6 +3585,7 @@ class Accessible {
      *          in the parent container.
      * 
      * See #atspi_selection_deselect_selected_child
+     * @param child_index a #gint indicating which of the children              of the #AtspiAccessible is to be de-selected.
      */
     deselect_child(child_index: number): boolean
     /**
@@ -3368,6 +3594,7 @@ class Accessible {
      *          not the index in the parent container.  `selectedChildIndex` in this
      *          method, and `child_index` in #atspi_selection_select_child
      *          are asymmetric.
+     * @param selected_child_index a #gint indicating which of the selected children              of the #Accessible is to be selected.
      */
     deselect_selected_child(selected_child_index: number): boolean
     /**
@@ -3384,12 +3611,14 @@ class Accessible {
      *      #atspi_accessible_get_index_in_parent.
      *      `selected_child_index` must lie between 0
      *      and #atspi_selection_get_n_selected_children - 1, inclusive.
+     * @param selected_child_index a #gint indicating which of the selected      children is specified.
      */
     get_selected_child(selected_child_index: number): Accessible
     /**
      * Determines whether a particular child of an #AtspiSelection implementor
      *        is currently selected.  Note that `child_index` is the index into the
      *        standard #AtspiAccessible container's list of children.
+     * @param child_index an index into the #AtspiSelection's list of children.
      */
     is_child_selected(child_index: number): boolean
     /**
@@ -3402,23 +3631,28 @@ class Accessible {
      *         For #AtspiSelection implementors that only allow
      *         single selections, this may replace the (single) current
      *         selection.
+     * @param child_index a #gint indicating which child of the #Accessible              is to be selected.
      */
     select_child(child_index: number): boolean
     /* Methods of Atspi-2.0.Atspi.Table */
     /**
      * Selects the specified column, adding it to the current column selection.
      * Not all tables support column selection.
+     * @param column the zero-indexed column number of the column being selected.
      */
     add_column_selection(column: number): boolean
     /**
      * Selects the specified row, adding it to the current row selection.
      * Not all tables support row selection.
+     * @param row the zero-indexed row number of the row being selected.
      */
     add_row_selection(row: number): boolean
     /**
      * Gets the table cell at the specified row and column indices.
      * To get the accessible object at a particular (x, y) screen
      * coordinate, use #atspi_component_get_accessible_at_point.
+     * @param row the specified table row, zero-indexed.
+     * @param column the specified table column, zero-indexed.
      */
     get_accessible_at(row: number, column: number): Accessible
     /**
@@ -3430,11 +3664,13 @@ class Accessible {
      * child index.
      * 
      * `see` #atspi_table_get_index_at, #atspi_table_get_row_at_index
+     * @param index the specified child index, zero-indexed.
      */
     get_column_at_index(index: number): number
     /**
      * Gets a text description of a particular table column.  This differs from
      * #atspi_table_get_column_header, which returns an #Accessible.
+     * @param column the specified table column, zero-indexed.
      */
     get_column_description(column: number): string
     /**
@@ -3443,12 +3679,15 @@ class Accessible {
      * rows and/or columns).
      * The returned values are meaningful only if the Table has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param row the specified table row, zero-indexed.
+     * @param column the specified table column, zero-indexed.
      */
     get_column_extent_at(row: number, column: number): number
     /**
      * Gets the header associated with a table column, if available.
      * This differs from #atspi_table_get_column_description, which
      * returns a string.
+     * @param column the specified table column, zero-indexed.
      */
     get_column_header(column: number): Accessible
     /**
@@ -3457,6 +3696,8 @@ class Accessible {
      * coordinate, use #atspi_component_get_accessible_at_point.
      * 
      * `see` #atspi_table_get_row_at_index, #atspi_table_get_column_at_index
+     * @param row the specified table row, zero-indexed.
+     * @param column the specified table column, zero-indexed.
      */
     get_index_at(row: number, column: number): number
     /**
@@ -3486,6 +3727,7 @@ class Accessible {
      * child index.
      * 
      * `see` #atspi_table_get_index_at, #atspi_table_get_column_at_index
+     * @param index the specified child index, zero-indexed.
      */
     get_row_at_index(index: number): number
     /**
@@ -3510,11 +3752,13 @@ class Accessible {
      * row, col, row_extents, col_extents,
      * and is_selected will contain 2, 5, 1, 2, and
      * #TRUE, respectively.
+     * @param index the index of the #AtspiTable child whose row/column extents are requested.
      */
     get_row_column_extents_at_index(index: number): [ /* returnType */ boolean, /* row */ number, /* col */ number, /* row_extents */ number, /* col_extents */ number, /* is_selected */ boolean ]
     /**
      * Gets a text description of a particular table row.  This differs from
      * #atspi_table_get_row_header, which returns an #AtspiAccessible.
+     * @param row the specified table row, zero-indexed.
      */
     get_row_description(row: number): string
     /**
@@ -3523,11 +3767,14 @@ class Accessible {
      * and/or columns).
      * The returned values are meaningful only if the Table has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param row the specified table row, zero-indexed.
+     * @param column the specified table column, zero-indexed.
      */
     get_row_extent_at(row: number, column: number): number
     /**
      * Gets the header associated with a table row, if available. This differs from
      * #atspi_table_get_row_description, which returns a string.
+     * @param row the specified table row, zero-indexed.
      */
     get_row_header(row: number): Accessible
     /**
@@ -3546,26 +3793,32 @@ class Accessible {
     /**
      * Determines whether specified table column is selected.
      * Not all tables support column selection.
+     * @param column the zero-indexed column number of the column being queried.
      */
     is_column_selected(column: number): boolean
     /**
      * Determines whether a table row is selected.  Not all tables support
      * row selection.
+     * @param row the zero-indexed row number of the row being queried.
      */
     is_row_selected(row: number): boolean
     /**
      * Determines whether the cell at a specific row and column is selected.
+     * @param row the zero-indexed row of the cell being queried.
+     * @param column the zero-indexed column of the cell being queried.
      */
     is_selected(row: number, column: number): boolean
     /**
      * De-selects the specified column, removing it from the current column
      * selection.
      * Not all tables support column selection.
+     * @param column the zero-indexed column number of the column being de-selected.
      */
     remove_column_selection(column: number): boolean
     /**
      * De-selects the specified row, removing it from the current row selection.
      * Not all tables support row selection.
+     * @param row the zero-indexed number of the row being de-selected.
      */
     remove_row_selection(row: number): boolean
     /* Methods of Atspi-2.0.Atspi.TableCell */
@@ -3607,15 +3860,21 @@ class Accessible {
     /* Methods of Atspi-2.0.Atspi.Text */
     /**
      * Selects some text (adds a text selection) in an #AtspiText object.
+     * @param start_offset the starting offset of the desired new selection.
+     * @param end_offset the offset of the first character after the new selection.
      */
     add_selection(start_offset: number, end_offset: number): boolean
     /**
      * Gets a set of attributes applied to a range of text from an #AtspiText object, optionally
      * including its 'default' attributes.
+     * @param offset a #gint indicating the offset from which the attribute        search is based.
+     * @param include_defaults a #bool that, when set as #FALSE, indicates the call should only return those attributes which are explicitly set on the current attribute run, omitting any attributes which are inherited from the default values.
      */
     get_attribute_run(offset: number, include_defaults: boolean): [ /* returnType */ GLib.HashTable, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the value of a named attribute at a given offset.
+     * @param offset The character offset at which to query the attribute.
+     * @param attribute_name The attribute to query.
      */
     get_text_attribute_value(offset: number, attribute_name: string): string | null
     /**
@@ -3623,11 +3882,19 @@ class Accessible {
      * object. The text attributes correspond to CSS attributes
      * where possible.
      * <em>DEPRECATED</em>
+     * @param offset a #gint indicating the offset from which the attribute        search is based.
      */
     get_text_attributes(offset: number): [ /* returnType */ GLib.HashTable, /* start_offset */ number, /* end_offset */ number ]
     /**
      * Gets the ranges of text from an #AtspiText object which lie within the
      *          bounds defined by (`x,` `y)` and (`x+``width,` `y+``height)`.
+     * @param x the 'starting' x coordinate of the bounding box.
+     * @param y the 'starting' y coordinate of the bounding box.
+     * @param width the x extent of the bounding box.
+     * @param height the y extent of the bounding box.
+     * @param type an #AccessibleCoordType indicating the coordinate system to use        for the returned values.
+     * @param clipTypeX an #AtspiTextClipType indicating how to treat characters that        intersect the bounding box's x extents.
+     * @param clipTypeY an #AtspiTextClipType indicating how to treat characters that        intersect the bounding box's y extents.
      */
     get_bounded_ranges(x: number, y: number, width: number, height: number, type: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType): TextRange[]
     /**
@@ -3636,6 +3903,7 @@ class Accessible {
     get_caret_offset(): number
     /**
      * Gets the character at a given offset for an #AtspiText object.
+     * @param offset a #gint indicating the text offset where the desired          character is located.
      */
     get_character_at_offset(offset: number): number
     /**
@@ -3647,6 +3915,8 @@ class Accessible {
      *        the character at a particular text offset.
      * The returned values are meaningful only if the Text has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param offset a #gint indicating the offset of the text character for        whom boundary information is requested.
+     * @param type an #AccessibleCoordType indicating the coordinate system to use        for the returned values.
      */
     get_character_extents(offset: number, type: CoordType): Rect
     /**
@@ -3664,17 +3934,24 @@ class Accessible {
     get_n_selections(): number
     /**
      * Gets the character offset into the text at a given point.
+     * @param x the x coordinate of the point to be queried.
+     * @param y the y coordinate of the point to be queried.
+     * @param type an #AtspiCoordType indicating the coordinate system in which       the values should be returned.
      */
     get_offset_at_point(x: number, y: number, type: CoordType): number
     /**
      * Gets the bounding box for text within a range in an  #AtspiText object.
      * The returned values are meaningful only if the Text has both
      * STATE_VISIBLE and STATE_SHOWING.
+     * @param start_offset a #gint indicating the offset of the first text character for        whom boundary information is requested.
+     * @param end_offset a #gint indicating the offset of the text character        after the last character for whom boundary information is requested.
+     * @param type an #AtspiCoordType indicating the coordinate system to use        for the returned values.
      */
     get_range_extents(start_offset: number, end_offset: number, type: CoordType): Rect
     /**
      * Gets the bounds of the `selection_num-th` active text selection for an
      *         #AtspiText object.
+     * @param selection_num a #gint indicating which selection to query.
      */
     get_selection(selection_num: number): Range
     /**
@@ -3708,49 +3985,72 @@ class Accessible {
      * If `granularity` is ATSPI_TEXT_GRANULARITY_PARAGRAPH the returned string
      * is from the start of the paragraph at or before the offset to the start
      * of the following paragraph after the offset.
+     * @param offset position
+     * @param granularity An #AtspiTextGranularity
      */
     get_string_at_offset(offset: number, granularity: TextGranularity): TextRange
     /**
      * Gets a range of text from an #AtspiText object.  The number of bytes
      *          in the returned string may exceed either end_offset or start_offset, since
      *          UTF-8 is a variable-width encoding.
+     * @param start_offset a #gint indicating the start of the desired text range.
+     * @param end_offset a #gint indicating the first character past the desired range.
      */
     get_text(start_offset: number, end_offset: number): string
     /**
      * Gets delimited text from an #AtspiText object which follows a given
      *          text offset.
+     * @param offset a #gint indicating the offset from which the delimiter        search is based.
+     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
      */
     get_text_after_offset(offset: number, type: TextBoundaryType): TextRange
     /**
      * Gets delimited text from an #AtspiText object which includes a given
      *          text offset.
+     * @param offset a #gint indicating the offset from which the delimiter        search is based.
+     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
      */
     get_text_at_offset(offset: number, type: TextBoundaryType): TextRange
     /**
      * Gets delimited text from an #AtspiText object which precedes a given
      *          text offset.
+     * @param offset a #gint indicating the offset from which the delimiter        search is based.
+     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
      */
     get_text_before_offset(offset: number, type: TextBoundaryType): TextRange
     /**
      * De-selects a text selection.
+     * @param selection_num a #gint indicating which text selection to remove.
      */
     remove_selection(selection_num: number): boolean
     /**
      * Scrolls whatever container of the #AtspiText text range so it becomes
      * visible on the screen.
+     * @param start_offset a #gint indicating the start of the desired text range.
+     * @param end_offset a #gint indicating the first character past the desired range.
+     * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
      */
     scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean
     /**
      * Scrolls whatever container of the #AtspiText text range so it becomes
      * visible on the screen at a given position.
+     * @param start_offset a #gint indicating the start of the desired text range.
+     * @param end_offset a #gint indicating the first character past the desired range.
+     * @param coords a #AtspiCoordType indicating whether the coordinates are relative to          the screen, to the window, or to the parent object.
+     * @param x the x coordinate of the point to reach
+     * @param y the y coordinate of the point to reach
      */
     scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean
     /**
      * Moves the text caret to a given position.
+     * @param new_offset the offset to which the text caret is to be moved.
      */
     set_caret_offset(new_offset: number): boolean
     /**
      * Changes the bounds of an existing #AtspiText text selection.
+     * @param selection_num a zero-offset index indicating which text selection to modify.
+     * @param start_offset a #gint indicating the new starting offset for the selection.
+     * @param end_offset a #gint indicating the desired new offset of the first character             after the selection.
      */
     set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
     /* Methods of Atspi-2.0.Atspi.Value */
@@ -3772,6 +4072,7 @@ class Accessible {
     get_minimum_value(): number
     /**
      * Sets the current value of an #AtspiValue.
+     * @param new_value a #gdouble value which is the desired new value of the object.
      */
     set_current_value(new_value: number): boolean
     /* Virtual methods of Atspi-2.0.Atspi.Accessible */
@@ -3794,6 +4095,7 @@ class Accessible {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3806,6 +4108,8 @@ class Accessible {
      * mouse-review
      * say-all
      * caret-tracking
+     * @param arg1 a boolean specifying whether the mode is being toggled on or off.
+     * @param why an optional string explaining why the mode changed.
      */
     connect(sigName: "mode-changed", callback: (($obj: Accessible, arg1: number, why: string) => void)): number
     connect_after(sigName: "mode-changed", callback: (($obj: Accessible, arg1: number, why: string) => void)): number
@@ -3815,6 +4119,8 @@ class Accessible {
      * that it is now reading or tracking a new object, or, a new piece of
      * text within an object. This allows a magnifier to gain the information
      * needed to highlight the object that the screen reader is reading.
+     * @param arg1 an integer specifying the current offset of the text being read,        if the object is textual.
+     * @param arg2 an integer specifying the ending offset of the text being read,        if the object is textual.
      */
     connect(sigName: "region-changed", callback: (($obj: Accessible, arg1: number, arg2: number) => void)): number
     connect_after(sigName: "region-changed", callback: (($obj: Accessible, arg1: number, arg2: number) => void)): number
@@ -3848,6 +4154,7 @@ class Accessible {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
@@ -3865,7 +4172,7 @@ interface Application_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Application {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3901,6 +4208,10 @@ class Application {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3911,6 +4222,12 @@ class Application {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3934,6 +4251,7 @@ class Application {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3953,11 +4271,14 @@ class Application {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3965,6 +4286,8 @@ class Application {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3982,6 +4305,7 @@ class Application {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4027,6 +4351,7 @@ class Application {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4070,15 +4395,20 @@ class Application {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4119,6 +4449,7 @@ class Application {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4153,6 +4484,7 @@ class Application {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4172,6 +4504,7 @@ class Application {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4204,6 +4537,7 @@ class Application {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Application, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Application, pspec: GObject.ParamSpec) => void)): number
@@ -4221,7 +4555,7 @@ interface Device_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Device {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.Device */
     add_key_grab(kd: KeyDefinition, callback: KeyCallback | null): number
     /**
@@ -4240,6 +4574,7 @@ class Device {
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
+     * @param keycode the keycode to map.
      */
     get_modifier(keycode: number): number
     /**
@@ -4257,11 +4592,13 @@ class Device {
      * have yet been mapped using this device, then it will look for a modifier
      * that is not currently being used. If no unused modifier can be found,
      * then it will use the first modifier by default.
+     * @param keycode the keycode to map.
      */
     map_modifier(keycode: number): number
     notify_key(pressed: boolean, keycode: number, keysym: number, state: number, text: string): boolean
     /**
      * Removes the key grab specified by `id`.
+     * @param id the identifier of the grab to be removed.
      */
     remove_key_grab(id: number): void
     /**
@@ -4270,6 +4607,7 @@ class Device {
     ungrab_keyboard(): void
     /**
      * Removes a mapped modifier from the given keycode.
+     * @param keycode the keycode to unmap.
      */
     unmap_modifier(keycode: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4307,6 +4645,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4317,6 +4659,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4340,6 +4688,7 @@ class Device {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4359,11 +4708,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4371,6 +4723,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4388,6 +4742,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4433,6 +4788,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4476,15 +4832,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4525,6 +4886,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4559,6 +4921,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atspi-2.0.Atspi.Device */
@@ -4573,6 +4936,7 @@ class Device {
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
+     * @param keycode the keycode to map.
      */
     vfunc_get_modifier(keycode: number): number
     /**
@@ -4590,10 +4954,12 @@ class Device {
      * have yet been mapped using this device, then it will look for a modifier
      * that is not currently being used. If no unused modifier can be found,
      * then it will use the first modifier by default.
+     * @param keycode the keycode to map.
      */
     vfunc_map_modifier(keycode: number): number
     /**
      * Removes the key grab specified by `id`.
+     * @param id the identifier of the grab to be removed.
      */
     vfunc_remove_key_grab(id: number): void
     /**
@@ -4602,6 +4968,7 @@ class Device {
     vfunc_ungrab_keyboard(): void
     /**
      * Removes a mapped modifier from the given keycode.
+     * @param keycode the keycode to unmap.
      */
     vfunc_unmap_modifier(keycode: number): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4621,6 +4988,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4653,6 +5021,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
@@ -4672,9 +5041,9 @@ interface DeviceLegacy_ConstructProps extends Device_ConstructProps {
 }
 class DeviceLegacy {
     /* Fields of Atspi-2.0.Atspi.Device */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.Device */
     add_key_grab(kd: KeyDefinition, callback: KeyCallback | null): number
     /**
@@ -4693,6 +5062,7 @@ class DeviceLegacy {
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
+     * @param keycode the keycode to map.
      */
     get_modifier(keycode: number): number
     /**
@@ -4710,11 +5080,13 @@ class DeviceLegacy {
      * have yet been mapped using this device, then it will look for a modifier
      * that is not currently being used. If no unused modifier can be found,
      * then it will use the first modifier by default.
+     * @param keycode the keycode to map.
      */
     map_modifier(keycode: number): number
     notify_key(pressed: boolean, keycode: number, keysym: number, state: number, text: string): boolean
     /**
      * Removes the key grab specified by `id`.
+     * @param id the identifier of the grab to be removed.
      */
     remove_key_grab(id: number): void
     /**
@@ -4723,6 +5095,7 @@ class DeviceLegacy {
     ungrab_keyboard(): void
     /**
      * Removes a mapped modifier from the given keycode.
+     * @param keycode the keycode to unmap.
      */
     unmap_modifier(keycode: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4760,6 +5133,10 @@ class DeviceLegacy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4770,6 +5147,12 @@ class DeviceLegacy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4793,6 +5176,7 @@ class DeviceLegacy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4812,11 +5196,14 @@ class DeviceLegacy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4824,6 +5211,8 @@ class DeviceLegacy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4841,6 +5230,7 @@ class DeviceLegacy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4886,6 +5276,7 @@ class DeviceLegacy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4929,15 +5320,20 @@ class DeviceLegacy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4978,6 +5374,7 @@ class DeviceLegacy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5012,6 +5409,7 @@ class DeviceLegacy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atspi-2.0.Atspi.Device */
@@ -5026,6 +5424,7 @@ class DeviceLegacy {
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
+     * @param keycode the keycode to map.
      */
     vfunc_get_modifier(keycode: number): number
     /**
@@ -5043,10 +5442,12 @@ class DeviceLegacy {
      * have yet been mapped using this device, then it will look for a modifier
      * that is not currently being used. If no unused modifier can be found,
      * then it will use the first modifier by default.
+     * @param keycode the keycode to map.
      */
     vfunc_map_modifier(keycode: number): number
     /**
      * Removes the key grab specified by `id`.
+     * @param id the identifier of the grab to be removed.
      */
     vfunc_remove_key_grab(id: number): void
     /**
@@ -5055,6 +5456,7 @@ class DeviceLegacy {
     vfunc_ungrab_keyboard(): void
     /**
      * Removes a mapped modifier from the given keycode.
+     * @param keycode the keycode to unmap.
      */
     vfunc_unmap_modifier(keycode: number): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5074,6 +5476,7 @@ class DeviceLegacy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5106,6 +5509,7 @@ class DeviceLegacy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceLegacy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceLegacy, pspec: GObject.ParamSpec) => void)): number
@@ -5127,15 +5531,17 @@ interface DeviceListener_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DeviceListener {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.DeviceListener */
     /**
      * Adds an in-process callback function to an existing #AtspiDeviceListener.
+     * @param callback an #AtspiDeviceListenerCB function pointer.
      */
     add_callback(callback: DeviceListenerCB): void
     /**
      * Removes an in-process callback function from an existing
      * #AtspiDeviceListener.
+     * @param callback an #AtspiDeviceListenerCB function pointer.
      */
     remove_callback(callback: DeviceListenerCB): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5173,6 +5579,10 @@ class DeviceListener {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5183,6 +5593,12 @@ class DeviceListener {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5206,6 +5622,7 @@ class DeviceListener {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5225,11 +5642,14 @@ class DeviceListener {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5237,6 +5657,8 @@ class DeviceListener {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5254,6 +5676,7 @@ class DeviceListener {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5299,6 +5722,7 @@ class DeviceListener {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5342,15 +5766,20 @@ class DeviceListener {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5391,6 +5820,7 @@ class DeviceListener {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5425,6 +5855,7 @@ class DeviceListener {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atspi-2.0.Atspi.DeviceListener */
@@ -5446,6 +5877,7 @@ class DeviceListener {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5478,6 +5910,7 @@ class DeviceListener {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceListener, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceListener, pspec: GObject.ParamSpec) => void)): number
@@ -5497,9 +5930,9 @@ interface DeviceX11_ConstructProps extends Device_ConstructProps {
 }
 class DeviceX11 {
     /* Fields of Atspi-2.0.Atspi.Device */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.Device */
     add_key_grab(kd: KeyDefinition, callback: KeyCallback | null): number
     /**
@@ -5518,6 +5951,7 @@ class DeviceX11 {
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
+     * @param keycode the keycode to map.
      */
     get_modifier(keycode: number): number
     /**
@@ -5535,11 +5969,13 @@ class DeviceX11 {
      * have yet been mapped using this device, then it will look for a modifier
      * that is not currently being used. If no unused modifier can be found,
      * then it will use the first modifier by default.
+     * @param keycode the keycode to map.
      */
     map_modifier(keycode: number): number
     notify_key(pressed: boolean, keycode: number, keysym: number, state: number, text: string): boolean
     /**
      * Removes the key grab specified by `id`.
+     * @param id the identifier of the grab to be removed.
      */
     remove_key_grab(id: number): void
     /**
@@ -5548,6 +5984,7 @@ class DeviceX11 {
     ungrab_keyboard(): void
     /**
      * Removes a mapped modifier from the given keycode.
+     * @param keycode the keycode to unmap.
      */
     unmap_modifier(keycode: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5585,6 +6022,10 @@ class DeviceX11 {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5595,6 +6036,12 @@ class DeviceX11 {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5618,6 +6065,7 @@ class DeviceX11 {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5637,11 +6085,14 @@ class DeviceX11 {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5649,6 +6100,8 @@ class DeviceX11 {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5666,6 +6119,7 @@ class DeviceX11 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5711,6 +6165,7 @@ class DeviceX11 {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5754,15 +6209,20 @@ class DeviceX11 {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5803,6 +6263,7 @@ class DeviceX11 {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5837,6 +6298,7 @@ class DeviceX11 {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atspi-2.0.Atspi.Device */
@@ -5851,6 +6313,7 @@ class DeviceX11 {
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
+     * @param keycode the keycode to map.
      */
     vfunc_get_modifier(keycode: number): number
     /**
@@ -5868,10 +6331,12 @@ class DeviceX11 {
      * have yet been mapped using this device, then it will look for a modifier
      * that is not currently being used. If no unused modifier can be found,
      * then it will use the first modifier by default.
+     * @param keycode the keycode to map.
      */
     vfunc_map_modifier(keycode: number): number
     /**
      * Removes the key grab specified by `id`.
+     * @param id the identifier of the grab to be removed.
      */
     vfunc_remove_key_grab(id: number): void
     /**
@@ -5880,6 +6345,7 @@ class DeviceX11 {
     vfunc_ungrab_keyboard(): void
     /**
      * Removes a mapped modifier from the given keycode.
+     * @param keycode the keycode to unmap.
      */
     vfunc_unmap_modifier(keycode: number): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5899,6 +6365,7 @@ class DeviceX11 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5931,6 +6398,7 @@ class DeviceX11 {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DeviceX11, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DeviceX11, pspec: GObject.ParamSpec) => void)): number
@@ -5952,11 +6420,12 @@ interface EventListener_ConstructProps extends GObject.Object_ConstructProps {
 }
 class EventListener {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.EventListener */
     /**
      * Deregisters an #AtspiEventListener from the registry, for a specific
      *             event type.
+     * @param event_type a string specifying the event type for which this             listener is to be deregistered.
      */
     deregister(event_type: string): boolean
     /**
@@ -6042,10 +6511,13 @@ class EventListener {
      * Currently, object:text-reading-position needs to be specified explicitly
      * (it is not implied by object:text), since it is generated by the screen
      * reader and is thus a special case internally.
+     * @param event_type a character string indicating the type of events for which            notification is requested.  Format is            EventClass:major_type:minor_type:detail            where all subfields other than EventClass are optional.            EventClasses include "object", "window", "mouse",            and toolkit events (e.g. "Gtk", "AWT").            Examples: "focus:", "Gtk:GtkWidget:button_press_event".
      */
     register(event_type: string): boolean
     /**
      * Adds an in-process callback function to an existing #AtspiEventListener.
+     * @param event_type a character string indicating the type of events for which            notification is requested.  See #atspi_event_listener_register for a description of the format and legal event types.
+     * @param properties a list of             properties that should be sent along with the event. The             properties are valued for the duration of the event callback.k             TODO: Document.
      */
     register_full(event_type: string, properties?: string[] | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6083,6 +6555,10 @@ class EventListener {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6093,6 +6569,12 @@ class EventListener {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6116,6 +6598,7 @@ class EventListener {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6135,11 +6618,14 @@ class EventListener {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6147,6 +6633,8 @@ class EventListener {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6164,6 +6652,7 @@ class EventListener {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6209,6 +6698,7 @@ class EventListener {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6252,15 +6742,20 @@ class EventListener {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6301,6 +6796,7 @@ class EventListener {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6335,6 +6831,7 @@ class EventListener {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6354,6 +6851,7 @@ class EventListener {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6386,6 +6884,7 @@ class EventListener {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: EventListener, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: EventListener, pspec: GObject.ParamSpec) => void)): number
@@ -6402,10 +6901,14 @@ class EventListener {
     /**
      * Deregisters an #AtspiEventListenerCB from the registry, for a specific
      *             event type.
+     * @param callback the #AtspiEventListenerCB registered against an            event type.
+     * @param event_type a string specifying the event type for which this             listener is to be deregistered.
      */
     static deregister_from_callback(callback: EventListenerCB, event_type: string): boolean
     /**
      * Registers an #AtspiEventListenerCB against an `event_type`.
+     * @param callback the #AtspiEventListenerCB to be registered against an event type.
+     * @param event_type a character string indicating the type of events for which            notification is requested.  See #atspi_event_listener_register for a description of the format.
      */
     static register_from_callback(callback: EventListenerCB, event_type: string): boolean
     static register_from_callback_full(event_type: string, properties: string[]): boolean
@@ -6415,11 +6918,11 @@ interface Hyperlink_ConstructProps extends Object_ConstructProps {
 }
 class Hyperlink {
     /* Fields of Atspi-2.0.Atspi.Object */
-    readonly parent: GObject.Object
-    readonly app: Application
-    readonly path: string
+    parent: GObject.Object
+    app: Application
+    path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.Hyperlink */
     /**
      * Gets the ending character offset of the text range associated with
@@ -6443,6 +6946,7 @@ class Hyperlink {
     /**
      * Gets the object associated with a particular hyperlink anchor, as an
      * #AtspiAccessible.
+     * @param i a (zero-index) #gint indicating which hyperlink anchor to query.
      */
     get_object(i: number): Accessible
     /**
@@ -6452,6 +6956,7 @@ class Hyperlink {
     get_start_index(): number
     /**
      * Gets the URI associated with a particular hyperlink anchor.
+     * @param i a (zero-index) integer indicating which hyperlink anchor to query.
      */
     get_uri(i: number): string
     /**
@@ -6494,6 +6999,10 @@ class Hyperlink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6504,6 +7013,12 @@ class Hyperlink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6527,6 +7042,7 @@ class Hyperlink {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6546,11 +7062,14 @@ class Hyperlink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6558,6 +7077,8 @@ class Hyperlink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6575,6 +7096,7 @@ class Hyperlink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6620,6 +7142,7 @@ class Hyperlink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6663,15 +7186,20 @@ class Hyperlink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6712,6 +7240,7 @@ class Hyperlink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6746,6 +7275,7 @@ class Hyperlink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6765,6 +7295,7 @@ class Hyperlink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6797,6 +7328,7 @@ class Hyperlink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Hyperlink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Hyperlink, pspec: GObject.ParamSpec) => void)): number
@@ -6814,7 +7346,7 @@ interface MatchRule_ConstructProps extends GObject.Object_ConstructProps {
 }
 class MatchRule {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -6850,6 +7382,10 @@ class MatchRule {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6860,6 +7396,12 @@ class MatchRule {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6883,6 +7425,7 @@ class MatchRule {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6902,11 +7445,14 @@ class MatchRule {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6914,6 +7460,8 @@ class MatchRule {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6931,6 +7479,7 @@ class MatchRule {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6976,6 +7525,7 @@ class MatchRule {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7019,15 +7569,20 @@ class MatchRule {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7068,6 +7623,7 @@ class MatchRule {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7102,6 +7658,7 @@ class MatchRule {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7121,6 +7678,7 @@ class MatchRule {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7153,6 +7711,7 @@ class MatchRule {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MatchRule, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MatchRule, pspec: GObject.ParamSpec) => void)): number
@@ -7172,7 +7731,7 @@ interface Object_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Object {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -7208,6 +7767,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7218,6 +7781,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7241,6 +7810,7 @@ class Object {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7260,11 +7830,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7272,6 +7845,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7289,6 +7864,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7334,6 +7910,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7377,15 +7954,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7426,6 +8008,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7460,6 +8043,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7479,6 +8063,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7511,6 +8096,7 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
@@ -7528,7 +8114,7 @@ interface Relation_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Relation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.Relation */
     /**
      * Gets the number of objects which this relationship has as its
@@ -7542,6 +8128,7 @@ class Relation {
     get_relation_type(): RelationType
     /**
      * Gets the `i-th` target of a specified #AtspiRelation relationship.
+     * @param i a (zero-index) #gint indicating which (of possibly several) target is requested.
      */
     get_target(i: number): Accessible
     /* Methods of GObject-2.0.GObject.Object */
@@ -7579,6 +8166,10 @@ class Relation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7589,6 +8180,12 @@ class Relation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7612,6 +8209,7 @@ class Relation {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7631,11 +8229,14 @@ class Relation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7643,6 +8244,8 @@ class Relation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7660,6 +8263,7 @@ class Relation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7705,6 +8309,7 @@ class Relation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7748,15 +8353,20 @@ class Relation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7797,6 +8407,7 @@ class Relation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7831,6 +8442,7 @@ class Relation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7850,6 +8462,7 @@ class Relation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7882,6 +8495,7 @@ class Relation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Relation, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Relation, pspec: GObject.ParamSpec) => void)): number
@@ -7899,22 +8513,25 @@ interface StateSet_ConstructProps extends GObject.Object_ConstructProps {
 }
 class StateSet {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atspi-2.0.Atspi.StateSet */
     /**
      * Adds a particular #AtspiState to an #AtspiStateSet (i.e. sets the
      *       given state to #TRUE in the stateset).
+     * @param state an #AtspiStateType to be added to the specified #AtspiStateSet.
      */
     add(state: StateType): void
     /**
      * Determines the differences between two instances of #AtspiStateSet.
      * 
      * `see` #atspi_state_set_equals.
+     * @param set2 a pointer to the second #AtspiStateSet object on which to operate.
      */
     compare(set2: StateSet): StateSet
     /**
      * Determines whether a given #AtspiStateSet includes a given state; that is,
      *          whether `state` is true for the `set` in question.
+     * @param state an #AtspiStateType for which the specified #AtspiStateSet          will be queried.
      */
     contains(state: StateType): boolean
     /**
@@ -7923,6 +8540,7 @@ class StateSet {
      *          state variables at once.
      * 
      * `see` #atspi_state_set_compare.
+     * @param set2 a pointer to the second #AtspiStateSet object on which to operate.
      */
     equals(set2: StateSet): boolean
     /**
@@ -7933,10 +8551,13 @@ class StateSet {
     /**
      * Removes a particular #AtspiState to an #AtspiStateSet (i.e. sets the
      *       given state to #FALSE in the stateset.)
+     * @param state an #AtspiStateType to remove from the specified `set`.
      */
     remove(state: StateType): void
     /**
      * Enables/disables a state in an #AtspiStateSet according to its `name`.
+     * @param name a string corresponding to a state name.
+     * @param enabled if #TRUE, `name` should be enabled in the `set` in question;          otherwise, it should be disabled.
      */
     set_by_name(name: string, enabled: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7974,6 +8595,10 @@ class StateSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7984,6 +8609,12 @@ class StateSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8007,6 +8638,7 @@ class StateSet {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8026,11 +8658,14 @@ class StateSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8038,6 +8673,8 @@ class StateSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8055,6 +8692,7 @@ class StateSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8100,6 +8738,7 @@ class StateSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8143,15 +8782,20 @@ class StateSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8192,6 +8836,7 @@ class StateSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8226,6 +8871,7 @@ class StateSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8245,6 +8891,7 @@ class StateSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8277,6 +8924,7 @@ class StateSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StateSet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StateSet, pspec: GObject.ParamSpec) => void)): number
@@ -8294,9 +8942,9 @@ class StateSet {
 }
 abstract class AccessibleClass {
     /* Fields of Atspi-2.0.Atspi.AccessibleClass */
-    readonly parent_class: ObjectClass
-    readonly region_changed: (accessible: Accessible, current_offset: number, last_offset: number) => void
-    readonly mode_changed: (accessible: Accessible, enabled: boolean) => void
+    parent_class: ObjectClass
+    region_changed: (accessible: Accessible, current_offset: number, last_offset: number) => void
+    mode_changed: (accessible: Accessible, enabled: boolean) => void
     static name: string
 }
 class AccessiblePrivate {
@@ -8304,57 +8952,57 @@ class AccessiblePrivate {
 }
 abstract class ApplicationClass {
     /* Fields of Atspi-2.0.Atspi.ApplicationClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class DeviceClass {
     /* Fields of Atspi-2.0.Atspi.DeviceClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly add_key_grab: (device: Device, kd: KeyDefinition) => void
-    readonly remove_key_grab: (device: Device, id: number) => void
-    readonly map_modifier: (device: Device, keycode: number) => number
-    readonly unmap_modifier: (device: Device, keycode: number) => void
-    readonly get_modifier: (device: Device, keycode: number) => number
-    readonly grab_keyboard: (device: Device) => boolean
-    readonly ungrab_keyboard: (device: Device) => void
-    readonly get_locked_modifiers: (device: Device) => number
+    parent_class: GObject.ObjectClass
+    add_key_grab: (device: Device, kd: KeyDefinition) => void
+    remove_key_grab: (device: Device, id: number) => void
+    map_modifier: (device: Device, keycode: number) => number
+    unmap_modifier: (device: Device, keycode: number) => void
+    get_modifier: (device: Device, keycode: number) => number
+    grab_keyboard: (device: Device) => boolean
+    ungrab_keyboard: (device: Device) => void
+    get_locked_modifiers: (device: Device) => number
     static name: string
 }
 class DeviceEvent {
     /* Fields of Atspi-2.0.Atspi.DeviceEvent */
-    readonly type: EventType
-    readonly id: number
-    readonly hw_code: number
-    readonly modifiers: number
-    readonly timestamp: number
-    readonly event_string: string
-    readonly is_text: boolean
+    type: EventType
+    id: number
+    hw_code: number
+    modifiers: number
+    timestamp: number
+    event_string: string
+    is_text: boolean
     static name: string
 }
 abstract class DeviceLegacyClass {
     /* Fields of Atspi-2.0.Atspi.DeviceLegacyClass */
-    readonly parent_class: DeviceClass
+    parent_class: DeviceClass
     static name: string
 }
 abstract class DeviceListenerClass {
     /* Fields of Atspi-2.0.Atspi.DeviceListenerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly device_event: (listener: DeviceListener, event: DeviceEvent) => boolean
+    parent_class: GObject.ObjectClass
+    device_event: (listener: DeviceListener, event: DeviceEvent) => boolean
     static name: string
 }
 abstract class DeviceX11Class {
     /* Fields of Atspi-2.0.Atspi.DeviceX11Class */
-    readonly parent_class: DeviceClass
+    parent_class: DeviceClass
     static name: string
 }
 class Event {
     /* Fields of Atspi-2.0.Atspi.Event */
-    readonly type: string
-    readonly source: Accessible
-    readonly detail1: number
-    readonly detail2: number
-    readonly any_data: any
-    readonly sender: Accessible
+    type: string
+    source: Accessible
+    detail1: number
+    detail2: number
+    any_data: any
+    sender: Accessible
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -8372,59 +9020,59 @@ class Event {
 }
 abstract class EventListenerClass {
     /* Fields of Atspi-2.0.Atspi.EventListenerClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class EventListenerMode {
     /* Fields of Atspi-2.0.Atspi.EventListenerMode */
-    readonly synchronous: boolean
-    readonly preemptive: boolean
-    readonly global: boolean
+    synchronous: boolean
+    preemptive: boolean
+    global: boolean
     static name: string
 }
 abstract class HyperlinkClass {
     /* Fields of Atspi-2.0.Atspi.HyperlinkClass */
-    readonly parent_class: ObjectClass
+    parent_class: ObjectClass
     static name: string
 }
 class KeyDefinition {
     /* Fields of Atspi-2.0.Atspi.KeyDefinition */
-    readonly keycode: number
-    readonly keysym: number
-    readonly keystring: string
-    readonly modifiers: number
+    keycode: number
+    keysym: number
+    keystring: string
+    modifiers: number
     static name: string
 }
 class KeySet {
     /* Fields of Atspi-2.0.Atspi.KeySet */
-    readonly keysyms: number
-    readonly keycodes: number
-    readonly keystrings: string
-    readonly len: number
+    keysyms: number
+    keycodes: number
+    keystrings: string
+    len: number
     static name: string
 }
 abstract class MatchRuleClass {
     /* Fields of Atspi-2.0.Atspi.MatchRuleClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ObjectClass {
     /* Fields of Atspi-2.0.Atspi.ObjectClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Point {
     /* Fields of Atspi-2.0.Atspi.Point */
-    readonly x: number
-    readonly y: number
+    x: number
+    y: number
     /* Methods of Atspi-2.0.Atspi.Point */
     copy(): Point
     static name: string
 }
 class Range {
     /* Fields of Atspi-2.0.Atspi.Range */
-    readonly start_offset: number
-    readonly end_offset: number
+    start_offset: number
+    end_offset: number
     /* Methods of Atspi-2.0.Atspi.Range */
     /**
      * Gets a copy of an #AtspiRange object.
@@ -8434,29 +9082,29 @@ class Range {
 }
 class Rect {
     /* Fields of Atspi-2.0.Atspi.Rect */
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
+    x: number
+    y: number
+    width: number
+    height: number
     /* Methods of Atspi-2.0.Atspi.Rect */
     copy(): Rect
     static name: string
 }
 abstract class RelationClass {
     /* Fields of Atspi-2.0.Atspi.RelationClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class StateSetClass {
     /* Fields of Atspi-2.0.Atspi.StateSetClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class TextRange {
     /* Fields of Atspi-2.0.Atspi.TextRange */
-    readonly start_offset: number
-    readonly end_offset: number
-    readonly content: string
+    start_offset: number
+    end_offset: number
+    content: string
     static name: string
 }
     type ControllerEventMask = number

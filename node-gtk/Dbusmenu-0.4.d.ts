@@ -375,9 +375,11 @@ interface Client_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Client {
     /* Properties of Dbusmenu-0.4.Dbusmenu.Client */
+    readonly dbusName: string
+    readonly dbusObject: string
     groupEvents: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dbusmenu-0.4.Dbusmenu.Client */
     /**
      * This function connects into the type handling of the #DbusmenuClient.
@@ -390,6 +392,8 @@ class Client {
      * 
      * In the future the known types will be sent to the server so that it
      * can make choices about the menu item types availble.
+     * @param type A text string that will be matched with the 'type'     property on incoming menu items
+     * @param newfunc The function that will be executed with those new     items when they come in.
      */
     addTypeHandler(type: string, newfunc: ClientTypeHandler): boolean
     /**
@@ -403,6 +407,8 @@ class Client {
      * 
      * In the future the known types will be sent to the server so that it
      * can make choices about the menu item types availble.
+     * @param type A text string that will be matched with the 'type'     property on incoming menu items
+     * @param newfunc The function that will be executed with those new     items when they come in.
      */
     addTypeHandlerFull(type: string, newfunc: ClientTypeHandler): boolean
     /**
@@ -472,6 +478,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -482,6 +492,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -505,6 +521,7 @@ class Client {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -524,11 +541,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -536,6 +556,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -553,6 +575,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -598,6 +621,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -641,15 +665,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -690,6 +719,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -724,6 +754,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Dbusmenu-0.4.Dbusmenu.Client */
@@ -734,6 +765,7 @@ class Client {
     emit(sigName: "event-result", object: GObject.Object, p0: string, p1: GLib.Variant, p2: number, p3?: object | null): void
     /**
      * Signaled when the theme directories are changed by the server.
+     * @param arg1 A #GStrv of theme directories
      */
     connect(sigName: "icon-theme-dirs-changed", callback: ((arg1?: object | null) => void)): number
     on(sigName: "icon-theme-dirs-changed", callback: (arg1?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -743,6 +775,8 @@ class Client {
     /**
      * Signaled when the server wants to activate an item in
      * 		order to display the menu.
+     * @param arg1 The #DbusmenuMenuitem activated
+     * @param arg2 A timestamp that the event happened at
      */
     connect(sigName: "item-activate", callback: ((arg1: GObject.Object, arg2: number) => void)): number
     on(sigName: "item-activate", callback: (arg1: GObject.Object, arg2: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -759,6 +793,7 @@ class Client {
      * 		doesn't mean that it's placed anywhere.  The parent that
      * 		it's applied to will signal #DbusmenuMenuitem::child-added
      * 		when it gets parented.
+     * @param arg1 The new #DbusmenuMenuitem created
      */
     connect(sigName: "new-menuitem", callback: ((arg1: GObject.Object) => void)): number
     on(sigName: "new-menuitem", callback: (arg1: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -769,6 +804,7 @@ class Client {
      * The layout has changed in a way that can not be
      * 		represented by the individual items changing as the
      * 		root of this client has changed.
+     * @param arg1 The new root #DbusmenuMenuitem
      */
     connect(sigName: "root-changed", callback: ((arg1: GObject.Object) => void)): number
     on(sigName: "root-changed", callback: (arg1: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -804,12 +840,23 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::dbus-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::dbus-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::dbus-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::dbus-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::dbus-object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::dbus-object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::dbus-object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::dbus-object", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::group-events", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::group-events", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::group-events", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -834,45 +881,56 @@ interface Menuitem_ConstructProps extends GObject.Object_ConstructProps {
     id?: number
 }
 class Menuitem {
+    /* Properties of Dbusmenu-0.4.Dbusmenu.Menuitem */
+    readonly id: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dbusmenu-0.4.Dbusmenu.Menuitem */
     /**
      * Puts `child` in the list of children for `mi` at the location
      * specified in `position`.  If there is not enough entires available
      * then `child` will be placed at the end of the list.
+     * @param child The #DbusmenuMenuitem to make a child of `mi`.
+     * @param position Where in `mi` object's list of chidren `child` should be placed.
      */
     childAddPosition(child: Menuitem, position: number): boolean
     /**
      * This function adds `child` to the list of children on `mi` at
      * the end of that list.
+     * @param child The #DbusmenMenuitem that will be a child
      */
     childAppend(child: Menuitem): boolean
     /**
      * This function removes `child` from the children list of `mi`.  It does
      * not call #g_object_unref on `child`.
+     * @param child The child #DbusmenuMenuitem that you want to no longer     be a child of `mi`.
      */
     childDelete(child: Menuitem): boolean
     /**
      * Search the children of `mi` to find one with the ID of `id`.
      * If it doesn't exist then we return #NULL.
+     * @param id The ID of the child that we're looking for.
      */
     childFind(id: number): Menuitem
     /**
      * This function adds `child` to the list of children on `mi` at
      * the beginning of that list.
+     * @param child The #DbusmenMenuitem that will be a child
      */
     childPrepend(child: Menuitem): boolean
     /**
      * This function moves a child on the list of children.  It is
      * for a child that is already in the list, but simply needs a
      * new location.
+     * @param child The #DbusmenuMenuitem that is a child needing to be moved
+     * @param position The position in the list to place it in
      */
     childReorder(child: Menuitem, position: number): boolean
     /**
      * This function searchs the whole tree of children that
      * are attached to `mi`.  This could be quite a few nodes, all
      * the way down the tree.  It is a depth first search.
+     * @param id ID of the #DbusmenuMenuitem to search for
      */
     findId(id: number): Menuitem
     /**
@@ -880,6 +938,8 @@ class Menuitem {
      * of the children of this item.  And their children.  And
      * their children.  And... you get the point.  It will get
      * called on the whole tree.
+     * @param func Function to call on every node in the tree
+     * @param data User data to pass to the function
      */
     foreach(func?: object | null, data?: object | null): void
     /**
@@ -900,11 +960,13 @@ class Menuitem {
      * This function returns the position of the menu item `mi`
      * in the children of `parent`.  It will return zero if the
      * menu item can't be found.
+     * @param parent The #DbusmenuMenuitem who's children contain `mi`
      */
     getPosition(parent: Menuitem): number
     /**
      * This function is very similar to #dbusmenu_menuitem_get_position
      * except that it only counts in the children that have been realized.
+     * @param parent The #DbusmenuMenuitem who's children contain `mi`
      */
     getPositionRealized(parent: Menuitem): number
     /**
@@ -924,6 +986,9 @@ class Menuitem {
      * If you subclass this function you should really think
      * about calling the parent function unless you have a good
      * reason not to.
+     * @param name The name of the signal
+     * @param variant A value that could be set for the event
+     * @param timestamp The timestamp of when the event happened
      */
     handleEvent(name: string, variant: GLib.Variant, timestamp: number): void
     /**
@@ -945,38 +1010,45 @@ class Menuitem {
     /**
      * Checkes to see if a particular property exists on `mi` and
      * returns #TRUE if so.
+     * @param property The property to look for.
      */
     propertyExist(property: string): boolean
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
      * exist.
+     * @param property The property to grab.
      */
     propertyGet(property: string): string
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  Returns #FALSE if the property doesn't exist.
+     * @param property The property to grab.
      */
     propertyGetBool(property: string): boolean
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
      * exist.
+     * @param property The property to grab.
      */
     propertyGetByteArray(property: string): Uint8Array
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  Returns zero if the property doesn't exist.
+     * @param property The property to grab.
      */
     propertyGetInt(property: string): number
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
      * exist.
+     * @param property The property to grab.
      */
     propertyGetVariant(property: string): GLib.Variant
     /**
      * Removes a property from the menuitem.
+     * @param property The property to look for.
      */
     propertyRemove(property: string): void
     /**
@@ -986,6 +1058,8 @@ class Menuitem {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The value of the property.
      */
     propertySet(property: string, value: string): boolean
     /**
@@ -995,6 +1069,8 @@ class Menuitem {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The value of the property.
      */
     propertySetBool(property: string, value: boolean): boolean
     /**
@@ -1004,6 +1080,9 @@ class Menuitem {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The byte array.
+     * @param nelements The number of elements in the byte array.
      */
     propertySetByteArray(property: string, value: number, nelements: number): boolean
     /**
@@ -1013,6 +1092,8 @@ class Menuitem {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The value of the property.
      */
     propertySetInt(property: string, value: number): boolean
     /**
@@ -1022,6 +1103,8 @@ class Menuitem {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The value of the property.
      */
     propertySetVariant(property: string, value: GLib.Variant): boolean
     /**
@@ -1029,6 +1112,8 @@ class Menuitem {
      * of this item is about to be shown.  Callers to this event
      * should delay showing the menu until their callback is
      * called if possible.
+     * @param cb Callback to call when the call has returned.
+     * @param cbData Data to pass to the callback.
      */
     sendAboutToShow(cb?: object | null, cbData?: object | null): void
     /**
@@ -1037,17 +1122,20 @@ class Menuitem {
      * be set automatically when using the usual methods to add a
      * child menuitem, so this function should not normally be
      * called directly
+     * @param parent The new parent #DbusmenuMenuitem
      */
     setParent(parent: Menuitem): boolean
     /**
      * This function sets the internal value of whether this is a
      * root node or not.
+     * @param root Whether `mi` is a root node or not
      */
     setRoot(root: boolean): void
     /**
      * Signals that this menu item should be shown to the user.  If this is
      * server side the server will then take it and send it over the
      * bus.
+     * @param timestamp The time that the user requested it to be shown
      */
     showToUser(timestamp: number): void
     /**
@@ -1101,6 +1189,10 @@ class Menuitem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1111,6 +1203,12 @@ class Menuitem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1134,6 +1232,7 @@ class Menuitem {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1153,11 +1252,14 @@ class Menuitem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1165,6 +1267,8 @@ class Menuitem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1182,6 +1286,7 @@ class Menuitem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1227,6 +1332,7 @@ class Menuitem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1270,15 +1376,20 @@ class Menuitem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1319,6 +1430,7 @@ class Menuitem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1353,6 +1465,7 @@ class Menuitem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Dbusmenu-0.4.Dbusmenu.Menuitem */
@@ -1368,6 +1481,8 @@ class Menuitem {
     /**
      * Signaled when the child menuitem has been added to
      * 		the parent.
+     * @param arg1 The #DbusmenuMenuitem which is the child.
+     * @param arg2 The position that the child is being added in.
      */
     connect(sigName: "child-added", callback: ((arg1: GObject.Object, arg2: number) => void)): number
     on(sigName: "child-added", callback: (arg1: GObject.Object, arg2: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1377,6 +1492,9 @@ class Menuitem {
     /**
      * Signaled when the child menuitem has had its location
      * 		in the list change.
+     * @param arg1 The #DbusmenuMenuitem which is the child.
+     * @param arg2 The position that the child is being moved to.
+     * @param arg3 The position that the child is was in.
      */
     connect(sigName: "child-moved", callback: ((arg1: GObject.Object, arg2: number, arg3: number) => void)): number
     on(sigName: "child-moved", callback: (arg1: GObject.Object, arg2: number, arg3: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1388,6 +1506,7 @@ class Menuitem {
      * 		be removed from the parent.  This signal is called when
      * 		it has been removed from the list but not yet had
      * 		#g_object_unref called on it.
+     * @param arg1 The #DbusmenuMenuitem which was the child.
      */
     connect(sigName: "child-removed", callback: ((arg1: GObject.Object) => void)): number
     on(sigName: "child-removed", callback: (arg1: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -1397,6 +1516,9 @@ class Menuitem {
     /**
      * Emitted when an event is passed through.  The event is signalled
      * 		after handle_event is called.
+     * @param arg1 Name of the event
+     * @param arg2 Information passed along with the event
+     * @param arg3 X11 timestamp of when the event happened
      */
     connect(sigName: "event", callback: ((arg1: string, arg2: GLib.Variant, arg3: number) => boolean)): number
     on(sigName: "event", callback: (arg1: string, arg2: GLib.Variant, arg3: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1406,6 +1528,7 @@ class Menuitem {
     /**
      * Emitted on the objects on the server side when
      * 		they are signaled on the client side.
+     * @param arg1 The timestamp of when it was activated
      */
     connect(sigName: "item-activated", callback: ((arg1: number) => void)): number
     on(sigName: "item-activated", callback: (arg1: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1415,6 +1538,8 @@ class Menuitem {
     /**
      * Emitted everytime a property on a menuitem is either
      * 		updated or added.
+     * @param arg1 The name of the property that changed
+     * @param arg2 The new value of the property
      */
     connect(sigName: "property-changed", callback: ((arg1: string, arg2: GLib.Variant) => void)): number
     on(sigName: "property-changed", callback: (arg1: string, arg2: GLib.Variant) => void, after?: boolean): NodeJS.EventEmitter
@@ -1436,6 +1561,7 @@ class Menuitem {
      * Signaled when the application would like the visualization
      * 		of this menu item shown to the user.  This usually requires
      * 		going over the bus to get it done.
+     * @param arg1 Timestamp the event happened at
      */
     connect(sigName: "show-to-user", callback: ((arg1: number) => void)): number
     on(sigName: "show-to-user", callback: (arg1: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1471,12 +1597,18 @@ class Menuitem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1497,17 +1629,21 @@ interface MenuitemProxy_ConstructProps extends Menuitem_ConstructProps {
     menuItem?: Menuitem
 }
 class MenuitemProxy {
+    /* Properties of Dbusmenu-0.4.Dbusmenu.MenuitemProxy */
+    readonly menuItem: Menuitem
+    /* Properties of Dbusmenu-0.4.Dbusmenu.Menuitem */
+    readonly id: number
     /* Fields of Dbusmenu-0.4.Dbusmenu.Menuitem */
     /**
      * Parent object
      */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /**
      * Private data
      */
-    readonly priv: MenuitemPrivate
+    priv: MenuitemPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dbusmenu-0.4.Dbusmenu.MenuitemProxy */
     /**
      * Accesses the private variable of which #DbusmenuMenuitem
@@ -1519,38 +1655,47 @@ class MenuitemProxy {
      * Puts `child` in the list of children for `mi` at the location
      * specified in `position`.  If there is not enough entires available
      * then `child` will be placed at the end of the list.
+     * @param child The #DbusmenuMenuitem to make a child of `mi`.
+     * @param position Where in `mi` object's list of chidren `child` should be placed.
      */
     childAddPosition(child: Menuitem, position: number): boolean
     /**
      * This function adds `child` to the list of children on `mi` at
      * the end of that list.
+     * @param child The #DbusmenMenuitem that will be a child
      */
     childAppend(child: Menuitem): boolean
     /**
      * This function removes `child` from the children list of `mi`.  It does
      * not call #g_object_unref on `child`.
+     * @param child The child #DbusmenuMenuitem that you want to no longer     be a child of `mi`.
      */
     childDelete(child: Menuitem): boolean
     /**
      * Search the children of `mi` to find one with the ID of `id`.
      * If it doesn't exist then we return #NULL.
+     * @param id The ID of the child that we're looking for.
      */
     childFind(id: number): Menuitem
     /**
      * This function adds `child` to the list of children on `mi` at
      * the beginning of that list.
+     * @param child The #DbusmenMenuitem that will be a child
      */
     childPrepend(child: Menuitem): boolean
     /**
      * This function moves a child on the list of children.  It is
      * for a child that is already in the list, but simply needs a
      * new location.
+     * @param child The #DbusmenuMenuitem that is a child needing to be moved
+     * @param position The position in the list to place it in
      */
     childReorder(child: Menuitem, position: number): boolean
     /**
      * This function searchs the whole tree of children that
      * are attached to `mi`.  This could be quite a few nodes, all
      * the way down the tree.  It is a depth first search.
+     * @param id ID of the #DbusmenuMenuitem to search for
      */
     findId(id: number): Menuitem
     /**
@@ -1558,6 +1703,8 @@ class MenuitemProxy {
      * of the children of this item.  And their children.  And
      * their children.  And... you get the point.  It will get
      * called on the whole tree.
+     * @param func Function to call on every node in the tree
+     * @param data User data to pass to the function
      */
     foreach(func?: object | null, data?: object | null): void
     /**
@@ -1578,11 +1725,13 @@ class MenuitemProxy {
      * This function returns the position of the menu item `mi`
      * in the children of `parent`.  It will return zero if the
      * menu item can't be found.
+     * @param parent The #DbusmenuMenuitem who's children contain `mi`
      */
     getPosition(parent: Menuitem): number
     /**
      * This function is very similar to #dbusmenu_menuitem_get_position
      * except that it only counts in the children that have been realized.
+     * @param parent The #DbusmenuMenuitem who's children contain `mi`
      */
     getPositionRealized(parent: Menuitem): number
     /**
@@ -1602,6 +1751,9 @@ class MenuitemProxy {
      * If you subclass this function you should really think
      * about calling the parent function unless you have a good
      * reason not to.
+     * @param name The name of the signal
+     * @param variant A value that could be set for the event
+     * @param timestamp The timestamp of when the event happened
      */
     handleEvent(name: string, variant: GLib.Variant, timestamp: number): void
     /**
@@ -1623,38 +1775,45 @@ class MenuitemProxy {
     /**
      * Checkes to see if a particular property exists on `mi` and
      * returns #TRUE if so.
+     * @param property The property to look for.
      */
     propertyExist(property: string): boolean
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
      * exist.
+     * @param property The property to grab.
      */
     propertyGet(property: string): string
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  Returns #FALSE if the property doesn't exist.
+     * @param property The property to grab.
      */
     propertyGetBool(property: string): boolean
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
      * exist.
+     * @param property The property to grab.
      */
     propertyGetByteArray(property: string): Uint8Array
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  Returns zero if the property doesn't exist.
+     * @param property The property to grab.
      */
     propertyGetInt(property: string): number
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
      * exist.
+     * @param property The property to grab.
      */
     propertyGetVariant(property: string): GLib.Variant
     /**
      * Removes a property from the menuitem.
+     * @param property The property to look for.
      */
     propertyRemove(property: string): void
     /**
@@ -1664,6 +1823,8 @@ class MenuitemProxy {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The value of the property.
      */
     propertySet(property: string, value: string): boolean
     /**
@@ -1673,6 +1834,8 @@ class MenuitemProxy {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The value of the property.
      */
     propertySetBool(property: string, value: boolean): boolean
     /**
@@ -1682,6 +1845,9 @@ class MenuitemProxy {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The byte array.
+     * @param nelements The number of elements in the byte array.
      */
     propertySetByteArray(property: string, value: number, nelements: number): boolean
     /**
@@ -1691,6 +1857,8 @@ class MenuitemProxy {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The value of the property.
      */
     propertySetInt(property: string, value: number): boolean
     /**
@@ -1700,6 +1868,8 @@ class MenuitemProxy {
      * is added.  If the value is changed or the property was previously
      * unset then the signal #DbusmenuMenuitem::prop-changed will be
      * emitted by this function.
+     * @param property Name of the property to set.
+     * @param value The value of the property.
      */
     propertySetVariant(property: string, value: GLib.Variant): boolean
     /**
@@ -1707,6 +1877,8 @@ class MenuitemProxy {
      * of this item is about to be shown.  Callers to this event
      * should delay showing the menu until their callback is
      * called if possible.
+     * @param cb Callback to call when the call has returned.
+     * @param cbData Data to pass to the callback.
      */
     sendAboutToShow(cb?: object | null, cbData?: object | null): void
     /**
@@ -1715,17 +1887,20 @@ class MenuitemProxy {
      * be set automatically when using the usual methods to add a
      * child menuitem, so this function should not normally be
      * called directly
+     * @param parent The new parent #DbusmenuMenuitem
      */
     setParent(parent: Menuitem): boolean
     /**
      * This function sets the internal value of whether this is a
      * root node or not.
+     * @param root Whether `mi` is a root node or not
      */
     setRoot(root: boolean): void
     /**
      * Signals that this menu item should be shown to the user.  If this is
      * server side the server will then take it and send it over the
      * bus.
+     * @param timestamp The time that the user requested it to be shown
      */
     showToUser(timestamp: number): void
     /**
@@ -1779,6 +1954,10 @@ class MenuitemProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1789,6 +1968,12 @@ class MenuitemProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1812,6 +1997,7 @@ class MenuitemProxy {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1831,11 +2017,14 @@ class MenuitemProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1843,6 +2032,8 @@ class MenuitemProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1860,6 +2051,7 @@ class MenuitemProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1905,6 +2097,7 @@ class MenuitemProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1948,15 +2141,20 @@ class MenuitemProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1997,6 +2195,7 @@ class MenuitemProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2031,6 +2230,7 @@ class MenuitemProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Dbusmenu-0.4.Dbusmenu.Menuitem */
@@ -2046,6 +2246,8 @@ class MenuitemProxy {
     /**
      * Signaled when the child menuitem has been added to
      * 		the parent.
+     * @param arg1 The #DbusmenuMenuitem which is the child.
+     * @param arg2 The position that the child is being added in.
      */
     connect(sigName: "child-added", callback: ((arg1: GObject.Object, arg2: number) => void)): number
     on(sigName: "child-added", callback: (arg1: GObject.Object, arg2: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2055,6 +2257,9 @@ class MenuitemProxy {
     /**
      * Signaled when the child menuitem has had its location
      * 		in the list change.
+     * @param arg1 The #DbusmenuMenuitem which is the child.
+     * @param arg2 The position that the child is being moved to.
+     * @param arg3 The position that the child is was in.
      */
     connect(sigName: "child-moved", callback: ((arg1: GObject.Object, arg2: number, arg3: number) => void)): number
     on(sigName: "child-moved", callback: (arg1: GObject.Object, arg2: number, arg3: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2066,6 +2271,7 @@ class MenuitemProxy {
      * 		be removed from the parent.  This signal is called when
      * 		it has been removed from the list but not yet had
      * 		#g_object_unref called on it.
+     * @param arg1 The #DbusmenuMenuitem which was the child.
      */
     connect(sigName: "child-removed", callback: ((arg1: GObject.Object) => void)): number
     on(sigName: "child-removed", callback: (arg1: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -2075,6 +2281,9 @@ class MenuitemProxy {
     /**
      * Emitted when an event is passed through.  The event is signalled
      * 		after handle_event is called.
+     * @param arg1 Name of the event
+     * @param arg2 Information passed along with the event
+     * @param arg3 X11 timestamp of when the event happened
      */
     connect(sigName: "event", callback: ((arg1: string, arg2: GLib.Variant, arg3: number) => boolean)): number
     on(sigName: "event", callback: (arg1: string, arg2: GLib.Variant, arg3: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2084,6 +2293,7 @@ class MenuitemProxy {
     /**
      * Emitted on the objects on the server side when
      * 		they are signaled on the client side.
+     * @param arg1 The timestamp of when it was activated
      */
     connect(sigName: "item-activated", callback: ((arg1: number) => void)): number
     on(sigName: "item-activated", callback: (arg1: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2093,6 +2303,8 @@ class MenuitemProxy {
     /**
      * Emitted everytime a property on a menuitem is either
      * 		updated or added.
+     * @param arg1 The name of the property that changed
+     * @param arg2 The new value of the property
      */
     connect(sigName: "property-changed", callback: ((arg1: string, arg2: GLib.Variant) => void)): number
     on(sigName: "property-changed", callback: (arg1: string, arg2: GLib.Variant) => void, after?: boolean): NodeJS.EventEmitter
@@ -2114,6 +2326,7 @@ class MenuitemProxy {
      * Signaled when the application would like the visualization
      * 		of this menu item shown to the user.  This usually requires
      * 		going over the bus to get it done.
+     * @param arg1 Timestamp the event happened at
      */
     connect(sigName: "show-to-user", callback: ((arg1: number) => void)): number
     on(sigName: "show-to-user", callback: (arg1: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2149,12 +2362,23 @@ class MenuitemProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::menu-item", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::menu-item", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::menu-item", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::menu-item", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::menu-item", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2178,10 +2402,11 @@ interface Server_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Server {
     /* Properties of Dbusmenu-0.4.Dbusmenu.Server */
+    readonly dbusObject: string
     rootNode: Menuitem
     readonly version: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dbusmenu-0.4.Dbusmenu.Server */
     /**
      * Gets the stored and exported icon paths from the server.
@@ -2206,16 +2431,19 @@ class Server {
     /**
      * Sets the icon paths for the server.  This will replace previously
      * 	set icon theme paths.
+     * @param iconPaths 
      */
     setIconPaths(iconPaths: string[]): void
     /**
      * This function contains all of the #GValue wrapping
      * 	required to set the property #DbusmenuServer:root-node
      * 	on the server `self`.
+     * @param root The new root #DbusmenuMenuitem tree
      */
     setRoot(root: Menuitem): void
     /**
      * Changes the status of the server.
+     * @param status Status value to set on the server
      */
     setStatus(status: Status): void
     /**
@@ -2223,6 +2451,7 @@ class Server {
      * 	this server.  If the value is set to #DBUSMENU_TEXT_DIRECTION_NONE
      * 	the default detection will be used for setting the value and
      * 	exported over DBus.
+     * @param dir Direction of the text
      */
     setTextDirection(dir: TextDirection): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2260,6 +2489,10 @@ class Server {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2270,6 +2503,12 @@ class Server {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2293,6 +2532,7 @@ class Server {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2312,11 +2552,14 @@ class Server {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2324,6 +2567,8 @@ class Server {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2341,6 +2586,7 @@ class Server {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2386,6 +2632,7 @@ class Server {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2429,15 +2676,20 @@ class Server {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2478,6 +2730,7 @@ class Server {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2512,12 +2765,15 @@ class Server {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Dbusmenu-0.4.Dbusmenu.Server */
     /**
      * This is signaled when a menuitem under this server
      * 		sends its activate signal.
+     * @param arg1 The ID of the parent for this update.
+     * @param arg2 The timestamp of when the event happened
      */
     connect(sigName: "item-activation-requested", callback: ((arg1: number, arg2: number) => void)): number
     on(sigName: "item-activation-requested", callback: (arg1: number, arg2: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2537,6 +2793,8 @@ class Server {
     /**
      * This signal is emitted any time the layout of the
      * 		menuitems under this server is changed.
+     * @param arg1 A revision number representing which revision the update 		       represents itself as.
+     * @param arg2 The ID of the parent for this update.
      */
     connect(sigName: "layout-updated", callback: ((arg1: number, arg2: number) => void)): number
     on(sigName: "layout-updated", callback: (arg1: number, arg2: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2572,12 +2830,18 @@ class Server {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::dbus-object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::dbus-object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::dbus-object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::dbus-object", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::root-node", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::root-node", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::root-node", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2607,18 +2871,18 @@ abstract class ClientClass {
     /**
      * #GObjectClass
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly layoutUpdated: () => void
-    readonly rootChanged: (newroot: Menuitem) => void
-    readonly newMenuitem: (newitem: Menuitem) => void
-    readonly itemActivate: (item: Menuitem, timestamp: number) => void
-    readonly eventResult: (item: Menuitem, event: string, data: GLib.Variant, timestamp: number, error: GLib.Error) => void
-    readonly iconThemeDirs: (item: Menuitem, themeDirs: object, error: GLib.Error) => void
-    readonly reserved1: () => void
-    readonly reserved2: () => void
-    readonly reserved3: () => void
-    readonly reserved4: () => void
-    readonly reserved5: () => void
+    parentClass: GObject.ObjectClass
+    layoutUpdated: () => void
+    rootChanged: (newroot: Menuitem) => void
+    newMenuitem: (newitem: Menuitem) => void
+    itemActivate: (item: Menuitem, timestamp: number) => void
+    eventResult: (item: Menuitem, event: string, data: GLib.Variant, timestamp: number, error: GLib.Error) => void
+    iconThemeDirs: (item: Menuitem, themeDirs: object, error: GLib.Error) => void
+    reserved1: () => void
+    reserved2: () => void
+    reserved3: () => void
+    reserved4: () => void
+    reserved5: () => void
     static name: string
 }
 class ClientPrivate {
@@ -2629,22 +2893,22 @@ abstract class MenuitemClass {
     /**
      * Functions and signals from our parent
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly propertyChanged: (property: string, value: GLib.Variant) => void
-    readonly itemActivated: (timestamp: number) => void
-    readonly childAdded: (child: Menuitem, position: number) => void
-    readonly childRemoved: (child: Menuitem) => void
-    readonly childMoved: (child: Menuitem, newpos: number, oldpos: number) => void
-    readonly realized: () => void
-    readonly handleEvent: (mi: Menuitem, name: string, variant: GLib.Variant, timestamp: number) => void
-    readonly showToUser: (mi: Menuitem, timestamp: number, cbData?: object | null) => void
-    readonly aboutToShow: () => boolean
-    readonly event: (name: string, value: GLib.Variant, timestamp: number) => void
-    readonly reserved1: () => void
-    readonly reserved2: () => void
-    readonly reserved3: () => void
-    readonly reserved4: () => void
-    readonly reserved5: () => void
+    parentClass: GObject.ObjectClass
+    propertyChanged: (property: string, value: GLib.Variant) => void
+    itemActivated: (timestamp: number) => void
+    childAdded: (child: Menuitem, position: number) => void
+    childRemoved: (child: Menuitem) => void
+    childMoved: (child: Menuitem, newpos: number, oldpos: number) => void
+    realized: () => void
+    handleEvent: (mi: Menuitem, name: string, variant: GLib.Variant, timestamp: number) => void
+    showToUser: (mi: Menuitem, timestamp: number, cbData?: object | null) => void
+    aboutToShow: () => boolean
+    event: (name: string, value: GLib.Variant, timestamp: number) => void
+    reserved1: () => void
+    reserved2: () => void
+    reserved3: () => void
+    reserved4: () => void
+    reserved5: () => void
     static name: string
 }
 class MenuitemPrivate {
@@ -2655,11 +2919,11 @@ abstract class MenuitemProxyClass {
     /**
      * The Class of #DbusmeneMenuitem
      */
-    readonly parentClass: MenuitemClass
-    readonly reserved1: () => void
-    readonly reserved2: () => void
-    readonly reserved3: () => void
-    readonly reserved4: () => void
+    parentClass: MenuitemClass
+    reserved1: () => void
+    reserved2: () => void
+    reserved3: () => void
+    reserved4: () => void
     static name: string
 }
 class MenuitemProxyPrivate {
@@ -2670,17 +2934,17 @@ abstract class ServerClass {
     /**
      * #GObjectClass
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly idPropUpdate: (id: number, property: string, value: string) => void
-    readonly idUpdate: (id: number) => void
-    readonly layoutUpdated: (revision: number) => void
-    readonly itemActivation: (id: number, timestamp: number) => void
-    readonly reserved1: () => void
-    readonly reserved2: () => void
-    readonly reserved3: () => void
-    readonly reserved4: () => void
-    readonly reserved5: () => void
-    readonly reserved6: () => void
+    parentClass: GObject.ObjectClass
+    idPropUpdate: (id: number, property: string, value: string) => void
+    idUpdate: (id: number) => void
+    layoutUpdated: (revision: number) => void
+    itemActivation: (id: number, timestamp: number) => void
+    reserved1: () => void
+    reserved2: () => void
+    reserved3: () => void
+    reserved4: () => void
+    reserved5: () => void
+    reserved6: () => void
     static name: string
 }
 class ServerPrivate {

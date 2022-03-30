@@ -48,27 +48,48 @@ interface Client_ConstructProps extends GObject.Object_ConstructProps {
     subsystems?: string[]
 }
 class Client {
+    /* Properties of GUdev-1.0.GUdev.Client */
+    /**
+     * The subsystems to listen for uevents on.
+     * 
+     * To listen for only a specific DEVTYPE for a given SUBSYSTEM, use
+     * "subsystem/devtype". For example, to only listen for uevents
+     * where SUBSYSTEM is usb and DEVTYPE is usb_interface, use
+     * "usb/usb_interface".
+     * 
+     * If this property is %NULL, then no events will be reported. If
+     * it's the empty array, events from all subsystems will be
+     * reported.
+     */
+    readonly subsystems: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUdev-1.0.GUdev.Client */
     /**
      * Looks up a device for a device file.
+     * @param device_file A device file.
      */
     query_by_device_file(device_file: string): Device | null
     /**
      * Looks up a device for a type and device number.
+     * @param type A value from the #GUdevDeviceType enumeration.
+     * @param number A device number.
      */
     query_by_device_number(type: DeviceType, number: DeviceNumber): Device | null
     /**
      * Gets all devices belonging to `subsystem`.
+     * @param subsystem The subsystem to get devices for or %NULL to get all devices.
      */
     query_by_subsystem(subsystem?: string | null): Device[] | null
     /**
      * Looks up a device for a subsystem and name.
+     * @param subsystem A subsystem name.
+     * @param name The name of the device.
      */
     query_by_subsystem_and_name(subsystem: string, name: string): Device | null
     /**
      * Looks up a device for a sysfs path.
+     * @param sysfs_path A sysfs path.
      */
     query_by_sysfs_path(sysfs_path: string): Device | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -106,6 +127,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -116,6 +141,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -139,6 +170,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -158,11 +190,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -170,6 +205,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -187,6 +224,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -232,6 +270,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -275,15 +314,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -324,6 +368,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -358,6 +403,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GUdev-1.0.GUdev.Client */
@@ -379,6 +425,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -396,6 +443,8 @@ class Client {
      * This signal is emitted in the
      * <link linkend="g-main-context-push-thread-default">thread-default main loop</link>
      * of the thread that `client` was created in.
+     * @param action The action for the uevent e.g. "add", "remove", "change", "move",          "online" or "offline"
+     * @param device Details about the #GUdevDevice the event is for.
      */
     connect(sigName: "uevent", callback: (($obj: Client, action: string, device: Device) => void)): number
     connect_after(sigName: "uevent", callback: (($obj: Client, action: string, device: Device) => void)): number
@@ -429,10 +478,13 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::subsystems", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subsystems", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -448,7 +500,7 @@ interface Device_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Device {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUdev-1.0.GUdev.Device */
     /**
      * Gets the most recent action (e.g. "add", "remove", "change", etc.) for `device`.
@@ -498,26 +550,32 @@ class Device {
     /**
      * Walks up the chain of parents of `device` and returns the first
      * device encountered where `subsystem` and `devtype` matches, if any.
+     * @param subsystem The subsystem of the parent to get.
+     * @param devtype The devtype of the parent to get or %NULL.
      */
     get_parent_with_subsystem(subsystem: string, devtype?: string | null): Device | null
     /**
      * Look up the value for `key` on `device`.
+     * @param key Name of property.
      */
     get_property(key: string): string | null
     /**
      * Look up the value for `key` on `device` and convert it to an
      * boolean. This is done by doing a case-insensitive string comparison
      * on the string value against "1" and "true".
+     * @param key Name of property.
      */
     get_property_as_boolean(key: string): boolean
     /**
      * Look up the value for `key` on `device` and convert it to a double
      * precision floating point number using g_ascii_strtod().
+     * @param key Name of property.
      */
     get_property_as_double(key: string): number
     /**
      * Look up the value for `key` on `device` and convert it to an integer
      * using strtol().
+     * @param key Name of property.
      */
     get_property_as_int(key: string): number
     /**
@@ -526,11 +584,13 @@ class Device {
      * (' '), form-feed ('\f'), newline ('\n'), carriage return ('\r'),
      * horizontal tab ('\t'), and vertical tab ('\v') are considered; the
      * locale is not taken into account).
+     * @param key Name of property.
      */
     get_property_as_strv(key: string): string[] | null
     /**
      * Look up the value for `key` on `device` and convert it to an unsigned
      * 64-bit integer using g_ascii_strtoull().
+     * @param key Name of property.
      */
     get_property_as_uint64(key: string): number
     /**
@@ -550,6 +610,7 @@ class Device {
      * is cached in the device. Repeated calls will return the same value and
      * not open the attribute again, unless updated through one of the
      * "uncached" functions.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr(name: string): string | null
     /**
@@ -559,6 +620,7 @@ class Device {
      * cached in the device. Repeated calls will return the same value and
      * not open the attribute again, unless updated through one of the
      * "uncached" functions.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_boolean(name: string): boolean
     /**
@@ -566,6 +628,7 @@ class Device {
      * boolean. This is done by doing a case-insensitive string comparison
      * on the string value against "1", "true", "Y" and "y". This function does
      * blocking I/O, and updates the sysfs attributes cache.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_boolean_uncached(name: string): boolean
     /**
@@ -573,12 +636,14 @@ class Device {
      * precision floating point number using g_ascii_strtod(). The retrieved value is cached
      * in the device. Repeated calls will return the same value and not open the
      * attribute again, unless updated through one of the "uncached" functions.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_double(name: string): number
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to a double
      * precision floating point number using g_ascii_strtod(). This function does blocking
      * I/O, and updates the sysfs attributes cache.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_double_uncached(name: string): number
     /**
@@ -586,12 +651,14 @@ class Device {
      * using strtol(). The retrieved value is cached in the device. Repeated calls
      * will return the same value and not open the attribute again, unless updated
      * through one of the "uncached" functions.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_int(name: string): number
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to an integer
      * using strtol(). This function does blocking I/O, and updates the sysfs
      * attributes cache.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_int_uncached(name: string): number
     /**
@@ -604,6 +671,7 @@ class Device {
      * The retrieved value is cached in the device. Repeated calls will return
      * the same value and not open the attribute again, unless updated through
      * one of the "uncached" functions.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_strv(name: string): string[] | null
     /**
@@ -614,6 +682,7 @@ class Device {
      * not taken into account).
      * 
      * This function does blocking I/O, and updates the sysfs attributes cache.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_strv_uncached(name: string): string[] | null
     /**
@@ -621,12 +690,14 @@ class Device {
      * 64-bit integer using g_ascii_strtoull(). The retrieved value is cached in the
      * device. Repeated calls will return the same value and not open the attribute
      * again, unless updated through one of the "uncached" functions.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_uint64(name: string): number
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to an unsigned
      * 64-bit integer using g_ascii_strtoull(). This function does blocking I/O, and
      * updates the sysfs attributes cache.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_as_uint64_uncached(name: string): number
     /**
@@ -636,6 +707,7 @@ class Device {
     /**
      * Look up the sysfs attribute with `name` on `device`. This function does
      * blocking I/O, and updates the sysfs attributes cache.
+     * @param name Name of the sysfs attribute.
      */
     get_sysfs_attr_uncached(name: string): string | null
     /**
@@ -655,6 +727,7 @@ class Device {
     get_usec_since_initialized(): number
     /**
      * Check if a the property with the given key exists.
+     * @param key Name of property.
      */
     has_property(key: string): boolean
     /**
@@ -663,6 +736,7 @@ class Device {
      * return the same result and not check for the presence of the
      * attribute again, unless updated through one of the "uncached"
      * functions.
+     * @param key Name of sysfs attribute.
      */
     has_sysfs_attr(key: string): boolean
     /**
@@ -671,6 +745,7 @@ class Device {
      * return the same result and not check for the presence of the
      * attribute again, unless updated through one of the "uncached"
      * functions.
+     * @param key Name of sysfs attribute.
      */
     has_sysfs_attr_uncached(key: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -708,6 +783,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -718,6 +797,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -741,6 +826,7 @@ class Device {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -760,11 +846,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -772,6 +861,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -789,6 +880,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -834,6 +926,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -877,15 +970,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -926,6 +1024,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -960,6 +1059,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -979,6 +1079,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1011,6 +1112,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
@@ -1032,8 +1134,13 @@ interface Enumerator_ConstructProps extends GObject.Object_ConstructProps {
     client?: Client
 }
 class Enumerator {
+    /* Properties of GUdev-1.0.GUdev.Enumerator */
+    /**
+     * The #GUdevClient to enumerate devices from.
+     */
+    readonly client: Client
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GUdev-1.0.GUdev.Enumerator */
     /**
      * All returned devices will be initialized.
@@ -1041,34 +1148,45 @@ class Enumerator {
     add_match_is_initialized(): Enumerator
     /**
      * All returned devices will match the given `name`.
+     * @param name Wildcard filter for kernel name e.g. "sda*".
      */
     add_match_name(name: string): Enumerator
     /**
      * All returned devices will have a property matching the given `name` and `value`.
+     * @param name Wildcard filter for property name.
+     * @param value Wildcard filter for property value.
      */
     add_match_property(name: string, value: string): Enumerator
     /**
      * All returned devices will match the given `subsystem`.
+     * @param subsystem Wildcard for subsystem name e.g. 'scsi' or 'a*'.
      */
     add_match_subsystem(subsystem: string): Enumerator
     /**
      * All returned devices will have a sysfs attribute matching the given `name` and `value`.
+     * @param name Wildcard filter for sysfs attribute key.
+     * @param value Wildcard filter for sysfs attribute value.
      */
     add_match_sysfs_attr(name: string, value: string): Enumerator
     /**
      * All returned devices will match the given `tag`.
+     * @param tag A udev tag e.g. "udev-acl".
      */
     add_match_tag(tag: string): Enumerator
     /**
      * All returned devices will not match the given `subsystem`.
+     * @param subsystem Wildcard for subsystem name e.g. 'scsi' or 'a*'.
      */
     add_nomatch_subsystem(subsystem: string): Enumerator
     /**
      * All returned devices will not have a sysfs attribute matching the given `name` and `value`.
+     * @param name Wildcard filter for sysfs attribute key.
+     * @param value Wildcard filter for sysfs attribute value.
      */
     add_nomatch_sysfs_attr(name: string, value: string): Enumerator
     /**
      * Add a device to the list of devices, to retrieve it back sorted in dependency order.
+     * @param sysfs_path A sysfs path, e.g. "/sys/devices/pci0000:00/0000:00:1f.2/host0/target0:0:0/0:0:0:0/block/sda"
      */
     add_sysfs_path(sysfs_path: string): Enumerator
     /**
@@ -1110,6 +1228,10 @@ class Enumerator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1120,6 +1242,12 @@ class Enumerator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1143,6 +1271,7 @@ class Enumerator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1162,11 +1291,14 @@ class Enumerator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1174,6 +1306,8 @@ class Enumerator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1191,6 +1325,7 @@ class Enumerator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1236,6 +1371,7 @@ class Enumerator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1279,15 +1415,20 @@ class Enumerator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1328,6 +1469,7 @@ class Enumerator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1362,6 +1504,7 @@ class Enumerator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1381,6 +1524,7 @@ class Enumerator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1413,10 +1557,13 @@ class Enumerator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Enumerator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Enumerator, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::client", callback: (($obj: Enumerator, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: (($obj: Enumerator, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1433,16 +1580,16 @@ abstract class ClientClass {
     /**
      * Parent class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly uevent: (client: Client, action: string, device: Device) => void
-    readonly reserved1: () => void
-    readonly reserved2: () => void
-    readonly reserved3: () => void
-    readonly reserved4: () => void
-    readonly reserved5: () => void
-    readonly reserved6: () => void
-    readonly reserved7: () => void
-    readonly reserved8: () => void
+    parent_class: GObject.ObjectClass
+    uevent: (client: Client, action: string, device: Device) => void
+    reserved1: () => void
+    reserved2: () => void
+    reserved3: () => void
+    reserved4: () => void
+    reserved5: () => void
+    reserved6: () => void
+    reserved7: () => void
+    reserved8: () => void
     static name: string
 }
 class ClientPrivate {
@@ -1453,15 +1600,15 @@ abstract class DeviceClass {
     /**
      * Parent class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly reserved1: () => void
-    readonly reserved2: () => void
-    readonly reserved3: () => void
-    readonly reserved4: () => void
-    readonly reserved5: () => void
-    readonly reserved6: () => void
-    readonly reserved7: () => void
-    readonly reserved8: () => void
+    parent_class: GObject.ObjectClass
+    reserved1: () => void
+    reserved2: () => void
+    reserved3: () => void
+    reserved4: () => void
+    reserved5: () => void
+    reserved6: () => void
+    reserved7: () => void
+    reserved8: () => void
     static name: string
 }
 class DevicePrivate {
@@ -1472,15 +1619,15 @@ abstract class EnumeratorClass {
     /**
      * Parent class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly reserved1: () => void
-    readonly reserved2: () => void
-    readonly reserved3: () => void
-    readonly reserved4: () => void
-    readonly reserved5: () => void
-    readonly reserved6: () => void
-    readonly reserved7: () => void
-    readonly reserved8: () => void
+    parent_class: GObject.ObjectClass
+    reserved1: () => void
+    reserved2: () => void
+    reserved3: () => void
+    reserved4: () => void
+    reserved5: () => void
+    reserved6: () => void
+    reserved7: () => void
+    reserved8: () => void
     static name: string
 }
 class EnumeratorPrivate {

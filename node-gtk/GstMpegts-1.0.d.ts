@@ -1346,15 +1346,15 @@ class AtscEIT {
     /**
      * The source id
      */
-    readonly sourceId: number
+    sourceId: number
     /**
      * The protocol version
      */
-    readonly protocolVersion: number
+    protocolVersion: number
     /**
      * Events
      */
-    readonly events: AtscEITEvent[]
+    events: AtscEITEvent[]
     static name: string
 }
 class AtscEITEvent {
@@ -1362,44 +1362,44 @@ class AtscEITEvent {
     /**
      * The event id
      */
-    readonly eventId: number
+    eventId: number
     /**
      * The start time
      */
-    readonly startTime: number
+    startTime: number
     /**
      * The etm location
      */
-    readonly etmLocation: number
+    etmLocation: number
     /**
      * The length in seconds
      */
-    readonly lengthInSeconds: number
+    lengthInSeconds: number
     /**
      * the titles
      */
-    readonly titles: AtscMultString[]
+    titles: AtscMultString[]
     /**
      * descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
 }
 class AtscETT {
     /* Fields of GstMpegts-1.0.GstMpegts.AtscETT */
-    readonly ettTableIdExtension: number
+    ettTableIdExtension: number
     /**
      * The protocol version
      */
-    readonly protocolVersion: number
+    protocolVersion: number
     /**
      * The etm id
      */
-    readonly etmId: number
+    etmId: number
     /**
      * List of texts
      */
-    readonly messages: AtscMultString[]
+    messages: AtscMultString[]
     static name: string
 }
 class AtscMGT {
@@ -1407,19 +1407,19 @@ class AtscMGT {
     /**
      * The protocol version
      */
-    readonly protocolVersion: number
+    protocolVersion: number
     /**
      * The numbers of subtables
      */
-    readonly tablesDefined: number
+    tablesDefined: number
     /**
      * the tables
      */
-    readonly tables: AtscMGTTable[]
+    tables: AtscMGTTable[]
     /**
      * descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
     static new(): AtscMGT
     constructor()
@@ -1431,20 +1431,20 @@ class AtscMGTTable {
     /**
      * #GstMpegtsAtscMGTTableType
      */
-    readonly tableType: number
+    tableType: number
     /**
      * The packet ID
      */
-    readonly pid: number
+    pid: number
     /**
      * The version number
      */
-    readonly versionNumber: number
-    readonly numberBytes: number
+    versionNumber: number
+    numberBytes: number
     /**
      * descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
 }
 class AtscMultString {
@@ -1452,8 +1452,8 @@ class AtscMultString {
     /**
      * The ISO639 language code
      */
-    readonly iso639Langcode: number[]
-    readonly segments: AtscStringSegment[]
+    iso639Langcode: number[]
+    segments: AtscStringSegment[]
     static name: string
 }
 class AtscRRT {
@@ -1461,23 +1461,23 @@ class AtscRRT {
     /**
      * The protocol version
      */
-    readonly protocolVersion: number
+    protocolVersion: number
     /**
      * the names
      */
-    readonly names: AtscMultString[]
+    names: AtscMultString[]
     /**
      * the number of dimensions defined for this rating table
      */
-    readonly dimensionsDefined: number
+    dimensionsDefined: number
     /**
      * A set of dimensions
      */
-    readonly dimensions: AtscRRTDimension[]
+    dimensions: AtscRRTDimension[]
     /**
      * descriptors
      */
-    readonly descriptors: object[]
+    descriptors: object[]
     static name: string
     static new(): AtscRRT
     constructor()
@@ -1489,19 +1489,19 @@ class AtscRRTDimension {
     /**
      * the names
      */
-    readonly names: AtscMultString[]
+    names: AtscMultString[]
     /**
      * whether the ratings represent a graduated scale
      */
-    readonly graduatedScale: boolean
+    graduatedScale: boolean
     /**
      * the number of values defined for this dimension
      */
-    readonly valuesDefined: number
+    valuesDefined: number
     /**
      * set of values
      */
-    readonly values: AtscRRTDimensionValue[]
+    values: AtscRRTDimensionValue[]
     static name: string
     static new(): AtscRRTDimension
     constructor()
@@ -1513,11 +1513,11 @@ class AtscRRTDimensionValue {
     /**
      * the abbreviated ratings
      */
-    readonly abbrevRatings: AtscMultString[]
+    abbrevRatings: AtscMultString[]
     /**
      * the ratings
      */
-    readonly ratings: AtscMultString[]
+    ratings: AtscMultString[]
     static name: string
     static new(): AtscRRTDimensionValue
     constructor()
@@ -1529,32 +1529,32 @@ class AtscSTT {
     /**
      * The protocol version
      */
-    readonly protocolVersion: number
+    protocolVersion: number
     /**
      * The system time
      */
-    readonly systemTime: number
+    systemTime: number
     /**
      * The GPS to UTC offset
      */
-    readonly gpsUtcOffset: number
-    readonly dsStatus: boolean
+    gpsUtcOffset: number
+    dsStatus: boolean
     /**
      * The day of month
      */
-    readonly dsDayofmonth: number
+    dsDayofmonth: number
     /**
      * The hour
      */
-    readonly dsHour: number
+    dsHour: number
     /**
      * descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     /**
      * The UTC date and time
      */
-    readonly utcDatetime: Gst.DateTime
+    utcDatetime: Gst.DateTime
     /* Methods of GstMpegts-1.0.GstMpegts.AtscSTT */
     getDatetimeUtc(): Gst.DateTime
     static name: string
@@ -1568,20 +1568,20 @@ class AtscStringSegment {
     /**
      * The compression type
      */
-    readonly compressionType: number
+    compressionType: number
     /**
      * The mode
      */
-    readonly mode: number
+    mode: number
     /**
      * The size of compressed data
      */
-    readonly compressedDataSize: number
+    compressedDataSize: number
     /**
      * The compressed data
      */
-    readonly compressedData: number
-    readonly cachedString: string
+    compressedData: number
+    cachedString: string
     /* Methods of GstMpegts-1.0.GstMpegts.AtscStringSegment */
     getString(): string
     setString(string: string, compressionType: number, mode: number): boolean
@@ -1592,19 +1592,19 @@ class AtscVCT {
     /**
      * The transport stream
      */
-    readonly transportStreamId: number
+    transportStreamId: number
     /**
      * The protocol version
      */
-    readonly protocolVersion: number
+    protocolVersion: number
     /**
      * sources
      */
-    readonly sources: AtscVCTSource[]
+    sources: AtscVCTSource[]
     /**
      * descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
 }
 class AtscVCTSource {
@@ -1612,67 +1612,67 @@ class AtscVCTSource {
     /**
      * The short name of a source
      */
-    readonly shortName: string
+    shortName: string
     /**
      * The major channel number
      */
-    readonly majorChannelNumber: number
+    majorChannelNumber: number
     /**
      * The minor channel number
      */
-    readonly minorChannelNumber: number
+    minorChannelNumber: number
     /**
      * The modulation mode
      */
-    readonly modulationMode: number
+    modulationMode: number
     /**
      * The carrier frequency
      */
-    readonly carrierFrequency: number
+    carrierFrequency: number
     /**
      * The transport stream ID
      */
-    readonly channelTSID: number
+    channelTSID: number
     /**
      * The program number (see #GstMpegtsPatProgram)
      */
-    readonly programNumber: number
+    programNumber: number
     /**
      * The ETM location
      */
-    readonly eTMLocation: number
+    eTMLocation: number
     /**
      * is access controlled
      */
-    readonly accessControlled: boolean
+    accessControlled: boolean
     /**
      * is hidden
      */
-    readonly hidden: boolean
+    hidden: boolean
     /**
      * is path select, CVCT only
      */
-    readonly pathSelect: boolean
+    pathSelect: boolean
     /**
      * is out of band, CVCT only
      */
-    readonly outOfBand: boolean
+    outOfBand: boolean
     /**
      * is hide guide
      */
-    readonly hideGuide: boolean
+    hideGuide: boolean
     /**
      * The service type
      */
-    readonly serviceType: number
+    serviceType: number
     /**
      * The source id
      */
-    readonly sourceId: number
+    sourceId: number
     /**
      * an array of #GstMpegtsDescriptor
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
 }
 class AudioPreselectionDescriptor {
@@ -1680,43 +1680,43 @@ class AudioPreselectionDescriptor {
     /**
      * 5-bit
      */
-    readonly preselectionId: number
+    preselectionId: number
     /**
      * 3-bit field
      */
-    readonly audioRenderingIndication: number
+    audioRenderingIndication: number
     /**
      * visually impaired
      */
-    readonly audioDescription: boolean
-    readonly spokenSubtitles: boolean
-    readonly dialogueEnhancement: boolean
-    readonly interactivityEnabled: boolean
-    readonly languageCodePresent: boolean
-    readonly textLabelPresent: boolean
+    audioDescription: boolean
+    spokenSubtitles: boolean
+    dialogueEnhancement: boolean
+    interactivityEnabled: boolean
+    languageCodePresent: boolean
+    textLabelPresent: boolean
     /**
      * indicates if this PID conveys a complete audio programme
      */
-    readonly multiStreamInfoPresent: boolean
-    readonly futureExtension: boolean
+    multiStreamInfoPresent: boolean
+    futureExtension: boolean
     /**
      * NULL terminated ISO 639 language code.
      */
-    readonly languageCode: string
-    readonly messageId: number
+    languageCode: string
+    messageId: number
     static name: string
 }
 class BAT {
     /* Fields of GstMpegts-1.0.GstMpegts.BAT */
-    readonly descriptors: Descriptor[]
-    readonly streams: BATStream[]
+    descriptors: Descriptor[]
+    streams: BATStream[]
     static name: string
 }
 class BATStream {
     /* Fields of GstMpegts-1.0.GstMpegts.BATStream */
-    readonly transportStreamId: number
-    readonly originalNetworkId: number
-    readonly descriptors: object[]
+    transportStreamId: number
+    originalNetworkId: number
+    descriptors: object[]
     static name: string
 }
 class CableDeliverySystemDescriptor {
@@ -1724,41 +1724,41 @@ class CableDeliverySystemDescriptor {
     /**
      * the frequency in Hz (Hertz)
      */
-    readonly frequency: number
+    frequency: number
     /**
      * the outer FEC scheme used
      */
-    readonly outerFec: CableOuterFECScheme
+    outerFec: CableOuterFECScheme
     /**
      * Modulation scheme used
      */
-    readonly modulation: ModulationType
+    modulation: ModulationType
     /**
      * Symbol rate (in symbols per second)
      */
-    readonly symbolRate: number
+    symbolRate: number
     /**
      * inner FEC scheme used
      */
-    readonly fecInner: DVBCodeRate
+    fecInner: DVBCodeRate
     /* Methods of GstMpegts-1.0.GstMpegts.CableDeliverySystemDescriptor */
     free(): void
     static name: string
 }
 class ComponentDescriptor {
     /* Fields of GstMpegts-1.0.GstMpegts.ComponentDescriptor */
-    readonly streamContent: number
-    readonly componentType: number
-    readonly componentTag: number
-    readonly languageCode: string
-    readonly text: string
+    streamContent: number
+    componentType: number
+    componentTag: number
+    languageCode: string
+    text: string
     static name: string
 }
 class Content {
     /* Fields of GstMpegts-1.0.GstMpegts.Content */
-    readonly contentNibble1: ContentNibbleHi
-    readonly contentNibble2: number
-    readonly userByte: number
+    contentNibble1: ContentNibbleHi
+    contentNibble2: number
+    userByte: number
     static name: string
 }
 class DVBLinkageDescriptor {
@@ -1766,27 +1766,27 @@ class DVBLinkageDescriptor {
     /**
      * the transport id
      */
-    readonly transportStreamId: number
+    transportStreamId: number
     /**
      * the original network id
      */
-    readonly originalNetworkId: number
+    originalNetworkId: number
     /**
      * the service id
      */
-    readonly serviceId: number
+    serviceId: number
     /**
      * the type which `linkage_data` has
      */
-    readonly linkageType: DVBLinkageType
+    linkageType: DVBLinkageType
     /**
      * the length for `private_data_bytes`
      */
-    readonly privateDataLength: number
+    privateDataLength: number
     /**
      * additional data bytes
      */
-    readonly privateDataBytes: number
+    privateDataBytes: number
     /* Methods of GstMpegts-1.0.GstMpegts.DVBLinkageDescriptor */
     free(): void
     getEvent(): DVBLinkageEvent
@@ -1796,38 +1796,38 @@ class DVBLinkageDescriptor {
 }
 class DVBLinkageEvent {
     /* Fields of GstMpegts-1.0.GstMpegts.DVBLinkageEvent */
-    readonly targetEventId: number
-    readonly targetListed: boolean
-    readonly eventSimulcast: boolean
+    targetEventId: number
+    targetListed: boolean
+    eventSimulcast: boolean
     static name: string
 }
 class DVBLinkageExtendedEvent {
     /* Fields of GstMpegts-1.0.GstMpegts.DVBLinkageExtendedEvent */
-    readonly targetEventId: number
-    readonly targetListed: boolean
-    readonly eventSimulcast: boolean
-    readonly linkType: number
-    readonly targetIdType: number
-    readonly originalNetworkIdFlag: boolean
-    readonly serviceIdFlag: boolean
-    readonly userDefinedId: number
-    readonly targetTransportStreamId: number
-    readonly targetOriginalNetworkId: number
-    readonly targetServiceId: number
+    targetEventId: number
+    targetListed: boolean
+    eventSimulcast: boolean
+    linkType: number
+    targetIdType: number
+    originalNetworkIdFlag: boolean
+    serviceIdFlag: boolean
+    userDefinedId: number
+    targetTransportStreamId: number
+    targetOriginalNetworkId: number
+    targetServiceId: number
     static name: string
 }
 class DVBLinkageMobileHandOver {
     /* Fields of GstMpegts-1.0.GstMpegts.DVBLinkageMobileHandOver */
-    readonly handOverType: DVBLinkageHandOverType
-    readonly originType: boolean
-    readonly networkId: number
-    readonly initialServiceId: number
+    handOverType: DVBLinkageHandOverType
+    originType: boolean
+    networkId: number
+    initialServiceId: number
     static name: string
 }
 class DVBParentalRatingItem {
     /* Fields of GstMpegts-1.0.GstMpegts.DVBParentalRatingItem */
-    readonly countryCode: string
-    readonly rating: number
+    countryCode: string
+    rating: number
     static name: string
 }
 class DVBServiceListItem {
@@ -1835,11 +1835,11 @@ class DVBServiceListItem {
     /**
      * the id of a service
      */
-    readonly serviceId: number
+    serviceId: number
     /**
      * the type of a service
      */
-    readonly type: DVBServiceType
+    type: DVBServiceType
     static name: string
 }
 class DataBroadcastDescriptor {
@@ -1847,24 +1847,24 @@ class DataBroadcastDescriptor {
     /**
      * the data broadcast id
      */
-    readonly dataBroadcastId: number
+    dataBroadcastId: number
     /**
      * the component tag
      */
-    readonly componentTag: number
-    readonly length: number
+    componentTag: number
+    length: number
     /**
      * the selector byte field
      */
-    readonly selectorBytes: number
+    selectorBytes: number
     /**
      * language of `text`
      */
-    readonly languageCode: string
+    languageCode: string
     /**
      * description of data broadcast
      */
-    readonly text: string
+    text: string
     /* Methods of GstMpegts-1.0.GstMpegts.DataBroadcastDescriptor */
     free(): void
     static name: string
@@ -1874,20 +1874,20 @@ class Descriptor {
     /**
      * the type of descriptor
      */
-    readonly tag: number
+    tag: number
     /**
      * the extended type (if `descriptor_tag` is 0x7f)
      */
-    readonly tagExtension: number
+    tagExtension: number
     /**
      * the length of the descriptor content (excluding tag/length field)
      */
-    readonly length: number
+    length: number
     /**
      * the full descriptor data (including tag, extension, length). The first
      * two bytes are the `tag` and `length`.
      */
-    readonly data: number
+    data: number
     /* Methods of GstMpegts-1.0.GstMpegts.Descriptor */
     /**
      * Frees `desc`
@@ -1998,6 +1998,7 @@ class Descriptor {
      * 
      * Note: Use #gst_tag_get_language_code if you want to get the the
      * ISO 639-1 language code from the returned ISO 639-2 one.
+     * @param idx Table id of the entry to parse
      */
     parseDvbSubtitlingIdx(idx: number): [ /* returnType */ boolean, /* lang */ string, /* type */ number | null, /* compositionPageId */ number | null, /* ancillaryPageId */ number | null ]
     parseDvbSubtitlingNb(): number
@@ -2007,6 +2008,7 @@ class Descriptor {
     parseDvbT2DeliverySystem(): [ /* returnType */ boolean, /* res */ T2DeliverySystemDescriptor ]
     /**
      * Parses teletext number `idx` in the `descriptor`. The language is in ISO639 format.
+     * @param idx The id of the teletext to get
      */
     parseDvbTeletextIdx(idx: number): [ /* returnType */ boolean, /* languageCode */ string | null, /* teletextType */ DVBTeletextType | null, /* magazineNumber */ number | null, /* pageNumber */ number | null ]
     /**
@@ -2025,6 +2027,7 @@ class Descriptor {
      * 
      * Note: Use #gst_tag_get_language_code if you want to get the the
      * ISO 639-1 language code from the returned ISO 639-2 one.
+     * @param idx Table id of the language to parse
      */
     parseIso639LanguageIdx(idx: number): [ /* returnType */ boolean, /* lang */ string, /* audioType */ Iso639AudioType | null ]
     parseIso639LanguageNb(): number
@@ -2048,32 +2051,44 @@ class Descriptor {
     /* Static methods and pseudo-constructors */
     /**
      * Creates a #GstMpegtsDescriptor with custom `tag` and `data`
+     * @param tag descriptor tag
+     * @param data descriptor data (after tag and length field)
      */
     static fromCustom(tag: number, data: Uint8Array): Descriptor
     /**
      * Creates a #GstMpegtsDescriptor with custom `tag,` `tag_extension` and `data`
+     * @param tag descriptor tag
+     * @param tagExtension descriptor tag extension
+     * @param data descriptor data (after tag and length field)
      */
     static fromCustomWithExtension(tag: number, tagExtension: number, data: Uint8Array): Descriptor
     /**
      * Creates a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_NETWORK_NAME,
      * with the network name `name`. The data field of the #GstMpegtsDescriptor
      * will be allocated, and transferred to the caller.
+     * @param name the network name to set
      */
     static fromDvbNetworkName(name: string): Descriptor
     /**
      * Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
      * The data field of the #GstMpegtsDescriptor will be allocated,
      * and transferred to the caller.
+     * @param serviceType Service type defined as a #GstMpegtsDVBServiceType
+     * @param serviceName Name of the service
+     * @param serviceProvider Name of the service provider
      */
     static fromDvbService(serviceType: DVBServiceType, serviceName?: string | null, serviceProvider?: string | null): Descriptor
     static fromDvbSubtitling(lang: string, type: number, composition: number, ancillary: number): Descriptor
     /**
      * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
      * a single language
+     * @param language ISO-639-2 language 3-char code
      */
     static fromIso639Language(language: string): Descriptor
     /**
      * Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
+     * @param formatIdentifier a 4 character format identifier string
+     * @param additionalInfo pointer to optional additional info
      */
     static fromRegistration(formatIdentifier: string, additionalInfo: Uint8Array | null): Descriptor
     static parseAudioPreselectionDump(source: AudioPreselectionDescriptor): void
@@ -2084,11 +2099,11 @@ class DvbMultilingualBouquetNameItem {
     /**
      * the ISO 639 language code
      */
-    readonly languageCode: string
+    languageCode: string
     /**
      * the bouquet name
      */
-    readonly bouquetName: string
+    bouquetName: string
     static name: string
 }
 class DvbMultilingualComponentItem {
@@ -2096,11 +2111,11 @@ class DvbMultilingualComponentItem {
     /**
      * the ISO 639 language code
      */
-    readonly languageCode: string
+    languageCode: string
     /**
      * the component description
      */
-    readonly description: string
+    description: string
     static name: string
 }
 class DvbMultilingualNetworkNameItem {
@@ -2108,11 +2123,11 @@ class DvbMultilingualNetworkNameItem {
     /**
      * the ISO 639 language code
      */
-    readonly languageCode: string
+    languageCode: string
     /**
      * the network name
      */
-    readonly networkName: string
+    networkName: string
     static name: string
 }
 class DvbMultilingualServiceNameItem {
@@ -2120,87 +2135,87 @@ class DvbMultilingualServiceNameItem {
     /**
      * the ISO 639 language code
      */
-    readonly languageCode: string
+    languageCode: string
     /**
      * the provider name
      */
-    readonly providerName: string
+    providerName: string
     /**
      * the service name
      */
-    readonly serviceName: string
+    serviceName: string
     static name: string
 }
 class EIT {
     /* Fields of GstMpegts-1.0.GstMpegts.EIT */
-    readonly transportStreamId: number
-    readonly originalNetworkId: number
-    readonly segmentLastSectionNumber: number
-    readonly lastTableId: number
-    readonly actualStream: boolean
-    readonly presentFollowing: boolean
+    transportStreamId: number
+    originalNetworkId: number
+    segmentLastSectionNumber: number
+    lastTableId: number
+    actualStream: boolean
+    presentFollowing: boolean
     /**
      * List of events
      */
-    readonly events: EITEvent[]
+    events: EITEvent[]
     static name: string
 }
 class EITEvent {
     /* Fields of GstMpegts-1.0.GstMpegts.EITEvent */
-    readonly eventId: number
-    readonly startTime: Gst.DateTime
-    readonly duration: number
-    readonly runningStatus: RunningStatus
-    readonly freeCAMode: boolean
+    eventId: number
+    startTime: Gst.DateTime
+    duration: number
+    runningStatus: RunningStatus
+    freeCAMode: boolean
     /**
      * List of descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
 }
 class ExtendedEventDescriptor {
     /* Fields of GstMpegts-1.0.GstMpegts.ExtendedEventDescriptor */
-    readonly descriptorNumber: number
-    readonly lastDescriptorNumber: number
+    descriptorNumber: number
+    lastDescriptorNumber: number
     /**
      * NULL terminated language code.
      */
-    readonly languageCode: string
+    languageCode: string
     /**
      * the #GstMpegtsExtendedEventItem
      */
-    readonly items: ExtendedEventItem[]
-    readonly text: string
+    items: ExtendedEventItem[]
+    text: string
     /* Methods of GstMpegts-1.0.GstMpegts.ExtendedEventDescriptor */
     free(): void
     static name: string
 }
 class ExtendedEventItem {
     /* Fields of GstMpegts-1.0.GstMpegts.ExtendedEventItem */
-    readonly itemDescription: string
-    readonly item: string
+    itemDescription: string
+    item: string
     static name: string
 }
 class ISO639LanguageDescriptor {
     /* Fields of GstMpegts-1.0.GstMpegts.ISO639LanguageDescriptor */
-    readonly nbLanguage: number
-    readonly language: string[]
-    readonly audioType: Iso639AudioType[]
+    nbLanguage: number
+    language: string[]
+    audioType: Iso639AudioType[]
     /* Methods of GstMpegts-1.0.GstMpegts.ISO639LanguageDescriptor */
     descriptorFree(): void
     static name: string
 }
 class LogicalChannel {
     /* Fields of GstMpegts-1.0.GstMpegts.LogicalChannel */
-    readonly serviceId: number
-    readonly visibleService: boolean
-    readonly logicalChannelNumber: number
+    serviceId: number
+    visibleService: boolean
+    logicalChannelNumber: number
     static name: string
 }
 class LogicalChannelDescriptor {
     /* Fields of GstMpegts-1.0.GstMpegts.LogicalChannelDescriptor */
-    readonly nbChannels: number
-    readonly channels: LogicalChannel[]
+    nbChannels: number
+    channels: LogicalChannel[]
     static name: string
 }
 class NIT {
@@ -2208,19 +2223,19 @@ class NIT {
     /**
      * Whether this NIT corresponds to the actual stream
      */
-    readonly actualNetwork: boolean
+    actualNetwork: boolean
     /**
      * ID of the network that this NIT describes
      */
-    readonly networkId: number
+    networkId: number
     /**
      * the global descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     /**
      * the streams
      */
-    readonly streams: NITStream[]
+    streams: NITStream[]
     static name: string
     static new(): NIT
     constructor()
@@ -2229,9 +2244,9 @@ class NIT {
 }
 class NITStream {
     /* Fields of GstMpegts-1.0.GstMpegts.NITStream */
-    readonly transportStreamId: number
-    readonly originalNetworkId: number
-    readonly descriptors: Descriptor[]
+    transportStreamId: number
+    originalNetworkId: number
+    descriptors: Descriptor[]
     static name: string
     static new(): NITStream
     constructor()
@@ -2243,19 +2258,19 @@ class PMT {
     /**
      * PID of the stream containing the PCR for this program.
      */
-    readonly pcrPid: number
+    pcrPid: number
     /**
      * The program to which this PMT is applicable.
      */
-    readonly programNumber: number
+    programNumber: number
     /**
      * Array of #GstMpegtsDescriptor
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     /**
      * Array of #GstMpegtsPMTStream
      */
-    readonly streams: PMTStream[]
+    streams: PMTStream[]
     static name: string
     static new(): PMT
     constructor()
@@ -2267,16 +2282,16 @@ class PMTStream {
     /**
      * the type of stream. See #GstMpegtsStreamType
      */
-    readonly streamType: number
+    streamType: number
     /**
      * the PID of the stream
      */
-    readonly pid: number
+    pid: number
     /**
      * the descriptors of the
      * stream
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
     static new(): PMTStream
     constructor()
@@ -2288,11 +2303,11 @@ class PatProgram {
     /**
      * the program number
      */
-    readonly programNumber: number
+    programNumber: number
     /**
      * the network of program map PID
      */
-    readonly networkOrProgramMapPID: number
+    networkOrProgramMapPID: number
     static name: string
     static new(): PatProgram
     constructor()
@@ -2301,27 +2316,27 @@ class PatProgram {
 }
 class SCTESIT {
     /* Fields of GstMpegts-1.0.GstMpegts.SCTESIT */
-    readonly encryptedPacket: boolean
-    readonly encryptionAlgorithm: number
-    readonly ptsAdjustment: number
-    readonly cwIndex: number
-    readonly tier: number
-    readonly spliceCommandLength: number
-    readonly spliceCommandType: SCTESpliceCommandType
-    readonly spliceTimeSpecified: boolean
-    readonly spliceTime: number
-    readonly splices: object[]
-    readonly descriptors: object[]
+    encryptedPacket: boolean
+    encryptionAlgorithm: number
+    ptsAdjustment: number
+    cwIndex: number
+    tier: number
+    spliceCommandLength: number
+    spliceCommandType: SCTESpliceCommandType
+    spliceTimeSpecified: boolean
+    spliceTime: number
+    splices: object[]
+    descriptors: object[]
     /**
      * When encrypted, or when encountering an unknown command type,
      * we may still want to pass the sit through.
      */
-    readonly fullyParsed: boolean
+    fullyParsed: boolean
     /**
      * When the SIT was constructed by the application, splice times
      * are in running_time and must be translated before packetizing.
      */
-    readonly isRunningTime: boolean
+    isRunningTime: boolean
     static name: string
     static new(): SCTESIT
     constructor()
@@ -2333,19 +2348,19 @@ class SCTESpliceComponent {
     /**
      * the elementary PID stream containing the Splice Point
      */
-    readonly tag: number
+    tag: number
     /**
      * Whether `splice_time` was specified
      */
-    readonly spliceTimeSpecified: boolean
+    spliceTimeSpecified: boolean
     /**
      * the presentation time of the signaled splice event
      */
-    readonly spliceTime: number
+    spliceTime: number
     /**
      * The UTC time of the signaled splice event
      */
-    readonly utcSpliceTime: number
+    utcSpliceTime: number
     static name: string
     static new(tag: number): SCTESpliceComponent
     constructor(tag: number)
@@ -2354,28 +2369,28 @@ class SCTESpliceComponent {
 }
 class SCTESpliceEvent {
     /* Fields of GstMpegts-1.0.GstMpegts.SCTESpliceEvent */
-    readonly insertEvent: boolean
-    readonly spliceEventId: number
-    readonly spliceEventCancelIndicator: boolean
-    readonly outOfNetworkIndicator: boolean
-    readonly programSpliceFlag: boolean
-    readonly durationFlag: boolean
-    readonly spliceImmediateFlag: boolean
-    readonly programSpliceTimeSpecified: boolean
-    readonly programSpliceTime: number
+    insertEvent: boolean
+    spliceEventId: number
+    spliceEventCancelIndicator: boolean
+    outOfNetworkIndicator: boolean
+    programSpliceFlag: boolean
+    durationFlag: boolean
+    spliceImmediateFlag: boolean
+    programSpliceTimeSpecified: boolean
+    programSpliceTime: number
     /**
      * The UTC time of the signaled splice event
      */
-    readonly utcSpliceTime: number
+    utcSpliceTime: number
     /**
      * Per-PID splice time information
      */
-    readonly components: object[]
-    readonly breakDurationAutoReturn: boolean
-    readonly breakDuration: number
-    readonly uniqueProgramId: number
-    readonly availNum: number
-    readonly availsExpected: number
+    components: object[]
+    breakDurationAutoReturn: boolean
+    breakDuration: number
+    uniqueProgramId: number
+    availNum: number
+    availsExpected: number
     static name: string
     static new(): SCTESpliceEvent
     constructor()
@@ -2387,19 +2402,19 @@ class SDT {
     /**
      * Network ID of the originating delivery system
      */
-    readonly originalNetworkId: number
+    originalNetworkId: number
     /**
      * True if the table describes this transport stream
      */
-    readonly actualTs: boolean
+    actualTs: boolean
     /**
      * ID of this transport stream
      */
-    readonly transportStreamId: number
+    transportStreamId: number
     /**
      * List of services
      */
-    readonly services: SDTService[]
+    services: SDTService[]
     static name: string
     static new(): SDT
     constructor()
@@ -2411,27 +2426,27 @@ class SDTService {
     /**
      * The program number this table belongs to
      */
-    readonly serviceId: number
+    serviceId: number
     /**
      * EIT schedule information is present in this transport stream
      */
-    readonly eITScheduleFlag: boolean
+    eITScheduleFlag: boolean
     /**
      * EIT present/following information is present in this transport stream
      */
-    readonly eITPresentFollowingFlag: boolean
+    eITPresentFollowingFlag: boolean
     /**
      * Status of this service
      */
-    readonly runningStatus: RunningStatus
+    runningStatus: RunningStatus
     /**
      * True if one or more streams is controlled by a CA system
      */
-    readonly freeCAMode: boolean
+    freeCAMode: boolean
     /**
      * List of descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
     static new(): SDTService
     constructor()
@@ -2443,11 +2458,11 @@ class SIT {
     /**
      * List of descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     /**
      * List of services
      */
-    readonly services: SITService[]
+    services: SITService[]
     static name: string
 }
 class SITService {
@@ -2455,15 +2470,15 @@ class SITService {
     /**
      * The Program number this table belongs to
      */
-    readonly serviceId: number
+    serviceId: number
     /**
      * Status of this service
      */
-    readonly runningStatus: RunningStatus
+    runningStatus: RunningStatus
     /**
      * List of descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
 }
 class SatelliteDeliverySystemDescriptor {
@@ -2471,40 +2486,40 @@ class SatelliteDeliverySystemDescriptor {
     /**
      * the frequency in kHz (kiloHertz)
      */
-    readonly frequency: number
+    frequency: number
     /**
      * the orbital position in degrees
      */
-    readonly orbitalPosition: number
+    orbitalPosition: number
     /**
      * If %TRUE, the satellite is in the eastern part of the orbit,
      * else in the western part.
      */
-    readonly westEast: boolean
+    westEast: boolean
     /**
      * The polarization of the transmitted signal
      */
-    readonly polarization: SatellitePolarizationType
+    polarization: SatellitePolarizationType
     /**
      * Roll-off factor used in DVB-S2
      */
-    readonly rollOff: SatelliteRolloff
+    rollOff: SatelliteRolloff
     /**
      * modulation system, %TRUE if DVB-S2, else DVB-S
      */
-    readonly modulationSystem: boolean
+    modulationSystem: boolean
     /**
      * Modulation scheme used
      */
-    readonly modulationType: ModulationType
+    modulationType: ModulationType
     /**
      * Symbol rate (in symbols per second)
      */
-    readonly symbolRate: number
+    symbolRate: number
     /**
      * inner FEC scheme used
      */
-    readonly fecInner: DVBCodeRate
+    fecInner: DVBCodeRate
     static name: string
 }
 class Section {
@@ -2512,41 +2527,41 @@ class Section {
     /**
      * The type of section.
      */
-    readonly sectionType: SectionType
+    sectionType: SectionType
     /**
      * The PID on which this section was found or belongs to.
      */
-    readonly pid: number
+    pid: number
     /**
      * The table id of this section. See %GstMpegtsSectionTableID and
      *      derivates for more information.
      */
-    readonly tableId: number
+    tableId: number
     /**
      * This meaning differs per section. See the documentation
      *      of the parsed section type for the meaning of this field
      */
-    readonly subtableExtension: number
+    subtableExtension: number
     /**
      * Version of the section.
      */
-    readonly versionNumber: number
+    versionNumber: number
     /**
      * Applies to current/next stream or not
      */
-    readonly currentNextIndicator: boolean
+    currentNextIndicator: boolean
     /**
      * Number of the section (if multiple)
      */
-    readonly sectionNumber: number
+    sectionNumber: number
     /**
      * Number of the last expected section (if multiple)
      */
-    readonly lastSectionNumber: number
+    lastSectionNumber: number
     /**
      * Checksum (if applicable)
      */
-    readonly crc: number
+    crc: number
     /* Methods of GstMpegts-1.0.GstMpegts.Section */
     /**
      * Returns the #GstMpegtsAtscVCT contained in the `section`
@@ -2647,6 +2662,7 @@ class Section {
     /**
      * Creates a custom #GstEvent with a `GstMpegtsSection` and send it the `element`
      * #GstElement.
+     * @param element The #GstElement to send to section event to
      */
     sendEvent(element: Gst.Element): boolean
     static name: string
@@ -2659,22 +2675,30 @@ class Section {
     static fromAtscStt(stt: AtscSTT): Section
     /**
      * Ownership of `nit` is taken. The data in `nit` is managed by the #GstMpegtsSection
+     * @param nit a #GstMpegtsNIT to create the #GstMpegtsSection from
      */
     static fromNit(nit: NIT): Section
     /**
      * Creates a PAT #GstMpegtsSection from the `programs` array of #GstMpegtsPatPrograms
+     * @param programs an array of #GstMpegtsPatProgram
+     * @param tsId Transport stream ID of the PAT
      */
     static fromPat(programs: PatProgram[], tsId: number): Section
     /**
      * Creates a #GstMpegtsSection from `pmt` that is bound to `pid`
+     * @param pmt a #GstMpegtsPMT to create a #GstMpegtsSection from
+     * @param pid The PID that the #GstMpegtsPMT belongs to
      */
     static fromPmt(pmt: PMT, pid: number): Section
     /**
      * Ownership of `sit` is taken. The data in `sit` is managed by the #GstMpegtsSection
+     * @param sit a #GstMpegtsSCTESIT to create the #GstMpegtsSection from
+     * @param pid 
      */
     static fromScteSit(sit: SCTESIT, pid: number): Section
     /**
      * Ownership of `sdt` is taken. The data in `sdt` is managed by the #GstMpegtsSection
+     * @param sdt a #GstMpegtsSDT to create the #GstMpegtsSection from
      */
     static fromSdt(sdt: SDT): Section
 }
@@ -2683,12 +2707,12 @@ class T2DeliverySystemCell {
     /**
      * id of the cell
      */
-    readonly cellId: number
+    cellId: number
     /**
      * centre frequencies in Hz
      */
-    readonly centreFrequencies: number[]
-    readonly subCells: T2DeliverySystemCellExtension[]
+    centreFrequencies: number[]
+    subCells: T2DeliverySystemCellExtension[]
     static name: string
 }
 class T2DeliverySystemCellExtension {
@@ -2696,35 +2720,35 @@ class T2DeliverySystemCellExtension {
     /**
      * id of the sub cell
      */
-    readonly cellIdExtension: number
+    cellIdExtension: number
     /**
      * centre frequency of the sub cell in Hz
      */
-    readonly transposerFrequency: number
+    transposerFrequency: number
     static name: string
 }
 class T2DeliverySystemDescriptor {
     /* Fields of GstMpegts-1.0.GstMpegts.T2DeliverySystemDescriptor */
-    readonly plpId: number
-    readonly t2SystemId: number
-    readonly sisoMiso: number
-    readonly bandwidth: number
-    readonly guardInterval: TerrestrialGuardInterval
-    readonly transmissionMode: TerrestrialTransmissionMode
-    readonly otherFrequency: boolean
-    readonly tfs: boolean
-    readonly cells: T2DeliverySystemCell[]
+    plpId: number
+    t2SystemId: number
+    sisoMiso: number
+    bandwidth: number
+    guardInterval: TerrestrialGuardInterval
+    transmissionMode: TerrestrialTransmissionMode
+    otherFrequency: boolean
+    tfs: boolean
+    cells: T2DeliverySystemCell[]
     /* Methods of GstMpegts-1.0.GstMpegts.T2DeliverySystemDescriptor */
     free(): void
     static name: string
 }
 class TOT {
     /* Fields of GstMpegts-1.0.GstMpegts.TOT */
-    readonly utcTime: Gst.DateTime
+    utcTime: Gst.DateTime
     /**
      * List of descriptors
      */
-    readonly descriptors: Descriptor[]
+    descriptors: Descriptor[]
     static name: string
 }
 class TerrestrialDeliverySystemDescriptor {
@@ -2732,39 +2756,39 @@ class TerrestrialDeliverySystemDescriptor {
     /**
      * the frequency in Hz (Hertz)
      */
-    readonly frequency: number
+    frequency: number
     /**
      * the bandwidth in Hz (Hertz)
      */
-    readonly bandwidth: number
+    bandwidth: number
     /**
      * %TRUE High Priority %FALSE Low Priority
      */
-    readonly priority: boolean
+    priority: boolean
     /**
      * %TRUE no time slicing %FALSE time slicing
      */
-    readonly timeSlicing: boolean
+    timeSlicing: boolean
     /**
      * %TRUE no mpe-fec is used %FALSE mpe-fec is use
      */
-    readonly mpeFec: boolean
+    mpeFec: boolean
     /**
      * the constellation
      */
-    readonly constellation: ModulationType
+    constellation: ModulationType
     /**
      * the hierarchy
      */
-    readonly hierarchy: TerrestrialHierarchy
-    readonly codeRateHp: DVBCodeRate
-    readonly codeRateLp: DVBCodeRate
-    readonly guardInterval: TerrestrialGuardInterval
-    readonly transmissionMode: TerrestrialTransmissionMode
+    hierarchy: TerrestrialHierarchy
+    codeRateHp: DVBCodeRate
+    codeRateLp: DVBCodeRate
+    guardInterval: TerrestrialGuardInterval
+    transmissionMode: TerrestrialTransmissionMode
     /**
      * %TRUE more frequency are use, else not
      */
-    readonly otherFrequency: boolean
+    otherFrequency: boolean
     static name: string
 }
 }

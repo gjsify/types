@@ -152,11 +152,13 @@ class Audio {
     /* Methods of GVnc-1.0.GVnc.Audio */
     /**
      * Request playback of a single audio sample in `sample`
+     * @param sample the audio sample
      */
     playbackData(sample: AudioSample): void
     /**
      * Indicate that the remote desktop is about to start
      * audio playback in format `format`.
+     * @param format the new audio format
      */
     playbackStart(format: AudioFormat): void
     /**
@@ -173,6 +175,12 @@ class Framebuffer {
      * Copies data from the range (`srcx,` `srcy)` to
      * (`srcx+``width,` `srcy+``height)` over to the
      * range starting at (`dstx,` `dsty)`.
+     * @param srcx the horizontal starting pixel
+     * @param srcy the vertical starting pixel
+     * @param dstx the horizontal target pixel
+     * @param dsty the vertical target pixel
+     * @param width the width of the region
+     * @param height the height of the region
      */
     copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void
     /**
@@ -180,6 +188,11 @@ class Framebuffer {
      * (`x` + `width,` `y` + `height)` to the value in
      * `src`. The number of bytes in `src` is
      * determined by the remote pixel format
+     * @param src the new pixel data
+     * @param x the horizontal pixel to start filling
+     * @param y the vertical pixel to start filling
+     * @param width the number of pixels to fill horizontally
+     * @param height the number of pixels to fill vertically
      */
     fill(src: Uint8Array, x: number, y: number, width: number, height: number): void
     /**
@@ -212,16 +225,26 @@ class Framebuffer {
      * (`x` + `width,` `y` + `height)` to the value in
      * `src`. The number of bytes in `src` is always
      * 3 as it must be in plain RGB24 format.
+     * @param src the new pixel data
+     * @param rowstride the number of bytes per row
+     * @param x the horizontal pixel to start filling
+     * @param y the vertical pixel to start filling
+     * @param width the number of pixels to fill horizontally
+     * @param height the number of pixels to fill vertically
      */
     rgb24Blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void
     /**
      * Set the color map to use for the framebuffer
+     * @param map the new color map
      */
     setColorMap(map: ColorMap): void
     /**
      * Sets a pixel in the framebuffer at (`x,` `y)` to the
      * value in `src`. The number of bytes in `src` is
      * determined by the remote pixel format
+     * @param src the new pixel data
+     * @param x the horizontal pixel to set
+     * @param y the vertical pixel to set
      */
     setPixelAt(src: Uint8Array, x: number, y: number): void
     static name: string
@@ -230,7 +253,7 @@ interface BaseAudio_ConstructProps extends GObject.Object_ConstructProps {
 }
 class BaseAudio {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -266,6 +289,10 @@ class BaseAudio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -276,6 +303,12 @@ class BaseAudio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -299,6 +332,7 @@ class BaseAudio {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -318,11 +352,14 @@ class BaseAudio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -330,6 +367,8 @@ class BaseAudio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -347,6 +386,7 @@ class BaseAudio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -392,6 +432,7 @@ class BaseAudio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -435,15 +476,20 @@ class BaseAudio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -484,6 +530,7 @@ class BaseAudio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -518,16 +565,19 @@ class BaseAudio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GVnc-1.0.GVnc.Audio */
     /**
      * Request playback of a single audio sample in `sample`
+     * @param sample the audio sample
      */
     playbackData(sample: AudioSample): void
     /**
      * Indicate that the remote desktop is about to start
      * audio playback in format `format`.
+     * @param format the new audio format
      */
     playbackStart(format: AudioFormat): void
     /**
@@ -580,6 +630,7 @@ class BaseAudio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -612,9 +663,15 @@ interface BaseFramebuffer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class BaseFramebuffer {
     /* Properties of GVnc-1.0.GVnc.BaseFramebuffer */
+    readonly buffer: object
     colorMap: ColorMap
+    readonly height: number
+    readonly localFormat: PixelFormat
+    readonly remoteFormat: PixelFormat
+    readonly rowstride: number
+    readonly width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -650,6 +707,10 @@ class BaseFramebuffer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -660,6 +721,12 @@ class BaseFramebuffer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -683,6 +750,7 @@ class BaseFramebuffer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -702,11 +770,14 @@ class BaseFramebuffer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -714,6 +785,8 @@ class BaseFramebuffer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -731,6 +804,7 @@ class BaseFramebuffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -776,6 +850,7 @@ class BaseFramebuffer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -819,15 +894,20 @@ class BaseFramebuffer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -868,6 +948,7 @@ class BaseFramebuffer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -902,6 +983,7 @@ class BaseFramebuffer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GVnc-1.0.GVnc.Framebuffer */
@@ -910,6 +992,12 @@ class BaseFramebuffer {
      * Copies data from the range (`srcx,` `srcy)` to
      * (`srcx+``width,` `srcy+``height)` over to the
      * range starting at (`dstx,` `dsty)`.
+     * @param srcx the horizontal starting pixel
+     * @param srcy the vertical starting pixel
+     * @param dstx the horizontal target pixel
+     * @param dsty the vertical target pixel
+     * @param width the width of the region
+     * @param height the height of the region
      */
     copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void
     /**
@@ -917,6 +1005,11 @@ class BaseFramebuffer {
      * (`x` + `width,` `y` + `height)` to the value in
      * `src`. The number of bytes in `src` is
      * determined by the remote pixel format
+     * @param src the new pixel data
+     * @param x the horizontal pixel to start filling
+     * @param y the vertical pixel to start filling
+     * @param width the number of pixels to fill horizontally
+     * @param height the number of pixels to fill vertically
      */
     fill(src: Uint8Array, x: number, y: number, width: number, height: number): void
     /**
@@ -949,16 +1042,26 @@ class BaseFramebuffer {
      * (`x` + `width,` `y` + `height)` to the value in
      * `src`. The number of bytes in `src` is always
      * 3 as it must be in plain RGB24 format.
+     * @param src the new pixel data
+     * @param rowstride the number of bytes per row
+     * @param x the horizontal pixel to start filling
+     * @param y the vertical pixel to start filling
+     * @param width the number of pixels to fill horizontally
+     * @param height the number of pixels to fill vertically
      */
     rgb24Blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void
     /**
      * Set the color map to use for the framebuffer
+     * @param map the new color map
      */
     setColorMap(map: ColorMap): void
     /**
      * Sets a pixel in the framebuffer at (`x,` `y)` to the
      * value in `src`. The number of bytes in `src` is
      * determined by the remote pixel format
+     * @param src the new pixel data
+     * @param x the horizontal pixel to set
+     * @param y the vertical pixel to set
      */
     setPixelAt(src: Uint8Array, x: number, y: number): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -990,17 +1093,48 @@ class BaseFramebuffer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::color-map", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::color-map", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::color-map", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::color-map", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::color-map", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::local-format", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::local-format", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::local-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::local-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::local-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::remote-format", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::remote-format", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::remote-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::remote-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::remote-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::rowstride", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::rowstride", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1023,7 +1157,7 @@ class Connection {
     /* Properties of GVnc-1.0.GVnc.Connection */
     framebuffer: Framebuffer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GVnc-1.0.GVnc.Connection */
     /**
      * Tell the server that it is no longer permitted to send
@@ -1042,6 +1176,11 @@ class Connection {
      * region positioned at (`x,` `y)` wth size (`width,` `height)`
      * sees damage. The update sent may be a subset of the region
      * requested, if `incremental` is FALSE.
+     * @param incremental TRUE to only receive region with changes
+     * @param x horizontal offset to region of update
+     * @param y vertical offset to region of update
+     * @param width horizontal size of region of update
+     * @param height vertical size of region of update
      */
     framebufferUpdateRequest(incremental: boolean, x: number, y: number, width: number, height: number): boolean
     /**
@@ -1124,6 +1263,9 @@ class Connection {
      * event will be sent with the X11 key code from `key`. If the
      * extended key event protocol extension is active, the `scancode`
      * will be sent instead.
+     * @param downFlag TRUE if this is a key press, FALSE for a key release
+     * @param key the X11 key code
+     * @param scancode the XT scan code
      */
     keyEvent(downFlag: boolean, key: number, scancode: number): boolean
     /**
@@ -1137,6 +1279,8 @@ class Connection {
      * endpoint. This will be used by some authentication
      * schemes, for example x509 certificate validation
      * against `hostname`.
+     * @param addr the socket address
+     * @param hostname the hostname
      */
     openAddr(addr: Gio.SocketAddress, hostname?: string | null): boolean
     /**
@@ -1146,6 +1290,7 @@ class Connection {
      * provide the remote hostname. This allows use of
      * x509 based authentication which requires a hostname
      * to be available.
+     * @param fd file descriptor to use for the connection
      */
     openFd(fd: number): boolean
     /**
@@ -1154,16 +1299,23 @@ class Connection {
      * host that the `fd` provides a connection to. This
      * will be used by some authentication schemes, for
      * example x509 certificate validation against `hostname`.
+     * @param fd file descriptor to use for the connection
+     * @param hostname the host associated with the connection
      */
     openFdWithHostname(fd: number, hostname?: string | null): boolean
     /**
      * Open a TCP connection to the remote desktop at `host`
      * listening on `port`.
+     * @param host the host name or IP address
+     * @param port the service name or port number
      */
     openHost(host: string, port: string): boolean
     /**
      * Send a pointer event to the server, reflecting either movement
      * of the pointer, or a change in state of its buttons, or both.
+     * @param buttonMask the new state of the buttons
+     * @param x the new horizontal position of the pointer
+     * @param y the new veritical position of the pointer
      */
     pointerEvent(buttonMask: number, x: number, y: number): boolean
     /**
@@ -1176,11 +1328,13 @@ class Connection {
      * The action should be assumed to be accepted unless
      * "vnc-power-control" signal is emitted with a
      * VNC_CONNECTION_POWER_STATUS_FAIL code.
+     * @param action 
      */
     powerControl(action: ConnectionPowerAction): boolean
     /**
      * Set the audio sink to use for playing back audio from
      * the remote session.
+     * @param audio the audio sink
      */
     setAudio(audio: Audio): boolean
     /**
@@ -1189,16 +1343,19 @@ class Connection {
      * when the audio stream is not active, otherwise it will
      * be impossible to determine when the server has switched
      * to sending data in the new format
+     * @param fmt the audio format
      */
     setAudioFormat(fmt: AudioFormat): boolean
     /**
      * If a multi-level authentication scheme was requested, this
      * identifies which auth type to use for the second phase.
+     * @param type the auth sub-type
      */
     setAuthSubtype(type: number): boolean
     /**
      * Set the authentication type to use to complete the
      * connection.
+     * @param type the requested auth type
      */
     setAuthType(type: number): boolean
     /**
@@ -1206,17 +1363,21 @@ class Connection {
      * `type` to the string `data`.
      * 
      * `type` is one of the VncConnectionCredential enum vlaues
+     * @param type the authentication credential type
+     * @param data the value associated with the credential
      */
     setCredential(type: number, data: string): boolean
     /**
      * Inform the server of the list of encodings that it is
      * allowed to send. This should be done before requesting
      * any framebuffer updates
+     * @param encoding the list of permitted encodings
      */
     setEncodings(encoding: number[]): boolean
     /**
      * Set the framebuffer object to which frame buffer updates
      * will be written.
+     * @param fb the framebuffer object
      */
     setFramebuffer(fb: Framebuffer): boolean
     /**
@@ -1225,6 +1386,7 @@ class Connection {
      * when no framebuffer updates are pending, otherwise
      * it is impossible to determine when the server has
      * switched over to using the new format.
+     * @param fmt the new pixel format
      */
     setPixelFormat(fmt: PixelFormat): boolean
     /**
@@ -1232,6 +1394,7 @@ class Connection {
      * allow allow this client to co-exist with other existing
      * clients. A FALSE value will cause other clients to be
      * dropped
+     * @param shared the new sharing state
      */
     setShared(shared: boolean): boolean
     setSize(width: number, height: number): ConnectionResizeStatus
@@ -1275,6 +1438,10 @@ class Connection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1285,6 +1452,12 @@ class Connection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1308,6 +1481,7 @@ class Connection {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1327,11 +1501,14 @@ class Connection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1339,6 +1516,8 @@ class Connection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1356,6 +1535,7 @@ class Connection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1401,6 +1581,7 @@ class Connection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1444,15 +1625,20 @@ class Connection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1493,6 +1679,7 @@ class Connection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1527,6 +1714,7 @@ class Connection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GVnc-1.0.GVnc.Connection */
@@ -1567,6 +1755,7 @@ class Connection {
     emit(sigName: "vnc-connected"): void
     /**
      * Emitted when the cursor is changed.
+     * @param cursor the new cursor
      */
     connect(sigName: "vnc-cursor-changed", callback: ((cursor?: Cursor | null) => void)): number
     on(sigName: "vnc-cursor-changed", callback: (cursor?: Cursor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -1662,6 +1851,7 @@ class Connection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1703,7 +1893,7 @@ class Cursor {
     hoty: number
     width: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GVnc-1.0.GVnc.Cursor */
     /**
      * Get the bitmap data representing the cursor
@@ -1760,6 +1950,10 @@ class Cursor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1770,6 +1964,12 @@ class Cursor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1793,6 +1993,7 @@ class Cursor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1812,11 +2013,14 @@ class Cursor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1824,6 +2028,8 @@ class Cursor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1841,6 +2047,7 @@ class Cursor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1886,6 +2093,7 @@ class Cursor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1929,15 +2137,20 @@ class Cursor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1978,6 +2191,7 @@ class Cursor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2012,6 +2226,7 @@ class Cursor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2043,6 +2258,7 @@ class Cursor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2090,9 +2306,9 @@ class Cursor {
 }
 class AudioFormat {
     /* Fields of GVnc-1.0.GVnc.AudioFormat */
-    readonly format: number
-    readonly nchannels: number
-    readonly frequency: number
+    format: number
+    nchannels: number
+    frequency: number
     /* Methods of GVnc-1.0.GVnc.AudioFormat */
     /**
      * Allocate a new VNC audio format struct whose
@@ -2113,17 +2329,17 @@ class AudioFormat {
 }
 abstract class AudioInterface {
     /* Fields of GVnc-1.0.GVnc.AudioInterface */
-    readonly parent: GObject.TypeInterface
-    readonly playbackStart: (audio: Audio, format: AudioFormat) => boolean
-    readonly playbackStop: (audio: Audio) => boolean
-    readonly playbackData: (audio: Audio, sample: AudioSample) => boolean
+    parent: GObject.TypeInterface
+    playbackStart: (audio: Audio, format: AudioFormat) => boolean
+    playbackStop: (audio: Audio) => boolean
+    playbackData: (audio: Audio, sample: AudioSample) => boolean
     static name: string
 }
 class AudioSample {
     /* Fields of GVnc-1.0.GVnc.AudioSample */
-    readonly data: number
-    readonly length: number
-    readonly capacity: number
+    data: number
+    length: number
+    capacity: number
     /* Methods of GVnc-1.0.GVnc.AudioSample */
     /**
      * Allocate a new audio sample, initializing it with a copy
@@ -2146,10 +2362,10 @@ class AudioSample {
 }
 abstract class BaseAudioClass {
     /* Fields of GVnc-1.0.GVnc.BaseAudioClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly playbackStart: (audio: BaseAudio, format: AudioFormat) => boolean
-    readonly playbackStop: (audio: BaseAudio) => boolean
-    readonly playbackData: (audio: BaseAudio, sample: AudioSample) => boolean
+    parentClass: GObject.ObjectClass
+    playbackStart: (audio: BaseAudio, format: AudioFormat) => boolean
+    playbackStop: (audio: BaseAudio) => boolean
+    playbackData: (audio: BaseAudio, sample: AudioSample) => boolean
     static name: string
 }
 class BaseAudioPrivate {
@@ -2157,8 +2373,8 @@ class BaseAudioPrivate {
 }
 abstract class BaseFramebufferClass {
     /* Fields of GVnc-1.0.GVnc.BaseFramebufferClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly vncReserved: object[]
+    parentClass: GObject.ObjectClass
+    vncReserved: object[]
     static name: string
 }
 class BaseFramebufferPrivate {
@@ -2166,9 +2382,9 @@ class BaseFramebufferPrivate {
 }
 class ColorMap {
     /* Fields of GVnc-1.0.GVnc.ColorMap */
-    readonly offset: number
-    readonly size: number
-    readonly colors: ColorMapEntry
+    offset: number
+    size: number
+    colors: ColorMapEntry
     /* Methods of GVnc-1.0.GVnc.ColorMap */
     /**
      * Allocate a new color map initializing it with a
@@ -2183,11 +2399,16 @@ class ColorMap {
     /**
      * Lookup the RGB values associated with the
      * colour map entry at position `idx`
+     * @param idx the index to set
      */
     lookup(idx: number): [ /* returnType */ boolean, /* red */ number, /* green */ number, /* blue */ number ]
     /**
      * Update the RGB value associated with the
      * color map entry at position `idx`.
+     * @param idx the index to set
+     * @param red the new red value
+     * @param green the new green value
+     * @param blue the new blue value
      */
     set(idx: number, red: number, green: number, blue: number): boolean
     static name: string
@@ -2198,35 +2419,35 @@ class ColorMap {
 }
 class ColorMapEntry {
     /* Fields of GVnc-1.0.GVnc.ColorMapEntry */
-    readonly red: number
-    readonly green: number
-    readonly blue: number
+    red: number
+    green: number
+    blue: number
     static name: string
 }
 abstract class ConnectionClass {
     /* Fields of GVnc-1.0.GVnc.ConnectionClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly vncCursorChanged: (conn: Connection, cursor: Cursor) => void
-    readonly vncPointerModeChanged: (conn: Connection, absPointer: boolean) => void
-    readonly vncBell: (conn: Connection) => void
-    readonly vncServerCutText: (conn: Connection, text: GLib.String) => void
-    readonly vncFramebufferUpdate: (conn: Connection, x: number, y: number, width: number, height: number) => void
-    readonly vncDesktopResize: (conn: Connection, width: number, height: number) => void
-    readonly vncPixelFormatChanged: (conn: Connection, format: PixelFormat) => void
-    readonly vncAuthFailure: (conn: Connection, reason: string) => void
-    readonly vncAuthUnsupported: (conn: Connection, authType: number) => void
-    readonly vncAuthCredential: (conn: Connection, creds: GObject.ValueArray) => void
-    readonly vncAuthChooseType: (conn: Connection, types: GObject.ValueArray) => void
-    readonly vncAuthChooseSubtype: (conn: Connection, type: number, subtypes: GObject.ValueArray) => void
-    readonly vncConnected: (conn: Connection) => void
-    readonly vncInitialized: (conn: Connection) => void
-    readonly vncDisconnected: (conn: Connection) => void
-    readonly vncLedState: (conn: Connection) => void
-    readonly vncError: (conn: Connection, message: string) => void
-    readonly vncPowerControlInitialized: (conn: Connection) => void
-    readonly vncPowerControlFailed: (conn: Connection) => void
-    readonly vncDesktopRename: (conn: Connection, name: string) => void
-    readonly vncReserved: object[]
+    parentClass: GObject.ObjectClass
+    vncCursorChanged: (conn: Connection, cursor: Cursor) => void
+    vncPointerModeChanged: (conn: Connection, absPointer: boolean) => void
+    vncBell: (conn: Connection) => void
+    vncServerCutText: (conn: Connection, text: GLib.String) => void
+    vncFramebufferUpdate: (conn: Connection, x: number, y: number, width: number, height: number) => void
+    vncDesktopResize: (conn: Connection, width: number, height: number) => void
+    vncPixelFormatChanged: (conn: Connection, format: PixelFormat) => void
+    vncAuthFailure: (conn: Connection, reason: string) => void
+    vncAuthUnsupported: (conn: Connection, authType: number) => void
+    vncAuthCredential: (conn: Connection, creds: GObject.ValueArray) => void
+    vncAuthChooseType: (conn: Connection, types: GObject.ValueArray) => void
+    vncAuthChooseSubtype: (conn: Connection, type: number, subtypes: GObject.ValueArray) => void
+    vncConnected: (conn: Connection) => void
+    vncInitialized: (conn: Connection) => void
+    vncDisconnected: (conn: Connection) => void
+    vncLedState: (conn: Connection) => void
+    vncError: (conn: Connection, message: string) => void
+    vncPowerControlInitialized: (conn: Connection) => void
+    vncPowerControlFailed: (conn: Connection) => void
+    vncDesktopRename: (conn: Connection, name: string) => void
+    vncReserved: object[]
     static name: string
 }
 class ConnectionPrivate {
@@ -2234,8 +2455,8 @@ class ConnectionPrivate {
 }
 abstract class CursorClass {
     /* Fields of GVnc-1.0.GVnc.CursorClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly vncReserved: object[]
+    parentClass: GObject.ObjectClass
+    vncReserved: object[]
     static name: string
 }
 class CursorPrivate {
@@ -2243,34 +2464,34 @@ class CursorPrivate {
 }
 abstract class FramebufferInterface {
     /* Fields of GVnc-1.0.GVnc.FramebufferInterface */
-    readonly parent: GObject.TypeInterface
-    readonly getWidth: (fb: Framebuffer) => number
-    readonly getHeight: (fb: Framebuffer) => number
-    readonly getRowstride: (fb: Framebuffer) => number
-    readonly getBuffer: (fb: Framebuffer) => number
-    readonly getLocalFormat: (fb: Framebuffer) => PixelFormat
-    readonly getRemoteFormat: (fb: Framebuffer) => PixelFormat
-    readonly perfectFormatMatch: (fb: Framebuffer) => boolean
-    readonly setPixelAt: (fb: Framebuffer, src: Uint8Array, x: number, y: number) => void
-    readonly fill: (fb: Framebuffer, src: Uint8Array, x: number, y: number, width: number, height: number) => void
-    readonly copyrect: (fb: Framebuffer, srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number) => void
-    readonly blt: (fb: Framebuffer, src: number, rowstride: number, x: number, y: number, width: number, height: number) => void
-    readonly rgb24Blt: (fb: Framebuffer, src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number) => void
-    readonly setColorMap: (fb: Framebuffer, map: ColorMap) => void
+    parent: GObject.TypeInterface
+    getWidth: (fb: Framebuffer) => number
+    getHeight: (fb: Framebuffer) => number
+    getRowstride: (fb: Framebuffer) => number
+    getBuffer: (fb: Framebuffer) => number
+    getLocalFormat: (fb: Framebuffer) => PixelFormat
+    getRemoteFormat: (fb: Framebuffer) => PixelFormat
+    perfectFormatMatch: (fb: Framebuffer) => boolean
+    setPixelAt: (fb: Framebuffer, src: Uint8Array, x: number, y: number) => void
+    fill: (fb: Framebuffer, src: Uint8Array, x: number, y: number, width: number, height: number) => void
+    copyrect: (fb: Framebuffer, srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number) => void
+    blt: (fb: Framebuffer, src: number, rowstride: number, x: number, y: number, width: number, height: number) => void
+    rgb24Blt: (fb: Framebuffer, src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number) => void
+    setColorMap: (fb: Framebuffer, map: ColorMap) => void
     static name: string
 }
 class PixelFormat {
     /* Fields of GVnc-1.0.GVnc.PixelFormat */
-    readonly bitsPerPixel: number
-    readonly depth: number
-    readonly byteOrder: number
-    readonly trueColorFlag: number
-    readonly redMax: number
-    readonly greenMax: number
-    readonly blueMax: number
-    readonly redShift: number
-    readonly greenShift: number
-    readonly blueShift: number
+    bitsPerPixel: number
+    depth: number
+    byteOrder: number
+    trueColorFlag: number
+    redMax: number
+    greenMax: number
+    blueMax: number
+    redShift: number
+    greenShift: number
+    blueShift: number
     /* Methods of GVnc-1.0.GVnc.PixelFormat */
     /**
      * Allocate a new VNC pixel format struct whose

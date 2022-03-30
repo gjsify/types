@@ -793,7 +793,7 @@ interface SignalAccumulator {
  * Emission hooks allow you to tie a hook to the signal type, so that it will
  * trap all emissions of that signal, from any object.
  * 
- * You may not attach these to signals created with the #G_SIGNAL_NO_HOOKS flag.
+ * You may not attach these to signals created with the %G_SIGNAL_NO_HOOKS flag.
  */
 interface SignalEmissionHook {
     (ihint: SignalInvocationHint, paramValues: any[], data?: object | null): boolean
@@ -886,12 +886,18 @@ class TypePlugin {
      * Calls the `complete_interface_info` function from the
      * #GTypePluginClass of `plugin`. There should be no need to use this
      * function outside of the GObject type system itself.
+     * @param instanceType the #GType of an instantiatable type to which the interface  is added
+     * @param interfaceType the #GType of the interface whose info is completed
+     * @param info the #GInterfaceInfo to fill in
      */
     completeInterfaceInfo(instanceType: Type, interfaceType: Type, info: InterfaceInfo): void
     /**
      * Calls the `complete_type_info` function from the #GTypePluginClass of `plugin`.
      * There should be no need to use this function outside of the GObject
      * type system itself.
+     * @param gType the #GType whose info is completed
+     * @param info the #GTypeInfo struct to fill in
+     * @param valueTable the #GTypeValueTable to fill in
      */
     completeTypeInfo(gType: Type, info: TypeInfo, valueTable: TypeValueTable): void
     /**
@@ -971,8 +977,37 @@ interface Binding_ConstructProps extends Object_ConstructProps {
     targetProperty?: string
 }
 class Binding {
+    /* Properties of GObject-2.0.GObject.Binding */
+    /**
+     * Flags to be used to control the #GBinding
+     */
+    readonly flags: BindingFlags
+    /**
+     * The #GObject that should be used as the source of the binding
+     */
+    readonly source: Object
+    /**
+     * The name of the property of #GBinding:source that should be used
+     * as the source of the binding.
+     * 
+     * This should be in [canonical form][canonical-parameter-names] to get the
+     * best performance.
+     */
+    readonly sourceProperty: string
+    /**
+     * The #GObject that should be used as the target of the binding
+     */
+    readonly target: Object
+    /**
+     * The name of the property of #GBinding:target that should be used
+     * as the target of the binding.
+     * 
+     * This should be in [canonical form][canonical-parameter-names] to get the
+     * best performance.
+     */
+    readonly targetProperty: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /* Methods of GObject-2.0.GObject.Binding */
     /**
      * Retrieves the #GObject instance used as the source of the binding.
@@ -1077,6 +1112,10 @@ class Binding {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags): Binding
     /**
@@ -1087,6 +1126,12 @@ class Binding {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags, transformTo: Function, transformFrom: Function): Binding
     /**
@@ -1110,6 +1155,7 @@ class Binding {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1129,11 +1175,14 @@ class Binding {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1141,6 +1190,8 @@ class Binding {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1158,6 +1209,7 @@ class Binding {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1203,6 +1255,7 @@ class Binding {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: ParamSpec): void
     /**
@@ -1246,15 +1299,20 @@ class Binding {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1295,6 +1353,7 @@ class Binding {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1329,6 +1388,7 @@ class Binding {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1360,12 +1420,38 @@ class Binding {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: ParamSpec): void
+    connect(sigName: "notify::flags", callback: ((pspec: ParamSpec) => void)): number
+    connect_after(sigName: "notify::flags", callback: ((pspec: ParamSpec) => void)): number
+    on(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::source", callback: ((pspec: ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: ((pspec: ParamSpec) => void)): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::source-property", callback: ((pspec: ParamSpec) => void)): number
+    connect_after(sigName: "notify::source-property", callback: ((pspec: ParamSpec) => void)): number
+    on(sigName: "notify::source-property", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::source-property", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::source-property", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::target", callback: ((pspec: ParamSpec) => void)): number
+    connect_after(sigName: "notify::target", callback: ((pspec: ParamSpec) => void)): number
+    on(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::target-property", callback: ((pspec: ParamSpec) => void)): number
+    connect_after(sigName: "notify::target-property", callback: ((pspec: ParamSpec) => void)): number
+    on(sigName: "notify::target-property", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::target-property", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::target-property", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1392,7 +1478,7 @@ class BindingGroup {
      */
     source: Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /* Methods of GObject-2.0.GObject.BindingGroup */
     /**
      * Creates a binding between `source_property` on the source object
@@ -1401,6 +1487,10 @@ class BindingGroup {
      * The binding flag %G_BINDING_SYNC_CREATE is automatically specified.
      * 
      * See g_object_bind_property() for more information.
+     * @param sourceProperty the property on the source to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags the flags used to create the #GBinding
      */
     bind(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags): void
     /**
@@ -1414,6 +1504,12 @@ class BindingGroup {
      * instead of function pointers.
      * 
      * See g_object_bind_property_with_closures() for more information.
+     * @param sourceProperty the property on the source to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags the flags used to create the #GBinding
+     * @param transformTo a #GClosure wrapping the     transformation function from the source object to the `target,`     or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the     transformation function from the `target` to the source object,     or %NULL to use the default
      */
     bindFull(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags, transformTo?: Function | null, transformFrom?: Function | null): void
     /**
@@ -1426,6 +1522,7 @@ class BindingGroup {
      * will be removed.
      * 
      * Note that all properties that have been bound must exist on `source`.
+     * @param source the source #GObject,   or %NULL to clear it
      */
     setSource(source?: Object | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1463,6 +1560,10 @@ class BindingGroup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags): Binding
     /**
@@ -1473,6 +1574,12 @@ class BindingGroup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags, transformTo: Function, transformFrom: Function): Binding
     /**
@@ -1496,6 +1603,7 @@ class BindingGroup {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1515,11 +1623,14 @@ class BindingGroup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1527,6 +1638,8 @@ class BindingGroup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1544,6 +1657,7 @@ class BindingGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1589,6 +1703,7 @@ class BindingGroup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: ParamSpec): void
     /**
@@ -1632,15 +1747,20 @@ class BindingGroup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1681,6 +1801,7 @@ class BindingGroup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1715,6 +1836,7 @@ class BindingGroup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1746,6 +1868,7 @@ class BindingGroup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1775,7 +1898,7 @@ interface InitiallyUnowned_ConstructProps extends Object_ConstructProps {
 }
 class InitiallyUnowned {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -1811,6 +1934,10 @@ class InitiallyUnowned {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags): Binding
     /**
@@ -1821,6 +1948,12 @@ class InitiallyUnowned {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags, transformTo: Function, transformFrom: Function): Binding
     /**
@@ -1844,6 +1977,7 @@ class InitiallyUnowned {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1863,11 +1997,14 @@ class InitiallyUnowned {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1875,6 +2012,8 @@ class InitiallyUnowned {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1892,6 +2031,7 @@ class InitiallyUnowned {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1937,6 +2077,7 @@ class InitiallyUnowned {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: ParamSpec): void
     /**
@@ -1980,15 +2121,20 @@ class InitiallyUnowned {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2029,6 +2175,7 @@ class InitiallyUnowned {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2063,6 +2210,7 @@ class InitiallyUnowned {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2094,6 +2242,7 @@ class InitiallyUnowned {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2150,6 +2299,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags): Binding
     /**
@@ -2160,6 +2313,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags, transformTo: Function, transformFrom: Function): Binding
     /**
@@ -2183,6 +2342,7 @@ class Object {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2202,11 +2362,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2214,6 +2377,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2231,6 +2396,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2276,6 +2442,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: ParamSpec): void
     /**
@@ -2319,15 +2486,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2368,6 +2540,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2402,6 +2575,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2433,6 +2607,7 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2458,6 +2633,8 @@ class Object {
      * will be the default vtable from g_type_default_interface_ref(), or,
      * if you know the interface has already been loaded,
      * g_type_default_interface_peek().
+     * @param gIface any interface vtable for the  interface, or the default vtable for the interface
+     * @param propertyName name of a property to look up.
      */
     static interfaceFindProperty(gIface: TypeInterface, propertyName: string): ParamSpec
     /**
@@ -2477,6 +2654,8 @@ class Object {
      * been called for any object types implementing this interface.
      * 
      * If `pspec` is a floating reference, it will be consumed.
+     * @param gIface any interface vtable for the    interface, or the default  vtable for the interface.
+     * @param pspec the #GParamSpec for the new property
      */
     static interfaceInstallProperty(gIface: TypeInterface, pspec: ParamSpec): void
     /**
@@ -2484,6 +2663,7 @@ class Object {
      * vtable passed in as `g_iface` will be the default vtable from
      * g_type_default_interface_ref(), or, if you know the interface has
      * already been loaded, g_type_default_interface_peek().
+     * @param gIface any interface vtable for the  interface, or the default vtable for the interface
      */
     static interfaceListProperties(gIface: TypeInterface): ParamSpec[]
     static $gtype: Type
@@ -2517,6 +2697,7 @@ class ParamSpec {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2536,6 +2717,8 @@ class ParamSpec {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -2553,6 +2736,7 @@ class ParamSpec {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -2564,6 +2748,7 @@ class ParamSpec {
      * 
      * See [canonical parameter names][canonical-parameter-names] for details of
      * the rules for valid names.
+     * @param name the canonical name of the property
      */
     static isValidName(name: string): boolean
 }
@@ -2572,23 +2757,23 @@ class ParamSpecBoolean {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -2617,6 +2802,7 @@ class ParamSpecBoolean {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2636,6 +2822,8 @@ class ParamSpecBoolean {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -2653,6 +2841,7 @@ class ParamSpecBoolean {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -2662,23 +2851,23 @@ class ParamSpecBoxed {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -2707,6 +2896,7 @@ class ParamSpecBoxed {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2726,6 +2916,8 @@ class ParamSpecBoxed {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -2743,6 +2935,7 @@ class ParamSpecBoxed {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -2752,23 +2945,23 @@ class ParamSpecChar {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -2797,6 +2990,7 @@ class ParamSpecChar {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2816,6 +3010,8 @@ class ParamSpecChar {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -2833,6 +3029,7 @@ class ParamSpecChar {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -2842,23 +3039,23 @@ class ParamSpecDouble {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -2887,6 +3084,7 @@ class ParamSpecDouble {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2906,6 +3104,8 @@ class ParamSpecDouble {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -2923,6 +3123,7 @@ class ParamSpecDouble {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -2932,23 +3133,23 @@ class ParamSpecEnum {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -2977,6 +3178,7 @@ class ParamSpecEnum {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2996,6 +3198,8 @@ class ParamSpecEnum {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3013,6 +3217,7 @@ class ParamSpecEnum {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3022,23 +3227,23 @@ class ParamSpecFlags {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3067,6 +3272,7 @@ class ParamSpecFlags {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3086,6 +3292,8 @@ class ParamSpecFlags {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3103,6 +3311,7 @@ class ParamSpecFlags {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3112,23 +3321,23 @@ class ParamSpecFloat {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3157,6 +3366,7 @@ class ParamSpecFloat {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3176,6 +3386,8 @@ class ParamSpecFloat {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3193,6 +3405,7 @@ class ParamSpecFloat {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3202,23 +3415,23 @@ class ParamSpecGType {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3247,6 +3460,7 @@ class ParamSpecGType {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3266,6 +3480,8 @@ class ParamSpecGType {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3283,6 +3499,7 @@ class ParamSpecGType {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3292,23 +3509,23 @@ class ParamSpecInt {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3337,6 +3554,7 @@ class ParamSpecInt {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3356,6 +3574,8 @@ class ParamSpecInt {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3373,6 +3593,7 @@ class ParamSpecInt {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3382,23 +3603,23 @@ class ParamSpecInt64 {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3427,6 +3648,7 @@ class ParamSpecInt64 {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3446,6 +3668,8 @@ class ParamSpecInt64 {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3463,6 +3687,7 @@ class ParamSpecInt64 {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3472,23 +3697,23 @@ class ParamSpecLong {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3517,6 +3742,7 @@ class ParamSpecLong {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3536,6 +3762,8 @@ class ParamSpecLong {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3553,6 +3781,7 @@ class ParamSpecLong {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3562,23 +3791,23 @@ class ParamSpecObject {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3607,6 +3836,7 @@ class ParamSpecObject {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3626,6 +3856,8 @@ class ParamSpecObject {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3643,6 +3875,7 @@ class ParamSpecObject {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3652,23 +3885,23 @@ class ParamSpecOverride {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3697,6 +3930,7 @@ class ParamSpecOverride {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3716,6 +3950,8 @@ class ParamSpecOverride {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3733,6 +3969,7 @@ class ParamSpecOverride {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3742,23 +3979,23 @@ class ParamSpecParam {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3787,6 +4024,7 @@ class ParamSpecParam {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3806,6 +4044,8 @@ class ParamSpecParam {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3823,6 +4063,7 @@ class ParamSpecParam {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3832,23 +4073,23 @@ class ParamSpecPointer {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3877,6 +4118,7 @@ class ParamSpecPointer {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3896,6 +4138,8 @@ class ParamSpecPointer {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -3913,6 +4157,7 @@ class ParamSpecPointer {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -3922,23 +4167,23 @@ class ParamSpecString {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -3967,6 +4212,7 @@ class ParamSpecString {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3986,6 +4232,8 @@ class ParamSpecString {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -4003,6 +4251,7 @@ class ParamSpecString {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -4012,23 +4261,23 @@ class ParamSpecUChar {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -4057,6 +4306,7 @@ class ParamSpecUChar {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4076,6 +4326,8 @@ class ParamSpecUChar {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -4093,6 +4345,7 @@ class ParamSpecUChar {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -4102,23 +4355,23 @@ class ParamSpecUInt {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -4147,6 +4400,7 @@ class ParamSpecUInt {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4166,6 +4420,8 @@ class ParamSpecUInt {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -4183,6 +4439,7 @@ class ParamSpecUInt {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -4192,23 +4449,23 @@ class ParamSpecUInt64 {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -4237,6 +4494,7 @@ class ParamSpecUInt64 {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4256,6 +4514,8 @@ class ParamSpecUInt64 {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -4273,6 +4533,7 @@ class ParamSpecUInt64 {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -4282,23 +4543,23 @@ class ParamSpecULong {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -4327,6 +4588,7 @@ class ParamSpecULong {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4346,6 +4608,8 @@ class ParamSpecULong {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -4363,6 +4627,7 @@ class ParamSpecULong {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -4372,23 +4637,23 @@ class ParamSpecUnichar {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -4417,6 +4682,7 @@ class ParamSpecUnichar {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4436,6 +4702,8 @@ class ParamSpecUnichar {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -4453,6 +4721,7 @@ class ParamSpecUnichar {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -4462,23 +4731,23 @@ class ParamSpecValueArray {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -4507,6 +4776,7 @@ class ParamSpecValueArray {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4526,6 +4796,8 @@ class ParamSpecValueArray {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -4543,6 +4815,7 @@ class ParamSpecValueArray {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -4552,23 +4825,23 @@ class ParamSpecVariant {
     /**
      * private #GTypeInstance portion
      */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /**
      * name of this parameter: always an interned string
      */
-    readonly name: string
+    name: string
     /**
      * #GParamFlags flags for this parameter
      */
-    readonly flags: ParamFlags
+    flags: ParamFlags
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
+    valueType: Type
     /**
      * #GType type that uses (introduces) this parameter
      */
-    readonly ownerType: Type
+    ownerType: Type
     /* Methods of GObject-2.0.GObject.ParamSpec */
     /**
      * Get the short description of a #GParamSpec.
@@ -4597,6 +4870,7 @@ class ParamSpecVariant {
     getNick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
+     * @param quark a #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4616,6 +4890,8 @@ class ParamSpecVariant {
      * from the `pspec` with g_param_spec_get_qdata().  Setting a
      * previously set user data pointer, overrides (frees) the old pointer
      * set, using %NULL as pointer essentially removes the data stored.
+     * @param quark a #GQuark, naming the user data pointer
+     * @param data an opaque user data pointer
      */
     setQdata(quark: GLib.Quark, data?: object | null): void
     /**
@@ -4633,6 +4909,7 @@ class ParamSpecVariant {
      * and removes the `data` from `pspec` without invoking its destroy()
      * function (if any was set).  Usually, calling this function is only
      * required to update user data pointers with a destroy notifier.
+     * @param quark a #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     static name: string
@@ -4654,8 +4931,12 @@ class SignalGroup {
      * The target instance used when connecting signals.
      */
     target: Object
+    /**
+     * The #GType of the target property.
+     */
+    readonly targetType: Type
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /* Methods of GObject-2.0.GObject.SignalGroup */
     /**
      * Blocks all signal handlers managed by `self` so they will not
@@ -4670,6 +4951,9 @@ class SignalGroup {
      * on the target instance of `self`.
      * 
      * You cannot connect a signal handler after #GSignalGroup:target has been set.
+     * @param detailedSignal a string of the form "signal-name::detail"
+     * @param cHandler the #GCallback to connect
+     * @param flags the flags used to create the signal connection
      */
     connectData(detailedSignal: string, cHandler: Callback, flags: ConnectFlags): void
     /**
@@ -4680,6 +4964,8 @@ class SignalGroup {
      * will be swapped when calling `c_handler`.
      * 
      * You cannot connect a signal handler after #GSignalGroup:target has been set.
+     * @param detailedSignal a string of the form "signal-name::detail"
+     * @param cHandler the #GCallback to connect
      */
     connectSwapped(detailedSignal: string, cHandler: Callback): void
     /**
@@ -4693,6 +4979,7 @@ class SignalGroup {
      * 
      * If the target instance was previously set, signals will be
      * disconnected from that object prior to connecting to `target`.
+     * @param target The target instance used     when connecting signals.
      */
     setTarget(target?: Object | null): void
     /**
@@ -4737,6 +5024,10 @@ class SignalGroup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags): Binding
     /**
@@ -4747,6 +5038,12 @@ class SignalGroup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags, transformTo: Function, transformFrom: Function): Binding
     /**
@@ -4770,6 +5067,7 @@ class SignalGroup {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4789,11 +5087,14 @@ class SignalGroup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4801,6 +5102,8 @@ class SignalGroup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4818,6 +5121,7 @@ class SignalGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4863,6 +5167,7 @@ class SignalGroup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: ParamSpec): void
     /**
@@ -4906,15 +5211,20 @@ class SignalGroup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4955,6 +5265,7 @@ class SignalGroup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4989,6 +5300,7 @@ class SignalGroup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.SignalGroup */
@@ -4997,6 +5309,7 @@ class SignalGroup {
      * other than %NULL. It is similar to #GObject::notify on `target` except it
      * will not emit when #GSignalGroup:target is %NULL and also allows for
      * receiving the #GObject without a data-race.
+     * @param instance a #GObject containing the new value for #GSignalGroup:target
      */
     connect(sigName: "bind", callback: ((instance: Object) => void)): number
     on(sigName: "bind", callback: (instance: Object) => void, after?: boolean): NodeJS.EventEmitter
@@ -5044,6 +5357,7 @@ class SignalGroup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5055,6 +5369,11 @@ class SignalGroup {
     on(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::target-type", callback: ((pspec: ParamSpec) => void)): number
+    connect_after(sigName: "notify::target-type", callback: ((pspec: ParamSpec) => void)): number
+    on(sigName: "notify::target-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::target-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::target-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5073,7 +5392,7 @@ interface TypeModule_ConstructProps extends Object_ConstructProps {
 }
 class TypeModule {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: TypeInstance
+    gTypeInstance: TypeInstance
     /* Methods of GObject-2.0.GObject.TypeModule */
     /**
      * Registers an additional interface for a type, whose interface lives
@@ -5085,6 +5404,9 @@ class TypeModule {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_add_interface_static()
      * instead. This can be used when making a static build of the module.
+     * @param instanceType type to which to add the interface.
+     * @param interfaceType interface type to add
+     * @param interfaceInfo type information structure
      */
     addInterface(instanceType: Type, interfaceType: Type, interfaceInfo: InterfaceInfo): void
     /**
@@ -5098,6 +5420,8 @@ class TypeModule {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param name name for the type
+     * @param constStaticValues an array of #GEnumValue structs for the                       possible enumeration values. The array is                       terminated by a struct with all members being                       0.
      */
     registerEnum(name: string, constStaticValues: EnumValue): Type
     /**
@@ -5111,6 +5435,8 @@ class TypeModule {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param name name for the type
+     * @param constStaticValues an array of #GFlagsValue structs for the                       possible flags values. The array is                       terminated by a struct with all members being                       0.
      */
     registerFlags(name: string, constStaticValues: FlagsValue): Type
     /**
@@ -5128,10 +5454,15 @@ class TypeModule {
      * 
      * Since 2.56 if `module` is %NULL this will call g_type_register_static()
      * instead. This can be used when making a static build of the module.
+     * @param parentType the type for the parent class
+     * @param typeName name for the type
+     * @param typeInfo type information structure
+     * @param flags flags field providing details about the type
      */
     registerType(parentType: Type, typeName: string, typeInfo: TypeInfo, flags: TypeFlags): Type
     /**
      * Sets the name for a #GTypeModule
+     * @param name a human-readable name to use in error messages.
      */
     setName(name: string): void
     /**
@@ -5184,6 +5515,10 @@ class TypeModule {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags): Binding
     /**
@@ -5194,6 +5529,12 @@ class TypeModule {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: Object, targetProperty: string, flags: BindingFlags, transformTo: Function, transformFrom: Function): Binding
     /**
@@ -5217,6 +5558,7 @@ class TypeModule {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5236,11 +5578,14 @@ class TypeModule {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5248,6 +5593,8 @@ class TypeModule {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5265,6 +5612,7 @@ class TypeModule {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5310,6 +5658,7 @@ class TypeModule {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: ParamSpec): void
     /**
@@ -5353,15 +5702,20 @@ class TypeModule {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5402,6 +5756,7 @@ class TypeModule {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5436,6 +5791,7 @@ class TypeModule {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5467,6 +5823,7 @@ class TypeModule {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5490,11 +5847,11 @@ class CClosure {
     /**
      * the #GClosure
      */
-    readonly closure: Function
+    closure: Function
     /**
      * the callback function
      */
-    readonly callback: object
+    callback: object
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -5502,112 +5859,244 @@ class CClosure {
      * take two boxed pointers as arguments and return a boolean.  If you
      * have such a signal, you will probably also need to use an
      * accumulator, such as g_signal_accumulator_true_handled().
+     * @param closure A #GClosure.
+     * @param returnValue A #GValue to store the return value. May be %NULL   if the callback of closure doesn't return a value.
+     * @param nParamValues The length of the `param_values` array.
+     * @param paramValues An array of #GValues holding the arguments   on which to invoke the callback of closure.
+     * @param invocationHint The invocation hint given as the last argument to   g_closure_invoke().
+     * @param marshalData Additional data specified when registering the   marshaller, see g_closure_set_marshal() and   g_closure_set_meta_marshal()
      */
     static marshalBOOLEANBOXEDBOXED(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `gboolean (*callback) (gpointer instance, gint arg1, gpointer user_data)` where the #gint parameter
      * denotes a flags type.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue a #GValue which can store the returned #gboolean
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding instance and arg1
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalBOOLEANFLAGS(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `gchar* (*callback) (gpointer instance, GObject *arg1, gpointer arg2, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue a #GValue, which can store the returned string
+     * @param nParamValues 3
+     * @param paramValues a #GValue array holding instance, arg1 and arg2
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalSTRINGOBJECTPOINTER(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gboolean arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #gboolean parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDBOOLEAN(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, GBoxed *arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #GBoxed* parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDBOXED(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gchar arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #gchar parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDCHAR(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gdouble arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #gdouble parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDDOUBLE(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gint arg1, gpointer user_data)` where the #gint parameter denotes an enumeration type..
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the enumeration parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDENUM(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gint arg1, gpointer user_data)` where the #gint parameter denotes a flags type.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the flags parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDFLAGS(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gfloat arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #gfloat parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDFLOAT(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gint arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #gint parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDINT(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, glong arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #glong parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDLONG(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, GObject *arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #GObject* parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDOBJECT(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, GParamSpec *arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #GParamSpec* parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDPARAM(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gpointer arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #gpointer parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDPOINTER(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, const gchar *arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #gchar* parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDSTRING(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, guchar arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #guchar parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDUCHAR(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, guint arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #guint parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDUINT(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, guint arg1, gpointer arg2, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 3
+     * @param paramValues a #GValue array holding instance, arg1 and arg2
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDUINTPOINTER(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gulong arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #gulong parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDULONG(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, GVariant *arg1, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 2
+     * @param paramValues a #GValue array holding the instance and the #GVariant* parameter
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDVARIANT(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
      * A marshaller for a #GCClosure with a callback of type
      * `void (*callback) (gpointer instance, gpointer user_data)`.
+     * @param closure the #GClosure to which the marshaller belongs
+     * @param returnValue ignored
+     * @param nParamValues 1
+     * @param paramValues a #GValue array holding only the instance
+     * @param invocationHint the invocation hint given as the last argument  to g_closure_invoke()
+     * @param marshalData additional data specified when registering the marshaller
      */
     static marshalVOIDVOID(closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
     /**
@@ -5616,6 +6105,12 @@ class CClosure {
      * 
      * Normally this function is not passed explicitly to g_signal_new(),
      * but used automatically by GLib when specifying a %NULL marshaller.
+     * @param closure A #GClosure.
+     * @param returnGvalue A #GValue to store the return value. May be %NULL   if the callback of closure doesn't return a value.
+     * @param nParamValues The length of the `param_values` array.
+     * @param paramValues An array of #GValues holding the arguments   on which to invoke the callback of closure.
+     * @param invocationHint The invocation hint given as the last argument to   g_closure_invoke().
+     * @param marshalData Additional data specified when registering the   marshaller, see g_closure_set_marshal() and   g_closure_set_meta_marshal()
      */
     static marshalGeneric(closure: Function, returnGvalue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
 }
@@ -5625,13 +6120,13 @@ class Closure {
      * Indicates whether the closure is currently being invoked with
      *  g_closure_invoke()
      */
-    readonly inMarshal: number
+    inMarshal: number
     /**
      * Indicates whether the closure has been invalidated by
      *  g_closure_invalidate()
      */
-    readonly isInvalid: number
-    readonly marshal: (closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint: object, marshalData: object) => void
+    isInvalid: number
+    marshal: (closure: Function, returnValue: any, nParamValues: number, paramValues: any, invocationHint: object, marshalData: object) => void
     /* Methods of GObject-2.0.GObject.Closure */
     /**
      * Sets a flag on the closure to indicate that its calling
@@ -5653,6 +6148,8 @@ class Closure {
     invalidate(): void
     /**
      * Invokes the closure, i.e. executes the callback represented by the `closure`.
+     * @param paramValues an array of                #GValues holding the arguments on which to                invoke the callback of `closure`
+     * @param invocationHint a context-dependent invocation hint
      */
     invoke(paramValues: any[], invocationHint?: object | null): /* returnValue */ any | null
     /**
@@ -5731,8 +6228,8 @@ class Closure {
 }
 class ClosureNotifyData {
     /* Fields of GObject-2.0.GObject.ClosureNotifyData */
-    readonly data: object
-    readonly notify: ClosureNotify
+    data: object
+    notify: ClosureNotify
     static name: string
 }
 class EnumClass {
@@ -5740,24 +6237,24 @@ class EnumClass {
     /**
      * the parent class
      */
-    readonly gTypeClass: TypeClass
+    gTypeClass: TypeClass
     /**
      * the smallest possible value.
      */
-    readonly minimum: number
+    minimum: number
     /**
      * the largest possible value.
      */
-    readonly maximum: number
+    maximum: number
     /**
      * the number of possible values.
      */
-    readonly nValues: number
+    nValues: number
     /**
      * an array of #GEnumValue structs describing the
      *  individual values.
      */
-    readonly values: EnumValue
+    values: EnumValue
     static name: string
 }
 class EnumValue {
@@ -5765,15 +6262,15 @@ class EnumValue {
     /**
      * the enum value
      */
-    readonly value: number
+    value: number
     /**
      * the name of the value
      */
-    readonly valueName: string
+    valueName: string
     /**
      * the nickname of the value
      */
-    readonly valueNick: string
+    valueNick: string
     static name: string
 }
 class FlagsClass {
@@ -5781,20 +6278,20 @@ class FlagsClass {
     /**
      * the parent class
      */
-    readonly gTypeClass: TypeClass
+    gTypeClass: TypeClass
     /**
      * a mask covering all possible values.
      */
-    readonly mask: number
+    mask: number
     /**
      * the number of possible values.
      */
-    readonly nValues: number
+    nValues: number
     /**
      * an array of #GFlagsValue structs describing the
      *  individual values.
      */
-    readonly values: FlagsValue
+    values: FlagsValue
     static name: string
 }
 class FlagsValue {
@@ -5802,15 +6299,15 @@ class FlagsValue {
     /**
      * the flags value
      */
-    readonly value: number
+    value: number
     /**
      * the name of the value
      */
-    readonly valueName: string
+    valueName: string
     /**
      * the nickname of the value
      */
-    readonly valueNick: string
+    valueNick: string
     static name: string
 }
 abstract class InitiallyUnownedClass {
@@ -5818,14 +6315,14 @@ abstract class InitiallyUnownedClass {
     /**
      * the parent class
      */
-    readonly gTypeClass: TypeClass
-    readonly setProperty: (object: Object, propertyId: number, value: any, pspec: ParamSpec) => void
-    readonly getProperty: (object: Object, propertyId: number, value: any, pspec: ParamSpec) => void
-    readonly dispose: (object: Object) => void
-    readonly finalize: (object: Object) => void
-    readonly dispatchPropertiesChanged: (object: Object, nPspecs: number, pspecs: ParamSpec) => void
-    readonly notify: (object: Object, pspec: ParamSpec) => void
-    readonly constructed: (object: Object) => void
+    gTypeClass: TypeClass
+    setProperty: (object: Object, propertyId: number, value: any, pspec: ParamSpec) => void
+    getProperty: (object: Object, propertyId: number, value: any, pspec: ParamSpec) => void
+    dispose: (object: Object) => void
+    finalize: (object: Object) => void
+    dispatchPropertiesChanged: (object: Object, nPspecs: number, pspecs: ParamSpec) => void
+    notify: (object: Object, pspec: ParamSpec) => void
+    constructed: (object: Object) => void
     static name: string
 }
 class InterfaceInfo {
@@ -5833,15 +6330,15 @@ class InterfaceInfo {
     /**
      * location of the interface initialization function
      */
-    readonly interfaceInit: InterfaceInitFunc
+    interfaceInit: InterfaceInitFunc
     /**
      * location of the interface finalization function
      */
-    readonly interfaceFinalize: InterfaceFinalizeFunc
+    interfaceFinalize: InterfaceFinalizeFunc
     /**
      * user-supplied data passed to the interface init/finalize functions
      */
-    readonly interfaceData: object
+    interfaceData: object
     static name: string
 }
 abstract class ObjectClass {
@@ -5849,17 +6346,18 @@ abstract class ObjectClass {
     /**
      * the parent class
      */
-    readonly gTypeClass: TypeClass
-    readonly setProperty: (object: Object, propertyId: number, value: any, pspec: ParamSpec) => void
-    readonly getProperty: (object: Object, propertyId: number, value: any, pspec: ParamSpec) => void
-    readonly dispose: (object: Object) => void
-    readonly finalize: (object: Object) => void
-    readonly dispatchPropertiesChanged: (object: Object, nPspecs: number, pspecs: ParamSpec) => void
-    readonly notify: (object: Object, pspec: ParamSpec) => void
-    readonly constructed: (object: Object) => void
+    gTypeClass: TypeClass
+    setProperty: (object: Object, propertyId: number, value: any, pspec: ParamSpec) => void
+    getProperty: (object: Object, propertyId: number, value: any, pspec: ParamSpec) => void
+    dispose: (object: Object) => void
+    finalize: (object: Object) => void
+    dispatchPropertiesChanged: (object: Object, nPspecs: number, pspecs: ParamSpec) => void
+    notify: (object: Object, pspec: ParamSpec) => void
+    constructed: (object: Object) => void
     /* Methods of GObject-2.0.GObject.ObjectClass */
     /**
      * Looks up the #GParamSpec for a property of a class.
+     * @param propertyName the name of the property to look up
      */
     static findProperty(oclass: Object | Function | Type, propertyName: string): ParamSpec
     /**
@@ -5928,6 +6426,7 @@ abstract class ObjectClass {
      *  }
      * ```
      * 
+     * @param pspecs the #GParamSpecs array   defining the new properties
      */
     static installProperties(oclass: Object | Function | Type, pspecs: ParamSpec[]): void
     /**
@@ -5941,6 +6440,8 @@ abstract class ObjectClass {
      * Note that it is possible to redefine a property in a derived class,
      * by installing a property with the same name. This can be useful at times,
      * e.g. to change the range of allowed values or the default value.
+     * @param propertyId the id for the new property
+     * @param pspec the #GParamSpec for the new property
      */
     static installProperty(oclass: Object | Function | Type, propertyId: number, pspec: ParamSpec): void
     /**
@@ -5964,6 +6465,8 @@ abstract class ObjectClass {
      * correct.  For virtually all uses, this makes no difference. If you
      * need to get the overridden property, you can call
      * g_param_spec_get_redirect_target().
+     * @param propertyId the new property ID
+     * @param name the name of a property registered in a parent class or  in an interface of this class.
      */
     static overrideProperty(oclass: Object | Function | Type, propertyId: number, name: string): void
     static name: string
@@ -5973,11 +6476,11 @@ class ObjectConstructParam {
     /**
      * the #GParamSpec of the construct parameter
      */
-    readonly pspec: ParamSpec
+    pspec: ParamSpec
     /**
      * the value to set the parameter to
      */
-    readonly value: any
+    value: any
     static name: string
 }
 abstract class ParamSpecClass {
@@ -5985,39 +6488,47 @@ abstract class ParamSpecClass {
     /**
      * the parent class
      */
-    readonly gTypeClass: TypeClass
+    gTypeClass: TypeClass
     /**
      * the #GValue type for this parameter
      */
-    readonly valueType: Type
-    readonly finalize: (pspec: ParamSpec) => void
-    readonly valueSetDefault: (pspec: ParamSpec, value: any) => void
-    readonly valueValidate: (pspec: ParamSpec, value: any) => boolean
-    readonly valuesCmp: (pspec: ParamSpec, value1: any, value2: any) => number
+    valueType: Type
+    finalize: (pspec: ParamSpec) => void
+    valueSetDefault: (pspec: ParamSpec, value: any) => void
+    valueValidate: (pspec: ParamSpec, value: any) => boolean
+    valuesCmp: (pspec: ParamSpec, value1: any, value2: any) => number
     static name: string
 }
 class ParamSpecPool {
     /* Methods of GObject-2.0.GObject.ParamSpecPool */
     /**
      * Inserts a #GParamSpec in the pool.
+     * @param pspec the #GParamSpec to insert
+     * @param ownerType a #GType identifying the owner of `pspec`
      */
     insert(pspec: ParamSpec, ownerType: Type): void
     /**
      * Gets an array of all #GParamSpecs owned by `owner_type` in
      * the pool.
+     * @param ownerType the owner to look for
      */
     list(ownerType: Type): ParamSpec[]
     /**
      * Gets an #GList of all #GParamSpecs owned by `owner_type` in
      * the pool.
+     * @param ownerType the owner to look for
      */
     listOwned(ownerType: Type): ParamSpec[]
     /**
      * Looks up a #GParamSpec in the pool.
+     * @param paramName the name to look for
+     * @param ownerType the owner to look for
+     * @param walkAncestors If %TRUE, also try to find a #GParamSpec with `param_name`  owned by an ancestor of `owner_type`.
      */
     lookup(paramName: string, ownerType: Type, walkAncestors: boolean): ParamSpec | null
     /**
      * Removes a #GParamSpec from the pool.
+     * @param pspec the #GParamSpec to remove
      */
     remove(pspec: ParamSpec): void
     static name: string
@@ -6027,20 +6538,20 @@ class ParamSpecTypeInfo {
     /**
      * Size of the instance (object) structure.
      */
-    readonly instanceSize: number
+    instanceSize: number
     /**
      * Prior to GLib 2.10, it specified the number of pre-allocated (cached) instances to reserve memory for (0 indicates no caching). Since GLib 2.10, it is ignored, since instances are allocated with the [slice allocator][glib-Memory-Slices] now.
      */
-    readonly nPreallocs: number
-    readonly instanceInit: (pspec: ParamSpec) => void
+    nPreallocs: number
+    instanceInit: (pspec: ParamSpec) => void
     /**
      * The #GType of values conforming to this #GParamSpec
      */
-    readonly valueType: Type
-    readonly finalize: (pspec: ParamSpec) => void
-    readonly valueSetDefault: (pspec: ParamSpec, value: any) => void
-    readonly valueValidate: (pspec: ParamSpec, value: any) => boolean
-    readonly valuesCmp: (pspec: ParamSpec, value1: any, value2: any) => number
+    valueType: Type
+    finalize: (pspec: ParamSpec) => void
+    valueSetDefault: (pspec: ParamSpec, value: any) => void
+    valueValidate: (pspec: ParamSpec, value: any) => boolean
+    valuesCmp: (pspec: ParamSpec, value1: any, value2: any) => number
     static name: string
 }
 class Parameter {
@@ -6048,11 +6559,11 @@ class Parameter {
     /**
      * the parameter name
      */
-    readonly name: string
+    name: string
     /**
      * the parameter value
      */
-    readonly value: any
+    value: any
     static name: string
 }
 class SignalInvocationHint {
@@ -6060,11 +6571,11 @@ class SignalInvocationHint {
     /**
      * The signal id of the signal invoking the callback
      */
-    readonly signalId: number
+    signalId: number
     /**
      * The detail passed on for this emission
      */
-    readonly detail: GLib.Quark
+    detail: GLib.Quark
     /**
      * The stage the signal emission is currently in, this
      *  field will contain one of %G_SIGNAL_RUN_FIRST,
@@ -6072,7 +6583,7 @@ class SignalInvocationHint {
      *  %G_SIGNAL_ACCUMULATOR_FIRST_RUN is only set for the first run of the accumulator
      *  function for a signal emission.
      */
-    readonly runType: SignalFlags
+    runType: SignalFlags
     static name: string
 }
 class SignalQuery {
@@ -6081,27 +6592,27 @@ class SignalQuery {
      * The signal id of the signal being queried, or 0 if the
      *  signal to be queried was unknown.
      */
-    readonly signalId: number
+    signalId: number
     /**
      * The signal name.
      */
-    readonly signalName: string
+    signalName: string
     /**
      * The interface/instance type that this signal can be emitted for.
      */
-    readonly itype: Type
+    itype: Type
     /**
      * The signal flags as passed in to g_signal_new().
      */
-    readonly signalFlags: SignalFlags
+    signalFlags: SignalFlags
     /**
      * The return type for user callbacks.
      */
-    readonly returnType: Type
+    returnType: Type
     /**
      * The number of parameters that user callbacks take.
      */
-    readonly nParams: number
+    nParams: number
     /**
      * The individual parameter types for
      *  user callbacks, note that the effective callback signature is:
@@ -6113,7 +6624,7 @@ class SignalQuery {
      *  ```
      * 
      */
-    readonly paramTypes: Type[]
+    paramTypes: Type[]
     static name: string
 }
 class TypeClass {
@@ -6183,6 +6694,7 @@ class TypeClass {
      * }
      * ```
      * 
+     * @param privateSize size of private structure
      */
     addPrivate(privateSize: number): void
     getPrivate(privateType: Type): object | null
@@ -6213,17 +6725,20 @@ class TypeClass {
      * As a consequence, this function may return %NULL if the class
      * of the type passed in does not currently exist (hasn't been
      * referenced before).
+     * @param type type ID of a classed type
      */
     static peek(type: Type): TypeClass
     /**
      * A more efficient version of g_type_class_peek() which works only for
      * static types.
+     * @param type type ID of a classed type
      */
     static peekStatic(type: Type): TypeClass
     /**
      * Increments the reference count of the class structure belonging to
      * `type`. This function will demand-create the class if it doesn't
      * exist already.
+     * @param type type ID of a classed type
      */
     static ref(type: Type): TypeClass
 }
@@ -6232,7 +6747,7 @@ class TypeFundamentalInfo {
     /**
      * #GTypeFundamentalFlags describing the characteristics of the fundamental type
      */
-    readonly typeFlags: TypeFundamentalFlags
+    typeFlags: TypeFundamentalFlags
     static name: string
 }
 class TypeInfo {
@@ -6240,15 +6755,15 @@ class TypeInfo {
     /**
      * Size of the class structure (required for interface, classed and instantiatable types)
      */
-    readonly classSize: number
+    classSize: number
     /**
      * Location of the base initialization function (optional)
      */
-    readonly baseInit: BaseInitFunc
+    baseInit: BaseInitFunc
     /**
      * Location of the base finalization function (optional)
      */
-    readonly baseFinalize: BaseFinalizeFunc
+    baseFinalize: BaseFinalizeFunc
     /**
      * Location of the class initialization function for
      *  classed and instantiatable types. Location of the default vtable
@@ -6257,34 +6772,34 @@ class TypeInfo {
      *  and to do type-specific setup such as registering signals and object
      *  properties.
      */
-    readonly classInit: ClassInitFunc
+    classInit: ClassInitFunc
     /**
      * Location of the class finalization function for
      *  classed and instantiatable types. Location of the default vtable
      *  finalization function for interface types. (optional)
      */
-    readonly classFinalize: ClassFinalizeFunc
+    classFinalize: ClassFinalizeFunc
     /**
      * User-supplied data passed to the class init/finalize functions
      */
-    readonly classData: object
+    classData: object
     /**
      * Size of the instance (object) structure (required for instantiatable types only)
      */
-    readonly instanceSize: number
+    instanceSize: number
     /**
      * Prior to GLib 2.10, it specified the number of pre-allocated (cached) instances to reserve memory for (0 indicates no caching). Since GLib 2.10, it is ignored, since instances are allocated with the [slice allocator][glib-Memory-Slices] now.
      */
-    readonly nPreallocs: number
+    nPreallocs: number
     /**
      * Location of the instance initialization function (optional, for instantiatable types only)
      */
-    readonly instanceInit: InstanceInitFunc
+    instanceInit: InstanceInitFunc
     /**
      * A #GTypeValueTable function table for generic handling of GValues
      *  of this type (usually only useful for fundamental types)
      */
-    readonly valueTable: TypeValueTable
+    valueTable: TypeValueTable
     static name: string
 }
 class TypeInstance {
@@ -6309,6 +6824,8 @@ class TypeInterface {
      * `prerequisite_type`. Prerequisites can be thought of as an alternative to
      * interface derivation (which GType doesn't support). An interface can have
      * at most one instantiatable prerequisite type.
+     * @param interfaceType #GType value of an interface type
+     * @param prerequisiteType #GType value of an interface or instantiatable type
      */
     static addPrerequisite(interfaceType: Type, prerequisiteType: Type): void
     /**
@@ -6316,6 +6833,8 @@ class TypeInterface {
      * `interface_type` which has been added to `instance_type,` or %NULL
      * if `interface_type` has not been added to `instance_type` or does
      * not have a #GTypePlugin structure. See g_type_add_interface_dynamic().
+     * @param instanceType #GType of an instantiatable type
+     * @param interfaceType #GType of an interface type
      */
     static getPlugin(instanceType: Type, interfaceType: Type): TypePlugin
     /**
@@ -6325,15 +6844,19 @@ class TypeInterface {
      * 
      * See g_type_interface_add_prerequisite() for more information
      * about prerequisites.
+     * @param interfaceType an interface type
      */
     static instantiatablePrerequisite(interfaceType: Type): Type
     /**
      * Returns the #GTypeInterface structure of an interface to which the
      * passed in class conforms.
+     * @param instanceClass a #GTypeClass structure
+     * @param ifaceType an interface ID which this class conforms to
      */
     static peek(instanceClass: TypeClass, ifaceType: Type): TypeInterface
     /**
      * Returns the prerequisites of an interfaces type.
+     * @param interfaceType an interface type
      */
     static prerequisites(interfaceType: Type): Type[]
 }
@@ -6342,13 +6865,13 @@ abstract class TypeModuleClass {
     /**
      * the parent class
      */
-    readonly parentClass: ObjectClass
-    readonly load: (module: TypeModule) => boolean
-    readonly unload: (module: TypeModule) => void
-    readonly reserved1: () => void
-    readonly reserved2: () => void
-    readonly reserved3: () => void
-    readonly reserved4: () => void
+    parentClass: ObjectClass
+    load: (module: TypeModule) => boolean
+    unload: (module: TypeModule) => void
+    reserved1: () => void
+    reserved2: () => void
+    reserved3: () => void
+    reserved4: () => void
     static name: string
 }
 class TypePluginClass {
@@ -6356,23 +6879,23 @@ class TypePluginClass {
     /**
      * Increases the use count of the plugin.
      */
-    readonly usePlugin: TypePluginUse
+    usePlugin: TypePluginUse
     /**
      * Decreases the use count of the plugin.
      */
-    readonly unusePlugin: TypePluginUnuse
+    unusePlugin: TypePluginUnuse
     /**
      * Fills in the #GTypeInfo and
      *  #GTypeValueTable structs for the type. The structs are initialized
      *  with `memset(s, 0, sizeof (s))` before calling this function.
      */
-    readonly completeTypeInfo: TypePluginCompleteTypeInfo
+    completeTypeInfo: TypePluginCompleteTypeInfo
     /**
      * Fills in missing parts of the #GInterfaceInfo
      *  for the interface. The structs is initialized with
      *  `memset(s, 0, sizeof (s))` before calling this function.
      */
-    readonly completeInterfaceInfo: TypePluginCompleteInterfaceInfo
+    completeInterfaceInfo: TypePluginCompleteInterfaceInfo
     static name: string
 }
 class TypeQuery {
@@ -6380,27 +6903,27 @@ class TypeQuery {
     /**
      * the #GType value of the type
      */
-    readonly type: Type
+    type: Type
     /**
      * the name of the type
      */
-    readonly typeName: string
+    typeName: string
     /**
      * the size of the class structure
      */
-    readonly classSize: number
+    classSize: number
     /**
      * the size of the instance structure
      */
-    readonly instanceSize: number
+    instanceSize: number
     static name: string
 }
 class TypeValueTable {
     /* Fields of GObject-2.0.GObject.TypeValueTable */
-    readonly valueInit: (value: any) => void
-    readonly valueFree: (value: any) => void
-    readonly valueCopy: (srcValue: any, destValue: any) => void
-    readonly valuePeekPointer: (value: any) => object
+    valueInit: (value: any) => void
+    valueFree: (value: any) => void
+    valueCopy: (srcValue: any, destValue: any) => void
+    valuePeekPointer: (value: any) => object
     /**
      * A string format describing how to collect the contents of
      *  this value bit-by-bit. Each character in the format represents
@@ -6415,23 +6938,24 @@ class TypeValueTable {
      *  floats to doubles. So for collection of short int or char, 'i'
      *  needs to be used, and for collection of floats 'd'.
      */
-    readonly collectFormat: string
-    readonly collectValue: (value: any, nCollectValues: number, collectValues: TypeCValue, collectFlags: number) => string
+    collectFormat: string
+    collectValue: (value: any, nCollectValues: number, collectValues: TypeCValue, collectFlags: number) => string
     /**
      * Format description of the arguments to collect for `lcopy_value,`
      *  analogous to `collect_format`. Usually, `lcopy_format` string consists
      *  only of 'p's to provide lcopy_value() with pointers to storage locations.
      */
-    readonly lcopyFormat: string
-    readonly lcopyValue: (value: any, nCollectValues: number, collectValues: TypeCValue, collectFlags: number) => string
+    lcopyFormat: string
+    lcopyValue: (value: any, nCollectValues: number, collectValues: TypeCValue, collectFlags: number) => string
     static name: string
 }
 class Value {
     /* Fields of GObject-2.0.GObject.Value */
-    readonly data: _Value__data__union[]
+    data: _Value__data__union[]
     /* Methods of GObject-2.0.GObject.Value */
     /**
      * Copies the value of `src_value` into `dest_value`.
+     * @param destValue An initialized #GValue structure of the same type as `src_value`.
      */
     copy(destValue: any): void
     /**
@@ -6543,6 +7067,7 @@ class Value {
     getVariant(): GLib.Variant | null
     /**
      * Initializes `value` with the default value of `type`.
+     * @param gType Type the #GValue should hold values of.
      */
     init(gType: Type): any
     /**
@@ -6553,6 +7078,7 @@ class Value {
      * `instance`.  If you wish to set the `value'`s type to a different GType
      * (such as a parent class GType), you need to manually call
      * g_value_init() and g_value_set_instance().
+     * @param instance the instance
      */
     initFromInstance(instance: TypeInstance): void
     /**
@@ -6568,61 +7094,75 @@ class Value {
     reset(): any
     /**
      * Set the contents of a %G_TYPE_BOOLEAN #GValue to `v_boolean`.
+     * @param vBoolean boolean value to be set
      */
     setBoolean(vBoolean: boolean): void
     /**
      * Set the contents of a %G_TYPE_BOXED derived #GValue to `v_boxed`.
+     * @param vBoxed boxed value to be set
      */
     setBoxed(vBoxed?: object | null): void
     /**
      * This is an internal function introduced mainly for C marshallers.
+     * @param vBoxed duplicated unowned boxed value to be set
      */
     setBoxedTakeOwnership(vBoxed?: object | null): void
     /**
      * Set the contents of a %G_TYPE_CHAR #GValue to `v_char`.
+     * @param vChar character value to be set
      */
     setChar(vChar: number): void
     /**
      * Set the contents of a %G_TYPE_DOUBLE #GValue to `v_double`.
+     * @param vDouble double value to be set
      */
     setDouble(vDouble: number): void
     /**
      * Set the contents of a %G_TYPE_ENUM #GValue to `v_enum`.
+     * @param vEnum enum value to be set
      */
     setEnum(vEnum: number): void
     /**
      * Set the contents of a %G_TYPE_FLAGS #GValue to `v_flags`.
+     * @param vFlags flags value to be set
      */
     setFlags(vFlags: number): void
     /**
      * Set the contents of a %G_TYPE_FLOAT #GValue to `v_float`.
+     * @param vFloat float value to be set
      */
     setFloat(vFloat: number): void
     /**
      * Set the contents of a %G_TYPE_GTYPE #GValue to `v_gtype`.
+     * @param vGtype #GType to be set
      */
     setGtype(vGtype: Type): void
     /**
      * Sets `value` from an instantiatable type via the
      * value_table's collect_value() function.
+     * @param instance the instance
      */
     setInstance(instance?: object | null): void
     /**
      * Set the contents of a %G_TYPE_INT #GValue to `v_int`.
+     * @param vInt integer value to be set
      */
     setInt(vInt: number): void
     /**
      * Set the contents of a %G_TYPE_INT64 #GValue to `v_int6`4.
+     * @param vInt64 64bit integer value to be set
      */
     setInt64(vInt64: number): void
     /**
      * Set the contents of a %G_TYPE_STRING #GValue to `v_string`.  The string is
      * assumed to be static and interned (canonical, for example from
      * g_intern_string()), and is thus not duplicated when setting the #GValue.
+     * @param vString static string to be set
      */
     setInternedString(vString?: string | null): void
     /**
      * Set the contents of a %G_TYPE_LONG #GValue to `v_long`.
+     * @param vLong long integer value to be set
      */
     setLong(vLong: number): void
     /**
@@ -6637,18 +7177,22 @@ class Value {
      * It is important that your #GValue holds a reference to `v_object` (either its
      * own, or one it has taken) to ensure that the object won't be destroyed while
      * the #GValue still exists).
+     * @param vObject object value to be set
      */
     setObject(vObject?: Object | null): void
     /**
      * Set the contents of a %G_TYPE_PARAM #GValue to `param`.
+     * @param param the #GParamSpec to be set
      */
     setParam(param?: ParamSpec | null): void
     /**
      * Set the contents of a pointer #GValue to `v_pointer`.
+     * @param vPointer pointer value to be set
      */
     setPointer(vPointer?: object | null): void
     /**
      * Set the contents of a %G_TYPE_CHAR #GValue to `v_char`.
+     * @param vChar signed 8 bit integer to be set
      */
     setSchar(vChar: number): void
     /**
@@ -6656,6 +7200,7 @@ class Value {
      * 
      * The boxed value is assumed to be static, and is thus not duplicated
      * when setting the #GValue.
+     * @param vBoxed static boxed value to be set
      */
     setStaticBoxed(vBoxed?: object | null): void
     /**
@@ -6665,45 +7210,55 @@ class Value {
      * 
      * If the the string is a canonical string, using g_value_set_interned_string()
      * is more appropriate.
+     * @param vString static string to be set
      */
     setStaticString(vString?: string | null): void
     /**
      * Set the contents of a %G_TYPE_STRING #GValue to a copy of `v_string`.
+     * @param vString caller-owned string to be duplicated for the #GValue
      */
     setString(vString?: string | null): void
     /**
      * This is an internal function introduced mainly for C marshallers.
+     * @param vString duplicated unowned string to be set
      */
     setStringTakeOwnership(vString?: string | null): void
     /**
      * Set the contents of a %G_TYPE_UCHAR #GValue to `v_uchar`.
+     * @param vUchar unsigned character value to be set
      */
     setUchar(vUchar: number): void
     /**
      * Set the contents of a %G_TYPE_UINT #GValue to `v_uint`.
+     * @param vUint unsigned integer value to be set
      */
     setUint(vUint: number): void
     /**
      * Set the contents of a %G_TYPE_UINT64 #GValue to `v_uint6`4.
+     * @param vUint64 unsigned 64bit integer value to be set
      */
     setUint64(vUint64: number): void
     /**
      * Set the contents of a %G_TYPE_ULONG #GValue to `v_ulong`.
+     * @param vUlong unsigned long integer value to be set
      */
     setUlong(vUlong: number): void
     /**
      * Set the contents of a variant #GValue to `variant`.
      * If the variant is floating, it is consumed.
+     * @param variant a #GVariant, or %NULL
      */
     setVariant(variant?: GLib.Variant | null): void
     /**
      * Sets the contents of a %G_TYPE_BOXED derived #GValue to `v_boxed`
      * and takes over the ownership of the caller’s reference to `v_boxed;`
      * the caller doesn’t have to unref it any more.
+     * @param vBoxed duplicated unowned boxed value to be set
      */
     takeBoxed(vBoxed?: object | null): void
     /**
      * Sets the contents of a %G_TYPE_STRING #GValue to `v_string`.
+     * @param vString string to take ownership of
      */
     takeString(vString?: string | null): void
     /**
@@ -6719,6 +7274,7 @@ class Value {
      * g_value_set_variant() instead.
      * 
      * This is an internal function introduced mainly for C marshallers.
+     * @param variant a #GVariant, or %NULL
      */
     takeVariant(variant?: GLib.Variant | null): void
     /**
@@ -6729,6 +7285,7 @@ class Value {
      * transformations into strings might reveal seemingly arbitrary
      * results and shouldn't be relied upon for production code (such
      * as rcfile value or object property serialization).
+     * @param destValue Target value.
      */
     transform(destValue: any): boolean
     /**
@@ -6743,6 +7300,8 @@ class Value {
     /**
      * Returns whether a #GValue of type `src_type` can be copied into
      * a #GValue of type `dest_type`.
+     * @param srcType source type to be copied.
+     * @param destType destination type for copying.
      */
     static typeCompatible(srcType: Type, destType: Type): boolean
     /**
@@ -6750,6 +7309,8 @@ class Value {
      * of type `src_type` into values of type `dest_type`. Note that for
      * the types to be transformable, they must be compatible or a
      * transformation function must be registered.
+     * @param srcType Source type.
+     * @param destType Target type.
      */
     static typeTransformable(srcType: Type, destType: Type): boolean
 }
@@ -6758,15 +7319,16 @@ class ValueArray {
     /**
      * number of values contained in the array
      */
-    readonly nValues: number
+    nValues: number
     /**
      * array of values
      */
-    readonly values: any
+    values: any
     /* Methods of GObject-2.0.GObject.ValueArray */
     /**
      * Insert a copy of `value` as last element of `value_array`. If `value` is
      * %NULL, an uninitialized value is appended.
+     * @param value #GValue to copy into #GValueArray, or %NULL
      */
     append(value?: any | null): ValueArray
     /**
@@ -6776,20 +7338,25 @@ class ValueArray {
     copy(): ValueArray
     /**
      * Return a pointer to the value at `index_` containd in `value_array`.
+     * @param index index of the value of interest
      */
     getNth(index: number): any
     /**
      * Insert a copy of `value` at specified position into `value_array`. If `value`
      * is %NULL, an uninitialized value is inserted.
+     * @param index insertion position, must be <= value_array->;n_values
+     * @param value #GValue to copy into #GValueArray, or %NULL
      */
     insert(index: number, value?: any | null): ValueArray
     /**
      * Insert a copy of `value` as first element of `value_array`. If `value` is
      * %NULL, an uninitialized value is prepended.
+     * @param value #GValue to copy into #GValueArray, or %NULL
      */
     prepend(value?: any | null): ValueArray
     /**
      * Remove the value at position `index_` from `value_array`.
+     * @param index position of value to remove, which must be less than     `value_array->`n_values
      */
     remove(index: number): ValueArray
     /**
@@ -6798,6 +7365,7 @@ class ValueArray {
      * 
      * The current implementation uses the same sorting algorithm as standard
      * C qsort() function.
+     * @param compareFunc function to compare elements
      */
     sort(compareFunc: GLib.CompareDataFunc): ValueArray
     static name: string

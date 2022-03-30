@@ -140,127 +140,127 @@ class AppSink {
      */
     tsOffset: number
     /* Fields of GstBase-1.0.GstBase.BaseSink */
-    readonly element: Gst.Element
-    readonly sinkpad: Gst.Pad
-    readonly padMode: Gst.PadMode
-    readonly offset: number
-    readonly canActivatePull: boolean
-    readonly canActivatePush: boolean
-    readonly prerollLock: GLib.Mutex
-    readonly prerollCond: GLib.Cond
-    readonly needPreroll: boolean
-    readonly havePreroll: boolean
-    readonly playingAsync: boolean
-    readonly haveNewsegment: boolean
-    readonly segment: Gst.Segment
+    element: Gst.Element
+    sinkpad: Gst.Pad
+    padMode: Gst.PadMode
+    offset: number
+    canActivatePull: boolean
+    canActivatePush: boolean
+    prerollLock: GLib.Mutex
+    prerollCond: GLib.Cond
+    needPreroll: boolean
+    havePreroll: boolean
+    playingAsync: boolean
+    haveNewsegment: boolean
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstApp-1.0.GstApp.AppSink */
     /**
      * Check if `appsink` supports buffer lists.
@@ -336,6 +336,7 @@ class AppSink {
      * 
      * For backwards-compatibility reasons applications need to opt in
      * to indicate that they will be able to handle buffer lists.
+     * @param enableLists enable or disable buffer list support
      */
     setBufferListSupport(enableLists: boolean): void
     /**
@@ -343,27 +344,32 @@ class AppSink {
      * a copy of the caps structure. After calling this method, the sink will only
      * accept caps that match `caps`. If `caps` is non-fixed, or incomplete,
      * you must check the caps on the samples to get the actual used caps.
+     * @param caps caps to set
      */
     setCaps(caps?: Gst.Caps | null): void
     /**
      * Instruct `appsink` to drop old buffers when the maximum amount of queued
      * buffers is reached.
+     * @param drop the new state
      */
     setDrop(drop: boolean): void
     /**
      * Make appsink emit the "new-preroll" and "new-sample" signals. This option is
      * by default disabled because signal emission is expensive and unneeded when
      * the application prefers to operate in pull mode.
+     * @param emit the new state
      */
     setEmitSignals(emit: boolean): void
     /**
      * Set the maximum amount of buffers that can be queued in `appsink`. After this
      * amount of buffers are queued in appsink, any more buffers will block upstream
      * elements until a sample is pulled from `appsink`.
+     * @param max the maximum number of buffers to queue
      */
     setMaxBuffers(max: number): void
     /**
      * Instruct `appsink` to wait for all buffers to be consumed when an EOS is received.
+     * @param wait the new state
      */
     setWaitOnEos(wait: boolean): void
     /**
@@ -386,6 +392,7 @@ class AppSink {
      * 
      * This function blocks until a preroll sample or EOS is received, the appsink
      * element is set to the READY/NULL state, or the timeout expires.
+     * @param timeout the maximum amount of time to wait for the preroll sample
      */
     tryPullPreroll(timeout: Gst.ClockTime): Gst.Sample | null
     /**
@@ -401,6 +408,7 @@ class AppSink {
      * If an EOS event was received before any buffers or the timeout expires,
      * this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
      * condition.
+     * @param timeout the maximum amount of time to wait for a sample
      */
     tryPullSample(timeout: Gst.ClockTime): Gst.Sample | null
     /* Methods of GstBase-1.0.GstBase.BaseSink */
@@ -411,6 +419,7 @@ class AppSink {
      * until the element state is changed.
      * 
      * This function should be called with the PREROLL_LOCK held.
+     * @param obj the mini object that caused the preroll
      */
     doPreroll(obj: Gst.MiniObject): Gst.FlowReturn
     /**
@@ -512,24 +521,29 @@ class AppSink {
      * disabled, the sink will immediately go to PAUSED instead of waiting for a
      * preroll buffer. This feature is useful if the sink does not synchronize
      * against the clock or when it is dealing with sparse streams.
+     * @param enabled the new async value.
      */
     setAsyncEnabled(enabled: boolean): void
     /**
      * Set the number of bytes that the sink will pull when it is operating in pull
      * mode.
+     * @param blocksize the blocksize in bytes
      */
     setBlocksize(blocksize: number): void
     /**
      * Configure `sink` to drop buffers which are outside the current segment
+     * @param dropOutOfSegment drop buffers outside the segment
      */
     setDropOutOfSegment(dropOutOfSegment: boolean): void
     /**
      * Configures `sink` to store the last received sample in the last-sample
      * property.
+     * @param enabled the new enable-last-sample value.
      */
     setLastSampleEnabled(enabled: boolean): void
     /**
      * Set the maximum amount of bits per second that the sink will render.
+     * @param maxBitrate the max_bitrate in bits per second
      */
     setMaxBitrate(maxBitrate: number): void
     /**
@@ -537,6 +551,7 @@ class AppSink {
      * used to decide if a buffer should be dropped or not based on the
      * buffer timestamp and the current clock time. A value of -1 means
      * an unlimited time.
+     * @param maxLateness the new max lateness value.
      */
     setMaxLateness(maxLateness: number): void
     /**
@@ -545,10 +560,12 @@ class AppSink {
      * pipelines.
      * 
      * This function is usually called by subclasses.
+     * @param processingDeadline the new processing deadline in nanoseconds.
      */
     setProcessingDeadline(processingDeadline: Gst.ClockTime): void
     /**
      * Configures `sink` to send Quality-of-Service events upstream.
+     * @param enabled the new qos value.
      */
     setQosEnabled(enabled: boolean): void
     /**
@@ -561,6 +578,7 @@ class AppSink {
      * other sinks will adjust their latency to delay the rendering of their media.
      * 
      * This function is usually called by subclasses.
+     * @param delay the new delay
      */
     setRenderDelay(delay: Gst.ClockTime): void
     /**
@@ -569,12 +587,14 @@ class AppSink {
      * possible. If `sync` is %TRUE, the timestamps of the incoming
      * buffers will be used to schedule the exact render time of its
      * contents.
+     * @param sync the new sync value.
      */
     setSync(sync: boolean): void
     /**
      * Set the time that will be inserted between rendered buffers. This
      * can be used to control the maximum buffers per second that the sink
      * will render.
+     * @param throttle the throttle time in nanoseconds
      */
     setThrottleTime(throttle: number): void
     /**
@@ -582,6 +602,7 @@ class AppSink {
      * render buffers earlier than their timestamp. A positive value will delay
      * rendering. This function can be used to fix playback of badly timestamped
      * buffers.
+     * @param offset the new offset
      */
     setTsOffset(offset: Gst.ClockTimeDiff): void
     /**
@@ -596,6 +617,7 @@ class AppSink {
      * 
      * The `time` argument should be the running_time of when the timeout should happen
      * and will be adjusted with any latency and offset configured in the sink.
+     * @param time the running_time to be reached
      */
     wait(time: Gst.ClockTime): [ /* returnType */ Gst.FlowReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -614,6 +636,7 @@ class AppSink {
      * The `time` argument should be the running_time of when this method should
      * return and is not adjusted with any latency or offset configured in the
      * sink.
+     * @param time the running_time to be reached
      */
     waitClock(time: Gst.ClockTime): [ /* returnType */ Gst.ClockReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -658,6 +681,7 @@ class AppSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -673,6 +697,7 @@ class AppSink {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -680,6 +705,7 @@ class AppSink {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -696,6 +722,7 @@ class AppSink {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -711,6 +738,7 @@ class AppSink {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -720,6 +748,7 @@ class AppSink {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -729,6 +758,7 @@ class AppSink {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -759,21 +789,26 @@ class AppSink {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -799,10 +834,12 @@ class AppSink {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -814,6 +851,7 @@ class AppSink {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -847,11 +885,13 @@ class AppSink {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -896,6 +936,7 @@ class AppSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -907,6 +948,8 @@ class AppSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -914,6 +957,9 @@ class AppSink {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -921,6 +967,10 @@ class AppSink {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -934,6 +984,10 @@ class AppSink {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -962,6 +1016,14 @@ class AppSink {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -969,6 +1031,15 @@ class AppSink {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -987,6 +1058,7 @@ class AppSink {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -1003,10 +1075,14 @@ class AppSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -1018,6 +1094,7 @@ class AppSink {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -1030,6 +1107,7 @@ class AppSink {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -1041,6 +1119,7 @@ class AppSink {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -1060,6 +1139,7 @@ class AppSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -1069,6 +1149,9 @@ class AppSink {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -1084,6 +1167,7 @@ class AppSink {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -1092,6 +1176,13 @@ class AppSink {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -1109,6 +1200,9 @@ class AppSink {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -1120,12 +1214,14 @@ class AppSink {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -1133,18 +1229,21 @@ class AppSink {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -1156,6 +1255,7 @@ class AppSink {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -1171,6 +1271,7 @@ class AppSink {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -1187,6 +1288,7 @@ class AppSink {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -1200,12 +1302,16 @@ class AppSink {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -1215,6 +1321,7 @@ class AppSink {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1222,11 +1329,14 @@ class AppSink {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1249,6 +1359,10 @@ class AppSink {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1274,6 +1388,8 @@ class AppSink {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1283,16 +1399,19 @@ class AppSink {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -1308,17 +1427,21 @@ class AppSink {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -1329,6 +1452,7 @@ class AppSink {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -1336,11 +1460,13 @@ class AppSink {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1354,6 +1480,7 @@ class AppSink {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1407,6 +1534,10 @@ class AppSink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1417,6 +1548,12 @@ class AppSink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1440,6 +1577,7 @@ class AppSink {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1459,11 +1597,14 @@ class AppSink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1471,6 +1612,8 @@ class AppSink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1488,6 +1631,7 @@ class AppSink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1533,6 +1677,7 @@ class AppSink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1576,15 +1721,20 @@ class AppSink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1625,6 +1775,7 @@ class AppSink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1649,6 +1800,7 @@ class AppSink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gst-1.0.Gst.URIHandler */
@@ -1667,6 +1819,7 @@ class AppSink {
     getUriType(): Gst.URIType
     /**
      * Tries to set the URI of the given handler.
+     * @param uri URI to set
      */
     setUri(uri: string): boolean
     /* Signals of GstApp-1.0.GstApp.AppSink */
@@ -1808,6 +1961,7 @@ class AppSink {
      * 
      * Note that future releases may extend this API to return other object types
      * so make sure that your code is checking for the actual type it is handling.
+     * @param timeout the maximum amount of time to wait for a sample
      */
     connect(sigName: "try-pull-object", callback: ((timeout: number) => Gst.MiniObject)): number
     on(sigName: "try-pull-object", callback: (timeout: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1834,6 +1988,7 @@ class AppSink {
      * 
      * This function blocks until a preroll sample or EOS is received, the appsink
      * element is set to the READY/NULL state, or the timeout expires.
+     * @param timeout the maximum amount of time to wait for the preroll sample
      */
     connect(sigName: "try-pull-preroll", callback: ((timeout: number) => Gst.Sample)): number
     on(sigName: "try-pull-preroll", callback: (timeout: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1856,6 +2011,7 @@ class AppSink {
      * If an EOS event was received before any buffers or the timeout expires,
      * this function returns %NULL. Use gst_app_sink_is_eos () to check
      * for the EOS condition.
+     * @param timeout the maximum amount of time to wait for a sample
      */
     connect(sigName: "try-pull-sample", callback: ((timeout: number) => Gst.Sample)): number
     on(sigName: "try-pull-sample", callback: (timeout: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -1879,6 +2035,7 @@ class AppSink {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -1887,6 +2044,7 @@ class AppSink {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -1898,6 +2056,8 @@ class AppSink {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1933,6 +2093,7 @@ class AppSink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2249,131 +2410,131 @@ class AppSrc {
     /* Properties of GstBase-1.0.GstBase.BaseSrc */
     doTimestamp: boolean
     /* Fields of GstBase-1.0.GstBase.BaseSrc */
-    readonly element: Gst.Element
-    readonly srcpad: Gst.Pad
-    readonly liveLock: GLib.Mutex
-    readonly liveCond: GLib.Cond
-    readonly liveRunning: boolean
-    readonly blocksize: number
-    readonly canActivatePush: boolean
-    readonly randomAccess: boolean
-    readonly clockId: Gst.ClockID
-    readonly segment: Gst.Segment
-    readonly needNewsegment: boolean
-    readonly numBuffers: number
-    readonly numBuffersLeft: number
-    readonly typefind: boolean
-    readonly running: boolean
-    readonly pendingSeek: Gst.Event
-    readonly priv: GstBase.BaseSrcPrivate
+    element: Gst.Element
+    srcpad: Gst.Pad
+    liveLock: GLib.Mutex
+    liveCond: GLib.Cond
+    liveRunning: boolean
+    blocksize: number
+    canActivatePush: boolean
+    randomAccess: boolean
+    clockId: Gst.ClockID
+    segment: Gst.Segment
+    needNewsegment: boolean
+    numBuffers: number
+    numBuffersLeft: number
+    typefind: boolean
+    running: boolean
+    pendingSeek: Gst.Event
+    priv: GstBase.BaseSrcPrivate
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstApp-1.0.GstApp.AppSrc */
     /**
      * Indicates to the appsrc element that the last buffer queued in the
@@ -2442,6 +2603,7 @@ class AppSrc {
      * 
      * When the block property is TRUE, this function can block until free
      * space becomes available in the queue.
+     * @param buffer a #GstBuffer to push
      */
     pushBuffer(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -2451,6 +2613,7 @@ class AppSrc {
      * 
      * When the block property is TRUE, this function can block until free
      * space becomes available in the queue.
+     * @param bufferList a #GstBufferList to push
      */
     pushBufferList(bufferList: Gst.BufferList): Gst.FlowReturn
     /**
@@ -2464,6 +2627,7 @@ class AppSrc {
      * 
      * When the block property is TRUE, this function can block until free
      * space becomes available in the queue.
+     * @param sample a #GstSample from which buffer and caps may be extracted
      */
     pushSample(sample: Gst.Sample): Gst.FlowReturn
     /**
@@ -2471,22 +2635,27 @@ class AppSrc {
      * a copy of the caps structure. After calling this method, the source will
      * only produce caps that match `caps`. `caps` must be fixed and the caps on the
      * buffers must match the caps or left NULL.
+     * @param caps caps to set
      */
     setCaps(caps?: Gst.Caps | null): void
     /**
      * Set the duration of the stream in nanoseconds. A value of GST_CLOCK_TIME_NONE means that the duration is
      * not known.
+     * @param duration the duration to set
      */
     setDuration(duration: Gst.ClockTime): void
     /**
      * Make appsrc emit the "new-preroll" and "new-buffer" signals. This option is
      * by default disabled because signal emission is expensive and unneeded when
      * the application prefers to operate in pull mode.
+     * @param emit the new state
      */
     setEmitSignals(emit: boolean): void
     /**
      * Configure the `min` and `max` latency in `src`. If `min` is set to -1, the
      * default latency calculations for pseudo-live sources will be used.
+     * @param min the min latency
+     * @param max the max latency
      */
     setLatency(min: number, max: number): void
     /**
@@ -2494,29 +2663,34 @@ class AppSrc {
      * will drop any buffers that are pushed into it once its internal queue is
      * full. The selected type defines whether to drop the oldest or new
      * buffers.
+     * @param leaky the #GstAppLeakyType
      */
     setLeakyType(leaky: AppLeakyType): void
     /**
      * Set the maximum amount of buffers that can be queued in `appsrc`.
      * After the maximum amount of buffers are queued, `appsrc` will emit the
      * "enough-data" signal.
+     * @param max the maximum number of buffers to queue
      */
     setMaxBuffers(max: number): void
     /**
      * Set the maximum amount of bytes that can be queued in `appsrc`.
      * After the maximum amount of bytes are queued, `appsrc` will emit the
      * "enough-data" signal.
+     * @param max the maximum number of bytes to queue
      */
     setMaxBytes(max: number): void
     /**
      * Set the maximum amount of time that can be queued in `appsrc`.
      * After the maximum amount of time are queued, `appsrc` will emit the
      * "enough-data" signal.
+     * @param max the maximum amonut of time to queue
      */
     setMaxTime(max: Gst.ClockTime): void
     /**
      * Set the size of the stream in bytes. A value of -1 means that the size is
      * not known.
+     * @param size the size to set
      */
     setSize(size: number): void
     /**
@@ -2524,6 +2698,7 @@ class AppSrc {
      * be connected to.
      * 
      * A stream_type stream
+     * @param type the new state
      */
     setStreamType(type: AppStreamType): void
     /* Methods of GstBase-1.0.GstBase.BaseSrc */
@@ -2564,6 +2739,9 @@ class AppSrc {
      * 
      * The format for the new segment will be the current format of the source, as
      * configured with gst_base_src_set_format()
+     * @param start The new start value for the segment
+     * @param stop Stop value for the new segment
+     * @param time The new time value for the start of the new segment
      */
     newSeamlessSegment(start: number, stop: number, time: number): boolean
     /**
@@ -2576,6 +2754,7 @@ class AppSrc {
      * 
      * The format of `src` must not be %GST_FORMAT_UNDEFINED and the format
      * should be configured via gst_base_src_set_format() before calling this method.
+     * @param segment a pointer to a #GstSegment
      */
     newSegment(segment: Gst.Segment): boolean
     /**
@@ -2592,6 +2771,7 @@ class AppSrc {
      * close, start, stop, play and pause virtual methods will be executed in a
      * different thread and are thus allowed to perform blocking operations. Any
      * blocking operation should be unblocked with the unlock vmethod.
+     * @param async new async mode
      */
     setAsync(async: boolean): void
     /**
@@ -2605,27 +2785,32 @@ class AppSrc {
      * `automatic_eos` is %TRUE. Since 1.16, if `automatic_eos` is %FALSE an
      * EOS will be pushed only when the #GstBaseSrcClass::create implementation
      * returns %GST_FLOW_EOS.
+     * @param automaticEos automatic eos
      */
     setAutomaticEos(automaticEos: boolean): void
     /**
      * Set the number of bytes that `src` will push out with each buffer. When
      * `blocksize` is set to -1, a default length will be used.
+     * @param blocksize the new blocksize in bytes
      */
     setBlocksize(blocksize: number): void
     /**
      * Set new caps on the basesrc source pad.
+     * @param caps a #GstCaps
      */
     setCaps(caps: Gst.Caps): boolean
     /**
      * Configure `src` to automatically timestamp outgoing buffers based on the
      * current running_time of the pipeline. This property is mostly useful for live
      * sources.
+     * @param timestamp enable or disable timestamping
      */
     setDoTimestamp(timestamp: boolean): void
     /**
      * If not `dynamic,` size is only updated when needed, such as when trying to
      * read past current tracked size.  Otherwise, size is checked for upon each
      * read.
+     * @param dynamic new dynamic size mode
      */
     setDynamicSize(dynamic: boolean): void
     /**
@@ -2636,6 +2821,7 @@ class AppSrc {
      * operate in pull mode if the #GstBaseSrcClass::is_seekable returns %TRUE.
      * 
      * This function must only be called in states < %GST_STATE_PAUSED.
+     * @param format the format to use
      */
     setFormat(format: Gst.Format): void
     /**
@@ -2647,6 +2833,7 @@ class AppSrc {
      * of a pipeline. To signal this fact to the application and the
      * pipeline, the state change return value of the live source will
      * be GST_STATE_CHANGE_NO_PREROLL.
+     * @param live new live-mode
      */
     setLive(live: boolean): void
     /**
@@ -2654,6 +2841,7 @@ class AppSrc {
      * start method, it should call gst_base_src_start_complete() when the start
      * operation completes either from the same thread or from an asynchronous
      * helper thread.
+     * @param ret a #GstFlowReturn
      */
     startComplete(ret: Gst.FlowReturn): void
     /**
@@ -2677,6 +2865,7 @@ class AppSrc {
      * Subclasses must only call this function once per create function call and
      * subclasses must only call this function when the source operates in push
      * mode.
+     * @param bufferList a #GstBufferList
      */
     submitBufferList(bufferList: Gst.BufferList): void
     /**
@@ -2711,6 +2900,7 @@ class AppSrc {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -2726,6 +2916,7 @@ class AppSrc {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -2733,6 +2924,7 @@ class AppSrc {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -2749,6 +2941,7 @@ class AppSrc {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -2764,6 +2957,7 @@ class AppSrc {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2773,6 +2967,7 @@ class AppSrc {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2782,6 +2977,7 @@ class AppSrc {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2812,21 +3008,26 @@ class AppSrc {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -2852,10 +3053,12 @@ class AppSrc {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -2867,6 +3070,7 @@ class AppSrc {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -2900,11 +3104,13 @@ class AppSrc {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -2949,6 +3155,7 @@ class AppSrc {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -2960,6 +3167,8 @@ class AppSrc {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -2967,6 +3176,9 @@ class AppSrc {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -2974,6 +3186,10 @@ class AppSrc {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -2987,6 +3203,10 @@ class AppSrc {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -3015,6 +3235,14 @@ class AppSrc {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -3022,6 +3250,15 @@ class AppSrc {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -3040,6 +3277,7 @@ class AppSrc {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -3056,10 +3294,14 @@ class AppSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -3071,6 +3313,7 @@ class AppSrc {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -3083,6 +3326,7 @@ class AppSrc {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -3094,6 +3338,7 @@ class AppSrc {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -3113,6 +3358,7 @@ class AppSrc {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -3122,6 +3368,9 @@ class AppSrc {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -3137,6 +3386,7 @@ class AppSrc {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -3145,6 +3395,13 @@ class AppSrc {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -3162,6 +3419,9 @@ class AppSrc {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -3173,12 +3433,14 @@ class AppSrc {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -3186,18 +3448,21 @@ class AppSrc {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -3209,6 +3474,7 @@ class AppSrc {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -3224,6 +3490,7 @@ class AppSrc {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -3240,6 +3507,7 @@ class AppSrc {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -3253,12 +3521,16 @@ class AppSrc {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -3268,6 +3540,7 @@ class AppSrc {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -3275,11 +3548,14 @@ class AppSrc {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -3302,6 +3578,10 @@ class AppSrc {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3327,6 +3607,8 @@ class AppSrc {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -3336,16 +3618,19 @@ class AppSrc {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -3361,17 +3646,21 @@ class AppSrc {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -3382,6 +3671,7 @@ class AppSrc {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -3389,11 +3679,13 @@ class AppSrc {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -3407,6 +3699,7 @@ class AppSrc {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -3460,6 +3753,10 @@ class AppSrc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3470,6 +3767,12 @@ class AppSrc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3493,6 +3796,7 @@ class AppSrc {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3512,11 +3816,14 @@ class AppSrc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3524,6 +3831,8 @@ class AppSrc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3541,6 +3850,7 @@ class AppSrc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3586,6 +3896,7 @@ class AppSrc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3629,15 +3940,20 @@ class AppSrc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3678,6 +3994,7 @@ class AppSrc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3702,6 +4019,7 @@ class AppSrc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gst-1.0.Gst.URIHandler */
@@ -3720,6 +4038,7 @@ class AppSrc {
     getUriType(): Gst.URIType
     /**
      * Tries to set the URI of the given handler.
+     * @param uri URI to set
      */
     setUri(uri: string): boolean
     /* Signals of GstApp-1.0.GstApp.AppSrc */
@@ -3750,6 +4069,7 @@ class AppSrc {
      * 
      * You can call push-buffer multiple times until the enough-data signal is
      * fired.
+     * @param length the amount of bytes needed.
      */
     connect(sigName: "need-data", callback: ((length: number) => void)): number
     on(sigName: "need-data", callback: (length: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3763,6 +4083,7 @@ class AppSrc {
      * 
      * When the block property is TRUE, this function can block until free space
      * becomes available in the queue.
+     * @param buffer a buffer to push
      */
     connect(sigName: "push-buffer", callback: ((buffer: Gst.Buffer) => Gst.FlowReturn)): number
     on(sigName: "push-buffer", callback: (buffer: Gst.Buffer) => void, after?: boolean): NodeJS.EventEmitter
@@ -3777,6 +4098,7 @@ class AppSrc {
      * 
      * When the block property is TRUE, this function can block until free space
      * becomes available in the queue.
+     * @param bufferList a buffer list to push
      */
     connect(sigName: "push-buffer-list", callback: ((bufferList: Gst.BufferList) => Gst.FlowReturn)): number
     on(sigName: "push-buffer-list", callback: (bufferList: Gst.BufferList) => void, after?: boolean): NodeJS.EventEmitter
@@ -3795,6 +4117,7 @@ class AppSrc {
      * 
      * When the block property is TRUE, this function can block until free space
      * becomes available in the queue.
+     * @param sample a sample from which extract buffer to push
      */
     connect(sigName: "push-sample", callback: ((sample: Gst.Sample) => Gst.FlowReturn)): number
     on(sigName: "push-sample", callback: (sample: Gst.Sample) => void, after?: boolean): NodeJS.EventEmitter
@@ -3805,6 +4128,7 @@ class AppSrc {
      * Seek to the given offset. The next push-buffer should produce buffers from
      * the new `offset`.
      * This callback is only called for seekable stream types.
+     * @param offset the offset to seek to
      */
     connect(sigName: "seek-data", callback: ((offset: number) => boolean)): number
     on(sigName: "seek-data", callback: (offset: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3828,6 +4152,7 @@ class AppSrc {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -3836,6 +4161,7 @@ class AppSrc {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -3847,6 +4173,8 @@ class AppSrc {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3882,6 +4210,7 @@ class AppSrc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4002,23 +4331,23 @@ class AppSrc {
 }
 class AppSinkCallbacks {
     /* Fields of GstApp-1.0.GstApp.AppSinkCallbacks */
-    readonly eos: (appsink: AppSink) => void
-    readonly newPreroll: (appsink: AppSink) => Gst.FlowReturn
-    readonly newSample: (appsink: AppSink) => Gst.FlowReturn
-    readonly newEvent: (appsink: AppSink) => boolean
+    eos: (appsink: AppSink) => void
+    newPreroll: (appsink: AppSink) => Gst.FlowReturn
+    newSample: (appsink: AppSink) => Gst.FlowReturn
+    newEvent: (appsink: AppSink) => boolean
     static name: string
 }
 abstract class AppSinkClass {
     /* Fields of GstApp-1.0.GstApp.AppSinkClass */
-    readonly basesinkClass: GstBase.BaseSinkClass
-    readonly eos: (appsink: AppSink) => void
-    readonly newPreroll: (appsink: AppSink) => Gst.FlowReturn
-    readonly newSample: (appsink: AppSink) => Gst.FlowReturn
-    readonly pullPreroll: (appsink: AppSink) => Gst.Sample | null
-    readonly pullSample: (appsink: AppSink) => Gst.Sample | null
-    readonly tryPullPreroll: (appsink: AppSink, timeout: Gst.ClockTime) => Gst.Sample | null
-    readonly tryPullSample: (appsink: AppSink, timeout: Gst.ClockTime) => Gst.Sample | null
-    readonly tryPullObject: (appsink: AppSink, timeout: Gst.ClockTime) => Gst.MiniObject
+    basesinkClass: GstBase.BaseSinkClass
+    eos: (appsink: AppSink) => void
+    newPreroll: (appsink: AppSink) => Gst.FlowReturn
+    newSample: (appsink: AppSink) => Gst.FlowReturn
+    pullPreroll: (appsink: AppSink) => Gst.Sample | null
+    pullSample: (appsink: AppSink) => Gst.Sample | null
+    tryPullPreroll: (appsink: AppSink, timeout: Gst.ClockTime) => Gst.Sample | null
+    tryPullSample: (appsink: AppSink, timeout: Gst.ClockTime) => Gst.Sample | null
+    tryPullObject: (appsink: AppSink, timeout: Gst.ClockTime) => Gst.MiniObject
     static name: string
 }
 class AppSinkPrivate {
@@ -4026,21 +4355,21 @@ class AppSinkPrivate {
 }
 class AppSrcCallbacks {
     /* Fields of GstApp-1.0.GstApp.AppSrcCallbacks */
-    readonly needData: (src: AppSrc, length: number) => void
-    readonly enoughData: (src: AppSrc) => void
-    readonly seekData: (src: AppSrc, offset: number) => boolean
+    needData: (src: AppSrc, length: number) => void
+    enoughData: (src: AppSrc) => void
+    seekData: (src: AppSrc, offset: number) => boolean
     static name: string
 }
 abstract class AppSrcClass {
     /* Fields of GstApp-1.0.GstApp.AppSrcClass */
-    readonly basesrcClass: GstBase.BaseSrcClass
-    readonly needData: (appsrc: AppSrc, length: number) => void
-    readonly enoughData: (appsrc: AppSrc) => void
-    readonly seekData: (appsrc: AppSrc, offset: number) => boolean
-    readonly pushBuffer: (appsrc: AppSrc, buffer: Gst.Buffer) => Gst.FlowReturn
-    readonly endOfStream: (appsrc: AppSrc) => Gst.FlowReturn
-    readonly pushSample: (appsrc: AppSrc, sample: Gst.Sample) => Gst.FlowReturn
-    readonly pushBufferList: (appsrc: AppSrc, bufferList: Gst.BufferList) => Gst.FlowReturn
+    basesrcClass: GstBase.BaseSrcClass
+    needData: (appsrc: AppSrc, length: number) => void
+    enoughData: (appsrc: AppSrc) => void
+    seekData: (appsrc: AppSrc, offset: number) => boolean
+    pushBuffer: (appsrc: AppSrc, buffer: Gst.Buffer) => Gst.FlowReturn
+    endOfStream: (appsrc: AppSrc) => Gst.FlowReturn
+    pushSample: (appsrc: AppSrc, sample: Gst.Sample) => Gst.FlowReturn
+    pushBufferList: (appsrc: AppSrc, bufferList: Gst.BufferList) => Gst.FlowReturn
     static name: string
 }
 class AppSrcPrivate {

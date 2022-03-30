@@ -51,6 +51,8 @@ class FFTF32 {
      * 
      * `freqdata` must be large enough to hold `len/`2 + 1 #GstFFTF32Complex frequency
      * domain samples.
+     * @param timedata Buffer of the samples in the time domain
+     * @param freqdata Target buffer for the samples in the frequency domain
      */
     fft(timedata: number, freqdata: FFTF32Complex): void
     /**
@@ -64,10 +66,14 @@ class FFTF32 {
      * while allocating the #GstFFTF32 instance with gst_fft_f32_new().
      * 
      * `timedata` must be large enough to hold `len` time domain samples.
+     * @param freqdata Buffer of the samples in the frequency domain
+     * @param timedata Target buffer for the samples in the time domain
      */
     inverseFft(freqdata: FFTF32Complex, timedata: number): void
     /**
      * This calls the window function `window` on the `timedata` sample buffer.
+     * @param timedata Time domain samples
+     * @param window Window function to apply
      */
     window(timedata: number, window: FFTWindow): void
     static name: string
@@ -77,11 +83,11 @@ class FFTF32Complex {
     /**
      * Real part
      */
-    readonly r: number
+    r: number
     /**
      * Imaginary part
      */
-    readonly i: number
+    i: number
     static name: string
 }
 class FFTF64 {
@@ -94,6 +100,8 @@ class FFTF64 {
      * 
      * `freqdata` must be large enough to hold `len/`2 + 1 #GstFFTF64Complex frequency
      * domain samples.
+     * @param timedata Buffer of the samples in the time domain
+     * @param freqdata Target buffer for the samples in the frequency domain
      */
     fft(timedata: number, freqdata: FFTF64Complex): void
     /**
@@ -107,10 +115,14 @@ class FFTF64 {
      * while allocating the #GstFFTF64 instance with gst_fft_f64_new().
      * 
      * `timedata` must be large enough to hold `len` time domain samples.
+     * @param freqdata Buffer of the samples in the frequency domain
+     * @param timedata Target buffer for the samples in the time domain
      */
     inverseFft(freqdata: FFTF64Complex, timedata: number): void
     /**
      * This calls the window function `window` on the `timedata` sample buffer.
+     * @param timedata Time domain samples
+     * @param window Window function to apply
      */
     window(timedata: number, window: FFTWindow): void
     static name: string
@@ -120,11 +132,11 @@ class FFTF64Complex {
     /**
      * Real part
      */
-    readonly r: number
+    r: number
     /**
      * Imaginary part
      */
-    readonly i: number
+    i: number
     static name: string
 }
 class FFTS16 {
@@ -137,6 +149,8 @@ class FFTS16 {
      * 
      * `freqdata` must be large enough to hold `len/`2 + 1 #GstFFTS16Complex frequency
      * domain samples.
+     * @param timedata Buffer of the samples in the time domain
+     * @param freqdata Target buffer for the samples in the frequency domain
      */
     fft(timedata: number, freqdata: FFTS16Complex): void
     /**
@@ -150,10 +164,14 @@ class FFTS16 {
      * while allocating the #GstFFTS16 instance with gst_fft_s16_new().
      * 
      * `timedata` must be large enough to hold `len` time domain samples.
+     * @param freqdata Buffer of the samples in the frequency domain
+     * @param timedata Target buffer for the samples in the time domain
      */
     inverseFft(freqdata: FFTS16Complex, timedata: number): void
     /**
      * This calls the window function `window` on the `timedata` sample buffer.
+     * @param timedata Time domain samples
+     * @param window Window function to apply
      */
     window(timedata: number, window: FFTWindow): void
     static name: string
@@ -163,11 +181,11 @@ class FFTS16Complex {
     /**
      * Real part
      */
-    readonly r: number
+    r: number
     /**
      * Imaginary part
      */
-    readonly i: number
+    i: number
     static name: string
 }
 class FFTS32 {
@@ -180,6 +198,8 @@ class FFTS32 {
      * 
      * `freqdata` must be large enough to hold `len/`2 + 1 #GstFFTS32Complex frequency
      * domain samples.
+     * @param timedata Buffer of the samples in the time domain
+     * @param freqdata Target buffer for the samples in the frequency domain
      */
     fft(timedata: number, freqdata: FFTS32Complex): void
     /**
@@ -193,10 +213,14 @@ class FFTS32 {
      * while allocating the #GstFFTS32 instance with gst_fft_s32_new().
      * 
      * `timedata` must be large enough to hold `len` time domain samples.
+     * @param freqdata Buffer of the samples in the frequency domain
+     * @param timedata Target buffer for the samples in the time domain
      */
     inverseFft(freqdata: FFTS32Complex, timedata: number): void
     /**
      * This calls the window function `window` on the `timedata` sample buffer.
+     * @param timedata Time domain samples
+     * @param window Window function to apply
      */
     window(timedata: number, window: FFTWindow): void
     static name: string
@@ -206,11 +230,11 @@ class FFTS32Complex {
     /**
      * Real part
      */
-    readonly r: number
+    r: number
     /**
      * Imaginary part
      */
-    readonly i: number
+    i: number
     static name: string
 }
 }

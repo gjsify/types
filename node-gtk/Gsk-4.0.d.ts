@@ -398,6 +398,7 @@ class BlendNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -441,6 +442,7 @@ class BlendNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -469,6 +471,7 @@ class BlurNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -512,6 +515,7 @@ class BlurNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -544,6 +548,7 @@ class BorderNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -587,6 +592,7 @@ class BorderNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -608,7 +614,7 @@ class BroadwayRenderer {
      */
     readonly surface: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gsk-4.0.Gsk.Renderer */
     /**
      * Retrieves the `GdkSurface` set using gsk_enderer_realize().
@@ -629,6 +635,7 @@ class BroadwayRenderer {
      * 
      * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
      * destroying the renderer.
+     * @param surface the `GdkSurface` renderer will be used on
      */
     realize(surface?: Gdk.Surface | null): boolean
     /**
@@ -644,6 +651,8 @@ class BroadwayRenderer {
      * 
      * The `renderer` will acquire a reference on the `GskRenderNode` tree while
      * the rendering is in progress.
+     * @param root a `GskRenderNode`
+     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
      */
     render(root: RenderNode, region?: cairo.Region | null): void
     /**
@@ -655,6 +664,8 @@ class BroadwayRenderer {
      * 
      * If you want to apply any transformations to `root,` you should put it into a
      * transform node and pass that node instead.
+     * @param root a `GskRenderNode`
+     * @param viewport the section to draw or %NULL to use `root'`s bounds
      */
     renderTexture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
     /**
@@ -696,6 +707,10 @@ class BroadwayRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -706,6 +721,12 @@ class BroadwayRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -729,6 +750,7 @@ class BroadwayRenderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -748,11 +770,14 @@ class BroadwayRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -760,6 +785,8 @@ class BroadwayRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -777,6 +804,7 @@ class BroadwayRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -822,6 +850,7 @@ class BroadwayRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -865,15 +894,20 @@ class BroadwayRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -914,6 +948,7 @@ class BroadwayRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -948,6 +983,7 @@ class BroadwayRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -979,6 +1015,7 @@ class BroadwayRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1033,6 +1070,7 @@ class CairoNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -1076,6 +1114,7 @@ class CairoNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -1097,7 +1136,7 @@ class CairoRenderer {
      */
     readonly surface: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gsk-4.0.Gsk.Renderer */
     /**
      * Retrieves the `GdkSurface` set using gsk_enderer_realize().
@@ -1118,6 +1157,7 @@ class CairoRenderer {
      * 
      * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
      * destroying the renderer.
+     * @param surface the `GdkSurface` renderer will be used on
      */
     realize(surface?: Gdk.Surface | null): boolean
     /**
@@ -1133,6 +1173,8 @@ class CairoRenderer {
      * 
      * The `renderer` will acquire a reference on the `GskRenderNode` tree while
      * the rendering is in progress.
+     * @param root a `GskRenderNode`
+     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
      */
     render(root: RenderNode, region?: cairo.Region | null): void
     /**
@@ -1144,6 +1186,8 @@ class CairoRenderer {
      * 
      * If you want to apply any transformations to `root,` you should put it into a
      * transform node and pass that node instead.
+     * @param root a `GskRenderNode`
+     * @param viewport the section to draw or %NULL to use `root'`s bounds
      */
     renderTexture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
     /**
@@ -1185,6 +1229,10 @@ class CairoRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1195,6 +1243,12 @@ class CairoRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1218,6 +1272,7 @@ class CairoRenderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1237,11 +1292,14 @@ class CairoRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1249,6 +1307,8 @@ class CairoRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1266,6 +1326,7 @@ class CairoRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1311,6 +1372,7 @@ class CairoRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1354,15 +1416,20 @@ class CairoRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1403,6 +1470,7 @@ class CairoRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1437,6 +1505,7 @@ class CairoRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1468,6 +1537,7 @@ class CairoRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1518,6 +1588,7 @@ class ClipNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -1561,6 +1632,7 @@ class ClipNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -1593,6 +1665,7 @@ class ColorMatrixNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -1636,6 +1709,7 @@ class ColorMatrixNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -1660,6 +1734,7 @@ class ColorNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -1703,6 +1778,7 @@ class ColorNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -1748,6 +1824,7 @@ class ConicGradientNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -1791,6 +1868,7 @@ class ConicGradientNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -1803,6 +1881,7 @@ class ContainerNode {
     /* Methods of Gsk-4.0.Gsk.ContainerNode */
     /**
      * Gets one of the children of `container`.
+     * @param idx the position of the child to get
      */
     getChild(idx: number): RenderNode
     /**
@@ -1819,6 +1898,7 @@ class ContainerNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -1862,6 +1942,7 @@ class ContainerNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -1894,6 +1975,7 @@ class CrossFadeNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -1937,6 +2019,7 @@ class CrossFadeNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -1965,6 +2048,7 @@ class DebugNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -2008,6 +2092,7 @@ class DebugNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -2029,7 +2114,7 @@ class GLRenderer {
      */
     readonly surface: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gsk-4.0.Gsk.Renderer */
     /**
      * Retrieves the `GdkSurface` set using gsk_enderer_realize().
@@ -2050,6 +2135,7 @@ class GLRenderer {
      * 
      * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
      * destroying the renderer.
+     * @param surface the `GdkSurface` renderer will be used on
      */
     realize(surface?: Gdk.Surface | null): boolean
     /**
@@ -2065,6 +2151,8 @@ class GLRenderer {
      * 
      * The `renderer` will acquire a reference on the `GskRenderNode` tree while
      * the rendering is in progress.
+     * @param root a `GskRenderNode`
+     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
      */
     render(root: RenderNode, region?: cairo.Region | null): void
     /**
@@ -2076,6 +2164,8 @@ class GLRenderer {
      * 
      * If you want to apply any transformations to `root,` you should put it into a
      * transform node and pass that node instead.
+     * @param root a `GskRenderNode`
+     * @param viewport the section to draw or %NULL to use `root'`s bounds
      */
     renderTexture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
     /**
@@ -2117,6 +2207,10 @@ class GLRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2127,6 +2221,12 @@ class GLRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2150,6 +2250,7 @@ class GLRenderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2169,11 +2270,14 @@ class GLRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2181,6 +2285,8 @@ class GLRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2198,6 +2304,7 @@ class GLRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2243,6 +2350,7 @@ class GLRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2286,15 +2394,20 @@ class GLRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2335,6 +2448,7 @@ class GLRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2369,6 +2483,7 @@ class GLRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2400,6 +2515,7 @@ class GLRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2442,8 +2558,17 @@ interface GLShader_ConstructProps extends GObject.Object_ConstructProps {
     source?: any
 }
 class GLShader {
+    /* Properties of Gsk-4.0.Gsk.GLShader */
+    /**
+     * Resource containing the source code for the shader.
+     * 
+     * If the shader source is not coming from a resource, this
+     * will be %NULL.
+     */
+    readonly resource: string
+    readonly source: any
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gsk-4.0.Gsk.GLShader */
     /**
      * Tries to compile the `shader` for the given `renderer`.
@@ -2458,53 +2583,72 @@ class GLShader {
      * set up. This means that the widget has to be realized. Commonly you
      * want to call this from the realize signal of a widget, or during
      * widget snapshot.
+     * @param renderer a `GskRenderer`
      */
     compile(renderer: Renderer): boolean
     /**
      * Looks for a uniform by the name `name,` and returns the index
      * of the uniform, or -1 if it was not found.
+     * @param name uniform name
      */
     findUniformByName(name: string): number
     /**
      * Gets the value of the uniform `idx` in the `args` block.
      * 
      * The uniform must be of bool type.
+     * @param args uniform arguments
+     * @param idx index of the uniform
      */
     getArgBool(args: any, idx: number): boolean
     /**
      * Gets the value of the uniform `idx` in the `args` block.
      * 
      * The uniform must be of float type.
+     * @param args uniform arguments
+     * @param idx index of the uniform
      */
     getArgFloat(args: any, idx: number): number
     /**
      * Gets the value of the uniform `idx` in the `args` block.
      * 
      * The uniform must be of int type.
+     * @param args uniform arguments
+     * @param idx index of the uniform
      */
     getArgInt(args: any, idx: number): number
     /**
      * Gets the value of the uniform `idx` in the `args` block.
      * 
      * The uniform must be of uint type.
+     * @param args uniform arguments
+     * @param idx index of the uniform
      */
     getArgUint(args: any, idx: number): number
     /**
      * Gets the value of the uniform `idx` in the `args` block.
      * 
      * The uniform must be of vec2 type.
+     * @param args uniform arguments
+     * @param idx index of the uniform
+     * @param outValue location to store the uniform value in
      */
     getArgVec2(args: any, idx: number, outValue: Graphene.Vec2): void
     /**
      * Gets the value of the uniform `idx` in the `args` block.
      * 
      * The uniform must be of vec3 type.
+     * @param args uniform arguments
+     * @param idx index of the uniform
+     * @param outValue location to store the uniform value in
      */
     getArgVec3(args: any, idx: number, outValue: Graphene.Vec3): void
     /**
      * Gets the value of the uniform `idx` in the `args` block.
      * 
      * The uniform must be of vec4 type.
+     * @param args uniform arguments
+     * @param idx index of the uniform
+     * @param outValue location to store set the uniform value in
      */
     getArgVec4(args: any, idx: number, outValue: Graphene.Vec4): void
     /**
@@ -2534,14 +2678,17 @@ class GLShader {
     getSource(): any
     /**
      * Get the name of the declared uniform for this shader at index `idx`.
+     * @param idx index of the uniform
      */
     getUniformName(idx: number): string
     /**
      * Get the offset into the data block where data for this uniforms is stored.
+     * @param idx index of the uniform
      */
     getUniformOffset(idx: number): number
     /**
      * Get the type of the declared uniform for this shader at index `idx`.
+     * @param idx index of the uniform
      */
     getUniformType(idx: number): GLUniformType
     /* Methods of GObject-2.0.GObject.Object */
@@ -2579,6 +2726,10 @@ class GLShader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2589,6 +2740,12 @@ class GLShader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2612,6 +2769,7 @@ class GLShader {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2631,11 +2789,14 @@ class GLShader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2643,6 +2804,8 @@ class GLShader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2660,6 +2823,7 @@ class GLShader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2705,6 +2869,7 @@ class GLShader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2748,15 +2913,20 @@ class GLShader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2797,6 +2967,7 @@ class GLShader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2831,6 +3002,7 @@ class GLShader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2862,12 +3034,23 @@ class GLShader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::resource", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resource", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::resource", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::resource", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::resource", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2891,6 +3074,7 @@ class GLShaderNode {
     getArgs(): any
     /**
      * Gets one of the children.
+     * @param idx the position of the child to get
      */
     getChild(idx: number): RenderNode
     /**
@@ -2911,6 +3095,7 @@ class GLShaderNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -2954,13 +3139,14 @@ class GLShaderNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
-    static new(shader: GLShader, bounds: Graphene.Rect, args: any, children: RenderNode[]): GLShaderNode
-    constructor(shader: GLShader, bounds: Graphene.Rect, args: any, children: RenderNode[])
+    static new(shader: GLShader, bounds: Graphene.Rect, args: any, children: RenderNode[] | null): GLShaderNode
+    constructor(shader: GLShader, bounds: Graphene.Rect, args: any, children: RenderNode[] | null)
     /* Static methods and pseudo-constructors */
-    static new(shader: GLShader, bounds: Graphene.Rect, args: any, children: RenderNode[]): GLShaderNode
+    static new(shader: GLShader, bounds: Graphene.Rect, args: any, children: RenderNode[] | null): GLShaderNode
 }
 class InsetShadowNode {
     /* Methods of Gsk-4.0.Gsk.InsetShadowNode */
@@ -2998,6 +3184,7 @@ class InsetShadowNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -3041,6 +3228,7 @@ class InsetShadowNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -3077,6 +3265,7 @@ class LinearGradientNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -3120,6 +3309,7 @@ class LinearGradientNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -3141,7 +3331,7 @@ class NglRenderer {
      */
     readonly surface: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gsk-4.0.Gsk.Renderer */
     /**
      * Retrieves the `GdkSurface` set using gsk_enderer_realize().
@@ -3162,6 +3352,7 @@ class NglRenderer {
      * 
      * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
      * destroying the renderer.
+     * @param surface the `GdkSurface` renderer will be used on
      */
     realize(surface?: Gdk.Surface | null): boolean
     /**
@@ -3177,6 +3368,8 @@ class NglRenderer {
      * 
      * The `renderer` will acquire a reference on the `GskRenderNode` tree while
      * the rendering is in progress.
+     * @param root a `GskRenderNode`
+     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
      */
     render(root: RenderNode, region?: cairo.Region | null): void
     /**
@@ -3188,6 +3381,8 @@ class NglRenderer {
      * 
      * If you want to apply any transformations to `root,` you should put it into a
      * transform node and pass that node instead.
+     * @param root a `GskRenderNode`
+     * @param viewport the section to draw or %NULL to use `root'`s bounds
      */
     renderTexture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
     /**
@@ -3229,6 +3424,10 @@ class NglRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3239,6 +3438,12 @@ class NglRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3262,6 +3467,7 @@ class NglRenderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3281,11 +3487,14 @@ class NglRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3293,6 +3502,8 @@ class NglRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3310,6 +3521,7 @@ class NglRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3355,6 +3567,7 @@ class NglRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3398,15 +3611,20 @@ class NglRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3447,6 +3665,7 @@ class NglRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3481,6 +3700,7 @@ class NglRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3512,6 +3732,7 @@ class NglRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3562,6 +3783,7 @@ class OpacityNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -3605,6 +3827,7 @@ class OpacityNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -3649,6 +3872,7 @@ class OutsetShadowNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -3692,6 +3916,7 @@ class OutsetShadowNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -3740,6 +3965,7 @@ class RadialGradientNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -3783,6 +4009,7 @@ class RadialGradientNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -3802,6 +4029,7 @@ class RenderNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -3845,6 +4073,7 @@ class RenderNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -3853,6 +4082,7 @@ class RenderNode {
      * Loads data previously created via [method`Gsk`.RenderNode.serialize].
      * 
      * For a discussion of the supported format, see that function.
+     * @param bytes the bytes containing the data
      */
     static deserialize(bytes: any): RenderNode | null
 }
@@ -3869,7 +4099,7 @@ class Renderer {
      */
     readonly surface: Gdk.Surface
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gsk-4.0.Gsk.Renderer */
     /**
      * Retrieves the `GdkSurface` set using gsk_enderer_realize().
@@ -3890,6 +4120,7 @@ class Renderer {
      * 
      * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
      * destroying the renderer.
+     * @param surface the `GdkSurface` renderer will be used on
      */
     realize(surface?: Gdk.Surface | null): boolean
     /**
@@ -3905,6 +4136,8 @@ class Renderer {
      * 
      * The `renderer` will acquire a reference on the `GskRenderNode` tree while
      * the rendering is in progress.
+     * @param root a `GskRenderNode`
+     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
      */
     render(root: RenderNode, region?: cairo.Region | null): void
     /**
@@ -3916,6 +4149,8 @@ class Renderer {
      * 
      * If you want to apply any transformations to `root,` you should put it into a
      * transform node and pass that node instead.
+     * @param root a `GskRenderNode`
+     * @param viewport the section to draw or %NULL to use `root'`s bounds
      */
     renderTexture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
     /**
@@ -3957,6 +4192,10 @@ class Renderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3967,6 +4206,12 @@ class Renderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3990,6 +4235,7 @@ class Renderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4009,11 +4255,14 @@ class Renderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4021,6 +4270,8 @@ class Renderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4038,6 +4289,7 @@ class Renderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4083,6 +4335,7 @@ class Renderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4126,15 +4379,20 @@ class Renderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4175,6 +4433,7 @@ class Renderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4209,6 +4468,7 @@ class Renderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4240,6 +4500,7 @@ class Renderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4290,6 +4551,7 @@ class RepeatNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -4333,6 +4595,7 @@ class RepeatNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -4352,6 +4615,7 @@ class RepeatingLinearGradientNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -4395,6 +4659,7 @@ class RepeatingLinearGradientNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -4414,6 +4679,7 @@ class RepeatingRadialGradientNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -4457,6 +4723,7 @@ class RepeatingRadialGradientNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -4485,6 +4752,7 @@ class RoundedClipNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -4528,6 +4796,7 @@ class RoundedClipNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -4548,6 +4817,7 @@ class ShadowNode {
     getNShadows(): number
     /**
      * Retrieves the shadow data at the given index `i`.
+     * @param i the given index
      */
     getShadow(i: number): Shadow
     /* Methods of Gsk-4.0.Gsk.RenderNode */
@@ -4560,6 +4830,7 @@ class ShadowNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -4603,6 +4874,7 @@ class ShadowNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -4647,6 +4919,7 @@ class TextNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -4690,6 +4963,7 @@ class TextNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -4714,6 +4988,7 @@ class TextureNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -4757,6 +5032,7 @@ class TextureNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -4785,6 +5061,7 @@ class TransformNode {
      * 
      * For advanced nodes that cannot be supported using Cairo, in particular
      * for nodes doing 3D operations, this function may fail.
+     * @param cr cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -4828,6 +5105,7 @@ class TransformNode {
      * 
      * It is mostly intended for use inside a debugger to quickly dump a render
      * node to a file for later inspection.
+     * @param filename the file to save it to.
      */
     writeToFile(filename: string): boolean
     static name: string
@@ -4847,11 +5125,11 @@ class ColorStop {
     /**
      * the offset of the color stop
      */
-    readonly offset: number
+    offset: number
     /**
      * the color at the given offset
      */
-    readonly color: Gdk.RGBA
+    color: Gdk.RGBA
     static name: string
 }
 abstract class GLRendererClass {
@@ -4859,7 +5137,7 @@ abstract class GLRendererClass {
 }
 abstract class GLShaderClass {
     /* Fields of Gsk-4.0.Gsk.GLShaderClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ParseLocation {
@@ -4867,23 +5145,23 @@ class ParseLocation {
     /**
      * the offset of the location in the parse buffer, as bytes
      */
-    readonly bytes: number
+    bytes: number
     /**
      * the offset of the location in the parse buffer, as characters
      */
-    readonly chars: number
+    chars: number
     /**
      * the line of the location in the parse buffer
      */
-    readonly lines: number
+    lines: number
     /**
      * the position in the line, as bytes
      */
-    readonly lineBytes: number
+    lineBytes: number
     /**
      * the position in the line, as characters
      */
-    readonly lineChars: number
+    lineChars: number
     static name: string
 }
 abstract class RendererClass {
@@ -4894,18 +5172,20 @@ class RoundedRect {
     /**
      * the bounds of the rectangle
      */
-    readonly bounds: Graphene.Rect
+    bounds: Graphene.Rect
     /**
      * the size of the 4 rounded corners
      */
-    readonly corner: Graphene.Size[]
+    corner: Graphene.Size[]
     /* Methods of Gsk-4.0.Gsk.RoundedRect */
     /**
      * Checks if the given `point` is inside the rounded rectangle.
+     * @param point the point to check
      */
     containsPoint(point: Graphene.Point): boolean
     /**
      * Checks if the given `rect` is contained inside the rounded rectangle.
+     * @param rect the rectangle to check
      */
     containsRect(rect: Graphene.Rect): boolean
     /**
@@ -4913,6 +5193,11 @@ class RoundedRect {
      * 
      * This function will implicitly normalize the `GskRoundedRect`
      * before returning.
+     * @param bounds a `graphene_rect_t` describing the bounds
+     * @param topLeft the rounding radius of the top left corner
+     * @param topRight the rounding radius of the top right corner
+     * @param bottomRight the rounding radius of the bottom right corner
+     * @param bottomLeft the rounding radius of the bottom left corner
      */
     init(bounds: Graphene.Rect, topLeft: Graphene.Size, topRight: Graphene.Size, bottomRight: Graphene.Size, bottomLeft: Graphene.Size): RoundedRect
     /**
@@ -4920,15 +5205,19 @@ class RoundedRect {
      * 
      * This function will not normalize the `GskRoundedRect`,
      * so make sure the source is normalized.
+     * @param src a `GskRoundedRect`
      */
     initCopy(src: RoundedRect): RoundedRect
     /**
      * Initializes `self` to the given `bounds` and sets the radius
      * of all four corners to `radius`.
+     * @param bounds a `graphene_rect_t`
+     * @param radius the border radius
      */
     initFromRect(bounds: Graphene.Rect, radius: number): RoundedRect
     /**
      * Checks if part of the given `rect` is contained inside the rounded rectangle.
+     * @param rect the rectangle to check
      */
     intersectsRect(rect: Graphene.Rect): boolean
     /**
@@ -4951,6 +5240,8 @@ class RoundedRect {
      * Offsets the bound's origin by `dx` and `dy`.
      * 
      * The size and corners of the rectangle are unchanged.
+     * @param dx the horizontal offset
+     * @param dy the vertical offset
      */
     offset(dx: number, dy: number): RoundedRect
     /**
@@ -4962,6 +5253,10 @@ class RoundedRect {
      * 
      * This function also works for growing rectangles if you pass
      * negative values for the `top,` `right,` `bottom` or `left`.
+     * @param top How far to move the top side downwards
+     * @param right How far to move the right side to the left
+     * @param bottom How far to move the bottom side upwards
+     * @param left How far to move the left side to the right
      */
     shrink(top: number, right: number, bottom: number, left: number): RoundedRect
     static name: string
@@ -4976,42 +5271,56 @@ class ShaderArgsBuilder {
      * Sets the value of the uniform `idx`.
      * 
      * The uniform must be of bool type.
+     * @param idx index of the uniform
+     * @param value value to set the uniform to
      */
     setBool(idx: number, value: boolean): void
     /**
      * Sets the value of the uniform `idx`.
      * 
      * The uniform must be of float type.
+     * @param idx index of the uniform
+     * @param value value to set the uniform to
      */
     setFloat(idx: number, value: number): void
     /**
      * Sets the value of the uniform `idx`.
      * 
      * The uniform must be of int type.
+     * @param idx index of the uniform
+     * @param value value to set the uniform to
      */
     setInt(idx: number, value: number): void
     /**
      * Sets the value of the uniform `idx`.
      * 
      * The uniform must be of uint type.
+     * @param idx index of the uniform
+     * @param value value to set the uniform to
      */
     setUint(idx: number, value: number): void
     /**
      * Sets the value of the uniform `idx`.
      * 
      * The uniform must be of vec2 type.
+     * @param idx index of the uniform
+     * @param value value to set the uniform too
      */
     setVec2(idx: number, value: Graphene.Vec2): void
     /**
      * Sets the value of the uniform `idx`.
      * 
      * The uniform must be of vec3 type.
+     * @param idx index of the uniform
+     * @param value value to set the uniform too
      */
     setVec3(idx: number, value: Graphene.Vec3): void
     /**
      * Sets the value of the uniform `idx`.
      * 
      * The uniform must be of vec4 type.
+     * @param idx index of the uniform
+     * @param value value to set the uniform too
      */
     setVec4(idx: number, value: Graphene.Vec4): void
     /**
@@ -5045,25 +5354,26 @@ class Shadow {
     /**
      * the color of the shadow
      */
-    readonly color: Gdk.RGBA
+    color: Gdk.RGBA
     /**
      * the horizontal offset of the shadow
      */
-    readonly dx: number
+    dx: number
     /**
      * the vertical offset of the shadow
      */
-    readonly dy: number
+    dy: number
     /**
      * the radius of the shadow
      */
-    readonly radius: number
+    radius: number
     static name: string
 }
 class Transform {
     /* Methods of Gsk-4.0.Gsk.Transform */
     /**
      * Checks two transforms for equality.
+     * @param second the second transform
      */
     equal(second?: Transform | null): boolean
     /**
@@ -5082,6 +5392,7 @@ class Transform {
     invert(): Transform | null
     /**
      * Multiplies `next` with the given `matrix`.
+     * @param matrix the matrix to multiply `next` with
      */
     matrix(matrix: Graphene.Matrix): Transform
     /**
@@ -5091,6 +5402,7 @@ class Transform {
      * scaling points with positive Z values away from the origin, and
      * those with negative Z values towards the origin. Points
      * on the z=0 plane are unchanged.
+     * @param depth distance of the z=0 plane. Lower values give a more   flattened pyramid and therefore a more pronounced   perspective effect.
      */
     perspective(depth: number): Transform
     /**
@@ -5099,6 +5411,7 @@ class Transform {
      * 
      * The result of this function can later be parsed with
      * [func`Gsk`.Transform.parse].
+     * @param string The string to print into
      */
     print(string: GLib.String): void
     /**
@@ -5107,26 +5420,36 @@ class Transform {
     ref(): Transform | null
     /**
      * Rotates `next` `angle` degrees in 2D - or in 3D-speak, around the z axis.
+     * @param angle the rotation angle, in degrees (clockwise)
      */
     rotate(angle: number): Transform | null
     /**
      * Rotates `next` `angle` degrees around `axis`.
      * 
      * For a rotation in 2D space, use [method`Gsk`.Transform.rotate]
+     * @param angle the rotation angle, in degrees (clockwise)
+     * @param axis The rotation axis
      */
     rotate3d(angle: number, axis: Graphene.Vec3): Transform | null
     /**
      * Scales `next` in 2-dimensional space by the given factors.
      * 
      * Use [method`Gsk`.Transform.scale_3d] to scale in all 3 dimensions.
+     * @param factorX scaling factor on the X axis
+     * @param factorY scaling factor on the Y axis
      */
     scale(factorX: number, factorY: number): Transform | null
     /**
      * Scales `next` by the given factors.
+     * @param factorX scaling factor on the X axis
+     * @param factorY scaling factor on the Y axis
+     * @param factorZ scaling factor on the Z axis
      */
     scale3d(factorX: number, factorY: number, factorZ: number): Transform | null
     /**
      * Applies a skew transform.
+     * @param skewX skew factor, in degrees, on the X axis
+     * @param skewY skew factor, in degrees, on the Y axis
      */
     skew(skewX: number, skewY: number): Transform | null
     /**
@@ -5215,24 +5538,29 @@ class Transform {
     toTranslate(): [ /* outDx */ number, /* outDy */ number ]
     /**
      * Applies all the operations from `other` to `next`.
+     * @param other Transform to apply
      */
     transform(other?: Transform | null): Transform | null
     /**
      * Transforms a `graphene_rect_t` using the given transform `self`.
      * 
      * The result is the bounding box containing the coplanar quad.
+     * @param rect a `graphene_rect_t`
      */
     transformBounds(rect: Graphene.Rect): /* outRect */ Graphene.Rect
     /**
      * Transforms a `graphene_point_t` using the given transform `self`.
+     * @param point a `graphene_point_t`
      */
     transformPoint(point: Graphene.Point): /* outPoint */ Graphene.Point
     /**
      * Translates `next` in 2-dimensional space by `point`.
+     * @param point the point to translate the transform by
      */
     translate(point: Graphene.Point): Transform | null
     /**
      * Translates `next` by `point`.
+     * @param point the point to translate the transform by
      */
     translate3d(point: Graphene.Point3D): Transform | null
     /**
@@ -5256,6 +5584,7 @@ class Transform {
      * 
      * If `string` does not describe a valid transform, %FALSE is
      * returned and %NULL is put in `out_transform`.
+     * @param string the string to parse
      */
     static parse(string: string): [ /* returnType */ boolean, /* outTransform */ Transform ]
 }

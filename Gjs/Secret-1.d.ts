@@ -309,6 +309,12 @@ function password_store_binary_sync(schema: Schema | null, attributes: GLib.Hash
 function password_store_sync(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, password: string, cancellable?: Gio.Cancellable | null): boolean
 function password_wipe(password?: string | null): void
 class Backend {
+    /* Properties of Secret-1.Secret.Backend */
+    /**
+     * A set of flags describing which parts of the secret backend have
+     * been initialized.
+     */
+    readonly flags: ServiceFlags
     /* Methods of Gio-2.0.Gio.AsyncInitable */
     /**
      * Starts asynchronous initialization of the object implementing the
@@ -347,16 +353,21 @@ class Backend {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Virtual methods of Secret-1.Secret.Backend */
@@ -407,11 +418,15 @@ class Backend {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     static name: string
@@ -425,10 +440,14 @@ class Backend {
      * ensure are initialized, then those will be initialized before completing.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param flags flags for which service functionality to ensure is initialized
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static get(flags: BackendFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to get a #SecretBackend.
+     * @param result the asynchronous result passed to the callback
      */
     static get_finish(result: Gio.AsyncResult): Backend
 }
@@ -491,10 +510,13 @@ class Retrievable {
      * password or some other secret binary value.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     retrieve_secret(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to retrieve the secret value of this object.
+     * @param result asynchronous result passed to callback
      */
     retrieve_secret_finish(result: Gio.AsyncResult): Value | null
     /**
@@ -505,6 +527,7 @@ class Retrievable {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param cancellable optional cancellation object
      */
     retrieve_secret_sync(cancellable?: Gio.Cancellable | null): Value | null
     /* Virtual methods of Secret-1.Secret.Retrievable */
@@ -515,10 +538,13 @@ class Retrievable {
      * password or some other secret binary value.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     vfunc_retrieve_secret(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to retrieve the secret value of this object.
+     * @param result asynchronous result passed to callback
      */
     vfunc_retrieve_secret_finish(result: Gio.AsyncResult): Value | null
     static name: string
@@ -562,6 +588,11 @@ class Collection {
      */
     created: number
     /**
+     * A set of flags describing which parts of the secret collection have
+     * been initialized.
+     */
+    readonly flags: CollectionFlags
+    /**
      * The human readable label for the collection.
      * 
      * Setting this property will result in the label of the collection being
@@ -581,7 +612,23 @@ class Collection {
      * collection was last modified.
      */
     modified: number
+    /**
+     * The [class`Service]` object that this collection is associated with and
+     * uses to interact with the actual D-Bus Secret Service.
+     */
+    readonly service: Service
     /* Properties of Gio-2.0.Gio.DBusProxy */
+    /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
     /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
@@ -593,6 +640,10 @@ class Collection {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -621,13 +672,25 @@ class Collection {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Secret-1.Secret.Collection */
     /**
      * Delete this collection.
@@ -635,10 +698,13 @@ class Collection {
      * This method returns immediately and completes asynchronously. The secret
      * service may prompt the user. [method`Service`.prompt] will be used to handle
      * any prompts that show up.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     delete(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete operation to delete this collection.
+     * @param result asynchronous result passed to the callback
      */
     delete_finish(result: Gio.AsyncResult): boolean
     /**
@@ -647,6 +713,7 @@ class Collection {
      * This method may block indefinitely and should not be used in user interface
      * threads. The secret service may prompt the user. [method`Service`.prompt] will
      * be used to handle any prompts that show up.
+     * @param cancellable optional cancellation object
      */
     delete_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -700,11 +767,14 @@ class Collection {
      * have already been loaded.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     load_items(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to ensure that the #SecretCollection proxy
      * has loaded all the items present in the Secret Service.
+     * @param result the asynchronous result passed to the callback
      */
     load_items_finish(result: Gio.AsyncResult): boolean
     /**
@@ -717,6 +787,7 @@ class Collection {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param cancellable optional cancellation object
      */
     load_items_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -743,10 +814,16 @@ class Collection {
      * their secret values loaded and available via [method`Item`.get_secret].
      * 
      * This function returns immediately and completes asynchronously.
+     * @param schema the schema for the attributes
+     * @param attributes search for items matching these attributes
+     * @param flags search option flags
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     search(schema: Schema | null, attributes: GLib.HashTable, flags: SearchFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to search for items in a collection.
+     * @param result asynchronous result passed to callback
      */
     search_finish(result: Gio.AsyncResult): Item[]
     /**
@@ -766,16 +843,24 @@ class Collection {
      * 
      * This function may block indefinitely. Use the asynchronous version
      * in user interface threads.
+     * @param schema the schema for the attributes
+     * @param attributes search for items matching these attributes
+     * @param flags search option flags
+     * @param cancellable optional cancellation object
      */
     search_sync(schema: Schema | null, attributes: GLib.HashTable, flags: SearchFlags, cancellable?: Gio.Cancellable | null): Item[]
     /**
      * Set the label of this collection.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param label a new label
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     set_label(label: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to set the label of this collection.
+     * @param result asynchronous result passed to callback
      */
     set_label_finish(result: Gio.AsyncResult): boolean
     /**
@@ -783,6 +868,8 @@ class Collection {
      * 
      * This function may block indefinitely. Use the asynchronous version
      * in user interface threads.
+     * @param label a new label
+     * @param cancellable optional cancellation object
      */
     set_label_sync(label: string, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of Gio-2.0.Gio.DBusProxy */
@@ -831,10 +918,17 @@ class Collection {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -874,22 +968,41 @@ class Collection {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -899,6 +1012,7 @@ class Collection {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -986,6 +1100,8 @@ class Collection {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -994,12 +1110,14 @@ class Collection {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1037,6 +1155,10 @@ class Collection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1047,6 +1169,12 @@ class Collection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1070,6 +1198,7 @@ class Collection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1089,11 +1218,14 @@ class Collection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1101,6 +1233,8 @@ class Collection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1118,6 +1252,7 @@ class Collection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1163,6 +1298,7 @@ class Collection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1206,15 +1342,20 @@ class Collection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1255,6 +1396,7 @@ class Collection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1289,6 +1431,7 @@ class Collection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -1329,16 +1472,21 @@ class Collection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -1355,6 +1503,7 @@ class Collection {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1397,6 +1546,7 @@ class Collection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Secret-1.Secret.Collection */
@@ -1437,11 +1587,15 @@ class Collection {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1457,6 +1611,7 @@ class Collection {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -1498,6 +1653,7 @@ class Collection {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Gio-2.0.Gio.DBusProxy */
@@ -1520,6 +1676,7 @@ class Collection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1537,6 +1694,8 @@ class Collection {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: Collection, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: Collection, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -1547,6 +1706,9 @@ class Collection {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: Collection, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: Collection, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -1580,24 +1742,41 @@ class Collection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::created", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::created", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::flags", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::flags", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::label", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::locked", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::locked", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::modified", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modified", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::service", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-bus-type", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: Collection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1621,10 +1800,17 @@ class Collection {
      * 
      * If `service` is %NULL, then [func`Service`.get] will be called to get the
      * default [class`Service]` proxy.
+     * @param service a secret service object
+     * @param label label for the new collection
+     * @param alias alias to assign to the collection
+     * @param flags currently unused
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static create(service: Service | null, label: string, alias: string | null, flags: CollectionCreateFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish operation to create a new collection in the secret service.
+     * @param result the asynchronous result passed to the callback
      */
     static create_finish(result: Gio.AsyncResult): Collection
     /**
@@ -1642,6 +1828,11 @@ class Collection {
      * 
      * If `service` is %NULL, then [func`Service`.get_sync] will be called to get the
      * default [class`Service]` proxy.
+     * @param service a secret service object
+     * @param label label for the new collection
+     * @param alias alias to assign to the collection
+     * @param flags currently unused
+     * @param cancellable optional cancellation object
      */
     static create_sync(service: Service | null, label: string, alias: string | null, flags: CollectionCreateFlags, cancellable?: Gio.Cancellable | null): Collection
     /**
@@ -1652,11 +1843,17 @@ class Collection {
      * default [class`Service]` proxy.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param service a secret service object
+     * @param alias the alias to lookup
+     * @param flags options for the collection initialization
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static for_alias(service: Service | null, alias: string, flags: CollectionFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation to lookup which collection is assigned
      * to an alias.
+     * @param result asynchronous result passed to callback
      */
     static for_alias_finish(result: Gio.AsyncResult): Collection
     /**
@@ -1667,6 +1864,10 @@ class Collection {
      * default [class`Service]` proxy.
      * 
      * This method may block and should not be used in user interface threads.
+     * @param service a secret service object
+     * @param alias the alias to lookup
+     * @param flags options for the collection initialization
+     * @param cancellable optional cancellation object
      */
     static for_alias_sync(service: Service | null, alias: string, flags: CollectionFlags, cancellable?: Gio.Cancellable | null): Collection
     /**
@@ -1676,12 +1877,21 @@ class Collection {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1724,6 +1934,11 @@ interface Item_ConstructProps extends Gio.DBusProxy_ConstructProps {
 class Item {
     /* Properties of Secret-1.Secret.Item */
     /**
+     * A set of flags describing which parts of the secret item have
+     * been initialized.
+     */
+    readonly flags: ItemFlags
+    /**
      * Whether the item is locked or not.
      * 
      * An item may not be independently lockable separate from other items in
@@ -1733,7 +1948,23 @@ class Item {
      * [method`Service`.unlock] functions.
      */
     readonly locked: boolean
+    /**
+     * The [class`Service]` object that this item is associated with and
+     * uses to interact with the actual D-Bus Secret Service.
+     */
+    readonly service: Service
     /* Properties of Gio-2.0.Gio.DBusProxy */
+    /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
     /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
@@ -1745,6 +1976,10 @@ class Item {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -1773,11 +2008,23 @@ class Item {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Properties of Secret-1.Secret.Retrievable */
     /**
      * The attributes set on this item.
@@ -1801,7 +2048,7 @@ class Item {
      */
     modified: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Secret-1.Secret.Item */
     /**
      * Delete this item.
@@ -1809,10 +2056,13 @@ class Item {
      * This method returns immediately and completes asynchronously. The secret
      * service may prompt the user. [method`Service`.prompt] will be used to handle
      * any prompts that show up.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     delete(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to delete the secret item.
+     * @param result asynchronous result passed to the callback
      */
     delete_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1821,6 +2071,7 @@ class Item {
      * This method may block indefinitely and should not be used in user
      * interface threads. The secret service may prompt the user.
      * [method`Service`.prompt] will be used to handle any prompts that show up.
+     * @param cancellable optional cancellation object
      */
     delete_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1894,6 +2145,8 @@ class Item {
      * This function will fail if the secret item is locked.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     load_secret(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1901,6 +2154,7 @@ class Item {
      * 
      * The newly loaded secret value can be accessed by calling
      * [method`Item`.get_secret].
+     * @param result asynchronous result passed to callback
      */
     load_secret_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1911,6 +2165,7 @@ class Item {
      * 
      * This function may block indefinitely. Use the asynchronous version
      * in user interface threads.
+     * @param cancellable optional cancellation object
      */
     load_secret_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1931,10 +2186,15 @@ class Item {
      * or transferred securely by the secret service.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param schema the schema for the attributes
+     * @param attributes a new set of attributes
+     * @param cancellable optional cancellation object
+     * @param callback called when the asynchronous operation completes
      */
     set_attributes(schema: Schema | null, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete operation to set the attributes of this item.
+     * @param result asynchronous result passed to the callback
      */
     set_attributes_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1946,16 +2206,23 @@ class Item {
      * 
      * This function may block indefinitely. Use the asynchronous version
      * in user interface threads.
+     * @param schema the schema for the attributes
+     * @param attributes a new set of attributes
+     * @param cancellable optional cancellation object
      */
     set_attributes_sync(schema: Schema | null, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Set the label of this item.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param label a new label
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     set_label(label: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to set the label of this collection.
+     * @param result asynchronous result passed to callback
      */
     set_label_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1963,6 +2230,8 @@ class Item {
      * 
      * This function may block indefinitely. Use the asynchronous version
      * in user interface threads.
+     * @param label a new label
+     * @param cancellable optional cancellation object
      */
     set_label_sync(label: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1972,10 +2241,14 @@ class Item {
      * other secret binary value.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param value a new secret value
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     set_secret(value: Value, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to set the secret value of this item.
+     * @param result asynchronous result passed to callback
      */
     set_secret_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1986,6 +2259,8 @@ class Item {
      * 
      * This function may block indefinitely. Use the asynchronous version
      * in user interface threads.
+     * @param value a new secret value
+     * @param cancellable optional cancellation object
      */
     set_secret_sync(value: Value, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of Gio-2.0.Gio.DBusProxy */
@@ -2034,10 +2309,17 @@ class Item {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -2077,22 +2359,41 @@ class Item {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -2102,6 +2403,7 @@ class Item {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -2189,6 +2491,8 @@ class Item {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -2197,12 +2501,14 @@ class Item {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2240,6 +2546,10 @@ class Item {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2250,6 +2560,12 @@ class Item {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2273,6 +2589,7 @@ class Item {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2292,11 +2609,14 @@ class Item {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2304,6 +2624,8 @@ class Item {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2321,6 +2643,7 @@ class Item {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2366,6 +2689,7 @@ class Item {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2409,15 +2733,20 @@ class Item {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2458,6 +2787,7 @@ class Item {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2492,6 +2822,7 @@ class Item {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -2532,16 +2863,21 @@ class Item {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -2558,6 +2894,7 @@ class Item {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -2600,6 +2937,7 @@ class Item {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of Secret-1.Secret.Retrievable */
@@ -2610,10 +2948,13 @@ class Item {
      * password or some other secret binary value.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     retrieve_secret(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to retrieve the secret value of this object.
+     * @param result asynchronous result passed to callback
      */
     retrieve_secret_finish(result: Gio.AsyncResult): Value | null
     /**
@@ -2624,6 +2965,7 @@ class Item {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param cancellable optional cancellation object
      */
     retrieve_secret_sync(cancellable?: Gio.Cancellable | null): Value | null
     /* Virtual methods of Secret-1.Secret.Item */
@@ -2664,11 +3006,15 @@ class Item {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -2684,6 +3030,7 @@ class Item {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -2725,6 +3072,7 @@ class Item {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2734,10 +3082,13 @@ class Item {
      * password or some other secret binary value.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     vfunc_retrieve_secret(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to retrieve the secret value of this object.
+     * @param result asynchronous result passed to callback
      */
     vfunc_retrieve_secret_finish(result: Gio.AsyncResult): Value | null
     /* Virtual methods of Gio-2.0.Gio.DBusProxy */
@@ -2760,6 +3111,7 @@ class Item {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2777,6 +3129,8 @@ class Item {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: Item, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: Item, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -2787,6 +3141,9 @@ class Item {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: Item, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: Item, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -2820,18 +3177,35 @@ class Item {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::flags", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::flags", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::locked", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::locked", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::service", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-bus-type", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::attributes", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::attributes", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::created", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
@@ -2858,10 +3232,19 @@ class Item {
      * This method may block indefinitely and should not be used in user interface
      * threads. The secret service may prompt the user. [method`Service`.prompt]
      * will be used to handle any prompts that are required.
+     * @param collection a secret collection to create this item in
+     * @param schema the schema for the attributes
+     * @param attributes attributes for the new item
+     * @param label label for the new item
+     * @param value secret value for the new item
+     * @param flags flags for the creation of the new item
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static create(collection: Collection, schema: Schema | null, attributes: GLib.HashTable, label: string, value: Value, flags: ItemCreateFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish operation to create a new item in the secret service.
+     * @param result the asynchronous result passed to the callback
      */
     static create_finish(result: Gio.AsyncResult): Item
     /**
@@ -2874,6 +3257,13 @@ class Item {
      * This method may block indefinitely and should not be used in user interface
      * threads. The secret service may prompt the user. [method`Service`.prompt]
      * will be used to handle any prompts that are required.
+     * @param collection a secret collection to create this item in
+     * @param schema the schema for the attributes
+     * @param attributes attributes for the new item
+     * @param label label for the new item
+     * @param value secret value for the new item
+     * @param flags flags for the creation of the new item
+     * @param cancellable optional cancellation object
      */
     static create_sync(collection: Collection, schema: Schema | null, attributes: GLib.HashTable, label: string, value: Value, flags: ItemCreateFlags, cancellable?: Gio.Cancellable | null): Item
     /**
@@ -2882,6 +3272,9 @@ class Item {
      * The `items` must all have the same [property`Item:`service] property.
      * 
      * This function returns immediately and completes asynchronously.
+     * @param items the items to retrieve secrets for
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static load_secrets(items: Item[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2889,6 +3282,7 @@ class Item {
      * secret items stored in the service.
      * 
      * Items that are locked will not have their secrets loaded.
+     * @param result asynchronous result passed to callback
      */
     static load_secrets_finish(result: Gio.AsyncResult): boolean
     /**
@@ -2900,6 +3294,8 @@ class Item {
      * threads.
      * 
      * Items that are locked will not have their secrets loaded.
+     * @param items the items to retrieve secrets for
+     * @param cancellable optional cancellation object
      */
     static load_secrets_sync(items: Item[], cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2909,12 +3305,21 @@ class Item {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -2923,6 +3328,17 @@ interface Prompt_ConstructProps extends Gio.DBusProxy_ConstructProps {
 }
 class Prompt {
     /* Properties of Gio-2.0.Gio.DBusProxy */
+    /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
     /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
@@ -2934,6 +3350,10 @@ class Prompt {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -2962,13 +3382,25 @@ class Prompt {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Secret-1.Secret.Prompt */
     /**
      * Runs a prompt and performs the prompting.
@@ -2982,6 +3414,10 @@ class Prompt {
      * depending on this should degrade gracefully.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param window_id string form of XWindow id for parent window to be transient for
+     * @param return_type the variant type of the prompt result
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     perform(window_id: string | null, return_type: GLib.VariantType, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -2990,6 +3426,7 @@ class Prompt {
      * Returns a variant result if the prompt was completed and not dismissed. The
      * type of result depends on the action the prompt is completing, and is
      * defined in the Secret Service DBus API specification.
+     * @param result the asynchronous result passed to the callback
      */
     perform_finish(result: Gio.AsyncResult): GLib.Variant
     /**
@@ -3007,6 +3444,9 @@ class Prompt {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param window_id string form of XWindow id for parent window to be transient for
+     * @param cancellable optional cancellation object
+     * @param return_type the variant type of the prompt result
      */
     perform_sync(window_id: string | null, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType): GLib.Variant
     /**
@@ -3026,6 +3466,9 @@ class Prompt {
      * thread, this means the user interface will remain responsive. Care should be
      * taken that appropriate user interface actions are disabled while running the
      * prompt.
+     * @param window_id string form of XWindow id for parent window to be transient for
+     * @param cancellable optional cancellation object
+     * @param return_type the variant type of the prompt result
      */
     run(window_id: string | null, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType): GLib.Variant
     /* Methods of Gio-2.0.Gio.DBusProxy */
@@ -3074,10 +3517,17 @@ class Prompt {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -3117,22 +3567,41 @@ class Prompt {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -3142,6 +3611,7 @@ class Prompt {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -3229,6 +3699,8 @@ class Prompt {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -3237,12 +3709,14 @@ class Prompt {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3280,6 +3754,10 @@ class Prompt {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3290,6 +3768,12 @@ class Prompt {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3313,6 +3797,7 @@ class Prompt {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3332,11 +3817,14 @@ class Prompt {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3344,6 +3832,8 @@ class Prompt {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3361,6 +3851,7 @@ class Prompt {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3406,6 +3897,7 @@ class Prompt {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3449,15 +3941,20 @@ class Prompt {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3498,6 +3995,7 @@ class Prompt {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3532,6 +4030,7 @@ class Prompt {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -3572,16 +4071,21 @@ class Prompt {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -3598,6 +4102,7 @@ class Prompt {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -3640,6 +4145,7 @@ class Prompt {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Secret-1.Secret.Prompt */
@@ -3680,11 +4186,15 @@ class Prompt {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -3700,6 +4210,7 @@ class Prompt {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -3741,6 +4252,7 @@ class Prompt {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Gio-2.0.Gio.DBusProxy */
@@ -3763,6 +4275,7 @@ class Prompt {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3780,6 +4293,8 @@ class Prompt {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: Prompt, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: Prompt, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -3790,6 +4305,9 @@ class Prompt {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: Prompt, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: Prompt, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -3823,16 +4341,29 @@ class Prompt {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-bus-type", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: Prompt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3848,12 +4379,21 @@ class Prompt {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -3869,6 +4409,17 @@ interface Service_ConstructProps extends Gio.DBusProxy_ConstructProps {
 class Service {
     /* Properties of Gio-2.0.Gio.DBusProxy */
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly g_bus_type: Gio.BusType
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly g_connection: Gio.DBusConnection
+    /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
      * g_dbus_proxy_call_sync() functions.
@@ -3879,6 +4430,10 @@ class Service {
      * %G_MAXINT, then no timeout is used.
      */
     g_default_timeout: number
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly g_flags: Gio.DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -3907,13 +4462,31 @@ class Service {
      */
     g_interface_info: Gio.DBusInterfaceInfo
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly g_interface_name: string
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly g_name: string
+    /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
     readonly g_name_owner: string
+    /**
+     * The object path the proxy is for.
+     */
+    readonly g_object_path: string
+    /* Properties of Secret-1.Secret.Backend */
+    /**
+     * A set of flags describing which parts of the secret backend have
+     * been initialized.
+     */
+    readonly flags: ServiceFlags
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Secret-1.Secret.Service */
     /**
      * Remove unlocked items which match the attributes from the secret service.
@@ -3924,11 +4497,16 @@ class Service {
      * the default [class`Service]` proxy.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param schema the schema for the attributes
+     * @param attributes the attribute keys and values
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     clear(schema: Schema | null, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish asynchronous operation to remove items from the secret
      * service.
+     * @param result the asynchronous result passed to the callback
      */
     clear_finish(result: Gio.AsyncResult): boolean
     /**
@@ -3941,6 +4519,9 @@ class Service {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param schema the schema for the attributes
+     * @param attributes the attribute keys and values
+     * @param cancellable optional cancellation object
      */
     clear_sync(schema: Schema | null, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3963,6 +4544,11 @@ class Service {
      * This method may block indefinitely and should not be used in user interface
      * threads. The secret service may prompt the user. [method`Service`.prompt]
      * will be used to handle any prompts that are required.
+     * @param collection_path the D-Bus path of the collection in which to create item
+     * @param properties hash table of D-Bus properties   for the new collection
+     * @param value the secret value to store in the item
+     * @param flags flags for the creation of the new item
+     * @param cancellable optional cancellation object
      */
     create_item_dbus_path_sync(collection_path: string, properties: GLib.HashTable, value: Value, flags: ItemCreateFlags, cancellable?: Gio.Cancellable | null): string
     /**
@@ -3973,6 +4559,7 @@ class Service {
      * 
      * A session must have already been established by the [class`Service]`, and
      * the encoded secret must be valid for that session.
+     * @param value the encoded secret
      */
     decode_dbus_secret(value: GLib.Variant): Value
     /**
@@ -3982,6 +4569,7 @@ class Service {
      * The resulting [struct`GLib`.Variant] will have a `(oayays)` signature.
      * 
      * A session must have already been established by the [class`Service]`.
+     * @param value the secret value
      */
     encode_dbus_secret(value: Value): GLib.Variant
     /**
@@ -3996,11 +4584,14 @@ class Service {
      * by the time you get the #SecretService proxy.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     ensure_session(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation to ensure that the #SecretService proxy
      * has established a session with the Secret Service.
+     * @param result the asynchronous result passed to the callback
      */
     ensure_session_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4016,6 +4607,7 @@ class Service {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param cancellable optional cancellation object
      */
     ensure_session_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4074,11 +4666,14 @@ class Service {
      * loaded by the time you get the #SecretService proxy.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     load_collections(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to ensure that the #SecretService proxy
      * has loaded all the collections present in the Secret Service.
+     * @param result the asynchronous result passed to the callback
      */
     load_collections_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4093,6 +4688,7 @@ class Service {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param cancellable optional cancellation object
      */
     load_collections_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4107,6 +4703,9 @@ class Service {
      * This method returns immediately and completes asynchronously. The secret
      * service may prompt the user. [method`Service`.prompt] will be used to handle
      * any prompts that show up.
+     * @param objects the items or collections to lock
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     lock(objects: Gio.DBusProxy[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -4115,6 +4714,7 @@ class Service {
      * 
      * The secret service may not be able to lock items individually, and may
      * lock an entire collection instead.
+     * @param result asynchronous result passed to the callback
      */
     lock_finish(result: Gio.AsyncResult): [ /* returnType */ number, /* locked */ Gio.DBusProxy[] | null ]
     /**
@@ -4129,6 +4729,8 @@ class Service {
      * This method may block indefinitely and should not be used in user
      * interface threads. The secret service may prompt the user.
      * [method`Service`.prompt] will be used to handle any prompts that show up.
+     * @param objects the items or collections to lock
+     * @param cancellable optional cancellation object
      */
     lock_sync(objects: Gio.DBusProxy[], cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* locked */ Gio.DBusProxy[] | null ]
     /**
@@ -4140,12 +4742,17 @@ class Service {
      * the default [class`Service]` proxy.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param schema the schema for the attributes
+     * @param attributes the attribute keys and values
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     lookup(schema: Schema | null, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish asynchronous operation to lookup a secret value in the secret service.
      * 
      * If no secret is found then %NULL is returned.
+     * @param result the asynchronous result passed to the callback
      */
     lookup_finish(result: Gio.AsyncResult): Value
     /**
@@ -4158,6 +4765,9 @@ class Service {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param schema the schema for the attributes
+     * @param attributes the attribute keys and values
+     * @param cancellable optional cancellation object
      */
     lookup_sync(schema: Schema | null, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null): Value
     /**
@@ -4169,6 +4779,10 @@ class Service {
      * Override the #SecretServiceClass [vfunc`Service`.prompt_async] virtual method
      * to change the behavior of the prompting. The default behavior is to simply
      * run [method`Prompt`.perform] on the prompt.
+     * @param prompt the prompt
+     * @param return_type the variant type of the prompt result
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     prompt(prompt: Prompt, return_type?: GLib.VariantType | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -4177,6 +4791,7 @@ class Service {
      * Returns a variant result if the prompt was completed and not dismissed. The
      * type of result depends on the action the prompt is completing, and is defined
      * in the Secret Service DBus API specification.
+     * @param result the asynchronous result passed to the callback
      */
     prompt_finish(result: Gio.AsyncResult): GLib.Variant
     /**
@@ -4193,6 +4808,9 @@ class Service {
      * Override the #SecretServiceClass [vfunc`Service`.prompt_sync] virtual method
      * to change the behavior of the prompting. The default behavior is to simply
      * run [method`Prompt`.perform_sync] on the prompt with a %NULL `window_id`.
+     * @param prompt the prompt
+     * @param cancellable optional cancellation object
+     * @param return_type the variant type of the prompt result
      */
     prompt_sync(prompt: Prompt, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType): GLib.Variant
     /**
@@ -4216,10 +4834,16 @@ class Service {
      * their secret values loaded and available via [method`Item`.get_secret].
      * 
      * This function returns immediately and completes asynchronously.
+     * @param schema the schema for the attributes
+     * @param attributes search for items matching these attributes
+     * @param flags search option flags
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     search(schema: Schema | null, attributes: GLib.HashTable, flags: SearchFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to search for items.
+     * @param result asynchronous result passed to callback
      */
     search_finish(result: Gio.AsyncResult): Item[]
     /**
@@ -4246,6 +4870,10 @@ class Service {
      * 
      * This function may block indefinitely. Use the asynchronous version
      * in user interface threads.
+     * @param schema the schema for the attributes
+     * @param attributes search for items matching these attributes
+     * @param flags search option flags
+     * @param cancellable optional cancellation object
      */
     search_sync(schema: Schema | null, attributes: GLib.HashTable, flags: SearchFlags, cancellable?: Gio.Cancellable | null): Item[]
     /**
@@ -4257,10 +4885,15 @@ class Service {
      * the default [class`Service]` proxy.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param alias the alias to assign the collection to
+     * @param collection the collection to assign to the alias
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     set_alias(alias: string, collection?: Collection | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation to assign a collection to an alias.
+     * @param result asynchronous result passed to callback
      */
     set_alias_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4271,6 +4904,9 @@ class Service {
      * the default [class`Service]` proxy.
      * 
      * This method may block and should not be used in user interface threads.
+     * @param alias the alias to assign the collection to
+     * @param collection the collection to assign to the alias
+     * @param cancellable optional cancellation object
      */
     set_alias_sync(alias: string, collection?: Collection | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4289,10 +4925,18 @@ class Service {
      * collection, which doesn't get stored across login sessions.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param schema the schema to use to check attributes
+     * @param attributes the attribute keys and values
+     * @param collection a collection alias, or D-Bus object path of the   collection where to store the secret
+     * @param label label for the secret
+     * @param value the secret value
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     store(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, value: Value, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish asynchronous operation to store a secret value in the secret service.
+     * @param result the asynchronous result passed to the callback
      */
     store_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4312,6 +4956,12 @@ class Service {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param schema the schema for the attributes
+     * @param attributes the attribute keys and values
+     * @param collection a collection alias, or D-Bus object path of the   collection where to store the secret
+     * @param label label for the secret
+     * @param value the secret value
+     * @param cancellable optional cancellation object
      */
     store_sync(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, value: Value, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4326,6 +4976,9 @@ class Service {
      * This method may block indefinitely and should not be used in user
      * interface threads. The secret service may prompt the user.
      * [method`Service`.prompt] will be used to handle any prompts that show up.
+     * @param objects the items or collections to unlock
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     unlock(objects: Gio.DBusProxy[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -4334,6 +4987,7 @@ class Service {
      * 
      * The secret service may not be able to unlock items individually, and may
      * unlock an entire collection instead.
+     * @param result asynchronous result passed to the callback
      */
     unlock_finish(result: Gio.AsyncResult): [ /* returnType */ number, /* unlocked */ Gio.DBusProxy[] | null ]
     /**
@@ -4348,6 +5002,8 @@ class Service {
      * This method may block indefinitely and should not be used in user
      * interface threads. The secret service may prompt the user.
      * [method`Service`.prompt] will be used to handle any prompts that show up.
+     * @param objects the items or collections to unlock
+     * @param cancellable optional cancellation object
      */
     unlock_sync(objects: Gio.DBusProxy[], cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* unlocked */ Gio.DBusProxy[] | null ]
     /* Methods of Gio-2.0.Gio.DBusProxy */
@@ -4396,10 +5052,17 @@ class Service {
      * 
      * If `callback` is %NULL then the D-Bus method call message will be sent with
      * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
      */
     call_finish(res: Gio.AsyncResult): GLib.Variant
     /**
@@ -4439,22 +5102,41 @@ class Service {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
      * then the return value is checked against the return type.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, cancellable?: Gio.Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
     call_with_unix_fd_list(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
      */
     call_with_unix_fd_list_finish(res: Gio.AsyncResult): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
      * Like g_dbus_proxy_call_sync() but also takes and returns #GUnixFDList objects.
      * 
      * This method is only available on UNIX.
+     * @param method_name Name of method to invoke.
+     * @param parameters A #GVariant tuple with parameters for the signal              or %NULL if not passing parameters.
+     * @param flags Flags from the #GDBusCallFlags enumeration.
+     * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+     * @param fd_list A #GUnixFDList or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     call_with_unix_fd_list_sync(method_name: string, parameters: GLib.Variant | null, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list?: Gio.UnixFDList | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ GLib.Variant, /* out_fd_list */ Gio.UnixFDList | null ]
     /**
@@ -4464,6 +5146,7 @@ class Service {
      * If `proxy` has an expected interface (see
      * #GDBusProxy:g-interface-info) and `property_name` is referenced by
      * it, then `value` is checked against the type of the property.
+     * @param property_name Property name.
      */
     get_cached_property(property_name: string): GLib.Variant | null
     /**
@@ -4551,6 +5234,8 @@ class Service {
      * it is more efficient to only transmit the delta using e.g. signals
      * `ChatroomParticipantJoined(String name)` and
      * `ChatroomParticipantParted(String name)`.
+     * @param property_name Property name.
+     * @param value Value for the property or %NULL to remove it from the cache.
      */
     set_cached_property(property_name: string, value?: GLib.Variant | null): void
     /**
@@ -4559,12 +5244,14 @@ class Service {
      * g_dbus_proxy_call_sync() functions.
      * 
      * See the #GDBusProxy:g-default-timeout property for more details.
+     * @param timeout_msec Timeout in milliseconds.
      */
     set_default_timeout(timeout_msec: number): void
     /**
      * Ensure that interactions with `proxy` conform to the given
      * interface. See the #GDBusProxy:g-interface-info property for more
      * details.
+     * @param info Minimum interface this proxy conforms to    or %NULL to unset.
      */
     set_interface_info(info?: Gio.DBusInterfaceInfo | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4602,6 +5289,10 @@ class Service {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4612,6 +5303,12 @@ class Service {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4635,6 +5332,7 @@ class Service {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4654,11 +5352,14 @@ class Service {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4666,6 +5367,8 @@ class Service {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4683,6 +5386,7 @@ class Service {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4728,6 +5432,7 @@ class Service {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4771,15 +5476,20 @@ class Service {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4820,6 +5530,7 @@ class Service {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4854,6 +5565,7 @@ class Service {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -4894,16 +5606,21 @@ class Service {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.DBusInterface */
@@ -4920,6 +5637,7 @@ class Service {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     set_object(object?: Gio.DBusObject | null): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -4962,6 +5680,7 @@ class Service {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Secret-1.Secret.Service */
@@ -4984,6 +5703,7 @@ class Service {
      * Returns a variant result if the prompt was completed and not dismissed. The
      * type of result depends on the action the prompt is completing, and is defined
      * in the Secret Service DBus API specification.
+     * @param result the asynchronous result passed to the callback
      */
     vfunc_prompt_finish(result: Gio.AsyncResult): GLib.Variant
     /**
@@ -5000,6 +5720,9 @@ class Service {
      * Override the #SecretServiceClass [vfunc`Service`.prompt_sync] virtual method
      * to change the behavior of the prompting. The default behavior is to simply
      * run [method`Prompt`.perform_sync] on the prompt with a %NULL `window_id`.
+     * @param prompt the prompt
+     * @param cancellable optional cancellation object
+     * @param return_type the variant type of the prompt result
      */
     vfunc_prompt_sync(prompt: Prompt, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType): GLib.Variant
     /**
@@ -5039,11 +5762,15 @@ class Service {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -5059,6 +5786,7 @@ class Service {
      * Sets the #GDBusObject for `interface_` to `object`.
      * 
      * Note that `interface_` will hold a weak reference to `object`.
+     * @param object A #GDBusObject or %NULL.
      */
     vfunc_set_object(object?: Gio.DBusObject | null): void
     /**
@@ -5100,6 +5828,7 @@ class Service {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     vfunc_clear(schema: Schema, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
@@ -5131,6 +5860,7 @@ class Service {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5148,6 +5878,8 @@ class Service {
      * This signal corresponds to the
      * `PropertiesChanged` D-Bus signal on the
      * `org.freedesktop.DBus.Properties` interface.
+     * @param changed_properties A #GVariant containing the properties that changed (type: `a{sv}`)
+     * @param invalidated_properties A %NULL terminated array of properties that was invalidated
      */
     connect(sigName: "g-properties-changed", callback: (($obj: Service, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
     connect_after(sigName: "g-properties-changed", callback: (($obj: Service, changed_properties: GLib.Variant, invalidated_properties: string[]) => void)): number
@@ -5158,6 +5890,9 @@ class Service {
      * Since 2.72 this signal supports detailed connections. You can connect to
      * the detailed signal `g-signal::x` in order to receive callbacks only when
      * signal `x` is received from the remote object.
+     * @param sender_name The sender of the signal or %NULL if the connection is not a bus connection.
+     * @param signal_name The name of the signal.
+     * @param parameters A #GVariant tuple with parameters for the signal.
      */
     connect(sigName: "g-signal", callback: (($obj: Service, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
     connect_after(sigName: "g-signal", callback: (($obj: Service, sender_name: string | null, signal_name: string, parameters: GLib.Variant) => void)): number
@@ -5191,16 +5926,31 @@ class Service {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::g-bus-type", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-bus-type", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-connection", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-connection", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-default-timeout", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-default-timeout", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-flags", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-flags", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-interface-info", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-interface-info", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-interface-name", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-interface-name", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-name", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-name", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::g-name-owner", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::g-name-owner", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::g-object-path", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::g-object-path", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::flags", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::flags", callback: (($obj: Service, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5230,6 +5980,9 @@ class Service {
      * ensure are initialized, then those will be initialized before completing.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param flags flags for which service functionality to ensure is initialized
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static get(flags: ServiceFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /* Function overloads */
@@ -5242,16 +5995,21 @@ class Service {
      * ensure are initialized, then those will be initialized before completing.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param flags flags for which service functionality to ensure is initialized
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static get(flags: BackendFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to get a #SecretService proxy for the
      * Secret Service.
+     * @param result the asynchronous result passed to the callback
      */
     static get_finish(result: Gio.AsyncResult): Service
     /* Function overloads */
     /**
      * Complete an asynchronous operation to get a #SecretBackend.
+     * @param result the asynchronous result passed to the callback
      */
     static get_finish(result: Gio.AsyncResult): Backend
     /**
@@ -5264,6 +6022,8 @@ class Service {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param flags flags for which service functionality to ensure is initialized
+     * @param cancellable optional cancellation object
      */
     static get_sync(flags: ServiceFlags, cancellable?: Gio.Cancellable | null): Service
     /**
@@ -5280,11 +6040,17 @@ class Service {
      * If `service_bus_name` is %NULL then the default is used.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param service_gtype the GType of the new secret service
+     * @param service_bus_name the D-Bus service name of the secret service
+     * @param flags flags for which service functionality to ensure is initialized
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static open(service_gtype: GObject.Type, service_bus_name: string | null, flags: ServiceFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to create a new #SecretService proxy for
      * the Secret Service.
+     * @param result the asynchronous result passed to the callback
      */
     static open_finish(result: Gio.AsyncResult): Service
     /**
@@ -5302,6 +6068,10 @@ class Service {
      * 
      * This method may block indefinitely and should not be used in user interface
      * threads.
+     * @param service_gtype the GType of the new secret service
+     * @param service_bus_name the D-Bus service name of the secret service
+     * @param flags flags for which service functionality to ensure is initialized
+     * @param cancellable optional cancellation object
      */
     static open_sync(service_gtype: GObject.Type, service_bus_name: string | null, flags: ServiceFlags, cancellable?: Gio.Cancellable | null): Service
     /**
@@ -5311,12 +6081,21 @@ class Service {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -5326,16 +6105,16 @@ abstract class BackendInterface {
     /**
      * the parent interface
      */
-    readonly parent_iface: GObject.TypeInterface
-    readonly ensure_for_flags: (self: Backend, flags: BackendFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly ensure_for_flags_finish: (self: Backend, result: Gio.AsyncResult) => boolean
-    readonly store: (self: Backend, schema: Schema, attributes: GLib.HashTable, collection: string, label: string, value: Value, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly store_finish: (self: Backend, result: Gio.AsyncResult) => boolean
-    readonly lookup: (self: Backend, schema: Schema, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly lookup_finish: (self: Backend, result: Gio.AsyncResult) => Value
-    readonly clear: (self: Backend, schema: Schema, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly clear_finish: (self: Backend, result: Gio.AsyncResult) => boolean
-    readonly search: (self: Backend, schema: Schema, attributes: GLib.HashTable, flags: SearchFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    parent_iface: GObject.TypeInterface
+    ensure_for_flags: (self: Backend, flags: BackendFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    ensure_for_flags_finish: (self: Backend, result: Gio.AsyncResult) => boolean
+    store: (self: Backend, schema: Schema, attributes: GLib.HashTable, collection: string, label: string, value: Value, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    store_finish: (self: Backend, result: Gio.AsyncResult) => boolean
+    lookup: (self: Backend, schema: Schema, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    lookup_finish: (self: Backend, result: Gio.AsyncResult) => Value
+    clear: (self: Backend, schema: Schema, attributes: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    clear_finish: (self: Backend, result: Gio.AsyncResult) => boolean
+    search: (self: Backend, schema: Schema, attributes: GLib.HashTable, flags: SearchFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
     static name: string
 }
 abstract class CollectionClass {
@@ -5343,7 +6122,7 @@ abstract class CollectionClass {
     /**
      * the parent class
      */
-    readonly parent_class: Gio.DBusProxyClass
+    parent_class: Gio.DBusProxyClass
     static name: string
 }
 class CollectionPrivate {
@@ -5354,7 +6133,7 @@ abstract class ItemClass {
     /**
      * the parent class
      */
-    readonly parent_class: Gio.DBusProxyClass
+    parent_class: Gio.DBusProxyClass
     static name: string
 }
 class ItemPrivate {
@@ -5365,7 +6144,7 @@ abstract class PromptClass {
     /**
      * the parent class
      */
-    readonly parent_class: Gio.DBusProxyClass
+    parent_class: Gio.DBusProxyClass
     static name: string
 }
 class PromptPrivate {
@@ -5376,9 +6155,9 @@ abstract class RetrievableInterface {
     /**
      * the parent interface
      */
-    readonly parent_iface: GObject.TypeInterface
-    readonly retrieve_secret: (self: Retrievable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly retrieve_secret_finish: (self: Retrievable, result: Gio.AsyncResult) => Value | null
+    parent_iface: GObject.TypeInterface
+    retrieve_secret: (self: Retrievable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    retrieve_secret_finish: (self: Retrievable, result: Gio.AsyncResult) => Value | null
     static name: string
 }
 class Schema {
@@ -5386,15 +6165,15 @@ class Schema {
     /**
      * the dotted name of the schema
      */
-    readonly name: string
+    name: string
     /**
      * flags for the schema
      */
-    readonly flags: SchemaFlags
+    flags: SchemaFlags
     /**
      * the attribute names and types of those attributes
      */
-    readonly attributes: SchemaAttribute[]
+    attributes: SchemaAttribute[]
     /* Methods of Secret-1.Secret.Schema */
     /**
      * Adds a reference to the #SecretSchema.
@@ -5425,11 +6204,11 @@ class SchemaAttribute {
     /**
      * name of the attribute
      */
-    readonly name: string
+    name: string
     /**
      * the type of the attribute
      */
-    readonly type: SchemaAttributeType
+    type: SchemaAttributeType
     static name: string
 }
 abstract class ServiceClass {
@@ -5437,22 +6216,22 @@ abstract class ServiceClass {
     /**
      * the parent class
      */
-    readonly parent_class: Gio.DBusProxyClass
+    parent_class: Gio.DBusProxyClass
     /**
      * the [alias`GLib`.Type] of the [class`Collection]` objects instantiated
      *   by the #SecretService proxy
      */
-    readonly collection_gtype: GObject.Type
+    collection_gtype: GObject.Type
     /**
      * the [alias`GLib`.Type] of the [class`Item]` objects instantiated by the
      *   #SecretService proxy
      */
-    readonly item_gtype: GObject.Type
-    readonly prompt_sync: (self: Service, prompt: Prompt, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType) => GLib.Variant
-    readonly prompt_async: (self: Service, prompt: Prompt, return_type: GLib.VariantType, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly prompt_finish: (self: Service, result: Gio.AsyncResult) => GLib.Variant
-    readonly get_collection_gtype: (self: Service) => GObject.Type
-    readonly get_item_gtype: (self: Service) => GObject.Type
+    item_gtype: GObject.Type
+    prompt_sync: (self: Service, prompt: Prompt, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType) => GLib.Variant
+    prompt_async: (self: Service, prompt: Prompt, return_type: GLib.VariantType, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    prompt_finish: (self: Service, result: Gio.AsyncResult) => GLib.Variant
+    get_collection_gtype: (self: Service) => GObject.Type
+    get_item_gtype: (self: Service) => GObject.Type
     static name: string
 }
 class ServicePrivate {
@@ -5496,6 +6275,7 @@ class Value {
     /**
      * Unreference a #SecretValue and steal the secret data in
      * #SecretValue as nonpageable memory.
+     * @param length the length of the secret
      */
     unref_to_password(length: number): [ /* returnType */ string, /* length */ number ]
     static name: string

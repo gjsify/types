@@ -1474,11 +1474,11 @@ interface pvl_findf {
 }
 class array {
     /* Fields of ICal-3.0.ICal.array */
-    readonly elementSize: number
-    readonly incrementSize: number
-    readonly numElements: number
-    readonly spaceAllocated: number
-    readonly chunks: object
+    elementSize: number
+    incrementSize: number
+    numElements: number
+    spaceAllocated: number
+    chunks: object
     static name: string
 }
 class attach {
@@ -1486,8 +1486,8 @@ class attach {
 }
 class compiter {
     /* Fields of ICal-3.0.ICal.compiter */
-    readonly kind: component_kind
-    readonly iter: pvl_elem
+    kind: component_kind
+    iter: pvl_elem
     static name: string
 }
 class component {
@@ -1495,24 +1495,24 @@ class component {
 }
 class datetimeperiodtype {
     /* Fields of ICal-3.0.ICal.datetimeperiodtype */
-    readonly time: object
-    readonly period: object
+    time: object
+    period: object
     static name: string
 }
 class durationtype {
     /* Fields of ICal-3.0.ICal.durationtype */
-    readonly isNeg: number
-    readonly days: number
-    readonly weeks: number
-    readonly hours: number
-    readonly minutes: number
-    readonly seconds: number
+    isNeg: number
+    days: number
+    weeks: number
+    hours: number
+    minutes: number
+    seconds: number
     static name: string
 }
 class geotype {
     /* Fields of ICal-3.0.ICal.geotype */
-    readonly lat: number
-    readonly lon: number
+    lat: number
+    lon: number
     static name: string
 }
 class parameter {
@@ -1523,9 +1523,9 @@ class parser {
 }
 class periodtype {
     /* Fields of ICal-3.0.ICal.periodtype */
-    readonly start: object
-    readonly end: object
-    readonly duration: object
+    start: object
+    end: object
+    duration: object
     static name: string
 }
 class property {
@@ -1536,10 +1536,10 @@ class pvl_elem {
 }
 class pvl_elem_t {
     /* Fields of ICal-3.0.ICal.pvl_elem_t */
-    readonly mAGIC: number
-    readonly d: object
-    readonly next: object
-    readonly prior: object
+    mAGIC: number
+    d: object
+    next: object
+    prior: object
     static name: string
 }
 class pvl_list {
@@ -1550,83 +1550,83 @@ class recur_iterator {
 }
 class recurrencetype {
     /* Fields of ICal-3.0.ICal.recurrencetype */
-    readonly freq: recurrencetype_frequency
-    readonly until: object
-    readonly count: number
-    readonly interval: number
-    readonly weekStart: recurrencetype_weekday
-    readonly bySecond: number[]
-    readonly byMinute: number[]
-    readonly byHour: number[]
-    readonly byDay: number[]
-    readonly byMonthDay: number[]
-    readonly byYearDay: number[]
-    readonly byWeekNo: number[]
-    readonly byMonth: number[]
-    readonly bySetPos: number[]
-    readonly rscale: string
-    readonly skip: recurrencetype_skip
+    freq: recurrencetype_frequency
+    until: object
+    count: number
+    interval: number
+    weekStart: recurrencetype_weekday
+    bySecond: number[]
+    byMinute: number[]
+    byHour: number[]
+    byDay: number[]
+    byMonthDay: number[]
+    byYearDay: number[]
+    byWeekNo: number[]
+    byMonth: number[]
+    bySetPos: number[]
+    rscale: string
+    skip: recurrencetype_skip
     static name: string
 }
 class reqstattype {
     /* Fields of ICal-3.0.ICal.reqstattype */
-    readonly code: requeststatus
-    readonly desc: string
-    readonly debug: string
+    code: requeststatus
+    desc: string
+    debug: string
     static name: string
 }
 class sspm_action_map {
     /* Fields of ICal-3.0.ICal.sspm_action_map */
-    readonly major: object
-    readonly minor: object
-    readonly newPart: () => object
-    readonly addLine: (part: object, header: object, line: string, size: number) => void
-    readonly endPart: (part: object) => object
-    readonly freePart: (part: object) => void
+    major: object
+    minor: object
+    newPart: () => object
+    addLine: (part: object, header: object, line: string, size: number) => void
+    endPart: (part: object) => object
+    freePart: (part: object) => void
     static name: string
 }
 class sspm_header {
     /* Fields of ICal-3.0.ICal.sspm_header */
-    readonly def: number
-    readonly boundary: string
-    readonly major: object
-    readonly minor: object
-    readonly minorText: string
-    readonly contentTypeParams: string
-    readonly charset: string
-    readonly encoding: object
-    readonly filename: string
-    readonly contentId: string
-    readonly error: object
-    readonly errorText: string
+    def: number
+    boundary: string
+    major: object
+    minor: object
+    minorText: string
+    contentTypeParams: string
+    charset: string
+    encoding: object
+    filename: string
+    contentId: string
+    error: object
+    errorText: string
     static name: string
 }
 class sspm_part {
     /* Fields of ICal-3.0.ICal.sspm_part */
-    readonly header: object
-    readonly level: number
-    readonly dataSize: number
-    readonly data: object
+    header: object
+    level: number
+    dataSize: number
+    data: object
     static name: string
 }
 class time_span {
     /* Fields of ICal-3.0.ICal.time_span */
-    readonly start: number
-    readonly end: number
-    readonly isBusy: number
+    start: number
+    end: number
+    isBusy: number
     static name: string
 }
 class timetype {
     /* Fields of ICal-3.0.ICal.timetype */
-    readonly year: number
-    readonly month: number
-    readonly day: number
-    readonly hour: number
-    readonly minute: number
-    readonly second: number
-    readonly isDate: number
-    readonly isDaylight: number
-    readonly zone: timezone
+    year: number
+    month: number
+    day: number
+    hour: number
+    minute: number
+    second: number
+    isDate: number
+    isDaylight: number
+    zone: timezone
     static name: string
 }
 class timezone {
@@ -1634,28 +1634,28 @@ class timezone {
 }
 class timezonephase {
     /* Fields of ICal-3.0.ICal.timezonephase */
-    readonly tzname: string
-    readonly isStdandard: number
-    readonly dtstart: object
-    readonly offsetto: number
-    readonly tzoffsetfrom: number
-    readonly comment: string
-    readonly rdate: object
-    readonly rrule: string
+    tzname: string
+    isStdandard: number
+    dtstart: object
+    offsetto: number
+    tzoffsetfrom: number
+    comment: string
+    rdate: object
+    rrule: string
     static name: string
 }
 class timezonetype {
     /* Fields of ICal-3.0.ICal.timezonetype */
-    readonly tzid: string
-    readonly lastMod: object
-    readonly tzurl: string
-    readonly phases: object
+    tzid: string
+    lastMod: object
+    tzurl: string
+    phases: object
     static name: string
 }
 class triggertype {
     /* Fields of ICal-3.0.ICal.triggertype */
-    readonly time: object
-    readonly duration: object
+    time: object
+    duration: object
     static name: string
 }
 class value {

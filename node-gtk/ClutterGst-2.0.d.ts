@@ -210,12 +210,14 @@ class Player {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_player_get_audio_streams().
+     * @param index the index of the audio stream
      */
     setAudioStream(index: number): void
     setBufferingMode(mode: BufferingMode): void
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     setSeekFlags(flags: SeekFlags): void
     /**
@@ -223,6 +225,7 @@ class Player {
      * in the list returned by clutter_gst_player_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index the index of the subtitles track
      */
     setSubtitleTrack(index: number): void
     /**
@@ -231,6 +234,7 @@ class Player {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param userAgent the user agent
      */
     setUserAgent(userAgent: string): void
     /* Methods of Clutter-1.0.Clutter.Media */
@@ -272,10 +276,12 @@ class Player {
     getUri(): string
     /**
      * Sets the playback volume of `media` to `volume`.
+     * @param volume the volume as a double between 0.0 and 1.0
      */
     setAudioVolume(volume: number): void
     /**
      * Sets the source of `media` using a file path.
+     * @param filename A filename
      */
     setFilename(filename: string): void
     /**
@@ -286,11 +292,13 @@ class Player {
      * signal on the #ClutterMedia:playing property and then retrieve the
      * current state with clutter_media_get_playing(). ClutterGstVideoTexture
      * in clutter-gst is an example of such an asynchronous implementation.
+     * @param playing %TRUE to start playing
      */
     setPlaying(playing: boolean): void
     /**
      * Sets the playback progress of `media`. The `progress` is
      * a normalized value between 0.0 (begin) and 1.0 (end).
+     * @param progress the progress of the playback, between 0.0 and 1.0
      */
     setProgress(progress: number): void
     /**
@@ -303,20 +311,25 @@ class Player {
      *   clutter_media_set_subtitle_font_name (media, "Sans 24pt");
      * ```
      * 
+     * @param fontName a font name, or %NULL to set the default font name
      */
     setSubtitleFontName(fontName: string): void
     /**
      * Sets the location of a subtitle file to display while playing `media`.
+     * @param uri the URI of a subtitle file
      */
     setSubtitleUri(uri: string): void
     /**
      * Sets the URI of `media` to `uri`.
+     * @param uri the URI of the media stream
      */
     setUri(uri: string): void
     /* Signals of ClutterGst-2.0.ClutterGst.Player */
     /**
      * The ::download-buffering signal is emitted each time their an
      * update about the buffering of the current media.
+     * @param start start position of the buffering
+     * @param stop start position of the buffering
      */
     connect(sigName: "download-buffering", callback: ((start: number, stop: number) => void)): number
     on(sigName: "download-buffering", callback: (start: number, stop: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -334,6 +347,7 @@ class Player {
     emit(sigName: "eos"): void
     /**
      * The ::error signal is emitted each time an error occurred.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: ((error: GLib.Error) => void)): number
     on(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -347,6 +361,7 @@ class Player {
      * set/get_property of #GObjectClass. You should call this
      * function at the end of the class_init method of the class
      * implementing #ClutterGstPlayer.
+     * @param objectClass a #GObjectClass
      */
     static classInit(objectClass: GObject.ObjectClass): void
 }
@@ -453,128 +468,128 @@ class VideoSink {
      */
     tsOffset: number
     /* Fields of GstBase-1.0.GstBase.BaseSink */
-    readonly element: Gst.Element
-    readonly sinkpad: Gst.Pad
-    readonly padMode: Gst.PadMode
-    readonly offset: number
-    readonly canActivatePull: boolean
-    readonly canActivatePush: boolean
-    readonly prerollLock: GLib.Mutex
-    readonly prerollCond: GLib.Cond
-    readonly eos: boolean
-    readonly needPreroll: boolean
-    readonly havePreroll: boolean
-    readonly playingAsync: boolean
-    readonly haveNewsegment: boolean
-    readonly segment: Gst.Segment
+    element: Gst.Element
+    sinkpad: Gst.Pad
+    padMode: Gst.PadMode
+    offset: number
+    canActivatePull: boolean
+    canActivatePush: boolean
+    prerollLock: GLib.Mutex
+    prerollCond: GLib.Cond
+    eos: boolean
+    needPreroll: boolean
+    havePreroll: boolean
+    playingAsync: boolean
+    haveNewsegment: boolean
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-1.0.GstBase.BaseSink */
     /**
      * If the `sink` spawns its own thread for pulling buffers from upstream it
@@ -583,6 +598,7 @@ class VideoSink {
      * until the element state is changed.
      * 
      * This function should be called with the PREROLL_LOCK held.
+     * @param obj the mini object that caused the preroll
      */
     doPreroll(obj: Gst.MiniObject): Gst.FlowReturn
     /**
@@ -684,24 +700,29 @@ class VideoSink {
      * disabled, the sink will immediately go to PAUSED instead of waiting for a
      * preroll buffer. This feature is useful if the sink does not synchronize
      * against the clock or when it is dealing with sparse streams.
+     * @param enabled the new async value.
      */
     setAsyncEnabled(enabled: boolean): void
     /**
      * Set the number of bytes that the sink will pull when it is operating in pull
      * mode.
+     * @param blocksize the blocksize in bytes
      */
     setBlocksize(blocksize: number): void
     /**
      * Configure `sink` to drop buffers which are outside the current segment
+     * @param dropOutOfSegment drop buffers outside the segment
      */
     setDropOutOfSegment(dropOutOfSegment: boolean): void
     /**
      * Configures `sink` to store the last received sample in the last-sample
      * property.
+     * @param enabled the new enable-last-sample value.
      */
     setLastSampleEnabled(enabled: boolean): void
     /**
      * Set the maximum amount of bits per second that the sink will render.
+     * @param maxBitrate the max_bitrate in bits per second
      */
     setMaxBitrate(maxBitrate: number): void
     /**
@@ -709,6 +730,7 @@ class VideoSink {
      * used to decide if a buffer should be dropped or not based on the
      * buffer timestamp and the current clock time. A value of -1 means
      * an unlimited time.
+     * @param maxLateness the new max lateness value.
      */
     setMaxLateness(maxLateness: number): void
     /**
@@ -717,10 +739,12 @@ class VideoSink {
      * pipelines.
      * 
      * This function is usually called by subclasses.
+     * @param processingDeadline the new processing deadline in nanoseconds.
      */
     setProcessingDeadline(processingDeadline: Gst.ClockTime): void
     /**
      * Configures `sink` to send Quality-of-Service events upstream.
+     * @param enabled the new qos value.
      */
     setQosEnabled(enabled: boolean): void
     /**
@@ -733,6 +757,7 @@ class VideoSink {
      * other sinks will adjust their latency to delay the rendering of their media.
      * 
      * This function is usually called by subclasses.
+     * @param delay the new delay
      */
     setRenderDelay(delay: Gst.ClockTime): void
     /**
@@ -741,12 +766,14 @@ class VideoSink {
      * possible. If `sync` is %TRUE, the timestamps of the incoming
      * buffers will be used to schedule the exact render time of its
      * contents.
+     * @param sync the new sync value.
      */
     setSync(sync: boolean): void
     /**
      * Set the time that will be inserted between rendered buffers. This
      * can be used to control the maximum buffers per second that the sink
      * will render.
+     * @param throttle the throttle time in nanoseconds
      */
     setThrottleTime(throttle: number): void
     /**
@@ -754,6 +781,7 @@ class VideoSink {
      * render buffers earlier than their timestamp. A positive value will delay
      * rendering. This function can be used to fix playback of badly timestamped
      * buffers.
+     * @param offset the new offset
      */
     setTsOffset(offset: Gst.ClockTimeDiff): void
     /**
@@ -768,6 +796,7 @@ class VideoSink {
      * 
      * The `time` argument should be the running_time of when the timeout should happen
      * and will be adjusted with any latency and offset configured in the sink.
+     * @param time the running_time to be reached
      */
     wait(time: Gst.ClockTime): [ /* returnType */ Gst.FlowReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -786,6 +815,7 @@ class VideoSink {
      * The `time` argument should be the running_time of when this method should
      * return and is not adjusted with any latency or offset configured in the
      * sink.
+     * @param time the running_time to be reached
      */
     waitClock(time: Gst.ClockTime): [ /* returnType */ Gst.ClockReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -830,6 +860,7 @@ class VideoSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -845,6 +876,7 @@ class VideoSink {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -852,6 +884,7 @@ class VideoSink {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -868,6 +901,7 @@ class VideoSink {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -883,6 +917,7 @@ class VideoSink {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -892,6 +927,7 @@ class VideoSink {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -901,6 +937,7 @@ class VideoSink {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -931,21 +968,26 @@ class VideoSink {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -971,10 +1013,12 @@ class VideoSink {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -986,6 +1030,7 @@ class VideoSink {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -1019,11 +1064,13 @@ class VideoSink {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -1068,6 +1115,7 @@ class VideoSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -1079,6 +1127,8 @@ class VideoSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -1086,6 +1136,9 @@ class VideoSink {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -1093,6 +1146,10 @@ class VideoSink {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -1106,6 +1163,10 @@ class VideoSink {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -1134,6 +1195,14 @@ class VideoSink {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -1141,6 +1210,15 @@ class VideoSink {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -1159,6 +1237,7 @@ class VideoSink {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -1175,10 +1254,14 @@ class VideoSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -1190,6 +1273,7 @@ class VideoSink {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -1202,6 +1286,7 @@ class VideoSink {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -1213,6 +1298,7 @@ class VideoSink {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -1232,6 +1318,7 @@ class VideoSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -1241,6 +1328,9 @@ class VideoSink {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -1256,6 +1346,7 @@ class VideoSink {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -1264,6 +1355,13 @@ class VideoSink {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -1281,6 +1379,9 @@ class VideoSink {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -1292,12 +1393,14 @@ class VideoSink {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -1305,18 +1408,21 @@ class VideoSink {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -1328,6 +1434,7 @@ class VideoSink {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -1343,6 +1450,7 @@ class VideoSink {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -1359,6 +1467,7 @@ class VideoSink {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -1372,12 +1481,16 @@ class VideoSink {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -1387,6 +1500,7 @@ class VideoSink {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1394,11 +1508,14 @@ class VideoSink {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1421,6 +1538,10 @@ class VideoSink {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1446,6 +1567,8 @@ class VideoSink {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1455,16 +1578,19 @@ class VideoSink {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -1480,17 +1606,21 @@ class VideoSink {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -1501,6 +1631,7 @@ class VideoSink {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -1508,11 +1639,13 @@ class VideoSink {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1526,6 +1659,7 @@ class VideoSink {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1579,6 +1713,10 @@ class VideoSink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1589,6 +1727,12 @@ class VideoSink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1612,6 +1756,7 @@ class VideoSink {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1631,11 +1776,14 @@ class VideoSink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1643,6 +1791,8 @@ class VideoSink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1660,6 +1810,7 @@ class VideoSink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1705,6 +1856,7 @@ class VideoSink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1748,15 +1900,20 @@ class VideoSink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1797,6 +1954,7 @@ class VideoSink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1821,20 +1979,31 @@ class VideoSink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of GstVideo-1.0.GstVideo.Navigation */
     /**
      * Sends the indicated command to the navigation interface.
+     * @param command The command to issue
      */
     sendCommand(command: GstVideo.NavigationCommand): void
     sendEvent(structure: Gst.Structure): void
+    /**
+     * Sends an event to the navigation interface.
+     * @param event The event to send
+     */
+    sendEventSimple(event: Gst.Event): void
     sendKeyEvent(event: string, key: string): void
     /**
      * Sends a mouse event to the navigation interface. Mouse event coordinates
      * are sent relative to the display space of the related output area. This is
      * usually the size in pixels of the window associated with the element
      * implementing the #GstNavigation interface.
+     * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
+     * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
      */
     sendMouseEvent(event: string, button: number, x: number, y: number): void
     /**
@@ -1842,6 +2011,10 @@ class VideoSink {
      * are sent relative to the display space of the related output area. This is
      * usually the size in pixels of the window associated with the element
      * implementing the #GstNavigation interface.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
+     * @param deltaX The delta_x coordinate of the mouse event.
+     * @param deltaY The delta_y coordinate of the mouse event.
      */
     sendMouseScrollEvent(x: number, y: number, deltaX: number, deltaY: number): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -1861,6 +2034,7 @@ class VideoSink {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -1869,6 +2043,7 @@ class VideoSink {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -1880,6 +2055,8 @@ class VideoSink {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1915,6 +2092,7 @@ class VideoSink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2009,63 +2187,164 @@ class VideoSink {
     /* Static methods and pseudo-constructors */
     static new(texture: Clutter.Texture): VideoSink
     /**
+     * Try to retrieve x and y coordinates of a #GstNavigation event.
+     * @param event The #GstEvent to inspect.
+     */
+    static eventGetCoordinates(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null ]
+    /**
      * Inspect a #GstEvent and return the #GstNavigationEventType of the event, or
      * #GST_NAVIGATION_EVENT_INVALID if the event is not a #GstNavigation event.
+     * @param event A #GstEvent to inspect.
      */
     static eventGetType(event: Gst.Event): GstVideo.NavigationEventType
     /**
      * Create a new navigation event given navigation command..
+     * @param command The navigation command to use.
      */
     static eventNewCommand(command: GstVideo.NavigationCommand): Gst.Event
     /**
      * Create a new navigation event for the given key press.
+     * @param key A string identifying the key press.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewKeyPress(key: string): Gst.Event
+    static eventNewKeyPress(key: string, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key release.
+     * @param key A string identifying the released key.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewKeyRelease(key: string): Gst.Event
+    static eventNewKeyRelease(key: string, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key mouse button press.
+     * @param button The number of the pressed mouse button.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseButtonPress(button: number, x: number, y: number): Gst.Event
+    static eventNewMouseButtonPress(button: number, x: number, y: number, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key mouse button release.
+     * @param button The number of the released mouse button.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseButtonRelease(button: number, x: number, y: number): Gst.Event
+    static eventNewMouseButtonRelease(button: number, x: number, y: number, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the new mouse location.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseMove(x: number, y: number): Gst.Event
+    static eventNewMouseMove(x: number, y: number, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the mouse scroll.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param deltaX The x component of the scroll movement.
+     * @param deltaY The y component of the scroll movement.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseScroll(x: number, y: number, deltaX: number, deltaY: number): Gst.Event
+    static eventNewMouseScroll(x: number, y: number, deltaX: number, deltaY: number, state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event signalling that all currently active touch
+     * points are cancelled and should be discarded. For example, under Wayland
+     * this event might be sent when a swipe passes the threshold to be recognized
+     * as a gesture by the compositor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchCancel(state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for an added touch point.
+     * @param identifier A number uniquely identifying this touch point. It must stay    unique to this touch point at least until an up event is sent for    the same identifier, or all touch points are cancelled.
+     * @param x The x coordinate of the new touch point.
+     * @param y The y coordinate of the new touch point.
+     * @param pressure Pressure data of the touch point, from 0.0 to 1.0, or NaN if no    data is available.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchDown(identifier: number, x: number, y: number, pressure: number, state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event signalling the end of a touch frame. Touch
+     * frames signal that all previous down, motion and up events not followed by
+     * another touch frame event already should be considered simultaneous.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchFrame(state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for a moved touch point.
+     * @param identifier A number uniquely identifying this touch point. It must    correlate to exactly one previous touch_start event.
+     * @param x The x coordinate of the touch point.
+     * @param y The y coordinate of the touch point.
+     * @param pressure Pressure data of the touch point, from 0.0 to 1.0, or NaN if no    data is available.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchMotion(identifier: number, x: number, y: number, pressure: number, state: GstVideo.NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for a removed touch point.
+     * @param identifier A number uniquely identifying this touch point. It must    correlate to exactly one previous down event, but can be reused    after sending this event.
+     * @param x The x coordinate of the touch point.
+     * @param y The y coordinate of the touch point.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchUp(identifier: number, x: number, y: number, state: GstVideo.NavigationModifierType): Gst.Event
     /**
      * Inspect a #GstNavigation command event and retrieve the enum value of the
      * associated command.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseCommand(event: Gst.Event): [ /* returnType */ boolean, /* command */ GstVideo.NavigationCommand | null ]
+    /**
+     * Note: Modifier keys (as defined in #GstNavigationModifierType)
+     * [press](GST_NAVIGATION_EVENT_KEY_PRESS) and
+     * [release](GST_NAVIGATION_KEY_PRESS) events are generated even if those states are
+     * present on all other related events
+     * @param event A #GstEvent to inspect.
+     */
     static eventParseKeyEvent(event: Gst.Event): [ /* returnType */ boolean, /* key */ string | null ]
     /**
      * Retrieve the details of either a #GstNavigation mouse button press event or
      * a mouse button release event. Determine which type the event is using
      * gst_navigation_event_get_type() to retrieve the #GstNavigationEventType.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseButtonEvent(event: Gst.Event): [ /* returnType */ boolean, /* button */ number | null, /* x */ number | null, /* y */ number | null ]
     /**
      * Inspect a #GstNavigation mouse movement event and extract the coordinates
      * of the event.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseMoveEvent(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null ]
     /**
      * Inspect a #GstNavigation mouse scroll event and extract the coordinates
      * of the event.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseScrollEvent(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* deltaX */ number | null, /* deltaY */ number | null ]
+    static eventParseState(event: Gst.Event, state: GstVideo.NavigationModifierType): boolean
+    /**
+     * Retrieve the details of a #GstNavigation touch-down or touch-motion event.
+     * Determine which type the event is using gst_navigation_event_get_type()
+     * to retrieve the #GstNavigationEventType.
+     * @param event A #GstEvent to inspect.
+     */
+    static eventParseTouchEvent(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number | null, /* x */ number | null, /* y */ number | null, /* pressure */ number | null ]
+    /**
+     * Retrieve the details of a #GstNavigation touch-up event.
+     * @param event A #GstEvent to inspect.
+     */
+    static eventParseTouchUpEvent(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number | null, /* x */ number | null, /* y */ number | null ]
+    /**
+     * Try to set x and y coordinates on a #GstNavigation event. The event must
+     * be writable.
+     * @param event The #GstEvent to modify.
+     * @param x The x coordinate to set.
+     * @param y The y coordinate to set.
+     */
+    static eventSetCoordinates(event: Gst.Event, x: number, y: number): boolean
     /**
      * Check a bus message to see if it is a #GstNavigation event, and return
      * the #GstNavigationMessageType identifying the type of the message if so.
+     * @param message A #GstMessage to inspect.
      */
     static messageGetType(message: Gst.Message): GstVideo.NavigationMessageType
     /**
@@ -2073,43 +2352,55 @@ class VideoSink {
      * #GST_NAVIGATION_MESSAGE_ANGLES_CHANGED for notifying an application
      * that the current angle, or current number of angles available in a
      * multiangle video has changed.
+     * @param src A #GstObject to set as source of the new message.
+     * @param curAngle The currently selected angle.
+     * @param nAngles The number of viewing angles now available.
      */
     static messageNewAnglesChanged(src: Gst.Object, curAngle: number, nAngles: number): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
+     * @param src A #GstObject to set as source of the new message.
      */
     static messageNewCommandsChanged(src: Gst.Object): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_EVENT.
+     * @param src A #GstObject to set as source of the new message.
+     * @param event A navigation #GstEvent
      */
     static messageNewEvent(src: Gst.Object, event: Gst.Event): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_MOUSE_OVER.
+     * @param src A #GstObject to set as source of the new message.
+     * @param active %TRUE if the mouse has entered a clickable area of the display. %FALSE if it over a non-clickable area.
      */
     static messageNewMouseOver(src: Gst.Object, active: boolean): Gst.Message
     /**
      * Parse a #GstNavigation message of type GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
      * and extract the `cur_angle` and `n_angles` parameters.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseAnglesChanged(message: Gst.Message): [ /* returnType */ boolean, /* curAngle */ number | null, /* nAngles */ number | null ]
     /**
      * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_EVENT
      * and extract contained #GstEvent. The caller must unref the `event` when done
      * with it.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseEvent(message: Gst.Message): [ /* returnType */ boolean, /* event */ Gst.Event | null ]
     /**
      * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_MOUSE_OVER
      * and extract the active/inactive flag. If the mouse over event is marked
      * active, it indicates that the mouse is over a clickable area.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseMouseOver(message: Gst.Message): [ /* returnType */ boolean, /* active */ boolean | null ]
     /**
      * Inspect a #GstQuery and return the #GstNavigationQueryType associated with
      * it if it is a #GstNavigation query.
+     * @param query The query to inspect
      */
     static queryGetType(query: Gst.Query): GstVideo.NavigationQueryType
     /**
@@ -2127,25 +2418,34 @@ class VideoSink {
      * Parse the current angle number in the #GstNavigation angles `query` into the
      * #guint pointed to by the `cur_angle` variable, and the number of available
      * angles into the #guint pointed to by the `n_angles` variable.
+     * @param query a #GstQuery
      */
     static queryParseAngles(query: Gst.Query): [ /* returnType */ boolean, /* curAngle */ number | null, /* nAngles */ number | null ]
     /**
      * Parse the number of commands in the #GstNavigation commands `query`.
+     * @param query a #GstQuery
      */
     static queryParseCommandsLength(query: Gst.Query): [ /* returnType */ boolean, /* nCmds */ number | null ]
     /**
      * Parse the #GstNavigation command query and retrieve the `nth` command from
      * it into `cmd`. If the list contains less elements than `nth,` `cmd` will be
      * set to #GST_NAVIGATION_COMMAND_INVALID.
+     * @param query a #GstQuery
+     * @param nth the nth command to retrieve.
      */
     static queryParseCommandsNth(query: Gst.Query, nth: number): [ /* returnType */ boolean, /* cmd */ GstVideo.NavigationCommand | null ]
     /**
      * Set the #GstNavigation angles query result field in `query`.
+     * @param query a #GstQuery
+     * @param curAngle the current viewing angle to set.
+     * @param nAngles the number of viewing angles to set.
      */
     static querySetAngles(query: Gst.Query, curAngle: number, nAngles: number): void
     /**
      * Set the #GstNavigation command query result fields in `query`. The number
      * of commands passed must be equal to `n_commands`.
+     * @param query a #GstQuery
+     * @param cmds An array containing `n_cmds`     `GstNavigationCommand` values.
      */
     static querySetCommandsv(query: Gst.Query, cmds: GstVideo.NavigationCommand[]): void
     static $gtype: GObject.Type
@@ -2201,6 +2501,7 @@ class VideoTexture {
     /* Properties of ClutterGst-2.0.ClutterGst.VideoTexture */
     pixelAspectRatio: Gst.Fraction
     /* Properties of Clutter-1.0.Clutter.Texture */
+    readonly disableSlicing: boolean
     /**
      * The path of the file containing the image data to be displayed by
      * the texture.
@@ -2920,9 +3221,9 @@ class VideoTexture {
     /**
      * #ClutterActorFlags
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of ClutterGst-2.0.ClutterGst.VideoTexture */
     /**
      * Get the current audio stream. The number returned in the index of the
@@ -2965,6 +3266,7 @@ class VideoTexture {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_video_texture_get_audio_streams().
+     * @param index the index of the audio stream
      */
     setAudioStream(index: number): void
     setBufferingMode(mode: BufferingMode): void
@@ -2975,11 +3277,13 @@ class VideoTexture {
      * The default idle material will paint the #ClutterGstVideoTexture in black.
      * If %COGL_INVALID_HANDLE is given as `material` to this function, this
      * default idle material will be used.
+     * @param material the handle of a Cogl material
      */
     setIdleMaterial(material: Cogl.Handle): void
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     setSeekFlags(flags: SeekFlags): void
     /**
@@ -2987,6 +3291,7 @@ class VideoTexture {
      * in the list returned by clutter_gst_video_texture_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index the index of the subtitles track
      */
     setSubtitleTrack(index: number): void
     /**
@@ -2995,6 +3300,7 @@ class VideoTexture {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param userAgent the user agent
      */
     setUserAgent(userAgent: string): void
     /* Methods of Clutter-1.0.Clutter.Texture */
@@ -3067,6 +3373,15 @@ class VideoTexture {
     getSyncSize(): boolean
     /**
      * Updates a sub-region of the pixel data in a #ClutterTexture.
+     * @param data Image data in RGB type colorspace.
+     * @param hasAlpha Set to TRUE if image data has an alpha channel.
+     * @param x X coordinate of upper left corner of region to update.
+     * @param y Y coordinate of upper left corner of region to update.
+     * @param width Width in pixels of region to update.
+     * @param height Height in pixels of region to update.
+     * @param rowstride Distance in bytes between row starts on source buffer.
+     * @param bpp bytes per pixel (Currently only 3 and 4 supported,                        depending on `has_alpha)`
+     * @param flags #ClutterTextureFlags
      */
     setAreaFromRgbData(data: Uint8Array, hasAlpha: boolean, x: number, y: number, width: number, height: number, rowstride: number, bpp: number, flags: Clutter.TextureFlags): boolean
     /**
@@ -3078,12 +3393,14 @@ class VideoTexture {
      * texture. #ClutterTexture requires that the material have a texture
      * layer so you should set one on the material before calling this
      * function.
+     * @param coglMaterial A CoglHandle for a material
      */
     setCoglMaterial(coglMaterial: Cogl.Handle): void
     /**
      * Replaces the underlying COGL texture drawn by this actor with
      * `cogl_tex`. A reference to the texture is taken so if the handle is
      * no longer needed it should be deref'd with cogl_handle_unref.
+     * @param coglTex A CoglHandle for a texture
      */
     setCoglTexture(coglTex: Cogl.Handle): void
     /**
@@ -3095,6 +3412,7 @@ class VideoTexture {
      * %CLUTTER_TEXTURE_QUALITY_HIGH which uses extra texture memory resources to
      * improve scaled down rendering as well (by using mipmaps). The default value
      * is %CLUTTER_TEXTURE_QUALITY_MEDIUM.
+     * @param filterQuality new filter quality value
      */
     setFilterQuality(filterQuality: Clutter.TextureQuality): void
     /**
@@ -3107,10 +3425,18 @@ class VideoTexture {
      * will be emitten when the size of the texture is available and
      * #ClutterTexture::load-finished will be emitted when the image has been
      * loaded or if an error occurred.
+     * @param filename The filename of the image in GLib file name encoding
      */
     setFromFile(filename: string): boolean
     /**
      * Sets #ClutterTexture image data.
+     * @param data image data in RGBA type colorspace.
+     * @param hasAlpha set to %TRUE if image data has an alpha channel.
+     * @param width width in pixels of image data.
+     * @param height height in pixels of image data
+     * @param rowstride distance in bytes between row starts.
+     * @param bpp bytes per pixel (currently only 3 and 4 supported, depending   on the value of `has_alpha)`
+     * @param flags #ClutterTextureFlags
      */
     setFromRgbData(data: Uint8Array, hasAlpha: boolean, width: number, height: number, rowstride: number, bpp: number, flags: Clutter.TextureFlags): boolean
     /**
@@ -3123,11 +3449,16 @@ class VideoTexture {
      * The proper way to convert image data in any YUV colorspace to any
      * RGB colorspace is to use a fragment shader associated with the
      * #ClutterTexture material.
+     * @param data Image data in YUV type colorspace.
+     * @param width Width in pixels of image data.
+     * @param height Height in pixels of image data
+     * @param flags #ClutterTextureFlags
      */
     setFromYuvData(data: Uint8Array, width: number, height: number, flags: Clutter.TextureFlags): boolean
     /**
      * Sets whether `texture` should have a preferred size maintaining
      * the aspect ratio of the underlying image
+     * @param keepAspect %TRUE to maintain aspect ratio
      */
     setKeepAspectRatio(keepAspect: boolean): void
     /**
@@ -3137,6 +3468,7 @@ class VideoTexture {
      * 
      * See the #ClutterTexture:load-async property documentation, and
      * clutter_texture_set_load_data_async().
+     * @param loadAsync %TRUE if the texture should asynchronously load data   from a filename
      */
     setLoadAsync(loadAsync: boolean): void
     /**
@@ -3147,6 +3479,7 @@ class VideoTexture {
      * 
      * See the #ClutterTexture:load-async property documentation, and
      * clutter_texture_set_load_async().
+     * @param loadAsync %TRUE if the texture should asynchronously load data   from a filename
      */
     setLoadDataAsync(loadAsync: boolean): void
     /**
@@ -3161,16 +3494,20 @@ class VideoTexture {
      * Also there is currently no control over the threshold used to
      * determine what value of alpha is considered pickable, and so only
      * fully opaque parts of the texture will react to picking.
+     * @param pickWithAlpha %TRUE if the alpha channel should affect the   picking shape
      */
     setPickWithAlpha(pickWithAlpha: boolean): void
     /**
      * Sets whether the `texture` should repeat horizontally or
      * vertically when the actor size is bigger than the image size
+     * @param repeatX %TRUE if the texture should repeat horizontally
+     * @param repeatY %TRUE if the texture should repeat vertically
      */
     setRepeat(repeatX: boolean, repeatY: boolean): void
     /**
      * Sets whether `texture` should have the same preferred size as the
      * underlying image data.
+     * @param syncSize %TRUE if the texture should have the same size of the    underlying image data
      */
     setSyncSize(syncSize: boolean): void
     /* Methods of Clutter-1.0.Clutter.Actor */
@@ -3182,6 +3519,7 @@ class VideoTexture {
      * The #ClutterActor will hold a reference on `action` until either
      * clutter_actor_remove_action() or clutter_actor_clear_actions()
      * is called
+     * @param action a #ClutterAction
      */
     addAction(action: Clutter.Action): void
     /**
@@ -3196,6 +3534,8 @@ class VideoTexture {
      *   clutter_actor_add_action (self, action);
      * ```
      * 
+     * @param name the name to set on the action
+     * @param action a #ClutterAction
      */
     addActionWithName(name: string, action: Clutter.Action): void
     /**
@@ -3209,6 +3549,7 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
      */
     addChild(child: Clutter.Actor): void
     /**
@@ -3218,6 +3559,7 @@ class VideoTexture {
      * The #ClutterActor will hold a reference on the `constraint` until
      * either clutter_actor_remove_constraint() or
      * clutter_actor_clear_constraints() is called.
+     * @param constraint a #ClutterConstraint
      */
     addConstraint(constraint: Clutter.Constraint): void
     /**
@@ -3232,6 +3574,8 @@ class VideoTexture {
      *   clutter_actor_add_constraint (self, constraint);
      * ```
      * 
+     * @param name the name to set on the constraint
+     * @param constraint a #ClutterConstraint
      */
     addConstraintWithName(name: string, constraint: Clutter.Constraint): void
     /**
@@ -3243,6 +3587,7 @@ class VideoTexture {
      * 
      * Note that as #ClutterEffect is initially unowned,
      * clutter_actor_add_effect() will sink any floating reference on `effect`.
+     * @param effect a #ClutterEffect
      */
     addEffect(effect: Clutter.Effect): void
     /**
@@ -3261,6 +3606,8 @@ class VideoTexture {
      *   clutter_actor_add_effect (self, effect);
      * ```
      * 
+     * @param name the name to set on the effect
+     * @param effect a #ClutterEffect
      */
     addEffectWithName(name: string, effect: Clutter.Effect): void
     /**
@@ -3275,6 +3622,8 @@ class VideoTexture {
      * 
      * This function is usually called implicitly when modifying an animatable
      * property.
+     * @param name the name of the transition to add
+     * @param transition the #ClutterTransition to add
      */
     addTransition(name: string, transition: Clutter.Transition): void
     /**
@@ -3298,6 +3647,8 @@ class VideoTexture {
      * additional information about the allocation, for instance whether
      * the parent has moved with respect to the stage, for example because
      * a grandparent's origin has moved.
+     * @param box new allocation of the actor, in parent-relative coordinates
+     * @param flags flags that control the allocation
      */
     allocate(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -3317,6 +3668,12 @@ class VideoTexture {
      * and #ClutterActor:y-align properties, instead, and just call
      * clutter_actor_allocate() inside their #ClutterActorClass.allocate()
      * implementation.
+     * @param box a #ClutterActorBox, containing the available width and height
+     * @param xAlign the horizontal alignment, between 0 and 1
+     * @param yAlign the vertical alignment, between 0 and 1
+     * @param xFill whether the actor should fill horizontally
+     * @param yFill whether the actor should fill vertically
+     * @param flags allocation flags to be passed to clutter_actor_allocate()
      */
     allocateAlignFill(box: Clutter.ActorBox, xAlign: number, yAlign: number, xFill: boolean, yFill: boolean, flags: Clutter.AllocationFlags): void
     /**
@@ -3373,6 +3730,11 @@ class VideoTexture {
      * This function can be used by fluid layout managers to allocate
      * an actor's preferred size without making it bigger than the area
      * available for the container.
+     * @param x the actor's X coordinate
+     * @param y the actor's Y coordinate
+     * @param availableWidth the maximum available width, or -1 to use the   actor's natural width
+     * @param availableHeight the maximum available height, or -1 to use the   actor's natural height
+     * @param flags flags controlling the allocation
      */
     allocateAvailableSize(x: number, y: number, availableWidth: number, availableHeight: number, flags: Clutter.AllocationFlags): void
     /**
@@ -3388,6 +3750,7 @@ class VideoTexture {
      * This function is not meant to be used by applications. It is also
      * not meant to be used outside the implementation of the
      * #ClutterActorClass.allocate virtual function.
+     * @param flags flags controlling the allocation
      */
     allocatePreferredSize(flags: Clutter.AllocationFlags): void
     /**
@@ -3405,6 +3768,9 @@ class VideoTexture {
      * 
      * Unlike clutter_actor_animate_with_alpha(), this function will
      * not allow you to specify "signal::" names and callbacks.
+     * @param alpha a #ClutterAlpha
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithAlphav(alpha: Clutter.Alpha, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -3422,6 +3788,10 @@ class VideoTexture {
      * 
      * Unlike clutter_actor_animate_with_timeline(), this function
      * will not allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param timeline a #ClutterTimeline
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animateWithTimelinev(mode: number, timeline: Clutter.Timeline, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -3434,6 +3804,10 @@ class VideoTexture {
      * 
      * Unlike clutter_actor_animate(), this function will not
      * allow you to specify "signal::" names and callbacks.
+     * @param mode an animation mode logical id
+     * @param duration duration of the animation, in milliseconds
+     * @param properties a vector    containing the property names to set
+     * @param values a vector containing the    property values to set
      */
     animatev(mode: number, duration: number, properties: string[], values: any[]): Clutter.Animation
     /**
@@ -3445,12 +3819,15 @@ class VideoTexture {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_apply_transform_to_point().
+     * @param ancestor A #ClutterActor ancestor, or %NULL to use the   default #ClutterStage
+     * @param point A point as #ClutterVertex
      */
     applyRelativeTransformToPoint(ancestor: Clutter.Actor | null, point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
      * Transforms `point` in coordinates relative to the actor
      * into screen-relative coordinates with the current actor
      * transformation (i.e. scale, rotation, etc)
+     * @param point A point as #ClutterVertex
      */
     applyTransformToPoint(point: Clutter.Vertex): /* vertex */ Clutter.Vertex
     /**
@@ -3466,6 +3843,8 @@ class VideoTexture {
      * 
      * When a #ClutterActor is bound to a model, adding and removing children
      * directly is undefined behaviour.
+     * @param model a #GListModel
+     * @param createChildFunc a function that creates #ClutterActor instances   from the contents of the `model`
      */
     bindModel(model: Gio.ListModel | null, createChildFunc: Clutter.ActorCreateChildFunc): void
     /**
@@ -3484,6 +3863,7 @@ class VideoTexture {
      * Determines if `descendant` is contained inside `self` (either as an
      * immediate child, or as a deeper descendant). If `self` and
      * `descendant` point to the same actor then it will also return %TRUE.
+     * @param descendant A #ClutterActor, possibly contained in `self`
      */
     contains(descendant: Clutter.Actor): boolean
     /**
@@ -3512,6 +3892,7 @@ class VideoTexture {
      * function you will have to connect to the #ClutterBackend::font-changed
      * and #ClutterBackend::resolution-changed signals, and call
      * pango_layout_context_changed() in response to them.
+     * @param text the text to set on the #PangoLayout, or %NULL
      */
     createPangoLayout(text?: string | null): Pango.Layout
     /**
@@ -3562,6 +3943,8 @@ class VideoTexture {
      * This function is used to emit an event on the main stage.
      * You should rarely need to use this function, except for
      * synthetising events.
+     * @param event a #ClutterEvent
+     * @param capture %TRUE if event in in capture phase, %FALSE otherwise.
      */
     event(event: Clutter.Event, capture: boolean): boolean
     /**
@@ -3593,6 +3976,7 @@ class VideoTexture {
     /**
      * Retrieves the #ClutterAction with the given name in the list
      * of actions applied to `self`
+     * @param name the name of the action to retrieve
      */
     getAction(name: string): Clutter.Action
     /**
@@ -3637,6 +4021,7 @@ class VideoTexture {
      * this case, the coordinates returned will be the coordinates on
      * the stage before the projection is applied. This is different from
      * the behaviour of clutter_actor_get_abs_allocation_vertices().
+     * @param ancestor A #ClutterActor to calculate the vertices   against, or %NULL to use the #ClutterStage
      */
     getAllocationVertices(ancestor?: Clutter.Actor | null): /* verts */ Clutter.Vertex[]
     /**
@@ -3661,6 +4046,7 @@ class VideoTexture {
     /**
      * Retrieves the actor at the given `index_` inside the list of
      * children of `self`.
+     * @param index the position in the list of children
      */
     getChildAtIndex(index: number): Clutter.Actor
     /**
@@ -3684,6 +4070,7 @@ class VideoTexture {
     /**
      * Retrieves the #ClutterConstraint with the given name in the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to retrieve
      */
     getConstraint(name: string): Clutter.Constraint
     /**
@@ -3758,6 +4145,7 @@ class VideoTexture {
     /**
      * Retrieves the #ClutterEffect with the given name in the list
      * of effects applied to `self`
+     * @param name the name of the effect to retrieve
      */
     getEffect(name: string): Clutter.Effect
     /**
@@ -3971,6 +4359,7 @@ class VideoTexture {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forWidth available width to assume in computing desired height,   or a negative value to indicate that no width is defined
      */
     getPreferredHeight(forWidth: number): [ /* minHeightP */ number | null, /* naturalHeightP */ number | null ]
     /**
@@ -3997,6 +4386,7 @@ class VideoTexture {
      * 
      * A request should not incorporate the actor's scale or anchor point;
      * those transformations do not affect layout, only rendering.
+     * @param forHeight available height when computing the preferred width,   or a negative value to indicate that no height is defined
      */
     getPreferredWidth(forHeight: number): [ /* minWidthP */ number | null, /* naturalWidthP */ number | null ]
     /**
@@ -4019,10 +4409,12 @@ class VideoTexture {
     /**
      * Retrieves the angle and center of rotation on the given axis,
      * set using clutter_actor_set_rotation().
+     * @param axis the axis of rotation
      */
     getRotation(axis: Clutter.RotateAxis): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
     /**
      * Retrieves the angle of rotation set by clutter_actor_set_rotation_angle().
+     * @param axis the axis of the rotation
      */
     getRotationAngle(axis: Clutter.RotateAxis): number
     /**
@@ -4096,6 +4488,7 @@ class VideoTexture {
      * the volume of their children. Such containers can query the
      * transformed paint volume of all of its children and union them
      * together using clutter_paint_volume_union().
+     * @param relativeToAncestor A #ClutterActor that is an ancestor of `self`    (or %NULL for the stage)
      */
     getTransformedPaintVolume(relativeToAncestor: Clutter.Actor): Clutter.PaintVolume
     /**
@@ -4149,6 +4542,7 @@ class VideoTexture {
      * If you just want to get notifications of the completion of a transition,
      * you should use the #ClutterActor::transition-stopped signal, using the
      * transition name as the signal detail.
+     * @param name the name of the transition
      */
     getTransition(name: string): Clutter.Transition
     /**
@@ -4317,6 +4711,8 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildAbove(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4332,6 +4728,8 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param index the index
      */
     insertChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -4347,6 +4745,8 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-added signal
      * on `self`.
+     * @param child a #ClutterActor
+     * @param sibling a child of `self,` or %NULL
      */
     insertChildBelow(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4392,6 +4792,7 @@ class VideoTexture {
      * the #ClutterContainer interface.
      * 
      * This function calls clutter_container_lower_child() internally.
+     * @param above A #ClutterActor to lower below
      */
     lower(above?: Clutter.Actor | null): void
     /**
@@ -4416,6 +4817,8 @@ class VideoTexture {
     /**
      * Sets an anchor point for the actor, and adjusts the actor postion so that
      * the relative position of the actor toward its parent remains the same.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     moveAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -4428,6 +4831,7 @@ class VideoTexture {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     moveAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -4438,6 +4842,8 @@ class VideoTexture {
      * it from any layout management. Another way to move an actor is with an
      * anchor point, see clutter_actor_set_anchor_point(), or with an additional
      * translation, using clutter_actor_set_translation().
+     * @param dx Distance to move Actor on X axis.
+     * @param dy Distance to move Actor on Y axis.
      */
     moveBy(dx: number, dy: number): void
     /**
@@ -4449,6 +4855,7 @@ class VideoTexture {
      * 
      * If you want to know whether the actor was explicitly set to expand,
      * use clutter_actor_get_x_expand() or clutter_actor_get_y_expand().
+     * @param orientation the direction of expansion
      */
     needsExpand(orientation: Clutter.Orientation): boolean
     /**
@@ -4542,6 +4949,7 @@ class VideoTexture {
      * 
      * If `clip` is %NULL this function is equivalent to
      * clutter_actor_queue_redraw().
+     * @param clip a rectangular clip region, or %NULL
      */
     queueRedrawWithClip(clip?: cairo.RectangleInt | null): void
     /**
@@ -4559,6 +4967,7 @@ class VideoTexture {
      * the #ClutterContainer interface
      * 
      * This function calls clutter_container_raise_child() internally.
+     * @param below A #ClutterActor to raise above.
      */
     raise(below?: Clutter.Actor | null): void
     /**
@@ -4589,11 +4998,13 @@ class VideoTexture {
      * Removes `action` from the list of actions applied to `self`
      * 
      * The reference held by `self` on the #ClutterAction will be released
+     * @param action a #ClutterAction
      */
     removeAction(action: Clutter.Action): void
     /**
      * Removes the #ClutterAction with the given name from the list
      * of actions applied to `self`
+     * @param name the name of the action to remove
      */
     removeActionByName(name: string): void
     /**
@@ -4621,6 +5032,7 @@ class VideoTexture {
      * 
      * This function will emit the #ClutterContainer::actor-removed
      * signal on `self`.
+     * @param child a #ClutterActor
      */
     removeChild(child: Clutter.Actor): void
     /**
@@ -4631,22 +5043,26 @@ class VideoTexture {
      * Removes `constraint` from the list of constraints applied to `self`
      * 
      * The reference held by `self` on the #ClutterConstraint will be released
+     * @param constraint a #ClutterConstraint
      */
     removeConstraint(constraint: Clutter.Constraint): void
     /**
      * Removes the #ClutterConstraint with the given name from the list
      * of constraints applied to `self`
+     * @param name the name of the constraint to remove
      */
     removeConstraintByName(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
      * The reference held by `self` on the #ClutterEffect will be released
+     * @param effect a #ClutterEffect
      */
     removeEffect(effect: Clutter.Effect): void
     /**
      * Removes the #ClutterEffect with the given name from the list
      * of effects applied to `self`
+     * @param name the name of the effect to remove
      */
     removeEffectByName(name: string): void
     /**
@@ -4657,6 +5073,7 @@ class VideoTexture {
      * 
      * This function releases the reference acquired when the transition
      * was added to the #ClutterActor.
+     * @param name the name of the transition to remove
      */
     removeTransition(name: string): void
     /**
@@ -4672,10 +5089,13 @@ class VideoTexture {
      * removal and addition of the actor from its old parent to the `new_parent`.
      * Thus, it is strongly encouraged to avoid using this function in application
      * code.
+     * @param newParent the new #ClutterActor parent
      */
     reparent(newParent: Clutter.Actor): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
+     * @param oldChild the child of `self` to replace
+     * @param newChild the #ClutterActor to replace `old_child`
      */
     replaceChild(oldChild: Clutter.Actor, newChild: Clutter.Actor): void
     /**
@@ -4768,6 +5188,8 @@ class VideoTexture {
      * }
      * ```
      * 
+     * @param box a #ClutterActorBox
+     * @param flags allocation flags
      */
     setAllocation(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void
     /**
@@ -4775,6 +5197,8 @@ class VideoTexture {
      * coordinate space of an actor to which the actor position within its
      * parent is relative; the default is (0, 0), i.e. the top-left corner
      * of the actor.
+     * @param anchorX X coordinate of the anchor point
+     * @param anchorY Y coordinate of the anchor point
      */
     setAnchorPoint(anchorX: number, anchorY: number): void
     /**
@@ -4786,6 +5210,7 @@ class VideoTexture {
      * example, if you set the anchor point to %CLUTTER_GRAVITY_SOUTH_EAST
      * and later double the size of the actor, the anchor point will move
      * to the bottom right.
+     * @param gravity #ClutterGravity.
      */
     setAnchorPointFromGravity(gravity: Clutter.Gravity): void
     /**
@@ -4798,6 +5223,7 @@ class VideoTexture {
      * #ClutterActor:background-color-set actor property.
      * 
      * The #ClutterActor:background-color property is animatable.
+     * @param color a #ClutterColor, or %NULL to unset a previously  set color
      */
     setBackgroundColor(color?: Clutter.Color | null): void
     /**
@@ -4808,6 +5234,8 @@ class VideoTexture {
      * This function is logically equivalent to removing `child` and using
      * clutter_actor_insert_child_above(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildAboveSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4816,6 +5244,8 @@ class VideoTexture {
      * This function is logically equivalent to removing `child` and
      * calling clutter_actor_insert_child_at_index(), but it will not
      * emit signals or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param index the new index for `child`
      */
     setChildAtIndex(child: Clutter.Actor, index: number): void
     /**
@@ -4826,6 +5256,8 @@ class VideoTexture {
      * This function is logically equivalent to removing `self` and using
      * clutter_actor_insert_child_below(), but it will not emit signals
      * or change state on `child`.
+     * @param child a #ClutterActor child of `self`
+     * @param sibling a #ClutterActor child of `self,` or %NULL
      */
     setChildBelowSibling(child: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -4836,21 +5268,28 @@ class VideoTexture {
      * If `transform` is %NULL, the child transform will be unset.
      * 
      * The #ClutterActor:child-transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL
      */
     setChildTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets clip area for `self`. The clip area is always computed from the
      * upper left corner of the actor, even if the anchor point is set
      * otherwise.
+     * @param xoff X offset of the clip rectangle
+     * @param yoff Y offset of the clip rectangle
+     * @param width Width of the clip rectangle
+     * @param height Height of the clip rectangle
      */
     setClip(xoff: number, yoff: number, width: number, height: number): void
     /**
      * Sets whether `self` should be clipped to the same size as its
      * allocation
+     * @param clipSet %TRUE to apply a clip tracking the allocation
      */
     setClipToAllocation(clipSet: boolean): void
     /**
      * Sets the contents of a #ClutterActor.
+     * @param content a #ClutterContent, or %NULL
      */
     setContent(content?: Clutter.Content | null): void
     /**
@@ -4860,12 +5299,14 @@ class VideoTexture {
      * more information.
      * 
      * The #ClutterActor:content-gravity property is animatable.
+     * @param gravity the #ClutterContentGravity
      */
     setContentGravity(gravity: Clutter.ContentGravity): void
     /**
      * Sets the policy for repeating the #ClutterActor:content of a
      * #ClutterActor. The behaviour is deferred to the #ClutterContent
      * implementation.
+     * @param repeat the repeat policy
      */
     setContentRepeat(repeat: Clutter.ContentRepeat): void
     /**
@@ -4875,6 +5316,8 @@ class VideoTexture {
      * The #ClutterActor:minification-filter will be used when reducing
      * the size of the content; the #ClutterActor:magnification-filter
      * will be used when increasing the size of the content.
+     * @param minFilter the minification filter for the content
+     * @param magFilter the magnification filter for the content
      */
     setContentScalingFilters(minFilter: Clutter.ScalingFilter, magFilter: Clutter.ScalingFilter): void
     /**
@@ -4882,32 +5325,38 @@ class VideoTexture {
      * 
      * The unit used by `depth` is dependant on the perspective setup. See
      * also clutter_stage_set_perspective().
+     * @param depth Z co-ord
      */
     setDepth(depth: number): void
     /**
      * Sets the delay that should be applied before tweening animatable
      * properties.
+     * @param msecs the delay before the start of the tweening, in milliseconds
      */
     setEasingDelay(msecs: number): void
     /**
      * Sets the duration of the tweening for animatable properties
      * of `self` for the current easing state.
+     * @param msecs the duration of the easing, or %NULL
      */
     setEasingDuration(msecs: number): void
     /**
      * Sets the easing mode for the tweening of animatable properties
      * of `self`.
+     * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
      */
     setEasingMode(mode: Clutter.AnimationMode): void
     /**
      * Sets whether an actor has a fixed position set (and will thus be
      * unaffected by any layout manager).
+     * @param isSet whether to use fixed position
      */
     setFixedPositionSet(isSet: boolean): void
     /**
      * Sets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to set
      */
     setFlags(flags: Clutter.ActorFlags): void
     /**
@@ -4915,6 +5364,7 @@ class VideoTexture {
      * size, in pixels. This means the untransformed actor will have the
      * given geometry. This is the same as calling clutter_actor_set_position()
      * and clutter_actor_set_size().
+     * @param geometry A #ClutterGeometry
      */
     setGeometry(geometry: Clutter.Geometry): void
     /**
@@ -4925,6 +5375,7 @@ class VideoTexture {
      * overriding it, i.e. you can "unset" the height with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param height Requested new height for the actor, in pixels, or -1
      */
     setHeight(height: number): void
     /**
@@ -4934,39 +5385,46 @@ class VideoTexture {
      * The #ClutterActor will take a reference on the passed `manager` which
      * will be released either when the layout manager is removed, or when
      * the actor is destroyed.
+     * @param manager a #ClutterLayoutManager, or %NULL to unset it
      */
     setLayoutManager(manager?: Clutter.LayoutManager | null): void
     /**
      * Sets all the components of the margin of a #ClutterActor.
+     * @param margin a #ClutterMargin
      */
     setMargin(margin: Clutter.Margin): void
     /**
      * Sets the margin from the bottom of a #ClutterActor.
      * 
      * The #ClutterActor:margin-bottom property is animatable.
+     * @param margin the bottom margin
      */
     setMarginBottom(margin: number): void
     /**
      * Sets the margin from the left of a #ClutterActor.
      * 
      * The #ClutterActor:margin-left property is animatable.
+     * @param margin the left margin
      */
     setMarginLeft(margin: number): void
     /**
      * Sets the margin from the right of a #ClutterActor.
      * 
      * The #ClutterActor:margin-right property is animatable.
+     * @param margin the right margin
      */
     setMarginRight(margin: number): void
     /**
      * Sets the margin from the top of a #ClutterActor.
      * 
      * The #ClutterActor:margin-top property is animatable.
+     * @param margin the top margin
      */
     setMarginTop(margin: number): void
     /**
      * Sets the given name to `self`. The name can be used to identify
      * a #ClutterActor.
+     * @param name Textual tag to apply to actor
      */
     setName(name: string): void
     /**
@@ -5027,6 +5485,7 @@ class VideoTexture {
      * Custom actors that don't contain any overlapping primitives are
      * recommended to override the has_overlaps() virtual to return %FALSE
      * for maximum efficiency.
+     * @param redirect New offscreen redirect flags for the actor.
      */
     setOffscreenRedirect(redirect: Clutter.OffscreenRedirect): void
     /**
@@ -5034,6 +5493,7 @@ class VideoTexture {
      * 255 (0xff) being fully opaque.
      * 
      * The #ClutterActor:opacity property is animatable.
+     * @param opacity New opacity value for the actor.
      */
     setOpacity(opacity: number): void
     /**
@@ -5045,6 +5505,7 @@ class VideoTexture {
      * 
      * This function should only be called by legacy #ClutterActor<!-- -->s
      * implementing the #ClutterContainer interface.
+     * @param parent A new #ClutterActor parent
      */
     setParent(parent: Clutter.Actor): void
     /**
@@ -5054,6 +5515,8 @@ class VideoTexture {
      * The pivot point's coordinates are in normalized space, with the (0, 0)
      * point being the top left corner of the actor, and the (1, 1) point being
      * the bottom right corner.
+     * @param pivotX the normalized X coordinate of the pivot point
+     * @param pivotY the normalized Y coordinate of the pivot point
      */
     setPivotPoint(pivotX: number, pivotY: number): void
     /**
@@ -5061,6 +5524,7 @@ class VideoTexture {
      * which the scaling and rotation transformations occur.
      * 
      * The `pivot_z` value is expressed as a distance along the Z axis.
+     * @param pivotZ the Z coordinate of the actor's pivot point
      */
     setPivotPointZ(pivotZ: number): void
     /**
@@ -5069,10 +5533,13 @@ class VideoTexture {
      * 
      * If a layout manager is in use, this position will override the
      * layout manager and force a fixed position.
+     * @param x New left position of actor in pixels.
+     * @param y New top position of actor in pixels.
      */
     setPosition(x: number, y: number): void
     /**
      * Sets `actor` as reactive. Reactive actors will receive events.
+     * @param reactive whether the actor should be reactive to events
      */
     setReactive(reactive: boolean): void
     /**
@@ -5081,6 +5548,7 @@ class VideoTexture {
      * The `mode` determines the order for invoking
      * clutter_actor_get_preferred_width() and
      * clutter_actor_get_preferred_height()
+     * @param mode the request mode
      */
     setRequestMode(mode: Clutter.RequestMode): void
     /**
@@ -5095,6 +5563,11 @@ class VideoTexture {
      * The rotation coordinates are relative to the anchor point of the
      * actor, set using clutter_actor_set_anchor_point(). If no anchor
      * point is set, the upper left corner is assumed as the origin.
+     * @param axis the axis of rotation
+     * @param angle the angle of rotation
+     * @param x X coordinate of the rotation center
+     * @param y Y coordinate of the rotation center
+     * @param z Z coordinate of the rotation center
      */
     setRotation(axis: Clutter.RotateAxis, angle: number, x: number, y: number, z: number): void
     /**
@@ -5106,6 +5579,8 @@ class VideoTexture {
      * 
      * The center of rotation is established by the #ClutterActor:pivot-point
      * property.
+     * @param axis the axis to set the angle one
+     * @param angle the angle of rotation, in degrees
      */
     setRotationAngle(axis: Clutter.RotateAxis, angle: number): void
     /**
@@ -5115,6 +5590,8 @@ class VideoTexture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
      */
     setScale(scaleX: number, scaleY: number): void
     /**
@@ -5124,6 +5601,10 @@ class VideoTexture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties
      * are animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param centerX X coordinate of the center of the scaling
+     * @param centerY Y coordinate of the center of the scaling
      */
     setScaleFull(scaleX: number, scaleY: number, centerX: number, centerY: number): void
     /**
@@ -5135,6 +5616,9 @@ class VideoTexture {
      * 
      * The #ClutterActor:scale-x and #ClutterActor:scale-y properties are
      * animatable.
+     * @param scaleX double factor to scale actor by horizontally.
+     * @param scaleY double factor to scale actor by vertically.
+     * @param gravity the location of the scale center expressed as a compass   direction.
      */
     setScaleWithGravity(scaleX: number, scaleY: number, gravity: Clutter.Gravity): void
     /**
@@ -5143,6 +5627,7 @@ class VideoTexture {
      * The scale transformation is relative the the #ClutterActor:pivot-point.
      * 
      * The #ClutterActor:scale-z property is animatable.
+     * @param scaleZ the scaling factor along the Z axis
      */
     setScaleZ(scaleZ: number): void
     /**
@@ -5153,21 +5638,28 @@ class VideoTexture {
      * 
      * Any #ClutterEffect applied to `self` will take the precedence
      * over the #ClutterShader set using this function.
+     * @param shader a #ClutterShader or %NULL to unset the shader.
      */
     setShader(shader?: Clutter.Shader | null): boolean
     /**
      * Sets the value for a named parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParam(param: string, value: any): void
     /**
      * Sets the value for a named float parameter of the shader applied
      * to `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamFloat(param: string, value: number): void
     /**
      * Sets the value for a named int parameter of the shader applied to
      * `actor`.
+     * @param param the name of the parameter
+     * @param value the value of the parameter
      */
     setShaderParamInt(param: string, value: number): void
     /**
@@ -5181,6 +5673,8 @@ class VideoTexture {
      * you can "unset" the size with -1.
      * 
      * This function sets or unsets both the minimum and natural size.
+     * @param width New width of actor in pixels, or -1
+     * @param height New height of actor in pixels, or -1
      */
     setSize(width: number, height: number): void
     /**
@@ -5194,6 +5688,7 @@ class VideoTexture {
      * Composite actors not implementing #ClutterContainer, or actors requiring
      * special handling when the text direction changes, should connect to
      * the #GObject::notify signal for the #ClutterActor:text-direction property
+     * @param textDir the text direction for `self`
      */
     setTextDirection(textDir: Clutter.TextDirection): void
     /**
@@ -5202,11 +5697,15 @@ class VideoTexture {
      * actor's allocation and to the actor's pivot point.
      * 
      * The #ClutterActor:transform property is animatable.
+     * @param transform a #ClutterMatrix, or %NULL to   unset a custom transformation
      */
     setTransform(transform?: Clutter.Matrix | null): void
     /**
      * Sets an additional translation transformation on a #ClutterActor,
      * relative to the #ClutterActor:pivot-point.
+     * @param translateX the translation along the X axis
+     * @param translateY the translation along the Y axis
+     * @param translateZ the translation along the Z axis
      */
     setTranslation(translateX: number, translateY: number, translateZ: number): void
     /**
@@ -5217,6 +5716,7 @@ class VideoTexture {
      * instead of overriding it, i.e. you can "unset" the width with -1.
      * 
      * This function sets both the minimum and natural size of the actor.
+     * @param width Requested new width for the actor, in pixels, or -1
      */
     setWidth(width: number): void
     /**
@@ -5226,6 +5726,7 @@ class VideoTexture {
      * the actor.
      * 
      * The #ClutterActor:x property is animatable.
+     * @param x the actor's position on the X axis
      */
     setX(x: number): void
     /**
@@ -5233,6 +5734,7 @@ class VideoTexture {
      * actor received extra horizontal space.
      * 
      * See also the #ClutterActor:x-align property.
+     * @param xAlign the horizontal alignment policy
      */
     setXAlign(xAlign: Clutter.ActorAlign): void
     /**
@@ -5243,6 +5745,7 @@ class VideoTexture {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand horizontally
      */
     setXExpand(expand: boolean): void
     /**
@@ -5252,6 +5755,7 @@ class VideoTexture {
      * the actor.
      * 
      * The #ClutterActor:y property is animatable.
+     * @param y the actor's position on the Y axis
      */
     setY(y: number): void
     /**
@@ -5259,6 +5763,7 @@ class VideoTexture {
      * actor received extra vertical space.
      * 
      * See also the #ClutterActor:y-align property.
+     * @param yAlign the vertical alignment policy
      */
     setYAlign(yAlign: Clutter.ActorAlign): void
     /**
@@ -5269,12 +5774,14 @@ class VideoTexture {
      * Setting an actor to expand will also make all its parent expand, so
      * that it's possible to build an actor tree and only set this flag on
      * its leaves and not on every single actor.
+     * @param expand whether the actor should expand vertically
      */
     setYExpand(expand: boolean): void
     /**
      * Sets the actor's position on the Z axis.
      * 
      * See #ClutterActor:z-position.
+     * @param zPosition the position on the Z axis
      */
     setZPosition(zPosition: number): void
     /**
@@ -5283,6 +5790,8 @@ class VideoTexture {
      * the center of the actor remains static you can use
      * %CLUTTER_GRAVITY_CENTER. If the actor changes size the center point
      * will move accordingly.
+     * @param angle the angle of rotation
+     * @param gravity the center point of the rotation
      */
     setZRotationFromGravity(angle: number, gravity: Clutter.Gravity): void
     /**
@@ -5324,6 +5833,8 @@ class VideoTexture {
      * 
      * This function only works when the allocation is up-to-date, i.e. inside of
      * the #ClutterActorClass.paint() implementation
+     * @param x x screen coordinate of the point to unproject
+     * @param y y screen coordinate of the point to unproject
      */
     transformStagePoint(x: number, y: number): [ /* returnType */ boolean, /* xOut */ number, /* yOut */ number ]
     /**
@@ -5388,6 +5899,7 @@ class VideoTexture {
      * Unsets `flags` on `self`
      * 
      * This function will emit notifications for the changed properties
+     * @param flags the flags to unset
      */
     unsetFlags(flags: Clutter.ActorFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5425,6 +5937,10 @@ class VideoTexture {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5435,6 +5951,12 @@ class VideoTexture {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5458,6 +5980,7 @@ class VideoTexture {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5477,11 +6000,14 @@ class VideoTexture {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5489,6 +6015,8 @@ class VideoTexture {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5506,6 +6034,7 @@ class VideoTexture {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5551,6 +6080,7 @@ class VideoTexture {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5594,15 +6124,20 @@ class VideoTexture {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5643,6 +6178,7 @@ class VideoTexture {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5677,6 +6213,7 @@ class VideoTexture {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Clutter-1.0.Clutter.Animatable */
@@ -5689,14 +6226,23 @@ class VideoTexture {
      * 
      * All implementation of the #ClutterAnimatable interface must
      * implement this function.
+     * @param animation a #ClutterAnimation
+     * @param propertyName the name of the animated property
+     * @param initialValue the initial value of the animation interval
+     * @param finalValue the final value of the animation interval
+     * @param progress the progress factor
+     * @param value return location for the animation value
      */
     animateProperty(animation: Clutter.Animation, propertyName: string, initialValue: any, finalValue: any, progress: number, value: any): boolean
     /**
      * Finds the #GParamSpec for `property_name`
+     * @param propertyName the name of the animatable property to find
      */
     findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Retrieves the current state of `property_name` and sets `value` with it
+     * @param propertyName the name of the animatable property to retrieve
+     * @param value a #GValue initialized to the type of the property to retrieve
      */
     getInitialState(propertyName: string, value: any): void
     /**
@@ -5709,10 +6255,15 @@ class VideoTexture {
      * involving #ClutterAnimatable<!-- -->s.
      * 
      * This function replaces clutter_animatable_animate_property().
+     * @param propertyName the name of the property to interpolate
+     * @param interval a #ClutterInterval with the animation range
+     * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      */
     interpolateValue(propertyName: string, interval: Clutter.Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
+     * @param propertyName the name of the animatable property to set
+     * @param value the value of the animatable property to set
      */
     setFinalState(propertyName: string, value: any): void
     /* Methods of Clutter-1.0.Clutter.Container */
@@ -5725,6 +6276,7 @@ class VideoTexture {
      * This function will call #ClutterContainerIface.add(), which is a
      * deprecated virtual function. The default implementation will
      * call clutter_actor_add_child().
+     * @param actor the first #ClutterActor to add
      */
     addActor(actor: Clutter.Actor): void
     /**
@@ -5735,16 +6287,24 @@ class VideoTexture {
      * Note that clutter_container_child_set_property() is really intended for
      * language bindings, clutter_container_child_set() is much more convenient
      * for C programming.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childGetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
      * #ClutterContainer::child-notify signal.
+     * @param child a #ClutterActor
+     * @param pspec a #GParamSpec
      */
     childNotify(child: Clutter.Actor, pspec: GObject.ParamSpec): void
     /**
      * Sets a container-specific property on a child of `container`.
+     * @param child a #ClutterActor that is a child of `container`.
+     * @param property the name of the property to set.
+     * @param value the value.
      */
     childSetProperty(child: Clutter.Actor, property: string, value: any): void
     /**
@@ -5757,6 +6317,7 @@ class VideoTexture {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     createChildMeta(actor: Clutter.Actor): void
     /**
@@ -5768,11 +6329,13 @@ class VideoTexture {
      * #ClutterContainer::add() virtual function implementation.
      * 
      * Applications should not call this function.
+     * @param actor a #ClutterActor
      */
     destroyChildMeta(actor: Clutter.Actor): void
     /**
      * Finds a child actor of a container by its name. Search recurses
      * into any child container.
+     * @param childName the name of the requested child.
      */
     findChildByName(childName: string): Clutter.Actor
     /**
@@ -5783,6 +6346,7 @@ class VideoTexture {
      * 
      * This function calls the #ClutterContainerIface.foreach()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreach(callback: Clutter.Callback): void
     /**
@@ -5792,11 +6356,13 @@ class VideoTexture {
      * 
      * This function calls the #ClutterContainerIface.foreach_with_internals()
      * virtual function, which has been deprecated.
+     * @param callback a function to be called for each child
      */
     foreachWithInternals(callback: Clutter.Callback): void
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
+     * @param actor a #ClutterActor that is a child of `container`.
      */
     getChildMeta(actor: Clutter.Actor): Clutter.ChildMeta
     /**
@@ -5805,6 +6371,8 @@ class VideoTexture {
      * This function calls the #ClutterContainerIface.lower() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_below_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
      */
     lowerChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -5813,6 +6381,8 @@ class VideoTexture {
      * This function calls the #ClutterContainerIface.raise() virtual function,
      * which has been deprecated. The default implementation will call
      * clutter_actor_set_child_above_sibling().
+     * @param actor the actor to raise
+     * @param sibling the sibling to raise to, or %NULL to raise   to the top
      */
     raiseChild(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void
     /**
@@ -5824,6 +6394,7 @@ class VideoTexture {
      * This function will call #ClutterContainerIface.remove(), which is a
      * deprecated virtual function. The default implementation will call
      * clutter_actor_remove_child().
+     * @param actor a #ClutterActor
      */
     removeActor(actor: Clutter.Actor): void
     /**
@@ -5870,10 +6441,12 @@ class VideoTexture {
     getUri(): string
     /**
      * Sets the playback volume of `media` to `volume`.
+     * @param volume the volume as a double between 0.0 and 1.0
      */
     setAudioVolume(volume: number): void
     /**
      * Sets the source of `media` using a file path.
+     * @param filename A filename
      */
     setFilename(filename: string): void
     /**
@@ -5884,11 +6457,13 @@ class VideoTexture {
      * signal on the #ClutterMedia:playing property and then retrieve the
      * current state with clutter_media_get_playing(). ClutterGstVideoTexture
      * in clutter-gst is an example of such an asynchronous implementation.
+     * @param playing %TRUE to start playing
      */
     setPlaying(playing: boolean): void
     /**
      * Sets the playback progress of `media`. The `progress` is
      * a normalized value between 0.0 (begin) and 1.0 (end).
+     * @param progress the progress of the playback, between 0.0 and 1.0
      */
     setProgress(progress: number): void
     /**
@@ -5901,14 +6476,17 @@ class VideoTexture {
      *   clutter_media_set_subtitle_font_name (media, "Sans 24pt");
      * ```
      * 
+     * @param fontName a font name, or %NULL to set the default font name
      */
     setSubtitleFontName(fontName: string): void
     /**
      * Sets the location of a subtitle file to display while playing `media`.
+     * @param uri the URI of a subtitle file
      */
     setSubtitleUri(uri: string): void
     /**
      * Sets the URI of `media` to `uri`.
+     * @param uri the URI of the media stream
      */
     setUri(uri: string): void
     /* Methods of Clutter-1.0.Clutter.Scriptable */
@@ -5919,11 +6497,18 @@ class VideoTexture {
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param value the generic value to be set
+     * @param name the name of the node
+     * @param node the JSON node to be parsed
      */
     parseCustomNode(script: Clutter.Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
+     * @param script the #ClutterScript creating the scriptable instance
+     * @param name the name of the property
+     * @param value the value of the property
      */
     setCustomProperty(script: Clutter.Script, name: string, value: any): void
     /**
@@ -5933,6 +6518,7 @@ class VideoTexture {
      * This name can be used by user interface designer applications to
      * define a unique name for an object constructable using the UI
      * definition language parsed by #ClutterScript.
+     * @param id the #ClutterScript id of the object
      */
     setId(id: string): void
     /* Methods of ClutterGst-2.0.ClutterGst.Player */
@@ -5971,12 +6557,14 @@ class VideoTexture {
     /**
      * Set the audio stream to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_player_get_audio_streams().
+     * @param index the index of the audio stream
      */
     setAudioStream(index: number): void
     setBufferingMode(mode: BufferingMode): void
     /**
      * Seeking can be done with several trade-offs. Clutter-gst defaults
      * to %CLUTTER_GST_SEEK_FLAG_NONE.
+     * @param flags a combination of #ClutterGstSeekFlags
      */
     setSeekFlags(flags: SeekFlags): void
     /**
@@ -5984,6 +6572,7 @@ class VideoTexture {
      * in the list returned by clutter_gst_player_get_subtitle_tracks().
      * 
      * If `index_` is -1, the subtitles are turned off.
+     * @param index the index of the subtitles track
      */
     setSubtitleTrack(index: number): void
     /**
@@ -5992,6 +6581,7 @@ class VideoTexture {
      * When streaming content, you might want to set a custom user agent, eg. to
      * promote your software, make it appear in statistics or because the server
      * requires a special user agent you want to impersonate.
+     * @param userAgent the user agent
      */
     setUserAgent(userAgent: string): void
     /* Signals of Clutter-1.0.Clutter.Texture */
@@ -5999,6 +6589,7 @@ class VideoTexture {
      * The ::load-finished signal is emitted when a texture load has
      * completed. If there was an error during loading, `error` will
      * be set, otherwise it will be %NULL
+     * @param error A set error, or %NULL
      */
     connect(sigName: "load-finished", callback: ((error: GLib.Error) => void)): number
     on(sigName: "load-finished", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -6018,6 +6609,8 @@ class VideoTexture {
      * The ::size-change signal is emitted each time the size of the
      * pixbuf used by `texture` changes.  The new size is given as
      * argument to the callback.
+     * @param width the width of the new texture
+     * @param height the height of the new texture
      */
     connect(sigName: "size-change", callback: ((width: number, height: number) => void)): number
     on(sigName: "size-change", callback: (width: number, height: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -6032,6 +6625,8 @@ class VideoTexture {
      * but if you want to track the allocation flags as well, for instance
      * to know whether the absolute origin of `actor` changed, then you might
      * want use this signal instead.
+     * @param box a #ClutterActorBox with the new allocation
+     * @param flags #ClutterAllocationFlags for the allocation
      */
     connect(sigName: "allocation-changed", callback: ((box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void)): number
     on(sigName: "allocation-changed", callback: (box: Clutter.ActorBox, flags: Clutter.AllocationFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -6041,6 +6636,7 @@ class VideoTexture {
     /**
      * The ::button-press-event signal is emitted each time a mouse button
      * is pressed on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-press-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-press-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6050,6 +6646,7 @@ class VideoTexture {
     /**
      * The ::button-release-event signal is emitted each time a mouse button
      * is released on `actor`.
+     * @param event a #ClutterButtonEvent
      */
     connect(sigName: "button-release-event", callback: ((event: Clutter.ButtonEvent) => boolean)): number
     on(sigName: "button-release-event", callback: (event: Clutter.ButtonEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6064,6 +6661,7 @@ class VideoTexture {
      * event before the specialized events (like
      * ClutterActor::button-press-event or ::key-released-event) are
      * emitted.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "captured-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "captured-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -6093,6 +6691,7 @@ class VideoTexture {
     emit(sigName: "destroy"): void
     /**
      * The ::enter-event signal is emitted when the pointer enters the `actor`
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "enter-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "enter-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6104,6 +6703,7 @@ class VideoTexture {
      * by the `actor`. This signal will be emitted on every actor,
      * following the hierarchy chain, until it reaches the top-level
      * container (the #ClutterStage).
+     * @param event a #ClutterEvent
      */
     connect(sigName: "event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -6138,6 +6738,7 @@ class VideoTexture {
     /**
      * The ::key-press-event signal is emitted each time a keyboard button
      * is pressed while `actor` has key focus (see clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-press-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-press-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6148,6 +6749,7 @@ class VideoTexture {
      * The ::key-release-event signal is emitted each time a keyboard button
      * is released while `actor` has key focus (see
      * clutter_stage_set_key_focus()).
+     * @param event a #ClutterKeyEvent
      */
     connect(sigName: "key-release-event", callback: ((event: Clutter.KeyEvent) => boolean)): number
     on(sigName: "key-release-event", callback: (event: Clutter.KeyEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6156,6 +6758,7 @@ class VideoTexture {
     emit(sigName: "key-release-event", event: Clutter.KeyEvent): void
     /**
      * The ::leave-event signal is emitted when the pointer leaves the `actor`.
+     * @param event a #ClutterCrossingEvent
      */
     connect(sigName: "leave-event", callback: ((event: Clutter.CrossingEvent) => boolean)): number
     on(sigName: "leave-event", callback: (event: Clutter.CrossingEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6165,6 +6768,7 @@ class VideoTexture {
     /**
      * The ::motion-event signal is emitted each time the mouse pointer is
      * moved over `actor`.
+     * @param event a #ClutterMotionEvent
      */
     connect(sigName: "motion-event", callback: ((event: Clutter.MotionEvent) => boolean)): number
     on(sigName: "motion-event", callback: (event: Clutter.MotionEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6191,6 +6795,7 @@ class VideoTexture {
     emit(sigName: "paint"): void
     /**
      * This signal is emitted when the parent of the actor changes.
+     * @param oldParent the previous parent of the actor, or %NULL
      */
     connect(sigName: "parent-set", callback: ((oldParent?: Clutter.Actor | null) => void)): number
     on(sigName: "parent-set", callback: (oldParent?: Clutter.Actor | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -6208,6 +6813,7 @@ class VideoTexture {
      * 
      * It is possible to connect a handler to the ::pick signal in order
      * to set up some custom aspect of a paint in pick mode.
+     * @param color the #ClutterColor to be used when picking
      */
     connect(sigName: "pick", callback: ((color: Clutter.Color) => void)): number
     on(sigName: "pick", callback: (color: Clutter.Color) => void, after?: boolean): NodeJS.EventEmitter
@@ -6260,6 +6866,7 @@ class VideoTexture {
      * pipeline is executed. If you want to know when the pipeline has
      * been completed you should use clutter_threads_add_repaint_func()
      * or clutter_threads_add_repaint_func_full().
+     * @param origin the actor which initiated the redraw request
      */
     connect(sigName: "queue-redraw", callback: ((origin: Clutter.Actor) => void)): number
     on(sigName: "queue-redraw", callback: (origin: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -6295,6 +6902,7 @@ class VideoTexture {
     /**
      * The ::scroll-event signal is emitted each time the mouse is
      * scrolled on `actor`
+     * @param event a #ClutterScrollEvent
      */
     connect(sigName: "scroll-event", callback: ((event: Clutter.ScrollEvent) => boolean)): number
     on(sigName: "scroll-event", callback: (event: Clutter.ScrollEvent) => void, after?: boolean): NodeJS.EventEmitter
@@ -6313,6 +6921,7 @@ class VideoTexture {
     /**
      * The ::touch-event signal is emitted each time a touch
      * begin/end/update/cancel event.
+     * @param event a #ClutterEvent
      */
     connect(sigName: "touch-event", callback: ((event: Clutter.Event) => boolean)): number
     on(sigName: "touch-event", callback: (event: Clutter.Event) => void, after?: boolean): NodeJS.EventEmitter
@@ -6325,6 +6934,8 @@ class VideoTexture {
      * duration (including eventual repeats), it has been stopped
      * using clutter_timeline_stop(), or it has been removed from the
      * transitions applied on `actor,` using clutter_actor_remove_transition().
+     * @param name the name of the transition
+     * @param isFinished whether the transition was finished, or stopped
      */
     connect(sigName: "transition-stopped", callback: ((name: string, isFinished: boolean) => void)): number
     on(sigName: "transition-stopped", callback: (name: string, isFinished: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -6378,6 +6989,7 @@ class VideoTexture {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6388,6 +7000,7 @@ class VideoTexture {
     /**
      * The ::actor-added signal is emitted each time an actor
      * has been added to `container`.
+     * @param actor the new child that has been added to `container`
      */
     connect(sigName: "actor-added", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-added", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -6397,6 +7010,7 @@ class VideoTexture {
     /**
      * The ::actor-removed signal is emitted each time an actor
      * is removed from `container`.
+     * @param actor the child that has been removed from `container`
      */
     connect(sigName: "actor-removed", callback: ((actor: Clutter.Actor) => void)): number
     on(sigName: "actor-removed", callback: (actor: Clutter.Actor) => void, after?: boolean): NodeJS.EventEmitter
@@ -6407,6 +7021,8 @@ class VideoTexture {
      * The ::child-notify signal is emitted each time a property is
      * being set through the clutter_container_child_set() and
      * clutter_container_child_set_property() calls.
+     * @param actor the child that has had a property set
+     * @param pspec the #GParamSpec of the property set
      */
     connect(sigName: "child-notify", callback: ((actor: Clutter.Actor, pspec: GObject.ParamSpec) => void)): number
     on(sigName: "child-notify", callback: (actor: Clutter.Actor, pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6424,6 +7040,7 @@ class VideoTexture {
     emit(sigName: "eos"): void
     /**
      * The ::error signal is emitted each time an error occurred.
+     * @param error the #GError
      */
     connect(sigName: "error", callback: ((error: GLib.Error) => void)): number
     on(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -6434,6 +7051,8 @@ class VideoTexture {
     /**
      * The ::download-buffering signal is emitted each time their an
      * update about the buffering of the current media.
+     * @param start start position of the buffering
+     * @param stop start position of the buffering
      */
     connect(sigName: "download-buffering", callback: ((start: number, stop: number) => void)): number
     on(sigName: "download-buffering", callback: (start: number, stop: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -6445,6 +7064,11 @@ class VideoTexture {
     on(sigName: "notify::pixel-aspect-ratio", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::pixel-aspect-ratio", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::pixel-aspect-ratio", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::disable-slicing", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::disable-slicing", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::disable-slicing", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::disable-slicing", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::disable-slicing", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -7009,10 +7633,13 @@ class VideoTexture {
     static new(): VideoTexture
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
+     * @param propertyName a property name.
      */
     static classFindChildProperty(klass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
+     * @param klass a #GObjectClass implementing the #ClutterContainer interface.
      */
     static classListChildProperties(klass: GObject.ObjectClass): GObject.ParamSpec[]
     /**
@@ -7020,28 +7647,29 @@ class VideoTexture {
      * set/get_property of #GObjectClass. You should call this
      * function at the end of the class_init method of the class
      * implementing #ClutterGstPlayer.
+     * @param objectClass a #GObjectClass
      */
     static classInit(objectClass: GObject.ObjectClass): void
     static $gtype: GObject.Type
 }
 abstract class PlayerIface {
     /* Fields of ClutterGst-2.0.ClutterGst.PlayerIface */
-    readonly getPipeline: (player: Player) => Gst.Element
-    readonly getUserAgent: (player: Player) => string
-    readonly setUserAgent: (player: Player, userAgent: string) => void
-    readonly getSeekFlags: (player: Player) => SeekFlags
-    readonly setSeekFlags: (player: Player, flags: SeekFlags) => void
-    readonly getBufferingMode: (player: Player) => BufferingMode
-    readonly setBufferingMode: (player: Player, mode: BufferingMode) => void
-    readonly getAudioStreams: (player: Player) => string[]
-    readonly getAudioStream: (player: Player) => number
-    readonly setAudioStream: (player: Player, index: number) => void
-    readonly getSubtitleTracks: (player: Player) => string[]
-    readonly getSubtitleTrack: (player: Player) => number
-    readonly setSubtitleTrack: (player: Player, index: number) => void
-    readonly getIdle: (player: Player) => boolean
-    readonly getInSeek: (player: Player) => boolean
-    readonly downloadBuffering: (player: Player, start: number, stop: number) => void
+    getPipeline: (player: Player) => Gst.Element
+    getUserAgent: (player: Player) => string
+    setUserAgent: (player: Player, userAgent: string) => void
+    getSeekFlags: (player: Player) => SeekFlags
+    setSeekFlags: (player: Player, flags: SeekFlags) => void
+    getBufferingMode: (player: Player) => BufferingMode
+    setBufferingMode: (player: Player, mode: BufferingMode) => void
+    getAudioStreams: (player: Player) => string[]
+    getAudioStream: (player: Player) => number
+    setAudioStream: (player: Player, index: number) => void
+    getSubtitleTracks: (player: Player) => string[]
+    getSubtitleTrack: (player: Player) => number
+    setSubtitleTrack: (player: Player, index: number) => void
+    getIdle: (player: Player) => boolean
+    getInSeek: (player: Player) => boolean
+    downloadBuffering: (player: Player, start: number, stop: number) => void
     static name: string
 }
 class PlayerIfacePrivate {

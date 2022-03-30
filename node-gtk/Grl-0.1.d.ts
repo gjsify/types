@@ -192,7 +192,7 @@ interface Config_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Config {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.Config */
     getApiKey(): string
     getApiKeyBlob(size: number): number
@@ -208,23 +208,29 @@ class Config {
     getUsername(): string
     /**
      * otherwise.
+     * @param param the param
      */
     hasParam(param: string): boolean
     set(param: string, value: any): void
     /**
      * Set the webservice API key in the configuration
+     * @param key the API key
      */
     setApiKey(key: string): void
     /**
      * Set the binary API key in the configuration
+     * @param blob the binary API key blob
+     * @param size the size of the blob
      */
     setApiKeyBlob(blob: number, size: number): void
     /**
      * Set the webservice passphrase in the configuration
+     * @param secret the webservice passphrase
      */
     setApiSecret(secret: string): void
     /**
      * Set the webservice API token in the configuration
+     * @param token the API token
      */
     setApiToken(token: string): void
     setBinary(param: string, blob: number, size: number): void
@@ -233,19 +239,23 @@ class Config {
     setInt(param: string, value: number): void
     /**
      * Set the password in the configuration
+     * @param password the password
      */
     setPassword(password: string): void
     /**
      * Set the plugin key in the configuration
+     * @param plugin the plugin id
      */
     setPlugin(plugin: string): void
     /**
      * Set the plugin key in the configuration
+     * @param source the source id
      */
     setSource(source: string): void
     setString(param: string, value: string): void
     /**
      * Set the username in the configuration
+     * @param username the username
      */
     setUsername(username: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -283,6 +293,10 @@ class Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -293,6 +307,12 @@ class Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -316,6 +336,7 @@ class Config {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -335,11 +356,14 @@ class Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -347,6 +371,8 @@ class Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -364,6 +390,7 @@ class Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -409,6 +436,7 @@ class Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -452,15 +480,20 @@ class Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -501,6 +534,7 @@ class Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -535,6 +569,7 @@ class Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -566,6 +601,7 @@ class Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -594,23 +630,31 @@ class Data {
     /* Properties of Grl-0.1.Grl.Data */
     overwrite: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.Data */
     /**
      * Adds a new `key` to `data,` with no value. If key already exists, it does
      * nothing.
+     * @param key key to add
      */
     add(key: GObject.ParamSpec): void
     /**
      * Appends a new binary value for `key` in `data`.
+     * @param key key to append
+     * @param buf the buffer containing the new value
+     * @param size size of buffer
      */
     addBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Appends a new float value for `key` in `data`.
+     * @param key key to append
+     * @param floatvalue the new value
      */
     addFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Appends a new int value for `key` in `data`.
+     * @param key key to append
+     * @param intvalue the new value
      */
     addInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -619,10 +663,13 @@ class Data {
      * All keys in `prop` must be related among them.
      * 
      * `data` will take the ownership of `relkeys,` so do not modify it.
+     * @param relkeys a set of related properties with their values
      */
     addRelatedKeys(relkeys: RelatedKeys): void
     /**
      * Appends a new string value for `key` in `data`.
+     * @param key key to append
+     * @param strvalue the new value
      */
     addString(key: GObject.ParamSpec, strvalue: string): void
     /**
@@ -633,12 +680,14 @@ class Data {
      * Get the first value from `data` associated with `key`.
      * 
      * freed by user.
+     * @param key key to look up.
      */
     get(key: GObject.ParamSpec): any
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeys(key: KeyID): any[]
     /**
@@ -646,6 +695,7 @@ class Data {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeysString(key: KeyID): string[]
     /**
@@ -654,18 +704,21 @@ class Data {
      * is returned.
      * 
      * successful `size` will be set the to the buffer size.
+     * @param key key to use
      */
     getBinary(key: GObject.ParamSpec): [ /* returnType */ number, /* size */ number ]
     /**
      * Returns the first float value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gfloat, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getFloat(key: GObject.ParamSpec): number
     /**
      * Returns the first int value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gint, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getInt(key: GObject.ParamSpec): number
     /**
@@ -685,12 +738,15 @@ class Data {
      * 
      * If user changes any of the values in the related keys, the changes will
      * become permanent.
+     * @param key a metadata key
+     * @param index element to retrieve, starting at 0
      */
     getRelatedKeys(key: KeyID, index: number): RelatedKeys
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKey(key: KeyID): any[]
     /**
@@ -698,6 +754,7 @@ class Data {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKeyString(key: KeyID): string[]
     /**
@@ -706,14 +763,17 @@ class Data {
      * is returned.
      * 
      * not change nor free the value.
+     * @param key key to use
      */
     getString(key: GObject.ParamSpec): string
     /**
      * Checks if `key` is in `data`.
+     * @param key key to search
      */
     hasKey(key: GObject.ParamSpec): boolean
     /**
      * Checks if the `key` has a first value in `data`.
+     * @param key key to search
      */
     keyIsKnown(key: GObject.ParamSpec): boolean
     /**
@@ -727,17 +787,21 @@ class Data {
      * 
      * Therefore, when invoking grl_data_length (data, K2) it will return 3:
      * considering K2 and the related keys (K1 and K3), there are 3 values.
+     * @param key a metadata key
      */
     length(key: KeyID): number
     /**
      * Removes the first value for `key` from `data`. If there are other keys related
      * to `key` their values will also be removed from `data`.
+     * @param key key to remove
      */
     remove(key: GObject.ParamSpec): void
     /**
      * Removes the value at position `index` for `key` from `data`. If there are other
      * keys related to `key,` their values at position `index` will also be removed
      * from `data`.
+     * @param key a metadata key
+     * @param index index of key to be removed, starting at 0
      */
     removeNth(key: KeyID, index: number): void
     /**
@@ -747,21 +811,30 @@ class Data {
      * Also, checks that `value` is compliant with `key` specification, modifying it
      * accordingly. For instance, if `key` requires a number between 0 and 10, but
      * `value` is outside this range, it will be adapted accordingly.
+     * @param key key to change or add
+     * @param value the new value
      */
     set(key: GObject.ParamSpec, value: any): void
     /**
      * Sets the first binary value associated with `key` in `data`. If `key` already
      * has a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param buf buffer holding the data
+     * @param size size of the buffer
      */
     setBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Sets the first float value associated with `key` in `data`. If `key` already has
      * a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param floatvalue the new value
      */
     setFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Sets the first int value associated with `key` in `data`. If `key` already has a
      * first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param intvalue the new value
      */
     setInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -770,6 +843,7 @@ class Data {
      * 
      * Set it to %TRUE so old values are overwritten, or %FALSE in other case
      * (default is %FALSE).
+     * @param overwrite if data can be overwritten
      */
     setOverwrite(overwrite: boolean): void
     /**
@@ -777,11 +851,15 @@ class Data {
      * 
      * `data` will take ownership of `relkeys,` so do not free it after invoking this
      * function.
+     * @param relkeys a set of related keys
+     * @param index position to be updated, starting at 0
      */
     setRelatedKeys(relkeys: RelatedKeys, index: number): void
     /**
      * Sets the first string value associated with `key` in `data`. If `key` already
      * has a value old value is freed and the new one is set.
+     * @param key key to change or add
+     * @param strvalue the new value
      */
     setString(key: GObject.ParamSpec, strvalue: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -819,6 +897,10 @@ class Data {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -829,6 +911,12 @@ class Data {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -852,6 +940,7 @@ class Data {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -871,11 +960,14 @@ class Data {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -883,6 +975,8 @@ class Data {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -900,6 +994,7 @@ class Data {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -945,6 +1040,7 @@ class Data {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -988,15 +1084,20 @@ class Data {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1037,6 +1138,7 @@ class Data {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1071,6 +1173,7 @@ class Data {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1102,6 +1205,7 @@ class Data {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1133,34 +1237,42 @@ class Media {
     /* Properties of Grl-0.1.Grl.Data */
     overwrite: boolean
     /* Fields of Grl-0.1.Grl.Data */
-    readonly parent: GObject.Object
-    readonly priv: DataPrivate
-    readonly grlReserved: object[]
+    parent: GObject.Object
+    priv: DataPrivate
+    grlReserved: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.Media */
     /**
      * Adds a new author to `media`.
+     * @param author an author for `media`
      */
     addAuthor(author: string): void
     /**
      * Adds a new external player to `media`.
+     * @param player an external player for `media`
      */
     addExternalPlayer(player: string): void
     /**
      * Adds a new external url to `media`.
+     * @param url an external url for `media`
      */
     addExternalUrl(url: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a thumbnail for `media`
      */
     addThumbnail(thumbnail: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a buffer containing the thumbnail for `media`
+     * @param size size of buffer
      */
     addThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Adds a new media's URL with its mime-type.
+     * @param url a media's URL
+     * @param mime th `url` mime type
      */
     addUrlData(url: string, mime: string): void
     getAuthor(): string
@@ -1194,6 +1306,8 @@ class Media {
     getThumbnailBinary(size: number): number
     /**
      * buffer size.
+     * @param size pointer to store the thumbnail buffer size
+     * @param index element to retrieve
      */
     getThumbnailBinaryNth(size: number, index: number): number
     getThumbnailNth(index: number): string
@@ -1209,112 +1323,146 @@ class Media {
     serialize(): string
     /**
      * Set the media's author
+     * @param author the media's author
      */
     setAuthor(author: string): void
     /**
      * Set the media certificate
+     * @param certificate The rating certificate of the media
      */
     setCertificate(certificate: string): void
     /**
      * Set the creation_date of the media
+     * @param creationDate date when media was created
      */
     setCreationDate(creationDate: string): void
     /**
      * Set the media's date (TBD)
+     * @param date the date
      */
     setDate(date: string): void
     /**
      * Set the media's description
+     * @param description the description
      */
     setDescription(description: string): void
     /**
      * Set the media's duration
+     * @param duration the duration
      */
     setDuration(duration: number): void
     /**
      * Set the location of a player for the media (usually a flash player)
+     * @param player location of an external player for this media
      */
     setExternalPlayer(player: string): void
     /**
      * Set an external location where users can play the media
+     * @param url external location where this media can be played.
      */
     setExternalUrl(url: string): void
     /**
      * Set the media identifier
+     * @param id the identifier of the media
      */
     setId(id: string): void
     /**
      * Set the media last played date
+     * @param lastPlayed date when the media was last played
      */
     setLastPlayed(lastPlayed: string): void
     /**
      * Set the media last played position
+     * @param lastPosition second at which the media playback was interrupted
      */
     setLastPosition(lastPosition: number): void
     /**
      * Set the media license
+     * @param license The license of the media
      */
     setLicense(license: string): void
     /**
      * Set the media's mime-type
+     * @param mime the mime type
      */
     setMime(mime: string): void
     /**
      * Set the media play count
+     * @param playCount the play count
      */
     setPlayCount(playCount: number): void
     /**
      * This method receives a rating and its scale and normalizes it
+     * @param rating a rating value
+     * @param max maximum rating value
      */
     setRating(rating: number, max: number): void
     /**
      * Set the media's site
+     * @param site the site
      */
     setSite(site: string): void
     /**
      * Set the media's source
+     * @param source the source
      */
     setSource(source: string): void
     /**
      * Set the media studio
+     * @param studio The studio the media is from
      */
     setStudio(studio: string): void
     /**
      * Set the media's thumbnail URL
+     * @param thumbnail the thumbnail URL
      */
     setThumbnail(thumbnail: string): void
     /**
      * Set the media's binary thumbnail
+     * @param thumbnail thumbnail buffer
+     * @param size thumbnail buffer size
      */
     setThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Set the media's title
+     * @param title the title
      */
     setTitle(title: string): void
     /**
      * Set the media's URL
+     * @param url the media's URL
      */
     setUrl(url: string): void
     /**
      * Set the media's URL and its mime-type.
+     * @param url the media's URL
+     * @param mime the `url` mime type
      */
     setUrlData(url: string, mime: string): void
     /* Methods of Grl-0.1.Grl.Data */
     /**
      * Adds a new `key` to `data,` with no value. If key already exists, it does
      * nothing.
+     * @param key key to add
      */
     add(key: GObject.ParamSpec): void
     /**
      * Appends a new binary value for `key` in `data`.
+     * @param key key to append
+     * @param buf the buffer containing the new value
+     * @param size size of buffer
      */
     addBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Appends a new float value for `key` in `data`.
+     * @param key key to append
+     * @param floatvalue the new value
      */
     addFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Appends a new int value for `key` in `data`.
+     * @param key key to append
+     * @param intvalue the new value
      */
     addInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -1323,10 +1471,13 @@ class Media {
      * All keys in `prop` must be related among them.
      * 
      * `data` will take the ownership of `relkeys,` so do not modify it.
+     * @param relkeys a set of related properties with their values
      */
     addRelatedKeys(relkeys: RelatedKeys): void
     /**
      * Appends a new string value for `key` in `data`.
+     * @param key key to append
+     * @param strvalue the new value
      */
     addString(key: GObject.ParamSpec, strvalue: string): void
     /**
@@ -1337,12 +1488,14 @@ class Media {
      * Get the first value from `data` associated with `key`.
      * 
      * freed by user.
+     * @param key key to look up.
      */
     get(key: GObject.ParamSpec): any
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeys(key: KeyID): any[]
     /**
@@ -1350,6 +1503,7 @@ class Media {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeysString(key: KeyID): string[]
     /**
@@ -1358,18 +1512,21 @@ class Media {
      * is returned.
      * 
      * successful `size` will be set the to the buffer size.
+     * @param key key to use
      */
     getBinary(key: GObject.ParamSpec): [ /* returnType */ number, /* size */ number ]
     /**
      * Returns the first float value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gfloat, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getFloat(key: GObject.ParamSpec): number
     /**
      * Returns the first int value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gint, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getInt(key: GObject.ParamSpec): number
     /**
@@ -1389,12 +1546,15 @@ class Media {
      * 
      * If user changes any of the values in the related keys, the changes will
      * become permanent.
+     * @param key a metadata key
+     * @param index element to retrieve, starting at 0
      */
     getRelatedKeys(key: KeyID, index: number): RelatedKeys
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKey(key: KeyID): any[]
     /**
@@ -1402,6 +1562,7 @@ class Media {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKeyString(key: KeyID): string[]
     /**
@@ -1410,14 +1571,17 @@ class Media {
      * is returned.
      * 
      * not change nor free the value.
+     * @param key key to use
      */
     getString(key: GObject.ParamSpec): string
     /**
      * Checks if `key` is in `data`.
+     * @param key key to search
      */
     hasKey(key: GObject.ParamSpec): boolean
     /**
      * Checks if the `key` has a first value in `data`.
+     * @param key key to search
      */
     keyIsKnown(key: GObject.ParamSpec): boolean
     /**
@@ -1431,17 +1595,21 @@ class Media {
      * 
      * Therefore, when invoking grl_data_length (data, K2) it will return 3:
      * considering K2 and the related keys (K1 and K3), there are 3 values.
+     * @param key a metadata key
      */
     length(key: KeyID): number
     /**
      * Removes the first value for `key` from `data`. If there are other keys related
      * to `key` their values will also be removed from `data`.
+     * @param key key to remove
      */
     remove(key: GObject.ParamSpec): void
     /**
      * Removes the value at position `index` for `key` from `data`. If there are other
      * keys related to `key,` their values at position `index` will also be removed
      * from `data`.
+     * @param key a metadata key
+     * @param index index of key to be removed, starting at 0
      */
     removeNth(key: KeyID, index: number): void
     /**
@@ -1451,21 +1619,30 @@ class Media {
      * Also, checks that `value` is compliant with `key` specification, modifying it
      * accordingly. For instance, if `key` requires a number between 0 and 10, but
      * `value` is outside this range, it will be adapted accordingly.
+     * @param key key to change or add
+     * @param value the new value
      */
     set(key: GObject.ParamSpec, value: any): void
     /**
      * Sets the first binary value associated with `key` in `data`. If `key` already
      * has a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param buf buffer holding the data
+     * @param size size of the buffer
      */
     setBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Sets the first float value associated with `key` in `data`. If `key` already has
      * a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param floatvalue the new value
      */
     setFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Sets the first int value associated with `key` in `data`. If `key` already has a
      * first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param intvalue the new value
      */
     setInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -1474,6 +1651,7 @@ class Media {
      * 
      * Set it to %TRUE so old values are overwritten, or %FALSE in other case
      * (default is %FALSE).
+     * @param overwrite if data can be overwritten
      */
     setOverwrite(overwrite: boolean): void
     /**
@@ -1481,11 +1659,15 @@ class Media {
      * 
      * `data` will take ownership of `relkeys,` so do not free it after invoking this
      * function.
+     * @param relkeys a set of related keys
+     * @param index position to be updated, starting at 0
      */
     setRelatedKeys(relkeys: RelatedKeys, index: number): void
     /**
      * Sets the first string value associated with `key` in `data`. If `key` already
      * has a value old value is freed and the new one is set.
+     * @param key key to change or add
+     * @param strvalue the new value
      */
     setString(key: GObject.ParamSpec, strvalue: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1523,6 +1705,10 @@ class Media {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1533,6 +1719,12 @@ class Media {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1556,6 +1748,7 @@ class Media {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1575,11 +1768,14 @@ class Media {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1587,6 +1783,8 @@ class Media {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1604,6 +1802,7 @@ class Media {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1649,6 +1848,7 @@ class Media {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1692,15 +1892,20 @@ class Media {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1741,6 +1946,7 @@ class Media {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1775,6 +1981,7 @@ class Media {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1806,6 +2013,7 @@ class Media {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1833,6 +2041,7 @@ class Media {
     static new(): Media
     /**
      * Unserializes a GrlMedia.
+     * @param serial a serialized media
      */
     static unserialize(serial: string): Media
     static $gtype: GObject.Type
@@ -1843,28 +2052,34 @@ class MediaAudio {
     /* Properties of Grl-0.1.Grl.Data */
     overwrite: boolean
     /* Fields of Grl-0.1.Grl.Media */
-    readonly parent: Data
+    parent: Data
     /* Fields of Grl-0.1.Grl.Data */
-    readonly priv: DataPrivate
-    readonly grlReserved: object[]
+    priv: DataPrivate
+    grlReserved: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.MediaAudio */
     /**
      * Adds a new artist to `audio`.
+     * @param artist an audio's artist
      */
     addArtist(artist: string): void
     /**
      * Adds a new genre to `audio`.
+     * @param genre an audio's genre
      */
     addGenre(genre: string): void
     /**
      * Adds a new lyrics to `audio`.
+     * @param lyrics an audio's lyrics
      */
     addLyrics(lyrics: string): void
     /**
      * Sets all the keys related with the URL of a media resource and adds it to
      * `audio` (useful for resources with more than one URL).
+     * @param url an audio's url
+     * @param mime the `url` mime-type
+     * @param bitrate the `url` bitrate, or -1 to ignore
      */
     addUrlData(url: string, mime: string, bitrate: number): void
     getAlbum(): string
@@ -1879,59 +2094,77 @@ class MediaAudio {
     getUrlData(): [ /* returnType */ string, /* mime */ string, /* bitrate */ number ]
     /**
      * in one go.
+     * @param index element to retrieve, starting at 0
      */
     getUrlDataNth(index: number): [ /* returnType */ string, /* mime */ string, /* bitrate */ number ]
     /**
      * Set the album of the audio
+     * @param album the audio's album
      */
     setAlbum(album: string): void
     /**
      * Set the artist of the audio
+     * @param artist the audio's artist
      */
     setArtist(artist: string): void
     /**
      * Set the bitrate of the audio
+     * @param bitrate the audio's bitrate
      */
     setBitrate(bitrate: number): void
     /**
      * Set the genre of the audio
+     * @param genre the audio's genre
      */
     setGenre(genre: string): void
     /**
      * Set the lyrics of the audio
+     * @param lyrics the audio's lyrics
      */
     setLyrics(lyrics: string): void
     /**
      * Set the track number of the audio
+     * @param trackNumber the audio's track number
      */
     setTrackNumber(trackNumber: number): void
     /**
      * Sets all the keys related with the URL of an audio resource in one go.
+     * @param url the audio's url
+     * @param mime the `url` mime-type
+     * @param bitrate the `url` bitrate, or -1 to ignore
      */
     setUrlData(url: string, mime: string, bitrate: number): void
     /* Methods of Grl-0.1.Grl.Media */
     /**
      * Adds a new author to `media`.
+     * @param author an author for `media`
      */
     addAuthor(author: string): void
     /**
      * Adds a new external player to `media`.
+     * @param player an external player for `media`
      */
     addExternalPlayer(player: string): void
     /**
      * Adds a new external url to `media`.
+     * @param url an external url for `media`
      */
     addExternalUrl(url: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a thumbnail for `media`
      */
     addThumbnail(thumbnail: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a buffer containing the thumbnail for `media`
+     * @param size size of buffer
      */
     addThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Adds a new media's URL with its mime-type.
+     * @param url a media's URL
+     * @param mime th `url` mime type
      */
     addUrlData(url: string, mime: string): void
     getAuthor(): string
@@ -1965,6 +2198,8 @@ class MediaAudio {
     getThumbnailBinary(size: number): number
     /**
      * buffer size.
+     * @param size pointer to store the thumbnail buffer size
+     * @param index element to retrieve
      */
     getThumbnailBinaryNth(size: number, index: number): number
     getThumbnailNth(index: number): string
@@ -1980,112 +2215,146 @@ class MediaAudio {
     serialize(): string
     /**
      * Set the media's author
+     * @param author the media's author
      */
     setAuthor(author: string): void
     /**
      * Set the media certificate
+     * @param certificate The rating certificate of the media
      */
     setCertificate(certificate: string): void
     /**
      * Set the creation_date of the media
+     * @param creationDate date when media was created
      */
     setCreationDate(creationDate: string): void
     /**
      * Set the media's date (TBD)
+     * @param date the date
      */
     setDate(date: string): void
     /**
      * Set the media's description
+     * @param description the description
      */
     setDescription(description: string): void
     /**
      * Set the media's duration
+     * @param duration the duration
      */
     setDuration(duration: number): void
     /**
      * Set the location of a player for the media (usually a flash player)
+     * @param player location of an external player for this media
      */
     setExternalPlayer(player: string): void
     /**
      * Set an external location where users can play the media
+     * @param url external location where this media can be played.
      */
     setExternalUrl(url: string): void
     /**
      * Set the media identifier
+     * @param id the identifier of the media
      */
     setId(id: string): void
     /**
      * Set the media last played date
+     * @param lastPlayed date when the media was last played
      */
     setLastPlayed(lastPlayed: string): void
     /**
      * Set the media last played position
+     * @param lastPosition second at which the media playback was interrupted
      */
     setLastPosition(lastPosition: number): void
     /**
      * Set the media license
+     * @param license The license of the media
      */
     setLicense(license: string): void
     /**
      * Set the media's mime-type
+     * @param mime the mime type
      */
     setMime(mime: string): void
     /**
      * Set the media play count
+     * @param playCount the play count
      */
     setPlayCount(playCount: number): void
     /**
      * This method receives a rating and its scale and normalizes it
+     * @param rating a rating value
+     * @param max maximum rating value
      */
     setRating(rating: number, max: number): void
     /**
      * Set the media's site
+     * @param site the site
      */
     setSite(site: string): void
     /**
      * Set the media's source
+     * @param source the source
      */
     setSource(source: string): void
     /**
      * Set the media studio
+     * @param studio The studio the media is from
      */
     setStudio(studio: string): void
     /**
      * Set the media's thumbnail URL
+     * @param thumbnail the thumbnail URL
      */
     setThumbnail(thumbnail: string): void
     /**
      * Set the media's binary thumbnail
+     * @param thumbnail thumbnail buffer
+     * @param size thumbnail buffer size
      */
     setThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Set the media's title
+     * @param title the title
      */
     setTitle(title: string): void
     /**
      * Set the media's URL
+     * @param url the media's URL
      */
     setUrl(url: string): void
     /**
      * Set the media's URL and its mime-type.
+     * @param url the media's URL
+     * @param mime the `url` mime type
      */
     setUrlData(url: string, mime: string): void
     /* Methods of Grl-0.1.Grl.Data */
     /**
      * Adds a new `key` to `data,` with no value. If key already exists, it does
      * nothing.
+     * @param key key to add
      */
     add(key: GObject.ParamSpec): void
     /**
      * Appends a new binary value for `key` in `data`.
+     * @param key key to append
+     * @param buf the buffer containing the new value
+     * @param size size of buffer
      */
     addBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Appends a new float value for `key` in `data`.
+     * @param key key to append
+     * @param floatvalue the new value
      */
     addFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Appends a new int value for `key` in `data`.
+     * @param key key to append
+     * @param intvalue the new value
      */
     addInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -2094,10 +2363,13 @@ class MediaAudio {
      * All keys in `prop` must be related among them.
      * 
      * `data` will take the ownership of `relkeys,` so do not modify it.
+     * @param relkeys a set of related properties with their values
      */
     addRelatedKeys(relkeys: RelatedKeys): void
     /**
      * Appends a new string value for `key` in `data`.
+     * @param key key to append
+     * @param strvalue the new value
      */
     addString(key: GObject.ParamSpec, strvalue: string): void
     /**
@@ -2108,12 +2380,14 @@ class MediaAudio {
      * Get the first value from `data` associated with `key`.
      * 
      * freed by user.
+     * @param key key to look up.
      */
     get(key: GObject.ParamSpec): any
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeys(key: KeyID): any[]
     /**
@@ -2121,6 +2395,7 @@ class MediaAudio {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeysString(key: KeyID): string[]
     /**
@@ -2129,18 +2404,21 @@ class MediaAudio {
      * is returned.
      * 
      * successful `size` will be set the to the buffer size.
+     * @param key key to use
      */
     getBinary(key: GObject.ParamSpec): [ /* returnType */ number, /* size */ number ]
     /**
      * Returns the first float value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gfloat, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getFloat(key: GObject.ParamSpec): number
     /**
      * Returns the first int value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gint, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getInt(key: GObject.ParamSpec): number
     /**
@@ -2160,12 +2438,15 @@ class MediaAudio {
      * 
      * If user changes any of the values in the related keys, the changes will
      * become permanent.
+     * @param key a metadata key
+     * @param index element to retrieve, starting at 0
      */
     getRelatedKeys(key: KeyID, index: number): RelatedKeys
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKey(key: KeyID): any[]
     /**
@@ -2173,6 +2454,7 @@ class MediaAudio {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKeyString(key: KeyID): string[]
     /**
@@ -2181,14 +2463,17 @@ class MediaAudio {
      * is returned.
      * 
      * not change nor free the value.
+     * @param key key to use
      */
     getString(key: GObject.ParamSpec): string
     /**
      * Checks if `key` is in `data`.
+     * @param key key to search
      */
     hasKey(key: GObject.ParamSpec): boolean
     /**
      * Checks if the `key` has a first value in `data`.
+     * @param key key to search
      */
     keyIsKnown(key: GObject.ParamSpec): boolean
     /**
@@ -2202,17 +2487,21 @@ class MediaAudio {
      * 
      * Therefore, when invoking grl_data_length (data, K2) it will return 3:
      * considering K2 and the related keys (K1 and K3), there are 3 values.
+     * @param key a metadata key
      */
     length(key: KeyID): number
     /**
      * Removes the first value for `key` from `data`. If there are other keys related
      * to `key` their values will also be removed from `data`.
+     * @param key key to remove
      */
     remove(key: GObject.ParamSpec): void
     /**
      * Removes the value at position `index` for `key` from `data`. If there are other
      * keys related to `key,` their values at position `index` will also be removed
      * from `data`.
+     * @param key a metadata key
+     * @param index index of key to be removed, starting at 0
      */
     removeNth(key: KeyID, index: number): void
     /**
@@ -2222,21 +2511,30 @@ class MediaAudio {
      * Also, checks that `value` is compliant with `key` specification, modifying it
      * accordingly. For instance, if `key` requires a number between 0 and 10, but
      * `value` is outside this range, it will be adapted accordingly.
+     * @param key key to change or add
+     * @param value the new value
      */
     set(key: GObject.ParamSpec, value: any): void
     /**
      * Sets the first binary value associated with `key` in `data`. If `key` already
      * has a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param buf buffer holding the data
+     * @param size size of the buffer
      */
     setBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Sets the first float value associated with `key` in `data`. If `key` already has
      * a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param floatvalue the new value
      */
     setFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Sets the first int value associated with `key` in `data`. If `key` already has a
      * first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param intvalue the new value
      */
     setInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -2245,6 +2543,7 @@ class MediaAudio {
      * 
      * Set it to %TRUE so old values are overwritten, or %FALSE in other case
      * (default is %FALSE).
+     * @param overwrite if data can be overwritten
      */
     setOverwrite(overwrite: boolean): void
     /**
@@ -2252,11 +2551,15 @@ class MediaAudio {
      * 
      * `data` will take ownership of `relkeys,` so do not free it after invoking this
      * function.
+     * @param relkeys a set of related keys
+     * @param index position to be updated, starting at 0
      */
     setRelatedKeys(relkeys: RelatedKeys, index: number): void
     /**
      * Sets the first string value associated with `key` in `data`. If `key` already
      * has a value old value is freed and the new one is set.
+     * @param key key to change or add
+     * @param strvalue the new value
      */
     setString(key: GObject.ParamSpec, strvalue: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2294,6 +2597,10 @@ class MediaAudio {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2304,6 +2611,12 @@ class MediaAudio {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2327,6 +2640,7 @@ class MediaAudio {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2346,11 +2660,14 @@ class MediaAudio {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2358,6 +2675,8 @@ class MediaAudio {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2375,6 +2694,7 @@ class MediaAudio {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2420,6 +2740,7 @@ class MediaAudio {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2463,15 +2784,20 @@ class MediaAudio {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2512,6 +2838,7 @@ class MediaAudio {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2546,6 +2873,7 @@ class MediaAudio {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2577,6 +2905,7 @@ class MediaAudio {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2610,12 +2939,12 @@ class MediaBox {
     /* Properties of Grl-0.1.Grl.Data */
     overwrite: boolean
     /* Fields of Grl-0.1.Grl.Media */
-    readonly parent: Data
+    parent: Data
     /* Fields of Grl-0.1.Grl.Data */
-    readonly priv: DataPrivate
-    readonly grlReserved: object[]
+    priv: DataPrivate
+    grlReserved: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.MediaBox */
     /**
      * Number of children of this box.
@@ -2626,31 +2955,40 @@ class MediaBox {
     /**
      * Sets the number of children of this box. Use
      * #GRL_METADATA_KEY_CHILDCOUNT_UNKNOWN if it is unknown.
+     * @param childcount number of children
      */
     setChildcount(childcount: number): void
     /* Methods of Grl-0.1.Grl.Media */
     /**
      * Adds a new author to `media`.
+     * @param author an author for `media`
      */
     addAuthor(author: string): void
     /**
      * Adds a new external player to `media`.
+     * @param player an external player for `media`
      */
     addExternalPlayer(player: string): void
     /**
      * Adds a new external url to `media`.
+     * @param url an external url for `media`
      */
     addExternalUrl(url: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a thumbnail for `media`
      */
     addThumbnail(thumbnail: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a buffer containing the thumbnail for `media`
+     * @param size size of buffer
      */
     addThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Adds a new media's URL with its mime-type.
+     * @param url a media's URL
+     * @param mime th `url` mime type
      */
     addUrlData(url: string, mime: string): void
     getAuthor(): string
@@ -2684,6 +3022,8 @@ class MediaBox {
     getThumbnailBinary(size: number): number
     /**
      * buffer size.
+     * @param size pointer to store the thumbnail buffer size
+     * @param index element to retrieve
      */
     getThumbnailBinaryNth(size: number, index: number): number
     getThumbnailNth(index: number): string
@@ -2699,112 +3039,146 @@ class MediaBox {
     serialize(): string
     /**
      * Set the media's author
+     * @param author the media's author
      */
     setAuthor(author: string): void
     /**
      * Set the media certificate
+     * @param certificate The rating certificate of the media
      */
     setCertificate(certificate: string): void
     /**
      * Set the creation_date of the media
+     * @param creationDate date when media was created
      */
     setCreationDate(creationDate: string): void
     /**
      * Set the media's date (TBD)
+     * @param date the date
      */
     setDate(date: string): void
     /**
      * Set the media's description
+     * @param description the description
      */
     setDescription(description: string): void
     /**
      * Set the media's duration
+     * @param duration the duration
      */
     setDuration(duration: number): void
     /**
      * Set the location of a player for the media (usually a flash player)
+     * @param player location of an external player for this media
      */
     setExternalPlayer(player: string): void
     /**
      * Set an external location where users can play the media
+     * @param url external location where this media can be played.
      */
     setExternalUrl(url: string): void
     /**
      * Set the media identifier
+     * @param id the identifier of the media
      */
     setId(id: string): void
     /**
      * Set the media last played date
+     * @param lastPlayed date when the media was last played
      */
     setLastPlayed(lastPlayed: string): void
     /**
      * Set the media last played position
+     * @param lastPosition second at which the media playback was interrupted
      */
     setLastPosition(lastPosition: number): void
     /**
      * Set the media license
+     * @param license The license of the media
      */
     setLicense(license: string): void
     /**
      * Set the media's mime-type
+     * @param mime the mime type
      */
     setMime(mime: string): void
     /**
      * Set the media play count
+     * @param playCount the play count
      */
     setPlayCount(playCount: number): void
     /**
      * This method receives a rating and its scale and normalizes it
+     * @param rating a rating value
+     * @param max maximum rating value
      */
     setRating(rating: number, max: number): void
     /**
      * Set the media's site
+     * @param site the site
      */
     setSite(site: string): void
     /**
      * Set the media's source
+     * @param source the source
      */
     setSource(source: string): void
     /**
      * Set the media studio
+     * @param studio The studio the media is from
      */
     setStudio(studio: string): void
     /**
      * Set the media's thumbnail URL
+     * @param thumbnail the thumbnail URL
      */
     setThumbnail(thumbnail: string): void
     /**
      * Set the media's binary thumbnail
+     * @param thumbnail thumbnail buffer
+     * @param size thumbnail buffer size
      */
     setThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Set the media's title
+     * @param title the title
      */
     setTitle(title: string): void
     /**
      * Set the media's URL
+     * @param url the media's URL
      */
     setUrl(url: string): void
     /**
      * Set the media's URL and its mime-type.
+     * @param url the media's URL
+     * @param mime the `url` mime type
      */
     setUrlData(url: string, mime: string): void
     /* Methods of Grl-0.1.Grl.Data */
     /**
      * Adds a new `key` to `data,` with no value. If key already exists, it does
      * nothing.
+     * @param key key to add
      */
     add(key: GObject.ParamSpec): void
     /**
      * Appends a new binary value for `key` in `data`.
+     * @param key key to append
+     * @param buf the buffer containing the new value
+     * @param size size of buffer
      */
     addBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Appends a new float value for `key` in `data`.
+     * @param key key to append
+     * @param floatvalue the new value
      */
     addFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Appends a new int value for `key` in `data`.
+     * @param key key to append
+     * @param intvalue the new value
      */
     addInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -2813,10 +3187,13 @@ class MediaBox {
      * All keys in `prop` must be related among them.
      * 
      * `data` will take the ownership of `relkeys,` so do not modify it.
+     * @param relkeys a set of related properties with their values
      */
     addRelatedKeys(relkeys: RelatedKeys): void
     /**
      * Appends a new string value for `key` in `data`.
+     * @param key key to append
+     * @param strvalue the new value
      */
     addString(key: GObject.ParamSpec, strvalue: string): void
     /**
@@ -2827,12 +3204,14 @@ class MediaBox {
      * Get the first value from `data` associated with `key`.
      * 
      * freed by user.
+     * @param key key to look up.
      */
     get(key: GObject.ParamSpec): any
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeys(key: KeyID): any[]
     /**
@@ -2840,6 +3219,7 @@ class MediaBox {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeysString(key: KeyID): string[]
     /**
@@ -2848,18 +3228,21 @@ class MediaBox {
      * is returned.
      * 
      * successful `size` will be set the to the buffer size.
+     * @param key key to use
      */
     getBinary(key: GObject.ParamSpec): [ /* returnType */ number, /* size */ number ]
     /**
      * Returns the first float value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gfloat, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getFloat(key: GObject.ParamSpec): number
     /**
      * Returns the first int value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gint, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getInt(key: GObject.ParamSpec): number
     /**
@@ -2879,12 +3262,15 @@ class MediaBox {
      * 
      * If user changes any of the values in the related keys, the changes will
      * become permanent.
+     * @param key a metadata key
+     * @param index element to retrieve, starting at 0
      */
     getRelatedKeys(key: KeyID, index: number): RelatedKeys
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKey(key: KeyID): any[]
     /**
@@ -2892,6 +3278,7 @@ class MediaBox {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKeyString(key: KeyID): string[]
     /**
@@ -2900,14 +3287,17 @@ class MediaBox {
      * is returned.
      * 
      * not change nor free the value.
+     * @param key key to use
      */
     getString(key: GObject.ParamSpec): string
     /**
      * Checks if `key` is in `data`.
+     * @param key key to search
      */
     hasKey(key: GObject.ParamSpec): boolean
     /**
      * Checks if the `key` has a first value in `data`.
+     * @param key key to search
      */
     keyIsKnown(key: GObject.ParamSpec): boolean
     /**
@@ -2921,17 +3311,21 @@ class MediaBox {
      * 
      * Therefore, when invoking grl_data_length (data, K2) it will return 3:
      * considering K2 and the related keys (K1 and K3), there are 3 values.
+     * @param key a metadata key
      */
     length(key: KeyID): number
     /**
      * Removes the first value for `key` from `data`. If there are other keys related
      * to `key` their values will also be removed from `data`.
+     * @param key key to remove
      */
     remove(key: GObject.ParamSpec): void
     /**
      * Removes the value at position `index` for `key` from `data`. If there are other
      * keys related to `key,` their values at position `index` will also be removed
      * from `data`.
+     * @param key a metadata key
+     * @param index index of key to be removed, starting at 0
      */
     removeNth(key: KeyID, index: number): void
     /**
@@ -2941,21 +3335,30 @@ class MediaBox {
      * Also, checks that `value` is compliant with `key` specification, modifying it
      * accordingly. For instance, if `key` requires a number between 0 and 10, but
      * `value` is outside this range, it will be adapted accordingly.
+     * @param key key to change or add
+     * @param value the new value
      */
     set(key: GObject.ParamSpec, value: any): void
     /**
      * Sets the first binary value associated with `key` in `data`. If `key` already
      * has a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param buf buffer holding the data
+     * @param size size of the buffer
      */
     setBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Sets the first float value associated with `key` in `data`. If `key` already has
      * a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param floatvalue the new value
      */
     setFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Sets the first int value associated with `key` in `data`. If `key` already has a
      * first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param intvalue the new value
      */
     setInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -2964,6 +3367,7 @@ class MediaBox {
      * 
      * Set it to %TRUE so old values are overwritten, or %FALSE in other case
      * (default is %FALSE).
+     * @param overwrite if data can be overwritten
      */
     setOverwrite(overwrite: boolean): void
     /**
@@ -2971,11 +3375,15 @@ class MediaBox {
      * 
      * `data` will take ownership of `relkeys,` so do not free it after invoking this
      * function.
+     * @param relkeys a set of related keys
+     * @param index position to be updated, starting at 0
      */
     setRelatedKeys(relkeys: RelatedKeys, index: number): void
     /**
      * Sets the first string value associated with `key` in `data`. If `key` already
      * has a value old value is freed and the new one is set.
+     * @param key key to change or add
+     * @param strvalue the new value
      */
     setString(key: GObject.ParamSpec, strvalue: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3013,6 +3421,10 @@ class MediaBox {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3023,6 +3435,12 @@ class MediaBox {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3046,6 +3464,7 @@ class MediaBox {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3065,11 +3484,14 @@ class MediaBox {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3077,6 +3499,8 @@ class MediaBox {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3094,6 +3518,7 @@ class MediaBox {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3139,6 +3564,7 @@ class MediaBox {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3182,15 +3608,20 @@ class MediaBox {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3231,6 +3662,7 @@ class MediaBox {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3265,6 +3697,7 @@ class MediaBox {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3296,6 +3729,7 @@ class MediaBox {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3329,16 +3763,20 @@ class MediaImage {
     /* Properties of Grl-0.1.Grl.Data */
     overwrite: boolean
     /* Fields of Grl-0.1.Grl.Media */
-    readonly parent: Data
+    parent: Data
     /* Fields of Grl-0.1.Grl.Data */
-    readonly priv: DataPrivate
-    readonly grlReserved: object[]
+    priv: DataPrivate
+    grlReserved: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.MediaImage */
     /**
      * Sets all the keys related with the URL of a media resource and adds it to
      * `image` (useful for resources with more than one URL).
+     * @param url a image's url
+     * @param mime image mime-type
+     * @param width image width, or -1 to ignore
+     * @param height image height, or -1 to ignore
      */
     addUrlData(url: string, mime: string, width: number, height: number): void
     getCameraModel(): string
@@ -3354,6 +3792,9 @@ class MediaImage {
     getUrlData(width: number, height: number): [ /* returnType */ string, /* mime */ string ]
     /**
      * in one go.
+     * @param index element to retrieve
+     * @param width the width, or %NULL to ignore
+     * @param height the height, or %NULL to ignore
      */
     getUrlDataNth(index: number, width: number, height: number): [ /* returnType */ string, /* mime */ string ]
     getWidth(): number
@@ -3362,45 +3803,61 @@ class MediaImage {
     setFlashUsed(flashUsed: string): void
     /**
      * Set the height of the image
+     * @param height the image's height
      */
     setHeight(height: number): void
     setIsoSpeed(isoSpeed: number): void
     setOrientation(orientation: number): void
     /**
      * Set the size of the image
+     * @param width the image's width
+     * @param height the image's height
      */
     setSize(width: number, height: number): void
     /**
      * Sets all the keys related with the URL of an image resource in one go.
+     * @param url the image's url
+     * @param mime image mime-type
+     * @param width image width, or -1 to ignore
+     * @param height image height, or -1 to ignore
      */
     setUrlData(url: string, mime: string, width: number, height: number): void
     /**
      * Set the width of the image
+     * @param width the image's width
      */
     setWidth(width: number): void
     /* Methods of Grl-0.1.Grl.Media */
     /**
      * Adds a new author to `media`.
+     * @param author an author for `media`
      */
     addAuthor(author: string): void
     /**
      * Adds a new external player to `media`.
+     * @param player an external player for `media`
      */
     addExternalPlayer(player: string): void
     /**
      * Adds a new external url to `media`.
+     * @param url an external url for `media`
      */
     addExternalUrl(url: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a thumbnail for `media`
      */
     addThumbnail(thumbnail: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a buffer containing the thumbnail for `media`
+     * @param size size of buffer
      */
     addThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Adds a new media's URL with its mime-type.
+     * @param url a media's URL
+     * @param mime th `url` mime type
      */
     addUrlData(url: string, mime: string): void
     getAuthor(): string
@@ -3434,6 +3891,8 @@ class MediaImage {
     getThumbnailBinary(size: number): number
     /**
      * buffer size.
+     * @param size pointer to store the thumbnail buffer size
+     * @param index element to retrieve
      */
     getThumbnailBinaryNth(size: number, index: number): number
     getThumbnailNth(index: number): string
@@ -3449,112 +3908,146 @@ class MediaImage {
     serialize(): string
     /**
      * Set the media's author
+     * @param author the media's author
      */
     setAuthor(author: string): void
     /**
      * Set the media certificate
+     * @param certificate The rating certificate of the media
      */
     setCertificate(certificate: string): void
     /**
      * Set the creation_date of the media
+     * @param creationDate date when media was created
      */
     setCreationDate(creationDate: string): void
     /**
      * Set the media's date (TBD)
+     * @param date the date
      */
     setDate(date: string): void
     /**
      * Set the media's description
+     * @param description the description
      */
     setDescription(description: string): void
     /**
      * Set the media's duration
+     * @param duration the duration
      */
     setDuration(duration: number): void
     /**
      * Set the location of a player for the media (usually a flash player)
+     * @param player location of an external player for this media
      */
     setExternalPlayer(player: string): void
     /**
      * Set an external location where users can play the media
+     * @param url external location where this media can be played.
      */
     setExternalUrl(url: string): void
     /**
      * Set the media identifier
+     * @param id the identifier of the media
      */
     setId(id: string): void
     /**
      * Set the media last played date
+     * @param lastPlayed date when the media was last played
      */
     setLastPlayed(lastPlayed: string): void
     /**
      * Set the media last played position
+     * @param lastPosition second at which the media playback was interrupted
      */
     setLastPosition(lastPosition: number): void
     /**
      * Set the media license
+     * @param license The license of the media
      */
     setLicense(license: string): void
     /**
      * Set the media's mime-type
+     * @param mime the mime type
      */
     setMime(mime: string): void
     /**
      * Set the media play count
+     * @param playCount the play count
      */
     setPlayCount(playCount: number): void
     /**
      * This method receives a rating and its scale and normalizes it
+     * @param rating a rating value
+     * @param max maximum rating value
      */
     setRating(rating: number, max: number): void
     /**
      * Set the media's site
+     * @param site the site
      */
     setSite(site: string): void
     /**
      * Set the media's source
+     * @param source the source
      */
     setSource(source: string): void
     /**
      * Set the media studio
+     * @param studio The studio the media is from
      */
     setStudio(studio: string): void
     /**
      * Set the media's thumbnail URL
+     * @param thumbnail the thumbnail URL
      */
     setThumbnail(thumbnail: string): void
     /**
      * Set the media's binary thumbnail
+     * @param thumbnail thumbnail buffer
+     * @param size thumbnail buffer size
      */
     setThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Set the media's title
+     * @param title the title
      */
     setTitle(title: string): void
     /**
      * Set the media's URL
+     * @param url the media's URL
      */
     setUrl(url: string): void
     /**
      * Set the media's URL and its mime-type.
+     * @param url the media's URL
+     * @param mime the `url` mime type
      */
     setUrlData(url: string, mime: string): void
     /* Methods of Grl-0.1.Grl.Data */
     /**
      * Adds a new `key` to `data,` with no value. If key already exists, it does
      * nothing.
+     * @param key key to add
      */
     add(key: GObject.ParamSpec): void
     /**
      * Appends a new binary value for `key` in `data`.
+     * @param key key to append
+     * @param buf the buffer containing the new value
+     * @param size size of buffer
      */
     addBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Appends a new float value for `key` in `data`.
+     * @param key key to append
+     * @param floatvalue the new value
      */
     addFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Appends a new int value for `key` in `data`.
+     * @param key key to append
+     * @param intvalue the new value
      */
     addInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -3563,10 +4056,13 @@ class MediaImage {
      * All keys in `prop` must be related among them.
      * 
      * `data` will take the ownership of `relkeys,` so do not modify it.
+     * @param relkeys a set of related properties with their values
      */
     addRelatedKeys(relkeys: RelatedKeys): void
     /**
      * Appends a new string value for `key` in `data`.
+     * @param key key to append
+     * @param strvalue the new value
      */
     addString(key: GObject.ParamSpec, strvalue: string): void
     /**
@@ -3577,12 +4073,14 @@ class MediaImage {
      * Get the first value from `data` associated with `key`.
      * 
      * freed by user.
+     * @param key key to look up.
      */
     get(key: GObject.ParamSpec): any
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeys(key: KeyID): any[]
     /**
@@ -3590,6 +4088,7 @@ class MediaImage {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeysString(key: KeyID): string[]
     /**
@@ -3598,18 +4097,21 @@ class MediaImage {
      * is returned.
      * 
      * successful `size` will be set the to the buffer size.
+     * @param key key to use
      */
     getBinary(key: GObject.ParamSpec): [ /* returnType */ number, /* size */ number ]
     /**
      * Returns the first float value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gfloat, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getFloat(key: GObject.ParamSpec): number
     /**
      * Returns the first int value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gint, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getInt(key: GObject.ParamSpec): number
     /**
@@ -3629,12 +4131,15 @@ class MediaImage {
      * 
      * If user changes any of the values in the related keys, the changes will
      * become permanent.
+     * @param key a metadata key
+     * @param index element to retrieve, starting at 0
      */
     getRelatedKeys(key: KeyID, index: number): RelatedKeys
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKey(key: KeyID): any[]
     /**
@@ -3642,6 +4147,7 @@ class MediaImage {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKeyString(key: KeyID): string[]
     /**
@@ -3650,14 +4156,17 @@ class MediaImage {
      * is returned.
      * 
      * not change nor free the value.
+     * @param key key to use
      */
     getString(key: GObject.ParamSpec): string
     /**
      * Checks if `key` is in `data`.
+     * @param key key to search
      */
     hasKey(key: GObject.ParamSpec): boolean
     /**
      * Checks if the `key` has a first value in `data`.
+     * @param key key to search
      */
     keyIsKnown(key: GObject.ParamSpec): boolean
     /**
@@ -3671,17 +4180,21 @@ class MediaImage {
      * 
      * Therefore, when invoking grl_data_length (data, K2) it will return 3:
      * considering K2 and the related keys (K1 and K3), there are 3 values.
+     * @param key a metadata key
      */
     length(key: KeyID): number
     /**
      * Removes the first value for `key` from `data`. If there are other keys related
      * to `key` their values will also be removed from `data`.
+     * @param key key to remove
      */
     remove(key: GObject.ParamSpec): void
     /**
      * Removes the value at position `index` for `key` from `data`. If there are other
      * keys related to `key,` their values at position `index` will also be removed
      * from `data`.
+     * @param key a metadata key
+     * @param index index of key to be removed, starting at 0
      */
     removeNth(key: KeyID, index: number): void
     /**
@@ -3691,21 +4204,30 @@ class MediaImage {
      * Also, checks that `value` is compliant with `key` specification, modifying it
      * accordingly. For instance, if `key` requires a number between 0 and 10, but
      * `value` is outside this range, it will be adapted accordingly.
+     * @param key key to change or add
+     * @param value the new value
      */
     set(key: GObject.ParamSpec, value: any): void
     /**
      * Sets the first binary value associated with `key` in `data`. If `key` already
      * has a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param buf buffer holding the data
+     * @param size size of the buffer
      */
     setBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Sets the first float value associated with `key` in `data`. If `key` already has
      * a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param floatvalue the new value
      */
     setFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Sets the first int value associated with `key` in `data`. If `key` already has a
      * first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param intvalue the new value
      */
     setInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -3714,6 +4236,7 @@ class MediaImage {
      * 
      * Set it to %TRUE so old values are overwritten, or %FALSE in other case
      * (default is %FALSE).
+     * @param overwrite if data can be overwritten
      */
     setOverwrite(overwrite: boolean): void
     /**
@@ -3721,11 +4244,15 @@ class MediaImage {
      * 
      * `data` will take ownership of `relkeys,` so do not free it after invoking this
      * function.
+     * @param relkeys a set of related keys
+     * @param index position to be updated, starting at 0
      */
     setRelatedKeys(relkeys: RelatedKeys, index: number): void
     /**
      * Sets the first string value associated with `key` in `data`. If `key` already
      * has a value old value is freed and the new one is set.
+     * @param key key to change or add
+     * @param strvalue the new value
      */
     setString(key: GObject.ParamSpec, strvalue: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3763,6 +4290,10 @@ class MediaImage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3773,6 +4304,12 @@ class MediaImage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3796,6 +4333,7 @@ class MediaImage {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3815,11 +4353,14 @@ class MediaImage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3827,6 +4368,8 @@ class MediaImage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3844,6 +4387,7 @@ class MediaImage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3889,6 +4433,7 @@ class MediaImage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3932,15 +4477,20 @@ class MediaImage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3981,6 +4531,7 @@ class MediaImage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4015,6 +4566,7 @@ class MediaImage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4046,6 +4598,7 @@ class MediaImage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4077,7 +4630,7 @@ interface MediaPlugin_ConstructProps extends GObject.Object_ConstructProps {
 }
 class MediaPlugin {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.MediaPlugin */
     /**
      * Get the author of the plugin
@@ -4097,6 +4650,7 @@ class MediaPlugin {
     getId(): string
     /**
      * Get the information of the `plugin` that is associated with the given key
+     * @param key a key representing information about this plugin
      */
     getInfo(key: string): string
     /**
@@ -4164,6 +4718,10 @@ class MediaPlugin {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4174,6 +4732,12 @@ class MediaPlugin {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4197,6 +4761,7 @@ class MediaPlugin {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4216,11 +4781,14 @@ class MediaPlugin {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4228,6 +4796,8 @@ class MediaPlugin {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4245,6 +4815,7 @@ class MediaPlugin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4290,6 +4861,7 @@ class MediaPlugin {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4333,15 +4905,20 @@ class MediaPlugin {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4382,6 +4959,7 @@ class MediaPlugin {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4416,6 +4994,7 @@ class MediaPlugin {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4447,6 +5026,7 @@ class MediaPlugin {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4494,14 +5074,20 @@ class MediaSource {
      */
     sourceName: string
     /* Fields of Grl-0.1.Grl.MetadataSource */
-    readonly parent: MediaPlugin
+    parent: MediaPlugin
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.MediaSource */
     /**
      * Browse from `skip,` a `count` number of media elements through an available list.
      * 
      * This method is asynchronous.
+     * @param container a container of data transfer objects
+     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param skip the number if elements to skip in the browse operation
+     * @param count the number of elements to retrieve in the browse operation
+     * @param flags the resolution mode
+     * @param callback the user defined callback
      */
     browse(container: Media | null, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags, callback: MediaSourceResultCb): number
     /**
@@ -4512,6 +5098,11 @@ class MediaSource {
      * 
      * elements. After use g_object_unref() every element and g_list_free() the
      * list.
+     * @param container a container of data transfer objects
+     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param skip the number if elements to skip in the browse operation
+     * @param count the number of elements to retrieve in the browse operation
+     * @param flags the resolution mode
      */
     browseSync(container: Media | null, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[]
     /**
@@ -4524,6 +5115,7 @@ class MediaSource {
      * corresponding callback will be called with the
      * `GRL_CORE_ERROR_OPERATION_CANCELLED` error set, and no more action will be
      * taken for that operation after the said callback with error has been called.
+     * @param operationId the identifier of the running operation, as returned by the function that started it
      */
     cancel(operationId: number): void
     /**
@@ -4539,6 +5131,10 @@ class MediaSource {
      * resolution.
      * 
      * This method is asynchronous.
+     * @param uri A URI that can be used to identify a media resource
+     * @param keys A list of keys to resolve
+     * @param flags the resolution mode
+     * @param callback the user defined callback
      */
     getMediaFromUri(uri: string, keys: KeyID[], flags: MetadataResolutionFlags, callback: MediaSourceMetadataCb): number
     /**
@@ -4550,10 +5146,14 @@ class MediaSource {
      * resolution.
      * 
      * This method is synchronous.
+     * @param uri A URI that can be used to identify a media resource
+     * @param keys A list of keys to resolve
+     * @param flags the resolution mode
      */
     getMediaFromUriSync(uri: string, keys: KeyID[], flags: MetadataResolutionFlags): Media
     /**
      * Obtains the previously attached data
+     * @param operationId the identifier of a running operation
      */
     getOperationData(operationId: number): object
     /**
@@ -4561,6 +5161,10 @@ class MediaSource {
      * a given `media` to the media source.
      * 
      * This method is asynchronous.
+     * @param media a data transfer object
+     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param flags the resolution mode
+     * @param callback the user defined callback
      */
     metadata(media: Media | null, keys: GObject.ParamSpec[], flags: MetadataResolutionFlags, callback: MediaSourceMetadataCb): number
     /**
@@ -4568,6 +5172,9 @@ class MediaSource {
      * a given `media` to the media source.
      * 
      * This method is synchronous.
+     * @param media a data transfer object
+     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param flags the resolution mode
      */
     metadataSync(media: Media | null, keys: GObject.ParamSpec[], flags: MetadataResolutionFlags): Media
     /**
@@ -4581,6 +5188,9 @@ class MediaSource {
      * This function is intended to be used only by plugins.
      * </para>
      * </note>
+     * @param media the media which has changed, or `NULL` to use the root box.
+     * @param changeType the type of change
+     * @param locationUnknown if change has happened in `media` or any descendant
      */
     notifyChange(media: Media | null, changeType: MediaSourceChangeType, locationUnknown: boolean): void
     /**
@@ -4598,6 +5208,9 @@ class MediaSource {
      * This function is intended to be used only by plugins.
      * </para>
      * </note>
+     * @param changedMedias : the list of medias that have changed
+     * @param changeType the type of change
+     * @param locationUnknown if change has happpened in `media` or any descendant
      */
     notifyChangeList(changedMedias: Media[], changeType: MediaSourceChangeType, locationUnknown: boolean): void
     /**
@@ -4621,6 +5234,12 @@ class MediaSource {
      * string to search.
      * 
      * This method is asynchronous.
+     * @param query the query to process
+     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param skip the number if elements to skip in the query operation
+     * @param count the number of elements to retrieve in the query operation
+     * @param flags the resolution mode
+     * @param callback the user defined callback
      */
     query(query: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags, callback: MediaSourceResultCb): number
     /**
@@ -4631,18 +5250,26 @@ class MediaSource {
      * 
      * elements. After use g_object_unref() every element and g_list_free() the
      * list.
+     * @param query the query to process
+     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param skip the number if elements to skip in the query operation
+     * @param count the number of elements to retrieve in the query operation
+     * @param flags the resolution mode
      */
     querySync(query: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[]
     /**
      * Remove a `media` from the `source` repository.
      * 
      * This method is asynchronous.
+     * @param media a data transfer object
+     * @param callback the user defined callback
      */
     remove(media: Media, callback: MediaSourceRemoveCb): void
     /**
      * Remove a `media` from the `source` repository.
      * 
      * This method is synchronous.
+     * @param media a data transfer object
      */
     removeSync(media: Media): void
     /**
@@ -4655,6 +5282,12 @@ class MediaSource {
      * `GRL_CORE_ERROR_SEARCH_NULL_UNSUPPORTED` in `callback'`s error parameter.
      * 
      * This method is asynchronous.
+     * @param text the text to search
+     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param skip the number if elements to skip in the search operation
+     * @param count the number of elements to retrieve in the search operation
+     * @param flags the resolution mode
+     * @param callback the user defined callback
      */
     search(text: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags, callback: MediaSourceResultCb): number
     /**
@@ -4670,26 +5303,39 @@ class MediaSource {
      * 
      * elements. After use g_object_unref() every element and g_list_free() the
      * list.
+     * @param text the text to search
+     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param skip the number if elements to skip in the search operation
+     * @param count the number of elements to retrieve in the search operation
+     * @param flags the resolution mode
      */
     searchSync(text: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[]
     /**
      * TBD
+     * @param threshold the threshold to request
      */
     setAutoSplitThreshold(threshold: number): void
     /**
      * Attach a pointer to the specific operation.
+     * @param operationId the identifier of a running operation
+     * @param data the data to attach
      */
     setOperationData(operationId: number, data: object): void
     /**
      * Store the `media` into the `parent` container
      * 
      * This method is asynchronous.
+     * @param parent a parent to store the data transfer objects
+     * @param media a data transfer object
+     * @param callback the user defined callback
      */
     store(parent: MediaBox | null, media: Media, callback: MediaSourceStoreCb): void
     /**
      * Store the `media` into the `parent` container.
      * 
      * This method is synchronous.
+     * @param parent a #GrlMediaBox to store the data transfer objects
+     * @param media a #GrlMedia data transfer object
      */
     storeSync(parent: MediaBox | null, media: Media): void
     /**
@@ -4698,6 +5344,7 @@ class MediaSource {
      * 
      * 
      * This method is synchronous.
+     * @param uri A URI that can be used to identify a media resource
      */
     testMediaFromUri(uri: string): boolean
     /* Methods of Grl-0.1.Grl.MetadataSource */
@@ -4711,6 +5358,7 @@ class MediaSource {
      * corresponding callback will be called with the
      * `GRL_CORE_ERROR_OPERATION_CANCELLED` error set, and no more action will be
      * taken for that operation after the said callback with error has been called.
+     * @param operationId the identifier of the running operation, as returned by the function that started it
      */
     cancel(operationId: number): void
     /**
@@ -4720,6 +5368,8 @@ class MediaSource {
      * 
      * `return_filtered` is %TRUE will return the list of slow keys; otherwise
      * %NULL
+     * @param keys  the list of keys to filter out
+     * @param returnFiltered if %TRUE the return value shall be a new list with the slow keys
      */
     filterSlow(keys: GObject.ParamSpec[] | null, returnFiltered: boolean): [ /* returnType */ GObject.ParamSpec[], /* keys */ GObject.ParamSpec[] | null ]
     /**
@@ -4728,6 +5378,8 @@ class MediaSource {
      * 
      * if `return_filtered` is %TRUE will return the list of removed keys;
      * otherwise %NULL
+     * @param keys  the list of keys to filter out
+     * @param returnFiltered if %TRUE the return value shall be a new list with the unsupported keys
      */
     filterSupported(keys: GObject.ParamSpec[] | null, returnFiltered: boolean): [ /* returnType */ GObject.ParamSpec[], /* keys */ GObject.ParamSpec[] | null ]
     /**
@@ -4740,6 +5392,8 @@ class MediaSource {
      * 
      * if `return_filtered` is %TRUE will return the list of non-writtable keys;
      * otherwise %NULL
+     * @param keys  the list of keys to filter out
+     * @param returnFiltered if %TRUE the return value shall be a new list with the non-writable keys
      */
     filterWritable(keys: GObject.ParamSpec[] | null, returnFiltered: boolean): [ /* returnType */ GObject.ParamSpec[], /* keys */ GObject.ParamSpec[] | null ]
     genOperationId(): number
@@ -4748,6 +5402,7 @@ class MediaSource {
     getName(): string
     /**
      * Obtains the previously attached data
+     * @param operationId the identifier of a running operation
      */
     getOperationData(operationId: number): object
     /**
@@ -4755,6 +5410,7 @@ class MediaSource {
      * and store the requested `key_id`
      * 
      * a #GList with the keys, or `NULL` if it can not resolve `key_id`
+     * @param keyId the requested metadata key
      */
     keyDepends(keyId: GObject.ParamSpec): GObject.ParamSpec[]
     /**
@@ -4769,6 +5425,8 @@ class MediaSource {
      * This function is synchronous and should not block.
      * 
      * `media,` `FALSE` otherwise.
+     * @param media a media on which we want more metadata
+     * @param keyId the key corresponding to a metadata we might want
      */
     mayResolve(media: Media, keyId: KeyID): [ /* returnType */ boolean, /* missingKeys */ KeyID[] ]
     operationIsCancelled(operationId: number): boolean
@@ -4780,6 +5438,10 @@ class MediaSource {
      * metadata of the requested keys.
      * 
      * This function is asynchronous.
+     * @param keys the #GList of #GrlKeyID to retrieve
+     * @param media Transfer object where all the metadata is stored.
+     * @param flags bitwise mask of #GrlMetadataResolutionFlags with the resolution strategy
+     * @param callback the callback to execute when the `media` metadata is filled up
      */
     resolve(keys: GObject.ParamSpec[] | null, media: Media, flags: MetadataResolutionFlags, callback: MetadataSourceResolveCb): number
     /**
@@ -4787,6 +5449,9 @@ class MediaSource {
      * metadata of the requested keys.
      * 
      * This function is synchronous.
+     * @param keys the #GList of #GrlKeyID to retrieve
+     * @param media Transfer object where all the metadata is stored
+     * @param flags bitwise mask of #GrlMetadataResolutionFlags with the resolution strategy
      */
     resolveSync(keys: GObject.ParamSpec[] | null, media: Media, flags: MetadataResolutionFlags): Media
     /**
@@ -4796,6 +5461,10 @@ class MediaSource {
      * shall return this new values for the selected keys.
      * 
      * This function is asynchronous and uses the Glib's main loop.
+     * @param media the #GrlMedia object that we want to operate on.
+     * @param keys a list of #GrlKeyID whose values we want to change.
+     * @param flags Flags to configure specific behaviors of the operation.
+     * @param callback the callback to execute when the operation is finished.
      */
     setMetadata(media: Media, keys: GObject.ParamSpec[] | null, flags: MetadataWritingFlags, callback: MetadataSourceSetMetadataCb): void
     /**
@@ -4807,12 +5476,17 @@ class MediaSource {
      * This function is synchronous.
      * 
      * a #GList of keys that could not be updated, or `NULL`
+     * @param media the #GrlMedia object that we want to operate on
+     * @param keys a list of #GrlKeyID whose values we want to change
+     * @param flags Flags to configure specific behaviors of the operation.
      */
     setMetadataSync(media: Media, keys: GObject.ParamSpec[] | null, flags: MetadataWritingFlags): GObject.ParamSpec[]
     setOperationCancelled(operationId: number): void
     setOperationCompleted(operationId: number): void
     /**
      * Attach a pointer to the specific operation.
+     * @param operationId the identifier of a running operation
+     * @param data the data to attach
      */
     setOperationData(operationId: number, data: object): void
     setOperationFinished(operationId: number): void
@@ -4853,6 +5527,7 @@ class MediaSource {
     getFilename(): string
     /**
      * Get the information of the `plugin` that is associated with the given key
+     * @param key a key representing information about this plugin
      */
     getInfo(key: string): string
     /**
@@ -4916,6 +5591,10 @@ class MediaSource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4926,6 +5605,12 @@ class MediaSource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4949,6 +5634,7 @@ class MediaSource {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4968,11 +5654,14 @@ class MediaSource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4980,6 +5669,8 @@ class MediaSource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4997,6 +5688,7 @@ class MediaSource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5042,6 +5734,7 @@ class MediaSource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5085,15 +5778,20 @@ class MediaSource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5134,6 +5832,7 @@ class MediaSource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5168,6 +5867,7 @@ class MediaSource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Grl-0.1.Grl.MediaSource */
@@ -5186,6 +5886,9 @@ class MediaSource {
      * For the cases where the source can only signal that a change happened, but
      * not where, it would use a list with the the root box (`NULL` id) and set
      * location_unknown as `TRUE`.
+     * @param changedMedias a #GPtrArray with the medias that changed or a common ancestor of them of type #GrlMediaBox.
+     * @param changeType the kind of change that ocurred
+     * @param locationUnknown `TRUE` if the change happened in `media` itself or in one of its direct children (when `media` is a #GrlMediaBox). `FALSE` otherwise
      */
     connect(sigName: "content-changed", callback: ((changedMedias: object[], changeType: MediaSourceChangeType, locationUnknown: boolean) => void)): number
     on(sigName: "content-changed", callback: (changedMedias: object[], changeType: MediaSourceChangeType, locationUnknown: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -5221,6 +5924,7 @@ class MediaSource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5265,16 +5969,21 @@ class MediaVideo {
     /* Properties of Grl-0.1.Grl.Data */
     overwrite: boolean
     /* Fields of Grl-0.1.Grl.Media */
-    readonly parent: Data
+    parent: Data
     /* Fields of Grl-0.1.Grl.Data */
-    readonly priv: DataPrivate
-    readonly grlReserved: object[]
+    priv: DataPrivate
+    grlReserved: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.MediaVideo */
     /**
      * Sets all the keys related with the URL of a media resource and adds it to
      * `video` (useful for resources with more than one URL).
+     * @param url a video's url
+     * @param mime video mime-type
+     * @param framerate video framerate, or -1 to ignore
+     * @param width video width, or -1 to ignore
+     * @param height video height, or -1 to ignore
      */
     addUrlData(url: string, mime: string, framerate: number, width: number, height: number): void
     getEpisode(): number
@@ -5285,64 +5994,89 @@ class MediaVideo {
     getUrlData(framerate: number, width: number, height: number): [ /* returnType */ string, /* mime */ string ]
     /**
      * in one go.
+     * @param index element to retrieve
+     * @param framerate the url framerate, or %NULL to ignore
+     * @param width the url width, or %NULL to ignore
+     * @param height the url height, or %NULL to ignore
      */
     getUrlDataNth(index: number, framerate: number, width: number, height: number): [ /* returnType */ string, /* mime */ string ]
     getWidth(): number
     /**
      * Sets the episode number of the video
+     * @param episode the video's episode
      */
     setEpisode(episode: number): void
     /**
      * Set the framerate of the video
+     * @param framerate the video's framerate
      */
     setFramerate(framerate: number): void
     /**
      * Set the height of the video
+     * @param height the video's height
      */
     setHeight(height: number): void
     /**
      * Sets the season number of the video
+     * @param season the video's season
      */
     setSeason(season: number): void
     /**
      * Sets the show title of the video
+     * @param show the video's show name
      */
     setShow(show: string): void
     /**
      * Set the width and the height of the video
+     * @param width the video's width
+     * @param height the video's height
      */
     setSize(width: number, height: number): void
     /**
      * Sets all the keys related with the URL of a video resource in one go.
+     * @param url the video's url
+     * @param mime video mime-type
+     * @param framerate video framerate, or -1 to ignore
+     * @param width video width, or -1 to ignore
+     * @param height video height, or -1 to ignore
      */
     setUrlData(url: string, mime: string, framerate: number, width: number, height: number): void
     /**
      * Set the width of the video
+     * @param width the video's width
      */
     setWidth(width: number): void
     /* Methods of Grl-0.1.Grl.Media */
     /**
      * Adds a new author to `media`.
+     * @param author an author for `media`
      */
     addAuthor(author: string): void
     /**
      * Adds a new external player to `media`.
+     * @param player an external player for `media`
      */
     addExternalPlayer(player: string): void
     /**
      * Adds a new external url to `media`.
+     * @param url an external url for `media`
      */
     addExternalUrl(url: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a thumbnail for `media`
      */
     addThumbnail(thumbnail: string): void
     /**
      * Adds a new thumbnail to `media`.
+     * @param thumbnail a buffer containing the thumbnail for `media`
+     * @param size size of buffer
      */
     addThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Adds a new media's URL with its mime-type.
+     * @param url a media's URL
+     * @param mime th `url` mime type
      */
     addUrlData(url: string, mime: string): void
     getAuthor(): string
@@ -5376,6 +6110,8 @@ class MediaVideo {
     getThumbnailBinary(size: number): number
     /**
      * buffer size.
+     * @param size pointer to store the thumbnail buffer size
+     * @param index element to retrieve
      */
     getThumbnailBinaryNth(size: number, index: number): number
     getThumbnailNth(index: number): string
@@ -5391,112 +6127,146 @@ class MediaVideo {
     serialize(): string
     /**
      * Set the media's author
+     * @param author the media's author
      */
     setAuthor(author: string): void
     /**
      * Set the media certificate
+     * @param certificate The rating certificate of the media
      */
     setCertificate(certificate: string): void
     /**
      * Set the creation_date of the media
+     * @param creationDate date when media was created
      */
     setCreationDate(creationDate: string): void
     /**
      * Set the media's date (TBD)
+     * @param date the date
      */
     setDate(date: string): void
     /**
      * Set the media's description
+     * @param description the description
      */
     setDescription(description: string): void
     /**
      * Set the media's duration
+     * @param duration the duration
      */
     setDuration(duration: number): void
     /**
      * Set the location of a player for the media (usually a flash player)
+     * @param player location of an external player for this media
      */
     setExternalPlayer(player: string): void
     /**
      * Set an external location where users can play the media
+     * @param url external location where this media can be played.
      */
     setExternalUrl(url: string): void
     /**
      * Set the media identifier
+     * @param id the identifier of the media
      */
     setId(id: string): void
     /**
      * Set the media last played date
+     * @param lastPlayed date when the media was last played
      */
     setLastPlayed(lastPlayed: string): void
     /**
      * Set the media last played position
+     * @param lastPosition second at which the media playback was interrupted
      */
     setLastPosition(lastPosition: number): void
     /**
      * Set the media license
+     * @param license The license of the media
      */
     setLicense(license: string): void
     /**
      * Set the media's mime-type
+     * @param mime the mime type
      */
     setMime(mime: string): void
     /**
      * Set the media play count
+     * @param playCount the play count
      */
     setPlayCount(playCount: number): void
     /**
      * This method receives a rating and its scale and normalizes it
+     * @param rating a rating value
+     * @param max maximum rating value
      */
     setRating(rating: number, max: number): void
     /**
      * Set the media's site
+     * @param site the site
      */
     setSite(site: string): void
     /**
      * Set the media's source
+     * @param source the source
      */
     setSource(source: string): void
     /**
      * Set the media studio
+     * @param studio The studio the media is from
      */
     setStudio(studio: string): void
     /**
      * Set the media's thumbnail URL
+     * @param thumbnail the thumbnail URL
      */
     setThumbnail(thumbnail: string): void
     /**
      * Set the media's binary thumbnail
+     * @param thumbnail thumbnail buffer
+     * @param size thumbnail buffer size
      */
     setThumbnailBinary(thumbnail: number, size: number): void
     /**
      * Set the media's title
+     * @param title the title
      */
     setTitle(title: string): void
     /**
      * Set the media's URL
+     * @param url the media's URL
      */
     setUrl(url: string): void
     /**
      * Set the media's URL and its mime-type.
+     * @param url the media's URL
+     * @param mime the `url` mime type
      */
     setUrlData(url: string, mime: string): void
     /* Methods of Grl-0.1.Grl.Data */
     /**
      * Adds a new `key` to `data,` with no value. If key already exists, it does
      * nothing.
+     * @param key key to add
      */
     add(key: GObject.ParamSpec): void
     /**
      * Appends a new binary value for `key` in `data`.
+     * @param key key to append
+     * @param buf the buffer containing the new value
+     * @param size size of buffer
      */
     addBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Appends a new float value for `key` in `data`.
+     * @param key key to append
+     * @param floatvalue the new value
      */
     addFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Appends a new int value for `key` in `data`.
+     * @param key key to append
+     * @param intvalue the new value
      */
     addInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -5505,10 +6275,13 @@ class MediaVideo {
      * All keys in `prop` must be related among them.
      * 
      * `data` will take the ownership of `relkeys,` so do not modify it.
+     * @param relkeys a set of related properties with their values
      */
     addRelatedKeys(relkeys: RelatedKeys): void
     /**
      * Appends a new string value for `key` in `data`.
+     * @param key key to append
+     * @param strvalue the new value
      */
     addString(key: GObject.ParamSpec, strvalue: string): void
     /**
@@ -5519,12 +6292,14 @@ class MediaVideo {
      * Get the first value from `data` associated with `key`.
      * 
      * freed by user.
+     * @param key key to look up.
      */
     get(key: GObject.ParamSpec): any
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeys(key: KeyID): any[]
     /**
@@ -5532,6 +6307,7 @@ class MediaVideo {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getAllSingleRelatedKeysString(key: KeyID): string[]
     /**
@@ -5540,18 +6316,21 @@ class MediaVideo {
      * is returned.
      * 
      * successful `size` will be set the to the buffer size.
+     * @param key key to use
      */
     getBinary(key: GObject.ParamSpec): [ /* returnType */ number, /* size */ number ]
     /**
      * Returns the first float value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gfloat, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getFloat(key: GObject.ParamSpec): number
     /**
      * Returns the first int value associated with `key` from `data`. If `key` has no
      * first value, or value is not a gint, or `key` is not in data, then 0 is
      * returned.
+     * @param key key to use
      */
     getInt(key: GObject.ParamSpec): number
     /**
@@ -5571,12 +6350,15 @@ class MediaVideo {
      * 
      * If user changes any of the values in the related keys, the changes will
      * become permanent.
+     * @param key a metadata key
+     * @param index element to retrieve, starting at 0
      */
     getRelatedKeys(key: KeyID, index: number): RelatedKeys
     /**
      * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
      * 
      * values. Do not change or free the values. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKey(key: KeyID): any[]
     /**
@@ -5584,6 +6366,7 @@ class MediaVideo {
      * registered as a string-type key. This ignores related keys.
      * 
      * not change or free the strings. Free the list with #g_list_free.
+     * @param key a metadata key
      */
     getSingleValuesForKeyString(key: KeyID): string[]
     /**
@@ -5592,14 +6375,17 @@ class MediaVideo {
      * is returned.
      * 
      * not change nor free the value.
+     * @param key key to use
      */
     getString(key: GObject.ParamSpec): string
     /**
      * Checks if `key` is in `data`.
+     * @param key key to search
      */
     hasKey(key: GObject.ParamSpec): boolean
     /**
      * Checks if the `key` has a first value in `data`.
+     * @param key key to search
      */
     keyIsKnown(key: GObject.ParamSpec): boolean
     /**
@@ -5613,17 +6399,21 @@ class MediaVideo {
      * 
      * Therefore, when invoking grl_data_length (data, K2) it will return 3:
      * considering K2 and the related keys (K1 and K3), there are 3 values.
+     * @param key a metadata key
      */
     length(key: KeyID): number
     /**
      * Removes the first value for `key` from `data`. If there are other keys related
      * to `key` their values will also be removed from `data`.
+     * @param key key to remove
      */
     remove(key: GObject.ParamSpec): void
     /**
      * Removes the value at position `index` for `key` from `data`. If there are other
      * keys related to `key,` their values at position `index` will also be removed
      * from `data`.
+     * @param key a metadata key
+     * @param index index of key to be removed, starting at 0
      */
     removeNth(key: KeyID, index: number): void
     /**
@@ -5633,21 +6423,30 @@ class MediaVideo {
      * Also, checks that `value` is compliant with `key` specification, modifying it
      * accordingly. For instance, if `key` requires a number between 0 and 10, but
      * `value` is outside this range, it will be adapted accordingly.
+     * @param key key to change or add
+     * @param value the new value
      */
     set(key: GObject.ParamSpec, value: any): void
     /**
      * Sets the first binary value associated with `key` in `data`. If `key` already
      * has a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param buf buffer holding the data
+     * @param size size of the buffer
      */
     setBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Sets the first float value associated with `key` in `data`. If `key` already has
      * a first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param floatvalue the new value
      */
     setFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Sets the first int value associated with `key` in `data`. If `key` already has a
      * first value old value is replaced by the new one.
+     * @param key key to change or add
+     * @param intvalue the new value
      */
     setInt(key: GObject.ParamSpec, intvalue: number): void
     /**
@@ -5656,6 +6455,7 @@ class MediaVideo {
      * 
      * Set it to %TRUE so old values are overwritten, or %FALSE in other case
      * (default is %FALSE).
+     * @param overwrite if data can be overwritten
      */
     setOverwrite(overwrite: boolean): void
     /**
@@ -5663,11 +6463,15 @@ class MediaVideo {
      * 
      * `data` will take ownership of `relkeys,` so do not free it after invoking this
      * function.
+     * @param relkeys a set of related keys
+     * @param index position to be updated, starting at 0
      */
     setRelatedKeys(relkeys: RelatedKeys, index: number): void
     /**
      * Sets the first string value associated with `key` in `data`. If `key` already
      * has a value old value is freed and the new one is set.
+     * @param key key to change or add
+     * @param strvalue the new value
      */
     setString(key: GObject.ParamSpec, strvalue: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5705,6 +6509,10 @@ class MediaVideo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5715,6 +6523,12 @@ class MediaVideo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5738,6 +6552,7 @@ class MediaVideo {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5757,11 +6572,14 @@ class MediaVideo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5769,6 +6587,8 @@ class MediaVideo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5786,6 +6606,7 @@ class MediaVideo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5831,6 +6652,7 @@ class MediaVideo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5874,15 +6696,20 @@ class MediaVideo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5923,6 +6750,7 @@ class MediaVideo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5957,6 +6785,7 @@ class MediaVideo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5988,6 +6817,7 @@ class MediaVideo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6045,9 +6875,9 @@ class MetadataSource {
      */
     sourceName: string
     /* Fields of Grl-0.1.Grl.MediaPlugin */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.MetadataSource */
     /**
      * Cancel a running method.
@@ -6059,6 +6889,7 @@ class MetadataSource {
      * corresponding callback will be called with the
      * `GRL_CORE_ERROR_OPERATION_CANCELLED` error set, and no more action will be
      * taken for that operation after the said callback with error has been called.
+     * @param operationId the identifier of the running operation, as returned by the function that started it
      */
     cancel(operationId: number): void
     /**
@@ -6068,6 +6899,8 @@ class MetadataSource {
      * 
      * `return_filtered` is %TRUE will return the list of slow keys; otherwise
      * %NULL
+     * @param keys  the list of keys to filter out
+     * @param returnFiltered if %TRUE the return value shall be a new list with the slow keys
      */
     filterSlow(keys: GObject.ParamSpec[] | null, returnFiltered: boolean): [ /* returnType */ GObject.ParamSpec[], /* keys */ GObject.ParamSpec[] | null ]
     /**
@@ -6076,6 +6909,8 @@ class MetadataSource {
      * 
      * if `return_filtered` is %TRUE will return the list of removed keys;
      * otherwise %NULL
+     * @param keys  the list of keys to filter out
+     * @param returnFiltered if %TRUE the return value shall be a new list with the unsupported keys
      */
     filterSupported(keys: GObject.ParamSpec[] | null, returnFiltered: boolean): [ /* returnType */ GObject.ParamSpec[], /* keys */ GObject.ParamSpec[] | null ]
     /**
@@ -6088,6 +6923,8 @@ class MetadataSource {
      * 
      * if `return_filtered` is %TRUE will return the list of non-writtable keys;
      * otherwise %NULL
+     * @param keys  the list of keys to filter out
+     * @param returnFiltered if %TRUE the return value shall be a new list with the non-writable keys
      */
     filterWritable(keys: GObject.ParamSpec[] | null, returnFiltered: boolean): [ /* returnType */ GObject.ParamSpec[], /* keys */ GObject.ParamSpec[] | null ]
     genOperationId(): number
@@ -6096,6 +6933,7 @@ class MetadataSource {
     getName(): string
     /**
      * Obtains the previously attached data
+     * @param operationId the identifier of a running operation
      */
     getOperationData(operationId: number): object
     /**
@@ -6103,6 +6941,7 @@ class MetadataSource {
      * and store the requested `key_id`
      * 
      * a #GList with the keys, or `NULL` if it can not resolve `key_id`
+     * @param keyId the requested metadata key
      */
     keyDepends(keyId: GObject.ParamSpec): GObject.ParamSpec[]
     /**
@@ -6117,6 +6956,8 @@ class MetadataSource {
      * This function is synchronous and should not block.
      * 
      * `media,` `FALSE` otherwise.
+     * @param media a media on which we want more metadata
+     * @param keyId the key corresponding to a metadata we might want
      */
     mayResolve(media: Media, keyId: KeyID): [ /* returnType */ boolean, /* missingKeys */ KeyID[] ]
     operationIsCancelled(operationId: number): boolean
@@ -6128,6 +6969,10 @@ class MetadataSource {
      * metadata of the requested keys.
      * 
      * This function is asynchronous.
+     * @param keys the #GList of #GrlKeyID to retrieve
+     * @param media Transfer object where all the metadata is stored.
+     * @param flags bitwise mask of #GrlMetadataResolutionFlags with the resolution strategy
+     * @param callback the callback to execute when the `media` metadata is filled up
      */
     resolve(keys: GObject.ParamSpec[] | null, media: Media, flags: MetadataResolutionFlags, callback: MetadataSourceResolveCb): number
     /**
@@ -6135,6 +6980,9 @@ class MetadataSource {
      * metadata of the requested keys.
      * 
      * This function is synchronous.
+     * @param keys the #GList of #GrlKeyID to retrieve
+     * @param media Transfer object where all the metadata is stored
+     * @param flags bitwise mask of #GrlMetadataResolutionFlags with the resolution strategy
      */
     resolveSync(keys: GObject.ParamSpec[] | null, media: Media, flags: MetadataResolutionFlags): Media
     /**
@@ -6144,6 +6992,10 @@ class MetadataSource {
      * shall return this new values for the selected keys.
      * 
      * This function is asynchronous and uses the Glib's main loop.
+     * @param media the #GrlMedia object that we want to operate on.
+     * @param keys a list of #GrlKeyID whose values we want to change.
+     * @param flags Flags to configure specific behaviors of the operation.
+     * @param callback the callback to execute when the operation is finished.
      */
     setMetadata(media: Media, keys: GObject.ParamSpec[] | null, flags: MetadataWritingFlags, callback: MetadataSourceSetMetadataCb): void
     /**
@@ -6155,12 +7007,17 @@ class MetadataSource {
      * This function is synchronous.
      * 
      * a #GList of keys that could not be updated, or `NULL`
+     * @param media the #GrlMedia object that we want to operate on
+     * @param keys a list of #GrlKeyID whose values we want to change
+     * @param flags Flags to configure specific behaviors of the operation.
      */
     setMetadataSync(media: Media, keys: GObject.ParamSpec[] | null, flags: MetadataWritingFlags): GObject.ParamSpec[]
     setOperationCancelled(operationId: number): void
     setOperationCompleted(operationId: number): void
     /**
      * Attach a pointer to the specific operation.
+     * @param operationId the identifier of a running operation
+     * @param data the data to attach
      */
     setOperationData(operationId: number, data: object): void
     setOperationFinished(operationId: number): void
@@ -6201,6 +7058,7 @@ class MetadataSource {
     getFilename(): string
     /**
      * Get the information of the `plugin` that is associated with the given key
+     * @param key a key representing information about this plugin
      */
     getInfo(key: string): string
     /**
@@ -6264,6 +7122,10 @@ class MetadataSource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6274,6 +7136,12 @@ class MetadataSource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6297,6 +7165,7 @@ class MetadataSource {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6316,11 +7185,14 @@ class MetadataSource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6328,6 +7200,8 @@ class MetadataSource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6345,6 +7219,7 @@ class MetadataSource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6390,6 +7265,7 @@ class MetadataSource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6433,15 +7309,20 @@ class MetadataSource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6482,6 +7363,7 @@ class MetadataSource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6516,6 +7398,7 @@ class MetadataSource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -6547,6 +7430,7 @@ class MetadataSource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6584,18 +7468,21 @@ interface PluginRegistry_ConstructProps extends GObject.Object_ConstructProps {
 }
 class PluginRegistry {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.PluginRegistry */
     /**
      * Add a configuration for a plugin/source.
+     * @param config a configuration set
      */
     addConfig(config: Config): boolean
     /**
      * Load plugin configurations from a .ini-like config file.
+     * @param configFile a key-value file containing the configuration
      */
     addConfigFromFile(configFile: string): boolean
     /**
      * Set this path as part of default paths to load plugins.
+     * @param path a path with plugins
      */
     addDirectory(path: string): void
     /**
@@ -6612,6 +7499,7 @@ class PluginRegistry {
      * 
      * available #GrlMediaPlugins<!-- -->s. The content of the list should not be
      * modified or freed. Use g_list_free() when done using the list.
+     * @param ranked whether the returned list shall be returned ordered by rank
      */
     getSources(ranked: boolean): MediaPlugin[]
     /**
@@ -6622,10 +7510,13 @@ class PluginRegistry {
      * 
      * available #GrlMediaPlugins<!-- -->s. The content of the list should not be
      * modified or freed. Use g_list_free() when done using the list.
+     * @param ops a bitwise mangle of the requested operations.
+     * @param ranked whether the returned list shall be returned ordered by rank
      */
     getSourcesByOperations(ops: SupportedOps, ranked: boolean): MediaPlugin[]
     /**
      * Loads a module from shared object file stored in `path`
+     * @param libraryFilename the path to the so file
      */
     load(libraryFilename: string): boolean
     /**
@@ -6644,15 +7535,18 @@ class PluginRegistry {
      * This requires the XML plugin information file to define a "module" key with
      * the name of the module that provides the plugin or the absolute path of the
      * actual module file.
+     * @param pluginId plugin identifier
      */
     loadById(pluginId: string): boolean
     /**
      * Loads a set of modules from directory in `path` which contains
      * a group shared object files.
+     * @param path the path to the directory
      */
     loadDirectory(path: string): boolean
     /**
      * Look up for the metadata key with name `key_name`.
+     * @param keyName the key name
      */
     lookupMetadataKey(keyName: string): GObject.ParamSpec
     /**
@@ -6661,16 +7555,19 @@ class PluginRegistry {
      * `key` is included in that list.
      * 
      * related keys, or `NULL` if key is invalid.
+     * @param key a metadata key
      */
     lookupMetadataKeyRelation(key: KeyID): GObject.ParamSpec[]
     /**
      * This function will search and retrieve a source given its identifier.
+     * @param sourceId the id of a source
      */
     lookupSource(sourceId: string): MediaPlugin
     /**
      * Registers a metadata key
      * 
      * or `NULL` on error.
+     * @param key The key to register
      */
     registerMetadataKey(key: GObject.ParamSpec): GObject.ParamSpec
     /**
@@ -6683,10 +7580,14 @@ class PluginRegistry {
      * 
      * Relations between keys allow the framework to provide all the data that is
      * somehow related when any of the related keys are requested.
+     * @param key1 key involved in relationship
+     * @param key2 key involved in relationship
      */
     registerMetadataKeyRelation(key1: KeyID, key2: KeyID): void
     /**
      * Register a `source` in the `registry` with the given `plugin` information
+     * @param plugin the descriptor of the plugin which owns the source
+     * @param source the source to register
      */
     registerSource(plugin: PluginInfo, source: MediaPlugin): boolean
     /**
@@ -6694,15 +7595,18 @@ class PluginRegistry {
      * 
      * Other plugins will not be available for the application, unless it uses
      * directly #grl_plugin_registry_load() function.
+     * @param plugins a `NULL-terminated` array of plugins identifiers
      */
     restrictPlugins(plugins: string): void
     /**
      * Unload from memory a module identified by `plugin_id`. This means call the
      * module's deinit function.
+     * @param pluginId the identifier of the plugin
      */
     unload(pluginId: string): boolean
     /**
      * Removes the `source` from the `registry` hash table
+     * @param source the source to unregister
      */
     unregisterSource(source: MediaPlugin): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6740,6 +7644,10 @@ class PluginRegistry {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6750,6 +7658,12 @@ class PluginRegistry {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6773,6 +7687,7 @@ class PluginRegistry {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6792,11 +7707,14 @@ class PluginRegistry {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6804,6 +7722,8 @@ class PluginRegistry {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6821,6 +7741,7 @@ class PluginRegistry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6866,6 +7787,7 @@ class PluginRegistry {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6909,15 +7831,20 @@ class PluginRegistry {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6958,6 +7885,7 @@ class PluginRegistry {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6992,11 +7920,13 @@ class PluginRegistry {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Grl-0.1.Grl.PluginRegistry */
     /**
      * Signals that a plugin has been added to the registry.
+     * @param plugin the plugin that has been added
      */
     connect(sigName: "source-added", callback: ((plugin: MediaPlugin) => void)): number
     on(sigName: "source-added", callback: (plugin: MediaPlugin) => void, after?: boolean): NodeJS.EventEmitter
@@ -7005,6 +7935,7 @@ class PluginRegistry {
     emit(sigName: "source-added", plugin: MediaPlugin): void
     /**
      * Signals that a plugin has been removed from the registry.
+     * @param plugin the plugin that has been removed
      */
     connect(sigName: "source-removed", callback: ((plugin: MediaPlugin) => void)): number
     on(sigName: "source-removed", callback: (plugin: MediaPlugin) => void, after?: boolean): NodeJS.EventEmitter
@@ -7040,6 +7971,7 @@ class PluginRegistry {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7072,11 +8004,12 @@ interface RelatedKeys_ConstructProps extends GObject.Object_ConstructProps {
 }
 class RelatedKeys {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Grl-0.1.Grl.RelatedKeys */
     /**
      * Adds a new `key` to `relkeys,` with no value. If `key` already exists, it does
      * nothing.
+     * @param key key to add
      */
     add(key: GObject.ParamSpec): void
     /**
@@ -7090,6 +8023,7 @@ class RelatedKeys {
      * value, %NULL will be returned.
      * 
      * freed by user.
+     * @param key key to look up.
      */
     get(key: GObject.ParamSpec): any
     /**
@@ -7097,16 +8031,19 @@ class RelatedKeys {
      * or value is not a binary, or `key` is not in `relkeys,` then 0 is returned.
      * 
      * successful `size` will be set to the buffer size.
+     * @param key key to use
      */
     getBinary(key: GObject.ParamSpec): [ /* returnType */ number, /* size */ number ]
     /**
      * Returns the value associated with `key` from `relkeys`. If `key` has no value,
      * or value is not a gfloat, or `key` is not in `relkeys,` then 0 is returned.
+     * @param key key to use
      */
     getFloat(key: GObject.ParamSpec): number
     /**
      * Returns the value associated with `key` from `relkeys`. If `key` has no value,
      * or value is not a gint, or `key` is not in `relkeys,` then 0 is returned.
+     * @param key key to use
      */
     getInt(key: GObject.ParamSpec): number
     /**
@@ -7121,14 +8058,17 @@ class RelatedKeys {
      * or value is not string, or `key` is not in `relkeys,` then %NULL is returned.
      * 
      * not change nor free the value.
+     * @param key key to use
      */
     getString(key: GObject.ParamSpec): string
     /**
      * Checks if `key` is in `relkeys`.
+     * @param key key to search
      */
     hasKey(key: GObject.ParamSpec): boolean
     /**
      * Checks if `key` has a value in `relkeys`.
+     * @param key key to search
      */
     keyIsKnown(key: GObject.ParamSpec): boolean
     /**
@@ -7138,26 +8078,37 @@ class RelatedKeys {
      * Also, checks that `value` is compliant with `key` specification, modifying it
      * accordingly. For instance, if `key` requires a number between 0 and 10, but
      * value is outside this range, it will be adapted accordingly.
+     * @param key key to change or add
+     * @param value the new value
      */
     set(key: GObject.ParamSpec, value: any): void
     /**
      * Sets the value associated with `key` into `relkeys`. `key` must have been
      * registered as a binary-type key. Old value is replaced by the new one.
+     * @param key key to change or add
+     * @param buf buffer holding the relkeys
+     * @param size size of the buffer
      */
     setBinary(key: GObject.ParamSpec, buf: number, size: number): void
     /**
      * Sets the value associated with `key` into `relkeys`. `key` must have been
      * registered as a float-type key. Old value is replaced by the new one.
+     * @param key key to change or add
+     * @param floatvalue the new value
      */
     setFloat(key: GObject.ParamSpec, floatvalue: number): void
     /**
      * Sets the value associated with `key` into `relkeys`. `key` must have been
      * registered as an int-type key. Old value is replaced by the new one.
+     * @param key key to change or add
+     * @param intvalue the new value
      */
     setInt(key: GObject.ParamSpec, intvalue: number): void
     /**
      * Sets the value associated with `key` into `relkeys`. `key` must have been
      * registered as a strying-type key. Old value is freed and the new one is set.
+     * @param key key to change or add
+     * @param strvalue the new value
      */
     setString(key: GObject.ParamSpec, strvalue: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7195,6 +8146,10 @@ class RelatedKeys {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7205,6 +8160,12 @@ class RelatedKeys {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7228,6 +8189,7 @@ class RelatedKeys {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7247,11 +8209,14 @@ class RelatedKeys {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7259,6 +8224,8 @@ class RelatedKeys {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7276,6 +8243,7 @@ class RelatedKeys {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7321,6 +8289,7 @@ class RelatedKeys {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7364,15 +8333,20 @@ class RelatedKeys {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7413,6 +8387,7 @@ class RelatedKeys {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7447,6 +8422,7 @@ class RelatedKeys {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -7478,6 +8454,7 @@ class RelatedKeys {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7500,7 +8477,7 @@ class RelatedKeys {
 }
 abstract class ConfigClass {
     /* Fields of Grl-0.1.Grl.ConfigClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ConfigPrivate {
@@ -7508,7 +8485,7 @@ class ConfigPrivate {
 }
 abstract class DataClass {
     /* Fields of Grl-0.1.Grl.DataClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class DataPrivate {
@@ -7521,27 +8498,27 @@ class LogDomain {
 }
 abstract class MediaAudioClass {
     /* Fields of Grl-0.1.Grl.MediaAudioClass */
-    readonly parentClass: MediaClass
+    parentClass: MediaClass
     static name: string
 }
 abstract class MediaBoxClass {
     /* Fields of Grl-0.1.Grl.MediaBoxClass */
-    readonly parentClass: MediaClass
+    parentClass: MediaClass
     static name: string
 }
 abstract class MediaClass {
     /* Fields of Grl-0.1.Grl.MediaClass */
-    readonly parentClass: DataClass
+    parentClass: DataClass
     static name: string
 }
 abstract class MediaImageClass {
     /* Fields of Grl-0.1.Grl.MediaImageClass */
-    readonly parentClass: MediaClass
+    parentClass: MediaClass
     static name: string
 }
 abstract class MediaPluginClass {
     /* Fields of Grl-0.1.Grl.MediaPluginClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class MediaPluginPrivate {
@@ -7549,53 +8526,53 @@ class MediaPluginPrivate {
 }
 class MediaSourceBrowseSpec {
     /* Fields of Grl-0.1.Grl.MediaSourceBrowseSpec */
-    readonly source: MediaSource
-    readonly browseId: number
-    readonly container: Media
-    readonly keys: object[]
-    readonly skip: number
-    readonly count: number
-    readonly flags: MetadataResolutionFlags
-    readonly callback: MediaSourceResultCb
-    readonly userData: object
+    source: MediaSource
+    browseId: number
+    container: Media
+    keys: object[]
+    skip: number
+    count: number
+    flags: MetadataResolutionFlags
+    callback: MediaSourceResultCb
+    userData: object
     static name: string
 }
 abstract class MediaSourceClass {
     /* Fields of Grl-0.1.Grl.MediaSourceClass */
-    readonly parentClass: MetadataSourceClass
-    readonly browse: (source: MediaSource, bs: MediaSourceBrowseSpec) => void
-    readonly search: (source: MediaSource, ss: MediaSourceSearchSpec) => void
-    readonly query: (source: MediaSource, qs: MediaSourceQuerySpec) => void
-    readonly cancel: (source: MediaSource, operationId: number) => void
-    readonly metadata: (source: MediaSource, ms: MediaSourceMetadataSpec) => void
-    readonly store: (source: MediaSource, ss: MediaSourceStoreSpec) => void
-    readonly remove: (source: MediaSource, ss: MediaSourceRemoveSpec) => void
-    readonly testMediaFromUri: (source: MediaSource, uri: string) => boolean
-    readonly mediaFromUri: (source: MediaSource, mfss: MediaSourceMediaFromUriSpec) => void
-    readonly notifyChangeStart: (source: MediaSource) => boolean
-    readonly notifyChangeStop: (source: MediaSource) => boolean
+    parentClass: MetadataSourceClass
+    browse: (source: MediaSource, bs: MediaSourceBrowseSpec) => void
+    search: (source: MediaSource, ss: MediaSourceSearchSpec) => void
+    query: (source: MediaSource, qs: MediaSourceQuerySpec) => void
+    cancel: (source: MediaSource, operationId: number) => void
+    metadata: (source: MediaSource, ms: MediaSourceMetadataSpec) => void
+    store: (source: MediaSource, ss: MediaSourceStoreSpec) => void
+    remove: (source: MediaSource, ss: MediaSourceRemoveSpec) => void
+    testMediaFromUri: (source: MediaSource, uri: string) => boolean
+    mediaFromUri: (source: MediaSource, mfss: MediaSourceMediaFromUriSpec) => void
+    notifyChangeStart: (source: MediaSource) => boolean
+    notifyChangeStop: (source: MediaSource) => boolean
     static name: string
 }
 class MediaSourceMediaFromUriSpec {
     /* Fields of Grl-0.1.Grl.MediaSourceMediaFromUriSpec */
-    readonly source: MediaSource
-    readonly mediaFromUriId: number
-    readonly uri: string
-    readonly keys: object[]
-    readonly flags: MetadataResolutionFlags
-    readonly callback: MediaSourceMetadataCb
-    readonly userData: object
+    source: MediaSource
+    mediaFromUriId: number
+    uri: string
+    keys: object[]
+    flags: MetadataResolutionFlags
+    callback: MediaSourceMetadataCb
+    userData: object
     static name: string
 }
 class MediaSourceMetadataSpec {
     /* Fields of Grl-0.1.Grl.MediaSourceMetadataSpec */
-    readonly source: MediaSource
-    readonly metadataId: number
-    readonly media: Media
-    readonly keys: object[]
-    readonly flags: MetadataResolutionFlags
-    readonly callback: MediaSourceMetadataCb
-    readonly userData: object
+    source: MediaSource
+    metadataId: number
+    media: Media
+    keys: object[]
+    flags: MetadataResolutionFlags
+    callback: MediaSourceMetadataCb
+    userData: object
     static name: string
 }
 class MediaSourcePrivate {
@@ -7603,66 +8580,66 @@ class MediaSourcePrivate {
 }
 class MediaSourceQuerySpec {
     /* Fields of Grl-0.1.Grl.MediaSourceQuerySpec */
-    readonly source: MediaSource
-    readonly queryId: number
-    readonly query: string
-    readonly keys: object[]
-    readonly skip: number
-    readonly count: number
-    readonly flags: MetadataResolutionFlags
-    readonly callback: MediaSourceResultCb
-    readonly userData: object
+    source: MediaSource
+    queryId: number
+    query: string
+    keys: object[]
+    skip: number
+    count: number
+    flags: MetadataResolutionFlags
+    callback: MediaSourceResultCb
+    userData: object
     static name: string
 }
 class MediaSourceRemoveSpec {
     /* Fields of Grl-0.1.Grl.MediaSourceRemoveSpec */
-    readonly source: MediaSource
-    readonly mediaId: string
-    readonly media: Media
-    readonly callback: MediaSourceRemoveCb
-    readonly userData: object
+    source: MediaSource
+    mediaId: string
+    media: Media
+    callback: MediaSourceRemoveCb
+    userData: object
     static name: string
 }
 class MediaSourceSearchSpec {
     /* Fields of Grl-0.1.Grl.MediaSourceSearchSpec */
-    readonly source: MediaSource
-    readonly searchId: number
-    readonly text: string
-    readonly keys: object[]
-    readonly skip: number
-    readonly count: number
-    readonly flags: MetadataResolutionFlags
-    readonly callback: MediaSourceResultCb
-    readonly userData: object
+    source: MediaSource
+    searchId: number
+    text: string
+    keys: object[]
+    skip: number
+    count: number
+    flags: MetadataResolutionFlags
+    callback: MediaSourceResultCb
+    userData: object
     static name: string
 }
 class MediaSourceStoreSpec {
     /* Fields of Grl-0.1.Grl.MediaSourceStoreSpec */
-    readonly source: MediaSource
-    readonly parent: MediaBox
-    readonly media: Media
-    readonly callback: MediaSourceStoreCb
-    readonly userData: object
+    source: MediaSource
+    parent: MediaBox
+    media: Media
+    callback: MediaSourceStoreCb
+    userData: object
     static name: string
 }
 abstract class MediaVideoClass {
     /* Fields of Grl-0.1.Grl.MediaVideoClass */
-    readonly parentClass: MediaClass
+    parentClass: MediaClass
     static name: string
 }
 abstract class MetadataSourceClass {
     /* Fields of Grl-0.1.Grl.MetadataSourceClass */
-    readonly parentClass: MediaPluginClass
-    readonly operationId: number
-    readonly supportedOperations: (source: MetadataSource) => SupportedOps
-    readonly supportedKeys: (source: MetadataSource) => GObject.ParamSpec[]
-    readonly slowKeys: (source: MetadataSource) => GObject.ParamSpec[]
-    readonly keyDepends: (source: MetadataSource, keyId: GObject.ParamSpec) => GObject.ParamSpec[]
-    readonly writableKeys: (source: MetadataSource) => GObject.ParamSpec[]
-    readonly resolve: (source: MetadataSource, rs: MetadataSourceResolveSpec) => void
-    readonly setMetadata: (source: MetadataSource, sms: MetadataSourceSetMetadataSpec) => void
-    readonly mayResolve: (source: MetadataSource, media: Media, keyId: KeyID) => [ /* returnType */ boolean, /* missingKeys */ KeyID[] ]
-    readonly cancel: (source: MetadataSource, operationId: number) => void
+    parentClass: MediaPluginClass
+    operationId: number
+    supportedOperations: (source: MetadataSource) => SupportedOps
+    supportedKeys: (source: MetadataSource) => GObject.ParamSpec[]
+    slowKeys: (source: MetadataSource) => GObject.ParamSpec[]
+    keyDepends: (source: MetadataSource, keyId: GObject.ParamSpec) => GObject.ParamSpec[]
+    writableKeys: (source: MetadataSource) => GObject.ParamSpec[]
+    resolve: (source: MetadataSource, rs: MetadataSourceResolveSpec) => void
+    setMetadata: (source: MetadataSource, sms: MetadataSourceSetMetadataSpec) => void
+    mayResolve: (source: MetadataSource, media: Media, keyId: KeyID) => [ /* returnType */ boolean, /* missingKeys */ KeyID[] ]
+    cancel: (source: MetadataSource, operationId: number) => void
     static name: string
 }
 class MetadataSourcePrivate {
@@ -7670,44 +8647,44 @@ class MetadataSourcePrivate {
 }
 class MetadataSourceResolveSpec {
     /* Fields of Grl-0.1.Grl.MetadataSourceResolveSpec */
-    readonly source: MetadataSource
-    readonly resolveId: number
-    readonly keys: object[]
-    readonly media: Media
-    readonly flags: MetadataResolutionFlags
-    readonly callback: MetadataSourceResolveCb
-    readonly userData: object
+    source: MetadataSource
+    resolveId: number
+    keys: object[]
+    media: Media
+    flags: MetadataResolutionFlags
+    callback: MetadataSourceResolveCb
+    userData: object
     static name: string
 }
 class MetadataSourceSetMetadataSpec {
     /* Fields of Grl-0.1.Grl.MetadataSourceSetMetadataSpec */
-    readonly source: MetadataSource
-    readonly media: Media
-    readonly keys: object[]
-    readonly flags: MetadataWritingFlags
-    readonly callback: MetadataSourceSetMetadataCb
-    readonly userData: object
-    readonly failedKeys: object[]
+    source: MetadataSource
+    media: Media
+    keys: object[]
+    flags: MetadataWritingFlags
+    callback: MetadataSourceSetMetadataCb
+    userData: object
+    failedKeys: object[]
     static name: string
 }
 class PluginDescriptor {
     /* Fields of Grl-0.1.Grl.PluginDescriptor */
-    readonly pluginId: string
-    readonly pluginDeinit: () => void
-    readonly module: GModule.Module
+    pluginId: string
+    pluginDeinit: () => void
+    module: GModule.Module
     static name: string
 }
 class PluginInfo {
     /* Fields of Grl-0.1.Grl.PluginInfo */
-    readonly id: string
-    readonly filename: string
-    readonly optionalInfo: GLib.HashTable
-    readonly rank: number
+    id: string
+    filename: string
+    optionalInfo: GLib.HashTable
+    rank: number
     static name: string
 }
 abstract class PluginRegistryClass {
     /* Fields of Grl-0.1.Grl.PluginRegistryClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class PluginRegistryPrivate {
@@ -7715,7 +8692,7 @@ class PluginRegistryPrivate {
 }
 abstract class RelatedKeysClass {
     /* Fields of Grl-0.1.Grl.RelatedKeysClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class RelatedKeysPrivate {

@@ -25,14 +25,16 @@ interface Channel_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Channel {
     /* Properties of TelepathyFarstream-0.6.TelepathyFarstream.Channel */
+    readonly channel: TelepathyGLib.Channel
     readonly fs_conferences: object[]
     readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyFarstream-0.6.TelepathyFarstream.Channel */
     /**
      * You must call this function on call messages received on the async bus.
      * #GstMessages are not modified.
+     * @param message A #GstMessage received from the bus
      */
     bus_message(message: Gst.Message): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -70,6 +72,10 @@ class Channel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -80,6 +86,12 @@ class Channel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -103,6 +115,7 @@ class Channel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -122,11 +135,14 @@ class Channel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -134,6 +150,8 @@ class Channel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -151,6 +169,7 @@ class Channel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -196,6 +215,7 @@ class Channel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -239,15 +259,20 @@ class Channel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -288,6 +313,7 @@ class Channel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -322,6 +348,7 @@ class Channel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -362,16 +389,21 @@ class Channel {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Virtual methods of TelepathyFarstream-0.6.TelepathyFarstream.Channel */
@@ -412,11 +444,15 @@ class Channel {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -436,6 +472,7 @@ class Channel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -454,12 +491,14 @@ class Channel {
      * up to any signal from #TfContent it cares about. Special care should be
      * made to connect #TfContent::src-pad-added as well
      * as the #TfContent::start-sending and #TfContent::stop-sending signals.
+     * @param content a #TfContent
      */
     connect(sigName: "content-added", callback: (($obj: Channel, content: Content) => void)): number
     connect_after(sigName: "content-added", callback: (($obj: Channel, content: Content) => void)): number
     emit(sigName: "content-added", content: Content): void
     /**
      * Tells the application that a content is being removed.
+     * @param content a #TfContent
      */
     connect(sigName: "content-removed", callback: (($obj: Channel, content: Content) => void)): number
     connect_after(sigName: "content-removed", callback: (($obj: Channel, content: Content) => void)): number
@@ -467,6 +506,7 @@ class Channel {
     /**
      * When this signal is emitted, the conference should be added to the
      * application's pipeline.
+     * @param conf a #FsConference
      */
     connect(sigName: "fs-conference-added", callback: (($obj: Channel, conf: Farstream.Conference) => void)): number
     connect_after(sigName: "fs-conference-added", callback: (($obj: Channel, conf: Farstream.Conference) => void)): number
@@ -474,6 +514,7 @@ class Channel {
     /**
      * When this signal is emitted, the conference should be remove from the
      * application's pipeline.
+     * @param conf a #FsConference
      */
     connect(sigName: "fs-conference-removed", callback: (($obj: Channel, conf: Farstream.Conference) => void)): number
     connect_after(sigName: "fs-conference-removed", callback: (($obj: Channel, conf: Farstream.Conference) => void)): number
@@ -507,10 +548,13 @@ class Channel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::channel", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::fs-conferences", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::fs-conferences", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::object-path", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
@@ -530,6 +574,8 @@ class Channel {
      * 
      * The user must call tf_channel_new_finish() in the callback
      * to get the finished object.
+     * @param channel_proxy a #TpChannel proxy
+     * @param callback a #GAsyncReadyCallback to call when the channel is ready
      */
     static new_async(channel_proxy: TelepathyGLib.Channel, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -539,6 +585,12 @@ class Channel {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     static $gtype: GObject.Type
@@ -554,16 +606,19 @@ class Content {
     readonly sink_pad: Gst.Pad
     readonly tf_channel: Channel
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyFarstream-0.6.TelepathyFarstream.Content */
     /**
      * Send a fatal streaming error to the Content to the CM, the effect is most
      * likely that the content will be removed.
+     * @param message error Message
      */
     error(message: string): void
     /**
      * Provides a iterator that can be used to iterate through all of the src
      * pads that are are used to receive from a group of Telepathy handles.
+     * @param handles a 0 terminated array of #guint representing Telepathy handles
+     * @param handle_count the numner of handles in `handles`
      */
     iterate_src_pads(handles: number, handle_count: number): Gst.Iterator
     /**
@@ -572,12 +627,16 @@ class Content {
      * and the call.
      * 
      * If handles are not specific, it assumes that it is valid for all handles.
+     * @param handles an array of #guint representing Telepathy handles, may be %NULL
+     * @param handle_count the numner of handles in `handles`
+     * @param message The error message
      */
     receiving_failed(handles: number, handle_count: number, message: string): void
     /**
      * Informs the Connection Manager that sending has failed for this
      * content. This is a transient error and it may or not not end the Content
      * and the call.
+     * @param message The error message
      */
     sending_failed(message: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -615,6 +674,10 @@ class Content {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -625,6 +688,12 @@ class Content {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -648,6 +717,7 @@ class Content {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -667,11 +737,14 @@ class Content {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -679,6 +752,8 @@ class Content {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -696,6 +771,7 @@ class Content {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -741,6 +817,7 @@ class Content {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -784,15 +861,20 @@ class Content {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -833,6 +915,7 @@ class Content {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -867,6 +950,7 @@ class Content {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -886,6 +970,7 @@ class Content {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -902,6 +987,10 @@ class Content {
      * is not emitted on the main thread, so special care must be made to lock
      * the relevant data. When the callback returns from this signal, data will
      * start flowing through the pad, so the application MUST connect a sink.
+     * @param handle the handle of the remote party producing the content on this pad    or 0 if unknown
+     * @param stream the #FsStream for this pad
+     * @param pad a #GstPad
+     * @param codec the #FsCodec for this pad
      */
     connect(sigName: "src-pad-added", callback: (($obj: Content, handle: number, stream: Farstream.Stream, pad: Gst.Pad, codec: Farstream.Codec) => void)): number
     connect_after(sigName: "src-pad-added", callback: (($obj: Content, handle: number, stream: Farstream.Stream, pad: Gst.Pad, codec: Farstream.Codec) => void)): number
@@ -914,6 +1003,8 @@ class Content {
      * This signal will only be emitted after the #TfContent::stop-receiving
      * signal has succeeded. It will not be emitted right after
      *  #TfContent::src-pad-added.
+     * @param handles a 0-terminated array of #guint containing the handles
+     * @param handle_count The number of handles in the `handles` array
      */
     connect(sigName: "start-receiving", callback: (($obj: Content, handles: object, handle_count: number) => boolean)): number
     connect_after(sigName: "start-receiving", callback: (($obj: Content, handles: object, handle_count: number) => boolean)): number
@@ -930,6 +1021,8 @@ class Content {
     /**
      * This signal is emitted when the connection manager wants to tell the
      * application that it is now allowed to stop receiving.
+     * @param handles a 0-terminated array of #guint containing the handles
+     * @param handle_count The number of handles in the `handles` array
      */
     connect(sigName: "stop-receiving", callback: (($obj: Content, handles: object, handle_count: number) => void)): number
     connect_after(sigName: "stop-receiving", callback: (($obj: Content, handles: object, handle_count: number) => void)): number
@@ -970,6 +1063,7 @@ class Content {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Content, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Content, pspec: GObject.ParamSpec) => void)): number

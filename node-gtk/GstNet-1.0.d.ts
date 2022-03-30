@@ -98,6 +98,7 @@ interface NetClientClock_ConstructProps extends Gst.SystemClock_ConstructProps {
 class NetClientClock {
     /* Properties of GstNet-1.0.GstNet.NetClientClock */
     address: string
+    readonly baseTime: number
     bus: Gst.Bus
     readonly internalClock: Gst.Clock
     minimumUpdateInterval: number
@@ -111,31 +112,31 @@ class NetClientClock {
     windowSize: number
     windowThreshold: number
     /* Fields of Gst-1.0.Gst.SystemClock */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /* Fields of Gst-1.0.Gst.Clock */
     /**
      * the parent structure
      */
-    readonly object: Gst.Object
+    object: Gst.Object
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Clock */
     /**
      * The time `master` of the master clock and the time `slave` of the slave
@@ -148,6 +149,8 @@ class NetClientClock {
      * means a perfect regression was performed. This value can
      * be used to control the sampling frequency of the master and slave
      * clocks.
+     * @param slave a time on the slave
+     * @param master a time on the master
      */
     addObservation(slave: Gst.ClockTime, master: Gst.ClockTime): [ /* returnType */ boolean, /* rSquared */ number ]
     /**
@@ -157,6 +160,8 @@ class NetClientClock {
      * 
      * The caller can then take the results and call gst_clock_set_calibration()
      * with the values, or some modified version of them.
+     * @param slave a time on the slave
+     * @param master a time on the master
      */
     addObservationUnapplied(slave: Gst.ClockTime, master: Gst.ClockTime): [ /* returnType */ boolean, /* rSquared */ number, /* internal */ Gst.ClockTime | null, /* external */ Gst.ClockTime | null, /* rateNum */ Gst.ClockTime | null, /* rateDenom */ Gst.ClockTime | null ]
     /**
@@ -166,6 +171,7 @@ class NetClientClock {
      * clock's OBJECT_LOCK held and is mainly used by clock subclasses.
      * 
      * This function is the reverse of gst_clock_unadjust_unlocked().
+     * @param internal a clock time
      */
     adjustUnlocked(internal: Gst.ClockTime): Gst.ClockTime
     /**
@@ -176,6 +182,11 @@ class NetClientClock {
      * increasing result as gst_clock_adjust_unlocked() does.
      * 
      * Note: The `clock` parameter is unused and can be NULL
+     * @param internalTarget a clock time
+     * @param cinternal a reference internal time
+     * @param cexternal a reference external time
+     * @param cnum the numerator of the rate of the clock relative to its        internal time
+     * @param cdenom the denominator of the rate of the clock
      */
     adjustWithCalibration(internalTarget: Gst.ClockTime, cinternal: Gst.ClockTime, cexternal: Gst.ClockTime, cnum: Gst.ClockTime, cdenom: Gst.ClockTime): Gst.ClockTime
     /**
@@ -220,16 +231,22 @@ class NetClientClock {
      * Gets an ID from `clock` to trigger a periodic notification.
      * The periodic notifications will start at time `start_time` and
      * will then be fired with the given `interval`.
+     * @param startTime the requested start time
+     * @param interval the requested interval
      */
     newPeriodicId(startTime: Gst.ClockTime, interval: Gst.ClockTime): Gst.ClockID
     /**
      * Gets a #GstClockID from `clock` to trigger a single shot
      * notification at the requested time.
+     * @param time the requested time
      */
     newSingleShotId(time: Gst.ClockTime): Gst.ClockID
     /**
      * Reinitializes the provided periodic `id` to the provided start time and
      * interval. Does not modify the reference count.
+     * @param id a #GstClockID
+     * @param startTime the requested start time
+     * @param interval the requested interval
      */
     periodicIdReinit(id: Gst.ClockID, startTime: Gst.ClockTime, interval: Gst.ClockTime): boolean
     /**
@@ -254,6 +271,10 @@ class NetClientClock {
      * Note that gst_clock_get_time() always returns increasing values so when you
      * move the clock backwards, gst_clock_get_time() will report the previous value
      * until the clock catches up.
+     * @param internal a reference internal time
+     * @param external a reference external time
+     * @param rateNum the numerator of the rate of the clock relative to its            internal time
+     * @param rateDenom the denominator of the rate of the clock
      */
     setCalibration(internal: Gst.ClockTime, external: Gst.ClockTime, rateNum: Gst.ClockTime, rateDenom: Gst.ClockTime): void
     /**
@@ -267,6 +288,7 @@ class NetClientClock {
      * `master` can be %NULL in which case `clock` will not be slaved anymore. It will
      * however keep reporting its time adjusted with the last configured rate
      * and time offsets.
+     * @param master a master #GstClock
      */
     setMaster(master?: Gst.Clock | null): boolean
     /**
@@ -275,6 +297,7 @@ class NetClientClock {
      * normally no need to change the default resolution of a clock. The resolution
      * of a clock can only be changed if the clock has the
      * #GST_CLOCK_FLAG_CAN_SET_RESOLUTION flag set.
+     * @param resolution The resolution to set
      */
     setResolution(resolution: Gst.ClockTime): Gst.ClockTime
     /**
@@ -283,16 +306,20 @@ class NetClientClock {
      * 
      * This function must only be called if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
      * is set on the clock, and is intended to be called by subclasses only.
+     * @param synced if the clock is synced
      */
     setSynced(synced: boolean): void
     /**
      * Sets the amount of time, in nanoseconds, to sample master and slave
      * clocks
+     * @param timeout a timeout
      */
     setTimeout(timeout: Gst.ClockTime): void
     /**
      * Reinitializes the provided single shot `id` to the provided time. Does not
      * modify the reference count.
+     * @param id a #GstClockID
+     * @param time The requested time.
      */
     singleShotIdReinit(id: Gst.ClockID, time: Gst.ClockTime): boolean
     /**
@@ -302,6 +329,7 @@ class NetClientClock {
      * is mainly used by clock subclasses.
      * 
      * This function is the reverse of gst_clock_adjust_unlocked().
+     * @param external an external clock time
      */
     unadjustUnlocked(external: Gst.ClockTime): Gst.ClockTime
     /**
@@ -311,6 +339,11 @@ class NetClientClock {
      * current calibration parameters.
      * 
      * Note: The `clock` parameter is unused and can be NULL
+     * @param externalTarget a clock time
+     * @param cinternal a reference internal time
+     * @param cexternal a reference external time
+     * @param cnum the numerator of the rate of the clock relative to its        internal time
+     * @param cdenom the denominator of the rate of the clock
      */
     unadjustWithCalibration(externalTarget: Gst.ClockTime, cinternal: Gst.ClockTime, cexternal: Gst.ClockTime, cnum: Gst.ClockTime, cdenom: Gst.ClockTime): Gst.ClockTime
     /**
@@ -322,6 +355,7 @@ class NetClientClock {
      * 
      * This returns immediately with %TRUE if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
      * is not set on the clock, or if the clock is already synced.
+     * @param timeout timeout for waiting or %GST_CLOCK_TIME_NONE
      */
     waitForSync(timeout: Gst.ClockTime): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -331,6 +365,7 @@ class NetClientClock {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -338,11 +373,14 @@ class NetClientClock {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -365,6 +403,10 @@ class NetClientClock {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -390,6 +432,8 @@ class NetClientClock {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -399,16 +443,19 @@ class NetClientClock {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -424,17 +471,21 @@ class NetClientClock {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -445,6 +496,7 @@ class NetClientClock {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -452,11 +504,13 @@ class NetClientClock {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -470,6 +524,7 @@ class NetClientClock {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -523,6 +578,10 @@ class NetClientClock {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -533,6 +592,12 @@ class NetClientClock {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -556,6 +621,7 @@ class NetClientClock {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -575,11 +641,14 @@ class NetClientClock {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -587,6 +656,8 @@ class NetClientClock {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -604,6 +675,7 @@ class NetClientClock {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -649,6 +721,7 @@ class NetClientClock {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -692,15 +765,20 @@ class NetClientClock {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -741,6 +819,7 @@ class NetClientClock {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -765,6 +844,7 @@ class NetClientClock {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Clock */
@@ -775,6 +855,7 @@ class NetClientClock {
      * 
      * This signal will be emitted from an arbitrary thread, most likely not
      * the application's main thread.
+     * @param synced if the clock is synced now
      */
     connect(sigName: "synced", callback: ((synced: boolean) => void)): number
     on(sigName: "synced", callback: (synced: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -786,6 +867,8 @@ class NetClientClock {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -821,6 +904,7 @@ class NetClientClock {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -832,6 +916,11 @@ class NetClientClock {
     on(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::base-time", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-time", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::base-time", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::base-time", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::base-time", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::bus", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::bus", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::bus", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -907,27 +996,30 @@ interface NetTimeProvider_ConstructProps extends Gst.Object_ConstructProps {
 class NetTimeProvider {
     /* Properties of GstNet-1.0.GstNet.NetTimeProvider */
     active: boolean
+    readonly address: string
+    readonly clock: Gst.Clock
+    readonly port: number
     qosDscp: number
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Object */
     /**
      * Attach the #GstControlBinding to the object. If there already was a
@@ -935,6 +1027,7 @@ class NetTimeProvider {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -942,11 +1035,14 @@ class NetTimeProvider {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -969,6 +1065,10 @@ class NetTimeProvider {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -994,6 +1094,8 @@ class NetTimeProvider {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1003,16 +1105,19 @@ class NetTimeProvider {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -1028,17 +1133,21 @@ class NetTimeProvider {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -1049,6 +1158,7 @@ class NetTimeProvider {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -1056,11 +1166,13 @@ class NetTimeProvider {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1074,6 +1186,7 @@ class NetTimeProvider {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1127,6 +1240,10 @@ class NetTimeProvider {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1137,6 +1254,12 @@ class NetTimeProvider {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1160,6 +1283,7 @@ class NetTimeProvider {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1179,11 +1303,14 @@ class NetTimeProvider {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1191,6 +1318,8 @@ class NetTimeProvider {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1208,6 +1337,7 @@ class NetTimeProvider {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1253,6 +1383,7 @@ class NetTimeProvider {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1296,15 +1427,20 @@ class NetTimeProvider {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1345,6 +1481,7 @@ class NetTimeProvider {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1369,6 +1506,7 @@ class NetTimeProvider {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1411,6 +1549,7 @@ class NetTimeProvider {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of Gst-1.0.Gst.Object */
@@ -1418,6 +1557,8 @@ class NetTimeProvider {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1453,6 +1594,7 @@ class NetTimeProvider {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1464,6 +1606,21 @@ class NetTimeProvider {
     on(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::address", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::address", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::clock", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::clock", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::port", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::port", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::port", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::port", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::port", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::qos-dscp", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::qos-dscp", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::qos-dscp", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1485,6 +1642,9 @@ class NetTimeProvider {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1494,6 +1654,7 @@ interface NtpClock_ConstructProps extends NetClientClock_ConstructProps {
 class NtpClock {
     /* Properties of GstNet-1.0.GstNet.NetClientClock */
     address: string
+    readonly baseTime: number
     bus: Gst.Bus
     readonly internalClock: Gst.Clock
     minimumUpdateInterval: number
@@ -1507,31 +1668,31 @@ class NtpClock {
     windowSize: number
     windowThreshold: number
     /* Fields of GstNet-1.0.GstNet.NetClientClock */
-    readonly clock: Gst.SystemClock
+    clock: Gst.SystemClock
     /* Fields of Gst-1.0.Gst.Clock */
     /**
      * the parent structure
      */
-    readonly object: Gst.Object
+    object: Gst.Object
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Clock */
     /**
      * The time `master` of the master clock and the time `slave` of the slave
@@ -1544,6 +1705,8 @@ class NtpClock {
      * means a perfect regression was performed. This value can
      * be used to control the sampling frequency of the master and slave
      * clocks.
+     * @param slave a time on the slave
+     * @param master a time on the master
      */
     addObservation(slave: Gst.ClockTime, master: Gst.ClockTime): [ /* returnType */ boolean, /* rSquared */ number ]
     /**
@@ -1553,6 +1716,8 @@ class NtpClock {
      * 
      * The caller can then take the results and call gst_clock_set_calibration()
      * with the values, or some modified version of them.
+     * @param slave a time on the slave
+     * @param master a time on the master
      */
     addObservationUnapplied(slave: Gst.ClockTime, master: Gst.ClockTime): [ /* returnType */ boolean, /* rSquared */ number, /* internal */ Gst.ClockTime | null, /* external */ Gst.ClockTime | null, /* rateNum */ Gst.ClockTime | null, /* rateDenom */ Gst.ClockTime | null ]
     /**
@@ -1562,6 +1727,7 @@ class NtpClock {
      * clock's OBJECT_LOCK held and is mainly used by clock subclasses.
      * 
      * This function is the reverse of gst_clock_unadjust_unlocked().
+     * @param internal a clock time
      */
     adjustUnlocked(internal: Gst.ClockTime): Gst.ClockTime
     /**
@@ -1572,6 +1738,11 @@ class NtpClock {
      * increasing result as gst_clock_adjust_unlocked() does.
      * 
      * Note: The `clock` parameter is unused and can be NULL
+     * @param internalTarget a clock time
+     * @param cinternal a reference internal time
+     * @param cexternal a reference external time
+     * @param cnum the numerator of the rate of the clock relative to its        internal time
+     * @param cdenom the denominator of the rate of the clock
      */
     adjustWithCalibration(internalTarget: Gst.ClockTime, cinternal: Gst.ClockTime, cexternal: Gst.ClockTime, cnum: Gst.ClockTime, cdenom: Gst.ClockTime): Gst.ClockTime
     /**
@@ -1616,16 +1787,22 @@ class NtpClock {
      * Gets an ID from `clock` to trigger a periodic notification.
      * The periodic notifications will start at time `start_time` and
      * will then be fired with the given `interval`.
+     * @param startTime the requested start time
+     * @param interval the requested interval
      */
     newPeriodicId(startTime: Gst.ClockTime, interval: Gst.ClockTime): Gst.ClockID
     /**
      * Gets a #GstClockID from `clock` to trigger a single shot
      * notification at the requested time.
+     * @param time the requested time
      */
     newSingleShotId(time: Gst.ClockTime): Gst.ClockID
     /**
      * Reinitializes the provided periodic `id` to the provided start time and
      * interval. Does not modify the reference count.
+     * @param id a #GstClockID
+     * @param startTime the requested start time
+     * @param interval the requested interval
      */
     periodicIdReinit(id: Gst.ClockID, startTime: Gst.ClockTime, interval: Gst.ClockTime): boolean
     /**
@@ -1650,6 +1827,10 @@ class NtpClock {
      * Note that gst_clock_get_time() always returns increasing values so when you
      * move the clock backwards, gst_clock_get_time() will report the previous value
      * until the clock catches up.
+     * @param internal a reference internal time
+     * @param external a reference external time
+     * @param rateNum the numerator of the rate of the clock relative to its            internal time
+     * @param rateDenom the denominator of the rate of the clock
      */
     setCalibration(internal: Gst.ClockTime, external: Gst.ClockTime, rateNum: Gst.ClockTime, rateDenom: Gst.ClockTime): void
     /**
@@ -1663,6 +1844,7 @@ class NtpClock {
      * `master` can be %NULL in which case `clock` will not be slaved anymore. It will
      * however keep reporting its time adjusted with the last configured rate
      * and time offsets.
+     * @param master a master #GstClock
      */
     setMaster(master?: Gst.Clock | null): boolean
     /**
@@ -1671,6 +1853,7 @@ class NtpClock {
      * normally no need to change the default resolution of a clock. The resolution
      * of a clock can only be changed if the clock has the
      * #GST_CLOCK_FLAG_CAN_SET_RESOLUTION flag set.
+     * @param resolution The resolution to set
      */
     setResolution(resolution: Gst.ClockTime): Gst.ClockTime
     /**
@@ -1679,16 +1862,20 @@ class NtpClock {
      * 
      * This function must only be called if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
      * is set on the clock, and is intended to be called by subclasses only.
+     * @param synced if the clock is synced
      */
     setSynced(synced: boolean): void
     /**
      * Sets the amount of time, in nanoseconds, to sample master and slave
      * clocks
+     * @param timeout a timeout
      */
     setTimeout(timeout: Gst.ClockTime): void
     /**
      * Reinitializes the provided single shot `id` to the provided time. Does not
      * modify the reference count.
+     * @param id a #GstClockID
+     * @param time The requested time.
      */
     singleShotIdReinit(id: Gst.ClockID, time: Gst.ClockTime): boolean
     /**
@@ -1698,6 +1885,7 @@ class NtpClock {
      * is mainly used by clock subclasses.
      * 
      * This function is the reverse of gst_clock_adjust_unlocked().
+     * @param external an external clock time
      */
     unadjustUnlocked(external: Gst.ClockTime): Gst.ClockTime
     /**
@@ -1707,6 +1895,11 @@ class NtpClock {
      * current calibration parameters.
      * 
      * Note: The `clock` parameter is unused and can be NULL
+     * @param externalTarget a clock time
+     * @param cinternal a reference internal time
+     * @param cexternal a reference external time
+     * @param cnum the numerator of the rate of the clock relative to its        internal time
+     * @param cdenom the denominator of the rate of the clock
      */
     unadjustWithCalibration(externalTarget: Gst.ClockTime, cinternal: Gst.ClockTime, cexternal: Gst.ClockTime, cnum: Gst.ClockTime, cdenom: Gst.ClockTime): Gst.ClockTime
     /**
@@ -1718,6 +1911,7 @@ class NtpClock {
      * 
      * This returns immediately with %TRUE if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
      * is not set on the clock, or if the clock is already synced.
+     * @param timeout timeout for waiting or %GST_CLOCK_TIME_NONE
      */
     waitForSync(timeout: Gst.ClockTime): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -1727,6 +1921,7 @@ class NtpClock {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1734,11 +1929,14 @@ class NtpClock {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1761,6 +1959,10 @@ class NtpClock {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1786,6 +1988,8 @@ class NtpClock {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1795,16 +1999,19 @@ class NtpClock {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -1820,17 +2027,21 @@ class NtpClock {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -1841,6 +2052,7 @@ class NtpClock {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -1848,11 +2060,13 @@ class NtpClock {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1866,6 +2080,7 @@ class NtpClock {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1919,6 +2134,10 @@ class NtpClock {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1929,6 +2148,12 @@ class NtpClock {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1952,6 +2177,7 @@ class NtpClock {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1971,11 +2197,14 @@ class NtpClock {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1983,6 +2212,8 @@ class NtpClock {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2000,6 +2231,7 @@ class NtpClock {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2045,6 +2277,7 @@ class NtpClock {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2088,15 +2321,20 @@ class NtpClock {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2137,6 +2375,7 @@ class NtpClock {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2161,6 +2400,7 @@ class NtpClock {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Clock */
@@ -2171,6 +2411,7 @@ class NtpClock {
      * 
      * This signal will be emitted from an arbitrary thread, most likely not
      * the application's main thread.
+     * @param synced if the clock is synced now
      */
     connect(sigName: "synced", callback: ((synced: boolean) => void)): number
     on(sigName: "synced", callback: (synced: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -2182,6 +2423,8 @@ class NtpClock {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2217,6 +2460,7 @@ class NtpClock {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2228,6 +2472,11 @@ class NtpClock {
     on(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::base-time", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-time", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::base-time", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::base-time", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::base-time", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::bus", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::bus", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::bus", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2300,6 +2549,7 @@ interface PtpClock_ConstructProps extends Gst.SystemClock_ConstructProps {
 }
 class PtpClock {
     /* Properties of GstNet-1.0.GstNet.PtpClock */
+    readonly domain: number
     readonly grandmasterClockId: number
     readonly internalClock: Gst.Clock
     readonly masterClockId: number
@@ -2310,31 +2560,31 @@ class PtpClock {
     windowSize: number
     windowThreshold: number
     /* Fields of Gst-1.0.Gst.SystemClock */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /* Fields of Gst-1.0.Gst.Clock */
     /**
      * the parent structure
      */
-    readonly object: Gst.Object
+    object: Gst.Object
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.Clock */
     /**
      * The time `master` of the master clock and the time `slave` of the slave
@@ -2347,6 +2597,8 @@ class PtpClock {
      * means a perfect regression was performed. This value can
      * be used to control the sampling frequency of the master and slave
      * clocks.
+     * @param slave a time on the slave
+     * @param master a time on the master
      */
     addObservation(slave: Gst.ClockTime, master: Gst.ClockTime): [ /* returnType */ boolean, /* rSquared */ number ]
     /**
@@ -2356,6 +2608,8 @@ class PtpClock {
      * 
      * The caller can then take the results and call gst_clock_set_calibration()
      * with the values, or some modified version of them.
+     * @param slave a time on the slave
+     * @param master a time on the master
      */
     addObservationUnapplied(slave: Gst.ClockTime, master: Gst.ClockTime): [ /* returnType */ boolean, /* rSquared */ number, /* internal */ Gst.ClockTime | null, /* external */ Gst.ClockTime | null, /* rateNum */ Gst.ClockTime | null, /* rateDenom */ Gst.ClockTime | null ]
     /**
@@ -2365,6 +2619,7 @@ class PtpClock {
      * clock's OBJECT_LOCK held and is mainly used by clock subclasses.
      * 
      * This function is the reverse of gst_clock_unadjust_unlocked().
+     * @param internal a clock time
      */
     adjustUnlocked(internal: Gst.ClockTime): Gst.ClockTime
     /**
@@ -2375,6 +2630,11 @@ class PtpClock {
      * increasing result as gst_clock_adjust_unlocked() does.
      * 
      * Note: The `clock` parameter is unused and can be NULL
+     * @param internalTarget a clock time
+     * @param cinternal a reference internal time
+     * @param cexternal a reference external time
+     * @param cnum the numerator of the rate of the clock relative to its        internal time
+     * @param cdenom the denominator of the rate of the clock
      */
     adjustWithCalibration(internalTarget: Gst.ClockTime, cinternal: Gst.ClockTime, cexternal: Gst.ClockTime, cnum: Gst.ClockTime, cdenom: Gst.ClockTime): Gst.ClockTime
     /**
@@ -2419,16 +2679,22 @@ class PtpClock {
      * Gets an ID from `clock` to trigger a periodic notification.
      * The periodic notifications will start at time `start_time` and
      * will then be fired with the given `interval`.
+     * @param startTime the requested start time
+     * @param interval the requested interval
      */
     newPeriodicId(startTime: Gst.ClockTime, interval: Gst.ClockTime): Gst.ClockID
     /**
      * Gets a #GstClockID from `clock` to trigger a single shot
      * notification at the requested time.
+     * @param time the requested time
      */
     newSingleShotId(time: Gst.ClockTime): Gst.ClockID
     /**
      * Reinitializes the provided periodic `id` to the provided start time and
      * interval. Does not modify the reference count.
+     * @param id a #GstClockID
+     * @param startTime the requested start time
+     * @param interval the requested interval
      */
     periodicIdReinit(id: Gst.ClockID, startTime: Gst.ClockTime, interval: Gst.ClockTime): boolean
     /**
@@ -2453,6 +2719,10 @@ class PtpClock {
      * Note that gst_clock_get_time() always returns increasing values so when you
      * move the clock backwards, gst_clock_get_time() will report the previous value
      * until the clock catches up.
+     * @param internal a reference internal time
+     * @param external a reference external time
+     * @param rateNum the numerator of the rate of the clock relative to its            internal time
+     * @param rateDenom the denominator of the rate of the clock
      */
     setCalibration(internal: Gst.ClockTime, external: Gst.ClockTime, rateNum: Gst.ClockTime, rateDenom: Gst.ClockTime): void
     /**
@@ -2466,6 +2736,7 @@ class PtpClock {
      * `master` can be %NULL in which case `clock` will not be slaved anymore. It will
      * however keep reporting its time adjusted with the last configured rate
      * and time offsets.
+     * @param master a master #GstClock
      */
     setMaster(master?: Gst.Clock | null): boolean
     /**
@@ -2474,6 +2745,7 @@ class PtpClock {
      * normally no need to change the default resolution of a clock. The resolution
      * of a clock can only be changed if the clock has the
      * #GST_CLOCK_FLAG_CAN_SET_RESOLUTION flag set.
+     * @param resolution The resolution to set
      */
     setResolution(resolution: Gst.ClockTime): Gst.ClockTime
     /**
@@ -2482,16 +2754,20 @@ class PtpClock {
      * 
      * This function must only be called if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
      * is set on the clock, and is intended to be called by subclasses only.
+     * @param synced if the clock is synced
      */
     setSynced(synced: boolean): void
     /**
      * Sets the amount of time, in nanoseconds, to sample master and slave
      * clocks
+     * @param timeout a timeout
      */
     setTimeout(timeout: Gst.ClockTime): void
     /**
      * Reinitializes the provided single shot `id` to the provided time. Does not
      * modify the reference count.
+     * @param id a #GstClockID
+     * @param time The requested time.
      */
     singleShotIdReinit(id: Gst.ClockID, time: Gst.ClockTime): boolean
     /**
@@ -2501,6 +2777,7 @@ class PtpClock {
      * is mainly used by clock subclasses.
      * 
      * This function is the reverse of gst_clock_adjust_unlocked().
+     * @param external an external clock time
      */
     unadjustUnlocked(external: Gst.ClockTime): Gst.ClockTime
     /**
@@ -2510,6 +2787,11 @@ class PtpClock {
      * current calibration parameters.
      * 
      * Note: The `clock` parameter is unused and can be NULL
+     * @param externalTarget a clock time
+     * @param cinternal a reference internal time
+     * @param cexternal a reference external time
+     * @param cnum the numerator of the rate of the clock relative to its        internal time
+     * @param cdenom the denominator of the rate of the clock
      */
     unadjustWithCalibration(externalTarget: Gst.ClockTime, cinternal: Gst.ClockTime, cexternal: Gst.ClockTime, cnum: Gst.ClockTime, cdenom: Gst.ClockTime): Gst.ClockTime
     /**
@@ -2521,6 +2803,7 @@ class PtpClock {
      * 
      * This returns immediately with %TRUE if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
      * is not set on the clock, or if the clock is already synced.
+     * @param timeout timeout for waiting or %GST_CLOCK_TIME_NONE
      */
     waitForSync(timeout: Gst.ClockTime): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -2530,6 +2813,7 @@ class PtpClock {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -2537,11 +2821,14 @@ class PtpClock {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -2564,6 +2851,10 @@ class PtpClock {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -2589,6 +2880,8 @@ class PtpClock {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -2598,16 +2891,19 @@ class PtpClock {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -2623,17 +2919,21 @@ class PtpClock {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -2644,6 +2944,7 @@ class PtpClock {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -2651,11 +2952,13 @@ class PtpClock {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -2669,6 +2972,7 @@ class PtpClock {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -2722,6 +3026,10 @@ class PtpClock {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2732,6 +3040,12 @@ class PtpClock {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2755,6 +3069,7 @@ class PtpClock {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2774,11 +3089,14 @@ class PtpClock {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2786,6 +3104,8 @@ class PtpClock {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2803,6 +3123,7 @@ class PtpClock {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2848,6 +3169,7 @@ class PtpClock {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2891,15 +3213,20 @@ class PtpClock {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2940,6 +3267,7 @@ class PtpClock {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2964,6 +3292,7 @@ class PtpClock {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Clock */
@@ -2974,6 +3303,7 @@ class PtpClock {
      * 
      * This signal will be emitted from an arbitrary thread, most likely not
      * the application's main thread.
+     * @param synced if the clock is synced now
      */
     connect(sigName: "synced", callback: ((synced: boolean) => void)): number
     on(sigName: "synced", callback: (synced: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -2985,6 +3315,8 @@ class PtpClock {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3020,12 +3352,18 @@ class PtpClock {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::domain", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::domain", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::domain", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::domain", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::domain", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::grandmaster-clock-id", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::grandmaster-clock-id", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::grandmaster-clock-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -3080,18 +3418,18 @@ class NetAddressMeta {
     /**
      * the parent type
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * a #GSocketAddress stored as metadata
      */
-    readonly addr: Gio.SocketAddress
+    addr: Gio.SocketAddress
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
 }
 abstract class NetClientClockClass {
     /* Fields of GstNet-1.0.GstNet.NetClientClockClass */
-    readonly parentClass: Gst.SystemClockClass
+    parentClass: Gst.SystemClockClass
     static name: string
 }
 class NetClientClockPrivate {
@@ -3102,11 +3440,11 @@ class NetControlMessageMeta {
     /**
      * the parent type
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * a #GSocketControlMessage stored as metadata
      */
-    readonly message: Gio.SocketControlMessage
+    message: Gio.SocketControlMessage
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
@@ -3116,11 +3454,11 @@ class NetTimePacket {
     /**
      * the local time when this packet was sent
      */
-    readonly localTime: Gst.ClockTime
+    localTime: Gst.ClockTime
     /**
      * the remote time observation
      */
-    readonly remoteTime: Gst.ClockTime
+    remoteTime: Gst.ClockTime
     /* Methods of GstNet-1.0.GstNet.NetTimePacket */
     /**
      * Make a copy of `packet`.
@@ -3134,6 +3472,8 @@ class NetTimePacket {
      * Sends a #GstNetTimePacket over a socket.
      * 
      * MT safe.
+     * @param socket socket to send the time packet on
+     * @param destAddress address to send the time packet to
      */
     send(socket: Gio.Socket, destAddress: Gio.SocketAddress): boolean
     /**
@@ -3153,13 +3493,14 @@ class NetTimePacket {
     /**
      * Receives a #GstNetTimePacket over a socket. Handles interrupted system
      * calls, but otherwise returns NULL on error.
+     * @param socket socket to receive the time packet on
      */
     static receive(socket: Gio.Socket): [ /* returnType */ NetTimePacket, /* srcAddress */ Gio.SocketAddress ]
 }
 abstract class NetTimeProviderClass {
     /* Fields of GstNet-1.0.GstNet.NetTimeProviderClass */
-    readonly parentClass: Gst.ObjectClass
-    readonly gstReserved: object[]
+    parentClass: Gst.ObjectClass
+    gstReserved: object[]
     static name: string
 }
 class NetTimeProviderPrivate {
@@ -3167,7 +3508,7 @@ class NetTimeProviderPrivate {
 }
 abstract class NtpClockClass {
     /* Fields of GstNet-1.0.GstNet.NtpClockClass */
-    readonly parentClass: Gst.SystemClockClass
+    parentClass: Gst.SystemClockClass
     static name: string
 }
 abstract class PtpClockClass {
@@ -3175,7 +3516,7 @@ abstract class PtpClockClass {
     /**
      * parented to #GstSystemClockClass
      */
-    readonly parentClass: Gst.SystemClockClass
+    parentClass: Gst.SystemClockClass
     static name: string
 }
 class PtpClockPrivate {

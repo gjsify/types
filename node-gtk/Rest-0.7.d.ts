@@ -240,8 +240,11 @@ interface OAuth2Proxy_ConstructProps extends Proxy_ConstructProps {
 class OAuth2Proxy {
     /* Properties of Rest-0.7.Rest.OAuth2Proxy */
     accessToken: string
+    readonly authEndpoint: string
+    readonly clientId: string
     /* Properties of Rest-0.7.Rest.Proxy */
     bindingRequired: boolean
+    readonly disableCookies: boolean
     password: string
     sslCaFile: string
     sslStrict: boolean
@@ -249,14 +252,15 @@ class OAuth2Proxy {
     userAgent: string
     username: string
     /* Fields of Rest-0.7.Rest.Proxy */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Rest-0.7.Rest.OAuth2Proxy */
     /**
      * Builds a url at which the user can log in to the specified OAuth2-based web
      * service.  See the documentation for oauth2_proxy_build_login_url_full() for
      * detailed information.
+     * @param redirectUri the uri to redirect to after the user authenticates
      */
     buildLoginUrl(redirectUri: string): string
     /**
@@ -272,6 +276,8 @@ class OAuth2Proxy {
      * 
      * The `extra_params` and `redirect_uri` should not be uri-encoded, that will be
      * done automatically
+     * @param redirectUri the uri to redirect to after the user authenticates
+     * @param extraParams any extra parameters to add to the login url (e.g. facebook uses 'scope=foo,bar' to request extended permissions).
      */
     buildLoginUrlFull(redirectUri: string, extraParams: GLib.HashTable): string
     /**
@@ -280,6 +286,7 @@ class OAuth2Proxy {
     getAccessToken(): string
     /**
      * Set the access token.
+     * @param accessToken the access token
      */
     setAccessToken(accessToken: string): void
     /* Methods of Rest-0.7.Rest.Proxy */
@@ -298,6 +305,7 @@ class OAuth2Proxy {
      *   SoupSessionFeature *cookie_jar = SOUP_SESSION_FEATURE(soup_cookie_jar_new ());
      *   rest_proxy_add_soup_feature(proxy, cookie_jar);
      *   </programlisting>
+     * @param feature A #SoupSessionFeature
      */
     addSoupFeature(feature: Soup.SessionFeature): void
     getUserAgent(): string
@@ -342,6 +350,10 @@ class OAuth2Proxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -352,6 +364,12 @@ class OAuth2Proxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -375,6 +393,7 @@ class OAuth2Proxy {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -394,11 +413,14 @@ class OAuth2Proxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -406,6 +428,8 @@ class OAuth2Proxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -423,6 +447,7 @@ class OAuth2Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -468,6 +493,7 @@ class OAuth2Proxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -511,15 +537,20 @@ class OAuth2Proxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -560,6 +591,7 @@ class OAuth2Proxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -594,6 +626,7 @@ class OAuth2Proxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Rest-0.7.Rest.Proxy */
@@ -614,6 +647,8 @@ class OAuth2Proxy {
      * You can then unpause the authentication with
      * rest_proxy_auth_unpause() when everything is ready for it
      * to continue.
+     * @param auth authentication state
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: ((auth: ProxyAuth, retrying: boolean) => boolean)): number
     on(sigName: "authenticate", callback: (auth: ProxyAuth, retrying: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -649,6 +684,7 @@ class OAuth2Proxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -660,11 +696,26 @@ class OAuth2Proxy {
     on(sigName: "notify::access-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::access-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::access-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::auth-endpoint", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::auth-endpoint", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::auth-endpoint", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::auth-endpoint", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::auth-endpoint", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::client-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::client-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::client-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::client-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::binding-required", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::binding-required", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::disable-cookies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::disable-cookies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::password", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::password", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::password", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -713,6 +764,7 @@ class OAuth2Proxy {
     /**
      * A utility function to extract the access token from the url that results from
      * the redirection after the user authenticates
+     * @param url the url which contains an access token in its fragment
      */
     static extractAccessToken(url: string): string
     static $gtype: GObject.Type
@@ -720,21 +772,27 @@ class OAuth2Proxy {
 interface OAuth2ProxyCall_ConstructProps extends ProxyCall_ConstructProps {
 }
 class OAuth2ProxyCall {
+    /* Properties of Rest-0.7.Rest.ProxyCall */
+    readonly proxy: Proxy
     /* Fields of Rest-0.7.Rest.ProxyCall */
-    readonly parent: GObject.Object
-    readonly priv: ProxyCallPrivate
+    parent: GObject.Object
+    priv: ProxyCallPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Rest-0.7.Rest.ProxyCall */
     /**
      * Add a header called `header` with the value `value` to the call.  If a
      * header with this name already exists, the new value will replace the old.
+     * @param header The name of the header to set
+     * @param value The value of the header
      */
     addHeader(header: string, value: string): void
     /**
      * Add a query parameter called `param` with the string value `value` to the call.
      * If a parameter with this name already exists, the new value will replace the
      * old.
+     * @param name The name of the parameter to set
+     * @param value The value of the parameter
      */
     addParam(name: string, value: string): void
     addParamFull(param: Param): void
@@ -771,28 +829,35 @@ class OAuth2ProxyCall {
     getStatusMessage(): string
     /**
      * A GIO-style version of rest_proxy_call_async().
+     * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
+     * @param callback callback to call when the async call is finished
      */
     invokeAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     invokeFinish(result: Gio.AsyncResult): boolean
     /**
      * Get the value of the header called `header`.
+     * @param header The header name
      */
     lookupHeader(header: string): string
     /**
      * Get the value of the parameter called `name`.
+     * @param name The paramter name
      */
     lookupParam(name: string): Param
     /**
      * Get the string value of the header `header` or %NULL if that header is not
      * present or there are no headers.
+     * @param header The name of the header to lookup.
      */
     lookupResponseHeader(header: string): string
     /**
      * Remove the header named `header` from the call.
+     * @param header The header name
      */
     removeHeader(header: string): void
     /**
      * Remove the parameter named `name` from the call.
+     * @param name The paramter name
      */
     removeParam(name: string): void
     run(loop: GLib.MainLoop): boolean
@@ -807,10 +872,12 @@ class OAuth2ProxyCall {
      * <literal>http://www.example.com/</literal> and the function
      * <literal>test</literal> would actually access the URL
      * <literal>http://www.example.com/test</literal>
+     * @param function_ The function to call
      */
     setFunction(function_: string): void
     /**
      * Set the HTTP method to use when making the call, for example GET or POST.
+     * @param method The HTTP method to use
      */
     setMethod(method: string): void
     sync(): boolean
@@ -827,6 +894,8 @@ class OAuth2ProxyCall {
      * 
      * You may unref the call after calling this function since there is an
      * internal reference, or you may unref in the callback.
+     * @param callback a #RestProxyCallUploadCallback to invoke when a chunk   of data was uploaded
+     * @param weakObject The #GObject to weakly reference and tie the lifecycle to
      */
     upload(callback: ProxyCallUploadCallback, weakObject: GObject.Object): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -864,6 +933,10 @@ class OAuth2ProxyCall {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -874,6 +947,12 @@ class OAuth2ProxyCall {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -897,6 +976,7 @@ class OAuth2ProxyCall {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -916,11 +996,14 @@ class OAuth2ProxyCall {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -928,6 +1011,8 @@ class OAuth2ProxyCall {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -945,6 +1030,7 @@ class OAuth2ProxyCall {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -990,6 +1076,7 @@ class OAuth2ProxyCall {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1033,15 +1120,20 @@ class OAuth2ProxyCall {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1082,6 +1174,7 @@ class OAuth2ProxyCall {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1116,6 +1209,7 @@ class OAuth2ProxyCall {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1147,12 +1241,18 @@ class OAuth2ProxyCall {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::proxy", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1176,12 +1276,15 @@ interface OAuthProxy_ConstructProps extends Proxy_ConstructProps {
 }
 class OAuthProxy {
     /* Properties of Rest-0.7.Rest.OAuthProxy */
+    readonly consumerKey: string
+    readonly consumerSecret: string
     signatureHost: string
     signatureMethod: OAuthSignatureMethod
     token: string
     tokenSecret: string
     /* Properties of Rest-0.7.Rest.Proxy */
     bindingRequired: boolean
+    readonly disableCookies: boolean
     password: string
     sslCaFile: string
     sslStrict: boolean
@@ -1189,9 +1292,9 @@ class OAuthProxy {
     userAgent: string
     username: string
     /* Fields of Rest-0.7.Rest.Proxy */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Rest-0.7.Rest.OAuthProxy */
     /**
      * Perform the Access Token phase of OAuth, invoking `function` (defaulting to
@@ -1201,6 +1304,8 @@ class OAuthProxy {
      * "oauth_verifier" parameter that was passed to your callback URI, or a string
      * that the user enters in some other manner (for example in a popup dialog) if
      * "oob" was passed to oauth_proxy_request_token().  For OAuth 1.0, pass %NULL.
+     * @param function_ the function name to invoke
+     * @param verifier the verifier
      */
     accessToken(function_: string, verifier: string): boolean
     /**
@@ -1214,6 +1319,10 @@ class OAuthProxy {
      * 
      * This method will return once the method has been queued, `callback` will be
      * invoked when it has completed.
+     * @param function_ the function name to invoke
+     * @param verifier the verifier
+     * @param callback a #OAuthProxyAuthCallback to invoke on completion
+     * @param weakObject #GObject to weakly reference and tie the lifecycle of the method call too
      */
     accessTokenAsync(function_: string, verifier: string, callback: OAuthProxyAuthCallback, weakObject: GObject.Object): boolean
     /**
@@ -1222,6 +1331,7 @@ class OAuthProxy {
      * 
      * `proxy` must not require binding, the function will be invoked using
      * rest_proxy_call_set_function().
+     * @param function_ the function to invoke on the proxy
      */
     authStep(function_: string): boolean
     /**
@@ -1230,6 +1340,9 @@ class OAuthProxy {
      * 
      * `proxy` must not require binding, the function will be invoked using
      * rest_proxy_call_set_function().
+     * @param function_ the function to invoke on the proxy
+     * @param callback the callback to invoke when authorisation is complete
+     * @param weakObject the #GObject to weakly reference and tie the lifecycle too
      */
     authStepAsync(function_: string, callback: OAuthProxyAuthCallback, weakObject: GObject.Object): boolean
     /**
@@ -1254,6 +1367,9 @@ class OAuthProxy {
      * Create a new <ulink
      * url="http://www.scribd.com/doc/26707268/OAuth-Echo-Identity-Veri%EF%AC%81cation-Delegation-Draft">OAuth
      * Echo</ulink> proxy.
+     * @param serviceUrl the service URL
+     * @param urlFormat the URL format
+     * @param bindingRequired whether a binding is required
      */
     newEchoProxy(serviceUrl: string, urlFormat: string, bindingRequired: boolean): Proxy
     /**
@@ -1263,6 +1379,8 @@ class OAuthProxy {
      * The value of `callback` depends on whether you wish to use OAuth 1.0 or 1.0a.
      * If you wish to use 1.0 then callback must be NULL.  To use 1.0a then
      * `callback` should either be your callback URI, or "oob" (out-of-band).
+     * @param function_ the function name to invoke
+     * @param callbackUri the callback URI
      */
     requestToken(function_: string, callbackUri: string): boolean
     /**
@@ -1275,18 +1393,25 @@ class OAuthProxy {
      * 
      * This method will return once the method has been queued, `callback` will be
      * invoked when it has completed.
+     * @param function_ the function name to invoke
+     * @param callbackUri the callback URI
+     * @param callback a #OAuthProxyAuthCallback to invoke on completion
+     * @param weakObject #GObject to weakly reference and tie the lifecycle of the method call too
      */
     requestTokenAsync(function_: string, callbackUri: string, callback: OAuthProxyAuthCallback, weakObject: GObject.Object): boolean
     /**
      * Set the signature hostname used when creating a signature base string.
+     * @param signatureHost the signature host
      */
     setSignatureHost(signatureHost: string): void
     /**
      * Set the access token.
+     * @param token the access token
      */
     setToken(token: string): void
     /**
      * Set the access token secret.
+     * @param tokenSecret the access token secret
      */
     setTokenSecret(tokenSecret: string): void
     /* Methods of Rest-0.7.Rest.Proxy */
@@ -1305,6 +1430,7 @@ class OAuthProxy {
      *   SoupSessionFeature *cookie_jar = SOUP_SESSION_FEATURE(soup_cookie_jar_new ());
      *   rest_proxy_add_soup_feature(proxy, cookie_jar);
      *   </programlisting>
+     * @param feature A #SoupSessionFeature
      */
     addSoupFeature(feature: Soup.SessionFeature): void
     getUserAgent(): string
@@ -1349,6 +1475,10 @@ class OAuthProxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1359,6 +1489,12 @@ class OAuthProxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1382,6 +1518,7 @@ class OAuthProxy {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1401,11 +1538,14 @@ class OAuthProxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1413,6 +1553,8 @@ class OAuthProxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1430,6 +1572,7 @@ class OAuthProxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1475,6 +1618,7 @@ class OAuthProxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1518,15 +1662,20 @@ class OAuthProxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1567,6 +1716,7 @@ class OAuthProxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1601,6 +1751,7 @@ class OAuthProxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Rest-0.7.Rest.Proxy */
@@ -1621,6 +1772,8 @@ class OAuthProxy {
      * You can then unpause the authentication with
      * rest_proxy_auth_unpause() when everything is ready for it
      * to continue.
+     * @param auth authentication state
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: ((auth: ProxyAuth, retrying: boolean) => boolean)): number
     on(sigName: "authenticate", callback: (auth: ProxyAuth, retrying: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -1656,12 +1809,23 @@ class OAuthProxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::consumer-key", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::consumer-key", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::consumer-key", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::consumer-key", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::consumer-key", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::consumer-secret", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::consumer-secret", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::consumer-secret", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::consumer-secret", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::consumer-secret", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::signature-host", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::signature-host", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::signature-host", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1687,6 +1851,11 @@ class OAuthProxy {
     on(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::disable-cookies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::disable-cookies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::password", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::password", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::password", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1737,11 +1906,13 @@ class OAuthProxy {
 interface OAuthProxyCall_ConstructProps extends ProxyCall_ConstructProps {
 }
 class OAuthProxyCall {
+    /* Properties of Rest-0.7.Rest.ProxyCall */
+    readonly proxy: Proxy
     /* Fields of Rest-0.7.Rest.ProxyCall */
-    readonly parent: GObject.Object
-    readonly priv: ProxyCallPrivate
+    parent: GObject.Object
+    priv: ProxyCallPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Rest-0.7.Rest.OAuthProxyCall */
     parseTokenReponse(): void
     parseTokenResponse(): void
@@ -1749,12 +1920,16 @@ class OAuthProxyCall {
     /**
      * Add a header called `header` with the value `value` to the call.  If a
      * header with this name already exists, the new value will replace the old.
+     * @param header The name of the header to set
+     * @param value The value of the header
      */
     addHeader(header: string, value: string): void
     /**
      * Add a query parameter called `param` with the string value `value` to the call.
      * If a parameter with this name already exists, the new value will replace the
      * old.
+     * @param name The name of the parameter to set
+     * @param value The value of the parameter
      */
     addParam(name: string, value: string): void
     addParamFull(param: Param): void
@@ -1791,28 +1966,35 @@ class OAuthProxyCall {
     getStatusMessage(): string
     /**
      * A GIO-style version of rest_proxy_call_async().
+     * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
+     * @param callback callback to call when the async call is finished
      */
     invokeAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     invokeFinish(result: Gio.AsyncResult): boolean
     /**
      * Get the value of the header called `header`.
+     * @param header The header name
      */
     lookupHeader(header: string): string
     /**
      * Get the value of the parameter called `name`.
+     * @param name The paramter name
      */
     lookupParam(name: string): Param
     /**
      * Get the string value of the header `header` or %NULL if that header is not
      * present or there are no headers.
+     * @param header The name of the header to lookup.
      */
     lookupResponseHeader(header: string): string
     /**
      * Remove the header named `header` from the call.
+     * @param header The header name
      */
     removeHeader(header: string): void
     /**
      * Remove the parameter named `name` from the call.
+     * @param name The paramter name
      */
     removeParam(name: string): void
     run(loop: GLib.MainLoop): boolean
@@ -1827,10 +2009,12 @@ class OAuthProxyCall {
      * <literal>http://www.example.com/</literal> and the function
      * <literal>test</literal> would actually access the URL
      * <literal>http://www.example.com/test</literal>
+     * @param function_ The function to call
      */
     setFunction(function_: string): void
     /**
      * Set the HTTP method to use when making the call, for example GET or POST.
+     * @param method The HTTP method to use
      */
     setMethod(method: string): void
     sync(): boolean
@@ -1847,6 +2031,8 @@ class OAuthProxyCall {
      * 
      * You may unref the call after calling this function since there is an
      * internal reference, or you may unref in the callback.
+     * @param callback a #RestProxyCallUploadCallback to invoke when a chunk   of data was uploaded
+     * @param weakObject The #GObject to weakly reference and tie the lifecycle to
      */
     upload(callback: ProxyCallUploadCallback, weakObject: GObject.Object): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1884,6 +2070,10 @@ class OAuthProxyCall {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1894,6 +2084,12 @@ class OAuthProxyCall {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1917,6 +2113,7 @@ class OAuthProxyCall {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1936,11 +2133,14 @@ class OAuthProxyCall {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1948,6 +2148,8 @@ class OAuthProxyCall {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1965,6 +2167,7 @@ class OAuthProxyCall {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2010,6 +2213,7 @@ class OAuthProxyCall {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2053,15 +2257,20 @@ class OAuthProxyCall {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2102,6 +2311,7 @@ class OAuthProxyCall {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2136,6 +2346,7 @@ class OAuthProxyCall {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2167,12 +2378,18 @@ class OAuthProxyCall {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::proxy", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2199,6 +2416,7 @@ interface Proxy_ConstructProps extends GObject.Object_ConstructProps {
 class Proxy {
     /* Properties of Rest-0.7.Rest.Proxy */
     bindingRequired: boolean
+    readonly disableCookies: boolean
     password: string
     sslCaFile: string
     sslStrict: boolean
@@ -2206,7 +2424,7 @@ class Proxy {
     userAgent: string
     username: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Rest-0.7.Rest.Proxy */
     /**
      * This method can be used to add specific features to the #SoupSession objects
@@ -2223,6 +2441,7 @@ class Proxy {
      *   SoupSessionFeature *cookie_jar = SOUP_SESSION_FEATURE(soup_cookie_jar_new ());
      *   rest_proxy_add_soup_feature(proxy, cookie_jar);
      *   </programlisting>
+     * @param feature A #SoupSessionFeature
      */
     addSoupFeature(feature: Soup.SessionFeature): void
     getUserAgent(): string
@@ -2267,6 +2486,10 @@ class Proxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2277,6 +2500,12 @@ class Proxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2300,6 +2529,7 @@ class Proxy {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2319,11 +2549,14 @@ class Proxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2331,6 +2564,8 @@ class Proxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2348,6 +2583,7 @@ class Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2393,6 +2629,7 @@ class Proxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2436,15 +2673,20 @@ class Proxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2485,6 +2727,7 @@ class Proxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2519,6 +2762,7 @@ class Proxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Rest-0.7.Rest.Proxy */
@@ -2539,6 +2783,8 @@ class Proxy {
      * You can then unpause the authentication with
      * rest_proxy_auth_unpause() when everything is ready for it
      * to continue.
+     * @param auth authentication state
+     * @param retrying %TRUE if this is the second (or later) attempt
      */
     connect(sigName: "authenticate", callback: ((auth: ProxyAuth, retrying: boolean) => boolean)): number
     on(sigName: "authenticate", callback: (auth: ProxyAuth, retrying: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -2574,6 +2820,7 @@ class Proxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2585,6 +2832,11 @@ class Proxy {
     on(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::binding-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::disable-cookies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::disable-cookies", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::disable-cookies", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::password", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::password", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::password", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2634,7 +2886,7 @@ interface ProxyAuth_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ProxyAuth {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Rest-0.7.Rest.ProxyAuth */
     /**
      * Cancel the authentication process
@@ -2689,6 +2941,10 @@ class ProxyAuth {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2699,6 +2955,12 @@ class ProxyAuth {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2722,6 +2984,7 @@ class ProxyAuth {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2741,11 +3004,14 @@ class ProxyAuth {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2753,6 +3019,8 @@ class ProxyAuth {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2770,6 +3038,7 @@ class ProxyAuth {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2815,6 +3084,7 @@ class ProxyAuth {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2858,15 +3128,20 @@ class ProxyAuth {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2907,6 +3182,7 @@ class ProxyAuth {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2941,6 +3217,7 @@ class ProxyAuth {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2972,6 +3249,7 @@ class ProxyAuth {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2995,18 +3273,24 @@ interface ProxyCall_ConstructProps extends GObject.Object_ConstructProps {
     proxy?: Proxy
 }
 class ProxyCall {
+    /* Properties of Rest-0.7.Rest.ProxyCall */
+    readonly proxy: Proxy
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Rest-0.7.Rest.ProxyCall */
     /**
      * Add a header called `header` with the value `value` to the call.  If a
      * header with this name already exists, the new value will replace the old.
+     * @param header The name of the header to set
+     * @param value The value of the header
      */
     addHeader(header: string, value: string): void
     /**
      * Add a query parameter called `param` with the string value `value` to the call.
      * If a parameter with this name already exists, the new value will replace the
      * old.
+     * @param name The name of the parameter to set
+     * @param value The value of the parameter
      */
     addParam(name: string, value: string): void
     addParamFull(param: Param): void
@@ -3043,28 +3327,35 @@ class ProxyCall {
     getStatusMessage(): string
     /**
      * A GIO-style version of rest_proxy_call_async().
+     * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
+     * @param callback callback to call when the async call is finished
      */
     invokeAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     invokeFinish(result: Gio.AsyncResult): boolean
     /**
      * Get the value of the header called `header`.
+     * @param header The header name
      */
     lookupHeader(header: string): string
     /**
      * Get the value of the parameter called `name`.
+     * @param name The paramter name
      */
     lookupParam(name: string): Param
     /**
      * Get the string value of the header `header` or %NULL if that header is not
      * present or there are no headers.
+     * @param header The name of the header to lookup.
      */
     lookupResponseHeader(header: string): string
     /**
      * Remove the header named `header` from the call.
+     * @param header The header name
      */
     removeHeader(header: string): void
     /**
      * Remove the parameter named `name` from the call.
+     * @param name The paramter name
      */
     removeParam(name: string): void
     run(loop: GLib.MainLoop): boolean
@@ -3079,10 +3370,12 @@ class ProxyCall {
      * <literal>http://www.example.com/</literal> and the function
      * <literal>test</literal> would actually access the URL
      * <literal>http://www.example.com/test</literal>
+     * @param function_ The function to call
      */
     setFunction(function_: string): void
     /**
      * Set the HTTP method to use when making the call, for example GET or POST.
+     * @param method The HTTP method to use
      */
     setMethod(method: string): void
     sync(): boolean
@@ -3099,6 +3392,8 @@ class ProxyCall {
      * 
      * You may unref the call after calling this function since there is an
      * internal reference, or you may unref in the callback.
+     * @param callback a #RestProxyCallUploadCallback to invoke when a chunk   of data was uploaded
+     * @param weakObject The #GObject to weakly reference and tie the lifecycle to
      */
     upload(callback: ProxyCallUploadCallback, weakObject: GObject.Object): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3136,6 +3431,10 @@ class ProxyCall {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3146,6 +3445,12 @@ class ProxyCall {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3169,6 +3474,7 @@ class ProxyCall {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3188,11 +3494,14 @@ class ProxyCall {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3200,6 +3509,8 @@ class ProxyCall {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3217,6 +3528,7 @@ class ProxyCall {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3262,6 +3574,7 @@ class ProxyCall {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3305,15 +3618,20 @@ class ProxyCall {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3354,6 +3672,7 @@ class ProxyCall {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3388,6 +3707,7 @@ class ProxyCall {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3419,12 +3739,18 @@ class ProxyCall {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::proxy", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::proxy", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3441,11 +3767,13 @@ interface XmlParser_ConstructProps extends GObject.Object_ConstructProps {
 }
 class XmlParser {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Rest-0.7.Rest.XmlParser */
     /**
      * Parse the XML in `data,` and return a new #RestXmlNode.  If `data` is invalid
      * XML, %NULL is returned.
+     * @param data the XML content to parse
+     * @param len the length of `data,` or -1 if `data` is a nul-terminated string
      */
     parseFromData(data: string, len: number): XmlNode
     /* Methods of GObject-2.0.GObject.Object */
@@ -3483,6 +3811,10 @@ class XmlParser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3493,6 +3825,12 @@ class XmlParser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3516,6 +3854,7 @@ class XmlParser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3535,11 +3874,14 @@ class XmlParser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3547,6 +3889,8 @@ class XmlParser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3564,6 +3908,7 @@ class XmlParser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3609,6 +3954,7 @@ class XmlParser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3652,15 +3998,20 @@ class XmlParser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3701,6 +4052,7 @@ class XmlParser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3735,6 +4087,7 @@ class XmlParser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3766,6 +4119,7 @@ class XmlParser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3788,12 +4142,12 @@ class XmlParser {
 }
 abstract class OAuth2ProxyCallClass {
     /* Fields of Rest-0.7.Rest.OAuth2ProxyCallClass */
-    readonly parentClass: ProxyCallClass
+    parentClass: ProxyCallClass
     static name: string
 }
 abstract class OAuth2ProxyClass {
     /* Fields of Rest-0.7.Rest.OAuth2ProxyClass */
-    readonly parentClass: ProxyClass
+    parentClass: ProxyClass
     static name: string
 }
 class OAuth2ProxyPrivate {
@@ -3801,12 +4155,12 @@ class OAuth2ProxyPrivate {
 }
 abstract class OAuthProxyCallClass {
     /* Fields of Rest-0.7.Rest.OAuthProxyCallClass */
-    readonly parentClass: ProxyCallClass
+    parentClass: ProxyCallClass
     static name: string
 }
 abstract class OAuthProxyClass {
     /* Fields of Rest-0.7.Rest.OAuthProxyClass */
-    readonly parentClass: ProxyClass
+    parentClass: ProxyClass
     static name: string
 }
 class Param {
@@ -3856,6 +4210,7 @@ class Params {
     /* Methods of Rest-0.7.Rest.Params */
     /**
      * Add `param` to `params`.
+     * @param param a valid #RestParam
      */
     add(param: Param): void
     /**
@@ -3877,10 +4232,12 @@ class Params {
     free(): void
     /**
      * Return the #RestParam called `name,` or %NULL if it doesn't exist.
+     * @param name a parameter name
      */
     get(name: string): Param
     /**
      * Remove the #RestParam called `name`.
+     * @param name a parameter name
      */
     remove(name: string): void
     static name: string
@@ -3901,19 +4258,22 @@ class ParamsIter {
      * }
      * ```
      * 
+     * @param params a valid #RestParams
      */
     init(params: Params): void
     /**
      * Advances `iter` and retrieves the name and/or parameter that are now pointed
      * at as a result of this advancement.  If FALSE is returned, `name` and `param`
      * are not set and the iterator becomes invalid.
+     * @param name a location to store the name, or %NULL
+     * @param param a location to store the #RestParam, or %NULL
      */
     next(name: string, param: Param): boolean
     static name: string
 }
 abstract class ProxyAuthClass {
     /* Fields of Rest-0.7.Rest.ProxyAuthClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ProxyAuthPrivate {
@@ -3921,8 +4281,8 @@ class ProxyAuthPrivate {
 }
 abstract class ProxyCallClass {
     /* Fields of Rest-0.7.Rest.ProxyCallClass */
-    readonly prepare: (call: ProxyCall) => boolean
-    readonly serializeParams: (call: ProxyCall) => [ /* returnType */ boolean, /* contentType */ string, /* content */ string, /* contentLen */ number ]
+    prepare: (call: ProxyCall) => boolean
+    serializeParams: (call: ProxyCall) => [ /* returnType */ boolean, /* contentType */ string, /* content */ string, /* contentLen */ number ]
     static name: string
 }
 class ProxyCallPrivate {
@@ -3930,8 +4290,8 @@ class ProxyCallPrivate {
 }
 abstract class ProxyClass {
     /* Fields of Rest-0.7.Rest.ProxyClass */
-    readonly newCall: (proxy: Proxy) => ProxyCall
-    readonly authenticate: (proxy: Proxy, auth: ProxyAuth, retrying: boolean) => boolean
+    newCall: (proxy: Proxy) => ProxyCall
+    authenticate: (proxy: Proxy, auth: ProxyAuth, retrying: boolean) => boolean
     static name: string
 }
 class XmlNode {
@@ -3939,43 +4299,48 @@ class XmlNode {
     /**
      * the name of the element
      */
-    readonly name: string
+    name: string
     /**
      * the textual content of the element
      */
-    readonly content: string
+    content: string
     /**
      * a #GHashTable of string name to #RestXmlNode for the children of
      * the element.
      */
-    readonly children: GLib.HashTable
+    children: GLib.HashTable
     /**
      * a #GHashTable of string name to string values for the attributes of
      * the element.
      */
-    readonly attrs: GLib.HashTable
+    attrs: GLib.HashTable
     /**
      * the sibling #RestXmlNode with the same name
      */
-    readonly next: XmlNode
+    next: XmlNode
     /* Methods of Rest-0.7.Rest.XmlNode */
     /**
      * Adds attribute to the given node.
+     * @param attribute name of the attribute
+     * @param value value to set attribute to
      */
     addAttr(attribute: string, value: string): void
     /**
      * Adds a new node to the given parent node; to create the top-level node,
      * parent should be %NULL.
+     * @param tag name of the child node
      */
     addChild(tag: string): XmlNode
     /**
      * Searches for the first child node of `start` named `tag`.
+     * @param tag the name of a node
      */
     find(tag: string): XmlNode
     free(): void
     /**
      * Get the value of the attribute named `attr_name,` or %NULL if it doesn't
      * exist.
+     * @param attrName the name of an attribute
      */
     getAttr(attrName: string): string
     /**
@@ -3984,13 +4349,14 @@ class XmlNode {
     print(): string
     /**
      * Sets content for the given node.
+     * @param value the content
      */
     setContent(value: string): void
     static name: string
 }
 abstract class XmlParserClass {
     /* Fields of Rest-0.7.Rest.XmlParserClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 }

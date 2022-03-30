@@ -1652,7 +1652,7 @@ interface Context_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Context {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.Context */
     /**
      * Forces a change in the context, which will cause any `PangoLayout`
@@ -1722,6 +1722,8 @@ class Context {
      * from multiple of these families would be used to render the string, then
      * the returned fonts would be a composite of the metrics for the fonts loaded
      * for the individual families.
+     * @param desc a `PangoFontDescription` structure. %NULL means that the   font description from the context will be used.
+     * @param language language tag used to determine which script to get   the metrics for. %NULL means that the language tag from the context   will be used. If no language tag is set on the context, metrics   for the default language (as determined by [func`Pango`.Language.get_default]   will be returned.
      */
     get_metrics(desc?: FontDescription | null, language?: Language | null): FontMetrics
     /**
@@ -1751,11 +1753,14 @@ class Context {
     /**
      * Loads the font in one of the fontmaps in the context
      * that is the closest match for `desc`.
+     * @param desc a `PangoFontDescription` describing the font to load
      */
     load_font(desc: FontDescription): Font | null
     /**
      * Load a set of fonts in the context that can be used to render
      * a font matching `desc`.
+     * @param desc a `PangoFontDescription` describing the fonts to load
+     * @param language a `PangoLanguage` the fonts will be used for
      */
     load_fontset(desc: FontDescription, language: Language): Fontset | null
     /**
@@ -1767,16 +1772,19 @@ class Context {
      * direction in the Unicode bidirectional algorithm. A value of
      * %PANGO_DIRECTION_WEAK_LTR or %PANGO_DIRECTION_WEAK_RTL is used only
      * for paragraphs that do not contain any strong characters themselves.
+     * @param direction the new base direction
      */
     set_base_dir(direction: Direction): void
     /**
      * Sets the base gravity for the context.
      * 
      * The base gravity is used in laying vertical text out.
+     * @param gravity the new base gravity
      */
     set_base_gravity(gravity: Gravity): void
     /**
      * Set the default font description for the context
+     * @param desc the new pango font description
      */
     set_font_description(desc: FontDescription): void
     /**
@@ -1786,6 +1794,7 @@ class Context {
      * This is only for internal use by Pango backends, a `PangoContext`
      * obtained via one of the recommended methods should already have a
      * suitable font map.
+     * @param font_map the `PangoFontMap` to set.
      */
     set_font_map(font_map: FontMap): void
     /**
@@ -1795,6 +1804,7 @@ class Context {
      * is only relevant if gravity of the context as returned by
      * [method`Pango`.Context.get_gravity] is set to %PANGO_GRAVITY_EAST
      * or %PANGO_GRAVITY_WEST.
+     * @param hint the new gravity hint
      */
     set_gravity_hint(hint: GravityHint): void
     /**
@@ -1802,6 +1812,7 @@ class Context {
      * 
      * The default language for the locale of the running process
      * can be found using [func`Pango`.Language.get_default].
+     * @param language the new language tag.
      */
     set_language(language: Language): void
     /**
@@ -1813,6 +1824,7 @@ class Context {
      * application of the matrix. So, they don't scale with the matrix, though
      * they may change slightly for different matrices, depending on how the
      * text is fit to the pixel grid.
+     * @param matrix a `PangoMatrix`, or %NULL to unset any existing matrix. (No matrix set is the same as setting the identity matrix.)
      */
     set_matrix(matrix?: Matrix | null): void
     /**
@@ -1825,6 +1837,7 @@ class Context {
      * 
      * The default value is to round glyph positions, to remain
      * compatible with previous Pango behavior.
+     * @param round_positions whether to round glyph positions
      */
     set_round_glyph_positions(round_positions: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1862,6 +1875,10 @@ class Context {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1872,6 +1889,12 @@ class Context {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1895,6 +1918,7 @@ class Context {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1914,11 +1938,14 @@ class Context {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1926,6 +1953,8 @@ class Context {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1943,6 +1972,7 @@ class Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1988,6 +2018,7 @@ class Context {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2031,15 +2062,20 @@ class Context {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2080,6 +2116,7 @@ class Context {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2114,6 +2151,7 @@ class Context {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2133,6 +2171,7 @@ class Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2165,6 +2204,7 @@ class Context {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
@@ -2184,7 +2224,7 @@ interface Coverage_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Coverage {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.Coverage */
     /**
      * Copy an existing `PangoCoverage`.
@@ -2192,12 +2232,14 @@ class Coverage {
     copy(): Coverage
     /**
      * Determine whether a particular index is covered by `coverage`.
+     * @param index_ the index to check
      */
     get(index_: number): CoverageLevel
     /**
      * Set the coverage for each index in `coverage` to be the max (better)
      * value of the current coverage for the index and the coverage for
      * the corresponding index in `other`.
+     * @param other another `PangoCoverage`
      */
     max(other: Coverage): void
     /**
@@ -2206,6 +2248,8 @@ class Coverage {
     ref(): Coverage
     /**
      * Modify a particular index within `coverage`
+     * @param index_ the index to modify
+     * @param level the new level for `index_`
      */
     set(index_: number, level: CoverageLevel): void
     /**
@@ -2253,6 +2297,10 @@ class Coverage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2263,6 +2311,12 @@ class Coverage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2286,6 +2340,7 @@ class Coverage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2305,11 +2360,14 @@ class Coverage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2317,6 +2375,8 @@ class Coverage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2334,6 +2394,7 @@ class Coverage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2379,6 +2440,7 @@ class Coverage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2422,15 +2484,20 @@ class Coverage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2471,6 +2538,7 @@ class Coverage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2495,6 +2563,7 @@ class Coverage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2514,6 +2583,7 @@ class Coverage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2546,6 +2616,7 @@ class Coverage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Coverage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Coverage, pspec: GObject.ParamSpec) => void)): number
@@ -2562,6 +2633,7 @@ class Coverage {
     /**
      * Convert data generated from [method`Pango`.Coverage.to_bytes]
      * back to a `PangoCoverage`.
+     * @param bytes binary data   representing a `PangoCoverage`
      */
     static from_bytes(bytes: Uint8Array): Coverage | null
     static $gtype: GObject.Type
@@ -2570,7 +2642,7 @@ interface Font_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Font {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.Font */
     /**
      * Returns a description of the font, with font size set in points.
@@ -2588,6 +2660,7 @@ class Font {
     describe_with_absolute_size(): FontDescription
     /**
      * Computes the coverage map for a given font and language tag.
+     * @param language the language tag
      */
     get_coverage(language: Language): Coverage
     /**
@@ -2602,6 +2675,7 @@ class Font {
      * 
      * Note that this does not include OpenType features which the
      * rendering system enables by default.
+     * @param num_features the number of used items in `features`
      */
     get_features(num_features: number): [ /* features */ HarfBuzz.feature_t[], /* num_features */ number ]
     /**
@@ -2630,6 +2704,7 @@ class Font {
      * 
      * If `font` is %NULL, this function gracefully sets some sane values in the
      * output variables and returns.
+     * @param glyph the glyph index
      */
     get_glyph_extents(glyph: Glyph): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
     /**
@@ -2652,10 +2727,12 @@ class Font {
      * 
      * If `font` is %NULL, this function gracefully sets some sane values in the
      * output variables and returns.
+     * @param language language tag used to determine which script   to get the metrics for, or %NULL to indicate to get the metrics for   the entire font.
      */
     get_metrics(language?: Language | null): FontMetrics
     /**
      * Returns whether the font provides a glyph for this character.
+     * @param wc a Unicode character
      */
     has_char(wc: number): boolean
     /**
@@ -2705,6 +2782,10 @@ class Font {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2715,6 +2796,12 @@ class Font {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2738,6 +2825,7 @@ class Font {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2757,11 +2845,14 @@ class Font {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2769,6 +2860,8 @@ class Font {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2786,6 +2879,7 @@ class Font {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2831,6 +2925,7 @@ class Font {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2874,15 +2969,20 @@ class Font {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2923,6 +3023,7 @@ class Font {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2957,6 +3058,7 @@ class Font {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Pango-1.0.Pango.Font */
@@ -2971,6 +3073,7 @@ class Font {
     vfunc_describe_absolute(): FontDescription
     /**
      * Computes the coverage map for a given font and language tag.
+     * @param language the language tag
      */
     vfunc_get_coverage(language: Language): Coverage
     /**
@@ -2981,6 +3084,7 @@ class Font {
      * 
      * Note that this does not include OpenType features which the
      * rendering system enables by default.
+     * @param num_features the number of used items in `features`
      */
     vfunc_get_features(num_features: number): [ /* features */ HarfBuzz.feature_t[], /* num_features */ number ]
     /**
@@ -3009,6 +3113,7 @@ class Font {
      * 
      * If `font` is %NULL, this function gracefully sets some sane values in the
      * output variables and returns.
+     * @param glyph the glyph index
      */
     vfunc_get_glyph_extents(glyph: Glyph): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
     /**
@@ -3020,6 +3125,7 @@ class Font {
      * 
      * If `font` is %NULL, this function gracefully sets some sane values in the
      * output variables and returns.
+     * @param language language tag used to determine which script   to get the metrics for, or %NULL to indicate to get the metrics for   the entire font.
      */
     vfunc_get_metrics(language?: Language | null): FontMetrics
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3039,6 +3145,7 @@ class Font {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3071,6 +3178,7 @@ class Font {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Font, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Font, pspec: GObject.ParamSpec) => void)): number
@@ -3085,6 +3193,7 @@ class Font {
     /* Static methods and pseudo-constructors */
     /**
      * Frees an array of font descriptions.
+     * @param descs a pointer   to an array of `PangoFontDescription`, may be %NULL
      */
     static descriptions_free(descs: FontDescription[] | null): void
     /**
@@ -3095,6 +3204,8 @@ class Font {
      * Note: to verify that the returned font is identical to
      * the one that was serialized, you can compare `bytes` to the
      * result of serializing the font again.
+     * @param context a `PangoContext`
+     * @param bytes the bytes containing the data
      */
     static deserialize(context: Context, bytes: GLib.Bytes): Font | null
     static $gtype: GObject.Type
@@ -3103,7 +3214,7 @@ interface FontFace_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FontFace {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.FontFace */
     /**
      * Returns a font description that matches the face.
@@ -3177,6 +3288,10 @@ class FontFace {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3187,6 +3302,12 @@ class FontFace {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3210,6 +3331,7 @@ class FontFace {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3229,11 +3351,14 @@ class FontFace {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3241,6 +3366,8 @@ class FontFace {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3258,6 +3385,7 @@ class FontFace {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3303,6 +3431,7 @@ class FontFace {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3346,15 +3475,20 @@ class FontFace {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3395,6 +3529,7 @@ class FontFace {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3429,6 +3564,7 @@ class FontFace {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Pango-1.0.Pango.FontFace */
@@ -3486,6 +3622,7 @@ class FontFace {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3518,6 +3655,7 @@ class FontFace {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FontFace, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FontFace, pspec: GObject.ParamSpec) => void)): number
@@ -3535,10 +3673,11 @@ interface FontFamily_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FontFamily {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.FontFamily */
     /**
      * Gets the `PangoFontFace` of `family` with the given name.
+     * @param name the name of a face. If the name is %NULL,   the family's default face (fontconfig calls it "Regular")   will be returned.
      */
     get_face(name?: string | null): FontFace | null
     /**
@@ -3622,6 +3761,10 @@ class FontFamily {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3632,6 +3775,12 @@ class FontFamily {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3655,6 +3804,7 @@ class FontFamily {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3674,11 +3824,14 @@ class FontFamily {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3686,6 +3839,8 @@ class FontFamily {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3703,6 +3858,7 @@ class FontFamily {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3748,6 +3904,7 @@ class FontFamily {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3791,15 +3948,20 @@ class FontFamily {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3840,6 +4002,7 @@ class FontFamily {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3874,11 +4037,13 @@ class FontFamily {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Pango-1.0.Pango.FontFamily */
     /**
      * Gets the `PangoFontFace` of `family` with the given name.
+     * @param name the name of a face. If the name is %NULL,   the family's default face (fontconfig calls it "Regular")   will be returned.
      */
     vfunc_get_face(name?: string | null): FontFace | null
     /**
@@ -3944,6 +4109,7 @@ class FontFamily {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3976,6 +4142,7 @@ class FontFamily {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FontFamily, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FontFamily, pspec: GObject.ParamSpec) => void)): number
@@ -3993,7 +4160,7 @@ interface FontMap_ConstructProps extends GObject.Object_ConstructProps {
 }
 class FontMap {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.FontMap */
     /**
      * Forces a change in the context, which will cause any `PangoContext`
@@ -4019,6 +4186,7 @@ class FontMap {
     create_context(): Context
     /**
      * Gets a font family by name.
+     * @param name a family name
      */
     get_family(name: string): FontFamily
     /**
@@ -4047,11 +4215,16 @@ class FontMap {
     list_families(): /* families */ FontFamily[]
     /**
      * Load the font in the fontmap that is the closest match for `desc`.
+     * @param context the `PangoContext` the font will be used with
+     * @param desc a `PangoFontDescription` describing the font to load
      */
     load_font(context: Context, desc: FontDescription): Font | null
     /**
      * Load a set of fonts in the fontmap that can be used to render
      * a font matching `desc`.
+     * @param context the `PangoContext` the font will be used with
+     * @param desc a `PangoFontDescription` describing the font to load
+     * @param language a `PangoLanguage` the fonts will be used for
      */
     load_fontset(context: Context, desc: FontDescription, language: Language): Fontset | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -4089,6 +4262,10 @@ class FontMap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4099,6 +4276,12 @@ class FontMap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4122,6 +4305,7 @@ class FontMap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4141,11 +4325,14 @@ class FontMap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4153,6 +4340,8 @@ class FontMap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4170,6 +4359,7 @@ class FontMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4215,6 +4405,7 @@ class FontMap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4258,15 +4449,20 @@ class FontMap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4307,6 +4503,7 @@ class FontMap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4341,6 +4538,7 @@ class FontMap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Pango-1.0.Pango.FontMap */
@@ -4356,6 +4554,7 @@ class FontMap {
     vfunc_changed(): void
     /**
      * Gets a font family by name.
+     * @param name a family name
      */
     vfunc_get_family(name: string): FontFamily
     /**
@@ -4384,11 +4583,16 @@ class FontMap {
     vfunc_list_families(): /* families */ FontFamily[]
     /**
      * Load the font in the fontmap that is the closest match for `desc`.
+     * @param context the `PangoContext` the font will be used with
+     * @param desc a `PangoFontDescription` describing the font to load
      */
     vfunc_load_font(context: Context, desc: FontDescription): Font | null
     /**
      * Load a set of fonts in the fontmap that can be used to render
      * a font matching `desc`.
+     * @param context the `PangoContext` the font will be used with
+     * @param desc a `PangoFontDescription` describing the font to load
+     * @param language a `PangoLanguage` the fonts will be used for
      */
     vfunc_load_fontset(context: Context, desc: FontDescription, language: Language): Fontset | null
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4408,6 +4612,7 @@ class FontMap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4440,6 +4645,7 @@ class FontMap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FontMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FontMap, pspec: GObject.ParamSpec) => void)): number
@@ -4457,18 +4663,20 @@ interface Fontset_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Fontset {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.Fontset */
     /**
      * Iterates through all the fonts in a fontset, calling `func` for
      * each one.
      * 
      * If `func` returns %TRUE, that stops the iteration.
+     * @param func Callback function
      */
     foreach(func: FontsetForeachFunc): void
     /**
      * Returns the font in the fontset that contains the best
      * glyph for a Unicode character.
+     * @param wc a Unicode character
      */
     get_font(wc: number): Font
     /**
@@ -4510,6 +4718,10 @@ class Fontset {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4520,6 +4732,12 @@ class Fontset {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4543,6 +4761,7 @@ class Fontset {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4562,11 +4781,14 @@ class Fontset {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4574,6 +4796,8 @@ class Fontset {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4591,6 +4815,7 @@ class Fontset {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4636,6 +4861,7 @@ class Fontset {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4679,15 +4905,20 @@ class Fontset {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4728,6 +4959,7 @@ class Fontset {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4762,6 +4994,7 @@ class Fontset {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Pango-1.0.Pango.Fontset */
@@ -4770,11 +5003,13 @@ class Fontset {
      * each one.
      * 
      * If `func` returns %TRUE, that stops the iteration.
+     * @param func Callback function
      */
     vfunc_foreach(func: FontsetForeachFunc): void
     /**
      * Returns the font in the fontset that contains the best
      * glyph for a Unicode character.
+     * @param wc a Unicode character
      */
     vfunc_get_font(wc: number): Font
     vfunc_get_language(): Language
@@ -4799,6 +5034,7 @@ class Fontset {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4831,6 +5067,7 @@ class Fontset {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Fontset, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Fontset, pspec: GObject.ParamSpec) => void)): number
@@ -4848,14 +5085,15 @@ interface FontsetSimple_ConstructProps extends Fontset_ConstructProps {
 }
 class FontsetSimple {
     /* Fields of Pango-1.0.Pango.Fontset */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.FontsetSimple */
     /**
      * Adds a font to the fontset.
      * 
      * The fontset takes ownership of `font`.
+     * @param font a `PangoFont`.
      */
     append(font: Font): void
     /**
@@ -4868,11 +5106,13 @@ class FontsetSimple {
      * each one.
      * 
      * If `func` returns %TRUE, that stops the iteration.
+     * @param func Callback function
      */
     foreach(func: FontsetForeachFunc): void
     /**
      * Returns the font in the fontset that contains the best
      * glyph for a Unicode character.
+     * @param wc a Unicode character
      */
     get_font(wc: number): Font
     /**
@@ -4914,6 +5154,10 @@ class FontsetSimple {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4924,6 +5168,12 @@ class FontsetSimple {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4947,6 +5197,7 @@ class FontsetSimple {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4966,11 +5217,14 @@ class FontsetSimple {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4978,6 +5232,8 @@ class FontsetSimple {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4995,6 +5251,7 @@ class FontsetSimple {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5040,6 +5297,7 @@ class FontsetSimple {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5083,15 +5341,20 @@ class FontsetSimple {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5132,6 +5395,7 @@ class FontsetSimple {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5166,6 +5430,7 @@ class FontsetSimple {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Pango-1.0.Pango.Fontset */
@@ -5174,11 +5439,13 @@ class FontsetSimple {
      * each one.
      * 
      * If `func` returns %TRUE, that stops the iteration.
+     * @param func Callback function
      */
     vfunc_foreach(func: FontsetForeachFunc): void
     /**
      * Returns the font in the fontset that contains the best
      * glyph for a Unicode character.
+     * @param wc a Unicode character
      */
     vfunc_get_font(wc: number): Font
     vfunc_get_language(): Language
@@ -5203,6 +5470,7 @@ class FontsetSimple {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5235,6 +5503,7 @@ class FontsetSimple {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FontsetSimple, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FontsetSimple, pspec: GObject.ParamSpec) => void)): number
@@ -5254,7 +5523,7 @@ interface Layout_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Layout {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.Layout */
     /**
      * Forces recomputation of any state in the `PangoLayout` that
@@ -5303,6 +5572,7 @@ class Layout {
      *   <source srcset="caret-metrics-dark.png" media="(prefers-color-scheme: dark)">
      *   <img alt="Caret metrics" src="caret-metrics-light.png">
      * </picture>
+     * @param index_ the byte index of the cursor
      */
     get_caret_pos(index_: number): [ /* strong_pos */ Rectangle | null, /* weak_pos */ Rectangle | null ]
     /**
@@ -5342,10 +5612,12 @@ class Layout {
      * cursor to the left. Typing a 'c' in this situation will insert the
      * character after the 'b', and typing another Hebrew character, like 'ג',
      * will insert it at the end.
+     * @param index_ the byte index of the cursor
      */
     get_cursor_pos(index_: number): [ /* strong_pos */ Rectangle | null, /* weak_pos */ Rectangle | null ]
     /**
      * Gets the text direction at the given character position in `layout`.
+     * @param index the byte index of the char
      */
     get_direction(index: number): Direction
     /**
@@ -5405,6 +5677,7 @@ class Layout {
      * 
      * Use the faster [method`Pango`.Layout.get_line_readonly] if you do not
      * plan to modify the contents of the line (glyphs, glyph widths, etc.).
+     * @param line the index of a line, which must be between 0 and   `pango_layout_get_line_count(layout) - 1`, inclusive.
      */
     get_line(line: number): LayoutLine | null
     /**
@@ -5417,6 +5690,7 @@ class Layout {
      * This is a faster alternative to [method`Pango`.Layout.get_line],
      * but the user is not expected to modify the contents of the line
      * (glyphs, glyph widths, etc.).
+     * @param line the index of a line, which must be between 0 and   `pango_layout_get_line_count(layout) - 1`, inclusive.
      */
     get_line_readonly(line: number): LayoutLine | null
     /**
@@ -5548,6 +5822,8 @@ class Layout {
      * Converts from byte `index_` within the `layout` to line and X position.
      * 
      * The X position is measured from the left edge of the line.
+     * @param index_ the byte index of a grapheme within the layout
+     * @param trailing an integer indicating the edge of the grapheme to retrieve the   position of. If > 0, the trailing edge of the grapheme, if 0,   the leading of the grapheme
      */
     index_to_line_x(index_: number, trailing: boolean): [ /* line */ number | null, /* x_pos */ number | null ]
     /**
@@ -5558,6 +5834,7 @@ class Layout {
      * always the leading edge of the grapheme and `pos->x + pos->width` the
      * trailing edge of the grapheme. If the directionality of the grapheme
      * is right-to-left, then `pos->width` will be negative.
+     * @param index_ byte index within `layout`
      */
     index_to_pos(index_: number): /* pos */ Rectangle
     /**
@@ -5594,6 +5871,10 @@ class Layout {
      * Motion here is in cursor positions, not in characters, so a single
      * call to this function may move the cursor over multiple characters
      * when multiple characters combine to form a single grapheme.
+     * @param strong whether the moving cursor is the strong cursor or the   weak cursor. The strong cursor is the cursor corresponding   to text insertion in the base direction for the layout.
+     * @param old_index the byte index of the current cursor position
+     * @param old_trailing if 0, the cursor was at the leading edge of the   grapheme indicated by `old_index,` if > 0, the cursor   was at the trailing edge.
+     * @param direction direction to move cursor. A negative   value indicates motion to the left
      */
     move_cursor_visually(strong: boolean, old_index: number, old_trailing: number, direction: number): [ /* new_index */ number, /* new_trailing */ number ]
     /**
@@ -5605,6 +5886,7 @@ class Layout {
      * 
      * The intended use of this function is testing, benchmarking and debugging.
      * The format is not meant as a permanent storage format.
+     * @param flags `PangoLayoutSerializeFlags`
      */
     serialize(flags: LayoutSerializeFlags): GLib.Bytes
     /**
@@ -5612,12 +5894,14 @@ class Layout {
      * positioned within the horizontal space available.
      * 
      * The default alignment is %PANGO_ALIGN_LEFT.
+     * @param alignment the alignment
      */
     set_alignment(alignment: Alignment): void
     /**
      * Sets the text attributes for a layout object.
      * 
      * References `attrs,` so the caller can unref its reference.
+     * @param attrs a `PangoAttrList`
      */
     set_attributes(attrs?: AttrList | null): void
     /**
@@ -5637,6 +5921,7 @@ class Layout {
      * When the auto-computed direction of a paragraph differs from the
      * base direction of the context, the interpretation of
      * %PANGO_ALIGN_LEFT and %PANGO_ALIGN_RIGHT are swapped.
+     * @param auto_dir if %TRUE, compute the bidirectional base direction   from the layout's contents
      */
     set_auto_dir(auto_dir: boolean): void
     /**
@@ -5655,6 +5940,7 @@ class Layout {
      * The default value is %PANGO_ELLIPSIZE_NONE.
      * 
      * See [method`Pango`.Layout.set_height] for details.
+     * @param ellipsize the new ellipsization mode for `layout`
      */
     set_ellipsize(ellipsize: EllipsizeMode): void
     /**
@@ -5662,6 +5948,7 @@ class Layout {
      * 
      * If no font description is set on the layout, the
      * font description from the layout's context is used.
+     * @param desc the new `PangoFontDescription`   to unset the current font description
      */
     set_font_description(desc?: FontDescription | null): void
     /**
@@ -5690,6 +5977,7 @@ class Layout {
      * The behavior is undefined if a height other than -1 is set and
      * ellipsization mode is set to %PANGO_ELLIPSIZE_NONE, and may change in the
      * future.
+     * @param height the desired height of the layout in Pango units if positive,   or desired number of lines if negative.
      */
     set_height(height: number): void
     /**
@@ -5703,6 +5991,7 @@ class Layout {
      * %PANGO_ALIGN_CENTER.
      * 
      * The default value is 0.
+     * @param indent the amount by which to indent
      */
     set_indent(indent: number): void
     /**
@@ -5723,6 +6012,7 @@ class Layout {
      * The default value is %FALSE.
      * 
      * Also see [method`Pango`.Layout.set_justify_last_line].
+     * @param justify whether the lines in the layout should be justified
      */
     set_justify(justify: boolean): void
     /**
@@ -5733,6 +6023,7 @@ class Layout {
      * been called as well.
      * 
      * The default value is %FALSE.
+     * @param justify whether the last line in the layout should be justified
      */
     set_justify_last_line(justify: boolean): void
     /**
@@ -5752,6 +6043,7 @@ class Layout {
      * 
      * Note: for semantics that are closer to the CSS line-height
      * property, see [func`Pango`.attr_line_height_new].
+     * @param factor the new line spacing factor
      */
     set_line_spacing(factor: number): void
     /**
@@ -5763,6 +6055,8 @@ class Layout {
      * 
      * This is the same as [method`Pango`.Layout.set_markup_with_accel],
      * but the markup text isn't scanned for accelerators.
+     * @param markup marked-up text
+     * @param length length of marked-up text in bytes, or -1 if `markup` is   `NUL`-terminated
      */
     set_markup(markup: string, length: number): void
     /**
@@ -5779,6 +6073,9 @@ class Layout {
      * and the first character so marked will be returned in `accel_char`.
      * Two `accel_marker` characters following each other produce a single
      * literal `accel_marker` character.
+     * @param markup marked-up text (see [Pango Markup](pango_markup.html))
+     * @param length length of marked-up text in bytes, or -1 if `markup` is   `NUL`-terminated
+     * @param accel_marker marker for accelerators in the text
      */
     set_markup_with_accel(markup: string, length: number, accel_marker: number): /* accel_char */ number | null
     /**
@@ -5790,6 +6087,7 @@ class Layout {
      * you want to allow editing of newlines on a single text line.
      * 
      * The default value is %FALSE.
+     * @param setting new setting
      */
     set_single_paragraph_mode(setting: boolean): void
     /**
@@ -5809,6 +6107,7 @@ class Layout {
      * 
      * Note: for semantics that are closer to the CSS line-height
      * property, see [func`Pango`.attr_line_height_new].
+     * @param spacing the amount of spacing
      */
     set_spacing(spacing: number): void
     /**
@@ -5825,6 +6124,7 @@ class Layout {
      * Justification will move content away from its tab-aligned
      * positions. The same is true for alignments other than
      * %PANGO_ALIGN_LEFT.
+     * @param tabs a `PangoTabArray`
      */
     set_tabs(tabs?: TabArray | null): void
     /**
@@ -5838,6 +6138,8 @@ class Layout {
      * may want to call [method`Pango`.Layout.set_attributes] to clear the
      * attributes set on the layout from the markup as this function does
      * not clear attributes.
+     * @param text the text
+     * @param length maximum length of `text,` in bytes. -1 indicates that   the string is nul-terminated and the length should be calculated.   The text will also be truncated on encountering a nul-termination   even when `length` is positive.
      */
     set_text(text: string, length: number): void
     /**
@@ -5845,6 +6147,7 @@ class Layout {
      * ellipsized.
      * 
      * The default value is -1: no width set.
+     * @param width the desired width in Pango units, or -1 to indicate that no   wrapping or ellipsization should be performed.
      */
     set_width(width: number): void
     /**
@@ -5855,6 +6158,7 @@ class Layout {
      * set the width to -1.
      * 
      * The default value is %PANGO_WRAP_WORD.
+     * @param wrap the wrap mode
      */
     set_wrap(wrap: WrapMode): void
     /**
@@ -5867,6 +6171,8 @@ class Layout {
      * 
      * It is mostly intended for use inside a debugger to quickly dump
      * a layout to a file for later inspection.
+     * @param flags `PangoLayoutSerializeFlags`
+     * @param filename the file to save it to
      */
     write_to_file(flags: LayoutSerializeFlags, filename: string): boolean
     /**
@@ -5879,6 +6185,8 @@ class Layout {
      * chosen as described for [method`Pango`.LayoutLine.x_to_index]. If either
      * the X or Y positions were not inside the layout, then the function returns
      * %FALSE; on an exact hit, it returns %TRUE.
+     * @param x the X offset (in Pango units) from the left edge of the layout
+     * @param y the Y offset (in Pango units) from the top edge of the layout
      */
     xy_to_index(x: number, y: number): [ /* returnType */ boolean, /* index_ */ number, /* trailing */ number ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -5916,6 +6224,10 @@ class Layout {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5926,6 +6238,12 @@ class Layout {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5949,6 +6267,7 @@ class Layout {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5968,11 +6287,14 @@ class Layout {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5980,6 +6302,8 @@ class Layout {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5997,6 +6321,7 @@ class Layout {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6042,6 +6367,7 @@ class Layout {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6085,15 +6411,20 @@ class Layout {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6134,6 +6465,7 @@ class Layout {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6168,6 +6500,7 @@ class Layout {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6187,6 +6520,7 @@ class Layout {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6219,6 +6553,7 @@ class Layout {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Layout, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Layout, pspec: GObject.ParamSpec) => void)): number
@@ -6240,6 +6575,9 @@ class Layout {
      * Note: to verify that the returned layout is identical to
      * the one that was serialized, you can compare `bytes` to the
      * result of serializing the layout again.
+     * @param context a `PangoContext`
+     * @param bytes the bytes containing the data
+     * @param flags `PangoLayoutDeserializeFlags`
      */
     static deserialize(context: Context, bytes: GLib.Bytes, flags: LayoutDeserializeFlags): Layout | null
     static $gtype: GObject.Type
@@ -6248,7 +6586,7 @@ interface Renderer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Renderer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Pango-1.0.Pango.Renderer */
     /**
      * Does initial setup before rendering operations on `renderer`.
@@ -6278,10 +6616,18 @@ class Renderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param x X coordinate of underline, in Pango units in user coordinate system
+     * @param y Y coordinate of underline, in Pango units in user coordinate system
+     * @param width width of underline, in Pango units in user coordinate system
+     * @param height height of underline, in Pango units in user coordinate system
      */
     draw_error_underline(x: number, y: number, width: number, height: number): void
     /**
      * Draws a single glyph with coordinates in device space.
+     * @param font a `PangoFont`
+     * @param glyph the glyph index of a single glyph
+     * @param x X coordinate of left edge of baseline of glyph
+     * @param y Y coordinate of left edge of baseline of glyph
      */
     draw_glyph(font: Font, glyph: Glyph, x: number, y: number): void
     /**
@@ -6303,10 +6649,18 @@ class Renderer {
      * 
      * The default implementation of this method simply falls back to
      * [method`Pango`.Renderer.draw_glyphs].
+     * @param text the UTF-8 text that `glyph_item` refers to
+     * @param glyph_item a `PangoGlyphItem`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units
      */
     draw_glyph_item(text: string | null, glyph_item: GlyphItem, x: number, y: number): void
     /**
      * Draws the glyphs in `glyphs` with the specified `PangoRenderer`.
+     * @param font a `PangoFont`
+     * @param glyphs a `PangoGlyphString`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     draw_glyphs(font: Font, glyphs: GlyphString, x: number, y: number): void
     /**
@@ -6314,6 +6668,9 @@ class Renderer {
      * 
      * This is equivalent to drawing the lines of the layout, at their
      * respective positions relative to `x,` `y`.
+     * @param layout a `PangoLayout`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     draw_layout(layout: Layout, x: number, y: number): void
     /**
@@ -6322,6 +6679,9 @@ class Renderer {
      * This draws the glyph items that make up the line, as well as
      * shapes, backgrounds and lines that are specified by the attributes
      * of those items.
+     * @param line a `PangoLayoutLine`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     draw_layout_line(line: LayoutLine, x: number, y: number): void
     /**
@@ -6330,19 +6690,33 @@ class Renderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param part type of object this rectangle is part of
+     * @param x X position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param y Y position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param width width of rectangle in Pango units
+     * @param height height of rectangle in Pango units
      */
     draw_rectangle(part: RenderPart, x: number, y: number, width: number, height: number): void
     /**
      * Draws a trapezoid with the parallel sides aligned with the X axis
      * using the given `PangoRenderer`; coordinates are in device space.
+     * @param part type of object this trapezoid is part of
+     * @param y1_ Y coordinate of top of trapezoid
+     * @param x11 X coordinate of left end of top of trapezoid
+     * @param x21 X coordinate of right end of top of trapezoid
+     * @param y2 Y coordinate of bottom of trapezoid
+     * @param x12 X coordinate of left end of bottom of trapezoid
+     * @param x22 X coordinate of right end of bottom of trapezoid
      */
     draw_trapezoid(part: RenderPart, y1_: number, x11: number, x21: number, y2: number, x12: number, x22: number): void
     /**
      * Gets the current alpha for the specified part.
+     * @param part the part to get the alpha for
      */
     get_alpha(part: RenderPart): number
     /**
      * Gets the current rendering color for the specified part.
+     * @param part the part to get the color for
      */
     get_color(part: RenderPart): Color | null
     /**
@@ -6388,6 +6762,7 @@ class Renderer {
      * When the stipple changes or underlines with different stipples
      * might be joined together. Pango automatically calls this for
      * changes to colors. (See [method`Pango`.Renderer.set_color])
+     * @param part the part for which rendering has changed.
      */
     part_changed(part: RenderPart): void
     /**
@@ -6395,16 +6770,21 @@ class Renderer {
      * 
      * Note that the alpha may only be used if a color is
      * specified for `part` as well.
+     * @param part the part to set the alpha for
+     * @param alpha an alpha value between 1 and 65536, or 0 to unset the alpha
      */
     set_alpha(part: RenderPart, alpha: number): void
     /**
      * Sets the color for part of the rendering.
      * 
      * Also see [method`Pango`.Renderer.set_alpha].
+     * @param part the part to change the color of
+     * @param color the new color or %NULL to unset the current color
      */
     set_color(part: RenderPart, color?: Color | null): void
     /**
      * Sets the transformation matrix that will be applied when rendering.
+     * @param matrix a `PangoMatrix`, or %NULL to unset any existing matrix  (No matrix set is the same as setting the identity matrix.)
      */
     set_matrix(matrix?: Matrix | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6442,6 +6822,10 @@ class Renderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6452,6 +6836,12 @@ class Renderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6475,6 +6865,7 @@ class Renderer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6494,11 +6885,14 @@ class Renderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6506,6 +6900,8 @@ class Renderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6523,6 +6919,7 @@ class Renderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6568,6 +6965,7 @@ class Renderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6611,15 +7009,20 @@ class Renderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6660,6 +7063,7 @@ class Renderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6694,6 +7098,7 @@ class Renderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Pango-1.0.Pango.Renderer */
@@ -6708,10 +7113,18 @@ class Renderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param x X coordinate of underline, in Pango units in user coordinate system
+     * @param y Y coordinate of underline, in Pango units in user coordinate system
+     * @param width width of underline, in Pango units in user coordinate system
+     * @param height height of underline, in Pango units in user coordinate system
      */
     vfunc_draw_error_underline(x: number, y: number, width: number, height: number): void
     /**
      * Draws a single glyph with coordinates in device space.
+     * @param font a `PangoFont`
+     * @param glyph the glyph index of a single glyph
+     * @param x X coordinate of left edge of baseline of glyph
+     * @param y Y coordinate of left edge of baseline of glyph
      */
     vfunc_draw_glyph(font: Font, glyph: Glyph, x: number, y: number): void
     /**
@@ -6733,10 +7146,18 @@ class Renderer {
      * 
      * The default implementation of this method simply falls back to
      * [method`Pango`.Renderer.draw_glyphs].
+     * @param text the UTF-8 text that `glyph_item` refers to
+     * @param glyph_item a `PangoGlyphItem`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units
      */
     vfunc_draw_glyph_item(text: string | null, glyph_item: GlyphItem, x: number, y: number): void
     /**
      * Draws the glyphs in `glyphs` with the specified `PangoRenderer`.
+     * @param font a `PangoFont`
+     * @param glyphs a `PangoGlyphString`
+     * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
+     * @param y Y position of left edge of baseline, in user space coordinates   in Pango units.
      */
     vfunc_draw_glyphs(font: Font, glyphs: GlyphString, x: number, y: number): void
     /**
@@ -6745,12 +7166,24 @@ class Renderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @param part type of object this rectangle is part of
+     * @param x X position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param y Y position at which to draw rectangle, in user space coordinates   in Pango units
+     * @param width width of rectangle in Pango units
+     * @param height height of rectangle in Pango units
      */
     vfunc_draw_rectangle(part: RenderPart, x: number, y: number, width: number, height: number): void
     vfunc_draw_shape(attr: AttrShape, x: number, y: number): void
     /**
      * Draws a trapezoid with the parallel sides aligned with the X axis
      * using the given `PangoRenderer`; coordinates are in device space.
+     * @param part type of object this trapezoid is part of
+     * @param y1_ Y coordinate of top of trapezoid
+     * @param x11 X coordinate of left end of top of trapezoid
+     * @param x21 X coordinate of right end of top of trapezoid
+     * @param y2 Y coordinate of bottom of trapezoid
+     * @param x12 X coordinate of left end of bottom of trapezoid
+     * @param x22 X coordinate of right end of bottom of trapezoid
      */
     vfunc_draw_trapezoid(part: RenderPart, y1_: number, x11: number, x21: number, y2: number, x12: number, x22: number): void
     vfunc_end(): void
@@ -6770,6 +7203,7 @@ class Renderer {
      * When the stipple changes or underlines with different stipples
      * might be joined together. Pango automatically calls this for
      * changes to colors. (See [method`Pango`.Renderer.set_color])
+     * @param part the part for which rendering has changed.
      */
     vfunc_part_changed(part: RenderPart): void
     vfunc_prepare_run(run: LayoutRun): void
@@ -6790,6 +7224,7 @@ class Renderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6822,6 +7257,7 @@ class Renderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
@@ -6840,39 +7276,39 @@ class Analysis {
     /**
      * unused, reserved
      */
-    readonly shape_engine: object
+    shape_engine: object
     /**
      * unused, reserved
      */
-    readonly lang_engine: object
+    lang_engine: object
     /**
      * the font for this segment.
      */
-    readonly font: Font
+    font: Font
     /**
      * the bidirectional level for this segment.
      */
-    readonly level: number
+    level: number
     /**
      * the glyph orientation for this segment (A `PangoGravity`).
      */
-    readonly gravity: number
+    gravity: number
     /**
      * boolean flags for this segment (Since: 1.16).
      */
-    readonly flags: number
+    flags: number
     /**
      * the detected script for this segment (A `PangoScript`) (Since: 1.18).
      */
-    readonly script: number
+    script: number
     /**
      * the detected language for this segment.
      */
-    readonly language: Language
+    language: Language
     /**
      * extra attributes for this segment.
      */
-    readonly extra_attrs: object[]
+    extra_attrs: object[]
     static name: string
 }
 class AttrClass {
@@ -6880,10 +7316,10 @@ class AttrClass {
     /**
      * the type ID for this attribute
      */
-    readonly type: AttrType
-    readonly copy: (attr: Attribute) => Attribute
-    readonly destroy: (attr: Attribute) => void
-    readonly equal: (attr1: Attribute, attr2: Attribute) => boolean
+    type: AttrType
+    copy: (attr: Attribute) => Attribute
+    destroy: (attr: Attribute) => void
+    equal: (attr1: Attribute, attr2: Attribute) => boolean
     static name: string
 }
 class AttrColor {
@@ -6891,11 +7327,11 @@ class AttrColor {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * the `PangoColor` which is the value of the attribute
      */
-    readonly color: Color
+    color: Color
     static name: string
 }
 class AttrFloat {
@@ -6903,11 +7339,11 @@ class AttrFloat {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * the value of the attribute
      */
-    readonly value: number
+    value: number
     static name: string
 }
 class AttrFontDesc {
@@ -6915,11 +7351,11 @@ class AttrFontDesc {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * the font description which is the value of this attribute
      */
-    readonly desc: FontDescription
+    desc: FontDescription
     static name: string
 }
 class AttrFontFeatures {
@@ -6927,11 +7363,11 @@ class AttrFontFeatures {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * the features, as a string in CSS syntax
      */
-    readonly features: string
+    features: string
     static name: string
 }
 class AttrInt {
@@ -6939,11 +7375,11 @@ class AttrInt {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * the value of the attribute
      */
-    readonly value: number
+    value: number
     static name: string
 }
 class AttrIterator {
@@ -6963,6 +7399,7 @@ class AttrIterator {
      * When multiple attributes of the same type overlap,
      * the attribute whose range starts closest to the
      * current location is used.
+     * @param type the type of attribute to find
      */
     get(type: AttrType): Attribute | null
     /**
@@ -6973,6 +7410,7 @@ class AttrIterator {
     /**
      * Get the font and other attributes at the current
      * iterator position.
+     * @param desc a `PangoFontDescription` to fill in with the current   values. The family name in this structure will be set using   [method`Pango`.FontDescription.set_family_static] using   values from an attribute in the `PangoAttrList` associated   with the iterator, so if you plan to keep it around, you   must call:   `pango_font_description_set_family (desc, pango_font_description_get_family (desc))`.
      */
     get_font(desc: FontDescription): [ /* language */ Language | null, /* extra_attrs */ Attribute[] | null ]
     /**
@@ -6995,11 +7433,11 @@ class AttrLanguage {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * the `PangoLanguage` which is the value of the attribute
      */
-    readonly value: Language
+    value: Language
     static name: string
 }
 class AttrList {
@@ -7017,6 +7455,7 @@ class AttrList {
      * [method`Pango`.AttrList.insert] is not suitable for
      * continually changing a set of attributes since it
      * never removes or combines existing attributes.
+     * @param attr the attribute to insert
      */
     change(attr: Attribute): void
     /**
@@ -7030,12 +7469,14 @@ class AttrList {
      * 
      * Beware that this will return wrong values if any list
      * contains duplicates.
+     * @param other_list the other `PangoAttrList`
      */
     equal(other_list: AttrList): boolean
     /**
      * Given a `PangoAttrList` and callback function, removes
      * any elements of `list` for which `func` returns %TRUE and
      * inserts them into a new list.
+     * @param func callback function;   returns %TRUE if an attribute should be filtered out
      */
     filter(func: AttrFilterFunc): AttrList | null
     /**
@@ -7053,6 +7494,7 @@ class AttrList {
      * 
      * It will be inserted after all other attributes with a
      * matching `start_index`.
+     * @param attr the attribute to insert
      */
     insert(attr: Attribute): void
     /**
@@ -7060,6 +7502,7 @@ class AttrList {
      * 
      * It will be inserted before all other attributes with a
      * matching `start_index`.
+     * @param attr the attribute to insert
      */
     insert_before(attr: Attribute): void
     /**
@@ -7086,6 +7529,9 @@ class AttrList {
      * not imited to `len,` and are just overlayed on top of `list`.
      * 
      * This mode is useful for merging two lists of attributes together.
+     * @param other another `PangoAttrList`
+     * @param pos the position in `list` at which to insert `other`
+     * @param len the length of the spliced segment. (Note that this   must be specified since the attributes in `other` may only   be present at some subsection of this range)
      */
     splice(other: AttrList, pos: number, len: number): void
     /**
@@ -7122,6 +7568,9 @@ class AttrList {
      * 
      * Attributes start and end positions are updated if they are
      * behind `pos` + `remove`.
+     * @param pos the position of the change
+     * @param remove the number of removed bytes
+     * @param add the number of added bytes
      */
     update(pos: number, remove: number, add: number): void
     static name: string
@@ -7134,6 +7583,7 @@ class AttrList {
      * 
      * This is the counterpart to [method`Pango`.AttrList.to_string].
      * See that functions for details about the format.
+     * @param text a string
      */
     static from_string(text: string): AttrList | null
 }
@@ -7142,27 +7592,27 @@ class AttrShape {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * the ink rectangle to restrict to
      */
-    readonly ink_rect: Rectangle
+    ink_rect: Rectangle
     /**
      * the logical rectangle to restrict to
      */
-    readonly logical_rect: Rectangle
+    logical_rect: Rectangle
     /**
      * user data set (see [func`Pango`.AttrShape.new_with_data])
      */
-    readonly data: object
+    data: object
     /**
      * copy function for the user data
      */
-    readonly copy_func: AttrDataCopyFunc
+    copy_func: AttrDataCopyFunc
     /**
      * destroy function for the user data
      */
-    readonly destroy_func: GLib.DestroyNotify
+    destroy_func: GLib.DestroyNotify
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -7171,6 +7621,10 @@ class AttrShape {
      * Like [func`Pango`.AttrShape.new], but a user data pointer
      * is also provided; this pointer can be accessed when later
      * rendering the glyph.
+     * @param ink_rect ink rectangle to assign to each character
+     * @param logical_rect logical rectangle to assign to each character
+     * @param data user data pointer
+     * @param copy_func function to copy `data` when the   attribute is copied. If %NULL, `data` is simply copied   as a pointer
      */
     static new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data?: object | null, copy_func?: AttrDataCopyFunc | null): Attribute
 }
@@ -7179,23 +7633,24 @@ class AttrSize {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * size of font, in units of 1/%PANGO_SCALE of a point (for
      *   %PANGO_ATTR_SIZE) or of a device unit (for %PANGO_ATTR_ABSOLUTE_SIZE)
      */
-    readonly size: number
+    size: number
     /**
      * whether the font size is in device units or points.
      *   This field is only present for compatibility with Pango-1.8.0
      *   (%PANGO_ATTR_ABSOLUTE_SIZE was added in 1.8.1); and always will
      *   be %FALSE for %PANGO_ATTR_SIZE and %TRUE for %PANGO_ATTR_ABSOLUTE_SIZE.
      */
-    readonly absolute: number
+    absolute: number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Create a new font-size attribute in device units.
+     * @param size the font size, in %PANGO_SCALE-ths of a device unit
      */
     static new_absolute(size: number): Attribute
 }
@@ -7204,11 +7659,11 @@ class AttrString {
     /**
      * the common portion of the attribute
      */
-    readonly attr: Attribute
+    attr: Attribute
     /**
      * the string which is the value of the attribute
      */
-    readonly value: string
+    value: string
     static name: string
 }
 class Attribute {
@@ -7216,16 +7671,16 @@ class Attribute {
     /**
      * the class structure holding information about the type of the attribute
      */
-    readonly klass: AttrClass
+    klass: AttrClass
     /**
      * the start index of the range (in bytes).
      */
-    readonly start_index: number
+    start_index: number
     /**
      * end index of the range (in bytes). The character at this index
      *   is not included in the range.
      */
-    readonly end_index: number
+    end_index: number
     /* Methods of Pango-1.0.Pango.Attribute */
     /**
      * Returns the attribute cast to `PangoAttrColor`.
@@ -7295,6 +7750,7 @@ class Attribute {
      * This compares only the actual value of the two
      * attributes and not the ranges that the attributes
      * apply to.
+     * @param attr2 another `PangoAttribute`
      */
     equal(attr2: Attribute): boolean
     /**
@@ -7302,6 +7758,7 @@ class Attribute {
      * %PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING and end_index to
      * %PANGO_ATTR_INDEX_TO_TEXT_END such that the attribute applies
      * to the entire text by default.
+     * @param klass a `PangoAttrClass`
      */
     init(klass: AttrClass): void
     static name: string
@@ -7311,15 +7768,15 @@ class Color {
     /**
      * value of red component
      */
-    readonly red: number
+    red: number
     /**
      * value of green component
      */
-    readonly green: number
+    green: number
     /**
      * value of blue component
      */
-    readonly blue: number
+    blue: number
     /* Methods of Pango-1.0.Pango.Color */
     /**
      * Creates a copy of `src`.
@@ -7344,6 +7801,7 @@ class Color {
      * are hex digits of the red, green, and blue components
      * of the color, respectively. (White in the four forms is
      * `#fff`, `#ffffff`, `#fffffffff` and `#ffffffffffff`.)
+     * @param spec a string specifying the new color
      */
     parse(spec: string): boolean
     /**
@@ -7362,6 +7820,7 @@ class Color {
      * to the value specified by the hex digits for `a`. If no alpha
      * component is found in `spec,` `alpha` is set to 0xffff (for a
      * solid color).
+     * @param spec a string specifying the new color
      */
     parse_with_alpha(spec: string): [ /* returnType */ boolean, /* alpha */ number | null ]
     /**
@@ -7379,15 +7838,15 @@ abstract class ContextClass {
 }
 abstract class FontClass {
     /* Fields of Pango-1.0.Pango.FontClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly describe: (font: Font) => FontDescription
-    readonly get_coverage: (font: Font, language: Language) => Coverage
-    readonly get_glyph_extents: (font: Font | null, glyph: Glyph) => [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
-    readonly get_metrics: (font?: Font | null, language?: Language | null) => FontMetrics
-    readonly get_font_map: (font?: Font | null) => FontMap | null
-    readonly describe_absolute: (font: Font) => FontDescription
-    readonly get_features: (font: Font, num_features: number) => [ /* features */ HarfBuzz.feature_t[], /* num_features */ number ]
-    readonly create_hb_font: (font: Font) => HarfBuzz.font_t
+    parent_class: GObject.ObjectClass
+    describe: (font: Font) => FontDescription
+    get_coverage: (font: Font, language: Language) => Coverage
+    get_glyph_extents: (font: Font | null, glyph: Glyph) => [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_metrics: (font?: Font | null, language?: Language | null) => FontMetrics
+    get_font_map: (font?: Font | null) => FontMap | null
+    describe_absolute: (font: Font) => FontDescription
+    get_features: (font: Font, num_features: number) => [ /* features */ HarfBuzz.feature_t[], /* num_features */ number ]
+    create_hb_font: (font: Font) => HarfBuzz.font_t
     static name: string
 }
 class FontDescription {
@@ -7404,6 +7863,8 @@ class FontDescription {
      * a match as when the styles are equal.
      * 
      * Note that `old_match` must match `desc`.
+     * @param old_match a `PangoFontDescription`, or %NULL
+     * @param new_match a `PangoFontDescription`
      */
     better_match(old_match: FontDescription | null, new_match: FontDescription): boolean
     /**
@@ -7427,6 +7888,7 @@ class FontDescription {
      * are provably identical. This means that their masks do not have to match,
      * as long as other fields are all the same. (Two font descriptions may
      * result in identical fonts being loaded, but still compare %FALSE.)
+     * @param desc2 another `PangoFontDescription`
      */
     equal(desc2: FontDescription): boolean
     /**
@@ -7509,6 +7971,8 @@ class FontDescription {
      * already set will be replaced as well.
      * 
      * If `desc_to_merge` is %NULL, this function performs nothing.
+     * @param desc_to_merge the `PangoFontDescription` to merge from,   or %NULL
+     * @param replace_existing if %TRUE, replace fields in `desc` with the   corresponding values from `desc_to_merge,` even if they   are already exist.
      */
     merge(desc_to_merge: FontDescription | null, replace_existing: boolean): void
     /**
@@ -7519,6 +7983,8 @@ class FontDescription {
      * is made of the family name and other allocated fields. `desc` can only
      * be used until `desc_to_merge` is modified or freed. This is meant to
      * be used when the merged font description is only needed temporarily.
+     * @param desc_to_merge the `PangoFontDescription` to merge from
+     * @param replace_existing if %TRUE, replace fields in `desc` with the   corresponding values from `desc_to_merge,` even if they   are already exist.
      */
     merge_static(desc_to_merge: FontDescription, replace_existing: boolean): void
     /**
@@ -7526,6 +7992,7 @@ class FontDescription {
      * 
      * This is mutually exclusive with [method`Pango`.FontDescription.set_size]
      * which sets the font size in points.
+     * @param size the new size, in Pango units. There are %PANGO_SCALE Pango units   in one device unit. For an output backend where a device unit is a pixel,   a `size` value of 10 * PANGO_SCALE gives a 10 pixel font.
      */
     set_absolute_size(size: number): void
     /**
@@ -7536,6 +8003,7 @@ class FontDescription {
      * resolve to a particular `PangoFontFamily`. In some uses of
      * `PangoFontDescription`, it is also possible to use a comma
      * separated list of family names for this field.
+     * @param family a string representing the family name.
      */
     set_family(family: string): void
     /**
@@ -7546,6 +8014,7 @@ class FontDescription {
      * string passed in stays around until `desc` has been freed or the
      * name is set again. This function can be used if `family` is a static
      * string such as a C string literal, or if `desc` is only needed temporarily.
+     * @param family a string representing the family name
      */
     set_family_static(family: string): void
     /**
@@ -7558,6 +8027,7 @@ class FontDescription {
      * 
      * This function is seldom useful to the user. Gravity should normally
      * be set on a `PangoContext`.
+     * @param gravity the gravity for the font description.
      */
     set_gravity(gravity: Gravity): void
     /**
@@ -7565,6 +8035,7 @@ class FontDescription {
      * 
      * This is mutually exclusive with
      * [method`Pango`.FontDescription.set_absolute_size].
+     * @param size the size of the font in points, scaled by %PANGO_SCALE.   (That is, a `size` value of 10 * PANGO_SCALE is a 10 point font.   The conversion factor between points and device units depends on   system configuration and the output device. For screen display, a   logical DPI of 96 is common, in which case a 10 point font corresponds   to a 10 * (96 / 72) = 13.3 pixel font.   Use [method`Pango`.FontDescription.set_absolute_size] if you need   a particular size in device units.
      */
     set_size(size: number): void
     /**
@@ -7572,6 +8043,7 @@ class FontDescription {
      * 
      * The [enum`Pango`.Stretch] field specifies how narrow or
      * wide the font should be.
+     * @param stretch the stretch for the font description
      */
     set_stretch(stretch: Stretch): void
     /**
@@ -7585,6 +8057,7 @@ class FontDescription {
      * but not both, and font matching in Pango will match italic
      * specifications with oblique fonts and vice-versa if an exact
      * match is not found.
+     * @param style the style for the font description
      */
     set_style(style: Style): void
     /**
@@ -7592,6 +8065,7 @@ class FontDescription {
      * 
      * The [enum`Pango`.Variant] can either be %PANGO_VARIANT_NORMAL
      * or %PANGO_VARIANT_SMALL_CAPS.
+     * @param variant the variant type for the font description.
      */
     set_variant(variant: Variant): void
     /**
@@ -7611,6 +8085,7 @@ class FontDescription {
      * Pango does not currently have a way to find supported axes of
      * a font. Both harfbuzz and freetype have API for this. See
      * for example [hb_ot_var_get_axis_infos](https://harfbuzz.github.io/harfbuzz-hb-ot-var.html#hb-ot-var-get-axis-infos).
+     * @param variations a string representing the variations
      */
     set_variations(variations?: string | null): void
     /**
@@ -7622,6 +8097,7 @@ class FontDescription {
      * or the name is set again. This function can be used if
      * `variations` is a static string such as a C string literal,
      * or if `desc` is only needed temporarily.
+     * @param variations a string representing the variations
      */
     set_variations_static(variations: string): void
     /**
@@ -7631,6 +8107,7 @@ class FontDescription {
      * specifies how bold or light the font should be. In addition
      * to the values of the [enum`Pango`.Weight] enumeration, other
      * intermediate numeric values are possible.
+     * @param weight the weight for the font description.
      */
     set_weight(weight: Weight): void
     /**
@@ -7655,6 +8132,7 @@ class FontDescription {
      * Unsets some of the fields in a `PangoFontDescription`.
      * 
      * The unset fields will get back to their default values.
+     * @param to_unset bitmask of fields in the `desc` to unset.
      */
     unset_fields(to_unset: FontMask): void
     static name: string
@@ -7707,27 +8185,28 @@ class FontDescription {
      * A typical example:
      * 
      *     "Cantarell Italic Light 15 \`wght=`200"
+     * @param str string representation of a font description.
      */
     static from_string(str: string): FontDescription
 }
 abstract class FontFaceClass {
     /* Fields of Pango-1.0.Pango.FontFaceClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly get_face_name: (face: FontFace) => string
-    readonly describe: (face: FontFace) => FontDescription
-    readonly list_sizes: (face: FontFace) => /* sizes */ number[] | null
-    readonly is_synthesized: (face: FontFace) => boolean
-    readonly get_family: (face: FontFace) => FontFamily
+    parent_class: GObject.ObjectClass
+    get_face_name: (face: FontFace) => string
+    describe: (face: FontFace) => FontDescription
+    list_sizes: (face: FontFace) => /* sizes */ number[] | null
+    is_synthesized: (face: FontFace) => boolean
+    get_family: (face: FontFace) => FontFamily
     static name: string
 }
 abstract class FontFamilyClass {
     /* Fields of Pango-1.0.Pango.FontFamilyClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly list_faces: (family: FontFamily) => /* faces */ FontFace[] | null
-    readonly get_name: (family: FontFamily) => string
-    readonly is_monospace: (family: FontFamily) => boolean
-    readonly is_variable: (family: FontFamily) => boolean
-    readonly get_face: (family: FontFamily, name?: string | null) => FontFace | null
+    parent_class: GObject.ObjectClass
+    list_faces: (family: FontFamily) => /* faces */ FontFace[] | null
+    get_name: (family: FontFamily) => string
+    is_monospace: (family: FontFamily) => boolean
+    is_variable: (family: FontFamily) => boolean
+    get_face: (family: FontFamily, name?: string | null) => FontFace | null
     static name: string
 }
 abstract class FontMapClass {
@@ -7735,18 +8214,18 @@ abstract class FontMapClass {
     /**
      * parent `GObjectClass`
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly load_font: (fontmap: FontMap, context: Context, desc: FontDescription) => Font | null
-    readonly list_families: (fontmap: FontMap) => /* families */ FontFamily[]
-    readonly load_fontset: (fontmap: FontMap, context: Context, desc: FontDescription, language: Language) => Fontset | null
+    parent_class: GObject.ObjectClass
+    load_font: (fontmap: FontMap, context: Context, desc: FontDescription) => Font | null
+    list_families: (fontmap: FontMap) => /* families */ FontFamily[]
+    load_fontset: (fontmap: FontMap, context: Context, desc: FontDescription, language: Language) => Fontset | null
     /**
      * the type of rendering-system-dependent engines that
      * can handle fonts of this fonts loaded with this fontmap.
      */
-    readonly shape_engine_type: string
-    readonly get_serial: (fontmap: FontMap) => number
-    readonly changed: (fontmap: FontMap) => void
-    readonly get_family: (fontmap: FontMap, name: string) => FontFamily
+    shape_engine_type: string
+    get_serial: (fontmap: FontMap) => number
+    changed: (fontmap: FontMap) => void
+    get_family: (fontmap: FontMap, name: string) => FontFamily
     static name: string
 }
 class FontMetrics {
@@ -7836,11 +8315,11 @@ abstract class FontsetClass {
     /**
      * parent `GObjectClass`
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly get_font: (fontset: Fontset, wc: number) => Font
-    readonly get_metrics: (fontset: Fontset) => FontMetrics
-    readonly get_language: (fontset: Fontset) => Language
-    readonly foreach: (fontset: Fontset, func: FontsetForeachFunc) => void
+    parent_class: GObject.ObjectClass
+    get_font: (fontset: Fontset, wc: number) => Font
+    get_metrics: (fontset: Fontset) => FontMetrics
+    get_language: (fontset: Fontset) => Language
+    foreach: (fontset: Fontset, func: FontsetForeachFunc) => void
     static name: string
 }
 abstract class FontsetSimpleClass {
@@ -7851,15 +8330,15 @@ class GlyphGeometry {
     /**
      * the logical width to use for the the character.
      */
-    readonly width: GlyphUnit
+    width: GlyphUnit
     /**
      * horizontal offset from nominal character position.
      */
-    readonly x_offset: GlyphUnit
+    x_offset: GlyphUnit
     /**
      * vertical offset from nominal character position.
      */
-    readonly y_offset: GlyphUnit
+    y_offset: GlyphUnit
     static name: string
 }
 class GlyphInfo {
@@ -7867,15 +8346,15 @@ class GlyphInfo {
     /**
      * the glyph itself.
      */
-    readonly glyph: Glyph
+    glyph: Glyph
     /**
      * the positional information about the glyph.
      */
-    readonly geometry: GlyphGeometry
+    geometry: GlyphGeometry
     /**
      * the visual attributes of the glyph.
      */
-    readonly attr: GlyphVisAttr
+    attr: GlyphVisAttr
     static name: string
 }
 class GlyphItem {
@@ -7883,26 +8362,26 @@ class GlyphItem {
     /**
      * corresponding `PangoItem`
      */
-    readonly item: Item
+    item: Item
     /**
      * corresponding `PangoGlyphString`
      */
-    readonly glyphs: GlyphString
+    glyphs: GlyphString
     /**
      * shift of the baseline, relative to the baseline
      *   of the containing line. Positive values shift upwards
      */
-    readonly y_offset: number
+    y_offset: number
     /**
      * horizontal displacement to apply before the
      *   glyph item. Positive values shift right
      */
-    readonly start_x_offset: number
+    start_x_offset: number
     /**
      * horizontal displacement to apply after th
      *   glyph item. Positive values shift right
      */
-    readonly end_x_offset: number
+    end_x_offset: number
     /* Methods of Pango-1.0.Pango.GlyphItem */
     /**
      * Splits a shaped item (`PangoGlyphItem`) into multiple items based
@@ -7922,6 +8401,8 @@ class GlyphItem {
      * 
      * This function takes ownership of `glyph_item;` it will be reused
      * as one of the elements in the list.
+     * @param text text that `list` applies to
+     * @param list a `PangoAttrList`
      */
     apply_attrs(text: string, list: AttrList): GlyphItem[]
     /**
@@ -7940,11 +8421,16 @@ class GlyphItem {
      * entire cluster is divided equally among the characters.
      * 
      * See also [method`Pango`.GlyphString.get_logical_widths].
+     * @param text text that `glyph_item` corresponds to   (glyph_item->item->offset is an offset from the   start of `text)`
+     * @param logical_widths an array whose length is the number of   characters in glyph_item (equal to glyph_item->item->num_chars)   to be filled in with the resulting character widths.
      */
     get_logical_widths(text: string, logical_widths: number[]): void
     /**
      * Adds spacing between the graphemes of `glyph_item` to
      * give the effect of typographic letter spacing.
+     * @param text text that `glyph_item` corresponds to   (glyph_item->item->offset is an offset from the   start of `text)`
+     * @param log_attrs logical attributes for the item   (the first logical attribute refers to the position   before the first character in the item)
+     * @param letter_spacing amount of letter spacing to add   in Pango units. May be negative, though too large   negative values will give ugly results.
      */
     letter_space(text: string, log_attrs: LogAttr[], letter_spacing: number): void
     /**
@@ -7959,20 +8445,22 @@ class GlyphItem {
      * 
      * This function is similar in function to pango_item_split() (and uses
      * it internally.)
+     * @param text text to which positions in `orig` apply
+     * @param split_index byte index of position to split item, relative to the   start of the item
      */
     split(text: string, split_index: number): GlyphItem
     static name: string
 }
 class GlyphItemIter {
     /* Fields of Pango-1.0.Pango.GlyphItemIter */
-    readonly glyph_item: GlyphItem
-    readonly text: string
-    readonly start_glyph: number
-    readonly start_index: number
-    readonly start_char: number
-    readonly end_glyph: number
-    readonly end_index: number
-    readonly end_char: number
+    glyph_item: GlyphItem
+    text: string
+    start_glyph: number
+    start_index: number
+    start_char: number
+    end_glyph: number
+    end_index: number
+    end_char: number
     /* Methods of Pango-1.0.Pango.GlyphItemIter */
     /**
      * Make a shallow copy of an existing `PangoGlyphItemIter` structure.
@@ -7987,6 +8475,8 @@ class GlyphItemIter {
      * last cluster in a glyph item.
      * 
      * See `PangoGlyphItemIter` for details of cluster orders.
+     * @param glyph_item the glyph item to iterate over
+     * @param text text corresponding to the glyph item
      */
     init_end(glyph_item: GlyphItem, text: string): boolean
     /**
@@ -7994,6 +8484,8 @@ class GlyphItemIter {
      * first cluster in a glyph item.
      * 
      * See `PangoGlyphItemIter` for details of cluster orders.
+     * @param glyph_item the glyph item to iterate over
+     * @param text text corresponding to the glyph item
      */
     init_start(glyph_item: GlyphItem, text: string): boolean
     /**
@@ -8014,16 +8506,16 @@ class GlyphString {
     /**
      * number of glyphs in this glyph string
      */
-    readonly num_glyphs: number
+    num_glyphs: number
     /**
      * array of glyph information
      */
-    readonly glyphs: GlyphInfo[]
+    glyphs: GlyphInfo[]
     /**
      * logical cluster info, indexed by the byte index
      *   within the text corresponding to the glyph string
      */
-    readonly log_clusters: number
+    log_clusters: number
     /* Methods of Pango-1.0.Pango.GlyphString */
     /**
      * Copy a glyph string and associated storage.
@@ -8038,6 +8530,7 @@ class GlyphString {
      * Examples of logical (red) and ink (green) rects:
      * 
      * ![](rects1.png) ![](rects2.png)
+     * @param font a `PangoFont`
      */
     extents(font: Font): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
     /**
@@ -8046,6 +8539,9 @@ class GlyphString {
      * The extents are relative to the start of the glyph string range
      * (the origin of their coordinate system is at the start of the range,
      * not at the start of the entire glyph string).
+     * @param start start index
+     * @param end end index (the range is the set of bytes with   indices such that start <= index < end)
+     * @param font a `PangoFont`
      */
     extents_range(start: number, end: number, font: Font): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
     /**
@@ -8060,6 +8556,10 @@ class GlyphString {
      * entire cluster is divided equally among the characters.
      * 
      * See also [method`Pango`.GlyphItem.get_logical_widths].
+     * @param text the text corresponding to the glyphs
+     * @param length the length of `text,` in bytes
+     * @param embedding_level the embedding level of the string
+     * @param logical_widths an array whose length is the number of   characters in text (equal to `g_utf8_strlen (text, length)` unless   text has `NUL` bytes) to be filled in with the resulting character widths.
      */
     get_logical_widths(text: string, length: number, embedding_level: number, logical_widths: number[]): void
     /**
@@ -8083,6 +8583,11 @@ class GlyphString {
      *   <source srcset="glyphstring-positions-dark.png" media="(prefers-color-scheme: dark)">
      *   <img alt="Glyph positions" src="glyphstring-positions-light.png">
      * </picture>
+     * @param text the text for the run
+     * @param length the number of bytes (not characters) in `text`.
+     * @param analysis the analysis information return from [func`itemize]`
+     * @param index_ the byte index within `text`
+     * @param trailing whether we should compute the result for the beginning (%FALSE)   or end (%TRUE) of the character.
      */
     index_to_x(text: string, length: number, analysis: Analysis, index_: number, trailing: boolean): /* x_pos */ number
     /**
@@ -8092,10 +8597,17 @@ class GlyphString {
      * accepts a `PangoLogAttr` array. The grapheme boundary information
      * in it can be used to disambiguate positioning inside some complex
      * clusters.
+     * @param text the text for the run
+     * @param length the number of bytes (not characters) in `text`.
+     * @param analysis the analysis information return from [func`itemize]`
+     * @param attrs `PangoLogAttr` array for `text`
+     * @param index_ the byte index within `text`
+     * @param trailing whether we should compute the result for the beginning (%FALSE)   or end (%TRUE) of the character.
      */
     index_to_x_full(text: string, length: number, analysis: Analysis, attrs: LogAttr | null, index_: number, trailing: boolean): /* x_pos */ number
     /**
      * Resize a glyph string to the given length.
+     * @param new_len the new length of the string
      */
     set_size(new_len: number): void
     /**
@@ -8106,6 +8618,10 @@ class GlyphString {
      * not allowed (such as Thai), the returned value may not be a valid
      * cursor position; the caller must combine the result with the logical
      * attributes for the text to compute the valid cursor position.
+     * @param text the text for the run
+     * @param length the number of bytes (not characters) in text.
+     * @param analysis the analysis information return from [func`itemize]`
+     * @param x_pos the x offset (in Pango units)
      */
     x_to_index(text: string, length: number, analysis: Analysis, x_pos: number): [ /* index_ */ number, /* trailing */ number ]
     static name: string
@@ -8119,11 +8635,11 @@ class GlyphVisAttr {
     /**
      * set for the first logical glyph in each cluster.
      */
-    readonly is_cluster_start: number
+    is_cluster_start: number
     /**
      * set if the the font will render this glyph with color. Since 1.50
      */
-    readonly is_color: number
+    is_color: number
     static name: string
 }
 class Item {
@@ -8131,19 +8647,19 @@ class Item {
     /**
      * byte offset of the start of this item in text.
      */
-    readonly offset: number
+    offset: number
     /**
      * length of this item in bytes.
      */
-    readonly length: number
+    length: number
     /**
      * number of Unicode characters in the item.
      */
-    readonly num_chars: number
+    num_chars: number
     /**
      * analysis results for the item.
      */
-    readonly analysis: Analysis
+    analysis: Analysis
     /* Methods of Pango-1.0.Pango.Item */
     /**
      * Add attributes to a `PangoItem`.
@@ -8157,6 +8673,7 @@ class Item {
      * and will be advanced past it. This function is meant to be called
      * in a loop over the items resulting from itemization, while passing
      * the iter to each call.
+     * @param iter a `PangoAttrIterator`
      */
     apply_attrs(iter: AttrIterator): void
     /**
@@ -8180,6 +8697,8 @@ class Item {
      * provided because the text used to generate the item isn't available,
      * so `pango_item_split()` can't count the char length of the split items
      * itself.
+     * @param split_index byte index of position to split item, relative to the   start of the item
+     * @param split_offset number of chars between start of `orig` and `split_index`
      */
     split(split_index: number, split_offset: number): Item
     static name: string
@@ -8252,6 +8771,7 @@ class Language {
      * for applications in most circumstances.
      * 
      * This function uses [method`Pango`.Language.get_scripts] internally.
+     * @param script a `PangoScript`
      */
     includes_script(script: Script): boolean
     /**
@@ -8261,6 +8781,7 @@ class Language {
      * A language tag is considered to match a range in the list if the
      * range is '*', the range is exactly the tag, or the range is a prefix
      * of the tag, and the character after it in the tag is '-'.
+     * @param range_list a list of language ranges, separated by ';', ':',   ',', or space characters.   Each element must either be '*', or a RFC 3066 language range   canonicalized as by [func`Pango`.Language.from_string]
      */
     matches(range_list: string): boolean
     /**
@@ -8284,6 +8805,7 @@ class Language {
      * 
      * Use [func`Pango`.Language.get_default] if you want to get the
      * `PangoLanguage` for the current locale of the process.
+     * @param language a string representing a language tag
      */
     static from_string(language?: string | null): Language | null
     /**
@@ -8502,28 +9024,28 @@ class LayoutLine {
     /**
      * the layout this line belongs to, might be %NULL
      */
-    readonly layout: Layout
+    layout: Layout
     /**
      * start of line as byte index into layout->text
      */
-    readonly start_index: number
+    start_index: number
     /**
      * length of line in bytes
      */
-    readonly length: number
+    length: number
     /**
      * list of runs in the
      *   line, from left to right
      */
-    readonly runs: LayoutRun[]
+    runs: LayoutRun[]
     /**
      * #TRUE if this is the first line of the paragraph
      */
-    readonly is_paragraph_start: number
+    is_paragraph_start: number
     /**
      * #Resolved PangoDirection of line
      */
-    readonly resolved_dir: number
+    resolved_dir: number
     /* Methods of Pango-1.0.Pango.LayoutLine */
     /**
      * Computes the logical and ink extents of a layout line.
@@ -8571,10 +9093,14 @@ class LayoutLine {
      * ranges which are adjacent. The ranges will be sorted from left to
      * right. The ranges are with respect to the left edge of the entire
      * layout, not with respect to the line.
+     * @param start_index Start byte index of the logical range. If this value   is less than the start index for the line, then the first range   will extend all the way to the leading edge of the layout. Otherwise,   it will start at the leading edge of the first character.
+     * @param end_index Ending byte index of the logical range. If this value is   greater than the end index for the line, then the last range will   extend all the way to the trailing edge of the layout. Otherwise,   it will end at the trailing edge of the last character.
      */
     get_x_ranges(start_index: number, end_index: number): /* ranges */ number[]
     /**
      * Converts an index within a line to a X position.
+     * @param index_ byte offset of a grapheme within the layout
+     * @param trailing an integer indicating the edge of the grapheme to retrieve   the position of. If > 0, the trailing edge of the grapheme,   if 0, the leading of the grapheme
      */
     index_to_x(index_: number, trailing: boolean): /* x_pos */ number
     /**
@@ -8600,6 +9126,7 @@ class LayoutLine {
      * left of the line results in `index_` pointing to the (logical) last grapheme
      * in the line and `trailing` being set to the number of characters in that
      * grapheme. The reverse is true for a left-to-right line.
+     * @param x_pos the X offset (in Pango units) from the left edge of the line.
      */
     x_to_index(x_pos: number): [ /* returnType */ boolean, /* index_ */ number, /* trailing */ number ]
     static name: string
@@ -8609,19 +9136,19 @@ class LogAttr {
     /**
      * if set, can break line in front of character
      */
-    readonly is_line_break: number
+    is_line_break: number
     /**
      * if set, must break line in front of character
      */
-    readonly is_mandatory_break: number
+    is_mandatory_break: number
     /**
      * if set, can break here when doing character wrapping
      */
-    readonly is_char_break: number
+    is_char_break: number
     /**
      * is whitespace character
      */
-    readonly is_white: number
+    is_white: number
     /**
      * if set, cursor can appear in front of character.
      *   i.e. this is a grapheme boundary, or the first character in the text.
@@ -8629,17 +9156,17 @@ class LogAttr {
      *   [Grapheme Cluster Boundaries](http://www.unicode.org/reports/tr29/)
      *   semantics.
      */
-    readonly is_cursor_position: number
+    is_cursor_position: number
     /**
      * is first character in a word
      */
-    readonly is_word_start: number
+    is_word_start: number
     /**
      * is first non-word char after a word
      *   Note that in degenerate cases, you could have both `is_word_start`
      *   and `is_word_end` set for some character.
      */
-    readonly is_word_end: number
+    is_word_end: number
     /**
      * is a sentence boundary.
      *   There are two ways to divide sentences. The first assigns all
@@ -8649,18 +9176,18 @@ class LogAttr {
      *   between-sentence spaces, etc. to any sentence, so
      *   `is_sentence_start/``is_sentence_end` mark the boundaries of those sentences.
      */
-    readonly is_sentence_boundary: number
+    is_sentence_boundary: number
     /**
      * is first character in a sentence
      */
-    readonly is_sentence_start: number
+    is_sentence_start: number
     /**
      * is first char after a sentence.
      *   Note that in degenerate cases, you could have both `is_sentence_start`
      *   and `is_sentence_end` set for some character. (e.g. no space after a
      *   period, so the next sentence starts right away)
      */
-    readonly is_sentence_end: number
+    is_sentence_end: number
     /**
      * if set, backspace deletes one character
      *   rather than the entire grapheme cluster. This field is only meaningful
@@ -8670,12 +9197,12 @@ class LogAttr {
      *   implementation of [func`break]`, this bit is set on all grapheme boundaries
      *   except those following Latin, Cyrillic or Greek base characters.
      */
-    readonly backspace_deletes_character: number
+    backspace_deletes_character: number
     /**
      * is a whitespace character that can possibly be
      *   expanded for justification purposes. (Since: 1.18)
      */
-    readonly is_expandable_space: number
+    is_expandable_space: number
     /**
      * is a word boundary, as defined by UAX#29.
      *   More specifically, means that this is not a position in the middle of a word.
@@ -8684,18 +9211,18 @@ class LogAttr {
      *   implements Unicode's [Word Boundaries](http://www.unicode.org/reports/tr29/)
      *   semantics. (Since: 1.22)
      */
-    readonly is_word_boundary: number
+    is_word_boundary: number
     /**
      * when breaking lines before this char, insert a hyphen.
      *   Since: 1.50
      */
-    readonly break_inserts_hyphen: number
+    break_inserts_hyphen: number
     /**
      * when breaking lines before this char, remove the
      *   preceding char. Since 1.50
      */
-    readonly break_removes_preceding: number
-    readonly reserved: number
+    break_removes_preceding: number
+    reserved: number
     static name: string
 }
 class Matrix {
@@ -8703,32 +9230,33 @@ class Matrix {
     /**
      * 1st component of the transformation matrix
      */
-    readonly xx: number
+    xx: number
     /**
      * 2nd component of the transformation matrix
      */
-    readonly xy: number
+    xy: number
     /**
      * 3rd component of the transformation matrix
      */
-    readonly yx: number
+    yx: number
     /**
      * 4th component of the transformation matrix
      */
-    readonly yy: number
+    yy: number
     /**
      * x translation
      */
-    readonly x0: number
+    x0: number
     /**
      * y translation
      */
-    readonly y0: number
+    y0: number
     /* Methods of Pango-1.0.Pango.Matrix */
     /**
      * Changes the transformation represented by `matrix` to be the
      * transformation given by first applying transformation
      * given by `new_matrix` then applying the original transformation.
+     * @param new_matrix a `PangoMatrix`
      */
     concat(new_matrix: Matrix): void
     /**
@@ -8772,6 +9300,7 @@ class Matrix {
      * Changes the transformation represented by `matrix` to be the
      * transformation given by first rotating by `degrees` degrees
      * counter-clockwise then applying the original transformation.
+     * @param degrees degrees to rotate counter-clockwise
      */
     rotate(degrees: number): void
     /**
@@ -8779,6 +9308,8 @@ class Matrix {
      * transformation given by first scaling by `sx` in the X direction
      * and `sy` in the Y direction then applying the original
      * transformation.
+     * @param scale_x amount to scale by in X direction
+     * @param scale_y amount to scale by in Y direction
      */
     scale(scale_x: number, scale_y: number): void
     /**
@@ -8797,6 +9328,8 @@ class Matrix {
      * always transforms to the same vector. If (`x1`,`y1`) transforms
      * to (`x2`,`y2`) then (`x1`+`dx1`,`y1`+`dy1`) will transform to
      * (`x1`+`dx2`,`y1`+`dy2`) for all values of `x1` and `x2`.
+     * @param dx in/out X component of a distance vector
+     * @param dy in/out Y component of a distance vector
      */
     transform_distance(dx: number, dy: number): [ /* dx */ number, /* dy */ number ]
     /**
@@ -8810,10 +9343,13 @@ class Matrix {
      * For better accuracy, you should use [method`Pango`.Matrix.transform_rectangle]
      * on original rectangle in Pango units and convert to pixels afterward
      * using [func`extents_to_pixels]`'s first argument.
+     * @param rect in/out bounding box in device units
      */
     transform_pixel_rectangle(rect?: Rectangle | null): /* rect */ Rectangle | null
     /**
      * Transforms the point (`x,` `y)` by `matrix`.
+     * @param x in/out X position
+     * @param y in/out Y position
      */
     transform_point(x: number, y: number): [ /* x */ number, /* y */ number ]
     /**
@@ -8835,12 +9371,15 @@ class Matrix {
      * to pixels first and then transform, for example when the transformed
      * coordinates may overflow in Pango units (large matrix translation for
      * example).
+     * @param rect in/out bounding box in Pango units
      */
     transform_rectangle(rect?: Rectangle | null): /* rect */ Rectangle | null
     /**
      * Changes the transformation represented by `matrix` to be the
      * transformation given by first translating by (`tx,` `ty)`
      * then applying the original transformation.
+     * @param tx amount to translate in the X direction
+     * @param ty amount to translate in the Y direction
      */
     translate(tx: number, ty: number): void
     static name: string
@@ -8850,34 +9389,34 @@ class Rectangle {
     /**
      * X coordinate of the left side of the rectangle.
      */
-    readonly x: number
+    x: number
     /**
      * Y coordinate of the the top side of the rectangle.
      */
-    readonly y: number
+    y: number
     /**
      * width of the rectangle.
      */
-    readonly width: number
+    width: number
     /**
      * height of the rectangle.
      */
-    readonly height: number
+    height: number
     static name: string
 }
 abstract class RendererClass {
     /* Fields of Pango-1.0.Pango.RendererClass */
-    readonly draw_glyphs: (renderer: Renderer, font: Font, glyphs: GlyphString, x: number, y: number) => void
-    readonly draw_rectangle: (renderer: Renderer, part: RenderPart, x: number, y: number, width: number, height: number) => void
-    readonly draw_error_underline: (renderer: Renderer, x: number, y: number, width: number, height: number) => void
-    readonly draw_shape: (renderer: Renderer, attr: AttrShape, x: number, y: number) => void
-    readonly draw_trapezoid: (renderer: Renderer, part: RenderPart, y1_: number, x11: number, x21: number, y2: number, x12: number, x22: number) => void
-    readonly draw_glyph: (renderer: Renderer, font: Font, glyph: Glyph, x: number, y: number) => void
-    readonly part_changed: (renderer: Renderer, part: RenderPart) => void
-    readonly begin: (renderer: Renderer) => void
-    readonly end: (renderer: Renderer) => void
-    readonly prepare_run: (renderer: Renderer, run: LayoutRun) => void
-    readonly draw_glyph_item: (renderer: Renderer, text: string | null, glyph_item: GlyphItem, x: number, y: number) => void
+    draw_glyphs: (renderer: Renderer, font: Font, glyphs: GlyphString, x: number, y: number) => void
+    draw_rectangle: (renderer: Renderer, part: RenderPart, x: number, y: number, width: number, height: number) => void
+    draw_error_underline: (renderer: Renderer, x: number, y: number, width: number, height: number) => void
+    draw_shape: (renderer: Renderer, attr: AttrShape, x: number, y: number) => void
+    draw_trapezoid: (renderer: Renderer, part: RenderPart, y1_: number, x11: number, x21: number, y2: number, x12: number, x22: number) => void
+    draw_glyph: (renderer: Renderer, font: Font, glyph: Glyph, x: number, y: number) => void
+    part_changed: (renderer: Renderer, part: RenderPart) => void
+    begin: (renderer: Renderer) => void
+    end: (renderer: Renderer) => void
+    prepare_run: (renderer: Renderer, run: LayoutRun) => void
+    draw_glyph_item: (renderer: Renderer, text: string | null, glyph_item: GlyphItem, x: number, y: number) => void
     static name: string
 }
 class RendererPrivate {
@@ -8933,6 +9472,7 @@ class TabArray {
      * 
      * The default value of 0 means that Pango will use the
      * decimal point according to the current locale.
+     * @param tab_index the index of a tab stop
      */
     get_decimal_point(tab_index: number): number
     /**
@@ -8946,6 +9486,7 @@ class TabArray {
     get_size(): number
     /**
      * Gets the alignment and position of a tab stop.
+     * @param tab_index tab stop index
      */
     get_tab(tab_index: number): [ /* alignment */ TabAlign | null, /* location */ number | null ]
     /**
@@ -8961,6 +9502,7 @@ class TabArray {
      * 
      * You must subsequently initialize any tabs
      * that were added as a result of growing the array.
+     * @param new_size new size of the array
      */
     resize(new_size: number): void
     /**
@@ -8972,15 +9514,21 @@ class TabArray {
      * 
      * By default, Pango uses the decimal point according
      * to the current locale.
+     * @param tab_index the index of a tab stop
+     * @param decimal_point the decimal point to use
      */
     set_decimal_point(tab_index: number, decimal_point: number): void
     /**
      * Sets whether positions in this array are specified in
      * pixels.
+     * @param positions_in_pixels whether positions are in pixels
      */
     set_positions_in_pixels(positions_in_pixels: boolean): void
     /**
      * Sets the alignment and location of a tab stop.
+     * @param tab_index the index of a tab stop
+     * @param alignment tab alignment
+     * @param location tab location in Pango units
      */
     set_tab(tab_index: number, alignment: TabAlign, location: number): void
     /**
@@ -9008,6 +9556,7 @@ class TabArray {
      * 
      * This is the counterpart to [method`Pango`.TabArray.to_string].
      * See that functions for details about the format.
+     * @param text a string
      */
     static from_string(text: string): TabArray | null
 }

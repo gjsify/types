@@ -1922,22 +1922,22 @@ interface Foreign_ConstructProps extends Operation_ConstructProps {
 }
 class Foreign {
     /* Fields of Vips-8.0.Vips.Operation */
-    readonly parent_instance: Object
-    readonly hash: number
-    readonly found_hash: boolean
-    readonly pixels: number
+    parent_instance: Object
+    hash: number
+    found_hash: boolean
+    pixels: number
     /* Fields of Vips-8.0.Vips.Object */
-    readonly constructed: boolean
-    readonly static_object: boolean
-    readonly argument_table: ArgumentTable
-    readonly nickname: string
-    readonly description: string
-    readonly preclose: boolean
-    readonly close: boolean
-    readonly postclose: boolean
-    readonly local_memory: number
+    constructed: boolean
+    static_object: boolean
+    argument_table: ArgumentTable
+    nickname: string
+    description: string
+    preclose: boolean
+    close: boolean
+    postclose: boolean
+    local_memory: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Vips-8.0.Vips.Operation */
     /**
      * Returns the set of flags for this operation.
@@ -1947,16 +1947,19 @@ class Foreign {
     /* Methods of Vips-8.0.Vips.Object */
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
+     * @param name arg to fetch
      */
     argument_isset(name: string): boolean
     argument_needsstring(name: string): boolean
     build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_flags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_priority(name: string): number
     get_argument_to_string(name: string, arg: string): number
@@ -1984,6 +1987,7 @@ class Foreign {
      * 
      * See also: vips_object_set(), vips_object_build(),
      * vips_cache_operation_buildp().
+     * @param string arguments as a string
      */
     set_from_string(string: string): number
     set_required(value: string): number
@@ -2034,6 +2038,10 @@ class Foreign {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2044,6 +2052,12 @@ class Foreign {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2067,6 +2081,7 @@ class Foreign {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2086,11 +2101,14 @@ class Foreign {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2098,6 +2116,8 @@ class Foreign {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2115,6 +2135,7 @@ class Foreign {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2160,6 +2181,7 @@ class Foreign {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2203,15 +2225,20 @@ class Foreign {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2252,6 +2279,7 @@ class Foreign {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2286,6 +2314,7 @@ class Foreign {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Vips-8.0.Vips.Operation */
@@ -2319,6 +2348,7 @@ class Foreign {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2384,6 +2414,7 @@ class Foreign {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Foreign, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Foreign, pspec: GObject.ParamSpec) => void)): number
@@ -2401,6 +2432,7 @@ class Foreign {
      * options on `filename` are stripped and ignored.
      * 
      * See also: vips_foreign_find_load_buffer(), vips_image_new_from_file().
+     * @param filename file to find a loader for
      */
     static find_load(filename: string): string
     /**
@@ -2410,6 +2442,7 @@ class Foreign {
      * 	vips -l | grep load_buffer
      * 
      * See also: vips_image_new_from_buffer().
+     * @param data start of memory buffer
      */
     static find_load_buffer(data: Uint8Array): string
     /**
@@ -2419,6 +2452,7 @@ class Foreign {
      * 	vips -l | grep load_source
      * 
      * See also: vips_image_new_from_source().
+     * @param source source to load from
      */
     static find_load_source(source: Source): string
     /**
@@ -2426,6 +2460,7 @@ class Foreign {
      * Any trailing options on `filename` are stripped and ignored.
      * 
      * See also: vips_foreign_find_save_buffer(), vips_image_write_to_file().
+     * @param filename name to find a saver for
      */
     static find_save(filename: string): string | null
     /**
@@ -2433,6 +2468,7 @@ class Foreign {
      * format.
      * 
      * See also: vips_image_write_to_buffer().
+     * @param suffix name to find a saver for
      */
     static find_save_buffer(suffix: string): string | null
     /**
@@ -2440,11 +2476,14 @@ class Foreign {
      * format.
      * 
      * See also: vips_image_write_to_buffer().
+     * @param suffix format to find a saver for
      */
     static find_save_target(suffix: string): string | null
     /**
      * Return the flags for `filename` using `loader`.
      * `loader` is something like "tiffload" or "VipsForeignLoadTiff".
+     * @param loader name of loader to use for test
+     * @param filename file to test
      */
     static flags(loader: string, filename: string): ForeignFlags
     /**
@@ -2461,16 +2500,22 @@ class Foreign {
     /**
      * Return %TRUE if `filename` can be loaded by `loader`. `loader` is something
      * like "tiffload" or "VipsForeignLoadTiff".
+     * @param loader name of loader to use for test
+     * @param filename file to test
      */
     static is_a(loader: string, filename: string): boolean
     /**
      * Return %TRUE if `data` can be loaded by `loader`. `loader` is something
      * like "tiffload_buffer" or "VipsForeignLoadTiffBuffer".
+     * @param loader name of loader to use for test
+     * @param data pointer to the buffer to test
      */
     static is_a_buffer(loader: string, data: Uint8Array): boolean
     /**
      * Return %TRUE if `source` can be loaded by `loader`. `loader` is something
      * like "tiffload_source" or "VipsForeignLoadTiffSource".
+     * @param loader name of loader to use for test
+     * @param source source to test
      */
     static is_a_source(loader: string, source: Source): boolean
     /**
@@ -2482,6 +2527,10 @@ class Foreign {
      * map function returns %NULL if all calls return %NULL.
      * 
      * See also: vips_slist_map().
+     * @param base base class to search below (eg. "VipsForeignLoad")
+     * @param fn function to apply to each #VipsForeignClass
+     * @param a user data
+     * @param b user data
      */
     static map(base: string, fn: SListMap2Fn, a?: object | null, b?: object | null): object | null
     static $gtype: GObject.Type
@@ -2502,24 +2551,24 @@ class ForeignLoad {
     out: Image
     sequential: boolean
     /* Fields of Vips-8.0.Vips.Foreign */
-    readonly parent_object: Operation
+    parent_object: Operation
     /* Fields of Vips-8.0.Vips.Operation */
-    readonly parent_instance: Object
-    readonly hash: number
-    readonly found_hash: boolean
-    readonly pixels: number
+    parent_instance: Object
+    hash: number
+    found_hash: boolean
+    pixels: number
     /* Fields of Vips-8.0.Vips.Object */
-    readonly constructed: boolean
-    readonly static_object: boolean
-    readonly argument_table: ArgumentTable
-    readonly nickname: string
-    readonly description: string
-    readonly preclose: boolean
-    readonly close: boolean
-    readonly postclose: boolean
-    readonly local_memory: number
+    constructed: boolean
+    static_object: boolean
+    argument_table: ArgumentTable
+    nickname: string
+    description: string
+    preclose: boolean
+    close: boolean
+    postclose: boolean
+    local_memory: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Vips-8.0.Vips.Operation */
     /**
      * Returns the set of flags for this operation.
@@ -2529,16 +2578,19 @@ class ForeignLoad {
     /* Methods of Vips-8.0.Vips.Object */
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
+     * @param name arg to fetch
      */
     argument_isset(name: string): boolean
     argument_needsstring(name: string): boolean
     build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_flags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_priority(name: string): number
     get_argument_to_string(name: string, arg: string): number
@@ -2566,6 +2618,7 @@ class ForeignLoad {
      * 
      * See also: vips_object_set(), vips_object_build(),
      * vips_cache_operation_buildp().
+     * @param string arguments as a string
      */
     set_from_string(string: string): number
     set_required(value: string): number
@@ -2616,6 +2669,10 @@ class ForeignLoad {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2626,6 +2683,12 @@ class ForeignLoad {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2649,6 +2712,7 @@ class ForeignLoad {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2668,11 +2732,14 @@ class ForeignLoad {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2680,6 +2747,8 @@ class ForeignLoad {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2697,6 +2766,7 @@ class ForeignLoad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2742,6 +2812,7 @@ class ForeignLoad {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2785,15 +2856,20 @@ class ForeignLoad {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2834,6 +2910,7 @@ class ForeignLoad {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2868,6 +2945,7 @@ class ForeignLoad {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Vips-8.0.Vips.ForeignLoad */
@@ -2910,6 +2988,7 @@ class ForeignLoad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2975,6 +3054,7 @@ class ForeignLoad {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ForeignLoad, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ForeignLoad, pspec: GObject.ParamSpec) => void)): number
@@ -3012,24 +3092,24 @@ class ForeignSave {
     page_height: number
     strip: boolean
     /* Fields of Vips-8.0.Vips.Foreign */
-    readonly parent_object: Operation
+    parent_object: Operation
     /* Fields of Vips-8.0.Vips.Operation */
-    readonly parent_instance: Object
-    readonly hash: number
-    readonly found_hash: boolean
-    readonly pixels: number
+    parent_instance: Object
+    hash: number
+    found_hash: boolean
+    pixels: number
     /* Fields of Vips-8.0.Vips.Object */
-    readonly constructed: boolean
-    readonly static_object: boolean
-    readonly argument_table: ArgumentTable
-    readonly nickname: string
-    readonly description: string
-    readonly preclose: boolean
-    readonly close: boolean
-    readonly postclose: boolean
-    readonly local_memory: number
+    constructed: boolean
+    static_object: boolean
+    argument_table: ArgumentTable
+    nickname: string
+    description: string
+    preclose: boolean
+    close: boolean
+    postclose: boolean
+    local_memory: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Vips-8.0.Vips.Operation */
     /**
      * Returns the set of flags for this operation.
@@ -3039,16 +3119,19 @@ class ForeignSave {
     /* Methods of Vips-8.0.Vips.Object */
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
+     * @param name arg to fetch
      */
     argument_isset(name: string): boolean
     argument_needsstring(name: string): boolean
     build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_flags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_priority(name: string): number
     get_argument_to_string(name: string, arg: string): number
@@ -3076,6 +3159,7 @@ class ForeignSave {
      * 
      * See also: vips_object_set(), vips_object_build(),
      * vips_cache_operation_buildp().
+     * @param string arguments as a string
      */
     set_from_string(string: string): number
     set_required(value: string): number
@@ -3126,6 +3210,10 @@ class ForeignSave {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3136,6 +3224,12 @@ class ForeignSave {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3159,6 +3253,7 @@ class ForeignSave {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3178,11 +3273,14 @@ class ForeignSave {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3190,6 +3288,8 @@ class ForeignSave {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3207,6 +3307,7 @@ class ForeignSave {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3252,6 +3353,7 @@ class ForeignSave {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3295,15 +3397,20 @@ class ForeignSave {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3344,6 +3451,7 @@ class ForeignSave {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3378,6 +3486,7 @@ class ForeignSave {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Vips-8.0.Vips.Operation */
@@ -3411,6 +3520,7 @@ class ForeignSave {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3476,6 +3586,7 @@ class ForeignSave {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ForeignSave, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ForeignSave, pspec: GObject.ParamSpec) => void)): number
@@ -3527,18 +3638,18 @@ class Image {
     yoffset: number
     yres: number
     /* Fields of Vips-8.0.Vips.Object */
-    readonly parent_instance: GObject.Object
-    readonly constructed: boolean
-    readonly static_object: boolean
-    readonly argument_table: ArgumentTable
-    readonly nickname: string
-    readonly description: string
-    readonly preclose: boolean
-    readonly close: boolean
-    readonly postclose: boolean
-    readonly local_memory: number
+    parent_instance: GObject.Object
+    constructed: boolean
+    static_object: boolean
+    argument_table: ArgumentTable
+    nickname: string
+    description: string
+    preclose: boolean
+    close: boolean
+    postclose: boolean
+    local_memory: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Vips-8.0.Vips.Image */
     /**
      * Remove the orientation tag on `image`. Also remove any exif orientation tags.
@@ -3586,6 +3697,7 @@ class Image {
      * vips_image_decode().
      * 
      * See also: vips_image_decode().
+     * @param coding coding to apply
      */
     encode(coding: Coding): [ /* returnType */ number, /* out */ Image ]
     /**
@@ -3602,6 +3714,7 @@ class Image {
     /**
      * Free the externally allocated buffer found in the input image. This function
      * is intended to be used with g_signal_connect.
+     * @param buffer the orignal buffer that was stolen
      */
     free_buffer(buffer?: object | null): void
     /**
@@ -3637,6 +3750,7 @@ class Image {
      * 
      * 
      * See also: vips_image_get_typeof(), vips_image_get_double().
+     * @param name the name to fetch
      */
     get(name: string): [ /* returnType */ number, /* value_copy */ any ]
     /**
@@ -3646,6 +3760,7 @@ class Image {
      * 
      * See also: vips_image_set_area(), vips_image_get(),
      * vips_image_get_typeof()
+     * @param name metadata name
      */
     get_area(name: string): [ /* returnType */ number, /* data */ object | null ]
     /**
@@ -3659,6 +3774,7 @@ class Image {
      * existence of a piece of metadata.
      * 
      * See also: vips_image_get(), vips_image_set_image()
+     * @param name metadata name
      */
     get_array_double(name: string): [ /* returnType */ number, /* out */ number[] ]
     /**
@@ -3672,6 +3788,7 @@ class Image {
      * existence of a piece of metadata.
      * 
      * See also: vips_image_get(), vips_image_set_image()
+     * @param name metadata name
      */
     get_array_int(name: string): [ /* returnType */ number, /* out */ number[] ]
     /**
@@ -3683,6 +3800,7 @@ class Image {
      * make a string that's for humans.
      * 
      * See also: vips_image_get(), vips_image_get_typeof(), vips_buf_appendgv().
+     * @param name field name
      */
     get_as_string(name: string): [ /* returnType */ number, /* out */ string ]
     get_bands(): number
@@ -3694,6 +3812,7 @@ class Image {
      * of a piece of metadata.
      * 
      * See also: vips_image_get(), vips_image_get_typeof(), vips_blob_get(),
+     * @param name metadata name
      */
     get_blob(name: string): [ /* returnType */ number, /* data */ Uint8Array ]
     get_coding(): Coding
@@ -3714,6 +3833,7 @@ class Image {
      * a double, if possible.
      * 
      * See also: vips_image_get(), vips_image_get_typeof()
+     * @param name field name
      */
     get_double(name: string): [ /* returnType */ number, /* out */ number ]
     /**
@@ -3748,6 +3868,7 @@ class Image {
      * existence of a piece of metadata.
      * 
      * See also: vips_image_get(), vips_image_set_image()
+     * @param name metadata name
      */
     get_image(name: string): [ /* returnType */ number, /* out */ Image ]
     /**
@@ -3756,6 +3877,7 @@ class Image {
      * an int, if possible.
      * 
      * See also: vips_image_get(), vips_image_get_typeof()
+     * @param name field name
      */
     get_int(name: string): [ /* returnType */ number, /* out */ number ]
     /**
@@ -3815,6 +3937,7 @@ class Image {
      * Use vips_image_get_as_string() to fetch any field as a string.
      * 
      * See also: vips_image_get(), vips_image_get_typeof()
+     * @param name field name
      */
     get_string(name: string): [ /* returnType */ number, /* out */ string ]
     /**
@@ -3822,6 +3945,7 @@ class Image {
      * field of that name.
      * 
      * See also: vips_image_get().
+     * @param name the name to search for
      */
     get_typeof(name: string): GObject.Type
     get_width(): number
@@ -3855,6 +3979,8 @@ class Image {
      * convenience function for command-line prorams.
      * 
      * See also: vips_image_get_history().
+     * @param name program name
+     * @param argv program arguments
      */
     history_args(name: string, argv: string[]): number
     /**
@@ -3862,6 +3988,7 @@ class Image {
      * MediaWhitePoint stored in the ICC profile.
      * 
      * See also: vips_icc_transform(), vips_icc_import().
+     * @param profile_filename use this profile
      */
     icc_ac2rc(profile_filename: string): [ /* returnType */ number, /* out */ Image ]
     /**
@@ -3873,6 +4000,14 @@ class Image {
      * fields yourself.
      * 
      * See also: vips_image_pipelinev().
+     * @param xsize image width
+     * @param ysize image height
+     * @param bands image bands
+     * @param format band format
+     * @param coding image coding
+     * @param interpretation image type
+     * @param xres horizontal resolution, pixels per millimetre
+     * @param yres vertical resolution, pixels per millimetre
      */
     init_fields(xsize: number, ysize: number, bands: number, format: BandFormat, coding: Coding, interpretation: Interpretation, xres: number, yres: number): void
     /**
@@ -3941,6 +4076,7 @@ class Image {
      * iteration, or a non-%NULL pointer to indicate early termination.
      * 
      * See also: vips_image_get_typeof(), vips_image_get().
+     * @param a user data for function
      */
     map(a?: object | null): object | null
     /**
@@ -3968,6 +4104,7 @@ class Image {
     pio_output(): number
     /**
      * Prints field `name` to stdout as ASCII. Handy for debugging.
+     * @param name field name
      */
     print_field(name: string): void
     /**
@@ -3975,6 +4112,7 @@ class Image {
      * name was found.
      * 
      * See also: vips_image_set(), vips_image_get_typeof().
+     * @param name the name to search for
      */
     remove(name: string): boolean
     /**
@@ -3987,6 +4125,7 @@ class Image {
      * computations to minimise recomputation.
      * 
      * See also: vips_image_prepare_many().
+     * @param margin the size of the margin this operation has added
      */
     reorder_margin_hint(margin: number): void
     /**
@@ -3997,6 +4136,8 @@ class Image {
      * recomputation. This can give a large speedup, in some cases.
      * 
      * See also: vips_region_prepare(), vips_reorder_margin_hint().
+     * @param regions the set of regions to prepare
+     * @param r the #VipsRect to prepare on each region
      */
     reorder_prepare_many(regions: Region[], r: Rect): number
     /**
@@ -4018,6 +4159,8 @@ class Image {
      * 
      * 
      * See also: vips_image_get().
+     * @param name the name to give the metadata
+     * @param value the %GValue to copy into the image
      */
     set(name: string, value: any): void
     /**
@@ -4025,6 +4168,8 @@ class Image {
      * VIPS no longer needs the metadata, it will be freed with `free_fn`.
      * 
      * See also: vips_image_get_double(), vips_image_set()
+     * @param name metadata name
+     * @param free_fn free function for `data`
      */
     set_area(name: string, free_fn: CallbackFn): void
     /**
@@ -4032,6 +4177,8 @@ class Image {
      * A convenience function over vips_image_set().
      * 
      * See also: vips_image_get_image(), vips_image_set().
+     * @param name metadata name
+     * @param array array of doubles
      */
     set_array_double(name: string, array: number[] | null): void
     /**
@@ -4039,6 +4186,8 @@ class Image {
      * A convenience function over vips_image_set().
      * 
      * See also: vips_image_get_image(), vips_image_set().
+     * @param name metadata name
+     * @param array array of ints
      */
     set_array_int(name: string, array: number[] | null): void
     /**
@@ -4047,6 +4196,9 @@ class Image {
      * function over vips_image_set() using a vips_blob.
      * 
      * See also: vips_image_get_blob(), vips_image_set().
+     * @param name metadata name
+     * @param free_fn free function for `data`
+     * @param data pointer to area of memory
      */
     set_blob(name: string, free_fn: CallbackFn, data: Uint8Array): void
     /**
@@ -4055,6 +4207,8 @@ class Image {
      * vips_image_set_blob().
      * 
      * See also: vips_image_get_blob(), vips_image_set().
+     * @param name metadata name
+     * @param data pointer to area of memory
      */
     set_blob_copy(name: string, data: Uint8Array): void
     /**
@@ -4065,6 +4219,7 @@ class Image {
      * This function is clearly extremely dangerous, use with great caution.
      * 
      * See also: vips_image_new_temp_file().
+     * @param delete_on_close format of file
      */
     set_delete_on_close(delete_on_close: boolean): void
     /**
@@ -4073,6 +4228,8 @@ class Image {
      * function over vips_image_set().
      * 
      * See also: vips_image_get_double(), vips_image_set()
+     * @param name metadata name
+     * @param d metadata value
      */
     set_double(name: string, d: number): void
     /**
@@ -4080,6 +4237,8 @@ class Image {
      * A convenience function over vips_image_set().
      * 
      * See also: vips_image_get_image(), vips_image_set().
+     * @param name metadata name
+     * @param im metadata value
      */
     set_image(name: string, im: Image): void
     /**
@@ -4088,6 +4247,8 @@ class Image {
      * function over vips_image_set().
      * 
      * See also: vips_image_get_int(), vips_image_set()
+     * @param name metadata name
+     * @param i metadata value
      */
     set_int(name: string, i: number): void
     /**
@@ -4095,6 +4256,7 @@ class Image {
      * threads.
      * 
      * See also: vips_image_iskilled().
+     * @param kill the kill state
      */
     set_kill(kill: boolean): void
     /**
@@ -4102,6 +4264,7 @@ class Image {
      * #VipsImage::eval and #VipsImage::posteval
      * signals. Progress is signalled on the most-downstream image for which
      * vips_image_set_progress() was called.
+     * @param progress turn progress reporting on or off
      */
     set_progress(progress: boolean): void
     /**
@@ -4110,6 +4273,8 @@ class Image {
      * function over vips_image_set() using #VIPS_TYPE_REF_STRING.
      * 
      * See also: vips_image_get_double(), vips_image_set().
+     * @param name metadata name
+     * @param str metadata value
      */
     set_string(name: string, str: string): void
     /**
@@ -4140,6 +4305,8 @@ class Image {
      * `linebuffer` must be VIPS_IMAGE_SIZEOF_LINE() bytes long.
      * 
      * See also: vips_image_generate().
+     * @param ypos vertical position of scan-line to write
+     * @param linebuffer scanline of pixels
      */
     write_line(ypos: number, linebuffer: Pel): number
     /**
@@ -4162,16 +4329,19 @@ class Image {
     /* Methods of Vips-8.0.Vips.Object */
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
+     * @param name arg to fetch
      */
     argument_isset(name: string): boolean
     argument_needsstring(name: string): boolean
     build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_flags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_priority(name: string): number
     get_argument_to_string(name: string, arg: string): number
@@ -4199,6 +4369,7 @@ class Image {
      * 
      * See also: vips_object_set(), vips_object_build(),
      * vips_cache_operation_buildp().
+     * @param string arguments as a string
      */
     set_from_string(string: string): number
     set_required(value: string): number
@@ -4249,6 +4420,10 @@ class Image {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4259,6 +4434,12 @@ class Image {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4282,6 +4463,7 @@ class Image {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4301,11 +4483,14 @@ class Image {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4313,6 +4498,8 @@ class Image {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4330,6 +4517,7 @@ class Image {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4375,6 +4563,7 @@ class Image {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4418,15 +4607,20 @@ class Image {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4467,6 +4661,7 @@ class Image {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4501,6 +4696,7 @@ class Image {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Vips-8.0.Vips.Image */
@@ -4535,6 +4731,7 @@ class Image {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4549,6 +4746,7 @@ class Image {
      * 
      * Use vips_image_set_progress() to turn on progress reporting for an
      * image.
+     * @param progress #VipsProgress for this image
      */
     connect(sigName: "eval", callback: (($obj: Image, progress: Progress) => void)): number
     connect_after(sigName: "eval", callback: (($obj: Image, progress: Progress) => void)): number
@@ -4575,6 +4773,7 @@ class Image {
      * 
      * Use vips_image_set_progress() to turn on progress reporting for an
      * image.
+     * @param progress #VipsProgress for this image
      */
     connect(sigName: "posteval", callback: (($obj: Image, progress: Progress) => void)): number
     connect_after(sigName: "posteval", callback: (($obj: Image, progress: Progress) => void)): number
@@ -4585,6 +4784,7 @@ class Image {
      * 
      * Use vips_image_set_progress() to turn on progress reporting for an
      * image.
+     * @param progress #VipsProgress for this image
      */
     connect(sigName: "preeval", callback: (($obj: Image, progress: Progress) => void)): number
     connect_after(sigName: "preeval", callback: (($obj: Image, progress: Progress) => void)): number
@@ -4656,6 +4856,7 @@ class Image {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
@@ -4710,18 +4911,18 @@ interface Interpolate_ConstructProps extends Object_ConstructProps {
 }
 class Interpolate {
     /* Fields of Vips-8.0.Vips.Object */
-    readonly parent_instance: GObject.Object
-    readonly constructed: boolean
-    readonly static_object: boolean
-    readonly argument_table: ArgumentTable
-    readonly nickname: string
-    readonly description: string
-    readonly preclose: boolean
-    readonly close: boolean
-    readonly postclose: boolean
-    readonly local_memory: number
+    parent_instance: GObject.Object
+    constructed: boolean
+    static_object: boolean
+    argument_table: ArgumentTable
+    nickname: string
+    description: string
+    preclose: boolean
+    close: boolean
+    postclose: boolean
+    local_memory: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Vips-8.0.Vips.Interpolate */
     /**
      * Look up an interpolators desired window offset.
@@ -4734,16 +4935,19 @@ class Interpolate {
     /* Methods of Vips-8.0.Vips.Object */
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
+     * @param name arg to fetch
      */
     argument_isset(name: string): boolean
     argument_needsstring(name: string): boolean
     build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_flags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_priority(name: string): number
     get_argument_to_string(name: string, arg: string): number
@@ -4771,6 +4975,7 @@ class Interpolate {
      * 
      * See also: vips_object_set(), vips_object_build(),
      * vips_cache_operation_buildp().
+     * @param string arguments as a string
      */
     set_from_string(string: string): number
     set_required(value: string): number
@@ -4821,6 +5026,10 @@ class Interpolate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4831,6 +5040,12 @@ class Interpolate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4854,6 +5069,7 @@ class Interpolate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4873,11 +5089,14 @@ class Interpolate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4885,6 +5104,8 @@ class Interpolate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4902,6 +5123,7 @@ class Interpolate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4947,6 +5169,7 @@ class Interpolate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4990,15 +5213,20 @@ class Interpolate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5039,6 +5267,7 @@ class Interpolate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5073,6 +5302,7 @@ class Interpolate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Vips-8.0.Vips.Interpolate */
@@ -5110,6 +5340,7 @@ class Interpolate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5171,6 +5402,7 @@ class Interpolate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Interpolate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Interpolate, pspec: GObject.ParamSpec) => void)): number
@@ -5206,20 +5438,23 @@ class Object {
     description: string
     nickname: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Vips-8.0.Vips.Object */
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
+     * @param name arg to fetch
      */
     argument_isset(name: string): boolean
     argument_needsstring(name: string): boolean
     build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_flags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_priority(name: string): number
     get_argument_to_string(name: string, arg: string): number
@@ -5248,6 +5483,7 @@ class Object {
      * 
      * See also: vips_object_set(), vips_object_build(),
      * vips_cache_operation_buildp().
+     * @param string arguments as a string
      */
     set_from_string(string: string): number
     set_required(value: string): number
@@ -5298,6 +5534,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5308,6 +5548,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5331,6 +5577,7 @@ class Object {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5350,11 +5597,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5362,6 +5612,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5379,6 +5631,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5424,6 +5677,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5467,15 +5721,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5516,6 +5775,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5550,6 +5810,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Vips-8.0.Vips.Object */
@@ -5577,6 +5838,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5638,6 +5900,7 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
@@ -5667,18 +5930,18 @@ interface Operation_ConstructProps extends Object_ConstructProps {
 }
 class Operation {
     /* Fields of Vips-8.0.Vips.Object */
-    readonly parent_instance: GObject.Object
-    readonly constructed: boolean
-    readonly static_object: boolean
-    readonly argument_table: ArgumentTable
-    readonly nickname: string
-    readonly description: string
-    readonly preclose: boolean
-    readonly close: boolean
-    readonly postclose: boolean
-    readonly local_memory: number
+    parent_instance: GObject.Object
+    constructed: boolean
+    static_object: boolean
+    argument_table: ArgumentTable
+    nickname: string
+    description: string
+    preclose: boolean
+    close: boolean
+    postclose: boolean
+    local_memory: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Vips-8.0.Vips.Operation */
     /**
      * Returns the set of flags for this operation.
@@ -5688,16 +5951,19 @@ class Operation {
     /* Methods of Vips-8.0.Vips.Object */
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
+     * @param name arg to fetch
      */
     argument_isset(name: string): boolean
     argument_needsstring(name: string): boolean
     build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_flags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_priority(name: string): number
     get_argument_to_string(name: string, arg: string): number
@@ -5725,6 +5991,7 @@ class Operation {
      * 
      * See also: vips_object_set(), vips_object_build(),
      * vips_cache_operation_buildp().
+     * @param string arguments as a string
      */
     set_from_string(string: string): number
     set_required(value: string): number
@@ -5775,6 +6042,10 @@ class Operation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5785,6 +6056,12 @@ class Operation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5808,6 +6085,7 @@ class Operation {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5827,11 +6105,14 @@ class Operation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5839,6 +6120,8 @@ class Operation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5856,6 +6139,7 @@ class Operation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5901,6 +6185,7 @@ class Operation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5944,15 +6229,20 @@ class Operation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5993,6 +6283,7 @@ class Operation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6027,6 +6318,7 @@ class Operation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Vips-8.0.Vips.Operation */
@@ -6060,6 +6352,7 @@ class Operation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6125,6 +6418,7 @@ class Operation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Operation, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Operation, pspec: GObject.ParamSpec) => void)): number
@@ -6144,18 +6438,18 @@ interface Region_ConstructProps extends Object_ConstructProps {
 }
 class Region {
     /* Fields of Vips-8.0.Vips.Object */
-    readonly parent_instance: GObject.Object
-    readonly constructed: boolean
-    readonly static_object: boolean
-    readonly argument_table: ArgumentTable
-    readonly nickname: string
-    readonly description: string
-    readonly preclose: boolean
-    readonly close: boolean
-    readonly postclose: boolean
-    readonly local_memory: number
+    parent_instance: GObject.Object
+    constructed: boolean
+    static_object: boolean
+    argument_table: ArgumentTable
+    nickname: string
+    description: string
+    preclose: boolean
+    close: boolean
+    postclose: boolean
+    local_memory: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Vips-8.0.Vips.Region */
     /**
      * Paints 0 into the valid part of `reg`.
@@ -6166,6 +6460,7 @@ class Region {
     /**
      * The region is transformed so that at least `r` pixels are available as a
      * memory buffer that can be written to.
+     * @param r #VipsRect of pixels you need to be able to address
      */
     buffer(r: Rect): number
     /**
@@ -6174,6 +6469,10 @@ class Region {
      * which are the same size.
      * 
      * See also: vips_region_paint().
+     * @param dest destination region
+     * @param r #VipsRect of pixels you need to copy
+     * @param x postion of `r` in `dest`
+     * @param y postion of `r` in `dest`
      */
     copy(dest: Region, r: Rect, x: number, y: number): /* dest */ Region
     /**
@@ -6185,6 +6484,7 @@ class Region {
      * 		*VIPS_REGION_ADDR( reg2, x, y ) for all x, y, reg1, reg2.
      * ```
      * 
+     * @param reg2 region to test
      */
     equalsregion(reg2: Region): number
     /**
@@ -6193,6 +6493,11 @@ class Region {
      * 
      * This is equivalent to vips_region_prepare(), followed by a memcpy. It is
      * convenient for language bindings.
+     * @param left area of pixels to fetch
+     * @param top area of pixels to fetch
+     * @param width area of pixels to fetch
+     * @param height area of pixels to fetch
+     * @param len 
      */
     fetch(left: number, top: number, width: number, height: number, len: number): Pel
     height(): number
@@ -6200,6 +6505,7 @@ class Region {
      * The region is transformed so that at least `r` pixels are available to be
      * read from the image. The image needs to be a memory buffer or represent a
      * file on disc that has been mapped or can be mapped.
+     * @param r #VipsRect of pixels you need to be able to address
      */
     image(r: Rect): number
     /**
@@ -6226,6 +6532,8 @@ class Region {
      * `reg->`valid.
      * 
      * See also: vips_region_black().
+     * @param r area to paint
+     * @param value value to paint
      */
     paint(r: Rect, value: number): void
     /**
@@ -6236,6 +6544,8 @@ class Region {
      * the binary value to write into the pixels.
      * 
      * See also: vips_region_paint().
+     * @param r area to paint
+     * @param ink value to paint
      */
     paint_pel(r: Rect, ink: Pel): void
     /**
@@ -6243,6 +6553,8 @@ class Region {
      * pixels are addressed, not reg->data, the pixels which are addressed. Clip
      * against the size of the image. Do not allow negative positions, or
      * positions outside the image.
+     * @param x position to move to
+     * @param y position to move to
      */
     position(x: number, y: number): number
     /**
@@ -6259,6 +6571,7 @@ class Region {
      * 
      * See also: vips_sink_screen(),
      * vips_region_prepare_to().
+     * @param r #VipsRect of pixels you need to be able to address
      */
     prepare(r: Rect): number
     /**
@@ -6274,6 +6587,10 @@ class Region {
      * pipelines.
      * 
      * See also: vips_region_prepare(), vips_sink_disc().
+     * @param dest region to write to
+     * @param r #VipsRect of pixels you need to be able to address
+     * @param x postion of `r` in `dest`
+     * @param y postion of `r` in `dest`
      */
     prepare_to(dest: Region, r: Rect, x: number, y: number): number
     /**
@@ -6289,6 +6606,10 @@ class Region {
      * If the region we attach to is moved or destroyed, we can be left with
      * dangling pointers! If the region we attach to is on another image, the
      * two images must have the same sizeof( pel ).
+     * @param dest region to connect to
+     * @param r #VipsRect of pixels you need to be able to address
+     * @param x postion of `r` in `dest`
+     * @param y postion of `r` in `dest`
      */
     region(dest: Region, r: Rect, x: number, y: number): number
     /**
@@ -6299,22 +6620,28 @@ class Region {
      * `method` selects the method used to do the 2x2 shrink.
      * 
      * See also: vips_region_copy().
+     * @param to destination region
+     * @param target #VipsRect of pixels you need to copy
+     * @param method method to use when generating target pixels
      */
     shrink_method(to: Region, target: Rect, method: RegionShrink): [ /* returnType */ number, /* to */ Region ]
     width(): number
     /* Methods of Vips-8.0.Vips.Object */
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
+     * @param name arg to fetch
      */
     argument_isset(name: string): boolean
     argument_needsstring(name: string): boolean
     build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_flags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
+     * @param name arg to fetch
      */
     get_argument_priority(name: string): number
     get_argument_to_string(name: string, arg: string): number
@@ -6342,6 +6669,7 @@ class Region {
      * 
      * See also: vips_object_set(), vips_object_build(),
      * vips_cache_operation_buildp().
+     * @param string arguments as a string
      */
     set_from_string(string: string): number
     set_required(value: string): number
@@ -6392,6 +6720,10 @@ class Region {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6402,6 +6734,12 @@ class Region {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6425,6 +6763,7 @@ class Region {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6444,11 +6783,14 @@ class Region {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6456,6 +6798,8 @@ class Region {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6473,6 +6817,7 @@ class Region {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6518,6 +6863,7 @@ class Region {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6561,15 +6907,20 @@ class Region {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6610,6 +6961,7 @@ class Region {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6644,6 +6996,7 @@ class Region {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Vips-8.0.Vips.Object */
@@ -6671,6 +7024,7 @@ class Region {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6732,6 +7086,7 @@ class Region {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Region, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Region, pspec: GObject.ParamSpec) => void)): number
@@ -6749,9 +7104,9 @@ class Region {
 }
 class Area {
     /* Fields of Vips-8.0.Vips.Area */
-    readonly data: object
-    readonly length: number
-    readonly n: number
+    data: object
+    length: number
+    n: number
     /* Methods of Vips-8.0.Vips.Area */
     copy(): Area
     /**
@@ -6772,33 +7127,33 @@ class Area {
 }
 class Argument {
     /* Fields of Vips-8.0.Vips.Argument */
-    readonly pspec: GObject.ParamSpec
+    pspec: GObject.ParamSpec
     static name: string
 }
 class ArgumentClass {
     /* Fields of Vips-8.0.Vips.ArgumentClass */
-    readonly parent: Argument
-    readonly object_class: ObjectClass
-    readonly flags: ArgumentFlags
-    readonly priority: number
-    readonly offset: number
+    parent: Argument
+    object_class: ObjectClass
+    flags: ArgumentFlags
+    priority: number
+    offset: number
     /* Methods of Vips-8.0.Vips.ArgumentClass */
     needsstring(): boolean
     static name: string
 }
 class ArgumentInstance {
     /* Fields of Vips-8.0.Vips.ArgumentInstance */
-    readonly parent: Argument
-    readonly argument_class: ArgumentClass
-    readonly object: Object
-    readonly assigned: boolean
-    readonly close_id: number
-    readonly invalidate_id: number
+    parent: Argument
+    argument_class: ArgumentClass
+    object: Object
+    assigned: boolean
+    close_id: number
+    invalidate_id: number
     static name: string
 }
 class ArrayDouble {
     /* Fields of Vips-8.0.Vips.ArrayDouble */
-    readonly area: Area
+    area: Area
     /* Methods of Vips-8.0.Vips.ArrayDouble */
     /**
      * Fetch a double array from a #VipsArrayDouble. Useful for language bindings.
@@ -6812,7 +7167,7 @@ class ArrayDouble {
 }
 class ArrayImage {
     /* Fields of Vips-8.0.Vips.ArrayImage */
-    readonly area: Area
+    area: Area
     /* Methods of Vips-8.0.Vips.ArrayImage */
     /**
      * Make a new #VipsArrayImage, one larger than `array,` with `image` appended
@@ -6821,6 +7176,7 @@ class ArrayImage {
      * which can't handle object array arguments.
      * 
      * See also: vips_array_image_empty().
+     * @param image add this
      */
     append(image: Image): ArrayImage
     /**
@@ -6837,7 +7193,7 @@ class ArrayImage {
 }
 class ArrayInt {
     /* Fields of Vips-8.0.Vips.ArrayInt */
-    readonly area: Area
+    area: Area
     /* Methods of Vips-8.0.Vips.ArrayInt */
     /**
      * Fetch an int array from a #VipsArrayInt. Useful for language bindings.
@@ -6851,7 +7207,7 @@ class ArrayInt {
 }
 class Blob {
     /* Fields of Vips-8.0.Vips.Blob */
-    readonly area: Area
+    area: Area
     /* Methods of Vips-8.0.Vips.Blob */
     /**
      * Get the data from a #VipsBlob.
@@ -6869,93 +7225,94 @@ class Blob {
      * which struggle with callbacks.
      * 
      * See also: vips_blob_new().
+     * @param data data to store
      */
     static copy(data: Uint8Array): Blob
 }
 abstract class ForeignClass {
     /* Fields of Vips-8.0.Vips.ForeignClass */
-    readonly parent_class: OperationClass
-    readonly priority: number
-    readonly suffs: string
+    parent_class: OperationClass
+    priority: number
+    suffs: string
     static name: string
 }
 abstract class ForeignLoadClass {
     /* Fields of Vips-8.0.Vips.ForeignLoadClass */
-    readonly parent_class: ForeignClass
-    readonly is_a: (filename: string) => boolean
-    readonly is_a_buffer: (data: object, size: number) => boolean
-    readonly is_a_source: (source: Source) => boolean
-    readonly get_flags_filename: (filename: string) => ForeignFlags
-    readonly get_flags: (load: ForeignLoad) => ForeignFlags
-    readonly header: (load: ForeignLoad) => number
-    readonly load: (load: ForeignLoad) => number
+    parent_class: ForeignClass
+    is_a: (filename: string) => boolean
+    is_a_buffer: (data: object, size: number) => boolean
+    is_a_source: (source: Source) => boolean
+    get_flags_filename: (filename: string) => ForeignFlags
+    get_flags: (load: ForeignLoad) => ForeignFlags
+    header: (load: ForeignLoad) => number
+    load: (load: ForeignLoad) => number
     static name: string
 }
 abstract class ForeignSaveClass {
     /* Fields of Vips-8.0.Vips.ForeignSaveClass */
-    readonly parent_class: ForeignClass
-    readonly saveable: Saveable
-    readonly format_table: BandFormat
-    readonly coding: boolean[]
+    parent_class: ForeignClass
+    saveable: Saveable
+    format_table: BandFormat
+    coding: boolean[]
     static name: string
 }
 abstract class ImageClass {
     /* Fields of Vips-8.0.Vips.ImageClass */
-    readonly parent_class: ObjectClass
-    readonly preeval: (image: Image, progress: Progress, data?: object | null) => void
-    readonly eval_: (image: Image, progress: Progress, data?: object | null) => void
-    readonly posteval: (image: Image, progress: Progress, data?: object | null) => void
-    readonly written: (image: Image, result: number, data?: object | null) => void
-    readonly invalidate: (image: Image, data?: object | null) => void
-    readonly minimise: (image: Image, data?: object | null) => void
+    parent_class: ObjectClass
+    preeval: (image: Image, progress: Progress, data?: object | null) => void
+    eval_: (image: Image, progress: Progress, data?: object | null) => void
+    posteval: (image: Image, progress: Progress, data?: object | null) => void
+    written: (image: Image, result: number, data?: object | null) => void
+    invalidate: (image: Image, data?: object | null) => void
+    minimise: (image: Image, data?: object | null) => void
     static name: string
 }
 abstract class InterpolateClass {
     /* Fields of Vips-8.0.Vips.InterpolateClass */
-    readonly parent_class: ObjectClass
+    parent_class: ObjectClass
     /**
      * the interpolation method
      */
-    readonly interpolate: InterpolateMethod
-    readonly get_window_size: (interpolate: Interpolate) => number
+    interpolate: InterpolateMethod
+    get_window_size: (interpolate: Interpolate) => number
     /**
      * or just set this for a constant window size
      */
-    readonly window_size: number
-    readonly get_window_offset: (interpolate: Interpolate) => number
+    window_size: number
+    get_window_offset: (interpolate: Interpolate) => number
     /**
      * or just set this for a constant window offset
      */
-    readonly window_offset: number
+    window_offset: number
     static name: string
 }
 abstract class ObjectClass {
     /* Fields of Vips-8.0.Vips.ObjectClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly build: (object: Object) => number
-    readonly postbuild: (object: Object, data?: object | null) => number
-    readonly rewind: (object: Object) => void
-    readonly preclose: (object: Object) => void
-    readonly close: (object: Object) => void
-    readonly postclose: (object: Object) => void
-    readonly output_needs_arg: boolean
-    readonly output_to_arg: (object: Object, string: string) => number
-    readonly nickname: string
-    readonly description: string
-    readonly argument_table: ArgumentTable
-    readonly argument_table_traverse: object[]
-    readonly argument_table_traverse_gtype: GObject.Type
-    readonly deprecated: boolean
+    parent_class: GObject.ObjectClass
+    build: (object: Object) => number
+    postbuild: (object: Object, data?: object | null) => number
+    rewind: (object: Object) => void
+    preclose: (object: Object) => void
+    close: (object: Object) => void
+    postclose: (object: Object) => void
+    output_needs_arg: boolean
+    output_to_arg: (object: Object, string: string) => number
+    nickname: string
+    description: string
+    argument_table: ArgumentTable
+    argument_table_traverse: object[]
+    argument_table_traverse_gtype: GObject.Type
+    deprecated: boolean
     /* Methods of Vips-8.0.Vips.ObjectClass */
     static install_argument(cls: Object | Function | GObject.Type, pspec: GObject.ParamSpec, flags: ArgumentFlags, priority: number, offset: number): void
     static name: string
 }
 abstract class OperationClass {
     /* Fields of Vips-8.0.Vips.OperationClass */
-    readonly parent_class: ObjectClass
-    readonly get_flags: (operation: Operation) => OperationFlags
-    readonly flags: OperationFlags
-    readonly invalidate: (operation: Operation) => void
+    parent_class: ObjectClass
+    get_flags: (operation: Operation) => OperationFlags
+    flags: OperationFlags
+    invalidate: (operation: Operation) => void
     static name: string
 }
 class Progress {
@@ -6963,33 +7320,34 @@ class Progress {
     /**
      * Time we have been running
      */
-    readonly run: number
+    run: number
     /**
      * Estimated seconds of computation left
      */
-    readonly eta: number
+    eta: number
     /**
      * Number of pels we expect to calculate
      */
-    readonly tpels: number
+    tpels: number
     /**
      * Number of pels calculated so far
      */
-    readonly npels: number
+    npels: number
     /**
      * Percent complete
      */
-    readonly percent: number
+    percent: number
     /**
      * Start time
      */
-    readonly start: GLib.Timer
+    start: GLib.Timer
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * If set, vips will print messages about the progress of computation to
      * stdout. This can also be enabled with the --vips-progress option, or by
      * setting the environment variable VIPS_PROGRESS.
+     * @param progress %TRUE to enable progress messages
      */
     static set(progress: boolean): void
 }
@@ -6998,34 +7356,39 @@ class Rect {
     /**
      * left edge of rectangle
      */
-    readonly left: number
+    left: number
     /**
      * top edge of rectangle
      */
-    readonly top: number
+    top: number
     /**
      * width of rectangle
      */
-    readonly width: number
+    width: number
     /**
      * height of rectangle
      */
-    readonly height: number
+    height: number
     /* Methods of Vips-8.0.Vips.Rect */
     /**
      * Is `r1` equal to `r2`?
+     * @param r2 second rectangle
      */
     equalsrect(r2: Rect): boolean
     /**
      * Does `r` contain point (`x,` `y)`?
+     * @param x position to test for
+     * @param y position to test for
      */
     includespoint(x: number, y: number): boolean
     /**
      * Is `r2` a subset of `r1`?
+     * @param r2 inner rectangle
      */
     includesrect(r2: Rect): boolean
     /**
      * Fill `out` with the intersection of `r1` and `r2`. `out` can equal `r1` or `r2`.
+     * @param r2 input rectangle 2
      */
     intersectrect(r2: Rect): /* out */ Rect
     /**
@@ -7034,6 +7397,7 @@ class Rect {
     isempty(): boolean
     /**
      * Enlarge `r` by `n`. +1 means out one pixel.
+     * @param n enlarge by
      */
     marginadjust(n: number): void
     /**
@@ -7043,17 +7407,19 @@ class Rect {
     normalise(): void
     /**
      * Do `r1` and `r2` have a non-empty intersection?
+     * @param r2 second rectangle
      */
     overlapsrect(r2: Rect): boolean
     /**
      * Fill `out` with the bounding box of `r1` and `r2`. `out` can equal `r1` or `r2`.
+     * @param r2 input rectangle 2
      */
     unionrect(r2: Rect): /* out */ Rect
     static name: string
 }
 class RefString {
     /* Fields of Vips-8.0.Vips.RefString */
-    readonly area: Area
+    area: Area
     /* Methods of Vips-8.0.Vips.RefString */
     /**
      * Get a pointer to the private string inside a refstr. Handy for language
@@ -7070,7 +7436,7 @@ class RefString {
 }
 abstract class RegionClass {
     /* Fields of Vips-8.0.Vips.RegionClass */
-    readonly parent_class: ObjectClass
+    parent_class: ObjectClass
     static name: string
 }
 class Source {
@@ -7081,7 +7447,7 @@ class Target {
 }
 class Thing {
     /* Fields of Vips-8.0.Vips.Thing */
-    readonly i: number
+    i: number
     static name: string
     static new(i: number): Thing
     constructor(i: number)

@@ -235,8 +235,21 @@ interface Class_ConstructProps extends GObject.Object_ConstructProps {
     parent?: Class
 }
 class Class {
+    /* Properties of JavaScriptCore-5.0.JavaScriptCore.Class */
+    /**
+     * The #JSCContext in which the class was registered.
+     */
+    readonly context: Context
+    /**
+     * The name of the class.
+     */
+    readonly name: string
+    /**
+     * The parent class or %NULL in case of final classes.
+     */
+    readonly parent: Class
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of JavaScriptCore-5.0.JavaScriptCore.Class */
     /**
      * Add a constructor to `jsc_class`. If `name` is %NULL, the class name will be used. When <function>new</function>
@@ -249,6 +262,9 @@ class Class {
      * 
      * Note that the value returned by `callback` is adopted by `jsc_class,` and the #GDestroyNotify passed to
      * jsc_context_register_class() is responsible for disposing of it.
+     * @param name the constructor name or %NULL
+     * @param callback a #GCallback to be called to create an instance of `jsc_class`
+     * @param returnType the #GType of the constructor return value
      */
     addConstructorVariadic(name: string | null, callback: GObject.Callback, returnType: GObject.Type): Value
     /**
@@ -262,6 +278,10 @@ class Class {
      * 
      * Note that the value returned by `callback` is adopted by `jsc_class,` and the #GDestroyNotify passed to
      * jsc_context_register_class() is responsible for disposing of it.
+     * @param name the constructor name or %NULL
+     * @param callback a #GCallback to be called to create an instance of `jsc_class`
+     * @param returnType the #GType of the constructor return value
+     * @param parameterTypes a list of #GType<!-- -->s, one for each parameter, or %NULL
      */
     addConstructor(name: string | null, callback: GObject.Callback, returnType: GObject.Type, parameterTypes?: GObject.Type[] | null): Value
     /**
@@ -274,6 +294,9 @@ class Class {
      * %G_TYPE_POINTER instead of the actual boxed #GType to ensure that the instance owned by #JSCClass is used.
      * If you really want to return a new copy of the boxed type, use #JSC_TYPE_VALUE and return a #JSCValue created
      * with jsc_value_new_object() that receives the copy as the instance parameter.
+     * @param name the method name
+     * @param callback a #GCallback to be called to invoke method `name` of `jsc_class`
+     * @param returnType the #GType of the method return value, or %G_TYPE_NONE if the method is void.
      */
     addMethodVariadic(name: string, callback: GObject.Callback, returnType: GObject.Type): void
     /**
@@ -286,6 +309,10 @@ class Class {
      * %G_TYPE_POINTER instead of the actual boxed #GType to ensure that the instance owned by #JSCClass is used.
      * If you really want to return a new copy of the boxed type, use #JSC_TYPE_VALUE and return a #JSCValue created
      * with jsc_value_new_object() that receives the copy as the instance parameter.
+     * @param name the method name
+     * @param callback a #GCallback to be called to invoke method `name` of `jsc_class`
+     * @param returnType the #GType of the method return value, or %G_TYPE_NONE if the method is void.
+     * @param parameterTypes a list of #GType<!-- -->s, one for each parameter, or %NULL
      */
     addMethod(name: string, callback: GObject.Callback, returnType: GObject.Type, parameterTypes?: GObject.Type[] | null): void
     /**
@@ -299,6 +326,10 @@ class Class {
      * %G_TYPE_POINTER instead of the actual boxed #GType to ensure that the instance owned by #JSCClass is used.
      * If you really want to return a new copy of the boxed type, use #JSC_TYPE_VALUE and return a #JSCValue created
      * with jsc_value_new_object() that receives the copy as the instance parameter.
+     * @param name the property name
+     * @param propertyType the #GType of the property value
+     * @param getter a #GCallback to be called to get the property value
+     * @param setter a #GCallback to be called to set the property value
      */
     addProperty(name: string, propertyType: GObject.Type, getter?: GObject.Callback | null, setter?: GObject.Callback | null): void
     /**
@@ -344,6 +375,10 @@ class Class {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -354,6 +389,12 @@ class Class {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -377,6 +418,7 @@ class Class {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -396,11 +438,14 @@ class Class {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -408,6 +453,8 @@ class Class {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -425,6 +472,7 @@ class Class {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -470,6 +518,7 @@ class Class {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -513,15 +562,20 @@ class Class {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -562,6 +616,7 @@ class Class {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -596,6 +651,7 @@ class Class {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -627,12 +683,28 @@ class Class {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::parent", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -653,14 +725,24 @@ interface Context_ConstructProps extends GObject.Object_ConstructProps {
     virtualMachine?: VirtualMachine
 }
 class Context {
+    /* Properties of JavaScriptCore-5.0.JavaScriptCore.Context */
+    /**
+     * The #JSCVirtualMachine in which the context was created.
+     */
+    readonly virtualMachine: VirtualMachine
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of JavaScriptCore-5.0.JavaScriptCore.Context */
     /**
      * Check the given `code` in `context` for syntax errors. The `line_number` is the starting line number in `uri;`
      * the value is one-based so the first line is 1. `uri` and `line_number` are only used to fill the `exception`.
      * In case of errors `exception` will be set to a new #JSCException with the details. You can pass %NULL to
      * `exception` to ignore the error details.
+     * @param code a JavaScript script to check
+     * @param length length of `code,` or -1 if `code` is a nul-terminated string
+     * @param mode a #JSCCheckSyntaxMode
+     * @param uri the source URI
+     * @param lineNumber the starting line number
      */
     checkSyntax(code: string, length: number, mode: CheckSyntaxMode, uri: string, lineNumber: number): [ /* returnType */ CheckSyntaxResult, /* exception */ Exception | null ]
     /**
@@ -669,6 +751,8 @@ class Context {
     clearException(): void
     /**
      * Evaluate `code` in `context`.
+     * @param code a JavaScript script to evaluate
+     * @param length length of `code,` or -1 if `code` is a nul-terminated string
      */
     evaluate(code: string, length: number): Value
     /**
@@ -677,12 +761,22 @@ class Context {
      * Similar to how jsc_value_new_object() works, if `object_instance` is not %NULL `object_class` must be provided too.
      * The `line_number` is the starting line number in `uri;` the value is one-based so the first line is 1.
      * `uri` and `line_number` will be shown in exceptions and they don't affect the behavior of the script.
+     * @param code a JavaScript script to evaluate
+     * @param length length of `code,` or -1 if `code` is a nul-terminated string
+     * @param objectInstance an object instance
+     * @param objectClass a #JSCClass or %NULL to use the default
+     * @param uri the source URI
+     * @param lineNumber the starting line number
      */
     evaluateInObject(code: string, length: number, objectInstance: object | null, objectClass: Class | null, uri: string, lineNumber: number): [ /* returnType */ Value, /* object */ Value ]
     /**
      * Evaluate `code` in `context` using `uri` as the source URI. The `line_number` is the starting line number
      * in `uri;` the value is one-based so the first line is 1. `uri` and `line_number` will be shown in exceptions and
      * they don't affect the behavior of the script.
+     * @param code a JavaScript script to evaluate
+     * @param length length of `code,` or -1 if `code` is a nul-terminated string
+     * @param uri the source URI
+     * @param lineNumber the starting line number
      */
     evaluateWithSourceUri(code: string, length: number, uri: string, lineNumber: number): Value
     /**
@@ -695,6 +789,7 @@ class Context {
     getGlobalObject(): Value
     /**
      * Get a property of `context` global object with `name`.
+     * @param name the value name
      */
     getValue(name: string): Value
     /**
@@ -715,6 +810,7 @@ class Context {
      * The last exception handler pushed is the only one used by the #JSCContext, use
      * jsc_context_pop_exception_handler() to remove it and set the previous one. When `handler`
      * is removed from the context, `destroy_notify` i called with `user_data` as parameter.
+     * @param handler a #JSCExceptionHandler
      */
     pushExceptionHandler(handler: ExceptionHandler): void
     /**
@@ -724,24 +820,34 @@ class Context {
      * the class, for example, to handle external properties not added to the prototype.
      * When an instance of the #JSCClass is cleared in the context, `destroy_notify` is called with
      * the instance as parameter.
+     * @param name the class name
+     * @param parentClass a #JSCClass or %NULL
+     * @param vtable an optional #JSCClassVTable or %NULL
+     * @param destroyNotify a destroy notifier for class instances
      */
     registerClass(name: string, parentClass?: Class | null, vtable?: ClassVTable | null, destroyNotify?: GLib.DestroyNotify | null): Class
     /**
      * Set a property of `context` global object with `name` and `value`.
+     * @param name the value name
+     * @param value a #JSCValue
      */
     setValue(name: string, value: Value): void
     /**
      * Throw an exception to `context` using the given error message. The created #JSCException
      * can be retrieved with jsc_context_get_exception().
+     * @param errorMessage an error message
      */
     throw(errorMessage: string): void
     /**
      * Throw `exception` to `context`.
+     * @param exception a #JSCException
      */
     throwException(exception: Exception): void
     /**
      * Throw an exception to `context` using the given error name and message. The created #JSCException
      * can be retrieved with jsc_context_get_exception().
+     * @param errorName the error name
+     * @param errorMessage an error message
      */
     throwWithName(errorName: string, errorMessage: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -779,6 +885,10 @@ class Context {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -789,6 +899,12 @@ class Context {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -812,6 +928,7 @@ class Context {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -831,11 +948,14 @@ class Context {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -843,6 +963,8 @@ class Context {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -860,6 +982,7 @@ class Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -905,6 +1028,7 @@ class Context {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -948,15 +1072,20 @@ class Context {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -997,6 +1126,7 @@ class Context {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1031,6 +1161,7 @@ class Context {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1062,12 +1193,18 @@ class Context {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::virtual-machine", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::virtual-machine", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::virtual-machine", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::virtual-machine", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::virtual-machine", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1092,7 +1229,7 @@ interface Exception_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Exception {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of JavaScriptCore-5.0.JavaScriptCore.Exception */
     /**
      * Get a string with the exception backtrace.
@@ -1162,6 +1299,10 @@ class Exception {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1172,6 +1313,12 @@ class Exception {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1195,6 +1342,7 @@ class Exception {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1214,11 +1362,14 @@ class Exception {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1226,6 +1377,8 @@ class Exception {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1243,6 +1396,7 @@ class Exception {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1288,6 +1442,7 @@ class Exception {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1331,15 +1486,20 @@ class Exception {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1380,6 +1540,7 @@ class Exception {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1414,6 +1575,7 @@ class Exception {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1445,6 +1607,7 @@ class Exception {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1474,12 +1637,18 @@ interface Value_ConstructProps extends GObject.Object_ConstructProps {
     context?: Context
 }
 class Value {
+    /* Properties of JavaScriptCore-5.0.JavaScriptCore.Value */
+    /**
+     * The #JSCContext in which the value was created.
+     */
+    readonly context: Context
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of JavaScriptCore-5.0.JavaScriptCore.Value */
     /**
      * Invoke <function>new</function> with constructor referenced by `value`. If `n_parameters`
      * is 0 no parameters will be passed to the constructor.
+     * @param parameters the #JSCValue<!-- -->s to pass as parameters to the constructor, or %NULL
      */
     constructorCall(parameters?: Value[] | null): Value
     /**
@@ -1488,6 +1657,7 @@ class Value {
      * 
      * This function always returns a #JSCValue, in case of void functions a #JSCValue referencing
      * <function>undefined</function> is returned
+     * @param parameters the #JSCValue<!-- -->s to pass as parameters to the function, or %NULL
      */
     functionCall(parameters?: Value[] | null): Value
     /**
@@ -1544,16 +1714,25 @@ class Value {
      * 
      * Note that `getter` and `setter` are called as functions and not methods, so they don't receive an instance as
      * first parameter. Use jsc_class_add_property() if you want to add property accessor invoked as a method.
+     * @param propertyName the name of the property to define
+     * @param flags #JSCValuePropertyFlags
+     * @param propertyType the #GType of the property
+     * @param getter a #GCallback to be called to get the property value
+     * @param setter a #GCallback to be called to set the property value
      */
     objectDefinePropertyAccessor(propertyName: string, flags: ValuePropertyFlags, propertyType: GObject.Type, getter?: GObject.Callback | null, setter?: GObject.Callback | null): void
     /**
      * Define or modify a property with `property_name` in object referenced by `value`. This is equivalent to
      * JavaScript <function>Object.defineProperty()</function> when used with a data descriptor.
+     * @param propertyName the name of the property to define
+     * @param flags #JSCValuePropertyFlags
+     * @param propertyValue the default property value
      */
     objectDefinePropertyData(propertyName: string, flags: ValuePropertyFlags, propertyValue?: Value | null): void
     /**
      * Try to delete property with `name` from `value`. This function will return %FALSE if
      * the property was defined without %JSC_VALUE_PROPERTY_CONFIGURABLE flag.
+     * @param name the property name
      */
     objectDeleteProperty(name: string): boolean
     /**
@@ -1563,14 +1742,17 @@ class Value {
     objectEnumerateProperties(): string[] | null
     /**
      * Get property with `name` from `value`.
+     * @param name the property name
      */
     objectGetProperty(name: string): Value
     /**
      * Get property at `index` from `value`.
+     * @param index the property index
      */
     objectGetPropertyAtIndex(index: number): Value
     /**
      * Get whether `value` has property with `name`.
+     * @param name the property name
      */
     objectHasProperty(name: string): boolean
     /**
@@ -1582,18 +1764,25 @@ class Value {
      * 
      * This function always returns a #JSCValue, in case of void methods a #JSCValue referencing
      * <function>undefined</function> is returned.
+     * @param name the method name
+     * @param parameters the #JSCValue<!-- -->s to pass as parameters to the method, or %NULL
      */
     objectInvokeMethod(name: string, parameters?: Value[] | null): Value
     /**
      * Get whether the value referenced by `value` is an instance of class `name`.
+     * @param name a class name
      */
     objectIsInstanceOf(name: string): boolean
     /**
      * Set `property` with `name` on `value`.
+     * @param name the property name
+     * @param property the #JSCValue to set
      */
     objectSetProperty(name: string, property: Value): void
     /**
      * Set `property` at `index` on `value`.
+     * @param index the property index
+     * @param property the #JSCValue to set
      */
     objectSetPropertyAtIndex(index: number, property: Value): void
     /**
@@ -1611,6 +1800,7 @@ class Value {
     /**
      * Create a JSON string of `value` serialization. If `indent` is 0, the resulting JSON will
      * not contain newlines. The size of the indent is clamped to 10 spaces.
+     * @param indent The number of spaces to indent when nesting.
      */
     toJson(indent: number): string
     /**
@@ -1658,6 +1848,10 @@ class Value {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1668,6 +1862,12 @@ class Value {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1691,6 +1891,7 @@ class Value {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1710,11 +1911,14 @@ class Value {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1722,6 +1926,8 @@ class Value {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1739,6 +1945,7 @@ class Value {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1784,6 +1991,7 @@ class Value {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1827,15 +2035,20 @@ class Value {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1876,6 +2089,7 @@ class Value {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1910,6 +2124,7 @@ class Value {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1941,12 +2156,18 @@ class Value {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1976,7 +2197,7 @@ interface VirtualMachine_ConstructProps extends GObject.Object_ConstructProps {
 }
 class VirtualMachine {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2012,6 +2233,10 @@ class VirtualMachine {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2022,6 +2247,12 @@ class VirtualMachine {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2045,6 +2276,7 @@ class VirtualMachine {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2064,11 +2296,14 @@ class VirtualMachine {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2076,6 +2311,8 @@ class VirtualMachine {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2093,6 +2330,7 @@ class VirtualMachine {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2138,6 +2376,7 @@ class VirtualMachine {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2181,15 +2420,20 @@ class VirtualMachine {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2230,6 +2474,7 @@ class VirtualMachine {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2264,6 +2509,7 @@ class VirtualMachine {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2295,6 +2541,7 @@ class VirtualMachine {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2323,8 +2570,13 @@ interface WeakValue_ConstructProps extends GObject.Object_ConstructProps {
     value?: Value
 }
 class WeakValue {
+    /* Properties of JavaScriptCore-5.0.JavaScriptCore.WeakValue */
+    /**
+     * The #JSCValue referencing the JavaScript value.
+     */
+    readonly value: Value
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of JavaScriptCore-5.0.JavaScriptCore.WeakValue */
     /**
      * Get a #JSCValue referencing the JavaScript value of `weak_value`.
@@ -2365,6 +2617,10 @@ class WeakValue {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2375,6 +2631,12 @@ class WeakValue {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2398,6 +2660,7 @@ class WeakValue {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2417,11 +2680,14 @@ class WeakValue {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2429,6 +2695,8 @@ class WeakValue {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2446,6 +2714,7 @@ class WeakValue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2491,6 +2760,7 @@ class WeakValue {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2534,15 +2804,20 @@ class WeakValue {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2583,6 +2858,7 @@ class WeakValue {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2617,6 +2893,7 @@ class WeakValue {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of JavaScriptCore-5.0.JavaScriptCore.WeakValue */
@@ -2657,12 +2934,18 @@ class WeakValue {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::value", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::value", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::value", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::value", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::value", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2685,28 +2968,28 @@ class ClassVTable {
     /**
      * a #JSCClassGetPropertyFunction for getting a property.
      */
-    readonly getProperty: ClassGetPropertyFunction
+    getProperty: ClassGetPropertyFunction
     /**
      * a #JSCClassSetPropertyFunction for setting a property.
      */
-    readonly setProperty: ClassSetPropertyFunction
+    setProperty: ClassSetPropertyFunction
     /**
      * a #JSCClassHasPropertyFunction for querying a property.
      */
-    readonly hasProperty: ClassHasPropertyFunction
+    hasProperty: ClassHasPropertyFunction
     /**
      * a #JSCClassDeletePropertyFunction for deleting a property.
      */
-    readonly deleteProperty: ClassDeletePropertyFunction
+    deleteProperty: ClassDeletePropertyFunction
     /**
      * a #JSCClassEnumeratePropertiesFunction for enumerating properties.
      */
-    readonly enumerateProperties: ClassEnumeratePropertiesFunction
+    enumerateProperties: ClassEnumeratePropertiesFunction
     static name: string
 }
 abstract class ContextClass {
     /* Fields of JavaScriptCore-5.0.JavaScriptCore.ContextClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ContextPrivate {
@@ -2714,7 +2997,7 @@ class ContextPrivate {
 }
 abstract class ExceptionClass {
     /* Fields of JavaScriptCore-5.0.JavaScriptCore.ExceptionClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ExceptionPrivate {
@@ -2722,7 +3005,7 @@ class ExceptionPrivate {
 }
 abstract class ValueClass {
     /* Fields of JavaScriptCore-5.0.JavaScriptCore.ValueClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class ValuePrivate {
@@ -2730,7 +3013,7 @@ class ValuePrivate {
 }
 abstract class VirtualMachineClass {
     /* Fields of JavaScriptCore-5.0.JavaScriptCore.VirtualMachineClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class VirtualMachinePrivate {
@@ -2738,7 +3021,7 @@ class VirtualMachinePrivate {
 }
 abstract class WeakValueClass {
     /* Fields of JavaScriptCore-5.0.JavaScriptCore.WeakValueClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class WeakValuePrivate {

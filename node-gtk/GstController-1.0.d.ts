@@ -90,31 +90,32 @@ class ARGBControlBinding {
     controlSourceB: Gst.ControlSource
     controlSourceG: Gst.ControlSource
     controlSourceR: Gst.ControlSource
+    /* Properties of Gst-1.0.Gst.ControlBinding */
+    readonly object: Gst.Object
     /* Fields of Gst-1.0.Gst.ControlBinding */
     /**
      * the parent structure
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * name of the property of this binding
      */
-    readonly name: string
+    name: string
     /**
      * #GParamSpec for this property
      */
-    readonly pspec: GObject.ParamSpec
+    pspec: GObject.ParamSpec
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.ControlBinding */
     /**
      * Gets a number of #GValues for the given controlled property starting at the
@@ -123,10 +124,14 @@ class ARGBControlBinding {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param timestamp the time the control-change should be read from
      */
     getValue(timestamp: Gst.ClockTime): any | null
     /**
@@ -136,6 +141,7 @@ class ARGBControlBinding {
     /**
      * This function is used to disable a control binding for some time, i.e.
      * gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setDisabled(disabled: boolean): void
     /**
@@ -144,6 +150,9 @@ class ARGBControlBinding {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param object the object that has controlled properties
+     * @param timestamp the time that should be processed
+     * @param lastSync the last time this was called
      */
     syncValues(object: Gst.Object, timestamp: Gst.ClockTime, lastSync: Gst.ClockTime): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -153,6 +162,7 @@ class ARGBControlBinding {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -160,11 +170,14 @@ class ARGBControlBinding {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -187,6 +200,10 @@ class ARGBControlBinding {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -212,6 +229,8 @@ class ARGBControlBinding {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -221,16 +240,19 @@ class ARGBControlBinding {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -246,17 +268,21 @@ class ARGBControlBinding {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -267,6 +293,7 @@ class ARGBControlBinding {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -274,11 +301,13 @@ class ARGBControlBinding {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -292,6 +321,7 @@ class ARGBControlBinding {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -345,6 +375,10 @@ class ARGBControlBinding {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -355,6 +389,12 @@ class ARGBControlBinding {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -378,6 +418,7 @@ class ARGBControlBinding {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -397,11 +438,14 @@ class ARGBControlBinding {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -409,6 +453,8 @@ class ARGBControlBinding {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -426,6 +472,7 @@ class ARGBControlBinding {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -471,6 +518,7 @@ class ARGBControlBinding {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -514,15 +562,20 @@ class ARGBControlBinding {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -563,6 +616,7 @@ class ARGBControlBinding {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -587,6 +641,7 @@ class ARGBControlBinding {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -594,6 +649,8 @@ class ARGBControlBinding {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -629,6 +686,7 @@ class ARGBControlBinding {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -655,6 +713,11 @@ class ARGBControlBinding {
     on(sigName: "notify::control-source-r", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::control-source-r", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::control-source-r", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -676,32 +739,34 @@ interface DirectControlBinding_ConstructProps extends Gst.ControlBinding_Constru
 }
 class DirectControlBinding {
     /* Properties of GstController-1.0.GstController.DirectControlBinding */
+    readonly absolute: boolean
     controlSource: Gst.ControlSource
+    /* Properties of Gst-1.0.Gst.ControlBinding */
+    readonly object: Gst.Object
     /* Fields of Gst-1.0.Gst.ControlBinding */
     /**
      * the parent structure
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * name of the property of this binding
      */
-    readonly name: string
+    name: string
     /**
      * #GParamSpec for this property
      */
-    readonly pspec: GObject.ParamSpec
+    pspec: GObject.ParamSpec
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.ControlBinding */
     /**
      * Gets a number of #GValues for the given controlled property starting at the
@@ -710,10 +775,14 @@ class DirectControlBinding {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param timestamp the time the control-change should be read from
      */
     getValue(timestamp: Gst.ClockTime): any | null
     /**
@@ -723,6 +792,7 @@ class DirectControlBinding {
     /**
      * This function is used to disable a control binding for some time, i.e.
      * gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setDisabled(disabled: boolean): void
     /**
@@ -731,6 +801,9 @@ class DirectControlBinding {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param object the object that has controlled properties
+     * @param timestamp the time that should be processed
+     * @param lastSync the last time this was called
      */
     syncValues(object: Gst.Object, timestamp: Gst.ClockTime, lastSync: Gst.ClockTime): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -740,6 +813,7 @@ class DirectControlBinding {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -747,11 +821,14 @@ class DirectControlBinding {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -774,6 +851,10 @@ class DirectControlBinding {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -799,6 +880,8 @@ class DirectControlBinding {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -808,16 +891,19 @@ class DirectControlBinding {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -833,17 +919,21 @@ class DirectControlBinding {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -854,6 +944,7 @@ class DirectControlBinding {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -861,11 +952,13 @@ class DirectControlBinding {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -879,6 +972,7 @@ class DirectControlBinding {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -932,6 +1026,10 @@ class DirectControlBinding {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -942,6 +1040,12 @@ class DirectControlBinding {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -965,6 +1069,7 @@ class DirectControlBinding {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -984,11 +1089,14 @@ class DirectControlBinding {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -996,6 +1104,8 @@ class DirectControlBinding {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1013,6 +1123,7 @@ class DirectControlBinding {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1058,6 +1169,7 @@ class DirectControlBinding {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1101,15 +1213,20 @@ class DirectControlBinding {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1150,6 +1267,7 @@ class DirectControlBinding {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1174,6 +1292,7 @@ class DirectControlBinding {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -1181,6 +1300,8 @@ class DirectControlBinding {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1216,17 +1337,28 @@ class DirectControlBinding {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::absolute", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::absolute", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::absolute", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::absolute", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::absolute", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::control-source", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::control-source", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::control-source", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::control-source", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::control-source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1250,32 +1382,32 @@ class InterpolationControlSource {
     /* Properties of GstController-1.0.GstController.InterpolationControlSource */
     mode: InterpolationMode
     /* Fields of GstController-1.0.GstController.TimedValueControlSource */
-    readonly parent: Gst.ControlSource
-    readonly lock: GLib.Mutex
-    readonly values: GLib.Sequence
-    readonly nvalues: number
-    readonly validCache: boolean
+    parent: Gst.ControlSource
+    lock: GLib.Mutex
+    values: GLib.Sequence
+    nvalues: number
+    validCache: boolean
     /* Fields of Gst-1.0.Gst.ControlSource */
     /**
      * Function for returning a value for a given timestamp
      */
-    readonly getValue: Gst.ControlSourceGetValue
+    getValue: Gst.ControlSourceGetValue
     /**
      * Function for returning a values array for a given timestamp
      */
-    readonly getValueArray: Gst.ControlSourceGetValueArray
+    getValueArray: Gst.ControlSourceGetValueArray
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstController-1.0.GstController.TimedValueControlSource */
     /**
      * Find last value before given timestamp in control point list.
@@ -1283,6 +1415,7 @@ class InterpolationControlSource {
      * timestamp or no values exist, %NULL is returned.
      * 
      * For use in control source implementations.
+     * @param timestamp the search key
      */
     findControlPointIter(timestamp: Gst.ClockTime): GLib.SequenceIter
     /**
@@ -1296,15 +1429,19 @@ class InterpolationControlSource {
     getCount(): number
     /**
      * Set the value of given controller-handled property at a certain time.
+     * @param timestamp the time the control-change is scheduled for
+     * @param value the control-value
      */
     set(timestamp: Gst.ClockTime, value: number): boolean
     /**
      * Sets multiple timed values at once.
+     * @param timedvalues a list with #GstTimedValue items
      */
     setFromList(timedvalues: Gst.TimedValue[]): boolean
     /**
      * Used to remove the value of given controller-handled property at a certain
      * time.
+     * @param timestamp the time the control-change should be removed from
      */
     unset(timestamp: Gst.ClockTime): boolean
     /**
@@ -1314,11 +1451,15 @@ class InterpolationControlSource {
     /* Methods of Gst-1.0.Gst.ControlSource */
     /**
      * Gets the value for this #GstControlSource at a given timestamp.
+     * @param timestamp the time for which the value should be returned
      */
     controlSourceGetValue(timestamp: Gst.ClockTime): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets an array of values for for this #GstControlSource. Values that are
      * undefined contain NANs.
+     * @param timestamp the first timestamp
+     * @param interval the time steps
+     * @param values array to put control-values in
      */
     controlSourceGetValueArray(timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: number[]): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -1328,6 +1469,7 @@ class InterpolationControlSource {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1335,11 +1477,14 @@ class InterpolationControlSource {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1362,6 +1507,10 @@ class InterpolationControlSource {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1392,16 +1541,19 @@ class InterpolationControlSource {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -1417,17 +1569,21 @@ class InterpolationControlSource {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -1438,6 +1594,7 @@ class InterpolationControlSource {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -1445,11 +1602,13 @@ class InterpolationControlSource {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1463,6 +1622,7 @@ class InterpolationControlSource {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1516,6 +1676,10 @@ class InterpolationControlSource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1526,6 +1690,12 @@ class InterpolationControlSource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1549,6 +1719,7 @@ class InterpolationControlSource {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1568,11 +1739,14 @@ class InterpolationControlSource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1580,6 +1754,8 @@ class InterpolationControlSource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1597,6 +1773,7 @@ class InterpolationControlSource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1642,6 +1819,7 @@ class InterpolationControlSource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1685,15 +1863,20 @@ class InterpolationControlSource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1734,6 +1917,7 @@ class InterpolationControlSource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1758,11 +1942,13 @@ class InterpolationControlSource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstController-1.0.GstController.TimedValueControlSource */
     /**
      * Emitted right after the new value has been added to `self`
+     * @param timedValue The newly added #GstTimedValue
      */
     connect(sigName: "value-added", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-added", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -1771,6 +1957,7 @@ class InterpolationControlSource {
     emit(sigName: "value-added", timedValue: ControlPoint): void
     /**
      * Emitted right after the new value has been set on `timed_signals`
+     * @param timedValue The #GstTimedValue where the value changed
      */
     connect(sigName: "value-changed", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-changed", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -1779,6 +1966,7 @@ class InterpolationControlSource {
     emit(sigName: "value-changed", timedValue: ControlPoint): void
     /**
      * Emitted when `timed_value` is removed from `self`
+     * @param timedValue The removed #GstTimedValue
      */
     connect(sigName: "value-removed", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-removed", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -1790,6 +1978,8 @@ class InterpolationControlSource {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1825,6 +2015,7 @@ class InterpolationControlSource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1911,39 +2102,43 @@ class LFOControlSource {
     /**
      * the parent structure
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * Function for returning a value for a given timestamp
      */
-    readonly getValue: Gst.ControlSourceGetValue
+    getValue: Gst.ControlSourceGetValue
     /**
      * Function for returning a values array for a given timestamp
      */
-    readonly getValueArray: Gst.ControlSourceGetValueArray
+    getValueArray: Gst.ControlSourceGetValueArray
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.ControlSource */
     /**
      * Gets the value for this #GstControlSource at a given timestamp.
+     * @param timestamp the time for which the value should be returned
      */
     controlSourceGetValue(timestamp: Gst.ClockTime): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets an array of values for for this #GstControlSource. Values that are
      * undefined contain NANs.
+     * @param timestamp the first timestamp
+     * @param interval the time steps
+     * @param values array to put control-values in
      */
     controlSourceGetValueArray(timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: number[]): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -1953,6 +2148,7 @@ class LFOControlSource {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1960,11 +2156,14 @@ class LFOControlSource {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1987,6 +2186,10 @@ class LFOControlSource {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -2017,16 +2220,19 @@ class LFOControlSource {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -2042,17 +2248,21 @@ class LFOControlSource {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -2063,6 +2273,7 @@ class LFOControlSource {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -2070,11 +2281,13 @@ class LFOControlSource {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -2088,6 +2301,7 @@ class LFOControlSource {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -2141,6 +2355,10 @@ class LFOControlSource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2151,6 +2369,12 @@ class LFOControlSource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2174,6 +2398,7 @@ class LFOControlSource {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2193,11 +2418,14 @@ class LFOControlSource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2205,6 +2433,8 @@ class LFOControlSource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2222,6 +2452,7 @@ class LFOControlSource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2267,6 +2498,7 @@ class LFOControlSource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2310,15 +2542,20 @@ class LFOControlSource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2359,6 +2596,7 @@ class LFOControlSource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2383,6 +2621,7 @@ class LFOControlSource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -2390,6 +2629,8 @@ class LFOControlSource {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2425,6 +2666,7 @@ class LFOControlSource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2473,31 +2715,32 @@ class LFOControlSource {
 interface ProxyControlBinding_ConstructProps extends Gst.ControlBinding_ConstructProps {
 }
 class ProxyControlBinding {
+    /* Properties of Gst-1.0.Gst.ControlBinding */
+    readonly object: Gst.Object
     /* Fields of Gst-1.0.Gst.ControlBinding */
     /**
      * the parent structure
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * name of the property of this binding
      */
-    readonly name: string
+    name: string
     /**
      * #GParamSpec for this property
      */
-    readonly pspec: GObject.ParamSpec
+    pspec: GObject.ParamSpec
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.ControlBinding */
     /**
      * Gets a number of #GValues for the given controlled property starting at the
@@ -2506,10 +2749,14 @@ class ProxyControlBinding {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param timestamp the time the control-change should be read from
      */
     getValue(timestamp: Gst.ClockTime): any | null
     /**
@@ -2519,6 +2766,7 @@ class ProxyControlBinding {
     /**
      * This function is used to disable a control binding for some time, i.e.
      * gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setDisabled(disabled: boolean): void
     /**
@@ -2527,6 +2775,9 @@ class ProxyControlBinding {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param object the object that has controlled properties
+     * @param timestamp the time that should be processed
+     * @param lastSync the last time this was called
      */
     syncValues(object: Gst.Object, timestamp: Gst.ClockTime, lastSync: Gst.ClockTime): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -2536,6 +2787,7 @@ class ProxyControlBinding {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -2543,11 +2795,14 @@ class ProxyControlBinding {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -2570,6 +2825,10 @@ class ProxyControlBinding {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -2595,6 +2854,8 @@ class ProxyControlBinding {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -2604,16 +2865,19 @@ class ProxyControlBinding {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -2629,17 +2893,21 @@ class ProxyControlBinding {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -2650,6 +2918,7 @@ class ProxyControlBinding {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -2657,11 +2926,13 @@ class ProxyControlBinding {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -2675,6 +2946,7 @@ class ProxyControlBinding {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -2728,6 +3000,10 @@ class ProxyControlBinding {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2738,6 +3014,12 @@ class ProxyControlBinding {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2761,6 +3043,7 @@ class ProxyControlBinding {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2780,11 +3063,14 @@ class ProxyControlBinding {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2792,6 +3078,8 @@ class ProxyControlBinding {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2809,6 +3097,7 @@ class ProxyControlBinding {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2854,6 +3143,7 @@ class ProxyControlBinding {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2897,15 +3187,20 @@ class ProxyControlBinding {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2946,6 +3241,7 @@ class ProxyControlBinding {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2970,6 +3266,7 @@ class ProxyControlBinding {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -2977,6 +3274,8 @@ class ProxyControlBinding {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3012,12 +3311,18 @@ class ProxyControlBinding {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::object", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3039,31 +3344,31 @@ class TimedValueControlSource {
     /**
      * the parent structure
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * Function for returning a value for a given timestamp
      */
-    readonly getValue: Gst.ControlSourceGetValue
+    getValue: Gst.ControlSourceGetValue
     /**
      * Function for returning a values array for a given timestamp
      */
-    readonly getValueArray: Gst.ControlSourceGetValueArray
+    getValueArray: Gst.ControlSourceGetValueArray
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstController-1.0.GstController.TimedValueControlSource */
     /**
      * Find last value before given timestamp in control point list.
@@ -3071,6 +3376,7 @@ class TimedValueControlSource {
      * timestamp or no values exist, %NULL is returned.
      * 
      * For use in control source implementations.
+     * @param timestamp the search key
      */
     findControlPointIter(timestamp: Gst.ClockTime): GLib.SequenceIter
     /**
@@ -3084,15 +3390,19 @@ class TimedValueControlSource {
     getCount(): number
     /**
      * Set the value of given controller-handled property at a certain time.
+     * @param timestamp the time the control-change is scheduled for
+     * @param value the control-value
      */
     set(timestamp: Gst.ClockTime, value: number): boolean
     /**
      * Sets multiple timed values at once.
+     * @param timedvalues a list with #GstTimedValue items
      */
     setFromList(timedvalues: Gst.TimedValue[]): boolean
     /**
      * Used to remove the value of given controller-handled property at a certain
      * time.
+     * @param timestamp the time the control-change should be removed from
      */
     unset(timestamp: Gst.ClockTime): boolean
     /**
@@ -3102,11 +3412,15 @@ class TimedValueControlSource {
     /* Methods of Gst-1.0.Gst.ControlSource */
     /**
      * Gets the value for this #GstControlSource at a given timestamp.
+     * @param timestamp the time for which the value should be returned
      */
     controlSourceGetValue(timestamp: Gst.ClockTime): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets an array of values for for this #GstControlSource. Values that are
      * undefined contain NANs.
+     * @param timestamp the first timestamp
+     * @param interval the time steps
+     * @param values array to put control-values in
      */
     controlSourceGetValueArray(timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: number[]): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -3116,6 +3430,7 @@ class TimedValueControlSource {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -3123,11 +3438,14 @@ class TimedValueControlSource {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -3150,6 +3468,10 @@ class TimedValueControlSource {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3180,16 +3502,19 @@ class TimedValueControlSource {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -3205,17 +3530,21 @@ class TimedValueControlSource {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -3226,6 +3555,7 @@ class TimedValueControlSource {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -3233,11 +3563,13 @@ class TimedValueControlSource {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -3251,6 +3583,7 @@ class TimedValueControlSource {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -3304,6 +3637,10 @@ class TimedValueControlSource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3314,6 +3651,12 @@ class TimedValueControlSource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3337,6 +3680,7 @@ class TimedValueControlSource {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3356,11 +3700,14 @@ class TimedValueControlSource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3368,6 +3715,8 @@ class TimedValueControlSource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3385,6 +3734,7 @@ class TimedValueControlSource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3430,6 +3780,7 @@ class TimedValueControlSource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3473,15 +3824,20 @@ class TimedValueControlSource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3522,6 +3878,7 @@ class TimedValueControlSource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3546,11 +3903,13 @@ class TimedValueControlSource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstController-1.0.GstController.TimedValueControlSource */
     /**
      * Emitted right after the new value has been added to `self`
+     * @param timedValue The newly added #GstTimedValue
      */
     connect(sigName: "value-added", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-added", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -3559,6 +3918,7 @@ class TimedValueControlSource {
     emit(sigName: "value-added", timedValue: ControlPoint): void
     /**
      * Emitted right after the new value has been set on `timed_signals`
+     * @param timedValue The #GstTimedValue where the value changed
      */
     connect(sigName: "value-changed", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-changed", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -3567,6 +3927,7 @@ class TimedValueControlSource {
     emit(sigName: "value-changed", timedValue: ControlPoint): void
     /**
      * Emitted when `timed_value` is removed from `self`
+     * @param timedValue The removed #GstTimedValue
      */
     connect(sigName: "value-removed", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-removed", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -3578,6 +3939,8 @@ class TimedValueControlSource {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3613,6 +3976,7 @@ class TimedValueControlSource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3639,32 +4003,32 @@ class TriggerControlSource {
     /* Properties of GstController-1.0.GstController.TriggerControlSource */
     tolerance: number
     /* Fields of GstController-1.0.GstController.TimedValueControlSource */
-    readonly parent: Gst.ControlSource
-    readonly lock: GLib.Mutex
-    readonly values: GLib.Sequence
-    readonly nvalues: number
-    readonly validCache: boolean
+    parent: Gst.ControlSource
+    lock: GLib.Mutex
+    values: GLib.Sequence
+    nvalues: number
+    validCache: boolean
     /* Fields of Gst-1.0.Gst.ControlSource */
     /**
      * Function for returning a value for a given timestamp
      */
-    readonly getValue: Gst.ControlSourceGetValue
+    getValue: Gst.ControlSourceGetValue
     /**
      * Function for returning a values array for a given timestamp
      */
-    readonly getValueArray: Gst.ControlSourceGetValueArray
+    getValueArray: Gst.ControlSourceGetValueArray
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstController-1.0.GstController.TimedValueControlSource */
     /**
      * Find last value before given timestamp in control point list.
@@ -3672,6 +4036,7 @@ class TriggerControlSource {
      * timestamp or no values exist, %NULL is returned.
      * 
      * For use in control source implementations.
+     * @param timestamp the search key
      */
     findControlPointIter(timestamp: Gst.ClockTime): GLib.SequenceIter
     /**
@@ -3685,15 +4050,19 @@ class TriggerControlSource {
     getCount(): number
     /**
      * Set the value of given controller-handled property at a certain time.
+     * @param timestamp the time the control-change is scheduled for
+     * @param value the control-value
      */
     set(timestamp: Gst.ClockTime, value: number): boolean
     /**
      * Sets multiple timed values at once.
+     * @param timedvalues a list with #GstTimedValue items
      */
     setFromList(timedvalues: Gst.TimedValue[]): boolean
     /**
      * Used to remove the value of given controller-handled property at a certain
      * time.
+     * @param timestamp the time the control-change should be removed from
      */
     unset(timestamp: Gst.ClockTime): boolean
     /**
@@ -3703,11 +4072,15 @@ class TriggerControlSource {
     /* Methods of Gst-1.0.Gst.ControlSource */
     /**
      * Gets the value for this #GstControlSource at a given timestamp.
+     * @param timestamp the time for which the value should be returned
      */
     controlSourceGetValue(timestamp: Gst.ClockTime): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets an array of values for for this #GstControlSource. Values that are
      * undefined contain NANs.
+     * @param timestamp the first timestamp
+     * @param interval the time steps
+     * @param values array to put control-values in
      */
     controlSourceGetValueArray(timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: number[]): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -3717,6 +4090,7 @@ class TriggerControlSource {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -3724,11 +4098,14 @@ class TriggerControlSource {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -3751,6 +4128,10 @@ class TriggerControlSource {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3781,16 +4162,19 @@ class TriggerControlSource {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -3806,17 +4190,21 @@ class TriggerControlSource {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -3827,6 +4215,7 @@ class TriggerControlSource {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -3834,11 +4223,13 @@ class TriggerControlSource {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -3852,6 +4243,7 @@ class TriggerControlSource {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -3905,6 +4297,10 @@ class TriggerControlSource {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3915,6 +4311,12 @@ class TriggerControlSource {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3938,6 +4340,7 @@ class TriggerControlSource {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3957,11 +4360,14 @@ class TriggerControlSource {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3969,6 +4375,8 @@ class TriggerControlSource {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3986,6 +4394,7 @@ class TriggerControlSource {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4031,6 +4440,7 @@ class TriggerControlSource {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4074,15 +4484,20 @@ class TriggerControlSource {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4123,6 +4538,7 @@ class TriggerControlSource {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4147,11 +4563,13 @@ class TriggerControlSource {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstController-1.0.GstController.TimedValueControlSource */
     /**
      * Emitted right after the new value has been added to `self`
+     * @param timedValue The newly added #GstTimedValue
      */
     connect(sigName: "value-added", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-added", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -4160,6 +4578,7 @@ class TriggerControlSource {
     emit(sigName: "value-added", timedValue: ControlPoint): void
     /**
      * Emitted right after the new value has been set on `timed_signals`
+     * @param timedValue The #GstTimedValue where the value changed
      */
     connect(sigName: "value-changed", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-changed", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -4168,6 +4587,7 @@ class TriggerControlSource {
     emit(sigName: "value-changed", timedValue: ControlPoint): void
     /**
      * Emitted when `timed_value` is removed from `self`
+     * @param timedValue The removed #GstTimedValue
      */
     connect(sigName: "value-removed", callback: ((timedValue: ControlPoint) => void)): number
     on(sigName: "value-removed", callback: (timedValue: ControlPoint) => void, after?: boolean): NodeJS.EventEmitter
@@ -4179,6 +4599,8 @@ class TriggerControlSource {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4214,6 +4636,7 @@ class TriggerControlSource {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4244,7 +4667,7 @@ abstract class ARGBControlBindingClass {
     /**
      * Parent class
      */
-    readonly parentClass: Gst.ControlBindingClass
+    parentClass: Gst.ControlBindingClass
     static name: string
 }
 class ControlPoint {
@@ -4252,11 +4675,11 @@ class ControlPoint {
     /**
      * timestamp of the value change
      */
-    readonly timestamp: Gst.ClockTime
+    timestamp: Gst.ClockTime
     /**
      * the new value
      */
-    readonly value: number
+    value: number
     /* Methods of GstController-1.0.GstController.ControlPoint */
     /**
      * Copies a #GstControlPoint
@@ -4273,12 +4696,12 @@ abstract class DirectControlBindingClass {
     /**
      * Parent class
      */
-    readonly parentClass: Gst.ControlBindingClass
+    parentClass: Gst.ControlBindingClass
     static name: string
 }
 abstract class InterpolationControlSourceClass {
     /* Fields of GstController-1.0.GstController.InterpolationControlSourceClass */
-    readonly parentClass: TimedValueControlSourceClass
+    parentClass: TimedValueControlSourceClass
     static name: string
 }
 class InterpolationControlSourcePrivate {
@@ -4286,7 +4709,7 @@ class InterpolationControlSourcePrivate {
 }
 abstract class LFOControlSourceClass {
     /* Fields of GstController-1.0.GstController.LFOControlSourceClass */
-    readonly parentClass: Gst.ControlSourceClass
+    parentClass: Gst.ControlSourceClass
     static name: string
 }
 class LFOControlSourcePrivate {
@@ -4297,7 +4720,7 @@ abstract class ProxyControlBindingClass {
 }
 abstract class TimedValueControlSourceClass {
     /* Fields of GstController-1.0.GstController.TimedValueControlSourceClass */
-    readonly parentClass: Gst.ControlSourceClass
+    parentClass: Gst.ControlSourceClass
     static name: string
 }
 class TimedValueControlSourcePrivate {
@@ -4305,7 +4728,7 @@ class TimedValueControlSourcePrivate {
 }
 abstract class TriggerControlSourceClass {
     /* Fields of GstController-1.0.GstController.TriggerControlSourceClass */
-    readonly parentClass: TimedValueControlSourceClass
+    parentClass: TimedValueControlSourceClass
     static name: string
 }
 class TriggerControlSourcePrivate {

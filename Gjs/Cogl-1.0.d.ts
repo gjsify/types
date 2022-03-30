@@ -1131,6 +1131,9 @@ class Texture {
      * `rowstride` argument, the rowstride should be the rowstride you
      * want for the destination `data` buffer not the rowstride of the
      * source texture</note>
+     * @param format the #CoglPixelFormat to store the texture as.
+     * @param rowstride the rowstride of `data` in bytes or pass 0 to calculate             from the bytes-per-pixel of `format` multiplied by the             `texture` width.
+     * @param data memory location to write the `texture'`s contents, or %NULL to only query the data size through the return value.
      */
     get_data(format: PixelFormat, rowstride: number, data: number): number
     /**
@@ -1186,6 +1189,7 @@ class Texture {
      * is not available then %COGL_PIXEL_FORMAT_RG_88 can still be used as
      * an image format as long as %COGL_TEXTURE_COMPONENTS_RG isn't used
      * as the texture's components.
+     * @param components 
      */
     set_components(components: TextureComponents): void
     /**
@@ -1210,6 +1214,7 @@ class Texture {
      * converted.
      * 
      * By default the `premultipled` state is `TRUE`.
+     * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
      */
     set_premultiplied(premultiplied: Bool): void
     /**
@@ -1217,6 +1222,17 @@ class Texture {
      * buffer containing pixel data.
      * 
      * <note>The region set can't be larger than the source `data<`/note>
+     * @param src_x upper left coordinate to use from source data.
+     * @param src_y upper left coordinate to use from source data.
+     * @param dst_x upper left destination horizontal coordinate.
+     * @param dst_y upper left destination vertical coordinate.
+     * @param dst_width width of destination region to write. (Must be less   than or equal to `width)`
+     * @param dst_height height of destination region to write. (Must be less   than or equal to `height)`
+     * @param width width of source data buffer.
+     * @param height height of source data buffer.
+     * @param format the #CoglPixelFormat used in the source buffer.
+     * @param rowstride rowstride of source buffer (computed from width if none specified)
+     * @param data the actual pixel data.
      */
     set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: number): Bool
     static name: string
@@ -1228,6 +1244,7 @@ class Bitmap {
     /**
      * Parses an image file enough to extract the width and height
      * of the bitmap.
+     * @param filename the file to check
      */
     static get_size_from_file(filename: string): [ /* returnType */ Bool, /* width */ number, /* height */ number ]
 }
@@ -1244,6 +1261,8 @@ class Fixed {
     /* Static methods and pseudo-constructors */
     /**
      * Calculates `x` to the `y` power.
+     * @param x base
+     * @param y #CoglFixed exponent
      */
     static pow(x: number, y: Fixed): number
 }
@@ -1254,11 +1273,13 @@ class Offscreen {
     static new_with_texture(texture: Texture): Offscreen
     /**
      * Increments the reference count on the `offscreen` framebuffer.
+     * @param offscreen A pointer to a #CoglOffscreen framebuffer
      */
     static ref(offscreen?: object | null): object | null
     /**
      * Decreases the reference count for the `offscreen` buffer and frees it when
      * the count reaches 0.
+     * @param offscreen A pointer to a #CoglOffscreen framebuffer
      */
     static unref(offscreen?: object | null): void
 }
@@ -1334,14 +1355,23 @@ class Color {
     get_red_float(): number
     /**
      * Sets the values of the passed channels into a #CoglColor
+     * @param red value of the red channel, between 0 and 1.0
+     * @param green value of the green channel, between 0 and 1.0
+     * @param blue value of the blue channel, between 0 and 1.0
+     * @param alpha value of the alpha channel, between 0 and 1.0
      */
     init_from_4f(red: number, green: number, blue: number, alpha: number): void
     /**
      * Sets the values of the passed channels into a #CoglColor
+     * @param color_array a pointer to an array of 4 float color components
      */
     init_from_4fv(color_array: number): void
     /**
      * Sets the values of the passed channels into a #CoglColor.
+     * @param red value of the red channel, between 0 and 255
+     * @param green value of the green channel, between 0 and 255
+     * @param blue value of the blue channel, between 0 and 255
+     * @param alpha value of the alpha channel, between 0 and 255
      */
     init_from_4ub(red: number, green: number, blue: number, alpha: number): void
     /**
@@ -1352,58 +1382,78 @@ class Color {
     premultiply(): void
     /**
      * Sets the alpha channel of `color` to `alpha`.
+     * @param alpha a float value between 0.0f and 1.0f
      */
     set_alpha(alpha: number): void
     /**
      * Sets the alpha channel of `color` to `alpha`.
+     * @param alpha a byte value between 0 and 255
      */
     set_alpha_byte(alpha: number): void
     /**
      * Sets the alpha channel of `color` to `alpha`.
+     * @param alpha a float value between 0.0f and 1.0f
      */
     set_alpha_float(alpha: number): void
     /**
      * Sets the blue channel of `color` to `blue`.
+     * @param blue a float value between 0.0f and 1.0f
      */
     set_blue(blue: number): void
     /**
      * Sets the blue channel of `color` to `blue`.
+     * @param blue a byte value between 0 and 255
      */
     set_blue_byte(blue: number): void
     /**
      * Sets the blue channel of `color` to `blue`.
+     * @param blue a float value between 0.0f and 1.0f
      */
     set_blue_float(blue: number): void
     /**
      * Sets the values of the passed channels into a #CoglColor
+     * @param red value of the red channel, between 0 and %1.0
+     * @param green value of the green channel, between 0 and %1.0
+     * @param blue value of the blue channel, between 0 and %1.0
+     * @param alpha value of the alpha channel, between 0 and %1.0
      */
     set_from_4f(red: number, green: number, blue: number, alpha: number): void
     /**
      * Sets the values of the passed channels into a #CoglColor.
+     * @param red value of the red channel, between 0 and 255
+     * @param green value of the green channel, between 0 and 255
+     * @param blue value of the blue channel, between 0 and 255
+     * @param alpha value of the alpha channel, between 0 and 255
      */
     set_from_4ub(red: number, green: number, blue: number, alpha: number): void
     /**
      * Sets the green channel of `color` to `green`.
+     * @param green a float value between 0.0f and 1.0f
      */
     set_green(green: number): void
     /**
      * Sets the green channel of `color` to `green`.
+     * @param green a byte value between 0 and 255
      */
     set_green_byte(green: number): void
     /**
      * Sets the green channel of `color` to `green`.
+     * @param green a float value between 0.0f and 1.0f
      */
     set_green_float(green: number): void
     /**
      * Sets the red channel of `color` to `red`.
+     * @param red a float value between 0.0f and 1.0f
      */
     set_red(red: number): void
     /**
      * Sets the red channel of `color` to `red`.
+     * @param red a byte value between 0 and 255
      */
     set_red_byte(red: number): void
     /**
      * Sets the red channel of `color` to `red`.
+     * @param red a float value between 0.0f and 1.0f
      */
     set_red_float(red: number): void
     /**
@@ -1429,11 +1479,16 @@ class Color {
      * 
      * This function can be passed to g_hash_table_new() as the `key_equal_func`
      * parameter, when using #CoglColor<!-- -->s as keys in a #GHashTable.
+     * @param v1 a #CoglColor
+     * @param v2 a #CoglColor
      */
     static equal(v1?: object | null, v2?: object | null): Bool
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
      * values into a #CoglColor.
+     * @param hue hue value, in the 0 .. 360 range
+     * @param saturation saturation value, in the 0 .. 1 range
+     * @param luminance luminance value, in the 0 .. 1 range
      */
     static init_from_hsl(hue: number, saturation: number, luminance: number): /* color */ Color
 }
@@ -1444,6 +1499,7 @@ class Material {
     /* Methods of Cogl-1.0.Cogl.Material */
     /**
      * Retrieves the current ambient color for `material`
+     * @param ambient The location to store the ambient color
      */
     get_ambient(ambient: Color): void
     /**
@@ -1452,30 +1508,36 @@ class Material {
     get_color(): /* color */ Color
     /**
      * Retrieves the current diffuse color for `material`
+     * @param diffuse The location to store the diffuse color
      */
     get_diffuse(diffuse: Color): void
     /**
      * Retrieves the materials current emission color.
+     * @param emission The location to store the emission color
      */
     get_emission(emission: Color): void
     /**
      * Gets whether point sprite coordinate generation is enabled for this
      * texture layer.
+     * @param layer_index the layer number to check.
      */
     get_layer_point_sprite_coords_enabled(layer_index: number): Bool
     /**
      * Returns the wrap mode for the 'p' coordinate of texture lookups on this
      * layer.
+     * @param layer_index the layer number to change.
      */
     get_layer_wrap_mode_p(layer_index: number): MaterialWrapMode
     /**
      * Returns the wrap mode for the 's' coordinate of texture lookups on this
      * layer.
+     * @param layer_index the layer number to change.
      */
     get_layer_wrap_mode_s(layer_index: number): MaterialWrapMode
     /**
      * Returns the wrap mode for the 't' coordinate of texture lookups on this
      * layer.
+     * @param layer_index the layer number to change.
      */
     get_layer_wrap_mode_t(layer_index: number): MaterialWrapMode
     /**
@@ -1507,6 +1569,7 @@ class Material {
     get_shininess(): number
     /**
      * Retrieves the materials current specular color.
+     * @param specular The location to store the specular color
      */
     get_specular(specular: Color): void
     /**
@@ -1516,6 +1579,7 @@ class Material {
     get_user_program(): Handle
     /**
      * This function removes a layer from your material
+     * @param layer_index Specifies the layer you want to remove
      */
     remove_layer(layer_index: number): void
     /**
@@ -1526,6 +1590,8 @@ class Material {
      * and which continue on to the blending stage.
      * 
      * The default is %COGL_MATERIAL_ALPHA_FUNC_ALWAYS
+     * @param alpha_func A `CoglMaterialAlphaFunc` constant
+     * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
      */
     set_alpha_test_function(alpha_func: MaterialAlphaFunc, alpha_reference: number): void
     /**
@@ -1537,6 +1603,7 @@ class Material {
      * slant.
      * 
      * The default value is (0.2, 0.2, 0.2, 1.0)
+     * @param ambient The components of the desired ambient color
      */
     set_ambient(ambient: Color): void
     /**
@@ -1546,6 +1613,7 @@ class Material {
      * The default ambient color is (0.2, 0.2, 0.2, 1.0)
      * 
      * The default diffuse color is (0.8, 0.8, 0.8, 1.0)
+     * @param color The components of the desired ambient and diffuse colors
      */
     set_ambient_and_diffuse(color: Color): void
     /**
@@ -1615,11 +1683,13 @@ class Material {
      * 
      * That gives normal alpha-blending when the calculated color for the material
      * is in premultiplied form.
+     * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>   describing the desired blend function.
      */
     set_blend(blend_string: string): Bool
     /**
      * When blending is setup to reference a CONSTANT blend factor then
      * blending will depend on the constant set with this function.
+     * @param constant_color The constant color you want
      */
     set_blend_constant(constant_color: Color): void
     /**
@@ -1631,18 +1701,27 @@ class Material {
      * semi-transparent red. See cogl_color_premultiply().
      * 
      * The default value is (1.0, 1.0, 1.0, 1.0)
+     * @param color The components of the color
      */
     set_color(color: Color): void
     /**
      * Sets the basic color of the material, used when no lighting is enabled.
      * 
      * The default value is (1.0, 1.0, 1.0, 1.0)
+     * @param red The red component
+     * @param green The green component
+     * @param blue The blue component
+     * @param alpha The alpha component
      */
     set_color4f(red: number, green: number, blue: number, alpha: number): void
     /**
      * Sets the basic color of the material, used when no lighting is enabled.
      * 
      * The default value is (0xff, 0xff, 0xff, 0xff)
+     * @param red The red component
+     * @param green The green component
+     * @param blue The blue component
+     * @param alpha The alpha component
      */
     set_color4ub(red: number, green: number, blue: number, alpha: number): void
     /**
@@ -1651,6 +1730,7 @@ class Material {
      * surface directly - perpendicular to the surface.
      * 
      * The default value is (0.8, 0.8, 0.8, 1.0)
+     * @param diffuse The components of the desired diffuse color
      */
     set_diffuse(diffuse: Color): void
     /**
@@ -1659,6 +1739,7 @@ class Material {
      * color.
      * 
      * The default value is (0.0, 0.0, 0.0, 1.0)
+     * @param emission The components of the desired emissive color
      */
     set_emission(emission: Color): void
     /**
@@ -1672,6 +1753,8 @@ class Material {
      * 
      * <note>In the future, we may define other types of material layers, such
      * as purely GLSL based layers.</note>
+     * @param layer_index the index of the layer
+     * @param texture a #CoglHandle for the layer object
      */
     set_layer(layer_index: number, texture: Handle): void
     /**
@@ -1750,21 +1833,30 @@ class Material {
      * 
      * <note>You can't give a multiplication factor for arguments as you can
      * with blending.</note>
+     * @param layer_index Specifies the layer you want define a combine function for
+     * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>    describing the desired texture combine function.
      */
     set_layer_combine(layer_index: number, blend_string: string): Bool
     /**
      * When you are using the 'CONSTANT' color source in a layer combine
      * description then you can use this function to define its value.
+     * @param layer_index Specifies the layer you want to specify a constant used               for texture combining
+     * @param constant The constant color you want
      */
     set_layer_combine_constant(layer_index: number, constant: Color): void
     /**
      * Changes the decimation and interpolation filters used when a texture is
      * drawn at other scales than 100%.
+     * @param layer_index the layer number to change.
+     * @param min_filter the filter used when scaling a texture down.
+     * @param mag_filter the filter used when magnifying a texture.
      */
     set_layer_filters(layer_index: number, min_filter: MaterialFilter, mag_filter: MaterialFilter): void
     /**
      * This function lets you set a matrix that can be used to e.g. translate
      * and rotate a single layer of a material used to fill your geometry.
+     * @param layer_index the index for the layer inside `material`
+     * @param matrix the transformation matrix for the layer
      */
     set_layer_matrix(layer_index: number, matrix: Matrix): void
     /**
@@ -1778,6 +1870,8 @@ class Material {
      * This function will only work if %COGL_FEATURE_POINT_SPRITE is
      * available. If the feature is not available then the function will
      * return %FALSE and set `error`.
+     * @param layer_index the layer number to change.
+     * @param enable whether to enable point sprite coord generation.
      */
     set_layer_point_sprite_coords_enabled(layer_index: number, enable: Bool): Bool
     /**
@@ -1786,19 +1880,27 @@ class Material {
      * cogl_material_set_layer_wrap_mode_s(),
      * cogl_material_set_layer_wrap_mode_t() and
      * cogl_material_set_layer_wrap_mode_p() separately.
+     * @param layer_index the layer number to change.
+     * @param mode the new wrap mode
      */
     set_layer_wrap_mode(layer_index: number, mode: MaterialWrapMode): void
     /**
      * Sets the wrap mode for the 'p' coordinate of texture lookups on
      * this layer. 'p' is the third coordinate.
+     * @param layer_index the layer number to change.
+     * @param mode the new wrap mode
      */
     set_layer_wrap_mode_p(layer_index: number, mode: MaterialWrapMode): void
     /**
      * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
+     * @param layer_index the layer number to change.
+     * @param mode the new wrap mode
      */
     set_layer_wrap_mode_s(layer_index: number, mode: MaterialWrapMode): void
     /**
      * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
+     * @param layer_index the layer number to change.
+     * @param mode the new wrap mode
      */
     set_layer_wrap_mode_t(layer_index: number, mode: MaterialWrapMode): void
     /**
@@ -1809,6 +1911,7 @@ class Material {
      * within that range will be used instead. The size of a point is in
      * screen space so it will be the same regardless of any
      * transformations. The default point size is 1.0.
+     * @param point_size the new point size.
      */
     set_point_size(point_size: number): void
     /**
@@ -1818,6 +1921,7 @@ class Material {
      * object appear more shiny.
      * 
      * The default value is 0.0
+     * @param shininess The desired shininess; must be >= 0.0
      */
     set_shininess(shininess: number): void
     /**
@@ -1826,6 +1930,7 @@ class Material {
      * position, and is brightest along the lines of reflection.
      * 
      * The default value is (0.0, 0.0, 0.0, 1.0)
+     * @param specular The components of the desired specular color
      */
     set_specular(specular: Color): void
     /**
@@ -1868,16 +1973,19 @@ class Material {
      * Also remember you need to check for either the
      * %COGL_FEATURE_SHADERS_GLSL or %COGL_FEATURE_SHADERS_ARBFP before
      * using the cogl_program or cogl_shader API.
+     * @param program A #CoglHandle to a linked CoglProgram
      */
     set_user_program(program: Handle): void
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Increment the reference count for a #CoglMaterial.
+     * @param material a #CoglMaterial object.
      */
     static ref(material: Handle): Handle
     /**
      * Decrement the reference count for a #CoglMaterial.
+     * @param material a #CoglMaterial object.
      */
     static unref(material: Handle): void
 }
@@ -1927,22 +2035,22 @@ class MaterialLayer {
 }
 class Matrix {
     /* Fields of Cogl-1.0.Cogl.Matrix */
-    readonly xx: number
-    readonly yx: number
-    readonly zx: number
-    readonly wx: number
-    readonly xy: number
-    readonly yy: number
-    readonly zy: number
-    readonly wy: number
-    readonly xz: number
-    readonly yz: number
-    readonly zz: number
-    readonly wz: number
-    readonly xw: number
-    readonly yw: number
-    readonly zw: number
-    readonly ww: number
+    xx: number
+    yx: number
+    zx: number
+    wx: number
+    xy: number
+    yy: number
+    zy: number
+    wy: number
+    xz: number
+    yz: number
+    zz: number
+    wz: number
+    xw: number
+    yw: number
+    zw: number
+    ww: number
     /* Methods of Cogl-1.0.Cogl.Matrix */
     /**
      * Allocates a new #CoglMatrix on the heap and initializes it with
@@ -1956,6 +2064,12 @@ class Matrix {
     free(): void
     /**
      * Multiplies `matrix` by the given frustum perspective matrix.
+     * @param left X position of the left clipping plane where it   intersects the near clipping plane
+     * @param right X position of the right clipping plane where it   intersects the near clipping plane
+     * @param bottom Y position of the bottom clipping plane where it   intersects the near clipping plane
+     * @param top Y position of the top clipping plane where it intersects   the near clipping plane
+     * @param z_near The distance to the near clipping plane (Must be positive)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_far: number): void
     /**
@@ -1975,6 +2089,7 @@ class Matrix {
     get_inverse(): [ /* returnType */ Bool, /* inverse */ Matrix ]
     /**
      * Initializes `matrix` with the contents of `array`
+     * @param array A linear array of 16 floats (column-major order)
      */
     init_from_array(array: number): void
     /**
@@ -1999,6 +2114,9 @@ class Matrix {
      *   .wx=0; .wy=0; .wz=0; .ww=1;
      * ```
      * 
+     * @param tx x coordinate of the translation vector
+     * @param ty y coordinate of the translation vector
+     * @param tz z coordinate of the translation vector
      */
     init_translation(tx: number, ty: number, tz: number): void
     /**
@@ -2032,6 +2150,15 @@ class Matrix {
      * 
      * <note>Almost always when you use this function it should be the first
      * transform applied to a new modelview transform</note>
+     * @param eye_position_x The X coordinate to look from
+     * @param eye_position_y The Y coordinate to look from
+     * @param eye_position_z The Z coordinate to look from
+     * @param object_x The X coordinate of the object to look at
+     * @param object_y The Y coordinate of the object to look at
+     * @param object_z The Z coordinate of the object to look at
+     * @param world_up_x The X component of the world's up direction vector
+     * @param world_up_y The Y component of the world's up direction vector
+     * @param world_up_z The Z component of the world's up direction vector
      */
     look_at(eye_position_x: number, eye_position_y: number, eye_position_z: number, object_x: number, object_y: number, object_z: number, world_up_x: number, world_up_y: number, world_up_z: number): void
     /**
@@ -2040,10 +2167,18 @@ class Matrix {
      * 
      * <note>It is possible to multiply the `a` matrix in-place, so
      * `result` can be equal to `a` but can't be equal to `b`.</note>
+     * @param a A 4x4 transformation matrix
+     * @param b A 4x4 transformation matrix
      */
     multiply(a: Matrix, b: Matrix): void
     /**
      * Multiplies `matrix` by a parallel projection matrix.
+     * @param left The coordinate for the left clipping plane
+     * @param right The coordinate for the right clipping plane
+     * @param bottom The coordinate for the bottom clipping plane
+     * @param top The coordinate for the top clipping plane
+     * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+     * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
      */
     ortho(left: number, right: number, bottom: number, top: number, near: number, far: number): void
     /**
@@ -2053,26 +2188,44 @@ class Matrix {
      * ratio since that will reduce the effectiveness of depth testing
      * since there wont be enough precision to identify the depth of
      * objects near to each other.</note>
+     * @param fov_y Vertical field of view angle in degrees.
+     * @param aspect The (width over height) aspect ratio for display
+     * @param z_near The distance to the near clipping plane (Must be positive,   and must not be 0)
+     * @param z_far The distance to the far clipping plane (Must be positive)
      */
     perspective(fov_y: number, aspect: number, z_near: number, z_far: number): void
     /**
      * Multiplies `matrix` with a rotation matrix that applies a rotation
      * of `angle` degrees around the specified 3D vector.
+     * @param angle The angle you want to rotate in degrees
+     * @param x X component of your rotation vector
+     * @param y Y component of your rotation vector
+     * @param z Z component of your rotation vector
      */
     rotate(angle: number, x: number, y: number, z: number): void
     /**
      * Multiplies `matrix` with a transform matrix that scales along the X,
      * Y and Z axis.
+     * @param sx The X scale factor
+     * @param sy The Y scale factor
+     * @param sz The Z scale factor
      */
     scale(sx: number, sy: number, sz: number): void
     /**
      * Transforms a point whos position is given and returned as four float
      * components.
+     * @param x The X component of your points position
+     * @param y The Y component of your points position
+     * @param z The Z component of your points position
+     * @param w The W component of your points position
      */
     transform_point(x: number, y: number, z: number, w: number): [ /* x */ number, /* y */ number, /* z */ number, /* w */ number ]
     /**
      * Multiplies `matrix` with a transform matrix that translates along
      * the X, Y and Z axis.
+     * @param x The X translation you want to apply
+     * @param y The Y translation you want to apply
+     * @param z The Z translation you want to apply
      */
     translate(x: number, y: number, z: number): void
     /**
@@ -2087,6 +2240,8 @@ class Matrix {
      * transformation. Although internally the matrices may have different
      * annotations associated with them and may potentially have a cached
      * inverse matrix these are not considered in the comparison.
+     * @param v1 A 4x4 transformation matrix
+     * @param v2 A 4x4 transformation matrix
      */
     static equal(v1?: object | null, v2?: object | null): Bool
 }
@@ -2098,43 +2253,43 @@ class TextureVertex {
     /**
      * Model x-coordinate
      */
-    readonly x: number
+    x: number
     /**
      * Model y-coordinate
      */
-    readonly y: number
+    y: number
     /**
      * Model z-coordinate
      */
-    readonly z: number
+    z: number
     /**
      * Texture x-coordinate
      */
-    readonly tx: number
+    tx: number
     /**
      * Texture y-coordinate
      */
-    readonly ty: number
+    ty: number
     /**
      * The color to use at this vertex. This is ignored if
      *   use_color is %FALSE when calling cogl_polygon()
      */
-    readonly color: Color
+    color: Color
     static name: string
 }
 class _ColorSizeCheck {
     /* Fields of Cogl-1.0.Cogl._ColorSizeCheck */
-    readonly compile_time_assert_CoglColor_size: number[]
+    compile_time_assert_CoglColor_size: number[]
     static name: string
 }
 class _MatrixSizeCheck {
     /* Fields of Cogl-1.0.Cogl._MatrixSizeCheck */
-    readonly compile_time_assert_CoglMatrix_size: number[]
+    compile_time_assert_CoglMatrix_size: number[]
     static name: string
 }
 class _TextureVertexSizeCheck {
     /* Fields of Cogl-1.0.Cogl._TextureVertexSizeCheck */
-    readonly compile_time_assert_CoglTextureVertex_size: number[]
+    compile_time_assert_CoglTextureVertex_size: number[]
     static name: string
 }
     type Angle = number

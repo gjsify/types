@@ -300,116 +300,117 @@ class AV1Decoder {
      */
     qos: boolean
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoDecoder */
     /**
      * Removes next `n_bytes` of input data and adds it to currently parsed frame.
+     * @param nBytes the number of bytes to add
      */
     addToFrame(nBytes: number): void
     /**
@@ -427,23 +428,28 @@ class AV1Decoder {
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
      */
     allocateOutputFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Same as #gst_video_decoder_allocate_output_frame except it allows passing
      * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param params a #GstBufferPoolAcquireParams
      */
     allocateOutputFrameWithParams(frame: GstVideo.VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
     /**
      * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
      * case and posts a QoS message with the frame's details on the bus.
      * In any case, the frame is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to drop
      */
     dropFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Drops input data.
      * The frame is not considered finished until the whole frame
      * is finished or dropped by the subclass.
+     * @param frame the #GstVideoCodecFrame
      */
     dropSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -455,6 +461,7 @@ class AV1Decoder {
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
+     * @param frame a decoded #GstVideoCodecFrame
      */
     finishFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -462,6 +469,7 @@ class AV1Decoder {
      * by the subclass. This method should be called for all subframes
      * except the last subframe where `gst_video_decoder_finish_frame`
      * should be called instead.
+     * @param frame the #GstVideoCodecFrame
      */
     finishSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -475,6 +483,7 @@ class AV1Decoder {
     getEstimateRate(): number
     /**
      * Get a pending unfinished #GstVideoCodecFrame
+     * @param frameNumber system_frame_number of a frame
      */
     getFrame(frameNumber: number): GstVideo.VideoCodecFrame
     /**
@@ -484,6 +493,7 @@ class AV1Decoder {
     /**
      * Queries the number of the last subframe received by
      * the decoder baseclass in the `frame`.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getInputSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     /**
@@ -496,6 +506,7 @@ class AV1Decoder {
      * allow it to decode and arrive in time (as determined by QoS events).
      * In particular, a negative result means decoding in time is no longer possible
      * and should therefore occur as soon/skippy as possible.
+     * @param frame a #GstVideoCodecFrame
      */
     getMaxDecodeTime(frame: GstVideo.VideoCodecFrame): Gst.ClockTimeDiff
     getMaxErrors(): number
@@ -529,6 +540,7 @@ class AV1Decoder {
     /**
      * Queries the number of subframes in the frame processed by
      * the decoder baseclass.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getProcessedSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     getQosProportion(): number
@@ -548,6 +560,7 @@ class AV1Decoder {
      * in `frame`. This will release the current frame in video decoder
      * allowing to receive new frames from upstream elements. This method
      * must be called in the subclass `handle_frame` callback.
+     * @param frame the #GstVideoCodecFrame to update
      */
     haveLastSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -559,6 +572,8 @@ class AV1Decoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     mergeTags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -571,12 +586,15 @@ class AV1Decoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
      * elements.
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxyGetcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
      * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
      * without any processing other than removing it from list of pending frames,
      * after which it is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to release
      */
     releaseFrame(frame: GstVideo.VideoCodecFrame): void
     /**
@@ -603,21 +621,31 @@ class AV1Decoder {
      *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
      *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
      *     before calling gst_video_decoder_finish_frame().
+     * @param frame a #GstVideoCodecFrame
+     * @param flags #GstVideoDecoderRequestSyncPointFlags
      */
     requestSyncPoint(frame: GstVideo.VideoCodecFrame, flags: GstVideo.VideoDecoderRequestSyncPointFlags): void
     /**
      * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
      */
     setEstimateRate(enabled: boolean): void
     /**
      * Same as #gst_video_decoder_set_output_state() but also allows you to also set
      * the interlacing mode.
+     * @param fmt a #GstVideoFormat
+     * @param interlaceMode A #GstVideoInterlaceMode
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setInterlacedOutputState(fmt: GstVideo.VideoFormat, interlaceMode: GstVideo.VideoInterlaceMode, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
@@ -627,6 +655,7 @@ class AV1Decoder {
      * GST_VIDEO_DECODER_MAX_ERRORS.
      * 
      * The '-1' option was added in 1.4
+     * @param num max tolerated errors
      */
     setMaxErrors(num: number): void
     /**
@@ -636,6 +665,7 @@ class AV1Decoder {
      * Otherwise, it might be handed data without having been configured and
      * is then expected being able to do so either by default
      * or based on the input data.
+     * @param enabled new state
      */
     setNeedsFormat(enabled: boolean): void
     /**
@@ -646,6 +676,7 @@ class AV1Decoder {
      * 
      * If the first frame is not a sync point, the base class will request a sync
      * point via the force-key-unit event.
+     * @param enabled new state
      */
     setNeedsSyncPoint(enabled: boolean): void
     /**
@@ -663,11 +694,16 @@ class AV1Decoder {
      * 
      * The new output state will only take effect (set on pads and buffers) starting
      * from the next call to #gst_video_decoder_finish_frame().
+     * @param fmt a #GstVideoFormat
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setOutputState(fmt: GstVideo.VideoFormat, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Allows baseclass to consider input data as packetized or not. If the
      * input is packetized, then the `parse` method will not be called.
+     * @param packetized whether the input data should be considered as packetized.
      */
     setPacketized(packetized: boolean): void
     /**
@@ -686,6 +722,7 @@ class AV1Decoder {
      * different GstVideoCodecFrame:input_buffer every time until the end of the
      * frame has been signaled using either method.
      * This method must be called during the decoder subclass `set_format` call.
+     * @param subframeMode whether the input data should be considered as subframes.
      */
     setSubframeMode(subframeMode: boolean): void
     /**
@@ -695,6 +732,7 @@ class AV1Decoder {
      * By setting this to true it is possible to further customize the default
      * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
      * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
     setUseDefaultPadAcceptcaps(use: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -718,6 +756,7 @@ class AV1Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -733,6 +772,7 @@ class AV1Decoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -740,6 +780,7 @@ class AV1Decoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -756,6 +797,7 @@ class AV1Decoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -771,6 +813,7 @@ class AV1Decoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -780,6 +823,7 @@ class AV1Decoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -789,6 +833,7 @@ class AV1Decoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -819,21 +864,26 @@ class AV1Decoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -859,10 +909,12 @@ class AV1Decoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -874,6 +926,7 @@ class AV1Decoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -907,11 +960,13 @@ class AV1Decoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -956,6 +1011,7 @@ class AV1Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -967,6 +1023,8 @@ class AV1Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -974,6 +1032,9 @@ class AV1Decoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -981,6 +1042,10 @@ class AV1Decoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -994,6 +1059,10 @@ class AV1Decoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -1022,6 +1091,14 @@ class AV1Decoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -1029,6 +1106,15 @@ class AV1Decoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -1047,6 +1133,7 @@ class AV1Decoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -1063,10 +1150,14 @@ class AV1Decoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -1078,6 +1169,7 @@ class AV1Decoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -1090,6 +1182,7 @@ class AV1Decoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -1101,6 +1194,7 @@ class AV1Decoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -1120,6 +1214,7 @@ class AV1Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -1129,6 +1224,9 @@ class AV1Decoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -1144,6 +1242,7 @@ class AV1Decoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -1152,6 +1251,13 @@ class AV1Decoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -1169,6 +1275,9 @@ class AV1Decoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -1180,12 +1289,14 @@ class AV1Decoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -1193,18 +1304,21 @@ class AV1Decoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -1216,6 +1330,7 @@ class AV1Decoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -1231,6 +1346,7 @@ class AV1Decoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -1247,6 +1363,7 @@ class AV1Decoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -1260,12 +1377,16 @@ class AV1Decoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -1275,6 +1396,7 @@ class AV1Decoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -1282,11 +1404,14 @@ class AV1Decoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -1309,6 +1434,10 @@ class AV1Decoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -1334,6 +1463,8 @@ class AV1Decoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -1343,16 +1474,19 @@ class AV1Decoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -1368,17 +1502,21 @@ class AV1Decoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -1389,6 +1527,7 @@ class AV1Decoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -1396,11 +1535,13 @@ class AV1Decoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -1414,6 +1555,7 @@ class AV1Decoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -1467,6 +1609,10 @@ class AV1Decoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1477,6 +1623,12 @@ class AV1Decoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1500,6 +1652,7 @@ class AV1Decoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1519,11 +1672,14 @@ class AV1Decoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1531,6 +1687,8 @@ class AV1Decoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1548,6 +1706,7 @@ class AV1Decoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1593,6 +1752,7 @@ class AV1Decoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1636,15 +1796,20 @@ class AV1Decoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1685,6 +1850,7 @@ class AV1Decoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1709,6 +1875,7 @@ class AV1Decoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -1728,6 +1895,7 @@ class AV1Decoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -1736,6 +1904,7 @@ class AV1Decoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -1747,6 +1916,8 @@ class AV1Decoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1782,6 +1953,7 @@ class AV1Decoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1888,126 +2060,129 @@ class H264Decoder {
      */
     qos: boolean
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstCodecs-1.0.GstCodecs.H264Decoder */
     /**
      * Retrive DPB and return a #GstH264Picture corresponding to
      * the `system_frame_number`
+     * @param systemFrameNumber a target system frame number of #GstH264Picture
      */
     getPicture(systemFrameNumber: number): H264Picture
     /**
      * Called to en/disable reference picture modification process.
+     * @param process whether subclass is requiring reference picture modification process
      */
     setProcessRefPicLists(process: boolean): void
     /* Methods of GstVideo-1.0.GstVideo.VideoDecoder */
     /**
      * Removes next `n_bytes` of input data and adds it to currently parsed frame.
+     * @param nBytes the number of bytes to add
      */
     addToFrame(nBytes: number): void
     /**
@@ -2025,23 +2200,28 @@ class H264Decoder {
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
      */
     allocateOutputFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Same as #gst_video_decoder_allocate_output_frame except it allows passing
      * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param params a #GstBufferPoolAcquireParams
      */
     allocateOutputFrameWithParams(frame: GstVideo.VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
     /**
      * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
      * case and posts a QoS message with the frame's details on the bus.
      * In any case, the frame is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to drop
      */
     dropFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Drops input data.
      * The frame is not considered finished until the whole frame
      * is finished or dropped by the subclass.
+     * @param frame the #GstVideoCodecFrame
      */
     dropSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -2053,6 +2233,7 @@ class H264Decoder {
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
+     * @param frame a decoded #GstVideoCodecFrame
      */
     finishFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -2060,6 +2241,7 @@ class H264Decoder {
      * by the subclass. This method should be called for all subframes
      * except the last subframe where `gst_video_decoder_finish_frame`
      * should be called instead.
+     * @param frame the #GstVideoCodecFrame
      */
     finishSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -2073,6 +2255,7 @@ class H264Decoder {
     getEstimateRate(): number
     /**
      * Get a pending unfinished #GstVideoCodecFrame
+     * @param frameNumber system_frame_number of a frame
      */
     getFrame(frameNumber: number): GstVideo.VideoCodecFrame
     /**
@@ -2082,6 +2265,7 @@ class H264Decoder {
     /**
      * Queries the number of the last subframe received by
      * the decoder baseclass in the `frame`.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getInputSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     /**
@@ -2094,6 +2278,7 @@ class H264Decoder {
      * allow it to decode and arrive in time (as determined by QoS events).
      * In particular, a negative result means decoding in time is no longer possible
      * and should therefore occur as soon/skippy as possible.
+     * @param frame a #GstVideoCodecFrame
      */
     getMaxDecodeTime(frame: GstVideo.VideoCodecFrame): Gst.ClockTimeDiff
     getMaxErrors(): number
@@ -2127,6 +2312,7 @@ class H264Decoder {
     /**
      * Queries the number of subframes in the frame processed by
      * the decoder baseclass.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getProcessedSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     getQosProportion(): number
@@ -2146,6 +2332,7 @@ class H264Decoder {
      * in `frame`. This will release the current frame in video decoder
      * allowing to receive new frames from upstream elements. This method
      * must be called in the subclass `handle_frame` callback.
+     * @param frame the #GstVideoCodecFrame to update
      */
     haveLastSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -2157,6 +2344,8 @@ class H264Decoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     mergeTags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -2169,12 +2358,15 @@ class H264Decoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
      * elements.
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxyGetcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
      * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
      * without any processing other than removing it from list of pending frames,
      * after which it is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to release
      */
     releaseFrame(frame: GstVideo.VideoCodecFrame): void
     /**
@@ -2201,21 +2393,31 @@ class H264Decoder {
      *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
      *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
      *     before calling gst_video_decoder_finish_frame().
+     * @param frame a #GstVideoCodecFrame
+     * @param flags #GstVideoDecoderRequestSyncPointFlags
      */
     requestSyncPoint(frame: GstVideo.VideoCodecFrame, flags: GstVideo.VideoDecoderRequestSyncPointFlags): void
     /**
      * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
      */
     setEstimateRate(enabled: boolean): void
     /**
      * Same as #gst_video_decoder_set_output_state() but also allows you to also set
      * the interlacing mode.
+     * @param fmt a #GstVideoFormat
+     * @param interlaceMode A #GstVideoInterlaceMode
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setInterlacedOutputState(fmt: GstVideo.VideoFormat, interlaceMode: GstVideo.VideoInterlaceMode, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
@@ -2225,6 +2427,7 @@ class H264Decoder {
      * GST_VIDEO_DECODER_MAX_ERRORS.
      * 
      * The '-1' option was added in 1.4
+     * @param num max tolerated errors
      */
     setMaxErrors(num: number): void
     /**
@@ -2234,6 +2437,7 @@ class H264Decoder {
      * Otherwise, it might be handed data without having been configured and
      * is then expected being able to do so either by default
      * or based on the input data.
+     * @param enabled new state
      */
     setNeedsFormat(enabled: boolean): void
     /**
@@ -2244,6 +2448,7 @@ class H264Decoder {
      * 
      * If the first frame is not a sync point, the base class will request a sync
      * point via the force-key-unit event.
+     * @param enabled new state
      */
     setNeedsSyncPoint(enabled: boolean): void
     /**
@@ -2261,11 +2466,16 @@ class H264Decoder {
      * 
      * The new output state will only take effect (set on pads and buffers) starting
      * from the next call to #gst_video_decoder_finish_frame().
+     * @param fmt a #GstVideoFormat
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setOutputState(fmt: GstVideo.VideoFormat, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Allows baseclass to consider input data as packetized or not. If the
      * input is packetized, then the `parse` method will not be called.
+     * @param packetized whether the input data should be considered as packetized.
      */
     setPacketized(packetized: boolean): void
     /**
@@ -2284,6 +2494,7 @@ class H264Decoder {
      * different GstVideoCodecFrame:input_buffer every time until the end of the
      * frame has been signaled using either method.
      * This method must be called during the decoder subclass `set_format` call.
+     * @param subframeMode whether the input data should be considered as subframes.
      */
     setSubframeMode(subframeMode: boolean): void
     /**
@@ -2293,6 +2504,7 @@ class H264Decoder {
      * By setting this to true it is possible to further customize the default
      * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
      * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
     setUseDefaultPadAcceptcaps(use: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -2316,6 +2528,7 @@ class H264Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -2331,6 +2544,7 @@ class H264Decoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -2338,6 +2552,7 @@ class H264Decoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -2354,6 +2569,7 @@ class H264Decoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -2369,6 +2585,7 @@ class H264Decoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2378,6 +2595,7 @@ class H264Decoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2387,6 +2605,7 @@ class H264Decoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -2417,21 +2636,26 @@ class H264Decoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -2457,10 +2681,12 @@ class H264Decoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -2472,6 +2698,7 @@ class H264Decoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -2505,11 +2732,13 @@ class H264Decoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -2554,6 +2783,7 @@ class H264Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -2565,6 +2795,8 @@ class H264Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -2572,6 +2804,9 @@ class H264Decoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -2579,6 +2814,10 @@ class H264Decoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -2592,6 +2831,10 @@ class H264Decoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -2620,6 +2863,14 @@ class H264Decoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -2627,6 +2878,15 @@ class H264Decoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -2645,6 +2905,7 @@ class H264Decoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -2661,10 +2922,14 @@ class H264Decoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -2676,6 +2941,7 @@ class H264Decoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -2688,6 +2954,7 @@ class H264Decoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -2699,6 +2966,7 @@ class H264Decoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -2718,6 +2986,7 @@ class H264Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -2727,6 +2996,9 @@ class H264Decoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -2742,6 +3014,7 @@ class H264Decoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -2750,6 +3023,13 @@ class H264Decoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -2767,6 +3047,9 @@ class H264Decoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -2778,12 +3061,14 @@ class H264Decoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -2791,18 +3076,21 @@ class H264Decoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -2814,6 +3102,7 @@ class H264Decoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -2829,6 +3118,7 @@ class H264Decoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -2845,6 +3135,7 @@ class H264Decoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -2858,12 +3149,16 @@ class H264Decoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -2873,6 +3168,7 @@ class H264Decoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -2880,11 +3176,14 @@ class H264Decoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -2907,6 +3206,10 @@ class H264Decoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -2932,6 +3235,8 @@ class H264Decoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -2941,16 +3246,19 @@ class H264Decoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -2966,17 +3274,21 @@ class H264Decoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -2987,6 +3299,7 @@ class H264Decoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -2994,11 +3307,13 @@ class H264Decoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -3012,6 +3327,7 @@ class H264Decoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -3065,6 +3381,10 @@ class H264Decoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3075,6 +3395,12 @@ class H264Decoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3098,6 +3424,7 @@ class H264Decoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3117,11 +3444,14 @@ class H264Decoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3129,6 +3459,8 @@ class H264Decoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3146,6 +3478,7 @@ class H264Decoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3191,6 +3524,7 @@ class H264Decoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3234,15 +3568,20 @@ class H264Decoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3283,6 +3622,7 @@ class H264Decoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3307,6 +3647,7 @@ class H264Decoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -3326,6 +3667,7 @@ class H264Decoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -3334,6 +3676,7 @@ class H264Decoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -3345,6 +3688,8 @@ class H264Decoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3380,6 +3725,7 @@ class H264Decoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3475,126 +3821,129 @@ class H265Decoder {
      */
     qos: boolean
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstCodecs-1.0.GstCodecs.H265Decoder */
     /**
      * Retrive DPB and return a #GstH265Picture corresponding to
      * the `system_frame_number`
+     * @param systemFrameNumber a target system frame number of #GstH265Picture
      */
     getPicture(systemFrameNumber: number): H265Picture
     /**
      * Called to en/disable reference picture modification process.
+     * @param process whether subclass is requiring reference picture modification process
      */
     setProcessRefPicLists(process: boolean): void
     /* Methods of GstVideo-1.0.GstVideo.VideoDecoder */
     /**
      * Removes next `n_bytes` of input data and adds it to currently parsed frame.
+     * @param nBytes the number of bytes to add
      */
     addToFrame(nBytes: number): void
     /**
@@ -3612,23 +3961,28 @@ class H265Decoder {
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
      */
     allocateOutputFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Same as #gst_video_decoder_allocate_output_frame except it allows passing
      * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param params a #GstBufferPoolAcquireParams
      */
     allocateOutputFrameWithParams(frame: GstVideo.VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
     /**
      * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
      * case and posts a QoS message with the frame's details on the bus.
      * In any case, the frame is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to drop
      */
     dropFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Drops input data.
      * The frame is not considered finished until the whole frame
      * is finished or dropped by the subclass.
+     * @param frame the #GstVideoCodecFrame
      */
     dropSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -3640,6 +3994,7 @@ class H265Decoder {
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
+     * @param frame a decoded #GstVideoCodecFrame
      */
     finishFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -3647,6 +4002,7 @@ class H265Decoder {
      * by the subclass. This method should be called for all subframes
      * except the last subframe where `gst_video_decoder_finish_frame`
      * should be called instead.
+     * @param frame the #GstVideoCodecFrame
      */
     finishSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -3660,6 +4016,7 @@ class H265Decoder {
     getEstimateRate(): number
     /**
      * Get a pending unfinished #GstVideoCodecFrame
+     * @param frameNumber system_frame_number of a frame
      */
     getFrame(frameNumber: number): GstVideo.VideoCodecFrame
     /**
@@ -3669,6 +4026,7 @@ class H265Decoder {
     /**
      * Queries the number of the last subframe received by
      * the decoder baseclass in the `frame`.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getInputSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     /**
@@ -3681,6 +4039,7 @@ class H265Decoder {
      * allow it to decode and arrive in time (as determined by QoS events).
      * In particular, a negative result means decoding in time is no longer possible
      * and should therefore occur as soon/skippy as possible.
+     * @param frame a #GstVideoCodecFrame
      */
     getMaxDecodeTime(frame: GstVideo.VideoCodecFrame): Gst.ClockTimeDiff
     getMaxErrors(): number
@@ -3714,6 +4073,7 @@ class H265Decoder {
     /**
      * Queries the number of subframes in the frame processed by
      * the decoder baseclass.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getProcessedSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     getQosProportion(): number
@@ -3733,6 +4093,7 @@ class H265Decoder {
      * in `frame`. This will release the current frame in video decoder
      * allowing to receive new frames from upstream elements. This method
      * must be called in the subclass `handle_frame` callback.
+     * @param frame the #GstVideoCodecFrame to update
      */
     haveLastSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -3744,6 +4105,8 @@ class H265Decoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     mergeTags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -3756,12 +4119,15 @@ class H265Decoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
      * elements.
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxyGetcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
      * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
      * without any processing other than removing it from list of pending frames,
      * after which it is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to release
      */
     releaseFrame(frame: GstVideo.VideoCodecFrame): void
     /**
@@ -3788,21 +4154,31 @@ class H265Decoder {
      *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
      *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
      *     before calling gst_video_decoder_finish_frame().
+     * @param frame a #GstVideoCodecFrame
+     * @param flags #GstVideoDecoderRequestSyncPointFlags
      */
     requestSyncPoint(frame: GstVideo.VideoCodecFrame, flags: GstVideo.VideoDecoderRequestSyncPointFlags): void
     /**
      * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
      */
     setEstimateRate(enabled: boolean): void
     /**
      * Same as #gst_video_decoder_set_output_state() but also allows you to also set
      * the interlacing mode.
+     * @param fmt a #GstVideoFormat
+     * @param interlaceMode A #GstVideoInterlaceMode
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setInterlacedOutputState(fmt: GstVideo.VideoFormat, interlaceMode: GstVideo.VideoInterlaceMode, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
@@ -3812,6 +4188,7 @@ class H265Decoder {
      * GST_VIDEO_DECODER_MAX_ERRORS.
      * 
      * The '-1' option was added in 1.4
+     * @param num max tolerated errors
      */
     setMaxErrors(num: number): void
     /**
@@ -3821,6 +4198,7 @@ class H265Decoder {
      * Otherwise, it might be handed data without having been configured and
      * is then expected being able to do so either by default
      * or based on the input data.
+     * @param enabled new state
      */
     setNeedsFormat(enabled: boolean): void
     /**
@@ -3831,6 +4209,7 @@ class H265Decoder {
      * 
      * If the first frame is not a sync point, the base class will request a sync
      * point via the force-key-unit event.
+     * @param enabled new state
      */
     setNeedsSyncPoint(enabled: boolean): void
     /**
@@ -3848,11 +4227,16 @@ class H265Decoder {
      * 
      * The new output state will only take effect (set on pads and buffers) starting
      * from the next call to #gst_video_decoder_finish_frame().
+     * @param fmt a #GstVideoFormat
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setOutputState(fmt: GstVideo.VideoFormat, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Allows baseclass to consider input data as packetized or not. If the
      * input is packetized, then the `parse` method will not be called.
+     * @param packetized whether the input data should be considered as packetized.
      */
     setPacketized(packetized: boolean): void
     /**
@@ -3871,6 +4255,7 @@ class H265Decoder {
      * different GstVideoCodecFrame:input_buffer every time until the end of the
      * frame has been signaled using either method.
      * This method must be called during the decoder subclass `set_format` call.
+     * @param subframeMode whether the input data should be considered as subframes.
      */
     setSubframeMode(subframeMode: boolean): void
     /**
@@ -3880,6 +4265,7 @@ class H265Decoder {
      * By setting this to true it is possible to further customize the default
      * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
      * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
     setUseDefaultPadAcceptcaps(use: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -3903,6 +4289,7 @@ class H265Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -3918,6 +4305,7 @@ class H265Decoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -3925,6 +4313,7 @@ class H265Decoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -3941,6 +4330,7 @@ class H265Decoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -3956,6 +4346,7 @@ class H265Decoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -3965,6 +4356,7 @@ class H265Decoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -3974,6 +4366,7 @@ class H265Decoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -4004,21 +4397,26 @@ class H265Decoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -4044,10 +4442,12 @@ class H265Decoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -4059,6 +4459,7 @@ class H265Decoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -4092,11 +4493,13 @@ class H265Decoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -4141,6 +4544,7 @@ class H265Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -4152,6 +4556,8 @@ class H265Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -4159,6 +4565,9 @@ class H265Decoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -4166,6 +4575,10 @@ class H265Decoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -4179,6 +4592,10 @@ class H265Decoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -4207,6 +4624,14 @@ class H265Decoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -4214,6 +4639,15 @@ class H265Decoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -4232,6 +4666,7 @@ class H265Decoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -4248,10 +4683,14 @@ class H265Decoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -4263,6 +4702,7 @@ class H265Decoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -4275,6 +4715,7 @@ class H265Decoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -4286,6 +4727,7 @@ class H265Decoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -4305,6 +4747,7 @@ class H265Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -4314,6 +4757,9 @@ class H265Decoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -4329,6 +4775,7 @@ class H265Decoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -4337,6 +4784,13 @@ class H265Decoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -4354,6 +4808,9 @@ class H265Decoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -4365,12 +4822,14 @@ class H265Decoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -4378,18 +4837,21 @@ class H265Decoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -4401,6 +4863,7 @@ class H265Decoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -4416,6 +4879,7 @@ class H265Decoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -4432,6 +4896,7 @@ class H265Decoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -4445,12 +4910,16 @@ class H265Decoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -4460,6 +4929,7 @@ class H265Decoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -4467,11 +4937,14 @@ class H265Decoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -4494,6 +4967,10 @@ class H265Decoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -4519,6 +4996,8 @@ class H265Decoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -4528,16 +5007,19 @@ class H265Decoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -4553,17 +5035,21 @@ class H265Decoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -4574,6 +5060,7 @@ class H265Decoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -4581,11 +5068,13 @@ class H265Decoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -4599,6 +5088,7 @@ class H265Decoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -4652,6 +5142,10 @@ class H265Decoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4662,6 +5156,12 @@ class H265Decoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4685,6 +5185,7 @@ class H265Decoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4704,11 +5205,14 @@ class H265Decoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4716,6 +5220,8 @@ class H265Decoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4733,6 +5239,7 @@ class H265Decoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4778,6 +5285,7 @@ class H265Decoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4821,15 +5329,20 @@ class H265Decoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4870,6 +5383,7 @@ class H265Decoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4894,6 +5408,7 @@ class H265Decoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -4913,6 +5428,7 @@ class H265Decoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -4921,6 +5437,7 @@ class H265Decoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -4932,6 +5449,8 @@ class H265Decoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4967,6 +5486,7 @@ class H265Decoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5057,116 +5577,117 @@ class Mpeg2Decoder {
      */
     qos: boolean
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoDecoder */
     /**
      * Removes next `n_bytes` of input data and adds it to currently parsed frame.
+     * @param nBytes the number of bytes to add
      */
     addToFrame(nBytes: number): void
     /**
@@ -5184,23 +5705,28 @@ class Mpeg2Decoder {
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
      */
     allocateOutputFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Same as #gst_video_decoder_allocate_output_frame except it allows passing
      * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param params a #GstBufferPoolAcquireParams
      */
     allocateOutputFrameWithParams(frame: GstVideo.VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
     /**
      * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
      * case and posts a QoS message with the frame's details on the bus.
      * In any case, the frame is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to drop
      */
     dropFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Drops input data.
      * The frame is not considered finished until the whole frame
      * is finished or dropped by the subclass.
+     * @param frame the #GstVideoCodecFrame
      */
     dropSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -5212,6 +5738,7 @@ class Mpeg2Decoder {
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
+     * @param frame a decoded #GstVideoCodecFrame
      */
     finishFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -5219,6 +5746,7 @@ class Mpeg2Decoder {
      * by the subclass. This method should be called for all subframes
      * except the last subframe where `gst_video_decoder_finish_frame`
      * should be called instead.
+     * @param frame the #GstVideoCodecFrame
      */
     finishSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -5232,6 +5760,7 @@ class Mpeg2Decoder {
     getEstimateRate(): number
     /**
      * Get a pending unfinished #GstVideoCodecFrame
+     * @param frameNumber system_frame_number of a frame
      */
     getFrame(frameNumber: number): GstVideo.VideoCodecFrame
     /**
@@ -5241,6 +5770,7 @@ class Mpeg2Decoder {
     /**
      * Queries the number of the last subframe received by
      * the decoder baseclass in the `frame`.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getInputSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     /**
@@ -5253,6 +5783,7 @@ class Mpeg2Decoder {
      * allow it to decode and arrive in time (as determined by QoS events).
      * In particular, a negative result means decoding in time is no longer possible
      * and should therefore occur as soon/skippy as possible.
+     * @param frame a #GstVideoCodecFrame
      */
     getMaxDecodeTime(frame: GstVideo.VideoCodecFrame): Gst.ClockTimeDiff
     getMaxErrors(): number
@@ -5286,6 +5817,7 @@ class Mpeg2Decoder {
     /**
      * Queries the number of subframes in the frame processed by
      * the decoder baseclass.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getProcessedSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     getQosProportion(): number
@@ -5305,6 +5837,7 @@ class Mpeg2Decoder {
      * in `frame`. This will release the current frame in video decoder
      * allowing to receive new frames from upstream elements. This method
      * must be called in the subclass `handle_frame` callback.
+     * @param frame the #GstVideoCodecFrame to update
      */
     haveLastSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -5316,6 +5849,8 @@ class Mpeg2Decoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     mergeTags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -5328,12 +5863,15 @@ class Mpeg2Decoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
      * elements.
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxyGetcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
      * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
      * without any processing other than removing it from list of pending frames,
      * after which it is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to release
      */
     releaseFrame(frame: GstVideo.VideoCodecFrame): void
     /**
@@ -5360,21 +5898,31 @@ class Mpeg2Decoder {
      *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
      *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
      *     before calling gst_video_decoder_finish_frame().
+     * @param frame a #GstVideoCodecFrame
+     * @param flags #GstVideoDecoderRequestSyncPointFlags
      */
     requestSyncPoint(frame: GstVideo.VideoCodecFrame, flags: GstVideo.VideoDecoderRequestSyncPointFlags): void
     /**
      * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
      */
     setEstimateRate(enabled: boolean): void
     /**
      * Same as #gst_video_decoder_set_output_state() but also allows you to also set
      * the interlacing mode.
+     * @param fmt a #GstVideoFormat
+     * @param interlaceMode A #GstVideoInterlaceMode
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setInterlacedOutputState(fmt: GstVideo.VideoFormat, interlaceMode: GstVideo.VideoInterlaceMode, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
@@ -5384,6 +5932,7 @@ class Mpeg2Decoder {
      * GST_VIDEO_DECODER_MAX_ERRORS.
      * 
      * The '-1' option was added in 1.4
+     * @param num max tolerated errors
      */
     setMaxErrors(num: number): void
     /**
@@ -5393,6 +5942,7 @@ class Mpeg2Decoder {
      * Otherwise, it might be handed data without having been configured and
      * is then expected being able to do so either by default
      * or based on the input data.
+     * @param enabled new state
      */
     setNeedsFormat(enabled: boolean): void
     /**
@@ -5403,6 +5953,7 @@ class Mpeg2Decoder {
      * 
      * If the first frame is not a sync point, the base class will request a sync
      * point via the force-key-unit event.
+     * @param enabled new state
      */
     setNeedsSyncPoint(enabled: boolean): void
     /**
@@ -5420,11 +5971,16 @@ class Mpeg2Decoder {
      * 
      * The new output state will only take effect (set on pads and buffers) starting
      * from the next call to #gst_video_decoder_finish_frame().
+     * @param fmt a #GstVideoFormat
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setOutputState(fmt: GstVideo.VideoFormat, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Allows baseclass to consider input data as packetized or not. If the
      * input is packetized, then the `parse` method will not be called.
+     * @param packetized whether the input data should be considered as packetized.
      */
     setPacketized(packetized: boolean): void
     /**
@@ -5443,6 +5999,7 @@ class Mpeg2Decoder {
      * different GstVideoCodecFrame:input_buffer every time until the end of the
      * frame has been signaled using either method.
      * This method must be called during the decoder subclass `set_format` call.
+     * @param subframeMode whether the input data should be considered as subframes.
      */
     setSubframeMode(subframeMode: boolean): void
     /**
@@ -5452,6 +6009,7 @@ class Mpeg2Decoder {
      * By setting this to true it is possible to further customize the default
      * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
      * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
     setUseDefaultPadAcceptcaps(use: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -5475,6 +6033,7 @@ class Mpeg2Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -5490,6 +6049,7 @@ class Mpeg2Decoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -5497,6 +6057,7 @@ class Mpeg2Decoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -5513,6 +6074,7 @@ class Mpeg2Decoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -5528,6 +6090,7 @@ class Mpeg2Decoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5537,6 +6100,7 @@ class Mpeg2Decoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5546,6 +6110,7 @@ class Mpeg2Decoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5576,21 +6141,26 @@ class Mpeg2Decoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -5616,10 +6186,12 @@ class Mpeg2Decoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -5631,6 +6203,7 @@ class Mpeg2Decoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -5664,11 +6237,13 @@ class Mpeg2Decoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -5713,6 +6288,7 @@ class Mpeg2Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -5724,6 +6300,8 @@ class Mpeg2Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -5731,6 +6309,9 @@ class Mpeg2Decoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -5738,6 +6319,10 @@ class Mpeg2Decoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -5751,6 +6336,10 @@ class Mpeg2Decoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -5779,6 +6368,14 @@ class Mpeg2Decoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -5786,6 +6383,15 @@ class Mpeg2Decoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -5804,6 +6410,7 @@ class Mpeg2Decoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -5820,10 +6427,14 @@ class Mpeg2Decoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -5835,6 +6446,7 @@ class Mpeg2Decoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -5847,6 +6459,7 @@ class Mpeg2Decoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -5858,6 +6471,7 @@ class Mpeg2Decoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -5877,6 +6491,7 @@ class Mpeg2Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -5886,6 +6501,9 @@ class Mpeg2Decoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -5901,6 +6519,7 @@ class Mpeg2Decoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -5909,6 +6528,13 @@ class Mpeg2Decoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -5926,6 +6552,9 @@ class Mpeg2Decoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -5937,12 +6566,14 @@ class Mpeg2Decoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -5950,18 +6581,21 @@ class Mpeg2Decoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -5973,6 +6607,7 @@ class Mpeg2Decoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -5988,6 +6623,7 @@ class Mpeg2Decoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -6004,6 +6640,7 @@ class Mpeg2Decoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -6017,12 +6654,16 @@ class Mpeg2Decoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -6032,6 +6673,7 @@ class Mpeg2Decoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -6039,11 +6681,14 @@ class Mpeg2Decoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -6066,6 +6711,10 @@ class Mpeg2Decoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -6091,6 +6740,8 @@ class Mpeg2Decoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -6100,16 +6751,19 @@ class Mpeg2Decoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -6125,17 +6779,21 @@ class Mpeg2Decoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -6146,6 +6804,7 @@ class Mpeg2Decoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -6153,11 +6812,13 @@ class Mpeg2Decoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -6171,6 +6832,7 @@ class Mpeg2Decoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -6224,6 +6886,10 @@ class Mpeg2Decoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6234,6 +6900,12 @@ class Mpeg2Decoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6257,6 +6929,7 @@ class Mpeg2Decoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6276,11 +6949,14 @@ class Mpeg2Decoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6288,6 +6964,8 @@ class Mpeg2Decoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6305,6 +6983,7 @@ class Mpeg2Decoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6350,6 +7029,7 @@ class Mpeg2Decoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6393,15 +7073,20 @@ class Mpeg2Decoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6442,6 +7127,7 @@ class Mpeg2Decoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6466,6 +7152,7 @@ class Mpeg2Decoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -6485,6 +7172,7 @@ class Mpeg2Decoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -6493,6 +7181,7 @@ class Mpeg2Decoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -6504,6 +7193,8 @@ class Mpeg2Decoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6539,6 +7230,7 @@ class Mpeg2Decoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6629,116 +7321,117 @@ class Vp8Decoder {
      */
     qos: boolean
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoDecoder */
     /**
      * Removes next `n_bytes` of input data and adds it to currently parsed frame.
+     * @param nBytes the number of bytes to add
      */
     addToFrame(nBytes: number): void
     /**
@@ -6756,23 +7449,28 @@ class Vp8Decoder {
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
      */
     allocateOutputFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Same as #gst_video_decoder_allocate_output_frame except it allows passing
      * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param params a #GstBufferPoolAcquireParams
      */
     allocateOutputFrameWithParams(frame: GstVideo.VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
     /**
      * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
      * case and posts a QoS message with the frame's details on the bus.
      * In any case, the frame is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to drop
      */
     dropFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Drops input data.
      * The frame is not considered finished until the whole frame
      * is finished or dropped by the subclass.
+     * @param frame the #GstVideoCodecFrame
      */
     dropSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -6784,6 +7482,7 @@ class Vp8Decoder {
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
+     * @param frame a decoded #GstVideoCodecFrame
      */
     finishFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -6791,6 +7490,7 @@ class Vp8Decoder {
      * by the subclass. This method should be called for all subframes
      * except the last subframe where `gst_video_decoder_finish_frame`
      * should be called instead.
+     * @param frame the #GstVideoCodecFrame
      */
     finishSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -6804,6 +7504,7 @@ class Vp8Decoder {
     getEstimateRate(): number
     /**
      * Get a pending unfinished #GstVideoCodecFrame
+     * @param frameNumber system_frame_number of a frame
      */
     getFrame(frameNumber: number): GstVideo.VideoCodecFrame
     /**
@@ -6813,6 +7514,7 @@ class Vp8Decoder {
     /**
      * Queries the number of the last subframe received by
      * the decoder baseclass in the `frame`.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getInputSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     /**
@@ -6825,6 +7527,7 @@ class Vp8Decoder {
      * allow it to decode and arrive in time (as determined by QoS events).
      * In particular, a negative result means decoding in time is no longer possible
      * and should therefore occur as soon/skippy as possible.
+     * @param frame a #GstVideoCodecFrame
      */
     getMaxDecodeTime(frame: GstVideo.VideoCodecFrame): Gst.ClockTimeDiff
     getMaxErrors(): number
@@ -6858,6 +7561,7 @@ class Vp8Decoder {
     /**
      * Queries the number of subframes in the frame processed by
      * the decoder baseclass.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getProcessedSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     getQosProportion(): number
@@ -6877,6 +7581,7 @@ class Vp8Decoder {
      * in `frame`. This will release the current frame in video decoder
      * allowing to receive new frames from upstream elements. This method
      * must be called in the subclass `handle_frame` callback.
+     * @param frame the #GstVideoCodecFrame to update
      */
     haveLastSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -6888,6 +7593,8 @@ class Vp8Decoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     mergeTags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -6900,12 +7607,15 @@ class Vp8Decoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
      * elements.
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxyGetcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
      * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
      * without any processing other than removing it from list of pending frames,
      * after which it is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to release
      */
     releaseFrame(frame: GstVideo.VideoCodecFrame): void
     /**
@@ -6932,21 +7642,31 @@ class Vp8Decoder {
      *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
      *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
      *     before calling gst_video_decoder_finish_frame().
+     * @param frame a #GstVideoCodecFrame
+     * @param flags #GstVideoDecoderRequestSyncPointFlags
      */
     requestSyncPoint(frame: GstVideo.VideoCodecFrame, flags: GstVideo.VideoDecoderRequestSyncPointFlags): void
     /**
      * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
      */
     setEstimateRate(enabled: boolean): void
     /**
      * Same as #gst_video_decoder_set_output_state() but also allows you to also set
      * the interlacing mode.
+     * @param fmt a #GstVideoFormat
+     * @param interlaceMode A #GstVideoInterlaceMode
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setInterlacedOutputState(fmt: GstVideo.VideoFormat, interlaceMode: GstVideo.VideoInterlaceMode, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
@@ -6956,6 +7676,7 @@ class Vp8Decoder {
      * GST_VIDEO_DECODER_MAX_ERRORS.
      * 
      * The '-1' option was added in 1.4
+     * @param num max tolerated errors
      */
     setMaxErrors(num: number): void
     /**
@@ -6965,6 +7686,7 @@ class Vp8Decoder {
      * Otherwise, it might be handed data without having been configured and
      * is then expected being able to do so either by default
      * or based on the input data.
+     * @param enabled new state
      */
     setNeedsFormat(enabled: boolean): void
     /**
@@ -6975,6 +7697,7 @@ class Vp8Decoder {
      * 
      * If the first frame is not a sync point, the base class will request a sync
      * point via the force-key-unit event.
+     * @param enabled new state
      */
     setNeedsSyncPoint(enabled: boolean): void
     /**
@@ -6992,11 +7715,16 @@ class Vp8Decoder {
      * 
      * The new output state will only take effect (set on pads and buffers) starting
      * from the next call to #gst_video_decoder_finish_frame().
+     * @param fmt a #GstVideoFormat
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setOutputState(fmt: GstVideo.VideoFormat, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Allows baseclass to consider input data as packetized or not. If the
      * input is packetized, then the `parse` method will not be called.
+     * @param packetized whether the input data should be considered as packetized.
      */
     setPacketized(packetized: boolean): void
     /**
@@ -7015,6 +7743,7 @@ class Vp8Decoder {
      * different GstVideoCodecFrame:input_buffer every time until the end of the
      * frame has been signaled using either method.
      * This method must be called during the decoder subclass `set_format` call.
+     * @param subframeMode whether the input data should be considered as subframes.
      */
     setSubframeMode(subframeMode: boolean): void
     /**
@@ -7024,6 +7753,7 @@ class Vp8Decoder {
      * By setting this to true it is possible to further customize the default
      * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
      * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
     setUseDefaultPadAcceptcaps(use: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -7047,6 +7777,7 @@ class Vp8Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -7062,6 +7793,7 @@ class Vp8Decoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -7069,6 +7801,7 @@ class Vp8Decoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -7085,6 +7818,7 @@ class Vp8Decoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -7100,6 +7834,7 @@ class Vp8Decoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -7109,6 +7844,7 @@ class Vp8Decoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -7118,6 +7854,7 @@ class Vp8Decoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -7148,21 +7885,26 @@ class Vp8Decoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -7188,10 +7930,12 @@ class Vp8Decoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -7203,6 +7947,7 @@ class Vp8Decoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -7236,11 +7981,13 @@ class Vp8Decoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -7285,6 +8032,7 @@ class Vp8Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -7296,6 +8044,8 @@ class Vp8Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -7303,6 +8053,9 @@ class Vp8Decoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -7310,6 +8063,10 @@ class Vp8Decoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -7323,6 +8080,10 @@ class Vp8Decoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -7351,6 +8112,14 @@ class Vp8Decoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -7358,6 +8127,15 @@ class Vp8Decoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -7376,6 +8154,7 @@ class Vp8Decoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -7392,10 +8171,14 @@ class Vp8Decoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -7407,6 +8190,7 @@ class Vp8Decoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -7419,6 +8203,7 @@ class Vp8Decoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -7430,6 +8215,7 @@ class Vp8Decoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -7449,6 +8235,7 @@ class Vp8Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -7458,6 +8245,9 @@ class Vp8Decoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -7473,6 +8263,7 @@ class Vp8Decoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -7481,6 +8272,13 @@ class Vp8Decoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -7498,6 +8296,9 @@ class Vp8Decoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -7509,12 +8310,14 @@ class Vp8Decoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -7522,18 +8325,21 @@ class Vp8Decoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -7545,6 +8351,7 @@ class Vp8Decoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -7560,6 +8367,7 @@ class Vp8Decoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -7576,6 +8384,7 @@ class Vp8Decoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -7589,12 +8398,16 @@ class Vp8Decoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -7604,6 +8417,7 @@ class Vp8Decoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -7611,11 +8425,14 @@ class Vp8Decoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -7638,6 +8455,10 @@ class Vp8Decoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -7663,6 +8484,8 @@ class Vp8Decoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -7672,16 +8495,19 @@ class Vp8Decoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -7697,17 +8523,21 @@ class Vp8Decoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -7718,6 +8548,7 @@ class Vp8Decoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -7725,11 +8556,13 @@ class Vp8Decoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -7743,6 +8576,7 @@ class Vp8Decoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -7796,6 +8630,10 @@ class Vp8Decoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7806,6 +8644,12 @@ class Vp8Decoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7829,6 +8673,7 @@ class Vp8Decoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7848,11 +8693,14 @@ class Vp8Decoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7860,6 +8708,8 @@ class Vp8Decoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7877,6 +8727,7 @@ class Vp8Decoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7922,6 +8773,7 @@ class Vp8Decoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7965,15 +8817,20 @@ class Vp8Decoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8014,6 +8871,7 @@ class Vp8Decoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8038,6 +8896,7 @@ class Vp8Decoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -8057,6 +8916,7 @@ class Vp8Decoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -8065,6 +8925,7 @@ class Vp8Decoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -8076,6 +8937,8 @@ class Vp8Decoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8111,6 +8974,7 @@ class Vp8Decoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8201,121 +9065,123 @@ class Vp9Decoder {
      */
     qos: boolean
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstCodecs-1.0.GstCodecs.Vp9Decoder */
     /**
      * Called to set non-keyframe format change awareness
+     * @param support whether subclass can support non-keyframe format change
      */
     setNonKeyframeFormatChangeSupport(support: boolean): void
     /* Methods of GstVideo-1.0.GstVideo.VideoDecoder */
     /**
      * Removes next `n_bytes` of input data and adds it to currently parsed frame.
+     * @param nBytes the number of bytes to add
      */
     addToFrame(nBytes: number): void
     /**
@@ -8333,23 +9199,28 @@ class Vp9Decoder {
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
      */
     allocateOutputFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Same as #gst_video_decoder_allocate_output_frame except it allows passing
      * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param params a #GstBufferPoolAcquireParams
      */
     allocateOutputFrameWithParams(frame: GstVideo.VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
     /**
      * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
      * case and posts a QoS message with the frame's details on the bus.
      * In any case, the frame is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to drop
      */
     dropFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
      * Drops input data.
      * The frame is not considered finished until the whole frame
      * is finished or dropped by the subclass.
+     * @param frame the #GstVideoCodecFrame
      */
     dropSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -8361,6 +9232,7 @@ class Vp9Decoder {
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
+     * @param frame a decoded #GstVideoCodecFrame
      */
     finishFrame(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -8368,6 +9240,7 @@ class Vp9Decoder {
      * by the subclass. This method should be called for all subframes
      * except the last subframe where `gst_video_decoder_finish_frame`
      * should be called instead.
+     * @param frame the #GstVideoCodecFrame
      */
     finishSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -8381,6 +9254,7 @@ class Vp9Decoder {
     getEstimateRate(): number
     /**
      * Get a pending unfinished #GstVideoCodecFrame
+     * @param frameNumber system_frame_number of a frame
      */
     getFrame(frameNumber: number): GstVideo.VideoCodecFrame
     /**
@@ -8390,6 +9264,7 @@ class Vp9Decoder {
     /**
      * Queries the number of the last subframe received by
      * the decoder baseclass in the `frame`.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getInputSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     /**
@@ -8402,6 +9277,7 @@ class Vp9Decoder {
      * allow it to decode and arrive in time (as determined by QoS events).
      * In particular, a negative result means decoding in time is no longer possible
      * and should therefore occur as soon/skippy as possible.
+     * @param frame a #GstVideoCodecFrame
      */
     getMaxDecodeTime(frame: GstVideo.VideoCodecFrame): Gst.ClockTimeDiff
     getMaxErrors(): number
@@ -8435,6 +9311,7 @@ class Vp9Decoder {
     /**
      * Queries the number of subframes in the frame processed by
      * the decoder baseclass.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getProcessedSubframeIndex(frame: GstVideo.VideoCodecFrame): number
     getQosProportion(): number
@@ -8454,6 +9331,7 @@ class Vp9Decoder {
      * in `frame`. This will release the current frame in video decoder
      * allowing to receive new frames from upstream elements. This method
      * must be called in the subclass `handle_frame` callback.
+     * @param frame the #GstVideoCodecFrame to update
      */
     haveLastSubframe(frame: GstVideo.VideoCodecFrame): Gst.FlowReturn
     /**
@@ -8465,6 +9343,8 @@ class Vp9Decoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     mergeTags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -8477,12 +9357,15 @@ class Vp9Decoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
      * elements.
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxyGetcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
      * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
      * without any processing other than removing it from list of pending frames,
      * after which it is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to release
      */
     releaseFrame(frame: GstVideo.VideoCodecFrame): void
     /**
@@ -8509,21 +9392,31 @@ class Vp9Decoder {
      *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
      *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
      *     before calling gst_video_decoder_finish_frame().
+     * @param frame a #GstVideoCodecFrame
+     * @param flags #GstVideoDecoderRequestSyncPointFlags
      */
     requestSyncPoint(frame: GstVideo.VideoCodecFrame, flags: GstVideo.VideoDecoderRequestSyncPointFlags): void
     /**
      * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
      */
     setEstimateRate(enabled: boolean): void
     /**
      * Same as #gst_video_decoder_set_output_state() but also allows you to also set
      * the interlacing mode.
+     * @param fmt a #GstVideoFormat
+     * @param interlaceMode A #GstVideoInterlaceMode
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setInterlacedOutputState(fmt: GstVideo.VideoFormat, interlaceMode: GstVideo.VideoInterlaceMode, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
@@ -8533,6 +9426,7 @@ class Vp9Decoder {
      * GST_VIDEO_DECODER_MAX_ERRORS.
      * 
      * The '-1' option was added in 1.4
+     * @param num max tolerated errors
      */
     setMaxErrors(num: number): void
     /**
@@ -8542,6 +9436,7 @@ class Vp9Decoder {
      * Otherwise, it might be handed data without having been configured and
      * is then expected being able to do so either by default
      * or based on the input data.
+     * @param enabled new state
      */
     setNeedsFormat(enabled: boolean): void
     /**
@@ -8552,6 +9447,7 @@ class Vp9Decoder {
      * 
      * If the first frame is not a sync point, the base class will request a sync
      * point via the force-key-unit event.
+     * @param enabled new state
      */
     setNeedsSyncPoint(enabled: boolean): void
     /**
@@ -8569,11 +9465,16 @@ class Vp9Decoder {
      * 
      * The new output state will only take effect (set on pads and buffers) starting
      * from the next call to #gst_video_decoder_finish_frame().
+     * @param fmt a #GstVideoFormat
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setOutputState(fmt: GstVideo.VideoFormat, width: number, height: number, reference?: GstVideo.VideoCodecState | null): GstVideo.VideoCodecState
     /**
      * Allows baseclass to consider input data as packetized or not. If the
      * input is packetized, then the `parse` method will not be called.
+     * @param packetized whether the input data should be considered as packetized.
      */
     setPacketized(packetized: boolean): void
     /**
@@ -8592,6 +9493,7 @@ class Vp9Decoder {
      * different GstVideoCodecFrame:input_buffer every time until the end of the
      * frame has been signaled using either method.
      * This method must be called during the decoder subclass `set_format` call.
+     * @param subframeMode whether the input data should be considered as subframes.
      */
     setSubframeMode(subframeMode: boolean): void
     /**
@@ -8601,6 +9503,7 @@ class Vp9Decoder {
      * By setting this to true it is possible to further customize the default
      * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
      * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
     setUseDefaultPadAcceptcaps(use: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -8624,6 +9527,7 @@ class Vp9Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -8639,6 +9543,7 @@ class Vp9Decoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -8646,6 +9551,7 @@ class Vp9Decoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -8662,6 +9568,7 @@ class Vp9Decoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -8677,6 +9584,7 @@ class Vp9Decoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -8686,6 +9594,7 @@ class Vp9Decoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -8695,6 +9604,7 @@ class Vp9Decoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -8725,21 +9635,26 @@ class Vp9Decoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -8765,10 +9680,12 @@ class Vp9Decoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -8780,6 +9697,7 @@ class Vp9Decoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -8813,11 +9731,13 @@ class Vp9Decoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -8862,6 +9782,7 @@ class Vp9Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -8873,6 +9794,8 @@ class Vp9Decoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -8880,6 +9803,9 @@ class Vp9Decoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -8887,6 +9813,10 @@ class Vp9Decoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -8900,6 +9830,10 @@ class Vp9Decoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -8928,6 +9862,14 @@ class Vp9Decoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -8935,6 +9877,15 @@ class Vp9Decoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -8953,6 +9904,7 @@ class Vp9Decoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -8969,10 +9921,14 @@ class Vp9Decoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -8984,6 +9940,7 @@ class Vp9Decoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -8996,6 +9953,7 @@ class Vp9Decoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -9007,6 +9965,7 @@ class Vp9Decoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -9026,6 +9985,7 @@ class Vp9Decoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -9035,6 +9995,9 @@ class Vp9Decoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -9050,6 +10013,7 @@ class Vp9Decoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -9058,6 +10022,13 @@ class Vp9Decoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -9075,6 +10046,9 @@ class Vp9Decoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -9086,12 +10060,14 @@ class Vp9Decoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -9099,18 +10075,21 @@ class Vp9Decoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -9122,6 +10101,7 @@ class Vp9Decoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -9137,6 +10117,7 @@ class Vp9Decoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -9153,6 +10134,7 @@ class Vp9Decoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -9166,12 +10148,16 @@ class Vp9Decoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -9181,6 +10167,7 @@ class Vp9Decoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -9188,11 +10175,14 @@ class Vp9Decoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -9215,6 +10205,10 @@ class Vp9Decoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -9240,6 +10234,8 @@ class Vp9Decoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -9249,16 +10245,19 @@ class Vp9Decoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -9274,17 +10273,21 @@ class Vp9Decoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -9295,6 +10298,7 @@ class Vp9Decoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -9302,11 +10306,13 @@ class Vp9Decoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -9320,6 +10326,7 @@ class Vp9Decoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -9373,6 +10380,10 @@ class Vp9Decoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9383,6 +10394,12 @@ class Vp9Decoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9406,6 +10423,7 @@ class Vp9Decoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9425,11 +10443,14 @@ class Vp9Decoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9437,6 +10458,8 @@ class Vp9Decoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9454,6 +10477,7 @@ class Vp9Decoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9499,6 +10523,7 @@ class Vp9Decoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9542,15 +10567,20 @@ class Vp9Decoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9591,6 +10621,7 @@ class Vp9Decoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9615,6 +10646,7 @@ class Vp9Decoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -9634,6 +10666,7 @@ class Vp9Decoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -9642,6 +10675,7 @@ class Vp9Decoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -9653,6 +10687,8 @@ class Vp9Decoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9688,6 +10724,7 @@ class Vp9Decoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9738,13 +10775,13 @@ class Vp9Decoder {
 }
 abstract class AV1DecoderClass {
     /* Fields of GstCodecs-1.0.GstCodecs.AV1DecoderClass */
-    readonly parentClass: GstVideo.VideoDecoderClass
-    readonly newPicture: (decoder: AV1Decoder, frame: GstVideo.VideoCodecFrame, picture: AV1Picture) => Gst.FlowReturn
-    readonly duplicatePicture: (decoder: AV1Decoder, picture: AV1Picture) => AV1Picture
-    readonly startPicture: (decoder: AV1Decoder, picture: AV1Picture, dpb: AV1Dpb) => Gst.FlowReturn
-    readonly decodeTile: (decoder: AV1Decoder, picture: AV1Picture, tile: AV1Tile) => Gst.FlowReturn
-    readonly endPicture: (decoder: AV1Decoder, picture: AV1Picture) => Gst.FlowReturn
-    readonly outputPicture: (decoder: AV1Decoder, frame: GstVideo.VideoCodecFrame, picture: AV1Picture) => Gst.FlowReturn
+    parentClass: GstVideo.VideoDecoderClass
+    newPicture: (decoder: AV1Decoder, frame: GstVideo.VideoCodecFrame, picture: AV1Picture) => Gst.FlowReturn
+    duplicatePicture: (decoder: AV1Decoder, frame: GstVideo.VideoCodecFrame, picture: AV1Picture) => AV1Picture
+    startPicture: (decoder: AV1Decoder, picture: AV1Picture, dpb: AV1Dpb) => Gst.FlowReturn
+    decodeTile: (decoder: AV1Decoder, picture: AV1Picture, tile: AV1Tile) => Gst.FlowReturn
+    endPicture: (decoder: AV1Decoder, picture: AV1Picture) => Gst.FlowReturn
+    outputPicture: (decoder: AV1Decoder, frame: GstVideo.VideoCodecFrame, picture: AV1Picture) => Gst.FlowReturn
     static name: string
 }
 class AV1DecoderPrivate {
@@ -9752,10 +10789,11 @@ class AV1DecoderPrivate {
 }
 class AV1Dpb {
     /* Fields of GstCodecs-1.0.GstCodecs.AV1Dpb */
-    readonly picList: AV1Picture[]
+    picList: AV1Picture[]
     /* Methods of GstCodecs-1.0.GstCodecs.AV1Dpb */
     /**
      * Store the `picture`
+     * @param picture a #GstAV1Picture
      */
     add(picture: AV1Picture): void
     /**
@@ -9770,14 +10808,14 @@ class AV1Dpb {
 }
 class AV1Picture {
     /* Fields of GstCodecs-1.0.GstCodecs.AV1Picture */
-    readonly parent: Gst.MiniObject
-    readonly systemFrameNumber: number
-    readonly displayFrameId: number
-    readonly showFrame: boolean
-    readonly showableFrame: boolean
-    readonly applyGrain: boolean
-    readonly userData: object
-    readonly notify: GLib.DestroyNotify
+    parent: Gst.MiniObject
+    systemFrameNumber: number
+    displayFrameId: number
+    showFrame: boolean
+    showableFrame: boolean
+    applyGrain: boolean
+    userData: object
+    notify: GLib.DestroyNotify
     /* Methods of GstCodecs-1.0.GstCodecs.AV1Picture */
     /**
      * Gets private data set on the picture via
@@ -9790,6 +10828,7 @@ class AV1Picture {
      * 
      * If a `user_data` was previously set, then the previous set `notify` will be called
      * before the `user_data` is replaced.
+     * @param notify a #GDestroyNotify
      */
     setUserData(notify: GLib.DestroyNotify): void
     static name: string
@@ -9803,13 +10842,13 @@ class AV1Tile {
 }
 abstract class H264DecoderClass {
     /* Fields of GstCodecs-1.0.GstCodecs.H264DecoderClass */
-    readonly newPicture: (decoder: H264Decoder, frame: GstVideo.VideoCodecFrame, picture: H264Picture) => Gst.FlowReturn
-    readonly newFieldPicture: (decoder: H264Decoder, firstField: H264Picture, secondField: H264Picture) => Gst.FlowReturn
-    readonly startPicture: (decoder: H264Decoder, picture: H264Picture, slice: H264Slice, dpb: H264Dpb) => Gst.FlowReturn
-    readonly decodeSlice: (decoder: H264Decoder, picture: H264Picture, slice: H264Slice, refPicList0: H264Picture[], refPicList1: H264Picture[]) => Gst.FlowReturn
-    readonly endPicture: (decoder: H264Decoder, picture: H264Picture) => Gst.FlowReturn
-    readonly outputPicture: (decoder: H264Decoder, frame: GstVideo.VideoCodecFrame, picture: H264Picture) => Gst.FlowReturn
-    readonly getPreferredOutputDelay: (decoder: H264Decoder, live: boolean) => number
+    newPicture: (decoder: H264Decoder, frame: GstVideo.VideoCodecFrame, picture: H264Picture) => Gst.FlowReturn
+    newFieldPicture: (decoder: H264Decoder, firstField: H264Picture, secondField: H264Picture) => Gst.FlowReturn
+    startPicture: (decoder: H264Decoder, picture: H264Picture, slice: H264Slice, dpb: H264Dpb) => Gst.FlowReturn
+    decodeSlice: (decoder: H264Decoder, picture: H264Picture, slice: H264Slice, refPicList0: H264Picture[], refPicList1: H264Picture[]) => Gst.FlowReturn
+    endPicture: (decoder: H264Decoder, picture: H264Picture) => Gst.FlowReturn
+    outputPicture: (decoder: H264Decoder, frame: GstVideo.VideoCodecFrame, picture: H264Picture) => Gst.FlowReturn
+    getPreferredOutputDelay: (decoder: H264Decoder, live: boolean) => number
     static name: string
 }
 class H264DecoderPrivate {
@@ -9819,12 +10858,14 @@ class H264Dpb {
     /* Methods of GstCodecs-1.0.GstCodecs.H264Dpb */
     /**
      * Store the `picture`
+     * @param picture a #GstH264Picture
      */
     add(picture: H264Picture): void
     /**
      * Perform bumping process as defined in C.4.5.3 "Bumping" process.
      * If `drain` is %TRUE, `dpb` will remove a #GstH264Picture from internal array
      * so that returned #GstH264Picture could hold the last reference of it
+     * @param drain whether draining or not
      */
     bump(drain: boolean): H264Picture | null
     /**
@@ -9842,6 +10883,7 @@ class H264Dpb {
     getInterlaced(): boolean
     /**
      * Find a long term reference picture which has matching long term picture number
+     * @param longTermPicNum a long term picture number
      */
     getLongRefByLongTermPicNum(longTermPicNum: number): H264Picture | null
     /**
@@ -9854,15 +10896,19 @@ class H264Dpb {
     /**
      * Retrieve all long-term reference pictures from `dpb`. The picture will be
      * appended to the array.
+     * @param includeSecondField %TRUE if the second field pictures need to be included
      */
     getPicturesLongTermRef(includeSecondField: boolean): /* out */ H264Picture[]
     /**
      * Retrieve all short-term reference pictures from `dpb`. The picture will be
      * appended to the array.
+     * @param includeNonExisting %TRUE if non-existing pictures need to be included
+     * @param includeSecondField %TRUE if the second field pictures need to be included
      */
     getPicturesShortTermRef(includeNonExisting: boolean, includeSecondField: boolean): /* out */ H264Picture[]
     /**
      * Find a short term reference picture which has matching picture number
+     * @param picNum a picture number
      */
     getShortRefByPicNum(picNum: number): H264Picture | null
     getSize(): number
@@ -9877,10 +10923,12 @@ class H264Dpb {
     /**
      * Notify the DPB that `picture` is output directly without storing
      * in the DPB.
+     * @param picture a #GstH264Picture of the last output.
      */
     setLastOutput(picture: H264Picture): void
     /**
      * Set the number of maximum allowed frames to store
+     * @param maxNumFrames the maximum number of picture
      */
     setMaxNumFrames(maxNumFrames: number): void
     setMaxNumReorderFrames(maxNumReorderFrames: number): void
@@ -9895,6 +10943,8 @@ class H264Picture {
     getUserData(): object | null
     /**
      * Update reference picture type of `picture` with `reference`
+     * @param reference a GstH264PictureReference
+     * @param otherField %TRUE if `reference` needs to be applied to the other field if any
      */
     setReference(reference: H264PictureReference, otherField: boolean): void
     /**
@@ -9903,6 +10953,7 @@ class H264Picture {
      * 
      * If a `user_data` was previously set, then the previous set `notify` will be called
      * before the `user_data` is replaced.
+     * @param notify a #GDestroyNotify
      */
     setUserData(notify: GLib.DestroyNotify): void
     static name: string
@@ -9916,11 +10967,13 @@ class H264Slice {
 }
 abstract class H265DecoderClass {
     /* Fields of GstCodecs-1.0.GstCodecs.H265DecoderClass */
-    readonly parentClass: GstVideo.VideoDecoderClass
-    readonly newPicture: (decoder: H265Decoder, frame: GstVideo.VideoCodecFrame, picture: H265Picture) => Gst.FlowReturn
-    readonly startPicture: (decoder: H265Decoder, picture: H265Picture, slice: H265Slice, dpb: H265Dpb) => Gst.FlowReturn
-    readonly endPicture: (decoder: H265Decoder, picture: H265Picture) => Gst.FlowReturn
-    readonly outputPicture: (decoder: H265Decoder, frame: GstVideo.VideoCodecFrame, picture: H265Picture) => Gst.FlowReturn
+    parentClass: GstVideo.VideoDecoderClass
+    newPicture: (decoder: H265Decoder, frame: GstVideo.VideoCodecFrame, picture: H265Picture) => Gst.FlowReturn
+    startPicture: (decoder: H265Decoder, picture: H265Picture, slice: H265Slice, dpb: H265Dpb) => Gst.FlowReturn
+    decodeSlice: (decoder: H265Decoder, picture: H265Picture, slice: H265Slice, refPicList0: H265Picture[], refPicList1: H265Picture[]) => Gst.FlowReturn
+    endPicture: (decoder: H265Decoder, picture: H265Picture) => Gst.FlowReturn
+    outputPicture: (decoder: H265Decoder, frame: GstVideo.VideoCodecFrame, picture: H265Picture) => Gst.FlowReturn
+    getPreferredOutputDelay: (decoder: H265Decoder, live: boolean) => number
     static name: string
 }
 class H265DecoderPrivate {
@@ -9931,12 +10984,14 @@ class H265Dpb {
     /**
      * Store the `picture` and perform increase pic_latency_cnt as defined in
      * "C.5.2.3 Additional bumping" process
+     * @param picture a #GstH265Picture
      */
     add(picture: H265Picture): void
     /**
      * Perform bumping process as defined in C.5.2.4 "Bumping" process.
      * If `drain` is %TRUE, `dpb` will remove a #GstH265Picture from internal array
      * so that returned #GstH265Picture could hold the last reference of it
+     * @param drain whether draining or not
      */
     bump(drain: boolean): H265Picture | null
     /**
@@ -9953,6 +11008,7 @@ class H265Dpb {
     free(): void
     /**
      * Find a long term reference picture which has matching poc
+     * @param poc a picture order count
      */
     getLongRefByPoc(poc: number): H265Picture | null
     getMaxNumPics(): number
@@ -9960,14 +11016,17 @@ class H265Dpb {
     getPicturesAll(): H265Picture[]
     /**
      * Find a short or long term reference picture which has matching poc
+     * @param poc a picture order count
      */
     getRefByPoc(poc: number): H265Picture | null
     /**
      * Find a short or long term reference picture which has matching poc_lsb
+     * @param pocLsb a picture order count lsb
      */
     getRefByPocLsb(pocLsb: number): H265Picture | null
     /**
      * Find a short term reference picture which has matching poc
+     * @param poc a picture order count
      */
     getShortRefByPoc(poc: number): H265Picture | null
     getSize(): number
@@ -9979,6 +11038,7 @@ class H265Dpb {
     numRefPictures(): number
     /**
      * Set the number of maximum allowed pictures to store
+     * @param maxNumPics the maximum number of picture
      */
     setMaxNumPics(maxNumPics: number): void
     static name: string
@@ -9996,6 +11056,7 @@ class H265Picture {
      * 
      * If a `user_data` was previously set, then the previous set `notify` will be called
      * before the `user_data` is replaced.
+     * @param notify a #GDestroyNotify
      */
     setUserData(notify: GLib.DestroyNotify): void
     static name: string
@@ -10009,14 +11070,14 @@ class H265Slice {
 }
 abstract class Mpeg2DecoderClass {
     /* Fields of GstCodecs-1.0.GstCodecs.Mpeg2DecoderClass */
-    readonly parentClass: GstVideo.VideoDecoderClass
-    readonly newPicture: (decoder: Mpeg2Decoder, frame: GstVideo.VideoCodecFrame, picture: Mpeg2Picture) => Gst.FlowReturn
-    readonly newFieldPicture: (decoder: Mpeg2Decoder, firstField: Mpeg2Picture, secondField: Mpeg2Picture) => Gst.FlowReturn
-    readonly startPicture: (decoder: Mpeg2Decoder, picture: Mpeg2Picture, slice: Mpeg2Slice, prevPicture: Mpeg2Picture, nextPicture: Mpeg2Picture) => Gst.FlowReturn
-    readonly decodeSlice: (decoder: Mpeg2Decoder, picture: Mpeg2Picture, slice: Mpeg2Slice) => Gst.FlowReturn
-    readonly endPicture: (decoder: Mpeg2Decoder, picture: Mpeg2Picture) => Gst.FlowReturn
-    readonly outputPicture: (decoder: Mpeg2Decoder, frame: GstVideo.VideoCodecFrame, picture: Mpeg2Picture) => Gst.FlowReturn
-    readonly getPreferredOutputDelay: (decoder: Mpeg2Decoder, isLive: boolean) => number
+    parentClass: GstVideo.VideoDecoderClass
+    newPicture: (decoder: Mpeg2Decoder, frame: GstVideo.VideoCodecFrame, picture: Mpeg2Picture) => Gst.FlowReturn
+    newFieldPicture: (decoder: Mpeg2Decoder, firstField: Mpeg2Picture, secondField: Mpeg2Picture) => Gst.FlowReturn
+    startPicture: (decoder: Mpeg2Decoder, picture: Mpeg2Picture, slice: Mpeg2Slice, prevPicture: Mpeg2Picture, nextPicture: Mpeg2Picture) => Gst.FlowReturn
+    decodeSlice: (decoder: Mpeg2Decoder, picture: Mpeg2Picture, slice: Mpeg2Slice) => Gst.FlowReturn
+    endPicture: (decoder: Mpeg2Decoder, picture: Mpeg2Picture) => Gst.FlowReturn
+    outputPicture: (decoder: Mpeg2Decoder, frame: GstVideo.VideoCodecFrame, picture: Mpeg2Picture) => Gst.FlowReturn
+    getPreferredOutputDelay: (decoder: Mpeg2Decoder, isLive: boolean) => number
     static name: string
 }
 class Mpeg2DecoderPrivate {
@@ -10026,6 +11087,7 @@ class Mpeg2Dpb {
     /* Methods of GstCodecs-1.0.GstCodecs.Mpeg2Dpb */
     /**
      * Store the `picture`
+     * @param picture a #GstMpeg2Picture
      */
     add(picture: Mpeg2Picture): void
     bump(): Mpeg2Picture | null
@@ -10039,6 +11101,7 @@ class Mpeg2Dpb {
     free(): void
     /**
      * Gets the neighbours #GstMpeg2Picture of `picture` in `dpb`.
+     * @param picture current #GstMpeg2Picture
      */
     getNeighbours(picture: Mpeg2Picture): [ /* prevPicturePtr */ Mpeg2Picture | null, /* nextPicturePtr */ Mpeg2Picture | null ]
     /**
@@ -10060,6 +11123,7 @@ class Mpeg2Picture {
      * 
      * If a `user_data` was previously set, then the previous set `notify` will be called
      * before the `user_data` is replaced.
+     * @param notify a #GDestroyNotify
      */
     setUserData(notify: GLib.DestroyNotify): void
     static name: string
@@ -10073,12 +11137,12 @@ class Mpeg2Slice {
 }
 abstract class Vp8DecoderClass {
     /* Fields of GstCodecs-1.0.GstCodecs.Vp8DecoderClass */
-    readonly parentClass: GstVideo.VideoDecoderClass
-    readonly newPicture: (decoder: Vp8Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp8Picture) => Gst.FlowReturn
-    readonly startPicture: (decoder: Vp8Decoder, picture: Vp8Picture) => Gst.FlowReturn
-    readonly endPicture: (decoder: Vp8Decoder, picture: Vp8Picture) => Gst.FlowReturn
-    readonly outputPicture: (decoder: Vp8Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp8Picture) => Gst.FlowReturn
-    readonly getPreferredOutputDelay: (decoder: Vp8Decoder, isLive: boolean) => number
+    parentClass: GstVideo.VideoDecoderClass
+    newPicture: (decoder: Vp8Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp8Picture) => Gst.FlowReturn
+    startPicture: (decoder: Vp8Decoder, picture: Vp8Picture) => Gst.FlowReturn
+    endPicture: (decoder: Vp8Decoder, picture: Vp8Picture) => Gst.FlowReturn
+    outputPicture: (decoder: Vp8Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp8Picture) => Gst.FlowReturn
+    getPreferredOutputDelay: (decoder: Vp8Decoder, isLive: boolean) => number
     static name: string
 }
 class Vp8DecoderPrivate {
@@ -10086,13 +11150,13 @@ class Vp8DecoderPrivate {
 }
 class Vp8Picture {
     /* Fields of GstCodecs-1.0.GstCodecs.Vp8Picture */
-    readonly parent: Gst.MiniObject
-    readonly pts: Gst.ClockTime
-    readonly systemFrameNumber: number
-    readonly data: number
-    readonly size: number
-    readonly userData: object
-    readonly notify: GLib.DestroyNotify
+    parent: Gst.MiniObject
+    pts: Gst.ClockTime
+    systemFrameNumber: number
+    data: number
+    size: number
+    userData: object
+    notify: GLib.DestroyNotify
     /* Methods of GstCodecs-1.0.GstCodecs.Vp8Picture */
     /**
      * Gets private data set on the picture via
@@ -10105,6 +11169,7 @@ class Vp8Picture {
      * 
      * If a `user_data` was previously set, then the previous set `notify` will be called
      * before the `user_data` is replaced.
+     * @param notify a #GDestroyNotify
      */
     setUserData(notify: GLib.DestroyNotify): void
     static name: string
@@ -10115,15 +11180,15 @@ class Vp8Picture {
 }
 abstract class Vp9DecoderClass {
     /* Fields of GstCodecs-1.0.GstCodecs.Vp9DecoderClass */
-    readonly parentClass: GstVideo.VideoDecoderClass
-    readonly newSequence: (decoder: Vp9Decoder, frameHdr: Vp9FrameHeader) => Gst.FlowReturn
-    readonly newPicture: (decoder: Vp9Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp9Picture) => Gst.FlowReturn
-    readonly duplicatePicture: (decoder: Vp9Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp9Picture) => Vp9Picture
-    readonly startPicture: (decoder: Vp9Decoder, picture: Vp9Picture) => Gst.FlowReturn
-    readonly decodePicture: (decoder: Vp9Decoder, picture: Vp9Picture, dpb: Vp9Dpb) => Gst.FlowReturn
-    readonly endPicture: (decoder: Vp9Decoder, picture: Vp9Picture) => Gst.FlowReturn
-    readonly outputPicture: (decoder: Vp9Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp9Picture) => Gst.FlowReturn
-    readonly getPreferredOutputDelay: (decoder: Vp9Decoder, isLive: boolean) => number
+    parentClass: GstVideo.VideoDecoderClass
+    newSequence: (decoder: Vp9Decoder, frameHdr: Vp9FrameHeader) => Gst.FlowReturn
+    newPicture: (decoder: Vp9Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp9Picture) => Gst.FlowReturn
+    duplicatePicture: (decoder: Vp9Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp9Picture) => Vp9Picture
+    startPicture: (decoder: Vp9Decoder, picture: Vp9Picture) => Gst.FlowReturn
+    decodePicture: (decoder: Vp9Decoder, picture: Vp9Picture, dpb: Vp9Dpb) => Gst.FlowReturn
+    endPicture: (decoder: Vp9Decoder, picture: Vp9Picture) => Gst.FlowReturn
+    outputPicture: (decoder: Vp9Decoder, frame: GstVideo.VideoCodecFrame, picture: Vp9Picture) => Gst.FlowReturn
+    getPreferredOutputDelay: (decoder: Vp9Decoder, isLive: boolean) => number
     static name: string
 }
 class Vp9DecoderPrivate {
@@ -10134,10 +11199,11 @@ class Vp9DeltaProbabilities {
 }
 class Vp9Dpb {
     /* Fields of GstCodecs-1.0.GstCodecs.Vp9Dpb */
-    readonly picList: Vp9Picture[]
+    picList: Vp9Picture[]
     /* Methods of GstCodecs-1.0.GstCodecs.Vp9Dpb */
     /**
      * Store the `picture`
+     * @param picture a #GstVp9Picture
      */
     add(picture: Vp9Picture): void
     /**
@@ -10155,162 +11221,162 @@ class Vp9FrameHeader {
     /**
      * encoded profile
      */
-    readonly profile: number
+    profile: number
     /**
      * encoded bit depth
      */
-    readonly bitDepth: number
+    bitDepth: number
     /**
      * specify the chroma subsampling format for x coordinate
      */
-    readonly subsamplingX: number
+    subsamplingX: number
     /**
      * specify the chroma subsampling format for y coordinate
      */
-    readonly subsamplingY: number
+    subsamplingY: number
     /**
      * specifies the color space of the stream
      */
-    readonly colorSpace: number
+    colorSpace: number
     /**
      * specifies the black level and range of the luma and chroma
      *   signals
      */
-    readonly colorRange: number
+    colorRange: number
     /**
      * equal to 1, indicates the frame indexed by
      *   frame_to_show_map_idx is to be displayed
      */
-    readonly showExistingFrame: number
+    showExistingFrame: number
     /**
      * specifies the frame to be displayed.
      *   It is only available if show_existing_frame is 1
      */
-    readonly frameToShowMapIdx: number
+    frameToShowMapIdx: number
     /**
      * equal to 0 indicates that the current frame is a key frame
      */
-    readonly frameType: number
+    frameType: number
     /**
      * indicate whether it is a displayable frame or not
      */
-    readonly showFrame: number
+    showFrame: number
     /**
      * equal to 1 indicates that error resilient mode is
      *   enabled
      */
-    readonly errorResilientMode: number
+    errorResilientMode: number
     /**
      * coded frame width
      */
-    readonly width: number
+    width: number
     /**
      * coded frame height
      */
-    readonly height: number
+    height: number
     /**
      * equal to 0 means that the render width and
      *   height are inferred from the frame width and height
      */
-    readonly renderAndFrameSizeDifferent: number
+    renderAndFrameSizeDifferent: number
     /**
      * render width of the frame
      */
-    readonly renderWidth: number
+    renderWidth: number
     /**
      * render width of the frame
      */
-    readonly renderHeight: number
+    renderHeight: number
     /**
      * equal to 1 indicates that the frame is an intra-only frame
      */
-    readonly intraOnly: number
+    intraOnly: number
     /**
      * specifies whether the frame context should be reset to
      *   default values
      */
-    readonly resetFrameContext: number
+    resetFrameContext: number
     /**
      * contains a bitmask that specifies which reference frame
      *   slots will be updated with the current frame after it is decoded
      */
-    readonly refreshFrameFlags: number
+    refreshFrameFlags: number
     /**
      * specifies which reference frames are used by inter frames
      */
-    readonly refFrameIdx: Uint8Array
+    refFrameIdx: Uint8Array
     /**
      * specifies the intended direction of the motion vector
      *   in time for each reference frame. A sign bias equal to 0 indicates that
      *   the reference frame is a backwards reference
      */
-    readonly refFrameSignBias: Uint8Array
+    refFrameSignBias: Uint8Array
     /**
      * equal to 0 specifies that motion vectors are
      *   specified to quarter pel precision
      */
-    readonly allowHighPrecisionMv: number
+    allowHighPrecisionMv: number
     /**
      * specifies the filter selection used for performing
      *   inter prediction
      */
-    readonly interpolationFilter: number
+    interpolationFilter: number
     /**
      * equal to 1 indicates that the probabilities computed
      *   for this frame
      */
-    readonly refreshFrameContext: number
+    refreshFrameContext: number
     /**
      * equal to 1 indicates that parallel decoding
      *   mode is enabled
      */
-    readonly frameParallelDecodingMode: number
+    frameParallelDecodingMode: number
     /**
      * indicates the frame context to use
      */
-    readonly frameContextIdx: number
+    frameContextIdx: number
     /**
      * a #GstVp9LoopFilterParams
      */
-    readonly loopFilterParams: Vp9LoopFilterParams
+    loopFilterParams: Vp9LoopFilterParams
     /**
      * a #GstVp9QuantizationParams
      */
-    readonly quantizationParams: Vp9QuantizationParams
+    quantizationParams: Vp9QuantizationParams
     /**
      * a #GstVp9SegmentationParams
      */
-    readonly segmentationParams: Vp9SegmentationParams
+    segmentationParams: Vp9SegmentationParams
     /**
      * specifies the base 2 logarithm of the width of each tile
      */
-    readonly tileColsLog2: number
+    tileColsLog2: number
     /**
      * specifies the base 2 logarithm of the height of each tile
      */
-    readonly tileRowsLog2: number
-    readonly headerSizeInBytes: number
+    tileRowsLog2: number
+    headerSizeInBytes: number
     /**
      * Specifies how the transform size is determined.
      */
-    readonly txMode: Vp9TxMode
+    txMode: Vp9TxMode
     /**
      * Is a derived syntax element that specifies the type of
      * inter prediction to be used.
      */
-    readonly referenceMode: Vp9ReferenceMode
+    referenceMode: Vp9ReferenceMode
     /**
      * Modification to the probabilities encoded in the bitstream.
      */
-    readonly deltaProbabilities: Vp9DeltaProbabilities
+    deltaProbabilities: Vp9DeltaProbabilities
     /**
      * lossless mode decode
      */
-    readonly losslessFlag: number
+    losslessFlag: number
     /**
      * length of uncompressed header
      */
-    readonly frameHeaderLengthInBytes: number
+    frameHeaderLengthInBytes: number
     static name: string
 }
 class Vp9LoopFilterParams {
@@ -10318,42 +11384,42 @@ class Vp9LoopFilterParams {
     /**
      * indicates the loop filter strength
      */
-    readonly loopFilterLevel: number
+    loopFilterLevel: number
     /**
      * indicates the sharpness level
      */
-    readonly loopFilterSharpness: number
+    loopFilterSharpness: number
     /**
      * equal to 1 means that the filter level depends
      *   on the mode and reference frame used to predict a block
      */
-    readonly loopFilterDeltaEnabled: number
+    loopFilterDeltaEnabled: number
     /**
      * equal to 1 means that the bitstream contains
      *   additional syntax elements that specify which mode and reference frame
      *   deltas are to be updated
      */
-    readonly loopFilterDeltaUpdate: number
+    loopFilterDeltaUpdate: number
     /**
      * equal to 1 means that the bitstream contains the syntax
      *   element loop_filter_ref_delta
      */
-    readonly updateRefDelta: Uint8Array
+    updateRefDelta: Uint8Array
     /**
      * contains the adjustment needed for the filter level
      *   based on the chosen reference frame
      */
-    readonly loopFilterRefDeltas: Uint8Array
+    loopFilterRefDeltas: Uint8Array
     /**
      * equal to 1 means that the bitstream contains the syntax
      *   element loop_filter_mode_deltas
      */
-    readonly updateModeDelta: Uint8Array
+    updateModeDelta: Uint8Array
     /**
      * contains the adjustment needed for the filter level
      *   based on the chosen mode
      */
-    readonly loopFilterModeDeltas: Uint8Array
+    loopFilterModeDeltas: Uint8Array
     static name: string
 }
 class Vp9MvDeltaProbs {
@@ -10372,6 +11438,7 @@ class Vp9Picture {
      * 
      * If a `user_data` was previously set, then the previous set `notify` will be called
      * before the `user_data` is replaced.
+     * @param notify a #GDestroyNotify
      */
     setUserData(notify: GLib.DestroyNotify): void
     static name: string
@@ -10386,19 +11453,19 @@ class Vp9QuantizationParams {
      * indicates the base frame qindex. This is used for Y AC
      *   coefficients and as the base value for the other quantizers
      */
-    readonly baseQIdx: number
+    baseQIdx: number
     /**
      * indicates the Y DC quantizer relative to base_q_idx
      */
-    readonly deltaQYDc: number
+    deltaQYDc: number
     /**
      * indicates the UV DC quantizer relative to base_q_idx
      */
-    readonly deltaQUvDc: number
+    deltaQUvDc: number
     /**
      * indicates the UV AC quantizer relative to base_q_idx
      */
-    readonly deltaQUvAc: number
+    deltaQUvAc: number
     static name: string
 }
 class Vp9SegmentationParams {
@@ -10407,52 +11474,52 @@ class Vp9SegmentationParams {
      * equal to 1 indicates that this frame makes use of the
      *   segmentation tool
      */
-    readonly segmentationEnabled: number
+    segmentationEnabled: number
     /**
      * equal to 1 indicates that the segmentation map
      *   should be updated during the decoding of this frame
      */
-    readonly segmentationUpdateMap: number
+    segmentationUpdateMap: number
     /**
      * specify the probability values to be used when
      *   decoding segment_id
      */
-    readonly segmentationTreeProbs: Uint8Array
+    segmentationTreeProbs: Uint8Array
     /**
      * specify the probability values to be used when
      *    decoding seg_id_predicted
      */
-    readonly segmentationPredProb: Uint8Array
+    segmentationPredProb: Uint8Array
     /**
      * equal to 1 indicates that the updates to
      *   the segmentation map are coded relative to the existing segmentation map
      */
-    readonly segmentationTemporalUpdate: number
+    segmentationTemporalUpdate: number
     /**
      * equal to 1 indicates that new parameters are
      *   about to be specified for each segment
      */
-    readonly segmentationUpdateData: number
+    segmentationUpdateData: number
     /**
      * equal to 0 indicates that the segmentation
      *   parameters represent adjustments relative to the standard values.
      *   equal to 1 indicates that the segmentation parameters represent the actual
      *   values to be used
      */
-    readonly segmentationAbsOrDeltaUpdate: number
+    segmentationAbsOrDeltaUpdate: number
     /**
      * indicates whether feature is enabled or not
      */
-    readonly featureEnabled: Uint8Array
+    featureEnabled: Uint8Array
     /**
      * segmentation feature data
      */
-    readonly featureData: number[]
+    featureData: number[]
     static name: string
 }
 class Vp9StatefulParser {
     /* Fields of GstCodecs-1.0.GstCodecs.Vp9StatefulParser */
-    readonly reference: object[]
+    reference: object[]
     /* Methods of GstCodecs-1.0.GstCodecs.Vp9StatefulParser */
     /**
      * Frees `parser`.

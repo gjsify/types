@@ -254,32 +254,42 @@ interface AuthService_ConstructProps extends GObject.Object_ConstructProps {
 }
 class AuthService {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Signon-2.0.Signon.AuthService */
     /**
      * Lists all the available mechanisms.
+     * @param method the name of the method whose mechanisms must be retrieved.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a callback to execute upon completion
      */
     getMechanisms(method: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous request to signon_auth_service_get_mechanisms().
+     * @param result a #GAsyncResult
      */
     getMechanismsFinish(result: Gio.AsyncResult): string[]
     /**
      * Lists all the available mechanisms.
      * This is a blocking version of signon_auth_service_get_mechanisms().
+     * @param method the name of the method whose mechanisms must be retrieved.
+     * @param cancellable a #GCancellable or %NULL
      */
     getMechanismsSync(method: string, cancellable?: Gio.Cancellable | null): string[]
     /**
      * Lists all the available methods.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback a callback to execute upon completion
      */
     getMethods(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous request to signon_auth_service_get_methods().
+     * @param result a #GAsyncResult
      */
     getMethodsFinish(result: Gio.AsyncResult): string[]
     /**
      * Lists all the available methods.
      * This is a blocking version of signon_auth_service_get_methods().
+     * @param cancellable a #GCancellable or %NULL
      */
     getMethodsSync(cancellable?: Gio.Cancellable | null): string[]
     /* Methods of GObject-2.0.GObject.Object */
@@ -317,6 +327,10 @@ class AuthService {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -327,6 +341,12 @@ class AuthService {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -350,6 +370,7 @@ class AuthService {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -369,11 +390,14 @@ class AuthService {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -381,6 +405,8 @@ class AuthService {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -398,6 +424,7 @@ class AuthService {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -443,6 +470,7 @@ class AuthService {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -486,15 +514,20 @@ class AuthService {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -535,6 +568,7 @@ class AuthService {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -569,6 +603,7 @@ class AuthService {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -600,6 +635,7 @@ class AuthService {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -624,7 +660,7 @@ interface AuthSession_ConstructProps extends GObject.Object_ConstructProps {
 }
 class AuthSession {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Signon-2.0.Signon.AuthSession */
     /**
      * Cancel the authentication session.
@@ -641,10 +677,15 @@ class AuthSession {
      * there's no need to fill them into `session_data`.
      * `session_data` can be used to add additional authentication parameters to the
      * session, or to override the parameters otherwise taken from the identity.
+     * @param sessionData a dictionary of parameters.
+     * @param mechanism the authentication mechanism to be used.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a callback which will be called when the authentication reply is available.
      */
     process(sessionData: GLib.Variant, mechanism: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Collect the result of the signon_auth_session_process() operation.
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_auth_session_process().
      */
     processFinish(res: Gio.AsyncResult): GLib.Variant
     /* Methods of GObject-2.0.GObject.Object */
@@ -682,6 +723,10 @@ class AuthSession {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -692,6 +737,12 @@ class AuthSession {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -715,6 +766,7 @@ class AuthSession {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -734,11 +786,14 @@ class AuthSession {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -746,6 +801,8 @@ class AuthSession {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -763,6 +820,7 @@ class AuthSession {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -808,6 +866,7 @@ class AuthSession {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -851,15 +910,20 @@ class AuthSession {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -900,6 +964,7 @@ class AuthSession {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -934,11 +999,14 @@ class AuthSession {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Signon-2.0.Signon.AuthSession */
     /**
      * Emitted when the state of the #SignonAuthSession changes.
+     * @param state the current state of the #SignonAuthSession
+     * @param message the message associated with the state change
      */
     connect(sigName: "state-changed", callback: ((state: number, message: string) => void)): number
     on(sigName: "state-changed", callback: (state: number, message: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -974,6 +1042,7 @@ class AuthSession {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -999,11 +1068,14 @@ interface Identity_ConstructProps extends GObject.Object_ConstructProps {
     id?: number
 }
 class Identity {
+    /* Properties of Signon-2.0.Signon.Identity */
+    readonly id: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Signon-2.0.Signon.Identity */
     /**
      * Creates an authentication session for this identity.
+     * @param method method.
      */
     createSession(method: string): AuthSession
     /**
@@ -1016,14 +1088,19 @@ class Identity {
     getLastError(): GLib.Error
     /**
      * Fetches the #SignonIdentityInfo associated with this identity.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a callback which will be called when the #SignonIdentityInfo is available.
      */
     queryInfo(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Collect the result of the signon_identity_query_info() operation.
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_identity_query_info().
      */
     queryInfoFinish(res: Gio.AsyncResult): IdentityInfo
     /**
      * Removes the corresponding credentials record from the database.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a callback which will be called when the operation has completed.
      */
     remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     removeFinish(res: Gio.AsyncResult): boolean
@@ -1031,23 +1108,33 @@ class Identity {
      * Asks signond to close all authentication sessions for this
      * identity, and to remove any stored secrets associated with it (password and
      * authentication tokens).
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a callback which will be called when the operation has completed.
      */
     signOut(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     signOutFinish(res: Gio.AsyncResult): boolean
     /**
      * Stores the data from `info` into the identity.
+     * @param info the #SignonIdentityInfo data to store.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a callback which will be called when the authentication reply is available.
      */
     storeInfo(info: IdentityInfo, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Collect the result of the signon_identity_store_info() operation.
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_identity_store_info().
      */
     storeInfoFinish(res: Gio.AsyncResult): boolean
     /**
      * Verifies the given secret.
+     * @param secret the secret (password) to be verified.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a callback which will be called when the verification is done.
      */
     verifySecret(secret: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Collect the result of the signon_identity_verify_secret() operation.
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_identity_verify_secret().
      */
     verifySecretFinish(res: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1085,6 +1172,10 @@ class Identity {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1095,6 +1186,12 @@ class Identity {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1118,6 +1215,7 @@ class Identity {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1137,11 +1235,14 @@ class Identity {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1149,6 +1250,8 @@ class Identity {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1166,6 +1269,7 @@ class Identity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1211,6 +1315,7 @@ class Identity {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1254,15 +1359,20 @@ class Identity {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1303,6 +1413,7 @@ class Identity {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1337,6 +1448,7 @@ class Identity {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Signon-2.0.Signon.Identity */
@@ -1377,12 +1489,18 @@ class Identity {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1400,23 +1518,25 @@ class Identity {
 }
 abstract class AuthServiceClass {
     /* Fields of Signon-2.0.Signon.AuthServiceClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class AuthSessionClass {
     /* Fields of Signon-2.0.Signon.AuthSessionClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class IdentityClass {
     /* Fields of Signon-2.0.Signon.IdentityClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class IdentityInfo {
     /* Methods of Signon-2.0.Signon.IdentityInfo */
     /**
      * Add an ACL to this identity. This is an helper function.
+     * @param systemContext the system context to add.
+     * @param applicationContext the application context to add.
      */
     addAccessControl(systemContext: string, applicationContext: string): void
     /**
@@ -1462,38 +1582,48 @@ class IdentityInfo {
     /**
      * Remove `method` from the list of allowed authentication methods. If all
      * methods are removed, then all methods are allowed.
+     * @param method an authentication method.
      */
     removeMethod(method: string): void
     /**
      * Specifies the ACL for this identity. The actual meaning of the ACL depends
      * on the security framework used by signond.
+     * @param accessControlList a #GList of #SignonSecurityContext representing ACL security domains.
      */
     setAccessControlList(accessControlList: SecurityContext[]): void
     /**
      * Sets the caption (display name) for the identity.
+     * @param caption the caption.
      */
     setCaption(caption: string): void
     /**
      * Specifies the type of this identity.
+     * @param type the type of the identity.
      */
     setIdentityType(type: IdentityType): void
     /**
      * Adds a method to the list of allowed methods. If this method is not called
      * even once, then all methods are allowed.
      * Mechanisms are method-specific variants of authentication.
+     * @param method an authentication method.
+     * @param mechanisms a %NULL-termianted list of mechanisms.
      */
     setMethod(method: string, mechanisms: string[]): void
     /**
      * Specify what realms this identity can be used in.
+     * @param realms a %NULL-terminated list of realms.
      */
     setRealms(realms: string[]): void
     /**
      * Sets the secret (password) for the identity, and whether the signon daemon
      * should remember it.
+     * @param secret the secret.
+     * @param storeSecret whether signond should store the secret in its DB.
      */
     setSecret(secret: string, storeSecret: boolean): void
     /**
      * Sets the username for the identity.
+     * @param username the username.
      */
     setUsername(username: string): void
     static name: string
@@ -1522,10 +1652,12 @@ class SecurityContext {
     getSystemContext(): string
     /**
      * Sets the application context.
+     * @param applicationContext the application context.
      */
     setApplicationContext(applicationContext: string): void
     /**
      * Sets the system context.
+     * @param systemContext the system context.
      */
     setSystemContext(systemContext: string): void
     static name: string

@@ -637,6 +637,23 @@ class Agent {
      */
     readonly bytestream_tcp: boolean
     /**
+     * The Nice agent can work in various compatibility modes depending on
+     * what the application/peer needs.
+     * <para> See also: #NiceCompatibility</para>
+     */
+    readonly compatibility: number
+    /**
+     * Whether to perform periodic consent freshness checks as specified in
+     * RFC 7675.  When %TRUE, the agent will periodically send binding requests
+     * to the peer to maintain the consent to send with the peer.  On receipt
+     * of any authenticated error response, a component will immediately move
+     * to the failed state.
+     * 
+     * Setting this property to %TRUE implies that 'keepalive-conncheck' should
+     * be %TRUE as well.
+     */
+    readonly consent_freshness: boolean
+    /**
      * Whether the agent has the controlling role. This property should
      * be modified before gathering candidates, any modification occuring
      * later will be hold until ICE is restarted.
@@ -649,6 +666,7 @@ class Agent {
      * with nice_agent_set_relay_info().
      */
     force_relay: boolean
+    readonly full_mode: boolean
     /**
      * Whether the agent should use ICE-TCP when gathering candidates.
      * If the option is disabled, no TCP candidates will be generated. If the
@@ -737,6 +755,11 @@ class Agent {
      * This is always enabled if the 'consent-freshness' property is %TRUE
      */
     keepalive_conncheck: boolean
+    /**
+     * A GLib main context is needed for all timeouts used by libnice.
+     * This is a property being set by the nice_agent_new() call.
+     */
+    readonly main_context: object
     max_connectivity_checks: number
     /**
      * The proxy server IP used to bypass a proxy firewall
@@ -758,6 +781,11 @@ class Agent {
      * The username used to authenticate with the proxy
      */
     proxy_username: string
+    /**
+     * Whether the agent is providing a reliable transport of messages (through
+     * ICE-TCP or PseudoTCP over ICE-UDP)
+     */
+    readonly reliable: boolean
     /**
      * The initial timeout (msecs) of the STUN binding requests
      * used in the gathering stage, to find our local candidates.
@@ -808,7 +836,7 @@ class Agent {
      */
     upnp_timeout: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Nice-0.1.Nice.Agent */
     /**
      * Add a local address from which to derive local host candidates for
@@ -819,11 +847,13 @@ class Agent {
      * </para>
      * 
      * See also: nice_agent_gather_candidates()
+     * @param addr The address to listen to If the port is 0, then a random port will be chosen by the system
      */
     add_local_address(addr: Address): boolean
     /**
      * Adds a data stream to `agent` containing `n_components` components. The
      * returned stream ID is guaranteed to be positive on success.
+     * @param n_components The number of components to add to the stream
      */
     add_stream(n_components: number): number
     /**
@@ -835,6 +865,7 @@ class Agent {
      * 
      * Calling this function before freeing the agent makes sure the allocated relay
      * ports aren't left behind on TURN server but properly removed.
+     * @param callback A callback that will be called when the closing is  complete
      */
     close_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -848,6 +879,8 @@ class Agent {
      * 
      * Calling the function only has an effect when `agent` has been created with
      * `NICE_AGENT_OPTION_CONSENT_FRESHNESS`.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     consent_lost(stream_id: number, component_id: number): boolean
     /**
@@ -855,6 +888,8 @@ class Agent {
      * nice_agent_set_relay_info(). Currently connected streams will keep
      * using the relay as long as they have not been restarted and haven't
      * succesfully negotiated a different path.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     forget_relays(stream_id: number, component_id: number): boolean
     /**
@@ -869,6 +904,7 @@ class Agent {
      * 
      * <para>See also: nice_agent_add_local_address()</para>
      * <para>See also: nice_agent_set_port_range()</para>
+     * @param stream_id The ID of the stream to start
      */
     gather_candidates(stream_id: number): boolean
     /**
@@ -877,6 +913,7 @@ class Agent {
      * <para>See also: nice_agent_parse_remote_candidate_sdp() </para>
      * <para>See also: nice_agent_generate_local_sdp() </para>
      * <para>See also: nice_agent_generate_local_stream_sdp() </para>
+     * @param candidate The candidate to generate
      */
     generate_local_candidate_sdp(candidate: Candidate): string
     /**
@@ -931,10 +968,14 @@ class Agent {
      * <para>See also: nice_agent_generate_local_sdp() </para>
      * <para>See also: nice_agent_generate_local_candidate_sdp() </para>
      * <para>See also: nice_agent_get_default_local_candidate() </para>
+     * @param stream_id The ID of the stream
+     * @param include_non_ice Whether or not to include non ICE specific lines (m=, c= and a=rtcp: lines)
      */
     generate_local_stream_sdp(stream_id: number, include_non_ice: boolean): string
     /**
      * Retrieves the current state of a component.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     get_component_state(stream_id: number, component_id: number): ComponentState
     /**
@@ -948,6 +989,8 @@ class Agent {
      *      local SDP
      *      </para>
      * </note>
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     get_default_local_candidate(stream_id: number, component_id: number): Candidate
     /**
@@ -959,6 +1002,8 @@ class Agent {
      * This function may only be called on reliable #NiceAgents. It is a
      * programming error to try and create an I/O stream wrapper for an
      * unreliable stream.
+     * @param stream_id The ID of the stream to wrap
+     * @param component_id The ID of the component to wrap
      */
     get_io_stream(stream_id: number, component_id: number): Gio.IOStream
     /**
@@ -973,6 +1018,8 @@ class Agent {
      *      #NiceAgent::candidate-gathering-done signal.
      *    </para>
      *  </note>
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     get_local_candidates(stream_id: number, component_id: number): Candidate[]
     /**
@@ -981,6 +1028,7 @@ class Agent {
      * 
      * An error will be returned if this is called for a non-existent stream, or if
      * either of `ufrag` or `pwd` are %NULL.
+     * @param stream_id The ID of the stream
      */
     get_local_credentials(stream_id: number): [ /* returnType */ boolean, /* ufrag */ string, /* pwd */ string ]
     /**
@@ -997,11 +1045,17 @@ class Agent {
      *      to get notified of new remote candidates.
      *    </para>
      *  </note>
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     get_remote_candidates(stream_id: number, component_id: number): Candidate[]
     /**
      * Retreive the selected candidate pair for media transmission
      * for a given stream's component.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param local The local selected candidate
+     * @param remote The remote selected candidate
      */
     get_selected_pair(stream_id: number, component_id: number, local: Candidate, remote: Candidate): boolean
     /**
@@ -1017,6 +1071,8 @@ class Agent {
      * Users of this method are encouraged to not use a TURN relay or any kind
      * of proxy, as in this case, the socket will not be available to the
      * application because the packets are encapsulated.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     get_selected_socket(stream_id: number, component_id: number): Gio.Socket | null
     /**
@@ -1027,12 +1083,15 @@ class Agent {
      * 
      * These sockets can be a mix of UDP & TCP sockets depending on the compatibility mode
      * and options that have been set.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     get_sockets(stream_id: number, component_id: number): Gio.Socket[]
     /**
      * This function will return the name assigned to a stream.
      * 
      * <para>See also: nice_agent_set_stream_name()</para>
+     * @param stream_id The ID of the stream to change
      */
     get_stream_name(stream_id: number): string
     /**
@@ -1041,6 +1100,8 @@ class Agent {
      * <para>See also: nice_agent_generate_local_candidate_sdp() </para>
      * <para>See also: nice_agent_parse_remote_sdp() </para>
      * <para>See also: nice_agent_parse_remote_stream_sdp() </para>
+     * @param stream_id The ID of the stream the candidate belongs to
+     * @param sdp The remote SDP to parse
      */
     parse_remote_candidate_sdp(stream_id: number, sdp: string): Candidate
     /**
@@ -1051,6 +1112,7 @@ class Agent {
      * <para>See also: nice_agent_generate_local_sdp() </para>
      * <para>See also: nice_agent_parse_remote_stream_sdp() </para>
      * <para>See also: nice_agent_parse_remote_candidate_sdp() </para>
+     * @param sdp The remote SDP to parse
      */
     parse_remote_sdp(sdp: string): number
     /**
@@ -1060,6 +1122,10 @@ class Agent {
      * <para>See also: nice_agent_generate_local_stream_sdp() </para>
      * <para>See also: nice_agent_parse_remote_sdp() </para>
      * <para>See also: nice_agent_parse_remote_candidate_sdp() </para>
+     * @param stream_id The ID of the stream to parse
+     * @param sdp The remote SDP to parse
+     * @param ufrag Pointer to store the ice ufrag if non %NULL. Must be freed with g_free() after use
+     * @param pwd Pointer to store the ice password if non %NULL. Must be freed with g_free() after use
      */
     parse_remote_stream_sdp(stream_id: number, sdp: string, ufrag: string, pwd: string): Candidate[]
     /**
@@ -1071,10 +1137,14 @@ class Agent {
      * %NICE_COMPONENT_STATE_FAILED.
      * 
      * Calling the function has an effect only when #NiceAgent:trickle-ice is %TRUE.
+     * @param stream_id The ID of the stream
      */
     peer_candidate_gathering_done(stream_id: number): boolean
     /**
      * A single-message version of nice_agent_recv_messages().
+     * @param stream_id the ID of the stream to receive on
+     * @param component_id the ID of the component to receive on
+     * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
      */
     recv(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buf */ Uint8Array ]
     /**
@@ -1111,6 +1181,9 @@ class Agent {
      * hasn’t yet been selected for it, a %G_IO_ERROR_BROKEN_PIPE error will be
      * returned. A %G_IO_ERROR_CANCELLED error will be returned if the operation was
      * cancelled. %G_IO_ERROR_FAILED will be returned for other errors.
+     * @param stream_id the ID of the stream to receive on
+     * @param component_id the ID of the component to receive on
+     * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
      */
     recv_messages(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* messages */ InputMessage[] ]
     /**
@@ -1139,10 +1212,16 @@ class Agent {
      * 
      * This must not be used in combination with nice_agent_attach_recv() on the
      * same stream/component pair.
+     * @param stream_id the ID of the stream to receive on
+     * @param component_id the ID of the component to receive on
+     * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
      */
     recv_messages_nonblocking(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* messages */ InputMessage[] ]
     /**
      * A single-message version of nice_agent_recv_messages_nonblocking().
+     * @param stream_id the ID of the stream to receive on
+     * @param component_id the ID of the component to receive on
+     * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
      */
     recv_nonblocking(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buf */ Uint8Array ]
     /**
@@ -1150,6 +1229,7 @@ class Agent {
      * streams have been created using nice_agent_get_io_stream(), they should be
      * closed completely using g_io_stream_close() before this is called, or they
      * will get broken pipe errors.
+     * @param stream_id The ID of the stream to remove
      */
     remove_stream(stream_id: number): void
     /**
@@ -1173,6 +1253,7 @@ class Agent {
      * 
      * If consent-freshness has been enabled on `agent,` as specified in RFC7675
      * then restart `stream_id` will restore the local consent for that stream.
+     * @param stream_id The ID of the stream
      */
     restart_stream(stream_id: number): boolean
     /**
@@ -1200,6 +1281,10 @@ class Agent {
      *    the stream_id and/or component_id are invalid.
      *    </para>
      * </note>
+     * @param stream_id The ID of the stream to send to
+     * @param component_id The ID of the component to send to
+     * @param len The length of the buffer to send
+     * @param buf The buffer of data to send
      */
     send(stream_id: number, component_id: number, len: number, buf: string): number
     /**
@@ -1230,6 +1315,10 @@ class Agent {
      * signal before trying again. If the given `stream_id` or `component_id` are
      * invalid or not yet connected, %G_IO_ERROR_BROKEN_PIPE will be returned.
      * %G_IO_ERROR_FAILED will be returned for other errors.
+     * @param stream_id the ID of the stream to send to
+     * @param component_id the ID of the component to send to
+     * @param messages array of messages to send, of at least `n_messages` entries in length
+     * @param cancellable a #GCancellable to cancel the operation from another thread, or %NULL
      */
     send_messages_nonblocking(stream_id: number, component_id: number, messages: OutputMessage[], cancellable?: Gio.Cancellable | null): number
     /**
@@ -1242,6 +1331,9 @@ class Agent {
      *  </note>
      * 
      * Since 0.1.11
+     * @param stream_id The ID of the stream
+     * @param ufrag nul-terminated string containing an ICE username fragment    (length must be between 22 and 256 chars)
+     * @param pwd nul-terminated string containing an ICE password    (length must be between 4 and 256 chars)
      */
     set_local_credentials(stream_id: number, ufrag: string, pwd: string): boolean
     /**
@@ -1253,12 +1345,23 @@ class Agent {
      * <para>
      * This MUST be called before nice_agent_gather_candidates()
      * </para>
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param min_port The minimum port to use
+     * @param max_port The maximum port to use
      */
     set_port_range(stream_id: number, component_id: number, min_port: number, max_port: number): void
     /**
      * Sets the settings for using a relay server during the candidate discovery.
      * This may be called multiple times to add multiple relay servers to the
      * discovery process; one TCP and one UDP, for example.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param server_ip The IP address of the TURN server
+     * @param server_port The port of the TURN server
+     * @param username The TURN username to use for the allocate
+     * @param password The TURN password to use for the allocate
+     * @param type The type of relay to use
      */
     set_relay_info(stream_id: number, component_id: number, server_ip: string, server_port: number, username: string, password: string, type: RelayType): boolean
     /**
@@ -1281,6 +1384,9 @@ class Agent {
      *     existing remote candidates.
      *    </para>
      *  </note>
+     * @param stream_id The ID of the stream the candidates are for
+     * @param component_id The ID of the component the candidates are for
+     * @param candidates a #GSList of #NiceCandidate items describing each candidate to add
      */
     set_remote_candidates(stream_id: number, component_id: number, candidates: Candidate[]): number
     /**
@@ -1298,6 +1404,9 @@ class Agent {
      *      username and password on the candidates.
      *    </para>
      *  </note>
+     * @param stream_id The ID of the stream
+     * @param ufrag nul-terminated string containing an ICE username fragment    (length must be between 22 and 256 chars)
+     * @param pwd nul-terminated string containing an ICE password    (length must be between 4 and 256 chars)
      */
     set_remote_credentials(stream_id: number, ufrag: string, pwd: string): boolean
     /**
@@ -1306,6 +1415,10 @@ class Agent {
      * disable all further ICE processing (connection check,
      * state machine updates, etc). Note that keepalives will
      * continue to be sent.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param lfoundation The local foundation of the candidate to use
+     * @param rfoundation The remote foundation of the candidate to use
      */
     set_selected_pair(stream_id: number, component_id: number, lfoundation: string, rfoundation: string): boolean
     /**
@@ -1316,6 +1429,9 @@ class Agent {
      * Calling this function will disable all further ICE processing
      * (connection check, state machine updates, etc). Note that keepalives will
      * continue to be sent.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param candidate The #NiceCandidate to select
      */
     set_selected_remote_candidate(stream_id: number, component_id: number, candidate: Candidate): boolean
     /**
@@ -1336,6 +1452,7 @@ class Agent {
      *        128 characters will be sent.
      *      </para>
      *    </note>
+     * @param software The value of the SOFTWARE attribute to add.
      */
     set_software(software: string): void
     /**
@@ -1349,10 +1466,14 @@ class Agent {
      * <para>See also: nice_agent_generate_local_sdp()</para>
      * <para>See also: nice_agent_parse_remote_sdp()</para>
      * <para>See also: nice_agent_get_stream_name()</para>
+     * @param stream_id The ID of the stream to change
+     * @param name The new name of the stream or %NULL
      */
     set_stream_name(stream_id: number, name: string): boolean
     /**
      * Sets the IP_TOS and/or IPV6_TCLASS field on the stream's sockets' options
+     * @param stream_id The ID of the stream
+     * @param tos The ToS to set
      */
     set_stream_tos(stream_id: number, tos: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1390,6 +1511,10 @@ class Agent {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1400,6 +1525,12 @@ class Agent {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1423,6 +1554,7 @@ class Agent {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1442,11 +1574,14 @@ class Agent {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1454,6 +1589,8 @@ class Agent {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1471,6 +1608,7 @@ class Agent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1516,6 +1654,7 @@ class Agent {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1559,15 +1698,20 @@ class Agent {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1608,6 +1752,7 @@ class Agent {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1642,6 +1787,7 @@ class Agent {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1661,6 +1807,7 @@ class Agent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1668,6 +1815,7 @@ class Agent {
     /**
      * This signal is fired whenever a stream has finished gathering its
      * candidates after a call to nice_agent_gather_candidates()
+     * @param stream_id The ID of the stream
      */
     connect(sigName: "candidate-gathering-done", callback: (($obj: Agent, stream_id: number) => void)): number
     connect_after(sigName: "candidate-gathering-done", callback: (($obj: Agent, stream_id: number) => void)): number
@@ -1677,6 +1825,9 @@ class Agent {
      * valid state transitions.
      * 
      * ![State transition diagram](states.png)
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param state The new #NiceComponentState of the component
      */
     connect(sigName: "component-state-changed", callback: (($obj: Agent, stream_id: number, component_id: number, state: number) => void)): number
     connect_after(sigName: "component-state-changed", callback: (($obj: Agent, stream_id: number, component_id: number, state: number) => void)): number
@@ -1684,6 +1835,7 @@ class Agent {
     /**
      * This signal is fired when we received our first binding request from
      * the peer.
+     * @param stream_id The ID of the stream
      */
     connect(sigName: "initial-binding-request-received", callback: (($obj: Agent, stream_id: number) => void)): number
     connect_after(sigName: "initial-binding-request-received", callback: (($obj: Agent, stream_id: number) => void)): number
@@ -1695,6 +1847,9 @@ class Agent {
      * 
      * See also: #NiceAgent::candidate-gathering-done,
      * #NiceAgent::new-candidate-full
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param foundation The foundation of the new candidate
      */
     connect(sigName: "new-candidate", callback: (($obj: Agent, stream_id: number, component_id: number, foundation: string) => void)): number
     connect_after(sigName: "new-candidate", callback: (($obj: Agent, stream_id: number, component_id: number, foundation: string) => void)): number
@@ -1706,6 +1861,7 @@ class Agent {
      * 
      * See also: #NiceAgent::candidate-gathering-done,
      * #NiceAgent::new-candidate
+     * @param candidate The new #NiceCandidate
      */
     connect(sigName: "new-candidate-full", callback: (($obj: Agent, candidate: Candidate) => void)): number
     connect_after(sigName: "new-candidate-full", callback: (($obj: Agent, candidate: Candidate) => void)): number
@@ -1718,6 +1874,9 @@ class Agent {
      * candidate.
      * 
      * See also: #NiceAgent::new-remote-candidate-full
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param foundation The foundation of the new candidate
      */
     connect(sigName: "new-remote-candidate", callback: (($obj: Agent, stream_id: number, component_id: number, foundation: string) => void)): number
     connect_after(sigName: "new-remote-candidate", callback: (($obj: Agent, stream_id: number, component_id: number, foundation: string) => void)): number
@@ -1729,6 +1888,7 @@ class Agent {
      * also emitted with the candidate's foundation.
      * 
      * See also: #NiceAgent::new-remote-candidate
+     * @param candidate The new #NiceCandidate
      */
     connect(sigName: "new-remote-candidate-full", callback: (($obj: Agent, candidate: Candidate) => void)): number
     connect_after(sigName: "new-remote-candidate-full", callback: (($obj: Agent, candidate: Candidate) => void)): number
@@ -1740,6 +1900,10 @@ class Agent {
      * the Foundation of a Candidate is not a unique identifier.
      * 
      * See also: #NiceAgent::new-selected-pair-full
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param lfoundation The local foundation of the selected candidate pair
+     * @param rfoundation The remote foundation of the selected candidate pair
      */
     connect(sigName: "new-selected-pair", callback: (($obj: Agent, stream_id: number, component_id: number, lfoundation: string, rfoundation: string) => void)): number
     connect_after(sigName: "new-selected-pair", callback: (($obj: Agent, stream_id: number, component_id: number, lfoundation: string, rfoundation: string) => void)): number
@@ -1750,6 +1914,10 @@ class Agent {
      * #NiceAgent::new-selected-pair.
      * 
      * See also: #NiceAgent::new-selected-pair
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
+     * @param lcandidate The local #NiceCandidate of the selected candidate pair
+     * @param rcandidate The remote #NiceCandidate of the selected candidate pair
      */
     connect(sigName: "new-selected-pair-full", callback: (($obj: Agent, stream_id: number, component_id: number, lcandidate: Candidate, rcandidate: Candidate) => void)): number
     connect_after(sigName: "new-selected-pair-full", callback: (($obj: Agent, stream_id: number, component_id: number, lcandidate: Candidate, rcandidate: Candidate) => void)): number
@@ -1760,6 +1928,8 @@ class Agent {
      * This signal is only emitted when the nice_agent_send() function returns less
      * bytes than requested to send (or -1) and once when the connection
      * is established.
+     * @param stream_id The ID of the stream
+     * @param component_id The ID of the component
      */
     connect(sigName: "reliable-transport-writable", callback: (($obj: Agent, stream_id: number, component_id: number) => void)): number
     connect_after(sigName: "reliable-transport-writable", callback: (($obj: Agent, stream_id: number, component_id: number) => void)): number
@@ -1767,6 +1937,7 @@ class Agent {
     /**
      * This signal is fired whenever one or more streams are removed from the
      * `agent`.
+     * @param stream_ids An array of unsigned integer stream IDs, ending with a 0 ID
      */
     connect(sigName: "streams-removed", callback: (($obj: Agent, stream_ids: number[]) => void)): number
     connect_after(sigName: "streams-removed", callback: (($obj: Agent, stream_ids: number[]) => void)): number
@@ -1800,16 +1971,23 @@ class Agent {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::bytestream-tcp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::bytestream-tcp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::compatibility", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::compatibility", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::consent-freshness", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::consent-freshness", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::controlling-mode", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::controlling-mode", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::force-relay", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::force-relay", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::full-mode", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::full-mode", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ice-tcp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ice-tcp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::ice-trickle", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
@@ -1820,6 +1998,8 @@ class Agent {
     connect_after(sigName: "notify::idle-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::keepalive-conncheck", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::keepalive-conncheck", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::main-context", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::main-context", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-connectivity-checks", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-connectivity-checks", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::proxy-ip", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
@@ -1832,6 +2012,8 @@ class Agent {
     connect_after(sigName: "notify::proxy-type", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::proxy-username", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-username", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::reliable", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reliable", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::stun-initial-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stun-initial-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::stun-max-retransmissions", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
@@ -1887,12 +2069,24 @@ class PseudoTcpSocket {
     /* Properties of Nice-0.1.Nice.PseudoTcpSocket */
     ack_delay: number
     callbacks: object
+    readonly conversation: number
     no_delay: boolean
     rcv_buf: number
     snd_buf: number
     readonly state: number
+    /**
+     * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
+     * this socket. The extension is only compatible with other libnice pseudo-TCP
+     * stacks, and not with Jingle pseudo-TCP stacks. If enabled, support is
+     * negotiatied on connection setup, so it is safe for a #PseudoTcpSocket with
+     * support enabled to be used with one with it disabled, or with a Jingle
+     * pseudo-TCP socket which doesn’t support it at all.
+     * 
+     * Support is enabled by default.
+     */
+    readonly support_fin_ack: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Nice-0.1.Nice.PseudoTcpSocket */
     /**
      * Returns if there is space in the send buffer to send any data.
@@ -1920,6 +2114,7 @@ class PseudoTcpSocket {
      *  </note>
      * 
      * <para> See also: pseudo_tcp_socket_get_next_clock() </para>
+     * @param force %TRUE to close the socket forcefully, %FALSE to close it gracefully
      */
     close(force: boolean): void
     /**
@@ -1957,6 +2152,7 @@ class PseudoTcpSocket {
     /**
      * Call this to determine the timeout needed before the next time call
      * to pseudo_tcp_socket_notify_clock() should be made.
+     * @param timeout A pointer to be filled with the new timeout.
      */
     get_next_clock(timeout: number): boolean
     /**
@@ -1984,14 +2180,18 @@ class PseudoTcpSocket {
     /**
      * Notify the #PseudoTcpSocket that a new message has arrived, and enqueue the
      * data in its buffers to the #PseudoTcpSocket’s receive buffer.
+     * @param message A #NiceInputMessage containing the received data.
      */
     notify_message(message: InputMessage): boolean
     /**
      * Set the MTU of the socket
+     * @param mtu The new MTU of the socket
      */
     notify_mtu(mtu: number): void
     /**
      * Notify the #PseudoTcpSocket when a new packet arrives
+     * @param buffer The buffer containing the received data
+     * @param len The length of `buffer`
      */
     notify_packet(buffer: string, len: number): boolean
     /**
@@ -2007,6 +2207,8 @@ class PseudoTcpSocket {
      *      %PseudoTcpCallbacks:PseudoTcpReadable callback will not be called again.
      *    </para>
      *  </note>
+     * @param buffer The buffer to fill with received data
+     * @param len The length of `buffer`
      */
     recv(buffer: string, len: number): number
     /**
@@ -2019,6 +2221,8 @@ class PseudoTcpSocket {
      *      callback will be called when the socket will become writable.
      *    </para>
      *  </note>
+     * @param buffer The buffer with data to send
+     * @param len The length of `buffer`
      */
     send(buffer: string, len: number): number
     /**
@@ -2030,6 +2234,7 @@ class PseudoTcpSocket {
      * 
      * This function is intended for testing only, and should not be used in
      * production code.
+     * @param current_time Current monotonic time, in milliseconds; or zero to use the system monotonic clock.
      */
     set_time(current_time: number): void
     /**
@@ -2042,6 +2247,7 @@ class PseudoTcpSocket {
      * 
      * This is equivalent to the POSIX shutdown() function. Setting `how` to
      * %PSEUDO_TCP_SHUTDOWN_RDWR is equivalent to calling pseudo_tcp_socket_close().
+     * @param how The directions of the connection to shut down.
      */
     shutdown(how: PseudoTcpShutdown): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2079,6 +2285,10 @@ class PseudoTcpSocket {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2089,6 +2299,12 @@ class PseudoTcpSocket {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2112,6 +2328,7 @@ class PseudoTcpSocket {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2131,11 +2348,14 @@ class PseudoTcpSocket {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2143,6 +2363,8 @@ class PseudoTcpSocket {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2160,6 +2382,7 @@ class PseudoTcpSocket {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2205,6 +2428,7 @@ class PseudoTcpSocket {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2248,15 +2472,20 @@ class PseudoTcpSocket {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2297,6 +2526,7 @@ class PseudoTcpSocket {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2331,6 +2561,7 @@ class PseudoTcpSocket {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2350,6 +2581,7 @@ class PseudoTcpSocket {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2382,6 +2614,7 @@ class PseudoTcpSocket {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
@@ -2390,6 +2623,8 @@ class PseudoTcpSocket {
     connect_after(sigName: "notify::ack-delay", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::callbacks", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::callbacks", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::conversation", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::conversation", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::no-delay", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::no-delay", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::rcv-buf", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
@@ -2398,6 +2633,8 @@ class PseudoTcpSocket {
     connect_after(sigName: "notify::snd-buf", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::state", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::state", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::support-fin-ack", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::support-fin-ack", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2413,16 +2650,19 @@ class Address {
     /* Methods of Nice-0.1.Nice.Address */
     /**
      * Fills the sockaddr structure `sin` with the address contained in `addr`
+     * @param sin The sockaddr to fill
      */
     copy_to_sockaddr(sin?: object | null): void
     /**
      * Compares two #NiceAddress structures to see if they contain the same address
      * and the same port.
+     * @param b Second #NiceAddress to compare
      */
     equal(b: Address): boolean
     /**
      * Compares two #NiceAddress structures to see if they contain the same address,
      * ignoring the port.
+     * @param b Second #NiceAddress to compare
      */
     equal_no_port(b: Address): boolean
     /**
@@ -2451,10 +2691,12 @@ class Address {
     is_valid(): boolean
     /**
      * Sets an IPv4 or IPv6 address from the sockaddr structure `sin`
+     * @param sin The sockaddr to set
      */
     set_from_sockaddr(sin?: object | null): void
     /**
      * Sets an IPv4 or IPv6 address from the string `str`
+     * @param str The string to set
      */
     set_from_string(str: string): boolean
     /**
@@ -2466,6 +2708,7 @@ class Address {
      *    nice_address_set_port()
      *   </para>
      *  </note>
+     * @param addr_ipv4 The IPv4 address
      */
     set_ipv4(addr_ipv4: number): void
     /**
@@ -2477,21 +2720,24 @@ class Address {
      *    nice_address_set_port()
      *   </para>
      *  </note>
+     * @param addr_ipv6 The IPv6 address
      */
     set_ipv6(addr_ipv6: number): void
     /**
      * Set the port of `addr` to `port`
+     * @param port The port to set
      */
     set_port(port: number): void
     /**
      * Transforms the address `addr` into a human readable string
+     * @param dst The string to fill
      */
     to_string(dst: string): void
     static name: string
 }
 abstract class AgentClass {
     /* Fields of Nice-0.1.Nice.AgentClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Candidate {
@@ -2499,45 +2745,45 @@ class Candidate {
     /**
      * The type of candidate
      */
-    readonly type: CandidateType
+    type: CandidateType
     /**
      * The transport being used for the candidate
      */
-    readonly transport: CandidateTransport
+    transport: CandidateTransport
     /**
      * The #NiceAddress of the candidate
      */
-    readonly addr: Address
+    addr: Address
     /**
      * The #NiceAddress of the base address used by the candidate
      */
-    readonly base_addr: Address
+    base_addr: Address
     /**
      * The priority of the candidate <emphasis> see note </emphasis>
      */
-    readonly priority: number
+    priority: number
     /**
      * The ID of the stream to which belongs the candidate
      */
-    readonly stream_id: number
+    stream_id: number
     /**
      * The ID of the component to which belongs the candidate
      */
-    readonly component_id: number
+    component_id: number
     /**
      * The foundation of the candidate
      */
-    readonly foundation: number[]
+    foundation: number[]
     /**
      * The candidate-specific username to use (overrides the one set
      * by nice_agent_set_local_credentials() or nice_agent_set_remote_credentials())
      */
-    readonly username: string
+    username: string
     /**
      * The candidate-specific password to use (overrides the one set
      * by nice_agent_set_local_credentials() or nice_agent_set_remote_credentials())
      */
-    readonly password: string
+    password: string
     /* Methods of Nice-0.1.Nice.Candidate */
     /**
      * Makes a copy of a #NiceCandidate
@@ -2546,6 +2792,7 @@ class Candidate {
     /**
      * Verifies that the candidates point to the same place, meaning they have
      * the same transport and the same address. It ignores all other aspects.
+     * @param candidate2 A candidate
      */
     equal_target(candidate2: Candidate): boolean
     /**
@@ -2560,11 +2807,13 @@ class Candidate {
     /**
      * Useful for debugging functions, just returns a static string with the
      * candidate transport.
+     * @param transport a #NiceCandidateTransport
      */
     static transport_to_string(transport: CandidateTransport): string
     /**
      * Useful for debugging functions, just returns a static string with the
      * candidate type.
+     * @param type a #NiceCandidateType
      */
     static type_to_string(type: CandidateType): string
 }
@@ -2574,21 +2823,21 @@ class InputMessage {
      * unowned array of #GInputVector buffers to
      * store data in for this message
      */
-    readonly buffers: Gio.InputVector[]
+    buffers: Gio.InputVector[]
     /**
      * number of #GInputVectors in `buffers,` or -1 to indicate `buffers`
      * is %NULL-terminated
      */
-    readonly n_buffers: number
+    n_buffers: number
     /**
      * return location to store the address of the peer who
      * transmitted the message, or %NULL
      */
-    readonly from: Address
+    from: Address
     /**
      * total number of valid bytes contiguously stored in `buffers`
      */
-    readonly length: number
+    length: number
     static name: string
 }
 class OutputMessage {
@@ -2597,12 +2846,12 @@ class OutputMessage {
      * unowned array of #GOutputVector buffers
      * which contain data to transmit for this message
      */
-    readonly buffers: Gio.OutputVector[]
+    buffers: Gio.OutputVector[]
     /**
      * number of #GOutputVectors in `buffers,` or -1 to indicate `buffers`
      * is %NULL-terminated
      */
-    readonly n_buffers: number
+    n_buffers: number
     static name: string
 }
 class PseudoTcpCallbacks {
@@ -2610,12 +2859,12 @@ class PseudoTcpCallbacks {
     /**
      * A user defined pointer to be passed to the callbacks
      */
-    readonly user_data: object
-    readonly PseudoTcpOpened: (tcp: PseudoTcpSocket, data: object) => void
-    readonly PseudoTcpReadable: (tcp: PseudoTcpSocket, data: object) => void
-    readonly PseudoTcpWritable: (tcp: PseudoTcpSocket, data: object) => void
-    readonly PseudoTcpClosed: (tcp: PseudoTcpSocket, error: number, data: object) => void
-    readonly WritePacket: (tcp: PseudoTcpSocket, buffer: string, len: number, data: object) => PseudoTcpWriteResult
+    user_data: object
+    PseudoTcpOpened: (tcp: PseudoTcpSocket, data: object) => void
+    PseudoTcpReadable: (tcp: PseudoTcpSocket, data: object) => void
+    PseudoTcpWritable: (tcp: PseudoTcpSocket, data: object) => void
+    PseudoTcpClosed: (tcp: PseudoTcpSocket, error: number, data: object) => void
+    WritePacket: (tcp: PseudoTcpSocket, buffer: string, len: number, data: object) => PseudoTcpWriteResult
     static name: string
 }
 abstract class PseudoTcpSocketClass {

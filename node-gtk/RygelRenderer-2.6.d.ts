@@ -50,7 +50,7 @@ class MediaPlayer {
     readonly bytePosition: number
     userAgent: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of RygelRenderer-2.6.RygelRenderer.MediaPlayer */
     seek(time: number): boolean
     seekBytes(bytes: number): boolean
@@ -118,6 +118,10 @@ class MediaPlayer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -128,6 +132,12 @@ class MediaPlayer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -151,6 +161,7 @@ class MediaPlayer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -170,11 +181,14 @@ class MediaPlayer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -182,6 +196,8 @@ class MediaPlayer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -199,6 +215,7 @@ class MediaPlayer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -244,6 +261,7 @@ class MediaPlayer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -287,15 +305,20 @@ class MediaPlayer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -336,6 +359,7 @@ class MediaPlayer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -370,6 +394,7 @@ class MediaPlayer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -401,6 +426,7 @@ class MediaPlayer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -522,7 +548,7 @@ class PlayerController {
     playMode: string
     readonly canPause: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of RygelRenderer-2.6.RygelRenderer.PlayerController */
     next(): boolean
     previous(): boolean
@@ -589,6 +615,10 @@ class PlayerController {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -599,6 +629,12 @@ class PlayerController {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -622,6 +658,7 @@ class PlayerController {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -641,11 +678,14 @@ class PlayerController {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -653,6 +693,8 @@ class PlayerController {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -670,6 +712,7 @@ class PlayerController {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -715,6 +758,7 @@ class PlayerController {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -758,15 +802,20 @@ class PlayerController {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -807,6 +856,7 @@ class PlayerController {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -841,6 +891,7 @@ class PlayerController {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -872,6 +923,7 @@ class PlayerController {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -959,15 +1011,18 @@ class MediaRendererPlugin {
     supportedProfiles: RygelCore.DLNAProfile[]
     /* Properties of RygelCore-2.6.RygelCore.Plugin */
     capabilities: RygelCore.PluginCapabilities
+    readonly name: string
     title: string
+    readonly description: string
+    readonly descPath: string
     active: boolean
     resourceInfos: Gee.ArrayList
     iconInfos: Gee.ArrayList
     defaultIcons: Gee.ArrayList
     /* Fields of GUPnP-1.2.GUPnP.ResourceFactory */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of RygelRenderer-2.6.RygelRenderer.MediaRendererPlugin */
     getPlayer(): MediaPlayer | null
     getController(): PlayerController
@@ -998,6 +1053,8 @@ class MediaRendererPlugin {
      * 
      * Note: GType `type` must be a derived type of #GUPNP_TYPE_DEVICE_PROXY if
      * resource is a device or #GUPNP_TYPE_SERVICE_PROXY if its a service.
+     * @param upnpType The UPnP type name of the resource.
+     * @param type The requested GType assignment for the resource proxy.
      */
     registerResourceProxyType(upnpType: string, type: GObject.Type): void
     /**
@@ -1012,15 +1069,19 @@ class MediaRendererPlugin {
      * 
      * Note: GType `type` must be a derived type of #GUPNP_TYPE_DEVICE if resource is
      * a device or #GUPNP_TYPE_SERVICE if its a service.
+     * @param upnpType The UPnP type name of the resource.
+     * @param type The requested GType assignment for the resource.
      */
     registerResourceType(upnpType: string, type: GObject.Type): void
     /**
      * Unregisters the GType assignment for the proxy of resource of UPnP type
      * `upnp_type`.
+     * @param upnpType The UPnP type name of the resource.
      */
     unregisterResourceProxyType(upnpType: string): boolean
     /**
      * Unregisters the GType assignment for the resource of UPnP type `upnp_type`.
+     * @param upnpType The UPnP type name of the resource.
      */
     unregisterResourceType(upnpType: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1058,6 +1119,10 @@ class MediaRendererPlugin {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1068,6 +1133,12 @@ class MediaRendererPlugin {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1091,6 +1162,7 @@ class MediaRendererPlugin {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1110,11 +1182,14 @@ class MediaRendererPlugin {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1122,6 +1197,8 @@ class MediaRendererPlugin {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1139,6 +1216,7 @@ class MediaRendererPlugin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1184,6 +1262,7 @@ class MediaRendererPlugin {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1227,15 +1306,20 @@ class MediaRendererPlugin {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1276,6 +1360,7 @@ class MediaRendererPlugin {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1310,6 +1395,7 @@ class MediaRendererPlugin {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1341,6 +1427,7 @@ class MediaRendererPlugin {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1357,11 +1444,26 @@ class MediaRendererPlugin {
     on(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::title", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::description", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::description", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::desc-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::desc-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::desc-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::desc-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::desc-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::active", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::active", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::active", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1404,10 +1506,14 @@ interface MediaRenderer_ConstructProps extends RygelCore.MediaDevice_ConstructPr
     player?: MediaPlayer
 }
 class MediaRenderer {
+    /* Properties of RygelRenderer-2.6.RygelRenderer.MediaRenderer */
+    readonly player: MediaPlayer
     /* Properties of RygelCore-2.6.RygelCore.MediaDevice */
     plugin: RygelCore.Plugin
+    readonly title: string
+    readonly capabilities: RygelCore.PluginCapabilities
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of RygelCore-2.6.RygelCore.MediaDevice */
     addInterface(iface: string): void
     removeInterface(iface: string): void
@@ -1451,6 +1557,10 @@ class MediaRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1461,6 +1571,12 @@ class MediaRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1484,6 +1600,7 @@ class MediaRenderer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1503,11 +1620,14 @@ class MediaRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1515,6 +1635,8 @@ class MediaRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1532,6 +1654,7 @@ class MediaRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1577,6 +1700,7 @@ class MediaRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1620,15 +1744,20 @@ class MediaRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1669,6 +1798,7 @@ class MediaRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1703,6 +1833,7 @@ class MediaRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1734,17 +1865,33 @@ class MediaRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::player", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::player", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::player", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::player", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::player", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::plugin", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::plugin", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::plugin", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::plugin", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::plugin", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::title", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::capabilities", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::capabilities", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1761,8 +1908,8 @@ class MediaRenderer {
 }
 abstract class MediaRendererPluginClass {
     /* Fields of RygelRenderer-2.6.RygelRenderer.MediaRendererPluginClass */
-    readonly getPlayer: (self: MediaRendererPlugin) => MediaPlayer | null
-    readonly getController: (self: MediaRendererPlugin) => PlayerController
+    getPlayer: (self: MediaRendererPlugin) => MediaPlayer | null
+    getController: (self: MediaRendererPlugin) => PlayerController
     static name: string
 }
 class MediaRendererPluginPrivate {
@@ -1776,66 +1923,66 @@ class MediaRendererPrivate {
 }
 abstract class MediaPlayerIface {
     /* Fields of RygelRenderer-2.6.RygelRenderer.MediaPlayerIface */
-    readonly seek: (self: MediaPlayer, time: number) => boolean
-    readonly seekBytes: (self: MediaPlayer, bytes: number) => boolean
-    readonly getProtocols: () => [ /* returnType */ string[], /* resultLength1 */ number ]
-    readonly getMimeTypes: () => [ /* returnType */ string[], /* resultLength1 */ number ]
-    readonly getPlaybackState: (self: MediaPlayer) => string
-    readonly setPlaybackState: (self: MediaPlayer, value: string) => void
-    readonly getAllowedPlaybackSpeeds: () => [ /* returnType */ string[], /* resultLength1 */ number ]
-    readonly getPlaybackSpeed: (self: MediaPlayer) => string
-    readonly setPlaybackSpeed: (self: MediaPlayer, value: string) => void
-    readonly getUri: (self: MediaPlayer) => string | null
-    readonly setUri: (self: MediaPlayer, value?: string | null) => void
-    readonly getVolume: (self: MediaPlayer) => number
-    readonly setVolume: (self: MediaPlayer, value: number) => void
-    readonly getDuration: (self: MediaPlayer) => number
-    readonly getSize: (self: MediaPlayer) => number
-    readonly getMetadata: (self: MediaPlayer) => string | null
-    readonly setMetadata: (self: MediaPlayer, value?: string | null) => void
-    readonly getMimeType: (self: MediaPlayer) => string | null
-    readonly setMimeType: (self: MediaPlayer, value?: string | null) => void
-    readonly getCanSeek: (self: MediaPlayer) => boolean
-    readonly getCanSeekBytes: (self: MediaPlayer) => boolean
-    readonly getContentFeatures: (self: MediaPlayer) => string | null
-    readonly setContentFeatures: (self: MediaPlayer, value?: string | null) => void
-    readonly getPosition: (self: MediaPlayer) => number
-    readonly getBytePosition: (self: MediaPlayer) => number
-    readonly getUserAgent: (self: MediaPlayer) => string | null
-    readonly setUserAgent: (self: MediaPlayer, value?: string | null) => void
+    seek: (self: MediaPlayer, time: number) => boolean
+    seekBytes: (self: MediaPlayer, bytes: number) => boolean
+    getProtocols: () => [ /* returnType */ string[], /* resultLength1 */ number ]
+    getMimeTypes: () => [ /* returnType */ string[], /* resultLength1 */ number ]
+    getPlaybackState: (self: MediaPlayer) => string
+    setPlaybackState: (self: MediaPlayer, value: string) => void
+    getAllowedPlaybackSpeeds: () => [ /* returnType */ string[], /* resultLength1 */ number ]
+    getPlaybackSpeed: (self: MediaPlayer) => string
+    setPlaybackSpeed: (self: MediaPlayer, value: string) => void
+    getUri: (self: MediaPlayer) => string | null
+    setUri: (self: MediaPlayer, value?: string | null) => void
+    getVolume: (self: MediaPlayer) => number
+    setVolume: (self: MediaPlayer, value: number) => void
+    getDuration: (self: MediaPlayer) => number
+    getSize: (self: MediaPlayer) => number
+    getMetadata: (self: MediaPlayer) => string | null
+    setMetadata: (self: MediaPlayer, value?: string | null) => void
+    getMimeType: (self: MediaPlayer) => string | null
+    setMimeType: (self: MediaPlayer, value?: string | null) => void
+    getCanSeek: (self: MediaPlayer) => boolean
+    getCanSeekBytes: (self: MediaPlayer) => boolean
+    getContentFeatures: (self: MediaPlayer) => string | null
+    setContentFeatures: (self: MediaPlayer, value?: string | null) => void
+    getPosition: (self: MediaPlayer) => number
+    getBytePosition: (self: MediaPlayer) => number
+    getUserAgent: (self: MediaPlayer) => string | null
+    setUserAgent: (self: MediaPlayer, value?: string | null) => void
     static name: string
 }
 abstract class PlayerControllerIface {
     /* Fields of RygelRenderer-2.6.RygelRenderer.PlayerControllerIface */
-    readonly next: (self: PlayerController) => boolean
-    readonly previous: (self: PlayerController) => boolean
-    readonly setSinglePlayUri: (self: PlayerController, uri: string, metadata: string, mime?: string | null, features?: string | null) => void
-    readonly setPlaylistUri: (self: PlayerController, uri: string, metadata: string, collection: GUPnPAV.MediaCollection) => void
-    readonly setNextSinglePlayUri: (self: PlayerController, uri: string, metadata: string, mime?: string | null, features?: string | null) => void
-    readonly setNextPlaylistUri: (self: PlayerController, uri: string, metadata: string, collection: GUPnPAV.MediaCollection) => void
-    readonly isPlayModeValid: (self: PlayerController, playMode: string) => boolean
-    readonly getPlaybackState: (self: PlayerController) => string
-    readonly setPlaybackState: (self: PlayerController, value: string) => void
-    readonly getNTracks: (self: PlayerController) => number
-    readonly setNTracks: (self: PlayerController, value: number) => void
-    readonly getTrack: (self: PlayerController) => number
-    readonly setTrack: (self: PlayerController, value: number) => void
-    readonly getUri: (self: PlayerController) => string
-    readonly setUri: (self: PlayerController, value: string) => void
-    readonly getMetadata: (self: PlayerController) => string
-    readonly setMetadata: (self: PlayerController, value: string) => void
-    readonly getTrackUri: (self: PlayerController) => string
-    readonly setTrackUri: (self: PlayerController, value: string) => void
-    readonly getTrackMetadata: (self: PlayerController) => string
-    readonly setTrackMetadata: (self: PlayerController, value: string) => void
-    readonly getNextUri: (self: PlayerController) => string
-    readonly setNextUri: (self: PlayerController, value: string) => void
-    readonly getNextMetadata: (self: PlayerController) => string
-    readonly setNextMetadata: (self: PlayerController, value: string) => void
-    readonly getCurrentTransportActions: (self: PlayerController) => string
-    readonly getPlayMode: (self: PlayerController) => string
-    readonly setPlayMode: (self: PlayerController, value: string) => void
-    readonly getCanPause: (self: PlayerController) => boolean
+    next: (self: PlayerController) => boolean
+    previous: (self: PlayerController) => boolean
+    setSinglePlayUri: (self: PlayerController, uri: string, metadata: string, mime?: string | null, features?: string | null) => void
+    setPlaylistUri: (self: PlayerController, uri: string, metadata: string, collection: GUPnPAV.MediaCollection) => void
+    setNextSinglePlayUri: (self: PlayerController, uri: string, metadata: string, mime?: string | null, features?: string | null) => void
+    setNextPlaylistUri: (self: PlayerController, uri: string, metadata: string, collection: GUPnPAV.MediaCollection) => void
+    isPlayModeValid: (self: PlayerController, playMode: string) => boolean
+    getPlaybackState: (self: PlayerController) => string
+    setPlaybackState: (self: PlayerController, value: string) => void
+    getNTracks: (self: PlayerController) => number
+    setNTracks: (self: PlayerController, value: number) => void
+    getTrack: (self: PlayerController) => number
+    setTrack: (self: PlayerController, value: number) => void
+    getUri: (self: PlayerController) => string
+    setUri: (self: PlayerController, value: string) => void
+    getMetadata: (self: PlayerController) => string
+    setMetadata: (self: PlayerController, value: string) => void
+    getTrackUri: (self: PlayerController) => string
+    setTrackUri: (self: PlayerController, value: string) => void
+    getTrackMetadata: (self: PlayerController) => string
+    setTrackMetadata: (self: PlayerController, value: string) => void
+    getNextUri: (self: PlayerController) => string
+    setNextUri: (self: PlayerController, value: string) => void
+    getNextMetadata: (self: PlayerController) => string
+    setNextMetadata: (self: PlayerController, value: string) => void
+    getCurrentTransportActions: (self: PlayerController) => string
+    getPlayMode: (self: PlayerController) => string
+    setPlayMode: (self: PlayerController, value: string) => void
+    getCanPause: (self: PlayerController) => boolean
     static name: string
 }
 }

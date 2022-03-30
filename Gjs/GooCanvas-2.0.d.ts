@@ -382,6 +382,8 @@ class CanvasItem {
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -397,11 +399,24 @@ class CanvasItem {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -414,6 +429,7 @@ class CanvasItem {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -429,10 +445,14 @@ class CanvasItem {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -445,6 +465,12 @@ class CanvasItem {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -464,6 +490,8 @@ class CanvasItem {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -473,6 +501,9 @@ class CanvasItem {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -482,6 +513,8 @@ class CanvasItem {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -505,6 +538,7 @@ class CanvasItem {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -523,10 +557,13 @@ class CanvasItem {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -537,10 +574,14 @@ class CanvasItem {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -552,6 +593,7 @@ class CanvasItem {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -565,10 +607,15 @@ class CanvasItem {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -576,10 +623,14 @@ class CanvasItem {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -589,10 +640,12 @@ class CanvasItem {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -605,28 +658,41 @@ class CanvasItem {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -636,6 +702,8 @@ class CanvasItem {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -643,11 +711,16 @@ class CanvasItem {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -663,6 +736,11 @@ class CanvasItem {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -685,6 +763,7 @@ class CanvasItem {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -698,6 +777,12 @@ class CanvasItem {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -717,6 +802,8 @@ class CanvasItem {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -726,6 +813,9 @@ class CanvasItem {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -735,6 +825,8 @@ class CanvasItem {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -750,6 +842,7 @@ class CanvasItem {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -769,6 +862,8 @@ class CanvasItem {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -779,11 +874,15 @@ class CanvasItem {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -800,6 +899,7 @@ class CanvasItem {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -810,10 +910,12 @@ class CanvasItem {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -826,14 +928,17 @@ class CanvasItem {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -841,23 +946,31 @@ class CanvasItem {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasItem, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasItem, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -865,24 +978,31 @@ class CanvasItem {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -890,6 +1010,8 @@ class CanvasItem {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -897,6 +1019,8 @@ class CanvasItem {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -904,18 +1028,24 @@ class CanvasItem {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -929,6 +1059,10 @@ class CanvasItem {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasItem, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasItem, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -937,6 +1071,8 @@ class CanvasItem {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasItem, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -948,6 +1084,8 @@ class CanvasItem {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -955,6 +1093,9 @@ class CanvasItem {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -962,6 +1103,7 @@ class CanvasItem {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
 }
@@ -979,23 +1121,38 @@ class CanvasItemModel {
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -1012,6 +1169,10 @@ class CanvasItemModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -1021,6 +1182,7 @@ class CanvasItemModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -1029,14 +1191,18 @@ class CanvasItemModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -1048,19 +1214,28 @@ class CanvasItemModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -1073,28 +1248,41 @@ class CanvasItemModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -1104,11 +1292,15 @@ class CanvasItemModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -1119,6 +1311,7 @@ class CanvasItemModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1137,14 +1330,18 @@ class CanvasItemModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1158,37 +1355,45 @@ class CanvasItemModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasItemModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasItemModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasItemModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasItemModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasItemModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasItemModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasItemModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasItemModel, old_child_num: number, new_child_num: number) => void)): number
@@ -1196,12 +1401,14 @@ class CanvasItemModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasItemModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasItemModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasItemModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasItemModel, child_num: number) => void)): number
@@ -1214,6 +1421,8 @@ class CanvasItemModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -1222,6 +1431,9 @@ class CanvasItemModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -1230,6 +1442,7 @@ class CanvasItemModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
 }
@@ -1504,22 +1717,27 @@ class Canvas {
      */
     vscroll_policy: Gtk.ScrollablePolicy
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.Canvas */
     /**
      * Converts the given bounds in the canvas coordinate space to a bounding box
      * in item space. This is useful in the item paint() methods to convert the
      * bounds to be painted to the item's coordinate space.
+     * @param item a #GooCanvasItem.
+     * @param bounds the bounds in canvas coordinate space, to be converted.
      */
     convert_bounds_to_item_space(item: CanvasItem, bounds: CanvasBounds): void
     /**
      * Converts a coordinate from the given item's coordinate space to the canvas
      * coordinate space, applying all transformation matrices including the
      * item's own transformation matrix, if it has one.
+     * @param item a #GooCanvasItem.
+     * @param x a pointer to the x coordinate to convert.
+     * @param y a pointer to the y coordinate to convert.
      */
     convert_from_item_space(item: CanvasItem, x: number, y: number): [ /* x */ number, /* y */ number ]
     /**
@@ -1531,12 +1749,17 @@ class Canvas {
      * 
      * The canvas coordinate space is specified in the call to
      * goo_canvas_set_bounds().
+     * @param x a pointer to the x coordinate to convert.
+     * @param y a pointer to the y coordinate to convert.
      */
     convert_from_pixels(x: number, y: number): [ /* x */ number, /* y */ number ]
     /**
      * Converts a coordinate from the canvas coordinate space to the given
      * item's coordinate space, applying all transformation matrices including the
      * item's own transformation matrix, if it has one.
+     * @param item a #GooCanvasItem.
+     * @param x a pointer to the x coordinate to convert.
+     * @param y a pointer to the y coordinate to convert.
      */
     convert_to_item_space(item: CanvasItem, x: number, y: number): [ /* x */ number, /* y */ number ]
     /**
@@ -1548,18 +1771,24 @@ class Canvas {
      * The pixel coordinate space specifies pixels from the top-left of the entire
      * canvas window, according to the current scale setting.
      * See goo_canvas_set_scale().
+     * @param x a pointer to the x coordinate to convert.
+     * @param y a pointer to the y coordinate to convert.
      */
     convert_to_pixels(x: number, y: number): [ /* x */ number, /* y */ number ]
     /**
      * Converts a coordinate from pixels to the canvas's units,
      * ignoring scaling and ignoring the coordinate space specified
      * in the call to goo_canvas_set_bounds().
+     * @param x a pointer to the x coordinate to convert.
+     * @param y a pointer to the y coordinate to convert.
      */
     convert_units_from_pixels(x: number, y: number): [ /* x */ number, /* y */ number ]
     /**
      * Converts a coordinate from the canvas's units to pixels,
      * ignoring scaling and ignoring the coordinate space specified
      * in the call to goo_canvas_set_bounds().
+     * @param x a pointer to the x coordinate to convert.
+     * @param y a pointer to the y coordinate to convert.
      */
     convert_units_to_pixels(x: number, y: number): [ /* x */ number, /* y */ number ]
     /**
@@ -1581,6 +1810,7 @@ class Canvas {
      * 
      * It emits the #GooCanvas::item-created signal after creating the view, so
      * application code can connect signal handlers to the new view if desired.
+     * @param model the item model to create a canvas item for.
      */
     create_item(model: CanvasItemModel): CanvasItem
     /**
@@ -1610,18 +1840,29 @@ class Canvas {
      * 
      * More complex applications may want to use the #GooCanvas::item-created
      * signal to hook up their signal handlers.
+     * @param model a #GooCanvasItemModel.
      */
     get_item(model: CanvasItemModel): CanvasItem
     /**
      * Gets the item at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point
+     * @param is_pointer_event %TRUE if the "pointer-events" property of  items should be used to determine which parts of the item are tested.
      */
     get_item_at(x: number, y: number, is_pointer_event: boolean): CanvasItem
     /**
      * Gets all items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point
+     * @param is_pointer_event %TRUE if the "pointer-events" property of  items should be used to determine which parts of the item are tested.
      */
     get_items_at(x: number, y: number, is_pointer_event: boolean): CanvasItem[]
     /**
      * Gets a list of items inside or outside a given area.
+     * @param area the area to compare with each item's bounds.
+     * @param inside_area %TRUE if items inside `area` should be returned, or %FALSE if  items outside `area` should be returned.
+     * @param allow_overlaps %TRUE if items which are partly inside and partly outside  should be returned.
+     * @param include_containers %TRUE if containers should be checked as well as  normal items.
      */
     get_items_in_area(area: CanvasBounds, inside_area: boolean, allow_overlaps: boolean, include_containers: boolean): CanvasItem[]
     /**
@@ -1664,22 +1905,34 @@ class Canvas {
     get_static_root_item_model(): CanvasItemModel
     /**
      * Grabs the keyboard focus for the given item.
+     * @param item the item to grab the focus.
      */
     grab_focus(item: CanvasItem): void
     /**
      * Attempts to grab the keyboard for the given item.
+     * @param item the item to grab the keyboard for.
+     * @param owner_events %TRUE if keyboard events for this application will be  reported normally, or %FALSE if all keyboard events will be reported with  respect to the grab item.
+     * @param time the time of the event that lead to the keyboard grab. This should  come from the relevant #GdkEvent.
      */
     keyboard_grab(item: CanvasItem, owner_events: boolean, time: number): Gdk.GrabStatus
     /**
      * Ungrabs the keyboard, if the given item has the keyboard grab.
+     * @param item the item that has the keyboard grab.
+     * @param time the time of the event that lead to the keyboard ungrab. This should  come from the relevant #GdkEvent.
      */
     keyboard_ungrab(item: CanvasItem, time: number): void
     /**
      * Attempts to grab the pointer for the given item.
+     * @param item the item to grab the pointer for.
+     * @param event_mask the events to receive during the grab.
+     * @param cursor the cursor to display during the grab, or NULL.
+     * @param time the time of the event that lead to the pointer grab. This should  come from the relevant #GdkEvent.
      */
     pointer_grab(item: CanvasItem, event_mask: Gdk.EventMask, cursor: Gdk.Cursor | null, time: number): Gdk.GrabStatus
     /**
      * Ungrabs the pointer, if the given item has the pointer grab.
+     * @param item the item that has the grab.
+     * @param time the time of the event that lead to the pointer ungrab. This should  come from the relevant #GdkEvent.
      */
     pointer_ungrab(item: CanvasItem, time: number): void
     /**
@@ -1688,6 +1941,7 @@ class Canvas {
      * 
      * It registers a widget item with the canvas, so that the canvas can do the
      * necessary actions to move and resize the widget as needed.
+     * @param witem a #GooCanvasWidget item.
      */
     register_widget_item(witem: CanvasWidget): void
     /**
@@ -1710,6 +1964,9 @@ class Canvas {
      *    cairo_translate (cr, 0, -A4_PAGE_HEIGHT * page_num);
      *    goo_canvas_render (GOO_CANVAS (canvas), cr, &bounds, 0.0);
      * </programlisting></informalexample>
+     * @param cr a cairo context.
+     * @param bounds the area to render, or %NULL to render the entire canvas.
+     * @param scale the scale to compare with each item's visibility threshold to see if they should be rendered. This only affects items that have their visibility set to %GOO_CANVAS_ITEM_VISIBLE_ABOVE_THRESHOLD.
      */
     render(cr: cairo.Context, bounds: CanvasBounds | null, scale: number): void
     /**
@@ -1722,6 +1979,8 @@ class Canvas {
      * 
      * If `is_static` is %FALSE this function behaves the same as
      * goo_canvas_request_redraw().
+     * @param bounds the bounds of the item to redraw.
+     * @param is_static if the item is static.
      */
     request_item_redraw(bounds: CanvasBounds, is_static: boolean): void
     /**
@@ -1730,6 +1989,7 @@ class Canvas {
      * 
      * Requests that the given bounds be redrawn. The bounds must be in the canvas
      * coordinate space.
+     * @param bounds the bounds to redraw, in device space.
      */
     request_redraw(bounds: CanvasBounds): void
     /**
@@ -1744,6 +2004,8 @@ class Canvas {
     /**
      * Scrolls the canvas, placing the given point as close to the top-left of
      * the view as possible.
+     * @param left the x coordinate to scroll to.
+     * @param top the y coordinate to scroll to.
      */
     scroll_to(left: number, top: number): void
     /**
@@ -1751,10 +2013,15 @@ class Canvas {
      * 
      * By default, canvas units are pixels, though the #GooCanvas:units property
      * can be used to change the units to points, inches or millimeters.
+     * @param left the left edge.
+     * @param top the top edge.
+     * @param right the right edge.
+     * @param bottom the bottom edge.
      */
     set_bounds(left: number, top: number, right: number, bottom: number): void
     /**
      * Sets the root item of the canvas. Any existing canvas items are removed.
+     * @param item the root canvas item.
      */
     set_root_item(item: CanvasItem): void
     /**
@@ -1762,6 +2029,7 @@ class Canvas {
      * 
      * A hierarchy of canvas items will be created, corresponding to the hierarchy
      * of items in the model. Any current canvas items will be removed.
+     * @param model a #GooCanvasItemModel.
      */
     set_root_item_model(model: CanvasItemModel): void
     /**
@@ -1770,6 +2038,7 @@ class Canvas {
      * The scale specifies the magnification factor of the canvas, e.g. if an item
      * has a width of 2 pixels and the scale is set to 3, it will be displayed with
      * a width of 2 x 3 = 6 pixels.
+     * @param scale the new scale setting.
      */
     set_scale(scale: number): void
     /**
@@ -1781,6 +2050,7 @@ class Canvas {
      * 
      * Static items are added to the static root item in exactly the same way that
      * ordinary items are added to the root item.
+     * @param item the static root item.
      */
     set_static_root_item(item: CanvasItem): void
     /**
@@ -1793,6 +2063,7 @@ class Canvas {
      * 
      * Static items models are added to the static root item model in exactly the
      *  same way that ordinary item models are added to the root item model.
+     * @param model the static root item model.
      */
     set_static_root_item_model(model: CanvasItemModel): void
     /**
@@ -1801,6 +2072,7 @@ class Canvas {
      * 
      * It should be called in the finalize method of #GooCanvasItem
      * objects, to remove the canvas item from the #GooCanvas's hash table.
+     * @param model the item model whose canvas item is being finalized.
      */
     unregister_item(model: CanvasItemModel): void
     /**
@@ -1809,6 +2081,7 @@ class Canvas {
      * 
      * It unregisters a widget item from the canvas, when the item is no longer in
      * the canvas.
+     * @param witem a #GooCanvasWidget item.
      */
     unregister_widget_item(witem: CanvasWidget): void
     /**
@@ -1835,11 +2108,15 @@ class Canvas {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -1850,6 +2127,8 @@ class Canvas {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -1858,10 +2137,15 @@ class Canvas {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -1881,6 +2165,7 @@ class Canvas {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -1895,6 +2180,7 @@ class Canvas {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -1934,6 +2220,7 @@ class Canvas {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -1957,6 +2244,8 @@ class Canvas {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -1969,6 +2258,7 @@ class Canvas {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -1982,6 +2272,7 @@ class Canvas {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -1992,6 +2283,7 @@ class Canvas {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -2003,6 +2295,7 @@ class Canvas {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -2015,6 +2308,7 @@ class Canvas {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -2027,6 +2321,7 @@ class Canvas {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -2034,6 +2329,7 @@ class Canvas {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -2042,6 +2338,7 @@ class Canvas {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -2065,17 +2362,25 @@ class Canvas {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -2085,6 +2390,7 @@ class Canvas {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -2108,6 +2414,7 @@ class Canvas {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -2118,6 +2425,7 @@ class Canvas {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -2140,6 +2448,7 @@ class Canvas {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -2150,6 +2459,7 @@ class Canvas {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -2169,6 +2479,7 @@ class Canvas {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -2186,6 +2497,7 @@ class Canvas {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -2230,6 +2542,7 @@ class Canvas {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -2238,11 +2551,16 @@ class Canvas {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -2271,12 +2589,22 @@ class Canvas {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -2311,6 +2639,8 @@ class Canvas {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -2365,16 +2695,23 @@ class Canvas {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -2384,6 +2721,7 @@ class Canvas {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -2401,6 +2739,9 @@ class Canvas {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -2441,33 +2782,41 @@ class Canvas {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -2497,6 +2846,7 @@ class Canvas {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -2526,6 +2876,7 @@ class Canvas {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -2557,6 +2908,7 @@ class Canvas {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -2619,6 +2971,7 @@ class Canvas {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -2683,6 +3036,7 @@ class Canvas {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -2692,11 +3046,13 @@ class Canvas {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -2850,6 +3206,7 @@ class Canvas {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -2937,6 +3294,7 @@ class Canvas {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -2948,6 +3306,7 @@ class Canvas {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -2989,6 +3348,7 @@ class Canvas {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -3119,6 +3479,8 @@ class Canvas {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -3337,6 +3699,7 @@ class Canvas {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -3347,6 +3710,8 @@ class Canvas {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -3354,11 +3719,13 @@ class Canvas {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -3426,6 +3793,7 @@ class Canvas {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -3462,6 +3830,7 @@ class Canvas {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -3480,6 +3849,8 @@ class Canvas {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -3497,6 +3868,8 @@ class Canvas {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -3506,6 +3879,8 @@ class Canvas {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -3513,6 +3888,8 @@ class Canvas {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -3520,6 +3897,7 @@ class Canvas {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -3541,6 +3919,7 @@ class Canvas {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -3551,6 +3930,8 @@ class Canvas {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -3558,6 +3939,8 @@ class Canvas {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -3586,6 +3969,8 @@ class Canvas {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -3596,11 +3981,14 @@ class Canvas {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -3609,6 +3997,8 @@ class Canvas {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -3662,6 +4052,10 @@ class Canvas {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -3675,6 +4069,7 @@ class Canvas {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -3720,6 +4115,7 @@ class Canvas {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -3731,11 +4127,15 @@ class Canvas {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -3743,11 +4143,13 @@ class Canvas {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -3762,6 +4164,9 @@ class Canvas {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -3774,11 +4179,14 @@ class Canvas {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -3807,6 +4215,7 @@ class Canvas {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -3835,6 +4244,7 @@ class Canvas {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -3859,6 +4269,8 @@ class Canvas {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -3871,6 +4283,7 @@ class Canvas {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -3885,18 +4298,21 @@ class Canvas {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -3917,6 +4333,7 @@ class Canvas {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -3930,11 +4347,13 @@ class Canvas {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -3944,6 +4363,8 @@ class Canvas {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -3958,6 +4379,8 @@ class Canvas {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -3973,6 +4396,7 @@ class Canvas {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -4001,6 +4425,7 @@ class Canvas {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -4015,6 +4440,7 @@ class Canvas {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -4022,26 +4448,31 @@ class Canvas {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -4055,6 +4486,7 @@ class Canvas {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -4083,6 +4515,7 @@ class Canvas {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -4101,6 +4534,7 @@ class Canvas {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -4108,36 +4542,43 @@ class Canvas {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -4150,6 +4591,7 @@ class Canvas {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -4158,6 +4600,7 @@ class Canvas {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -4175,6 +4618,7 @@ class Canvas {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -4184,6 +4628,7 @@ class Canvas {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -4195,6 +4640,7 @@ class Canvas {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -4204,6 +4650,7 @@ class Canvas {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -4213,6 +4660,7 @@ class Canvas {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -4231,6 +4679,7 @@ class Canvas {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -4238,6 +4687,7 @@ class Canvas {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -4271,12 +4721,15 @@ class Canvas {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -4293,11 +4746,14 @@ class Canvas {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -4305,6 +4761,7 @@ class Canvas {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -4316,6 +4773,7 @@ class Canvas {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -4324,6 +4782,7 @@ class Canvas {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -4332,11 +4791,13 @@ class Canvas {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -4344,6 +4805,7 @@ class Canvas {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -4351,6 +4813,7 @@ class Canvas {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -4361,6 +4824,7 @@ class Canvas {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -4371,6 +4835,7 @@ class Canvas {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -4385,12 +4850,14 @@ class Canvas {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -4432,6 +4899,7 @@ class Canvas {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -4448,6 +4916,8 @@ class Canvas {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -4482,6 +4952,8 @@ class Canvas {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -4495,6 +4967,9 @@ class Canvas {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -4524,12 +4999,14 @@ class Canvas {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4567,6 +5044,10 @@ class Canvas {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4577,6 +5058,12 @@ class Canvas {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4600,6 +5087,7 @@ class Canvas {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4619,11 +5107,14 @@ class Canvas {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4631,6 +5122,8 @@ class Canvas {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4648,6 +5141,7 @@ class Canvas {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4693,6 +5187,7 @@ class Canvas {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4736,15 +5231,20 @@ class Canvas {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4785,6 +5285,7 @@ class Canvas {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4819,12 +5320,16 @@ class Canvas {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -4832,24 +5337,39 @@ class Canvas {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -4858,14 +5378,19 @@ class Canvas {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Methods of Gtk-3.0.Gtk.Scrollable */
@@ -4895,22 +5420,26 @@ class Canvas {
     get_vscroll_policy(): Gtk.ScrollablePolicy
     /**
      * Sets the horizontal adjustment of the #GtkScrollable.
+     * @param hadjustment a #GtkAdjustment
      */
     set_hadjustment(hadjustment?: Gtk.Adjustment | null): void
     /**
      * Sets the #GtkScrollablePolicy to determine whether
      * horizontal scrolling should start below the minimum width or
      * below the natural width.
+     * @param policy the horizontal #GtkScrollablePolicy
      */
     set_hscroll_policy(policy: Gtk.ScrollablePolicy): void
     /**
      * Sets the vertical adjustment of the #GtkScrollable.
+     * @param vadjustment a #GtkAdjustment
      */
     set_vadjustment(vadjustment?: Gtk.Adjustment | null): void
     /**
      * Sets the #GtkScrollablePolicy to determine whether
      * vertical scrolling should start below the minimum height or
      * below the natural height.
+     * @param policy the vertical #GtkScrollablePolicy
      */
     set_vscroll_policy(policy: Gtk.ScrollablePolicy): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.Canvas */
@@ -4927,12 +5456,16 @@ class Canvas {
      * 
      * It emits the #GooCanvas::item-created signal after creating the view, so
      * application code can connect signal handlers to the new view if desired.
+     * @param model the item model to create a canvas item for.
      */
     vfunc_create_item(model: CanvasItemModel): CanvasItem
     vfunc_item_created(item: CanvasItem, model: CanvasItemModel): void
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -4940,24 +5473,39 @@ class Canvas {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -4974,14 +5522,19 @@ class Canvas {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /**
@@ -5006,6 +5559,7 @@ class Canvas {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -5027,12 +5581,15 @@ class Canvas {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -5045,6 +5602,7 @@ class Canvas {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5057,6 +5615,7 @@ class Canvas {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -5074,6 +5633,7 @@ class Canvas {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -5084,6 +5644,7 @@ class Canvas {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -5148,6 +5709,7 @@ class Canvas {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -5190,6 +5752,7 @@ class Canvas {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -5201,6 +5764,7 @@ class Canvas {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -5224,6 +5788,7 @@ class Canvas {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -5287,6 +5852,7 @@ class Canvas {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -5298,6 +5864,7 @@ class Canvas {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -5319,6 +5886,7 @@ class Canvas {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -5381,6 +5949,7 @@ class Canvas {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -5419,6 +5988,7 @@ class Canvas {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5427,6 +5997,8 @@ class Canvas {
      * This is emitted when a new canvas item is created, in model/view mode.
      * 
      * Applications can set up signal handlers for the new items here.
+     * @param item the new item.
+     * @param model the item's model.
      */
     connect(sigName: "item-created", callback: (($obj: Canvas, item: CanvasItem, model: CanvasItemModel) => void)): number
     connect_after(sigName: "item-created", callback: (($obj: Canvas, item: CanvasItem, model: CanvasItemModel) => void)): number
@@ -5456,6 +6028,7 @@ class Canvas {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: Canvas, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: Canvas, event: Gdk.EventButton) => boolean)): number
@@ -5468,6 +6041,7 @@ class Canvas {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: Canvas, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: Canvas, event: Gdk.EventButton) => boolean)): number
@@ -5478,6 +6052,7 @@ class Canvas {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: Canvas, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: Canvas, signal_id: number) => boolean)): number
@@ -5486,6 +6061,7 @@ class Canvas {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: Canvas, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: Canvas, child_property: GObject.ParamSpec) => void)): number
@@ -5505,6 +6081,7 @@ class Canvas {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: Canvas, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: Canvas, event: Gdk.EventConfigure) => boolean)): number
@@ -5513,6 +6090,7 @@ class Canvas {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: Canvas, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: Canvas, event: Gdk.EventExpose) => boolean)): number
@@ -5523,6 +6101,7 @@ class Canvas {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: Canvas, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: Canvas, event: Gdk.Event) => boolean)): number
@@ -5546,6 +6125,7 @@ class Canvas {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: Canvas, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: Canvas, event: Gdk.Event) => boolean)): number
@@ -5553,6 +6133,7 @@ class Canvas {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: Canvas, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: Canvas, previous_direction: Gtk.TextDirection) => void)): number
@@ -5565,6 +6146,7 @@ class Canvas {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: Canvas, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: Canvas, context: Gdk.DragContext) => void)): number
@@ -5574,6 +6156,7 @@ class Canvas {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: Canvas, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: Canvas, context: Gdk.DragContext) => void)): number
@@ -5584,6 +6167,10 @@ class Canvas {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: Canvas, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: Canvas, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -5651,6 +6238,12 @@ class Canvas {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: Canvas, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: Canvas, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -5666,6 +6259,10 @@ class Canvas {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: Canvas, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: Canvas, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -5674,6 +6271,7 @@ class Canvas {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: Canvas, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: Canvas, context: Gdk.DragContext) => void)): number
@@ -5684,6 +6282,8 @@ class Canvas {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: Canvas, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: Canvas, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -5698,6 +6298,8 @@ class Canvas {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: Canvas, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: Canvas, context: Gdk.DragContext, time: number) => void)): number
@@ -5791,6 +6393,10 @@ class Canvas {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: Canvas, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: Canvas, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -5813,6 +6419,7 @@ class Canvas {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: Canvas, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: Canvas, cr: cairo.Context) => boolean)): number
@@ -5825,6 +6432,7 @@ class Canvas {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: Canvas, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: Canvas, event: Gdk.EventCrossing) => boolean)): number
@@ -5835,6 +6443,7 @@ class Canvas {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: Canvas, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: Canvas, event: Gdk.Event) => boolean)): number
@@ -5843,6 +6452,7 @@ class Canvas {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: Canvas, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: Canvas, event: Gdk.Event) => void)): number
@@ -5856,6 +6466,7 @@ class Canvas {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: Canvas, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: Canvas, event: Gdk.EventFocus) => boolean)): number
@@ -5866,6 +6477,7 @@ class Canvas {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: Canvas, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: Canvas, event: Gdk.EventFocus) => boolean)): number
@@ -5877,6 +6489,7 @@ class Canvas {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: Canvas, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: Canvas, event: Gdk.EventGrabBroken) => boolean)): number
@@ -5893,6 +6506,7 @@ class Canvas {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: Canvas, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: Canvas, was_grabbed: boolean) => void)): number
@@ -5910,6 +6524,7 @@ class Canvas {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: Canvas, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: Canvas, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -5922,6 +6537,7 @@ class Canvas {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: Canvas, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: Canvas, event: Gdk.EventKey) => boolean)): number
@@ -5933,6 +6549,7 @@ class Canvas {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: Canvas, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: Canvas, event: Gdk.EventKey) => boolean)): number
@@ -5940,6 +6557,7 @@ class Canvas {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: Canvas, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: Canvas, direction: Gtk.DirectionType) => boolean)): number
@@ -5952,6 +6570,7 @@ class Canvas {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: Canvas, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: Canvas, event: Gdk.EventCrossing) => boolean)): number
@@ -5977,6 +6596,7 @@ class Canvas {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: Canvas, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: Canvas, event: Gdk.EventAny) => boolean)): number
@@ -5984,6 +6604,7 @@ class Canvas {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: Canvas, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: Canvas, group_cycling: boolean) => boolean)): number
@@ -5996,6 +6617,7 @@ class Canvas {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: Canvas, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: Canvas, event: Gdk.EventMotion) => boolean)): number
@@ -6006,6 +6628,7 @@ class Canvas {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: Canvas, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: Canvas, old_parent?: Gtk.Widget | null) => void)): number
@@ -6028,6 +6651,7 @@ class Canvas {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: Canvas, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: Canvas, event: Gdk.EventProperty) => boolean)): number
@@ -6037,6 +6661,7 @@ class Canvas {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: Canvas, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: Canvas, event: Gdk.EventProximity) => boolean)): number
@@ -6046,6 +6671,7 @@ class Canvas {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: Canvas, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: Canvas, event: Gdk.EventProximity) => boolean)): number
@@ -6063,6 +6689,10 @@ class Canvas {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: Canvas, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: Canvas, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -6078,6 +6708,7 @@ class Canvas {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: Canvas, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: Canvas, previous_screen?: Gdk.Screen | null) => void)): number
@@ -6091,6 +6722,7 @@ class Canvas {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: Canvas, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: Canvas, event: Gdk.EventScroll) => boolean)): number
@@ -6098,6 +6730,7 @@ class Canvas {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: Canvas, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: Canvas, event: Gdk.EventSelection) => boolean)): number
@@ -6115,6 +6748,7 @@ class Canvas {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: Canvas, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: Canvas, event: Gdk.EventSelection) => boolean)): number
@@ -6135,6 +6769,7 @@ class Canvas {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: Canvas, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: Canvas, state: Gtk.StateType) => void)): number
@@ -6142,6 +6777,7 @@ class Canvas {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: Canvas, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: Canvas, flags: Gtk.StateFlags) => void)): number
@@ -6154,6 +6790,7 @@ class Canvas {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: Canvas, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: Canvas, previous_style?: Gtk.Style | null) => void)): number
@@ -6190,6 +6827,7 @@ class Canvas {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: Canvas, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: Canvas, event: Gdk.EventAny) => boolean)): number
@@ -6209,6 +6847,7 @@ class Canvas {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: Canvas, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: Canvas, event: Gdk.EventVisibility) => boolean)): number
@@ -6220,6 +6859,7 @@ class Canvas {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: Canvas, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: Canvas, event: Gdk.EventWindowState) => boolean)): number
@@ -6253,6 +6893,7 @@ class Canvas {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
@@ -6400,6 +7041,8 @@ class Canvas {
     static new(): Canvas
     /**
      * Creates the path specified by the given #GooCanvasPathCommand array.
+     * @param commands an array of  #GooCanvasPathCommand.
+     * @param cr a cairo context.
      */
     static create_path(commands: CanvasPathCommand[], cr: cairo.Context): void
     static marshal_BOOLEAN__BOXED(closure: Function, return_value: any, n_param_values: number, param_values: any, invocation_hint?: object | null, marshal_data?: object | null): void
@@ -6409,6 +7052,7 @@ class Canvas {
     static marshal_VOID__OBJECT_OBJECT(closure: Function, return_value: any, n_param_values: number, param_values: any, invocation_hint?: object | null, marshal_data?: object | null): void
     /**
      * Parses the given SVG path specification string.
+     * @param path_data the sequence of path commands, specified as a string using the  same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable  Vector Graphics (SVG)</ulink> path element.
      */
     static parse_path_data(path_data: string): CanvasPathCommand[]
     static $gtype: GObject.Type
@@ -6417,13 +7061,14 @@ interface CanvasAccessibleFactory_ConstructProps extends Atk.ObjectFactory_Const
 }
 class CanvasAccessibleFactory {
     /* Fields of Atk-1.0.Atk.ObjectFactory */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.ObjectFactory */
     /**
      * Provides an #AtkObject that implements an accessibility interface
      * on behalf of `obj`
+     * @param obj a #GObject
      */
     create_accessible(obj: GObject.Object): Atk.Object
     /**
@@ -6473,6 +7118,10 @@ class CanvasAccessibleFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6483,6 +7132,12 @@ class CanvasAccessibleFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6506,6 +7161,7 @@ class CanvasAccessibleFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6525,11 +7181,14 @@ class CanvasAccessibleFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6537,6 +7196,8 @@ class CanvasAccessibleFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6554,6 +7215,7 @@ class CanvasAccessibleFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6599,6 +7261,7 @@ class CanvasAccessibleFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6642,15 +7305,20 @@ class CanvasAccessibleFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6691,6 +7359,7 @@ class CanvasAccessibleFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6725,6 +7394,7 @@ class CanvasAccessibleFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.ObjectFactory */
@@ -6753,6 +7423,7 @@ class CanvasAccessibleFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6785,6 +7456,7 @@ class CanvasAccessibleFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasAccessibleFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasAccessibleFactory, pspec: GObject.ParamSpec) => void)): number
@@ -6892,42 +7564,43 @@ class CanvasEllipse {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -6935,6 +7608,10 @@ class CanvasEllipse {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -6961,17 +7638,21 @@ class CanvasEllipse {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -6980,6 +7661,8 @@ class CanvasEllipse {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -6989,6 +7672,8 @@ class CanvasEllipse {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7026,6 +7711,10 @@ class CanvasEllipse {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7036,6 +7725,12 @@ class CanvasEllipse {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7059,6 +7754,7 @@ class CanvasEllipse {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7078,11 +7774,14 @@ class CanvasEllipse {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7090,6 +7789,8 @@ class CanvasEllipse {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7107,6 +7808,7 @@ class CanvasEllipse {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7152,6 +7854,7 @@ class CanvasEllipse {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7195,15 +7898,20 @@ class CanvasEllipse {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7244,6 +7952,7 @@ class CanvasEllipse {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7278,11 +7987,14 @@ class CanvasEllipse {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -7298,11 +8010,24 @@ class CanvasEllipse {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -7315,6 +8040,7 @@ class CanvasEllipse {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -7330,10 +8056,14 @@ class CanvasEllipse {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -7346,6 +8076,12 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -7365,6 +8101,8 @@ class CanvasEllipse {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -7374,6 +8112,9 @@ class CanvasEllipse {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -7383,6 +8124,8 @@ class CanvasEllipse {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -7406,6 +8149,7 @@ class CanvasEllipse {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -7424,10 +8168,13 @@ class CanvasEllipse {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -7438,10 +8185,14 @@ class CanvasEllipse {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -7453,6 +8204,7 @@ class CanvasEllipse {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -7466,10 +8218,15 @@ class CanvasEllipse {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -7477,10 +8234,14 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -7490,10 +8251,12 @@ class CanvasEllipse {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -7506,28 +8269,41 @@ class CanvasEllipse {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -7537,6 +8313,8 @@ class CanvasEllipse {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -7544,11 +8322,16 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasEllipse */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -7564,6 +8347,11 @@ class CanvasEllipse {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -7586,6 +8374,7 @@ class CanvasEllipse {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7599,6 +8388,12 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -7618,6 +8413,8 @@ class CanvasEllipse {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -7627,6 +8424,9 @@ class CanvasEllipse {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -7636,6 +8436,8 @@ class CanvasEllipse {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -7651,6 +8453,7 @@ class CanvasEllipse {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -7670,6 +8473,8 @@ class CanvasEllipse {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -7680,11 +8485,15 @@ class CanvasEllipse {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -7701,6 +8510,7 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7711,10 +8521,12 @@ class CanvasEllipse {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -7727,14 +8539,17 @@ class CanvasEllipse {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -7742,6 +8557,9 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -7751,6 +8569,8 @@ class CanvasEllipse {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -7766,6 +8586,11 @@ class CanvasEllipse {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -7788,6 +8613,7 @@ class CanvasEllipse {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7801,6 +8627,12 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -7820,6 +8652,8 @@ class CanvasEllipse {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -7829,6 +8663,9 @@ class CanvasEllipse {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -7838,6 +8675,8 @@ class CanvasEllipse {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -7853,6 +8692,7 @@ class CanvasEllipse {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -7872,6 +8712,8 @@ class CanvasEllipse {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -7882,11 +8724,15 @@ class CanvasEllipse {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -7903,6 +8749,7 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7913,10 +8760,12 @@ class CanvasEllipse {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -7929,14 +8778,17 @@ class CanvasEllipse {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -7944,6 +8796,9 @@ class CanvasEllipse {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7963,6 +8818,7 @@ class CanvasEllipse {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7995,6 +8851,7 @@ class CanvasEllipse {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasEllipse, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasEllipse, pspec: GObject.ParamSpec) => void)): number
@@ -8002,18 +8859,23 @@ class CanvasEllipse {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasEllipse, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasEllipse, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -8021,24 +8883,31 @@ class CanvasEllipse {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasEllipse, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasEllipse, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -8046,6 +8915,8 @@ class CanvasEllipse {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -8053,6 +8924,8 @@ class CanvasEllipse {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -8060,18 +8933,24 @@ class CanvasEllipse {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -8085,6 +8964,10 @@ class CanvasEllipse {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasEllipse, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasEllipse, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -8093,6 +8976,8 @@ class CanvasEllipse {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasEllipse, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -8188,6 +9073,8 @@ class CanvasEllipse {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -8195,6 +9082,9 @@ class CanvasEllipse {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -8202,6 +9092,7 @@ class CanvasEllipse {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -8277,17 +9168,17 @@ class CanvasEllipseModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -8323,6 +9214,10 @@ class CanvasEllipseModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8333,6 +9228,12 @@ class CanvasEllipseModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8356,6 +9257,7 @@ class CanvasEllipseModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8375,11 +9277,14 @@ class CanvasEllipseModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8387,6 +9292,8 @@ class CanvasEllipseModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8404,6 +9311,7 @@ class CanvasEllipseModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8449,6 +9357,7 @@ class CanvasEllipseModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8492,15 +9401,20 @@ class CanvasEllipseModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8541,6 +9455,7 @@ class CanvasEllipseModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8575,28 +9490,44 @@ class CanvasEllipseModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -8613,6 +9544,10 @@ class CanvasEllipseModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -8622,6 +9557,7 @@ class CanvasEllipseModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -8630,14 +9566,18 @@ class CanvasEllipseModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -8649,19 +9589,28 @@ class CanvasEllipseModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -8674,28 +9623,41 @@ class CanvasEllipseModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -8705,11 +9667,15 @@ class CanvasEllipseModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasEllipseModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -8720,6 +9686,7 @@ class CanvasEllipseModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8738,14 +9705,18 @@ class CanvasEllipseModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8759,19 +9730,24 @@ class CanvasEllipseModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -8782,6 +9758,7 @@ class CanvasEllipseModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8800,14 +9777,18 @@ class CanvasEllipseModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8821,14 +9802,17 @@ class CanvasEllipseModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8848,6 +9832,7 @@ class CanvasEllipseModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8880,6 +9865,7 @@ class CanvasEllipseModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasEllipseModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasEllipseModel, pspec: GObject.ParamSpec) => void)): number
@@ -8887,24 +9873,29 @@ class CanvasEllipseModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasEllipseModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasEllipseModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasEllipseModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasEllipseModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasEllipseModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasEllipseModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasEllipseModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasEllipseModel, old_child_num: number, new_child_num: number) => void)): number
@@ -8912,12 +9903,14 @@ class CanvasEllipseModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasEllipseModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasEllipseModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasEllipseModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasEllipseModel, child_num: number) => void)): number
@@ -9014,6 +10007,8 @@ class CanvasEllipseModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -9022,6 +10017,9 @@ class CanvasEllipseModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -9030,6 +10028,7 @@ class CanvasEllipseModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -9188,42 +10187,43 @@ class CanvasGrid {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -9231,6 +10231,10 @@ class CanvasGrid {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -9257,17 +10261,21 @@ class CanvasGrid {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -9276,6 +10284,8 @@ class CanvasGrid {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -9285,6 +10295,8 @@ class CanvasGrid {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9322,6 +10334,10 @@ class CanvasGrid {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9332,6 +10348,12 @@ class CanvasGrid {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9355,6 +10377,7 @@ class CanvasGrid {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9374,11 +10397,14 @@ class CanvasGrid {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9386,6 +10412,8 @@ class CanvasGrid {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9403,6 +10431,7 @@ class CanvasGrid {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9448,6 +10477,7 @@ class CanvasGrid {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9491,15 +10521,20 @@ class CanvasGrid {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9540,6 +10575,7 @@ class CanvasGrid {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9574,11 +10610,14 @@ class CanvasGrid {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -9594,11 +10633,24 @@ class CanvasGrid {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -9611,6 +10663,7 @@ class CanvasGrid {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -9626,10 +10679,14 @@ class CanvasGrid {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -9642,6 +10699,12 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -9661,6 +10724,8 @@ class CanvasGrid {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -9670,6 +10735,9 @@ class CanvasGrid {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -9679,6 +10747,8 @@ class CanvasGrid {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -9702,6 +10772,7 @@ class CanvasGrid {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -9720,10 +10791,13 @@ class CanvasGrid {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -9734,10 +10808,14 @@ class CanvasGrid {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -9749,6 +10827,7 @@ class CanvasGrid {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -9762,10 +10841,15 @@ class CanvasGrid {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -9773,10 +10857,14 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -9786,10 +10874,12 @@ class CanvasGrid {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -9802,28 +10892,41 @@ class CanvasGrid {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -9833,6 +10936,8 @@ class CanvasGrid {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -9840,11 +10945,16 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasGrid */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -9860,6 +10970,11 @@ class CanvasGrid {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -9882,6 +10997,7 @@ class CanvasGrid {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9895,6 +11011,12 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -9914,6 +11036,8 @@ class CanvasGrid {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -9923,6 +11047,9 @@ class CanvasGrid {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -9932,6 +11059,8 @@ class CanvasGrid {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -9947,6 +11076,7 @@ class CanvasGrid {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -9966,6 +11096,8 @@ class CanvasGrid {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -9976,11 +11108,15 @@ class CanvasGrid {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -9997,6 +11133,7 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10007,10 +11144,12 @@ class CanvasGrid {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -10023,14 +11162,17 @@ class CanvasGrid {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -10038,6 +11180,9 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -10047,6 +11192,8 @@ class CanvasGrid {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -10062,6 +11209,11 @@ class CanvasGrid {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -10084,6 +11236,7 @@ class CanvasGrid {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10097,6 +11250,12 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -10116,6 +11275,8 @@ class CanvasGrid {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -10125,6 +11286,9 @@ class CanvasGrid {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -10134,6 +11298,8 @@ class CanvasGrid {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -10149,6 +11315,7 @@ class CanvasGrid {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -10168,6 +11335,8 @@ class CanvasGrid {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -10178,11 +11347,15 @@ class CanvasGrid {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -10199,6 +11372,7 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10209,10 +11383,12 @@ class CanvasGrid {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -10225,14 +11401,17 @@ class CanvasGrid {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -10240,6 +11419,9 @@ class CanvasGrid {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10259,6 +11441,7 @@ class CanvasGrid {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10291,6 +11474,7 @@ class CanvasGrid {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasGrid, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasGrid, pspec: GObject.ParamSpec) => void)): number
@@ -10298,18 +11482,23 @@ class CanvasGrid {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasGrid, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasGrid, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -10317,24 +11506,31 @@ class CanvasGrid {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasGrid, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasGrid, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -10342,6 +11538,8 @@ class CanvasGrid {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -10349,6 +11547,8 @@ class CanvasGrid {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -10356,18 +11556,24 @@ class CanvasGrid {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -10381,6 +11587,10 @@ class CanvasGrid {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasGrid, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasGrid, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -10389,6 +11599,8 @@ class CanvasGrid {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasGrid, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -10526,6 +11738,8 @@ class CanvasGrid {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -10533,6 +11747,9 @@ class CanvasGrid {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -10540,6 +11757,7 @@ class CanvasGrid {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -10657,17 +11875,17 @@ class CanvasGridModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -10703,6 +11921,10 @@ class CanvasGridModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10713,6 +11935,12 @@ class CanvasGridModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10736,6 +11964,7 @@ class CanvasGridModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10755,11 +11984,14 @@ class CanvasGridModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10767,6 +11999,8 @@ class CanvasGridModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10784,6 +12018,7 @@ class CanvasGridModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10829,6 +12064,7 @@ class CanvasGridModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10872,15 +12108,20 @@ class CanvasGridModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10921,6 +12162,7 @@ class CanvasGridModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10955,28 +12197,44 @@ class CanvasGridModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -10993,6 +12251,10 @@ class CanvasGridModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -11002,6 +12264,7 @@ class CanvasGridModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -11010,14 +12273,18 @@ class CanvasGridModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -11029,19 +12296,28 @@ class CanvasGridModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -11054,28 +12330,41 @@ class CanvasGridModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -11085,11 +12374,15 @@ class CanvasGridModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasGridModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -11100,6 +12393,7 @@ class CanvasGridModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11118,14 +12412,18 @@ class CanvasGridModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11139,19 +12437,24 @@ class CanvasGridModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -11162,6 +12465,7 @@ class CanvasGridModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11180,14 +12484,18 @@ class CanvasGridModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11201,14 +12509,17 @@ class CanvasGridModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11228,6 +12539,7 @@ class CanvasGridModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11260,6 +12572,7 @@ class CanvasGridModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasGridModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasGridModel, pspec: GObject.ParamSpec) => void)): number
@@ -11267,24 +12580,29 @@ class CanvasGridModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasGridModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasGridModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasGridModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasGridModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasGridModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasGridModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasGridModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasGridModel, old_child_num: number, new_child_num: number) => void)): number
@@ -11292,12 +12610,14 @@ class CanvasGridModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasGridModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasGridModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasGridModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasGridModel, child_num: number) => void)): number
@@ -11436,6 +12756,8 @@ class CanvasGridModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -11444,6 +12766,9 @@ class CanvasGridModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -11452,6 +12777,7 @@ class CanvasGridModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -11542,42 +12868,43 @@ class CanvasGroup {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -11585,6 +12912,10 @@ class CanvasGroup {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -11611,17 +12942,21 @@ class CanvasGroup {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -11630,6 +12965,8 @@ class CanvasGroup {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -11639,6 +12976,8 @@ class CanvasGroup {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11676,6 +13015,10 @@ class CanvasGroup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11686,6 +13029,12 @@ class CanvasGroup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11709,6 +13058,7 @@ class CanvasGroup {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11728,11 +13078,14 @@ class CanvasGroup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11740,6 +13093,8 @@ class CanvasGroup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11757,6 +13112,7 @@ class CanvasGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11802,6 +13158,7 @@ class CanvasGroup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11845,15 +13202,20 @@ class CanvasGroup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11894,6 +13256,7 @@ class CanvasGroup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11928,11 +13291,14 @@ class CanvasGroup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -11948,11 +13314,24 @@ class CanvasGroup {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -11965,6 +13344,7 @@ class CanvasGroup {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -11980,10 +13360,14 @@ class CanvasGroup {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -11996,6 +13380,12 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -12015,6 +13405,8 @@ class CanvasGroup {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -12024,6 +13416,9 @@ class CanvasGroup {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -12033,6 +13428,8 @@ class CanvasGroup {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -12056,6 +13453,7 @@ class CanvasGroup {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -12074,10 +13472,13 @@ class CanvasGroup {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -12088,10 +13489,14 @@ class CanvasGroup {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -12103,6 +13508,7 @@ class CanvasGroup {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -12116,10 +13522,15 @@ class CanvasGroup {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -12127,10 +13538,14 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -12140,10 +13555,12 @@ class CanvasGroup {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -12156,28 +13573,41 @@ class CanvasGroup {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -12187,6 +13617,8 @@ class CanvasGroup {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -12194,11 +13626,16 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasGroup */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -12214,6 +13651,11 @@ class CanvasGroup {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -12236,6 +13678,7 @@ class CanvasGroup {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12249,6 +13692,12 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -12268,6 +13717,8 @@ class CanvasGroup {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -12277,6 +13728,9 @@ class CanvasGroup {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -12286,6 +13740,8 @@ class CanvasGroup {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -12301,6 +13757,7 @@ class CanvasGroup {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -12320,6 +13777,8 @@ class CanvasGroup {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -12330,11 +13789,15 @@ class CanvasGroup {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -12351,6 +13814,7 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12361,10 +13825,12 @@ class CanvasGroup {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -12377,14 +13843,17 @@ class CanvasGroup {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -12392,6 +13861,9 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -12401,6 +13873,8 @@ class CanvasGroup {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -12416,6 +13890,11 @@ class CanvasGroup {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -12438,6 +13917,7 @@ class CanvasGroup {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12451,6 +13931,12 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -12470,6 +13956,8 @@ class CanvasGroup {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -12479,6 +13967,9 @@ class CanvasGroup {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -12488,6 +13979,8 @@ class CanvasGroup {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -12503,6 +13996,7 @@ class CanvasGroup {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -12522,6 +14016,8 @@ class CanvasGroup {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -12532,11 +14028,15 @@ class CanvasGroup {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -12553,6 +14053,7 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12563,10 +14064,12 @@ class CanvasGroup {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -12579,14 +14082,17 @@ class CanvasGroup {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -12594,6 +14100,9 @@ class CanvasGroup {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12613,6 +14122,7 @@ class CanvasGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12645,6 +14155,7 @@ class CanvasGroup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasGroup, pspec: GObject.ParamSpec) => void)): number
@@ -12652,18 +14163,23 @@ class CanvasGroup {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasGroup, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasGroup, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -12671,24 +14187,31 @@ class CanvasGroup {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasGroup, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -12696,6 +14219,8 @@ class CanvasGroup {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -12703,6 +14228,8 @@ class CanvasGroup {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -12710,18 +14237,24 @@ class CanvasGroup {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -12735,6 +14268,10 @@ class CanvasGroup {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasGroup, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasGroup, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -12743,6 +14280,8 @@ class CanvasGroup {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasGroup, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -12830,6 +14369,8 @@ class CanvasGroup {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -12837,6 +14378,9 @@ class CanvasGroup {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -12844,6 +14388,7 @@ class CanvasGroup {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -12911,17 +14456,17 @@ class CanvasGroupModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -12957,6 +14502,10 @@ class CanvasGroupModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12967,6 +14516,12 @@ class CanvasGroupModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12990,6 +14545,7 @@ class CanvasGroupModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13009,11 +14565,14 @@ class CanvasGroupModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13021,6 +14580,8 @@ class CanvasGroupModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13038,6 +14599,7 @@ class CanvasGroupModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13083,6 +14645,7 @@ class CanvasGroupModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13126,15 +14689,20 @@ class CanvasGroupModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13175,6 +14743,7 @@ class CanvasGroupModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13209,28 +14778,44 @@ class CanvasGroupModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -13247,6 +14832,10 @@ class CanvasGroupModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -13256,6 +14845,7 @@ class CanvasGroupModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -13264,14 +14854,18 @@ class CanvasGroupModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -13283,19 +14877,28 @@ class CanvasGroupModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -13308,28 +14911,41 @@ class CanvasGroupModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -13339,11 +14955,15 @@ class CanvasGroupModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasGroupModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -13354,6 +14974,7 @@ class CanvasGroupModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13372,14 +14993,18 @@ class CanvasGroupModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13393,19 +15018,24 @@ class CanvasGroupModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -13416,6 +15046,7 @@ class CanvasGroupModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13434,14 +15065,18 @@ class CanvasGroupModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13455,14 +15090,17 @@ class CanvasGroupModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13482,6 +15120,7 @@ class CanvasGroupModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13514,6 +15153,7 @@ class CanvasGroupModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasGroupModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasGroupModel, pspec: GObject.ParamSpec) => void)): number
@@ -13521,24 +15161,29 @@ class CanvasGroupModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasGroupModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasGroupModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasGroupModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasGroupModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasGroupModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasGroupModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasGroupModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasGroupModel, old_child_num: number, new_child_num: number) => void)): number
@@ -13546,12 +15191,14 @@ class CanvasGroupModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasGroupModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasGroupModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasGroupModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasGroupModel, child_num: number) => void)): number
@@ -13640,6 +15287,8 @@ class CanvasGroupModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -13648,6 +15297,9 @@ class CanvasGroupModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -13656,6 +15308,7 @@ class CanvasGroupModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -13754,42 +15407,43 @@ class CanvasImage {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -13797,6 +15451,10 @@ class CanvasImage {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -13823,17 +15481,21 @@ class CanvasImage {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -13842,6 +15504,8 @@ class CanvasImage {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -13851,6 +15515,8 @@ class CanvasImage {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -13888,6 +15554,10 @@ class CanvasImage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13898,6 +15568,12 @@ class CanvasImage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13921,6 +15597,7 @@ class CanvasImage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13940,11 +15617,14 @@ class CanvasImage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13952,6 +15632,8 @@ class CanvasImage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13969,6 +15651,7 @@ class CanvasImage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14014,6 +15697,7 @@ class CanvasImage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14057,15 +15741,20 @@ class CanvasImage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14106,6 +15795,7 @@ class CanvasImage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14140,11 +15830,14 @@ class CanvasImage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -14160,11 +15853,24 @@ class CanvasImage {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -14177,6 +15883,7 @@ class CanvasImage {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -14192,10 +15899,14 @@ class CanvasImage {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -14208,6 +15919,12 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -14227,6 +15944,8 @@ class CanvasImage {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -14236,6 +15955,9 @@ class CanvasImage {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -14245,6 +15967,8 @@ class CanvasImage {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -14268,6 +15992,7 @@ class CanvasImage {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -14286,10 +16011,13 @@ class CanvasImage {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -14300,10 +16028,14 @@ class CanvasImage {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -14315,6 +16047,7 @@ class CanvasImage {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -14328,10 +16061,15 @@ class CanvasImage {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -14339,10 +16077,14 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -14352,10 +16094,12 @@ class CanvasImage {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -14368,28 +16112,41 @@ class CanvasImage {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -14399,6 +16156,8 @@ class CanvasImage {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -14406,11 +16165,16 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasImage */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -14426,6 +16190,11 @@ class CanvasImage {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -14448,6 +16217,7 @@ class CanvasImage {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14461,6 +16231,12 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -14480,6 +16256,8 @@ class CanvasImage {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -14489,6 +16267,9 @@ class CanvasImage {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -14498,6 +16279,8 @@ class CanvasImage {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -14513,6 +16296,7 @@ class CanvasImage {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -14532,6 +16316,8 @@ class CanvasImage {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -14542,11 +16328,15 @@ class CanvasImage {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -14563,6 +16353,7 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14573,10 +16364,12 @@ class CanvasImage {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -14589,14 +16382,17 @@ class CanvasImage {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -14604,6 +16400,9 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -14613,6 +16412,8 @@ class CanvasImage {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -14628,6 +16429,11 @@ class CanvasImage {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -14650,6 +16456,7 @@ class CanvasImage {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14663,6 +16470,12 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -14682,6 +16495,8 @@ class CanvasImage {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -14691,6 +16506,9 @@ class CanvasImage {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -14700,6 +16518,8 @@ class CanvasImage {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -14715,6 +16535,7 @@ class CanvasImage {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -14734,6 +16555,8 @@ class CanvasImage {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -14744,11 +16567,15 @@ class CanvasImage {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -14765,6 +16592,7 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14775,10 +16603,12 @@ class CanvasImage {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -14791,14 +16621,17 @@ class CanvasImage {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -14806,6 +16639,9 @@ class CanvasImage {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14825,6 +16661,7 @@ class CanvasImage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14857,6 +16694,7 @@ class CanvasImage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasImage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasImage, pspec: GObject.ParamSpec) => void)): number
@@ -14864,18 +16702,23 @@ class CanvasImage {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasImage, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasImage, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -14883,24 +16726,31 @@ class CanvasImage {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasImage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasImage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -14908,6 +16758,8 @@ class CanvasImage {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -14915,6 +16767,8 @@ class CanvasImage {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -14922,18 +16776,24 @@ class CanvasImage {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -14947,6 +16807,10 @@ class CanvasImage {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasImage, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasImage, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -14955,6 +16819,8 @@ class CanvasImage {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasImage, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -15050,6 +16916,8 @@ class CanvasImage {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -15057,6 +16925,9 @@ class CanvasImage {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -15064,6 +16935,7 @@ class CanvasImage {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -15139,17 +17011,17 @@ class CanvasImageModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -15185,6 +17057,10 @@ class CanvasImageModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15195,6 +17071,12 @@ class CanvasImageModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15218,6 +17100,7 @@ class CanvasImageModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15237,11 +17120,14 @@ class CanvasImageModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15249,6 +17135,8 @@ class CanvasImageModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15266,6 +17154,7 @@ class CanvasImageModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15311,6 +17200,7 @@ class CanvasImageModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15354,15 +17244,20 @@ class CanvasImageModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15403,6 +17298,7 @@ class CanvasImageModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15437,28 +17333,44 @@ class CanvasImageModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -15475,6 +17387,10 @@ class CanvasImageModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -15484,6 +17400,7 @@ class CanvasImageModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -15492,14 +17409,18 @@ class CanvasImageModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -15511,19 +17432,28 @@ class CanvasImageModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -15536,28 +17466,41 @@ class CanvasImageModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -15567,11 +17510,15 @@ class CanvasImageModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasImageModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -15582,6 +17529,7 @@ class CanvasImageModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15600,14 +17548,18 @@ class CanvasImageModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15621,19 +17573,24 @@ class CanvasImageModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -15644,6 +17601,7 @@ class CanvasImageModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15662,14 +17620,18 @@ class CanvasImageModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15683,14 +17645,17 @@ class CanvasImageModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15710,6 +17675,7 @@ class CanvasImageModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15742,6 +17708,7 @@ class CanvasImageModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasImageModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasImageModel, pspec: GObject.ParamSpec) => void)): number
@@ -15749,24 +17716,29 @@ class CanvasImageModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasImageModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasImageModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasImageModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasImageModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasImageModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasImageModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasImageModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasImageModel, old_child_num: number, new_child_num: number) => void)): number
@@ -15774,12 +17746,14 @@ class CanvasImageModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasImageModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasImageModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasImageModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasImageModel, child_num: number) => void)): number
@@ -15876,6 +17850,8 @@ class CanvasImageModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -15884,6 +17860,9 @@ class CanvasImageModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -15892,6 +17871,7 @@ class CanvasImageModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -15900,13 +17880,14 @@ interface CanvasItemAccessibleFactory_ConstructProps extends Atk.ObjectFactory_C
 }
 class CanvasItemAccessibleFactory {
     /* Fields of Atk-1.0.Atk.ObjectFactory */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.ObjectFactory */
     /**
      * Provides an #AtkObject that implements an accessibility interface
      * on behalf of `obj`
+     * @param obj a #GObject
      */
     create_accessible(obj: GObject.Object): Atk.Object
     /**
@@ -15956,6 +17937,10 @@ class CanvasItemAccessibleFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15966,6 +17951,12 @@ class CanvasItemAccessibleFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15989,6 +17980,7 @@ class CanvasItemAccessibleFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16008,11 +18000,14 @@ class CanvasItemAccessibleFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16020,6 +18015,8 @@ class CanvasItemAccessibleFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16037,6 +18034,7 @@ class CanvasItemAccessibleFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16082,6 +18080,7 @@ class CanvasItemAccessibleFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16125,15 +18124,20 @@ class CanvasItemAccessibleFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16174,6 +18178,7 @@ class CanvasItemAccessibleFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16208,6 +18213,7 @@ class CanvasItemAccessibleFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.ObjectFactory */
@@ -16236,6 +18242,7 @@ class CanvasItemAccessibleFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16268,6 +18275,7 @@ class CanvasItemAccessibleFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasItemAccessibleFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasItemAccessibleFactory, pspec: GObject.ParamSpec) => void)): number
@@ -16365,7 +18373,7 @@ class CanvasItemModelSimple {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -16401,6 +18409,10 @@ class CanvasItemModelSimple {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16411,6 +18423,12 @@ class CanvasItemModelSimple {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16434,6 +18452,7 @@ class CanvasItemModelSimple {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16453,11 +18472,14 @@ class CanvasItemModelSimple {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16465,6 +18487,8 @@ class CanvasItemModelSimple {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16482,6 +18506,7 @@ class CanvasItemModelSimple {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16527,6 +18552,7 @@ class CanvasItemModelSimple {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16570,15 +18596,20 @@ class CanvasItemModelSimple {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16619,6 +18650,7 @@ class CanvasItemModelSimple {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16653,28 +18685,44 @@ class CanvasItemModelSimple {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -16691,6 +18739,10 @@ class CanvasItemModelSimple {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -16700,6 +18752,7 @@ class CanvasItemModelSimple {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -16708,14 +18761,18 @@ class CanvasItemModelSimple {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -16727,19 +18784,28 @@ class CanvasItemModelSimple {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -16752,28 +18818,41 @@ class CanvasItemModelSimple {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -16783,11 +18862,15 @@ class CanvasItemModelSimple {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -16798,6 +18881,7 @@ class CanvasItemModelSimple {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16816,14 +18900,18 @@ class CanvasItemModelSimple {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16837,14 +18925,17 @@ class CanvasItemModelSimple {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16864,6 +18955,7 @@ class CanvasItemModelSimple {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16896,6 +18988,7 @@ class CanvasItemModelSimple {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasItemModelSimple, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasItemModelSimple, pspec: GObject.ParamSpec) => void)): number
@@ -16903,24 +18996,29 @@ class CanvasItemModelSimple {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasItemModelSimple, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasItemModelSimple, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasItemModelSimple, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasItemModelSimple, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasItemModelSimple, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasItemModelSimple, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasItemModelSimple, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasItemModelSimple, old_child_num: number, new_child_num: number) => void)): number
@@ -16928,12 +19026,14 @@ class CanvasItemModelSimple {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasItemModelSimple, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasItemModelSimple, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasItemModelSimple, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasItemModelSimple, child_num: number) => void)): number
@@ -17016,6 +19116,8 @@ class CanvasItemModelSimple {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -17024,6 +19126,9 @@ class CanvasItemModelSimple {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -17032,6 +19137,7 @@ class CanvasItemModelSimple {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -17146,13 +19252,14 @@ class CanvasItemSimple {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -17160,6 +19267,10 @@ class CanvasItemSimple {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -17186,17 +19297,21 @@ class CanvasItemSimple {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -17205,6 +19320,8 @@ class CanvasItemSimple {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -17214,6 +19331,8 @@ class CanvasItemSimple {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -17251,6 +19370,10 @@ class CanvasItemSimple {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17261,6 +19384,12 @@ class CanvasItemSimple {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17284,6 +19413,7 @@ class CanvasItemSimple {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17303,11 +19433,14 @@ class CanvasItemSimple {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17315,6 +19448,8 @@ class CanvasItemSimple {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17332,6 +19467,7 @@ class CanvasItemSimple {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17377,6 +19513,7 @@ class CanvasItemSimple {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17420,15 +19557,20 @@ class CanvasItemSimple {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17469,6 +19611,7 @@ class CanvasItemSimple {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17503,11 +19646,14 @@ class CanvasItemSimple {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -17523,11 +19669,24 @@ class CanvasItemSimple {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -17540,6 +19699,7 @@ class CanvasItemSimple {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -17555,10 +19715,14 @@ class CanvasItemSimple {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -17571,6 +19735,12 @@ class CanvasItemSimple {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -17590,6 +19760,8 @@ class CanvasItemSimple {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -17599,6 +19771,9 @@ class CanvasItemSimple {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -17608,6 +19783,8 @@ class CanvasItemSimple {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -17631,6 +19808,7 @@ class CanvasItemSimple {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -17649,10 +19827,13 @@ class CanvasItemSimple {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -17663,10 +19844,14 @@ class CanvasItemSimple {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -17678,6 +19863,7 @@ class CanvasItemSimple {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -17691,10 +19877,15 @@ class CanvasItemSimple {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -17702,10 +19893,14 @@ class CanvasItemSimple {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -17715,10 +19910,12 @@ class CanvasItemSimple {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -17731,28 +19928,41 @@ class CanvasItemSimple {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -17762,6 +19972,8 @@ class CanvasItemSimple {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -17769,6 +19981,9 @@ class CanvasItemSimple {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -17778,6 +19993,8 @@ class CanvasItemSimple {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -17793,6 +20010,11 @@ class CanvasItemSimple {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -17815,6 +20037,7 @@ class CanvasItemSimple {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17828,6 +20051,12 @@ class CanvasItemSimple {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -17847,6 +20076,8 @@ class CanvasItemSimple {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -17856,6 +20087,9 @@ class CanvasItemSimple {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -17865,6 +20099,8 @@ class CanvasItemSimple {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -17880,6 +20116,7 @@ class CanvasItemSimple {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -17899,6 +20136,8 @@ class CanvasItemSimple {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -17909,11 +20148,15 @@ class CanvasItemSimple {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -17930,6 +20173,7 @@ class CanvasItemSimple {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17940,10 +20184,12 @@ class CanvasItemSimple {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -17956,14 +20202,17 @@ class CanvasItemSimple {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -17971,6 +20220,9 @@ class CanvasItemSimple {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17990,6 +20242,7 @@ class CanvasItemSimple {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18022,6 +20275,7 @@ class CanvasItemSimple {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasItemSimple, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasItemSimple, pspec: GObject.ParamSpec) => void)): number
@@ -18029,18 +20283,23 @@ class CanvasItemSimple {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasItemSimple, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasItemSimple, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -18048,24 +20307,31 @@ class CanvasItemSimple {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasItemSimple, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasItemSimple, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -18073,6 +20339,8 @@ class CanvasItemSimple {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -18080,6 +20348,8 @@ class CanvasItemSimple {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -18087,18 +20357,24 @@ class CanvasItemSimple {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -18112,6 +20388,10 @@ class CanvasItemSimple {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasItemSimple, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasItemSimple, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -18120,6 +20400,8 @@ class CanvasItemSimple {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasItemSimple, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -18201,6 +20483,8 @@ class CanvasItemSimple {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -18208,6 +20492,9 @@ class CanvasItemSimple {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -18215,6 +20502,7 @@ class CanvasItemSimple {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -18317,42 +20605,43 @@ class CanvasPath {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -18360,6 +20649,10 @@ class CanvasPath {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -18386,17 +20679,21 @@ class CanvasPath {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -18405,6 +20702,8 @@ class CanvasPath {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -18414,6 +20713,8 @@ class CanvasPath {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -18451,6 +20752,10 @@ class CanvasPath {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18461,6 +20766,12 @@ class CanvasPath {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18484,6 +20795,7 @@ class CanvasPath {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18503,11 +20815,14 @@ class CanvasPath {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18515,6 +20830,8 @@ class CanvasPath {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18532,6 +20849,7 @@ class CanvasPath {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18577,6 +20895,7 @@ class CanvasPath {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18620,15 +20939,20 @@ class CanvasPath {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18669,6 +20993,7 @@ class CanvasPath {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18703,11 +21028,14 @@ class CanvasPath {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -18723,11 +21051,24 @@ class CanvasPath {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -18740,6 +21081,7 @@ class CanvasPath {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -18755,10 +21097,14 @@ class CanvasPath {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -18771,6 +21117,12 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -18790,6 +21142,8 @@ class CanvasPath {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -18799,6 +21153,9 @@ class CanvasPath {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -18808,6 +21165,8 @@ class CanvasPath {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -18831,6 +21190,7 @@ class CanvasPath {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -18849,10 +21209,13 @@ class CanvasPath {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -18863,10 +21226,14 @@ class CanvasPath {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -18878,6 +21245,7 @@ class CanvasPath {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -18891,10 +21259,15 @@ class CanvasPath {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -18902,10 +21275,14 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -18915,10 +21292,12 @@ class CanvasPath {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -18931,28 +21310,41 @@ class CanvasPath {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -18962,6 +21354,8 @@ class CanvasPath {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -18969,11 +21363,16 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasPath */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -18989,6 +21388,11 @@ class CanvasPath {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -19011,6 +21415,7 @@ class CanvasPath {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19024,6 +21429,12 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -19043,6 +21454,8 @@ class CanvasPath {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -19052,6 +21465,9 @@ class CanvasPath {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -19061,6 +21477,8 @@ class CanvasPath {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -19076,6 +21494,7 @@ class CanvasPath {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -19095,6 +21514,8 @@ class CanvasPath {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -19105,11 +21526,15 @@ class CanvasPath {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -19126,6 +21551,7 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19136,10 +21562,12 @@ class CanvasPath {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -19152,14 +21580,17 @@ class CanvasPath {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -19167,6 +21598,9 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -19176,6 +21610,8 @@ class CanvasPath {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -19191,6 +21627,11 @@ class CanvasPath {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -19213,6 +21654,7 @@ class CanvasPath {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19226,6 +21668,12 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -19245,6 +21693,8 @@ class CanvasPath {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -19254,6 +21704,9 @@ class CanvasPath {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -19263,6 +21716,8 @@ class CanvasPath {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -19278,6 +21733,7 @@ class CanvasPath {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -19297,6 +21753,8 @@ class CanvasPath {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -19307,11 +21765,15 @@ class CanvasPath {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -19328,6 +21790,7 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19338,10 +21801,12 @@ class CanvasPath {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -19354,14 +21819,17 @@ class CanvasPath {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -19369,6 +21837,9 @@ class CanvasPath {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19388,6 +21859,7 @@ class CanvasPath {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19420,6 +21892,7 @@ class CanvasPath {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasPath, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasPath, pspec: GObject.ParamSpec) => void)): number
@@ -19427,18 +21900,23 @@ class CanvasPath {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasPath, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasPath, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -19446,24 +21924,31 @@ class CanvasPath {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasPath, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasPath, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -19471,6 +21956,8 @@ class CanvasPath {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -19478,6 +21965,8 @@ class CanvasPath {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -19485,18 +21974,24 @@ class CanvasPath {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -19510,6 +22005,10 @@ class CanvasPath {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasPath, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasPath, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -19518,6 +22017,8 @@ class CanvasPath {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasPath, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -19607,6 +22108,8 @@ class CanvasPath {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -19614,6 +22117,9 @@ class CanvasPath {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -19621,6 +22127,7 @@ class CanvasPath {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -19690,17 +22197,17 @@ class CanvasPathModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -19736,6 +22243,10 @@ class CanvasPathModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19746,6 +22257,12 @@ class CanvasPathModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19769,6 +22286,7 @@ class CanvasPathModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19788,11 +22306,14 @@ class CanvasPathModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19800,6 +22321,8 @@ class CanvasPathModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19817,6 +22340,7 @@ class CanvasPathModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19862,6 +22386,7 @@ class CanvasPathModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19905,15 +22430,20 @@ class CanvasPathModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19954,6 +22484,7 @@ class CanvasPathModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19988,28 +22519,44 @@ class CanvasPathModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -20026,6 +22573,10 @@ class CanvasPathModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -20035,6 +22586,7 @@ class CanvasPathModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -20043,14 +22595,18 @@ class CanvasPathModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -20062,19 +22618,28 @@ class CanvasPathModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -20087,28 +22652,41 @@ class CanvasPathModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -20118,11 +22696,15 @@ class CanvasPathModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasPathModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -20133,6 +22715,7 @@ class CanvasPathModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20151,14 +22734,18 @@ class CanvasPathModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20172,19 +22759,24 @@ class CanvasPathModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -20195,6 +22787,7 @@ class CanvasPathModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20213,14 +22806,18 @@ class CanvasPathModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20234,14 +22831,17 @@ class CanvasPathModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20261,6 +22861,7 @@ class CanvasPathModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20293,6 +22894,7 @@ class CanvasPathModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasPathModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasPathModel, pspec: GObject.ParamSpec) => void)): number
@@ -20300,24 +22902,29 @@ class CanvasPathModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasPathModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasPathModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasPathModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasPathModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasPathModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasPathModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasPathModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasPathModel, old_child_num: number, new_child_num: number) => void)): number
@@ -20325,12 +22932,14 @@ class CanvasPathModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasPathModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasPathModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasPathModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasPathModel, child_num: number) => void)): number
@@ -20421,6 +23030,8 @@ class CanvasPathModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -20429,6 +23040,9 @@ class CanvasPathModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -20437,6 +23051,7 @@ class CanvasPathModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -20541,42 +23156,43 @@ class CanvasPolyline {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -20584,6 +23200,10 @@ class CanvasPolyline {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -20610,17 +23230,21 @@ class CanvasPolyline {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -20629,6 +23253,8 @@ class CanvasPolyline {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -20638,6 +23264,8 @@ class CanvasPolyline {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -20675,6 +23303,10 @@ class CanvasPolyline {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20685,6 +23317,12 @@ class CanvasPolyline {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20708,6 +23346,7 @@ class CanvasPolyline {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20727,11 +23366,14 @@ class CanvasPolyline {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20739,6 +23381,8 @@ class CanvasPolyline {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20756,6 +23400,7 @@ class CanvasPolyline {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20801,6 +23446,7 @@ class CanvasPolyline {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20844,15 +23490,20 @@ class CanvasPolyline {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20893,6 +23544,7 @@ class CanvasPolyline {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20927,11 +23579,14 @@ class CanvasPolyline {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -20947,11 +23602,24 @@ class CanvasPolyline {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -20964,6 +23632,7 @@ class CanvasPolyline {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -20979,10 +23648,14 @@ class CanvasPolyline {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -20995,6 +23668,12 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -21014,6 +23693,8 @@ class CanvasPolyline {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -21023,6 +23704,9 @@ class CanvasPolyline {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -21032,6 +23716,8 @@ class CanvasPolyline {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -21055,6 +23741,7 @@ class CanvasPolyline {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -21073,10 +23760,13 @@ class CanvasPolyline {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -21087,10 +23777,14 @@ class CanvasPolyline {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -21102,6 +23796,7 @@ class CanvasPolyline {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -21115,10 +23810,15 @@ class CanvasPolyline {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -21126,10 +23826,14 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -21139,10 +23843,12 @@ class CanvasPolyline {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -21155,28 +23861,41 @@ class CanvasPolyline {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -21186,6 +23905,8 @@ class CanvasPolyline {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -21193,11 +23914,16 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasPolyline */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -21213,6 +23939,11 @@ class CanvasPolyline {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -21235,6 +23966,7 @@ class CanvasPolyline {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21248,6 +23980,12 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -21267,6 +24005,8 @@ class CanvasPolyline {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -21276,6 +24016,9 @@ class CanvasPolyline {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -21285,6 +24028,8 @@ class CanvasPolyline {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -21300,6 +24045,7 @@ class CanvasPolyline {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -21319,6 +24065,8 @@ class CanvasPolyline {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -21329,11 +24077,15 @@ class CanvasPolyline {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -21350,6 +24102,7 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21360,10 +24113,12 @@ class CanvasPolyline {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -21376,14 +24131,17 @@ class CanvasPolyline {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -21391,6 +24149,9 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -21400,6 +24161,8 @@ class CanvasPolyline {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -21415,6 +24178,11 @@ class CanvasPolyline {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -21437,6 +24205,7 @@ class CanvasPolyline {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21450,6 +24219,12 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -21469,6 +24244,8 @@ class CanvasPolyline {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -21478,6 +24255,9 @@ class CanvasPolyline {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -21487,6 +24267,8 @@ class CanvasPolyline {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -21502,6 +24284,7 @@ class CanvasPolyline {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -21521,6 +24304,8 @@ class CanvasPolyline {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -21531,11 +24316,15 @@ class CanvasPolyline {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -21552,6 +24341,7 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21562,10 +24352,12 @@ class CanvasPolyline {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -21578,14 +24370,17 @@ class CanvasPolyline {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -21593,6 +24388,9 @@ class CanvasPolyline {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21612,6 +24410,7 @@ class CanvasPolyline {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21644,6 +24443,7 @@ class CanvasPolyline {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasPolyline, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasPolyline, pspec: GObject.ParamSpec) => void)): number
@@ -21651,18 +24451,23 @@ class CanvasPolyline {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasPolyline, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasPolyline, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -21670,24 +24475,31 @@ class CanvasPolyline {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasPolyline, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasPolyline, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -21695,6 +24507,8 @@ class CanvasPolyline {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -21702,6 +24516,8 @@ class CanvasPolyline {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -21709,18 +24525,24 @@ class CanvasPolyline {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -21734,6 +24556,10 @@ class CanvasPolyline {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasPolyline, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasPolyline, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -21742,6 +24568,8 @@ class CanvasPolyline {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasPolyline, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -21843,6 +24671,8 @@ class CanvasPolyline {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -21850,6 +24680,9 @@ class CanvasPolyline {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -21857,6 +24690,7 @@ class CanvasPolyline {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -21938,17 +24772,17 @@ class CanvasPolylineModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -21984,6 +24818,10 @@ class CanvasPolylineModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21994,6 +24832,12 @@ class CanvasPolylineModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22017,6 +24861,7 @@ class CanvasPolylineModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22036,11 +24881,14 @@ class CanvasPolylineModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22048,6 +24896,8 @@ class CanvasPolylineModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22065,6 +24915,7 @@ class CanvasPolylineModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22110,6 +24961,7 @@ class CanvasPolylineModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22153,15 +25005,20 @@ class CanvasPolylineModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22202,6 +25059,7 @@ class CanvasPolylineModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22236,28 +25094,44 @@ class CanvasPolylineModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -22274,6 +25148,10 @@ class CanvasPolylineModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -22283,6 +25161,7 @@ class CanvasPolylineModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -22291,14 +25170,18 @@ class CanvasPolylineModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -22310,19 +25193,28 @@ class CanvasPolylineModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -22335,28 +25227,41 @@ class CanvasPolylineModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -22366,11 +25271,15 @@ class CanvasPolylineModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasPolylineModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -22381,6 +25290,7 @@ class CanvasPolylineModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22399,14 +25309,18 @@ class CanvasPolylineModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22420,19 +25334,24 @@ class CanvasPolylineModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -22443,6 +25362,7 @@ class CanvasPolylineModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22461,14 +25381,18 @@ class CanvasPolylineModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22482,14 +25406,17 @@ class CanvasPolylineModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22509,6 +25436,7 @@ class CanvasPolylineModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22541,6 +25469,7 @@ class CanvasPolylineModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasPolylineModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasPolylineModel, pspec: GObject.ParamSpec) => void)): number
@@ -22548,24 +25477,29 @@ class CanvasPolylineModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasPolylineModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasPolylineModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasPolylineModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasPolylineModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasPolylineModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasPolylineModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasPolylineModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasPolylineModel, old_child_num: number, new_child_num: number) => void)): number
@@ -22573,12 +25507,14 @@ class CanvasPolylineModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasPolylineModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasPolylineModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasPolylineModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasPolylineModel, child_num: number) => void)): number
@@ -22681,6 +25617,8 @@ class CanvasPolylineModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -22689,6 +25627,9 @@ class CanvasPolylineModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -22697,6 +25638,7 @@ class CanvasPolylineModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -22791,42 +25733,43 @@ class CanvasRect {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -22834,6 +25777,10 @@ class CanvasRect {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -22860,17 +25807,21 @@ class CanvasRect {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -22879,6 +25830,8 @@ class CanvasRect {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -22888,6 +25841,8 @@ class CanvasRect {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -22925,6 +25880,10 @@ class CanvasRect {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22935,6 +25894,12 @@ class CanvasRect {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22958,6 +25923,7 @@ class CanvasRect {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22977,11 +25943,14 @@ class CanvasRect {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22989,6 +25958,8 @@ class CanvasRect {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23006,6 +25977,7 @@ class CanvasRect {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23051,6 +26023,7 @@ class CanvasRect {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23094,15 +26067,20 @@ class CanvasRect {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23143,6 +26121,7 @@ class CanvasRect {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23177,11 +26156,14 @@ class CanvasRect {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -23197,11 +26179,24 @@ class CanvasRect {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -23214,6 +26209,7 @@ class CanvasRect {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -23229,10 +26225,14 @@ class CanvasRect {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -23245,6 +26245,12 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -23264,6 +26270,8 @@ class CanvasRect {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -23273,6 +26281,9 @@ class CanvasRect {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -23282,6 +26293,8 @@ class CanvasRect {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -23305,6 +26318,7 @@ class CanvasRect {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -23323,10 +26337,13 @@ class CanvasRect {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -23337,10 +26354,14 @@ class CanvasRect {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -23352,6 +26373,7 @@ class CanvasRect {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -23365,10 +26387,15 @@ class CanvasRect {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -23376,10 +26403,14 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -23389,10 +26420,12 @@ class CanvasRect {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -23405,28 +26438,41 @@ class CanvasRect {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -23436,6 +26482,8 @@ class CanvasRect {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -23443,11 +26491,16 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasRect */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -23463,6 +26516,11 @@ class CanvasRect {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -23485,6 +26543,7 @@ class CanvasRect {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23498,6 +26557,12 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -23517,6 +26582,8 @@ class CanvasRect {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -23526,6 +26593,9 @@ class CanvasRect {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -23535,6 +26605,8 @@ class CanvasRect {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -23550,6 +26622,7 @@ class CanvasRect {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -23569,6 +26642,8 @@ class CanvasRect {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -23579,11 +26654,15 @@ class CanvasRect {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -23600,6 +26679,7 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23610,10 +26690,12 @@ class CanvasRect {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -23626,14 +26708,17 @@ class CanvasRect {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -23641,6 +26726,9 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -23650,6 +26738,8 @@ class CanvasRect {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -23665,6 +26755,11 @@ class CanvasRect {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -23687,6 +26782,7 @@ class CanvasRect {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23700,6 +26796,12 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -23719,6 +26821,8 @@ class CanvasRect {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -23728,6 +26832,9 @@ class CanvasRect {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -23737,6 +26844,8 @@ class CanvasRect {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -23752,6 +26861,7 @@ class CanvasRect {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -23771,6 +26881,8 @@ class CanvasRect {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -23781,11 +26893,15 @@ class CanvasRect {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -23802,6 +26918,7 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23812,10 +26929,12 @@ class CanvasRect {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -23828,14 +26947,17 @@ class CanvasRect {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -23843,6 +26965,9 @@ class CanvasRect {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23862,6 +26987,7 @@ class CanvasRect {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23894,6 +27020,7 @@ class CanvasRect {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasRect, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasRect, pspec: GObject.ParamSpec) => void)): number
@@ -23901,18 +27028,23 @@ class CanvasRect {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasRect, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasRect, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -23920,24 +27052,31 @@ class CanvasRect {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasRect, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasRect, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -23945,6 +27084,8 @@ class CanvasRect {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -23952,6 +27093,8 @@ class CanvasRect {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -23959,18 +27102,24 @@ class CanvasRect {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -23984,6 +27133,10 @@ class CanvasRect {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasRect, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasRect, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -23992,6 +27145,8 @@ class CanvasRect {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasRect, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -24083,6 +27238,8 @@ class CanvasRect {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -24090,6 +27247,9 @@ class CanvasRect {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -24097,6 +27257,7 @@ class CanvasRect {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -24168,17 +27329,17 @@ class CanvasRectModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -24214,6 +27375,10 @@ class CanvasRectModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24224,6 +27389,12 @@ class CanvasRectModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24247,6 +27418,7 @@ class CanvasRectModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24266,11 +27438,14 @@ class CanvasRectModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24278,6 +27453,8 @@ class CanvasRectModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24295,6 +27472,7 @@ class CanvasRectModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24340,6 +27518,7 @@ class CanvasRectModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24383,15 +27562,20 @@ class CanvasRectModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24432,6 +27616,7 @@ class CanvasRectModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24466,28 +27651,44 @@ class CanvasRectModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -24504,6 +27705,10 @@ class CanvasRectModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -24513,6 +27718,7 @@ class CanvasRectModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -24521,14 +27727,18 @@ class CanvasRectModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -24540,19 +27750,28 @@ class CanvasRectModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -24565,28 +27784,41 @@ class CanvasRectModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -24596,11 +27828,15 @@ class CanvasRectModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasRectModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -24611,6 +27847,7 @@ class CanvasRectModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24629,14 +27866,18 @@ class CanvasRectModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24650,19 +27891,24 @@ class CanvasRectModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -24673,6 +27919,7 @@ class CanvasRectModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24691,14 +27938,18 @@ class CanvasRectModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24712,14 +27963,17 @@ class CanvasRectModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24739,6 +27993,7 @@ class CanvasRectModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24771,6 +28026,7 @@ class CanvasRectModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasRectModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasRectModel, pspec: GObject.ParamSpec) => void)): number
@@ -24778,24 +28034,29 @@ class CanvasRectModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasRectModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasRectModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasRectModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasRectModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasRectModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasRectModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasRectModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasRectModel, old_child_num: number, new_child_num: number) => void)): number
@@ -24803,12 +28064,14 @@ class CanvasRectModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasRectModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasRectModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasRectModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasRectModel, child_num: number) => void)): number
@@ -24901,6 +28164,8 @@ class CanvasRectModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -24909,6 +28174,9 @@ class CanvasRectModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -24917,6 +28185,7 @@ class CanvasRectModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -24925,7 +28194,7 @@ interface CanvasStyle_ConstructProps extends GObject.Object_ConstructProps {
 }
 class CanvasStyle {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasStyle */
     /**
      * Copies the given #GooCanvasStyle, by copying all of its properties.
@@ -24944,14 +28213,17 @@ class CanvasStyle {
      * 
      * Note that it returns a pointer to the internal #GValue setting, which should
      * not be changed.
+     * @param property_id the property identifier.
      */
     get_property(property_id: GLib.Quark): any
     /**
      * Sets the standard cairo fill options using the given style.
+     * @param cr a cairo context.
      */
     set_fill_options(cr: cairo.Context): boolean
     /**
      * Sets the parent of the style.
+     * @param parent the new parent.
      */
     set_parent(parent: CanvasStyle): void
     /**
@@ -24959,10 +28231,13 @@ class CanvasStyle {
      * 
      * Note that this will override the property setting in ancestor
      * #GooCanvasStyle objects.
+     * @param property_id the property identifier.
+     * @param value the value of the property.
      */
     set_property(property_id: GLib.Quark, value: any): void
     /**
      * Sets the standard cairo stroke options using the given style.
+     * @param cr a cairo context.
      */
     set_stroke_options(cr: cairo.Context): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -25000,6 +28275,10 @@ class CanvasStyle {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25010,6 +28289,12 @@ class CanvasStyle {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25033,6 +28318,7 @@ class CanvasStyle {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25052,11 +28338,14 @@ class CanvasStyle {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25064,6 +28353,8 @@ class CanvasStyle {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25081,6 +28372,7 @@ class CanvasStyle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25126,6 +28418,7 @@ class CanvasStyle {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25169,15 +28462,20 @@ class CanvasStyle {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25218,6 +28516,7 @@ class CanvasStyle {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25252,6 +28551,7 @@ class CanvasStyle {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25271,6 +28571,7 @@ class CanvasStyle {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25303,6 +28604,7 @@ class CanvasStyle {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasStyle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasStyle, pspec: GObject.ParamSpec) => void)): number
@@ -25414,48 +28716,49 @@ class CanvasTable {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasGroup */
-    readonly parent_object: CanvasItemSimple
-    readonly items: object[]
+    parent_object: CanvasItemSimple
+    items: object[]
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -25463,6 +28766,10 @@ class CanvasTable {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -25489,17 +28796,21 @@ class CanvasTable {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -25508,6 +28819,8 @@ class CanvasTable {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -25517,6 +28830,8 @@ class CanvasTable {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -25554,6 +28869,10 @@ class CanvasTable {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25564,6 +28883,12 @@ class CanvasTable {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25587,6 +28912,7 @@ class CanvasTable {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25606,11 +28932,14 @@ class CanvasTable {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25618,6 +28947,8 @@ class CanvasTable {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25635,6 +28966,7 @@ class CanvasTable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25680,6 +29012,7 @@ class CanvasTable {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25723,15 +29056,20 @@ class CanvasTable {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25772,6 +29110,7 @@ class CanvasTable {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25806,11 +29145,14 @@ class CanvasTable {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -25826,11 +29168,24 @@ class CanvasTable {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -25843,6 +29198,7 @@ class CanvasTable {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -25858,10 +29214,14 @@ class CanvasTable {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -25874,6 +29234,12 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -25893,6 +29259,8 @@ class CanvasTable {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -25902,6 +29270,9 @@ class CanvasTable {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -25911,6 +29282,8 @@ class CanvasTable {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -25934,6 +29307,7 @@ class CanvasTable {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -25952,10 +29326,13 @@ class CanvasTable {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -25966,10 +29343,14 @@ class CanvasTable {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -25981,6 +29362,7 @@ class CanvasTable {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -25994,10 +29376,15 @@ class CanvasTable {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -26005,10 +29392,14 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -26018,10 +29409,12 @@ class CanvasTable {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -26034,28 +29427,41 @@ class CanvasTable {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -26065,6 +29471,8 @@ class CanvasTable {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -26072,11 +29480,16 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasTable */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -26092,6 +29505,11 @@ class CanvasTable {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -26114,6 +29532,7 @@ class CanvasTable {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26127,6 +29546,12 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -26146,6 +29571,8 @@ class CanvasTable {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -26155,6 +29582,9 @@ class CanvasTable {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -26164,6 +29594,8 @@ class CanvasTable {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -26179,6 +29611,7 @@ class CanvasTable {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -26198,6 +29631,8 @@ class CanvasTable {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -26208,11 +29643,15 @@ class CanvasTable {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -26229,6 +29668,7 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26239,10 +29679,12 @@ class CanvasTable {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -26255,14 +29697,17 @@ class CanvasTable {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -26270,11 +29715,16 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasGroup */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -26290,6 +29740,11 @@ class CanvasTable {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -26312,6 +29767,7 @@ class CanvasTable {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26325,6 +29781,12 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -26344,6 +29806,8 @@ class CanvasTable {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -26353,6 +29817,9 @@ class CanvasTable {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -26362,6 +29829,8 @@ class CanvasTable {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -26377,6 +29846,7 @@ class CanvasTable {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -26396,6 +29866,8 @@ class CanvasTable {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -26406,11 +29878,15 @@ class CanvasTable {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -26427,6 +29903,7 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26437,10 +29914,12 @@ class CanvasTable {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -26453,14 +29932,17 @@ class CanvasTable {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -26468,6 +29950,9 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -26477,6 +29962,8 @@ class CanvasTable {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -26492,6 +29979,11 @@ class CanvasTable {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -26514,6 +30006,7 @@ class CanvasTable {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26527,6 +30020,12 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -26546,6 +30045,8 @@ class CanvasTable {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -26555,6 +30056,9 @@ class CanvasTable {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -26564,6 +30068,8 @@ class CanvasTable {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -26579,6 +30085,7 @@ class CanvasTable {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -26598,6 +30105,8 @@ class CanvasTable {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -26608,11 +30117,15 @@ class CanvasTable {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -26629,6 +30142,7 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26639,10 +30153,12 @@ class CanvasTable {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -26655,14 +30171,17 @@ class CanvasTable {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -26670,6 +30189,9 @@ class CanvasTable {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -26689,6 +30211,7 @@ class CanvasTable {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26721,6 +30244,7 @@ class CanvasTable {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasTable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasTable, pspec: GObject.ParamSpec) => void)): number
@@ -26728,18 +30252,23 @@ class CanvasTable {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasTable, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasTable, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -26747,24 +30276,31 @@ class CanvasTable {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasTable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasTable, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -26772,6 +30308,8 @@ class CanvasTable {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -26779,6 +30317,8 @@ class CanvasTable {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -26786,18 +30326,24 @@ class CanvasTable {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -26811,6 +30357,10 @@ class CanvasTable {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasTable, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasTable, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -26819,6 +30369,8 @@ class CanvasTable {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasTable, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -26922,6 +30474,8 @@ class CanvasTable {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -26929,6 +30483,9 @@ class CanvasTable {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -26936,6 +30493,7 @@ class CanvasTable {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -27016,19 +30574,19 @@ class CanvasTableModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasGroupModel */
-    readonly parent_object: CanvasItemModelSimple
-    readonly children: object[]
+    parent_object: CanvasItemModelSimple
+    children: object[]
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -27064,6 +30622,10 @@ class CanvasTableModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27074,6 +30636,12 @@ class CanvasTableModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -27097,6 +30665,7 @@ class CanvasTableModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -27116,11 +30685,14 @@ class CanvasTableModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -27128,6 +30700,8 @@ class CanvasTableModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27145,6 +30719,7 @@ class CanvasTableModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27190,6 +30765,7 @@ class CanvasTableModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27233,15 +30809,20 @@ class CanvasTableModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27282,6 +30863,7 @@ class CanvasTableModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27316,28 +30898,44 @@ class CanvasTableModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -27354,6 +30952,10 @@ class CanvasTableModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -27363,6 +30965,7 @@ class CanvasTableModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -27371,14 +30974,18 @@ class CanvasTableModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -27390,19 +30997,28 @@ class CanvasTableModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -27415,28 +31031,41 @@ class CanvasTableModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -27446,11 +31075,15 @@ class CanvasTableModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasTableModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -27461,6 +31094,7 @@ class CanvasTableModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27479,14 +31113,18 @@ class CanvasTableModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27500,19 +31138,24 @@ class CanvasTableModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasGroupModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -27523,6 +31166,7 @@ class CanvasTableModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27541,14 +31185,18 @@ class CanvasTableModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27562,19 +31210,24 @@ class CanvasTableModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -27585,6 +31238,7 @@ class CanvasTableModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27603,14 +31257,18 @@ class CanvasTableModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27624,14 +31282,17 @@ class CanvasTableModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -27651,6 +31312,7 @@ class CanvasTableModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27683,6 +31345,7 @@ class CanvasTableModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasTableModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasTableModel, pspec: GObject.ParamSpec) => void)): number
@@ -27690,24 +31353,29 @@ class CanvasTableModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasTableModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasTableModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasTableModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasTableModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasTableModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasTableModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasTableModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasTableModel, old_child_num: number, new_child_num: number) => void)): number
@@ -27715,12 +31383,14 @@ class CanvasTableModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasTableModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasTableModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasTableModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasTableModel, child_num: number) => void)): number
@@ -27825,6 +31495,8 @@ class CanvasTableModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -27833,6 +31505,9 @@ class CanvasTableModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -27841,6 +31516,7 @@ class CanvasTableModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -27943,36 +31619,36 @@ class CanvasText {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasText */
     /**
      * Gets the natural extents of the text, in the text item's coordinate space.
@@ -27987,6 +31663,7 @@ class CanvasText {
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -27994,6 +31671,10 @@ class CanvasText {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -28020,17 +31701,21 @@ class CanvasText {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -28039,6 +31724,8 @@ class CanvasText {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -28048,6 +31735,8 @@ class CanvasText {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -28085,6 +31774,10 @@ class CanvasText {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28095,6 +31788,12 @@ class CanvasText {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28118,6 +31817,7 @@ class CanvasText {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28137,11 +31837,14 @@ class CanvasText {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28149,6 +31852,8 @@ class CanvasText {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28166,6 +31871,7 @@ class CanvasText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -28211,6 +31917,7 @@ class CanvasText {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -28254,15 +31961,20 @@ class CanvasText {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28303,6 +32015,7 @@ class CanvasText {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28337,11 +32050,14 @@ class CanvasText {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -28357,11 +32073,24 @@ class CanvasText {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -28374,6 +32103,7 @@ class CanvasText {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -28389,10 +32119,14 @@ class CanvasText {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -28405,6 +32139,12 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -28424,6 +32164,8 @@ class CanvasText {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -28433,6 +32175,9 @@ class CanvasText {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -28442,6 +32187,8 @@ class CanvasText {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -28465,6 +32212,7 @@ class CanvasText {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -28483,10 +32231,13 @@ class CanvasText {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -28497,10 +32248,14 @@ class CanvasText {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -28512,6 +32267,7 @@ class CanvasText {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -28525,10 +32281,15 @@ class CanvasText {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -28536,10 +32297,14 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -28549,10 +32314,12 @@ class CanvasText {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -28565,28 +32332,41 @@ class CanvasText {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -28596,6 +32376,8 @@ class CanvasText {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -28603,11 +32385,16 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasText */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -28623,6 +32410,11 @@ class CanvasText {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -28645,6 +32437,7 @@ class CanvasText {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28658,6 +32451,12 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -28677,6 +32476,8 @@ class CanvasText {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -28686,6 +32487,9 @@ class CanvasText {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -28695,6 +32499,8 @@ class CanvasText {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -28710,6 +32516,7 @@ class CanvasText {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -28729,6 +32536,8 @@ class CanvasText {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -28739,11 +32548,15 @@ class CanvasText {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -28760,6 +32573,7 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28770,10 +32584,12 @@ class CanvasText {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -28786,14 +32602,17 @@ class CanvasText {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -28801,6 +32620,9 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -28810,6 +32632,8 @@ class CanvasText {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -28825,6 +32649,11 @@ class CanvasText {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -28847,6 +32676,7 @@ class CanvasText {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28860,6 +32690,12 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -28879,6 +32715,8 @@ class CanvasText {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -28888,6 +32726,9 @@ class CanvasText {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -28897,6 +32738,8 @@ class CanvasText {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -28912,6 +32755,7 @@ class CanvasText {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -28931,6 +32775,8 @@ class CanvasText {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -28941,11 +32787,15 @@ class CanvasText {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -28962,6 +32812,7 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28972,10 +32823,12 @@ class CanvasText {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -28988,14 +32841,17 @@ class CanvasText {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -29003,6 +32859,9 @@ class CanvasText {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -29022,6 +32881,7 @@ class CanvasText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29054,6 +32914,7 @@ class CanvasText {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasText, pspec: GObject.ParamSpec) => void)): number
@@ -29061,18 +32922,23 @@ class CanvasText {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasText, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasText, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -29080,24 +32946,31 @@ class CanvasText {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasText, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -29105,6 +32978,8 @@ class CanvasText {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -29112,6 +32987,8 @@ class CanvasText {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -29119,18 +32996,24 @@ class CanvasText {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -29144,6 +33027,10 @@ class CanvasText {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasText, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasText, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -29152,6 +33039,8 @@ class CanvasText {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasText, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -29251,6 +33140,8 @@ class CanvasText {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -29258,6 +33149,9 @@ class CanvasText {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -29265,6 +33159,7 @@ class CanvasText {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -29344,17 +33239,17 @@ class CanvasTextModel {
     visibility: CanvasItemVisibility
     visibility_threshold: number
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the parent model.
      */
-    readonly parent: CanvasItemModel
+    parent: CanvasItemModel
     /**
      * data used by the canvas item for viewing the model.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -29390,6 +33285,10 @@ class CanvasTextModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29400,6 +33299,12 @@ class CanvasTextModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -29423,6 +33328,7 @@ class CanvasTextModel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -29442,11 +33348,14 @@ class CanvasTextModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -29454,6 +33363,8 @@ class CanvasTextModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29471,6 +33382,7 @@ class CanvasTextModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -29516,6 +33428,7 @@ class CanvasTextModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -29559,15 +33472,20 @@ class CanvasTextModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -29608,6 +33526,7 @@ class CanvasTextModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -29642,28 +33561,44 @@ class CanvasTextModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItemModel, position: number): void
     /**
      * Animates a model from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the model currently has a simple transform. If the model has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
      * Attempts to find the given child with the container's stack.
+     * @param child the child to find.
      */
     find_child(child: CanvasItemModel): number
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItemModel
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -29680,6 +33615,10 @@ class CanvasTextModel {
      * (e.g. set with goo_canvas_item_model_set_simple_transform(), or using a
      * combination of simple translate, scale and rotate operations). If the model
      * has a complex transformation matrix the results will be incorrect.
+     * @param x returns the x coordinate of the origin of the model's coordinate space.
+     * @param y returns the y coordinate of the origin of the model's coordinate space.
+     * @param scale returns the scale of the model.
+     * @param rotation returns the clockwise rotation of the model, in degrees (0-360).
      */
     get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean
     /**
@@ -29689,6 +33628,7 @@ class CanvasTextModel {
     get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     get_transform(transform: cairo.Matrix): boolean
     /**
@@ -29697,14 +33637,18 @@ class CanvasTextModel {
     is_container(): boolean
     /**
      * Lowers a model in the stacking order.
+     * @param below the item model to lower `model` below, or %NULL to lower `model` to the  bottom of the stack.
      */
     lower(below?: CanvasItemModel | null): void
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     move_child(old_position: number, new_position: number): void
     /**
      * Raises a model in the stacking order.
+     * @param above the item model to raise `model` above, or %NULL to raise `model` to the top  of the stack.
      */
     raise(above?: CanvasItemModel | null): void
     /**
@@ -29716,19 +33660,28 @@ class CanvasTextModel {
     remove(): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     remove_child(child_num: number): void
     /**
      * Rotates the model's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the model's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItemModel.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
@@ -29741,28 +33694,41 @@ class CanvasTextModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     set_parent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
+     * @param x the x coordinate of the origin of the model's coordinate space.
+     * @param y the y coordinate of the origin of the model's coordinate space.
+     * @param scale the scale of the model.
+     * @param rotation the clockwise rotation of the model, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the model's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the model's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -29772,11 +33738,15 @@ class CanvasTextModel {
     stop_animation(): void
     /**
      * Translates the origin of the model's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasTextModel */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -29787,6 +33757,7 @@ class CanvasTextModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29805,14 +33776,18 @@ class CanvasTextModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29826,19 +33801,24 @@ class CanvasTextModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemModelSimple */
     /**
      * Adds a child at the given stack position.
+     * @param child the child to add.
+     * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItemModel, position: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -29849,6 +33829,7 @@ class CanvasTextModel {
     vfunc_child_removed(child_num: number): void
     /**
      * Gets the child at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItemModel
     vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29867,14 +33848,18 @@ class CanvasTextModel {
     vfunc_get_style(): CanvasStyle
     /**
      * Gets the transformation matrix of an item model.
+     * @param transform the place to store the transform.
      */
     vfunc_get_transform(transform: cairo.Matrix): boolean
     /**
      * Moves a child to a new stack position.
+     * @param old_position the current position of the child.
+     * @param new_position the new position of the child.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
      * Removes the child at the given position.
+     * @param child_num the position of the child to remove.
      */
     vfunc_remove_child(child_num: number): void
     vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29888,14 +33873,17 @@ class CanvasTextModel {
      * or to change the parent of a model.
      * To do that use the #GooCanvasItemModel:parent property.
      * </para></note>
+     * @param parent the new parent item model.
      */
     vfunc_set_parent(parent: CanvasItemModel): void
     /**
      * Sets the model's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item model.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -29915,6 +33903,7 @@ class CanvasTextModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29947,6 +33936,7 @@ class CanvasTextModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasTextModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasTextModel, pspec: GObject.ParamSpec) => void)): number
@@ -29954,24 +33944,29 @@ class CanvasTextModel {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItemModel */
     /**
      * Emitted when the item model animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasTextModel, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasTextModel, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when the item model has been changed.
+     * @param recompute_bounds if the bounds of the item need to be recomputed.
      */
     connect(sigName: "changed", callback: (($obj: CanvasTextModel, recompute_bounds: boolean) => void)): number
     connect_after(sigName: "changed", callback: (($obj: CanvasTextModel, recompute_bounds: boolean) => void)): number
     emit(sigName: "changed", recompute_bounds: boolean): void
     /**
      * Emitted when a child has been added.
+     * @param child_num the index of the new child.
      */
     connect(sigName: "child-added", callback: (($obj: CanvasTextModel, child_num: number) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: CanvasTextModel, child_num: number) => void)): number
     emit(sigName: "child-added", child_num: number): void
     /**
      * Emitted when a child has been moved in the stacking order.
+     * @param old_child_num the old index of the child.
+     * @param new_child_num the new index of the child.
      */
     connect(sigName: "child-moved", callback: (($obj: CanvasTextModel, old_child_num: number, new_child_num: number) => void)): number
     connect_after(sigName: "child-moved", callback: (($obj: CanvasTextModel, old_child_num: number, new_child_num: number) => void)): number
@@ -29979,12 +33974,14 @@ class CanvasTextModel {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasTextModel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasTextModel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when a child has been removed.
+     * @param child_num the index of the child that was removed.
      */
     connect(sigName: "child-removed", callback: (($obj: CanvasTextModel, child_num: number) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: CanvasTextModel, child_num: number) => void)): number
@@ -30085,6 +34082,8 @@ class CanvasTextModel {
      * #GooCanvasTableModel.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param mclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -30093,6 +34092,9 @@ class CanvasTextModel {
      * #GooCanvasTableModel.
      * 
      * It installs a child property on a canvas item class.
+     * @param mclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(mclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -30101,6 +34103,7 @@ class CanvasTextModel {
      * #GooCanvasTableModel.
      * 
      * It returns all child properties of a canvas item class.
+     * @param mclass a #GObjectClass
      */
     static class_list_child_properties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -30195,42 +34198,43 @@ class CanvasWidget {
     /**
      * the canvas.
      */
-    readonly canvas: Canvas
+    canvas: Canvas
     /**
      * the parent item.
      */
-    readonly parent: CanvasItem
+    parent: CanvasItem
     /**
      * the item's model, if it has one.
      */
-    readonly model: CanvasItemModelSimple
+    model: CanvasItemModelSimple
     /**
      * data that is common to both the model and view classes. If
      *  the canvas item has a model, this will point to the model's
      *  #GooCanvasItemSimpleData, otherwise the canvas item will have its own
      *  #GooCanvasItemSimpleData.
      */
-    readonly simple_data: CanvasItemSimpleData
+    simple_data: CanvasItemSimpleData
     /**
      * the bounds of the item, in device space.
      */
-    readonly bounds: CanvasBounds
+    bounds: CanvasBounds
     /**
      * if the item needs to recompute its bounds and redraw.
      */
-    readonly need_update: number
+    need_update: number
     /**
      * if all descendants need to be updated.
      */
-    readonly need_entire_subtree_update: number
+    need_entire_subtree_update: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It is used as a callback for the "changed" signal of the item models.
      * It requests an update or redraw of the item as appropriate.
+     * @param recompute_bounds if the item's bounds need to be recomputed.
      */
     changed(recompute_bounds: boolean): void
     /**
@@ -30238,6 +34242,10 @@ class CanvasWidget {
      * 
      * It checks if the given point is in the current path, using the item's
      * style settings.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo context.
+     * @param pointer_events specifies which parts of the path to check.
      */
     check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean
     /**
@@ -30264,17 +34272,21 @@ class CanvasWidget {
      * converted to user space coordinates. To calculate the bounds completely in
      * user space, use cairo_identity_matrix() to temporarily reset the current
      * transformation matrix to the identity matrix.
+     * @param cr a cairo context.
+     * @param bounds the #GooCanvasBounds struct to store the resulting bounding box.
      */
     get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void
     /**
      * This function is intended to be used by subclasses of #GooCanvasItemSimple.
      * 
      * It paints the current path, using the item's style settings.
+     * @param cr a cairo context.
      */
     paint_path(cr: cairo.Context): void
     /**
      * This function should be called by subclasses of #GooCanvasItemSimple
      * in their set_model() method.
+     * @param model the model that `item` will view.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -30283,6 +34295,8 @@ class CanvasWidget {
      * 
      * It converts the item's bounds to a bounding box in the canvas (device)
      * coordinate space.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void
     /**
@@ -30292,6 +34306,8 @@ class CanvasWidget {
      * It converts the item's bounds to a bounding box in its parent's coordinate
      * space. If the item has no transformation matrix set then no conversion is
      * needed.
+     * @param cr a cairo context.
+     * @param bounds the bounds of the item, in the item's coordinate space.
      */
     user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -30329,6 +34345,10 @@ class CanvasWidget {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30339,6 +34359,12 @@ class CanvasWidget {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -30362,6 +34388,7 @@ class CanvasWidget {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -30381,11 +34408,14 @@ class CanvasWidget {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -30393,6 +34423,8 @@ class CanvasWidget {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -30410,6 +34442,7 @@ class CanvasWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -30455,6 +34488,7 @@ class CanvasWidget {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -30498,15 +34532,20 @@ class CanvasWidget {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -30547,6 +34586,7 @@ class CanvasWidget {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -30581,11 +34621,14 @@ class CanvasWidget {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     add_child(child: CanvasItem, position: number): void
     /**
@@ -30601,11 +34644,24 @@ class CanvasWidget {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     /**
      * Animates an item from its current position to the given offsets, scale
      * and rotation.
+     * @param x the final x coordinate.
+     * @param y the final y coordinate.
+     * @param scale the final scale.
+     * @param degrees the final rotation. This can be negative to rotate anticlockwise,  and can also be greater than 360 to rotate a number of times.
+     * @param absolute if the `x,` `y,` `scale` and `degrees` values are absolute, or  relative to the current transform. Note that absolute animations only work  if the item currently has a simple transform. If the item has a shear or  some other complicated transform it may result in strange animations.
+     * @param duration the duration of the animation, in milliseconds (1/1000ths of a  second).
+     * @param step_time the time between each animation step, in milliseconds.
+     * @param type specifies what happens when the animation finishes.
      */
     animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void
     /**
@@ -30618,6 +34674,7 @@ class CanvasWidget {
     ensure_updated(): void
     /**
      * Attempts to find the given child item with the container's stack.
+     * @param child the child item to find.
      */
     find_child(child: CanvasItem): number
     /**
@@ -30633,10 +34690,14 @@ class CanvasWidget {
     get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     get_child(child_num: number): CanvasItem
     /**
      * Gets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to get.
+     * @param value a location to return the value.
      */
     get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -30649,6 +34710,12 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -30668,6 +34735,8 @@ class CanvasWidget {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -30677,6 +34746,9 @@ class CanvasWidget {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -30686,6 +34758,8 @@ class CanvasWidget {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -30709,6 +34783,7 @@ class CanvasWidget {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     /**
@@ -30727,10 +34802,13 @@ class CanvasWidget {
     is_visible(): boolean
     /**
      * Lowers an item in the stacking order.
+     * @param below the item to lower `item` below, or %NULL to lower `item` to the  bottom of the stack.
      */
     lower(below?: CanvasItem | null): void
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     move_child(old_position: number, new_position: number): void
     /**
@@ -30741,10 +34819,14 @@ class CanvasWidget {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     /**
      * Raises an item in the stacking order.
+     * @param above the item to raise `item` above, or %NULL to raise `item` to the top  of the stack.
      */
     raise(above?: CanvasItem | null): void
     /**
@@ -30756,6 +34838,7 @@ class CanvasWidget {
     remove(): void
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     remove_child(child_num: number): void
     /**
@@ -30769,10 +34852,15 @@ class CanvasWidget {
     /**
      * Rotates the item's coordinate system by the given amount, about the given
      * origin.
+     * @param degrees the clockwise angle of rotation.
+     * @param cx the x coordinate of the origin of the rotation.
+     * @param cy the y coordinate of the origin of the rotation.
      */
     rotate(degrees: number, cx: number, cy: number): void
     /**
      * Scales the item's coordinate system by the given amounts.
+     * @param sx the amount to scale the horizontal axis.
+     * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
     /**
@@ -30780,10 +34868,14 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     set_canvas(canvas: Canvas): void
     /**
      * Sets a child property of `child`.
+     * @param child a child #GooCanvasItem.
+     * @param property_name the name of the child property to set.
+     * @param value the value to set the property to.
      */
     set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
@@ -30793,10 +34885,12 @@ class CanvasWidget {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     set_model(model: CanvasItemModel): void
     /**
@@ -30809,28 +34903,41 @@ class CanvasWidget {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     set_parent(parent: CanvasItem): void
     /**
      * A convenience function to set the item's transformation matrix.
+     * @param x the x coordinate of the origin of the item's coordinate space.
+     * @param y the y coordinate of the origin of the item's coordinate space.
+     * @param scale the scale of the item.
+     * @param rotation the clockwise rotation of the item, in degrees.
      */
     set_simple_transform(x: number, y: number, scale: number, rotation: number): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     set_transform(transform?: cairo.Matrix | null): void
     /**
      * Skews the item's coordinate system along the x axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_x(degrees: number, cx: number, cy: number): void
     /**
      * Skews the item's coordinate system along the y axis by the given amount,
      * about the given origin.
+     * @param degrees the skew angle.
+     * @param cx the x coordinate of the origin of the skew transform.
+     * @param cy the y coordinate of the origin of the skew transform.
      */
     skew_y(degrees: number, cx: number, cy: number): void
     /**
@@ -30840,6 +34947,8 @@ class CanvasWidget {
     stop_animation(): void
     /**
      * Translates the origin of the item's coordinate system by the given amounts.
+     * @param tx the amount to move the origin in the horizontal direction.
+     * @param ty the amount to move the origin in the vertical direction.
      */
     translate(tx: number, ty: number): void
     /**
@@ -30847,11 +34956,16 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasWidget */
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -30867,6 +34981,11 @@ class CanvasWidget {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -30889,6 +35008,7 @@ class CanvasWidget {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -30902,6 +35022,12 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -30921,6 +35047,8 @@ class CanvasWidget {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -30930,6 +35058,9 @@ class CanvasWidget {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -30939,6 +35070,8 @@ class CanvasWidget {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -30954,6 +35087,7 @@ class CanvasWidget {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -30973,6 +35107,8 @@ class CanvasWidget {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -30983,11 +35119,15 @@ class CanvasWidget {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -31004,6 +35144,7 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31014,10 +35155,12 @@ class CanvasWidget {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -31030,14 +35173,17 @@ class CanvasWidget {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -31045,6 +35191,9 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GooCanvas-2.0.GooCanvas.CanvasItemSimple */
@@ -31054,6 +35203,8 @@ class CanvasWidget {
     vfunc_simple_update(cr: cairo.Context): void
     /**
      * Adds a child item to a container item at the given stack position.
+     * @param child the item to add.
+     * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
      */
     vfunc_add_child(child: CanvasItem, position: number): void
     /**
@@ -31069,6 +35220,11 @@ class CanvasWidget {
      * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
      * of the child item's allocated position from its requested position are
      * provided. Simple items can just add these to their bounds.
+     * @param cr a cairo context.
+     * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+     * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+     * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+     * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
      */
     vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void
     vfunc_animation_finished(stopped: boolean): void
@@ -31091,6 +35247,7 @@ class CanvasWidget {
     vfunc_get_canvas(): Canvas
     /**
      * Gets the child item at the given stack position.
+     * @param child_num the position of a child in the container's stack.
      */
     vfunc_get_child(child_num: number): CanvasItem
     vfunc_get_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31104,6 +35261,12 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It gets the items at the given point.
+     * @param x the x coordinate of the point.
+     * @param y the y coordinate of the point.
+     * @param cr a cairo contect.
+     * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+     * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+     * @param found_items the list of items found  so far.
      */
     vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[]
     /**
@@ -31123,6 +35286,8 @@ class CanvasWidget {
      * items, specifically layout items such as #GooCanvasTable.
      * 
      * It gets the requested area of a child item.
+     * @param cr a cairo context.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
      */
     vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean
     /**
@@ -31132,6 +35297,9 @@ class CanvasWidget {
      * It gets the requested area of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the allocated width.
+     * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
      */
     vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean
     /**
@@ -31141,6 +35309,8 @@ class CanvasWidget {
      * It gets the requested height of a child item, assuming it is allocated the
      * given width. This is useful for text items whose requested height may change
      * depending on the allocated width.
+     * @param cr a cairo context.
+     * @param width the width that the item may be allocated.
      */
     vfunc_get_requested_height(cr: cairo.Context, width: number): number
     /**
@@ -31156,6 +35326,7 @@ class CanvasWidget {
      * Gets the transformation matrix of an item combined with any special
      * transform needed for the given child. These special transforms are used
      * by layout items such as #GooCanvasTable.
+     * @param child a child of `item`.
      */
     vfunc_get_transform_for_child(child: CanvasItem): [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
     vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean
@@ -31175,6 +35346,8 @@ class CanvasWidget {
     vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean
     /**
      * Moves a child item to a new stack position within the container.
+     * @param old_position the current position of the child item.
+     * @param new_position the new position of the child item.
      */
     vfunc_move_child(old_position: number, new_position: number): void
     /**
@@ -31185,11 +35358,15 @@ class CanvasWidget {
      * 
      * Note that the `scale` argument may be different to the current scale in the
      * #GooCanvasItem, e.g. when the canvas is being printed.
+     * @param cr a cairo context.
+     * @param bounds the bounds that need to be repainted, in device space.
+     * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
      */
     vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void
     vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean
     /**
      * Removes the child item at the given position.
+     * @param child_num the position of the child item to remove.
      */
     vfunc_remove_child(child_num: number): void
     /**
@@ -31206,6 +35383,7 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * It sets the canvas of the item.
+     * @param canvas a #GooCanvas
      */
     vfunc_set_canvas(canvas: Canvas): void
     vfunc_set_child_property(child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31216,10 +35394,12 @@ class CanvasWidget {
      * Container items such as #GooCanvasGroup should call this function when
      * children are added, to notify children whether they are static or not.
      * Containers should also pass on any changes in their own status to children.
+     * @param is_static if the item is static.
      */
     vfunc_set_is_static(is_static: boolean): void
     /**
      * Sets the model of the given canvas item.
+     * @param model a #GooCanvasItemModel.
      */
     vfunc_set_model(model: CanvasItemModel): void
     /**
@@ -31232,14 +35412,17 @@ class CanvasWidget {
      * or to change the parent of an item.
      * To do that use the #GooCanvasItem:parent property.
      * </para></note>
+     * @param parent the new parent item.
      */
     vfunc_set_parent(parent: CanvasItem): void
     /**
      * Sets the item's style, by copying the properties from the given style.
+     * @param style a style.
      */
     vfunc_set_style(style: CanvasStyle): void
     /**
      * Sets the transformation matrix of an item.
+     * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
      */
     vfunc_set_transform(transform?: cairo.Matrix | null): void
     /**
@@ -31247,6 +35430,9 @@ class CanvasWidget {
      * items, specifically container items such as #GooCanvasGroup.
      * 
      * Updates the item, if needed, and any children.
+     * @param entire_tree if the entire subtree should be updated.
+     * @param cr a cairo context.
+     * @param bounds a #GooCanvasBounds to return the new bounds in.
      */
     vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -31266,6 +35452,7 @@ class CanvasWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31298,6 +35485,7 @@ class CanvasWidget {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasWidget, pspec: GObject.ParamSpec) => void)): number
@@ -31305,18 +35493,23 @@ class CanvasWidget {
     /* Signals of GooCanvas-2.0.GooCanvas.CanvasItem */
     /**
      * Emitted when the item animation has finished.
+     * @param stopped if the animation was explicitly stopped.
      */
     connect(sigName: "animation-finished", callback: (($obj: CanvasWidget, stopped: boolean) => void)): number
     connect_after(sigName: "animation-finished", callback: (($obj: CanvasWidget, stopped: boolean) => void)): number
     emit(sigName: "animation-finished", stopped: boolean): void
     /**
      * Emitted when a mouse button is pressed in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-press-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     emit(sigName: "button-press-event", target_item: CanvasItem, event: Gdk.EventButton): void
     /**
      * Emitted when a mouse button is released in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "button-release-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventButton) => boolean)): number
@@ -31324,24 +35517,31 @@ class CanvasWidget {
     /**
      * Emitted for each child property that has changed.
      * The signal's detail holds the property name.
+     * @param pspec the #GParamSpec of the changed child property.
      */
     connect(sigName: "child-notify", callback: (($obj: CanvasWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CanvasWidget, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "child-notify", pspec: GObject.ParamSpec): void
     /**
      * Emitted when the mouse enters an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "enter-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the item receives the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     emit(sigName: "focus-in-event", target_item: CanvasItem, event: Gdk.EventFocus): void
     /**
      * Emitted when the item loses the keyboard focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventFocus) => boolean)): number
@@ -31349,6 +35549,8 @@ class CanvasWidget {
     /**
      * Emitted when the item's keyboard or pointer grab was lost
      * unexpectedly.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean)): number
@@ -31356,6 +35558,8 @@ class CanvasWidget {
     /**
      * Emitted when a key is pressed and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-press-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
@@ -31363,18 +35567,24 @@ class CanvasWidget {
     /**
      * Emitted when a key is released and the item has the keyboard
      * focus.
+     * @param target_item the target of the event.
+     * @param event the event data.
      */
     connect(sigName: "key-release-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventKey) => boolean)): number
     emit(sigName: "key-release-event", target_item: CanvasItem, event: Gdk.EventKey): void
     /**
      * Emitted when the mouse leaves an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventCrossing) => boolean)): number
     emit(sigName: "leave-notify-event", target_item: CanvasItem, event: Gdk.EventCrossing): void
     /**
      * Emitted when the mouse moves within an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventMotion) => boolean)): number
@@ -31388,6 +35598,10 @@ class CanvasWidget {
      * 
      * If the item wants to display a tooltip it should update `tooltip`
      * and return %TRUE.
+     * @param x the x coordinate of the mouse.
+     * @param y the y coordinate of the mouse.
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard.
+     * @param tooltip a #GtkTooltip.
      */
     connect(sigName: "query-tooltip", callback: (($obj: CanvasWidget, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CanvasWidget, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -31396,6 +35610,8 @@ class CanvasWidget {
      * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
      * usually configured to generate button press events for buttons 4 and 5
      * when the wheel is turned in an item.
+     * @param target_item the target of the event.
+     * @param event the event data. The x & y fields contain the mouse position in the item's coordinate space. The x_root & y_root fields contain the same coordinates converted to the canvas coordinate space.
      */
     connect(sigName: "scroll-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CanvasWidget, target_item: CanvasItem, event: Gdk.EventScroll) => boolean)): number
@@ -31487,6 +35703,8 @@ class CanvasWidget {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It finds a child property of a canvas item class by name.
+     * @param iclass a #GObjectClass
+     * @param property_name the name of the child property to find
      */
     static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
@@ -31494,6 +35712,9 @@ class CanvasWidget {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It installs a child property on a canvas item class.
+     * @param iclass a #GObjectClass
+     * @param property_id the id for the property
+     * @param pspec the #GParamSpec for the property
      */
     static class_install_child_property(iclass: GObject.ObjectClass, property_id: number, pspec: GObject.ParamSpec): void
     /**
@@ -31501,6 +35722,7 @@ class CanvasWidget {
      * items, specifically layout container items such as #GooCanvasTable.
      * 
      * It returns all child properties of a canvas item class.
+     * @param iclass a #GObjectClass
      */
     static class_list_child_properties(iclass: GObject.ObjectClass): GObject.ParamSpec[]
     static $gtype: GObject.Type
@@ -31509,13 +35731,14 @@ interface CanvasWidgetAccessibleFactory_ConstructProps extends Atk.ObjectFactory
 }
 class CanvasWidgetAccessibleFactory {
     /* Fields of Atk-1.0.Atk.ObjectFactory */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Atk-1.0.Atk.ObjectFactory */
     /**
      * Provides an #AtkObject that implements an accessibility interface
      * on behalf of `obj`
+     * @param obj a #GObject
      */
     create_accessible(obj: GObject.Object): Atk.Object
     /**
@@ -31565,6 +35788,10 @@ class CanvasWidgetAccessibleFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -31575,6 +35802,12 @@ class CanvasWidgetAccessibleFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -31598,6 +35831,7 @@ class CanvasWidgetAccessibleFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -31617,11 +35851,14 @@ class CanvasWidgetAccessibleFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -31629,6 +35866,8 @@ class CanvasWidgetAccessibleFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31646,6 +35885,7 @@ class CanvasWidgetAccessibleFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -31691,6 +35931,7 @@ class CanvasWidgetAccessibleFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -31734,15 +35975,20 @@ class CanvasWidgetAccessibleFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -31783,6 +36029,7 @@ class CanvasWidgetAccessibleFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -31817,6 +36064,7 @@ class CanvasWidgetAccessibleFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Atk-1.0.Atk.ObjectFactory */
@@ -31845,6 +36093,7 @@ class CanvasWidgetAccessibleFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31877,6 +36126,7 @@ class CanvasWidgetAccessibleFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CanvasWidgetAccessibleFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CanvasWidgetAccessibleFactory, pspec: GObject.ParamSpec) => void)): number
@@ -31895,187 +36145,187 @@ class CanvasBounds {
     /**
      * the left edge.
      */
-    readonly x1: number
+    x1: number
     /**
      * the top edge.
      */
-    readonly y1: number
+    y1: number
     /**
      * the right edge.
      */
-    readonly x2: number
+    x2: number
     /**
      * the bottom edge.
      */
-    readonly y2: number
+    y2: number
     static name: string
 }
 abstract class CanvasClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasClass */
-    readonly create_item: (canvas: Canvas, model: CanvasItemModel) => CanvasItem
-    readonly item_created: (canvas: Canvas, item: CanvasItem, model: CanvasItemModel) => void
+    create_item: (canvas: Canvas, model: CanvasItemModel) => CanvasItem
+    item_created: (canvas: Canvas, item: CanvasItem, model: CanvasItemModel) => void
     static name: string
 }
 abstract class CanvasEllipseClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasEllipseClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 class CanvasEllipseData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasEllipseData */
-    readonly center_x: number
-    readonly center_y: number
-    readonly radius_x: number
-    readonly radius_y: number
+    center_x: number
+    center_y: number
+    radius_x: number
+    radius_y: number
     static name: string
 }
 abstract class CanvasEllipseModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasEllipseModelClass */
-    readonly parent_class: CanvasItemModelSimpleClass
+    parent_class: CanvasItemModelSimpleClass
     static name: string
 }
 abstract class CanvasGridClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasGridClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 class CanvasGridData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasGridData */
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
-    readonly x_step: number
-    readonly y_step: number
-    readonly x_offset: number
-    readonly y_offset: number
-    readonly horz_grid_line_width: number
-    readonly vert_grid_line_width: number
-    readonly horz_grid_line_pattern: cairo.Pattern
-    readonly vert_grid_line_pattern: cairo.Pattern
-    readonly border_width: number
-    readonly border_pattern: cairo.Pattern
-    readonly show_horz_grid_lines: number
-    readonly show_vert_grid_lines: number
-    readonly vert_grid_lines_on_top: number
+    x: number
+    y: number
+    width: number
+    height: number
+    x_step: number
+    y_step: number
+    x_offset: number
+    y_offset: number
+    horz_grid_line_width: number
+    vert_grid_line_width: number
+    horz_grid_line_pattern: cairo.Pattern
+    vert_grid_line_pattern: cairo.Pattern
+    border_width: number
+    border_pattern: cairo.Pattern
+    show_horz_grid_lines: number
+    show_vert_grid_lines: number
+    vert_grid_lines_on_top: number
     static name: string
 }
 abstract class CanvasGridModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasGridModelClass */
-    readonly parent_class: CanvasItemModelSimpleClass
+    parent_class: CanvasItemModelSimpleClass
     static name: string
 }
 abstract class CanvasGroupClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasGroupClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 abstract class CanvasGroupModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasGroupModelClass */
-    readonly parent_class: CanvasItemModelSimpleClass
+    parent_class: CanvasItemModelSimpleClass
     static name: string
 }
 abstract class CanvasImageClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasImageClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 class CanvasImageData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasImageData */
-    readonly pattern: cairo.Pattern
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
+    pattern: cairo.Pattern
+    x: number
+    y: number
+    width: number
+    height: number
     static name: string
 }
 abstract class CanvasImageModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasImageModelClass */
-    readonly parent_class: CanvasItemModelSimpleClass
+    parent_class: CanvasItemModelSimpleClass
     static name: string
 }
 abstract class CanvasItemIface {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemIface */
-    readonly get_canvas: (item: CanvasItem) => Canvas
-    readonly set_canvas: (item: CanvasItem, canvas: Canvas) => void
-    readonly get_n_children: (item: CanvasItem) => number
-    readonly get_child: (item: CanvasItem, child_num: number) => CanvasItem
-    readonly request_update: (item: CanvasItem) => void
-    readonly add_child: (item: CanvasItem, child: CanvasItem, position: number) => void
-    readonly move_child: (item: CanvasItem, old_position: number, new_position: number) => void
-    readonly remove_child: (item: CanvasItem, child_num: number) => void
-    readonly get_child_property: (item: CanvasItem, child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec) => void
-    readonly set_child_property: (item: CanvasItem, child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec) => void
-    readonly get_transform_for_child: (item: CanvasItem, child: CanvasItem) => [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
-    readonly get_parent: (item: CanvasItem) => CanvasItem
-    readonly set_parent: (item: CanvasItem, parent: CanvasItem) => void
-    readonly get_bounds: (item: CanvasItem) => /* bounds */ CanvasBounds
-    readonly get_items_at: (item: CanvasItem, x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]) => CanvasItem[]
-    readonly update: (item: CanvasItem, entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds) => void
-    readonly paint: (item: CanvasItem, cr: cairo.Context, bounds: CanvasBounds, scale: number) => void
-    readonly get_requested_area: (item: CanvasItem, cr: cairo.Context, requested_area: CanvasBounds) => boolean
-    readonly allocate_area: (item: CanvasItem, cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number) => void
-    readonly get_transform: (item: CanvasItem) => [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
-    readonly set_transform: (item: CanvasItem, transform?: cairo.Matrix | null) => void
-    readonly get_style: (item: CanvasItem) => CanvasStyle
-    readonly set_style: (item: CanvasItem, style: CanvasStyle) => void
-    readonly is_visible: (item: CanvasItem) => boolean
-    readonly get_requested_height: (item: CanvasItem, cr: cairo.Context, width: number) => number
-    readonly get_model: (item: CanvasItem) => CanvasItemModel
-    readonly set_model: (item: CanvasItem, model: CanvasItemModel) => void
-    readonly enter_notify_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventCrossing) => boolean
-    readonly leave_notify_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventCrossing) => boolean
-    readonly motion_notify_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventMotion) => boolean
-    readonly button_press_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventButton) => boolean
-    readonly button_release_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventButton) => boolean
-    readonly focus_in_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventFocus) => boolean
-    readonly focus_out_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventFocus) => boolean
-    readonly key_press_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventKey) => boolean
-    readonly key_release_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventKey) => boolean
-    readonly grab_broken_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventGrabBroken) => boolean
-    readonly child_notify: (item: CanvasItem, pspec: GObject.ParamSpec) => void
-    readonly query_tooltip: (item: CanvasItem, x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip) => boolean
-    readonly get_is_static: (item: CanvasItem) => boolean
-    readonly set_is_static: (item: CanvasItem, is_static: boolean) => void
-    readonly animation_finished: (item: CanvasItem, stopped: boolean) => void
-    readonly scroll_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventScroll) => boolean
-    readonly get_requested_area_for_width: (item: CanvasItem, cr: cairo.Context, width: number, requested_area: CanvasBounds) => boolean
+    get_canvas: (item: CanvasItem) => Canvas
+    set_canvas: (item: CanvasItem, canvas: Canvas) => void
+    get_n_children: (item: CanvasItem) => number
+    get_child: (item: CanvasItem, child_num: number) => CanvasItem
+    request_update: (item: CanvasItem) => void
+    add_child: (item: CanvasItem, child: CanvasItem, position: number) => void
+    move_child: (item: CanvasItem, old_position: number, new_position: number) => void
+    remove_child: (item: CanvasItem, child_num: number) => void
+    get_child_property: (item: CanvasItem, child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec) => void
+    set_child_property: (item: CanvasItem, child: CanvasItem, property_id: number, value: any, pspec: GObject.ParamSpec) => void
+    get_transform_for_child: (item: CanvasItem, child: CanvasItem) => [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
+    get_parent: (item: CanvasItem) => CanvasItem
+    set_parent: (item: CanvasItem, parent: CanvasItem) => void
+    get_bounds: (item: CanvasItem) => /* bounds */ CanvasBounds
+    get_items_at: (item: CanvasItem, x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]) => CanvasItem[]
+    update: (item: CanvasItem, entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds) => void
+    paint: (item: CanvasItem, cr: cairo.Context, bounds: CanvasBounds, scale: number) => void
+    get_requested_area: (item: CanvasItem, cr: cairo.Context, requested_area: CanvasBounds) => boolean
+    allocate_area: (item: CanvasItem, cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number) => void
+    get_transform: (item: CanvasItem) => [ /* returnType */ boolean, /* transform */ cairo.Matrix ]
+    set_transform: (item: CanvasItem, transform?: cairo.Matrix | null) => void
+    get_style: (item: CanvasItem) => CanvasStyle
+    set_style: (item: CanvasItem, style: CanvasStyle) => void
+    is_visible: (item: CanvasItem) => boolean
+    get_requested_height: (item: CanvasItem, cr: cairo.Context, width: number) => number
+    get_model: (item: CanvasItem) => CanvasItemModel
+    set_model: (item: CanvasItem, model: CanvasItemModel) => void
+    enter_notify_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventCrossing) => boolean
+    leave_notify_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventCrossing) => boolean
+    motion_notify_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventMotion) => boolean
+    button_press_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventButton) => boolean
+    button_release_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventButton) => boolean
+    focus_in_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventFocus) => boolean
+    focus_out_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventFocus) => boolean
+    key_press_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventKey) => boolean
+    key_release_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventKey) => boolean
+    grab_broken_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventGrabBroken) => boolean
+    child_notify: (item: CanvasItem, pspec: GObject.ParamSpec) => void
+    query_tooltip: (item: CanvasItem, x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip) => boolean
+    get_is_static: (item: CanvasItem) => boolean
+    set_is_static: (item: CanvasItem, is_static: boolean) => void
+    animation_finished: (item: CanvasItem, stopped: boolean) => void
+    scroll_event: (item: CanvasItem, target: CanvasItem, event: Gdk.EventScroll) => boolean
+    get_requested_area_for_width: (item: CanvasItem, cr: cairo.Context, width: number, requested_area: CanvasBounds) => boolean
     static name: string
 }
 abstract class CanvasItemModelIface {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelIface */
-    readonly get_n_children: (model: CanvasItemModel) => number
-    readonly get_child: (model: CanvasItemModel, child_num: number) => CanvasItemModel
-    readonly add_child: (model: CanvasItemModel, child: CanvasItemModel, position: number) => void
-    readonly move_child: (model: CanvasItemModel, old_position: number, new_position: number) => void
-    readonly remove_child: (model: CanvasItemModel, child_num: number) => void
-    readonly get_child_property: (model: CanvasItemModel, child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec) => void
-    readonly set_child_property: (item: CanvasItemModel, child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec) => void
-    readonly get_parent: (model: CanvasItemModel) => CanvasItemModel
-    readonly set_parent: (model: CanvasItemModel, parent: CanvasItemModel) => void
-    readonly get_transform: (model: CanvasItemModel, transform: cairo.Matrix) => boolean
-    readonly set_transform: (model: CanvasItemModel, transform?: cairo.Matrix | null) => void
-    readonly get_style: (model: CanvasItemModel) => CanvasStyle
-    readonly set_style: (model: CanvasItemModel, style: CanvasStyle) => void
-    readonly child_added: (model: CanvasItemModel, child_num: number) => void
-    readonly child_moved: (model: CanvasItemModel, old_child_num: number, new_child_num: number) => void
-    readonly child_removed: (model: CanvasItemModel, child_num: number) => void
-    readonly changed: (model: CanvasItemModel, recompute_bounds: boolean) => void
-    readonly child_notify: (model: CanvasItemModel, pspec: GObject.ParamSpec) => void
-    readonly animation_finished: (model: CanvasItemModel, stopped: boolean) => void
+    get_n_children: (model: CanvasItemModel) => number
+    get_child: (model: CanvasItemModel, child_num: number) => CanvasItemModel
+    add_child: (model: CanvasItemModel, child: CanvasItemModel, position: number) => void
+    move_child: (model: CanvasItemModel, old_position: number, new_position: number) => void
+    remove_child: (model: CanvasItemModel, child_num: number) => void
+    get_child_property: (model: CanvasItemModel, child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec) => void
+    set_child_property: (item: CanvasItemModel, child: CanvasItemModel, property_id: number, value: any, pspec: GObject.ParamSpec) => void
+    get_parent: (model: CanvasItemModel) => CanvasItemModel
+    set_parent: (model: CanvasItemModel, parent: CanvasItemModel) => void
+    get_transform: (model: CanvasItemModel, transform: cairo.Matrix) => boolean
+    set_transform: (model: CanvasItemModel, transform?: cairo.Matrix | null) => void
+    get_style: (model: CanvasItemModel) => CanvasStyle
+    set_style: (model: CanvasItemModel, style: CanvasStyle) => void
+    child_added: (model: CanvasItemModel, child_num: number) => void
+    child_moved: (model: CanvasItemModel, old_child_num: number, new_child_num: number) => void
+    child_removed: (model: CanvasItemModel, child_num: number) => void
+    changed: (model: CanvasItemModel, recompute_bounds: boolean) => void
+    child_notify: (model: CanvasItemModel, pspec: GObject.ParamSpec) => void
+    animation_finished: (model: CanvasItemModel, stopped: boolean) => void
     static name: string
 }
 abstract class CanvasItemModelSimpleClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemModelSimpleClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CanvasItemSimpleClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasItemSimpleClass */
-    readonly simple_create_path: (simple: CanvasItemSimple, cr: cairo.Context) => void
-    readonly simple_update: (simple: CanvasItemSimple, cr: cairo.Context) => void
-    readonly simple_paint: (simple: CanvasItemSimple, cr: cairo.Context, bounds: CanvasBounds) => void
-    readonly simple_is_item_at: (simple: CanvasItemSimple, x: number, y: number, cr: cairo.Context, is_pointer_event: boolean) => boolean
+    simple_create_path: (simple: CanvasItemSimple, cr: cairo.Context) => void
+    simple_update: (simple: CanvasItemSimple, cr: cairo.Context) => void
+    simple_paint: (simple: CanvasItemSimple, cr: cairo.Context, bounds: CanvasBounds) => void
+    simple_is_item_at: (simple: CanvasItemSimple, x: number, y: number, cr: cairo.Context, is_pointer_event: boolean) => boolean
     static name: string
 }
 class CanvasItemSimpleData {
@@ -32083,52 +36333,52 @@ class CanvasItemSimpleData {
     /**
      * the style to draw with.
      */
-    readonly style: CanvasStyle
+    style: CanvasStyle
     /**
      * the transformation matrix of the item, or %NULL.
      */
-    readonly transform: cairo.Matrix
+    transform: cairo.Matrix
     /**
      * an array of #GooCanvasPathCommand specifying the clip
      *  path of the item, or %NULL.
      */
-    readonly clip_path_commands: object[]
+    clip_path_commands: object[]
     /**
      * the item's tooltip.
      */
-    readonly tooltip: string
+    tooltip: string
     /**
      * the threshold scale setting at which to show the item
      *  (if the `visibility` setting is set to %VISIBLE_ABOVE_THRESHOLD).
      */
-    readonly visibility_threshold: number
+    visibility_threshold: number
     /**
      * the #GooCanvasItemVisibility setting specifying whether the
      *  item is visible, invisible, or visible above a given canvas scale setting.
      */
-    readonly visibility: number
+    visibility: number
     /**
      * the #GooCanvasPointerEvents setting specifying the events
      *  the item should receive.
      */
-    readonly pointer_events: number
+    pointer_events: number
     /**
      * if the item can take the keyboard focus.
      */
-    readonly can_focus: number
+    can_focus: number
     /**
      * if the item has its own style, rather than using its parent's.
      */
-    readonly own_style: number
+    own_style: number
     /**
      * the #cairo_fill_rule_t setting specifying the fill rule
      *  used for the clip path.
      */
-    readonly clip_fill_rule: number
+    clip_fill_rule: number
     /**
      * if the item is static.
      */
-    readonly is_static: number
+    is_static: number
     static name: string
 }
 class CanvasLineDash {
@@ -32136,19 +36386,19 @@ class CanvasLineDash {
     /**
      * the reference count of the struct.
      */
-    readonly ref_count: number
+    ref_count: number
     /**
      * the number of dashes and gaps between them.
      */
-    readonly num_dashes: number
+    num_dashes: number
     /**
      * the sizes of each dash and gap.
      */
-    readonly dashes: number
+    dashes: number
     /**
      * the start offset into the dash pattern.
      */
-    readonly dash_offset: number
+    dash_offset: number
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasLineDash */
     /**
      * Increments the reference count of the dash pattern.
@@ -32156,6 +36406,7 @@ class CanvasLineDash {
     ref(): CanvasLineDash
     /**
      * Sets the start offset into the dash pattern.
+     * @param dash_offset the start offset into the dash pattern.
      */
     set_offset(dash_offset: number): void
     /**
@@ -32169,17 +36420,17 @@ class CanvasLineDash {
 }
 abstract class CanvasPathClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasPathClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 class CanvasPathData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasPathData */
-    readonly path_commands: object[]
+    path_commands: object[]
     static name: string
 }
 abstract class CanvasPathModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasPathModelClass */
-    readonly parent_class: CanvasItemModelSimpleClass
+    parent_class: CanvasItemModelSimpleClass
     static name: string
 }
 class CanvasPoints {
@@ -32187,18 +36438,19 @@ class CanvasPoints {
     /**
      * the coordinates of the points, in pairs.
      */
-    readonly coords: number
+    coords: number
     /**
      * the number of points.
      */
-    readonly num_points: number
+    num_points: number
     /**
      * the reference count of the struct.
      */
-    readonly ref_count: number
+    ref_count: number
     /* Methods of GooCanvas-2.0.GooCanvas.CanvasPoints */
     /**
      * Gets the coordinates of a point in the #GooCanvasPoints struct.
+     * @param idx index of point to get.
      */
     get_point(idx: number): [ /* x */ number, /* y */ number ]
     /**
@@ -32207,6 +36459,9 @@ class CanvasPoints {
     ref(): CanvasPoints
     /**
      * Sets the coordinates of a point in the #GooCanvasPoints struct.
+     * @param idx index of point to set.
+     * @param x x value to set point coordinate to.
+     * @param y y value to set point coordinate to.
      */
     set_point(idx: number, x: number, y: number): void
     /**
@@ -32222,59 +36477,59 @@ class CanvasPoints {
 }
 class CanvasPolylineArrowData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasPolylineArrowData */
-    readonly arrow_width: number
-    readonly arrow_length: number
-    readonly arrow_tip_length: number
-    readonly line_start: number[]
-    readonly line_end: number[]
-    readonly start_arrow_coords: number[]
-    readonly end_arrow_coords: number[]
+    arrow_width: number
+    arrow_length: number
+    arrow_tip_length: number
+    line_start: number[]
+    line_end: number[]
+    start_arrow_coords: number[]
+    end_arrow_coords: number[]
     static name: string
 }
 abstract class CanvasPolylineClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasPolylineClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 class CanvasPolylineData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasPolylineData */
-    readonly coords: number
-    readonly arrow_data: CanvasPolylineArrowData
-    readonly num_points: number
-    readonly close_path: number
-    readonly start_arrow: number
-    readonly end_arrow: number
-    readonly reconfigure_arrows: number
+    coords: number
+    arrow_data: CanvasPolylineArrowData
+    num_points: number
+    close_path: number
+    start_arrow: number
+    end_arrow: number
+    reconfigure_arrows: number
     static name: string
 }
 abstract class CanvasPolylineModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasPolylineModelClass */
-    readonly parent_class: CanvasItemModelSimpleClass
+    parent_class: CanvasItemModelSimpleClass
     static name: string
 }
 abstract class CanvasRectClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasRectClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 class CanvasRectData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasRectData */
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly height: number
-    readonly radius_x: number
-    readonly radius_y: number
+    x: number
+    y: number
+    width: number
+    height: number
+    radius_x: number
+    radius_y: number
     static name: string
 }
 abstract class CanvasRectModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasRectModelClass */
-    readonly parent_class: CanvasItemModelSimpleClass
+    parent_class: CanvasItemModelSimpleClass
     static name: string
 }
 abstract class CanvasStyleClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasStyleClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CanvasStyleProperty {
@@ -32282,34 +36537,34 @@ class CanvasStyleProperty {
     /**
      * the unique property identifier.
      */
-    readonly id: GLib.Quark
+    id: GLib.Quark
     /**
      * the value of the property.
      */
-    readonly value: any
+    value: any
     static name: string
 }
 abstract class CanvasTableClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasTableClass */
-    readonly parent_class: CanvasGroupClass
+    parent_class: CanvasGroupClass
     static name: string
 }
 class CanvasTableData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasTableData */
-    readonly width: number
-    readonly height: number
-    readonly dimensions: CanvasTableDimension[]
-    readonly border_width: number
-    readonly children: object[]
-    readonly layout_data: CanvasTableLayoutData
+    width: number
+    height: number
+    dimensions: CanvasTableDimension[]
+    border_width: number
+    children: object[]
+    layout_data: CanvasTableLayoutData
     static name: string
 }
 class CanvasTableDimension {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasTableDimension */
-    readonly size: number
-    readonly default_spacing: number
-    readonly spacings: number
-    readonly homogeneous: number
+    size: number
+    default_spacing: number
+    spacings: number
+    homogeneous: number
     static name: string
 }
 class CanvasTableLayoutData {
@@ -32317,35 +36572,35 @@ class CanvasTableLayoutData {
 }
 abstract class CanvasTableModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasTableModelClass */
-    readonly parent_class: CanvasGroupModelClass
+    parent_class: CanvasGroupModelClass
     static name: string
 }
 abstract class CanvasTextClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasTextClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 class CanvasTextData {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasTextData */
-    readonly text: string
-    readonly x: number
-    readonly y: number
-    readonly width: number
-    readonly use_markup: number
-    readonly anchor: number
-    readonly alignment: number
-    readonly ellipsize: number
-    readonly wrap: number
+    text: string
+    x: number
+    y: number
+    width: number
+    use_markup: number
+    anchor: number
+    alignment: number
+    ellipsize: number
+    wrap: number
     static name: string
 }
 abstract class CanvasTextModelClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasTextModelClass */
-    readonly parent_class: CanvasItemModelSimpleClass
+    parent_class: CanvasItemModelSimpleClass
     static name: string
 }
 abstract class CanvasWidgetClass {
     /* Fields of GooCanvas-2.0.GooCanvas.CanvasWidgetClass */
-    readonly parent_class: CanvasItemSimpleClass
+    parent_class: CanvasItemSimpleClass
     static name: string
 }
 class CanvasPathCommand {

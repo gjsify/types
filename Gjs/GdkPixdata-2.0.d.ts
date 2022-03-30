@@ -128,34 +128,34 @@ class Pixdata {
      * magic number. A valid `GdkPixdata` structure must have
      *   `GDK_PIXBUF_MAGIC_NUMBER` here
      */
-    readonly magic: number
+    magic: number
     /**
      * less than 1 to disable length checks, otherwise
      *   `GDK_PIXDATA_HEADER_LENGTH` plus the length of `pixel_data`
      */
-    readonly length: number
+    length: number
     /**
      * information about colorspace, sample width and
      *   encoding, in a `GdkPixdataType`
      */
-    readonly pixdata_type: number
+    pixdata_type: number
     /**
      * Distance in bytes between rows
      */
-    readonly rowstride: number
+    rowstride: number
     /**
      * Width of the image in pixels
      */
-    readonly width: number
+    width: number
     /**
      * Height of the image in pixels
      */
-    readonly height: number
+    height: number
     /**
      * `width` x `height`
      *   pixels, encoded according to `pixdata_type` and `rowstride`
      */
-    readonly pixel_data: Uint8Array
+    pixel_data: Uint8Array
     /* Methods of GdkPixdata-2.0.GdkPixdata.Pixdata */
     /**
      * Deserializes (reconstruct) a #GdkPixdata structure from a byte stream.
@@ -169,6 +169,7 @@ class Pixdata {
      * 
      * This function may fail with `GDK_PIXBUF_ERROR_CORRUPT_IMAGE`
      * or `GDK_PIXBUF_ERROR_UNKNOWN_TYPE`.
+     * @param stream stream of bytes containing a   serialized #GdkPixdata structure.
      */
     deserialize(stream: Uint8Array): boolean
     /**
@@ -184,6 +185,8 @@ class Pixdata {
      * 
      * GdkPixbuf ships with a program called `gdk-pixbuf-csource`, which offers
      * a command line interface to this function.
+     * @param name used for naming generated data structures or macros
+     * @param dump_type the kind of C source to be generated
      */
     to_csource(name: string, dump_type: PixdataDumpType): GLib.String
     static name: string

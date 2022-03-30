@@ -45,161 +45,163 @@ class InsertBin {
      */
     message_forward: boolean
     /* Fields of Gst-1.0.Gst.Bin */
-    readonly element: Gst.Element
+    element: Gst.Element
     /**
      * the number of children in this bin
      */
-    readonly numchildren: number
+    numchildren: number
     /**
      * the list of children in this bin
      */
-    readonly children: Gst.Element[]
+    children: Gst.Element[]
     /**
      * updated whenever `children` changes
      */
-    readonly children_cookie: number
+    children_cookie: number
     /**
      * internal bus for handling child messages
      */
-    readonly child_bus: Gst.Bus
+    child_bus: Gst.Bus
     /**
      * queued and cached messages
      */
-    readonly messages: Gst.Message[]
+    messages: Gst.Message[]
     /**
      * the bin is currently calculating its state
      */
-    readonly polling: boolean
+    polling: boolean
     /**
      * the bin needs to recalculate its state (deprecated)
      */
-    readonly state_dirty: boolean
+    state_dirty: boolean
     /**
      * the bin needs to select a new clock
      */
-    readonly clock_dirty: boolean
+    clock_dirty: boolean
     /**
      * the last clock selected
      */
-    readonly provided_clock: Gst.Clock
+    provided_clock: Gst.Clock
     /**
      * the element that provided `provided_clock`
      */
-    readonly clock_provider: Gst.Element
+    clock_provider: Gst.Element
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstInsertBin-1.0.GstInsertBin.InsertBin */
     /**
      * This action signal adds the filter like element after any other element
      * in the bin.
      * 
      * Same as the #GstInsertBin::append signal.
+     * @param element the #GstElement to add
+     * @param callback the callback to call when the element has been  added or not, or %NULL
      */
     append(element: Gst.Element, callback: InsertBinCallback): void
     /**
@@ -207,6 +209,9 @@ class InsertBin {
      * element in the bin.
      * 
      * Same as the #GstInsertBin::insert-after signal.
+     * @param element the #GstElement to add
+     * @param sibling the #GstElement to add `element` after
+     * @param callback the callback to call when the element has been  added or not, or %NULL
      */
     insert_after(element: Gst.Element, sibling: Gst.Element, callback: InsertBinCallback): void
     /**
@@ -214,6 +219,9 @@ class InsertBin {
      * element in the bin.
      * 
      * Same as the #GstInsertBin::insert-before signal.
+     * @param element the #GstElement to add
+     * @param sibling the #GstElement to add `element` before
+     * @param callback the callback to call when the element has been  added or not, or %NULL
      */
     insert_before(element: Gst.Element, sibling: Gst.Element, callback: InsertBinCallback): void
     /**
@@ -221,12 +229,16 @@ class InsertBin {
      * in the bin.
      * 
      * Same as the #GstInsertBin::prepend signal.
+     * @param element the #GstElement to add
+     * @param callback the callback to call when the element has been  added or not, or %NULL
      */
     prepend(element: Gst.Element, callback: InsertBinCallback): void
     /**
      * This action signal removed the filter like element from the bin.
      * 
      * Same as the #GstInsertBin::remove signal.
+     * @param element the #GstElement to remove
+     * @param callback the callback to call when the element has been  removed or not, or %NULL
      */
     remove(element: Gst.Element, callback: InsertBinCallback): void
     /* Methods of Gst-1.0.Gst.Bin */
@@ -242,6 +254,7 @@ class InsertBin {
      * > state (usually PLAYING or PAUSED, same you set the pipeline to originally)
      * > with gst_element_set_state(), or use gst_element_sync_state_with_parent().
      * > The bin or pipeline will not take care of this for you.
+     * @param element the #GstElement to add
      */
     add(element: Gst.Element): boolean
     /**
@@ -250,6 +263,7 @@ class InsertBin {
      * if one is found, or %NULL otherwise. If a pad is found, the caller
      * owns a reference to it and should use gst_object_unref() on the
      * pad when it is not needed any longer.
+     * @param direction whether to look for an unlinked source or sink pad
      */
     find_unlinked_pad(direction: Gst.PadDirection): Gst.Pad | null
     /**
@@ -258,16 +272,19 @@ class InsertBin {
      * You can cast this element to the given interface afterwards.  If you want
      * all elements that implement the interface, use
      * gst_bin_iterate_all_by_interface(). This function recurses into child bins.
+     * @param iface the #GType of an interface
      */
     get_by_interface(iface: GObject.Type): Gst.Element | null
     /**
      * Gets the element with the given name from a bin. This
      * function recurses into child bins.
+     * @param name the element name to search for
      */
     get_by_name(name: string): Gst.Element | null
     /**
      * Gets the element with the given name from this bin. If the
      * element is not found, a recursion is performed on the parent bin.
+     * @param name the element name to search for
      */
     get_by_name_recurse_up(name: string): Gst.Element | null
     get_suppressed_flags(): Gst.ElementFlags
@@ -275,6 +292,7 @@ class InsertBin {
      * Looks for all elements inside the bin with the given element factory name.
      * The function recurses inside child bins. The iterator will yield a series of
      * #GstElement.
+     * @param factory_name the name of the #GstElementFactory
      */
     iterate_all_by_element_factory_name(factory_name: string): Gst.Iterator | null
     /**
@@ -282,6 +300,7 @@ class InsertBin {
      * interface. You can safely cast all returned elements to the given interface.
      * The function recurses inside child bins. The iterator will yield a series
      * of #GstElement.
+     * @param iface the #GType of an interface
      */
     iterate_all_by_interface(iface: GObject.Type): Gst.Iterator | null
     /**
@@ -333,6 +352,7 @@ class InsertBin {
      * 
      * If the element's pads are linked to other pads, the pads will be unlinked
      * before the element is removed from the bin.
+     * @param element the #GstElement to remove
      */
     remove(element: Gst.Element): boolean
     /**
@@ -340,6 +360,7 @@ class InsertBin {
      * child element are propagated when it is added to the bin.
      * When suppressed flags are set, those specified flags will
      * not be propagated to the bin.
+     * @param flags the #GstElementFlags to suppress
      */
     set_suppressed_flags(flags: Gst.ElementFlags): void
     /**
@@ -368,6 +389,7 @@ class InsertBin {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -383,6 +405,7 @@ class InsertBin {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -390,6 +413,7 @@ class InsertBin {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -406,6 +430,7 @@ class InsertBin {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -421,6 +446,7 @@ class InsertBin {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -430,6 +456,7 @@ class InsertBin {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -439,6 +466,7 @@ class InsertBin {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -469,21 +497,26 @@ class InsertBin {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -509,10 +542,12 @@ class InsertBin {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -524,6 +559,7 @@ class InsertBin {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -557,11 +593,13 @@ class InsertBin {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -606,6 +644,7 @@ class InsertBin {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -617,6 +656,8 @@ class InsertBin {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -624,6 +665,9 @@ class InsertBin {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -631,6 +675,10 @@ class InsertBin {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -644,6 +692,10 @@ class InsertBin {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -672,6 +724,14 @@ class InsertBin {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -679,6 +739,15 @@ class InsertBin {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -697,6 +766,7 @@ class InsertBin {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -713,10 +783,14 @@ class InsertBin {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -728,6 +802,7 @@ class InsertBin {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -740,6 +815,7 @@ class InsertBin {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -751,6 +827,7 @@ class InsertBin {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -770,6 +847,7 @@ class InsertBin {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -779,6 +857,9 @@ class InsertBin {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -794,6 +875,7 @@ class InsertBin {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -802,6 +884,13 @@ class InsertBin {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -819,6 +908,9 @@ class InsertBin {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -830,12 +922,14 @@ class InsertBin {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -843,18 +937,21 @@ class InsertBin {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -866,6 +963,7 @@ class InsertBin {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -881,6 +979,7 @@ class InsertBin {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -897,6 +996,7 @@ class InsertBin {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -910,12 +1010,16 @@ class InsertBin {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -925,6 +1029,7 @@ class InsertBin {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -932,11 +1037,14 @@ class InsertBin {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -959,6 +1067,10 @@ class InsertBin {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -984,6 +1096,8 @@ class InsertBin {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -993,16 +1107,19 @@ class InsertBin {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -1018,17 +1135,21 @@ class InsertBin {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -1039,6 +1160,7 @@ class InsertBin {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -1046,11 +1168,13 @@ class InsertBin {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -1064,6 +1188,7 @@ class InsertBin {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -1117,6 +1242,10 @@ class InsertBin {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1127,6 +1256,12 @@ class InsertBin {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1150,6 +1285,7 @@ class InsertBin {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1169,11 +1305,14 @@ class InsertBin {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1181,6 +1320,8 @@ class InsertBin {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1198,6 +1339,7 @@ class InsertBin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1243,6 +1385,7 @@ class InsertBin {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1286,15 +1429,20 @@ class InsertBin {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1335,6 +1483,7 @@ class InsertBin {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1359,19 +1508,25 @@ class InsertBin {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gst-1.0.Gst.ChildProxy */
     /**
      * Emits the #GstChildProxy::child-added signal.
+     * @param child the newly added child
+     * @param name the name of the new child
      */
     child_added(child: GObject.Object, name: string): void
     /**
      * Emits the #GstChildProxy::child-removed signal.
+     * @param child the removed child
+     * @param name the name of the old child
      */
     child_removed(child: GObject.Object, name: string): void
     /**
      * Fetches a child by its number.
+     * @param index the child's position in the child list
      */
     get_child_by_index(index: number): GObject.Object | null
     /**
@@ -1380,6 +1535,7 @@ class InsertBin {
      * This virtual method has a default implementation that uses #GstObject
      * together with gst_object_get_name(). If the interface is to be used with
      * #GObjects, this methods needs to be overridden.
+     * @param name the child's name
      */
     get_child_by_name(name: string): GObject.Object | null
     /**
@@ -1389,27 +1545,36 @@ class InsertBin {
     /**
      * Gets a single property using the GstChildProxy mechanism.
      * You are responsible for freeing it by calling g_value_unset()
+     * @param name name of the property
      */
     get_property(name: string): /* value */ any
     /**
      * Looks up which object and #GParamSpec would be effected by the given `name`.
+     * @param name name of the property to look up
      */
     lookup(name: string): [ /* returnType */ boolean, /* target */ GObject.Object | null, /* pspec */ GObject.ParamSpec | null ]
     /**
      * Sets a single property using the GstChildProxy mechanism.
+     * @param name name of the property to set
+     * @param value new #GValue for the property
      */
     set_property(name: string, value: any): void
     /* Virtual methods of GstInsertBin-1.0.GstInsertBin.InsertBin */
     /**
      * Emits the #GstChildProxy::child-added signal.
+     * @param child the newly added child
+     * @param name the name of the new child
      */
     vfunc_child_added(child: GObject.Object, name: string): void
     /**
      * Emits the #GstChildProxy::child-removed signal.
+     * @param child the removed child
+     * @param name the name of the old child
      */
     vfunc_child_removed(child: GObject.Object, name: string): void
     /**
      * Fetches a child by its number.
+     * @param index the child's position in the child list
      */
     vfunc_get_child_by_index(index: number): GObject.Object | null
     /**
@@ -1418,6 +1583,7 @@ class InsertBin {
      * This virtual method has a default implementation that uses #GstObject
      * together with gst_object_get_name(). If the interface is to be used with
      * #GObjects, this methods needs to be overridden.
+     * @param name the child's name
      */
     vfunc_get_child_by_name(name: string): GObject.Object | null
     /**
@@ -1427,31 +1593,40 @@ class InsertBin {
     /* Virtual methods of Gst-1.0.Gst.Bin */
     /**
      * Method to add an element to the bin.
+     * @param element the element to be added
      */
     vfunc_add_element(element: Gst.Element): boolean
     /**
      * Method called when an element was added somewhere in the bin hierarchy.
+     * @param sub_bin the #GstBin to which the element was added
+     * @param child the element that was added
      */
     vfunc_deep_element_added(sub_bin: Gst.Bin, child: Gst.Element): void
     /**
      * Method called when an element was removed somewhere in the bin hierarchy.
+     * @param sub_bin the #GstBin from which the element was removed
+     * @param child the element that was removed
      */
     vfunc_deep_element_removed(sub_bin: Gst.Bin, child: Gst.Element): void
     vfunc_do_latency(): boolean
     /**
      * Method called when an element was added to the bin.
+     * @param child the element that was added
      */
     vfunc_element_added(child: Gst.Element): void
     /**
      * Method called when an element was removed from the bin.
+     * @param child the element that was removed
      */
     vfunc_element_removed(child: Gst.Element): void
     /**
      * Method to handle a message from the children.
+     * @param message the message to be handled
      */
     vfunc_handle_message(message: Gst.Message): void
     /**
      * Method to remove an element from the bin.
+     * @param element the element to be removed
      */
     vfunc_remove_element(element: Gst.Element): boolean
     /* Virtual methods of Gst-1.0.Gst.Element */
@@ -1460,6 +1635,7 @@ class InsertBin {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -1483,6 +1659,7 @@ class InsertBin {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -1503,6 +1680,7 @@ class InsertBin {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -1519,6 +1697,7 @@ class InsertBin {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -1528,6 +1707,9 @@ class InsertBin {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -1539,6 +1721,7 @@ class InsertBin {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -1546,18 +1729,21 @@ class InsertBin {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -1574,6 +1760,7 @@ class InsertBin {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -1596,6 +1783,7 @@ class InsertBin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1605,6 +1793,9 @@ class InsertBin {
      * in the bin.
      * 
      * Same as gst_insert_bin_append()
+     * @param callback the callback to call when the element has been added or not, or  %NULL
+     * @param user_data The data to pass to the callback
+     * @param user_data2 The user data of the signal (ignored)
      */
     connect(sigName: "append", callback: (($obj: InsertBin, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
     connect_after(sigName: "append", callback: (($obj: InsertBin, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
@@ -1615,6 +1806,10 @@ class InsertBin {
      * element in the bin.
      * 
      * Same as gst_insert_bin_insert_after()
+     * @param sibling the #GstElement to add `element` after
+     * @param callback the callback to call when the element has been added or not, or  %NULL
+     * @param user_data The data to pass to the callback
+     * @param user_data2 The user data of the signal (ignored)
      */
     connect(sigName: "insert-after", callback: (($obj: InsertBin, sibling: Gst.Element, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
     connect_after(sigName: "insert-after", callback: (($obj: InsertBin, sibling: Gst.Element, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
@@ -1624,6 +1819,10 @@ class InsertBin {
      * element in the bin.
      * 
      * Same as gst_insert_bin_insert_before()
+     * @param sibling the #GstElement to add `element` before
+     * @param callback the callback to call when the element has been added or not, or  %NULL
+     * @param user_data The data to pass to the callback
+     * @param user_data2 The user data of the signal (ignored)
      */
     connect(sigName: "insert-before", callback: (($obj: InsertBin, sibling: Gst.Element, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
     connect_after(sigName: "insert-before", callback: (($obj: InsertBin, sibling: Gst.Element, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
@@ -1633,6 +1832,9 @@ class InsertBin {
      * in the bin.
      * 
      * Same as gst_insert_bin_prepend()
+     * @param callback the callback to call when the element has been added or not, or  %NULL
+     * @param user_data The data to pass to the callback
+     * @param user_data2 The user data of the signal (ignored)
      */
     connect(sigName: "prepend", callback: (($obj: InsertBin, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
     connect_after(sigName: "prepend", callback: (($obj: InsertBin, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
@@ -1641,6 +1843,9 @@ class InsertBin {
      * This action signal removed the filter like element from the bin.
      * 
      * Same as gst_insert_bin_remove()
+     * @param callback the callback to call when the element has been removed or not, or %NULL
+     * @param user_data The data to pass to the callback
+     * @param user_data2 The user data of the signal (ignored)
      */
     connect(sigName: "remove", callback: (($obj: InsertBin, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
     connect_after(sigName: "remove", callback: (($obj: InsertBin, callback: Gst.Element, user_data?: object | null, user_data2?: object | null) => void)): number
@@ -1648,12 +1853,16 @@ class InsertBin {
     /* Signals of Gst-1.0.Gst.Bin */
     /**
      * Will be emitted after the element was added to `sub_bin`.
+     * @param sub_bin the #GstBin the element was added to
+     * @param element the #GstElement that was added to `sub_bin`
      */
     connect(sigName: "deep-element-added", callback: (($obj: InsertBin, sub_bin: Gst.Bin, element: Gst.Element) => void)): number
     connect_after(sigName: "deep-element-added", callback: (($obj: InsertBin, sub_bin: Gst.Bin, element: Gst.Element) => void)): number
     emit(sigName: "deep-element-added", sub_bin: Gst.Bin, element: Gst.Element): void
     /**
      * Will be emitted after the element was removed from `sub_bin`.
+     * @param sub_bin the #GstBin the element was removed from
+     * @param element the #GstElement that was removed from `sub_bin`
      */
     connect(sigName: "deep-element-removed", callback: (($obj: InsertBin, sub_bin: Gst.Bin, element: Gst.Element) => void)): number
     connect_after(sigName: "deep-element-removed", callback: (($obj: InsertBin, sub_bin: Gst.Bin, element: Gst.Element) => void)): number
@@ -1676,12 +1885,14 @@ class InsertBin {
     emit(sigName: "do-latency"): void
     /**
      * Will be emitted after the element was added to the bin.
+     * @param element the #GstElement that was added to the bin
      */
     connect(sigName: "element-added", callback: (($obj: InsertBin, element: Gst.Element) => void)): number
     connect_after(sigName: "element-added", callback: (($obj: InsertBin, element: Gst.Element) => void)): number
     emit(sigName: "element-added", element: Gst.Element): void
     /**
      * Will be emitted after the element was removed from the bin.
+     * @param element the #GstElement that was removed from the bin
      */
     connect(sigName: "element-removed", callback: (($obj: InsertBin, element: Gst.Element) => void)): number
     connect_after(sigName: "element-removed", callback: (($obj: InsertBin, element: Gst.Element) => void)): number
@@ -1701,12 +1912,14 @@ class InsertBin {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: InsertBin, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: InsertBin, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: InsertBin, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: InsertBin, old_pad: Gst.Pad) => void)): number
@@ -1716,6 +1929,8 @@ class InsertBin {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: InsertBin, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: InsertBin, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -1749,6 +1964,7 @@ class InsertBin {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InsertBin, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InsertBin, pspec: GObject.ParamSpec) => void)): number
@@ -1756,12 +1972,16 @@ class InsertBin {
     /* Signals of Gst-1.0.Gst.ChildProxy */
     /**
      * Will be emitted after the `object` was added to the `child_proxy`.
+     * @param object the #GObject that was added
+     * @param name the name of the new child
      */
     connect(sigName: "child-added", callback: (($obj: InsertBin, object: GObject.Object, name: string) => void)): number
     connect_after(sigName: "child-added", callback: (($obj: InsertBin, object: GObject.Object, name: string) => void)): number
     emit(sigName: "child-added", object: GObject.Object, name: string): void
     /**
      * Will be emitted after the `object` was removed from the `child_proxy`.
+     * @param object the #GObject that was removed
+     * @param name the name of the old child
      */
     connect(sigName: "child-removed", callback: (($obj: InsertBin, object: GObject.Object, name: string) => void)): number
     connect_after(sigName: "child-removed", callback: (($obj: InsertBin, object: GObject.Object, name: string) => void)): number
@@ -1785,7 +2005,7 @@ class InsertBin {
 }
 abstract class InsertBinClass {
     /* Fields of GstInsertBin-1.0.GstInsertBin.InsertBinClass */
-    readonly parent_class: Gst.BinClass
+    parent_class: Gst.BinClass
     static name: string
 }
 class InsertBinPrivate {

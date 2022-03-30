@@ -70,10 +70,20 @@ interface CallEvent_ConstructProps extends Event_ConstructProps {
     endReason?: number
 }
 class CallEvent {
+    /* Properties of TelepathyLogger-0.2.TelepathyLogger.CallEvent */
+    readonly detailedEndReason: string
+    readonly duration: number
+    readonly endActor: Entity
+    readonly endReason: number
     /* Properties of TelepathyLogger-0.2.TelepathyLogger.Event */
+    readonly account: TelepathyGLib.Account
     readonly accountPath: string
+    readonly channelPath: string
+    readonly receiver: Entity
+    readonly sender: Entity
+    readonly timestamp: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TelepathyLogger-0.2.TelepathyLogger.CallEvent */
     getDetailedEndReason(): string
     getDuration(): GLib.TimeSpan
@@ -82,6 +92,7 @@ class CallEvent {
     /* Methods of TelepathyLogger-0.2.TelepathyLogger.Event */
     /**
      * Checks if two instances of TplEvent represent the same data
+     * @param data an instance of the same TplEvent subclass of `self`
      */
     equal(data: Event): boolean
     /**
@@ -130,6 +141,10 @@ class CallEvent {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -140,6 +155,12 @@ class CallEvent {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -163,6 +184,7 @@ class CallEvent {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -182,11 +204,14 @@ class CallEvent {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -194,6 +219,8 @@ class CallEvent {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -211,6 +238,7 @@ class CallEvent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -256,6 +284,7 @@ class CallEvent {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -299,15 +328,20 @@ class CallEvent {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -348,6 +382,7 @@ class CallEvent {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -382,6 +417,7 @@ class CallEvent {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -413,17 +449,63 @@ class CallEvent {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::detailed-end-reason", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::detailed-end-reason", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::detailed-end-reason", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::detailed-end-reason", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::detailed-end-reason", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::duration", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::duration", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::duration", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::duration", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::duration", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::end-actor", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::end-actor", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::end-actor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::end-actor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::end-actor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::end-reason", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::end-reason", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::end-reason", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::end-reason", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::end-reason", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::account", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::account-path", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::account-path", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::receiver", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receiver", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::sender", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sender", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::timestamp", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::timestamp", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -456,8 +538,25 @@ interface Entity_ConstructProps extends GObject.Object_ConstructProps {
     type?: number
 }
 class Entity {
+    /* Properties of TelepathyLogger-0.2.TelepathyLogger.Entity */
+    /**
+     * The entity's alias
+     */
+    readonly alias: string
+    /**
+     * The entity's avatar token
+     */
+    readonly avatarToken: string
+    /**
+     * The entity's identifier
+     */
+    readonly identifier: string
+    /**
+     * The entity's type (see #TplEntityType).
+     */
+    readonly type: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TelepathyLogger-0.2.TelepathyLogger.Entity */
     getAlias(): string
     getAvatarToken(): string
@@ -498,6 +597,10 @@ class Entity {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -508,6 +611,12 @@ class Entity {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -531,6 +640,7 @@ class Entity {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -550,11 +660,14 @@ class Entity {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -562,6 +675,8 @@ class Entity {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -579,6 +694,7 @@ class Entity {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -624,6 +740,7 @@ class Entity {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -667,15 +784,20 @@ class Entity {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -716,6 +838,7 @@ class Entity {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -750,6 +873,7 @@ class Entity {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -781,12 +905,33 @@ class Entity {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::alias", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::alias", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::alias", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::alias", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::alias", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::avatar-token", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::avatar-token", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::avatar-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::avatar-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::avatar-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::identifier", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::identifier", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::identifier", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::identifier", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::identifier", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -813,12 +958,18 @@ interface Event_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Event {
     /* Properties of TelepathyLogger-0.2.TelepathyLogger.Event */
+    readonly account: TelepathyGLib.Account
     readonly accountPath: string
+    readonly channelPath: string
+    readonly receiver: Entity
+    readonly sender: Entity
+    readonly timestamp: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TelepathyLogger-0.2.TelepathyLogger.Event */
     /**
      * Checks if two instances of TplEvent represent the same data
+     * @param data an instance of the same TplEvent subclass of `self`
      */
     equal(data: Event): boolean
     /**
@@ -867,6 +1018,10 @@ class Event {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -877,6 +1032,12 @@ class Event {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -900,6 +1061,7 @@ class Event {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -919,11 +1081,14 @@ class Event {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -931,6 +1096,8 @@ class Event {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -948,6 +1115,7 @@ class Event {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -993,6 +1161,7 @@ class Event {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1036,15 +1205,20 @@ class Event {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1085,6 +1259,7 @@ class Event {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1119,6 +1294,7 @@ class Event {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1150,17 +1326,43 @@ class Event {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::account-path", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::account-path", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::receiver", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receiver", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::sender", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sender", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::timestamp", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::timestamp", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1177,17 +1379,21 @@ interface LogManager_ConstructProps extends GObject.Object_ConstructProps {
 }
 class LogManager {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TelepathyLogger-0.2.TelepathyLogger.LogManager */
     /**
      * Disables logging of events for given entity. By default logging is enabled
      * for all entities.
+     * @param account 
+     * @param entity 
      */
     disableForEntity(account: TelepathyGLib.Account, entity: Entity): void
     /**
      * Re-enables logging of events for entity previously disabled by
      * tpl_log_manager_disable_for_entity(). By default logging is enabled for all
      * entities.
+     * @param account 
+     * @param entity a TplEntity
      */
     enableForEntity(account: TelepathyGLib.Account, entity: Entity): void
     /**
@@ -1195,6 +1401,9 @@ class LogManager {
      * 
      * It applies for any registered TplLogStore with the TplLogStore:readable
      * property %TRUE.
+     * @param account TpAccount
+     * @param target a non-NULL #TplEntity
+     * @param typeMask event type filter see #TplEventTypeMask
      */
     exists(account: TelepathyGLib.Account, target: Entity, typeMask: number): boolean
     /**
@@ -1203,36 +1412,62 @@ class LogManager {
      * 
      * It applies for any registered TplLogStore with the TplLogStore:readable
      * property %TRUE.
+     * @param account a #TpAccount
+     * @param target a non-NULL #TplEntity
+     * @param typeMask event type filter see #TplEventTypeMask
+     * @param callback a callback to call when the request is satisfied
      */
     getDatesAsync(account: TelepathyGLib.Account, target: Entity, typeMask: number, callback?: Gio.AsyncReadyCallback | null): void
     getDatesFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* dates */ GLib.Date[] ]
     /**
      * Start a query looking for all entities for which you have logs in the `account`.
+     * @param account a #TpAccount
+     * @param callback a callback to call when the request is satisfied
      */
     getEntitiesAsync(account: TelepathyGLib.Account, callback?: Gio.AsyncReadyCallback | null): void
     getEntitiesFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* entities */ Entity[] ]
     /**
      * Retrieve a list of #TplEvent at `date` with `target`.
+     * @param account a #TpAccount
+     * @param target a non-NULL #TplEntity
+     * @param typeMask event type filter see #TplEventTypeMask
+     * @param date a #GDate
+     * @param callback a callback to call when the request is satisfied
      */
     getEventsForDateAsync(account: TelepathyGLib.Account, target: Entity, typeMask: number, date: GLib.Date, callback?: Gio.AsyncReadyCallback | null): void
     getEventsForDateFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* events */ Event[] ]
     /**
      * Retrieve the most recent `num_event` events exchanged with `target`.
+     * @param account a #TpAccount
+     * @param target a non-NULL #TplEntity
+     * @param typeMask event type filter see #TplEventTypeMask
+     * @param numEvents number of maximum events to fetch
+     * @param filter an optional filter function
+     * @param callback a callback to call when the request is satisfied
      */
     getFilteredEventsAsync(account: TelepathyGLib.Account, target: Entity, typeMask: number, numEvents: number, filter?: LogEventFilter | null, callback?: Gio.AsyncReadyCallback | null): void
     getFilteredEventsFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* events */ Event[] ]
     /**
      * Checks, whether logging is disabled for given entity. By default, logging
      * is enabled for all entities.
+     * @param account 
+     * @param entity a TplEntity
      */
     isDisabledForEntity(account: TelepathyGLib.Account, entity: Entity): boolean
     /**
      * Search for all the conversations containing `text`.
+     * @param text the pattern to search
+     * @param typeMask event type filter see #TplEventTypeMask
+     * @param callback a callback to call when the request is satisfied
      */
     searchAsync(text: string, typeMask: number, callback?: Gio.AsyncReadyCallback | null): void
     searchFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* hits */ LogSearchHit[] ]
     /**
      * Create a #TplLogWalker to traverse all the events exchanged with `target`.
+     * @param account a #TpAccount
+     * @param target a non-NULL #TplEntity
+     * @param typeMask event type filter see #TplEventTypeMask
+     * @param filter an optional filter function
      */
     walkFilteredEvents(account: TelepathyGLib.Account, target: Entity, typeMask: number, filter?: LogEventFilter | null): LogWalker
     /* Methods of GObject-2.0.GObject.Object */
@@ -1270,6 +1505,10 @@ class LogManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1280,6 +1519,12 @@ class LogManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1303,6 +1548,7 @@ class LogManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1322,11 +1568,14 @@ class LogManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1334,6 +1583,8 @@ class LogManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1351,6 +1602,7 @@ class LogManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1396,6 +1648,7 @@ class LogManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1439,15 +1692,20 @@ class LogManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1488,6 +1746,7 @@ class LogManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1522,6 +1781,7 @@ class LogManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1553,6 +1813,7 @@ class LogManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1580,11 +1841,16 @@ interface LogWalker_ConstructProps extends GObject.Object_ConstructProps {
     filterData?: object
 }
 class LogWalker {
+    /* Properties of TelepathyLogger-0.2.TelepathyLogger.LogWalker */
+    readonly filter: object
+    readonly filterData: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TelepathyLogger-0.2.TelepathyLogger.LogWalker */
     /**
      * Walk the logs to retrieve the next most recent `num_event` events.
+     * @param numEvents number of maximum events to fetch
+     * @param callback a callback to call when the request is satisfied
      */
     getEventsAsync(numEvents: number, callback?: Gio.AsyncReadyCallback | null): void
     getEventsFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* events */ Event[] ]
@@ -1602,6 +1868,8 @@ class LogWalker {
     /**
      * Move the `walker` back by the last `num_event` events that were
      * returned by tpl_log_walker_get_events_async().
+     * @param numEvents number of events to move back
+     * @param callback a callback to call when the request is satisfied
      */
     rewindAsync(numEvents: number, callback?: Gio.AsyncReadyCallback | null): void
     rewindFinish(result: Gio.AsyncResult): boolean
@@ -1640,6 +1908,10 @@ class LogWalker {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1650,6 +1922,12 @@ class LogWalker {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1673,6 +1951,7 @@ class LogWalker {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1692,11 +1971,14 @@ class LogWalker {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1704,6 +1986,8 @@ class LogWalker {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1721,6 +2005,7 @@ class LogWalker {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1766,6 +2051,7 @@ class LogWalker {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1809,15 +2095,20 @@ class LogWalker {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1858,6 +2149,7 @@ class LogWalker {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1892,6 +2184,7 @@ class LogWalker {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1923,12 +2216,23 @@ class LogWalker {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::filter", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filter", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::filter-data", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filter-data", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::filter-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::filter-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::filter-data", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1950,10 +2254,21 @@ interface TextEvent_ConstructProps extends Event_ConstructProps {
     supersedesToken?: string
 }
 class TextEvent {
+    /* Properties of TelepathyLogger-0.2.TelepathyLogger.TextEvent */
+    readonly editTimestamp: number
+    readonly message: string
+    readonly messageToken: string
+    readonly messageType: number
+    readonly supersedesToken: string
     /* Properties of TelepathyLogger-0.2.TelepathyLogger.Event */
+    readonly account: TelepathyGLib.Account
     readonly accountPath: string
+    readonly channelPath: string
+    readonly receiver: Entity
+    readonly sender: Entity
+    readonly timestamp: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TelepathyLogger-0.2.TelepathyLogger.TextEvent */
     getEditTimestamp(): number
     getMessage(): string
@@ -1964,6 +2279,7 @@ class TextEvent {
     /* Methods of TelepathyLogger-0.2.TelepathyLogger.Event */
     /**
      * Checks if two instances of TplEvent represent the same data
+     * @param data an instance of the same TplEvent subclass of `self`
      */
     equal(data: Event): boolean
     /**
@@ -2012,6 +2328,10 @@ class TextEvent {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2022,6 +2342,12 @@ class TextEvent {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2045,6 +2371,7 @@ class TextEvent {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2064,11 +2391,14 @@ class TextEvent {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2076,6 +2406,8 @@ class TextEvent {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2093,6 +2425,7 @@ class TextEvent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2138,6 +2471,7 @@ class TextEvent {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2181,15 +2515,20 @@ class TextEvent {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2230,6 +2569,7 @@ class TextEvent {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2264,6 +2604,7 @@ class TextEvent {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2295,17 +2636,68 @@ class TextEvent {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::edit-timestamp", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::edit-timestamp", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::edit-timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::edit-timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::edit-timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::message", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::message", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::message", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::message", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::message", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::message-token", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::message-token", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::message-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::message-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::message-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::message-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::message-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::message-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::message-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::message-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::supersedes-token", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::supersedes-token", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::supersedes-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::supersedes-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::supersedes-token", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::account", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::account", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::account-path", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::account-path", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::account-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::channel-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::receiver", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receiver", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::receiver", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::sender", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sender", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::sender", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::timestamp", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::timestamp", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::timestamp", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2335,7 +2727,7 @@ class EventPriv {
 }
 abstract class LogManagerClass {
     /* Fields of TelepathyLogger-0.2.TelepathyLogger.LogManagerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class LogSearchHit {
@@ -2343,15 +2735,15 @@ class LogSearchHit {
     /**
      * the #TpAccount
      */
-    readonly account: TelepathyGLib.Account
+    account: TelepathyGLib.Account
     /**
      * the #TplEntity
      */
-    readonly target: Entity
+    target: Entity
     /**
      * the #GDate
      */
-    readonly date: GLib.Date
+    date: GLib.Date
     static name: string
 }
 abstract class LogWalkerClass {

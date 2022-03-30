@@ -252,6 +252,7 @@ class ContainerDb {
     /* Methods of DMAP-3.0.DMAP.ContainerDb */
     /**
      * Add a record to the database.
+     * @param record A record.
      */
     add(record: ContainerRecord): void
     count(): number
@@ -264,6 +265,8 @@ class ContainerRecord {
     /**
      * Add a record to the database. It is assumed that the record is placed
      * directly into the database (not copied) and not freed.
+     * @param record A DMAPRecord.
+     * @param id The record's ID.
      */
     addEntry(record: Record, id: number): void
     getEntryCount(): number
@@ -274,14 +277,18 @@ class Db {
     /* Methods of DMAP-3.0.DMAP.Db */
     /**
      * Add a record to the database.
+     * @param record A database record.
      */
     add(record: Record): number
     /**
      * Create a record and add it to the database.
+     * @param path A path to an appropriate media file.
      */
     addPath(path: string): number
     /**
      * Add a record to the database and assign it the given ID.
+     * @param record A database record.
+     * @param id A database record ID.
      */
     addWithId(record: Record, id: number): number
     count(): number
@@ -315,12 +322,18 @@ class Connection {
     /* Properties of DMAP-3.0.DMAP.Connection */
     baseUri: object
     databaseId: number
+    readonly db: object
     dmapVersion: number
+    readonly factory: object
+    readonly host: string
+    readonly name: string
     password: string
+    readonly port: number
     revisionNumber: number
     sessionId: number
+    readonly username: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of DMAP-3.0.DMAP.Connection */
     /**
      * Attach an authentication credential to a request. This
@@ -328,6 +341,10 @@ class Connection {
      * #DMAPConnection::authenticate signal. The signal will provide the
      * connection, session, message and auth to that function. That function
      * should obtain a password and provide it to this method.
+     * @param session A #SoupSession
+     * @param message A #SoupMessage
+     * @param auth A #SoupAuth
+     * @param password A password
      */
     authenticateMessage(session: Soup.Session, message: Soup.Message, auth: Soup.Auth, password: string): void
     getHeaders(uri: string): Soup.MessageHeaders
@@ -368,6 +385,10 @@ class Connection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -378,6 +399,12 @@ class Connection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -401,6 +428,7 @@ class Connection {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -420,11 +448,14 @@ class Connection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -432,6 +463,8 @@ class Connection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -449,6 +482,7 @@ class Connection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -494,6 +528,7 @@ class Connection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -537,15 +572,20 @@ class Connection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -586,6 +626,7 @@ class Connection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -620,6 +661,7 @@ class Connection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of DMAP-3.0.DMAP.Connection */
@@ -677,6 +719,7 @@ class Connection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -693,16 +736,41 @@ class Connection {
     on(sigName: "notify::database-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::database-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::database-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::db", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::db", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::db", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::db", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::db", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::dmap-version", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::dmap-version", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::dmap-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::dmap-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::dmap-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::factory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::factory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::factory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::factory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::host", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::host", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::host", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::host", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::host", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::password", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::password", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::password", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::password", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::password", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::port", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::port", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::port", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::port", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::port", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::revision-number", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::revision-number", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::revision-number", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -713,6 +781,11 @@ class Connection {
     on(sigName: "notify::session-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::session-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::session-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::username", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::username", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::username", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::username", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::username", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -729,9 +802,9 @@ interface GstInputStream_ConstructProps extends Gio.InputStream_ConstructProps {
 }
 class GstInputStream {
     /* Fields of Gio-2.0.Gio.InputStream */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gio-2.0.Gio.InputStream */
     /**
      * Clears the pending flag on `stream`.
@@ -761,6 +834,7 @@ class GstInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
      * Cancelling a close will still leave the stream closed, but some streams
      * can use a faster close that doesn't block to e.g. check errors.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     close(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -774,10 +848,14 @@ class GstInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param ioPriority the [I/O priority][io-priority] of the request
+     * @param cancellable optional cancellable object
+     * @param callback callback to call when the request is satisfied
      */
     closeAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
+     * @param result a #GAsyncResult.
      */
     closeFinish(result: Gio.AsyncResult): boolean
     /**
@@ -810,6 +888,7 @@ class GstInputStream {
      * partial result will be returned, without an error.
      * 
      * On error -1 is returned and `error` is set accordingly.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     read(cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buffer */ Uint8Array ]
     /**
@@ -832,6 +911,7 @@ class GstInputStream {
      * read before the error was encountered.  This functionality is only
      * available from C.  If you need it from another language then you must
      * write your own loop around g_input_stream_read().
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     readAll(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* buffer */ Uint8Array, /* bytesRead */ number ]
     /**
@@ -845,6 +925,9 @@ class GstInputStream {
      * Any outstanding I/O request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param ioPriority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback callback to call when the request is satisfied
      */
     readAllAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
     /**
@@ -857,6 +940,7 @@ class GstInputStream {
      * read before the error was encountered.  This functionality is only
      * available from C.  If you need it from another language then you must
      * write your own loop around g_input_stream_read_async().
+     * @param result a #GAsyncResult
      */
     readAllFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytesRead */ number ]
     /**
@@ -883,6 +967,9 @@ class GstInputStream {
      * The asynchronous methods have a default fallback that uses threads to implement
      * asynchronicity, so they are optional for inheriting classes. However, if you
      * override one you must override all.
+     * @param ioPriority the [I/O priority][io-priority] of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     readAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
     /**
@@ -909,6 +996,8 @@ class GstInputStream {
      * partial result will be returned, without an error.
      * 
      * On error %NULL is returned and `error` is set accordingly.
+     * @param count maximum number of bytes that will be read from the stream. Common values include 4096 and 8192.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     readBytes(count: number, cancellable?: Gio.Cancellable | null): any
     /**
@@ -932,14 +1021,20 @@ class GstInputStream {
      * Any outstanding I/O request with higher priority (lower numerical
      * value) will be executed before an outstanding request with lower
      * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param count the number of bytes that will be read from the stream
+     * @param ioPriority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     readBytesAsync(count: number, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous stream read-into-#GBytes operation.
+     * @param result a #GAsyncResult.
      */
     readBytesFinish(result: Gio.AsyncResult): any
     /**
      * Finishes an asynchronous stream read operation.
+     * @param result a #GAsyncResult.
      */
     readFinish(result: Gio.AsyncResult): number
     /**
@@ -963,6 +1058,8 @@ class GstInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     skip(count: number, cancellable?: Gio.Cancellable | null): number
     /**
@@ -989,10 +1086,15 @@ class GstInputStream {
      * The asynchronous methods have a default fallback that uses threads to
      * implement asynchronicity, so they are optional for inheriting classes.
      * However, if you override one, you must override all.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param ioPriority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback callback to call when the request is satisfied
      */
     skipAsync(count: number, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a stream skip operation.
+     * @param result a #GAsyncResult.
      */
     skipFinish(result: Gio.AsyncResult): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -1030,6 +1132,10 @@ class GstInputStream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1040,6 +1146,12 @@ class GstInputStream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1063,6 +1175,7 @@ class GstInputStream {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1082,11 +1195,14 @@ class GstInputStream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1094,6 +1210,8 @@ class GstInputStream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1111,6 +1229,7 @@ class GstInputStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1156,6 +1275,7 @@ class GstInputStream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1199,15 +1319,20 @@ class GstInputStream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1248,6 +1373,7 @@ class GstInputStream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1282,6 +1408,7 @@ class GstInputStream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Seekable */
@@ -1309,6 +1436,9 @@ class GstInputStream {
      * If `cancellable` is not %NULL, then the operation can be cancelled by
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param offset a #goffset.
+     * @param type a #GSeekType.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1325,6 +1455,8 @@ class GstInputStream {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
      * operation was partially finished when the operation was cancelled the
      * partial result will be returned, without an error.
+     * @param offset new length for `seekable,` in bytes.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -1356,6 +1488,7 @@ class GstInputStream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1380,7 +1513,7 @@ interface MdnsBrowser_ConstructProps extends GObject.Object_ConstructProps {
 }
 class MdnsBrowser {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of DMAP-3.0.DMAP.MdnsBrowser */
     getServiceType(): MdnsBrowserServiceType
     /**
@@ -1426,6 +1559,10 @@ class MdnsBrowser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1436,6 +1573,12 @@ class MdnsBrowser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1459,6 +1602,7 @@ class MdnsBrowser {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1478,11 +1622,14 @@ class MdnsBrowser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1490,6 +1637,8 @@ class MdnsBrowser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1507,6 +1656,7 @@ class MdnsBrowser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1552,6 +1702,7 @@ class MdnsBrowser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1595,15 +1746,20 @@ class MdnsBrowser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1644,6 +1800,7 @@ class MdnsBrowser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1678,11 +1835,13 @@ class MdnsBrowser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of DMAP-3.0.DMAP.MdnsBrowser */
     /**
      * Emitted each time a service becomes available to `browser`
+     * @param service #DMAPMdnsBrowserService
      */
     connect(sigName: "service-added", callback: ((service: object) => void)): number
     on(sigName: "service-added", callback: (service: object) => void, after?: boolean): NodeJS.EventEmitter
@@ -1723,6 +1882,7 @@ class MdnsBrowser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1747,7 +1907,7 @@ interface MdnsPublisher_ConstructProps extends GObject.Object_ConstructProps {
 }
 class MdnsPublisher {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of DMAP-3.0.DMAP.MdnsPublisher */
     publish(name: string, port: number, typeOfService: string, passwordRequired: boolean, txtRecords: string): boolean
     renameAtPort(port: number, name: string): boolean
@@ -1787,6 +1947,10 @@ class MdnsPublisher {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1797,6 +1961,12 @@ class MdnsPublisher {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1820,6 +1990,7 @@ class MdnsPublisher {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1839,11 +2010,14 @@ class MdnsPublisher {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1851,6 +2025,8 @@ class MdnsPublisher {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1868,6 +2044,7 @@ class MdnsPublisher {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1913,6 +2090,7 @@ class MdnsPublisher {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1956,15 +2134,20 @@ class MdnsPublisher {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2005,6 +2188,7 @@ class MdnsPublisher {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2039,6 +2223,7 @@ class MdnsPublisher {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of DMAP-3.0.DMAP.MdnsPublisher */
@@ -2081,6 +2266,7 @@ class MdnsPublisher {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2115,14 +2301,17 @@ interface Share_ConstructProps extends GObject.Object_ConstructProps {
 class Share {
     /* Properties of DMAP-3.0.DMAP.Share */
     authMethod: number
+    readonly containerDb: object
+    readonly db: object
     name: string
     password: string
     revisionNumber: number
     readonly serverIpv4: Soup.Server
     readonly serverIpv6: Soup.Server
+    readonly transcodeMimetype: string
     txtRecords: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2158,6 +2347,10 @@ class Share {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2168,6 +2361,12 @@ class Share {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2191,6 +2390,7 @@ class Share {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2210,11 +2410,14 @@ class Share {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2222,6 +2425,8 @@ class Share {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2239,6 +2444,7 @@ class Share {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2284,6 +2490,7 @@ class Share {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2327,15 +2534,20 @@ class Share {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2376,6 +2588,7 @@ class Share {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2410,6 +2623,7 @@ class Share {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2441,6 +2655,7 @@ class Share {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2452,6 +2667,16 @@ class Share {
     on(sigName: "notify::auth-method", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::auth-method", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::auth-method", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::container-db", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::container-db", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::container-db", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::container-db", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::container-db", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::db", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::db", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::db", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::db", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::db", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2477,6 +2702,11 @@ class Share {
     on(sigName: "notify::server-ipv6", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::server-ipv6", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::server-ipv6", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::transcode-mimetype", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::transcode-mimetype", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::transcode-mimetype", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::transcode-mimetype", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::transcode-mimetype", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::txt-records", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::txt-records", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::txt-records", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2496,14 +2726,14 @@ class Share {
 }
 abstract class ConnectionClass {
     /* Fields of DMAP-3.0.DMAP.ConnectionClass */
-    readonly parent: GObject.ObjectClass
-    readonly getProtocolVersionCc: (connection: Connection) => ContentCode
-    readonly getQueryMetadata: (connection: Connection) => string
-    readonly connected: (connection: Connection) => void
-    readonly disconnected: (connection: Connection) => void
-    readonly authenticate: (connection: Connection, name: string) => string
-    readonly connecting: (connection: Connection, state: ConnectionState, progress: number) => void
-    readonly operationDone: (connection: Connection) => void
+    parent: GObject.ObjectClass
+    getProtocolVersionCc: (connection: Connection) => ContentCode
+    getQueryMetadata: (connection: Connection) => string
+    connected: (connection: Connection) => void
+    disconnected: (connection: Connection) => void
+    authenticate: (connection: Connection, name: string) => string
+    connecting: (connection: Connection, state: ConnectionState, progress: number) => void
+    operationDone: (connection: Connection) => void
     static name: string
 }
 class ConnectionPrivate {
@@ -2511,49 +2741,49 @@ class ConnectionPrivate {
 }
 abstract class ContainerDbIface {
     /* Fields of DMAP-3.0.DMAP.ContainerDbIface */
-    readonly parent: GObject.TypeInterface
-    readonly add: (db: ContainerDb, record: ContainerRecord) => void
-    readonly count: (db: ContainerDb) => number
+    parent: GObject.TypeInterface
+    add: (db: ContainerDb, record: ContainerRecord) => void
+    count: (db: ContainerDb) => number
     static name: string
 }
 abstract class ContainerRecordIface {
     /* Fields of DMAP-3.0.DMAP.ContainerRecordIface */
-    readonly parent: GObject.TypeInterface
-    readonly getId: (record: ContainerRecord) => number
-    readonly addEntry: (containerRecord: ContainerRecord, record: Record, id: number) => void
-    readonly getEntryCount: (record: ContainerRecord) => number
+    parent: GObject.TypeInterface
+    getId: (record: ContainerRecord) => number
+    addEntry: (containerRecord: ContainerRecord, record: Record, id: number) => void
+    getEntryCount: (record: ContainerRecord) => number
     static name: string
 }
 class ContentCodeDefinition {
     /* Fields of DMAP-3.0.DMAP.ContentCodeDefinition */
-    readonly code: ContentCode
-    readonly intCode: number
-    readonly name: string
-    readonly string: string
-    readonly type: Type
+    code: ContentCode
+    intCode: number
+    name: string
+    string: string
+    type: Type
     static name: string
 }
 class DbFilterDefinition {
     /* Fields of DMAP-3.0.DMAP.DbFilterDefinition */
-    readonly key: string
-    readonly value: string
-    readonly negate: boolean
+    key: string
+    value: string
+    negate: boolean
     static name: string
 }
 abstract class DbIface {
     /* Fields of DMAP-3.0.DMAP.DbIface */
-    readonly parent: GObject.TypeInterface
-    readonly add: (db: Db, record: Record) => number
-    readonly addWithId: (db: Db, record: Record, id: number) => number
-    readonly addPath: (db: Db, path: string) => number
-    readonly lookupIdByLocation: (db: Db, location: string) => number
-    readonly count: (db: Db) => number
+    parent: GObject.TypeInterface
+    add: (db: Db, record: Record) => number
+    addWithId: (db: Db, record: Record, id: number) => number
+    addPath: (db: Db, path: string) => number
+    lookupIdByLocation: (db: Db, location: string) => number
+    count: (db: Db) => number
     static name: string
 }
 abstract class GstInputStreamClass {
     /* Fields of DMAP-3.0.DMAP.GstInputStreamClass */
-    readonly parent: Gio.InputStreamClass
-    readonly killPipeline: (arg0: GstInputStream) => void
+    parent: Gio.InputStreamClass
+    killPipeline: (arg0: GstInputStream) => void
     static name: string
 }
 class GstInputStreamPrivate {
@@ -2561,17 +2791,17 @@ class GstInputStreamPrivate {
 }
 class HashContext {
     /* Fields of DMAP-3.0.DMAP.HashContext */
-    readonly buf: number[]
-    readonly bits: number[]
-    readonly in_: number[]
-    readonly version: number
+    buf: number[]
+    bits: number[]
+    in_: number[]
+    version: number
     static name: string
 }
 abstract class MdnsBrowserClass {
     /* Fields of DMAP-3.0.DMAP.MdnsBrowserClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly serviceAdded: (browser: MdnsBrowser, service: MdnsBrowserService) => void
-    readonly serviceRemoved: (browser: MdnsBrowser, service: MdnsBrowserService) => void
+    parentClass: GObject.ObjectClass
+    serviceAdded: (browser: MdnsBrowser, service: MdnsBrowserService) => void
+    serviceRemoved: (browser: MdnsBrowser, service: MdnsBrowserService) => void
     static name: string
 }
 class MdnsBrowserPrivate {
@@ -2579,20 +2809,20 @@ class MdnsBrowserPrivate {
 }
 class MdnsBrowserService {
     /* Fields of DMAP-3.0.DMAP.MdnsBrowserService */
-    readonly serviceName: string
-    readonly name: string
-    readonly host: string
-    readonly port: number
-    readonly passwordProtected: boolean
-    readonly pair: string
-    readonly transportProtocol: MdnsBrowserTransportProtocol
+    serviceName: string
+    name: string
+    host: string
+    port: number
+    passwordProtected: boolean
+    pair: string
+    transportProtocol: MdnsBrowserTransportProtocol
     static name: string
 }
 abstract class MdnsPublisherClass {
     /* Fields of DMAP-3.0.DMAP.MdnsPublisherClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly published: (publisher: MdnsPublisher, name: string) => void
-    readonly nameCollision: (publisher: MdnsPublisher, name: string) => void
+    parentClass: GObject.ObjectClass
+    published: (publisher: MdnsPublisher, name: string) => void
+    nameCollision: (publisher: MdnsPublisher, name: string) => void
     static name: string
 }
 class MdnsPublisherPrivate {
@@ -2600,46 +2830,46 @@ class MdnsPublisherPrivate {
 }
 class MetaDataMap {
     /* Fields of DMAP-3.0.DMAP.MetaDataMap */
-    readonly tag: string
-    readonly md: number
+    tag: string
+    md: number
     static name: string
 }
 class Playlist {
     /* Fields of DMAP-3.0.DMAP.Playlist */
-    readonly name: string
-    readonly id: number
-    readonly uris: object[]
+    name: string
+    id: number
+    uris: object[]
     static name: string
 }
 abstract class RecordFactoryIface {
     /* Fields of DMAP-3.0.DMAP.RecordFactoryIface */
-    readonly parent: GObject.TypeInterface
+    parent: GObject.TypeInterface
     static name: string
 }
 abstract class RecordIface {
     /* Fields of DMAP-3.0.DMAP.RecordIface */
-    readonly parent: GObject.TypeInterface
-    readonly setFromBlob: (record: Record, blob: Uint8Array) => boolean
+    parent: GObject.TypeInterface
+    setFromBlob: (record: Record, blob: Uint8Array) => boolean
     static name: string
 }
 abstract class ShareClass {
     /* Fields of DMAP-3.0.DMAP.ShareClass */
-    readonly parent: GObject.ObjectClass
-    readonly getDesiredPort: (share: Share) => number
-    readonly getTypeOfService: (share: Share) => string
-    readonly messageAddStandardHeaders: (share: Share, msg: Soup.Message) => void
-    readonly addEntryToMlcl: (id: object, record: Record, mb: object) => void
-    readonly databasesBrowseXxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
-    readonly databasesItemsXxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
-    readonly serverInfo: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    readonly contentCodes: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    readonly login: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    readonly logout: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    readonly update: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    readonly ctrlInt: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    readonly published: (share: Share, publisher: MdnsPublisher, name: string) => void
-    readonly nameCollision: (share: Share, publisher: MdnsPublisher, name: string) => void
-    readonly databases: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
+    parent: GObject.ObjectClass
+    getDesiredPort: (share: Share) => number
+    getTypeOfService: (share: Share) => string
+    messageAddStandardHeaders: (share: Share, msg: Soup.Message) => void
+    addEntryToMlcl: (id: object, record: Record, mb: object) => void
+    databasesBrowseXxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
+    databasesItemsXxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
+    serverInfo: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    contentCodes: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    login: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    logout: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    update: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    ctrlInt: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    published: (share: Share, publisher: MdnsPublisher, name: string) => void
+    nameCollision: (share: Share, publisher: MdnsPublisher, name: string) => void
+    databases: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
     static name: string
 }
 class SharePrivate {
@@ -2647,9 +2877,9 @@ class SharePrivate {
 }
 class StructureItem {
     /* Fields of DMAP-3.0.DMAP.StructureItem */
-    readonly contentCode: ContentCode
-    readonly content: any
-    readonly size: number
+    contentCode: ContentCode
+    content: any
+    size: number
     static name: string
 }
 }

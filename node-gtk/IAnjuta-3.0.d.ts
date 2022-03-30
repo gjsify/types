@@ -1023,30 +1023,37 @@ class Buildable {
     /* Methods of IAnjuta-3.0.IAnjuta.Buildable */
     /**
      * fixme
+     * @param uri fixme
      */
     build(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     clean(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     configure(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     execute(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     generate(uri: string): void
     /**
      * Retrieves the currently set command override.
+     * @param commandId Command to get override.
      */
     getCommand(commandId: BuildableCommand): string
     /**
      * fixme
+     * @param uri fixme
      */
     install(uri: string): void
     /**
@@ -1055,6 +1062,8 @@ class Buildable {
     resetCommands(): void
     /**
      * Overrides the default command for the given command.
+     * @param commandId Command to override.
+     * @param command Build command to override.
      */
     setCommand(commandId: BuildableCommand, command: string): void
     static name: string
@@ -1066,10 +1075,12 @@ class Builder {
     /**
      * Cancel specified command. The callback function will not
      * be called.
+     * @param handle handle of the command to cancel
      */
     cancel(handle: BuilderHandle): void
     /**
      * Get the configuration corresponding to the target uri.
+     * @param uri target uri
      */
     getUriConfiguration(uri: string): string
     /**
@@ -1089,10 +1100,13 @@ class DebugManager {
     quit(): boolean
     /**
      * Start the debugger of the given uri
+     * @param uri uri of the target
      */
     start(uri: string): boolean
     /**
      * Start the debugger of the given uri
+     * @param server server (IP address:port)
+     * @param uri uri of the local target
      */
     startRemote(server: string, uri: string): boolean
     /* Signals of IAnjuta-3.0.IAnjuta.DebugManager */
@@ -1178,10 +1192,16 @@ class Debugger {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     attach(pid: number, sourceSearchDirectories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1190,6 +1210,7 @@ class Debugger {
     disableLog(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enableLog(log: MessageView): void
     /**
@@ -1202,6 +1223,10 @@ class Debugger {
     getState(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1210,6 +1235,9 @@ class Debugger {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mimeType mime type of the file
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
     /**
@@ -1223,37 +1251,49 @@ class Debugger {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     runFrom(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     runTo(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     sendCommand(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     setEnvironment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     setFrame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     setThread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     setWorkingDirectory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1345,10 +1385,16 @@ class DebuggerBreakpoint {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     attach(pid: number, sourceSearchDirectories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1357,6 +1403,7 @@ class DebuggerBreakpoint {
     disableLog(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enableLog(log: MessageView): void
     /**
@@ -1369,6 +1416,10 @@ class DebuggerBreakpoint {
     getState(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1377,6 +1428,9 @@ class DebuggerBreakpoint {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mimeType mime type of the file
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
     /**
@@ -1390,37 +1444,49 @@ class DebuggerBreakpoint {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     runFrom(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     runTo(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     sendCommand(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     setEnvironment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     setFrame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     setThread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     setWorkingDirectory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1505,10 +1571,12 @@ class DebuggerInstruction {
     /* Methods of IAnjuta-3.0.IAnjuta.DebuggerInstruction */
     /**
      * Restart the program starting from address address
+     * @param address Run from this addresss
      */
     runFromAddress(address: number): boolean
     /**
      * Start the program until it reachs the address address
+     * @param address Run to this addresss
      */
     runToAddress(address: number): boolean
     /**
@@ -1527,10 +1595,16 @@ class DebuggerInstruction {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     attach(pid: number, sourceSearchDirectories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1539,6 +1613,7 @@ class DebuggerInstruction {
     disableLog(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enableLog(log: MessageView): void
     /**
@@ -1551,6 +1626,10 @@ class DebuggerInstruction {
     getState(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1559,6 +1638,9 @@ class DebuggerInstruction {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mimeType mime type of the file
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
     /**
@@ -1572,37 +1654,49 @@ class DebuggerInstruction {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     runFrom(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     runTo(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     sendCommand(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     setEnvironment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     setFrame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     setThread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     setWorkingDirectory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1691,10 +1785,16 @@ class DebuggerMemory {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     attach(pid: number, sourceSearchDirectories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1703,6 +1803,7 @@ class DebuggerMemory {
     disableLog(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enableLog(log: MessageView): void
     /**
@@ -1715,6 +1816,10 @@ class DebuggerMemory {
     getState(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1723,6 +1828,9 @@ class DebuggerMemory {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mimeType mime type of the file
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
     /**
@@ -1736,37 +1844,49 @@ class DebuggerMemory {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     runFrom(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     runTo(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     sendCommand(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     setEnvironment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     setFrame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     setThread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     setWorkingDirectory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1851,6 +1971,7 @@ class DebuggerRegister {
     /* Methods of IAnjuta-3.0.IAnjuta.DebuggerRegister */
     /**
      * Change the value of one register. Only the num and value field are used.
+     * @param value Modified register with a new value
      */
     writeRegister(value: DebuggerRegisterData): boolean
     /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
@@ -1860,10 +1981,16 @@ class DebuggerRegister {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     attach(pid: number, sourceSearchDirectories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1872,6 +1999,7 @@ class DebuggerRegister {
     disableLog(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enableLog(log: MessageView): void
     /**
@@ -1884,6 +2012,10 @@ class DebuggerRegister {
     getState(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1892,6 +2024,9 @@ class DebuggerRegister {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mimeType mime type of the file
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
     /**
@@ -1905,37 +2040,49 @@ class DebuggerRegister {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     runFrom(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     runTo(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     sendCommand(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     setEnvironment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     setFrame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     setThread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     setWorkingDirectory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2020,11 +2167,14 @@ class DebuggerVariable {
     /* Methods of IAnjuta-3.0.IAnjuta.DebuggerVariable */
     /**
      * Set the value of one variable or child object.
+     * @param name Variable name
+     * @param value Variable value
      */
     assign(name: string, value: string): boolean
     /**
      * Delete a previously created variable or child object
      * including its own children.
+     * @param name Variable name
      */
     destroy(name: string): boolean
     /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
@@ -2034,10 +2184,16 @@ class DebuggerVariable {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     attach(pid: number, sourceSearchDirectories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2046,6 +2202,7 @@ class DebuggerVariable {
     disableLog(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enableLog(log: MessageView): void
     /**
@@ -2058,6 +2215,10 @@ class DebuggerVariable {
     getState(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -2066,6 +2227,9 @@ class DebuggerVariable {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mimeType mime type of the file
+     * @param sourceSearchDirectories List of directories to search for 		      source files.
      */
     load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
     /**
@@ -2079,37 +2243,49 @@ class DebuggerVariable {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     runFrom(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     runTo(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     sendCommand(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     setEnvironment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     setFrame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     setThread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     setWorkingDirectory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2262,16 +2438,20 @@ class DocumentManager {
     /**
      * Creates a new editor buffer of the given name and sets the given
      * content as its initial content.
+     * @param name Name of the editor buffer.
+     * @param content Initial content of the buffer.
      */
     addBuffer(name: string, content: string): Editor
     /**
      * Adds a document to the document manager. This will open a new
      * Notebook tab and show the document there
+     * @param document the document to add
      */
     addDocument(document: Document): void
     /**
      * Finds the document that has the file  loaded. Only
      * the editor that matches the file will be searched.
+     * @param file The file to find.
      */
     findDocumentWithFile(file: Gio.File): Document
     /**
@@ -2287,31 +2467,41 @@ class DocumentManager {
      * Given the short filename, finds the file of the filename, if the
      * editor that has it loaded is found. If there is no editor that has
      * this file opened, returns NULL.
+     * @param filename short filename
      */
     getFile(filename: string): Gio.File
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
      */
     gotoFileLine(file: Gio.File, lineno: number): Editor
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor. Optionally also marks
      * the line with line marker if `mark` is given TRUE.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
+     * @param mark TRUE if the line should be marked with a marker.
      */
     gotoFileLineMark(file: Gio.File, lineno: number, mark: boolean): Editor
     /**
      * Closes and removes the given document. If `save_before` is TRUE, also
      * saves the document before closing.
+     * @param document Document to close.
+     * @param saveBefore If true, saves the document before closing.
      */
     removeDocument(document: Document, saveBefore: boolean): boolean
     /**
      * Sets the given document as current document.
+     * @param document the document to set as current.
      */
     setCurrentDocument(document: Document): void
     /* Signals of IAnjuta-3.0.IAnjuta.DocumentManager */
     /**
      * Emitted when a document was added to the document manager.
+     * @param doc The #IAnjutaDocument that was added.
      */
     connect(sigName: "document-added", callback: ((doc: Document) => void)): number
     on(sigName: "document-added", callback: (doc: Document) => void, after?: boolean): NodeJS.EventEmitter
@@ -2320,6 +2510,7 @@ class DocumentManager {
     emit(sigName: "document-added", doc: Document): void
     /**
      * Emitted when a document was removed from the document manager.
+     * @param doc The #IAnjutaDocument that was removed.
      */
     connect(sigName: "document-removed", callback: ((doc: Document) => void)): number
     on(sigName: "document-removed", callback: (doc: Document) => void, after?: boolean): NodeJS.EventEmitter
@@ -2333,6 +2524,8 @@ class Editor {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -2366,10 +2559,12 @@ class Editor {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -2401,6 +2596,8 @@ class Editor {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -2420,11 +2617,13 @@ class Editor {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -2435,25 +2634,32 @@ class Editor {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -2471,6 +2677,11 @@ class Editor {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2480,6 +2691,8 @@ class Editor {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2489,6 +2702,8 @@ class Editor {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2505,6 +2720,13 @@ class Editor {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2513,6 +2735,9 @@ class Editor {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2521,6 +2746,7 @@ class Editor {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2538,6 +2764,10 @@ class EditorAssist {
      * proposals async as long as the last call sets finished to TRUE. That
      * is usually called by the IAnjutaProvider after it was triggered by
      * ianjuta_provider_populate()
+     * @param provider a IAnjutaProvider
+     * @param proposals a list of IAnjutaProposals
+     * @param preWord the word before the cursor
+     * @param finished whether is was the last call in an async operation
      */
     proposals(provider: Provider, proposals: EditorAssistProposal[], preWord: string, finished: boolean): void
     remove(provider: Provider): void
@@ -2545,6 +2775,8 @@ class EditorAssist {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -2578,10 +2810,12 @@ class EditorAssist {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -2613,6 +2847,8 @@ class EditorAssist {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -2632,11 +2868,13 @@ class EditorAssist {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -2647,25 +2885,32 @@ class EditorAssist {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -2694,6 +2939,11 @@ class EditorAssist {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2703,6 +2953,8 @@ class EditorAssist {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2712,6 +2964,8 @@ class EditorAssist {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2728,6 +2982,13 @@ class EditorAssist {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2736,6 +2997,9 @@ class EditorAssist {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2744,6 +3008,7 @@ class EditorAssist {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2766,6 +3031,7 @@ class EditorCell {
      * Since there is dynamic allocation of unicode character string
      * involved in ianjuta_editor_cell_get_character(), this function
      * is mainly useful for fast iteration (such as copying data).
+     * @param charIndex 
      */
     getChar(charIndex: number): number
     /**
@@ -2799,6 +3065,7 @@ class EditorCellStyle {
      * Since there is dynamic allocation of unicode character string
      * involved in ianjuta_editor_cell_get_character(), this function
      * is mainly useful for fast iteration (such as copying data).
+     * @param charIndex 
      */
     getChar(charIndex: number): number
     /**
@@ -2834,6 +3101,8 @@ class EditorComment {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -2867,10 +3136,12 @@ class EditorComment {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -2902,6 +3173,8 @@ class EditorComment {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -2921,11 +3194,13 @@ class EditorComment {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -2936,25 +3211,32 @@ class EditorComment {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -2972,6 +3254,11 @@ class EditorComment {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -2981,6 +3268,8 @@ class EditorComment {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2990,6 +3279,8 @@ class EditorComment {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3006,6 +3297,13 @@ class EditorComment {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3014,6 +3312,9 @@ class EditorComment {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3022,6 +3323,7 @@ class EditorComment {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3036,16 +3338,22 @@ class EditorConvert {
     /* Methods of IAnjuta-3.0.IAnjuta.EditorConvert */
     /**
      * change characters from start position to end position to lowercase
+     * @param startPosition Start position.
+     * @param endPosition End position.
      */
     toLower(startPosition: Iterable, endPosition: Iterable): void
     /**
      * change characters from start position to end position to uppercase.
+     * @param startPosition Start position.
+     * @param endPosition End position.
      */
     toUpper(startPosition: Iterable, endPosition: Iterable): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -3079,10 +3387,12 @@ class EditorConvert {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -3114,6 +3424,8 @@ class EditorConvert {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -3133,11 +3445,13 @@ class EditorConvert {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -3148,25 +3462,32 @@ class EditorConvert {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -3184,6 +3505,11 @@ class EditorConvert {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3193,6 +3519,8 @@ class EditorConvert {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3202,6 +3530,8 @@ class EditorConvert {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3218,6 +3548,13 @@ class EditorConvert {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3226,6 +3563,9 @@ class EditorConvert {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3234,6 +3574,7 @@ class EditorConvert {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3258,6 +3599,8 @@ class EditorFolds {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -3291,10 +3634,12 @@ class EditorFolds {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -3326,6 +3671,8 @@ class EditorFolds {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -3345,11 +3692,13 @@ class EditorFolds {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -3360,25 +3709,32 @@ class EditorFolds {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -3396,6 +3752,11 @@ class EditorFolds {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3405,6 +3766,8 @@ class EditorFolds {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3414,6 +3777,8 @@ class EditorFolds {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3430,6 +3795,13 @@ class EditorFolds {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3438,6 +3810,9 @@ class EditorFolds {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3446,6 +3821,7 @@ class EditorFolds {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3461,6 +3837,8 @@ class EditorGladeSignal {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -3494,10 +3872,12 @@ class EditorGladeSignal {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -3529,6 +3909,8 @@ class EditorGladeSignal {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -3548,11 +3930,13 @@ class EditorGladeSignal {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -3563,31 +3947,40 @@ class EditorGladeSignal {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
     /* Signals of IAnjuta-3.0.IAnjuta.EditorGladeSignal */
     /**
      * Emitted when a signal was received per drag & drop
+     * @param iter a IAnjutaIterable of the position where drop happens
+     * @param signalData Signal data in form "widget:signal:handler", e.g. "GtkToggleButton:toggled:on_toggle_button_toggled"
      */
     connect(sigName: "drop", callback: ((iter: Iterable, signalData: string) => void)): number
     on(sigName: "drop", callback: (iter: Iterable, signalData: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3596,6 +3989,7 @@ class EditorGladeSignal {
     emit(sigName: "drop", iter: Iterable, signalData: string): void
     /**
      * Emitted when a signal is dragged over the editor
+     * @param iter a IAnjutaIterable of the position where drop would happen
      */
     connect(sigName: "drop-possible", callback: ((iter: Iterable) => boolean)): number
     on(sigName: "drop-possible", callback: (iter: Iterable) => void, after?: boolean): NodeJS.EventEmitter
@@ -3616,6 +4010,11 @@ class EditorGladeSignal {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3625,6 +4024,8 @@ class EditorGladeSignal {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3634,6 +4035,8 @@ class EditorGladeSignal {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3650,6 +4053,13 @@ class EditorGladeSignal {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3658,6 +4068,9 @@ class EditorGladeSignal {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3666,6 +4079,7 @@ class EditorGladeSignal {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3694,6 +4108,8 @@ class EditorGoto {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -3727,10 +4143,12 @@ class EditorGoto {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -3762,6 +4180,8 @@ class EditorGoto {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -3781,11 +4201,13 @@ class EditorGoto {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -3796,25 +4218,32 @@ class EditorGoto {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -3832,6 +4261,11 @@ class EditorGoto {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3841,6 +4275,8 @@ class EditorGoto {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3850,6 +4286,8 @@ class EditorGoto {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3866,6 +4304,13 @@ class EditorGoto {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3874,6 +4319,9 @@ class EditorGoto {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -3882,6 +4330,7 @@ class EditorGoto {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3896,12 +4345,16 @@ class EditorHover {
     /* Methods of IAnjuta-3.0.IAnjuta.EditorHover */
     /**
      * Show `info` as tooltip
+     * @param position 
+     * @param info String to display
      */
     display(position: Iterable, info: string): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -3935,10 +4388,12 @@ class EditorHover {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -3970,6 +4425,8 @@ class EditorHover {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -3989,11 +4446,13 @@ class EditorHover {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -4004,25 +4463,32 @@ class EditorHover {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -4030,6 +4496,7 @@ class EditorHover {
     /**
      * User moved the mouse away - can be used to clean up things done in
      * #IAnjutaEditorHover::hover-over
+     * @param position IAnjutaEditorCell specifying the position the mouse was over
      */
     connect(sigName: "hover-leave", callback: ((position: Iterable) => void)): number
     on(sigName: "hover-leave", callback: (position: Iterable) => void, after?: boolean): NodeJS.EventEmitter
@@ -4039,6 +4506,7 @@ class EditorHover {
     /**
      * The mouse is held for a moment over `position`. This can be used to show
      * all tooltip.
+     * @param position IAnjutaEditorCell specifying the position the mouse is over
      */
     connect(sigName: "hover-over", callback: ((position: Iterable) => void)): number
     on(sigName: "hover-over", callback: (position: Iterable) => void, after?: boolean): NodeJS.EventEmitter
@@ -4059,6 +4527,11 @@ class EditorHover {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4068,6 +4541,8 @@ class EditorHover {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4077,6 +4552,8 @@ class EditorHover {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4093,6 +4570,13 @@ class EditorHover {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4101,6 +4585,9 @@ class EditorHover {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4109,6 +4596,7 @@ class EditorHover {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4134,12 +4622,15 @@ class EditorLanguage {
     getSupportedLanguages(): string[]
     /**
      * Force the editor to use a given language
+     * @param language Language
      */
     setLanguage(language: string): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -4173,10 +4664,12 @@ class EditorLanguage {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -4208,6 +4701,8 @@ class EditorLanguage {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -4227,11 +4722,13 @@ class EditorLanguage {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -4242,31 +4739,39 @@ class EditorLanguage {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
     /* Signals of IAnjuta-3.0.IAnjuta.EditorLanguage */
     /**
      * the language of the editor changed to `language`
+     * @param language new language
      */
     connect(sigName: "language-changed", callback: ((language: string) => void)): number
     on(sigName: "language-changed", callback: (language: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4287,6 +4792,11 @@ class EditorLanguage {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4296,6 +4806,8 @@ class EditorLanguage {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4305,6 +4817,8 @@ class EditorLanguage {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4321,6 +4835,13 @@ class EditorLanguage {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4329,6 +4850,9 @@ class EditorLanguage {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4337,6 +4861,7 @@ class EditorLanguage {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4352,6 +4877,7 @@ class EditorLineMode {
     /**
      * Set the line ending mode to the given `mode` and convert all line end
      * characters in the buffer to `mode` line end characters.
+     * @param mode Line mode to convert.
      */
     convert(mode: EditorLineModeType): void
     /**
@@ -4368,12 +4894,15 @@ class EditorLineMode {
      * Set the line ending mode to the given `mode`. Existing line end
      * characters in the buffer are not touched. Only the newly added
      * texts will have `mode` line end characters.
+     * @param mode Line mode to set.
      */
     set(mode: EditorLineModeType): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -4407,10 +4936,12 @@ class EditorLineMode {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -4442,6 +4973,8 @@ class EditorLineMode {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -4461,11 +4994,13 @@ class EditorLineMode {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -4476,25 +5011,32 @@ class EditorLineMode {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -4512,6 +5054,11 @@ class EditorLineMode {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4521,6 +5068,8 @@ class EditorLineMode {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4530,6 +5079,8 @@ class EditorLineMode {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4546,6 +5097,13 @@ class EditorLineMode {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4554,6 +5112,9 @@ class EditorLineMode {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4562,6 +5123,7 @@ class EditorLineMode {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4576,16 +5138,26 @@ class EditorSearch {
     /* Methods of IAnjuta-3.0.IAnjuta.EditorSearch */
     /**
      * Search backward from end to start
+     * @param search String to search for
+     * @param caseSensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
      */
     backward(search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
     /**
      * Search forward from start to end
+     * @param search String to search for
+     * @param caseSensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
      */
     forward(search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -4619,10 +5191,12 @@ class EditorSearch {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -4654,6 +5228,8 @@ class EditorSearch {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -4673,11 +5249,13 @@ class EditorSearch {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -4688,25 +5266,32 @@ class EditorSearch {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -4724,6 +5309,11 @@ class EditorSearch {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4733,6 +5323,8 @@ class EditorSearch {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4742,6 +5334,8 @@ class EditorSearch {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4758,6 +5352,13 @@ class EditorSearch {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4766,6 +5367,9 @@ class EditorSearch {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4774,6 +5378,7 @@ class EditorSearch {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4799,6 +5404,8 @@ class EditorSelection {
     /**
      * Replaces currently selected text with the `text`. Only `length` amount
      * of characters are used from `text` buffer to replace.
+     * @param text Replacement text.
+     * @param length Length of the text to used in `text`.
      */
     replace(text: string, length: number): void
     selectAll(): void
@@ -4819,12 +5426,17 @@ class EditorSelection {
     /**
      * Select characters between start and end. Start and end don't have to
      * be ordered.
+     * @param start Begin of selection
+     * @param end End of selection
+     * @param scroll Scroll selection onscreen
      */
     set(start: Iterable, end: Iterable, scroll: boolean): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -4858,10 +5470,12 @@ class EditorSelection {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -4893,6 +5507,8 @@ class EditorSelection {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -4912,11 +5528,13 @@ class EditorSelection {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -4927,25 +5545,32 @@ class EditorSelection {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -4963,6 +5588,11 @@ class EditorSelection {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4972,6 +5602,8 @@ class EditorSelection {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4981,6 +5613,8 @@ class EditorSelection {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4997,6 +5631,13 @@ class EditorSelection {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5005,6 +5646,9 @@ class EditorSelection {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5013,6 +5657,7 @@ class EditorSelection {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5036,6 +5681,8 @@ class EditorTip {
      * the suggestions. Usually the editor would use this to
      * align the choices displayed such that the carat is just at this
      * position when the choices are displayed.
+     * @param tips list of alternative tips.
+     * @param position Tip position.
      */
     show(tips: string[], position: Iterable): void
     visible(): boolean
@@ -5043,6 +5690,8 @@ class EditorTip {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -5076,10 +5725,12 @@ class EditorTip {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -5111,6 +5762,8 @@ class EditorTip {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -5130,11 +5783,13 @@ class EditorTip {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -5145,25 +5800,32 @@ class EditorTip {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -5181,6 +5843,11 @@ class EditorTip {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5190,6 +5857,8 @@ class EditorTip {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5199,6 +5868,8 @@ class EditorTip {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5215,6 +5886,13 @@ class EditorTip {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5223,6 +5901,9 @@ class EditorTip {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5231,6 +5912,7 @@ class EditorTip {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5263,6 +5945,8 @@ class EditorView {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -5296,10 +5980,12 @@ class EditorView {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -5331,6 +6017,8 @@ class EditorView {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -5350,11 +6038,13 @@ class EditorView {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -5365,25 +6055,32 @@ class EditorView {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -5401,6 +6098,11 @@ class EditorView {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5410,6 +6112,8 @@ class EditorView {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5419,6 +6123,8 @@ class EditorView {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5435,6 +6141,13 @@ class EditorView {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5443,6 +6156,9 @@ class EditorView {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5451,6 +6167,7 @@ class EditorView {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5475,6 +6192,8 @@ class EditorZoom {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(positionStart: Iterable, positionEnd: Iterable): void
@@ -5508,10 +6227,12 @@ class EditorZoom {
     getLength(): number
     /**
      * fixme
+     * @param line fixme
      */
     getLineBeginPosition(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     getLineEndPosition(line: number): Iterable
     getLineFromPosition(position: Iterable): number
@@ -5543,6 +6264,8 @@ class EditorZoom {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     getText(begin: Iterable, end: Iterable): string
     /**
@@ -5562,11 +6285,13 @@ class EditorZoom {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     gotoLine(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     gotoPosition(position: Iterable): void
     /**
@@ -5577,25 +6302,32 @@ class EditorZoom {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
      */
     setAutoIndent(autoIndent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     setIndentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     setPopupMenu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
@@ -5613,6 +6345,11 @@ class EditorZoom {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5622,6 +6359,8 @@ class EditorZoom {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
     on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5631,6 +6370,8 @@ class EditorZoom {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
     on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5647,6 +6388,13 @@ class EditorZoom {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signalName Name of the signal.
+     * @param handlerName Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5655,6 +6403,9 @@ class EditorZoom {
     emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widgetName Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
     on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -5663,6 +6414,7 @@ class EditorZoom {
     emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
     on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -5680,10 +6432,14 @@ class Environment {
      * It is useful when the environment use chroot. Take care that
      * the input directory string is freed using g_free but and you need to
      * free the output string when not needed.
+     * @param dir A directory path in the environment
      */
     getRealDirectory(dir: string): string
     /**
      * Override a command to work in another build environment
+     * @param dirp a pointer on the working directory
+     * @param argvp a pointer on a NULL terminated string array     containing the command name in argv[0] and all    its argument
+     * @param envp a pointer on a NULL terminated string array    containing all additional environment variable    used by the command
      */
     override(dirp: string, argvp: string, envp: string): boolean
     static name: string
@@ -5696,6 +6452,7 @@ class File {
     getFile(): Gio.File
     /**
      * The implementor opens the given file.
+     * @param file file to open.
      */
     open(file: Gio.File): void
     /* Signals of IAnjuta-3.0.IAnjuta.File */
@@ -5722,15 +6479,18 @@ class FileManager {
     /* Methods of IAnjuta-3.0.IAnjuta.FileManager */
     /**
      * fixme
+     * @param rootUri fixme
      */
     setRoot(rootUri: string): void
     /**
      * fixme.
+     * @param file File to select
      */
     setSelected(file: Gio.File): void
     /* Signals of IAnjuta-3.0.IAnjuta.FileManager */
     /**
      * fixme
+     * @param err Error propagation and reporting.
      */
     connect(sigName: "section-changed", callback: ((err: Gio.File) => void)): number
     on(sigName: "section-changed", callback: (err: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
@@ -5765,12 +6525,14 @@ class FileSavable {
     /**
      * Saves the content to a different File.
      * The signal saved is always emitted even if the save fails.
+     * @param file File to save the content.
      */
     saveAs(file: Gio.File): void
     /**
      * if `dirty` is TRUE, sets dirty for the content. Save point will be
      * left and the content will be considered not saved. Otherwise,
      * content will considered saved and save-point will be entered.
+     * @param dirty Whether the file was edited or not
      */
     setDirty(dirty: boolean): void
     /* Methods of IAnjuta-3.0.IAnjuta.File */
@@ -5780,11 +6542,13 @@ class FileSavable {
     getFile(): Gio.File
     /**
      * The implementor opens the given file.
+     * @param file file to open.
      */
     open(file: Gio.File): void
     /* Signals of IAnjuta-3.0.IAnjuta.FileSavable */
     /**
      * This signal is emitted when the content is saved.
+     * @param file file where the content is saved or NULL if save failed
      */
     connect(sigName: "saved", callback: ((file: Gio.File) => void)): number
     on(sigName: "saved", callback: (file: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
@@ -5820,6 +6584,7 @@ class Help {
     /* Methods of IAnjuta-3.0.IAnjuta.Help */
     /**
      * Search for string `query` in the help and display the result
+     * @param query string to search in the help
      */
     search(query: string): void
     static name: string
@@ -5834,6 +6599,8 @@ class Indenter {
      * Only one indenter can be loaded at a time.
      * Note: Indenters always affect full lines, so start and end will be moved
      * according to the next line start/end.
+     * @param start Start of the area to indent
+     * @param end End of the area to indent
      */
     indent(start: Iterable, end: Iterable): void
     static name: string
@@ -5848,6 +6615,9 @@ class Indicable {
     clear(): void
     /**
      * Set an indicator
+     * @param beginLocation Location where the indication should start
+     * @param endLocation Location where the indication should end
+     * @param indicator the indicator to use
      */
     set(beginLocation: Iterable, endLocation: Iterable, indicator: IndicableIndicator): void
     static name: string
@@ -5858,6 +6628,7 @@ class Iterable {
     /* Methods of IAnjuta-3.0.IAnjuta.Iterable */
     /**
      * Assigns the iter position from `src_iter`.
+     * @param srcIter Source iter from which to copy the assignment.
      */
     assign(srcIter: Iterable): void
     /**
@@ -5871,11 +6642,13 @@ class Iterable {
      * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
      * If you want difference of the iter positions, use
      * #ianjuta_iterable_diff(). This method is meant for fast comparision.
+     * @param iter2 Second iter to compare.
      */
     compare(iter2: Iterable): number
     /**
      * Compares the position of `iter2` with this `obj` and returns difference
      * in position of the two (`obj` - `iter2`).
+     * @param iter2 Second iter to differenciate.
      */
     diff(iter2: Iterable): number
     /**
@@ -5921,6 +6694,7 @@ class Iterable {
      * returns TRUE for the above cases. FLASE will be returned, if
      * out-of-range `position` is passed (`position` > length - 1) and iter is
      * set to end-iter.
+     * @param position New position for the iter.
      */
     setPosition(position: number): boolean
     static name: string
@@ -5946,6 +6720,7 @@ class IterableTree {
     /* Methods of IAnjuta-3.0.IAnjuta.Iterable */
     /**
      * Assigns the iter position from `src_iter`.
+     * @param srcIter Source iter from which to copy the assignment.
      */
     assign(srcIter: Iterable): void
     /**
@@ -5959,11 +6734,13 @@ class IterableTree {
      * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
      * If you want difference of the iter positions, use
      * #ianjuta_iterable_diff(). This method is meant for fast comparision.
+     * @param iter2 Second iter to compare.
      */
     compare(iter2: Iterable): number
     /**
      * Compares the position of `iter2` with this `obj` and returns difference
      * in position of the two (`obj` - `iter2`).
+     * @param iter2 Second iter to differenciate.
      */
     diff(iter2: Iterable): number
     /**
@@ -6009,6 +6786,7 @@ class IterableTree {
      * returns TRUE for the above cases. FLASE will be returned, if
      * out-of-range `position` is passed (`position` > length - 1) and iter is
      * set to end-iter.
+     * @param position New position for the iter.
      */
     setPosition(position: number): boolean
     static name: string
@@ -6019,6 +6797,7 @@ class Language {
     /* Methods of IAnjuta-3.0.IAnjuta.Language */
     /**
      * Conviniece method to get the id directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
      */
     getFromEditor(editor: EditorLanguage): LanguageId
     getFromMimeType(mimeType: string): LanguageId
@@ -6028,6 +6807,7 @@ class Language {
     getName(id: LanguageId): string
     /**
      * Conviniece method to get the name directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
      */
     getNameFromEditor(editor: EditorLanguage): string
     static name: string
@@ -6038,14 +6818,18 @@ class LanguageProvider {
     /* Methods of IAnjuta-3.0.IAnjuta.LanguageProvider */
     /**
      * Searches for a calltip in the cache
+     * @param callContext name of the method to show a calltip
      */
     getCalltipCache(callContext: string): string[]
     /**
      * Searches for a calltip context
+     * @param iter current cursor position
      */
     getCalltipContext(iter: Iterable): string
     /**
      * Creates a new calltip
+     * @param callContext name of the method to create a new calltip
+     * @param iter current cursor position
      */
     newCalltip(callContext: string, iter: Iterable): void
     /**
@@ -6054,11 +6838,14 @@ class LanguageProvider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     populateCompletions(iter: Iterable): Iterable | null
     /* Methods of IAnjuta-3.0.IAnjuta.Provider */
     /**
      * Show completion for the context at position `iter`
+     * @param iter position where the completion occurs
+     * @param data data assigned to the proposal
      */
     activate(iter: Iterable, data?: object | null): void
     /**
@@ -6075,6 +6862,7 @@ class LanguageProvider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     populate(iter: Iterable): void
     static name: string
@@ -6090,10 +6878,13 @@ class Markable {
     /* Methods of IAnjuta-3.0.IAnjuta.Markable */
     /**
      * Delete the `marker` from all locations.
+     * @param marker Marker to delete.
      */
     deleteAllMarkers(marker: MarkableMarker): void
     /**
      * Check if the `marker` is set at the given `location`.
+     * @param location Location to check.
+     * @param marker Marker to check.
      */
     isMarkerSet(location: number, marker: MarkableMarker): boolean
     /**
@@ -6101,21 +6892,29 @@ class Markable {
      * the implementation. To retrieve the correct location where the marker
      * has moved, pass the handle retured by ianjuta_markable_mark() to this
      * method.
+     * @param handle Handle of location.
      */
     locationFromHandle(handle: number): number
     /**
      * Marks the specified location with the given marker type. Location is
      * implementation depenedent. For example, for an editor location means
      * lines where markers are set.
+     * @param location Location at which the marker to set.
+     * @param marker Type of marker to be used
+     * @param tooltip optional tooltip displayed with the marker
      */
     mark(location: number, marker: MarkableMarker, tooltip?: string | null): number
     /**
      * Clears the `marker` at given `location`.
+     * @param location Location where the marker is set.
+     * @param marker The marker to unset.
      */
     unmark(location: number, marker: MarkableMarker): void
     /* Signals of IAnjuta-3.0.IAnjuta.Markable */
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param doubleClick whether the marker was double clicked
+     * @param location location of the clicked marker
      */
     connect(sigName: "marker-clicked", callback: ((doubleClick: boolean, location: number) => void)): number
     on(sigName: "marker-clicked", callback: (doubleClick: boolean, location: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -6129,22 +6928,30 @@ class MessageManager {
     /**
      * Remove view from the message-manager. The view
      * will become invalid.
+     * @param view The view to remove
      */
     removeView(view: MessageView): void
     /**
      * Set view to be on top of the notebook.
+     * @param view A message view
      */
     setCurrentView(view: MessageView): void
     /**
      * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
      */
     setViewIcon(view: MessageView, icon: GdkPixbuf.PixbufAnimation): void
     /**
      * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
      */
     setViewIconFromStock(view: MessageView, icon: string): void
     /**
      * Sets the title of view.
+     * @param view A message view
+     * @param title Sets the title of view.
      */
     setViewTitle(view: MessageView, title: string): void
     static name: string
@@ -6153,11 +6960,15 @@ class MessageView {
     /* Methods of IAnjuta-3.0.IAnjuta.MessageView */
     /**
      * Append the message with summary displayed and details displayed as tooltip
+     * @param type type of the message
+     * @param summary summary of the message
+     * @param details details of the message
      */
     append(type: MessageViewType, summary: string, details: string): void
     /**
      * Appends the text in buffer. Flushes the buffer where a newline is found.
      * by emiiting buffer_flushed signal. The string is expected to be utf8.
+     * @param text text to show as message
      */
     bufferAppend(text: string): void
     /**
@@ -6179,6 +6990,7 @@ class MessageView {
     /* Signals of IAnjuta-3.0.IAnjuta.MessageView */
     /**
      * Emitted when #ianjuta_message_view_buffer_append found a newline
+     * @param line the current line
      */
     connect(sigName: "buffer-flushed", callback: ((line: string) => void)): number
     on(sigName: "buffer-flushed", callback: (line: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -6187,6 +6999,7 @@ class MessageView {
     emit(sigName: "buffer-flushed", line: string): void
     /**
      * Emitted when the user clicks on a message
+     * @param message text of the clicked message
      */
     connect(sigName: "message-clicked", callback: ((message: string) => void)): number
     on(sigName: "message-clicked", callback: (message: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -6204,10 +7017,12 @@ class Preferences {
     /* Methods of IAnjuta-3.0.IAnjuta.Preferences */
     /**
      * When called, the plugin should install it's preferences
+     * @param prefs AnjutaPreferences to install to
      */
     merge(prefs: Anjuta.Preferences): void
     /**
      * When called, the plugin should uninstall it's preferences
+     * @param prefs AnjutaPreferences to install to
      */
     unmerge(prefs: Anjuta.Preferences): void
     static name: string
@@ -6233,10 +7048,20 @@ class Project {
     /* Methods of IAnjuta-3.0.IAnjuta.Project */
     /**
      * Create a new node and insert it after sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
      */
     addNodeAfter(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null): Anjuta.ProjectNode
     /**
      * Create a new node and insert it before sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
      */
     addNodeBefore(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null): Anjuta.ProjectNode
     /**
@@ -6253,28 +7078,39 @@ class Project {
     isLoaded(): boolean
     /**
      * Reload a project node
+     * @param node Project node to reload
      */
     loadNode(node: Anjuta.ProjectNode): boolean
     /**
      * Remove a node
+     * @param node Node
      */
     removeNode(node: Anjuta.ProjectNode): boolean
     /**
      * Remove a property of the node
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
      */
     removeProperty(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean
     /**
      * Save a project node
+     * @param node Project node to save
      */
     saveNode(node: Anjuta.ProjectNode): boolean
     /**
      * Change a properties on node.
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
+     * @param value Value
      */
     setProperty(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null
     /* Signals of IAnjuta-3.0.IAnjuta.Project */
     /**
      * This signal is emitted when the project is changed on the disk. The
      * corresponding node has to be reloaded.
+     * @param node Node to be reloaded.
      */
     connect(sigName: "file-changed", callback: ((node?: object | null) => void)): number
     on(sigName: "file-changed", callback: (node?: object | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -6285,6 +7121,8 @@ class Project {
      * This signal is emitted when a node is changed by a function of this
      * interface. The error argument is not NULL if the change was not
      * possible. The corresponding node need to be saved.
+     * @param node Changed node.
+     * @param error Error while changing node
      */
     connect(sigName: "node-changed", callback: ((node: object | null, error: GLib.Error) => void)): number
     on(sigName: "node-changed", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -6294,6 +7132,8 @@ class Project {
     /**
      * This signal is emitted when a node is loaded. It returns an error if the
      * load operation fail.
+     * @param node Loaded node.
+     * @param error Error while loading node
      */
     connect(sigName: "node-loaded", callback: ((node: object | null, error: GLib.Error) => void)): number
     on(sigName: "node-loaded", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -6303,6 +7143,8 @@ class Project {
     /**
      * This signal is emitted when a node is saved. It returns an error if the
      * save operation fail.
+     * @param node Saved node.
+     * @param error Error while saving node
      */
     connect(sigName: "node-saved", callback: ((node: object | null, error: GLib.Error) => void)): number
     on(sigName: "node-saved", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
@@ -6315,11 +7157,13 @@ class ProjectBackend {
     /* Methods of IAnjuta-3.0.IAnjuta.ProjectBackend */
     /**
      * Create a new Anjuta project.
+     * @param file Project file or directory
      */
     newProject(file: Gio.File): Project
     /**
      * Check if the directory contains a project supported by this
      * backend.
+     * @param directory Project file or directory
      */
     probe(directory: Gio.File): number
     static name: string
@@ -6348,6 +7192,8 @@ class ProjectChooser {
      *     to select a target using a package.</para></listitem>
      *   </varlistentry>
      * </variablelist>
+     * @param manager A project manager
+     * @param childType Select one element type: source, group or target
      */
     setProjectModel(manager: ProjectManager, childType: Anjuta.ProjectNodeType): boolean
     /* Signals of IAnjuta-3.0.IAnjuta.ProjectChooser */
@@ -6368,6 +7214,8 @@ class ProjectManager {
     /**
      * Prompts the user to add a new group to the project. The user can select
      * a parent group different from the one set as default.
+     * @param name Group name or URI.
+     * @param defaultGroup A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
     addGroup(name: string, defaultGroup?: Gio.File | null): Gio.File
     /**
@@ -6378,6 +7226,8 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param name Source name or URI.
+     * @param defaultTarget A #GFile corresponding to the default target or group or 				%NULL if you don't care.
      */
     addSource(name: string, defaultTarget?: Gio.File | null): Gio.File
     /**
@@ -6387,6 +7237,8 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param name Source name or URI.
+     * @param target A #GFile corresponding to the parent target or group.
      */
     addSourceQuiet(name: string, target: Gio.File): Gio.File
     /**
@@ -6398,11 +7250,15 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param names Sources name or URI to add.
+     * @param defaultTarget A #GFile corresponding to the default target or group or 				%NULL if don't care.
      */
     addSources(names: string[], defaultTarget?: Gio.File | null): Gio.File[]
     /**
      * Prompts the user to add a new target to the project. The user can select
      * a parent group different from the one set as default.
+     * @param name Target name or URI.
+     * @param defaultGroup A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
     addTarget(name: string, defaultGroup?: Gio.File | null): Gio.File
     /**
@@ -6413,6 +7269,8 @@ class ProjectManager {
     /**
      * Recursively gets the list of all children below the corresponding
      * parent having the specify type.
+     * @param parent A #GFile corresponding to the parent.
+     * @param childrenType Select one element type: source, group or target
      */
     getChildren(parent: Gio.File, childrenType: number): Gio.File[]
     /**
@@ -6421,6 +7279,7 @@ class ProjectManager {
     getCurrentProject(): Project
     /**
      * Get a list of all elements of this type in the project.
+     * @param elementType Select one element type: source, group or target
      */
     getElements(elementType: Anjuta.ProjectNodeType): Gio.File[]
     getPackages(): string[]
@@ -6430,10 +7289,12 @@ class ProjectManager {
     getSelected(): Gio.File
     /**
      * Get the type of the corresponding target: program, library...
+     * @param target A #GFile corresponding to a target
      */
     getTargetType(target: Gio.File): Anjuta.ProjectNodeType
     /**
      * Get a list of targets in the project with the corresponding type.
+     * @param targetType type of the target
      */
     getTargets(targetType: Anjuta.ProjectNodeType): Gio.File[]
     /**
@@ -6444,6 +7305,7 @@ class ProjectManager {
      * Remove a source file from the project. If the file is used in several
      * targets, it is removed from all targets. The file could be removed from
      * the disk.
+     * @param file A #GFile that will be removed from the project
      */
     removeFile(file: Gio.File): boolean
     /* Signals of IAnjuta-3.0.IAnjuta.ProjectManager */
@@ -6475,6 +7337,8 @@ class Provider {
     /* Methods of IAnjuta-3.0.IAnjuta.Provider */
     /**
      * Show completion for the context at position `iter`
+     * @param iter position where the completion occurs
+     * @param data data assigned to the proposal
      */
     activate(iter: Iterable, data?: object | null): void
     /**
@@ -6491,6 +7355,7 @@ class Provider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     populate(iter: Iterable): void
     static name: string
@@ -6501,6 +7366,8 @@ class SnippetsManager {
     /* Methods of IAnjuta-3.0.IAnjuta.SnippetsManager */
     /**
      * Insert snippet in the current editor.
+     * @param key Trigger-key of the snippet
+     * @param editingSession If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
     insert(key: string, editingSession: boolean): boolean
     static name: string
@@ -6511,6 +7378,7 @@ class Stream {
     /* Methods of IAnjuta-3.0.IAnjuta.Stream */
     /**
      * The implementor opens the given stream.
+     * @param stream Stream to open from.
      */
     open(stream?: object | null): void
     static name: string
@@ -6522,6 +7390,7 @@ class StreamLoader {
     /**
      * Peeks the stream and determines the interface which can load
      * this stream.
+     * @param stream Stream to load
      */
     peekInterface(stream?: object | null): string
     static name: string
@@ -6534,6 +7403,7 @@ class StreamSavable {
     /* Methods of IAnjuta-3.0.IAnjuta.Stream */
     /**
      * The implementor opens the given stream.
+     * @param stream Stream to open from.
      */
     open(stream?: object | null): void
     static name: string
@@ -6544,6 +7414,7 @@ class Symbol {
     /* Methods of IAnjuta-3.0.IAnjuta.Symbol */
     /**
      * Retreives the boolean value of a boolean `field`.
+     * @param field The field to retrieve.
      */
     getBoolean(field: SymbolField): boolean
     /**
@@ -6554,10 +7425,12 @@ class Symbol {
     getIcon(): GdkPixbuf.Pixbuf
     /**
      * Retreives the integer value of an integer `field`.
+     * @param field The field to retrieve.
      */
     getInt(field: SymbolField): number
     /**
      * Retreives the string value of a string `field`.
+     * @param field The field to retrieve.
      */
     getString(field: SymbolField): string
     /**
@@ -6573,6 +7446,8 @@ class SymbolManager {
     /* Methods of IAnjuta-3.0.IAnjuta.SymbolManager */
     /**
      * Activates the package for searches in the global symbol database.
+     * @param pkgName Name of the package to activate. The colon char must be avoided.
+     * @param pkgVersion Version of the package. The colon char must be avoided.
      */
     activatePackage(pkgName: string, pkgVersion: string): boolean
     /**
@@ -6582,6 +7457,8 @@ class SymbolManager {
     /**
      * Deactivates the package if it was found. If package is NULL, deactivate all
      * packages.
+     * @param pkgName name of the package. The colon char must be avoided.
+     * @param pkgVersion Version of the package. The colon char must be avoided.
      */
     deactivatePackage(pkgName: string, pkgVersion: string): void
     /* Signals of IAnjuta-3.0.IAnjuta.SymbolManager */
@@ -6604,38 +7481,48 @@ class SymbolQuery {
     cancel(): void
     /**
      * Sets the fields of Query.
+     * @param nFields Then number of fields to retrieve.
+     * @param fields The fields to retrieve in the query. The array length must   be `n_fields`.
      */
     setFields(nFields: number, fields: SymbolField): void
     /**
      * Sets the filescope search of Query.
+     * @param filescopeSearch The filescope to search.
      */
     setFileScope(filescopeSearch: SymbolQueryFileScope): void
     /**
      * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
      * symbols satisfying the given symbol types are selected, otherwise
      * they are excluded.
+     * @param filters The mode of query.
+     * @param includeTypes TRUE if filter is positive, FALSE if reversed.
      */
     setFilters(filters: SymbolType, includeTypes: boolean): void
     /**
      * Sets the field with which result of query is grouped. As a result
      * there will be no duplicates of with this field.
+     * @param field The field to group results.
      */
     setGroupBy(field: SymbolField): void
     /**
      * Sets the limit of Query results. No more than `limit` results are
      * returned.
+     * @param limit The limit of query.
      */
     setLimit(limit: number): void
     /**
      * Sets the mode of Query.
+     * @param mode The mode of query.
      */
     setMode(mode: SymbolQueryMode): void
     /**
      * Sets the offset index of Query results.
+     * @param offset Offset of the resultset.
      */
     setOffset(offset: number): void
     /**
      * Sets the field with which result of query is ordered.
+     * @param field The field to order the result.
      */
     setOrderBy(field: SymbolField): void
     /* Signals of IAnjuta-3.0.IAnjuta.SymbolQuery */
@@ -6653,6 +7540,9 @@ class Terminal {
     /**
      * Run the command in a terminal, setting the working directory
      * and environment variables.
+     * @param directory Working directory
+     * @param command Command executed followed by arguments
+     * @param environment List of additional environment variables
      */
     executeCommand(directory: string, command: string, environment: string[]): number
     /* Signals of IAnjuta-3.0.IAnjuta.Terminal */
@@ -6676,14 +7566,22 @@ class Vcs {
     /* Methods of IAnjuta-3.0.IAnjuta.Vcs */
     /**
      * Add files to the VCS repository.
+     * @param files List of List of files, represented as #Gfile objects, to add
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     add(files: Gio.File[], notify: Anjuta.AsyncNotify): void
     /**
      * Check out a copy of a code repository.
+     * @param repositoryLocation Location of repository to check out
+     * @param dest Destination of checked out copy
+     * @param cancel An optional #GCancellable object to cancel the operation, or NULL
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     checkout(repositoryLocation: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
     /**
      * Remove files from the VCS repository.
+     * @param files List of files, represented as #Gfile objects, to remove
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void
     /* Signals of IAnjuta-3.0.IAnjuta.Vcs */
@@ -6706,52 +7604,52 @@ class Wizard {
 }
 abstract class BuildableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.BuildableIface */
-    readonly gIface: GObject.TypeInterface
-    readonly build: (obj: Buildable, uri: string) => void
-    readonly clean: (obj: Buildable, uri: string) => void
-    readonly configure: (obj: Buildable, uri: string) => void
-    readonly execute: (obj: Buildable, uri: string) => void
-    readonly generate: (obj: Buildable, uri: string) => void
-    readonly getCommand: (obj: Buildable, commandId: BuildableCommand) => string
-    readonly install: (obj: Buildable, uri: string) => void
-    readonly resetCommands: (obj: Buildable) => void
-    readonly setCommand: (obj: Buildable, commandId: BuildableCommand, command: string) => void
+    gIface: GObject.TypeInterface
+    build: (obj: Buildable, uri: string) => void
+    clean: (obj: Buildable, uri: string) => void
+    configure: (obj: Buildable, uri: string) => void
+    execute: (obj: Buildable, uri: string) => void
+    generate: (obj: Buildable, uri: string) => void
+    getCommand: (obj: Buildable, commandId: BuildableCommand) => string
+    install: (obj: Buildable, uri: string) => void
+    resetCommands: (obj: Buildable) => void
+    setCommand: (obj: Buildable, commandId: BuildableCommand, command: string) => void
     static name: string
 }
 abstract class BuilderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.BuilderIface */
-    readonly gIface: GObject.TypeInterface
-    readonly cancel: (obj: Builder, handle: BuilderHandle) => void
-    readonly getUriConfiguration: (obj: Builder, uri: string) => string
-    readonly listConfiguration: (obj: Builder) => string[]
+    gIface: GObject.TypeInterface
+    cancel: (obj: Builder, handle: BuilderHandle) => void
+    getUriConfiguration: (obj: Builder, uri: string) => string
+    listConfiguration: (obj: Builder) => string[]
     static name: string
 }
 abstract class DebugManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebugManagerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly breakpointChanged: (obj: DebugManager, breakpoint: DebuggerBreakpointItem) => void
-    readonly debuggerStarted: (obj: DebugManager) => void
-    readonly debuggerStopped: (obj: DebugManager, err: GLib.Error) => void
-    readonly frameChanged: (obj: DebugManager, frame: number, thread: number) => void
-    readonly locationChanged: (obj: DebugManager, address: number, uri: string, line: number) => void
-    readonly programExited: (obj: DebugManager) => void
-    readonly programLoaded: (obj: DebugManager) => void
-    readonly programMoved: (obj: DebugManager, pid: number, tid: number, address: number, file: string, line: number) => void
-    readonly programRunning: (obj: DebugManager) => void
-    readonly programStarted: (obj: DebugManager) => void
-    readonly programStopped: (obj: DebugManager) => void
-    readonly programUnloaded: (obj: DebugManager) => void
-    readonly sharedlibEvent: (obj: DebugManager) => void
-    readonly signalReceived: (obj: DebugManager, name: string, description: string) => void
-    readonly quit: (obj: DebugManager) => boolean
-    readonly start: (obj: DebugManager, uri: string) => boolean
-    readonly startRemote: (obj: DebugManager, server: string, uri: string) => boolean
+    gIface: GObject.TypeInterface
+    breakpointChanged: (obj: DebugManager, breakpoint: DebuggerBreakpointItem) => void
+    debuggerStarted: (obj: DebugManager) => void
+    debuggerStopped: (obj: DebugManager, err: GLib.Error) => void
+    frameChanged: (obj: DebugManager, frame: number, thread: number) => void
+    locationChanged: (obj: DebugManager, address: number, uri: string, line: number) => void
+    programExited: (obj: DebugManager) => void
+    programLoaded: (obj: DebugManager) => void
+    programMoved: (obj: DebugManager, pid: number, tid: number, address: number, file: string, line: number) => void
+    programRunning: (obj: DebugManager) => void
+    programStarted: (obj: DebugManager) => void
+    programStopped: (obj: DebugManager) => void
+    programUnloaded: (obj: DebugManager) => void
+    sharedlibEvent: (obj: DebugManager) => void
+    signalReceived: (obj: DebugManager, name: string, description: string) => void
+    quit: (obj: DebugManager) => boolean
+    start: (obj: DebugManager, uri: string) => boolean
+    startRemote: (obj: DebugManager, server: string, uri: string) => boolean
     static name: string
 }
 abstract class DebuggerBreakpointIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerBreakpointIface */
-    readonly gIface: DebuggerIface
-    readonly implementBreakpoint: (obj: DebuggerBreakpoint) => number
+    gIface: DebuggerIface
+    implementBreakpoint: (obj: DebuggerBreakpoint) => number
     static name: string
 }
 class DebuggerBreakpointItem {
@@ -6759,51 +7657,51 @@ class DebuggerBreakpointItem {
     /**
      * type see #IAnjutaBreakpointType enumeration
      */
-    readonly type: number
+    type: number
     /**
      * unique identifier
      */
-    readonly id: number
+    id: number
     /**
      * source file where is the breakpoint
      */
-    readonly file: string
+    file: string
     /**
      * corresponding source file line number
      */
-    readonly line: number
+    line: number
     /**
      * corresponding function name
      */
-    readonly function_: string
+    function_: string
     /**
      * corresponding address
      */
-    readonly address: number
+    address: number
     /**
      * TRUE if the breakpoint is enabled
      */
-    readonly enable: boolean
+    enable: boolean
     /**
      * TRUE if the breakpoint is ignored
      */
-    readonly ignore: number
+    ignore: number
     /**
      * Count how many time the breakpoint is triggered
      */
-    readonly times: number
+    times: number
     /**
      * Additional condition for triggering the breakpoint
      */
-    readonly condition: string
+    condition: string
     /**
      * TRUE if the breakpoint is temporary
      */
-    readonly temporary: boolean
+    temporary: boolean
     /**
      * TRUE if the breakpoint is pending
      */
-    readonly pending: boolean
+    pending: boolean
     static name: string
 }
 class DebuggerFrame {
@@ -6811,75 +7709,75 @@ class DebuggerFrame {
     /**
      * Thread identifier.
      */
-    readonly thread: number
+    thread: number
     /**
      * Level of the frame, 0 is the topmost one.
      */
-    readonly level: number
+    level: number
     /**
      * List of argument of the caller.
      */
-    readonly args: string
+    args: string
     /**
      * Source file name where is the program counter.
      */
-    readonly file: string
+    file: string
     /**
      * Line number in the file above.
      */
-    readonly line: number
+    line: number
     /**
      * Function name where is the program counter.
      */
-    readonly function_: string
+    function_: string
     /**
      * Library name where is the program counter.
      */
-    readonly library: string
+    library: string
     /**
      * Address of the program counter.
      */
-    readonly address: number
+    address: number
     static name: string
 }
 abstract class DebuggerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly debuggerReady: (obj: Debugger, state: DebuggerState) => void
-    readonly debuggerStarted: (obj: Debugger) => void
-    readonly debuggerStopped: (obj: Debugger, err: GLib.Error) => void
-    readonly frameChanged: (obj: Debugger, frame: number, thread: number) => void
-    readonly programExited: (obj: Debugger) => void
-    readonly programLoaded: (obj: Debugger) => void
-    readonly programMoved: (obj: Debugger, pid: number, tid: number, address: number, file: string, line: number) => void
-    readonly programRunning: (obj: Debugger) => void
-    readonly programStopped: (obj: Debugger) => void
-    readonly sharedlibEvent: (obj: Debugger) => void
-    readonly signalReceived: (obj: Debugger, name: string, description: string) => void
-    readonly abort: (obj: Debugger) => boolean
-    readonly attach: (obj: Debugger, pid: number, sourceSearchDirectories: string[]) => boolean
-    readonly connect: (obj: Debugger, server: string, args: string, terminal: boolean, stop: boolean) => boolean
-    readonly disableLog: (obj: Debugger) => void
-    readonly enableLog: (obj: Debugger, log: MessageView) => void
-    readonly exit: (obj: Debugger) => boolean
-    readonly getState: (obj: Debugger) => DebuggerState
-    readonly handleSignal: (obj: Debugger, name: string, stop: boolean, print: boolean, ignore: boolean) => boolean
-    readonly interrupt: (obj: Debugger) => boolean
-    readonly load: (obj: Debugger, file: string, mimeType: string, sourceSearchDirectories: string[]) => boolean
-    readonly quit: (obj: Debugger) => boolean
-    readonly run: (obj: Debugger) => boolean
-    readonly runFrom: (obj: Debugger, file: string, line: number) => boolean
-    readonly runTo: (obj: Debugger, file: string, line: number) => boolean
-    readonly sendCommand: (obj: Debugger, command: string) => boolean
-    readonly setEnvironment: (obj: Debugger, env: string) => boolean
-    readonly setFrame: (obj: Debugger, frame: number) => boolean
-    readonly setThread: (obj: Debugger, thread: number) => boolean
-    readonly setWorkingDirectory: (obj: Debugger, dir: string) => boolean
-    readonly start: (obj: Debugger, args: string, terminal: boolean, stop: boolean) => boolean
-    readonly stepIn: (obj: Debugger) => boolean
-    readonly stepOut: (obj: Debugger) => boolean
-    readonly stepOver: (obj: Debugger) => boolean
-    readonly unload: (obj: Debugger) => boolean
+    gIface: GObject.TypeInterface
+    debuggerReady: (obj: Debugger, state: DebuggerState) => void
+    debuggerStarted: (obj: Debugger) => void
+    debuggerStopped: (obj: Debugger, err: GLib.Error) => void
+    frameChanged: (obj: Debugger, frame: number, thread: number) => void
+    programExited: (obj: Debugger) => void
+    programLoaded: (obj: Debugger) => void
+    programMoved: (obj: Debugger, pid: number, tid: number, address: number, file: string, line: number) => void
+    programRunning: (obj: Debugger) => void
+    programStopped: (obj: Debugger) => void
+    sharedlibEvent: (obj: Debugger) => void
+    signalReceived: (obj: Debugger, name: string, description: string) => void
+    abort: (obj: Debugger) => boolean
+    attach: (obj: Debugger, pid: number, sourceSearchDirectories: string[]) => boolean
+    connect: (obj: Debugger, server: string, args: string, terminal: boolean, stop: boolean) => boolean
+    disableLog: (obj: Debugger) => void
+    enableLog: (obj: Debugger, log: MessageView) => void
+    exit: (obj: Debugger) => boolean
+    getState: (obj: Debugger) => DebuggerState
+    handleSignal: (obj: Debugger, name: string, stop: boolean, print: boolean, ignore: boolean) => boolean
+    interrupt: (obj: Debugger) => boolean
+    load: (obj: Debugger, file: string, mimeType: string, sourceSearchDirectories: string[]) => boolean
+    quit: (obj: Debugger) => boolean
+    run: (obj: Debugger) => boolean
+    runFrom: (obj: Debugger, file: string, line: number) => boolean
+    runTo: (obj: Debugger, file: string, line: number) => boolean
+    sendCommand: (obj: Debugger, command: string) => boolean
+    setEnvironment: (obj: Debugger, env: string) => boolean
+    setFrame: (obj: Debugger, frame: number) => boolean
+    setThread: (obj: Debugger, thread: number) => boolean
+    setWorkingDirectory: (obj: Debugger, dir: string) => boolean
+    start: (obj: Debugger, args: string, terminal: boolean, stop: boolean) => boolean
+    stepIn: (obj: Debugger) => boolean
+    stepOut: (obj: Debugger) => boolean
+    stepOver: (obj: Debugger) => boolean
+    unload: (obj: Debugger) => boolean
     static name: string
 }
 class DebuggerInstructionALine {
@@ -6887,15 +7785,15 @@ class DebuggerInstructionALine {
     /**
      * Address of the line
      */
-    readonly address: number
+    address: number
     /**
      * Optional label
      */
-    readonly label: string
+    label: string
     /**
      * Diassembled instruction on the line
      */
-    readonly text: string
+    text: string
     static name: string
 }
 class DebuggerInstructionDisassembly {
@@ -6903,32 +7801,32 @@ class DebuggerInstructionDisassembly {
     /**
      * Number of line
      */
-    readonly size: number
+    size: number
     /**
      * Array of all lines
      */
-    readonly data: DebuggerInstructionALine[]
+    data: DebuggerInstructionALine[]
     static name: string
 }
 abstract class DebuggerInstructionIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerInstructionIface */
-    readonly gIface: DebuggerIface
-    readonly runFromAddress: (obj: DebuggerInstruction, address: number) => boolean
-    readonly runToAddress: (obj: DebuggerInstruction, address: number) => boolean
-    readonly stepInInstruction: (obj: DebuggerInstruction) => boolean
-    readonly stepOverInstruction: (obj: DebuggerInstruction) => boolean
+    gIface: DebuggerIface
+    runFromAddress: (obj: DebuggerInstruction, address: number) => boolean
+    runToAddress: (obj: DebuggerInstruction, address: number) => boolean
+    stepInInstruction: (obj: DebuggerInstruction) => boolean
+    stepOverInstruction: (obj: DebuggerInstruction) => boolean
     static name: string
 }
 class DebuggerMemoryBlock {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerMemoryBlock */
-    readonly address: number
-    readonly length: number
-    readonly data: string
+    address: number
+    length: number
+    data: string
     static name: string
 }
 abstract class DebuggerMemoryIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerMemoryIface */
-    readonly gIface: DebuggerIface
+    gIface: DebuggerIface
     static name: string
 }
 class DebuggerRegisterData {
@@ -6936,28 +7834,28 @@ class DebuggerRegisterData {
     /**
      * register identifier
      */
-    readonly num: number
+    num: number
     /**
      * register name
      */
-    readonly name: string
+    name: string
     /**
      * register value
      */
-    readonly value: string
+    value: string
     static name: string
 }
 abstract class DebuggerRegisterIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerRegisterIface */
-    readonly gIface: DebuggerIface
-    readonly writeRegister: (obj: DebuggerRegister, value: DebuggerRegisterData) => boolean
+    gIface: DebuggerIface
+    writeRegister: (obj: DebuggerRegister, value: DebuggerRegisterData) => boolean
     static name: string
 }
 abstract class DebuggerVariableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerVariableIface */
-    readonly gIface: DebuggerIface
-    readonly assign: (obj: DebuggerVariable, name: string, value: string) => boolean
-    readonly destroy: (obj: DebuggerVariable, name: string) => boolean
+    gIface: DebuggerIface
+    assign: (obj: DebuggerVariable, name: string, value: string) => boolean
+    destroy: (obj: DebuggerVariable, name: string) => boolean
     static name: string
 }
 class DebuggerVariableObject {
@@ -6965,591 +7863,591 @@ class DebuggerVariableObject {
     /**
      * unique variable object name created by backend
      */
-    readonly name: string
+    name: string
     /**
      * corresponding variable name or expression
      */
-    readonly expression: string
+    expression: string
     /**
      * variable type
      */
-    readonly type: string
+    type: string
     /**
      * variable value
      */
-    readonly value: string
+    value: string
     /**
      * TRUE if the variable has changed
      */
-    readonly changed: boolean
+    changed: boolean
     /**
      * TRUE if the variable is outside current scope
      */
-    readonly exited: boolean
+    exited: boolean
     /**
      * TRUE if the variable has been removed
      */
-    readonly deleted: boolean
+    deleted: boolean
     /**
      * Number of variable children, -1 if unknown
      */
-    readonly children: number
+    children: number
     /**
      * TRUE if the children value is wrong
      */
-    readonly hasMore: boolean
+    hasMore: boolean
     static name: string
 }
 abstract class DocumentIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DocumentIface */
-    readonly gIface: GObject.TypeInterface
-    readonly updateUi: (obj: Document) => void
-    readonly beginUndoAction: (obj: Document) => void
-    readonly canRedo: (obj: Document) => boolean
-    readonly canUndo: (obj: Document) => boolean
-    readonly clear: (obj: Document) => void
-    readonly copy: (obj: Document) => void
-    readonly cut: (obj: Document) => void
-    readonly endUndoAction: (obj: Document) => void
-    readonly getFilename: (obj: Document) => string
-    readonly grabFocus: (obj: Document) => void
-    readonly paste: (obj: Document) => void
-    readonly redo: (obj: Document) => void
-    readonly undo: (obj: Document) => void
+    gIface: GObject.TypeInterface
+    updateUi: (obj: Document) => void
+    beginUndoAction: (obj: Document) => void
+    canRedo: (obj: Document) => boolean
+    canUndo: (obj: Document) => boolean
+    clear: (obj: Document) => void
+    copy: (obj: Document) => void
+    cut: (obj: Document) => void
+    endUndoAction: (obj: Document) => void
+    getFilename: (obj: Document) => string
+    grabFocus: (obj: Document) => void
+    paste: (obj: Document) => void
+    redo: (obj: Document) => void
+    undo: (obj: Document) => void
     static name: string
 }
 abstract class DocumentManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DocumentManagerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly documentAdded: (obj: DocumentManager, doc: Document) => void
-    readonly documentRemoved: (obj: DocumentManager, doc: Document) => void
-    readonly addBookmark: (obj: DocumentManager, file: Gio.File, line: number) => void
-    readonly addBuffer: (obj: DocumentManager, name: string, content: string) => Editor
-    readonly addDocument: (obj: DocumentManager, document: Document) => void
-    readonly findDocumentWithFile: (obj: DocumentManager, file: Gio.File) => Document
-    readonly getCurrentDocument: (obj: DocumentManager) => Document
-    readonly getDocWidgets: (obj: DocumentManager) => Gtk.Widget[]
-    readonly getFile: (obj: DocumentManager, filename: string) => Gio.File
-    readonly gotoFileLine: (obj: DocumentManager, file: Gio.File, lineno: number) => Editor
-    readonly gotoFileLineMark: (obj: DocumentManager, file: Gio.File, lineno: number, mark: boolean) => Editor
-    readonly removeDocument: (obj: DocumentManager, document: Document, saveBefore: boolean) => boolean
-    readonly setCurrentDocument: (obj: DocumentManager, document: Document) => void
+    gIface: GObject.TypeInterface
+    documentAdded: (obj: DocumentManager, doc: Document) => void
+    documentRemoved: (obj: DocumentManager, doc: Document) => void
+    addBookmark: (obj: DocumentManager, file: Gio.File, line: number) => void
+    addBuffer: (obj: DocumentManager, name: string, content: string) => Editor
+    addDocument: (obj: DocumentManager, document: Document) => void
+    findDocumentWithFile: (obj: DocumentManager, file: Gio.File) => Document
+    getCurrentDocument: (obj: DocumentManager) => Document
+    getDocWidgets: (obj: DocumentManager) => Gtk.Widget[]
+    getFile: (obj: DocumentManager, filename: string) => Gio.File
+    gotoFileLine: (obj: DocumentManager, file: Gio.File, lineno: number) => Editor
+    gotoFileLineMark: (obj: DocumentManager, file: Gio.File, lineno: number, mark: boolean) => Editor
+    removeDocument: (obj: DocumentManager, document: Document, saveBefore: boolean) => boolean
+    setCurrentDocument: (obj: DocumentManager, document: Document) => void
     static name: string
 }
 abstract class EditorAssistIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorAssistIface */
-    readonly gIface: EditorIface
-    readonly cancelled: (obj: EditorAssist) => void
-    readonly add: (obj: EditorAssist, provider: Provider) => void
-    readonly invoke: (obj: EditorAssist, provider: Provider) => void
-    readonly proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], preWord: string, finished: boolean) => void
-    readonly remove: (obj: EditorAssist, provider: Provider) => void
+    gIface: EditorIface
+    cancelled: (obj: EditorAssist) => void
+    add: (obj: EditorAssist, provider: Provider) => void
+    invoke: (obj: EditorAssist, provider: Provider) => void
+    proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], preWord: string, finished: boolean) => void
+    remove: (obj: EditorAssist, provider: Provider) => void
     static name: string
 }
 class EditorAssistProposal {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorAssistProposal */
-    readonly label: string
-    readonly markup: string
-    readonly info: string
-    readonly text: string
-    readonly icon: GdkPixbuf.Pixbuf
-    readonly data: object
+    label: string
+    markup: string
+    info: string
+    text: string
+    icon: GdkPixbuf.Pixbuf
+    data: object
     static name: string
 }
 abstract class EditorCellIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorCellIface */
-    readonly gIface: GObject.TypeInterface
-    readonly getAttribute: (obj: EditorCell) => EditorAttribute
-    readonly getChar: (obj: EditorCell, charIndex: number) => number
-    readonly getCharacter: (obj: EditorCell) => string
-    readonly getLength: (obj: EditorCell) => number
+    gIface: GObject.TypeInterface
+    getAttribute: (obj: EditorCell) => EditorAttribute
+    getChar: (obj: EditorCell, charIndex: number) => number
+    getCharacter: (obj: EditorCell) => string
+    getLength: (obj: EditorCell) => number
     static name: string
 }
 abstract class EditorCellStyleIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorCellStyleIface */
-    readonly gIface: EditorCellIface
-    readonly getBackgroundColor: (obj: EditorCellStyle) => string
-    readonly getColor: (obj: EditorCellStyle) => string
-    readonly getFontDescription: (obj: EditorCellStyle) => string
+    gIface: EditorCellIface
+    getBackgroundColor: (obj: EditorCellStyle) => string
+    getColor: (obj: EditorCellStyle) => string
+    getFontDescription: (obj: EditorCellStyle) => string
     static name: string
 }
 abstract class EditorCommentIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorCommentIface */
-    readonly gIface: EditorIface
-    readonly block: (obj: EditorComment) => void
-    readonly box: (obj: EditorComment) => void
-    readonly stream: (obj: EditorComment) => void
+    gIface: EditorIface
+    block: (obj: EditorComment) => void
+    box: (obj: EditorComment) => void
+    stream: (obj: EditorComment) => void
     static name: string
 }
 abstract class EditorConvertIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorConvertIface */
-    readonly gIface: EditorIface
-    readonly toLower: (obj: EditorConvert, startPosition: Iterable, endPosition: Iterable) => void
-    readonly toUpper: (obj: EditorConvert, startPosition: Iterable, endPosition: Iterable) => void
+    gIface: EditorIface
+    toLower: (obj: EditorConvert, startPosition: Iterable, endPosition: Iterable) => void
+    toUpper: (obj: EditorConvert, startPosition: Iterable, endPosition: Iterable) => void
     static name: string
 }
 abstract class EditorFactoryIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorFactoryIface */
-    readonly gIface: GObject.TypeInterface
+    gIface: GObject.TypeInterface
     static name: string
 }
 abstract class EditorFoldsIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorFoldsIface */
-    readonly gIface: EditorIface
-    readonly closeAll: (obj: EditorFolds) => void
-    readonly openAll: (obj: EditorFolds) => void
-    readonly toggleCurrent: (obj: EditorFolds) => void
+    gIface: EditorIface
+    closeAll: (obj: EditorFolds) => void
+    openAll: (obj: EditorFolds) => void
+    toggleCurrent: (obj: EditorFolds) => void
     static name: string
 }
 abstract class EditorGladeSignalIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorGladeSignalIface */
-    readonly gIface: EditorIface
-    readonly drop: (obj: EditorGladeSignal, iterator: Iterable, signalData: string) => void
-    readonly dropPossible: (obj: EditorGladeSignal, iterator: Iterable) => boolean
+    gIface: EditorIface
+    drop: (obj: EditorGladeSignal, iterator: Iterable, signalData: string) => void
+    dropPossible: (obj: EditorGladeSignal, iterator: Iterable) => boolean
     static name: string
 }
 abstract class EditorGotoIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorGotoIface */
-    readonly gIface: EditorIface
-    readonly endBlock: (obj: EditorGoto) => void
-    readonly matchingBrace: (obj: EditorGoto) => void
-    readonly startBlock: (obj: EditorGoto) => void
+    gIface: EditorIface
+    endBlock: (obj: EditorGoto) => void
+    matchingBrace: (obj: EditorGoto) => void
+    startBlock: (obj: EditorGoto) => void
     static name: string
 }
 abstract class EditorHoverIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorHoverIface */
-    readonly gIface: EditorIface
-    readonly hoverLeave: (obj: EditorHover, position: Iterable) => void
-    readonly hoverOver: (obj: EditorHover, position: Iterable) => void
-    readonly display: (obj: EditorHover, position: Iterable, info: string) => void
+    gIface: EditorIface
+    hoverLeave: (obj: EditorHover, position: Iterable) => void
+    hoverOver: (obj: EditorHover, position: Iterable) => void
+    display: (obj: EditorHover, position: Iterable, info: string) => void
     static name: string
 }
 abstract class EditorIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorIface */
-    readonly gIface: GObject.TypeInterface
-    readonly backspace: (obj: Editor) => void
-    readonly changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string) => void
-    readonly charAdded: (obj: Editor, position: Iterable, ch: number) => void
-    readonly codeChanged: (obj: Editor, position: Iterable, code: string) => void
-    readonly cursorMoved: (obj: Editor) => void
-    readonly gladeCallbackAdd: (obj: Editor, widgetTypename: string, signalName: string, handlerName: string, object: string, swap: boolean, after: boolean, filename: string) => void
-    readonly gladeMemberAdd: (obj: Editor, widgetTypename: string, widgetName: string, filename: string) => void
-    readonly lineMarksGutterClicked: (obj: Editor, location: number) => void
-    readonly append: (obj: Editor, text: string, length: number) => void
-    readonly erase: (obj: Editor, positionStart: Iterable, positionEnd: Iterable) => void
-    readonly eraseAll: (obj: Editor) => void
-    readonly getColumn: (obj: Editor) => number
-    readonly getCurrentWord: (obj: Editor) => string
-    readonly getEndPosition: (obj: Editor) => Iterable
-    readonly getIndentsize: (obj: Editor) => number
-    readonly getLength: (obj: Editor) => number
-    readonly getLineBeginPosition: (obj: Editor, line: number) => Iterable
-    readonly getLineEndPosition: (obj: Editor, line: number) => Iterable
-    readonly getLineFromPosition: (obj: Editor, position: Iterable) => number
-    readonly getLineno: (obj: Editor) => number
-    readonly getOffset: (obj: Editor) => number
-    readonly getOverwrite: (obj: Editor) => boolean
-    readonly getPosition: (obj: Editor) => Iterable
-    readonly getStartPosition: (obj: Editor) => Iterable
-    readonly getTabsize: (obj: Editor) => number
-    readonly getText: (obj: Editor, begin: Iterable, end: Iterable) => string
-    readonly getTextAll: (obj: Editor) => string
-    readonly getUseSpaces: (obj: Editor) => boolean
-    readonly gotoEnd: (obj: Editor) => void
-    readonly gotoLine: (obj: Editor, lineno: number) => void
-    readonly gotoPosition: (obj: Editor, position: Iterable) => void
-    readonly gotoStart: (obj: Editor) => void
-    readonly insert: (obj: Editor, position: Iterable, text: string, length: number) => void
-    readonly setAutoIndent: (obj: Editor, autoIndent: boolean) => void
-    readonly setIndentsize: (obj: Editor, indentsize: number) => void
-    readonly setPopupMenu: (obj: Editor, menu: Gtk.Widget) => void
-    readonly setTabsize: (obj: Editor, tabsize: number) => void
-    readonly setUseSpaces: (obj: Editor, useSpaces: boolean) => void
+    gIface: GObject.TypeInterface
+    backspace: (obj: Editor) => void
+    changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string) => void
+    charAdded: (obj: Editor, position: Iterable, ch: number) => void
+    codeChanged: (obj: Editor, position: Iterable, code: string) => void
+    cursorMoved: (obj: Editor) => void
+    gladeCallbackAdd: (obj: Editor, widgetTypename: string, signalName: string, handlerName: string, object: string, swap: boolean, after: boolean, filename: string) => void
+    gladeMemberAdd: (obj: Editor, widgetTypename: string, widgetName: string, filename: string) => void
+    lineMarksGutterClicked: (obj: Editor, location: number) => void
+    append: (obj: Editor, text: string, length: number) => void
+    erase: (obj: Editor, positionStart: Iterable, positionEnd: Iterable) => void
+    eraseAll: (obj: Editor) => void
+    getColumn: (obj: Editor) => number
+    getCurrentWord: (obj: Editor) => string
+    getEndPosition: (obj: Editor) => Iterable
+    getIndentsize: (obj: Editor) => number
+    getLength: (obj: Editor) => number
+    getLineBeginPosition: (obj: Editor, line: number) => Iterable
+    getLineEndPosition: (obj: Editor, line: number) => Iterable
+    getLineFromPosition: (obj: Editor, position: Iterable) => number
+    getLineno: (obj: Editor) => number
+    getOffset: (obj: Editor) => number
+    getOverwrite: (obj: Editor) => boolean
+    getPosition: (obj: Editor) => Iterable
+    getStartPosition: (obj: Editor) => Iterable
+    getTabsize: (obj: Editor) => number
+    getText: (obj: Editor, begin: Iterable, end: Iterable) => string
+    getTextAll: (obj: Editor) => string
+    getUseSpaces: (obj: Editor) => boolean
+    gotoEnd: (obj: Editor) => void
+    gotoLine: (obj: Editor, lineno: number) => void
+    gotoPosition: (obj: Editor, position: Iterable) => void
+    gotoStart: (obj: Editor) => void
+    insert: (obj: Editor, position: Iterable, text: string, length: number) => void
+    setAutoIndent: (obj: Editor, autoIndent: boolean) => void
+    setIndentsize: (obj: Editor, indentsize: number) => void
+    setPopupMenu: (obj: Editor, menu: Gtk.Widget) => void
+    setTabsize: (obj: Editor, tabsize: number) => void
+    setUseSpaces: (obj: Editor, useSpaces: boolean) => void
     static name: string
 }
 abstract class EditorLanguageIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorLanguageIface */
-    readonly gIface: EditorIface
-    readonly languageChanged: (obj: EditorLanguage, language: string) => void
-    readonly getLanguage: (obj: EditorLanguage) => string
-    readonly getLanguageName: (obj: EditorLanguage, language: string) => string
-    readonly getSupportedLanguages: (obj: EditorLanguage) => string[]
-    readonly setLanguage: (obj: EditorLanguage, language: string) => void
+    gIface: EditorIface
+    languageChanged: (obj: EditorLanguage, language: string) => void
+    getLanguage: (obj: EditorLanguage) => string
+    getLanguageName: (obj: EditorLanguage, language: string) => string
+    getSupportedLanguages: (obj: EditorLanguage) => string[]
+    setLanguage: (obj: EditorLanguage, language: string) => void
     static name: string
 }
 abstract class EditorLineModeIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorLineModeIface */
-    readonly gIface: EditorIface
-    readonly convert: (obj: EditorLineMode, mode: EditorLineModeType) => void
-    readonly fix: (obj: EditorLineMode) => void
-    readonly get: (obj: EditorLineMode) => EditorLineModeType
-    readonly set: (obj: EditorLineMode, mode: EditorLineModeType) => void
+    gIface: EditorIface
+    convert: (obj: EditorLineMode, mode: EditorLineModeType) => void
+    fix: (obj: EditorLineMode) => void
+    get: (obj: EditorLineMode) => EditorLineModeType
+    set: (obj: EditorLineMode, mode: EditorLineModeType) => void
     static name: string
 }
 abstract class EditorSearchIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorSearchIface */
-    readonly gIface: EditorIface
-    readonly backward: (obj: EditorSearch, search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
-    readonly forward: (obj: EditorSearch, search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+    gIface: EditorIface
+    backward: (obj: EditorSearch, search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+    forward: (obj: EditorSearch, search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
     static name: string
 }
 abstract class EditorSelectionIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorSelectionIface */
-    readonly gIface: EditorIface
-    readonly get: (obj: EditorSelection) => string
-    readonly hasSelection: (obj: EditorSelection) => boolean
-    readonly replace: (obj: EditorSelection, text: string, length: number) => void
-    readonly selectAll: (obj: EditorSelection) => void
-    readonly selectBlock: (obj: EditorSelection) => void
-    readonly selectFunction: (obj: EditorSelection) => void
-    readonly set: (obj: EditorSelection, start: Iterable, end: Iterable, scroll: boolean) => void
+    gIface: EditorIface
+    get: (obj: EditorSelection) => string
+    hasSelection: (obj: EditorSelection) => boolean
+    replace: (obj: EditorSelection, text: string, length: number) => void
+    selectAll: (obj: EditorSelection) => void
+    selectBlock: (obj: EditorSelection) => void
+    selectFunction: (obj: EditorSelection) => void
+    set: (obj: EditorSelection, start: Iterable, end: Iterable, scroll: boolean) => void
     static name: string
 }
 abstract class EditorTipIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorTipIface */
-    readonly gIface: EditorIface
-    readonly cancel: (obj: EditorTip) => void
-    readonly show: (obj: EditorTip, tips: string[], position: Iterable) => void
-    readonly visible: (obj: EditorTip) => boolean
+    gIface: EditorIface
+    cancel: (obj: EditorTip) => void
+    show: (obj: EditorTip, tips: string[], position: Iterable) => void
+    visible: (obj: EditorTip) => boolean
     static name: string
 }
 abstract class EditorViewIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorViewIface */
-    readonly gIface: EditorIface
-    readonly create: (obj: EditorView) => void
-    readonly getCount: (obj: EditorView) => number
-    readonly removeCurrent: (obj: EditorView) => void
+    gIface: EditorIface
+    create: (obj: EditorView) => void
+    getCount: (obj: EditorView) => number
+    removeCurrent: (obj: EditorView) => void
     static name: string
 }
 abstract class EditorZoomIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorZoomIface */
-    readonly gIface: EditorIface
-    readonly in_: (obj: EditorZoom) => void
-    readonly out: (obj: EditorZoom) => void
+    gIface: EditorIface
+    in_: (obj: EditorZoom) => void
+    out: (obj: EditorZoom) => void
     static name: string
 }
 abstract class EnvironmentIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EnvironmentIface */
-    readonly gIface: GObject.TypeInterface
-    readonly getRealDirectory: (obj: Environment, dir: string) => string
-    readonly override: (obj: Environment, dirp: string, argvp: string, envp: string) => boolean
+    gIface: GObject.TypeInterface
+    getRealDirectory: (obj: Environment, dir: string) => string
+    override: (obj: Environment, dirp: string, argvp: string, envp: string) => boolean
     static name: string
 }
 abstract class FileIface {
     /* Fields of IAnjuta-3.0.IAnjuta.FileIface */
-    readonly gIface: GObject.TypeInterface
-    readonly opened: (obj: File) => void
-    readonly getFile: (obj: File) => Gio.File
-    readonly open: (obj: File, file: Gio.File) => void
+    gIface: GObject.TypeInterface
+    opened: (obj: File) => void
+    getFile: (obj: File) => Gio.File
+    open: (obj: File, file: Gio.File) => void
     static name: string
 }
 abstract class FileLoaderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.FileLoaderIface */
-    readonly gIface: LoaderIface
-    readonly peekInterface: (obj: FileLoader, file: Gio.File) => string
+    gIface: LoaderIface
+    peekInterface: (obj: FileLoader, file: Gio.File) => string
     static name: string
 }
 abstract class FileManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.FileManagerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly sectionChanged: (obj: FileManager, file: Gio.File) => void
-    readonly setRoot: (obj: FileManager, rootUri: string) => void
-    readonly setSelected: (obj: FileManager, file: Gio.File) => void
+    gIface: GObject.TypeInterface
+    sectionChanged: (obj: FileManager, file: Gio.File) => void
+    setRoot: (obj: FileManager, rootUri: string) => void
+    setSelected: (obj: FileManager, file: Gio.File) => void
     static name: string
 }
 abstract class FileSavableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.FileSavableIface */
-    readonly gIface: FileIface
-    readonly saved: (obj: FileSavable, file: Gio.File) => void
-    readonly updateSaveUi: (obj: FileSavable) => void
-    readonly isConflict: (obj: FileSavable) => boolean
-    readonly isDirty: (obj: FileSavable) => boolean
-    readonly isReadOnly: (obj: FileSavable) => boolean
-    readonly save: (obj: FileSavable) => void
-    readonly saveAs: (obj: FileSavable, file: Gio.File) => void
-    readonly setDirty: (obj: FileSavable, dirty: boolean) => void
+    gIface: FileIface
+    saved: (obj: FileSavable, file: Gio.File) => void
+    updateSaveUi: (obj: FileSavable) => void
+    isConflict: (obj: FileSavable) => boolean
+    isDirty: (obj: FileSavable) => boolean
+    isReadOnly: (obj: FileSavable) => boolean
+    save: (obj: FileSavable) => void
+    saveAs: (obj: FileSavable, file: Gio.File) => void
+    setDirty: (obj: FileSavable, dirty: boolean) => void
     static name: string
 }
 abstract class GladeIface {
     /* Fields of IAnjuta-3.0.IAnjuta.GladeIface */
-    readonly gIface: GObject.TypeInterface
-    readonly addAssociation: (obj: Glade, master: string, slave: string) => void
+    gIface: GObject.TypeInterface
+    addAssociation: (obj: Glade, master: string, slave: string) => void
     static name: string
 }
 abstract class HelpIface {
     /* Fields of IAnjuta-3.0.IAnjuta.HelpIface */
-    readonly gIface: GObject.TypeInterface
-    readonly search: (obj: Help, query: string) => void
+    gIface: GObject.TypeInterface
+    search: (obj: Help, query: string) => void
     static name: string
 }
 abstract class IndenterIface {
     /* Fields of IAnjuta-3.0.IAnjuta.IndenterIface */
-    readonly gIface: GObject.TypeInterface
-    readonly indent: (obj: Indenter, start: Iterable, end: Iterable) => void
+    gIface: GObject.TypeInterface
+    indent: (obj: Indenter, start: Iterable, end: Iterable) => void
     static name: string
 }
 abstract class IndicableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.IndicableIface */
-    readonly gIface: GObject.TypeInterface
-    readonly clear: (obj: Indicable) => void
-    readonly set: (obj: Indicable, beginLocation: Iterable, endLocation: Iterable, indicator: IndicableIndicator) => void
+    gIface: GObject.TypeInterface
+    clear: (obj: Indicable) => void
+    set: (obj: Indicable, beginLocation: Iterable, endLocation: Iterable, indicator: IndicableIndicator) => void
     static name: string
 }
 abstract class IterableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.IterableIface */
-    readonly gIface: GObject.TypeInterface
-    readonly assign: (obj: Iterable, srcIter: Iterable) => void
-    readonly clone: (obj: Iterable) => Iterable
-    readonly compare: (obj: Iterable, iter2: Iterable) => number
-    readonly diff: (obj: Iterable, iter2: Iterable) => number
-    readonly first: (obj: Iterable) => boolean
-    readonly getLength: (obj: Iterable) => number
-    readonly getPosition: (obj: Iterable) => number
-    readonly last: (obj: Iterable) => boolean
-    readonly next: (obj: Iterable) => boolean
-    readonly previous: (obj: Iterable) => boolean
-    readonly setPosition: (obj: Iterable, position: number) => boolean
+    gIface: GObject.TypeInterface
+    assign: (obj: Iterable, srcIter: Iterable) => void
+    clone: (obj: Iterable) => Iterable
+    compare: (obj: Iterable, iter2: Iterable) => number
+    diff: (obj: Iterable, iter2: Iterable) => number
+    first: (obj: Iterable) => boolean
+    getLength: (obj: Iterable) => number
+    getPosition: (obj: Iterable) => number
+    last: (obj: Iterable) => boolean
+    next: (obj: Iterable) => boolean
+    previous: (obj: Iterable) => boolean
+    setPosition: (obj: Iterable, position: number) => boolean
     static name: string
 }
 abstract class IterableTreeIface {
     /* Fields of IAnjuta-3.0.IAnjuta.IterableTreeIface */
-    readonly gIface: IterableIface
-    readonly children: (obj: IterableTree) => boolean
-    readonly hasChildren: (obj: IterableTree) => boolean
-    readonly parent: (obj: IterableTree) => boolean
+    gIface: IterableIface
+    children: (obj: IterableTree) => boolean
+    hasChildren: (obj: IterableTree) => boolean
+    parent: (obj: IterableTree) => boolean
     static name: string
 }
 abstract class LanguageIface {
     /* Fields of IAnjuta-3.0.IAnjuta.LanguageIface */
-    readonly gIface: GObject.TypeInterface
-    readonly getFromEditor: (obj: Language, editor: EditorLanguage) => LanguageId
-    readonly getFromMimeType: (obj: Language, mimeType: string) => LanguageId
-    readonly getFromString: (obj: Language, string: string) => LanguageId
-    readonly getLanguages: (obj: Language) => number[]
-    readonly getMakeTarget: (obj: Language, id: LanguageId) => string
-    readonly getName: (obj: Language, id: LanguageId) => string
-    readonly getNameFromEditor: (obj: Language, editor: EditorLanguage) => string
+    gIface: GObject.TypeInterface
+    getFromEditor: (obj: Language, editor: EditorLanguage) => LanguageId
+    getFromMimeType: (obj: Language, mimeType: string) => LanguageId
+    getFromString: (obj: Language, string: string) => LanguageId
+    getLanguages: (obj: Language) => number[]
+    getMakeTarget: (obj: Language, id: LanguageId) => string
+    getName: (obj: Language, id: LanguageId) => string
+    getNameFromEditor: (obj: Language, editor: EditorLanguage) => string
     static name: string
 }
 abstract class LanguageProviderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.LanguageProviderIface */
-    readonly gIface: ProviderIface
-    readonly getCalltipCache: (obj: LanguageProvider, callContext: string) => string[]
-    readonly getCalltipContext: (obj: LanguageProvider, iter: Iterable) => string
-    readonly newCalltip: (obj: LanguageProvider, callContext: string, iter: Iterable) => void
-    readonly populateCompletions: (obj: LanguageProvider, iter: Iterable) => Iterable | null
+    gIface: ProviderIface
+    getCalltipCache: (obj: LanguageProvider, callContext: string) => string[]
+    getCalltipContext: (obj: LanguageProvider, iter: Iterable) => string
+    newCalltip: (obj: LanguageProvider, callContext: string, iter: Iterable) => void
+    populateCompletions: (obj: LanguageProvider, iter: Iterable) => Iterable | null
     static name: string
 }
 abstract class LoaderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.LoaderIface */
-    readonly gIface: GObject.TypeInterface
+    gIface: GObject.TypeInterface
     static name: string
 }
 abstract class MarkableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.MarkableIface */
-    readonly gIface: GObject.TypeInterface
-    readonly markerClicked: (obj: Markable, doubleClick: boolean, location: number) => void
-    readonly deleteAllMarkers: (obj: Markable, marker: MarkableMarker) => void
-    readonly isMarkerSet: (obj: Markable, location: number, marker: MarkableMarker) => boolean
-    readonly locationFromHandle: (obj: Markable, handle: number) => number
-    readonly mark: (obj: Markable, location: number, marker: MarkableMarker, tooltip?: string | null) => number
-    readonly unmark: (obj: Markable, location: number, marker: MarkableMarker) => void
+    gIface: GObject.TypeInterface
+    markerClicked: (obj: Markable, doubleClick: boolean, location: number) => void
+    deleteAllMarkers: (obj: Markable, marker: MarkableMarker) => void
+    isMarkerSet: (obj: Markable, location: number, marker: MarkableMarker) => boolean
+    locationFromHandle: (obj: Markable, handle: number) => number
+    mark: (obj: Markable, location: number, marker: MarkableMarker, tooltip?: string | null) => number
+    unmark: (obj: Markable, location: number, marker: MarkableMarker) => void
     static name: string
 }
 abstract class MessageManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.MessageManagerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly removeView: (obj: MessageManager, view: MessageView) => void
-    readonly setCurrentView: (obj: MessageManager, view: MessageView) => void
-    readonly setViewIcon: (obj: MessageManager, view: MessageView, icon: GdkPixbuf.PixbufAnimation) => void
-    readonly setViewIconFromStock: (obj: MessageManager, view: MessageView, icon: string) => void
-    readonly setViewTitle: (obj: MessageManager, view: MessageView, title: string) => void
+    gIface: GObject.TypeInterface
+    removeView: (obj: MessageManager, view: MessageView) => void
+    setCurrentView: (obj: MessageManager, view: MessageView) => void
+    setViewIcon: (obj: MessageManager, view: MessageView, icon: GdkPixbuf.PixbufAnimation) => void
+    setViewIconFromStock: (obj: MessageManager, view: MessageView, icon: string) => void
+    setViewTitle: (obj: MessageManager, view: MessageView, title: string) => void
     static name: string
 }
 abstract class MessageViewIface {
     /* Fields of IAnjuta-3.0.IAnjuta.MessageViewIface */
-    readonly gIface: GObject.TypeInterface
-    readonly bufferFlushed: (obj: MessageView, line: string) => void
-    readonly messageClicked: (obj: MessageView, message: string) => void
-    readonly append: (obj: MessageView, type: MessageViewType, summary: string, details: string) => void
-    readonly bufferAppend: (obj: MessageView, text: string) => void
-    readonly clear: (obj: MessageView) => void
-    readonly getCurrentMessage: (obj: MessageView) => string
-    readonly selectNext: (obj: MessageView) => void
-    readonly selectPrevious: (obj: MessageView) => void
+    gIface: GObject.TypeInterface
+    bufferFlushed: (obj: MessageView, line: string) => void
+    messageClicked: (obj: MessageView, message: string) => void
+    append: (obj: MessageView, type: MessageViewType, summary: string, details: string) => void
+    bufferAppend: (obj: MessageView, text: string) => void
+    clear: (obj: MessageView) => void
+    getCurrentMessage: (obj: MessageView) => string
+    selectNext: (obj: MessageView) => void
+    selectPrevious: (obj: MessageView) => void
     static name: string
 }
 abstract class PluginFactoryIface {
     /* Fields of IAnjuta-3.0.IAnjuta.PluginFactoryIface */
-    readonly gIface: GObject.TypeInterface
+    gIface: GObject.TypeInterface
     static name: string
 }
 abstract class PreferencesIface {
     /* Fields of IAnjuta-3.0.IAnjuta.PreferencesIface */
-    readonly gIface: GObject.TypeInterface
-    readonly merge: (obj: Preferences, prefs: Anjuta.Preferences) => void
-    readonly unmerge: (obj: Preferences, prefs: Anjuta.Preferences) => void
+    gIface: GObject.TypeInterface
+    merge: (obj: Preferences, prefs: Anjuta.Preferences) => void
+    unmerge: (obj: Preferences, prefs: Anjuta.Preferences) => void
     static name: string
 }
 abstract class PrintIface {
     /* Fields of IAnjuta-3.0.IAnjuta.PrintIface */
-    readonly gIface: GObject.TypeInterface
-    readonly print: (obj: Print) => void
-    readonly printPreview: (obj: Print) => void
+    gIface: GObject.TypeInterface
+    print: (obj: Print) => void
+    printPreview: (obj: Print) => void
     static name: string
 }
 abstract class ProjectBackendIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProjectBackendIface */
-    readonly gIface: GObject.TypeInterface
-    readonly newProject: (obj: ProjectBackend, file: Gio.File) => Project
-    readonly probe: (obj: ProjectBackend, directory: Gio.File) => number
+    gIface: GObject.TypeInterface
+    newProject: (obj: ProjectBackend, file: Gio.File) => Project
+    probe: (obj: ProjectBackend, directory: Gio.File) => number
     static name: string
 }
 abstract class ProjectChooserIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProjectChooserIface */
-    readonly gIface: GObject.TypeInterface
-    readonly changed: (obj: ProjectChooser) => void
-    readonly getSelected: (obj: ProjectChooser) => Gio.File
-    readonly setProjectModel: (obj: ProjectChooser, manager: ProjectManager, childType: Anjuta.ProjectNodeType) => boolean
+    gIface: GObject.TypeInterface
+    changed: (obj: ProjectChooser) => void
+    getSelected: (obj: ProjectChooser) => Gio.File
+    setProjectModel: (obj: ProjectChooser, manager: ProjectManager, childType: Anjuta.ProjectNodeType) => boolean
     static name: string
 }
 abstract class ProjectIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProjectIface */
-    readonly gIface: GObject.TypeInterface
-    readonly fileChanged: (obj: Project, node?: object | null) => void
-    readonly nodeChanged: (obj: Project, node: object | null, error: GLib.Error) => void
-    readonly nodeLoaded: (obj: Project, node: object | null, error: GLib.Error) => void
-    readonly nodeSaved: (obj: Project, node: object | null, error: GLib.Error) => void
-    readonly addNodeAfter: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
-    readonly addNodeBefore: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
-    readonly getNodeInfo: (obj: Project) => Anjuta.ProjectNodeInfo[]
-    readonly getRoot: (obj: Project) => Anjuta.ProjectNode
-    readonly isLoaded: (obj: Project) => boolean
-    readonly loadNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    readonly removeNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    readonly removeProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name?: string | null) => boolean
-    readonly saveNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    readonly setProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null, value: string) => Anjuta.ProjectProperty | null
+    gIface: GObject.TypeInterface
+    fileChanged: (obj: Project, node?: object | null) => void
+    nodeChanged: (obj: Project, node: object | null, error: GLib.Error) => void
+    nodeLoaded: (obj: Project, node: object | null, error: GLib.Error) => void
+    nodeSaved: (obj: Project, node: object | null, error: GLib.Error) => void
+    addNodeAfter: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
+    addNodeBefore: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
+    getNodeInfo: (obj: Project) => Anjuta.ProjectNodeInfo[]
+    getRoot: (obj: Project) => Anjuta.ProjectNode
+    isLoaded: (obj: Project) => boolean
+    loadNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
+    removeNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
+    removeProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name?: string | null) => boolean
+    saveNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
+    setProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null, value: string) => Anjuta.ProjectProperty | null
     static name: string
 }
 abstract class ProjectManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProjectManagerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly elementAdded: (obj: ProjectManager, element: Gio.File) => void
-    readonly elementRemoved: (obj: ProjectManager, element: Gio.File) => void
-    readonly elementSelected: (obj: ProjectManager, element: Gio.File) => void
-    readonly projectLoaded: (obj: ProjectManager, error: GLib.Error) => void
-    readonly addGroup: (obj: ProjectManager, name: string, defaultGroup?: Gio.File | null) => Gio.File
-    readonly addSource: (obj: ProjectManager, name: string, defaultTarget?: Gio.File | null) => Gio.File
-    readonly addSourceQuiet: (obj: ProjectManager, name: string, target: Gio.File) => Gio.File
-    readonly addSources: (obj: ProjectManager, names: string[], defaultTarget?: Gio.File | null) => Gio.File[]
-    readonly addTarget: (obj: ProjectManager, name: string, defaultGroup?: Gio.File | null) => Gio.File
-    readonly getCapabilities: (obj: ProjectManager) => number
-    readonly getChildren: (obj: ProjectManager, parent: Gio.File, childrenType: number) => Gio.File[]
-    readonly getCurrentProject: (obj: ProjectManager) => Project
-    readonly getElements: (obj: ProjectManager, elementType: Anjuta.ProjectNodeType) => Gio.File[]
-    readonly getPackages: (obj: ProjectManager) => string[]
-    readonly getSelected: (obj: ProjectManager) => Gio.File
-    readonly getTargetType: (obj: ProjectManager, target: Gio.File) => Anjuta.ProjectNodeType
-    readonly getTargets: (obj: ProjectManager, targetType: Anjuta.ProjectNodeType) => Gio.File[]
-    readonly isOpen: (obj: ProjectManager) => boolean
-    readonly removeFile: (obj: ProjectManager, file: Gio.File) => boolean
+    gIface: GObject.TypeInterface
+    elementAdded: (obj: ProjectManager, element: Gio.File) => void
+    elementRemoved: (obj: ProjectManager, element: Gio.File) => void
+    elementSelected: (obj: ProjectManager, element: Gio.File) => void
+    projectLoaded: (obj: ProjectManager, error: GLib.Error) => void
+    addGroup: (obj: ProjectManager, name: string, defaultGroup?: Gio.File | null) => Gio.File
+    addSource: (obj: ProjectManager, name: string, defaultTarget?: Gio.File | null) => Gio.File
+    addSourceQuiet: (obj: ProjectManager, name: string, target: Gio.File) => Gio.File
+    addSources: (obj: ProjectManager, names: string[], defaultTarget?: Gio.File | null) => Gio.File[]
+    addTarget: (obj: ProjectManager, name: string, defaultGroup?: Gio.File | null) => Gio.File
+    getCapabilities: (obj: ProjectManager) => number
+    getChildren: (obj: ProjectManager, parent: Gio.File, childrenType: number) => Gio.File[]
+    getCurrentProject: (obj: ProjectManager) => Project
+    getElements: (obj: ProjectManager, elementType: Anjuta.ProjectNodeType) => Gio.File[]
+    getPackages: (obj: ProjectManager) => string[]
+    getSelected: (obj: ProjectManager) => Gio.File
+    getTargetType: (obj: ProjectManager, target: Gio.File) => Anjuta.ProjectNodeType
+    getTargets: (obj: ProjectManager, targetType: Anjuta.ProjectNodeType) => Gio.File[]
+    isOpen: (obj: ProjectManager) => boolean
+    removeFile: (obj: ProjectManager, file: Gio.File) => boolean
     static name: string
 }
 abstract class ProviderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProviderIface */
-    readonly gIface: GObject.TypeInterface
-    readonly activate: (obj: Provider, iter: Iterable, data?: object | null) => void
-    readonly getName: (obj: Provider) => string
-    readonly getStartIter: (obj: Provider) => Iterable
-    readonly populate: (obj: Provider, iter: Iterable) => void
+    gIface: GObject.TypeInterface
+    activate: (obj: Provider, iter: Iterable, data?: object | null) => void
+    getName: (obj: Provider) => string
+    getStartIter: (obj: Provider) => Iterable
+    populate: (obj: Provider, iter: Iterable) => void
     static name: string
 }
 abstract class SnippetsManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.SnippetsManagerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly insert: (obj: SnippetsManager, key: string, editingSession: boolean) => boolean
+    gIface: GObject.TypeInterface
+    insert: (obj: SnippetsManager, key: string, editingSession: boolean) => boolean
     static name: string
 }
 abstract class StreamIface {
     /* Fields of IAnjuta-3.0.IAnjuta.StreamIface */
-    readonly gIface: GObject.TypeInterface
-    readonly open: (obj: Stream, stream?: object | null) => void
+    gIface: GObject.TypeInterface
+    open: (obj: Stream, stream?: object | null) => void
     static name: string
 }
 abstract class StreamLoaderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.StreamLoaderIface */
-    readonly gIface: LoaderIface
-    readonly peekInterface: (obj: StreamLoader, stream?: object | null) => string
+    gIface: LoaderIface
+    peekInterface: (obj: StreamLoader, stream?: object | null) => string
     static name: string
 }
 abstract class StreamSavableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.StreamSavableIface */
-    readonly gIface: StreamIface
-    readonly save: (obj: StreamSavable, stream?: object | null) => void
+    gIface: StreamIface
+    save: (obj: StreamSavable, stream?: object | null) => void
     static name: string
 }
 abstract class SymbolIface {
     /* Fields of IAnjuta-3.0.IAnjuta.SymbolIface */
-    readonly gIface: GObject.TypeInterface
-    readonly getBoolean: (obj: Symbol, field: SymbolField) => boolean
-    readonly getIcon: (obj: Symbol) => GdkPixbuf.Pixbuf
-    readonly getInt: (obj: Symbol, field: SymbolField) => number
-    readonly getString: (obj: Symbol, field: SymbolField) => string
-    readonly getSymType: (obj: Symbol) => SymbolType
+    gIface: GObject.TypeInterface
+    getBoolean: (obj: Symbol, field: SymbolField) => boolean
+    getIcon: (obj: Symbol) => GdkPixbuf.Pixbuf
+    getInt: (obj: Symbol, field: SymbolField) => number
+    getString: (obj: Symbol, field: SymbolField) => string
+    getSymType: (obj: Symbol) => SymbolType
     static name: string
 }
 abstract class SymbolManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.SymbolManagerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly prjScanEnd: (obj: SymbolManager, processId: number) => void
-    readonly sysScanEnd: (obj: SymbolManager, processId: number) => void
-    readonly activatePackage: (obj: SymbolManager, pkgName: string, pkgVersion: string) => boolean
-    readonly deactivateAll: (obj: SymbolManager) => void
-    readonly deactivatePackage: (obj: SymbolManager, pkgName: string, pkgVersion: string) => void
+    gIface: GObject.TypeInterface
+    prjScanEnd: (obj: SymbolManager, processId: number) => void
+    sysScanEnd: (obj: SymbolManager, processId: number) => void
+    activatePackage: (obj: SymbolManager, pkgName: string, pkgVersion: string) => boolean
+    deactivateAll: (obj: SymbolManager) => void
+    deactivatePackage: (obj: SymbolManager, pkgName: string, pkgVersion: string) => void
     static name: string
 }
 abstract class SymbolQueryIface {
     /* Fields of IAnjuta-3.0.IAnjuta.SymbolQueryIface */
-    readonly gIface: GObject.TypeInterface
-    readonly asyncResult: (obj: SymbolQuery, result: GObject.Object) => void
-    readonly cancel: (obj: SymbolQuery) => void
-    readonly setFields: (obj: SymbolQuery, nFields: number, fields: SymbolField) => void
-    readonly setFileScope: (obj: SymbolQuery, filescopeSearch: SymbolQueryFileScope) => void
-    readonly setFilters: (obj: SymbolQuery, filters: SymbolType, includeTypes: boolean) => void
-    readonly setGroupBy: (obj: SymbolQuery, field: SymbolField) => void
-    readonly setLimit: (obj: SymbolQuery, limit: number) => void
-    readonly setMode: (obj: SymbolQuery, mode: SymbolQueryMode) => void
-    readonly setOffset: (obj: SymbolQuery, offset: number) => void
-    readonly setOrderBy: (obj: SymbolQuery, field: SymbolField) => void
+    gIface: GObject.TypeInterface
+    asyncResult: (obj: SymbolQuery, result: GObject.Object) => void
+    cancel: (obj: SymbolQuery) => void
+    setFields: (obj: SymbolQuery, nFields: number, fields: SymbolField) => void
+    setFileScope: (obj: SymbolQuery, filescopeSearch: SymbolQueryFileScope) => void
+    setFilters: (obj: SymbolQuery, filters: SymbolType, includeTypes: boolean) => void
+    setGroupBy: (obj: SymbolQuery, field: SymbolField) => void
+    setLimit: (obj: SymbolQuery, limit: number) => void
+    setMode: (obj: SymbolQuery, mode: SymbolQueryMode) => void
+    setOffset: (obj: SymbolQuery, offset: number) => void
+    setOrderBy: (obj: SymbolQuery, field: SymbolField) => void
     static name: string
 }
 abstract class TerminalIface {
     /* Fields of IAnjuta-3.0.IAnjuta.TerminalIface */
-    readonly gIface: GObject.TypeInterface
-    readonly childExited: (obj: Terminal, pid: number, status: number) => void
-    readonly executeCommand: (obj: Terminal, directory: string, command: string, environment: string[]) => number
+    gIface: GObject.TypeInterface
+    childExited: (obj: Terminal, pid: number, status: number) => void
+    executeCommand: (obj: Terminal, directory: string, command: string, environment: string[]) => number
     static name: string
 }
 abstract class TodoIface {
     /* Fields of IAnjuta-3.0.IAnjuta.TodoIface */
-    readonly gIface: GObject.TypeInterface
-    readonly load: (obj: Todo, file: Gio.File) => void
+    gIface: GObject.TypeInterface
+    load: (obj: Todo, file: Gio.File) => void
     static name: string
 }
 abstract class VcsIface {
     /* Fields of IAnjuta-3.0.IAnjuta.VcsIface */
-    readonly gIface: GObject.TypeInterface
-    readonly statusChanged: (obj: Vcs) => void
-    readonly add: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
-    readonly checkout: (obj: Vcs, repositoryLocation: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
-    readonly remove: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
+    gIface: GObject.TypeInterface
+    statusChanged: (obj: Vcs) => void
+    add: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
+    checkout: (obj: Vcs, repositoryLocation: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
+    remove: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
     static name: string
 }
 abstract class WizardIface {
     /* Fields of IAnjuta-3.0.IAnjuta.WizardIface */
-    readonly gIface: GObject.TypeInterface
-    readonly activate: (obj: Wizard) => void
+    gIface: GObject.TypeInterface
+    activate: (obj: Wizard) => void
     static name: string
 }
     type BuilderHandle = object

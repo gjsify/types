@@ -3748,6 +3748,9 @@ class ClientChannelFactory {
      * Changed in 0.13.6: the function's signature was previously wrong;
      * it expected an object instance as its first parameter, but the type of the
      * parameter was the type of the interface vtable.
+     * @param conn a #TpConnection
+     * @param path the object path of the channel
+     * @param properties  the immutable properties of the channel
      */
     create_channel(conn: Connection, path: string, properties: GLib.HashTable): Channel
     /**
@@ -3757,11 +3760,14 @@ class ClientChannelFactory {
      * Changed in 0.13.6: the function's signature was previously wrong;
      * it expected an object instance as its first parameter, but the type of the
      * parameter was the type of the interface vtable.
+     * @param channel a #TpChannel
      */
     dup_channel_features(channel: Channel): GLib.Quark[]
     static name: string
 }
 class HandleRepoIface {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.HandleRepoIface */
+    readonly handle_type: number
     static name: string
 }
 interface Account_ConstructProps extends Proxy_ConstructProps {
@@ -4221,14 +4227,34 @@ class Account {
     readonly valid: boolean
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Account */
     /**
      * <!-- -->
+     * @param scheme a URI scheme such as "tel", "sip" or "xmpp"
      */
     associated_with_uri_scheme(scheme: string): boolean
     /**
@@ -4243,6 +4269,9 @@ class Account {
      * property to only make a widget sensitive when the account is connected.
      * 
      * See g_object_bind_property() for more information.
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind (must be %G_TYPE_BOOLEAN)
+     * @param invert %TRUE if you wish to invert the value of `target_property`   (i.e. %FALSE if connected)
      */
     bind_connection_status_to_property(target: object | null, target_property: string, invert: boolean): GObject.Binding
     /**
@@ -4290,11 +4319,13 @@ class Account {
      * When the operation is finished, `callback` will be called. You must then
      * call tp_account_dup_storage_specific_information_vardict_finish() to get the
      * result of the request.
+     * @param callback a callback to call when the request is satisfied
      */
     dup_storage_specific_information_vardict_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Retrieve the value of the request begun with
      * tp_account_dup_storage_specific_information_vardict_async().
+     * @param result a #GAsyncResult
      */
     dup_storage_specific_information_vardict_finish(result: Gio.AsyncResult): GLib.Variant
     /**
@@ -4305,6 +4336,7 @@ class Account {
      * The use-case for this function is in a HandleChannels callback and you
      * already know the object path for the connection, so you can let `account`
      * create its #TpConnection and return it for use.
+     * @param path the path to connection object for #TpAccount
      */
     ensure_connection(path: string): Connection
     /**
@@ -4319,6 +4351,7 @@ class Account {
      * Requests an asynchronous get of `account'`s avatar. When
      * the operation is finished, `callback` will be called. You can then call
      * tp_account_get_avatar_finish() to get the result of the operation.
+     * @param callback a callback to call when the request is satisfied
      */
     get_avatar_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -4326,6 +4359,7 @@ class Account {
      * 
      * Beware that the returned value is only valid until `result` is freed.
      * Copy it with g_array_ref() if you need to keep it for longer.
+     * @param result a #GAsyncResult
      */
     get_avatar_finish(result: Gio.AsyncResult): Uint8Array
     /**
@@ -4446,6 +4480,7 @@ class Account {
      * When the operation is finished, `callback` will be called. You must then
      * call tp_account_get_storage_specific_information_finish() to get the
      * result of the request.
+     * @param callback a callback to call when the request is satisfied
      */
     get_storage_specific_information_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -4454,6 +4489,7 @@ class Account {
      * 
      * Beware that the returned value is only valid until `result` is freed.
      * Copy it with g_hash_table_ref() if you need to keep it for longer.
+     * @param result a #GAsyncResult
      */
     get_storage_specific_information_finish(result: Gio.AsyncResult): GLib.HashTable
     /**
@@ -4480,30 +4516,39 @@ class Account {
      * Requests an asynchronous reconnect of `account`. When the operation is
      * finished, `callback` will be called. You can then call
      * tp_account_reconnect_finish() to get the result of the operation.
+     * @param callback a callback to call when the request is satisfied
      */
     reconnect_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async reconnect of `account`.
+     * @param result a #GAsyncResult
      */
     reconnect_finish(result: Gio.AsyncResult): boolean
     /**
      * Requests an asynchronous removal of `account`. When the operation is
      * finished, `callback` will be called. You can then call
      * tp_account_remove_finish() to get the result of the operation.
+     * @param callback a callback to call when the request is satisfied
      */
     remove_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async removal of `account`.
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
      * Requests an asynchronous change of presence on `account`. When the
      * operation is finished, `callback` will be called. You can then call
      * tp_account_request_presence_finish() to get the result of the operation.
+     * @param type the requested presence
+     * @param status a status message to set, or %NULL
+     * @param message a message for the change, or %NULL
+     * @param callback a callback to call when the request is satisfied
      */
     request_presence_async(type: ConnectionPresenceType, status: string, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async presence change request on `account`.
+     * @param result a #GAsyncResult
      */
     request_presence_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4511,11 +4556,16 @@ class Account {
      * operation is finished, `callback` will be called. You can then call
      * tp_account_set_automatic_presence_finish() to get the result of the
      * operation.
+     * @param type the requested presence
+     * @param status a status message to set, or %NULL
+     * @param message a message for the change, or %NULL
+     * @param callback a callback to call when the request is satisfied
      */
     set_automatic_presence_async(type: ConnectionPresenceType, status: string, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous request to change the automatic presence of
      * `account`.
+     * @param result a #GAsyncResult
      */
     set_automatic_presence_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4524,10 +4574,14 @@ class Account {
      * tp_account_set_avatar_finish() to get the result of the operation.
      * 
      * If `len` equals 0, the avatar is cleared.
+     * @param avatar a new avatar to set; can be %NULL  only if `len` equals 0
+     * @param mime_type the MIME type of the new avatar; can be %NULL  only if `len` equals 0
+     * @param callback a callback to call when the request is satisfied
      */
     set_avatar_async(avatar: Uint8Array | null, mime_type?: string | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async avatar change request on `account`.
+     * @param result a #GAsyncResult
      */
     set_avatar_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4535,60 +4589,78 @@ class Account {
      * `account`. When the operation is finished, `callback` will be called. You can
      * then call tp_account_set_display_name_finish() to get the result of the
      * operation.
+     * @param connect_automatically new value for the parameter
+     * @param callback a callback to call when the request is satisfied
      */
     set_connect_automatically_async(connect_automatically: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of the ConnectAutomatically property.
+     * @param result a #GAsyncResult
      */
     set_connect_automatically_finish(result: Gio.AsyncResult): boolean
     /**
      * Requests an asynchronous set of the DisplayName property of `account`. When
      * the operation is finished, `callback` will be called. You can then call
      * tp_account_set_display_name_finish() to get the result of the operation.
+     * @param display_name a new display name, or %NULL to unset the display name
+     * @param callback a callback to call when the request is satisfied
      */
     set_display_name_async(display_name: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of the DisplayName property.
+     * @param result a #GAsyncResult
      */
     set_display_name_finish(result: Gio.AsyncResult): boolean
     /**
      * Requests an asynchronous set of the Enabled property of `account`. When the
      * operation is finished, `callback` will be called. You can then call
      * tp_account_set_enabled_finish() to get the result of the operation.
+     * @param enabled the new enabled value of `account`
+     * @param callback a callback to call when the request is satisfied
      */
     set_enabled_async(enabled: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of the Enabled property.
+     * @param result a #GAsyncResult
      */
     set_enabled_finish(result: Gio.AsyncResult): boolean
     /**
      * Requests an asynchronous set of the Icon property of `account`. When
      * the operation is finished, `callback` will be called. You can then call
      * tp_account_set_icon_name_finish() to get the result of the operation.
+     * @param icon_name a new icon name, or %NULL to unset the icon name
+     * @param callback a callback to call when the request is satisfied
      */
     set_icon_name_async(icon_name: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of the Icon parameter.
+     * @param result a #GAsyncResult
      */
     set_icon_name_finish(result: Gio.AsyncResult): boolean
     /**
      * Requests an asynchronous change of the Nickname parameter on `account`. When
      * the operation is finished, `callback` will be called. You can then call
      * tp_account_set_nickname_finish() to get the result of the operation.
+     * @param nickname a new nickname to set
+     * @param callback a callback to call when the request is satisfied
      */
     set_nickname_async(nickname: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async nickname change request on `account`.
+     * @param result a #GAsyncResult
      */
     set_nickname_finish(result: Gio.AsyncResult): boolean
     /**
      * Requests an asynchronous set of the Service property on `self`. When
      * the operation is finished, `callback` will be called. You can then call
      * tp_account_set_service_finish() to get the result of the operation.
+     * @param service a new service name, or %NULL or the empty string to unset the  service name (which will result in the #TpAccount:service property  becoming the same as #TpAccount:protocol)
+     * @param callback a callback to call when the request is satisfied
      */
     set_service_async(service: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of the Service parameter.
+     * @param result a #GAsyncResult
      */
     set_service_finish(result: Gio.AsyncResult): boolean
     /**
@@ -4604,20 +4676,28 @@ class Account {
      * feature to be enabled, but the change will not be reflected in the result
      * of tp_account_get_uri_schemes() or tp_account_associated_with_uri_scheme()
      * unless that feature has been enabled.
+     * @param scheme a non-%NULL URI scheme such as "tel"
+     * @param associate %TRUE to use this account for `scheme,` or %FALSE to not use it
+     * @param callback a callback to call when the request is satisfied
      */
     set_uri_scheme_association_async(scheme: string, associate: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_account_set_uri_scheme_association_async().
+     * @param result a #GAsyncResult
      */
     set_uri_scheme_association_finish(result: Gio.AsyncResult): boolean
     /**
      * Requests an asynchronous update of parameters of `account`. When the
      * operation is finished, `callback` will be called. You can then call
      * tp_account_update_parameters_finish() to get the result of the operation.
+     * @param parameters new  parameters to set on `account`
+     * @param unset_parameters list of parameters to unset on `account`
+     * @param callback a callback to call when the request is satisfied
      */
     update_parameters_async(parameters: GLib.HashTable, unset_parameters: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async update of the parameters on `account`.
+     * @param result a #GAsyncResult
      */
     update_parameters_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* reconnect_required */ string[] ]
     /**
@@ -4629,10 +4709,14 @@ class Account {
      * ownership of `parameters` is taken by this function. This means
      * you can pass the result of g_variant_new() or g_variant_new_parsed()
      * directly to this function without additional reference-count management.
+     * @param parameters a variant of type %G_VARIANT_TYPE_VARDICT  containing new parameters to set on `account`
+     * @param unset_parameters list of parameters to unset on `account`
+     * @param callback a callback to call when the request is satisfied
      */
     update_parameters_vardict_async(parameters: GLib.Variant, unset_parameters: string[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async update of the parameters on `account`.
+     * @param result a #GAsyncResult
      */
     update_parameters_vardict_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* reconnect_required */ string[] ]
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -4641,6 +4725,8 @@ class Account {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -4674,12 +4760,14 @@ class Account {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -4692,6 +4780,7 @@ class Account {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -4742,12 +4831,15 @@ class Account {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -4785,6 +4877,10 @@ class Account {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4795,6 +4891,12 @@ class Account {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4818,6 +4920,7 @@ class Account {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4837,11 +4940,14 @@ class Account {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4849,6 +4955,8 @@ class Account {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4866,6 +4974,7 @@ class Account {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4911,6 +5020,7 @@ class Account {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4954,15 +5064,20 @@ class Account {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5003,6 +5118,7 @@ class Account {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5037,6 +5153,7 @@ class Account {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5056,6 +5173,7 @@ class Account {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5069,6 +5187,9 @@ class Account {
     emit(sigName: "avatar-changed"): void
     /**
      * Emitted when the presence of the account changes.
+     * @param presence the new presence
+     * @param status the new presence status
+     * @param status_message the new presence status message
      */
     connect(sigName: "presence-changed", callback: (($obj: Account, presence: number, status: string, status_message: string) => void)): number
     connect_after(sigName: "presence-changed", callback: (($obj: Account, presence: number, status: string, status_message: string) => void)): number
@@ -5079,6 +5200,11 @@ class Account {
      * The `dbus_error_name` and `details` parameters were present, but
      * non-functional (always %NULL), in older versions. They have been
      * available with their current behaviour since version 0.11.7.
+     * @param old_status old #TpAccount:connection-status
+     * @param new_status new #TpAccount:connection-status
+     * @param reason the #TpAccount:connection-status-reason
+     * @param dbus_error_name the #TpAccount:connection-error
+     * @param details the  #TpAccount:connection-error-details
      */
     connect(sigName: "status-changed", callback: (($obj: Account, old_status: number, new_status: number, reason: number, dbus_error_name: string | null, details: GLib.HashTable) => void)): number
     connect_after(sigName: "status-changed", callback: (($obj: Account, old_status: number, new_status: number, reason: number, dbus_error_name: string | null, details: GLib.HashTable) => void)): number
@@ -5093,6 +5219,8 @@ class Account {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: Account, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: Account, id: number, proxy: any) => void)): number
@@ -5108,6 +5236,9 @@ class Account {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: Account, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: Account, domain: number, code: number, message: string) => void)): number
@@ -5141,6 +5272,7 @@ class Account {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
@@ -5213,8 +5345,16 @@ class Account {
     connect_after(sigName: "notify::uri-schemes", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::valid", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::valid", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: Account, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -5255,6 +5395,7 @@ class Account {
      * Any of the out parameters may be %NULL if not needed. If %TRUE is returned,
      * the caller is responsible for freeing the strings stored in any non-%NULL
      * out parameters, using g_free().
+     * @param object_path a Telepathy Account's object path
      */
     static parse_object_path(object_path: string): [ /* returnType */ boolean, /* cm */ string, /* protocol */ string, /* account_id */ string ]
     static $gtype: GObject.Type
@@ -5307,6 +5448,13 @@ interface AccountChannelRequest_ConstructProps extends GObject.Object_ConstructP
 class AccountChannelRequest {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.AccountChannelRequest */
     /**
+     * The #TpAccount used to request the channel.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly account: Account
+    /**
      * The #TpChannelRequest used to request the channel, or %NULL if the
      * channel has not be requested yet.
      * 
@@ -5322,8 +5470,43 @@ class AccountChannelRequest {
      * Since 0.13.13
      */
     readonly channel_request: ChannelRequest
+    /**
+     * The desired D-Bus properties for the channel.
+     * 
+     * When constructing a new object, one of
+     * #TpAccountChannelRequest:request or
+     * #TpAccountChannelRequest:request-vardict must be set to a non-%NULL
+     * value, and the other must remain unspecified.
+     */
+    readonly request_vardict: GLib.Variant
+    /**
+     * The user action time that will be passed to the channel dispatcher when
+     * requesting the channel.
+     * 
+     * This may be the time at which user action occurred, or one of the special
+     * values %TP_USER_ACTION_TIME_NOT_USER_ACTION or
+     * %TP_USER_ACTION_TIME_CURRENT_TIME.
+     * 
+     * If %TP_USER_ACTION_TIME_NOT_USER_ACTION, the action doesn't involve any
+     * user action. Clients should avoid stealing focus when presenting the
+     * channel.
+     * 
+     * If %TP_USER_ACTION_TIME_CURRENT_TIME, clients SHOULD behave as though the
+     * user action happened at the current time, e.g. a client may
+     * request that its window gains focus.
+     * 
+     * On X11-based systems, GDK 2, GDK 3, Clutter 1.0 etc.,
+     * tp_user_action_time_from_x11() can be used to convert an X11 timestamp to
+     * a Telepathy user action time.
+     * 
+     * If the channel request succeeds, this user action time will be passed on
+     * to the channel's handler. If the handler is a GUI, it may use
+     * tp_user_action_time_should_present() to decide whether to bring its
+     * window to the foreground.
+     */
+    readonly user_action_time: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.AccountChannelRequest */
     /**
      * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -5339,6 +5522,8 @@ class AccountChannelRequest {
      * 
      * The caller is responsible for closing the channel with
      * tp_cli_channel_call_close() when it has finished handling it.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a callback to call when the request is satisfied
      */
     create_and_handle_channel_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5350,6 +5535,7 @@ class AccountChannelRequest {
      * 
      * The caller is responsible for closing the channel with
      * tp_cli_channel_call_close() when it has finished handling it.
+     * @param result a #GAsyncResult
      */
     create_and_handle_channel_finish(result: Gio.AsyncResult): [ /* returnType */ Channel | null, /* context */ HandleChannelsContext | null ]
     /**
@@ -5365,11 +5551,15 @@ class AccountChannelRequest {
      * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
      * the Telepathy book</ulink> for details about how clients should interact
      * with channels.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a callback to call when the request is satisfied
      */
     create_and_observe_channel_async(preferred_handler: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_and_observe_channel_async().
+     * @param result a #GAsyncResult
      */
     create_and_observe_channel_finish(result: Gio.AsyncResult): Channel
     /**
@@ -5380,11 +5570,15 @@ class AccountChannelRequest {
      * or the request has failed.
      * You can then call tp_account_channel_request_create_channel_finish() to
      * get the result of the operation.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a callback to call when the request is satisfied
      */
     create_channel_async(preferred_handler: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_channel_async().
+     * @param result a #GAsyncResult
      */
     create_channel_finish(result: Gio.AsyncResult): boolean
     /**
@@ -5411,6 +5605,8 @@ class AccountChannelRequest {
      * (Behind the scenes, this works by creating a temporary #TpBaseClient, then
      * acting like tp_account_channel_request_ensure_channel_async() with the
      * temporary #TpBaseClient as the `preferred_handler`.)
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a callback to call when the request is satisfied
      */
     ensure_and_handle_channel_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -5426,6 +5622,7 @@ class AccountChannelRequest {
      * that are added in future. It is not valid for the caller of this method
      * to call tp_handle_channels_context_accept(),
      * tp_handle_channels_context_delay() or tp_handle_channels_context_fail().
+     * @param result a #GAsyncResult
      */
     ensure_and_handle_channel_finish(result: Gio.AsyncResult): [ /* returnType */ Channel | null, /* context */ HandleChannelsContext | null ]
     /**
@@ -5448,11 +5645,15 @@ class AccountChannelRequest {
      * or #TpSimpleHandler:callback, if it is implemented using Telepathy-GLib),
      * so that it can re-present the window to the user, for example.
      * Otherwise, a new channel will be created and dispatched to a handler.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a callback to call when the request is satisfied
      */
     ensure_and_observe_channel_async(preferred_handler: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_and_observe_channel_async().
+     * @param result a #GAsyncResult
      */
     ensure_and_observe_channel_finish(result: Gio.AsyncResult): Channel
     /**
@@ -5472,11 +5673,15 @@ class AccountChannelRequest {
      * has failed.
      * You can then call tp_account_channel_request_ensure_channel_finish() to
      * get the result of the operation.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a callback to call when the request is satisfied
      */
     ensure_channel_async(preferred_handler: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_ensure_channel_async().
+     * @param result a #GAsyncResult
      */
     ensure_channel_finish(result: Gio.AsyncResult): boolean
     /**
@@ -5502,6 +5707,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param factory a #TpClientChannelFactory
      */
     set_channel_factory(factory: ClientChannelFactory): void
     /**
@@ -5510,6 +5716,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param channels a #NULL-terminated array of channel paths
      */
     set_conference_initial_channels(channels: string): void
     /**
@@ -5519,6 +5726,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param delegate %TRUE to request to delegate channels
      */
     set_delegate_to_preferred_handler(delegate: boolean): void
     /**
@@ -5538,6 +5746,7 @@ class AccountChannelRequest {
      * channel.
      * 
      * See also: tp_base_client_set_delegated_channels_callback()
+     * @param callback function called the channel requested using `self` is delegated, may not be %NULL
      */
     set_delegated_channel_callback(callback: AccountChannelRequestDelegatedChannelCb): void
     /**
@@ -5552,6 +5761,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param description a description of the file
      */
     set_file_transfer_description(description: string): void
     /**
@@ -5560,6 +5770,8 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param hash_type a type of `hash`
+     * @param hash hash of the contents of the file transfer
      */
     set_file_transfer_hash(hash_type: FileHashType, hash: string): void
     /**
@@ -5578,6 +5790,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param offset the offset into the file at which the transfer will start
      */
     set_file_transfer_initial_offset(offset: number): void
     /**
@@ -5592,6 +5805,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param timestamp the modification timestamp of the file, in seconds since the  Unix epoch (the beginning of 1970 in the UTC time zone), as returned  by g_date_time_to_unix()
      */
     set_file_transfer_timestamp(timestamp: number): void
     /**
@@ -5621,6 +5835,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param uri the source URI for the file
      */
     set_file_transfer_uri(uri: string): void
     /**
@@ -5629,6 +5844,8 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param key the key used for the hint
+     * @param value a variant containting the hint value
      */
     set_hint(key: string, value: GLib.Variant): void
     /**
@@ -5640,6 +5857,7 @@ class AccountChannelRequest {
      * 
      * In high-level language bindings, use tp_account_channel_request_set_hint()
      * instead.
+     * @param hints a #TP_HASH_TYPE_STRING_VARIANT_MAP
      */
     set_hints(hints: GLib.HashTable): void
     /**
@@ -5649,6 +5867,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param ids a #NULL-terminated array of contact ids
      */
     set_initial_invitee_ids(ids: string): void
     /**
@@ -5658,6 +5877,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param contacts a #GPtrArray of #TpContact
      */
     set_initial_invitees(contacts: Contact[]): void
     /**
@@ -5689,6 +5909,8 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param name a D-Bus property name
+     * @param value an arbitrary value for the property
      */
     set_request_property(name: string, value: GLib.Variant): void
     /**
@@ -5697,6 +5919,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param is_sms_channel #TRUE if the channel should use SMS
      */
     set_sms_channel(is_sms_channel: boolean): void
     /**
@@ -5705,6 +5928,7 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param contact the contact to be contacted
      */
     set_target_contact(contact: Contact): void
     /**
@@ -5713,6 +5937,8 @@ class AccountChannelRequest {
      * 
      * This function can't be called once `self` has been used to request a
      * channel.
+     * @param handle_type the type of `identifier,` typically %TP_HANDLE_TYPE_CONTACT  or %TP_HANDLE_TYPE_ROOM
+     * @param identifier the unique identifier of the contact, room etc. to be  contacted
      */
     set_target_id(handle_type: HandleType, identifier: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5750,6 +5976,10 @@ class AccountChannelRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5760,6 +5990,12 @@ class AccountChannelRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5783,6 +6019,7 @@ class AccountChannelRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5802,11 +6039,14 @@ class AccountChannelRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5814,6 +6054,8 @@ class AccountChannelRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5831,6 +6073,7 @@ class AccountChannelRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5876,6 +6119,7 @@ class AccountChannelRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5919,15 +6163,20 @@ class AccountChannelRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5968,6 +6217,7 @@ class AccountChannelRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6002,6 +6252,7 @@ class AccountChannelRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6021,6 +6272,7 @@ class AccountChannelRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6042,6 +6294,9 @@ class AccountChannelRequest {
      * that are added in future. It is not valid for the receiver of this signal
      * to call tp_handle_channels_context_accept(),
      * tp_handle_channels_context_delay() or tp_handle_channels_context_fail().
+     * @param channel the #TpChannel being re-handled
+     * @param user_action_time the time at which user action occurred, or one of the  special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME; see  #TpAccountChannelRequest:user-action-time
+     * @param context a #TpHandleChannelsContext representing the context of the HandleChannels() call.
      */
     connect(sigName: "re-handled", callback: (($obj: AccountChannelRequest, channel: Channel, user_action_time: number, context: HandleChannelsContext) => void)): number
     connect_after(sigName: "re-handled", callback: (($obj: AccountChannelRequest, channel: Channel, user_action_time: number, context: HandleChannelsContext) => void)): number
@@ -6075,12 +6330,19 @@ class AccountChannelRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::channel-request", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::channel-request", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::request-vardict", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::request-vardict", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::user-action-time", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::user-action-time", callback: (($obj: AccountChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6104,11 +6366,30 @@ interface AccountManager_ConstructProps extends Proxy_ConstructProps {
 class AccountManager {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.AccountManager */
     /**
      * Requests an asynchronous create of an account on the account manager
@@ -6124,6 +6405,12 @@ class AccountManager {
      * 
      * It is usually better to use #TpAccountRequest instead, particularly when
      * using high-level language bindings.
+     * @param connection_manager the name of a connection manager
+     * @param protocol the name of a protocol
+     * @param display_name the display name for the account
+     * @param parameters parameters  for the new account
+     * @param properties properties  for the new account
+     * @param callback a callback to call when the request is satisfied
      */
     create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: GLib.HashTable, properties: GLib.HashTable, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6135,6 +6422,7 @@ class AccountManager {
      * 
      * The caller must keep a ref to the returned object using g_object_ref() if
      * it is to be kept beyond the lifetime of `result`.
+     * @param result a #GAsyncResult
      */
     create_account_finish(result: Gio.AsyncResult): Account
     /**
@@ -6176,6 +6464,7 @@ class AccountManager {
      * 
      * The caller must keep a ref to the returned object using g_object_ref() if
      * it is to be kept.
+     * @param path the object path for an account
      */
     ensure_account(path: string): Account
     /**
@@ -6234,6 +6523,9 @@ class AccountManager {
      * Setting a requested presence on all accounts will have no effect
      * until tp_proxy_prepare_async()
      * (or the older tp_account_manager_prepare_async()) has finished.
+     * @param type a presence type to request
+     * @param status a status to request
+     * @param message a status message to request
      */
     set_all_requested_presences(type: ConnectionPresenceType, status: string, message: string): void
     /**
@@ -6259,6 +6551,8 @@ class AccountManager {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -6292,12 +6586,14 @@ class AccountManager {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -6310,6 +6606,7 @@ class AccountManager {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -6360,12 +6657,15 @@ class AccountManager {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6403,6 +6703,10 @@ class AccountManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6413,6 +6717,12 @@ class AccountManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6436,6 +6746,7 @@ class AccountManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6455,11 +6766,14 @@ class AccountManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6467,6 +6781,8 @@ class AccountManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6484,6 +6800,7 @@ class AccountManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6529,6 +6846,7 @@ class AccountManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6572,15 +6890,20 @@ class AccountManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6621,6 +6944,7 @@ class AccountManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6655,6 +6979,7 @@ class AccountManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6674,12 +6999,14 @@ class AccountManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of TelepathyGLib-0.12.TelepathyGLib.AccountManager */
     /**
      * Emitted when an account from `manager` is disabled.
+     * @param account a #TpAccount
      */
     connect(sigName: "account-disabled", callback: (($obj: AccountManager, account: Account) => void)): number
     connect_after(sigName: "account-disabled", callback: (($obj: AccountManager, account: Account) => void)): number
@@ -6690,12 +7017,14 @@ class AccountManager {
      * `account` is guaranteed to have %TP_ACCOUNT_FEATURE_CORE prepared, along
      * with all the features previously passed to the #TpProxy:factory<!-- -->'s
      * tp_simple_client_factory_add_account_features().
+     * @param account a #TpAccount
      */
     connect(sigName: "account-enabled", callback: (($obj: AccountManager, account: Account) => void)): number
     connect_after(sigName: "account-enabled", callback: (($obj: AccountManager, account: Account) => void)): number
     emit(sigName: "account-enabled", account: Account): void
     /**
      * Emitted when an account is removed from `manager`.
+     * @param account a #TpAccount
      */
     connect(sigName: "account-removed", callback: (($obj: AccountManager, account: Account) => void)): number
     connect_after(sigName: "account-removed", callback: (($obj: AccountManager, account: Account) => void)): number
@@ -6710,12 +7039,17 @@ class AccountManager {
      * `account` is guaranteed to have %TP_ACCOUNT_FEATURE_CORE prepared, along
      * with all the features previously passed to the #TpProxy:factory<!-- -->'s
      * tp_simple_client_factory_add_account_features().
+     * @param account a #TpAccount
+     * @param valid %TRUE if the account is now valid
      */
     connect(sigName: "account-validity-changed", callback: (($obj: AccountManager, account: Account, valid: boolean) => void)): number
     connect_after(sigName: "account-validity-changed", callback: (($obj: AccountManager, account: Account, valid: boolean) => void)): number
     emit(sigName: "account-validity-changed", account: Account, valid: boolean): void
     /**
      * Emitted when the most available presence on `manager` changes.
+     * @param presence new presence type
+     * @param status new status
+     * @param message new status message
      */
     connect(sigName: "most-available-presence-changed", callback: (($obj: AccountManager, presence: number, status: string, message: string) => void)): number
     connect_after(sigName: "most-available-presence-changed", callback: (($obj: AccountManager, presence: number, status: string, message: string) => void)): number
@@ -6730,6 +7064,8 @@ class AccountManager {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: AccountManager, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: AccountManager, id: number, proxy: any) => void)): number
@@ -6745,6 +7081,9 @@ class AccountManager {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: AccountManager, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: AccountManager, domain: number, code: number, message: string) => void)): number
@@ -6778,12 +7117,21 @@ class AccountManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bus-name", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: AccountManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6856,6 +7204,10 @@ interface AccountRequest_ConstructProps extends GObject.Object_ConstructProps {
 class AccountRequest {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.AccountRequest */
     /**
+     * The #TpAccountManager to create the account on.
+     */
+    readonly account_manager: AccountManager
+    /**
      * The account's automatic presence type (a
      * #TpConnectionPresenceType). To change this property use
      * tp_account_request_set_automatic_presence().
@@ -6895,6 +7247,15 @@ class AccountRequest {
      */
     readonly connect_automatically: boolean
     /**
+     * The account's connection manager name.
+     */
+    readonly connection_manager: string
+    /**
+     * The account's display name. To change this property use
+     * tp_account_request_set_display_name().
+     */
+    readonly display_name: string
+    /**
      * Whether the account is enabled or not. To change this property
      * use tp_account_request_set_enabled().
      */
@@ -6918,6 +7279,12 @@ class AccountRequest {
      * The account's properties.
      */
     readonly properties: GLib.Variant
+    /**
+     * The account's machine-readable protocol name, such as "jabber", "msn" or
+     * "local-xmpp". Recommended names for most protocols can be found in the
+     * Telepathy D-Bus Interface Specification.
+     */
+    readonly protocol: string
     /**
      * The account's requested presence type (a
      * #TpConnectionPresenceType). To change this property use
@@ -6956,13 +7323,14 @@ class AccountRequest {
      */
     readonly supersedes: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.AccountRequest */
     /**
      * Add an account object path to the list of superseded accounts which
      * this new account will supersede. Use the
      * #TpAccountRequest:supersedes property to read the current list of
      * superseded accounts.
+     * @param superseded_path an account object path to add to the supersedes   list
      */
     add_supersedes(superseded_path: string): void
     /**
@@ -6973,6 +7341,7 @@ class AccountRequest {
      * the %TP_ACCOUNT_FEATURE_CORE feature ready on it, so when calling
      * tp_account_request_create_account_finish(), one can guarantee this
      * feature.
+     * @param callback a function to call when the account has been created
      */
     create_account_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6981,6 +7350,7 @@ class AccountRequest {
      * features listed in tp_simple_client_factory_dup_account_features()
      * (with the proxy factory from #TpAccountRequest:account-manager)
      * prepared on it.
+     * @param result a #GAsyncResult
      */
     create_account_finish(result: Gio.AsyncResult): Account
     /**
@@ -6990,12 +7360,17 @@ class AccountRequest {
      * #TpAccountRequest:automatic-status, and
      * #TpAccountRequest:automatic-status-message properties to read the
      * current automatic presence.
+     * @param presence the automatic presence type
+     * @param status the automatic presence status
+     * @param message the automatic presence message
      */
     set_automatic_presence(presence: ConnectionPresenceType, status: string, message: string): void
     /**
      * Set the avatar of the account `self` to `avatar`. Use the
      * #TpAccountRequest:avatar and #TpAccountRequest:avatar-mime-type
      * properties to read the current avatar.
+     * @param avatar a new avatar to set; can   be %NULL only if %len equals 0
+     * @param mime_type the MIME type of the new avatar; can be %NULL  only if `len` equals 0
      */
     set_avatar(avatar: Uint8Array | null, mime_type?: string | null): void
     /**
@@ -7004,28 +7379,33 @@ class AccountRequest {
      * the automatic presence. Use the
      * #TpAccountRequest:connect-automatically property to read the current
      * connect automatically value.
+     * @param connect_automatically %TRUE if the account is to connect automatically
      */
     set_connect_automatically(connect_automatically: boolean): void
     /**
      * Set the display name for the new account, `self,` to `name`. Use the
      * #TpAccountRequest:display-name property to read the current display
      * name.
+     * @param name a display name for the account
      */
     set_display_name(name: string): void
     /**
      * Set the enabled property of the account on creation to
      * `enabled`. Use the #TpAccountRequest:enabled property to read the
      * current enabled value.
+     * @param enabled %TRUE if the account is to be enabled
      */
     set_enabled(enabled: boolean): void
     /**
      * Set the icon name for the new account, `self,` to `icon`. Use the
      * #TpAccountRequest:icon-name property to read the current icon name.
+     * @param icon an icon name for the account
      */
     set_icon_name(icon: string): void
     /**
      * Set the nickname for the new account, `self,` to `nickname`. Use the
      * #TpAccountRequest:nickname property to read the current nickname.
+     * @param nickname a nickname for the account
      */
     set_nickname(nickname: string): void
     /**
@@ -7034,6 +7414,8 @@ class AccountRequest {
      * set parameters.
      * 
      * Parameters can be unset using tp_account_request_unset_parameter().
+     * @param key the parameter key
+     * @param value a variant containing the parameter value
      */
     set_parameter(key: string, value: GLib.Variant): void
     /**
@@ -7043,22 +7425,28 @@ class AccountRequest {
      * #TpAccountRequest:requested-status, and
      * #TpAccountRequest:requested-status-message properties to read the
      * current requested presence.
+     * @param presence the requested presence type
+     * @param status the requested presence status
+     * @param message the requested presence message
      */
     set_requested_presence(presence: ConnectionPresenceType, status: string, message: string): void
     /**
      * Set the service property of the account to `service`. Use the
      * #TpAccountRequest:service property to read the current value.
+     * @param service the service name for
      */
     set_service(service: string): void
     /**
      * Set the account storage to use when creating the account. Use the
      * #TpAccountRequest:storage-provider property to read the current value.
+     * @param provider the name of an account storage implementation
      */
     set_storage_provider(provider: string): void
     /**
      * Unset the account parameter `key` which has previously been set
      * using tp_account_request_set_parameter() or another convenience
      * function.
+     * @param key the parameter key
      */
     unset_parameter(key: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7096,6 +7484,10 @@ class AccountRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7106,6 +7498,12 @@ class AccountRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7129,6 +7527,7 @@ class AccountRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7148,11 +7547,14 @@ class AccountRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7160,6 +7562,8 @@ class AccountRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7177,6 +7581,7 @@ class AccountRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7222,6 +7627,7 @@ class AccountRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7265,15 +7671,20 @@ class AccountRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7314,6 +7725,7 @@ class AccountRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7348,6 +7760,7 @@ class AccountRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7367,6 +7780,7 @@ class AccountRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7399,10 +7813,13 @@ class AccountRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account-manager", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account-manager", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::automatic-presence-type", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::automatic-presence-type", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::automatic-status", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
@@ -7415,6 +7832,10 @@ class AccountRequest {
     connect_after(sigName: "notify::avatar-mime-type", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::connect-automatically", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connect-automatically", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection-manager", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection-manager", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::display-name", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::display-name", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::enabled", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enabled", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::icon-name", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
@@ -7425,6 +7846,8 @@ class AccountRequest {
     connect_after(sigName: "notify::parameters", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::properties", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::properties", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::protocol", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::protocol", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::requested-presence-type", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::requested-presence-type", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::requested-status", callback: (($obj: AccountRequest, pspec: GObject.ParamSpec) => void)): number
@@ -7485,8 +7908,41 @@ interface AddDispatchOperationContext_ConstructProps extends GObject.Object_Cons
     dispatch_operation?: ChannelDispatchOperation
 }
 class AddDispatchOperationContext {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.AddDispatchOperationContext */
+    /**
+     * A #TpAccount object representing the Account of the DispatchOperation
+     * that has been passed to AddDispatchOperation.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly account: Account
+    /**
+     * A #GPtrArray containing #TpChannel objects representing the channels
+     * that have been passed to AddDispatchOperation.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly channels: object[]
+    /**
+     * A #TpConnection object representing the Connection of the DispatchOperation
+     * that has been passed to AddDispatchOperation.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly connection: Connection
+    /**
+     * A #TpChannelDispatchOperation object representing the
+     * ChannelDispatchOperation that has been passed to AddDispatchOperation.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly dispatch_operation: ChannelDispatchOperation
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.AddDispatchOperationContext */
     /**
      * Called by #TpBaseClientClassAddDispatchOperationImpl when it's done so
@@ -7504,6 +7960,7 @@ class AddDispatchOperationContext {
     delay(): void
     /**
      * Called by #TpBaseClientClassAddDispatchOperationImpl to raise a D-Bus error.
+     * @param error the error to return from the method
      */
     fail(error: GLib.Error): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7541,6 +7998,10 @@ class AddDispatchOperationContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7551,6 +8012,12 @@ class AddDispatchOperationContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7574,6 +8041,7 @@ class AddDispatchOperationContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7593,11 +8061,14 @@ class AddDispatchOperationContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7605,6 +8076,8 @@ class AddDispatchOperationContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7622,6 +8095,7 @@ class AddDispatchOperationContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7667,6 +8141,7 @@ class AddDispatchOperationContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7710,15 +8185,20 @@ class AddDispatchOperationContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7759,6 +8239,7 @@ class AddDispatchOperationContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7793,6 +8274,7 @@ class AddDispatchOperationContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7812,6 +8294,7 @@ class AddDispatchOperationContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7844,10 +8327,19 @@ class AddDispatchOperationContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::channels", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channels", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dispatch-operation", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dispatch-operation", callback: (($obj: AddDispatchOperationContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7860,8 +8352,13 @@ class AddDispatchOperationContext {
 interface AutomaticClientFactory_ConstructProps extends SimpleClientFactory_ConstructProps {
 }
 class AutomaticClientFactory {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.SimpleClientFactory */
+    /**
+     * The D-Bus daemon for this object.
+     */
+    readonly dbus_daemon: DBusDaemon
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.SimpleClientFactory */
     /**
      * Add `features` to the desired features to be prepared on #TpAccount
@@ -7873,6 +8370,7 @@ class AutomaticClientFactory {
      * 
      * Note that these features will not be added to existing #TpAccount
      * objects; the user must call tp_proxy_prepare_async() themself.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
      */
     add_account_features(features?: GLib.Quark[] | null): void
     /**
@@ -7885,6 +8383,7 @@ class AutomaticClientFactory {
      * 
      * Note that these features will not be added to existing #TpChannel
      * objects; the user must call tp_proxy_prepare_async() themself.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
      */
     add_channel_features(features?: GLib.Quark[] | null): void
     /**
@@ -7897,6 +8396,7 @@ class AutomaticClientFactory {
      * 
      * Note that these features will not be added to existing #TpConnection
      * objects; the user must call tp_proxy_prepare_async() themself.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
      */
     add_connection_features(features?: GLib.Quark[] | null): void
     /**
@@ -7906,26 +8406,31 @@ class AutomaticClientFactory {
      * 
      * Note that these features will not be added to existing #TpContact
      * objects; the user must call tp_connection_upgrade_contacts() themself.
+     * @param features an array of desired  features (may be %NULL if `n_features` is 0)
      */
     add_contact_features(features?: ContactFeature[] | null): void
     /**
      * Return a zero-terminated #GArray containing the #TpAccount features that
      * should be prepared on `account`.
+     * @param account a #TpAccount
      */
     dup_account_features(account: Account): GLib.Quark[]
     /**
      * Return a zero-terminated #GArray containing the #TpChannel features that
      * should be prepared on `channel`.
+     * @param channel a #TpChannel
      */
     dup_channel_features(channel: Channel): GLib.Quark[]
     /**
      * Return a zero-terminated #GArray containing the #TpConnection features that
      * should be prepared on `connection`.
+     * @param connection a #TpConnection
      */
     dup_connection_features(connection: Connection): GLib.Quark[]
     /**
      * Return a #GArray containing the #TpContactFeature that should be prepared on
      * all contacts of `connection`.
+     * @param connection a #TpConnection
      */
     dup_contact_features(connection: Connection): ContactFeature[]
     /**
@@ -7940,6 +8445,8 @@ class AutomaticClientFactory {
      * This function is rather low-level. tp_account_manager_dup_valid_accounts()
      * and #TpAccountManager::validity-changed are more appropriate for most
      * applications.
+     * @param object_path the object path of an account
+     * @param immutable_properties   the immutable properties of the account, or %NULL.
      */
     ensure_account(object_path: string, immutable_properties: GLib.HashTable): Account
     /**
@@ -7955,6 +8462,9 @@ class AutomaticClientFactory {
      * This function is rather low-level.
      * #TpAccountChannelRequest and #TpBaseClient are more appropriate ways
      * to obtain channels for most applications.
+     * @param connection a #TpConnection whose #TpProxy:factory is this object
+     * @param object_path the object path of a channel on `connection`
+     * @param immutable_properties   the immutable properties of the channel
      */
     ensure_channel(connection: Connection, object_path: string, immutable_properties: GLib.HashTable): Channel
     /**
@@ -7969,6 +8479,8 @@ class AutomaticClientFactory {
      * 
      * This function is rather low-level. #TpAccount:connection is more
      * appropriate for most applications.
+     * @param object_path the object path of a connection
+     * @param immutable_properties   the immutable properties of the connection.
      */
     ensure_connection(object_path: string, immutable_properties: GLib.HashTable): Connection
     /**
@@ -7983,16 +8495,23 @@ class AutomaticClientFactory {
      * 
      * For this function to work properly, tp_connection_has_immortal_handles()
      * must return %TRUE for `connection`.
+     * @param connection a #TpConnection whose #TpProxy:factory is this object
+     * @param handle a #TpHandle
+     * @param identifier a string representing the contact's identifier
      */
     ensure_contact(connection: Connection, handle: Handle, identifier: string): Contact
     /**
      * Same as tp_connection_dup_contact_by_id_async(), but prepare the
      * contact with all features previously passed to
      * tp_simple_client_factory_add_contact_features().
+     * @param connection a #TpConnection
+     * @param identifier a string representing the contact's identifier
+     * @param callback a callback to call when the operation finishes
      */
     ensure_contact_by_id_async(connection: Connection, identifier: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_simple_client_factory_ensure_contact_by_id_async()
+     * @param result a #GAsyncResult
      */
     ensure_contact_by_id_finish(result: Gio.AsyncResult): Contact
     /**
@@ -8003,10 +8522,14 @@ class AutomaticClientFactory {
      * Same as tp_connection_upgrade_contacts_async(), but prepare contacts with all
      * features previously passed to
      * tp_simple_client_factory_add_contact_features().
+     * @param connection a #TpConnection whose #TpProxy:factory is this object
+     * @param contacts An array of #TpContact objects  associated with `self`
+     * @param callback a callback to call when the operation finishes
      */
     upgrade_contacts_async(connection: Connection, contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_simple_client_factory_upgrade_contacts_async()
+     * @param result a #GAsyncResult
      */
     upgrade_contacts_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* contacts */ Contact[] | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -8044,6 +8567,10 @@ class AutomaticClientFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8054,6 +8581,12 @@ class AutomaticClientFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8077,6 +8610,7 @@ class AutomaticClientFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8096,11 +8630,14 @@ class AutomaticClientFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8108,6 +8645,8 @@ class AutomaticClientFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8125,6 +8664,7 @@ class AutomaticClientFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8170,6 +8710,7 @@ class AutomaticClientFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8213,15 +8754,20 @@ class AutomaticClientFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8262,6 +8808,7 @@ class AutomaticClientFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8296,27 +8843,32 @@ class AutomaticClientFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.SimpleClientFactory */
     /**
      * Return a zero-terminated #GArray containing the #TpAccount features that
      * should be prepared on `account`.
+     * @param account a #TpAccount
      */
     vfunc_dup_account_features(account: Account): GLib.Quark[]
     /**
      * Return a zero-terminated #GArray containing the #TpChannel features that
      * should be prepared on `channel`.
+     * @param channel a #TpChannel
      */
     vfunc_dup_channel_features(channel: Channel): GLib.Quark[]
     /**
      * Return a zero-terminated #GArray containing the #TpConnection features that
      * should be prepared on `connection`.
+     * @param connection a #TpConnection
      */
     vfunc_dup_connection_features(connection: Connection): GLib.Quark[]
     /**
      * Return a #GArray containing the #TpContactFeature that should be prepared on
      * all contacts of `connection`.
+     * @param connection a #TpConnection
      */
     vfunc_dup_contact_features(connection: Connection): ContactFeature[]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8336,6 +8888,7 @@ class AutomaticClientFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8368,10 +8921,13 @@ class AutomaticClientFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AutomaticClientFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AutomaticClientFactory, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: AutomaticClientFactory, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: AutomaticClientFactory, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -8389,7 +8945,7 @@ interface AutomaticProxyFactory_ConstructProps extends GObject.Object_ConstructP
 }
 class AutomaticProxyFactory {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -8425,6 +8981,10 @@ class AutomaticProxyFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8435,6 +8995,12 @@ class AutomaticProxyFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8458,6 +9024,7 @@ class AutomaticProxyFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8477,11 +9044,14 @@ class AutomaticProxyFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8489,6 +9059,8 @@ class AutomaticProxyFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8506,6 +9078,7 @@ class AutomaticProxyFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8551,6 +9124,7 @@ class AutomaticProxyFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8594,15 +9168,20 @@ class AutomaticProxyFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8643,6 +9222,7 @@ class AutomaticProxyFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8677,6 +9257,7 @@ class AutomaticProxyFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ClientChannelFactory */
@@ -8687,6 +9268,9 @@ class AutomaticProxyFactory {
      * Changed in 0.13.6: the function's signature was previously wrong;
      * it expected an object instance as its first parameter, but the type of the
      * parameter was the type of the interface vtable.
+     * @param conn a #TpConnection
+     * @param path the object path of the channel
+     * @param properties  the immutable properties of the channel
      */
     create_channel(conn: Connection, path: string, properties: GLib.HashTable): Channel
     /**
@@ -8696,6 +9280,7 @@ class AutomaticProxyFactory {
      * Changed in 0.13.6: the function's signature was previously wrong;
      * it expected an object instance as its first parameter, but the type of the
      * parameter was the type of the interface vtable.
+     * @param channel a #TpChannel
      */
     dup_channel_features(channel: Channel): GLib.Quark[]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8715,6 +9300,7 @@ class AutomaticProxyFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8747,6 +9333,7 @@ class AutomaticProxyFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AutomaticProxyFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AutomaticProxyFactory, pspec: GObject.ParamSpec) => void)): number
@@ -8837,8 +9424,74 @@ interface BaseClient_ConstructProps extends GObject.Object_ConstructProps {
     uniquify_name?: boolean
 }
 class BaseClient {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
+    /**
+     * Account manager for this base client, used to look up or create
+     * #TpAccount objects. This may be specified in the constructor in order
+     * to get existing #TpAccount objects.
+     * 
+     * It is not guaranteed that any of its features have been prepared, and
+     * it is not necessary to wait for any features before specifying this
+     * property in the constructor.
+     * 
+     * Clients that interact with the #TpAccount should usually
+     * set this property instead of #TpBaseClient:dbus-daemon. Doing this
+     * will ensure that each account, connection or contact is represented by
+     * a single #TpAccount, #TpConnection or #TpContact object, shared between
+     * all the cooperating modules that have the same #TpAccountManager.
+     * 
+     * If the #TpBaseClient:dbus-daemon is set to the result of
+     * tp_dbus_daemon_dup(), then this property defaults to
+     * the result of tp_account_manager_dup().
+     * 
+     * This property may be %NULL initially, but will always be non-%NULL
+     * after the #TpBaseClient has been constructed.
+     * 
+     * It is an error to specify both a non-%NULL account manager, and a
+     * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
+     * account manager's #TpProxy:dbus-daemon.
+     */
+    readonly account_manager: AccountManager
+    /**
+     * The object implementing the #TpClientChannelFactoryInterface interface
+     * that will be used to create channel proxies. While
+     * tp_base_client_register() has not yet been called, this property can be
+     * changed using tp_base_client_set_channel_factory().
+     * 
+     * If no channel factory is specified then #TpAutomaticProxyFactory is used.
+     */
+    readonly channel_factory: GObject.Object
+    /**
+     * #TpDBusDaemon object encapsulating this object's connection to D-Bus.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL after construction.
+     * 
+     * Since 0.11.14 this property may be %NULL or unspecified in
+     * g_object_new(), but only if #TpBaseClient:account-manager is provided
+     * instead, in which case its #TpProxy:dbus-daemon property will be
+     * used.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * Factory for this base client, used to look up or create
+     * #TpAccount objects.
+     */
+    readonly factory: SimpleClientFactory
+    /**
+     * The name of the client. This is used to register the D-Bus service name
+     * and object path of the service.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly name: string
+    /**
+     * If %TRUE, tp_base_client_register() will append an unique token to the
+     * service bus name and object path to ensure they are unique.
+     */
+    readonly uniquify_name: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
     /**
      * Request that the given features are prepared on each #TpAccount (in
@@ -8847,6 +9500,7 @@ class BaseClient {
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels, or emitting
      * #TpBaseClient::request-added.
+     * @param features the features
      */
     add_account_features(features: GLib.Quark[]): void
     /**
@@ -8857,6 +9511,7 @@ class BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.add_dispatch_operation.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_approver_filter(filter: GLib.HashTable): void
     /**
@@ -8871,6 +9526,7 @@ class BaseClient {
      * If the variant is floating (see g_variant_ref_sink()), ownership
      * will be taken. See tp_base_client_add_observer_filter_vardict() for
      * more details.
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_approver_filter_vardict(filter: GLib.Variant): void
     /**
@@ -8879,6 +9535,7 @@ class BaseClient {
      * #TpBaseClientClass.observe_channels,
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels.
+     * @param features the features
      */
     add_channel_features(features: GLib.Quark[]): void
     /**
@@ -8887,6 +9544,7 @@ class BaseClient {
      * #TpBaseClientClass.observe_channels,
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels.
+     * @param features the features
      */
     add_connection_features(features: GLib.Quark[]): void
     /**
@@ -8898,6 +9556,7 @@ class BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param tokens capability  tokens as defined by the Telepathy D-Bus API Specification
      */
     add_handler_capabilities(tokens: string[]): void
     /**
@@ -8907,6 +9566,7 @@ class BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param token a capability token as defined by the Telepathy D-Bus API  Specification
      */
     add_handler_capability(token: string): void
     /**
@@ -8917,6 +9577,7 @@ class BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_handler_filter(filter: GLib.HashTable): void
     /**
@@ -8931,6 +9592,7 @@ class BaseClient {
      * If the variant is floating (see g_variant_ref_sink()), ownership
      * will be taken. See tp_base_client_add_observer_filter_vardict() for
      * more details.
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_handler_filter_vardict(filter: GLib.Variant): void
     /**
@@ -8941,6 +9603,7 @@ class BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_observer_filter(filter: GLib.HashTable): void
     /**
@@ -8963,6 +9626,7 @@ class BaseClient {
      *        ...));
      * ```
      * 
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_observer_filter_vardict(filter: GLib.Variant): void
     /**
@@ -8980,11 +9644,16 @@ class BaseClient {
      * stopping handling `channels` and pass them to another Handler.
      * You can then call tp_base_client_delegate_channels_finish() to
      * get the result of the operation.
+     * @param channels a #GList of #TpChannel handled by `self`
+     * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but `self` would be acceptable.
+     * @param callback a callback to call when the request is satisfied
      */
     delegate_channels_async(channels: Channel[], user_action_time: number, preferred_handler: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channels delegation request started using
      * tp_base_client_delegate_channels_async().
+     * @param result a #GAsyncResult
      */
     delegate_channels_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* delegated */ Channel[], /* not_delegated */ GLib.HashTable ]
     /**
@@ -9042,6 +9711,7 @@ class BaseClient {
     get_uniquify_name(): boolean
     /**
      * Check if `self` is currently handling `channel`.
+     * @param channel a #TpChannel
      */
     is_handling_channel(channel: Channel): boolean
     /**
@@ -9056,6 +9726,7 @@ class BaseClient {
     /**
      * Change the value of the #TpBaseClient:channel-factory property.
      * It can't be changed once `self` has been registered.
+     * @param factory an object implementing the #TpClientChannelFactoryInterface interface
      */
     set_channel_factory(factory: ClientChannelFactory): void
     /**
@@ -9067,6 +9738,7 @@ class BaseClient {
      * delegate the channels to the preferred handler of the request and then call
      * `callback` to inform the client that it is no longer handling those
      * channels.
+     * @param callback function called when channels currently handled by `self` are delegated, may not be %NULL
      */
     set_delegated_channels_callback(callback: BaseClientDelegatedChannelsCb): void
     /**
@@ -9078,6 +9750,7 @@ class BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param bypass_approval the value of the Handler.BypassApproval property
      */
     set_handler_bypass_approval(bypass_approval: boolean): void
     /**
@@ -9104,6 +9777,7 @@ class BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param delay the value of the Observer.DelayApprovers property
      */
     set_observer_delay_approvers(delay: boolean): void
     /**
@@ -9123,6 +9797,7 @@ class BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param recover the value of the Observer.Recover property
      */
     set_observer_recover(recover: boolean): void
     /**
@@ -9175,6 +9850,10 @@ class BaseClient {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9185,6 +9864,12 @@ class BaseClient {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9208,6 +9893,7 @@ class BaseClient {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9227,11 +9913,14 @@ class BaseClient {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9239,6 +9928,8 @@ class BaseClient {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9256,6 +9947,7 @@ class BaseClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9301,6 +9993,7 @@ class BaseClient {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9344,15 +10037,20 @@ class BaseClient {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9393,6 +10091,7 @@ class BaseClient {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9427,6 +10126,7 @@ class BaseClient {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
@@ -9450,6 +10150,7 @@ class BaseClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9461,6 +10162,8 @@ class BaseClient {
      * This signal is only fired if
      * tp_base_client_set_handler_request_notification() has been called
      * on `self` previously.
+     * @param account the #TpAccount on which the request was made,  with %TP_ACCOUNT_FEATURE_CORE, and any other features added via  tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if possible
+     * @param request a #TpChannelRequest having its object-path defined but is not guaranteed to be prepared.
      */
     connect(sigName: "request-added", callback: (($obj: BaseClient, account: Account, request: ChannelRequest) => void)): number
     connect_after(sigName: "request-added", callback: (($obj: BaseClient, account: Account, request: ChannelRequest) => void)): number
@@ -9471,6 +10174,9 @@ class BaseClient {
      * This signal is only fired if
      * tp_base_client_set_handler_request_notification() has been called
      * on `self` previously.
+     * @param request the #TpChannelRequest being removed
+     * @param error the name of the D-Bus error with which the request failed.
+     * @param message any message supplied with the D-Bus error.
      */
     connect(sigName: "request-removed", callback: (($obj: BaseClient, request: ChannelRequest, error: string, message: string) => void)): number
     connect_after(sigName: "request-removed", callback: (($obj: BaseClient, request: ChannelRequest, error: string, message: string) => void)): number
@@ -9504,10 +10210,23 @@ class BaseClient {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account-manager", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account-manager", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::channel-factory", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-factory", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uniquify-name", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uniquify-name", callback: (($obj: BaseClient, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9533,19 +10252,32 @@ interface BaseConnection_ConstructProps extends GObject.Object_ConstructProps {
 class BaseConnection {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.BaseConnection */
     /**
+     * The suffix of the account object path such as
+     * "gabble/jabber/chris_40example_2ecom0" for the account whose object path is
+     * %TP_ACCOUNT_OBJECT_PATH_BASE + "gabble/jabber/chris_40example_2ecom0".
+     * The same as returned by tp_account_get_path_suffix().
+     * 
+     * It is given by the AccountManager in the connection parameters. Or %NULL if
+     * the ConnectionManager or the AccountManager are too old.
+     */
+    readonly account_path_suffix: string
+    /**
      * This property is not useful to use directly. Its value is %TRUE, to
      * indicate that this version of telepathy-glib never unreferences handles
      * until the connection becomes disconnected.
      */
     readonly has_immortal_handles: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.BaseConnection */
     /**
      * Add a "client interest" for `token` on behalf of the given client.
      * 
      * This emits #TpBaseConnection::clients-interested if this was the first
      * time a client expressed an interest in this token.
+     * @param unique_name the unique bus name of a D-Bus client
+     * @param token a D-Bus interface or a token representing part of an interface,  added with tp_base_connection_add_possible_client_interest()
+     * @param only_if_uninterested only add to the interest count if the client is not  already interested (appropriate for APIs that implicitly subscribe on first  use if this has not been done already, like Location)
      */
     add_client_interest(unique_name: string, token: string, only_if_uninterested: boolean): void
     /**
@@ -9556,6 +10288,7 @@ class BaseConnection {
      * This method must be called from the #GObjectClass<!--
      * -->.constructed or #GObjectClass<!-- -->.constructor callback
      * (otherwise, it will run too late to be useful).
+     * @param token a quark corresponding to a D-Bus interface, or a token  representing part of a D-Bus interface, for which this connection wishes  to be notified when clients register an interest
      */
     add_possible_client_interest(token: GLib.Quark): void
     /**
@@ -9604,6 +10337,8 @@ class BaseConnection {
      * Changed in 0.7.35: the `self_handle` member of #TpBaseConnection was
      * previously set to 0 at this stage. It now remains non-zero until the object
      * is disposed.
+     * @param status The new status
+     * @param reason The reason for the status change
      */
     change_status(status: ConnectionStatus, reason: ConnectionStatusReason): void
     /**
@@ -9634,6 +10369,7 @@ class BaseConnection {
     get_bus_name(): string | null
     /**
      * <!---->
+     * @param handle_type The handle type
      */
     get_handles(handle_type: HandleType): HandleRepoIface
     /**
@@ -9681,11 +10417,13 @@ class BaseConnection {
      * 
      * Since 0.11.11, `bus_name` and `object_path` may be %NULL if the
      * strings are not needed.
+     * @param cm_name The name of the connection manager in the Telepathy protocol
      */
     register(cm_name: string): [ /* returnType */ boolean, /* bus_name */ string, /* object_path */ string ]
     /**
      * Sets the #TpBaseConnection:self-handle property.  self_handle may not be 0
      * once the connection has moved to the CONNECTED state.
+     * @param self_handle The new self handle for the connection.
      */
     set_self_handle(self_handle: Handle): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9723,6 +10461,10 @@ class BaseConnection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9733,6 +10475,12 @@ class BaseConnection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9756,6 +10504,7 @@ class BaseConnection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9775,11 +10524,14 @@ class BaseConnection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9787,6 +10539,8 @@ class BaseConnection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9804,6 +10558,7 @@ class BaseConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9849,6 +10604,7 @@ class BaseConnection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9892,15 +10648,20 @@ class BaseConnection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9941,6 +10702,7 @@ class BaseConnection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9975,6 +10737,7 @@ class BaseConnection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.BaseConnection */
@@ -10001,6 +10764,7 @@ class BaseConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10014,6 +10778,7 @@ class BaseConnection {
      * like
      * "clients-interested::org.freedesktop.Telepathy.Connection.Interface.Location"
      * rather than receiving all emissions of this signal.
+     * @param token the interface or part of an interface in which clients are newly  interested
      */
     connect(sigName: "clients-interested", callback: (($obj: BaseConnection, token: string) => void)): number
     connect_after(sigName: "clients-interested", callback: (($obj: BaseConnection, token: string) => void)): number
@@ -10028,6 +10793,7 @@ class BaseConnection {
      * say) should typically connect to a detailed signal like
      * "clients-uninterested::org.freedesktop.Telepathy.Connection.Interface.Location"
      * rather than receiving all emissions of this signal.
+     * @param token the interface or part of an interface in which clients are no  longer interested
      */
     connect(sigName: "clients-uninterested", callback: (($obj: BaseConnection, token: string) => void)): number
     connect_after(sigName: "clients-uninterested", callback: (($obj: BaseConnection, token: string) => void)): number
@@ -10070,10 +10836,13 @@ class BaseConnection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BaseConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BaseConnection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account-path-suffix", callback: (($obj: BaseConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account-path-suffix", callback: (($obj: BaseConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::has-immortal-handles", callback: (($obj: BaseConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-immortal-handles", callback: (($obj: BaseConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -10089,7 +10858,7 @@ interface BasicProxyFactory_ConstructProps extends GObject.Object_ConstructProps
 }
 class BasicProxyFactory {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -10125,6 +10894,10 @@ class BasicProxyFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10135,6 +10908,12 @@ class BasicProxyFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10158,6 +10937,7 @@ class BasicProxyFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10177,11 +10957,14 @@ class BasicProxyFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10189,6 +10972,8 @@ class BasicProxyFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10206,6 +10991,7 @@ class BasicProxyFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10251,6 +11037,7 @@ class BasicProxyFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10294,15 +11081,20 @@ class BasicProxyFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10343,6 +11135,7 @@ class BasicProxyFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10377,6 +11170,7 @@ class BasicProxyFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ClientChannelFactory */
@@ -10387,6 +11181,9 @@ class BasicProxyFactory {
      * Changed in 0.13.6: the function's signature was previously wrong;
      * it expected an object instance as its first parameter, but the type of the
      * parameter was the type of the interface vtable.
+     * @param conn a #TpConnection
+     * @param path the object path of the channel
+     * @param properties  the immutable properties of the channel
      */
     create_channel(conn: Connection, path: string, properties: GLib.HashTable): Channel
     /**
@@ -10396,6 +11193,7 @@ class BasicProxyFactory {
      * Changed in 0.13.6: the function's signature was previously wrong;
      * it expected an object instance as its first parameter, but the type of the
      * parameter was the type of the interface vtable.
+     * @param channel a #TpChannel
      */
     dup_channel_features(channel: Channel): GLib.Quark[]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10415,6 +11213,7 @@ class BasicProxyFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10447,6 +11246,7 @@ class BasicProxyFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BasicProxyFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BasicProxyFactory, pspec: GObject.ParamSpec) => void)): number
@@ -10549,6 +11349,11 @@ class CallChannel {
      */
     readonly channel_ready: boolean
     /**
+     * The #TpConnection to which this #TpChannel belongs. Used for e.g.
+     * handle manipulation.
+     */
+    readonly connection: Connection
+    /**
      * If the %TP_CHANNEL_FEATURE_GROUP feature has been prepared successfully,
      * #TpChannelGroupFlags indicating the capabilities and behaviour of that
      * group.
@@ -10688,11 +11493,30 @@ class CallChannel {
     readonly target_contact: Contact
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.CallChannel */
     /**
      * For incoming calls with #TpCallChannel:state set to
@@ -10703,16 +11527,22 @@ class CallChannel {
      * %TP_CALL_STATE_PENDING_INITIATOR, actually call the remote contact; this
      * changes #TpCallChannel:state to
      * %TP_CALL_STATE_INITIALISING.
+     * @param callback a callback to call when the operation finishes
      */
     accept_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_accept_async().
+     * @param result a #GAsyncResult
      */
     accept_finish(result: Gio.AsyncResult): boolean
     /**
      * Request that a new Content of type `type` is added to `self`. Callers should
      * check the value of the #TpCallChannel:mutable-contents property before trying
      * to add another content as it might not be allowed.
+     * @param name the suggested name of the content to add
+     * @param type the media stream type of the content to be added to the call, from  #TpMediaStreamType
+     * @param initial_direction The initial direction of the content
+     * @param callback a callback to call when the operation finishes
      */
     add_content_async(name: string, type: MediaStreamType, initial_direction: MediaStreamDirection, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -10720,6 +11550,7 @@ class CallChannel {
      * 
      * The returned #TpCallContent is NOT guaranteed to have
      * %TP_CALL_CONTENT_FEATURE_CORE prepared.
+     * @param result a #GAsyncResult
      */
     add_content_finish(result: Gio.AsyncResult): CallContent
     /**
@@ -10741,10 +11572,15 @@ class CallChannel {
     /**
      * Request that the call is ended. All contents will be removed from `self` so
      * that the #TpCallChannel:contents property will be the empty list.
+     * @param reason a TpCallStateChangeReason
+     * @param detailed_reason a more specific reason for the call hangup, if one is  available, or an empty or %NULL string otherwise
+     * @param message a human-readable message to be sent to the remote contact(s)
+     * @param callback a callback to call when the operation finishes
      */
     hangup_async(reason: CallStateChangeReason, detailed_reason: string, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_hangup_async().
+     * @param result a #GAsyncResult
      */
     hangup_finish(result: Gio.AsyncResult): boolean
     /**
@@ -10780,10 +11616,13 @@ class CallChannel {
      * #TpCallChannel:hold-state property to know when the channel goes on
      * hold or is unheld. Unholding may fail if the streaming implementation
      * can not obtain all the resources needed to restart the call.
+     * @param hold Whether to request a hold or a unhold
+     * @param callback a callback to call when the operation finishes
      */
     request_hold_async(hold: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_request_hold_async
+     * @param result a #GAsyncResult
      */
     request_hold_finish(result: Gio.AsyncResult): boolean
     /**
@@ -10791,27 +11630,35 @@ class CallChannel {
      * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
      * 
      * For more details, see tp_call_content_send_tones_async().
+     * @param tones a string representation of one or more DTMF events.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a callback to call when the operation finishes
      */
     send_tones_async(tones: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_send_tones_async().
+     * @param result a #GAsyncResult
      */
     send_tones_finish(result: Gio.AsyncResult): boolean
     /**
      * Notifies the CM that the local user is already in a call, so this call has
      * been put in a call-waiting style queue.
+     * @param callback a callback to call when the operation finishes
      */
     set_queued_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_set_queued_async().
+     * @param result a #GAsyncResult
      */
     set_queued_finish(result: Gio.AsyncResult): boolean
     /**
      * Indicate that the local user has been alerted about the incoming call.
+     * @param callback a callback to call when the operation finishes
      */
     set_ringing_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_set_ringing_async().
+     * @param result a #GAsyncResult
      */
     set_ringing_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Channel */
@@ -10844,10 +11691,12 @@ class CallChannel {
      * When the channel has been closed, `callback` will be called.
      * You can then call tp_channel_close_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
      */
     close_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_close_async().
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -10858,10 +11707,12 @@ class CallChannel {
      * When the channel has been destroyed or closed, `callback` will be called.
      * You can then call tp_channel_destroy_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we left the channel
      */
     destroy_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_destroy_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_destroy_async().
      */
     destroy_finish(result: Gio.AsyncResult): boolean
     /**
@@ -10903,6 +11754,7 @@ class CallChannel {
      * Return the chat state for the given contact. If tp_proxy_is_prepared()
      * would return %FALSE for the feature %TP_CHANNEL_FEATURE_CHAT_STATES,
      * the result will always be %TP_CHANNEL_CHAT_STATE_INACTIVE.
+     * @param contact a contact handle
      */
     get_chat_state(contact: Handle): ChannelChatState
     /**
@@ -11014,6 +11866,7 @@ class CallChannel {
      * instance, if you invite someone to an XMPP MUC using their globally valid
      * JID, you would expect to see the contact representing that JID in the
      * Group's remote-pending set).
+     * @param contact a contact which is a member of this channel
      */
     group_get_contact_owner(contact: Contact): Contact
     /**
@@ -11059,6 +11912,7 @@ class CallChannel {
      * This function's result is undefined unless the channel is ready
      * and its flags include %TP_CHANNEL_GROUP_FLAG_PROPERTIES (an implementation
      * without extra D-Bus round trips is not possible using the older API).
+     * @param handle a handle which is a member of this channel
      */
     group_get_handle_owner(handle: Handle): Handle
     /**
@@ -11080,6 +11934,7 @@ class CallChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write %NULL into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the #TpContact of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_contact_info(local_pending: Contact): [ /* returnType */ boolean, /* actor */ Contact | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -11091,6 +11946,7 @@ class CallChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write 0 into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the handle of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_info(local_pending: Handle): [ /* returnType */ boolean, /* actor */ Handle | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -11131,10 +11987,13 @@ class CallChannel {
      * 
      * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * must be prepared before calling this function.
+     * @param message the join message
+     * @param callback a callback to call when we joined the channel
      */
     join_async(message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_join_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
      */
     join_finish(result: Gio.AsyncResult): boolean
     /**
@@ -11149,10 +12008,14 @@ class CallChannel {
      * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * does not have to be prepared and will be prepared for you. But this is a
      * deprecated behaviour.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @param callback a callback to call when we left the channel
      */
     leave_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
      */
     leave_finish(result: Gio.AsyncResult): boolean
     /**
@@ -11164,12 +12027,15 @@ class CallChannel {
      * Once the password has been provided, `callback` will be
      * called. You can then call tp_channel_provide_password_finish()
      * to get the result of the operation.
+     * @param password the password
+     * @param callback a callback to call when `password` has been provided
      */
     provide_password_async(password: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_provide_password_async().
      * If the password was rejected, the operation
      * fails with #TP_ERROR_AUTHENTICATION_FAILED.
+     * @param result a #GAsyncResult passed to the callback for  tp_channel_provide_password_async().
      */
     provide_password_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -11178,6 +12044,8 @@ class CallChannel {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -11211,12 +12079,14 @@ class CallChannel {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -11229,6 +12099,7 @@ class CallChannel {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -11279,12 +12150,15 @@ class CallChannel {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -11322,6 +12196,10 @@ class CallChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11332,6 +12210,12 @@ class CallChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11355,6 +12239,7 @@ class CallChannel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11374,11 +12259,14 @@ class CallChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11386,6 +12274,8 @@ class CallChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11403,6 +12293,7 @@ class CallChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11448,6 +12339,7 @@ class CallChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11491,15 +12383,20 @@ class CallChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11540,6 +12437,7 @@ class CallChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11574,6 +12472,7 @@ class CallChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11593,6 +12492,7 @@ class CallChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11603,6 +12503,7 @@ class CallChannel {
      * 
      * It is NOT guaranteed that %TP_CALL_CONTENT_FEATURE_CORE is prepared on
      * `content`.
+     * @param content the newly added #TpCallContent
      */
     connect(sigName: "content-added", callback: (($obj: CallChannel, content: GObject.Object) => void)): number
     connect_after(sigName: "content-added", callback: (($obj: CallChannel, content: GObject.Object) => void)): number
@@ -11613,6 +12514,8 @@ class CallChannel {
      * 
      * It is NOT guaranteed that %TP_CALL_CONTENT_FEATURE_CORE is prepared on
      * `content`.
+     * @param content the newly removed #TpCallContent
+     * @param reason a #TpCallStateReason
      */
     connect(sigName: "content-removed", callback: (($obj: CallChannel, content: GObject.Object, reason: CallStateReason) => void)): number
     connect_after(sigName: "content-removed", callback: (($obj: CallChannel, content: GObject.Object, reason: CallStateReason) => void)): number
@@ -11624,6 +12527,9 @@ class CallChannel {
      * The #TpContact objects are guaranteed to have all of the features
      * previously passed to tp_simple_client_factory_add_contact_features()
      * prepared.
+     * @param updates    #GHashTable mapping #TpContact to its new #TpCallMemberFlags
+     * @param removed   #GPtrArray of #TpContact removed from the call members
+     * @param reason the #TpCallStateReason for the change
      */
     connect(sigName: "members-changed", callback: (($obj: CallChannel, updates: GLib.HashTable, removed: Contact[], reason: CallStateReason) => void)): number
     connect_after(sigName: "members-changed", callback: (($obj: CallChannel, updates: GLib.HashTable, removed: Contact[], reason: CallStateReason) => void)): number
@@ -11631,6 +12537,10 @@ class CallChannel {
     /**
      * The ::state-changed signal is emitted whenever the
      * call state changes.
+     * @param state the new #TpCallState
+     * @param flags the new #TpCallFlags
+     * @param reason the #TpCallStateReason for the change
+     * @param details additional details as a   #GHashTable readable using the tp_asv_* functions.
      */
     connect(sigName: "state-changed", callback: (($obj: CallChannel, state: number, flags: number, reason: CallStateReason, details: GLib.HashTable) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: CallChannel, state: number, flags: number, reason: CallStateReason, details: GLib.HashTable) => void)): number
@@ -11639,6 +12549,8 @@ class CallChannel {
     /**
      * Emitted when a contact's chat state changes after tp_proxy_prepare_async()
      * has finished preparing the feature %TP_CHANNEL_FEATURE_CHAT_STATES.
+     * @param contact a contact handle for the local user or another contact
+     * @param state the new #TpChannelChatState for the contact
      */
     connect(sigName: "chat-state-changed", callback: (($obj: CallChannel, contact: number, state: number) => void)): number
     connect_after(sigName: "chat-state-changed", callback: (($obj: CallChannel, contact: number, state: number) => void)): number
@@ -11649,6 +12561,12 @@ class CallChannel {
      * This is not guaranteed to be emitted until tp_proxy_prepare_async() has
      * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
      * omitted.
+     * @param added   a #GPtrArray of #TpContact containing the full members added
+     * @param removed   a #GPtrArray of #TpContact containing the members (full, local-pending or  remote-pending) removed
+     * @param local_pending   a #GPtrArray of #TpContact containing the local-pending members added
+     * @param remote_pending   a #GPtrArray of #TpContact containing the remote-pending members added
+     * @param actor a #TpContact for the "actor" handle in `details`
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-contacts-changed", callback: (($obj: CallChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-contacts-changed", callback: (($obj: CallChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
@@ -11656,12 +12574,21 @@ class CallChannel {
     /**
      * Emitted when the #TpChannel:group-flags property changes while the
      * channel is ready.
+     * @param added #TpChannelGroupFlags which are newly set
+     * @param removed #TpChannelGroupFlags which are no longer set
      */
     connect(sigName: "group-flags-changed", callback: (($obj: CallChannel, added: number, removed: number) => void)): number
     connect_after(sigName: "group-flags-changed", callback: (($obj: CallChannel, added: number, removed: number) => void)): number
     emit(sigName: "group-flags-changed", added: number, removed: number): void
     /**
      * Emitted when the group members change in a Group channel that is ready.
+     * @param message an optional textual message
+     * @param added a #GArray of #guint containing the full members added
+     * @param removed a #GArray of #guint containing the members (full,  local-pending or remote-pending) removed
+     * @param local_pending a #GArray of #guint containing the local-pending  members added
+     * @param remote_pending a #GArray of #guint containing the remote-pending  members added
+     * @param actor the #TpHandle of the contact causing the change, or 0
+     * @param reason the reason for the change as a #TpChannelGroupChangeReason
      */
     connect(sigName: "group-members-changed", callback: (($obj: CallChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
     connect_after(sigName: "group-members-changed", callback: (($obj: CallChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
@@ -11671,6 +12598,11 @@ class CallChannel {
      * Contains a superset of the information in the
      * TpChannel::group-members-changed signal, and is emitted at the same time;
      * applications can connect to this signal and ignore the other.
+     * @param added a #GArray of #guint  containing the full members added
+     * @param removed a #GArray of #guint  containing the members (full, local-pending or remote-pending) removed
+     * @param local_pending a #GArray of  #guint containing the local-pending members added
+     * @param remote_pending a #GArray of  #guint containing the remote-pending members added
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-members-changed-detailed", callback: (($obj: CallChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-members-changed-detailed", callback: (($obj: CallChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
@@ -11685,6 +12617,8 @@ class CallChannel {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: CallChannel, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: CallChannel, id: number, proxy: any) => void)): number
@@ -11700,6 +12634,9 @@ class CallChannel {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: CallChannel, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: CallChannel, domain: number, code: number, message: string) => void)): number
@@ -11733,6 +12670,7 @@ class CallChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
@@ -11765,6 +12703,8 @@ class CallChannel {
     connect_after(sigName: "notify::state-reason", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::channel-ready", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::channel-ready", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-flags", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::group-flags", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-self-contact", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
@@ -11785,8 +12725,16 @@ class CallChannel {
     connect_after(sigName: "notify::requested", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::target-contact", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::target-contact", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: CallChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11812,6 +12760,14 @@ interface CallContent_ConstructProps extends Proxy_ConstructProps {
 class CallContent {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.CallContent */
     /**
+     * The parent #TpCallChannel of the content.
+     */
+    readonly channel: CallChannel
+    /**
+     * The #TpConnection of the call.
+     */
+    readonly connection: Connection
+    /**
      * The disposition of this content, from #TpCallContentDisposition.
      */
     readonly disposition: number
@@ -11833,11 +12789,30 @@ class CallContent {
     readonly streams: object[]
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.CallContent */
     /**
      * <!-- -->
@@ -11858,10 +12833,12 @@ class CallContent {
     /**
      * Remove the content from the call. This will cause #TpCallContent::removed
      * to be emitted.
+     * @param callback a callback to call when the operation finishes
      */
     remove_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_content_remove_async().
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
@@ -11869,10 +12846,14 @@ class CallContent {
      * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
      * 
      * If DTMF tones are already being played, this request is queued.
+     * @param tones a string representation of one or more DTMF events.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a callback to call when the operation finishes
      */
     send_tones_async(tones: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_content_send_tones_async().
+     * @param result a #GAsyncResult
      */
     send_tones_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -11881,6 +12862,8 @@ class CallContent {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -11914,12 +12897,14 @@ class CallContent {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -11932,6 +12917,7 @@ class CallContent {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -11982,12 +12968,15 @@ class CallContent {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -12025,6 +13014,10 @@ class CallContent {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12035,6 +13028,12 @@ class CallContent {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12058,6 +13057,7 @@ class CallContent {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12077,11 +13077,14 @@ class CallContent {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12089,6 +13092,8 @@ class CallContent {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12106,6 +13111,7 @@ class CallContent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12151,6 +13157,7 @@ class CallContent {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12194,15 +13201,20 @@ class CallContent {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12243,6 +13255,7 @@ class CallContent {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12277,6 +13290,7 @@ class CallContent {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12296,6 +13310,7 @@ class CallContent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12313,6 +13328,7 @@ class CallContent {
      * 
      * It is NOT guaranteed that %TP_CALL_STREAM_FEATURE_CORE is prepared on
      * stream objects.
+     * @param streams   a #GPtrArray of newly added #TpCallStream
      */
     connect(sigName: "streams-added", callback: (($obj: CallContent, streams: CallStream[]) => void)): number
     connect_after(sigName: "streams-added", callback: (($obj: CallContent, streams: CallStream[]) => void)): number
@@ -12323,6 +13339,8 @@ class CallContent {
      * 
      * It is NOT guaranteed that %TP_CALL_STREAM_FEATURE_CORE is prepared on
      * stream objects.
+     * @param streams   a #GPtrArray of newly removed #TpCallStream
+     * @param reason a #TpCallStateReason
      */
     connect(sigName: "streams-removed", callback: (($obj: CallContent, streams: CallStream[], reason: CallStateReason) => void)): number
     connect_after(sigName: "streams-removed", callback: (($obj: CallContent, streams: CallStream[], reason: CallStateReason) => void)): number
@@ -12337,6 +13355,8 @@ class CallContent {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: CallContent, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: CallContent, id: number, proxy: any) => void)): number
@@ -12352,6 +13372,9 @@ class CallContent {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: CallContent, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: CallContent, domain: number, code: number, message: string) => void)): number
@@ -12385,10 +13408,15 @@ class CallContent {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::channel", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::disposition", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::disposition", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::media-type", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
@@ -12397,8 +13425,16 @@ class CallContent {
     connect_after(sigName: "notify::name", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::streams", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::streams", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: CallContent, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -12438,16 +13474,43 @@ class CallStream {
      */
     readonly can_request_receiving: boolean
     /**
+     * The #TpConnection of the call.
+     */
+    readonly connection: Connection
+    /**
+     * The Content that this streams belongs to
+     */
+    readonly content: CallContent
+    /**
      * The local user's sending state, from #TpSendingState.
      */
     readonly local_sending_state: number
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.CallStream */
     /**
      * <!-- -->
@@ -12468,10 +13531,14 @@ class CallStream {
      * 
      * If `receive` is %TRUE, request that the given contact starts to send media.
      * If `receive` is %FALSE, request that the given contact stops sending media.
+     * @param contact contact from which sending is requested
+     * @param receive the requested receiving state
+     * @param callback a callback to call when the operation finishes
      */
     request_receiving_async(contact: Contact, receive: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_stream_request_receiving_async().
+     * @param result a #GAsyncResult
      */
     request_receiving_finish(result: Gio.AsyncResult): boolean
     /**
@@ -12482,10 +13549,13 @@ class CallStream {
      * %TP_SENDING_STATE_SENDING, if it isn't already.
      * If `send` is %FALSE, #TpCallStream:local-sending-state should change to
      * %TP_SENDING_STATE_NONE, if it isn't already.
+     * @param send the requested sending state
+     * @param callback a callback to call when the operation finishes
      */
     set_sending_async(send: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_stream_set_sending_async().
+     * @param result a #GAsyncResult
      */
     set_sending_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -12494,6 +13564,8 @@ class CallStream {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -12527,12 +13599,14 @@ class CallStream {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -12545,6 +13619,7 @@ class CallStream {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -12595,12 +13670,15 @@ class CallStream {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -12638,6 +13716,10 @@ class CallStream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12648,6 +13730,12 @@ class CallStream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12671,6 +13759,7 @@ class CallStream {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12690,11 +13779,14 @@ class CallStream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12702,6 +13794,8 @@ class CallStream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12719,6 +13813,7 @@ class CallStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12764,6 +13859,7 @@ class CallStream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12807,15 +13903,20 @@ class CallStream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12856,6 +13957,7 @@ class CallStream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12890,6 +13992,7 @@ class CallStream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12909,6 +14012,7 @@ class CallStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12916,6 +14020,8 @@ class CallStream {
     /**
      * The ::local-sending-state-changed signal is emitted whenever the
      * stream sending state changes.
+     * @param state the new #TpSendingState
+     * @param reason the #TpCallStateReason for the change
      */
     connect(sigName: "local-sending-state-changed", callback: (($obj: CallStream, state: number, reason: CallStateReason) => void)): number
     connect_after(sigName: "local-sending-state-changed", callback: (($obj: CallStream, state: number, reason: CallStateReason) => void)): number
@@ -12925,6 +14031,9 @@ class CallStream {
      * stream's remote members changes.
      * 
      * It is NOT guaranteed that #TpContact objects have any feature prepared.
+     * @param updates    #GHashTable mapping #TpContact to its new #TpSendingState
+     * @param removed   #GPtrArray of #TpContact removed from remote contacts
+     * @param reason the #TpCallStateReason for the change
      */
     connect(sigName: "remote-members-changed", callback: (($obj: CallStream, updates: GLib.HashTable, removed: Contact[], reason: CallStateReason) => void)): number
     connect_after(sigName: "remote-members-changed", callback: (($obj: CallStream, updates: GLib.HashTable, removed: Contact[], reason: CallStateReason) => void)): number
@@ -12939,6 +14048,8 @@ class CallStream {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: CallStream, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: CallStream, id: number, proxy: any) => void)): number
@@ -12954,6 +14065,9 @@ class CallStream {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: CallStream, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: CallStream, domain: number, code: number, message: string) => void)): number
@@ -12987,16 +14101,29 @@ class CallStream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::can-request-receiving", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::can-request-receiving", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::content", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::content", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::local-sending-state", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::local-sending-state", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: CallStream, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13042,8 +14169,14 @@ class Capabilities {
      * the majority of clients.
      */
     readonly channel_classes_variant: GLib.Variant
+    /**
+     * Whether this object accurately describes the capabilities of a particular
+     * contact, or if it's only a guess based on the capabilities of the
+     * underlying connection.
+     */
+    readonly contact_specific: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Capabilities */
     /**
      * Return the #TpCapabilities:channel-classes-variant property
@@ -13065,6 +14198,7 @@ class Capabilities {
      * To check whether requests using
      * tp_account_channel_request_set_target_contact() would work, set
      * `handle_type` to %TP_HANDLE_TYPE_CONTACT.
+     * @param handle_type the handle type of the call; #TP_HANDLE_TYPE_CONTACT for  private, #TP_HANDLE_TYPE_ROOM or #TP_HANDLE_TYPE_NONE for conference  (depending on the protocol)
      */
     supports_audio_call(handle_type: HandleType): boolean
     /**
@@ -13075,6 +14209,7 @@ class Capabilities {
      * To check whether requests using
      * tp_account_channel_request_set_target_contact() would work, set
      * `handle_type` to %TP_HANDLE_TYPE_CONTACT.
+     * @param handle_type the handle type of the call; #TP_HANDLE_TYPE_CONTACT for  private, #TP_HANDLE_TYPE_ROOM or #TP_HANDLE_TYPE_NONE for conference  (depending on the protocol)
      */
     supports_audio_video_call(handle_type: HandleType): boolean
     /**
@@ -13095,6 +14230,8 @@ class Capabilities {
      * checks if the connection supports requesting D-Bus tube channels with
      * `handle_type` as ChannelType. The `service_name` argument is unused in
      * this case.
+     * @param handle_type the handle type of the tube (either #TP_HANDLE_TYPE_CONTACT or #TP_HANDLE_TYPE_ROOM)
+     * @param service_name the service name of the tube, or %NULL
      */
     supports_dbus_tubes(handle_type: HandleType, service_name: string): boolean
     /**
@@ -13180,6 +14317,8 @@ class Capabilities {
      * If the #TpCapabilities:contact-specific property is %FALSE, this function
      * checks if the connection supports requesting stream tube channels with
      * `handle_type` as ChannelType. The `service` argument is unused in this case.
+     * @param handle_type the handle type of the tube (either #TP_HANDLE_TYPE_CONTACT or #TP_HANDLE_TYPE_ROOM)
+     * @param service the service of the tube, or %NULL
      */
     supports_stream_tubes(handle_type: HandleType, service: string): boolean
     /**
@@ -13244,6 +14383,10 @@ class Capabilities {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13254,6 +14397,12 @@ class Capabilities {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13277,6 +14426,7 @@ class Capabilities {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13296,11 +14446,14 @@ class Capabilities {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13308,6 +14461,8 @@ class Capabilities {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13325,6 +14480,7 @@ class Capabilities {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13370,6 +14526,7 @@ class Capabilities {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13413,15 +14570,20 @@ class Capabilities {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13462,6 +14624,7 @@ class Capabilities {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13496,6 +14659,7 @@ class Capabilities {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13515,6 +14679,7 @@ class Capabilities {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13547,12 +14712,15 @@ class Capabilities {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Capabilities, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Capabilities, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::channel-classes-variant", callback: (($obj: Capabilities, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::channel-classes-variant", callback: (($obj: Capabilities, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::contact-specific", callback: (($obj: Capabilities, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::contact-specific", callback: (($obj: Capabilities, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -13588,6 +14756,11 @@ class Channel {
      * Change notification is via notify::channel-ready.
      */
     readonly channel_ready: boolean
+    /**
+     * The #TpConnection to which this #TpChannel belongs. Used for e.g.
+     * handle manipulation.
+     */
+    readonly connection: Connection
     /**
      * If the %TP_CHANNEL_FEATURE_GROUP feature has been prepared successfully,
      * #TpChannelGroupFlags indicating the capabilities and behaviour of that
@@ -13728,11 +14901,30 @@ class Channel {
     readonly target_contact: Contact
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Channel */
     /**
      * Returns the connection for this channel. The returned pointer is only valid
@@ -13763,10 +14955,12 @@ class Channel {
      * When the channel has been closed, `callback` will be called.
      * You can then call tp_channel_close_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
      */
     close_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_close_async().
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -13777,10 +14971,12 @@ class Channel {
      * When the channel has been destroyed or closed, `callback` will be called.
      * You can then call tp_channel_destroy_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we left the channel
      */
     destroy_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_destroy_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_destroy_async().
      */
     destroy_finish(result: Gio.AsyncResult): boolean
     /**
@@ -13822,6 +15018,7 @@ class Channel {
      * Return the chat state for the given contact. If tp_proxy_is_prepared()
      * would return %FALSE for the feature %TP_CHANNEL_FEATURE_CHAT_STATES,
      * the result will always be %TP_CHANNEL_CHAT_STATE_INACTIVE.
+     * @param contact a contact handle
      */
     get_chat_state(contact: Handle): ChannelChatState
     /**
@@ -13933,6 +15130,7 @@ class Channel {
      * instance, if you invite someone to an XMPP MUC using their globally valid
      * JID, you would expect to see the contact representing that JID in the
      * Group's remote-pending set).
+     * @param contact a contact which is a member of this channel
      */
     group_get_contact_owner(contact: Contact): Contact
     /**
@@ -13978,6 +15176,7 @@ class Channel {
      * This function's result is undefined unless the channel is ready
      * and its flags include %TP_CHANNEL_GROUP_FLAG_PROPERTIES (an implementation
      * without extra D-Bus round trips is not possible using the older API).
+     * @param handle a handle which is a member of this channel
      */
     group_get_handle_owner(handle: Handle): Handle
     /**
@@ -13999,6 +15198,7 @@ class Channel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write %NULL into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the #TpContact of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_contact_info(local_pending: Contact): [ /* returnType */ boolean, /* actor */ Contact | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -14010,6 +15210,7 @@ class Channel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write 0 into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the handle of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_info(local_pending: Handle): [ /* returnType */ boolean, /* actor */ Handle | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -14050,10 +15251,13 @@ class Channel {
      * 
      * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * must be prepared before calling this function.
+     * @param message the join message
+     * @param callback a callback to call when we joined the channel
      */
     join_async(message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_join_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
      */
     join_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14068,10 +15272,14 @@ class Channel {
      * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * does not have to be prepared and will be prepared for you. But this is a
      * deprecated behaviour.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @param callback a callback to call when we left the channel
      */
     leave_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
      */
     leave_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14083,12 +15291,15 @@ class Channel {
      * Once the password has been provided, `callback` will be
      * called. You can then call tp_channel_provide_password_finish()
      * to get the result of the operation.
+     * @param password the password
+     * @param callback a callback to call when `password` has been provided
      */
     provide_password_async(password: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_provide_password_async().
      * If the password was rejected, the operation
      * fails with #TP_ERROR_AUTHENTICATION_FAILED.
+     * @param result a #GAsyncResult passed to the callback for  tp_channel_provide_password_async().
      */
     provide_password_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -14097,6 +15308,8 @@ class Channel {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -14130,12 +15343,14 @@ class Channel {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -14148,6 +15363,7 @@ class Channel {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -14198,12 +15414,15 @@ class Channel {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -14241,6 +15460,10 @@ class Channel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14251,6 +15474,12 @@ class Channel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14274,6 +15503,7 @@ class Channel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14293,11 +15523,14 @@ class Channel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14305,6 +15538,8 @@ class Channel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14322,6 +15557,7 @@ class Channel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14367,6 +15603,7 @@ class Channel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14410,15 +15647,20 @@ class Channel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14459,6 +15701,7 @@ class Channel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14493,6 +15736,7 @@ class Channel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14512,6 +15756,7 @@ class Channel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14519,6 +15764,8 @@ class Channel {
     /**
      * Emitted when a contact's chat state changes after tp_proxy_prepare_async()
      * has finished preparing the feature %TP_CHANNEL_FEATURE_CHAT_STATES.
+     * @param contact a contact handle for the local user or another contact
+     * @param state the new #TpChannelChatState for the contact
      */
     connect(sigName: "chat-state-changed", callback: (($obj: Channel, contact: number, state: number) => void)): number
     connect_after(sigName: "chat-state-changed", callback: (($obj: Channel, contact: number, state: number) => void)): number
@@ -14529,6 +15776,12 @@ class Channel {
      * This is not guaranteed to be emitted until tp_proxy_prepare_async() has
      * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
      * omitted.
+     * @param added   a #GPtrArray of #TpContact containing the full members added
+     * @param removed   a #GPtrArray of #TpContact containing the members (full, local-pending or  remote-pending) removed
+     * @param local_pending   a #GPtrArray of #TpContact containing the local-pending members added
+     * @param remote_pending   a #GPtrArray of #TpContact containing the remote-pending members added
+     * @param actor a #TpContact for the "actor" handle in `details`
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-contacts-changed", callback: (($obj: Channel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-contacts-changed", callback: (($obj: Channel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
@@ -14536,12 +15789,21 @@ class Channel {
     /**
      * Emitted when the #TpChannel:group-flags property changes while the
      * channel is ready.
+     * @param added #TpChannelGroupFlags which are newly set
+     * @param removed #TpChannelGroupFlags which are no longer set
      */
     connect(sigName: "group-flags-changed", callback: (($obj: Channel, added: number, removed: number) => void)): number
     connect_after(sigName: "group-flags-changed", callback: (($obj: Channel, added: number, removed: number) => void)): number
     emit(sigName: "group-flags-changed", added: number, removed: number): void
     /**
      * Emitted when the group members change in a Group channel that is ready.
+     * @param message an optional textual message
+     * @param added a #GArray of #guint containing the full members added
+     * @param removed a #GArray of #guint containing the members (full,  local-pending or remote-pending) removed
+     * @param local_pending a #GArray of #guint containing the local-pending  members added
+     * @param remote_pending a #GArray of #guint containing the remote-pending  members added
+     * @param actor the #TpHandle of the contact causing the change, or 0
+     * @param reason the reason for the change as a #TpChannelGroupChangeReason
      */
     connect(sigName: "group-members-changed", callback: (($obj: Channel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
     connect_after(sigName: "group-members-changed", callback: (($obj: Channel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
@@ -14551,6 +15813,11 @@ class Channel {
      * Contains a superset of the information in the
      * TpChannel::group-members-changed signal, and is emitted at the same time;
      * applications can connect to this signal and ignore the other.
+     * @param added a #GArray of #guint  containing the full members added
+     * @param removed a #GArray of #guint  containing the members (full, local-pending or remote-pending) removed
+     * @param local_pending a #GArray of  #guint containing the local-pending members added
+     * @param remote_pending a #GArray of  #guint containing the remote-pending members added
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-members-changed-detailed", callback: (($obj: Channel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-members-changed-detailed", callback: (($obj: Channel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
@@ -14565,6 +15832,8 @@ class Channel {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: Channel, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: Channel, id: number, proxy: any) => void)): number
@@ -14580,6 +15849,9 @@ class Channel {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: Channel, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: Channel, domain: number, code: number, message: string) => void)): number
@@ -14613,12 +15885,15 @@ class Channel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::channel-ready", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::channel-ready", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-flags", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::group-flags", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-self-contact", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
@@ -14639,8 +15914,16 @@ class Channel {
     connect_after(sigName: "notify::requested", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::target-contact", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::target-contact", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: Channel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -14700,6 +15983,33 @@ interface ChannelDispatchOperation_ConstructProps extends Proxy_ConstructProps {
 class ChannelDispatchOperation {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.ChannelDispatchOperation */
     /**
+     * The #TpAccount with which the connection and channels are associated.
+     * 
+     * Read-only except during construction.
+     * 
+     * This is not guaranteed to be set until tp_proxy_prepare_async() has
+     * finished preparing %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE.
+     */
+    readonly account: Account
+    /**
+     * A #GPtrArray containing the #TpChannel to be dispatched.
+     * 
+     * Read-only.
+     * 
+     * This is not guaranteed to be set until tp_proxy_prepare_async() has
+     * finished preparing %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE.
+     */
+    readonly channels: object[]
+    /**
+     * The #TpConnection with which the channels are associated.
+     * 
+     * Read-only except during construction.
+     * 
+     * This is not guaranteed to be set until tp_proxy_prepare_async() has
+     * finished preparing %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE.
+     */
+    readonly connection: Connection
+    /**
      * A #GStrv containing the well known bus names (starting
      * with TP_CLIENT_BUS_NAME_BASE) of the possible Handlers for
      * the channels
@@ -14712,11 +16022,30 @@ class ChannelDispatchOperation {
     readonly possible_handlers: string[]
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ChannelDispatchOperation */
     /**
      * Called by an approver to claim channels for handling internally.
@@ -14731,10 +16060,12 @@ class ChannelDispatchOperation {
      * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
      * for more details. The approver MUST NOT attempt to interact with
      * the channels further in this case.
+     * @param callback a callback to call when the call returns
      */
     claim_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async call to Claim().
+     * @param result a #GAsyncResult
      */
     claim_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14756,11 +16087,14 @@ class ChannelDispatchOperation {
      * 
      * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
      * calling this function.
+     * @param client the #TpBaseClient claiming `self`
+     * @param callback a callback to call when the call returns
      */
     claim_with_async(client: BaseClient, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async call to Claim() initiated using
      * tp_channel_dispatch_operation_claim_with_async().
+     * @param result a #GAsyncResult
      */
     claim_with_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14778,11 +16112,13 @@ class ChannelDispatchOperation {
      * 
      * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
      * calling this function.
+     * @param callback a callback to call when the request has been satisfied
      */
     close_channels_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation initiated using
      * tp_channel_dispatch_operation_close_channels_async().
+     * @param result a #GAsyncResult
      */
     close_channels_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14800,11 +16136,13 @@ class ChannelDispatchOperation {
      * 
      * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
      * calling this function.
+     * @param callback a callback to call when the request has been satisfied
      */
     destroy_channels_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation initiated using
      * tp_channel_dispatch_operation_destroy_channels_async().
+     * @param result a #GAsyncResult
      */
     destroy_channels_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14832,10 +16170,13 @@ class ChannelDispatchOperation {
      * tp_channel_dispatch_operation_claim_async() instead
      * of tp_channel_dispatch_operation_handle_with_async() to request
      * that they can handle a channel bundle themselves.
+     * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
+     * @param callback a callback to call when the call returns
      */
     handle_with_async(handler?: string | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async call to HandleWith().
+     * @param result a #GAsyncResult
      */
     handle_with_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14853,10 +16194,14 @@ class ChannelDispatchOperation {
      * %GDK_CURRENT_TIME).
      * 
      * This method has been introduced in telepathy-mission-control 5.5.0.
+     * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
+     * @param user_action_time the time at which user action occurred, or one of the  special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME
+     * @param callback a callback to call when the call returns
      */
     handle_with_time_async(handler: string | null, user_action_time: number, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async call to HandleWithTime().
+     * @param result a #GAsyncResult
      */
     handle_with_time_finish(result: Gio.AsyncResult): boolean
     /**
@@ -14874,11 +16219,15 @@ class ChannelDispatchOperation {
      * 
      * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
      * calling this function.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @param callback a callback to call when the request has been satisfied
      */
     leave_channels_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation initiated using
      * tp_channel_dispatch_operation_leave_channels_async().
+     * @param result a #GAsyncResult
      */
     leave_channels_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -14887,6 +16236,8 @@ class ChannelDispatchOperation {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -14920,12 +16271,14 @@ class ChannelDispatchOperation {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -14938,6 +16291,7 @@ class ChannelDispatchOperation {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -14988,12 +16342,15 @@ class ChannelDispatchOperation {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -15031,6 +16388,10 @@ class ChannelDispatchOperation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15041,6 +16402,12 @@ class ChannelDispatchOperation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15064,6 +16431,7 @@ class ChannelDispatchOperation {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15083,11 +16451,14 @@ class ChannelDispatchOperation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15095,6 +16466,8 @@ class ChannelDispatchOperation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15112,6 +16485,7 @@ class ChannelDispatchOperation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15157,6 +16531,7 @@ class ChannelDispatchOperation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15200,15 +16575,20 @@ class ChannelDispatchOperation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15249,6 +16629,7 @@ class ChannelDispatchOperation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15283,6 +16664,7 @@ class ChannelDispatchOperation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15302,12 +16684,17 @@ class ChannelDispatchOperation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of TelepathyGLib-0.12.TelepathyGLib.ChannelDispatchOperation */
     /**
      * Emitted when a channel has closed before it could be claimed or handled.
+     * @param channel the #TpChannel that closed
+     * @param domain domain of a #GError indicating why the channel has been closed
+     * @param code error code of a #GError indicating why the channel has been closed
+     * @param message a message associated with the error
      */
     connect(sigName: "channel-lost", callback: (($obj: ChannelDispatchOperation, channel: Channel, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "channel-lost", callback: (($obj: ChannelDispatchOperation, channel: Channel, domain: number, code: number, message: string) => void)): number
@@ -15322,6 +16709,8 @@ class ChannelDispatchOperation {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: ChannelDispatchOperation, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: ChannelDispatchOperation, id: number, proxy: any) => void)): number
@@ -15337,6 +16726,9 @@ class ChannelDispatchOperation {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: ChannelDispatchOperation, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: ChannelDispatchOperation, domain: number, code: number, message: string) => void)): number
@@ -15370,14 +16762,29 @@ class ChannelDispatchOperation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::channels", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channels", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::possible-handlers", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::possible-handlers", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: ChannelDispatchOperation, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15404,22 +16811,45 @@ interface ChannelDispatcher_ConstructProps extends Proxy_ConstructProps {
 class ChannelDispatcher {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ChannelDispatcher */
     /**
      * Asynchronously calls PresentChannel on the ChannelDispatcher to ask
      * to the handler of `channel` to re-present it to the user.
      * You can then call tp_channel_dispatcher_present_channel_finish() to
      * get the result of the operation.
+     * @param channel a #TpChannel
+     * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
+     * @param callback a callback to call when the request is satisfied
      */
     present_channel_async(channel: Channel, user_action_time: number, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel presentation request started using
      * tp_channel_dispatcher_present_channel_async().
+     * @param result a #GAsyncResult
      */
     present_channel_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -15428,6 +16858,8 @@ class ChannelDispatcher {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -15461,12 +16893,14 @@ class ChannelDispatcher {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -15479,6 +16913,7 @@ class ChannelDispatcher {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -15529,12 +16964,15 @@ class ChannelDispatcher {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -15572,6 +17010,10 @@ class ChannelDispatcher {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15582,6 +17024,12 @@ class ChannelDispatcher {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15605,6 +17053,7 @@ class ChannelDispatcher {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15624,11 +17073,14 @@ class ChannelDispatcher {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15636,6 +17088,8 @@ class ChannelDispatcher {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15653,6 +17107,7 @@ class ChannelDispatcher {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15698,6 +17153,7 @@ class ChannelDispatcher {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15741,15 +17197,20 @@ class ChannelDispatcher {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15790,6 +17251,7 @@ class ChannelDispatcher {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15824,6 +17286,7 @@ class ChannelDispatcher {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15843,6 +17306,7 @@ class ChannelDispatcher {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15856,6 +17320,8 @@ class ChannelDispatcher {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: ChannelDispatcher, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: ChannelDispatcher, id: number, proxy: any) => void)): number
@@ -15871,6 +17337,9 @@ class ChannelDispatcher {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: ChannelDispatcher, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: ChannelDispatcher, domain: number, code: number, message: string) => void)): number
@@ -15904,12 +17373,21 @@ class ChannelDispatcher {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bus-name", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: ChannelDispatcher, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -15999,11 +17477,30 @@ class ChannelRequest {
     readonly user_action_time: number
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ChannelRequest */
     /**
      * Return the #TpChannelRequest:hints-vardict property
@@ -16035,6 +17532,7 @@ class ChannelRequest {
     get_user_action_time(): number
     /**
      * Change the value of the #TpChannelRequest:channel-factory property.
+     * @param factory an object implementing the #TpClientChannelFactoryInterface interface
      */
     set_channel_factory(factory: ClientChannelFactory): void
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -16043,6 +17541,8 @@ class ChannelRequest {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -16076,12 +17576,14 @@ class ChannelRequest {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -16094,6 +17596,7 @@ class ChannelRequest {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -16144,12 +17647,15 @@ class ChannelRequest {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -16187,6 +17693,10 @@ class ChannelRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16197,6 +17707,12 @@ class ChannelRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16220,6 +17736,7 @@ class ChannelRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16239,11 +17756,14 @@ class ChannelRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16251,6 +17771,8 @@ class ChannelRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16268,6 +17790,7 @@ class ChannelRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16313,6 +17836,7 @@ class ChannelRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16356,15 +17880,20 @@ class ChannelRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16405,6 +17934,7 @@ class ChannelRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16439,6 +17969,7 @@ class ChannelRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16458,6 +17989,7 @@ class ChannelRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16479,6 +18011,8 @@ class ChannelRequest {
      * #TpProxy:factory but the features of the factory are NOT prepared.
      * It's up to the user to prepare the features returned by
      * tp_simple_client_factory_dup_channel_features() himself.
+     * @param connection the #TpConnection of `channel,` or %NULL
+     * @param channel the #TpChannel created, or %NULL
      */
     connect(sigName: "succeeded-with-channel", callback: (($obj: ChannelRequest, connection: Connection, channel: Channel) => void)): number
     connect_after(sigName: "succeeded-with-channel", callback: (($obj: ChannelRequest, connection: Connection, channel: Channel) => void)): number
@@ -16493,6 +18027,8 @@ class ChannelRequest {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: ChannelRequest, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: ChannelRequest, id: number, proxy: any) => void)): number
@@ -16508,6 +18044,9 @@ class ChannelRequest {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: ChannelRequest, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: ChannelRequest, domain: number, code: number, message: string) => void)): number
@@ -16541,6 +18080,7 @@ class ChannelRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
@@ -16557,8 +18097,16 @@ class ChannelRequest {
     connect_after(sigName: "notify::preferred-handler", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::user-action-time", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-action-time", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: ChannelRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -16583,7 +18131,7 @@ interface ClientMessage_ConstructProps extends Message_ConstructProps {
 }
 class ClientMessage {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Message */
     /**
      * Append a body part to the message.
@@ -16595,10 +18143,13 @@ class ClientMessage {
     count_parts(): number
     /**
      * Remove the given key and its value from the given part.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
      */
     delete_key(part: number, key: string): boolean
     /**
      * Delete the given body part from the message.
+     * @param part a part number, which must be strictly greater than 0, and strictly  less than the number returned by tp_message_count_parts()
      */
     delete_part(part: number): void
     /**
@@ -16608,6 +18159,7 @@ class ClientMessage {
     destroy(): void
     /**
      * <!-- nothing more to say -->
+     * @param part a part number
      */
     dup_part(part: number): GLib.Variant
     /**
@@ -16685,10 +18237,13 @@ class ClientMessage {
     is_scrollback(): boolean
     /**
      * <!-- nothing more to say -->
+     * @param part a part number
      */
     peek(part: number): GLib.HashTable
     /**
      * Reference the given handle until this message is destroyed.
+     * @param handle_type a handle type, greater than %TP_HANDLE_TYPE_NONE and less than  %TP_NUM_HANDLE_TYPES
+     * @param handle a handle of the given type
      */
     ref_handle(handle_type: HandleType, handle: Handle): void
     /**
@@ -16698,14 +18253,24 @@ class ClientMessage {
      * all be referenced with tp_message_ref_handle() first.
      * 
      * In high-level language bindings, use tp_message_set_variant() instead.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param source a value, encoded as dbus-glib would
      */
     set(part: number, key: string, source: any): void
     /**
      * Set `key` in part `part` of `self` to have `b` as a boolean value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param b a boolean value
      */
     set_boolean(part: number, key: string, b: boolean): void
     /**
      * Set `key` in part `part` of `self` to have `bytes` as a byte-array value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param len a number of bytes
+     * @param bytes an array of `len` bytes
      */
     set_bytes(part: number, key: string, len: number, bytes?: object | null): void
     /**
@@ -16717,26 +18282,45 @@ class ClientMessage {
      * Since 0.13.9 this function has been deprecated in favor or
      * tp_cm_message_set_sender() as 'message-sender' is the only handle
      * you can put in a #TpCMMessage.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param handle_type a handle type
+     * @param handle_or_0 a handle of that type, or 0
      */
     set_handle(part: number, key: string, handle_type: HandleType, handle_or_0: Handle): void
     /**
      * Set `key` in part `part` of `self` to have `i` as a signed integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param i an integer value
      */
     set_int32(part: number, key: string, i: number): void
     /**
      * Set `key` in part `part` of `self` to have `i` as a signed integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param i an integer value
      */
     set_int64(part: number, key: string, i: number): void
     /**
      * Set `key` in part `part` of `self` to have `s` as a string value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param s a string value
      */
     set_string(part: number, key: string, s: string): void
     /**
      * Set `key` in part `part` of `self` to have `u` as an unsigned integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param u an unsigned integer value
      */
     set_uint32(part: number, key: string, u: number): void
     /**
      * Set `key` in part `part` of `self` to have `u` as an unsigned integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param u an unsigned integer value
      */
     set_uint64(part: number, key: string, u: number): void
     /**
@@ -16744,6 +18328,9 @@ class ClientMessage {
      * 
      * If `value` is a floating reference (see g_variant_ref_sink()), then this
      * function will take ownership of it.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param value a value
      */
     set_variant(part: number, key: string, value: GLib.Variant): void
     /**
@@ -16752,6 +18339,9 @@ class ClientMessage {
      * should not use `message` after passing it to this function.  All handle
      * references owned by `message` will subsequently belong to and be released
      * with `self`.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param message another (distinct) message created for the same #TpBaseConnection
      */
     take_message(part: number, key: string, message: Message): void
     /**
@@ -16793,6 +18383,10 @@ class ClientMessage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16803,6 +18397,12 @@ class ClientMessage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16826,6 +18426,7 @@ class ClientMessage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16845,11 +18446,14 @@ class ClientMessage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16857,6 +18461,8 @@ class ClientMessage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16874,6 +18480,7 @@ class ClientMessage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16919,6 +18526,7 @@ class ClientMessage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16962,15 +18570,20 @@ class ClientMessage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17011,6 +18624,7 @@ class ClientMessage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17045,6 +18659,7 @@ class ClientMessage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17064,6 +18679,7 @@ class ClientMessage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17096,6 +18712,7 @@ class ClientMessage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ClientMessage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ClientMessage, pspec: GObject.ParamSpec) => void)): number
@@ -17346,17 +18963,37 @@ class Connection {
     readonly status_reason: number
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Connection */
     /**
      * Subscribe to any opt-in change notifications for `interested_in`.
      * 
      * For contact information, use #TpContact instead, which will call this
      * automatically.
+     * @param interested_in a string identifying an interface or part of an interface  to which this connection will subscribe
      */
     add_client_interest(interested_in: string): void
     /**
@@ -17364,10 +19001,14 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param group the group to alter.
+     * @param contacts An array of #TpContact objects to  include in the group.
+     * @param callback a callback to call when the operation finishes
      */
     add_to_group_async(group: string, contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_add_to_group_async()
+     * @param result a #GAsyncResult
      */
     add_to_group_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17377,10 +19018,13 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to  authorize
+     * @param callback a callback to call when the operation finishes
      */
     authorize_publication_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_authorize_publication_async()
+     * @param result a #GAsyncResult
      */
     authorize_publication_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17395,14 +19039,21 @@ class Connection {
      * property to only make a widget sensitive when the account is connected.
      * 
      * See g_object_bind_property() for more information.
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind (must be %G_TYPE_BOOLEAN)
+     * @param invert %TRUE if you wish to invert the value of `target_property`   (i.e. %FALSE if connected)
      */
     bind_connection_status_to_property(target: object | null, target_property: string, invert: boolean): GObject.Binding
     /**
      * Direct the server to block `contacts`.
+     * @param contacts An array of #TpContact objects to  block
+     * @param report_abusive If %TRUE, report these contacts as abusive to the server administrators as well as blocking them. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
+     * @param callback a callback to call when the operation finishes
      */
     block_contacts_async(contacts: Contact[], report_abusive: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_block_contacts_async()
+     * @param result a #GAsyncResult
      */
     block_contacts_finish(result: Gio.AsyncResult): boolean
     can_set_contact_alias(): boolean
@@ -17414,10 +19065,12 @@ class Connection {
      * AccountManager, either use tp_account_request_presence_async()
      * or tp_account_set_enabled_async(), depending whether the intention is
      * to put the account offline temporarily, or disable it longer-term.
+     * @param callback a callback to call when the request is satisfied
      */
     disconnect_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_connection_disconnect_async().
+     * @param result a #GAsyncResult
      */
     disconnect_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17429,10 +19082,14 @@ class Connection {
      * manager doesn't support them - users of this method should have a static
      * list of features they would like to use if possible, and use it for all
      * connection managers.
+     * @param id A strings representing the desired contact by its  identifier in the IM protocol (an XMPP JID, SIP URI, MSN Passport,  AOL screen-name etc.)
+     * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be %NULL if `n_features` is 0)
+     * @param callback A user callback to call when the contact is ready
      */
     dup_contact_by_id_async(id: string, features?: ContactFeature[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_dup_contact_by_id_async().
+     * @param result a #GAsyncResult
      */
     dup_contact_by_id_finish(result: Gio.AsyncResult): Contact
     /**
@@ -17453,6 +19110,8 @@ class Connection {
      * it might be necessary to delay processing of messages or other events
      * until a #TpContact can be constructed asynchronously, for instance by using
      * tp_connection_get_contacts_by_handle().
+     * @param handle a handle of type %TP_HANDLE_TYPE_CONTACT
+     * @param identifier the normalized identifier (XMPP JID, etc.)  corresponding to `handle,` or %NULL if not known
      */
     dup_contact_if_possible(handle: Handle, identifier: string): Contact
     /**
@@ -17562,6 +19221,12 @@ class Connection {
      * 
      * If `hold` is %TRUE, the `callback` is given one reference to each handle
      * that appears as a key in the callback's `attributes` parameter.
+     * @param timeout_ms the timeout in milliseconds, or -1 to use the default
+     * @param handles an array of handles
+     * @param interfaces a #GStrv of interfaces
+     * @param hold if %TRUE, the callback will hold one reference to each valid handle
+     * @param callback called on success or  failure (unless `weak_object` has become unreferenced)
+     * @param weak_object if not %NULL, an object to be weakly referenced: if it is  destroyed, `callback` will not be called
      */
     get_contact_attributes(timeout_ms: number, handles: Handle[], interfaces: string, hold: boolean, callback: GObject.Callback, weak_object: GObject.Object): void
     /**
@@ -17611,6 +19276,11 @@ class Connection {
      * 
      * If `hold` is %TRUE, the `callback` is given a reference to each handle
      * that appears as a key in the callback's `attributes` parameter.
+     * @param timeout_ms the timeout in milliseconds (using a large timeout is  recommended)
+     * @param interfaces a #GStrv of interfaces
+     * @param hold if %TRUE, the callback will hold one reference to each handle it  receives
+     * @param callback called on success or  failure (unless `weak_object` has become unreferenced)
+     * @param weak_object if not %NULL, an object to be weakly referenced: if it is  destroyed, `callback` will not be called
      */
     get_contact_list_attributes(timeout_ms: number, interfaces: string, hold: boolean, callback: GObject.Callback, weak_object: GObject.Object): void
     /**
@@ -17630,6 +19300,10 @@ class Connection {
      * manager doesn't support them - users of this method should have a static
      * list of features they would like to use if possible, and use it for all
      * connection managers.
+     * @param handles An array of handles  of type %TP_HANDLE_TYPE_CONTACT representing the desired contacts
+     * @param features An array of features that  must be ready for use (if supported) before the callback is called (may  be %NULL if `n_features` is 0)
+     * @param callback A user callback to call when the contacts are ready
+     * @param weak_object An object to pass to the callback, which will be  weakly referenced; if this object is destroyed, the operation will be  cancelled
      */
     get_contacts_by_handle(handles: number[], features: number[] | null, callback: ConnectionContactsByHandleCb, weak_object?: GObject.Object | null): void
     /**
@@ -17641,6 +19315,10 @@ class Connection {
      * manager doesn't support them - users of this method should have a static
      * list of features they would like to use if possible, and use it for all
      * connection managers.
+     * @param ids An array of strings representing  the desired contacts by their  identifiers in the IM protocol (XMPP JIDs, SIP URIs, MSN Passports,  AOL screen-names etc.)
+     * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be %NULL if `n_features` is 0)
+     * @param callback A user callback to call when the contacts are ready
+     * @param weak_object An object to pass to the callback, which will  be weakly referenced; if this object is destroyed, the operation will be  cancelled
      */
     get_contacts_by_id(ids: string[], features: ContactFeature[] | null, callback: ConnectionContactsByIdCb, weak_object?: GObject.Object | null): void
     /**
@@ -17712,6 +19390,11 @@ class Connection {
      * reference count of handles; you should not use the RequestHandles,
      * HoldHandles and GetContactAttributes D-Bus methods directly as well as these
      * functions.
+     * @param timeout_ms the timeout in milliseconds, or -1 to use the default
+     * @param handle_type the handle type
+     * @param handles an array of handles
+     * @param callback called on success or failure (unless `weak_object` has become  unreferenced)
+     * @param weak_object if not %NULL, an object to be weakly referenced: if it is  destroyed, `callback` will not be called
      */
     hold_handles(timeout_ms: number, handle_type: HandleType, handles: Handle[], callback: ConnectionHoldHandlesCb, weak_object: GObject.Object): void
     /**
@@ -17728,6 +19411,7 @@ class Connection {
      * 
      * If %TP_CONTACT_FEATURE_CONTACT_INFO is not yet set on a contact, it will be
      * set before its property gets updated.
+     * @param contacts An array of #TpContact objects  associated with `self`
      */
     refresh_contact_info(contacts: Contact[]): void
     /**
@@ -17736,10 +19420,13 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to  remove
+     * @param callback a callback to call when the operation finishes
      */
     remove_contacts_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_remove_contacts_async()
+     * @param result a #GAsyncResult
      */
     remove_contacts_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17748,10 +19435,14 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param group the group to alter.
+     * @param contacts An array of #TpContact objects to  remove from the group.
+     * @param callback a callback to call when the operation finishes
      */
     remove_from_group_async(group: string, contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_remove_from_group_async()
+     * @param result a #GAsyncResult
      */
     remove_from_group_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17759,10 +19450,13 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param group the group to remove.
+     * @param callback a callback to call when the operation finishes
      */
     remove_group_async(group: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_remove_group_async()
+     * @param result a #GAsyncResult
      */
     remove_group_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17774,10 +19468,14 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param old_name the group to rename
+     * @param new_name the new name for the group
+     * @param callback a callback to call when the operation finishes
      */
     rename_group_async(old_name: string, new_name: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_rename_group_async()
+     * @param result a #GAsyncResult
      */
     rename_group_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17787,6 +19485,11 @@ class Connection {
      * If they are valid, the callback will later be called with the given
      * handles; if not all of them are valid, the callback will be called with
      * an error.
+     * @param timeout_ms the timeout in milliseconds, or -1 to use the default
+     * @param handle_type the handle type
+     * @param ids an array of string identifiers for which  handles are required, terminated by %NULL (must not be %NULL or empty)
+     * @param callback called on success or failure (unless `weak_object` has become  unreferenced)
+     * @param weak_object if not %NULL, an object to be weakly referenced: if it is  destroyed, `callback` will not be called
      */
     request_handles(timeout_ms: number, handle_type: HandleType, ids: string[], callback: ConnectionRequestHandlesCb, weak_object: GObject.Object): void
     /**
@@ -17796,10 +19499,14 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to whom  requests are to be sent.
+     * @param message an optional plain-text message from the user, to send to those  `contacts` with the subscription request.
+     * @param callback a callback to call when the operation finishes
      */
     request_subscription_async(contacts: Contact[], message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_request_subscription_async()
+     * @param result a #GAsyncResult
      */
     request_subscription_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17810,10 +19517,13 @@ class Connection {
      * This method should not be expected to succeed if the result of
      * tp_connection_get_contact_info_flags() does not include
      * %TP_CONTACT_INFO_FLAG_CAN_SET.
+     * @param info a #GList of  #TpContactInfoField
+     * @param callback a callback to call when the request is satisfied
      */
     set_contact_info_async(info: ContactInfoField[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of `self` info.
+     * @param result a #GAsyncResult
      */
     set_contact_info_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17822,18 +19532,25 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param group the group to alter.
+     * @param contacts An array of #TpContact objects members  for the group. If this set is empty, this method MAY remove the group.
+     * @param callback a callback to call when the operation finishes
      */
     set_group_members_async(group: string, contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_set_group_members_async()
+     * @param result a #GAsyncResult
      */
     set_group_members_finish(result: Gio.AsyncResult): boolean
     /**
      * Direct the server to unblock `contacts`.
+     * @param contacts An array of #TpContact objects to  block
+     * @param callback a callback to call when the operation finishes
      */
     unblock_contacts_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_unblock_contacts_async()
+     * @param result a #GAsyncResult
      */
     unblock_contacts_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17842,15 +19559,20 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to  remove
+     * @param callback a callback to call when the operation finishes
      */
     unpublish_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_unpublish_async()
+     * @param result a #GAsyncResult
      */
     unpublish_finish(result: Gio.AsyncResult): boolean
     /**
      * Do nothing. In versions of telepathy-glib prior to 0.13.8,
      * this released a reference to the handles in `handles`.
+     * @param handle_type a handle type
+     * @param handles an array of `n_handles` handles
      */
     unref_handles(handle_type: HandleType, handles: Handle[]): void
     /**
@@ -17859,10 +19581,13 @@ class Connection {
      * 
      * For this to work properly `self` must have interface
      * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to  remove
+     * @param callback a callback to call when the operation finishes
      */
     unsubscribe_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_unsubscribe_async()
+     * @param result a #GAsyncResult
      */
     unsubscribe_finish(result: Gio.AsyncResult): boolean
     /**
@@ -17874,6 +19599,10 @@ class Connection {
      * manager doesn't support them - users of this method should have a static
      * list of features they would like to use if possible, and use it for all
      * connection managers.
+     * @param contacts An array of #TpContact objects  associated with `self`
+     * @param features An array of features that must be  ready for use (if supported) before the callback is called
+     * @param callback A user callback to call when the contacts are ready
+     * @param weak_object An object to pass to the callback, which will be  weakly referenced; if this object is destroyed, the operation will be  cancelled
      */
     upgrade_contacts(contacts: Contact[], features: ContactFeature[], callback: ConnectionUpgradeContactsCb, weak_object?: GObject.Object | null): void
     /**
@@ -17885,10 +19614,14 @@ class Connection {
      * manager doesn't support them - users of this method should have a static
      * list of features they would like to use if possible, and use it for all
      * connection managers.
+     * @param contacts An array of #TpContact objects  associated with `self`
+     * @param features An array of features that must be  ready for use (if supported) before the callback is called
+     * @param callback A user callback to call when the contacts are ready
      */
     upgrade_contacts_async(contacts: Contact[], features: ContactFeature[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_upgrade_contacts_async().
+     * @param result a #GAsyncResult
      */
     upgrade_contacts_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* contacts */ Contact[] | null ]
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -17897,6 +19630,8 @@ class Connection {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -17930,12 +19665,14 @@ class Connection {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -17948,6 +19685,7 @@ class Connection {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -17998,12 +19736,15 @@ class Connection {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -18041,6 +19782,10 @@ class Connection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18051,6 +19796,12 @@ class Connection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18074,6 +19825,7 @@ class Connection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18093,11 +19845,14 @@ class Connection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18105,6 +19860,8 @@ class Connection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18122,6 +19879,7 @@ class Connection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18167,6 +19925,7 @@ class Connection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18210,15 +19969,20 @@ class Connection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18259,6 +20023,7 @@ class Connection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18293,6 +20058,7 @@ class Connection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18312,6 +20078,7 @@ class Connection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18323,6 +20090,9 @@ class Connection {
      * 
      * For this signal to be emitted, you must first call
      * tp_proxy_prepare_async() with the feature %TP_CONNECTION_FEATURE_BALANCE.
+     * @param balance the value of the #TpConnection:balance property
+     * @param balance_scale the value of the #TpConnection:balance-scale property
+     * @param balance_currency the value of the #TpConnection:balance-currency property
      */
     connect(sigName: "balance-changed", callback: (($obj: Connection, balance: number, balance_scale: number, balance_currency: string) => void)): number
     connect_after(sigName: "balance-changed", callback: (($obj: Connection, balance: number, balance_scale: number, balance_currency: string) => void)): number
@@ -18339,6 +20109,8 @@ class Connection {
      * For this signal to be emitted, you must first call
      * tp_proxy_prepare_async() with the feature
      * %TP_CONNECTION_FEATURE_CONTACT_BLOCKING.
+     * @param added   a #GPtrArray of #TpContact which have been blocked
+     * @param removed   a #GPtrArray of #TpContact which are no longer blocked
      */
     connect(sigName: "blocked-contacts-changed", callback: (($obj: Connection, added: Contact[], removed: Contact[]) => void)): number
     connect_after(sigName: "blocked-contacts-changed", callback: (($obj: Connection, added: Contact[], removed: Contact[]) => void)): number
@@ -18355,6 +20127,8 @@ class Connection {
      * For this signal to be emitted, you must first call
      * tp_proxy_prepare_async() with the feature
      * %TP_CONNECTION_FEATURE_CONTACT_LIST.
+     * @param added   a #GPtrArray of #TpContact added to contacts list
+     * @param removed   a #GPtrArray of #TpContact removed from contacts list
      */
     connect(sigName: "contact-list-changed", callback: (($obj: Connection, added: Contact[], removed: Contact[]) => void)): number
     connect_after(sigName: "contact-list-changed", callback: (($obj: Connection, added: Contact[], removed: Contact[]) => void)): number
@@ -18377,6 +20151,8 @@ class Connection {
      * For this signal to be emited, you must first call
      * tp_proxy_prepare_async() with the feature
      * %TP_CONNECTION_FEATURE_CONTACT_GROUPS.
+     * @param old_name the old name of the group.
+     * @param new_name the new name of the group.
      */
     connect(sigName: "group-renamed", callback: (($obj: Connection, old_name: string, new_name: string) => void)): number
     connect_after(sigName: "group-renamed", callback: (($obj: Connection, old_name: string, new_name: string) => void)): number
@@ -18390,6 +20166,7 @@ class Connection {
      * For this signal to be emited, you must first call
      * tp_proxy_prepare_async() with the feature
      * %TP_CONNECTION_FEATURE_CONTACT_GROUPS.
+     * @param added a #GStrv with the names of the new groups.
      */
     connect(sigName: "groups-created", callback: (($obj: Connection, added: string[]) => void)): number
     connect_after(sigName: "groups-created", callback: (($obj: Connection, added: string[]) => void)): number
@@ -18404,6 +20181,7 @@ class Connection {
      * For this signal to be emited, you must first call
      * tp_proxy_prepare_async() with the feature
      * %TP_CONNECTION_FEATURE_CONTACT_GROUPS.
+     * @param added A #GStrv with the names of the groups.
      */
     connect(sigName: "groups-removed", callback: (($obj: Connection, added: string[]) => void)): number
     connect_after(sigName: "groups-removed", callback: (($obj: Connection, added: string[]) => void)): number
@@ -18418,6 +20196,8 @@ class Connection {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: Connection, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: Connection, id: number, proxy: any) => void)): number
@@ -18433,6 +20213,9 @@ class Connection {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: Connection, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: Connection, domain: number, code: number, message: string) => void)): number
@@ -18466,6 +20249,7 @@ class Connection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
@@ -18514,8 +20298,16 @@ class Connection {
     connect_after(sigName: "notify::status", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::status-reason", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::status-reason", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -18551,6 +20343,8 @@ class Connection {
      * 
      * The order used is: available > busy > away > xa > hidden > offline > error >
      * unknown > unset
+     * @param p1 a #TpConnectionPresenceType
+     * @param p2 a #TpConnectionPresenceType
      */
     static presence_type_cmp_availability(p1: ConnectionPresenceType, p2: ConnectionPresenceType): number
     static $gtype: GObject.Type
@@ -18607,11 +20401,30 @@ class ConnectionManager {
     manager_file: string
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ConnectionManager */
     /**
      * Returns a list of protocol names supported by this connection manager.
@@ -18673,6 +20486,7 @@ class ConnectionManager {
      * The result is not necessarily valid after the main loop is re-entered.
      * Since 0.11.3, it can be copied with tp_connection_manager_protocol_copy()
      * if a permanently-valid copy is needed.
+     * @param protocol the name of a protocol as defined in the Telepathy D-Bus API,            e.g. "jabber" or "msn"
      */
     get_protocol(protocol: string): ConnectionManagerProtocol
     /**
@@ -18684,6 +20498,7 @@ class ConnectionManager {
      * to wait for this.
      * 
      * The result should be referenced with g_object_ref() if it will be kept.
+     * @param protocol the name of a protocol as defined in the Telepathy D-Bus API,            e.g. "jabber" or "msn"
      */
     get_protocol_object(protocol: string): Protocol
     /**
@@ -18692,6 +20507,7 @@ class ConnectionManager {
      * If this function is called before the connection manager information has
      * been obtained, the result is always %FALSE. Use tp_proxy_prepare_async()
      * to wait for this.
+     * @param protocol the name of a protocol as defined in the Telepathy D-Bus API,            e.g. "jabber" or "msn"
      */
     has_protocol(protocol: string): boolean
     /**
@@ -18707,6 +20523,8 @@ class ConnectionManager {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -18740,12 +20558,14 @@ class ConnectionManager {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -18758,6 +20578,7 @@ class ConnectionManager {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -18808,12 +20629,15 @@ class ConnectionManager {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -18851,6 +20675,10 @@ class ConnectionManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18861,6 +20689,12 @@ class ConnectionManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18884,6 +20718,7 @@ class ConnectionManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18903,11 +20738,14 @@ class ConnectionManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18915,6 +20753,8 @@ class ConnectionManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18932,6 +20772,7 @@ class ConnectionManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18977,6 +20818,7 @@ class ConnectionManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19020,15 +20862,20 @@ class ConnectionManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19069,6 +20916,7 @@ class ConnectionManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19103,6 +20951,7 @@ class ConnectionManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19122,6 +20971,7 @@ class ConnectionManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19144,6 +20994,7 @@ class ConnectionManager {
      * 
      * This signal is not very helpful. Using
      * tp_proxy_prepare_async() instead is recommended.
+     * @param source a #TpCMInfoSource
      */
     connect(sigName: "got-info", callback: (($obj: ConnectionManager, source: number) => void)): number
     connect_after(sigName: "got-info", callback: (($obj: ConnectionManager, source: number) => void)): number
@@ -19158,6 +21009,8 @@ class ConnectionManager {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: ConnectionManager, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: ConnectionManager, id: number, proxy: any) => void)): number
@@ -19173,6 +21026,9 @@ class ConnectionManager {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: ConnectionManager, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: ConnectionManager, domain: number, code: number, message: string) => void)): number
@@ -19206,6 +21062,7 @@ class ConnectionManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
@@ -19220,8 +21077,16 @@ class ConnectionManager {
     connect_after(sigName: "notify::info-source", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::manager-file", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::manager-file", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: ConnectionManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -19235,12 +21100,14 @@ class ConnectionManager {
      * Check that the given string is a valid connection manager name, i.e. that
      * it consists entirely of ASCII letters, digits and underscores, and starts
      * with a letter.
+     * @param name a possible connection manager name
      */
     static check_valid_name(name: string): boolean
     /**
      * Check that the given string is a valid protocol name, i.e. that
      * it consists entirely of ASCII letters, digits and hyphen/minus, and starts
      * with a letter.
+     * @param name a possible protocol name
      */
     static check_valid_protocol_name(name: string): boolean
     static get_feature_quark_core(): GLib.Quark
@@ -19445,34 +21312,42 @@ class Contact {
      */
     readonly subscribe_state: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Contact */
     /**
      * Convenience wrapper for tp_connection_add_to_group_async()
      * on a single contact.
+     * @param group the group to alter.
+     * @param callback a callback to call when the operation finishes
      */
     add_to_group_async(group: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_add_to_group_async()
+     * @param result a #GAsyncResult
      */
     add_to_group_finish(result: Gio.AsyncResult): boolean
     /**
      * Convenience wrapper for tp_connection_authorize_publication_async()
      * on a single contact.
+     * @param callback a callback to call when the operation finishes
      */
     authorize_publication_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_authorize_publication_async()
+     * @param result a #GAsyncResult
      */
     authorize_publication_finish(result: Gio.AsyncResult): boolean
     /**
      * Block communications with a contact, optionally reporting the contact as
      * abusive to the server administrators. To block more than one contact at once,
      * see tp_connection_block_contacts_async().
+     * @param report_abusive If %TRUE, report this contact as abusive to the server administrators as well as blocking him. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
+     * @param callback a callback to call when the operation finishes
      */
     block_async(report_abusive: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_block_async()
+     * @param result a #GAsyncResult
      */
     block_finish(result: Gio.AsyncResult): boolean
     /**
@@ -19628,24 +21503,30 @@ class Contact {
     get_subscribe_state(): SubscriptionState
     /**
      * <!-- -->
+     * @param feature a desired feature
      */
     has_feature(feature: ContactFeature): boolean
     /**
      * Convenience wrapper for tp_connection_remove_contacts_async()
      * on a single contact.
+     * @param callback a callback to call when the operation finishes
      */
     remove_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_remove_async()
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
      * Convenience wrapper for tp_connection_remove_from_group_async()
      * on a single contact.
+     * @param group the group to alter.
+     * @param callback a callback to call when the operation finishes
      */
     remove_from_group_async(group: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_remove_from_group_async()
+     * @param result a #GAsyncResult
      */
     remove_from_group_finish(result: Gio.AsyncResult): boolean
     /**
@@ -19665,20 +21546,26 @@ class Contact {
      * 
      * If %TP_CONTACT_FEATURE_CONTACT_INFO is not yet set on `self,` it will be
      * set before its property gets updated and `callback` is called.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a callback to call when the request is satisfied
      */
     request_contact_info_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async request of `self` info. If the operation was successful,
      * the contact's vCard can be accessed using tp_contact_get_contact_info().
+     * @param result a #GAsyncResult
      */
     request_contact_info_finish(result: Gio.AsyncResult): boolean
     /**
      * Convenience wrapper for tp_connection_request_subscription_async()
      * on a single contact.
+     * @param message an optional message
+     * @param callback a callback to call when the operation finishes
      */
     request_subscription_async(message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_request_subscription_async()
+     * @param result a #GAsyncResult
      */
     request_subscription_finish(result: Gio.AsyncResult): boolean
     /**
@@ -19694,37 +21581,46 @@ class Contact {
      * #TpContact::contact-groups-changed signal will be emitted before `callback`
      * is called. That means you can call tp_contact_get_contact_groups() to get the
      * new contact groups inside `callback`.
+     * @param groups the set of  groups which the contact should be in (may be %NULL if `n_groups` is 0)
+     * @param callback a callback to call when the request is satisfied
      */
     set_contact_groups_async(groups?: string[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of `self` contact groups.
+     * @param result a #GAsyncResult
      */
     set_contact_groups_finish(result: Gio.AsyncResult): boolean
     /**
      * Unblock communications with a contact. To unblock more than one contact
      * at once, see tp_connection_unblock_contacts_async().
+     * @param callback a callback to call when the operation finishes
      */
     unblock_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_unblock_async()
+     * @param result a #GAsyncResult
      */
     unblock_finish(result: Gio.AsyncResult): boolean
     /**
      * Convenience wrapper for tp_connection_unpublish_async()
      * on a single contact.
+     * @param callback a callback to call when the operation finishes
      */
     unpublish_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_unpublish_async()
+     * @param result a #GAsyncResult
      */
     unpublish_finish(result: Gio.AsyncResult): boolean
     /**
      * Convenience wrapper for tp_connection_unsubscribe_async()
      * on a single contact.
+     * @param callback a callback to call when the operation finishes
      */
     unsubscribe_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_unsubscribe_async()
+     * @param result a #GAsyncResult
      */
     unsubscribe_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -19762,6 +21658,10 @@ class Contact {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19772,6 +21672,12 @@ class Contact {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19795,6 +21701,7 @@ class Contact {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19814,11 +21721,14 @@ class Contact {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19826,6 +21736,8 @@ class Contact {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19843,6 +21755,7 @@ class Contact {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19888,6 +21801,7 @@ class Contact {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19931,15 +21845,20 @@ class Contact {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19980,6 +21899,7 @@ class Contact {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20014,6 +21934,7 @@ class Contact {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20033,6 +21954,7 @@ class Contact {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20040,18 +21962,26 @@ class Contact {
     /**
      * Emitted when this contact's groups changes. When this signal is emitted,
      * #TpContact:contact-groups property is already updated.
+     * @param added A #GStrv with added contact groups
+     * @param removed A #GStrv with removed contact groups
      */
     connect(sigName: "contact-groups-changed", callback: (($obj: Contact, added: string[], removed: string[]) => void)): number
     connect_after(sigName: "contact-groups-changed", callback: (($obj: Contact, added: string[], removed: string[]) => void)): number
     emit(sigName: "contact-groups-changed", added: string[], removed: string[]): void
     /**
      * Emitted when this contact's presence changes.
+     * @param type The new value of #TpContact:presence-type
+     * @param status The new value of #TpContact:presence-status
+     * @param message The new value of #TpContact:presence-message
      */
     connect(sigName: "presence-changed", callback: (($obj: Contact, type: number, status: string, message: string) => void)): number
     connect_after(sigName: "presence-changed", callback: (($obj: Contact, type: number, status: string, message: string) => void)): number
     emit(sigName: "presence-changed", type: number, status: string, message: string): void
     /**
      * Emitted when this contact's subscription states changes.
+     * @param subscribe the new value of #TpContact:subscribe-state
+     * @param publish the new value of #TpContact:publish-state
+     * @param publish_request the new value of #TpContact:publish-request
      */
     connect(sigName: "subscription-states-changed", callback: (($obj: Contact, subscribe: number, publish: number, publish_request: string) => void)): number
     connect_after(sigName: "subscription-states-changed", callback: (($obj: Contact, subscribe: number, publish: number, publish_request: string) => void)): number
@@ -20085,6 +22015,7 @@ class Contact {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
@@ -20165,6 +22096,10 @@ interface ContactSearch_ConstructProps extends GObject.Object_ConstructProps {
 class ContactSearch {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.ContactSearch */
     /**
+     * This search's account.
+     */
+    readonly account: Account
+    /**
      * The maximum number of results that the server should return.
      * This is only supported by some protocols; use
      * tp_capabilities_supports_contact_search() to check if it's
@@ -20175,11 +22110,20 @@ class ContactSearch {
      */
     limit: number
     /**
+     * The search server. This is only supported by some protocols;
+     * use tp_capabilities_supports_contact_search() to check if it's
+     * supported.
+     * 
+     * To change the server after the object has been constructed,
+     * use tp_contact_search_reset_async().
+     */
+    readonly server: string
+    /**
      * This search's state, as a %TpChannelContactSearchState.
      */
     readonly state: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ContactSearch */
     /**
      * <!-- -->
@@ -20208,10 +22152,14 @@ class ContactSearch {
      * If another tp_contact_search_reset_async() call is in progress,
      * it will be cancelled and tp_contact_search_reset_finish() will
      * return an appropriate error.
+     * @param server the server on which to search for contacts, or %NULL
+     * @param limit The maximum number of results the server should return, or 0 for the server default.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is finished
      */
     reset_async(server: string, limit: number, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * <!-- -->
+     * @param result the #GAsyncResult from the callback
      */
     reset_finish(result: Gio.AsyncResult): string[]
     /**
@@ -20221,6 +22169,7 @@ class ContactSearch {
      * 
      * Before searching again on the same #TpContactSearch, you must
      * call tp_contact_search_reset_async().
+     * @param criteria a map from keys returned by tp_contact_search_get_search_keys() to values to search for
      */
     start(criteria: GLib.HashTable): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -20258,6 +22207,10 @@ class ContactSearch {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20268,6 +22221,12 @@ class ContactSearch {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20291,6 +22250,7 @@ class ContactSearch {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20310,11 +22270,14 @@ class ContactSearch {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20322,6 +22285,8 @@ class ContactSearch {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20339,6 +22304,7 @@ class ContactSearch {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20384,6 +22350,7 @@ class ContactSearch {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20427,15 +22394,20 @@ class ContactSearch {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20476,6 +22448,7 @@ class ContactSearch {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20510,6 +22483,7 @@ class ContactSearch {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -20550,16 +22524,21 @@ class ContactSearch {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.ContactSearch */
@@ -20600,11 +22579,15 @@ class ContactSearch {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20624,6 +22607,7 @@ class ContactSearch {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20631,6 +22615,7 @@ class ContactSearch {
     /**
      * Emitted when search results are received. Note that this signal may
      * be emitted multiple times for the same search.
+     * @param results  a #GList with the search results
      */
     connect(sigName: "search-results-received", callback: (($obj: ContactSearch, results: ContactSearchResult[]) => void)): number
     connect_after(sigName: "search-results-received", callback: (($obj: ContactSearch, results: ContactSearchResult[]) => void)): number
@@ -20664,12 +22649,17 @@ class ContactSearch {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::limit", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::limit", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::server", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::server", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::state", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::state", callback: (($obj: ContactSearch, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -20683,6 +22673,10 @@ class ContactSearch {
     static new_finish(result: Gio.AsyncResult): ContactSearch
     /**
      * <!-- -->
+     * @param account an account for the contact search
+     * @param server the server on which to search for contacts, or %NULL
+     * @param limit The maximum number of results the server should return, or 0 for the server default.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is finished
      */
     static new_async(account: Account, server: string, limit: number, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -20692,6 +22686,12 @@ class ContactSearch {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     static $gtype: GObject.Type
@@ -20701,8 +22701,10 @@ interface ContactSearchResult_ConstructProps extends GObject.Object_ConstructPro
     identifier?: string
 }
 class ContactSearchResult {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.ContactSearchResult */
+    readonly identifier: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ContactSearchResult */
     /**
      * <!-- -->
@@ -20710,6 +22712,7 @@ class ContactSearchResult {
     dup_fields(): ContactInfoField[]
     /**
      * <!-- -->
+     * @param field the name of the field
      */
     get_field(field: string): ContactInfoField
     /**
@@ -20755,6 +22758,10 @@ class ContactSearchResult {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20765,6 +22772,12 @@ class ContactSearchResult {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20788,6 +22801,7 @@ class ContactSearchResult {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20807,11 +22821,14 @@ class ContactSearchResult {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20819,6 +22836,8 @@ class ContactSearchResult {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20836,6 +22855,7 @@ class ContactSearchResult {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20881,6 +22901,7 @@ class ContactSearchResult {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20924,15 +22945,20 @@ class ContactSearchResult {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20973,6 +22999,7 @@ class ContactSearchResult {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21007,6 +23034,7 @@ class ContactSearchResult {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21026,6 +23054,7 @@ class ContactSearchResult {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21058,10 +23087,13 @@ class ContactSearchResult {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContactSearchResult, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContactSearchResult, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::identifier", callback: (($obj: ContactSearchResult, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::identifier", callback: (($obj: ContactSearchResult, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21076,11 +23108,30 @@ interface DBusDaemon_ConstructProps extends Proxy_ConstructProps {
 class DBusDaemon {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.DBusDaemon */
     /**
      * <!-- Returns: is enough -->
@@ -21094,6 +23145,9 @@ class DBusDaemon {
      * In versions of telepathy-glib that have it, this should be preferred
      * instead of calling tp_cli_dbus_daemon_call_list_activatable_names(), since
      * that function will result in wakeups for every NameOwnerChanged signal.
+     * @param timeout_ms timeout for the call
+     * @param callback callback to be called on success or failure; must not be %NULL
+     * @param weak_object if not %NULL, a GObject which will be weakly referenced; if  it is destroyed, `callback` will not be called at all
      */
     list_activatable_names(timeout_ms: number, callback: DBusDaemonListNamesCb, weak_object: GObject.Object): void
     /**
@@ -21104,27 +23158,36 @@ class DBusDaemon {
      * In versions of telepathy-glib that have it, this should be preferred
      * instead of calling tp_cli_dbus_daemon_call_list_names(), since that
      * function will result in wakeups for every NameOwnerChanged signal.
+     * @param timeout_ms timeout for the call
+     * @param callback callback to be called on success or failure; must not be %NULL
+     * @param weak_object if not %NULL, a GObject which will be weakly referenced; if  it is destroyed, `callback` will not be called at all
      */
     list_names(timeout_ms: number, callback: DBusDaemonListNamesCb, weak_object: GObject.Object): void
     /**
      * Export `object` at `object_path`. This is a convenience wrapper around
      * dbus_g_connection_register_g_object(), and behaves similarly.
+     * @param object_path an object path
+     * @param object an object to export
      */
     register_object(object_path: string, object: GObject.Object): void
     /**
      * Release the given well-known name. This makes a synchronous call to the bus
      * daemon.
+     * @param well_known_name a well-known name owned by this process to release
      */
     release_name(well_known_name: string): boolean
     /**
      * Claim the given well-known name without queueing, allowing replacement
      * or replacing an existing name-owner. This makes a synchronous call to the
      * bus daemon.
+     * @param well_known_name a well-known name to acquire
+     * @param idempotent whether to consider it to be a success if this process              already owns the name
      */
     request_name(well_known_name: string, idempotent: boolean): boolean
     /**
      * Stop exporting `object` on D-Bus. This is a convenience wrapper around
      * dbus_g_connection_unregister_g_object(), and behaves similarly.
+     * @param object an object previously exported with tp_dbus_daemon_register_object()
      */
     unregister_object(object: GObject.Object): void
     /**
@@ -21134,6 +23197,8 @@ class DBusDaemon {
      * 
      * If multiple watches are registered for the same `name,` they will be called
      * in the order they were registered.
+     * @param name The name whose ownership is to be watched
+     * @param callback Callback to call when the ownership is discovered or changes
      */
     watch_name_owner(name: string, callback: DBusDaemonNameOwnerChangedCb): void
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -21142,6 +23207,8 @@ class DBusDaemon {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -21175,12 +23242,14 @@ class DBusDaemon {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -21193,6 +23262,7 @@ class DBusDaemon {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -21243,12 +23313,15 @@ class DBusDaemon {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -21286,6 +23359,10 @@ class DBusDaemon {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21296,6 +23373,12 @@ class DBusDaemon {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21319,6 +23402,7 @@ class DBusDaemon {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21338,11 +23422,14 @@ class DBusDaemon {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21350,6 +23437,8 @@ class DBusDaemon {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21367,6 +23456,7 @@ class DBusDaemon {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21412,6 +23502,7 @@ class DBusDaemon {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21455,15 +23546,20 @@ class DBusDaemon {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21504,6 +23600,7 @@ class DBusDaemon {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21538,6 +23635,7 @@ class DBusDaemon {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21557,6 +23655,7 @@ class DBusDaemon {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21570,6 +23669,8 @@ class DBusDaemon {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: DBusDaemon, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: DBusDaemon, id: number, proxy: any) => void)): number
@@ -21585,6 +23686,9 @@ class DBusDaemon {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: DBusDaemon, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: DBusDaemon, domain: number, code: number, message: string) => void)): number
@@ -21618,12 +23722,21 @@ class DBusDaemon {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bus-name", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: DBusDaemon, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21687,6 +23800,11 @@ class DBusTubeChannel {
      * Change notification is via notify::channel-ready.
      */
     readonly channel_ready: boolean
+    /**
+     * The #TpConnection to which this #TpChannel belongs. Used for e.g.
+     * handle manipulation.
+     */
+    readonly connection: Connection
     /**
      * If the %TP_CHANNEL_FEATURE_GROUP feature has been prepared successfully,
      * #TpChannelGroupFlags indicating the capabilities and behaviour of that
@@ -21827,22 +23945,43 @@ class DBusTubeChannel {
     readonly target_contact: Contact
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.DBusTubeChannel */
     /**
      * Accept an incoming D-Bus tube. When the tube has been accepted
      * `callback` will be called. You can then call
      * tp_dbus_tube_channel_accept_finish() to get the #GDBusConnection that will
      * be used to communicate through the tube.
+     * @param callback a callback to call when the tube has been offered
      */
     accept_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes to accept an incoming D-Bus tube. The returned #GDBusConnection
      * is ready to be used to exchange data through the tube.
+     * @param result a #GAsyncResult
      */
     accept_finish(result: Gio.AsyncResult): Gio.DBusConnection
     /**
@@ -21867,11 +24006,14 @@ class DBusTubeChannel {
      * `callback` will be called. You can then call
      * tp_dbus_tube_channel_offer_finish() to get the #GDBusConnection that will
      * be used to communicate through the tube.
+     * @param params parameters of the tube, or %NULL
+     * @param callback a callback to call when the tube has been offered
      */
     offer_async(params?: GLib.HashTable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes offering an outgoing D-Bus tube. The returned #GDBusConnection
      * is ready to be used to exchange data through the tube.
+     * @param result a #GAsyncResult
      */
     offer_finish(result: Gio.AsyncResult): Gio.DBusConnection
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Channel */
@@ -21904,10 +24046,12 @@ class DBusTubeChannel {
      * When the channel has been closed, `callback` will be called.
      * You can then call tp_channel_close_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
      */
     close_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_close_async().
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -21918,10 +24062,12 @@ class DBusTubeChannel {
      * When the channel has been destroyed or closed, `callback` will be called.
      * You can then call tp_channel_destroy_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we left the channel
      */
     destroy_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_destroy_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_destroy_async().
      */
     destroy_finish(result: Gio.AsyncResult): boolean
     /**
@@ -21963,6 +24109,7 @@ class DBusTubeChannel {
      * Return the chat state for the given contact. If tp_proxy_is_prepared()
      * would return %FALSE for the feature %TP_CHANNEL_FEATURE_CHAT_STATES,
      * the result will always be %TP_CHANNEL_CHAT_STATE_INACTIVE.
+     * @param contact a contact handle
      */
     get_chat_state(contact: Handle): ChannelChatState
     /**
@@ -22074,6 +24221,7 @@ class DBusTubeChannel {
      * instance, if you invite someone to an XMPP MUC using their globally valid
      * JID, you would expect to see the contact representing that JID in the
      * Group's remote-pending set).
+     * @param contact a contact which is a member of this channel
      */
     group_get_contact_owner(contact: Contact): Contact
     /**
@@ -22119,6 +24267,7 @@ class DBusTubeChannel {
      * This function's result is undefined unless the channel is ready
      * and its flags include %TP_CHANNEL_GROUP_FLAG_PROPERTIES (an implementation
      * without extra D-Bus round trips is not possible using the older API).
+     * @param handle a handle which is a member of this channel
      */
     group_get_handle_owner(handle: Handle): Handle
     /**
@@ -22140,6 +24289,7 @@ class DBusTubeChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write %NULL into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the #TpContact of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_contact_info(local_pending: Contact): [ /* returnType */ boolean, /* actor */ Contact | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -22151,6 +24301,7 @@ class DBusTubeChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write 0 into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the handle of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_info(local_pending: Handle): [ /* returnType */ boolean, /* actor */ Handle | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -22191,10 +24342,13 @@ class DBusTubeChannel {
      * 
      * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * must be prepared before calling this function.
+     * @param message the join message
+     * @param callback a callback to call when we joined the channel
      */
     join_async(message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_join_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
      */
     join_finish(result: Gio.AsyncResult): boolean
     /**
@@ -22209,10 +24363,14 @@ class DBusTubeChannel {
      * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * does not have to be prepared and will be prepared for you. But this is a
      * deprecated behaviour.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @param callback a callback to call when we left the channel
      */
     leave_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
      */
     leave_finish(result: Gio.AsyncResult): boolean
     /**
@@ -22224,12 +24382,15 @@ class DBusTubeChannel {
      * Once the password has been provided, `callback` will be
      * called. You can then call tp_channel_provide_password_finish()
      * to get the result of the operation.
+     * @param password the password
+     * @param callback a callback to call when `password` has been provided
      */
     provide_password_async(password: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_provide_password_async().
      * If the password was rejected, the operation
      * fails with #TP_ERROR_AUTHENTICATION_FAILED.
+     * @param result a #GAsyncResult passed to the callback for  tp_channel_provide_password_async().
      */
     provide_password_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -22238,6 +24399,8 @@ class DBusTubeChannel {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -22271,12 +24434,14 @@ class DBusTubeChannel {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -22289,6 +24454,7 @@ class DBusTubeChannel {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -22339,12 +24505,15 @@ class DBusTubeChannel {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -22382,6 +24551,10 @@ class DBusTubeChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22392,6 +24565,12 @@ class DBusTubeChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22415,6 +24594,7 @@ class DBusTubeChannel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22434,11 +24614,14 @@ class DBusTubeChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22446,6 +24629,8 @@ class DBusTubeChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22463,6 +24648,7 @@ class DBusTubeChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22508,6 +24694,7 @@ class DBusTubeChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22551,15 +24738,20 @@ class DBusTubeChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22600,6 +24792,7 @@ class DBusTubeChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22634,6 +24827,7 @@ class DBusTubeChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22653,6 +24847,7 @@ class DBusTubeChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22660,6 +24855,8 @@ class DBusTubeChannel {
     /**
      * Emitted when a contact's chat state changes after tp_proxy_prepare_async()
      * has finished preparing the feature %TP_CHANNEL_FEATURE_CHAT_STATES.
+     * @param contact a contact handle for the local user or another contact
+     * @param state the new #TpChannelChatState for the contact
      */
     connect(sigName: "chat-state-changed", callback: (($obj: DBusTubeChannel, contact: number, state: number) => void)): number
     connect_after(sigName: "chat-state-changed", callback: (($obj: DBusTubeChannel, contact: number, state: number) => void)): number
@@ -22670,6 +24867,12 @@ class DBusTubeChannel {
      * This is not guaranteed to be emitted until tp_proxy_prepare_async() has
      * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
      * omitted.
+     * @param added   a #GPtrArray of #TpContact containing the full members added
+     * @param removed   a #GPtrArray of #TpContact containing the members (full, local-pending or  remote-pending) removed
+     * @param local_pending   a #GPtrArray of #TpContact containing the local-pending members added
+     * @param remote_pending   a #GPtrArray of #TpContact containing the remote-pending members added
+     * @param actor a #TpContact for the "actor" handle in `details`
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-contacts-changed", callback: (($obj: DBusTubeChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-contacts-changed", callback: (($obj: DBusTubeChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
@@ -22677,12 +24880,21 @@ class DBusTubeChannel {
     /**
      * Emitted when the #TpChannel:group-flags property changes while the
      * channel is ready.
+     * @param added #TpChannelGroupFlags which are newly set
+     * @param removed #TpChannelGroupFlags which are no longer set
      */
     connect(sigName: "group-flags-changed", callback: (($obj: DBusTubeChannel, added: number, removed: number) => void)): number
     connect_after(sigName: "group-flags-changed", callback: (($obj: DBusTubeChannel, added: number, removed: number) => void)): number
     emit(sigName: "group-flags-changed", added: number, removed: number): void
     /**
      * Emitted when the group members change in a Group channel that is ready.
+     * @param message an optional textual message
+     * @param added a #GArray of #guint containing the full members added
+     * @param removed a #GArray of #guint containing the members (full,  local-pending or remote-pending) removed
+     * @param local_pending a #GArray of #guint containing the local-pending  members added
+     * @param remote_pending a #GArray of #guint containing the remote-pending  members added
+     * @param actor the #TpHandle of the contact causing the change, or 0
+     * @param reason the reason for the change as a #TpChannelGroupChangeReason
      */
     connect(sigName: "group-members-changed", callback: (($obj: DBusTubeChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
     connect_after(sigName: "group-members-changed", callback: (($obj: DBusTubeChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
@@ -22692,6 +24904,11 @@ class DBusTubeChannel {
      * Contains a superset of the information in the
      * TpChannel::group-members-changed signal, and is emitted at the same time;
      * applications can connect to this signal and ignore the other.
+     * @param added a #GArray of #guint  containing the full members added
+     * @param removed a #GArray of #guint  containing the members (full, local-pending or remote-pending) removed
+     * @param local_pending a #GArray of  #guint containing the local-pending members added
+     * @param remote_pending a #GArray of  #guint containing the remote-pending members added
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-members-changed-detailed", callback: (($obj: DBusTubeChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-members-changed-detailed", callback: (($obj: DBusTubeChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
@@ -22706,6 +24923,8 @@ class DBusTubeChannel {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: DBusTubeChannel, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: DBusTubeChannel, id: number, proxy: any) => void)): number
@@ -22721,6 +24940,9 @@ class DBusTubeChannel {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: DBusTubeChannel, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: DBusTubeChannel, domain: number, code: number, message: string) => void)): number
@@ -22754,6 +24976,7 @@ class DBusTubeChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
@@ -22764,6 +24987,8 @@ class DBusTubeChannel {
     connect_after(sigName: "notify::service-name", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::channel-ready", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::channel-ready", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-flags", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::group-flags", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-self-contact", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
@@ -22784,8 +25009,16 @@ class DBusTubeChannel {
     connect_after(sigName: "notify::requested", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::target-contact", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::target-contact", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: DBusTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -22810,20 +25043,41 @@ class DebugClient {
     readonly enabled: boolean
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.DebugClient */
     /**
      * Retrieve buffered messages from `self`. Once `callback` is called,
      * use tp_debug_client_get_messages_finish() to retrieve the #TpDebugMessage
      * objects.
+     * @param callback callback to call when the messages have been retrieved
      */
     get_messages_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_debug_client_set_enabled_async().
+     * @param result a #GAsyncResult
      */
     get_messages_finish(result: Gio.AsyncResult): DebugMessage[]
     /**
@@ -22833,10 +25087,13 @@ class DebugClient {
     /**
      * Enable or disable publishing of debug messages on the bus by the component
      * owning `self'`s bus name.
+     * @param enabled %TRUE if debug messages should be published on the bus, %FALSE otherwise
+     * @param callback a callback to call when the request is satisfied
      */
     set_enabled_async(enabled: boolean, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_debug_client_set_enabled_async().
+     * @param result a #GAsyncResult
      */
     set_enabled_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -22845,6 +25102,8 @@ class DebugClient {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -22878,12 +25137,14 @@ class DebugClient {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -22896,6 +25157,7 @@ class DebugClient {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -22946,12 +25208,15 @@ class DebugClient {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -22989,6 +25254,10 @@ class DebugClient {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22999,6 +25268,12 @@ class DebugClient {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23022,6 +25297,7 @@ class DebugClient {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23041,11 +25317,14 @@ class DebugClient {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23053,6 +25332,8 @@ class DebugClient {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23070,6 +25351,7 @@ class DebugClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23115,6 +25397,7 @@ class DebugClient {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23158,15 +25441,20 @@ class DebugClient {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23207,6 +25495,7 @@ class DebugClient {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23241,6 +25530,7 @@ class DebugClient {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23260,6 +25550,7 @@ class DebugClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23267,6 +25558,7 @@ class DebugClient {
     /**
      * Emitted when a #TpDebugMessage is generated if the TpDebugMessage:enabled
      * property is set to %TRUE.
+     * @param message a #TpDebugMessage
      */
     connect(sigName: "new-debug-message", callback: (($obj: DebugClient, message: DebugMessage) => void)): number
     connect_after(sigName: "new-debug-message", callback: (($obj: DebugClient, message: DebugMessage) => void)): number
@@ -23281,6 +25573,8 @@ class DebugClient {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: DebugClient, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: DebugClient, id: number, proxy: any) => void)): number
@@ -23296,6 +25590,9 @@ class DebugClient {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: DebugClient, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: DebugClient, domain: number, code: number, message: string) => void)): number
@@ -23329,14 +25626,23 @@ class DebugClient {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::enabled", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enabled", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: DebugClient, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -23383,7 +25689,7 @@ class DebugMessage {
      */
     readonly time: GLib.DateTime
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.DebugMessage */
     /**
      * Return the #TpDebugMessage:category property
@@ -23440,6 +25746,10 @@ class DebugMessage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23450,6 +25760,12 @@ class DebugMessage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23473,6 +25789,7 @@ class DebugMessage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23492,11 +25809,14 @@ class DebugMessage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23504,6 +25824,8 @@ class DebugMessage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23521,6 +25843,7 @@ class DebugMessage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23566,6 +25889,7 @@ class DebugMessage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23609,15 +25933,20 @@ class DebugMessage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23658,6 +25987,7 @@ class DebugMessage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23692,6 +26022,7 @@ class DebugMessage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23711,6 +26042,7 @@ class DebugMessage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23743,6 +26075,7 @@ class DebugMessage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DebugMessage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DebugMessage, pspec: GObject.ParamSpec) => void)): number
@@ -23888,6 +26221,11 @@ class FileTransferChannel {
      */
     readonly channel_ready: boolean
     /**
+     * The #TpConnection to which this #TpChannel belongs. Used for e.g.
+     * handle manipulation.
+     */
+    readonly connection: Connection
+    /**
      * If the %TP_CHANNEL_FEATURE_GROUP feature has been prepared successfully,
      * #TpChannelGroupFlags indicating the capabilities and behaviour of that
      * group.
@@ -24027,11 +26365,30 @@ class FileTransferChannel {
     readonly target_contact: Contact
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.FileTransferChannel */
     /**
      * Accept an incoming file transfer in the
@@ -24039,10 +26396,14 @@ class FileTransferChannel {
      * processed, `callback` will be called. You can then call
      * tp_file_transfer_channel_accept_file_finish() to get the result of
      * the operation.
+     * @param file a #GFile where the file should be saved
+     * @param offset Offset from the start of `file` where transfer begins
+     * @param callback a callback to call when the transfer has been accepted
      */
     accept_file_async(file: Gio.File, offset: number, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a call to tp_file_transfer_channel_accept_file_async().
+     * @param result a #GAsyncResult
      */
     accept_file_finish(result: Gio.AsyncResult): boolean
     /**
@@ -24096,6 +26457,8 @@ class FileTransferChannel {
      * Once the file has been provided, `callback` will be called. You
      * should then call tp_file_transfer_channel_provide_file_finish() to
      * get the result of the operation.
+     * @param file a #GFile to send to the remote contact
+     * @param callback a callback to call when the transfer has been accepted
      */
     provide_file_async(file: Gio.File, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -24105,6 +26468,7 @@ class FileTransferChannel {
      * Successful return from this function does not mean that the file
      * transfer has completed or has even started at all. The state of the
      * file transfer should be monitored with the "notify::state" signal.
+     * @param result a #GAsyncResult
      */
     provide_file_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Channel */
@@ -24137,10 +26501,12 @@ class FileTransferChannel {
      * When the channel has been closed, `callback` will be called.
      * You can then call tp_channel_close_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
      */
     close_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_close_async().
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -24151,10 +26517,12 @@ class FileTransferChannel {
      * When the channel has been destroyed or closed, `callback` will be called.
      * You can then call tp_channel_destroy_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we left the channel
      */
     destroy_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_destroy_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_destroy_async().
      */
     destroy_finish(result: Gio.AsyncResult): boolean
     /**
@@ -24196,6 +26564,7 @@ class FileTransferChannel {
      * Return the chat state for the given contact. If tp_proxy_is_prepared()
      * would return %FALSE for the feature %TP_CHANNEL_FEATURE_CHAT_STATES,
      * the result will always be %TP_CHANNEL_CHAT_STATE_INACTIVE.
+     * @param contact a contact handle
      */
     get_chat_state(contact: Handle): ChannelChatState
     /**
@@ -24307,6 +26676,7 @@ class FileTransferChannel {
      * instance, if you invite someone to an XMPP MUC using their globally valid
      * JID, you would expect to see the contact representing that JID in the
      * Group's remote-pending set).
+     * @param contact a contact which is a member of this channel
      */
     group_get_contact_owner(contact: Contact): Contact
     /**
@@ -24352,6 +26722,7 @@ class FileTransferChannel {
      * This function's result is undefined unless the channel is ready
      * and its flags include %TP_CHANNEL_GROUP_FLAG_PROPERTIES (an implementation
      * without extra D-Bus round trips is not possible using the older API).
+     * @param handle a handle which is a member of this channel
      */
     group_get_handle_owner(handle: Handle): Handle
     /**
@@ -24373,6 +26744,7 @@ class FileTransferChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write %NULL into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the #TpContact of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_contact_info(local_pending: Contact): [ /* returnType */ boolean, /* actor */ Contact | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -24384,6 +26756,7 @@ class FileTransferChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write 0 into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the handle of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_info(local_pending: Handle): [ /* returnType */ boolean, /* actor */ Handle | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -24424,10 +26797,13 @@ class FileTransferChannel {
      * 
      * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * must be prepared before calling this function.
+     * @param message the join message
+     * @param callback a callback to call when we joined the channel
      */
     join_async(message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_join_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
      */
     join_finish(result: Gio.AsyncResult): boolean
     /**
@@ -24442,10 +26818,14 @@ class FileTransferChannel {
      * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * does not have to be prepared and will be prepared for you. But this is a
      * deprecated behaviour.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @param callback a callback to call when we left the channel
      */
     leave_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
      */
     leave_finish(result: Gio.AsyncResult): boolean
     /**
@@ -24457,12 +26837,15 @@ class FileTransferChannel {
      * Once the password has been provided, `callback` will be
      * called. You can then call tp_channel_provide_password_finish()
      * to get the result of the operation.
+     * @param password the password
+     * @param callback a callback to call when `password` has been provided
      */
     provide_password_async(password: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_provide_password_async().
      * If the password was rejected, the operation
      * fails with #TP_ERROR_AUTHENTICATION_FAILED.
+     * @param result a #GAsyncResult passed to the callback for  tp_channel_provide_password_async().
      */
     provide_password_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -24471,6 +26854,8 @@ class FileTransferChannel {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -24504,12 +26889,14 @@ class FileTransferChannel {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -24522,6 +26909,7 @@ class FileTransferChannel {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -24572,12 +26960,15 @@ class FileTransferChannel {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -24615,6 +27006,10 @@ class FileTransferChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24625,6 +27020,12 @@ class FileTransferChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24648,6 +27049,7 @@ class FileTransferChannel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24667,11 +27069,14 @@ class FileTransferChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24679,6 +27084,8 @@ class FileTransferChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24696,6 +27103,7 @@ class FileTransferChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24741,6 +27149,7 @@ class FileTransferChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24784,15 +27193,20 @@ class FileTransferChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24833,6 +27247,7 @@ class FileTransferChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24867,6 +27282,7 @@ class FileTransferChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24886,6 +27302,7 @@ class FileTransferChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24893,6 +27310,8 @@ class FileTransferChannel {
     /**
      * Emitted when a contact's chat state changes after tp_proxy_prepare_async()
      * has finished preparing the feature %TP_CHANNEL_FEATURE_CHAT_STATES.
+     * @param contact a contact handle for the local user or another contact
+     * @param state the new #TpChannelChatState for the contact
      */
     connect(sigName: "chat-state-changed", callback: (($obj: FileTransferChannel, contact: number, state: number) => void)): number
     connect_after(sigName: "chat-state-changed", callback: (($obj: FileTransferChannel, contact: number, state: number) => void)): number
@@ -24903,6 +27322,12 @@ class FileTransferChannel {
      * This is not guaranteed to be emitted until tp_proxy_prepare_async() has
      * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
      * omitted.
+     * @param added   a #GPtrArray of #TpContact containing the full members added
+     * @param removed   a #GPtrArray of #TpContact containing the members (full, local-pending or  remote-pending) removed
+     * @param local_pending   a #GPtrArray of #TpContact containing the local-pending members added
+     * @param remote_pending   a #GPtrArray of #TpContact containing the remote-pending members added
+     * @param actor a #TpContact for the "actor" handle in `details`
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-contacts-changed", callback: (($obj: FileTransferChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-contacts-changed", callback: (($obj: FileTransferChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
@@ -24910,12 +27335,21 @@ class FileTransferChannel {
     /**
      * Emitted when the #TpChannel:group-flags property changes while the
      * channel is ready.
+     * @param added #TpChannelGroupFlags which are newly set
+     * @param removed #TpChannelGroupFlags which are no longer set
      */
     connect(sigName: "group-flags-changed", callback: (($obj: FileTransferChannel, added: number, removed: number) => void)): number
     connect_after(sigName: "group-flags-changed", callback: (($obj: FileTransferChannel, added: number, removed: number) => void)): number
     emit(sigName: "group-flags-changed", added: number, removed: number): void
     /**
      * Emitted when the group members change in a Group channel that is ready.
+     * @param message an optional textual message
+     * @param added a #GArray of #guint containing the full members added
+     * @param removed a #GArray of #guint containing the members (full,  local-pending or remote-pending) removed
+     * @param local_pending a #GArray of #guint containing the local-pending  members added
+     * @param remote_pending a #GArray of #guint containing the remote-pending  members added
+     * @param actor the #TpHandle of the contact causing the change, or 0
+     * @param reason the reason for the change as a #TpChannelGroupChangeReason
      */
     connect(sigName: "group-members-changed", callback: (($obj: FileTransferChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
     connect_after(sigName: "group-members-changed", callback: (($obj: FileTransferChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
@@ -24925,6 +27359,11 @@ class FileTransferChannel {
      * Contains a superset of the information in the
      * TpChannel::group-members-changed signal, and is emitted at the same time;
      * applications can connect to this signal and ignore the other.
+     * @param added a #GArray of #guint  containing the full members added
+     * @param removed a #GArray of #guint  containing the members (full, local-pending or remote-pending) removed
+     * @param local_pending a #GArray of  #guint containing the local-pending members added
+     * @param remote_pending a #GArray of  #guint containing the remote-pending members added
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-members-changed-detailed", callback: (($obj: FileTransferChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-members-changed-detailed", callback: (($obj: FileTransferChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
@@ -24939,6 +27378,8 @@ class FileTransferChannel {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: FileTransferChannel, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: FileTransferChannel, id: number, proxy: any) => void)): number
@@ -24954,6 +27395,9 @@ class FileTransferChannel {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: FileTransferChannel, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: FileTransferChannel, domain: number, code: number, message: string) => void)): number
@@ -24987,6 +27431,7 @@ class FileTransferChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
@@ -25013,6 +27458,8 @@ class FileTransferChannel {
     connect_after(sigName: "notify::transferred-bytes", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::channel-ready", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::channel-ready", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-flags", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::group-flags", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-self-contact", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
@@ -25033,8 +27480,16 @@ class FileTransferChannel {
     connect_after(sigName: "notify::requested", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::target-contact", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::target-contact", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: FileTransferChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -25094,8 +27549,50 @@ interface HandleChannelsContext_ConstructProps extends GObject.Object_ConstructP
     user_action_time?: number
 }
 class HandleChannelsContext {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.HandleChannelsContext */
+    /**
+     * A #TpAccount object representing the Account of the DispatchOperation
+     * that has been passed to HandleChannels.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly account: Account
+    /**
+     * A #GPtrArray containing #TpChannel objects representing the channels
+     * that have been passed to HandleChannels.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly channels: object[]
+    /**
+     * A #TpConnection object representing the Connection of the DispatchOperation
+     * that has been passed to HandleChannels.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly connection: Connection
+    /**
+     * A #GPtrArray containing #TpChannelRequest objects representing the
+     * requests that have been passed to HandleChannels.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly requests_satisfied: object[]
+    /**
+     * The time at which user action occurred, or one of the
+     * special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or
+     * %TP_USER_ACTION_TIME_CURRENT_TIME
+     * (see #TpAccountChannelRequest:user-action-time for details)
+     * 
+     * Read-only except during construction.
+     */
+    readonly user_action_time: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.HandleChannelsContext */
     /**
      * Called by #TpBaseClientClassAddDispatchOperationImpl when it's done so
@@ -25116,6 +27613,7 @@ class HandleChannelsContext {
     delay(): void
     /**
      * Called by #TpBaseClientClassAddDispatchOperationImpl to raise a D-Bus error.
+     * @param error the error to return from the method
      */
     fail(error: GLib.Error): void
     /**
@@ -25167,6 +27665,10 @@ class HandleChannelsContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25177,6 +27679,12 @@ class HandleChannelsContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25200,6 +27708,7 @@ class HandleChannelsContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25219,11 +27728,14 @@ class HandleChannelsContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25231,6 +27743,8 @@ class HandleChannelsContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25248,6 +27762,7 @@ class HandleChannelsContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25293,6 +27808,7 @@ class HandleChannelsContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25336,15 +27852,20 @@ class HandleChannelsContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25385,6 +27906,7 @@ class HandleChannelsContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25419,6 +27941,7 @@ class HandleChannelsContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25438,6 +27961,7 @@ class HandleChannelsContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25477,10 +28001,21 @@ class HandleChannelsContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::channels", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channels", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::requests-satisfied", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::requests-satisfied", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::user-action-time", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::user-action-time", callback: (($obj: HandleChannelsContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -25494,7 +28029,7 @@ interface Message_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Message {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Message */
     /**
      * Append a body part to the message.
@@ -25506,10 +28041,13 @@ class Message {
     count_parts(): number
     /**
      * Remove the given key and its value from the given part.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
      */
     delete_key(part: number, key: string): boolean
     /**
      * Delete the given body part from the message.
+     * @param part a part number, which must be strictly greater than 0, and strictly  less than the number returned by tp_message_count_parts()
      */
     delete_part(part: number): void
     /**
@@ -25519,6 +28057,7 @@ class Message {
     destroy(): void
     /**
      * <!-- nothing more to say -->
+     * @param part a part number
      */
     dup_part(part: number): GLib.Variant
     /**
@@ -25596,10 +28135,13 @@ class Message {
     is_scrollback(): boolean
     /**
      * <!-- nothing more to say -->
+     * @param part a part number
      */
     peek(part: number): GLib.HashTable
     /**
      * Reference the given handle until this message is destroyed.
+     * @param handle_type a handle type, greater than %TP_HANDLE_TYPE_NONE and less than  %TP_NUM_HANDLE_TYPES
+     * @param handle a handle of the given type
      */
     ref_handle(handle_type: HandleType, handle: Handle): void
     /**
@@ -25609,14 +28151,24 @@ class Message {
      * all be referenced with tp_message_ref_handle() first.
      * 
      * In high-level language bindings, use tp_message_set_variant() instead.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param source a value, encoded as dbus-glib would
      */
     set(part: number, key: string, source: any): void
     /**
      * Set `key` in part `part` of `self` to have `b` as a boolean value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param b a boolean value
      */
     set_boolean(part: number, key: string, b: boolean): void
     /**
      * Set `key` in part `part` of `self` to have `bytes` as a byte-array value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param len a number of bytes
+     * @param bytes an array of `len` bytes
      */
     set_bytes(part: number, key: string, len: number, bytes?: object | null): void
     /**
@@ -25628,26 +28180,45 @@ class Message {
      * Since 0.13.9 this function has been deprecated in favor or
      * tp_cm_message_set_sender() as 'message-sender' is the only handle
      * you can put in a #TpCMMessage.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param handle_type a handle type
+     * @param handle_or_0 a handle of that type, or 0
      */
     set_handle(part: number, key: string, handle_type: HandleType, handle_or_0: Handle): void
     /**
      * Set `key` in part `part` of `self` to have `i` as a signed integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param i an integer value
      */
     set_int32(part: number, key: string, i: number): void
     /**
      * Set `key` in part `part` of `self` to have `i` as a signed integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param i an integer value
      */
     set_int64(part: number, key: string, i: number): void
     /**
      * Set `key` in part `part` of `self` to have `s` as a string value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param s a string value
      */
     set_string(part: number, key: string, s: string): void
     /**
      * Set `key` in part `part` of `self` to have `u` as an unsigned integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param u an unsigned integer value
      */
     set_uint32(part: number, key: string, u: number): void
     /**
      * Set `key` in part `part` of `self` to have `u` as an unsigned integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param u an unsigned integer value
      */
     set_uint64(part: number, key: string, u: number): void
     /**
@@ -25655,6 +28226,9 @@ class Message {
      * 
      * If `value` is a floating reference (see g_variant_ref_sink()), then this
      * function will take ownership of it.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param value a value
      */
     set_variant(part: number, key: string, value: GLib.Variant): void
     /**
@@ -25663,6 +28237,9 @@ class Message {
      * should not use `message` after passing it to this function.  All handle
      * references owned by `message` will subsequently belong to and be released
      * with `self`.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param message another (distinct) message created for the same #TpBaseConnection
      */
     take_message(part: number, key: string, message: Message): void
     /**
@@ -25704,6 +28281,10 @@ class Message {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25714,6 +28295,12 @@ class Message {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25737,6 +28324,7 @@ class Message {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25756,11 +28344,14 @@ class Message {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25768,6 +28359,8 @@ class Message {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25785,6 +28378,7 @@ class Message {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25830,6 +28424,7 @@ class Message {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25873,15 +28468,20 @@ class Message {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25922,6 +28522,7 @@ class Message {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25956,6 +28557,7 @@ class Message {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25975,6 +28577,7 @@ class Message {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26007,6 +28610,7 @@ class Message {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
@@ -26063,8 +28667,48 @@ interface ObserveChannelsContext_ConstructProps extends GObject.Object_Construct
     requests?: object[]
 }
 class ObserveChannelsContext {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.ObserveChannelsContext */
+    /**
+     * A #TpAccount object representing the Account that has been passed to
+     * ObserveChannels.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly account: Account
+    /**
+     * A #GPtrArray containing #TpChannel objects representing the channels
+     * that have been passed to ObserveChannels.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly channels: object[]
+    /**
+     * A #TpConnection object representing the Connection that has been passed
+     * to ObserveChannels.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly connection: Connection
+    /**
+     * A #TpChannelDispatchOperation object representing the
+     * ChannelDispatchOperation that has been passed to ObserveChannels,
+     * or %NULL if none has been passed.
+     * Read-only except during construction.
+     */
+    readonly dispatch_operation: ChannelDispatchOperation
+    /**
+     * A #GPtrArray containing #TpChannelRequest objects representing the
+     * requests that have been passed to ObserveChannels.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly requests: object[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ObserveChannelsContext */
     /**
      * Called by #TpBaseClientClassObserveChannelsImpl when it's done so the D-Bus
@@ -26081,6 +28725,7 @@ class ObserveChannelsContext {
     delay(): void
     /**
      * Called by #TpBaseClientClassObserveChannelsImpl to raise a D-Bus error.
+     * @param error the error to return from the method
      */
     fail(error: GLib.Error): void
     /**
@@ -26131,6 +28776,10 @@ class ObserveChannelsContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26141,6 +28790,12 @@ class ObserveChannelsContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -26164,6 +28819,7 @@ class ObserveChannelsContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26183,11 +28839,14 @@ class ObserveChannelsContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26195,6 +28854,8 @@ class ObserveChannelsContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26212,6 +28873,7 @@ class ObserveChannelsContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -26257,6 +28919,7 @@ class ObserveChannelsContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -26300,15 +28963,20 @@ class ObserveChannelsContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -26349,6 +29017,7 @@ class ObserveChannelsContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -26383,6 +29052,7 @@ class ObserveChannelsContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -26402,6 +29072,7 @@ class ObserveChannelsContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26434,10 +29105,21 @@ class ObserveChannelsContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::channels", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channels", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dispatch-operation", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dispatch-operation", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::requests", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::requests", callback: (($obj: ObserveChannelsContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -26502,6 +29184,10 @@ class Protocol {
      */
     readonly capabilities: Capabilities
     /**
+     * The name of the connection manager this protocol is on.
+     */
+    readonly cm_name: string
+    /**
      * The name of the protocol in a form suitable for display to users,
      * such as "AIM" or "Yahoo!", or a string based on #TpProtocol:protocol-name
      * (currently constructed by putting the first character in title case,
@@ -26529,6 +29215,11 @@ class Protocol {
      */
     readonly param_names: string[]
     /**
+     * The machine-readable name of the protocol, taken from the Telepathy
+     * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
+     */
+    readonly protocol_name: string
+    /**
      * The immutable properties of this Protocol, as provided at construction
      * time. This is a #G_VARIANT_TYPE_VARDICT #GVariant,
      * which must not be modified.
@@ -26547,11 +29238,30 @@ class Protocol {
     readonly vcard_field: string
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Protocol */
     /**
      * Return whether a new account can be registered on this protocol, by setting
@@ -26564,6 +29274,7 @@ class Protocol {
     dup_immutable_properties(): GLib.Variant
     /**
      * <!-- no more to say -->
+     * @param param a parameter name
      */
     dup_param(param: string): ConnectionManagerParam
     /**
@@ -26630,6 +29341,7 @@ class Protocol {
     get_name(): string
     /**
      * <!-- no more to say -->
+     * @param param a parameter name
      */
     get_param(param: string): ConnectionManagerParam
     /**
@@ -26638,6 +29350,7 @@ class Protocol {
     get_vcard_field(): string
     /**
      * <!-- no more to say -->
+     * @param param a parameter name
      */
     has_param(param: string): boolean
     /**
@@ -26646,40 +29359,57 @@ class Protocol {
      * parameter, but some protocols have more complex requirements;
      * for instance, on IRC, the 'account' (nickname) is insufficient,
      * and must be combined with a server or network name.
+     * @param vardict the account parameters as a #GVariant of  type %G_VARIANT_TYPE_VARDICT. If it is floating, ownership will  be taken, as if via g_variant_ref_sink().
+     * @param cancellable may be used to cancel the async request
+     * @param callback a callback to call when  the request is satisfied
      */
     identify_account_async(vardict: GLib.Variant, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_protocol_identify_account_async().
+     * @param result a #GAsyncResult
      */
     identify_account_finish(result: Gio.AsyncResult): string
     /**
      * Perform best-effort offline contact normalization. This does syntactic
      * normalization (e.g. transforming case-insensitive text to lower-case),
      * but does not query servers or anything similar.
+     * @param contact a contact identifier, possibly invalid
+     * @param cancellable may be used to cancel the async request
+     * @param callback a callback to call when  the request is satisfied
      */
     normalize_contact_async(contact: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_protocol_normalize_contact_async().
+     * @param result a #GAsyncResult
      */
     normalize_contact_finish(result: Gio.AsyncResult): string
     /**
      * Perform best-effort offline contact normalization, for a contact in
      * the form of a URI. This method will fail if the URI is not in a
      * scheme supported by this protocol or connection manager.
+     * @param uri a contact URI, possibly invalid
+     * @param cancellable may be used to cancel the async request
+     * @param callback a callback to call when the request is satisfied
      */
     normalize_contact_uri_async(uri: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_protocol_normalize_contact_uri_async().
+     * @param result a #GAsyncResult
      */
     normalize_contact_uri_finish(result: Gio.AsyncResult): string
     /**
      * Perform best-effort offline contact normalization, for a contact in
      * the form of a vCard field. This method will fail if the vCard field
      * is not supported by this protocol or connection manager.
+     * @param field a vCard field
+     * @param value an address that is a value of `field`
+     * @param cancellable may be used to cancel the async request
+     * @param callback a callback to call when the request is satisfied
      */
     normalize_vcard_address_async(field: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_protocol_normalize_vcard_address_async().
+     * @param result a #GAsyncResult
      */
     normalize_vcard_address_finish(result: Gio.AsyncResult): string
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -26688,6 +29418,8 @@ class Protocol {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -26721,12 +29453,14 @@ class Protocol {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -26739,6 +29473,7 @@ class Protocol {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -26789,12 +29524,15 @@ class Protocol {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -26832,6 +29570,10 @@ class Protocol {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26842,6 +29584,12 @@ class Protocol {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -26865,6 +29613,7 @@ class Protocol {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26884,11 +29633,14 @@ class Protocol {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26896,6 +29648,8 @@ class Protocol {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26913,6 +29667,7 @@ class Protocol {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -26958,6 +29713,7 @@ class Protocol {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27001,15 +29757,20 @@ class Protocol {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27050,6 +29811,7 @@ class Protocol {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27084,6 +29846,7 @@ class Protocol {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -27103,6 +29866,7 @@ class Protocol {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27116,6 +29880,8 @@ class Protocol {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: Protocol, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: Protocol, id: number, proxy: any) => void)): number
@@ -27131,6 +29897,9 @@ class Protocol {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: Protocol, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: Protocol, domain: number, code: number, message: string) => void)): number
@@ -27164,6 +29933,7 @@ class Protocol {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
@@ -27178,18 +29948,30 @@ class Protocol {
     connect_after(sigName: "notify::avatar-requirements", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::capabilities", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::capabilities", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::cm-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cm-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::english-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::english-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::icon-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::param-names", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::param-names", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::protocol-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::protocol-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::protocol-properties-vardict", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::protocol-properties-vardict", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::vcard-field", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vcard-field", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: Protocol, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -27238,17 +30020,38 @@ interface Proxy_ConstructProps extends GObject.Object_ConstructProps {
 class Proxy {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
      * Convert a D-Bus error name into a GError as if it was returned by a method
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -27282,12 +30085,14 @@ class Proxy {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -27300,6 +30105,7 @@ class Proxy {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -27350,12 +30156,15 @@ class Proxy {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -27393,6 +30202,10 @@ class Proxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27403,6 +30216,12 @@ class Proxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -27426,6 +30245,7 @@ class Proxy {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -27445,11 +30265,14 @@ class Proxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -27457,6 +30280,8 @@ class Proxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27474,6 +30299,7 @@ class Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27519,6 +30345,7 @@ class Proxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27562,15 +30389,20 @@ class Proxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27611,6 +30443,7 @@ class Proxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27645,6 +30478,7 @@ class Proxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -27664,6 +30498,7 @@ class Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27677,6 +30512,8 @@ class Proxy {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: Proxy, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: Proxy, id: number, proxy: any) => void)): number
@@ -27692,6 +30529,9 @@ class Proxy {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: Proxy, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: Proxy, domain: number, code: number, message: string) => void)): number
@@ -27725,12 +30565,21 @@ class Proxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bus-name", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: Proxy, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -27744,7 +30593,7 @@ interface RoomInfo_ConstructProps extends GObject.Object_ConstructProps {
 }
 class RoomInfo {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.RoomInfo */
     /**
      * <!-- -->
@@ -27764,10 +30613,12 @@ class RoomInfo {
     get_handle_name(): string
     /**
      * <!-- -->
+     * @param known either %NULL, or a location in which to store %TRUE if the returned value is meaningful
      */
     get_invite_only(known: boolean): boolean
     /**
      * <!-- -->
+     * @param known either %NULL, or a location in which to store %TRUE if the returned value is meaningful
      */
     get_members_count(known: boolean): number
     /**
@@ -27776,6 +30627,7 @@ class RoomInfo {
     get_name(): string
     /**
      * <!-- -->
+     * @param known either %NULL, or a location in which to store %TRUE if the returned value is meaningful
      */
     get_requires_password(known: boolean): boolean
     /**
@@ -27825,6 +30677,10 @@ class RoomInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27835,6 +30691,12 @@ class RoomInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -27858,6 +30720,7 @@ class RoomInfo {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -27877,11 +30740,14 @@ class RoomInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -27889,6 +30755,8 @@ class RoomInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27906,6 +30774,7 @@ class RoomInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27951,6 +30820,7 @@ class RoomInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27994,15 +30864,20 @@ class RoomInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28043,6 +30918,7 @@ class RoomInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28077,6 +30953,7 @@ class RoomInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -28096,6 +30973,7 @@ class RoomInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28128,6 +31006,7 @@ class RoomInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RoomInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RoomInfo, pspec: GObject.ParamSpec) => void)): number
@@ -28156,14 +31035,23 @@ interface RoomList_ConstructProps extends GObject.Object_ConstructProps {
 class RoomList {
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.RoomList */
     /**
+     * The #TpAccount to use for the room listing.
+     */
+    readonly account: Account
+    /**
      * %TRUE if the channel is currently listing rooms.
      * 
      * This property is meaningless until the
      * %TP_ROOM_LIST_FEATURE_LISTING feature has been prepared.
      */
     readonly listing: boolean
+    /**
+     * The DNS name of the server whose rooms are listed by this channel, or
+     * %NULL.
+     */
+    readonly server: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.RoomList */
     /**
      * Return the #TpRoomList:account property
@@ -28218,6 +31106,10 @@ class RoomList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28228,6 +31120,12 @@ class RoomList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28251,6 +31149,7 @@ class RoomList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28270,11 +31169,14 @@ class RoomList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28282,6 +31184,8 @@ class RoomList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28299,6 +31203,7 @@ class RoomList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -28344,6 +31249,7 @@ class RoomList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -28387,15 +31293,20 @@ class RoomList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28436,6 +31347,7 @@ class RoomList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28470,6 +31382,7 @@ class RoomList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -28510,16 +31423,21 @@ class RoomList {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.RoomList */
@@ -28560,11 +31478,15 @@ class RoomList {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -28584,6 +31506,7 @@ class RoomList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28591,6 +31514,7 @@ class RoomList {
     /**
      * Fired when something goes wrong while listing the channels; see `error`
      * for details.
+     * @param error a #GError indicating the reason of the error
      */
     connect(sigName: "failed", callback: (($obj: RoomList, error: GLib.Error) => void)): number
     connect_after(sigName: "failed", callback: (($obj: RoomList, error: GLib.Error) => void)): number
@@ -28599,6 +31523,7 @@ class RoomList {
      * Fired each time a room is found during the listing process.
      * User should take his own reference on `room` if he plans to
      * continue using it once the signal callback has returned.
+     * @param room a #TpRoomInfo
      */
     connect(sigName: "got-room", callback: (($obj: RoomList, room: RoomInfo) => void)): number
     connect_after(sigName: "got-room", callback: (($obj: RoomList, room: RoomInfo) => void)): number
@@ -28632,12 +31557,17 @@ class RoomList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RoomList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RoomList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::account", callback: (($obj: RoomList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account", callback: (($obj: RoomList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::listing", callback: (($obj: RoomList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::listing", callback: (($obj: RoomList, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::server", callback: (($obj: RoomList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::server", callback: (($obj: RoomList, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -28649,6 +31579,9 @@ class RoomList {
     static new_finish(result: Gio.AsyncResult): RoomList
     /**
      * <!-- -->
+     * @param account a #TpAccount for the room listing
+     * @param server the DNS name of the server whose rooms should listed
+     * @param callback a #GAsyncReadyCallback to call when the initialization is finished
      */
     static new_async(account: Account, server: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -28658,6 +31591,12 @@ class RoomList {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     static $gtype: GObject.Type
@@ -28671,8 +31610,14 @@ interface SignalledMessage_ConstructProps extends Message_ConstructProps {
     sender?: Contact
 }
 class SignalledMessage {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.SignalledMessage */
+    /**
+     * A #TpContact representing the sender of the message, if known, or %NULL
+     * otherwise.
+     */
+    readonly sender: Contact
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Message */
     /**
      * Append a body part to the message.
@@ -28684,10 +31629,13 @@ class SignalledMessage {
     count_parts(): number
     /**
      * Remove the given key and its value from the given part.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
      */
     delete_key(part: number, key: string): boolean
     /**
      * Delete the given body part from the message.
+     * @param part a part number, which must be strictly greater than 0, and strictly  less than the number returned by tp_message_count_parts()
      */
     delete_part(part: number): void
     /**
@@ -28697,6 +31645,7 @@ class SignalledMessage {
     destroy(): void
     /**
      * <!-- nothing more to say -->
+     * @param part a part number
      */
     dup_part(part: number): GLib.Variant
     /**
@@ -28774,10 +31723,13 @@ class SignalledMessage {
     is_scrollback(): boolean
     /**
      * <!-- nothing more to say -->
+     * @param part a part number
      */
     peek(part: number): GLib.HashTable
     /**
      * Reference the given handle until this message is destroyed.
+     * @param handle_type a handle type, greater than %TP_HANDLE_TYPE_NONE and less than  %TP_NUM_HANDLE_TYPES
+     * @param handle a handle of the given type
      */
     ref_handle(handle_type: HandleType, handle: Handle): void
     /**
@@ -28787,14 +31739,24 @@ class SignalledMessage {
      * all be referenced with tp_message_ref_handle() first.
      * 
      * In high-level language bindings, use tp_message_set_variant() instead.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param source a value, encoded as dbus-glib would
      */
     set(part: number, key: string, source: any): void
     /**
      * Set `key` in part `part` of `self` to have `b` as a boolean value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param b a boolean value
      */
     set_boolean(part: number, key: string, b: boolean): void
     /**
      * Set `key` in part `part` of `self` to have `bytes` as a byte-array value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param len a number of bytes
+     * @param bytes an array of `len` bytes
      */
     set_bytes(part: number, key: string, len: number, bytes?: object | null): void
     /**
@@ -28806,26 +31768,45 @@ class SignalledMessage {
      * Since 0.13.9 this function has been deprecated in favor or
      * tp_cm_message_set_sender() as 'message-sender' is the only handle
      * you can put in a #TpCMMessage.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param handle_type a handle type
+     * @param handle_or_0 a handle of that type, or 0
      */
     set_handle(part: number, key: string, handle_type: HandleType, handle_or_0: Handle): void
     /**
      * Set `key` in part `part` of `self` to have `i` as a signed integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param i an integer value
      */
     set_int32(part: number, key: string, i: number): void
     /**
      * Set `key` in part `part` of `self` to have `i` as a signed integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param i an integer value
      */
     set_int64(part: number, key: string, i: number): void
     /**
      * Set `key` in part `part` of `self` to have `s` as a string value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param s a string value
      */
     set_string(part: number, key: string, s: string): void
     /**
      * Set `key` in part `part` of `self` to have `u` as an unsigned integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param u an unsigned integer value
      */
     set_uint32(part: number, key: string, u: number): void
     /**
      * Set `key` in part `part` of `self` to have `u` as an unsigned integer value.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param u an unsigned integer value
      */
     set_uint64(part: number, key: string, u: number): void
     /**
@@ -28833,6 +31814,9 @@ class SignalledMessage {
      * 
      * If `value` is a floating reference (see g_variant_ref_sink()), then this
      * function will take ownership of it.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param value a value
      */
     set_variant(part: number, key: string, value: GLib.Variant): void
     /**
@@ -28841,6 +31825,9 @@ class SignalledMessage {
      * should not use `message` after passing it to this function.  All handle
      * references owned by `message` will subsequently belong to and be released
      * with `self`.
+     * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
+     * @param key a key in the mapping representing the part
+     * @param message another (distinct) message created for the same #TpBaseConnection
      */
     take_message(part: number, key: string, message: Message): void
     /**
@@ -28882,6 +31869,10 @@ class SignalledMessage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28892,6 +31883,12 @@ class SignalledMessage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28915,6 +31912,7 @@ class SignalledMessage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28934,11 +31932,14 @@ class SignalledMessage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28946,6 +31947,8 @@ class SignalledMessage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28963,6 +31966,7 @@ class SignalledMessage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -29008,6 +32012,7 @@ class SignalledMessage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -29051,15 +32056,20 @@ class SignalledMessage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -29100,6 +32110,7 @@ class SignalledMessage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -29134,6 +32145,7 @@ class SignalledMessage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -29153,6 +32165,7 @@ class SignalledMessage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29185,10 +32198,13 @@ class SignalledMessage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SignalledMessage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SignalledMessage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::sender", callback: (($obj: SignalledMessage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sender", callback: (($obj: SignalledMessage, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -29200,6 +32216,7 @@ class SignalledMessage {
     /**
      * Returns a #TpContact representing the sender of `message` if known, %NULL
      * otherwise.
+     * @param message a #TpSignalledMessage
      */
     static get_sender(message: Message): Contact
     static $gtype: GObject.Type
@@ -29224,8 +32241,91 @@ interface SimpleApprover_ConstructProps extends BaseClient_ConstructProps {
     user_data?: object
 }
 class SimpleApprover {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.SimpleApprover */
+    /**
+     * The #TpSimpleApproverAddDispatchOperationImpl callback implementing the
+     * AddDispatchOperation D-Bus method.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly callback: object
+    /**
+     * The #GDestroyNotify function called to free #TpSimpleApprover:user-data
+     * when the #TpSimpleApprover is destroyed.
+     */
+    readonly destroy: object
+    /**
+     * The user-data pointer passed to #TpSimpleApprover:callback.
+     */
+    readonly user_data: object
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
+    /**
+     * Account manager for this base client, used to look up or create
+     * #TpAccount objects. This may be specified in the constructor in order
+     * to get existing #TpAccount objects.
+     * 
+     * It is not guaranteed that any of its features have been prepared, and
+     * it is not necessary to wait for any features before specifying this
+     * property in the constructor.
+     * 
+     * Clients that interact with the #TpAccount should usually
+     * set this property instead of #TpBaseClient:dbus-daemon. Doing this
+     * will ensure that each account, connection or contact is represented by
+     * a single #TpAccount, #TpConnection or #TpContact object, shared between
+     * all the cooperating modules that have the same #TpAccountManager.
+     * 
+     * If the #TpBaseClient:dbus-daemon is set to the result of
+     * tp_dbus_daemon_dup(), then this property defaults to
+     * the result of tp_account_manager_dup().
+     * 
+     * This property may be %NULL initially, but will always be non-%NULL
+     * after the #TpBaseClient has been constructed.
+     * 
+     * It is an error to specify both a non-%NULL account manager, and a
+     * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
+     * account manager's #TpProxy:dbus-daemon.
+     */
+    readonly account_manager: AccountManager
+    /**
+     * The object implementing the #TpClientChannelFactoryInterface interface
+     * that will be used to create channel proxies. While
+     * tp_base_client_register() has not yet been called, this property can be
+     * changed using tp_base_client_set_channel_factory().
+     * 
+     * If no channel factory is specified then #TpAutomaticProxyFactory is used.
+     */
+    readonly channel_factory: GObject.Object
+    /**
+     * #TpDBusDaemon object encapsulating this object's connection to D-Bus.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL after construction.
+     * 
+     * Since 0.11.14 this property may be %NULL or unspecified in
+     * g_object_new(), but only if #TpBaseClient:account-manager is provided
+     * instead, in which case its #TpProxy:dbus-daemon property will be
+     * used.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * Factory for this base client, used to look up or create
+     * #TpAccount objects.
+     */
+    readonly factory: SimpleClientFactory
+    /**
+     * The name of the client. This is used to register the D-Bus service name
+     * and object path of the service.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly name: string
+    /**
+     * If %TRUE, tp_base_client_register() will append an unique token to the
+     * service bus name and object path to ensure they are unique.
+     */
+    readonly uniquify_name: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
     /**
      * Request that the given features are prepared on each #TpAccount (in
@@ -29234,6 +32334,7 @@ class SimpleApprover {
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels, or emitting
      * #TpBaseClient::request-added.
+     * @param features the features
      */
     add_account_features(features: GLib.Quark[]): void
     /**
@@ -29244,6 +32345,7 @@ class SimpleApprover {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.add_dispatch_operation.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_approver_filter(filter: GLib.HashTable): void
     /**
@@ -29258,6 +32360,7 @@ class SimpleApprover {
      * If the variant is floating (see g_variant_ref_sink()), ownership
      * will be taken. See tp_base_client_add_observer_filter_vardict() for
      * more details.
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_approver_filter_vardict(filter: GLib.Variant): void
     /**
@@ -29266,6 +32369,7 @@ class SimpleApprover {
      * #TpBaseClientClass.observe_channels,
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels.
+     * @param features the features
      */
     add_channel_features(features: GLib.Quark[]): void
     /**
@@ -29274,6 +32378,7 @@ class SimpleApprover {
      * #TpBaseClientClass.observe_channels,
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels.
+     * @param features the features
      */
     add_connection_features(features: GLib.Quark[]): void
     /**
@@ -29285,6 +32390,7 @@ class SimpleApprover {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param tokens capability  tokens as defined by the Telepathy D-Bus API Specification
      */
     add_handler_capabilities(tokens: string[]): void
     /**
@@ -29294,6 +32400,7 @@ class SimpleApprover {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param token a capability token as defined by the Telepathy D-Bus API  Specification
      */
     add_handler_capability(token: string): void
     /**
@@ -29304,6 +32411,7 @@ class SimpleApprover {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_handler_filter(filter: GLib.HashTable): void
     /**
@@ -29318,6 +32426,7 @@ class SimpleApprover {
      * If the variant is floating (see g_variant_ref_sink()), ownership
      * will be taken. See tp_base_client_add_observer_filter_vardict() for
      * more details.
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_handler_filter_vardict(filter: GLib.Variant): void
     /**
@@ -29328,6 +32437,7 @@ class SimpleApprover {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_observer_filter(filter: GLib.HashTable): void
     /**
@@ -29350,6 +32460,7 @@ class SimpleApprover {
      *        ...));
      * ```
      * 
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_observer_filter_vardict(filter: GLib.Variant): void
     /**
@@ -29367,11 +32478,16 @@ class SimpleApprover {
      * stopping handling `channels` and pass them to another Handler.
      * You can then call tp_base_client_delegate_channels_finish() to
      * get the result of the operation.
+     * @param channels a #GList of #TpChannel handled by `self`
+     * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but `self` would be acceptable.
+     * @param callback a callback to call when the request is satisfied
      */
     delegate_channels_async(channels: Channel[], user_action_time: number, preferred_handler: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channels delegation request started using
      * tp_base_client_delegate_channels_async().
+     * @param result a #GAsyncResult
      */
     delegate_channels_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* delegated */ Channel[], /* not_delegated */ GLib.HashTable ]
     /**
@@ -29429,6 +32545,7 @@ class SimpleApprover {
     get_uniquify_name(): boolean
     /**
      * Check if `self` is currently handling `channel`.
+     * @param channel a #TpChannel
      */
     is_handling_channel(channel: Channel): boolean
     /**
@@ -29443,6 +32560,7 @@ class SimpleApprover {
     /**
      * Change the value of the #TpBaseClient:channel-factory property.
      * It can't be changed once `self` has been registered.
+     * @param factory an object implementing the #TpClientChannelFactoryInterface interface
      */
     set_channel_factory(factory: ClientChannelFactory): void
     /**
@@ -29454,6 +32572,7 @@ class SimpleApprover {
      * delegate the channels to the preferred handler of the request and then call
      * `callback` to inform the client that it is no longer handling those
      * channels.
+     * @param callback function called when channels currently handled by `self` are delegated, may not be %NULL
      */
     set_delegated_channels_callback(callback: BaseClientDelegatedChannelsCb): void
     /**
@@ -29465,6 +32584,7 @@ class SimpleApprover {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param bypass_approval the value of the Handler.BypassApproval property
      */
     set_handler_bypass_approval(bypass_approval: boolean): void
     /**
@@ -29491,6 +32611,7 @@ class SimpleApprover {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param delay the value of the Observer.DelayApprovers property
      */
     set_observer_delay_approvers(delay: boolean): void
     /**
@@ -29510,6 +32631,7 @@ class SimpleApprover {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param recover the value of the Observer.Recover property
      */
     set_observer_recover(recover: boolean): void
     /**
@@ -29562,6 +32684,10 @@ class SimpleApprover {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29572,6 +32698,12 @@ class SimpleApprover {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -29595,6 +32727,7 @@ class SimpleApprover {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -29614,11 +32747,14 @@ class SimpleApprover {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -29626,6 +32762,8 @@ class SimpleApprover {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29643,6 +32781,7 @@ class SimpleApprover {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -29688,6 +32827,7 @@ class SimpleApprover {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -29731,15 +32871,20 @@ class SimpleApprover {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -29780,6 +32925,7 @@ class SimpleApprover {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -29814,6 +32960,7 @@ class SimpleApprover {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
@@ -29837,6 +32984,7 @@ class SimpleApprover {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29848,6 +32996,8 @@ class SimpleApprover {
      * This signal is only fired if
      * tp_base_client_set_handler_request_notification() has been called
      * on `self` previously.
+     * @param account the #TpAccount on which the request was made,  with %TP_ACCOUNT_FEATURE_CORE, and any other features added via  tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if possible
+     * @param request a #TpChannelRequest having its object-path defined but is not guaranteed to be prepared.
      */
     connect(sigName: "request-added", callback: (($obj: SimpleApprover, account: Account, request: ChannelRequest) => void)): number
     connect_after(sigName: "request-added", callback: (($obj: SimpleApprover, account: Account, request: ChannelRequest) => void)): number
@@ -29858,6 +33008,9 @@ class SimpleApprover {
      * This signal is only fired if
      * tp_base_client_set_handler_request_notification() has been called
      * on `self` previously.
+     * @param request the #TpChannelRequest being removed
+     * @param error the name of the D-Bus error with which the request failed.
+     * @param message any message supplied with the D-Bus error.
      */
     connect(sigName: "request-removed", callback: (($obj: SimpleApprover, request: ChannelRequest, error: string, message: string) => void)): number
     connect_after(sigName: "request-removed", callback: (($obj: SimpleApprover, request: ChannelRequest, error: string, message: string) => void)): number
@@ -29891,10 +33044,29 @@ class SimpleApprover {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::callback", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::callback", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::destroy", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::user-data", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::user-data", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::account-manager", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account-manager", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::channel-factory", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-factory", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uniquify-name", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uniquify-name", callback: (($obj: SimpleApprover, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -29916,8 +33088,13 @@ interface SimpleClientFactory_ConstructProps extends GObject.Object_ConstructPro
     dbus_daemon?: DBusDaemon
 }
 class SimpleClientFactory {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.SimpleClientFactory */
+    /**
+     * The D-Bus daemon for this object.
+     */
+    readonly dbus_daemon: DBusDaemon
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.SimpleClientFactory */
     /**
      * Add `features` to the desired features to be prepared on #TpAccount
@@ -29929,6 +33106,7 @@ class SimpleClientFactory {
      * 
      * Note that these features will not be added to existing #TpAccount
      * objects; the user must call tp_proxy_prepare_async() themself.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
      */
     add_account_features(features?: GLib.Quark[] | null): void
     /**
@@ -29941,6 +33119,7 @@ class SimpleClientFactory {
      * 
      * Note that these features will not be added to existing #TpChannel
      * objects; the user must call tp_proxy_prepare_async() themself.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
      */
     add_channel_features(features?: GLib.Quark[] | null): void
     /**
@@ -29953,6 +33132,7 @@ class SimpleClientFactory {
      * 
      * Note that these features will not be added to existing #TpConnection
      * objects; the user must call tp_proxy_prepare_async() themself.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
      */
     add_connection_features(features?: GLib.Quark[] | null): void
     /**
@@ -29962,26 +33142,31 @@ class SimpleClientFactory {
      * 
      * Note that these features will not be added to existing #TpContact
      * objects; the user must call tp_connection_upgrade_contacts() themself.
+     * @param features an array of desired  features (may be %NULL if `n_features` is 0)
      */
     add_contact_features(features?: ContactFeature[] | null): void
     /**
      * Return a zero-terminated #GArray containing the #TpAccount features that
      * should be prepared on `account`.
+     * @param account a #TpAccount
      */
     dup_account_features(account: Account): GLib.Quark[]
     /**
      * Return a zero-terminated #GArray containing the #TpChannel features that
      * should be prepared on `channel`.
+     * @param channel a #TpChannel
      */
     dup_channel_features(channel: Channel): GLib.Quark[]
     /**
      * Return a zero-terminated #GArray containing the #TpConnection features that
      * should be prepared on `connection`.
+     * @param connection a #TpConnection
      */
     dup_connection_features(connection: Connection): GLib.Quark[]
     /**
      * Return a #GArray containing the #TpContactFeature that should be prepared on
      * all contacts of `connection`.
+     * @param connection a #TpConnection
      */
     dup_contact_features(connection: Connection): ContactFeature[]
     /**
@@ -29996,6 +33181,8 @@ class SimpleClientFactory {
      * This function is rather low-level. tp_account_manager_dup_valid_accounts()
      * and #TpAccountManager::validity-changed are more appropriate for most
      * applications.
+     * @param object_path the object path of an account
+     * @param immutable_properties   the immutable properties of the account, or %NULL.
      */
     ensure_account(object_path: string, immutable_properties: GLib.HashTable): Account
     /**
@@ -30011,6 +33198,9 @@ class SimpleClientFactory {
      * This function is rather low-level.
      * #TpAccountChannelRequest and #TpBaseClient are more appropriate ways
      * to obtain channels for most applications.
+     * @param connection a #TpConnection whose #TpProxy:factory is this object
+     * @param object_path the object path of a channel on `connection`
+     * @param immutable_properties   the immutable properties of the channel
      */
     ensure_channel(connection: Connection, object_path: string, immutable_properties: GLib.HashTable): Channel
     /**
@@ -30025,6 +33215,8 @@ class SimpleClientFactory {
      * 
      * This function is rather low-level. #TpAccount:connection is more
      * appropriate for most applications.
+     * @param object_path the object path of a connection
+     * @param immutable_properties   the immutable properties of the connection.
      */
     ensure_connection(object_path: string, immutable_properties: GLib.HashTable): Connection
     /**
@@ -30039,16 +33231,23 @@ class SimpleClientFactory {
      * 
      * For this function to work properly, tp_connection_has_immortal_handles()
      * must return %TRUE for `connection`.
+     * @param connection a #TpConnection whose #TpProxy:factory is this object
+     * @param handle a #TpHandle
+     * @param identifier a string representing the contact's identifier
      */
     ensure_contact(connection: Connection, handle: Handle, identifier: string): Contact
     /**
      * Same as tp_connection_dup_contact_by_id_async(), but prepare the
      * contact with all features previously passed to
      * tp_simple_client_factory_add_contact_features().
+     * @param connection a #TpConnection
+     * @param identifier a string representing the contact's identifier
+     * @param callback a callback to call when the operation finishes
      */
     ensure_contact_by_id_async(connection: Connection, identifier: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_simple_client_factory_ensure_contact_by_id_async()
+     * @param result a #GAsyncResult
      */
     ensure_contact_by_id_finish(result: Gio.AsyncResult): Contact
     /**
@@ -30059,10 +33258,14 @@ class SimpleClientFactory {
      * Same as tp_connection_upgrade_contacts_async(), but prepare contacts with all
      * features previously passed to
      * tp_simple_client_factory_add_contact_features().
+     * @param connection a #TpConnection whose #TpProxy:factory is this object
+     * @param contacts An array of #TpContact objects  associated with `self`
+     * @param callback a callback to call when the operation finishes
      */
     upgrade_contacts_async(connection: Connection, contacts: Contact[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_simple_client_factory_upgrade_contacts_async()
+     * @param result a #GAsyncResult
      */
     upgrade_contacts_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* contacts */ Contact[] | null ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -30100,6 +33303,10 @@ class SimpleClientFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30110,6 +33317,12 @@ class SimpleClientFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -30133,6 +33346,7 @@ class SimpleClientFactory {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -30152,11 +33366,14 @@ class SimpleClientFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -30164,6 +33381,8 @@ class SimpleClientFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -30181,6 +33400,7 @@ class SimpleClientFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -30226,6 +33446,7 @@ class SimpleClientFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -30269,15 +33490,20 @@ class SimpleClientFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -30318,6 +33544,7 @@ class SimpleClientFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -30352,27 +33579,32 @@ class SimpleClientFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.SimpleClientFactory */
     /**
      * Return a zero-terminated #GArray containing the #TpAccount features that
      * should be prepared on `account`.
+     * @param account a #TpAccount
      */
     vfunc_dup_account_features(account: Account): GLib.Quark[]
     /**
      * Return a zero-terminated #GArray containing the #TpChannel features that
      * should be prepared on `channel`.
+     * @param channel a #TpChannel
      */
     vfunc_dup_channel_features(channel: Channel): GLib.Quark[]
     /**
      * Return a zero-terminated #GArray containing the #TpConnection features that
      * should be prepared on `connection`.
+     * @param connection a #TpConnection
      */
     vfunc_dup_connection_features(connection: Connection): GLib.Quark[]
     /**
      * Return a #GArray containing the #TpContactFeature that should be prepared on
      * all contacts of `connection`.
+     * @param connection a #TpConnection
      */
     vfunc_dup_contact_features(connection: Connection): ContactFeature[]
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -30392,6 +33624,7 @@ class SimpleClientFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -30424,10 +33657,13 @@ class SimpleClientFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SimpleClientFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SimpleClientFactory, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: SimpleClientFactory, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: SimpleClientFactory, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -30467,8 +33703,99 @@ interface SimpleHandler_ConstructProps extends BaseClient_ConstructProps {
     user_data?: object
 }
 class SimpleHandler {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.SimpleHandler */
+    /**
+     * The value of the Handler.BypassApproval D-Bus property.
+     */
+    readonly bypass_approval: boolean
+    /**
+     * The #TpSimpleHandlerHandleChannelsImpl callback implementing the
+     * HandleChannels D-Bus method.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly callback: object
+    /**
+     * The #GDestroyNotify function called to free #TpSimpleHandler:user-data
+     * when the #TpSimpleHandler is destroyed.
+     */
+    readonly destroy: object
+    /**
+     * If %TRUE, the Handler will implement the Requests interface
+     */
+    readonly requests: boolean
+    /**
+     * The user-data pointer passed to #TpSimpleHandler:callback.
+     */
+    readonly user_data: object
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
+    /**
+     * Account manager for this base client, used to look up or create
+     * #TpAccount objects. This may be specified in the constructor in order
+     * to get existing #TpAccount objects.
+     * 
+     * It is not guaranteed that any of its features have been prepared, and
+     * it is not necessary to wait for any features before specifying this
+     * property in the constructor.
+     * 
+     * Clients that interact with the #TpAccount should usually
+     * set this property instead of #TpBaseClient:dbus-daemon. Doing this
+     * will ensure that each account, connection or contact is represented by
+     * a single #TpAccount, #TpConnection or #TpContact object, shared between
+     * all the cooperating modules that have the same #TpAccountManager.
+     * 
+     * If the #TpBaseClient:dbus-daemon is set to the result of
+     * tp_dbus_daemon_dup(), then this property defaults to
+     * the result of tp_account_manager_dup().
+     * 
+     * This property may be %NULL initially, but will always be non-%NULL
+     * after the #TpBaseClient has been constructed.
+     * 
+     * It is an error to specify both a non-%NULL account manager, and a
+     * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
+     * account manager's #TpProxy:dbus-daemon.
+     */
+    readonly account_manager: AccountManager
+    /**
+     * The object implementing the #TpClientChannelFactoryInterface interface
+     * that will be used to create channel proxies. While
+     * tp_base_client_register() has not yet been called, this property can be
+     * changed using tp_base_client_set_channel_factory().
+     * 
+     * If no channel factory is specified then #TpAutomaticProxyFactory is used.
+     */
+    readonly channel_factory: GObject.Object
+    /**
+     * #TpDBusDaemon object encapsulating this object's connection to D-Bus.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL after construction.
+     * 
+     * Since 0.11.14 this property may be %NULL or unspecified in
+     * g_object_new(), but only if #TpBaseClient:account-manager is provided
+     * instead, in which case its #TpProxy:dbus-daemon property will be
+     * used.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * Factory for this base client, used to look up or create
+     * #TpAccount objects.
+     */
+    readonly factory: SimpleClientFactory
+    /**
+     * The name of the client. This is used to register the D-Bus service name
+     * and object path of the service.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly name: string
+    /**
+     * If %TRUE, tp_base_client_register() will append an unique token to the
+     * service bus name and object path to ensure they are unique.
+     */
+    readonly uniquify_name: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
     /**
      * Request that the given features are prepared on each #TpAccount (in
@@ -30477,6 +33804,7 @@ class SimpleHandler {
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels, or emitting
      * #TpBaseClient::request-added.
+     * @param features the features
      */
     add_account_features(features: GLib.Quark[]): void
     /**
@@ -30487,6 +33815,7 @@ class SimpleHandler {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.add_dispatch_operation.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_approver_filter(filter: GLib.HashTable): void
     /**
@@ -30501,6 +33830,7 @@ class SimpleHandler {
      * If the variant is floating (see g_variant_ref_sink()), ownership
      * will be taken. See tp_base_client_add_observer_filter_vardict() for
      * more details.
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_approver_filter_vardict(filter: GLib.Variant): void
     /**
@@ -30509,6 +33839,7 @@ class SimpleHandler {
      * #TpBaseClientClass.observe_channels,
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels.
+     * @param features the features
      */
     add_channel_features(features: GLib.Quark[]): void
     /**
@@ -30517,6 +33848,7 @@ class SimpleHandler {
      * #TpBaseClientClass.observe_channels,
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels.
+     * @param features the features
      */
     add_connection_features(features: GLib.Quark[]): void
     /**
@@ -30528,6 +33860,7 @@ class SimpleHandler {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param tokens capability  tokens as defined by the Telepathy D-Bus API Specification
      */
     add_handler_capabilities(tokens: string[]): void
     /**
@@ -30537,6 +33870,7 @@ class SimpleHandler {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param token a capability token as defined by the Telepathy D-Bus API  Specification
      */
     add_handler_capability(token: string): void
     /**
@@ -30547,6 +33881,7 @@ class SimpleHandler {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_handler_filter(filter: GLib.HashTable): void
     /**
@@ -30561,6 +33896,7 @@ class SimpleHandler {
      * If the variant is floating (see g_variant_ref_sink()), ownership
      * will be taken. See tp_base_client_add_observer_filter_vardict() for
      * more details.
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_handler_filter_vardict(filter: GLib.Variant): void
     /**
@@ -30571,6 +33907,7 @@ class SimpleHandler {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_observer_filter(filter: GLib.HashTable): void
     /**
@@ -30593,6 +33930,7 @@ class SimpleHandler {
      *        ...));
      * ```
      * 
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_observer_filter_vardict(filter: GLib.Variant): void
     /**
@@ -30610,11 +33948,16 @@ class SimpleHandler {
      * stopping handling `channels` and pass them to another Handler.
      * You can then call tp_base_client_delegate_channels_finish() to
      * get the result of the operation.
+     * @param channels a #GList of #TpChannel handled by `self`
+     * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but `self` would be acceptable.
+     * @param callback a callback to call when the request is satisfied
      */
     delegate_channels_async(channels: Channel[], user_action_time: number, preferred_handler: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channels delegation request started using
      * tp_base_client_delegate_channels_async().
+     * @param result a #GAsyncResult
      */
     delegate_channels_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* delegated */ Channel[], /* not_delegated */ GLib.HashTable ]
     /**
@@ -30672,6 +34015,7 @@ class SimpleHandler {
     get_uniquify_name(): boolean
     /**
      * Check if `self` is currently handling `channel`.
+     * @param channel a #TpChannel
      */
     is_handling_channel(channel: Channel): boolean
     /**
@@ -30686,6 +34030,7 @@ class SimpleHandler {
     /**
      * Change the value of the #TpBaseClient:channel-factory property.
      * It can't be changed once `self` has been registered.
+     * @param factory an object implementing the #TpClientChannelFactoryInterface interface
      */
     set_channel_factory(factory: ClientChannelFactory): void
     /**
@@ -30697,6 +34042,7 @@ class SimpleHandler {
      * delegate the channels to the preferred handler of the request and then call
      * `callback` to inform the client that it is no longer handling those
      * channels.
+     * @param callback function called when channels currently handled by `self` are delegated, may not be %NULL
      */
     set_delegated_channels_callback(callback: BaseClientDelegatedChannelsCb): void
     /**
@@ -30708,6 +34054,7 @@ class SimpleHandler {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param bypass_approval the value of the Handler.BypassApproval property
      */
     set_handler_bypass_approval(bypass_approval: boolean): void
     /**
@@ -30734,6 +34081,7 @@ class SimpleHandler {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param delay the value of the Observer.DelayApprovers property
      */
     set_observer_delay_approvers(delay: boolean): void
     /**
@@ -30753,6 +34101,7 @@ class SimpleHandler {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param recover the value of the Observer.Recover property
      */
     set_observer_recover(recover: boolean): void
     /**
@@ -30805,6 +34154,10 @@ class SimpleHandler {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30815,6 +34168,12 @@ class SimpleHandler {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -30838,6 +34197,7 @@ class SimpleHandler {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -30857,11 +34217,14 @@ class SimpleHandler {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -30869,6 +34232,8 @@ class SimpleHandler {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -30886,6 +34251,7 @@ class SimpleHandler {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -30931,6 +34297,7 @@ class SimpleHandler {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -30974,15 +34341,20 @@ class SimpleHandler {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -31023,6 +34395,7 @@ class SimpleHandler {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -31057,6 +34430,7 @@ class SimpleHandler {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
@@ -31080,6 +34454,7 @@ class SimpleHandler {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31091,6 +34466,8 @@ class SimpleHandler {
      * This signal is only fired if
      * tp_base_client_set_handler_request_notification() has been called
      * on `self` previously.
+     * @param account the #TpAccount on which the request was made,  with %TP_ACCOUNT_FEATURE_CORE, and any other features added via  tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if possible
+     * @param request a #TpChannelRequest having its object-path defined but is not guaranteed to be prepared.
      */
     connect(sigName: "request-added", callback: (($obj: SimpleHandler, account: Account, request: ChannelRequest) => void)): number
     connect_after(sigName: "request-added", callback: (($obj: SimpleHandler, account: Account, request: ChannelRequest) => void)): number
@@ -31101,6 +34478,9 @@ class SimpleHandler {
      * This signal is only fired if
      * tp_base_client_set_handler_request_notification() has been called
      * on `self` previously.
+     * @param request the #TpChannelRequest being removed
+     * @param error the name of the D-Bus error with which the request failed.
+     * @param message any message supplied with the D-Bus error.
      */
     connect(sigName: "request-removed", callback: (($obj: SimpleHandler, request: ChannelRequest, error: string, message: string) => void)): number
     connect_after(sigName: "request-removed", callback: (($obj: SimpleHandler, request: ChannelRequest, error: string, message: string) => void)): number
@@ -31134,10 +34514,33 @@ class SimpleHandler {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bypass-approval", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bypass-approval", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::callback", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::callback", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::destroy", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::requests", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::requests", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::user-data", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::user-data", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::account-manager", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account-manager", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::channel-factory", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-factory", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uniquify-name", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uniquify-name", callback: (($obj: SimpleHandler, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -31176,8 +34579,96 @@ interface SimpleObserver_ConstructProps extends BaseClient_ConstructProps {
     user_data?: object
 }
 class SimpleObserver {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.SimpleObserver */
+    /**
+     * The TpSimpleObserverObserveChannelsImpl callback implementing the
+     * ObserveChannels D-Bus method.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly callback: object
+    /**
+     * The #GDestroyNotify function called to free the user-data pointer when
+     * the #TpSimpleObserver is destroyed.
+     */
+    readonly destroy: object
+    /**
+     * The value of the Observer.Recover D-Bus property.
+     */
+    readonly recover: boolean
+    /**
+     * The user-data pointer passed to the callback implementing the
+     * ObserveChannels D-Bus method.
+     */
+    readonly user_data: object
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
+    /**
+     * Account manager for this base client, used to look up or create
+     * #TpAccount objects. This may be specified in the constructor in order
+     * to get existing #TpAccount objects.
+     * 
+     * It is not guaranteed that any of its features have been prepared, and
+     * it is not necessary to wait for any features before specifying this
+     * property in the constructor.
+     * 
+     * Clients that interact with the #TpAccount should usually
+     * set this property instead of #TpBaseClient:dbus-daemon. Doing this
+     * will ensure that each account, connection or contact is represented by
+     * a single #TpAccount, #TpConnection or #TpContact object, shared between
+     * all the cooperating modules that have the same #TpAccountManager.
+     * 
+     * If the #TpBaseClient:dbus-daemon is set to the result of
+     * tp_dbus_daemon_dup(), then this property defaults to
+     * the result of tp_account_manager_dup().
+     * 
+     * This property may be %NULL initially, but will always be non-%NULL
+     * after the #TpBaseClient has been constructed.
+     * 
+     * It is an error to specify both a non-%NULL account manager, and a
+     * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
+     * account manager's #TpProxy:dbus-daemon.
+     */
+    readonly account_manager: AccountManager
+    /**
+     * The object implementing the #TpClientChannelFactoryInterface interface
+     * that will be used to create channel proxies. While
+     * tp_base_client_register() has not yet been called, this property can be
+     * changed using tp_base_client_set_channel_factory().
+     * 
+     * If no channel factory is specified then #TpAutomaticProxyFactory is used.
+     */
+    readonly channel_factory: GObject.Object
+    /**
+     * #TpDBusDaemon object encapsulating this object's connection to D-Bus.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL after construction.
+     * 
+     * Since 0.11.14 this property may be %NULL or unspecified in
+     * g_object_new(), but only if #TpBaseClient:account-manager is provided
+     * instead, in which case its #TpProxy:dbus-daemon property will be
+     * used.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * Factory for this base client, used to look up or create
+     * #TpAccount objects.
+     */
+    readonly factory: SimpleClientFactory
+    /**
+     * The name of the client. This is used to register the D-Bus service name
+     * and object path of the service.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly name: string
+    /**
+     * If %TRUE, tp_base_client_register() will append an unique token to the
+     * service bus name and object path to ensure they are unique.
+     */
+    readonly uniquify_name: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
     /**
      * Request that the given features are prepared on each #TpAccount (in
@@ -31186,6 +34677,7 @@ class SimpleObserver {
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels, or emitting
      * #TpBaseClient::request-added.
+     * @param features the features
      */
     add_account_features(features: GLib.Quark[]): void
     /**
@@ -31196,6 +34688,7 @@ class SimpleObserver {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.add_dispatch_operation.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_approver_filter(filter: GLib.HashTable): void
     /**
@@ -31210,6 +34703,7 @@ class SimpleObserver {
      * If the variant is floating (see g_variant_ref_sink()), ownership
      * will be taken. See tp_base_client_add_observer_filter_vardict() for
      * more details.
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_approver_filter_vardict(filter: GLib.Variant): void
     /**
@@ -31218,6 +34712,7 @@ class SimpleObserver {
      * #TpBaseClientClass.observe_channels,
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels.
+     * @param features the features
      */
     add_channel_features(features: GLib.Quark[]): void
     /**
@@ -31226,6 +34721,7 @@ class SimpleObserver {
      * #TpBaseClientClass.observe_channels,
      * #TpBaseClientClass.add_dispatch_operation or
      * #TpBaseClientClass.handle_channels.
+     * @param features the features
      */
     add_connection_features(features: GLib.Quark[]): void
     /**
@@ -31237,6 +34733,7 @@ class SimpleObserver {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param tokens capability  tokens as defined by the Telepathy D-Bus API Specification
      */
     add_handler_capabilities(tokens: string[]): void
     /**
@@ -31246,6 +34743,7 @@ class SimpleObserver {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param token a capability token as defined by the Telepathy D-Bus API  Specification
      */
     add_handler_capability(token: string): void
     /**
@@ -31256,6 +34754,7 @@ class SimpleObserver {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_handler_filter(filter: GLib.HashTable): void
     /**
@@ -31270,6 +34769,7 @@ class SimpleObserver {
      * If the variant is floating (see g_variant_ref_sink()), ownership
      * will be taken. See tp_base_client_add_observer_filter_vardict() for
      * more details.
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_handler_filter_vardict(filter: GLib.Variant): void
     /**
@@ -31280,6 +34780,7 @@ class SimpleObserver {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_observer_filter(filter: GLib.HashTable): void
     /**
@@ -31302,6 +34803,7 @@ class SimpleObserver {
      *        ...));
      * ```
      * 
+     * @param filter a variant of type %G_VARIANT_TYPE_VARDICT
      */
     add_observer_filter_vardict(filter: GLib.Variant): void
     /**
@@ -31319,11 +34821,16 @@ class SimpleObserver {
      * stopping handling `channels` and pass them to another Handler.
      * You can then call tp_base_client_delegate_channels_finish() to
      * get the result of the operation.
+     * @param channels a #GList of #TpChannel handled by `self`
+     * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but `self` would be acceptable.
+     * @param callback a callback to call when the request is satisfied
      */
     delegate_channels_async(channels: Channel[], user_action_time: number, preferred_handler: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channels delegation request started using
      * tp_base_client_delegate_channels_async().
+     * @param result a #GAsyncResult
      */
     delegate_channels_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* delegated */ Channel[], /* not_delegated */ GLib.HashTable ]
     /**
@@ -31381,6 +34888,7 @@ class SimpleObserver {
     get_uniquify_name(): boolean
     /**
      * Check if `self` is currently handling `channel`.
+     * @param channel a #TpChannel
      */
     is_handling_channel(channel: Channel): boolean
     /**
@@ -31395,6 +34903,7 @@ class SimpleObserver {
     /**
      * Change the value of the #TpBaseClient:channel-factory property.
      * It can't be changed once `self` has been registered.
+     * @param factory an object implementing the #TpClientChannelFactoryInterface interface
      */
     set_channel_factory(factory: ClientChannelFactory): void
     /**
@@ -31406,6 +34915,7 @@ class SimpleObserver {
      * delegate the channels to the preferred handler of the request and then call
      * `callback` to inform the client that it is no longer handling those
      * channels.
+     * @param callback function called when channels currently handled by `self` are delegated, may not be %NULL
      */
     set_delegated_channels_callback(callback: BaseClientDelegatedChannelsCb): void
     /**
@@ -31417,6 +34927,7 @@ class SimpleObserver {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
+     * @param bypass_approval the value of the Handler.BypassApproval property
      */
     set_handler_bypass_approval(bypass_approval: boolean): void
     /**
@@ -31443,6 +34954,7 @@ class SimpleObserver {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param delay the value of the Observer.DelayApprovers property
      */
     set_observer_delay_approvers(delay: boolean): void
     /**
@@ -31462,6 +34974,7 @@ class SimpleObserver {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
+     * @param recover the value of the Observer.Recover property
      */
     set_observer_recover(recover: boolean): void
     /**
@@ -31514,6 +35027,10 @@ class SimpleObserver {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -31524,6 +35041,12 @@ class SimpleObserver {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -31547,6 +35070,7 @@ class SimpleObserver {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -31566,11 +35090,14 @@ class SimpleObserver {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -31578,6 +35105,8 @@ class SimpleObserver {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31595,6 +35124,7 @@ class SimpleObserver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -31640,6 +35170,7 @@ class SimpleObserver {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -31683,15 +35214,20 @@ class SimpleObserver {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -31732,6 +35268,7 @@ class SimpleObserver {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -31766,6 +35303,7 @@ class SimpleObserver {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of TelepathyGLib-0.12.TelepathyGLib.BaseClient */
@@ -31789,6 +35327,7 @@ class SimpleObserver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31800,6 +35339,8 @@ class SimpleObserver {
      * This signal is only fired if
      * tp_base_client_set_handler_request_notification() has been called
      * on `self` previously.
+     * @param account the #TpAccount on which the request was made,  with %TP_ACCOUNT_FEATURE_CORE, and any other features added via  tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if possible
+     * @param request a #TpChannelRequest having its object-path defined but is not guaranteed to be prepared.
      */
     connect(sigName: "request-added", callback: (($obj: SimpleObserver, account: Account, request: ChannelRequest) => void)): number
     connect_after(sigName: "request-added", callback: (($obj: SimpleObserver, account: Account, request: ChannelRequest) => void)): number
@@ -31810,6 +35351,9 @@ class SimpleObserver {
      * This signal is only fired if
      * tp_base_client_set_handler_request_notification() has been called
      * on `self` previously.
+     * @param request the #TpChannelRequest being removed
+     * @param error the name of the D-Bus error with which the request failed.
+     * @param message any message supplied with the D-Bus error.
      */
     connect(sigName: "request-removed", callback: (($obj: SimpleObserver, request: ChannelRequest, error: string, message: string) => void)): number
     connect_after(sigName: "request-removed", callback: (($obj: SimpleObserver, request: ChannelRequest, error: string, message: string) => void)): number
@@ -31843,10 +35387,31 @@ class SimpleObserver {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::callback", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::callback", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::destroy", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::recover", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::recover", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::user-data", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::user-data", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::account-manager", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::account-manager", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::channel-factory", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel-factory", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uniquify-name", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uniquify-name", callback: (($obj: SimpleObserver, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -31891,6 +35456,11 @@ class StreamTubeChannel {
      * Change notification is via notify::channel-ready.
      */
     readonly channel_ready: boolean
+    /**
+     * The #TpConnection to which this #TpChannel belongs. Used for e.g.
+     * handle manipulation.
+     */
+    readonly connection: Connection
     /**
      * If the %TP_CHANNEL_FEATURE_GROUP feature has been prepared successfully,
      * #TpChannelGroupFlags indicating the capabilities and behaviour of that
@@ -32031,21 +35601,42 @@ class StreamTubeChannel {
     readonly target_contact: Contact
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.StreamTubeChannel */
     /**
      * Accept an incoming stream tube. When the tube has been accepted, `callback`
      * will be called. You can then call tp_stream_tube_channel_accept_finish()
      * to get a #TpStreamTubeConnection connected to the tube.
+     * @param callback a callback to call when the tube has been accepted
      */
     accept_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes accepting an incoming stream tube. The returned
      * #TpStreamTubeConnection can then be used to exchange data through the tube.
+     * @param result a #GAsyncResult
      */
     accept_finish(result: Gio.AsyncResult): StreamTubeConnection
     /**
@@ -32073,10 +35664,13 @@ class StreamTubeChannel {
      * You have to connect to the #TpStreamTubeChannel::incoming signal to get a
      * #TpStreamTubeConnection each time a contact establishes a connection to
      * the tube.
+     * @param params parameters of the tube, or %NULL
+     * @param callback a callback to call when the tube has been offered
      */
     offer_async(params?: GLib.HashTable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes offering an outgoing stream tube.
+     * @param result a #GAsyncResult
      */
     offer_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Channel */
@@ -32109,10 +35703,12 @@ class StreamTubeChannel {
      * When the channel has been closed, `callback` will be called.
      * You can then call tp_channel_close_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
      */
     close_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_close_async().
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -32123,10 +35719,12 @@ class StreamTubeChannel {
      * When the channel has been destroyed or closed, `callback` will be called.
      * You can then call tp_channel_destroy_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we left the channel
      */
     destroy_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_destroy_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_destroy_async().
      */
     destroy_finish(result: Gio.AsyncResult): boolean
     /**
@@ -32168,6 +35766,7 @@ class StreamTubeChannel {
      * Return the chat state for the given contact. If tp_proxy_is_prepared()
      * would return %FALSE for the feature %TP_CHANNEL_FEATURE_CHAT_STATES,
      * the result will always be %TP_CHANNEL_CHAT_STATE_INACTIVE.
+     * @param contact a contact handle
      */
     get_chat_state(contact: Handle): ChannelChatState
     /**
@@ -32279,6 +35878,7 @@ class StreamTubeChannel {
      * instance, if you invite someone to an XMPP MUC using their globally valid
      * JID, you would expect to see the contact representing that JID in the
      * Group's remote-pending set).
+     * @param contact a contact which is a member of this channel
      */
     group_get_contact_owner(contact: Contact): Contact
     /**
@@ -32324,6 +35924,7 @@ class StreamTubeChannel {
      * This function's result is undefined unless the channel is ready
      * and its flags include %TP_CHANNEL_GROUP_FLAG_PROPERTIES (an implementation
      * without extra D-Bus round trips is not possible using the older API).
+     * @param handle a handle which is a member of this channel
      */
     group_get_handle_owner(handle: Handle): Handle
     /**
@@ -32345,6 +35946,7 @@ class StreamTubeChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write %NULL into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the #TpContact of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_contact_info(local_pending: Contact): [ /* returnType */ boolean, /* actor */ Contact | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -32356,6 +35958,7 @@ class StreamTubeChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write 0 into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the handle of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_info(local_pending: Handle): [ /* returnType */ boolean, /* actor */ Handle | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -32396,10 +35999,13 @@ class StreamTubeChannel {
      * 
      * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * must be prepared before calling this function.
+     * @param message the join message
+     * @param callback a callback to call when we joined the channel
      */
     join_async(message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_join_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
      */
     join_finish(result: Gio.AsyncResult): boolean
     /**
@@ -32414,10 +36020,14 @@ class StreamTubeChannel {
      * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * does not have to be prepared and will be prepared for you. But this is a
      * deprecated behaviour.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @param callback a callback to call when we left the channel
      */
     leave_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
      */
     leave_finish(result: Gio.AsyncResult): boolean
     /**
@@ -32429,12 +36039,15 @@ class StreamTubeChannel {
      * Once the password has been provided, `callback` will be
      * called. You can then call tp_channel_provide_password_finish()
      * to get the result of the operation.
+     * @param password the password
+     * @param callback a callback to call when `password` has been provided
      */
     provide_password_async(password: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_provide_password_async().
      * If the password was rejected, the operation
      * fails with #TP_ERROR_AUTHENTICATION_FAILED.
+     * @param result a #GAsyncResult passed to the callback for  tp_channel_provide_password_async().
      */
     provide_password_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -32443,6 +36056,8 @@ class StreamTubeChannel {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -32476,12 +36091,14 @@ class StreamTubeChannel {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -32494,6 +36111,7 @@ class StreamTubeChannel {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -32544,12 +36162,15 @@ class StreamTubeChannel {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -32587,6 +36208,10 @@ class StreamTubeChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -32597,6 +36222,12 @@ class StreamTubeChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -32620,6 +36251,7 @@ class StreamTubeChannel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -32639,11 +36271,14 @@ class StreamTubeChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -32651,6 +36286,8 @@ class StreamTubeChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -32668,6 +36305,7 @@ class StreamTubeChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -32713,6 +36351,7 @@ class StreamTubeChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -32756,15 +36395,20 @@ class StreamTubeChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -32805,6 +36449,7 @@ class StreamTubeChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -32839,6 +36484,7 @@ class StreamTubeChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -32858,6 +36504,7 @@ class StreamTubeChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -32868,6 +36515,7 @@ class StreamTubeChannel {
      * 
      * Consumers of this signal must take their own references to
      * `tube_connection`
+     * @param tube_connection the #TpStreamTubeConnection for the connection
      */
     connect(sigName: "incoming", callback: (($obj: StreamTubeChannel, tube_connection: StreamTubeConnection) => void)): number
     connect_after(sigName: "incoming", callback: (($obj: StreamTubeChannel, tube_connection: StreamTubeConnection) => void)): number
@@ -32876,6 +36524,8 @@ class StreamTubeChannel {
     /**
      * Emitted when a contact's chat state changes after tp_proxy_prepare_async()
      * has finished preparing the feature %TP_CHANNEL_FEATURE_CHAT_STATES.
+     * @param contact a contact handle for the local user or another contact
+     * @param state the new #TpChannelChatState for the contact
      */
     connect(sigName: "chat-state-changed", callback: (($obj: StreamTubeChannel, contact: number, state: number) => void)): number
     connect_after(sigName: "chat-state-changed", callback: (($obj: StreamTubeChannel, contact: number, state: number) => void)): number
@@ -32886,6 +36536,12 @@ class StreamTubeChannel {
      * This is not guaranteed to be emitted until tp_proxy_prepare_async() has
      * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
      * omitted.
+     * @param added   a #GPtrArray of #TpContact containing the full members added
+     * @param removed   a #GPtrArray of #TpContact containing the members (full, local-pending or  remote-pending) removed
+     * @param local_pending   a #GPtrArray of #TpContact containing the local-pending members added
+     * @param remote_pending   a #GPtrArray of #TpContact containing the remote-pending members added
+     * @param actor a #TpContact for the "actor" handle in `details`
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-contacts-changed", callback: (($obj: StreamTubeChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-contacts-changed", callback: (($obj: StreamTubeChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
@@ -32893,12 +36549,21 @@ class StreamTubeChannel {
     /**
      * Emitted when the #TpChannel:group-flags property changes while the
      * channel is ready.
+     * @param added #TpChannelGroupFlags which are newly set
+     * @param removed #TpChannelGroupFlags which are no longer set
      */
     connect(sigName: "group-flags-changed", callback: (($obj: StreamTubeChannel, added: number, removed: number) => void)): number
     connect_after(sigName: "group-flags-changed", callback: (($obj: StreamTubeChannel, added: number, removed: number) => void)): number
     emit(sigName: "group-flags-changed", added: number, removed: number): void
     /**
      * Emitted when the group members change in a Group channel that is ready.
+     * @param message an optional textual message
+     * @param added a #GArray of #guint containing the full members added
+     * @param removed a #GArray of #guint containing the members (full,  local-pending or remote-pending) removed
+     * @param local_pending a #GArray of #guint containing the local-pending  members added
+     * @param remote_pending a #GArray of #guint containing the remote-pending  members added
+     * @param actor the #TpHandle of the contact causing the change, or 0
+     * @param reason the reason for the change as a #TpChannelGroupChangeReason
      */
     connect(sigName: "group-members-changed", callback: (($obj: StreamTubeChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
     connect_after(sigName: "group-members-changed", callback: (($obj: StreamTubeChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
@@ -32908,6 +36573,11 @@ class StreamTubeChannel {
      * Contains a superset of the information in the
      * TpChannel::group-members-changed signal, and is emitted at the same time;
      * applications can connect to this signal and ignore the other.
+     * @param added a #GArray of #guint  containing the full members added
+     * @param removed a #GArray of #guint  containing the members (full, local-pending or remote-pending) removed
+     * @param local_pending a #GArray of  #guint containing the local-pending members added
+     * @param remote_pending a #GArray of  #guint containing the remote-pending members added
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-members-changed-detailed", callback: (($obj: StreamTubeChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-members-changed-detailed", callback: (($obj: StreamTubeChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
@@ -32922,6 +36592,8 @@ class StreamTubeChannel {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: StreamTubeChannel, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: StreamTubeChannel, id: number, proxy: any) => void)): number
@@ -32937,6 +36609,9 @@ class StreamTubeChannel {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: StreamTubeChannel, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: StreamTubeChannel, domain: number, code: number, message: string) => void)): number
@@ -32970,6 +36645,7 @@ class StreamTubeChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
@@ -32980,6 +36656,8 @@ class StreamTubeChannel {
     connect_after(sigName: "notify::service", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::channel-ready", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::channel-ready", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-flags", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::group-flags", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-self-contact", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
@@ -33000,8 +36678,16 @@ class StreamTubeChannel {
     connect_after(sigName: "notify::requested", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::target-contact", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::target-contact", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: StreamTubeChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -33041,8 +36727,31 @@ interface StreamTubeConnection_ConstructProps extends GObject.Object_ConstructPr
     socket_connection?: Gio.SocketConnection
 }
 class StreamTubeConnection {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.StreamTubeConnection */
+    /**
+     * The #TpStreamTubeChannel channel associated with this connection
+     * 
+     * This property can't be %NULL.
+     */
+    readonly channel: StreamTubeChannel
+    /**
+     * The #TpContact with who we are exchanging data through this tube, or
+     * %NULL if we can't safely identify the contact.
+     * 
+     * If not %NULL, the #TpContact objects is guaranteed to have all of the
+     * features previously passed to
+     * tp_simple_client_factory_add_contact_features() prepared.
+     */
+    readonly contact: Contact
+    /**
+     * The #GSocketConnection used to transfer data through this connection.
+     * Read-only except during construction.
+     * 
+     * This property can't be %NULL.
+     */
+    readonly socket_connection: Gio.SocketConnection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.StreamTubeConnection */
     /**
      * Return the #TpStreamTubeConnection:channel property
@@ -33091,6 +36800,10 @@ class StreamTubeConnection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -33101,6 +36814,12 @@ class StreamTubeConnection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -33124,6 +36843,7 @@ class StreamTubeConnection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -33143,11 +36863,14 @@ class StreamTubeConnection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -33155,6 +36878,8 @@ class StreamTubeConnection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -33172,6 +36897,7 @@ class StreamTubeConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -33217,6 +36943,7 @@ class StreamTubeConnection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -33260,15 +36987,20 @@ class StreamTubeConnection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -33309,6 +37041,7 @@ class StreamTubeConnection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -33343,6 +37076,7 @@ class StreamTubeConnection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -33362,6 +37096,7 @@ class StreamTubeConnection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -33369,6 +37104,7 @@ class StreamTubeConnection {
     /**
      * The ::closed signal is emitted when the connection manager reports that
      * a tube connection has been closed.
+     * @param error a #GError representing the error reported by the connection manager
      */
     connect(sigName: "closed", callback: (($obj: StreamTubeConnection, error: GLib.Error) => void)): number
     connect_after(sigName: "closed", callback: (($obj: StreamTubeConnection, error: GLib.Error) => void)): number
@@ -33402,10 +37138,17 @@ class StreamTubeConnection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamTubeConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamTubeConnection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::channel", callback: (($obj: StreamTubeConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel", callback: (($obj: StreamTubeConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::contact", callback: (($obj: StreamTubeConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::contact", callback: (($obj: StreamTubeConnection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::socket-connection", callback: (($obj: StreamTubeConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::socket-connection", callback: (($obj: StreamTubeConnection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -33445,6 +37188,12 @@ class TLSCertificate {
      */
     readonly cert_type: string
     /**
+     * A #TpConnection or #TpChannel which owns this TLS certificate. If the
+     * parent object is invalidated, the certificate is also invalidated, and
+     * this property is set to %NULL.
+     */
+    readonly parent: Proxy
+    /**
      * The state of this TLS certificate as a #TpTLSCertificateState,
      * initially %TP_TLS_CERTIFICATE_STATE_PENDING.
      * 
@@ -33453,11 +37202,30 @@ class TLSCertificate {
     readonly state: number
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.TLSCertificate */
     /**
      * Accept this certificate, asynchronously. In or after `callback,`
@@ -33465,10 +37233,12 @@ class TLSCertificate {
      * 
      * #GObject::notify::state will also be emitted when the connection manager
      * signals that the certificate has been accepted.
+     * @param callback called on success or failure
      */
     accept_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check the result of tp_tls_certificate_accept_async().
+     * @param result the result passed to the callback by  tp_tls_certificate_accept_async()
      */
     accept_finish(result: Gio.AsyncResult): boolean
     /**
@@ -33481,6 +37251,9 @@ class TLSCertificate {
      * ownership of `details` is taken by this function. This means
      * you can pass the result of g_variant_new() or g_variant_new_parsed()
      * directly to this function without additional reference-count management.
+     * @param reason the reason for rejection
+     * @param dbus_error a D-Bus error name such as %TP_ERROR_STR_CERT_REVOKED, or  %NULL to derive one from `reason`
+     * @param details a variant of type %G_VARIANT_TYPE_VARDICT containing the details of the rejection, or %NULL
      */
     add_rejection(reason: TLSCertificateRejectReason, dbus_error: string, details?: GLib.Variant | null): void
     /**
@@ -33497,6 +37270,7 @@ class TLSCertificate {
      * `n<`!---->th rejection reason (starting from 0).
      * 
      * With `n` == 0 this is equivalent to tp_tls_certificate_get_rejection().
+     * @param n the rejection reason to return; if 0, return the same thing as  tp_tls_certificate_get_detailed_rejection()
      */
     get_nth_rejection(n: number): TLSCertificateRejection | null
     /**
@@ -33527,10 +37301,12 @@ class TLSCertificate {
      * 
      * #GObject::notify::state will also be emitted when the connection manager
      * signals that the certificate has been rejected.
+     * @param callback called on success or failure
      */
     reject_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check the result of tp_tls_certificate_reject_async().
+     * @param result the result passed to the callback by  tp_tls_certificate_reject_async()
      */
     reject_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -33539,6 +37315,8 @@ class TLSCertificate {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -33572,12 +37350,14 @@ class TLSCertificate {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -33590,6 +37370,7 @@ class TLSCertificate {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -33640,12 +37421,15 @@ class TLSCertificate {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -33683,6 +37467,10 @@ class TLSCertificate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -33693,6 +37481,12 @@ class TLSCertificate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -33716,6 +37510,7 @@ class TLSCertificate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -33735,11 +37530,14 @@ class TLSCertificate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -33747,6 +37545,8 @@ class TLSCertificate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -33764,6 +37564,7 @@ class TLSCertificate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -33809,6 +37610,7 @@ class TLSCertificate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -33852,15 +37654,20 @@ class TLSCertificate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -33901,6 +37708,7 @@ class TLSCertificate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -33935,6 +37743,7 @@ class TLSCertificate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -33954,6 +37763,7 @@ class TLSCertificate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -33967,6 +37777,8 @@ class TLSCertificate {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: TLSCertificate, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: TLSCertificate, id: number, proxy: any) => void)): number
@@ -33982,6 +37794,9 @@ class TLSCertificate {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: TLSCertificate, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: TLSCertificate, domain: number, code: number, message: string) => void)): number
@@ -34015,6 +37830,7 @@ class TLSCertificate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
@@ -34023,10 +37839,20 @@ class TLSCertificate {
     connect_after(sigName: "notify::cert-data", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::cert-type", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cert-type", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::parent", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::state", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::state", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: TLSCertificate, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -34069,8 +37895,26 @@ interface TLSCertificateRejection_ConstructProps extends GObject.Object_Construc
     reason?: number
 }
 class TLSCertificateRejection {
+    /* Properties of TelepathyGLib-0.12.TelepathyGLib.TLSCertificateRejection */
+    /**
+     * The D-Bus error name of the rejection
+     */
+    readonly dbus_error: string
+    /**
+     * A #G_VARIANT_TYPE_VARDICT containing the details of the rejection
+     */
+    readonly details: GLib.Variant
+    /**
+     * a #GError (likely to be in the %TP_ERROR domain) indicating the reason
+     * of the rejection
+     */
+    readonly error: GLib.Error
+    /**
+     * #TpTLSCertificateRejectReason representing the reason of the rejection
+     */
+    readonly reason: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.TLSCertificateRejection */
     /**
      * Return the #TpTLSCertificateRejection:dbus-error property
@@ -34128,6 +37972,10 @@ class TLSCertificateRejection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -34138,6 +37986,12 @@ class TLSCertificateRejection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -34161,6 +38015,7 @@ class TLSCertificateRejection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -34180,11 +38035,14 @@ class TLSCertificateRejection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -34192,6 +38050,8 @@ class TLSCertificateRejection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -34209,6 +38069,7 @@ class TLSCertificateRejection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -34254,6 +38115,7 @@ class TLSCertificateRejection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -34297,15 +38159,20 @@ class TLSCertificateRejection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -34346,6 +38213,7 @@ class TLSCertificateRejection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -34380,6 +38248,7 @@ class TLSCertificateRejection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -34399,6 +38268,7 @@ class TLSCertificateRejection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -34431,10 +38301,19 @@ class TLSCertificateRejection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::dbus-error", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-error", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::details", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::details", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::error", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::error", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::reason", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reason", callback: (($obj: TLSCertificateRejection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -34496,6 +38375,11 @@ class TextChannel {
      */
     readonly channel_ready: boolean
     /**
+     * The #TpConnection to which this #TpChannel belongs. Used for e.g.
+     * handle manipulation.
+     */
+    readonly connection: Connection
+    /**
      * If the %TP_CHANNEL_FEATURE_GROUP feature has been prepared successfully,
      * #TpChannelGroupFlags indicating the capabilities and behaviour of that
      * group.
@@ -34635,11 +38519,30 @@ class TextChannel {
     readonly target_contact: Contact
     /* Properties of TelepathyGLib-0.12.TelepathyGLib.Proxy */
     /**
+     * The D-Bus bus name for this object. Read-only except during construction.
+     */
+    readonly bus_name: string
+    /**
+     * The D-Bus daemon for this object (this object itself, if it is a
+     * TpDBusDaemon). Read-only except during construction.
+     */
+    readonly dbus_daemon: DBusDaemon
+    /**
+     * The #TpSimpleClientFactory used to create this proxy,
+     * or %NULL if this proxy was not created through a factory.
+     */
+    readonly factory: SimpleClientFactory
+    /**
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
+    /**
+     * The D-Bus object path for this object. Read-only except during
+     * construction.
+     */
+    readonly object_path: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.TextChannel */
     /**
      * Acknowledge all the pending messages. This is equivalent of calling
@@ -34651,10 +38554,12 @@ class TextChannel {
      * the result of the operation.
      * 
      * See tp_text_channel_ack_message_async() about acknowledging messages.
+     * @param callback a callback to call when the messages have been acked
      */
     ack_all_pending_messages_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous acknowledgement operation of all messages.
+     * @param result a #GAsyncResult
      */
     ack_all_pending_messages_finish(result: Gio.AsyncResult): boolean
     /**
@@ -34672,10 +38577,13 @@ class TextChannel {
      * You should use the #TpSignalledMessage received from
      * tp_text_channel_dup_pending_messages() or the
      * #TpTextChannel::message-received signal.
+     * @param message a #TpSignalledMessage
+     * @param callback a callback to call when the message have been acked
      */
     ack_message_async(message: Message, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes acknowledging a message.
+     * @param result a #GAsyncResult passed to the callback for tp_text_channel_ack_message_async()
      */
     ack_message_finish(result: Gio.AsyncResult): boolean
     /**
@@ -34689,10 +38597,13 @@ class TextChannel {
      * #TpTextChannel::message-received signal.
      * 
      * See tp_text_channel_ack_message_async() about acknowledging messages.
+     * @param messages a #GList of #TpSignalledMessage
+     * @param callback a callback to call when the message have been acked
      */
     ack_messages_async(messages: SignalledMessage[], callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes acknowledging a list of messages.
+     * @param result a #GAsyncResult passed to the callback for tp_text_channel_ack_messages_async()
      */
     ack_messages_finish(result: Gio.AsyncResult): boolean
     /**
@@ -34708,6 +38619,7 @@ class TextChannel {
      * Return the chat state for the given contact. If tp_proxy_is_prepared()
      * would return %FALSE for the feature %TP_TEXT_CHANNEL_FEATURE_CHAT_STATES,
      * the result will always be %TP_CHANNEL_CHAT_STATE_INACTIVE.
+     * @param contact a #TpContact
      */
     get_chat_state(contact: Contact): ChannelChatState
     /**
@@ -34744,10 +38656,13 @@ class TextChannel {
      * Once the request has been satisfied, `callback` will be called.
      * You can then call tp_text_channel_get_sms_length_finish() to get the
      * result of the operation.
+     * @param message a #TpClientMessage
+     * @param callback a callback to call when the request has been satisfied
      */
     get_sms_length_async(message: Message, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async SMS length request.
+     * @param result a #GAsyncResult
      */
     get_sms_length_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* chunks_required */ number, /* remaining_characters */ number, /* estimated_cost */ number ]
     /**
@@ -34758,6 +38673,9 @@ class TextChannel {
      * Submit a message to the server for sending. Once the message has been
      * submitted to the sever, `callback` will be called. You can then call
      * tp_text_channel_send_message_finish() to get the result of the operation.
+     * @param message a #TpClientMessage
+     * @param flags flags affecting how the message is sent
+     * @param callback a callback to call when the message has been submitted to the server
      */
     send_message_async(message: Message, flags: MessageSendingFlags, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -34767,6 +38685,7 @@ class TextChannel {
      * against the sent message. If this function returns true but the returned
      * token is %NULL, the message was sent successfully but the protocol does not
      * provide a way to identify it later.
+     * @param result a #GAsyncResult passed to the callback for tp_text_channel_send_message_async()
      */
     send_message_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* token */ string ]
     /**
@@ -34774,14 +38693,18 @@ class TextChannel {
      * Once the state has been set, `callback` will be called.
      * You can then call tp_text_channel_set_chat_state_finish() to get the
      * result of the operation.
+     * @param state a #TpChannelChatState to set
+     * @param callback a callback to call when the chat state has been set
      */
     set_chat_state_async(state: ChannelChatState, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_text_channel_set_chat_state_async().
+     * @param result a #GAsyncResult passed to the callback for tp_text_channel_set_chat_state_async()
      */
     set_chat_state_finish(result: Gio.AsyncResult): boolean
     /**
      * Check if message of type `message_type` can be sent on this channel.
+     * @param message_type a #TpChannelTextMessageType
      */
     supports_message_type(message_type: ChannelTextMessageType): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Channel */
@@ -34814,10 +38737,12 @@ class TextChannel {
      * When the channel has been closed, `callback` will be called.
      * You can then call tp_channel_close_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
      */
     close_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_close_async().
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -34828,10 +38753,12 @@ class TextChannel {
      * When the channel has been destroyed or closed, `callback` will be called.
      * You can then call tp_channel_destroy_finish() to get the result of
      * the operation.
+     * @param callback a callback to call when we left the channel
      */
     destroy_async(callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_destroy_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_destroy_async().
      */
     destroy_finish(result: Gio.AsyncResult): boolean
     /**
@@ -34873,6 +38800,7 @@ class TextChannel {
      * Return the chat state for the given contact. If tp_proxy_is_prepared()
      * would return %FALSE for the feature %TP_CHANNEL_FEATURE_CHAT_STATES,
      * the result will always be %TP_CHANNEL_CHAT_STATE_INACTIVE.
+     * @param contact a contact handle
      */
     get_chat_state(contact: Handle): ChannelChatState
     /**
@@ -34984,6 +38912,7 @@ class TextChannel {
      * instance, if you invite someone to an XMPP MUC using their globally valid
      * JID, you would expect to see the contact representing that JID in the
      * Group's remote-pending set).
+     * @param contact a contact which is a member of this channel
      */
     group_get_contact_owner(contact: Contact): Contact
     /**
@@ -35029,6 +38958,7 @@ class TextChannel {
      * This function's result is undefined unless the channel is ready
      * and its flags include %TP_CHANNEL_GROUP_FLAG_PROPERTIES (an implementation
      * without extra D-Bus round trips is not possible using the older API).
+     * @param handle a handle which is a member of this channel
      */
     group_get_handle_owner(handle: Handle): Handle
     /**
@@ -35050,6 +38980,7 @@ class TextChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write %NULL into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the #TpContact of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_contact_info(local_pending: Contact): [ /* returnType */ boolean, /* actor */ Contact | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -35061,6 +38992,7 @@ class TextChannel {
      * If `local_pending` is not the handle of a local-pending contact,
      * write 0 into `actor,` %TP_CHANNEL_GROUP_CHANGE_REASON_NONE into `reason`
      * and "" into `message,` and return %FALSE.
+     * @param local_pending the handle of a local-pending contact about whom more  information is needed
      */
     group_get_local_pending_info(local_pending: Handle): [ /* returnType */ boolean, /* actor */ Handle | null, /* reason */ ChannelGroupChangeReason | null, /* message */ string | null ]
     /**
@@ -35101,10 +39033,13 @@ class TextChannel {
      * 
      * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * must be prepared before calling this function.
+     * @param message the join message
+     * @param callback a callback to call when we joined the channel
      */
     join_async(message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_join_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
      */
     join_finish(result: Gio.AsyncResult): boolean
     /**
@@ -35119,10 +39054,14 @@ class TextChannel {
      * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
      * does not have to be prepared and will be prepared for you. But this is a
      * deprecated behaviour.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @param callback a callback to call when we left the channel
      */
     leave_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_leave_async().
+     * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
      */
     leave_finish(result: Gio.AsyncResult): boolean
     /**
@@ -35134,12 +39073,15 @@ class TextChannel {
      * Once the password has been provided, `callback` will be
      * called. You can then call tp_channel_provide_password_finish()
      * to get the result of the operation.
+     * @param password the password
+     * @param callback a callback to call when `password` has been provided
      */
     provide_password_async(password: string, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_provide_password_async().
      * If the password was rejected, the operation
      * fails with #TP_ERROR_AUTHENTICATION_FAILED.
+     * @param result a #GAsyncResult passed to the callback for  tp_channel_provide_password_async().
      */
     provide_password_finish(result: Gio.AsyncResult): boolean
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Proxy */
@@ -35148,6 +39090,8 @@ class TextChannel {
      * on this proxy. This method is useful when D-Bus error names are emitted in
      * signals, such as Connection.ConnectionError and
      * Group.MembersChangedDetailed.
+     * @param dbus_error a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
+     * @param debug_message a debug message that accompanied the error name, or %NULL
      */
     dbus_error_to_gerror(dbus_error: string, debug_message: string): void
     /**
@@ -35181,12 +39125,14 @@ class TextChannel {
      * successfully preparing the "core" feature for that subclass (such as
      * %TP_CHANNEL_FEATURE_CORE or %TP_CONNECTION_FEATURE_CORE) implies that the
      * interfaces are known.
+     * @param iface the D-Bus interface required, as a string
      */
     has_interface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
      * tp_proxy_has_interface(), but more efficient.
+     * @param iface quark representing the D-Bus interface required
      */
     has_interface_by_id(iface: GLib.Quark): boolean
     /**
@@ -35199,6 +39145,7 @@ class TextChannel {
      * or is not a #TpChannel at all, then this method will return %FALSE.)
      * 
      * To prepare features, call tp_proxy_prepare_async().
+     * @param feature a feature that is supported by `self'`s class
      */
     is_prepared(feature: GLib.Quark): boolean
     /**
@@ -35249,12 +39196,15 @@ class TextChannel {
      * features when instantiated, and features will sometimes become prepared as
      * a side-effect of other actions, but to ensure that a feature is present you
      * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
      * or `self` has emitted #TpProxy::invalidated.
+     * @param result the result passed to the callback of tp_proxy_prepare_async()
      */
     prepare_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -35292,6 +39242,10 @@ class TextChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -35302,6 +39256,12 @@ class TextChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -35325,6 +39285,7 @@ class TextChannel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -35344,11 +39305,14 @@ class TextChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -35356,6 +39320,8 @@ class TextChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -35373,6 +39339,7 @@ class TextChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -35418,6 +39385,7 @@ class TextChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -35461,15 +39429,20 @@ class TextChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -35510,6 +39483,7 @@ class TextChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -35544,6 +39518,7 @@ class TextChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -35563,6 +39538,7 @@ class TextChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -35571,6 +39547,8 @@ class TextChannel {
      * Emitted when a contact's chat state changes after tp_proxy_prepare_async()
      * has finished preparing features %TP_TEXT_CHANNEL_FEATURE_CHAT_STATES,
      * %TP_CHANNEL_FEATURE_GROUP and %TP_CHANNEL_FEATURE_CONTACTS.
+     * @param contact a #TpContact for the local user or another contact
+     * @param state the new #TpChannelChatState for the contact
      */
     connect(sigName: "contact-chat-state-changed", callback: (($obj: TextChannel, contact: Contact, state: number) => void)): number
     connect_after(sigName: "contact-chat-state-changed", callback: (($obj: TextChannel, contact: Contact, state: number) => void)): number
@@ -35589,6 +39567,7 @@ class TextChannel {
      * It is guaranteed that `message'`s #TpSignalledMessage:sender has all of the
      * features previously passed to
      * tp_simple_client_factory_add_contact_features() prepared.
+     * @param message a #TpSignalledMessage
      */
     connect(sigName: "message-received", callback: (($obj: TextChannel, message: SignalledMessage) => void)): number
     connect_after(sigName: "message-received", callback: (($obj: TextChannel, message: SignalledMessage) => void)): number
@@ -35600,6 +39579,9 @@ class TextChannel {
      * It is guaranteed that `message'`s #TpSignalledMessage:sender has all of the
      * features previously passed to
      * tp_simple_client_factory_add_contact_features() prepared.
+     * @param message a #TpSignalledMessage
+     * @param flags the #TpMessageSendingFlags affecting how the message was sent
+     * @param token an opaque token used to match any incoming delivery or failure reports against this message, or %NULL if the message is not readily identifiable.
      */
     connect(sigName: "message-sent", callback: (($obj: TextChannel, message: SignalledMessage, flags: number, token: string) => void)): number
     connect_after(sigName: "message-sent", callback: (($obj: TextChannel, message: SignalledMessage, flags: number, token: string) => void)): number
@@ -35614,6 +39596,7 @@ class TextChannel {
      * It is guaranteed that `message'`s #TpSignalledMessage:sender has all of the
      * features previously passed to
      * tp_simple_client_factory_add_contact_features() prepared.
+     * @param message a #TpSignalledMessage
      */
     connect(sigName: "pending-message-removed", callback: (($obj: TextChannel, message: SignalledMessage) => void)): number
     connect_after(sigName: "pending-message-removed", callback: (($obj: TextChannel, message: SignalledMessage) => void)): number
@@ -35622,6 +39605,8 @@ class TextChannel {
     /**
      * Emitted when a contact's chat state changes after tp_proxy_prepare_async()
      * has finished preparing the feature %TP_CHANNEL_FEATURE_CHAT_STATES.
+     * @param contact a contact handle for the local user or another contact
+     * @param state the new #TpChannelChatState for the contact
      */
     connect(sigName: "chat-state-changed", callback: (($obj: TextChannel, contact: number, state: number) => void)): number
     connect_after(sigName: "chat-state-changed", callback: (($obj: TextChannel, contact: number, state: number) => void)): number
@@ -35632,6 +39617,12 @@ class TextChannel {
      * This is not guaranteed to be emitted until tp_proxy_prepare_async() has
      * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
      * omitted.
+     * @param added   a #GPtrArray of #TpContact containing the full members added
+     * @param removed   a #GPtrArray of #TpContact containing the members (full, local-pending or  remote-pending) removed
+     * @param local_pending   a #GPtrArray of #TpContact containing the local-pending members added
+     * @param remote_pending   a #GPtrArray of #TpContact containing the remote-pending members added
+     * @param actor a #TpContact for the "actor" handle in `details`
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-contacts-changed", callback: (($obj: TextChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-contacts-changed", callback: (($obj: TextChannel, added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: GLib.HashTable) => void)): number
@@ -35639,12 +39630,21 @@ class TextChannel {
     /**
      * Emitted when the #TpChannel:group-flags property changes while the
      * channel is ready.
+     * @param added #TpChannelGroupFlags which are newly set
+     * @param removed #TpChannelGroupFlags which are no longer set
      */
     connect(sigName: "group-flags-changed", callback: (($obj: TextChannel, added: number, removed: number) => void)): number
     connect_after(sigName: "group-flags-changed", callback: (($obj: TextChannel, added: number, removed: number) => void)): number
     emit(sigName: "group-flags-changed", added: number, removed: number): void
     /**
      * Emitted when the group members change in a Group channel that is ready.
+     * @param message an optional textual message
+     * @param added a #GArray of #guint containing the full members added
+     * @param removed a #GArray of #guint containing the members (full,  local-pending or remote-pending) removed
+     * @param local_pending a #GArray of #guint containing the local-pending  members added
+     * @param remote_pending a #GArray of #guint containing the remote-pending  members added
+     * @param actor the #TpHandle of the contact causing the change, or 0
+     * @param reason the reason for the change as a #TpChannelGroupChangeReason
      */
     connect(sigName: "group-members-changed", callback: (($obj: TextChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
     connect_after(sigName: "group-members-changed", callback: (($obj: TextChannel, message: string, added: any, removed: any, local_pending: any, remote_pending: any, actor: number, reason: number) => void)): number
@@ -35654,6 +39654,11 @@ class TextChannel {
      * Contains a superset of the information in the
      * TpChannel::group-members-changed signal, and is emitted at the same time;
      * applications can connect to this signal and ignore the other.
+     * @param added a #GArray of #guint  containing the full members added
+     * @param removed a #GArray of #guint  containing the members (full, local-pending or remote-pending) removed
+     * @param local_pending a #GArray of  #guint containing the local-pending members added
+     * @param remote_pending a #GArray of  #guint containing the remote-pending members added
+     * @param details   a #GHashTable mapping (gchar *) to #GValue containing details  about the change, as described in the specification of the  MembersChangedDetailed signal.
      */
     connect(sigName: "group-members-changed-detailed", callback: (($obj: TextChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
     connect_after(sigName: "group-members-changed-detailed", callback: (($obj: TextChannel, added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: GLib.HashTable) => void)): number
@@ -35668,6 +39673,8 @@ class TextChannel {
      * 
      * The intended use is to call dbus_g_proxy_add_signals(). This signal
      * should only be used by TpProy implementations
+     * @param id the GQuark representing the interface
+     * @param proxy the dbus-glib proxy representing the interface
      */
     connect(sigName: "interface-added", callback: (($obj: TextChannel, id: number, proxy: any) => void)): number
     connect_after(sigName: "interface-added", callback: (($obj: TextChannel, id: number, proxy: any) => void)): number
@@ -35683,6 +39690,9 @@ class TextChannel {
      * 
      * Any pending or future method calls made on this proxy will fail gracefully
      * with the same error as returned by tp_proxy_get_invalidated().
+     * @param domain domain of a GError indicating why this proxy was invalidated
+     * @param code error code of a GError indicating why this proxy was invalidated
+     * @param message a message associated with the error
      */
     connect(sigName: "invalidated", callback: (($obj: TextChannel, domain: number, code: number, message: string) => void)): number
     connect_after(sigName: "invalidated", callback: (($obj: TextChannel, domain: number, code: number, message: string) => void)): number
@@ -35716,6 +39726,7 @@ class TextChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
@@ -35732,6 +39743,8 @@ class TextChannel {
     connect_after(sigName: "notify::supported-content-types", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::channel-ready", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::channel-ready", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::connection", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::connection", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-flags", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::group-flags", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::group-self-contact", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
@@ -35752,8 +39765,16 @@ class TextChannel {
     connect_after(sigName: "notify::requested", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::target-contact", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::target-contact", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bus-name", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::dbus-daemon", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::dbus-daemon", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::factory", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::factory", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::interfaces", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interfaces", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::object-path", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::object-path", callback: (($obj: TextChannel, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -35811,7 +39832,7 @@ abstract class AutomaticClientFactoryClass {
     /**
      * the parent class
      */
-    readonly parent_class: SimpleClientFactoryClass
+    parent_class: SimpleClientFactoryClass
     static name: string
 }
 abstract class AutomaticProxyFactoryClass {
@@ -35819,7 +39840,7 @@ abstract class AutomaticProxyFactoryClass {
     /**
      * the parent class
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AvatarRequirements {
@@ -35828,40 +39849,40 @@ class AvatarRequirements {
      * An array of supported MIME types (e.g. "image/jpeg")
      *  Clients MAY assume that the first type in this array is preferred
      */
-    readonly supported_mime_types: string[]
+    supported_mime_types: string[]
     /**
      * The minimum width in pixels of an avatar, which MAY be 0
      */
-    readonly minimum_width: number
+    minimum_width: number
     /**
      * The minimum height in pixels of an avatar, which MAY be 0
      */
-    readonly minimum_height: number
+    minimum_height: number
     /**
      * The recommended width in pixels of an avatar, or 0 if
      *  there is no preferred width.
      */
-    readonly recommended_width: number
+    recommended_width: number
     /**
      * The recommended height in pixels of an avatar, or 0 if
      *  there is no preferred height
      */
-    readonly recommended_height: number
+    recommended_height: number
     /**
      * The maximum width in pixels of an avatar on this protocol,
      *  or 0 if there is no limit.
      */
-    readonly maximum_width: number
+    maximum_width: number
     /**
      * The maximum height in pixels of an avatar, or 0 if there is
      *  no limit.
      */
-    readonly maximum_height: number
+    maximum_height: number
     /**
      * he maximum size in bytes of an avatar, or 0 if there is no
      *  limit.
      */
-    readonly maximum_bytes: number
+    maximum_bytes: number
     static name: string
     static new(supported_mime_types: string[], minimum_width: number, minimum_height: number, recommended_width: number, recommended_height: number, maximum_width: number, maximum_height: number, maximum_bytes: number): AvatarRequirements
     constructor(supported_mime_types: string[], minimum_width: number, minimum_height: number, recommended_width: number, recommended_height: number, maximum_width: number, maximum_height: number, maximum_bytes: number)
@@ -35873,23 +39894,23 @@ abstract class BaseClientClass {
     /**
      * the parent class
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     /**
      * the function called to observe newly-created channels
      *  matching this client's observer filter (since 0.11.13)
      */
-    readonly observe_channels: BaseClientClassObserveChannelsImpl
+    observe_channels: BaseClientClassObserveChannelsImpl
     /**
      * the function called to request user approval of
      *  unrequested (incoming) channels matching this client's approver filter
      *  (since 0.11.13)
      */
-    readonly add_dispatch_operation: BaseClientClassAddDispatchOperationImpl
+    add_dispatch_operation: BaseClientClassAddDispatchOperationImpl
     /**
      * the function called to handle channels matching this
      *  client's handler filter (since 0.11.13)
      */
-    readonly handle_channels: BaseClientClassHandleChannelsImpl
+    handle_channels: BaseClientClassHandleChannelsImpl
     static name: string
 }
 class BaseClientClassPrivate {
@@ -35903,7 +39924,7 @@ abstract class BaseConnectionClass {
     /**
      * The superclass' structure
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     /**
      * Construct a unique name for this connection
      *  (for example using the protocol's format for usernames). If %NULL (the
@@ -35911,22 +39932,22 @@ abstract class BaseConnectionClass {
      *  override this to get more obvious names, to aid debugging and prevent
      *  multiple connections to the same account.
      */
-    readonly get_unique_connection_name: BaseConnectionGetUniqueConnectionNameImpl
+    get_unique_connection_name: BaseConnectionGetUniqueConnectionNameImpl
     /**
      * If set by subclasses, will be called just after the state
      *  changes to CONNECTING. May be %NULL if nothing special needs to happen.
      */
-    readonly connecting: BaseConnectionProc
+    connecting: BaseConnectionProc
     /**
      * If set by subclasses, will be called just after the state
      *  changes to CONNECTED. May be %NULL if nothing special needs to happen.
      */
-    readonly connected: BaseConnectionProc
+    connected: BaseConnectionProc
     /**
      * If set by subclasses, will be called just after the state
      *  changes to DISCONNECTED. May be %NULL if nothing special needs to happen.
      */
-    readonly disconnected: BaseConnectionProc
+    disconnected: BaseConnectionProc
     /**
      * Called after disconnected() is called, to clean up the
      *  connection. Must start the shutdown process for the underlying
@@ -35934,13 +39955,13 @@ abstract class BaseConnectionClass {
      *  to be called after the underlying connection has been closed. May not
      *  be left as %NULL.
      */
-    readonly shut_down: BaseConnectionProc
+    shut_down: BaseConnectionProc
     /**
      * Asynchronously start connecting - called to implement
      *  the Connect D-Bus method. See #TpBaseConnectionStartConnectingImpl for
      *  details. May not be left as %NULL.
      */
-    readonly start_connecting: BaseConnectionStartConnectingImpl
+    start_connecting: BaseConnectionStartConnectingImpl
     static name: string
 }
 class BaseConnectionPrivate {
@@ -35951,7 +39972,7 @@ abstract class BasicProxyFactoryClass {
     /**
      * the parent class
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CallChannelClass {
@@ -35972,25 +39993,25 @@ class CallStateReason {
      * the contact responsible for the change, or 0 if no contact was
      *  responsible
      */
-    readonly actor: Handle
+    actor: Handle
     /**
      * the reason for the change. If
      *  #TP_CALL_STATE_CHANGE_REASON_USER_REQUESTED then the `actor` member will
      *  dictate whether it was the local user or a remote contact responsible
      */
-    readonly reason: CallStateChangeReason
+    reason: CallStateChangeReason
     /**
      * A specific reason for the change, which may be a D-Bus error in
      *  the Telepathy namespace, a D-Bus error in any other namespace
      *  (for implementation-specific errors), or the empty string to indicate that
      *  the state change was not an error
      */
-    readonly dbus_reason: string
+    dbus_reason: string
     /**
      * A developer readable debug message giving the reason for the state
      *  change.
      */
-    readonly message: string
+    message: string
     static name: string
 }
 abstract class CallStreamClass {
@@ -36010,7 +40031,7 @@ abstract class ChannelClass {
     /**
      * parent class
      */
-    readonly parent_class: ProxyClass
+    parent_class: ProxyClass
     static name: string
 }
 abstract class ChannelDispatchOperationClass {
@@ -36051,7 +40072,7 @@ abstract class ClientChannelFactoryInterface {
     /**
      * the parent
      */
-    readonly parent: GObject.TypeInterface
+    parent: GObject.TypeInterface
     static name: string
 }
 abstract class ClientMessageClass {
@@ -36062,7 +40083,7 @@ abstract class ConnectionClass {
     /**
      * the parent class
      */
-    readonly parent_class: ProxyClass
+    parent_class: ProxyClass
     static name: string
 }
 abstract class ConnectionManagerClass {
@@ -36097,6 +40118,7 @@ class ConnectionManagerParam {
     /**
      * Get the default value for this parameter, if there is one. If %FALSE is
      * returned, `value` is left uninitialized.
+     * @param value pointer to an unset (all zeroes) #GValue into which the default's         type and value are written
      */
     get_default(value: any): boolean
     /**
@@ -36129,12 +40151,12 @@ class ConnectionManagerProtocol {
     /**
      * The name of this connection manager
      */
-    readonly name: string
+    name: string
     /**
      * Array of #TpConnectionManagerParam structures, terminated by
      *  a structure whose `name` is %NULL
      */
-    readonly params: ConnectionManagerParam
+    params: ConnectionManagerParam
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.ConnectionManagerProtocol */
     /**
      * Return whether a new account can be registered on this protocol, by setting
@@ -36158,10 +40180,12 @@ class ConnectionManagerProtocol {
     free(): void
     /**
      * <!-- no more to say -->
+     * @param param a parameter name
      */
     get_param(param: string): ConnectionManagerParam
     /**
      * <!-- no more to say -->
+     * @param param a parameter name
      */
     has_param(param: string): boolean
     static name: string
@@ -36179,14 +40203,14 @@ class ContactInfoField {
      *  field. For example, a field representing a contact's address would be named
      *  "adr".
      */
-    readonly field_name: string
+    field_name: string
     /**
      * A list of vCard type parameters applicable to this field,
      *  with their values. The type parameter names, and any values that are
      *  case-insensitive in vCard, MUST be in lower case. For example, a contact's
      *  preferred home address would have parameters 'type=home' and 'type=pref'.
      */
-    readonly parameters: string[]
+    parameters: string[]
     /**
      * For unstructured vCard fields (such as 'fn', a formatted name
      *  field), a single-element array containing the field's value. For structured
@@ -36194,7 +40218,7 @@ class ContactInfoField {
      *  semicolon-separated elements of the field (with empty strings for empty
      *  elements).
      */
-    readonly field_value: string[]
+    field_value: string[]
     static name: string
     static new(field_name: string, parameters: string[], field_value: string[]): ContactInfoField
     constructor(field_name: string, parameters: string[], field_value: string[])
@@ -36208,7 +40232,7 @@ class ContactInfoFieldSpec {
      *  field. For example, a field representing a contact's address would be named
      *  "adr".
      */
-    readonly name: string
+    name: string
     /**
      * The set of vCard type parameters which may be set on this field.
      *  If this list is empty and the #TP_CONTACT_INFO_FIELD_FLAG_PARAMETERS_EXACT
@@ -36217,16 +40241,16 @@ class ContactInfoFieldSpec {
      *  case. For example, a contact's preferred home address would have parameters
      *  'type=home' and 'type=pref'.
      */
-    readonly parameters: string[]
+    parameters: string[]
     /**
      * Flags describing the behaviour of this field.
      */
-    readonly flags: ContactInfoFieldFlags
+    flags: ContactInfoFieldFlags
     /**
      * Maximum number of instances of this field which may be set.
      *  #G_MAXUINT32 is used to indicate that there is no limit.
      */
-    readonly max: number
+    max: number
     static name: string
 }
 class ContactPrivate {
@@ -36268,7 +40292,7 @@ class DBusPropertiesMixinClass {
      * An array of interface implementations, terminated by one with
      *  `name` equal to %NULL
      */
-    readonly interfaces: DBusPropertiesMixinIfaceImpl
+    interfaces: DBusPropertiesMixinIfaceImpl
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -36297,6 +40321,8 @@ class DBusPropertiesMixinClass {
      * TpDBusPropertiesMixinClass::interfaces) being %NULL, so only interfaces
      * whose properties are set using
      * tp_dbus_properties_mixin_implement_interface() will be used.
+     * @param cls a subclass of #GObjectClass
+     * @param offset the offset within `cls` of a TpDBusPropertiesMixinClass structure
      */
     static init(cls: GObject.ObjectClass, offset: number): void
 }
@@ -36305,22 +40331,22 @@ class DBusPropertiesMixinIfaceImpl {
     /**
      * The name of the interface
      */
-    readonly name: string
+    name: string
     /**
      * A callback to get the current value of the property, to which
      *  the `getter_data` from each property implementation will be passed
      */
-    readonly getter: DBusPropertiesMixinGetter
+    getter: DBusPropertiesMixinGetter
     /**
      * A callback to set a new value for the property, to which
      *  the `setter_data` from each property implementation will be passed
      */
-    readonly setter: DBusPropertiesMixinSetter
+    setter: DBusPropertiesMixinSetter
     /**
      * An array of property implementations, terminated by one with
      *  `name` equal to %NULL
      */
-    readonly props: DBusPropertiesMixinPropImpl
+    props: DBusPropertiesMixinPropImpl
     static name: string
 }
 class DBusPropertiesMixinIfaceInfo {
@@ -36328,12 +40354,12 @@ class DBusPropertiesMixinIfaceInfo {
     /**
      * Quark representing the interface's name
      */
-    readonly dbus_interface: GLib.Quark
+    dbus_interface: GLib.Quark
     /**
      * Array of property descriptions, terminated by one with
      *  `name` == %NULL
      */
-    readonly props: DBusPropertiesMixinPropInfo
+    props: DBusPropertiesMixinPropInfo
     static name: string
 }
 class DBusPropertiesMixinPropImpl {
@@ -36341,15 +40367,15 @@ class DBusPropertiesMixinPropImpl {
     /**
      * The name of the property as it appears on D-Bus
      */
-    readonly name: string
+    name: string
     /**
      * Arbitrary user-supplied data for the getter function
      */
-    readonly getter_data: object
+    getter_data: object
     /**
      * Arbitrary user-supplied data for the setter function
      */
-    readonly setter_data: object
+    setter_data: object
     static name: string
 }
 class DBusPropertiesMixinPropInfo {
@@ -36357,19 +40383,19 @@ class DBusPropertiesMixinPropInfo {
     /**
      * Quark representing the property's name
      */
-    readonly name: GLib.Quark
+    name: GLib.Quark
     /**
      * Flags representing read/write access to the property
      */
-    readonly flags: DBusPropertiesMixinFlags
+    flags: DBusPropertiesMixinFlags
     /**
      * The D-Bus signature of the property
      */
-    readonly dbus_signature: string
+    dbus_signature: string
     /**
      * The GType used in a GValue to implement the property
      */
-    readonly type: GObject.Type
+    type: GObject.Type
     static name: string
 }
 abstract class DBusTubeChannelClass {
@@ -36401,36 +40427,36 @@ class GroupMixin {
     /**
      * The connection's contact handle repository
      */
-    readonly handle_repo: HandleRepoIface
+    handle_repo: HandleRepoIface
     /**
      * The local user's handle within this group, or 0 if none.
      *  Set using tp_group_mixin_init() and tp_group_mixin_change_self_handle().
      */
-    readonly self_handle: Handle
+    self_handle: Handle
     /**
      * This group's flags. Set using tp_group_mixin_change_flags();
      *  defaults to 0.
      */
-    readonly group_flags: ChannelGroupFlags
+    group_flags: ChannelGroupFlags
     /**
      * The members of the group. Alter using
      *  tp_group_mixin_change_members().
      */
-    readonly members: HandleSet
+    members: HandleSet
     /**
      * Members awaiting the local user's approval to join the
      *  group. Alter using tp_group_mixin_change_members().
      */
-    readonly local_pending: HandleSet
+    local_pending: HandleSet
     /**
      * Members awaiting remote (e.g. remote user or server)
      *  approval to join the group. Alter using tp_group_mixin_change_members().
      */
-    readonly remote_pending: HandleSet
+    remote_pending: HandleSet
     /**
      * Pointer to opaque private data
      */
-    readonly priv: GroupMixinPrivate
+    priv: GroupMixinPrivate
     static name: string
 }
 class GroupMixinClass {
@@ -36439,16 +40465,16 @@ class GroupMixinClass {
      * The add-member function that was passed to
      *  tp_group_mixin_class_init()
      */
-    readonly add_member: GroupMixinAddMemberFunc
+    add_member: GroupMixinAddMemberFunc
     /**
      * The remove-member function that was passed to
      *  tp_group_mixin_class_init()
      */
-    readonly remove_member: GroupMixinRemMemberFunc
+    remove_member: GroupMixinRemMemberFunc
     /**
      * Pointer to opaque private data
      */
-    readonly priv: GroupMixinClassPrivate
+    priv: GroupMixinClassPrivate
     static name: string
 }
 class GroupMixinClassPrivate {
@@ -36485,6 +40511,7 @@ class Intset {
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.Intset */
     /**
      * Add an integer into a TpIntset.
+     * @param element integer to add
      */
     add(element: number): void
     /**
@@ -36501,11 +40528,13 @@ class Intset {
     destroy(): void
     /**
      * <!--Returns: says it all-->
+     * @param right The right operand
      */
     difference(right: Intset): Intset
     /**
      * Remove each integer in `other` from `self,` analogous to the bitwise
      * operation self &= (~other).
+     * @param other members to remove
      */
     difference_update(other: Intset): void
     /**
@@ -36514,10 +40543,12 @@ class Intset {
     dump(): string
     /**
      * Call `func(`element, `userdata)` for each element of `set,` in order.
+     * @param func `TpIntFunc` to use to iterate the set
      */
     foreach(func: IntFunc): void
     /**
      * <!--Returns: says it all-->
+     * @param right The right operand
      */
     intersection(right: Intset): Intset
     /**
@@ -36527,14 +40558,17 @@ class Intset {
     is_empty(): boolean
     /**
      * <!--Returns: says it all-->
+     * @param right A set of integers
      */
     is_equal(right: Intset): boolean
     /**
      * Tests if `element` is a member of `set`
+     * @param element integer to test
      */
     is_member(element: number): boolean
     /**
      * Remove an integer from a TpIntset
+     * @param element integer to add
      */
     remove(element: number): boolean
     /**
@@ -36543,6 +40577,7 @@ class Intset {
     size(): number
     /**
      * <!--Returns: says it all-->
+     * @param right The right operand
      */
     symmetric_difference(right: Intset): Intset
     /**
@@ -36551,11 +40586,13 @@ class Intset {
     to_array(): number[]
     /**
      * <!--Returns: says it all-->
+     * @param right The right operand
      */
     union(right: Intset): Intset
     /**
      * Add each integer in `other` to `self,` analogous to the bitwise operation
      * self |= other.
+     * @param other members to add
      */
     union_update(other: Intset): void
     static name: string
@@ -36567,6 +40604,7 @@ class Intset {
     static sized_new(size: number): Intset
     /**
      * <!--Returns: says it all-->
+     * @param array An array of guint
      */
     static from_array(array: number[]): Intset
 }
@@ -36575,11 +40613,13 @@ class IntsetFastIter {
     /**
      * Initialize `iter` to iterate over `set` in arbitrary order. `iter` will become
      * invalid if `set` is modified.
+     * @param set a set
      */
     init(set: Intset): void
     /**
      * Advances `iter` and retrieves the integer it now points to. Iteration
      * is not necessarily in numerical order.
+     * @param output a location to store a new integer, in arbitrary order
      */
     next(output: number): boolean
     static name: string
@@ -36589,16 +40629,17 @@ class IntsetIter {
     /**
      * The set iterated over.
      */
-    readonly set: Intset
+    set: Intset
     /**
      * Must be (guint)(-1) before iteration starts. Set to the next
      *  element in the set by tp_intset_iter_next(); undefined after
      *  tp_intset_iter_next() returns %FALSE.
      */
-    readonly element: number
+    element: number
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.IntsetIter */
     /**
      * Reset the iterator `iter` to the beginning and make it iterate over `set`.
+     * @param set An integer set to be used by that iterator
      */
     init(set: Intset): void
     /**
@@ -36644,22 +40685,22 @@ class PresenceMixinClass {
      * The status-available function that was passed to
      *  tp_presence_mixin_class_init()
      */
-    readonly status_available: PresenceMixinStatusAvailableFunc
+    status_available: PresenceMixinStatusAvailableFunc
     /**
      * The set-own-status function that was passed to
      *  tp_presence_mixin_class_init()
      */
-    readonly set_own_status: PresenceMixinSetOwnStatusFunc
+    set_own_status: PresenceMixinSetOwnStatusFunc
     /**
      * The presence statuses array that was passed to
      *  tp_presence_mixin_class_init()
      */
-    readonly statuses: PresenceStatusSpec
+    statuses: PresenceStatusSpec
     /**
      * The callback used to discover the
      *  the limit for status messages length, if any. Since: 0.14.5
      */
-    readonly get_maximum_status_message_length: PresenceMixinGetMaximumStatusMessageLengthFunc
+    get_maximum_status_message_length: PresenceMixinGetMaximumStatusMessageLengthFunc
     static name: string
 }
 class PresenceMixinClassPrivate {
@@ -36674,13 +40715,13 @@ class PresenceStatus {
      * Index of the presence status in the provided supported presence
      *  statuses array
      */
-    readonly index: number
+    index: number
     /**
      * A GHashTable mapping of string identifiers to GValues
      *  of the optional status arguments, if any. If there are no optional
      *  arguments, this pointer may be NULL.
      */
-    readonly optional_arguments: GLib.HashTable
+    optional_arguments: GLib.HashTable
     static name: string
 }
 class PresenceStatusOptionalArgumentSpec {
@@ -36688,11 +40729,11 @@ class PresenceStatusOptionalArgumentSpec {
     /**
      * Name of the argument as passed over D-Bus
      */
-    readonly name: string
+    name: string
     /**
      * D-Bus type signature of the argument
      */
-    readonly dtype: string
+    dtype: string
     static name: string
 }
 class PresenceStatusSpec {
@@ -36700,15 +40741,15 @@ class PresenceStatusSpec {
     /**
      * String identifier of the presence status
      */
-    readonly name: string
+    name: string
     /**
      * A type value, as specified by #TpConnectionPresenceType
      */
-    readonly presence_type: ConnectionPresenceType
+    presence_type: ConnectionPresenceType
     /**
      * Indicates if this status may be set on yourself
      */
-    readonly self: boolean
+    self: boolean
     /**
      * An array of #TpPresenceStatusOptionalArgumentSpec
      *  structures representing the optional arguments for this status, terminated
@@ -36718,7 +40759,7 @@ class PresenceStatusSpec {
      *  that have an optional human-readable message. All other optional arguments
      *  are deprecated.
      */
-    readonly optional_arguments: PresenceStatusOptionalArgumentSpec
+    optional_arguments: PresenceStatusOptionalArgumentSpec
     /* Methods of TelepathyGLib-0.12.TelepathyGLib.PresenceStatusSpec */
     /**
      * <!-- -->
@@ -36774,17 +40815,17 @@ abstract class ProxyClass {
     /**
      * The parent class structure
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     /**
      * If set non-zero by a subclass, #TpProxy will
      *    automatically add this interface in its constructor
      */
-    readonly interface: GLib.Quark
+    interface: GLib.Quark
     /**
      * If set %TRUE by a subclass, the #TpProxy
      *    constructor will fail if a well-known bus name is given
      */
-    readonly must_have_unique_name: number
+    must_have_unique_name: number
     static name: string
 }
 class ProxyFeature {
@@ -36792,40 +40833,40 @@ class ProxyFeature {
     /**
      * a #GQuark representing the name of the feature
      */
-    readonly name: GLib.Quark
+    name: GLib.Quark
     /**
      * if %TRUE, every non-core feature of the class depends on this one,
      * and every feature (core or not) in subclasses depends on this one
      */
-    readonly core: boolean
+    core: boolean
     /**
      * called when the feature has to be prepared
      */
-    readonly prepare_async: ProxyPrepareAsync
+    prepare_async: ProxyPrepareAsync
     /**
      * only relevant for
      * TpConnection sub-classes; same as `prepare_async` but for
      * features wanting to have a chance to prepare themself before the
      * TpConnection object announce its %TP_CONNECTION_STATUS_CONNECTED status
      */
-    readonly prepare_before_signalling_connected_async: ProxyPrepareAsync
+    prepare_before_signalling_connected_async: ProxyPrepareAsync
     /**
      * an array of #GQuark representing interfaces which have
      * to be implemented on the object in order to be able to prepare the feature
      */
-    readonly interfaces_needed: GLib.Quark
+    interfaces_needed: GLib.Quark
     /**
      * an array of #GQuark representing other features which have to
      * be prepared before trying to prepare this feature
      */
-    readonly depends_on: GLib.Quark
+    depends_on: GLib.Quark
     /**
      * If %TRUE, allow retrying preparation of this feature even if it
      * failed once already; if %FALSE any attempt of preparing the feature after
      * the preparation already failed once will immediately fail with re-calling
      * `prepare_async`
      */
-    readonly can_retry: boolean
+    can_retry: boolean
     static name: string
 }
 class ProxyFeaturePrivate {
@@ -36870,11 +40911,11 @@ abstract class SimpleClientFactoryClass {
     /**
      * the parent
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly dup_account_features: (self: SimpleClientFactory, account: Account) => GLib.Quark[]
-    readonly dup_connection_features: (self: SimpleClientFactory, connection: Connection) => GLib.Quark[]
-    readonly dup_channel_features: (self: SimpleClientFactory, channel: Channel) => GLib.Quark[]
-    readonly dup_contact_features: (self: SimpleClientFactory, connection: Connection) => ContactFeature[]
+    parent_class: GObject.ObjectClass
+    dup_account_features: (self: SimpleClientFactory, account: Account) => GLib.Quark[]
+    dup_connection_features: (self: SimpleClientFactory, connection: Connection) => GLib.Quark[]
+    dup_channel_features: (self: SimpleClientFactory, channel: Channel) => GLib.Quark[]
+    dup_contact_features: (self: SimpleClientFactory, connection: Connection) => ContactFeature[]
     static name: string
 }
 class SimpleClientFactoryPrivate {
